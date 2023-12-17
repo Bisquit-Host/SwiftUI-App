@@ -1,0 +1,17 @@
+import AppIntents
+
+enum PowerSignalAppEnum: String, AppEnum {
+    case start,
+         stop,
+         restart,
+         kill
+    
+    static var typeDisplayRepresentation = TypeDisplayRepresentation(name: "Power Signal")
+    
+    static var caseDisplayRepresentations: [Self: DisplayRepresentation] = [
+        .start: "start",
+        .stop: "stop",
+        .restart: "restart",
+        .kill: "kill"
+    ]
+}

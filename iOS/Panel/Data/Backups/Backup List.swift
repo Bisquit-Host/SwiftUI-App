@@ -1,0 +1,52 @@
+import ScrechKit
+
+struct BackupList: View {
+    @Environment(DataTabVM.self) private var vm
+    
+    private let backupLimit: Int
+    
+    init(_ backupLimit: Int) {
+        self.backupLimit = backupLimit
+    }
+    
+    var body: some View {
+        @Bindable var binding = vm
+        
+        Section {
+            ForEach(vm.backups, id: \.attributes.uuid) { backup in
+                BackupCard(backup.attributes)
+            }
+            .onDelete { offsets in
+                vm.deleteItems(.backups, offsets: offsets)
+            }
+            
+            CreateBackupButton(backupLimit)
+        } header: {
+            SectionHeader("Backups",
+                          type: .backup(vm.backups.count, limit: backupLimit))
+        }
+#if os(tvOS)
+        .sheet($binding.showSafari) {
+            QRCodeView(vm.downloadUrl)
+        }
+#else
+        .safariCover($binding.showSafari, url: vm.downloadUrl)
+#endif
+        .environment(vm)
+        .alert("Name Backup", isPresented: $binding.alertCreateBackup) {
+            TextField("Cool backup", text: $binding.textCreateBackup)
+                .autocorrectionDisabled()
+            
+            Button("Create") {
+                vm.createBackup()
+            }
+        }
+    }
+}
+
+#Preview {
+    List {
+        BackupList(4)
+            .environment(DataTabVM(""))
+    }
+}

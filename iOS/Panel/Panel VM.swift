@@ -1,0 +1,193 @@
+import ScrechKit
+import PteroNet
+
+@Observable
+final class PanelVM {
+    private let id: String
+    
+    init(_ id: String) {
+        self.id = id
+    }
+    
+#if os(tvOS)
+    var serverUsage = [0.0, 0, 0]
+    var cpuValues: [Value] = []
+    var ramValues: [Value] = []
+    var disk_values: [Value] = []
+#endif
+    
+    var server: ServerListAttributes? = nil
+    var serverState: ServerState = .unknown
+    var searchRule = ""
+    var fieldSearch = ""
+    var uptime = 0
+    var cpuUsage = 0.0
+    var ramUsage = 0.0
+    var diskUsage = 0.0
+    var stateColor: Color = .primary
+    var showFormatting = false
+    
+    var updateBackups: (() -> Void)? = nil
+    
+    private var connection: WebSocketTaskConnection?
+    private var delegate: MyWebSocketDelegate?
+    
+    var messages: [AttributedString] = []
+    
+    var searchedMessages: [AttributedString] {
+        if searchRule.isEmpty {
+            messages
+        } else {
+            messages.filter {
+                $0.description
+                    .lowercased()
+                    .contains(searchRule.lowercased())
+            }
+        }
+    }
+    
+    func fetchServerDetails() {
+        serverDetailsAPI(id) { result in
+            switch result {
+            case .success(let model):
+                if let model {
+                    self.server = model.attributes
+                }
+                
+            case .failure(let error):
+                networkCallError(#function, error)
+            }
+        }
+    }
+    
+    func appendMessage(_ message: String) {
+        main { [weak self] in
+            if let jsonData = message.data(using: .utf8) {
+                do {
+                    let message = try JSONDecoder().decode(WebSocketMessage.self, from: jsonData)
+                    
+                    if let status = message.serverStatus {
+                        print("Server status: \(status)")
+                        
+                        var state: ServerState
+                        
+                        switch status {
+                        case "starting":
+                            state = .starting
+                            withAnimation {
+                                self?.stateColor = .yellow
+                            }
+                            
+                        case "running":
+                            state = .running
+                            withAnimation {
+                                self?.stateColor = .green
+                            }
+                            
+                        case "stopping":
+                            state = .stopping
+                            withAnimation {
+                                self?.stateColor = .yellow
+                            }
+                            
+                        case "offline":
+                            state = .offline
+                            withAnimation {
+                                self?.stateColor = .red
+                            }
+                            
+                        default:
+                            state = .unknown
+                            withAnimation {
+                                self?.stateColor = .primary
+                            }
+                        }
+                        
+                        self?.serverState = state
+                        
+                    } else if let consoleOutput = message.consoleOutput {
+                        self?.messages
+                            .append(convertAnsiToAttributedString(
+                                consoleOutput
+                                    .replacing(">....", with: "")
+                            ))
+                        
+                    } else if let stats = message.serverStats {
+                        do {
+                            let jsonData = try JSONSerialization.data(withJSONObject: stats, options: [])
+                            let decoder = JSONDecoder()
+                            let stats = try decoder.decode(ServerStats.self, from: jsonData)
+                            
+                            self?.uptime = stats.uptime
+                            
+                            withAnimation {
+                                self?.cpuUsage = stats.cpuAbsolute
+                                self?.ramUsage = stats.memoryBytes
+                                self?.diskUsage = stats.diskBytes / pow(1024, 2)
+                            }
+                        } catch {
+                            print("Error converting dictionary to JSON Data or decoding JSON: \(error)")
+                        }
+                        
+                    } else if message.backupCompleted != nil {
+                        self?.updateBackups!()
+                        print("FUCKING UPDATE")
+                        
+                    } else if message.authSuccess != nil {
+                        print("WebSocket authentication successful")
+                        
+                    } else if message.tokenExpiring != nil {
+                        print("WebSocket token expiring soon")
+                        
+                        self?.consoleDetails { data in
+                            if let data {
+                                self?.connectWebSocket(data)
+                            }
+                        }
+                    } else if message.tokenExpired != nil {
+                        print("WebSocket token expired")
+                    }
+                } catch {
+                    print("ERROR")
+                }
+            }
+        }
+    }
+    
+    func changePower(_ signal: ServerSignal) {
+        PteroNet.powerSignal(id, signal: signal)
+    }
+    
+    func consoleDetails(completion: @escaping (ConsoleDetailsData?) -> Void) {
+        consoleDetailsAPI(id) { result in
+            switch result {
+            case .success(let model):
+                completion(model?.data)
+                
+            case .failure(let error):
+                networkCallError(#function, error)
+                completion(nil)
+            }
+        }
+    }
+    
+    func connectWebSocket(_ data: ConsoleDetailsData) {
+        connection = WebSocketTaskConnection(
+            data.socket,
+            token: data.token
+        )
+        
+        delegate = MyWebSocketDelegate { [weak self] message in
+            self?.appendMessage(message)
+        }
+        
+        connection?.delegate = delegate
+        connection?.connect()
+    }
+    
+    func disconnectWebSocket() {
+        connection?.disconnect()
+        connection = nil
+        delegate = nil
+    }
+}

@@ -1,0 +1,2089 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>top-level-items</key>
+	<array>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>33</string>
+					<key>StartingColumnNumber</key>
+					<string>32</string>
+					<key>StartingLineNumber</key>
+					<string>32</string>
+					<key>Timestamp</key>
+					<string>710418321.006936</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Panel/Files/Upload/Upload Progress.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>
+</string>
+				<key>leading</key>
+				<string>                
+                Button("Stop") {
+                    </string>
+				<key>trailing</key>
+				<string>                }
+                .disabled(true)
+            }
+</string>
+			</dict>
+			<key>title</key>
+			<string>No action</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>33</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>32</string>
+					<key>Timestamp</key>
+					<string>721600411.481859</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Panel/Files/Elements/FileTab ContextMenu.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>                        
+</string>
+				<key>leading</key>
+				<string>                Section {
+//                    MenuButton("Get Info", icon: "info.circle") {
+//</string>
+				<key>trailing</key>
+				<string>//                    }
+                    
+                    //                    MenuButton("Rename", icon: "pencil") {
+</string>
+			</dict>
+			<key>title</key>
+			<string>No action</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>24</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>23</string>
+					<key>Timestamp</key>
+					<string>721601910.811651</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Settings Storage.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>    //@AppStorage("consoleFontDesign") var consoleFontDesign = 1
+</string>
+				<key>leading</key>
+				<string>    //    @AppStorage("coloredTextEnabled") var coloredTextEnabled = true
+    @AppStorage("consoleFontSize") var consoleFontSize = 10.0
+</string>
+				<key>trailing</key>
+				<string>    
+    // MARK: - Other
+    @AppStorage("currentIcon") var currentIcon = "Primary Icon"
+</string>
+			</dict>
+			<key>title</key>
+			<string>Disabled</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>6</string>
+					<key>StartingColumnNumber</key>
+					<string>58</string>
+					<key>StartingLineNumber</key>
+					<string>5</string>
+					<key>Timestamp</key>
+					<string>710418525.1285501</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Settings/Credentials/UpdateCredentialsModel.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>
+</string>
+				<key>leading</key>
+				<string>@Observable class UpdateCredentialsModel {
+    func updateCredentials(with type: UpdateType) {
+        updateCredentialsAPI(type: type) { model, error in</string>
+				<key>trailing</key>
+				<string>            if let error {
+                print(error.localizedDescription)
+            } else if let model {
+</string>
+			</dict>
+			<key>title</key>
+			<string>Remove old API implementation</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>18</string>
+					<key>StartingColumnNumber</key>
+					<string>36</string>
+					<key>StartingLineNumber</key>
+					<string>17</string>
+					<key>Timestamp</key>
+					<string>711672216.507466</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Browser/Browser Spec.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>
+</string>
+				<key>leading</key>
+				<string>            .padding(.vertical, 5)
+            .background(.ultraThinMaterial, in: .rect(cornerRadius: 8))
+        //            .opacity(0.95)</string>
+				<key>trailing</key>
+				<string>    }
+}
+
+</string>
+			</dict>
+			<key>title</key>
+			<string>Disabled</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>14</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>13</string>
+					<key>Timestamp</key>
+					<string>710427442.398371</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>watchOS/Server List/ServerList Topbar.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>                //alertNetwork = true
+</string>
+				<key>leading</key>
+				<string>        HStack {
+            SFButton("wifi") {
+</string>
+				<key>trailing</key>
+				<string>            }
+            .foregroundStyle(.green)
+            .symbolEffect(.variableColor.iterative)
+</string>
+			</dict>
+			<key>title</key>
+			<string>No action</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>22</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>21</string>
+					<key>Timestamp</key>
+					<string>716206866.7943389</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>watchOS/Panel/Console/Console.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>        }
+</string>
+				<key>leading</key>
+				<string>        .sheet($binding.showFormatting) {
+            Text("Formatting")
+</string>
+				<key>trailing</key>
+				<string>        .overlay(alignment: .bottomTrailing) {
+            SFButton("bold.italic.underline") {
+                panelVM.showFormatting = true
+</string>
+			</dict>
+			<key>title</key>
+			<string>No action</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>39</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>38</string>
+					<key>Timestamp</key>
+					<string>724462719.710397</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>macOS/Panel/Files/File Tab.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>                } label: {
+</string>
+				<key>leading</key>
+				<string>                Button {
+                    vm.fetchFiles(path)
+</string>
+				<key>trailing</key>
+				<string>                    Image(systemName: "arrow.triangle.2.circlepath")
+                        .rotate(vm.degrees)
+                        .bold()
+</string>
+			</dict>
+			<key>title</key>
+			<string>Change to SFButton</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>37</string>
+					<key>StartingColumnNumber</key>
+					<string>10</string>
+					<key>StartingLineNumber</key>
+					<string>36</string>
+					<key>Timestamp</key>
+					<string>710418792.519421</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>visionOS/Panel/Panel.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>
+</string>
+				<key>leading</key>
+				<string>}
+
+#Preview {</string>
+				<key>trailing</key>
+				<string>    Panel("")
+}
+</string>
+			</dict>
+			<key>title</key>
+			<string>Preview</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>25</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>24</string>
+					<key>Timestamp</key>
+					<string>723374278.248118</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>tvOS/Settings/Settings.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>            //                NavigationLink("Map") {
+</string>
+				<key>leading</key>
+				<string>            }
+            
+</string>
+				<key>trailing</key>
+				<string>            //                    MapView()
+            //                }
+            
+</string>
+			</dict>
+			<key>title</key>
+			<string>DIsabled</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>27</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>26</string>
+					<key>Timestamp</key>
+					<string>722173483.937608</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Settings/Account/Account Settings.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>        .listRowBackground(settings.transparentList ? .clear : Color.list)
+</string>
+				<key>leading</key>
+				<string>        }
+        .foregroundStyle(.primary)
+</string>
+				<key>trailing</key>
+				<string>        .task {
+            vm.fetchKeys()
+        }
+</string>
+			</dict>
+			<key>title</key>
+			<string>Group in settings</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>43</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>42</string>
+					<key>Timestamp</key>
+					<string>723545371.445982</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Settings Storage.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>    //    @AppStorage("browserCategory") var browserCategory = "Minecraft"
+</string>
+				<key>leading</key>
+				<string>    @AppStorage("widgetCpuUsage") var widgetCpuUsage = 0.0
+    @AppStorage("widgetRamUsage") var widgetRamUsage = 0.0
+</string>
+				<key>trailing</key>
+				<string>    
+    func authSucced() {
+        delay {
+</string>
+			</dict>
+			<key>title</key>
+			<string>String to enum</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>6</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>5</string>
+					<key>Timestamp</key>
+					<string>711067964.713307</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Panel/Files/Destinations/Audio Recorder.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>    var audioRecorder: AVAudioRecorder!
+</string>
+				<key>leading</key>
+				<string>@Observable
+final class AudioRecorder {
+</string>
+				<key>trailing</key>
+				<string>    
+    func startRecording() {
+        let recordingSession = AVAudioSession.sharedInstance()
+</string>
+			</dict>
+			<key>title</key>
+			<string>Switch to AVAudioEngine</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>6</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>5</string>
+					<key>Timestamp</key>
+					<string>721432713.576956</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Panel/Files/File Details.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>    
+</string>
+				<key>leading</key>
+				<string>struct FileDetails: View {
+    private let file: FileListAttributes
+</string>
+				<key>trailing</key>
+				<string>    var body: some View {
+        VStack(alignment: .leading) {
+            if file.is_file {
+</string>
+			</dict>
+			<key>title</key>
+			<string>Unused</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>4</string>
+					<key>StartingColumnNumber</key>
+					<string>33</string>
+					<key>StartingLineNumber</key>
+					<string>3</string>
+					<key>Timestamp</key>
+					<string>711065733.680764</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Panel/Files/Destinations/Audio Recorder.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>
+</string>
+				<key>leading</key>
+				<string>import AVFoundation
+
+@Observable</string>
+				<key>trailing</key>
+				<string>final class AudioRecorder {
+    var audioRecorder: AVAudioRecorder!
+    
+</string>
+			</dict>
+			<key>title</key>
+			<string>Unused</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>56</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>55</string>
+					<key>Timestamp</key>
+					<string>724463738.994555</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Panel/Console/Console Tab.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>        .onAppear {
+</string>
+				<key>leading</key>
+				<string>        .toolbarBackground(.visible,
+                           for: .navigationBar)
+</string>
+				<key>trailing</key>
+				<string>            vm.fontSize = settings.consoleFontSize
+        }
+        .onDisappear {
+</string>
+			</dict>
+			<key>title</key>
+			<string>Remove</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>21</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>20</string>
+					<key>Timestamp</key>
+					<string>720469660.32568</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Panel/Data/Backups/Datatab Backups.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>                Menu {
+</string>
+				<key>leading</key>
+				<string>                let backup = attributes.attributes
+#if !os(tvOS)
+</string>
+				<key>trailing</key>
+				<string>                    Section {
+                        MenuButton("Download", icon: "square.and.arrow.down") {
+                            model.downloadBackup($showSafari, uuid: backup.uuid)
+</string>
+			</dict>
+			<key>title</key>
+			<string>Remove</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>3</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>2</string>
+					<key>Timestamp</key>
+					<string>712190474.186681</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Panel/Files/Destinations/Text/Des Text.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>//import HighlightedTextEditor
+</string>
+				<key>leading</key>
+				<string>import SwiftUI
+import ScrechKit
+</string>
+				<key>trailing</key>
+				<string>
+//let betweenUnderscores = try! NSRegularExpression(pattern: "_[^_]+_", options: [])
+
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>1</string>
+					<key>StartingColumnNumber</key>
+					<string>16</string>
+					<key>StartingLineNumber</key>
+					<string>0</string>
+					<key>Timestamp</key>
+					<string>712190686.577822</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Browser/Browser Sticker.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>
+</string>
+				<key>leading</key>
+				<string>//import SwiftUI</string>
+				<key>trailing</key>
+				<string>//import ScrechKit
+//
+//struct Browser_Sticker: View {
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>2</string>
+					<key>LocationEncoding</key>
+					<string>1</string>
+					<key>StartingColumnNumber</key>
+					<string>19</string>
+					<key>StartingLineNumber</key>
+					<string>1</string>
+					<key>Timestamp</key>
+					<string>712191072.694788</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>visionOS/Guide/Guide.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>
+</string>
+				<key>leading</key>
+				<string>import ScrechKit
+//import Kingfisher</string>
+				<key>trailing</key>
+				<string>
+struct Guide: View {
+    private let steps = [
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>20</string>
+					<key>StartingColumnNumber</key>
+					<string>15</string>
+					<key>StartingLineNumber</key>
+					<string>19</string>
+					<key>Timestamp</key>
+					<string>712233468.332077</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>watchOS/Auth/Auth Page.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>
+</string>
+				<key>leading</key>
+				<string>                }
+        }
+        .task {</string>
+				<key>trailing</key>
+				<string>            try? await Task.sleep(for: .seconds(4))
+            navState.navigate(.toServerList)
+        }
+</string>
+			</dict>
+			<key>title</key>
+			<string>Fetch servers</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>55</string>
+					<key>StartingColumnNumber</key>
+					<string>10</string>
+					<key>StartingLineNumber</key>
+					<string>54</string>
+					<key>Timestamp</key>
+					<string>713730780.890447</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Settings/Account/List Keys.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>()
+</string>
+				<key>leading</key>
+				<string>
+#Preview {
+    ApikeyList</string>
+				<key>trailing</key>
+				<string>        .sheet(.constant(true)) {
+            ApikeyList()
+        }
+</string>
+			</dict>
+			<key>title</key>
+			<string>Preview</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>3</string>
+					<key>StartingColumnNumber</key>
+					<string>43</string>
+					<key>StartingLineNumber</key>
+					<string>2</string>
+					<key>Timestamp</key>
+					<string>713732473.273128</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Networking/iCloud Storage.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>
+</string>
+				<key>leading</key>
+				<string>import Foundation
+
+func syncWithCloud(_ keys: [String] = []) {</string>
+				<key>trailing</key>
+				<string>    Keychain.saveArray(key: "apiKeys", value: keys)
+}
+
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>33</string>
+					<key>StartingColumnNumber</key>
+					<string>7</string>
+					<key>StartingLineNumber</key>
+					<string>32</string>
+					<key>Timestamp</key>
+					<string>713786963.255563</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>watchOS/Server List/ServerList View.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>   }
+</string>
+				<key>leading</key>
+				<string>    //            model.fetchServers(settings.adminServerList)
+    //        }
+    // </string>
+				<key>trailing</key>
+				<string>    
+    var body: some View {
+        @Bindable var binding = model
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>47</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>46</string>
+					<key>Timestamp</key>
+					<string>716199116.174304</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>watchOS/Server List/ServerList View.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>        //        .searchable(text: $binding.searchField)
+</string>
+				<key>leading</key>
+				<string>        .navigationTitle("Bisquit.Host")
+        .navigationBarBackButtonHidden()
+</string>
+				<key>trailing</key>
+				<string>        .task {
+            model.fetchServers(settings.adminServerList)
+        }
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>52</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>51</string>
+					<key>Timestamp</key>
+					<string>724328606.548641</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Panel/Info/InfoTab Buttons.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>                        sheetStartup = true
+</string>
+				<key>leading</key>
+				<string>#if DEBUG
+                    MenuButton("Startup", icon: "airplane") {
+</string>
+				<key>trailing</key>
+				<string>                    }
+#endif
+                    
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>18</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>17</string>
+					<key>Timestamp</key>
+					<string>714415290.871444</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Panel/Info/Settings/StartupList View.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>        .navigationTitle("Startup")
+</string>
+				<key>leading</key>
+				<string>            }
+        }
+</string>
+				<key>trailing</key>
+				<string>        .toolbarTitleDisplayMode(.inline)
+        .scrollIndicators(.never)
+    }
+</string>
+			</dict>
+			<key>title</key>
+			<string>Add parent view to make it work</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>114</string>
+					<key>StartingColumnNumber</key>
+					<string>48</string>
+					<key>StartingLineNumber</key>
+					<string>113</string>
+					<key>Timestamp</key>
+					<string>714407698.421752</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Panel/Files/FileUploader Model.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>
+</string>
+				<key>leading</key>
+				<string>//                        fileUrl: fileURL
+//                    )
+////                    self.fetchFiles(self.path)</string>
+				<key>trailing</key>
+				<string>//                }
+//            case .failure(let error):
+//                print("Error in file API: \(error)")
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>39</string>
+					<key>EndingLineNumber</key>
+					<string>25</string>
+					<key>StartingColumnNumber</key>
+					<string>26</string>
+					<key>StartingLineNumber</key>
+					<string>25</string>
+					<key>Timestamp</key>
+					<string>718147136.213154</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Networking/CloudKeys.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>Tip_CloudKeys</string>
+				<key>leading</key>
+				<string>        NavigationView {
+            List {
+//                TipView(</string>
+				<key>trailing</key>
+				<string>())
+                
+                if !keys.isEmpty {
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>32</string>
+					<key>StartingColumnNumber</key>
+					<string>42</string>
+					<key>StartingLineNumber</key>
+					<string>31</string>
+					<key>Timestamp</key>
+					<string>715167099.275492</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>visionOS/Server List/ServerList View.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>tings) {
+</string>
+				<key>leading</key>
+				<string>                .environment(binding)
+        }
+        //        .sheet($binding.sheetSet</string>
+				<key>trailing</key>
+				<string>        //            AppSettings()
+        //        }
+        .task {
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>46</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>45</string>
+					<key>Timestamp</key>
+					<string>718233844.303736</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Discover/Map/Map View.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>            //#if !os(watchOS)
+</string>
+				<key>leading</key>
+				<string>            .foregroundStyle(.white)
+            .mapStyle(.standard(elevation: .realistic))
+</string>
+				<key>trailing</key>
+				<string>            //            .sheet {
+            //                MapList()
+            //                    .environment(map)
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>56</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>55</string>
+					<key>Timestamp</key>
+					<string>724462989.200003</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Panel/Panel View.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>        .ignoresSafeArea(.keyboard, edges: .bottom)
+</string>
+				<key>leading</key>
+				<string>        }
+        .environment(vm)
+</string>
+				<key>trailing</key>
+				<string>        .task {
+            vm.fetchServerDetails()
+            
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>8</string>
+					<key>StartingColumnNumber</key>
+					<string>46</string>
+					<key>StartingLineNumber</key>
+					<string>7</string>
+					<key>Timestamp</key>
+					<string>718123977.5983419</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Navigation/Linking.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>
+</string>
+				<key>leading</key>
+				<string>    var alertError = false
+    
+    private let tabMapping: [String: Tabs] = [</string>
+				<key>trailing</key>
+				<string>        "backups": .backup,
+        "files": .fileManager,
+        "": .info
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>34</string>
+					<key>StartingColumnNumber</key>
+					<string>34</string>
+					<key>StartingLineNumber</key>
+					<string>33</string>
+					<key>Timestamp</key>
+					<string>718220531.40967</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Discover/Discover.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>
+</string>
+				<key>leading</key>
+				<string>                }
+                
+                NavigationLink {</string>
+				<key>trailing</key>
+				<string>                    MapView()
+                } label: {
+                    ListButton("Locations (unofficial)", icon: "map")
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>10</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>9</string>
+					<key>Timestamp</key>
+					<string>721601929.8081141</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Bisquit Host App.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>#if os(iOS)
+</string>
+				<key>leading</key>
+				<string>    private var navState = NavState()
+    
+</string>
+				<key>trailing</key>
+				<string>    private var network = NetworkVM()
+#endif
+    
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>visionOS/Settings/Dev Settings.swift</string>
+					</dict>
+				</dict>
+				<key>type</key>
+				<string>DVTDocumentLocation</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>45</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>44</string>
+					<key>Timestamp</key>
+					<string>721430691.388567</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/SpriteKit/SptiteKit BisquitFall.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>#Preview {
+</string>
+				<key>leading</key>
+				<string>}
+
+</string>
+				<key>trailing</key>
+				<string>    BisquitFall()
+        .environmentObject(SettingsStorage())
+}
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>132</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>131</string>
+					<key>Timestamp</key>
+					<string>724462989.199965</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Panel/Panel View.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>#Preview {
+</string>
+				<key>leading</key>
+				<string>}
+
+</string>
+				<key>trailing</key>
+				<string>    PanelView("")
+        .environment(PanelVM(""))
+        .environment(DataTabVM(""))
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>64</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>63</string>
+					<key>Timestamp</key>
+					<string>723545371.4459389</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Settings Storage.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>}
+</string>
+				<key>leading</key>
+				<string>        }
+    }
+</string>
+				<key>trailing</key>
+				<string></string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>39</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>38</string>
+					<key>Timestamp</key>
+					<string>721433957.185498</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Server List/Server Card/Elements/Gauge Regular.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>        //        .gaugeStyle(.accessoryCircularCapacity)
+</string>
+				<key>leading</key>
+				<string>            }
+        }
+</string>
+				<key>trailing</key>
+				<string>        .gaugeStyle(.accessoryCircular)
+        .tint(gradient)
+    }
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>69</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>68</string>
+					<key>Timestamp</key>
+					<string>724461048.143887</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>visionOS/Settings/Dev Settings.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>            
+</string>
+				<key>leading</key>
+				<string>    var body: some View {
+        VStack {
+</string>
+				<key>trailing</key>
+				<string>        }
+    }
+}
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>54</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>53</string>
+					<key>Timestamp</key>
+					<string>724461068.824046</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>Widgets/Families/Live Activity/Live Activity.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>            // Handle the response and data here
+</string>
+				<key>leading</key>
+				<string>            }
+            //            guard let data, error == nil else { return }
+</string>
+				<key>trailing</key>
+				<string>        }.resume()
+    }
+    
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>15</string>
+					<key>StartingColumnNumber</key>
+					<string>43</string>
+					<key>StartingLineNumber</key>
+					<string>14</string>
+					<key>Timestamp</key>
+					<string>723424778.494755</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Panel/Data/Backups/Create Backup Button.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>
+</string>
+				<key>leading</key>
+				<string>        Menu("Create Backup") {
+            Button {
+                vm.alertCreateBackup = true</string>
+				<key>trailing</key>
+				<string>            } label: {
+                Label("Name Backup", systemImage: "pencil")
+            }
+</string>
+			</dict>
+			<key>title</key>
+			<string>Create tip for long press</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>35</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>34</string>
+					<key>Timestamp</key>
+					<string>723723821.093719</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Panel/Data/Schedules/Schedule List.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>                sheetCreateSchedule = true
+</string>
+				<key>leading</key>
+				<string>            
+            Button {
+</string>
+				<key>trailing</key>
+				<string>            } label: {
+                Text("Create Schedule")
+            }
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>27</string>
+					<key>StartingColumnNumber</key>
+					<string>60</string>
+					<key>StartingLineNumber</key>
+					<string>26</string>
+					<key>Timestamp</key>
+					<string>724109048.162773</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Intro/StartPage/Cloud Keys.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>
+</string>
+				<key>leading</key>
+				<string>                    ContentUnavailableView("No API-keys found",
+                                           systemImage: "exclamationmark.triangle",
+                                           description: nil)</string>
+				<key>trailing</key>
+				<string>                } else {
+                    Section("API-keys") {
+                        TipView(Tip_CloudKeys())
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>14</string>
+					<key>StartingColumnNumber</key>
+					<string>37</string>
+					<key>StartingLineNumber</key>
+					<string>13</string>
+					<key>Timestamp</key>
+					<string>724464140.836707</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>watchOS/Server List/Server List Topbar.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>
+</string>
+				<key>leading</key>
+				<string>        HStack {
+            SFButton("wifi") {
+                //alertNetwork = true</string>
+				<key>trailing</key>
+				<string>            }
+            .foregroundStyle(.green)
+            .symbolEffect(.variableColor.iterative)
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+	</array>
+</dict>
+</plist>

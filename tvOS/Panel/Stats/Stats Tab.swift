@@ -1,0 +1,131 @@
+import SwiftUI
+import PteroNet
+
+struct StatsTab: View {
+    @Environment(PanelVM.self) private var vm
+    @Environment(DataTabVM.self) private var dataTabVM
+    @EnvironmentObject private var settings: SettingsStorage
+    
+    private let server: ServerListAttributes
+    
+    init(_ server: ServerListAttributes) {
+        self.server = server
+    }
+    
+    private var limits: ServerListLimits {
+        server.limits
+    }
+    
+    private var featureLimits: ServerListFeatureLimits {
+        server.feature_limits
+    }
+    
+    private let bounds = UIScreen.main.bounds
+    
+    var body: some View {
+        VStack {
+            HStack(spacing: 0) {
+                VStack(spacing: 0) {
+                    HStack(spacing: 20) {
+                        Text(server.name)
+                            .title()
+                            .minimumScaleFactor(0.5)
+                            .scaledToFit()
+                        
+                        Circle()
+                            .frame(width: 40)
+                            .foregroundStyle(vm.stateColor)
+                    }
+                    
+                    Text(server.description)
+                        .callout()
+                        .minimumScaleFactor(0.1)
+                        .lineLimit(2)
+                        .multilineTextAlignment(.center)
+                }
+                .frame(width: bounds.width * 0.33)
+                
+                Rectangle()
+                    .frame(width: 5, height: 280)
+                
+                HStack(spacing: 40) {
+                    ProgressBar("cpu",
+                                progress: vm.cpuUsage / limits.cpu
+                    )
+                    
+                    ProgressBar("ram",
+                                progress: vm.ramUsage / limits.memory
+                    )
+                    
+                    ProgressBar("ssd",
+                                progress: vm.diskUsage / limits.disk
+                    )
+                }
+                .frame(width: bounds.width * 0.33)
+                .onDisappear {
+                    vm.cpuUsage = 0
+                    vm.ramUsage = 0
+                    vm.diskUsage = 0
+                }
+                
+                Rectangle()
+                    .frame(width: 5, height: 280)
+                
+                VStack(alignment: .leading) {
+                    GaugeTV("uptime",
+                            param: millisecondsToTime(vm.uptime)
+                    )
+                    
+                    GaugeTV("backups",
+                            param: "\(dataTabVM.backups.count)/\(featureLimits.backups)"
+                    )
+                    
+                    GaugeTV("databases",
+                            param: "\(dataTabVM.databases.count)/\(featureLimits.databases)"
+                    )
+                    
+                    GaugeTV("identifier",
+                            param: server.id
+                    )
+                    
+                    GaugeTV("node",
+                            param: server.node.capitalized
+                    )
+                }
+                .minimumScaleFactor(0.5)
+                .lineLimit(1)
+                .frame(minWidth: bounds.width * 0.33, alignment: .leading)
+            }
+            
+            Rectangle()
+                .frame(width: bounds.width * 0.9, height: 5)
+            
+            HStack(spacing: 0) {
+                ChartView("CPU",
+                          unit: "absolute",
+                          max: limits.cpu,
+                          values: vm.cpuValues
+                )
+                .frame(width: bounds.width * 0.33)
+                
+                Rectangle()
+                    .frame(width: 1)
+                    .foregroundStyle(.gray)
+                
+                ChartView("RAM",
+                          unit: "GB",
+                          max: limits.memory,
+                          values: vm.ramValues
+                )
+                .frame(width: bounds.width * 0.33)
+            }
+        }
+    }
+}
+
+#Preview {
+    StatsTab(
+        sampleJSON(.serverListAttributes)
+    )
+    .environmentObject(SettingsStorage())
+}

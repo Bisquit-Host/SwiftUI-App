@@ -1,0 +1,28 @@
+{
+  "images" : [
+    {
+      "filename" : "tvOS icon 2 copy 1.png",
+      "idiom" : "tv",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "tvOS App Icon Front.png",
+      "idiom" : "tv",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "tvOS icon 2 copy.png",
+      "idiom" : "tv-marketing",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "tvOS App Icon Front 1.png",
+      "idiom" : "tv-marketing",
+      "scale" : "2x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

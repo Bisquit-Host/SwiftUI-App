@@ -1,0 +1,64 @@
+import SwiftUI
+import PteroNet
+
+struct InfoTabCard: View {
+    @EnvironmentObject private var settings: SettingsStorage
+    
+    private let server: ServerListAttributes
+    
+    init(_ server: ServerListAttributes) {
+        self.server = server
+    }
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            HStack {
+                VStack(alignment: .leading) {
+                    HStack(alignment: .bottom, spacing: 4) {
+                        Text(server.name)
+                            .title3(.semibold)
+                        
+                        Text(server.node)
+                            .footnote()
+                            .offset(y: -1)
+                            .foregroundStyle(.tertiary)
+                    }
+                    
+                    Text(server.description)
+                        .footnote()
+                        .lineLimit(2)
+                }
+                
+                Spacer()
+                
+                PowerSwitch()
+            }
+            
+            TabView(selection: $settings.last_tab_panel_info) {
+                InfoRelativeStats(server.limits)
+                    .tag(TabInfo.relative)
+                
+                InfoAbsoluteStats(server.limits)
+                    .tag(TabInfo.absolute)
+                
+                InfoTabAllocation(server)
+                    .tag(TabInfo.ip)
+            }
+            .frame(height: 120)
+            .padding(.vertical, -20)
+            .tabViewStyle(.page)
+        }
+        .padding()
+        .background(.ultraThinMaterial, 
+                    in: .rect(cornerRadius: 16)
+        )
+    }
+}
+
+#Preview {
+    InfoTabCard(
+        sampleJSON(.serverListAttributes)
+    )
+    .environment(PanelVM(""))
+    .environmentObject(SettingsStorage())
+}

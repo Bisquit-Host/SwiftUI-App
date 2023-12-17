@@ -1,0 +1,48 @@
+import ScrechKit
+import SpriteKit
+
+final class SceneBisquitFall: SKScene {
+    override func didMove(to view: SKView) {
+        physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
+        
+        if let particles = SKEmitterNode(fileNamed: "Bisquits") {
+            particles.position = CGPoint(x: frame.midX, y: frame.maxY)
+            
+            let range = max(UIScreen.main.bounds.width, UIScreen.main.bounds.height)
+            particles.particlePositionRange = CGVector(dx: range, dy: range)
+            
+            addChild(particles)
+        }
+    }
+}
+
+struct BisquitFall: View {
+    @EnvironmentObject private var settings: SettingsStorage
+    @Environment(\.colorScheme) var colorScheme
+    
+    private var scene: SKScene {
+        let scene = SceneBisquitFall()
+        
+        scene.scaleMode = .resizeFill
+#if !os(tvOS)
+        scene.backgroundColor = .systemBackground
+#endif
+        scene.physicsWorld.gravity = CGVector(dx: 0, dy: -0.5)
+        
+        return scene
+    }
+    
+    var body: some View {
+        if settings.enableBisquitFall {
+            SpriteView(scene: scene)
+                .ignoresSafeArea()
+                .background(colorScheme == .light ? .white : .black)
+                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        }
+    }
+}
+
+#Preview {
+    BisquitFall()
+        .environmentObject(SettingsStorage())
+}
