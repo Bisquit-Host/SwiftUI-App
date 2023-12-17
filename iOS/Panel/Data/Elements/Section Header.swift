@@ -12,8 +12,15 @@ struct SectionHeader: View {
     }
     
     enum HeaderType {
-        case backup(_ count: Int, limit: Int)
-        case database(_ count: Int, limit: Int)
+        case backup(
+            _ count: Int,
+            limit: Int
+        )
+        
+        case database(
+            _ count: Int,
+            limit: Int
+        )
     }
     
     var body: some View {

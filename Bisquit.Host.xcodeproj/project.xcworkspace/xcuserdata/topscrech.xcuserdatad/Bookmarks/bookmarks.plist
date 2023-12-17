@@ -81,14 +81,14 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>                        
+				<string>//
 </string>
 				<key>leading</key>
 				<string>                Section {
-//                    MenuButton("Get Info", icon: "info.circle") {
-//</string>
+                    //                    MenuButton("Get Info", icon: "info.circle") {
+                    </string>
 				<key>trailing</key>
-				<string>//                    }
+				<string>                    //                    }
                     
                     //                    MenuButton("Rename", icon: "pencil") {
 </string>

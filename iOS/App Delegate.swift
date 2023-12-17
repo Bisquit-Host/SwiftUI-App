@@ -79,7 +79,12 @@ private func postPushToken(email: String, token: String) {
     request.httpMethod = "POST"
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
     
-    let body = ["email": email, "type": "Apple", "token": token]
+    let body = [
+        "email": email,
+        "type": "Apple",
+        "token": token
+    ]
+    
     request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
     
     URLSession.shared.dataTask(with: request) { data, response, error in

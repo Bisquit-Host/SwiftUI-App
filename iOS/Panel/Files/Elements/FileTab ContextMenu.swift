@@ -29,9 +29,9 @@ struct FileTab_ContextMenu: ViewModifier {
                 }
                 
                 Section {
-//                    MenuButton("Get Info", icon: "info.circle") {
-//                        
-//                    }
+                    //                    MenuButton("Get Info", icon: "info.circle") {
+                    //
+                    //                    }
                     
                     //                    MenuButton("Rename", icon: "pencil") {
                     //                        print(file)

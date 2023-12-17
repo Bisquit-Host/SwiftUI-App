@@ -37,9 +37,11 @@ struct BisquitHostApp: App {
             //            if settings.isApiKeyValid {
             AppContainer()
                 .onOpenURL { url in
-                    linking.handleDeepLink(navState,
-                                           settings: settings,
-                                           url: url)
+                    linking.handleDeepLink(
+                        navState,
+                        settings: settings,
+                        url: url
+                    )
                 }
             //                    .alert("Error", isPresented: $linking.alertError) {
             //

@@ -28,7 +28,7 @@ struct DatabaseList: View {
             } label: {
                 Text("Create Database")
             }
-            .disabled(vm.databases.count > databaseLimit)
+            .disabled(vm.databases.count >= databaseLimit)
 #if os(tvOS)
             .buttonStyle(.borderedProminent)
 #endif
@@ -49,7 +49,7 @@ struct DatabaseList: View {
                 vm.createDatabase()
             }
             
-            Button("Cancel") {
+            Button("Cancel", role: .destructive) {
                 vm.newDatabaseName = ""
             }
         }

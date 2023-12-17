@@ -1,5 +1,4 @@
 import PteroNet
-import OSLog
 
 final class MyWebSocketDelegate: WebSocketConnectionDelegate {
     private let onTextMessage: (String) -> Void
