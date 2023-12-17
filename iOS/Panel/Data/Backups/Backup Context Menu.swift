@@ -18,7 +18,7 @@ struct BackupContextMenu: View {
             vm.downloadBackup(uuid)
         }
         
-        if backup.is_locked {
+        if backup.isLocked {
             MenuButton("Unlock", role: .destructive, icon: "lock.open") {
                 vm.lockBackup(uuid)
             }

@@ -6,13 +6,13 @@ struct FileDetails: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            if file.is_file {
+            if file.isFile {
                 Text("Size: \(formatBytes(file.size))")
             }
             
-            Text("Modified: \(file.modified_at)")
+            Text("Modified: \(file.modifiedAt)")
             
-            Text("Created: \(file.created_at)")
+            Text("Created: \(file.createdAt)")
         }
         .footnote()
     }

@@ -88,9 +88,9 @@ struct UserView: View {
                         Spacer()
                         
                         VStack {
-                            Text(formatISO(user.created_at))
+                            Text(formatISO(user.createdAt))
                             
-                            Text(timeSinceISO(user.created_at))
+                            Text(timeSinceISO(user.createdAt))
                                 .footnote()
                                 .foregroundStyle(.secondary)
                         }

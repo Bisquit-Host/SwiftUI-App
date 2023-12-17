@@ -18,13 +18,13 @@ struct NewScheduleSheet: View {
     private var newSchedule: NewSchedule {
         .init(
             name: name,
-            is_active: isActive,
-            only_when_online: onlyWhenOnline,
+            isActive: isActive,
+            onlyWhenOnline: onlyWhenOnline,
             minute: minute,
             hour: hour,
-            day_of_month: dayOfMonth,
+            dayOfMonth: dayOfMonth,
             month: month,
-            day_of_week: dayOfWeek
+            dayOfWeek: dayOfWeek
         )
     }
     

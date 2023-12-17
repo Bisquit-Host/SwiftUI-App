@@ -14,7 +14,7 @@ struct ServerCardParent: View {
     
     var body: some View {
         VStack {
-            if server.is_suspended {
+            if server.isSuspended {
                 SuspendedServerCard(server.name)
                     .popoverTip(Tip_SuspendedServer())
             } else {

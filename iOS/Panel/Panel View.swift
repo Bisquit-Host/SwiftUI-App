@@ -40,7 +40,7 @@ struct PanelView: View {
                                   isAnimated: settings.animatedTabbar
                         )
                     
-                    DataTab(id, limits: server.feature_limits)
+                    DataTab(id, limits: server.featureLimits)
                         .environment(dataTabVM)
                         .setUpTab(.backup,
                                   isAnimated: settings.animatedTabbar

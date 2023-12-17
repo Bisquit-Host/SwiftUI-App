@@ -26,7 +26,7 @@ struct StartupCard: View {
                 Spacer()
                 
                 Button {
-                    value = variable.default_value
+                    value = variable.defaultValue
                 } label: {
                     Image(systemName: "arrow.counterclockwise")
                         .semibold()
@@ -38,18 +38,18 @@ struct StartupCard: View {
                 .foregroundStyle(.secondary)
             
             TextField("Type here", text: $value)
-                .disabled(!variable.is_editable)
+                .disabled(!variable.isEditable)
             
             Text(variable.rules)
         }
         .task {
-            value = variable.server_value
+            value = variable.serverValue
         }
         .onChange(of: value) { _, newValue in
             let rulesArray = variable.rules.split(separator: "|")
             
             guard let rule = rulesArray.first, rule == "required" else {
-                vm.changeVariable(variable: variable.env_variable, newValue: newValue)
+                vm.changeVariable(variable: variable.envVariable, newValue: newValue)
                 return
             }
             
@@ -65,7 +65,7 @@ struct StartupCard: View {
             }
             
             vm.changeVariable(
-                variable: variable.env_variable,
+                variable: variable.envVariable,
                 newValue: newValue
             )
         }
@@ -79,11 +79,11 @@ struct StartupCard: View {
             variable: .init(
                 name: "Variable Name",
                 description: "Some variable does something",
-                env_variable: "SOME_VARIABLE",
-                default_value: "Default Value",
-                server_value: "Current Value",
+                envVariable: "SOME_VARIABLE",
+                defaultValue: "Default Value",
+                serverValue: "Current Value",
                 rules: "",
-                is_editable: true
+                isEditable: true
             )
         )
     }

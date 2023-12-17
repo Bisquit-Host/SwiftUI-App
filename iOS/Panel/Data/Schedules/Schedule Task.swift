@@ -28,7 +28,7 @@ struct ScheduleTask: View {
                     Text(task.action.capitalized)
                         .subheadline()
                     
-                    let offset = Text(task.time_offset == 0 ? "-" : "\(task.time_offset)")
+                    let offset = Text(task.timeOffset == 0 ? "-" : "\(task.timeOffset)")
                         .foregroundStyle(.primary)
                     
                     Text("Time offset: \(offset)")

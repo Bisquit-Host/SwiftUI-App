@@ -4,7 +4,7 @@ import PteroNet
 
 @Observable
 final class AccountVM {
-    var account: AccountDetailsAttributes? = nil
+    var account: AccountAttributes? = nil
     var qrCodeUrl = ""
     
     func fetch() {
@@ -25,8 +25,8 @@ final class AccountVM {
         twoFaDetailtsAPI { [self] result in
             switch result {
             case .success(let model):
-                if let model {
-                    qrCodeUrl = model.data.image_url_data
+                if let model = model?.data {
+                    qrCodeUrl = model.imageUrlData
                 }
                 
             case .failure(let error):

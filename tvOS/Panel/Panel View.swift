@@ -36,7 +36,7 @@ struct PanelView: View {
                     }
                 
                 DataTab(server.id,
-                        limits: server.feature_limits
+                        limits: server.featureLimits
                 )
                 .environment(dataTabVM)
                 .tag(Tab.backup)

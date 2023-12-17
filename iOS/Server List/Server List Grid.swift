@@ -38,13 +38,13 @@ struct ServerListGrid: View {
                         uuid: "",
                         node: "",
                         description: "",
-                        docker_image: "",
+                        dockerImage: "",
                         limits: ServerListLimits(
                             memory: 0,
                             cpu: 0,
                             disk: 0
                         ),
-                        feature_limits: ServerListFeatureLimits(
+                        featureLimits: ServerListFeatureLimits(
                             backups: 0,
                             databases: 0
                         ),
@@ -52,7 +52,7 @@ struct ServerListGrid: View {
                             ip: "",
                             port: 0
                         ),
-                        is_suspended: false,
+                        isSuspended: false,
                         relationships: .init(
                             allocations: .init(data: [])
                         )

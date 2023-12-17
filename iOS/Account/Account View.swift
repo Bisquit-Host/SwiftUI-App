@@ -8,9 +8,9 @@ struct AccountView: View {
     var body: some View {
         List {
             if let account = vm.account {
-                param("First name", value: account.first_name)
+                param("First name", value: account.firstName)
                 
-                param("Last name", value: account.last_name)
+                param("Last name", value: account.lastName)
                 
                 param("E-mail", value: account.email)
             }

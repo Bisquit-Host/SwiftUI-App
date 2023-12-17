@@ -41,8 +41,8 @@ final class StartPageVM {
         }
     }
     
-    func validateKey(_ attributes: AccountDetailsAttributes) {
-        self.accountName = attributes.first_name + " " + attributes.last_name
+    func validateKey(_ attributes: AccountAttributes) {
+        self.accountName = attributes.firstName + " " + attributes.lastName
         self.accountEmail = attributes.email
         
         withAnimation {

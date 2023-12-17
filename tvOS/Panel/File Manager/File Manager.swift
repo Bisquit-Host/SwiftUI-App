@@ -66,9 +66,9 @@ struct FileTab: View {
                         .contextMenu {
                             if !mimetype.contains("directory") {
                                 Section {
-                                    Text("Modified: \(file.modified_at)")
+                                    Text("Modified: \(file.modifiedAt)")
                                     
-                                    Text("Created: \(file.created_at)")
+                                    Text("Created: \(file.createdAt)")
                                 }
                             }
                             

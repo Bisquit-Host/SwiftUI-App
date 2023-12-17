@@ -17,7 +17,7 @@ struct StatsTab: View {
     }
     
     private var featureLimits: ServerListFeatureLimits {
-        server.feature_limits
+        server.featureLimits
     }
     
     private let bounds = UIScreen.main.bounds

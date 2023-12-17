@@ -653,7 +653,7 @@ final class AudioRecorder {
 				<key>trailing</key>
 				<string>    var body: some View {
         VStack(alignment: .leading) {
-            if file.is_file {
+            if file.isFile {
 </string>
 			</dict>
 			<key>title</key>

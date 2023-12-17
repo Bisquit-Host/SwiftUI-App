@@ -21,8 +21,8 @@ struct NewTaskSheet: View {
         .init(
             action: action.rawValue,
             payload: payload,
-            time_offset: Int(timeOffset) ?? 0,
-            continue_on_failure: continueOnFailure
+            timeOffset: Int(timeOffset) ?? 0,
+            continueOnFailure: continueOnFailure
         )
     }
     

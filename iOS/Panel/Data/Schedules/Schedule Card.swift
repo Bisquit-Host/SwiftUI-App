@@ -15,12 +15,12 @@ struct ScheduleCard: View {
     
     private var cron: String {
         let cron = schedule.cron
-        let day_of_month = cron.day_of_month
-        let day_of_week = cron.day_of_week
+        let dayOfMonth = cron.dayOfMonth
+        let dayOfWeek = cron.dayOfWeek
         let hour = cron.hour
         let minute = cron.minute
         
-        return day_of_month + day_of_week + hour + minute
+        return dayOfMonth + dayOfWeek + hour + minute
     }
     
 #if os(tvOS)
@@ -46,8 +46,8 @@ struct ScheduleCard: View {
                             .title3()
                         
                         Circle()
-                            .background(schedule.is_active ? .green : .red, in: .circle)
-                            .foregroundStyle(schedule.is_active ? .green : .red)
+                            .background(schedule.isActive ? .green : .red, in: .circle)
+                            .foregroundStyle(schedule.isActive ? .green : .red)
 #if os(tvOS)
                             .frame(width: 24)
 #else

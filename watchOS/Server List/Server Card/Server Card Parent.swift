@@ -14,7 +14,7 @@ struct ServerCardParent: View {
         Button {
             navState.navigate(.toPanel(server.id))
         } label: {
-            if server.is_suspended {
+            if server.isSuspended {
                 SuspendedCard(server.name)
             } else {
                 ServerCard(server)

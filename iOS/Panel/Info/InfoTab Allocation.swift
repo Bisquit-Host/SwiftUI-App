@@ -52,7 +52,8 @@ struct InfoTabAllocation: View {
     func getDefaultIp(_ server: ServerListAttributes) -> String {
         let allocations = server.relationships.allocations.data
         
-        let defaultAllocation = allocations.first(where: { $0.attributes.is_default
+        let defaultAllocation = allocations.first(where: {
+            $0.attributes.isDefault
         })
         
         let attributes = defaultAllocation?.attributes
@@ -60,7 +61,7 @@ struct InfoTabAllocation: View {
         let port = attributes?.port ?? 0
         let ip = attributes?.ip ?? ""
         
-        if let alias = attributes?.ip_alias {
+        if let alias = attributes?.ipAlias {
             return "\(alias):\(port)"
         } else {
             return "\(ip):\(port)"

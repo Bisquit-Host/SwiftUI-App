@@ -39,7 +39,7 @@ struct LogCard: View {
                         Text(actor?.username ?? "System")
                         
                         Group {
-                            if log.is_api {
+                            if log.isApi {
                                 Text("API")
                             }
                             

@@ -26,7 +26,7 @@ final class ServerListVM {
             let prompt = searchField.lowercased()
             let matchesSearch = searchField.isEmpty || server.attributes.name.lowercased().contains(prompt) || server.attributes.description.lowercased().contains(prompt)
             let matchesNode = displayedNode == .all || server.attributes.node == displayedNode.rawValue
-            let matchesSuspended = !filterBySuspended || server.attributes.is_suspended
+            let matchesSuspended = !filterBySuspended || server.attributes.isSuspended
             
             return matchesSearch && matchesNode && matchesSuspended
         }
@@ -45,20 +45,20 @@ final class ServerListVM {
             switch result {
             case .success(let model):
                 if let model {
-                    var loaded_servers = model.data
-                    let total_pages = model.meta.pagination.total_pages
+                    var loadedServers = model.data
+                    let totalPages = model.meta.pagination.totalPages
                     
-                    if total_pages > 1 {
+                    if totalPages > 1 {
                         let group = DispatchGroup()
                         
-                        for page in 2...total_pages {
+                        for page in 2...totalPages {
                             group.enter()
                             
                             getServerListAPI(isAdmin, page: page) { result in
                                 switch result {
                                 case .success(let model):
                                     if let model {
-                                        loaded_servers.append(contentsOf: model.data)
+                                        loadedServers.append(contentsOf: model.data)
                                     }
                                     
                                 case .failure(let error):
@@ -71,12 +71,12 @@ final class ServerListVM {
                         
                         group.notify(queue: .main) {
                             withAnimation {
-                                self.servers = loaded_servers
+                                self.servers = loadedServers
                             }
                         }
                     } else {
                         withAnimation {
-                            self.servers = loaded_servers
+                            self.servers = loadedServers
                         }
                     }
                 }

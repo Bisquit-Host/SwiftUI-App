@@ -15,7 +15,7 @@ struct BackupCard: View {
             
         } label: {
             HStack(spacing: 16) {
-                if backup.completed_at != nil {
+                if backup.completedAt != nil {
                     Image(systemName: "doc.zipper")
                         .title2(.semibold)
                 } else {
@@ -31,7 +31,7 @@ struct BackupCard: View {
                 
                 VStack(alignment: .leading) {
                     HStack(spacing: 5) {
-                        if backup.is_locked {
+                        if backup.isLocked {
                             Image(systemName: "lock")
                                 .foregroundStyle(.orange)
                         }
@@ -43,10 +43,10 @@ struct BackupCard: View {
                             .scaledToFit()
 #endif
                     }
-                    .animation(.default, value: backup.is_locked)
+                    .animation(.default, value: backup.isLocked)
                     .headline()
                     
-                    let timeDifference = Text(timeSinceISO(backup.created_at))
+                    let timeDifference = Text(timeSinceISO(backup.createdAt))
                         .foregroundStyle(.primary)
                     
                     Text("Created: \(timeDifference)")
@@ -79,8 +79,8 @@ struct BackupCard: View {
             Button {
                 vm.lockBackup(backup.uuid)
             } label: {
-                Image(systemName: backup.is_locked ? "lock.open" : "lock")
-                    .tint(backup.is_locked ? .orange : .green)
+                Image(systemName: backup.isLocked ? "lock.open" : "lock")
+                    .tint(backup.isLocked ? .orange : .green)
             }
         }
 #endif
