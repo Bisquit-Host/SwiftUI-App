@@ -33,11 +33,12 @@ struct FileTab_ContextMenu: ViewModifier {
                     //
                     //                    }
                     
-                    //                    MenuButton("Rename", icon: "pencil") {
-                    //                        print(file)
-                    //                        actionFile = file
-                    //                        vm.alertRename = true
-                    //                    }
+                    if SettingsStorage().enableFileRename {
+                        MenuButton("Rename", icon: "pencil") {
+                            vm.newFileName = ""
+                            vm.alertRename = true
+                        }
+                    }
                     
                     if !mimeType.contains("directory") {
                         MenuButton("Duplicate", icon: "plus.square.on.square") {
@@ -63,22 +64,24 @@ struct FileTab_ContextMenu: ViewModifier {
                         }
                     }
                 }
-                //                Section {
-                //                    MenuButton("Delete", role: .destructive icon: "trash") {
-                //
-                //                    }
-                //                }
+                
+                Section {
+                    MenuButton("Delete", role: .destructive, icon: "trash") {
+                        vm.fileDelete(file, path: path)
+                    }
+                }
             }
-        //            .alert("Rename file", isPresented: $vm.alertRename) {
-        //                TextField("I'm not a no-name 😢", text: $vm.newFileName)
-        //                    .autocorrectionDisabled()
-        //
-        //                Button("Rename", role: .destructive) {
-        //                    print("file: " + file)
-        //                    print("actionFile: " + actionFile)
-        //                    vm.renameFile(id, oldName: actionFile, newName: vm.newFileName, from: path)
-        //                }
-        //            }
+            .alert("Rename \(file)", isPresented: $vm.alertRename) {
+                TextField("I'm not a no-name 😢", text: $vm.newFileName)
+                    .autocorrectionDisabled()
+                
+                Button("Rename", role: .destructive) {
+                    vm.renameFile(path,
+                                  oldName: file,
+                                  newName: vm.newFileName
+                    )
+                }
+            }
     }
 }
 

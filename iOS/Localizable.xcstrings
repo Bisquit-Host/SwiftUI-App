@@ -1569,6 +1569,9 @@
         }
       }
     },
+    "Enable file rename (VERY UNSTABLE)" : {
+
+    },
     "Enable Schedule" : {
 
     },
@@ -1934,6 +1937,9 @@
           }
         }
       }
+    },
+    "I'm not a no-name 😢" : {
+
     },
     "iCloud" : {
 
@@ -3188,6 +3194,9 @@
           }
         }
       }
+    },
+    "Rename %@" : {
+
     },
     "Rename server" : {
       "localizations" : {

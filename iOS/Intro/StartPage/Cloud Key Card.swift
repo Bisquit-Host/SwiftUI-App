@@ -28,21 +28,26 @@ struct CloudKeyCard: View {
         } label: {
             HStack {
                 VStack(alignment: .leading) {
+#if os(watchOS)
+                    Text(key.name)
+                        .headline(.semibold)
+#else
                     TextField("Title", text: $key.name)
                         .headline(.semibold)
                         .focused($focus)
                         .textFieldStyle(.plain)
-                    
+#endif
                     Text(showFirstEightLetters(key.key))
                         .footnote()
                         .foregroundStyle(.secondary)
                 }
-                
+#if !os(watchOS)
                 Spacer()
                 
                 Image(systemName: "doc.on.clipboard")
                     .title3()
                     .foregroundStyle(.green)
+#endif
             }
         }
         .foregroundStyle(.foreground)

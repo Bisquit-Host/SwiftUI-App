@@ -1,7 +1,6 @@
 import ScrechKit
 
 struct PanelView: View {
-    @EnvironmentObject private var settings: SettingsStorage
     private var vm: PanelVM
     private var fileVM: FileTabVM
     
@@ -13,8 +12,10 @@ struct PanelView: View {
         self.fileVM = FileTabVM(id)
     }
     
+    @AppStorage("panelTab") private var tab: Tab = .info
+    
     var body: some View {
-        TabView(selection: $settings.lastTabPanel) {
+        TabView(selection: $tab) {
             if let server = vm.server {
                 InfoTab(server)
                     .tag(Tab.info)

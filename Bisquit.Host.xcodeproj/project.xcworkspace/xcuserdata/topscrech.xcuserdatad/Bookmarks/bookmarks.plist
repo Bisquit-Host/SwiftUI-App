@@ -90,7 +90,7 @@
 				<key>trailing</key>
 				<string>                    //                    }
                     
-                    //                    MenuButton("Rename", icon: "pencil") {
+                    if SettingsStorage().enableFileRename {
 </string>
 			</dict>
 			<key>title</key>
@@ -528,13 +528,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>43</string>
+					<string>44</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>42</string>
+					<string>43</string>
 					<key>Timestamp</key>
-					<string>723545371.445982</string>
+					<string>724540562.938261</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -553,8 +553,8 @@
 				<string>    //    @AppStorage("browserCategory") var browserCategory = "Minecraft"
 </string>
 				<key>leading</key>
-				<string>    @AppStorage("widgetCpuUsage") var widgetCpuUsage = 0.0
-    @AppStorage("widgetRamUsage") var widgetRamUsage = 0.0
+				<string>    @AppStorage("widgetRamUsage") var widgetRamUsage = 0.0
+    @AppStorage("enableFileRename") var enableFileRename = false
 </string>
 				<key>trailing</key>
 				<string>    
@@ -1444,13 +1444,13 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>56</string>
+					<string>52</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>55</string>
+					<string>51</string>
 					<key>Timestamp</key>
-					<string>724462989.200003</string>
+					<string>724547761.697947</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -1688,13 +1688,13 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>132</string>
+					<string>128</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>131</string>
+					<string>127</string>
 					<key>Timestamp</key>
-					<string>724462989.199965</string>
+					<string>724547805.2417589</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -1733,13 +1733,13 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>64</string>
+					<string>65</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>63</string>
+					<string>64</string>
 					<key>Timestamp</key>
-					<string>723545371.4459389</string>
+					<string>724540562.938184</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>

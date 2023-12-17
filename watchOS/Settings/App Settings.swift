@@ -8,12 +8,6 @@ struct AppSettings: View {
     private let bundle = Bundle.main
     private let device = WKInterfaceDevice.current()
     
-    private var screenSize: String {
-        let size = device.screenBounds.size
-        
-        return "\(Int(size.height)) x \(Int(size.width))"
-    }
-    
     private var deviceAndName: String {
         "\(device.name) (\(device.systemName)\(device.systemVersion))"
     }
@@ -29,8 +23,7 @@ struct AppSettings: View {
     private var parameters: [(String, String)] {
         [
             ("App version", "\(appVersion) (\(appBuild))"),
-            ("Device and system", deviceAndName),
-            ("Display", screenSize)
+            ("Device and system", deviceAndName)
         ]
     }
     

@@ -26,25 +26,21 @@ struct PanelView: View {
                 if let server = vm.server {
                     InfoTab(server)
                         .setUpTab(.info,
-                                  isAnimated: settings.animatedTabbar
-                        )
+                                  isAnimated: settings.animatedTabbar)
                     
                     ConsoleTab(id)
                         .setUpTab(.console,
-                                  isAnimated: settings.animatedTabbar
-                        )
+                                  isAnimated: settings.animatedTabbar)
                     
                     FileTab(id)
                         .environmentObject(fileVM)
                         .setUpTab(.fileManager,
-                                  isAnimated: settings.animatedTabbar
-                        )
+                                  isAnimated: settings.animatedTabbar)
                     
                     DataTab(id, limits: server.featureLimits)
                         .environment(dataTabVM)
                         .setUpTab(.backup,
-                                  isAnimated: settings.animatedTabbar
-                        )
+                                  isAnimated: settings.animatedTabbar)
                 }
             }
             

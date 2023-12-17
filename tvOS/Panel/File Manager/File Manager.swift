@@ -45,8 +45,8 @@ struct FileTab: View {
                         
                     } else if mimetype.contains("video") {
                         DesVideo(id,
-                                  path: path,
-                                  name: name
+                                 path: path,
+                                 name: name
                         )
                         
                     } else {
@@ -72,10 +72,12 @@ struct FileTab: View {
                                 }
                             }
                             
-                            //                            MenuButton("Rename", icon: "pencil") {
-                            //                                vm.newFileName = ""
-                            //                                vm.alertRename = true
-                            //                            }
+                            if SettingsStorage().enableFileRename {
+                                MenuButton("Rename", icon: "pencil") {
+                                    vm.newFileName = ""
+                                    vm.alertRename = true
+                                }
+                            }
                             
                             if !mimetype.contains("directory") {
                                 MenuButton("Download with QR", icon: "qrcode") {
@@ -112,18 +114,18 @@ struct FileTab: View {
                                 }
                             }
                         }
-                    //                        .alert("Rename", isPresented: $vm.alertRename) {
-                    //                            TextField("", text: $vm.newFileName)
-                    //
-                    //                            Button("Rename", role: .destructive) {
-                    //                                vm.renameFile(path,
-                    //                                              oldName: name,
-                    //                                              newName: vm.newFileName
-                    //                                )
-                    //
-                    //                                vm.newFileName = ""
-                    //                            }
-                    //                        }
+                }
+                .alert("Rename \(name)", isPresented: $vm.alertRename) {
+                    TextField("", text: $vm.newFileName)
+                    
+                    Button("Rename", role: .destructive) {
+                        vm.renameFile(path,
+                                      oldName: name,
+                                      newName: vm.newFileName
+                        )
+                        
+                        vm.newFileName = ""
+                    }
                 }
             }
         }

@@ -38,7 +38,6 @@ struct CloudKeys: View {
                         .onDelete(perform: deleteItems)
                     }
                 }
-                
 #if os(xrOS)
                 Button {
                     dismiss()

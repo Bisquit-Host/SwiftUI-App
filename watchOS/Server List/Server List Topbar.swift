@@ -27,7 +27,7 @@ struct ServerListTopbar: View {
                     .foregroundStyle(.secondary)
                     .rotate(isRotating ? 360 : 0)
                     .animation(
-                        .linear(duration: 3).repeatForever(autoreverses: false),
+                        .linear(duration: 60).repeatForever(autoreverses: false),
                         value: isRotating
                     )
             }

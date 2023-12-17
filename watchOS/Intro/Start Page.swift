@@ -1,5 +1,6 @@
 import ScrechKit
 import SwiftData
+import PteroNet
 
 struct StartPage: View {
     @Bindable private var vm = StartPageVM()
@@ -16,12 +17,24 @@ struct StartPage: View {
             TextField("API-key", text: $vm.apiKey)
                 .autocorrectionDisabled()
             
-            Button("Validate") {
-                vm.fetchAccountDetails()
+            VStack {
+                Button("Validate") {
+                    vm.fetchAccountDetails()
+                }
+                .disabled(vm.apiKey.isEmpty)
+                .foregroundStyle(vm.apiKey.isEmpty ? .secondary : .primary)
+                
+                Button("Debug") {
+                    Keychain.save(key: "selectedApiKey", value: debugKey)
+                    
+                    if !keys.contains(where: { $0.key == debugKey }) {
+                        modelContext.insert(APIKey(key: debugKey))
+                    }
+                    
+                    settings.authSucced()
+                }
             }
             .title3()
-            .disabled(vm.apiKey.isEmpty)
-            .foregroundStyle(vm.apiKey.isEmpty ? .secondary : .primary)
         }
         .task {
             try? await Task.sleep(for: .seconds(0.5))

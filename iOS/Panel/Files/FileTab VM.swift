@@ -33,8 +33,8 @@ final class FileTabVM: ObservableObject {
     @Published var newFolderName = ""
     @Published var fieldSearch = ""
     @Published var searchRule = ""
-    //    @Published var alertRename = false
-    //    @Published var newFileName = ""
+    @Published var alertRename = false
+    @Published var newFileName = ""
     
     var filteredFiles: [FileListData] {
         if searchRule.isEmpty {
@@ -167,22 +167,22 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    //    func renameFile(_ path: String, oldName: String, newName: String) {
-    //        renameFileAPI(id, from: path, oldName: oldName, newName: newName) { result in
-    //            switch result {
-    //            case .success:
-    //                print("\n File \(oldName) renamed to \(newName)")
-    //                self.fetchFiles(path)
-    //
-    //                main {
-    //                    self.newFileName = ""
-    //                }
-    //
-    //            case .failure(let error):
-    //                networkCallError(#function, error)
-    //            }
-    //        }
-    //    }
+    func renameFile(_ path: String, oldName: String, newName: String) {
+        renameFileAPI(id, from: path, oldName: oldName, newName: newName) { result in
+            switch result {
+            case .success:
+                print("\n File \(oldName) renamed to \(newName)")
+                self.fetchFiles(path)
+                
+                main {
+                    self.newFileName = ""
+                }
+                
+            case .failure(let error):
+                networkCallError(#function, error)
+            }
+        }
+    }
     
     func duplicateFile(_ name: String, path: String) {
         duplicateFileAPI(id, name: name, from: path) { result in

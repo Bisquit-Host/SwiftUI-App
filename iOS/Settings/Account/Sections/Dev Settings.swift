@@ -15,7 +15,7 @@ struct DevSettings: View {
     }
     
     private var parameters: [(String, String)] {
-        var params = [
+        let params = [
             ("App version", "\(appVersion) (\(appBuild))"),
             ("Device and system", "\(device.modelIdentifier) (\(device.systemName) \(device.systemVersion))")
         ]
@@ -26,10 +26,15 @@ struct DevSettings: View {
     var body: some View {
         Section("Admin") {
             ForEach(parameters, id: \.0) { parameter in
-                ListParameter(parameter.0, parameter: parameter.1)
+                ListParameter(parameter.0,
+                              parameter: parameter.1)
             }
             
-            Toggle("Admin mode", isOn: $settings.adminMode)
+            Toggle("Admin mode",
+                   isOn: $settings.adminMode)
+            
+            Toggle("Enable file rename (VERY UNSTABLE)",
+                   isOn: $settings.enableFileRename)
             
             //#if !os(tvOS)
             //            ColorPicker("Background color (disabled)", selection: $settings.backgroundColor)
