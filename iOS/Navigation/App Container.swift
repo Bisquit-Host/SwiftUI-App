@@ -11,7 +11,7 @@ struct AppContainer: View {
         
         NavigationStack(path: $binding.path) {
             if settings.isApiKeyValid {
-                ServerList()
+                AuthView()
                     .withNavDestinations()
             } else {
                 Intro()

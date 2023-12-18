@@ -38,9 +38,6 @@ struct ServerList: View {
             vm.fetchServers(settings.adminServerList)
             settings.updateServers.toggle()
         }
-        .task {
-            vm.fetchServers(settings.adminServerList)
-        }
         .onChange(of: searchField) { _, search in
             withAnimation {
                 vm.searchField = search

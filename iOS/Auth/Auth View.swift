@@ -21,12 +21,12 @@ struct AuthView: View {
         .background(AuthBackground())
         .ignoresSafeArea()
         .task {
-            serverVM.fetchServers(settings.adminServerList)
-            
             vm.appear(
                 settings.useBiometry,
                 navState: navState
             )
+            
+            serverVM.fetchServers(settings.adminServerList)
         }
     }
     
@@ -37,6 +37,17 @@ struct AuthView: View {
             .foregroundStyle(vm.colorButton)
             .background(.aliceblue.gradient, in: .capsule)
             .shadow(color: .aliceblue, radius: 10)
+            .changeEffect(
+                .spray(origin: .bottom) {
+                    Image(.bitquit)
+                        .resizable()
+                        .frame(width: 50, height: 50)
+//                    Image(systemName: "faceid")
+//                        .foregroundStyle(.white)
+//                        .footnote()
+                },
+                value: vm.trigger
+            )
     }
     
     private var noBiometryView: some View {

@@ -8,9 +8,12 @@ final class AuthVM {
     var colorButton: Color = .black
     var textLogin = ""
     var bioType = "Unknown"
+    
 #if !os(macOS)
     let impactMed = UIImpactFeedbackGenerator(style: .heavy)
 #endif
+    
+    var trigger = false
     
     private(set) var biometryType: LABiometryType = .none
     private(set) var isAuthenticated = false
@@ -43,14 +46,13 @@ final class AuthVM {
 #endif
         AudioServicesPlayAlertSound(SystemSoundID(1394))
         
-        main { [self] in
-            withAnimation(.easeInOut(duration: 1.5)) {
-                icon = "checkmark"
-                colorButton = .green
-            }
+        trigger.toggle()
+        
+        withAnimation(.easeInOut) {
+            colorButton = .green
         }
         
-        delay {
+        delay(1.5) {
             navState.navigate(.toServerList)
         }
     }
