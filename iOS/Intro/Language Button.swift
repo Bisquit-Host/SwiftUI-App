@@ -10,7 +10,7 @@ struct LanguageButton: View {
                 .padding(8)
                 .foregroundStyle(.white)
                 .frame(width: 55, height: 55)
-                .background(Color(0xffa938).gradient, 
+                .background(.cookie.gradient, 
                             in: .circle
                 )
         }

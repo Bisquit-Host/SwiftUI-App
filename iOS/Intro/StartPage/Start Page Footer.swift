@@ -10,8 +10,9 @@ struct StartPageFooter: View {
             }
             .padding()
             .background {
-                Capsule(Color(0xffa938))
-                    .shadow(color: Color(0xffa938), radius: 8)
+                Capsule(.cookie)
+                    .shadow(color: .cookie,
+                            radius: 8)
             }
             
             Spacer()
@@ -21,8 +22,9 @@ struct StartPageFooter: View {
             }
             .padding()
             .background {
-                Capsule(Color(0xffa938))
-                    .shadow(color: Color(0xffa938), radius: 8)
+                Capsule(.cookie)
+                    .shadow(color: .cookie,
+                            radius: 8)
             }
         }
         .title3(.bold)

@@ -44,15 +44,14 @@ struct Intro: View {
                     settings.authSucced()
                 }
 #endif
-                
                 Button("Validate") {
                     vm.fetchAccountDetails()
                 }
                 .disabled(vm.apiKey.isEmpty)
             }
         }
-        .multilineTextAlignment(.center)
         .navigationTitle("Bisquit.Host")
+        .multilineTextAlignment(.center)
         .onAppear {
             if !keys.isEmpty {
                 delay(0.5) {
