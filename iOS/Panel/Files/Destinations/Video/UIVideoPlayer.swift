@@ -7,7 +7,11 @@ struct UIVideoPlayer: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> AVPlayerViewController {
         let vc = AVPlayerViewController()
         vc.player = player
+        
+#if os(iOS)
         vc.canStartPictureInPictureAutomaticallyFromInline = true
+#endif
+        
         return vc
     }
     

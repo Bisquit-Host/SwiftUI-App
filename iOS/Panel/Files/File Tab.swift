@@ -16,11 +16,12 @@ struct FileTab: View {
     
     var body: some View {
         List {
-            FileTab_Search($vm.fieldSearch)
+            FileTabSearch($vm.fieldSearch)
             
-            FileTab_NewFolder(path)
+            NewFolder(path)
             
-            Upload_Menu($image, path: path)
+            UploadMenu($image, 
+                       path: path)
             
             if vm.isUploading {
                 UploadProgress(vm.uploadProgress)
@@ -30,12 +31,15 @@ struct FileTab: View {
                 ForEach(vm.filteredFiles, id: \.attributes.name) { attributes in
                     let file = attributes.attributes
                     
-                    FileView(id, file: file, path: path)
-                        .fileContextMenu(
-                            file.name,
-                            path: path,
-                            mimeType: file.mimetype
-                        )
+                    FileView(id,
+                             file: file,
+                             path: path
+                    )
+                    .fileContextMenu(
+                        file.name,
+                        path: path,
+                        mimeType: file.mimetype
+                    )
                 }
                 .onDelete { offsets in
                     deleteItem(offsets)
@@ -43,15 +47,16 @@ struct FileTab: View {
                 
             } header: {
                 HStack {
-                    Folder_Path(path)
+                    FolderPath(path)
                     
                     Spacer()
                     
                     Text("Total: \(vm.filteredFiles.count)")
                 }
             }
+            
             if path.isEmpty {
-                FileTab_Formats()
+                FileFormats()
             }
         }
         .environmentObject(vm)

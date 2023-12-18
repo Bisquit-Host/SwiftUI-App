@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct FileTab_Search: View {
+struct FileTabSearch: View {
     @Binding private var fieldSearch: String
     
     init(_ fieldSearch: Binding<String>) {

@@ -1,6 +1,6 @@
 import ScrechKit
 
-struct FileTab_Formats: View {
+struct FileFormats: View {
     private let formats = [
         "directory",
         "gzip",
@@ -27,5 +27,5 @@ struct FileTab_Formats: View {
 }
 
 #Preview {
-    FileTab_Formats()
+    FileFormats()
 }

@@ -15,7 +15,7 @@ struct FileTab: View {
     
     var body: some View {
         List {
-            ButtonNewFolder(path)
+            NewFolder(path)
             
             Divider()
             
@@ -42,8 +42,8 @@ struct FileTab: View {
                         
                     } else if mimeType.contains("video") {
                         VideoFile(id,
-                                 path: path,
-                                 name: name)
+                                  path: path,
+                                  name: name)
                         
                     } else {
                         ContentUnavailableView("Warning",

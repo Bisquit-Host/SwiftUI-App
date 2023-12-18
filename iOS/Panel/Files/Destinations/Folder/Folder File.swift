@@ -17,11 +17,11 @@ struct FolderFile: View {
     
     var body: some View {
         List {
-            FileTab_Search($vm.fieldSearch)
+            FileTabSearch($vm.fieldSearch)
             
-            FileTab_NewFolder(path)
+            NewFolder(path)
             
-            Upload_Menu($image, path: path)
+            UploadMenu($image, path: path)
             
             if vm.isUploading {
                 UploadProgress(vm.uploadProgress)
@@ -44,7 +44,7 @@ struct FolderFile: View {
                 
             } header: {
                 HStack {
-                    Folder_Path(path)
+                    FolderPath(path)
                     
                     Spacer()
                     
@@ -53,7 +53,7 @@ struct FolderFile: View {
             }
             
             if path.isEmpty {
-                FileTab_Formats()
+                FileFormats()
             }
         }
         .onChange(of: vm.fieldSearch) { _, search in
@@ -64,6 +64,9 @@ struct FolderFile: View {
         .environmentObject(vm)
         .frame(maxWidth: 500)
         .safariCover($vm.showSafari, url: vm.downloadUrl)
+        .task {
+            vm.fetchFiles(path)
+        }
         .refreshable {
             vm.fetchFiles(path)
         }
@@ -71,9 +74,6 @@ struct FolderFile: View {
             if let image {
                 vm.handleImageImport(image, directory: path)
             }
-        }
-        .task {
-            vm.fetchFiles(path)
         }
     }
     

@@ -1,6 +1,6 @@
 import ScrechKit
 
-struct Upload_Menu: View {
+struct UploadMenu: View {
     @EnvironmentObject private var vm: FileTabVM
     
     @Binding private var image: UIImage?
@@ -43,8 +43,12 @@ struct Upload_Menu: View {
         .sheet($vm.sheetPreview) {
             UploadPreview(urls, path: path)
         }
-        .imagePicker($showImagePicker, image: $image)
-        .cameraPicker($showCameraPicker, image: $image)
+        .imagePicker($showImagePicker,
+                     image: $image
+        )
+        .cameraPicker($showCameraPicker,
+                      image: $image
+        )
         .fileImporter(isPresented: $showFilePicker, allowedContentTypes: [.item], allowsMultipleSelection: true) { result in
             switch result {
             case .success(let model):

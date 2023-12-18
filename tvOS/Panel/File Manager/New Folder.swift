@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ButtonNewFolder: View {
+struct NewFolder: View {
     @EnvironmentObject private var vm: FileTabVM
     
     private let path: String

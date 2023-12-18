@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct FileTab_NewFolder: View {
+struct NewFolder: View {
     @EnvironmentObject private var vm: FileTabVM
     
     private let path: String
@@ -48,7 +48,7 @@ struct FileTab_NewFolder: View {
 
 #Preview {
     List {
-        FileTab_NewFolder("")
+        NewFolder("")
     }
     .environmentObject(FileTabVM(""))
 }
