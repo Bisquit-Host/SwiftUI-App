@@ -51,19 +51,23 @@ struct CloudKeyCard: View {
             }
         }
         .foregroundStyle(.foreground)
+#if !os(watchOS)
         .contextMenu {
             MenuButton("Rename", icon: "pencil") {
                 focus = true
             }
-#if !os(watchOS) && !os(tvOS)
+#if !os(tvOS)
             MenuButton("Copy", icon: "doc.on.doc") {
                 UIPasteboard.general.string = key.key
                 SystemAlert.copied()
             }
+#endif
             
+#if !os(tvOS)
             ShareLink(item: key.key, message: Text("API-key"))
 #endif
         }
+#endif
     }
     
     private func showFirstEightLetters(_ string: String) -> String {
