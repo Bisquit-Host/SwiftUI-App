@@ -28,11 +28,19 @@ struct Intro: View {
                     NavBar()
                 }
                 .foregroundStyle(.white)
-                .animation(.interactiveSpring(response: 1.1, dampingFraction: 0.85, blendDuration: 0.85), value: showWalkThroughScreens)
+                .animation(
+                    .interactiveSpring(
+                        response: 1.1,
+                        dampingFraction: 0.85,
+                        blendDuration: 0.85
+                    ),
+                    value: showWalkThroughScreens
+                )
                 .transition(.move(edge: .leading))
             }
         }
-        .animation(.easeInOut(duration: 0.5), value: showHomeview)
+        .animation(.easeInOut(duration: 0.5),
+                   value: showHomeview)
     }
     
     @ViewBuilder
@@ -88,7 +96,8 @@ struct Intro: View {
                 }
             }
             .padding(.bottom)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .frame(maxWidth: .infinity,
+                   maxHeight: .infinity)
             .offset(y: showWalkThroughScreens ? -size.height * 1.1 : 0)
         }
     }
@@ -107,7 +116,8 @@ struct Intro: View {
                 
                 WelcomeView(size: size, index: intros.count)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .frame(maxWidth: .infinity, 
+                   maxHeight: .infinity)
             .overlay(alignment: .bottom) {
                 ZStack {
                     Image(systemName: "chevron.right")
@@ -144,8 +154,13 @@ struct Intro: View {
                     }
                 }
                 .offset(y: isLast ? -40 : -90)
-                .animation(.interactiveSpring(response: 0.9, dampingFraction: 0.8, blendDuration: 0.5),
-                           value: isLast
+                .animation(
+                    .interactiveSpring(
+                        response: 0.9,
+                        dampingFraction: 0.8,
+                        blendDuration: 0.5
+                    ),
+                    value: isLast
                 )
             }
             .offset(y: showWalkThroughScreens ? 0 : size.height)
@@ -163,7 +178,14 @@ struct Intro: View {
                 .scaledToFit()
                 .padding(.horizontal)
                 .frame(maxHeight: 260)
-                .animation(.interactiveSpring(response: 0.9, dampingFraction: 0.8, blendDuration: 0.5).delay(0.1), value: currentIndex)
+                .animation(
+                    .interactiveSpring(
+                        response: 0.9,
+                        dampingFraction: 0.8,
+                        blendDuration: 0.5
+                    ).delay(0.1),
+                    value: currentIndex
+                )
             
             Text(intro.title)
                 .title(.semibold)
@@ -216,7 +238,8 @@ struct Intro: View {
         }
         .padding(.horizontal, 15)
         .padding(.top, 10)
-        .frame(maxHeight: .infinity, alignment: .top)
+        .frame(maxHeight: .infinity, 
+               alignment: .top)
         .offset(y: showWalkThroughScreens ? 0 : -120)
     }
 }

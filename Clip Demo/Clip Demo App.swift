@@ -1,10 +1,10 @@
 import ScrechKit
 import TipKit
-import SafariCover
 import Pow
+import SafariCover
 
 @main
-struct Clip_DemoApp: App {
+struct ClipDemoApp: App {
     @StateObject private var settings = SettingsStorage()
     private var navState = NavState()
     
@@ -14,14 +14,6 @@ struct Clip_DemoApp: App {
                 .environment(navState)
                 .environment(ServerListVM())
                 .environmentObject(settings)
-//                .task {
-//                    try? await Tips.configure {
-//                        DisplayFrequency(.immediate)
-//                    }
-//#if DEBUG
-//                    Tips.showAllTips()
-//#endif
-//                }
         }
     }
 }
