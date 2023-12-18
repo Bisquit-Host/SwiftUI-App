@@ -17,7 +17,8 @@ struct AuthView: View {
             }
         }
         .navigationBarBackButtonHidden()
-        .frame(width: bounds.width, height: bounds.height)
+        .frame(width: bounds.width, 
+               height: bounds.height)
         .background(AuthBackground())
         .ignoresSafeArea()
         .task {
@@ -35,16 +36,14 @@ struct AuthView: View {
             .title2()
             .padding()
             .foregroundStyle(vm.colorButton)
-            .background(.aliceblue.gradient, in: .capsule)
+            .background(.aliceblue.gradient, 
+                        in: .capsule)
             .shadow(color: .aliceblue, radius: 10)
             .changeEffect(
                 .spray(origin: .bottom) {
                     Image(.bitquit)
                         .resizable()
                         .frame(width: 50, height: 50)
-//                    Image(systemName: "faceid")
-//                        .foregroundStyle(.white)
-//                        .footnote()
                 },
                 value: vm.trigger
             )
@@ -56,8 +55,7 @@ struct AuthView: View {
             .padding()
             .foregroundStyle(vm.colorButton)
             .background(.aliceblue.gradient,
-                        in: .capsule
-            )
+                        in: .capsule)
             .shadow(color: .aliceblue, radius: 10)
     }
 }
