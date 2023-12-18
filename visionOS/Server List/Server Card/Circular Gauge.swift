@@ -33,7 +33,7 @@ struct CircularGauge: View {
     }
     
     private let gradient = Gradient(colors: [.mint, .orange, .red])
-    private let red_gradient = Gradient(colors: [.red])
+    private let redGradient = Gradient(colors: [.red])
     
     var body: some View {
         Group {
@@ -54,7 +54,7 @@ struct CircularGauge: View {
                         .foregroundStyle(.red)
                         .redacted(isRedacted)
                 }
-                .tint(red_gradient)
+                .tint(redGradient)
             }
         }
         .gaugeStyle(.accessoryCircular)

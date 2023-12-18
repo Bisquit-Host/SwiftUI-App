@@ -1,5 +1,5 @@
 enum TabInfo: String, CaseIterable {
-    case relative
-    case absolute
-    case ip
+    case relative,
+         absolute,
+         ip
 }

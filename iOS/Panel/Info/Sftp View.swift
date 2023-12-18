@@ -10,21 +10,21 @@ struct SftpView: View {
         self.server = server
     }
     
-    private var sftp_address: String {
+    private var sftpAddress: String {
         "\(server.sftp.ip):\(server.sftp.port)"
     }
     
     var body: some View {
         List {
             Button {
-                UIPasteboard.general.string = sftp_address
+                UIPasteboard.general.string = sftpAddress
                 
                 SystemAlert.copied()
             } label: {
                 HStack {
                     VStack(alignment: .leading) {
                         Text("Server address")
-                        Text(sftp_address)
+                        Text(sftpAddress)
                     }
                     
                     Spacer()

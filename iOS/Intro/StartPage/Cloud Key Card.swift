@@ -86,9 +86,7 @@ struct CloudKeyCard: View {
 #Preview {
     List {
         CloudKeyCard(.constant(""),
-                     key: .init("Preview Key",
-                                key: "ptlc_1234567890")
-        ) {
+                     key: .init("Preview Key", key: "ptlc_1234567890")) {
             
         }
     }
