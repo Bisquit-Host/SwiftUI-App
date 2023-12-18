@@ -14,14 +14,17 @@ struct FileTab: View {
     
     @State private var image: UIImage?
     
+    private var fileCount: Int {
+        vm.filteredFiles.count
+    }
+    
     var body: some View {
         List {
             FileTabSearch($vm.fieldSearch)
             
             NewFolder(path)
             
-            UploadMenu($image, 
-                       path: path)
+            UploadMenu($image, path: path)
             
             if vm.isUploading {
                 UploadProgress(vm.uploadProgress)
@@ -31,15 +34,11 @@ struct FileTab: View {
                 ForEach(vm.filteredFiles, id: \.attributes.name) { attributes in
                     let file = attributes.attributes
                     
-                    FileView(id,
-                             file: file,
-                             path: path
-                    )
-                    .fileContextMenu(
-                        file.name,
-                        path: path,
-                        mimeType: file.mimetype
-                    )
+                    FileView(id, file: file, path: path)
+                        .fileContextMenu(file.name,
+                                         path: path,
+                                         mimeType: file.mimetype
+                        )
                 }
                 .onDelete { offsets in
                     deleteItem(offsets)
@@ -51,7 +50,9 @@ struct FileTab: View {
                     
                     Spacer()
                     
-                    Text("Total: \(vm.filteredFiles.count)")
+                    if fileCount > 5 {
+                        Text("\(fileCount) Files")
+                    }
                 }
             }
             
