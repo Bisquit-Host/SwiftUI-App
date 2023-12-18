@@ -22,32 +22,28 @@ struct FileTab: View {
             ForEach(vm.filteredFiles, id: \.attributes.name) { attributes in
                 let file = attributes.attributes
                 let name = file.name
-                let mimetype = file.mimetype
+                let mimeType = file.mimetype
                 
                 NavigationLink {
-                    if mimetype.contains("directory") {
+                    if mimeType.contains("directory") {
                         FileTab(id,
-                                path: path + "/\(name)"
-                        )
+                                path: path + "/" + name)
                         .environmentObject(vm)
                         
-                    } else if mimetype.contains("text") || mimetype.contains("json") {
-                        Des_Text(id,
+                    } else if mimeType.contains("text") || mimeType.contains("json") {
+                        TextFile(id,
                                  path: path,
-                                 name: name
-                        )
+                                 name: name)
                         
-                    } else if mimetype.contains("image") {
-                        Des_Image(id,
+                    } else if mimeType.contains("image") {
+                        ImageFile(id,
                                   path: path,
-                                  name: name
-                        )
+                                  name: name)
                         
-                    } else if mimetype.contains("video") {
-                        DesVideo(id,
+                    } else if mimeType.contains("video") {
+                        VideoFile(id,
                                  path: path,
-                                 name: name
-                        )
+                                 name: name)
                         
                     } else {
                         ContentUnavailableView("Warning",
@@ -63,69 +59,9 @@ struct FileTab: View {
                     //                    )
                 } label: {
                     FileNameAndIcon(file)
-                        .contextMenu {
-                            if !mimetype.contains("directory") {
-                                Section {
-                                    Text("Modified: \(file.modifiedAt)")
-                                    
-                                    Text("Created: \(file.createdAt)")
-                                }
-                            }
-                            
-                            if SettingsStorage().enableFileRename {
-                                MenuButton("Rename", icon: "pencil") {
-                                    vm.newFileName = ""
-                                    vm.alertRename = true
-                                }
-                            }
-                            
-                            if !mimetype.contains("directory") {
-                                MenuButton("Download with QR", icon: "qrcode") {
-                                    // Context menu needs some time to close and allow the sheet to display
-                                    delay(0.75) {
-                                        vm.downloadFile(path + name)
-                                    }
-                                }
-                                
-                                MenuButton("Duplicate", icon: "doc.on.doc") {
-                                    vm.duplicateFile(file.name, path: path)
-                                }
-                            }
-                            
-                            if mimetype.contains("gzip") {
-                                MenuButton("Decompress", icon: "arrow.up.bin") {
-                                    vm.fileCompressor(name,
-                                                      path: path,
-                                                      action: .decompress
-                                    )
-                                }
-                            } else {
-                                MenuButton("Compress", icon: "archivebox") {
-                                    vm.fileCompressor(name,
-                                                      path: path,
-                                                      action: .compress
-                                    )
-                                }
-                            }
-                            
-                            Section {
-                                MenuButton("Delete", role: .destructive, icon: "trash") {
-                                    vm.fileDelete(name, path: path)
-                                }
-                            }
-                        }
-                }
-                .alert("Rename \(name)", isPresented: $vm.alertRename) {
-                    TextField("", text: $vm.newFileName)
-                    
-                    Button("Rename", role: .destructive) {
-                        vm.renameFile(path,
-                                      oldName: name,
-                                      newName: vm.newFileName
-                        )
-                        
-                        vm.newFileName = ""
-                    }
+                        .fileContextMenu(name,
+                                         path: path,
+                                         mimeType: mimeType)
                 }
             }
         }

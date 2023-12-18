@@ -4,20 +4,20 @@ import ScrechKit
 
 //let betweenUnderscores = try! NSRegularExpression(pattern: "_[^_]+_", options: [])
 
-struct Des_Text: View {
-    private var vm: DesTextVM
+struct TextFile: View {
+    private var vm: TextFileVM
     
     private let id, path, name: String
     
     init(_ id: String,
          path: String,
          name: String,
-         model: DesTextVM = DesTextVM("")
+         model: TextFileVM = TextFileVM("")
     ) {
         self.id = id
         self.path = path
         self.name = name
-        self.vm = DesTextVM(id)
+        self.vm = TextFileVM(id)
     }
     
     //    private let rules: [HighlightRule] = [
@@ -69,12 +69,15 @@ struct Des_Text: View {
                 .navigationTitle(name)
 #endif
         }
-        .onAppear {
+        .navigationTitle(name)
+        .task {
             vm.getFileContents(path + name)
         }
     }
 }
 
 #Preview {
-    Des_Text("", path: "", name: "")
+    TextFile("",
+             path: "",
+             name: "")
 }

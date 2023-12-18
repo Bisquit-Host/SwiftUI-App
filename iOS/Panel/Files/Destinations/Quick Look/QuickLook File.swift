@@ -1,7 +1,7 @@
 import ScrechKit
 import PteroNet
 
-struct DesQuickLook: View {
+struct QuickLookFile: View {
     private let id, path, name: String
     
     init(_ id: String, path: String, name: String) {

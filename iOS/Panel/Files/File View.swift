@@ -29,24 +29,24 @@ struct FileView: View {
     var body: some View {
         NavigationLink {
             if mimeType.contains("text") || mimeType.contains("json") {
-                Des_Text(id,
+                TextFile(id,
                          path: path + "/",
                          name: name
                 )
                 
             } else if mimeType.contains("directory") {
-                Des_Folder(id,
+                FolderFile(id,
                            path: path + "/" + name
                 )
                 
             } else if mimeType.contains("video") {
-                DesVideo(id,
+                VideoFile(id,
                          path: path + "/",
                          name: name
                 )
                 
             } else {
-                DesQuickLook(id,
+                QuickLookFile(id,
                              path: path + "/",
                              name: name
                 )

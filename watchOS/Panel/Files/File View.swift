@@ -22,29 +22,22 @@ struct FileView: View {
             NavigationLink {
                 if mimeType.contains("directory") {
                     FileTab(id,
-                            path: path + "/" + name
-                    )
+                            path: path + "/" + name)
                     
                 } else if mimeType.contains("text") || file.mimetype.contains("json") {
-                    Des_Text(id,
+                    TextFile(id,
                              path: path + "/",
-                             name: name
-                    )
-                    .navigationTitle(name)
+                             name: name)
                     
                 } else if mimeType.contains("image") {
-                    Des_Image(id,
+                    ImageFile(id,
                               path: path + "/",
-                              name: name
-                    )
-                    .navigationTitle(name)
+                              name: name)
                     
                 } else if mimeType.contains("video") {
-                    DesVideo(id,
-                             path: path + "/",
-                             name: name
-                    )
-                    .navigationTitle(name)
+                    VideoFile(id,
+                              path: path + "/",
+                              name: name)
                 } else {
                     ContentUnavailableView("Warning",
                                            systemImage: "exclamationmark.triangle",
@@ -59,7 +52,7 @@ struct FileView: View {
 }
 
 #Preview {
-    FileView("", 
+    FileView("",
              file: sampleJSON(.fileListAttributes)
     )
 }

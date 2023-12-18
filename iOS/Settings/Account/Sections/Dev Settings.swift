@@ -33,9 +33,6 @@ struct DevSettings: View {
             Toggle("Admin mode",
                    isOn: $settings.adminMode)
             
-            Toggle("Enable file rename (VERY UNSTABLE)",
-                   isOn: $settings.enableFileRename)
-            
             //#if !os(tvOS)
             //            ColorPicker("Background color (disabled)", selection: $settings.backgroundColor)
             //#endif

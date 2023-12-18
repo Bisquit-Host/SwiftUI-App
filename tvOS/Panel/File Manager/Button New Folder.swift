@@ -29,8 +29,7 @@ struct ButtonNewFolder: View {
             
             Button("Create") {
                 vm.createFolder(newFolderName,
-                                path: path
-                )
+                                path: path)
                 
                 newFolderName = ""
             }

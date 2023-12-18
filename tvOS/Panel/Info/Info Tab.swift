@@ -3,7 +3,7 @@ import PteroNet
 
 struct InfoTab: View {
     //    private var settingsVM: ServerSettingsVM
-    @State private var logVM: LogVM
+    private var logVM: LogVM
     private var usersVM: UsersVM
     private let server: ServerListAttributes
     //    @EnvironmentObject private var settings: SettingsStorage
@@ -29,7 +29,8 @@ struct InfoTab: View {
                 } label: {
                     Label("Users", systemImage: "person.3")
                         .frame(width: 500, height: 250)
-                        .background(.ultraThinMaterial, in: .rect(cornerRadius: 64))
+                        .background(.ultraThinMaterial,
+                                    in: .rect(cornerRadius: 64))
                 }
                 .disabled(true)
                 
@@ -39,7 +40,8 @@ struct InfoTab: View {
                 } label: {
                     Label("Logs", systemImage: "terminal")
                         .frame(width: 500, height: 250)
-                        .background(.ultraThinMaterial, in: .rect(cornerRadius: 64))
+                        .background(.ultraThinMaterial,
+                                    in: .rect(cornerRadius: 64))
                 }
             }
             
@@ -49,7 +51,8 @@ struct InfoTab: View {
                 } label: {
                     Label("Allocations", systemImage: "network")
                         .frame(width: 500, height: 250)
-                        .background(.ultraThinMaterial, in: .rect(cornerRadius: 64))
+                        .background(.ultraThinMaterial,
+                                    in: .rect(cornerRadius: 64))
                 }
                 .disabled(true)
                 
@@ -58,7 +61,8 @@ struct InfoTab: View {
                 } label: {
                     Label("Startup", systemImage: "airplane")
                         .frame(width: 500, height: 250)
-                        .background(.ultraThinMaterial, in: .rect(cornerRadius: 64))
+                        .background(.ultraThinMaterial,
+                                    in: .rect(cornerRadius: 64))
                 }
                 .disabled(true)
             }

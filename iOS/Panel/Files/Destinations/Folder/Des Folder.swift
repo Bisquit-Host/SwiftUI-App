@@ -1,6 +1,6 @@
 import ScrechKit
 
-struct Des_Folder: View {
+struct FolderFile: View {
     @StateObject private var vm: FileTabVM
     
     private let id, path: String
@@ -86,5 +86,5 @@ struct Des_Folder: View {
 }
 
 #Preview {
-    Des_Folder("")
+    FolderFile("")
 }

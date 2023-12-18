@@ -40,7 +40,6 @@ final class SettingsStorage: ObservableObject {
     @AppStorage("enableBisquitFall") var enableBisquitFall = false
     @AppStorage("widgetCpuUsage") var widgetCpuUsage = 0.0
     @AppStorage("widgetRamUsage") var widgetRamUsage = 0.0
-    @AppStorage("enableFileRename") var enableFileRename = false
     //    @AppStorage("browserCategory") var browserCategory = "Minecraft"
     
     func authSucced() {

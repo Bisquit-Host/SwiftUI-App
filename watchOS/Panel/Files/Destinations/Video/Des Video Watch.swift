@@ -2,7 +2,7 @@ import SwiftUI
 import AVFoundation
 import AVKit
 
-struct DesWatchTvVideo: View {
+struct WatchVideoPlayer: View {
     private let url: URL
     
     init(_ url: URL) {
@@ -23,7 +23,7 @@ struct DesWatchTvVideo: View {
 }
 
 #Preview {
-    DesWatchTvVideo(
+    WatchVideoPlayer(
         URL(string: "https://file-examples.com/storage/fea582e6406477bb69e8a67/2017/04/file_example_MP4_480_1_5MG.mp4")!
     )
 }

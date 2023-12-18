@@ -2,7 +2,7 @@ import ScrechKit
 import PteroNet
 
 @Observable
-final class DesTextVM {
+final class TextFileVM {
     private let id: String
     
     init(_ id: String) {
@@ -27,7 +27,6 @@ final class DesTextVM {
         getFileContentsAPI(id, path: path) { result in
             switch result {
             case .success(let model):
-                print(model)
                 main {
                     self.text = model
                 }

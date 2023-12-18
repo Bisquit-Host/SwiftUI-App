@@ -3,7 +3,7 @@ import Kingfisher
 import PteroNet
 
 @Observable
-final class DesImageVM {
+final class ImageFileVM {
     private let id: String
     
     init(_ id: String) {

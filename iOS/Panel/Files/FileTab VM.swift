@@ -33,7 +33,6 @@ final class FileTabVM: ObservableObject {
     @Published var newFolderName = ""
     @Published var fieldSearch = ""
     @Published var searchRule = ""
-    @Published var alertRename = false
     @Published var newFileName = ""
     
     var filteredFiles: [FileListData] {
@@ -134,13 +133,11 @@ final class FileTabVM: ObservableObject {
                 if let vm {
                     let url = vm.attributes.url
                     
-                    self.uploadFile(
-                        url,
-                        name: "Image\(UUID().uuidString).jpeg",
-                        directory: directory,
-                        mimeType: mimeType,
-                        fileUrl: fileURL
-                    )
+                    self.uploadFile(url,
+                                    name: "Image\(UUID().uuidString).jpeg",
+                                    directory: directory,
+                                    mimeType: mimeType,
+                                    fileUrl: fileURL)
                     
                     self.fetchFiles(directory)
                 }

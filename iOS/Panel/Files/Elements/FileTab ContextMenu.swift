@@ -15,6 +15,8 @@ struct FileTab_ContextMenu: ViewModifier {
         self.mimeType = mimeType
     }
     
+    @State private var alertRename = false
+    
     func body(content: Content) -> some View {
         content
             .contextMenu {
@@ -33,26 +35,29 @@ struct FileTab_ContextMenu: ViewModifier {
                     //
                     //                    }
                     
-                    if SettingsStorage().enableFileRename {
-                        MenuButton("Rename", icon: "pencil") {
-                            vm.newFileName = ""
-                            vm.alertRename = true
-                        }
+                    MenuButton("Rename", icon: "pencil") {
+                        vm.newFileName = ""
+                        alertRename = true
                     }
                     
                     if !mimeType.contains("directory") {
                         MenuButton("Duplicate", icon: "plus.square.on.square") {
-                            vm.duplicateFile(file, path: path + "/")
+                            vm.duplicateFile(file,
+                                             path: path + "/")
                         }
                     }
                     
                     if mimeType.contains("gzip") {
                         MenuButton("Decompress", icon: "arrow.up.bin") {
-                            vm.fileCompressor(file, path: path, action: .decompress)
+                            vm.fileCompressor(file,
+                                              path: path,
+                                              action: .decompress)
                         }
                     } else {
                         MenuButton("Compress", icon: "archivebox") {
-                            vm.fileCompressor(file, path: path, action: .compress)
+                            vm.fileCompressor(file,
+                                              path: path,
+                                              action: .compress)
                         }
                     }
                 }
@@ -67,19 +72,19 @@ struct FileTab_ContextMenu: ViewModifier {
                 
                 Section {
                     MenuButton("Delete", role: .destructive, icon: "trash") {
-                        vm.fileDelete(file, path: path)
+                        vm.fileDelete(file,
+                                      path: path)
                     }
                 }
             }
-            .alert("Rename \(file)", isPresented: $vm.alertRename) {
+            .alert("Rename \(file)", isPresented: $alertRename) {
                 TextField("I'm not a no-name 😢", text: $vm.newFileName)
                     .autocorrectionDisabled()
                 
                 Button("Rename", role: .destructive) {
                     vm.renameFile(path,
                                   oldName: file,
-                                  newName: vm.newFileName
-                    )
+                                  newName: vm.newFileName)
                 }
             }
     }

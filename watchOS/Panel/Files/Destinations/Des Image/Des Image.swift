@@ -1,8 +1,8 @@
 import SwiftUI
 import Kingfisher
 
-struct Des_Image: View {
-    private var vm: DesImageVM
+struct ImageFile: View {
+    private var vm: ImageFileVM
     @EnvironmentObject private var settings: SettingsStorage
     
     private let id, path, name: String
@@ -10,12 +10,12 @@ struct Des_Image: View {
     init(_ id: String,
          path: String,
          name: String,
-         model: DesImageVM = DesImageVM("")
+         model: ImageFileVM = ImageFileVM("")
     ) {
         self.id = id
         self.path = path
         self.name = name
-        self.vm = DesImageVM(id)
+        self.vm = ImageFileVM(id)
     }
     
     var body: some View {
@@ -43,9 +43,10 @@ struct Des_Image: View {
                 }
             }
         }
-        .onAppear {
-            vm.downloadImage(path + name)
+        .navigationTitle(name)
+        .task {
             vm.loadCachedImage(path + name)
+            vm.downloadImage(path + name)
         }
     }    
 }

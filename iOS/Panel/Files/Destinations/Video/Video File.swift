@@ -2,7 +2,7 @@ import ScrechKit
 import AVKit
 import PteroNet
 
-struct DesVideo: View {
+struct VideoFile: View {
     private let id, path, name: String
     
     init(_ id: String,
@@ -19,10 +19,10 @@ struct DesVideo: View {
     var body: some View {
         VStack {
             if let localVideoUrl {
-#if !os(watchOS)
-                RemoteVideoPlayer(localVideoUrl)
+#if os(watchOS)
+                WatchVideoPlayer(localVideoUrl)
 #else
-                DesWatchTvVideo(localVideoUrl)
+                RemoteVideoPlayer(localVideoUrl)
 #endif
             }
         }
@@ -31,7 +31,8 @@ struct DesVideo: View {
             deleteVideo()
         }
         .task {
-            downloadImage(name, path: path)
+            downloadImage(name,
+                          path: path)
         }
     }
     
@@ -40,7 +41,8 @@ struct DesVideo: View {
             switch result {
             case .success(let model):
                 if let model {
-                    downloadVideo(model.attributes.url, name: file)
+                    downloadVideo(model.attributes.url, 
+                                  name: file)
                 }
                 
             case .failure(let error):
@@ -58,7 +60,7 @@ struct DesVideo: View {
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let fileURL = documentsURL.appendingPathComponent(name)
         
-        let downloadTask = URLSession.shared.downloadTask(with: url) { (location, response, error) in
+        let downloadTask = URLSession.shared.downloadTask(with: url) { location, response, error in
             if let location, error == nil {
                 do {
                     if FileManager.default.fileExists(atPath: fileURL.path) {
@@ -95,5 +97,7 @@ struct DesVideo: View {
 }
 
 #Preview {
-    DesVideo("", path: "", name: "")
+    VideoFile("",
+              path: "",
+              name: "")
 }

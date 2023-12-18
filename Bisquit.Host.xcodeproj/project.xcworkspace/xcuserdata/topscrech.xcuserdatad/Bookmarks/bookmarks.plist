@@ -59,13 +59,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>33</string>
+					<string>35</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>32</string>
+					<string>34</string>
 					<key>Timestamp</key>
-					<string>721600411.481859</string>
+					<string>724576243.3861181</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -81,16 +81,16 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>//
+				<string>                    //
 </string>
 				<key>leading</key>
 				<string>                Section {
                     //                    MenuButton("Get Info", icon: "info.circle") {
-                    </string>
+</string>
 				<key>trailing</key>
 				<string>                    //                    }
                     
-                    if SettingsStorage().enableFileRename {
+                    MenuButton("Rename", icon: "pencil") {
 </string>
 			</dict>
 			<key>title</key>
@@ -528,13 +528,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>44</string>
+					<string>43</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>43</string>
+					<string>42</string>
 					<key>Timestamp</key>
-					<string>724540562.938261</string>
+					<string>724576554.890636</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -553,8 +553,8 @@
 				<string>    //    @AppStorage("browserCategory") var browserCategory = "Minecraft"
 </string>
 				<key>leading</key>
-				<string>    @AppStorage("widgetRamUsage") var widgetRamUsage = 0.0
-    @AppStorage("enableFileRename") var enableFileRename = false
+				<string>    @AppStorage("widgetCpuUsage") var widgetCpuUsage = 0.0
+    @AppStorage("widgetRamUsage") var widgetRamUsage = 0.0
 </string>
 				<key>trailing</key>
 				<string>    
@@ -1733,13 +1733,13 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>65</string>
+					<string>64</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>64</string>
+					<string>63</string>
 					<key>Timestamp</key>
-					<string>724540562.938184</string>
+					<string>724576554.913384</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -2079,6 +2079,51 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 				<string>            }
             .foregroundStyle(.green)
             .symbolEffect(.variableColor.iterative)
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>18</string>
+					<key>StartingColumnNumber</key>
+					<string>28</string>
+					<key>StartingLineNumber</key>
+					<string>17</string>
+					<key>Timestamp</key>
+					<string>724577638.0014319</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Panel/Files/Destinations/Text/DesText VM.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>
+</string>
+				<key>leading</key>
+				<string>            switch result {
+            case .success(let model):
+                print(model)</string>
+				<key>trailing</key>
+				<string>                
+            case .failure(let error):
+                networkCallError(#function, error)
 </string>
 			</dict>
 			<key>type</key>
