@@ -22,7 +22,8 @@ struct VideoFile: View {
 #if os(watchOS)
                 WatchVideoPlayer(localVideoUrl)
 #else
-                RemoteVideoPlayer(localVideoUrl)
+//                RemoteVideoPlayer(localVideoUrl)
+                UIKitVideoPlayerView()
 #endif
             }
         }
