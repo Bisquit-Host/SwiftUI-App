@@ -65,12 +65,6 @@ struct BisquitHostApp: App {
         }
 #endif
         
-#if os(xrOS)
-        ImmersiveSpace(id: "ImmersiveSpace") {
-            ImmersiveView()
-        }
-#endif
-        
 #if os(macOS)
         Settings {
             AppSettings()

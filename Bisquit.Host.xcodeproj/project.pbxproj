@@ -460,7 +460,6 @@
 		F3878EDF2A1C228900AD8657 /* Server Card Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3878EDE2A1C228900AD8657 /* Server Card Stats.swift */; };
 		F3880A262A92A15E0052A978 /* Contact Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3880A252A92A15E0052A978 /* Contact Manager.swift */; };
 		F3880A272A92A15E0052A978 /* Contact Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3880A252A92A15E0052A978 /* Contact Manager.swift */; };
-		F389281E2A43CAE000561CDF /* RealityKitContent in Resources */ = {isa = PBXBuildFile; fileRef = F389281D2A43CAE000561CDF /* RealityKitContent */; };
 		F389281F2A43CB2600561CDF /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F36797722A39C4ED009F2788 /* Localizable.xcstrings */; };
 		F38928202A43CB2600561CDF /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F36797722A39C4ED009F2788 /* Localizable.xcstrings */; };
 		F38928232A44182F00561CDF /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38928222A44182F00561CDF /* Console.swift */; };
@@ -625,9 +624,7 @@
 		F3BC03C72B20675E0011F98A /* New Schedule Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BC03C52B20675E0011F98A /* New Schedule Sheet.swift */; };
 		F3BC03C82B20675E0011F98A /* New Schedule Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BC03C52B20675E0011F98A /* New Schedule Sheet.swift */; };
 		F3BC03C92B20675E0011F98A /* New Schedule Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BC03C52B20675E0011F98A /* New Schedule Sheet.swift */; };
-		F3BD76F52A43C890003E7385 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = F3BD76F42A43C890003E7385 /* RealityKitContent */; };
 		F3BD76F92A43C890003E7385 /* Panel View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BD76F82A43C890003E7385 /* Panel View.swift */; };
-		F3BD76FB2A43C890003E7385 /* Immersive View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BD76FA2A43C890003E7385 /* Immersive View.swift */; };
 		F3BD76FD2A43C892003E7385 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3BD76FC2A43C892003E7385 /* Assets.xcassets */; };
 		F3BE36D52A55E1D0007A0179 /* Nav Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BAEC8C2959B3FE00111375 /* Nav Extension.swift */; };
 		F3BE36D62A55E1D2007A0179 /* Nav Destinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5692959007E0006D126 /* Nav Destinations.swift */; };
@@ -646,6 +643,7 @@
 		F3C9D8522B3059E700265492 /* UIVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D8502B3059E700265492 /* UIVideoPlayer.swift */; };
 		F3C9D8532B3060D100265492 /* Video Player VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D84D2B30598000265492 /* Video Player VM.swift */; };
 		F3C9D8542B3060E100265492 /* UIVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D8502B3059E700265492 /* UIVideoPlayer.swift */; };
+		F3C9D8562B3090F500265492 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D8552B3090F500265492 /* AuthView.swift */; };
 		F3CB53D62971CF6B00A213B0 /* Database Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB53D52971CF6B00A213B0 /* Database Card.swift */; };
 		F3D22C092A26564C00721113 /* Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304498929E990E9006DC0C7 /* Cloud Keys.swift */; };
 		F3D264302A66A690005C3777 /* Sftp VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D2642F2A66A690005C3777 /* Sftp VM.swift */; };
@@ -1245,7 +1243,6 @@
 		F3878ECC2A1BCE5000AD8657 /* Dev Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dev Settings.swift"; sourceTree = "<group>"; };
 		F3878EDE2A1C228900AD8657 /* Server Card Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Stats.swift"; sourceTree = "<group>"; };
 		F3880A252A92A15E0052A978 /* Contact Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact Manager.swift"; sourceTree = "<group>"; };
-		F389281D2A43CAE000561CDF /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		F38928222A44182F00561CDF /* Console.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Console.swift; sourceTree = "<group>"; };
 		F38928242A441B5D00561CDF /* Server Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Settings.swift"; sourceTree = "<group>"; };
 		F38928272A441D0C00561CDF /* Dev Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dev Settings.swift"; sourceTree = "<group>"; };
@@ -1313,7 +1310,6 @@
 		F3BC03C52B20675E0011F98A /* New Schedule Sheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "New Schedule Sheet.swift"; sourceTree = "<group>"; };
 		F3BD76F22A43C890003E7385 /* visionOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = visionOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3BD76F82A43C890003E7385 /* Panel View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel View.swift"; sourceTree = "<group>"; };
-		F3BD76FA2A43C890003E7385 /* Immersive View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Immersive View.swift"; sourceTree = "<group>"; };
 		F3BD76FC2A43C892003E7385 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3BF6F222959D15E0059F39B /* App Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Settings.swift"; sourceTree = "<group>"; };
 		F3BF6F242959FC470059F39B /* Login Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login Container.swift"; sourceTree = "<group>"; };
@@ -1324,6 +1320,7 @@
 		F3C9D8492B302AA200265492 /* File Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Context Menu.swift"; sourceTree = "<group>"; };
 		F3C9D84D2B30598000265492 /* Video Player VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Video Player VM.swift"; sourceTree = "<group>"; };
 		F3C9D8502B3059E700265492 /* UIVideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVideoPlayer.swift; sourceTree = "<group>"; };
+		F3C9D8552B3090F500265492 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		F3CB53D52971CF6B00A213B0 /* Database Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database Card.swift"; sourceTree = "<group>"; };
 		F3D2642F2A66A690005C3777 /* Sftp VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sftp VM.swift"; sourceTree = "<group>"; };
 		F3D264332A66A926005C3777 /* Settings Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings Button.swift"; sourceTree = "<group>"; };
@@ -1468,7 +1465,6 @@
 				F342FAA62B2C615A00854270 /* Pow in Frameworks */,
 				F30B61CA2B2905E100F447B4 /* AlertKit in Frameworks */,
 				F38928372A4460B200561CDF /* ScrechKit in Frameworks */,
-				F3BD76F52A43C890003E7385 /* RealityKitContent in Frameworks */,
 				F308601A2B002D36004D776A /* PteroNet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1582,7 +1578,6 @@
 				F337C1532A8C29CD006F321C /* Unit Tests */,
 				F3D296082AF3BE5800ED43A0 /* UI Tests */,
 				F31BA5242958FF7C0006D126 /* Products */,
-				F389281C2A43CAE000561CDF /* Packages */,
 				F3D3437429BFE5A2007C0D58 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -2206,14 +2201,6 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
-		F389281C2A43CAE000561CDF /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				F389281D2A43CAE000561CDF /* RealityKitContent */,
-			);
-			path = Packages;
-			sourceTree = SOURCE_ROOT;
-		};
 		F38928212A44182400561CDF /* Panel */ = {
 			isa = PBXGroup;
 			children = (
@@ -2367,6 +2354,7 @@
 			isa = PBXGroup;
 			children = (
 				F3000E17295A496C00ABD30A /* Intro.swift */,
+				F3C9D8552B3090F500265492 /* AuthView.swift */,
 			);
 			path = Intro;
 			sourceTree = "<group>";
@@ -2399,7 +2387,6 @@
 				F3DAD6C02A47A967002ED405 /* Bisquit-Host-visionOS-Info.plist */,
 				F34AD7C62A5493CC007752A7 /* visionOS.entitlements */,
 				F3BD76FC2A43C892003E7385 /* Assets.xcassets */,
-				F3BD76FA2A43C890003E7385 /* Immersive View.swift */,
 				F3F2BBA62A540C4D00D44CA6 /* Intro */,
 				F3A7CF6C2A44FCE700331B51 /* Auth */,
 				F3317AEB2A45E25500CA104D /* Guide */,
@@ -2876,7 +2863,6 @@
 			);
 			name = visionOS;
 			packageProductDependencies = (
-				F3BD76F42A43C890003E7385 /* RealityKitContent */,
 				F38928362A4460B200561CDF /* ScrechKit */,
 				F30860192B002D36004D776A /* PteroNet */,
 				F30B61C92B2905E100F447B4 /* AlertKit */,
@@ -3091,7 +3077,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F378E3372AF3835D009925DB /* PrivacyInfo.xcprivacy in Resources */,
-				F389281E2A43CAE000561CDF /* RealityKitContent in Resources */,
 				F389281F2A43CB2600561CDF /* Localizable.xcstrings in Resources */,
 				F30C13012A5459A100A7EFF0 /* Assets.xcassets in Resources */,
 				F3BD76FD2A43C892003E7385 /* Assets.xcassets in Resources */,
@@ -3174,6 +3159,7 @@
 				F3AFCB952A4AF6C10080C257 /* FileNameAndIcon.swift in Sources */,
 				F3BC03BD2B1FFBD50011F98A /* Backup Context Menu.swift in Sources */,
 				F33CDC022A26B930008D0214 /* Browser.swift in Sources */,
+				F3C9D8562B3090F500265492 /* AuthView.swift in Sources */,
 				F3BC03B82B1FF8E40011F98A /* Database Context Menu.swift in Sources */,
 				F3F2A5BB29AC296D00AD20A4 /* Server Card Suspended.swift in Sources */,
 				F3F86D012A5AEDCE00A2C82E /* Audio Recorder.swift in Sources */,
@@ -3945,7 +3931,6 @@
 				F3317AEA2A45E24F00CA104D /* Guide.swift in Sources */,
 				F3464D1B2A86396200188B0C /* Intents.intentdefinition in Sources */,
 				F3A7CF722A45150F00331B51 /* Server List Ornament.swift in Sources */,
-				F3BD76FB2A43C890003E7385 /* Immersive View.swift in Sources */,
 				F38694182A4B3AAF002DEF90 /* Panel Model.swift in Sources */,
 				F35F65952B1D1A0D00431EB7 /* Panel VM.swift in Sources */,
 				F39919172A4653A300CC73DA /* Linear Gauge.swift in Sources */,
@@ -5318,10 +5303,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F37266E529D9EF25005FD103 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
-		};
-		F3BD76F42A43C890003E7385 /* RealityKitContent */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = RealityKitContent;
 		};
 		F3E08EB12A2CE19900116C1C /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -40,7 +40,7 @@ final class BrowserVM {
     
     func populatePlans() async throws {
         let query = CKQuery(recordType: PlanRecordKeys.type.rawValue, predicate: NSPredicate(value: true))
-
+        
         let result = try await db.records(matching: query)
         
         let records = result.matchResults.compactMap {
@@ -51,9 +51,9 @@ final class BrowserVM {
             Plan(record: $0)
         }
         
-        main {
+        main { [self] in
             withAnimation {
-                self.planDictionary = Dictionary(uniqueKeysWithValues: plans.map {
+                planDictionary = Dictionary(uniqueKeysWithValues: plans.map {
                     ($0.recordId!, $0)
                 })
             }
@@ -62,17 +62,10 @@ final class BrowserVM {
     
     func currencyImage(_ currency: String) -> String {
         switch currency {
-        case "₽":
-            "rublesign.square"
-            
-        case "€":
-            "eurosign.square"
-            
-        case "$":
-            "dollarsign.square"
-            
-        default:
-            "exclamationmark.triangle"
+        case "₽": "rublesign.square"
+        case "€": "eurosign.square"
+        case "$": "dollarsign.square"
+        default: "exclamationmark.triangle"
         }
     }
 }

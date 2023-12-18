@@ -23,7 +23,11 @@ struct ProgressBar: View {
                     
                     Circle()
                         .trim(from: 0, to: CGFloat(min(progress, 1)))
-                        .stroke(style: .init(lineWidth: 20, lineCap: .round, lineJoin: .round))
+                        .stroke(style: .init(
+                            lineWidth: 20,
+                            lineCap: .round,
+                            lineJoin: .round
+                        ))
                         .rotate(270)
                         .animation(.linear, value: progress)
                 }

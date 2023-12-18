@@ -75,12 +75,11 @@ final class FileUploader: NSObject, ObservableObject {
 }
 
 extension FileUploader: URLSessionDataDelegate {
-    func urlSession(
-        _ session: URLSession,
-        task: URLSessionTask,
-        didSendBodyData bytesSent: Int64,
-        totalBytesSent: Int64,
-        totalBytesExpectedToSend: Int64
+    func urlSession(_ session: URLSession,
+                    task: URLSessionTask,
+                    didSendBodyData bytesSent: Int64,
+                    totalBytesSent: Int64,
+                    totalBytesExpectedToSend: Int64
     ) {
         main { [self] in
             withAnimation {

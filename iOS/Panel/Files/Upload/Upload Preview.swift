@@ -7,7 +7,7 @@ struct UploadPreview: View {
     private let urls: [URL]
     private let path: String
     
-    init(_ urls: [URL], path: String) {
+    init(_ urls: [URL], path: String = "") {
         self.urls = urls
         self.path = path
     }
@@ -39,10 +39,8 @@ struct UploadPreview: View {
 }
 
 #Preview {
-    UploadPreview (
-        [URL(string: "https://file-examples.com/wp-content/storage/2017/02/file_example_XLS_10.xls")!
-        ],
-        path: ""
-    )
+    UploadPreview([
+        URL(string: "https://file-examples.com/wp-content/storage/2017/02/file_example_XLS_10.xls")!
+    ])
     .environmentObject(FileTabVM(""))
 }
