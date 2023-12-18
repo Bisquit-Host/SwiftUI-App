@@ -31,9 +31,6 @@ struct VideoFile: View {
             fetchVideoUrl(name,
                           path: path)
         }
-        .onDisappear {
-            deleteVideo()
-        }
     }
     
     private func fetchVideoUrl(_ file: String, path: String) {
@@ -56,23 +53,23 @@ struct VideoFile: View {
             return
         }
         
-        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let fileURL = documentsURL.appendingPathComponent(name)
+        let tempDirectoryURL = FileManager.default.temporaryDirectory
+        let fileURL = tempDirectoryURL.appendingPathComponent(name)
         
         let downloadTask = URLSession.shared.downloadTask(with: url) { location, response, error in
-            if let location, error == nil {
+            if let location = location, error == nil {
                 do {
                     if FileManager.default.fileExists(atPath: fileURL.path) {
                         try FileManager.default.removeItem(at: fileURL)
                     }
                     
-                    try FileManager.default.copyItem(at: location, to: fileURL)
+                    try FileManager.default.moveItem(at: location, to: fileURL)
                     
-                    main {
+                    DispatchQueue.main.async {
                         self.localVideoUrl = fileURL
                     }
                 } catch {
-                    print("Error during file copy: \(error.localizedDescription)")
+                    print("Error during file move: \(error.localizedDescription)")
                 }
             } else {
                 print("Download error: \(error?.localizedDescription ?? "No error description available")")
@@ -80,18 +77,6 @@ struct VideoFile: View {
         }
         
         downloadTask.resume()
-    }
-    
-    private func deleteVideo() {
-        guard let localVideoUrl else {
-            return
-        }
-        
-        do {
-            try FileManager.default.removeItem(at: localVideoUrl)
-        } catch {
-            print("Failed to delete video: \(error)")
-        }
     }
 }
 
