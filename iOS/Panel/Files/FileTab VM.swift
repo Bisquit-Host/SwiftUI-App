@@ -48,6 +48,10 @@ final class FileTabVM: ObservableObject {
     }
     
 #if os(iOS)
+    func cancelUpload() {
+        fileUploader.cancelUpload()
+    }
+    
     func uploadFile(
         _ urlString: String,
         name: String,
@@ -73,6 +77,7 @@ final class FileTabVM: ObservableObject {
                 }
                 
                 self.uploadProgress = 0
+                self.fetchFiles(directory)
             }
         }
     }
@@ -92,12 +97,11 @@ final class FileTabVM: ObservableObject {
                     if let vm {
                         let url = vm.attributes.url
                         
-                        self.uploadFile(
-                            url,
-                            name: fileName,
-                            directory: directory,
-                            mimeType: mimeType,
-                            fileUrl: fileURL
+                        self.uploadFile(url,
+                                        name: fileName,
+                                        directory: directory,
+                                        mimeType: mimeType,
+                                        fileUrl: fileURL
                         )
                         
                         self.fetchFiles(directory)

@@ -12,13 +12,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>33</string>
+					<string>35</string>
 					<key>StartingColumnNumber</key>
-					<string>32</string>
+					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>32</string>
+					<string>34</string>
 					<key>Timestamp</key>
-					<string>710418321.006936</string>
+					<string>724595278.241902</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -34,16 +34,16 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>
+				<string>                    vm.cancelUpload()
 </string>
 				<key>leading</key>
 				<string>                
                 Button("Stop") {
-                    </string>
+</string>
 				<key>trailing</key>
 				<string>                }
-                .disabled(true)
             }
+            .footnote()
 </string>
 			</dict>
 			<key>title</key>
@@ -2124,6 +2124,51 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 				<string>                
             case .failure(let error):
                 networkCallError(#function, error)
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>4</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>3</string>
+					<key>Timestamp</key>
+					<string>724594922.006109</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Panel/Files/FileTab VM.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>
+</string>
+				<key>leading</key>
+				<string>import Combine
+import PteroNet
+</string>
+				<key>trailing</key>
+				<string>final class FileTabVM: ObservableObject {
+    private let id: String
+    
 </string>
 			</dict>
 			<key>type</key>

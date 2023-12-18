@@ -3,6 +3,7 @@ import ScrechKit
 final class FileUploader: NSObject, ObservableObject {
     @Published var uploadProgress: Float = 0
     private var session: URLSession!
+    private var currentUploadTask: URLSessionUploadTask?
     
     func uploadFile(_ urlString: String,
                     name: String,
@@ -49,8 +50,17 @@ final class FileUploader: NSObject, ObservableObject {
         request.setValue(urlString, forHTTPHeaderField: "Origin")
         request.httpBody = multipartFormData.data
         
-        let task = session.uploadTask(with: request, from: multipartFormData.data)
+//        let task = session.uploadTask(with: request, from: multipartFormData.data)
+        let task = session.uploadTask(with: request, from: multipartFormData.data) { [weak self] data, response, error in
+            self?.currentUploadTask = nil
+        }
+        currentUploadTask = task // Store the reference
         task.resume()
+    }
+    
+    func cancelUpload() {
+        currentUploadTask?.cancel()
+        currentUploadTask = nil
     }
 }
 

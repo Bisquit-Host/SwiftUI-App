@@ -1,6 +1,8 @@
 import ScrechKit
 
 struct UploadProgress: View {
+    @EnvironmentObject private var vm: FileTabVM
+    
     private var progress: Float
     private var quantity: Int
     
@@ -29,10 +31,9 @@ struct UploadProgress: View {
             HStack {
                 Text("Uploading to Server •")
                 
-                Button("Stop") {
-                    
+                Button("Cancel") {
+                    vm.cancelUpload()
                 }
-                .disabled(true)
             }
             .footnote()
         }
