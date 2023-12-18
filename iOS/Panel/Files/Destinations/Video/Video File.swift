@@ -27,22 +27,21 @@ struct VideoFile: View {
             }
         }
         .navigationTitle(name)
+        .task {
+            fetchVideoUrl(name,
+                          path: path)
+        }
         .onDisappear {
             deleteVideo()
         }
-        .task {
-            downloadImage(name,
-                          path: path)
-        }
     }
     
-    private func downloadImage(_ file: String, path: String) {
+    private func fetchVideoUrl(_ file: String, path: String) {
         downloadFileAPI(id, from: file + path) { result in
             switch result {
             case .success(let model):
-                if let model {
-                    downloadVideo(model.attributes.url,
-                                  name: file)
+                if let model = model?.attributes {
+                    saveVideo(model.url)
                 }
                 
             case .failure(let error):
@@ -51,7 +50,7 @@ struct VideoFile: View {
         }
     }
     
-    private func downloadVideo(_ urlString: String, name: String) {
+    private func saveVideo(_ urlString: String) {
         guard let url = URL(string: urlString) else {
             print("Invalid URL")
             return
