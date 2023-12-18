@@ -22,8 +22,7 @@ struct VideoFile: View {
 #if os(watchOS)
                 WatchVideoPlayer(localVideoUrl)
 #else
-//                RemoteVideoPlayer(localVideoUrl)
-                UIKitVideoPlayerView()
+                VideoPlayerView(localVideoUrl)
 #endif
             }
         }
@@ -42,7 +41,7 @@ struct VideoFile: View {
             switch result {
             case .success(let model):
                 if let model {
-                    downloadVideo(model.attributes.url, 
+                    downloadVideo(model.attributes.url,
                                   name: file)
                 }
                 
@@ -85,12 +84,12 @@ struct VideoFile: View {
     }
     
     private func deleteVideo() {
-        guard let url = localVideoUrl else { 
+        guard let localVideoUrl else {
             return
         }
         
         do {
-            try FileManager.default.removeItem(at: url)
+            try FileManager.default.removeItem(at: localVideoUrl)
         } catch {
             print("Failed to delete video: \(error)")
         }

@@ -521,8 +521,8 @@
 		F39780252A2B9DB800956474 /* Upload Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39780242A2B9DB800956474 /* Upload Preview.swift */; };
 		F39780262A2B9DB800956474 /* Upload Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39780242A2B9DB800956474 /* Upload Preview.swift */; };
 		F397E74B2B208A3B00DDF1CE /* Button New Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F397E74A2B208A3B00DDF1CE /* Button New Folder.swift */; };
-		F39872102A1AE3CE0022B00E /* Remote Video Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F398720F2A1AE3CE0022B00E /* Remote Video Player.swift */; };
-		F39872112A1AE3CE0022B00E /* Remote Video Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F398720F2A1AE3CE0022B00E /* Remote Video Player.swift */; };
+		F39872102A1AE3CE0022B00E /* Video Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F398720F2A1AE3CE0022B00E /* Video Player.swift */; };
+		F39872112A1AE3CE0022B00E /* Video Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F398720F2A1AE3CE0022B00E /* Video Player.swift */; };
 		F39872162A1B73830022B00E /* Video File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39872152A1B73830022B00E /* Video File.swift */; };
 		F39872172A1B73830022B00E /* Video File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39872152A1B73830022B00E /* Video File.swift */; };
 		F39872212A1B93190022B00E /* FileTab Formats.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39872202A1B93190022B00E /* FileTab Formats.swift */; };
@@ -640,6 +640,10 @@
 		F3C62CE3298A7D8600434636 /* Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C62CE2298A7D8600434636 /* Support.swift */; };
 		F3C9D84A2B302AA200265492 /* File Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D8492B302AA200265492 /* File Context Menu.swift */; };
 		F3C9D84B2B30304F00265492 /* Des Video Watch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EB09E12A29805A0073916A /* Des Video Watch.swift */; };
+		F3C9D84E2B30598000265492 /* Video Player VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D84D2B30598000265492 /* Video Player VM.swift */; };
+		F3C9D84F2B30598000265492 /* Video Player VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D84D2B30598000265492 /* Video Player VM.swift */; };
+		F3C9D8512B3059E700265492 /* UIVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D8502B3059E700265492 /* UIVideoPlayer.swift */; };
+		F3C9D8522B3059E700265492 /* UIVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D8502B3059E700265492 /* UIVideoPlayer.swift */; };
 		F3CB53D62971CF6B00A213B0 /* Database Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB53D52971CF6B00A213B0 /* Database Card.swift */; };
 		F3D22C092A26564C00721113 /* Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304498929E990E9006DC0C7 /* Cloud Keys.swift */; };
 		F3D264302A66A690005C3777 /* Sftp VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D2642F2A66A690005C3777 /* Sftp VM.swift */; };
@@ -752,7 +756,7 @@
 		F3D2959B2AF3A06B00ED43A0 /* Text File VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266C729D83394005FD103 /* Text File VM.swift */; };
 		F3D2959C2AF3A07200ED43A0 /* Des Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3116F252A33E142001F067C /* Des Folder.swift */; };
 		F3D2959D2AF3A07F00ED43A0 /* Video File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39872152A1B73830022B00E /* Video File.swift */; };
-		F3D2959E2AF3A08300ED43A0 /* Remote Video Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F398720F2A1AE3CE0022B00E /* Remote Video Player.swift */; };
+		F3D2959E2AF3A08300ED43A0 /* Video Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F398720F2A1AE3CE0022B00E /* Video Player.swift */; };
 		F3D295A02AF3A09500ED43A0 /* QuickLook File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EB09EC2A2987F00073916A /* QuickLook File.swift */; };
 		F3D295A12AF3A09D00ED43A0 /* Log List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DE1B972A556CCE007A1624 /* Log List.swift */; };
 		F3D295A22AF3A0AA00ED43A0 /* Map VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A92A177ED100530615 /* Map VM.swift */; };
@@ -879,7 +883,7 @@
 		F3EB09D42A29547E0073916A /* File View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32CAAD82A28C4920019DEE3 /* File View.swift */; };
 		F3EB09D82A2958710073916A /* Text File VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266C729D83394005FD103 /* Text File VM.swift */; };
 		F3EB09D92A2958740073916A /* Text File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5B1295902D50006D126 /* Text File.swift */; };
-		F3EB09DA2A295C460073916A /* Remote Video Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F398720F2A1AE3CE0022B00E /* Remote Video Player.swift */; };
+		F3EB09DA2A295C460073916A /* Video Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F398720F2A1AE3CE0022B00E /* Video Player.swift */; };
 		F3EB09DB2A295C550073916A /* Video File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39872152A1B73830022B00E /* Video File.swift */; };
 		F3EB09DC2A295F780073916A /* Text File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5B1295902D50006D126 /* Text File.swift */; };
 		F3EB09DD2A295F7C0073916A /* Text File VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266C729D83394005FD103 /* Text File VM.swift */; };
@@ -1258,7 +1262,7 @@
 		F39626F12A7AD64B0057E356 /* Ansi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ansi.swift; sourceTree = "<group>"; };
 		F39780242A2B9DB800956474 /* Upload Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Upload Preview.swift"; sourceTree = "<group>"; };
 		F397E74A2B208A3B00DDF1CE /* Button New Folder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button New Folder.swift"; sourceTree = "<group>"; };
-		F398720F2A1AE3CE0022B00E /* Remote Video Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Remote Video Player.swift"; sourceTree = "<group>"; };
+		F398720F2A1AE3CE0022B00E /* Video Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Video Player.swift"; sourceTree = "<group>"; };
 		F39872152A1B73830022B00E /* Video File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Video File.swift"; sourceTree = "<group>"; };
 		F39872202A1B93190022B00E /* FileTab Formats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileTab Formats.swift"; sourceTree = "<group>"; };
 		F398823E2987BF6E00B9BA2C /* Schedule Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Schedule Task.swift"; sourceTree = "<group>"; };
@@ -1316,6 +1320,8 @@
 		F3C0F9D129E2A62A0040E277 /* FileTab NewFolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileTab NewFolder.swift"; sourceTree = "<group>"; };
 		F3C62CE2298A7D8600434636 /* Support.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Support.swift; sourceTree = "<group>"; };
 		F3C9D8492B302AA200265492 /* File Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Context Menu.swift"; sourceTree = "<group>"; };
+		F3C9D84D2B30598000265492 /* Video Player VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Video Player VM.swift"; sourceTree = "<group>"; };
+		F3C9D8502B3059E700265492 /* UIVideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVideoPlayer.swift; sourceTree = "<group>"; };
 		F3CB53D52971CF6B00A213B0 /* Database Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database Card.swift"; sourceTree = "<group>"; };
 		F3D2642F2A66A690005C3777 /* Sftp VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sftp VM.swift"; sourceTree = "<group>"; };
 		F3D264332A66A926005C3777 /* Settings Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings Button.swift"; sourceTree = "<group>"; };
@@ -2459,7 +2465,9 @@
 			isa = PBXGroup;
 			children = (
 				F39872152A1B73830022B00E /* Video File.swift */,
-				F398720F2A1AE3CE0022B00E /* Remote Video Player.swift */,
+				F398720F2A1AE3CE0022B00E /* Video Player.swift */,
+				F3C9D8502B3059E700265492 /* UIVideoPlayer.swift */,
+				F3C9D84D2B30598000265492 /* Video Player VM.swift */,
 			);
 			path = Video;
 			sourceTree = "<group>";
@@ -3147,7 +3155,7 @@
 				F3F3FC792B21E332007C635B /* QR Code View.swift in Sources */,
 				F342FAB02B2E08C100854270 /* Log VM.swift in Sources */,
 				F30C13192A54626D00A7EFF0 /* Bisquit.Host App.swift in Sources */,
-				F3EB09DA2A295C460073916A /* Remote Video Player.swift in Sources */,
+				F3EB09DA2A295C460073916A /* Video Player.swift in Sources */,
 				F342FAB32B2E43D500854270 /* Log Card.swift in Sources */,
 				F37061CA29774886009B4067 /* Nav Destinations.swift in Sources */,
 				F3EB09DD2A295F7C0073916A /* Text File VM.swift in Sources */,
@@ -3314,6 +3322,7 @@
 				F39872162A1B73830022B00E /* Video File.swift in Sources */,
 				F3A994AE2A17A9B100530615 /* Map List.swift in Sources */,
 				F3D295132AF396FD00ED43A0 /* Tabs.swift in Sources */,
+				F3C9D84E2B30598000265492 /* Video Player VM.swift in Sources */,
 				F3DAD6BE2A4793F8002ED405 /* Circular Gauge.swift in Sources */,
 				F3FA61572A1F928500A65AE1 /* FileTab Search.swift in Sources */,
 				F354E9832A48CA2000F6E359 /* Topbar Grid Button.swift in Sources */,
@@ -3381,11 +3390,12 @@
 				F37266EB29D9F06C005FD103 /* Cache VM.swift in Sources */,
 				F337D7592A4DBC840011524E /* Create Apikey.swift in Sources */,
 				F325F7062A54C4BC00E89EC4 /* System Alerts.swift in Sources */,
+				F3C9D8512B3059E700265492 /* UIVideoPlayer.swift in Sources */,
 				F3B1196F29A155D8003BB68C /* Suspended Server Card.swift in Sources */,
 				F3D264412A66ABBE005C3777 /* Account VM.swift in Sources */,
 				F39CF3582A50C00C0077996D /* User View.swift in Sources */,
 				F37A366B2A35158A00517EFC /* Console View.swift in Sources */,
-				F39872102A1AE3CE0022B00E /* Remote Video Player.swift in Sources */,
+				F39872102A1AE3CE0022B00E /* Video Player.swift in Sources */,
 				F31BA566295900300006D126 /* Nav State.swift in Sources */,
 				F3BC03C62B20675E0011F98A /* New Schedule Sheet.swift in Sources */,
 				F3DDD59C2A62AC7C009FDFBF /* Create Backup Button.swift in Sources */,
@@ -3562,6 +3572,7 @@
 				F36D532F2A05B890007324C6 /* Database Card.swift in Sources */,
 				F393C7BD2A18442D00DE33F9 /* Upload File.swift in Sources */,
 				F371468D2B123807001E0296 /* ActivityViewState.swift in Sources */,
+				F3C9D84F2B30598000265492 /* Video Player VM.swift in Sources */,
 				F36D53392A05B8CA007324C6 /* Text File.swift in Sources */,
 				F36D530D2A05B6C9007324C6 /* Server List Footer.swift in Sources */,
 				F3878ECE2A1BCE5000AD8657 /* Dev Settings.swift in Sources */,
@@ -3569,7 +3580,7 @@
 				F354E9842A48CA2000F6E359 /* Topbar Grid Button.swift in Sources */,
 				F36D531F2A05B82B007324C6 /* Info Tab.swift in Sources */,
 				F36D530E2A05B6CE007324C6 /* Browser.swift in Sources */,
-				F39872112A1AE3CE0022B00E /* Remote Video Player.swift in Sources */,
+				F39872112A1AE3CE0022B00E /* Video Player.swift in Sources */,
 				F36D53182A05B7F3007324C6 /* Panel View.swift in Sources */,
 				F3D264452A66B3A6005C3777 /* QR Code View.swift in Sources */,
 				F36D53372A05B8BF007324C6 /* Backup List Footer.swift in Sources */,
@@ -3600,6 +3611,7 @@
 				F36D53342A05B8AF007324C6 /* File View.swift in Sources */,
 				F3287A762B10A0E4001AFE54 /* Live Activity.swift in Sources */,
 				F36D53402A05B8F6007324C6 /* File Icon.swift in Sources */,
+				F3C9D8522B3059E700265492 /* UIVideoPlayer.swift in Sources */,
 				F3D264312A66A690005C3777 /* Sftp VM.swift in Sources */,
 				F3464D322A863A6600188B0C /* Send Command.swift in Sources */,
 				F3A994AC2A17904F00530615 /* Map VM.swift in Sources */,
@@ -3753,7 +3765,7 @@
 				F3D295AD2AF3A0FC00ED43A0 /* Cache Expiration.swift in Sources */,
 				F3D295CC2AF3A26E00ED43A0 /* Panel View.swift in Sources */,
 				F3D295B82AF3A16A00ED43A0 /* App Icon.swift in Sources */,
-				F3D2959E2AF3A08300ED43A0 /* Remote Video Player.swift in Sources */,
+				F3D2959E2AF3A08300ED43A0 /* Video Player.swift in Sources */,
 				F3D295A32AF3A0B500ED43A0 /* Auth Background.swift in Sources */,
 				F3D295832AF39F9900ED43A0 /* QuickLook.swift in Sources */,
 				F3D295CD2AF3A2D400ED43A0 /* DataTab VM.swift in Sources */,
