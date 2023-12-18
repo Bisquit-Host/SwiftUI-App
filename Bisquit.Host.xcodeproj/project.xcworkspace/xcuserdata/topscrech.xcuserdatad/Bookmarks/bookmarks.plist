@@ -852,14 +852,12 @@ import ScrechKit
 					<string>0</string>
 					<key>EndingLineNumber</key>
 					<string>2</string>
-					<key>LocationEncoding</key>
-					<string>1</string>
 					<key>StartingColumnNumber</key>
 					<string>19</string>
 					<key>StartingLineNumber</key>
 					<string>1</string>
 					<key>Timestamp</key>
-					<string>712191072.694788</string>
+					<string>724633270.393061</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -1773,13 +1771,13 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>69</string>
+					<string>68</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>68</string>
+					<string>67</string>
 					<key>Timestamp</key>
-					<string>724461048.143887</string>
+					<string>724633283.7949049</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -1818,13 +1816,13 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>54</string>
+					<string>55</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>53</string>
+					<string>54</string>
 					<key>Timestamp</key>
-					<string>724461068.824046</string>
+					<string>724632906.597131</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -1910,13 +1908,13 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>35</string>
+					<string>33</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>34</string>
+					<string>32</string>
 					<key>Timestamp</key>
-					<string>723723821.093719</string>
+					<string>724633239.67871</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>

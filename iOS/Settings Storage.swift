@@ -30,7 +30,7 @@ final class SettingsStorage: ObservableObject {
     @AppStorage("lastTabPanel") var lastTabPanel: Tabs = .info
     @AppStorage("tabViewBouncesDown") var tabViewBouncesDown = true
     @AppStorage("animateTabbar") var animatedTabbar = false
-#if os(iOS) && !os(xrOS)
+#if os(iOS)
     @AppStorage("last_tab_panel_info") var last_tab_panel_info: TabInfo = .relative
 #endif
     

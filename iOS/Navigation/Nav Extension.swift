@@ -11,10 +11,10 @@ extension View {
                 //            case .toServerList(let selectedServer):
                 //                ServerList(selectedServer: selectedServer)
             case .toServerList:
-#if !os(macOS)
-                ServerList()
-#else
+#if os(macOS)
                 Sidebar()
+#else
+                ServerList()
 #endif
                 
             case .toPanel(let id):

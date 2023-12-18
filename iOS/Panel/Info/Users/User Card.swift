@@ -40,6 +40,7 @@ struct UserCard: View {
         .onTapGesture {
             sheetDetails = true
         }
+#if !os(watchOS)
         .contextMenu {
             Section {
                 MenuButton("Delete", role: .destructive, icon: "trash") {
@@ -47,6 +48,7 @@ struct UserCard: View {
                 }
             }
         }
+#endif
         .sheet($sheetDetails) {
             UserView(user)
         }

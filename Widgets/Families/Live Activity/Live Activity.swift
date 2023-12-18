@@ -1,4 +1,5 @@
-#if canImport(ActivityKit)
+//#if canImport(ActivityKit)
+#if os(iOS)
 import ScrechKit
 import ActivityKit
 import PteroNet
@@ -38,10 +39,10 @@ final class LiveActivity {
 #endif
         
         let body: [String: Any] = [
-            "WSUrl": WSUrl,
-            "WSToken": WSToken,
-            "liveActivityToken": liveActivityToken,
-            "environment": environment
+            "WSUrl":                WSUrl,
+            "WSToken":              WSToken,
+            "liveActivityToken":    liveActivityToken,
+            "environment":          environment
         ]
         
         request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
@@ -59,16 +60,15 @@ final class LiveActivity {
         consoleDetailsAPI(id) { result in
             switch result {
             case .success(let model):
-                if let model {
-                    let data = model.data
+                if let model = model?.data {
+                    let socket = model.socket
+                    let token = model.token
                     
                     self.postRequest(
-                        WSUrl: data.socket.description,
-                        WSToken: data.token,
+                        WSUrl: socket.description,
+                        WSToken: token,
                         liveActivityToken: self.LAToken
                     )
-                    
-                    print("WebSocket:\n\(data.socket)\n\(data.token)")
                 }
                 
             case .failure(let error):

@@ -41,14 +41,14 @@ struct FileView: View {
                 
             } else if mimeType.contains("video") {
                 VideoFile(id,
-                         path: path + "/",
-                         name: name
+                          path: path + "/",
+                          name: name
                 )
                 
             } else {
                 QuickLookFile(id,
-                             path: path + "/",
-                             name: name
+                              path: path + "/",
+                              name: name
                 )
             }
         } label: {

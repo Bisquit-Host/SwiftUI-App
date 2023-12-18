@@ -18,8 +18,7 @@ import ScrechKit
 //    private var parameters: [(String, String)] {
 //        var params = [
 //            ("App version", "\(appVersion) (\(appBuild))"),
-//            ("Device and system", "\(device.modelIdentifier) (\(device.systemName) \(device.systemVersion))"),
-//            ("Display", "\(Int(bounds.height)) x \(Int(bounds.width))"),
+//            ("Device and system", "\(device.modelIdentifier) (\(device.systemName) \(device.systemVersion))")
 //        ]
 //
 //#if !os(tvOS)

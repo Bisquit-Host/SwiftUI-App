@@ -106,7 +106,7 @@ final class MapVM: NSObject, CLLocationManagerDelegate {
     }
     
     private func checkAuth() {
-        guard let locationManager = locationManager else {
+        guard let locationManager else {
             return
         }
         

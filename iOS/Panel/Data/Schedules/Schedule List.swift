@@ -11,22 +11,20 @@ struct ScheduleList: View {
             ForEach(vm.schedules, id: \.attributes.id) { attributes in
                 let schedule = attributes.attributes
                 let tasks = schedule.relationships.tasks.data
-#if !os(tvOS)
+#if os(tvOS)
+                ScheduleCard(schedule)
+                
+                ForEach(tasks, id: \.attributes.action) { task in
+                    ScheduleTask(schedule, task: task.attributes)
+                        .padding(.leading, 64)
+                }
+#else
                 DisclosureGroup {
                     ForEach(tasks, id: \.attributes.action) { task in
                         ScheduleTask(schedule, task: task.attributes)
                     }
                 } label: {
                     ScheduleCard(schedule)
-                }
-#else
-                ScheduleCard(schedule)
-                
-                ForEach(tasks, id: \.attributes.action) { task in
-                    ScheduleTask(schedule, task: task.attributes)
-#if os(tvOS)
-                        .padding(.leading, 64)
-#endif
                 }
 #endif
             }

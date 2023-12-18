@@ -27,7 +27,7 @@ final class LinkingVM {
         let tab = (index + 2 < components.count) ? components[index + 2] : ""
         
         serverDetailsAPI(id) { [weak self] result in
-            guard let self = self else {
+            guard let self else {
                 return
             }
             

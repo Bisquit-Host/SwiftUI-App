@@ -116,9 +116,9 @@ private func detectAndAddLinks(_ attributedString: inout AttributedString) {
     let urlColor = UIColor.blue
 #endif
     
-    detector.enumerateMatches(in: mutableAttributedString.string, options: [], range: fullRange) { (match, _, _) in
-        guard let match = match,
-                let url = URL(string: (mutableAttributedString.string as NSString).substring(with: match.range)) else {
+    detector.enumerateMatches(in: mutableAttributedString.string, options: [], range: fullRange) { match, _, _ in
+        guard let match,
+              let url = URL(string: (mutableAttributedString.string as NSString).substring(with: match.range)) else {
             return
         }
         

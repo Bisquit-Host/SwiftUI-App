@@ -4,7 +4,21 @@ struct UserList: View {
     @Environment(UsersVM.self) private var vm
     
     var body: some View {
-#if !os(watchOS)
+#if os(watchOS)
+        List {
+            Section {
+                ForEach(vm.users, id: \.attributes.uuid) { user in
+                    UserCard(user.attributes)
+                }
+                .onDelete(perform: delete)
+            }
+        }
+        .navigationTitle("Users")
+        .task {
+            vm.fetchUsers()
+            vm.fetchPermissions()
+        }
+#else
         NavigationView {
             List {
                 Section {
@@ -27,20 +41,6 @@ struct UserList: View {
         }
         .presentationDetents([.medium, .large])
         .presentationDragIndicator(.hidden)
-        .task {
-            vm.fetchUsers()
-            vm.fetchPermissions()
-        }
-#else
-        List {
-            Section {
-                ForEach(vm.users, id: \.attributes.uuid) { user in
-                    UserCard(user.attributes)
-                }
-                .onDelete(perform: delete)
-            }
-        }
-        .navigationTitle("Users")
         .task {
             vm.fetchUsers()
             vm.fetchPermissions()

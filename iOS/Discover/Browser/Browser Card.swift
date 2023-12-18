@@ -123,11 +123,11 @@ struct BrowserCard: View {
         .onTapGesture {
             showSafari = true
         }
-#if !os(tvOS)
+#if os(tvOS)
+        .frame(height: 500)
+#else
         .safariCover($showSafari, url: url + plan.url)
         .frame(height: 160)
-#else
-        .frame(height: 500)
 #endif
         .cornerRadius(20)
         .padding(5)
