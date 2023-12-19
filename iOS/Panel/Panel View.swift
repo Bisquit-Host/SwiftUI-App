@@ -56,8 +56,6 @@ struct PanelView: View {
             vm.consoleDetails { data in
                 if let data {
                     vm.connectWebSocket(data)
-                } else {
-                    print("2")
                 }
             }
             

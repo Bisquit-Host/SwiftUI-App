@@ -10,13 +10,25 @@ final class UsersVM {
     }
     
     var users: [UserListData] = []
-    var permissions: Permissions?
+    var permissions: PermissionAttributes?
+    
+    func updateUser(_ userId: String, permissions: [String]) {
+        updateUserAPI(id, userId: userId, permissions: permissions) { result in
+            switch result {
+            case .success:
+                print("Suc")
+                
+            case .failure(let error):
+                print("Cock \(error.localizedDescription)")
+            }
+        }
+    }
     
     func fetchPermissions() {
         permissionListAPI { result in
             switch result {
             case .success(let model):
-                if let model {
+                if let model = model?.attributes {
                     self.permissions = model
                 }
                 
