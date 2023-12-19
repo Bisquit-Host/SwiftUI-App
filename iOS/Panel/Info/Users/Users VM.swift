@@ -12,14 +12,41 @@ final class UsersVM {
     var users: [UserListData] = []
     var permissions: PermissionAttributes?
     
-    func updateUser(_ userId: String, permissions: [String]) {
+    var permissionCount: Int {
+        var count = 0
+        
+        if let permissions = permissions {
+            for (_, permission) in permissions.permissions {
+                count += permission.keys.count
+            }
+        }
+        
+        return count
+    }
+    
+    func updateUser(_ userId: String, permissions: [String], onSuccess: @escaping () -> (), onError: @escaping () -> ()) {
         updateUserAPI(id, userId: userId, permissions: permissions) { result in
             switch result {
             case .success:
-                print("Suc")
+                onSuccess()
                 
             case .failure(let error):
-                print("Cock \(error.localizedDescription)")
+                networkCallError(#function, error)
+                onError()
+            }
+        }
+    }
+    
+    func userDetails(_ user: Binding<UserListAttributes>) {
+        userDetailsAPI(id, userId: user.wrappedValue.uuid) { result in
+            switch result {
+            case .success(let model):
+                if let model = model?.attributes {
+                    user.wrappedValue = model
+                }
+                
+            case .failure(let error):
+                networkCallError(#function, error)
             }
         }
     }

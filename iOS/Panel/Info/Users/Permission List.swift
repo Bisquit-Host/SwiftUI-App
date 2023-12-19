@@ -4,10 +4,10 @@ import PteroNet
 struct PermissionList: View {
     @Environment(UsersVM.self) private var vm
     
-    private let user: UserListAttributes
+    @Binding private var user: UserListAttributes
     
-    init(_ user: UserListAttributes) {
-        self.user = user
+    init(_ user: Binding<UserListAttributes>) {
+        _user = user
     }
     
     @State private var showDescription = false
@@ -28,25 +28,13 @@ struct PermissionList: View {
         return dict
     }
     
-    private var permissionCount: Int {
-        var count = 0
-        
-        if let permissions = vm.permissions {
-            for (_, permission) in permissions.permissions {
-                count += permission.keys.count
-            }
-        }
-        
-        return count
-    }
-    
     private var permissionCountColor: Color {
         let userPermissions = user.permissions.count
         
         if userPermissions == 0 {
             return .red
             
-        } else if userPermissions < permissionCount {
+        } else if userPermissions < vm.permissionCount {
             return .yellow
         }
         
@@ -56,12 +44,20 @@ struct PermissionList: View {
     var body: some View {
         if let permissions = vm.permissions {
             Section {
-                HStack {
+                HStack(spacing: 0) {
                     Text("Permissions")
                     
                     Spacer()
                     
-                    Text("\(user.permissions.count) of \(permissionCount)")
+                    let userPerms = Text(user.permissions.count)
+                        .monospaced()
+                    
+                    let totalPerms = Text(vm.permissionCount)
+                        .monospaced()
+                    
+                    Text("\(userPerms) of \(totalPerms)")
+                        .animation(.easeInOut, value: user.permissions)
+                        .numericTransition()
                         .foregroundStyle(permissionCountColor)
                 }
                 
@@ -79,16 +75,11 @@ struct PermissionList: View {
                                 VStack(alignment: .leading) {
                                     PermissionCard(
                                         userPermissions: user.permissions,
-                                        userId: user.uuid,
+                                        user: $user,
                                         key: key,
                                         subKey: subKey,
                                         perm: perm
                                     )
-                                    
-//                                    Toggle(isOn: .constant(perm ?? false)) {
-//                                        Text(subKey)
-//                                    }
-//                                    .disabled(true)
                                     
                                     if showDescription {
                                         Text(subValue)
@@ -111,7 +102,7 @@ struct PermissionList: View {
 }
 
 #Preview {
-    PermissionList(
+    PermissionList(.constant(
         sampleJSON(.userAttributes)
-    )
+    ))
 }

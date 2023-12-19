@@ -5,7 +5,7 @@ import PteroNet
 struct UserView: View {
     @Environment(UsersVM.self) private var vm
     
-    private let user: UserListAttributes
+    @State private var user: UserListAttributes
     
     init(_ user: UserListAttributes) {
         self.user = user
@@ -52,8 +52,11 @@ struct UserView: View {
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
                 
-                PermissionList(user)
+                PermissionList($user)
                     .environment(vm)
+            }
+            .refreshable {
+                vm.userDetails($user)
             }
             .navigationTitle(user.username)
             .navigationBarTitleDisplayMode(.inline)
