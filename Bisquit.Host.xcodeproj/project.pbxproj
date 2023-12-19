@@ -875,6 +875,12 @@
 		F3E08ECE2A2CEDD800116C1C /* Panel View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E08ECD2A2CEDD800116C1C /* Panel View.swift */; };
 		F3E08ED52A2CEE2300116C1C /* Auth View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E08ED42A2CEE2300116C1C /* Auth View.swift */; };
 		F3E08ED82A2CF74000116C1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F31BA52A2958FF7D0006D126 /* Assets.xcassets */; };
+		F3E1D3ED2B3208BE009B7062 /* User2Fa.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3EC2B3208BE009B7062 /* User2Fa.swift */; };
+		F3E1D3EE2B3208BE009B7062 /* User2Fa.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3EC2B3208BE009B7062 /* User2Fa.swift */; };
+		F3E1D3EF2B3208DE009B7062 /* User2Fa.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3EC2B3208BE009B7062 /* User2Fa.swift */; };
+		F3E1D3F22B320A6A009B7062 /* Permissions Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3F12B320A6A009B7062 /* Permissions Header.swift */; };
+		F3E1D3F32B320A6A009B7062 /* Permissions Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3F12B320A6A009B7062 /* Permissions Header.swift */; };
+		F3E1D3F42B320A6A009B7062 /* Permissions Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3F12B320A6A009B7062 /* Permissions Header.swift */; };
 		F3E467522A49903900FABE5F /* Info Stat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E467512A49903900FABE5F /* Info Stat.swift */; };
 		F3E467532A49903900FABE5F /* Info Stat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E467512A49903900FABE5F /* Info Stat.swift */; };
 		F3E467552A49939300FABE5F /* Info Relative Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E467542A49939300FABE5F /* Info Relative Stats.swift */; };
@@ -1372,6 +1378,8 @@
 		F3E08ECD2A2CEDD800116C1C /* Panel View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel View.swift"; sourceTree = "<group>"; };
 		F3E08ED42A2CEE2300116C1C /* Auth View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auth View.swift"; sourceTree = "<group>"; };
 		F3E08ED92A2D017100116C1C /* Bisquit-Host-Mac-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Bisquit-Host-Mac-Info.plist"; sourceTree = SOURCE_ROOT; };
+		F3E1D3EC2B3208BE009B7062 /* User2Fa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User2Fa.swift; sourceTree = "<group>"; };
+		F3E1D3F12B320A6A009B7062 /* Permissions Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Permissions Header.swift"; sourceTree = "<group>"; };
 		F3E467512A49903900FABE5F /* Info Stat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Stat.swift"; sourceTree = "<group>"; };
 		F3E467542A49939300FABE5F /* Info Relative Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Relative Stats.swift"; sourceTree = "<group>"; };
 		F3E6FC422A1E677000410C7C /* Bisquits.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Bisquits.sks; sourceTree = "<group>"; };
@@ -1790,7 +1798,6 @@
 		F31BA5BA295903330006D126 /* Destinations */ = {
 			isa = PBXGroup;
 			children = (
-				F3F86CFC2A5AEDB400A2C82E /* Audio Recorder.swift */,
 				F3BEEBC02A4A779400E686B8 /* Folder */,
 				F3BEEBBF2A4A778C00E686B8 /* Quick Look */,
 				F3BEEBC52A4AB34600E686B8 /* Video */,
@@ -2498,6 +2505,7 @@
 				F393C7BA2A18437300DE33F9 /* Upload File.swift */,
 				F39780242A2B9DB800956474 /* Upload Preview.swift */,
 				F35DA9582A28F5B100803E7E /* Upload Progress.swift */,
+				F3F86CFC2A5AEDB400A2C82E /* Audio Recorder.swift */,
 			);
 			path = Upload;
 			sourceTree = "<group>";
@@ -2627,6 +2635,16 @@
 			path = Panel;
 			sourceTree = "<group>";
 		};
+		F3E1D3F02B320A4B009B7062 /* Permissions */ = {
+			isa = PBXGroup;
+			children = (
+				F3C9D8572B31135B00265492 /* Permission List.swift */,
+				F3E1D3F12B320A6A009B7062 /* Permissions Header.swift */,
+				F3C9D85F2B319B9E00265492 /* Permission Card.swift */,
+			);
+			path = Permissions;
+			sourceTree = "<group>";
+		};
 		F3EB09CA2A2940AA0073916A /* File Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -2670,12 +2688,12 @@
 				F3FF59FE2A4A3188003A1973 /* User List.swift */,
 				F3FF5A0E2A4A3ABD003A1973 /* User Card.swift */,
 				F39CF3572A50C00C0077996D /* User View.swift */,
+				F3E1D3EC2B3208BE009B7062 /* User2Fa.swift */,
 				F3C9D85B2B31146E00265492 /* User Avatar.swift */,
-				F3C9D8572B31135B00265492 /* Permission List.swift */,
-				F3C9D85F2B319B9E00265492 /* Permission Card.swift */,
 				F3A123592A6689FA008E3E20 /* User Email.swift */,
 				F3FF5A0B2A4A386F003A1973 /* Users VM.swift */,
 				F3880A252A92A15E0052A978 /* Contact Manager.swift */,
+				F3E1D3F02B320A4B009B7062 /* Permissions */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -3243,6 +3261,7 @@
 				F3D7D87D29E83D6500BCAFFE /* Icon Settings.swift in Sources */,
 				F3E024C52B228F4C00FFF686 /* New Task Sheet.swift in Sources */,
 				F3116F262A33E142001F067C /* Folder File.swift in Sources */,
+				F3E1D3ED2B3208BE009B7062 /* User2Fa.swift in Sources */,
 				F3924EE729A25FBF00C4CC77 /* App Icon Picker.swift in Sources */,
 				F31BA5272958FF7C0006D126 /* Bisquit.Host App.swift in Sources */,
 				F3C9D8582B31135B00265492 /* Permission List.swift in Sources */,
@@ -3355,6 +3374,7 @@
 				F35DA9592A28F5B100803E7E /* Upload Progress.swift in Sources */,
 				F35B89BE2A725710000B5EEF /* Tip Suspended Server.swift in Sources */,
 				F310BB392A54E31700843F14 /* Server List VM.swift in Sources */,
+				F3E1D3F22B320A6A009B7062 /* Permissions Header.swift in Sources */,
 				F31BA5B0295902C70006D126 /* Folder Path.swift in Sources */,
 				F3D902DF29DC445A004E76C9 /* Cache Limit.swift in Sources */,
 				F330013B2A4CEC320063FE0F /* Apikey List.swift in Sources */,
@@ -3451,6 +3471,7 @@
 				F3C9D8592B31135B00265492 /* Permission List.swift in Sources */,
 				F3499EF62A275546006101B7 /* Websocket.swift in Sources */,
 				F3F061DB2A73CFD800470F7E /* Welcome VM.swift in Sources */,
+				F3E1D3F32B320A6A009B7062 /* Permissions Header.swift in Sources */,
 				F3F061D32A73C37700470F7E /* Map VM.swift in Sources */,
 				F35B89C02A725CFA000B5EEF /* Tip Suspended Server.swift in Sources */,
 				F3FFB7442A57F43C00220FA5 /* User List.swift in Sources */,
@@ -3484,6 +3505,7 @@
 				F394A28929E0CC5F0012B7D1 /* Gauge Regular.swift in Sources */,
 				F376D0562A02487C00B7377A /* Cloud Keys.swift in Sources */,
 				F3FFB7422A57F12F00220FA5 /* User Card.swift in Sources */,
+				F3E1D3EF2B3208DE009B7062 /* User2Fa.swift in Sources */,
 				F3EB09D22A29533D0073916A /* Formatters.swift in Sources */,
 				F3499EFA2A277D0F006101B7 /* File Tab.swift in Sources */,
 				F3EB09E52A2982680073916A /* Video File.swift in Sources */,
@@ -3642,6 +3664,7 @@
 				F389BB7C2A05B66B00911EBF /* App Icon.swift in Sources */,
 				F3A1235C2A6689FA008E3E20 /* User Email.swift in Sources */,
 				F36D53102A05B6E7007324C6 /* Cloud Keys.swift in Sources */,
+				F3E1D3EE2B3208BE009B7062 /* User2Fa.swift in Sources */,
 				F389BB6A2A05B5E100911EBF /* Settings.swift in Sources */,
 				F3BC03AF2B1FF2FC0011F98A /* Schedule Context Menu.swift in Sources */,
 				F389BB7B2A05B64E00911EBF /* Biometry Usage View.swift in Sources */,
@@ -3655,6 +3678,7 @@
 				F367977F2A3A5AB6009F2788 /* Log VM.swift in Sources */,
 				F3FF5A0D2A4A386F003A1973 /* Users VM.swift in Sources */,
 				F3D295182AF396FD00ED43A0 /* Tabs.swift in Sources */,
+				F3E1D3F42B320A6A009B7062 /* Permissions Header.swift in Sources */,
 				F36D532D2A05B87E007324C6 /* Schedule List.swift in Sources */,
 				F36D531A2A05B7FB007324C6 /* Console Tab.swift in Sources */,
 				F389BB7A2A05B64600911EBF /* App Icon Picker.swift in Sources */,

@@ -622,53 +622,6 @@ final class AudioRecorder {
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>4</string>
-					<key>StartingColumnNumber</key>
-					<string>33</string>
-					<key>StartingLineNumber</key>
-					<string>3</string>
-					<key>Timestamp</key>
-					<string>711065733.680764</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>iOS/Panel/Files/Destinations/Audio Recorder.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>
-</string>
-				<key>leading</key>
-				<string>import AVFoundation
-
-@Observable</string>
-				<key>trailing</key>
-				<string>final class AudioRecorder {
-    var audioRecorder: AVAudioRecorder!
-    
-</string>
-			</dict>
-			<key>title</key>
-			<string>Unused</string>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
 					<string>56</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>

@@ -11,19 +11,7 @@ final class UsersVM {
     
     var users: [UserListData] = []
     var permissions: PermissionAttributes?
-    
-    var permissionCount: Int {
-        var count = 0
         
-        if let permissions = permissions {
-            for (_, permission) in permissions.permissions {
-                count += permission.keys.count
-            }
-        }
-        
-        return count
-    }
-    
     func updateUser(_ userId: String, permissions: [String], onSuccess: @escaping () -> (), onError: @escaping () -> ()) {
         updateUserAPI(id, userId: userId, permissions: permissions) { result in
             switch result {

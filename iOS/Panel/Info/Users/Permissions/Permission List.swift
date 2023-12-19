@@ -28,41 +28,11 @@ struct PermissionList: View {
         return dict
     }
     
-    private var permissionCountColor: Color {
-        let userPermissions = user.permissions.count
-        
-        if userPermissions == 0 {
-            return .red
-            
-        } else if userPermissions < vm.permissionCount {
-            return .yellow
-        }
-        
-        return .green
-    }
-    
     var body: some View {
         if let permissions = vm.permissions {
-            Section {
-                HStack(spacing: 0) {
-                    Text("Permissions")
-                    
-                    Spacer()
-                    
-                    let userPerms = Text(user.permissions.count)
-                        .monospaced()
-                    
-                    let totalPerms = Text(vm.permissionCount)
-                        .monospaced()
-                    
-                    Text("\(userPerms) of \(totalPerms)")
-                        .animation(.easeInOut, value: user.permissions)
-                        .numericTransition()
-                        .foregroundStyle(permissionCountColor)
-                }
-                
-                Toggle("Show description (ru)", isOn: $showDescription)
-            }
+            
+            PermissionsHeader(user,
+                              showDescription: $showDescription)
             
             ForEach(permissions.permissions.keys.sorted(), id: \.self) { key in
                 if let permission = permissions.permissions[key] {

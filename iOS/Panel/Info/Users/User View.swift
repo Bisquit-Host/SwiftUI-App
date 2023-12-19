@@ -22,19 +22,7 @@ struct UserView: View {
 #else
                 UserEmail(user.email)
 #endif
-                HStack {
-                    Text("2FA")
-                    
-                    Spacer()
-                    
-                    if user.twoFaEnabled {
-                        Text("Enabled \(Image(systemName: "lock.fill"))")
-                            .foregroundStyle(.green)
-                    } else {
-                        Text("Disabled")
-                            .foregroundStyle(.red)
-                    }
-                }
+                User2Fa(user.twoFaEnabled)
                 
                 HStack {
                     Text("Member since")

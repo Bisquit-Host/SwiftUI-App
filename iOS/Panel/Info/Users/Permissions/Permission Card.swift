@@ -6,14 +6,14 @@ struct PermissionCard: View {
     
     @State private var userPermissions: [String]
     @Binding private var user: UserListAttributes
-    private let key: Dictionary<String, Permission>.Keys.Element
-    private let subKey: Dictionary<String, String>.Keys.Element
+    private let key: String
+    private let subKey: String
     private let perm: Bool?
     
     init(userPermissions: [String],
          user: Binding<UserListAttributes>,
-         key: Dictionary<String, Permission>.Keys.Element,
-         subKey: Dictionary<String, String>.Keys.Element,
+         key: String,
+         subKey: String,
          perm: Bool?
     ) {
         self.userPermissions = userPermissions
