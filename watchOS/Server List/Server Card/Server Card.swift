@@ -18,7 +18,7 @@ struct ServerCard: View {
                     .lineLimit(1)
                     .minimumScaleFactor(0.25)
                 
-                if !vm.isLoadingData {
+                if !vm.isLoading {
                     PulseCircle(vm.stateColor, size: 12)
                 }
             }

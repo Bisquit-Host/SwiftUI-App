@@ -81,7 +81,7 @@ struct InfoTabButtons: View {
             HStack {
                 Button("IP") {
                     withAnimation {
-                        settings.last_tab_panel_info = .ip
+                        settings.lastInfoTab = .ip
                     }
                 }
                 .padding()

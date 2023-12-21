@@ -72,7 +72,7 @@ struct FileTab: View {
         }
         .onChange(of: image) {
             if let image {
-                vm.handleImageImport(image, directory: path)
+                vm.handleImageImport(image, path: path)
             }
         }
     }

@@ -28,15 +28,15 @@ struct ServerCard: View {
             Spacer()
             
             ProgressBar("cpu",
-                        progress: vm.cpu_usage / limits.cpu
+                        progress: vm.cpuUsage / limits.cpu
             )
             
             ProgressBar("ram",
-                        progress: vm.ram_usage / pow(1024, 2) / limits.memory
+                        progress: vm.ramUsage / pow(1024, 2) / limits.memory
             )
             
             ProgressBar("ssd",
-                        progress: vm.disk_usage / pow(1024, 2) / limits.disk
+                        progress: vm.diskUsage / pow(1024, 2) / limits.disk
             )
         }
         .padding(.bottom)

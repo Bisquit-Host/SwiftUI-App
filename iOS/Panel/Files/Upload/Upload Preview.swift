@@ -22,7 +22,7 @@ struct UploadPreview: View {
                 Spacer()
                 
                 Button("Upload") {
-                    vm.handleFileImport(urls, directory: path)
+                    vm.handleFileImport(urls, path: path)
                     dismiss()
                 }
             }

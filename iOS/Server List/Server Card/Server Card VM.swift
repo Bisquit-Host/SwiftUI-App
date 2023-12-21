@@ -9,11 +9,11 @@ final class ServerCardVM {
         self.id = id
     }
     
-    var ram_usage = 0.0
-    var cpu_usage = 0.0
-    var disk_usage = 0.0
+    var ramUsage = 0.0
+    var cpuUsage = 0.0
+    var diskUsage = 0.0
     var stateColor: Color = .yellow
-    var isLoadingData = true
+    var isLoading = true
     
     func fetchServerUsage() {
         serverUsageAPI(id) { result in
@@ -32,9 +32,9 @@ final class ServerCardVM {
     func updateUsage(_ model: ResourceUsageAttributes) {
         let usage = model.usage
         
-        cpu_usage = usage.cpu
-        ram_usage = usage.memory
-        disk_usage = usage.disk
+        cpuUsage = usage.cpu
+        ramUsage = usage.memory
+        diskUsage = usage.disk
         
         withAnimation {
             switch model.state {
@@ -48,7 +48,7 @@ final class ServerCardVM {
                 stateColor = .yellow
             }
             
-            isLoadingData = false
+            isLoading = false
         }
     }
 }

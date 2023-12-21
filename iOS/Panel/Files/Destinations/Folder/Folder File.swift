@@ -30,11 +30,9 @@ struct FolderFile: View {
             Section {
                 ForEach(vm.filteredFiles, id: \.name) { file in
                     FileView(id, file: file, path: path)
-                        .fileContextMenu(
-                            file.name,
-                            path: path,
-                            mimeType: file.mimetype
-                        )
+                        .fileContextMenu(file.name,
+                                         path: path,
+                                         mimeType: file.mimetype)
                 }
                 .onDelete { offsets in
                     deleteItem(offsets)
@@ -70,7 +68,7 @@ struct FolderFile: View {
         }
         .onChange(of: image) {
             if let image {
-                vm.handleImageImport(image, directory: path)
+                vm.handleImageImport(image, path: path)
             }
         }
     }

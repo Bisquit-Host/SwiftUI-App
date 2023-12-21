@@ -52,12 +52,11 @@ final class FileTabVM: ObservableObject {
         fileUploader.cancelUpload()
     }
     
-    func uploadFile(
-        _ urlString: String,
-        name: String,
-        directory: String,
-        mimeType: String,
-        fileUrl: URL
+    func uploadFile(_ urlString: String,
+                    name: String,
+                    path: String,
+                    mimeType: String,
+                    fileUrl: URL
     ) {
         main {
             withAnimation {
@@ -65,7 +64,7 @@ final class FileTabVM: ObservableObject {
             }
             
             self.fileUploader.uploadFile(
-                urlString + "&directory=\(directory.applyPercentEncoding())",
+                urlString + "&directory=\(path.applyPercentEncoding())",
                 name: name,
                 mimeType: mimeType,
                 fileUrl: fileUrl
@@ -77,12 +76,12 @@ final class FileTabVM: ObservableObject {
                 }
                 
                 self.uploadProgress = 0
-                self.fetchFiles(directory)
+                self.fetchFiles(path)
             }
         }
     }
     
-    func handleFileImport(_ urls: [URL], directory: String) {
+    func handleFileImport(_ urls: [URL], path: String) {
         for fileURL in urls {
             let fileName = fileURL.lastPathComponent
             
@@ -93,18 +92,17 @@ final class FileTabVM: ObservableObject {
             
             uploadFileAPI(id) { result in
                 switch result {
-                case .success(let vm):
-                    if let vm {
-                        let url = vm.attributes.url
+                case .success(let model):
+                    if let model = model?.attributes {
+                        let url = model.url
                         
                         self.uploadFile(url,
                                         name: fileName,
-                                        directory: directory,
+                                        path: path,
                                         mimeType: mimeType,
-                                        fileUrl: fileURL
-                        )
+                                        fileUrl: fileURL)
                         
-                        self.fetchFiles(directory)
+                        self.fetchFiles(path)
                     }
                     
                 case .failure(let error):
@@ -114,8 +112,8 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func handleImageImport(_ image: UIImage, directory: String) {
-        guard let imageData = image.jpegData(compressionQuality: 0.9) else {
+    func handleImageImport(_ image: UIImage, path: String) {
+        guard let imageData = image.jpegData(compressionQuality: 1) else {
             print("Unable to convert image to data")
             return
         }
@@ -133,21 +131,21 @@ final class FileTabVM: ObservableObject {
         
         uploadFileAPI(id) { result in
             switch result {
-            case .success(let vm):
-                if let vm {
-                    let url = vm.attributes.url
+            case .success(let model):
+                if let vm = model?.attributes {
+                    let url = vm.url
                     
                     self.uploadFile(url,
                                     name: "Image\(UUID().uuidString).jpeg",
-                                    directory: directory,
+                                    path: path,
                                     mimeType: mimeType,
                                     fileUrl: fileURL)
                     
-                    self.fetchFiles(directory)
+                    self.fetchFiles(path)
                 }
                 
             case .failure(let error):
-                print("Error in file API: \(error)")
+                networkCallError(#function, error)
             }
         }
     }

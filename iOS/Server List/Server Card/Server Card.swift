@@ -33,28 +33,26 @@ struct ServerCard: View {
                     
                     HStack(spacing: 20) {
                         RegularGauge(.cpu,
-                                     value: vm.cpu_usage,
+                                     value: vm.cpuUsage,
                                      limit: limits.cpu,
-                                     isRedacted: vm.isLoadingData
-                        )
+                                     isRedacted: vm.isLoading)
                         
                         RegularGauge(.ram,
-                                     value: vm.ram_usage,
+                                     value: vm.ramUsage,
                                      limit: limits.memory,
-                                     isRedacted: vm.isLoadingData
-                        )
+                                     isRedacted: vm.isLoading)
                     }
                     .matchedEffect("RAM_CPU", in: animation)
                     
-                    DiskGauge(vm.disk_usage,
+                    DiskGauge(vm.diskUsage,
                               limit: limits.disk,
-                              isRedacted: vm.isLoadingData
-                    )
+                              isRedacted: vm.isLoading)
                     .matchedEffect("disk", in: animation)
                 }
                 .padding(.vertical, 5)
                 .padding(.horizontal, 10)
-                .background(.ultraThinMaterial, in: .rect(cornerRadius: 35))
+                .background(.ultraThinMaterial, 
+                            in: .rect(cornerRadius: 35))
                 
             case 1:
                 HStack {
@@ -62,9 +60,9 @@ struct ServerCard: View {
                         ServerCardNaStatus(name, color: vm.stateColor)
                             .matchedEffect("name", in: animation)
                         
-                        DiskGauge(vm.disk_usage,
+                        DiskGauge(vm.diskUsage,
                                   limit: limits.disk,
-                                  isRedacted: vm.isLoadingData
+                                  isRedacted: vm.isLoading
                         )
                         .padding(.top, 4)
                         .matchedEffect("disk", in: animation)
@@ -73,22 +71,24 @@ struct ServerCard: View {
                     HStack {
                         RegularGauge(
                             .cpu,
-                            value: vm.cpu_usage,
+                            value: vm.cpuUsage,
                             limit: limits.cpu,
-                            isRedacted: vm.isLoadingData
+                            isRedacted: vm.isLoading
                         )
                         
                         RegularGauge(
                             .ram,
-                            value: vm.ram_usage,
+                            value: vm.ramUsage,
                             limit: limits.memory,
-                            isRedacted: vm.isLoadingData
+                            isRedacted: vm.isLoading
                         )
                     }
                     .matchedEffect("RAM_CPU", in: animation)
                 }
                 .frame(height: 90)
-                .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
+                .background(.ultraThinMaterial,
+                            in: .rect(cornerRadius: 16))
+//                            in: .rect(cornerRadius: 16))
                 //                .background(settings.themeColor(), in: .rect(cornerRadius: 16))
                 //            case 2:
                 //                HStack {

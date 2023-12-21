@@ -3,7 +3,7 @@ import Kingfisher
 
 @Observable
 final class CacheVM {
-    var cache_size = ""
+    var cacheSize = ""
     
     private let cache: ImageCache = .default
     
@@ -33,12 +33,12 @@ final class CacheVM {
             switch result {
             case .success(let size):
                 let formattedSize = formatBytes(Double(size))
-                self?.cache_size = formattedSize
+                self?.cacheSize = formattedSize
                 
             case .failure(let error):
                 print(error.localizedDescription)
                 
-                self?.cache_size = "Empty"
+                self?.cacheSize = "Empty"
             }
         }
     }

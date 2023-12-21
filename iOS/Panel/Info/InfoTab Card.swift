@@ -34,7 +34,7 @@ struct InfoTabCard: View {
                 PowerSwitch()
             }
             
-            TabView(selection: $settings.last_tab_panel_info) {
+            TabView(selection: $settings.lastInfoTab) {
                 InfoRelativeStats(server.limits)
                     .tag(TabInfo.relative)
                 

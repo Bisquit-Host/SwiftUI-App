@@ -21,12 +21,18 @@ struct ServerCard: View {
             Text(server.name)
             
             HStack {
-                CircularGauge("CPU", value: vm.cpu_usage, limit: limits.cpu, isRedacted: vm.isLoadingData)
+                CircularGauge("CPU", 
+                              value: vm.cpuUsage,
+                              limit: limits.cpu,
+                              isRedacted: vm.isLoading)
                 
-                CircularGauge("RAM", value: vm.ram_usage, limit: limits.memory, isRedacted: vm.isLoadingData)
+                CircularGauge("RAM",
+                              value: vm.ramUsage,
+                              limit: limits.memory,
+                              isRedacted: vm.isLoading)
             }
             
-            LinearGauge(value: vm.disk_usage, limit: limits.disk)
+            LinearGauge(value: vm.diskUsage, limit: limits.disk)
         }
         .padding(.vertical)
         .task {
