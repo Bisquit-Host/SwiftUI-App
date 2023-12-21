@@ -37,13 +37,11 @@ struct FileTab: View {
                     FileView(id, file: file, path: path)
                         .fileContextMenu(file.name,
                                          path: path,
-                                         mimeType: file.mimetype
-                        )
+                                         mimeType: file.mimetype)
                 }
                 .onDelete { offsets in
                     deleteItem(offsets)
                 }
-                
             } header: {
                 HStack {
                     FolderPath(path)
@@ -64,7 +62,7 @@ struct FileTab: View {
         .frame(maxWidth: 500)
         .safariCover($vm.showSafari, url: vm.downloadUrl)
         .task {
-            vm.fetchFiles()
+            vm.fetchFiles(path)
         }
         .refreshable {
             vm.fetchFiles(path)

@@ -11,8 +11,8 @@ final class UsersVM {
     
     var users: [UserListData] = []
     var permissions: PermissionAttributes?
-        
-    func updateUser(_ userId: String, permissions: [String], onSuccess: @escaping () -> (), onError: @escaping () -> ()) {
+    
+    func updateUser(_ userId: String, permissions: [String], onSuccess: @escaping () -> Void, onError: @escaping () -> Void) {
         updateUserAPI(id, userId: userId, permissions: permissions) { result in
             switch result {
             case .success:
@@ -57,8 +57,8 @@ final class UsersVM {
         getUserListAPI(id) { result in
             switch result {
             case .success(let model):
-                if let model {
-                    self.users = model.data
+                if let model = model?.data {
+                    self.users = model
                 }
                 
             case .failure(let error):
