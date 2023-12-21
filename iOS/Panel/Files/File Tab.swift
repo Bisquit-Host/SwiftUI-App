@@ -31,9 +31,7 @@ struct FileTab: View {
             }
             
             Section {
-                ForEach(vm.filteredFiles, id: \.attributes.name) { attributes in
-                    let file = attributes.attributes
-                    
+                ForEach(vm.filteredFiles, id: \.name) { file in
                     FileView(id, file: file, path: path)
                         .fileContextMenu(file.name,
                                          path: path,
@@ -81,7 +79,7 @@ struct FileTab: View {
     
     private func deleteItem(_ offsets: IndexSet) {
         for file in offsets {
-            let name = vm.filteredFiles[file].attributes.name
+            let name = vm.filteredFiles[file].name
             
             vm.fileDelete(name, path: path)
         }

@@ -3,9 +3,9 @@ import Kingfisher
 import PteroNet
 
 struct InfoTab: View {
-    private let server: ServerListAttributes
+    private let server: ServerAttributes
     
-    init(_ server: ServerListAttributes) {
+    init(_ server: ServerAttributes) {
         self.server = server
     }
     

@@ -5,13 +5,13 @@ struct PermissionCard: View {
     @Environment(UsersVM.self) private var vm
     
     @State private var userPermissions: [String]
-    @Binding private var user: UserListAttributes
+    @Binding private var user: UserAttributes
     private let key: String
     private let subKey: String
     private let perm: Bool?
     
     init(userPermissions: [String],
-         user: Binding<UserListAttributes>,
+         user: Binding<UserAttributes>,
          key: String,
          subKey: String,
          perm: Bool?

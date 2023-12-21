@@ -12,7 +12,7 @@ final class ServerSettingsVM {
     var alertRename = false
     var serverName = ""
     var serverDescription = ""
-    var startupVariables: [PNStartupVariable] = []
+    var startupVariables: [PNStartupVariableAttributes] = []
     
     func serverRename() {
         renameServerAPI(
@@ -34,12 +34,14 @@ final class ServerSettingsVM {
         listStartupVariablesAPI(id) { result in
             switch result {
             case .success(let model):
-                if let model {
-                    self.startupVariables = model.data
+                if let model = model?.data {
+                    self.startupVariables = model.map {
+                        $0.attributes
+                    }
                 }
                 
             case .failure(let error):
-                print("fetchStartupVariables \(error.localizedDescription)")
+                networkCallError(#function, error)
             }
         }
     }

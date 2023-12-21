@@ -7,8 +7,8 @@ struct UserList: View {
 #if os(watchOS)
         List {
             Section {
-                ForEach(vm.users, id: \.attributes.uuid) { user in
-                    UserCard(user.attributes)
+                ForEach(vm.users, id: \.uuid) { user in
+                    UserCard(user)
                 }
                 .onDelete(perform: delete)
             }
@@ -22,8 +22,8 @@ struct UserList: View {
         NavigationView {
             List {
                 Section {
-                    ForEach(vm.users, id: \.attributes.uuid) { user in
-                        UserCard(user.attributes)
+                    ForEach(vm.users, id: \.uuid) { user in
+                        UserCard(user)
                             .environment(vm)
                     }
                     .onDelete(perform: delete)
@@ -51,7 +51,7 @@ struct UserList: View {
     private func delete(offsets: IndexSet) {
         offsets.forEach { index in
             let user = vm.users[index]
-            vm.delete(user.attributes.uuid)
+            vm.delete(user.uuid)
         }
     }
 }

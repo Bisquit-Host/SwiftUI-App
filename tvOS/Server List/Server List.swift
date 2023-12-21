@@ -34,9 +34,7 @@ struct ServerList: View {
                 Text("\(Image(systemName: "gear")) Settings")
             }
             
-            ForEach(vm.servers, id: \.attributes.id) { attributes in
-                let server = attributes.attributes
-                
+            ForEach(vm.servers, id: \.id) { server in
                 Button {
                     navState.navigate(
                         .toPanel(server.id)

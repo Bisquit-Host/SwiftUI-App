@@ -4,15 +4,15 @@ import PteroNet
 struct ServerCard: View {
     private var vm: ServerCardVM
     
-    private let server: ServerListAttributes
+    private let server: ServerAttributes
     
-    init(_ server: ServerListAttributes) {
+    init(_ server: ServerAttributes) {
         self.server = server
         self.vm = ServerCardVM(server.id)
     }
     
     private let gradient = Gradient(colors: [.mint, .orange, .red])
-    private var limits: ServerListLimits {
+    private var limits: ServerLimits {
         server.limits
     }
     

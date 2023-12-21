@@ -5,10 +5,10 @@ struct DataTab: View {
     @Environment(DataTabVM.self) private var vm
     
     private let id: String
-    private let limits: ServerListFeatureLimits
+    private let limits: ServerFeatureLimits
     
     init(_ id: String,
-         limits: ServerListFeatureLimits
+         limits: ServerFeatureLimits
     ) {
         self.id = id
         self.limits = limits
@@ -40,6 +40,6 @@ struct DataTab: View {
 }
 
 #Preview {
-    DataTab("", limits: ServerListFeatureLimits(backups: 5, databases: 5))
+    DataTab("", limits: ServerFeatureLimits(backups: 5, databases: 5))
         .environment(DataTabVM(""))
 }

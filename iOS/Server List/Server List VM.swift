@@ -4,7 +4,7 @@ import PteroNet
 @Observable
 final class ServerListVM {
     // MARK: - PteroNet
-    var servers: [ServerListData] = []
+    var servers: [ServerAttributes] = []
     var apiKey = Keychain.load(key: "selectedApiKey") ?? ""
     
     // MARK: - Sheets / Alerts
@@ -21,12 +21,12 @@ final class ServerListVM {
     var keys: [String] = []
     var footerHidden = true
     
-    var filteredServers: [ServerListData] {
+    var filteredServers: [ServerAttributes] {
         servers.filter { server in
             let prompt = searchField.lowercased()
-            let matchesSearch = searchField.isEmpty || server.attributes.name.lowercased().contains(prompt) || server.attributes.description.lowercased().contains(prompt)
-            let matchesNode = displayedNode == .all || server.attributes.node == displayedNode.rawValue
-            let matchesSuspended = !filterBySuspended || server.attributes.isSuspended
+            let matchesSearch = searchField.isEmpty || server.name.lowercased().contains(prompt) || server.description.lowercased().contains(prompt)
+            let matchesNode = displayedNode == .all || server.node == displayedNode.rawValue
+            let matchesSuspended = !filterBySuspended || server.isSuspended
             
             return matchesSearch && matchesNode && matchesSuspended
         }
@@ -45,7 +45,10 @@ final class ServerListVM {
             switch result {
             case .success(let model):
                 if let model {
-                    var loadedServers = model.data
+                    var loadedServers = model.data.map {
+                        $0.attributes
+                    }
+                    
                     let totalPages = model.meta.pagination.totalPages
                     
                     if totalPages > 1 {
@@ -57,8 +60,12 @@ final class ServerListVM {
                             getServerListAPI(isAdmin, page: page) { result in
                                 switch result {
                                 case .success(let model):
-                                    if let model {
-                                        loadedServers.append(contentsOf: model.data)
+                                    if let model = model?.data {
+                                        let servers = model.map {
+                                            $0.attributes
+                                        }
+                                        
+                                        loadedServers.append(contentsOf: servers)
                                     }
                                     
                                 case .failure(let error):

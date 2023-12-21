@@ -5,9 +5,9 @@ import PteroNet
 struct UserCard: View {
     @Environment(UsersVM.self) private var vm
     
-    private let user: UserListAttributes
+    private let user: UserAttributes
     
-    init(_ user: UserListAttributes) {
+    init(_ user: UserAttributes) {
         self.user = user
     }
     

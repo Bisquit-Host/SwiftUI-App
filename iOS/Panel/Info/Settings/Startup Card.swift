@@ -4,10 +4,10 @@ import PteroNet
 
 struct StartupCard: View {
     private var vm: StartupVM
-    private let server: ServerListAttributes
+    private let server: ServerAttributes
     private let variable: PNStartupVariableAttributes
     
-    init(_ server: ServerListAttributes,
+    init(_ server: ServerAttributes,
          variable: PNStartupVariableAttributes,
          model: StartupVM = StartupVM("")
     ) {

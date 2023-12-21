@@ -5,10 +5,10 @@ struct FileView: View {
     @Environment(NavState.self) private var navState
     
     private let id, path: String
-    private let file: FileListAttributes
+    private let file: FileAttributes
     
     init(_ id: String,
-         file: FileListAttributes,
+         file: FileAttributes,
          path: String
     ) {
         self.id = id

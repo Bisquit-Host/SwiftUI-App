@@ -24,7 +24,7 @@ final class FileTabVM: ObservableObject {
     @Published var sheetPreview = false
 #endif
     
-    @Published var files: [FileListData] = []
+    @Published var files: [FileAttributes] = []
     @Published var degrees = 0.0
     @Published var toolbarId = "" // Requred for toolbar in order to update file list properly
     @Published var showTextField = false
@@ -35,12 +35,12 @@ final class FileTabVM: ObservableObject {
     @Published var searchRule = ""
     @Published var newFileName = ""
     
-    var filteredFiles: [FileListData] {
+    var filteredFiles: [FileAttributes] {
         if searchRule.isEmpty {
             files
         } else {
             files.filter {
-                $0.attributes.name
+                $0.name
                     .lowercased()
                     .contains(searchRule.lowercased())
             }
@@ -157,8 +157,8 @@ final class FileTabVM: ObservableObject {
         downloadFileAPI(id, from: path) { result in
             switch result {
             case .success(let model):
-                if let model {
-                    self.downloadUrl = model.attributes.url
+                if let model = model?.attributes {
+                    self.downloadUrl = model.url
                     self.showSafari = true
                 }
                 
@@ -225,11 +225,13 @@ final class FileTabVM: ObservableObject {
     func fetchFiles(_ path: String = "") {
         getFileListAPI(id, from: path) { result in
             switch result {
-            case .success(let vm):
-                if let vm {
+            case .success(let model):
+                if let model = model?.data {
                     withAnimation(.easeInOut) {
                         self.degrees += 360
-                        self.files = vm.data
+                        self.files = model.map {
+                            $0.attributes
+                        }
                     }
                 }
                 
@@ -246,11 +248,13 @@ final class FileTabVM: ObservableObject {
     func fetchFiles(_ path: String = "") {
         getFileListAPI(id, from: path) { result in
             switch result {
-            case .success(let vm):
+            case .success(let model):
                 main {
-                    if let vm {
+                    if let model = model?.data {
                         withAnimation {
-                            self.files = vm.data
+                            self.files = model.map {
+                                $0.attributes
+                            }
                         }
                     }
                 }

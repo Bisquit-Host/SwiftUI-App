@@ -19,8 +19,7 @@ struct FileTab: View {
             
             Divider()
             
-            ForEach(vm.filteredFiles, id: \.attributes.name) { attributes in
-                let file = attributes.attributes
+            ForEach(vm.filteredFiles, id: \.name) { file in
                 let name = file.name
                 let mimeType = file.mimetype
                 

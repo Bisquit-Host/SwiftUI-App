@@ -16,9 +16,7 @@ struct FileTab: View {
     
     var body: some View {
         List {
-            ForEach(vm.filteredFiles, id: \.attributes.name) { attributes in
-                let file = attributes.attributes
-                
+            ForEach(vm.filteredFiles, id: \.name) { file in
                 //                NavigationLink {
                 //                    Text(":1")
                 //                } label: {

@@ -3,14 +3,14 @@ import PteroNet
 
 struct InfoTab: View {
     //    private var settingsVM: ServerSettingsVM
-    private let server: ServerListAttributes
+    private let server: ServerAttributes
     private var logVM: LogVM
     private var usersVM: UsersVM
     private var allocationVM: AllocationVM
     //    @EnvironmentObject private var settings: SettingsStorage
     @Environment(NavState.self) private var navState
     
-    init(_ server: ServerListAttributes,
+    init(_ server: ServerAttributes,
          //         modelRename: ServerSettingsVM = ServerSettingsVM(""),
          logVM: LogVM = LogVM(""),
          modelUsers: UsersVM = UsersVM(""),

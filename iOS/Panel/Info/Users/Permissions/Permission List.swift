@@ -4,9 +4,9 @@ import PteroNet
 struct PermissionList: View {
     @Environment(UsersVM.self) private var vm
     
-    @Binding private var user: UserListAttributes
+    @Binding private var user: UserAttributes
     
-    init(_ user: Binding<UserListAttributes>) {
+    init(_ user: Binding<UserAttributes>) {
         _user = user
     }
     

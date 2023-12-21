@@ -5,11 +5,11 @@ struct FileView: View {
     @EnvironmentObject private var vm: FileTabVM
     
     private let id, path: String
-    private let file: FileListAttributes
+    private let file: FileAttributes
     
     init(_ id: String,
          path: String,
-         file: FileListAttributes
+         file: FileAttributes
     ) {
         self.id = id
         self.path = path

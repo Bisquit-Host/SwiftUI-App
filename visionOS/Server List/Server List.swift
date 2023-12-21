@@ -12,8 +12,8 @@ struct ServerList: View {
                 columns: [ GridItem(.adaptive(minimum: 180)) ]
                 //columns: [ GridItem(.adaptive(minimum: settings.designCode == 0 ? 180 : 360)) ]
             ) {
-                ForEach(vm.servers, id: \.attributes.id) { server in
-                    ServerCardParent(server.attributes)
+                ForEach(vm.servers, id: \.id) { server in
+                    ServerCardParent(server)
                 }
             }
             .padding(.horizontal, 4)

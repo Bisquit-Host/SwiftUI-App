@@ -4,9 +4,9 @@ import PteroNet
 struct InfoRelativeStats: View {
     @Environment(PanelVM.self) private var panelVM
     
-    private let limits: ServerListLimits
+    private let limits: ServerLimits
     
-    init(_ limits: ServerListLimits) {
+    init(_ limits: ServerLimits) {
         self.limits = limits
     }
     

@@ -2,7 +2,7 @@ import ScrechKit
 import PteroNet
 
 struct FileDetails: View {
-    private let file: FileListAttributes
+    private let file: FileAttributes
     
     var body: some View {
         VStack(alignment: .leading) {

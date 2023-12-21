@@ -4,17 +4,17 @@ import PteroNet
 struct ServerListGrid: View {
     @EnvironmentObject private var settings: SettingsStorage
     
-    private let servers: [ServerListData]
+    private let servers: [ServerAttributes]
     
-    init(_ servers: [ServerListData]) {
+    init(_ servers: [ServerAttributes]) {
         self.servers = servers
     }
     
     var body: some View {
 #if os(watchOS)
         LazyVStack {
-            ForEach(servers, id: \.attributes.id) { server in
-                ServerCardParent(server.attributes)
+            ForEach(servers, id: \.id) { server in
+                ServerCardParent(server)
             }
         }
 #else
@@ -27,8 +27,8 @@ struct ServerListGrid: View {
             spacing: 8
         ) {
             if settings.isApiKeyValid {
-                ForEach(servers, id: \.attributes.id) { server in
-                    ServerCardParent(server.attributes)
+                ForEach(servers, id: \.id) { server in
+                    ServerCardParent(server)
                 }
             } else {
                 ServerCardParent(
@@ -39,22 +39,24 @@ struct ServerListGrid: View {
                         node: "",
                         description: "",
                         dockerImage: "",
-                        limits: ServerListLimits(
+                        limits: .init(
                             memory: 0,
                             cpu: 0,
                             disk: 0
                         ),
-                        featureLimits: ServerListFeatureLimits(
+                        featureLimits: .init(
                             backups: 0,
                             databases: 0
                         ),
-                        sftp: ServerListSftpDetails(
+                        sftp: .init(
                             ip: "",
                             port: 0
                         ),
                         isSuspended: false,
                         relationships: .init(
-                            allocations: .init(data: [])
+                            allocations: .init(
+                                data: []
+                            )
                         )
                     )
                 )

@@ -4,9 +4,9 @@ import PteroNet
 struct SftpView: View {
     private var vm = SftpVM()
     
-    private var server: ServerListAttributes
+    private var server: ServerAttributes
     
-    init(_ server: ServerListAttributes) {
+    init(_ server: ServerAttributes) {
         self.server = server
     }
     

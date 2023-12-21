@@ -4,10 +4,10 @@ import PteroNet
 struct PermissionsHeader: View {
     @Environment(UsersVM.self) private var vm
     
-    private let user: UserListAttributes
+    private let user: UserAttributes
     @Binding private var showDescription: Bool
     
-    init(_ user: UserListAttributes, showDescription: Binding<Bool>) {
+    init(_ user: UserAttributes, showDescription: Binding<Bool>) {
         self.user = user
         _showDescription = showDescription
     }

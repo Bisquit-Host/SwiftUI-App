@@ -2,11 +2,11 @@ import SwiftUI
 import PteroNet
 
 struct InfoTab: View {
-    private let server: ServerListAttributes
+    private let server: ServerAttributes
     private var users: UsersVM
     private var logs: LogVM
     
-    init(_ server: ServerListAttributes,
+    init(_ server: ServerAttributes,
          users: UsersVM = UsersVM(""),
          logs: LogVM = LogVM("")
     ) {

@@ -2,11 +2,11 @@ import ScrechKit
 import PteroNet
 
 struct FileView: View {
-    private let file: FileListAttributes
+    private let file: FileAttributes
     private let id, path: String
     
     init(_ id: String,
-         file: FileListAttributes,
+         file: FileAttributes,
          path: String = ""
     ) {
         self.id = id

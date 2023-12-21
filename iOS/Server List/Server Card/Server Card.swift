@@ -5,9 +5,9 @@ struct ServerCard: View {
     @State private var vm: ServerCardVM
     @EnvironmentObject private var settings: SettingsStorage
     
-    private let server: ServerListAttributes
+    private let server: ServerAttributes
     
-    init(_ server: ServerListAttributes) {
+    init(_ server: ServerAttributes) {
         self.server = server
         self.vm = ServerCardVM(server.id)
     }
@@ -19,7 +19,7 @@ struct ServerCard: View {
         server.name.replacing(" ", with: "")
     }
     
-    private var limits: ServerListLimits {
+    private var limits: ServerLimits {
         server.limits
     }
     

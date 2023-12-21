@@ -13,10 +13,10 @@ final class PanelVM {
     var serverUsage = [0.0, 0, 0]
     var cpuValues: [Value] = []
     var ramValues: [Value] = []
-    var disk_values: [Value] = []
+    var diskValues: [Value] = []
 #endif
     
-    var server: ServerListAttributes? = nil
+    var server: ServerAttributes? = nil
     var serverState: ServerState = .unknown
     var searchRule = ""
     var fieldSearch = ""
@@ -50,8 +50,8 @@ final class PanelVM {
         serverDetailsAPI(id) { result in
             switch result {
             case .success(let model):
-                if let model {
-                    self.server = model.attributes
+                if let model = model?.attributes {
+                    self.server = model
                 }
                 
             case .failure(let error):
@@ -158,7 +158,7 @@ final class PanelVM {
         PteroNet.powerSignal(id, signal: signal)
     }
     
-    func consoleDetails(completion: @escaping (ConsoleDetailsData?) -> Void) {
+    func consoleDetails(completion: @escaping (ConsoleDetails?) -> Void) {
         consoleDetailsAPI(id) { result in
             switch result {
             case .success(let model):
@@ -171,7 +171,7 @@ final class PanelVM {
         }
     }
     
-    func connectWebSocket(_ data: ConsoleDetailsData) {
+    func connectWebSocket(_ data: ConsoleDetails) {
         connection = WebSocketTaskConnection(
             data.socket,
             token: data.token

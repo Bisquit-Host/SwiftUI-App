@@ -9,7 +9,7 @@ final class UsersVM {
         self.id = id
     }
     
-    var users: [UserListData] = []
+    var users: [UserAttributes] = []
     var permissions: PermissionAttributes?
     
     func updateUser(_ userId: String, permissions: [String], onSuccess: @escaping () -> Void, onError: @escaping () -> Void) {
@@ -25,7 +25,7 @@ final class UsersVM {
         }
     }
     
-    func userDetails(_ user: Binding<UserListAttributes>) {
+    func userDetails(_ user: Binding<UserAttributes>) {
         userDetailsAPI(id, userId: user.wrappedValue.uuid) { result in
             switch result {
             case .success(let model):
@@ -58,7 +58,9 @@ final class UsersVM {
             switch result {
             case .success(let model):
                 if let model = model?.data {
-                    self.users = model
+                    self.users = model.map {
+                        $0.attributes
+                    }
                 }
                 
             case .failure(let error):

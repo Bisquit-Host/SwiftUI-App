@@ -4,9 +4,9 @@ import PteroNet
 struct ServerCardStats: View {
     @Environment(ServerCardVM.self) private var vm
     
-    private let limits: ServerListLimits
+    private let limits: ServerLimits
     
-    init(_ limits: ServerListLimits) {
+    init(_ limits: ServerLimits) {
         self.limits = limits
     }
     

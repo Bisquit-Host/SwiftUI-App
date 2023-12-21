@@ -6,17 +6,17 @@ struct StatsTab: View {
     @Environment(DataTabVM.self) private var dataTabVM
     @EnvironmentObject private var settings: SettingsStorage
     
-    private let server: ServerListAttributes
+    private let server: ServerAttributes
     
-    init(_ server: ServerListAttributes) {
+    init(_ server: ServerAttributes) {
         self.server = server
     }
     
-    private var limits: ServerListLimits {
+    private var limits: ServerLimits {
         server.limits
     }
     
-    private var featureLimits: ServerListFeatureLimits {
+    private var featureLimits: ServerFeatureLimits {
         server.featureLimits
     }
     

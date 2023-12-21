@@ -2,9 +2,9 @@ import SwiftUI
 import PteroNet
 
 struct ServerCardParent: View {
-    private let server: ServerListAttributes
+    private let server: ServerAttributes
     
-    init(_ server: ServerListAttributes) {
+    init(_ server: ServerAttributes) {
         self.server = server
     }
     

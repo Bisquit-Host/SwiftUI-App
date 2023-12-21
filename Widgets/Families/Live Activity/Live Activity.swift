@@ -160,7 +160,7 @@ final class LiveActivity {
         }
     }
     
-    func startLiveActivity(_ server: ServerListAttributes) {
+    func startLiveActivity(_ server: ServerAttributes) {
         let attributes = WidgetsAttributes(
             id: server.id,
             name: server.name,

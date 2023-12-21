@@ -9,8 +9,8 @@ final class SftpVM {
         accountDetailsAPI { [self] result in
             switch result {
             case .success(let model):
-                if let model {
-                    username = model.attributes.username
+                if let model = model?.attributes {
+                    username = model.username
                 }
                 
             case .failure(let error):

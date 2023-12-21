@@ -2,9 +2,9 @@ import ScrechKit
 import PteroNet
 
 struct FileNameAndIcon: View {
-    private let file: FileListAttributes
+    private let file: FileAttributes
     
-    init(_ file: FileListAttributes) {
+    init(_ file: FileAttributes) {
         self.file = file
     }
 #if os(tvOS)

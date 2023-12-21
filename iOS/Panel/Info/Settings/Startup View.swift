@@ -4,16 +4,17 @@ import PteroNet
 struct StartupView: View {
     @Environment(ServerSettingsVM.self) private var vm
     
-    private let server: ServerListAttributes
+    private let server: ServerAttributes
     
-    init(_ server: ServerListAttributes) {
+    init(_ server: ServerAttributes) {
         self.server = server
     }
     
     var body: some View {
-        List(vm.startupVariables, id: \.attributes.name) { variable in
+        List(vm.startupVariables, id: \.name) { variable in
             Section {
-                StartupCard(server, variable: variable.attributes)
+                StartupCard(server,
+                            variable: variable)
             }
         }
         .navigationTitle("Startup")

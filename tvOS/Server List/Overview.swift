@@ -20,7 +20,7 @@ struct Overview: View {
     ]
     
     private lazy var allServerIds: [String] = vm.servers.map {
-        $0.attributes.id
+        $0.id
     }
     
     var body: some View {

@@ -5,12 +5,12 @@ import PteroNet
 struct UserView: View {
     @Environment(UsersVM.self) private var vm
     
-    @State private var user: UserListAttributes
+    @State private var user: UserAttributes
     
-    init(_ user: UserListAttributes) {
+    init(_ user: UserAttributes) {
         self.user = user
     }
-                
+    
     var body: some View {
         NavigationView {
             List {

@@ -9,10 +9,10 @@ struct InfoTabButtons: View {
     private var settingsVM: ServerSettingsVM
     private var logVM: LogVM
     private var userVM: UsersVM
-    private let server: ServerListAttributes
+    private let server: ServerAttributes
     @EnvironmentObject private var settings: SettingsStorage
     
-    init(_ server: ServerListAttributes,
+    init(_ server: ServerAttributes,
          modelRename: ServerSettingsVM = ServerSettingsVM(""),
          logVM: LogVM = LogVM(""),
          modelUsers: UsersVM = UsersVM("")

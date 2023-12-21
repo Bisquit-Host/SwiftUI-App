@@ -30,9 +30,9 @@ final class LogVM {
         getLogsAPI(id) { result in
             switch result {
             case .success(let model):
-                if let model {
+                if let model = model?.data {
                     withAnimation {
-                        self.logs = model.data
+                        self.logs = model
                     }
                 }
                 

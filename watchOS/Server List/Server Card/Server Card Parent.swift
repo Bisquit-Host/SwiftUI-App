@@ -4,9 +4,9 @@ import PteroNet
 struct ServerCardParent: View {
     @Environment(NavState.self) private var navState
     
-    private let server: ServerListAttributes
+    private let server: ServerAttributes
     
-    init(_ server: ServerListAttributes) {
+    init(_ server: ServerAttributes) {
         self.server = server
     }
     
