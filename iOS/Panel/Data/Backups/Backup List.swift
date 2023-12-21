@@ -13,8 +13,8 @@ struct BackupList: View {
         @Bindable var binding = vm
         
         Section {
-            ForEach(vm.backups, id: \.attributes.uuid) { backup in
-                BackupCard(backup.attributes)
+            ForEach(vm.backups, id: \.uuid) { backup in
+                BackupCard(backup)
             }
             .onDelete { offsets in
                 vm.deleteItems(.backups, offsets: offsets)

@@ -8,8 +8,7 @@ struct ScheduleList: View {
     
     var body: some View {
         Section {
-            ForEach(vm.schedules, id: \.attributes.id) { attributes in
-                let schedule = attributes.attributes
+            ForEach(vm.schedules, id: \.id) { schedule in
                 let tasks = schedule.relationships.tasks.data
 #if os(tvOS)
                 ScheduleCard(schedule)

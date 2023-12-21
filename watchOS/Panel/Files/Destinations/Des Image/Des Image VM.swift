@@ -17,8 +17,8 @@ final class ImageFileVM {
         downloadFileAPI(id, from: path) { result in
             switch result {
             case .success(let model):
-                if let model {
-                    self.url = model.attributes.url
+                if let model = model?.attributes.url {
+                    self.url = model
                 }
                 
             case .failure(let error):

@@ -11,8 +11,8 @@ final class AccountVM {
         accountDetailsAPI { [self] result in
             switch result {
             case .success(let model):
-                if let model {
-                    account = model.attributes
+                if let model = model?.attributes {
+                    account = model
                 }
                 
             case .failure(let error):
@@ -25,8 +25,8 @@ final class AccountVM {
         twoFaDetailtsAPI { [self] result in
             switch result {
             case .success(let model):
-                if let model = model?.data {
-                    qrCodeUrl = model.imageUrlData
+                if let model = model?.data.imageUrlData {
+                    qrCodeUrl = model
                 }
                 
             case .failure(let error):

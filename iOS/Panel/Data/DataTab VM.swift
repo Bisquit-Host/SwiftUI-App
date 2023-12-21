@@ -9,9 +9,9 @@ final class DataTabVM {
         self.id = id
     }
     
-    var backups: [BackupListData] = []
-    var databases: [DatabaseData] = []
-    var schedules: [ScheduleListData] = []
+    var backups: [BackupAttributes] = []
+    var databases: [DatabaseAttributes] = []
+    var schedules: [ScheduleAttributes] = []
     var downloadUrl = ""
     var textCreateBackup = ""
     var newDatabaseName = ""
@@ -29,9 +29,11 @@ final class DataTabVM {
         getDataListAPI(id, endpoint: .backups) { (result: Result<BackupListResponse?, Error>) in
             switch result {
             case .success(let model):
-                if let model {
+                if let model = model?.data {
                     withAnimation {
-                        self.backups = model.data
+                        self.backups = model.map {
+                            $0.attributes
+                        }
                     }
                 }
                 
@@ -61,7 +63,7 @@ final class DataTabVM {
         createScheduleAPI(id, newSchedule: newSchedule) { result in
             switch result {
             case .success(let model):
-                if let model {
+                if let model = model?.attributes {
                     withAnimation {
                         self.schedules.append(model)
                     }
@@ -79,8 +81,10 @@ final class DataTabVM {
             case .success(let model):
                 if let model {
                     withAnimation {
-                        if let index = self.schedules.firstIndex(where: { $0.attributes.id == scheduleId }) {
-                            self.schedules[index].attributes.relationships.tasks.data.append(model)
+                        if let index = self.schedules.firstIndex(where: {
+                            $0.id == scheduleId
+                        }) {
+                            self.schedules[index].relationships.tasks.data.append(model)
                         }
                     }
                 }
@@ -99,9 +103,11 @@ final class DataTabVM {
                 //                    self.scheduleTasks.remove(at: index)
                 //                }
                 
-                if let scheduleIndex = self.schedules.firstIndex(where: { $0.attributes.id == scheduleId }) {
-                    if let taskIndex = self.schedules[scheduleIndex].attributes.relationships.tasks.data.firstIndex(where: { $0.attributes.id == taskId }) {
-                        self.schedules[scheduleIndex].attributes.relationships.tasks.data.remove(at: taskIndex)
+                if let scheduleIndex = self.schedules.firstIndex(where: { 
+                    $0.id == scheduleId
+                }) {
+                    if let taskIndex = self.schedules[scheduleIndex].relationships.tasks.data.firstIndex(where: { $0.attributes.id == taskId }) {
+                        self.schedules[scheduleIndex].relationships.tasks.data.remove(at: taskIndex)
                     }
                 }
                 
@@ -115,8 +121,10 @@ final class DataTabVM {
         lockBackupAPI(id, uuid: uuid) { result in
             switch result {
             case .success(let model):
-                if let model {
-                    if let index = self.backups.firstIndex(where: { $0.attributes.uuid == model.attributes.uuid }) {
+                if let model = model?.attributes {
+                    if let index = self.backups.firstIndex(where: {
+                        $0.uuid == model.uuid
+                    }) {
                         self.backups[index] = model
                     }
                 }
@@ -131,9 +139,11 @@ final class DataTabVM {
         getDataListAPI(id, endpoint: .databases) { (result: Result<DatabaseListResponse?, Error>) in
             switch result {
             case .success(let model):
-                if let model {
+                if let model = model?.data {
                     withAnimation {
-                        self.databases = model.data
+                        self.databases = model.map {
+                            $0.attributes
+                        }
                     }
                 }
                 
@@ -147,9 +157,11 @@ final class DataTabVM {
         getDataListAPI(id, endpoint: .schedules) { (result: Result<ScheduleListResponse?, Error>) in
             switch result {
             case .success(let model):
-                if let model {
+                if let model = model?.data {
                     withAnimation {
-                        self.schedules = model.data
+                        self.schedules = model.map {
+                            $0.attributes
+                        }
                     }
                 }
                 
@@ -163,7 +175,7 @@ final class DataTabVM {
         for index in offsets {
             switch endpoint {
             case .backups:
-                let uuid = backups[index].attributes.uuid
+                let uuid = backups[index].uuid
                 deleteData(uuid, endpoint: .backups)
                 
             case .schedules:
@@ -172,7 +184,7 @@ final class DataTabVM {
                 print("Soon")
                 
             case .databases:
-                let id = databases[index].attributes.id
+                let id = databases[index].id
                 deleteData(id, endpoint: .databases)
             }
         }
@@ -182,7 +194,9 @@ final class DataTabVM {
         deleteScheduleAPI(id, scheduleId: scheduleId) { result in
             switch result {
             case .success:
-                if let index = self.schedules.firstIndex(where: { $0.attributes.id == scheduleId }) {
+                if let index = self.schedules.firstIndex(where: { 
+                    $0.id == scheduleId
+                }) {
                     self.schedules.remove(at: index)
                 }
                 
@@ -233,7 +247,7 @@ final class DataTabVM {
         createBackupAPI(id, name: textCreateBackup) { result in
             switch result {
             case .success(let model):
-                if let model {
+                if let model = model?.attributes {
                     withAnimation {
                         self.backups.append(model)
                     }
@@ -263,8 +277,8 @@ final class DataTabVM {
         rotateDatabasePasswordAPI(id, dbId: dbId) { result in
             switch result {
             case .success(let model):
-                if let model {
-                    if let index = self.databases.firstIndex(where: { $0.attributes.id == model.attributes.id }) {
+                if let model = model?.attributes {
+                    if let index = self.databases.firstIndex(where: { $0.id == model.id }) {
                         self.databases[index] = model
                     }
                 }
@@ -279,7 +293,7 @@ final class DataTabVM {
         createDatabaseAPI(id, name: newDatabaseName) { result in
             switch result {
             case .success(let model):
-                if let model {
+                if let model = model?.attributes {
                     withAnimation {
                         self.databases.append(model)
                         self.newDatabaseName = ""
