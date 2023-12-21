@@ -29,8 +29,8 @@ final class StartPageVM {
             main { [self] in
                 switch result {
                 case .success(let model):
-                    if let model {
-                        validateKey(model.attributes)
+                    if let model = model?.attributes {
+                        validateKey(model)
                     }
                     
                 case .failure(let error):

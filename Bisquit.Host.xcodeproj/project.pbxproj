@@ -662,6 +662,9 @@
 		F3CCF5BD2B3454AA005FFF2C /* User List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF59FE2A4A3188003A1973 /* User List.swift */; };
 		F3CCF5BE2B3454AD005FFF2C /* User Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A0E2A4A3ABD003A1973 /* User Card.swift */; };
 		F3CCF5BF2B3454B0005FFF2C /* User View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39CF3572A50C00C0077996D /* User View.swift */; };
+		F3CCF5C12B34576F005FFF2C /* Allocation List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCF5C02B34576F005FFF2C /* Allocation List.swift */; };
+		F3CCF5C32B345792005FFF2C /* Allocation Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCF5C22B345792005FFF2C /* Allocation Card.swift */; };
+		F3CCF5C52B3457AE005FFF2C /* Allocation VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCF5C42B3457AE005FFF2C /* Allocation VM.swift */; };
 		F3D22C092A26564C00721113 /* Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304498929E990E9006DC0C7 /* Cloud Keys.swift */; };
 		F3D264302A66A690005C3777 /* Sftp VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D2642F2A66A690005C3777 /* Sftp VM.swift */; };
 		F3D264312A66A690005C3777 /* Sftp VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D2642F2A66A690005C3777 /* Sftp VM.swift */; };
@@ -1348,6 +1351,9 @@
 		F3C9D85B2B31146E00265492 /* User Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Avatar.swift"; sourceTree = "<group>"; };
 		F3C9D85F2B319B9E00265492 /* Permission Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Permission Card.swift"; sourceTree = "<group>"; };
 		F3CB53D52971CF6B00A213B0 /* Database Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database Card.swift"; sourceTree = "<group>"; };
+		F3CCF5C02B34576F005FFF2C /* Allocation List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation List.swift"; sourceTree = "<group>"; };
+		F3CCF5C22B345792005FFF2C /* Allocation Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation Card.swift"; sourceTree = "<group>"; };
+		F3CCF5C42B3457AE005FFF2C /* Allocation VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation VM.swift"; sourceTree = "<group>"; };
 		F3D2642F2A66A690005C3777 /* Sftp VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sftp VM.swift"; sourceTree = "<group>"; };
 		F3D264332A66A926005C3777 /* Settings Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings Button.swift"; sourceTree = "<group>"; };
 		F3D264362A66A9B9005C3777 /* Settings Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings Parent.swift"; sourceTree = "<group>"; };
@@ -1952,6 +1958,9 @@
 			isa = PBXGroup;
 			children = (
 				F342FAAD2B2C6A5000854270 /* Info Tab.swift */,
+				F3CCF5C02B34576F005FFF2C /* Allocation List.swift */,
+				F3CCF5C22B345792005FFF2C /* Allocation Card.swift */,
+				F3CCF5C42B3457AE005FFF2C /* Allocation VM.swift */,
 				F342FAB22B2E43D500854270 /* Log Card.swift */,
 			);
 			path = Info;
@@ -3157,6 +3166,7 @@
 				F3CCF5BB2B34546F005FFF2C /* Permissions Header.swift in Sources */,
 				F33CDC002A26B920008D0214 /* Browser VM.swift in Sources */,
 				F3499EF22A26DCA0006101B7 /* Panel Model.swift in Sources */,
+				F3CCF5C32B345792005FFF2C /* Allocation Card.swift in Sources */,
 				F39D28572A27F1F5007B12C3 /* File Manager.swift in Sources */,
 				F3464D2C2A863A6100188B0C /* Create Backup.swift in Sources */,
 				F30C13082A545D6E00A7EFF0 /* Linking VM.swift in Sources */,
@@ -3221,6 +3231,7 @@
 				F3D22C092A26564C00721113 /* Cloud Keys.swift in Sources */,
 				F342FAAF2B2E07FF00854270 /* Users VM.swift in Sources */,
 				F3C9D8542B3060E100265492 /* UIVideoPlayer.swift in Sources */,
+				F3CCF5C52B3457AE005FFF2C /* Allocation VM.swift in Sources */,
 				F37080522A2A1F6D0046CE70 /* Database List.swift in Sources */,
 				F342FAB42B2E45CB00854270 /* Log Detail View.swift in Sources */,
 				F3000E16295A357800ABD30A /* Server List.swift in Sources */,
@@ -3231,6 +3242,7 @@
 				F3C9D84A2B302AA200265492 /* File Context Menu.swift in Sources */,
 				F3D49DB52B2336240033B52E /* Overview VM.swift in Sources */,
 				F3CCF5BA2B345466005FFF2C /* Permission List.swift in Sources */,
+				F3CCF5C12B34576F005FFF2C /* Allocation List.swift in Sources */,
 				F30C12FE2A54546900A7EFF0 /* App Container.swift in Sources */,
 				F35FEB0F2B09F4D3004DA05D /* Network VM.swift in Sources */,
 				F3EB09E02A297F250073916A /* Des Image VM.swift in Sources */,
