@@ -654,6 +654,14 @@
 		F3C9D8612B319B9E00265492 /* Permission Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D85F2B319B9E00265492 /* Permission Card.swift */; };
 		F3C9D8622B319B9E00265492 /* Permission Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D85F2B319B9E00265492 /* Permission Card.swift */; };
 		F3CB53D62971CF6B00A213B0 /* Database Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB53D52971CF6B00A213B0 /* Database Card.swift */; };
+		F3CCF5B82B345367005FFF2C /* User Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D85B2B31146E00265492 /* User Avatar.swift */; };
+		F3CCF5B92B34543B005FFF2C /* User2Fa.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3EC2B3208BE009B7062 /* User2Fa.swift */; };
+		F3CCF5BA2B345466005FFF2C /* Permission List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D8572B31135B00265492 /* Permission List.swift */; };
+		F3CCF5BB2B34546F005FFF2C /* Permissions Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3F12B320A6A009B7062 /* Permissions Header.swift */; };
+		F3CCF5BC2B345472005FFF2C /* Permission Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D85F2B319B9E00265492 /* Permission Card.swift */; };
+		F3CCF5BD2B3454AA005FFF2C /* User List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF59FE2A4A3188003A1973 /* User List.swift */; };
+		F3CCF5BE2B3454AD005FFF2C /* User Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A0E2A4A3ABD003A1973 /* User Card.swift */; };
+		F3CCF5BF2B3454B0005FFF2C /* User View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39CF3572A50C00C0077996D /* User View.swift */; };
 		F3D22C092A26564C00721113 /* Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304498929E990E9006DC0C7 /* Cloud Keys.swift */; };
 		F3D264302A66A690005C3777 /* Sftp VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D2642F2A66A690005C3777 /* Sftp VM.swift */; };
 		F3D264312A66A690005C3777 /* Sftp VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D2642F2A66A690005C3777 /* Sftp VM.swift */; };
@@ -3143,8 +3151,10 @@
 			files = (
 				F370804D2A2A1CB60046CE70 /* Section Header.swift in Sources */,
 				F31B4450297550CD0036868F /* Stats Tab.swift in Sources */,
+				F3CCF5B82B345367005FFF2C /* User Avatar.swift in Sources */,
 				F3464D332A863A6600188B0C /* Send Command.swift in Sources */,
 				F370804C2A2A1CAF0046CE70 /* Create Button.swift in Sources */,
+				F3CCF5BB2B34546F005FFF2C /* Permissions Header.swift in Sources */,
 				F33CDC002A26B920008D0214 /* Browser VM.swift in Sources */,
 				F3499EF22A26DCA0006101B7 /* Panel Model.swift in Sources */,
 				F39D28572A27F1F5007B12C3 /* File Manager.swift in Sources */,
@@ -3163,6 +3173,7 @@
 				F370804E2A2A1D180046CE70 /* Data Tab.swift in Sources */,
 				F397E74B2B208A3B00DDF1CE /* New Folder.swift in Sources */,
 				F39D285C2A27F474007B12C3 /* File Icon.swift in Sources */,
+				F3CCF5BF2B3454B0005FFF2C /* User View.swift in Sources */,
 				F37080502A2A1EB30046CE70 /* Schedule Card.swift in Sources */,
 				F3464D202A86396600188B0C /* Change Power.swift in Sources */,
 				F3DDD59D2A62AC7C009FDFBF /* Create Backup Button.swift in Sources */,
@@ -3180,6 +3191,7 @@
 				F37061CA29774886009B4067 /* Nav Destinations.swift in Sources */,
 				F3EB09DD2A295F7C0073916A /* Text File VM.swift in Sources */,
 				F3D295162AF396FD00ED43A0 /* Tabs.swift in Sources */,
+				F3CCF5B92B34543B005FFF2C /* User2Fa.swift in Sources */,
 				F37080492A2A1C920046CE70 /* Backup List.swift in Sources */,
 				F33CDBFB2A26A571008D0214 /* Server Card.swift in Sources */,
 				F33CDBFC2A26A60D008D0214 /* Server Card VM.swift in Sources */,
@@ -3218,6 +3230,7 @@
 				F323BF9F2B20B84100116B97 /* Server Card Context Menu.swift in Sources */,
 				F3C9D84A2B302AA200265492 /* File Context Menu.swift in Sources */,
 				F3D49DB52B2336240033B52E /* Overview VM.swift in Sources */,
+				F3CCF5BA2B345466005FFF2C /* Permission List.swift in Sources */,
 				F30C12FE2A54546900A7EFF0 /* App Container.swift in Sources */,
 				F35FEB0F2B09F4D3004DA05D /* Network VM.swift in Sources */,
 				F3EB09E02A297F250073916A /* Des Image VM.swift in Sources */,
@@ -3235,11 +3248,14 @@
 				F39D68112A2634C700B9BDFC /* Dev Settings.swift in Sources */,
 				F33CDC012A26B927008D0214 /* Browser Topbar.swift in Sources */,
 				F3A31B0B2B0B161D00F89C51 /* Cloud Key Card.swift in Sources */,
+				F3CCF5BD2B3454AA005FFF2C /* User List.swift in Sources */,
 				F342FAB52B2E499300854270 /* Log List.swift in Sources */,
 				F39D28552A27EE88007B12C3 /* Panel View.swift in Sources */,
 				F30C12FB2A54536800A7EFF0 /* Auth Page.swift in Sources */,
 				F3D49DB32B2330C30033B52E /* Overview.swift in Sources */,
+				F3CCF5BE2B3454AD005FFF2C /* User Card.swift in Sources */,
 				F32FD7222B1E065600723B88 /* Network Calls.swift in Sources */,
+				F3CCF5BC2B345472005FFF2C /* Permission Card.swift in Sources */,
 				F3D558B32A33C6A000608447 /* FileTab VM.swift in Sources */,
 				F3796566295C51FF0074CA3D /* Gauge TV.swift in Sources */,
 				F3FFB7462A57F91700220FA5 /* Map List.swift in Sources */,

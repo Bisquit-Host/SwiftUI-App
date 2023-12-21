@@ -13,32 +13,39 @@ struct UserCard: View {
     
     @State private var sheetDetails = false
     
-    var body: some View {
-        HStack {
-            KFImage(URL(string: user.image))
-                .resizable()
-                .frame(width: 32, height: 32)
-                .clipShape(.rect(cornerRadius: 10))
-            
-            VStack(alignment: .leading) {
-                Text(user.username)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.5)
-#if !os(watchOS)
-                Text(user.email)
-                    .footnote()
-                    .foregroundStyle(.secondary)
+#if os(tvOS)
+    private let imageSize: CGFloat = 64
+#else
+    private let imageSize: CGFloat = 32
 #endif
-            }
-            
-            Spacer()
-            
-            Image(systemName: "lock.fill")
-                .title2()
-                .foregroundStyle(user.twoFaEnabled ? .green : .red)
-        }
-        .onTapGesture {
+    
+    var body: some View {
+        Button {
             sheetDetails = true
+        } label: {
+            HStack {
+                KFImage(URL(string: user.image))
+                    .resizable()
+                    .frame(width: imageSize, height: imageSize)
+                    .clipShape(.rect(cornerRadius: 10))
+                
+                VStack(alignment: .leading) {
+                    Text(user.username)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.5)
+#if !os(watchOS)
+                    Text(user.email)
+                        .footnote()
+                        .foregroundStyle(.secondary)
+#endif
+                }
+                
+                Spacer()
+                
+                Image(systemName: "lock.fill")
+                    .title2()
+                    .foregroundStyle(user.twoFaEnabled ? .green : .red)
+            }
         }
 #if !os(watchOS)
         .contextMenu {

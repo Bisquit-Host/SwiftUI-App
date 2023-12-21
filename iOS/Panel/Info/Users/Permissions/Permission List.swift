@@ -65,6 +65,9 @@ struct PermissionList: View {
                             Text(permission.description)
                         }
                     }
+#if os(tvOS)
+                    Divider()
+#endif
                 }
             }
         }
@@ -75,4 +78,5 @@ struct PermissionList: View {
     PermissionList(.constant(
         sampleJSON(.userAttributes)
     ))
+    .environment(UsersVM(""))
 }

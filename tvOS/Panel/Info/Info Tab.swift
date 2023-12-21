@@ -24,15 +24,14 @@ struct InfoTab: View {
         VStack(spacing: 60) {
             HStack {
                 NavigationLink {
-                    
-                    //                    .environment(usersVM)
+                    UserList()
+                        .environment(usersVM)
                 } label: {
                     Label("Users", systemImage: "person.3")
                         .frame(width: 500, height: 250)
                         .background(.ultraThinMaterial,
                                     in: .rect(cornerRadius: 64))
                 }
-                .disabled(true)
                 
                 NavigationLink {
                     LogList()

@@ -15,7 +15,7 @@ struct UserView: View {
         NavigationView {
             List {
                 UserAvatar(user.image)
-#if os(watchOS)
+#if os(watchOS) || os(tvOS)
                 Text(user.email)
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
@@ -47,7 +47,7 @@ struct UserView: View {
                 vm.userDetails($user)
             }
             .navigationTitle(user.username)
-            .navigationBarTitleDisplayMode(.inline)
+            .toolbarTitleDisplayMode(.inline)
             .scrollIndicators(.never)
         }
     }
