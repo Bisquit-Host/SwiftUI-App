@@ -1,7 +1,6 @@
 import SwiftUI
 import AlertKit
 
-#if !os(macOS)
 final class SystemAlert {
     static func copied() {
         AlertKitAPI.present(
@@ -21,4 +20,3 @@ final class SystemAlert {
         )
     }
 }
-#endif

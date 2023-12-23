@@ -8,7 +8,7 @@ final class LinkingVM {
     
     private let tabMapping: [String: Tabs] = [
         "backups": .backup,
-        "files": .fileManager,
+        "files": .files,
         "": .info
     ]
     

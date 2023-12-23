@@ -24,9 +24,9 @@ final class FileTabVM: ObservableObject {
     @Published var sheetPreview = false
 #endif
     
-#if os(macOS)
+    // macOS
     @Published var degrees = 0.0
-#endif
+    
     @Published var files: [FileAttributes] = []
     @Published var toolbarId = "" // Requred for toolbar in order to update file list properly
     @Published var showTextField = false

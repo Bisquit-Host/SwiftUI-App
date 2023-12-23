@@ -17,38 +17,66 @@ struct FileTab: View {
     @State private var showToolbar = false
     
     var body: some View {
-        List(selection: $selectedItem) {
-            ForEach(vm.filteredFiles, id: \.name) { file in
-                NavigationLink {
-                    Text("Destination")
-                } label: {
-                    FileView(id, path: path, file: file)
-                        .fileContextMenu(file.name,
-                                         path: path,
-                                         mimeType: file.mimetype)
+        VStack {
+#if os(macOS)
+            ScrollView {
+                LazyVStack(alignment: .leading) {
+                    ForEach(vm.filteredFiles, id: \.name) { file in
+                        NavigationLink {
+                            Text("Destination")
+                        } label: {
+                            HStack {
+                                FileView(id, path: path, file: file)
+                                    .fileContextMenu(file.name, path: path, mimeType: file.mimetype)
+                                
+                                Spacer()
+                            }
+                            .padding(5)
+                        }
+                    }
                 }
             }
+            .background(.clear)
+#else
+            List {
+                ForEach(vm.filteredFiles, id: \.name) { file in
+                    NavigationLink {
+                        Text("Destination")
+                    } label: {
+                        FileView(id, path: path, file: file)
+                            .fileContextMenu(file.name,
+                                             path: path,
+                                             mimeType: file.mimetype)
+                    }
+                }
+            }
+#endif
         }
         .navigationTitle("Files")
+#if os(macOS)
+        .padding()
+        .background(.clear)
+        .clipShape(.rect(cornerRadius: 16))
         .navigationSubtitle(path)
+#endif
         .task {
-            vm.fetchFiles(path)
             showToolbar = true
+            vm.fetchFiles(path)
         }
         .onDisappear {
             showToolbar = false
         }
         .toolbar {
-            if showToolbar {
-                Button {
-                    vm.fetchFiles(path)
-                } label: {
-                    Image(systemName: "arrow.triangle.2.circlepath")
-                        .rotate(vm.degrees)
-                        .bold()
-                }
-                .keyboardShortcut("r", modifiers: .command)
+            //            if showToolbar {
+            Button {
+                vm.fetchFiles(path)
+            } label: {
+                Image(systemName: "arrow.triangle.2.circlepath")
+                    .rotate(vm.degrees)
+                    .bold()
             }
+            .keyboardShortcut("r", modifiers: .command)
+            //            }
         }
     }
 }

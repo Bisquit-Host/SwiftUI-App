@@ -15,23 +15,22 @@ struct PanelView: View {
         self.fileVM = FileTabVM(id)
     }
     
-    //    @AppStorage("last_panel_tab") var lastPanelTab: Tabs = .info
-    
-    @State private var selectedTab: Tab = .info
+    @AppStorage("selected_tab") private var selectedTab: Tab = .info
     
     private let tabs: [Tab] = [
         .info,
         .console,
-        .backups,
         .files,
-        .users,
+        .plugins,
+        .backups,
         .schedules,
         .databases,
+        .users,
         .allocations,
-        .settings
+        .setup,
+        .settings,
+        .admin
     ]
-    
-    private let gradient = Gradient(colors: [.orange, .yellow])
     
     var body: some View {
         VStack(spacing: 0) {
@@ -42,9 +41,9 @@ struct PanelView: View {
                             selectedTab = tab
                         } label: {
                             Text(tab.rawValue)
-                                .title3(.semibold, design: .rounded)
-                                .padding(5)
-                                .background(gradient.opacity(0.7), in: .rect(cornerRadius: 5))
+                                .title2(.semibold, design: .rounded)
+                                .padding(10)
+                                .foregroundStyle(.primary)
                         }
                         .buttonStyle(.borderless)
                     }
@@ -59,17 +58,13 @@ struct PanelView: View {
                 
             default:
                 Spacer()
-            }
-        }
-#if os(macOS)
-        .background {
-            ZStack {
-                BackgroundBlur()
                 
-                Color.orange.opacity(0.1)
+                Text("\(selectedTab.rawValue) is not yet availible")
+                    .largeTitle()
+                
+                Spacer()
             }
         }
-#endif
         .task {
             vm.fetchServerDetails()
             fileVM.toolbarId = id

@@ -10,17 +10,34 @@ struct ServerCard: View {
         self.server = server
     }
     
+    @State private var isHovered = false
+    
     var body: some View {
         NavigationLink {
             PanelView(server.id)
         } label: {
-            Text(server.name)
+            HStack {
+                if isHovered {
+                    Text(server.name)
+                        .padding(5)
+                        .border(.white, width: 2)
+                        .buttonBorderShape(.capsule)
+                        .frame(height: 30)
+                } else {
+                    Text(server.name)
+                        .frame(height: 30)
+                }
+                
+                Spacer()
+            }
+            .padding(.leading)
+            .foregroundStyle(.primary)
+            .title2(.semibold, design: .rounded)
         }
-//        Button {
-//            vm.selectedServer = server
-//        } label: {
-//            Text(server.name)
-//        }
+        .buttonStyle(.borderless)
+        .onHover { hover in
+            isHovered = hover
+        }
     }
 }
 

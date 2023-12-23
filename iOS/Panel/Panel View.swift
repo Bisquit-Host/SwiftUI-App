@@ -34,7 +34,7 @@ struct PanelView: View {
                     
                     FileTab(id)
                         .environmentObject(fileVM)
-                        .setUpTab(.fileManager,
+                        .setUpTab(.files,
                                   isAnimated: settings.animatedTabbar)
                     
                     DataTab(id, limits: server.featureLimits)

@@ -193,9 +193,7 @@
 		F33DE4E72B35089000E257D8 /* Background Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33DE4E62B35089000E257D8 /* Background Blur.swift */; };
 		F33DE4E92B350C8B00E257D8 /* Server Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33DE4E82B350C8B00E257D8 /* Server Card.swift */; };
 		F33DE4EB2B35C3F000E257D8 /* FileTab ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C0F9CF29E204FA0040E277 /* FileTab ContextMenu.swift */; };
-		F33DE5072B364DD000E257D8 /* App Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D52B242B13FE9C00167DD6 /* App Delegate.swift */; };
 		F33DE5092B364EBC00E257D8 /* InfoTab Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7022A54BF7A00E89EC4 /* InfoTab Model.swift */; };
-		F33DE50A2B36E18200E257D8 /* System Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7052A54C4BC00E89EC4 /* System Alerts.swift */; };
 		F33DE50C2B36E3C300E257D8 /* App Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D52B242B13FE9C00167DD6 /* App Delegate.swift */; };
 		F33DE50F2B36E3FB00E257D8 /* App Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D52B242B13FE9C00167DD6 /* App Delegate.swift */; };
 		F34076502A37701C0054BDCA /* Console Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340764F2A37701C0054BDCA /* Console Search.swift */; };
@@ -203,7 +201,6 @@
 		F34169A52A49DF64003985E7 /* InfoTab Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34169A42A49DF64003985E7 /* InfoTab Button.swift */; };
 		F34169A62A49DF64003985E7 /* InfoTab Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34169A42A49DF64003985E7 /* InfoTab Button.swift */; };
 		F342FAA02B2C5DF300854270 /* Pow in Frameworks */ = {isa = PBXBuildFile; productRef = F342FA9F2B2C5DF300854270 /* Pow */; };
-		F342FAA22B2C613600854270 /* Pow in Frameworks */ = {isa = PBXBuildFile; productRef = F342FAA12B2C613600854270 /* Pow */; };
 		F342FAA62B2C615A00854270 /* Pow in Frameworks */ = {isa = PBXBuildFile; productRef = F342FAA52B2C615A00854270 /* Pow */; };
 		F342FAA82B2C61ED00854270 /* Pow in Frameworks */ = {isa = PBXBuildFile; productRef = F342FAA72B2C61ED00854270 /* Pow */; };
 		F342FAAB2B2C67F800854270 /* Ansi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39626F12A7AD64B0057E356 /* Ansi.swift */; };
@@ -216,6 +213,7 @@
 		F342FAB72B2E49B600854270 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = F342FAB62B2E49B600854270 /* Algorithms */; };
 		F3437CA2297360D30064808F /* Schedule Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3437CA1297360D30064808F /* Schedule Card.swift */; };
 		F345486C29708FE30038DFD6 /* Server Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F345486B29708FE30038DFD6 /* Server Card.swift */; };
+		F3458BF02B36EA49000E8324 /* App Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D52B242B13FE9C00167DD6 /* App Delegate.swift */; };
 		F3464CFB2A862D2D00188B0C /* IntentExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3464CFA2A862D2D00188B0C /* IntentExtension.swift */; };
 		F3464D022A862D2D00188B0C /* Intent.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = F3464CF82A862D2C00188B0C /* Intent.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F3464D072A862DBE00188B0C /* PowerSignalAppEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392DF372A8593E50049EF7A /* PowerSignalAppEnum.swift */; };
@@ -1523,7 +1521,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F34745CE2A31F3A400EE2FB8 /* ScrechKit in Frameworks */,
-				F342FAA22B2C613600854270 /* Pow in Frameworks */,
 				F3E08EB22A2CE19900116C1C /* Kingfisher in Frameworks */,
 				F30860222B002D57004D776A /* PteroNet in Frameworks */,
 			);
@@ -2627,8 +2624,8 @@
 			isa = PBXGroup;
 			children = (
 				F3E08EA42A2CE17900116C1C /* Home.swift */,
-				F33DE4E82B350C8B00E257D8 /* Server Card.swift */,
 				F30C13112A54609000A7EFF0 /* Server List.swift */,
+				F33DE4E82B350C8B00E257D8 /* Server Card.swift */,
 			);
 			path = "Server List";
 			sourceTree = "<group>";
@@ -2969,7 +2966,6 @@
 				F3E08EB12A2CE19900116C1C /* Kingfisher */,
 				F34745CD2A31F3A400EE2FB8 /* ScrechKit */,
 				F30860212B002D57004D776A /* PteroNet */,
-				F342FAA12B2C613600854270 /* Pow */,
 			);
 			productName = "Bisquit.Host Mac";
 			productReference = F3E08EA02A2CE17800116C1C /* macOS.app */;
@@ -4094,7 +4090,6 @@
 				F35F65942B1D1A0B00431EB7 /* Panel VM.swift in Sources */,
 				F3B138722A2D232B0026EAEE /* Server Card VM.swift in Sources */,
 				F33DE4E72B35089000E257D8 /* Background Blur.swift in Sources */,
-				F33DE5072B364DD000E257D8 /* App Delegate.swift in Sources */,
 				F3F061D52A73C9A000470F7E /* Map View.swift in Sources */,
 				F33DE4E92B350C8B00E257D8 /* Server Card.swift in Sources */,
 				F3464D222A86396700188B0C /* Change Power.swift in Sources */,
@@ -4125,7 +4120,6 @@
 				F3D558B12A33C69F00608447 /* FileTab VM.swift in Sources */,
 				F3E08EBF2A2CE87800116C1C /* Start Page.swift in Sources */,
 				F3E08EA52A2CE17900116C1C /* Home.swift in Sources */,
-				F33DE50A2B36E18200E257D8 /* System Alerts.swift in Sources */,
 				F348C6EB2A544893002D5BD6 /* App Container.swift in Sources */,
 				F3E08EC22A2CE89400116C1C /* Settings Storage.swift in Sources */,
 				F34F289C2ACDADA500FD618A /* Animated Tab.swift in Sources */,
@@ -4133,6 +4127,7 @@
 				F323D8D32A2D668D002EDC62 /* File Tab.swift in Sources */,
 				F35FEB102B09F4D3004DA05D /* Network VM.swift in Sources */,
 				F3464D352A863A6800188B0C /* Send Command.swift in Sources */,
+				F3458BF02B36EA49000E8324 /* App Delegate.swift in Sources */,
 				F32FD7192B1E042C00723B88 /* Websocket Delegate.swift in Sources */,
 				F30C13122A54609000A7EFF0 /* Server List.swift in Sources */,
 				F32FD7172B1E042400723B88 /* Websocket.swift in Sources */,
@@ -5304,11 +5299,6 @@
 			productName = Algorithms;
 		};
 		F342FA9F2B2C5DF300854270 /* Pow */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F342FA9E2B2C5DF200854270 /* XCRemoteSwiftPackageReference "Pow" */;
-			productName = Pow;
-		};
-		F342FAA12B2C613600854270 /* Pow */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F342FA9E2B2C5DF200854270 /* XCRemoteSwiftPackageReference "Pow" */;
 			productName = Pow;

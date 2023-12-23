@@ -8,7 +8,7 @@ import Pow
 
 @main
 struct BisquitHostApp: App {
-#if !os(macOS) && os(iOS)
+#if os(iOS)
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 #endif
     
@@ -57,7 +57,7 @@ struct BisquitHostApp: App {
         .modelContainer(container)
         .environmentObject(settings)
         .defaultAppStorage(.init(suiteName: "group.Bisquit-host")!)
-#if !os(macOS) && os(iOS) || os(xrOS)
+#if (iOS)
         .onChange(of: network.isNetworkSatisfied) { _, status in
             if !status {
                 SystemAlert.networkError()

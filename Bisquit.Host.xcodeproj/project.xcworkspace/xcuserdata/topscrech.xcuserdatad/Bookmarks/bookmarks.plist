@@ -291,12 +291,16 @@
 			<dict>
 				<key>location-parameters</key>
 				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>52</string>
+					<string>0</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>52</string>
+					<string>0</string>
 					<key>Timestamp</key>
-					<string>724978675.276466</string>
+					<string>725061245.5948581</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -312,17 +316,13 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>    }
-</string>
+				<string></string>
 				<key>leading</key>
-				<string>            }
-        }
+				<string>        .environmentObject(FileTabVM(""))
+}
 </string>
 				<key>trailing</key>
-				<string>}
-
-#Preview {
-</string>
+				<string></string>
 			</dict>
 			<key>title</key>
 			<string>Change to SFButton</string>

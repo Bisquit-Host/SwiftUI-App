@@ -30,7 +30,7 @@ struct PanelView: View {
                 
                 FileTab(id)
                     .environmentObject(fileVM)
-                    .tag(Tab.fileManager)
+                    .tag(Tab.files)
                     .tabItem {
                         Text("Files")
                     }
@@ -39,7 +39,7 @@ struct PanelView: View {
                         limits: server.featureLimits
                 )
                 .environment(dataTabVM)
-                .tag(Tab.backup)
+                .tag(Tab.backups)
                 .tabItem {
                     Text("Data")
                 }
