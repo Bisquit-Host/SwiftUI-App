@@ -1,8 +1,12 @@
-import SwiftUI
+import ScrechKit
 
 struct ServerList: View {
+    @Environment(ServerListVM.self) private var vm
+    
     var body: some View {
-        Text("Server List")
+        ForEach(vm.servers, id: \.id) { server in
+            ServerCard(server)
+        }
     }
 }
 

@@ -12,13 +12,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>35</string>
+					<string>36</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>34</string>
+					<string>35</string>
 					<key>Timestamp</key>
-					<string>724576243.3861181</string>
+					<string>724944856.4517601</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -291,16 +291,12 @@
 			<dict>
 				<key>location-parameters</key>
 				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>37</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
+					<string>52</string>
 					<key>StartingLineNumber</key>
-					<string>36</string>
+					<string>52</string>
 					<key>Timestamp</key>
-					<string>724858910.615177</string>
+					<string>724978675.276466</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -316,16 +312,16 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>                } label: {
+				<string>    }
 </string>
 				<key>leading</key>
-				<string>                Button {
-                    vm.fetchFiles(path)
+				<string>            }
+        }
 </string>
 				<key>trailing</key>
-				<string>                    Image(systemName: "arrow.triangle.2.circlepath")
-                        .rotate(vm.degrees)
-                        .bold()
+				<string>}
+
+#Preview {
 </string>
 			</dict>
 			<key>title</key>
@@ -1766,16 +1762,12 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 			<dict>
 				<key>location-parameters</key>
 				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>55</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
+					<string>53</string>
 					<key>StartingLineNumber</key>
-					<string>54</string>
+					<string>53</string>
 					<key>Timestamp</key>
-					<string>724632906.597131</string>
+					<string>724893238.822298</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>

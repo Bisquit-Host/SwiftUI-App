@@ -1,8 +1,8 @@
 import ScrechKit
+import PteroNet
 
 struct FileTab: View {
     @EnvironmentObject private var vm: FileTabVM
-    @EnvironmentObject private var settings: SettingsStorage
     
     private let id, path: String
     
@@ -11,27 +11,35 @@ struct FileTab: View {
     ) {
         self.id = id
         self.path = path
-        //        _vm = StateObject(wrappedValue: FileManagerVM(id))
     }
     
+    @State private var selectedItem: Tabs = .info
+    @State private var showToolbar = false
+    
     var body: some View {
-        List {
+        List(selection: $selectedItem) {
             ForEach(vm.filteredFiles, id: \.name) { file in
-                //                NavigationLink {
-                //                    Text(":1")
-                //                } label: {
-                FileView(id,
-                         path: path,
-                         file: file
-                )
-                //                }
+                NavigationLink {
+                    Text("Destination")
+                } label: {
+                    FileView(id, path: path, file: file)
+                        .fileContextMenu(file.name,
+                                         path: path,
+                                         mimeType: file.mimetype)
+                }
             }
         }
+        .navigationTitle("Files")
+        .navigationSubtitle(path)
         .task {
             vm.fetchFiles(path)
+            showToolbar = true
+        }
+        .onDisappear {
+            showToolbar = false
         }
         .toolbar {
-            if settings.lastTabPanel == .fileManager {
+            if showToolbar {
                 Button {
                     vm.fetchFiles(path)
                 } label: {

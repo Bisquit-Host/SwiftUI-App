@@ -22,9 +22,8 @@ struct AuthView: View {
         .background(AuthBackground())
         .ignoresSafeArea()
         .task {
-            vm.appear(
-                settings.useBiometry,
-                navState: navState
+            vm.appear(settings.useBiometry,
+                      navState: navState
             )
             
             serverVM.fetchServers(settings.adminServerList)

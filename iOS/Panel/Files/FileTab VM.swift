@@ -24,8 +24,10 @@ final class FileTabVM: ObservableObject {
     @Published var sheetPreview = false
 #endif
     
-    @Published var files: [FileAttributes] = []
+#if os(macOS)
     @Published var degrees = 0.0
+#endif
+    @Published var files: [FileAttributes] = []
     @Published var toolbarId = "" // Requred for toolbar in order to update file list properly
     @Published var showTextField = false
     @Published var downloadUrl = ""
@@ -219,37 +221,16 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-#if os(macOS)
     func fetchFiles(_ path: String = "") {
         getFileListAPI(id, from: path) { result in
             switch result {
             case .success(let model):
                 if let model = model?.data {
-                    withAnimation(.easeInOut) {
-                        self.degrees += 360
-                        self.files = model.map {
-                            $0.attributes
-                        }
-                    }
-                }
-                
-            case .failure(let error):
-                withAnimation {
-                    self.files.removeAll()
-                }
-                
-                networkCallError(#function, error)
-            }
-        }
-    }
-#else
-    func fetchFiles(_ path: String = "") {
-        getFileListAPI(id, from: path) { result in
-            switch result {
-            case .success(let model):
-                main {
-                    if let model = model?.data {
-                        withAnimation {
+                    withAnimation {
+                        main {
+#if os(macOS)
+                            self.degrees += 360
+#endif
                             self.files = model.map {
                                 $0.attributes
                             }
@@ -262,7 +243,6 @@ final class FileTabVM: ObservableObject {
             }
         }
     }
-#endif
     
     func fileDelete(_ name: String, path: String) {
         deleteFileAPI(id, name: name, from: path) { result in

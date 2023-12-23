@@ -1,12 +1,11 @@
-//#if canImport(ActivityKit)
-#if os(iOS)
+#if canImport(ActivityKit)
 import SwiftUI
 import WidgetKit
 import ActivityKit
 
 struct WidgetsAttributes: ActivityAttributes {
+    // Dynamic stateful properties
     public struct ContentState: Codable, Hashable {
-        // Dynamic stateful properties
         var latestMessage: String
     }
     

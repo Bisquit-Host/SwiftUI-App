@@ -1,5 +1,4 @@
-//#if canImport(ActivityKit)
-#if os(iOS)
+#if canImport(ActivityKit)
 import ScrechKit
 import ActivityKit
 import PteroNet

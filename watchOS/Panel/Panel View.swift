@@ -25,7 +25,7 @@ struct PanelView: View {
                 
                 FileTab(id)
                     .environmentObject(fileVM)
-                    .tag(Tab.fileManager)
+                    .tag(Tab.files)
             }
         }
         .environment(vm)

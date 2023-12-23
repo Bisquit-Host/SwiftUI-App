@@ -20,8 +20,9 @@ struct FileTab_ContextMenu: ViewModifier {
     func body(content: Content) -> some View {
         content
             .contextMenu {
+#if !os(macOS)
                 Text(file)
-                
+#endif
                 if !mimeType.contains("directory") {
                     Section {
                         MenuButton("Download", icon: "square.and.arrow.down") {

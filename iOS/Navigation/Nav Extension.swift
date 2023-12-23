@@ -12,13 +12,13 @@ extension View {
                 //                ServerList(selectedServer: selectedServer)
             case .toServerList:
 #if os(macOS)
-                Sidebar()
+                Home()
 #else
                 ServerList()
 #endif
-                
             case .toPanel(let id):
                 PanelView(id)
+                
 #if !os(xrOS)
             case .toFileManager(let id, let path):
                 FileTab(id, path: path)

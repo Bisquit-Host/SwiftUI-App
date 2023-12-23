@@ -1492,6 +1492,9 @@
         }
       }
     },
+    "Destination" : {
+
+    },
     "Detele Database" : {
 
     },
@@ -3215,6 +3218,9 @@
 
     },
     "Reinstalling your server will stop it, and then re-run the installation script that initially set it. Some files may be deleted or modified during this process, please back up your data before continuing" : {
+
+    },
+    "Reload" : {
 
     },
     "Remove all" : {

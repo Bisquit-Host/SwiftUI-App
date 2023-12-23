@@ -1,5 +1,4 @@
-//#if canImport(ActivityKit)
-#if os(iOS)
+#if canImport(ActivityKit)
 import ActivityKit
 
 struct ActivityViewState: Sendable {

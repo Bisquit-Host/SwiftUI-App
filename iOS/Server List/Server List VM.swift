@@ -21,6 +21,8 @@ final class ServerListVM {
     var keys: [String] = []
     var footerHidden = true
     
+    var selectedServer: ServerAttributes?
+    
     var filteredServers: [ServerAttributes] {
         servers.filter { server in
             let prompt = searchField.lowercased()

@@ -19,22 +19,20 @@ struct FileView: View {
     var body: some View {
         HStack {
             FileIconView(file.mimetype)
+                .semibold()
+                .frame(width: 20)
             
             Text(file.name)
-        }
-        .contextMenu {
-            MenuButton("Duplicate", icon: "doc.on.doc") {
-                vm.duplicateFile(file.name, path: path)
-            }
         }
     }
 }
 
 #Preview {
-    FileView(
-        "",
-        path: "",
-        file: sampleJSON(.fileListAttributes)
+    FileView("",
+             path: "",
+             file: sampleJSON(
+                .fileListAttributes
+             )
     )
     .padding()
 }

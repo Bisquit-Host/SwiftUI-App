@@ -19,9 +19,15 @@ struct StartPage: View {
                     .frame(maxWidth: 600)
                 
                 Button {
+#if os(macOS)
                     if let string = NSPasteboard.general.string(forType: .string) {
                         vm.apiKey = string
                     }
+#else
+                    if let string = UIPasteboard.general.string {
+                        vm.apiKey = string
+                    }
+#endif
                 } label: {
                     Image(systemName: "doc.on.clipboard")
                         .frame(height: 25)
