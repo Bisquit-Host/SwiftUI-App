@@ -9,7 +9,7 @@ final class AuthVM {
     var textLogin = ""
     var bioType = "Unknown"
     
-#if !os(macOS)
+#if !os(macOS) && !os(xrOS)
     let impactMed = UIImpactFeedbackGenerator(style: .heavy)
 #endif
     
@@ -41,7 +41,7 @@ final class AuthVM {
     }
     
     private func authSucceed(_ navState: NavState) {
-#if !os(macOS)
+#if !os(macOS) && !os(visionOS)
         impactMed.impactOccurred()
 #endif
         AudioServicesPlayAlertSound(SystemSoundID(1394))

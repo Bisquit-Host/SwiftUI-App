@@ -35,6 +35,7 @@ struct FileTab: View {
                         }
                     }
                 }
+                .padding(.trailing, 20)
             }
             .background(.clear)
 #else
@@ -66,18 +67,18 @@ struct FileTab: View {
         .onDisappear {
             showToolbar = false
         }
-        .toolbar {
-            //            if showToolbar {
-            Button {
-                vm.fetchFiles(path)
-            } label: {
-                Image(systemName: "arrow.triangle.2.circlepath")
-                    .rotate(vm.degrees)
-                    .bold()
-            }
-            .keyboardShortcut("r", modifiers: .command)
-            //            }
-        }
+//        .toolbar {
+//            //            if showToolbar {
+//            Button {
+//                vm.fetchFiles(path)
+//            } label: {
+//                Image(systemName: "arrow.triangle.2.circlepath")
+//                    .rotate(vm.degrees)
+//                    .bold()
+//            }
+//            .keyboardShortcut("r", modifiers: .command)
+//            //            }
+//        }
     }
 }
 

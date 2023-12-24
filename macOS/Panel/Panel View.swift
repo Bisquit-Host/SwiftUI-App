@@ -65,6 +65,7 @@ struct PanelView: View {
                 Spacer()
             }
         }
+        .offset(y: -40)
         .task {
             vm.fetchServerDetails()
             fileVM.toolbarId = id

@@ -4,7 +4,7 @@ import PteroNet
 struct Home: View {
     @Environment(ServerListVM.self) private var vm
     @EnvironmentObject private var settings: SettingsStorage
-        
+    
     private let gradient = Gradient(colors: [Color(0xf7b948), Color(0xed5547), Color(0x893799)])
     
     var body: some View {
@@ -35,6 +35,7 @@ struct Home: View {
                         .opacity(0.4)
                 }
             }
+            .ignoresSafeArea()
         }
         .task {
             vm.fetchServers(settings.adminServerList)

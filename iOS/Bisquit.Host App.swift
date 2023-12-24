@@ -57,6 +57,10 @@ struct BisquitHostApp: App {
         .modelContainer(container)
         .environmentObject(settings)
         .defaultAppStorage(.init(suiteName: "group.Bisquit-host")!)
+#if os(macOS)
+        .windowStyle(.hiddenTitleBar)
+#endif
+        
 #if (iOS)
         .onChange(of: network.isNetworkSatisfied) { _, status in
             if !status {

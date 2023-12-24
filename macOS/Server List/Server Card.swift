@@ -32,12 +32,12 @@ struct ServerCard: View {
             }
             .padding(.leading)
             .foregroundStyle(.primary)
-            .title2(.semibold, design: .rounded)
+            .title2(design: .rounded)
         }
         .buttonStyle(.borderless)
-        .onHover { hover in
-            isHovered = hover
-        }
+//        .onHover { hover in
+//            isHovered = hover
+//        }
     }
 }
 

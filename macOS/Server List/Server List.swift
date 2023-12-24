@@ -14,6 +14,7 @@ struct ServerList: View {
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .padding(.vertical)
         }
 #if os(macOS)
             .background {
@@ -24,6 +25,7 @@ struct ServerList: View {
                         .fill(gradient)
                         .opacity(0.4)
                 }
+                .ignoresSafeArea()
             }
 #endif
     }

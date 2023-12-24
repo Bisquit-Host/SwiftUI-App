@@ -318,11 +318,12 @@
 				<key>focused</key>
 				<string></string>
 				<key>leading</key>
-				<string>        .environmentObject(FileTabVM(""))
-}
-</string>
-				<key>trailing</key>
 				<string></string>
+				<key>trailing</key>
+				<string>import ScrechKit
+import PteroNet
+
+</string>
 			</dict>
 			<key>title</key>
 			<string>Change to SFButton</string>
