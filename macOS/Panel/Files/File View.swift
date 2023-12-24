@@ -18,13 +18,17 @@ struct FileView: View {
     
     var body: some View {
         HStack {
-            FileIconView(file.mimetype)
+            FileIcon(file.mimetype)
                 .semibold()
                 .frame(width: 20)
             
             Text(file.name)
         }
-        .fileContextMenu(file.name, path: path, mimeType: file.mimetype)
+        .padding(5)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .fileContextMenu(file.name,
+                         path: path,
+                         mimeType: file.mimetype)
     }
 }
 

@@ -62,7 +62,7 @@
     "%@" : {
 
     },
-    "%@ is not yet availible" : {
+    "%@ Files" : {
 
     },
     "%@ Log out" : {
@@ -79,6 +79,9 @@
       }
     },
     "%@ Settings" : {
+
+    },
+    "%@ will be availible soon..." : {
 
     },
     "%lld" : {
@@ -750,9 +753,6 @@
           }
         }
       }
-    },
-    "BH" : {
-
     },
     "Biometry Usage" : {
       "localizations" : {

@@ -1,6 +1,6 @@
-//import AppIntents
-//
-//@main
-//struct IntentExtension: AppIntentsExtension {
-//    
-//}
+import AppIntents
+
+@main
+struct IntentExtension: AppIntentsExtension {
+    
+}

@@ -16,24 +16,25 @@ struct ServerCard: View {
         NavigationLink {
             PanelView(server.id)
         } label: {
-            HStack {
-                if isHovered {
-                    Text(server.name)
-                        .padding(5)
-                        .border(.white, width: 2)
-                        .buttonBorderShape(.capsule)
-                        .frame(height: 30)
-                } else {
-                    Text(server.name)
-                        .frame(height: 30)
-                }
-                
-                Spacer()
+            if isHovered {
+                Text(server.name)
+                    .padding(8)
+                    .frame(height: 30)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(
+                        Capsule()
+                            .stroke(.white, lineWidth: 2)
+                    )
+            } else {
+                Text(server.name)
+                    .padding(8)
+                    .frame(height: 30)
+                    .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .padding(.leading)
-            .foregroundStyle(.primary)
-            .title2(design: .rounded)
         }
+        .padding(.horizontal)
+        .foregroundStyle(.primary)
+        .title2(design: .rounded)
         .buttonStyle(.borderless)
         .onHover { hover in
             isHovered = hover

@@ -8,43 +8,44 @@ struct AuthView: View {
     
     var body: some View {
         VStack {
-            Text(typing.finalTitle)
-                .hidden()
-                .monospaced()
-                .fontSize(64)
-                .padding(.horizontal, 70)
-                .overlay(alignment: .leading) {
-                    Text(typing.titleText)
-                        .monospaced()
-                        .padding(.leading, 70)
-                        .fontSize(64)
-                }
+            //            Text(typing.finalTitle)
+            //                .hidden()
+            //                .monospaced()
+            //                .fontSize(64)
+            //                .padding(.horizontal, 70)
+            //                .overlay(alignment: .leading) {
+            //                    Text(typing.titleText)
+            //                        .monospaced()
+            //                        .padding(.leading, 70)
+            //                        .fontSize(64)
+            //                }
             
-            AsyncImage(url: getImageUrl("bisquit")) { image in
-                image
-                    .resizable()
-                    .frame(depth: 32)
-                    .frame(width: 300, height: 300)
-            } placeholder: {
-                ProgressView()
-            }
-            .opacity(typing.isTitleFinished ? 1 : 0)
+            //            AsyncImage(url: getImageUrl("bisquit")) { image in
+            //                image
+            //                    .resizable()
+            //                    .frame(depth: 32)
+            //                    .frame(width: 300, height: 300)
+            //            } placeholder: {
+            //                ProgressView()
+            //            }
+            //            .opacity(typing.isTitleFinished ? 1 : 0)
         }
         .task {
             vm.fetchServers(settings.adminServerList)
         }
         .onAppear {
-            delay(5) {
+            delay(2) {
+                //            delay(5) {
                 navState.navigate(.toServerList)
             }
         }
-        .typeText(
-            $typing.titleText,
-            isFinished: $typing.isTitleFinished, 
-            finalText: typing.finalTitle,
-            isAnimated: !typing.isTitleFinished
-        )
-        .animation(.default.speed(0.25), value: typing.isTitleFinished)
+        //        .typeText(
+        //            $typing.titleText,
+        //            isFinished: $typing.isTitleFinished,
+        //            finalText: typing.finalTitle,
+        //            isAnimated: !typing.isTitleFinished
+        //        )
+        //        .animation(.default.speed(0.25), value: typing.isTitleFinished)
     }
 }
 

@@ -14,18 +14,12 @@ struct FileTab: View {
         _vm = StateObject(wrappedValue: FileTabVM(id))
     }
     
-    @State private var selectedItem: Tabs = .info
     @State private var showToolbar = false
-    
-    func clear() {
-        print("clicked")
-        vm.searchRule = ""
-    }
     
     var body: some View {
         VStack {
             TextField("Search", text: $vm.searchRule)
-            
+                .textFieldStyle(.roundedBorder)
 #if os(macOS)
             ScrollView {
                 LazyVStack(alignment: .leading) {
@@ -33,12 +27,7 @@ struct FileTab: View {
                         NavigationLink {
                             Text("Destination")
                         } label: {
-                            HStack {
-                                FileView(id, path: path, file: file)
-                                
-                                Spacer()
-                            }
-                            .padding(5)
+                            FileView(id, path: path, file: file)
                         }
                     }
                 }
@@ -53,9 +42,6 @@ struct FileTab: View {
                         Text("Destination")
                     } label: {
                         FileView(id, path: path, file: file)
-                            .fileContextMenu(file.name,
-                                             path: path,
-                                             mimeType: file.mimetype)
                     }
                 }
             }
@@ -70,7 +56,7 @@ struct FileTab: View {
         .navigationSubtitle(path)
 #endif
         .onChange(of: id) { _, _ in
-            vm.fetchFiles(path, id: id)
+            vm.fetchFiles(path)
         }
         .task {
             showToolbar = true
@@ -79,12 +65,7 @@ struct FileTab: View {
         .onDisappear {
             showToolbar = false
         }
-        .toolbar {
-            //            ToolbarItemGroup(placement: .leading) {
-            Text("BH")
-            //            }
-            
-            
+//        .toolbar {
             //            //            if showToolbar {
             //            Button {
             //                vm.fetchFiles(path)
@@ -95,7 +76,7 @@ struct FileTab: View {
             //            }
             //            .keyboardShortcut("r", modifiers: .command)
             //            //            }
-        }
+//        }
     }
 }
 

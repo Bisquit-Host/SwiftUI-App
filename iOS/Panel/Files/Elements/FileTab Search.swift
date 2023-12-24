@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct FileTabSearch: View {
+struct FileSearch: View {
     @Binding private var fieldSearch: String
     
     init(_ fieldSearch: Binding<String>) {
@@ -14,6 +14,7 @@ struct FileTabSearch: View {
                 .foregroundStyle(.secondary)
             
             TextField("Search", text: $fieldSearch)
+                .autocorrectionDisabled()
         }
     }
 }

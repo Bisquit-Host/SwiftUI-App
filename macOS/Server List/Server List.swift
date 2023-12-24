@@ -11,26 +11,22 @@ struct ServerList: View {
         
         VStack(alignment: .leading) {
             ScrollView(showsIndicators: false) {
-                //                VStack(alignment: .leading) {
                 ForEach(vm.filteredServers, id: \.id) { server in
                     ServerCard(server)
+                        .id(server.id)
                 }
-                //                }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(.vertical)
             
 #if os(macOS)
             SettingsLink {
-                HStack {
-                    Image(systemName: "gear")
-                    
-                    Text("Settings")
-                }
-                .title2(.semibold)
-                .padding(10)
+                Label("Settings", systemImage: "gear")
+                    .title2(.semibold)
+                    .frame(maxWidth: .infinity, alignment: .leading)
             }
             .buttonStyle(.plain)
+            .padding(10)
 #endif
         }
 #if os(macOS)

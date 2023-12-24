@@ -15,15 +15,10 @@ struct ServerCard: View {
     @Namespace private var animation
     private let bounds = UIScreen.main.bounds
     
-    private var name: String {
-        server.name.replacing(" ", with: "")
-    }
-    
-    private var limits: ServerLimits {
-        server.limits
-    }
-    
     var body: some View {
+        let name = server.name.replacing(" ", with: "")
+        let limits = server.limits
+        
         VStack {
             switch settings.designCode {
             case 0:
@@ -51,7 +46,7 @@ struct ServerCard: View {
                 }
                 .padding(.vertical, 5)
                 .padding(.horizontal, 10)
-                .background(.ultraThinMaterial, 
+                .background(.ultraThinMaterial,
                             in: .rect(cornerRadius: 35))
                 
             case 1:
@@ -62,33 +57,28 @@ struct ServerCard: View {
                         
                         DiskGauge(vm.diskUsage,
                                   limit: limits.disk,
-                                  isRedacted: vm.isLoading
-                        )
+                                  isRedacted: vm.isLoading)
                         .padding(.top, 4)
                         .matchedEffect("disk", in: animation)
                     }
                     
                     HStack {
-                        RegularGauge(
-                            .cpu,
-                            value: vm.cpuUsage,
-                            limit: limits.cpu,
-                            isRedacted: vm.isLoading
-                        )
+                        RegularGauge(.cpu,
+                                     value: vm.cpuUsage,
+                                     limit: limits.cpu,
+                                     isRedacted: vm.isLoading)
                         
-                        RegularGauge(
-                            .ram,
-                            value: vm.ramUsage,
-                            limit: limits.memory,
-                            isRedacted: vm.isLoading
-                        )
+                        RegularGauge(.ram,
+                                     value: vm.ramUsage,
+                                     limit: limits.memory,
+                                     isRedacted: vm.isLoading)
                     }
                     .matchedEffect("RAM_CPU", in: animation)
                 }
                 .frame(height: 90)
                 .background(.ultraThinMaterial,
                             in: .rect(cornerRadius: 16))
-//                            in: .rect(cornerRadius: 16))
+                //                            in: .rect(cornerRadius: 16))
                 //                .background(settings.themeColor(), in: .rect(cornerRadius: 16))
                 //            case 2:
                 //                HStack {

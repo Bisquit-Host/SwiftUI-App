@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct PanelView: View {
-    @AppStorage("tab_panel") private var tabPanel: Tab = .info
     private var vm: PanelVM
     
     private let id: String
@@ -12,6 +11,8 @@ struct PanelView: View {
         self.id = id
         self.vm = PanelVM(id)
     }
+    
+    @AppStorage("tab_panel") private var tabPanel: Tab = .info
     
     var body: some View {
         TabView(selection: $tabPanel) {

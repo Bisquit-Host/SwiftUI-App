@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct FileIconView: View {
+struct FileIcon: View {
     private let mimeType: String
     
     init(_ mimetype: String) {
@@ -44,5 +44,5 @@ struct FileIconView: View {
 }
 
 #Preview {
-    FileIconView("video")
+    FileIcon("video")
 }

@@ -7,6 +7,7 @@ struct FileNameAndIcon: View {
     init(_ file: FileAttributes) {
         self.file = file
     }
+    
 #if os(tvOS)
     private let spacing: CGFloat = 16
 #elseif os(watchOS)
@@ -15,7 +16,7 @@ struct FileNameAndIcon: View {
     
     var body: some View {
         HStack(spacing: spacing) {
-            FileIconView(file.mimetype)
+            FileIcon(file.mimetype)
             
             Text(file.name)
 #if os(tvOS)

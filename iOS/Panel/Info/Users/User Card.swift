@@ -46,6 +46,7 @@ struct UserCard: View {
                     .title2()
                     .foregroundStyle(user.twoFaEnabled ? .green : .red)
             }
+            .foregroundStyle(.foreground)
         }
 #if !os(watchOS)
         .contextMenu {

@@ -38,11 +38,6 @@ struct FileTab: View {
         .task {
             vm.fetchFiles(path)
         }
-        .onChange(of: vm.searchField) { _, search in
-            withAnimation {
-                vm.searchRule = search
-            }
-        }
     }
     
     private func deleteItem(_ offsets: IndexSet) {

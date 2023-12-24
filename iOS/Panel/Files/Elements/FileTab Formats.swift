@@ -15,7 +15,7 @@ struct FileFormats: View {
         DisclosureGroup("All supported data formats") {
             ForEach(formats, id: \.self) { format in
                 HStack {
-                    FileIconView(format)
+                    FileIcon(format)
                         .semibold()
                         .frame(width: 20)
                     

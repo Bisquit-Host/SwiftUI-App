@@ -20,7 +20,7 @@ struct FileTab: View {
     
     var body: some View {
         List {
-            FileTabSearch($vm.searchField)
+            FileSearch($vm.searchField)
             
             NewFolder(path)
             
@@ -32,10 +32,7 @@ struct FileTab: View {
             
             Section {
                 ForEach(vm.filteredFiles, id: \.name) { file in
-                    FileView(id, file: file, path: path)
-                        .fileContextMenu(file.name,
-                                         path: path,
-                                         mimeType: file.mimetype)
+                    FileView(id, file: file, path: path + "/")
                 }
                 .onDelete { offsets in
                     deleteItem(offsets)
@@ -46,16 +43,19 @@ struct FileTab: View {
                     
                     Spacer()
                     
-                    if fileCount > 5 {
-                        Text("\(fileCount) Files")
-                    }
+                    let count = Text(fileCount)
+                        .monospaced()
+                    
+                    Text("\(count) Files")
                 }
+                .numericTransition()
             }
             
             if path.isEmpty {
                 FileFormats()
             }
         }
+        .animation(.easeOut, value: vm.filteredFiles)
         .environmentObject(vm)
         .frame(maxWidth: 500)
         .safariCover($vm.showSafari, url: vm.downloadUrl)
@@ -64,11 +64,6 @@ struct FileTab: View {
         }
         .refreshable {
             vm.fetchFiles(path)
-        }
-        .onChange(of: vm.searchField) { _, search in
-            withAnimation {
-                vm.searchRule = search
-            }
         }
         .onChange(of: image) {
             if let image {

@@ -17,7 +17,7 @@ struct FolderFile: View {
     
     var body: some View {
         List {
-            FileTabSearch($vm.searchField)
+            FileSearch($vm.searchField)
             
             NewFolder(path)
             
@@ -50,11 +50,6 @@ struct FolderFile: View {
             
             if path.isEmpty {
                 FileFormats()
-            }
-        }
-        .onChange(of: vm.searchField) { _, search in
-            withAnimation {
-                vm.searchRule = search
             }
         }
         .environmentObject(vm)

@@ -33,28 +33,27 @@ final class FileTabVM: ObservableObject {
     @Published var showSafari = false
     @Published var newFolderName = ""
     @Published var searchField = ""
-    @Published var searchRule = ""
     @Published var newFileName = ""
     
     var filteredFiles: [FileAttributes] {
-        if searchRule.isEmpty {
+        if searchField.isEmpty {
             files
         } else {
             files.filter {
                 $0.name
                     .lowercased()
-                    .contains(searchRule.lowercased())
+                    .contains(searchField.lowercased())
             }
         }
     }
     
-    func fetchFiles(_ path: String = "", id: String? = nil) {
-        getFileListAPI(id ?? self.id, from: path) { result in
+    func fetchFiles(_ path: String = "") {
+        getFileListAPI(id, from: path) { result in
             switch result {
             case .success(let model):
                 if let model = model?.data {
-                    withAnimation {
-                        main {
+                    main {
+                        withAnimation {
 #if os(macOS)
                             self.degrees += 360
 #endif

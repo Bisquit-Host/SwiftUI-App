@@ -2,7 +2,6 @@ import ScrechKit
 
 struct PanelView: View {
     private var vm: PanelVM
-    //    @StateObject private var fileVM: FileTabVM
     @EnvironmentObject private var settings: SettingsStorage
     
     private let id: String
@@ -12,7 +11,6 @@ struct PanelView: View {
     ) {
         self.id = id
         self.vm = PanelVM(id)
-        //        _fileVM = StateObject(wrappedValue: FileTabVM(id))
     }
     
     @AppStorage("selected_tab") private var selectedTab: Tab = .info
@@ -43,7 +41,7 @@ struct PanelView: View {
                             Text(tab.rawValue)
                                 .title2(.semibold, design: .rounded)
                                 .padding(10)
-                                .foregroundStyle(.primary)
+                                .foregroundStyle(selectedTab == tab ? .yellow : .primary)
                         }
                         .buttonStyle(.borderless)
                     }
@@ -51,20 +49,23 @@ struct PanelView: View {
                 .padding()
             }
             
-            switch selectedTab {
-            case .files:
-                FileTab(id)
-                
-            default:
-                Spacer()
-                
-                Text("\(selectedTab.rawValue) is not yet availible")
-                    .largeTitle()
-                
-                Spacer()
+            Group {
+                switch selectedTab {
+                case .files:
+                    FileTab(id)
+                    
+                default:
+                    Spacer()
+                    
+                    Text("\(selectedTab.rawValue) will be availible soon...")
+                        .largeTitle()
+                    
+                    Spacer()
+                }
             }
+            .id(id)
         }
-        .offset(y: -40)
+        .offset(y: -30)
         .task {
             vm.fetchServerDetails()
         }
