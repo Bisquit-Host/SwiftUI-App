@@ -2,7 +2,7 @@ import ScrechKit
 import PteroNet
 
 struct FileTab: View {
-    @EnvironmentObject private var vm: FileTabVM
+    @StateObject private var vm: FileTabVM
     
     private let id, path: String
     
@@ -11,13 +11,21 @@ struct FileTab: View {
     ) {
         self.id = id
         self.path = path
+        _vm = StateObject(wrappedValue: FileTabVM(id))
     }
     
     @State private var selectedItem: Tabs = .info
     @State private var showToolbar = false
     
+    func clear() {
+        print("clicked")
+        vm.searchRule = ""
+    }
+    
     var body: some View {
         VStack {
+            TextField("Search", text: $vm.searchRule)
+            
 #if os(macOS)
             ScrollView {
                 LazyVStack(alignment: .leading) {
@@ -27,7 +35,6 @@ struct FileTab: View {
                         } label: {
                             HStack {
                                 FileView(id, path: path, file: file)
-                                    .fileContextMenu(file.name, path: path, mimeType: file.mimetype)
                                 
                                 Spacer()
                             }
@@ -35,6 +42,7 @@ struct FileTab: View {
                         }
                     }
                 }
+                .animation(.default, value: vm.filteredFiles.indices)
                 .padding(.trailing, 20)
             }
             .background(.clear)
@@ -53,6 +61,7 @@ struct FileTab: View {
             }
 #endif
         }
+        .environmentObject(vm)
         .navigationTitle("Files")
 #if os(macOS)
         .padding()
@@ -60,6 +69,9 @@ struct FileTab: View {
         .clipShape(.rect(cornerRadius: 16))
         .navigationSubtitle(path)
 #endif
+        .onChange(of: id) { _, _ in
+            vm.fetchFiles(path, id: id)
+        }
         .task {
             showToolbar = true
             vm.fetchFiles(path)
@@ -67,18 +79,23 @@ struct FileTab: View {
         .onDisappear {
             showToolbar = false
         }
-//        .toolbar {
-//            //            if showToolbar {
-//            Button {
-//                vm.fetchFiles(path)
-//            } label: {
-//                Image(systemName: "arrow.triangle.2.circlepath")
-//                    .rotate(vm.degrees)
-//                    .bold()
-//            }
-//            .keyboardShortcut("r", modifiers: .command)
-//            //            }
-//        }
+        .toolbar {
+            //            ToolbarItemGroup(placement: .leading) {
+            Text("BH")
+            //            }
+            
+            
+            //            //            if showToolbar {
+            //            Button {
+            //                vm.fetchFiles(path)
+            //            } label: {
+            //                Image(systemName: "arrow.triangle.2.circlepath")
+            //                    .rotate(vm.degrees)
+            //                    .bold()
+            //            }
+            //            .keyboardShortcut("r", modifiers: .command)
+            //            //            }
+        }
     }
 }
 

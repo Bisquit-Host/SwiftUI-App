@@ -24,6 +24,7 @@ struct FileView: View {
             
             Text(file.name)
         }
+        .fileContextMenu(file.name, path: path, mimeType: file.mimetype)
     }
 }
 

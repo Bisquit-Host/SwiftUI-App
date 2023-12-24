@@ -2,7 +2,7 @@ import ScrechKit
 
 struct PanelView: View {
     private var vm: PanelVM
-    private var fileVM: FileTabVM
+    //    @StateObject private var fileVM: FileTabVM
     @EnvironmentObject private var settings: SettingsStorage
     
     private let id: String
@@ -12,7 +12,7 @@ struct PanelView: View {
     ) {
         self.id = id
         self.vm = PanelVM(id)
-        self.fileVM = FileTabVM(id)
+        //        _fileVM = StateObject(wrappedValue: FileTabVM(id))
     }
     
     @AppStorage("selected_tab") private var selectedTab: Tab = .info
@@ -54,7 +54,6 @@ struct PanelView: View {
             switch selectedTab {
             case .files:
                 FileTab(id)
-                    .environmentObject(fileVM)
                 
             default:
                 Spacer()
@@ -68,13 +67,9 @@ struct PanelView: View {
         .offset(y: -40)
         .task {
             vm.fetchServerDetails()
-            fileVM.toolbarId = id
-            fileVM.fetchFiles()
         }
         .onChange(of: id) {
             vm.fetchServerDetails()
-            fileVM.toolbarId = id
-            fileVM.fetchFiles()
         }
     }
 }

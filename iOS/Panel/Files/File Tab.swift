@@ -20,7 +20,7 @@ struct FileTab: View {
     
     var body: some View {
         List {
-            FileTabSearch($vm.fieldSearch)
+            FileTabSearch($vm.searchField)
             
             NewFolder(path)
             
@@ -65,7 +65,7 @@ struct FileTab: View {
         .refreshable {
             vm.fetchFiles(path)
         }
-        .onChange(of: vm.fieldSearch) { _, search in
+        .onChange(of: vm.searchField) { _, search in
             withAnimation {
                 vm.searchRule = search
             }

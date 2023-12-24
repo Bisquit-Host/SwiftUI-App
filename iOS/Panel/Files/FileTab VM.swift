@@ -28,12 +28,11 @@ final class FileTabVM: ObservableObject {
     @Published var degrees = 0.0
     
     @Published var files: [FileAttributes] = []
-    @Published var toolbarId = "" // Requred for toolbar in order to update file list properly
     @Published var showTextField = false
     @Published var downloadUrl = ""
     @Published var showSafari = false
     @Published var newFolderName = ""
-    @Published var fieldSearch = ""
+    @Published var searchField = ""
     @Published var searchRule = ""
     @Published var newFileName = ""
     
@@ -45,6 +44,29 @@ final class FileTabVM: ObservableObject {
                 $0.name
                     .lowercased()
                     .contains(searchRule.lowercased())
+            }
+        }
+    }
+    
+    func fetchFiles(_ path: String = "", id: String? = nil) {
+        getFileListAPI(id ?? self.id, from: path) { result in
+            switch result {
+            case .success(let model):
+                if let model = model?.data {
+                    withAnimation {
+                        main {
+#if os(macOS)
+                            self.degrees += 360
+#endif
+                            self.files = model.map {
+                                $0.attributes
+                            }
+                        }
+                    }
+                }
+                
+            case .failure(let error):
+                networkCallError(#function, error)
             }
         }
     }
@@ -214,29 +236,6 @@ final class FileTabVM: ObservableObject {
             switch result {
             case .success:
                 self.fetchFiles(path)
-                
-            case .failure(let error):
-                networkCallError(#function, error)
-            }
-        }
-    }
-    
-    func fetchFiles(_ path: String = "") {
-        getFileListAPI(id, from: path) { result in
-            switch result {
-            case .success(let model):
-                if let model = model?.data {
-                    withAnimation {
-                        main {
-#if os(macOS)
-                            self.degrees += 360
-#endif
-                            self.files = model.map {
-                                $0.attributes
-                            }
-                        }
-                    }
-                }
                 
             case .failure(let error):
                 networkCallError(#function, error)

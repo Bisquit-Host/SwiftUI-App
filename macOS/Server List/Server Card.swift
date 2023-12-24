@@ -35,9 +35,9 @@ struct ServerCard: View {
             .title2(design: .rounded)
         }
         .buttonStyle(.borderless)
-//        .onHover { hover in
-//            isHovered = hover
-//        }
+        .onHover { hover in
+            isHovered = hover
+        }
     }
 }
 

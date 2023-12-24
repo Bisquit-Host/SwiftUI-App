@@ -13,7 +13,7 @@ struct FileTab: View {
     
     var body: some View {
         List {
-            TextField("Search", text: $vm.fieldSearch)
+            TextField("Search", text: $vm.searchField)
                 .autocorrectionDisabled()
             
             ForEach(vm.filteredFiles, id: \.name) { file in
@@ -38,7 +38,7 @@ struct FileTab: View {
         .task {
             vm.fetchFiles(path)
         }
-        .onChange(of: vm.fieldSearch) { _, search in
+        .onChange(of: vm.searchField) { _, search in
             withAnimation {
                 vm.searchRule = search
             }
