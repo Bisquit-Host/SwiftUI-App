@@ -875,6 +875,16 @@
 		F3DDD59E2A62AC7C009FDFBF /* Create Backup Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DDD59B2A62AC7C009FDFBF /* Create Backup Button.swift */; };
 		F3DE1B982A556CCE007A1624 /* Log List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DE1B972A556CCE007A1624 /* Log List.swift */; };
 		F3DE1B992A556CCE007A1624 /* Log List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DE1B972A556CCE007A1624 /* Log List.swift */; };
+		F3DF50C12B38FCC000206CAE /* User Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A0E2A4A3ABD003A1973 /* User Card.swift */; };
+		F3DF50C32B38FCCC00206CAE /* Users VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A0B2A4A386F003A1973 /* Users VM.swift */; };
+		F3DF50C42B38FCE500206CAE /* User View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39CF3572A50C00C0077996D /* User View.swift */; };
+		F3DF50C52B38FCF900206CAE /* User Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D85B2B31146E00265492 /* User Avatar.swift */; };
+		F3DF50C92B38FD2000206CAE /* Contact Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3880A252A92A15E0052A978 /* Contact Manager.swift */; };
+		F3DF50CA2B38FDDE00206CAE /* User2Fa.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3EC2B3208BE009B7062 /* User2Fa.swift */; };
+		F3DF50CB2B38FDE300206CAE /* Permission List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D8572B31135B00265492 /* Permission List.swift */; };
+		F3DF50CC2B38FDE500206CAE /* Permissions Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3F12B320A6A009B7062 /* Permissions Header.swift */; };
+		F3DF50CD2B38FDE800206CAE /* Permission Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D85F2B319B9E00265492 /* Permission Card.swift */; };
+		F3DF50CF2B39636A00206CAE /* User List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DF50CE2B39636A00206CAE /* User List.swift */; };
 		F3E024C52B228F4C00FFF686 /* New Task Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E024C42B228F4C00FFF686 /* New Task Sheet.swift */; };
 		F3E024C62B228F4C00FFF686 /* New Task Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E024C42B228F4C00FFF686 /* New Task Sheet.swift */; };
 		F3E024C72B228F4C00FFF686 /* New Task Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E024C42B228F4C00FFF686 /* New Task Sheet.swift */; };
@@ -1388,6 +1398,7 @@
 		F3DD93D22A372BED006A41AA /* Console Overlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Console Overlay.swift"; sourceTree = "<group>"; };
 		F3DDD59B2A62AC7C009FDFBF /* Create Backup Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Create Backup Button.swift"; sourceTree = "<group>"; };
 		F3DE1B972A556CCE007A1624 /* Log List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log List.swift"; sourceTree = "<group>"; };
+		F3DF50CE2B39636A00206CAE /* User List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User List.swift"; sourceTree = "<group>"; };
 		F3E024C42B228F4C00FFF686 /* New Task Sheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "New Task Sheet.swift"; sourceTree = "<group>"; };
 		F3E08EA02A2CE17800116C1C /* macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3E08EA42A2CE17900116C1C /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
@@ -2606,6 +2617,14 @@
 			path = Cache;
 			sourceTree = "<group>";
 		};
+		F3DF50D02B3965BD00206CAE /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				F3DF50CE2B39636A00206CAE /* User List.swift */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
 		F3E08EA12A2CE17900116C1C /* macOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -2654,6 +2673,7 @@
 			isa = PBXGroup;
 			children = (
 				F3E08ECD2A2CEDD800116C1C /* Panel View.swift */,
+				F3DF50D02B3965BD00206CAE /* Users */,
 				F35B9F622A2DCFA10045D014 /* Stats */,
 				F323D8D62A2D6868002EDC62 /* Files */,
 			);
@@ -2711,12 +2731,12 @@
 			isa = PBXGroup;
 			children = (
 				F3FF59FE2A4A3188003A1973 /* User List.swift */,
+				F3FF5A0B2A4A386F003A1973 /* Users VM.swift */,
 				F3FF5A0E2A4A3ABD003A1973 /* User Card.swift */,
 				F39CF3572A50C00C0077996D /* User View.swift */,
 				F3E1D3EC2B3208BE009B7062 /* User2Fa.swift */,
 				F3C9D85B2B31146E00265492 /* User Avatar.swift */,
 				F3A123592A6689FA008E3E20 /* User Email.swift */,
-				F3FF5A0B2A4A386F003A1973 /* Users VM.swift */,
 				F3880A252A92A15E0052A978 /* Contact Manager.swift */,
 				F3E1D3F02B320A4B009B7062 /* Permissions */,
 			);
@@ -4086,6 +4106,7 @@
 				F30C13102A54606900A7EFF0 /* Nav Extension.swift in Sources */,
 				F32FD7232B1E065600723B88 /* Network Calls.swift in Sources */,
 				F3464D192A86396100188B0C /* Intents.intentdefinition in Sources */,
+				F3DF50CC2B38FDE500206CAE /* Permissions Header.swift in Sources */,
 				F35B9F562A2D6D8A0045D014 /* Auth VM.swift in Sources */,
 				F3E08ED52A2CEE2300116C1C /* Auth View.swift in Sources */,
 				F33DE5092B364EBC00E257D8 /* InfoTab Model.swift in Sources */,
@@ -4099,12 +4120,18 @@
 				F390E53E2A84217D000B4460 /* Bisquit.Host App.swift in Sources */,
 				F3D295142AF396FD00ED43A0 /* Tabs.swift in Sources */,
 				F30C130F2A54605B00A7EFF0 /* Nav Destinations.swift in Sources */,
+				F3DF50CD2B38FDE800206CAE /* Permission Card.swift in Sources */,
 				F3A8BE8B2A2FA9B3001B13D8 /* File View.swift in Sources */,
+				F3DF50C92B38FD2000206CAE /* Contact Manager.swift in Sources */,
 				F30B61CD2B2907CA00F447B4 /* Debug Key.swift in Sources */,
+				F3DF50CB2B38FDE300206CAE /* Permission List.swift in Sources */,
 				F3F061D72A73C9A500470F7E /* Map VM.swift in Sources */,
 				F3464D2B2A863A6000188B0C /* Create Backup.swift in Sources */,
 				F33DE4EB2B35C3F000E257D8 /* FileTab ContextMenu.swift in Sources */,
+				F3DF50C52B38FCF900206CAE /* User Avatar.swift in Sources */,
+				F3DF50C42B38FCE500206CAE /* User View.swift in Sources */,
 				F3E08EB62A2CE56200116C1C /* AppSettings.swift in Sources */,
+				F3DF50C12B38FCC000206CAE /* User Card.swift in Sources */,
 				F380C0B32A4F1D42002D400F /* Server List VM.swift in Sources */,
 				F323D8D52A2D67A3002EDC62 /* Upload File.swift in Sources */,
 				F3A800332A7313E900CAC40B /* Tip Cloud Keys.swift in Sources */,
@@ -4124,7 +4151,9 @@
 				F3E08EBF2A2CE87800116C1C /* Start Page.swift in Sources */,
 				F3E08EA52A2CE17900116C1C /* Home.swift in Sources */,
 				F348C6EB2A544893002D5BD6 /* App Container.swift in Sources */,
+				F3DF50CF2B39636A00206CAE /* User List.swift in Sources */,
 				F3E08EC22A2CE89400116C1C /* Settings Storage.swift in Sources */,
+				F3DF50C32B38FCCC00206CAE /* Users VM.swift in Sources */,
 				F34F289C2ACDADA500FD618A /* Animated Tab.swift in Sources */,
 				F3E08ECE2A2CEDD800116C1C /* Panel View.swift in Sources */,
 				F323D8D32A2D668D002EDC62 /* File Tab.swift in Sources */,
@@ -4136,6 +4165,7 @@
 				F32FD7172B1E042400723B88 /* Websocket.swift in Sources */,
 				F33944152A49135A00E2F0FC /* Server Card Context Menu.swift in Sources */,
 				F3464D282A86398000188B0C /* PowerSignalAppEnum.swift in Sources */,
+				F3DF50CA2B38FDDE00206CAE /* User2Fa.swift in Sources */,
 				F35B9F5C2A2DC8D60045D014 /* Nav State.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

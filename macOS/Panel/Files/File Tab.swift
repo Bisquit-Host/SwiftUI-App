@@ -18,7 +18,7 @@ struct FileTab: View {
     
     var body: some View {
         VStack {
-            TextField("Search", text: $vm.searchRule)
+            TextField("Search", text: $vm.searchField)
                 .textFieldStyle(.roundedBorder)
 #if os(macOS)
             ScrollView {

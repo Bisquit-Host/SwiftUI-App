@@ -54,6 +54,10 @@ struct PanelView: View {
                 case .files:
                     FileTab(id)
                     
+                case .users:
+                    UserList(id)
+                        .environment(UsersVM(id))
+                    
                 default:
                     Spacer()
                     

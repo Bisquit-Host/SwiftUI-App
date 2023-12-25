@@ -15,12 +15,12 @@ struct UserView: View {
         NavigationView {
             List {
                 UserAvatar(user.image)
-#if os(watchOS) || os(tvOS)
+#if os(iOS)
+                UserEmail(user.email)
+#else
                 Text(user.email)
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
-#else
-                UserEmail(user.email)
 #endif
                 User2Fa(user.twoFaEnabled)
                 
