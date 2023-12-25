@@ -25,7 +25,7 @@ struct AllocationList: View {
         .task {
             vm.fetchAllocations()
         }
-        .onChange(of: id) { _, _ in
+        .onChange(of: id) {
             vm.fetchAllocations()
         }
     }

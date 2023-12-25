@@ -27,6 +27,7 @@ struct PanelView: View {
         .allocations,
         .setup,
         .settings,
+        .logs,
         .admin
     ]
     
@@ -59,7 +60,9 @@ struct PanelView: View {
                     
                 case .users:
                     UserList(id)
-                        .environment(UsersVM(id))
+                    
+                case .logs:
+                    LogList(id)
                     
                 default:
                     Spacer()

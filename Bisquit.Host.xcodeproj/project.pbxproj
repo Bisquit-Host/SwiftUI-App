@@ -14,6 +14,11 @@
 		F300888E2B39FAA60051476C /* Allocation VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCF5C42B3457AE005FFF2C /* Allocation VM.swift */; };
 		F30088902B39FAB80051476C /* Allocation List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300888F2B39FAB80051476C /* Allocation List.swift */; };
 		F30088912B39FB160051476C /* Allocation Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCF5C22B345792005FFF2C /* Allocation Card.swift */; };
+		F30088932B3A02D50051476C /* Log List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088922B3A02D50051476C /* Log List.swift */; };
+		F30088942B3A03050051476C /* Log VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367977D2A3A5AB6009F2788 /* Log VM.swift */; };
+		F30088952B3A03110051476C /* Log Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367977A2A3A55F4009F2788 /* Log Card.swift */; };
+		F30088962B3A033F0051476C /* Log View Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* Log View Parent.swift */; };
+		F30088972B3A03440051476C /* Log Detail View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F311CAAD2A646612004E4A4A /* Log Detail View.swift */; };
 		F304498A29E990E9006DC0C7 /* Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304498929E990E9006DC0C7 /* Cloud Keys.swift */; };
 		F306B9ED29BBDA770008C2D4 /* Server List Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */; };
 		F30860142B002B31004D776A /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F30860132B002B31004D776A /* PteroNet */; };
@@ -1111,6 +1116,7 @@
 		F3000E17295A496C00ABD30A /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
 		F3000E1D295AE2B700ABD30A /* Guide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guide.swift; sourceTree = "<group>"; };
 		F300888F2B39FAB80051476C /* Allocation List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation List.swift"; sourceTree = "<group>"; };
+		F30088922B3A02D50051476C /* Log List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log List.swift"; sourceTree = "<group>"; };
 		F304498629E98AE4006DC0C7 /* Bisquit.Host.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bisquit.Host.entitlements; sourceTree = "<group>"; };
 		F304498929E990E9006DC0C7 /* Cloud Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cloud Keys.swift"; sourceTree = "<group>"; };
 		F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List Footer.swift"; sourceTree = "<group>"; };
@@ -2678,6 +2684,7 @@
 			children = (
 				F3E08ECD2A2CEDD800116C1C /* Panel View.swift */,
 				F300888F2B39FAB80051476C /* Allocation List.swift */,
+				F30088922B3A02D50051476C /* Log List.swift */,
 				F3DF50D02B3965BD00206CAE /* Users */,
 				F35B9F622A2DCFA10045D014 /* Stats */,
 				F323D8D62A2D6868002EDC62 /* Files */,
@@ -4127,12 +4134,16 @@
 				F300888E2B39FAA60051476C /* Allocation VM.swift in Sources */,
 				F30C130F2A54605B00A7EFF0 /* Nav Destinations.swift in Sources */,
 				F3DF50CD2B38FDE800206CAE /* Permission Card.swift in Sources */,
+				F30088952B3A03110051476C /* Log Card.swift in Sources */,
+				F30088972B3A03440051476C /* Log Detail View.swift in Sources */,
+				F30088932B3A02D50051476C /* Log List.swift in Sources */,
 				F3A8BE8B2A2FA9B3001B13D8 /* File View.swift in Sources */,
 				F3DF50C92B38FD2000206CAE /* Contact Manager.swift in Sources */,
 				F30B61CD2B2907CA00F447B4 /* Debug Key.swift in Sources */,
 				F3DF50CB2B38FDE300206CAE /* Permission List.swift in Sources */,
 				F3F061D72A73C9A500470F7E /* Map VM.swift in Sources */,
 				F3464D2B2A863A6000188B0C /* Create Backup.swift in Sources */,
+				F30088962B3A033F0051476C /* Log View Parent.swift in Sources */,
 				F33DE4EB2B35C3F000E257D8 /* FileTab ContextMenu.swift in Sources */,
 				F3DF50C52B38FCF900206CAE /* User Avatar.swift in Sources */,
 				F3DF50C42B38FCE500206CAE /* User View.swift in Sources */,
@@ -4172,6 +4183,7 @@
 				F30C13122A54609000A7EFF0 /* Server List.swift in Sources */,
 				F32FD7172B1E042400723B88 /* Websocket.swift in Sources */,
 				F33944152A49135A00E2F0FC /* Server Card Context Menu.swift in Sources */,
+				F30088942B3A03050051476C /* Log VM.swift in Sources */,
 				F3464D282A86398000188B0C /* PowerSignalAppEnum.swift in Sources */,
 				F3DF50CA2B38FDDE00206CAE /* User2Fa.swift in Sources */,
 				F35B9F5C2A2DC8D60045D014 /* Nav State.swift in Sources */,
@@ -4239,7 +4251,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.1;
-				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host";
+				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = appletvos;
@@ -4633,7 +4645,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.1;
-				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.Clip";
+				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.Clip.debug";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
@@ -4908,7 +4920,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.1;
-				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host";
+				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = xros;
 				SUPPORTED_PLATFORMS = "xros xrsimulator";
@@ -5023,7 +5035,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 2.1;
-				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host";
+				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";

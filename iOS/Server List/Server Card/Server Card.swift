@@ -112,7 +112,7 @@ struct ServerCard: View {
             default: EmptyView()
             }
         }
-        .onChange(of: settings.updateServers) { _, _ in
+        .onChange(of: settings.updateServers) {
             vm.fetchServerUsage()
         }
         .task {
@@ -122,11 +122,9 @@ struct ServerCard: View {
 }
 
 #Preview {
-    LazyVGrid(
-        columns: [
-            GridItem(.adaptive(minimum: 160, maximum: 400))
-        ],
-        spacing: 8
+    LazyVGrid(columns: [
+        GridItem(.adaptive(minimum: 160, maximum: 400))
+    ], spacing: 8
     ) {
         ServerCard(
             sampleJSON(.serverListAttributes)

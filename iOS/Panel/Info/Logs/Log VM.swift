@@ -10,8 +10,8 @@ final class LogVM {
     }
     
     var searchField = ""
-    var logs: [LogsData] = []
-    var searchedLogs: [LogsData] {
+    var logs: [LogAttributes] = []
+    var searchedLogs: [LogAttributes] {
         guard !searchField.isEmpty else {
             return logs
         }
@@ -19,9 +19,9 @@ final class LogVM {
         let prompt = searchField.lowercased()
         
         return logs.filter {
-            $0.attributes.relationships.actor.attributes?.username
+            $0.relationships.actor.attributes?.username
                 .lowercased().contains(prompt) ?? false ||
-            $0.attributes.relationships.actor.attributes?.email
+            $0.relationships.actor.attributes?.email
                 .lowercased().contains(prompt) ?? false
         }
     }
@@ -32,7 +32,9 @@ final class LogVM {
             case .success(let model):
                 if let model = model?.data {
                     withAnimation {
-                        self.logs = model
+                        self.logs = model.map {
+                            $0.attributes
+                        }
                     }
                 }
                 

@@ -28,10 +28,12 @@ struct LogList: View {
     }
     
     var body: some View {
+        @Bindable var binding = vm
+        
         List {
             let logsByMonth = vm.searchedLogs.chunked { lhs, rhs in
-                let date1 = dateFormatter.date(from: lhs.attributes.timestamp)
-                let date2 = dateFormatter.date(from: rhs.attributes.timestamp)
+                let date1 = dateFormatter.date(from: lhs.timestamp)
+                let date2 = dateFormatter.date(from: rhs.timestamp)
                 
                 return Calendar.current.component(.month, from: date1!) == Calendar.current.component(.month, from: date2!)
             }
@@ -39,16 +41,16 @@ struct LogList: View {
             ForEach(logsByMonth.indices, id: \.self) { index in
                 let logs = logsByMonth[index]
                 
-                Section(monthName(for: logs.first!.attributes.timestamp)) {
-                    ForEach(logs, id: \.attributes.id) { log in
-                        LogCard(log.attributes)
+                Section(monthName(for: logs.first!.timestamp)) {
+                    ForEach(logs, id: \.id) { log in
+                        LogCard(log)
                     }
                 }
             }
         }
         .navigationTitle("Server logs")
         .toolbarTitleDisplayMode(.inline)
-        .searchable(text: $searchField)
+        .searchable(text: $binding.searchField)
         .overlay {
             if vm.searchedLogs.isEmpty {
                 ContentUnavailableView("No logs found",
@@ -62,11 +64,6 @@ struct LogList: View {
         }
         .refreshable {
             vm.fetchLogs()
-        }
-        .onChange(of: searchField) { _, search in
-            withAnimation {
-                vm.searchField = search
-            }
         }
     }
 }

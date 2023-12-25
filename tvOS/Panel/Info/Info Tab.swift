@@ -48,7 +48,7 @@ struct InfoTab: View {
             
             HStack {
                 NavigationLink {
-                    
+//                    AllocationList()
                 } label: {
                     Label("Allocations", systemImage: "network")
                         .frame(width: 500, height: 250)

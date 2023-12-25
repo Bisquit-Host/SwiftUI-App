@@ -9,7 +9,7 @@ struct LogViewParent: View {
     }
     
     var body: some View {
-#if os(watchOS)
+#if os(watchOS) && os(macOS)
         LogDetailView(properties)
 #else
         NavigationView {

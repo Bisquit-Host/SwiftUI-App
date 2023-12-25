@@ -11,5 +11,6 @@ enum Tab: String, CaseIterable {
          schedules = "Schedules",
          databases = "Databases",
          allocations = "Allocations",
+         logs = "Logs",
          admin = "Admin"
 }

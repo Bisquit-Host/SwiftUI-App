@@ -55,7 +55,7 @@ struct FileTab: View {
         .clipShape(.rect(cornerRadius: 16))
         .navigationSubtitle(path)
 #endif
-        .onChange(of: id) { _, _ in
+        .onChange(of: id) {
             vm.fetchFiles(path)
         }
         .task {
@@ -65,18 +65,18 @@ struct FileTab: View {
         .onDisappear {
             showToolbar = false
         }
-//        .toolbar {
-            //            //            if showToolbar {
-            //            Button {
-            //                vm.fetchFiles(path)
-            //            } label: {
-            //                Image(systemName: "arrow.triangle.2.circlepath")
-            //                    .rotate(vm.degrees)
-            //                    .bold()
-            //            }
-            //            .keyboardShortcut("r", modifiers: .command)
-            //            //            }
-//        }
+        //        .toolbar {
+        //            //            if showToolbar {
+        //            Button {
+        //                vm.fetchFiles(path)
+        //            } label: {
+        //                Image(systemName: "arrow.triangle.2.circlepath")
+        //                    .rotate(vm.degrees)
+        //                    .bold()
+        //            }
+        //            .keyboardShortcut("r", modifiers: .command)
+        //            //            }
+        //        }
     }
 }
 
