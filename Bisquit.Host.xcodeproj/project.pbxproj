@@ -19,6 +19,8 @@
 		F30088952B3A03110051476C /* Log Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367977A2A3A55F4009F2788 /* Log Card.swift */; };
 		F30088962B3A033F0051476C /* Log View Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* Log View Parent.swift */; };
 		F30088972B3A03440051476C /* Log Detail View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F311CAAD2A646612004E4A4A /* Log Detail View.swift */; };
+		F300889A2B3A0C740051476C /* User Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088992B3A0C740051476C /* User Card.swift */; };
+		F300889B2B3A0E1A0051476C /* Startup VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337C1682A8D07E2006F321C /* Startup VM.swift */; };
 		F304498A29E990E9006DC0C7 /* Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304498929E990E9006DC0C7 /* Cloud Keys.swift */; };
 		F306B9ED29BBDA770008C2D4 /* Server List Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */; };
 		F30860142B002B31004D776A /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F30860132B002B31004D776A /* PteroNet */; };
@@ -883,7 +885,6 @@
 		F3DDD59E2A62AC7C009FDFBF /* Create Backup Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DDD59B2A62AC7C009FDFBF /* Create Backup Button.swift */; };
 		F3DE1B982A556CCE007A1624 /* Log List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DE1B972A556CCE007A1624 /* Log List.swift */; };
 		F3DE1B992A556CCE007A1624 /* Log List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DE1B972A556CCE007A1624 /* Log List.swift */; };
-		F3DF50C12B38FCC000206CAE /* User Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A0E2A4A3ABD003A1973 /* User Card.swift */; };
 		F3DF50C32B38FCCC00206CAE /* Users VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A0B2A4A386F003A1973 /* Users VM.swift */; };
 		F3DF50C42B38FCE500206CAE /* User View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39CF3572A50C00C0077996D /* User View.swift */; };
 		F3DF50C52B38FCF900206CAE /* User Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D85B2B31146E00265492 /* User Avatar.swift */; };
@@ -1117,6 +1118,7 @@
 		F3000E1D295AE2B700ABD30A /* Guide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guide.swift; sourceTree = "<group>"; };
 		F300888F2B39FAB80051476C /* Allocation List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation List.swift"; sourceTree = "<group>"; };
 		F30088922B3A02D50051476C /* Log List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log List.swift"; sourceTree = "<group>"; };
+		F30088992B3A0C740051476C /* User Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Card.swift"; sourceTree = "<group>"; };
 		F304498629E98AE4006DC0C7 /* Bisquit.Host.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bisquit.Host.entitlements; sourceTree = "<group>"; };
 		F304498929E990E9006DC0C7 /* Cloud Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cloud Keys.swift"; sourceTree = "<group>"; };
 		F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List Footer.swift"; sourceTree = "<group>"; };
@@ -2631,6 +2633,7 @@
 			isa = PBXGroup;
 			children = (
 				F3DF50CE2B39636A00206CAE /* User List.swift */,
+				F30088992B3A0C740051476C /* User Card.swift */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -4119,6 +4122,7 @@
 				F32FD7232B1E065600723B88 /* Network Calls.swift in Sources */,
 				F3464D192A86396100188B0C /* Intents.intentdefinition in Sources */,
 				F3DF50CC2B38FDE500206CAE /* Permissions Header.swift in Sources */,
+				F300889B2B3A0E1A0051476C /* Startup VM.swift in Sources */,
 				F35B9F562A2D6D8A0045D014 /* Auth VM.swift in Sources */,
 				F3E08ED52A2CEE2300116C1C /* Auth View.swift in Sources */,
 				F33DE5092B364EBC00E257D8 /* InfoTab Model.swift in Sources */,
@@ -4146,9 +4150,9 @@
 				F30088962B3A033F0051476C /* Log View Parent.swift in Sources */,
 				F33DE4EB2B35C3F000E257D8 /* FileTab ContextMenu.swift in Sources */,
 				F3DF50C52B38FCF900206CAE /* User Avatar.swift in Sources */,
+				F300889A2B3A0C740051476C /* User Card.swift in Sources */,
 				F3DF50C42B38FCE500206CAE /* User View.swift in Sources */,
 				F3E08EB62A2CE56200116C1C /* AppSettings.swift in Sources */,
-				F3DF50C12B38FCC000206CAE /* User Card.swift in Sources */,
 				F380C0B32A4F1D42002D400F /* Server List VM.swift in Sources */,
 				F323D8D52A2D67A3002EDC62 /* Upload File.swift in Sources */,
 				F3A800332A7313E900CAC40B /* Tip Cloud Keys.swift in Sources */,

@@ -1061,7 +1061,7 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 				<key>trailing</key>
 				<string>                    }
 #endif
-                    
+                    Section {
 </string>
 			</dict>
 			<key>type</key>

@@ -52,7 +52,6 @@ struct InfoTabButtons: View {
                         sheetStartup = true
                     }
 #endif
-                    
                     Section {
                         MenuButton("Reinstall", role: .destructive, icon: "arrow.triangle.2.circlepath") {
                             alertReinstall = true

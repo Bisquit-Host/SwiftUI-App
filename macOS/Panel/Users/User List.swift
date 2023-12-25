@@ -16,6 +16,7 @@ struct UserList: View {
                 ForEach(vm.users, id: \.uuid) { user in
                     UserCard(user)
                 }
+                .environment(vm)
             }
         }
         .navigationTitle("Users")
