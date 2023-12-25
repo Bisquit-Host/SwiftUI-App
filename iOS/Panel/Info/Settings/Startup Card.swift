@@ -8,8 +8,7 @@ struct StartupCard: View {
     private let variable: PNStartupVariableAttributes
     
     init(_ server: ServerAttributes,
-         variable: PNStartupVariableAttributes,
-         model: StartupVM = StartupVM("")
+         variable: PNStartupVariableAttributes
     ) {
         self.server = server
         self.variable = variable

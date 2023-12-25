@@ -31,6 +31,12 @@ struct PanelView: View {
         .admin
     ]
     
+    #if os(iOS)
+    let application = UIApplication.self
+    #else
+    let application = NSApplication
+    #endif
+    
     var body: some View {
         VStack(spacing: 0) {
             ScrollView(.horizontal, showsIndicators: false) {
@@ -116,11 +122,11 @@ struct PanelView: View {
         .onDisappear {
             vm.disconnectWebSocket()
         }
-        .onReceive(NotificationCenter.default.publisher(for: NSApplication.willResignActiveNotification)) { _ in
+        .onReceive(NotificationCenter.default.publisher(for: application.willResignActiveNotification)) { _ in
             vm.disconnectWebSocket()
             vm.messages.removeAll()
         }
-        .onReceive(NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification)) { _ in
+        .onReceive(NotificationCenter.default.publisher(for: application.didBecomeActiveNotification)) { _ in
             vm.consoleDetails { data in
                 if let data {
                     vm.connectWebSocket(data)

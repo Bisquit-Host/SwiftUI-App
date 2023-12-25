@@ -2,7 +2,7 @@ import SwiftUI
 import PteroNet
 
 struct StartupView: View {
-    @Environment(ServerSettingsVM.self) private var vm
+    @Environment(StartupVM.self) private var vm
     
     private let server: ServerAttributes
     

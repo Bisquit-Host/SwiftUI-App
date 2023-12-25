@@ -6,6 +6,7 @@ struct InfoTabButtons: View {
     private var liveActivity = LiveActivity()
 #endif
     
+    private var startupVM: StartupVM
     private var settingsVM: ServerSettingsVM
     private var logVM: LogVM
     private var userVM: UsersVM
@@ -18,6 +19,7 @@ struct InfoTabButtons: View {
          modelUsers: UsersVM = UsersVM("")
     ) {
         self.server = server
+        self.startupVM = StartupVM(server.id)
         self.settingsVM = ServerSettingsVM(server.id)
         self.logVM = LogVM(server.id)
         self.userVM = UsersVM(server.id)
@@ -126,7 +128,7 @@ struct InfoTabButtons: View {
         .task {
             logVM.fetchLogs()
             userVM.fetchUsers()
-            settingsVM.fetchStartupVariables()
+            startupVM.fetchStartupVariables()
             settingsVM.serverName = server.name
             settingsVM.serverDescription = server.description
         }
