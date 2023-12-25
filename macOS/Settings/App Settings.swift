@@ -18,6 +18,7 @@ struct AppSettings: View {
             }
         }
         .padding()
+        .frame(width: 300, height: 200)
     }
 }
 

@@ -923,7 +923,7 @@
 		F3E08EA52A2CE17900116C1C /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E08EA42A2CE17900116C1C /* Home.swift */; };
 		F3E08EA72A2CE17A00116C1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3E08EA62A2CE17A00116C1C /* Assets.xcassets */; };
 		F3E08EB22A2CE19900116C1C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F3E08EB12A2CE19900116C1C /* Kingfisher */; };
-		F3E08EB62A2CE56200116C1C /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E08EB52A2CE56200116C1C /* AppSettings.swift */; };
+		F3E08EB62A2CE56200116C1C /* App Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E08EB52A2CE56200116C1C /* App Settings.swift */; };
 		F3E08EBF2A2CE87800116C1C /* Start Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E08EBE2A2CE87800116C1C /* Start Page.swift */; };
 		F3E08EC22A2CE89400116C1C /* Settings Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* Settings Storage.swift */; };
 		F3E08EC32A2CE92A00116C1C /* Panel Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3029C06E9700B08696 /* Panel Model.swift */; };
@@ -1451,7 +1451,7 @@
 		F3E08EA42A2CE17900116C1C /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		F3E08EA62A2CE17A00116C1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3E08EAB2A2CE17A00116C1C /* Bisquit_Host_Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bisquit_Host_Mac.entitlements; sourceTree = "<group>"; };
-		F3E08EB52A2CE56200116C1C /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		F3E08EB52A2CE56200116C1C /* App Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Settings.swift"; sourceTree = "<group>"; };
 		F3E08EBE2A2CE87800116C1C /* Start Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page.swift"; sourceTree = "<group>"; };
 		F3E08ECD2A2CEDD800116C1C /* Panel View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel View.swift"; sourceTree = "<group>"; };
 		F3E08ED42A2CEE2300116C1C /* Auth View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auth View.swift"; sourceTree = "<group>"; };
@@ -1682,6 +1682,14 @@
 				F30088D92B3A3BF50051476C /* Console View.swift */,
 			);
 			path = Console;
+			sourceTree = "<group>";
+		};
+		F30088DF2B3A44F60051476C /* Startup */ = {
+			isa = PBXGroup;
+			children = (
+				F30088DD2B3A3FBB0051476C /* Startup List.swift */,
+			);
+			path = Startup;
 			sourceTree = "<group>";
 		};
 		F306B9EE29BBDA7C0008C2D4 /* Elements */ = {
@@ -2765,7 +2773,7 @@
 		F3E08EBA2A2CE6FA00116C1C /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				F3E08EB52A2CE56200116C1C /* AppSettings.swift */,
+				F3E08EB52A2CE56200116C1C /* App Settings.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -2784,7 +2792,7 @@
 			isa = PBXGroup;
 			children = (
 				F3E08ECD2A2CEDD800116C1C /* Panel View.swift */,
-				F30088DD2B3A3FBB0051476C /* Startup List.swift */,
+				F30088DF2B3A44F60051476C /* Startup */,
 				F30088DC2B3A3FAC0051476C /* Console */,
 				F30088D82B3A3BBD0051476C /* Plugins */,
 				F35B9F622A2DCFA10045D014 /* Stats */,
@@ -4263,7 +4271,7 @@
 				F33DE4EB2B35C3F000E257D8 /* FileTab ContextMenu.swift in Sources */,
 				F3DF50C52B38FCF900206CAE /* User Avatar.swift in Sources */,
 				F300889A2B3A0C740051476C /* User Card.swift in Sources */,
-				F3E08EB62A2CE56200116C1C /* AppSettings.swift in Sources */,
+				F3E08EB62A2CE56200116C1C /* App Settings.swift in Sources */,
 				F380C0B32A4F1D42002D400F /* Server List VM.swift in Sources */,
 				F30088A82B3A18E40051476C /* Schedule VM.swift in Sources */,
 				F323D8D52A2D67A3002EDC62 /* Upload File.swift in Sources */,
