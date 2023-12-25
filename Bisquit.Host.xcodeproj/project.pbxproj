@@ -34,6 +34,15 @@
 		F30088AA2B3A1A510051476C /* Schedule VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088A72B3A18E40051476C /* Schedule VM.swift */; };
 		F30088AB2B3A1A520051476C /* Schedule VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088A72B3A18E40051476C /* Schedule VM.swift */; };
 		F30088AD2B3A1F500051476C /* User View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088AC2B3A1F500051476C /* User View.swift */; };
+		F30088B12B3A20150051476C /* Backup List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088B02B3A20150051476C /* Backup List.swift */; };
+		F30088B32B3A20620051476C /* Backup Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088B22B3A20620051476C /* Backup Card.swift */; };
+		F30088B62B3A21410051476C /* Schedule List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088B52B3A21410051476C /* Schedule List.swift */; };
+		F30088B82B3A218B0051476C /* Schedule Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088B72B3A218B0051476C /* Schedule Card.swift */; };
+		F30088BB2B3A21F80051476C /* Database List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088BA2B3A21F80051476C /* Database List.swift */; };
+		F30088BD2B3A223E0051476C /* Database Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088BC2B3A223E0051476C /* Database Card.swift */; };
+		F30088C02B3A22B30051476C /* Plugin VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088BF2B3A22B30051476C /* Plugin VM.swift */; };
+		F30088C22B3A32D60051476C /* Plugin List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088C12B3A32D60051476C /* Plugin List.swift */; };
+		F30088C42B3A32DB0051476C /* Plugin Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088C32B3A32DB0051476C /* Plugin Card.swift */; };
 		F304498A29E990E9006DC0C7 /* Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304498929E990E9006DC0C7 /* Cloud Keys.swift */; };
 		F306B9ED29BBDA770008C2D4 /* Server List Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */; };
 		F30860142B002B31004D776A /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F30860132B002B31004D776A /* PteroNet */; };
@@ -1131,6 +1140,15 @@
 		F30088A12B3A18A20051476C /* Database VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database VM.swift"; sourceTree = "<group>"; };
 		F30088A72B3A18E40051476C /* Schedule VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Schedule VM.swift"; sourceTree = "<group>"; };
 		F30088AC2B3A1F500051476C /* User View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User View.swift"; sourceTree = "<group>"; };
+		F30088B02B3A20150051476C /* Backup List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Backup List.swift"; sourceTree = "<group>"; };
+		F30088B22B3A20620051476C /* Backup Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Backup Card.swift"; sourceTree = "<group>"; };
+		F30088B52B3A21410051476C /* Schedule List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Schedule List.swift"; sourceTree = "<group>"; };
+		F30088B72B3A218B0051476C /* Schedule Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Schedule Card.swift"; sourceTree = "<group>"; };
+		F30088BA2B3A21F80051476C /* Database List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database List.swift"; sourceTree = "<group>"; };
+		F30088BC2B3A223E0051476C /* Database Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database Card.swift"; sourceTree = "<group>"; };
+		F30088BF2B3A22B30051476C /* Plugin VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plugin VM.swift"; sourceTree = "<group>"; };
+		F30088C12B3A32D60051476C /* Plugin List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plugin List.swift"; sourceTree = "<group>"; };
+		F30088C32B3A32DB0051476C /* Plugin Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plugin Card.swift"; sourceTree = "<group>"; };
 		F304498629E98AE4006DC0C7 /* Bisquit.Host.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bisquit.Host.entitlements; sourceTree = "<group>"; };
 		F304498929E990E9006DC0C7 /* Cloud Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cloud Keys.swift"; sourceTree = "<group>"; };
 		F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List Footer.swift"; sourceTree = "<group>"; };
@@ -1598,6 +1616,49 @@
 				F31D0BB32A2573D700119D07 /* Settings */,
 			);
 			path = tvOS;
+			sourceTree = "<group>";
+		};
+		F30088AE2B3A1FFF0051476C /* Logs */ = {
+			isa = PBXGroup;
+			children = (
+				F30088922B3A02D50051476C /* Log List.swift */,
+			);
+			path = Logs;
+			sourceTree = "<group>";
+		};
+		F30088AF2B3A20060051476C /* Allocations */ = {
+			isa = PBXGroup;
+			children = (
+				F300888F2B39FAB80051476C /* Allocation List.swift */,
+			);
+			path = Allocations;
+			sourceTree = "<group>";
+		};
+		F30088B42B3A210C0051476C /* Backups */ = {
+			isa = PBXGroup;
+			children = (
+				F30088B02B3A20150051476C /* Backup List.swift */,
+				F30088B22B3A20620051476C /* Backup Card.swift */,
+			);
+			path = Backups;
+			sourceTree = "<group>";
+		};
+		F30088B92B3A21C30051476C /* Schedules */ = {
+			isa = PBXGroup;
+			children = (
+				F30088B52B3A21410051476C /* Schedule List.swift */,
+				F30088B72B3A218B0051476C /* Schedule Card.swift */,
+			);
+			path = Schedules;
+			sourceTree = "<group>";
+		};
+		F30088BE2B3A229A0051476C /* Databases */ = {
+			isa = PBXGroup;
+			children = (
+				F30088BA2B3A21F80051476C /* Database List.swift */,
+				F30088BC2B3A223E0051476C /* Database Card.swift */,
+			);
+			path = Databases;
 			sourceTree = "<group>";
 		};
 		F306B9EE29BBDA7C0008C2D4 /* Elements */ = {
@@ -2700,10 +2761,16 @@
 			isa = PBXGroup;
 			children = (
 				F3E08ECD2A2CEDD800116C1C /* Panel View.swift */,
-				F300888F2B39FAB80051476C /* Allocation List.swift */,
-				F30088922B3A02D50051476C /* Log List.swift */,
-				F3DF50D02B3965BD00206CAE /* Users */,
+				F30088BF2B3A22B30051476C /* Plugin VM.swift */,
+				F30088C12B3A32D60051476C /* Plugin List.swift */,
+				F30088C32B3A32DB0051476C /* Plugin Card.swift */,
 				F35B9F622A2DCFA10045D014 /* Stats */,
+				F30088B42B3A210C0051476C /* Backups */,
+				F30088BE2B3A229A0051476C /* Databases */,
+				F30088B92B3A21C30051476C /* Schedules */,
+				F30088AF2B3A20060051476C /* Allocations */,
+				F30088AE2B3A1FFF0051476C /* Logs */,
+				F3DF50D02B3965BD00206CAE /* Users */,
 				F323D8D62A2D6868002EDC62 /* Files */,
 			);
 			path = Panel;
@@ -4156,8 +4223,10 @@
 				F3D295142AF396FD00ED43A0 /* Tabs.swift in Sources */,
 				F300888E2B39FAA60051476C /* Allocation VM.swift in Sources */,
 				F30C130F2A54605B00A7EFF0 /* Nav Destinations.swift in Sources */,
+				F30088B62B3A21410051476C /* Schedule List.swift in Sources */,
 				F3DF50CD2B38FDE800206CAE /* Permission Card.swift in Sources */,
 				F30088952B3A03110051476C /* Log Card.swift in Sources */,
+				F30088B12B3A20150051476C /* Backup List.swift in Sources */,
 				F30088972B3A03440051476C /* Log Detail View.swift in Sources */,
 				F30088932B3A02D50051476C /* Log List.swift in Sources */,
 				F3A8BE8B2A2FA9B3001B13D8 /* File View.swift in Sources */,
@@ -4166,6 +4235,7 @@
 				F3DF50CB2B38FDE300206CAE /* Permission List.swift in Sources */,
 				F3F061D72A73C9A500470F7E /* Map VM.swift in Sources */,
 				F3464D2B2A863A6000188B0C /* Create Backup.swift in Sources */,
+				F30088B82B3A218B0051476C /* Schedule Card.swift in Sources */,
 				F30088962B3A033F0051476C /* Log View Parent.swift in Sources */,
 				F33DE4EB2B35C3F000E257D8 /* FileTab ContextMenu.swift in Sources */,
 				F3DF50C52B38FCF900206CAE /* User Avatar.swift in Sources */,
@@ -4178,6 +4248,7 @@
 				F3E08EC62A2CEA6400116C1C /* Start Page VM.swift in Sources */,
 				F3F061D62A73C9A300470F7E /* Map List.swift in Sources */,
 				F35B9F552A2D6D380045D014 /* Formatters.swift in Sources */,
+				F30088B32B3A20620051476C /* Backup Card.swift in Sources */,
 				F35FEB122B0A2C8D004DA05D /* Enums.swift in Sources */,
 				F3B1388A2A2D4D110026EAEE /* File Icon.swift in Sources */,
 				F35FEB082B09F003004DA05D /* API Key.swift in Sources */,
@@ -4192,10 +4263,14 @@
 				F3D558B12A33C69F00608447 /* FileTab VM.swift in Sources */,
 				F3E08EBF2A2CE87800116C1C /* Start Page.swift in Sources */,
 				F3E08EA52A2CE17900116C1C /* Home.swift in Sources */,
+				F30088C42B3A32DB0051476C /* Plugin Card.swift in Sources */,
+				F30088BB2B3A21F80051476C /* Database List.swift in Sources */,
 				F30088912B39FB160051476C /* Allocation Card.swift in Sources */,
 				F348C6EB2A544893002D5BD6 /* App Container.swift in Sources */,
 				F3DF50CF2B39636A00206CAE /* User List.swift in Sources */,
+				F30088BD2B3A223E0051476C /* Database Card.swift in Sources */,
 				F300889D2B3A17CC0051476C /* Backup VM.swift in Sources */,
+				F30088C02B3A22B30051476C /* Plugin VM.swift in Sources */,
 				F3E08EC22A2CE89400116C1C /* Settings Storage.swift in Sources */,
 				F3DF50C32B38FCCC00206CAE /* Users VM.swift in Sources */,
 				F34F289C2ACDADA500FD618A /* Animated Tab.swift in Sources */,
@@ -4205,6 +4280,7 @@
 				F3464D352A863A6800188B0C /* Send Command.swift in Sources */,
 				F3458BF02B36EA49000E8324 /* App Delegate.swift in Sources */,
 				F32FD7192B1E042C00723B88 /* Websocket Delegate.swift in Sources */,
+				F30088C22B3A32D60051476C /* Plugin List.swift in Sources */,
 				F30C13122A54609000A7EFF0 /* Server List.swift in Sources */,
 				F32FD7172B1E042400723B88 /* Websocket.swift in Sources */,
 				F30088AD2B3A1F500051476C /* User View.swift in Sources */,

@@ -55,6 +55,18 @@ struct PanelView: View {
                 case .files:
                     FileTab(id)
                     
+                case .plugins:
+                    PluginList(id)
+                    
+                case .backups:
+                    BackupList(id)
+                    
+                case .databases:
+                    DatabaseList(id)
+                    
+                case .schedules:
+                    ScheduleList(id)
+                    
                 case .allocations:
                     AllocationList(id)
                     

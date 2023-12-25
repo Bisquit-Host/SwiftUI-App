@@ -1,40 +1,37 @@
 import SwiftUI
 
-struct UserList: View {
-    @State private var vm: UsersVM
+struct ScheduleList: View {
+    @State private var vm: ScheduleVM
     
     private let id: String
     
     init(_ id: String) {
         self.id = id
-        self.vm = UsersVM(id)
+        self.vm = ScheduleVM(id)
     }
     
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading) {
-                ForEach(vm.users, id: \.uuid) { user in
-                    UserCard(user)
+                ForEach(vm.schedules, id: \.id) { schedule in
+                    ScheduleCard(schedule)
                 }
             }
         }
         .environment(vm)
-        .navigationTitle("Users")
+        .navigationTitle("Schedules")
         .padding()
         .background(.clear)
         .clipShape(.rect(cornerRadius: 16))
         .task {
-            vm.fetchUsers()
-            vm.fetchPermissions()
+            vm.fetchSchedules()
         }
         .onChange(of: id) {
-            vm.fetchUsers()
-            vm.fetchPermissions()
+            vm.fetchSchedules()
         }
     }
 }
 
 #Preview {
-    UserList("")
-        .environment(UsersVM(""))
+    ScheduleList("")
 }
