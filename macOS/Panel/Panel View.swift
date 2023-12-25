@@ -52,6 +52,10 @@ struct PanelView: View {
             
             Group {
                 switch selectedTab {
+                case .console:
+                    ConsoleView(id)
+                        .environment(vm)
+                    
                 case .files:
                     FileTab(id)
                     
@@ -90,9 +94,29 @@ struct PanelView: View {
         .offset(y: -30)
         .task {
             vm.fetchServerDetails()
+            
+            vm.consoleDetails { data in
+                if let data {
+                    vm.connectWebSocket(data)
+                }
+            }
         }
         .onChange(of: id) {
             vm.fetchServerDetails()
+        }
+        .onDisappear {
+            vm.disconnectWebSocket()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: NSApplication.willResignActiveNotification)) { _ in
+            vm.disconnectWebSocket()
+            vm.messages.removeAll()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification)) { _ in
+            vm.consoleDetails { data in
+                if let data {
+                    vm.connectWebSocket(data)
+                }
+            }
         }
     }
 }

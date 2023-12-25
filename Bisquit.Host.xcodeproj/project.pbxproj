@@ -43,6 +43,8 @@
 		F30088C02B3A22B30051476C /* Plugin VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088BF2B3A22B30051476C /* Plugin VM.swift */; };
 		F30088C22B3A32D60051476C /* Plugin List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088C12B3A32D60051476C /* Plugin List.swift */; };
 		F30088C42B3A32DB0051476C /* Plugin Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088C32B3A32DB0051476C /* Plugin Card.swift */; };
+		F30088DA2B3A3BF50051476C /* Console View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088D92B3A3BF50051476C /* Console View.swift */; };
+		F30088DB2B3A3C0E0051476C /* Console VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5A42959026D0006D126 /* Console VM.swift */; };
 		F304498A29E990E9006DC0C7 /* Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304498929E990E9006DC0C7 /* Cloud Keys.swift */; };
 		F306B9ED29BBDA770008C2D4 /* Server List Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */; };
 		F30860142B002B31004D776A /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F30860132B002B31004D776A /* PteroNet */; };
@@ -1149,6 +1151,7 @@
 		F30088BF2B3A22B30051476C /* Plugin VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plugin VM.swift"; sourceTree = "<group>"; };
 		F30088C12B3A32D60051476C /* Plugin List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plugin List.swift"; sourceTree = "<group>"; };
 		F30088C32B3A32DB0051476C /* Plugin Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plugin Card.swift"; sourceTree = "<group>"; };
+		F30088D92B3A3BF50051476C /* Console View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Console View.swift"; sourceTree = "<group>"; };
 		F304498629E98AE4006DC0C7 /* Bisquit.Host.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bisquit.Host.entitlements; sourceTree = "<group>"; };
 		F304498929E990E9006DC0C7 /* Cloud Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cloud Keys.swift"; sourceTree = "<group>"; };
 		F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List Footer.swift"; sourceTree = "<group>"; };
@@ -1659,6 +1662,16 @@
 				F30088BC2B3A223E0051476C /* Database Card.swift */,
 			);
 			path = Databases;
+			sourceTree = "<group>";
+		};
+		F30088D82B3A3BBD0051476C /* Plugins */ = {
+			isa = PBXGroup;
+			children = (
+				F30088BF2B3A22B30051476C /* Plugin VM.swift */,
+				F30088C12B3A32D60051476C /* Plugin List.swift */,
+				F30088C32B3A32DB0051476C /* Plugin Card.swift */,
+			);
+			path = Plugins;
 			sourceTree = "<group>";
 		};
 		F306B9EE29BBDA7C0008C2D4 /* Elements */ = {
@@ -2761,9 +2774,8 @@
 			isa = PBXGroup;
 			children = (
 				F3E08ECD2A2CEDD800116C1C /* Panel View.swift */,
-				F30088BF2B3A22B30051476C /* Plugin VM.swift */,
-				F30088C12B3A32D60051476C /* Plugin List.swift */,
-				F30088C32B3A32DB0051476C /* Plugin Card.swift */,
+				F30088D92B3A3BF50051476C /* Console View.swift */,
+				F30088D82B3A3BBD0051476C /* Plugins */,
 				F35B9F622A2DCFA10045D014 /* Stats */,
 				F30088B42B3A210C0051476C /* Backups */,
 				F30088BE2B3A229A0051476C /* Databases */,
@@ -4278,6 +4290,7 @@
 				F323D8D32A2D668D002EDC62 /* File Tab.swift in Sources */,
 				F35FEB102B09F4D3004DA05D /* Network VM.swift in Sources */,
 				F3464D352A863A6800188B0C /* Send Command.swift in Sources */,
+				F30088DB2B3A3C0E0051476C /* Console VM.swift in Sources */,
 				F3458BF02B36EA49000E8324 /* App Delegate.swift in Sources */,
 				F32FD7192B1E042C00723B88 /* Websocket Delegate.swift in Sources */,
 				F30088C22B3A32D60051476C /* Plugin List.swift in Sources */,
@@ -4285,6 +4298,7 @@
 				F32FD7172B1E042400723B88 /* Websocket.swift in Sources */,
 				F30088AD2B3A1F500051476C /* User View.swift in Sources */,
 				F33944152A49135A00E2F0FC /* Server Card Context Menu.swift in Sources */,
+				F30088DA2B3A3BF50051476C /* Console View.swift in Sources */,
 				F30088942B3A03050051476C /* Log VM.swift in Sources */,
 				F3464D282A86398000188B0C /* PowerSignalAppEnum.swift in Sources */,
 				F3DF50CA2B38FDDE00206CAE /* User2Fa.swift in Sources */,
