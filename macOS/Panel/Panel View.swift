@@ -25,7 +25,7 @@ struct PanelView: View {
         .databases,
         .users,
         .allocations,
-        .setup,
+        .startup,
         .settings,
         .logs,
         .admin
@@ -77,6 +77,9 @@ struct PanelView: View {
                 case .users:
                     UserList(id)
                     
+                case .startup:
+                    StartupList(id)
+                    
                 case .logs:
                     LogList(id)
                     
@@ -103,6 +106,12 @@ struct PanelView: View {
         }
         .onChange(of: id) {
             vm.fetchServerDetails()
+            
+            vm.consoleDetails { data in
+                if let data {
+                    vm.connectWebSocket(data)
+                }
+            }
         }
         .onDisappear {
             vm.disconnectWebSocket()

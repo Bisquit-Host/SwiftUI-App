@@ -45,6 +45,7 @@
 		F30088C42B3A32DB0051476C /* Plugin Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088C32B3A32DB0051476C /* Plugin Card.swift */; };
 		F30088DA2B3A3BF50051476C /* Console View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088D92B3A3BF50051476C /* Console View.swift */; };
 		F30088DB2B3A3C0E0051476C /* Console VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5A42959026D0006D126 /* Console VM.swift */; };
+		F30088DE2B3A3FBB0051476C /* Startup List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088DD2B3A3FBB0051476C /* Startup List.swift */; };
 		F304498A29E990E9006DC0C7 /* Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304498929E990E9006DC0C7 /* Cloud Keys.swift */; };
 		F306B9ED29BBDA770008C2D4 /* Server List Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */; };
 		F30860142B002B31004D776A /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F30860132B002B31004D776A /* PteroNet */; };
@@ -1152,6 +1153,7 @@
 		F30088C12B3A32D60051476C /* Plugin List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plugin List.swift"; sourceTree = "<group>"; };
 		F30088C32B3A32DB0051476C /* Plugin Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plugin Card.swift"; sourceTree = "<group>"; };
 		F30088D92B3A3BF50051476C /* Console View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Console View.swift"; sourceTree = "<group>"; };
+		F30088DD2B3A3FBB0051476C /* Startup List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Startup List.swift"; sourceTree = "<group>"; };
 		F304498629E98AE4006DC0C7 /* Bisquit.Host.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bisquit.Host.entitlements; sourceTree = "<group>"; };
 		F304498929E990E9006DC0C7 /* Cloud Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cloud Keys.swift"; sourceTree = "<group>"; };
 		F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List Footer.swift"; sourceTree = "<group>"; };
@@ -1667,11 +1669,19 @@
 		F30088D82B3A3BBD0051476C /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
-				F30088BF2B3A22B30051476C /* Plugin VM.swift */,
 				F30088C12B3A32D60051476C /* Plugin List.swift */,
+				F30088BF2B3A22B30051476C /* Plugin VM.swift */,
 				F30088C32B3A32DB0051476C /* Plugin Card.swift */,
 			);
 			path = Plugins;
+			sourceTree = "<group>";
+		};
+		F30088DC2B3A3FAC0051476C /* Console */ = {
+			isa = PBXGroup;
+			children = (
+				F30088D92B3A3BF50051476C /* Console View.swift */,
+			);
+			path = Console;
 			sourceTree = "<group>";
 		};
 		F306B9EE29BBDA7C0008C2D4 /* Elements */ = {
@@ -2774,7 +2784,8 @@
 			isa = PBXGroup;
 			children = (
 				F3E08ECD2A2CEDD800116C1C /* Panel View.swift */,
-				F30088D92B3A3BF50051476C /* Console View.swift */,
+				F30088DD2B3A3FBB0051476C /* Startup List.swift */,
+				F30088DC2B3A3FAC0051476C /* Console */,
 				F30088D82B3A3BBD0051476C /* Plugins */,
 				F35B9F622A2DCFA10045D014 /* Stats */,
 				F30088B42B3A210C0051476C /* Backups */,
@@ -4282,6 +4293,7 @@
 				F3DF50CF2B39636A00206CAE /* User List.swift in Sources */,
 				F30088BD2B3A223E0051476C /* Database Card.swift in Sources */,
 				F300889D2B3A17CC0051476C /* Backup VM.swift in Sources */,
+				F30088DE2B3A3FBB0051476C /* Startup List.swift in Sources */,
 				F30088C02B3A22B30051476C /* Plugin VM.swift in Sources */,
 				F3E08EC22A2CE89400116C1C /* Settings Storage.swift in Sources */,
 				F3DF50C32B38FCCC00206CAE /* Users VM.swift in Sources */,

@@ -1,4 +1,3 @@
-import Foundation
 import PteroNet
 
 @Observable
@@ -7,6 +6,24 @@ final class StartupVM {
     
     init(_ id: String) {
         self.id = id
+    }
+    
+    var startupVariables: [PNStartupVariableAttributes] = []
+    
+    func fetchStartupVariables() {
+        listStartupVariablesAPI(id) { result in
+            switch result {
+            case .success(let model):
+                if let model = model?.data {
+                    self.startupVariables = model.map {
+                        $0.attributes
+                    }
+                }
+                
+            case .failure(let error):
+                networkCallError(#function, error)
+            }
+        }
     }
     
     func changeVariable(variable: String, newValue: String) {

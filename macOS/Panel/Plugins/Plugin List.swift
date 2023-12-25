@@ -18,6 +18,7 @@ struct PluginList: View {
                 }
             }
         }
+        .animation(.default, value: vm.plugins.indices)
         .navigationTitle("Plugins")
         .padding()
         .background(.clear)

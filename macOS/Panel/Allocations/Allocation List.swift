@@ -18,6 +18,7 @@ struct AllocationList: View {
                 }
             }
         }
+        .animation(.default, value: vm.allocations.indices)
         .navigationTitle("Allocations")
         .padding()
         .background(.clear)

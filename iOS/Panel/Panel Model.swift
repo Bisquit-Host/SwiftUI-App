@@ -5,7 +5,7 @@ enum Tab: String, CaseIterable {
          backups = "Backups",
          settings = "Settings",
          other = "Other",
-         setup = "Setup",
+         startup = "Startup",
          plugins = "Plugins",
          users = "Users",
          schedules = "Schedules",

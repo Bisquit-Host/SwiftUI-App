@@ -18,6 +18,7 @@ struct UserList: View {
                 }
             }
         }
+        .animation(.default, value: vm.users.indices)
         .environment(vm)
         .navigationTitle("Users")
         .padding()
