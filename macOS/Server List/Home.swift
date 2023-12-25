@@ -32,7 +32,7 @@ struct Home: View {
                 HStack {
                     Rectangle()
                         .fill(gradient)
-                        .opacity(0.4)
+                        .opacity(0.3)
                 }
             }
             .ignoresSafeArea()

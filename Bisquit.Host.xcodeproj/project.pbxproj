@@ -11,6 +11,9 @@
 		F3000E16295A357800ABD30A /* Server List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3000E15295A357800ABD30A /* Server List.swift */; };
 		F3000E18295A496C00ABD30A /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3000E17295A496C00ABD30A /* Intro.swift */; };
 		F3000E1E295AE2B700ABD30A /* Guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3000E1D295AE2B700ABD30A /* Guide.swift */; };
+		F300888E2B39FAA60051476C /* Allocation VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCF5C42B3457AE005FFF2C /* Allocation VM.swift */; };
+		F30088902B39FAB80051476C /* Allocation List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300888F2B39FAB80051476C /* Allocation List.swift */; };
+		F30088912B39FB160051476C /* Allocation Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCF5C22B345792005FFF2C /* Allocation Card.swift */; };
 		F304498A29E990E9006DC0C7 /* Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304498929E990E9006DC0C7 /* Cloud Keys.swift */; };
 		F306B9ED29BBDA770008C2D4 /* Server List Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */; };
 		F30860142B002B31004D776A /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F30860132B002B31004D776A /* PteroNet */; };
@@ -1107,6 +1110,7 @@
 		F3000E15295A357800ABD30A /* Server List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List.swift"; sourceTree = "<group>"; };
 		F3000E17295A496C00ABD30A /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
 		F3000E1D295AE2B700ABD30A /* Guide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guide.swift; sourceTree = "<group>"; };
+		F300888F2B39FAB80051476C /* Allocation List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation List.swift"; sourceTree = "<group>"; };
 		F304498629E98AE4006DC0C7 /* Bisquit.Host.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bisquit.Host.entitlements; sourceTree = "<group>"; };
 		F304498929E990E9006DC0C7 /* Cloud Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cloud Keys.swift"; sourceTree = "<group>"; };
 		F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List Footer.swift"; sourceTree = "<group>"; };
@@ -2673,6 +2677,7 @@
 			isa = PBXGroup;
 			children = (
 				F3E08ECD2A2CEDD800116C1C /* Panel View.swift */,
+				F300888F2B39FAB80051476C /* Allocation List.swift */,
 				F3DF50D02B3965BD00206CAE /* Users */,
 				F35B9F622A2DCFA10045D014 /* Stats */,
 				F323D8D62A2D6868002EDC62 /* Files */,
@@ -4119,6 +4124,7 @@
 				F3464D222A86396700188B0C /* Change Power.swift in Sources */,
 				F390E53E2A84217D000B4460 /* Bisquit.Host App.swift in Sources */,
 				F3D295142AF396FD00ED43A0 /* Tabs.swift in Sources */,
+				F300888E2B39FAA60051476C /* Allocation VM.swift in Sources */,
 				F30C130F2A54605B00A7EFF0 /* Nav Destinations.swift in Sources */,
 				F3DF50CD2B38FDE800206CAE /* Permission Card.swift in Sources */,
 				F3A8BE8B2A2FA9B3001B13D8 /* File View.swift in Sources */,
@@ -4142,6 +4148,7 @@
 				F3B1388A2A2D4D110026EAEE /* File Icon.swift in Sources */,
 				F35FEB082B09F003004DA05D /* API Key.swift in Sources */,
 				F35FEB1E2B0A7415004DA05D /* Cloud Keys.swift in Sources */,
+				F30088902B39FAB80051476C /* Allocation List.swift in Sources */,
 				F3E08EC32A2CE92A00116C1C /* Panel Model.swift in Sources */,
 				F35B9F612A2DCF9C0045D014 /* Stats Tab.swift in Sources */,
 				F348C6E92A54483D002D5BD6 /* Intro.swift in Sources */,
@@ -4150,6 +4157,7 @@
 				F3D558B12A33C69F00608447 /* FileTab VM.swift in Sources */,
 				F3E08EBF2A2CE87800116C1C /* Start Page.swift in Sources */,
 				F3E08EA52A2CE17900116C1C /* Home.swift in Sources */,
+				F30088912B39FB160051476C /* Allocation Card.swift in Sources */,
 				F348C6EB2A544893002D5BD6 /* App Container.swift in Sources */,
 				F3DF50CF2B39636A00206CAE /* User List.swift in Sources */,
 				F3E08EC22A2CE89400116C1C /* Settings Storage.swift in Sources */,

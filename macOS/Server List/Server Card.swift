@@ -21,6 +21,7 @@ struct ServerCard: View {
                     .padding(8)
                     .frame(height: 30)
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    .transition(.asymmetric(insertion: .identity, removal: .opacity))
                     .background(
                         Capsule()
                             .stroke(.white, lineWidth: 2)
@@ -37,7 +38,9 @@ struct ServerCard: View {
         .title2(design: .rounded)
         .buttonStyle(.borderless)
         .onHover { hover in
-            isHovered = hover
+            withAnimation(.easeOut) {
+                isHovered = hover
+            }
         }
     }
 }

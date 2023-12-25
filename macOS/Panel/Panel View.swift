@@ -54,6 +54,9 @@ struct PanelView: View {
                 case .files:
                     FileTab(id)
                     
+                case .allocations:
+                    AllocationList(id)
+                    
                 case .users:
                     UserList(id)
                         .environment(UsersVM(id))
