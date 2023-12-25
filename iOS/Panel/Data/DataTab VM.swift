@@ -103,7 +103,7 @@ final class DataTabVM {
                 //                    self.scheduleTasks.remove(at: index)
                 //                }
                 
-                if let scheduleIndex = self.schedules.firstIndex(where: { 
+                if let scheduleIndex = self.schedules.firstIndex(where: {
                     $0.id == scheduleId
                 }) {
                     if let taskIndex = self.schedules[scheduleIndex].relationships.tasks.data.firstIndex(where: { $0.attributes.id == taskId }) {
@@ -179,9 +179,8 @@ final class DataTabVM {
                 deleteData(uuid, endpoint: .backups)
                 
             case .schedules:
-                //let uuid = schedules[index].attributes.uuid
-                //deleteData(uuid, from: .schedules)
-                print("Soon")
+                let id = schedules[index].id.description
+                deleteData(id, endpoint: .schedules)
                 
             case .databases:
                 let id = databases[index].id
@@ -189,25 +188,9 @@ final class DataTabVM {
             }
         }
     }
-    
-    func deleteSchedule(_ scheduleId: Int) {
-        deleteScheduleAPI(id, scheduleId: scheduleId) { result in
-            switch result {
-            case .success:
-                if let index = self.schedules.firstIndex(where: { 
-                    $0.id == scheduleId
-                }) {
-                    self.schedules.remove(at: index)
-                }
-                
-            case .failure(let error):
-                networkCallError(#function, error)
-            }
-        }
-    }
-    
+        
     func deleteData(_ uuid: String, endpoint: DatalistEndpoint) {
-        deleteDataAPI(id, uuid: uuid, endpoint: endpoint) { result in
+        deleteDataAPI(id, itemId: uuid, endpoint: endpoint) { result in
             switch result {
             case .success(let model):
                 print(model)

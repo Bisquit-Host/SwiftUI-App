@@ -66,7 +66,8 @@ struct ScheduleCard: View {
 #if !os(tvOS)
         .swipeActions {
             Button(role: .destructive) {
-                vm.deleteSchedule(schedule.id)
+                vm.deleteData(schedule.id.description,
+                              endpoint: .schedules)
             } label: {
                 Image(systemName: "trash")
             }
