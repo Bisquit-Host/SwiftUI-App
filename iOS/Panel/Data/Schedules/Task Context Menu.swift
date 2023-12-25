@@ -2,7 +2,7 @@ import ScrechKit
 import PteroNet
 
 struct TaskContextMenu: View {
-    @Environment(DataTabVM.self) private var vm
+    @Environment(ScheduleVM.self) private var vm
     
     private let schedule: ScheduleAttributes
     private let task: ScheduleTaskAttributes

@@ -2,7 +2,7 @@ import ScrechKit
 import PteroNet
 
 struct BackupCard: View {
-    @Environment(DataTabVM.self) private var vm
+    @Environment(BackupVM.self) private var vm
     
     private let backup: BackupAttributes
     
@@ -71,7 +71,7 @@ struct BackupCard: View {
 #if !os(tvOS)
         .swipeActions {
             Button(role: .destructive) {
-                vm.deleteData(backup.uuid, endpoint: .backups)
+                vm.deleteBackup(backup.uuid)
             } label: {
                 Image(systemName: "trash")
             }

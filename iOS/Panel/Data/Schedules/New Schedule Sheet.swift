@@ -2,7 +2,7 @@ import SwiftUI
 import PteroNet
 
 struct NewScheduleSheet: View {
-    @Environment(DataTabVM.self) private var vm
+    @Environment(ScheduleVM.self) private var vm
     
     @Environment(\.dismiss) private var dismiss
     

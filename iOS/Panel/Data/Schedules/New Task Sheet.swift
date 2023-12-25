@@ -2,7 +2,7 @@ import SwiftUI
 import PteroNet
 
 struct NewTaskSheet: View {
-    @Environment(DataTabVM.self) private var vm
+    @Environment(ScheduleVM.self) private var vm
     
     @Environment(\.dismiss) private var dismiss
     
@@ -38,7 +38,7 @@ struct NewTaskSheet: View {
                     
                     Text("Command")
                         .tag(ScheduleTaskAction.command)
-                }                
+                }
             }
             
             Section("Payload") {

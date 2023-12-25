@@ -2,7 +2,7 @@ import SwiftUI
 import PteroNet
 
 struct ScheduleCard: View {
-    @Environment(DataTabVM.self) private var vm
+    @Environment(ScheduleVM.self) private var vm
     @Environment(NavState.self) private var navState
     
     private let schedule: ScheduleAttributes
@@ -66,8 +66,7 @@ struct ScheduleCard: View {
 #if !os(tvOS)
         .swipeActions {
             Button(role: .destructive) {
-                vm.deleteData(schedule.id.description,
-                              endpoint: .schedules)
+                vm.deleteSchedule(schedule.id.description)
             } label: {
                 Image(systemName: "trash")
             }

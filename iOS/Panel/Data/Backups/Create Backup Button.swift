@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct CreateBackupButton: View {
-    @Environment(DataTabVM.self) private var vm
+    @Environment(BackupVM.self) private var vm
     
     private let backupLimit: Int
     
@@ -25,5 +25,5 @@ struct CreateBackupButton: View {
 
 #Preview {
     CreateBackupButton(4)
-        .environment(DataTabVM(""))
+        .environment(BackupVM(""))
 }

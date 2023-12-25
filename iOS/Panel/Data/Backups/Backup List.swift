@@ -1,7 +1,7 @@
 import ScrechKit
 
 struct BackupList: View {
-    @Environment(DataTabVM.self) private var vm
+    @Environment(BackupVM.self) private var vm
     
     private let backupLimit: Int
     
@@ -17,7 +17,7 @@ struct BackupList: View {
                 BackupCard(backup)
             }
             .onDelete { offsets in
-                vm.deleteItems(.backups, offsets: offsets)
+                vm.deleteBackups(offsets)
             }
             
             CreateBackupButton(backupLimit)
@@ -47,6 +47,6 @@ struct BackupList: View {
 #Preview {
     List {
         BackupList(4)
-            .environment(DataTabVM(""))
+            .environment(BackupVM(""))
     }
 }

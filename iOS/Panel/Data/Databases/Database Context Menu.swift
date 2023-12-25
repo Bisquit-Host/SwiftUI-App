@@ -2,7 +2,7 @@ import ScrechKit
 import PteroNet
 
 struct DatabaseContextMenu: View {
-    @Environment(DataTabVM.self) private var vm
+    @Environment(DatabaseVM.self) private var vm
     
     private let db: DatabaseAttributes
     
@@ -17,7 +17,7 @@ struct DatabaseContextMenu: View {
         
         Section {
             MenuButton("Delete", role: .destructive, icon: "trash") {
-                vm.deleteData(db.id, endpoint: .databases)
+                vm.deleteDatabase(db.id)
             }
         }
     }

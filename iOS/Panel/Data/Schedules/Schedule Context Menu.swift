@@ -2,7 +2,7 @@ import ScrechKit
 import PteroNet
 
 struct ScheduleContextMenu: View {
-    @Environment(DataTabVM.self) private var vm
+    @Environment(ScheduleVM.self) private var vm
     
     private let schedule: ScheduleAttributes
     
@@ -21,8 +21,7 @@ struct ScheduleContextMenu: View {
         
         Section {
             MenuButton("Delete", role: .destructive, icon: "trash") {
-                vm.deleteData(schedule.id.description,
-                              endpoint: .schedules)
+                vm.deleteSchedule(schedule.id.description)
             }
         }
     }

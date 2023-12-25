@@ -2,7 +2,7 @@ import ScrechKit
 import PteroNet
 
 struct ScheduleList: View {
-    @Environment(DataTabVM.self) private var vm
+    @Environment(ScheduleVM.self) private var vm
     
     @State private var sheetCreateSchedule = false
     

@@ -2,7 +2,9 @@ import SwiftUI
 import PteroNet
 
 struct DataTab: View {
-    @Environment(DataTabVM.self) private var vm
+    @Environment(BackupVM.self) private var backupVM
+    @Environment(DatabaseVM.self) private var databaseVM
+    @Environment(ScheduleVM.self) private var scheduleVM
     
     private let id: String
     private let limits: ServerFeatureLimits
@@ -31,15 +33,23 @@ struct DataTab: View {
         }
         .scrollIndicators(.hidden)
         .task {
-            vm.fetchData()
+            fetchData()
         }
         .refreshable {
-            vm.fetchData()
+            fetchData()
         }
+    }
+    
+    func fetchData() {
+        backupVM.fetchBackups()
+        databaseVM.fetchDatabases()
+        scheduleVM.fetchSchedules()
     }
 }
 
 #Preview {
     DataTab("", limits: ServerFeatureLimits(backups: 5, databases: 5))
-        .environment(DataTabVM(""))
+        .environment(BackupVM(""))
+        .environment(DatabaseVM(""))
+        .environment(ScheduleVM(""))
 }

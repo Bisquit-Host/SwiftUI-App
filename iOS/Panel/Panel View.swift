@@ -5,13 +5,17 @@ struct PanelView: View {
     @EnvironmentObject private var settings: SettingsStorage
     private var vm: PanelVM
     private var fileVM: FileTabVM
-    private var dataTabVM: DataTabVM
+    private var backupVM: BackupVM
+    private var databaseVM: DatabaseVM
+    private var scheduleVM: ScheduleVM
     
     private let id: String
     
     init(_ id: String) {
         self.id = id
-        self.dataTabVM = DataTabVM(id)
+        self.backupVM = BackupVM(id)
+        self.databaseVM = DatabaseVM(id)
+        self.scheduleVM = ScheduleVM(id)
         self.vm = PanelVM(id)
         self.fileVM = FileTabVM(id)
     }
@@ -38,7 +42,9 @@ struct PanelView: View {
                                   isAnimated: settings.animatedTabbar)
                     
                     DataTab(id, limits: server.featureLimits)
-                        .environment(dataTabVM)
+                        .environment(backupVM)
+                        .environment(databaseVM)
+                        .environment(scheduleVM)
                         .setUpTab(.backup,
                                   isAnimated: settings.animatedTabbar)
                 }
@@ -61,10 +67,12 @@ struct PanelView: View {
             
             prepareHaptics()
             fileVM.fetchFiles()
-            dataTabVM.fetchData()
+            backupVM.fetchBackups()
+            databaseVM.fetchDatabases()
+            scheduleVM.fetchSchedules()
             
             vm.updateBackups = {
-                dataTabVM.fetchBackups()
+                backupVM.fetchBackups()
             }
         }
         .onDisappear {
@@ -126,7 +134,9 @@ struct PanelView: View {
 #Preview {
     PanelView("")
         .environment(PanelVM(""))
-        .environment(DataTabVM(""))
+        .environment(BackupVM(""))
+        .environment(DatabaseVM(""))
+        .environment(ScheduleVM(""))
         .environmentObject(FileTabVM(""))
         .environmentObject(SettingsStorage())
 }

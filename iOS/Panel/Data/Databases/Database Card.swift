@@ -2,7 +2,7 @@ import ScrechKit
 import PteroNet
 
 struct DatabaseCard: View {
-    @Environment(DataTabVM.self) private var vm
+    @Environment(DatabaseVM.self) private var vm
     
     private let database: DatabaseAttributes
     
@@ -68,7 +68,7 @@ struct DatabaseCard: View {
         }
         .alert("Detele Database", isPresented: $alertDelete) {
             Button("Delete", role: .destructive) {
-                vm.deleteData(database.id, endpoint: .databases)
+                vm.deleteDatabase(database.id)
             }
         } message: {
             Text("Are you sure you want to delete \"\(database.name)\"? This database will be deleted immediately. You can't undo this action")

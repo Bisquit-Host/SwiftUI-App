@@ -2,7 +2,7 @@ import ScrechKit
 import PteroNet
 
 struct BackupContextMenu: View {
-    @Environment(DataTabVM.self) private var vm
+    @Environment(BackupVM.self) private var vm
     
     private let backup: BackupAttributes
     
@@ -38,7 +38,7 @@ struct BackupContextMenu: View {
             }
             
             MenuButton("Delete", role: .destructive, icon: "trash") {
-                vm.deleteData(uuid, endpoint: .backups)
+                vm.deleteBackup(uuid)
             }
         }
     }

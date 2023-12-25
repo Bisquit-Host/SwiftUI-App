@@ -3,7 +3,8 @@ import PteroNet
 
 struct StatsTab: View {
     @Environment(PanelVM.self) private var vm
-    @Environment(DataTabVM.self) private var dataTabVM
+    @Environment(BackupVM.self) private var backupVM
+    @Environment(DatabaseVM.self) private var databaseVM
     @EnvironmentObject private var settings: SettingsStorage
     
     private let server: ServerAttributes
@@ -77,11 +78,11 @@ struct StatsTab: View {
                     )
                     
                     GaugeTV("backups",
-                            param: "\(dataTabVM.backups.count)/\(featureLimits.backups)"
+                            param: "\(backupVM.backups.count)/\(featureLimits.backups)"
                     )
                     
                     GaugeTV("databases",
-                            param: "\(dataTabVM.databases.count)/\(featureLimits.databases)"
+                            param: "\(databaseVM.databases.count)/\(featureLimits.databases)"
                     )
                     
                     GaugeTV("identifier",

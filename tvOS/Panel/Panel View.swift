@@ -3,14 +3,18 @@ import ScrechKit
 struct PanelView: View {
     private var vm: PanelVM
     private var fileVM: FileTabVM
-    private var dataTabVM: DataTabVM
+    private var backupVM: BackupVM
+    private var databaseVM: DatabaseVM
+    private var scheduleVM: ScheduleVM
     @EnvironmentObject private var settings: SettingsStorage
     
     private let id: String
     
     init(_ id: String) {
         self.id = id
-        self.dataTabVM = DataTabVM(id)
+        self.backupVM = BackupVM(id)
+        self.databaseVM = DatabaseVM(id)
+        self.scheduleVM = ScheduleVM(id)
         self.vm = PanelVM(id)
         self.fileVM = FileTabVM(id)
     }
@@ -22,7 +26,8 @@ struct PanelView: View {
             if let server = vm.server {
                 StatsTab(server)
                     .environment(vm)
-                    .environment(dataTabVM)
+                    .environment(backupVM)
+                    .environment(databaseVM)
                     .tag(Tab.info)
                     .tabItem {
                         Text("Stats")
@@ -38,7 +43,9 @@ struct PanelView: View {
                 DataTab(server.id,
                         limits: server.featureLimits
                 )
-                .environment(dataTabVM)
+                .environment(backupVM)
+                .environment(databaseVM)
+                .environment(scheduleVM)
                 .tag(Tab.backups)
                 .tabItem {
                     Text("Data")
@@ -54,7 +61,9 @@ struct PanelView: View {
         .task {
             vm.fetchServerDetails()
             fileVM.fetchFiles()
-            dataTabVM.fetchData()
+            backupVM.fetchBackups()
+            databaseVM.fetchDatabases()
+            scheduleVM.fetchSchedules()
             
             vm.consoleDetails { data in
                 if let data {
@@ -63,7 +72,7 @@ struct PanelView: View {
             }
             
             vm.updateBackups = {
-                dataTabVM.fetchBackups()
+                backupVM.fetchBackups()
             }
         }
         .onDisappear {
@@ -86,4 +95,7 @@ struct PanelView: View {
 #Preview {
     PanelView("")
         .environmentObject(SettingsStorage())
+        .environment(BackupVM(""))
+        .environment(DatabaseVM(""))
+        .environment(ScheduleVM(""))
 }

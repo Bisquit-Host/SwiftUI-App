@@ -1,7 +1,7 @@
 import ScrechKit
 
 struct DatabaseList: View {
-    @Environment(DataTabVM.self) private var vm
+    @Environment(DatabaseVM.self) private var vm
     
     private let databaseLimit: Int
     
@@ -33,12 +33,11 @@ struct DatabaseList: View {
             .buttonStyle(.borderedProminent)
 #endif
         } header: {
-            SectionHeader(
-                "Databases",
-                type: .database(
-                    vm.databases.count,
-                    limit: databaseLimit
-                )
+            SectionHeader("Databases",
+                          type: .database(
+                            vm.databases.count,
+                            limit: databaseLimit
+                          )
             )
         }
         .alert("Create Database", isPresented: $alertCreate) {
@@ -60,5 +59,5 @@ struct DatabaseList: View {
     List {
         DatabaseList(4)
     }
-    .environment(DataTabVM(""))
+    .environment(DatabaseVM(""))
 }
