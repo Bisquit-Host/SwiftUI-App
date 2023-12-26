@@ -28,7 +28,7 @@ struct CloudKeyCard: View {
         } label: {
             HStack {
                 VStack(alignment: .leading) {
-#if os(watchOS)
+#if os(watchOS) && os(tvOS)
                     Text(key.name)
                         .headline(.semibold)
 #else

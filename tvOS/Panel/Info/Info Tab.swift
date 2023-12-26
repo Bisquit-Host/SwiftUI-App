@@ -7,20 +7,16 @@ struct InfoTab: View {
     private var logVM: LogVM
     private var usersVM: UsersVM
     private var allocationVM: AllocationVM
+    private var startupVM: StartupVM
     //    @EnvironmentObject private var settings: SettingsStorage
     @Environment(NavState.self) private var navState
     
-    init(_ server: ServerAttributes,
-         //         modelRename: ServerSettingsVM = ServerSettingsVM(""),
-         logVM: LogVM = LogVM(""),
-         modelUsers: UsersVM = UsersVM(""),
-         allocationVM: AllocationVM = AllocationVM("")
-    ) {
+    init(_ server: ServerAttributes) {
         self.server = server
-        //        self.settingsVM = ServerSettingsVM(server.id)
         self.logVM = LogVM(server.id)
         self.usersVM = UsersVM(server.id)
         self.allocationVM = AllocationVM(server.id)
+        self.startupVM = StartupVM(server.id)
     }
     
     var body: some View {
@@ -48,22 +44,22 @@ struct InfoTab: View {
             
             HStack {
                 NavigationLink {
-//                    AllocationList()
+                    AllocationList()
+                        .environment(allocationVM)
                 } label: {
                     Label("Allocations", systemImage: "network")
                         .frame(width: 500, height: 250)
                         .background(.ultraThinMaterial, in: .rect(cornerRadius: 64))
                 }
-                .disabled(true)
                 
                 NavigationLink {
-                    
+                    StartupList()
+                        .environment(startupVM)
                 } label: {
                     Label("Startup", systemImage: "airplane")
                         .frame(width: 500, height: 250)
                         .background(.ultraThinMaterial, in: .rect(cornerRadius: 64))
                 }
-                .disabled(true)
             }
         }
         .title2()
@@ -72,6 +68,7 @@ struct InfoTab: View {
             usersVM.fetchUsers()
             logVM.fetchLogs()
             allocationVM.fetchAllocations()
+            startupVM.fetchStartupVariables()
         }
     }
 }
