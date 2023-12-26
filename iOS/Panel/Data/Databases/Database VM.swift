@@ -30,25 +30,6 @@ final class DatabaseVM {
         }
     }
     
-    func deleteDatabases(_ offsets: IndexSet) {
-        for index in offsets {
-            let id = databases[index].id
-            deleteDatabase(id)
-        }
-    }
-    
-    func deleteDatabase(_ uuid: String) {
-        deleteDataAPI(id, itemId: uuid, endpoint: .databases) { result in
-            switch result {
-            case .success:
-                self.fetchDatabases()
-                
-            case .failure(let error):
-                networkCallError(#function, error)
-            }
-        }
-    }
-    
     func rotateDatabasePassword(_ dbId: String) {
         rotateDatabasePasswordAPI(id, dbId: dbId) { result in
             switch result {
@@ -72,9 +53,29 @@ final class DatabaseVM {
                 if let model = model?.attributes {
                     withAnimation {
                         self.databases.append(model)
-                        self.newDatabaseName = ""
                     }
+                    
+                    self.newDatabaseName = ""
                 }
+                
+            case .failure(let error):
+                networkCallError(#function, error)
+            }
+        }
+    }
+    
+    func deleteDatabases(_ offsets: IndexSet) {
+        for index in offsets {
+            let id = databases[index].id
+            deleteDatabase(id)
+        }
+    }
+    
+    func deleteDatabase(_ uuid: String) {
+        deleteDataAPI(id, itemId: uuid, endpoint: .databases) { result in
+            switch result {
+            case .success:
+                self.fetchDatabases()
                 
             case .failure(let error):
                 networkCallError(#function, error)

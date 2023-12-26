@@ -30,13 +30,6 @@ final class ScheduleVM {
         }
     }
     
-    func deleteSchedules(_ offsets: IndexSet) {
-        for index in offsets {
-            let id = schedules[index].id.description
-            deleteSchedule(id)
-        }
-    }
-    
     func createSchedule(_ newSchedule: NewSchedule) {
         createScheduleAPI(id, newSchedule: newSchedule) { result in
             switch result {
@@ -50,6 +43,25 @@ final class ScheduleVM {
             case .failure(let error):
                 networkCallError(#function, error)
             }
+        }
+    }
+    
+    func executeSchedule(_ scheduleId: Int) {
+        executeScheduleAPI(id, scheduleId: scheduleId) { result in
+            switch result {
+            case .success:
+                print("Executed")
+                
+            case .failure(let error):
+                networkCallError(#function, error)
+            }
+        }
+    }
+    
+    func deleteSchedules(_ offsets: IndexSet) {
+        for index in offsets {
+            let id = schedules[index].id.description
+            deleteSchedule(id)
         }
     }
     
@@ -100,18 +112,6 @@ final class ScheduleVM {
                         self.schedules[scheduleIndex].relationships.tasks.data.remove(at: taskIndex)
                     }
                 }
-                
-            case .failure(let error):
-                networkCallError(#function, error)
-            }
-        }
-    }
-    
-    func executeSchedule(_ scheduleId: Int) {
-        executeScheduleAPI(id, scheduleId: scheduleId) { result in
-            switch result {
-            case .success:
-                print("Executed")
                 
             case .failure(let error):
                 networkCallError(#function, error)

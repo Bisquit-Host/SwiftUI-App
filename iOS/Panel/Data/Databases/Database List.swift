@@ -40,6 +40,7 @@ struct DatabaseList: View {
                           )
             )
         }
+        
         .alert("Create Database", isPresented: $alertCreate) {
             TextField("", text: $binding.newDatabaseName)
                 .autocorrectionDisabled()

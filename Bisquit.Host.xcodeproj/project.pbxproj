@@ -1692,6 +1692,16 @@
 			path = Startup;
 			sourceTree = "<group>";
 		};
+		F30088E52B3AD4DC0051476C /* Allocations */ = {
+			isa = PBXGroup;
+			children = (
+				F3CCF5C02B34576F005FFF2C /* Allocation List.swift */,
+				F3CCF5C22B345792005FFF2C /* Allocation Card.swift */,
+				F3CCF5C42B3457AE005FFF2C /* Allocation VM.swift */,
+			);
+			path = Allocations;
+			sourceTree = "<group>";
+		};
 		F306B9EE29BBDA7C0008C2D4 /* Elements */ = {
 			isa = PBXGroup;
 			children = (
@@ -2090,10 +2100,8 @@
 			children = (
 				F342FAAD2B2C6A5000854270 /* Info Tab.swift */,
 				F30088E32B3A5B0B0051476C /* Startup List.swift */,
-				F3CCF5C02B34576F005FFF2C /* Allocation List.swift */,
-				F3CCF5C22B345792005FFF2C /* Allocation Card.swift */,
-				F3CCF5C42B3457AE005FFF2C /* Allocation VM.swift */,
 				F342FAB22B2E43D500854270 /* Log Card.swift */,
+				F30088E52B3AD4DC0051476C /* Allocations */,
 			);
 			path = Info;
 			sourceTree = "<group>";
