@@ -15,6 +15,7 @@ final class ContactManager {
                     print("Error requesting permissions: \(error)")
                 }
             }
+            
         default:
             break
         }
