@@ -43,46 +43,15 @@ final class ServerListVM {
     }
     
     func fetchServers(_ isAdmin: Bool) {
-        getServerListAPI(isAdmin) { result in
+        getServerListAPI(isAdmin, printResponse: true) { result in
             switch result {
             case .success(let model):
                 if let model {
-                    var loadedServers = model.data.map {
-                        $0.attributes
-                    }
-                    
+                    let loadedServers = model.data.map { $0.attributes }
                     let totalPages = model.meta.pagination.totalPages
                     
                     if totalPages > 1 {
-                        let group = DispatchGroup()
-                        
-                        for page in 2...totalPages {
-                            group.enter()
-                            
-                            getServerListAPI(isAdmin, page: page) { result in
-                                switch result {
-                                case .success(let model):
-                                    if let model = model?.data {
-                                        let servers = model.map {
-                                            $0.attributes
-                                        }
-                                        
-                                        loadedServers.append(contentsOf: servers)
-                                    }
-                                    
-                                case .failure(let error):
-                                    networkCallError(#function, error)
-                                }
-                                
-                                group.leave()
-                            }
-                        }
-                        
-                        group.notify(queue: .main) {
-                            withAnimation {
-                                self.servers = loadedServers
-                            }
-                        }
+                        self.fetchAllPages(isAdmin, totalPages: totalPages, currentServers: loadedServers)
                     } else {
                         withAnimation {
                             self.servers = loadedServers
@@ -95,4 +64,88 @@ final class ServerListVM {
             }
         }
     }
+    
+    private func fetchAllPages(_ isAdmin: Bool, totalPages: Int, currentServers: [ServerAttributes]) {
+        var loadedServers = currentServers
+        let group = DispatchGroup()
+        
+        for page in 2...totalPages {
+            group.enter()
+            
+            getServerListAPI(isAdmin, page: page) { result in
+                switch result {
+                case .success(let model):
+                    if let model = model?.data {
+                        let servers = model.map { $0.attributes }
+                        loadedServers.append(contentsOf: servers)
+                    }
+                    
+                case .failure(let error):
+                    networkCallError(#function, error)
+                }
+                
+                group.leave()
+            }
+        }
+        
+        group.notify(queue: .main) {
+            withAnimation {
+                self.servers = loadedServers
+            }
+        }
+    }
+    
+    //    func fetchServers(_ isAdmin: Bool) {
+    //        getServerListAPI(isAdmin, printResponse: true) { result in
+    //            switch result {
+    //            case .success(let model):
+    //                if let model {
+    //                    var loadedServers = model.data.map {
+    //                        $0.attributes
+    //                    }
+    //
+    //                    let totalPages = model.meta.pagination.totalPages
+    //
+    //                    if totalPages > 1 {
+    //                        let group = DispatchGroup()
+    //
+    //                        for page in 2...totalPages {
+    //                            group.enter()
+    //
+    //                            getServerListAPI(isAdmin, page: page) { result in
+    //                                switch result {
+    //                                case .success(let model):
+    //                                    if let model = model?.data {
+    //                                        let servers = model.map {
+    //                                            $0.attributes
+    //                                        }
+    //
+    //                                        loadedServers.append(contentsOf: servers)
+    //                                    }
+    //
+    //                                case .failure(let error):
+    //                                    networkCallError(#function, error)
+    //                                }
+    //
+    //                                group.leave()
+    //                            }
+    //                        }
+    //
+    //                        group.notify(queue: .main) {
+    //                            withAnimation {
+    //                                self.servers = loadedServers
+    //                            }
+    //                        }
+    //                    } else {
+    //                        withAnimation {
+    //                            self.servers = loadedServers
+    //                        }
+    //                    }
+    //                }
+    //
+    //            case .failure(let error):
+    //                networkCallError(#function, error)
+    //            }
+    //        }
+    //    }
 }
