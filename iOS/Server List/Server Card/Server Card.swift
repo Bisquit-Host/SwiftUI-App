@@ -121,9 +121,11 @@ struct ServerCard: View {
 }
 
 #Preview {
-    LazyVGrid(columns: [
-        GridItem(.adaptive(minimum: 160, maximum: 400))
-    ], spacing: 8
+    LazyVGrid(
+        columns: [
+            GridItem(.adaptive(minimum: 160, maximum: 400))
+        ],
+        spacing: 8
     ) {
         ServerCard(
             sampleJSON(.serverListAttributes)
