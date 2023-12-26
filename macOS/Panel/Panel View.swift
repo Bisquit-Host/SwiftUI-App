@@ -31,11 +31,11 @@ struct PanelView: View {
         .admin
     ]
     
-    #if os(iOS)
+#if os(iOS)
     let application = UIApplication.self
-    #else
-    let application = NSApplication
-    #endif
+#else
+    let application = NSApplication.self
+#endif
     
     var body: some View {
         VStack(spacing: 0) {
