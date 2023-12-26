@@ -30,14 +30,10 @@ struct FolderFile: View {
             Section {
                 ForEach(vm.filteredFiles, id: \.name) { file in
                     FileView(id, file: file, path: path)
-                        .fileContextMenu(file.name,
-                                         path: path,
-                                         mimeType: file.mimetype)
                 }
                 .onDelete { offsets in
                     deleteItem(offsets)
                 }
-                
             } header: {
                 HStack {
                     FolderPath(path)

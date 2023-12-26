@@ -51,7 +51,10 @@ struct FileView: View {
                     .lineLimit(1)
             }
         }
-        .fileContextMenu(name, path: path, mimeType: mimeType)
+        .fileContextMenu(name,
+                         path: path,
+                         mimeType: mimeType,
+                         mode: file.mode)
     }
 }
 

@@ -4,18 +4,21 @@ import PteroNet
 struct FileTab_ContextMenu: ViewModifier {
     @EnvironmentObject private var vm: FileTabVM
     
-    private let file, path, mimeType: String
+    private let file, path, mimeType, mode: String
     
     init(_ file: String,
          path: String,
-         mimeType: String
+         mimeType: String,
+         mode: String
     ) {
         self.file = file
         self.path = path
         self.mimeType = mimeType
+        self.mode = mode
     }
     
     @State private var alertRename = false
+    @State private var sheetPermissions = false
     
     func body(content: Content) -> some View {
         content
@@ -61,22 +64,31 @@ struct FileTab_ContextMenu: ViewModifier {
                                               action: .compress)
                         }
                     }
+                    
+                    MenuButton("Permissions", icon: "lock.doc") {
+                        sheetPermissions = true
+                    }
                 }
                 
                 if !mimeType.contains("directory") {
                     Section {
                         ShareLink(item: vm.downloadUrl) {
-                            Label("Share", systemImage: "square.and.arrow.up")
+                            Label("Share...", systemImage: "square.and.arrow.up")
                         }
                     }
                 }
-                
+                                
                 Section {
                     MenuButton("Delete", role: .destructive, icon: "trash") {
                         vm.fileDelete(file,
                                       path: path)
                     }
                 }
+            }
+            .sheet($sheetPermissions) {
+                FilePermissionsView(mode,
+                                    root: path,
+                                    name: file)
             }
             .alert("Rename \(file)", isPresented: $alertRename) {
                 TextField("I'm not a no-name 😢", text: $vm.newFileName)
@@ -95,12 +107,14 @@ extension View {
     func fileContextMenu(
         _ file: String,
         path: String,
-        mimeType: String
+        mimeType: String,
+        mode: String
     ) -> some View {
         self.modifier(FileTab_ContextMenu(
             file,
             path: path,
-            mimeType: mimeType)
-        )
+            mimeType: mimeType,
+            mode: mode
+        ))
     }
 }

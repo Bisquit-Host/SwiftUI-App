@@ -2997,6 +2997,9 @@
         }
       }
     },
+    "Other users" : {
+
+    },
     "Overview" : {
 
     },
@@ -3214,6 +3217,9 @@
           }
         }
       }
+    },
+    "Read" : {
+
     },
     "Refresh" : {
       "extractionState" : "stale",
@@ -3619,6 +3625,9 @@
         }
       }
     },
+    "Share..." : {
+
+    },
     "Show description (ru)" : {
 
     },
@@ -3958,6 +3967,9 @@
           }
         }
       }
+    },
+    "System" : {
+
     },
     "Tab icons bounce" : {
 
@@ -4399,6 +4411,9 @@
 
     },
     "Wiki / FAQ" : {
+
+    },
+    "Write" : {
 
     },
     "Yes" : {

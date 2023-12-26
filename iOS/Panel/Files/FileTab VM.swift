@@ -47,13 +47,36 @@ final class FileTabVM: ObservableObject {
         }
     }
     
+    func chmod(_ read: Bool, _ write: Bool, _ execute: Bool) -> String {
+        var permission: UInt8 = 0
+        
+        if read { permission |= 4 }
+        if write { permission |= 2 }
+        if execute { permission |= 1 }
+        
+        return String(permission)
+    }
+    
+    func changeChmod(_ mode: String, root: String, name: String, onSuccess: @escaping () -> ()) {
+        fileChmodAPI(id, root: root, file: name, mode: mode) { result in
+            switch result {
+            case .success:
+                onSuccess()
+                self.fetchFiles(root)
+                
+            case .failure(let error):
+                networkCallError(#function, error)
+            }
+        }
+    }
+    
     func fetchFiles(_ path: String = "") {
         getFileListAPI(id, from: path) { result in
             switch result {
             case .success(let model):
                 if let model = model?.data {
-                    main {
-                        withAnimation {
+                    withAnimation {
+                        main {
 #if os(macOS)
                             self.degrees += 360
 #endif

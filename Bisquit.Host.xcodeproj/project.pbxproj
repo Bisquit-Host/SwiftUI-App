@@ -61,6 +61,8 @@
 		F30089002B3B62450051476C /* User Invitation Permission.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088FE2B3B62050051476C /* User Invitation Permission.swift */; };
 		F30089012B3B62450051476C /* User Invitation Permission.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088FE2B3B62050051476C /* User Invitation Permission.swift */; };
 		F30089022B3B62460051476C /* User Invitation Permission.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088FE2B3B62050051476C /* User Invitation Permission.swift */; };
+		F300891F2B3B896C0051476C /* File Permissions View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300891D2B3B87FB0051476C /* File Permissions View.swift */; };
+		F30089212B3B896E0051476C /* File Permissions View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300891D2B3B87FB0051476C /* File Permissions View.swift */; };
 		F304498A29E990E9006DC0C7 /* Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304498929E990E9006DC0C7 /* Cloud Keys.swift */; };
 		F306B9ED29BBDA770008C2D4 /* Server List Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */; };
 		F30860142B002B31004D776A /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F30860132B002B31004D776A /* PteroNet */; };
@@ -1172,6 +1174,7 @@
 		F30088F42B3B55C10051476C /* User Invitation View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Invitation View.swift"; sourceTree = "<group>"; };
 		F30088F92B3B561E0051476C /* User List Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User List Parent.swift"; sourceTree = "<group>"; };
 		F30088FE2B3B62050051476C /* User Invitation Permission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Invitation Permission.swift"; sourceTree = "<group>"; };
+		F300891D2B3B87FB0051476C /* File Permissions View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Permissions View.swift"; sourceTree = "<group>"; };
 		F304498629E98AE4006DC0C7 /* Bisquit.Host.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bisquit.Host.entitlements; sourceTree = "<group>"; };
 		F304498929E990E9006DC0C7 /* Cloud Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cloud Keys.swift"; sourceTree = "<group>"; };
 		F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List Footer.swift"; sourceTree = "<group>"; };
@@ -2327,6 +2330,7 @@
 				F37DDA7529E2AF7600B9680C /* Folder Path VM.swift */,
 				F3C0F9D129E2A62A0040E277 /* FileTab NewFolder.swift */,
 				F3C0F9CF29E204FA0040E277 /* FileTab ContextMenu.swift */,
+				F300891D2B3B87FB0051476C /* File Permissions View.swift */,
 				F39872202A1B93190022B00E /* FileTab Formats.swift */,
 			);
 			path = Elements;
@@ -3486,6 +3490,7 @@
 				F3E1D3ED2B3208BE009B7062 /* User 2Fa.swift in Sources */,
 				F3924EE729A25FBF00C4CC77 /* App Icon Picker.swift in Sources */,
 				F31BA5272958FF7C0006D126 /* Bisquit.Host App.swift in Sources */,
+				F300891F2B3B896C0051476C /* File Permissions View.swift in Sources */,
 				F3C9D8582B31135B00265492 /* Permission List.swift in Sources */,
 				F3EDEE3529C0C84C00B08696 /* Panel VM.swift in Sources */,
 				F3FF59FF2A4A3188003A1973 /* User List.swift in Sources */,
@@ -3916,6 +3921,7 @@
 				F3D264352A66A926005C3777 /* Settings Button.swift in Sources */,
 				F389BB5B2A05B53200911EBF /* Server Card Parent.swift in Sources */,
 				F311CAB02A646612004E4A4A /* Log Detail View.swift in Sources */,
+				F30089212B3B896E0051476C /* File Permissions View.swift in Sources */,
 				F389BB702A05B5FF00911EBF /* Cache VM.swift in Sources */,
 				F39CF3592A50C00C0077996D /* User View.swift in Sources */,
 				F389BB582A05B4F600911EBF /* Server List Grid.swift in Sources */,
