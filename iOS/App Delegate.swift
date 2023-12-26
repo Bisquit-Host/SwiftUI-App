@@ -65,7 +65,7 @@ private func fetchEmail(completion: @escaping (String?) -> Void) {
             completion(model?.attributes.email)
             
         case .failure(let error):
-            print(error.localizedDescription)
+            networkCallError(#function, error)
             completion(nil)
         }
     }

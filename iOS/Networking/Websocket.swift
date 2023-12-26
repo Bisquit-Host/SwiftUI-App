@@ -61,7 +61,7 @@ final class WebSocketTaskConnection: NSObject, WebSocketConnection, URLSessionWe
                         error: error
                     )
                     
-                    print("Error sending message: \(error.localizedDescription)")
+                    networkCallError(#function, error)
                 }
             }
         }

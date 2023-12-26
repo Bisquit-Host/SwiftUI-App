@@ -65,7 +65,7 @@ struct VideoFile: View {
                     
                     try FileManager.default.moveItem(at: location, to: fileURL)
                     
-                    DispatchQueue.main.async {
+                    main {
                         self.localVideoUrl = fileURL
                     }
                 } catch {

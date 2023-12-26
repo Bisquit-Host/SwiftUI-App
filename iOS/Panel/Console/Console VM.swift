@@ -42,15 +42,9 @@ final class ConsoleVM {
     }
     
     func showFailureMessage(error: Error) {
-        //        createButtonDisabled = true
-        //        createButtonColor = .red
-        
         switch error {
         case Errors.BadGateway:
             print("HttpException")
-#if !os(macOS)
-            errorHaptic()
-#endif
             //            withAnimation {
             //                self.createButtonText = "Error 400"
             //                self.errorText = "Cannot create a new backup, this server has reached its limit of \(backupLimit) backups."

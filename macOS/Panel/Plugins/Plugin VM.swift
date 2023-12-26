@@ -20,7 +20,7 @@ final class PluginVM {
                 }
                 
             case .failure(let error):
-                print(error.localizedDescription)
+                networkCallError(#function, error)
             }
         }
     }

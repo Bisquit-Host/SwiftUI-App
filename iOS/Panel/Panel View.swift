@@ -65,7 +65,6 @@ struct PanelView: View {
                 }
             }
             
-            prepareHaptics()
             fileVM.fetchFiles()
             backupVM.fetchBackups()
             databaseVM.fetchDatabases()
