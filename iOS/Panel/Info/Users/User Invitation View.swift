@@ -1,10 +1,27 @@
 import SwiftUI
+import Algorithms
 
 struct UserInvitationView: View {
     @Environment(UsersVM.self) private var vm
     @Environment(\.dismiss) private var dismiss
     
     @State private var email = ""
+    
+    
+    private var chunkedPermissions: [String: [String]] {
+        var dict = [String: [String]]()
+        
+        for permission in vm.userPermissionsDict.keys.sorted() {
+            let components = permission.split(separator: ".").map(String.init)
+            
+            if components.count > 1 {
+                let type = components[0]
+                dict[type, default: []].append(permission)
+            }
+        }
+        
+        return dict
+    }
     
     var body: some View {
         List {
@@ -13,8 +30,12 @@ struct UserInvitationView: View {
                     .textContentType(.emailAddress)
             }
             
-            ForEach(vm.userPermissionsDict.keys.sorted(), id: \.self) { permission in
-                UserInvitationPermission(permission)
+            ForEach(chunkedPermissions.keys.sorted(), id: \.self) { type in
+                Section(type) {
+                    ForEach(chunkedPermissions[type] ?? [], id: \.self) { permission in
+                        UserInvitationPermission(permission)
+                    }
+                }
             }
             
             Section {
