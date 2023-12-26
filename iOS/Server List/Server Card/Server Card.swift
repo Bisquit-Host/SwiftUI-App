@@ -76,10 +76,9 @@ struct ServerCard: View {
                     .matchedEffect("RAM_CPU", in: animation)
                 }
                 .frame(height: 90)
+                .padding(.horizontal)
                 .background(.ultraThinMaterial,
-                            in: .rect(cornerRadius: 16))
-                //                            in: .rect(cornerRadius: 16))
-                //                .background(settings.themeColor(), in: .rect(cornerRadius: 16))
+                            in: .rect(cornerRadius: 25))
                 //            case 2:
                 //                HStack {
                 //                    VStack {
