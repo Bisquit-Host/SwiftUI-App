@@ -136,7 +136,7 @@ struct InfoTabButtons: View {
             SftpView(server)
         }
         .sheet($sheetUsers) {
-            UserList()
+            UserListParent()
                 .environment(userVM)
         }
         .sheet($sheetStartup) {

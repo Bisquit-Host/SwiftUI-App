@@ -11,6 +11,39 @@ final class UsersVM {
     
     var users: [UserAttributes] = []
     var permissions: PermissionAttributes?
+    var newUserPermissions: [String] = []
+    
+    var userPermissionsDict: [String: Bool] {
+        var dict: [String: Bool] = [:]
+        
+        if let permissions = self.permissions {
+            permissions.permissions.forEach { key, permission in
+                permission.keys.keys.forEach { subKey in
+                    let fullKey = "\(key).\(subKey)"
+                    
+                    dict[fullKey] = false
+                }
+            }
+        }
+        
+        return dict
+    }
+    
+    func createUser(_ email: String, onSuccess: @escaping () -> ()) {
+        userCreateAPI(id, email: email, permissions: newUserPermissions) { result in
+            switch result {
+            case .success(let model):
+                if let user = model?.attributes {
+                    self.users.append(user)
+                }
+                
+                onSuccess()
+                
+            case .failure(let error):
+                networkCallError(#function, error)
+            }
+        }
+    }
     
     func updateUser(_ userId: String, permissions: [String], onSuccess: @escaping () -> Void, onError: @escaping () -> Void) {
         updateUserAPI(id, userId: userId, permissions: permissions) { result in

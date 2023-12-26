@@ -49,6 +49,18 @@
 		F30088E22B3A5A8A0051476C /* Startup VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337C1682A8D07E2006F321C /* Startup VM.swift */; };
 		F30088E42B3A5B0B0051476C /* Startup List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088E32B3A5B0B0051476C /* Startup List.swift */; };
 		F30088F32B3B475C0051476C /* Startup Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088F22B3B475C0051476C /* Startup Card.swift */; };
+		F30088F52B3B55C10051476C /* User Invitation View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088F42B3B55C10051476C /* User Invitation View.swift */; };
+		F30088F62B3B55CD0051476C /* User Invitation View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088F42B3B55C10051476C /* User Invitation View.swift */; };
+		F30088F72B3B55CE0051476C /* User Invitation View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088F42B3B55C10051476C /* User Invitation View.swift */; };
+		F30088F82B3B55D10051476C /* User Invitation View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088F42B3B55C10051476C /* User Invitation View.swift */; };
+		F30088FA2B3B561E0051476C /* User List Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088F92B3B561E0051476C /* User List Parent.swift */; };
+		F30088FB2B3B56210051476C /* User List Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088F92B3B561E0051476C /* User List Parent.swift */; };
+		F30088FC2B3B56210051476C /* User List Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088F92B3B561E0051476C /* User List Parent.swift */; };
+		F30088FD2B3B56240051476C /* User List Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088F92B3B561E0051476C /* User List Parent.swift */; };
+		F30088FF2B3B62050051476C /* User Invitation Permission.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088FE2B3B62050051476C /* User Invitation Permission.swift */; };
+		F30089002B3B62450051476C /* User Invitation Permission.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088FE2B3B62050051476C /* User Invitation Permission.swift */; };
+		F30089012B3B62450051476C /* User Invitation Permission.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088FE2B3B62050051476C /* User Invitation Permission.swift */; };
+		F30089022B3B62460051476C /* User Invitation Permission.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088FE2B3B62050051476C /* User Invitation Permission.swift */; };
 		F304498A29E990E9006DC0C7 /* Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304498929E990E9006DC0C7 /* Cloud Keys.swift */; };
 		F306B9ED29BBDA770008C2D4 /* Server List Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */; };
 		F30860142B002B31004D776A /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F30860132B002B31004D776A /* PteroNet */; };
@@ -1157,6 +1169,9 @@
 		F30088E12B3A4DCD0051476C /* Clip_DemoDebug.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Clip_DemoDebug.entitlements; sourceTree = "<group>"; };
 		F30088E32B3A5B0B0051476C /* Startup List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Startup List.swift"; sourceTree = "<group>"; };
 		F30088F22B3B475C0051476C /* Startup Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Startup Card.swift"; sourceTree = "<group>"; };
+		F30088F42B3B55C10051476C /* User Invitation View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Invitation View.swift"; sourceTree = "<group>"; };
+		F30088F92B3B561E0051476C /* User List Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User List Parent.swift"; sourceTree = "<group>"; };
+		F30088FE2B3B62050051476C /* User Invitation Permission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Invitation Permission.swift"; sourceTree = "<group>"; };
 		F304498629E98AE4006DC0C7 /* Bisquit.Host.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bisquit.Host.entitlements; sourceTree = "<group>"; };
 		F304498929E990E9006DC0C7 /* Cloud Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cloud Keys.swift"; sourceTree = "<group>"; };
 		F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List Footer.swift"; sourceTree = "<group>"; };
@@ -2870,6 +2885,9 @@
 			isa = PBXGroup;
 			children = (
 				F3FF59FE2A4A3188003A1973 /* User List.swift */,
+				F30088F92B3B561E0051476C /* User List Parent.swift */,
+				F30088F42B3B55C10051476C /* User Invitation View.swift */,
+				F30088FE2B3B62050051476C /* User Invitation Permission.swift */,
 				F3FF5A0B2A4A386F003A1973 /* Users VM.swift */,
 				F3FF5A0E2A4A3ABD003A1973 /* User Card.swift */,
 				F39CF3572A50C00C0077996D /* User View.swift */,
@@ -3385,6 +3403,8 @@
 				F3BC03BD2B1FFBD50011F98A /* Backup Context Menu.swift in Sources */,
 				F33CDC022A26B930008D0214 /* Browser.swift in Sources */,
 				F3C9D8562B3090F500265492 /* Auth View.swift in Sources */,
+				F30088FA2B3B561E0051476C /* User List Parent.swift in Sources */,
+				F30088FF2B3B62050051476C /* User Invitation Permission.swift in Sources */,
 				F3BC03B82B1FF8E40011F98A /* Database Context Menu.swift in Sources */,
 				F3F2A5BB29AC296D00AD20A4 /* Server Card Suspended.swift in Sources */,
 				F3F86D012A5AEDCE00A2C82E /* Audio Recorder.swift in Sources */,
@@ -3393,6 +3413,7 @@
 				F3464D262A86397F00188B0C /* PowerSignalAppEnum.swift in Sources */,
 				F3EB09DF2A297F090073916A /* Des Image.swift in Sources */,
 				F3C9D8532B3060D100265492 /* Video Player VM.swift in Sources */,
+				F30088F52B3B55C10051476C /* User Invitation View.swift in Sources */,
 				F37266CD29D96C98005FD103 /* Websocket Delegate.swift in Sources */,
 				F35081B02AF30F4B00835CC0 /* Tip Cloud Keys.swift in Sources */,
 				F3BC03B32B1FF4830011F98A /* Task Context Menu.swift in Sources */,
@@ -3535,6 +3556,7 @@
 				F3D264442A66B3A6005C3777 /* QR Code View.swift in Sources */,
 				F31BA578295901010006D126 /* Intro.swift in Sources */,
 				F399933A2AF2E491006E8A9A /* Other Settings.swift in Sources */,
+				F30088F62B3B55CD0051476C /* User Invitation View.swift in Sources */,
 				F31BA5C9295904AC0006D126 /* Data Tab.swift in Sources */,
 				F3B4BD7929A8B955002A5A1B /* Auth View.swift in Sources */,
 				F3A31B052B0B144200F89C51 /* Server List Node Filter.swift in Sources */,
@@ -3585,6 +3607,7 @@
 				F34169A52A49DF64003985E7 /* InfoTab Button.swift in Sources */,
 				F37DDA7629E2AF7600B9680C /* Folder Path VM.swift in Sources */,
 				F3A994AA2A177ED100530615 /* Map VM.swift in Sources */,
+				F30088FC2B3B56210051476C /* User List Parent.swift in Sources */,
 				F35B2A0229FFD6AB006E5FD2 /* CloudKit Model.swift in Sources */,
 				F3A123562A667804008E3E20 /* Log View Parent.swift in Sources */,
 				F3FF5A0C2A4A386F003A1973 /* Users VM.swift in Sources */,
@@ -3652,6 +3675,7 @@
 				F3A800322A7313E900CAC40B /* Tip Cloud Keys.swift in Sources */,
 				F30088A92B3A1A500051476C /* Schedule VM.swift in Sources */,
 				F31BA5862959016D0006D126 /* SpriteKit Pyzh.swift in Sources */,
+				F30089002B3B62450051476C /* User Invitation Permission.swift in Sources */,
 				F3BBE36429AF97D800323C6B /* Credential Field.swift in Sources */,
 				F33944112A49022A00E2F0FC /* InfoTab Card.swift in Sources */,
 				F3A7BCD1296B44FF00E080C1 /* Nav Extension.swift in Sources */,
@@ -3668,6 +3692,7 @@
 				F3F061DC2A73D05C00470F7E /* Type Text.swift in Sources */,
 				F3F061D22A73C37500470F7E /* Map View.swift in Sources */,
 				F3F061DA2A73CE1200470F7E /* Server Card Parent.swift in Sources */,
+				F30089012B3B62450051476C /* User Invitation Permission.swift in Sources */,
 				F3EB09D92A2958740073916A /* Text File.swift in Sources */,
 				F3762DA02A581B1C0016AC44 /* Log List.swift in Sources */,
 				F3C9D8592B31135B00265492 /* Permission List.swift in Sources */,
@@ -3704,6 +3729,7 @@
 				F3FFB7432A57F13D00220FA5 /* User View.swift in Sources */,
 				F311CAAF2A646612004E4A4A /* Log Detail View.swift in Sources */,
 				F30C13182A54626C00A7EFF0 /* Bisquit.Host App.swift in Sources */,
+				F30088F72B3B55CE0051476C /* User Invitation View.swift in Sources */,
 				F394A28929E0CC5F0012B7D1 /* Gauge Regular.swift in Sources */,
 				F376D0562A02487C00B7377A /* Cloud Keys.swift in Sources */,
 				F3FFB7422A57F12F00220FA5 /* User Card.swift in Sources */,
@@ -3712,6 +3738,7 @@
 				F3499EFA2A277D0F006101B7 /* File Tab.swift in Sources */,
 				F3EB09E52A2982680073916A /* Video File.swift in Sources */,
 				F3F86D002A5AEDCD00A2C82E /* Audio Recorder.swift in Sources */,
+				F30088FB2B3B56210051476C /* User List Parent.swift in Sources */,
 				F3499EF82A275556006101B7 /* Websocket Message.swift in Sources */,
 				F30C12FD2A54546900A7EFF0 /* App Container.swift in Sources */,
 				F3C9D85D2B31146E00265492 /* User Avatar.swift in Sources */,
@@ -3777,6 +3804,7 @@
 				F3D2643F2A66ABB2005C3777 /* Account Parent.swift in Sources */,
 				F325F70A2A54CB6600E89EC4 /* Carousel Button Style.swift in Sources */,
 				F36D53482A05B939007324C6 /* SpriteKit Pyzh.swift in Sources */,
+				F30088F82B3B55D10051476C /* User Invitation View.swift in Sources */,
 				F3BC03C82B20675E0011F98A /* New Schedule Sheet.swift in Sources */,
 				F389BB622A05B58E00911EBF /* Server Card VM.swift in Sources */,
 				F36FDB92295AF3AB00D45070 /* Intro.swift in Sources */,
@@ -3785,6 +3813,7 @@
 				F33944122A49022A00E2F0FC /* InfoTab Card.swift in Sources */,
 				F389BB6E2A05B5F400911EBF /* Cache Limit.swift in Sources */,
 				F3B637302A35A82F00CB374C /* Console Inspector.swift in Sources */,
+				F30089022B3B62460051476C /* User Invitation Permission.swift in Sources */,
 				F31485212A34665000AF5CCA /* Browser Sticker.swift in Sources */,
 				F37A36762A35173F00517EFC /* Console View.swift in Sources */,
 				F36D53302A05B896007324C6 /* Section Header.swift in Sources */,
@@ -3861,6 +3890,7 @@
 				F3D558AD2A33640100608447 /* FileTab VM.swift in Sources */,
 				F3287A7C2B10A17F001AFE54 /* Widget Live Activity.swift in Sources */,
 				F36D530F2A05B6E0007324C6 /* Browser Card.swift in Sources */,
+				F30088FD2B3B56240051476C /* User List Parent.swift in Sources */,
 				F3EB09F12A2989570073916A /* QuickLook.swift in Sources */,
 				F389BB752A05B62600911EBF /* Design Settings.swift in Sources */,
 				F389BB7C2A05B66B00911EBF /* App Icon.swift in Sources */,

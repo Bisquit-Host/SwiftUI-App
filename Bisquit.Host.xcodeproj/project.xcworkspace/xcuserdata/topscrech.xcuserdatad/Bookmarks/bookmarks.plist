@@ -2075,6 +2075,93 @@ import PteroNet
 			<key>type</key>
 			<string>bookmark</string>
 		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>26</string>
+					<key>EndingLineNumber</key>
+					<string>28</string>
+					<key>StartingColumnNumber</key>
+					<string>17</string>
+					<key>StartingLineNumber</key>
+					<string>28</string>
+					<key>Timestamp</key>
+					<string>725306922.848699</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Networking/Websocket Delegate.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>webSocket</string>
+				<key>leading</key>
+				<string>    
+    func onTextMessage(connection: WebSocketConnection, message: String) {
+//        Logger.</string>
+				<key>trailing</key>
+				<string>.log("Received message: \(message)")
+        
+        onTextMessage(message)
+</string>
+			</dict>
+			<key>title</key>
+			<string>Log websocket</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingLineNumber</key>
+					<string>32</string>
+					<key>StartingLineNumber</key>
+					<string>32</string>
+					<key>Timestamp</key>
+					<string>725313943.699843</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Panel/Info/Users/User Invitation View.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>        .presentationDetents([.medium])
+</string>
+				<key>leading</key>
+				<string>        .padding(.horizontal)
+        .scrollIndicators(.never)
+</string>
+				<key>trailing</key>
+				<string>        .task {
+            vm.fetchPermissions()
+        }
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
 	</array>
 </dict>
 </plist>

@@ -18,7 +18,7 @@ struct InfoTab: View {
     var body: some View {
         ScrollView {
             NavigationLink("Users") {
-                UserList()
+                UserListParent()
                     .environment(users)
             }
             

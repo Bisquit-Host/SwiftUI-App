@@ -3,49 +3,36 @@ import SwiftUI
 struct UserList: View {
     @Environment(UsersVM.self) private var vm
     
+    @State private var sheetInvitation = false
+    
     var body: some View {
-#if os(watchOS)
         List {
             Section {
                 ForEach(vm.users, id: \.uuid) { user in
                     UserCard(user)
+                        .environment(vm)
                 }
                 .onDelete(perform: delete)
             }
+            
+            Button("New User") {
+                sheetInvitation = true
+            }
         }
         .navigationTitle("Users")
-        .task {
-            vm.fetchUsers()
-            vm.fetchPermissions()
-        }
-#else
-        NavigationView {
-            List {
-                Section {
-                    ForEach(vm.users, id: \.uuid) { user in
-                        UserCard(user)
-                            .environment(vm)
-                    }
-                    .onDelete(perform: delete)
-                }
-                
-                //                Button("New User") {
-                //
-                //                }
-            }
-            .navigationTitle("Users")
-            .toolbarTitleDisplayMode(.inline)
-            .refreshable {
-                vm.fetchUsers()
-            }
-        }
+        .toolbarTitleDisplayMode(.inline)
         .presentationDetents([.medium, .large])
         .presentationDragIndicator(.hidden)
         .task {
             vm.fetchUsers()
             vm.fetchPermissions()
         }
-#endif
+        .refreshable {
+            vm.fetchUsers()
+        }
+        .sheet($sheetInvitation) {
+            UserInvitationView()
+        }
     }
     
     private func delete(offsets: IndexSet) {

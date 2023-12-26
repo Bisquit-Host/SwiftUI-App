@@ -21,7 +21,7 @@ struct InfoTab: View {
         VStack(spacing: 60) {
             HStack {
                 NavigationLink {
-                    UserList()
+                    UserListParent()
                         .environment(usersVM)
                 } label: {
                     Label("Users", systemImage: "person.3")
