@@ -2,21 +2,19 @@ import SwiftUI
 import PteroNet
 
 struct InfoTab: View {
-    //    private var settingsVM: ServerSettingsVM
-    private let server: ServerAttributes
+    private let id: String
     private var logVM: LogVM
     private var usersVM: UsersVM
     private var allocationVM: AllocationVM
     private var startupVM: StartupVM
-    //    @EnvironmentObject private var settings: SettingsStorage
     @Environment(NavState.self) private var navState
     
-    init(_ server: ServerAttributes) {
-        self.server = server
-        self.logVM = LogVM(server.id)
-        self.usersVM = UsersVM(server.id)
-        self.allocationVM = AllocationVM(server.id)
-        self.startupVM = StartupVM(server.id)
+    init(_ id: String) {
+        self.id = id
+        self.logVM = LogVM(id)
+        self.usersVM = UsersVM(id)
+        self.allocationVM = AllocationVM(id)
+        self.startupVM = StartupVM(id)
     }
     
     var body: some View {
@@ -75,10 +73,11 @@ struct InfoTab: View {
 
 #Preview {
     NavigationView {
-        InfoTab(
-            sampleJSON(.serverListAttributes)
-        )
+        InfoTab("")
     }
     .environment(LogVM(""))
+    .environment(UsersVM(""))
+    .environment(AllocationVM(""))
+    .environment(StartupVM(""))
     .environment(NavState())
 }

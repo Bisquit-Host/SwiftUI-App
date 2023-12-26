@@ -5,14 +5,16 @@ struct StartupList: View {
     
     var body: some View {
         List {
+            Button("VIEW ONLY", role: .destructive) {}
+            
             ForEach(vm.startupVariables, id: \.name) { variable in
-                Section {
-                    Text(variable.name)
-                    Text(variable.description)
-                }
+                StartupCard(variable)
             }
         }
         .navigationTitle("Startup")
+        .task {
+            vm.fetchStartupVariables()
+        }
     }
 }
 

@@ -51,7 +51,7 @@ struct PanelView: View {
                     Text("Data")
                 }
                 
-                InfoTab(server)
+                InfoTab(id)
                     .tag(Tab.other)
                     .tabItem {
                         Text("Other")
