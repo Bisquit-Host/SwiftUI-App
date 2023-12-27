@@ -7,22 +7,7 @@ struct UserInvitationView: View {
     
     @State private var email = ""
     @State private var sheetContacts = false
-    
-    private var chunkedPermissions: [String: [String]] {
-        var dict = [String: [String]]()
         
-        for permission in vm.userPermissionsDict.keys.sorted() {
-            let components = permission.split(separator: ".").map(String.init)
-            
-            if components.count > 1 {
-                let type = components[0]
-                dict[type, default: []].append(permission)
-            }
-        }
-        
-        return dict
-    }
-    
     var body: some View {
         List {
             Section {
@@ -35,11 +20,17 @@ struct UserInvitationView: View {
                     Label("Contacts", systemImage: "person.circle.fill")
                 }
 #endif
+                Button {
+                    vm.allPermsTrigger.toggle()
+                } label: {
+                    Text(vm.allPermsTrigger ? "Revoke all permissions" : "Grant all permissions")
+                        .animation(.default, value: vm.allPermsTrigger)
+                }
             }
             
-            ForEach(chunkedPermissions.keys.sorted(), id: \.self) { type in
+            ForEach(vm.chunkedPermissions.keys.sorted(), id: \.self) { type in
                 Section(type) {
-                    ForEach(chunkedPermissions[type] ?? [], id: \.self) { permission in
+                    ForEach(vm.chunkedPermissions[type] ?? [], id: \.self) { permission in
                         UserInvitationPermission(permission)
                     }
                 }

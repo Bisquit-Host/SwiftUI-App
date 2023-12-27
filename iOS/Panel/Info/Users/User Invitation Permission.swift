@@ -17,6 +17,9 @@ struct UserInvitationPermission: View {
     
     var body: some View {
         Toggle(subkey, isOn: $isGranted)
+            .onChange(of: vm.allPermsTrigger) { _, newValue in
+                isGranted = newValue
+            }
             .onChange(of: isGranted) { _, newValue in
                 guard newValue else {
                     vm.newUserPermissions.removeAll(where: { $0 == permission })

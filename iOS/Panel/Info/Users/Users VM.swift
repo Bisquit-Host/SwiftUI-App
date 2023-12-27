@@ -12,6 +12,7 @@ final class UsersVM {
     var users: [UserAttributes] = []
     var permissions: PermissionAttributes?
     var newUserPermissions: [String] = []
+    var allPermsTrigger = false
     
     var userPermissionsDict: [String: Bool] {
         var dict: [String: Bool] = [:]
@@ -29,6 +30,21 @@ final class UsersVM {
         return dict
     }
     
+    var chunkedPermissions: [String: [String]] {
+        var dict = [String: [String]]()
+        
+        for permission in userPermissionsDict.keys.sorted() {
+            let components = permission.split(separator: ".").map(String.init)
+            
+            if components.count > 1 {
+                let type = components[0]
+                dict[type, default: []].append(permission)
+            }
+        }
+        
+        return dict
+    }
+        
     func createUser(_ email: String, onSuccess: @escaping () -> ()) {
         userCreateAPI(id, email: email, permissions: newUserPermissions) { result in
             switch result {

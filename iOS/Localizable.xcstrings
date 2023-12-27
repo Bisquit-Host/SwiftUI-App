@@ -1864,6 +1864,9 @@
         }
       }
     },
+    "Grant all permissions" : {
+
+    },
     "Grid" : {
       "localizations" : {
         "ru" : {
@@ -2357,7 +2360,7 @@
         }
       }
     },
-    "Invite User" : {
+    "Invite user" : {
 
     },
     "IP" : {
@@ -3344,6 +3347,9 @@
 
     },
     "Restore with truncate" : {
+
+    },
+    "Revoke all permissions" : {
 
     },
     "Rotate password" : {
