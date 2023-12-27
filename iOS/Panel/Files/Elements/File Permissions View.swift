@@ -29,7 +29,17 @@ struct FilePermissionsView: View {
         vm.chmod(otherRead, otherWrite, otherExecute)
     }
     
+    private var isDifferent: Bool {
+        file.modeBits != newMode
+    }
+    
     var body: some View {
+        let oldBits = Text(file.modeBits)
+            .monospaced()
+        
+        let newBits = Text(newMode)
+            .monospaced()
+        
         List {
             Section("System") {
                 Toggle("Read", isOn: $systemRead)
@@ -50,13 +60,21 @@ struct FilePermissionsView: View {
             }
             
             Button {
-                vm.changeChmod(file.name, root: root, mode: newMode) {
+                if isDifferent {
+                    vm.changeChmod(file.name, root: root, mode: newMode) {
+                        dismiss()
+                    }
+                } else {
                     dismiss()
                 }
             } label: {
-                Text("Update")
+                Text(isDifferent ? "Update \(oldBits) to \(newBits)" : "Cancel")
+                    .numericTransition()
+                    .animation(.default, value: newMode)
             }
         }
+        .navigationTitle("Permissions")
+        .toolbarTitleDisplayMode(.inline)
         .task {
             let bits = Array(file.mode)
             

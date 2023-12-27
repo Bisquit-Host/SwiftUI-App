@@ -4208,6 +4208,16 @@
         }
       }
     },
+    "Update %@ to %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Update %1$@ to %2$@"
+          }
+        }
+      }
+    },
     "Update credentials" : {
       "localizations" : {
         "ru" : {

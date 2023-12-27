@@ -80,14 +80,14 @@ struct FileTab_ContextMenu: ViewModifier {
                 
                 Section {
                     MenuButton("Delete", role: .destructive, icon: "trash") {
-                        vm.fileDelete(name, 
+                        vm.fileDelete(name,
                                       path: root)
                     }
                 }
             }
             .sheet($sheetPermissions) {
-                FilePermissionsView(file,
-                                    root: root)
+                FilePermissionsParent(file,
+                                      root: root)
             }
             .alert("Rename \(name)", isPresented: $alertRename) {
                 TextField("I'm not a no-name 😢", text: $vm.newFileName)

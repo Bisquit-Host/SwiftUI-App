@@ -63,6 +63,8 @@
 		F30089022B3B62460051476C /* User Invitation Permission.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088FE2B3B62050051476C /* User Invitation Permission.swift */; };
 		F300891F2B3B896C0051476C /* File Permissions View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300891D2B3B87FB0051476C /* File Permissions View.swift */; };
 		F30089212B3B896E0051476C /* File Permissions View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300891D2B3B87FB0051476C /* File Permissions View.swift */; };
+		F30089232B3BA5300051476C /* File Permissions Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30089222B3BA5300051476C /* File Permissions Parent.swift */; };
+		F30089242B3BA5300051476C /* File Permissions Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30089222B3BA5300051476C /* File Permissions Parent.swift */; };
 		F304498A29E990E9006DC0C7 /* Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304498929E990E9006DC0C7 /* Cloud Keys.swift */; };
 		F306B9ED29BBDA770008C2D4 /* Server List Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */; };
 		F30860142B002B31004D776A /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F30860132B002B31004D776A /* PteroNet */; };
@@ -1175,6 +1177,7 @@
 		F30088F92B3B561E0051476C /* User List Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User List Parent.swift"; sourceTree = "<group>"; };
 		F30088FE2B3B62050051476C /* User Invitation Permission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Invitation Permission.swift"; sourceTree = "<group>"; };
 		F300891D2B3B87FB0051476C /* File Permissions View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Permissions View.swift"; sourceTree = "<group>"; };
+		F30089222B3BA5300051476C /* File Permissions Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Permissions Parent.swift"; sourceTree = "<group>"; };
 		F304498629E98AE4006DC0C7 /* Bisquit.Host.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bisquit.Host.entitlements; sourceTree = "<group>"; };
 		F304498929E990E9006DC0C7 /* Cloud Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cloud Keys.swift"; sourceTree = "<group>"; };
 		F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List Footer.swift"; sourceTree = "<group>"; };
@@ -2330,6 +2333,7 @@
 				F37DDA7529E2AF7600B9680C /* Folder Path VM.swift */,
 				F3C0F9D129E2A62A0040E277 /* FileTab NewFolder.swift */,
 				F3C0F9CF29E204FA0040E277 /* FileTab ContextMenu.swift */,
+				F30089222B3BA5300051476C /* File Permissions Parent.swift */,
 				F300891D2B3B87FB0051476C /* File Permissions View.swift */,
 				F39872202A1B93190022B00E /* FileTab Formats.swift */,
 			);
@@ -3678,6 +3682,7 @@
 				F3521E2B29F5C13900132CCB /* Browser Card.swift in Sources */,
 				F37266E929D9EFFE005FD103 /* Cache Size.swift in Sources */,
 				F3A800322A7313E900CAC40B /* Tip Cloud Keys.swift in Sources */,
+				F30089232B3BA5300051476C /* File Permissions Parent.swift in Sources */,
 				F30088A92B3A1A500051476C /* Schedule VM.swift in Sources */,
 				F31BA5862959016D0006D126 /* SpriteKit Pyzh.swift in Sources */,
 				F30089002B3B62450051476C /* User Invitation Permission.swift in Sources */,
@@ -3843,6 +3848,7 @@
 				F39872222A1B93190022B00E /* FileTab Formats.swift in Sources */,
 				F36D532F2A05B890007324C6 /* Database Card.swift in Sources */,
 				F393C7BD2A18442D00DE33F9 /* Upload File.swift in Sources */,
+				F30089242B3BA5300051476C /* File Permissions Parent.swift in Sources */,
 				F371468D2B123807001E0296 /* ActivityViewState.swift in Sources */,
 				F3C9D84F2B30598000265492 /* Video Player VM.swift in Sources */,
 				F36D53392A05B8CA007324C6 /* Text File.swift in Sources */,
