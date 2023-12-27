@@ -51,7 +51,7 @@ struct UserInvitationView: View {
                         dismiss()
                     }
                 } label: {
-                    Text("Invite User")
+                    Text("Invite user")
                 }
                 .disabled(vm.newUserPermissions.isEmpty)
             }
@@ -64,8 +64,7 @@ struct UserInvitationView: View {
         }
 #if os(iOS)
         .sheet(isPresented: $sheetContacts) {
-            ContactPickerView($email)
-                .ignoresSafeArea()
+            ContactsListView($email)
         }
 #endif
     }
