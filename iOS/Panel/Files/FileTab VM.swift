@@ -57,8 +57,8 @@ final class FileTabVM: ObservableObject {
         return String(permission)
     }
     
-    func changeChmod(_ mode: String, root: String, name: String, onSuccess: @escaping () -> ()) {
-        fileChmodAPI(id, root: root, file: name, mode: mode) { result in
+    func changeChmod(_ file: String, root: String, mode: String, onSuccess: @escaping () -> ()) {
+        fileChmodAPI(id, root: root, file: file, mode: mode) { result in
             switch result {
             case .success:
                 onSuccess()

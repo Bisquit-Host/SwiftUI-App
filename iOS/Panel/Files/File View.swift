@@ -30,13 +30,18 @@ struct FileView: View {
                 )
                 
             } else if mimeType.contains("directory") {
-                FolderFile(id, path: path + name)
+                FolderFile(id,
+                           path: path + name)
                 
             } else if mimeType.contains("video") {
-                VideoFile(id, path: path, name: name)
+                VideoFile(id,
+                          path: path,
+                          name: name)
                 
             } else {
-                QuickLookFile(id, path: path, name: name)
+                QuickLookFile(id,
+                              path: path,
+                              name: name)
             }
         } label: {
             HStack {
@@ -51,16 +56,15 @@ struct FileView: View {
                     .lineLimit(1)
             }
         }
-        .fileContextMenu(name,
-                         path: path,
-                         mimeType: mimeType,
-                         mode: file.mode)
+        .fileContextMenu(file, root: path)
     }
 }
 
 #Preview {
     List {
-        FileView("", file: sampleJSON(.fileListAttributes), path: "")
-            .environment(NavState())
+        FileView("",
+                 file: sampleJSON(.fileListAttributes),
+                 path: "")
+        .environment(NavState())
     }
 }

@@ -1,17 +1,16 @@
 import SwiftUI
+import PteroNet
 
 struct FilePermissionsView: View {
     @EnvironmentObject private var vm: FileTabVM
     @Environment(\.dismiss) private var dismiss
     
-    private let mode: String
+    private let file: FileAttributes
     private let root: String
-    private let name: String
     
-    init(_ mode: String, root: String, name: String) {
-        self.mode = mode
+    init(_ file: FileAttributes, root: String) {
+        self.file = file
         self.root = root
-        self.name = name
     }
     
     @State private var systemRead = false
@@ -51,7 +50,7 @@ struct FilePermissionsView: View {
             }
             
             Button {
-                vm.changeChmod(newMode, root: root, name: name) {
+                vm.changeChmod(file.name, root: root, mode: newMode) {
                     dismiss()
                 }
             } label: {
@@ -59,7 +58,7 @@ struct FilePermissionsView: View {
             }
         }
         .task {
-            let bits = Array(mode)
+            let bits = Array(file.mode)
             
             systemRead = initBit(bits[1])
             systemWrite = initBit(bits[2])
@@ -79,6 +78,9 @@ struct FilePermissionsView: View {
 }
 
 #Preview {
-    FilePermissionsView("drwxr-x---", root: "", name: "")
-        .environmentObject(FileTabVM(""))
+    FilePermissionsView(
+        sampleJSON(.fileListAttributes),
+        root: ""
+    )
+    .environmentObject(FileTabVM(""))
 }
