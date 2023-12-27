@@ -58,9 +58,7 @@ struct FileTab: View {
                     //                    )
                 } label: {
                     FileNameAndIcon(file)
-                        .fileContextMenu(name,
-                                         path: path,
-                                         mimeType: mimeType)
+                        .fileContextMenu(file, root: path)
                 }
             }
         }
