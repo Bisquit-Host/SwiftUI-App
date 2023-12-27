@@ -106,11 +106,10 @@ final class UsersVM {
         deleteUser(id, uuid: uuid) { result in
             switch result {
             case .success:
-                delay {
-                    self.fetchUsers()
-                }
+                self.fetchUsers()
                 
             case .failure(let error):
+                self.fetchUsers()
                 networkCallError(#function, error)
             }
         }

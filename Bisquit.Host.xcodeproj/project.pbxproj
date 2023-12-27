@@ -2894,8 +2894,8 @@
 		F3FF5A012A4A318E003A1973 /* Users */ = {
 			isa = PBXGroup;
 			children = (
-				F3FF59FE2A4A3188003A1973 /* User List.swift */,
 				F30088F92B3B561E0051476C /* User List Parent.swift */,
+				F3FF59FE2A4A3188003A1973 /* User List.swift */,
 				F30088F42B3B55C10051476C /* User Invitation View.swift */,
 				F30088FE2B3B62050051476C /* User Invitation Permission.swift */,
 				F3FF5A0B2A4A386F003A1973 /* Users VM.swift */,
