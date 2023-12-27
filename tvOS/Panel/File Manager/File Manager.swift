@@ -52,7 +52,7 @@ struct FileTab: View {
                     }
                     
                     //                    navState.navigate(
-                    //                        vm.navigateBasedOnMimeType(id,
+                    //                        wvm.navigateBasedOnMimeType(id,
                     //                                                   path: path,
                     //                                                   file: file)
                     //                    )

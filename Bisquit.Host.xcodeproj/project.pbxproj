@@ -65,6 +65,8 @@
 		F30089212B3B896E0051476C /* File Permissions View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300891D2B3B87FB0051476C /* File Permissions View.swift */; };
 		F30089232B3BA5300051476C /* File Permissions Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30089222B3BA5300051476C /* File Permissions Parent.swift */; };
 		F30089242B3BA5300051476C /* File Permissions Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30089222B3BA5300051476C /* File Permissions Parent.swift */; };
+		F30089252B3BAD190051476C /* File Permissions Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30089222B3BA5300051476C /* File Permissions Parent.swift */; };
+		F30089262B3BAD200051476C /* File Permissions View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300891D2B3B87FB0051476C /* File Permissions View.swift */; };
 		F304498A29E990E9006DC0C7 /* Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304498929E990E9006DC0C7 /* Cloud Keys.swift */; };
 		F306B9ED29BBDA770008C2D4 /* Server List Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */; };
 		F30860142B002B31004D776A /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F30860132B002B31004D776A /* PteroNet */; };
@@ -3453,6 +3455,7 @@
 				F39D68142A26373F00B9BDFC /* SptiteKit BisquitFall.swift in Sources */,
 				F30C13162A5461BB00A7EFF0 /* Cache VM.swift in Sources */,
 				F3796564295C51C80074CA3D /* Progress Bar.swift in Sources */,
+				F30089262B3BAD200051476C /* File Permissions View.swift in Sources */,
 				F3499EF42A26DE92006101B7 /* Guide Model.swift in Sources */,
 				F3E024C62B228F4C00FFF686 /* New Task Sheet.swift in Sources */,
 				F33CDBFD2A26B7AD008D0214 /* Browser Spec.swift in Sources */,
@@ -3461,6 +3464,7 @@
 				F39D68112A2634C700B9BDFC /* Dev Settings.swift in Sources */,
 				F33CDC012A26B927008D0214 /* Browser Topbar.swift in Sources */,
 				F3A31B0B2B0B161D00F89C51 /* Cloud Key Card.swift in Sources */,
+				F30089252B3BAD190051476C /* File Permissions Parent.swift in Sources */,
 				F3CCF5BD2B3454AA005FFF2C /* User List.swift in Sources */,
 				F342FAB52B2E499300854270 /* Log List.swift in Sources */,
 				F39D28552A27EE88007B12C3 /* Panel View.swift in Sources */,

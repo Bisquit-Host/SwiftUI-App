@@ -97,6 +97,8 @@ struct FileTab_ContextMenu: ViewModifier {
                     vm.renameFile(root,
                                   oldName: name,
                                   newName: vm.newFileName)
+                    
+                    vm.newFileName = ""
                 }
             }
     }

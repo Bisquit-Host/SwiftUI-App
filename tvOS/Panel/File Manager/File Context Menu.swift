@@ -14,6 +14,7 @@ struct FileContextMenu: ViewModifier {
         self.root = root
     }
     @State private var alertRename = false
+    @State private var sheetPermissions = false
     
     func body(content: Content) -> some View {
         let name = file.name
@@ -38,6 +39,10 @@ struct FileContextMenu: ViewModifier {
                         vm.duplicateFile(name,
                                          path: root)
                     }
+                    
+                    MenuButton("Permissions", icon: "lock.doc") {
+                        sheetPermissions = true
+                    }
                 }
                 
                 if mimeType.contains("gzip") {
@@ -60,6 +65,9 @@ struct FileContextMenu: ViewModifier {
                                       path: root)
                     }
                 }
+            }
+            .sheet($sheetPermissions) {
+                FilePermissionsParent(file, root: root)
             }
             .alert("Rename \(name)", isPresented: $alertRename) {
                 TextField("", text: $vm.newFileName)
