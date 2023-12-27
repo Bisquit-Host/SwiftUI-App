@@ -1,6 +1,10 @@
 import SwiftUI
 import PteroNet
 
+#if canImport(Contacts)
+import Contacts
+#endif
+
 #if !os(macOS)
 final class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -10,6 +14,26 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+    
+    // MARK: - Contacts
+#if os(iOS)
+    func requestPermission() {
+        switch CNContactStore.authorizationStatus(for: .contacts) {
+        case .authorized:
+            break
+            
+        case .denied, .notDetermined:
+            CNContactStore().requestAccess(for: .contacts) { granted, error in
+                if let error {
+                    print("Error requesting permissions: \(error)")
+                }
+            }
+            
+        default:
+            break
+        }
+    }
+#endif
     
     private func registerForPushNotifications(application: UIApplication) {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { [weak self] granted, _ in

@@ -42,9 +42,6 @@ struct UserEmail: View {
             }
         }
         .mailCover($mailCover)
-        .task {
-            contacts.requestPermission()
-        }
     }
 }
 

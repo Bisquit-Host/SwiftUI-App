@@ -43,7 +43,7 @@ final class ServerListVM {
     }
     
     func fetchServers(_ isAdmin: Bool) {
-        getServerListAPI(isAdmin, printResponse: true) { result in
+        getServerListAPI(isAdmin) { result in
             switch result {
             case .success(let model):
                 if let model {

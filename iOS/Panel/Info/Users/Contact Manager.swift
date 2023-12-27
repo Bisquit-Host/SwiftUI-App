@@ -4,23 +4,6 @@ import Contacts
 final class ContactManager {
     private let store = CNContactStore()
     
-    func requestPermission() {
-        switch CNContactStore.authorizationStatus(for: .contacts) {
-        case .authorized:
-            break
-            
-        case .denied, .notDetermined:
-            store.requestAccess(for: .contacts) { granted, error in
-                if let error {
-                    print("Error requesting permissions: \(error)")
-                }
-            }
-            
-        default:
-            break
-        }
-    }
-    
     func saveContact(_ email: String) {
         let newContact = CNMutableContact()
         

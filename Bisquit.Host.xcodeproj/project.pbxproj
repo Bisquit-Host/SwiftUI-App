@@ -67,6 +67,8 @@
 		F30089242B3BA5300051476C /* File Permissions Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30089222B3BA5300051476C /* File Permissions Parent.swift */; };
 		F30089252B3BAD190051476C /* File Permissions Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30089222B3BA5300051476C /* File Permissions Parent.swift */; };
 		F30089262B3BAD200051476C /* File Permissions View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300891D2B3B87FB0051476C /* File Permissions View.swift */; };
+		F30089282B3C23A00051476C /* Contact Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30089272B3C23A00051476C /* Contact Picker.swift */; };
+		F30089292B3C23A00051476C /* Contact Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30089272B3C23A00051476C /* Contact Picker.swift */; };
 		F304498A29E990E9006DC0C7 /* Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304498929E990E9006DC0C7 /* Cloud Keys.swift */; };
 		F306B9ED29BBDA770008C2D4 /* Server List Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */; };
 		F30860142B002B31004D776A /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F30860132B002B31004D776A /* PteroNet */; };
@@ -1180,6 +1182,7 @@
 		F30088FE2B3B62050051476C /* User Invitation Permission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Invitation Permission.swift"; sourceTree = "<group>"; };
 		F300891D2B3B87FB0051476C /* File Permissions View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Permissions View.swift"; sourceTree = "<group>"; };
 		F30089222B3BA5300051476C /* File Permissions Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Permissions Parent.swift"; sourceTree = "<group>"; };
+		F30089272B3C23A00051476C /* Contact Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact Picker.swift"; sourceTree = "<group>"; };
 		F304498629E98AE4006DC0C7 /* Bisquit.Host.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bisquit.Host.entitlements; sourceTree = "<group>"; };
 		F304498929E990E9006DC0C7 /* Cloud Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cloud Keys.swift"; sourceTree = "<group>"; };
 		F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List Footer.swift"; sourceTree = "<group>"; };
@@ -2897,6 +2900,7 @@
 				F30088F92B3B561E0051476C /* User List Parent.swift */,
 				F3FF59FE2A4A3188003A1973 /* User List.swift */,
 				F30088F42B3B55C10051476C /* User Invitation View.swift */,
+				F30089272B3C23A00051476C /* Contact Picker.swift */,
 				F30088FE2B3B62050051476C /* User Invitation Permission.swift */,
 				F3FF5A0B2A4A386F003A1973 /* Users VM.swift */,
 				F3FF5A0E2A4A3ABD003A1973 /* User Card.swift */,
@@ -3600,6 +3604,7 @@
 				F3B637522A35F3EA00CB374C /* Command Line.swift in Sources */,
 				F371468C2B123807001E0296 /* ActivityViewState.swift in Sources */,
 				F31BA58F295901B60006D126 /* Browser.swift in Sources */,
+				F30089282B3C23A00051476C /* Contact Picker.swift in Sources */,
 				F38282032B0E14B30088C48B /* Live Activity.swift in Sources */,
 				F3BC03B72B1FF8E40011F98A /* Database Context Menu.swift in Sources */,
 				F3DE1B982A556CCE007A1624 /* Log List.swift in Sources */,
@@ -3830,6 +3835,7 @@
 				F30089022B3B62460051476C /* User Invitation Permission.swift in Sources */,
 				F31485212A34665000AF5CCA /* Browser Sticker.swift in Sources */,
 				F37A36762A35173F00517EFC /* Console View.swift in Sources */,
+				F30089292B3C23A00051476C /* Contact Picker.swift in Sources */,
 				F36D53302A05B896007324C6 /* Section Header.swift in Sources */,
 				F325F7012A54BBCF00E89EC4 /* InfoTab Allocation.swift in Sources */,
 				F39626F32A7AD64B0057E356 /* Ansi.swift in Sources */,

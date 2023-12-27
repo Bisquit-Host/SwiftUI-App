@@ -6,7 +6,7 @@ struct UserInvitationView: View {
     @Environment(\.dismiss) private var dismiss
     
     @State private var email = ""
-    
+    @State private var sheetContacts = false
     
     private var chunkedPermissions: [String: [String]] {
         var dict = [String: [String]]()
@@ -28,6 +28,13 @@ struct UserInvitationView: View {
             Section {
                 TextField("E-mail", text: $email)
                     .textContentType(.emailAddress)
+#if os(iOS)
+                Button {
+                    sheetContacts = true
+                } label: {
+                    Label("Contacts", systemImage: "person.circle.fill")
+                }
+#endif
             }
             
             ForEach(chunkedPermissions.keys.sorted(), id: \.self) { type in
@@ -55,9 +62,12 @@ struct UserInvitationView: View {
         .task {
             vm.fetchPermissions()
         }
-//        .onChange(of: userPermissionsDict) { _, newValue in
-//            
-//        }
+#if os(iOS)
+        .sheet(isPresented: $sheetContacts) {
+            ContactPickerView($email)
+                .ignoresSafeArea()
+        }
+#endif
     }
 }
 
