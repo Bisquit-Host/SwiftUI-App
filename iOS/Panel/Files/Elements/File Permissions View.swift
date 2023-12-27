@@ -33,6 +33,8 @@ struct FilePermissionsView: View {
         file.modeBits != newMode
     }
     
+    @State private var newModeBits = ""
+    
     var body: some View {
         let oldBits = Text(file.modeBits)
             .monospaced()
@@ -41,6 +43,8 @@ struct FilePermissionsView: View {
             .monospaced()
         
         List {
+            TextField("777", text: $newModeBits)
+            
             Section("System") {
                 Toggle("Read", isOn: $systemRead)
                 Toggle("Write", isOn: $systemWrite)
@@ -75,7 +79,27 @@ struct FilePermissionsView: View {
         }
         .navigationTitle("Permissions")
         .toolbarTitleDisplayMode(.inline)
+        .onChange(of: newMode) { _, newValue in
+            newModeBits = newMode
+        }
+        .onChange(of: newModeBits) { _, newValue in
+            if newValue.count == 3 {
+                let newValues = parsePermissions(newValue)
+                
+                systemRead = newValues.systemRead
+                systemWrite = newValues.systemWrite
+                systemExecute = newValues.systemExecute
+                adminRead = newValues.adminRead
+                adminWrite = newValues.adminWrite
+                adminExecute = newValues.adminExecute
+                otherRead = newValues.otherRead
+                otherWrite = newValues.otherWrite
+                otherExecute = newValues.otherExecute
+            }
+        }
         .task {
+            newModeBits = file.modeBits
+            
             let bits = Array(file.mode)
             
             systemRead = initBit(bits[1])
@@ -92,6 +116,26 @@ struct FilePermissionsView: View {
     
     func initBit(_ letter: Character) -> Bool {
         letter != "-"
+    }
+    
+    func parsePermissions(_ modeBits: String) -> (systemRead: Bool, systemWrite: Bool, systemExecute: Bool, adminRead: Bool, adminWrite: Bool, adminExecute: Bool, otherRead: Bool, otherWrite: Bool, otherExecute: Bool) {
+        let permissions = modeBits.compactMap { UInt8(String($0), radix: 8) }
+
+        func extractPermissions(from value: UInt8) -> (Bool, Bool, Bool) {
+            (value & 4 != 0, value & 2 != 0, value & 1 != 0)
+        }
+
+        let (systemRead, systemWrite, systemExecute) = extractPermissions(from: permissions[safe: 0] ?? 0)
+        let (adminRead, adminWrite, adminExecute) = extractPermissions(from: permissions[safe: 1] ?? 0)
+        let (otherRead, otherWrite, otherExecute) = extractPermissions(from: permissions[safe: 2] ?? 0)
+
+        return (systemRead, systemWrite, systemExecute, adminRead, adminWrite, adminExecute, otherRead, otherWrite, otherExecute)
+    }
+}
+
+fileprivate extension Array {
+    subscript(safe index: Index) -> Element? {
+        indices.contains(index) ? self[index] : nil
     }
 }
 
