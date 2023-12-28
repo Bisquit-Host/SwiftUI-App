@@ -1855,6 +1855,7 @@
 				F300892C2B3D988C0051476C /* iCloud API-keys */,
 				F31BA594295901DC0006D126 /* Server List */,
 				F31BA59B295902140006D126 /* Panel */,
+				F32082442B3E170000CFED80 /* Panel Tabs */,
 				F3D2643C2A66AB97005C3777 /* Account */,
 				F3924EDD29A2308C00C4CC77 /* Settings */,
 				F30D723A29D36D0F0048D7BD /* Guide */,
@@ -1948,10 +1949,6 @@
 				F3EDEE3029C06E9700B08696 /* Panel Model.swift */,
 				F39626F12A7AD64B0057E356 /* Ansi.swift */,
 				F37A36772A35180100517EFC /* Power Menu.swift */,
-				F31BA5A1295902470006D126 /* Info */,
-				F31BA5AA2959028A0006D126 /* Console */,
-				F31BA5B3295902DC0006D126 /* Files */,
-				F31BA5D1295904E40006D126 /* Data */,
 			);
 			path = Panel;
 			sourceTree = "<group>";
@@ -2033,6 +2030,17 @@
 				F31D0BB42A2573E200119D07 /* Settings.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		F32082442B3E170000CFED80 /* Panel Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				F31BA5A1295902470006D126 /* Info */,
+				F31BA5AA2959028A0006D126 /* Console */,
+				F31BA5B3295902DC0006D126 /* Files */,
+				F31BA5D1295904E40006D126 /* Data */,
+			);
+			path = "Panel Tabs";
 			sourceTree = "<group>";
 		};
 		F321CC2E2A4AC94F004AF1F0 /* Video */ = {
