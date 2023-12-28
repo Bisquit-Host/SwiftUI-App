@@ -66,7 +66,9 @@ struct ServerList: View {
                 vm.fetchServers(settings.adminServerList)
             }
         }
-        .alert("Unknown Error", isPresented: $binding.alertError) {} message: {
+        .alert("Unknown Error", isPresented: $binding.alertError) {
+            
+        } message: {
             Text("The list of servers couldn't be loaded. Check your internet connection or contact support")
         }
     }

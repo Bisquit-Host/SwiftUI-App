@@ -131,7 +131,6 @@ final class PanelVM {
                         
                     } else if message.backupCompleted != nil {
                         self?.updateBackups!()
-                        print("FUCKING UPDATE")
                         
                     } else if message.authSuccess != nil {
                         print("WebSocket authentication successful")
@@ -145,10 +144,14 @@ final class PanelVM {
                             }
                         }
                     } else if message.tokenExpired != nil {
-                        print("WebSocket token expired")
+                        self?.consoleDetails { data in
+                            if let data {
+                                self?.connectWebSocket(data)
+                            }
+                        }
                     }
                 } catch {
-                    print("ERROR")
+                    networkCallError(#function, error)
                 }
             }
         }
