@@ -14,7 +14,7 @@ final class ServerSettingsVM {
     var serverDescription = ""
     
     func serverRename() {
-        renameServerAPI(
+        serverRenameAPI(
             id,
             name: serverName,
             description: serverDescription

@@ -13,7 +13,7 @@ final class DatabaseVM {
     var newDatabaseName = ""
     
     func fetchDatabases() {
-        getDataListAPI(id, endpoint: .databases) { (result: Result<DatabaseListResponse?, Error>) in
+        dataListAPI(id, endpoint: .databases) { (result: Result<DatabaseListResponse?, Error>) in
             switch result {
             case .success(let model):
                 if let model = model?.data {
@@ -31,7 +31,7 @@ final class DatabaseVM {
     }
     
     func rotateDatabasePassword(_ dbId: String) {
-        rotateDatabasePasswordAPI(id, dbId: dbId) { result in
+        databaseRotatePasswordAPI(id, dbId: dbId) { result in
             switch result {
             case .success(let model):
                 if let model = model?.attributes {
@@ -47,7 +47,7 @@ final class DatabaseVM {
     }
     
     func createDatabase() {
-        createDatabaseAPI(id, name: newDatabaseName) { result in
+        databaseCreateAPI(id, name: newDatabaseName) { result in
             switch result {
             case .success(let model):
                 if let model = model?.attributes {
@@ -72,7 +72,7 @@ final class DatabaseVM {
     }
     
     func deleteDatabase(_ uuid: String) {
-        deleteDataAPI(id, itemId: uuid, endpoint: .databases) { result in
+        dataDeleteAPI(id, itemId: uuid, endpoint: .databases) { result in
             switch result {
             case .success:
                 self.fetchDatabases()

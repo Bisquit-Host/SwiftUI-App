@@ -4,15 +4,15 @@ import PteroNet
 struct FileView: View {
     @EnvironmentObject private var vm: FileTabVM
     
-    private let id, path: String
+    private let id, root: String
     private let file: FileAttributes
     
     init(_ id: String,
-         path: String,
+         root: String,
          file: FileAttributes
     ) {
         self.id = id
-        self.path = path
+        self.root = root
         self.file = file
     }
     
@@ -26,15 +26,13 @@ struct FileView: View {
         }
         .padding(5)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .fileContextMenu(file.name,
-                         path: path,
-                         mimeType: file.mimetype)
+        .fileContextMenu(file, root: root)
     }
 }
 
 #Preview {
     FileView("",
-             path: "",
+             root: "",
              file: sampleJSON(
                 .fileListAttributes
              )

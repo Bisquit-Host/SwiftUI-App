@@ -21,7 +21,7 @@ struct CreateBackup: AppIntent, CustomIntentMigratedAppIntent, PredictableIntent
     }
     
     func createBackup(_ name: String) {
-        createBackupAPI(id, name: name) { result in
+        backupCreateAPI(id, name: name) { result in
             switch result {
             case .success(let model):
                 if let model {

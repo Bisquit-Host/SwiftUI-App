@@ -43,7 +43,7 @@ final class ServerListVM {
     }
     
     func fetchServers(_ isAdmin: Bool) {
-        getServerListAPI(isAdmin) { result in
+        serverListAPI(isAdmin) { result in
             switch result {
             case .success(let model):
                 if let model {
@@ -72,7 +72,7 @@ final class ServerListVM {
         for page in 2...totalPages {
             group.enter()
             
-            getServerListAPI(isAdmin, page: page) { result in
+            serverListAPI(isAdmin, page: page) { result in
                 switch result {
                 case .success(let model):
                     if let model = model?.data {

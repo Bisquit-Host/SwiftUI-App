@@ -3,17 +3,15 @@ import ScrechKit
 struct UploadProgress: View {
     @EnvironmentObject private var vm: FileTabVM
     
-    private var progress: Float
     private var quantity: Int
     
-    init(_ progress: Float, quantity: Int = 0) {
-        self.progress = progress
+    init(_ quantity: Int = 0) {
         self.quantity = quantity
     }
     
     var body: some View {
         VStack {
-            Gauge(value: progress) {
+            Gauge(value: vm.uploadProgress) {
                 HStack {
                     Spacer()
                     
@@ -24,7 +22,7 @@ struct UploadProgress: View {
                 }
                 .padding(.bottom, 10)
             }
-            .tint(progress != 1 ? .blue : .green)
+            .tint(vm.uploadProgress != 1 ? .blue : .green)
             .multilineTextAlignment(.center)
             .gaugeStyle(.accessoryLinearCapacity)
             
@@ -41,5 +39,5 @@ struct UploadProgress: View {
 }
 
 #Preview {
-    UploadProgress(0.5)
+    UploadProgress()
 }

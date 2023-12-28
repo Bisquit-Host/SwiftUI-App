@@ -26,7 +26,7 @@ struct QuickLookFile: View {
     }
     
     func downloadFile(_ file: String, path: String) {
-        downloadFileAPI(id, from: file + path) { result in
+        fileDownloadAPI(id, path: file + path) { result in
             switch result {
             case .success(let model):
                 if let model {

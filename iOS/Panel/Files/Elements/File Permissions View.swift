@@ -120,15 +120,15 @@ struct FilePermissionsView: View {
     
     func parsePermissions(_ modeBits: String) -> (systemRead: Bool, systemWrite: Bool, systemExecute: Bool, adminRead: Bool, adminWrite: Bool, adminExecute: Bool, otherRead: Bool, otherWrite: Bool, otherExecute: Bool) {
         let permissions = modeBits.compactMap { UInt8(String($0), radix: 8) }
-
+        
         func extractPermissions(from value: UInt8) -> (Bool, Bool, Bool) {
             (value & 4 != 0, value & 2 != 0, value & 1 != 0)
         }
-
+        
         let (systemRead, systemWrite, systemExecute) = extractPermissions(from: permissions[safe: 0] ?? 0)
         let (adminRead, adminWrite, adminExecute) = extractPermissions(from: permissions[safe: 1] ?? 0)
         let (otherRead, otherWrite, otherExecute) = extractPermissions(from: permissions[safe: 2] ?? 0)
-
+        
         return (systemRead, systemWrite, systemExecute, adminRead, adminWrite, adminExecute, otherRead, otherWrite, otherExecute)
     }
 }

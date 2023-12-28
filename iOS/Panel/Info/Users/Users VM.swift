@@ -62,7 +62,7 @@ final class UsersVM {
     }
     
     func updateUser(_ userId: String, permissions: [String], onSuccess: @escaping () -> Void, onError: @escaping () -> Void) {
-        updateUserAPI(id, userId: userId, permissions: permissions) { result in
+        userUpdateAPI(id, userId: userId, permissions: permissions) { result in
             switch result {
             case .success:
                 onSuccess()
@@ -103,7 +103,7 @@ final class UsersVM {
     }
     
     func fetchUsers() {
-        getUserListAPI(id) { result in
+        userListAPI(id) { result in
             switch result {
             case .success(let model):
                 if let model = model?.data {
@@ -119,7 +119,7 @@ final class UsersVM {
     }
     
     func delete(_ uuid: String) {
-        deleteUser(id, uuid: uuid) { result in
+        userDeleteAPI(id, uuid: uuid) { result in
             switch result {
             case .success:
                 self.fetchUsers()

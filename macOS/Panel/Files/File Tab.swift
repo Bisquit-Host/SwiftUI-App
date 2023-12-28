@@ -4,13 +4,13 @@ import PteroNet
 struct FileTab: View {
     @StateObject private var vm: FileTabVM
     
-    private let id, path: String
+    private let id, root: String
     
     init(_ id: String,
-         path: String = ""
+         root: String = ""
     ) {
         self.id = id
-        self.path = path
+        self.root = root
         _vm = StateObject(wrappedValue: FileTabVM(id))
     }
     
@@ -27,7 +27,7 @@ struct FileTab: View {
                         NavigationLink {
                             Text("Destination")
                         } label: {
-                            FileView(id, path: path, file: file)
+                            FileView(id, root: root, file: file)
                         }
                     }
                 }
@@ -41,7 +41,7 @@ struct FileTab: View {
                     NavigationLink {
                         Text("Destination")
                     } label: {
-                        FileView(id, path: path, file: file)
+                        FileView(id, root: root, file: file)
                     }
                 }
             }
@@ -53,14 +53,14 @@ struct FileTab: View {
         .padding()
         .background(.clear)
         .clipShape(.rect(cornerRadius: 16))
-        .navigationSubtitle(path)
+        .navigationSubtitle(root)
 #endif
         .onChange(of: id) {
-            vm.fetchFiles(path)
+            vm.fetchFiles(root)
         }
         .task {
             showToolbar = true
-            vm.fetchFiles(path)
+            vm.fetchFiles(root)
         }
         .onDisappear {
             showToolbar = false
@@ -68,7 +68,7 @@ struct FileTab: View {
         //        .toolbar {
         //            //            if showToolbar {
         //            Button {
-        //                vm.fetchFiles(path)
+        //                vm.fetchFiles(root)
         //            } label: {
         //                Image(systemName: "arrow.triangle.2.circlepath")
         //                    .rotate(vm.degrees)

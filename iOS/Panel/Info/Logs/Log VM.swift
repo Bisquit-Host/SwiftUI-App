@@ -27,7 +27,7 @@ final class LogVM {
     }
     
     func fetchLogs() {
-        getLogsAPI(id) { result in
+        logListAPI(id) { result in
             switch result {
             case .success(let model):
                 if let model = model?.data {

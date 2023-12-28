@@ -1,7 +1,7 @@
 import ScrechKit
 import PteroNet
 
-struct FileTab_ContextMenu: ViewModifier {
+struct FileTabContextMenu: ViewModifier {
     @EnvironmentObject private var vm: FileTabVM
     
     private let file: FileAttributes
@@ -46,21 +46,20 @@ struct FileTab_ContextMenu: ViewModifier {
                     
                     if !mimeType.contains("directory") {
                         MenuButton("Duplicate", icon: "plus.square.on.square") {
-                            vm.duplicateFile(name,
-                                             path: root + "/")
+                            vm.duplicateFile(name, root: root + "/")
                         }
                     }
                     
                     if mimeType.contains("gzip") {
                         MenuButton("Decompress", icon: "arrow.up.bin") {
                             vm.fileCompressor(name,
-                                              path: root,
+                                              root: root,
                                               action: .decompress)
                         }
                     } else {
                         MenuButton("Compress", icon: "archivebox") {
                             vm.fileCompressor(name,
-                                              path: root,
+                                              root: root,
                                               action: .compress)
                         }
                     }
@@ -80,14 +79,12 @@ struct FileTab_ContextMenu: ViewModifier {
                 
                 Section {
                     MenuButton("Delete", role: .destructive, icon: "trash") {
-                        vm.fileDelete(name,
-                                      path: root)
+                        vm.fileDelete(name, root: root)
                     }
                 }
             }
             .sheet($sheetPermissions) {
-                FilePermissionsParent(file,
-                                      root: root)
+                FilePermissionsParent(file, root: root)
             }
             .alert("Rename \(name)", isPresented: $alertRename) {
                 TextField("I'm not a no-name 😢", text: $vm.newFileName)
@@ -109,7 +106,7 @@ extension View {
         _ file: FileAttributes,
         root: String
     ) -> some View {
-        self.modifier(FileTab_ContextMenu(
+        self.modifier(FileTabContextMenu(
             file,
             root: root
         ))

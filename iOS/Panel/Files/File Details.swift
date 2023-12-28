@@ -4,6 +4,10 @@ import PteroNet
 struct FileDetails: View {
     private let file: FileAttributes
     
+    init(_ file: FileAttributes) {
+        self.file = file
+    }
+    
     var body: some View {
         VStack(alignment: .leading) {
             if file.isFile {

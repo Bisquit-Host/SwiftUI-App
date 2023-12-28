@@ -12,7 +12,7 @@ final class TextFileVM {
     var text = ""
     
     func writeFile(_ write: String, path: String) {
-        writeFileAPI(self.id, write: write, from: path) { result in
+        fileWriteAPI(self.id, write: write, path: path) { result in
             switch result {
             case .success(let model):
                 print(model)
@@ -24,7 +24,7 @@ final class TextFileVM {
     }
     
     func getFileContents(_ path: String) {
-        getFileContentsAPI(id, path: path) { result in
+        fileContentsAPI(id, path: path) { result in
             switch result {
             case .success(let model):
                 main {

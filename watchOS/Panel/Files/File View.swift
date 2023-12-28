@@ -3,7 +3,7 @@ import PteroNet
 
 struct FileView: View {
     private let file: FileAttributes
-    private let id, path: String
+    private let id, root: String
     
     init(_ id: String,
          file: FileAttributes,
@@ -11,7 +11,7 @@ struct FileView: View {
     ) {
         self.id = id
         self.file = file
-        self.path = path
+        self.root = path
     }
     
     var body: some View {
@@ -21,22 +21,21 @@ struct FileView: View {
         HStack {
             NavigationLink {
                 if mimeType.contains("directory") {
-                    FileTab(id,
-                            path: path + "/" + name)
+                    FileTab(id, root: root + "/" + name)
                     
                 } else if mimeType.contains("text") || file.mimetype.contains("json") {
                     TextFile(id,
-                             path: path + "/",
+                             path: root + "/",
                              name: name)
                     
                 } else if mimeType.contains("image") {
                     ImageFile(id,
-                              path: path + "/",
+                              path: root + "/",
                               name: name)
                     
                 } else if mimeType.contains("video") {
                     VideoFile(id,
-                              path: path + "/",
+                              root: root + "/",
                               name: name)
                 } else {
                     ContentUnavailableView("Warning",

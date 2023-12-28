@@ -6,7 +6,7 @@ final class ApikeyVM {
     var keys: [ApiKeyListData] = []
     
     func fetchKeys() {
-        getApiKeyList() { result in
+        apiKeyListAPI { result in
             switch result {
             case .success(let model):
                 if let model {
@@ -22,7 +22,7 @@ final class ApikeyVM {
     }
     
     func create(_ identifier: String) {
-        createApiKey(identifier) { result in
+        apiKeyCreateAPI(identifier) { result in
             switch result {
             case .success(let model):
                 if let model {
@@ -41,10 +41,8 @@ final class ApikeyVM {
         }
     }
     
-    func delete(
-        _ identifier: String
-    ) {
-        deleteApiKey(identifier) { _ in
+    func delete(_ identifier: String) {
+        apiKeyDeleteAPI(identifier) { _ in
             
         }
     }

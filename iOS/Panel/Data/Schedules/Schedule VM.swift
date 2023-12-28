@@ -13,7 +13,7 @@ final class ScheduleVM {
     var sheetCreateTask = false
     
     func fetchSchedules() {
-        getDataListAPI(id, endpoint: .schedules) { (result: Result<ScheduleListResponse?, Error>) in
+        dataListAPI(id, endpoint: .schedules) { (result: Result<ScheduleListResponse?, Error>) in
             switch result {
             case .success(let model):
                 if let model = model?.data {
@@ -31,7 +31,7 @@ final class ScheduleVM {
     }
     
     func createSchedule(_ newSchedule: NewSchedule) {
-        createScheduleAPI(id, newSchedule: newSchedule) { result in
+        scheduleCreateAPI(id, newSchedule: newSchedule) { result in
             switch result {
             case .success(let model):
                 if let model = model?.attributes {
@@ -47,7 +47,7 @@ final class ScheduleVM {
     }
     
     func executeSchedule(_ scheduleId: Int) {
-        executeScheduleAPI(id, scheduleId: scheduleId) { result in
+        scheduleExecuteAPI(id, scheduleId: scheduleId) { result in
             switch result {
             case .success:
                 print("Executed")
@@ -66,7 +66,7 @@ final class ScheduleVM {
     }
     
     func deleteSchedule(_ uuid: String) {
-        deleteDataAPI(id, itemId: uuid, endpoint: .schedules) { result in
+        dataDeleteAPI(id, itemId: uuid, endpoint: .schedules) { result in
             switch result {
             case .success:
                 self.fetchSchedules()
@@ -78,7 +78,7 @@ final class ScheduleVM {
     }
     
     func createScheduleTask(_ scheduleId: Int, newTask: NewScheduleTask) {
-        createScheduleTaskAPI(id, scheduleId: scheduleId, newTask: newTask) { result in
+        scheduleTaskCreateAPI(id, scheduleId: scheduleId, newTask: newTask) { result in
             switch result {
             case .success(let model):
                 if let model {
@@ -98,7 +98,7 @@ final class ScheduleVM {
     }
     
     func deleteScheduleTask(_ scheduleId: Int, taskId: Int) {
-        deleteScheduleTaskAPI(id, scheduleId: scheduleId, taskId: taskId) { result in
+        scheduleTaskDeleteAPI(id, scheduleId: scheduleId, taskId: taskId) { result in
             switch result {
             case .success:
                 //                if let index = self.scheduleTasks.firstIndex(where: { $0.attributes.id == taskId }) {

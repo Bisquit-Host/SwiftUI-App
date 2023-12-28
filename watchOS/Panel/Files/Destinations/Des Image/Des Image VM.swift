@@ -14,7 +14,7 @@ final class ImageFileVM {
     var url = ""
     
     func downloadImage(_ path: String) {
-        downloadFileAPI(id, from: path) { result in
+        fileDownloadAPI(id, path: path) { result in
             switch result {
             case .success(let model):
                 if let model = model?.attributes.url {

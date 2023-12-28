@@ -9,7 +9,7 @@ enum NavDestinations: Hashable {
     
 #if !os(xrOS)
     case toMap
-    case toFileManager(_ id: String, path: String)
+    case toFileManager(_ id: String, root: String)
 #endif
     
 #if os(watchOS)

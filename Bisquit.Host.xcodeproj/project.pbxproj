@@ -69,6 +69,8 @@
 		F30089262B3BAD200051476C /* File Permissions View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300891D2B3B87FB0051476C /* File Permissions View.swift */; };
 		F30089282B3C23A00051476C /* Contact Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30089272B3C23A00051476C /* Contact Picker.swift */; };
 		F30089292B3C23A00051476C /* Contact Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30089272B3C23A00051476C /* Contact Picker.swift */; };
+		F300892A2B3C55CD0051476C /* File Permissions Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30089222B3BA5300051476C /* File Permissions Parent.swift */; };
+		F300892B2B3C55DA0051476C /* File Permissions View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300891D2B3B87FB0051476C /* File Permissions View.swift */; };
 		F304498A29E990E9006DC0C7 /* Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304498929E990E9006DC0C7 /* Cloud Keys.swift */; };
 		F306B9ED29BBDA770008C2D4 /* Server List Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */; };
 		F30860142B002B31004D776A /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F30860132B002B31004D776A /* PteroNet */; };
@@ -4298,8 +4300,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F32FD71B2B1E043F00723B88 /* Ansi.swift in Sources */,
+				F300892B2B3C55DA0051476C /* File Permissions View.swift in Sources */,
 				F35B89BF2A725CF7000B5EEF /* Tip Suspended Server.swift in Sources */,
 				F30C13102A54606900A7EFF0 /* Nav Extension.swift in Sources */,
+				F300892A2B3C55CD0051476C /* File Permissions Parent.swift in Sources */,
 				F32FD7232B1E065600723B88 /* Network Calls.swift in Sources */,
 				F3464D192A86396100188B0C /* Intents.intentdefinition in Sources */,
 				F3DF50CC2B38FDE500206CAE /* Permissions Header.swift in Sources */,

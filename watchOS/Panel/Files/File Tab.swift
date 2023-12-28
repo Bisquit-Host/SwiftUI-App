@@ -3,11 +3,11 @@ import ScrechKit
 struct FileTab: View {
     @StateObject private var vm: FileTabVM
     
-    private let id, path: String
+    private let id, root: String
     
-    init(_ id: String, path: String = "") {
+    init(_ id: String, root: String = "") {
         self.id = id
-        self.path = path
+        self.root = root
         _vm = StateObject(wrappedValue: FileTabVM(id))
     }
     
@@ -17,7 +17,7 @@ struct FileTab: View {
                 .autocorrectionDisabled()
             
             ForEach(vm.filteredFiles, id: \.name) { file in
-                FileView(id, file: file, path: path)
+                FileView(id, file: file, path: root)
             }
             .onDelete { offsets in
                 deleteItem(offsets)
@@ -26,7 +26,7 @@ struct FileTab: View {
         .navigationTitle("Files")
         .overlay(alignment: .bottomTrailing) {
             SFButton("arrow.triangle.2.circlepath") {
-                vm.fetchFiles(path)
+                vm.fetchFiles(root)
             }
             .headline()
             .padding(5)
@@ -36,7 +36,7 @@ struct FileTab: View {
         }
         .ignoresSafeArea(edges: .bottom)
         .task {
-            vm.fetchFiles(path)
+            vm.fetchFiles(root)
         }
     }
     
@@ -44,7 +44,7 @@ struct FileTab: View {
         for file in offsets {
             let name = vm.filteredFiles[file].name
             
-            vm.fileDelete(name, path: path)
+            vm.fileDelete(name, root: root)
         }
     }
 }

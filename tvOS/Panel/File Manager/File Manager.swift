@@ -4,18 +4,18 @@ struct FileTab: View {
     @EnvironmentObject private var vm: FileTabVM
     @Environment(NavState.self) private var navState
     
-    private let id, path: String
+    private let id, root: String
     
     init(_ id: String,
-         path: String = ""
+         root: String = ""
     ) {
         self.id = id
-        self.path = path
+        self.root = root
     }
     
     var body: some View {
         List {
-            NewFolder(path)
+            NewFolder(root)
             
             Divider()
             
@@ -25,23 +25,22 @@ struct FileTab: View {
                 
                 NavigationLink {
                     if mimeType.contains("directory") {
-                        FileTab(id,
-                                path: path + "/" + name)
+                        FileTab(id, root: root + "/" + name)
                         .environmentObject(vm)
                         
                     } else if mimeType.contains("text") || mimeType.contains("json") {
                         TextFile(id,
-                                 path: path,
+                                 path: root,
                                  name: name)
                         
                     } else if mimeType.contains("image") {
                         ImageFile(id,
-                                  path: path,
+                                  path: root,
                                   name: name)
                         
                     } else if mimeType.contains("video") {
                         VideoFile(id,
-                                  path: path,
+                                  root: root,
                                   name: name)
                         
                     } else {
@@ -53,22 +52,22 @@ struct FileTab: View {
                     
                     //                    navState.navigate(
                     //                        wvm.navigateBasedOnMimeType(id,
-                    //                                                   path: path,
+                    //                                                   root: root,
                     //                                                   file: file)
                     //                    )
                 } label: {
                     FileNameAndIcon(file)
-                        .fileContextMenu(file, root: path)
+                        .fileContextMenu(file, root: root)
                 }
             }
         }
         .environmentObject(vm)
-        .navigationTitle(path)
+        .navigationTitle(root)
         .sheet($vm.showSafari) {
             QRCodeView(vm.downloadUrl)
         }
         .task {
-            vm.fetchFiles(path)
+            vm.fetchFiles(root)
         }
     }
 }

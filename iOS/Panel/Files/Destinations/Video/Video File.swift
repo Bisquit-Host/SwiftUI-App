@@ -3,14 +3,14 @@ import AVKit
 import PteroNet
 
 struct VideoFile: View {
-    private let id, path, name: String
+    private let id, root, name: String
     
     init(_ id: String,
-         path: String,
+         root: String,
          name: String
     ) {
         self.id = id
-        self.path = path
+        self.root = root
         self.name = name
     }
     
@@ -28,13 +28,12 @@ struct VideoFile: View {
         }
         .navigationTitle(name)
         .task {
-            fetchVideoUrl(name,
-                          path: path)
+            fetchVideoUrl(name, root: root)
         }
     }
     
-    private func fetchVideoUrl(_ file: String, path: String) {
-        downloadFileAPI(id, from: file + path) { result in
+    private func fetchVideoUrl(_ file: String, root: String) {
+        fileDownloadAPI(id, path: file + root) { result in
             switch result {
             case .success(let model):
                 if let model = model?.attributes {
@@ -82,6 +81,6 @@ struct VideoFile: View {
 
 #Preview {
     VideoFile("",
-              path: "",
+              root: "",
               name: "")
 }

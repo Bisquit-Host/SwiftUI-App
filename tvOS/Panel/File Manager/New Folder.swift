@@ -3,10 +3,10 @@ import SwiftUI
 struct NewFolder: View {
     @EnvironmentObject private var vm: FileTabVM
     
-    private let path: String
+    private let root: String
     
-    init(_ path: String) {
-        self.path = path
+    init(_ root: String) {
+        self.root = root
     }
     
     @State private var alertCreate = false
@@ -28,9 +28,7 @@ struct NewFolder: View {
             TextField("", text: $newFolderName)
             
             Button("Create") {
-                vm.createFolder(newFolderName,
-                                path: path)
-                
+                vm.createFolder(newFolderName, root: root)
                 newFolderName = ""
             }
             

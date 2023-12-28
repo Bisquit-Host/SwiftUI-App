@@ -4,16 +4,16 @@ import PteroNet
 struct FileView: View {
     @Environment(NavState.self) private var navState
     
-    private let id, path: String
+    private let id, root: String
     private let file: FileAttributes
     
     init(_ id: String,
          file: FileAttributes,
-         path: String
+         root: String
     ) {
         self.id = id
         self.file = file
-        self.path = path
+        self.root = root
     }
     
     @State private var isExtended = false
@@ -25,22 +25,20 @@ struct FileView: View {
         NavigationLink {
             if mimeType.contains("text") || mimeType.contains("json") {
                 TextFile(id,
-                         path: path,
-                         name: name
-                )
+                         path: root,
+                         name: name)
                 
             } else if mimeType.contains("directory") {
-                FolderFile(id,
-                           path: path + name)
+                FolderFile(id, root: root + name)
                 
             } else if mimeType.contains("video") {
                 VideoFile(id,
-                          path: path,
+                          root: root,
                           name: name)
                 
             } else {
                 QuickLookFile(id,
-                              path: path,
+                              path: root,
                               name: name)
             }
         } label: {
@@ -56,7 +54,7 @@ struct FileView: View {
                     .lineLimit(1)
             }
         }
-        .fileContextMenu(file, root: path)
+        .fileContextMenu(file, root: root)
     }
 }
 
@@ -64,7 +62,7 @@ struct FileView: View {
     List {
         FileView("",
                  file: sampleJSON(.fileListAttributes),
-                 path: "")
+                 root: "")
         .environment(NavState())
     }
 }

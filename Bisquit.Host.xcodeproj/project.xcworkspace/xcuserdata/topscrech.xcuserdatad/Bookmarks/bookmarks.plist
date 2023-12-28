@@ -528,13 +528,13 @@ final class AudioRecorder {
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>6</string>
+					<string>10</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>5</string>
+					<string>9</string>
 					<key>Timestamp</key>
-					<string>721432713.576956</string>
+					<string>725452581.681782</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -553,8 +553,8 @@ final class AudioRecorder {
 				<string>    
 </string>
 				<key>leading</key>
-				<string>struct FileDetails: View {
-    private let file: FileAttributes
+				<string>        self.file = file
+    }
 </string>
 				<key>trailing</key>
 				<string>    var body: some View {
@@ -2163,6 +2163,145 @@ import PteroNet
         }
 </string>
 			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>49</string>
+					<key>StartingColumnNumber</key>
+					<string>68</string>
+					<key>StartingLineNumber</key>
+					<string>48</string>
+					<key>Timestamp</key>
+					<string>725450839.6110311</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Panel/Files/Elements/FileTab Context Menu.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>
+</string>
+				<key>leading</key>
+				<string>                    if !mimeType.contains("directory") {
+                        MenuButton("Duplicate", icon: "plus.square.on.square") {
+                            vm.duplicateFile(name, root: root + "/")</string>
+				<key>trailing</key>
+				<string>                        }
+                    }
+                    
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>41</string>
+					<key>StartingColumnNumber</key>
+					<string>48</string>
+					<key>StartingLineNumber</key>
+					<string>40</string>
+					<key>Timestamp</key>
+					<string>725451629.094663</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Panel/Info/Settings/Startup VM.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>
+</string>
+				<key>leading</key>
+				<string>    }
+    
+    func updateDockerImage(_ newImage: String) {</string>
+				<key>trailing</key>
+				<string>        dockerUpdateAPI(id, newImage: newImage) { result in
+            switch result {
+            case .success:
+</string>
+			</dict>
+			<key>title</key>
+			<string>Unused</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>18</string>
+					<key>StartingColumnNumber</key>
+					<string>47</string>
+					<key>StartingLineNumber</key>
+					<string>17</string>
+					<key>Timestamp</key>
+					<string>725451870.620171</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iOS/Panel/Files/Upload/Upload Progress.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>
+</string>
+				<key>leading</key>
+				<string>                    Spacer()
+                    
+                    Text("\(quantity) objects")</string>
+				<key>trailing</key>
+				<string>                        .subheadline(.bold)
+                    
+                    Spacer()
+</string>
+			</dict>
+			<key>title</key>
+			<string>Spacers</string>
 			<key>type</key>
 			<string>bookmark</string>
 		</dict>

@@ -20,8 +20,8 @@ extension View {
                 PanelView(id)
                 
 #if !os(xrOS)
-            case .toFileManager(let id, let path):
-                FileTab(id, path: path)
+            case .toFileManager(let id, let root):
+                FileTab(id, root: root)
                 
             case .toMap:
                 MapView()

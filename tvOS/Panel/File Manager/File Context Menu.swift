@@ -36,8 +36,7 @@ struct FileContextMenu: ViewModifier {
                     }
                     
                     MenuButton("Duplicate", icon: "doc.on.doc") {
-                        vm.duplicateFile(name,
-                                         path: root)
+                        vm.duplicateFile(name, root: root)
                     }
                     
                     MenuButton("Permissions", icon: "lock.doc") {
@@ -48,21 +47,20 @@ struct FileContextMenu: ViewModifier {
                 if mimeType.contains("gzip") {
                     MenuButton("Decompress", icon: "arrow.up.bin") {
                         vm.fileCompressor(name,
-                                          path: root,
+                                          root: root,
                                           action: .decompress)
                     }
                 } else {
                     MenuButton("Compress", icon: "archivebox") {
                         vm.fileCompressor(name,
-                                          path: root,
+                                          root: root,
                                           action: .compress)
                     }
                 }
                 
                 Section {
                     MenuButton("Delete", role: .destructive, icon: "trash") {
-                        vm.fileDelete(name,
-                                      path: root)
+                        vm.fileDelete(name, root: root)
                     }
                 }
             }

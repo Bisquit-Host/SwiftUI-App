@@ -71,7 +71,7 @@ final class FileTabVM: ObservableObject {
     }
     
     func fetchFiles(_ path: String = "") {
-        getFileListAPI(id, from: path) { result in
+        fileListAPI(id, path: path) { result in
             switch result {
             case .success(let model):
                 if let model = model?.data {
@@ -100,7 +100,7 @@ final class FileTabVM: ObservableObject {
     
     func uploadFile(_ urlString: String,
                     name: String,
-                    path: String,
+                    root: String,
                     mimeType: String,
                     fileUrl: URL
     ) {
@@ -110,7 +110,7 @@ final class FileTabVM: ObservableObject {
             }
             
             self.fileUploader.uploadFile(
-                urlString + "&directory=\(path.applyPercentEncoding())",
+                urlString + "&directory=\(root.applyPercentEncoding())",
                 name: name,
                 mimeType: mimeType,
                 fileUrl: fileUrl
@@ -122,12 +122,12 @@ final class FileTabVM: ObservableObject {
                 }
                 
                 self.uploadProgress = 0
-                self.fetchFiles(path)
+                self.fetchFiles(root)
             }
         }
     }
     
-    func handleFileImport(_ urls: [URL], path: String) {
+    func handleFileImport(_ urls: [URL], root: String) {
         for fileURL in urls {
             let fileName = fileURL.lastPathComponent
             
@@ -136,7 +136,7 @@ final class FileTabVM: ObservableObject {
                 continue
             }
             
-            uploadFileAPI(id) { result in
+            fileUploadAPI(id) { result in
                 switch result {
                 case .success(let model):
                     if let model = model?.attributes {
@@ -144,11 +144,11 @@ final class FileTabVM: ObservableObject {
                         
                         self.uploadFile(url,
                                         name: fileName,
-                                        path: path,
+                                        root: root,
                                         mimeType: mimeType,
                                         fileUrl: fileURL)
                         
-                        self.fetchFiles(path)
+                        self.fetchFiles(root)
                     }
                     
                 case .failure(let error):
@@ -158,7 +158,7 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func handleImageImport(_ image: UIImage, path: String) {
+    func handleImageImport(_ image: UIImage, root: String) {
         guard let imageData = image.jpegData(compressionQuality: 1) else {
             print("Unable to convert image to data")
             return
@@ -175,7 +175,7 @@ final class FileTabVM: ObservableObject {
             return
         }
         
-        uploadFileAPI(id) { result in
+        fileUploadAPI(id) { result in
             switch result {
             case .success(let model):
                 if let vm = model?.attributes {
@@ -183,11 +183,11 @@ final class FileTabVM: ObservableObject {
                     
                     self.uploadFile(url,
                                     name: "Image\(UUID().uuidString).jpeg",
-                                    path: path,
+                                    root: root,
                                     mimeType: mimeType,
                                     fileUrl: fileURL)
                     
-                    self.fetchFiles(path)
+                    self.fetchFiles(root)
                 }
                 
             case .failure(let error):
@@ -198,7 +198,7 @@ final class FileTabVM: ObservableObject {
 #endif
     
     func downloadFile(_ path: String) {
-        downloadFileAPI(id, from: path) { result in
+        fileDownloadAPI(id, path: path) { result in
             switch result {
             case .success(let model):
                 if let model = model?.attributes {
@@ -212,12 +212,11 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func renameFile(_ path: String, oldName: String, newName: String) {
-        renameFileAPI(id, from: path, oldName: oldName, newName: newName) { result in
+    func renameFile(_ root: String, oldName: String, newName: String) {
+        fileRenameAPI(id, root: root, oldName: oldName, newName: newName) { result in
             switch result {
             case .success:
-                print("\n File \(oldName) renamed to \(newName)")
-                self.fetchFiles(path)
+                self.fetchFiles(root)
                 
                 main {
                     self.newFileName = ""
@@ -229,11 +228,11 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func duplicateFile(_ name: String, path: String) {
-        duplicateFileAPI(id, name: name, from: path) { result in
+    func duplicateFile(_ file: String, root: String) {
+        fileDuplicateAPI(id, file: file, root: root) { result in
             switch result {
             case .success:
-                self.fetchFiles(path)
+                self.fetchFiles(root)
                 
             case .failure(let error):
                 networkCallError(#function, error)
@@ -241,11 +240,11 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func fileCompressor(_ name: String, path: String, action: CompressorActions) {
-        fileCompressorAPI(id, name: name, from: path, do: action) { result in
+    func fileCompressor(_ file: String, root: String, action: CompressorActions) {
+        fileCompressorAPI(id, file: file, root: root, do: action) { result in
             switch result {
             case .success:
-                self.fetchFiles(path)
+                self.fetchFiles(root)
                 
             case .failure(let error):
                 networkCallError(#function, error)
@@ -253,11 +252,11 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func createFolder(_ name: String, path: String) {
-        createFolderAPI(id, name: name, from: path) { result in
+    func createFolder(_ file: String, root: String) {
+        fileCreateFolderAPI(id, file: file, root: root) { result in
             switch result {
             case .success:
-                self.fetchFiles(path)
+                self.fetchFiles(root)
                 
             case .failure(let error):
                 networkCallError(#function, error)
@@ -265,11 +264,11 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func fileDelete(_ name: String, path: String) {
-        deleteFileAPI(id, name: name, from: path) { result in
+    func fileDelete(_ files: String, root: String) {
+        fileDeleteAPI(id, files: [files], root: root) { result in
             switch result {
             case .success:
-                self.fetchFiles(path)
+                self.fetchFiles(root)
                 
             case .failure(let error):
                 networkCallError(#function, error)

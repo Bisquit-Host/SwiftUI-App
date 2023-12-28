@@ -76,7 +76,7 @@ final class PteroNetTests: XCTestCase {
     //
     //        measure {
     //            let expectation = self.expectation(description: "API-keys fetched")
-    //            getFileListAPI("2fb25a50", from: "") { result in
+    //            fileListAPI("2fb25a50", from: "") { result in
     //                switch result {
     //                case .success:
     //                    print("Success")

@@ -1,10 +1,9 @@
-import Observation
 import PteroNet
 
 @Observable
 final class CredentialsVM {
     func updateCredentials(type: UpdateType) {
-        updateCredentialsAPI(type: type) { result in
+        credentialsUpdateAPI(type: type) { result in
             switch result {
             case .success(let model):
                 print(model)

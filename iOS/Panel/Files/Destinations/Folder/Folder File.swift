@@ -3,13 +3,13 @@ import ScrechKit
 struct FolderFile: View {
     @StateObject private var vm: FileTabVM
     
-    private let id, path: String
+    private let id, root: String
     
     init(_ id: String,
-         path: String = ""
+         root: String = ""
     ) {
         self.id = id
-        self.path = path
+        self.root = root
         _vm = StateObject(wrappedValue: FileTabVM(id))
     }
     
@@ -19,24 +19,24 @@ struct FolderFile: View {
         List {
             FileSearch($vm.searchField)
             
-            NewFolder(path)
+            NewFolder(root)
             
-            UploadMenu($image, path: path)
+            UploadMenu($image, root: root)
             
             if vm.isUploading {
-                UploadProgress(vm.uploadProgress)
+                UploadProgress()
             }
             
             Section {
                 ForEach(vm.filteredFiles, id: \.name) { file in
-                    FileView(id, file: file, path: path)
+                    FileView(id, file: file, root: root)
                 }
                 .onDelete { offsets in
                     deleteItem(offsets)
                 }
             } header: {
                 HStack {
-                    FolderPath(path)
+                    FolderPath(root)
                     
                     Spacer()
                     
@@ -44,7 +44,7 @@ struct FolderFile: View {
                 }
             }
             
-            if path.isEmpty {
+            if root.isEmpty {
                 FileFormats()
             }
         }
@@ -52,14 +52,14 @@ struct FolderFile: View {
         .frame(maxWidth: 500)
         .safariCover($vm.showSafari, url: vm.downloadUrl)
         .task {
-            vm.fetchFiles(path)
+            vm.fetchFiles(root)
         }
         .refreshable {
-            vm.fetchFiles(path)
+            vm.fetchFiles(root)
         }
         .onChange(of: image) {
             if let image {
-                vm.handleImageImport(image, path: path)
+                vm.handleImageImport(image, root: root)
             }
         }
     }
@@ -67,7 +67,8 @@ struct FolderFile: View {
     private func deleteItem(_ offsets: IndexSet) {
         for file in offsets {
             let name = vm.filteredFiles[file].name
-            vm.fileDelete(name, path: path)
+            
+            vm.fileDelete(name, root: root)
         }
     }
 }

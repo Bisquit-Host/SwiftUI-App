@@ -23,7 +23,7 @@ final class BackupVM {
     }
     
     func fetchBackups() {
-        getDataListAPI(id, endpoint: .backups) { (result: Result<BackupListResponse?, Error>) in
+        dataListAPI(id, endpoint: .backups) { (result: Result<BackupListResponse?, Error>) in
             switch result {
             case .success(let model):
                 if let model = model?.data {
@@ -41,7 +41,7 @@ final class BackupVM {
     }
     
     func downloadBackup(_ uuid: String) {
-        downloadBackupAPI(id, uuid: uuid) { result in
+        backupDownloadAPI(id, uuid: uuid) { result in
             switch result {
             case .success(let model):
                 if let model = model?.attributes {
@@ -57,7 +57,7 @@ final class BackupVM {
     }
     
     func lockBackup(_ uuid: String) {
-        lockBackupAPI(id, uuid: uuid) { result in
+        backupLockAPI(id, uuid: uuid) { result in
             switch result {
             case .success(let model):
                 if let model = model?.attributes {
@@ -75,7 +75,7 @@ final class BackupVM {
     }
     
     func createBackup() {
-        createBackupAPI(id, name: textCreateBackup) { result in
+        backupCreateAPI(id, name: textCreateBackup) { result in
             switch result {
             case .success(let model):
                 if let model = model?.attributes {
@@ -93,7 +93,7 @@ final class BackupVM {
     }
     
     func deleteBackup(_ uuid: String) {
-        deleteDataAPI(id, itemId: uuid, endpoint: .backups) { result in
+        dataDeleteAPI(id, itemId: uuid, endpoint: .backups) { result in
             switch result {
             case .success:
                 self.fetchBackups()
@@ -105,7 +105,7 @@ final class BackupVM {
     }
     
     func restoreBackup(_ uuid: String, truncate: Bool) {
-        restoreBackupAPI(id, uuid: uuid, truncate: truncate) { result in
+        backupRestoreAPI(id, uuid: uuid, truncate: truncate) { result in
             switch result {
             case .success:
                 print("Restored")

@@ -4,11 +4,11 @@ struct UploadMenu: View {
     @EnvironmentObject private var vm: FileTabVM
     
     @Binding private var image: UIImage?
-    private let path: String
+    private let root: String
     
-    init(_ image: Binding<UIImage?>, path: String) {
+    init(_ image: Binding<UIImage?>, root: String) {
         _image = image
-        self.path = path
+        self.root = root
     }
     
     @State private var showFilePicker = false
@@ -41,7 +41,7 @@ struct UploadMenu: View {
             .foregroundStyle(.foreground)
         }
         .sheet($vm.sheetPreview) {
-            UploadPreview(urls, path: path)
+            UploadPreview(urls, root: root)
         }
         .imagePicker($showImagePicker,
                      image: $image
