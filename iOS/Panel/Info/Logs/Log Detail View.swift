@@ -42,8 +42,11 @@ struct LogDetailView: View {
                 }
             }
         }
-        .foregroundStyle(.primary)
+#if !os(tvOS) && !os(watchOS)
+        .textSelection(.enabled)
+#endif
         .navigationTitle("Properties")
+        .foregroundStyle(.primary)
         .toolbarTitleDisplayMode(.inline)
         .presentationDragIndicator(.hidden)
         .presentationDetents([.medium, .large])

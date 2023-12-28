@@ -14,9 +14,8 @@ struct BisquitHostApp: App {
     
     private var navState = NavState()
     private var linking = LinkingVM()
-    @StateObject private var settings = SettingsStorage()
-    
     private var network = NetworkVM()
+    @StateObject private var settings = SettingsStorage()
     
     let container: ModelContainer
     
@@ -34,7 +33,6 @@ struct BisquitHostApp: App {
     
     var body: some Scene {
         WindowGroup {
-            //            if settings.isApiKeyValid {
             AppContainer()
                 .onOpenURL { url in
                     linking.handleDeepLink(
@@ -43,15 +41,11 @@ struct BisquitHostApp: App {
                         url: url
                     )
                 }
-            //                    .alert("Error", isPresented: $linking.alertError) {
+            //                .alert("Error", isPresented: $linking.alertError) {
             //
-            //                    } message: {
-            //                        Text(linking.errorMessage)
-            //                    }
-            //            } else {
-            //                LoginContainer()
-            //                    .environment(ServerListVM())
-            //            }
+            //                } message: {
+            //                    Text(linking.errorMessage)
+            //                }
         }
         .environment(navState)
         .modelContainer(container)

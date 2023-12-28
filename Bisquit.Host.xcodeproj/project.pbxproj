@@ -71,6 +71,11 @@
 		F30089292B3C23A00051476C /* Contact Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30089272B3C23A00051476C /* Contact Picker.swift */; };
 		F300892A2B3C55CD0051476C /* File Permissions Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30089222B3BA5300051476C /* File Permissions Parent.swift */; };
 		F300892B2B3C55DA0051476C /* File Permissions View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300891D2B3B87FB0051476C /* File Permissions View.swift */; };
+		F300892F2B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300892E2B3DC4B20051476C /* Cloud Key Context Menu.swift */; };
+		F30089312B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300892E2B3DC4B20051476C /* Cloud Key Context Menu.swift */; };
+		F30089322B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300892E2B3DC4B20051476C /* Cloud Key Context Menu.swift */; };
+		F30089332B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300892E2B3DC4B20051476C /* Cloud Key Context Menu.swift */; };
+		F30089342B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300892E2B3DC4B20051476C /* Cloud Key Context Menu.swift */; };
 		F304498A29E990E9006DC0C7 /* Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304498929E990E9006DC0C7 /* Cloud Keys.swift */; };
 		F306B9ED29BBDA770008C2D4 /* Server List Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */; };
 		F30860142B002B31004D776A /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F30860132B002B31004D776A /* PteroNet */; };
@@ -1185,6 +1190,7 @@
 		F300891D2B3B87FB0051476C /* File Permissions View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Permissions View.swift"; sourceTree = "<group>"; };
 		F30089222B3BA5300051476C /* File Permissions Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Permissions Parent.swift"; sourceTree = "<group>"; };
 		F30089272B3C23A00051476C /* Contact Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact Picker.swift"; sourceTree = "<group>"; };
+		F300892E2B3DC4B20051476C /* Cloud Key Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cloud Key Context Menu.swift"; sourceTree = "<group>"; };
 		F304498629E98AE4006DC0C7 /* Bisquit.Host.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bisquit.Host.entitlements; sourceTree = "<group>"; };
 		F304498929E990E9006DC0C7 /* Cloud Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cloud Keys.swift"; sourceTree = "<group>"; };
 		F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List Footer.swift"; sourceTree = "<group>"; };
@@ -1732,6 +1738,24 @@
 			path = Allocations;
 			sourceTree = "<group>";
 		};
+		F300892C2B3D988C0051476C /* iCloud API-keys */ = {
+			isa = PBXGroup;
+			children = (
+				F304498929E990E9006DC0C7 /* Cloud Keys.swift */,
+				F3A31B082B0B161D00F89C51 /* Cloud Key Card.swift */,
+				F300892E2B3DC4B20051476C /* Cloud Key Context Menu.swift */,
+			);
+			path = "iCloud API-keys";
+			sourceTree = "<group>";
+		};
+		F300892D2B3D99180051476C /* SwiftData */ = {
+			isa = PBXGroup;
+			children = (
+				F35FEB062B09F003004DA05D /* API Key.swift */,
+			);
+			path = SwiftData;
+			sourceTree = "<group>";
+		};
 		F306B9EE29BBDA7C0008C2D4 /* Elements */ = {
 			isa = PBXGroup;
 			children = (
@@ -1764,8 +1788,6 @@
 				F31BA579295901110006D126 /* Start Page.swift */,
 				F31BA57B2959011B0006D126 /* Start Page VM.swift */,
 				F32DB8A729AE6B800074E045 /* Start Page Footer.swift */,
-				F304498929E990E9006DC0C7 /* Cloud Keys.swift */,
-				F3A31B082B0B161D00F89C51 /* Cloud Key Card.swift */,
 			);
 			path = StartPage;
 			sourceTree = "<group>";
@@ -1822,13 +1844,15 @@
 				F31BA564295900270006D126 /* Navigation */,
 				F3EDEE3629C0CB4500B08696 /* Networking */,
 				F35B89BC2A7256F4000B5EEF /* Tips */,
+				F300892D2B3D99180051476C /* SwiftData */,
 				F3A1D2302A201C570053261E /* Enums.swift */,
 				F31BA56F295900C20006D126 /* Formatters.swift */,
 				F37266EA29D9F06C005FD103 /* Cache VM.swift */,
 				F325F7052A54C4BC00E89EC4 /* System Alerts.swift */,
-				F35FEB062B09F003004DA05D /* API Key.swift */,
 				F31BA580295901400006D126 /* Intro */,
+				F31A3F4A29EEEB8200BC0DFB /* StartPage */,
 				F31BA587295901750006D126 /* Auth */,
+				F300892C2B3D988C0051476C /* iCloud API-keys */,
 				F31BA594295901DC0006D126 /* Server List */,
 				F31BA59B295902140006D126 /* Panel */,
 				F3D2643C2A66AB97005C3777 /* Account */,
@@ -1887,7 +1911,6 @@
 				F31BA577295901010006D126 /* Intro.swift */,
 				F34EB0942A4A75E70034A68A /* Intro Model.swift */,
 				F3924EDA29A2291F00C4CC77 /* Language Button.swift */,
-				F31A3F4A29EEEB8200BC0DFB /* StartPage */,
 			);
 			path = Intro;
 			sourceTree = "<group>";
@@ -3480,6 +3503,7 @@
 				F32FD7222B1E065600723B88 /* Network Calls.swift in Sources */,
 				F3CCF5BC2B345472005FFF2C /* Permission Card.swift in Sources */,
 				F30088E42B3A5B0B0051476C /* Startup List.swift in Sources */,
+				F30089312B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */,
 				F3D558B32A33C6A000608447 /* FileTab VM.swift in Sources */,
 				F3796566295C51FF0074CA3D /* Gauge TV.swift in Sources */,
 				F3FFB7462A57F91700220FA5 /* Map List.swift in Sources */,
@@ -3604,6 +3628,7 @@
 				F3880A262A92A15E0052A978 /* Contact Manager.swift in Sources */,
 				F3DC4E2229AEAF3E00D27EC5 /* Credentials Button.swift in Sources */,
 				F3B637522A35F3EA00CB374C /* Command Line.swift in Sources */,
+				F300892F2B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */,
 				F371468C2B123807001E0296 /* ActivityViewState.swift in Sources */,
 				F31BA58F295901B60006D126 /* Browser.swift in Sources */,
 				F30089282B3C23A00051476C /* Contact Picker.swift in Sources */,
@@ -3819,6 +3844,7 @@
 				F389BB792A05B63C00911EBF /* Wide List Button.swift in Sources */,
 				F3A1D2322A201C570053261E /* Enums.swift in Sources */,
 				F34076512A37701C0054BDCA /* Console Search.swift in Sources */,
+				F30089332B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */,
 				F389BB782A05B63600911EBF /* Currency Button.swift in Sources */,
 				F3DDD59E2A62AC7C009FDFBF /* Create Backup Button.swift in Sources */,
 				F3E467562A49939300FABE5F /* Info Relative Stats.swift in Sources */,
@@ -4159,6 +4185,7 @@
 				F3D295992AF3A06300ED43A0 /* Log List Parent.swift in Sources */,
 				F3D295C62AF3A1EE00ED43A0 /* FileTab Context Menu.swift in Sources */,
 				F3D295432AF39D8300ED43A0 /* System Alerts.swift in Sources */,
+				F30089342B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */,
 				F3D295B92AF3A17000ED43A0 /* Wide List Button.swift in Sources */,
 				F3D295BD2AF3A18700ED43A0 /* Currency Button.swift in Sources */,
 				F3D295C02AF3A1B000ED43A0 /* Log View Parent.swift in Sources */,
@@ -4237,6 +4264,7 @@
 				F38694182A4B3AAF002DEF90 /* Panel Model.swift in Sources */,
 				F35F65952B1D1A0D00431EB7 /* Panel VM.swift in Sources */,
 				F39919172A4653A300CC73DA /* Linear Gauge.swift in Sources */,
+				F30089322B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */,
 				F35FEB0E2B09F4D3004DA05D /* Network VM.swift in Sources */,
 				F30B61C82B2905CA00F447B4 /* System Alerts.swift in Sources */,
 				F35081AF2AF30E2B00835CC0 /* Tip Cloud Keys.swift in Sources */,

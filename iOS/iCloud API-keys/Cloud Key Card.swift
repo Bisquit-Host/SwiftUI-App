@@ -32,7 +32,7 @@ struct CloudKeyCard: View {
                     Text(key.name)
                         .headline(.semibold)
 #else
-                    TextField("Title", text: $key.name)
+                    TextField("Unnamed", text: $key.name)
                         .headline(.semibold)
                         .focused($focus)
                         .textFieldStyle(.plain)
@@ -45,7 +45,7 @@ struct CloudKeyCard: View {
                 Spacer()
                 
                 Image(systemName: "doc.on.clipboard")
-                    .title3()
+                    .subheadline(.semibold)
                     .foregroundStyle(.green)
 #endif
             }
@@ -53,19 +53,7 @@ struct CloudKeyCard: View {
         .foregroundStyle(.foreground)
 #if !os(watchOS)
         .contextMenu {
-            MenuButton("Rename", icon: "pencil") {
-                focus = true
-            }
-#if !os(tvOS)
-            MenuButton("Copy", icon: "doc.on.doc") {
-                UIPasteboard.general.string = key.key
-                SystemAlert.copied()
-            }
-#endif
-            
-#if !os(tvOS)
-            ShareLink(item: key.key, message: Text("API-key"))
-#endif
+            CloudKeyContextMenu(key, focus: _focus)
         }
 #endif
     }
@@ -85,10 +73,12 @@ struct CloudKeyCard: View {
 
 #Preview {
     List {
-        CloudKeyCard(.constant(""),
-                     key: .init("Preview Key", key: "ptlc_1234567890")) {
-            
-        }
+        CloudKeyCard(
+            .constant(""),
+            key: .init(
+                "Preview Key",
+                key: "ptlc_1234567890"
+            )) {}
     }
     .environmentObject(SettingsStorage())
 }
