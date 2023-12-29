@@ -3,9 +3,9 @@ import PteroNet
 
 struct StartupCard: View {
     
-    private let variable: PNStartupVariableAttributes
+    private let variable: StartupVariable
     
-    init(_ variable: PNStartupVariableAttributes) {
+    init(_ variable: StartupVariable) {
         self.variable = variable
     }
     
