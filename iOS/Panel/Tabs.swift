@@ -3,7 +3,7 @@ enum Tabs: String, CaseIterable {
     case console = "terminal"
     case files = "folder"
     case backup = "externaldrive.badge.icloud"
-    case startup = "airplane"
+    case startup = "play.circle.fill"
     
     var title: String {
         switch self {
