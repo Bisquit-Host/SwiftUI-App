@@ -26,10 +26,14 @@ struct StartupCard: View {
                     
                     Spacer()
                     
-                    Button {
-                        value = variable.defaultValue
+                    Menu {
+                        Button {
+                            value = variable.defaultValue
+                        } label: {
+                            Label("Reset to default", systemImage: "arrow.counterclockwise")
+                        }
                     } label: {
-                        Image(systemName: "arrow.counterclockwise")
+                        Image(systemName: "ellipsis.circle")
                             .semibold()
                     }
                 }
@@ -41,33 +45,18 @@ struct StartupCard: View {
                 TextField("Type here", text: $value)
                     .autocorrectionDisabled()
                     .disabled(!variable.isEditable)
-                
-                Text(variable.rules)
-            }
-        }
-        .onChange(of: value) { _, newValue in
-            let rulesArray = variable.rules.split(separator: "|")
-            
-            guard let rule = rulesArray.first, rule == "required" else {
-                vm.changeVariable(variable: variable.envVariable, newValue: newValue)
-                return
             }
             
-            if newValue.isEmpty {
-                AlertKitAPI.present(
-                    title: "Can't be empty",
-                    icon: .error,
-                    style: .iOS17AppleMusic,
-                    haptic: .error
-                )
-                
-                return
+            if value != variable.serverValue {
+                Button("Save") {
+                    vm.updateVariable(
+                        key: variable.envVariable,
+                        value: value
+                    ) {
+                        value = variable.serverValue
+                    }
+                }
             }
-            
-            vm.changeVariable(
-                variable: variable.envVariable,
-                newValue: newValue
-            )
         }
     }
 }

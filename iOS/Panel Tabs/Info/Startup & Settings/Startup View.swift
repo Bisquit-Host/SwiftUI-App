@@ -35,12 +35,14 @@ struct StartupView: View {
             }
             
             ForEach(vm.startupVariables, id: \.name) { variable in
-                StartupCard(server,
-                            variable: variable)
+                StartupCard(server, variable: variable)
             }
         }
         .scrollIndicators(.never)
         .task {
+            vm.fetchStartupVariables()
+        }
+        .refreshable {
             vm.fetchStartupVariables()
         }
         .onChange(of: currentDockerImage) { _, newDockerImage in

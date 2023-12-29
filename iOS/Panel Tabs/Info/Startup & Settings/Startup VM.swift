@@ -32,7 +32,9 @@ final class StartupVM {
                     self.startupCommand = model.meta.startupCommand
                     self.rawStartupCommand = model.meta.rawStartupCommand
                     
-                    self.dockerImages = model.meta.dockerImages
+                    if let dockerImages = model.meta.dockerImages {
+                        self.dockerImages = dockerImages
+                    }
                 }
                 
             case .failure(let error):
@@ -41,20 +43,27 @@ final class StartupVM {
         }
     }
     
-    func changeVariable(variable: String, newValue: String) {
-        startupUpdateAPI(id, variable: variable, newValue: newValue) { result in
+    func updateVariable(key: String, value: String, onFailure: @escaping () -> ()) {
+        startupUpdateAPI(id, key: key, value: value) { result in
             switch result {
-            case .success:
-                print("Changed")
+            case .success(let model):
+                if let model {
+                    if let index = self.startupVariables.firstIndex(where: {
+                        $0.envVariable == model.attributes.envVariable
+                    }) {
+                        self.startupVariables[index] = model.attributes
+                    }
+                }
                 
             case .failure(let error):
                 networkCallError(#function, error)
+                onFailure()
             }
         }
     }
     
     func updateDockerImage(_ newImage: String) {
-        dockerUpdateAPI(id, newImage: newImage, printResponse: true) { result in
+        dockerUpdateAPI(id, newImage: newImage) { result in
             switch result {
             case .success:
                 print("Updates")
