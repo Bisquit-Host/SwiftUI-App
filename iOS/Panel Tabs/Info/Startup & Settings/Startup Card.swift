@@ -39,6 +39,7 @@ struct StartupCard: View {
                     .foregroundStyle(.secondary)
                 
                 TextField("Type here", text: $value)
+                    .autocorrectionDisabled()
                     .disabled(!variable.isEditable)
                 
                 Text(variable.rules)
