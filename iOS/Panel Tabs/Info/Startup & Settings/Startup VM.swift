@@ -8,16 +8,31 @@ final class StartupVM {
         self.id = id
     }
     
-    var startupVariables: [PNStartupVariableAttributes] = []
+    var startupVariables: [StartupVariable] = []
+    var dockerImages: [String: String] = [:]
+    var startupCommand = ""
+    var rawStartupCommand = ""
+    
+    var sortedDockerImages: [(key: String, value: String)] {
+        Array(dockerImages)
+            .sorted {
+                Int($0.key.split(separator: " ").last!)! > Int($1.key.split(separator: " ").last!)!
+            }
+    }
     
     func fetchStartupVariables() {
         startupListAPI(id) { result in
             switch result {
             case .success(let model):
-                if let model = model?.data {
-                    self.startupVariables = model.map {
+                if let model {
+                    self.startupVariables = model.data.map {
                         $0.attributes
                     }
+                    
+                    self.startupCommand = model.meta.startupCommand
+                    self.rawStartupCommand = model.meta.rawStartupCommand
+                    
+                    self.dockerImages = model.meta.dockerImages
                 }
                 
             case .failure(let error):

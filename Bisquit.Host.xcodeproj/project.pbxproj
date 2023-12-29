@@ -1756,6 +1756,15 @@
 			path = SwiftData;
 			sourceTree = "<group>";
 		};
+		F306530C2B3E337A001682A2 /* SFTP */ = {
+			isa = PBXGroup;
+			children = (
+				F37A366E2A3515A900517EFC /* Sftp View.swift */,
+				F3D2642F2A66A690005C3777 /* Sftp VM.swift */,
+			);
+			path = SFTP;
+			sourceTree = "<group>";
+		};
 		F306B9EE29BBDA7C0008C2D4 /* Elements */ = {
 			isa = PBXGroup;
 			children = (
@@ -1966,9 +1975,8 @@
 				F3B81DF02A49C96000633B66 /* Info Absolute Stats.swift */,
 				F3E467512A49903900FABE5F /* Info Stat.swift */,
 				F325F7022A54BF7A00E89EC4 /* InfoTab Model.swift */,
-				F37A366E2A3515A900517EFC /* Sftp View.swift */,
-				F3D2642F2A66A690005C3777 /* Sftp VM.swift */,
-				F337C15E2A8C2B19006F321C /* Settings */,
+				F306530C2B3E337A001682A2 /* SFTP */,
+				F337C15E2A8C2B19006F321C /* Startup & Settings */,
 				F3FF5A012A4A318E003A1973 /* Users */,
 				F3C8C76F2A3A9B23000CC7E3 /* Logs */,
 			);
@@ -2145,15 +2153,15 @@
 			path = "Unit Tests";
 			sourceTree = "<group>";
 		};
-		F337C15E2A8C2B19006F321C /* Settings */ = {
+		F337C15E2A8C2B19006F321C /* Startup & Settings */ = {
 			isa = PBXGroup;
 			children = (
 				F337C15F2A8C2CE0006F321C /* Startup View.swift */,
-				F37A36722A3515DC00517EFC /* Server Settings VM.swift */,
 				F337C1612A8CE7C0006F321C /* Startup Card.swift */,
 				F337C1682A8D07E2006F321C /* Startup VM.swift */,
+				F37A36722A3515DC00517EFC /* Server Settings VM.swift */,
 			);
-			path = Settings;
+			path = "Startup & Settings";
 			sourceTree = "<group>";
 		};
 		F342FAAC2B2C6A3800854270 /* Info */ = {

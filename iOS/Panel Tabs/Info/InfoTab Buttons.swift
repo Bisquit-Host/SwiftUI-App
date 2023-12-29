@@ -49,11 +49,11 @@ struct InfoTabButtons: View {
                     MenuButton("SFTP Credentials", icon: "doc.viewfinder") {
                         sheetSftp = true
                     }
-#if DEBUG
+                    
                     MenuButton("Startup", icon: "airplane") {
                         sheetStartup = true
                     }
-#endif
+                    
                     Section {
                         MenuButton("Reinstall", role: .destructive, icon: "arrow.triangle.2.circlepath") {
                             alertReinstall = true
@@ -81,9 +81,7 @@ struct InfoTabButtons: View {
             
             HStack {
                 Button("IP") {
-                    withAnimation {
-                        settings.lastInfoTab = .ip
-                    }
+                    settings.lastInfoTab = .ip
                 }
                 .padding()
                 .title2(.semibold)
@@ -142,6 +140,7 @@ struct InfoTabButtons: View {
         .sheet($sheetStartup) {
             StartupView(server)
                 .environment(settingsVM)
+                .environment(startupVM)
         }
         .sheet($sheetLogs) {
             LogListParent()

@@ -84,6 +84,16 @@
     "%@ will be availible soon..." : {
 
     },
+    "%@: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@: %2$@"
+          }
+        }
+      }
+    },
     "%lld" : {
       "localizations" : {
         "nl" : {
@@ -3227,6 +3237,9 @@
         }
       }
     },
+    "Raw" : {
+
+    },
     "Read" : {
 
     },
@@ -3832,6 +3845,9 @@
 
     },
     "Startup" : {
+
+    },
+    "Startup Command" : {
 
     },
     "Stats" : {
