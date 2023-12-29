@@ -479,7 +479,14 @@
       }
     },
     "0" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
     },
     "1" : {
 
@@ -491,7 +498,14 @@
 
     },
     "777" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
     },
     "Account" : {
       "extractionState" : "manual",
@@ -1425,10 +1439,24 @@
 
     },
     "Delete" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить"
+          }
+        }
+      }
     },
     "Demo" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Демо"
+          }
+        }
+      }
     },
     "Demo Preview" : {
       "localizations" : {
@@ -2015,7 +2043,14 @@
 
     },
     "iCloud" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
     },
     "iCloud Storage" : {
       "extractionState" : "stale",
@@ -2561,7 +2596,14 @@
       }
     },
     "Live Activity (BETA)" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live Activity (БЕТА)"
+          }
+        }
+      }
     },
     "Load data" : {
 
@@ -2573,10 +2615,24 @@
 
     },
     "Log out" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выйти"
+          }
+        }
+      }
     },
     "Login" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Войти"
+          }
+        }
+      }
     },
     "Logs" : {
       "localizations" : {
@@ -2871,7 +2927,14 @@
       }
     },
     "New Folder" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Новая Папка"
+          }
+        }
+      }
     },
     "New User" : {
 
@@ -3010,7 +3073,14 @@
       }
     },
     "Other users" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Другие пользователи"
+          }
+        }
+      }
     },
     "Overview" : {
 
@@ -3144,7 +3214,14 @@
       }
     },
     "Plugins" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Плагины"
+          }
+        }
+      }
     },
     "Power" : {
 
@@ -3176,7 +3253,14 @@
       }
     },
     "Preview" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Превью"
+          }
+        }
+      }
     },
     "Previous" : {
       "localizations" : {
@@ -3199,7 +3283,14 @@
       }
     },
     "Properties" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Переменные"
+          }
+        }
+      }
     },
     "RAM" : {
       "extractionState" : "manual",
@@ -3327,7 +3418,14 @@
 
     },
     "restart" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "рестарт"
+          }
+        }
+      }
     },
     "Restart" : {
       "extractionState" : "manual",
@@ -3499,7 +3597,14 @@
       }
     },
     "Send Command" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отправить Команду"
+          }
+        }
+      }
     },
     "Send command to a server" : {
 
@@ -3647,10 +3752,24 @@
       }
     },
     "Share..." : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поделиться..."
+          }
+        }
+      }
     },
     "Show description (ru)" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Показать описание"
+          }
+        }
+      }
     },
     "Sign in" : {
       "localizations" : {
@@ -3993,7 +4112,14 @@
       }
     },
     "System" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Система"
+          }
+        }
+      }
     },
     "Tab icons bounce" : {
 
@@ -4002,7 +4128,14 @@
 
     },
     "Telegram Chat" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telegram-чат"
+          }
+        }
+      }
     },
     "The list of servers couldn't be loaded. Check your internet connection or contact support" : {
       "localizations" : {
@@ -4387,7 +4520,14 @@
 
     },
     "VIEW ONLY" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ТОЛЬКО ПРОСМОТР"
+          }
+        }
+      }
     },
     "View QR code" : {
 
@@ -4497,7 +4637,14 @@
       }
     },
     "Деревня Пыжи\n(Кировская обл.)" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
     },
     "Храм святителя Николая\nМирликийского в Пыжах" : {
 
