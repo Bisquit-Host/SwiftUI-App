@@ -8,6 +8,7 @@ struct PanelView: View {
     private var backupVM: BackupVM
     private var databaseVM: DatabaseVM
     private var scheduleVM: ScheduleVM
+    private var startupVM: StartupVM
     
     private let id: String
     
@@ -18,6 +19,7 @@ struct PanelView: View {
         self.scheduleVM = ScheduleVM(id)
         self.vm = PanelVM(id)
         self.fileVM = FileTabVM(id)
+        self.startupVM = StartupVM(id)
     }
     
     @State private var allTabs: [AnimatedTab] = Tabs.allCases.compactMap { tab -> AnimatedTab? in
@@ -29,24 +31,24 @@ struct PanelView: View {
             TabView(selection: $settings.lastTabPanel) {
                 if let server = vm.server {
                     InfoTab(server)
-                        .setUpTab(.info,
-                                  isAnimated: settings.animatedTabbar)
+                        .setUpTab(.info, isAnimated: settings.animatedTabbar)
                     
                     ConsoleTab(id)
-                        .setUpTab(.console,
-                                  isAnimated: settings.animatedTabbar)
+                        .setUpTab(.console, isAnimated: settings.animatedTabbar)
                     
                     FileTab(id)
                         .environmentObject(fileVM)
-                        .setUpTab(.files,
-                                  isAnimated: settings.animatedTabbar)
+                        .setUpTab(.files, isAnimated: settings.animatedTabbar)
                     
                     DataTab(id, limits: server.featureLimits)
                         .environment(backupVM)
                         .environment(databaseVM)
                         .environment(scheduleVM)
-                        .setUpTab(.backup,
-                                  isAnimated: settings.animatedTabbar)
+                        .setUpTab(.backup, isAnimated: settings.animatedTabbar)
+                    
+                    StartupView(server)
+                        .environment(startupVM)
+                        .setUpTab(.startup, isAnimated: settings.animatedTabbar)
                 }
             }
             
@@ -69,6 +71,7 @@ struct PanelView: View {
             backupVM.fetchBackups()
             databaseVM.fetchDatabases()
             scheduleVM.fetchSchedules()
+            startupVM.fetchStartupVariables()
             
             vm.updateBackups = {
                 backupVM.fetchBackups()

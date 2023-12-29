@@ -84,16 +84,6 @@
     "%@ will be availible soon..." : {
 
     },
-    "%@: %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@: %2$@"
-          }
-        }
-      }
-    },
     "%lld" : {
       "localizations" : {
         "nl" : {
@@ -1566,6 +1556,9 @@
       }
     },
     "Dismiss" : {
+
+    },
+    "Docker Image" : {
 
     },
     "Download" : {

@@ -6,20 +6,14 @@ struct InfoTabButtons: View {
     private var liveActivity = LiveActivity()
 #endif
     
-    private var startupVM: StartupVM
     private var settingsVM: ServerSettingsVM
     private var logVM: LogVM
     private var userVM: UsersVM
     private let server: ServerAttributes
     @EnvironmentObject private var settings: SettingsStorage
     
-    init(_ server: ServerAttributes,
-         modelRename: ServerSettingsVM = ServerSettingsVM(""),
-         logVM: LogVM = LogVM(""),
-         modelUsers: UsersVM = UsersVM("")
-    ) {
+    init(_ server: ServerAttributes) {
         self.server = server
-        self.startupVM = StartupVM(server.id)
         self.settingsVM = ServerSettingsVM(server.id)
         self.logVM = LogVM(server.id)
         self.userVM = UsersVM(server.id)
@@ -28,7 +22,6 @@ struct InfoTabButtons: View {
     @State private var sheetSftp = false
     @State private var sheetUsers = false
     @State private var sheetLogs = false
-    @State private var sheetStartup = false
     @State private var isRotating = false
     @State private var alertReinstall = false
     
@@ -48,10 +41,6 @@ struct InfoTabButtons: View {
                     
                     MenuButton("SFTP Credentials", icon: "doc.viewfinder") {
                         sheetSftp = true
-                    }
-                    
-                    MenuButton("Startup", icon: "airplane") {
-                        sheetStartup = true
                     }
                     
                     Section {
@@ -126,7 +115,6 @@ struct InfoTabButtons: View {
         .task {
             logVM.fetchLogs()
             userVM.fetchUsers()
-            startupVM.fetchStartupVariables()
             settingsVM.serverName = server.name
             settingsVM.serverDescription = server.description
         }
@@ -136,11 +124,6 @@ struct InfoTabButtons: View {
         .sheet($sheetUsers) {
             UserListParent()
                 .environment(userVM)
-        }
-        .sheet($sheetStartup) {
-            StartupView(server)
-                .environment(settingsVM)
-                .environment(startupVM)
         }
         .sheet($sheetLogs) {
             LogListParent()

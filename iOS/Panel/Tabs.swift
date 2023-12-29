@@ -3,6 +3,7 @@ enum Tabs: String, CaseIterable {
     case console = "terminal"
     case files = "folder"
     case backup = "externaldrive.badge.icloud"
+    case startup = "airplane"
     
     var title: String {
         switch self {
@@ -10,6 +11,7 @@ enum Tabs: String, CaseIterable {
         case .console: "Console"
         case .files: "Files"
         case .backup: "Data"
+        case .startup: "Startup"
         }
     }
 }

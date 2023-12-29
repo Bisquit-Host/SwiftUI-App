@@ -8,9 +8,11 @@ struct StartupView: View {
     
     init(_ server: ServerAttributes) {
         self.server = server
+        currentDockerImage = server.dockerImage
     }
     
     @State private var showRawCommand = false
+    @State private var currentDockerImage: String
     
     var body: some View {
         @Bindable var binding = vm
@@ -18,13 +20,18 @@ struct StartupView: View {
         List {
             Section("Startup Command") {
                 Text(showRawCommand ? vm.rawStartupCommand : vm.startupCommand)
-                    .footnote(design: .monospaced)
+                    .textSelection(.enabled)
+                    .caption2(design: .monospaced)
+                    .animation(.default, value: showRawCommand)
                 
                 Toggle("Raw", isOn: $showRawCommand)
             }
             
-            ForEach(vm.sortedDockerImages, id: \.key) { key, value in
-                Text("\(key): \(value)")
+            Picker("Docker Image", selection: $currentDockerImage) {
+                ForEach(vm.sortedDockerImages, id: \.key) { key, value in
+                    Text(key)
+                        .tag(value)
+                }
             }
             
             ForEach(vm.startupVariables, id: \.name) { variable in
@@ -32,10 +39,12 @@ struct StartupView: View {
                             variable: variable)
             }
         }
-        .navigationTitle("Startup")
         .scrollIndicators(.never)
         .task {
             vm.fetchStartupVariables()
+        }
+        .onChange(of: currentDockerImage) { _, newDockerImage in
+            vm.updateDockerImage(newDockerImage)
         }
     }
 }

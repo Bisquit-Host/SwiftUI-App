@@ -13,9 +13,10 @@ struct StartupCard: View {
         self.server = server
         self.variable = variable
         self.vm = StartupVM(server.id)
+        value = variable.serverValue
     }
     
-    @State private var value = ""
+    @State private var value: String
     
     var body: some View {
         Section {
@@ -42,9 +43,6 @@ struct StartupCard: View {
                 
                 Text(variable.rules)
             }
-        }
-        .task {
-            value = variable.serverValue
         }
         .onChange(of: value) { _, newValue in
             let rulesArray = variable.rules.split(separator: "|")

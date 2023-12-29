@@ -54,7 +54,7 @@ final class StartupVM {
     }
     
     func updateDockerImage(_ newImage: String) {
-        dockerUpdateAPI(id, newImage: newImage) { result in
+        dockerUpdateAPI(id, newImage: newImage, printResponse: true) { result in
             switch result {
             case .success:
                 print("Updates")
