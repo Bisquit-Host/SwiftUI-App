@@ -19,11 +19,10 @@ struct InfoTabButtons: View {
         self.userVM = UsersVM(server.id)
     }
     
-    @State private var sheetSftp = false
+    @State private var sheetSettings = false
     @State private var sheetUsers = false
     @State private var sheetLogs = false
     @State private var isRotating = false
-    @State private var alertReinstall = false
     
     var body: some View {
         @Bindable var binding = settingsVM
@@ -34,20 +33,8 @@ struct InfoTabButtons: View {
                     sheetLogs = true
                 }
                 
-                Menu {
-                    MenuButton("Rename server", icon: "pencil") {
-                        settingsVM.alertRename = true
-                    }
-                    
-                    MenuButton("SFTP Credentials", icon: "doc.viewfinder") {
-                        sheetSftp = true
-                    }
-                    
-                    Section {
-                        MenuButton("Reinstall", role: .destructive, icon: "arrow.triangle.2.circlepath") {
-                            alertReinstall = true
-                        }
-                    }
+                Button {
+                    sheetSettings = true
                 } label: {
                     Image(systemName: "gear")
                         .title2(.semibold)
@@ -118,8 +105,8 @@ struct InfoTabButtons: View {
             settingsVM.serverName = server.name
             settingsVM.serverDescription = server.description
         }
-        .sheet($sheetSftp) {
-            SftpView(server)
+        .sheet($sheetSettings) {
+            PanelSettingsView(server)
         }
         .sheet($sheetUsers) {
             UserListParent()
@@ -128,24 +115,6 @@ struct InfoTabButtons: View {
         .sheet($sheetLogs) {
             LogListParent()
                 .environment(logVM)
-        }
-        .alert("Reinstall Server", isPresented: $alertReinstall) {
-            Button("Reinstall", role: .destructive) {
-                PteroNet.reinstallServer(server.id)
-            }
-        } message: {
-            Text("Reinstalling your server will stop it, and then re-run the installation script that initially set it. Some files may be deleted or modified during this process, please back up your data before continuing")
-        }
-        .alert("Rename server", isPresented: $binding.alertRename) {
-            TextField("Name", text: $binding.serverName)
-                .autocorrectionDisabled()
-            
-            TextField("Description", text: $binding.serverDescription)
-                .autocorrectionDisabled()
-            
-            Button("Rename", role: .destructive) {
-                settingsVM.serverRename()
-            }
         }
     }
 }

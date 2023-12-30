@@ -1,68 +1,64 @@
 import ScrechKit
 import PteroNet
 
-struct SftpView: View {
-    private var vm = SftpVM()
+struct SftpDetails: View {
+    @Environment(ServerSettingsVM.self) var vm
     
-    private var server: ServerAttributes
+    private var sftp: ServerSftpDetails
     
-    init(_ server: ServerAttributes) {
-        self.server = server
+    init(_ sftp: ServerSftpDetails) {
+        self.sftp = sftp
     }
     
     private var sftpAddress: String {
-        "\(server.sftp.ip):\(server.sftp.port)"
+        "\(sftp.ip):\(sftp.port)"
     }
     
     var body: some View {
-        List {
-            Button {
-                UIPasteboard.general.string = sftpAddress
-                
-                SystemAlert.copied()
-            } label: {
-                HStack {
-                    VStack(alignment: .leading) {
-                        Text("Server address")
-                        Text(sftpAddress)
-                    }
-                    
-                    Spacer()
-                    
-                    Image(systemName: "doc.on.doc")
-                        .title3()
-                }
-            }
+        Button {
+            UIPasteboard.general.string = sftpAddress
             
-            Button {
-                UIPasteboard.general.string = vm.username
-                
-                SystemAlert.copied()
-            } label: {
-                HStack {
-                    VStack(alignment: .leading) {
-                        Text("Login")
-                        Text(vm.username)
-                    }
+            SystemAlert.copied()
+        } label: {
+            HStack {
+                VStack(alignment: .leading) {
+                    Text("Server address")
                     
-                    Spacer()
-                    
-                    Image(systemName: "doc.on.doc")
-                        .title3()
+                    Text(sftpAddress)
                 }
+                
+                Spacer()
+                
+                Image(systemName: "doc.on.doc")
+                    .title3()
             }
         }
-        .presentationDetents([.medium])
+        
+        Button {
+            UIPasteboard.general.string = vm.username
+            
+            SystemAlert.copied()
+        } label: {
+            HStack {
+                VStack(alignment: .leading) {
+                    Text("Login")
+                    
+                    Text(vm.username)
+                }
+                
+                Spacer()
+                
+                Image(systemName: "doc.on.doc")
+                    .title3()
+            }
+        }
         .foregroundStyle(.primary)
         .frame(maxWidth: 500)
-        .task {
-            vm.accountDetails()
-        }
     }
 }
 
-#Preview {
-    SftpView(
-        sampleJSON(.serverListAttributes)
-    )
-}
+//#Preview {
+//    SftpDetails(
+//        sampleJSON(.serverListAttributes)
+//    )
+//}

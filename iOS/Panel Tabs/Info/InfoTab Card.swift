@@ -17,6 +17,7 @@ struct InfoTabCard: View {
                     HStack(alignment: .bottom, spacing: 4) {
                         Text(server.name)
                             .title3(.semibold)
+                            .animation(.default, value: server.name)
                         
                         Text(server.node)
                             .footnote()
@@ -27,6 +28,7 @@ struct InfoTabCard: View {
                     Text(server.description)
                         .footnote()
                         .lineLimit(2)
+                        .animation(.default, value: server.description)
                 }
                 
                 Spacer()

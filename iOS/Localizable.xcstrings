@@ -2797,6 +2797,9 @@
         }
       }
     },
+    "Name & description" : {
+
+    },
     "Name Backup" : {
 
     },
@@ -3384,6 +3387,7 @@
 
     },
     "Rename server" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -3632,6 +3636,9 @@
         }
       }
     },
+    "Server description" : {
+
+    },
     "Server ID" : {
 
     },
@@ -3652,6 +3659,9 @@
       }
     },
     "Server logs" : {
+
+    },
+    "Server name" : {
 
     },
     "Settings" : {
@@ -3713,9 +3723,6 @@
           }
         }
       }
-    },
-    "SFTP Credentials" : {
-
     },
     "SFTP Data" : {
       "extractionState" : "stale",

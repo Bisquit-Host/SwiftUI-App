@@ -31,6 +31,7 @@ struct PanelView: View {
             TabView(selection: $settings.lastTabPanel) {
                 if let server = vm.server {
                     InfoTab(server)
+                        .environment(vm)
                         .setUpTab(.info, isAnimated: settings.animatedTabbar)
                     
                     ConsoleTab(id)

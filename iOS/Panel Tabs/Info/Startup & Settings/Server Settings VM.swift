@@ -12,20 +12,31 @@ final class ServerSettingsVM {
     var alertRename = false
     var serverName = ""
     var serverDescription = ""
+    var username = ""
     
     func serverRename() {
-        serverRenameAPI(
-            id,
-            name: serverName,
-            description: serverDescription
-        ) { result in
+        serverRenameAPI(id, name: serverName, description: serverDescription) { result in
             switch result {
             case .success:
-                print("Renamed")
+                print("Sucsess")
                 
             case .failure(let error):
                 networkCallError(#function, error)
             }
         }
-    }    
+    }
+    
+    func accountDetails() {
+        accountDetailsAPI { [self] result in
+            switch result {
+            case .success(let model):
+                if let model = model?.attributes {
+                    username = model.username
+                }
+                
+            case .failure(let error):
+                networkCallError(#function, error)
+            }
+        }
+    }
 }
