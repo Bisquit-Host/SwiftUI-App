@@ -12,6 +12,7 @@ struct AllocationCard: View {
     }
     
     @State private var notes: String
+    
     private var showSaveButton: Bool {
         (allocation.notes != nil && notes != allocation.notes) || (allocation.notes == nil && !notes.isEmpty)
     }
