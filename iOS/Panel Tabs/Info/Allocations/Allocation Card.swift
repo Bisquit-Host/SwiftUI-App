@@ -23,36 +23,54 @@ struct AllocationCard: View {
     
     var body: some View {
         Section {
-            ListParameter("IP", parameter: ip)
-            
-            ListParameter("Port", parameter: "\(allocation.port)")
+            HStack {
+                Image(systemName: "app.connected.to.app.below.fill")
+                
+                VStack(alignment: .leading) {
+                    Text("IP: \(ip)")
+                    Text("Port: \(allocation.port)")
+                }
+                .footnote()
+                
+                Spacer()
+                
+                if allocation.isDefault {
+                    Image(systemName: "star.fill")
+                        .foregroundStyle(.yellow.gradient)
+                }
+            }
+            .contextMenu {
+                if !allocation.isDefault {
+                    MenuButton("Set default", icon: "star") {
+                        vm.setDefault(allocation.id)
+                    }
+                }
+                
+                MenuButton("Delete", role: .destructive, icon: "trash") {
+                    vm.unassignAllocation(allocation.id)
+                }
+            }
             
             TextEditor(text: $notes)
-            
+            //            ListParameter("IP", parameter: ip)
+            //
+            //            ListParameter("Port", parameter: "\(allocation.port)")
+            //
+            //
             if showSaveButton {
                 Button("Save") {
                     vm.updateNotes(allocation.id, notes: notes)
                 }
             }
-            
-            if !allocation.isDefault {
-                MenuButton("Set default", icon: "star") {
-                    vm.setDefault(allocation.id)
-                }
-            }
-            
-            MenuButton("Delete", role: .destructive, icon: "trash") {
-                vm.unassignAllocation(allocation.id)
-            }
-        } header: {
-            if allocation.isDefault {
-                Text("Default")
-            }
         }
     }
 }
 
-//#Preview {
-//    AllocationCard()
-//        .environment(AllocationVM(""))
-//}
+#Preview {
+    List {
+        AllocationCard(
+            sampleJSON(.allocationAttributes)
+        )
+    }
+    .environment(AllocationVM(""))
+}
