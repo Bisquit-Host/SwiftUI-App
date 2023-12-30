@@ -16,6 +16,11 @@ struct AllocationList: View {
             ForEach(vm.allocations, id: \.id) { allocation in
                 AllocationCard(allocation)
             }
+            
+            Button("Assign allocation") {
+                vm.assignAllocation()
+            }
+            .disabled(vm.allocations.count >= server.featureLimits.allocations)
         }
         .environment(vm)
         .navigationTitle("Allocations")

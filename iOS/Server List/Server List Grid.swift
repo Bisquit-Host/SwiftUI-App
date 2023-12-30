@@ -46,7 +46,8 @@ struct ServerListGrid: View {
                         ),
                         featureLimits: .init(
                             backups: 0,
-                            databases: 0
+                            databases: 0,
+                            allocations: 0
                         ),
                         sftp: .init(
                             ip: "",

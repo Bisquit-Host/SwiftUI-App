@@ -26,10 +26,22 @@ final class AllocationVM {
         }
     }
     
+    func assignAllocation() {
+        allocationCreateAPI(id, printResponse: true) { result in
+            switch result {
+            case .success/*(let model)*/:
+                self.fetchAllocations()
+                
+            case .failure(let error):
+                networkCallError(#function, error)
+            }
+        }
+    }
+    
     func updateNotes(_ allocationId: Int, notes: String) {
         allocationNoteAPI(id, allocationId: allocationId, notes: notes) { result in
             switch result {
-            case .success(let model):
+            case .success/*(let model)*/:
                 self.fetchAllocations()
                 
             case .failure(let error):

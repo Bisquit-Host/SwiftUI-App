@@ -48,7 +48,7 @@ struct DataTab: View {
 }
 
 #Preview {
-    DataTab("", limits: ServerFeatureLimits(backups: 5, databases: 5))
+    DataTab("", limits: ServerFeatureLimits(backups: 5, databases: 5, allocations: 5))
         .environment(BackupVM(""))
         .environment(DatabaseVM(""))
         .environment(ScheduleVM(""))

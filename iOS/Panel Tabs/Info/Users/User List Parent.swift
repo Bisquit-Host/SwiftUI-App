@@ -8,6 +8,8 @@ struct UserListParent: View {
         NavigationView {
             UserList()
         }
+        .presentationDragIndicator(.hidden)
+        .presentationDetents([.medium, .large])
 #endif
     }
 }

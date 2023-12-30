@@ -21,8 +21,6 @@ struct UserList: View {
         }
         .navigationTitle("Users")
         .toolbarTitleDisplayMode(.inline)
-        .presentationDetents([.medium, .large])
-        .presentationDragIndicator(.hidden)
         .task {
             vm.fetchUsers()
             vm.fetchPermissions()
