@@ -12,5 +12,7 @@ struct AllocationListParent: View {
         NavigationView {
             AllocationList(server)
         }
+        .presentationDragIndicator(.hidden)
+        .presentationDetents([.medium, .large])
     }
 }

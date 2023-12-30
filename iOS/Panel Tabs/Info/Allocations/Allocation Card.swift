@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import PteroNet
 
 struct AllocationCard: View {
@@ -17,22 +17,36 @@ struct AllocationCard: View {
         (allocation.notes != nil && notes != allocation.notes) || (allocation.notes == nil && !notes.isEmpty)
     }
     
+    private var ip: String {
+        allocation.ipAlias ?? allocation.ip
+    }
+    
     var body: some View {
         Section {
-            VStack(alignment: .leading) {
-                if let ipAlias = allocation.ipAlias {
-                    Text(ipAlias + ":\(allocation.port)")
-                } else {
-                    Text(allocation.ip + ":\(allocation.port)")
-                }
-                
-                TextField("Notes", text: $notes)
-            }
+            ListParameter("IP", parameter: ip)
+            
+            ListParameter("Port", parameter: "\(allocation.port)")
+            
+            TextEditor(text: $notes)
             
             if showSaveButton {
                 Button("Save") {
                     vm.updateNotes(allocation.id, notes: notes)
                 }
+            }
+            
+            if !allocation.isDefault {
+                MenuButton("Set default", icon: "star") {
+                    vm.setDefault(allocation.id)
+                }
+            }
+            
+            MenuButton("Delete", role: .destructive, icon: "trash") {
+                vm.unassignAllocation(allocation.id)
+            }
+        } header: {
+            if allocation.isDefault {
+                Text("Default")
             }
         }
     }

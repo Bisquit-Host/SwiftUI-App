@@ -1441,6 +1441,9 @@
     "Decompress" : {
 
     },
+    "Default" : {
+
+    },
     "Delete" : {
       "localizations" : {
         "ru" : {
@@ -2984,9 +2987,6 @@
     "Nodes" : {
 
     },
-    "Notes" : {
-
-    },
     "Now" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3664,6 +3664,9 @@
 
     },
     "Server Settings" : {
+
+    },
+    "Set default" : {
 
     },
     "Settings" : {

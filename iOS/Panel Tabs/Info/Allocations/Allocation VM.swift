@@ -26,6 +26,30 @@ final class AllocationVM {
         }
     }
     
+    func setDefault(_ allocationId: Int) {
+        allocationSetPrimaryAPI(id, allocationId: allocationId) { result in
+            switch result {
+            case .success/*(let model)*/:
+                self.fetchAllocations()
+                
+            case .failure(let error):
+                networkCallError(#function, error)
+            }
+        }
+    }
+    
+    func unassignAllocation(_ allocationId: Int) {
+        allocationDeleteAPI(id, allocationId: allocationId) { result in
+            switch result {
+            case .success:
+                self.fetchAllocations()
+                
+            case .failure(let error):
+                networkCallError(#function, error)
+            }
+        }
+    }
+    
     func assignAllocation() {
         allocationCreateAPI(id, printResponse: true) { result in
             switch result {
