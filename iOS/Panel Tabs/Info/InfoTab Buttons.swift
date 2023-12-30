@@ -106,7 +106,7 @@ struct InfoTabButtons: View {
             settingsVM.serverDescription = server.description
         }
         .sheet($sheetSettings) {
-            PanelSettingsView(server)
+            PanelSettingsParent(server)
         }
         .sheet($sheetUsers) {
             UserListParent()

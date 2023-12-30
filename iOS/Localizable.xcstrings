@@ -2625,14 +2625,7 @@
       }
     },
     "Login" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Войти"
-          }
-        }
-      }
+
     },
     "Logs" : {
       "localizations" : {
@@ -3662,6 +3655,9 @@
 
     },
     "Server name" : {
+
+    },
+    "Server Settings" : {
 
     },
     "Settings" : {

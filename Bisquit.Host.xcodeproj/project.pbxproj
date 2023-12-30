@@ -355,6 +355,8 @@
 		F352AF9B2A4EE707004AD489 /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = F352AF9A2A4EE707004AD489 /* AlertKit */; };
 		F354E9832A48CA2000F6E359 /* Topbar Grid Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F354E9822A48CA2000F6E359 /* Topbar Grid Button.swift */; };
 		F354E9842A48CA2000F6E359 /* Topbar Grid Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F354E9822A48CA2000F6E359 /* Topbar Grid Button.swift */; };
+		F3553FB32B40653000EF0FD2 /* Panel Settings Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3553FB22B40653000EF0FD2 /* Panel Settings Parent.swift */; };
+		F3553FB42B4065A300EF0FD2 /* Panel Settings Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3553FB22B40653000EF0FD2 /* Panel Settings Parent.swift */; };
 		F358132B2A1F5D2A002ADFA4 /* Linking VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */; };
 		F358132C2A1F5D2A002ADFA4 /* Linking VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */; };
 		F35B2A0229FFD6AB006E5FD2 /* CloudKit Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B2A0129FFD6AB006E5FD2 /* CloudKit Model.swift */; };
@@ -1307,6 +1309,7 @@
 		F3521E2A29F5C13900132CCB /* Browser Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Browser Card.swift"; sourceTree = "<group>"; };
 		F352AF962A4EDB1D004AD489 /* Server List VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List VM.swift"; sourceTree = "<group>"; };
 		F354E9822A48CA2000F6E359 /* Topbar Grid Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Topbar Grid Button.swift"; sourceTree = "<group>"; };
+		F3553FB22B40653000EF0FD2 /* Panel Settings Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Settings Parent.swift"; sourceTree = "<group>"; };
 		F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Linking VM.swift"; sourceTree = "<group>"; };
 		F35B2A0129FFD6AB006E5FD2 /* CloudKit Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloudKit Model.swift"; sourceTree = "<group>"; };
 		F35B89BD2A725710000B5EEF /* Tip Suspended Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tip Suspended Server.swift"; sourceTree = "<group>"; };
@@ -1970,6 +1973,7 @@
 				F3FF5A022A4A359C003A1973 /* InfoTab Buttons.swift */,
 				F34169A42A49DF64003985E7 /* InfoTab Button.swift */,
 				F303214A2B3FEA45002A73B8 /* Panel Settings View.swift */,
+				F3553FB22B40653000EF0FD2 /* Panel Settings Parent.swift */,
 				F33944102A49022A00E2F0FC /* InfoTab Card.swift */,
 				F3E467542A49939300FABE5F /* Info Relative Stats.swift */,
 				F3B81DF02A49C96000633B66 /* Info Absolute Stats.swift */,
@@ -3593,6 +3597,7 @@
 				F303214B2B3FEA45002A73B8 /* Panel Settings View.swift in Sources */,
 				F3C0F9D229E2A62A0040E277 /* FileTab NewFolder.swift in Sources */,
 				F31BA5B2295902D50006D126 /* Text File.swift in Sources */,
+				F3553FB32B40653000EF0FD2 /* Panel Settings Parent.swift in Sources */,
 				F3D264372A66A9B9005C3777 /* Settings Parent.swift in Sources */,
 				F31BA57D295901200006D126 /* Start Page VM.swift in Sources */,
 				F306B9ED29BBDA770008C2D4 /* Server List Footer.swift in Sources */,
@@ -4012,6 +4017,7 @@
 				F325F7042A54BF7A00E89EC4 /* InfoTab Model.swift in Sources */,
 				F32E88C92AF83E3F00959D49 /* Topbar Admin Button.swift in Sources */,
 				F3464D1E2A86396500188B0C /* Change Power.swift in Sources */,
+				F3553FB42B4065A300EF0FD2 /* Panel Settings Parent.swift in Sources */,
 				F34EB0962A4A75E70034A68A /* Intro Model.swift in Sources */,
 				F35B89C32A725CFC000B5EEF /* Tip Suspended Server.swift in Sources */,
 				F35FEB0C2B09F003004DA05D /* API Key.swift in Sources */,

@@ -42,6 +42,8 @@ struct PanelSettingsView: View {
                 }
             }
         }
+        .navigationTitle("Server Settings")
+        .toolbarTitleDisplayMode(.inline)
         .task {
             vm.accountDetails()
             vm.serverName = server.name

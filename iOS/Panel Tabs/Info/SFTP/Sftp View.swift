@@ -15,41 +15,43 @@ struct SftpDetails: View {
     }
     
     var body: some View {
-        Button {
-            UIPasteboard.general.string = sftpAddress
-            
-            SystemAlert.copied()
-        } label: {
-            HStack {
-                VStack(alignment: .leading) {
-                    Text("Server address")
+        Group {
+            Button {
+                UIPasteboard.general.string = sftpAddress
+                
+                SystemAlert.copied()
+            } label: {
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text("Server address")
+                        
+                        Text(sftpAddress)
+                    }
                     
-                    Text(sftpAddress)
+                    Spacer()
+                    
+                    Image(systemName: "doc.on.doc")
+                        .title3()
                 }
-                
-                Spacer()
-                
-                Image(systemName: "doc.on.doc")
-                    .title3()
             }
-        }
-        
-        Button {
-            UIPasteboard.general.string = vm.username
             
-            SystemAlert.copied()
-        } label: {
-            HStack {
-                VStack(alignment: .leading) {
-                    Text("Login")
+            Button {
+                UIPasteboard.general.string = vm.username
+                
+                SystemAlert.copied()
+            } label: {
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text("Login")
+                        
+                        Text(vm.username)
+                    }
                     
-                    Text(vm.username)
+                    Spacer()
+                    
+                    Image(systemName: "doc.on.doc")
+                        .title3()
                 }
-                
-                Spacer()
-                
-                Image(systemName: "doc.on.doc")
-                    .title3()
             }
         }
         .foregroundStyle(.primary)
