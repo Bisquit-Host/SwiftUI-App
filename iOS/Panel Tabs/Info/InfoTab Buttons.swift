@@ -22,6 +22,7 @@ struct InfoTabButtons: View {
     @State private var sheetSettings = false
     @State private var sheetUsers = false
     @State private var sheetLogs = false
+    @State private var sheetAllocations = false
     @State private var isRotating = false
     
     var body: some View {
@@ -57,7 +58,7 @@ struct InfoTabButtons: View {
             
             HStack {
                 Button("IP") {
-                    settings.lastInfoTab = .ip
+                    sheetAllocations = true
                 }
                 .padding()
                 .title2(.semibold)
@@ -111,6 +112,9 @@ struct InfoTabButtons: View {
         .sheet($sheetUsers) {
             UserListParent()
                 .environment(userVM)
+        }
+        .sheet($sheetAllocations) {
+            AllocationListParent(server)
         }
         .sheet($sheetLogs) {
             LogListParent()

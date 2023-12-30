@@ -359,6 +359,12 @@
 		F3553FB42B4065A300EF0FD2 /* Panel Settings Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3553FB22B40653000EF0FD2 /* Panel Settings Parent.swift */; };
 		F3553FB52B40939800EF0FD2 /* Allocation VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCF5C42B3457AE005FFF2C /* Allocation VM.swift */; };
 		F3553FB62B40939C00EF0FD2 /* Allocation VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCF5C42B3457AE005FFF2C /* Allocation VM.swift */; };
+		F3553FB92B4093E600EF0FD2 /* Allocation List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3553FB82B4093E600EF0FD2 /* Allocation List.swift */; };
+		F3553FBA2B4093E600EF0FD2 /* Allocation List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3553FB82B4093E600EF0FD2 /* Allocation List.swift */; };
+		F3553FBC2B40945C00EF0FD2 /* Allocation List Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3553FBB2B40945C00EF0FD2 /* Allocation List Parent.swift */; };
+		F3553FBD2B40945C00EF0FD2 /* Allocation List Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3553FBB2B40945C00EF0FD2 /* Allocation List Parent.swift */; };
+		F3553FBF2B4094D700EF0FD2 /* Allocation Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3553FBE2B4094D700EF0FD2 /* Allocation Card.swift */; };
+		F3553FC02B4094D700EF0FD2 /* Allocation Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3553FBE2B4094D700EF0FD2 /* Allocation Card.swift */; };
 		F358132B2A1F5D2A002ADFA4 /* Linking VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */; };
 		F358132C2A1F5D2A002ADFA4 /* Linking VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */; };
 		F35B2A0229FFD6AB006E5FD2 /* CloudKit Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B2A0129FFD6AB006E5FD2 /* CloudKit Model.swift */; };
@@ -1312,6 +1318,9 @@
 		F352AF962A4EDB1D004AD489 /* Server List VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List VM.swift"; sourceTree = "<group>"; };
 		F354E9822A48CA2000F6E359 /* Topbar Grid Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Topbar Grid Button.swift"; sourceTree = "<group>"; };
 		F3553FB22B40653000EF0FD2 /* Panel Settings Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Settings Parent.swift"; sourceTree = "<group>"; };
+		F3553FB82B4093E600EF0FD2 /* Allocation List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation List.swift"; sourceTree = "<group>"; };
+		F3553FBB2B40945C00EF0FD2 /* Allocation List Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation List Parent.swift"; sourceTree = "<group>"; };
+		F3553FBE2B4094D700EF0FD2 /* Allocation Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation Card.swift"; sourceTree = "<group>"; };
 		F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Linking VM.swift"; sourceTree = "<group>"; };
 		F35B2A0129FFD6AB006E5FD2 /* CloudKit Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloudKit Model.swift"; sourceTree = "<group>"; };
 		F35B89BD2A725710000B5EEF /* Tip Suspended Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tip Suspended Server.swift"; sourceTree = "<group>"; };
@@ -2243,7 +2252,10 @@
 		F3553FB72B4093B400EF0FD2 /* Allocations */ = {
 			isa = PBXGroup;
 			children = (
+				F3553FBB2B40945C00EF0FD2 /* Allocation List Parent.swift */,
+				F3553FB82B4093E600EF0FD2 /* Allocation List.swift */,
 				F3CCF5C42B3457AE005FFF2C /* Allocation VM.swift */,
+				F3553FBE2B4094D700EF0FD2 /* Allocation Card.swift */,
 			);
 			path = Allocations;
 			sourceTree = "<group>";
@@ -3587,6 +3599,7 @@
 				F31BA59D295902280006D126 /* Info Tab.swift in Sources */,
 				F3ECCD9F2A05819A00B535B6 /* Server Card Context Menu.swift in Sources */,
 				F37A36782A35180100517EFC /* Power Menu.swift in Sources */,
+				F3553FBC2B40945C00EF0FD2 /* Allocation List Parent.swift in Sources */,
 				F32E88C82AF83E3F00959D49 /* Topbar Admin Button.swift in Sources */,
 				F31BA570295900C20006D126 /* Formatters.swift in Sources */,
 				F39626F22A7AD64B0057E356 /* Ansi.swift in Sources */,
@@ -3651,6 +3664,7 @@
 				F3C9D85C2B31146E00265492 /* User Avatar.swift in Sources */,
 				F354E9832A48CA2000F6E359 /* Topbar Grid Button.swift in Sources */,
 				F3924EE929A28D9D00C4CC77 /* Biometry Usage View.swift in Sources */,
+				F3553FB92B4093E600EF0FD2 /* Allocation List.swift in Sources */,
 				F36797702A393631009F2788 /* Inspector Button.swift in Sources */,
 				F3CB53D62971CF6B00A213B0 /* Database Card.swift in Sources */,
 				F31BA596295901F70006D126 /* Panel View.swift in Sources */,
@@ -3663,6 +3677,7 @@
 				F300892F2B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */,
 				F371468C2B123807001E0296 /* ActivityViewState.swift in Sources */,
 				F31BA58F295901B60006D126 /* Browser.swift in Sources */,
+				F3553FBF2B4094D700EF0FD2 /* Allocation Card.swift in Sources */,
 				F30089282B3C23A00051476C /* Contact Picker.swift in Sources */,
 				F38282032B0E14B30088C48B /* Live Activity.swift in Sources */,
 				F3BC03B72B1FF8E40011F98A /* Database Context Menu.swift in Sources */,
@@ -3939,6 +3954,7 @@
 				F389BB662A05B5B500911EBF /* Support.swift in Sources */,
 				F32FD71F2B1E060400723B88 /* Network Calls.swift in Sources */,
 				F36D534D2A05B98E007324C6 /* Nav State.swift in Sources */,
+				F3553FBA2B4093E600EF0FD2 /* Allocation List.swift in Sources */,
 				F389BB602A05B57D00911EBF /* Gauge Regular.swift in Sources */,
 				F30C13002A54593700A7EFF0 /* Login Container.swift in Sources */,
 				F3EB09EE2A2987F00073916A /* QuickLook File.swift in Sources */,
@@ -3964,6 +3980,7 @@
 				F3464D322A863A6600188B0C /* Send Command.swift in Sources */,
 				F3A994AC2A17904F00530615 /* Map VM.swift in Sources */,
 				F3B81DF22A49C96000633B66 /* Info Absolute Stats.swift in Sources */,
+				F3553FC02B4094D700EF0FD2 /* Allocation Card.swift in Sources */,
 				F3880A272A92A15E0052A978 /* Contact Manager.swift in Sources */,
 				F36D53452A05B924007324C6 /* Auth View.swift in Sources */,
 				F3BC03C32B2063820011F98A /* Debug Key.swift in Sources */,
@@ -4025,6 +4042,7 @@
 				F36FDB97295AF4A900D45070 /* Browser VM.swift in Sources */,
 				F3A1D2362A201CBB0053261E /* Browser Spec.swift in Sources */,
 				F3BC03BE2B1FFBD50011F98A /* Backup Context Menu.swift in Sources */,
+				F3553FBD2B40945C00EF0FD2 /* Allocation List Parent.swift in Sources */,
 				F399933B2AF2E491006E8A9A /* Other Settings.swift in Sources */,
 				F325F7042A54BF7A00E89EC4 /* InfoTab Model.swift in Sources */,
 				F32E88C92AF83E3F00959D49 /* Topbar Admin Button.swift in Sources */,
