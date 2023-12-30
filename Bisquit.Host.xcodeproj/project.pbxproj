@@ -357,6 +357,8 @@
 		F354E9842A48CA2000F6E359 /* Topbar Grid Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F354E9822A48CA2000F6E359 /* Topbar Grid Button.swift */; };
 		F3553FB32B40653000EF0FD2 /* Panel Settings Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3553FB22B40653000EF0FD2 /* Panel Settings Parent.swift */; };
 		F3553FB42B4065A300EF0FD2 /* Panel Settings Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3553FB22B40653000EF0FD2 /* Panel Settings Parent.swift */; };
+		F3553FB52B40939800EF0FD2 /* Allocation VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCF5C42B3457AE005FFF2C /* Allocation VM.swift */; };
+		F3553FB62B40939C00EF0FD2 /* Allocation VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCF5C42B3457AE005FFF2C /* Allocation VM.swift */; };
 		F358132B2A1F5D2A002ADFA4 /* Linking VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */; };
 		F358132C2A1F5D2A002ADFA4 /* Linking VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */; };
 		F35B2A0229FFD6AB006E5FD2 /* CloudKit Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B2A0129FFD6AB006E5FD2 /* CloudKit Model.swift */; };
@@ -1736,7 +1738,6 @@
 			children = (
 				F3CCF5C02B34576F005FFF2C /* Allocation List.swift */,
 				F3CCF5C22B345792005FFF2C /* Allocation Card.swift */,
-				F3CCF5C42B3457AE005FFF2C /* Allocation VM.swift */,
 			);
 			path = Allocations;
 			sourceTree = "<group>";
@@ -1745,8 +1746,8 @@
 			isa = PBXGroup;
 			children = (
 				F304498929E990E9006DC0C7 /* Cloud Keys.swift */,
-				F3A31B082B0B161D00F89C51 /* Cloud Key Card.swift */,
 				F300892E2B3DC4B20051476C /* Cloud Key Context Menu.swift */,
+				F3A31B082B0B161D00F89C51 /* Cloud Key Card.swift */,
 			);
 			path = "iCloud API-keys";
 			sourceTree = "<group>";
@@ -1979,7 +1980,7 @@
 				F3B81DF02A49C96000633B66 /* Info Absolute Stats.swift */,
 				F3E467512A49903900FABE5F /* Info Stat.swift */,
 				F325F7022A54BF7A00E89EC4 /* InfoTab Model.swift */,
-				F306530C2B3E337A001682A2 /* SFTP */,
+				F3553FB72B4093B400EF0FD2 /* Allocations */,
 				F337C15E2A8C2B19006F321C /* Startup & Settings */,
 				F3FF5A012A4A318E003A1973 /* Users */,
 				F3C8C76F2A3A9B23000CC7E3 /* Logs */,
@@ -2048,6 +2049,7 @@
 			isa = PBXGroup;
 			children = (
 				F31BA5A1295902470006D126 /* Info */,
+				F306530C2B3E337A001682A2 /* SFTP */,
 				F31BA5AA2959028A0006D126 /* Console */,
 				F31BA5B3295902DC0006D126 /* Files */,
 				F31BA5D1295904E40006D126 /* Data */,
@@ -2236,6 +2238,14 @@
 				F378EF8229D6C91300BC4849 /* Gauge Disk.swift */,
 			);
 			path = Elements;
+			sourceTree = "<group>";
+		};
+		F3553FB72B4093B400EF0FD2 /* Allocations */ = {
+			isa = PBXGroup;
+			children = (
+				F3CCF5C42B3457AE005FFF2C /* Allocation VM.swift */,
+			);
+			path = Allocations;
 			sourceTree = "<group>";
 		};
 		F3565B7C295E5F9E0092874A /* Browser */ = {
@@ -3536,6 +3546,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3AE522329ACF7D600CB3895 /* Server Card VM.swift in Sources */,
+				F3553FB52B40939800EF0FD2 /* Allocation VM.swift in Sources */,
 				F3D52B252B13FE9C00167DD6 /* App Delegate.swift in Sources */,
 				F3AF96F929DF277A00D30A8F /* Backup Card.swift in Sources */,
 				F3D2951C2AF3975300ED43A0 /* Cache Model.swift in Sources */,
@@ -3889,6 +3900,7 @@
 				F325F7012A54BBCF00E89EC4 /* InfoTab Allocation.swift in Sources */,
 				F39626F32A7AD64B0057E356 /* Ansi.swift in Sources */,
 				F30088A02B3A17DF0051476C /* Backup VM.swift in Sources */,
+				F3553FB62B40939C00EF0FD2 /* Allocation VM.swift in Sources */,
 				F358132C2A1F5D2A002ADFA4 /* Linking VM.swift in Sources */,
 				F3E024C72B228F4C00FFF686 /* New Task Sheet.swift in Sources */,
 				F3C9D8622B319B9E00265492 /* Permission Card.swift in Sources */,
