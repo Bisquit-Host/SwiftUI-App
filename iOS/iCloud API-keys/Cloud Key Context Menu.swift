@@ -24,5 +24,11 @@ struct CloudKeyContextMenu: View {
 #if !os(tvOS)
         ShareLink(item: key.key, message: Text("API-key"))
 #endif
+        
+        Section {
+            MenuButton("Delete", role: .destructive, icon: "trash") {
+                key.modelContext?.delete(key)
+            }
+        }
     }
 }

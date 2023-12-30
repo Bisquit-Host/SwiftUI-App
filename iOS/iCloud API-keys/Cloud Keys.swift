@@ -21,21 +21,19 @@ struct CloudKeys: View {
     var body: some View {
         NavigationView {
             List {
-                if keys.isEmpty {
-                    ContentUnavailableView("No API-keys found",
-                                           systemImage: "exclamationmark.triangle",
-                                           description: nil)
-                } else {
-                    Section("API-keys") {
-                        TipView(Tip_CloudKeys())
-                        
-                        ForEach(keys) { key in
-                            CloudKeyCard($apiKey, key: key) {
-                                dismiss()
-                                validate()
-                            }
+                Section {
+                    TipView(Tip_CloudKeys())
+                    
+                    ForEach(keys) { key in
+                        CloudKeyCard($apiKey, key: key) {
+                            dismiss()
+                            validate()
                         }
-                        .onDelete(perform: deleteItems)
+                    }
+                    .onDelete(perform: deleteItems)
+                } header: {
+                    if !keys.isEmpty {
+                        Text("API-keys")
                     }
                 }
 #if os(xrOS)
@@ -48,6 +46,13 @@ struct CloudKeys: View {
             }
             .navigationTitle("iCloud")
             .toolbarTitleDisplayMode(.inline)
+            .overlay {
+                if keys.isEmpty {
+                    ContentUnavailableView("No API-keys found",
+                                           systemImage: "exclamationmark.triangle",
+                                           description: nil)
+                }
+            }
         }
         .presentationDetents([.medium])
     }

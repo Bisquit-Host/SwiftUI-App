@@ -13,15 +13,8 @@ struct ServerList: View {
         ScrollView(showsIndicators: false) {
             ServerListTopbar($binding.filterBySuspended)
             
-            if vm.filteredServers.isEmpty, !vm.searchField.isEmpty {
-                ContentUnavailableView("No Results for \"\(vm.searchField)\"",
-                                       systemImage: "externaldrive",
-                                       description: Text("Check the spelling or try another search")
-                )
-            } else {
-                ServerListGrid(vm.filteredServers)
-                    .padding(4)
-            }
+            ServerListGrid(vm.filteredServers)
+                .padding(4)
             
             if !vm.filteredServers.isEmpty {
                 ServerListFooter()
@@ -53,6 +46,14 @@ struct ServerList: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 SettingsButton()
                     .environment(vm)
+            }
+        }
+        .overlay {
+            if vm.filteredServers.isEmpty, !vm.searchField.isEmpty {
+                ContentUnavailableView("No Results for \"\(vm.searchField)\"",
+                                       systemImage: "externaldrive",
+                                       description: Text("Check the spelling or try another search")
+                )
             }
         }
         .sheet($binding.sheetGuide) {
