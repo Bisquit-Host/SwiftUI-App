@@ -17,6 +17,8 @@ final class LinkingVM {
                         url: URL
     ) {
         let components = url.pathComponents
+        print(url.description)
+        print(components)
         
         guard let index = components.firstIndex(of: "server"),
               index + 1 < components.count else {
@@ -26,16 +28,12 @@ final class LinkingVM {
         let id = components[index + 1]
         let tab = (index + 2 < components.count) ? components[index + 2] : ""
         
-        serverDetailsAPI(id) { [weak self] result in
-            guard let self else {
-                return
-            }
-            
+        serverDetailsAPI(id) { result in
             switch result {
             case .success:
-                let tabb = self.tabMapping[tab] ?? .info
+                let tabOnStart = self.tabMapping[tab] ?? .info
                 
-                settings.lastTabPanel = tabb
+                settings.lastTabPanel = tabOnStart
                 navState.navigate(.toPanel(id))
                 
             case .failure(let error):

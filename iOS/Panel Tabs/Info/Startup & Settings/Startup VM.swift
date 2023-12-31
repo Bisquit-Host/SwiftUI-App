@@ -16,7 +16,12 @@ final class StartupVM {
     var sortedDockerImages: [(key: String, value: String)] {
         Array(dockerImages)
             .sorted {
-                Int($0.key.split(separator: " ").last!)! > Int($1.key.split(separator: " ").last!)!
+                guard let firstKeyNumber = $0.key.split(separator: " ").last.flatMap({ Int($0) }),
+                      let secondKeyNumber = $1.key.split(separator: " ").last.flatMap({ Int($0) }) else {
+                    return false
+                }
+                
+                return firstKeyNumber > secondKeyNumber
             }
     }
     

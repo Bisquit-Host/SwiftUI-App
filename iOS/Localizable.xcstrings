@@ -2420,6 +2420,9 @@
     "IP Address" : {
 
     },
+    "IP: %@" : {
+
+    },
     "is Suspended" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3224,6 +3227,9 @@
           }
         }
       }
+    },
+    "Port: %lld" : {
+
     },
     "Power" : {
 
