@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct CacheSettings: View {
+    @State private var cache = CacheVM()
     @EnvironmentObject private var settings: SettingsStorage
     
     var body: some View {
@@ -11,6 +12,7 @@ struct CacheSettings: View {
             
             CacheExpiration()
         }
+        .environment(cache)
         .listRowBackground(settings.transparentList ? .clear : Color.list)
     }
 }

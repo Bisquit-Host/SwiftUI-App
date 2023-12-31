@@ -2835,8 +2835,8 @@
 				F3D7D87A29E83D1800BCAFFE /* Cache Settings.swift */,
 				F37266E829D9EFFE005FD103 /* Cache Size.swift */,
 				F3D902DE29DC445A004E76C9 /* Cache Limit.swift */,
-				F3D2951B2AF3975300ED43A0 /* Cache Model.swift */,
 				F3A391B929DB5E6900591C84 /* Cache Expiration.swift */,
+				F3D2951B2AF3975300ED43A0 /* Cache Model.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
