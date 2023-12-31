@@ -10,7 +10,6 @@ struct UserList: View {
             Section {
                 ForEach(vm.users, id: \.uuid) { user in
                     UserCard(user)
-                        .environment(vm)
                 }
                 .onDelete(perform: delete)
             }
@@ -19,6 +18,7 @@ struct UserList: View {
                 sheetInvitation = true
             }
         }
+        .environment(vm)
         .navigationTitle("Users")
         .toolbarTitleDisplayMode(.inline)
         .task {
