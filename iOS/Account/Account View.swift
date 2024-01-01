@@ -33,6 +33,8 @@ struct AccountView: View {
                     ListButton("Setup 2FA", actionIcon: "key.viewfinder")
                 }
             }
+            
+            SSHList()
         }
         .navigationTitle("Account")
         .toolbarTitleDisplayMode(.inline)
