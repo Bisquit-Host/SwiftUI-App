@@ -1630,6 +1630,9 @@
     "Download with QR" : {
 
     },
+    "Drop here" : {
+
+    },
     "Duplicate" : {
 
     },
@@ -1686,6 +1689,9 @@
 
     },
     "Endpoint: %@" : {
+
+    },
+    "Enter or drag-and-drop your public SSH-key" : {
 
     },
     "Error" : {
@@ -2797,7 +2803,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Имя"
+            "value" : "Название"
           }
         }
       }

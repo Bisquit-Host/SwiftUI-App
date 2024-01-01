@@ -6,7 +6,7 @@ final class SSHVM {
     var keys: [SSHKey] = []
     
     func fetchKeys() {
-        sshListAPI(printResponse: true) { result in
+        sshListAPI { result in
             switch result {
             case .success(let model):
                 if let model = model?.data {
@@ -23,11 +23,19 @@ final class SSHVM {
         }
     }
     
-    func createKey(_ name: String, publicKey: String) {
+    func createKey(_ name: String, publicKey: String, onSuccess: @escaping () -> ()) {
         sshCreateAPI(name, publicKey: publicKey, printResponse: true) { result in
             switch result {
-            case .success:
-                self.fetchKeys()
+            case .success(let model):
+                if let model = model?.attributes {
+                    withAnimation {
+                        self.keys.append(model)
+                    }
+                    
+                    onSuccess()
+                } else {
+                    self.fetchKeys()
+                }
                 
             case .failure(let error):
                 networkCallError(#function, error)
@@ -35,11 +43,17 @@ final class SSHVM {
         }
     }
     
-    func deleteKey(_ footprint: String) {
-        sshDeleteAPI(footprint, printResponse: true) { result in
+    func deleteKey(_ fingerprint: String) {
+        sshDeleteAPI(fingerprint, printResponse: true) { result in
             switch result {
             case .success:
-                self.fetchKeys()
+                if let index = self.keys.firstIndex(where: {
+                    $0.fingerprint == fingerprint
+                }) {
+                    self.keys.remove(at: index)
+                } else {
+                    self.fetchKeys()
+                }
                 
             case .failure(let error):
                 networkCallError(#function, error)
