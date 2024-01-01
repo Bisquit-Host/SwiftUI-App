@@ -661,6 +661,18 @@
 		F3A994AE2A17A9B100530615 /* Map List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994AD2A17A9B100530615 /* Map List.swift */; };
 		F3A994AF2A17AED500530615 /* Map List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994AD2A17A9B100530615 /* Map List.swift */; };
 		F3AE522329ACF7D600CB3895 /* Server Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* Server Card VM.swift */; };
+		F3AF91C12B423492001D8F80 /* SSH VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91C02B423492001D8F80 /* SSH VM.swift */; };
+		F3AF91C22B423492001D8F80 /* SSH VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91C02B423492001D8F80 /* SSH VM.swift */; };
+		F3AF91C32B423492001D8F80 /* SSH VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91C02B423492001D8F80 /* SSH VM.swift */; };
+		F3AF91C52B423535001D8F80 /* SSH List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91C42B423535001D8F80 /* SSH List.swift */; };
+		F3AF91C62B423535001D8F80 /* SSH List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91C42B423535001D8F80 /* SSH List.swift */; };
+		F3AF91C72B423535001D8F80 /* SSH List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91C42B423535001D8F80 /* SSH List.swift */; };
+		F3AF91C92B4235BB001D8F80 /* SSH Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91C82B4235BB001D8F80 /* SSH Card.swift */; };
+		F3AF91CA2B4235BB001D8F80 /* SSH Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91C82B4235BB001D8F80 /* SSH Card.swift */; };
+		F3AF91CB2B4235BB001D8F80 /* SSH Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91C82B4235BB001D8F80 /* SSH Card.swift */; };
+		F3AF91CD2B423A26001D8F80 /* SSH Create View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91CC2B423A26001D8F80 /* SSH Create View.swift */; };
+		F3AF91CE2B423A26001D8F80 /* SSH Create View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91CC2B423A26001D8F80 /* SSH Create View.swift */; };
+		F3AF91CF2B423A26001D8F80 /* SSH Create View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91CC2B423A26001D8F80 /* SSH Create View.swift */; };
 		F3AF96D329DE127400D30A8F /* Start Page VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA57B2959011B0006D126 /* Start Page VM.swift */; };
 		F3AF96F929DF277A00D30A8F /* Backup Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF96F829DF277A00D30A8F /* Backup Card.swift */; };
 		F3AFCB952A4AF6C10080C257 /* FileNameAndIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3499EFC2A277E3D006101B7 /* FileNameAndIcon.swift */; };
@@ -1431,6 +1443,10 @@
 		F3A994A92A177ED100530615 /* Map VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Map VM.swift"; sourceTree = "<group>"; };
 		F3A994AD2A17A9B100530615 /* Map List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Map List.swift"; sourceTree = "<group>"; };
 		F3AE522229ACF7D600CB3895 /* Server Card VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card VM.swift"; sourceTree = "<group>"; };
+		F3AF91C02B423492001D8F80 /* SSH VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SSH VM.swift"; sourceTree = "<group>"; };
+		F3AF91C42B423535001D8F80 /* SSH List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SSH List.swift"; sourceTree = "<group>"; };
+		F3AF91C82B4235BB001D8F80 /* SSH Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SSH Card.swift"; sourceTree = "<group>"; };
+		F3AF91CC2B423A26001D8F80 /* SSH Create View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SSH Create View.swift"; sourceTree = "<group>"; };
 		F3AF96F829DF277A00D30A8F /* Backup Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Backup Card.swift"; sourceTree = "<group>"; };
 		F3B1196C29A13CA6003BB68C /* Settings Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings Storage.swift"; sourceTree = "<group>"; };
 		F3B1196E29A155D8003BB68C /* Suspended Server Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Suspended Server Card.swift"; sourceTree = "<group>"; };
@@ -1874,10 +1890,10 @@
 				F31A3F4A29EEEB8200BC0DFB /* StartPage */,
 				F31BA587295901750006D126 /* Auth */,
 				F300892C2B3D988C0051476C /* iCloud API-keys */,
+				F3D2643C2A66AB97005C3777 /* Account */,
 				F31BA594295901DC0006D126 /* Server List */,
 				F31BA59B295902140006D126 /* Panel */,
 				F32082442B3E170000CFED80 /* Panel Tabs */,
-				F3D2643C2A66AB97005C3777 /* Account */,
 				F3924EDD29A2308C00C4CC77 /* Settings */,
 				F30D723A29D36D0F0048D7BD /* Guide */,
 				F3A80E8529A1973600190EC6 /* Discover */,
@@ -2786,6 +2802,10 @@
 			children = (
 				F3D2643D2A66ABB2005C3777 /* Account Parent.swift */,
 				F3D264392A66AB92005C3777 /* Account View.swift */,
+				F3AF91C42B423535001D8F80 /* SSH List.swift */,
+				F3AF91CC2B423A26001D8F80 /* SSH Create View.swift */,
+				F3AF91C82B4235BB001D8F80 /* SSH Card.swift */,
+				F3AF91C02B423492001D8F80 /* SSH VM.swift */,
 				F3D264432A66B3A6005C3777 /* QR Code View.swift */,
 				F3D264402A66ABBE005C3777 /* Account VM.swift */,
 			);
@@ -3610,10 +3630,12 @@
 				F3FF5A032A4A359C003A1973 /* InfoTab Buttons.swift in Sources */,
 				F3DC4E2629AEC36300D27EC5 /* Credentials View.swift in Sources */,
 				F31BA591295901C00006D126 /* Browser VM.swift in Sources */,
+				F3AF91CD2B423A26001D8F80 /* SSH Create View.swift in Sources */,
 				F3FA4DEA2A4CE82000547722 /* Account Settings.swift in Sources */,
 				F3E8415629FECB6800609DA3 /* Browser Sticker.swift in Sources */,
 				F385824229D6215100BEEE1D /* App Icon.swift in Sources */,
 				F36797782A3A55E1009F2788 /* Log List Parent.swift in Sources */,
+				F3AF91C12B423492001D8F80 /* SSH VM.swift in Sources */,
 				F3EDEE3129C06E9700B08696 /* Panel Model.swift in Sources */,
 				F37A36732A3515DC00517EFC /* Server Settings VM.swift in Sources */,
 				F311CAAE2A646612004E4A4A /* Log Detail View.swift in Sources */,
@@ -3757,6 +3779,7 @@
 				F3BF97AA29BFC7E9007B9C9C /* Websocket.swift in Sources */,
 				F337B3A829BC6B5400CC1195 /* Server List Grid.swift in Sources */,
 				F37266BC29D811B7005FD103 /* File View.swift in Sources */,
+				F3AF91C52B423535001D8F80 /* SSH List.swift in Sources */,
 				F31BA56A2959007E0006D126 /* Nav Destinations.swift in Sources */,
 				F3D2643A2A66AB92005C3777 /* Account View.swift in Sources */,
 				F31A3F4C29EF0FC900BC0DFB /* Discover VM.swift in Sources */,
@@ -3773,6 +3796,7 @@
 				F33944112A49022A00E2F0FC /* InfoTab Card.swift in Sources */,
 				F3A7BCD1296B44FF00E080C1 /* Nav Extension.swift in Sources */,
 				F3BC03B22B1FF4830011F98A /* Task Context Menu.swift in Sources */,
+				F3AF91C92B4235BB001D8F80 /* SSH Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3910,6 +3934,7 @@
 				F30089022B3B62460051476C /* User Invitation Permission.swift in Sources */,
 				F31485212A34665000AF5CCA /* Browser Sticker.swift in Sources */,
 				F37A36762A35173F00517EFC /* Console View.swift in Sources */,
+				F3AF91CA2B4235BB001D8F80 /* SSH Card.swift in Sources */,
 				F30089292B3C23A00051476C /* Contact Picker.swift in Sources */,
 				F36D53302A05B896007324C6 /* Section Header.swift in Sources */,
 				F325F7012A54BBCF00E89EC4 /* InfoTab Allocation.swift in Sources */,
@@ -4022,6 +4047,7 @@
 				F389BB6D2A05B5EE00911EBF /* Cache Size.swift in Sources */,
 				F30088AB2B3A1A520051476C /* Schedule VM.swift in Sources */,
 				F36D53332A05B8A9007324C6 /* Folder Path.swift in Sources */,
+				F3AF91CE2B423A26001D8F80 /* SSH Create View.swift in Sources */,
 				F3A1D2392A2024E10053261E /* Browser Hints.swift in Sources */,
 				F3464D242A86397E00188B0C /* PowerSignalAppEnum.swift in Sources */,
 				F36D532B2A05B875007324C6 /* Backup List.swift in Sources */,
@@ -4036,6 +4062,7 @@
 				F3E467532A49903900FABE5F /* Info Stat.swift in Sources */,
 				F37A44352A05B0AA004FFDB0 /* Settings Storage.swift in Sources */,
 				F3B637532A35F3EA00CB374C /* Command Line.swift in Sources */,
+				F3AF91C22B423492001D8F80 /* SSH VM.swift in Sources */,
 				F3FF5A0A2A4A3745003A1973 /* InfoTab Background.swift in Sources */,
 				F3C9D85A2B31135B00265492 /* Permission List.swift in Sources */,
 				F3FF5A042A4A359C003A1973 /* InfoTab Buttons.swift in Sources */,
@@ -4058,6 +4085,7 @@
 				F3464D1D2A86396300188B0C /* Intents.intentdefinition in Sources */,
 				F330013C2A4CEC320063FE0F /* Apikey List.swift in Sources */,
 				F36D53352A05B8B6007324C6 /* Backup Card.swift in Sources */,
+				F3AF91C62B423535001D8F80 /* SSH List.swift in Sources */,
 				F389BB542A05B37500911EBF /* Panel Model.swift in Sources */,
 				F367977C2A3A55F4009F2788 /* Log Card.swift in Sources */,
 				F37A36742A35173900517EFC /* Sftp View.swift in Sources */,
@@ -4097,6 +4125,7 @@
 				F3D2958B2AF39FD500ED43A0 /* Settings Parent.swift in Sources */,
 				F3D295612AF39E8900ED43A0 /* FileTab NewFolder.swift in Sources */,
 				F3D295392AF39D1B00ED43A0 /* Settings Storage.swift in Sources */,
+				F3AF91C72B423535001D8F80 /* SSH List.swift in Sources */,
 				F3D295D22AF3A30400ED43A0 /* Console Tab.swift in Sources */,
 				F3D295A82AF3A0DF00ED43A0 /* Account Settings.swift in Sources */,
 				F3D295B52AF3A15D00ED43A0 /* Design Settings.swift in Sources */,
@@ -4123,6 +4152,7 @@
 				F3D295562AF39E1A00ED43A0 /* Tip Cloud Keys.swift in Sources */,
 				F3D2954F2AF39DE600ED43A0 /* Browser VM.swift in Sources */,
 				F3D2955F2AF39E7700ED43A0 /* FileTab VM.swift in Sources */,
+				F3AF91CB2B4235BB001D8F80 /* SSH Card.swift in Sources */,
 				F3D295AA2AF3A0E600ED43A0 /* Cache Settings.swift in Sources */,
 				F3D295372AF39D1300ED43A0 /* Tabs.swift in Sources */,
 				F3D295892AF39FC700ED43A0 /* Upload File.swift in Sources */,
@@ -4183,6 +4213,7 @@
 				F3D295AC2AF3A0F700ED43A0 /* Cache Model.swift in Sources */,
 				F3D2955D2AF39E6800ED43A0 /* Map View.swift in Sources */,
 				F3D295ED2AF3A45300ED43A0 /* ServerCardNaStatus.swift in Sources */,
+				F3AF91C32B423492001D8F80 /* SSH VM.swift in Sources */,
 				F35FEB0D2B09F003004DA05D /* API Key.swift in Sources */,
 				F3D2956E2AF39EE800ED43A0 /* Websocket Message.swift in Sources */,
 				F3D2959C2AF3A07200ED43A0 /* Folder File.swift in Sources */,
@@ -4204,6 +4235,7 @@
 				F3D295DD2AF3A36300ED43A0 /* Backup List.swift in Sources */,
 				F3BC03C42B2063820011F98A /* Debug Key.swift in Sources */,
 				F3D2956A2AF39ECC00ED43A0 /* Server List Grid.swift in Sources */,
+				F3AF91CF2B423A26001D8F80 /* SSH Create View.swift in Sources */,
 				F3D2958A2AF39FD000ED43A0 /* User Email.swift in Sources */,
 				F3D295A02AF3A09500ED43A0 /* QuickLook File.swift in Sources */,
 				F3D295A72AF3A0DB00ED43A0 /* Log Card.swift in Sources */,
