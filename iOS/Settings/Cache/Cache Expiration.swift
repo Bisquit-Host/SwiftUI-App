@@ -2,9 +2,11 @@ import ScrechKit
 import Kingfisher
 
 struct CacheExpiration: View {
-    private let intervals: [CacheExpiration] = [.day, .week, .month, .year, .never]
+    @Environment(CacheVM.self) private var cache
     
     @AppStorage("cacheExpiration") private var cacheExpiration: CacheExpiration = .month
+    
+    private let intervals: [CacheExpiration] = [.day, .week, .month, .year, .never]
     
     var body: some View {
         Menu {
@@ -40,7 +42,7 @@ struct CacheExpiration: View {
         case .never: newCacheExpiration = .never
         }
         
-        CacheVM().updateExpirationTime(to: newCacheExpiration)
+        cache.updateExpirationTime(to: newCacheExpiration)
     }
 }
 

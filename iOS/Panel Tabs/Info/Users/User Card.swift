@@ -50,6 +50,10 @@ struct UserCard: View {
         }
 #if !os(watchOS)
         .contextMenu {
+            MenuButton("Details", icon: "info.circle") {
+                sheetDetails = true
+            }
+            
             Section {
                 MenuButton("Delete", role: .destructive, icon: "trash") {
                     vm.delete(user.uuid)

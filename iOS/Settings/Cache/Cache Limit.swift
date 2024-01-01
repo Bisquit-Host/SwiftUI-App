@@ -1,9 +1,11 @@
 import ScrechKit
 
 struct CacheLimit: View {
-    private let limits: [CacheLimit] = [.MB50, .MB250, .GB1]
+    @Environment(CacheVM.self) private var cache
     
     @AppStorage("cacheLimit") private var cacheLimit: CacheLimit = .GB1
+    
+    private let limits: [CacheLimit] = [.MB50, .MB250, .GB1]
     
     var body: some View {
         Menu {
@@ -42,7 +44,7 @@ struct CacheLimit: View {
             newCacheLimit = 1000 * 1024 * 2
         }
         
-        CacheVM().updateLimit(to: newCacheLimit)
+        cache.updateLimit(to: newCacheLimit)
     }
 }
 

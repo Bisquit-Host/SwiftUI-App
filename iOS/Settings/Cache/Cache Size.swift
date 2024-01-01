@@ -2,7 +2,7 @@ import ScrechKit
 import Kingfisher
 
 struct CacheSize: View {
-    private var cache = CacheVM()
+    @Environment(CacheVM.self) private var cache
     
     var body: some View {
         Menu {

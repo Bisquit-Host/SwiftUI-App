@@ -2,6 +2,7 @@ import ScrechKit
 
 struct AccountView: View {
     private var vm = AccountVM()
+    private var sshVM = SSHVM()
     
     @State private var sheetCode = false
     
@@ -33,12 +34,18 @@ struct AccountView: View {
                     ListButton("Setup 2FA", actionIcon: "key.viewfinder")
                 }
             }
+            
+            Section("SSH Keys") {
+                SSHList()
+                    .environment(sshVM)
+            }
         }
         .navigationTitle("Account")
         .toolbarTitleDisplayMode(.inline)
         .task {
             vm.fetch()
             vm.twoFaDetails()
+            sshVM.fetchKeys()
         }
         .sheet($sheetCode) {
             QRCodeView(vm.qrCodeUrl)
