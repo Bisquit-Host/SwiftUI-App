@@ -1,30 +1,32 @@
 import SwiftUI
 
 struct SSHList: View {
-    private var vm = SSHVM()
+    @Environment(SSHVM.self) private var vm
     
     @State private var sheetCreate = false
-        
+    
     var body: some View {
+        ForEach(vm.keys, id: \.name) { key in
+            SSHCard(key)
+        }
+        .onDelete(perform: deleteItems)
+        
         Section {
-            ForEach(vm.keys, id: \.name) { key in
-                SSHCard(key)
+            Button("Create") {
+                sheetCreate = true
             }
-            
-            Section {
-                Button("Create") {
-                    sheetCreate = true
-                }
-            }
-        } header: {
-            Text("SSH Keys")
         }
         .task {
             vm.fetchKeys()
         }
         .sheet($sheetCreate) {
             SSHCreateView()
-                .environment(vm)
+        }
+    }
+    
+    private func deleteItems(offsets: IndexSet) {
+        offsets.forEach { index in
+            vm.deleteKey(vm.keys[index].fingerprint)
         }
     }
 }

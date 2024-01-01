@@ -1,4 +1,4 @@
-import Foundation
+import SwiftUI
 import PteroNet
 
 @Observable
@@ -10,8 +10,10 @@ final class SSHVM {
             switch result {
             case .success(let model):
                 if let model = model?.data {
-                    self.keys = model.map {
-                        $0.attributes
+                    withAnimation {
+                        self.keys = model.map {
+                            $0.attributes
+                        }
                     }
                 }
                 

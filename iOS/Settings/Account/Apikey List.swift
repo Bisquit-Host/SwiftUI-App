@@ -43,10 +43,8 @@ struct ApikeyList: View {
     }
     
     private func deleteItems(_ offsets: IndexSet) {
-        withAnimation {
-            for key in offsets {
-                vm.delete(vm.keys[key].attributes.id)
-            }
+        for key in offsets {
+            vm.delete(vm.keys[key].attributes.id)
         }
     }
 }

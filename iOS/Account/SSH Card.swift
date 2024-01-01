@@ -18,8 +18,10 @@ struct SSHCard: View {
                 Text(key.name)
                 
                 Text(key.fingerprint)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.8)
                 
-                Text(key.createdAt.description)
+                Text(key.createdAt)
             }
             .footnote()
         }
