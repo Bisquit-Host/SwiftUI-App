@@ -2802,12 +2802,9 @@
 			children = (
 				F3D2643D2A66ABB2005C3777 /* Account Parent.swift */,
 				F3D264392A66AB92005C3777 /* Account View.swift */,
-				F3AF91C42B423535001D8F80 /* SSH List.swift */,
-				F3AF91CC2B423A26001D8F80 /* SSH Create View.swift */,
-				F3AF91C82B4235BB001D8F80 /* SSH Card.swift */,
-				F3AF91C02B423492001D8F80 /* SSH VM.swift */,
 				F3D264432A66B3A6005C3777 /* QR Code View.swift */,
 				F3D264402A66ABBE005C3777 /* Account VM.swift */,
+				F3DF4A0C2B485D50003C6922 /* SSH */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -2859,6 +2856,17 @@
 				F3D2951B2AF3975300ED43A0 /* Cache Model.swift */,
 			);
 			path = Cache;
+			sourceTree = "<group>";
+		};
+		F3DF4A0C2B485D50003C6922 /* SSH */ = {
+			isa = PBXGroup;
+			children = (
+				F3AF91C42B423535001D8F80 /* SSH List.swift */,
+				F3AF91CC2B423A26001D8F80 /* SSH Create View.swift */,
+				F3AF91C82B4235BB001D8F80 /* SSH Card.swift */,
+				F3AF91C02B423492001D8F80 /* SSH VM.swift */,
+			);
+			path = SSH;
 			sourceTree = "<group>";
 		};
 		F3DF50D02B3965BD00206CAE /* Users */ = {

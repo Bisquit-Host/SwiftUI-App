@@ -47,6 +47,11 @@ struct AccountView: View {
             vm.twoFaDetails()
             sshVM.fetchKeys()
         }
+        .refreshable {
+            vm.fetch()
+            vm.twoFaDetails()
+            sshVM.fetchKeys()
+        }
         .sheet($sheetCode) {
             QRCodeView(vm.qrCodeUrl)
         }

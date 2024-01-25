@@ -20,8 +20,12 @@ struct BisquitHostApp: App {
     let container: ModelContainer
     
     init() {
+        let schema = Schema([
+            APIKey.self,
+        ])
+        
         do {
-            container = try ModelContainer(for: APIKey.self)
+            container = try ModelContainer(for: schema)
         } catch {
             fatalError("Failed to create model container")
         }
