@@ -952,20 +952,6 @@
     "Change Power" : {
 
     },
-    "Check the spelling or try another search" : {
-
-    },
-    "Check the spelling or try another search." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Убедитесь, что не допустили ошибок, или попробуйте другой запрос"
-          }
-        }
-      }
-    },
     "Choose File" : {
       "localizations" : {
         "ru" : {
@@ -2983,10 +2969,8 @@
     "No API-keys found" : {
 
     },
-    "No logs found" : {
-
-    },
     "No Results for \"%@\"" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -3354,9 +3338,6 @@
           }
         }
       }
-    },
-    "Refresh the list or contact support" : {
-
     },
     "Reinstall" : {
 

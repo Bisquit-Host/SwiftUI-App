@@ -19,7 +19,7 @@ extension View {
             case .toPanel(let id):
                 PanelView(id)
                 
-#if !os(xrOS)
+#if !os(visionOS)
             case .toFileManager(let id, let root):
                 FileTab(id, root: root)
                 

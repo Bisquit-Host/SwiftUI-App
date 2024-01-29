@@ -7,7 +7,7 @@ enum NavDestinations: Hashable {
     
     case toPanel(_ id: String)
     
-#if !os(xrOS)
+#if !os(visionOS)
     case toMap
     case toFileManager(_ id: String, root: String)
 #endif

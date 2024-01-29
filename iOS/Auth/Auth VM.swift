@@ -9,7 +9,7 @@ final class AuthVM {
     var textLogin = ""
     var bioType = "Unknown"
     
-#if !os(macOS) && !os(xrOS)
+#if !os(macOS) && !os(visionOS)
     let impactMed = UIImpactFeedbackGenerator(style: .heavy)
 #endif
     
