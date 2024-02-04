@@ -39,13 +39,6 @@ struct AuthView: View {
                 navState.navigate(.toServerList)
             }
         }
-        //        .typeText(
-        //            $typing.titleText,
-        //            isFinished: $typing.isTitleFinished,
-        //            finalText: typing.finalTitle,
-        //            isAnimated: !typing.isTitleFinished
-        //        )
-        //        .animation(.default.speed(0.25), value: typing.isTitleFinished)
     }
 }
 

@@ -165,6 +165,9 @@
 		F31BA5B2295902D50006D126 /* Text File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5B1295902D50006D126 /* Text File.swift */; };
 		F31BA5C9295904AC0006D126 /* Data Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5C8295904AC0006D126 /* Data Tab.swift */; };
 		F31D0BB52A2573E200119D07 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31D0BB42A2573E200119D07 /* Settings.swift */; };
+		F320DDA12B7046E100957D92 /* Panel Ornament Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = F320DDA02B7046E100957D92 /* Panel Ornament Info.swift */; };
+		F320DDA32B704E0100957D92 /* Preview Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F320DDA22B704E0100957D92 /* Preview Properties.swift */; };
+		F320DDA52B704E3C00957D92 /* Preview Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = F320DDA42B704E3C00957D92 /* Preview Property.swift */; };
 		F323BF9F2B20B84100116B97 /* Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F323BF9E2B20B84100116B97 /* Server Card Context Menu.swift */; };
 		F323BFA22B20DC9000116B97 /* Power Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F323BFA12B20DC9000116B97 /* Power Widget.swift */; };
 		F323BFA32B20DE4F00116B97 /* Network Calls.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32FD71D2B1E054300723B88 /* Network Calls.swift */; };
@@ -1262,6 +1265,9 @@
 		F31BA5B6295903100006D126 /* Des Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Des Image.swift"; sourceTree = "<group>"; };
 		F31BA5C8295904AC0006D126 /* Data Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data Tab.swift"; sourceTree = "<group>"; };
 		F31D0BB42A2573E200119D07 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		F320DDA02B7046E100957D92 /* Panel Ornament Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Panel Ornament Info.swift"; path = "../../../../Panel Ornament Info.swift"; sourceTree = "<group>"; };
+		F320DDA22B704E0100957D92 /* Preview Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Preview Properties.swift"; path = "../../../../Preview Properties.swift"; sourceTree = "<group>"; };
+		F320DDA42B704E3C00957D92 /* Preview Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preview Property.swift"; sourceTree = "<group>"; };
 		F323BF9E2B20B84100116B97 /* Server Card Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Context Menu.swift"; sourceTree = "<group>"; };
 		F323BFA12B20DC9000116B97 /* Power Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Widget.swift"; sourceTree = "<group>"; };
 		F323BFA42B211C3700116B97 /* Power Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Entry.swift"; sourceTree = "<group>"; };
@@ -2495,6 +2501,8 @@
 			isa = PBXGroup;
 			children = (
 				F3BD76F82A43C890003E7385 /* Panel View.swift */,
+				F320DDA02B7046E100957D92 /* Panel Ornament Info.swift */,
+				F320DDA22B704E0100957D92 /* Preview Properties.swift */,
 				F386941B2A4B3B1E002DEF90 /* Info */,
 				F389282B2A441D6B00561CDF /* Settings */,
 				F389282C2A441D7000561CDF /* Console */,
@@ -2677,9 +2685,10 @@
 				F3DAD6C02A47A967002ED405 /* Bisquit-Host-visionOS-Info.plist */,
 				F34AD7C62A5493CC007752A7 /* visionOS.entitlements */,
 				F3BD76FC2A43C892003E7385 /* Assets.xcassets */,
+				F320DDA42B704E3C00957D92 /* Preview Property.swift */,
 				F3F2BBA62A540C4D00D44CA6 /* Intro */,
-				F3A7CF6C2A44FCE700331B51 /* Auth */,
 				F3317AEB2A45E25500CA104D /* Guide */,
+				F3A7CF6C2A44FCE700331B51 /* Auth */,
 				F3A7CF6E2A44FD0100331B51 /* Settings */,
 				F3A7CF692A44F6CA00331B51 /* Server List */,
 				F38928212A44182400561CDF /* Panel */,
@@ -4353,6 +4362,7 @@
 				F3317AEA2A45E24F00CA104D /* Guide.swift in Sources */,
 				F3464D1B2A86396200188B0C /* Intents.intentdefinition in Sources */,
 				F3A7CF722A45150F00331B51 /* Server List Ornament.swift in Sources */,
+				F320DDA12B7046E100957D92 /* Panel Ornament Info.swift in Sources */,
 				F38694182A4B3AAF002DEF90 /* Panel Model.swift in Sources */,
 				F35F65952B1D1A0D00431EB7 /* Panel VM.swift in Sources */,
 				F39919172A4653A300CC73DA /* Linear Gauge.swift in Sources */,
@@ -4378,7 +4388,9 @@
 				F38928322A445EA900561CDF /* Server Card.swift in Sources */,
 				F3EEC03B2AF2F93800BFED78 /* Start Page VM.swift in Sources */,
 				F3F2BBA02A5405F800D44CA6 /* Type Text.swift in Sources */,
+				F320DDA32B704E0100957D92 /* Preview Properties.swift in Sources */,
 				F32FD71C2B1E044000723B88 /* Ansi.swift in Sources */,
+				F320DDA52B704E3C00957D92 /* Preview Property.swift in Sources */,
 				F3A7CF752A45159B00331B51 /* Server List Toolbar.swift in Sources */,
 				F3A7CF662A44F44A00331B51 /* Auth View.swift in Sources */,
 				F348C6E42A5438EB002D5BD6 /* App Container.swift in Sources */,

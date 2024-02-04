@@ -14,7 +14,6 @@ final class StartPageVM {
     var sheetSupport = false
     var sheetCloudKeys = false
     var sheetBrowsePlans = false
-    
     var trigger = false
     
 #if os(iOS)

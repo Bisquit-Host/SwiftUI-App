@@ -494,6 +494,9 @@
     "2FA" : {
 
     },
+    "10" : {
+
+    },
     "123" : {
 
     },
@@ -757,6 +760,9 @@
           }
         }
       }
+    },
+    "Backups:" : {
+
     },
     "Best Performance" : {
       "localizations" : {
@@ -1360,6 +1366,9 @@
           }
         }
       }
+    },
+    "Databases:" : {
+
     },
     "Day of month" : {
 
@@ -2980,6 +2989,9 @@
         }
       }
     },
+    "Node:" : {
+
+    },
     "Nodes" : {
 
     },
@@ -3081,6 +3093,9 @@
       }
     },
     "Overview" : {
+
+    },
+    "Panel" : {
 
     },
     "Password" : {
@@ -3637,6 +3652,9 @@
     "Server ID" : {
 
     },
+    "Server id:" : {
+
+    },
     "Server List" : {
       "localizations" : {
         "nl" : {
@@ -3778,6 +3796,9 @@
           }
         }
       }
+    },
+    "Show power buttons" : {
+
     },
     "Sign in" : {
       "localizations" : {
