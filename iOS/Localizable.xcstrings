@@ -491,10 +491,19 @@
     "1" : {
 
     },
+    "1.2.3.4.43.34" : {
+
+    },
+    "2d 12:12:12" : {
+
+    },
     "2FA" : {
 
     },
     "10" : {
+
+    },
+    "80%" : {
 
     },
     "123" : {
@@ -760,9 +769,6 @@
           }
         }
       }
-    },
-    "Backups:" : {
-
     },
     "Best Performance" : {
       "localizations" : {
@@ -1373,9 +1379,6 @@
         }
       }
     },
-    "Databases:" : {
-
-    },
     "Day of month" : {
 
     },
@@ -1597,6 +1600,9 @@
 
     },
     "Docker Image" : {
+
+    },
+    "Done" : {
 
     },
     "Download" : {
@@ -3004,9 +3010,6 @@
     "Node" : {
 
     },
-    "Node:" : {
-
-    },
     "Nodes" : {
 
     },
@@ -3111,9 +3114,6 @@
       }
     },
     "Overview" : {
-
-    },
-    "Panel" : {
 
     },
     "Password" : {
@@ -3494,6 +3494,9 @@
     "Rotate password" : {
 
     },
+    "Running" : {
+
+    },
     "Save" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3667,10 +3670,10 @@
     "Server description" : {
 
     },
-    "Server ID" : {
+    "Server id" : {
 
     },
-    "Server id:" : {
+    "Server ID" : {
 
     },
     "Server List" : {

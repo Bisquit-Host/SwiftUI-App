@@ -224,6 +224,7 @@
 		F33001422A4CEF840063FE0F /* Apikey VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33001402A4CEF840063FE0F /* Apikey VM.swift */; };
 		F33001442A4CF06D0063FE0F /* Apikey Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33001432A4CF06D0063FE0F /* Apikey Card.swift */; };
 		F33001452A4CF06D0063FE0F /* Apikey Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33001432A4CF06D0063FE0F /* Apikey Card.swift */; };
+		F33174D92B72582F003758EA /* Ornament Info Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33174D82B72582F003758EA /* Ornament Info Properties.swift */; };
 		F3317AEA2A45E24F00CA104D /* Guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3317AE92A45E24F00CA104D /* Guide.swift */; };
 		F3317AED2A45E26900CA104D /* Guide Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3317AEC2A45E26900CA104D /* Guide Model.swift */; };
 		F3317AEE2A45E33300CA104D /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA56F295900C20006D126 /* Formatters.swift */; };
@@ -1292,6 +1293,9 @@
 		F330013A2A4CEC320063FE0F /* Apikey List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Apikey List.swift"; sourceTree = "<group>"; };
 		F33001402A4CEF840063FE0F /* Apikey VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Apikey VM.swift"; sourceTree = "<group>"; };
 		F33001432A4CF06D0063FE0F /* Apikey Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Apikey Card.swift"; sourceTree = "<group>"; };
+		F33174D82B72582F003758EA /* Ornament Info Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Ornament Info Properties.swift"; path = "../../../../Ornament Info Properties.swift"; sourceTree = "<group>"; };
+		F33174DB2B725D8D003758EA /* Backup List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Backup List.swift"; sourceTree = "<group>"; };
+		F33174DC2B725D8D003758EA /* Backup Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Backup Card.swift"; sourceTree = "<group>"; };
 		F3317AE92A45E24F00CA104D /* Guide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guide.swift; sourceTree = "<group>"; };
 		F3317AEC2A45E26900CA104D /* Guide Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Guide Model.swift"; sourceTree = "<group>"; };
 		F337B3A729BC6B5400CC1195 /* Server List Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List Grid.swift"; sourceTree = "<group>"; };
@@ -2158,6 +2162,15 @@
 			path = Account;
 			sourceTree = "<group>";
 		};
+		F33174DA2B725D8D003758EA /* Backups */ = {
+			isa = PBXGroup;
+			children = (
+				F33174DB2B725D8D003758EA /* Backup List.swift */,
+				F33174DC2B725D8D003758EA /* Backup Card.swift */,
+			);
+			path = Backups;
+			sourceTree = "<group>";
+		};
 		F3317AEB2A45E25500CA104D /* Guide */ = {
 			isa = PBXGroup;
 			children = (
@@ -2513,10 +2526,12 @@
 				F37EA79D2B722C450029DE00 /* Backup Card.swift */,
 				F320DDA02B7046E100957D92 /* Panel Ornament Info.swift */,
 				F37EA79F2B722EC50029DE00 /* Ornament Info Settings.swift */,
+				F33174D82B72582F003758EA /* Ornament Info Properties.swift */,
 				F320DDA22B704E0100957D92 /* Preview Properties.swift */,
 				F386941B2A4B3B1E002DEF90 /* Info */,
-				F389282B2A441D6B00561CDF /* Settings */,
+				F33174DA2B725D8D003758EA /* Backups */,
 				F389282C2A441D7000561CDF /* Console */,
+				F389282B2A441D6B00561CDF /* Settings */,
 			);
 			path = Panel;
 			sourceTree = "<group>";
@@ -4399,6 +4414,7 @@
 				F35FEB0B2B09F003004DA05D /* API Key.swift in Sources */,
 				F3F86D022A5AEDCF00A2C82E /* Audio Recorder.swift in Sources */,
 				F3F2BB9D2A5403DD00D44CA6 /* Server List VM.swift in Sources */,
+				F33174D92B72582F003758EA /* Ornament Info Properties.swift in Sources */,
 				F3F2BBAB2A540E4400D44CA6 /* Nav Extension.swift in Sources */,
 				F38928322A445EA900561CDF /* Server Card.swift in Sources */,
 				F3EEC03B2AF2F93800BFED78 /* Start Page VM.swift in Sources */,

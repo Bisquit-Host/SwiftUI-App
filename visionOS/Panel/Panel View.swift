@@ -1,6 +1,8 @@
 import ScrechKit
 
 struct PanelView: View {
+    @StateObject var ornament = OrnamentProperty()
+    
     private var vm: PanelVM
     private var backupVM: BackupVM
     
@@ -17,32 +19,32 @@ struct PanelView: View {
     @AppStorage("show_info") private var showInfo = true
     
     var body: some View {
-        TabView(selection: $tabPanel) {
+        VStack {
             if let server = vm.server {
-                InfoTab(server)
-                    .tag(Tab.info)
-                    .tabItem {
-                        Label("Info", systemImage: "info.circle")
-                    }
-                
-                BackupList(server)
-                    .environment(backupVM)
-                    .tag(Tab.backups)
-                    .tabItem {
-                        Label("Backups", systemImage: "archivebox")
-                    }
-                
-                Console(server.id)
-                    .environment(vm)
-                    .tag(Tab.console)
-                    .tabItem {
-                        Label("Console", systemImage: "apple.terminal")
-                    }
-            } else {
-                Text("Panel")
+                TabView(selection: $tabPanel) {
+                    InfoTab(server)
+                        .tag(Tab.info)
+                        .tabItem {
+                            Label("Info", systemImage: "info.circle")
+                        }
+                    
+                    BackupList(server)
+                        .environment(backupVM)
+                        .tag(Tab.backups)
+                        .tabItem {
+                            Label("Backups", systemImage: "archivebox")
+                        }
+                    
+                    Console(server.id)
+                        .environment(vm)
+                        .tag(Tab.console)
+                        .tabItem {
+                            Label("Console", systemImage: "apple.terminal")
+                        }
+                }
             }
         }
-        .navigationTitle(vm.server?.name ?? "")
+        .navigationTitle(vm.server?.name ?? "Error")
         .task {
             vm.fetchServerDetails()
             backupVM.fetchBackups()
@@ -97,7 +99,9 @@ struct PanelView: View {
         .ornament(attachmentAnchor: .scene(.trailing)) {
             if showInfo {
                 if let server = vm.server {
-                    PanelOrnamentInfo(server)
+                    PanelOrnamentInfo(server, showCustomizeButton: true)
+                        .environmentObject(ornament)
+                        .padding(.leading, 150)
                 }
             }
         }
