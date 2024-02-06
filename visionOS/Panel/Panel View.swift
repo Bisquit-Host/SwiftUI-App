@@ -1,15 +1,15 @@
-import SwiftUI
+import ScrechKit
 
 struct PanelView: View {
     private var vm: PanelVM
+    private var backupVM: BackupVM
     
     private let id: String
     
-    init(_ id: String,
-         model: PanelVM = PanelVM("")
-    ) {
+    init(_ id: String) {
         self.id = id
         self.vm = PanelVM(id)
+        self.backupVM = BackupVM(id)
     }
     
     @AppStorage("tab_panel") private var tabPanel: Tab = .info
@@ -25,7 +25,15 @@ struct PanelView: View {
                         Label("Info", systemImage: "info.circle")
                     }
                 
-                Console()
+                BackupList(server)
+                    .environment(backupVM)
+                    .tag(Tab.backups)
+                    .tabItem {
+                        Label("Backups", systemImage: "archivebox")
+                    }
+                
+                Console(server.id)
+                    .environment(vm)
                     .tag(Tab.console)
                     .tabItem {
                         Label("Console", systemImage: "apple.terminal")
@@ -34,8 +42,36 @@ struct PanelView: View {
                 Text("Panel")
             }
         }
+        .navigationTitle(vm.server?.name ?? "")
         .task {
             vm.fetchServerDetails()
+            backupVM.fetchBackups()
+            
+            vm.updateBackups = {
+                delay {
+                    backupVM.fetchBackups()
+                }
+            }
+            
+            vm.consoleDetails { data in
+                if let data {
+                    vm.connectWebSocket(data)
+                }
+            }
+        }
+        .onDisappear {
+            vm.disconnectWebSocket()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
+            vm.disconnectWebSocket()
+            vm.messages.removeAll()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+            vm.consoleDetails { data in
+                if let data {
+                    vm.connectWebSocket(data)
+                }
+            }
         }
         .toolbar {
             Menu {
@@ -44,7 +80,7 @@ struct PanelView: View {
                         showPowerButtons.toggle()
                     }
                 } label: {
-                    Text("Show power buttons")
+                    Text(showPowerButtons ? "Hide power buttons" : "Show power buttons")
                 }
                 
                 Button {
@@ -52,7 +88,7 @@ struct PanelView: View {
                         showInfo.toggle()
                     }
                 } label: {
-                    Text("Show power buttons")
+                    Text(showInfo ? "Hide info" : "Show info")
                 }
             } label: {
                 Image(systemName: "gear")
@@ -86,7 +122,7 @@ struct PanelView: View {
                         Label("Restart", systemImage: "arrow.triangle.2.circlepath")
                     }
                     
-                    Capsule()
+                    Capsule(.primary)
                         .frame(width: 4, height: 32)
                     
                     Menu {

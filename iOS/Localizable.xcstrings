@@ -1222,6 +1222,9 @@
         }
       }
     },
+    "Create a new backup" : {
+
+    },
     "Create a new key" : {
 
     },
@@ -1324,6 +1327,9 @@
           }
         }
       }
+    },
+    "Customize" : {
+
     },
     "Data" : {
       "localizations" : {
@@ -2004,6 +2010,12 @@
           }
         }
       }
+    },
+    "Hide info" : {
+
+    },
+    "Hide power buttons" : {
+
     },
     "Hints" : {
       "localizations" : {
@@ -2989,6 +3001,9 @@
         }
       }
     },
+    "Node" : {
+
+    },
     "Node:" : {
 
     },
@@ -3053,6 +3068,9 @@
       }
     },
     "Only when online" : {
+
+    },
+    "Open in a separate window" : {
 
     },
     "Open in Safari" : {
@@ -3797,6 +3815,9 @@
         }
       }
     },
+    "Show info" : {
+
+    },
     "Show power buttons" : {
 
     },
@@ -4006,6 +4027,9 @@
           }
         }
       }
+    },
+    "Status" : {
+
     },
     "Step" : {
       "localizations" : {

@@ -31,14 +31,11 @@ struct InfoTab: View {
         .padding()
         .glassBackgroundEffect()
         .frame(width: 600)
-        .navigationTitle("Information")
     }
 }
 
 #Preview {
-    InfoTab(
-        sampleJSON(.serverListAttributes)
-    )
-    .padding()
-    .glassBackgroundEffect()
+    InfoTab(PreviewProperty.serverAttributes)
+        .padding()
+        .glassBackgroundEffect()
 }

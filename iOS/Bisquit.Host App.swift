@@ -59,13 +59,21 @@ struct BisquitHostApp: App {
         .windowStyle(.hiddenTitleBar)
 #endif
         
-#if (iOS)
+#if canImport(AlertKit)
         .onChange(of: network.isNetworkSatisfied) { _, status in
+            guard let status else { 
+                return
+            }
+            
             if !status {
                 SystemAlert.networkError()
             }
         }
 #endif
+        
+        WindowGroup(id: "console") {
+            Text("Console")
+        }
         
 #if os(macOS)
         Settings {
