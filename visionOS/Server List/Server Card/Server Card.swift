@@ -17,23 +17,39 @@ struct ServerCard: View {
     }
     
     var body: some View {
-        VStack {
+        HStack {
             Text(server.name)
             
-            HStack {
-                CircularGauge("CPU", 
-                              value: vm.cpuUsage,
-                              limit: limits.cpu,
-                              isRedacted: vm.isLoading)
-                
-                CircularGauge("RAM",
-                              value: vm.ramUsage,
-                              limit: limits.memory,
-                              isRedacted: vm.isLoading)
-            }
+            CircularGauge("CPU",
+                          value: vm.cpuUsage,
+                          limit: limits.cpu,
+                          isRedacted: vm.isLoading)
+            
+            CircularGauge("RAM",
+                          value: vm.ramUsage,
+                          limit: limits.memory,
+                          isRedacted: vm.isLoading)
             
             LinearGauge(value: vm.diskUsage, limit: limits.disk)
         }
+        
+        //        VStack {
+        //            Text(server.name)
+        //
+        //            HStack {
+        //                CircularGauge("CPU",
+        //                              value: vm.cpuUsage,
+        //                              limit: limits.cpu,
+        //                              isRedacted: vm.isLoading)
+        //
+        //                CircularGauge("RAM",
+        //                              value: vm.ramUsage,
+        //                              limit: limits.memory,
+        //                              isRedacted: vm.isLoading)
+        //            }
+        //
+        //            LinearGauge(value: vm.diskUsage, limit: limits.disk)
+        //        }
         .padding(.vertical)
         .task {
             vm.fetchServerUsage()

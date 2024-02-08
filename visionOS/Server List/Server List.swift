@@ -7,17 +7,25 @@ struct ServerList: View {
     var body: some View {
         @Bindable var binding = vm
         
-        ScrollView {
-            LazyVGrid(
-                columns: [ GridItem(.adaptive(minimum: 180)) ]
-                //columns: [ GridItem(.adaptive(minimum: settings.designCode == 0 ? 180 : 360)) ]
-            ) {
-                ForEach(vm.servers, id: \.id) { server in
-                    ServerCardParent(server)
-                }
+        List {
+            ForEach(vm.servers, id: \.id) { server in
+                ServerCardParent(server)
             }
-            .padding(.horizontal, 4)
         }
+        .padding(.horizontal, 4)
+        
+        //        ScrollView {
+        //            LazyVGrid(
+        //                columns: [ GridItem(.adaptive(minimum: 180)) ]
+        //                //columns: [ GridItem(.adaptive(minimum: settings.designCode == 0 ? 180 : 360)) ]
+        //            ) {
+        //                ForEach(vm.servers, id: \.id) { server in
+        //                    ServerCardParent(server)
+        //                }
+        //            }
+        //            .padding(.horizontal, 4)
+        //        }
+        
         .navigationTitle("Server List")
         .navigationBarBackButtonHidden()
         .toolbar {
@@ -33,6 +41,9 @@ struct ServerList: View {
         //            AppSettings()
         //        }
         .task {
+            vm.fetchServers(settings.adminServerList)
+        }
+        .refreshable {
             vm.fetchServers(settings.adminServerList)
         }
     }

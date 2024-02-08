@@ -202,6 +202,8 @@
 		F32E88D12AF8494100959D49 /* Server List Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88D02AF8494100959D49 /* Server List Filter.swift */; };
 		F32E88D22AF8494100959D49 /* Server List Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88D02AF8494100959D49 /* Server List Filter.swift */; };
 		F32E88D32AF8494100959D49 /* Server List Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88D02AF8494100959D49 /* Server List Filter.swift */; };
+		F32F43FF2B75450800C9470B /* User Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F43FE2B7544A200C9470B /* User Card.swift */; };
+		F32F44002B75450B00C9470B /* User List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F43FD2B7544A200C9470B /* User List.swift */; };
 		F32FD7162B1E041D00723B88 /* Websocket Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3729C0CB5A00B08696 /* Websocket Message.swift */; };
 		F32FD7172B1E042400723B88 /* Websocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BF97A929BFC7E9007B9C9C /* Websocket.swift */; };
 		F32FD7182B1E042500723B88 /* Websocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BF97A929BFC7E9007B9C9C /* Websocket.swift */; };
@@ -968,9 +970,7 @@
 		F3DF03DB2B74F01C00CF6F5E /* Database VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088A12B3A18A20051476C /* Database VM.swift */; };
 		F3DF03E22B74F1AD00CF6F5E /* Database List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DF03E02B74F1A600CF6F5E /* Database List.swift */; };
 		F3DF03E32B74F1B000CF6F5E /* Database Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DF03E12B74F1A600CF6F5E /* Database Card.swift */; };
-		F3DF03E52B74F24000CF6F5E /* User List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DF03E42B74F24000CF6F5E /* User List.swift */; };
 		F3DF03E62B74F26F00CF6F5E /* Users VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A0B2A4A386F003A1973 /* Users VM.swift */; };
-		F3DF03E82B74F28400CF6F5E /* User Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DF03E72B74F28400CF6F5E /* User Card.swift */; };
 		F3DF50C32B38FCCC00206CAE /* Users VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A0B2A4A386F003A1973 /* Users VM.swift */; };
 		F3DF50C52B38FCF900206CAE /* User Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D85B2B31146E00265492 /* User Avatar.swift */; };
 		F3DF50C92B38FD2000206CAE /* Contact Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3880A252A92A15E0052A978 /* Contact Manager.swift */; };
@@ -1293,6 +1293,8 @@
 		F32E88C72AF83E3F00959D49 /* Topbar Admin Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Topbar Admin Button.swift"; sourceTree = "<group>"; };
 		F32E88CC2AF83FEC00959D49 /* Server List Topbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server List Topbar.swift"; sourceTree = "<group>"; };
 		F32E88D02AF8494100959D49 /* Server List Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server List Filter.swift"; sourceTree = "<group>"; };
+		F32F43FD2B7544A200C9470B /* User List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User List.swift"; sourceTree = "<group>"; };
+		F32F43FE2B7544A200C9470B /* User Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Card.swift"; sourceTree = "<group>"; };
 		F32FD71D2B1E054300723B88 /* Network Calls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network Calls.swift"; sourceTree = "<group>"; };
 		F330013A2A4CEC320063FE0F /* Apikey List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Apikey List.swift"; sourceTree = "<group>"; };
 		F33001402A4CEF840063FE0F /* Apikey VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Apikey VM.swift"; sourceTree = "<group>"; };
@@ -1533,8 +1535,6 @@
 		F3DE1B972A556CCE007A1624 /* Log List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log List.swift"; sourceTree = "<group>"; };
 		F3DF03E02B74F1A600CF6F5E /* Database List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database List.swift"; sourceTree = "<group>"; };
 		F3DF03E12B74F1A600CF6F5E /* Database Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database Card.swift"; sourceTree = "<group>"; };
-		F3DF03E42B74F24000CF6F5E /* User List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User List.swift"; path = "../../../../User List.swift"; sourceTree = "<group>"; };
-		F3DF03E72B74F28400CF6F5E /* User Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User Card.swift"; path = "../../../../User Card.swift"; sourceTree = "<group>"; };
 		F3DF50CE2B39636A00206CAE /* User List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User List.swift"; sourceTree = "<group>"; };
 		F3E024C42B228F4C00FFF686 /* New Task Sheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "New Task Sheet.swift"; sourceTree = "<group>"; };
 		F3E08EA02A2CE17800116C1C /* macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2155,6 +2155,15 @@
 			path = Topbar;
 			sourceTree = "<group>";
 		};
+		F32F43FC2B7544A200C9470B /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				F32F43FD2B7544A200C9470B /* User List.swift */,
+				F32F43FE2B7544A200C9470B /* User Card.swift */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
 		F33001392A4CEBFD0063FE0F /* Account */ = {
 			isa = PBXGroup;
 			children = (
@@ -2528,13 +2537,12 @@
 			isa = PBXGroup;
 			children = (
 				F3BD76F82A43C890003E7385 /* Panel View.swift */,
-				F3DF03E42B74F24000CF6F5E /* User List.swift */,
-				F3DF03E72B74F28400CF6F5E /* User Card.swift */,
 				F320DDA02B7046E100957D92 /* Panel Ornament Info.swift */,
 				F37EA79F2B722EC50029DE00 /* Ornament Info Settings.swift */,
 				F33174D82B72582F003758EA /* Ornament Info Properties.swift */,
 				F3DF03DE2B74F19B00CF6F5E /* Databases */,
 				F386941B2A4B3B1E002DEF90 /* Info */,
+				F32F43FC2B7544A200C9470B /* Users */,
 				F33174DA2B725D8D003758EA /* Backups */,
 				F389282C2A441D7000561CDF /* Console */,
 				F389282B2A441D6B00561CDF /* Settings */,
@@ -4412,7 +4420,9 @@
 				F30089322B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */,
 				F35FEB0E2B09F4D3004DA05D /* Network VM.swift in Sources */,
 				F30B61C82B2905CA00F447B4 /* System Alerts.swift in Sources */,
+				F32F43FF2B75450800C9470B /* User Card.swift in Sources */,
 				F35081AF2AF30E2B00835CC0 /* Tip Cloud Keys.swift in Sources */,
+				F32F44002B75450B00C9470B /* User List.swift in Sources */,
 				F3F2BB9F2A5405C900D44CA6 /* Welcome VM.swift in Sources */,
 				F386941A2A4B3AE1002DEF90 /* Info Tab.swift in Sources */,
 				F37EA79C2B722B390029DE00 /* Backup VM.swift in Sources */,
@@ -4430,7 +4440,6 @@
 				F35FEB0B2B09F003004DA05D /* API Key.swift in Sources */,
 				F3DF03DB2B74F01C00CF6F5E /* Database VM.swift in Sources */,
 				F3F86D022A5AEDCF00A2C82E /* Audio Recorder.swift in Sources */,
-				F3DF03E82B74F28400CF6F5E /* User Card.swift in Sources */,
 				F3F2BB9D2A5403DD00D44CA6 /* Server List VM.swift in Sources */,
 				F33174D92B72582F003758EA /* Ornament Info Properties.swift in Sources */,
 				F3F2BBAB2A540E4400D44CA6 /* Nav Extension.swift in Sources */,
@@ -4443,7 +4452,6 @@
 				F3A7CF752A45159B00331B51 /* Server List Toolbar.swift in Sources */,
 				F3A7CF662A44F44A00331B51 /* Auth View.swift in Sources */,
 				F348C6E42A5438EB002D5BD6 /* App Container.swift in Sources */,
-				F3DF03E52B74F24000CF6F5E /* User List.swift in Sources */,
 				F3F2BBA52A540B8800D44CA6 /* Start Page.swift in Sources */,
 				F3DF03E62B74F26F00CF6F5E /* Users VM.swift in Sources */,
 				F30C130C2A545F4400A7EFF0 /* Settings Storage.swift in Sources */,
