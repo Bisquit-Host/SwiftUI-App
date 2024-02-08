@@ -5,6 +5,8 @@ struct PanelView: View {
     
     private var vm: PanelVM
     private var backupVM: BackupVM
+    private var dbVM: DatabaseVM
+    private var userVM: UsersVM
     
     private let id: String
     
@@ -12,6 +14,8 @@ struct PanelView: View {
         self.id = id
         self.vm = PanelVM(id)
         self.backupVM = BackupVM(id)
+        self.dbVM = DatabaseVM(id)
+        self.userVM = UsersVM(id)
     }
     
     @AppStorage("tab_panel") private var tabPanel: Tab = .info
@@ -28,6 +32,20 @@ struct PanelView: View {
                             Label("Info", systemImage: "info.circle")
                         }
                     
+                    Console(server.id)
+                        .environment(vm)
+                        .tag(Tab.console)
+                        .tabItem {
+                            Label("Console", systemImage: "apple.terminal")
+                        }
+                    
+                    UserList()
+                        .environment(userVM)
+                        .tag(Tab.users)
+                        .tabItem {
+                            Label("Users", systemImage: "person.3")
+                        }
+                    
                     BackupList(server)
                         .environment(backupVM)
                         .tag(Tab.backups)
@@ -35,11 +53,11 @@ struct PanelView: View {
                             Label("Backups", systemImage: "archivebox")
                         }
                     
-                    Console(server.id)
-                        .environment(vm)
-                        .tag(Tab.console)
+                    DatabaseList(server.featureLimits.databases)
+                        .environment(dbVM)
+                        .tag(Tab.databases)
                         .tabItem {
-                            Label("Console", systemImage: "apple.terminal")
+                            Label("Databases", systemImage: "externaldrive.badge.icloud")
                         }
                 }
             }
@@ -48,6 +66,8 @@ struct PanelView: View {
         .task {
             vm.fetchServerDetails()
             backupVM.fetchBackups()
+            dbVM.fetchDatabases()
+            userVM.fetchUsers()
             
             vm.updateBackups = {
                 delay {
