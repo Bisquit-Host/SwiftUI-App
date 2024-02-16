@@ -53,12 +53,12 @@ struct PanelView: View {
                             Label("Backups", systemImage: "archivebox")
                         }
                     
-                    DatabaseList(server.featureLimits.databases)
-                        .environment(dbVM)
-                        .tag(Tab.databases)
-                        .tabItem {
-                            Label("Databases", systemImage: "externaldrive.badge.icloud")
-                        }
+//                    DatabaseList(server.featureLimits.databases)
+//                        .environment(dbVM)
+//                        .tag(Tab.databases)
+//                        .tabItem {
+//                            Label("Databases", systemImage: "externaldrive.badge.icloud")
+//                        }
                 }
             }
         }
@@ -105,43 +105,45 @@ struct PanelView: View {
                     Text(showPowerButtons ? "Hide power buttons" : "Show power buttons")
                 }
                 
-                Button {
-                    withAnimation {
-                        showInfo.toggle()
-                    }
-                } label: {
-                    Text(showInfo ? "Hide info" : "Show info")
-                }
+//                Button {
+//                    withAnimation {
+//                        showInfo.toggle()
+//                    }
+//                } label: {
+//                    Text(showInfo ? "Hide info" : "Show info")
+//                }
             } label: {
                 Image(systemName: "gear")
             }
         }
-        .ornament(attachmentAnchor: .scene(.trailing)) {
-            if showInfo {
-                if let server = vm.server {
-                    PanelOrnamentInfo(server, showCustomizeButton: true)
-                        .environmentObject(ornament)
-                        .padding(.leading, 150)
-                }
-            }
-        }
+//        .ornament(attachmentAnchor: .scene(.trailing)) {
+//            if showInfo {
+//                if let server = vm.server {
+//                    PanelOrnamentInfo(server, showCustomizeButton: true)
+//                        .environmentObject(ornament)
+//                        .padding(.leading, 150)
+//                }
+//            }
+//        }
         .ornament(attachmentAnchor: .scene(.top)) {
             if showPowerButtons {
                 HStack {
                     Button {
-                        
+                        vm.changePower(.start)
                     } label: {
                         Label("Start", systemImage: "play")
                     }
+                    .disabled(vm.serverState == .running || vm.serverState == .stopping)
                     
                     Button {
-                        
+                        vm.changePower(.stop)
                     } label: {
                         Label("Stop", systemImage: "stop")
                     }
+                    .disabled(vm.serverState == .stopping || vm.serverState == .offline)
                     
                     Button {
-                        
+                        vm.changePower(.restart)
                     } label: {
                         Label("Restart", systemImage: "arrow.triangle.2.circlepath")
                     }
@@ -151,10 +153,11 @@ struct PanelView: View {
                     
                     Menu {
                         Button {
-                            
+                            vm.changePower(.kill)
                         } label: {
                             Label("Kill", systemImage: "power")
                         }
+                        .disabled(vm.serverState == .offline)
                     } label: {
                         Label("Kill", systemImage: "power")
                     }

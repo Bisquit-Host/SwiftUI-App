@@ -70,6 +70,7 @@ struct Console: View {
                 }
             }
         }
+        .padding(.bottom)
     }
 }
 

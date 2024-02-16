@@ -28,9 +28,9 @@ struct InfoTab: View {
                 .title3(.semibold)
                 .lineLimit(1)
         }
-        .padding()
+        .padding(30)
         .glassBackgroundEffect()
-        .frame(width: 600)
+        .frame(width: 650)
     }
 }
 

@@ -2,6 +2,8 @@ import SwiftUI
 import PteroNet
 
 struct ServerCard: View {
+    @EnvironmentObject private var settings: SettingsStorage
+    
     private var vm: ServerCardVM
     
     private let server: ServerAttributes
@@ -17,50 +19,41 @@ struct ServerCard: View {
     }
     
     var body: some View {
-        HStack {
+        VStack(alignment: .leading, spacing: 16) {
             Text(server.name)
+                .title()
             
-            CircularGauge("CPU",
-                          value: vm.cpuUsage,
-                          limit: limits.cpu,
-                          isRedacted: vm.isLoading)
-            
-            CircularGauge("RAM",
-                          value: vm.ramUsage,
-                          limit: limits.memory,
-                          isRedacted: vm.isLoading)
-            
-            LinearGauge(value: vm.diskUsage, limit: limits.disk)
-        }
-        
-        //        VStack {
-        //            Text(server.name)
-        //
-        //            HStack {
-        //                CircularGauge("CPU",
-        //                              value: vm.cpuUsage,
-        //                              limit: limits.cpu,
-        //                              isRedacted: vm.isLoading)
-        //
-        //                CircularGauge("RAM",
-        //                              value: vm.ramUsage,
-        //                              limit: limits.memory,
-        //                              isRedacted: vm.isLoading)
-        //            }
-        //
-        //            LinearGauge(value: vm.diskUsage, limit: limits.disk)
-        //        }
-        .padding(.vertical)
-        .task {
-            vm.fetchServerUsage()
+            HStack(spacing: 20) {
+                CircularGauge("CPU",
+                              value: vm.cpuUsage,
+                              limit: limits.cpu,
+                              isRedacted: vm.isLoading)
+                
+                CircularGauge("RAM",
+                              value: vm.ramUsage,
+                              limit: limits.memory,
+                              isRedacted: vm.isLoading)
+                
+                CircularGauge("RAM",
+                              value: vm.diskUsage,
+                              limit: limits.disk,
+                              isRedacted: vm.isLoading)
+                //                LinearGauge(value: vm.diskUsage, limit: limits.disk)
+            }
+            .padding(.vertical)
+            .task {
+                vm.fetchServerUsage()
+            }
+            .onChange(of: settings.updateServers) {
+                vm.fetchServerUsage()
+            }
         }
     }
 }
 
 #Preview {
-    ServerCard(
-        sampleJSON(.serverListAttributes)
-    )
+    List {
+        ServerCard(PreviewProperty.serverAttributes)
+    }
     .padding()
-    .glassBackgroundEffect()
 }

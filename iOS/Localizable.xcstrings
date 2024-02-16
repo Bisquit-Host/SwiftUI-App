@@ -2017,9 +2017,6 @@
         }
       }
     },
-    "Hide info" : {
-
-    },
     "Hide power buttons" : {
 
     },
@@ -3818,9 +3815,6 @@
         }
       }
     },
-    "Show info" : {
-
-    },
     "Show power buttons" : {
 
     },
@@ -4169,6 +4163,9 @@
           }
         }
       }
+    },
+    "Switch account" : {
+
     },
     "System" : {
       "localizations" : {

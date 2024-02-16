@@ -111,10 +111,10 @@ struct ServerCard: View {
             default: EmptyView()
             }
         }
-        .onChange(of: settings.updateServers) {
+        .task {
             vm.fetchServerUsage()
         }
-        .task {
+        .onChange(of: settings.updateServers) {
             vm.fetchServerUsage()
         }
     }

@@ -8,6 +8,8 @@ struct ServerCardParent: View {
         self.server = server
     }
     
+    @State private var showSafari = false
+    
     var body: some View {
         NavigationLink {
             PanelView(server.id)
@@ -15,6 +17,9 @@ struct ServerCardParent: View {
             ServerCard(server)
         }
         .buttonBorderShape(.roundedRectangle(radius: 64))
+        .contextMenu {
+            ServerCardContextMenu($showSafari, id: server.id)
+        }
     }
 }
 

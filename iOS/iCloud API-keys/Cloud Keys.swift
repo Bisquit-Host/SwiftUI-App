@@ -65,5 +65,8 @@ struct CloudKeys: View {
 }
 
 #Preview {
-    CloudKeys(.constant(""))
+    Text("Preview")
+        .sheet {
+            CloudKeys(.constant(""))
+        }
 }

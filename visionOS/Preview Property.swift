@@ -3,20 +3,20 @@ import PteroNet
 final class PreviewProperty {
     static let serverAttributes = ServerAttributes(
         id: "12345678",
-        name: "",
-        uuid: "",
+        name: "Preview",
+        uuid: "1234567890",
         node: "preview",
-        description: "",
+        description: "Preview server description",
         dockerImage: "",
         limits: .init(
-            memory: 0,
-            cpu: 0,
-            disk: 0
+            memory: 10,
+            cpu: 10,
+            disk: 10
         ),
         featureLimits: .init(
-            backups: 0,
-            databases: 0,
-            allocations: 0
+            backups: 5,
+            databases: 5,
+            allocations: 5
         ),
         sftp: .init(
             ip: "",
