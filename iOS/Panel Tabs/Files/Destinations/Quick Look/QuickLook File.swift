@@ -100,7 +100,7 @@ struct QuickLookFile: View {
         }
     }
     
-    func downloadFile(_ file: String, path: String) {
+    private func downloadFile(_ file: String, path: String) {
         fileDownloadAPI(id, path: file + path) { result in
             switch result {
             case .success(let model):
@@ -114,7 +114,7 @@ struct QuickLookFile: View {
         }
     }
     
-    func downloadVideo(_ urlString: String, name: String) {
+    private func downloadVideo(_ urlString: String, name: String) {
         guard let url = URL(string: urlString) else {
             print("Invalid URL")
             return
@@ -133,7 +133,7 @@ struct QuickLookFile: View {
                     try FileManager.default.copyItem(at: location, to: destinationURL)
                     
                     main {
-                        self.fileURL = destinationURL
+                        fileURL = destinationURL
                         loadAndCheckImage()
                     }
                 } catch {

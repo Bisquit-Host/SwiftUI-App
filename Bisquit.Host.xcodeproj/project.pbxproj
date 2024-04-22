@@ -346,7 +346,7 @@
 		F3499EF72A275550006101B7 /* Websocket Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3929C0CB8000B08696 /* Websocket Delegate.swift */; };
 		F3499EF82A275556006101B7 /* Websocket Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3729C0CB5A00B08696 /* Websocket Message.swift */; };
 		F3499EFA2A277D0F006101B7 /* File Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3499EF92A277D0F006101B7 /* File Tab.swift */; };
-		F3499EFD2A277E3D006101B7 /* FileNameAndIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3499EFC2A277E3D006101B7 /* FileNameAndIcon.swift */; };
+		F3499EFD2A277E3D006101B7 /* File Name And Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3499EFC2A277E3D006101B7 /* File Name And Icon.swift */; };
 		F3499EFE2A277FDF006101B7 /* File Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266A929D71A1B005FD103 /* File Icon.swift */; };
 		F34C055929F11A4D0031ABE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F31BA52A2958FF7D0006D126 /* Assets.xcassets */; };
 		F34C055A29F11E010031ABE1 /* Server Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* Server Card VM.swift */; };
@@ -682,7 +682,7 @@
 		F3AF91CF2B423A26001D8F80 /* SSH Create View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91CC2B423A26001D8F80 /* SSH Create View.swift */; };
 		F3AF96D329DE127400D30A8F /* Start Page VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA57B2959011B0006D126 /* Start Page VM.swift */; };
 		F3AF96F929DF277A00D30A8F /* Backup Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF96F829DF277A00D30A8F /* Backup Card.swift */; };
-		F3AFCB952A4AF6C10080C257 /* FileNameAndIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3499EFC2A277E3D006101B7 /* FileNameAndIcon.swift */; };
+		F3AFCB952A4AF6C10080C257 /* File Name And Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3499EFC2A277E3D006101B7 /* File Name And Icon.swift */; };
 		F3B0695E2BABA60B0095EFEE /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F337B4012A89CAF500DD79AA /* Intents.intentdefinition */; };
 		F3B1196D29A13CA6003BB68C /* Settings Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* Settings Storage.swift */; };
 		F3B1196F29A155D8003BB68C /* Suspended Server Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196E29A155D8003BB68C /* Suspended Server Card.swift */; };
@@ -1331,7 +1331,7 @@
 		F3496DC829E00CE70089FC28 /* Create Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Create Button.swift"; sourceTree = "<group>"; };
 		F3499EF32A26DE92006101B7 /* Guide Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Guide Model.swift"; sourceTree = "<group>"; };
 		F3499EF92A277D0F006101B7 /* File Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Tab.swift"; sourceTree = "<group>"; };
-		F3499EFC2A277E3D006101B7 /* FileNameAndIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNameAndIcon.swift; sourceTree = "<group>"; };
+		F3499EFC2A277E3D006101B7 /* File Name And Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Name And Icon.swift"; sourceTree = "<group>"; };
 		F34AD7C62A5493CC007752A7 /* visionOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = visionOS.entitlements; sourceTree = "<group>"; };
 		F34C055C29F151250031ABE1 /* Watch App.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Watch App.entitlements"; sourceTree = "<group>"; };
 		F34EB0942A4A75E70034A68A /* Intro Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Intro Model.swift"; sourceTree = "<group>"; };
@@ -2860,7 +2860,7 @@
 			children = (
 				F3499EF92A277D0F006101B7 /* File Tab.swift */,
 				F32CAAD82A28C4920019DEE3 /* File View.swift */,
-				F3499EFC2A277E3D006101B7 /* FileNameAndIcon.swift */,
+				F3499EFC2A277E3D006101B7 /* File Name And Icon.swift */,
 				F321CC2F2A4AC95C004AF1F0 /* Destinations */,
 			);
 			path = Files;
@@ -3538,7 +3538,7 @@
 				F35F65932B1D068200431EB7 /* Ansi.swift in Sources */,
 				F37061C829774869009B4067 /* Nav Extension.swift in Sources */,
 				F30088A62B3A18A80051476C /* Database VM.swift in Sources */,
-				F3AFCB952A4AF6C10080C257 /* FileNameAndIcon.swift in Sources */,
+				F3AFCB952A4AF6C10080C257 /* File Name And Icon.swift in Sources */,
 				F3BC03BD2B1FFBD50011F98A /* Backup Context Menu.swift in Sources */,
 				F33CDC022A26B930008D0214 /* Browser.swift in Sources */,
 				F3C9D8562B3090F500265492 /* Auth View.swift in Sources */,
@@ -3905,7 +3905,7 @@
 				F3EB09CE2A29531B0073916A /* Des Image VM.swift in Sources */,
 				F3A1D2332A201C6D0053261E /* Enums.swift in Sources */,
 				F3F061D82A73CD4E00470F7E /* Server List Grid.swift in Sources */,
-				F3499EFD2A277E3D006101B7 /* FileNameAndIcon.swift in Sources */,
+				F3499EFD2A277E3D006101B7 /* File Name And Icon.swift in Sources */,
 				F3499EF72A275550006101B7 /* Websocket Delegate.swift in Sources */,
 				F3BAEC882959B21D00111375 /* Server List.swift in Sources */,
 				F3FFB73F2A57F02C00220FA5 /* Info Tab.swift in Sources */,
