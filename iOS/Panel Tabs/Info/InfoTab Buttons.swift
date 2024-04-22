@@ -90,7 +90,7 @@ struct InfoTabButtons: View {
                     liveActivity.stopAllLiveActivities()
                     liveActivity.startLiveActivity(server)
                 } label: {
-                    Text("Live Activity (BETA)")
+                    Text("Live Activity BETA")
                         .title2(.semibold, design: .rounded)
                         .foregroundStyle(.foreground)
                         .frame(height: 25)
@@ -124,7 +124,5 @@ struct InfoTabButtons: View {
 }
 
 #Preview {
-    InfoTabButtons(
-        sampleJSON(.serverListAttributes)
-    )
+    InfoTabButtons(PreviewProperty.serverAttributes)
 }

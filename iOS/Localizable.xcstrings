@@ -491,19 +491,7 @@
     "1" : {
 
     },
-    "1.2.3.4.43.34" : {
-
-    },
-    "2d 12:12:12" : {
-
-    },
     "2FA" : {
-
-    },
-    "10" : {
-
-    },
-    "80%" : {
 
     },
     "123" : {
@@ -1334,9 +1322,6 @@
         }
       }
     },
-    "Customize" : {
-
-    },
     "Data" : {
       "localizations" : {
         "nl" : {
@@ -1600,9 +1585,6 @@
 
     },
     "Docker Image" : {
-
-    },
-    "Done" : {
 
     },
     "Download" : {
@@ -2624,6 +2606,7 @@
       }
     },
     "Live Activity (BETA)" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -2632,6 +2615,9 @@
           }
         }
       }
+    },
+    "Live Activity BETA" : {
+
     },
     "Load data" : {
 
@@ -3003,9 +2989,6 @@
           }
         }
       }
-    },
-    "Node" : {
-
     },
     "Nodes" : {
 
@@ -3491,9 +3474,6 @@
     "Rotate password" : {
 
     },
-    "Running" : {
-
-    },
     "Save" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3655,6 +3635,7 @@
       }
     },
     "Server count: %lld" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -3665,9 +3646,6 @@
       }
     },
     "Server description" : {
-
-    },
-    "Server id" : {
 
     },
     "Server ID" : {
@@ -4024,9 +4002,6 @@
           }
         }
       }
-    },
-    "Status" : {
-
     },
     "Step" : {
       "localizations" : {

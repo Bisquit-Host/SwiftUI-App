@@ -19,9 +19,7 @@ struct Overview: View {
         .users
     ]
     
-    private lazy var allServerIds: [String] = vm.servers.map {
-        $0.id
-    }
+    private lazy var allServerIds: [String] = vm.servers.map(\.id)
     
     var body: some View {
         List {

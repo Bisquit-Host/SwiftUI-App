@@ -12,7 +12,7 @@ struct LogList: View {
     
     var body: some View {
         ScrollView {
-            LazyVStack(alignment: .leading) {
+            LazyVStack(alignment: .leading, spacing: 10) {
                 ForEach(vm.logs, id: \.id) { log in
                     LogCard(log)
                 }

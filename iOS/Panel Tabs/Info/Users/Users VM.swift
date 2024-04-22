@@ -44,7 +44,7 @@ final class UsersVM {
         
         return dict
     }
-        
+    
     func createUser(_ email: String, onSuccess: @escaping () -> ()) {
         userCreateAPI(id, email: email, permissions: newUserPermissions) { result in
             switch result {
@@ -107,9 +107,7 @@ final class UsersVM {
             switch result {
             case .success(let model):
                 if let model = model?.data {
-                    self.users = model.map {
-                        $0.attributes
-                    }
+                    self.users = model.map(\.attributes)
                 }
                 
             case .failure(let error):

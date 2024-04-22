@@ -61,10 +61,7 @@ struct FileTab: View {
         .environmentObject(vm)
         .frame(maxWidth: 500)
         .safariCover($vm.showSafari, url: vm.downloadUrl)
-        .task {
-            vm.fetchFiles(root)
-        }
-        .refreshable {
+        .refreshableTask {
             vm.fetchFiles(root)
         }
         .onChange(of: image) {

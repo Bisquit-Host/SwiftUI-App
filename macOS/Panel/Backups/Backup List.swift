@@ -12,7 +12,7 @@ struct BackupList: View {
     
     var body: some View {
         ScrollView {
-            LazyVStack(alignment: .leading) {
+            LazyVStack(alignment: .leading, spacing: 16) {
                 ForEach(vm.backups, id: \.uuid) { backup in
                     BackupCard(backup)
                 }

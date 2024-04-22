@@ -27,10 +27,7 @@ struct ServerList: View {
         //        .sheet($binding.sheetSettings) {
         //            AppSettings()
         //        }
-        .task {
-            vm.fetchServers(settings.adminServerList)
-        }
-        .refreshable {
+        .refreshableTask {
             vm.fetchServers(settings.adminServerList)
         }
     }

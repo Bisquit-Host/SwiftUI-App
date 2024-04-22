@@ -42,12 +42,7 @@ struct AccountView: View {
         }
         .navigationTitle("Account")
         .toolbarTitleDisplayMode(.inline)
-        .task {
-            vm.fetch()
-            vm.twoFaDetails()
-            sshVM.fetchKeys()
-        }
-        .refreshable {
+        .refreshableTask {
             vm.fetch()
             vm.twoFaDetails()
             sshVM.fetchKeys()

@@ -9,10 +9,7 @@ struct UserList: View {
                 UserCard(user)
             }
         }
-        .task {
-            vm.fetchUsers()
-        }
-        .refreshable {
+        .refreshableTask {
             vm.fetchUsers()
         }
     }

@@ -1,5 +1,4 @@
 import SwiftUI
-import Algorithms
 
 struct LogList: View {
     @Environment(LogVM.self) private var vm
@@ -56,10 +55,7 @@ struct LogList: View {
                 ContentUnavailableView.search(text: vm.searchField)
             }
         }
-        .task {
-            vm.fetchLogs()
-        }
-        .refreshable {
+        .refreshableTask {
             vm.fetchLogs()
         }
     }

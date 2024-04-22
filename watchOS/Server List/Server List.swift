@@ -12,8 +12,6 @@ struct ServerList: View {
             ServerListTopbar()
             
             ServerListGrid(vm.filteredServers)
-            
-            ServerListFooter()
         }
         .navigationTitle("Bisquit.Host")
         .navigationBarBackButtonHidden()
@@ -24,7 +22,7 @@ struct ServerList: View {
 }
 
 #Preview {
-    AuthView()
+    ServerList()
         .environment(ServerListVM())
         .environment(NavState())
         .environmentObject(SettingsStorage())

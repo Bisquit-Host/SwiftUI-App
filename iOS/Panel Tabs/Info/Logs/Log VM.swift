@@ -32,9 +32,7 @@ final class LogVM {
             case .success(let model):
                 if let model = model?.data {
                     withAnimation {
-                        self.logs = model.map {
-                            $0.attributes
-                        }
+                        self.logs = model.map(\.attributes)
                     }
                 }
                 

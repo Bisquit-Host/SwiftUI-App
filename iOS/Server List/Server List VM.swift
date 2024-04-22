@@ -47,7 +47,7 @@ final class ServerListVM {
             switch result {
             case .success(let model):
                 if let model {
-                    let loadedServers = model.data.map { $0.attributes }
+                    let loadedServers = model.data.map(\.attributes)
                     let totalPages = model.meta.pagination.totalPages
                     
                     if totalPages > 1 {
@@ -76,7 +76,7 @@ final class ServerListVM {
                 switch result {
                 case .success(let model):
                     if let model = model?.data {
-                        let servers = model.map { $0.attributes }
+                        let servers = model.map(\.attributes)
                         loadedServers.append(contentsOf: servers)
                     }
                     

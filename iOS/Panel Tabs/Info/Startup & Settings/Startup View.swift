@@ -39,10 +39,7 @@ struct StartupView: View {
             }
         }
         .scrollIndicators(.never)
-        .task {
-            vm.fetchStartupVariables()
-        }
-        .refreshable {
+        .refreshableTask {
             vm.fetchStartupVariables()
         }
         .onChange(of: currentDockerImage) { _, newDockerImage in

@@ -11,7 +11,7 @@ struct BackupCard: View {
     }
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             Text(backup.name)
             Text(backup.createdAt)
         }

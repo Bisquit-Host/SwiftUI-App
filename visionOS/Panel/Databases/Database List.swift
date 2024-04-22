@@ -15,10 +15,7 @@ struct DatabaseList: View {
                 DatabaseCard(db)
             }
         }
-        .refreshable {
-            vm.fetchDatabases()            
-        }
-        .task {
+        .refreshableTask {
             vm.fetchDatabases()
         }
     }

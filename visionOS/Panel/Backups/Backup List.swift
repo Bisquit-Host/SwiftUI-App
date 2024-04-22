@@ -25,10 +25,7 @@ struct BackupList: View {
                 }
             }
         }
-        .task {
-            vm.fetchBackups()
-        }
-        .refreshable {
+        .refreshableTask {
             vm.fetchBackups()
         }
     }

@@ -1,7 +1,6 @@
 import ScrechKit
 
 struct AuthView: View {
-    @Bindable private var typing = TypeTextVM()
     @Environment(ServerListVM.self) private var vm
     @Environment(NavState.self) private var navState
     @EnvironmentObject private var settings: SettingsStorage

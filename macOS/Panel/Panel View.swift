@@ -16,25 +16,25 @@ struct PanelView: View {
     @AppStorage("selected_tab") private var selectedTab: Tab = .info
     
     private let tabs: [Tab] = [
-        .info,
-        .console,
+//        .info,
+//        .console,
         .files,
-        .plugins,
+//        .plugins,
         .backups,
-        .schedules,
+//        .schedules,
         .databases,
         .users,
         .allocations,
         .startup,
-        .settings,
+//        .settings,
         .logs,
-        .admin
+//        .admin
     ]
     
-#if os(iOS)
-    let application = UIApplication.self
-#else
+#if os(macOS)
     let application = NSApplication.self
+#else
+    let application = UIApplication.self
 #endif
     
     var body: some View {

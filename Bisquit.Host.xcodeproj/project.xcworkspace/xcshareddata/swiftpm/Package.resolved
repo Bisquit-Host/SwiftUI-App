@@ -1,4 +1,5 @@
 {
+  "originHash" : "ef1fa1b886046626bbe6b3bc2c724decf04c8b9af82a1b9a41d47eec842ea09e",
   "pins" : [
     {
       "identity" : "alertkit",
@@ -14,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/onevcat/Kingfisher",
       "state" : {
-        "revision" : "3ec0ab0bca4feb56e8b33e289c9496e89059dd08",
-        "version" : "7.10.2"
+        "revision" : "5b92f029fab2cce44386d28588098b5be0824ef5",
+        "version" : "7.11.0"
       }
     },
     {
@@ -42,7 +43,7 @@
       "location" : "https://github.com/TopScrech/PteroNet",
       "state" : {
         "branch" : "main",
-        "revision" : "279416438ef0d39e98597de282dbc12181b1ada4"
+        "revision" : "c0043de5e3183bc7abe2a6818932c296891bcbfa"
       }
     },
     {
@@ -60,7 +61,7 @@
       "location" : "https://github.com/TopScrech/ScrechKit",
       "state" : {
         "branch" : "main",
-        "revision" : "a87f95a7ab173b1c26e87c2dfb8b1393043ff2ae"
+        "revision" : "46f5f066e8c9d06d111831a4d339e2d3419a075e"
       }
     },
     {
@@ -91,5 +92,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

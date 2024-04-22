@@ -11,9 +11,7 @@ final class SSHVM {
             case .success(let model):
                 if let model = model?.data {
                     withAnimation {
-                        self.keys = model.map {
-                            $0.attributes
-                        }
+                        self.keys = model.map(\.attributes)
                     }
                 }
                 
@@ -44,7 +42,7 @@ final class SSHVM {
     }
     
     func deleteKey(_ fingerprint: String) {
-        sshDeleteAPI(fingerprint, printResponse: true) { result in
+        sshDeleteAPI(fingerprint) { result in
             switch result {
             case .success:
                 if let index = self.keys.firstIndex(where: {

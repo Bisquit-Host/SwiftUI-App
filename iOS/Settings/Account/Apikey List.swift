@@ -34,10 +34,7 @@ struct ApikeyList: View {
             CreateApikey()
                 .presentationDetents([.medium])
         }
-        .task {
-            vm.fetchKeys()
-        }
-        .refreshable {
+        .refreshableTask {
             vm.fetchKeys()
         }
     }
