@@ -2,13 +2,15 @@ import ScrechKit
 
 final class FileUploader: NSObject, ObservableObject {
     @Published var uploadProgress: Float = 0
+    
     private var session: URLSession!
     private var currentUploadTask: URLSessionUploadTask?
     
-    func uploadFile(_ urlString: String,
-                    name: String,
-                    mimeType: String,
-                    fileUrl: URL
+    func uploadFile(
+        _ urlString: String,
+        name: String,
+        mimeType: String,
+        fileUrl: URL
     ) {
         let accessFiles = fileUrl.startAccessingSecurityScopedResource()
         
@@ -68,11 +70,12 @@ final class FileUploader: NSObject, ObservableObject {
 }
 
 extension FileUploader: URLSessionDataDelegate {
-    func urlSession(_ session: URLSession,
-                    task: URLSessionTask,
-                    didSendBodyData bytesSent: Int64,
-                    totalBytesSent: Int64,
-                    totalBytesExpectedToSend: Int64
+    func urlSession(
+        _ session: URLSession,
+        task: URLSessionTask,
+        didSendBodyData bytesSent: Int64,
+        totalBytesSent: Int64,
+        totalBytesExpectedToSend: Int64
     ) {
         main { [self] in
             withAnimation {
@@ -110,6 +113,6 @@ struct MultipartFormData {
             fullData.append(closingData)
         }
         
-        self.data = fullData
+        data = fullData
     }
 }
