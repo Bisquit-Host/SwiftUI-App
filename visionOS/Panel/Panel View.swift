@@ -1,8 +1,6 @@
 import ScrechKit
 
 struct PanelView: View {
-    @StateObject var ornament = OrnamentProperty()
-    
     private var vm: PanelVM
     private var backupVM: BackupVM
     private var dbVM: DatabaseVM
@@ -53,12 +51,12 @@ struct PanelView: View {
                             Label("Backups", systemImage: "archivebox")
                         }
                     
-//                    DatabaseList(server.featureLimits.databases)
-//                        .environment(dbVM)
-//                        .tag(Tab.databases)
-//                        .tabItem {
-//                            Label("Databases", systemImage: "externaldrive.badge.icloud")
-//                        }
+                    //                    DatabaseList(server.featureLimits.databases)
+                    //                        .environment(dbVM)
+                    //                        .tag(Tab.databases)
+                    //                        .tabItem {
+                    //                            Label("Databases", systemImage: "externaldrive.badge.icloud")
+                    //                        }
                 }
             }
         }
@@ -105,26 +103,26 @@ struct PanelView: View {
                     Text(showPowerButtons ? "Hide power buttons" : "Show power buttons")
                 }
                 
-//                Button {
-//                    withAnimation {
-//                        showInfo.toggle()
-//                    }
-//                } label: {
-//                    Text(showInfo ? "Hide info" : "Show info")
-//                }
+                //                Button {
+                //                    withAnimation {
+                //                        showInfo.toggle()
+                //                    }
+                //                } label: {
+                //                    Text(showInfo ? "Hide info" : "Show info")
+                //                }
             } label: {
                 Image(systemName: "gear")
             }
         }
-//        .ornament(attachmentAnchor: .scene(.trailing)) {
-//            if showInfo {
-//                if let server = vm.server {
-//                    PanelOrnamentInfo(server, showCustomizeButton: true)
-//                        .environmentObject(ornament)
-//                        .padding(.leading, 150)
-//                }
-//            }
-//        }
+        //        .ornament(attachmentAnchor: .scene(.trailing)) {
+        //            if showInfo {
+        //                if let server = vm.server {
+        //                    PanelOrnamentInfo(server, showCustomizeButton: true)
+        //                        .environmentObject(ornament)
+        //                        .padding(.leading, 150)
+        //                }
+        //            }
+        //        }
         .ornament(attachmentAnchor: .scene(.top)) {
             if showPowerButtons {
                 HStack {
