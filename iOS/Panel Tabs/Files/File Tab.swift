@@ -13,6 +13,7 @@ struct FileTab: View {
     }
     
     @State private var image: UIImage?
+    @State private var url: URL?
     
     private var fileCount: Int {
         vm.filteredFiles.count
@@ -24,7 +25,7 @@ struct FileTab: View {
             
             NewFolder(root)
             
-            UploadMenu($image, root: root)
+            UploadMenu($image, url: $url, root: root)
             
             if vm.isUploading {
                 UploadProgress()
@@ -67,6 +68,11 @@ struct FileTab: View {
         .onChange(of: image) {
             if let image {
                 vm.handleImageImport(image, root: root)
+            }
+        }
+        .onChange(of: url) {
+            if let url {
+                vm.handleFileImport([url], root: root)
             }
         }
     }

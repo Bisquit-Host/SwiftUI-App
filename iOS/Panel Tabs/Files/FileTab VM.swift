@@ -179,11 +179,13 @@ final class FileTabVM: ObservableObject {
                 if let vm = model?.attributes {
                     let url = vm.url
                     
-                    self.uploadFile(url,
-                                    name: "Image\(UUID().uuidString).jpeg",
-                                    root: root,
-                                    mimeType: mimeType,
-                                    fileUrl: fileURL)
+                    self.uploadFile(
+                        url,
+                        name: "Image\(UUID().uuidString).jpeg",
+                        root: root,
+                        mimeType: mimeType,
+                        fileUrl: fileURL
+                    )
                     
                     self.fetchFiles(root)
                 }

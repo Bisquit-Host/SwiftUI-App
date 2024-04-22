@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/sparrowcode/AlertKit",
       "state" : {
-        "revision" : "3d35de60ad26aab58395ebecdd63b533546862ed",
-        "version" : "5.1.8"
+        "revision" : "3b73be8db5a7e7efaf474c6ed919f5a437d843c9",
+        "version" : "5.1.9"
       }
     },
     {
@@ -25,7 +25,7 @@
       "location" : "https://github.com/TopScrech/MailCover",
       "state" : {
         "branch" : "main",
-        "revision" : "29f4e2a45338335e393ef671b185def38f4c9b9f"
+        "revision" : "c33771592360b836f114ebe32ad660590c7afc28"
       }
     },
     {
@@ -43,7 +43,7 @@
       "location" : "https://github.com/TopScrech/PteroNet",
       "state" : {
         "branch" : "main",
-        "revision" : "c0043de5e3183bc7abe2a6818932c296891bcbfa"
+        "revision" : "b3a5bd33c3b97816faeee05ed29829e1aa81104b"
       }
     },
     {
@@ -52,7 +52,7 @@
       "location" : "https://github.com/TopScrech/SafariCover",
       "state" : {
         "branch" : "main",
-        "revision" : "0a5cf4d1a91e5151608bdba892d64ae9c501b37f"
+        "revision" : "914d5563f008607103851e431262315957fc97a7"
       }
     },
     {
@@ -61,7 +61,7 @@
       "location" : "https://github.com/TopScrech/ScrechKit",
       "state" : {
         "branch" : "main",
-        "revision" : "46f5f066e8c9d06d111831a4d339e2d3419a075e"
+        "revision" : "944c3487f894bf03bb53590d64bd96d65af0e00b"
       }
     },
     {

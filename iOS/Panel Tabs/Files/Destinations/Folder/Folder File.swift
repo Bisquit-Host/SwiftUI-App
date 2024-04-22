@@ -14,6 +14,7 @@ struct FolderFile: View {
     }
     
     @State private var image: UIImage?
+    @State private var url: URL?
     
     var body: some View {
         List {
@@ -21,7 +22,7 @@ struct FolderFile: View {
             
             NewFolder(root)
             
-            UploadMenu($image, root: root)
+            UploadMenu($image, url: $url, root: root)
             
             if vm.isUploading {
                 UploadProgress()
@@ -57,6 +58,11 @@ struct FolderFile: View {
         .onChange(of: image) {
             if let image {
                 vm.handleImageImport(image, root: root)
+            }
+        }
+        .onChange(of: url) {
+            if let url {
+                vm.handleFileImport([url], root: root)
             }
         }
     }
