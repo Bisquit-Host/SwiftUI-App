@@ -6,10 +6,10 @@ struct FolderFile: View {
     private let id, root: String
     
     init(_ id: String,
-         root: String = ""
+         path: String = ""
     ) {
         self.id = id
-        self.root = root
+        self.root = path
         _vm = StateObject(wrappedValue: FileTabVM(id))
     }
     

@@ -24,22 +24,16 @@ struct FileView: View {
         
         NavigationLink {
             if mimeType.contains("text") || mimeType.contains("json") {
-                TextFile(id,
-                         path: root,
-                         name: name)
+                TextFile(id, path: root, name: name)
                 
             } else if mimeType.contains("directory") {
-                FolderFile(id, root: root + name)
+                FolderFile(id, path: root + name)
                 
             } else if mimeType.contains("video") {
-                VideoFile(id,
-                          root: root,
-                          name: name)
+                VideoFile(id, root: root, name: name)
                 
             } else {
-                QuickLookFile(id,
-                              path: root,
-                              name: name)
+                QuickLookFile(id, path: root, name: name)
             }
         } label: {
             HStack {
@@ -60,9 +54,7 @@ struct FileView: View {
 
 #Preview {
     List {
-        FileView("",
-                 file: sampleJSON(.fileListAttributes),
-                 root: "")
-        .environment(NavState())
+        FileView("", file: sampleJSON(.fileListAttributes), root: "")
+            .environment(NavState())
     }
 }

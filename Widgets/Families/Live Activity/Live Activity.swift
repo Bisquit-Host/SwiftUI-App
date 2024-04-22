@@ -52,7 +52,8 @@ final class LiveActivity {
             }
             //            guard let data, error == nil else { return }
             // Handle the response and data here
-        }.resume()
+        }
+        .resume()
     }
     
     func consoleDetails(_ id: String) {

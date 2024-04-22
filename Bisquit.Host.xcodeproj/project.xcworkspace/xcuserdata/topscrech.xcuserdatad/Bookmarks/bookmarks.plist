@@ -1751,9 +1751,9 @@ func syncWithCloud(_ keys: [String] = []) {</string>
             //            guard let data, error == nil else { return }
 </string>
 				<key>trailing</key>
-				<string>        }.resume()
+				<string>        }
+        .resume()
     }
-    
 </string>
 			</dict>
 			<key>type</key>

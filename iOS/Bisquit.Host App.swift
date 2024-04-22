@@ -12,12 +12,12 @@ struct BisquitHostApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 #endif
     
+    @StateObject private var settings = SettingsStorage()
     private var navState = NavState()
     private var linking = LinkingVM()
     private var network = NetworkVM()
-    @StateObject private var settings = SettingsStorage()
     
-    let container: ModelContainer
+    private let container: ModelContainer
     
     init() {
         let schema = Schema([
@@ -61,7 +61,7 @@ struct BisquitHostApp: App {
         
 #if canImport(AlertKit)
         .onChange(of: network.isNetworkSatisfied) { _, status in
-            guard let status else { 
+            guard let status else {
                 return
             }
             

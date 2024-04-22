@@ -17,6 +17,10 @@
 		<string>CloudKit</string>
 		<string>CloudDocuments</string>
 	</array>
+	<key>com.apple.developer.sensitivecontentanalysis.client</key>
+	<array>
+		<string>analysis</string>
+	</array>
 	<key>com.apple.developer.ubiquity-container-identifiers</key>
 	<array>
 		<string>iCloud.host.bisquit.Bisquit-host</string>
