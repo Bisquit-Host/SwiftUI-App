@@ -525,6 +525,9 @@
 		F37DDA7629E2AF7600B9680C /* Folder Path VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DDA7529E2AF7600B9680C /* Folder Path VM.swift */; };
 		F37EA7992B70DEDE0029DE00 /* Console VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5A42959026D0006D126 /* Console VM.swift */; };
 		F37EA79C2B722B390029DE00 /* Backup VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300889C2B3A17CC0051476C /* Backup VM.swift */; };
+		F380B3242BD7B9B6009062E8 /* Image Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380B3232BD7B9B6009062E8 /* Image Picker.swift */; };
+		F380B3252BD7BA15009062E8 /* Image Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380B3232BD7B9B6009062E8 /* Image Picker.swift */; };
+		F380B3262BD7BA16009062E8 /* Image Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380B3232BD7B9B6009062E8 /* Image Picker.swift */; };
 		F380C0B32A4F1D42002D400F /* Server List VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F352AF962A4EDB1D004AD489 /* Server List VM.swift */; };
 		F38282002B0E126D0088C48B /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F38281FF2B0E126D0088C48B /* ScrechKit */; };
 		F38282032B0E14B30088C48B /* Live Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38282022B0E14B30088C48B /* Live Activity.swift */; };
@@ -1388,6 +1391,7 @@
 		F37A36772A35180100517EFC /* Power Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Menu.swift"; sourceTree = "<group>"; };
 		F37DDA7529E2AF7600B9680C /* Folder Path VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Folder Path VM.swift"; sourceTree = "<group>"; };
 		F37F51C329DAF8D70030C1C4 /* Des Image VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Des Image VM.swift"; sourceTree = "<group>"; };
+		F380B3232BD7B9B6009062E8 /* Image Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image Picker.swift"; sourceTree = "<group>"; };
 		F38282022B0E14B30088C48B /* Live Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Live Activity.swift"; sourceTree = "<group>"; };
 		F385824129D6215100BEEE1D /* App Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Icon.swift"; sourceTree = "<group>"; };
 		F385824529D6268200BEEE1D /* Currency Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Currency Button.swift"; sourceTree = "<group>"; };
@@ -2796,6 +2800,7 @@
 			isa = PBXGroup;
 			children = (
 				F3FA61532A1F8DB500A65AE1 /* Upload Menu.swift */,
+				F380B3232BD7B9B6009062E8 /* Image Picker.swift */,
 				F393C7BA2A18437300DE33F9 /* Upload File.swift */,
 				F39780242A2B9DB800956474 /* Upload Preview.swift */,
 				F35DA9582A28F5B100803E7E /* Upload Progress.swift */,
@@ -3697,6 +3702,7 @@
 				F375EC3C29EE88EA002CA969 /* Schedule List.swift in Sources */,
 				F3BC03BC2B1FFBD50011F98A /* Backup Context Menu.swift in Sources */,
 				F3F86CFD2A5AEDB400A2C82E /* Audio Recorder.swift in Sources */,
+				F380B3242BD7B9B6009062E8 /* Image Picker.swift in Sources */,
 				F3D7D87F29E83DEE00BCAFFE /* Design Settings.swift in Sources */,
 				F3A994A82A177DA400530615 /* Map View.swift in Sources */,
 				F31BA5842959015F0006D126 /* Auth VM.swift in Sources */,
@@ -4052,6 +4058,7 @@
 				F389BB752A05B62600911EBF /* Design Settings.swift in Sources */,
 				F389BB7C2A05B66B00911EBF /* App Icon.swift in Sources */,
 				F3A1235C2A6689FA008E3E20 /* User Email.swift in Sources */,
+				F380B3252BD7BA15009062E8 /* Image Picker.swift in Sources */,
 				F36D53102A05B6E7007324C6 /* Cloud Keys.swift in Sources */,
 				F3E1D3EE2B3208BE009B7062 /* User 2Fa.swift in Sources */,
 				F389BB6A2A05B5E100911EBF /* Settings.swift in Sources */,
@@ -4276,6 +4283,7 @@
 				F3D295822AF39F9300ED43A0 /* Upload Preview.swift in Sources */,
 				F3D295BF2AF3A19700ED43A0 /* Topbar Grid Button.swift in Sources */,
 				F3D295782AF39F2F00ED43A0 /* User List.swift in Sources */,
+				F380B3262BD7BA16009062E8 /* Image Picker.swift in Sources */,
 				F3D295BE2AF3A18B00ED43A0 /* Biometry Button.swift in Sources */,
 				F3D295BB2AF3A17900ED43A0 /* Biometry Usage View.swift in Sources */,
 				F3D295D12AF3A30000ED43A0 /* Animated Tab.swift in Sources */,

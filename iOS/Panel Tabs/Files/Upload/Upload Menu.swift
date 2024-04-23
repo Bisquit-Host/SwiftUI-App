@@ -47,10 +47,11 @@ struct UploadMenu: View {
             }
             .foregroundStyle(.foreground)
         }
+        .cameraPicker($showCameraPicker, image: $image)
+        .libraryPicker($showImagePicker, title: "1", subTitle: "2")
         .sheet($vm.sheetPreview) {
             UploadPreview(urls, root: root)
         }
-        .cameraPicker($showCameraPicker, image: $image)
         .fileImporter(isPresented: $showFilePicker, allowedContentTypes: [.item], allowsMultipleSelection: true) { result in
             switch result {
             case .success(let model):

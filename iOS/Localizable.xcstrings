@@ -962,6 +962,9 @@
         }
       }
     },
+    "Clear" : {
+
+    },
     "Clear all data" : {
       "extractionState" : "manual",
       "localizations" : {
