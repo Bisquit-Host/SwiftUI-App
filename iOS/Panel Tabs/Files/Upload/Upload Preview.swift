@@ -30,8 +30,13 @@ struct UploadPreview: View {
             .padding(20)
             .background(.ultraThinMaterial)
             
-            ForEach(urls, id: \.self) { url in
-                QuickLookView(url)
+            if urls.count > 1 {
+                Text("\(urls.count - 1) more files")
+                    .padding()
+            }
+            
+            if let last = urls.last {
+                UploadPreviewList(last)
             }
         }
         .ignoresSafeArea()

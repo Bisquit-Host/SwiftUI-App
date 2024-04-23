@@ -56,9 +56,9 @@ final class SensitivityAnalyzer {
 struct QuickLookFile: View {
     private let id, path, name: String
     
-    init(_ id: String, path: String, name: String) {
+    init(_ id: String, root: String, name: String) {
         self.id = id
-        self.path = path
+        self.path = root
         self.name = name
     }
     
@@ -77,15 +77,17 @@ struct QuickLookFile: View {
         .navigationTitle(name)
         .ignoresSafeArea(edges: .bottom)
         .task {
-            downloadFile(name, path: path)
+            downloadFile(name, root: path)
         }
         .toolbar {
-            Button {
-                withAnimation {
-                    isBlured.toggle()
+            if isBlured {
+                Button {
+                    withAnimation {
+                        isBlured = false
+                    }
+                } label: {
+                    Image(systemName: "eye.slash")
                 }
-            } label: {
-                Image(systemName: isBlured ? "eye.slash" : "eye")
             }
         }
     }
@@ -100,8 +102,8 @@ struct QuickLookFile: View {
         }
     }
     
-    private func downloadFile(_ file: String, path: String) {
-        fileDownloadAPI(id, path: file + path) { result in
+    private func downloadFile(_ file: String, root: String) {
+        fileDownloadAPI(id, path: root + "/\(file)") { result in
             switch result {
             case .success(let model):
                 if let model {

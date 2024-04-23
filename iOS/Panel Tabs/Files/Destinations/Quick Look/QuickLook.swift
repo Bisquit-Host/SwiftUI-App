@@ -15,7 +15,9 @@ struct QuickLookView: UIViewControllerRepresentable {
         return controller
     }
     
-    func updateUIViewController(_ uiViewController: QLPreviewController, context: Context) {}
+    func updateUIViewController(_ uiViewController: QLPreviewController, context: Context) {
+        
+    }
     
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
@@ -28,7 +30,9 @@ struct QuickLookView: UIViewControllerRepresentable {
             self.parent = parent
         }
         
-        func numberOfPreviewItems(in controller: QLPreviewController) -> Int { 1 }
+        func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
+            1
+        }
         
         func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
             parent.url as QLPreviewItem

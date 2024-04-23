@@ -33,7 +33,7 @@ struct FileView: View {
                 VideoFile(id, root: root, name: name)
                 
             } else {
-                QuickLookFile(id, path: root, name: name)
+                QuickLookFile(id, root: root, name: name)
             }
         } label: {
             VStack(alignment: .leading) {

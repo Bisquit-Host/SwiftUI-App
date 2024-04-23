@@ -317,6 +317,28 @@
         }
       }
     },
+    "%lld more files" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld more file"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "new",
+                  "value" : "%lld more files"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "%lld objects" : {
       "localizations" : {
         "en" : {

@@ -528,6 +528,9 @@
 		F380B3242BD7B9B6009062E8 /* Image Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380B3232BD7B9B6009062E8 /* Image Picker.swift */; };
 		F380B3252BD7BA15009062E8 /* Image Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380B3232BD7B9B6009062E8 /* Image Picker.swift */; };
 		F380B3262BD7BA16009062E8 /* Image Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380B3232BD7B9B6009062E8 /* Image Picker.swift */; };
+		F380B3282BD7C4A4009062E8 /* Upload Preview List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380B3272BD7C4A4009062E8 /* Upload Preview List.swift */; };
+		F380B3292BD7C527009062E8 /* Upload Preview List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380B3272BD7C4A4009062E8 /* Upload Preview List.swift */; };
+		F380B32A2BD7C529009062E8 /* Upload Preview List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380B3272BD7C4A4009062E8 /* Upload Preview List.swift */; };
 		F380C0B32A4F1D42002D400F /* Server List VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F352AF962A4EDB1D004AD489 /* Server List VM.swift */; };
 		F38282002B0E126D0088C48B /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F38281FF2B0E126D0088C48B /* ScrechKit */; };
 		F38282032B0E14B30088C48B /* Live Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38282022B0E14B30088C48B /* Live Activity.swift */; };
@@ -1392,6 +1395,7 @@
 		F37DDA7529E2AF7600B9680C /* Folder Path VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Folder Path VM.swift"; sourceTree = "<group>"; };
 		F37F51C329DAF8D70030C1C4 /* Des Image VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Des Image VM.swift"; sourceTree = "<group>"; };
 		F380B3232BD7B9B6009062E8 /* Image Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image Picker.swift"; sourceTree = "<group>"; };
+		F380B3272BD7C4A4009062E8 /* Upload Preview List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Upload Preview List.swift"; sourceTree = "<group>"; };
 		F38282022B0E14B30088C48B /* Live Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Live Activity.swift"; sourceTree = "<group>"; };
 		F385824129D6215100BEEE1D /* App Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Icon.swift"; sourceTree = "<group>"; };
 		F385824529D6268200BEEE1D /* Currency Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Currency Button.swift"; sourceTree = "<group>"; };
@@ -2803,6 +2807,7 @@
 				F380B3232BD7B9B6009062E8 /* Image Picker.swift */,
 				F393C7BA2A18437300DE33F9 /* Upload File.swift */,
 				F39780242A2B9DB800956474 /* Upload Preview.swift */,
+				F380B3272BD7C4A4009062E8 /* Upload Preview List.swift */,
 				F35DA9582A28F5B100803E7E /* Upload Progress.swift */,
 				F3F86CFC2A5AEDB400A2C82E /* Audio Recorder.swift */,
 			);
@@ -3679,6 +3684,7 @@
 				F3E8415629FECB6800609DA3 /* Browser Sticker.swift in Sources */,
 				F385824229D6215100BEEE1D /* App Icon.swift in Sources */,
 				F36797782A3A55E1009F2788 /* Log List Parent.swift in Sources */,
+				F380B3282BD7C4A4009062E8 /* Upload Preview List.swift in Sources */,
 				F3AF91C12B423492001D8F80 /* SSH VM.swift in Sources */,
 				F3EDEE3129C06E9700B08696 /* Panel Model.swift in Sources */,
 				F37A36732A3515DC00517EFC /* Server Settings VM.swift in Sources */,
@@ -3983,6 +3989,7 @@
 				F3E024C72B228F4C00FFF686 /* New Task Sheet.swift in Sources */,
 				F3C9D8622B319B9E00265492 /* Permission Card.swift in Sources */,
 				F389BB5F2A05B57900911EBF /* Server Card.swift in Sources */,
+				F380B32A2BD7C529009062E8 /* Upload Preview List.swift in Sources */,
 				F389BB652A05B5AF00911EBF /* Formatters.swift in Sources */,
 				F3A31B062B0B144200F89C51 /* Server List Node Filter.swift in Sources */,
 				F36D53442A05B90D007324C6 /* FileTab Context Menu.swift in Sources */,
@@ -4198,6 +4205,7 @@
 				F3D295892AF39FC700ED43A0 /* Upload File.swift in Sources */,
 				F3D295D52AF3A32100ED43A0 /* Data Tab.swift in Sources */,
 				F3BC03C92B20675E0011F98A /* New Schedule Sheet.swift in Sources */,
+				F380B3292BD7C527009062E8 /* Upload Preview List.swift in Sources */,
 				F3D295812AF39F7C00ED43A0 /* Enums.swift in Sources */,
 				F3D295E32AF3A38E00ED43A0 /* Section Header.swift in Sources */,
 				F3D295D32AF3A30700ED43A0 /* Console Inspector.swift in Sources */,

@@ -48,7 +48,7 @@ struct UploadMenu: View {
             .foregroundStyle(.foreground)
         }
         .cameraPicker($showCameraPicker, image: $image)
-        .libraryPicker($showImagePicker, title: "1", subTitle: "2")
+        .libraryPicker($showImagePicker, title: "Drag & Drop", subTitle: "Tap to add an Image")
         .sheet($vm.sheetPreview) {
             UploadPreview(urls, root: root)
         }

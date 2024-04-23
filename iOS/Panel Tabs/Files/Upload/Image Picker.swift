@@ -5,37 +5,52 @@ import AVKit
 /// iOS 16+
 // MARK: Image Picker with Drag & Drop
 struct ImagePicker: View {
-    var title, subTitle, systemImage: String
+    @EnvironmentObject private var vm: FileTabVM
+    @Environment(\.dismiss) private var dismiss
+    
+    var title: String
+    var subTitle: String
+    var systemImage: String
+    var root: String
     var tint: Color
-    var onImageChange: (UIImage) -> ()
-    var onVideoChange: (URL) -> ()
     
     init(
         title: String,
         subTitle: String,
         systemImage: String = "square.and.arrow.up",
-        tint: Color = .blue,
-        onImageChange: @escaping (UIImage) -> Void = { _ in },
-        onVideoChange: @escaping (URL) -> Void = { _ in }
+        root: String = "",
+        tint: Color = .blue
     ) {
         self.title = title
         self.subTitle = subTitle
         self.systemImage = systemImage
+        self.root = root
         self.tint = tint
-        self.onImageChange = onImageChange
-        self.onVideoChange = onVideoChange
     }
     
-    @State private var showImagePicker = false
     @State private var isLoading = false
+    @State private var showImagePicker = false
     
+    @State private var previewUrls: [URL] = []
     @State private var pickerItems: [PhotosPickerItem] = []
-    @State private var previewImage: UIImage?
-    @State private var previewVideoUrl: URL? // Store the video URL for preview
     
     var body: some View {
-        GeometryReader { geometry in
-            let size = geometry.size
+        VStack {
+            HStack {
+                Button("Cancel", role: .destructive) {
+                    vm.sheetPreview = false
+                }
+                
+                Spacer()
+                
+                Button("Upload") {
+                    vm.handleFileImport(previewUrls, root: root)
+                    dismiss()
+                }
+            }
+            .semibold()
+            .padding(20)
+            .background(.ultraThinMaterial)
             
             VStack(spacing: 4) {
                 Image(systemName: systemImage)
@@ -51,27 +66,7 @@ struct ImagePicker: View {
                     .font(.caption)
                     .foregroundStyle(.gray)
             }
-            .opacity(previewImage == nil ? 1 : 0)
-            .frame(width: size.width, height: size.height)
-            .photosPicker(isPresented: $showImagePicker, selection: $pickerItems, selectionBehavior: .ordered)
-            .toolbar {
-                Button("Clear") {
-                    previewImage = nil
-                    previewVideoUrl = nil
-                }
-            }
-            .overlay {
-                if let previewImage {
-                    Image(uiImage: previewImage)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .padding(15)
-                } else if let previewVideoUrl {
-                    VideoPlayer(player: AVPlayer(url: previewVideoUrl))
-                        .frame(width: size.width, height: size.height)
-                        .cornerRadius(10)
-                }
-            }
+            .frame(width: 300, height: 250)
             .overlay {
                 if isLoading {
                     ProgressView()
@@ -79,32 +74,13 @@ struct ImagePicker: View {
                         .background(.ultraThinMaterial, in: .rect(cornerRadius: 5))
                 }
             }
-            .animation(.spring(), value: isLoading)
-            .animation(.spring(), value: previewImage)
+            .animation(.spring, value: isLoading)
             .contentShape(.rect)
-            .dropDestination(for: Data.self) { items, location in
-#warning("Supports only one item")
-                if let firstItem = items.first {
-                    if let droppedImage = UIImage(data: firstItem) {
-                        previewVideoUrl = nil
-                        generateImageThumbnail(droppedImage, size)
-                        onImageChange(droppedImage)
-                        return true
-                    } else {
-                        let videoURL = writeDataToTemporaryURL(firstItem)
-                        previewVideoUrl = videoURL
-                        previewImage = nil
-                        onVideoChange(videoURL)
-                    }
-                }
-                
-                return false
-            }
             .onTapGesture {
                 showImagePicker = true
             }
             .onChange(of: pickerItems) { _, newItems in
-                extractImageOrVideo(newItems, size)
+                extractImageOrVideo(newItems)
             }
             .background {
                 ZStack {
@@ -116,56 +92,84 @@ struct ImagePicker: View {
                         .padding(1)
                 }
             }
+            .photosPicker(
+                isPresented: $showImagePicker,
+                selection: $pickerItems,
+                selectionBehavior: .ordered
+            )
+            .toolbar {
+                if !previewUrls.isEmpty {
+                    Button("Clear") {
+                        previewUrls = []
+                    }
+                }
+            }
+            .dropDestination(for: Data.self) { items, location in
+                for item in items {
+                    if let url = writeDataToTemporaryURL(item) {
+                        withAnimation {
+                            previewUrls.append(url)
+                        }
+                    }
+                }
+                
+                return false
+            }
+            
+            if let last = previewUrls.last {
+                UploadPreviewList(last)
+                    .transition(.opacity)
+            }
+            
+            if previewUrls.count > 1 {
+                Text("\(previewUrls.count - 1) more files")
+                    .padding()
+            }
         }
     }
     
-    func writeDataToTemporaryURL(_ data: Data) -> URL {
+    func writeDataToTemporaryURL(_ data: Data, pathExtension: String = "") -> URL? {
         let temporaryDirectoryURL = FileManager.default.temporaryDirectory
-        let temporaryFileURL = temporaryDirectoryURL.appendingPathComponent(UUID().uuidString).appendingPathExtension("mov")
+        
+        let temporaryFileURL = temporaryDirectoryURL
+            .appendingPathComponent(UUID().uuidString)
+            .appendingPathExtension(pathExtension)
         
         do {
             try data.write(to: temporaryFileURL)
             return temporaryFileURL
         } catch {
             print("Error writing video data to temporary file: \(error)")
-            return temporaryDirectoryURL
+            return nil
         }
     }
     
-    func extractImageOrVideo(_ photoItems: [PhotosPickerItem], _ viewSize: CGSize) {
+    func extractImageOrVideo(_ photoItems: [PhotosPickerItem]) {
         Task.detached {
             for item in photoItems {
+                guard let identifier = item.supportedContentTypes.first?.identifier
+                    .replacingOccurrences(of: "public.", with: "")
+                    .replacingOccurrences(of: "mpeg-4", with: "mp4")
+                else {
+                    print("Extension not determined")
+                    return
+                }
+                
+                print("Item: \(identifier)")
+                
                 if let data = try? await item.loadTransferable(type: Data.self) {
                     await MainActor.run {
-                        if let selectedImage = UIImage(data: data) {
-                            previewVideoUrl = nil
-                            generateImageThumbnail(selectedImage, viewSize)
-                            onImageChange(selectedImage)
-                        } else {
-                            let videoURL = writeDataToTemporaryURL(data)
-                            previewVideoUrl = videoURL
-                            previewImage = nil
-                            onVideoChange(videoURL)
+                        if let url = writeDataToTemporaryURL(data, pathExtension: identifier) {
+                            withAnimation {
+                                previewUrls.append(url)
+                            }
                         }
                     }
                 }
             }
-            
-            self.pickerItems = []
         }
-    }
-    
-    func generateImageThumbnail(_ image: UIImage, _ size: CGSize) {
-        isLoading = true
         
-        Task.detached {
-            let thumbnailImage = await image.byPreparingThumbnail(ofSize: size)
-            
-            await MainActor.run {
-                previewImage = thumbnailImage
-                isLoading = false
-            }
-        }
+        pickerItems = []
     }
 }
 
@@ -176,9 +180,8 @@ extension View {
         title: String,
         subTitle: String,
         systemImage: String = "square.and.arrow.up",
-        tint: Color = .blue,
-        onImageChange: @escaping (UIImage) -> Void = { _ in },
-        onVideoChange: @escaping (URL) -> Void = { _ in }
+        root: String = "",
+        tint: Color = .blue
     ) -> some View {
         self.sheet(isPresented) {
             NavigationView {
@@ -186,9 +189,8 @@ extension View {
                     title: title,
                     subTitle: subTitle,
                     systemImage: systemImage,
-                    tint: tint,
-                    onImageChange: onImageChange,
-                    onVideoChange: onVideoChange
+                    root: root,
+                    tint: tint
                 )
                 .padding()
             }
@@ -199,5 +201,6 @@ extension View {
 
 #Preview {
     Text("Preview")
+        .environmentObject(FileTabVM(""))
         .libraryPicker(.constant(true), title: "1", subTitle: "2")
 }
