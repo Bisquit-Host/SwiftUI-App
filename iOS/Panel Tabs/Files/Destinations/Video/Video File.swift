@@ -32,8 +32,9 @@ struct VideoFile: View {
         }
     }
     
-    private func fetchVideoUrl(_ file: String, root: String) {
-        fileDownloadAPI(id, path: file + root) { result in
+    private func fetchVideoUrl(_ name: String, root: String) {
+        fileDownloadAPI(id, path: root + name) { result in
+//      fileDownloadAPI(id, path: file + root) { result in
             switch result {
             case .success(let model):
                 if let model = model?.attributes {

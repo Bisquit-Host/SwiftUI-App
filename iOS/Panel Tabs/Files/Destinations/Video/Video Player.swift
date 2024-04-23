@@ -9,7 +9,7 @@ struct VideoPlayerView: View {
     }
     
     var body: some View {
-        UIVideoPlayer(player: videoPlayerVM.player)
+        UIVideoPlayer(videoPlayerVM.player)
             .onAppear {
                 setAudioSessionCategory(to: .playback)
                 videoPlayerVM.player.play()
@@ -22,6 +22,7 @@ struct VideoPlayerView: View {
     
     func setAudioSessionCategory(to value: AVAudioSession.Category) {
         let audioSession = AVAudioSession.sharedInstance()
+        
         do {
             try audioSession.setCategory(value)
         } catch {

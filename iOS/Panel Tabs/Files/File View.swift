@@ -36,16 +36,22 @@ struct FileView: View {
                 QuickLookFile(id, path: root, name: name)
             }
         } label: {
-            HStack {
-                FileIcon(mimeType)
-                    .semibold()
-                    .frame(width: 20)
+            VStack(alignment: .leading) {
+                HStack {
+                    FileIcon(mimeType)
+                        .semibold()
+                        .frame(width: 20)
+                    
+                    Text(name)
+                        .foregroundStyle(.primary)
+                        .minimumScaleFactor(0.5)
+                        .scaledToFit()
+                        .lineLimit(1)
+                }
                 
-                Text(name)
-                    .foregroundStyle(.primary)
-                    .minimumScaleFactor(0.5)
-                    .scaledToFit()
-                    .lineLimit(1)
+                Text(mimeType)
+                    .footnote()
+                    .foregroundStyle(.secondary)
             }
         }
         .fileContextMenu(file, root: root)

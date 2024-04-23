@@ -96,11 +96,12 @@ final class FileTabVM: ObservableObject {
         fileUploader.cancelUpload()
     }
     
-    func uploadFile(_ urlString: String,
-                    name: String,
-                    root: String,
-                    mimeType: String,
-                    fileUrl: URL
+    func uploadFile(
+        _ urlString: String,
+        name: String,
+        root: String,
+        mimeType: String,
+        fileUrl: URL
     ) {
         main {
             withAnimation {
@@ -140,11 +141,13 @@ final class FileTabVM: ObservableObject {
                     if let model = model?.attributes {
                         let url = model.url
                         
-                        self.uploadFile(url,
-                                        name: fileName,
-                                        root: root,
-                                        mimeType: mimeType,
-                                        fileUrl: fileURL)
+                        self.uploadFile(
+                            url,
+                            name: fileName,
+                            root: root,
+                            mimeType: mimeType,
+                            fileUrl: fileURL
+                        )
                         
                         self.fetchFiles(root)
                     }
@@ -157,12 +160,16 @@ final class FileTabVM: ObservableObject {
     }
     
     func handleImageImport(_ image: UIImage, root: String) {
-        guard let imageData = image.jpegData(compressionQuality: 1) else {
+        guard let imageData = image.heicData() else {
             print("Unable to convert image to data")
             return
         }
+//        guard let imageData = image.jpegData(compressionQuality: 1) else {
+//            print("Unable to convert image to data")
+//            return
+//        }
         
-        let mimeType = "image/jpeg"
+        let mimeType = "image/heic"
         let temporaryDirectoryURL = FileManager.default.temporaryDirectory
         let fileURL = temporaryDirectoryURL.appendingPathComponent("Image")
         
@@ -181,7 +188,7 @@ final class FileTabVM: ObservableObject {
                     
                     self.uploadFile(
                         url,
-                        name: "Image\(UUID().uuidString).jpeg",
+                        name: "Image\(UUID().uuidString).heic",
                         root: root,
                         mimeType: mimeType,
                         fileUrl: fileURL
@@ -202,8 +209,10 @@ final class FileTabVM: ObservableObject {
             switch result {
             case .success(let model):
                 if let model = model?.attributes {
-                    self.downloadUrl = model.url
-                    self.showSafari = true
+                    main {
+                        self.downloadUrl = model.url
+                        self.showSafari = true
+                    }
                 }
                 
             case .failure(let error):

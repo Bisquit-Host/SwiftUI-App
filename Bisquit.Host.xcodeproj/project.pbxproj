@@ -2768,8 +2768,8 @@
 			children = (
 				F39872152A1B73830022B00E /* Video File.swift */,
 				F398720F2A1AE3CE0022B00E /* Video Player.swift */,
-				F3C9D84D2B30598000265492 /* Video Player VM.swift */,
 				F3C9D8502B3059E700265492 /* UIVideoPlayer.swift */,
+				F3C9D84D2B30598000265492 /* Video Player VM.swift */,
 			);
 			path = Video;
 			sourceTree = "<group>";
