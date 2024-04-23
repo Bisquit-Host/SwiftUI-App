@@ -3,7 +3,7 @@ import PhotosUI
 import AVKit
 
 /// iOS 16+
-// MARK: Custom Image Picker with Drag & Drop
+// MARK: Image Picker with Drag & Drop
 struct ImagePicker: View {
     var title, subTitle, systemImage: String
     var tint: Color
@@ -29,7 +29,7 @@ struct ImagePicker: View {
     @State private var showImagePicker = false
     @State private var isLoading = false
     
-    @State private var pickerItem: PhotosPickerItem?
+    @State private var pickerItems: [PhotosPickerItem] = []
     @State private var previewImage: UIImage?
     @State private var previewVideoUrl: URL? // Store the video URL for preview
     
@@ -53,7 +53,7 @@ struct ImagePicker: View {
             }
             .opacity(previewImage == nil ? 1 : 0)
             .frame(width: size.width, height: size.height)
-            .photosPicker(isPresented: $showImagePicker, selection: $pickerItem)
+            .photosPicker(isPresented: $showImagePicker, selection: $pickerItems, selectionBehavior: .ordered)
             .toolbar {
                 Button("Clear") {
                     previewImage = nil
@@ -103,10 +103,8 @@ struct ImagePicker: View {
             .onTapGesture {
                 showImagePicker = true
             }
-            .onChange(of: pickerItem) { newItem in
-                if let newItem {
-                    extractImageOrVideo(newItem, size)
-                }
+            .onChange(of: pickerItems) { _, newItems in
+                extractImageOrVideo(newItems, size)
             }
             .background {
                 ZStack {
@@ -134,24 +132,26 @@ struct ImagePicker: View {
         }
     }
     
-    func extractImageOrVideo(_ photoItem: PhotosPickerItem, _ viewSize: CGSize) {
+    func extractImageOrVideo(_ photoItems: [PhotosPickerItem], _ viewSize: CGSize) {
         Task.detached {
-            if let data = try? await photoItem.loadTransferable(type: Data.self) {
-                await MainActor.run {
-                    if let selectedImage = UIImage(data: data) {
-                        previewVideoUrl = nil
-                        generateImageThumbnail(selectedImage, viewSize)
-                        onImageChange(selectedImage)
-                    } else {
-                        let videoURL = writeDataToTemporaryURL(data)
-                        previewVideoUrl = videoURL
-                        previewImage = nil
-                        onVideoChange(videoURL)
+            for item in photoItems {
+                if let data = try? await item.loadTransferable(type: Data.self) {
+                    await MainActor.run {
+                        if let selectedImage = UIImage(data: data) {
+                            previewVideoUrl = nil
+                            generateImageThumbnail(selectedImage, viewSize)
+                            onImageChange(selectedImage)
+                        } else {
+                            let videoURL = writeDataToTemporaryURL(data)
+                            previewVideoUrl = videoURL
+                            previewImage = nil
+                            onVideoChange(videoURL)
+                        }
                     }
                 }
             }
             
-            self.pickerItem = nil
+            self.pickerItems = []
         }
     }
     
