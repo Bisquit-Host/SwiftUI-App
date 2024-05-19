@@ -51,10 +51,6 @@ struct FileTab: View {
                 }
                 .numericTransition()
             }
-            
-            if root.isEmpty {
-                FileFormats()
-            }
         }
         .animation(.easeOut, value: vm.filteredFiles)
         .environmentObject(vm)

@@ -608,6 +608,7 @@
 
     },
     "All supported data formats" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {

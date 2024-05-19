@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -615,8 +615,6 @@
 		F39872112A1AE3CE0022B00E /* Video Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F398720F2A1AE3CE0022B00E /* Video Player.swift */; };
 		F39872162A1B73830022B00E /* Video File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39872152A1B73830022B00E /* Video File.swift */; };
 		F39872172A1B73830022B00E /* Video File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39872152A1B73830022B00E /* Video File.swift */; };
-		F39872212A1B93190022B00E /* FileTab Formats.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39872202A1B93190022B00E /* FileTab Formats.swift */; };
-		F39872222A1B93190022B00E /* FileTab Formats.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39872202A1B93190022B00E /* FileTab Formats.swift */; };
 		F398823F2987BF6E00B9BA2C /* Schedule Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = F398823E2987BF6E00B9BA2C /* Schedule Task.swift */; };
 		F39919172A4653A300CC73DA /* Linear Gauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39919162A4653A300CC73DA /* Linear Gauge.swift */; };
 		F399933A2AF2E491006E8A9A /* Other Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39993392AF2E491006E8A9A /* Other Settings.swift */; };
@@ -838,7 +836,6 @@
 		F3D295622AF39E8D00ED43A0 /* Upload Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA61532A1F8DB500A65AE1 /* Upload Menu.swift */; };
 		F3D295632AF39E9400ED43A0 /* Upload Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35DA9582A28F5B100803E7E /* Upload Progress.swift */; };
 		F3D295642AF39E9B00ED43A0 /* Folder Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5AF295902C70006D126 /* Folder Path.swift */; };
-		F3D295652AF39EA000ED43A0 /* FileTab Formats.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39872202A1B93190022B00E /* FileTab Formats.swift */; };
 		F3D295662AF39EB000ED43A0 /* Panel VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3429C0C84C00B08696 /* Panel VM.swift */; };
 		F3D295672AF39EB500ED43A0 /* Info Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FFB73E2A57F02C00220FA5 /* Info Tab.swift */; };
 		F3D295682AF39EB900ED43A0 /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266E329D9A867005FD103 /* Console.swift */; };
@@ -1435,7 +1432,6 @@
 		F397E74A2B208A3B00DDF1CE /* New Folder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "New Folder.swift"; sourceTree = "<group>"; };
 		F398720F2A1AE3CE0022B00E /* Video Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Video Player.swift"; sourceTree = "<group>"; };
 		F39872152A1B73830022B00E /* Video File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Video File.swift"; sourceTree = "<group>"; };
-		F39872202A1B93190022B00E /* FileTab Formats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileTab Formats.swift"; sourceTree = "<group>"; };
 		F398823E2987BF6E00B9BA2C /* Schedule Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Schedule Task.swift"; sourceTree = "<group>"; };
 		F39919162A4653A300CC73DA /* Linear Gauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Linear Gauge.swift"; sourceTree = "<group>"; };
 		F39993392AF2E491006E8A9A /* Other Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Other Settings.swift"; sourceTree = "<group>"; };
@@ -2452,7 +2448,6 @@
 				F3C0F9CF29E204FA0040E277 /* FileTab Context Menu.swift */,
 				F30089222B3BA5300051476C /* File Permissions Parent.swift */,
 				F300891D2B3B87FB0051476C /* File Permissions View.swift */,
-				F39872202A1B93190022B00E /* FileTab Formats.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -3350,7 +3345,7 @@
 				};
 			};
 			buildConfigurationList = F31BA51E2958FF7C0006D126 /* Build configuration list for PBXProject "Bisquit.Host" */;
-			compatibilityVersion = "Xcode 15.0";
+			compatibilityVersion = "Xcode 15.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -3667,7 +3662,6 @@
 				F3D2643E2A66ABB2005C3777 /* Account Parent.swift in Sources */,
 				F325F7002A54BBCF00E89EC4 /* InfoTab Allocation.swift in Sources */,
 				F3924EDF29A2333F00C4CC77 /* Settings VM.swift in Sources */,
-				F39872212A1B93190022B00E /* FileTab Formats.swift in Sources */,
 				F33001442A4CF06D0063FE0F /* Apikey Card.swift in Sources */,
 				F3BC03C12B2063820011F98A /* Debug Key.swift in Sources */,
 				F31BA59D295902280006D126 /* Info Tab.swift in Sources */,
@@ -4008,7 +4002,6 @@
 				F3A123582A667804008E3E20 /* Log View Parent.swift in Sources */,
 				F303214C2B3FEDC6002A73B8 /* Panel Settings View.swift in Sources */,
 				F310BB3A2A54E31800843F14 /* Server List VM.swift in Sources */,
-				F39872222A1B93190022B00E /* FileTab Formats.swift in Sources */,
 				F36D532F2A05B890007324C6 /* Database Card.swift in Sources */,
 				F393C7BD2A18442D00DE33F9 /* Upload File.swift in Sources */,
 				F30089242B3BA5300051476C /* File Permissions Parent.swift in Sources */,
@@ -4322,7 +4315,6 @@
 				F3D295962AF3A04C00ED43A0 /* Ansi.swift in Sources */,
 				F337C15C2A8C2A04006F321C /* API Tests.swift in Sources */,
 				F3D295512AF39DFF00ED43A0 /* CloudKit Model.swift in Sources */,
-				F3D295652AF39EA000ED43A0 /* FileTab Formats.swift in Sources */,
 				F3D295992AF3A06300ED43A0 /* Log List Parent.swift in Sources */,
 				F3D295C62AF3A1EE00ED43A0 /* FileTab Context Menu.swift in Sources */,
 				F3D295432AF39D8300ED43A0 /* System Alerts.swift in Sources */,

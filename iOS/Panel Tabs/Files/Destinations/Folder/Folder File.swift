@@ -44,10 +44,6 @@ struct FolderFile: View {
                     Text("Total: \(vm.filteredFiles.count)")
                 }
             }
-            
-            if root.isEmpty {
-                FileFormats()
-            }
         }
         .environmentObject(vm)
         .frame(maxWidth: 500)
