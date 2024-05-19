@@ -18,8 +18,7 @@ final class AudioRecorder {
         
         let documentPath = fm.temporaryDirectory
         
-        let date = Date().toString(dateFormat: "yyyy-MM-dd HH:mm:ss")
-        let filename = "\(date).m4a"
+        let filename = Date().toString(dateFormat: "yyyy-MM-dd HH:mm:ss") + ".m4a"
         let audioFilename = documentPath.appendingPathComponent(filename)
         
         let settings = [
