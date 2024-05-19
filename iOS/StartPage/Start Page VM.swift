@@ -22,7 +22,10 @@ final class StartPageVM {
 #endif
     
     func fetchAccountDetails() {
-        Keychain.save(key: "selectedApiKey", value: apiKey)
+        Keychain.save(
+            key: "selectedApiKey", 
+            value: apiKey
+        )
         
         accountDetailsAPI { result in
             main { [self] in
