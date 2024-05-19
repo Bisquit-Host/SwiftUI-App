@@ -3,6 +3,7 @@ import PteroNet
 
 struct FileView: View {
     @Environment(NavState.self) private var navState
+    @EnvironmentObject private var settings: SettingsStorage
     
     private let id, root: String
     private let file: FileAttributes
@@ -49,9 +50,11 @@ struct FileView: View {
                         .lineLimit(1)
                 }
                 
-                Text(mimeType)
-                    .footnote()
-                    .foregroundStyle(.secondary)
+                if settings.adminMode {
+                    Text(mimeType)
+                        .footnote()
+                        .foregroundStyle(.secondary)
+                }
             }
         }
         .fileContextMenu(file, root: root)

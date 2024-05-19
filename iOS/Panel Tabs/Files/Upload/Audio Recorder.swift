@@ -6,6 +6,7 @@ final class AudioRecorder {
     var audioRecorder: AVAudioRecorder!
     
     func startRecording() {
+        let fm = FileManager.default
         let recordingSession = AVAudioSession.sharedInstance()
         
         do {
@@ -15,8 +16,11 @@ final class AudioRecorder {
             print("Failed to set up recording session")
         }
         
-        let documentPath = FileManager.default.temporaryDirectory
-        let audioFileName = documentPath.appendingPathComponent("\(Date().toString(dateFormat: "yyyy-MM-dd HH:mm:ss")).m4a")
+        let documentPath = fm.temporaryDirectory
+        
+        let date = Date().toString(dateFormat: "yyyy-MM-dd HH:mm:ss")
+        let filename = "\(date).m4a"
+        let audioFilename = documentPath.appendingPathComponent(filename)
         
         let settings = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
@@ -26,7 +30,11 @@ final class AudioRecorder {
         ]
         
         do {
-            audioRecorder = try AVAudioRecorder(url: audioFileName, settings: settings)
+            audioRecorder = try AVAudioRecorder(
+                url: audioFilename,
+                settings: settings
+            )
+            
             audioRecorder.record()
         } catch {
             print("Could not start recording")
@@ -43,7 +51,7 @@ final class AudioRecorder {
     }
 }
 
-extension Date {
+fileprivate extension Date {
     func toString(dateFormat format: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format

@@ -16,14 +16,14 @@ struct ImagePicker: View {
     
     init(
         title: String,
-        subTitle: String,
-        systemImage: String = "square.and.arrow.up",
+        subtitle: String,
+        icon: String = "square.and.arrow.up",
         root: String = "",
         tint: Color = .blue
     ) {
         self.title = title
-        self.subTitle = subTitle
-        self.systemImage = systemImage
+        self.subTitle = subtitle
+        self.systemImage = icon
         self.root = root
         self.tint = tint
     }
@@ -178,8 +178,8 @@ extension View {
     func libraryPicker(
         _ isPresented: Binding<Bool>,
         title: String,
-        subTitle: String,
-        systemImage: String = "square.and.arrow.up",
+        subtitle: String,
+        icon: String = "square.and.arrow.up",
         root: String = "",
         tint: Color = .blue
     ) -> some View {
@@ -187,8 +187,8 @@ extension View {
             NavigationView {
                 ImagePicker(
                     title: title,
-                    subTitle: subTitle,
-                    systemImage: systemImage,
+                    subtitle: subtitle,
+                    icon: icon,
                     root: root,
                     tint: tint
                 )
@@ -202,5 +202,5 @@ extension View {
 #Preview {
     Text("Preview")
         .environmentObject(FileTabVM(""))
-        .libraryPicker(.constant(true), title: "1", subTitle: "2")
+        .libraryPicker(.constant(true), title: "1", subtitle: "2")
 }

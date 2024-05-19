@@ -50,8 +50,8 @@ final class FileTabVM: ObservableObject {
     func chmod(_ read: Bool, _ write: Bool, _ execute: Bool) -> String {
         var permission: UInt8 = 0
         
-        if read { permission |= 4 }
-        if write { permission |= 2 }
+        if read    { permission |= 4 }
+        if write   { permission |= 2 }
         if execute { permission |= 1 }
         
         return String(permission)
@@ -63,6 +63,24 @@ final class FileTabVM: ObservableObject {
             case .success:
                 onSuccess()
                 self.fetchFiles(root)
+                
+            case .failure(let error):
+                networkCallError(#function, error)
+            }
+        }
+    }
+    
+    func pullRemoteFile(
+        _ url: String,
+        directory: String = "",
+        filename: String? = nil,
+        useHeader: String? = nil,
+        foreground: Bool? = nil
+    ) {
+        pullRemoteFileAPI(id, url: url, directory: directory, filename: filename, useHeader: useHeader, foreground: foreground) { result in
+            switch result {
+            case .success:
+                self.fetchFiles(directory)
                 
             case .failure(let error):
                 networkCallError(#function, error)
@@ -164,10 +182,6 @@ final class FileTabVM: ObservableObject {
             print("Unable to convert image to data")
             return
         }
-//        guard let imageData = image.jpegData(compressionQuality: 1) else {
-//            print("Unable to convert image to data")
-//            return
-//        }
         
         let mimeType = "image/heic"
         let temporaryDirectoryURL = FileManager.default.temporaryDirectory

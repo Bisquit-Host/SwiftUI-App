@@ -832,7 +832,7 @@
 		F3D2955C2AF39E5D00ED43A0 /* File Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5AB295902B00006D126 /* File Tab.swift */; };
 		F3D2955D2AF39E6800ED43A0 /* Map View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A72A177DA400530615 /* Map View.swift */; };
 		F3D2955E2AF39E6E00ED43A0 /* Panel Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3029C06E9700B08696 /* Panel Model.swift */; };
-		F3D2955F2AF39E7700ED43A0 /* FileTab VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D558AB2A3360ED00608447 /* FileTab VM.swift */; };
+		F3D2955F2AF39E7700ED43A0 /* File Tab VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D558AB2A3360ED00608447 /* File Tab VM.swift */; };
 		F3D295602AF39E8400ED43A0 /* FileTab Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA61562A1F928500A65AE1 /* FileTab Search.swift */; };
 		F3D295612AF39E8900ED43A0 /* FileTab NewFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C0F9D129E2A62A0040E277 /* FileTab NewFolder.swift */; };
 		F3D295622AF39E8D00ED43A0 /* Upload Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA61532A1F8DB500A65AE1 /* Upload Menu.swift */; };
@@ -950,11 +950,11 @@
 		F3D49DB32B2330C30033B52E /* Overview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D49DB22B2330C30033B52E /* Overview.swift */; };
 		F3D49DB52B2336240033B52E /* Overview VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D49DB42B2336240033B52E /* Overview VM.swift */; };
 		F3D52B252B13FE9C00167DD6 /* App Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D52B242B13FE9C00167DD6 /* App Delegate.swift */; };
-		F3D558AC2A3360ED00608447 /* FileTab VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D558AB2A3360ED00608447 /* FileTab VM.swift */; };
-		F3D558AD2A33640100608447 /* FileTab VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D558AB2A3360ED00608447 /* FileTab VM.swift */; };
-		F3D558B12A33C69F00608447 /* FileTab VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D558AB2A3360ED00608447 /* FileTab VM.swift */; };
-		F3D558B22A33C6A000608447 /* FileTab VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D558AB2A3360ED00608447 /* FileTab VM.swift */; };
-		F3D558B32A33C6A000608447 /* FileTab VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D558AB2A3360ED00608447 /* FileTab VM.swift */; };
+		F3D558AC2A3360ED00608447 /* File Tab VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D558AB2A3360ED00608447 /* File Tab VM.swift */; };
+		F3D558AD2A33640100608447 /* File Tab VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D558AB2A3360ED00608447 /* File Tab VM.swift */; };
+		F3D558B12A33C69F00608447 /* File Tab VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D558AB2A3360ED00608447 /* File Tab VM.swift */; };
+		F3D558B22A33C6A000608447 /* File Tab VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D558AB2A3360ED00608447 /* File Tab VM.swift */; };
+		F3D558B32A33C6A000608447 /* File Tab VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D558AB2A3360ED00608447 /* File Tab VM.swift */; };
 		F3D7D87B29E83D1800BCAFFE /* Cache Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7D87A29E83D1800BCAFFE /* Cache Settings.swift */; };
 		F3D7D87D29E83D6500BCAFFE /* Icon Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7D87C29E83D6500BCAFFE /* Icon Settings.swift */; };
 		F3D7D87F29E83DEE00BCAFFE /* Design Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7D87E29E83DEE00BCAFFE /* Design Settings.swift */; };
@@ -1054,6 +1054,9 @@
 		F3F2BBAB2A540E4400D44CA6 /* Nav Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BAEC8C2959B3FE00111375 /* Nav Extension.swift */; };
 		F3F2BBAC2A540E6500D44CA6 /* Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304498929E990E9006DC0C7 /* Cloud Keys.swift */; };
 		F3F3FC792B21E332007C635B /* QR Code View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264432A66B3A6005C3777 /* QR Code View.swift */; };
+		F3F5BC962BF7668E00EB8FB1 /* Sensitivity Analyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5BC952BF7668E00EB8FB1 /* Sensitivity Analyzer.swift */; };
+		F3F5BC972BF7668E00EB8FB1 /* Sensitivity Analyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5BC952BF7668E00EB8FB1 /* Sensitivity Analyzer.swift */; };
+		F3F5BC982BF7668E00EB8FB1 /* Sensitivity Analyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5BC952BF7668E00EB8FB1 /* Sensitivity Analyzer.swift */; };
 		F3F6ACAF2A51E48700EE417F /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3F6ACAE2A51E48700EE417F /* AlertKit */; };
 		F3F716BD29E4D46600838586 /* Backup List Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F716BC29E4D46600838586 /* Backup List Footer.swift */; };
 		F3F86CFD2A5AEDB400A2C82E /* Audio Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F86CFC2A5AEDB400A2C82E /* Audio Recorder.swift */; };
@@ -1516,7 +1519,7 @@
 		F3D49DB22B2330C30033B52E /* Overview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overview.swift; sourceTree = "<group>"; };
 		F3D49DB42B2336240033B52E /* Overview VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Overview VM.swift"; sourceTree = "<group>"; };
 		F3D52B242B13FE9C00167DD6 /* App Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Delegate.swift"; sourceTree = "<group>"; };
-		F3D558AB2A3360ED00608447 /* FileTab VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileTab VM.swift"; sourceTree = "<group>"; };
+		F3D558AB2A3360ED00608447 /* File Tab VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Tab VM.swift"; sourceTree = "<group>"; };
 		F3D7D87A29E83D1800BCAFFE /* Cache Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache Settings.swift"; sourceTree = "<group>"; };
 		F3D7D87C29E83D6500BCAFFE /* Icon Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Icon Settings.swift"; sourceTree = "<group>"; };
 		F3D7D87E29E83DEE00BCAFFE /* Design Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Design Settings.swift"; sourceTree = "<group>"; };
@@ -1559,6 +1562,7 @@
 		F3F061D92A73CE1200470F7E /* Server Card Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Parent.swift"; sourceTree = "<group>"; };
 		F3F2A5BA29AC296D00AD20A4 /* Server Card Suspended.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Suspended.swift"; sourceTree = "<group>"; };
 		F3F2BBA42A540B8800D44CA6 /* Start Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page.swift"; sourceTree = "<group>"; };
+		F3F5BC952BF7668E00EB8FB1 /* Sensitivity Analyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sensitivity Analyzer.swift"; sourceTree = "<group>"; };
 		F3F716BC29E4D46600838586 /* Backup List Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Backup List Footer.swift"; sourceTree = "<group>"; };
 		F3F86CFC2A5AEDB400A2C82E /* Audio Recorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Audio Recorder.swift"; sourceTree = "<group>"; };
 		F3FA4DE92A4CE82000547722 /* Account Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account Settings.swift"; sourceTree = "<group>"; };
@@ -2036,10 +2040,11 @@
 			isa = PBXGroup;
 			children = (
 				F31BA5AB295902B00006D126 /* File Tab.swift */,
-				F3D558AB2A3360ED00608447 /* FileTab VM.swift */,
+				F3D558AB2A3360ED00608447 /* File Tab VM.swift */,
 				F37266BB29D811B7005FD103 /* File View.swift */,
 				F37266BF29D826F5005FD103 /* File Details.swift */,
 				F37266A929D71A1B005FD103 /* File Icon.swift */,
+				F3F5BC952BF7668E00EB8FB1 /* Sensitivity Analyzer.swift */,
 				F3BEEBC82A4AB45E00E686B8 /* Upload */,
 				F31BA5BA295903330006D126 /* Destinations */,
 				F37DDA7429E2AABF00B9680C /* Elements */,
@@ -3614,7 +3619,7 @@
 				F3CCF5BC2B345472005FFF2C /* Permission Card.swift in Sources */,
 				F30088E42B3A5B0B0051476C /* Startup List.swift in Sources */,
 				F30089312B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */,
-				F3D558B32A33C6A000608447 /* FileTab VM.swift in Sources */,
+				F3D558B32A33C6A000608447 /* File Tab VM.swift in Sources */,
 				F3796566295C51FF0074CA3D /* Gauge TV.swift in Sources */,
 				F3FFB7462A57F91700220FA5 /* Map List.swift in Sources */,
 				F3BB07BD2A5421B700F5EE2E /* Server List VM.swift in Sources */,
@@ -3650,7 +3655,7 @@
 				F325F7032A54BF7A00E89EC4 /* InfoTab Model.swift in Sources */,
 				F31BA57A295901110006D126 /* Start Page.swift in Sources */,
 				F31578B5296760710016A600 /* Server Card.swift in Sources */,
-				F3D558AC2A3360ED00608447 /* FileTab VM.swift in Sources */,
+				F3D558AC2A3360ED00608447 /* File Tab VM.swift in Sources */,
 				F337C1622A8CE7C0006F321C /* Startup Card.swift in Sources */,
 				F3A31B092B0B161D00F89C51 /* Cloud Key Card.swift in Sources */,
 				F37266AA29D71A1B005FD103 /* File Icon.swift in Sources */,
@@ -3738,6 +3743,7 @@
 				F3924EE929A28D9D00C4CC77 /* Biometry Usage View.swift in Sources */,
 				F3553FB92B4093E600EF0FD2 /* Allocation List.swift in Sources */,
 				F36797702A393631009F2788 /* Inspector Button.swift in Sources */,
+				F3F5BC962BF7668E00EB8FB1 /* Sensitivity Analyzer.swift in Sources */,
 				F3CB53D62971CF6B00A213B0 /* Database Card.swift in Sources */,
 				F31BA596295901F70006D126 /* Panel View.swift in Sources */,
 				F378EF8329D6C91300BC4849 /* Gauge Disk.swift in Sources */,
@@ -3906,7 +3912,7 @@
 				F3499EF82A275556006101B7 /* Websocket Message.swift in Sources */,
 				F30C12FD2A54546900A7EFF0 /* App Container.swift in Sources */,
 				F3C9D85D2B31146E00265492 /* User Avatar.swift in Sources */,
-				F3D558B22A33C6A000608447 /* FileTab VM.swift in Sources */,
+				F3D558B22A33C6A000608447 /* File Tab VM.swift in Sources */,
 				F3762D9F2A581B150016AC44 /* Log List Parent.swift in Sources */,
 				F3464D1A2A86396200188B0C /* Intents.intentdefinition in Sources */,
 				F37266E129D9A7BA005FD103 /* Panel View.swift in Sources */,
@@ -4057,7 +4063,7 @@
 				F3BC03C32B2063820011F98A /* Debug Key.swift in Sources */,
 				F36D531B2A05B807007324C6 /* Console VM.swift in Sources */,
 				F37A36792A35180100517EFC /* Power Menu.swift in Sources */,
-				F3D558AD2A33640100608447 /* FileTab VM.swift in Sources */,
+				F3D558AD2A33640100608447 /* File Tab VM.swift in Sources */,
 				F3287A7C2B10A17F001AFE54 /* Widget Live Activity.swift in Sources */,
 				F36D530F2A05B6E0007324C6 /* Browser Card.swift in Sources */,
 				F30088FD2B3B56240051476C /* User List Parent.swift in Sources */,
@@ -4091,6 +4097,7 @@
 				F389BB702A05B5FF00911EBF /* Cache VM.swift in Sources */,
 				F39CF3592A50C00C0077996D /* User View.swift in Sources */,
 				F389BB582A05B4F600911EBF /* Server List Grid.swift in Sources */,
+				F3F5BC972BF7668E00EB8FB1 /* Sensitivity Analyzer.swift in Sources */,
 				F389BB6D2A05B5EE00911EBF /* Cache Size.swift in Sources */,
 				F30088AB2B3A1A520051476C /* Schedule VM.swift in Sources */,
 				F36D53332A05B8A9007324C6 /* Folder Path.swift in Sources */,
@@ -4185,6 +4192,7 @@
 				F3D295942AF3A03700ED43A0 /* Contact Manager.swift in Sources */,
 				F3D295662AF39EB000ED43A0 /* Panel VM.swift in Sources */,
 				F3D295C82AF3A1FF00ED43A0 /* Credentials VM.swift in Sources */,
+				F3F5BC982BF7668E00EB8FB1 /* Sensitivity Analyzer.swift in Sources */,
 				F32E88D32AF8494100959D49 /* Server List Filter.swift in Sources */,
 				F3D295A62AF3A0D200ED43A0 /* Settings VM.swift in Sources */,
 				F337C1552A8C29CD006F321C /* Unit Tests.swift in Sources */,
@@ -4198,7 +4206,7 @@
 				F3D2953E2AF39D5E00ED43A0 /* Bisquit.Host App.swift in Sources */,
 				F3D295562AF39E1A00ED43A0 /* Tip Cloud Keys.swift in Sources */,
 				F3D2954F2AF39DE600ED43A0 /* Browser VM.swift in Sources */,
-				F3D2955F2AF39E7700ED43A0 /* FileTab VM.swift in Sources */,
+				F3D2955F2AF39E7700ED43A0 /* File Tab VM.swift in Sources */,
 				F3AF91CB2B4235BB001D8F80 /* SSH Card.swift in Sources */,
 				F3D295AA2AF3A0E600ED43A0 /* Cache Settings.swift in Sources */,
 				F3D295372AF39D1300ED43A0 /* Tabs.swift in Sources */,
@@ -4530,7 +4538,7 @@
 				F348C6E92A54483D002D5BD6 /* Intro.swift in Sources */,
 				F32FD7162B1E041D00723B88 /* Websocket Message.swift in Sources */,
 				F30C13142A5461BA00A7EFF0 /* Cache VM.swift in Sources */,
-				F3D558B12A33C69F00608447 /* FileTab VM.swift in Sources */,
+				F3D558B12A33C69F00608447 /* File Tab VM.swift in Sources */,
 				F3E08EBF2A2CE87800116C1C /* Start Page.swift in Sources */,
 				F3E08EA52A2CE17900116C1C /* Home.swift in Sources */,
 				F30088C42B3A32DB0051476C /* Plugin Card.swift in Sources */,
