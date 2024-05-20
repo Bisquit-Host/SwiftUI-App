@@ -47,9 +47,7 @@ struct InfoTabButtons: View {
                         )
                         .frame(height: 25)
                         .padding()
-                        .background(.ultraThinMaterial,
-                                    in: .rect(cornerRadius: 16)
-                        )
+                        .background(.ultraThinMaterial,in: .rect(cornerRadius: 16))
                         .onAppear {
                             isRotating = true
                         }

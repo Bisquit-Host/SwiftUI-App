@@ -74,7 +74,7 @@ final class FileTabVM: ObservableObject {
         _ url: String,
         directory: String = "",
         filename: String? = nil,
-        useHeader: String? = nil,
+        useHeader: Bool = false,
         foreground: Bool? = nil
     ) {
         pullRemoteFileAPI(id, url: url, directory: directory, filename: filename, useHeader: useHeader, foreground: foreground) { result in

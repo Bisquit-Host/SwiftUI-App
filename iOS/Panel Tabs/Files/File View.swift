@@ -39,7 +39,7 @@ struct FileView: View {
         } label: {
             VStack(alignment: .leading) {
                 HStack {
-                    FileIcon(mimeType)
+                    FileIcon(mimeType, filename: name)
                         .semibold()
                         .frame(width: 20)
                     

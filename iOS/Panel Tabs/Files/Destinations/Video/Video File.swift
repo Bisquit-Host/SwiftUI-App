@@ -86,7 +86,7 @@ struct VideoFile: View {
                 try fm.moveItem(at: location, to: fileURL)
                 
                 main {
-#if !os(watchOS)
+#if !os(watchOS) && !os(tvOS)
                     let processor = SensitivityAnalyzer()
                     
                     Task {

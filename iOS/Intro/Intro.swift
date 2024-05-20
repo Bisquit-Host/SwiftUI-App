@@ -78,9 +78,7 @@ struct Intro: View {
                             .padding(.horizontal, 25)
                             .padding(.vertical, 16)
                             .foregroundStyle(.white)
-                            .background(.blue.gradient,
-                                        in: .capsule
-                            )
+                            .background(.blue.gradient, in: .capsule)
                             .conditionalEffect(
                                 .repeat(
                                     .glow(color: .blue),
@@ -96,8 +94,7 @@ struct Intro: View {
                 }
             }
             .padding(.bottom)
-            .frame(maxWidth: .infinity,
-                   maxHeight: .infinity)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .offset(y: showWalkThroughScreens ? -size.height * 1.1 : 0)
         }
     }
@@ -116,8 +113,7 @@ struct Intro: View {
                 
                 WelcomeView(size: size, index: intros.count)
             }
-            .frame(maxWidth: .infinity, 
-                   maxHeight: .infinity)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .overlay(alignment: .bottom) {
                 ZStack {
                     Image(systemName: "chevron.right")
@@ -238,8 +234,7 @@ struct Intro: View {
         }
         .padding(.horizontal, 15)
         .padding(.top, 10)
-        .frame(maxHeight: .infinity, 
-               alignment: .top)
+        .frame(maxHeight: .infinity, alignment: .top)
         .offset(y: showWalkThroughScreens ? 0 : -120)
     }
 }

@@ -17,9 +17,7 @@ struct StartPage: View {
                         navState.navigate(.toServerList)
                     }
                     .padding()
-                    .background(.blue.gradient,
-                                in: .capsule
-                    )
+                    .background(.blue.gradient, in: .capsule)
                     .transition(.movingParts.glare)
                 } else {
                     Button("Demo") {}

@@ -76,9 +76,7 @@ struct Guide: View {
                 .bold()
                 .padding()
                 .foregroundStyle(.white)
-                .background(.blue, 
-                            in: .capsule
-                )
+                .background(.blue, in: .capsule)
                 
             case 1:
                 SafariButton("https://mgr.bisquit.host") {
