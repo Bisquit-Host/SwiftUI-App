@@ -123,6 +123,11 @@ struct PanelView: View {
         //                }
         //            }
         //        }
+        .ornament(attachmentAnchor: .scene(.trailing)) {
+            if let server = vm.server {
+                PanelOrnamentInfo(server, showCustomizeButton: true)
+            }
+        }
         .ornament(attachmentAnchor: .scene(.top)) {
             if showPowerButtons {
                 HStack {

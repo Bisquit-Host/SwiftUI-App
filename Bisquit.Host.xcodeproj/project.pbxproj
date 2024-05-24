@@ -522,6 +522,9 @@
 		F37A36782A35180100517EFC /* Power Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A36772A35180100517EFC /* Power Menu.swift */; };
 		F37A36792A35180100517EFC /* Power Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A36772A35180100517EFC /* Power Menu.swift */; };
 		F37A44352A05B0AA004FFDB0 /* Settings Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* Settings Storage.swift */; };
+		F37B90782BFEA00300597624 /* Ornament Info Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37B90752BFEA00200597624 /* Ornament Info Properties.swift */; };
+		F37B90792BFEA00300597624 /* Panel Ornament Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37B90762BFEA00300597624 /* Panel Ornament Info.swift */; };
+		F37B907A2BFEA00300597624 /* Ornament Info Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37B90772BFEA00300597624 /* Ornament Info Settings.swift */; };
 		F37DDA7629E2AF7600B9680C /* Folder Path VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DDA7529E2AF7600B9680C /* Folder Path VM.swift */; };
 		F37EA7992B70DEDE0029DE00 /* Console VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5A42959026D0006D126 /* Console VM.swift */; };
 		F37EA79C2B722B390029DE00 /* Backup VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300889C2B3A17CC0051476C /* Backup VM.swift */; };
@@ -1392,6 +1395,9 @@
 		F37A366E2A3515A900517EFC /* Sftp View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sftp View.swift"; sourceTree = "<group>"; };
 		F37A36722A3515DC00517EFC /* Server Settings VM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server Settings VM.swift"; sourceTree = "<group>"; };
 		F37A36772A35180100517EFC /* Power Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Menu.swift"; sourceTree = "<group>"; };
+		F37B90752BFEA00200597624 /* Ornament Info Properties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ornament Info Properties.swift"; sourceTree = "<group>"; };
+		F37B90762BFEA00300597624 /* Panel Ornament Info.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Panel Ornament Info.swift"; sourceTree = "<group>"; };
+		F37B90772BFEA00300597624 /* Ornament Info Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ornament Info Settings.swift"; sourceTree = "<group>"; };
 		F37DDA7529E2AF7600B9680C /* Folder Path VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Folder Path VM.swift"; sourceTree = "<group>"; };
 		F37F51C329DAF8D70030C1C4 /* Des Image VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Des Image VM.swift"; sourceTree = "<group>"; };
 		F380B3232BD7B9B6009062E8 /* Image Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image Picker.swift"; sourceTree = "<group>"; };
@@ -2519,6 +2525,9 @@
 			isa = PBXGroup;
 			children = (
 				F3BD76F82A43C890003E7385 /* Panel View.swift */,
+				F37B90762BFEA00300597624 /* Panel Ornament Info.swift */,
+				F37B90772BFEA00300597624 /* Ornament Info Settings.swift */,
+				F37B90752BFEA00200597624 /* Ornament Info Properties.swift */,
 				F3DF03DE2B74F19B00CF6F5E /* Databases */,
 				F386941B2A4B3B1E002DEF90 /* Info */,
 				F32F43FC2B7544A200C9470B /* Users */,
@@ -4404,6 +4413,7 @@
 				F30B61C82B2905CA00F447B4 /* System Alerts.swift in Sources */,
 				F32F43FF2B75450800C9470B /* User Card.swift in Sources */,
 				F35081AF2AF30E2B00835CC0 /* Tip Cloud Keys.swift in Sources */,
+				F37B907A2BFEA00300597624 /* Ornament Info Settings.swift in Sources */,
 				F32F44002B75450B00C9470B /* User List.swift in Sources */,
 				F386941A2A4B3AE1002DEF90 /* Info Tab.swift in Sources */,
 				F37EA79C2B722B390029DE00 /* Backup VM.swift in Sources */,
@@ -4440,6 +4450,7 @@
 				F38928282A441D0C00561CDF /* Dev Settings.swift in Sources */,
 				F389282E2A445E4F00561CDF /* App Settings.swift in Sources */,
 				F33944132A49134B00E2F0FC /* Server Card Context Menu.swift in Sources */,
+				F37B90782BFEA00300597624 /* Ornament Info Properties.swift in Sources */,
 				F3F2BBAC2A540E6500D44CA6 /* Cloud Keys.swift in Sources */,
 				F32FD71A2B1E042C00723B88 /* Websocket Delegate.swift in Sources */,
 				F38928252A441B5D00561CDF /* Server Settings.swift in Sources */,
@@ -4451,6 +4462,7 @@
 				F32FD7182B1E042500723B88 /* Websocket.swift in Sources */,
 				F32FD7212B1E065500723B88 /* Network Calls.swift in Sources */,
 				F35FEB142B0A2C8F004DA05D /* Enums.swift in Sources */,
+				F37B90792BFEA00300597624 /* Panel Ornament Info.swift in Sources */,
 				F33174DD2B725E3E003758EA /* Backup List.swift in Sources */,
 				F3A7CF702A44FD5300331B51 /* Server Card Parent.swift in Sources */,
 			);

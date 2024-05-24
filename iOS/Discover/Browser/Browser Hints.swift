@@ -11,7 +11,7 @@ struct BrowserHints: View {
     
     var body: some View {
         DisclosureGroup("Hints") {
-            ForEach(hints.sorted(by: >), id:\.key) { hint, icon in
+            ForEach(hints.sorted(by: >), id: \.key) { hint, icon in
                 ListButton(LocalizedStringResource(stringLiteral: hint), icon: icon)
             }
         }

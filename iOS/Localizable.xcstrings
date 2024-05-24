@@ -513,7 +513,19 @@
     "1" : {
 
     },
+    "1.2.3.4.43.34" : {
+
+    },
+    "2d 12:12:12" : {
+
+    },
     "2FA" : {
+
+    },
+    "10" : {
+
+    },
+    "80%" : {
 
     },
     "123" : {
@@ -1348,6 +1360,9 @@
         }
       }
     },
+    "Customize" : {
+
+    },
     "Data" : {
       "localizations" : {
         "nl" : {
@@ -1611,6 +1626,9 @@
 
     },
     "Docker Image" : {
+
+    },
+    "Done" : {
 
     },
     "Download" : {
@@ -3019,6 +3037,9 @@
         }
       }
     },
+    "Node" : {
+
+    },
     "Nodes" : {
 
     },
@@ -3506,6 +3527,9 @@
     "Rotate password" : {
 
     },
+    "Running" : {
+
+    },
     "Save" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3678,6 +3702,9 @@
       }
     },
     "Server description" : {
+
+    },
+    "Server id" : {
 
     },
     "Server ID" : {
@@ -4034,6 +4061,9 @@
           }
         }
       }
+    },
+    "Status" : {
+
     },
     "Step" : {
       "localizations" : {
