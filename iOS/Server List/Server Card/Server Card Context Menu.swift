@@ -41,3 +41,11 @@ struct ServerCardContextMenu: View {
         }
     }
 }
+
+#Preview {
+    Text("Preview")
+        .largeTitle()
+        .contextMenu {
+            ServerCardContextMenu(.constant(false), id: "")
+        }
+}
