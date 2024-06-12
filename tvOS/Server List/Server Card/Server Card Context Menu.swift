@@ -31,3 +31,7 @@ struct ServerCardContextMenu: View {
         }
     }
 }
+
+#Preview {
+    ServerCardContextMenu("")
+}

@@ -3483,14 +3483,7 @@
 
     },
     "restart" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "рестарт"
-          }
-        }
-      }
+
     },
     "Restart" : {
       "extractionState" : "manual",
@@ -3499,12 +3492,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : ""
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Перезапуск"
           }
         },
         "uk" : {
@@ -4029,12 +4016,6 @@
             "value" : ""
           }
         },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Запуск"
-          }
-        },
         "uk" : {
           "stringUnit" : {
             "state" : "needs_review",
@@ -4106,12 +4087,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : ""
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Выключение"
           }
         },
         "uk" : {

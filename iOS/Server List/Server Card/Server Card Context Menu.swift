@@ -12,29 +12,23 @@ struct ServerCardContextMenu: View {
     }
     
     var body: some View {
-        Menu {
+        ControlGroup {
             MenuButton("Start", icon: "play") {
                 PteroNet.powerSignal(id, signal: .start)
-            }
-            
-            MenuButton("Restart", icon: "arrow.triangle.2.circlepath") {
-                PteroNet.powerSignal(id, signal: .restart)
             }
             
             MenuButton("Stop", icon: "stop") {
                 PteroNet.powerSignal(id, signal: .stop)
             }
             
-            Divider()
+            MenuButton("Restart", icon: "arrow.triangle.2.circlepath") {
+                PteroNet.powerSignal(id, signal: .restart)
+            }
             
             MenuButton("Kill", role: .destructive, icon: "xmark") {
                 PteroNet.powerSignal(id, signal: .kill)
             }
-        } label: {
-            Label("Actions", systemImage: "power")
         }
-        
-        Divider()
         
         MenuButton("Open in Safari", icon: "hammer") {
             showSafari = true
@@ -43,9 +37,10 @@ struct ServerCardContextMenu: View {
 }
 
 #Preview {
-    Text("Preview")
-        .largeTitle()
-        .contextMenu {
-            ServerCardContextMenu(.constant(false), id: "")
-        }
+    Menu("Preview") {
+        ServerCardContextMenu(.constant(false), id: "")
+    }
+    .semibold()
+    .rounded()
+    .largeTitle()
 }
