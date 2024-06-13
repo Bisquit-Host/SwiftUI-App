@@ -4,12 +4,12 @@ struct ServerCardContextMenu: View {
     @Binding private var showSafari: Bool
     private let id: String
     
-    init(_ showSafari: Binding<Bool>,
-         id: String
-    ) {
+    init(_ showSafari: Binding<Bool>, id: String) {
         _showSafari = showSafari
         self.id = id
     }
+    
+    @State private var confirmKill = false
     
     var body: some View {
         ControlGroup {
@@ -26,12 +26,17 @@ struct ServerCardContextMenu: View {
             }
             
             MenuButton("Kill", role: .destructive, icon: "xmark") {
-                PteroNet.powerSignal(id, signal: .kill)
+                confirmKill = true
             }
         }
         
         MenuButton("Open in Safari", icon: "hammer") {
             showSafari = true
+        }
+        .confirmationDialog("Kill", isPresented: $confirmKill) {
+            MenuButton("Kill", role: .destructive, icon: "xmark") {
+                PteroNet.powerSignal(id, signal: .kill)
+            }
         }
     }
 }

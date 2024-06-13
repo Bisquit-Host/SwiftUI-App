@@ -2546,12 +2546,6 @@
             "value" : "Kill"
           }
         },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Прервать"
-          }
-        },
         "uk" : {
           "stringUnit" : {
             "state" : "needs_review",
