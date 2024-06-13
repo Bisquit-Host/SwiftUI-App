@@ -1,16 +1,16 @@
 import ScrechKit
 
 struct ServerCardContextMenu: View {
-    @Binding private var showSafari: Bool
     private let id: String
+    @Binding private var showSafari: Bool
+    @Binding private var confirmKill: Bool
     
-    init(_ showSafari: Binding<Bool>, id: String) {
-        _showSafari = showSafari
+    init(_ id: String, showSafari: Binding<Bool>, confirmKill: Binding<Bool>) {
         self.id = id
+        _showSafari = showSafari
+        _confirmKill = confirmKill
     }
-    
-    @State private var confirmKill = false
-    
+        
     var body: some View {
         ControlGroup {
             MenuButton("Start", icon: "play") {
@@ -25,25 +25,20 @@ struct ServerCardContextMenu: View {
                 PteroNet.powerSignal(id, signal: .restart)
             }
             
-            MenuButton("Kill", role: .destructive, icon: "xmark") {
+            MenuButton("Kill", role: .destructive, icon: "power") {
                 confirmKill = true
             }
         }
         
-        MenuButton("Open in Safari", icon: "hammer") {
+        MenuButton("Open in Safari", icon: "safari") {
             showSafari = true
-        }
-        .confirmationDialog("Kill", isPresented: $confirmKill) {
-            MenuButton("Kill", role: .destructive, icon: "xmark") {
-                PteroNet.powerSignal(id, signal: .kill)
-            }
         }
     }
 }
 
 #Preview {
     Menu("Preview") {
-        ServerCardContextMenu(.constant(false), id: "")
+        ServerCardContextMenu("", showSafari: .constant(false), confirmKill: .constant(false))
     }
     .semibold()
     .rounded()
