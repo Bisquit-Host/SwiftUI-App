@@ -5,21 +5,22 @@ struct PowerSwitch: View {
     
     var body: some View {
         Menu {
-            MenuButton("Start", icon: "play") {
-                vm.changePower(.start)
+            ControlGroup {
+                MenuButton("Start", icon: "play") {
+                    vm.changePower(.start)
+                }
+                
+                MenuButton("Restart", icon: "arrow.clockwise") {
+                    vm.changePower(.restart)
+                }
+                
+                MenuButton("Stop", icon: "pause") {
+                    vm.changePower(.stop)
+                }
             }
-            
-            MenuButton("Restart", icon: "arrow.clockwise") {
-                vm.changePower(.restart)
-            }
-            
-            MenuButton("Stop", icon: "pause") {
-                vm.changePower(.stop)
-            }
-            
-            Divider()
             
             MenuButton("Kill", role: .destructive, icon: "power") {
+#warning("Add confirmation")
                 vm.changePower(.kill)
             }
         } label: {

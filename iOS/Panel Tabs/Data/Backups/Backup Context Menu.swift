@@ -14,22 +14,24 @@ struct BackupContextMenu: View {
         @Bindable var binding = vm
         let uuid = backup.uuid
         
-        MenuButton("Download", icon: "square.and.arrow.down") {
-            vm.downloadBackup(uuid)
-        }
-        
-        if backup.isLocked {
-            MenuButton("Unlock", role: .destructive, icon: "lock.open") {
-                vm.lockBackup(uuid)
+        ControlGroup {
+            MenuButton("Download", icon: "square.and.arrow.down") {
+                vm.downloadBackup(uuid)
             }
-        } else {
-            MenuButton("Lock", icon: "lock") {
-                vm.lockBackup(uuid)
+            
+            if backup.isLocked {
+                MenuButton("Unlock", role: .destructive, icon: "lock.open") {
+                    vm.lockBackup(uuid)
+                }
+            } else {
+                MenuButton("Lock", icon: "lock") {
+                    vm.lockBackup(uuid)
+                }
             }
-        }
-        
-        MenuButton("Restore", icon: "arrow.up.bin") {
-            vm.restoreBackup(uuid, truncate: false)
+            
+            MenuButton("Restore", icon: "arrow.up.bin") {
+                vm.restoreBackup(uuid, truncate: false)
+            }
         }
         
         Section {
@@ -43,3 +45,9 @@ struct BackupContextMenu: View {
         }
     }
 }
+
+//#Preview {
+//    Menu("Preview") {
+//        BackupContextMenu(BackupAttributes(uuid: "", name: "", createdAt: "", completedAt: "", isLocked: true, bytes: 64))
+//    }
+//}
