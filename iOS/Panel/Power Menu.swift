@@ -3,6 +3,8 @@ import ScrechKit
 struct PowerSwitch: View {
     @Environment(PanelVM.self) private var vm
     
+    @State private var confirmKill = false
+    
     var body: some View {
         Menu {
             ControlGroup {
@@ -20,8 +22,7 @@ struct PowerSwitch: View {
             }
             
             MenuButton("Kill", role: .destructive, icon: "power") {
-#warning("Add confirmation")
-                vm.changePower(.kill)
+                confirmKill = true
             }
         } label: {
             Image(systemName: "power")
@@ -31,6 +32,11 @@ struct PowerSwitch: View {
                 .frame(width: 35, height: 35)
                 .padding(10)
                 .background(.ultraThinMaterial, in: .circle)
+        }
+        .confirmationDialog("Perform kill action", isPresented: $confirmKill, titleVisibility: .visible) {
+            Button("Kill", role: .destructive) {
+                vm.changePower(.kill)
+            }
         }
     }
 }
