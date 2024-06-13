@@ -39,17 +39,19 @@ struct TextFile: View {
         
         VStack {
 #if os(iOS)
-            Text("Save changes")
-                .foregroundStyle(.yellow)
-                .title2(.bold)
-                .padding(10)
-                .overlay {
-                    Capsule()
-                        .stroke(.gray.opacity(0.5), lineWidth: 3)
-                }
-                .onTapGesture {
-                    vm.writeFile(vm.text, path: path)
-                }
+            Button {
+                vm.writeFile(vm.text, path: path)
+            } label: {
+                Text("Save changes")
+                    .foregroundStyle(.yellow)
+                    .title2(.bold)
+                    .padding(10)
+                    .overlay {
+                        Capsule()
+                            .stroke(.gray.opacity(0.5), lineWidth: 3)
+                    }
+            }
+            
             //                HighlightedTextEditor(text: $text, highlightRules: rules)
             //                    .padding(10)
             //                    .autocorrectionDisabled()

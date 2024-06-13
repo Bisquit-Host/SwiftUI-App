@@ -12,12 +12,12 @@ struct PowerSwitch: View {
                     vm.changePower(.start)
                 }
                 
-                MenuButton("Restart", icon: "arrow.clockwise") {
-                    vm.changePower(.restart)
-                }
-                
                 MenuButton("Stop", icon: "pause") {
                     vm.changePower(.stop)
+                }
+                
+                MenuButton("Restart", icon: "arrow.clockwise") {
+                    vm.changePower(.restart)
                 }
             }
             
@@ -28,7 +28,7 @@ struct PowerSwitch: View {
             Image(systemName: "power")
                 .title(.semibold)
                 .symbolEffect(.bounce, value: vm.stateColor)
-                .foregroundColor(vm.stateColor)
+                .foregroundStyle(vm.stateColor.gradient)
                 .frame(width: 35, height: 35)
                 .padding(10)
                 .background(.ultraThinMaterial, in: .circle)

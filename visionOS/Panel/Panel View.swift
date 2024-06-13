@@ -141,7 +141,7 @@ struct PanelView: View {
                     Button {
                         vm.changePower(.stop)
                     } label: {
-                        Label("Stop", systemImage: "stop")
+                        Label("Stop", systemImage: "pause")
                     }
                     .disabled(vm.serverState == .stopping || vm.serverState == .offline)
                     

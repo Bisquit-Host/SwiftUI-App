@@ -38,6 +38,7 @@ struct InfoTabButtons: View {
                     sheetSettings = true
                 } label: {
                     Image(systemName: "gear")
+                        .foregroundStyle(.accent.gradient)
                         .title2(.semibold)
                         .rotate(isRotating ? 360 : 0)
                         .animation(
@@ -68,9 +69,11 @@ struct InfoTabButtons: View {
                 }
             }
             
+            Spacer()
+                .frame(height: 20)
+            
 #if canImport(ActivityKit)
-            switch liveActivity.activityViewState?.activityState {
-            case .active:
+            if liveActivity.activityViewState?.activityState == .active {
                 Button {
                     liveActivity.stopAllLiveActivities()
                 } label: {
@@ -82,18 +85,26 @@ struct InfoTabButtons: View {
                         .padding()
                         .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
                 }
-                
-            default:
+            } else {
                 Button {
                     liveActivity.stopAllLiveActivities()
                     liveActivity.startLiveActivity(server)
                 } label: {
-                    Text("Live Activity BETA")
+                    Text("Live Activity")
                         .title2(.semibold, design: .rounded)
                         .foregroundStyle(.foreground)
                         .frame(height: 25)
                         .padding()
                         .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
+                }
+                .overlay(alignment: .topTrailing) {
+                    Text("Beta")
+                        .rounded()
+                        .footnote(.bold)
+                        .foregroundStyle(.white.gradient)
+                        .padding(.horizontal, 4)
+                        .background(.blue.gradient, in: .capsule)
+                        .padding(-6)
                 }
             }
 #endif

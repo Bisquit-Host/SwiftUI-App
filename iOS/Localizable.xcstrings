@@ -809,6 +809,9 @@
         }
       }
     },
+    "Beta" : {
+
+    },
     "Biometry Usage" : {
       "localizations" : {
         "ru" : {
@@ -2646,6 +2649,9 @@
         }
       }
     },
+    "Live Activity" : {
+
+    },
     "Live Activity (BETA)" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -2656,9 +2662,6 @@
           }
         }
       }
-    },
-    "Live Activity BETA" : {
-
     },
     "Load data" : {
 

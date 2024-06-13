@@ -2066,9 +2066,9 @@
 			isa = PBXGroup;
 			children = (
 				F3BEEBC02A4A779400E686B8 /* Folder */,
+				F3BEEBC62A4AB34D00E686B8 /* Text */,
 				F3BEEBBF2A4A778C00E686B8 /* Quick Look */,
 				F3BEEBC52A4AB34600E686B8 /* Video */,
-				F3BEEBC62A4AB34D00E686B8 /* Text */,
 			);
 			path = Destinations;
 			sourceTree = "<group>";
