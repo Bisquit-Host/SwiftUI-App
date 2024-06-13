@@ -1308,9 +1308,6 @@
         }
       }
     },
-    "Create task" : {
-
-    },
     "Create Task" : {
 
     },
@@ -2992,6 +2989,9 @@
           }
         }
       }
+    },
+    "New task" : {
+
     },
     "New User" : {
 

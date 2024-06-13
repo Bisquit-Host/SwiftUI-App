@@ -11,12 +11,14 @@ struct ScheduleContextMenu: View {
     }
     
     var body: some View {
-        MenuButton("Create task", icon: "plus") {
-            vm.sheetCreateTask = true
-        }
-        
-        MenuButton("Execute", icon: "play") {
-            vm.executeSchedule(schedule.id)
+        ControlGroup {
+            MenuButton("Execute", icon: "play") {
+                vm.executeSchedule(schedule.id)
+            }
+            
+            MenuButton("New task", icon: "plus") {
+                vm.sheetCreateTask = true
+            }
         }
         
         Section {
