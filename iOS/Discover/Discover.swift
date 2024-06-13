@@ -10,7 +10,7 @@ struct Discover: View {
         NavigationView {
             List {
                 Section {
-                     ListButton("Configure a new server", actionIcon: "externaldrive.badge.plus") {
+                    ListButton("Configure a new server", actionIcon: "externaldrive.badge.plus") {
                         sheetBrowsePlans = true
                     }
                     .foregroundStyle(.foreground)
@@ -19,14 +19,7 @@ struct Discover: View {
                 ForEach(Array(vm.sections), id: \.0) { section, items in
                     Section(section) {
                         ForEach(items, id: \.name) { link in
-                            SafariButton(link.url) {
-                                ListButton(
-                                    LocalizedStringResource(stringLiteral: link.name),
-                                    icon: link.icon,
-                                    actionIcon: "link",
-                                    color: link.color
-                                )
-                            }
+                            DiscoverCard(link)
                         }
                     }
                 }

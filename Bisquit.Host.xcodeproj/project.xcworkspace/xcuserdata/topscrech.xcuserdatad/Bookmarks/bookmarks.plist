@@ -1391,13 +1391,13 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>34</string>
+					<string>27</string>
 					<key>StartingColumnNumber</key>
-					<string>34</string>
+					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>33</string>
+					<string>26</string>
 					<key>Timestamp</key>
-					<string>718220531.40967</string>
+					<string>740008336.478631</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -1413,12 +1413,12 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>
+				<string>                NavigationLink {
 </string>
 				<key>leading</key>
 				<string>                }
                 
-                NavigationLink {</string>
+</string>
 				<key>trailing</key>
 				<string>                    MapView()
                 } label: {
