@@ -3326,7 +3326,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1510;
-				LastUpgradeCheck = 1510;
+				LastUpgradeCheck = 1600;
 				ORGANIZATIONNAME = Bisquit.Host;
 				TargetAttributes = {
 					F3000E04295A341000ABD30A = {
@@ -4914,7 +4914,6 @@
 		F31BA5482958FF7E0006D126 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "coin love streamer cool";
 				ASSETCATALOG_COMPILER_APPICON_NAME = default;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = accentColor;
@@ -4968,7 +4967,6 @@
 		F31BA5492958FF7E0006D126 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "coin love streamer cool";
 				ASSETCATALOG_COMPILER_APPICON_NAME = default;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = accentColor;
