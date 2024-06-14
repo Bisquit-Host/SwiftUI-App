@@ -3511,6 +3511,12 @@
     "Restore with truncate" : {
 
     },
+    "Retrieve cache" : {
+
+    },
+    "Retrieved %lld cached images" : {
+
+    },
     "Revoke all permissions" : {
 
     },

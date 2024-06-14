@@ -1009,6 +1009,13 @@
 		F3E1D3F22B320A6A009B7062 /* Permissions Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3F12B320A6A009B7062 /* Permissions Header.swift */; };
 		F3E1D3F32B320A6A009B7062 /* Permissions Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3F12B320A6A009B7062 /* Permissions Header.swift */; };
 		F3E1D3F42B320A6A009B7062 /* Permissions Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3F12B320A6A009B7062 /* Permissions Header.swift */; };
+		F3E2BEDA2C1C6B9500B7A6D4 /* Cache List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BED92C1C6B9500B7A6D4 /* Cache List.swift */; };
+		F3E2BEDB2C1C6B9500B7A6D4 /* Cache List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BED92C1C6B9500B7A6D4 /* Cache List.swift */; };
+		F3E2BEDC2C1C6B9500B7A6D4 /* Cache List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BED92C1C6B9500B7A6D4 /* Cache List.swift */; };
+		F3E2BEDF2C1C6BA800B7A6D4 /* Cache List VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BEDE2C1C6BA800B7A6D4 /* Cache List VM.swift */; };
+		F3E2BEE02C1C6BA800B7A6D4 /* Cache List VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BEDE2C1C6BA800B7A6D4 /* Cache List VM.swift */; };
+		F3E2BEE12C1C6BA800B7A6D4 /* Cache List VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BEDE2C1C6BA800B7A6D4 /* Cache List VM.swift */; };
+		F3E2BEE22C1C6BA800B7A6D4 /* Cache List VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BEDE2C1C6BA800B7A6D4 /* Cache List VM.swift */; };
 		F3E467522A49903900FABE5F /* Info Stat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E467512A49903900FABE5F /* Info Stat.swift */; };
 		F3E467532A49903900FABE5F /* Info Stat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E467512A49903900FABE5F /* Info Stat.swift */; };
 		F3E467552A49939300FABE5F /* Info Relative Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E467542A49939300FABE5F /* Info Relative Stats.swift */; };
@@ -1555,6 +1562,8 @@
 		F3E08ED92A2D017100116C1C /* Bisquit-Host-Mac-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Bisquit-Host-Mac-Info.plist"; sourceTree = SOURCE_ROOT; };
 		F3E1D3EC2B3208BE009B7062 /* User 2Fa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User 2Fa.swift"; sourceTree = "<group>"; };
 		F3E1D3F12B320A6A009B7062 /* Permissions Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Permissions Header.swift"; sourceTree = "<group>"; };
+		F3E2BED92C1C6B9500B7A6D4 /* Cache List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache List.swift"; sourceTree = "<group>"; };
+		F3E2BEDE2C1C6BA800B7A6D4 /* Cache List VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache List VM.swift"; sourceTree = "<group>"; };
 		F3E467512A49903900FABE5F /* Info Stat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Stat.swift"; sourceTree = "<group>"; };
 		F3E467542A49939300FABE5F /* Info Relative Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Relative Stats.swift"; sourceTree = "<group>"; };
 		F3E6FC422A1E677000410C7C /* Bisquits.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Bisquits.sks; sourceTree = "<group>"; };
@@ -2903,6 +2912,8 @@
 				F3D902DE29DC445A004E76C9 /* Cache Limit.swift */,
 				F3A391B929DB5E6900591C84 /* Cache Expiration.swift */,
 				F3D2951B2AF3975300ED43A0 /* Cache Model.swift */,
+				F3E2BED92C1C6B9500B7A6D4 /* Cache List.swift */,
+				F3E2BEDE2C1C6BA800B7A6D4 /* Cache List VM.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -3799,6 +3810,7 @@
 				F31BA576295900E30006D126 /* Settings.swift in Sources */,
 				F3D3DBD129B8007B00096115 /* Browser Topbar.swift in Sources */,
 				F30088A32B3A18A50051476C /* Database VM.swift in Sources */,
+				F3E2BEDB2C1C6B9500B7A6D4 /* Cache List.swift in Sources */,
 				F398823F2987BF6E00B9BA2C /* Schedule Task.swift in Sources */,
 				F304498A29E990E9006DC0C7 /* Cloud Keys.swift in Sources */,
 				F3FF5A0F2A4A3ABD003A1973 /* User Card.swift in Sources */,
@@ -3848,6 +3860,7 @@
 				F31BA5A52959026D0006D126 /* Console VM.swift in Sources */,
 				F3BF97AA29BFC7E9007B9C9C /* Websocket.swift in Sources */,
 				F337B3A829BC6B5400CC1195 /* Server List Grid.swift in Sources */,
+				F3E2BEDF2C1C6BA800B7A6D4 /* Cache List VM.swift in Sources */,
 				F37266BC29D811B7005FD103 /* File View.swift in Sources */,
 				F3AF91C52B423535001D8F80 /* SSH List.swift in Sources */,
 				F31BA56A2959007E0006D126 /* Nav Destinations.swift in Sources */,
@@ -3920,6 +3933,7 @@
 				F3E1D3EF2B3208DE009B7062 /* User 2Fa.swift in Sources */,
 				F3EB09D22A29533D0073916A /* Formatters.swift in Sources */,
 				F3499EFA2A277D0F006101B7 /* File Tab.swift in Sources */,
+				F3E2BEE22C1C6BA800B7A6D4 /* Cache List VM.swift in Sources */,
 				F3EB09E52A2982680073916A /* Video File.swift in Sources */,
 				F3F86D002A5AEDCD00A2C82E /* Audio Recorder.swift in Sources */,
 				F30088FB2B3B56210051476C /* User List Parent.swift in Sources */,
@@ -4066,6 +4080,7 @@
 				F36797712A393635009F2788 /* Inspector Button.swift in Sources */,
 				F32E88D22AF8494100959D49 /* Server List Filter.swift in Sources */,
 				F36D53342A05B8AF007324C6 /* File View.swift in Sources */,
+				F3E2BEE02C1C6BA800B7A6D4 /* Cache List VM.swift in Sources */,
 				F3287A762B10A0E4001AFE54 /* Live Activity.swift in Sources */,
 				F36D53402A05B8F6007324C6 /* File Icon.swift in Sources */,
 				F3C9D8522B3059E700265492 /* UIVideoPlayer.swift in Sources */,
@@ -4084,6 +4099,7 @@
 				F30088FD2B3B56240051476C /* User List Parent.swift in Sources */,
 				F3EB09F12A2989570073916A /* QuickLook.swift in Sources */,
 				F389BB752A05B62600911EBF /* Design Settings.swift in Sources */,
+				F3E2BEDC2C1C6B9500B7A6D4 /* Cache List.swift in Sources */,
 				F389BB7C2A05B66B00911EBF /* App Icon.swift in Sources */,
 				F3A1235C2A6689FA008E3E20 /* User Email.swift in Sources */,
 				F380B3252BD7BA15009062E8 /* Image Picker.swift in Sources */,
@@ -4319,6 +4335,7 @@
 				F3D295782AF39F2F00ED43A0 /* User List.swift in Sources */,
 				F380B3262BD7BA16009062E8 /* Image Picker.swift in Sources */,
 				F3D295BE2AF3A18B00ED43A0 /* Biometry Button.swift in Sources */,
+				F3E2BEE12C1C6BA800B7A6D4 /* Cache List VM.swift in Sources */,
 				F3D295BB2AF3A17900ED43A0 /* Biometry Usage View.swift in Sources */,
 				F3D295D12AF3A30000ED43A0 /* Animated Tab.swift in Sources */,
 				F3D295542AF39E1200ED43A0 /* Carousel Button Style.swift in Sources */,
@@ -4350,6 +4367,7 @@
 				F3D295BC2AF3A18400ED43A0 /* Other Settings.swift in Sources */,
 				F32E88CF2AF83FEC00959D49 /* Server List Topbar.swift in Sources */,
 				F35FEB1F2B0A7415004DA05D /* Cloud Keys.swift in Sources */,
+				F3E2BEDA2C1C6B9500B7A6D4 /* Cache List.swift in Sources */,
 				F3D295852AF39FAD00ED43A0 /* Discover VM.swift in Sources */,
 				F3D295742AF39F1800ED43A0 /* File View.swift in Sources */,
 				F3D295CB2AF3A22700ED43A0 /* QR Code View.swift in Sources */,
@@ -4928,7 +4946,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Bisquit-Host-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
+				INFOPLIST_KEY_CFBundleDisplayName = Debug;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSCameraUsageDescription = "App uses camera to create elements with dynamic color based on camera capture";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Access to contacts allows you to save new contacts directly from the app.";
