@@ -7,9 +7,9 @@ struct PermissionsHeader: View {
     private let user: UserAttributes
     @Binding private var showDescription: Bool
     
-    init(_ user: UserAttributes, showDescription: Binding<Bool>) {
-        self.user = user
+    init(_ showDescription: Binding<Bool>, user: UserAttributes) {
         _showDescription = showDescription
+        self.user = user
     }
     
     var permissionCount: Int {
@@ -59,8 +59,8 @@ struct PermissionsHeader: View {
 #Preview {
     List {
         PermissionsHeader(
-            sampleJSON(.userAttributes),
-            showDescription: .constant(false)
+            .constant(false),
+            user: sampleJSON(.userAttributes)
         )
     }
 }

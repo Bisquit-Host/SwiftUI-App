@@ -1,5 +1,34 @@
 import ScrechKit
-import Contacts
+import ContactsUI
+
+fileprivate struct ContactAccessPickerModifier: ViewModifier {
+    @Binding private var isPresented: Bool
+    
+    init(_ isPresented: Binding<Bool>) {
+        _isPresented = isPresented
+    }
+    
+    func body(content: Content) -> some View {
+        if #available(iOS 18, *) {
+#warning("Implement")
+            content
+                .contactAccessPicker(isPresented: $isPresented)// { identifiers in }
+                .toolbar {
+                    SFButton("person.crop.circle.badge.plus") {
+                        isPresented = true
+                    }
+                }
+        } else {
+            content
+        }
+    }
+}
+
+fileprivate extension View {
+    func contactAccessPicker(_ isPresented: Binding<Bool>) -> some View {
+        self.modifier(ContactAccessPickerModifier(isPresented))
+    }
+}
 
 struct ContactsListView: View {
     @Environment(\.dismiss) private var dismiss
@@ -11,13 +40,16 @@ struct ContactsListView: View {
     }
     
     @State private var contacts: [CNContact] = []
+    @State private var moreContacts: [CNContact] = []
     @State private var searchField = ""
+    @State private var authStatus: CNAuthorizationStatus = .notDetermined
+    @State private var showPicker = false
     
     private var filteredContacts: [CNContact] {
         if searchField.isEmpty {
-            return contacts
+            contacts
         } else {
-            return contacts.filter { contact in
+            contacts.filter { contact in
                 let searchLowercased = searchField.lowercased()
                 
                 return contact.emailAddresses.contains(where: { $0.value.lowercased.contains(searchLowercased) }) ||
@@ -29,24 +61,77 @@ struct ContactsListView: View {
     
     var body: some View {
         NavigationView {
-            List(filteredContacts, id: \.identifier) { contact in
-                Section(contact.fullName) {
-                    ForEach(contact.emailAddresses, id: \.self) { email in
-                        let email = email.value as String
-                        Button(email) {
-                            selectedEmail = email
-                            dismiss()
+            List {
+                ForEach(filteredContacts, id: \.identifier) { contact in
+                    Section(contact.fullName) {
+                        ForEach(contact.emailAddresses, id: \.self) { email in
+                            let email = email.value as String
+                            
+                            Button(email) {
+                                selectedEmail = email
+                                dismiss()
+                            }
+                        }
+                    }
+                }
+                
+                ForEach(moreContacts, id: \.identifier) { contact in
+                    Text(contact.fullName)
+                }
+                
+                if #available(iOS 18, *) {
+                    if authStatus == .limited || authStatus == .notDetermined {
+                        Section {
+                            ContactAccessButton(queryString: searchField) { identifiers in
+                                handleFetchContacts(identifiers)
+                            }
                         }
                     }
                 }
             }
             .navigationTitle("Contacts")
-            .searchable(text: $searchField)
+            .contactAccessPicker($showPicker)
             .animation(.default, value: filteredContacts)
+            .searchable(text: $searchField)
         }
-        .onAppear {
+        .task {
             loadContactsWithEmail()
         }
+    }
+    
+    private func handleFetchContacts(_ identifiers: [String]) {
+        Task {
+            let fetchedContacts = await fetchContacts(identifiers)
+            
+            DispatchQueue.main.async {
+                self.moreContacts = fetchedContacts
+            }
+        }
+    }
+    
+    private func fetchContacts(_ identifiers: [String]) async -> [CNContact] {
+        let store = CNContactStore()
+        let keysToFetch = [
+            CNContactGivenNameKey,
+            CNContactFamilyNameKey,
+            CNContactPhoneNumbersKey,
+            CNContactEmailAddressesKey
+        ] as [CNKeyDescriptor]
+        
+        let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch)
+        fetchRequest.predicate = CNContact.predicateForContacts(withIdentifiers: identifiers)
+        
+        var contacts = [CNContact]()
+        
+        do {
+            try store.enumerateContacts(with: fetchRequest) { contact, stop in
+                contacts.append(contact)
+            }
+        } catch {
+            print("Failed to fetch contacts: \(error)")
+        }
+        
+        return contacts
     }
     
     private func loadContactsWithEmail() {
@@ -58,12 +143,12 @@ struct ContactsListView: View {
             do {
                 var contactsWithEmail = [CNContact]()
                 
-                try store.enumerateContacts(with: request) { (contact, stop) in
+                try store.enumerateContacts(with: request) { contact, stop in
                     if !contact.emailAddresses.isEmpty {
                         contactsWithEmail.append(contact)
                     }
                 }
-
+                
                 main {
                     self.contacts = contactsWithEmail
                 }

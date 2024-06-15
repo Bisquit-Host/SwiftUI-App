@@ -1,4 +1,4 @@
-import Combine
+import Foundation
 import AVKit
 
 final class VideoPlayerVM: ObservableObject {

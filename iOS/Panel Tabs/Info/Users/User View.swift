@@ -40,7 +40,7 @@ struct UserView: View {
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
                 
-                PermissionList($user)
+                PermissionListView($user)
                     .environment(vm)
             }
             .refreshable {
