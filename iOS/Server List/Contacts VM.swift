@@ -44,7 +44,7 @@ final class ContactProvider {
             }
         }
     }
-        
+    
     private func addContact(givenName: String, familyName: String, email: String) async throws {
         let store = CNContactStore()
         
@@ -58,19 +58,12 @@ final class ContactProvider {
 #endif
         }
         
-        //        let id = "975E6A06-2FCE-48C2-9BB8-8476479BC91B:ABContainer"
-        let id = bisqContainer?.identifier
-        
-        print(containers.map(\.identifier))
-        print(containers.map(\.name))
-//        print(containers.map(\.type.rawValue))
-        
-                
         let contact = CNMutableContact()
         contact.givenName = givenName
         contact.familyName = familyName
         contact.emailAddresses = [CNLabeledValue(label: CNLabelHome, value: email as NSString)]
         
+        let id = bisqContainer?.identifier
         let saveRequest = CNSaveRequest()
         saveRequest.add(contact, toContainerWithIdentifier: id)
         
