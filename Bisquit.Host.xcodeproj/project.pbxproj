@@ -1607,6 +1607,7 @@
 		F3FA61532A1F8DB500A65AE1 /* Upload Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Upload Menu.swift"; sourceTree = "<group>"; };
 		F3FA61562A1F928500A65AE1 /* FileTab Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileTab Search.swift"; sourceTree = "<group>"; };
 		F3FBDDFB29DABA0D00B170EC /* Auth Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auth Background.swift"; sourceTree = "<group>"; };
+		F3FF4C812C1F72D600C90120 /* File.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = File.txt; sourceTree = "<group>"; };
 		F3FF59FE2A4A3188003A1973 /* User List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User List.swift"; sourceTree = "<group>"; };
 		F3FF5A022A4A359C003A1973 /* InfoTab Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InfoTab Buttons.swift"; sourceTree = "<group>"; };
 		F3FF5A082A4A3745003A1973 /* InfoTab Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InfoTab Background.swift"; sourceTree = "<group>"; };
@@ -1904,6 +1905,7 @@
 				F3E2BEF62C1DA07E00B7A6D4 /* Contact Provider Extension */,
 				F31BA5242958FF7C0006D126 /* Products */,
 				F3D3437429BFE5A2007C0D58 /* Frameworks */,
+				F3FF4C812C1F72D600C90120 /* File.txt */,
 			);
 			sourceTree = "<group>";
 		};

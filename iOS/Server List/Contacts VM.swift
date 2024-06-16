@@ -1,6 +1,9 @@
-import ContactProvider
 import Contacts
 import PteroNet
+
+#if canImport(ContactProvider)
+import ContactProvider
+#endif
 
 extension ServerListVM {
     func enableExtension() async {
