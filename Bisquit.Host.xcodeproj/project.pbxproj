@@ -2030,10 +2030,10 @@
 			isa = PBXGroup;
 			children = (
 				F31578B229675F5D0016A600 /* Server List.swift */,
-				F3E2BF022C1EC92B00B7A6D4 /* Contact List.swift */,
-				F3E2BF0A2C1EC94300B7A6D4 /* Contacts VM.swift */,
 				F352AF962A4EDB1D004AD489 /* Server List VM.swift */,
 				F337B3A729BC6B5400CC1195 /* Server List Grid.swift */,
+				F3E2BF022C1EC92B00B7A6D4 /* Contact List.swift */,
+				F3E2BF0A2C1EC94300B7A6D4 /* Contacts VM.swift */,
 				F32E88CB2AF83FCB00959D49 /* Topbar */,
 				F306B9EE29BBDA7C0008C2D4 /* Elements */,
 				F3A391BD29DB838D00591C84 /* Server Card */,
