@@ -1016,6 +1016,15 @@
 		F3E2BEE02C1C6BA800B7A6D4 /* Cache List VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BEDE2C1C6BA800B7A6D4 /* Cache List VM.swift */; };
 		F3E2BEE12C1C6BA800B7A6D4 /* Cache List VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BEDE2C1C6BA800B7A6D4 /* Cache List VM.swift */; };
 		F3E2BEE22C1C6BA800B7A6D4 /* Cache List VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BEDE2C1C6BA800B7A6D4 /* Cache List VM.swift */; };
+		F3E2BEFA2C1DA07E00B7A6D4 /* Contact Provider Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BEF82C1DA07E00B7A6D4 /* Contact Provider Extension.swift */; };
+		F3E2BEFB2C1DA07E00B7A6D4 /* Extension Root Container Enumerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BEF92C1DA07E00B7A6D4 /* Extension Root Container Enumerator.swift */; };
+		F3E2BEFE2C1DA07E00B7A6D4 /* Contact Provider Extension.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = F3E2BEF52C1DA07E00B7A6D4 /* Contact Provider Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F3E2BF062C1EC92B00B7A6D4 /* Contact List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BF022C1EC92B00B7A6D4 /* Contact List.swift */; };
+		F3E2BF082C1EC92B00B7A6D4 /* Contact List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BF022C1EC92B00B7A6D4 /* Contact List.swift */; };
+		F3E2BF092C1EC92B00B7A6D4 /* Contact List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BF022C1EC92B00B7A6D4 /* Contact List.swift */; };
+		F3E2BF0F2C1EC94300B7A6D4 /* Contacts VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BF0A2C1EC94300B7A6D4 /* Contacts VM.swift */; };
+		F3E2BF102C1EC94300B7A6D4 /* Contacts VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BF0A2C1EC94300B7A6D4 /* Contacts VM.swift */; };
+		F3E2BF112C1EC94300B7A6D4 /* Contacts VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BF0A2C1EC94300B7A6D4 /* Contacts VM.swift */; };
 		F3E467522A49903900FABE5F /* Info Stat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E467512A49903900FABE5F /* Info Stat.swift */; };
 		F3E467532A49903900FABE5F /* Info Stat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E467512A49903900FABE5F /* Info Stat.swift */; };
 		F3E467552A49939300FABE5F /* Info Relative Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E467542A49939300FABE5F /* Info Relative Stats.swift */; };
@@ -1149,6 +1158,13 @@
 			remoteGlobalIDString = F31BA5222958FF7C0006D126;
 			remoteInfo = Bisquit.Host;
 		};
+		F3E2BEFC2C1DA07E00B7A6D4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F31BA51B2958FF7C0006D126 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F3E2BEF42C1DA07E00B7A6D4;
+			remoteInfo = "Contact Provider Extension";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1180,6 +1196,7 @@
 			dstPath = "$(EXTENSIONS_FOLDER_PATH)";
 			dstSubfolderSpec = 16;
 			files = (
+				F3E2BEFE2C1DA07E00B7A6D4 /* Contact Provider Extension.appex in Embed ExtensionKit Extensions */,
 				F3464D022A862D2D00188B0C /* Intent.appex in Embed ExtensionKit Extensions */,
 			);
 			name = "Embed ExtensionKit Extensions";
@@ -1564,6 +1581,12 @@
 		F3E1D3F12B320A6A009B7062 /* Permissions Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Permissions Header.swift"; sourceTree = "<group>"; };
 		F3E2BED92C1C6B9500B7A6D4 /* Cache List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache List.swift"; sourceTree = "<group>"; };
 		F3E2BEDE2C1C6BA800B7A6D4 /* Cache List VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache List VM.swift"; sourceTree = "<group>"; };
+		F3E2BEF52C1DA07E00B7A6D4 /* Contact Provider Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = "Contact Provider Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3E2BEF72C1DA07E00B7A6D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3E2BEF82C1DA07E00B7A6D4 /* Contact Provider Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact Provider Extension.swift"; sourceTree = "<group>"; };
+		F3E2BEF92C1DA07E00B7A6D4 /* Extension Root Container Enumerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension Root Container Enumerator.swift"; sourceTree = "<group>"; };
+		F3E2BF022C1EC92B00B7A6D4 /* Contact List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact List.swift"; sourceTree = "<group>"; };
+		F3E2BF0A2C1EC94300B7A6D4 /* Contacts VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contacts VM.swift"; sourceTree = "<group>"; };
 		F3E467512A49903900FABE5F /* Info Stat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Stat.swift"; sourceTree = "<group>"; };
 		F3E467542A49939300FABE5F /* Info Relative Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Relative Stats.swift"; sourceTree = "<group>"; };
 		F3E6FC422A1E677000410C7C /* Bisquits.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Bisquits.sks; sourceTree = "<group>"; };
@@ -1689,6 +1712,13 @@
 				F3B7BFDE2B38E206005B5003 /* Pow in Frameworks */,
 				F3E08EB22A2CE19900116C1C /* Kingfisher in Frameworks */,
 				F30860222B002D57004D776A /* PteroNet in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3E2BEF22C1DA07E00B7A6D4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1875,6 +1905,7 @@
 				F386373A2A8641120069F074 /* Widgets */,
 				F337C1532A8C29CD006F321C /* Unit Tests */,
 				F3D296082AF3BE5800ED43A0 /* UI Tests */,
+				F3E2BEF62C1DA07E00B7A6D4 /* Contact Provider Extension */,
 				F31BA5242958FF7C0006D126 /* Products */,
 				F3D3437429BFE5A2007C0D58 /* Frameworks */,
 			);
@@ -1893,6 +1924,7 @@
 				F38637372A8641120069F074 /* Widgets Extension.appex */,
 				F337C1522A8C29CD006F321C /* Unit Tests.xctest */,
 				F3D296072AF3BE5800ED43A0 /* UI Tests.xctest */,
+				F3E2BEF52C1DA07E00B7A6D4 /* Contact Provider Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1998,6 +2030,8 @@
 			isa = PBXGroup;
 			children = (
 				F31578B229675F5D0016A600 /* Server List.swift */,
+				F3E2BF022C1EC92B00B7A6D4 /* Contact List.swift */,
+				F3E2BF0A2C1EC94300B7A6D4 /* Contacts VM.swift */,
 				F352AF962A4EDB1D004AD489 /* Server List VM.swift */,
 				F337B3A729BC6B5400CC1195 /* Server List Grid.swift */,
 				F32E88CB2AF83FCB00959D49 /* Topbar */,
@@ -3021,6 +3055,16 @@
 			path = Permissions;
 			sourceTree = "<group>";
 		};
+		F3E2BEF62C1DA07E00B7A6D4 /* Contact Provider Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F3E2BEF72C1DA07E00B7A6D4 /* Info.plist */,
+				F3E2BEF82C1DA07E00B7A6D4 /* Contact Provider Extension.swift */,
+				F3E2BEF92C1DA07E00B7A6D4 /* Extension Root Container Enumerator.swift */,
+			);
+			path = "Contact Provider Extension";
+			sourceTree = "<group>";
+		};
 		F3EB09CA2A2940AA0073916A /* File Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -3132,6 +3176,7 @@
 				F3A31B3B2B0B790600F89C51 /* PBXTargetDependency */,
 				F3A31B392B0B78D100F89C51 /* PBXTargetDependency */,
 				F3287A7F2B10A434001AFE54 /* PBXTargetDependency */,
+				F3E2BEFD2C1DA07E00B7A6D4 /* PBXTargetDependency */,
 			);
 			name = Bisquit.Host;
 			packageProductDependencies = (
@@ -3329,6 +3374,23 @@
 			productReference = F3E08EA02A2CE17800116C1C /* macOS.app */;
 			productType = "com.apple.product-type.application";
 		};
+		F3E2BEF42C1DA07E00B7A6D4 /* Contact Provider Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F3E2BEFF2C1DA07E00B7A6D4 /* Build configuration list for PBXNativeTarget "Contact Provider Extension" */;
+			buildPhases = (
+				F3E2BEF12C1DA07E00B7A6D4 /* Sources */,
+				F3E2BEF22C1DA07E00B7A6D4 /* Frameworks */,
+				F3E2BEF32C1DA07E00B7A6D4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Contact Provider Extension";
+			productName = "Contact Provider Extension";
+			productReference = F3E2BEF52C1DA07E00B7A6D4 /* Contact Provider Extension.appex */;
+			productType = "com.apple.product-type.extensionkit-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -3336,7 +3398,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1510;
+				LastSwiftUpdateCheck = 1600;
 				LastUpgradeCheck = 1600;
 				ORGANIZATIONNAME = Bisquit.Host;
 				TargetAttributes = {
@@ -3371,6 +3433,9 @@
 					};
 					F3E08E9F2A2CE17800116C1C = {
 						CreatedOnToolsVersion = 14.3.1;
+					};
+					F3E2BEF42C1DA07E00B7A6D4 = {
+						CreatedOnToolsVersion = 16.0;
 					};
 				};
 			};
@@ -3412,6 +3477,7 @@
 				F38637362A8641120069F074 /* Widgets Extension */,
 				F337C1512A8C29CD006F321C /* Unit Tests */,
 				F3D296062AF3BE5800ED43A0 /* UI Tests */,
+				F3E2BEF42C1DA07E00B7A6D4 /* Contact Provider Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -3511,6 +3577,13 @@
 				F3E08EA72A2CE17A00116C1C /* Assets.xcassets in Resources */,
 				F378E3342AF3835B009925DB /* PrivacyInfo.xcprivacy in Resources */,
 				F38928202A43CB2600561CDF /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3E2BEF32C1DA07E00B7A6D4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3657,6 +3730,7 @@
 			files = (
 				F3AE522329ACF7D600CB3895 /* Server Card VM.swift in Sources */,
 				F3553FB52B40939800EF0FD2 /* Allocation VM.swift in Sources */,
+				F3E2BF102C1EC94300B7A6D4 /* Contacts VM.swift in Sources */,
 				F3D52B252B13FE9C00167DD6 /* App Delegate.swift in Sources */,
 				F3AF96F929DF277A00D30A8F /* Backup Card.swift in Sources */,
 				F3D2951C2AF3975300ED43A0 /* Cache Model.swift in Sources */,
@@ -3718,6 +3792,7 @@
 				F3AF91C12B423492001D8F80 /* SSH VM.swift in Sources */,
 				F3EDEE3129C06E9700B08696 /* Panel Model.swift in Sources */,
 				F37A36732A3515DC00517EFC /* Server Settings VM.swift in Sources */,
+				F3E2BF062C1EC92B00B7A6D4 /* Contact List.swift in Sources */,
 				F311CAAE2A646612004E4A4A /* Log Detail View.swift in Sources */,
 				F3A1235A2A6689FA008E3E20 /* User Email.swift in Sources */,
 				F303214B2B3FEA45002A73B8 /* Panel Settings View.swift in Sources */,
@@ -4020,12 +4095,14 @@
 				F325F7012A54BBCF00E89EC4 /* InfoTab Allocation.swift in Sources */,
 				F39626F32A7AD64B0057E356 /* Ansi.swift in Sources */,
 				F30088A02B3A17DF0051476C /* Backup VM.swift in Sources */,
+				F3E2BF0F2C1EC94300B7A6D4 /* Contacts VM.swift in Sources */,
 				F3553FB62B40939C00EF0FD2 /* Allocation VM.swift in Sources */,
 				F358132C2A1F5D2A002ADFA4 /* Linking VM.swift in Sources */,
 				F3E024C72B228F4C00FFF686 /* New Task Sheet.swift in Sources */,
 				F3C9D8622B319B9E00265492 /* Permission Card.swift in Sources */,
 				F389BB5F2A05B57900911EBF /* Server Card.swift in Sources */,
 				F380B32A2BD7C529009062E8 /* Upload Preview List.swift in Sources */,
+				F3E2BF082C1EC92B00B7A6D4 /* Contact List.swift in Sources */,
 				F389BB652A05B5AF00911EBF /* Formatters.swift in Sources */,
 				F3A31B062B0B144200F89C51 /* Server List Node Filter.swift in Sources */,
 				F36D53442A05B90D007324C6 /* FileTab Context Menu.swift in Sources */,
@@ -4262,6 +4339,7 @@
 				F3D295EC2AF3A43300ED43A0 /* Server Card.swift in Sources */,
 				F3D295C52AF3A1DF00ED43A0 /* Apikey Card.swift in Sources */,
 				F3D295602AF39E8400ED43A0 /* FileTab Search.swift in Sources */,
+				F3E2BF112C1EC94300B7A6D4 /* Contacts VM.swift in Sources */,
 				F3D295842AF39FA500ED43A0 /* Discover.swift in Sources */,
 				F3D295922AF3A02300ED43A0 /* Server Card Stats.swift in Sources */,
 				F3D2953B2AF39D2B00ED43A0 /* InfoTab Model.swift in Sources */,
@@ -4332,6 +4410,7 @@
 				F3D295732AF39F1400ED43A0 /* Account VM.swift in Sources */,
 				F3D295822AF39F9300ED43A0 /* Upload Preview.swift in Sources */,
 				F3D295BF2AF3A19700ED43A0 /* Topbar Grid Button.swift in Sources */,
+				F3E2BF092C1EC92B00B7A6D4 /* Contact List.swift in Sources */,
 				F3D295782AF39F2F00ED43A0 /* User List.swift in Sources */,
 				F380B3262BD7BA16009062E8 /* Image Picker.swift in Sources */,
 				F3D295BE2AF3A18B00ED43A0 /* Biometry Button.swift in Sources */,
@@ -4612,6 +4691,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F3E2BEF12C1DA07E00B7A6D4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3E2BEFA2C1DA07E00B7A6D4 /* Contact Provider Extension.swift in Sources */,
+				F3E2BEFB2C1DA07E00B7A6D4 /* Extension Root Container Enumerator.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -4646,6 +4734,11 @@
 			target = F31BA5222958FF7C0006D126 /* Bisquit.Host */;
 			targetProxy = F3D2960D2AF3BE5800ED43A0 /* PBXContainerItemProxy */;
 		};
+		F3E2BEFD2C1DA07E00B7A6D4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F3E2BEF42C1DA07E00B7A6D4 /* Contact Provider Extension */;
+			targetProxy = F3E2BEFC2C1DA07E00B7A6D4 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -4672,7 +4765,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4708,7 +4801,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4878,7 +4971,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 3.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug.watchOSapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4915,7 +5008,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.watchOSapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4946,7 +5039,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Bisquit-Host-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Debug;
+				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.debug;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSCameraUsageDescription = "App uses camera to create elements with dynamic color based on camera capture";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Access to contacts allows you to save new contacts directly from the app.";
@@ -4964,7 +5057,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 3.0;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5017,7 +5110,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 3.0;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5065,7 +5158,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug.Clip";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -5110,7 +5203,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.Clip";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -5186,7 +5279,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug.Intent";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -5220,7 +5313,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.Intent";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -5265,7 +5358,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug.Widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -5306,7 +5399,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.Widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -5341,7 +5434,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = xros;
@@ -5377,7 +5470,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = xros;
@@ -5457,7 +5550,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.4;
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -5496,7 +5589,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.4;
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -5507,6 +5600,66 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+		F3E2BF002C1DA07E00B7A6D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8FQUA2F388;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Contact Provider Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Contact Provider Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Bisquit.Host. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug.Contact-Provider-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F3E2BF012C1DA07E00B7A6D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8FQUA2F388;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Contact Provider Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Contact Provider Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Bisquit.Host. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.Contact-Provider-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -5608,6 +5761,15 @@
 			buildConfigurations = (
 				F3E08EAC2A2CE17A00116C1C /* Debug */,
 				F3E08EAD2A2CE17A00116C1C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F3E2BEFF2C1DA07E00B7A6D4 /* Build configuration list for PBXNativeTarget "Contact Provider Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F3E2BF002C1DA07E00B7A6D4 /* Debug */,
+				F3E2BF012C1DA07E00B7A6D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
