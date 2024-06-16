@@ -42,11 +42,13 @@ final class ServerListVM {
         }
     }
     
+#if os(iOS)
     private func fetchUniqueUsers() {
         let ids = servers.map(\.id)
         
         var allUsers: [UserAttributes] = []
         let dispatchGroup = DispatchGroup()
+        let queue = DispatchQueue(label: "host.bisquit.uniqueUsersQueue")
         
         for id in ids {
             dispatchGroup.enter()
@@ -57,13 +59,14 @@ final class ServerListVM {
                     return
                 }
                 
-                for user in users {
-                    if !allUsers.contains(where: { $0.email == user.email }) {
-                        allUsers.append(user)
+                queue.async {
+                    for user in users {
+                        if !allUsers.contains(where: { $0.email == user.email }) {
+                            allUsers.append(user)
+                        }
                     }
+                    dispatchGroup.leave()
                 }
-                
-                dispatchGroup.leave()
             }
         }
         
@@ -71,7 +74,9 @@ final class ServerListVM {
             let emails = allUsers.map(\.email)
             print("All users: \(emails)")
             
-            
+            Task {
+                await self.saveContacts(allUsers)
+            }
         }
     }
     
@@ -93,6 +98,7 @@ final class ServerListVM {
             }
         }
     }
+#endif
     
     func fetchServers(_ isAdmin: Bool) {
         serverListAPI(isAdmin) { result in
@@ -113,7 +119,9 @@ final class ServerListVM {
                     }
                 }
                 
+#if os(iOS)
                 self.fetchUniqueUsers()
+#endif
                 
             case .failure(let error):
                 networkCallError(#function, error)

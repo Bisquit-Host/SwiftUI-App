@@ -1,30 +1,26 @@
 import ContactProvider
 import Contacts
+import PteroNet
 
 extension ServerListVM {
     func enableExtensionExample() async {
         if #available(iOS 18, *) {
             do {
-                // The app creates a contact provider manager with a default domain
+                // Creates contact provider manager with a default domain
                 let manager = try ContactProviderManager()
                 
-                // May prompt the person to enable the default domain
+                // May prompt to enable the default domain
                 try await manager.enable()
-                
-                if manager.isEnabled {
-                    print(manager.domain.displayName + ":" + manager.domain.identifier)
-                }
             } catch {
                 print(error.localizedDescription)
             }
         }
     }
     
-    func saveNewContact() async {
+    func saveContacts(_ users: [UserAttributes]) async {
         if #available(iOS 18, *) {
             do {
-                try await addContact(givenName: "Pavel", familyName: "Pyzhh", email: "pyzh_pavel@icloud.com")
-                
+                try await addContacts(users)
                 let manager = try ContactProviderManager()
                 try await manager.signalEnumerator()
             } catch {
@@ -44,7 +40,7 @@ extension ServerListVM {
         }
     }
     
-    private func addContact(givenName: String, familyName: String, email: String) async throws {
+    private func addContacts(_ users: [UserAttributes]) async throws {
         let store = CNContactStore()
         
         let containers = try store.containers(matching: nil)
@@ -57,14 +53,14 @@ extension ServerListVM {
 #endif
         }
         
-        let contact = CNMutableContact()
-        contact.givenName = givenName
-        contact.familyName = familyName
-        contact.emailAddresses = [CNLabeledValue(label: CNLabelHome, value: email as NSString)]
-        
-        let id = bisqContainer?.identifier
         let saveRequest = CNSaveRequest()
-        saveRequest.add(contact, toContainerWithIdentifier: id)
+        let id = bisqContainer?.identifier
+        
+        for user in users {
+            let contact = CNMutableContact()
+            contact.emailAddresses = [CNLabeledValue(label: CNLabelHome, value: user.email as NSString)]
+            saveRequest.add(contact, toContainerWithIdentifier: id)
+        }
         
         try store.execute(saveRequest)
     }

@@ -1019,9 +1019,6 @@
 		F3E2BEFA2C1DA07E00B7A6D4 /* Contact Provider Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BEF82C1DA07E00B7A6D4 /* Contact Provider Extension.swift */; };
 		F3E2BEFB2C1DA07E00B7A6D4 /* Extension Root Container Enumerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BEF92C1DA07E00B7A6D4 /* Extension Root Container Enumerator.swift */; };
 		F3E2BEFE2C1DA07E00B7A6D4 /* Contact Provider Extension.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = F3E2BEF52C1DA07E00B7A6D4 /* Contact Provider Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		F3E2BF062C1EC92B00B7A6D4 /* Contact List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BF022C1EC92B00B7A6D4 /* Contact List.swift */; };
-		F3E2BF082C1EC92B00B7A6D4 /* Contact List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BF022C1EC92B00B7A6D4 /* Contact List.swift */; };
-		F3E2BF092C1EC92B00B7A6D4 /* Contact List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BF022C1EC92B00B7A6D4 /* Contact List.swift */; };
 		F3E2BF0F2C1EC94300B7A6D4 /* Contacts VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BF0A2C1EC94300B7A6D4 /* Contacts VM.swift */; };
 		F3E2BF102C1EC94300B7A6D4 /* Contacts VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BF0A2C1EC94300B7A6D4 /* Contacts VM.swift */; };
 		F3E2BF112C1EC94300B7A6D4 /* Contacts VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BF0A2C1EC94300B7A6D4 /* Contacts VM.swift */; };
@@ -1585,7 +1582,6 @@
 		F3E2BEF72C1DA07E00B7A6D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3E2BEF82C1DA07E00B7A6D4 /* Contact Provider Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact Provider Extension.swift"; sourceTree = "<group>"; };
 		F3E2BEF92C1DA07E00B7A6D4 /* Extension Root Container Enumerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension Root Container Enumerator.swift"; sourceTree = "<group>"; };
-		F3E2BF022C1EC92B00B7A6D4 /* Contact List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact List.swift"; sourceTree = "<group>"; };
 		F3E2BF0A2C1EC94300B7A6D4 /* Contacts VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contacts VM.swift"; sourceTree = "<group>"; };
 		F3E467512A49903900FABE5F /* Info Stat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Stat.swift"; sourceTree = "<group>"; };
 		F3E467542A49939300FABE5F /* Info Relative Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Relative Stats.swift"; sourceTree = "<group>"; };
@@ -2032,7 +2028,6 @@
 				F31578B229675F5D0016A600 /* Server List.swift */,
 				F352AF962A4EDB1D004AD489 /* Server List VM.swift */,
 				F337B3A729BC6B5400CC1195 /* Server List Grid.swift */,
-				F3E2BF022C1EC92B00B7A6D4 /* Contact List.swift */,
 				F3E2BF0A2C1EC94300B7A6D4 /* Contacts VM.swift */,
 				F32E88CB2AF83FCB00959D49 /* Topbar */,
 				F306B9EE29BBDA7C0008C2D4 /* Elements */,
@@ -3792,7 +3787,6 @@
 				F3AF91C12B423492001D8F80 /* SSH VM.swift in Sources */,
 				F3EDEE3129C06E9700B08696 /* Panel Model.swift in Sources */,
 				F37A36732A3515DC00517EFC /* Server Settings VM.swift in Sources */,
-				F3E2BF062C1EC92B00B7A6D4 /* Contact List.swift in Sources */,
 				F311CAAE2A646612004E4A4A /* Log Detail View.swift in Sources */,
 				F3A1235A2A6689FA008E3E20 /* User Email.swift in Sources */,
 				F303214B2B3FEA45002A73B8 /* Panel Settings View.swift in Sources */,
@@ -4102,7 +4096,6 @@
 				F3C9D8622B319B9E00265492 /* Permission Card.swift in Sources */,
 				F389BB5F2A05B57900911EBF /* Server Card.swift in Sources */,
 				F380B32A2BD7C529009062E8 /* Upload Preview List.swift in Sources */,
-				F3E2BF082C1EC92B00B7A6D4 /* Contact List.swift in Sources */,
 				F389BB652A05B5AF00911EBF /* Formatters.swift in Sources */,
 				F3A31B062B0B144200F89C51 /* Server List Node Filter.swift in Sources */,
 				F36D53442A05B90D007324C6 /* FileTab Context Menu.swift in Sources */,
@@ -4410,7 +4403,6 @@
 				F3D295732AF39F1400ED43A0 /* Account VM.swift in Sources */,
 				F3D295822AF39F9300ED43A0 /* Upload Preview.swift in Sources */,
 				F3D295BF2AF3A19700ED43A0 /* Topbar Grid Button.swift in Sources */,
-				F3E2BF092C1EC92B00B7A6D4 /* Contact List.swift in Sources */,
 				F3D295782AF39F2F00ED43A0 /* User List.swift in Sources */,
 				F380B3262BD7BA16009062E8 /* Image Picker.swift in Sources */,
 				F3D295BE2AF3A18B00ED43A0 /* Biometry Button.swift in Sources */,
