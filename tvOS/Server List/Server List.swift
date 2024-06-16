@@ -34,11 +34,9 @@ struct ServerList: View {
                 Text("\(Image(systemName: "gear")) Settings")
             }
             
-            ForEach(vm.servers, id: \.id) { server in
+            ForEach(vm.filteredServers, id: \.id) { server in
                 Button {
-                    navState.navigate(
-                        .toPanel(server.id)
-                    )
+                    navState.navigate(.toPanel(server.id))
                 } label: {
                     ServerCard(server)
                 }
