@@ -74,8 +74,10 @@ final class ServerListVM {
             let emails = allUsers.map(\.email)
             print("All users: \(emails)")
             
+            let niggers = allUsers
+            
             Task {
-                await self.saveContacts(allUsers)
+                await self.saveContacts(niggers)
             }
         }
     }
