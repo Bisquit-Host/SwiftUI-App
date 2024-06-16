@@ -34,15 +34,13 @@ final class ServerListVM {
         }
     }
     
-    func switchFooter() {
-        footerHidden = false
-        
-        delay(3) {
-            self.footerHidden = true
+#if os(iOS)
+    init() {
+        Task {
+            await enableExtension()
         }
     }
     
-#if os(iOS)
     private func fetchUniqueUsers() {
         let ids = servers.map(\.id)
         
@@ -71,9 +69,6 @@ final class ServerListVM {
         }
         
         dispatchGroup.notify(queue: .main) {
-            let emails = allUsers.map(\.email)
-            print("All users: \(emails)")
-            
             let niggers = allUsers
             
             Task {
@@ -101,6 +96,14 @@ final class ServerListVM {
         }
     }
 #endif
+    
+    func switchFooter() {
+        footerHidden = false
+        
+        delay(3) {
+            self.footerHidden = true
+        }
+    }
     
     func fetchServers(_ isAdmin: Bool) {
         serverListAPI(isAdmin) { result in

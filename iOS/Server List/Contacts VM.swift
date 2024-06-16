@@ -3,7 +3,7 @@ import Contacts
 import PteroNet
 
 extension ServerListVM {
-    func enableExtensionExample() async {
+    func enableExtension() async {
         if #available(iOS 18, *) {
             do {
                 // Creates contact provider manager with a default domain
@@ -54,11 +54,28 @@ extension ServerListVM {
         }
         
         let saveRequest = CNSaveRequest()
-        let id = bisqContainer?.identifier
+        
+        guard let id = bisqContainer?.identifier else {
+            return
+        }
+        
+        let existingContacts = try store.unifiedContacts(matching: CNContact.predicateForContactsInContainer(withIdentifier: id), keysToFetch: [CNContactEmailAddressesKey as CNKeyDescriptor])
         
         for user in users {
             let contact = CNMutableContact()
             contact.emailAddresses = [CNLabeledValue(label: CNLabelHome, value: user.email as NSString)]
+            
+            // Check if a contact with the same email already exists
+            if let _ = existingContacts.first(where: {
+                guard let email = $0.emailAddresses.first?.value as String? else {
+                    return false
+                }
+                
+                return email == user.email
+            }) {
+                continue
+            }
+            
             saveRequest.add(contact, toContainerWithIdentifier: id)
         }
         
