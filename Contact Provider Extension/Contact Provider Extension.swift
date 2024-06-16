@@ -1,3 +1,4 @@
+#if canImport(ContactProvider)
 import ContactProvider
 
 @main
@@ -22,3 +23,5 @@ class CPExtension: ContactProviderExtension {
         // TODO: Stop any enumeration and cleanup as the extension will be terminated.
     }
 }
+
+#endif

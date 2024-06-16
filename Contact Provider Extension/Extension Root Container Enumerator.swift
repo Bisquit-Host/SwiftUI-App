@@ -1,3 +1,4 @@
+#if canImport(ContactProvider)
 import ContactProvider
 
 class ExtensionRootContainerEnumerator: ContactItemEnumerator {
@@ -111,3 +112,5 @@ class ExtensionRootContainerEnumerator: ContactItemEnumerator {
         // TODO: Stop the enumeration and cleanup as the extension will be terminated
     }
 }
+
+#endif
