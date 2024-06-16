@@ -70,6 +70,8 @@ final class ServerListVM {
         dispatchGroup.notify(queue: .main) {
             let emails = allUsers.map(\.email)
             print("All users: \(emails)")
+            
+            
         }
     }
     
@@ -96,7 +98,7 @@ final class ServerListVM {
         serverListAPI(isAdmin) { result in
             switch result {
             case .success(let model):
-                guard let model else { 
+                guard let model else {
                     return
                 }
                 

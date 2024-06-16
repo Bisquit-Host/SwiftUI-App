@@ -11,11 +11,6 @@ struct ServerList: View {
         @Bindable var binding = vm
         
         ScrollView(showsIndicators: false) {
-            NavigationLink("CT") {
-                ContactList()
-            }
-            .padding()
-            
             ServerListTopbar($binding.filterBySuspended)
             
             ServerListGrid(vm.filteredServers)

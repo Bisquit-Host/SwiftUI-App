@@ -1,8 +1,7 @@
 import ContactProvider
 import Contacts
 
-@Observable
-final class ContactProvider {
+extension ServerListVM {
     func enableExtensionExample() async {
         if #available(iOS 18, *) {
             do {

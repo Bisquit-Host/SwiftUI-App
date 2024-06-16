@@ -577,9 +577,6 @@
         }
       }
     },
-    "Add" : {
-
-    },
     "Admin" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1363,9 +1360,6 @@
         }
       }
     },
-    "CT" : {
-
-    },
     "Customize" : {
 
     },
@@ -1602,9 +1596,6 @@
         }
       }
     },
-    "Disable" : {
-
-    },
     "Disabled" : {
 
     },
@@ -1726,9 +1717,6 @@
           }
         }
       }
-    },
-    "Enable" : {
-
     },
     "Enable Schedule" : {
 
