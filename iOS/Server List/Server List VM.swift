@@ -42,22 +42,76 @@ final class ServerListVM {
         }
     }
     
+    private func fetchUniqueUsers() {
+        let ids = servers.map(\.id)
+        
+        var allUsers: [UserAttributes] = []
+        let dispatchGroup = DispatchGroup()
+        
+        for id in ids {
+            dispatchGroup.enter()
+            
+            fetchUsers(id) { users in
+                guard let users else {
+                    dispatchGroup.leave()
+                    return
+                }
+                
+                for user in users {
+                    if !allUsers.contains(where: { $0.email == user.email }) {
+                        allUsers.append(user)
+                    }
+                }
+                
+                dispatchGroup.leave()
+            }
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            let emails = allUsers.map(\.email)
+            print("All users: \(emails)")
+        }
+    }
+    
+    private func fetchUsers(_ id: String, completion: @escaping ([UserAttributes]?) -> Void) {
+        userListAPI(id) { result in
+            switch result {
+            case .success(let model):
+                guard let model = model?.data else {
+                    completion(nil)
+                    return
+                }
+                
+                let attributes = model.map(\.attributes)
+                completion(attributes)
+                
+            case .failure(let error):
+                networkCallError(#function, error)
+                completion(nil)
+            }
+        }
+    }
+    
     func fetchServers(_ isAdmin: Bool) {
         serverListAPI(isAdmin) { result in
             switch result {
             case .success(let model):
-                if let model {
-                    let loadedServers = model.data.map(\.attributes)
-                    let totalPages = model.meta.pagination.totalPages
-                    
-                    if totalPages > 1 {
-                        self.fetchAllPages(isAdmin, totalPages: totalPages, currentServers: loadedServers)
-                    } else {
-                        withAnimation {
-                            self.servers = loadedServers
-                        }
+                guard let model else { 
+                    return
+                }
+                
+                let loadedServers = model.data.map(\.attributes)
+                let totalPages = model.meta.pagination.totalPages
+                
+                if totalPages > 1 {
+                    self.fetchAllPages(isAdmin, totalPages: totalPages, currentServers: loadedServers)
+                } else {
+                    withAnimation {
+                        self.servers = loadedServers
                     }
                 }
+                
+                self.fetchUniqueUsers()
                 
             case .failure(let error):
                 networkCallError(#function, error)
