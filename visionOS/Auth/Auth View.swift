@@ -1,7 +1,6 @@
 import ScrechKit
 
 struct AuthView: View {
-    @Bindable private var typing = TypeTextVM()
     @Environment(ServerListVM.self) private var vm
     @Environment(NavState.self) private var navState
     @EnvironmentObject private var settings: SettingsStorage
@@ -39,13 +38,6 @@ struct AuthView: View {
                 navState.navigate(.toServerList)
             }
         }
-        //        .typeText(
-        //            $typing.titleText,
-        //            isFinished: $typing.isTitleFinished,
-        //            finalText: typing.finalTitle,
-        //            isAnimated: !typing.isTitleFinished
-        //        )
-        //        .animation(.default.speed(0.25), value: typing.isTitleFinished)
     }
 }
 

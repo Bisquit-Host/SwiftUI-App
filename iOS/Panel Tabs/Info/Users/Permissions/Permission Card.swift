@@ -1,7 +1,7 @@
 import SwiftUI
 import PteroNet
 
-struct PermissionCard: View {
+struct PermissionToggle: View {
     @Environment(UsersVM.self) private var vm
     
     @State private var userPermissions: [String]
@@ -45,9 +45,9 @@ struct PermissionCard: View {
                     userPermissions.append("\(key).\(subKey)")
                 } else {
                     if vm.permissions?.permissions[key] != nil {
-                        userPermissions.removeAll(where: {
+                        userPermissions.removeAll {
                             $0 == "\(key).\(subKey)"
-                        })
+                        }
                     }
                 }
                 

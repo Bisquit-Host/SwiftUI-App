@@ -4,8 +4,10 @@ extension View {
     func withNavDestinations() -> some View {
         self.navigationDestination(for: NavDestinations.self) { destination in
             switch destination {
+#if !os(watchOS)
             case .toAuth:
                 AuthView()
+#endif
                 
                 //#if os(watchOS)
                 //            case .toServerList(let selectedServer):
@@ -19,7 +21,7 @@ extension View {
             case .toPanel(let id):
                 PanelView(id)
                 
-#if !os(xrOS)
+#if !os(visionOS)
             case .toFileManager(let id, let root):
                 FileTab(id, root: root)
                 

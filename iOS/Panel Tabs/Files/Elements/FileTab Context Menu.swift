@@ -23,64 +23,54 @@ struct FileTabContextMenu: ViewModifier {
         
         content
             .contextMenu {
-#if !os(macOS)
-                Text(name)
-#endif
-                if !mimeType.contains("directory") {
-                    Section {
-                        MenuButton("Download", icon: "square.and.arrow.down") {
-                            vm.downloadFile(root + "/" + name)
-                        }
-                    }
-                }
-                
-                Section {
-                    //                    MenuButton("Get Info", icon: "info.circle") {
-                    //
-                    //                    }
-                    
+                ControlGroup {
                     MenuButton("Rename", icon: "pencil") {
                         vm.newFileName = ""
                         alertRename = true
                     }
                     
-                    if !mimeType.contains("directory") {
-                        MenuButton("Duplicate", icon: "plus.square.on.square") {
-                            vm.duplicateFile(name, root: root + "/")
-                        }
-                    }
-                    
                     if mimeType.contains("gzip") {
                         MenuButton("Decompress", icon: "arrow.up.bin") {
-                            vm.fileCompressor(name,
-                                              root: root,
-                                              action: .decompress)
+                            vm.fileCompressor(name, root: root, action: .decompress)
                         }
                     } else {
                         MenuButton("Compress", icon: "archivebox") {
-                            vm.fileCompressor(name,
-                                              root: root,
-                                              action: .compress)
+                            vm.fileCompressor(name, root: root, action: .compress)
                         }
                     }
                     
-                    MenuButton("Permissions", icon: "lock.doc") {
-                        sheetPermissions = true
+                    if !mimeType.contains("directory") {
+                        ShareLink(item: vm.downloadUrl) {
+                            Label("Share", systemImage: "square.and.arrow.up")
+                        }
+                    }
+                }
+                
+#warning("Finish")
+                //                    MenuButton("Get Info", icon: "info.circle") {
+                //
+                //                    }
+                
+                if !mimeType.contains("directory") {
+                    MenuButton("Download", icon: "square.and.arrow.down") {
+                        vm.downloadFile(root + "/" + name)
                     }
                 }
                 
                 if !mimeType.contains("directory") {
-                    Section {
-                        ShareLink(item: vm.downloadUrl) {
-                            Label("Share...", systemImage: "square.and.arrow.up")
-                        }
+                    MenuButton("Duplicate", icon: "plus.square.on.square") {
+                        vm.duplicateFile(name, root: root + "/")
                     }
                 }
                 
-                Section {
-                    MenuButton("Delete", role: .destructive, icon: "trash") {
-                        vm.fileDelete(name, root: root)
-                    }
+                MenuButton("Permissions", icon: "lock.doc") {
+                    sheetPermissions = true
+                }
+                
+                Divider()
+                
+                MenuButton("Delete", role: .destructive, icon: "trash") {
+                    vm.fileDelete(name, root: root)
                 }
             }
             .sheet($sheetPermissions) {
@@ -91,9 +81,7 @@ struct FileTabContextMenu: ViewModifier {
                     .autocorrectionDisabled()
                 
                 Button("Rename", role: .destructive) {
-                    vm.renameFile(root,
-                                  oldName: name,
-                                  newName: vm.newFileName)
+                    vm.renameFile(root, oldName: name, newName: vm.newFileName)
                     
                     vm.newFileName = ""
                 }

@@ -40,10 +40,7 @@ struct ConsoleTab: View {
                                            systemImage: "apple.terminal"
                     )
                 } else {
-                    ContentUnavailableView("No Results for \"\(panelVM.searchRule)\"",
-                                           systemImage: "apple.terminal",
-                                           description: Text("Check the spelling or try another search")
-                    )
+                    ContentUnavailableView.search(text: panelVM.searchRule)
                 }
             }
         }

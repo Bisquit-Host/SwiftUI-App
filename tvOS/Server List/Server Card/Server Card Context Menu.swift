@@ -17,7 +17,7 @@ struct ServerCardContextMenu: View {
                 PteroNet.powerSignal(id, signal: .restart)
             }
             
-            MenuButton("Stop", icon: "stop") {
+            MenuButton("Stop", icon: "pause") {
                 PteroNet.powerSignal(id, signal: .stop)
             }
             
@@ -30,4 +30,8 @@ struct ServerCardContextMenu: View {
             Label("Actions", systemImage: "power")
         }
     }
+}
+
+#Preview {
+    ServerCardContextMenu("")
 }

@@ -1,4 +1,6 @@
 import SwiftUI
+
+#if canImport(AlertKit)
 import AlertKit
 
 final class SystemAlert {
@@ -20,3 +22,4 @@ final class SystemAlert {
         )
     }
 }
+#endif

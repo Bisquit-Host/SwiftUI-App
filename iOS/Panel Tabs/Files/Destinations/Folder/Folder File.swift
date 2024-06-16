@@ -6,14 +6,15 @@ struct FolderFile: View {
     private let id, root: String
     
     init(_ id: String,
-         root: String = ""
+         path: String = ""
     ) {
         self.id = id
-        self.root = root
+        self.root = path
         _vm = StateObject(wrappedValue: FileTabVM(id))
     }
     
     @State private var image: UIImage?
+    @State private var url: URL?
     
     var body: some View {
         List {
@@ -21,7 +22,7 @@ struct FolderFile: View {
             
             NewFolder(root)
             
-            UploadMenu($image, root: root)
+            UploadMenu($image, url: $url, root: root)
             
             if vm.isUploading {
                 UploadProgress()
@@ -43,23 +44,21 @@ struct FolderFile: View {
                     Text("Total: \(vm.filteredFiles.count)")
                 }
             }
-            
-            if root.isEmpty {
-                FileFormats()
-            }
         }
         .environmentObject(vm)
         .frame(maxWidth: 500)
         .safariCover($vm.showSafari, url: vm.downloadUrl)
-        .task {
-            vm.fetchFiles(root)
-        }
-        .refreshable {
+        .refreshableTask {
             vm.fetchFiles(root)
         }
         .onChange(of: image) {
             if let image {
                 vm.handleImageImport(image, root: root)
+            }
+        }
+        .onChange(of: url) {
+            if let url {
+                vm.handleFileImport([url], root: root)
             }
         }
     }

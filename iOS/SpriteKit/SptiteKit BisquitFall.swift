@@ -32,12 +32,14 @@ struct BisquitFall: View {
         return scene
     }
     
+    private let bounds = UIScreen.main.bounds
+    
     var body: some View {
         if settings.enableBisquitFall {
             SpriteView(scene: scene)
                 .ignoresSafeArea()
                 .background(colorScheme == .light ? .white : .black)
-                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                .frame(width: bounds.width, height: bounds.height)
         }
     }
 }

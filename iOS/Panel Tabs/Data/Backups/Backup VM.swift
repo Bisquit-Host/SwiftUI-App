@@ -28,9 +28,7 @@ final class BackupVM {
             case .success(let model):
                 if let model = model?.data {
                     withAnimation {
-                        self.backups = model.map {
-                            $0.attributes
-                        }
+                        self.backups = model.map(\.attributes)
                     }
                 }
                 

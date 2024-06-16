@@ -2,7 +2,11 @@ import SwiftUI
 import AVKit
 
 struct UIVideoPlayer: UIViewControllerRepresentable {
-    let player: AVPlayer
+    private let player: AVPlayer
+    
+    init(_ player: AVPlayer) {
+        self.player = player
+    }
     
     func makeUIViewController(context: Context) -> AVPlayerViewController {
         let vc = AVPlayerViewController()

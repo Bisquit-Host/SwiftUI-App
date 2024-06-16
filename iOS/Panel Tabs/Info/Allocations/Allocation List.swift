@@ -25,10 +25,7 @@ struct AllocationList: View {
         .environment(vm)
         .navigationTitle("Allocations")
         .toolbarTitleDisplayMode(.inline)
-        .task {
-            vm.fetchAllocations()
-        }
-        .refreshable {
+        .refreshableTask {
             vm.fetchAllocations()
         }
     }

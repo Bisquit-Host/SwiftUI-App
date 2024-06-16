@@ -5,14 +5,11 @@ struct LanguageButton: View {
         Button {
             openSettings()
         } label: {
-            Image(.language)
-                .resizable()
-                .padding(8)
+            Image(systemName: "translate")
+                .fontSize(26)
                 .foregroundStyle(.white)
                 .frame(width: 55, height: 55)
-                .background(.cookie.gradient, 
-                            in: .circle
-                )
+                .background(.cookie.gradient, in: .circle)
         }
     }
 }

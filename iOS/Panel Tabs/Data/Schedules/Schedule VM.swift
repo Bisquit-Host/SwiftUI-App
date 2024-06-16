@@ -18,9 +18,7 @@ final class ScheduleVM {
             case .success(let model):
                 if let model = model?.data {
                     withAnimation {
-                        self.schedules = model.map {
-                            $0.attributes
-                        }
+                        self.schedules = model.map(\.attributes)
                     }
                 }
                 

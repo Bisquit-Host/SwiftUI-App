@@ -22,7 +22,7 @@ struct InfoRelativeStats: View {
     }
     
     private var relativeDisk: String {
-        let usage = Int(panelVM.diskUsage / limits.disk * 100)
+        let usage = Int(panelVM.ramUsage / limits.memory * 100)
         
         return "\(usage)%"
     }

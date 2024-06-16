@@ -317,6 +317,28 @@
         }
       }
     },
+    "%lld more files" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld more file"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "new",
+                  "value" : "%lld more files"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "%lld objects" : {
       "localizations" : {
         "en" : {
@@ -491,7 +513,19 @@
     "1" : {
 
     },
+    "1.2.3.4.43.34" : {
+
+    },
+    "2d 12:12:12" : {
+
+    },
     "2FA" : {
+
+    },
+    "10" : {
+
+    },
+    "80%" : {
 
     },
     "123" : {
@@ -586,6 +620,7 @@
 
     },
     "All supported data formats" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -774,6 +809,9 @@
         }
       }
     },
+    "Beta" : {
+
+    },
     "Biometry Usage" : {
       "localizations" : {
         "ru" : {
@@ -952,20 +990,6 @@
     "Change Power" : {
 
     },
-    "Check the spelling or try another search" : {
-
-    },
-    "Check the spelling or try another search." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Убедитесь, что не допустили ошибок, или попробуйте другой запрос"
-          }
-        }
-      }
-    },
     "Choose File" : {
       "localizations" : {
         "ru" : {
@@ -975,6 +999,9 @@
           }
         }
       }
+    },
+    "Clear" : {
+
     },
     "Clear all data" : {
       "extractionState" : "manual",
@@ -1230,6 +1257,9 @@
         }
       }
     },
+    "Create a new backup" : {
+
+    },
     "Create a new key" : {
 
     },
@@ -1277,9 +1307,6 @@
           }
         }
       }
-    },
-    "Create task" : {
-
     },
     "Create Task" : {
 
@@ -1332,6 +1359,9 @@
           }
         }
       }
+    },
+    "Customize" : {
+
     },
     "Data" : {
       "localizations" : {
@@ -1598,6 +1628,9 @@
     "Docker Image" : {
 
     },
+    "Done" : {
+
+    },
     "Download" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1659,6 +1692,9 @@
         }
       }
     },
+    "Email" : {
+
+    },
     "Empty" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1689,6 +1725,9 @@
 
     },
     "Endpoint: %@" : {
+
+    },
+    "Enter manually" : {
 
     },
     "Enter or drag-and-drop your public SSH-key" : {
@@ -2009,6 +2048,9 @@
           }
         }
       }
+    },
+    "Hide power buttons" : {
+
     },
     "Hints" : {
       "localizations" : {
@@ -2507,12 +2549,6 @@
             "value" : "Kill"
           }
         },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Прервать"
-          }
-        },
         "uk" : {
           "stringUnit" : {
             "state" : "needs_review",
@@ -2613,7 +2649,14 @@
         }
       }
     },
+    "listPath" : {
+
+    },
+    "Live Activity" : {
+
+    },
     "Live Activity (BETA)" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -2950,6 +2993,9 @@
         }
       }
     },
+    "New task" : {
+
+    },
     "New User" : {
 
     },
@@ -2983,10 +3029,8 @@
     "No API-keys found" : {
 
     },
-    "No logs found" : {
-
-    },
     "No Results for \"%@\"" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -2995,6 +3039,9 @@
           }
         }
       }
+    },
+    "Node" : {
+
     },
     "Nodes" : {
 
@@ -3057,6 +3104,9 @@
       }
     },
     "Only when online" : {
+
+    },
+    "Open in a separate window" : {
 
     },
     "Open in Safari" : {
@@ -3210,6 +3260,9 @@
     "Payload: %@" : {
 
     },
+    "Perform kill action" : {
+
+    },
     "Permissions" : {
 
     },
@@ -3309,6 +3362,9 @@
         }
       }
     },
+    "Pull Remote File" : {
+
+    },
     "RAM" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3354,9 +3410,6 @@
           }
         }
       }
-    },
-    "Refresh the list or contact support" : {
-
     },
     "Reinstall" : {
 
@@ -3436,14 +3489,7 @@
 
     },
     "restart" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "рестарт"
-          }
-        }
-      }
+
     },
     "Restart" : {
       "extractionState" : "manual",
@@ -3452,12 +3498,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : ""
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Перезапуск"
           }
         },
         "uk" : {
@@ -3474,10 +3514,19 @@
     "Restore with truncate" : {
 
     },
+    "Retrieve cache" : {
+
+    },
+    "Retrieved %lld cached images" : {
+
+    },
     "Revoke all permissions" : {
 
     },
     "Rotate password" : {
+
+    },
+    "Running" : {
 
     },
     "Save" : {
@@ -3641,6 +3690,7 @@
       }
     },
     "Server count: %lld" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -3651,6 +3701,9 @@
       }
     },
     "Server description" : {
+
+    },
+    "Server id" : {
 
     },
     "Server ID" : {
@@ -3797,6 +3850,9 @@
           }
         }
       }
+    },
+    "Show power buttons" : {
+
     },
     "Sign in" : {
       "localizations" : {
@@ -3972,12 +4028,6 @@
             "value" : ""
           }
         },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Запуск"
-          }
-        },
         "uk" : {
           "stringUnit" : {
             "state" : "needs_review",
@@ -4004,6 +4054,9 @@
           }
         }
       }
+    },
+    "Status" : {
+
     },
     "Step" : {
       "localizations" : {
@@ -4046,12 +4099,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : ""
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Выключение"
           }
         },
         "uk" : {
@@ -4140,6 +4187,9 @@
           }
         }
       }
+    },
+    "Switch account" : {
+
     },
     "System" : {
       "localizations" : {

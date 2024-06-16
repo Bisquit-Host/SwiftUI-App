@@ -2,24 +2,22 @@ import ScrechKit
 
 struct BrowserHints: View {
     private let hints = [
-        "Processor Cores (CPU)":    "cpu",
-        "Memory (RAM)":             "memorychip",
-        "Storage":                  "internaldrive",
-        "Websites":                 "macwindow.on.rectangle",
-        "MySQL Databases":          "server.rack"
+        "Processor Cores (CPU)": "cpu",
+        "Memory (RAM)":          "memorychip",
+        "Storage":               "internaldrive",
+        "Websites":              "macwindow.on.rectangle",
+        "MySQL Databases":       "server.rack"
     ]
     
     var body: some View {
         DisclosureGroup("Hints") {
-            ForEach(hints.sorted(by: >), id:\.key) { hint, icon in
-                ListButton(LocalizedStringResource(stringLiteral: hint), 
-                           icon: icon)
+            ForEach(hints.sorted(by: >), id: \.key) { hint, icon in
+                ListButton(LocalizedStringResource(stringLiteral: hint), icon: icon)
             }
         }
         .padding(5)
         .padding(.horizontal, 8)
-        .background(.regularMaterial,
-                    in: .rect(cornerRadius: 5))
+        .background(.regularMaterial, in: .rect(cornerRadius: 5))
         .foregroundStyle(.primary)
         .padding(.horizontal)
     }

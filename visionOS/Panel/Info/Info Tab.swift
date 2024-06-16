@@ -28,17 +28,14 @@ struct InfoTab: View {
                 .title3(.semibold)
                 .lineLimit(1)
         }
-        .padding()
+        .padding(30)
         .glassBackgroundEffect()
-        .frame(width: 600)
-        .navigationTitle("Information")
+        .frame(width: 650)
     }
 }
 
 #Preview {
-    InfoTab(
-        sampleJSON(.serverListAttributes)
-    )
-    .padding()
-    .glassBackgroundEffect()
+    InfoTab(PreviewProperty.serverAttributes)
+        .padding()
+        .glassBackgroundEffect()
 }

@@ -1,6 +1,8 @@
 import ScrechKit
 import PteroNet
 
+#warning("Unused")
+
 struct FileDetails: View {
     private let file: FileAttributes
     

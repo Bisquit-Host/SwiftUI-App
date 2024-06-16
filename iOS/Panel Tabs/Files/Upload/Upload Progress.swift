@@ -20,7 +20,7 @@ struct UploadProgress: View {
                     
                     Spacer()
                 }
-                .padding(.bottom, 10)
+                .padding(.bottom, 5)
             }
             .tint(vm.uploadProgress != 1 ? .blue : .green)
             .multilineTextAlignment(.center)
@@ -39,5 +39,8 @@ struct UploadProgress: View {
 }
 
 #Preview {
-    UploadProgress()
+    List {
+        UploadProgress()
+    }
+    .environmentObject(FileTabVM(""))
 }

@@ -10,6 +10,9 @@ struct AllocationList: View {
             }
         }
         .navigationTitle("Allocations")
+        .task {
+            vm.fetchAllocations()
+        }
     }
 }
 

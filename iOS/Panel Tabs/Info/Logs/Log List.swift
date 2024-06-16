@@ -1,5 +1,4 @@
 import SwiftUI
-import Algorithms
 
 struct LogList: View {
     @Environment(LogVM.self) private var vm
@@ -53,16 +52,10 @@ struct LogList: View {
         .searchable(text: $binding.searchField)
         .overlay {
             if vm.searchedLogs.isEmpty {
-                ContentUnavailableView("No logs found",
-                                       systemImage: "list.bullet.rectangle.fill",
-                                       description: Text("Refresh the list or contact support")
-                )
+                ContentUnavailableView.search(text: vm.searchField)
             }
         }
-        .task {
-            vm.fetchLogs()
-        }
-        .refreshable {
+        .refreshableTask {
             vm.fetchLogs()
         }
     }

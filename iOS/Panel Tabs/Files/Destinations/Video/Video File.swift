@@ -14,6 +14,7 @@ struct VideoFile: View {
         self.name = name
     }
     
+    @State private var isSensitive = false
     @State private var localVideoUrl: URL?
     
     var body: some View {
@@ -23,6 +24,7 @@ struct VideoFile: View {
                 WatchVideoPlayer(localVideoUrl)
 #else
                 VideoPlayerView(localVideoUrl)
+                    .blur(radius: isSensitive ? 10 : 0)
 #endif
             }
         }
@@ -30,15 +32,28 @@ struct VideoFile: View {
         .task {
             fetchVideoUrl(name, root: root)
         }
+        .toolbar {
+            if isSensitive {
+                Button {
+                    withAnimation {
+                        isSensitive = false
+                    }
+                } label: {
+                    Image(systemName: "eye.slash")
+                }
+            }
+        }
     }
     
-    private func fetchVideoUrl(_ file: String, root: String) {
-        fileDownloadAPI(id, path: file + root) { result in
+    private func fetchVideoUrl(_ name: String, root: String) {
+        fileDownloadAPI(id, path: root + "/\(name)") { result in
             switch result {
             case .success(let model):
-                if let model = model?.attributes {
-                    saveVideo(model.url)
+                guard let model = model?.attributes else {
+                    return
                 }
+                
+                saveVideo(model.url)
                 
             case .failure(let error):
                 networkCallError(#function, error)
@@ -47,40 +62,51 @@ struct VideoFile: View {
     }
     
     private func saveVideo(_ urlString: String) {
+        let fm = FileManager.default
+        
         guard let url = URL(string: urlString) else {
             print("Invalid URL")
             return
         }
         
-        let tempDirectoryURL = FileManager.default.temporaryDirectory
+        let tempDirectoryURL = fm.temporaryDirectory
         let fileURL = tempDirectoryURL.appendingPathComponent(name)
         
-        let downloadTask = URLSession.shared.downloadTask(with: url) { location, response, error in
-            if let location = location, error == nil {
-                do {
-                    if FileManager.default.fileExists(atPath: fileURL.path) {
-                        try FileManager.default.removeItem(at: fileURL)
-                    }
-                    
-                    try FileManager.default.moveItem(at: location, to: fileURL)
-                    
-                    main {
-                        self.localVideoUrl = fileURL
-                    }
-                } catch {
-                    print("Error during file move: \(error.localizedDescription)")
-                }
-            } else {
+        URLSession.shared.downloadTask(with: url) { location, response, error in
+            guard let location, error == nil else {
                 print("Download error: \(error?.localizedDescription ?? "No error description available")")
+                return
+            }
+            
+            do {
+                if fm.fileExists(atPath: fileURL.path) {
+                    try fm.removeItem(at: fileURL)
+                }
+                
+                try fm.moveItem(at: location, to: fileURL)
+                
+                main {
+#if !os(watchOS) && !os(tvOS)
+                    let processor = SensitivityAnalyzer()
+                    
+                    Task {
+                        await processor.checkVideo(fileURL) { blur in
+                            isSensitive = blur
+                            self.localVideoUrl = fileURL
+                        }
+                    }
+#else
+                    self.localVideoUrl = fileURL
+#endif
+                }
+            } catch {
+                print("Error during file move: \(error.localizedDescription)")
             }
         }
-        
-        downloadTask.resume()
+        .resume()
     }
 }
 
 #Preview {
-    VideoFile("",
-              root: "",
-              name: "")
+    VideoFile("id", root: "", name: "Preview")
 }

@@ -12,16 +12,20 @@ struct BisquitHostApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 #endif
     
+    @StateObject private var settings = SettingsStorage()
     private var navState = NavState()
     private var linking = LinkingVM()
     private var network = NetworkVM()
-    @StateObject private var settings = SettingsStorage()
     
-    let container: ModelContainer
+    private let container: ModelContainer
     
     init() {
+        let schema = Schema([
+            APIKey.self,
+        ])
+        
         do {
-            container = try ModelContainer(for: APIKey.self)
+            container = try ModelContainer(for: schema)
         } catch {
             fatalError("Failed to create model container")
         }
@@ -55,13 +59,21 @@ struct BisquitHostApp: App {
         .windowStyle(.hiddenTitleBar)
 #endif
         
-#if (iOS)
+#if canImport(AlertKit)
         .onChange(of: network.isNetworkSatisfied) { _, status in
+            guard let status else {
+                return
+            }
+            
             if !status {
                 SystemAlert.networkError()
             }
         }
 #endif
+        
+        WindowGroup(id: "console") {
+            Text("Console")
+        }
         
 #if os(macOS)
         Settings {

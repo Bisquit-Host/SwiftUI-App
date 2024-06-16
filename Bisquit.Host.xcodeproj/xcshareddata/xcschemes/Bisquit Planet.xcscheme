@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1510"
+   LastUpgradeVersion = "1600"
    version = "2.2">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -31,20 +31,6 @@
                BlueprintIdentifier = "F3000E04295A341000ABD30A"
                BuildableName = "tvOS.app"
                BlueprintName = "tvOS"
-               ReferencedContainer = "container:Bisquit.Host.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F3E08E9F2A2CE17800116C1C"
-               BuildableName = "macOS.app"
-               BlueprintName = "macOS"
                ReferencedContainer = "container:Bisquit.Host.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

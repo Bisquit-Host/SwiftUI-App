@@ -2,6 +2,8 @@ import SwiftUI
 import PteroNet
 
 struct ServerCard: View {
+    @EnvironmentObject private var settings: SettingsStorage
+    
     private var vm: ServerCardVM
     
     private let server: ServerAttributes
@@ -17,11 +19,12 @@ struct ServerCard: View {
     }
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading, spacing: 16) {
             Text(server.name)
+                .title()
             
-            HStack {
-                CircularGauge("CPU", 
+            HStack(spacing: 20) {
+                CircularGauge("CPU",
                               value: vm.cpuUsage,
                               limit: limits.cpu,
                               isRedacted: vm.isLoading)
@@ -30,21 +33,27 @@ struct ServerCard: View {
                               value: vm.ramUsage,
                               limit: limits.memory,
                               isRedacted: vm.isLoading)
+                
+                CircularGauge("RAM",
+                              value: vm.diskUsage,
+                              limit: limits.disk,
+                              isRedacted: vm.isLoading)
+                //                LinearGauge(value: vm.diskUsage, limit: limits.disk)
             }
-            
-            LinearGauge(value: vm.diskUsage, limit: limits.disk)
-        }
-        .padding(.vertical)
-        .task {
-            vm.fetchServerUsage()
+            .padding(.vertical)
+            .task {
+                vm.fetchServerUsage()
+            }
+            .onChange(of: settings.updateServers) {
+                vm.fetchServerUsage()
+            }
         }
     }
 }
 
 #Preview {
-    ServerCard(
-        sampleJSON(.serverListAttributes)
-    )
+    List {
+        ServerCard(PreviewProperty.serverAttributes)
+    }
     .padding()
-    .glassBackgroundEffect()
 }

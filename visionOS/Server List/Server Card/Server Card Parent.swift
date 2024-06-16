@@ -8,6 +8,9 @@ struct ServerCardParent: View {
         self.server = server
     }
     
+    @State private var showSafari = false
+    @State private var confirmKill = false
+    
     var body: some View {
         NavigationLink {
             PanelView(server.id)
@@ -15,6 +18,14 @@ struct ServerCardParent: View {
             ServerCard(server)
         }
         .buttonBorderShape(.roundedRectangle(radius: 64))
+        .contextMenu {
+            ServerCardContextMenu(server.id, showSafari: $showSafari, confirmKill: $confirmKill)
+        }
+        .confirmationDialog("Perform kill action", isPresented: $confirmKill, titleVisibility: .visible) {
+            Button("Kill", role: .destructive) {
+                PteroNet.powerSignal(server.id, signal: .kill)
+            }
+        }
     }
 }
 

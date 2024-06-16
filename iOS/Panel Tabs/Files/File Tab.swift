@@ -13,6 +13,7 @@ struct FileTab: View {
     }
     
     @State private var image: UIImage?
+    @State private var url: URL?
     
     private var fileCount: Int {
         vm.filteredFiles.count
@@ -24,7 +25,7 @@ struct FileTab: View {
             
             NewFolder(root)
             
-            UploadMenu($image, root: root)
+            UploadMenu($image, url: $url, root: root)
             
             if vm.isUploading {
                 UploadProgress()
@@ -32,9 +33,7 @@ struct FileTab: View {
             
             Section {
                 ForEach(vm.filteredFiles, id: \.name) { file in
-                    FileView(id,
-                             file: file,
-                             root: root + "/")
+                    FileView(id, file: file, root: root + "/")
                 }
                 .onDelete { offsets in
                     deleteItem(offsets)
@@ -52,24 +51,22 @@ struct FileTab: View {
                 }
                 .numericTransition()
             }
-            
-            if root.isEmpty {
-                FileFormats()
-            }
         }
         .animation(.easeOut, value: vm.filteredFiles)
         .environmentObject(vm)
         .frame(maxWidth: 500)
         .safariCover($vm.showSafari, url: vm.downloadUrl)
-        .task {
-            vm.fetchFiles(root)
-        }
-        .refreshable {
+        .refreshableTask {
             vm.fetchFiles(root)
         }
         .onChange(of: image) {
             if let image {
                 vm.handleImageImport(image, root: root)
+            }
+        }
+        .onChange(of: url) {
+            if let url {
+                vm.handleFileImport([url], root: root)
             }
         }
     }

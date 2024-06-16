@@ -15,9 +15,7 @@ final class AllocationVM {
             switch result {
             case .success(let model):
                 if let model = model?.data {
-                    self.allocations = model.map {
-                        $0.attributes
-                    }
+                    self.allocations = model.map(\.attributes)
                 }
                 
             case .failure(let error):

@@ -51,7 +51,7 @@ struct ServerListGrid: View {
                         ),
                         sftp: .init(
                             ip: "",
-                            port: 0
+                            port: 228
                         ),
                         isSuspended: false,
                         relationships: .init(

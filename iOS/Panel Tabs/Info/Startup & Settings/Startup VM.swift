@@ -30,9 +30,7 @@ final class StartupVM {
             switch result {
             case .success(let model):
                 if let model {
-                    self.startupVariables = model.data.map {
-                        $0.attributes
-                    }
+                    self.startupVariables = model.data.map(\.attributes)
                     
                     self.startupCommand = model.meta.startupCommand
                     self.rawStartupCommand = model.meta.rawStartupCommand

@@ -36,7 +36,7 @@ struct CloudKeys: View {
                         Text("API-keys")
                     }
                 }
-#if os(xrOS)
+#if os(visionOS)
                 Button {
                     dismiss()
                 } label: {
@@ -65,5 +65,8 @@ struct CloudKeys: View {
 }
 
 #Preview {
-    CloudKeys(.constant(""))
+    Text("Preview")
+        .sheet {
+            CloudKeys(.constant(""))
+        }
 }

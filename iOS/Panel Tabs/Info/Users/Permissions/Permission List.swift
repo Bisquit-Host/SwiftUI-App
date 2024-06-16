@@ -1,7 +1,8 @@
 import SwiftUI
 import PteroNet
+import Translation
 
-struct PermissionList: View {
+struct PermissionListView: View {
     @Environment(UsersVM.self) private var vm
     
     @Binding private var user: UserAttributes
@@ -30,43 +31,110 @@ struct PermissionList: View {
     
     var body: some View {
         if let permissions = vm.permissions {
+            PermissionsHeader($showDescription, user: user)
             
-            PermissionsHeader(user,
-                              showDescription: $showDescription)
-            
-            ForEach(permissions.permissions.keys.sorted(), id: \.self) { key in
-                if let permission = permissions.permissions[key] {
-                    Section {
-                        ForEach(permission.keys.keys.sorted(), id: \.self) { subKey in
-                            if let subValue = permission.keys[subKey] {
-                                
-                                let perm = userPermissionsDict["\(key).\(subKey)"]
-                                
-                                VStack(alignment: .leading) {
-                                    PermissionCard(
-                                        userPermissions: user.permissions,
-                                        user: $user,
-                                        key: key,
-                                        subKey: subKey,
-                                        perm: perm
-                                    )
-                                    
-                                    if showDescription {
-                                        Text(subValue)
-                                            .caption2()
-                                    }
-                                }
-                            }
+            PermissionsList(
+                permissions: permissions.permissions,
+                showDescription: $showDescription,
+                user: $user,
+                userPermissionsDict: userPermissionsDict
+            )
+        }
+    }
+}
+
+struct PermissionsList: View {
+    var permissions: [String: Permission]
+    @Binding var showDescription: Bool
+    @Binding var user: UserAttributes
+    var userPermissionsDict: [String: Bool]
+    
+    var body: some View {
+        ForEach(permissions.keys.sorted(), id: \.self) { key in
+            PermissionSection(
+                key: key,
+                permission: permissions[key],
+                showDescription: $showDescription,
+                user: $user,
+                userPermissionsDict: userPermissionsDict
+            )
+        }
+    }
+}
+
+struct PermissionSection: View {
+    var key: String
+    var permission: Permission?
+    @Binding var showDescription: Bool
+    @Binding var user: UserAttributes
+    var userPermissionsDict: [String: Bool]
+    
+    @State private var showTranslation = false
+    
+    var body: some View {
+        if let permission {
+            Section {
+                ForEach(permission.keys.keys.sorted(), id: \.self) { subKey in
+                    PermissionCard(
+                        key: key,
+                        subKey: subKey,
+                        subValue: permission.keys[subKey],
+                        showDescription: $showDescription,
+                        user: $user,
+                        userPermissionsDict: userPermissionsDict
+                    )
+                }
+            } header: {
+                Text(key)
+            } footer: {
+                if showDescription {
+                    Text(permission.description)
+#if os(iOS) || os(macOS)
+                        .translationPresentation(isPresented: $showTranslation, text: permission.description)
+                        .onTapGesture {
+                            showTranslation = true
                         }
-                    } header: {
-                        Text(key)
-                    } footer: {
-                        if showDescription {
-                            Text(permission.description)
-                        }
-                    }
+#endif
+                }
+            }
 #if os(tvOS)
-                    Divider()
+            Divider()
+#endif
+        }
+    }
+}
+
+struct PermissionCard: View {
+    var key: String
+    var subKey: String
+    var subValue: String?
+    @Binding var showDescription: Bool
+    @Binding var user: UserAttributes
+    var userPermissionsDict: [String: Bool]
+    
+    @State private var showTranslation = false
+    
+    var body: some View {
+        if let subValue {
+            let perm = userPermissionsDict["\(key).\(subKey)"]
+            
+            VStack(alignment: .leading) {
+                PermissionToggle(
+                    userPermissions: user.permissions,
+                    user: $user,
+                    key: key,
+                    subKey: subKey,
+                    perm: perm
+                )
+                
+                if showDescription {
+                    Text(subValue)
+                        .caption2()
+#if os(iOS) || os(macOS)
+                        .translationPresentation(isPresented: $showTranslation, text: subValue)
+                        .onTapGesture {
+                            showTranslation = true
+                        }
 #endif
                 }
             }
@@ -75,7 +143,7 @@ struct PermissionList: View {
 }
 
 #Preview {
-    PermissionList(.constant(
+    PermissionListView(.constant(
         sampleJSON(.userAttributes)
     ))
     .environment(UsersVM(""))

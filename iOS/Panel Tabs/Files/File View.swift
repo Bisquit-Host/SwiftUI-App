@@ -3,6 +3,7 @@ import PteroNet
 
 struct FileView: View {
     @Environment(NavState.self) private var navState
+    @EnvironmentObject private var settings: SettingsStorage
     
     private let id, root: String
     private let file: FileAttributes
@@ -24,34 +25,36 @@ struct FileView: View {
         
         NavigationLink {
             if mimeType.contains("text") || mimeType.contains("json") {
-                TextFile(id,
-                         path: root,
-                         name: name)
+                TextFile(id, path: root, name: name)
                 
             } else if mimeType.contains("directory") {
-                FolderFile(id, root: root + name)
+                FolderFile(id, path: root + name)
                 
             } else if mimeType.contains("video") {
-                VideoFile(id,
-                          root: root,
-                          name: name)
+                VideoFile(id, root: root, name: name)
                 
             } else {
-                QuickLookFile(id,
-                              path: root,
-                              name: name)
+                QuickLookFile(id, root: root, name: name)
             }
         } label: {
-            HStack {
-                FileIcon(mimeType)
-                    .semibold()
-                    .frame(width: 20)
+            VStack(alignment: .leading) {
+                HStack {
+                    FileIcon(mimeType, filename: name)
+                        .semibold()
+                        .frame(width: 20)
+                    
+                    Text(name)
+                        .foregroundStyle(.primary)
+                        .minimumScaleFactor(0.5)
+                        .scaledToFit()
+                        .lineLimit(1)
+                }
                 
-                Text(name)
-                    .foregroundStyle(.primary)
-                    .minimumScaleFactor(0.5)
-                    .scaledToFit()
-                    .lineLimit(1)
+                if settings.adminMode {
+                    Text(mimeType)
+                        .footnote()
+                        .foregroundStyle(.secondary)
+                }
             }
         }
         .fileContextMenu(file, root: root)
@@ -60,9 +63,7 @@ struct FileView: View {
 
 #Preview {
     List {
-        FileView("",
-                 file: sampleJSON(.fileListAttributes),
-                 root: "")
-        .environment(NavState())
+        FileView("", file: sampleJSON(.fileListAttributes), root: "")
+            .environment(NavState())
     }
 }

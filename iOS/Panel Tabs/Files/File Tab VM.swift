@@ -50,8 +50,8 @@ final class FileTabVM: ObservableObject {
     func chmod(_ read: Bool, _ write: Bool, _ execute: Bool) -> String {
         var permission: UInt8 = 0
         
-        if read { permission |= 4 }
-        if write { permission |= 2 }
+        if read    { permission |= 4 }
+        if write   { permission |= 2 }
         if execute { permission |= 1 }
         
         return String(permission)
@@ -70,6 +70,24 @@ final class FileTabVM: ObservableObject {
         }
     }
     
+    func pullRemoteFile(
+        _ url: String,
+        directory: String = "",
+        filename: String? = nil,
+        useHeader: Bool = false,
+        foreground: Bool? = nil
+    ) {
+        pullRemoteFileAPI(id, url: url, directory: directory, filename: filename, useHeader: useHeader, foreground: foreground) { result in
+            switch result {
+            case .success:
+                self.fetchFiles(directory)
+                
+            case .failure(let error):
+                networkCallError(#function, error)
+            }
+        }
+    }
+    
     func fetchFiles(_ path: String = "") {
         fileListAPI(id, path: path) { result in
             switch result {
@@ -80,9 +98,7 @@ final class FileTabVM: ObservableObject {
 #if os(macOS)
                             self.degrees += 360
 #endif
-                            self.files = model.map {
-                                $0.attributes
-                            }
+                            self.files = model.map(\.attributes)
                         }
                     }
                 }
@@ -98,11 +114,12 @@ final class FileTabVM: ObservableObject {
         fileUploader.cancelUpload()
     }
     
-    func uploadFile(_ urlString: String,
-                    name: String,
-                    root: String,
-                    mimeType: String,
-                    fileUrl: URL
+    func uploadFile(
+        _ urlString: String,
+        name: String,
+        root: String,
+        mimeType: String,
+        fileUrl: URL
     ) {
         main {
             withAnimation {
@@ -142,11 +159,13 @@ final class FileTabVM: ObservableObject {
                     if let model = model?.attributes {
                         let url = model.url
                         
-                        self.uploadFile(url,
-                                        name: fileName,
-                                        root: root,
-                                        mimeType: mimeType,
-                                        fileUrl: fileURL)
+                        self.uploadFile(
+                            url,
+                            name: fileName,
+                            root: root,
+                            mimeType: mimeType,
+                            fileUrl: fileURL
+                        )
                         
                         self.fetchFiles(root)
                     }
@@ -159,12 +178,12 @@ final class FileTabVM: ObservableObject {
     }
     
     func handleImageImport(_ image: UIImage, root: String) {
-        guard let imageData = image.jpegData(compressionQuality: 1) else {
+        guard let imageData = image.heicData() else {
             print("Unable to convert image to data")
             return
         }
         
-        let mimeType = "image/jpeg"
+        let mimeType = "image/heic"
         let temporaryDirectoryURL = FileManager.default.temporaryDirectory
         let fileURL = temporaryDirectoryURL.appendingPathComponent("Image")
         
@@ -181,11 +200,13 @@ final class FileTabVM: ObservableObject {
                 if let vm = model?.attributes {
                     let url = vm.url
                     
-                    self.uploadFile(url,
-                                    name: "Image\(UUID().uuidString).jpeg",
-                                    root: root,
-                                    mimeType: mimeType,
-                                    fileUrl: fileURL)
+                    self.uploadFile(
+                        url,
+                        name: "Image\(UUID().uuidString).heic",
+                        root: root,
+                        mimeType: mimeType,
+                        fileUrl: fileURL
+                    )
                     
                     self.fetchFiles(root)
                 }
@@ -202,8 +223,10 @@ final class FileTabVM: ObservableObject {
             switch result {
             case .success(let model):
                 if let model = model?.attributes {
-                    self.downloadUrl = model.url
-                    self.showSafari = true
+                    main {
+                        self.downloadUrl = model.url
+                        self.showSafari = true
+                    }
                 }
                 
             case .failure(let error):

@@ -50,10 +50,7 @@ struct ServerList: View {
         }
         .overlay {
             if vm.filteredServers.isEmpty, !vm.searchField.isEmpty {
-                ContentUnavailableView("No Results for \"\(vm.searchField)\"",
-                                       systemImage: "externaldrive",
-                                       description: Text("Check the spelling or try another search")
-                )
+                ContentUnavailableView.search(text: vm.searchField)
             }
         }
         .sheet($binding.sheetGuide) {

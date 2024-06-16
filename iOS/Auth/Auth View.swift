@@ -17,14 +17,11 @@ struct AuthView: View {
             }
         }
         .navigationBarBackButtonHidden()
-        .frame(width: bounds.width, 
-               height: bounds.height)
+        .frame(width: bounds.width, height: bounds.height)
         .background(AuthBackground())
         .ignoresSafeArea()
         .task {
-            vm.appear(settings.useBiometry,
-                      navState: navState
-            )
+            vm.appear(settings.useBiometry, navState: navState)
             
             serverVM.fetchServers(settings.adminServerList)
         }
@@ -35,8 +32,7 @@ struct AuthView: View {
             .title2()
             .padding()
             .foregroundStyle(vm.colorButton)
-            .background(.aliceblue.gradient, 
-                        in: .capsule)
+            .background(.aliceblue.gradient, in: .capsule)
             .shadow(color: .aliceblue, radius: 10)
             .changeEffect(
                 .spray(origin: .bottom) {
@@ -53,8 +49,7 @@ struct AuthView: View {
             .title2()
             .padding()
             .foregroundStyle(vm.colorButton)
-            .background(.aliceblue.gradient,
-                        in: .capsule)
+            .background(.aliceblue.gradient, in: .capsule)
             .shadow(color: .aliceblue, radius: 10)
     }
 }

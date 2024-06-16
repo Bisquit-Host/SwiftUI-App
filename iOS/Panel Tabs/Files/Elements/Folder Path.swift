@@ -19,16 +19,11 @@ struct FolderPath: View {
             Button {
                 vm.copyFilePath(path, withHomeContainer: settings.showFullFilePath)
             } label: {
-                HStack {
-                    Image(systemName: "doc.on.doc")
-                        .semibold()
-                    
-                    Text(listPath)
-                        .foregroundStyle(.primary)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.75)
-                }
-                .footnote()
+                Text("listPath")
+                    .footnote()
+                    .foregroundStyle(.primary)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.75)
             }
         }
     }

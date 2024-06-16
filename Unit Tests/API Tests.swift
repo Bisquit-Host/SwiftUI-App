@@ -2,26 +2,26 @@ import XCTest
 import PteroNet
 
 final class PteroNetTests: XCTestCase {
-//    func testListStartupVariables() {
-//        let expectation = self.expectation(description: "API-keys fetched")
-//        
-//        twoFaDetailtsAPI(printResponse: true) { result in
-//            switch result {
-//            case .success(let model):
-//                if let model {
-//                    print(model)
-//                }
-//                
-//                expectation.fulfill()
-//                
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//                XCTFail("Error")
-//            }
-//        }
-//        
-//        waitForExpectations(timeout: 10, handler: nil)
-//    }
+    //    func testListStartupVariables() {
+    //        let expectation = self.expectation(description: "API-keys fetched")
+    //
+    //        twoFaDetailtsAPI(printResponse: true) { result in
+    //            switch result {
+    //            case .success(let model):
+    //                if let model {
+    //                    print(model)
+    //                }
+    //
+    //                expectation.fulfill()
+    //
+    //            case .failure(let error):
+    //                print(error.localizedDescription)
+    //                XCTFail("Error")
+    //            }
+    //        }
+    //
+    //        waitForExpectations(timeout: 10, handler: nil)
+    //    }
     //
     //    func testTwoFaDetailtsAPI() {
     //        let expectation = self.expectation(description: "API-keys fetched")
@@ -222,7 +222,8 @@ final class PteroNetTests: XCTestCase {
     //            } else {
     //                print("Cannot convert data to String")
     //            }
-    //        }.resume()
+    //        }
+    //        .resume()
     //
     //        waitForExpectations(timeout: 10, handler: nil)
     //    }

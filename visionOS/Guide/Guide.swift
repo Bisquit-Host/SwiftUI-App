@@ -37,7 +37,7 @@ struct Guide: View {
                             if id == 1 {
                                 Text("https://mgr.bisquit.host")
                                     .title2()
-#if !os(xrOS)
+#if !os(visionOS)
                                     .padding(20)
                                     .background(.blue, in: .capsule)
 #endif

@@ -51,9 +51,7 @@ struct InfoTabCard: View {
             .tabViewStyle(.page)
         }
         .padding()
-        .background(.ultraThinMaterial, 
-                    in: .rect(cornerRadius: 16)
-        )
+        .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
     }
 }
 

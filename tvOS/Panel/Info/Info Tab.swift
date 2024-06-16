@@ -35,8 +35,7 @@ struct InfoTab: View {
                 } label: {
                     Label("Logs", systemImage: "terminal")
                         .frame(width: 500, height: 250)
-                        .background(.ultraThinMaterial,
-                                    in: .rect(cornerRadius: 64))
+                        .background(.ultraThinMaterial, in: .rect(cornerRadius: 64))
                 }
             }
             

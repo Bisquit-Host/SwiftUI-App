@@ -18,9 +18,7 @@ final class DatabaseVM {
             case .success(let model):
                 if let model = model?.data {
                     withAnimation {
-                        self.databases = model.map {
-                            $0.attributes
-                        }
+                        self.databases = model.map(\.attributes)
                     }
                 }
                 

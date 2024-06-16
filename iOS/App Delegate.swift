@@ -118,6 +118,7 @@ private func postPushToken(email: String, token: String) {
             print(error?.localizedDescription ?? "Unknown error")
             return
         }
-    }.resume()
+    }
+    .resume()
 }
 #endif

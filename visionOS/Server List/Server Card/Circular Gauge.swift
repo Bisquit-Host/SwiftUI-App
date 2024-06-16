@@ -45,7 +45,6 @@ struct CircularGauge: View {
                         .redacted(isRedacted)
                 }
                 .tint(value == 0 ? .none : gradient)
-                
             } else {
                 Gauge(value: limit, in: 0...limit) {
                     Text(param)
@@ -67,7 +66,7 @@ struct CircularGauge: View {
         CircularGauge("CPU", value: 5, limit: 10, isRedacted: false)
         CircularGauge("CPU", value: 15, limit: 10, isRedacted: false)
     }
-#if os(xrOS)
+#if os(visionOS)
     .padding()
     .glassBackgroundEffect()
 #endif

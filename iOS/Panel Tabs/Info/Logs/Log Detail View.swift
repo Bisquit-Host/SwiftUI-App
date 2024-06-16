@@ -13,7 +13,7 @@ struct LogDetailView: View {
     
     var body: some View {
         List {
-            ForEach(simpleProperties.sorted(by: { $0.key < $1.key }), id: \.key) { key, value in
+            ForEach(simpleProperties.sorted { $0.key < $1.key }, id: \.key) { key, value in
 #if os(tvOS)
                 Button {
                     
@@ -34,7 +34,7 @@ struct LogDetailView: View {
 #endif
             }
             
-            ForEach(arrayProperties.sorted(by: { $0.key < $1.key }), id: \.key) { key, values in
+            ForEach(arrayProperties.sorted { $0.key < $1.key }, id: \.key) { key, values in
                 Section(key) {
                     ForEach(values, id: \.self) { value in
                         Text(value)

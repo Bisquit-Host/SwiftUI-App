@@ -1,48 +1,65 @@
 import SwiftUI
 
 struct FileIcon: View {
-    private let mimeType: String
+    private let icon: String
+    private let color: Color
     
-    init(_ mimetype: String) {
-        self.mimeType = mimetype
+    init(_ mimeType: String, filename: String = "") {
+        let (icon, color) = getFileIcon(mimeType: mimeType, filename: filename)
+        self.icon = icon
+        self.color = color
     }
     
     var body: some View {
-        Group {
-            if mimeType.contains("directory") {
-                Image(systemName: "folder")
-                    .foregroundStyle(.yellow)
-                
-            } else if mimeType.contains("text") || mimeType.contains("json") {
-                Image(systemName: "doc.text")
-                    .foregroundStyle(.primary)
-                
-            } else if mimeType.contains("gzip") {
-                Image(systemName: "doc.zipper")
-                    .foregroundStyle(.orange)
-                
-            } else if mimeType.contains("image") {
-                Image(systemName: "photo")
-                    .foregroundStyle(.mint)
-                
-            } else if mimeType.contains("video") {
-                Image(systemName: "play.rectangle.fill")
-                    .foregroundStyle(.red)
-                    .padding(-5)
-                    .background(.white)
-                
-            } else if mimeType.contains("pdf") {
-                Image(systemName: "doc.richtext")
-                    .foregroundStyle(.blue)
-                
-            } else {
-                Image(systemName: "lock.doc")
-                    .foregroundStyle(.gray)
-            }
-        }
+        Image(systemName: icon).foregroundStyle(color)
     }
 }
 
+fileprivate func getFileIcon(mimeType: String, filename: String = "") -> (String, Color) {
+    var icon = "lock.doc"
+    var color = Color.gray
+    
+    if mimeType.contains("directory") {
+        icon = "folder"
+        color = .yellow
+    } else if mimeType.contains("text") || mimeType.contains("json") {
+        icon = "doc.text"
+        color = .primary
+    } else if mimeType.contains("gzip") {
+        icon = "doc.zipper"
+        color = .orange
+    } else if mimeType.contains("image") {
+        icon = "photo"
+        color = .mint
+    } else if mimeType.contains("video") {
+        icon = "play.rectangle.fill"
+        color = .red
+    } else if mimeType.contains("pdf") {
+        icon = "doc.richtext"
+        color = .blue
+    } else if mimeType.contains("audio") {
+        icon = "music.note"
+        color = .pink
+    } else {
+        if filename.contains(".usdz") || filename.contains(".blend") || filename.contains(".obj") {
+            icon = "move.3d"
+            color = .purple
+        }
+    }
+    
+    return (icon, color)
+}
+
 #Preview {
-    FileIcon("video")
+    List {
+        FileIcon("directory")
+        FileIcon("json")
+        FileIcon("gzip")
+        FileIcon("image")
+        FileIcon("video")
+        FileIcon("pdf")
+        FileIcon("audio")
+        FileIcon("", filename: ".usdz")
+        FileIcon("lock.doc")
+    }
 }
