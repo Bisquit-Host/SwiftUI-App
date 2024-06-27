@@ -15,7 +15,7 @@ struct StartServerIntent: AppIntent {
     
     @Parameter(title: "Server id", default: "")
     var id: String
-        
+    
     init() {}
     
     init(id: String) {
@@ -34,7 +34,7 @@ struct RestartServerIntent: AppIntent {
     
     @Parameter(title: "Server id", default: "")
     var id: String
-        
+    
     init() {}
     
     init(id: String) {
@@ -53,7 +53,7 @@ struct StopServerIntent: AppIntent {
     
     @Parameter(title: "Server id", default: "")
     var id: String
-        
+    
     init() {}
     
     init(id: String) {
@@ -72,7 +72,7 @@ struct KillServerIntent: AppIntent {
     
     @Parameter(title: "Server id", default: "")
     var id: String
-        
+    
     init() {}
     
     init(id: String) {

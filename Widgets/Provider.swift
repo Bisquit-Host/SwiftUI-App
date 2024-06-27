@@ -45,8 +45,9 @@ struct Provider: AppIntentTimelineProvider {
         return timeline
     }
     
-    func snapshot(for configuration: ConfigurationAppIntent,
-                  in context: Context
+    func snapshot(
+        for configuration: ConfigurationAppIntent,
+        in context: Context
     ) -> SystemSmallEntry {
         SystemSmallEntry(
             date: Date(),
@@ -55,7 +56,9 @@ struct Provider: AppIntentTimelineProvider {
         )
     }
     
-    func placeholder(in context: Context) -> SystemSmallEntry {
+    func placeholder(
+        in context: Context
+    ) -> SystemSmallEntry {
         SystemSmallEntry(
             date: Date(),
             cpuUsage: getCpu(),
@@ -63,7 +66,7 @@ struct Provider: AppIntentTimelineProvider {
         )
     }
     
-    func getCpu() -> Double {
+    private func getCpu() -> Double {
         if let storage = UserDefaults(suiteName: "group.Bisquit-host") {
             storage.double(forKey: "widgetCpuUsage")
         } else {
@@ -71,7 +74,7 @@ struct Provider: AppIntentTimelineProvider {
         }
     }
     
-    func getRam() -> Double {
+    private func getRam() -> Double {
         if let storage = UserDefaults(suiteName: "group.Bisquit-host") {
             storage.double(forKey: "widgetRamUsage")
         } else {

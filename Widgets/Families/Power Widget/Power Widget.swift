@@ -44,5 +44,10 @@ struct PowerWidget: Widget {
 #Preview(as: .systemSmall) {
     PowerWidget()
 } timeline: {
-    PowerEntry(date: .now, configuration: .init(serverId: .init(title: "", description: "", default: "1123")))
+    PowerEntry(
+        date: .now,
+        configuration: .init(
+            serverId: .init(title: "", description: "", default: "1123")
+        )
+    )
 }

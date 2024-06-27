@@ -77,11 +77,15 @@ struct SystemSmallWidgetView: View {
 #Preview(as: .systemSmall) {
     SystemSmallWidget()
 } timeline: {
-    SystemSmallEntry(date: .now,
-                     cpuUsage: 0,
-                     ramUsage: 0)
+    SystemSmallEntry(
+        date: .now,
+        cpuUsage: 0,
+        ramUsage: 0
+    )
     
-    SystemSmallEntry(date: .now,
-                     cpuUsage: 0,
-                     ramUsage: 0)
+    SystemSmallEntry(
+        date: .now,
+        cpuUsage: 0,
+        ramUsage: 0
+    )
 }

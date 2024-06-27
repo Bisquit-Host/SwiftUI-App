@@ -2,7 +2,7 @@ import WidgetKit
 
 struct PowerProvider: AppIntentTimelineProvider {
     func placeholder(in context: Context) -> PowerEntry {
-        PowerEntry(date: Date(), configuration: ConfigurationAppIntent())
+        PowerEntry(date: Date(), configuration: .init())
     }
     
     func snapshot(

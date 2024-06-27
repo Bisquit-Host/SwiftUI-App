@@ -2,5 +2,6 @@ import WidgetKit
 
 struct SystemSmallEntry: TimelineEntry {
     let date: Date
-    let cpuUsage, ramUsage: Double
+    let cpuUsage: Double
+    let ramUsage: Double
 }
