@@ -21,7 +21,7 @@ struct BisquitHostApp: App {
     
     init() {
         let schema = Schema([
-            APIKey.self,
+            APIKey.self
         ])
         
         do {
