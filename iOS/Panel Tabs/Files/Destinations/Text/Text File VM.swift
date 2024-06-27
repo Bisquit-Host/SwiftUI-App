@@ -12,7 +12,9 @@ final class TextFileVM {
     var text = ""
     
     func writeFile(_ write: String, path: String) {
-        fileWriteAPI(self.id, write: write, path: path) { result in
+        print("Writing \(write) to \(path.applyPercentEncoding())")
+        
+        fileWriteAPI(id, write: write, path: path) { result in
             switch result {
             case .success(let model):
                 print(model)
