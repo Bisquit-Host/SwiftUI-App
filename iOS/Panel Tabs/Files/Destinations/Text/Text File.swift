@@ -9,10 +9,11 @@ struct TextFile: View {
     
     private let id, path, name: String
     
-    init(_ id: String,
-         path: String,
-         name: String,
-         model: TextFileVM = TextFileVM("")
+    init(
+        _ id: String,
+        path: String,
+        name: String,
+        model: TextFileVM = TextFileVM("")
     ) {
         self.id = id
         self.path = path
@@ -40,7 +41,7 @@ struct TextFile: View {
         VStack {
 #if os(iOS)
             Button {
-                vm.writeFile(vm.text, path: path)
+                vm.writeFile(vm.text, path: path + name)
             } label: {
                 Text("Save changes")
                     .foregroundStyle(.yellow)
