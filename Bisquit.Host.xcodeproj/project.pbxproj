@@ -5139,7 +5139,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Clip Demo/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
+				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.debug;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Access to contacts allows you to save new contacts directly from the app.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Required to view your location on the map";
@@ -5422,7 +5422,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Bisquit-Host-visionOS-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = BIsquit.Host;
+				INFOPLIST_KEY_CFBundleDisplayName = BIsquit.debug;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
