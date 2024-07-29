@@ -13,7 +13,7 @@ struct ServerListGrid: View {
     var body: some View {
 #if os(watchOS)
         LazyVStack {
-            ForEach(servers, id: \.id) { server in
+            ForEach(servers) { server in
                 ServerCardParent(server)
             }
         }
@@ -27,7 +27,7 @@ struct ServerListGrid: View {
             spacing: 8
         ) {
             if settings.isApiKeyValid {
-                ForEach(servers, id: \.id) { server in
+                ForEach(servers) { server in
                     ServerCardParent(server)
                 }
             } else {

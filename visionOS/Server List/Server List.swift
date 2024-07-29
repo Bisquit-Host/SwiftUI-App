@@ -8,7 +8,7 @@ struct ServerList: View {
         @Bindable var binding = vm
         
         List {
-            ForEach(vm.filteredServers, id: \.id) { server in
+            ForEach(vm.filteredServers) { server in
                 ServerCardParent(server)
             }
         }
