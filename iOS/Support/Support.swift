@@ -103,7 +103,7 @@ struct Support: View {
 
 #Preview {
     Text("Preview")
-        .sheet(.constant(true)) {
+        .sheet {
             Support()
         }
         .environmentObject(SettingsStorage())

@@ -27,7 +27,7 @@ struct Discover: View {
                 NavigationLink {
                     MapView()
                 } label: {
-                    ListButton("Locations (unofficial)", icon: "map")
+                    ListButton("Places we recommend", icon: "map")
                 }
             }
         }

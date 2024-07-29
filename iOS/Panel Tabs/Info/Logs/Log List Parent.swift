@@ -15,7 +15,7 @@ struct LogListParent: View {
 
 #Preview {
     Text("Preview")
-        .sheet(.constant(true)) {
+        .sheet {
             LogListParent()
         }
         .environment(LogVM(""))

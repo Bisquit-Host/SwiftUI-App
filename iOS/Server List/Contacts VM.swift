@@ -9,7 +9,6 @@ extension ServerListVM {
     func enableExtension() async {
         if #available(iOS 18, *) {
             do {
-                // Creates contact provider manager with a default domain
                 let manager = try ContactProviderManager()
                 
                 // May prompt to enable the default domain
@@ -36,7 +35,7 @@ extension ServerListVM {
         if #available(iOS 18, *) {
             do {
                 let manager = try ContactProviderManager()
-                try manager.disable()
+                try await manager.disable()
             } catch {
                 print("Failed to disable: \(error.localizedDescription)")
             }

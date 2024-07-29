@@ -30,12 +30,13 @@ struct DevSettings: View {
                               parameter: parameter.1)
             }
             
-            Toggle("Admin mode",
-                   isOn: $settings.adminMode)
+            Toggle("Admin mode", isOn: $settings.adminMode)
             
             //#if !os(tvOS)
             //            ColorPicker("Background color (disabled)", selection: $settings.backgroundColor)
             //#endif
+            
+            ServerListFooter()
         }
 #if !os(tvOS)
         .listRowBackground(settings.transparentList ? .clear : Color.list)

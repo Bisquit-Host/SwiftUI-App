@@ -200,7 +200,9 @@ extension View {
 }
 
 #Preview {
+    @Previewable @State var isPresented = true
+    
     Text("Preview")
         .environmentObject(FileTabVM(""))
-        .libraryPicker(.constant(true), title: "1", subtitle: "2")
+        .libraryPicker($isPresented, title: "1", subtitle: "2")
 }

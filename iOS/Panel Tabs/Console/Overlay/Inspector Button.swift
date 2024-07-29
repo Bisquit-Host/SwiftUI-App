@@ -20,5 +20,7 @@ struct InspectorButton: View {
 }
 
 #Preview {
-    InspectorButton(.constant(true))
+    @Previewable @State var inspectorPresented = true
+    
+    InspectorButton($inspectorPresented)
 }

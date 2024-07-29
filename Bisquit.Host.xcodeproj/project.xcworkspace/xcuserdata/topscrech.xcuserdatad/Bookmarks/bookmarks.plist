@@ -1422,7 +1422,7 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 				<key>trailing</key>
 				<string>                    MapView()
                 } label: {
-                    ListButton("Locations (unofficial)", icon: "map")
+                    ListButton("Places we recommend", icon: "map")
 </string>
 			</dict>
 			<key>type</key>

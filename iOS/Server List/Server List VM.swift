@@ -19,7 +19,6 @@ final class ServerListVM {
     var displayedNode: Node = .all
     
     var keys: [String] = []
-    var footerHidden = true
     
     var selectedServer: ServerAttributes?
     
@@ -96,14 +95,6 @@ final class ServerListVM {
         }
     }
 #endif
-    
-    func switchFooter() {
-        footerHidden = false
-        
-        delay(3) {
-            self.footerHidden = true
-        }
-    }
     
     func fetchServers(_ isAdmin: Bool) {
         serverListAPI(isAdmin) { result in

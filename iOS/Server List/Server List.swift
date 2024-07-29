@@ -15,14 +15,9 @@ struct ServerList: View {
             
             ServerListGrid(vm.filteredServers)
                 .padding(4)
-            
-            if !vm.filteredServers.isEmpty {
-                ServerListFooter()
-            }
         }
         .environment(vm)
         .searchable(text: $searchField)
-        .navigationTitle("Bisquit.Host")
         .navigationBarBackButtonHidden()
         .background {
             BisquitFall()
@@ -36,11 +31,17 @@ struct ServerList: View {
                 vm.searchField = search
             }
         }
+        .overlay(alignment: .bottomLeading) {
+            ServerListFilter($binding.filterBySuspended)
+                .environment(vm)
+        }
         .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
+            ToolbarItemGroup(placement: .navigationBarLeading) {
                 SFButton("sparkles") {
                     vm.sheetDiscover = true
                 }
+                
+                TopbarGridButton()
             }
             
             ToolbarItem(placement: .navigationBarTrailing) {

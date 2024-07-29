@@ -1953,6 +1953,7 @@
 
     },
     "Grid" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -2669,9 +2670,6 @@
     "Load data" : {
 
     },
-    "Locations (unofficial)" : {
-
-    },
     "Lock" : {
 
     },
@@ -3268,6 +3266,16 @@
     },
     "Photo Library" : {
 
+    },
+    "Places we recommend" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Места для посещения"
+          }
+        }
+      }
     },
     "Please note, this action will not affect any given permissions. However, the app will be terminated and this action cannot be undone." : {
       "extractionState" : "stale",

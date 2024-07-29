@@ -65,7 +65,7 @@ struct UserView: View {
 
 #Preview {
     Text("Preview")
-        .sheet(.constant(true)) {
+        .sheet {
             UserView(
                 sampleJSON(.userAttributes)
             )

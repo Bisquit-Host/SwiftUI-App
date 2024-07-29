@@ -57,10 +57,9 @@ struct PermissionsHeader: View {
 }
 
 #Preview {
+    @Previewable @State var showDescription = false
+    
     List {
-        PermissionsHeader(
-            .constant(false),
-            user: sampleJSON(.userAttributes)
-        )
+        PermissionsHeader($showDescription, user: sampleJSON(.userAttributes))
     }
 }

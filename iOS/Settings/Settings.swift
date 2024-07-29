@@ -29,9 +29,9 @@ struct Settings: View {
                     vm.sheetSupport = true
                 }
             }
+            .semibold()
             .listRowBackground(Color.clear)
             .listRowSeparator(.hidden)
-            .semibold()
             .padding(.vertical, 4)
             
             DevSettings()
@@ -59,7 +59,7 @@ struct Settings: View {
 #Preview {
     NavigationView {
         Settings()
-            .sheet(.constant(true)) {
+            .sheet {
                 Settings()
             }
             .environmentObject(SettingsStorage())

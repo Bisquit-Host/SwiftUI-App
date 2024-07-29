@@ -11,22 +11,17 @@ struct ServerListTopbar: View {
     }
     
     var body: some View {
-        HStack(spacing: 8) {
-            ServerListFilter($filterBySuspended)
-                .environment(vm)
-            
-            TopbarAdminButton {
-                vm.fetchServers(settings.adminServerList)
-            }
-            
-            TopbarGridButton()
+        TopbarAdminButton {
+            vm.fetchServers(settings.adminServerList)
         }
         .padding(.horizontal, 5)
     }
 }
 
 #Preview {
-    ServerListTopbar(.constant(false))
+    @Previewable @State var filterBySuspended = false
+    
+    ServerListTopbar($filterBySuspended)
         .environment(ServerListVM())
         .environmentObject(SettingsStorage())
 }

@@ -48,7 +48,7 @@ struct ApikeyList: View {
 
 #Preview {
     ApikeyList()
-        .sheet(.constant(true)) {
+        .sheet {
             ApikeyList()
         }
         .environment(ApikeyVM())

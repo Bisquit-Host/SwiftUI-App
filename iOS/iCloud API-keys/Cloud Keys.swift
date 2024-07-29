@@ -65,8 +65,10 @@ struct CloudKeys: View {
 }
 
 #Preview {
+    @Previewable @State var apiKey = ""
+    
     Text("Preview")
         .sheet {
-            CloudKeys(.constant(""))
+            CloudKeys($apiKey)
         }
 }

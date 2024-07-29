@@ -170,5 +170,7 @@ fileprivate extension CNContact {
 }
 
 #Preview {
-    ContactsListView(.constant(""))
+    @Previewable @State var selectedEmail = "test@example.com"
+    
+    ContactsListView($selectedEmail)
 }

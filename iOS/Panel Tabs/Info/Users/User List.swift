@@ -43,7 +43,7 @@ struct UserList: View {
 
 #Preview {
     Text("Preview")
-        .sheet(.constant(true)) {
+        .sheet {
             UserList()
         }
         .environment(UsersVM("2fb25a50"))

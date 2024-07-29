@@ -72,9 +72,11 @@ struct CloudKeyCard: View {
 }
 
 #Preview {
+    @Previewable @State var selectedKey = ""
+    
     List {
         CloudKeyCard(
-            .constant(""),
+            $selectedKey,
             key: .init(
                 "Preview Key",
                 key: "ptlc_1234567890"

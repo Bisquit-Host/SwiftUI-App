@@ -80,10 +80,8 @@ struct LogDetailView: View {
 #Preview {
     NavigationView {
         Text("Preview")
-            .sheet(.constant(true)) {
-                LogDetailView(
-                    sampleJSON(.logAttributes)
-                )
+            .sheet {
+                LogDetailView(sampleJSON(.logAttributes))
             }
     }
 }
