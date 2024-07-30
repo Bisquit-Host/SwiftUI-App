@@ -33,6 +33,7 @@ struct PowerSwitch: View {
                 .padding(10)
                 .background(.ultraThinMaterial, in: .circle)
         }
+        .hoverEffect(.lift)
         .confirmationDialog("Perform kill action", isPresented: $confirmKill, titleVisibility: .visible) {
             Button("Kill", role: .destructive) {
                 vm.changePower(.kill)

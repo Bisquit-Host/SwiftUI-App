@@ -30,6 +30,8 @@ struct ServerListGrid: View {
                 ForEach(servers) { server in
                     ServerCardParent(server)
                 }
+                
+                NewConfigurationCard()
             } else {
                 ServerCardParent(demoServer)
             }

@@ -80,8 +80,8 @@ struct ServerCard: View {
                 }
                 .frame(height: 90)
                 .padding(.horizontal)
-                .background(.ultraThinMaterial,
-                            in: .rect(cornerRadius: 25))
+                .background(.ultraThinMaterial, in: .rect(cornerRadius: 25))
+                
                 //            case 2:
                 //                HStack {
                 //                    VStack {
@@ -130,21 +130,13 @@ struct ServerCard: View {
         ],
         spacing: 8
     ) {
-        ServerCard(
-            sampleJSON(.serverListAttributes)
-        )
+        ServerCard(sampleJSON(.serverListAttributes))
         
-        ServerCard(
-            sampleJSON(.serverListAttributes)
-        )
+        ServerCard(sampleJSON(.serverListAttributes))
         
-        ServerCard(
-            sampleJSON(.serverListAttributes)
-        )
+        ServerCard(sampleJSON(.serverListAttributes))
         
-        ServerCard(
-            sampleJSON(.serverListAttributes)
-        )
+        ServerCard(sampleJSON(.serverListAttributes))
     }
     .padding(5)
     .environmentObject(SettingsStorage())

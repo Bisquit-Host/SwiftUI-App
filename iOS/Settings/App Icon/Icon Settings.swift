@@ -11,3 +11,10 @@ struct IconSettings: View {
         .listRowBackground(settings.transparentList ? .clear : Color.list)
     }
 }
+
+#Preview {
+    List {
+        IconSettings()
+            .environmentObject(SettingsStorage())
+    }
+}
