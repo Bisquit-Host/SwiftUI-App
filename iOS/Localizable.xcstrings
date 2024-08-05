@@ -767,6 +767,9 @@
     "Backup" : {
 
     },
+    "Backup at %@" : {
+
+    },
     "Backup name" : {
 
     },
@@ -1169,9 +1172,6 @@
 
     },
     "Continue on failure" : {
-
-    },
-    "Cool backup" : {
 
     },
     "Copied" : {

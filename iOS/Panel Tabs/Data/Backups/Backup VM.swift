@@ -82,6 +82,18 @@ final class BackupVM {
                     }
                 }
                 
+            case .failure(let error as PterError):
+                print(error.code)
+                print(error.detail)
+                print(error.status)
+                
+#if os(iOS)
+                DispatchQueue.main.async {
+                    SystemAlert.error("\(error.status) - \(error.code)", subtitle: error.detail)
+                }
+#endif
+                networkCallError(#function, error)
+                
             case .failure(let error):
                 networkCallError(#function, error)
             }

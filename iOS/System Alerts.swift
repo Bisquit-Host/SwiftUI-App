@@ -21,5 +21,15 @@ final class SystemAlert {
             haptic: .error
         )
     }
+    
+    static func error(_ title: String, subtitle: String?) {
+        AlertKitAPI.present(
+            title: title,
+            subtitle: subtitle,
+            icon: .error,
+            style: .iOS17AppleMusic,
+            haptic: .error
+        )
+    }
 }
 #endif

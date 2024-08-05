@@ -9,6 +9,15 @@ struct BackupList: View {
         self.backupLimit = backupLimit
     }
     
+    private var dateAndTime: String {
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        return dateFormatter.string(from: date)
+    }
+    
     var body: some View {
         @Bindable var binding = vm
         
@@ -22,8 +31,7 @@ struct BackupList: View {
             
             CreateBackupButton(backupLimit)
         } header: {
-            SectionHeader("Backups",
-                          type: .backup(vm.backups.count, limit: backupLimit))
+            SectionHeader("Backups", type: .backup(vm.backups.count, limit: backupLimit))
         }
 #if os(tvOS)
         .sheet($binding.showSafari) {
@@ -34,8 +42,12 @@ struct BackupList: View {
 #endif
         .environment(vm)
         .alert("Name Backup", isPresented: $binding.alertCreateBackup) {
-            TextField("Cool backup", text: $binding.textCreateBackup)
+            TextField("Backup at \(dateAndTime)", text: $binding.textCreateBackup)
                 .autocorrectionDisabled()
+            
+            Button("Cancel", role: .cancel) {
+                
+            }
             
             Button("Create") {
                 vm.createBackup()

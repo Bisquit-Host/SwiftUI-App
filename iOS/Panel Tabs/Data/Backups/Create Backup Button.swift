@@ -10,16 +10,21 @@ struct CreateBackupButton: View {
     }
     
     var body: some View {
-        Menu("Create Backup") {
-            Button {
-                vm.alertCreateBackup = true
-            } label: {
-                Label("Name Backup", systemImage: "pencil")
-            }
-        } primaryAction: {
-            vm.createBackup()
+        Button("Create Backup") {
+            vm.alertCreateBackup = true
         }
         .disabled(vm.backups.count >= backupLimit)
+        
+//        Menu("Create Backup") {
+//            Button {
+//                vm.alertCreateBackup = true
+//            } label: {
+//                Label("Name Backup", systemImage: "pencil")
+//            }
+//        } primaryAction: {
+//            vm.createBackup()
+//        }
+//        .disabled(vm.backups.count >= backupLimit)
     }
 }
 
