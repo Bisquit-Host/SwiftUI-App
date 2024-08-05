@@ -48,7 +48,7 @@ struct ServerCard: View {
                 }
                 .padding(.vertical, 5)
                 .padding(.horizontal, 10)
-                .background(.ultraThinMaterial, in: .rect(cornerRadius: 35))
+                .background(.ultraThinMaterial, in: .rect(cornerRadius: 32))
                 
             case 1:
                 HStack {

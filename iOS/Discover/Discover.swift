@@ -2,9 +2,8 @@ import ScrechKit
 import SafariCover
 
 struct Discover: View {
-    private var vm = DiscoverVM()
-    
     @State private var sheetBrowsePlans = false
+    @State private var sheetSystemStatus = false
     
     var body: some View {
         NavigationView {
@@ -14,14 +13,48 @@ struct Discover: View {
                         sheetBrowsePlans = true
                     }
                     .foregroundStyle(.foreground)
+                    
+                    ListButton("System status", actionIcon: "speedometer") {
+                        sheetSystemStatus = true
+                    }
                 }
                 
-                ForEach(Array(vm.sections), id: \.0) { section, items in
-                    Section(section) {
-                        ForEach(items, id: \.name) { link in
-                            DiscoverCard(link)
-                        }
-                    }
+                Section("Support") {
+                    DiscoverCard(DiscoverItem("App support",
+                                              icon: "questionmark.app.dashed",
+                                              url: "https://topscrech.dev/app/support/",
+                                              color: .purple))
+                    
+                    DiscoverCard(DiscoverItem("Hosting support",
+                                              icon: "questionmark.bubble",
+                                              url: "https://my.bisquit.host/login",
+                                              color: .purple))
+                }
+                
+                Section("Apps") {
+                    DiscoverCard(DiscoverItem("Android version",
+                                              icon: "flipphone",
+                                              url: "https://apps.rustore.ru/app/net.turbovadim.bisquithost2"))
+                    
+                    DiscoverCard(DiscoverItem("More apps by Bisquit.Host",
+                                              icon: "app.gift",
+                                              url: "https://apps.apple.com/au/developer/sergei-saliukov/id1639409936"))
+                    
+                    DiscoverCard(DiscoverItem("Web panel",
+                                              icon: "text.and.command.macwindow",
+                                              url: "https://mgr.bisquit.host"))
+                }
+                
+                Section("Other") {
+                    DiscoverCard(DiscoverItem("Wiki / FAQ",
+                                              icon: "books.vertical",
+                                              url: "https://wiki.bisquit.host",
+                                              color: .secondary))
+                    
+                    DiscoverCard(DiscoverItem("GitHub",
+                                              icon: "app.connected.to.app.below.fill",
+                                              url: "https://github.com/TopScrech",
+                                              color: .secondary))
                 }
                 
                 NavigationLink {
@@ -30,9 +63,13 @@ struct Discover: View {
                     ListButton("Places we recommend", icon: "map")
                 }
             }
+            .scrollIndicators(.never)
         }
         .sheet($sheetBrowsePlans) {
             Browser()
+        }
+        .sheet($sheetSystemStatus) {
+            
         }
     }
 }

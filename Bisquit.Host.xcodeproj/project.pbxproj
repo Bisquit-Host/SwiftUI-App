@@ -134,7 +134,6 @@
 		F318240D2A877BA90039866C /* Preview Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F318240C2A877BA90039866C /* Preview Extension.swift */; };
 		F318FE452A15925200DE0A5C /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = F318FE442A15925200DE0A5C /* OrderedCollections */; };
 		F318FE472A1592AB00DE0A5C /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = F318FE462A1592AB00DE0A5C /* OrderedCollections */; };
-		F31A3F4C29EF0FC900BC0DFB /* Discover VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31A3F4B29EF0FC900BC0DFB /* Discover VM.swift */; };
 		F31B2D982A7AD8C800C08EE6 /* Ansi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39626F12A7AD64B0057E356 /* Ansi.swift */; };
 		F31B4450297550CD0036868F /* Stats Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31B444F297550CD0036868F /* Stats Tab.swift */; };
 		F31BA5272958FF7C0006D126 /* Bisquit.Host App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* Bisquit.Host App.swift */; };
@@ -429,7 +428,6 @@
 		F36D530F2A05B6E0007324C6 /* Browser Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3521E2A29F5C13900132CCB /* Browser Card.swift */; };
 		F36D53102A05B6E7007324C6 /* Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304498929E990E9006DC0C7 /* Cloud Keys.swift */; };
 		F36D53122A05B6FE007324C6 /* Discover.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA592295901D00006D126 /* Discover.swift */; };
-		F36D53152A05B70E007324C6 /* Discover VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31A3F4B29EF0FC900BC0DFB /* Discover VM.swift */; };
 		F36D53182A05B7F3007324C6 /* Panel View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA595295901F70006D126 /* Panel View.swift */; };
 		F36D53192A05B7F6007324C6 /* Panel VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3429C0C84C00B08696 /* Panel VM.swift */; };
 		F36D531A2A05B7FB007324C6 /* Console Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5A2295902610006D126 /* Console Tab.swift */; };
@@ -879,7 +877,6 @@
 		F3D295822AF39F9300ED43A0 /* Upload Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39780242A2B9DB800956474 /* Upload Preview.swift */; };
 		F3D295832AF39F9900ED43A0 /* QuickLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EB09EF2A2989570073916A /* QuickLook.swift */; };
 		F3D295842AF39FA500ED43A0 /* Discover.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA592295901D00006D126 /* Discover.swift */; };
-		F3D295852AF39FAD00ED43A0 /* Discover VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31A3F4B29EF0FC900BC0DFB /* Discover VM.swift */; };
 		F3D295872AF39FB900ED43A0 /* Server Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* Server Card VM.swift */; };
 		F3D295892AF39FC700ED43A0 /* Upload File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F393C7BA2A18437300DE33F9 /* Upload File.swift */; };
 		F3D2958A2AF39FD000ED43A0 /* User Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123592A6689FA008E3E20 /* User Email.swift */; };
@@ -1278,7 +1275,6 @@
 		F31578B4296760710016A600 /* Server Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card.swift"; sourceTree = "<group>"; };
 		F318240A2A8777CD0039866C /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		F318240C2A877BA90039866C /* Preview Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preview Extension.swift"; sourceTree = "<group>"; };
-		F31A3F4B29EF0FC900BC0DFB /* Discover VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Discover VM.swift"; sourceTree = "<group>"; };
 		F31B444F297550CD0036868F /* Stats Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stats Tab.swift"; sourceTree = "<group>"; };
 		F31BA5232958FF7C0006D126 /* Bisquit.Host.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bisquit.Host.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F31BA5262958FF7C0006D126 /* Bisquit.Host App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bisquit.Host App.swift"; sourceTree = "<group>"; };
@@ -2720,7 +2716,6 @@
 			children = (
 				F31BA592295901D00006D126 /* Discover.swift */,
 				F39E0A932C1BA06C00C4E906 /* Discover Card.swift */,
-				F31A3F4B29EF0FC900BC0DFB /* Discover VM.swift */,
 				F39E0A972C1BA11600C4E906 /* Discover Item.swift */,
 				F3878EDB2A1C1E9F00AD8657 /* Map */,
 				F3565B7C295E5F9E0092874A /* Browser */,
@@ -3949,7 +3944,6 @@
 				F3AF91C52B423535001D8F80 /* SSH List.swift in Sources */,
 				F31BA56A2959007E0006D126 /* Nav Destinations.swift in Sources */,
 				F3D2643A2A66AB92005C3777 /* Account View.swift in Sources */,
-				F31A3F4C29EF0FC900BC0DFB /* Discover VM.swift in Sources */,
 				F3A391BC29DB808B00591C84 /* Server Card Na Status.swift in Sources */,
 				F3924EDB29A2291F00C4CC77 /* Language Button.swift in Sources */,
 				F3521E2B29F5C13900132CCB /* Browser Card.swift in Sources */,
@@ -4281,7 +4275,6 @@
 				F389BB6F2A05B5F900911EBF /* Cache Expiration.swift in Sources */,
 				F310A2F12A56B0BE001AF45F /* Network VM.swift in Sources */,
 				F389BB612A05B58300911EBF /* Gauge Disk.swift in Sources */,
-				F36D53152A05B70E007324C6 /* Discover VM.swift in Sources */,
 				F36D53362A05B8BB007324C6 /* Create Button.swift in Sources */,
 				F3E6FC472A1E85D600410C7C /* SptiteKit BisquitFall.swift in Sources */,
 			);
@@ -4459,7 +4452,6 @@
 				F32E88CF2AF83FEC00959D49 /* Server List Topbar.swift in Sources */,
 				F35FEB1F2B0A7415004DA05D /* Cloud Keys.swift in Sources */,
 				F3E2BEDA2C1C6B9500B7A6D4 /* Cache List.swift in Sources */,
-				F3D295852AF39FAD00ED43A0 /* Discover VM.swift in Sources */,
 				F3D295742AF39F1800ED43A0 /* File View.swift in Sources */,
 				F3D295CB2AF3A22700ED43A0 /* QR Code View.swift in Sources */,
 				F3D2956F2AF39EEA00ED43A0 /* Websocket Delegate.swift in Sources */,
