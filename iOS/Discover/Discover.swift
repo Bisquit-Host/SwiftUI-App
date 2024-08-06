@@ -32,10 +32,6 @@ struct Discover: View {
                 }
                 
                 Section("Apps") {
-                    DiscoverCard(DiscoverItem("Android version",
-                                              icon: "flipphone",
-                                              url: "https://apps.rustore.ru/app/net.turbovadim.bisquithost2"))
-                    
                     DiscoverCard(DiscoverItem("More apps by Bisquit.Host",
                                               icon: "app.gift",
                                               url: "https://apps.apple.com/au/developer/sergei-saliukov/id1639409936"))
