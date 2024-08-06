@@ -1391,13 +1391,13 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>56</string>
+					<string>42</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>55</string>
+					<string>42</string>
 					<key>Timestamp</key>
-					<string>744638447.527274</string>
+					<string>744638500.0002331</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -1413,16 +1413,15 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>                NavigationLink {
-</string>
+				<string></string>
 				<key>leading</key>
-				<string>                }
-                
+				<string>                                              url: "https://mgr.bisquit.host"))
+                }
 </string>
 				<key>trailing</key>
-				<string>                    MapView()
-                } label: {
-                    ListButton("Places we recommend", icon: "map")
+				<string>                
+                Section("Other") {
+                    DiscoverCard(DiscoverItem("Wiki / FAQ",
 </string>
 			</dict>
 			<key>type</key>
