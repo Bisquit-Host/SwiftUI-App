@@ -11,13 +11,14 @@ final class BackupVM {
     
     var backups: [BackupAttributes] = []
     var downloadUrl = ""
+    var textCreateBackup = ""
     var showSafari = false
     var alertCreateBackup = false
-    var textCreateBackup = ""
     
     func deleteBackups(_ offsets: IndexSet) {
         for index in offsets {
             let uuid = backups[index].uuid
+            
             deleteBackup(uuid)
         }
     }
