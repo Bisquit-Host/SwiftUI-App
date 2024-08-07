@@ -3,30 +3,33 @@ import ScrechKit
 struct ServerListOrnament: View {
     @Environment(ServerListVM.self) private var vm
     
-    @State private var sheetIcloud = false
+    @Binding private var sheetSettings: Bool
+    
+    init(_ sheetSettings: Binding<Bool>) {
+        _sheetSettings = sheetSettings
+    }
     
     var body: some View {
         Menu {
             Button {
-                sheetIcloud = true
+                vm.sheetKeyStorage = true
             } label: {
                 Label("Switch account", image: "key.viewfinder")
             }
         } label: {
             Image(systemName: "gear")
         }
-//        SFButton("gear") {
-            //            vm.sheetSettings = true FIX
-//        }
-        .bold()
-        .sheet($sheetIcloud) {
-            
+        
+        SFButton("gear") {
+            sheetSettings = true
         }
+        .bold()
     }
 }
 
-#Preview {
-    ServerListOrnament()
-        .padding()
-        .environment(ServerListVM())
-}
+#warning("ios 18")
+//#Preview {
+//    ServerListOrnament()
+//        .padding()
+//        .environment(ServerListVM())
+//}

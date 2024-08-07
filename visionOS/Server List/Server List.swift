@@ -4,6 +4,8 @@ struct ServerList: View {
     @Environment(ServerListVM.self) private var vm
     @EnvironmentObject private var settings: SettingsStorage
     
+    @State private var sheetSettings = false
+    
     var body: some View {
         @Bindable var binding = vm
         
@@ -12,7 +14,7 @@ struct ServerList: View {
                 ServerCardParent(server)
             }
         }
-        .padding(.horizontal, 4)        
+        .padding(.horizontal, 4)
         .navigationTitle("Server List")
         .navigationBarBackButtonHidden()
         .toolbar {
@@ -20,13 +22,13 @@ struct ServerList: View {
                 vm.fetchServers(settings.adminServerList)
             }
         }
-        //        .ornament(attachmentAnchor: .scene(.top)) {
-        //            ServerListOrnament()
-        //                .environment(binding)
-        //        }
-        //        .sheet($binding.sheetSettings) {
-        //            AppSettings()
-        //        }
+        .ornament(attachmentAnchor: .scene(.top)) {
+            ServerListOrnament($sheetSettings)
+                .environment(binding)
+        }
+        .sheet($sheetSettings) {
+            AppSettings()
+        }
         .refreshableTask {
             vm.fetchServers(settings.adminServerList)
         }

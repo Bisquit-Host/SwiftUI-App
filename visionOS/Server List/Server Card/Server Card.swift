@@ -3,7 +3,6 @@ import PteroNet
 
 struct ServerCard: View {
     @EnvironmentObject private var settings: SettingsStorage
-    
     private var vm: ServerCardVM
     
     private let server: ServerAttributes
@@ -14,6 +13,7 @@ struct ServerCard: View {
     }
     
     private let gradient = Gradient(colors: [.mint, .orange, .red])
+    
     private var limits: ServerLimits {
         server.limits
     }
