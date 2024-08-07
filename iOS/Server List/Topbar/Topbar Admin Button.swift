@@ -15,12 +15,7 @@ struct TopbarAdminButton: View {
                 settings.adminServerList.toggle()
                 fetchServers()
             } label: {
-                Image(systemName: "person.badge.shield.checkmark")
-                    .title(.semibold)
-                    .foregroundColor(.white)
-                    .shadow(color: .black.opacity(0.5), radius: 5)
-                    .frame(width: 60, height: 60)
-                    .background(settings.adminServerList ? .green : .orange, in: .rect(cornerRadius: 20))
+                Image(systemName: settings.adminServerList ? "person.badge.shield.checkmark.fill" : "person.badge.shield.checkmark")
             }
         }
     }
@@ -28,4 +23,5 @@ struct TopbarAdminButton: View {
 
 #Preview {
     TopbarAdminButton()
+        .environmentObject(SettingsStorage())
 }

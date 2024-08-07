@@ -11,8 +11,6 @@ struct ServerList: View {
         @Bindable var binding = vm
         
         ScrollView(showsIndicators: false) {
-            ServerListTopbar($binding.filterBySuspended)
-            
             ServerListGrid(vm.filteredServers)
                 .padding(4)
                 .padding(.bottom, 70)
@@ -45,7 +43,11 @@ struct ServerList: View {
                 TopbarGridButton()
             }
             
-            ToolbarItem(placement: .navigationBarTrailing) {
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                TopbarAdminButton {
+                    vm.fetchServers(settings.adminServerList)
+                }
+                
                 SettingsButton()
                     .environment(vm)
             }

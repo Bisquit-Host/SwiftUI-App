@@ -194,9 +194,6 @@
 		F32E88C82AF83E3F00959D49 /* Topbar Admin Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88C72AF83E3F00959D49 /* Topbar Admin Button.swift */; };
 		F32E88C92AF83E3F00959D49 /* Topbar Admin Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88C72AF83E3F00959D49 /* Topbar Admin Button.swift */; };
 		F32E88CA2AF83E3F00959D49 /* Topbar Admin Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88C72AF83E3F00959D49 /* Topbar Admin Button.swift */; };
-		F32E88CD2AF83FEC00959D49 /* Server List Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88CC2AF83FEC00959D49 /* Server List Topbar.swift */; };
-		F32E88CE2AF83FEC00959D49 /* Server List Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88CC2AF83FEC00959D49 /* Server List Topbar.swift */; };
-		F32E88CF2AF83FEC00959D49 /* Server List Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88CC2AF83FEC00959D49 /* Server List Topbar.swift */; };
 		F32E88D12AF8494100959D49 /* Server List Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88D02AF8494100959D49 /* Server List Filter.swift */; };
 		F32E88D22AF8494100959D49 /* Server List Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88D02AF8494100959D49 /* Server List Filter.swift */; };
 		F32E88D32AF8494100959D49 /* Server List Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88D02AF8494100959D49 /* Server List Filter.swift */; };
@@ -1311,7 +1308,6 @@
 		F32CAAD82A28C4920019DEE3 /* File View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File View.swift"; sourceTree = "<group>"; };
 		F32DB8A729AE6B800074E045 /* Start Page Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page Footer.swift"; sourceTree = "<group>"; };
 		F32E88C72AF83E3F00959D49 /* Topbar Admin Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Topbar Admin Button.swift"; sourceTree = "<group>"; };
-		F32E88CC2AF83FEC00959D49 /* Server List Topbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server List Topbar.swift"; sourceTree = "<group>"; };
 		F32E88D02AF8494100959D49 /* Server List Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server List Filter.swift"; sourceTree = "<group>"; };
 		F32F43FD2B7544A200C9470B /* User List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User List.swift"; sourceTree = "<group>"; };
 		F32F43FE2B7544A200C9470B /* User Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Card.swift"; sourceTree = "<group>"; };
@@ -2176,7 +2172,6 @@
 		F32E88CB2AF83FCB00959D49 /* Topbar */ = {
 			isa = PBXGroup;
 			children = (
-				F32E88CC2AF83FEC00959D49 /* Server List Topbar.swift */,
 				F32E88C72AF83E3F00959D49 /* Topbar Admin Button.swift */,
 				F32E88D02AF8494100959D49 /* Server List Filter.swift */,
 				F3A31B042B0B144200F89C51 /* Server List Node Filter.swift */,
@@ -3914,7 +3909,6 @@
 				F39780252A2B9DB800956474 /* Upload Preview.swift in Sources */,
 				F310A2F02A56AF86001AF45F /* Network VM.swift in Sources */,
 				F375EC3829EE7213002CA969 /* Backup List.swift in Sources */,
-				F32E88CD2AF83FEC00959D49 /* Server List Topbar.swift in Sources */,
 				F325F7092A54CB6600E89EC4 /* Carousel Button Style.swift in Sources */,
 				F367977E2A3A5AB6009F2788 /* Log VM.swift in Sources */,
 				F3FF5A092A4A3745003A1973 /* InfoTab Background.swift in Sources */,
@@ -4251,7 +4245,6 @@
 				F3D2643B2A66AB92005C3777 /* Account View.swift in Sources */,
 				F389BB632A05B59700911EBF /* Server Card Na Status.swift in Sources */,
 				F34F289B2ACDAD9B00FD618A /* Animated Tab.swift in Sources */,
-				F32E88CE2AF83FEC00959D49 /* Server List Topbar.swift in Sources */,
 				F389BB732A05B61900911EBF /* Credential Field.swift in Sources */,
 				F3FA4DEB2A4CE82000547722 /* Account Settings.swift in Sources */,
 				F36797792A3A55E1009F2788 /* Log List Parent.swift in Sources */,
@@ -4431,7 +4424,6 @@
 				F3D295BD2AF3A18700ED43A0 /* Currency Button.swift in Sources */,
 				F3D295C02AF3A1B000ED43A0 /* Log View Parent.swift in Sources */,
 				F3D295BC2AF3A18400ED43A0 /* Other Settings.swift in Sources */,
-				F32E88CF2AF83FEC00959D49 /* Server List Topbar.swift in Sources */,
 				F35FEB1F2B0A7415004DA05D /* Cloud Keys.swift in Sources */,
 				F3E2BEDA2C1C6B9500B7A6D4 /* Cache List.swift in Sources */,
 				F3D295742AF39F1800ED43A0 /* File View.swift in Sources */,
