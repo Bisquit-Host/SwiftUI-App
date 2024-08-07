@@ -39,7 +39,7 @@ struct BackupCard: View {
                         Text(backup.name)
                             .lineLimit(1)
 #if os(iOS)
-                            .minimumScaleFactor(0.5)
+                            .minimumScaleFactor(0.75)
                             .scaledToFit()
 #endif
                     }

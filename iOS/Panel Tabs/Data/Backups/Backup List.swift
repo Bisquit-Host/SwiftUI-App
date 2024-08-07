@@ -44,6 +44,7 @@ struct BackupList: View {
         .alert("Name Backup", isPresented: $binding.alertCreateBackup) {
             TextField("Backup at \(dateAndTime)", text: $binding.textCreateBackup)
                 .autocorrectionDisabled()
+                .limitInputLength($binding.textCreateBackup, length: 191)
             
             Button("Cancel", role: .cancel) {
                 

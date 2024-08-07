@@ -1,5 +1,5 @@
 {
-  "originHash" : "1c9c4a3e549c1017c453702e801fc28ee7d947a19ea90d6b58db2c71fc983dd7",
+  "originHash" : "3680ef39033503cd5a567a12ed6bedb7d6c382fa5f52e8a6afe5724e7ad82efa",
   "pins" : [
     {
       "identity" : "alertkit",
@@ -70,7 +70,7 @@
       "location" : "https://github.com/TopScrech/ScrechKit",
       "state" : {
         "branch" : "main",
-        "revision" : "f82c5e26092d1c9ea91f9b9199390250f6e22107"
+        "revision" : "4ae7da9876377475b41d9aecf310fdd6d98fb62e"
       }
     },
     {
