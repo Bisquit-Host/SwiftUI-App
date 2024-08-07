@@ -1020,7 +1020,6 @@
 		F3E2BEE22C1C6BA800B7A6D4 /* Cache List VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BEDE2C1C6BA800B7A6D4 /* Cache List VM.swift */; };
 		F3E2BEFA2C1DA07E00B7A6D4 /* Contact Provider Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BEF82C1DA07E00B7A6D4 /* Contact Provider Extension.swift */; };
 		F3E2BEFB2C1DA07E00B7A6D4 /* Extension Root Container Enumerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BEF92C1DA07E00B7A6D4 /* Extension Root Container Enumerator.swift */; };
-		F3E2BEFE2C1DA07E00B7A6D4 /* Contact Provider Extension.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = F3E2BEF52C1DA07E00B7A6D4 /* Contact Provider Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F3E2BF0F2C1EC94300B7A6D4 /* Contacts VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BF0A2C1EC94300B7A6D4 /* Contacts VM.swift */; };
 		F3E2BF102C1EC94300B7A6D4 /* Contacts VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BF0A2C1EC94300B7A6D4 /* Contacts VM.swift */; };
 		F3E2BF112C1EC94300B7A6D4 /* Contacts VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BF0A2C1EC94300B7A6D4 /* Contacts VM.swift */; };
@@ -1157,13 +1156,6 @@
 			remoteGlobalIDString = F31BA5222958FF7C0006D126;
 			remoteInfo = Bisquit.Host;
 		};
-		F3E2BEFC2C1DA07E00B7A6D4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F31BA51B2958FF7C0006D126 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F3E2BEF42C1DA07E00B7A6D4;
-			remoteInfo = "Contact Provider Extension";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1195,7 +1187,6 @@
 			dstPath = "$(EXTENSIONS_FOLDER_PATH)";
 			dstSubfolderSpec = 16;
 			files = (
-				F3E2BEFE2C1DA07E00B7A6D4 /* Contact Provider Extension.appex in Embed ExtensionKit Extensions */,
 				F3464D022A862D2D00188B0C /* Intent.appex in Embed ExtensionKit Extensions */,
 			);
 			name = "Embed ExtensionKit Extensions";
@@ -3173,7 +3164,6 @@
 				F3A31B3B2B0B790600F89C51 /* PBXTargetDependency */,
 				F3A31B392B0B78D100F89C51 /* PBXTargetDependency */,
 				F3287A7F2B10A434001AFE54 /* PBXTargetDependency */,
-				F3E2BEFD2C1DA07E00B7A6D4 /* PBXTargetDependency */,
 			);
 			name = Bisquit.Host;
 			packageProductDependencies = (
@@ -4729,11 +4719,6 @@
 			isa = PBXTargetDependency;
 			target = F31BA5222958FF7C0006D126 /* Bisquit.Host */;
 			targetProxy = F3D2960D2AF3BE5800ED43A0 /* PBXContainerItemProxy */;
-		};
-		F3E2BEFD2C1DA07E00B7A6D4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F3E2BEF42C1DA07E00B7A6D4 /* Contact Provider Extension */;
-			targetProxy = F3E2BEFC2C1DA07E00B7A6D4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

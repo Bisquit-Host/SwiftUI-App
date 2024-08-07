@@ -32,69 +32,69 @@ final class ServerListVM {
             return matchesSearch && matchesNode && matchesSuspended
         }
     }
-    
-#if os(iOS)
-    init() {
-        Task {
-            await enableExtension()
-        }
-    }
-    
-    private func fetchUniqueUsers() {
-        let ids = servers.map(\.id)
-        
-        var allUsers: [UserAttributes] = []
-        let dispatchGroup = DispatchGroup()
-        let queue = DispatchQueue(label: "host.bisquit.uniqueUsersQueue")
-        
-        for id in ids {
-            dispatchGroup.enter()
-            
-            fetchUsers(id) { users in
-                guard let users else {
-                    dispatchGroup.leave()
-                    return
-                }
-                
-                queue.async {
-                    for user in users {
-                        if !allUsers.contains(where: { $0.email == user.email }) {
-                            allUsers.append(user)
-                        }
-                    }
-                    dispatchGroup.leave()
-                }
-            }
-        }
-        
-        dispatchGroup.notify(queue: .main) {
-            let niggers = allUsers
-            
-            Task {
-                await self.saveContacts(niggers)
-            }
-        }
-    }
-    
-    private func fetchUsers(_ id: String, completion: @escaping ([UserAttributes]?) -> Void) {
-        userListAPI(id) { result in
-            switch result {
-            case .success(let model):
-                guard let model = model?.data else {
-                    completion(nil)
-                    return
-                }
-                
-                let attributes = model.map(\.attributes)
-                completion(attributes)
-                
-            case .failure(let error):
-                networkCallError(#function, error)
-                completion(nil)
-            }
-        }
-    }
-#endif
+#warning("iOS 18")
+//#if os(iOS)
+//    init() {
+//        Task {
+//            await enableExtension()
+//        }
+//    }
+//    
+//    private func fetchUniqueUsers() {
+//        let ids = servers.map(\.id)
+//        
+//        var allUsers: [UserAttributes] = []
+//        let dispatchGroup = DispatchGroup()
+//        let queue = DispatchQueue(label: "host.bisquit.uniqueUsersQueue")
+//        
+//        for id in ids {
+//            dispatchGroup.enter()
+//            
+//            fetchUsers(id) { users in
+//                guard let users else {
+//                    dispatchGroup.leave()
+//                    return
+//                }
+//                
+//                queue.async {
+//                    for user in users {
+//                        if !allUsers.contains(where: { $0.email == user.email }) {
+//                            allUsers.append(user)
+//                        }
+//                    }
+//                    dispatchGroup.leave()
+//                }
+//            }
+//        }
+//        
+//        dispatchGroup.notify(queue: .main) {
+//            let niggers = allUsers
+//            
+//            Task {
+//                await self.saveContacts(niggers)
+//            }
+//        }
+//    }
+//    
+//    private func fetchUsers(_ id: String, completion: @escaping ([UserAttributes]?) -> Void) {
+//        userListAPI(id) { result in
+//            switch result {
+//            case .success(let model):
+//                guard let model = model?.data else {
+//                    completion(nil)
+//                    return
+//                }
+//                
+//                let attributes = model.map(\.attributes)
+//                completion(attributes)
+//                
+//            case .failure(let error):
+//                networkCallError(#function, error)
+//                completion(nil)
+//            }
+//        }
+//    }
+//#endif
     
     func fetchServers(_ isAdmin: Bool) {
         serverListAPI(isAdmin) { result in
@@ -114,10 +114,10 @@ final class ServerListVM {
                         self.servers = loadedServers
                     }
                 }
-                
-#if os(iOS)
-                self.fetchUniqueUsers()
-#endif
+#warning("iOS 18")
+//#if os(iOS)
+//                self.fetchUniqueUsers()
+//#endif
                 
             case .failure(let error):
                 networkCallError(#function, error)
