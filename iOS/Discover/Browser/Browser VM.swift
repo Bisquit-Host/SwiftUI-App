@@ -8,13 +8,16 @@ final class BrowserVM {
     var currencyImg = "rublesign.square"
     var showSafari = false
     var planDictionary: [CKRecord.ID: Plan] = [:]
-    private let db = CKContainer.default().publicCloudDatabase
+    
+    private let db = CKContainer.init(identifier: "iCloud.host.bisquit.Bisquit-host").publicCloudDatabase
     
     private var plans: [Plan] {
-        planDictionary.values.compactMap { $0 }
+        planDictionary.values.compactMap {
+            $0
+        }
     }
     
-    var sortedPlans: [Plan] {
+    private var sortedPlans: [Plan] {
         plans.sorted {
             $0.disk < $1.disk
         }
@@ -39,7 +42,12 @@ final class BrowserVM {
     }
     
     func populatePlans() async throws {
-        let query = CKQuery(recordType: PlanRecordKeys.type.rawValue, predicate: NSPredicate(value: true))
+        let predicate = NSPredicate(value: true)
+        
+        let query = CKQuery(
+            recordType: PlanRecordKeys.type.rawValue,
+            predicate: predicate
+        )
         
         let result = try await db.records(matching: query)
         
@@ -65,7 +73,7 @@ final class BrowserVM {
         case "₽": "rublesign.square"
         case "€": "eurosign.square"
         case "$": "dollarsign.square"
-        default: "exclamationmark.triangle"
+        default:  "exclamationmark.triangle"
         }
     }
 }

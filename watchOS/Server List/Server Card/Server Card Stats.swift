@@ -12,27 +12,31 @@ struct ServerCardStats: View {
     
     var body: some View {
         HStack {
-            RegularGauge(.cpu,
-                         value: vm.cpuUsage,
-                         limit: limits.cpu,
-                         isRedacted: vm.isLoading)
+            RegularGauge(
+                name: .cpu,
+                value: vm.cpuUsage,
+                limit: limits.cpu,
+                isRedacted: vm.isLoading
+            )
             
-            RegularGauge(.ram,
-                         value: vm.ramUsage,
-                         limit: limits.memory,
-                         isRedacted: vm.isLoading)
+            RegularGauge(
+                name: .ram,
+                value: vm.ramUsage,
+                limit: limits.memory,
+                isRedacted: vm.isLoading
+            )
             
-            RegularGauge(.ssd,
-                         value: vm.diskUsage,
-                         limit: limits.disk,
-                         isRedacted: vm.isLoading)
+            RegularGauge(
+                name: .ssd,
+                value: vm.diskUsage,
+                limit: limits.disk,
+                isRedacted: vm.isLoading
+            )
         }
     }
 }
 
 #Preview {
-    ServerCardStats(
-        sampleJSON(.serverLimits)
-    )
-    .environment(ServerCardVM(""))
+    ServerCardStats(sampleJSON(.serverLimits))
+        .environment(ServerCardVM(""))
 }

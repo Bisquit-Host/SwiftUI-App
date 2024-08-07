@@ -14,9 +14,22 @@ struct Browser: View {
                     ForEach(vm.filteredPlans, id: \.self) { plan in
                         BrowserCard(plan)
                     }
-#if !os(tvOS)
-                    BrowserHints()
-#endif
+                    
+                    if !vm.filteredPlans.isEmpty {
+                        HStack {
+                            BrowserSpec("CPU", icon: "cpu")
+                            
+                            BrowserSpec("RAM", icon: "memorychip")
+                            
+                            BrowserSpec("SSD", icon: "internaldrive")
+                        }
+                        
+                        HStack {
+                            BrowserSpec("Websites", icon: "macwindow.on.rectangle")
+                            
+                            BrowserSpec("MySQL Databases", icon: "server.rack")
+                        }
+                    }
                 }
             }
             .navigationTitle("Configurations")

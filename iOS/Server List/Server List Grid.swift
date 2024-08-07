@@ -21,7 +21,7 @@ struct ServerListGrid: View {
         LazyVGrid(
             columns: [
                 GridItem(
-                    .adaptive(minimum: settings.designCode == 0 ? 170 : 360)
+                    .adaptive(minimum: settings.designCode == 0 ? 170 : 360, maximum: 360)
                 )
             ],
             spacing: 8
@@ -30,8 +30,6 @@ struct ServerListGrid: View {
                 ForEach(servers) { server in
                     ServerCardParent(server)
                 }
-                
-                NewConfigurationCard()
             } else {
                 ServerCardParent(demoServer)
             }

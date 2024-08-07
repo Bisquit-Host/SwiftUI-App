@@ -45,9 +45,11 @@ struct SSHCreateView: View {
     }
     
     private func handleDrop(providers: [NSItemProvider]) {
+        let type = "public.text"
+        
         for provider in providers {
-            if provider.hasItemConformingToTypeIdentifier("public.text") {
-                provider.loadDataRepresentation(forTypeIdentifier: "public.text") { data, error in
+            if provider.hasItemConformingToTypeIdentifier(type) {
+                provider.loadDataRepresentation(forTypeIdentifier: type) { data, error in
                     if let data, let fileContent = String(data: data, encoding: .utf8) {
                         main {
                             if let name = provider.suggestedName {

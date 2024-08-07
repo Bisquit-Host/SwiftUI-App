@@ -32,8 +32,12 @@ final class ServerCardVM {
     func updateUsage(_ model: ResourceUsageAttributes) {
         let usage = model.usage
         
+        print(usage)
+        
         cpuUsage = usage.cpu
         ramUsage = usage.memory
+        
+#warning("Causes crashe")
         diskUsage = usage.disk
         
         withAnimation {

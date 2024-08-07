@@ -18,10 +18,10 @@ struct ServerCardNaStatus: View {
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
                 .foregroundColor(.primary)
-            
-            if showPulseCircle {
-                PulseCircle(color)
-            }
+//            
+//            if showPulseCircle {
+//                PulseCircle(color)
+//            }
         }
         .onAppear {
             delay(0.8) {

@@ -19,8 +19,6 @@ struct BrowserCard: View {
         self.plan = plan
     }
     
-    @State private var showSafari = false
-    
     private var url: String {
         var path = ""
         
@@ -46,18 +44,18 @@ struct BrowserCard: View {
         plan.disk * pow(10, 9)
     }
     
-//    private var price: Double {
-//        switch SettingsStorage().preferredCurrency {
-//        case "€":
-//            plan.price_euro
-//            
-//        case "$":
-//            plan.price_usd
-//            
-//        default:
-//            plan.price_rub
-//        }
-//    }
+    //    private var price: Double {
+    //        switch SettingsStorage().preferredCurrency {
+    //        case "€":
+    //            plan.price_euro
+    //
+    //        case "$":
+    //            plan.price_usd
+    //
+    //        default:
+    //            plan.price_rub
+    //        }
+    //    }
     
     var body: some View {
         ZStack {
@@ -96,23 +94,25 @@ struct BrowserCard: View {
                     HStack {
                         if plan.type != "Web" {
                             BrowserSpec("\(customRound(plan.cpu))x", icon: "cpu")
+                            
                             BrowserSpec(formatBytes(ram, countStyle: .decimal), icon: "memorychip")
                         } else {
                             BrowserSpec("\(customRound(plan.cpu))x", icon: "macwindow.on.rectangle")
+                            
                             BrowserSpec("\(Int(ram / 1_000_000_000))x", icon: "server.rack")
                         }
                         
                         BrowserSpec(formatBytes(disk, countStyle: .decimal), icon: "internaldrive")
-//                        
-//                        Spacer()
-//                        
-//                        Text(customRound(price) + SettingsStorage().preferredCurrency)
-//                            .subheadline(.bold)
-//                            .padding(.vertical, 4)
-//                            .padding(.horizontal, 10)
-//                            .foregroundStyle(.white)
+                        
+                        //                        Spacer()
+                        //
+                        //                        Text(customRound(price) + SettingsStorage().preferredCurrency)
+                        //                            .subheadline(.bold)
+                        //                            .padding(.vertical, 4)
+                        //                            .padding(.horizontal, 10)
+                        //                            .foregroundStyle(.white)
                         //     .background(.blue, in: .capsule)
-
+                        
                     }
                 }
                 
@@ -120,13 +120,9 @@ struct BrowserCard: View {
             }
             .padding()
         }
-        .onTapGesture {
-            showSafari = true
-        }
 #if os(tvOS)
         .frame(height: 500)
 #else
-        .safariCover($showSafari, url: url + plan.url)
         .frame(height: 160)
 #endif
         .cornerRadius(20)

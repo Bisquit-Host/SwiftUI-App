@@ -25,7 +25,7 @@ struct ServerListFilter: View {
                 .shadow(color: .black.opacity(0.5), radius: 5)
                 .frame(width: 60, height: 60)
                 .symbolVariant(filterBySuspended ? .fill : .none)
-                .background(.regularMaterial, in: .circle)
+                .background(.ultraThinMaterial, in: .circle)
         }
         .hoverEffect(.lift)
         .padding(.leading)

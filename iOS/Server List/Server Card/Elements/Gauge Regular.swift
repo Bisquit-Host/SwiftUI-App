@@ -7,10 +7,11 @@ struct RegularGauge: View {
     
     private let gradient = Gradient(colors: [.mint, .orange, .red])
     
-    init(_ name: StatsType = .cpu,
-         value: Double,
-         limit: Double,
-         isRedacted: Bool = false
+    init(
+        name: StatsType = .cpu,
+        value: Double,
+        limit: Double,
+        isRedacted: Bool = false
     ) {
         self.name = name
         self.value = value

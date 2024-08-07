@@ -1,42 +1,32 @@
 import ScrechKit
 
 struct DiskGauge: View {
-    private var value, limit: Double
-    private var isRedacted: Bool
+    private var value: Double
+    private var limit: Double
     
-    init(_ value: Double = 0,
-         limit: Double = 0,
-         isRedacted: Bool = false
+    init(
+        _ value: Double = 0,
+        limit: Double = 0
     ) {
         self.value = value
         self.limit = limit
-        self.isRedacted = isRedacted
     }
     
     var body: some View {
-        let valuePercentage = (value / pow(1024, 2) / limit) * 100
-        
-        let currentValue = formatBytes(value) + " / " + String(format: "%.0f", valuePercentage) + "%"
+        let currentValue = formatBytes(value)
         
         let maximumValue = limit == 0 ? "∞" : String(Int(limit / 1024))
         
         if limit != 0 {
             Gauge(value: value / pow(1024, 2), in: 0...limit) {
-                Text("SSD")
-                    .footnote()
+                Text("\(currentValue) / \(maximumValue) GB")
+                    .rounded()
+                    .footnote(.semibold)
+                    .offset(y: 5)
                     .frame(maxWidth: .infinity, alignment: .center)
-                
-            } currentValueLabel: {
-                Text(currentValue)
-                    .frame(maxWidth: .infinity, alignment: .center)
-                
-            } minimumValueLabel: {
-                Text("0")
-                
-            } maximumValueLabel: {
-                Text(maximumValue)
             }
-            .gaugeStyle(.accessoryLinearCapacity)
+            .padding(.horizontal, 5)
+//            .gaugeStyle(.accessoryLinearCapacity) // CRASH
             .foregroundStyle(.foreground)
         } else {
             Text(formatBytes(value) + " / " + maximumValue)
@@ -46,5 +36,5 @@ struct DiskGauge: View {
 }
 
 #Preview {
-    DiskGauge()
+    DiskGauge(1024, limit: 2048 * 1024)
 }

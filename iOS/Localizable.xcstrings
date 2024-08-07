@@ -62,6 +62,16 @@
     "%@" : {
 
     },
+    "%@ / %@ GB" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ / %2$@ GB"
+          }
+        }
+      }
+    },
     "%@ Files" : {
 
     },
@@ -764,6 +774,9 @@
     "Assign allocation" : {
 
     },
+    "Available Configurations" : {
+
+    },
     "Backup" : {
 
     },
@@ -1063,9 +1076,6 @@
           }
         }
       }
-    },
-    "Configure a new server" : {
-
     },
     "Confirm" : {
       "extractionState" : "manual",

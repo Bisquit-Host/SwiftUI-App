@@ -2,15 +2,15 @@ import ScrechKit
 import SafariCover
 
 struct Discover: View {
-    @State private var sheetBrowsePlans = false
+    @State private var sheetConfigurations = false
     @State private var sheetSystemStatus = false
     
     var body: some View {
         NavigationView {
             List {
                 Section {
-                    ListButton("Configure a new server", actionIcon: "externaldrive.badge.plus") {
-                        sheetBrowsePlans = true
+                    ListButton("Available Configurations", actionIcon: "externaldrive.badge.plus") {
+                        sheetConfigurations = true
                     }
                     .foregroundStyle(.foreground)
                     
@@ -61,7 +61,7 @@ struct Discover: View {
             }
             .scrollIndicators(.never)
         }
-        .sheet($sheetBrowsePlans) {
+        .sheet($sheetConfigurations) {
             Browser()
         }
         .sheet($sheetSystemStatus) {
