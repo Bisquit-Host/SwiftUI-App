@@ -41,7 +41,7 @@ final class StartupVM {
                 }
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }
@@ -59,7 +59,7 @@ final class StartupVM {
                 }
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
                 onFailure()
             }
         }
@@ -72,7 +72,7 @@ final class StartupVM {
                 print("Updates")
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }

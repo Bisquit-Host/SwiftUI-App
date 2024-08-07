@@ -23,7 +23,7 @@ final class DatabaseVM {
                 }
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }
@@ -39,7 +39,7 @@ final class DatabaseVM {
                 }
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }
@@ -57,7 +57,7 @@ final class DatabaseVM {
                 }
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }
@@ -76,7 +76,7 @@ final class DatabaseVM {
                 self.fetchDatabases()
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }

@@ -89,7 +89,7 @@ private func fetchEmail(completion: @escaping (String?) -> Void) {
             completion(model?.attributes.email)
             
         case .failure(let error):
-            networkCallError(#function, error)
+            SystemAlert.error(error)
             completion(nil)
         }
     }

@@ -16,7 +16,7 @@ final class SSHVM {
                 }
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }
@@ -36,7 +36,7 @@ final class SSHVM {
                 }
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }
@@ -54,7 +54,7 @@ final class SSHVM {
                 }
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }

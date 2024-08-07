@@ -56,7 +56,7 @@ struct VideoFile: View {
                 saveVideo(model.url)
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }

@@ -23,7 +23,7 @@ final class ScheduleVM {
                 }
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }
@@ -39,7 +39,7 @@ final class ScheduleVM {
                 }
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }
@@ -51,7 +51,7 @@ final class ScheduleVM {
                 print("Executed")
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }
@@ -70,7 +70,7 @@ final class ScheduleVM {
                 self.fetchSchedules()
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }
@@ -90,7 +90,7 @@ final class ScheduleVM {
                 }
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }

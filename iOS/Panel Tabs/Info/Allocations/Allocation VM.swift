@@ -19,7 +19,7 @@ final class AllocationVM {
                 }
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }
@@ -31,7 +31,7 @@ final class AllocationVM {
                 self.fetchAllocations()
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }
@@ -43,7 +43,7 @@ final class AllocationVM {
                 self.fetchAllocations()
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }
@@ -55,7 +55,7 @@ final class AllocationVM {
                 self.fetchAllocations()
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }
@@ -67,7 +67,7 @@ final class AllocationVM {
                 self.fetchAllocations()
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }

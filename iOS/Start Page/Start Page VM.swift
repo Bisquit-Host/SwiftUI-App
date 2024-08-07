@@ -37,7 +37,8 @@ final class StartPageVM {
                     
                 case .failure(let error):
                     trigger.toggle()
-                    networkCallError(#function, error)
+                    
+                    SystemAlert.error(error)
                 }
             }
         }

@@ -65,7 +65,7 @@ final class FileTabVM: ObservableObject {
                 self.fetchFiles(root)
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }
@@ -83,7 +83,7 @@ final class FileTabVM: ObservableObject {
                 self.fetchFiles(directory)
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }
@@ -104,7 +104,7 @@ final class FileTabVM: ObservableObject {
                 }
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }
@@ -212,7 +212,7 @@ final class FileTabVM: ObservableObject {
                 }
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }
@@ -230,7 +230,7 @@ final class FileTabVM: ObservableObject {
                 }
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }
@@ -246,7 +246,7 @@ final class FileTabVM: ObservableObject {
                 }
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }
@@ -258,7 +258,7 @@ final class FileTabVM: ObservableObject {
                 self.fetchFiles(root)
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }
@@ -270,7 +270,7 @@ final class FileTabVM: ObservableObject {
                 self.fetchFiles(root)
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }
@@ -282,7 +282,7 @@ final class FileTabVM: ObservableObject {
                 self.fetchFiles(root)
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }
@@ -294,7 +294,7 @@ final class FileTabVM: ObservableObject {
                 self.fetchFiles(root)
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }

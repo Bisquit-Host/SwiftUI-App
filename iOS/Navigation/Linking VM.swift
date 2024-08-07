@@ -37,7 +37,8 @@ final class LinkingVM {
                 navState.navigate(.toPanel(id))
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
+                
                 self.errorMessage = error.localizedDescription
                 self.alertError = true
             }

@@ -89,7 +89,7 @@ final class ServerListVM {
 //                completion(attributes)
 //                
 //            case .failure(let error):
-//                networkCallError(#function, error)
+//                SystemAlert.error(error)
 //                completion(nil)
 //            }
 //        }
@@ -120,7 +120,7 @@ final class ServerListVM {
 //#endif
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }
@@ -141,7 +141,7 @@ final class ServerListVM {
                     }
                     
                 case .failure(let error):
-                    networkCallError(#function, error)
+                    SystemAlert.error(error)
                 }
                 
                 group.leave()

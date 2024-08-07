@@ -35,13 +35,15 @@ final class SystemAlert {
     
     static func error(_ error: Error) {
         if let error = error as? PterError {
-            AlertKitAPI.present(
-                title: "\(error.status) - \(error.code)",
-                subtitle: error.detail,
-                icon: .error,
-                style: .iOS17AppleMusic,
-                haptic: .error
-            )
+            DispatchQueue.main.async {
+                AlertKitAPI.present(
+                    title: "\(error.status) - \(error.code)",
+                    subtitle: error.detail,
+                    icon: .error,
+                    style: .iOS17AppleMusic,
+                    haptic: .error
+                )
+            }
         }
         
         networkCallError(#function, error)

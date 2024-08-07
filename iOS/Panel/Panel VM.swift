@@ -55,7 +55,7 @@ final class PanelVM {
                 }
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }
@@ -168,7 +168,7 @@ final class PanelVM {
                 completion(model?.data)
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
                 completion(nil)
             }
         }

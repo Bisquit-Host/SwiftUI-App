@@ -29,7 +29,7 @@ struct CreateBackup: AppIntent, CustomIntentMigratedAppIntent, PredictableIntent
                 }
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }

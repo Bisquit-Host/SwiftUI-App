@@ -56,7 +56,7 @@ final class UsersVM {
                 onSuccess()
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }
@@ -68,7 +68,7 @@ final class UsersVM {
                 onSuccess()
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
                 onError()
             }
         }
@@ -83,7 +83,7 @@ final class UsersVM {
                 }
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }
@@ -97,7 +97,7 @@ final class UsersVM {
                 }
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }
@@ -111,7 +111,7 @@ final class UsersVM {
                 }
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }
@@ -124,7 +124,7 @@ final class UsersVM {
                 
             case .failure(let error):
                 self.fetchUsers()
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }

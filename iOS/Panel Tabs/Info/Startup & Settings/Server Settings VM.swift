@@ -21,7 +21,7 @@ final class ServerSettingsVM {
                 print("Sucsess")
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }
@@ -35,7 +35,7 @@ final class ServerSettingsVM {
                 }
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }

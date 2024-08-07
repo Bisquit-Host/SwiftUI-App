@@ -18,7 +18,7 @@ final class TextFileVM {
                 print(model)
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }
@@ -32,7 +32,7 @@ final class TextFileVM {
                 }
                 
             case .failure(let error):
-                networkCallError(#function, error)
+                SystemAlert.error(error)
             }
         }
     }
