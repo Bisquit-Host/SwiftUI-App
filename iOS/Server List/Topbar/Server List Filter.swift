@@ -32,9 +32,10 @@ struct ServerListFilter: View {
     }
 }
 
-#Preview {
-    @Previewable @State var filterBySuspended = false
-    
-    ServerListFilter($filterBySuspended)
-        .environment(ServerListVM())
-}
+#warning("iOS 18")
+//#Preview {
+//    @Previewable @State var filterBySuspended = false
+//    
+//    ServerListFilter($filterBySuspended)
+//        .environment(ServerListVM())
+//}

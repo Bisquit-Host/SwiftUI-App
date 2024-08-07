@@ -19,8 +19,9 @@ struct InspectorButton: View {
     }
 }
 
-#Preview {
-    @Previewable @State var inspectorPresented = true
-    
-    InspectorButton($inspectorPresented)
-}
+#warning("iOS 18")
+//#Preview {
+//    @Previewable @State var inspectorPresented = true
+//    
+//    InspectorButton($inspectorPresented)
+//}

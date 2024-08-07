@@ -18,10 +18,11 @@ struct ServerListTopbar: View {
     }
 }
 
-#Preview {
-    @Previewable @State var filterBySuspended = false
-    
-    ServerListTopbar($filterBySuspended)
-        .environment(ServerListVM())
-        .environmentObject(SettingsStorage())
-}
+#warning("iOS 18")
+//#Preview {
+//    @Previewable @State var filterBySuspended = false
+//    
+//    ServerListTopbar($filterBySuspended)
+//        .environment(ServerListVM())
+//        .environmentObject(SettingsStorage())
+//}

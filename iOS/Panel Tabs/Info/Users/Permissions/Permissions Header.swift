@@ -56,10 +56,11 @@ struct PermissionsHeader: View {
     }
 }
 
-#Preview {
-    @Previewable @State var showDescription = false
-    
-    List {
-        PermissionsHeader($showDescription, user: sampleJSON(.userAttributes))
-    }
-}
+#warning("iOS 18")
+//#Preview {
+//    @Previewable @State var showDescription = false
+//    
+//    List {
+//        PermissionsHeader($showDescription, user: sampleJSON(.userAttributes))
+//    }
+//}
