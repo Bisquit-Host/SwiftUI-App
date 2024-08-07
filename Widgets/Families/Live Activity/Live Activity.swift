@@ -72,7 +72,7 @@ final class LiveActivity {
                 }
                 
             case .failure(let error):
-                SystemAlert.error(error)
+                networkCallError(#function, error)
             }
         }
     }

@@ -618,6 +618,8 @@
 		F399933A2AF2E491006E8A9A /* Other Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39993392AF2E491006E8A9A /* Other Settings.swift */; };
 		F399933B2AF2E491006E8A9A /* Other Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39993392AF2E491006E8A9A /* Other Settings.swift */; };
 		F39A02862A31480800A92515 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F39A02852A31480800A92515 /* ScrechKit */; };
+		F39CB6282C63D56300B7B15E /* System Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7052A54C4BC00E89EC4 /* System Alerts.swift */; };
+		F39CB6292C63D56300B7B15E /* System Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7052A54C4BC00E89EC4 /* System Alerts.swift */; };
 		F39CF3582A50C00C0077996D /* User View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39CF3572A50C00C0077996D /* User View.swift */; };
 		F39CF3592A50C00C0077996D /* User View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39CF3572A50C00C0077996D /* User View.swift */; };
 		F39D28552A27EE88007B12C3 /* Panel View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39D28542A27EE88007B12C3 /* Panel View.swift */; };
@@ -3583,6 +3585,7 @@
 				F3464D332A863A6600188B0C /* Send Command.swift in Sources */,
 				F370804C2A2A1CAF0046CE70 /* Create Button.swift in Sources */,
 				F3CCF5BB2B34546F005FFF2C /* Permissions Header.swift in Sources */,
+				F39CB6292C63D56300B7B15E /* System Alerts.swift in Sources */,
 				F33CDC002A26B920008D0214 /* Browser VM.swift in Sources */,
 				F3499EF22A26DCA0006101B7 /* Panel Model.swift in Sources */,
 				F3CCF5C32B345792005FFF2C /* Allocation Card.swift in Sources */,
@@ -4021,6 +4024,7 @@
 				F37266E429D9A867005FD103 /* Console.swift in Sources */,
 				F37266DC29D9A27A005FD103 /* Suspended Card.swift in Sources */,
 				F3A123572A667804008E3E20 /* Log View Parent.swift in Sources */,
+				F39CB6282C63D56300B7B15E /* System Alerts.swift in Sources */,
 				F33623302A220277006A6271 /* Panel Model.swift in Sources */,
 				F3464D212A86396700188B0C /* Change Power.swift in Sources */,
 				F3BE36DB2A55E2EE007A0179 /* Server List Topbar.swift in Sources */,

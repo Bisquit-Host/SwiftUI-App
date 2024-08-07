@@ -8,7 +8,7 @@ final class PteroNet {
                 print(model)
                 
             case .failure(let error):
-                SystemAlert.error(error)
+                networkCallError(#function, error)
             }
         }
     }
@@ -20,7 +20,7 @@ final class PteroNet {
                 print(model)
                 
             case .failure(let error):
-                SystemAlert.error(error)
+                networkCallError(#function, error)
             }
         }
     }
@@ -32,7 +32,7 @@ final class PteroNet {
                 print("Reinstalled")
                 
             case .failure(let error):
-                SystemAlert.error(error)
+                networkCallError(#function, error)
             }
         }
     }

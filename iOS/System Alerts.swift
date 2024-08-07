@@ -3,8 +3,10 @@ import PteroNet
 
 #if canImport(AlertKit)
 import AlertKit
+#endif
 
 final class SystemAlert {
+#if canImport(AlertKit)
     static func copied() {
         AlertKitAPI.present(
             title: NSLocalizedString("Copied", comment: ""),
@@ -32,9 +34,11 @@ final class SystemAlert {
             haptic: .error
         )
     }
+#endif
     
     static func error(_ error: Error) {
         if let error = error as? PterError {
+#if canImport(AlertKit)
             DispatchQueue.main.async {
                 AlertKitAPI.present(
                     title: "\(error.status) - \(error.code)",
@@ -44,9 +48,9 @@ final class SystemAlert {
                     haptic: .error
                 )
             }
+#endif
         }
         
         networkCallError(#function, error)
     }
 }
-#endif
