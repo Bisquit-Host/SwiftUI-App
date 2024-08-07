@@ -230,6 +230,15 @@
 		F333B3BB2B80CF750005B84D /* Preview Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = F320DDA42B704E3C00957D92 /* Preview Property.swift */; };
 		F333B3BC2B80CF750005B84D /* Preview Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = F320DDA42B704E3C00957D92 /* Preview Property.swift */; };
 		F333B3BD2B80CF760005B84D /* Preview Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = F320DDA42B704E3C00957D92 /* Preview Property.swift */; };
+		F335CA062C63E86D006C71C6 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = F335CA052C63E86D006C71C6 /* DeviceKit */; };
+		F335CA082C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */; };
+		F335CA092C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */; };
+		F335CA0A2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */; };
+		F335CA0B2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */; };
+		F335CA0C2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */; };
+		F335CA0D2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */; };
+		F335CA0E2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */; };
+		F335CA1B2C63E9A7006C71C6 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = F335CA1A2C63E9A7006C71C6 /* DeviceKit */; };
 		F336232F2A22021E006A6271 /* Settings Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* Settings Storage.swift */; };
 		F33623302A220277006A6271 /* Panel Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3029C06E9700B08696 /* Panel Model.swift */; };
 		F33623312A22048C006A6271 /* Settings Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* Settings Storage.swift */; };
@@ -1321,6 +1330,7 @@
 		F33174DC2B725D8D003758EA /* Backup Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Backup Card.swift"; sourceTree = "<group>"; };
 		F3317AE92A45E24F00CA104D /* Guide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guide.swift; sourceTree = "<group>"; };
 		F3317AEC2A45E26900CA104D /* Guide Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Guide Model.swift"; sourceTree = "<group>"; };
+		F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dynamic Island Badge.swift"; sourceTree = "<group>"; };
 		F337B3A729BC6B5400CC1195 /* Server List Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List Grid.swift"; sourceTree = "<group>"; };
 		F337B4012A89CAF500DD79AA /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
 		F337B4052A89FAC600DD79AA /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
@@ -1639,6 +1649,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F328D85E2A8240930038512F /* Algorithms in Frameworks */,
+				F335CA1B2C63E9A7006C71C6 /* DeviceKit in Frameworks */,
 				F30860182B002C18004D776A /* PteroNet in Frameworks */,
 				F34745D02A31F3A800EE2FB8 /* ScrechKit in Frameworks */,
 				F3EB09D12A29532D0073916A /* Kingfisher in Frameworks */,
@@ -1714,6 +1725,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F342FAA02B2C5DF300854270 /* Pow in Frameworks */,
+				F335CA062C63E86D006C71C6 /* DeviceKit in Frameworks */,
 				F34745CC2A31F3A000EE2FB8 /* MailCover in Frameworks */,
 				F30860142B002B31004D776A /* PteroNet in Frameworks */,
 				F352AF9B2A4EE707004AD489 /* AlertKit in Frameworks */,
@@ -1984,6 +1996,7 @@
 			isa = PBXGroup;
 			children = (
 				F31BA5672959006F0006D126 /* App Container.swift */,
+				F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */,
 				F31BA565295900300006D126 /* Nav State.swift */,
 				F31BA5692959007E0006D126 /* Nav Destinations.swift */,
 				F3BAEC8C2959B3FE00111375 /* Nav Extension.swift */,
@@ -3173,6 +3186,7 @@
 				F328D8582A82402A0038512F /* Algorithms */,
 				F30860132B002B31004D776A /* PteroNet */,
 				F342FA9F2B2C5DF300854270 /* Pow */,
+				F335CA052C63E86D006C71C6 /* DeviceKit */,
 			);
 			productName = Bisquit.Host;
 			productReference = F31BA5232958FF7C0006D126 /* Bisquit.Host.app */;
@@ -3196,6 +3210,7 @@
 				F34745CF2A31F3A800EE2FB8 /* ScrechKit */,
 				F328D85D2A8240930038512F /* Algorithms */,
 				F30860172B002C18004D776A /* PteroNet */,
+				F335CA1A2C63E9A7006C71C6 /* DeviceKit */,
 			);
 			productName = "Bisquit.Host Watch App";
 			productReference = F31BA5332958FF7D0006D126 /* watchOS.app */;
@@ -3446,6 +3461,7 @@
 				F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms" */,
 				F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "PteroNet" */,
 				F342FA9E2B2C5DF200854270 /* XCRemoteSwiftPackageReference "Pow" */,
+				F335CA042C63E86D006C71C6 /* XCRemoteSwiftPackageReference "DeviceKit" */,
 			);
 			productRefGroup = F31BA5242958FF7C0006D126 /* Products */;
 			projectDirPath = "";
@@ -3604,6 +3620,7 @@
 				F33DE50C2B36E3C300E257D8 /* App Delegate.swift in Sources */,
 				F34F28A02ACDADB200FD618A /* Animated Tab.swift in Sources */,
 				F370804E2A2A1D180046CE70 /* Data Tab.swift in Sources */,
+				F335CA0D2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */,
 				F397E74B2B208A3B00DDF1CE /* New Folder.swift in Sources */,
 				F39D285C2A27F474007B12C3 /* File Icon.swift in Sources */,
 				F3CCF5BF2B3454B0005FFF2C /* User View.swift in Sources */,
@@ -3862,6 +3879,7 @@
 				F3B81DF12A49C96000633B66 /* Info Absolute Stats.swift in Sources */,
 				F34169A52A49DF64003985E7 /* InfoTab Button.swift in Sources */,
 				F37DDA7629E2AF7600B9680C /* Folder Path VM.swift in Sources */,
+				F335CA0B2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */,
 				F3A994AA2A177ED100530615 /* Map VM.swift in Sources */,
 				F30088FC2B3B56210051476C /* User List Parent.swift in Sources */,
 				F35B2A0229FFD6AB006E5FD2 /* CloudKit Model.swift in Sources */,
@@ -3992,6 +4010,7 @@
 				F3E1D3EF2B3208DE009B7062 /* User 2Fa.swift in Sources */,
 				F3EB09D22A29533D0073916A /* Formatters.swift in Sources */,
 				F3499EFA2A277D0F006101B7 /* File Tab.swift in Sources */,
+				F335CA092C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */,
 				F3E2BEE22C1C6BA800B7A6D4 /* Cache List VM.swift in Sources */,
 				F3EB09E52A2982680073916A /* Video File.swift in Sources */,
 				F3F86D002A5AEDCD00A2C82E /* Audio Recorder.swift in Sources */,
@@ -4194,6 +4213,7 @@
 				F3F5BC972BF7668E00EB8FB1 /* Sensitivity Analyzer.swift in Sources */,
 				F389BB6D2A05B5EE00911EBF /* Cache Size.swift in Sources */,
 				F30088AB2B3A1A520051476C /* Schedule VM.swift in Sources */,
+				F335CA0C2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */,
 				F36D53332A05B8A9007324C6 /* Folder Path.swift in Sources */,
 				F3AF91CE2B423A26001D8F80 /* SSH Create View.swift in Sources */,
 				F3A1D2392A2024E10053261E /* Browser Hints.swift in Sources */,
@@ -4316,6 +4336,7 @@
 				F3D295522AF39E0300ED43A0 /* Browser Card.swift in Sources */,
 				F3D295AD2AF3A0FC00ED43A0 /* Cache Expiration.swift in Sources */,
 				F3D295CC2AF3A26E00ED43A0 /* Panel View.swift in Sources */,
+				F335CA0A2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */,
 				F3D295B82AF3A16A00ED43A0 /* App Icon.swift in Sources */,
 				F3D2959E2AF3A08300ED43A0 /* Video Player.swift in Sources */,
 				F3D295A32AF3A0B500ED43A0 /* Auth Background.swift in Sources */,
@@ -4546,6 +4567,7 @@
 				F389282E2A445E4F00561CDF /* App Settings.swift in Sources */,
 				F33944132A49134B00E2F0FC /* Server Card Context Menu.swift in Sources */,
 				F37B90782BFEA00300597624 /* Ornament Info Properties.swift in Sources */,
+				F335CA0E2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */,
 				F3F2BBAC2A540E6500D44CA6 /* Cloud Keys.swift in Sources */,
 				F32FD71A2B1E042C00723B88 /* Websocket Delegate.swift in Sources */,
 				F38928252A441B5D00561CDF /* Server Settings.swift in Sources */,
@@ -4617,6 +4639,7 @@
 				F3DF50C52B38FCF900206CAE /* User Avatar.swift in Sources */,
 				F300889A2B3A0C740051476C /* User Card.swift in Sources */,
 				F3E08EB62A2CE56200116C1C /* App Settings.swift in Sources */,
+				F335CA082C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */,
 				F380C0B32A4F1D42002D400F /* Server List VM.swift in Sources */,
 				F30088A82B3A18E40051476C /* Schedule VM.swift in Sources */,
 				F363C7FD2B7F7938005F6FF2 /* System Alerts.swift in Sources */,
@@ -5786,6 +5809,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		F335CA042C63E86D006C71C6 /* XCRemoteSwiftPackageReference "DeviceKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devicekit/DeviceKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.0;
+			};
+		};
 		F342FA9E2B2C5DF200854270 /* XCRemoteSwiftPackageReference "Pow" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/EmergeTools/Pow";
@@ -5913,6 +5944,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms" */;
 			productName = Algorithms;
+		};
+		F335CA052C63E86D006C71C6 /* DeviceKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F335CA042C63E86D006C71C6 /* XCRemoteSwiftPackageReference "DeviceKit" */;
+			productName = DeviceKit;
+		};
+		F335CA1A2C63E9A7006C71C6 /* DeviceKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F335CA042C63E86D006C71C6 /* XCRemoteSwiftPackageReference "DeviceKit" */;
+			productName = DeviceKit;
 		};
 		F342FA9F2B2C5DF300854270 /* Pow */ = {
 			isa = XCSwiftPackageProductDependency;
