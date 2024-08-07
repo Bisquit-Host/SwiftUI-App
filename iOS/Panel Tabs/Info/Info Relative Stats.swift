@@ -11,7 +11,8 @@ struct InfoRelativeStats: View {
     }
     
     private var relativeRam: String {
-        let usage = panelVM.ramUsage / limits.memory * 100
+        let limit = limits.memory * pow(1024, 2)
+        let usage = Int(panelVM.ramUsage / limit * 100)
         
         return "\(usage)%"
     }
