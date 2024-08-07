@@ -146,20 +146,21 @@ struct PanelView: View {
                     } label: {
                         Label("Restart", systemImage: "arrow.triangle.2.circlepath")
                     }
+                    .disabled(vm.serverState == .stopping || vm.serverState == .offline)
                     
                     Capsule(.primary)
                         .frame(width: 4, height: 32)
                     
                     Menu {
-                        Button {
+                        Button(role: .destructive) {
                             vm.changePower(.kill)
                         } label: {
                             Label("Kill", systemImage: "power")
                         }
-                        .disabled(vm.serverState == .offline)
                     } label: {
                         Label("Kill", systemImage: "power")
                     }
+                    .disabled(vm.serverState == .offline)
                 }
                 .padding(.bottom, 90)
             }

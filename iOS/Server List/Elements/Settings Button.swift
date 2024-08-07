@@ -10,7 +10,7 @@ struct SettingsButton: View {
     @State private var sheetSettings = false
     
     var body: some View {
-        @Bindable var binding = vm
+        @Bindable var vm = vm
         
         Menu {
             MenuButton("Account", icon: "person.crop.circle") {
@@ -43,8 +43,8 @@ struct SettingsButton: View {
         .sheet($sheetSettings) {
             SettingsParent()
         }
-        .sheet($binding.sheetKeyStorage) {
-            CloudKeys($binding.apiKey) {
+        .sheet($vm.sheetKeyStorage) {
+            CloudKeys($vm.apiKey) {
                 vm.fetchServers(settings.adminServerList)
             }
         }

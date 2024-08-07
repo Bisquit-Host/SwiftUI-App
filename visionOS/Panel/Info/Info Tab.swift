@@ -19,7 +19,9 @@ struct InfoTab: View {
                 Spacer()
                 
                 Button(server.id) {
-                    print("1")
+                    UIPasteboard.general.string = server.id
+                    
+                    SystemAlert.copied()
                 }
                 .padding(8)
             }

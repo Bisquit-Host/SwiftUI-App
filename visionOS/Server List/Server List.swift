@@ -7,7 +7,7 @@ struct ServerList: View {
     @State private var sheetSettings = false
     
     var body: some View {
-        @Bindable var binding = vm
+        @Bindable var vm = vm
         
         List {
             ForEach(vm.filteredServers) { server in
@@ -18,16 +18,19 @@ struct ServerList: View {
         .navigationTitle("Server List")
         .navigationBarBackButtonHidden()
         .toolbar {
-            ServerListToolbar {
-                vm.fetchServers(settings.adminServerList)
-            }
-        }
-        .ornament(attachmentAnchor: .scene(.top)) {
             ServerListOrnament($sheetSettings)
-                .environment(binding)
+                .environment(vm)
+            
+#warning("doesn't update servers")
+            //            ServerListToolbar {
+            //                vm.fetchServers(settings.adminServerList)
+            //            }
         }
         .sheet($sheetSettings) {
             AppSettings()
+        }
+        .sheet($vm.sheetKeyStorage) {
+            CloudKeys($vm.apiKey)
         }
         .refreshableTask {
             vm.fetchServers(settings.adminServerList)

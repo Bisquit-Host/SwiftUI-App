@@ -23,6 +23,7 @@ struct BackupList: View {
                 } label: {
                     Text("Create a new backup")
                 }
+                .disabled(vm.backups.count >= server.featureLimits.backups)
             }
         }
         .refreshableTask {

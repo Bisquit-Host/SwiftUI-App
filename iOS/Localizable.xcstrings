@@ -510,6 +510,9 @@
         }
       }
     },
+    "🚀" : {
+
+    },
     "0" : {
       "localizations" : {
         "ru" : {
@@ -2610,6 +2613,9 @@
           }
         }
       }
+    },
+    "Launch the server to start receiving messages" : {
+
     },
     "Learn more..." : {
       "localizations" : {

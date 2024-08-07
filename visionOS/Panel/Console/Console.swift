@@ -70,12 +70,28 @@ struct Console: View {
                 }
             }
         }
+        .frame(maxWidth: .infinity)
         .padding(.bottom)
+        .padding(.horizontal)
+        .overlay {
+            if panelVM.messages.isEmpty {
+                ContentUnavailableView {
+                    Label("Console is empty", systemImage: "apple.terminal")
+                } description: {
+                    Text("Launch the server to start receiving messages")
+                } actions: {
+                    Button("🚀") {
+                        panelVM.changePower(.start)
+                    }
+                }
+            }
+        }
     }
 }
 
-//#Preview {
-//    Console()
-//        .padding()
-//        .glassBackgroundEffect()
-//}
+#Preview {
+    Console("")
+        .padding()
+        .glassBackgroundEffect()
+        .environment(PanelVM(""))
+}

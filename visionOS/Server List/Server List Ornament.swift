@@ -16,18 +16,19 @@ struct ServerListOrnament: View {
             } label: {
                 Label("Switch account", image: "key.viewfinder")
             }
+            
+            Button {
+                vm.sheetKeyStorage = true
+            } label: {
+                Label("Settings", image: "gear")
+            }
         } label: {
             Image(systemName: "gear")
         }
-        
-        SFButton("gear") {
-            sheetSettings = true
-        }
-        .bold()
     }
 }
 
-#warning("ios 18")
+#warning("iOS 18")
 //#Preview {
 //    ServerListOrnament()
 //        .padding()

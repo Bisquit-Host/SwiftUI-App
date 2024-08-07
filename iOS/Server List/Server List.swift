@@ -8,7 +8,7 @@ struct ServerList: View {
     @State private var searchField = ""
     
     var body: some View {
-        @Bindable var binding = vm
+        @Bindable var vm = vm
         
         ScrollView(showsIndicators: false) {
             ServerListGrid(vm.filteredServers)
@@ -31,7 +31,7 @@ struct ServerList: View {
             }
         }
         .overlay(alignment: .bottomLeading) {
-            ServerListFilter($binding.filterBySuspended)
+            ServerListFilter($vm.filterBySuspended)
                 .environment(vm)
         }
         .toolbar {
@@ -57,18 +57,18 @@ struct ServerList: View {
                 ContentUnavailableView.search(text: vm.searchField)
             }
         }
-        .sheet($binding.sheetGuide) {
+        .sheet($vm.sheetGuide) {
             Guide()
         }
-        .sheet($binding.sheetDiscover) {
+        .sheet($vm.sheetDiscover) {
             Discover()
         }
-        .sheet($binding.sheetKeyStorage) {
-            CloudKeys($binding.apiKey) {
+        .sheet($vm.sheetKeyStorage) {
+            CloudKeys($vm.apiKey) {
                 vm.fetchServers(settings.adminServerList)
             }
         }
-        .alert("Unknown Error", isPresented: $binding.alertError) {
+        .alert("Unknown Error", isPresented: $vm.alertError) {
             
         } message: {
             Text("The list of servers couldn't be loaded. Check your internet connection or contact support")

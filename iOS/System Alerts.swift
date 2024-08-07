@@ -43,7 +43,7 @@ final class SystemAlert {
             DispatchQueue.main.async {
                 AlertKitAPI.present(
                     title: "\(error.status) - \(error.code)",
-                    subtitle: "\(LocalizedStringResource(stringLiteral: error.detail))",
+                    subtitle: error.detail,
                     icon: .error,
                     style: .iOS17AppleMusic,
                     haptic: .error
