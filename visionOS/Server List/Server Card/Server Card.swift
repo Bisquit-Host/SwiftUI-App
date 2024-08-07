@@ -24,20 +24,27 @@ struct ServerCard: View {
                 .title()
             
             HStack(spacing: 20) {
-                CircularGauge("CPU",
-                              value: vm.cpuUsage,
-                              limit: limits.cpu,
-                              isRedacted: vm.isLoading)
+                CircularGauge(
+                    param: "CPU",
+                    value: vm.cpuUsage,
+                    limit: limits.cpu,
+                    isRedacted: vm.isLoading
+                )
                 
-                CircularGauge("RAM",
-                              value: vm.ramUsage,
-                              limit: limits.memory,
-                              isRedacted: vm.isLoading)
+                CircularGauge(
+                    param: "RAM",
+                    value: vm.ramUsage,
+                    limit: limits.memory,
+                    isRedacted: vm.isLoading
+                )
                 
-                CircularGauge("RAM",
-                              value: vm.diskUsage,
-                              limit: limits.disk,
-                              isRedacted: vm.isLoading)
+                CircularGauge(
+                    param: "RAM",
+                    value: vm.diskUsage,
+                    limit: limits.disk,
+                    isRedacted: vm.isLoading
+                )
+                
                 //                LinearGauge(value: vm.diskUsage, limit: limits.disk)
             }
             .padding(.vertical)

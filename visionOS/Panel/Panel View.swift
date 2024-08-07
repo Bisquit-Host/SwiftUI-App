@@ -1,6 +1,7 @@
 import ScrechKit
 
 struct PanelView: View {
+    @StateObject private var ornament = OrnamentProperty()
     private var vm: PanelVM
     private var backupVM: BackupVM
     private var dbVM: DatabaseVM
@@ -16,9 +17,9 @@ struct PanelView: View {
         self.userVM = UsersVM(id)
     }
     
+    @AppStorage("show_info") private var showInfo = true
     @AppStorage("tab_panel") private var tabPanel: Tab = .info
     @AppStorage("show_power_buttons") private var showPowerButtons = true
-    @AppStorage("show_info") private var showInfo = true
     
     var body: some View {
         VStack {
@@ -123,11 +124,6 @@ struct PanelView: View {
         //                }
         //            }
         //        }
-        .ornament(attachmentAnchor: .scene(.trailing)) {
-            if let server = vm.server {
-                PanelOrnamentInfo(server, showCustomizeButton: true)
-            }
-        }
         .ornament(attachmentAnchor: .scene(.top)) {
             if showPowerButtons {
                 HStack {
@@ -168,6 +164,13 @@ struct PanelView: View {
                 .padding(.bottom, 90)
             }
         }
+#warning("Finish ornament")
+        //        .ornament(attachmentAnchor: .scene(.trailing)) {
+        //            if let server = vm.server {
+        //                PanelOrnamentInfo(server, showCustomizeButton: true)
+        //                    .environmentObject(ornament)
+        //            }
+        //        }
     }
 }
 

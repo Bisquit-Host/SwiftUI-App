@@ -5,10 +5,11 @@ struct CircularGauge: View {
     private let value, limit: Double
     private var isRedacted: Bool
     
-    init(_ param: LocalizedStringKey,
-         value: Double,
-         limit: Double,
-         isRedacted: Bool
+    init(
+        param: LocalizedStringKey,
+        value: Double,
+        limit: Double,
+        isRedacted: Bool
     ) {
         self.param = param
         self.value = value
@@ -63,8 +64,19 @@ struct CircularGauge: View {
 
 #Preview {
     VStack {
-        CircularGauge("CPU", value: 5, limit: 10, isRedacted: false)
-        CircularGauge("CPU", value: 15, limit: 10, isRedacted: false)
+        CircularGauge(
+            param: "CPU",
+            value: 5,
+            limit: 10,
+            isRedacted: false
+        )
+        
+        CircularGauge(
+            param: "CPU",
+            value: 15,
+            limit: 10,
+            isRedacted: false
+        )
     }
 #if os(visionOS)
     .padding()

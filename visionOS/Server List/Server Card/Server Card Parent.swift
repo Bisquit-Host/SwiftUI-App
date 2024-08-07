@@ -17,7 +17,6 @@ struct ServerCardParent: View {
         } label: {
             ServerCard(server)
         }
-        .buttonBorderShape(.roundedRectangle(radius: 64))
         .contextMenu {
             ServerCardContextMenu(server.id, showSafari: $showSafari, confirmKill: $confirmKill)
         }
@@ -30,9 +29,7 @@ struct ServerCardParent: View {
 }
 
 #Preview {
-    ServerCardParent(
-        sampleJSON(.serverListAttributes)
-    )
-    .padding()
-    .glassBackgroundEffect()
+    ServerCardParent(sampleJSON(.serverListAttributes))
+        .padding()
+        .glassBackgroundEffect()
 }
