@@ -2,17 +2,20 @@ import SwiftUI
 
 struct DynamicIslandBadge: View {
     var body: some View {
-        HStack(spacing: 4) {
-            Image(systemName: "hammer")
+        HStack(spacing: 5) {
+            Image(.bitquit)
+                .resizable()
+                .frame(width: 20, height: 20)
+                .shadow(color: .black.opacity(0.5), radius: 2)
             
             Text("Bisquit.Host")
+                .semibold()
         }
         .font(.footnote)
         .frame(width: 120, height: 35)
         .background(.orange.gradient)
-        .foregroundColor(.white)
+        .foregroundStyle(.white.gradient)
         .clipShape(.capsule)
-        
         .padding(.top, 12)
         .ignoresSafeArea()
     }

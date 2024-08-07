@@ -100,7 +100,7 @@ struct QuickLookFile: View {
                     fileURL = destinationURL
                     
                     Task {
-                        loadAndCheckImage()
+                        await loadAndCheckImage()
                     }
                 }
             } catch {

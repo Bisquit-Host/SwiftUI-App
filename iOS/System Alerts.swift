@@ -39,10 +39,11 @@ final class SystemAlert {
     static func error(_ error: Error) {
         if let error = error as? PterError {
 #if canImport(AlertKit)
+#warning("Add translations")
             DispatchQueue.main.async {
                 AlertKitAPI.present(
                     title: "\(error.status) - \(error.code)",
-                    subtitle: error.detail,
+                    subtitle: "\(LocalizedStringResource(stringLiteral: error.detail))",
                     icon: .error,
                     style: .iOS17AppleMusic,
                     haptic: .error
