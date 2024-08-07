@@ -11,7 +11,8 @@ struct InfoRelativeStats: View {
     }
     
     private var relativeRam: String {
-        let usage = Int(panelVM.diskUsage / limits.disk * 100)
+        let usage = panelVM.ramUsage / limits.memory * 100
+        
         return "\(usage)%"
     }
     
@@ -22,7 +23,7 @@ struct InfoRelativeStats: View {
     }
     
     private var relativeDisk: String {
-        let usage = Int(panelVM.ramUsage / limits.memory * 100)
+        let usage = Int(panelVM.diskUsage / limits.disk * 100)
         
         return "\(usage)%"
     }
@@ -32,17 +33,11 @@ struct InfoRelativeStats: View {
             Group {
                 InfoStat("Uptime", value: millisecondsToTime(panelVM.uptime))
                 
-                InfoStat("Storage",
-                         value: relativeDisk
-                )
+                InfoStat("Storage", value: relativeDisk)
                 
-                InfoStat("Processor",
-                         value: relativeCpu
-                )
+                InfoStat("Processor", value: relativeCpu)
                 
-                InfoStat("Memory",
-                         value: relativeRam
-                )
+                InfoStat("Memory", value: relativeRam)
             }
             .frame(maxWidth: .infinity)
         }
