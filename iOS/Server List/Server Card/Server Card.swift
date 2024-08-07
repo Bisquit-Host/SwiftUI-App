@@ -56,6 +56,7 @@ struct ServerCard: View {
                 }
                 .padding(.vertical, 5)
                 .padding(.horizontal, 10)
+                .frame(maxHeight: .infinity)
                 .background(.ultraThinMaterial, in: .rect(cornerRadius: vm.stateColor != .red ? 22 : 16))
                 .background(backgroundColor, in: .rect(cornerRadius: vm.stateColor != .red ? 22 : 16))
                 
@@ -95,36 +96,8 @@ struct ServerCard: View {
                 .padding(.horizontal)
                 .background(.ultraThinMaterial, in: .rect(cornerRadius: 22))
                 
-                //            case 2:
-                //                HStack {
-                //                    VStack {
-                //
-                //                    }
-                //
-                //                    VStack {
-                //                        HStack {
-                //                            ServerCard_Gauge("Backups", value: , limit: <#T##Double#>, isRedacted: <#T##Bool#>)
-                //                            //RegularGauge("DB", isRedacted: vm.isLoadingData, value: vm.ram_usage, limit: ram_limit)
-                //                        }
-                //
-                //                        HStack {
-                //                RegularGauge(
-                //                    .cpu,
-                //                    value: vm.cpu_usage,
-                //                    limit: limits.cpu,
-                //                    isRedacted: vm.isLoadingData
-                //                )
-                //                RegularGauge(
-                //                    .ram,
-                //                    value: vm.ram_usage,
-                //                    limit: limits.memory,
-                //                    isRedacted: vm.isLoadingData
-                //                )
-                //                        }
-                //                        .matchedEffect("RAM_CPU", in: animation)
-                //                    }
-                //                }
-            default: EmptyView()
+            default:
+                EmptyView()
             }
         }
         .task {

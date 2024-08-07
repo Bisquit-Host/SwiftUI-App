@@ -1,4 +1,5 @@
 import SwiftUI
+import PteroNet
 
 #if canImport(AlertKit)
 import AlertKit
@@ -30,6 +31,20 @@ final class SystemAlert {
             style: .iOS17AppleMusic,
             haptic: .error
         )
+    }
+    
+    static func error(_ error: Error) {
+        if let error = error as? PterError {
+            AlertKitAPI.present(
+                title: "\(error.status) - \(error.code)",
+                subtitle: error.detail,
+                icon: .error,
+                style: .iOS17AppleMusic,
+                haptic: .error
+            )
+        }
+        
+        networkCallError(#function, error)
     }
 }
 #endif
