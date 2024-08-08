@@ -1271,19 +1271,47 @@
       }
     },
     "Create a new backup" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Создать новый бэкап"
+          }
+        }
+      }
     },
     "Create a new key" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Создать новый ключ"
+          }
+        }
+      }
     },
     "Create and copy" : {
 
     },
     "Create API-key" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Создать API-ключ"
+          }
+        }
+      }
     },
     "Create backup" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Создать бэкап"
+          }
+        }
+      }
     },
     "Create Backup" : {
       "localizations" : {
@@ -1302,7 +1330,14 @@
       }
     },
     "Create Backup of a server" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Создать Бэкап сервера"
+          }
+        }
+      }
     },
     "Create Database" : {
       "localizations" : {
@@ -1325,7 +1360,14 @@
       }
     },
     "Create Task" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Создать Задачу"
+          }
+        }
+      }
     },
     "Created: %@" : {
       "localizations" : {

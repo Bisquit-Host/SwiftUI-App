@@ -1,0 +1,62 @@
+"1VNdkh" = "Создать Бэкап";
+
+"3iiX0t" = "Отправить Команду";
+
+"59zdhh" = "Идентификатор сервера";
+
+"6NlRSG" = "Power signal";
+
+"6juC9o" = "Start server";
+
+"BT4d0w" = "Создать Бэкап";
+
+"FWddjx" = "Server id";
+
+"GmmDd0" = "Create Backup";
+
+"L8ZeDN" = "Send Command";
+
+"SXoQKH" = "start";
+
+"SfO1qT" = "Signal";
+
+"TyG7ls" = "stop";
+
+"WKiY8a" = "Command";
+
+"YSxNMJ" = "Change Power";
+
+"aPOuYm" = "Запустить сервер";
+
+"b1byS8" = "kill";
+
+"e52gs1-6NlRSG" = "Just to confirm, you wanted ‘Power signal’?";
+
+"e52gs1-SXoQKH" = "Just to confirm, you wanted ‘start’?";
+
+"e52gs1-TyG7ls" = "Just to confirm, you wanted ‘stop’?";
+
+"e52gs1-b1byS8" = "Just to confirm, you wanted ‘kill’?";
+
+"e52gs1-zrQOEH" = "Just to confirm, you wanted ‘restart’?";
+
+"hA6aBV" = "Power Signal";
+
+"hig7yk" = "Backup Name";
+
+"nZ7WNj" = "Send Command";
+
+"qTuOsK" = "Server id";
+
+"s80qBu-6NlRSG" = "There are ${count} options matching ‘Power signal’.";
+
+"s80qBu-SXoQKH" = "There are ${count} options matching ‘start’.";
+
+"s80qBu-TyG7ls" = "There are ${count} options matching ‘stop’.";
+
+"s80qBu-b1byS8" = "There are ${count} options matching ‘kill’.";
+
+"s80qBu-zrQOEH" = "There are ${count} options matching ‘restart’.";
+
+"zrQOEH" = "restart";
+
