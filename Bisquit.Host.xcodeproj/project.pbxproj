@@ -1099,6 +1099,12 @@
 		F3FA61572A1F928500A65AE1 /* FileTab Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA61562A1F928500A65AE1 /* FileTab Search.swift */; };
 		F3FA61582A1F928500A65AE1 /* FileTab Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA61562A1F928500A65AE1 /* FileTab Search.swift */; };
 		F3FBDDFC29DABA0D00B170EC /* Auth Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FBDDFB29DABA0D00B170EC /* Auth Background.swift */; };
+		F3FD9F982C651A4E00A69314 /* File List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FD9F972C651A4E00A69314 /* File List.swift */; };
+		F3FD9F992C651A9200A69314 /* File Tab VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D558AB2A3360ED00608447 /* File Tab VM.swift */; };
+		F3FD9F9A2C651AF300A69314 /* Upload File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F393C7BA2A18437300DE33F9 /* Upload File.swift */; };
+		F3FD9F9C2C651B3800A69314 /* File Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FD9F9B2C651B3800A69314 /* File Card.swift */; };
+		F3FD9F9D2C651BD100A69314 /* File Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266A929D71A1B005FD103 /* File Icon.swift */; };
+		F3FD9F9E2C651F4800A69314 /* Sensitivity Analyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5BC952BF7668E00EB8FB1 /* Sensitivity Analyzer.swift */; };
 		F3FF59FF2A4A3188003A1973 /* User List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF59FE2A4A3188003A1973 /* User List.swift */; };
 		F3FF5A002A4A3188003A1973 /* User List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF59FE2A4A3188003A1973 /* User List.swift */; };
 		F3FF5A032A4A359C003A1973 /* InfoTab Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A022A4A359C003A1973 /* InfoTab Buttons.swift */; };
@@ -1613,6 +1619,8 @@
 		F3FA61532A1F8DB500A65AE1 /* Upload Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Upload Menu.swift"; sourceTree = "<group>"; };
 		F3FA61562A1F928500A65AE1 /* FileTab Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileTab Search.swift"; sourceTree = "<group>"; };
 		F3FBDDFB29DABA0D00B170EC /* Auth Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auth Background.swift"; sourceTree = "<group>"; };
+		F3FD9F972C651A4E00A69314 /* File List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File List.swift"; sourceTree = "<group>"; };
+		F3FD9F9B2C651B3800A69314 /* File Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Card.swift"; sourceTree = "<group>"; };
 		F3FF59FE2A4A3188003A1973 /* User List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User List.swift"; sourceTree = "<group>"; };
 		F3FF5A022A4A359C003A1973 /* InfoTab Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InfoTab Buttons.swift"; sourceTree = "<group>"; };
 		F3FF5A082A4A3745003A1973 /* InfoTab Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InfoTab Background.swift"; sourceTree = "<group>"; };
@@ -2584,6 +2592,7 @@
 				F37B90762BFEA00300597624 /* Panel Ornament Info.swift */,
 				F37B90772BFEA00300597624 /* Ornament Info Settings.swift */,
 				F37B90752BFEA00200597624 /* Ornament Info Properties.swift */,
+				F3FD9F962C651A2600A69314 /* Files */,
 				F3DF03DE2B74F19B00CF6F5E /* Databases */,
 				F386941B2A4B3B1E002DEF90 /* Info */,
 				F32F43FC2B7544A200C9470B /* Users */,
@@ -3104,6 +3113,15 @@
 				F3F2BBA42A540B8800D44CA6 /* Start Page.swift */,
 			);
 			path = Intro;
+			sourceTree = "<group>";
+		};
+		F3FD9F962C651A2600A69314 /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				F3FD9F972C651A4E00A69314 /* File List.swift */,
+				F3FD9F9B2C651B3800A69314 /* File Card.swift */,
+			);
+			path = Files;
 			sourceTree = "<group>";
 		};
 		F3FF5A012A4A318E003A1973 /* Users */ = {
@@ -4520,6 +4538,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3D295172AF396FD00ED43A0 /* Tabs.swift in Sources */,
+				F3FD9F9A2C651AF300A69314 /* Upload File.swift in Sources */,
 				F3DF03E32B74F1B000CF6F5E /* Database Card.swift in Sources */,
 				F3BD76F92A43C890003E7385 /* Panel View.swift in Sources */,
 				F30B61CC2B2907C900F447B4 /* Debug Key.swift in Sources */,
@@ -4537,6 +4556,7 @@
 				F35081AF2AF30E2B00835CC0 /* Tip Cloud Keys.swift in Sources */,
 				F37B907A2BFEA00300597624 /* Ornament Info Settings.swift in Sources */,
 				F32F44002B75450B00C9470B /* User List.swift in Sources */,
+				F3FD9F9D2C651BD100A69314 /* File Icon.swift in Sources */,
 				F386941A2A4B3AE1002DEF90 /* Info Tab.swift in Sources */,
 				F37EA79C2B722B390029DE00 /* Backup VM.swift in Sources */,
 				F30C131A2A54626D00A7EFF0 /* Bisquit.Host App.swift in Sources */,
@@ -4550,11 +4570,14 @@
 				F3317AEE2A45E33300CA104D /* Formatters.swift in Sources */,
 				F37EA7992B70DEDE0029DE00 /* Console VM.swift in Sources */,
 				F35FEB0B2B09F003004DA05D /* API Key.swift in Sources */,
+				F3FD9F9C2C651B3800A69314 /* File Card.swift in Sources */,
+				F3FD9F982C651A4E00A69314 /* File List.swift in Sources */,
 				F3DF03DB2B74F01C00CF6F5E /* Database VM.swift in Sources */,
 				F3F86D022A5AEDCF00A2C82E /* Audio Recorder.swift in Sources */,
 				F3F2BB9D2A5403DD00D44CA6 /* Server List VM.swift in Sources */,
 				F3F2BBAB2A540E4400D44CA6 /* Nav Extension.swift in Sources */,
 				F38928322A445EA900561CDF /* Server Card.swift in Sources */,
+				F3FD9F992C651A9200A69314 /* File Tab VM.swift in Sources */,
 				F3EEC03B2AF2F93800BFED78 /* Start Page VM.swift in Sources */,
 				F32FD71C2B1E044000723B88 /* Ansi.swift in Sources */,
 				F3DF03E22B74F1AD00CF6F5E /* Database List.swift in Sources */,
@@ -4610,6 +4633,7 @@
 				F30C13102A54606900A7EFF0 /* Nav Extension.swift in Sources */,
 				F300892A2B3C55CD0051476C /* File Permissions Parent.swift in Sources */,
 				F32FD7232B1E065600723B88 /* Network Calls.swift in Sources */,
+				F3FD9F9E2C651F4800A69314 /* Sensitivity Analyzer.swift in Sources */,
 				F3573BC42C6511040051259E /* Intents.intentdefinition in Sources */,
 				F3DF50CC2B38FDE500206CAE /* Permissions Header.swift in Sources */,
 				F300889B2B3A0E1A0051476C /* Startup VM.swift in Sources */,

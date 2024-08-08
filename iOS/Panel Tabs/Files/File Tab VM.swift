@@ -98,7 +98,7 @@ final class FileTabVM: ObservableObject {
 #if os(macOS)
                             self.degrees += 360
 #endif
-                            self.files = model.map(\.attributes)
+                            self.files = model.map(\.attributes).reversed()
                         }
                     }
                 }

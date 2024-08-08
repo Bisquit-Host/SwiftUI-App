@@ -8,9 +8,10 @@ struct FileView: View {
     private let id, root: String
     private let file: FileAttributes
     
-    init(_ id: String,
-         file: FileAttributes,
-         root: String
+    init(
+        _ id: String,
+        file: FileAttributes,
+        root: String
     ) {
         self.id = id
         self.file = file

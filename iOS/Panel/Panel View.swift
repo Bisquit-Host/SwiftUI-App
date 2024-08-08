@@ -14,11 +14,11 @@ struct PanelView: View {
     
     init(_ id: String) {
         self.id = id
+        self.vm = PanelVM(id)
+        self.fileVM = FileTabVM(id)
         self.backupVM = BackupVM(id)
         self.databaseVM = DatabaseVM(id)
         self.scheduleVM = ScheduleVM(id)
-        self.vm = PanelVM(id)
-        self.fileVM = FileTabVM(id)
         self.startupVM = StartupVM(id)
     }
     

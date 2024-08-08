@@ -3,6 +3,7 @@ import ScrechKit
 struct PanelView: View {
     @StateObject private var ornament = OrnamentProperty()
     private var vm: PanelVM
+    private var fileVM: FileTabVM
     private var backupVM: BackupVM
     private var dbVM: DatabaseVM
     private var userVM: UsersVM
@@ -12,6 +13,7 @@ struct PanelView: View {
     init(_ id: String) {
         self.id = id
         self.vm = PanelVM(id)
+        self.fileVM = FileTabVM(id)
         self.backupVM = BackupVM(id)
         self.dbVM = DatabaseVM(id)
         self.userVM = UsersVM(id)
@@ -38,11 +40,11 @@ struct PanelView: View {
                             Label("Console", systemImage: "apple.terminal")
                         }
                     
-                    UserList()
-                        .environment(userVM)
-                        .tag(Tab.users)
+                    FileList(server.id)
+                        .environmentObject(fileVM)
+                        .tag(Tab.files)
                         .tabItem {
-                            Label("Users", systemImage: "person.3")
+                            Label("Files", systemImage: "folder")
                         }
                     
                     BackupList(server)
@@ -50,6 +52,13 @@ struct PanelView: View {
                         .tag(Tab.backups)
                         .tabItem {
                             Label("Backups", systemImage: "archivebox")
+                        }
+                    
+                    UserList()
+                        .environment(userVM)
+                        .tag(Tab.users)
+                        .tabItem {
+                            Label("Users", systemImage: "person.3")
                         }
                     
                     //                    DatabaseList(server.featureLimits.databases)
@@ -67,6 +76,7 @@ struct PanelView: View {
             backupVM.fetchBackups()
             dbVM.fetchDatabases()
             userVM.fetchUsers()
+            fileVM.fetchFiles()
             
             vm.updateBackups = {
                 delay {

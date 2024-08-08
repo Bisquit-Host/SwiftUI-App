@@ -22,24 +22,31 @@ fileprivate func getFileIcon(mimeType: String, filename: String = "") -> (String
     if mimeType.contains("directory") {
         icon = "folder"
         color = .yellow
+        
     } else if mimeType.contains("text") || mimeType.contains("json") {
         icon = "doc.text"
         color = .primary
+        
     } else if mimeType.contains("gzip") {
         icon = "doc.zipper"
         color = .orange
+        
     } else if mimeType.contains("image") {
         icon = "photo"
         color = .mint
+        
     } else if mimeType.contains("video") {
         icon = "play.rectangle.fill"
         color = .red
+        
     } else if mimeType.contains("pdf") {
         icon = "doc.richtext"
         color = .blue
+        
     } else if mimeType.contains("audio") {
         icon = "music.note"
         color = .pink
+        
     } else {
         if filename.contains(".usdz") || filename.contains(".blend") || filename.contains(".obj") {
             icon = "move.3d"
