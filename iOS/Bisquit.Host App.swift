@@ -75,6 +75,14 @@ struct BisquitHostApp: App {
             Text("Console")
         }
         
+#if os(visionOS)
+        WindowGroup(id: "QuickLook", for: FileLink.self) { $file in
+            NavigationStack {
+                QuickLookFile($file)
+            }
+        }
+#endif
+        
 #if os(macOS)
         Settings {
             AppSettings()

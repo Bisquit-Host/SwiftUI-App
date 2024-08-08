@@ -1,9 +1,16 @@
 import SwiftUI
 import PteroNet
 
+struct FileLink: Codable, Hashable {
+    let id: String
+    let name: String
+    let root: String
+}
+
 struct FileCard: View {
     @EnvironmentObject private var vm: FileTabVM
-    //    @Environment(NavState.self) private var navState
+    @Environment(\.openWindow) private var openWindow
+    @Environment(NavState.self) private var navState
     //    @EnvironmentObject private var settings: SettingsStorage
     
     private let id, root: String
@@ -20,14 +27,42 @@ struct FileCard: View {
     }
     
     var body: some View {
-        NavigationLink {
-//            FileList(id, root: root + file.name)
-//                .environmentObject(vm)
-        } label: {
-            HStack {
-                FileIcon(file.mimetype, filename: file.name)
+        let mimeType = file.mimetype
+        let name = file.name
+        
+        if mimeType.contains("directory") {
+            NavigationLink {
+                FileList(id, root: root + name + "/")
+                    .environmentObject(vm)
                 
-                Text(file.name)
+                //                FolderFile(id, path: root + name)
+            } label: {
+                HStack {
+                    FileIcon(file.mimetype, filename: name)
+                    
+                    Text(name)
+                }
+            }
+        } else {
+            Button {
+                //            if mimeType.contains("text") || mimeType.contains("json") {
+                //                TextFile(id, path: root, name: name)
+                //
+                //            } else if mimeType.contains("video") {
+                //                VideoFile(id, root: root, name: name)
+                let link = FileLink(id: id, name: name, root: root)
+                
+                openWindow(id: "QuickLook", value: link)
+            } label: {
+                HStack {
+                    FileIcon(file.mimetype, filename: name)
+                    
+                    Text(name)
+                    
+                    Text(file.mimetype)
+                        .footnote()
+                        .foregroundStyle(.secondary)
+                }
             }
         }
     }

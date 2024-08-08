@@ -27,7 +27,7 @@ fileprivate func getFileIcon(mimeType: String, filename: String = "") -> (String
         icon = "doc.text"
         color = .primary
         
-    } else if mimeType.contains("gzip") {
+    } else if mimeType.contains("gzip") || mimeType.contains("jar") {
         icon = "doc.zipper"
         color = .orange
         
