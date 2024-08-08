@@ -11,6 +11,11 @@ struct StartPage: View {
     
     var body: some View {
         VStack {
+            NavigationLink("How to obtain an API-key") {
+                Guide()
+                    .frame(width: 300, height: 600)
+            }
+            
             HStack {
                 TextField("API-key", text: $vm.apiKey)
                     .autocorrectionDisabled()

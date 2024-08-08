@@ -392,6 +392,8 @@
 		F35B9F562A2D6D8A0045D014 /* Auth VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5832959015F0006D126 /* Auth VM.swift */; };
 		F35B9F5C2A2DC8D60045D014 /* Nav State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA565295900300006D126 /* Nav State.swift */; };
 		F35B9F612A2DCF9C0045D014 /* Stats Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B9F602A2DCF9C0045D014 /* Stats Tab.swift */; };
+		F35BB0372C656AC800631DBD /* Guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35BB0362C656AC800631DBD /* Guide.swift */; };
+		F35BB0392C656AD300631DBD /* Carousel Button Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35BB0382C656AD300631DBD /* Carousel Button Style.swift */; };
 		F35DA9592A28F5B100803E7E /* Upload Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35DA9582A28F5B100803E7E /* Upload Progress.swift */; };
 		F35DA95A2A28F80900803E7E /* Upload Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35DA9582A28F5B100803E7E /* Upload Progress.swift */; };
 		F35F65922B1D066E00431EB7 /* Panel VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3429C0C84C00B08696 /* Panel VM.swift */; };
@@ -1399,6 +1401,8 @@
 		F35B2A0129FFD6AB006E5FD2 /* CloudKit Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloudKit Model.swift"; sourceTree = "<group>"; };
 		F35B89BD2A725710000B5EEF /* Tip Suspended Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tip Suspended Server.swift"; sourceTree = "<group>"; };
 		F35B9F602A2DCF9C0045D014 /* Stats Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stats Tab.swift"; sourceTree = "<group>"; };
+		F35BB0362C656AC800631DBD /* Guide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guide.swift; sourceTree = "<group>"; };
+		F35BB0382C656AD300631DBD /* Carousel Button Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Carousel Button Style.swift"; sourceTree = "<group>"; };
 		F35DA9582A28F5B100803E7E /* Upload Progress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Upload Progress.swift"; sourceTree = "<group>"; };
 		F35FEB062B09F003004DA05D /* API Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API Key.swift"; sourceTree = "<group>"; };
 		F35FEB1D2B0A7415004DA05D /* Cloud Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cloud Keys.swift"; sourceTree = "<group>"; };
@@ -3037,6 +3041,8 @@
 			children = (
 				F348C6E82A54483D002D5BD6 /* Intro.swift */,
 				F3E08EBE2A2CE87800116C1C /* Start Page.swift */,
+				F35BB0362C656AC800631DBD /* Guide.swift */,
+				F35BB0382C656AD300631DBD /* Carousel Button Style.swift */,
 				F35FEB1D2B0A7415004DA05D /* Cloud Keys.swift */,
 			);
 			path = Intro;
@@ -4663,12 +4669,14 @@
 				F30088972B3A03440051476C /* Log Detail View.swift in Sources */,
 				F30088932B3A02D50051476C /* Log List.swift in Sources */,
 				F3A8BE8B2A2FA9B3001B13D8 /* File View.swift in Sources */,
+				F35BB0372C656AC800631DBD /* Guide.swift in Sources */,
 				F3DF50C92B38FD2000206CAE /* Contact Manager.swift in Sources */,
 				F30B61CD2B2907CA00F447B4 /* Debug Key.swift in Sources */,
 				F3DF50CB2B38FDE300206CAE /* Permission List.swift in Sources */,
 				F3F061D72A73C9A500470F7E /* Map VM.swift in Sources */,
 				F3464D2B2A863A6000188B0C /* Create Backup.swift in Sources */,
 				F30088B82B3A218B0051476C /* Schedule Card.swift in Sources */,
+				F35BB0392C656AD300631DBD /* Carousel Button Style.swift in Sources */,
 				F30088962B3A033F0051476C /* Log View Parent.swift in Sources */,
 				F33DE4EB2B35C3F000E257D8 /* FileTab Context Menu.swift in Sources */,
 				F3DF50C52B38FCF900206CAE /* User Avatar.swift in Sources */,
