@@ -58,10 +58,11 @@ struct FileCard: View {
                     FileIcon(file.mimetype, filename: name)
                     
                     Text(name)
-                    
+#if DEBUG
                     Text(file.mimetype)
                         .footnote()
                         .foregroundStyle(.secondary)
+#endif
                 }
             }
         }
