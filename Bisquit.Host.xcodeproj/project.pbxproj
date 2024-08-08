@@ -1101,6 +1101,7 @@
 		F3FA61572A1F928500A65AE1 /* FileTab Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA61562A1F928500A65AE1 /* FileTab Search.swift */; };
 		F3FA61582A1F928500A65AE1 /* FileTab Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA61562A1F928500A65AE1 /* FileTab Search.swift */; };
 		F3FBDDFC29DABA0D00B170EC /* Auth Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FBDDFB29DABA0D00B170EC /* Auth Background.swift */; };
+		F3FC99112C65747700150823 /* Archieving.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC99102C65747700150823 /* Archieving.swift */; };
 		F3FD9F982C651A4E00A69314 /* File List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FD9F972C651A4E00A69314 /* File List.swift */; };
 		F3FD9F992C651A9200A69314 /* File Tab VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D558AB2A3360ED00608447 /* File Tab VM.swift */; };
 		F3FD9F9A2C651AF300A69314 /* Upload File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F393C7BA2A18437300DE33F9 /* Upload File.swift */; };
@@ -1625,6 +1626,7 @@
 		F3FA61532A1F8DB500A65AE1 /* Upload Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Upload Menu.swift"; sourceTree = "<group>"; };
 		F3FA61562A1F928500A65AE1 /* FileTab Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileTab Search.swift"; sourceTree = "<group>"; };
 		F3FBDDFB29DABA0D00B170EC /* Auth Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auth Background.swift"; sourceTree = "<group>"; };
+		F3FC99102C65747700150823 /* Archieving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archieving.swift; sourceTree = "<group>"; };
 		F3FD9F972C651A4E00A69314 /* File List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File List.swift"; sourceTree = "<group>"; };
 		F3FD9F9B2C651B3800A69314 /* File Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Card.swift"; sourceTree = "<group>"; };
 		F3FD9FA02C65217C00A69314 /* Quick Look View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quick Look View.swift"; sourceTree = "<group>"; };
@@ -3129,6 +3131,7 @@
 			children = (
 				F3FD9F972C651A4E00A69314 /* File List.swift */,
 				F3FD9F9B2C651B3800A69314 /* File Card.swift */,
+				F3FC99102C65747700150823 /* Archieving.swift */,
 				F3FD9FA02C65217C00A69314 /* Quick Look View.swift */,
 			);
 			path = Files;
@@ -4616,6 +4619,7 @@
 				F38928382A4460CC00561CDF /* Server Card VM.swift in Sources */,
 				F38928302A445E9700561CDF /* Server List.swift in Sources */,
 				F3FD9F9F2C65212B00A69314 /* QuickLook.swift in Sources */,
+				F3FC99112C65747700150823 /* Archieving.swift in Sources */,
 				F3464D252A86397F00188B0C /* PowerSignalAppEnum.swift in Sources */,
 				F32FD7182B1E042500723B88 /* Websocket.swift in Sources */,
 				F32FD7212B1E065500723B88 /* Network Calls.swift in Sources */,
