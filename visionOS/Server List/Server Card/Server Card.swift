@@ -3,7 +3,7 @@ import PteroNet
 
 struct ServerCard: View {
     @EnvironmentObject private var settings: SettingsStorage
-    private var vm: ServerCardVM
+    @State private var vm: ServerCardVM
     
     private let server: ServerAttributes
     

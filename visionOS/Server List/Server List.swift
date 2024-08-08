@@ -17,15 +17,16 @@ struct ServerList: View {
         .padding(.horizontal, 4)
         .navigationTitle("Server List")
         .navigationBarBackButtonHidden()
-        .toolbar {
-            ServerListOrnament($sheetSettings)
-                .environment(vm)
-            
-#warning("doesn't update servers")
-            //            ServerListToolbar {
-            //                vm.fetchServers(settings.adminServerList)
-            //            }
-        }
+//        #warning("Uncomment")
+//        .toolbar {
+//            ServerListOrnament($sheetSettings)
+//                .environment(vm)
+//            
+//#warning("doesn't update servers")
+//            //            ServerListToolbar {
+//            //                vm.fetchServers(settings.adminServerList)
+//            //            }
+//        }
         .sheet($sheetSettings) {
             AppSettings()
         }

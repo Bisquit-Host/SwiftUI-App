@@ -9,7 +9,9 @@ struct AppSettings: View {
             HStack {
                 Text("Settings")
                     .title()
+                
                 Spacer()
+                
                 Button(role: .destructive) {
                     dismiss()
                 } label: {

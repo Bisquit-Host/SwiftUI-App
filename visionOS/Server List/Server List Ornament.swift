@@ -17,11 +17,11 @@ struct ServerListOrnament: View {
                 Label("Switch account", image: "key.viewfinder")
             }
             
-            Button {
-                vm.sheetKeyStorage = true
-            } label: {
-                Label("Settings", image: "gear")
-            }
+            //            Button {
+            //                vm.sheetSettings = true
+            //            } label: {
+            //                Label("Settings", image: "gear")
+            //            }
         } label: {
             Image(systemName: "gear")
         }
