@@ -5023,7 +5023,7 @@
 				INFOPLIST_FILE = "Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "host.bisquit.Bisquit-host";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "host.bisquit.Bisquit-host.debug";
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5113,7 +5113,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Bisquit-Host-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
+				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.debug;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSCameraUsageDescription = "App uses camera to create elements with dynamic color based on camera capture";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Access to contacts allows you to save new contacts directly from the app.";
@@ -5211,7 +5211,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Clip Demo/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
+				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.debug;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Access to contacts allows you to save new contacts directly from the app.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Required to view your location on the map";
@@ -5485,7 +5485,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Bisquit-Host-visionOS-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = BIsquit.Host;
+				INFOPLIST_KEY_CFBundleDisplayName = BIsquit.debug;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
