@@ -15,6 +15,7 @@ struct PanelView: View {
     
     @AppStorage("selected_tab") private var selectedTab: Tab = .info
     
+    private let gradient = Gradient(colors: [Color(0xf7b948), Color(0xed5547), Color(0x893799)])
     private let tabs: [Tab] = [
         //        .info,
         //        .console,
@@ -101,6 +102,19 @@ struct PanelView: View {
             .id(id)
         }
         .offset(y: -30)
+        .background {
+            ZStack {
+#if os(macOS)
+                BackgroundBlur()
+#endif
+                HStack {
+                    Rectangle()
+                        .fill(gradient)
+                        .opacity(0.3)
+                }
+            }
+            .ignoresSafeArea()
+        }
         .task {
             vm.fetchServerDetails()
             

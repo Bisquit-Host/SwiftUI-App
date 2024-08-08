@@ -12,16 +12,8 @@ struct Home: View {
             ServerList()
         } detail: {
             if let selectedServer = vm.selectedServer {
-                NavigationView {
-                    PanelView(selectedServer.id)
-                }
-                .environment(vm)
-            } else {
-                Button {
-//                    vm.fetchServers(settings.adminServerList)
-                } label: {
-                    Text("Reload")
-                }
+                PanelView(selectedServer.id)
+                    .environment(vm)
             }
         }
         .background {

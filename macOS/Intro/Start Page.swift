@@ -34,17 +34,24 @@ struct StartPage: View {
                 }
             }
             .padding(.horizontal)
-#if DEBUG
-            Button("Key list") {
-                vm.sheetCloudKeys = true
+            
+            ForEach(keys) { key in
+                Button {
+                    vm.apiKey = key.key
+                    
+                    if !keys.contains(where: { $0.key == vm.apiKey }) {
+                        modelContext.insert(APIKey(key: vm.apiKey))
+                    }
+                    
+                    settings.authSucced()
+                } label: {
+                    Text(key.key.prefix(10))
+                }
             }
-#endif
-            Button("Confirm") {
-                vm.fetchAccountDetails()
-            }
-            .title3()
-            .padding()
-            .disabled(vm.apiKey.isEmpty)
+            
+            //            Button("Key list") {
+            //                vm.sheetCloudKeys = true
+            //            }
         }
         .task {
             try? await Task.sleep(for: .seconds(0.5))
@@ -70,9 +77,16 @@ struct StartPage: View {
             Text("Name: \(vm.accountName)\nE-mail: \(vm.accountEmail)")
         }
         .alert("Error \(vm.errorCode)", isPresented: $vm.alertInvalid) {
-            Button("Try again") {}
+            Button("Try again") {
+                
+            }
         } message: {
             Text(vm.errorDescription)
+        }
+        .onChange(of: vm.apiKey) { _, newValue in
+            if newValue.count == 48 {
+                vm.fetchAccountDetails()
+            }
         }
         //        .sheet($vm.sheetSupport) {
         //        Support()
@@ -80,10 +94,10 @@ struct StartPage: View {
         //        .sheet($vm.sheetBrowsePlans) {
         //        Browser()
         //    }
-        .sheet($vm.sheetCloudKeys) {
-            CloudKeys($vm.apiKey)
-                .frame(width: 400)
-        }
+        //        .sheet($vm.sheetCloudKeys) {
+        //            CloudKeys($vm.apiKey)
+        //                .frame(width: 400)
+        //        }
     }
 }
 

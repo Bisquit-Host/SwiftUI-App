@@ -3,8 +3,8 @@ import Kingfisher
 
 struct AuthView: View {
     @State private var vm = AuthVM()
-    @Environment(NavState.self) private var navState
-    @EnvironmentObject private var settings: SettingsStorage
+//    @Environment(NavState.self) private var navState
+//    @EnvironmentObject private var settings: SettingsStorage
     
     var body: some View {
         Home()
@@ -20,6 +20,6 @@ struct AuthView: View {
 
 #Preview {
     AuthView()
-        .environment(NavState())
-        .environmentObject(SettingsStorage())
+//        .environment(NavState())
+//        .environmentObject(SettingsStorage())
 }

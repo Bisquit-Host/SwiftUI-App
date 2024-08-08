@@ -14,8 +14,8 @@ struct ServerCard: View {
     @State private var isHovered = false
     
     var body: some View {
-        NavigationLink {
-            PanelView(server.id)
+        Button {
+            vm.selectedServer = server
         } label: {
             if isHovered {
                 Text(server.name)
