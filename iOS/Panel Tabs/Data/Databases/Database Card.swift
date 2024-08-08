@@ -57,7 +57,7 @@ struct DatabaseCard: View {
 #endif
         .contextMenu {
             MenuButton("Rotate password", icon: "lock.open.rotation") {
-                vm.rotateDatabasePassword(database.id)
+                vm.rotatePassword(database.id)
             }
             
             Section {

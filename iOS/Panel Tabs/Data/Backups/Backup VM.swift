@@ -15,6 +15,15 @@ final class BackupVM {
     var showSafari = false
     var alertCreateBackup = false
     
+    var dateAndTime: String {
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        return dateFormatter.string(from: date)
+    }
+    
     func deleteBackups(_ offsets: IndexSet) {
         for index in offsets {
             let uuid = backups[index].uuid

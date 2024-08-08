@@ -14,15 +14,15 @@ struct UserCard: View {
     @State private var sheetDetails = false
     
 //#if os(tvOS)
-//    private let imageSize: CGFloat = 64
+//    private let imageSize = 64.0
 //#else
-    private let imageSize: CGFloat = 32
+    private let imageSize = 32.0
 //#endif
     
     var body: some View {
-        Button {
-            sheetDetails = true
-        } label: {
+//        Button {
+//            sheetDetails = true
+//        } label: {
             HStack {
                 KFImage(URL(string: user.image))
                     .resizable()
@@ -46,7 +46,7 @@ struct UserCard: View {
                     .foregroundStyle(user.twoFaEnabled ? .green : .red)
             }
             .foregroundStyle(.foreground)
-        }
+//        }
         .contextMenu {
             Section {
                 MenuButton("Delete", role: .destructive, icon: "trash") {
@@ -54,9 +54,9 @@ struct UserCard: View {
                 }
             }
         }
-        .sheet($sheetDetails) {
-            UserView(user)
-        }
+//        .sheet($sheetDetails) {
+//            UserView(user)
+//        }
     }
 }
 

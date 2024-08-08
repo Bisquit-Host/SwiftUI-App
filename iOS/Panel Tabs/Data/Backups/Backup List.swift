@@ -8,16 +8,7 @@ struct BackupList: View {
     init(_ backupLimit: Int) {
         self.backupLimit = backupLimit
     }
-    
-    private var dateAndTime: String {
-        let date = Date()
-        let dateFormatter = DateFormatter()
         
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        
-        return dateFormatter.string(from: date)
-    }
-    
     var body: some View {
         @Bindable var binding = vm
         
@@ -42,7 +33,7 @@ struct BackupList: View {
 #endif
         .environment(vm)
         .alert("Name Backup", isPresented: $binding.alertCreateBackup) {
-            TextField("Backup at \(dateAndTime)", text: $binding.textCreateBackup)
+            TextField("Backup at \(vm.dateAndTime)", text: $binding.textCreateBackup)
                 .autocorrectionDisabled()
                 .limitInputLength($binding.textCreateBackup, length: 191)
             

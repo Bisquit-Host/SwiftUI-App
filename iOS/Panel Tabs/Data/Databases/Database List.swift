@@ -15,7 +15,7 @@ struct DatabaseList: View {
         @Bindable var binding = vm
         
         Section {
-            ForEach(vm.databases, id: \.id) { db in
+            ForEach(vm.databases) { db in
                 DatabaseCard(db)
                     .environment(vm)
             }

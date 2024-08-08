@@ -16,19 +16,19 @@ struct PanelView: View {
     @AppStorage("selected_tab") private var selectedTab: Tab = .info
     
     private let tabs: [Tab] = [
-//        .info,
-//        .console,
-        .files,
-//        .plugins,
+        //        .info,
+        //        .console,
+        //        .files,
+        //        .plugins,
         .backups,
-//        .schedules,
+        //        .schedules,
         .databases,
         .users,
-        .allocations,
-        .startup,
-//        .settings,
-        .logs,
-//        .admin
+        //        .allocations,
+        //        .startup,
+        //        .settings,
+            .logs,
+        //        .admin
     ]
     
 #if os(macOS)

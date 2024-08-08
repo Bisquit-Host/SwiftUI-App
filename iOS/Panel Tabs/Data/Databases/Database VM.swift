@@ -28,7 +28,7 @@ final class DatabaseVM {
         }
     }
     
-    func rotateDatabasePassword(_ dbId: String) {
+    func rotatePassword(_ dbId: String) {
         databaseRotatePasswordAPI(id, dbId: dbId) { result in
             switch result {
             case .success(let model):

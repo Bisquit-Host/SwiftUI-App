@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import PteroNet
 
 struct DatabaseCard: View {
@@ -11,12 +11,35 @@ struct DatabaseCard: View {
     }
     
     var body: some View {
-        Text(database.name)
+        let host = database.host
+        
+        VStack(alignment: .leading) {
+            Text(database.name)
+            
+            let endpoint = Text(host.address + ":\(host.port)")
+                .foregroundStyle(.primary)
+            
+            Text("Endpoint: \(endpoint)")
+                .footnote()
+                .foregroundStyle(.secondary)
+            
+            let id = Text(database.id)
+                .foregroundStyle(.primary)
+            
+            Text("Identifier: \(id)")
+                .footnote()
+                .foregroundStyle(.secondary)
+        }
+        .padding()
+        .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
+        .contextMenu {
+            MenuButton("Rotate password", icon: "lock.open.rotation") {
+                vm.rotatePassword(database.id)
+            }
+        }
     }
 }
 
 #Preview {
-    DatabaseCard(
-        sampleJSON(.databaseAttributes)
-    )
+    DatabaseCard(sampleJSON(.databaseAttributes))
 }

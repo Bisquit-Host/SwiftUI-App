@@ -16,7 +16,6 @@
 		F30088912B39FB160051476C /* Allocation Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCF5C22B345792005FFF2C /* Allocation Card.swift */; };
 		F30088932B3A02D50051476C /* Log List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088922B3A02D50051476C /* Log List.swift */; };
 		F30088942B3A03050051476C /* Log VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367977D2A3A5AB6009F2788 /* Log VM.swift */; };
-		F30088952B3A03110051476C /* Log Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367977A2A3A55F4009F2788 /* Log Card.swift */; };
 		F30088962B3A033F0051476C /* Log View Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* Log View Parent.swift */; };
 		F30088972B3A03440051476C /* Log Detail View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F311CAAD2A646612004E4A4A /* Log Detail View.swift */; };
 		F300889A2B3A0C740051476C /* User Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088992B3A0C740051476C /* User Card.swift */; };
@@ -379,6 +378,7 @@
 		F3553FBD2B40945C00EF0FD2 /* Allocation List Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3553FBB2B40945C00EF0FD2 /* Allocation List Parent.swift */; };
 		F3553FBF2B4094D700EF0FD2 /* Allocation Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3553FBE2B4094D700EF0FD2 /* Allocation Card.swift */; };
 		F3553FC02B4094D700EF0FD2 /* Allocation Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3553FBE2B4094D700EF0FD2 /* Allocation Card.swift */; };
+		F3573BBF2C64E0360051259E /* Log Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3573BBE2C64E0360051259E /* Log Card.swift */; };
 		F358132B2A1F5D2A002ADFA4 /* Linking VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */; };
 		F358132C2A1F5D2A002ADFA4 /* Linking VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */; };
 		F35B2A0229FFD6AB006E5FD2 /* CloudKit Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B2A0129FFD6AB006E5FD2 /* CloudKit Model.swift */; };
@@ -1381,6 +1381,7 @@
 		F3553FB82B4093E600EF0FD2 /* Allocation List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation List.swift"; sourceTree = "<group>"; };
 		F3553FBB2B40945C00EF0FD2 /* Allocation List Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation List Parent.swift"; sourceTree = "<group>"; };
 		F3553FBE2B4094D700EF0FD2 /* Allocation Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation Card.swift"; sourceTree = "<group>"; };
+		F3573BBE2C64E0360051259E /* Log Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log Card.swift"; sourceTree = "<group>"; };
 		F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Linking VM.swift"; sourceTree = "<group>"; };
 		F35B2A0129FFD6AB006E5FD2 /* CloudKit Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloudKit Model.swift"; sourceTree = "<group>"; };
 		F35B89BD2A725710000B5EEF /* Tip Suspended Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tip Suspended Server.swift"; sourceTree = "<group>"; };
@@ -1763,6 +1764,7 @@
 			isa = PBXGroup;
 			children = (
 				F30088922B3A02D50051476C /* Log List.swift */,
+				F3573BBE2C64E0360051259E /* Log Card.swift */,
 			);
 			path = Logs;
 			sourceTree = "<group>";
@@ -3028,6 +3030,7 @@
 			isa = PBXGroup;
 			children = (
 				F3E08ECD2A2CEDD800116C1C /* Panel View.swift */,
+				F323D8D62A2D6868002EDC62 /* Files */,
 				F30088DF2B3A44F60051476C /* Startup */,
 				F30088DC2B3A3FAC0051476C /* Console */,
 				F30088D82B3A3BBD0051476C /* Plugins */,
@@ -3038,7 +3041,6 @@
 				F30088AF2B3A20060051476C /* Allocations */,
 				F30088AE2B3A1FFF0051476C /* Logs */,
 				F3DF50D02B3965BD00206CAE /* Users */,
-				F323D8D62A2D6868002EDC62 /* Files */,
 			);
 			path = Panel;
 			sourceTree = "<group>";
@@ -4623,7 +4625,6 @@
 				F30C130F2A54605B00A7EFF0 /* Nav Destinations.swift in Sources */,
 				F30088B62B3A21410051476C /* Schedule List.swift in Sources */,
 				F3DF50CD2B38FDE800206CAE /* Permission Card.swift in Sources */,
-				F30088952B3A03110051476C /* Log Card.swift in Sources */,
 				F30088B12B3A20150051476C /* Backup List.swift in Sources */,
 				F30088972B3A03440051476C /* Log Detail View.swift in Sources */,
 				F30088932B3A02D50051476C /* Log List.swift in Sources */,
@@ -4659,6 +4660,7 @@
 				F35B9F612A2DCF9C0045D014 /* Stats Tab.swift in Sources */,
 				F348C6E92A54483D002D5BD6 /* Intro.swift in Sources */,
 				F32FD7162B1E041D00723B88 /* Websocket Message.swift in Sources */,
+				F3573BBF2C64E0360051259E /* Log Card.swift in Sources */,
 				F30C13142A5461BA00A7EFF0 /* Cache VM.swift in Sources */,
 				F3D558B12A33C69F00608447 /* File Tab VM.swift in Sources */,
 				F3E08EBF2A2CE87800116C1C /* Start Page.swift in Sources */,
