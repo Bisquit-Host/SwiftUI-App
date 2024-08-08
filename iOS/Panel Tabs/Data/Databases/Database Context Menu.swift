@@ -12,7 +12,7 @@ struct DatabaseContextMenu: View {
     
     var body: some View {
         MenuButton("Rotate password", icon: "lock.open.rotation") {
-            vm.rotateDatabasePassword(db.id)
+            vm.rotatePassword(db.id)
         }
         
         Section {
