@@ -18,7 +18,7 @@ struct Home: View {
                 .environment(vm)
             } else {
                 Button {
-                    vm.fetchServers(settings.adminServerList)
+//                    vm.fetchServers(settings.adminServerList)
                 } label: {
                     Text("Reload")
                 }

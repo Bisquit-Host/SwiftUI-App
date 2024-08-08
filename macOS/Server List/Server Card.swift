@@ -3,6 +3,7 @@ import PteroNet
 
 struct ServerCard: View {
     @Environment(ServerListVM.self) private var vm
+    @EnvironmentObject private var settings: SettingsStorage
     
     private let server: ServerAttributes
     
@@ -22,10 +23,10 @@ struct ServerCard: View {
                     .frame(height: 30)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .transition(.asymmetric(insertion: .identity, removal: .opacity))
-                    .background(
+                    .background {
                         Capsule()
                             .stroke(.white, lineWidth: 2)
-                    )
+                    }
             } else {
                 Text(server.name)
                     .padding(8)
@@ -47,4 +48,6 @@ struct ServerCard: View {
 
 #Preview {
     ServerCard(PreviewProperty.serverAttributes)
+        .environmentObject(SettingsStorage())
+        .environment(ServerListVM())
 }
