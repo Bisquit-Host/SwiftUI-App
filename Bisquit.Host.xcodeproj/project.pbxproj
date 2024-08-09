@@ -1103,7 +1103,7 @@
 		F3FBDDFC29DABA0D00B170EC /* Auth Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FBDDFB29DABA0D00B170EC /* Auth Background.swift */; };
 		F3FC99112C65747700150823 /* Archieving.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC99102C65747700150823 /* Archieving.swift */; };
 		F3FC99162C65888900150823 /* TempDir.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC99152C65888900150823 /* TempDir.swift */; };
-		F3FC99192C65966100150823 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = F3FC99182C65966100150823 /* ZIPFoundation */; };
+		F3FC991C2C659D1D00150823 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = F3FC991B2C659D1D00150823 /* Zip */; };
 		F3FD9F982C651A4E00A69314 /* File List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FD9F972C651A4E00A69314 /* File List.swift */; };
 		F3FD9F992C651A9200A69314 /* File Tab VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D558AB2A3360ED00608447 /* File Tab VM.swift */; };
 		F3FD9F9A2C651AF300A69314 /* Upload File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F393C7BA2A18437300DE33F9 /* Upload File.swift */; };
@@ -1716,7 +1716,7 @@
 				F30B61CA2B2905E100F447B4 /* AlertKit in Frameworks */,
 				F38928372A4460B200561CDF /* ScrechKit in Frameworks */,
 				F308601A2B002D36004D776A /* PteroNet in Frameworks */,
-				F3FC99192C65966100150823 /* ZIPFoundation in Frameworks */,
+				F3FC991C2C659D1D00150823 /* Zip in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3366,7 +3366,7 @@
 				F30860192B002D36004D776A /* PteroNet */,
 				F30B61C92B2905E100F447B4 /* AlertKit */,
 				F342FAA52B2C615A00854270 /* Pow */,
-				F3FC99182C65966100150823 /* ZIPFoundation */,
+				F3FC991B2C659D1D00150823 /* Zip */,
 			);
 			productName = "Bisquit.Host visionOS";
 			productReference = F3BD76F22A43C890003E7385 /* visionOS.app */;
@@ -3505,7 +3505,7 @@
 				F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "PteroNet" */,
 				F342FA9E2B2C5DF200854270 /* XCRemoteSwiftPackageReference "Pow" */,
 				F335CA042C63E86D006C71C6 /* XCRemoteSwiftPackageReference "DeviceKit" */,
-				F3FC99172C65966100150823 /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
+				F3FC991A2C659D1D00150823 /* XCRemoteSwiftPackageReference "Zip" */,
 			);
 			productRefGroup = F31BA5242958FF7C0006D126 /* Products */;
 			projectDirPath = "";
@@ -5928,12 +5928,12 @@
 				kind = branch;
 			};
 		};
-		F3FC99172C65966100150823 /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
+		F3FC991A2C659D1D00150823 /* XCRemoteSwiftPackageReference "Zip" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/weichsel/ZIPFoundation";
+			repositoryURL = "https://github.com/marmelroy/Zip.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.9.19;
+				minimumVersion = 2.1.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -6144,10 +6144,10 @@
 			package = F352AF992A4EE707004AD489 /* XCRemoteSwiftPackageReference "AlertKit" */;
 			productName = AlertKit;
 		};
-		F3FC99182C65966100150823 /* ZIPFoundation */ = {
+		F3FC991B2C659D1D00150823 /* Zip */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F3FC99172C65966100150823 /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
-			productName = ZIPFoundation;
+			package = F3FC991A2C659D1D00150823 /* XCRemoteSwiftPackageReference "Zip" */;
+			productName = Zip;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

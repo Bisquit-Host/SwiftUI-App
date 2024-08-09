@@ -1,5 +1,5 @@
 {
-  "originHash" : "d3b5369e1c9c454e8080b81b7c2a6750b39c74116ae9c0c497d3ecf06e4410fb",
+  "originHash" : "5bf8dae841d2e1c27cfe33bf11ee1f32f0b8c8dfd75e90691b48a8802728393d",
   "pins" : [
     {
       "identity" : "alertkit",
@@ -101,12 +101,12 @@
       }
     },
     {
-      "identity" : "zipfoundation",
+      "identity" : "zip",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/weichsel/ZIPFoundation",
+      "location" : "https://github.com/marmelroy/Zip.git",
       "state" : {
-        "revision" : "02b6abe5f6eef7e3cbd5f247c5cc24e246efcfe0",
-        "version" : "0.9.19"
+        "revision" : "67fa55813b9e7b3b9acee9c0ae501def28746d76",
+        "version" : "2.1.2"
       }
     }
   ],
