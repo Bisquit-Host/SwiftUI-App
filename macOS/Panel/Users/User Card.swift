@@ -11,7 +11,7 @@ struct UserCard: View {
         self.user = user
     }
     
-    @State private var sheetDetails = false
+    //    @State private var sheetDetails = false
     
     //#if os(tvOS)
     //    private let imageSize = 64.0
@@ -50,7 +50,6 @@ struct UserCard: View {
                 .foregroundStyle(user.twoFaEnabled ? .green : .red)
         }
         .foregroundStyle(.foreground)
-        //        }
         .contextMenu {
             Section {
                 MenuButton("Delete", role: .destructive, icon: "trash") {
