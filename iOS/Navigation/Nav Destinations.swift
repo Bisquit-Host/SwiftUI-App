@@ -7,7 +7,7 @@ enum NavDestinations: Hashable {
     //    case toServerList(selectedServer: Int)
     case toServerList
     
-#if !os(watchOS) && !os(macOS)
+#if !os(macOS)
     case toPanel(_ id: String)
 #endif
     
