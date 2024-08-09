@@ -13,40 +13,44 @@ struct UserCard: View {
     
     @State private var sheetDetails = false
     
-//#if os(tvOS)
-//    private let imageSize = 64.0
-//#else
+    //#if os(tvOS)
+    //    private let imageSize = 64.0
+    //#else
     private let imageSize = 32.0
-//#endif
+    //#endif
     
     var body: some View {
-//        Button {
-//            sheetDetails = true
-//        } label: {
-            HStack {
-                KFImage(URL(string: user.image))
-                    .resizable()
-                    .frame(width: imageSize, height: imageSize)
-                    .clipShape(.rect(cornerRadius: 10))
+        //        Button {
+        //            sheetDetails = true
+        //        } label: {
+        HStack {
+            KFImage(URL(string: user.image))
+                .resizable()
+                .frame(width: imageSize, height: imageSize)
+                .clipShape(.rect(cornerRadius: 10))
+            
+            VStack(alignment: .leading) {
+                Text(user.username)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
                 
-                VStack(alignment: .leading) {
-                    Text(user.username)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.5)
-                    
-                    Text(user.email)
-                        .footnote()
-                        .foregroundStyle(.secondary)
+                if let destination = URL(string: "mailto:\(user.email)") {
+                    Link(destination: destination) {
+                        Text(user.email)
+                            .footnote()
+                            .foregroundStyle(.secondary)
+                    }
                 }
-                
-                Spacer()
-                
-                Image(systemName: "lock.fill")
-                    .title2()
-                    .foregroundStyle(user.twoFaEnabled ? .green : .red)
             }
-            .foregroundStyle(.foreground)
-//        }
+            
+            Spacer()
+            
+            Image(systemName: "lock.fill")
+                .title2()
+                .foregroundStyle(user.twoFaEnabled ? .green : .red)
+        }
+        .foregroundStyle(.foreground)
+        //        }
         .contextMenu {
             Section {
                 MenuButton("Delete", role: .destructive, icon: "trash") {
@@ -54,9 +58,9 @@ struct UserCard: View {
                 }
             }
         }
-//        .sheet($sheetDetails) {
-//            UserView(user)
-//        }
+        //        .sheet($sheetDetails) {
+        //            UserView(user)
+        //        }
     }
 }
 
