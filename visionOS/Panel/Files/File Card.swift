@@ -5,6 +5,7 @@ struct FileLink: Codable, Hashable {
     let id: String
     let name: String
     let root: String
+    let mimeType: String
 }
 
 struct FileCard: View {
@@ -50,7 +51,7 @@ struct FileCard: View {
                 //
                 //            } else if mimeType.contains("video") {
                 //                VideoFile(id, root: root, name: name)
-                let link = FileLink(id: id, name: name, root: root)
+                let link = FileLink(id: id, name: name, root: root, mimeType: mimeType)
                 
                 openWindow(id: "QuickLook", value: link)
             } label: {

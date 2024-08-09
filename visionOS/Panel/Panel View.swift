@@ -114,6 +114,12 @@ struct PanelView: View {
                     Text(showPowerButtons ? "Hide power buttons" : "Show power buttons")
                 }
                 
+#if DEBUG
+                NavigationLink("Temp dir") {
+                    TempDir()
+                }
+#endif
+                
                 //                Button {
                 //                    withAnimation {
                 //                        showInfo.toggle()

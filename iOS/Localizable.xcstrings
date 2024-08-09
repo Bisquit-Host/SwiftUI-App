@@ -169,6 +169,9 @@
         }
       }
     },
+    "%lld files" : {
+
+    },
     "%lld Files" : {
       "localizations" : {
         "en" : {
@@ -1890,6 +1893,9 @@
       }
     },
     "Execute" : {
+
+    },
+    "Extract files" : {
 
     },
     "File Manager" : {
@@ -4292,6 +4298,12 @@
           }
         }
       }
+    },
+    "Temp dir" : {
+
+    },
+    "Temporary Files" : {
+
     },
     "The list of servers couldn't be loaded. Check your internet connection or contact support" : {
       "localizations" : {
