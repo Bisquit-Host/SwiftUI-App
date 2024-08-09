@@ -6,9 +6,7 @@ struct PanelView: View {
     
     private let id: String
     
-    init(_ id: String,
-         model: PanelVM = PanelVM("")
-    ) {
+    init(_ id: String) {
         self.id = id
         self.vm = PanelVM(id)
     }
@@ -70,7 +68,9 @@ struct PanelView: View {
                     PluginList(id)
                     
                 case .backups:
-                    BackupList(id)
+                    if let server = vm.server {
+                        BackupList(server)                        
+                    }
                     
                 case .databases:
                     DatabaseList(id)

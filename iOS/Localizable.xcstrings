@@ -422,6 +422,16 @@
         }
       }
     },
+    "%lld of %lld backups" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld of %2$lld backups"
+          }
+        }
+      }
+    },
     "%lld of %lld used" : {
       "localizations" : {
         "nl" : {

@@ -1,13 +1,14 @@
 import SwiftUI
+import PteroNet
 
 struct BackupList: View {
     @State private var vm: BackupVM
     
-    private let id: String
+    private let server: ServerAttributes
     
-    init(_ id: String) {
-        self.id = id
-        self.vm = BackupVM(id)
+    init(_ server: ServerAttributes) {
+        self.server = server
+        self.vm = BackupVM(server.id)
     }
     
     var body: some View {
@@ -20,9 +21,12 @@ struct BackupList: View {
                 }
             }
             
+            Text("\(vm.backups.count) of \(server.featureLimits.backups) backups used")
+            
             Button("Create backup") {
                 vm.alertCreateBackup = true
             }
+            .disabled(vm.backups.count >= server.featureLimits.backups)
         }
         .environment(vm)
         .navigationTitle("Backups")
@@ -32,7 +36,7 @@ struct BackupList: View {
         .task {
             vm.fetchBackups()
         }
-        .onChange(of: id) {
+        .onChange(of: server.id) {
             vm.fetchBackups()
         }
         .alert("Name Backup", isPresented: $vm.alertCreateBackup) {
@@ -52,5 +56,5 @@ struct BackupList: View {
 }
 
 #Preview {
-    BackupList("")
+    BackupList(sampleJSON(.serverListAttributes))
 }
