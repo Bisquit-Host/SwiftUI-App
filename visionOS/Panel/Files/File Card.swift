@@ -5,7 +5,6 @@ struct FileLink: Codable, Hashable {
     let id: String
     let name: String
     let root: String
-    let mimeType: String
 }
 
 struct FileCard: View {
@@ -38,11 +37,7 @@ struct FileCard: View {
                 
                 //                FolderFile(id, path: root + name)
             } label: {
-                HStack {
-                    FileIcon(file.mimetype, filename: name)
-                    
-                    Text(name)
-                }
+                FileLabel()
             }
         } else {
             Button {
@@ -51,21 +46,27 @@ struct FileCard: View {
                 //
                 //            } else if mimeType.contains("video") {
                 //                VideoFile(id, root: root, name: name)
-                let link = FileLink(id: id, name: name, root: root, mimeType: mimeType)
+                
+                let link = FileLink(id: id, name: name, root: root)
                 
                 openWindow(id: "QuickLook", value: link)
             } label: {
-                HStack {
-                    FileIcon(file.mimetype, filename: name)
-                    
-                    Text(name)
-#if DEBUG
-                    Text(file.mimetype)
-                        .footnote()
-                        .foregroundStyle(.secondary)
-#endif
-                }
+                FileLabel()
             }
+        }
+    }
+    
+    private func FileLabel() -> some View {
+        HStack {
+            FileIcon(file.mimetype, filename: file.name)
+            
+            Text(file.name)
+            
+#if DEBUG
+            Text(file.mimetype)
+                .footnote()
+                .foregroundStyle(.secondary)
+#endif
         }
     }
 }

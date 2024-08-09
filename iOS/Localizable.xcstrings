@@ -1895,9 +1895,6 @@
     "Execute" : {
 
     },
-    "Extract files" : {
-
-    },
     "File Manager" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1908,9 +1905,6 @@
           }
         }
       }
-    },
-    "Fileded" : {
-
     },
     "Files" : {
       "extractionState" : "manual",
