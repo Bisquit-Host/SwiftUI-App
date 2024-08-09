@@ -422,12 +422,12 @@
         }
       }
     },
-    "%lld of %lld backups" : {
+    "%lld of %lld backups used" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "%1$lld of %2$lld backups"
+            "value" : "%1$lld of %2$lld backups used"
           }
         }
       }
@@ -1554,6 +1554,9 @@
           }
         }
       }
+    },
+    "Delete (locked)" : {
+
     },
     "Demo" : {
       "localizations" : {

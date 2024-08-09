@@ -12,7 +12,7 @@ struct Home: View {
             ServerList()
         } detail: {
             if let selectedServer = vm.selectedServer {
-                PanelView(selectedServer.id)
+                PanelView(selectedServer)
                     .environment(vm)
             }
         }

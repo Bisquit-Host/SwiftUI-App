@@ -14,7 +14,9 @@ struct BisquitHostApp: App {
     
     @StateObject private var settings = SettingsStorage()
     private var navState = NavState()
+#if !os(macOS)
     private var linking = LinkingVM()
+#endif
     private var network = NetworkVM()
     
     private let container: ModelContainer
@@ -38,6 +40,7 @@ struct BisquitHostApp: App {
     var body: some Scene {
         WindowGroup {
             AppContainer()
+#if !os(macOS)
                 .onOpenURL { url in
                     linking.handleDeepLink(
                         navState,
@@ -45,6 +48,7 @@ struct BisquitHostApp: App {
                         url: url
                     )
                 }
+#endif
             //                .alert("Error", isPresented: $linking.alertError) {
             //
             //                } message: {

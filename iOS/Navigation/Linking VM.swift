@@ -12,9 +12,10 @@ final class LinkingVM {
         "": .info
     ]
     
-    func handleDeepLink(_ navState: NavState,
-                        settings: SettingsStorage,
-                        url: URL
+    func handleDeepLink(
+        _ navState: NavState,
+        settings: SettingsStorage,
+        url: URL
     ) {
         let components = url.pathComponents
         print(url.description)

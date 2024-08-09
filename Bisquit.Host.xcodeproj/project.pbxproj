@@ -107,7 +107,6 @@
 		F30C130A2A545E6F00A7EFF0 /* Linking VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */; };
 		F30C130B2A545ED900A7EFF0 /* Linking VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */; };
 		F30C130C2A545F4400A7EFF0 /* Settings Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* Settings Storage.swift */; };
-		F30C130E2A545FE700A7EFF0 /* Linking VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */; };
 		F30C130F2A54605B00A7EFF0 /* Nav Destinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5692959007E0006D126 /* Nav Destinations.swift */; };
 		F30C13102A54606900A7EFF0 /* Nav Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BAEC8C2959B3FE00111375 /* Nav Extension.swift */; };
 		F30C13122A54609000A7EFF0 /* Server List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30C13112A54609000A7EFF0 /* Server List.swift */; };
@@ -4660,7 +4659,6 @@
 				F35B9F562A2D6D8A0045D014 /* Auth VM.swift in Sources */,
 				F3E08ED52A2CEE2300116C1C /* Auth View.swift in Sources */,
 				F33DE5092B364EBC00E257D8 /* InfoTab Model.swift in Sources */,
-				F30C130E2A545FE700A7EFF0 /* Linking VM.swift in Sources */,
 				F35F65942B1D1A0B00431EB7 /* Panel VM.swift in Sources */,
 				F3B138722A2D232B0026EAEE /* Server Card VM.swift in Sources */,
 				F33DE4E72B35089000E257D8 /* Background Blur.swift in Sources */,

@@ -25,6 +25,20 @@ struct BackupCard: View {
                 Image(systemName: "lock")
             }
         }
+        .contextMenu {
+            Button {
+                vm.lockBackup(backup.uuid)
+            } label: {
+                Label(backup.isLocked ? "Unlock" : "Lock", systemImage: backup.isLocked ? "lock.open" : "lock")
+            }
+            
+            Button(role: .destructive) {
+                vm.deleteBackup(backup.uuid)
+            } label: {
+                Label(backup.isLocked ? "Delete (locked)" : "Delete", systemImage: "trash")
+            }
+            .disabled(backup.isLocked)
+        }
     }
 }
 

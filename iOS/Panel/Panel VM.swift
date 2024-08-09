@@ -130,7 +130,7 @@ final class PanelVM {
                         }
                         
                     } else if message.backupCompleted != nil {
-                        self?.updateBackups!()
+                        self!.updateBackups?()
                         
                     } else if message.authSuccess != nil {
                         print("WebSocket authentication successful")

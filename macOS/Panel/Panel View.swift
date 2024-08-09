@@ -1,14 +1,15 @@
 import ScrechKit
+import PteroNet
 
 struct PanelView: View {
     private var vm: PanelVM
     @EnvironmentObject private var settings: SettingsStorage
     
-    private let id: String
+    private let server: ServerAttributes
     
-    init(_ id: String) {
-        self.id = id
-        self.vm = PanelVM(id)
+    init(_ server: ServerAttributes) {
+        self.server = server
+        self.vm = PanelVM(server.id)
     }
     
     @AppStorage("selected_tab") private var selectedTab: Tab = .info
@@ -58,37 +59,35 @@ struct PanelView: View {
             Group {
                 switch selectedTab {
                 case .console:
-                    ConsoleView(id)
+                    ConsoleView(server.id)
                         .environment(vm)
                     
                 case .files:
-                    FileTab(id)
+                    FileTab(server.id)
                     
                 case .plugins:
-                    PluginList(id)
+                    PluginList(server.id)
                     
                 case .backups:
-                    if let server = vm.server {
-                        BackupList(server)                        
-                    }
+                    BackupList(server)
                     
                 case .databases:
-                    DatabaseList(id)
+                    DatabaseList(server.id)
                     
                 case .schedules:
-                    ScheduleList(id)
+                    ScheduleList(server.id)
                     
                 case .allocations:
-                    AllocationList(id)
+                    AllocationList(server.id)
                     
                 case .users:
-                    UserList(id)
+                    UserList(server.id)
                     
                 case .startup:
-                    StartupList(id)
+                    StartupList(server.id)
                     
                 case .logs:
-                    LogList(id)
+                    LogList(server.id)
                     
                 default:
                     Spacer()
@@ -99,7 +98,7 @@ struct PanelView: View {
                     Spacer()
                 }
             }
-            .id(id)
+            .id(server.id)
         }
         .offset(y: -30)
         .background {
@@ -124,7 +123,7 @@ struct PanelView: View {
                 }
             }
         }
-        .onChange(of: id) {
+        .onChange(of: server.id) {
             vm.fetchServerDetails()
             
             vm.consoleDetails { data in
@@ -151,6 +150,6 @@ struct PanelView: View {
 }
 
 #Preview {
-    PanelView("")
+    PanelView(sampleJSON(.serverListAttributes))
         .environmentObject(SettingsStorage())
 }

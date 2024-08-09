@@ -18,8 +18,11 @@ extension View {
 #else
                 ServerList()
 #endif
+                
+#if !os(macOS)
             case .toPanel(let id):
                 PanelView(id)
+#endif
                 
 #if !os(visionOS)
             case .toFileManager(let id, let root):
