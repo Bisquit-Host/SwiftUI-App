@@ -1585,7 +1585,7 @@
 		F3DF03E12B74F1A600CF6F5E /* Database Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database Card.swift"; sourceTree = "<group>"; };
 		F3DF50CE2B39636A00206CAE /* User List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User List.swift"; sourceTree = "<group>"; };
 		F3E024C42B228F4C00FFF686 /* New Task Sheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "New Task Sheet.swift"; sourceTree = "<group>"; };
-		F3E08EA02A2CE17800116C1C /* macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3E08EA02A2CE17800116C1C /* Bisquit.Host.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bisquit.Host.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3E08EA42A2CE17900116C1C /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		F3E08EA62A2CE17A00116C1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3E08EAB2A2CE17A00116C1C /* Bisquit.Host Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Bisquit.Host Mac.entitlements"; sourceTree = "<group>"; };
@@ -1941,7 +1941,7 @@
 				F31BA5332958FF7D0006D126 /* watchOS.app */,
 				F31BA54E2958FFAF0006D126 /* Clip Demo.app */,
 				F3000E05295A341000ABD30A /* tvOS.app */,
-				F3E08EA02A2CE17800116C1C /* macOS.app */,
+				F3E08EA02A2CE17800116C1C /* Bisquit.Host.app */,
 				F3BD76F22A43C890003E7385 /* visionOS.app */,
 				F3464CF82A862D2C00188B0C /* Intent.appex */,
 				F38637372A8641120069F074 /* Widgets Extension.appex */,
@@ -3410,7 +3410,7 @@
 				F3B7BFDD2B38E206005B5003 /* Pow */,
 			);
 			productName = "Bisquit.Host Mac";
-			productReference = F3E08EA02A2CE17800116C1C /* macOS.app */;
+			productReference = F3E08EA02A2CE17800116C1C /* Bisquit.Host.app */;
 			productType = "com.apple.product-type.application";
 		};
 		F3E2BEF42C1DA07E00B7A6D4 /* Contact Provider Extension */ = {
@@ -5619,7 +5619,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				MARKETING_VERSION = 3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Bisquit.Host;
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
@@ -5658,7 +5658,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				MARKETING_VERSION = 3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Bisquit.Host;
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
