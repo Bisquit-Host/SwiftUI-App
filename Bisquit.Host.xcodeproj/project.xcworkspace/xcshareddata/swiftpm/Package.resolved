@@ -1,5 +1,5 @@
 {
-  "originHash" : "3680ef39033503cd5a567a12ed6bedb7d6c382fa5f52e8a6afe5724e7ad82efa",
+  "originHash" : "1fff5786f050b238ae0e43ecf09d8ae2a2532d437072cc2ecfbf5dbcb9e00878",
   "pins" : [
     {
       "identity" : "alertkit",
@@ -56,6 +56,15 @@
       }
     },
     {
+      "identity" : "quicklooking",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/TopScrech/QuickLooking",
+      "state" : {
+        "branch" : "main",
+        "revision" : "fb6ca05b383cb69efc31831892f21c5d642dceaf"
+      }
+    },
+    {
       "identity" : "safaricover",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/TopScrech/SafariCover",
@@ -70,7 +79,7 @@
       "location" : "https://github.com/TopScrech/ScrechKit",
       "state" : {
         "branch" : "main",
-        "revision" : "4ae7da9876377475b41d9aecf310fdd6d98fb62e"
+        "revision" : "712a21f54f69875545e9dd9d1af90713c5993462"
       }
     },
     {

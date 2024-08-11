@@ -260,6 +260,9 @@
 		F33944122A49022A00E2F0FC /* InfoTab Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33944102A49022A00E2F0FC /* InfoTab Card.swift */; };
 		F33944132A49134B00E2F0FC /* Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ECCD9E2A05819A00B535B6 /* Server Card Context Menu.swift */; };
 		F33944152A49135A00E2F0FC /* Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ECCD9E2A05819A00B535B6 /* Server Card Context Menu.swift */; };
+		F33C2AC12C69168C002FD150 /* QuickLooking in Frameworks */ = {isa = PBXBuildFile; productRef = F33C2AC02C69168C002FD150 /* QuickLooking */; };
+		F33C2AC32C691735002FD150 /* QuickLooking in Frameworks */ = {isa = PBXBuildFile; productRef = F33C2AC22C691735002FD150 /* QuickLooking */; };
+		F33C2AC52C691764002FD150 /* QuickLooking in Frameworks */ = {isa = PBXBuildFile; productRef = F33C2AC42C691764002FD150 /* QuickLooking */; };
 		F33CDBFB2A26A571008D0214 /* Server Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33CDBFA2A26A571008D0214 /* Server Card.swift */; };
 		F33CDBFC2A26A60D008D0214 /* Server Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* Server Card VM.swift */; };
 		F33CDBFD2A26B7AD008D0214 /* Browser Spec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A1D2342A201CBB0053261E /* Browser Spec.swift */; };
@@ -881,7 +884,6 @@
 		F3D2957F2AF39F5E00ED43A0 /* Suspended Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266DA29D9A215005FD103 /* Suspended Card.swift */; };
 		F3D295812AF39F7C00ED43A0 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A1D2302A201C570053261E /* Enums.swift */; };
 		F3D295822AF39F9300ED43A0 /* Upload Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39780242A2B9DB800956474 /* Upload Preview.swift */; };
-		F3D295832AF39F9900ED43A0 /* QuickLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EB09EF2A2989570073916A /* QuickLook.swift */; };
 		F3D295842AF39FA500ED43A0 /* Discover.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA592295901D00006D126 /* Discover.swift */; };
 		F3D295872AF39FB900ED43A0 /* Server Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* Server Card VM.swift */; };
 		F3D295892AF39FC700ED43A0 /* Upload File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F393C7BA2A18437300DE33F9 /* Upload File.swift */; };
@@ -1059,8 +1061,6 @@
 		F3EB09E52A2982680073916A /* Video File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39872152A1B73830022B00E /* Video File.swift */; };
 		F3EB09ED2A2987F00073916A /* QuickLook File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EB09EC2A2987F00073916A /* QuickLook File.swift */; };
 		F3EB09EE2A2987F00073916A /* QuickLook File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EB09EC2A2987F00073916A /* QuickLook File.swift */; };
-		F3EB09F02A2989570073916A /* QuickLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EB09EF2A2989570073916A /* QuickLook.swift */; };
-		F3EB09F12A2989570073916A /* QuickLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EB09EF2A2989570073916A /* QuickLook.swift */; };
 		F3ECCD9F2A05819A00B535B6 /* Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ECCD9E2A05819A00B535B6 /* Server Card Context Menu.swift */; };
 		F3EDEE3129C06E9700B08696 /* Panel Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3029C06E9700B08696 /* Panel Model.swift */; };
 		F3EDEE3529C0C84C00B08696 /* Panel VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3429C0C84C00B08696 /* Panel VM.swift */; };
@@ -1108,7 +1108,6 @@
 		F3FD9F9C2C651B3800A69314 /* File Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FD9F9B2C651B3800A69314 /* File Card.swift */; };
 		F3FD9F9D2C651BD100A69314 /* File Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266A929D71A1B005FD103 /* File Icon.swift */; };
 		F3FD9F9E2C651F4800A69314 /* Sensitivity Analyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5BC952BF7668E00EB8FB1 /* Sensitivity Analyzer.swift */; };
-		F3FD9F9F2C65212B00A69314 /* QuickLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EB09EF2A2989570073916A /* QuickLook.swift */; };
 		F3FD9FA12C65217C00A69314 /* Quick Look View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FD9FA02C65217C00A69314 /* Quick Look View.swift */; };
 		F3FF59FF2A4A3188003A1973 /* User List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF59FE2A4A3188003A1973 /* User List.swift */; };
 		F3FF5A002A4A3188003A1973 /* User List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF59FE2A4A3188003A1973 /* User List.swift */; };
@@ -1610,7 +1609,6 @@
 		F3E97C7829B4B569008CBDD6 /* Credentials VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Credentials VM.swift"; sourceTree = "<group>"; };
 		F3EB09E12A29805A0073916A /* Des Video Watch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Des Video Watch.swift"; sourceTree = "<group>"; };
 		F3EB09EC2A2987F00073916A /* QuickLook File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuickLook File.swift"; sourceTree = "<group>"; };
-		F3EB09EF2A2989570073916A /* QuickLook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLook.swift; sourceTree = "<group>"; };
 		F3ECCD9E2A05819A00B535B6 /* Server Card Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Context Menu.swift"; sourceTree = "<group>"; };
 		F3EDEE3029C06E9700B08696 /* Panel Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Model.swift"; sourceTree = "<group>"; };
 		F3EDEE3429C0C84C00B08696 /* Panel VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel VM.swift"; sourceTree = "<group>"; };
@@ -1702,6 +1700,7 @@
 				F34745C82A31F39100EE2FB8 /* ScrechKit in Frameworks */,
 				F328D8622A8242610038512F /* Algorithms in Frameworks */,
 				F318FE472A1592AB00DE0A5C /* OrderedCollections in Frameworks */,
+				F33C2AC52C691764002FD150 /* QuickLooking in Frameworks */,
 				F36D534A2A05B961007324C6 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1713,6 +1712,7 @@
 				F342FAA62B2C615A00854270 /* Pow in Frameworks */,
 				F30B61CA2B2905E100F447B4 /* AlertKit in Frameworks */,
 				F38928372A4460B200561CDF /* ScrechKit in Frameworks */,
+				F33C2AC32C691735002FD150 /* QuickLooking in Frameworks */,
 				F308601A2B002D36004D776A /* PteroNet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1757,6 +1757,7 @@
 				F318FE452A15925200DE0A5C /* OrderedCollections in Frameworks */,
 				F39A02862A31480800A92515 /* ScrechKit in Frameworks */,
 				F32675862A01B69600A026DC /* SafariCover in Frameworks */,
+				F33C2AC12C69168C002FD150 /* QuickLooking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2805,7 +2806,6 @@
 			isa = PBXGroup;
 			children = (
 				F3EB09EC2A2987F00073916A /* QuickLook File.swift */,
-				F3EB09EF2A2989570073916A /* QuickLook.swift */,
 			);
 			path = "Quick Look";
 			sourceTree = "<group>";
@@ -3226,6 +3226,7 @@
 				F30860132B002B31004D776A /* PteroNet */,
 				F342FA9F2B2C5DF300854270 /* Pow */,
 				F335CA052C63E86D006C71C6 /* DeviceKit */,
+				F33C2AC02C69168C002FD150 /* QuickLooking */,
 			);
 			productName = Bisquit.Host;
 			productReference = F31BA5232958FF7C0006D126 /* Bisquit.Host.app */;
@@ -3278,6 +3279,7 @@
 				F328D8612A8242610038512F /* Algorithms */,
 				F308601B2B002D40004D776A /* PteroNet */,
 				F342FAA72B2C61ED00854270 /* Pow */,
+				F33C2AC42C691764002FD150 /* QuickLooking */,
 			);
 			productName = "Clip Demo";
 			productReference = F31BA54E2958FFAF0006D126 /* Clip Demo.app */;
@@ -3363,6 +3365,7 @@
 				F30860192B002D36004D776A /* PteroNet */,
 				F30B61C92B2905E100F447B4 /* AlertKit */,
 				F342FAA52B2C615A00854270 /* Pow */,
+				F33C2AC22C691735002FD150 /* QuickLooking */,
 			);
 			productName = "Bisquit.Host visionOS";
 			productReference = F3BD76F22A43C890003E7385 /* visionOS.app */;
@@ -3501,6 +3504,7 @@
 				F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "PteroNet" */,
 				F342FA9E2B2C5DF200854270 /* XCRemoteSwiftPackageReference "Pow" */,
 				F335CA042C63E86D006C71C6 /* XCRemoteSwiftPackageReference "DeviceKit" */,
+				F33C2ABF2C69168C002FD150 /* XCRemoteSwiftPackageReference "QuickLooking" */,
 			);
 			productRefGroup = F31BA5242958FF7C0006D126 /* Products */;
 			projectDirPath = "";
@@ -3777,7 +3781,6 @@
 				F3AF96F929DF277A00D30A8F /* Backup Card.swift in Sources */,
 				F3D2951C2AF3975300ED43A0 /* Cache Model.swift in Sources */,
 				F375EC3A29EE73AC002CA969 /* Database List.swift in Sources */,
-				F3EB09F02A2989570073916A /* QuickLook.swift in Sources */,
 				F385824629D6268200BEEE1D /* Currency Button.swift in Sources */,
 				F3D7D87D29E83D6500BCAFFE /* Icon Settings.swift in Sources */,
 				F3E024C52B228F4C00FFF686 /* New Task Sheet.swift in Sources */,
@@ -4217,7 +4220,6 @@
 				F3287A7C2B10A17F001AFE54 /* Widget Live Activity.swift in Sources */,
 				F36D530F2A05B6E0007324C6 /* Browser Card.swift in Sources */,
 				F30088FD2B3B56240051476C /* User List Parent.swift in Sources */,
-				F3EB09F12A2989570073916A /* QuickLook.swift in Sources */,
 				F389BB752A05B62600911EBF /* Design Settings.swift in Sources */,
 				F3E2BEDC2C1C6B9500B7A6D4 /* Cache List.swift in Sources */,
 				F389BB7C2A05B66B00911EBF /* App Icon.swift in Sources */,
@@ -4379,7 +4381,6 @@
 				F3D295B82AF3A16A00ED43A0 /* App Icon.swift in Sources */,
 				F3D2959E2AF3A08300ED43A0 /* Video Player.swift in Sources */,
 				F3D295A32AF3A0B500ED43A0 /* Auth Background.swift in Sources */,
-				F3D295832AF39F9900ED43A0 /* QuickLook.swift in Sources */,
 				F3D295EC2AF3A43300ED43A0 /* Server Card.swift in Sources */,
 				F3A28AD72C57ADF100010454 /* Demo Server.swift in Sources */,
 				F3D295C52AF3A1DF00ED43A0 /* Apikey Card.swift in Sources */,
@@ -4621,7 +4622,6 @@
 				F3317AED2A45E26900CA104D /* Guide Model.swift in Sources */,
 				F38928382A4460CC00561CDF /* Server Card VM.swift in Sources */,
 				F38928302A445E9700561CDF /* Server List.swift in Sources */,
-				F3FD9F9F2C65212B00A69314 /* QuickLook.swift in Sources */,
 				F3FC99112C65747700150823 /* Archieving.swift in Sources */,
 				F3464D252A86397F00188B0C /* PowerSignalAppEnum.swift in Sources */,
 				F32FD7182B1E042500723B88 /* Websocket.swift in Sources */,
@@ -5882,6 +5882,14 @@
 				minimumVersion = 5.4.0;
 			};
 		};
+		F33C2ABF2C69168C002FD150 /* XCRemoteSwiftPackageReference "QuickLooking" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TopScrech/QuickLooking";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		F342FA9E2B2C5DF200854270 /* XCRemoteSwiftPackageReference "Pow" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/EmergeTools/Pow";
@@ -6019,6 +6027,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F335CA042C63E86D006C71C6 /* XCRemoteSwiftPackageReference "DeviceKit" */;
 			productName = DeviceKit;
+		};
+		F33C2AC02C69168C002FD150 /* QuickLooking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F33C2ABF2C69168C002FD150 /* XCRemoteSwiftPackageReference "QuickLooking" */;
+			productName = QuickLooking;
+		};
+		F33C2AC22C691735002FD150 /* QuickLooking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F33C2ABF2C69168C002FD150 /* XCRemoteSwiftPackageReference "QuickLooking" */;
+			productName = QuickLooking;
+		};
+		F33C2AC42C691764002FD150 /* QuickLooking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F33C2ABF2C69168C002FD150 /* XCRemoteSwiftPackageReference "QuickLooking" */;
+			productName = QuickLooking;
 		};
 		F342FA9F2B2C5DF300854270 /* Pow */ = {
 			isa = XCSwiftPackageProductDependency;

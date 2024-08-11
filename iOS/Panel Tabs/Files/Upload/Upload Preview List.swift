@@ -1,4 +1,5 @@
 import SwiftUI
+import QuickLooking
 
 struct UploadPreviewList: View {
     @EnvironmentObject private var vm: FileTabVM

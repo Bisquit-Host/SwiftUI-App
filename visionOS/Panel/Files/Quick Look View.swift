@@ -1,5 +1,6 @@
 import ScrechKit
 import PteroNet
+import QuickLooking
 
 struct QuickLookFile: View {
     @Environment(\.dismissWindow) private var dismissWindow
