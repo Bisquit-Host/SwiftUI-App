@@ -2,7 +2,7 @@ import ScrechKit
 
 struct CloudKeyContextMenu: View {
     @Bindable private var key: APIKey
-    @FocusState var focus: Bool
+    @FocusState private var focus
     
     init(_ key: APIKey, focus: FocusState<Bool>) {
         self.key = key
@@ -19,9 +19,7 @@ struct CloudKeyContextMenu: View {
             UIPasteboard.general.string = key.key
             SystemAlert.copied()
         }
-#endif
         
-#if !os(tvOS)
         ShareLink(item: key.key, message: Text("API-key"))
 #endif
         
