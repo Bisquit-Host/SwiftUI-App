@@ -2272,9 +2272,9 @@
 			isa = PBXGroup;
 			children = (
 				F386373D2A8641120069F074 /* System Small Widget.swift */,
+				F337B4082A89FB4300DD79AA /* System Small Widget View.swift */,
 				F323BFA02B20DC7A00116B97 /* Power Widget */,
 				F337B40C2A89FDFB00DD79AA /* New Group */,
-				F337B4082A89FB4300DD79AA /* System Small Widget View.swift */,
 				F38282012B0E14980088C48B /* Live Activity */,
 			);
 			path = Families;
