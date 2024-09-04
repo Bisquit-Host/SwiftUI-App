@@ -1,6 +1,6 @@
 import WidgetKit
 
-struct Static_Provider: TimelineProvider {
+struct StaticProvider: TimelineProvider {
     func placeholder(in context: Context) -> StaticEntry {
         StaticEntry(date: Date())
     }

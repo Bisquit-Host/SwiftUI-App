@@ -7,7 +7,7 @@ struct AccessoryCircularWindget: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(
             kind: kind,
-            provider: Static_Provider()
+            provider: StaticProvider()
         ) { _ in
             AccessoryCircularView()
                 .containerBackground(.ultraThinMaterial, for: .widget)
