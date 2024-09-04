@@ -29,6 +29,11 @@
 			<key>orderHint</key>
 			<integer>10</integer>
 		</dict>
+		<key>Intent Handler.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
 		<key>Intent.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
@@ -155,6 +160,11 @@
 			<true/>
 		</dict>
 		<key>F3E08E9F2A2CE17800116C1C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F3FDFF5E2C89120D009EBB5C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

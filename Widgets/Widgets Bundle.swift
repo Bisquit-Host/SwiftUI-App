@@ -3,7 +3,9 @@ import ScrechKit
 @main
 struct WidgetsBundle: WidgetBundle {
     var body: some Widget {
-        PowerWidget()
+//        PowerWidget()
+        
+        CryptoPriceWidget()
         
         //        SystemSmallWidget()
         
