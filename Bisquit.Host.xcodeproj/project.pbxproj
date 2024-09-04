@@ -2567,13 +2567,13 @@
 			children = (
 				F386373B2A8641120069F074 /* Widgets Bundle.swift */,
 				F337B4012A89CAF500DD79AA /* Intents.intentdefinition */,
-				F337B4072A89FB0200DD79AA /* Families */,
-				F337B4052A89FAC600DD79AA /* Entry.swift */,
-				F318240C2A877BA90039866C /* Preview Extension.swift */,
-				F318240A2A8777CD0039866C /* Provider.swift */,
 				F38637412A8641150069F074 /* Assets.xcassets */,
 				F38637432A8641150069F074 /* Info.plist */,
 				F38637442A8641150069F074 /* Widgets.entitlements */,
+				F337B4052A89FAC600DD79AA /* Entry.swift */,
+				F318240C2A877BA90039866C /* Preview Extension.swift */,
+				F318240A2A8777CD0039866C /* Provider.swift */,
+				F337B4072A89FB0200DD79AA /* Families */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
