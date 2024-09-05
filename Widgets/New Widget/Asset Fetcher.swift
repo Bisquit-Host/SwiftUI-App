@@ -29,7 +29,6 @@ struct WidgetServerAttributes: Decodable {
 struct Asset: Codable {
     let id: String
     let name: String
-    let symbol: String
 }
 
 struct AssetDetails: Codable {
@@ -53,7 +52,7 @@ struct AssetFetcher {
                 print("Error fetching value from Keychain")
                 
                 return [
-                    .init(id: "", name: "Error fetching value from Keychain", symbol: "")
+                    .init(id: "", name: "Error fetching value from Keychain")
                 ]
             }
             
@@ -66,8 +65,7 @@ struct AssetFetcher {
             for server in response.data.map(\.attributes) {
                 let asset = Asset(
                     id: "",
-                    name: server.name,
-                    symbol: server.identifier
+                    name: server.name
                 )
                 
                 assets.append(asset)
@@ -77,7 +75,7 @@ struct AssetFetcher {
             
         } catch {
             let testAssets: [Asset] = [
-                .init(id: "", name: error.localizedDescription, symbol: "Error")
+                .init(id: "", name: error.localizedDescription)
             ]
             
             return testAssets
@@ -94,6 +92,18 @@ struct AssetFetcher {
         //        let response = try JSONDecoder().decode(Response<AssetDetails>.self, from: data)
         //
         //        let assetDetails = response.data
+        
+        let url = URL(string: "https://mgr.bisquit.host/api/client/servers/\(id)/resources")!
+        
+        var request = URLRequest(url: url)
+        
+        if let apiKey = Keychain.load(key: "selectedApiKey") {
+            request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
+        } else {
+            print("Error fetching value from Keychain")
+            
+            return AssetDetails(priceUsd: "Error fetching value from Keychain")
+        }
         
         let assetDetails = AssetDetails(priceUsd: id)
         

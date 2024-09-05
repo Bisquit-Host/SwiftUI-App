@@ -69,7 +69,6 @@ struct CryptoPriceTimelineProvider: IntentTimelineProvider {
         Task {
             // Fetch asset details
             guard let assetDetails = try? await AssetFetcher.fetchAssetDetails(assetId) else {
-                
                 showEmptyState(completion: completion)
                 return
             }
