@@ -19,7 +19,7 @@ struct Asset: Codable {
 }
 
 struct AssetDetails: Codable {
-    let priceUsd: String
+    let state: String
 }
 
 struct AssetFetcher {
@@ -40,7 +40,7 @@ struct AssetFetcher {
                 
                 return [
                     .init(
-                        id: "69.1", 
+                        id: "69.1",
                         name: "Error fetching value from Keychain"
                     )
                 ]
@@ -74,40 +74,46 @@ struct AssetFetcher {
     
     static func fetchAssetDetails(_ id: String) async -> AssetDetails {
         do {
-            //        let url = URL(string: "https://api.coincap.io/v2/assets/\(id)")!
-            //
-            //        // Fetch JSON
-            //        let (data, _) = try await URLSession.shared.data(from: url)
-            //
-            //        // Parse JSON
-            //        let response = try JSONDecoder().decode(Response<AssetDetails>.self, from: data)
-            //
-            //        let assetDetails = response.data
-            
-            let url = URL(string: "https://mgr.bisquit.host/api/client/servers/\(id)/resources")!
-            
-            var request = URLRequest(url: url)
-            
-            if let apiKey = Keychain.load(key: "selectedApiKey") {
-                request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
-            } else {
-                print("Error fetching value from Keychain")
-                
-                return AssetDetails(priceUsd: "Error fetching value from Keychain")
+            guard let request = URLRequest(
+                path: "client/servers/\(id)/resources"
+            ) else {
+                return AssetDetails(state: "Error creating request")
             }
             
-            let (data, _) = try await URLSession.shared.data(from: url)
-            let response = try JSONDecoder().decode(ResourceUsageResponse.self, from: data)
-            
-            let test = response.attributes.state
-            
-            let assetDetails = AssetDetails(priceUsd: test)
-            
-            return assetDetails
+            return await withCheckedContinuation { continuation in
+                URLSession.shared.dataTask(with: request) { data, response, error in
+                    guard let data else {
+                        continuation.resume(returning: AssetDetails(state: "Pupu data"))
+                        return
+                    }
+                    
+                    do {
+                        let json = try JSONDecoder().decode(WWResourceUsageResponse.self, from: data)
+                        let state = json.attributes.current_state
+                        
+                        let assetDetails = AssetDetails(
+                            state: state
+                        )
+                        
+                        continuation.resume(returning: assetDetails)
+                    } catch {
+                        let assetDetails = AssetDetails(state: "Error decoding JSON: \(error.localizedDescription)")
+                        continuation.resume(returning: assetDetails)
+                    }
+                }.resume()
+            }
         } catch {
-            let assetDetails = AssetDetails(priceUsd: error.localizedDescription)
+            let assetDetails = AssetDetails(state: error.localizedDescription)
             
             return assetDetails
         }
     }
+}
+
+public struct WWResourceUsageResponse: Codable {
+    public let attributes: WWResourceUsageAttributes
+}
+
+public struct WWResourceUsageAttributes: Codable {
+    public let current_state: String
 }

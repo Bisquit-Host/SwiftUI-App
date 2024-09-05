@@ -17,8 +17,13 @@ struct CryptoPriceWidgetView: View {
     
     var body: some View {
         VStack {
-            Text(entry.name)
-                .title(.bold)
+            HStack {
+                Text(entry.name)
+                    .title(.bold)
+                
+                Text(entry.id)
+                    .footnote()
+            }
             
             Text(entry.state)
                 .caption2()
@@ -37,9 +42,9 @@ struct CryptoPriceTimelineProvider: IntentTimelineProvider {
     func placeholder(in context: Context) -> CryptoPriceEntry {
         .init(
             date: Date(),
-            name: "Bitcoin",
-            id: "123",
-            state: "BTC"
+            name: "Preview",
+            id: "12345678",
+            state: "running"
         )
     }
     
@@ -50,9 +55,9 @@ struct CryptoPriceTimelineProvider: IntentTimelineProvider {
     ) {
         let entry = CryptoPriceEntry(
             date: Date(),
-            name: "Bitcoin",
-            id: "123",
-            state: "BTC"
+            name: "Preview",
+            id: "12345678",
+            state: "running"
         )
         
         completion(entry)
@@ -66,7 +71,6 @@ struct CryptoPriceTimelineProvider: IntentTimelineProvider {
         // Extract required info from configuration
         
         guard
-            let assetId = configuration.selectedCrypto?.identifier,
             let name = configuration.selectedCrypto?.name,
             let id = configuration.selectedCrypto?.id
         else {
@@ -76,14 +80,14 @@ struct CryptoPriceTimelineProvider: IntentTimelineProvider {
         
         Task {
             // Fetch asset details
-            let assetDetails = await AssetFetcher.fetchAssetDetails(assetId)
+            let assetDetails = await AssetFetcher.fetchAssetDetails(id)
             
             // Create `CryptoPriceEntry` using based on user selected configuration & fetched info
             let entry = CryptoPriceEntry(
                 date: Date(),
                 name: name,
                 id: id,
-                state: assetDetails.priceUsd
+                state: assetDetails.state
             )
             
             // Trigger completion & next fetch in 15 mins
