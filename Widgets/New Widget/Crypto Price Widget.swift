@@ -1,5 +1,5 @@
-import WidgetKit
 import SwiftUI
+import WidgetKit
 
 struct CryptoPriceEntry: TimelineEntry {
     let date: Date
@@ -9,28 +9,31 @@ struct CryptoPriceEntry: TimelineEntry {
 }
 
 struct CryptoPriceWidgetView: View {
+    private let entry: CryptoPriceEntry
     
-    let entry: CryptoPriceEntry
+    init(_ entry: CryptoPriceEntry) {
+        self.entry = entry
+    }
     
     var body: some View {
         VStack {
             Text(entry.name)
-                .font(.title.weight(.bold))
+                .title(.bold)
+            
             Text(entry.symbol)
-                .font(.footnote)
+                .footnote()
                 .padding(.bottom, 8)
+            
             Text(entry.price)
-                .font(.title2.weight(.semibold))
+                .title2(.semibold)
         }
-        .containerBackground(for: .widget) { }
+        .containerBackground(for: .widget) {}
     }
 }
 
 struct CryptoPriceTimelineProvider: IntentTimelineProvider {
-    
     func placeholder(in context: Context) -> CryptoPriceEntry {
-        
-        return CryptoPriceEntry(
+        .init(
             date: Date(),
             name: "Bitcoin",
             symbol: "BTC",
@@ -38,10 +41,11 @@ struct CryptoPriceTimelineProvider: IntentTimelineProvider {
         )
     }
     
-    func getSnapshot(for configuration: CryptoPriceConfigurationIntent,
-                     in context: Context,
-                     completion: @escaping (CryptoPriceEntry) -> ()) {
-        
+    func getSnapshot(
+        for configuration: CryptoPriceConfigurationIntent,
+        in context: Context,
+        completion: @escaping (CryptoPriceEntry) -> ()
+    ) {
         let entry = CryptoPriceEntry(
             date: Date(),
             name: "Bitcoin",
@@ -52,11 +56,13 @@ struct CryptoPriceTimelineProvider: IntentTimelineProvider {
         completion(entry)
     }
     
-    func getTimeline(for configuration: CryptoPriceConfigurationIntent,
-                     in context: Context,
-                     completion: @escaping (Timeline<CryptoPriceEntry>) -> ()) {
+    func getTimeline(
+        for configuration: CryptoPriceConfigurationIntent,
+        in context: Context,
+        completion: @escaping (Timeline<CryptoPriceEntry>) -> ()
+    ) {
+        // Extract required info from `configuration`
         
-        // Extract required information from `configuration`
         guard
             let assetId = configuration.selectedCrypto?.identifier,
             let name = configuration.selectedCrypto?.name,
@@ -67,7 +73,6 @@ struct CryptoPriceTimelineProvider: IntentTimelineProvider {
         }
         
         Task {
-            
             // Fetch asset details
             guard let assetDetails = try? await AssetFetcher.fetchAssetDetails(id: assetId) else {
                 
@@ -83,7 +88,7 @@ struct CryptoPriceTimelineProvider: IntentTimelineProvider {
                 price: assetDetails.price
             )
             
-            // Trigger completion & next fetch happens 15 minutes later
+            // Trigger completion & next fetch happens in 15 mins
             executeTimelineCompletion(completion, timelineEntry: entry)
         }
     }
@@ -97,14 +102,15 @@ struct CryptoPriceTimelineProvider: IntentTimelineProvider {
             price: ""
         )
         
-        // Trigger completion & next fetch happens 15 minutes later
+        // Trigger completion & next fetch happens in 15 mins
         executeTimelineCompletion(completion, timelineEntry: entry)
     }
     
-    func executeTimelineCompletion(_ completion: @escaping (Timeline<CryptoPriceEntry>) -> (),
-                                   timelineEntry: CryptoPriceEntry) {
-        
-        // Next fetch happens 15 minutes later
+    func executeTimelineCompletion(
+        _ completion: @escaping (Timeline<CryptoPriceEntry>) -> (),
+        timelineEntry: CryptoPriceEntry
+    ) {
+        // Next fetch happens in 15 mins
         let nextUpdate = Calendar.current.date(
             byAdding: DateComponents(minute: 15),
             to: Date()
@@ -121,7 +127,6 @@ struct CryptoPriceTimelineProvider: IntentTimelineProvider {
 
 struct CryptoPriceWidget: Widget {
     let kind = "Widgets"
-    //    let kind = "com.SwiftSenpaiDemo.CryptoPriceWidget"
     
     var body: some WidgetConfiguration {
         IntentConfiguration(
@@ -129,7 +134,7 @@ struct CryptoPriceWidget: Widget {
             intent: CryptoPriceConfigurationIntent.self,
             provider: CryptoPriceTimelineProvider()
         ) { entry in
-            CryptoPriceWidgetView(entry: entry)
+            CryptoPriceWidgetView(entry)
         }
         .configurationDisplayName("Crypto Price Widget")
         .description("Get price for your selected asset")

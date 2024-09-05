@@ -1113,7 +1113,7 @@
 		F3FDFF642C89120D009EBB5C /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF632C89120D009EBB5C /* IntentHandler.swift */; };
 		F3FDFF792C89120D009EBB5C /* Intent Handler.appex in Embed Foundation Extensions (2 items) */ = {isa = PBXBuildFile; fileRef = F3FDFF5F2C89120D009EBB5C /* Intent Handler.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F3FDFF882C8912F1009EBB5C /* Asset Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF872C8912F1009EBB5C /* Asset Fetcher.swift */; };
-		F3FDFF8B2C89130F009EBB5C /* CryptoPriceWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF8A2C89130F009EBB5C /* CryptoPriceWidget.swift */; };
+		F3FDFF8B2C89130F009EBB5C /* Crypto Price Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF8A2C89130F009EBB5C /* Crypto Price Widget.swift */; };
 		F3FDFF8D2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF8C2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition */; };
 		F3FDFF8E2C891343009EBB5C /* Asset Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF872C8912F1009EBB5C /* Asset Fetcher.swift */; };
 		F3FDFF8F2C8913AE009EBB5C /* CryptoPriceWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF8C2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition */; };
@@ -1653,7 +1653,7 @@
 		F3FDFF652C89120D009EBB5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3FDFF6B2C89120D009EBB5C /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
 		F3FDFF872C8912F1009EBB5C /* Asset Fetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Asset Fetcher.swift"; sourceTree = "<group>"; };
-		F3FDFF8A2C89130F009EBB5C /* CryptoPriceWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoPriceWidget.swift; sourceTree = "<group>"; };
+		F3FDFF8A2C89130F009EBB5C /* Crypto Price Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Crypto Price Widget.swift"; sourceTree = "<group>"; };
 		F3FDFF8C2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = CryptoPriceWidget.intentdefinition; sourceTree = "<group>"; };
 		F3FF59FE2A4A3188003A1973 /* User List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User List.swift"; sourceTree = "<group>"; };
 		F3FF5A022A4A359C003A1973 /* InfoTab Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InfoTab Buttons.swift"; sourceTree = "<group>"; };
@@ -2001,8 +2001,8 @@
 				F378E3322AF38286009925DB /* PrivacyInfo.xcprivacy */,
 				F304498629E98AE4006DC0C7 /* Bisquit.Host.entitlements */,
 				F31BA52A2958FF7D0006D126 /* Assets.xcassets */,
-				F36436EE2A2FE91C00976374 /* SpriteKit */,
 				F31BA564295900270006D126 /* Navigation */,
+				F36436EE2A2FE91C00976374 /* SpriteKit */,
 				F3EDEE3629C0CB4500B08696 /* Networking */,
 				F35B89BC2A7256F4000B5EEF /* Tips */,
 				F300892D2B3D99180051476C /* SwiftData */,
@@ -3190,9 +3190,9 @@
 		F3FDFF892C8912FC009EBB5C /* New Widget */ = {
 			isa = PBXGroup;
 			children = (
-				F3FDFF872C8912F1009EBB5C /* Asset Fetcher.swift */,
 				F3FDFF8C2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition */,
-				F3FDFF8A2C89130F009EBB5C /* CryptoPriceWidget.swift */,
+				F3FDFF872C8912F1009EBB5C /* Asset Fetcher.swift */,
+				F3FDFF8A2C89130F009EBB5C /* Crypto Price Widget.swift */,
 			);
 			path = "New Widget";
 			sourceTree = "<group>";
@@ -4618,7 +4618,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3FDFF8B2C89130F009EBB5C /* CryptoPriceWidget.swift in Sources */,
+				F3FDFF8B2C89130F009EBB5C /* Crypto Price Widget.swift in Sources */,
 				F323BFA22B20DC9000116B97 /* Power Widget.swift in Sources */,
 				F337B4062A89FAC600DD79AA /* Entry.swift in Sources */,
 				F3FDFF882C8912F1009EBB5C /* Asset Fetcher.swift in Sources */,

@@ -1,12 +1,3 @@
-//
-//  Asset.swift
-//  Bisquit.Host
-//
-//  Created by Sergei Saliukov on 5/9/24.
-//  Copyright © 2024 Bisquit.Host. All rights reserved.
-//
-
-
 import Foundation
 
 struct Asset: Codable {
@@ -34,10 +25,10 @@ struct AssetFetcher {
     static func fetchTopTenAssets() async throws -> [Asset] {
         let url = URL(string: "https://api.coincap.io/v2/assets?limit=10")!
         
-        // Fetch JSON data
+        // Fetch JSON
         let (data, _) = try await URLSession.shared.data(from: url)
         
-        // Parse the JSON data
+        // Parse JSON
         let response = try JSONDecoder().decode(Response<[Asset]>.self, from: data)
         
         let assets = response.data
@@ -48,10 +39,10 @@ struct AssetFetcher {
     static func fetchAssetDetails(id: String) async throws -> AssetDetails {
         let url = URL(string: "https://api.coincap.io/v2/assets/\(id)")!
         
-        // Fetch JSON data
+        // Fetch JSON
         let (data, _) = try await URLSession.shared.data(from: url)
         
-        // Parse the JSON data
+        // Parse JSON
         let response = try JSONDecoder().decode(Response<AssetDetails>.self, from: data)
         
         let assetDetails = response.data
