@@ -79,15 +79,17 @@ struct AssetFetcher {
     }
     
     static func fetchAssetDetails(_ id: String) async throws -> AssetDetails {
-        let url = URL(string: "https://api.coincap.io/v2/assets/\(id)")!
+        //        let url = URL(string: "https://api.coincap.io/v2/assets/\(id)")!
+        //
+        //        // Fetch JSON
+        //        let (data, _) = try await URLSession.shared.data(from: url)
+        //
+        //        // Parse JSON
+        //        let response = try JSONDecoder().decode(Response<AssetDetails>.self, from: data)
+        //
+        //        let assetDetails = response.data
         
-        // Fetch JSON
-        let (data, _) = try await URLSession.shared.data(from: url)
-        
-        // Parse JSON
-        let response = try JSONDecoder().decode(Response<AssetDetails>.self, from: data)
-        
-        let assetDetails = response.data
+        let assetDetails = AssetDetails(priceUsd: id)
         
         return assetDetails
     }
