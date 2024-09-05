@@ -80,30 +80,18 @@ struct AssetFetcher {
                 return AssetDetails(state: "Error creating request")
             }
             
-            return await withCheckedContinuation { continuation in
-                URLSession.shared.dataTask(with: request) { data, response, error in
-                    guard let data else {
-                        continuation.resume(returning: AssetDetails(state: "Pupu data"))
-                        return
-                    }
-                    
-                    do {
-                        let json = try JSONDecoder().decode(WWResourceUsageResponse.self, from: data)
-                        let state = json.attributes.current_state
-                        
-                        let assetDetails = AssetDetails(
-                            state: state
-                        )
-                        
-                        continuation.resume(returning: assetDetails)
-                    } catch {
-                        let assetDetails = AssetDetails(state: "Error decoding JSON: \(error.localizedDescription)")
-                        continuation.resume(returning: assetDetails)
-                    }
-                }.resume()
-            }
+            let (data, _) = try await URLSession.shared.data(for: request)
+            
+            let json = try JSONDecoder().decode(WWResourceUsageResponse.self, from: data)
+            let state = json.attributes.current_state
+            
+            let assetDetails = AssetDetails(
+                state: state
+            )
+            
+            return assetDetails
         } catch {
-            let assetDetails = AssetDetails(state: error.localizedDescription)
+            let assetDetails = AssetDetails(state: "Error: \(error.localizedDescription)")
             
             return assetDetails
         }
