@@ -433,6 +433,7 @@
 		F367977E2A3A5AB6009F2788 /* Log VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367977D2A3A5AB6009F2788 /* Log VM.swift */; };
 		F367977F2A3A5AB6009F2788 /* Log VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367977D2A3A5AB6009F2788 /* Log VM.swift */; };
 		F36A0F312A167D5F00696207 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F31BA52A2958FF7D0006D126 /* Assets.xcassets */; };
+		F36B736D2C89B6BE00E858FE /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F36B736C2C89B6BE00E858FE /* PteroNet */; };
 		F36D530C2A05B6C4007324C6 /* Server List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31578B229675F5D0016A600 /* Server List.swift */; };
 		F36D530D2A05B6C9007324C6 /* Server List Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */; };
 		F36D530E2A05B6CE007324C6 /* Browser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA58E295901B60006D126 /* Browser.swift */; };
@@ -1429,6 +1430,7 @@
 		F36797772A3A55E1009F2788 /* Log List Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log List Parent.swift"; sourceTree = "<group>"; };
 		F367977A2A3A55F4009F2788 /* Log Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log Card.swift"; sourceTree = "<group>"; };
 		F367977D2A3A5AB6009F2788 /* Log VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log VM.swift"; sourceTree = "<group>"; };
+		F36B736E2C89BB7200E858FE /* Intent Handler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Intent Handler.entitlements"; sourceTree = "<group>"; };
 		F36FDB91295AF3AB00D45070 /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
 		F37061C729774869009B4067 /* Nav Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Extension.swift"; sourceTree = "<group>"; };
 		F37061C929774886009B4067 /* Nav Destinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Destinations.swift"; sourceTree = "<group>"; };
@@ -1792,6 +1794,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3FDFF612C89120D009EBB5C /* Intents.framework in Frameworks */,
+				F36B736D2C89B6BE00E858FE /* PteroNet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3181,6 +3184,7 @@
 		F3FDFF832C89121F009EBB5C /* Intent Handler */ = {
 			isa = PBXGroup;
 			children = (
+				F36B736E2C89BB7200E858FE /* Intent Handler.entitlements */,
 				F3FDFF632C89120D009EBB5C /* Intent Handler.swift */,
 				F3FDFF652C89120D009EBB5C /* Info.plist */,
 			);
@@ -3505,6 +3509,7 @@
 			);
 			name = "Intent Handler";
 			packageProductDependencies = (
+				F36B736C2C89B6BE00E858FE /* PteroNet */,
 			);
 			productName = "Intent Handler";
 			productReference = F3FDFF5F2C89120D009EBB5C /* Intent Handler.appex */;
@@ -5840,6 +5845,7 @@
 		F3FDFF7A2C89120D009EBB5C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Intent Handler/Intent Handler.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -5870,6 +5876,7 @@
 		F3FDFF7B2C89120D009EBB5C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Intent Handler/Intent Handler.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -6275,6 +6282,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F352AF992A4EE707004AD489 /* XCRemoteSwiftPackageReference "AlertKit" */;
 			productName = AlertKit;
+		};
+		F36B736C2C89B6BE00E858FE /* PteroNet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "PteroNet" */;
+			productName = PteroNet;
 		};
 		F36D53492A05B961007324C6 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
