@@ -39,17 +39,15 @@ struct AssetFetcher {
         do {
             let url = URL(string: "https://mgr.bisquit.host/api/client")!
             
-            // Create a mutable URLRequest
             var request = URLRequest(url: url)
             
-            // Fetch the API key from the Keychain
             if let apiKey = Keychain.load(key: "selectedApiKey") {
                 request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
             } else {
                 print("Error fetching value from Keychain")
-                // Return the test asset if the API key is missing
+                
                 return [
-                    .init(id: "Bitcoin", name: "BTC", symbol: "$10000")
+                    .init(id: "", name: "Error fetching value from Keychain", symbol: "")
                 ]
             }
             
