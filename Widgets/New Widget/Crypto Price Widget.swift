@@ -5,7 +5,6 @@ struct CryptoPriceEntry: TimelineEntry {
     let date: Date
     let name: String
     let symbol: String
-    let price: String
 }
 
 struct CryptoPriceWidgetView: View {
@@ -23,9 +22,6 @@ struct CryptoPriceWidgetView: View {
             Text(entry.symbol)
                 .footnote()
                 .padding(.bottom, 8)
-            
-            Text(entry.price)
-                .title2(.semibold)
         }
         .containerBackground(for: .widget) {}
     }
@@ -36,8 +32,7 @@ struct CryptoPriceTimelineProvider: IntentTimelineProvider {
         .init(
             date: Date(),
             name: "Bitcoin",
-            symbol: "BTC",
-            price: "$10000"
+            symbol: "BTC"
         )
     }
     
@@ -49,8 +44,7 @@ struct CryptoPriceTimelineProvider: IntentTimelineProvider {
         let entry = CryptoPriceEntry(
             date: Date(),
             name: "Bitcoin",
-            symbol: "BTC",
-            price: "$10000"
+            symbol: "BTC"
         )
         
         completion(entry)
@@ -80,12 +74,11 @@ struct CryptoPriceTimelineProvider: IntentTimelineProvider {
                 return
             }
             
-            // Create `CryptoPriceEntry` using based on user selected configuration & fetched information
+            // Create `CryptoPriceEntry` using based on user selected configuration & fetched info
             let entry = CryptoPriceEntry(
                 date: Date(),
                 name: name,
-                symbol: symbol,
-                price: assetDetails.price
+                symbol: symbol
             )
             
             // Trigger completion & next fetch happens in 15 mins
@@ -98,8 +91,7 @@ struct CryptoPriceTimelineProvider: IntentTimelineProvider {
         let entry = CryptoPriceEntry(
             date: Date(),
             name: "",
-            symbol: "Please select an asset",
-            price: ""
+            symbol: "Please select an asset"
         )
         
         // Trigger completion & next fetch happens in 15 mins
@@ -150,7 +142,6 @@ struct CryptoPriceWidget: Widget {
     CryptoPriceEntry(
         date: Date(),
         name: "Bitcoin",
-        symbol: "BTC",
-        price: "$12345"
+        symbol: "BTC"
     )
 }

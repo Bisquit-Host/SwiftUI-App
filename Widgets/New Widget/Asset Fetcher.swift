@@ -13,6 +13,19 @@ struct WidgetServerAttributes: Decodable {
     let name: String
 }
 
+//struct WidgetServerUsageResponse: Decodable {
+//    let data: [WidgetServer]
+//}
+//
+//struct WidgetServerUsage: Decodable {
+//    let attributes: WidgetServerAttributes
+//}
+//
+//struct WidgetServerUsageAttributes: Decodable {
+//    let identifier: String
+//    let name: String
+//}
+
 struct Asset: Codable {
     let id: String
     let name: String
@@ -21,13 +34,6 @@ struct Asset: Codable {
 
 struct AssetDetails: Codable {
     let priceUsd: String
-    
-    /// Formatted price value
-    var price: String {
-        let value = Double(priceUsd) ?? 0
-        
-        return "$" + String(format: "%.2f", value)
-    }
 }
 
 struct AssetFetcher {
