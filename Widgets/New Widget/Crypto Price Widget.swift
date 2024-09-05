@@ -66,7 +66,7 @@ struct CryptoPriceTimelineProvider: IntentTimelineProvider {
         guard
             let assetId = configuration.selectedCrypto?.identifier,
             let name = configuration.selectedCrypto?.name,
-            let symbol = configuration.selectedCrypto?.symbol else {
+            let symbol = configuration.selectedCrypto?.id else {
             
             showEmptyState(completion: completion)
             return
@@ -126,7 +126,7 @@ struct CryptoPriceTimelineProvider: IntentTimelineProvider {
 }
 
 struct CryptoPriceWidget: Widget {
-    let kind = "Widgets"
+    let kind = "Widgets test"
     
     var body: some WidgetConfiguration {
         IntentConfiguration(

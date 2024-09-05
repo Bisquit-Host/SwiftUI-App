@@ -9,11 +9,11 @@
 	<key>INIntentDefinitionNamespace</key>
 	<string>88xZPY</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>22A380</string>
+	<string>24B5035e</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
-	<string>14C18</string>
+	<string>16B5001e</string>
 	<key>INIntentDefinitionToolsVersion</key>
-	<string>14.2</string>
+	<string>16.1</string>
 	<key>INIntents</key>
 	<array>
 		<dict>
@@ -133,10 +133,24 @@
 					<string>String</string>
 				</dict>
 				<dict>
+					<key>INTypePropertyDisplayName</key>
+					<string>Name</string>
+					<key>INTypePropertyDisplayNameID</key>
+					<string>g9J3OL</string>
+					<key>INTypePropertyDisplayPriority</key>
+					<integer>3</integer>
+					<key>INTypePropertyName</key>
+					<string>name</string>
+					<key>INTypePropertyTag</key>
+					<integer>102</integer>
+					<key>INTypePropertyType</key>
+					<string>String</string>
+				</dict>
+				<dict>
 					<key>INTypePropertyDefault</key>
 					<true/>
 					<key>INTypePropertyDisplayPriority</key>
-					<integer>3</integer>
+					<integer>4</integer>
 					<key>INTypePropertyName</key>
 					<string>pronunciationHint</string>
 					<key>INTypePropertyTag</key>
@@ -148,7 +162,7 @@
 					<key>INTypePropertyDefault</key>
 					<true/>
 					<key>INTypePropertyDisplayPriority</key>
-					<integer>4</integer>
+					<integer>5</integer>
 					<key>INTypePropertyName</key>
 					<string>alternativeSpeakableMatches</string>
 					<key>INTypePropertySupportsMultipleValues</key>
@@ -160,29 +174,15 @@
 				</dict>
 				<dict>
 					<key>INTypePropertyDisplayName</key>
-					<string>Symbol</string>
+					<string>Id</string>
 					<key>INTypePropertyDisplayNameID</key>
 					<string>URFlHT</string>
 					<key>INTypePropertyDisplayPriority</key>
-					<integer>5</integer>
-					<key>INTypePropertyName</key>
-					<string>symbol</string>
-					<key>INTypePropertyTag</key>
-					<integer>100</integer>
-					<key>INTypePropertyType</key>
-					<string>String</string>
-				</dict>
-				<dict>
-					<key>INTypePropertyDisplayName</key>
-					<string>Name</string>
-					<key>INTypePropertyDisplayNameID</key>
-					<string>g9J3OL</string>
-					<key>INTypePropertyDisplayPriority</key>
 					<integer>6</integer>
 					<key>INTypePropertyName</key>
-					<string>name</string>
+					<string>id</string>
 					<key>INTypePropertyTag</key>
-					<integer>102</integer>
+					<integer>100</integer>
 					<key>INTypePropertyType</key>
 					<string>String</string>
 				</dict>

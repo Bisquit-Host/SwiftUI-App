@@ -23,6 +23,7 @@
 	<array>
 		<string>ChangePowerIntent</string>
 		<string>CreateBackupIntent</string>
+		<string>CryptoPriceConfigurationIntent</string>
 		<string>SendCommandIntent</string>
 		<string>StartIntent</string>
 		<string>TestApiIntent</string>
