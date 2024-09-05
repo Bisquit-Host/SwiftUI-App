@@ -4,7 +4,8 @@ import WidgetKit
 struct CryptoPriceEntry: TimelineEntry {
     let date: Date
     let name: String
-    let symbol: String
+    let id: String
+    let state: String
 }
 
 struct CryptoPriceWidgetView: View {
@@ -19,9 +20,14 @@ struct CryptoPriceWidgetView: View {
             Text(entry.name)
                 .title(.bold)
             
-            Text(entry.symbol)
-                .footnote()
+            Text(entry.state)
+                .caption2()
                 .padding(.bottom, 8)
+            
+            Text(entry.date, format: .dateTime.minute().second())
+                .footnote()
+            
+            Button("Update", intent: RefreshIntent())
         }
         .containerBackground(for: .widget) {}
     }
@@ -32,7 +38,8 @@ struct CryptoPriceTimelineProvider: IntentTimelineProvider {
         .init(
             date: Date(),
             name: "Bitcoin",
-            symbol: "BTC"
+            id: "123",
+            state: "BTC"
         )
     }
     
@@ -44,7 +51,8 @@ struct CryptoPriceTimelineProvider: IntentTimelineProvider {
         let entry = CryptoPriceEntry(
             date: Date(),
             name: "Bitcoin",
-            symbol: "BTC"
+            id: "123",
+            state: "BTC"
         )
         
         completion(entry)
@@ -55,45 +63,46 @@ struct CryptoPriceTimelineProvider: IntentTimelineProvider {
         in context: Context,
         completion: @escaping (Timeline<CryptoPriceEntry>) -> ()
     ) {
-        // Extract required info from `configuration`
+        // Extract required info from configuration
         
         guard
             let assetId = configuration.selectedCrypto?.identifier,
             let name = configuration.selectedCrypto?.name,
-            let symbol = configuration.selectedCrypto?.id else {
-            
-            showEmptyState(completion: completion)
+            let id = configuration.selectedCrypto?.id
+        else {
+            showEmptyState(completion, error: "1")
             return
         }
         
         Task {
             // Fetch asset details
-            guard let assetDetails = try? await AssetFetcher.fetchAssetDetails(assetId) else {
-                showEmptyState(completion: completion)
-                return
-            }
+            let assetDetails = await AssetFetcher.fetchAssetDetails(assetId)
             
             // Create `CryptoPriceEntry` using based on user selected configuration & fetched info
             let entry = CryptoPriceEntry(
                 date: Date(),
                 name: name,
-                symbol: symbol
+                id: id,
+                state: assetDetails.priceUsd
             )
             
-            // Trigger completion & next fetch happens in 15 mins
+            // Trigger completion & next fetch in 15 mins
             executeTimelineCompletion(completion, timelineEntry: entry)
         }
     }
     
-    private func showEmptyState(completion: @escaping (Timeline<CryptoPriceEntry>) -> ()) {
-        
+    private func showEmptyState(
+        _ completion: @escaping (Timeline<CryptoPriceEntry>) -> (),
+        error: String
+    ) {
         let entry = CryptoPriceEntry(
             date: Date(),
             name: "",
-            symbol: "Please select an asset"
+            id: "",
+            state: error
         )
         
-        // Trigger completion & next fetch happens in 15 mins
+        // Trigger completion & next fetch in 15 mins
         executeTimelineCompletion(completion, timelineEntry: entry)
     }
     
@@ -101,7 +110,7 @@ struct CryptoPriceTimelineProvider: IntentTimelineProvider {
         _ completion: @escaping (Timeline<CryptoPriceEntry>) -> (),
         timelineEntry: CryptoPriceEntry
     ) {
-        // Next fetch happens in 15 mins
+        // Next fetch in 15 mins
         let nextUpdate = Calendar.current.date(
             byAdding: DateComponents(minute: 15),
             to: Date()
@@ -130,7 +139,7 @@ struct CryptoPriceWidget: Widget {
         .configurationDisplayName("Crypto Price Widget")
         .description("Get price for your selected asset")
         .supportedFamilies([
-            .systemSmall,
+            .systemMedium
         ])
     }
 }
@@ -141,6 +150,7 @@ struct CryptoPriceWidget: Widget {
     CryptoPriceEntry(
         date: Date(),
         name: "Bitcoin",
-        symbol: "BTC"
+        id: "preview",
+        state: "BTC"
     )
 }
