@@ -36,7 +36,7 @@ struct AssetFetcher {
         return assets
     }
     
-    static func fetchAssetDetails(id: String) async throws -> AssetDetails {
+    static func fetchAssetDetails(_ id: String) async throws -> AssetDetails {
         let url = URL(string: "https://api.coincap.io/v2/assets/\(id)")!
         
         // Fetch JSON
