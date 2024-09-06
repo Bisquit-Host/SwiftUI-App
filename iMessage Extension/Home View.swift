@@ -3,11 +3,12 @@ import Messages
 import PteroNet
 
 struct HomeView: View {
-    @State private var vm = MessagesVM()
+    @State private var vm: MessagesVM
     @Binding private var vc: MessagesViewController?
     
     init(_ vc: Binding<MessagesViewController?>) {
         _vc = vc
+        self.vm = .init(vc.wrappedValue)
     }
     
     var body: some View {
@@ -19,33 +20,7 @@ struct HomeView: View {
             }
             
             Button("Test") {
-                sendMessage("r2f")
-            }
-        }
-    }
-    
-    private func sendMessage(_ text: String) {
-        guard let conversation = vc?.conversation else {
-            print("No active conversation")
-            return
-        }
-        
-        let message = MSMessage()
-        let layout = MSMessageTemplateLayout()
-        layout.caption = "text"
-        layout.subcaption = "text"
-        layout.image = UIImage(named: "artwork")
-        layout.imageTitle = "Luza"
-        layout.imageSubtitle = "Flufa"
-        layout.trailingCaption = "11"
-        layout.trailingSubcaption = "22"
-        message.layout = layout
-        
-        conversation.insert(message)
-        
-        conversation.insert(message) { error in
-            if let error {
-                print("Error sending message: \(error.localizedDescription)")
+                vm.sendMessage("r2f")
             }
         }
     }
