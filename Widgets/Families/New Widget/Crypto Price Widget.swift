@@ -129,7 +129,7 @@ struct CryptoPriceTimelineProvider: IntentTimelineProvider {
     }
 }
 
-struct CryptoPriceWidget: Widget {
+struct SomeNewWidget: Widget {
     let kind = "Widgets test"
     
     var body: some WidgetConfiguration {
@@ -140,8 +140,8 @@ struct CryptoPriceWidget: Widget {
         ) { entry in
             CryptoPriceWidgetView(entry)
         }
-        .configurationDisplayName("Crypto Price Widget")
-        .description("Get price for your selected asset")
+        .configurationDisplayName("New Widget")
+        .description("New Description")
         .supportedFamilies([
             .systemMedium
         ])
@@ -149,12 +149,12 @@ struct CryptoPriceWidget: Widget {
 }
 
 #Preview(as: .systemSmall) {
-    CryptoPriceWidget()
+    SomeNewWidget()
 } timeline: {
     CryptoPriceEntry(
         date: Date(),
-        name: "Bitcoin",
-        id: "preview",
-        state: "BTC"
+        name: "Preview Server",
+        id: "previewid",
+        state: "running"
     )
 }
