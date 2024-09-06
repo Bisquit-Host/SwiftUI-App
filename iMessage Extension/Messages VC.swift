@@ -8,7 +8,7 @@ class MessagesViewController: MSMessagesAppViewController {
         // Do any additional setup after loading the view
         
         // Get the UIKit view of your SwiftUI View
-        let child = UIHostingController(rootView: SwiftUIView())
+        let child = UIHostingController(rootView: AppContainer())
         child.view.translatesAutoresizingMaskIntoConstraints = false
         
         self.view.addSubview(child.view)

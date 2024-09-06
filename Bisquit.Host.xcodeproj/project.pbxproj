@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -698,8 +698,14 @@
 		F3A391BC29DB808B00591C84 /* Server Card Na Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A391BB29DB808B00591C84 /* Server Card Na Status.swift */; };
 		F3A7BCC3296B2ABB00E080C1 /* Start Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7BCC2296B2ABB00E080C1 /* Start Page.swift */; };
 		F3A7BCD1296B44FF00E080C1 /* Nav Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BAEC8C2959B3FE00111375 /* Nav Extension.swift */; };
+		F3A7CEBE2C8B685500413400 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3A7CEBD2C8B685500413400 /* Assets.xcassets */; };
 		F3A7CEC42C8B685500413400 /* iMessage MessagesExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F3A7CEC32C8B685500413400 /* iMessage MessagesExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F3A7CEC82C8B685500413400 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3A7CEC72C8B685500413400 /* Messages.framework */; };
+		F3A7CECB2C8B685500413400 /* Messages VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CECA2C8B685500413400 /* Messages VC.swift */; };
+		F3A7CED02C8B685600413400 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3A7CECF2C8B685600413400 /* Assets.xcassets */; };
+		F3A7CEDC2C8B95CB00413400 /* Home View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CEDB2C8B95CB00413400 /* Home View.swift */; };
+		F3A7CEDF2C8B981A00413400 /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F3A7CEDE2C8B981A00413400 /* PteroNet */; };
+		F3A7CEE12C8B9BB700413400 /* App Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CEE02C8B9BB700413400 /* App Container.swift */; };
 		F3A7CF662A44F44A00331B51 /* Auth View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF652A44F44A00331B51 /* Auth View.swift */; };
 		F3A7CF6B2A44F6E000331B51 /* Circular Gauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF6A2A44F6E000331B51 /* Circular Gauge.swift */; };
 		F3A7CF702A44FD5300331B51 /* Server Card Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF6F2A44FD5300331B51 /* Server Card Parent.swift */; };
@@ -1566,8 +1572,15 @@
 		F3A391BB29DB808B00591C84 /* Server Card Na Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Na Status.swift"; sourceTree = "<group>"; };
 		F3A7BCC2296B2ABB00E080C1 /* Start Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page.swift"; sourceTree = "<group>"; };
 		F3A7CEBB2C8B685400413400 /* iMessage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMessage.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3A7CEBD2C8B685500413400 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3A7CEC32C8B685500413400 /* iMessage MessagesExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "iMessage MessagesExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A7CEC72C8B685500413400 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = Library/Frameworks/Messages.framework; sourceTree = DEVELOPER_DIR; };
+		F3A7CECA2C8B685500413400 /* Messages VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Messages VC.swift"; sourceTree = "<group>"; };
+		F3A7CECF2C8B685600413400 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F3A7CED12C8B685600413400 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3A7CEDB2C8B95CB00413400 /* Home View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home View.swift"; sourceTree = "<group>"; };
+		F3A7CEDD2C8B97A300413400 /* iMessage MessagesExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "iMessage MessagesExtension.entitlements"; sourceTree = "<group>"; };
+		F3A7CEE02C8B9BB700413400 /* App Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Container.swift"; sourceTree = "<group>"; };
 		F3A7CF652A44F44A00331B51 /* Auth View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auth View.swift"; sourceTree = "<group>"; };
 		F3A7CF6A2A44F6E000331B51 /* Circular Gauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Circular Gauge.swift"; sourceTree = "<group>"; };
 		F3A7CF6F2A44FD5300331B51 /* Server Card Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Parent.swift"; sourceTree = "<group>"; };
@@ -1712,21 +1725,6 @@
 		F3FFB73E2A57F02C00220FA5 /* Info Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		F3A7CED22C8B685600413400 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = F3A7CEC22C8B685500413400 /* iMessage MessagesExtension */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		F3A7CEBC2C8B685400413400 /* iMessage */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = iMessage; sourceTree = "<group>"; };
-		F3A7CEC92C8B685500413400 /* iMessage MessagesExtension */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (F3A7CED22C8B685600413400 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "iMessage MessagesExtension"; sourceTree = "<group>"; };
-/* End PBXFileSystemSynchronizedRootGroup section */
-
 /* Begin PBXFrameworksBuildPhase section */
 		F337C14F2A8C29CD006F321C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -1784,6 +1782,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3A7CEC82C8B685500413400 /* Messages.framework in Frameworks */,
+				F3A7CEDF2C8B981A00413400 /* PteroNet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2041,8 +2040,8 @@
 				F3D296082AF3BE5800ED43A0 /* UI Tests */,
 				F3E2BEF62C1DA07E00B7A6D4 /* Contact Provider Extension */,
 				F3FDFF832C89121F009EBB5C /* Intent Handler */,
-				F3A7CEBC2C8B685400413400 /* iMessage */,
-				F3A7CEC92C8B685500413400 /* iMessage MessagesExtension */,
+				F3A7CEE32C8B9D5400413400 /* iMessage */,
+				F3A7CEE22C8B9D3800413400 /* iMessage Extension */,
 				F31BA5242958FF7C0006D126 /* Products */,
 				F3D3437429BFE5A2007C0D58 /* Frameworks */,
 			);
@@ -2862,6 +2861,27 @@
 			path = "Server Card";
 			sourceTree = "<group>";
 		};
+		F3A7CEE22C8B9D3800413400 /* iMessage Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F3A7CEE02C8B9BB700413400 /* App Container.swift */,
+				F3A7CECF2C8B685600413400 /* Assets.xcassets */,
+				F3A7CEDB2C8B95CB00413400 /* Home View.swift */,
+				F3A7CEDD2C8B97A300413400 /* iMessage MessagesExtension.entitlements */,
+				F3A7CED12C8B685600413400 /* Info.plist */,
+				F3A7CECA2C8B685500413400 /* Messages VC.swift */,
+			);
+			path = "iMessage Extension";
+			sourceTree = "<group>";
+		};
+		F3A7CEE32C8B9D5400413400 /* iMessage */ = {
+			isa = PBXGroup;
+			children = (
+				F3A7CEBD2C8B685500413400 /* Assets.xcassets */,
+			);
+			path = iMessage;
+			sourceTree = "<group>";
+		};
 		F3A7CF692A44F6CA00331B51 /* Server List */ = {
 			isa = PBXGroup;
 			children = (
@@ -3543,9 +3563,6 @@
 			dependencies = (
 				F3A7CEC62C8B685500413400 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				F3A7CEBC2C8B685400413400 /* iMessage */,
-			);
 			name = iMessage;
 			packageProductDependencies = (
 			);
@@ -3565,11 +3582,9 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				F3A7CEC92C8B685500413400 /* iMessage MessagesExtension */,
-			);
 			name = "iMessage MessagesExtension";
 			packageProductDependencies = (
+				F3A7CEDE2C8B981A00413400 /* PteroNet */,
 			);
 			productName = "iMessage MessagesExtension";
 			productReference = F3A7CEC32C8B685500413400 /* iMessage MessagesExtension.appex */;
@@ -3860,6 +3875,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3A7CEBE2C8B685500413400 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3867,6 +3883,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3A7CED02C8B685600413400 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4852,6 +4869,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3A7CEDC2C8B95CB00413400 /* Home View.swift in Sources */,
+				F3A7CEE12C8B9BB700413400 /* App Container.swift in Sources */,
+				F3A7CECB2C8B685500413400 /* Messages VC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6692,6 +6712,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F37266E529D9EF25005FD103 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		F3A7CEDE2C8B981A00413400 /* PteroNet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "PteroNet" */;
+			productName = PteroNet;
 		};
 		F3B7BFDD2B38E206005B5003 /* Pow */ = {
 			isa = XCSwiftPackageProductDependency;
