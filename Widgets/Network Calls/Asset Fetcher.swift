@@ -66,7 +66,8 @@ struct AssetFetcher {
             let state = json.attributes.state
             
             assetDetails = AssetDetails(
-                state: state
+                state: state,
+                test: json.attributes
             )
         } catch {
             assetDetails = AssetDetails(

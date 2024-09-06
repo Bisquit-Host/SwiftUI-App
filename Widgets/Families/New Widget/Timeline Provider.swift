@@ -44,12 +44,13 @@ struct CryptoPriceTimelineProvider: IntentTimelineProvider {
             // Fetch asset details
             let assetDetails = await AssetFetcher.fetchAssetDetails(id)
             
-            // Create `CryptoPriceEntry` using based on user selected configuration & fetched info
+            // Create Entry using based on user selected configuration & fetched info
             let entry = ResourcesUsageEntry(
                 date: Date(),
                 name: name,
                 id: id,
-                state: assetDetails.state
+                state: assetDetails.state,
+                test: assetDetails.test
             )
             
             // Trigger completion & next fetch in 15 mins
