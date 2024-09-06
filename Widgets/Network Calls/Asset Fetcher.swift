@@ -12,14 +12,12 @@ struct AssetFetcher {
             if let apiKey = Keychain.load(key: "selectedApiKey") {
                 request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
             } else {
-                print("Error fetching value from Keychain")
+                let asset = Asset(
+                    id: "69.1",
+                    name: "Error fetching value from Keychain"
+                )
                 
-                return [
-                    .init(
-                        id: "69.1",
-                        name: "Error fetching value from Keychain"
-                    )
-                ]
+                return [asset]
             }
             
             let (data, _) = try await URLSession.shared.data(for: request)
@@ -53,7 +51,9 @@ struct AssetFetcher {
             guard let request = URLRequest(
                 path: "client/servers/\(id)/resources"
             ) else {
-                return AssetDetails(state: "Error creating request")
+                return AssetDetails(
+                    state: "Error creating request"
+                )
             }
             
             let (data, _) = try await URLSession.shared.data(for: request)
