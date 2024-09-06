@@ -68,7 +68,7 @@ struct CryptoPriceTimelineProvider: IntentTimelineProvider {
         in context: Context,
         completion: @escaping (Timeline<CryptoPriceEntry>) -> ()
     ) {
-        // Extract required info from configuration
+        // Extract info from configuration
         
         guard
             let name = configuration.selectedCrypto?.name,
