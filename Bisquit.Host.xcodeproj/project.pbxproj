@@ -441,9 +441,9 @@
 		F36B73862C8AEAE700E858FE /* Model Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B73852C8AEAE700E858FE /* Model Asset.swift */; };
 		F36B73872C8AEAE700E858FE /* Model Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B73852C8AEAE700E858FE /* Model Asset.swift */; };
 		F36B73882C8AEAE700E858FE /* Model Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B73852C8AEAE700E858FE /* Model Asset.swift */; };
-		F36B738A2C8AEC3D00E858FE /* Crypto Price Timeline Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B73892C8AEC3D00E858FE /* Crypto Price Timeline Provider.swift */; };
+		F36B738A2C8AEC3D00E858FE /* Timeline Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B73892C8AEC3D00E858FE /* Timeline Provider.swift */; };
 		F36B738E2C8AEC8400E858FE /* Resources Usage Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B738D2C8AEC8400E858FE /* Resources Usage Entry.swift */; };
-		F36B73902C8AECB000E858FE /* Crypto Price Widget View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B738F2C8AECB000E858FE /* Crypto Price Widget View.swift */; };
+		F36B73902C8AECB000E858FE /* Widget View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B738F2C8AECB000E858FE /* Widget View.swift */; };
 		F36D530C2A05B6C4007324C6 /* Server List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31578B229675F5D0016A600 /* Server List.swift */; };
 		F36D530D2A05B6C9007324C6 /* Server List Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */; };
 		F36D530E2A05B6CE007324C6 /* Browser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA58E295901B60006D126 /* Browser.swift */; };
@@ -1124,7 +1124,7 @@
 		F3FDFF642C89120D009EBB5C /* Intent Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF632C89120D009EBB5C /* Intent Handler.swift */; };
 		F3FDFF792C89120D009EBB5C /* Intent Handler.appex in Embed Foundation Extensions (2 items) */ = {isa = PBXBuildFile; fileRef = F3FDFF5F2C89120D009EBB5C /* Intent Handler.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F3FDFF882C8912F1009EBB5C /* Asset Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF872C8912F1009EBB5C /* Asset Fetcher.swift */; };
-		F3FDFF8B2C89130F009EBB5C /* Crypto Price Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF8A2C89130F009EBB5C /* Crypto Price Widget.swift */; };
+		F3FDFF8B2C89130F009EBB5C /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF8A2C89130F009EBB5C /* Widget.swift */; };
 		F3FDFF8D2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF8C2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition */; };
 		F3FDFF8E2C891343009EBB5C /* Asset Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF872C8912F1009EBB5C /* Asset Fetcher.swift */; };
 		F3FDFF8F2C8913AE009EBB5C /* CryptoPriceWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF8C2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition */; };
@@ -1444,9 +1444,9 @@
 		F36B736F2C8A4CAF00E858FE /* Refresh Button Intent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Refresh Button Intent.swift"; sourceTree = "<group>"; };
 		F36B73792C8AE9D400E858FE /* Power Actions Intents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Actions Intents.swift"; sourceTree = "<group>"; };
 		F36B73852C8AEAE700E858FE /* Model Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model Asset.swift"; sourceTree = "<group>"; };
-		F36B73892C8AEC3D00E858FE /* Crypto Price Timeline Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Crypto Price Timeline Provider.swift"; sourceTree = "<group>"; };
+		F36B73892C8AEC3D00E858FE /* Timeline Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timeline Provider.swift"; sourceTree = "<group>"; };
 		F36B738D2C8AEC8400E858FE /* Resources Usage Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Resources Usage Entry.swift"; sourceTree = "<group>"; };
-		F36B738F2C8AECB000E858FE /* Crypto Price Widget View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Crypto Price Widget View.swift"; sourceTree = "<group>"; };
+		F36B738F2C8AECB000E858FE /* Widget View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Widget View.swift"; sourceTree = "<group>"; };
 		F36FDB91295AF3AB00D45070 /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
 		F37061C729774869009B4067 /* Nav Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Extension.swift"; sourceTree = "<group>"; };
 		F37061C929774886009B4067 /* Nav Destinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Destinations.swift"; sourceTree = "<group>"; };
@@ -1671,7 +1671,7 @@
 		F3FDFF652C89120D009EBB5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3FDFF6B2C89120D009EBB5C /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
 		F3FDFF872C8912F1009EBB5C /* Asset Fetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Asset Fetcher.swift"; sourceTree = "<group>"; };
-		F3FDFF8A2C89130F009EBB5C /* Crypto Price Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Crypto Price Widget.swift"; sourceTree = "<group>"; };
+		F3FDFF8A2C89130F009EBB5C /* Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget.swift; sourceTree = "<group>"; };
 		F3FDFF8C2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = CryptoPriceWidget.intentdefinition; sourceTree = "<group>"; };
 		F3FF59FE2A4A3188003A1973 /* User List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User List.swift"; sourceTree = "<group>"; };
 		F3FF5A022A4A359C003A1973 /* InfoTab Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InfoTab Buttons.swift"; sourceTree = "<group>"; };
@@ -2492,10 +2492,10 @@
 			isa = PBXGroup;
 			children = (
 				F3FDFF8C2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition */,
-				F3FDFF8A2C89130F009EBB5C /* Crypto Price Widget.swift */,
-				F36B738F2C8AECB000E858FE /* Crypto Price Widget View.swift */,
+				F3FDFF8A2C89130F009EBB5C /* Widget.swift */,
+				F36B738F2C8AECB000E858FE /* Widget View.swift */,
 				F36B738D2C8AEC8400E858FE /* Resources Usage Entry.swift */,
-				F36B73892C8AEC3D00E858FE /* Crypto Price Timeline Provider.swift */,
+				F36B73892C8AEC3D00E858FE /* Timeline Provider.swift */,
 			);
 			path = "New Widget";
 			sourceTree = "<group>";
@@ -4672,7 +4672,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F36B73882C8AEAE700E858FE /* Model Asset.swift in Sources */,
-				F3FDFF8B2C89130F009EBB5C /* Crypto Price Widget.swift in Sources */,
+				F3FDFF8B2C89130F009EBB5C /* Widget.swift in Sources */,
 				F323BFA22B20DC9000116B97 /* Power Widget.swift in Sources */,
 				F337B4062A89FAC600DD79AA /* Entry.swift in Sources */,
 				F3FDFF882C8912F1009EBB5C /* Asset Fetcher.swift in Sources */,
@@ -4686,14 +4686,14 @@
 				F337B4102A89FE5C00DD79AA /* Static Entry.swift in Sources */,
 				F323BFA72B211C6D00116B97 /* Power Provider.swift in Sources */,
 				F3FDFF8D2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition in Sources */,
-				F36B73902C8AECB000E858FE /* Crypto Price Widget View.swift in Sources */,
+				F36B73902C8AECB000E858FE /* Widget View.swift in Sources */,
 				F323BFA32B20DE4F00116B97 /* Network Calls.swift in Sources */,
 				F318240B2A8777E30039866C /* Provider.swift in Sources */,
 				F386373C2A8641120069F074 /* Widgets Bundle.swift in Sources */,
 				F3187A4E2C891B2A008FB911 /* Intents.intentdefinition in Sources */,
 				F3287A792B10A11E001AFE54 /* Live Activity.swift in Sources */,
 				F323BFA52B211C3700116B97 /* Power Entry.swift in Sources */,
-				F36B738A2C8AEC3D00E858FE /* Crypto Price Timeline Provider.swift in Sources */,
+				F36B738A2C8AEC3D00E858FE /* Timeline Provider.swift in Sources */,
 				F371468E2B123807001E0296 /* Activity View State.swift in Sources */,
 				F386373E2A8641120069F074 /* System Small Widget.swift in Sources */,
 				F38637402A8641120069F074 /* Power Intent Config.swift in Sources */,
