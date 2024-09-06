@@ -444,6 +444,13 @@
 		F36B738A2C8AEC3D00E858FE /* Timeline Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B73892C8AEC3D00E858FE /* Timeline Provider.swift */; };
 		F36B738E2C8AEC8400E858FE /* Resources Usage Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B738D2C8AEC8400E858FE /* Resources Usage Entry.swift */; };
 		F36B73902C8AECB000E858FE /* Widget View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B738F2C8AECB000E858FE /* Widget View.swift */; };
+		F36B739B2C8B073B00E858FE /* AudioVisualizer in Frameworks */ = {isa = PBXBuildFile; productRef = F36B739A2C8B073B00E858FE /* AudioVisualizer */; };
+		F36B739D2C8B074300E858FE /* AudioVisualizer in Frameworks */ = {isa = PBXBuildFile; productRef = F36B739C2C8B074300E858FE /* AudioVisualizer */; };
+		F36B739F2C8B077A00E858FE /* AudioVisualizer in Frameworks */ = {isa = PBXBuildFile; productRef = F36B739E2C8B077A00E858FE /* AudioVisualizer */; };
+		F36B73A12C8B07E100E858FE /* AudioVisualizer in Frameworks */ = {isa = PBXBuildFile; productRef = F36B73A02C8B07E100E858FE /* AudioVisualizer */; };
+		F36B73A72C8B0B7B00E858FE /* Audio Player View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B73A22C8B0B7B00E858FE /* Audio Player View.swift */; };
+		F36B73A82C8B0B7B00E858FE /* Audio Player View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B73A22C8B0B7B00E858FE /* Audio Player View.swift */; };
+		F36B73A92C8B0B7B00E858FE /* Audio Player View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B73A22C8B0B7B00E858FE /* Audio Player View.swift */; };
 		F36D530C2A05B6C4007324C6 /* Server List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31578B229675F5D0016A600 /* Server List.swift */; };
 		F36D530D2A05B6C9007324C6 /* Server List Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */; };
 		F36D530E2A05B6CE007324C6 /* Browser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA58E295901B60006D126 /* Browser.swift */; };
@@ -1447,6 +1454,7 @@
 		F36B73892C8AEC3D00E858FE /* Timeline Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timeline Provider.swift"; sourceTree = "<group>"; };
 		F36B738D2C8AEC8400E858FE /* Resources Usage Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Resources Usage Entry.swift"; sourceTree = "<group>"; };
 		F36B738F2C8AECB000E858FE /* Widget View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Widget View.swift"; sourceTree = "<group>"; };
+		F36B73A22C8B0B7B00E858FE /* Audio Player View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Audio Player View.swift"; sourceTree = "<group>"; };
 		F36FDB91295AF3AB00D45070 /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
 		F37061C729774869009B4067 /* Nav Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Extension.swift"; sourceTree = "<group>"; };
 		F37061C929774886009B4067 /* Nav Destinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Destinations.swift"; sourceTree = "<group>"; };
@@ -1687,6 +1695,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F30860202B002D50004D776A /* PteroNet in Frameworks */,
+				F36B739F2C8B077A00E858FE /* AudioVisualizer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1739,6 +1748,7 @@
 				F342FAA82B2C61ED00854270 /* Pow in Frameworks */,
 				F389BB572A05B47000911EBF /* SafariCover in Frameworks */,
 				F308601C2B002D40004D776A /* PteroNet in Frameworks */,
+				F36B739B2C8B073B00E858FE /* AudioVisualizer in Frameworks */,
 				F34745CA2A31F39600EE2FB8 /* MailCover in Frameworks */,
 				F3F6ACAF2A51E48700EE417F /* AlertKit in Frameworks */,
 				F34745C82A31F39100EE2FB8 /* ScrechKit in Frameworks */,
@@ -1766,6 +1776,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F30860242B002FD8004D776A /* PteroNet in Frameworks */,
+				F36B739D2C8B074300E858FE /* AudioVisualizer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1794,6 +1805,7 @@
 				F342FAA02B2C5DF300854270 /* Pow in Frameworks */,
 				F335CA062C63E86D006C71C6 /* DeviceKit in Frameworks */,
 				F34745CC2A31F3A000EE2FB8 /* MailCover in Frameworks */,
+				F36B73A12C8B07E100E858FE /* AudioVisualizer in Frameworks */,
 				F30860142B002B31004D776A /* PteroNet in Frameworks */,
 				F352AF9B2A4EE707004AD489 /* AlertKit in Frameworks */,
 				F37266E729D9EF25005FD103 /* Kingfisher in Frameworks */,
@@ -2174,6 +2186,7 @@
 				F31BA5AB295902B00006D126 /* File Tab.swift */,
 				F3D558AB2A3360ED00608447 /* File Tab VM.swift */,
 				F37266BB29D811B7005FD103 /* File View.swift */,
+				F36B73A22C8B0B7B00E858FE /* Audio Player View.swift */,
 				F37266BF29D826F5005FD103 /* File Details.swift */,
 				F37266A929D71A1B005FD103 /* File Icon.swift */,
 				F3F5BC952BF7668E00EB8FB1 /* Sensitivity Analyzer.swift */,
@@ -3336,6 +3349,7 @@
 				F342FA9F2B2C5DF300854270 /* Pow */,
 				F335CA052C63E86D006C71C6 /* DeviceKit */,
 				F33C2AC02C69168C002FD150 /* QuickLooking */,
+				F36B73A02C8B07E100E858FE /* AudioVisualizer */,
 			);
 			productName = Bisquit.Host;
 			productReference = F31BA5232958FF7C0006D126 /* Bisquit.Host.app */;
@@ -3389,6 +3403,7 @@
 				F308601B2B002D40004D776A /* PteroNet */,
 				F342FAA72B2C61ED00854270 /* Pow */,
 				F33C2AC42C691764002FD150 /* QuickLooking */,
+				F36B739A2C8B073B00E858FE /* AudioVisualizer */,
 			);
 			productName = "Clip Demo";
 			productReference = F31BA54E2958FFAF0006D126 /* Clip Demo.app */;
@@ -3410,6 +3425,7 @@
 			name = "Unit Tests";
 			packageProductDependencies = (
 				F308601F2B002D50004D776A /* PteroNet */,
+				F36B739E2C8B077A00E858FE /* AudioVisualizer */,
 			);
 			productName = "Unit Tests";
 			productReference = F337C1522A8C29CD006F321C /* Unit Tests.xctest */;
@@ -3496,6 +3512,7 @@
 			name = "UI Tests";
 			packageProductDependencies = (
 				F30860232B002FD8004D776A /* PteroNet */,
+				F36B739C2C8B074300E858FE /* AudioVisualizer */,
 			);
 			productName = "UI Tests";
 			productReference = F3D296072AF3BE5800ED43A0 /* UI Tests.xctest */;
@@ -3637,6 +3654,7 @@
 				F342FA9E2B2C5DF200854270 /* XCRemoteSwiftPackageReference "Pow" */,
 				F335CA042C63E86D006C71C6 /* XCRemoteSwiftPackageReference "DeviceKit" */,
 				F33C2ABF2C69168C002FD150 /* XCRemoteSwiftPackageReference "QuickLooking" */,
+				F36B73952C8B055600E858FE /* XCRemoteSwiftPackageReference "Audio-Visualizer" */,
 			);
 			productRefGroup = F31BA5242958FF7C0006D126 /* Products */;
 			projectDirPath = "";
@@ -4084,6 +4102,7 @@
 				F3DD93D32A372BED006A41AA /* Console Overlay.swift in Sources */,
 				F3A1D2352A201CBB0053261E /* Browser Spec.swift in Sources */,
 				F3E467552A49939300FABE5F /* Info Relative Stats.swift in Sources */,
+				F36B73A92C8B0B7B00E858FE /* Audio Player View.swift in Sources */,
 				F37266C829D83394005FD103 /* Text File VM.swift in Sources */,
 				F3BC03AD2B1FF2FC0011F98A /* Schedule Context Menu.swift in Sources */,
 				F3D7D87B29E83D1800BCAFFE /* Cache Settings.swift in Sources */,
@@ -4403,6 +4422,7 @@
 				F3AF91CE2B423A26001D8F80 /* SSH Create View.swift in Sources */,
 				F3A1D2392A2024E10053261E /* Browser Hints.swift in Sources */,
 				F3464D242A86397E00188B0C /* PowerSignalAppEnum.swift in Sources */,
+				F36B73A82C8B0B7B00E858FE /* Audio Player View.swift in Sources */,
 				F36D532B2A05B875007324C6 /* Backup List.swift in Sources */,
 				F3A994AB2A178A9E00530615 /* Map View.swift in Sources */,
 				F3DAD6BF2A4793F8002ED405 /* Circular Gauge.swift in Sources */,
@@ -4565,6 +4585,7 @@
 				F3D2955B2AF39E4300ED43A0 /* Server List Footer.swift in Sources */,
 				F3D295682AF39EB900ED43A0 /* Console.swift in Sources */,
 				F3D295702AF39EF400ED43A0 /* Settings Button.swift in Sources */,
+				F36B73A72C8B0B7B00E858FE /* Audio Player View.swift in Sources */,
 				F3D2954E2AF39DE000ED43A0 /* Browser Topbar.swift in Sources */,
 				F32E88CA2AF83E3F00959D49 /* Topbar Admin Button.swift in Sources */,
 				F3D295C92AF3A20B00ED43A0 /* Credential Field.swift in Sources */,
@@ -6147,6 +6168,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		F36B73952C8B055600E858FE /* XCRemoteSwiftPackageReference "Audio-Visualizer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TopScrech/Audio-Visualizer";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		F37266E529D9EF25005FD103 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
@@ -6343,6 +6372,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "PteroNet" */;
 			productName = PteroNet;
+		};
+		F36B739A2C8B073B00E858FE /* AudioVisualizer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F36B73952C8B055600E858FE /* XCRemoteSwiftPackageReference "Audio-Visualizer" */;
+			productName = AudioVisualizer;
+		};
+		F36B739C2C8B074300E858FE /* AudioVisualizer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F36B73952C8B055600E858FE /* XCRemoteSwiftPackageReference "Audio-Visualizer" */;
+			productName = AudioVisualizer;
+		};
+		F36B739E2C8B077A00E858FE /* AudioVisualizer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F36B73952C8B055600E858FE /* XCRemoteSwiftPackageReference "Audio-Visualizer" */;
+			productName = AudioVisualizer;
+		};
+		F36B73A02C8B07E100E858FE /* AudioVisualizer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F36B73952C8B055600E858FE /* XCRemoteSwiftPackageReference "Audio-Visualizer" */;
+			productName = AudioVisualizer;
 		};
 		F36D53492A05B961007324C6 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
