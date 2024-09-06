@@ -2316,10 +2316,9 @@
 		F337B4072A89FB0200DD79AA /* Families */ = {
 			isa = PBXGroup;
 			children = (
-				F386373D2A8641120069F074 /* System Small Widget.swift */,
-				F337B4082A89FB4300DD79AA /* System Small Widget View.swift */,
 				F36B73772C8AE93000E858FE /* New Widget */,
 				F323BFA02B20DC7A00116B97 /* Power Widget */,
+				F36B737B2C8AEA2D00E858FE /* System Small */,
 				F337B40C2A89FDFB00DD79AA /* New Group */,
 				F38282012B0E14980088C48B /* Live Activity */,
 			);
@@ -2494,6 +2493,15 @@
 				F36B73792C8AE9D400E858FE /* Power Actions Intents.swift */,
 			);
 			path = Intents;
+			sourceTree = "<group>";
+		};
+		F36B737B2C8AEA2D00E858FE /* System Small */ = {
+			isa = PBXGroup;
+			children = (
+				F386373D2A8641120069F074 /* System Small Widget.swift */,
+				F337B4082A89FB4300DD79AA /* System Small Widget View.swift */,
+			);
+			path = "System Small";
 			sourceTree = "<group>";
 		};
 		F36FDB9A295B04B200D45070 /* Server List */ = {
