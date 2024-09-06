@@ -1,33 +1,9 @@
 import PteroNet
 
-struct WidgetServerListResponse: Decodable {
-    let data: [WidgetServer]
-}
-
-struct WidgetServer: Decodable {
-    let attributes: WidgetServerAttributes
-}
-
-struct WidgetServerAttributes: Decodable {
-    let identifier: String
-    let name: String
-}
-
-struct Asset: Codable {
-    let id: String
-    let name: String
-}
-
-struct AssetDetails: Codable {
-    let state: String
-}
-
 struct AssetFetcher {
-    private struct Response<T: Codable>: Codable {
-        let data: T
-    }
-    
     static func fetchTopTenAssets() async throws -> [Asset] {
+        var assets: [Asset] = []
+        
         do {
             let url = URL(string: "https://mgr.bisquit.host/api/client")!
             
@@ -49,9 +25,7 @@ struct AssetFetcher {
             let (data, _) = try await URLSession.shared.data(for: request)
             
             let response = try JSONDecoder().decode(WidgetServerListResponse.self, from: data)
-            
-            var assets: [Asset] = []
-            
+                        
             for server in response.data.map(\.attributes) {
                 let asset = Asset(
                     id: server.identifier,
@@ -60,16 +34,13 @@ struct AssetFetcher {
                 
                 assets.append(asset)
             }
-            
-            return assets
-            
         } catch {
-            let testAssets: [Asset] = [
-                .init(id: "69.2", name: error.localizedDescription)
-            ]
+            let errorAsset = Asset(id: "69.2", name: error.localizedDescription)
             
-            return testAssets
+            assets.append(errorAsset)
         }
+        
+        return assets
     }
     
     static func fetchAssetDetails(_ id: String) async -> AssetDetails {
@@ -96,12 +67,4 @@ struct AssetFetcher {
             return assetDetails
         }
     }
-}
-
-public struct WWResourceUsageResponse: Codable {
-    public let attributes: WWResourceUsageAttributes
-}
-
-public struct WWResourceUsageAttributes: Codable {
-    public let current_state: String
 }
