@@ -706,6 +706,7 @@
 		F3A7CEDC2C8B95CB00413400 /* Home View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CEDB2C8B95CB00413400 /* Home View.swift */; };
 		F3A7CEDF2C8B981A00413400 /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F3A7CEDE2C8B981A00413400 /* PteroNet */; };
 		F3A7CEE12C8B9BB700413400 /* App Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CEE02C8B9BB700413400 /* App Container.swift */; };
+		F3A7CEE52C8B9E7500413400 /* Messages VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CEE42C8B9E7500413400 /* Messages VM.swift */; };
 		F3A7CF662A44F44A00331B51 /* Auth View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF652A44F44A00331B51 /* Auth View.swift */; };
 		F3A7CF6B2A44F6E000331B51 /* Circular Gauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF6A2A44F6E000331B51 /* Circular Gauge.swift */; };
 		F3A7CF702A44FD5300331B51 /* Server Card Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF6F2A44FD5300331B51 /* Server Card Parent.swift */; };
@@ -1581,6 +1582,7 @@
 		F3A7CEDB2C8B95CB00413400 /* Home View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home View.swift"; sourceTree = "<group>"; };
 		F3A7CEDD2C8B97A300413400 /* iMessage MessagesExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "iMessage MessagesExtension.entitlements"; sourceTree = "<group>"; };
 		F3A7CEE02C8B9BB700413400 /* App Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Container.swift"; sourceTree = "<group>"; };
+		F3A7CEE42C8B9E7500413400 /* Messages VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Messages VM.swift"; sourceTree = "<group>"; };
 		F3A7CF652A44F44A00331B51 /* Auth View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auth View.swift"; sourceTree = "<group>"; };
 		F3A7CF6A2A44F6E000331B51 /* Circular Gauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Circular Gauge.swift"; sourceTree = "<group>"; };
 		F3A7CF6F2A44FD5300331B51 /* Server Card Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Parent.swift"; sourceTree = "<group>"; };
@@ -2865,11 +2867,12 @@
 			isa = PBXGroup;
 			children = (
 				F3A7CEE02C8B9BB700413400 /* App Container.swift */,
+				F3A7CECA2C8B685500413400 /* Messages VC.swift */,
 				F3A7CECF2C8B685600413400 /* Assets.xcassets */,
-				F3A7CEDB2C8B95CB00413400 /* Home View.swift */,
 				F3A7CEDD2C8B97A300413400 /* iMessage MessagesExtension.entitlements */,
 				F3A7CED12C8B685600413400 /* Info.plist */,
-				F3A7CECA2C8B685500413400 /* Messages VC.swift */,
+				F3A7CEDB2C8B95CB00413400 /* Home View.swift */,
+				F3A7CEE42C8B9E7500413400 /* Messages VM.swift */,
 			);
 			path = "iMessage Extension";
 			sourceTree = "<group>";
@@ -4871,6 +4874,7 @@
 			files = (
 				F3A7CEDC2C8B95CB00413400 /* Home View.swift in Sources */,
 				F3A7CEE12C8B9BB700413400 /* App Container.swift in Sources */,
+				F3A7CEE52C8B9E7500413400 /* Messages VM.swift in Sources */,
 				F3A7CECB2C8B685500413400 /* Messages VC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5828,14 +5832,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
-				CODE_SIGN_ENTITLEMENTS = "iMessage MessagesExtension/iMessage MessagesExtension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "iMessage Extension/iMessage MessagesExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8FQUA2F388;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "iMessage MessagesExtension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = iMessage;
+				INFOPLIST_FILE = "iMessage Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Bisquit.Host. All rights reserved.";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5859,14 +5863,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
-				CODE_SIGN_ENTITLEMENTS = "iMessage MessagesExtension/iMessage MessagesExtension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "iMessage Extension/iMessage MessagesExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8FQUA2F388;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "iMessage MessagesExtension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = iMessage;
+				INFOPLIST_FILE = "iMessage Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Bisquit.Host. All rights reserved.";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5895,11 +5899,12 @@
 				DEVELOPMENT_TEAM = 8FQUA2F388;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
-				MARKETING_VERSION = 1.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "dev.topscrech.Bisquit-host.iMessage";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -5919,11 +5924,12 @@
 				DEVELOPMENT_TEAM = 8FQUA2F388;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
-				MARKETING_VERSION = 1.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "dev.topscrech.Bisquit-host.iMessage";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
