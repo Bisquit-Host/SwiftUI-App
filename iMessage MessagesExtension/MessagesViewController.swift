@@ -1,6 +1,7 @@
 import SwiftUI
 import Messages
 
+@objc(MessagesViewController)
 class MessagesViewController: MSMessagesAppViewController {
     override func viewDidLoad() {
         super.viewDidLoad()

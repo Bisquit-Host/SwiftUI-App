@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 74;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -1716,26 +1716,15 @@
 		F3A7CED22C8B685600413400 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				/Localized/MainInterface.storyboard,
 				Info.plist,
 			);
 			target = F3A7CEC22C8B685500413400 /* iMessage MessagesExtension */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
-/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		F3A7CED62C8B685600413400 /* PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet */ = {
-			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = F3A7CEC12C8B685500413400 /* Resources */;
-			membershipExceptions = (
-				Base.lproj/MainInterface.storyboard,
-			);
-		};
-/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		F3A7CEBC2C8B685400413400 /* iMessage */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = iMessage; sourceTree = "<group>"; };
-		F3A7CEC92C8B685500413400 /* iMessage MessagesExtension */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (F3A7CED22C8B685600413400 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, F3A7CED62C8B685600413400 /* PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "iMessage MessagesExtension"; sourceTree = "<group>"; };
+		F3A7CEC92C8B685500413400 /* iMessage MessagesExtension */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (F3A7CED22C8B685600413400 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "iMessage MessagesExtension"; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3750,6 +3739,7 @@
 				};
 			};
 			buildConfigurationList = F31BA51E2958FF7C0006D126 /* Build configuration list for PBXProject "Bisquit.Host" */;
+			compatibilityVersion = "Xcode 15.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -3775,7 +3765,6 @@
 				F33C2ABF2C69168C002FD150 /* XCRemoteSwiftPackageReference "QuickLooking" */,
 				F36B73952C8B055600E858FE /* XCRemoteSwiftPackageReference "Audio-Visualizer" */,
 			);
-			preferredProjectObjectVersion = 63;
 			productRefGroup = F31BA5242958FF7C0006D126 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -5819,6 +5808,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CODE_SIGN_ENTITLEMENTS = "iMessage MessagesExtension/iMessage MessagesExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8FQUA2F388;
@@ -5827,13 +5817,13 @@
 				INFOPLIST_FILE = "iMessage MessagesExtension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = iMessage;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Bisquit.Host. All rights reserved.";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "dev.topscrech.Bisquit-host.iMessage.Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -5849,6 +5839,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CODE_SIGN_ENTITLEMENTS = "iMessage MessagesExtension/iMessage MessagesExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8FQUA2F388;
@@ -5857,13 +5848,13 @@
 				INFOPLIST_FILE = "iMessage MessagesExtension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = iMessage;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Bisquit.Host. All rights reserved.";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "dev.topscrech.Bisquit-host.iMessage.Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
