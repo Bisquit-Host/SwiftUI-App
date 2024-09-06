@@ -84,8 +84,8 @@
 				<string>    //@AppStorage("consoleFontDesign") var consoleFontDesign = 1
 </string>
 				<key>leading</key>
-				<string>    //    @AppStorage("coloredTextEnabled") var coloredTextEnabled = true
-    @AppStorage("consoleFontSize") var consoleFontSize = 10.0
+				<string>    @AppStorage("consoleFontSize") var consoleFontSize = 10.0
+    //    @AppStorage("coloredTextEnabled") var coloredTextEnabled = true
 </string>
 				<key>trailing</key>
 				<string>    
