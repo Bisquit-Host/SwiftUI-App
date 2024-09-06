@@ -12,15 +12,15 @@ struct HomeView: View {
     }
     
     var body: some View {
-        VStack {
-            Text("Hello, World!")
-            
-            if let apiKey = Keychain.load(key: "selectedApiKey") {
-                Text("Selected API Key: \(apiKey.prefix(6))")
+        NavigationStack {
+            VStack {
+                
             }
-            
-            Button("Test") {
-                vm.sendMessage("r2f")
+            .toolbar {
+                Button("Test") {
+                    vm.sendMessage("r2f")
+                }
+                .padding(.trailing)
             }
         }
     }
