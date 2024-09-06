@@ -2186,7 +2186,6 @@
 				F31BA5AB295902B00006D126 /* File Tab.swift */,
 				F3D558AB2A3360ED00608447 /* File Tab VM.swift */,
 				F37266BB29D811B7005FD103 /* File View.swift */,
-				F36B73A22C8B0B7B00E858FE /* Audio Player View.swift */,
 				F37266BF29D826F5005FD103 /* File Details.swift */,
 				F37266A929D71A1B005FD103 /* File Icon.swift */,
 				F3F5BC952BF7668E00EB8FB1 /* Sensitivity Analyzer.swift */,
@@ -2203,6 +2202,7 @@
 				F3BEEBC02A4A779400E686B8 /* Folder */,
 				F3BEEBC62A4AB34D00E686B8 /* Text */,
 				F3BEEBBF2A4A778C00E686B8 /* Quick Look */,
+				F36B73AE2C8B20F000E858FE /* Audio */,
 				F3BEEBC52A4AB34600E686B8 /* Video */,
 			);
 			path = Destinations;
@@ -2538,6 +2538,14 @@
 				F36B73852C8AEAE700E858FE /* Model Asset.swift */,
 			);
 			path = "Network Calls";
+			sourceTree = "<group>";
+		};
+		F36B73AE2C8B20F000E858FE /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				F36B73A22C8B0B7B00E858FE /* Audio Player View.swift */,
+			);
+			path = Audio;
 			sourceTree = "<group>";
 		};
 		F36FDB9A295B04B200D45070 /* Server List */ = {

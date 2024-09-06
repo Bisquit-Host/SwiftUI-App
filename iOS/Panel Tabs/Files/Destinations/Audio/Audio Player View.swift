@@ -1,5 +1,6 @@
 import ScrechKit
 import PteroNet
+import AVFoundation
 import AudioVisualizer
 
 struct AudioPlayerView: View {
@@ -16,15 +17,16 @@ struct AudioPlayerView: View {
     var body: some View {
         VStack {
             if let audioUrl {
-                AudioVisualizerView(
-                    audioUrl,
-                    name: "Moonlight Sonata Op. 27 No. 2 - III. Preston",
-                    artist: "Ludwig van Beethoven"
-                )
+                AudioVisualizerView(audioUrl, fileName: name, image: Image(.artwork))
             }
         }
         .task {
             downloadFile(name, root: root)
+        }
+        .toolbar {
+            if let audioUrl {
+                ShareLink(item: audioUrl)
+            }
         }
     }
     
