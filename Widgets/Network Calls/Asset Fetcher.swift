@@ -25,7 +25,7 @@ struct AssetFetcher {
             let (data, _) = try await URLSession.shared.data(for: request)
             
             let response = try JSONDecoder().decode(WidgetServerListResponse.self, from: data)
-                        
+            
             for server in response.data.map(\.attributes) {
                 let asset = Asset(
                     id: server.identifier,
@@ -44,6 +44,8 @@ struct AssetFetcher {
     }
     
     static func fetchAssetDetails(_ id: String) async -> AssetDetails {
+        let assetDetails: AssetDetails
+        
         do {
             guard let request = URLRequest(
                 path: "client/servers/\(id)/resources"
@@ -56,15 +58,15 @@ struct AssetFetcher {
             let json = try JSONDecoder().decode(WWResourceUsageResponse.self, from: data)
             let state = json.attributes.current_state
             
-            let assetDetails = AssetDetails(
+            assetDetails = AssetDetails(
                 state: state
             )
-            
-            return assetDetails
         } catch {
-            let assetDetails = AssetDetails(state: "Error: \(error.localizedDescription)")
-            
-            return assetDetails
+            assetDetails = AssetDetails(
+                state: error.localizedDescription
+            )
         }
+        
+        return assetDetails
     }
 }
