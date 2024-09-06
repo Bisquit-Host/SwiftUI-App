@@ -437,6 +437,7 @@
 		F36B73702C8A4CAF00E858FE /* Refresh Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B736F2C8A4CAF00E858FE /* Refresh Intent.swift */; };
 		F36B73712C8A4CAF00E858FE /* Refresh Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B736F2C8A4CAF00E858FE /* Refresh Intent.swift */; };
 		F36B73722C8A4CAF00E858FE /* Refresh Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B736F2C8A4CAF00E858FE /* Refresh Intent.swift */; };
+		F36B737A2C8AE9D400E858FE /* Power Actions Intents.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B73792C8AE9D400E858FE /* Power Actions Intents.swift */; };
 		F36D530C2A05B6C4007324C6 /* Server List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31578B229675F5D0016A600 /* Server List.swift */; };
 		F36D530D2A05B6C9007324C6 /* Server List Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */; };
 		F36D530E2A05B6CE007324C6 /* Browser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA58E295901B60006D126 /* Browser.swift */; };
@@ -558,7 +559,7 @@
 		F38637392A8641120069F074 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F350636829DC24AB0010B717 /* SwiftUI.framework */; };
 		F386373C2A8641120069F074 /* Widgets Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F386373B2A8641120069F074 /* Widgets Bundle.swift */; };
 		F386373E2A8641120069F074 /* System Small Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F386373D2A8641120069F074 /* System Small Widget.swift */; };
-		F38637402A8641120069F074 /* App Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F386373F2A8641120069F074 /* App Intent.swift */; };
+		F38637402A8641120069F074 /* Power Intent Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = F386373F2A8641120069F074 /* Power Intent Config.swift */; };
 		F38637422A8641150069F074 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F38637412A8641150069F074 /* Assets.xcassets */; };
 		F38694182A4B3AAF002DEF90 /* Panel Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3029C06E9700B08696 /* Panel Model.swift */; };
 		F386941A2A4B3AE1002DEF90 /* Info Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38694192A4B3AE1002DEF90 /* Info Tab.swift */; };
@@ -1435,6 +1436,7 @@
 		F367977D2A3A5AB6009F2788 /* Log VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log VM.swift"; sourceTree = "<group>"; };
 		F36B736E2C89BB7200E858FE /* Intent Handler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Intent Handler.entitlements"; sourceTree = "<group>"; };
 		F36B736F2C8A4CAF00E858FE /* Refresh Intent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Refresh Intent.swift"; sourceTree = "<group>"; };
+		F36B73792C8AE9D400E858FE /* Power Actions Intents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Actions Intents.swift"; sourceTree = "<group>"; };
 		F36FDB91295AF3AB00D45070 /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
 		F37061C729774869009B4067 /* Nav Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Extension.swift"; sourceTree = "<group>"; };
 		F37061C929774886009B4067 /* Nav Destinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Destinations.swift"; sourceTree = "<group>"; };
@@ -1479,7 +1481,7 @@
 		F38637372A8641120069F074 /* Widgets Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Widgets Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F386373B2A8641120069F074 /* Widgets Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Widgets Bundle.swift"; sourceTree = "<group>"; };
 		F386373D2A8641120069F074 /* System Small Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "System Small Widget.swift"; sourceTree = "<group>"; };
-		F386373F2A8641120069F074 /* App Intent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Intent.swift"; sourceTree = "<group>"; };
+		F386373F2A8641120069F074 /* Power Intent Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Intent Config.swift"; sourceTree = "<group>"; };
 		F38637412A8641150069F074 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F38637432A8641150069F074 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F38637442A8641150069F074 /* Widgets.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Widgets.entitlements; sourceTree = "<group>"; };
@@ -2238,7 +2240,7 @@
 				F323BFA12B20DC9000116B97 /* Power Widget.swift */,
 				F323BFA62B211C6D00116B97 /* Power Provider.swift */,
 				F323BFA42B211C3700116B97 /* Power Entry.swift */,
-				F386373F2A8641120069F074 /* App Intent.swift */,
+				F386373F2A8641120069F074 /* Power Intent Config.swift */,
 			);
 			path = "Power Widget";
 			sourceTree = "<group>";
@@ -2316,6 +2318,7 @@
 			children = (
 				F386373D2A8641120069F074 /* System Small Widget.swift */,
 				F337B4082A89FB4300DD79AA /* System Small Widget View.swift */,
+				F36B73772C8AE93000E858FE /* New Widget */,
 				F323BFA02B20DC7A00116B97 /* Power Widget */,
 				F337B40C2A89FDFB00DD79AA /* New Group */,
 				F38282012B0E14980088C48B /* Live Activity */,
@@ -2476,6 +2479,23 @@
 			path = SpriteKit;
 			sourceTree = "<group>";
 		};
+		F36B73772C8AE93000E858FE /* New Widget */ = {
+			isa = PBXGroup;
+			children = (
+				F3FDFF8C2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition */,
+				F3FDFF8A2C89130F009EBB5C /* Crypto Price Widget.swift */,
+			);
+			path = "New Widget";
+			sourceTree = "<group>";
+		};
+		F36B73782C8AE9CD00E858FE /* Intents */ = {
+			isa = PBXGroup;
+			children = (
+				F36B73792C8AE9D400E858FE /* Power Actions Intents.swift */,
+			);
+			path = Intents;
+			sourceTree = "<group>";
+		};
 		F36FDB9A295B04B200D45070 /* Server List */ = {
 			isa = PBXGroup;
 			children = (
@@ -2616,7 +2636,9 @@
 				F337B4052A89FAC600DD79AA /* Entry.swift */,
 				F318240C2A877BA90039866C /* Preview Extension.swift */,
 				F318240A2A8777CD0039866C /* Provider.swift */,
-				F3FDFF892C8912FC009EBB5C /* New Widget */,
+				F36B736F2C8A4CAF00E858FE /* Refresh Intent.swift */,
+				F3FDFF872C8912F1009EBB5C /* Asset Fetcher.swift */,
+				F36B73782C8AE9CD00E858FE /* Intents */,
 				F337B4072A89FB0200DD79AA /* Families */,
 			);
 			path = Widgets;
@@ -3193,17 +3215,6 @@
 				F3FDFF652C89120D009EBB5C /* Info.plist */,
 			);
 			path = "Intent Handler";
-			sourceTree = "<group>";
-		};
-		F3FDFF892C8912FC009EBB5C /* New Widget */ = {
-			isa = PBXGroup;
-			children = (
-				F3FDFF8C2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition */,
-				F3FDFF872C8912F1009EBB5C /* Asset Fetcher.swift */,
-				F3FDFF8A2C89130F009EBB5C /* Crypto Price Widget.swift */,
-				F36B736F2C8A4CAF00E858FE /* Refresh Intent.swift */,
-			);
-			path = "New Widget";
 			sourceTree = "<group>";
 		};
 		F3FF5A012A4A318E003A1973 /* Users */ = {
@@ -4638,6 +4649,7 @@
 				F342FAAB2B2C67F800854270 /* Ansi.swift in Sources */,
 				F3287A7A2B10A120001AFE54 /* Widget Live Activity.swift in Sources */,
 				F36B73722C8A4CAF00E858FE /* Refresh Intent.swift in Sources */,
+				F36B737A2C8AE9D400E858FE /* Power Actions Intents.swift in Sources */,
 				F337B4102A89FE5C00DD79AA /* Static Entry.swift in Sources */,
 				F323BFA72B211C6D00116B97 /* Power Provider.swift in Sources */,
 				F3FDFF8D2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition in Sources */,
@@ -4649,7 +4661,7 @@
 				F323BFA52B211C3700116B97 /* Power Entry.swift in Sources */,
 				F371468E2B123807001E0296 /* Activity View State.swift in Sources */,
 				F386373E2A8641120069F074 /* System Small Widget.swift in Sources */,
-				F38637402A8641120069F074 /* App Intent.swift in Sources */,
+				F38637402A8641120069F074 /* Power Intent Config.swift in Sources */,
 				F337B40B2A89FC5100DD79AA /* Accessory Circular View.swift in Sources */,
 				F337B40E2A89FE0D00DD79AA /* Static Provider.swift in Sources */,
 			);
