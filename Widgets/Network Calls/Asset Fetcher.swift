@@ -24,11 +24,14 @@ struct AssetFetcher {
             
             let (data, _) = try await URLSession.shared.data(for: request)
             
-            let response = try JSONDecoder().decode(WidgetServerListResponse.self, from: data)
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            
+            let response = try decoder.decode(ServerListResponse.self, from: data)
             
             for server in response.data.map(\.attributes) {
                 let asset = Asset(
-                    id: server.identifier,
+                    id: server.id,
                     name: server.name
                 )
                 
@@ -55,8 +58,12 @@ struct AssetFetcher {
             
             let (data, _) = try await URLSession.shared.data(for: request)
             
-            let json = try JSONDecoder().decode(WWResourceUsageResponse.self, from: data)
-            let state = json.attributes.current_state
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            
+            let json = try decoder.decode(ResourceUsageResponse.self, from: data)
+            
+            let state = json.attributes.state
             
             assetDetails = AssetDetails(
                 state: state
