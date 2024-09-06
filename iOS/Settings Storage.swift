@@ -19,8 +19,8 @@ final class SettingsStorage: ObservableObject {
     
     // MARK: - Console
     @AppStorage("spamEnabled") var spamEnabled = false
-    //    @AppStorage("coloredTextEnabled") var coloredTextEnabled = true
     @AppStorage("consoleFontSize") var consoleFontSize = 10.0
+    //    @AppStorage("coloredTextEnabled") var coloredTextEnabled = true
     //@AppStorage("consoleFontDesign") var consoleFontDesign = 1
     
     // MARK: - Other

@@ -1,6 +1,5 @@
 import ScrechKit
 import PteroNet
-import AVFoundation
 import AudioVisualizer
 
 struct AudioPlayerView: View {
