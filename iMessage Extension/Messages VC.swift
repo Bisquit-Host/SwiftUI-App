@@ -3,12 +3,14 @@ import Messages
 
 @objc(MessagesViewController)
 class MessagesViewController: MSMessagesAppViewController {
+    var conversation: MSConversation? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view
         
-        // Pass the view controller to the SwiftUI view
-        let child = UIHostingController(rootView: HomeView(viewController: self))
+        let child = UIHostingController(rootView: HomeView(.constant(self)))
         child.view.translatesAutoresizingMaskIntoConstraints = false
         
         self.view.addSubview(child.view)
@@ -23,27 +25,14 @@ class MessagesViewController: MSMessagesAppViewController {
         
         view.addConstraints(constraints)
     }
-    
-    var conversation: MSConversation? = nil
-    
+        
     // MARK: - Conversation Handling
     
     override func willBecomeActive(with conversation: MSConversation) {
         print(#function)
+        
         self.conversation = conversation
         
-        let message = MSMessage()
-        let layout = MSMessageTemplateLayout()
-        layout.caption = "text"
-        layout.subcaption = "text"
-        layout.image = UIImage(named: "artwork")
-        layout.imageTitle = "Luza"
-        layout.imageSubtitle = "Flufa"
-        layout.trailingCaption = "11"
-        layout.trailingSubcaption = "22"
-        message.layout = layout
-        
-        conversation.insert(message)
         // Extension will become active
         // This will happen when the extension is about to present UI
         

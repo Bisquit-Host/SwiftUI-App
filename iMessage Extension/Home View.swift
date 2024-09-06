@@ -4,10 +4,10 @@ import PteroNet
 
 struct HomeView: View {
     @State private var vm = MessagesVM()
-    @State private var viewController: MessagesViewController?
+    @Binding private var vc: MessagesViewController?
     
-    init(viewController: MessagesViewController?) {
-        self.viewController = viewController
+    init(_ vc: Binding<MessagesViewController?>) {
+        _vc = vc
     }
     
     var body: some View {
@@ -25,19 +25,24 @@ struct HomeView: View {
     }
     
     private func sendMessage(_ text: String) {
-        guard let conversation = viewController?.conversation else {
+        guard let conversation = vc?.conversation else {
             print("No active conversation")
             return
         }
         
-        // Create a message with text content
         let message = MSMessage()
         let layout = MSMessageTemplateLayout()
-        layout.caption = text
-        layout.subcaption = text
+        layout.caption = "text"
+        layout.subcaption = "text"
+        layout.image = UIImage(named: "artwork")
+        layout.imageTitle = "Luza"
+        layout.imageSubtitle = "Flufa"
+        layout.trailingCaption = "11"
+        layout.trailingSubcaption = "22"
         message.layout = layout
         
-        // Insert the message into the active conversation
+        conversation.insert(message)
+        
         conversation.insert(message) { error in
             if let error {
                 print("Error sending message: \(error.localizedDescription)")
