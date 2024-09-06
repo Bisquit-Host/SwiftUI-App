@@ -705,8 +705,9 @@
 		F3A7CED02C8B685600413400 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3A7CECF2C8B685600413400 /* Assets.xcassets */; };
 		F3A7CEDC2C8B95CB00413400 /* Home View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CEDB2C8B95CB00413400 /* Home View.swift */; };
 		F3A7CEDF2C8B981A00413400 /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F3A7CEDE2C8B981A00413400 /* PteroNet */; };
-		F3A7CEE12C8B9BB700413400 /* App Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CEE02C8B9BB700413400 /* App Container.swift */; };
+		F3A7CEE12C8B9BB700413400 /* View Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CEE02C8B9BB700413400 /* View Container.swift */; };
 		F3A7CEE52C8B9E7500413400 /* Messages VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CEE42C8B9E7500413400 /* Messages VM.swift */; };
+		F3A7CEE72C8BA0F600413400 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CEE62C8BA0F600413400 /* AppContainer.swift */; };
 		F3A7CF662A44F44A00331B51 /* Auth View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF652A44F44A00331B51 /* Auth View.swift */; };
 		F3A7CF6B2A44F6E000331B51 /* Circular Gauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF6A2A44F6E000331B51 /* Circular Gauge.swift */; };
 		F3A7CF702A44FD5300331B51 /* Server Card Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF6F2A44FD5300331B51 /* Server Card Parent.swift */; };
@@ -1581,8 +1582,9 @@
 		F3A7CED12C8B685600413400 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3A7CEDB2C8B95CB00413400 /* Home View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home View.swift"; sourceTree = "<group>"; };
 		F3A7CEDD2C8B97A300413400 /* iMessage MessagesExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "iMessage MessagesExtension.entitlements"; sourceTree = "<group>"; };
-		F3A7CEE02C8B9BB700413400 /* App Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Container.swift"; sourceTree = "<group>"; };
+		F3A7CEE02C8B9BB700413400 /* View Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View Container.swift"; sourceTree = "<group>"; };
 		F3A7CEE42C8B9E7500413400 /* Messages VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Messages VM.swift"; sourceTree = "<group>"; };
+		F3A7CEE62C8BA0F600413400 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 		F3A7CF652A44F44A00331B51 /* Auth View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auth View.swift"; sourceTree = "<group>"; };
 		F3A7CF6A2A44F6E000331B51 /* Circular Gauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Circular Gauge.swift"; sourceTree = "<group>"; };
 		F3A7CF6F2A44FD5300331B51 /* Server Card Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Parent.swift"; sourceTree = "<group>"; };
@@ -2866,7 +2868,8 @@
 		F3A7CEE22C8B9D3800413400 /* iMessage Extension */ = {
 			isa = PBXGroup;
 			children = (
-				F3A7CEE02C8B9BB700413400 /* App Container.swift */,
+				F3A7CEE02C8B9BB700413400 /* View Container.swift */,
+				F3A7CEE62C8BA0F600413400 /* AppContainer.swift */,
 				F3A7CECA2C8B685500413400 /* Messages VC.swift */,
 				F3A7CECF2C8B685600413400 /* Assets.xcassets */,
 				F3A7CEDD2C8B97A300413400 /* iMessage MessagesExtension.entitlements */,
@@ -4873,7 +4876,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3A7CEDC2C8B95CB00413400 /* Home View.swift in Sources */,
-				F3A7CEE12C8B9BB700413400 /* App Container.swift in Sources */,
+				F3A7CEE12C8B9BB700413400 /* View Container.swift in Sources */,
+				F3A7CEE72C8BA0F600413400 /* AppContainer.swift in Sources */,
 				F3A7CEE52C8B9E7500413400 /* Messages VM.swift in Sources */,
 				F3A7CECB2C8B685500413400 /* Messages VC.swift in Sources */,
 			);
