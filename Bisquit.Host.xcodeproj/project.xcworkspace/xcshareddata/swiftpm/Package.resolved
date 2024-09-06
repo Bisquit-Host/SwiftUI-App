@@ -1,5 +1,5 @@
 {
-  "originHash" : "1fff5786f050b238ae0e43ecf09d8ae2a2532d437072cc2ecfbf5dbcb9e00878",
+  "originHash" : "4cf03309b0939eaeebf7c2c11cf094dbfdb097286e6a763331f3194754beee50",
   "pins" : [
     {
       "identity" : "alertkit",
@@ -8,6 +8,15 @@
       "state" : {
         "revision" : "3b73be8db5a7e7efaf474c6ed919f5a437d843c9",
         "version" : "5.1.9"
+      }
+    },
+    {
+      "identity" : "audio-visualizer",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/TopScrech/Audio-Visualizer",
+      "state" : {
+        "branch" : "main",
+        "revision" : "00fc878f2703e17feb89a1c0fbfd3ed0cc60c241"
       }
     },
     {

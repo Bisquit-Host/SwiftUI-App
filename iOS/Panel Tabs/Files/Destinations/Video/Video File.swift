@@ -5,10 +5,7 @@ import PteroNet
 struct VideoFile: View {
     private let id, root, name: String
     
-    init(_ id: String,
-         root: String,
-         name: String
-    ) {
+    init(_ id: String, root: String, name: String) {
         self.id = id
         self.root = root
         self.name = name

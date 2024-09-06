@@ -34,6 +34,9 @@ struct FileView: View {
             } else if mimeType.contains("video") {
                 VideoFile(id, root: root, name: name)
                 
+            } else if mimeType.contains("audio") {
+                AudioPlayerView(id, root: root, name: name)
+                
             } else {
                 QuickLookFile(id, root: root, name: name)
             }

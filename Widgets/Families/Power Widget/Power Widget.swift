@@ -19,16 +19,16 @@ struct PowerWidget: Widget {
                     Text(id)
                     
                     HStack {
-                        Button(intent: StartServerIntent(id: id)) {
+                        Button(intent: StartServerIntent(id)) {
                             Text("Start")
                         }
                         
-                        Button(role: .destructive, intent: StopServerIntent(id: id)) {
+                        Button(role: .destructive, intent: StopServerIntent(id)) {
                             Text("Stop")
                         }
                     }
                     
-                    Button(intent: RestartServerIntent(id: id)) {
+                    Button(intent: RestartServerIntent(id)) {
                         Text("Restart")
                     }
                 }

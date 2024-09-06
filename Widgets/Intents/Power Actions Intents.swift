@@ -1,15 +1,5 @@
 import AppIntents
 
-struct ConfigurationAppIntent: WidgetConfigurationIntent {
-    static let intentClassName = "ServerUsageIntent"
-    
-    static var title: LocalizedStringResource = "Configuration"
-    static var description = IntentDescription("This is an example widget")
-    
-    @Parameter(title: "Server id", default: "")
-    var serverId: String
-}
-
 struct StartServerIntent: AppIntent {
     static var title: LocalizedStringResource = "Start Server"
     
@@ -18,7 +8,7 @@ struct StartServerIntent: AppIntent {
     
     init() {}
     
-    init(id: String) {
+    init(_ id: String) {
         self.id = id
     }
     
@@ -37,7 +27,7 @@ struct RestartServerIntent: AppIntent {
     
     init() {}
     
-    init(id: String) {
+    init(_ id: String) {
         self.id = id
     }
     
@@ -56,7 +46,7 @@ struct StopServerIntent: AppIntent {
     
     init() {}
     
-    init(id: String) {
+    init(_ id: String) {
         self.id = id
     }
     
@@ -75,7 +65,7 @@ struct KillServerIntent: AppIntent {
     
     init() {}
     
-    init(id: String) {
+    init(_ id: String) {
         self.id = id
     }
     

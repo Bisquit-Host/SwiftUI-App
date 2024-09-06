@@ -5,6 +5,8 @@ struct WidgetsBundle: WidgetBundle {
     var body: some Widget {
         PowerWidget()
         
+        SomeNewWidget()
+        
         //        SystemSmallWidget()
         
         // MARK: Lock Screen Widgets
