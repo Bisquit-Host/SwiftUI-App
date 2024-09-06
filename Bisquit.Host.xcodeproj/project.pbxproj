@@ -5814,7 +5814,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.4;
-				MARKETING_VERSION = 3.1;
+				MARKETING_VERSION = 3.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug";
 				PRODUCT_NAME = Bisquit.Host;
 				SDKROOT = macosx;
@@ -5853,7 +5853,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.4;
-				MARKETING_VERSION = 3.1;
+				MARKETING_VERSION = 3.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host";
 				PRODUCT_NAME = Bisquit.Host;
 				SDKROOT = macosx;
