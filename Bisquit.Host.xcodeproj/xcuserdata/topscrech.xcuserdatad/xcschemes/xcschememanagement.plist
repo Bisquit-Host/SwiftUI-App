@@ -101,7 +101,7 @@
 			<key>orderHint</key>
 			<integer>8</integer>
 		</dict>
-		<key>iMessage MessagesExtension.xcscheme_^#shared#^_</key>
+		<key>iMessage Extension.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>13</integer>
@@ -160,6 +160,16 @@
 			<true/>
 		</dict>
 		<key>F38637362A8641120069F074</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F3A7CEBA2C8B685400413400</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F3A7CEC22C8B685500413400</key>
 		<dict>
 			<key>primary</key>
 			<true/>
