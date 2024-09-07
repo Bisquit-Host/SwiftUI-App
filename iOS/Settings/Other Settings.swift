@@ -10,13 +10,9 @@ struct OtherSettings: View {
                 .environment(vm)
             
             Toggle(isOn: $settings.showFullFilePath) {
-                VStack(alignment: .leading) {
-                    Text("Full file path")
-                    
-                    Text(settings.showFullFilePath ? "/home/container/folder/example/" : String("/folder/example/"))
-                        .foregroundStyle(.secondary)
-                        .footnote()
-                }
+                Text("Full file path")
+                
+                Text(settings.showFullFilePath ? "/home/container/folder/example/" : "/folder/example/")
             }
             
             CurrencyButton()
