@@ -71,17 +71,16 @@ struct CloudKeyCard: View {
     }
 }
 
-#warning("iOS 18")
-//#Preview {
-//    @Previewable @State var selectedKey = ""
-//    
-//    List {
-//        CloudKeyCard(
-//            $selectedKey,
-//            key: .init(
-//                "Preview Key",
-//                key: "ptlc_1234567890"
-//            )) {}
-//    }
-//    .environmentObject(SettingsStorage())
-//}
+#Preview {
+    @Previewable @State var selectedKey = ""
+    
+    List {
+        CloudKeyCard(
+            $selectedKey,
+            key: .init(
+                "Preview Key",
+                key: "ptlc_1234567890"
+            )) {}
+    }
+    .environmentObject(SettingsStorage())
+}

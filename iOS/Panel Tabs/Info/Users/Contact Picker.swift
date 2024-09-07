@@ -173,9 +173,8 @@ fileprivate extension CNContact {
     }
 }
 
-#warning("iOS 18")
-//#Preview {
-//    @Previewable @State var selectedEmail = "test@example.com"
-//
-//    ContactsListView($selectedEmail)
-//}
+#Preview {
+    @Previewable @State var selectedEmail = "test@example.com"
+
+    ContactsListView($selectedEmail)
+}

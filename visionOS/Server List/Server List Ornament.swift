@@ -28,9 +28,10 @@ struct ServerListOrnament: View {
     }
 }
 
-#warning("iOS 18")
-//#Preview {
-//    ServerListOrnament()
-//        .padding()
-//        .environment(ServerListVM())
-//}
+#Preview {
+    @Previewable @State var sheetSettings = false
+    
+    ServerListOrnament($sheetSettings)
+        .padding()
+        .environment(ServerListVM())
+}

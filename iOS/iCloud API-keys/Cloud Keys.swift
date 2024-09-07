@@ -64,12 +64,11 @@ struct CloudKeys: View {
     }
 }
 
-#warning("iOS 18")
-//#Preview {
-//    @Previewable @State var apiKey = ""
-//    
-//    Text("Preview")
-//        .sheet {
-//            CloudKeys($apiKey)
-//        }
-//}
+#Preview {
+    @Previewable @State var apiKey = ""
+    
+    Text("Preview")
+        .sheet {
+            CloudKeys($apiKey)
+        }
+}
