@@ -14,7 +14,6 @@ struct ServerList: View {
             ServerListGrid(vm.filteredServers)
                 .padding(4)
                 .padding(.top, 60)
-                .padding(.bottom, 70)
         }
         .environment(vm)
 //        .searchable(text: $searchField)
