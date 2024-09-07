@@ -6,17 +6,12 @@ struct BiometryButton: View {
     
     var body: some View {
         Toggle(isOn: $settings.useBiometry) {
-            HStack(alignment: .bottom) {
-                Text(vm.bioType == "Unknown" ? "Biometry unavailable" : vm.bioType)
-                
-                Button {
-                    vm.sheetBio = true
-                } label: {
-                    Text("Learn more...")
-                        .footnote()
-                        .foregroundStyle(.teal)
-                }
+            Text(vm.bioType == "Unknown" ? "Biometry unavailable" : vm.bioType)
+            
+            Button("Learn more...") {
+                vm.sheetBio = true
             }
+            .foregroundStyle(.teal)
         }
         .disabled(vm.bioType == "Unknown")
         .foregroundColor(vm.bioType == "Unknown" ? .gray : .none)
