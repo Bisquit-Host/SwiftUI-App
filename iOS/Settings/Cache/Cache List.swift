@@ -9,11 +9,18 @@ struct CacheList: View {
                 Text("Retrieved \(vm.images.count) cached images")
             }
             
-            ForEach(vm.images, id: \.self) { image in
-                Image(uiImage: image)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 100, height: 100)
+            ForEach(vm.images) { cache in
+                HStack {
+                    Image(uiImage: cache.image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 100, height: 100)
+                    
+                    Spacer()
+                    
+                    Text(cache.size)
+                        .foregroundStyle(.secondary)
+                }
             }
         }
         .refreshableTask {

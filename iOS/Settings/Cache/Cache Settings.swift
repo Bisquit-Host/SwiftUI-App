@@ -12,11 +12,9 @@ struct CacheSettings: View {
             
             CacheExpiration()
             
-#if DEBUG
             NavigationLink("Retrieve cache") {
                 CacheList()
             }
-#endif
         }
         .environment(cache)
         .listRowBackground(settings.transparentList ? .clear : Color.list)

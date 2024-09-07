@@ -1,9 +1,15 @@
-import SwiftUI
+import ScrechKit
 import Kingfisher
+
+struct CachedImage: Identifiable {
+    let id = UUID()
+    let image: UIImage
+    let size: String
+}
 
 @Observable
 final class CacheListVM {
-    var images = [UIImage]()
+    var images = [CachedImage]()
     
     func retrieveAllCachedImages() {
         images = []
@@ -20,8 +26,6 @@ final class CacheListVM {
         let fm = FileManager.default
         
         if let files = try? fm.contentsOfDirectory(atPath: path) {
-            print(files.count)
-            
             for file in files {
                 let filePath = path + "/" + file
                 var isDir: ObjCBool = false
@@ -32,7 +36,8 @@ final class CacheListVM {
                     } else {
                         if let imageData = try? Data(contentsOf: URL(fileURLWithPath: filePath)),
                            let image = UIImage(data: imageData) {
-                            images.append(image)
+                            let sizeString = formatBytes(imageData.count)
+                            images.append(CachedImage(image: image, size: sizeString))
                         }
                     }
                 }
