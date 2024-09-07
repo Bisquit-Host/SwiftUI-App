@@ -9,7 +9,7 @@ struct Discover: View {
         NavigationView {
             List {
                 Section {
-                    ListButton("Available Configurations", actionIcon: "externaldrive.badge.plus") {
+                    ListButton("Available configurations", actionIcon: "externaldrive.badge.plus") {
                         sheetConfigurations = true
                     }
                     .foregroundStyle(.foreground)
