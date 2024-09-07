@@ -696,7 +696,7 @@
 		F3A7BCC3296B2ABB00E080C1 /* Start Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7BCC2296B2ABB00E080C1 /* Start Page.swift */; };
 		F3A7BCD1296B44FF00E080C1 /* Nav Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BAEC8C2959B3FE00111375 /* Nav Extension.swift */; };
 		F3A7CEBE2C8B685500413400 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3A7CEBD2C8B685500413400 /* Assets.xcassets */; };
-		F3A7CEC42C8B685500413400 /* iMessage MessagesExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F3A7CEC32C8B685500413400 /* iMessage MessagesExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F3A7CEC42C8B685500413400 /* iMessage Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F3A7CEC32C8B685500413400 /* iMessage Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F3A7CEC82C8B685500413400 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3A7CEC72C8B685500413400 /* Messages.framework */; };
 		F3A7CECB2C8B685500413400 /* Messages VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CECA2C8B685500413400 /* Messages VC.swift */; };
 		F3A7CED02C8B685600413400 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3A7CECF2C8B685600413400 /* Assets.xcassets */; };
@@ -1314,7 +1314,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				F3A7CEC42C8B685500413400 /* iMessage MessagesExtension.appex in Embed Foundation Extensions */,
+				F3A7CEC42C8B685500413400 /* iMessage Extension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1599,7 +1599,7 @@
 		F3A7BCC2296B2ABB00E080C1 /* Start Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page.swift"; sourceTree = "<group>"; };
 		F3A7CEBB2C8B685400413400 /* iMessage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMessage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A7CEBD2C8B685500413400 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F3A7CEC32C8B685500413400 /* iMessage MessagesExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "iMessage MessagesExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3A7CEC32C8B685500413400 /* iMessage Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "iMessage Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A7CEC72C8B685500413400 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = Library/Frameworks/Messages.framework; sourceTree = DEVELOPER_DIR; };
 		F3A7CECA2C8B685500413400 /* Messages VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Messages VC.swift"; sourceTree = "<group>"; };
 		F3A7CECF2C8B685600413400 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -2090,7 +2090,7 @@
 				F3E2BEF52C1DA07E00B7A6D4 /* Contact Provider Extension.appex */,
 				F3FDFF5F2C89120D009EBB5C /* Intent Handler.appex */,
 				F3A7CEBB2C8B685400413400 /* iMessage.app */,
-				F3A7CEC32C8B685500413400 /* iMessage MessagesExtension.appex */,
+				F3A7CEC32C8B685500413400 /* iMessage Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -3618,9 +3618,9 @@
 			productReference = F3A7CEBB2C8B685400413400 /* iMessage.app */;
 			productType = "com.apple.product-type.application.messages";
 		};
-		F3A7CEC22C8B685500413400 /* iMessage MessagesExtension */ = {
+		F3A7CEC22C8B685500413400 /* iMessage Extension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F3A7CED32C8B685600413400 /* Build configuration list for PBXNativeTarget "iMessage MessagesExtension" */;
+			buildConfigurationList = F3A7CED32C8B685600413400 /* Build configuration list for PBXNativeTarget "iMessage Extension" */;
 			buildPhases = (
 				F3A7CEBF2C8B685500413400 /* Sources */,
 				F3A7CEC02C8B685500413400 /* Frameworks */,
@@ -3630,7 +3630,7 @@
 			);
 			dependencies = (
 			);
-			name = "iMessage MessagesExtension";
+			name = "iMessage Extension";
 			packageProductDependencies = (
 				F3A7CEDE2C8B981A00413400 /* PteroNet */,
 				F3A7CEF82C8BB88E00413400 /* ScrechKit */,
@@ -3639,7 +3639,7 @@
 				F3A7CF0B2C8BBCE400413400 /* Kingfisher */,
 			);
 			productName = "iMessage MessagesExtension";
-			productReference = F3A7CEC32C8B685500413400 /* iMessage MessagesExtension.appex */;
+			productReference = F3A7CEC32C8B685500413400 /* iMessage Extension.appex */;
 			productType = "com.apple.product-type.app-extension.messages";
 		};
 		F3BD76F12A43C890003E7385 /* visionOS */ = {
@@ -3849,7 +3849,7 @@
 				F3D296062AF3BE5800ED43A0 /* UI Tests */,
 				F3E2BEF42C1DA07E00B7A6D4 /* Contact Provider Extension */,
 				F3A7CEBA2C8B685400413400 /* iMessage */,
-				F3A7CEC22C8B685500413400 /* iMessage MessagesExtension */,
+				F3A7CEC22C8B685500413400 /* iMessage Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -5198,7 +5198,7 @@
 		};
 		F3A7CEC62C8B685500413400 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F3A7CEC22C8B685500413400 /* iMessage MessagesExtension */;
+			target = F3A7CEC22C8B685500413400 /* iMessage Extension */;
 			targetProxy = F3A7CEC52C8B685500413400 /* PBXContainerItemProxy */;
 		};
 		F3D2960E2AF3BE5800ED43A0 /* PBXTargetDependency */ = {
@@ -5973,7 +5973,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "dev.topscrech.Bisquit-host.iMessage";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5998,7 +5998,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "dev.topscrech.Bisquit-host.iMessage";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -6399,7 +6399,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F3A7CED32C8B685600413400 /* Build configuration list for PBXNativeTarget "iMessage MessagesExtension" */ = {
+		F3A7CED32C8B685600413400 /* Build configuration list for PBXNativeTarget "iMessage Extension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F3A7CED42C8B685600413400 /* Debug */,
