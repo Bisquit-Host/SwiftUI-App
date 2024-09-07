@@ -65,7 +65,7 @@ struct Discover: View {
             Browser()
         }
         .sheet($sheetSystemStatus) {
-#warning("AOAOAOAOAOAOAOOA")
+#warning("TODO: System Status Sheet")
         }
     }
 }
