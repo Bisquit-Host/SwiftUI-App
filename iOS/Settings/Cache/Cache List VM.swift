@@ -1,6 +1,7 @@
 import SwiftUI
 import Kingfisher
 
+@Observable
 final class CacheListVM {
     var images = [UIImage]()
     
@@ -12,10 +13,10 @@ final class CacheListVM {
         // Get the cache path
         let cachePath = cache.diskStorage.directoryURL.path
         
-        retrieveImages(atPath: cachePath)
+        retrieveImages(cachePath)
     }
     
-    func retrieveImages(atPath path: String) {
+    func retrieveImages(_ path: String) {
         let fm = FileManager.default
         
         if let files = try? fm.contentsOfDirectory(atPath: path) {
@@ -27,7 +28,7 @@ final class CacheListVM {
                 
                 if fm.fileExists(atPath: filePath, isDirectory: &isDir) {
                     if isDir.boolValue {
-                        retrieveImages(atPath: filePath)
+                        retrieveImages(filePath)
                     } else {
                         if let imageData = try? Data(contentsOf: URL(fileURLWithPath: filePath)),
                            let image = UIImage(data: imageData) {
