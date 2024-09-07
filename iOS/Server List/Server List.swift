@@ -13,7 +13,6 @@ struct ServerList: View {
         ScrollView(showsIndicators: false) {
             ServerListGrid(vm.filteredServers)
                 .padding(4)
-                .padding(.bottom, 70)
         }
         .environment(vm)
         .searchable(text: $searchField)
@@ -30,8 +29,9 @@ struct ServerList: View {
                 vm.searchField = search
             }
         }
-        .overlay(alignment: .bottomLeading) {
+        .safeAreaInset(edge: .bottom) {
             ServerListFilter($vm.filterBySuspended)
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .environment(vm)
         }
         .toolbar {

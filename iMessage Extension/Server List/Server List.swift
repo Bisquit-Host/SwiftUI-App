@@ -31,10 +31,12 @@ struct ServerList: View {
                 vm.searchField = search
             }
         }
-//        .overlay(alignment: .bottomLeading) {
-//            ServerListFilter($vm.filterBySuspended)
-//                .environment(vm)
-//        }
+        .safeAreaInset(edge: .bottom) {
+            ServerListFilter($vm.filterBySuspended)
+                .padding(.bottom)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .environment(vm)
+        }
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarLeading) {
                 SFButton("sparkles") {
