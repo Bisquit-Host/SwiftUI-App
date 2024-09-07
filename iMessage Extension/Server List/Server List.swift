@@ -64,9 +64,9 @@ struct ServerList: View {
         .sheet($vm.sheetGuide) {
             Guide()
         }
-//        .sheet($vm.sheetDiscover) {
-//            Discover()
-//        }
+        .sheet($vm.sheetDiscover) {
+            Discover()
+        }
 //        .sheet($vm.sheetKeyStorage) {
 //            CloudKeys($vm.apiKey) {
 //                vm.fetchServers(settings.adminServerList)

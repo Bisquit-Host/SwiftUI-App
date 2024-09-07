@@ -1,6 +1,6 @@
 //import SwiftUI
 //
-//struct ViewContainer: View {
+//struct AppContainer: View {
 //    var body: some View {
 //        NavigationStack {
 //            HomeView()

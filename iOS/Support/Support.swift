@@ -63,6 +63,7 @@ struct Support: View {
         }
     }
     
+#warning("Code style")
     var buttonSupportHosting: some View {
         SafariButton("https://my.bisquit.host/contact.php") {
             ListButton("Hosting Support",
@@ -92,10 +93,7 @@ struct Support: View {
     }
     
     var buttonTelegram: some View {
-        ListButton("Telegram Chat",
-                   icon: "paperplane.fill",
-                   actionIcon: "link"
-        ) {
+        ListButton("Telegram Chat", icon: "paperplane.fill", actionIcon: "link") {
             openSafari("https://t.me/bisquit_host_chat")
         }
     }
