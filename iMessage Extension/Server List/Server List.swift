@@ -13,7 +13,7 @@ struct ServerList: View {
         ScrollView(showsIndicators: false) {
             ServerListGrid(vm.filteredServers)
                 .padding(4)
-                .padding(.top)
+                .padding(.top, 60)
                 .padding(.bottom, 70)
         }
         .environment(vm)
@@ -35,32 +35,34 @@ struct ServerList: View {
 //            ServerListFilter($vm.filterBySuspended)
 //                .environment(vm)
 //        }
-//        .toolbar {
-//            ToolbarItemGroup(placement: .navigationBarLeading) {
-//                SFButton("sparkles") {
-//                    vm.sheetDiscover = true
-//                }
-//                
-//                TopbarGridButton()
-//            }
-//            
-//            ToolbarItemGroup(placement: .navigationBarTrailing) {
-//                TopbarAdminButton {
-//                    vm.fetchServers(settings.adminServerList)
-//                }
-//                
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarLeading) {
+                SFButton("sparkles") {
+                    vm.sheetDiscover = true
+                }
+                .padding(.leading)
+                
+                TopbarGridButton()
+            }
+            
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                TopbarAdminButton {
+                    vm.fetchServers(settings.adminServerList)
+                }
+                .padding(.trailing)
+                
 //                SettingsButton()
 //                    .environment(vm)
-//            }
-//        }
+            }
+        }
         .overlay {
             if vm.filteredServers.isEmpty, !vm.searchField.isEmpty {
                 ContentUnavailableView.search(text: vm.searchField)
             }
         }
-//        .sheet($vm.sheetGuide) {
-//            Guide()
-//        }
+        .sheet($vm.sheetGuide) {
+            Guide()
+        }
 //        .sheet($vm.sheetDiscover) {
 //            Discover()
 //        }

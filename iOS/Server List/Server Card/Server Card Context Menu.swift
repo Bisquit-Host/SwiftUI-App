@@ -10,7 +10,7 @@ struct ServerCardContextMenu: View {
         _showSafari = showSafari
         _confirmKill = confirmKill
     }
-        
+    
     var body: some View {
         ControlGroup {
             MenuButton("Start", icon: "play") {

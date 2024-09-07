@@ -725,6 +725,12 @@
 		F3A7CF052C8BBC3200413400 /* Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF012C8BBB4700413400 /* Server Card Context Menu.swift */; };
 		F3A7CF062C8BBC3200413400 /* Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF012C8BBB4700413400 /* Server Card Context Menu.swift */; };
 		F3A7CF072C8BBC3200413400 /* Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF012C8BBB4700413400 /* Server Card Context Menu.swift */; };
+		F3A7CF082C8BBC7600413400 /* Guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA57E2959012D0006D126 /* Guide.swift */; };
+		F3A7CF092C8BBC7A00413400 /* Carousel Button Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7082A54CB6600E89EC4 /* Carousel Button Style.swift */; };
+		F3A7CF0A2C8BBCD400413400 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA56F295900C20006D126 /* Formatters.swift */; };
+		F3A7CF0C2C8BBCE400413400 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F3A7CF0B2C8BBCE400413400 /* Kingfisher */; };
+		F3A7CF0D2C8C43B100413400 /* Topbar Grid Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F354E9822A48CA2000F6E359 /* Topbar Grid Button.swift */; };
+		F3A7CF0E2C8C43BB00413400 /* Topbar Admin Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88C72AF83E3F00959D49 /* Topbar Admin Button.swift */; };
 		F3A7CF662A44F44A00331B51 /* Auth View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF652A44F44A00331B51 /* Auth View.swift */; };
 		F3A7CF6B2A44F6E000331B51 /* Circular Gauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF6A2A44F6E000331B51 /* Circular Gauge.swift */; };
 		F3A7CF702A44FD5300331B51 /* Server Card Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF6F2A44FD5300331B51 /* Server Card Parent.swift */; };
@@ -1804,6 +1810,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3A7CF0C2C8BBCE400413400 /* Kingfisher in Frameworks */,
 				F3A7CEFB2C8BB8A300413400 /* AlertKit in Frameworks */,
 				F3A7CEF92C8BB88E00413400 /* ScrechKit in Frameworks */,
 				F3A7CF042C8BBB7800413400 /* SafariCover in Frameworks */,
@@ -2024,14 +2031,6 @@
 			path = SFTP;
 			sourceTree = "<group>";
 		};
-		F306B9EE29BBDA7C0008C2D4 /* Elements */ = {
-			isa = PBXGroup;
-			children = (
-				F3D264332A66A926005C3777 /* Settings Button.swift */,
-			);
-			path = Elements;
-			sourceTree = "<group>";
-		};
 		F30D723A29D36D0F0048D7BD /* Guide */ = {
 			isa = PBXGroup;
 			children = (
@@ -2201,7 +2200,6 @@
 				F3A28AD62C57ADF100010454 /* Demo Server.swift */,
 				F3E2BF0A2C1EC94300B7A6D4 /* Contacts VM.swift */,
 				F32E88CB2AF83FCB00959D49 /* Topbar */,
-				F306B9EE29BBDA7C0008C2D4 /* Elements */,
 				F3A391BD29DB838D00591C84 /* Server Card */,
 			);
 			path = "Server List";
@@ -2359,6 +2357,7 @@
 				F32E88D02AF8494100959D49 /* Server List Filter.swift */,
 				F3A31B042B0B144200F89C51 /* Server List Node Filter.swift */,
 				F354E9822A48CA2000F6E359 /* Topbar Grid Button.swift */,
+				F3D264332A66A926005C3777 /* Settings Button.swift */,
 			);
 			path = Topbar;
 			sourceTree = "<group>";
@@ -3635,6 +3634,7 @@
 				F3A7CEF82C8BB88E00413400 /* ScrechKit */,
 				F3A7CEFA2C8BB8A300413400 /* AlertKit */,
 				F3A7CF032C8BBB7800413400 /* SafariCover */,
+				F3A7CF0B2C8BBCE400413400 /* Kingfisher */,
 			);
 			productName = "iMessage MessagesExtension";
 			productReference = F3A7CEC32C8B685500413400 /* iMessage MessagesExtension.appex */;
@@ -4922,6 +4922,8 @@
 			files = (
 				F3A7CEDC2C8B95CB00413400 /* Home View.swift in Sources */,
 				F3A7CEED2C8BB78A00413400 /* Server Card.swift in Sources */,
+				F3A7CF0A2C8BBCD400413400 /* Formatters.swift in Sources */,
+				F3A7CF092C8BBC7A00413400 /* Carousel Button Style.swift in Sources */,
 				F3A7CEE12C8B9BB700413400 /* View Container.swift in Sources */,
 				F3A7CEF02C8BB79B00413400 /* Server Card Na Status.swift in Sources */,
 				F3A7CEFE2C8BB97400413400 /* Server List.swift in Sources */,
@@ -4930,9 +4932,12 @@
 				F3A7CEF12C8BB7A300413400 /* Server Card VM.swift in Sources */,
 				F3A7CEEA2C8BB74D00413400 /* Server List Grid.swift in Sources */,
 				F3A7CEE72C8BA0F600413400 /* AppContainer.swift in Sources */,
+				F3A7CF0D2C8C43B100413400 /* Topbar Grid Button.swift in Sources */,
 				F3A7CEEE2C8BB78F00413400 /* Gauge Regular.swift in Sources */,
 				F3A7CEE52C8B9E7500413400 /* Messages VM.swift in Sources */,
+				F3A7CF082C8BBC7600413400 /* Guide.swift in Sources */,
 				F3A7CEEC2C8BB77500413400 /* Server Card Parent.swift in Sources */,
+				F3A7CF0E2C8C43BB00413400 /* Topbar Admin Button.swift in Sources */,
 				F3A7CEE92C8BB73300413400 /* Enums.swift in Sources */,
 				F3A7CEF72C8BB82E00413400 /* Settings Storage.swift in Sources */,
 				F3A7CECB2C8B685500413400 /* Messages VC.swift in Sources */,
@@ -5902,7 +5907,7 @@
 				INFOPLIST_FILE = "iMessage Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Bisquit.Host. All rights reserved.";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -5933,7 +5938,7 @@
 				INFOPLIST_FILE = "iMessage Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Bisquit.Host. All rights reserved.";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -6799,6 +6804,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F32675842A01B69600A026DC /* XCRemoteSwiftPackageReference "SafariCover" */;
 			productName = SafariCover;
+		};
+		F3A7CF0B2C8BBCE400413400 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F37266E529D9EF25005FD103 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 		F3B7BFDD2B38E206005B5003 /* Pow */ = {
 			isa = XCSwiftPackageProductDependency;
