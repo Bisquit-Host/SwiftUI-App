@@ -43,11 +43,6 @@ struct SettingsButton: View {
         .sheet($sheetSettings) {
             SettingsParent()
         }
-        .sheet($vm.sheetKeyStorage) {
-            CloudKeys($vm.apiKey) {
-                vm.fetchServers(settings.adminServerList)
-            }
-        }
     }
 }
 
