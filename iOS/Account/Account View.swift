@@ -17,21 +17,42 @@ struct AccountView: View {
             }
             
             Section("2FA") {
-                Menu {
-                    MenuButton("Copy", icon: "doc.on.doc") {
-                        UIPasteboard.general.string = vm.qrCodeUrl
-                        SystemAlert.copied()
+                if vm.twoFaEnabled {
+#warning("TODO: disable 2FA")
+                    //                    Menu {
+                    //                        Button(role: .destructive) {
+                    //                            vm.disable2Fa()
+                    //                        } label: {
+                    //                    Label("Disable 2FA", systemImage: "xmark.circle")
+                    //                        }
+                    //                    } label: {
+                    HStack {
+                        Text("2FA enabled")
+                        
+                        Spacer()
+                        
+                        Image(systemName: "checkmark.circle")
+                            .foregroundStyle(.green)
                     }
-                    
-                    //                    Link(destination: URL(string: vm.qrCodeUrl)!) {
-                    //                        Label("Open", systemImage: "link")
                     //                    }
-                    
-                    MenuButton("View QR code", icon: "qrcode") {
-                        sheetCode = true
+                    //                    .foregroundStyle(.foreground)
+                } else {
+                    Menu {
+                        MenuButton("Copy", icon: "doc.on.doc") {
+                            UIPasteboard.general.string = vm.qrCodeUrl
+                            SystemAlert.copied()
+                        }
+                        
+                        //                    Link(destination: URL(string: vm.qrCodeUrl)!) {
+                        //                        Label("Open", systemImage: "link")
+                        //                    }
+                        
+                        MenuButton("View QR code", icon: "qrcode") {
+                            sheetCode = true
+                        }
+                    } label: {
+                        ListButton("Setup 2FA", actionIcon: "key.viewfinder")
                     }
-                } label: {
-                    ListButton("Setup 2FA", actionIcon: "key.viewfinder")
                 }
             }
             

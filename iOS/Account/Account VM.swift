@@ -6,6 +6,7 @@ import PteroNet
 final class AccountVM {
     var account: AccountAttributes? = nil
     var qrCodeUrl = ""
+    var twoFaEnabled = false
     
     func fetch() {
         accountDetailsAPI { [self] result in
@@ -30,7 +31,15 @@ final class AccountVM {
                 }
                 
             case .failure(let error):
-                SystemAlert.error(error)
+                guard
+                    let error = error as? PterError,
+                    error.status == "400"
+                else {
+                    SystemAlert.error(error)
+                    return
+                }
+                
+                twoFaEnabled = true
             }
         }
     }
