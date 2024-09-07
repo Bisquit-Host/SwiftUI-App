@@ -1,35 +1,34 @@
 import ScrechKit
 import ContactsUI
 
-#warning("iOS 18")
-//fileprivate struct ContactAccessPickerModifier: ViewModifier {
-//    @Binding private var isPresented: Bool
-//    
-//    init(_ isPresented: Binding<Bool>) {
-//        _isPresented = isPresented
-//    }
-//    
-//    func body(content: Content) -> some View {
-//        if #available(iOS 18, *) {
-//#warning("Implement")
-//            content
-//                .contactAccessPicker(isPresented: $isPresented)// { identifiers in }
-//                .toolbar {
-//                    SFButton("person.crop.circle.badge.plus") {
-//                        isPresented = true
-//                    }
-//                }
-//        } else {
-//            content
-//        }
-//    }
-//}
-//
-//fileprivate extension View {
-//    func contactAccessPicker(_ isPresented: Binding<Bool>) -> some View {
-//        self.modifier(ContactAccessPickerModifier(isPresented))
-//    }
-//}
+fileprivate struct ContactAccessPickerModifier: ViewModifier {
+    @Binding private var isPresented: Bool
+    
+    init(_ isPresented: Binding<Bool>) {
+        _isPresented = isPresented
+    }
+    
+    func body(content: Content) -> some View {
+        if #available(iOS 18, *) {
+#warning("Implement")
+            content
+                .contactAccessPicker(isPresented: $isPresented)// { identifiers in }
+                .toolbar {
+                    SFButton("person.crop.circle.badge.plus") {
+                        isPresented = true
+                    }
+                }
+        } else {
+            content
+        }
+    }
+}
+
+fileprivate extension View {
+    func contactAccessPicker(_ isPresented: Binding<Bool>) -> some View {
+        self.modifier(ContactAccessPickerModifier(isPresented))
+    }
+}
 
 struct ContactsListView: View {
     @Environment(\.dismiss) private var dismiss
@@ -44,8 +43,7 @@ struct ContactsListView: View {
     @State private var moreContacts: [CNContact] = []
     @State private var searchField = ""
     @State private var authStatus: CNAuthorizationStatus = .notDetermined
-#warning("iOS 18")
-//    @State private var showPicker = false
+    @State private var showPicker = false
     
     private var filteredContacts: [CNContact] {
         if searchField.isEmpty {
@@ -82,21 +80,19 @@ struct ContactsListView: View {
                 }
                 .animation(.default, value: filteredContacts)
                 
-#warning("iOS 18")
-                //                if #available(iOS 18, *) {
-                //                    if authStatus == .limited || authStatus == .notDetermined {
-                //                        Section {
-                //                            ContactAccessButton(queryString: searchField) { identifiers in
-                //                                handleFetchContacts(identifiers)
-                //                            }
-                //                        }
-                //                    }
-                //                }
+                if #available(iOS 18, *) {
+                    if authStatus == .limited || authStatus == .notDetermined {
+                        Section {
+                            ContactAccessButton(queryString: searchField) { identifiers in
+                                handleFetchContacts(identifiers)
+                            }
+                        }
+                    }
+                }
             }
             .navigationTitle("Contacts")
             .searchable(text: $searchField)
-#warning("iOS 18")
-//            .contactAccessPicker($showPicker)
+            .contactAccessPicker($showPicker)
         }
         .task {
             loadContactsWithEmail()
@@ -175,6 +171,6 @@ fileprivate extension CNContact {
 
 #Preview {
     @Previewable @State var selectedEmail = "test@example.com"
-
+    
     ContactsListView($selectedEmail)
 }
