@@ -4,16 +4,15 @@ import Kingfisher
 final class CacheListVM {
     var images = [UIImage]()
     
-    func retrieveAllCachedImages(completion: @escaping ([UIImage]) -> Void) {
+    func retrieveAllCachedImages() {
+        images = []
+        
         let cache = ImageCache.default
         
         // Get the cache path
         let cachePath = cache.diskStorage.directoryURL.path
         
-        
         retrieveImages(atPath: cachePath)
-        
-        completion(images)
     }
     
     func retrieveImages(atPath path: String) {

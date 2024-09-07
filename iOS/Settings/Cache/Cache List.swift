@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct CacheList: View {
-    private var vm = CacheListVM()
+    @State private var vm = CacheListVM()
     
     var body: some View {
         List {
@@ -16,10 +16,8 @@ struct CacheList: View {
                     .frame(width: 100, height: 100)
             }
         }
-        .task {
-            vm.retrieveAllCachedImages { images in
-                print("Retrieved \(images.count) cached images")
-            }
+        .refreshableTask {
+            vm.retrieveAllCachedImages()
         }
     }
 }

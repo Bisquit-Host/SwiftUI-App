@@ -16,11 +16,11 @@ struct ServerList: View {
                 .padding(.top, 60)
         }
         .environment(vm)
-//        .searchable(text: $searchField)
+        //        .searchable(text: $searchField)
         .navigationBarBackButtonHidden()
-//        .background {
-//            BisquitFall()
-//        }
+        //        .background {
+        //            BisquitFall()
+        //        }
         .refreshableTask {
             vm.fetchServers(settings.adminServerList)
             settings.updateServers.toggle()
@@ -52,8 +52,8 @@ struct ServerList: View {
                 }
                 .padding(.trailing)
                 
-//                SettingsButton()
-//                    .environment(vm)
+                //                SettingsButton()
+                //                    .environment(vm)
             }
         }
         .overlay {
@@ -85,6 +85,6 @@ struct ServerList: View {
         ServerList()
     }
     .environment(ServerListVM())
-//    .environment(NavState())
+    //    .environment(NavState())
     .environmentObject(SettingsStorage())
 }
