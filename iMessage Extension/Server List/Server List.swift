@@ -67,11 +67,11 @@ struct ServerList: View {
         .sheet($vm.sheetDiscover) {
             Discover()
         }
-//        .sheet($vm.sheetKeyStorage) {
-//            CloudKeys($vm.apiKey) {
-//                vm.fetchServers(settings.adminServerList)
-//            }
-//        }
+        .sheet($vm.sheetKeyStorage) {
+            CloudKeys($vm.apiKey) {
+                vm.fetchServers(settings.adminServerList)
+            }
+        }
         .alert("Unknown Error", isPresented: $vm.alertError) {
             
         } message: {

@@ -748,7 +748,12 @@
 		F3A7CF222C8C4E9700413400 /* MailCover in Frameworks */ = {isa = PBXBuildFile; productRef = F3A7CF212C8C4E9700413400 /* MailCover */; };
 		F3A7CF232C8C509C00413400 /* Contact Provider Extension.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = F3E2BEF52C1DA07E00B7A6D4 /* Contact Provider Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F3A7CF612C8C569300413400 /* Server List VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF602C8C569300413400 /* Server List VM.swift */; };
+		F3A7CF622C8CA5A900413400 /* Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304498929E990E9006DC0C7 /* Cloud Keys.swift */; };
+		F3A7CF632C8CA5B900413400 /* Cloud Key Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A31B082B0B161D00F89C51 /* Cloud Key Card.swift */; };
+		F3A7CF642C8CA5CF00413400 /* Tip Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A800312A7313E900CAC40B /* Tip Cloud Keys.swift */; };
+		F3A7CF652C8CA5FE00413400 /* API Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35FEB062B09F003004DA05D /* API Key.swift */; };
 		F3A7CF662A44F44A00331B51 /* Auth View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF652A44F44A00331B51 /* Auth View.swift */; };
+		F3A7CF662C8CA60E00413400 /* Cloud Key Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300892E2B3DC4B20051476C /* Cloud Key Context Menu.swift */; };
 		F3A7CF6B2A44F6E000331B51 /* Circular Gauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF6A2A44F6E000331B51 /* Circular Gauge.swift */; };
 		F3A7CF702A44FD5300331B51 /* Server Card Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF6F2A44FD5300331B51 /* Server Card Parent.swift */; };
 		F3A7CF722A45150F00331B51 /* Server List Ornament.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF712A45150F00331B51 /* Server List Ornament.swift */; };
@@ -2037,16 +2042,9 @@
 				F304498929E990E9006DC0C7 /* Cloud Keys.swift */,
 				F300892E2B3DC4B20051476C /* Cloud Key Context Menu.swift */,
 				F3A31B082B0B161D00F89C51 /* Cloud Key Card.swift */,
-			);
-			path = "iCloud API-keys";
-			sourceTree = "<group>";
-		};
-		F300892D2B3D99180051476C /* SwiftData */ = {
-			isa = PBXGroup;
-			children = (
 				F35FEB062B09F003004DA05D /* API Key.swift */,
 			);
-			path = SwiftData;
+			path = "iCloud API-keys";
 			sourceTree = "<group>";
 		};
 		F306530C2B3E337A001682A2 /* SFTP */ = {
@@ -2136,7 +2134,6 @@
 				F36436EE2A2FE91C00976374 /* SpriteKit */,
 				F3EDEE3629C0CB4500B08696 /* Networking */,
 				F35B89BC2A7256F4000B5EEF /* Tips */,
-				F300892D2B3D99180051476C /* SwiftData */,
 				F3A1D2302A201C570053261E /* Enums.swift */,
 				F31BA56F295900C20006D126 /* Formatters.swift */,
 				F37266EA29D9F06C005FD103 /* Cache VM.swift */,
@@ -4949,6 +4946,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3A7CF122C8C4E3E00413400 /* Discover Card.swift in Sources */,
+				F3A7CF652C8CA5FE00413400 /* API Key.swift in Sources */,
 				F3A7CF132C8C4E3E00413400 /* Discover.swift in Sources */,
 				F3A7CF142C8C4E3E00413400 /* Discover Item.swift in Sources */,
 				F3A7CEDC2C8B95CB00413400 /* Home View.swift in Sources */,
@@ -4962,11 +4960,13 @@
 				F3A7CEF42C8BB7E500413400 /* Network Calls.swift in Sources */,
 				F3A7CEEF2C8BB79500413400 /* Gauge Disk.swift in Sources */,
 				F3A7CEF12C8BB7A300413400 /* Server Card VM.swift in Sources */,
+				F3A7CF622C8CA5A900413400 /* Cloud Keys.swift in Sources */,
 				F3A7CF102C8C4C2700413400 /* Server List Filter.swift in Sources */,
 				F3A7CEEA2C8BB74D00413400 /* Server List Grid.swift in Sources */,
 				F3A7CF0D2C8C43B100413400 /* Topbar Grid Button.swift in Sources */,
 				F3A7CEEE2C8BB78F00413400 /* Gauge Regular.swift in Sources */,
 				F3A7CEE52C8B9E7500413400 /* Messages VM.swift in Sources */,
+				F3A7CF662C8CA60E00413400 /* Cloud Key Context Menu.swift in Sources */,
 				F3A7CF082C8BBC7600413400 /* Guide.swift in Sources */,
 				F3A7CEEC2C8BB77500413400 /* Server Card Parent.swift in Sources */,
 				F3A7CF0E2C8C43BB00413400 /* Topbar Admin Button.swift in Sources */,
@@ -4978,9 +4978,11 @@
 				F3A7CECB2C8B685500413400 /* Messages VC.swift in Sources */,
 				F3A7CF182C8C4E4A00413400 /* Browser Spec.swift in Sources */,
 				F3A7CF192C8C4E4A00413400 /* Browser VM.swift in Sources */,
+				F3A7CF642C8CA5CF00413400 /* Tip Cloud Keys.swift in Sources */,
 				F3A7CF1A2C8C4E4A00413400 /* Browser Sticker.swift in Sources */,
 				F3A7CF1B2C8C4E4A00413400 /* Browser Topbar.swift in Sources */,
 				F3A7CF1C2C8C4E4A00413400 /* Browser Card.swift in Sources */,
+				F3A7CF632C8CA5B900413400 /* Cloud Key Card.swift in Sources */,
 				F3A7CF1D2C8C4E4A00413400 /* Browser Hints.swift in Sources */,
 				F3A7CF1E2C8C4E4A00413400 /* Browser.swift in Sources */,
 				F3A7CF1F2C8C4E4A00413400 /* CloudKit Model.swift in Sources */,
