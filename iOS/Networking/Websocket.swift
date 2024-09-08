@@ -36,9 +36,10 @@ final class WebSocketTaskConnection: NSObject, WebSocketConnection, URLSessionWe
         }
     }
     
-    func urlSession(_ session: URLSession,
-                    webSocketTask: URLSessionWebSocketTask,
-                    didOpenWithProtocol protocol: String?
+    func urlSession(
+        _ session: URLSession,
+        webSocketTask: URLSessionWebSocketTask,
+        didOpenWithProtocol protocol: String?
     ) {
         self.delegate?.onConnecting(connection: self)
         
@@ -48,8 +49,6 @@ final class WebSocketTaskConnection: NSObject, WebSocketConnection, URLSessionWe
                     connection: self,
                     error: error
                 )
-                
-                websocketError(#function, error)
             }
         }
         
@@ -60,8 +59,6 @@ final class WebSocketTaskConnection: NSObject, WebSocketConnection, URLSessionWe
                         connection: self,
                         error: error
                     )
-                    
-                    networkCallError(#function, error)
                 }
             }
         }
