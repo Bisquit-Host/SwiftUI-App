@@ -23,10 +23,12 @@ final class MyWebSocketDelegate: WebSocketConnectionDelegate {
     
     func onError(connection: WebSocketConnection, error: Error) {
         Logger.webSocket.error("\(error.localizedDescription)")
+        
+        SystemAlert.error(error)
     }
     
     func onTextMessage(connection: WebSocketConnection, message: String) {
-//        Logger.webSocket.log("Received message: \(message)")
+        //        Logger.webSocket.log("Received message: \(message)")
         
         onTextMessage(message)
     }

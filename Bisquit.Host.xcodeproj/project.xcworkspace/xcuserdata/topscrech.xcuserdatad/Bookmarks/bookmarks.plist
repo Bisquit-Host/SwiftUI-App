@@ -2081,15 +2081,15 @@ import PteroNet
 				<key>location-parameters</key>
 				<dict>
 					<key>EndingColumnNumber</key>
-					<string>26</string>
+					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>28</string>
+					<string>31</string>
 					<key>StartingColumnNumber</key>
-					<string>17</string>
+					<string>8</string>
 					<key>StartingLineNumber</key>
-					<string>28</string>
+					<string>30</string>
 					<key>Timestamp</key>
-					<string>725306922.848699</string>
+					<string>747472939.309242</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -2105,15 +2105,16 @@ import PteroNet
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>webSocket</string>
+				<string>//        Logger.webSocket.log("Received message: \(message)")
+</string>
 				<key>leading</key>
 				<string>    
     func onTextMessage(connection: WebSocketConnection, message: String) {
-//        Logger.</string>
+        </string>
 				<key>trailing</key>
-				<string>.log("Received message: \(message)")
-        
+				<string>        
         onTextMessage(message)
+    }
 </string>
 			</dict>
 			<key>title</key>

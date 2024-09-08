@@ -97,8 +97,6 @@ final class WebSocketTaskConnection: NSObject, WebSocketConnection, URLSessionWe
                     connection: self,
                     error: error
                 )
-                
-                websocketError(#function, error)
             }
         }
     }
