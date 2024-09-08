@@ -3255,9 +3255,9 @@
 			isa = PBXGroup;
 			children = (
 				F3AF91C42B423535001D8F80 /* SSH List.swift */,
+				F3AF91C02B423492001D8F80 /* SSH VM.swift */,
 				F3AF91CC2B423A26001D8F80 /* SSH Create View.swift */,
 				F3AF91C82B4235BB001D8F80 /* SSH Card.swift */,
-				F3AF91C02B423492001D8F80 /* SSH VM.swift */,
 			);
 			path = SSH;
 			sourceTree = "<group>";

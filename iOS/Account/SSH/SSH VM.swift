@@ -1,9 +1,11 @@
-import SwiftUI
+import ScrechKit
 import PteroNet
 
 @Observable
 final class SSHVM {
     var keys: [SSHKey] = []
+    var newName = ""
+    var newPublicKey = ""
     
     func fetchKeys() {
         sshListAPI { result in
@@ -21,8 +23,8 @@ final class SSHVM {
         }
     }
     
-    func createKey(_ name: String, publicKey: String, onSuccess: @escaping () -> ()) {
-        sshCreateAPI(name, publicKey: publicKey, printResponse: true) { result in
+    func createKey(onSuccess: @escaping () -> ()) {
+        sshCreateAPI(newName, publicKey: newPublicKey, printResponse: true) { result in
             switch result {
             case .success(let model):
                 if let model = model?.attributes {
@@ -55,6 +57,24 @@ final class SSHVM {
                 
             case .failure(let error):
                 SystemAlert.error(error)
+            }
+        }
+    }
+    
+    func handleDrop(_ providers: [NSItemProvider]) {
+        let type = "public.text"
+        
+        for provider in providers {
+            if let name = provider.suggestedName {
+                self.newName = name
+            }
+            
+            if provider.hasItemConformingToTypeIdentifier(type) {
+                provider.loadDataRepresentation(forTypeIdentifier: type) { data, error in
+                    if let data, let fileContent = String(data: data, encoding: .utf8) {
+                        self.newPublicKey = fileContent
+                    }
+                }
             }
         }
     }

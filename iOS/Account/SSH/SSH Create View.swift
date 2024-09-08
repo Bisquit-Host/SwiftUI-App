@@ -1,22 +1,22 @@
-import ScrechKit
+import SwiftUI
 import UniformTypeIdentifiers
 
 struct SSHCreateView: View {
     @Environment(SSHVM.self) private var vm
     @Environment(\.dismiss) private var dismiss
     
-    @State private var name = ""
-    @State private var publicKey = ""
     @State private var isTargeted = false
     
     var body: some View {
+        @Bindable var vm = vm
+        
         List {
             Section {
-                TextField("Name", text: $name)
+                TextField("Name", text: $vm.newName)
                 
-                TextEditor(text: $publicKey)
+                TextEditor(text: $vm.newPublicKey)
                     .onDrop(of: [.text], isTargeted: $isTargeted) { providers in
-                        handleDrop(providers: providers)
+                        vm.handleDrop(providers)
                         return true
                     }
                     .frame(minHeight: 200)
@@ -36,33 +36,13 @@ struct SSHCreateView: View {
             }
             
             Button("Create") {
-                vm.createKey(name, publicKey: publicKey) {
+                vm.createKey() {
                     dismiss()
                 }
             }
-            .disabled(name.isEmpty || publicKey.isEmpty)
+            .disabled(vm.newName.isEmpty || vm.newPublicKey.isEmpty)
         }
-    }
-    
-    private func handleDrop(providers: [NSItemProvider]) {
-        let type = "public.text"
-        
-        for provider in providers {
-            if provider.hasItemConformingToTypeIdentifier(type) {
-                provider.loadDataRepresentation(forTypeIdentifier: type) { data, error in
-                    if let data, let fileContent = String(data: data, encoding: .utf8) {
-                        main {
-                            if let name = provider.suggestedName {
-                                self.name = name
-                            }
-                            
-                            self.publicKey = fileContent
-                        }
-                    }
-                }
-            }
-        }
-    }
+    }    
 }
 
 #Preview {
