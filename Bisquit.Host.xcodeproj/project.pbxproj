@@ -3002,8 +3002,8 @@
 				F31BA592295901D00006D126 /* Discover.swift */,
 				F39E0A932C1BA06C00C4E906 /* Discover Card.swift */,
 				F39E0A972C1BA11600C4E906 /* Discover Item.swift */,
-				F3878EDB2A1C1E9F00AD8657 /* Map */,
 				F3565B7C295E5F9E0092874A /* Browser */,
+				F3878EDB2A1C1E9F00AD8657 /* Map */,
 			);
 			path = Discover;
 			sourceTree = "<group>";

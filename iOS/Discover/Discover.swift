@@ -3,7 +3,6 @@ import SafariCover
 
 struct Discover: View {
     @State private var sheetConfigurations = false
-    @State private var sheetSystemStatus = false
     
     var body: some View {
         NavigationView {
@@ -13,10 +12,6 @@ struct Discover: View {
                         sheetConfigurations = true
                     }
                     .foregroundStyle(.foreground)
-                    
-                    ListButton("System status", actionIcon: "speedometer") {
-                        sheetSystemStatus = true
-                    }
                 }
                 
                 Section("Support") {
@@ -60,6 +55,15 @@ struct Discover: View {
                 Section("Other") {
                     DiscoverCard(
                         DiscoverItem(
+                            "System status",
+                            icon: "speedometer",
+                            url: "https://status.bisquit.host/status/bisquithost",
+                            color: .gray
+                        )
+                    )
+                    
+                    DiscoverCard(
+                        DiscoverItem(
                             "Wiki / FAQ",
                             icon: "books.vertical",
                             url: "https://wiki.bisquit.host",
@@ -87,9 +91,6 @@ struct Discover: View {
         }
         .sheet($sheetConfigurations) {
             Browser()
-        }
-        .sheet($sheetSystemStatus) {
-#warning("TODO: System Status Sheet")
         }
     }
 }
