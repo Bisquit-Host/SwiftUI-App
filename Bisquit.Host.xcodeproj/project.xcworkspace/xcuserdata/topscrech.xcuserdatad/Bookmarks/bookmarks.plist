@@ -272,7 +272,7 @@
 				<string>        }
 </string>
 				<key>leading</key>
-				<string>        .sheet($binding.showFormatting) {
+				<string>        .sheet($panelVM.showFormatting) {
             Text("Formatting")
 </string>
 				<key>trailing</key>

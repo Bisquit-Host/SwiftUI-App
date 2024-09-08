@@ -24,8 +24,6 @@ struct Console: View {
     ]
     
     var body: some View {
-        @Bindable var binding = vm
-        
         VStack {
             ScrollView(showsIndicators: false) {
                 ScrollViewReader { proxy in

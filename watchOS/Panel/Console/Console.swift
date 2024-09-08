@@ -4,7 +4,7 @@ struct Console: View {
     @Environment(PanelVM.self) private var panelVM
     
     var body: some View {
-        @Bindable var binding = panelVM
+        @Bindable var panelVM = panelVM
         
         ScrollView {
             ForEach(panelVM.messages, id: \.self) { message in
@@ -17,7 +17,7 @@ struct Console: View {
             .padding(.vertical)
         }
         .navigationTitle("Console")
-        .sheet($binding.showFormatting) {
+        .sheet($panelVM.showFormatting) {
             Text("Formatting")
         }
         .overlay(alignment: .bottomTrailing) {

@@ -4,12 +4,12 @@ struct ConsoleInspector: View {
     @Environment(ConsoleVM.self) private var vm
     
     var body: some View {
-        @Bindable var binding = vm
+        @Bindable var vm = vm
         
         List {
-            Stepper("Font Size: \(Int(vm.fontSize))", value: $binding.fontSize)
+            Stepper("Font Size: \(Int(vm.fontSize))", value: $vm.fontSize)
             
-            Slider(value: $binding.fontSize, in: 6...16)
+            Slider(value: $vm.fontSize, in: 6...16)
             
 //            Toggle("coloredTextEnabled", isOn: $settings.coloredTextEnabled)
         }

@@ -12,7 +12,7 @@ struct DatabaseList: View {
     @State private var alertCreate = false
     
     var body: some View {
-        @Bindable var binding = vm
+        @Bindable var vm = vm
         
         Section {
             ForEach(vm.databases) { db in
@@ -33,16 +33,17 @@ struct DatabaseList: View {
             .buttonStyle(.borderedProminent)
 #endif
         } header: {
-            SectionHeader("Databases",
-                          type: .database(
-                            vm.databases.count,
-                            limit: databaseLimit
-                          )
+            SectionHeader(
+                "Databases",
+                type: .database(
+                    vm.databases.count,
+                    limit: databaseLimit
+                )
             )
         }
         
         .alert("Create Database", isPresented: $alertCreate) {
-            TextField("", text: $binding.newDatabaseName)
+            TextField("", text: $vm.newDatabaseName)
                 .autocorrectionDisabled()
             
             Button("Create") {

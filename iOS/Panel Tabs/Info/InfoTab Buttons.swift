@@ -26,8 +26,6 @@ struct InfoTabButtons: View {
     @State private var isRotating = false
     
     var body: some View {
-        @Bindable var binding = settingsVM
-        
         VStack {
             HStack {
                 InfoTabButton("Logs", icon: "list.bullet.rectangle.fill") {

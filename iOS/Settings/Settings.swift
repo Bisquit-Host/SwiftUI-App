@@ -6,7 +6,7 @@ struct Settings: View {
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
-        @Bindable var binding = vm
+        @Bindable var vm = vm
         
         List {
             AccountSettings()
@@ -41,10 +41,10 @@ struct Settings: View {
         .scrollIndicators(.hidden)
         .scrollContentBackground(settings.transparentSheet ? .hidden : .visible)
         .presentationBackground(settings.transparentSheet ? .ultraThinMaterial : .regular)
-        .sheet($binding.sheetSupport) {
+        .sheet($vm.sheetSupport) {
             Support()
         }
-        .sheet($binding.sheetBio) {
+        .sheet($vm.sheetBio) {
             BiometryUsageView()
         }
         .task {

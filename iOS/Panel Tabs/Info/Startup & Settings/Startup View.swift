@@ -15,8 +15,6 @@ struct StartupView: View {
     @State private var currentDockerImage: String
     
     var body: some View {
-        @Bindable var binding = vm
-        
         List {
             Section("Startup Command") {
                 Text(showRawCommand ? vm.rawStartupCommand : vm.startupCommand)

@@ -23,12 +23,12 @@ struct ConsoleTab: View {
     ]
     
     var body: some View {
-        @Bindable var binding = vm
+        @Bindable var vm = vm
         
         VStack {
             ConsoleView(fontDesign)
         }
-        .inspector($binding.inspectorPresented) {
+        .inspector($vm.inspectorPresented) {
             ConsoleInspector()
         }
         .overlay(alignment: .bottom) {
@@ -56,7 +56,7 @@ struct ConsoleTab: View {
         .onDisappear {
             settings.consoleFontSize = vm.fontSize
         }
-        .alert("Are you sure you want to perform the Kill action?", isPresented: $binding.alertKill) {
+        .alert("Are you sure you want to perform the Kill action?", isPresented: $vm.alertKill) {
             Button("Kill", role: .destructive) {
                 panelVM.changePower(.kill)
             }

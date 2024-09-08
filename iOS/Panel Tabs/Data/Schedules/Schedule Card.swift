@@ -30,7 +30,7 @@ struct ScheduleCard: View {
 #endif
     
     var body: some View {
-        @Bindable var binding = vm
+        @Bindable var vm = vm
         
         Button {
             
@@ -76,7 +76,7 @@ struct ScheduleCard: View {
             ScheduleContextMenu(schedule)
                 .environment(vm)
         }
-        .sheet($binding.sheetCreateTask) {
+        .sheet($vm.sheetCreateTask) {
             NewTaskSheet(schedule.id)
         }
     }

@@ -6,8 +6,6 @@ struct ServerList: View {
     @EnvironmentObject private var settings: SettingsStorage
     
     var body: some View {
-        @Bindable var binding = vm
-        
         ScrollView {
             ServerListTopbar()
             

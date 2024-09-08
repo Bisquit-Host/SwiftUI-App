@@ -4,9 +4,9 @@ struct LoginContainer: View {
     @Environment(NavState.self) private var navState
     
     var body: some View {
-        @Bindable var binding = navState
+        @Bindable var navState = navState
         
-        NavigationStack(path: $binding.path) {
+        NavigationStack(path: $navState.path) {
             Intro()
                 .withNavDestinations()
         }

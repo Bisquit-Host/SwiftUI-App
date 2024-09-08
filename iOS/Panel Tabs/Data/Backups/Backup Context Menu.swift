@@ -11,7 +11,6 @@ struct BackupContextMenu: View {
     }
     
     var body: some View {
-        @Bindable var binding = vm
         let uuid = backup.uuid
         
         ControlGroup {

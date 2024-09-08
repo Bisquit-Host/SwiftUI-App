@@ -7,8 +7,6 @@ struct ServerList: View {
     private let gradient = Gradient(colors: [Color(0x3b58a4), Color(0x855da6)])
     
     var body: some View {
-        @Bindable var binding = vm
-        
         VStack(alignment: .leading) {
             ScrollView(showsIndicators: false) {
                 ForEach(vm.filteredServers) { server in

@@ -27,7 +27,7 @@ struct LogList: View {
     }
     
     var body: some View {
-        @Bindable var binding = vm
+        @Bindable var vm = vm
         
         List {
             let logsByMonth = vm.searchedLogs.chunked { lhs, rhs in
@@ -49,7 +49,7 @@ struct LogList: View {
         }
         .navigationTitle("Server logs")
         .toolbarTitleDisplayMode(.inline)
-        .searchable(text: $binding.searchField)
+        .searchable(text: $vm.searchField)
         .overlay {
             if vm.searchedLogs.isEmpty {
                 ContentUnavailableView.search(text: vm.searchField)

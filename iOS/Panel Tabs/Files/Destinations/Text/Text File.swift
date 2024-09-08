@@ -36,7 +36,7 @@ struct TextFile: View {
     //    ]
     
     var body: some View {
-        @Bindable var binding = vm
+        @Bindable var vm = vm
         
         VStack {
 #if os(iOS)
@@ -57,7 +57,7 @@ struct TextFile: View {
             //                    .padding(10)
             //                    .autocorrectionDisabled()
             
-            TextEditor(text: $binding.text)
+            TextEditor(text: $vm.text)
                 .padding(10)
                 .disableAutocorrection(true)
                 .onSubmit {

@@ -11,7 +11,7 @@ struct ConsoleOverlay: View {
     }
     
     var body: some View {
-        @Bindable var binding = vm
+        @Bindable var vm = vm
         
         VStack {
             HStack {
@@ -21,7 +21,7 @@ struct ConsoleOverlay: View {
                 
                 ConsoleSearch()
                 
-                InspectorButton($binding.inspectorPresented)
+                InspectorButton($vm.inspectorPresented)
             }
             
             Spacer()

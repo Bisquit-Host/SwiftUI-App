@@ -10,7 +10,7 @@ struct BackupList: View {
     }
         
     var body: some View {
-        @Bindable var binding = vm
+        @Bindable var vm = vm
         
         Section {
             ForEach(vm.backups, id: \.uuid) { backup in
@@ -29,13 +29,13 @@ struct BackupList: View {
             QRCodeView(vm.downloadUrl)
         }
 #else
-        .safariCover($binding.showSafari, url: vm.downloadUrl)
+        .safariCover($vm.showSafari, url: vm.downloadUrl)
 #endif
         .environment(vm)
-        .alert("Name Backup", isPresented: $binding.alertCreateBackup) {
-            TextField("Backup at \(vm.dateAndTime)", text: $binding.textCreateBackup)
+        .alert("Name Backup", isPresented: $vm.alertCreateBackup) {
+            TextField("Backup at \(vm.dateAndTime)", text: $vm.textCreateBackup)
                 .autocorrectionDisabled()
-                .limitInputLength($binding.textCreateBackup, length: 191)
+                .limitInputLength($vm.textCreateBackup, length: 191)
             
             Button("Cancel", role: .cancel) {
                 

@@ -15,14 +15,14 @@ struct PanelSettingsView: View {
     @State private var alertReinstall = false
     
     var body: some View {
-        @Bindable var binding = vm
+        @Bindable var vm = vm
         
         List {
             Section("Name & description") {
-                TextField("Server name", text: $binding.serverName)
+                TextField("Server name", text: $vm.serverName)
                     .autocorrectionDisabled()
                 
-                TextField("Server description", text: $binding.serverDescription)
+                TextField("Server description", text: $vm.serverDescription)
                 
                 if vm.serverName != server.name || vm.serverDescription != server.description {
                     Button("Save") {

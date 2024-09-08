@@ -13,9 +13,9 @@ struct AppContainer: View {
     @State private var vm = ServerListVM()
     
     var body: some View {
-        @Bindable var binding = navState
+        @Bindable var navState = navState
         
-        NavigationStack(path: $binding.path) {
+        NavigationStack(path: $navState.path) {
             if settings.isApiKeyValid {
 #if !os(watchOS)
                 AuthView()
