@@ -10,6 +10,8 @@ struct ServerList: View {
     var body: some View {
         @Bindable var vm = vm
         
+#warning("Present a warning when 2FA is disabled")
+        
         ScrollView(showsIndicators: false) {
             ServerListGrid(vm.filteredServers)
                 .padding(4)
