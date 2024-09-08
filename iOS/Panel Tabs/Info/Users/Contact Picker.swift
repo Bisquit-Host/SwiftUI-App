@@ -10,9 +10,8 @@ fileprivate struct ContactAccessPickerModifier: ViewModifier {
     
     func body(content: Content) -> some View {
         if #available(iOS 18, *) {
-#warning("Implement")
             content
-                .contactAccessPicker(isPresented: $isPresented)// { identifiers in }
+                .contactAccessPicker(isPresented: $isPresented)
                 .toolbar {
                     SFButton("person.crop.circle.badge.plus") {
                         isPresented = true
