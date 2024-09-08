@@ -45,48 +45,52 @@ struct Support: View {
     
     var buttonWiki: some View {
         SafariButton("https://wiki.bisquit.host") {
-            ListButton("Wiki / FAQ",
-                       icon: "books.vertical",
-                       actionIcon: "link",
-                       color: .blue
+            ListButton(
+                "Wiki / FAQ",
+                icon: "books.vertical",
+                actionIcon: "link",
+                color: .blue
             )
         }
     }
     
     var buttonSupportApp: some View {
         SafariButton("https://topscrech.dev/app/support") {
-            ListButton("App Support",
-                       icon: "questionmark.bubble.fill",
-                       actionIcon: "link",
-                       color: .purple
+            ListButton(
+                "App Support",
+                icon: "questionmark.bubble.fill",
+                actionIcon: "link",
+                color: .purple
             )
         }
     }
     
-#warning("Code style")
     var buttonSupportHosting: some View {
         SafariButton("https://my.bisquit.host/contact.php") {
-            ListButton("Hosting Support",
-                       icon: "questionmark.bubble.fill",
-                       actionIcon: "link",
-                       color: .purple
+            ListButton(
+                "Hosting Support",
+                icon: "questionmark.bubble.fill",
+                actionIcon: "link",
+                color: .purple
             )
         }
     }
     
     var buttonApi: some View {
-        ListButton("Where to find the API-key?",
-                   icon: "key.fill",
-                   actionIcon: "chevron.forward"
+        ListButton(
+            "Where to find the API-key?",
+            icon: "key.fill",
+            actionIcon: "chevron.forward"
         ) {
             sheetGuide = true
         }
     }
     
     var buttonMail: some View {
-        ListButton("Mail",
-                   icon: "envelope.fill",
-                   actionIcon: "envelope"
+        ListButton(
+            "Mail",
+            icon: "envelope.fill",
+            actionIcon: "envelope"
         ) {
             showMailCover = true
         }

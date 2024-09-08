@@ -70,6 +70,8 @@ struct VideoFile: View {
         let fileURL = tempDirectoryURL.appendingPathComponent(name)
         
         URLSession.shared.downloadTask(with: url) { location, response, error in
+            let fm = FileManager.default
+            
             guard let location, error == nil else {
                 print("Download error: \(error?.localizedDescription ?? "No error description available")")
                 return
