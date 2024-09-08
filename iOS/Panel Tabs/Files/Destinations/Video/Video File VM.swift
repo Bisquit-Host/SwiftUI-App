@@ -15,7 +15,7 @@ final class VideoFileVM {
     var localVideoUrl: URL?
     
     func fetchVideoUrl(_ name: String, root: String) {
-        fileDownloadAPI(id, path: root + "/\(name)") { result in
+        fileDownloadAPI(id, path: root + "/" + name) { result in
             switch result {
             case .success(let model):
                 guard let model = model?.attributes else {
