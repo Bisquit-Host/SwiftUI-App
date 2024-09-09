@@ -9,7 +9,7 @@ struct ConsoleSearch: View {
     @FocusState private var focus
     
     var body: some View {
-        @Bindable var vm = panelVM
+        @Bindable var panelVM = panelVM
         
         HStack {
             SFButton("magnifyingglass") {
@@ -35,7 +35,7 @@ struct ConsoleSearch: View {
             .background(.ultraThinMaterial, in: .circle)
             
             if showSearch {
-                TextField("Search", text: $vm.searchRule)
+                TextField("Search", text: $panelVM.searchRule)
                     .autocorrectionDisabled()
                     .textFieldStyle(.roundedBorder)
                     .focused($focus)
