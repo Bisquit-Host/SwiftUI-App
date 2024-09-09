@@ -26,6 +26,8 @@ final class AccountVM {
         twoFaDetailtsAPI { [self] result in
             switch result {
             case .success(let model):
+                twoFaEnabled = false
+                
                 if let model = model?.data.imageUrlData {
                     qrCodeUrl = model
                 }
@@ -40,6 +42,35 @@ final class AccountVM {
                 }
                 
                 twoFaEnabled = true
+            }
+        }
+    }
+    
+    func enable2Fa(_ code: String, onSuccess: @escaping () -> ()) {
+        twoFaEnableAPI(code) { result in
+            switch result {
+            case .success(let model):
+                if let tokens = model?.attributes.tokens {
+                    print(tokens)
+#warning("FINISHSHSHHSHS")
+                    onSuccess()
+                }
+                
+            case .failure(let error):
+                SystemAlert.error(error)
+            }
+        }
+    }
+    
+    func disable2Fa(_ code: String, onSuccess: @escaping () -> ()) {
+        twoFaDisableAPI(code) { result in
+            switch result {
+            case .success(let model):
+                print(model)
+                onSuccess()
+                
+            case .failure(let error):
+                SystemAlert.error(error)
             }
         }
     }

@@ -1055,6 +1055,12 @@
 		F3D7D87B29E83D1800BCAFFE /* Cache Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7D87A29E83D1800BCAFFE /* Cache Settings.swift */; };
 		F3D7D87D29E83D6500BCAFFE /* Icon Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7D87C29E83D6500BCAFFE /* Icon Settings.swift */; };
 		F3D7D87F29E83DEE00BCAFFE /* Design Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7D87E29E83DEE00BCAFFE /* Design Settings.swift */; };
+		F3D7F84F2C8ED3D100368ECE /* Disable 2FA View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7F84E2C8ED3D100368ECE /* Disable 2FA View.swift */; };
+		F3D7F8502C8ED3D100368ECE /* Disable 2FA View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7F84E2C8ED3D100368ECE /* Disable 2FA View.swift */; };
+		F3D7F8512C8ED3D100368ECE /* Disable 2FA View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7F84E2C8ED3D100368ECE /* Disable 2FA View.swift */; };
+		F3D7F8532C8F258B00368ECE /* Enable 2FA View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7F8522C8F258B00368ECE /* Enable 2FA View.swift */; };
+		F3D7F8542C8F258B00368ECE /* Enable 2FA View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7F8522C8F258B00368ECE /* Enable 2FA View.swift */; };
+		F3D7F8552C8F258B00368ECE /* Enable 2FA View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7F8522C8F258B00368ECE /* Enable 2FA View.swift */; };
 		F3D902DF29DC445A004E76C9 /* Cache Limit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D902DE29DC445A004E76C9 /* Cache Limit.swift */; };
 		F3DAD6BE2A4793F8002ED405 /* Circular Gauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF6A2A44F6E000331B51 /* Circular Gauge.swift */; };
 		F3DAD6BF2A4793F8002ED405 /* Circular Gauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF6A2A44F6E000331B51 /* Circular Gauge.swift */; };
@@ -1718,6 +1724,8 @@
 		F3D7D87A29E83D1800BCAFFE /* Cache Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache Settings.swift"; sourceTree = "<group>"; };
 		F3D7D87C29E83D6500BCAFFE /* Icon Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Icon Settings.swift"; sourceTree = "<group>"; };
 		F3D7D87E29E83DEE00BCAFFE /* Design Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Design Settings.swift"; sourceTree = "<group>"; };
+		F3D7F84E2C8ED3D100368ECE /* Disable 2FA View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Disable 2FA View.swift"; sourceTree = "<group>"; };
+		F3D7F8522C8F258B00368ECE /* Enable 2FA View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enable 2FA View.swift"; sourceTree = "<group>"; };
 		F3D902DE29DC445A004E76C9 /* Cache Limit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache Limit.swift"; sourceTree = "<group>"; };
 		F3DAD6C02A47A967002ED405 /* Bisquit-Host-visionOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Bisquit-Host-visionOS-Info.plist"; sourceTree = SOURCE_ROOT; };
 		F3DC4E2129AEAF3E00D27EC5 /* Credentials Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Credentials Button.swift"; sourceTree = "<group>"; };
@@ -3181,6 +3189,8 @@
 			children = (
 				F3D2643D2A66ABB2005C3777 /* Account Parent.swift */,
 				F3D264392A66AB92005C3777 /* Account View.swift */,
+				F3D7F8522C8F258B00368ECE /* Enable 2FA View.swift */,
+				F3D7F84E2C8ED3D100368ECE /* Disable 2FA View.swift */,
 				F3D264432A66B3A6005C3777 /* QR Code View.swift */,
 				F3D264402A66ABBE005C3777 /* Account VM.swift */,
 				F3DF4A0C2B485D50003C6922 /* SSH */,
@@ -4241,6 +4251,7 @@
 				F3496DC929E00CE70089FC28 /* Create Button.swift in Sources */,
 				F3437CA2297360D30064808F /* Schedule Card.swift in Sources */,
 				F375EC3C29EE88EA002CA969 /* Schedule List.swift in Sources */,
+				F3D7F8542C8F258B00368ECE /* Enable 2FA View.swift in Sources */,
 				F3BC03BC2B1FFBD50011F98A /* Backup Context Menu.swift in Sources */,
 				F3F86CFD2A5AEDB400A2C82E /* Audio Recorder.swift in Sources */,
 				F380B3242BD7B9B6009062E8 /* Image Picker.swift in Sources */,
@@ -4366,6 +4377,7 @@
 				F3573BC22C6511040051259E /* Intents.intentdefinition in Sources */,
 				F31BA5A52959026D0006D126 /* Console VM.swift in Sources */,
 				F3BF97AA29BFC7E9007B9C9C /* Websocket.swift in Sources */,
+				F3D7F8502C8ED3D100368ECE /* Disable 2FA View.swift in Sources */,
 				F337B3A829BC6B5400CC1195 /* Server List Grid.swift in Sources */,
 				F3E2BEDF2C1C6BA800B7A6D4 /* Cache List VM.swift in Sources */,
 				F37266BC29D811B7005FD103 /* File View.swift in Sources */,
@@ -4576,6 +4588,7 @@
 				F3553FBA2B4093E600EF0FD2 /* Allocation List.swift in Sources */,
 				F389BB602A05B57D00911EBF /* Gauge Regular.swift in Sources */,
 				F30C13002A54593700A7EFF0 /* Login Container.swift in Sources */,
+				F3D7F8512C8ED3D100368ECE /* Disable 2FA View.swift in Sources */,
 				F3EB09EE2A2987F00073916A /* QuickLook File.swift in Sources */,
 				F36D530C2A05B6C4007324C6 /* Server List.swift in Sources */,
 				F36D53462A05B92E007324C6 /* Auth Background.swift in Sources */,
@@ -4583,6 +4596,7 @@
 				F36D531D2A05B816007324C6 /* Websocket.swift in Sources */,
 				F31BA5512958FFAF0006D126 /* Clip Demo App.swift in Sources */,
 				F389BB772A05B63200911EBF /* Biometry Button.swift in Sources */,
+				F3D7F8532C8F258B00368ECE /* Enable 2FA View.swift in Sources */,
 				F3A994AF2A17AED500530615 /* Map List.swift in Sources */,
 				F36D53212A05B836007324C6 /* Websocket Delegate.swift in Sources */,
 				F3116F272A33E142001F067C /* Folder File.swift in Sources */,
@@ -4748,6 +4762,7 @@
 				F3D295492AF39DB300ED43A0 /* Auth View.swift in Sources */,
 				F3D295632AF39E9400ED43A0 /* Upload Progress.swift in Sources */,
 				F3D2957A2AF39F3700ED43A0 /* User View.swift in Sources */,
+				F3D7F8552C8F258B00368ECE /* Enable 2FA View.swift in Sources */,
 				F3D295E72AF3A3A900ED43A0 /* Create Backup Button.swift in Sources */,
 				F3D295EA2AF3A3CE00ED43A0 /* Command Line.swift in Sources */,
 				F3D2953E2AF39D5E00ED43A0 /* Bisquit.Host App.swift in Sources */,
@@ -4804,6 +4819,7 @@
 				F32FD7202B1E065500723B88 /* Network Calls.swift in Sources */,
 				F3D295502AF39DEA00ED43A0 /* Browser Hints.swift in Sources */,
 				F3D295D42AF3A30C00ED43A0 /* Console VM.swift in Sources */,
+				F3D7F84F2C8ED3D100368ECE /* Disable 2FA View.swift in Sources */,
 				F3D295772AF39F2900ED43A0 /* Folder Path VM.swift in Sources */,
 				F3D295A12AF3A09D00ED43A0 /* Log List.swift in Sources */,
 				F3D295452AF39D9000ED43A0 /* Intro Model.swift in Sources */,
