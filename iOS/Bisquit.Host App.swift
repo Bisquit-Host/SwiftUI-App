@@ -75,11 +75,11 @@ struct BisquitHostApp: App {
         }
 #endif
         
+#if os(visionOS)
         WindowGroup(id: "console") {
             Text("Console")
         }
         
-#if os(visionOS)
         WindowGroup(id: "QuickLook", for: FileLink.self) { $file in
             NavigationStack {
                 QuickLookFile($file)
