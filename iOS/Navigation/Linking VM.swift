@@ -2,7 +2,7 @@ import ScrechKit
 import PteroNet
 
 @Observable
-final class LinkingVM {
+final class DeepLinkVM {
     var errorMessage = ""
     var alertError = false
     

@@ -15,7 +15,7 @@ struct BisquitHostApp: App {
     @StateObject private var settings = SettingsStorage()
     private var navState = NavState()
 #if !os(macOS)
-    private var linking = LinkingVM()
+    private var linking = DeepLinkVM()
 #endif
     private var network = NetworkVM()
     
