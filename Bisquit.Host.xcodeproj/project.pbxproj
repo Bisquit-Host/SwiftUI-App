@@ -144,7 +144,7 @@
 		F31BA5682959006F0006D126 /* App Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5672959006F0006D126 /* App Container.swift */; };
 		F31BA56A2959007E0006D126 /* Nav Destinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5692959007E0006D126 /* Nav Destinations.swift */; };
 		F31BA570295900C20006D126 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA56F295900C20006D126 /* Formatters.swift */; };
-		F31BA576295900E30006D126 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA575295900E30006D126 /* Settings.swift */; };
+		F31BA576295900E30006D126 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA575295900E30006D126 /* SettingsView.swift */; };
 		F31BA578295901010006D126 /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA577295901010006D126 /* Intro.swift */; };
 		F31BA57A295901110006D126 /* Start Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA579295901110006D126 /* Start Page.swift */; };
 		F31BA57D295901200006D126 /* Start Page VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA57B2959011B0006D126 /* Start Page VM.swift */; };
@@ -171,6 +171,19 @@
 		F323BFA72B211C6D00116B97 /* Power Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F323BFA62B211C6D00116B97 /* Power Provider.swift */; };
 		F323D8D32A2D668D002EDC62 /* File Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F323D8D22A2D668D002EDC62 /* File Tab.swift */; };
 		F323D8D52A2D67A3002EDC62 /* Upload File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F393C7BA2A18437300DE33F9 /* Upload File.swift */; };
+		F3255E172C9049AF008E04DE /* Settings Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3255E162C9049AF008E04DE /* Settings Button.swift */; };
+		F3255E182C9049DC008E04DE /* Settings Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264362A66A9B9005C3777 /* Settings Parent.swift */; };
+		F3255E1A2C904A03008E04DE /* Settings View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3255E192C904A03008E04DE /* Settings View.swift */; };
+		F3255E1B2C904A3C008E04DE /* Account Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D2643D2A66ABB2005C3777 /* Account Parent.swift */; };
+		F3255E1C2C904A48008E04DE /* Account View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264392A66AB92005C3777 /* Account View.swift */; };
+		F3255E1D2C904A56008E04DE /* Account VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264402A66ABBE005C3777 /* Account VM.swift */; };
+		F3255E1E2C904A63008E04DE /* SSH VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91C02B423492001D8F80 /* SSH VM.swift */; };
+		F3255E1F2C904A71008E04DE /* Enable 2FA View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7F8522C8F258B00368ECE /* Enable 2FA View.swift */; };
+		F3255E202C904A71008E04DE /* Disable 2FA View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7F84E2C8ED3D100368ECE /* Disable 2FA View.swift */; };
+		F3255E212C904A71008E04DE /* QR Code View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264432A66B3A6005C3777 /* QR Code View.swift */; };
+		F3255E222C904A7A008E04DE /* SSH Create View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91CC2B423A26001D8F80 /* SSH Create View.swift */; };
+		F3255E232C904A7A008E04DE /* SSH Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91C82B4235BB001D8F80 /* SSH Card.swift */; };
+		F3255E242C904A7A008E04DE /* SSH List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91C42B423535001D8F80 /* SSH List.swift */; };
 		F325F7002A54BBCF00E89EC4 /* InfoTab Allocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F6FF2A54BBCF00E89EC4 /* InfoTab Allocation.swift */; };
 		F325F7012A54BBCF00E89EC4 /* InfoTab Allocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F6FF2A54BBCF00E89EC4 /* InfoTab Allocation.swift */; };
 		F325F7032A54BF7A00E89EC4 /* InfoTab Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7022A54BF7A00E89EC4 /* InfoTab Model.swift */; };
@@ -602,7 +615,7 @@
 		F389BB652A05B5AF00911EBF /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA56F295900C20006D126 /* Formatters.swift */; };
 		F389BB662A05B5B500911EBF /* Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C62CE2298A7D8600434636 /* Support.swift */; };
 		F389BB682A05B5C100911EBF /* Guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA57E2959012D0006D126 /* Guide.swift */; };
-		F389BB6A2A05B5E100911EBF /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA575295900E30006D126 /* Settings.swift */; };
+		F389BB6A2A05B5E100911EBF /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA575295900E30006D126 /* SettingsView.swift */; };
 		F389BB6B2A05B5E500911EBF /* Settings VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EDE29A2333F00C4CC77 /* Settings VM.swift */; };
 		F389BB6C2A05B5EA00911EBF /* Cache Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7D87A29E83D1800BCAFFE /* Cache Settings.swift */; };
 		F389BB6D2A05B5EE00911EBF /* Cache Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266E829D9EFFE005FD103 /* Cache Size.swift */; };
@@ -981,7 +994,7 @@
 		F3D295A12AF3A09D00ED43A0 /* Log List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DE1B972A556CCE007A1624 /* Log List.swift */; };
 		F3D295A22AF3A0AA00ED43A0 /* Map VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A92A177ED100530615 /* Map VM.swift */; };
 		F3D295A32AF3A0B500ED43A0 /* Auth Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FBDDFB29DABA0D00B170EC /* Auth Background.swift */; };
-		F3D295A52AF3A0CD00ED43A0 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA575295900E30006D126 /* Settings.swift */; };
+		F3D295A52AF3A0CD00ED43A0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA575295900E30006D126 /* SettingsView.swift */; };
 		F3D295A62AF3A0D200ED43A0 /* Settings VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EDE29A2333F00C4CC77 /* Settings VM.swift */; };
 		F3D295A72AF3A0DB00ED43A0 /* Log Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367977A2A3A55F4009F2788 /* Log Card.swift */; };
 		F3D295A82AF3A0DF00ED43A0 /* Account Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA4DE92A4CE82000547722 /* Account Settings.swift */; };
@@ -1423,7 +1436,7 @@
 		F31BA5672959006F0006D126 /* App Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Container.swift"; sourceTree = "<group>"; };
 		F31BA5692959007E0006D126 /* Nav Destinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Destinations.swift"; sourceTree = "<group>"; };
 		F31BA56F295900C20006D126 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
-		F31BA575295900E30006D126 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		F31BA575295900E30006D126 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		F31BA577295901010006D126 /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
 		F31BA579295901110006D126 /* Start Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page.swift"; sourceTree = "<group>"; };
 		F31BA57B2959011B0006D126 /* Start Page VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page VM.swift"; sourceTree = "<group>"; };
@@ -1449,6 +1462,8 @@
 		F323BFA42B211C3700116B97 /* Power Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Entry.swift"; sourceTree = "<group>"; };
 		F323BFA62B211C6D00116B97 /* Power Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Provider.swift"; sourceTree = "<group>"; };
 		F323D8D22A2D668D002EDC62 /* File Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Tab.swift"; sourceTree = "<group>"; };
+		F3255E162C9049AF008E04DE /* Settings Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings Button.swift"; sourceTree = "<group>"; };
+		F3255E192C904A03008E04DE /* Settings View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings View.swift"; sourceTree = "<group>"; };
 		F325F6FF2A54BBCF00E89EC4 /* InfoTab Allocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InfoTab Allocation.swift"; sourceTree = "<group>"; };
 		F325F7022A54BF7A00E89EC4 /* InfoTab Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InfoTab Model.swift"; sourceTree = "<group>"; };
 		F325F7052A54C4BC00E89EC4 /* System Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "System Alerts.swift"; sourceTree = "<group>"; };
@@ -2876,7 +2891,7 @@
 			isa = PBXGroup;
 			children = (
 				F3D264362A66A9B9005C3777 /* Settings Parent.swift */,
-				F31BA575295900E30006D126 /* Settings.swift */,
+				F31BA575295900E30006D126 /* SettingsView.swift */,
 				F39993392AF2E491006E8A9A /* Other Settings.swift */,
 				F3924EDE29A2333F00C4CC77 /* Settings VM.swift */,
 				F33001392A4CEBFD0063FE0F /* Account */,
@@ -2953,6 +2968,8 @@
 			isa = PBXGroup;
 			children = (
 				F3A7CEFD2C8BB97400413400 /* Server List.swift */,
+				F3255E162C9049AF008E04DE /* Settings Button.swift */,
+				F3255E192C904A03008E04DE /* Settings View.swift */,
 				F3A7CF602C8C569300413400 /* Server List VM.swift */,
 			);
 			path = "Server List";
@@ -3190,10 +3207,10 @@
 			children = (
 				F3D2643D2A66ABB2005C3777 /* Account Parent.swift */,
 				F3D264392A66AB92005C3777 /* Account View.swift */,
+				F3D264402A66ABBE005C3777 /* Account VM.swift */,
 				F3D7F8522C8F258B00368ECE /* Enable 2FA View.swift */,
 				F3D7F84E2C8ED3D100368ECE /* Disable 2FA View.swift */,
 				F3D264432A66B3A6005C3777 /* QR Code View.swift */,
-				F3D264402A66ABBE005C3777 /* Account VM.swift */,
 				F3DF4A0C2B485D50003C6922 /* SSH */,
 			);
 			path = Account;
@@ -4324,7 +4341,7 @@
 				F35B2A0229FFD6AB006E5FD2 /* CloudKit Model.swift in Sources */,
 				F3A123562A667804008E3E20 /* Log View Parent.swift in Sources */,
 				F3FF5A0C2A4A386F003A1973 /* Users VM.swift in Sources */,
-				F31BA576295900E30006D126 /* Settings.swift in Sources */,
+				F31BA576295900E30006D126 /* SettingsView.swift in Sources */,
 				F3D3DBD129B8007B00096115 /* Browser Topbar.swift in Sources */,
 				F30088A32B3A18A50051476C /* Database VM.swift in Sources */,
 				F3E2BEDB2C1C6B9500B7A6D4 /* Cache List.swift in Sources */,
@@ -4633,7 +4650,7 @@
 				F36D53102A05B6E7007324C6 /* Cloud Keys.swift in Sources */,
 				F39E0A962C1BA06C00C4E906 /* Discover Card.swift in Sources */,
 				F3E1D3EE2B3208BE009B7062 /* User 2Fa.swift in Sources */,
-				F389BB6A2A05B5E100911EBF /* Settings.swift in Sources */,
+				F389BB6A2A05B5E100911EBF /* SettingsView.swift in Sources */,
 				F3BC03AF2B1FF2FC0011F98A /* Schedule Context Menu.swift in Sources */,
 				F389BB7B2A05B64E00911EBF /* Biometry Usage View.swift in Sources */,
 				F3DE1B992A556CCE007A1624 /* Log List.swift in Sources */,
@@ -4812,7 +4829,7 @@
 				F3D2957C2AF39F4F00ED43A0 /* Log VM.swift in Sources */,
 				F3D2954C2AF39DC700ED43A0 /* Browser.swift in Sources */,
 				F3D295362AF39D0B00ED43A0 /* Linking VM.swift in Sources */,
-				F3D295A52AF3A0CD00ED43A0 /* Settings.swift in Sources */,
+				F3D295A52AF3A0CD00ED43A0 /* SettingsView.swift in Sources */,
 				F3D295F02AF3A51300ED43A0 /* Backup List Footer.swift in Sources */,
 				F3D295312AF39C7500ED43A0 /* Language Button.swift in Sources */,
 				F3D295552AF39E1600ED43A0 /* Formatters.swift in Sources */,
@@ -4975,24 +4992,35 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3A7CF122C8C4E3E00413400 /* Discover Card.swift in Sources */,
+				F3255E182C9049DC008E04DE /* Settings Parent.swift in Sources */,
 				F3A7CF652C8CA5FE00413400 /* API Key.swift in Sources */,
+				F3255E1C2C904A48008E04DE /* Account View.swift in Sources */,
 				F3A7CF132C8C4E3E00413400 /* Discover.swift in Sources */,
 				F3A7CF142C8C4E3E00413400 /* Discover Item.swift in Sources */,
 				F3A7CEDC2C8B95CB00413400 /* Home View.swift in Sources */,
+				F3255E1B2C904A3C008E04DE /* Account Parent.swift in Sources */,
 				F3A7CEED2C8BB78A00413400 /* Server Card.swift in Sources */,
 				F3A7CF0A2C8BBCD400413400 /* Formatters.swift in Sources */,
 				F3A7CF092C8BBC7A00413400 /* Carousel Button Style.swift in Sources */,
 				F3A7CEE12C8B9BB700413400 /* App Container.swift in Sources */,
 				F3A7CEF02C8BB79B00413400 /* Server Card Na Status.swift in Sources */,
 				F3A7CEFE2C8BB97400413400 /* Server List.swift in Sources */,
+				F3255E1F2C904A71008E04DE /* Enable 2FA View.swift in Sources */,
+				F3255E202C904A71008E04DE /* Disable 2FA View.swift in Sources */,
+				F3255E212C904A71008E04DE /* QR Code View.swift in Sources */,
 				F3A7CF612C8C569300413400 /* Server List VM.swift in Sources */,
 				F3A7CEF42C8BB7E500413400 /* Network Calls.swift in Sources */,
 				F3A7CEEF2C8BB79500413400 /* Gauge Disk.swift in Sources */,
+				F3255E222C904A7A008E04DE /* SSH Create View.swift in Sources */,
+				F3255E232C904A7A008E04DE /* SSH Card.swift in Sources */,
+				F3255E242C904A7A008E04DE /* SSH List.swift in Sources */,
 				F3A7CEF12C8BB7A300413400 /* Server Card VM.swift in Sources */,
 				F3A7CF622C8CA5A900413400 /* Cloud Keys.swift in Sources */,
+				F3255E1D2C904A56008E04DE /* Account VM.swift in Sources */,
 				F3A7CF102C8C4C2700413400 /* Server List Filter.swift in Sources */,
 				F3A7CEEA2C8BB74D00413400 /* Server List Grid.swift in Sources */,
 				F3A7CF0D2C8C43B100413400 /* Topbar Grid Button.swift in Sources */,
+				F3255E1E2C904A63008E04DE /* SSH VM.swift in Sources */,
 				F3A7CEEE2C8BB78F00413400 /* Gauge Regular.swift in Sources */,
 				F3A7CEE52C8B9E7500413400 /* Messages VM.swift in Sources */,
 				F3A7CF662C8CA60E00413400 /* Cloud Key Context Menu.swift in Sources */,
@@ -5000,6 +5028,7 @@
 				F3A7CEEC2C8BB77500413400 /* Server Card Parent.swift in Sources */,
 				F3A7CF0E2C8C43BB00413400 /* Topbar Admin Button.swift in Sources */,
 				F3A7CEE92C8BB73300413400 /* Enums.swift in Sources */,
+				F3255E1A2C904A03008E04DE /* Settings View.swift in Sources */,
 				F3A7CF152C8C4E4300413400 /* Map List.swift in Sources */,
 				F3A7CF162C8C4E4300413400 /* Map View.swift in Sources */,
 				F3A7CF172C8C4E4300413400 /* Map VM.swift in Sources */,
@@ -5011,6 +5040,7 @@
 				F3A7CF1A2C8C4E4A00413400 /* Browser Sticker.swift in Sources */,
 				F3A7CF1B2C8C4E4A00413400 /* Browser Topbar.swift in Sources */,
 				F3A7CF1C2C8C4E4A00413400 /* Browser Card.swift in Sources */,
+				F3255E172C9049AF008E04DE /* Settings Button.swift in Sources */,
 				F3A7CF632C8CA5B900413400 /* Cloud Key Card.swift in Sources */,
 				F3A7CF1D2C8C4E4A00413400 /* Browser Hints.swift in Sources */,
 				F3A7CF1E2C8C4E4A00413400 /* Browser.swift in Sources */,

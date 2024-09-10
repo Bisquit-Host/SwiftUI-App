@@ -6,11 +6,16 @@ struct ServerList: View {
     @EnvironmentObject private var settings: SettingsStorage
     
     @State private var searchField = ""
+    @State private var test = false
     
     var body: some View {
         @Bindable var vm = vm
         
         ScrollView(showsIndicators: false) {
+            Button("Test") {
+                test = true
+            }
+            
             ServerListGrid(vm.filteredServers)
                 .padding(4)
                 .padding(.top, 60)
@@ -50,10 +55,10 @@ struct ServerList: View {
                 TopbarAdminButton {
                     vm.fetchServers(settings.adminServerList)
                 }
-                .padding(.trailing)
                 
-                //                SettingsButton()
-                //                    .environment(vm)
+                SettingsButton()
+                    .environment(vm)
+                    .padding(.trailing)
             }
         }
         .overlay {
@@ -76,6 +81,9 @@ struct ServerList: View {
             
         } message: {
             Text("The list of servers couldn't be loaded. Check your internet connection or contact support")
+        }
+        .fullScreenCover(isPresented: $test) {
+            Text("GEWlkfnweqoifnweofknx45")
         }
     }
 }

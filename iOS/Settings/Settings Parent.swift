@@ -6,7 +6,7 @@ struct SettingsParent: View {
         Settings()
 #else
         NavigationView {
-            Settings()
+            SettingsView()
         }
 #endif
     }

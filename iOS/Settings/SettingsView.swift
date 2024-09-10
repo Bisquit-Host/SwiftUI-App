@@ -1,6 +1,6 @@
 import ScrechKit
 
-struct Settings: View {
+struct SettingsView: View {
     private var vm = SettingsVM()
     @EnvironmentObject private var settings: SettingsStorage
     @Environment(\.colorScheme) var colorScheme
@@ -58,9 +58,9 @@ struct Settings: View {
 
 #Preview {
     NavigationView {
-        Settings()
+        SettingsView()
             .sheet {
-                Settings()
+                SettingsView()
             }
             .environmentObject(SettingsStorage())
     }
