@@ -1100,6 +1100,7 @@
 		F3E08ECE2A2CEDD800116C1C /* Panel View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E08ECD2A2CEDD800116C1C /* Panel View.swift */; };
 		F3E08ED52A2CEE2300116C1C /* Auth View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E08ED42A2CEE2300116C1C /* Auth View.swift */; };
 		F3E08ED82A2CF74000116C1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F31BA52A2958FF7D0006D126 /* Assets.xcassets */; };
+		F3E1B2D02C903C9300AED3F1 /* Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF012C8BBB4700413400 /* Server Card Context Menu.swift */; };
 		F3E1D3ED2B3208BE009B7062 /* User 2Fa.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3EC2B3208BE009B7062 /* User 2Fa.swift */; };
 		F3E1D3EE2B3208BE009B7062 /* User 2Fa.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3EC2B3208BE009B7062 /* User 2Fa.swift */; };
 		F3E1D3EF2B3208DE009B7062 /* User 2Fa.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3EC2B3208BE009B7062 /* User 2Fa.swift */; };
@@ -5091,6 +5092,7 @@
 				F3464D312A863A6600188B0C /* Send Command.swift in Sources */,
 				F3317AED2A45E26900CA104D /* Guide Model.swift in Sources */,
 				F38928382A4460CC00561CDF /* Server Card VM.swift in Sources */,
+				F3E1B2D02C903C9300AED3F1 /* Server Card Context Menu.swift in Sources */,
 				F38928302A445E9700561CDF /* Server List.swift in Sources */,
 				F3FC99112C65747700150823 /* Archieving.swift in Sources */,
 				F3464D252A86397F00188B0C /* PowerSignalAppEnum.swift in Sources */,
