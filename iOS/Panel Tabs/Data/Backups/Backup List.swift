@@ -25,7 +25,7 @@ struct BackupList: View {
             SectionHeader("Backups", type: .backup(vm.backups.count, limit: backupLimit))
         }
 #if os(tvOS)
-        .sheet($binding.showSafari) {
+        .sheet($vm.showSafari) {
             QRCodeView(vm.downloadUrl)
         }
 #else
