@@ -185,6 +185,7 @@
 		F3287A7A2B10A120001AFE54 /* Widget Live Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3287A732B109DD0001AFE54 /* Widget Live Activity.swift */; };
 		F3287A7B2B10A17E001AFE54 /* Widget Live Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3287A732B109DD0001AFE54 /* Widget Live Activity.swift */; };
 		F3287A7C2B10A17F001AFE54 /* Widget Live Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3287A732B109DD0001AFE54 /* Widget Live Activity.swift */; };
+		F3287A7D2B10A434001AFE54 /* Widgets Extension.appex in Embed Foundation Extensions (2 items) */ = {isa = PBXBuildFile; fileRef = F38637372A8641120069F074 /* Widgets Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F328D8592A82402A0038512F /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = F328D8582A82402A0038512F /* Algorithms */; };
 		F328D85E2A8240930038512F /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = F328D85D2A8240930038512F /* Algorithms */; };
 		F328D8622A8242610038512F /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = F328D8612A8242610038512F /* Algorithms */; };
@@ -1139,6 +1140,7 @@
 		F3FD9FA12C65217C00A69314 /* Quick Look View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FD9FA02C65217C00A69314 /* Quick Look View.swift */; };
 		F3FDFF612C89120D009EBB5C /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3FDFF602C89120D009EBB5C /* Intents.framework */; };
 		F3FDFF642C89120D009EBB5C /* Intent Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF632C89120D009EBB5C /* Intent Handler.swift */; };
+		F3FDFF792C89120D009EBB5C /* Intent Handler.appex in Embed Foundation Extensions (2 items) */ = {isa = PBXBuildFile; fileRef = F3FDFF5F2C89120D009EBB5C /* Intent Handler.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F3FDFF882C8912F1009EBB5C /* Asset Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF872C8912F1009EBB5C /* Asset Fetcher.swift */; };
 		F3FDFF8B2C89130F009EBB5C /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF8A2C89130F009EBB5C /* Widget.swift */; };
 		F3FDFF8D2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF8C2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition */; };
@@ -1169,6 +1171,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		F3287A7E2B10A434001AFE54 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F31BA51B2958FF7C0006D126 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F38637362A8641120069F074;
+			remoteInfo = "Widgets Extension";
+		};
 		F337C1562A8C29CD006F321C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F31BA51B2958FF7C0006D126 /* Project object */;
@@ -1211,6 +1220,13 @@
 			remoteGlobalIDString = F31BA5222958FF7C0006D126;
 			remoteInfo = Bisquit.Host;
 		};
+		F3FDFF772C89120D009EBB5C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F31BA51B2958FF7C0006D126 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F3FDFF5E2C89120D009EBB5C;
+			remoteInfo = "Intent Handler";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1223,6 +1239,18 @@
 				F31BA55D2958FFB00006D126 /* Clip Demo.app in Embed App Clips */,
 			);
 			name = "Embed App Clips";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3287A802B10A434001AFE54 /* Embed Foundation Extensions (2 items) */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F3FDFF792C89120D009EBB5C /* Intent Handler.appex in Embed Foundation Extensions (2 items) */,
+				F3287A7D2B10A434001AFE54 /* Widgets Extension.appex in Embed Foundation Extensions (2 items) */,
+			);
+			name = "Embed Foundation Extensions (2 items)";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3464D012A862D2D00188B0C /* Embed ExtensionKit Extensions */ = {
@@ -3304,6 +3332,7 @@
 				F31BA5612958FFB00006D126 /* Embed App Clips */,
 				F3F304BC29BDDF7D00F004B9 /* Frameworks */,
 				F3464D012A862D2D00188B0C /* Embed ExtensionKit Extensions */,
+				F3287A802B10A434001AFE54 /* Embed Foundation Extensions (2 items) */,
 			);
 			buildRules = (
 			);
@@ -3311,6 +3340,8 @@
 				F3A31B3D2B0B790800F89C51 /* PBXTargetDependency */,
 				F3A31B3B2B0B790600F89C51 /* PBXTargetDependency */,
 				F3A31B392B0B78D100F89C51 /* PBXTargetDependency */,
+				F3287A7F2B10A434001AFE54 /* PBXTargetDependency */,
+				F3FDFF782C89120D009EBB5C /* PBXTargetDependency */,
 				F36FBC492C930EAB00F5E174 /* PBXTargetDependency */,
 			);
 			name = Bisquit.Host;
@@ -4932,6 +4963,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		F3287A7F2B10A434001AFE54 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F38637362A8641120069F074 /* Widgets Extension */;
+			targetProxy = F3287A7E2B10A434001AFE54 /* PBXContainerItemProxy */;
+		};
 		F337C1572A8C29CD006F321C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F31BA5222958FF7C0006D126 /* Bisquit.Host */;
@@ -4961,6 +4997,11 @@
 			isa = PBXTargetDependency;
 			target = F31BA5222958FF7C0006D126 /* Bisquit.Host */;
 			targetProxy = F3D2960D2AF3BE5800ED43A0 /* PBXContainerItemProxy */;
+		};
+		F3FDFF782C89120D009EBB5C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F3FDFF5E2C89120D009EBB5C /* Intent Handler */;
+			targetProxy = F3FDFF772C89120D009EBB5C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
