@@ -171,6 +171,19 @@
 		F323BFA72B211C6D00116B97 /* Power Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F323BFA62B211C6D00116B97 /* Power Provider.swift */; };
 		F323D8D32A2D668D002EDC62 /* File Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F323D8D22A2D668D002EDC62 /* File Tab.swift */; };
 		F323D8D52A2D67A3002EDC62 /* Upload File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F393C7BA2A18437300DE33F9 /* Upload File.swift */; };
+		F3255E172C9049AF008E04DE /* Settings Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3255E162C9049AF008E04DE /* Settings Button.swift */; };
+		F3255E182C9049DC008E04DE /* Settings Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264362A66A9B9005C3777 /* Settings Parent.swift */; };
+		F3255E1A2C904A03008E04DE /* Settings View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3255E192C904A03008E04DE /* Settings View.swift */; };
+		F3255E1B2C904A3C008E04DE /* Account Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D2643D2A66ABB2005C3777 /* Account Parent.swift */; };
+		F3255E1C2C904A48008E04DE /* Account View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264392A66AB92005C3777 /* Account View.swift */; };
+		F3255E1D2C904A56008E04DE /* Account VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264402A66ABBE005C3777 /* Account VM.swift */; };
+		F3255E1E2C904A63008E04DE /* SSH VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91C02B423492001D8F80 /* SSH VM.swift */; };
+		F3255E1F2C904A71008E04DE /* Enable 2FA View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7F8522C8F258B00368ECE /* Enable 2FA View.swift */; };
+		F3255E202C904A71008E04DE /* Disable 2FA View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7F84E2C8ED3D100368ECE /* Disable 2FA View.swift */; };
+		F3255E212C904A71008E04DE /* QR Code View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264432A66B3A6005C3777 /* QR Code View.swift */; };
+		F3255E222C904A7A008E04DE /* SSH Create View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91CC2B423A26001D8F80 /* SSH Create View.swift */; };
+		F3255E232C904A7A008E04DE /* SSH Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91C82B4235BB001D8F80 /* SSH Card.swift */; };
+		F3255E242C904A7A008E04DE /* SSH List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91C42B423535001D8F80 /* SSH List.swift */; };
 		F325F7002A54BBCF00E89EC4 /* InfoTab Allocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F6FF2A54BBCF00E89EC4 /* InfoTab Allocation.swift */; };
 		F325F7012A54BBCF00E89EC4 /* InfoTab Allocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F6FF2A54BBCF00E89EC4 /* InfoTab Allocation.swift */; };
 		F325F7032A54BF7A00E89EC4 /* InfoTab Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7022A54BF7A00E89EC4 /* InfoTab Model.swift */; };
@@ -490,6 +503,7 @@
 		F36D534B2A05B974007324C6 /* Nav Destinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5692959007E0006D126 /* Nav Destinations.swift */; };
 		F36D534C2A05B976007324C6 /* Nav Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BAEC8C2959B3FE00111375 /* Nav Extension.swift */; };
 		F36D534D2A05B98E007324C6 /* Nav State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA565295900300006D126 /* Nav State.swift */; };
+		F36FBC422C930E9F00F5E174 /* iMessage.app in Resources */ = {isa = PBXBuildFile; fileRef = F3A7CEBB2C8B685400413400 /* iMessage.app */; };
 		F36FDB92295AF3AB00D45070 /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36FDB91295AF3AB00D45070 /* Intro.swift */; };
 		F36FDB97295AF4A900D45070 /* Browser VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA590295901C00006D126 /* Browser VM.swift */; };
 		F37061C829774869009B4067 /* Nav Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37061C729774869009B4067 /* Nav Extension.swift */; };
@@ -695,10 +709,64 @@
 		F3A391BC29DB808B00591C84 /* Server Card Na Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A391BB29DB808B00591C84 /* Server Card Na Status.swift */; };
 		F3A7BCC3296B2ABB00E080C1 /* Start Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7BCC2296B2ABB00E080C1 /* Start Page.swift */; };
 		F3A7BCD1296B44FF00E080C1 /* Nav Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BAEC8C2959B3FE00111375 /* Nav Extension.swift */; };
+		F3A7CEBE2C8B685500413400 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3A7CEBD2C8B685500413400 /* Assets.xcassets */; };
+		F3A7CEC42C8B685500413400 /* iMessage Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F3A7CEC32C8B685500413400 /* iMessage Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F3A7CEC82C8B685500413400 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3A7CEC72C8B685500413400 /* Messages.framework */; };
+		F3A7CECB2C8B685500413400 /* Messages VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CECA2C8B685500413400 /* Messages VC.swift */; };
+		F3A7CED02C8B685600413400 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3A7CECF2C8B685600413400 /* Assets.xcassets */; };
+		F3A7CEDC2C8B95CB00413400 /* Home View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CEDB2C8B95CB00413400 /* Home View.swift */; };
+		F3A7CEDF2C8B981A00413400 /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F3A7CEDE2C8B981A00413400 /* PteroNet */; };
+		F3A7CEE12C8B9BB700413400 /* App Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CEE02C8B9BB700413400 /* App Container.swift */; };
+		F3A7CEE52C8B9E7500413400 /* Messages VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CEE42C8B9E7500413400 /* Messages VM.swift */; };
+		F3A7CEE92C8BB73300413400 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A1D2302A201C570053261E /* Enums.swift */; };
+		F3A7CEEA2C8BB74D00413400 /* Server List Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B3A729BC6B5400CC1195 /* Server List Grid.swift */; };
+		F3A7CEEC2C8BB77500413400 /* Server Card Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CEEB2C8BB77500413400 /* Server Card Parent.swift */; };
+		F3A7CEED2C8BB78A00413400 /* Server Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31578B4296760710016A600 /* Server Card.swift */; };
+		F3A7CEEE2C8BB78F00413400 /* Gauge Regular.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266D029D99570005FD103 /* Gauge Regular.swift */; };
+		F3A7CEEF2C8BB79500413400 /* Gauge Disk.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378EF8229D6C91300BC4849 /* Gauge Disk.swift */; };
+		F3A7CEF02C8BB79B00413400 /* Server Card Na Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A391BB29DB808B00591C84 /* Server Card Na Status.swift */; };
+		F3A7CEF12C8BB7A300413400 /* Server Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* Server Card VM.swift */; };
+		F3A7CEF22C8BB7BF00413400 /* System Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7052A54C4BC00E89EC4 /* System Alerts.swift */; };
+		F3A7CEF42C8BB7E500413400 /* Network Calls.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32FD71D2B1E054300723B88 /* Network Calls.swift */; };
+		F3A7CEF72C8BB82E00413400 /* Settings Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CEF62C8BB82E00413400 /* Settings Storage.swift */; };
+		F3A7CEF92C8BB88E00413400 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3A7CEF82C8BB88E00413400 /* ScrechKit */; };
+		F3A7CEFB2C8BB8A300413400 /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3A7CEFA2C8BB8A300413400 /* AlertKit */; };
+		F3A7CEFE2C8BB97400413400 /* Server List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CEFD2C8BB97400413400 /* Server List.swift */; };
+		F3A7CF022C8BBB4700413400 /* Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF012C8BBB4700413400 /* Server Card Context Menu.swift */; };
+		F3A7CF042C8BBB7800413400 /* SafariCover in Frameworks */ = {isa = PBXBuildFile; productRef = F3A7CF032C8BBB7800413400 /* SafariCover */; };
 		F3A7CF052C8BBC3200413400 /* Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF012C8BBB4700413400 /* Server Card Context Menu.swift */; };
 		F3A7CF062C8BBC3200413400 /* Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF012C8BBB4700413400 /* Server Card Context Menu.swift */; };
 		F3A7CF072C8BBC3200413400 /* Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF012C8BBB4700413400 /* Server Card Context Menu.swift */; };
+		F3A7CF082C8BBC7600413400 /* Guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA57E2959012D0006D126 /* Guide.swift */; };
+		F3A7CF092C8BBC7A00413400 /* Carousel Button Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7082A54CB6600E89EC4 /* Carousel Button Style.swift */; };
+		F3A7CF0A2C8BBCD400413400 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA56F295900C20006D126 /* Formatters.swift */; };
+		F3A7CF0C2C8BBCE400413400 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F3A7CF0B2C8BBCE400413400 /* Kingfisher */; };
+		F3A7CF0D2C8C43B100413400 /* Topbar Grid Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F354E9822A48CA2000F6E359 /* Topbar Grid Button.swift */; };
+		F3A7CF0E2C8C43BB00413400 /* Topbar Admin Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88C72AF83E3F00959D49 /* Topbar Admin Button.swift */; };
+		F3A7CF102C8C4C2700413400 /* Server List Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88D02AF8494100959D49 /* Server List Filter.swift */; };
+		F3A7CF112C8C4C3100413400 /* Server List Node Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A31B042B0B144200F89C51 /* Server List Node Filter.swift */; };
+		F3A7CF122C8C4E3E00413400 /* Discover Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E0A932C1BA06C00C4E906 /* Discover Card.swift */; };
+		F3A7CF132C8C4E3E00413400 /* Discover.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA592295901D00006D126 /* Discover.swift */; };
+		F3A7CF142C8C4E3E00413400 /* Discover Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E0A972C1BA11600C4E906 /* Discover Item.swift */; };
+		F3A7CF152C8C4E4300413400 /* Map List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994AD2A17A9B100530615 /* Map List.swift */; };
+		F3A7CF162C8C4E4300413400 /* Map View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A72A177DA400530615 /* Map View.swift */; };
+		F3A7CF172C8C4E4300413400 /* Map VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A92A177ED100530615 /* Map VM.swift */; };
+		F3A7CF182C8C4E4A00413400 /* Browser Spec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A1D2342A201CBB0053261E /* Browser Spec.swift */; };
+		F3A7CF192C8C4E4A00413400 /* Browser VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA590295901C00006D126 /* Browser VM.swift */; };
+		F3A7CF1A2C8C4E4A00413400 /* Browser Sticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E8415529FECB6800609DA3 /* Browser Sticker.swift */; };
+		F3A7CF1B2C8C4E4A00413400 /* Browser Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3DBD029B8007B00096115 /* Browser Topbar.swift */; };
+		F3A7CF1C2C8C4E4A00413400 /* Browser Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3521E2A29F5C13900132CCB /* Browser Card.swift */; };
+		F3A7CF1D2C8C4E4A00413400 /* Browser Hints.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A1D2372A2024E10053261E /* Browser Hints.swift */; };
+		F3A7CF1E2C8C4E4A00413400 /* Browser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA58E295901B60006D126 /* Browser.swift */; };
+		F3A7CF1F2C8C4E4A00413400 /* CloudKit Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B2A0129FFD6AB006E5FD2 /* CloudKit Model.swift */; };
+		F3A7CF222C8C4E9700413400 /* MailCover in Frameworks */ = {isa = PBXBuildFile; productRef = F3A7CF212C8C4E9700413400 /* MailCover */; };
+		F3A7CF612C8C569300413400 /* Server List VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF602C8C569300413400 /* Server List VM.swift */; };
+		F3A7CF622C8CA5A900413400 /* Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304498929E990E9006DC0C7 /* Cloud Keys.swift */; };
+		F3A7CF632C8CA5B900413400 /* Cloud Key Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A31B082B0B161D00F89C51 /* Cloud Key Card.swift */; };
+		F3A7CF642C8CA5CF00413400 /* Tip Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A800312A7313E900CAC40B /* Tip Cloud Keys.swift */; };
+		F3A7CF652C8CA5FE00413400 /* API Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35FEB062B09F003004DA05D /* API Key.swift */; };
 		F3A7CF662A44F44A00331B51 /* Auth View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF652A44F44A00331B51 /* Auth View.swift */; };
+		F3A7CF662C8CA60E00413400 /* Cloud Key Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300892E2B3DC4B20051476C /* Cloud Key Context Menu.swift */; };
 		F3A7CF682C8DF3C900413400 /* Video File VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF672C8DF3C900413400 /* Video File VM.swift */; };
 		F3A7CF692C8DF3C900413400 /* Video File VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF672C8DF3C900413400 /* Video File VM.swift */; };
 		F3A7CF6A2C8DF3C900413400 /* Video File VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF672C8DF3C900413400 /* Video File VM.swift */; };
@@ -783,6 +851,7 @@
 		F3BF97AA29BFC7E9007B9C9C /* Websocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BF97A929BFC7E9007B9C9C /* Websocket.swift */; };
 		F3C0F9D029E204FA0040E277 /* FileTab Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C0F9CF29E204FA0040E277 /* FileTab Context Menu.swift */; };
 		F3C0F9D229E2A62A0040E277 /* FileTab NewFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C0F9D129E2A62A0040E277 /* FileTab NewFolder.swift */; };
+		F3C3BDB82C92BE9B00BF91EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F31BA52A2958FF7D0006D126 /* Assets.xcassets */; };
 		F3C53A5F29DBF5B900A08578 /* watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F31BA5332958FF7D0006D126 /* watchOS.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F3C62CE3298A7D8600434636 /* Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C62CE2298A7D8600434636 /* Support.swift */; };
 		F3C9D84A2B302AA200265492 /* File Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D8492B302AA200265492 /* File Context Menu.swift */; };
@@ -1185,6 +1254,13 @@
 			remoteGlobalIDString = F31BA5222958FF7C0006D126;
 			remoteInfo = Bisquit.Host;
 		};
+		F36FBC432C930E9F00F5E174 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F31BA51B2958FF7C0006D126 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F3A7CEBA2C8B685400413400;
+			remoteInfo = iMessage;
+		};
 		F36FBC482C930EAB00F5E174 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F31BA51B2958FF7C0006D126 /* Project object */;
@@ -1212,6 +1288,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = F3464CF72A862D2C00188B0C;
 			remoteInfo = Intent;
+		};
+		F3A7CEC52C8B685500413400 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F31BA51B2958FF7C0006D126 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F3A7CEC22C8B685500413400;
+			remoteInfo = "iMessage MessagesExtension";
 		};
 		F3D2960D2AF3BE5800ED43A0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1273,6 +1356,17 @@
 				F3C53A5F29DBF5B900A08578 /* watchOS.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3A7CED72C8B685600413400 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F3A7CEC42C8B685500413400 /* iMessage Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -1365,6 +1459,8 @@
 		F323BFA42B211C3700116B97 /* Power Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Entry.swift"; sourceTree = "<group>"; };
 		F323BFA62B211C6D00116B97 /* Power Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Provider.swift"; sourceTree = "<group>"; };
 		F323D8D22A2D668D002EDC62 /* File Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Tab.swift"; sourceTree = "<group>"; };
+		F3255E162C9049AF008E04DE /* Settings Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings Button.swift"; sourceTree = "<group>"; };
+		F3255E192C904A03008E04DE /* Settings View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings View.swift"; sourceTree = "<group>"; };
 		F325F6FF2A54BBCF00E89EC4 /* InfoTab Allocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InfoTab Allocation.swift"; sourceTree = "<group>"; };
 		F325F7022A54BF7A00E89EC4 /* InfoTab Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InfoTab Model.swift"; sourceTree = "<group>"; };
 		F325F7052A54C4BC00E89EC4 /* System Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "System Alerts.swift"; sourceTree = "<group>"; };
@@ -1553,8 +1649,22 @@
 		F3A391B929DB5E6900591C84 /* Cache Expiration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache Expiration.swift"; sourceTree = "<group>"; };
 		F3A391BB29DB808B00591C84 /* Server Card Na Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Na Status.swift"; sourceTree = "<group>"; };
 		F3A7BCC2296B2ABB00E080C1 /* Start Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page.swift"; sourceTree = "<group>"; };
+		F3A7CEBB2C8B685400413400 /* iMessage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMessage.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3A7CEBD2C8B685500413400 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F3A7CEC32C8B685500413400 /* iMessage Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "iMessage Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A7CEC72C8B685500413400 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = Library/Frameworks/Messages.framework; sourceTree = DEVELOPER_DIR; };
+		F3A7CECA2C8B685500413400 /* Messages VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Messages VC.swift"; sourceTree = "<group>"; };
+		F3A7CECF2C8B685600413400 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F3A7CED12C8B685600413400 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3A7CEDB2C8B95CB00413400 /* Home View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home View.swift"; sourceTree = "<group>"; };
+		F3A7CEDD2C8B97A300413400 /* iMessage MessagesExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "iMessage MessagesExtension.entitlements"; sourceTree = "<group>"; };
+		F3A7CEE02C8B9BB700413400 /* App Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Container.swift"; sourceTree = "<group>"; };
+		F3A7CEE42C8B9E7500413400 /* Messages VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Messages VM.swift"; sourceTree = "<group>"; };
+		F3A7CEEB2C8BB77500413400 /* Server Card Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Parent.swift"; sourceTree = "<group>"; };
+		F3A7CEF62C8BB82E00413400 /* Settings Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings Storage.swift"; sourceTree = "<group>"; };
+		F3A7CEFD2C8BB97400413400 /* Server List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List.swift"; sourceTree = "<group>"; };
 		F3A7CF012C8BBB4700413400 /* Server Card Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Context Menu.swift"; sourceTree = "<group>"; };
+		F3A7CF602C8C569300413400 /* Server List VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List VM.swift"; sourceTree = "<group>"; };
 		F3A7CF652A44F44A00331B51 /* Auth View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auth View.swift"; sourceTree = "<group>"; };
 		F3A7CF672C8DF3C900413400 /* Video File VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Video File VM.swift"; sourceTree = "<group>"; };
 		F3A7CF6A2A44F6E000331B51 /* Circular Gauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Circular Gauge.swift"; sourceTree = "<group>"; };
@@ -1750,6 +1860,20 @@
 				F34745D22A31F3AB00EE2FB8 /* ScrechKit in Frameworks */,
 				F39D680D2A262C5E00B9BDFC /* Kingfisher in Frameworks */,
 				F308601E2B002D4A004D776A /* PteroNet in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3A7CEC02C8B685500413400 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3A7CF222C8C4E9700413400 /* MailCover in Frameworks */,
+				F3A7CF0C2C8BBCE400413400 /* Kingfisher in Frameworks */,
+				F3A7CEFB2C8BB8A300413400 /* AlertKit in Frameworks */,
+				F3A7CEF92C8BB88E00413400 /* ScrechKit in Frameworks */,
+				F3A7CF042C8BBB7800413400 /* SafariCover in Frameworks */,
+				F3A7CEC82C8B685500413400 /* Messages.framework in Frameworks */,
+				F3A7CEDF2C8B981A00413400 /* PteroNet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1992,6 +2116,8 @@
 				F3D296082AF3BE5800ED43A0 /* UI Tests */,
 				F3E2BEF62C1DA07E00B7A6D4 /* Contact Provider Extension */,
 				F3FDFF832C89121F009EBB5C /* Intent Handler */,
+				F3A7CEE32C8B9D5400413400 /* iMessage */,
+				F3A7CEE22C8B9D3800413400 /* iMessage Extension */,
 				F31BA5242958FF7C0006D126 /* Products */,
 				F3D3437429BFE5A2007C0D58 /* Frameworks */,
 			);
@@ -2012,6 +2138,8 @@
 				F3D296072AF3BE5800ED43A0 /* UI Tests.xctest */,
 				F3E2BEF52C1DA07E00B7A6D4 /* Contact Provider Extension.appex */,
 				F3FDFF5F2C89120D009EBB5C /* Intent Handler.appex */,
+				F3A7CEBB2C8B685400413400 /* iMessage.app */,
+				F3A7CEC32C8B685500413400 /* iMessage Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2808,6 +2936,50 @@
 			path = "Server Card";
 			sourceTree = "<group>";
 		};
+		F3A7CEE22C8B9D3800413400 /* iMessage Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F3A7CEE02C8B9BB700413400 /* App Container.swift */,
+				F3A7CECA2C8B685500413400 /* Messages VC.swift */,
+				F3A7CEF62C8BB82E00413400 /* Settings Storage.swift */,
+				F3A7CECF2C8B685600413400 /* Assets.xcassets */,
+				F3A7CEDD2C8B97A300413400 /* iMessage MessagesExtension.entitlements */,
+				F3A7CED12C8B685600413400 /* Info.plist */,
+				F3A7CEDB2C8B95CB00413400 /* Home View.swift */,
+				F3A7CEE42C8B9E7500413400 /* Messages VM.swift */,
+				F3A7CEFF2C8BBAFD00413400 /* Server List */,
+				F3A7CF002C8BBB0B00413400 /* Server Card */,
+			);
+			path = "iMessage Extension";
+			sourceTree = "<group>";
+		};
+		F3A7CEE32C8B9D5400413400 /* iMessage */ = {
+			isa = PBXGroup;
+			children = (
+				F3A7CEBD2C8B685500413400 /* Assets.xcassets */,
+			);
+			path = iMessage;
+			sourceTree = "<group>";
+		};
+		F3A7CEFF2C8BBAFD00413400 /* Server List */ = {
+			isa = PBXGroup;
+			children = (
+				F3A7CEFD2C8BB97400413400 /* Server List.swift */,
+				F3255E162C9049AF008E04DE /* Settings Button.swift */,
+				F3255E192C904A03008E04DE /* Settings View.swift */,
+				F3A7CF602C8C569300413400 /* Server List VM.swift */,
+			);
+			path = "Server List";
+			sourceTree = "<group>";
+		};
+		F3A7CF002C8BBB0B00413400 /* Server Card */ = {
+			isa = PBXGroup;
+			children = (
+				F3A7CEEB2C8BB77500413400 /* Server Card Parent.swift */,
+			);
+			path = "Server Card";
+			sourceTree = "<group>";
+		};
 		F3A7CF692A44F6CA00331B51 /* Server List */ = {
 			isa = PBXGroup;
 			children = (
@@ -3342,6 +3514,7 @@
 				F3A31B392B0B78D100F89C51 /* PBXTargetDependency */,
 				F3287A7F2B10A434001AFE54 /* PBXTargetDependency */,
 				F3FDFF782C89120D009EBB5C /* PBXTargetDependency */,
+				F36FBC442C930E9F00F5E174 /* PBXTargetDependency */,
 				F36FBC492C930EAB00F5E174 /* PBXTargetDependency */,
 			);
 			name = Bisquit.Host;
@@ -3479,6 +3652,50 @@
 			productName = WidgetsExtension;
 			productReference = F38637372A8641120069F074 /* Widgets Extension.appex */;
 			productType = "com.apple.product-type.app-extension";
+		};
+		F3A7CEBA2C8B685400413400 /* iMessage */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F3A7CED82C8B685600413400 /* Build configuration list for PBXNativeTarget "iMessage" */;
+			buildPhases = (
+				F3A7CEB92C8B685400413400 /* Resources */,
+				F3A7CED72C8B685600413400 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F3A7CEC62C8B685500413400 /* PBXTargetDependency */,
+			);
+			name = iMessage;
+			packageProductDependencies = (
+			);
+			productName = iMessage;
+			productReference = F3A7CEBB2C8B685400413400 /* iMessage.app */;
+			productType = "com.apple.product-type.application.messages";
+		};
+		F3A7CEC22C8B685500413400 /* iMessage Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F3A7CED32C8B685600413400 /* Build configuration list for PBXNativeTarget "iMessage Extension" */;
+			buildPhases = (
+				F3A7CEBF2C8B685500413400 /* Sources */,
+				F3A7CEC02C8B685500413400 /* Frameworks */,
+				F3A7CEC12C8B685500413400 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "iMessage Extension";
+			packageProductDependencies = (
+				F3A7CEDE2C8B981A00413400 /* PteroNet */,
+				F3A7CEF82C8BB88E00413400 /* ScrechKit */,
+				F3A7CEFA2C8BB8A300413400 /* AlertKit */,
+				F3A7CF032C8BBB7800413400 /* SafariCover */,
+				F3A7CF0B2C8BBCE400413400 /* Kingfisher */,
+				F3A7CF212C8C4E9700413400 /* MailCover */,
+			);
+			productName = "iMessage MessagesExtension";
+			productReference = F3A7CEC32C8B685500413400 /* iMessage Extension.appex */;
+			productType = "com.apple.product-type.app-extension.messages";
 		};
 		F3BD76F12A43C890003E7385 /* visionOS */ = {
 			isa = PBXNativeTarget;
@@ -3619,6 +3836,12 @@
 					F38637362A8641120069F074 = {
 						CreatedOnToolsVersion = 15.0;
 					};
+					F3A7CEBA2C8B685400413400 = {
+						CreatedOnToolsVersion = 16.1;
+					};
+					F3A7CEC22C8B685500413400 = {
+						CreatedOnToolsVersion = 16.1;
+					};
 					F3BD76F12A43C890003E7385 = {
 						CreatedOnToolsVersion = 15.0;
 					};
@@ -3680,6 +3903,8 @@
 				F337C1512A8C29CD006F321C /* Unit Tests */,
 				F3D296062AF3BE5800ED43A0 /* UI Tests */,
 				F3E2BEF42C1DA07E00B7A6D4 /* Contact Provider Extension */,
+				F3A7CEBA2C8B685400413400 /* iMessage */,
+				F3A7CEC22C8B685500413400 /* iMessage Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -3704,6 +3929,7 @@
 				F3E6FC432A1E677000410C7C /* Bisquits.sks in Resources */,
 				F36797732A39C4ED009F2788 /* Localizable.xcstrings in Resources */,
 				F378E3332AF3835A009925DB /* PrivacyInfo.xcprivacy in Resources */,
+				F36FBC422C930E9F00F5E174 /* iMessage.app in Resources */,
 				F31BA52B2958FF7D0006D126 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3750,6 +3976,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				F38637422A8641150069F074 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3A7CEB92C8B685400413400 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3A7CEBE2C8B685500413400 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3A7CEC12C8B685500413400 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3C3BDB82C92BE9B00BF91EE /* Assets.xcassets in Resources */,
+				F3A7CED02C8B685600413400 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4743,6 +4986,70 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F3A7CEBF2C8B685500413400 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3A7CF122C8C4E3E00413400 /* Discover Card.swift in Sources */,
+				F3255E182C9049DC008E04DE /* Settings Parent.swift in Sources */,
+				F3A7CF652C8CA5FE00413400 /* API Key.swift in Sources */,
+				F3255E1C2C904A48008E04DE /* Account View.swift in Sources */,
+				F3A7CF132C8C4E3E00413400 /* Discover.swift in Sources */,
+				F3A7CF142C8C4E3E00413400 /* Discover Item.swift in Sources */,
+				F3A7CEDC2C8B95CB00413400 /* Home View.swift in Sources */,
+				F3255E1B2C904A3C008E04DE /* Account Parent.swift in Sources */,
+				F3A7CEED2C8BB78A00413400 /* Server Card.swift in Sources */,
+				F3A7CF0A2C8BBCD400413400 /* Formatters.swift in Sources */,
+				F3A7CF092C8BBC7A00413400 /* Carousel Button Style.swift in Sources */,
+				F3A7CEE12C8B9BB700413400 /* App Container.swift in Sources */,
+				F3A7CEF02C8BB79B00413400 /* Server Card Na Status.swift in Sources */,
+				F3A7CEFE2C8BB97400413400 /* Server List.swift in Sources */,
+				F3255E1F2C904A71008E04DE /* Enable 2FA View.swift in Sources */,
+				F3255E202C904A71008E04DE /* Disable 2FA View.swift in Sources */,
+				F3255E212C904A71008E04DE /* QR Code View.swift in Sources */,
+				F3A7CF612C8C569300413400 /* Server List VM.swift in Sources */,
+				F3A7CEF42C8BB7E500413400 /* Network Calls.swift in Sources */,
+				F3A7CEEF2C8BB79500413400 /* Gauge Disk.swift in Sources */,
+				F3255E222C904A7A008E04DE /* SSH Create View.swift in Sources */,
+				F3255E232C904A7A008E04DE /* SSH Card.swift in Sources */,
+				F3255E242C904A7A008E04DE /* SSH List.swift in Sources */,
+				F3A7CEF12C8BB7A300413400 /* Server Card VM.swift in Sources */,
+				F3A7CF622C8CA5A900413400 /* Cloud Keys.swift in Sources */,
+				F3255E1D2C904A56008E04DE /* Account VM.swift in Sources */,
+				F3A7CF102C8C4C2700413400 /* Server List Filter.swift in Sources */,
+				F3A7CEEA2C8BB74D00413400 /* Server List Grid.swift in Sources */,
+				F3A7CF0D2C8C43B100413400 /* Topbar Grid Button.swift in Sources */,
+				F3255E1E2C904A63008E04DE /* SSH VM.swift in Sources */,
+				F3A7CEEE2C8BB78F00413400 /* Gauge Regular.swift in Sources */,
+				F3A7CEE52C8B9E7500413400 /* Messages VM.swift in Sources */,
+				F3A7CF662C8CA60E00413400 /* Cloud Key Context Menu.swift in Sources */,
+				F3A7CF082C8BBC7600413400 /* Guide.swift in Sources */,
+				F3A7CEEC2C8BB77500413400 /* Server Card Parent.swift in Sources */,
+				F3A7CF0E2C8C43BB00413400 /* Topbar Admin Button.swift in Sources */,
+				F3A7CEE92C8BB73300413400 /* Enums.swift in Sources */,
+				F3255E1A2C904A03008E04DE /* Settings View.swift in Sources */,
+				F3A7CF152C8C4E4300413400 /* Map List.swift in Sources */,
+				F3A7CF162C8C4E4300413400 /* Map View.swift in Sources */,
+				F3A7CF172C8C4E4300413400 /* Map VM.swift in Sources */,
+				F3A7CEF72C8BB82E00413400 /* Settings Storage.swift in Sources */,
+				F3A7CECB2C8B685500413400 /* Messages VC.swift in Sources */,
+				F3A7CF182C8C4E4A00413400 /* Browser Spec.swift in Sources */,
+				F3A7CF192C8C4E4A00413400 /* Browser VM.swift in Sources */,
+				F3A7CF642C8CA5CF00413400 /* Tip Cloud Keys.swift in Sources */,
+				F3A7CF1A2C8C4E4A00413400 /* Browser Sticker.swift in Sources */,
+				F3A7CF1B2C8C4E4A00413400 /* Browser Topbar.swift in Sources */,
+				F3A7CF1C2C8C4E4A00413400 /* Browser Card.swift in Sources */,
+				F3255E172C9049AF008E04DE /* Settings Button.swift in Sources */,
+				F3A7CF632C8CA5B900413400 /* Cloud Key Card.swift in Sources */,
+				F3A7CF1D2C8C4E4A00413400 /* Browser Hints.swift in Sources */,
+				F3A7CF1E2C8C4E4A00413400 /* Browser.swift in Sources */,
+				F3A7CF1F2C8C4E4A00413400 /* CloudKit Model.swift in Sources */,
+				F3A7CF022C8BBB4700413400 /* Server Card Context Menu.swift in Sources */,
+				F3A7CEF22C8BB7BF00413400 /* System Alerts.swift in Sources */,
+				F3A7CF112C8C4C3100413400 /* Server List Node Filter.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F3BD76EE2A43C890003E7385 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4973,8 +5280,14 @@
 			target = F31BA5222958FF7C0006D126 /* Bisquit.Host */;
 			targetProxy = F337C1562A8C29CD006F321C /* PBXContainerItemProxy */;
 		};
+		F36FBC442C930E9F00F5E174 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F3A7CEBA2C8B685400413400 /* iMessage */;
+			targetProxy = F36FBC432C930E9F00F5E174 /* PBXContainerItemProxy */;
+		};
 		F36FBC492C930EAB00F5E174 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			target = F3A7CEBA2C8B685400413400 /* iMessage */;
 			targetProxy = F36FBC482C930EAB00F5E174 /* PBXContainerItemProxy */;
 		};
 		F3A31B392B0B78D100F89C51 /* PBXTargetDependency */ = {
@@ -4992,6 +5305,11 @@
 			platformFilter = ios;
 			target = F3464CF72A862D2C00188B0C /* Intent */;
 			targetProxy = F3A31B3C2B0B790800F89C51 /* PBXContainerItemProxy */;
+		};
+		F3A7CEC62C8B685500413400 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F3A7CEC22C8B685500413400 /* iMessage Extension */;
+			targetProxy = F3A7CEC52C8B685500413400 /* PBXContainerItemProxy */;
 		};
 		F3D2960E2AF3BE5800ED43A0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5690,6 +6008,118 @@
 			};
 			name = Release;
 		};
+		F3A7CED42C8B685600413400 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CODE_SIGN_ENTITLEMENTS = "iMessage Extension/iMessage MessagesExtension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8FQUA2F388;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iMessage Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Bisquit.Host. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 3.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.topscrech.Bisquit-host.iMessage.Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F3A7CED52C8B685600413400 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CODE_SIGN_ENTITLEMENTS = "iMessage Extension/iMessage MessagesExtension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8FQUA2F388;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iMessage Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Bisquit.Host. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 3.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.topscrech.Bisquit-host.iMessage.Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F3A7CED92C8B685600413400 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8FQUA2F388;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 3.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.topscrech.Bisquit-host.iMessage";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F3A7CEDA2C8B685600413400 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8FQUA2F388;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 3.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.topscrech.Bisquit-host.iMessage";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		F3BD77022A43C892003E7385 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -6079,6 +6509,24 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		F3A7CED32C8B685600413400 /* Build configuration list for PBXNativeTarget "iMessage Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F3A7CED42C8B685600413400 /* Debug */,
+				F3A7CED52C8B685600413400 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F3A7CED82C8B685600413400 /* Build configuration list for PBXNativeTarget "iMessage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F3A7CED92C8B685600413400 /* Debug */,
+				F3A7CEDA2C8B685600413400 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F3BD77012A43C892003E7385 /* Build configuration list for PBXNativeTarget "visionOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -6450,6 +6898,36 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F37266E529D9EF25005FD103 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		F3A7CEDE2C8B981A00413400 /* PteroNet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "PteroNet" */;
+			productName = PteroNet;
+		};
+		F3A7CEF82C8BB88E00413400 /* ScrechKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F39A02842A31480800A92515 /* XCRemoteSwiftPackageReference "ScrechKit" */;
+			productName = ScrechKit;
+		};
+		F3A7CEFA2C8BB8A300413400 /* AlertKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F352AF992A4EE707004AD489 /* XCRemoteSwiftPackageReference "AlertKit" */;
+			productName = AlertKit;
+		};
+		F3A7CF032C8BBB7800413400 /* SafariCover */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F32675842A01B69600A026DC /* XCRemoteSwiftPackageReference "SafariCover" */;
+			productName = SafariCover;
+		};
+		F3A7CF0B2C8BBCE400413400 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F37266E529D9EF25005FD103 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		F3A7CF212C8C4E9700413400 /* MailCover */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3E7BDD82A315C9D00CD03C3 /* XCRemoteSwiftPackageReference "MailCover" */;
+			productName = MailCover;
 		};
 		F3B7BFDD2B38E206005B5003 /* Pow */ = {
 			isa = XCSwiftPackageProductDependency;
