@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 63;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -851,6 +851,7 @@
 		F3BF97AA29BFC7E9007B9C9C /* Websocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BF97A929BFC7E9007B9C9C /* Websocket.swift */; };
 		F3C0F9D029E204FA0040E277 /* FileTab Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C0F9CF29E204FA0040E277 /* FileTab Context Menu.swift */; };
 		F3C0F9D229E2A62A0040E277 /* FileTab NewFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C0F9D129E2A62A0040E277 /* FileTab NewFolder.swift */; };
+		F3C3BDB82C92BE9B00BF91EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F31BA52A2958FF7D0006D126 /* Assets.xcassets */; };
 		F3C53A5F29DBF5B900A08578 /* watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F31BA5332958FF7D0006D126 /* watchOS.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F3C62CE3298A7D8600434636 /* Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C62CE2298A7D8600434636 /* Support.swift */; };
 		F3C9D84A2B302AA200265492 /* File Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D8492B302AA200265492 /* File Context Menu.swift */; };
@@ -3864,7 +3865,6 @@
 				};
 			};
 			buildConfigurationList = F31BA51E2958FF7C0006D126 /* Build configuration list for PBXProject "Bisquit.Host" */;
-			compatibilityVersion = "Xcode 15.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -3890,6 +3890,7 @@
 				F33C2ABF2C69168C002FD150 /* XCRemoteSwiftPackageReference "QuickLooking" */,
 				F36B73952C8B055600E858FE /* XCRemoteSwiftPackageReference "Audio-Visualizer" */,
 			);
+			preferredProjectObjectVersion = 77;
 			productRefGroup = F31BA5242958FF7C0006D126 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -3993,6 +3994,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3C3BDB82C92BE9B00BF91EE /* Assets.xcassets in Resources */,
 				F3A7CED02C8B685600413400 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
