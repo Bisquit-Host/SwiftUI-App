@@ -9,17 +9,17 @@ fileprivate struct ContactAccessPickerModifier: ViewModifier {
     }
     
     func body(content: Content) -> some View {
-        if #available(iOS 18, *) {
+//        if #available(iOS 18, *) {
+//            content
+//                .contactAccessPicker(isPresented: $isPresented)
+//                .toolbar {
+//                    SFButton("person.crop.circle.badge.plus") {
+//                        isPresented = true
+//                    }
+//                }
+//        } else {
             content
-                .contactAccessPicker(isPresented: $isPresented)
-                .toolbar {
-                    SFButton("person.crop.circle.badge.plus") {
-                        isPresented = true
-                    }
-                }
-        } else {
-            content
-        }
+//        }
     }
 }
 
@@ -79,15 +79,15 @@ struct ContactsListView: View {
                 }
                 .animation(.default, value: filteredContacts)
                 
-                if #available(iOS 18, *) {
-                    if authStatus == .limited || authStatus == .notDetermined {
-                        Section {
-                            ContactAccessButton(queryString: searchField) { identifiers in
-                                handleFetchContacts(identifiers)
-                            }
-                        }
-                    }
-                }
+//                if #available(iOS 18, *) {
+//                    if authStatus == .limited || authStatus == .notDetermined {
+//                        Section {
+//                            ContactAccessButton(queryString: searchField) { identifiers in
+//                                handleFetchContacts(identifiers)
+//                            }
+//                        }
+//                    }
+//                }
             }
             .navigationTitle("Contacts")
             .searchable(text: $searchField)

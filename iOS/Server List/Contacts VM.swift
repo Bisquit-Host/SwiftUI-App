@@ -7,39 +7,39 @@ import ContactProvider
 
 extension ServerListVM {
     func enableExtension() async {
-        if #available(iOS 18, *) {
-            do {
-                let manager = try ContactProviderManager()
-                
-                // May prompt to enable the default domain
-                try await manager.enable()
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
+//        if #available(iOS 18, *) {
+//            do {
+//                let manager = try ContactProviderManager()
+//                
+//                // May prompt to enable the default domain
+//                try await manager.enable()
+//            } catch {
+//                print(error.localizedDescription)
+//            }
+//        }
     }
     
     func saveContacts(_ users: [UserAttributes]) async {
-        if #available(iOS 18, *) {
-            do {
-                try await addContacts(users)
-                let manager = try ContactProviderManager()
-                try await manager.signalEnumerator()
-            } catch {
-                print("Failed to add contact: \(error.localizedDescription)")
-            }
-        }
+//        if #available(iOS 18, *) {
+//            do {
+//                try await addContacts(users)
+//                let manager = try ContactProviderManager()
+//                try await manager.signalEnumerator()
+//            } catch {
+//                print("Failed to add contact: \(error.localizedDescription)")
+//            }
+//        }
     }
     
     func disable() async {
-        if #available(iOS 18, *) {
-            do {
-                let manager = try ContactProviderManager()
-                try await manager.disable()
-            } catch {
-                print("Failed to disable: \(error.localizedDescription)")
-            }
-        }
+//        if #available(iOS 18, *) {
+//            do {
+//                let manager = try ContactProviderManager()
+//                try await manager.disable()
+//            } catch {
+//                print("Failed to disable: \(error.localizedDescription)")
+//            }
+//        }
     }
     
     private func addContacts(_ users: [UserAttributes]) async throws {
