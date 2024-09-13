@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 63;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -3871,7 +3871,6 @@
 				};
 			};
 			buildConfigurationList = F31BA51E2958FF7C0006D126 /* Build configuration list for PBXProject "Bisquit.Host" */;
-			compatibilityVersion = "Xcode 15.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -3897,6 +3896,7 @@
 				F33C2ABF2C69168C002FD150 /* XCRemoteSwiftPackageReference "QuickLooking" */,
 				F36B73952C8B055600E858FE /* XCRemoteSwiftPackageReference "Audio-Visualizer" */,
 			);
+			preferredProjectObjectVersion = 77;
 			productRefGroup = F31BA5242958FF7C0006D126 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
