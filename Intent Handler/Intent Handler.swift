@@ -8,20 +8,20 @@ class IntentHandler: INExtension, CryptoPriceConfigurationIntentHandling {
         // Fetch
         let assets = try await AssetFetcher.fetchTopTenAssets()
         
-        let cryptos = assets.map { asset in
-            let crypto = Crypto(
+        let servers = assets.map { asset in
+            let server = Crypto(
                 identifier: asset.id,
                 display: "\(asset.name) (\(asset.id))"
             )
             
-            crypto.id = asset.id
-            crypto.name = asset.name
+            server.id = asset.id
+            server.name = asset.name
             
-            return crypto
+            return server
         }
         
         // Create a collection with the array of cryptos
-        let collection = INObjectCollection(items: cryptos)
+        let collection = INObjectCollection(items: servers)
         
         // Return the collections
         return collection
