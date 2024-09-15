@@ -476,7 +476,6 @@
 		F36D534B2A05B974007324C6 /* Nav Destinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5692959007E0006D126 /* Nav Destinations.swift */; };
 		F36D534C2A05B976007324C6 /* Nav Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BAEC8C2959B3FE00111375 /* Nav Extension.swift */; };
 		F36D534D2A05B98E007324C6 /* Nav State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA565295900300006D126 /* Nav State.swift */; };
-		F36FBC422C930E9F00F5E174 /* iMessage.app in Resources */ = {isa = PBXBuildFile; fileRef = F3A7CEBB2C8B685400413400 /* iMessage.app */; };
 		F36FDB92295AF3AB00D45070 /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36FDB91295AF3AB00D45070 /* Intro.swift */; };
 		F36FDB97295AF4A900D45070 /* Browser VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA590295901C00006D126 /* Browser VM.swift */; };
 		F37061C829774869009B4067 /* Nav Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37061C729774869009B4067 /* Nav Extension.swift */; };
@@ -1203,13 +1202,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = F31BA5222958FF7C0006D126;
 			remoteInfo = Bisquit.Host;
-		};
-		F36FBC482C930EAB00F5E174 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F31BA51B2958FF7C0006D126 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F3A7CEBA2C8B685400413400;
-			remoteInfo = iMessage;
 		};
 		F3A31B382B0B78D100F89C51 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -3300,7 +3292,6 @@
 				F3A31B3B2B0B790600F89C51 /* PBXTargetDependency */,
 				F3A31B392B0B78D100F89C51 /* PBXTargetDependency */,
 				F3A7CF252C8C509C00413400 /* PBXTargetDependency */,
-				F36FBC492C930EAB00F5E174 /* PBXTargetDependency */,
 			);
 			name = Bisquit.Host;
 			packageProductDependencies = (
@@ -3714,7 +3705,6 @@
 				F3E6FC432A1E677000410C7C /* Bisquits.sks in Resources */,
 				F36797732A39C4ED009F2788 /* Localizable.xcstrings in Resources */,
 				F378E3332AF3835A009925DB /* PrivacyInfo.xcprivacy in Resources */,
-				F36FBC422C930E9F00F5E174 /* iMessage.app in Resources */,
 				F31BA52B2958FF7D0006D126 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5017,11 +5007,6 @@
 			isa = PBXTargetDependency;
 			target = F31BA5222958FF7C0006D126 /* Bisquit.Host */;
 			targetProxy = F337C1562A8C29CD006F321C /* PBXContainerItemProxy */;
-		};
-		F36FBC492C930EAB00F5E174 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F3A7CEBA2C8B685400413400 /* iMessage */;
-			targetProxy = F36FBC482C930EAB00F5E174 /* PBXContainerItemProxy */;
 		};
 		F3A31B392B0B78D100F89C51 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
