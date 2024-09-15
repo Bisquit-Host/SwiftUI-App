@@ -23,7 +23,6 @@ class IntentHandler: INExtension, CryptoPriceConfigurationIntentHandling {
         // Create a collection with the array of cryptos
         let collection = INObjectCollection(items: servers)
         
-        // Return the collections
         return collection
     }
     
