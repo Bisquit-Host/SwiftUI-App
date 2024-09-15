@@ -1262,13 +1262,6 @@
 			remoteGlobalIDString = F3A7CEBA2C8B685400413400;
 			remoteInfo = iMessage;
 		};
-		F36FBC482C930EAB00F5E174 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F31BA51B2958FF7C0006D126 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F3A7CEBA2C8B685400413400;
-			remoteInfo = iMessage;
-		};
 		F3A31B382B0B78D100F89C51 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F31BA51B2958FF7C0006D126 /* Project object */;
@@ -3525,7 +3518,6 @@
 				F3FDFF782C89120D009EBB5C /* PBXTargetDependency */,
 				F3A7CF252C8C509C00413400 /* PBXTargetDependency */,
 				F36FBC442C930E9F00F5E174 /* PBXTargetDependency */,
-				F36FBC492C930EAB00F5E174 /* PBXTargetDependency */,
 			);
 			name = Bisquit.Host;
 			packageProductDependencies = (
@@ -5294,11 +5286,6 @@
 			isa = PBXTargetDependency;
 			target = F3A7CEBA2C8B685400413400 /* iMessage */;
 			targetProxy = F36FBC432C930E9F00F5E174 /* PBXContainerItemProxy */;
-		};
-		F36FBC492C930EAB00F5E174 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F3A7CEBA2C8B685400413400 /* iMessage */;
-			targetProxy = F36FBC482C930EAB00F5E174 /* PBXContainerItemProxy */;
 		};
 		F3A31B392B0B78D100F89C51 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
