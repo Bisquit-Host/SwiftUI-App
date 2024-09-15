@@ -21,7 +21,7 @@ struct HomeView: View {
             }
             .environmentObject(settings)
             .environment(serverVm)
-            .toolbarBackgroundVisibility(.visible)
+//            .toolbarBackgroundVisibility(.visible)
         }
     }
 }
