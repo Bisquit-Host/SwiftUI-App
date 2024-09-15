@@ -1187,8 +1187,6 @@
 		F3F5BC982BF7668E00EB8FB1 /* Sensitivity Analyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5BC952BF7668E00EB8FB1 /* Sensitivity Analyzer.swift */; };
 		F3F6ACAF2A51E48700EE417F /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3F6ACAE2A51E48700EE417F /* AlertKit */; };
 		F3F716BD29E4D46600838586 /* Backup List Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F716BC29E4D46600838586 /* Backup List Footer.swift */; };
-		F3F85F3D2C973DC500AE0A1D /* CryptoPriceWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF8C2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition */; };
-		F3F85F3E2C973DC500AE0A1D /* CryptoPriceWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF8C2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition */; };
 		F3F86CFD2A5AEDB400A2C82E /* Audio Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F86CFC2A5AEDB400A2C82E /* Audio Recorder.swift */; };
 		F3F86CFE2A5AEDB400A2C82E /* Audio Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F86CFC2A5AEDB400A2C82E /* Audio Recorder.swift */; };
 		F3F86D002A5AEDCD00A2C82E /* Audio Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F86CFC2A5AEDB400A2C82E /* Audio Recorder.swift */; };
@@ -1215,7 +1213,9 @@
 		F3FDFF792C89120D009EBB5C /* Intent Handler.appex in Embed Foundation Extensions (2 items) */ = {isa = PBXBuildFile; fileRef = F3FDFF5F2C89120D009EBB5C /* Intent Handler.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F3FDFF882C8912F1009EBB5C /* Asset Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF872C8912F1009EBB5C /* Asset Fetcher.swift */; };
 		F3FDFF8B2C89130F009EBB5C /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF8A2C89130F009EBB5C /* Widget.swift */; };
+		F3FDFF8D2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF8C2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition */; };
 		F3FDFF8E2C891343009EBB5C /* Asset Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF872C8912F1009EBB5C /* Asset Fetcher.swift */; };
+		F3FDFF8F2C8913AE009EBB5C /* CryptoPriceWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF8C2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition */; };
 		F3FDFF902C891500009EBB5C /* CryptoPriceWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF8C2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition */; };
 		F3FDFF912C89150D009EBB5C /* Asset Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF872C8912F1009EBB5C /* Asset Fetcher.swift */; };
 		F3FF59FF2A4A3188003A1973 /* User List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF59FE2A4A3188003A1973 /* User List.swift */; };
@@ -4979,6 +4979,7 @@
 				F36B737A2C8AE9D400E858FE /* Power Actions Intents.swift in Sources */,
 				F337B4102A89FE5C00DD79AA /* Static Entry.swift in Sources */,
 				F323BFA72B211C6D00116B97 /* Power Provider.swift in Sources */,
+				F3FDFF8D2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition in Sources */,
 				F36B73902C8AECB000E858FE /* Widget View.swift in Sources */,
 				F323BFA32B20DE4F00116B97 /* Network Calls.swift in Sources */,
 				F318240B2A8777E30039866C /* Provider.swift in Sources */,
@@ -4992,7 +4993,6 @@
 				F38637402A8641120069F074 /* Power Intent Config.swift in Sources */,
 				F337B40B2A89FC5100DD79AA /* Accessory Circular View.swift in Sources */,
 				F337B40E2A89FE0D00DD79AA /* Static Provider.swift in Sources */,
-				F3F85F3D2C973DC500AE0A1D /* CryptoPriceWidget.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5271,8 +5271,8 @@
 			files = (
 				F36B73862C8AEAE700E858FE /* Model Asset.swift in Sources */,
 				F3FDFF642C89120D009EBB5C /* Intent Handler.swift in Sources */,
-				F3F85F3E2C973DC500AE0A1D /* CryptoPriceWidget.intentdefinition in Sources */,
 				F3FDFF8E2C891343009EBB5C /* Asset Fetcher.swift in Sources */,
+				F3FDFF8F2C8913AE009EBB5C /* CryptoPriceWidget.intentdefinition in Sources */,
 				F36B73702C8A4CAF00E858FE /* Refresh Button Intent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
