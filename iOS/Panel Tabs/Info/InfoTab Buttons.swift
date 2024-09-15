@@ -3,7 +3,7 @@ import PteroNet
 
 struct InfoTabButtons: View {
 #if canImport(ActivityKit)
-    private var liveActivity = LiveActivity()
+//    private var liveActivity = LiveActivity()
 #endif
     
     private var settingsVM: ServerSettingsVM
@@ -71,40 +71,40 @@ struct InfoTabButtons: View {
                 .frame(height: 20)
             
 #if canImport(ActivityKit)
-            if liveActivity.activityViewState?.activityState == .active {
-                Button {
-                    liveActivity.stopAllLiveActivities()
-                } label: {
-                    Text("Cancel")
-                        .rounded()
-                        .title2(.semibold)
-                        .foregroundStyle(.red)
-                        .frame(height: 25)
-                        .padding()
-                        .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
-                }
-            } else {
-                Button {
-                    liveActivity.stopAllLiveActivities()
-                    liveActivity.startLiveActivity(server)
-                } label: {
-                    Text("Live Activity")
-                        .title2(.semibold, design: .rounded)
-                        .foregroundStyle(.foreground)
-                        .frame(height: 25)
-                        .padding()
-                        .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
-                }
-                .overlay(alignment: .topTrailing) {
-                    Text("Beta")
-                        .rounded()
-                        .footnote(.bold)
-                        .foregroundStyle(.white.gradient)
-                        .padding(.horizontal, 4)
-                        .background(.blue.gradient, in: .capsule)
-                        .padding(-6)
-                }
-            }
+//            if liveActivity.activityViewState?.activityState == .active {
+//                Button {
+//                    liveActivity.stopAllLiveActivities()
+//                } label: {
+//                    Text("Cancel")
+//                        .rounded()
+//                        .title2(.semibold)
+//                        .foregroundStyle(.red)
+//                        .frame(height: 25)
+//                        .padding()
+//                        .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
+//                }
+//            } else {
+//                Button {
+//                    liveActivity.stopAllLiveActivities()
+//                    liveActivity.startLiveActivity(server)
+//                } label: {
+//                    Text("Live Activity")
+//                        .title2(.semibold, design: .rounded)
+//                        .foregroundStyle(.foreground)
+//                        .frame(height: 25)
+//                        .padding()
+//                        .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
+//                }
+//                .overlay(alignment: .topTrailing) {
+//                    Text("Beta")
+//                        .rounded()
+//                        .footnote(.bold)
+//                        .foregroundStyle(.white.gradient)
+//                        .padding(.horizontal, 4)
+//                        .background(.blue.gradient, in: .capsule)
+//                        .padding(-6)
+//                }
+//            }
 #endif
         }
         .task {

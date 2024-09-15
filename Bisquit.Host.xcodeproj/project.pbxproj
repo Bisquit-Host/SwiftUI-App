@@ -128,9 +128,6 @@
 		F31485212A34665000AF5CCA /* Browser Sticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E8415529FECB6800609DA3 /* Browser Sticker.swift */; };
 		F31578B329675F5D0016A600 /* Server List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31578B229675F5D0016A600 /* Server List.swift */; };
 		F31578B5296760710016A600 /* Server Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31578B4296760710016A600 /* Server Card.swift */; };
-		F318240B2A8777E30039866C /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F318240A2A8777CD0039866C /* Provider.swift */; };
-		F318240D2A877BA90039866C /* Preview Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F318240C2A877BA90039866C /* Preview Extension.swift */; };
-		F3187A4E2C891B2A008FB911 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F337B4012A89CAF500DD79AA /* Intents.intentdefinition */; };
 		F318FE452A15925200DE0A5C /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = F318FE442A15925200DE0A5C /* OrderedCollections */; };
 		F318FE472A1592AB00DE0A5C /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = F318FE462A1592AB00DE0A5C /* OrderedCollections */; };
 		F31B2D982A7AD8C800C08EE6 /* Ansi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39626F12A7AD64B0057E356 /* Ansi.swift */; };
@@ -165,10 +162,7 @@
 		F31D0BB52A2573E200119D07 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31D0BB42A2573E200119D07 /* Settings.swift */; };
 		F320DDA52B704E3C00957D92 /* Preview Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = F320DDA42B704E3C00957D92 /* Preview Property.swift */; };
 		F323BF9F2B20B84100116B97 /* Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F323BF9E2B20B84100116B97 /* Server Card Context Menu.swift */; };
-		F323BFA22B20DC9000116B97 /* Power Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F323BFA12B20DC9000116B97 /* Power Widget.swift */; };
 		F323BFA32B20DE4F00116B97 /* Network Calls.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32FD71D2B1E054300723B88 /* Network Calls.swift */; };
-		F323BFA52B211C3700116B97 /* Power Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F323BFA42B211C3700116B97 /* Power Entry.swift */; };
-		F323BFA72B211C6D00116B97 /* Power Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F323BFA62B211C6D00116B97 /* Power Provider.swift */; };
 		F323D8D32A2D668D002EDC62 /* File Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F323D8D22A2D668D002EDC62 /* File Tab.swift */; };
 		F323D8D52A2D67A3002EDC62 /* Upload File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F393C7BA2A18437300DE33F9 /* Upload File.swift */; };
 		F3255E172C9049AF008E04DE /* Settings Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3255E162C9049AF008E04DE /* Settings Button.swift */; };
@@ -193,11 +187,6 @@
 		F325F7092A54CB6600E89EC4 /* Carousel Button Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7082A54CB6600E89EC4 /* Carousel Button Style.swift */; };
 		F325F70A2A54CB6600E89EC4 /* Carousel Button Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7082A54CB6600E89EC4 /* Carousel Button Style.swift */; };
 		F32675862A01B69600A026DC /* SafariCover in Frameworks */ = {isa = PBXBuildFile; productRef = F32675852A01B69600A026DC /* SafariCover */; };
-		F3287A762B10A0E4001AFE54 /* Live Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38282022B0E14B30088C48B /* Live Activity.swift */; };
-		F3287A792B10A11E001AFE54 /* Live Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38282022B0E14B30088C48B /* Live Activity.swift */; };
-		F3287A7A2B10A120001AFE54 /* Widget Live Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3287A732B109DD0001AFE54 /* Widget Live Activity.swift */; };
-		F3287A7B2B10A17E001AFE54 /* Widget Live Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3287A732B109DD0001AFE54 /* Widget Live Activity.swift */; };
-		F3287A7C2B10A17F001AFE54 /* Widget Live Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3287A732B109DD0001AFE54 /* Widget Live Activity.swift */; };
 		F328D8592A82402A0038512F /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = F328D8582A82402A0038512F /* Algorithms */; };
 		F328D85E2A8240930038512F /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = F328D85D2A8240930038512F /* Algorithms */; };
 		F328D8622A8242610038512F /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = F328D8612A8242610038512F /* Algorithms */; };
@@ -254,11 +243,6 @@
 		F33623302A220277006A6271 /* Panel Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3029C06E9700B08696 /* Panel Model.swift */; };
 		F33623312A22048C006A6271 /* Settings Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* Settings Storage.swift */; };
 		F337B3A829BC6B5400CC1195 /* Server List Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B3A729BC6B5400CC1195 /* Server List Grid.swift */; };
-		F337B4062A89FAC600DD79AA /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B4052A89FAC600DD79AA /* Entry.swift */; };
-		F337B4092A89FB4300DD79AA /* System Small Widget View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B4082A89FB4300DD79AA /* System Small Widget View.swift */; };
-		F337B40B2A89FC5100DD79AA /* Accessory Circular View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B40A2A89FC5100DD79AA /* Accessory Circular View.swift */; };
-		F337B40E2A89FE0D00DD79AA /* Static Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B40D2A89FE0D00DD79AA /* Static Provider.swift */; };
-		F337B4102A89FE5C00DD79AA /* Static Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B40F2A89FE5C00DD79AA /* Static Entry.swift */; };
 		F337C1552A8C29CD006F321C /* Unit Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337C1542A8C29CD006F321C /* Unit Tests.swift */; };
 		F337C15C2A8C2A04006F321C /* API Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337C15B2A8C2A04006F321C /* API Tests.swift */; };
 		F337C1602A8C2CE0006F321C /* Startup View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337C15F2A8C2CE0006F321C /* Startup View.swift */; };
@@ -444,16 +428,6 @@
 		F367977F2A3A5AB6009F2788 /* Log VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367977D2A3A5AB6009F2788 /* Log VM.swift */; };
 		F36A0F312A167D5F00696207 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F31BA52A2958FF7D0006D126 /* Assets.xcassets */; };
 		F36B736D2C89B6BE00E858FE /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F36B736C2C89B6BE00E858FE /* PteroNet */; };
-		F36B73702C8A4CAF00E858FE /* Refresh Button Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B736F2C8A4CAF00E858FE /* Refresh Button Intent.swift */; };
-		F36B73712C8A4CAF00E858FE /* Refresh Button Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B736F2C8A4CAF00E858FE /* Refresh Button Intent.swift */; };
-		F36B73722C8A4CAF00E858FE /* Refresh Button Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B736F2C8A4CAF00E858FE /* Refresh Button Intent.swift */; };
-		F36B737A2C8AE9D400E858FE /* Power Actions Intents.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B73792C8AE9D400E858FE /* Power Actions Intents.swift */; };
-		F36B73862C8AEAE700E858FE /* Model Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B73852C8AEAE700E858FE /* Model Asset.swift */; };
-		F36B73872C8AEAE700E858FE /* Model Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B73852C8AEAE700E858FE /* Model Asset.swift */; };
-		F36B73882C8AEAE700E858FE /* Model Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B73852C8AEAE700E858FE /* Model Asset.swift */; };
-		F36B738A2C8AEC3D00E858FE /* Timeline Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B73892C8AEC3D00E858FE /* Timeline Provider.swift */; };
-		F36B738E2C8AEC8400E858FE /* Resources Usage Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B738D2C8AEC8400E858FE /* Resources Usage Entry.swift */; };
-		F36B73902C8AECB000E858FE /* Widget View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B738F2C8AECB000E858FE /* Widget View.swift */; };
 		F36B739B2C8B073B00E858FE /* AudioVisualizer in Frameworks */ = {isa = PBXBuildFile; productRef = F36B739A2C8B073B00E858FE /* AudioVisualizer */; };
 		F36B739D2C8B074300E858FE /* AudioVisualizer in Frameworks */ = {isa = PBXBuildFile; productRef = F36B739C2C8B074300E858FE /* AudioVisualizer */; };
 		F36B739F2C8B077A00E858FE /* AudioVisualizer in Frameworks */ = {isa = PBXBuildFile; productRef = F36B739E2C8B077A00E858FE /* AudioVisualizer */; };
@@ -518,9 +492,6 @@
 		F37080512A2A1EBA0046CE70 /* Schedule Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = F398823E2987BF6E00B9BA2C /* Schedule Task.swift */; };
 		F37080522A2A1F6D0046CE70 /* Database List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F375EC3929EE73AC002CA969 /* Database List.swift */; };
 		F37080532A2A1F730046CE70 /* Database Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB53D52971CF6B00A213B0 /* Database Card.swift */; };
-		F371468C2B123807001E0296 /* Activity View State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371468B2B123807001E0296 /* Activity View State.swift */; };
-		F371468D2B123807001E0296 /* Activity View State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371468B2B123807001E0296 /* Activity View State.swift */; };
-		F371468E2B123807001E0296 /* Activity View State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371468B2B123807001E0296 /* Activity View State.swift */; };
 		F37266AA29D71A1B005FD103 /* File Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266A929D71A1B005FD103 /* File Icon.swift */; };
 		F37266BC29D811B7005FD103 /* File View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266BB29D811B7005FD103 /* File View.swift */; };
 		F37266C029D826F5005FD103 /* File Details.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266BF29D826F5005FD103 /* File Details.swift */; };
@@ -574,17 +545,12 @@
 		F380B32A2BD7C529009062E8 /* Upload Preview List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380B3272BD7C4A4009062E8 /* Upload Preview List.swift */; };
 		F380C0B32A4F1D42002D400F /* Server List VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F352AF962A4EDB1D004AD489 /* Server List VM.swift */; };
 		F38282002B0E126D0088C48B /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F38281FF2B0E126D0088C48B /* ScrechKit */; };
-		F38282032B0E14B30088C48B /* Live Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38282022B0E14B30088C48B /* Live Activity.swift */; };
 		F385824229D6215100BEEE1D /* App Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F385824129D6215100BEEE1D /* App Icon.swift */; };
 		F385824629D6268200BEEE1D /* Currency Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F385824529D6268200BEEE1D /* Currency Button.swift */; };
 		F385824829D626FE00BEEE1D /* Biometry Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F385824729D626FE00BEEE1D /* Biometry Button.swift */; };
 		F385824A29D6313D00BEEE1D /* Wide List Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F385824929D6313D00BEEE1D /* Wide List Button.swift */; };
 		F38637382A8641120069F074 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F350636629DC24AB0010B717 /* WidgetKit.framework */; };
 		F38637392A8641120069F074 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F350636829DC24AB0010B717 /* SwiftUI.framework */; };
-		F386373C2A8641120069F074 /* Widgets Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F386373B2A8641120069F074 /* Widgets Bundle.swift */; };
-		F386373E2A8641120069F074 /* System Small Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F386373D2A8641120069F074 /* System Small Widget.swift */; };
-		F38637402A8641120069F074 /* Power Intent Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = F386373F2A8641120069F074 /* Power Intent Config.swift */; };
-		F38637422A8641150069F074 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F38637412A8641150069F074 /* Assets.xcassets */; };
 		F38694182A4B3AAF002DEF90 /* Panel Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3029C06E9700B08696 /* Panel Model.swift */; };
 		F386941A2A4B3AE1002DEF90 /* Info Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38694192A4B3AE1002DEF90 /* Info Tab.swift */; };
 		F3878ECD2A1BCE5000AD8657 /* Dev Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3878ECC2A1BCE5000AD8657 /* Dev Settings.swift */; };
@@ -1208,11 +1174,6 @@
 		F3FD9F9E2C651F4800A69314 /* Sensitivity Analyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5BC952BF7668E00EB8FB1 /* Sensitivity Analyzer.swift */; };
 		F3FD9FA12C65217C00A69314 /* Quick Look View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FD9FA02C65217C00A69314 /* Quick Look View.swift */; };
 		F3FDFF612C89120D009EBB5C /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3FDFF602C89120D009EBB5C /* Intents.framework */; };
-		F3FDFF642C89120D009EBB5C /* Intent Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF632C89120D009EBB5C /* Intent Handler.swift */; };
-		F3FDFF882C8912F1009EBB5C /* Asset Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF872C8912F1009EBB5C /* Asset Fetcher.swift */; };
-		F3FDFF8B2C89130F009EBB5C /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF8A2C89130F009EBB5C /* Widget.swift */; };
-		F3FDFF8E2C891343009EBB5C /* Asset Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF872C8912F1009EBB5C /* Asset Fetcher.swift */; };
-		F3FDFF912C89150D009EBB5C /* Asset Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF872C8912F1009EBB5C /* Asset Fetcher.swift */; };
 		F3FF59FF2A4A3188003A1973 /* User List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF59FE2A4A3188003A1973 /* User List.swift */; };
 		F3FF5A002A4A3188003A1973 /* User List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF59FE2A4A3188003A1973 /* User List.swift */; };
 		F3FF5A032A4A359C003A1973 /* InfoTab Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A022A4A359C003A1973 /* InfoTab Buttons.swift */; };
@@ -1388,8 +1349,6 @@
 		F311CAAD2A646612004E4A4A /* Log Detail View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log Detail View.swift"; sourceTree = "<group>"; };
 		F31578B229675F5D0016A600 /* Server List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List.swift"; sourceTree = "<group>"; };
 		F31578B4296760710016A600 /* Server Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card.swift"; sourceTree = "<group>"; };
-		F318240A2A8777CD0039866C /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
-		F318240C2A877BA90039866C /* Preview Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preview Extension.swift"; sourceTree = "<group>"; };
 		F31B444F297550CD0036868F /* Stats Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stats Tab.swift"; sourceTree = "<group>"; };
 		F31BA5232958FF7C0006D126 /* Bisquit.Host.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bisquit.Host.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F31BA5262958FF7C0006D126 /* Bisquit.Host App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bisquit.Host App.swift"; sourceTree = "<group>"; };
@@ -1426,9 +1385,6 @@
 		F31D0BB42A2573E200119D07 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		F320DDA42B704E3C00957D92 /* Preview Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preview Property.swift"; sourceTree = "<group>"; };
 		F323BF9E2B20B84100116B97 /* Server Card Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Context Menu.swift"; sourceTree = "<group>"; };
-		F323BFA12B20DC9000116B97 /* Power Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Widget.swift"; sourceTree = "<group>"; };
-		F323BFA42B211C3700116B97 /* Power Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Entry.swift"; sourceTree = "<group>"; };
-		F323BFA62B211C6D00116B97 /* Power Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Provider.swift"; sourceTree = "<group>"; };
 		F323D8D22A2D668D002EDC62 /* File Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Tab.swift"; sourceTree = "<group>"; };
 		F3255E162C9049AF008E04DE /* Settings Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings Button.swift"; sourceTree = "<group>"; };
 		F3255E192C904A03008E04DE /* Settings View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings View.swift"; sourceTree = "<group>"; };
@@ -1436,7 +1392,6 @@
 		F325F7022A54BF7A00E89EC4 /* InfoTab Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InfoTab Model.swift"; sourceTree = "<group>"; };
 		F325F7052A54C4BC00E89EC4 /* System Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "System Alerts.swift"; sourceTree = "<group>"; };
 		F325F7082A54CB6600E89EC4 /* Carousel Button Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Carousel Button Style.swift"; sourceTree = "<group>"; };
-		F3287A732B109DD0001AFE54 /* Widget Live Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Widget Live Activity.swift"; sourceTree = "<group>"; };
 		F32CAAD82A28C4920019DEE3 /* File View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File View.swift"; sourceTree = "<group>"; };
 		F32DB8A729AE6B800074E045 /* Start Page Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page Footer.swift"; sourceTree = "<group>"; };
 		F32E88C72AF83E3F00959D49 /* Topbar Admin Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Topbar Admin Button.swift"; sourceTree = "<group>"; };
@@ -1453,12 +1408,6 @@
 		F3317AEC2A45E26900CA104D /* Guide Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Guide Model.swift"; sourceTree = "<group>"; };
 		F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dynamic Island Badge.swift"; sourceTree = "<group>"; };
 		F337B3A729BC6B5400CC1195 /* Server List Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List Grid.swift"; sourceTree = "<group>"; };
-		F337B4012A89CAF500DD79AA /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
-		F337B4052A89FAC600DD79AA /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
-		F337B4082A89FB4300DD79AA /* System Small Widget View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "System Small Widget View.swift"; sourceTree = "<group>"; };
-		F337B40A2A89FC5100DD79AA /* Accessory Circular View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Accessory Circular View.swift"; sourceTree = "<group>"; };
-		F337B40D2A89FE0D00DD79AA /* Static Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Static Provider.swift"; sourceTree = "<group>"; };
-		F337B40F2A89FE5C00DD79AA /* Static Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Static Entry.swift"; sourceTree = "<group>"; };
 		F337C1522A8C29CD006F321C /* Unit Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unit Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F337C1542A8C29CD006F321C /* Unit Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Unit Tests.swift"; sourceTree = "<group>"; };
 		F337C15B2A8C2A04006F321C /* API Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API Tests.swift"; sourceTree = "<group>"; };
@@ -1522,19 +1471,11 @@
 		F36797772A3A55E1009F2788 /* Log List Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log List Parent.swift"; sourceTree = "<group>"; };
 		F367977A2A3A55F4009F2788 /* Log Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log Card.swift"; sourceTree = "<group>"; };
 		F367977D2A3A5AB6009F2788 /* Log VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log VM.swift"; sourceTree = "<group>"; };
-		F36B736E2C89BB7200E858FE /* Intent Handler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Intent Handler.entitlements"; sourceTree = "<group>"; };
-		F36B736F2C8A4CAF00E858FE /* Refresh Button Intent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Refresh Button Intent.swift"; sourceTree = "<group>"; };
-		F36B73792C8AE9D400E858FE /* Power Actions Intents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Actions Intents.swift"; sourceTree = "<group>"; };
-		F36B73852C8AEAE700E858FE /* Model Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model Asset.swift"; sourceTree = "<group>"; };
-		F36B73892C8AEC3D00E858FE /* Timeline Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timeline Provider.swift"; sourceTree = "<group>"; };
-		F36B738D2C8AEC8400E858FE /* Resources Usage Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Resources Usage Entry.swift"; sourceTree = "<group>"; };
-		F36B738F2C8AECB000E858FE /* Widget View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Widget View.swift"; sourceTree = "<group>"; };
 		F36B73A22C8B0B7B00E858FE /* Audio Player View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Audio Player View.swift"; sourceTree = "<group>"; };
 		F36FDB91295AF3AB00D45070 /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
 		F37061C729774869009B4067 /* Nav Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Extension.swift"; sourceTree = "<group>"; };
 		F37061C929774886009B4067 /* Nav Destinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Destinations.swift"; sourceTree = "<group>"; };
 		F37061CB29775BF5009B4067 /* Bisquit-Host-tvOSapp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Bisquit-Host-tvOSapp-Info.plist"; sourceTree = SOURCE_ROOT; };
-		F371468B2B123807001E0296 /* Activity View State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity View State.swift"; sourceTree = "<group>"; };
 		F37266A929D71A1B005FD103 /* File Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Icon.swift"; sourceTree = "<group>"; };
 		F37266BB29D811B7005FD103 /* File View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File View.swift"; sourceTree = "<group>"; };
 		F37266BF29D826F5005FD103 /* File Details.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Details.swift"; sourceTree = "<group>"; };
@@ -1566,18 +1507,11 @@
 		F37F51C329DAF8D70030C1C4 /* Des Image VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Des Image VM.swift"; sourceTree = "<group>"; };
 		F380B3232BD7B9B6009062E8 /* Image Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image Picker.swift"; sourceTree = "<group>"; };
 		F380B3272BD7C4A4009062E8 /* Upload Preview List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Upload Preview List.swift"; sourceTree = "<group>"; };
-		F38282022B0E14B30088C48B /* Live Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Live Activity.swift"; sourceTree = "<group>"; };
 		F385824129D6215100BEEE1D /* App Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Icon.swift"; sourceTree = "<group>"; };
 		F385824529D6268200BEEE1D /* Currency Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Currency Button.swift"; sourceTree = "<group>"; };
 		F385824729D626FE00BEEE1D /* Biometry Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Biometry Button.swift"; sourceTree = "<group>"; };
 		F385824929D6313D00BEEE1D /* Wide List Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Wide List Button.swift"; sourceTree = "<group>"; };
 		F38637372A8641120069F074 /* Widgets Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Widgets Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F386373B2A8641120069F074 /* Widgets Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Widgets Bundle.swift"; sourceTree = "<group>"; };
-		F386373D2A8641120069F074 /* System Small Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "System Small Widget.swift"; sourceTree = "<group>"; };
-		F386373F2A8641120069F074 /* Power Intent Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Intent Config.swift"; sourceTree = "<group>"; };
-		F38637412A8641150069F074 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F38637432A8641150069F074 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F38637442A8641150069F074 /* Widgets.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Widgets.entitlements; sourceTree = "<group>"; };
 		F38694192A4B3AE1002DEF90 /* Info Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab.swift"; sourceTree = "<group>"; };
 		F3878ECC2A1BCE5000AD8657 /* Dev Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dev Settings.swift"; sourceTree = "<group>"; };
 		F3878EDE2A1C228900AD8657 /* Server Card Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Stats.swift"; sourceTree = "<group>"; };
@@ -1768,12 +1702,7 @@
 		F3FD9FA02C65217C00A69314 /* Quick Look View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quick Look View.swift"; sourceTree = "<group>"; };
 		F3FDFF5F2C89120D009EBB5C /* Intent Handler.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Intent Handler.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3FDFF602C89120D009EBB5C /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
-		F3FDFF632C89120D009EBB5C /* Intent Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Intent Handler.swift"; sourceTree = "<group>"; };
-		F3FDFF652C89120D009EBB5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3FDFF6B2C89120D009EBB5C /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
-		F3FDFF872C8912F1009EBB5C /* Asset Fetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Asset Fetcher.swift"; sourceTree = "<group>"; };
-		F3FDFF8A2C89130F009EBB5C /* Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget.swift; sourceTree = "<group>"; };
-		F3FDFF8C2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = CryptoPriceWidget.intentdefinition; sourceTree = "<group>"; };
 		F3FF59FE2A4A3188003A1973 /* User List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User List.swift"; sourceTree = "<group>"; };
 		F3FF5A022A4A359C003A1973 /* InfoTab Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InfoTab Buttons.swift"; sourceTree = "<group>"; };
 		F3FF5A082A4A3745003A1973 /* InfoTab Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InfoTab Background.swift"; sourceTree = "<group>"; };
@@ -2082,11 +2011,9 @@
 				F3BD76F32A43C890003E7385 /* visionOS */,
 				F31BA54F2958FFAF0006D126 /* Clip Demo */,
 				F3464CF92A862D2D00188B0C /* Intent */,
-				F386373A2A8641120069F074 /* Widgets */,
 				F337C1532A8C29CD006F321C /* Unit Tests */,
 				F3D296082AF3BE5800ED43A0 /* UI Tests */,
 				F3E2BEF62C1DA07E00B7A6D4 /* Contact Provider Extension */,
-				F3FDFF832C89121F009EBB5C /* Intent Handler */,
 				F3A7CEE32C8B9D5400413400 /* iMessage */,
 				F3A7CEE22C8B9D3800413400 /* iMessage Extension */,
 				F31BA5242958FF7C0006D126 /* Products */,
@@ -2351,17 +2278,6 @@
 			path = Destinations;
 			sourceTree = "<group>";
 		};
-		F323BFA02B20DC7A00116B97 /* Power Widget */ = {
-			isa = PBXGroup;
-			children = (
-				F323BFA12B20DC9000116B97 /* Power Widget.swift */,
-				F323BFA62B211C6D00116B97 /* Power Provider.swift */,
-				F323BFA42B211C3700116B97 /* Power Entry.swift */,
-				F386373F2A8641120069F074 /* Power Intent Config.swift */,
-			);
-			path = "Power Widget";
-			sourceTree = "<group>";
-		};
 		F323D8D62A2D6868002EDC62 /* Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -2429,28 +2345,6 @@
 				F342FAB22B2E43D500854270 /* Log Card.swift */,
 			);
 			path = Logs;
-			sourceTree = "<group>";
-		};
-		F337B4072A89FB0200DD79AA /* Families */ = {
-			isa = PBXGroup;
-			children = (
-				F36B73772C8AE93000E858FE /* New Widget */,
-				F323BFA02B20DC7A00116B97 /* Power Widget */,
-				F36B737B2C8AEA2D00E858FE /* System Small */,
-				F337B40C2A89FDFB00DD79AA /* New Group */,
-				F38282012B0E14980088C48B /* Live Activity */,
-			);
-			path = Families;
-			sourceTree = "<group>";
-		};
-		F337B40C2A89FDFB00DD79AA /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-				F337B40A2A89FC5100DD79AA /* Accessory Circular View.swift */,
-				F337B40D2A89FE0D00DD79AA /* Static Provider.swift */,
-				F337B40F2A89FE5C00DD79AA /* Static Entry.swift */,
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		F337C1532A8C29CD006F321C /* Unit Tests */ = {
@@ -2596,45 +2490,6 @@
 			path = SpriteKit;
 			sourceTree = "<group>";
 		};
-		F36B73772C8AE93000E858FE /* New Widget */ = {
-			isa = PBXGroup;
-			children = (
-				F3FDFF8C2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition */,
-				F3FDFF8A2C89130F009EBB5C /* Widget.swift */,
-				F36B738F2C8AECB000E858FE /* Widget View.swift */,
-				F36B738D2C8AEC8400E858FE /* Resources Usage Entry.swift */,
-				F36B73892C8AEC3D00E858FE /* Timeline Provider.swift */,
-			);
-			path = "New Widget";
-			sourceTree = "<group>";
-		};
-		F36B73782C8AE9CD00E858FE /* Intents */ = {
-			isa = PBXGroup;
-			children = (
-				F36B736F2C8A4CAF00E858FE /* Refresh Button Intent.swift */,
-				F36B73792C8AE9D400E858FE /* Power Actions Intents.swift */,
-			);
-			path = Intents;
-			sourceTree = "<group>";
-		};
-		F36B737B2C8AEA2D00E858FE /* System Small */ = {
-			isa = PBXGroup;
-			children = (
-				F386373D2A8641120069F074 /* System Small Widget.swift */,
-				F337B4082A89FB4300DD79AA /* System Small Widget View.swift */,
-			);
-			path = "System Small";
-			sourceTree = "<group>";
-		};
-		F36B737C2C8AEA6B00E858FE /* Network Calls */ = {
-			isa = PBXGroup;
-			children = (
-				F3FDFF872C8912F1009EBB5C /* Asset Fetcher.swift */,
-				F36B73852C8AEAE700E858FE /* Model Asset.swift */,
-			);
-			path = "Network Calls";
-			sourceTree = "<group>";
-		};
 		F36B73AE2C8B20F000E858FE /* Audio */ = {
 			isa = PBXGroup;
 			children = (
@@ -2743,16 +2598,6 @@
 			path = Elements;
 			sourceTree = "<group>";
 		};
-		F38282012B0E14980088C48B /* Live Activity */ = {
-			isa = PBXGroup;
-			children = (
-				F38282022B0E14B30088C48B /* Live Activity.swift */,
-				F371468B2B123807001E0296 /* Activity View State.swift */,
-				F3287A732B109DD0001AFE54 /* Widget Live Activity.swift */,
-			);
-			path = "Live Activity";
-			sourceTree = "<group>";
-		};
 		F385824329D6260500BEEE1D /* App Icon */ = {
 			isa = PBXGroup;
 			children = (
@@ -2770,24 +2615,6 @@
 				F3924EE829A28D9D00C4CC77 /* Biometry Usage View.swift */,
 			);
 			path = Biometry;
-			sourceTree = "<group>";
-		};
-		F386373A2A8641120069F074 /* Widgets */ = {
-			isa = PBXGroup;
-			children = (
-				F386373B2A8641120069F074 /* Widgets Bundle.swift */,
-				F337B4012A89CAF500DD79AA /* Intents.intentdefinition */,
-				F38637412A8641150069F074 /* Assets.xcassets */,
-				F38637432A8641150069F074 /* Info.plist */,
-				F38637442A8641150069F074 /* Widgets.entitlements */,
-				F337B4052A89FAC600DD79AA /* Entry.swift */,
-				F318240C2A877BA90039866C /* Preview Extension.swift */,
-				F318240A2A8777CD0039866C /* Provider.swift */,
-				F36B737C2C8AEA6B00E858FE /* Network Calls */,
-				F36B73782C8AE9CD00E858FE /* Intents */,
-				F337B4072A89FB0200DD79AA /* Families */,
-			);
-			path = Widgets;
 			sourceTree = "<group>";
 		};
 		F386941B2A4B3B1E002DEF90 /* Info */ = {
@@ -3401,16 +3228,6 @@
 			path = Files;
 			sourceTree = "<group>";
 		};
-		F3FDFF832C89121F009EBB5C /* Intent Handler */ = {
-			isa = PBXGroup;
-			children = (
-				F36B736E2C89BB7200E858FE /* Intent Handler.entitlements */,
-				F3FDFF632C89120D009EBB5C /* Intent Handler.swift */,
-				F3FDFF652C89120D009EBB5C /* Info.plist */,
-			);
-			path = "Intent Handler";
-			sourceTree = "<group>";
-		};
 		F3FF5A012A4A318E003A1973 /* Users */ = {
 			isa = PBXGroup;
 			children = (
@@ -3943,7 +3760,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F38637422A8641150069F074 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4186,10 +4002,8 @@
 				F3A1D2382A2024E10053261E /* Browser Hints.swift in Sources */,
 				F31BA5A3295902610006D126 /* Console Tab.swift in Sources */,
 				F3C9D8602B319B9E00265492 /* Permission Card.swift in Sources */,
-				F3287A7B2B10A17E001AFE54 /* Widget Live Activity.swift in Sources */,
 				F31BA5682959006F0006D126 /* App Container.swift in Sources */,
 				F3D2643E2A66ABB2005C3777 /* Account Parent.swift in Sources */,
-				F36B73872C8AEAE700E858FE /* Model Asset.swift in Sources */,
 				F325F7002A54BBCF00E89EC4 /* InfoTab Allocation.swift in Sources */,
 				F3924EDF29A2333F00C4CC77 /* Settings VM.swift in Sources */,
 				F33001442A4CF06D0063FE0F /* Apikey Card.swift in Sources */,
@@ -4279,11 +4093,9 @@
 				F3DC4E2229AEAF3E00D27EC5 /* Credentials Button.swift in Sources */,
 				F3B637522A35F3EA00CB374C /* Command Line.swift in Sources */,
 				F300892F2B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */,
-				F371468C2B123807001E0296 /* Activity View State.swift in Sources */,
 				F31BA58F295901B60006D126 /* Browser.swift in Sources */,
 				F3553FBF2B4094D700EF0FD2 /* Allocation Card.swift in Sources */,
 				F30089282B3C23A00051476C /* Contact Picker.swift in Sources */,
-				F38282032B0E14B30088C48B /* Live Activity.swift in Sources */,
 				F3BC03B72B1FF8E40011F98A /* Database Context Menu.swift in Sources */,
 				F3DE1B982A556CCE007A1624 /* Log List.swift in Sources */,
 				F3E6FC462A1E85D600410C7C /* SptiteKit BisquitFall.swift in Sources */,
@@ -4314,7 +4126,6 @@
 				F3E2BEDB2C1C6B9500B7A6D4 /* Cache List.swift in Sources */,
 				F398823F2987BF6E00B9BA2C /* Schedule Task.swift in Sources */,
 				F304498A29E990E9006DC0C7 /* Cloud Keys.swift in Sources */,
-				F36B73712C8A4CAF00E858FE /* Refresh Button Intent.swift in Sources */,
 				F3FF5A0F2A4A3ABD003A1973 /* User Card.swift in Sources */,
 				F31578B329675F5D0016A600 /* Server List.swift in Sources */,
 				F385824A29D6313D00BEEE1D /* Wide List Button.swift in Sources */,
@@ -4376,7 +4187,6 @@
 				F3A800322A7313E900CAC40B /* Tip Cloud Keys.swift in Sources */,
 				F30089232B3BA5300051476C /* File Permissions Parent.swift in Sources */,
 				F30088A92B3A1A500051476C /* Schedule VM.swift in Sources */,
-				F3FDFF912C89150D009EBB5C /* Asset Fetcher.swift in Sources */,
 				F31BA5862959016D0006D126 /* SpriteKit Pyzh.swift in Sources */,
 				F30089002B3B62450051476C /* User Invitation Permission.swift in Sources */,
 				F3BBE36429AF97D800323C6B /* Credential Field.swift in Sources */,
@@ -4551,7 +4361,6 @@
 				F36D532F2A05B890007324C6 /* Database Card.swift in Sources */,
 				F393C7BD2A18442D00DE33F9 /* Upload File.swift in Sources */,
 				F30089242B3BA5300051476C /* File Permissions Parent.swift in Sources */,
-				F371468D2B123807001E0296 /* Activity View State.swift in Sources */,
 				F3C9D84F2B30598000265492 /* Video Player VM.swift in Sources */,
 				F36D53392A05B8CA007324C6 /* Text File.swift in Sources */,
 				F36D530D2A05B6C9007324C6 /* Server List Footer.swift in Sources */,
@@ -4592,7 +4401,6 @@
 				F32E88D22AF8494100959D49 /* Server List Filter.swift in Sources */,
 				F36D53342A05B8AF007324C6 /* File View.swift in Sources */,
 				F3E2BEE02C1C6BA800B7A6D4 /* Cache List VM.swift in Sources */,
-				F3287A762B10A0E4001AFE54 /* Live Activity.swift in Sources */,
 				F36D53402A05B8F6007324C6 /* File Icon.swift in Sources */,
 				F3C9D8522B3059E700265492 /* UIVideoPlayer.swift in Sources */,
 				F3464D322A863A6600188B0C /* Send Command.swift in Sources */,
@@ -4605,7 +4413,6 @@
 				F36D531B2A05B807007324C6 /* Console VM.swift in Sources */,
 				F37A36792A35180100517EFC /* Power Menu.swift in Sources */,
 				F3D558AD2A33640100608447 /* File Tab VM.swift in Sources */,
-				F3287A7C2B10A17F001AFE54 /* Widget Live Activity.swift in Sources */,
 				F36D530F2A05B6E0007324C6 /* Browser Card.swift in Sources */,
 				F30088FD2B3B56240051476C /* User List Parent.swift in Sources */,
 				F389BB752A05B62600911EBF /* Design Settings.swift in Sources */,
@@ -4922,33 +4729,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F36B73882C8AEAE700E858FE /* Model Asset.swift in Sources */,
-				F3FDFF8B2C89130F009EBB5C /* Widget.swift in Sources */,
-				F323BFA22B20DC9000116B97 /* Power Widget.swift in Sources */,
-				F337B4062A89FAC600DD79AA /* Entry.swift in Sources */,
-				F3FDFF882C8912F1009EBB5C /* Asset Fetcher.swift in Sources */,
-				F318240D2A877BA90039866C /* Preview Extension.swift in Sources */,
-				F337B4092A89FB4300DD79AA /* System Small Widget View.swift in Sources */,
-				F36B738E2C8AEC8400E858FE /* Resources Usage Entry.swift in Sources */,
 				F342FAAB2B2C67F800854270 /* Ansi.swift in Sources */,
-				F3287A7A2B10A120001AFE54 /* Widget Live Activity.swift in Sources */,
-				F36B73722C8A4CAF00E858FE /* Refresh Button Intent.swift in Sources */,
-				F36B737A2C8AE9D400E858FE /* Power Actions Intents.swift in Sources */,
-				F337B4102A89FE5C00DD79AA /* Static Entry.swift in Sources */,
-				F323BFA72B211C6D00116B97 /* Power Provider.swift in Sources */,
-				F36B73902C8AECB000E858FE /* Widget View.swift in Sources */,
 				F323BFA32B20DE4F00116B97 /* Network Calls.swift in Sources */,
-				F318240B2A8777E30039866C /* Provider.swift in Sources */,
-				F386373C2A8641120069F074 /* Widgets Bundle.swift in Sources */,
-				F3187A4E2C891B2A008FB911 /* Intents.intentdefinition in Sources */,
-				F3287A792B10A11E001AFE54 /* Live Activity.swift in Sources */,
-				F323BFA52B211C3700116B97 /* Power Entry.swift in Sources */,
-				F36B738A2C8AEC3D00E858FE /* Timeline Provider.swift in Sources */,
-				F371468E2B123807001E0296 /* Activity View State.swift in Sources */,
-				F386373E2A8641120069F074 /* System Small Widget.swift in Sources */,
-				F38637402A8641120069F074 /* Power Intent Config.swift in Sources */,
-				F337B40B2A89FC5100DD79AA /* Accessory Circular View.swift in Sources */,
-				F337B40E2A89FE0D00DD79AA /* Static Provider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5225,10 +5007,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F36B73862C8AEAE700E858FE /* Model Asset.swift in Sources */,
-				F3FDFF642C89120D009EBB5C /* Intent Handler.swift in Sources */,
-				F3FDFF8E2C891343009EBB5C /* Asset Fetcher.swift in Sources */,
-				F36B73702C8A4CAF00E858FE /* Refresh Button Intent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

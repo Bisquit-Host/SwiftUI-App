@@ -850,9 +850,6 @@
         }
       }
     },
-    "Beta" : {
-
-    },
     "Biometry Usage" : {
       "localizations" : {
         "ru" : {
@@ -2758,9 +2755,6 @@
     "listPath" : {
 
     },
-    "Live Activity" : {
-
-    },
     "Live Activity (BETA)" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -4224,9 +4218,6 @@
           }
         }
       }
-    },
-    "Stop Server" : {
-
     },
     "Storage" : {
       "extractionState" : "manual",
