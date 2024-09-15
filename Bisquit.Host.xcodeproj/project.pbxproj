@@ -1214,6 +1214,7 @@
 		F3FDFF882C8912F1009EBB5C /* Asset Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF872C8912F1009EBB5C /* Asset Fetcher.swift */; };
 		F3FDFF8B2C89130F009EBB5C /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF8A2C89130F009EBB5C /* Widget.swift */; };
 		F3FDFF8E2C891343009EBB5C /* Asset Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF872C8912F1009EBB5C /* Asset Fetcher.swift */; };
+		F3FDFF902C891500009EBB5C /* CryptoPriceWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF8C2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition */; };
 		F3FDFF912C89150D009EBB5C /* Asset Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF872C8912F1009EBB5C /* Asset Fetcher.swift */; };
 		F3FF59FF2A4A3188003A1973 /* User List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF59FE2A4A3188003A1973 /* User List.swift */; };
 		F3FF5A002A4A3188003A1973 /* User List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF59FE2A4A3188003A1973 /* User List.swift */; };
@@ -4423,6 +4424,7 @@
 				F3A7BCD1296B44FF00E080C1 /* Nav Extension.swift in Sources */,
 				F3BC03B22B1FF4830011F98A /* Task Context Menu.swift in Sources */,
 				F3AF91C92B4235BB001D8F80 /* SSH Card.swift in Sources */,
+				F3FDFF902C891500009EBB5C /* CryptoPriceWidget.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
