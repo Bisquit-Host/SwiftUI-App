@@ -884,6 +884,8 @@
 		F3CCF5C12B34576F005FFF2C /* Allocation List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCF5C02B34576F005FFF2C /* Allocation List.swift */; };
 		F3CCF5C32B345792005FFF2C /* Allocation Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCF5C22B345792005FFF2C /* Allocation Card.swift */; };
 		F3CCF5C52B3457AE005FFF2C /* Allocation VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCF5C42B3457AE005FFF2C /* Allocation VM.swift */; };
+		F3D1E7332C9A38EF000C81FF /* Widgets Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F38637372A8641120069F074 /* Widgets Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F3D1E7362C9A399F000C81FF /* Intent Handler.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F3FDFF5F2C89120D009EBB5C /* Intent Handler.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F3D22C092A26564C00721113 /* Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304498929E990E9006DC0C7 /* Cloud Keys.swift */; };
 		F3D264342A66A926005C3777 /* Settings Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264332A66A926005C3777 /* Settings Button.swift */; };
 		F3D264352A66A926005C3777 /* Settings Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264332A66A926005C3777 /* Settings Button.swift */; };
@@ -1288,6 +1290,20 @@
 			remoteGlobalIDString = F3E2BEF42C1DA07E00B7A6D4;
 			remoteInfo = "Contact Provider Extension";
 		};
+		F3D1E7342C9A38EF000C81FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F31BA51B2958FF7C0006D126 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F38637362A8641120069F074;
+			remoteInfo = "Widgets Extension";
+		};
+		F3D1E7372C9A399F000C81FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F31BA51B2958FF7C0006D126 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F3FDFF5E2C89120D009EBB5C;
+			remoteInfo = "Intent Handler";
+		};
 		F3D2960D2AF3BE5800ED43A0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F31BA51B2958FF7C0006D126 /* Project object */;
@@ -1338,7 +1354,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				F3D1E7362C9A399F000C81FF /* Intent Handler.appex in Embed Foundation Extensions */,
 				F36710342C99C3A100A8901A /* iMessage Extension.appex in Embed Foundation Extensions */,
+				F3D1E7332C9A38EF000C81FF /* Widgets Extension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3499,6 +3517,8 @@
 				F3A31B392B0B78D100F89C51 /* PBXTargetDependency */,
 				F3A7CF252C8C509C00413400 /* PBXTargetDependency */,
 				F36710362C99C3A100A8901A /* PBXTargetDependency */,
+				F3D1E7352C9A38EF000C81FF /* PBXTargetDependency */,
+				F3D1E7382C9A399F000C81FF /* PBXTargetDependency */,
 			);
 			name = Bisquit.Host;
 			packageProductDependencies = (
@@ -5287,6 +5307,16 @@
 			isa = PBXTargetDependency;
 			target = F3E2BEF42C1DA07E00B7A6D4 /* Contact Provider Extension */;
 			targetProxy = F3A7CF242C8C509C00413400 /* PBXContainerItemProxy */;
+		};
+		F3D1E7352C9A38EF000C81FF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F38637362A8641120069F074 /* Widgets Extension */;
+			targetProxy = F3D1E7342C9A38EF000C81FF /* PBXContainerItemProxy */;
+		};
+		F3D1E7382C9A399F000C81FF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F3FDFF5E2C89120D009EBB5C /* Intent Handler */;
+			targetProxy = F3D1E7372C9A399F000C81FF /* PBXContainerItemProxy */;
 		};
 		F3D2960E2AF3BE5800ED43A0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
