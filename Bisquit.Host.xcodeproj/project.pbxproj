@@ -708,7 +708,6 @@
 		F3A391BC29DB808B00591C84 /* Server Card Na Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A391BB29DB808B00591C84 /* Server Card Na Status.swift */; };
 		F3A7BCC3296B2ABB00E080C1 /* Start Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7BCC2296B2ABB00E080C1 /* Start Page.swift */; };
 		F3A7BCD1296B44FF00E080C1 /* Nav Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BAEC8C2959B3FE00111375 /* Nav Extension.swift */; };
-		F3A7CEBE2C8B685500413400 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3A7CEBD2C8B685500413400 /* Assets.xcassets */; };
 		F3A7CEC42C8B685500413400 /* iMessage Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F3A7CEC32C8B685500413400 /* iMessage Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F3A7CEC82C8B685500413400 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3A7CEC72C8B685500413400 /* Messages.framework */; };
 		F3A7CECB2C8B685500413400 /* Messages VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CECA2C8B685500413400 /* Messages VC.swift */; };
@@ -1644,7 +1643,6 @@
 		F3A391BB29DB808B00591C84 /* Server Card Na Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Na Status.swift"; sourceTree = "<group>"; };
 		F3A7BCC2296B2ABB00E080C1 /* Start Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page.swift"; sourceTree = "<group>"; };
 		F3A7CEBB2C8B685400413400 /* iMessage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMessage.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F3A7CEBD2C8B685500413400 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3A7CEC32C8B685500413400 /* iMessage Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "iMessage Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A7CEC72C8B685500413400 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = Library/Frameworks/Messages.framework; sourceTree = DEVELOPER_DIR; };
 		F3A7CECA2C8B685500413400 /* Messages VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Messages VC.swift"; sourceTree = "<group>"; };
@@ -2110,7 +2108,6 @@
 				F3D296082AF3BE5800ED43A0 /* UI Tests */,
 				F3E2BEF62C1DA07E00B7A6D4 /* Contact Provider Extension */,
 				F3FDFF832C89121F009EBB5C /* Intent Handler */,
-				F3A7CEE32C8B9D5400413400 /* iMessage */,
 				F3A7CEE22C8B9D3800413400 /* iMessage Extension */,
 				F31BA5242958FF7C0006D126 /* Products */,
 				F3D3437429BFE5A2007C0D58 /* Frameworks */,
@@ -2945,14 +2942,6 @@
 				F3A7CF002C8BBB0B00413400 /* Server Card */,
 			);
 			path = "iMessage Extension";
-			sourceTree = "<group>";
-		};
-		F3A7CEE32C8B9D5400413400 /* iMessage */ = {
-			isa = PBXGroup;
-			children = (
-				F3A7CEBD2C8B685500413400 /* Assets.xcassets */,
-			);
-			path = iMessage;
 			sourceTree = "<group>";
 		};
 		F3A7CEFF2C8BBAFD00413400 /* Server List */ = {
@@ -3975,7 +3964,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3A7CEBE2C8B685500413400 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
