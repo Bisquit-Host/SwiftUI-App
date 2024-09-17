@@ -1828,8 +1828,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F38637392A8641120069F074 /* SwiftUI.framework in Frameworks */,
-				F38282002B0E126D0088C48B /* ScrechKit in Frameworks */,
 				F38637382A8641120069F074 /* WidgetKit.framework in Frameworks */,
+				F38282002B0E126D0088C48B /* ScrechKit in Frameworks */,
 				F30860262B002FDE004D776A /* PteroNet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
