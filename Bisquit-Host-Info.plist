@@ -17,10 +17,6 @@
 			</array>
 		</dict>
 	</array>
-	<key>INIntentsSupported</key>
-	<array>
-		<string>CryptoPriceConfigurationIntent</string>
-	</array>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>NSUserActivityTypes</key>
