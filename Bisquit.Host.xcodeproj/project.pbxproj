@@ -201,7 +201,6 @@
 		F328D8592A82402A0038512F /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = F328D8582A82402A0038512F /* Algorithms */; };
 		F328D85E2A8240930038512F /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = F328D85D2A8240930038512F /* Algorithms */; };
 		F328D8622A8242610038512F /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = F328D8612A8242610038512F /* Algorithms */; };
-		F32A6E9A2C9E259D00E0D1B3 /* Intent Handler.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F3FDFF5F2C89120D009EBB5C /* Intent Handler.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F32DB8A829AE6B800074E045 /* Start Page Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32DB8A729AE6B800074E045 /* Start Page Footer.swift */; };
 		F32E88C82AF83E3F00959D49 /* Topbar Admin Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88C72AF83E3F00959D49 /* Topbar Admin Button.swift */; };
 		F32E88C92AF83E3F00959D49 /* Topbar Admin Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88C72AF83E3F00959D49 /* Topbar Admin Button.swift */; };
@@ -1239,13 +1238,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F32A6E9B2C9E259D00E0D1B3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F31BA51B2958FF7C0006D126 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F3FDFF5E2C89120D009EBB5C;
-			remoteInfo = "Intent Handler";
-		};
 		F337C1562A8C29CD006F321C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F31BA51B2958FF7C0006D126 /* Project object */;
@@ -1345,7 +1337,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				F32A6E9A2C9E259D00E0D1B3 /* Intent Handler.appex in Embed Foundation Extensions */,
 				F36710342C99C3A100A8901A /* iMessage Extension.appex in Embed Foundation Extensions */,
 				F3D1E7332C9A38EF000C81FF /* Widgets Extension.appex in Embed Foundation Extensions */,
 			);
@@ -3486,7 +3477,6 @@
 				F3A7CF252C8C509C00413400 /* PBXTargetDependency */,
 				F36710362C99C3A100A8901A /* PBXTargetDependency */,
 				F3D1E7352C9A38EF000C81FF /* PBXTargetDependency */,
-				F32A6E9C2C9E259D00E0D1B3 /* PBXTargetDependency */,
 			);
 			name = Bisquit.Host;
 			packageProductDependencies = (
@@ -5209,11 +5199,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		F32A6E9C2C9E259D00E0D1B3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F3FDFF5E2C89120D009EBB5C /* Intent Handler */;
-			targetProxy = F32A6E9B2C9E259D00E0D1B3 /* PBXContainerItemProxy */;
-		};
 		F337C1572A8C29CD006F321C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F31BA5222958FF7C0006D126 /* Bisquit.Host */;
