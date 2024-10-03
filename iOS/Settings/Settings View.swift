@@ -1,7 +1,7 @@
 import ScrechKit
 
 struct SettingsView: View {
-    private var vm = SettingsVM()
+    @State private var vm = SettingsVM()
     @EnvironmentObject private var settings: SettingsStorage
     @Environment(\.colorScheme) var colorScheme
     
@@ -62,6 +62,6 @@ struct SettingsView: View {
             .sheet {
                 SettingsView()
             }
-            .environmentObject(SettingsStorage())
     }
+    .environmentObject(SettingsStorage())
 }

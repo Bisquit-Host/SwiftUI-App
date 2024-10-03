@@ -34,12 +34,6 @@ final class ServerListVM {
     }
     
 #if os(iOS)
-    init() {
-        Task {
-            await enableExtension()
-        }
-    }
-    
     private func fetchUniqueUsers() {
         let ids = servers.map(\.id)
         
@@ -62,6 +56,7 @@ final class ServerListVM {
                             allUsers.append(user)
                         }
                     }
+                    
                     dispatchGroup.leave()
                 }
             }

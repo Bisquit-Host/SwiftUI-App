@@ -144,7 +144,7 @@
 		F31BA5682959006F0006D126 /* App Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5672959006F0006D126 /* App Container.swift */; };
 		F31BA56A2959007E0006D126 /* Nav Destinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5692959007E0006D126 /* Nav Destinations.swift */; };
 		F31BA570295900C20006D126 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA56F295900C20006D126 /* Formatters.swift */; };
-		F31BA576295900E30006D126 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA575295900E30006D126 /* SettingsView.swift */; };
+		F31BA576295900E30006D126 /* Settings View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA575295900E30006D126 /* Settings View.swift */; };
 		F31BA578295901010006D126 /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA577295901010006D126 /* Intro.swift */; };
 		F31BA57A295901110006D126 /* Start Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA579295901110006D126 /* Start Page.swift */; };
 		F31BA57D295901200006D126 /* Start Page VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA57B2959011B0006D126 /* Start Page VM.swift */; };
@@ -615,7 +615,7 @@
 		F389BB652A05B5AF00911EBF /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA56F295900C20006D126 /* Formatters.swift */; };
 		F389BB662A05B5B500911EBF /* Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C62CE2298A7D8600434636 /* Support.swift */; };
 		F389BB682A05B5C100911EBF /* Guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA57E2959012D0006D126 /* Guide.swift */; };
-		F389BB6A2A05B5E100911EBF /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA575295900E30006D126 /* SettingsView.swift */; };
+		F389BB6A2A05B5E100911EBF /* Settings View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA575295900E30006D126 /* Settings View.swift */; };
 		F389BB6B2A05B5E500911EBF /* Settings VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EDE29A2333F00C4CC77 /* Settings VM.swift */; };
 		F389BB6C2A05B5EA00911EBF /* Cache Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7D87A29E83D1800BCAFFE /* Cache Settings.swift */; };
 		F389BB6D2A05B5EE00911EBF /* Cache Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266E829D9EFFE005FD103 /* Cache Size.swift */; };
@@ -994,7 +994,7 @@
 		F3D295A12AF3A09D00ED43A0 /* Log List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DE1B972A556CCE007A1624 /* Log List.swift */; };
 		F3D295A22AF3A0AA00ED43A0 /* Map VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A92A177ED100530615 /* Map VM.swift */; };
 		F3D295A32AF3A0B500ED43A0 /* Auth Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FBDDFB29DABA0D00B170EC /* Auth Background.swift */; };
-		F3D295A52AF3A0CD00ED43A0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA575295900E30006D126 /* SettingsView.swift */; };
+		F3D295A52AF3A0CD00ED43A0 /* Settings View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA575295900E30006D126 /* Settings View.swift */; };
 		F3D295A62AF3A0D200ED43A0 /* Settings VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EDE29A2333F00C4CC77 /* Settings VM.swift */; };
 		F3D295A72AF3A0DB00ED43A0 /* Log Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367977A2A3A55F4009F2788 /* Log Card.swift */; };
 		F3D295A82AF3A0DF00ED43A0 /* Account Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA4DE92A4CE82000547722 /* Account Settings.swift */; };
@@ -1407,7 +1407,7 @@
 		F31BA5672959006F0006D126 /* App Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Container.swift"; sourceTree = "<group>"; };
 		F31BA5692959007E0006D126 /* Nav Destinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Destinations.swift"; sourceTree = "<group>"; };
 		F31BA56F295900C20006D126 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
-		F31BA575295900E30006D126 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		F31BA575295900E30006D126 /* Settings View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings View.swift"; sourceTree = "<group>"; };
 		F31BA577295901010006D126 /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
 		F31BA579295901110006D126 /* Start Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page.swift"; sourceTree = "<group>"; };
 		F31BA57B2959011B0006D126 /* Start Page VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page VM.swift"; sourceTree = "<group>"; };
@@ -2858,7 +2858,7 @@
 			isa = PBXGroup;
 			children = (
 				F3D264362A66A9B9005C3777 /* Settings Parent.swift */,
-				F31BA575295900E30006D126 /* SettingsView.swift */,
+				F31BA575295900E30006D126 /* Settings View.swift */,
 				F39993392AF2E491006E8A9A /* Other Settings.swift */,
 				F3924EDE29A2333F00C4CC77 /* Settings VM.swift */,
 				F33001392A4CEBFD0063FE0F /* Account */,
@@ -4269,7 +4269,7 @@
 				F35B2A0229FFD6AB006E5FD2 /* CloudKit Model.swift in Sources */,
 				F3A123562A667804008E3E20 /* Log View Parent.swift in Sources */,
 				F3FF5A0C2A4A386F003A1973 /* Users VM.swift in Sources */,
-				F31BA576295900E30006D126 /* SettingsView.swift in Sources */,
+				F31BA576295900E30006D126 /* Settings View.swift in Sources */,
 				F3D3DBD129B8007B00096115 /* Browser Topbar.swift in Sources */,
 				F30088A32B3A18A50051476C /* Database VM.swift in Sources */,
 				F3E2BEDB2C1C6B9500B7A6D4 /* Cache List.swift in Sources */,
@@ -4578,7 +4578,7 @@
 				F36D53102A05B6E7007324C6 /* Cloud Keys.swift in Sources */,
 				F39E0A962C1BA06C00C4E906 /* Discover Card.swift in Sources */,
 				F3E1D3EE2B3208BE009B7062 /* User 2Fa.swift in Sources */,
-				F389BB6A2A05B5E100911EBF /* SettingsView.swift in Sources */,
+				F389BB6A2A05B5E100911EBF /* Settings View.swift in Sources */,
 				F3BC03AF2B1FF2FC0011F98A /* Schedule Context Menu.swift in Sources */,
 				F389BB7B2A05B64E00911EBF /* Biometry Usage View.swift in Sources */,
 				F3DE1B992A556CCE007A1624 /* Log List.swift in Sources */,
@@ -4757,7 +4757,7 @@
 				F3D2957C2AF39F4F00ED43A0 /* Log VM.swift in Sources */,
 				F3D2954C2AF39DC700ED43A0 /* Browser.swift in Sources */,
 				F3D295362AF39D0B00ED43A0 /* Linking VM.swift in Sources */,
-				F3D295A52AF3A0CD00ED43A0 /* SettingsView.swift in Sources */,
+				F3D295A52AF3A0CD00ED43A0 /* Settings View.swift in Sources */,
 				F3D295F02AF3A51300ED43A0 /* Backup List Footer.swift in Sources */,
 				F3D295312AF39C7500ED43A0 /* Language Button.swift in Sources */,
 				F3D295552AF39E1600ED43A0 /* Formatters.swift in Sources */,
@@ -5584,6 +5584,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

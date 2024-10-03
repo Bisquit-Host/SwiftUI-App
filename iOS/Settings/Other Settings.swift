@@ -15,6 +15,10 @@ struct OtherSettings: View {
                 Text(settings.showFullFilePath ? "/home/container/folder/example/" : "/folder/example/")
             }
             
+            Button("Save all users to your contacts") {
+                enableExtension()
+            }
+            
             CurrencyButton()
         }
         .listRowBackground(settings.transparentList ? .clear : Color.list)

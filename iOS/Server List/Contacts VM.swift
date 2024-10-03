@@ -5,25 +5,36 @@ import PteroNet
 import ContactProvider
 #endif
 
-extension ServerListVM {
-    func enableExtension() async {
+extension OtherSettings {
+    func enableExtension() {
         if #available(iOS 18, *) {
             do {
                 let manager = try ContactProviderManager()
                 
-                // May prompt to enable the default domain
-                try await manager.enable()
+                Task {
+                    try await manager.enable()
+                }
             } catch {
                 print(error.localizedDescription)
             }
+        } else {
+#warning("Present an alert")
         }
     }
-    
+}
+
+extension ServerListVM {
     func saveContacts(_ users: [UserAttributes]) async {
         if #available(iOS 18, *) {
             do {
-                try await addContacts(users)
                 let manager = try ContactProviderManager()
+                
+                Task {
+                    try await manager.enable()
+                }
+                
+                try await addContacts(users)
+//                let manager = try ContactProviderManager()
                 try await manager.signalEnumerator()
             } catch {
                 print("Failed to add contact: \(error.localizedDescription)")
