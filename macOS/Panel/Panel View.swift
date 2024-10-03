@@ -19,7 +19,6 @@ struct PanelView: View {
         //        .info,
         //        .console,
         //        .files,
-        //        .plugins,
         .backups,
         //        .schedules,
         .databases,
