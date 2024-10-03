@@ -3406,6 +3406,7 @@
       }
     },
     "Plugins" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {

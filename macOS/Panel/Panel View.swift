@@ -65,9 +65,6 @@ struct PanelView: View {
                 case .files:
                     FileTab(server.id)
                     
-                case .plugins:
-                    PluginList(server.id)
-                    
                 case .backups:
                     BackupList(server)
                     

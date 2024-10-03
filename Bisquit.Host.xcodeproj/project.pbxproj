@@ -39,9 +39,6 @@
 		F30088B82B3A218B0051476C /* Schedule Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088B72B3A218B0051476C /* Schedule Card.swift */; };
 		F30088BB2B3A21F80051476C /* Database List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088BA2B3A21F80051476C /* Database List.swift */; };
 		F30088BD2B3A223E0051476C /* Database Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088BC2B3A223E0051476C /* Database Card.swift */; };
-		F30088C02B3A22B30051476C /* Plugin VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088BF2B3A22B30051476C /* Plugin VM.swift */; };
-		F30088C22B3A32D60051476C /* Plugin List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088C12B3A32D60051476C /* Plugin List.swift */; };
-		F30088C42B3A32DB0051476C /* Plugin Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088C32B3A32DB0051476C /* Plugin Card.swift */; };
 		F30088DA2B3A3BF50051476C /* Console View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088D92B3A3BF50051476C /* Console View.swift */; };
 		F30088DB2B3A3C0E0051476C /* Console VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5A42959026D0006D126 /* Console VM.swift */; };
 		F30088DE2B3A3FBB0051476C /* Startup List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088DD2B3A3FBB0051476C /* Startup List.swift */; };
@@ -1367,9 +1364,6 @@
 		F30088B72B3A218B0051476C /* Schedule Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Schedule Card.swift"; sourceTree = "<group>"; };
 		F30088BA2B3A21F80051476C /* Database List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database List.swift"; sourceTree = "<group>"; };
 		F30088BC2B3A223E0051476C /* Database Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database Card.swift"; sourceTree = "<group>"; };
-		F30088BF2B3A22B30051476C /* Plugin VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plugin VM.swift"; sourceTree = "<group>"; };
-		F30088C12B3A32D60051476C /* Plugin List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plugin List.swift"; sourceTree = "<group>"; };
-		F30088C32B3A32DB0051476C /* Plugin Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plugin Card.swift"; sourceTree = "<group>"; };
 		F30088D92B3A3BF50051476C /* Console View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Console View.swift"; sourceTree = "<group>"; };
 		F30088DD2B3A3FBB0051476C /* Startup List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Startup List.swift"; sourceTree = "<group>"; };
 		F30088E12B3A4DCD0051476C /* Clip_DemoDebug.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Clip_DemoDebug.entitlements; sourceTree = "<group>"; };
@@ -2002,16 +1996,6 @@
 				F30088BC2B3A223E0051476C /* Database Card.swift */,
 			);
 			path = Databases;
-			sourceTree = "<group>";
-		};
-		F30088D82B3A3BBD0051476C /* Plugins */ = {
-			isa = PBXGroup;
-			children = (
-				F30088C12B3A32D60051476C /* Plugin List.swift */,
-				F30088BF2B3A22B30051476C /* Plugin VM.swift */,
-				F30088C32B3A32DB0051476C /* Plugin Card.swift */,
-			);
-			path = Plugins;
 			sourceTree = "<group>";
 		};
 		F30088DC2B3A3FAC0051476C /* Console */ = {
@@ -3317,7 +3301,6 @@
 				F323D8D62A2D6868002EDC62 /* Files */,
 				F30088DF2B3A44F60051476C /* Startup */,
 				F30088DC2B3A3FAC0051476C /* Console */,
-				F30088D82B3A3BBD0051476C /* Plugins */,
 				F35B9F622A2DCFA10045D014 /* Stats */,
 				F30088B42B3A210C0051476C /* Backups */,
 				F30088BE2B3A229A0051476C /* Databases */,
@@ -5151,7 +5134,6 @@
 				F3D558B12A33C69F00608447 /* File Tab VM.swift in Sources */,
 				F3E08EBF2A2CE87800116C1C /* Start Page.swift in Sources */,
 				F3E08EA52A2CE17900116C1C /* Home.swift in Sources */,
-				F30088C42B3A32DB0051476C /* Plugin Card.swift in Sources */,
 				F30088BB2B3A21F80051476C /* Database List.swift in Sources */,
 				F30088912B39FB160051476C /* Allocation Card.swift in Sources */,
 				F348C6EB2A544893002D5BD6 /* App Container.swift in Sources */,
@@ -5159,7 +5141,6 @@
 				F30088BD2B3A223E0051476C /* Database Card.swift in Sources */,
 				F300889D2B3A17CC0051476C /* Backup VM.swift in Sources */,
 				F30088DE2B3A3FBB0051476C /* Startup List.swift in Sources */,
-				F30088C02B3A22B30051476C /* Plugin VM.swift in Sources */,
 				F3E08EC22A2CE89400116C1C /* Settings Storage.swift in Sources */,
 				F3DF50C32B38FCCC00206CAE /* Users VM.swift in Sources */,
 				F34F289C2ACDADA500FD618A /* Animated Tab.swift in Sources */,
@@ -5171,7 +5152,6 @@
 				F30088DB2B3A3C0E0051476C /* Console VM.swift in Sources */,
 				F3458BF02B36EA49000E8324 /* App Delegate.swift in Sources */,
 				F32FD7192B1E042C00723B88 /* Websocket Delegate.swift in Sources */,
-				F30088C22B3A32D60051476C /* Plugin List.swift in Sources */,
 				F30C13122A54609000A7EFF0 /* Server List.swift in Sources */,
 				F32FD7172B1E042400723B88 /* Websocket.swift in Sources */,
 				F30088AD2B3A1F500051476C /* User View.swift in Sources */,
