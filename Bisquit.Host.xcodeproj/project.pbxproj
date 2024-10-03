@@ -871,8 +871,6 @@
 		F3CCB1CC2CAE75D0000F8207 /* Debug Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCB1CB2CAE75D0000F8207 /* Debug Settings.swift */; };
 		F3CCB1CD2CAE75D0000F8207 /* Debug Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCB1CB2CAE75D0000F8207 /* Debug Settings.swift */; };
 		F3CCB1CE2CAE75D0000F8207 /* Debug Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCB1CB2CAE75D0000F8207 /* Debug Settings.swift */; };
-		F3CCB1D02CAE8AF5000F8207 /* Bisquit-Host-Mac-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F3CCB1CF2CAE8AF5000F8207 /* Bisquit-Host-Mac-Info.plist */; };
-		F3CCB1D22CAE8B76000F8207 /* Bisquit-Host-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F3CCB1D12CAE8B76000F8207 /* Bisquit-Host-Info.plist */; };
 		F3CCF5B82B345367005FFF2C /* User Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D85B2B31146E00265492 /* User Avatar.swift */; };
 		F3CCF5B92B34543B005FFF2C /* User 2Fa.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3EC2B3208BE009B7062 /* User 2Fa.swift */; };
 		F3CCF5BA2B345466005FFF2C /* Permission List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D8572B31135B00265492 /* Permission List.swift */; };
@@ -1384,7 +1382,6 @@
 		F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List Footer.swift"; sourceTree = "<group>"; };
 		F30C12F92A54536800A7EFF0 /* Auth Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auth Page.swift"; sourceTree = "<group>"; };
 		F30C13112A54609000A7EFF0 /* Server List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List.swift"; sourceTree = "<group>"; };
-		F30DD0AA29DC0ED100E5604D /* Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		F310A2EF2A56AF86001AF45F /* Network VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network VM.swift"; sourceTree = "<group>"; };
 		F3116F252A33E142001F067C /* Folder File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Folder File.swift"; sourceTree = "<group>"; };
 		F311CAAD2A646612004E4A4A /* Log Detail View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log Detail View.swift"; sourceTree = "<group>"; };
@@ -1535,7 +1532,6 @@
 		F36FDB91295AF3AB00D45070 /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
 		F37061C729774869009B4067 /* Nav Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Extension.swift"; sourceTree = "<group>"; };
 		F37061C929774886009B4067 /* Nav Destinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Destinations.swift"; sourceTree = "<group>"; };
-		F37061CB29775BF5009B4067 /* Bisquit-Host-tvOSapp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Bisquit-Host-tvOSapp-Info.plist"; sourceTree = SOURCE_ROOT; };
 		F371468B2B123807001E0296 /* Activity View State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity View State.swift"; sourceTree = "<group>"; };
 		F37266A929D71A1B005FD103 /* File Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Icon.swift"; sourceTree = "<group>"; };
 		F37266BB29D811B7005FD103 /* File View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File View.swift"; sourceTree = "<group>"; };
@@ -1688,6 +1684,9 @@
 		F3CCB1CB2CAE75D0000F8207 /* Debug Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Debug Settings.swift"; sourceTree = "<group>"; };
 		F3CCB1CF2CAE8AF5000F8207 /* Bisquit-Host-Mac-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bisquit-Host-Mac-Info.plist"; sourceTree = "<group>"; };
 		F3CCB1D12CAE8B76000F8207 /* Bisquit-Host-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bisquit-Host-Info.plist"; sourceTree = "<group>"; };
+		F3CCB1D32CAE8BDA000F8207 /* Bisquit-Host-visionOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bisquit-Host-visionOS-Info.plist"; sourceTree = "<group>"; };
+		F3CCB1D52CAE8C4D000F8207 /* Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Watch-App-Info.plist"; sourceTree = "<group>"; };
+		F3CCB1D62CAE8C80000F8207 /* Bisquit-Host-tvOSapp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bisquit-Host-tvOSapp-Info.plist"; sourceTree = "<group>"; };
 		F3CCF5C02B34576F005FFF2C /* Allocation List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation List.swift"; sourceTree = "<group>"; };
 		F3CCF5C22B345792005FFF2C /* Allocation Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation Card.swift"; sourceTree = "<group>"; };
 		F3CCF5C42B3457AE005FFF2C /* Allocation VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation VM.swift"; sourceTree = "<group>"; };
@@ -1713,7 +1712,6 @@
 		F3D7F84E2C8ED3D100368ECE /* Disable 2FA View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Disable 2FA View.swift"; sourceTree = "<group>"; };
 		F3D7F8522C8F258B00368ECE /* Enable 2FA View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enable 2FA View.swift"; sourceTree = "<group>"; };
 		F3D902DE29DC445A004E76C9 /* Cache Limit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache Limit.swift"; sourceTree = "<group>"; };
-		F3DAD6C02A47A967002ED405 /* Bisquit-Host-visionOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Bisquit-Host-visionOS-Info.plist"; sourceTree = SOURCE_ROOT; };
 		F3DC4E2129AEAF3E00D27EC5 /* Credentials Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Credentials Button.swift"; sourceTree = "<group>"; };
 		F3DC4E2529AEC36300D27EC5 /* Credentials View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Credentials View.swift"; sourceTree = "<group>"; };
 		F3DD93D22A372BED006A41AA /* Console Overlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Console Overlay.swift"; sourceTree = "<group>"; };
@@ -1940,8 +1938,8 @@
 		F3000E06295A341000ABD30A /* tvOS */ = {
 			isa = PBXGroup;
 			children = (
-				F37061CB29775BF5009B4067 /* Bisquit-Host-tvOSapp-Info.plist */,
 				F376D0552A02478600B7377A /* Bisquit.Host tvOSapp.entitlements */,
+				F3CCB1D62CAE8C80000F8207 /* Bisquit-Host-tvOSapp-Info.plist */,
 				F3000E0B295A341100ABD30A /* Assets.xcassets */,
 				F3796563295C51C80074CA3D /* Progress Bar.swift */,
 				F3796565295C51FF0074CA3D /* Gauge TV.swift */,
@@ -2144,8 +2142,8 @@
 		F31BA5372958FF7D0006D126 /* watchOS */ = {
 			isa = PBXGroup;
 			children = (
-				F30DD0AA29DC0ED100E5604D /* Watch-App-Info.plist */,
 				F34C055C29F151250031ABE1 /* Watch App.entitlements */,
+				F3CCB1D52CAE8C4D000F8207 /* Watch-App-Info.plist */,
 				F31BA53C2958FF7E0006D126 /* Assets.xcassets */,
 				F37266D529D99B4C005FD103 /* Intro */,
 				F36FDB9A295B04B200D45070 /* Server List */,
@@ -3026,9 +3024,9 @@
 		F3BD76F32A43C890003E7385 /* visionOS */ = {
 			isa = PBXGroup;
 			children = (
-				F3DAD6C02A47A967002ED405 /* Bisquit-Host-visionOS-Info.plist */,
 				F34AD7C62A5493CC007752A7 /* visionOS.entitlements */,
 				F3BD76FC2A43C892003E7385 /* Assets.xcassets */,
+				F3CCB1D32CAE8BDA000F8207 /* Bisquit-Host-visionOS-Info.plist */,
 				F320DDA42B704E3C00957D92 /* Preview Property.swift */,
 				F3F2BBA62A540C4D00D44CA6 /* Intro */,
 				F3317AEB2A45E25500CA104D /* Guide */,
@@ -3854,7 +3852,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3CCB1D22CAE8B76000F8207 /* Bisquit-Host-Info.plist in Resources */,
 				F3E6FC432A1E677000410C7C /* Bisquits.sks in Resources */,
 				F36797732A39C4ED009F2788 /* Localizable.xcstrings in Resources */,
 				F378E3332AF3835A009925DB /* PrivacyInfo.xcprivacy in Resources */,
@@ -3940,7 +3937,6 @@
 			files = (
 				F3E08ED82A2CF74000116C1C /* Assets.xcassets in Resources */,
 				F3E08EA72A2CE17A00116C1C /* Assets.xcassets in Resources */,
-				F3CCB1D02CAE8AF5000F8207 /* Bisquit-Host-Mac-Info.plist in Resources */,
 				F378E3342AF3835B009925DB /* PrivacyInfo.xcprivacy in Resources */,
 				F38928202A43CB2600561CDF /* Localizable.xcstrings in Resources */,
 			);
@@ -5263,7 +5259,7 @@
 				DEVELOPMENT_TEAM = 8FQUA2F388;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Bisquit-Host-tvOSapp-Info.plist";
+				INFOPLIST_FILE = "tvOS/Bisquit-Host-tvOSapp-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Required to view your location on the map";
@@ -5299,7 +5295,7 @@
 				DEVELOPMENT_TEAM = 8FQUA2F388;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Bisquit-Host-tvOSapp-Info.plist";
+				INFOPLIST_FILE = "tvOS/Bisquit-Host-tvOSapp-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Required to view your location on the map";
@@ -5470,7 +5466,7 @@
 				DEVELOPMENT_TEAM = 8FQUA2F388;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Watch-App-Info.plist";
+				INFOPLIST_FILE = "watchOS/Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "host.bisquit.Bisquit-host.debug";
@@ -5507,7 +5503,7 @@
 				DEVELOPMENT_TEAM = 8FQUA2F388;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Watch-App-Info.plist";
+				INFOPLIST_FILE = "watchOS/Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "host.bisquit.Bisquit-host";
@@ -5998,7 +5994,7 @@
 				ENABLE_PREVIEWS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Bisquit-Host-visionOS-Info.plist";
+				INFOPLIST_FILE = "visionOS/Bisquit-Host-visionOS-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = BIsquit.debug;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6034,7 +6030,7 @@
 				ENABLE_PREVIEWS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Bisquit-Host-visionOS-Info.plist";
+				INFOPLIST_FILE = "visionOS/Bisquit-Host-visionOS-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = BIsquit.debug;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
