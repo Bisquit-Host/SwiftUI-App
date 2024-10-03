@@ -2043,8 +2043,8 @@
 			isa = PBXGroup;
 			children = (
 				F304498929E990E9006DC0C7 /* Cloud Keys.swift */,
-				F300892E2B3DC4B20051476C /* Cloud Key Context Menu.swift */,
 				F3A31B082B0B161D00F89C51 /* Cloud Key Card.swift */,
+				F300892E2B3DC4B20051476C /* Cloud Key Context Menu.swift */,
 				F35FEB062B09F003004DA05D /* API Key.swift */,
 			);
 			path = "iCloud API-keys";

@@ -2,16 +2,16 @@ import ScrechKit
 
 struct CloudKeyContextMenu: View {
     @Bindable private var key: APIKey
-    @FocusState private var focus
+    @Binding private var alertRename: Bool
     
-    init(_ key: APIKey, focus: FocusState<Bool>) {
+    init(_ alertRename: Binding<Bool>, key: APIKey) {
         self.key = key
-        _focus = focus
+        _alertRename = alertRename
     }
     
     var body: some View {
         MenuButton("Rename", icon: "pencil") {
-            focus = true
+            alertRename = true
         }
         
 #if !os(tvOS)

@@ -17,7 +17,7 @@ struct CloudKeyCard: View {
         self.validate = validate
     }
     
-    @FocusState private var focus
+    @State private var alertRename = false
     
     var body: some View {
         Button {
@@ -27,15 +27,9 @@ struct CloudKeyCard: View {
         } label: {
             HStack {
                 VStack(alignment: .leading) {
-#if os(watchOS) && os(tvOS)
                     Text(key.name)
                         .headline(.semibold)
-#else
-                    TextField("Unnamed", text: $key.name)
-                        .headline(.semibold)
-                        .focused($focus)
-                        .textFieldStyle(.plain)
-#endif
+                    
                     Text(showFirstEightLetters(key.key))
                         .footnote()
                         .foregroundStyle(.secondary)
@@ -52,9 +46,17 @@ struct CloudKeyCard: View {
         .foregroundStyle(.foreground)
 #if !os(watchOS)
         .contextMenu {
-            CloudKeyContextMenu(key, focus: _focus)
+            CloudKeyContextMenu($alertRename, key: key)
         }
 #endif
+        .alert("Rename", isPresented: $alertRename) {
+            TextField("Unnamed", text: $key.name)
+                .autocorrectionDisabled()
+            
+            Button("Save") {
+                
+            }
+        }
     }
     
     private func showFirstEightLetters(_ string: String) -> String {
