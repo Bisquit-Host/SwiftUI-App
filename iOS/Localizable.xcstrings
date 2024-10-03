@@ -1209,6 +1209,9 @@
     "Contacts" : {
 
     },
+    "Contacts provider" : {
+
+    },
     "Continue on failure" : {
 
     },
@@ -1245,6 +1248,9 @@
       }
     },
     "Copy the setup url" : {
+
+    },
+    "Couldn't enable the extension" : {
 
     },
     "CPU" : {
@@ -1810,6 +1816,9 @@
         }
       }
     },
+    "Enable Extension" : {
+
+    },
     "Enable Schedule" : {
 
     },
@@ -1850,6 +1859,9 @@
           }
         }
       }
+    },
+    "Error %@" : {
+
     },
     "Error %lld" : {
       "localizations" : {
@@ -3553,6 +3565,9 @@
         }
       }
     },
+    "Remove this key" : {
+
+    },
     "Rename" : {
       "localizations" : {
         "ru" : {
@@ -3671,9 +3686,6 @@
         }
       }
     },
-    "Save all users to your contacts" : {
-
-    },
     "Save changes" : {
       "localizations" : {
         "ru" : {
@@ -3683,6 +3695,9 @@
           }
         }
       }
+    },
+    "Save contacts automatically" : {
+
     },
     "Save to Contacts" : {
 

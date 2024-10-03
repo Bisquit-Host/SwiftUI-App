@@ -871,6 +871,9 @@
 		F3C9D8612B319B9E00265492 /* Permission Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D85F2B319B9E00265492 /* Permission Card.swift */; };
 		F3C9D8622B319B9E00265492 /* Permission Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D85F2B319B9E00265492 /* Permission Card.swift */; };
 		F3CB53D62971CF6B00A213B0 /* Database Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB53D52971CF6B00A213B0 /* Database Card.swift */; };
+		F3CCB1CC2CAE75D0000F8207 /* Debug Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCB1CB2CAE75D0000F8207 /* Debug Settings.swift */; };
+		F3CCB1CD2CAE75D0000F8207 /* Debug Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCB1CB2CAE75D0000F8207 /* Debug Settings.swift */; };
+		F3CCB1CE2CAE75D0000F8207 /* Debug Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCB1CB2CAE75D0000F8207 /* Debug Settings.swift */; };
 		F3CCF5B82B345367005FFF2C /* User Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D85B2B31146E00265492 /* User Avatar.swift */; };
 		F3CCF5B92B34543B005FFF2C /* User 2Fa.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3EC2B3208BE009B7062 /* User 2Fa.swift */; };
 		F3CCF5BA2B345466005FFF2C /* Permission List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D8572B31135B00265492 /* Permission List.swift */; };
@@ -1687,6 +1690,7 @@
 		F3C9D85B2B31146E00265492 /* User Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Avatar.swift"; sourceTree = "<group>"; };
 		F3C9D85F2B319B9E00265492 /* Permission Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Permission Card.swift"; sourceTree = "<group>"; };
 		F3CB53D52971CF6B00A213B0 /* Database Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database Card.swift"; sourceTree = "<group>"; };
+		F3CCB1CB2CAE75D0000F8207 /* Debug Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Debug Settings.swift"; sourceTree = "<group>"; };
 		F3CCF5C02B34576F005FFF2C /* Allocation List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation List.swift"; sourceTree = "<group>"; };
 		F3CCF5C22B345792005FFF2C /* Allocation Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation Card.swift"; sourceTree = "<group>"; };
 		F3CCF5C42B3457AE005FFF2C /* Allocation VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation VM.swift"; sourceTree = "<group>"; };
@@ -2137,8 +2141,8 @@
 				F325F7052A54C4BC00E89EC4 /* System Alerts.swift */,
 				F31BA580295901400006D126 /* Intro */,
 				F31A3F4A29EEEB8200BC0DFB /* Start Page */,
-				F31BA587295901750006D126 /* Auth */,
 				F300892C2B3D988C0051476C /* iCloud API-keys */,
+				F31BA587295901750006D126 /* Auth */,
 				F3D2643C2A66AB97005C3777 /* Account */,
 				F31BA594295901DC0006D126 /* Server List */,
 				F31BA59B295902140006D126 /* Panel */,
@@ -2859,8 +2863,9 @@
 			children = (
 				F3D264362A66A9B9005C3777 /* Settings Parent.swift */,
 				F31BA575295900E30006D126 /* Settings View.swift */,
-				F39993392AF2E491006E8A9A /* Other Settings.swift */,
 				F3924EDE29A2333F00C4CC77 /* Settings VM.swift */,
+				F39993392AF2E491006E8A9A /* Other Settings.swift */,
+				F3CCB1CB2CAE75D0000F8207 /* Debug Settings.swift */,
 				F33001392A4CEBFD0063FE0F /* Account */,
 				F375EC3329EE6DDD002CA969 /* Elements */,
 				F3D902DD29DC3E47004E76C9 /* Cache */,
@@ -4336,6 +4341,7 @@
 				F37266E929D9EFFE005FD103 /* Cache Size.swift in Sources */,
 				F3A800322A7313E900CAC40B /* Tip Cloud Keys.swift in Sources */,
 				F30089232B3BA5300051476C /* File Permissions Parent.swift in Sources */,
+				F3CCB1CC2CAE75D0000F8207 /* Debug Settings.swift in Sources */,
 				F30088A92B3A1A500051476C /* Schedule VM.swift in Sources */,
 				F3FDFF912C89150D009EBB5C /* Asset Fetcher.swift in Sources */,
 				F31BA5862959016D0006D126 /* SpriteKit Pyzh.swift in Sources */,
@@ -4486,6 +4492,7 @@
 				F37A36762A35173F00517EFC /* Console View.swift in Sources */,
 				F39E0A992C1BA11600C4E906 /* Discover Item.swift in Sources */,
 				F3AF91CA2B4235BB001D8F80 /* SSH Card.swift in Sources */,
+				F3CCB1CE2CAE75D0000F8207 /* Debug Settings.swift in Sources */,
 				F30089292B3C23A00051476C /* Contact Picker.swift in Sources */,
 				F36D53302A05B896007324C6 /* Section Header.swift in Sources */,
 				F325F7012A54BBCF00E89EC4 /* InfoTab Allocation.swift in Sources */,
@@ -4790,6 +4797,7 @@
 				F3D295712AF39EFF00ED43A0 /* Account Parent.swift in Sources */,
 				F3D295E42AF3A39400ED43A0 /* Power Menu.swift in Sources */,
 				F3D295722AF39F0200ED43A0 /* Account View.swift in Sources */,
+				F3CCB1CD2CAE75D0000F8207 /* Debug Settings.swift in Sources */,
 				F3D2954A2AF39DB800ED43A0 /* Auth VM.swift in Sources */,
 				F3D295572AF39E2100ED43A0 /* Tip Suspended Server.swift in Sources */,
 				F3D295382AF39D1700ED43A0 /* Nav State.swift in Sources */,

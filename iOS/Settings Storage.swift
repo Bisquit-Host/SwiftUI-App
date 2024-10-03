@@ -32,6 +32,7 @@ final class SettingsStorage: ObservableObject {
     @AppStorage("animateTabbar") var animatedTabbar = false
 #if os(iOS)
     @AppStorage("lastInfoTab") var lastInfoTab: TabInfo = .relative
+    @AppStorage("contactsProviderEnabled") var contactsProviderEnabled = false
 #endif
     
     // MARK: - Beta

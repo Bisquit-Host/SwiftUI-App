@@ -24,7 +24,6 @@ struct CloudKeyCard: View {
             Keychain.save(key: "selectedApiKey", value: key.key)
             selectedKey = key.key
             validate()
-            settings.authSucced()
         } label: {
             HStack {
                 VStack(alignment: .leading) {

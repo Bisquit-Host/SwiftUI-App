@@ -4,15 +4,17 @@ import PteroNet
 import TipKit
 
 struct CloudKeys: View {
+    @Environment(\.dismiss) private var dismiss
+    
     @Environment(\.modelContext) private var modelContext
     @Query(animation: .default) private var keys: [APIKey]
-    @Environment(\.dismiss) private var dismiss
     
     @Binding private var apiKey: String
     private let validate: () -> Void
     
-    init(_ apiKey: Binding<String>,
-         validate: @escaping () -> Void = {}
+    init(
+        _ apiKey: Binding<String>,
+        validate: @escaping () -> Void = {}
     ) {
         _apiKey = apiKey
         self.validate = validate
@@ -48,9 +50,11 @@ struct CloudKeys: View {
             .toolbarTitleDisplayMode(.inline)
             .overlay {
                 if keys.isEmpty {
-                    ContentUnavailableView("No API-keys found",
-                                           systemImage: "exclamationmark.triangle",
-                                           description: nil)
+                    ContentUnavailableView(
+                        "No API-keys found",
+                        systemImage: "exclamationmark.triangle",
+                        description: nil
+                    )
                 }
             }
         }

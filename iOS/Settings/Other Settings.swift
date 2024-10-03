@@ -15,18 +15,22 @@ struct OtherSettings: View {
                 Text(settings.showFullFilePath ? "/home/container/folder/example/" : "/folder/example/")
             }
             
-            Button("Save all users to your contacts") {
-                enableExtension()
-            }
-            
             CurrencyButton()
+            
+#if DEBUG
+            NavigationLink("Debug") {
+                DebugSettings()
+            }
+#endif
         }
         .listRowBackground(settings.transparentList ? .clear : Color.list)
     }
 }
 
 #Preview {
-    OtherSettings()
-        .environment(SettingsVM())
-        .environmentObject(SettingsStorage())
+    List {
+        OtherSettings()
+    }
+    .environment(SettingsVM())
+    .environmentObject(SettingsStorage())
 }

@@ -105,7 +105,21 @@ struct StartPage: View {
             Text("Name: \(vm.accountName)\nE-mail: \(vm.accountEmail)")
         }
         .alert("Error \(vm.errorCode)", isPresented: $vm.alertInvalid) {
-            Button("Try again") {}
+            Button("Try again") {
+                vm.fetchAccountDetails()
+            }
+            
+            Button("Remove this key", role: .destructive) {
+                let key = keys.first(where: {
+                    $0.key == vm.apiKey
+                })
+                
+                if let key {
+                    modelContext.delete(key)
+                }
+                
+                vm.apiKey = ""
+            }
         } message: {
             Text(vm.errorDescription)
         }

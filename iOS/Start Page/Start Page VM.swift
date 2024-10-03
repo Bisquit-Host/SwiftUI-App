@@ -6,15 +6,18 @@ final class StartPageVM {
     var apiKey = ""
     var accountName = ""
     var accountEmail = ""
+    
     var errorDescription = ""
-    var errorCode = 0
+    var errorCode = "0"
+    
     var alertValid = false
     var alertInvalid = false
     var isActive = false
+    var trigger = false
+    
     var sheetSupport = false
     var sheetCloudKeys = false
     var sheetBrowsePlans = false
-    var trigger = false
     
 #if os(iOS)
     var showDemo = false
@@ -23,7 +26,7 @@ final class StartPageVM {
     
     func fetchAccountDetails() {
         Keychain.save(
-            key: "selectedApiKey", 
+            key: "selectedApiKey",
             value: apiKey
         )
         
@@ -36,11 +39,23 @@ final class StartPageVM {
                     }
                     
                 case .failure(let error):
+                    if let error = error as? PterError {
+                        errorCode = error.code
+                    }
+                    
                     trigger.toggle()
                     
                     SystemAlert.error(error)
+                    
+                    askToDeleteKey()
                 }
             }
+        }
+    }
+    
+    func askToDeleteKey() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.alertInvalid = true
         }
     }
     

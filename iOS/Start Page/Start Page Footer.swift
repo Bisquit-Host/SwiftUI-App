@@ -16,12 +16,21 @@ struct StartPageFooter: View {
             
             Spacer()
             
-            Button("Configurations") {
+            SFButton("key.icloud") {
+                vm.sheetCloudKeys = true
+            }
+            .padding()
+            .background {
+                Circle(.blue)
+                    .shadow(color: .blue, radius: 8)
+            }
+            
+            SFButton("externaldrive.badge.plus") {
                 vm.sheetBrowsePlans = true
             }
             .padding()
             .background {
-                Capsule(.cookie)
+                Circle(.cookie)
                     .shadow(color: .cookie, radius: 8)
             }
         }

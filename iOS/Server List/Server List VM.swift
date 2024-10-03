@@ -111,7 +111,9 @@ final class ServerListVM {
                 }
                 
 #if os(iOS)
-                self.fetchUniqueUsers()
+                if SettingsStorage().contactsProviderEnabled {
+                    self.fetchUniqueUsers()
+                }
 #endif
                 
             case .failure(let error):
