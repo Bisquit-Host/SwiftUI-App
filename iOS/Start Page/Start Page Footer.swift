@@ -10,8 +10,9 @@ struct StartPageFooter: View {
             }
             .padding()
             .background {
-                Capsule(.cookie)
-                    .shadow(color: .cookie, radius: 8)
+                Capsule()
+                    .fill(.cookie.gradient)
+                    .shadow(radius: 8)
             }
             
             Spacer()
@@ -21,8 +22,9 @@ struct StartPageFooter: View {
             }
             .padding()
             .background {
-                Circle(.blue)
-                    .shadow(color: .blue, radius: 8)
+                Circle()
+                    .fill(.blue.gradient)
+                    .shadow(radius: 8)
             }
             
             SFButton("externaldrive.badge.plus") {
@@ -30,8 +32,9 @@ struct StartPageFooter: View {
             }
             .padding()
             .background {
-                Circle(.cookie)
-                    .shadow(color: .cookie, radius: 8)
+                Circle()
+                    .fill(.cookie.gradient)
+                    .shadow(radius: 8)
             }
         }
         .title3(.bold)

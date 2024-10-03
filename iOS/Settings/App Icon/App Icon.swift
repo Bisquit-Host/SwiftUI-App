@@ -23,7 +23,8 @@ struct AppIcon: View {
             
             ZStack {
                 if isSelected {
-                    Capsule(.blue)
+                    Capsule()
+                        .fill(.blue)
                         .frame(width: 64, height: 20)
                         .matchedEffect("icon", in: animation)
                 }

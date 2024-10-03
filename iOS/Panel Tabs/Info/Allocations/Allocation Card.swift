@@ -52,9 +52,9 @@ struct AllocationCard: View {
             }
             
             TextEditor(text: $notes)
-            //            ListParameter("IP", parameter: ip)
+            //            ListParam("IP", param: ip)
             //
-            //            ListParameter("Port", parameter: "\(allocation.port)")
+            //            ListParam("Port", param: "\(allocation.port)")
             //
             //
             if showSaveButton {

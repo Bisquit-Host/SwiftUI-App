@@ -164,7 +164,8 @@ struct PanelView: View {
                     }
                     .disabled(vm.serverState == .stopping || vm.serverState == .offline)
                     
-                    Capsule(.primary)
+                    Capsule()
+                        .fill(.primary)
                         .frame(width: 4, height: 32)
                     
                     Menu {

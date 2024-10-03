@@ -45,7 +45,7 @@ struct AppSettings: View {
                 }
                 
                 ForEach(parameters, id: \.0) { parameter in
-                    ListParameter(parameter.0, parameter: parameter.1)
+                    ListParam(parameter.0, param: parameter.1)
                         .font(parameter.0 == "Device and system" ? .footnote : .none)
                 }
                 
