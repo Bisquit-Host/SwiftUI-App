@@ -8,9 +8,10 @@ struct CloudKeyCard: View {
     @Bindable private var key: APIKey
     private let validate: () -> Void
     
-    init(_ selectedKey: Binding<String>,
-         key: APIKey,
-         validate: @escaping () -> Void
+    init(
+        _ selectedKey: Binding<String>,
+        key: APIKey,
+        validate: @escaping () -> Void
     ) {
         _selectedKey = selectedKey
         self.key = key
