@@ -37,17 +37,17 @@ struct ImagePlayground: View {
                 .padding(5)
             }
             
-            if let url = genImageURL {
-                AsyncImage(url: url) { image in
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth: 300, maxHeight: 300)
-                        .clipShape(.rect(cornerRadius: 16))
-                } placeholder: {
-                    ProgressView()
-                }
-            }
+            //            if let url = genImageURL {
+            //                AsyncImage(url: url) { image in
+            //                    image
+            //                        .resizable()
+            //                        .aspectRatio(contentMode: .fit)
+            //                        .frame(maxWidth: 300, maxHeight: 300)
+            //                        .clipShape(.rect(cornerRadius: 16))
+            //                } placeholder: {
+            //                    ProgressView()
+            //                }
+            //            }
             
             if let selectedImage {
                 selectedImage
@@ -67,13 +67,19 @@ struct ImagePlayground: View {
                 .padding()
                 .multilineTextAlignment(.center)
                 .onSubmit {
-                    imageDescriptions.append(imageDescription)
-                    imageDescription = ""
+                    if !imageDescription.isEmpty {
+                        imageDescriptions.append(imageDescription)
+                        imageDescription = ""
+                    }
                 }
             
             Spacer()
             
             HStack {
+                if let genImageURL {
+                    ShareLink(item: genImageURL)
+                }
+                
                 Button("Generate") {
                     showImagePlayground = true
                 }
@@ -107,6 +113,17 @@ struct ImagePlayground: View {
             sourceImage: selectedImage
         ) { url in
             genImageURL = url
+            
+            selectedPhotoItem = nil
+            
+            changeSelectedImage(url)
+        }
+    }
+    
+    private func changeSelectedImage(_ url: URL) {
+        if let data = try? Data(contentsOf: url),
+           let uiImage = UIImage(data: data) {
+            selectedImage = Image(uiImage: uiImage)
         }
     }
 }
