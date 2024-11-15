@@ -633,7 +633,6 @@
 		F389BB7C2A05B66B00911EBF /* App Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F385824129D6215100BEEE1D /* App Icon.swift */; };
 		F38C6E5E2A5475A500F2BDA6 /* Start Page VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA57B2959011B0006D126 /* Start Page VM.swift */; };
 		F38F9E092CE6CCF90033EFE3 /* Image Playground Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E082CE6CCF90033EFE3 /* Image Playground Button.swift */; };
-		F38F9E0B2CE6CCF90033EFE3 /* Image Playground Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E082CE6CCF90033EFE3 /* Image Playground Button.swift */; };
 		F38F9E0C2CE6CCF90033EFE3 /* Image Playground Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E082CE6CCF90033EFE3 /* Image Playground Button.swift */; };
 		F38F9E0D2CE6CCF90033EFE3 /* Image Playground Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E082CE6CCF90033EFE3 /* Image Playground Button.swift */; };
 		F38F9E0F2CE6CCF90033EFE3 /* Image Playground Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E082CE6CCF90033EFE3 /* Image Playground Button.swift */; };
@@ -641,7 +640,6 @@
 		F38F9E132CE7647D0033EFE3 /* Image Playground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E112CE7647D0033EFE3 /* Image Playground.swift */; };
 		F38F9E152CE7647D0033EFE3 /* Image Playground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E112CE7647D0033EFE3 /* Image Playground.swift */; };
 		F38F9E162CE7647D0033EFE3 /* Image Playground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E112CE7647D0033EFE3 /* Image Playground.swift */; };
-		F38F9E182CE7647D0033EFE3 /* Image Playground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E112CE7647D0033EFE3 /* Image Playground.swift */; };
 		F390E53E2A84217D000B4460 /* Bisquit.Host App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* Bisquit.Host App.swift */; };
 		F3924EDB29A2291F00C4CC77 /* Language Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EDA29A2291F00C4CC77 /* Language Button.swift */; };
 		F3924EDF29A2333F00C4CC77 /* Settings VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EDE29A2333F00C4CC77 /* Settings VM.swift */; };
@@ -4022,7 +4020,6 @@
 				F3796562295C519C0074CA3D /* Chart View.swift in Sources */,
 				F37266CC29D96C93005FD103 /* Websocket Message.swift in Sources */,
 				F35FEB0A2B09F003004DA05D /* API Key.swift in Sources */,
-				F38F9E182CE7647D0033EFE3 /* Image Playground.swift in Sources */,
 				F3BC03C22B2063820011F98A /* Debug Key.swift in Sources */,
 				F37266CF29D96ED9005FD103 /* Formatters.swift in Sources */,
 				F3F3FC792B21E332007C635B /* QR Code View.swift in Sources */,
@@ -4053,7 +4050,6 @@
 				F3C9D8562B3090F500265492 /* Auth View.swift in Sources */,
 				F30088FA2B3B561E0051476C /* User List Parent.swift in Sources */,
 				F30088FF2B3B62050051476C /* User Invitation Permission.swift in Sources */,
-				F38F9E0B2CE6CCF90033EFE3 /* Image Playground Button.swift in Sources */,
 				F3BC03B82B1FF8E40011F98A /* Database Context Menu.swift in Sources */,
 				F3F2A5BB29AC296D00AD20A4 /* Server Card Suspended.swift in Sources */,
 				F3F86D012A5AEDCE00A2C82E /* Audio Recorder.swift in Sources */,

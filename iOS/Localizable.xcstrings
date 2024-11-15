@@ -1605,6 +1605,9 @@
         }
       }
     },
+    "Describe an image" : {
+
+    },
     "Description" : {
       "localizations" : {
         "nl" : {
@@ -2055,6 +2058,9 @@
           }
         }
       }
+    },
+    "Generate" : {
+
     },
     "GitHub" : {
 
@@ -3387,9 +3393,6 @@
     "Photo Library" : {
 
     },
-    "Pick Image" : {
-
-    },
     "Places we recommend" : {
       "localizations" : {
         "ru" : {
@@ -3991,9 +3994,6 @@
           }
         }
       }
-    },
-    "Show Generation Sheet" : {
-
     },
     "Show power buttons" : {
 

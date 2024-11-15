@@ -5,35 +5,47 @@ import PhotosUI
 @available(iOS 18.1, macOS 15.1, *)
 struct ImagePlayground: View {
     @State private var showImagePlayground = false
-    
     @State private var genImageURL: URL?
-    
     @State private var selectedImage: Image?
-    
     @State private var selectedPhotoItem: PhotosPickerItem?
+    @State private var imageDescription = ""
+    @State private var imageDescriptions: [String] = []
+    
+    private var imageConcepts: [ImagePlaygroundConcept] {
+        var concepts: [ImagePlaygroundConcept] = []
+        
+        for concept in imageDescriptions {
+            concepts.append(.text(concept))
+        }
+        
+        return concepts
+    }
     
     var body: some View {
         VStack {
+            Spacer()
+            
+            ForEach(imageDescriptions, id: \.self) { concept in
+                Button(concept) {
+                    imageDescriptions.removeAll {
+                        $0 == concept
+                    }
+                }
+                .semibold()
+                .padding(10)
+                .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
+                .padding(5)
+            }
+            
             if let url = genImageURL {
                 AsyncImage(url: url) { image in
                     image
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(maxWidth: 300, maxHeight: 300)
+                        .clipShape(.rect(cornerRadius: 16))
                 } placeholder: {
                     ProgressView()
-                }
-            }
-            
-            PhotosPicker(selection: $selectedPhotoItem, matching: .images) {
-                Text("Pick Image")
-            }
-            .onChange(of: selectedPhotoItem) { _, newItem in
-                Task {
-                    if let data = try? await newItem?.loadTransferable(type: Data.self),
-                       let uiImage = UIImage(data: data) {
-                        selectedImage = Image(uiImage: uiImage)
-                    }
                 }
             }
             
@@ -42,20 +54,60 @@ struct ImagePlayground: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 300, height: 300)
+                    .clipShape(.rect(cornerRadius: 16))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(.ultraThinMaterial, lineWidth: 1)
+                    )
+                    .contentShape(.rect(cornerRadius: 16))
             }
             
-            Button("Show Generation Sheet") {
-                showImagePlayground = true
-            }
-            .imagePlaygroundSheet(
-                isPresented: $showImagePlayground,
-                concepts: [ImagePlaygroundConcept.text("Sunset over mountains")],
-                sourceImage: selectedImage
-            ) { url in
-                genImageURL = url
+            TextField("Describe an image", text: $imageDescription)
+                .title3()
+                .padding()
+                .multilineTextAlignment(.center)
+                .onSubmit {
+                    imageDescriptions.append(imageDescription)
+                    imageDescription = ""
+                }
+            
+            Spacer()
+            
+            HStack {
+                Button("Generate") {
+                    showImagePlayground = true
+                }
+                .title3(.semibold)
+                .padding()
+                .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
+                .padding(5)
+                
+                PhotosPicker(selection: $selectedPhotoItem, matching: .images) {
+                    Image(systemName: selectedImage == nil ? "photo.badge.plus" : "photo.badge.checkmark")
+                        .symbolRenderingMode(.multicolor)
+                        .title2(.semibold)
+                        .padding()
+                        .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
+                        .padding(5)
+                }
+                .onChange(of: selectedPhotoItem) { _, newItem in
+                    Task {
+                        if let data = try? await newItem?.loadTransferable(type: Data.self),
+                           let uiImage = UIImage(data: data) {
+                            selectedImage = Image(uiImage: uiImage)
+                        }
+                    }
+                }
             }
         }
         .padding()
+        .imagePlaygroundSheet(
+            isPresented: $showImagePlayground,
+            concepts: imageConcepts,
+            sourceImage: selectedImage
+        ) { url in
+            genImageURL = url
+        }
     }
 }
 
