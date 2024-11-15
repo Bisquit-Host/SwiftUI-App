@@ -79,7 +79,7 @@ struct InfoAbsoluteStats: View {
     }
     
     private var ramAbsolute: some View {
-        let usage = formatBytes(panelVM.ramUsage)
+        let usage = formatBytes(panelVM.ramUsage, countStyle: .memory)
         let usageText = Text(usage)
         
         let limit = formatBytes(
