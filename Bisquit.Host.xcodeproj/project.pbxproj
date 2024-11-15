@@ -632,6 +632,16 @@
 		F389BB7B2A05B64E00911EBF /* Biometry Usage View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EE829A28D9D00C4CC77 /* Biometry Usage View.swift */; };
 		F389BB7C2A05B66B00911EBF /* App Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F385824129D6215100BEEE1D /* App Icon.swift */; };
 		F38C6E5E2A5475A500F2BDA6 /* Start Page VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA57B2959011B0006D126 /* Start Page VM.swift */; };
+		F38F9E092CE6CCF90033EFE3 /* Image Playground Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E082CE6CCF90033EFE3 /* Image Playground Button.swift */; };
+		F38F9E0B2CE6CCF90033EFE3 /* Image Playground Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E082CE6CCF90033EFE3 /* Image Playground Button.swift */; };
+		F38F9E0C2CE6CCF90033EFE3 /* Image Playground Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E082CE6CCF90033EFE3 /* Image Playground Button.swift */; };
+		F38F9E0D2CE6CCF90033EFE3 /* Image Playground Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E082CE6CCF90033EFE3 /* Image Playground Button.swift */; };
+		F38F9E0F2CE6CCF90033EFE3 /* Image Playground Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E082CE6CCF90033EFE3 /* Image Playground Button.swift */; };
+		F38F9E122CE7647D0033EFE3 /* Image Playground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E112CE7647D0033EFE3 /* Image Playground.swift */; };
+		F38F9E132CE7647D0033EFE3 /* Image Playground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E112CE7647D0033EFE3 /* Image Playground.swift */; };
+		F38F9E152CE7647D0033EFE3 /* Image Playground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E112CE7647D0033EFE3 /* Image Playground.swift */; };
+		F38F9E162CE7647D0033EFE3 /* Image Playground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E112CE7647D0033EFE3 /* Image Playground.swift */; };
+		F38F9E182CE7647D0033EFE3 /* Image Playground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E112CE7647D0033EFE3 /* Image Playground.swift */; };
 		F390E53E2A84217D000B4460 /* Bisquit.Host App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* Bisquit.Host App.swift */; };
 		F3924EDB29A2291F00C4CC77 /* Language Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EDA29A2291F00C4CC77 /* Language Button.swift */; };
 		F3924EDF29A2333F00C4CC77 /* Settings VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EDE29A2333F00C4CC77 /* Settings VM.swift */; };
@@ -1586,6 +1596,8 @@
 		F389282D2A445E4F00561CDF /* App Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Settings.swift"; sourceTree = "<group>"; };
 		F389282F2A445E9700561CDF /* Server List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List.swift"; sourceTree = "<group>"; };
 		F38928312A445EA900561CDF /* Server Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card.swift"; sourceTree = "<group>"; };
+		F38F9E082CE6CCF90033EFE3 /* Image Playground Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image Playground Button.swift"; sourceTree = "<group>"; };
+		F38F9E112CE7647D0033EFE3 /* Image Playground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image Playground.swift"; sourceTree = "<group>"; };
 		F3924EDA29A2291F00C4CC77 /* Language Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Language Button.swift"; sourceTree = "<group>"; };
 		F3924EDE29A2333F00C4CC77 /* Settings VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings VM.swift"; sourceTree = "<group>"; };
 		F3924EE629A25FBF00C4CC77 /* App Icon Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Icon Picker.swift"; sourceTree = "<group>"; };
@@ -2270,6 +2282,7 @@
 				F37266BF29D826F5005FD103 /* File Details.swift */,
 				F37266A929D71A1B005FD103 /* File Icon.swift */,
 				F3F5BC952BF7668E00EB8FB1 /* Sensitivity Analyzer.swift */,
+				F38F9E102CE764060033EFE3 /* Image Playground */,
 				F3BEEBC82A4AB45E00E686B8 /* Upload */,
 				F31BA5BA295903330006D126 /* Destinations */,
 				F37DDA7429E2AABF00B9680C /* Elements */,
@@ -2828,6 +2841,15 @@
 				F38928222A44182F00561CDF /* Console.swift */,
 			);
 			path = Console;
+			sourceTree = "<group>";
+		};
+		F38F9E102CE764060033EFE3 /* Image Playground */ = {
+			isa = PBXGroup;
+			children = (
+				F38F9E082CE6CCF90033EFE3 /* Image Playground Button.swift */,
+				F38F9E112CE7647D0033EFE3 /* Image Playground.swift */,
+			);
+			path = "Image Playground";
 			sourceTree = "<group>";
 		};
 		F39217C92A378C3800BE7CE8 /* Overlay */ = {
@@ -4000,6 +4022,7 @@
 				F3796562295C519C0074CA3D /* Chart View.swift in Sources */,
 				F37266CC29D96C93005FD103 /* Websocket Message.swift in Sources */,
 				F35FEB0A2B09F003004DA05D /* API Key.swift in Sources */,
+				F38F9E182CE7647D0033EFE3 /* Image Playground.swift in Sources */,
 				F3BC03C22B2063820011F98A /* Debug Key.swift in Sources */,
 				F37266CF29D96ED9005FD103 /* Formatters.swift in Sources */,
 				F3F3FC792B21E332007C635B /* QR Code View.swift in Sources */,
@@ -4030,6 +4053,7 @@
 				F3C9D8562B3090F500265492 /* Auth View.swift in Sources */,
 				F30088FA2B3B561E0051476C /* User List Parent.swift in Sources */,
 				F30088FF2B3B62050051476C /* User Invitation Permission.swift in Sources */,
+				F38F9E0B2CE6CCF90033EFE3 /* Image Playground Button.swift in Sources */,
 				F3BC03B82B1FF8E40011F98A /* Database Context Menu.swift in Sources */,
 				F3F2A5BB29AC296D00AD20A4 /* Server Card Suspended.swift in Sources */,
 				F3F86D012A5AEDCE00A2C82E /* Audio Recorder.swift in Sources */,
@@ -4107,6 +4131,7 @@
 				F3D52B252B13FE9C00167DD6 /* App Delegate.swift in Sources */,
 				F3AF96F929DF277A00D30A8F /* Backup Card.swift in Sources */,
 				F3D2951C2AF3975300ED43A0 /* Cache Model.swift in Sources */,
+				F38F9E0D2CE6CCF90033EFE3 /* Image Playground Button.swift in Sources */,
 				F375EC3A29EE73AC002CA969 /* Database List.swift in Sources */,
 				F385824629D6268200BEEE1D /* Currency Button.swift in Sources */,
 				F3D7D87D29E83D6500BCAFFE /* Icon Settings.swift in Sources */,
@@ -4131,6 +4156,7 @@
 				F3D558AC2A3360ED00608447 /* File Tab VM.swift in Sources */,
 				F337C1622A8CE7C0006F321C /* Startup Card.swift in Sources */,
 				F3A31B092B0B161D00F89C51 /* Cloud Key Card.swift in Sources */,
+				F38F9E132CE7647D0033EFE3 /* Image Playground.swift in Sources */,
 				F37266AA29D71A1B005FD103 /* File Icon.swift in Sources */,
 				F3A1D2382A2024E10053261E /* Browser Hints.swift in Sources */,
 				F31BA5A3295902610006D126 /* Console Tab.swift in Sources */,
@@ -4441,6 +4467,7 @@
 				F389BB722A05B61300911EBF /* Credentials View.swift in Sources */,
 				F389BB712A05B60D00911EBF /* Credentials Button.swift in Sources */,
 				F337C1642A8CE965006F321C /* Startup Card.swift in Sources */,
+				F38F9E162CE7647D0033EFE3 /* Image Playground.swift in Sources */,
 				F30088A52B3A18A70051476C /* Database VM.swift in Sources */,
 				F3A800372A7313E900CAC40B /* Tip Cloud Keys.swift in Sources */,
 				F3D3DBD429B889E600096115 /* Browser Topbar.swift in Sources */,
@@ -4647,6 +4674,7 @@
 				F34169A62A49DF64003985E7 /* InfoTab Button.swift in Sources */,
 				F36D53472A05B932007324C6 /* Auth VM.swift in Sources */,
 				F389BB762A05B62C00911EBF /* Icon Settings.swift in Sources */,
+				F38F9E092CE6CCF90033EFE3 /* Image Playground Button.swift in Sources */,
 				F393C7BC2A18442900DE33F9 /* File Tab.swift in Sources */,
 				F3464D2F2A863A6200188B0C /* Create Backup.swift in Sources */,
 				F3D2643B2A66AB92005C3777 /* Account View.swift in Sources */,
@@ -4781,6 +4809,7 @@
 				F3D295E42AF3A39400ED43A0 /* Power Menu.swift in Sources */,
 				F3D295722AF39F0200ED43A0 /* Account View.swift in Sources */,
 				F3CCB1CD2CAE75D0000F8207 /* Debug Settings.swift in Sources */,
+				F38F9E152CE7647D0033EFE3 /* Image Playground.swift in Sources */,
 				F3D2954A2AF39DB800ED43A0 /* Auth VM.swift in Sources */,
 				F3D295572AF39E2100ED43A0 /* Tip Suspended Server.swift in Sources */,
 				F3D295382AF39D1700ED43A0 /* Nav State.swift in Sources */,
@@ -4814,6 +4843,7 @@
 				F3E024C82B228F4C00FFF686 /* New Task Sheet.swift in Sources */,
 				F3D295332AF39CB100ED43A0 /* Start Page VM.swift in Sources */,
 				F3D295C12AF3A1B200ED43A0 /* Log Detail View.swift in Sources */,
+				F38F9E0C2CE6CCF90033EFE3 /* Image Playground Button.swift in Sources */,
 				F3D295622AF39E8D00ED43A0 /* Upload Menu.swift in Sources */,
 				F3D295582AF39E2B00ED43A0 /* Browser Spec.swift in Sources */,
 				F3D295B62AF3A16300ED43A0 /* Icon Settings.swift in Sources */,
@@ -5120,6 +5150,7 @@
 				F35B9F552A2D6D380045D014 /* Formatters.swift in Sources */,
 				F30088B32B3A20620051476C /* Backup Card.swift in Sources */,
 				F35FEB122B0A2C8D004DA05D /* Enums.swift in Sources */,
+				F38F9E0F2CE6CCF90033EFE3 /* Image Playground Button.swift in Sources */,
 				F3B1388A2A2D4D110026EAEE /* File Icon.swift in Sources */,
 				F35FEB082B09F003004DA05D /* API Key.swift in Sources */,
 				F35FEB1E2B0A7415004DA05D /* Cloud Keys.swift in Sources */,
@@ -5160,6 +5191,7 @@
 				F3464D282A86398000188B0C /* PowerSignalAppEnum.swift in Sources */,
 				F3DF50CA2B38FDDE00206CAE /* User 2Fa.swift in Sources */,
 				F35B9F5C2A2DC8D60045D014 /* Nav State.swift in Sources */,
+				F38F9E122CE7647D0033EFE3 /* Image Playground.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

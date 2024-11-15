@@ -2282,6 +2282,9 @@
     "Identifier: %@" : {
 
     },
+    "Image Playground" : {
+
+    },
     "Info" : {
       "localizations" : {
         "ru" : {
@@ -3384,6 +3387,9 @@
     "Photo Library" : {
 
     },
+    "Pick Image" : {
+
+    },
     "Places we recommend" : {
       "localizations" : {
         "ru" : {
@@ -3985,6 +3991,9 @@
           }
         }
       }
+    },
+    "Show Generation Sheet" : {
+
     },
     "Show power buttons" : {
 

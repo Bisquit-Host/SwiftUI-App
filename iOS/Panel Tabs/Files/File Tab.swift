@@ -25,6 +25,12 @@ struct FileTab: View {
             
             UploadMenu($image, url: $url, root: root)
             
+#if DEBUG
+            if #available(iOS 18.1, *) {
+                ImagePlaygroundButton()
+            }
+#endif
+            
             if vm.isUploading {
                 UploadProgress()
             }
