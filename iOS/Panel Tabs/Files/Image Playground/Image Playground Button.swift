@@ -7,8 +7,17 @@ struct ImagePlaygroundButton: View {
     @State private var sheetImagePlayground = false
     
     var body: some View {
-        Button("Image Playground") {
+        Button {
             sheetImagePlayground = true
+        } label: {
+            HStack {
+                Image(.appleIntelligence)
+                    .resizable()
+                    .frame(width: 25, height: 25)
+                    .opacity(supportsImagePlayground ? 1 : 0.3)
+                
+                Text("Image Playground")
+            }
         }
         .disabled(!supportsImagePlayground)
         .sheet($sheetImagePlayground) {
