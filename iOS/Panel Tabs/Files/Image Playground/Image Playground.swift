@@ -98,10 +98,17 @@ struct ImagePlayground: View {
                 }
                 .onChange(of: selectedPhotoItem) { _, newItem in
                     Task {
+#if os(macOS)
+                        if let data = try? await newItem?.loadTransferable(type: Data.self),
+                           let uiImage = NSImage(data: data) {
+                            selectedImage = Image(nsImage: uiImage)
+                        }
+#else
                         if let data = try? await newItem?.loadTransferable(type: Data.self),
                            let uiImage = UIImage(data: data) {
                             selectedImage = Image(uiImage: uiImage)
                         }
+#endif
                     }
                 }
             }
@@ -121,10 +128,17 @@ struct ImagePlayground: View {
     }
     
     private func changeSelectedImage(_ url: URL) {
+#if os(macOS)
+        if let data = try? Data(contentsOf: url),
+           let uiImage = NSImage(data: data) {
+            selectedImage = Image(nsImage: uiImage)
+        }
+#else
         if let data = try? Data(contentsOf: url),
            let uiImage = UIImage(data: data) {
             selectedImage = Image(uiImage: uiImage)
         }
+#endif
     }
 }
 
