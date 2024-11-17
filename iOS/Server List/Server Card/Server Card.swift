@@ -28,10 +28,10 @@ struct ServerCard: View {
     }
     
     var body: some View {
-        
         VStack {
             switch settings.designCode {
             case 0:
+                // Rect
                 VStack {
                     serverName
                     
@@ -53,6 +53,7 @@ struct ServerCard: View {
                 .background(backgroundColor, in: .rect(cornerRadius: vm.stateColor != .red ? 22 : 16))
                 
             case 1:
+                // Line
                 HStack {
                     VStack {
                         serverName
