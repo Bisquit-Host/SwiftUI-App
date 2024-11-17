@@ -19,40 +19,32 @@ struct ServerCard: View {
         vm.stateColor.opacity(0.15)
     }
     
+    private var limits: ServerLimits {
+        server.limits
+    }
+    
+    private var name: String {
+        server.name.replacing(" ", with: "")
+    }
+    
     var body: some View {
-        let name = server.name.replacing(" ", with: "")
-        let limits = server.limits
         
         VStack {
             switch settings.designCode {
             case 0:
                 VStack {
-                    ServerCardNaStatus(name, color: vm.stateColor)
-                        .matchedEffect("name", in: animation)
+                    serverName
                     
                     if vm.stateColor != .red {
                         HStack(spacing: 20) {
-                            RegularGauge(
-                                name: .cpu,
-                                value: vm.cpuUsage,
-                                limit: limits.cpu,
-                                isRedacted: vm.isLoading
-                            )
-                            .scaleEffect(1.1)
+                            cpuGauge
                             
-                            RegularGauge(
-                                name: .ram,
-                                value: vm.ramUsage,
-                                limit: limits.memory,
-                                isRedacted: vm.isLoading
-                            )
-                            .scaleEffect(1.1)
+                            ramGauge
                         }
                         .matchedEffect("RAM_CPU", in: animation)
                     }
                     
-                    DiskGauge(vm.diskUsage, limit: limits.disk)
-                        .matchedEffect("disk", in: animation)
+                    diskGauge
                 }
                 .padding(.vertical, 5)
                 .padding(.horizontal, 10)
@@ -63,31 +55,16 @@ struct ServerCard: View {
             case 1:
                 HStack {
                     VStack {
-                        ServerCardNaStatus(name, color: vm.stateColor)
-                            .matchedEffect("name", in: animation)
+                        serverName
                         
-                        DiskGauge(vm.diskUsage, limit: limits.disk)
-                            .padding(.top, 4)
-                            .matchedEffect("disk", in: animation)
+                        diskGauge
                     }
                     
                     if vm.stateColor != .red {
                         HStack {
-                            RegularGauge(
-                                name: .cpu,
-                                value: vm.cpuUsage,
-                                limit: limits.cpu,
-                                isRedacted: vm.isLoading
-                            )
-                            .scaleEffect(1.1)
+                            cpuGauge
                             
-                            RegularGauge(
-                                name: .ram,
-                                value: vm.ramUsage,
-                                limit: limits.memory,
-                                isRedacted: vm.isLoading
-                            )
-                            .scaleEffect(1.1)
+                            ramGauge
                         }
                         .matchedEffect("RAM_CPU", in: animation)
                     }
@@ -107,6 +84,37 @@ struct ServerCard: View {
         .onChange(of: settings.updateServers) {
             vm.fetchServerUsage()
         }
+    }
+    
+    private var serverName: some View {
+        ServerName(name, color: vm.stateColor)
+            .matchedEffect("name", in: animation)
+    }
+    
+    private var diskGauge: some View {
+        DiskGauge(vm.diskUsage, limit: limits.disk)
+            .padding(.top, 4)
+            .matchedEffect("disk", in: animation)
+    }
+    
+    private var cpuGauge: some View {
+        RegularGauge(
+            name: .cpu,
+            value: vm.cpuUsage,
+            limit: limits.cpu,
+            isRedacted: vm.isLoading
+        )
+        .scaleEffect(1.1)
+    }
+    
+    private var ramGauge: some View {
+        RegularGauge(
+            name: .ram,
+            value: vm.ramUsage,
+            limit: limits.memory,
+            isRedacted: vm.isLoading
+        )
+        .scaleEffect(1.1)
     }
 }
 

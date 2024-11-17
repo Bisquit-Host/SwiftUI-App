@@ -608,7 +608,7 @@
 		F389BB602A05B57D00911EBF /* Gauge Regular.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266D029D99570005FD103 /* Gauge Regular.swift */; };
 		F389BB612A05B58300911EBF /* Gauge Disk.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378EF8229D6C91300BC4849 /* Gauge Disk.swift */; };
 		F389BB622A05B58E00911EBF /* Server Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* Server Card VM.swift */; };
-		F389BB632A05B59700911EBF /* Server Card Na Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A391BB29DB808B00591C84 /* Server Card Na Status.swift */; };
+		F389BB632A05B59700911EBF /* Server Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A391BB29DB808B00591C84 /* Server Name.swift */; };
 		F389BB652A05B5AF00911EBF /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA56F295900C20006D126 /* Formatters.swift */; };
 		F389BB662A05B5B500911EBF /* Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C62CE2298A7D8600434636 /* Support.swift */; };
 		F389BB682A05B5C100911EBF /* Guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA57E2959012D0006D126 /* Guide.swift */; };
@@ -711,7 +711,7 @@
 		F3A31B0D2B0B161D00F89C51 /* Cloud Key Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A31B082B0B161D00F89C51 /* Cloud Key Card.swift */; };
 		F3A31B0E2B0B161D00F89C51 /* Cloud Key Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A31B082B0B161D00F89C51 /* Cloud Key Card.swift */; };
 		F3A391BA29DB5E6900591C84 /* Cache Expiration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A391B929DB5E6900591C84 /* Cache Expiration.swift */; };
-		F3A391BC29DB808B00591C84 /* Server Card Na Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A391BB29DB808B00591C84 /* Server Card Na Status.swift */; };
+		F3A391BC29DB808B00591C84 /* Server Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A391BB29DB808B00591C84 /* Server Name.swift */; };
 		F3A7BCC3296B2ABB00E080C1 /* Start Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7BCC2296B2ABB00E080C1 /* Start Page.swift */; };
 		F3A7BCD1296B44FF00E080C1 /* Nav Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BAEC8C2959B3FE00111375 /* Nav Extension.swift */; };
 		F3A7CEC82C8B685500413400 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3A7CEC72C8B685500413400 /* Messages.framework */; };
@@ -727,7 +727,7 @@
 		F3A7CEED2C8BB78A00413400 /* Server Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31578B4296760710016A600 /* Server Card.swift */; };
 		F3A7CEEE2C8BB78F00413400 /* Gauge Regular.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266D029D99570005FD103 /* Gauge Regular.swift */; };
 		F3A7CEEF2C8BB79500413400 /* Gauge Disk.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378EF8229D6C91300BC4849 /* Gauge Disk.swift */; };
-		F3A7CEF02C8BB79B00413400 /* Server Card Na Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A391BB29DB808B00591C84 /* Server Card Na Status.swift */; };
+		F3A7CEF02C8BB79B00413400 /* Server Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A391BB29DB808B00591C84 /* Server Name.swift */; };
 		F3A7CEF12C8BB7A300413400 /* Server Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* Server Card VM.swift */; };
 		F3A7CEF22C8BB7BF00413400 /* System Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7052A54C4BC00E89EC4 /* System Alerts.swift */; };
 		F3A7CEF42C8BB7E500413400 /* Network Calls.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32FD71D2B1E054300723B88 /* Network Calls.swift */; };
@@ -1059,7 +1059,7 @@
 		F3D295EA2AF3A3CE00ED43A0 /* Command Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B637512A35F3EA00CB374C /* Command Line.swift */; };
 		F3D295EB2AF3A40B00ED43A0 /* Gauge Disk.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378EF8229D6C91300BC4849 /* Gauge Disk.swift */; };
 		F3D295EC2AF3A43300ED43A0 /* Server Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31578B4296760710016A600 /* Server Card.swift */; };
-		F3D295ED2AF3A45300ED43A0 /* Server Card Na Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A391BB29DB808B00591C84 /* Server Card Na Status.swift */; };
+		F3D295ED2AF3A45300ED43A0 /* Server Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A391BB29DB808B00591C84 /* Server Name.swift */; };
 		F3D295F02AF3A51300ED43A0 /* Backup List Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F716BC29E4D46600838586 /* Backup List Footer.swift */; };
 		F3D295F12AF3A52700ED43A0 /* Create Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3496DC829E00CE70089FC28 /* Create Button.swift */; };
 		F3D2960A2AF3BE5800ED43A0 /* UI Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D296092AF3BE5800ED43A0 /* UI Tests.swift */; };
@@ -1627,7 +1627,7 @@
 		F3A31B042B0B144200F89C51 /* Server List Node Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List Node Filter.swift"; sourceTree = "<group>"; };
 		F3A31B082B0B161D00F89C51 /* Cloud Key Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cloud Key Card.swift"; sourceTree = "<group>"; };
 		F3A391B929DB5E6900591C84 /* Cache Expiration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache Expiration.swift"; sourceTree = "<group>"; };
-		F3A391BB29DB808B00591C84 /* Server Card Na Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Na Status.swift"; sourceTree = "<group>"; };
+		F3A391BB29DB808B00591C84 /* Server Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Name.swift"; sourceTree = "<group>"; };
 		F3A7BCC2296B2ABB00E080C1 /* Start Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page.swift"; sourceTree = "<group>"; };
 		F3A7CEC32C8B685500413400 /* iMessage Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "iMessage Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A7CEC72C8B685500413400 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = Library/Frameworks/Messages.framework; sourceTree = DEVELOPER_DIR; };
@@ -2527,7 +2527,7 @@
 		F350638329DC2D2A0010B717 /* Elements */ = {
 			isa = PBXGroup;
 			children = (
-				F3A391BB29DB808B00591C84 /* Server Card Na Status.swift */,
+				F3A391BB29DB808B00591C84 /* Server Name.swift */,
 				F37266D029D99570005FD103 /* Gauge Regular.swift */,
 				F378EF8229D6C91300BC4849 /* Gauge Disk.swift */,
 			);
@@ -4343,7 +4343,7 @@
 				F3AF91C52B423535001D8F80 /* SSH List.swift in Sources */,
 				F31BA56A2959007E0006D126 /* Nav Destinations.swift in Sources */,
 				F3D2643A2A66AB92005C3777 /* Account View.swift in Sources */,
-				F3A391BC29DB808B00591C84 /* Server Card Na Status.swift in Sources */,
+				F3A391BC29DB808B00591C84 /* Server Name.swift in Sources */,
 				F3924EDB29A2291F00C4CC77 /* Language Button.swift in Sources */,
 				F3521E2B29F5C13900132CCB /* Browser Card.swift in Sources */,
 				F37266E929D9EFFE005FD103 /* Cache Size.swift in Sources */,
@@ -4677,7 +4677,7 @@
 				F393C7BC2A18442900DE33F9 /* File Tab.swift in Sources */,
 				F3464D2F2A863A6200188B0C /* Create Backup.swift in Sources */,
 				F3D2643B2A66AB92005C3777 /* Account View.swift in Sources */,
-				F389BB632A05B59700911EBF /* Server Card Na Status.swift in Sources */,
+				F389BB632A05B59700911EBF /* Server Name.swift in Sources */,
 				F34F289B2ACDAD9B00FD618A /* Animated Tab.swift in Sources */,
 				F389BB732A05B61900911EBF /* Credential Field.swift in Sources */,
 				F3FA4DEB2A4CE82000547722 /* Account Settings.swift in Sources */,
@@ -4798,7 +4798,7 @@
 				F3D295C92AF3A20B00ED43A0 /* Credential Field.swift in Sources */,
 				F3D295AC2AF3A0F700ED43A0 /* Cache Model.swift in Sources */,
 				F3D2955D2AF39E6800ED43A0 /* Map View.swift in Sources */,
-				F3D295ED2AF3A45300ED43A0 /* Server Card Na Status.swift in Sources */,
+				F3D295ED2AF3A45300ED43A0 /* Server Name.swift in Sources */,
 				F3AF91C32B423492001D8F80 /* SSH VM.swift in Sources */,
 				F35FEB0D2B09F003004DA05D /* API Key.swift in Sources */,
 				F3D2956E2AF39EE800ED43A0 /* Websocket Message.swift in Sources */,
@@ -4951,7 +4951,7 @@
 				F3A7CF0A2C8BBCD400413400 /* Formatters.swift in Sources */,
 				F3A7CF092C8BBC7A00413400 /* Carousel Button Style.swift in Sources */,
 				F3A7CEE12C8B9BB700413400 /* App Container.swift in Sources */,
-				F3A7CEF02C8BB79B00413400 /* Server Card Na Status.swift in Sources */,
+				F3A7CEF02C8BB79B00413400 /* Server Name.swift in Sources */,
 				F3A7CEFE2C8BB97400413400 /* Server List.swift in Sources */,
 				F3255E1F2C904A71008E04DE /* Enable 2FA View.swift in Sources */,
 				F3255E202C904A71008E04DE /* Disable 2FA View.swift in Sources */,
