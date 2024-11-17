@@ -18,7 +18,7 @@ final class AudioRecorder {
         
         let documentPath = fm.temporaryDirectory
         
-        let filename = Date().toString(dateFormat: "yyyy-MM-dd HH:mm:ss") + ".m4a"
+        let filename = Date().toString(format: "yyyy-MM-dd HH:mm:ss") + ".m4a"
         let audioFilename = documentPath.appendingPathComponent(filename)
         
         let settings = [
@@ -51,7 +51,7 @@ final class AudioRecorder {
 }
 
 fileprivate extension Date {
-    func toString(dateFormat format: String) -> String {
+    func toString(format: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
         
