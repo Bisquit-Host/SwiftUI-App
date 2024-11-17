@@ -52,6 +52,7 @@ struct PanelView: View {
                         .setUpTab(.startup, isAnimated: settings.animatedTabbar)
                 }
             }
+            .sidebarAdaptableStyle()
             
             if settings.animatedTabbar {
                 CustomTabBar()

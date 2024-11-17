@@ -32,6 +32,7 @@ struct DataTab: View {
             DatabaseList(limits.databases)
         }
         .scrollIndicators(.hidden)
+        .frame(maxWidth: 500)
         .refreshableTask {
             fetchData()
         }

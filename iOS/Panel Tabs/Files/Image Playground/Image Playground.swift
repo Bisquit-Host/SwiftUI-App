@@ -7,9 +7,11 @@ struct ImagePlayground: View {
     @EnvironmentObject private var vm: FileTabVM
     @Environment(\.dismiss) private var dismiss
     
+    private let url: URL?
     private let root: String
     
-    init(root: String) {
+    init(_ url: URL? = nil, root: String) {
+        self.url = url
         self.root = root
     }
     
@@ -64,10 +66,10 @@ struct ImagePlayground: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 300, height: 300)
                     .clipShape(.rect(cornerRadius: 16))
-                    .overlay(
+                    .overlay {
                         RoundedRectangle(cornerRadius: 16)
                             .stroke(.ultraThinMaterial, lineWidth: 1)
-                    )
+                    }
                     .contentShape(.rect(cornerRadius: 16))
             }
             
@@ -86,14 +88,21 @@ struct ImagePlayground: View {
             
             HStack {
                 if let genImageURL {
-                    ShareLink(item: genImageURL)
+                    ShareLink(item: genImageURL) {
+                        Image(systemName: "square.and.arrow.up")
+                            .padding(.horizontal)
+                            .frame(height: 64)
+                            .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
+                            .padding(5)
+                    }
                 }
                 
                 Button("Generate") {
                     showImagePlayground = true
                 }
                 .title3(.semibold)
-                .padding()
+                .padding(.horizontal)
+                .frame(height: 64)
                 .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
                 .padding(5)
                 
@@ -101,7 +110,8 @@ struct ImagePlayground: View {
                     Image(systemName: selectedImage == nil ? "photo.badge.plus" : "photo.badge.checkmark")
                         .symbolRenderingMode(.multicolor)
                         .title2(.semibold)
-                        .padding()
+                        .padding(.horizontal)
+                        .frame(height: 64)
                         .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
                         .padding(5)
                 }
@@ -123,6 +133,11 @@ struct ImagePlayground: View {
             }
         }
         .padding()
+        .task {
+            if let url {
+                changeSelectedImage(url)
+            }
+        }
         .toolbar {
             Button("Upload") {
                 if let genImageURL {

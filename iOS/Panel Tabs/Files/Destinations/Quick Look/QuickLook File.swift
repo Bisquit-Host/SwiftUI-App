@@ -3,16 +3,18 @@ import PteroNet
 import QuickLooking
 
 struct QuickLookFile: View {
-    private let id, path, name: String
+    
+    private let id, root, name: String
     
     init(_ id: String, root: String, name: String) {
         self.id = id
-        self.path = root
+        self.root = root
         self.name = name
     }
     
     @State private var fileURL: URL? = nil
     @State private var isSensitive = false
+    @State private var showImagePlayground = false
     
     var body: some View {
         VStack {
@@ -26,10 +28,29 @@ struct QuickLookFile: View {
         .navigationTitle(name)
         .ignoresSafeArea(edges: .bottom)
         .task {
-            downloadFile(name, root: path)
+            downloadFile(name, root: root)
         }
         .toolbar {
             if let fileURL {
+                if #available(iOS 18.1, *) {
+                    @Environment(\.supportsImagePlayground) var supportsImagePlayground
+                    
+                    Button {
+                        showImagePlayground = true
+                    } label: {
+                        Image(.appleIntelligence)
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                            .opacity(supportsImagePlayground ? 1 : 0.3)
+                    }
+                    .disabled(!supportsImagePlayground)
+                    .sheet($showImagePlayground) {
+                        NavigationView {
+                            ImagePlayground(fileURL, root: root)
+                        }
+                    }
+                }
+                
                 ShareLink(item: fileURL)
             }
             

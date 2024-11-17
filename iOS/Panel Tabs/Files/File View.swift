@@ -4,6 +4,7 @@ import PteroNet
 struct FileView: View {
     @Environment(NavState.self) private var navState
     @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var vm: FileTabVM
     
     private let id, root: String
     private let file: FileAttributes
@@ -39,6 +40,7 @@ struct FileView: View {
                 
             } else {
                 QuickLookFile(id, root: root, name: name)
+                    .environmentObject(vm)
             }
         } label: {
             VStack(alignment: .leading) {

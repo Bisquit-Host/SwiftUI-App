@@ -25,6 +25,7 @@ struct ImagePlaygroundButton: View {
                 Text("Image Playground")
             }
         }
+        .foregroundStyle(.foreground)
         .disabled(!supportsImagePlayground)
         .sheet($sheetImagePlayground) {
             NavigationView {

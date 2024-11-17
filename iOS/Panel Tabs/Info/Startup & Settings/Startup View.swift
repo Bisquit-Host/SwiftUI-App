@@ -37,6 +37,7 @@ struct StartupView: View {
             }
         }
         .scrollIndicators(.never)
+        .frame(maxWidth: 500)
         .refreshableTask {
             vm.fetchStartupVariables()
         }
