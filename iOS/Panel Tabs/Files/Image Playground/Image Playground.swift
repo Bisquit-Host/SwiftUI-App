@@ -2,6 +2,31 @@ import SwiftUI
 import ImagePlayground
 import PhotosUI
 
+fileprivate struct AllowDrag: ViewModifier {
+    private let url: URL?
+    
+    init(_ url: URL?) {
+        self.url = url
+    }
+    
+    func body(content: Content) -> some View {
+        if let url {
+            content
+                .onDrag {
+                    NSItemProvider(object: url as NSURL)
+                }
+        } else {
+            content
+        }
+    }
+}
+
+extension View {
+    func allowDrag(_ url: URL?) -> some View {
+        self.modifier(AllowDrag(url))
+    }
+}
+
 @available(iOS 18.1, macOS 15.1, *)
 struct ImagePlayground: View {
     @EnvironmentObject private var vm: FileTabVM
@@ -71,6 +96,7 @@ struct ImagePlayground: View {
                             .stroke(.ultraThinMaterial, lineWidth: 1)
                     }
                     .contentShape(.rect(cornerRadius: 16))
+                    .allowDrag(genImageURL)
             }
             
             TextField("Describe an image", text: $imageDescription)
