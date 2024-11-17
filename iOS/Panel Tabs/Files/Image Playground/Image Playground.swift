@@ -2,31 +2,6 @@ import SwiftUI
 import ImagePlayground
 import PhotosUI
 
-fileprivate struct AllowDrag: ViewModifier {
-    private let url: URL?
-    
-    init(_ url: URL?) {
-        self.url = url
-    }
-    
-    func body(content: Content) -> some View {
-        if let url {
-            content
-                .onDrag {
-                    NSItemProvider(object: url as NSURL)
-                }
-        } else {
-            content
-        }
-    }
-}
-
-extension View {
-    func allowDrag(_ url: URL?) -> some View {
-        self.modifier(AllowDrag(url))
-    }
-}
-
 @available(iOS 18.1, macOS 15.1, *)
 struct ImagePlayground: View {
     @EnvironmentObject private var vm: FileTabVM
@@ -116,6 +91,7 @@ struct ImagePlayground: View {
                 if let genImageURL {
                     ShareLink(item: genImageURL) {
                         Image(systemName: "square.and.arrow.up")
+                            .title3(.semibold)
                             .padding(.horizontal)
                             .frame(height: 64)
                             .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
@@ -199,6 +175,31 @@ struct ImagePlayground: View {
             selectedImage = Image(uiImage: uiImage)
         }
 #endif
+    }
+}
+
+fileprivate struct AllowDrag: ViewModifier {
+    private let url: URL?
+    
+    init(_ url: URL?) {
+        self.url = url
+    }
+    
+    func body(content: Content) -> some View {
+        if let url {
+            content
+                .onDrag {
+                    NSItemProvider(object: url as NSURL)
+                }
+        } else {
+            content
+        }
+    }
+}
+
+fileprivate extension View {
+    func allowDrag(_ url: URL?) -> some View {
+        self.modifier(AllowDrag(url))
     }
 }
 
