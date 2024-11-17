@@ -640,6 +640,7 @@
 		F38F9E132CE7647D0033EFE3 /* Image Playground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E112CE7647D0033EFE3 /* Image Playground.swift */; };
 		F38F9E152CE7647D0033EFE3 /* Image Playground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E112CE7647D0033EFE3 /* Image Playground.swift */; };
 		F38F9E162CE7647D0033EFE3 /* Image Playground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E112CE7647D0033EFE3 /* Image Playground.swift */; };
+		F38F9E1A2CEA18150033EFE3 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = F38F9E192CEA18150033EFE3 /* DeviceKit */; };
 		F390E53E2A84217D000B4460 /* Bisquit.Host App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* Bisquit.Host App.swift */; };
 		F3924EDB29A2291F00C4CC77 /* Language Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EDA29A2291F00C4CC77 /* Language Button.swift */; };
 		F3924EDF29A2333F00C4CC77 /* Settings VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EDE29A2333F00C4CC77 /* Settings VM.swift */; };
@@ -1866,6 +1867,7 @@
 				F308601C2B002D40004D776A /* PteroNet in Frameworks */,
 				F36B739B2C8B073B00E858FE /* AudioVisualizer in Frameworks */,
 				F34745CA2A31F39600EE2FB8 /* MailCover in Frameworks */,
+				F38F9E1A2CEA18150033EFE3 /* DeviceKit in Frameworks */,
 				F3F6ACAF2A51E48700EE417F /* AlertKit in Frameworks */,
 				F34745C82A31F39100EE2FB8 /* ScrechKit in Frameworks */,
 				F328D8622A8242610038512F /* Algorithms in Frameworks */,
@@ -3554,6 +3556,7 @@
 				F342FAA72B2C61ED00854270 /* Pow */,
 				F33C2AC42C691764002FD150 /* QuickLooking */,
 				F36B739A2C8B073B00E858FE /* AudioVisualizer */,
+				F38F9E192CEA18150033EFE3 /* DeviceKit */,
 			);
 			productName = "Clip Demo";
 			productReference = F31BA54E2958FFAF0006D126 /* Clip Demo.app */;
@@ -6775,6 +6778,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F32675842A01B69600A026DC /* XCRemoteSwiftPackageReference "SafariCover" */;
 			productName = SafariCover;
+		};
+		F38F9E192CEA18150033EFE3 /* DeviceKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F335CA042C63E86D006C71C6 /* XCRemoteSwiftPackageReference "DeviceKit" */;
+			productName = DeviceKit;
 		};
 		F39A02852A31480800A92515 /* ScrechKit */ = {
 			isa = XCSwiftPackageProductDependency;

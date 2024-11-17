@@ -12,11 +12,11 @@ struct DynamicIslandBadge: View {
                 .semibold()
         }
         .font(.footnote)
-        .frame(width: 120, height: 35)
+        .frame(width: 120, height: 32)
         .background(.orange.gradient)
         .foregroundStyle(.white.gradient)
         .clipShape(.capsule)
-        .padding(.top, 12)
+        .padding(.top, 14)
         .ignoresSafeArea()
     }
 }

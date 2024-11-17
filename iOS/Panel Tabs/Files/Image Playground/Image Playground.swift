@@ -4,6 +4,15 @@ import PhotosUI
 
 @available(iOS 18.1, macOS 15.1, *)
 struct ImagePlayground: View {
+    @EnvironmentObject private var vm: FileTabVM
+    @Environment(\.dismiss) private var dismiss
+    
+    private let root: String
+    
+    init(root: String) {
+        self.root = root
+    }
+    
     @State private var showImagePlayground = false
     @State private var genImageURL: URL?
     @State private var selectedImage: Image?
@@ -114,6 +123,16 @@ struct ImagePlayground: View {
             }
         }
         .padding()
+        .toolbar {
+            Button("Upload") {
+                if let genImageURL {
+                    vm.handleFileImport([genImageURL], root: root)
+                }
+                
+                dismiss()
+            }
+            .disabled(genImageURL == nil)
+        }
         .imagePlaygroundSheet(
             isPresented: $showImagePlayground,
             concepts: imageConcepts,
@@ -144,5 +163,7 @@ struct ImagePlayground: View {
 
 @available(iOS 18.1, macOS 15.1, *)
 #Preview {
-    ImagePlayground()
+    NavigationView {
+        ImagePlayground(root: "")
+    }
 }

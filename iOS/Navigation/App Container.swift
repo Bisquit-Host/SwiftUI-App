@@ -41,9 +41,7 @@ struct AppContainer: View {
         }
 #if os(iOS)
         .overlay(alignment: .top) {
-            let device = Device.current
-            
-            if device.hasDynamicIsland && showBadge {
+            if Device.current.hasDynamicIsland && showBadge {
                 DynamicIslandBadge()
             }
         }

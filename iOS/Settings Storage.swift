@@ -7,6 +7,7 @@ final class SettingsStorage: ObservableObject {
     // MARK: - Auth
     @AppStorage("isApiKeyValid") var isApiKeyValid = false
     @AppStorage("useBiometry") var useBiometry = false
+    @AppStorage("show_dynamic_island_badge") var showDynamicIslandBadge = true
     
     // MARK: - App Style/Design
     @AppStorage("designCode") var designCode = 0

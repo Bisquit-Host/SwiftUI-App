@@ -4,6 +4,12 @@ import SwiftUI
 struct ImagePlaygroundButton: View {
     @Environment(\.supportsImagePlayground) private var supportsImagePlayground
     
+    private let root: String
+    
+    init(_ root: String = "") {
+        self.root = root
+    }
+    
     @State private var sheetImagePlayground = false
     
     var body: some View {
@@ -21,7 +27,9 @@ struct ImagePlaygroundButton: View {
         }
         .disabled(!supportsImagePlayground)
         .sheet($sheetImagePlayground) {
-            ImagePlayground()
+            NavigationView {
+                ImagePlayground(root: root)
+            }
         }
     }
 }
