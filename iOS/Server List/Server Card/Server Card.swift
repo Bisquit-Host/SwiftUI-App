@@ -94,7 +94,8 @@ struct ServerCard: View {
                 }
                 .frame(height: 90)
                 .padding(.horizontal)
-                .background(.ultraThinMaterial, in: .rect(cornerRadius: 22))
+                .background(.ultraThinMaterial, in: .rect(cornerRadius: vm.stateColor != .red ? 22 : 16))
+                .background(backgroundColor, in: .rect(cornerRadius: vm.stateColor != .red ? 22 : 16))
                 
             default:
                 EmptyView()
