@@ -31,6 +31,7 @@ struct InfoTabButtons: View {
                 InfoTabButton("Logs", icon: "list.bullet.rectangle.fill") {
                     sheetLogs = true
                 }
+                .keyboardShortcut("L")
                 
                 Button {
                     sheetSettings = true
@@ -51,6 +52,7 @@ struct InfoTabButtons: View {
                             isRotating = true
                         }
                 }
+                .keyboardShortcut("S")
             }
             
             HStack {
@@ -61,10 +63,12 @@ struct InfoTabButtons: View {
                 .title2(.semibold)
                 .foregroundStyle(.primary)
                 .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
+                .keyboardShortcut("I")
                 
                 InfoTabButton("Users", icon: "person.3.fill") {
                     sheetUsers = true
                 }
+                .keyboardShortcut("U")
             }
             
             Spacer()
