@@ -76,8 +76,9 @@ struct TextFile: View {
             vm.getFileContents(path + name)
         }
         .toolbar {
+            ShareLink(item: vm.text)
+            
             if vm.showPrettyButton {
-                ShareLink(item: vm.text)
                 
                 SFButton("ellipsis.curlybraces") {
                     vm.makePretty()
