@@ -635,8 +635,6 @@
 		F38F9E092CE6CCF90033EFE3 /* Image Playground Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E082CE6CCF90033EFE3 /* Image Playground Button.swift */; };
 		F38F9E0C2CE6CCF90033EFE3 /* Image Playground Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E082CE6CCF90033EFE3 /* Image Playground Button.swift */; };
 		F38F9E0D2CE6CCF90033EFE3 /* Image Playground Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E082CE6CCF90033EFE3 /* Image Playground Button.swift */; };
-		F38F9E0F2CE6CCF90033EFE3 /* Image Playground Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E082CE6CCF90033EFE3 /* Image Playground Button.swift */; };
-		F38F9E122CE7647D0033EFE3 /* Image Playground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E112CE7647D0033EFE3 /* Image Playground.swift */; };
 		F38F9E132CE7647D0033EFE3 /* Image Playground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E112CE7647D0033EFE3 /* Image Playground.swift */; };
 		F38F9E152CE7647D0033EFE3 /* Image Playground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E112CE7647D0033EFE3 /* Image Playground.swift */; };
 		F38F9E162CE7647D0033EFE3 /* Image Playground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E112CE7647D0033EFE3 /* Image Playground.swift */; };
@@ -5179,7 +5177,6 @@
 				F35B9F552A2D6D380045D014 /* Formatters.swift in Sources */,
 				F30088B32B3A20620051476C /* Backup Card.swift in Sources */,
 				F35FEB122B0A2C8D004DA05D /* Enums.swift in Sources */,
-				F38F9E0F2CE6CCF90033EFE3 /* Image Playground Button.swift in Sources */,
 				F3B1388A2A2D4D110026EAEE /* File Icon.swift in Sources */,
 				F35FEB082B09F003004DA05D /* API Key.swift in Sources */,
 				F35FEB1E2B0A7415004DA05D /* Cloud Keys.swift in Sources */,
@@ -5220,7 +5217,6 @@
 				F3464D282A86398000188B0C /* PowerSignalAppEnum.swift in Sources */,
 				F3DF50CA2B38FDDE00206CAE /* User 2Fa.swift in Sources */,
 				F35B9F5C2A2DC8D60045D014 /* Nav State.swift in Sources */,
-				F38F9E122CE7647D0033EFE3 /* Image Playground.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

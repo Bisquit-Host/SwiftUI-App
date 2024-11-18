@@ -2,7 +2,7 @@ import SwiftUI
 import ImagePlayground
 import PhotosUI
 
-@available(iOS 18.1, macOS 15.1, *)
+@available(iOS 18.1, *)
 struct ImagePlayground: View {
     @EnvironmentObject private var vm: FileTabVM
     @Environment(\.dismiss) private var dismiss

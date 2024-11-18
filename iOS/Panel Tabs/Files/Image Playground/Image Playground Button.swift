@@ -1,6 +1,6 @@
 import SwiftUI
 
-@available(iOS 18.1, macOS 15.1, *)
+@available(iOS 18.1, *)
 struct ImagePlaygroundButton: View {
     @Environment(\.supportsImagePlayground) private var supportsImagePlayground
     
