@@ -11,7 +11,7 @@ struct SidebarAdoptableTabView: ViewModifier {
     }
 }
 
-extension View {
+extension TabView {
     func sidebarAdaptableStyle() -> some View {
         self.modifier(SidebarAdoptableTabView())
     }
