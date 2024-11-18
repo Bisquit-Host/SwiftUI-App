@@ -1,8 +1,7 @@
-import Observation
 import AVFoundation
 
 @Observable
-final class AudioRecorder {
+final class AudioRecorderVM {
     var audioRecorder: AVAudioRecorder!
     
     func startRecording() {

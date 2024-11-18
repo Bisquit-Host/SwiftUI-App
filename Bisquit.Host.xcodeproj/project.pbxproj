@@ -675,6 +675,13 @@
 		F398E0E02CEB562400AA4DD7 /* Audio Player VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F398E0DF2CEB562400AA4DD7 /* Audio Player VM.swift */; };
 		F398E0E12CEB562400AA4DD7 /* Audio Player VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F398E0DF2CEB562400AA4DD7 /* Audio Player VM.swift */; };
 		F398E0E22CEB562400AA4DD7 /* Audio Player VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F398E0DF2CEB562400AA4DD7 /* Audio Player VM.swift */; };
+		F398E0E42CEB57FB00AA4DD7 /* Audio Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F398E0E32CEB57FB00AA4DD7 /* Audio Recorder.swift */; };
+		F398E0E52CEB57FB00AA4DD7 /* Audio Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F398E0E32CEB57FB00AA4DD7 /* Audio Recorder.swift */; };
+		F398E0E62CEB57FB00AA4DD7 /* Audio Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F398E0E32CEB57FB00AA4DD7 /* Audio Recorder.swift */; };
+		F398E0E72CEB57FB00AA4DD7 /* Audio Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F398E0E32CEB57FB00AA4DD7 /* Audio Recorder.swift */; };
+		F398E0E82CEB57FB00AA4DD7 /* Audio Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F398E0E32CEB57FB00AA4DD7 /* Audio Recorder.swift */; };
+		F398E0E92CEB57FB00AA4DD7 /* Audio Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F398E0E32CEB57FB00AA4DD7 /* Audio Recorder.swift */; };
+		F398E0EA2CEB57FB00AA4DD7 /* Audio Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F398E0E32CEB57FB00AA4DD7 /* Audio Recorder.swift */; };
 		F39919172A4653A300CC73DA /* Linear Gauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39919162A4653A300CC73DA /* Linear Gauge.swift */; };
 		F399933A2AF2E491006E8A9A /* Other Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39993392AF2E491006E8A9A /* Other Settings.swift */; };
 		F399933B2AF2E491006E8A9A /* Other Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39993392AF2E491006E8A9A /* Other Settings.swift */; };
@@ -1207,11 +1214,11 @@
 		F3F5BC982BF7668E00EB8FB1 /* Sensitivity Analyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5BC952BF7668E00EB8FB1 /* Sensitivity Analyzer.swift */; };
 		F3F6ACAF2A51E48700EE417F /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3F6ACAE2A51E48700EE417F /* AlertKit */; };
 		F3F716BD29E4D46600838586 /* Backup List Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F716BC29E4D46600838586 /* Backup List Footer.swift */; };
-		F3F86CFD2A5AEDB400A2C82E /* Audio Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F86CFC2A5AEDB400A2C82E /* Audio Recorder.swift */; };
-		F3F86CFE2A5AEDB400A2C82E /* Audio Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F86CFC2A5AEDB400A2C82E /* Audio Recorder.swift */; };
-		F3F86D002A5AEDCD00A2C82E /* Audio Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F86CFC2A5AEDB400A2C82E /* Audio Recorder.swift */; };
-		F3F86D012A5AEDCE00A2C82E /* Audio Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F86CFC2A5AEDB400A2C82E /* Audio Recorder.swift */; };
-		F3F86D022A5AEDCF00A2C82E /* Audio Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F86CFC2A5AEDB400A2C82E /* Audio Recorder.swift */; };
+		F3F86CFD2A5AEDB400A2C82E /* Audio Recorder VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F86CFC2A5AEDB400A2C82E /* Audio Recorder VM.swift */; };
+		F3F86CFE2A5AEDB400A2C82E /* Audio Recorder VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F86CFC2A5AEDB400A2C82E /* Audio Recorder VM.swift */; };
+		F3F86D002A5AEDCD00A2C82E /* Audio Recorder VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F86CFC2A5AEDB400A2C82E /* Audio Recorder VM.swift */; };
+		F3F86D012A5AEDCE00A2C82E /* Audio Recorder VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F86CFC2A5AEDB400A2C82E /* Audio Recorder VM.swift */; };
+		F3F86D022A5AEDCF00A2C82E /* Audio Recorder VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F86CFC2A5AEDB400A2C82E /* Audio Recorder VM.swift */; };
 		F3FA4DEA2A4CE82000547722 /* Account Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA4DE92A4CE82000547722 /* Account Settings.swift */; };
 		F3FA4DEB2A4CE82000547722 /* Account Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA4DE92A4CE82000547722 /* Account Settings.swift */; };
 		F3FA61542A1F8DB500A65AE1 /* Upload Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA61532A1F8DB500A65AE1 /* Upload Menu.swift */; };
@@ -1628,6 +1635,7 @@
 		F39872152A1B73830022B00E /* Video File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Video File.swift"; sourceTree = "<group>"; };
 		F398823E2987BF6E00B9BA2C /* Schedule Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Schedule Task.swift"; sourceTree = "<group>"; };
 		F398E0DF2CEB562400AA4DD7 /* Audio Player VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Audio Player VM.swift"; sourceTree = "<group>"; };
+		F398E0E32CEB57FB00AA4DD7 /* Audio Recorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Audio Recorder.swift"; sourceTree = "<group>"; };
 		F39919162A4653A300CC73DA /* Linear Gauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Linear Gauge.swift"; sourceTree = "<group>"; };
 		F39993392AF2E491006E8A9A /* Other Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Other Settings.swift"; sourceTree = "<group>"; };
 		F39CF3572A50C00C0077996D /* User View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User View.swift"; sourceTree = "<group>"; };
@@ -1783,7 +1791,7 @@
 		F3F2BBA42A540B8800D44CA6 /* Start Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page.swift"; sourceTree = "<group>"; };
 		F3F5BC952BF7668E00EB8FB1 /* Sensitivity Analyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sensitivity Analyzer.swift"; sourceTree = "<group>"; };
 		F3F716BC29E4D46600838586 /* Backup List Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Backup List Footer.swift"; sourceTree = "<group>"; };
-		F3F86CFC2A5AEDB400A2C82E /* Audio Recorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Audio Recorder.swift"; sourceTree = "<group>"; };
+		F3F86CFC2A5AEDB400A2C82E /* Audio Recorder VM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Audio Recorder VM.swift"; sourceTree = "<group>"; };
 		F3FA4DE92A4CE82000547722 /* Account Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account Settings.swift"; sourceTree = "<group>"; };
 		F3FA61532A1F8DB500A65AE1 /* Upload Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Upload Menu.swift"; sourceTree = "<group>"; };
 		F3FA61562A1F928500A65AE1 /* FileTab Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileTab Search.swift"; sourceTree = "<group>"; };
@@ -2295,11 +2303,13 @@
 			isa = PBXGroup;
 			children = (
 				F31BA5AB295902B00006D126 /* File Tab.swift */,
+				F398E0E32CEB57FB00AA4DD7 /* Audio Recorder.swift */,
 				F3D558AB2A3360ED00608447 /* File Tab VM.swift */,
 				F37266BB29D811B7005FD103 /* File View.swift */,
 				F37266BF29D826F5005FD103 /* File Details.swift */,
 				F37266A929D71A1B005FD103 /* File Icon.swift */,
 				F3F5BC952BF7668E00EB8FB1 /* Sensitivity Analyzer.swift */,
+				F3F86CFC2A5AEDB400A2C82E /* Audio Recorder VM.swift */,
 				F38F9E102CE764060033EFE3 /* Image Playground */,
 				F3BEEBC82A4AB45E00E686B8 /* Upload */,
 				F31BA5BA295903330006D126 /* Destinations */,
@@ -3175,7 +3185,6 @@
 				F39780242A2B9DB800956474 /* Upload Preview.swift */,
 				F380B3272BD7C4A4009062E8 /* Upload Preview List.swift */,
 				F35DA9582A28F5B100803E7E /* Upload Progress.swift */,
-				F3F86CFC2A5AEDB400A2C82E /* Audio Recorder.swift */,
 			);
 			path = Upload;
 			sourceTree = "<group>";
@@ -4076,7 +4085,7 @@
 				F30088FF2B3B62050051476C /* User Invitation Permission.swift in Sources */,
 				F3BC03B82B1FF8E40011F98A /* Database Context Menu.swift in Sources */,
 				F3F2A5BB29AC296D00AD20A4 /* Server Card Suspended.swift in Sources */,
-				F3F86D012A5AEDCE00A2C82E /* Audio Recorder.swift in Sources */,
+				F3F86D012A5AEDCE00A2C82E /* Audio Recorder VM.swift in Sources */,
 				F30C13042A545ADC00A7EFF0 /* Nav State.swift in Sources */,
 				F37080512A2A1EBA0046CE70 /* Schedule Task.swift in Sources */,
 				F38F9E202CEAB3410033EFE3 /* Sidebar Adoptable TabView.swift in Sources */,
@@ -4139,6 +4148,7 @@
 				F3796566295C51FF0074CA3D /* Gauge TV.swift in Sources */,
 				F3FFB7462A57F91700220FA5 /* Map List.swift in Sources */,
 				F3BB07BD2A5421B700F5EE2E /* Server List VM.swift in Sources */,
+				F398E0E72CEB57FB00AA4DD7 /* Audio Recorder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4208,6 +4218,7 @@
 				F3A7CF692C8DF3C900413400 /* Video File VM.swift in Sources */,
 				F3FA4DEA2A4CE82000547722 /* Account Settings.swift in Sources */,
 				F3E8415629FECB6800609DA3 /* Browser Sticker.swift in Sources */,
+				F398E0E42CEB57FB00AA4DD7 /* Audio Recorder.swift in Sources */,
 				F385824229D6215100BEEE1D /* App Icon.swift in Sources */,
 				F36797782A3A55E1009F2788 /* Log List Parent.swift in Sources */,
 				F380B3282BD7C4A4009062E8 /* Upload Preview List.swift in Sources */,
@@ -4236,7 +4247,7 @@
 				F375EC3C29EE88EA002CA969 /* Schedule List.swift in Sources */,
 				F3D7F8542C8F258B00368ECE /* Enable 2FA View.swift in Sources */,
 				F3BC03BC2B1FFBD50011F98A /* Backup Context Menu.swift in Sources */,
-				F3F86CFD2A5AEDB400A2C82E /* Audio Recorder.swift in Sources */,
+				F3F86CFD2A5AEDB400A2C82E /* Audio Recorder VM.swift in Sources */,
 				F380B3242BD7B9B6009062E8 /* Image Picker.swift in Sources */,
 				F3D7D87F29E83DEE00BCAFFE /* Design Settings.swift in Sources */,
 				F3A994A82A177DA400530615 /* Map View.swift in Sources */,
@@ -4424,6 +4435,7 @@
 				F31B2D982A7AD8C800C08EE6 /* Ansi.swift in Sources */,
 				F3499EFE2A277FDF006101B7 /* File Icon.swift in Sources */,
 				F3BE36D62A55E1D2007A0179 /* Nav Destinations.swift in Sources */,
+				F398E0E52CEB57FB00AA4DD7 /* Audio Recorder.swift in Sources */,
 				F30B61CE2B2907CA00F447B4 /* Debug Key.swift in Sources */,
 				F3BF6F232959D15E0059F39B /* App Settings.swift in Sources */,
 				F3464D272A86398000188B0C /* PowerSignalAppEnum.swift in Sources */,
@@ -4443,7 +4455,7 @@
 				F335CA092C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */,
 				F3E2BEE22C1C6BA800B7A6D4 /* Cache List VM.swift in Sources */,
 				F3EB09E52A2982680073916A /* Video File.swift in Sources */,
-				F3F86D002A5AEDCD00A2C82E /* Audio Recorder.swift in Sources */,
+				F3F86D002A5AEDCD00A2C82E /* Audio Recorder VM.swift in Sources */,
 				F30088FB2B3B56210051476C /* User List Parent.swift in Sources */,
 				F333B3BA2B80CF750005B84D /* Preview Property.swift in Sources */,
 				F3499EF82A275556006101B7 /* Websocket Message.swift in Sources */,
@@ -4661,6 +4673,7 @@
 				F3A994AB2A178A9E00530615 /* Map View.swift in Sources */,
 				F3DAD6BF2A4793F8002ED405 /* Circular Gauge.swift in Sources */,
 				F36D532E2A05B885007324C6 /* Schedule Task.swift in Sources */,
+				F398E0E82CEB57FB00AA4DD7 /* Audio Recorder.swift in Sources */,
 				F3A31B0D2B0B161D00F89C51 /* Cloud Key Card.swift in Sources */,
 				F337C1632A8CE962006F321C /* Startup View.swift in Sources */,
 				F36D534B2A05B974007324C6 /* Nav Destinations.swift in Sources */,
@@ -4699,7 +4712,7 @@
 				F37A36742A35173900517EFC /* Sftp View.swift in Sources */,
 				F33001422A4CEF840063FE0F /* Apikey VM.swift in Sources */,
 				F33001452A4CF06D0063FE0F /* Apikey Card.swift in Sources */,
-				F3F86CFE2A5AEDB400A2C82E /* Audio Recorder.swift in Sources */,
+				F3F86CFE2A5AEDB400A2C82E /* Audio Recorder VM.swift in Sources */,
 				F34169A62A49DF64003985E7 /* InfoTab Button.swift in Sources */,
 				F36D53472A05B932007324C6 /* Auth VM.swift in Sources */,
 				F389BB762A05B62C00911EBF /* Icon Settings.swift in Sources */,
@@ -4759,6 +4772,7 @@
 				F3D295E72AF3A3A900ED43A0 /* Create Backup Button.swift in Sources */,
 				F3D295EA2AF3A3CE00ED43A0 /* Command Line.swift in Sources */,
 				F3D2953E2AF39D5E00ED43A0 /* Bisquit.Host App.swift in Sources */,
+				F398E0EA2CEB57FB00AA4DD7 /* Audio Recorder.swift in Sources */,
 				F3D295562AF39E1A00ED43A0 /* Tip Cloud Keys.swift in Sources */,
 				F3D2954F2AF39DE600ED43A0 /* Browser VM.swift in Sources */,
 				F3D2955F2AF39E7700ED43A0 /* File Tab VM.swift in Sources */,
@@ -5075,7 +5089,7 @@
 				F3FD9F9C2C651B3800A69314 /* File Card.swift in Sources */,
 				F3FD9F982C651A4E00A69314 /* File List.swift in Sources */,
 				F3DF03DB2B74F01C00CF6F5E /* Database VM.swift in Sources */,
-				F3F86D022A5AEDCF00A2C82E /* Audio Recorder.swift in Sources */,
+				F3F86D022A5AEDCF00A2C82E /* Audio Recorder VM.swift in Sources */,
 				F3F2BB9D2A5403DD00D44CA6 /* Server List VM.swift in Sources */,
 				F3F2BBAB2A540E4400D44CA6 /* Nav Extension.swift in Sources */,
 				F38928322A445EA900561CDF /* Server Card.swift in Sources */,
@@ -5102,6 +5116,7 @@
 				F3F2BBAC2A540E6500D44CA6 /* Cloud Keys.swift in Sources */,
 				F32FD71A2B1E042C00723B88 /* Websocket Delegate.swift in Sources */,
 				F38928252A441B5D00561CDF /* Server Settings.swift in Sources */,
+				F398E0E92CEB57FB00AA4DD7 /* Audio Recorder.swift in Sources */,
 				F3464D312A863A6600188B0C /* Send Command.swift in Sources */,
 				F3317AED2A45E26900CA104D /* Guide Model.swift in Sources */,
 				F38928382A4460CC00561CDF /* Server Card VM.swift in Sources */,
@@ -5206,6 +5221,7 @@
 				F30088BD2B3A223E0051476C /* Database Card.swift in Sources */,
 				F300889D2B3A17CC0051476C /* Backup VM.swift in Sources */,
 				F30088DE2B3A3FBB0051476C /* Startup List.swift in Sources */,
+				F398E0E62CEB57FB00AA4DD7 /* Audio Recorder.swift in Sources */,
 				F3E08EC22A2CE89400116C1C /* Settings Storage.swift in Sources */,
 				F3DF50C32B38FCCC00206CAE /* Users VM.swift in Sources */,
 				F34F289C2ACDADA500FD618A /* Animated Tab.swift in Sources */,
