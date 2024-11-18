@@ -1,4 +1,3 @@
-import SwiftUI
 import ScrechKit
 //import HighlightedTextEditor
 
@@ -76,11 +75,19 @@ struct TextFile: View {
         .task {
             vm.getFileContents(path + name)
         }
+        .toolbar {
+            if vm.showPrettyButton {
+                SFButton("ellipsis.curlybraces") {
+                    if let pretty = prettyJSON(vm.text) {
+                        vm.text = pretty
+                        vm.showPrettyButton = false
+                    }
+                }
+            }
+        }
     }
 }
 
 #Preview {
-    TextFile("",
-             path: "",
-             name: "")
+    TextFile("", path: "", name: "")
 }

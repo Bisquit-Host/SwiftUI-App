@@ -10,6 +10,13 @@ final class TextFileVM {
     }
     
     var text = ""
+    var showPrettyButton = false
+    
+    private func checkPrettiness() {
+        if let pretty = ScrechKit.prettyJSON(text), pretty != text {
+            showPrettyButton = true
+        }
+    }
     
     func writeFile(_ write: String, path: String) {
         fileWriteAPI(id, write: write, path: path) { result in
@@ -29,6 +36,7 @@ final class TextFileVM {
             case .success(let model):
                 main {
                     self.text = model
+                    self.checkPrettiness()
                 }
                 
             case .failure(let error):

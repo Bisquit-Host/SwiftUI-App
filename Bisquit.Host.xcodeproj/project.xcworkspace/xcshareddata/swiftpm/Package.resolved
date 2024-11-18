@@ -51,8 +51,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/EmergeTools/Pow",
       "state" : {
-        "revision" : "f0d0f3e72d42beaf2b01f1cb798e1b55902814eb",
-        "version" : "1.0.4"
+        "revision" : "a504eb6d144bcf49f4f33029a2795345cb39e6b4",
+        "version" : "1.0.5"
       }
     },
     {
@@ -61,7 +61,7 @@
       "location" : "https://github.com/TopScrech/PteroNet",
       "state" : {
         "branch" : "main",
-        "revision" : "a22457cc09ec4d4d3f10f4e3a02ab58c85f30528"
+        "revision" : "2cc13bb67a1e4eeba96bf18bb17b173102856477"
       }
     },
     {
@@ -88,7 +88,7 @@
       "location" : "https://github.com/TopScrech/ScrechKit",
       "state" : {
         "branch" : "main",
-        "revision" : "68f5b5a9ceafdcc2590b65854e37d8f73a0e3275"
+        "revision" : "f922914753a6db980ef282f296009b8698048821"
       }
     },
     {
