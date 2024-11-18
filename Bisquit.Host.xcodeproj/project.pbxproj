@@ -647,6 +647,9 @@
 		F38F9E242CEAB3410033EFE3 /* Sidebar Adoptable TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E1F2CEAB3410033EFE3 /* Sidebar Adoptable TabView.swift */; };
 		F38F9E252CEAB3410033EFE3 /* Sidebar Adoptable TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E1F2CEAB3410033EFE3 /* Sidebar Adoptable TabView.swift */; };
 		F38F9E262CEAB3410033EFE3 /* Sidebar Adoptable TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E1F2CEAB3410033EFE3 /* Sidebar Adoptable TabView.swift */; };
+		F38F9E282CEB33510033EFE3 /* QuickLook File VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E272CEB33510033EFE3 /* QuickLook File VM.swift */; };
+		F38F9E292CEB33510033EFE3 /* QuickLook File VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E272CEB33510033EFE3 /* QuickLook File VM.swift */; };
+		F38F9E2A2CEB33510033EFE3 /* QuickLook File VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E272CEB33510033EFE3 /* QuickLook File VM.swift */; };
 		F390E53E2A84217D000B4460 /* Bisquit.Host App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* Bisquit.Host App.swift */; };
 		F3924EDB29A2291F00C4CC77 /* Language Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EDA29A2291F00C4CC77 /* Language Button.swift */; };
 		F3924EDF29A2333F00C4CC77 /* Settings VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EDE29A2333F00C4CC77 /* Settings VM.swift */; };
@@ -1604,6 +1607,7 @@
 		F38F9E082CE6CCF90033EFE3 /* Image Playground Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image Playground Button.swift"; sourceTree = "<group>"; };
 		F38F9E112CE7647D0033EFE3 /* Image Playground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image Playground.swift"; sourceTree = "<group>"; };
 		F38F9E1F2CEAB3410033EFE3 /* Sidebar Adoptable TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sidebar Adoptable TabView.swift"; sourceTree = "<group>"; };
+		F38F9E272CEB33510033EFE3 /* QuickLook File VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuickLook File VM.swift"; sourceTree = "<group>"; };
 		F3924EDA29A2291F00C4CC77 /* Language Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Language Button.swift"; sourceTree = "<group>"; };
 		F3924EDE29A2333F00C4CC77 /* Settings VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings VM.swift"; sourceTree = "<group>"; };
 		F3924EE629A25FBF00C4CC77 /* App Icon Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Icon Picker.swift"; sourceTree = "<group>"; };
@@ -3072,6 +3076,7 @@
 			isa = PBXGroup;
 			children = (
 				F3EB09EC2A2987F00073916A /* QuickLook File.swift */,
+				F38F9E272CEB33510033EFE3 /* QuickLook File VM.swift */,
 			);
 			path = "Quick Look";
 			sourceTree = "<group>";
@@ -4148,6 +4153,7 @@
 				F333B3B92B80CF700005B84D /* Preview Property.swift in Sources */,
 				F3E1D3ED2B3208BE009B7062 /* User 2Fa.swift in Sources */,
 				F3924EE729A25FBF00C4CC77 /* App Icon Picker.swift in Sources */,
+				F38F9E282CEB33510033EFE3 /* QuickLook File VM.swift in Sources */,
 				F31BA5272958FF7C0006D126 /* Bisquit.Host App.swift in Sources */,
 				F39E0A982C1BA11600C4E906 /* Discover Item.swift in Sources */,
 				F300891F2B3B896C0051476C /* File Permissions View.swift in Sources */,
@@ -4634,6 +4640,7 @@
 				F30088AB2B3A1A520051476C /* Schedule VM.swift in Sources */,
 				F335CA0C2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */,
 				F36D53332A05B8A9007324C6 /* Folder Path.swift in Sources */,
+				F38F9E2A2CEB33510033EFE3 /* QuickLook File VM.swift in Sources */,
 				F3AF91CE2B423A26001D8F80 /* SSH Create View.swift in Sources */,
 				F3A1D2392A2024E10053261E /* Browser Hints.swift in Sources */,
 				F3464D242A86397E00188B0C /* PowerSignalAppEnum.swift in Sources */,
@@ -4828,6 +4835,7 @@
 				F3D295AE2AF3A10300ED43A0 /* Cache Size.swift in Sources */,
 				F3D2954D2AF39DCB00ED43A0 /* Cloud Keys.swift in Sources */,
 				F3D2956D2AF39EE500ED43A0 /* Websocket.swift in Sources */,
+				F38F9E292CEB33510033EFE3 /* QuickLook File VM.swift in Sources */,
 				F3D295532AF39E0800ED43A0 /* Guide.swift in Sources */,
 				F3D295B42AF3A14A00ED43A0 /* Cache VM.swift in Sources */,
 				F3BC03BF2B1FFBD50011F98A /* Backup Context Menu.swift in Sources */,
