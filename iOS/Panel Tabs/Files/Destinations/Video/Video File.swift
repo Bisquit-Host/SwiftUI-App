@@ -23,6 +23,8 @@ struct VideoFile: View {
                 VideoPlayerView(url)
                     .blur(radius: vm.isSensitive ? 10 : 0)
 #endif
+            } else {
+                ProgressView()
             }
         }
         .navigationTitle(name)

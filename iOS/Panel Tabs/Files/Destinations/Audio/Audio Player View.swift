@@ -17,6 +17,8 @@ struct AudioPlayerView: View {
         VStack {
             if let audioUrl {
                 AudioVisualizerView(audioUrl, fileName: name, image: Image(.artwork))
+            } else {
+                ProgressView()
             }
         }
         .ignoresSafeArea()

@@ -21,6 +21,8 @@ struct QuickLookFile: View {
             if let url = vm.fileURL {
                 QuickLookView(url)
                     .transition(.opacity)
+            } else {
+                ProgressView()
             }
         }
         .animation(.default, value: vm.fileURL)
