@@ -16,7 +16,7 @@ struct NewScheduleSheet: View {
     @State private var dayOfWeek = "*"
     
     private var newSchedule: NewSchedule {
-        .init(
+        NewSchedule(
             name: name,
             isActive: isActive,
             onlyWhenOnline: onlyWhenOnline,

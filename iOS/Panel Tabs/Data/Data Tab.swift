@@ -9,9 +9,7 @@ struct DataTab: View {
     private let id: String
     private let limits: ServerFeatureLimits
     
-    init(_ id: String,
-         limits: ServerFeatureLimits
-    ) {
+    init(_ id: String, limits: ServerFeatureLimits) {
         self.id = id
         self.limits = limits
     }

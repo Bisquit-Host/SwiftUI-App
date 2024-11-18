@@ -15,6 +15,7 @@ struct BackupList: View {
         Section {
             ForEach(vm.backups, id: \.uuid) { backup in
                 BackupCard(backup)
+                    .focusable() // Applies to DB's & schedules as well
             }
             .onDelete { offsets in
                 vm.deleteBackups(offsets)

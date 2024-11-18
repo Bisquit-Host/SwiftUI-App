@@ -5,10 +5,10 @@ struct PanelView: View {
     @EnvironmentObject private var settings: SettingsStorage
     private var vm: PanelVM
     private var fileVM: FileTabVM
+    private var startupVM: StartupVM
     private var backupVM: BackupVM
     private var databaseVM: DatabaseVM
     private var scheduleVM: ScheduleVM
-    private var startupVM: StartupVM
     
     private let id: String
     
