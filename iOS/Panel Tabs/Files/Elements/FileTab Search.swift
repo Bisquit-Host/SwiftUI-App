@@ -14,7 +14,7 @@ struct FileSearch: View {
         HStack {
             Image(systemName: "magnifyingglass")
                 .title3(.semibold)
-                .foregroundStyle(.secondary)
+                .secondary()
             
             TextField("Search", text: $fieldSearch)
                 .autocorrectionDisabled()

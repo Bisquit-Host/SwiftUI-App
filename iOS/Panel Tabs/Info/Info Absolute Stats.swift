@@ -16,7 +16,7 @@ struct InfoAbsoluteStats: View {
                 VStack {
                     Text("Storage")
                         .footnote()
-                        .foregroundStyle(.secondary)
+                        .secondary()
                     
                     diskAbsolute
                 }
@@ -24,7 +24,7 @@ struct InfoAbsoluteStats: View {
                 VStack {
                     Text("Processor")
                         .footnote()
-                        .foregroundStyle(.secondary)
+                        .secondary()
                     
                     cpuAbsolute
                 }
@@ -32,7 +32,7 @@ struct InfoAbsoluteStats: View {
                 VStack {
                     Text("Memory")
                         .footnote()
-                        .foregroundStyle(.secondary)
+                        .secondary()
                     
                     ramAbsolute
                 }

@@ -36,7 +36,7 @@ struct UserCard: View {
 #if !os(watchOS)
                     Text(user.email)
                         .footnote()
-                        .foregroundStyle(.secondary)
+                        .secondary()
 #endif
                 }
                 

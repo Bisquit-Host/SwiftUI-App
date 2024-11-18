@@ -31,7 +31,7 @@ struct WidgetLiveActivity: Widget {
                     
                     Text(context.attributes.id)
                         .footnote()
-                        .foregroundStyle(.secondary)
+                        .secondary()
                 }
                 .padding(.horizontal)
                 
@@ -59,7 +59,7 @@ struct WidgetLiveActivity: Widget {
                     Text(context.attributes.id)
                         .caption2()
                         .rounded()
-                        .foregroundStyle(.secondary)
+                        .secondary()
                         .padding(.trailing, 5)
                 }
                 

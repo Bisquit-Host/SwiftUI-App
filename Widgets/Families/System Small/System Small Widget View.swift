@@ -56,7 +56,7 @@ struct SystemSmallWidgetView: View {
                         .foregroundStyle(.tertiary)
                     
                     Text(Date(), style: .time)
-                        .foregroundStyle(.secondary)
+                        .secondary()
                 }
                 .caption2()
                 

@@ -65,7 +65,7 @@ struct FileCard: View {
 #if DEBUG
             Text(file.mimetype)
                 .footnote()
-                .foregroundStyle(.secondary)
+                .secondary()
 #endif
         }
     }

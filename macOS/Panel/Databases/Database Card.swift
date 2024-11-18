@@ -21,14 +21,14 @@ struct DatabaseCard: View {
             
             Text("Endpoint: \(endpoint)")
                 .footnote()
-                .foregroundStyle(.secondary)
+                .secondary()
             
             let id = Text(database.id)
                 .foregroundStyle(.primary)
             
             Text("Identifier: \(id)")
                 .footnote()
-                .foregroundStyle(.secondary)
+                .secondary()
         }
         .padding()
         .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))

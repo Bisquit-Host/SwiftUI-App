@@ -18,7 +18,7 @@ struct CacheSize: View {
                 Text(cache.cacheSize)
                 
                 Image(systemName: "chevron.forward")
-                    .foregroundStyle(.secondary)
+                    .secondary()
             }
             .foregroundStyle(.foreground)
         }

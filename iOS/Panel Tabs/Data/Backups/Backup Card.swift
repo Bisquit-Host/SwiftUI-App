@@ -51,7 +51,7 @@ struct BackupCard: View {
                     
                     Text("Created: \(timeDifference)")
                         .footnote()
-                        .foregroundStyle(.secondary)
+                        .secondary()
                         .minimumScaleFactor(0.5)
                         .lineLimit(1)
                     
@@ -60,7 +60,7 @@ struct BackupCard: View {
                     
                     Text("Size: \(size)")
                         .footnote()
-                        .foregroundStyle(.secondary)
+                        .secondary()
                 }
 #if os(tvOS)
                 Spacer()

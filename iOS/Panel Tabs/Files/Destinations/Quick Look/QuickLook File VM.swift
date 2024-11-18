@@ -3,14 +3,15 @@ import PteroNet
 
 @Observable
 final class QuickLookFileVM {
-    var fileURL: URL? = nil
-    var isSensitive = false
-    
     private let id: String
     
     init(_ id: String) {
         self.id = id
     }
+    
+    var fileURL: URL? = nil
+    var isSensitive = false
+    var metadata: [URLResourceKey: Any]? = nil
     
     private func loadAndCheckImage() {
         let processor = SensitivityAnalyzer()
@@ -70,6 +71,7 @@ final class QuickLookFileVM {
                     self.fileURL = destinationURL
                     
                     Task {
+                        await self.fetchMetadata(destinationURL)
                         self.loadAndCheckImage()
                     }
                 }
@@ -80,4 +82,56 @@ final class QuickLookFileVM {
         .resume()
     }
     
+    func fetchMetadata(_ fileURL: URL) async {
+        guard FileManager.default.fileExists(atPath: fileURL.path) else {
+            print("File not found at URL: \(fileURL)")
+            return
+        }
+        
+        do {
+            let keys: Set<URLResourceKey> = [
+                .nameKey,
+                .localizedNameKey,
+                .localizedTypeDescriptionKey,
+                .creationDateKey,
+                .contentModificationDateKey,
+                .attributeModificationDateKey,
+                .contentAccessDateKey,
+                .isHiddenKey,
+                .isReadableKey,
+                .isWritableKey,
+                .isExecutableKey,
+                .fileSizeKey,
+                .fileAllocatedSizeKey,
+                .totalFileSizeKey,
+                .totalFileAllocatedSizeKey,
+                .preferredIOBlockSizeKey,
+                .typeIdentifierKey,
+                .contentTypeKey,
+                .generationIdentifierKey,
+                .documentIdentifierKey,
+                .fileIdentifierKey,
+                .isDirectoryKey,
+                .isRegularFileKey,
+                .isSymbolicLinkKey,
+                .isSystemImmutableKey,
+                .isUserImmutableKey,
+                .isExcludedFromBackupKey,
+                .isAliasFileKey,
+                .isPackageKey,
+                .linkCountKey,
+                .labelColorKey,
+                .labelNumberKey
+                // .tagNamesKey
+            ]
+            
+            let resourceValues = try fileURL.resourceValues(forKeys: keys)
+            let allTags = resourceValues.allValues
+            
+            print("Metadata: \(allTags)")
+            metadata = allTags
+        } catch {
+            print("Failed to fetch resource values: \(error)")
+        }
+    }
 }

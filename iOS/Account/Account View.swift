@@ -87,7 +87,7 @@ struct AccountView: View {
     private func param(_ param: String, value: String) -> some View {
         HStack {
             Text(param)
-                .foregroundStyle(.secondary)
+                .secondary()
             
             Spacer()
             

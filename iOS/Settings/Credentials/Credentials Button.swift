@@ -20,7 +20,7 @@ struct CredentialsButton: View {
                 Spacer()
                 
                 Image(systemName: "chevron.forward")
-                    .foregroundStyle(.secondary)
+                    .secondary()
             }
         }
         .sheet($sheetUpdateEmail) {

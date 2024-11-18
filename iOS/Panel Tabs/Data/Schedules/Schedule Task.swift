@@ -32,13 +32,13 @@ struct ScheduleTask: View {
                         .foregroundStyle(.primary)
                     
                     Text("Time offset: \(offset)")
-                        .foregroundStyle(.secondary)
+                        .secondary()
                     
                     let payload = Text(task.payload)
                         .foregroundStyle(.primary)
                     
                     Text("Payload: \(payload)")
-                        .foregroundStyle(.secondary)
+                        .secondary()
                         .lineLimit(1)
                 }
                 .caption2()

@@ -57,7 +57,7 @@ struct LogCard: View {
                 Spacer()
                 
                 Image(systemName: "info.circle")
-                    .foregroundStyle(.secondary)
+                    .secondary()
             }
         }
         .onTapGesture {

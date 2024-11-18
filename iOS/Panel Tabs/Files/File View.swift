@@ -59,7 +59,7 @@ struct FileView: View {
                 if settings.adminMode {
                     Text(mimeType)
                         .footnote()
-                        .foregroundStyle(.secondary)
+                        .secondary()
                 }
             }
         }

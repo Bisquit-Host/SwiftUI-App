@@ -650,6 +650,9 @@
 		F38F9E282CEB33510033EFE3 /* QuickLook File VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E272CEB33510033EFE3 /* QuickLook File VM.swift */; };
 		F38F9E292CEB33510033EFE3 /* QuickLook File VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E272CEB33510033EFE3 /* QuickLook File VM.swift */; };
 		F38F9E2A2CEB33510033EFE3 /* QuickLook File VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E272CEB33510033EFE3 /* QuickLook File VM.swift */; };
+		F38F9E2C2CEB39D80033EFE3 /* Metadata List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E2B2CEB39D80033EFE3 /* Metadata List.swift */; };
+		F38F9E2D2CEB39D80033EFE3 /* Metadata List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E2B2CEB39D80033EFE3 /* Metadata List.swift */; };
+		F38F9E2E2CEB39D80033EFE3 /* Metadata List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E2B2CEB39D80033EFE3 /* Metadata List.swift */; };
 		F390E53E2A84217D000B4460 /* Bisquit.Host App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* Bisquit.Host App.swift */; };
 		F3924EDB29A2291F00C4CC77 /* Language Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EDA29A2291F00C4CC77 /* Language Button.swift */; };
 		F3924EDF29A2333F00C4CC77 /* Settings VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EDE29A2333F00C4CC77 /* Settings VM.swift */; };
@@ -1608,6 +1611,7 @@
 		F38F9E112CE7647D0033EFE3 /* Image Playground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image Playground.swift"; sourceTree = "<group>"; };
 		F38F9E1F2CEAB3410033EFE3 /* Sidebar Adoptable TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sidebar Adoptable TabView.swift"; sourceTree = "<group>"; };
 		F38F9E272CEB33510033EFE3 /* QuickLook File VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuickLook File VM.swift"; sourceTree = "<group>"; };
+		F38F9E2B2CEB39D80033EFE3 /* Metadata List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Metadata List.swift"; sourceTree = "<group>"; };
 		F3924EDA29A2291F00C4CC77 /* Language Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Language Button.swift"; sourceTree = "<group>"; };
 		F3924EDE29A2333F00C4CC77 /* Settings VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings VM.swift"; sourceTree = "<group>"; };
 		F3924EE629A25FBF00C4CC77 /* App Icon Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Icon Picker.swift"; sourceTree = "<group>"; };
@@ -3077,6 +3081,7 @@
 			children = (
 				F3EB09EC2A2987F00073916A /* QuickLook File.swift */,
 				F38F9E272CEB33510033EFE3 /* QuickLook File VM.swift */,
+				F38F9E2B2CEB39D80033EFE3 /* Metadata List.swift */,
 			);
 			path = "Quick Look";
 			sourceTree = "<group>";
@@ -4347,6 +4352,7 @@
 				F375EC3829EE7213002CA969 /* Backup List.swift in Sources */,
 				F325F7092A54CB6600E89EC4 /* Carousel Button Style.swift in Sources */,
 				F367977E2A3A5AB6009F2788 /* Log VM.swift in Sources */,
+				F38F9E2E2CEB39D80033EFE3 /* Metadata List.swift in Sources */,
 				F3FF5A092A4A3745003A1973 /* InfoTab Background.swift in Sources */,
 				F3A28AD82C57ADF100010454 /* Demo Server.swift in Sources */,
 				F3573BC22C6511040051259E /* Intents.intentdefinition in Sources */,
@@ -4551,6 +4557,7 @@
 				F36D530D2A05B6C9007324C6 /* Server List Footer.swift in Sources */,
 				F3878ECE2A1BCE5000AD8657 /* Dev Settings.swift in Sources */,
 				F3BC03B92B1FF8E40011F98A /* Database Context Menu.swift in Sources */,
+				F38F9E2D2CEB39D80033EFE3 /* Metadata List.swift in Sources */,
 				F354E9842A48CA2000F6E359 /* Topbar Grid Button.swift in Sources */,
 				F36D531F2A05B82B007324C6 /* Info Tab.swift in Sources */,
 				F36D530E2A05B6CE007324C6 /* Browser.swift in Sources */,
@@ -4798,6 +4805,7 @@
 				F3D295312AF39C7500ED43A0 /* Language Button.swift in Sources */,
 				F3D295552AF39E1600ED43A0 /* Formatters.swift in Sources */,
 				F3D295442AF39D8A00ED43A0 /* Intro.swift in Sources */,
+				F38F9E2C2CEB39D80033EFE3 /* Metadata List.swift in Sources */,
 				F32FD7202B1E065500723B88 /* Network Calls.swift in Sources */,
 				F3D295502AF39DEA00ED43A0 /* Browser Hints.swift in Sources */,
 				F3D295D42AF3A30C00ED43A0 /* Console VM.swift in Sources */,

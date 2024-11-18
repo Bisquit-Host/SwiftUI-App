@@ -24,7 +24,7 @@ struct ServerListTopbar: View {
                 navState.navigate(.toSettings)
             } label: {
                 Image(systemName: "gear")
-                    .foregroundStyle(.secondary)
+                    .secondary()
                     .rotate(isRotating ? 360 : 0)
                     .animation(
                         .linear(duration: 60).repeatForever(autoreverses: false),

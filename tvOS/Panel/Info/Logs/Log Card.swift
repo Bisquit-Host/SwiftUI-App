@@ -63,7 +63,7 @@ struct LogCard: View {
                 if !log.properties.isEmpty {
                     Image(systemName: "info.circle")
                         .title3(.semibold)
-                        .foregroundStyle(.secondary)
+                        .secondary()
                 }
             }
         }

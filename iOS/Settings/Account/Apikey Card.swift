@@ -26,7 +26,7 @@ struct ApikeyCard: View {
                     
                     Text(key.id + "...")
                         .footnote()
-                        .foregroundStyle(.secondary)
+                        .secondary()
                 }
                 
                 Text("Created: \(timeSinceISO(key.created))")

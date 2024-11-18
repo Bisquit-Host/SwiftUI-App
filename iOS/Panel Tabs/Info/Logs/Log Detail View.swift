@@ -24,7 +24,7 @@ struct LogDetailView: View {
                         Spacer()
                         
                         Text(value)
-                            .foregroundStyle(.secondary)
+                            .secondary()
                     }
                 }
 #else

@@ -16,7 +16,7 @@ struct BackupCard: View {
             
             Text(backup.createdAt)
                 .footnote()
-                .foregroundStyle(.secondary)
+                .secondary()
         }
         .padding()
         .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))

@@ -40,7 +40,7 @@ struct StartupCard: View {
                 
                 Text(variable.description)
                     .footnote()
-                    .foregroundStyle(.secondary)
+                    .secondary()
                 
                 TextField("Type here", text: $value)
                     .autocorrectionDisabled()

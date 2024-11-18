@@ -1,5 +1,4 @@
 import ScrechKit
-//import PteroNet
 import QuickLooking
 
 struct QuickLookFile: View {
@@ -14,7 +13,8 @@ struct QuickLookFile: View {
         self.vm = QuickLookFileVM(id)
     }
     
-    @State private var showImagePlayground = false
+    @State private var sheetPlayground = false
+    @State private var sheetMetadata = false
     
     var body: some View {
         VStack {
@@ -27,6 +27,9 @@ struct QuickLookFile: View {
         .blur(radius: vm.isSensitive ? 10 : 0)
         .navigationTitle(name)
         .ignoresSafeArea(edges: .bottom)
+        .sheet($sheetMetadata) {
+            MetadataList(vm.metadata)
+        }
         .task {
             vm.downloadFile(name, root: root)
         }
@@ -35,8 +38,12 @@ struct QuickLookFile: View {
                 if #available(iOS 18.1, *) {
                     @Environment(\.supportsImagePlayground) var supportsImagePlayground
                     
+                    SFButton("tag") {
+                        sheetMetadata = true
+                    }
+                    
                     Button {
-                        showImagePlayground = true
+                        sheetPlayground = true
                     } label: {
                         Image(.appleIntelligence)
                             .resizable()
@@ -44,7 +51,7 @@ struct QuickLookFile: View {
                             .opacity(supportsImagePlayground ? 1 : 0.3)
                     }
                     .disabled(!supportsImagePlayground)
-                    .sheet($showImagePlayground) {
+                    .sheet($sheetPlayground) {
                         NavigationView {
                             ImagePlayground(url, root: root)
                         }

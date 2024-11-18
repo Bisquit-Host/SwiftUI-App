@@ -24,7 +24,7 @@ struct CacheLimit: View {
                 Text(cacheLimit.rawValue)
                 
                 Image(systemName: "chevron.forward")
-                    .foregroundStyle(.secondary)
+                    .secondary()
             }
         }
         .foregroundStyle(.primary)

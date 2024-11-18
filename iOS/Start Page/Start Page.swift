@@ -42,10 +42,10 @@ struct StartPage: View {
             HStack {
                 TextField("API-key", text: $vm.apiKey)
                     .unbold()
+                    .secondary()
                     .autocorrectionDisabled()
                     .textFieldStyle(.roundedBorder)
                     .cornerRadius(20)
-                    .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
                     .minimumScaleFactor(0.5)
                     .changeEffect(

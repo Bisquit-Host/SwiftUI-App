@@ -33,7 +33,7 @@ struct CloudKeyCard: View {
                     
                     Text(showFirstEightLetters(key.key))
                         .footnote()
-                        .foregroundStyle(.secondary)
+                        .secondary()
                 }
 #if !os(watchOS)
                 Spacer()

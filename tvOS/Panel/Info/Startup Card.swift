@@ -14,7 +14,7 @@ struct StartupCard: View {
     var body: some View {
         Section(variable.name) {            
             Text(variable.description)
-                .foregroundStyle(.secondary)
+                .secondary()
             
             TextField("Variable", text: $newValue)
                 .disabled(!variable.isEditable)

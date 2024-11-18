@@ -31,7 +31,7 @@ struct UserView: View {
                         
                         Text(timeSinceISO(user.createdAt))
                             .footnote()
-                            .foregroundStyle(.secondary)
+                            .secondary()
                     }
                 }
                 .lineLimit(1)

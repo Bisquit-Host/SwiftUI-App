@@ -19,7 +19,7 @@ struct AccountSettings: View {
                     Spacer()
                     
                     Image(systemName: "chevron.forward")
-                        .foregroundStyle(.secondary)
+                        .secondary()
                 }
             }
         }

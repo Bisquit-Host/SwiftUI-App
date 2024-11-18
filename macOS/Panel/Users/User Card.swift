@@ -38,7 +38,7 @@ struct UserCard: View {
                     Link(destination: destination) {
                         Text(user.email)
                             .footnote()
-                            .foregroundStyle(.secondary)
+                            .secondary()
                     }
                 }
             }

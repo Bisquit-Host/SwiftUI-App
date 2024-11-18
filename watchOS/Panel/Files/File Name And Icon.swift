@@ -24,7 +24,7 @@ struct FileNameAndIcon: View {
             
             if !file.mimetype.contains("directory") {
                 Text(formatBytes(file.size))
-                    .foregroundStyle(.secondary)
+                    .secondary()
             }
 #endif
         }

@@ -8,7 +8,7 @@ struct ServerListFooter: View {
             Text("Compiled in Russia with love ♥️")
         }
         .footnote()
-        .foregroundStyle(.secondary)
+        .secondary()
         .padding(.vertical, 5)
     }
 }

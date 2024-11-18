@@ -18,7 +18,7 @@ struct InfoStat: View {
         VStack(alignment: alignment) {
             Text(param)
                 .footnote()
-                .foregroundStyle(.secondary)
+                .secondary()
             
             Text(value)
                 .monospaced()

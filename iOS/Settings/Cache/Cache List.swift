@@ -19,7 +19,7 @@ struct CacheList: View {
                     Spacer()
                     
                     Text(cache.size)
-                        .foregroundStyle(.secondary)
+                        .secondary()
                 }
             }
         }
