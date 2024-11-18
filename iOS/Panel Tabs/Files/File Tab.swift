@@ -12,6 +12,8 @@ struct FileTab: View {
     
     @State private var image: UIImage?
     @State private var url: URL?
+    @State private var selectedItem: String?
+    @State private var selectedIndex: Int?
     
     private var fileCount: Int {
         vm.filteredFiles.count

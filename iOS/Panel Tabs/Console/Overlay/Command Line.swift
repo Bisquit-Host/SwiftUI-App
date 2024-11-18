@@ -59,9 +59,9 @@ struct CommandLine: View {
                                 }
                             }
                             
-//                            SFButton("book") {
-//                                
-//                            }
+                            //                            SFButton("book") {
+                            //
+                            //                            }
                         }
                         .subheadline(.semibold)
                         .frame(width: 50, height: 32)
