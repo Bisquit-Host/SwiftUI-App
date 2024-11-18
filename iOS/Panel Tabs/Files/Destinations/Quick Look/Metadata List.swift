@@ -7,6 +7,7 @@ struct MetadataList: View {
         self.metadata = metadata
     }
     
+#warning("Localize and add to other file types")
     var body: some View {
         if let metadata {
             let sorted = metadata.sorted {

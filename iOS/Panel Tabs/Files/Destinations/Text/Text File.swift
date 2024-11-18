@@ -60,6 +60,7 @@ struct TextFile: View {
                 .padding(10)
                 .disableAutocorrection(true)
                 .onSubmit {
+#warning("???")
                     print("Submit")
                 }
 #elseif os(watchOS)
@@ -77,9 +78,9 @@ struct TextFile: View {
         }
         .toolbar {
             ShareLink(item: vm.text)
+                .disabled(vm.text.isEmpty)
             
             if vm.showPrettyButton {
-                
                 SFButton("ellipsis.curlybraces") {
                     vm.makePretty()
                 }
