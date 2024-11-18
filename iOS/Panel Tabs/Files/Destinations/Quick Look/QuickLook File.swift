@@ -37,12 +37,20 @@ struct QuickLookFile: View {
         }
         .toolbar {
             if let url = vm.fileURL {
+                Menu {
+                    Button {
+                        sheetMetadata = true
+                    } label: {
+                        Label("Metadata", systemImage: "tag")
+                    }
+                    
+                    ShareLink(item: url)
+                } label: {
+                    Image(systemName: "ellipsis.circle")
+                }
+                
                 if #available(iOS 18.1, *) {
                     @Environment(\.supportsImagePlayground) var supportsImagePlayground
-                    
-                    SFButton("tag") {
-                        sheetMetadata = true
-                    }
                     
                     Button {
                         sheetPlayground = true
@@ -59,8 +67,6 @@ struct QuickLookFile: View {
                         }
                     }
                 }
-                
-                ShareLink(item: url)
             }
             
             if vm.isSensitive {

@@ -2854,6 +2854,16 @@
         }
       }
     },
+    "Metadata" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Метаданные"
+          }
+        }
+      }
+    },
     "Minute" : {
 
     },
