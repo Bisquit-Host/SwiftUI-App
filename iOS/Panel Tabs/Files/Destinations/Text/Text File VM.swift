@@ -18,6 +18,13 @@ final class TextFileVM {
         }
     }
     
+    func makePretty() {
+        if let pretty = ScrechKit.prettyJSON(text) {
+            text = pretty
+            showPrettyButton = false
+        }
+    }
+    
     func writeFile(_ write: String, path: String) {
         fileWriteAPI(id, write: write, path: path) { result in
             switch result {

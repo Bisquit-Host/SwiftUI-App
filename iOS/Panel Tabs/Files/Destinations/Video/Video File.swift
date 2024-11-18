@@ -30,6 +30,10 @@ struct VideoFile: View {
             vm.fetchVideoUrl(name, root: root)
         }
         .toolbar {
+            if let url = vm.localVideoUrl {
+                ShareLink(item: url)
+            }
+            
             if vm.isSensitive {
                 Button {
                     withAnimation {

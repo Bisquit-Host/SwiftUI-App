@@ -77,11 +77,10 @@ struct TextFile: View {
         }
         .toolbar {
             if vm.showPrettyButton {
+                ShareLink(item: vm.text)
+                
                 SFButton("ellipsis.curlybraces") {
-                    if let pretty = prettyJSON(vm.text) {
-                        vm.text = pretty
-                        vm.showPrettyButton = false
-                    }
+                    vm.makePretty()
                 }
             }
         }

@@ -48,18 +48,6 @@ struct ImagePlayground: View {
                 .padding(5)
             }
             
-            //            if let url = genImageURL {
-            //                AsyncImage(url: url) { image in
-            //                    image
-            //                        .resizable()
-            //                        .aspectRatio(contentMode: .fit)
-            //                        .frame(maxWidth: 300, maxHeight: 300)
-            //                        .clipShape(.rect(cornerRadius: 16))
-            //                } placeholder: {
-            //                    ProgressView()
-            //                }
-            //            }
-            
             if let selectedImage {
                 selectedImage
                     .resizable()
