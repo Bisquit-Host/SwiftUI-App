@@ -128,7 +128,6 @@ final class QuickLookFileVM {
             let resourceValues = try fileURL.resourceValues(forKeys: keys)
             let allTags = resourceValues.allValues
             
-            print("Metadata: \(allTags)")
             metadata = allTags
         } catch {
             print("Failed to fetch resource values: \(error)")

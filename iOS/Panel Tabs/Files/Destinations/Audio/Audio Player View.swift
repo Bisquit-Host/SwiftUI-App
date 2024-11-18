@@ -19,6 +19,7 @@ struct AudioPlayerView: View {
                 AudioVisualizerView(audioUrl, fileName: name, image: Image(.artwork))
             }
         }
+        .ignoresSafeArea()
         .task {
             downloadFile(name, root: root)
         }
