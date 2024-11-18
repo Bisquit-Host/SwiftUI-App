@@ -25,6 +25,7 @@ struct ImagePlaygroundButton: View {
                 Text("Image Playground")
             }
         }
+        .keyboardShortcut("P", modifiers: .command)
         .foregroundStyle(.foreground)
         .disabled(!supportsImagePlayground)
         .sheet($sheetImagePlayground) {

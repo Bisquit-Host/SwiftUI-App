@@ -74,7 +74,7 @@ struct FileTab: View {
         //                    .rotate(vm.degrees)
         //                    .bold()
         //            }
-        //            .keyboardShortcut("r", modifiers: .command)
+        //            .keyboardShortcut("R", modifiers: .command)
         //            //            }
         //        }
     }
