@@ -28,6 +28,7 @@ struct NewFolder: View {
             }
             .foregroundStyle(.foreground)
         }
+        .keyboardShortcut("N", modifiers: .command)
         
         if vm.showTextField {
             TextField("New folder", text: $vm.newFolderName)
