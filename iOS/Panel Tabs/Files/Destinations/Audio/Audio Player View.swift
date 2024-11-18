@@ -28,6 +28,10 @@ struct AudioPlayerView: View {
         .toolbar {
             if let audioUrl {
                 ShareLink(item: audioUrl)
+                    .transition(.identity)
+            } else {
+                ShareLink(item: name)
+                    .disabled(audioUrl == nil)
             }
         }
     }
@@ -73,7 +77,9 @@ struct AudioPlayerView: View {
                 try fm.copyItem(at: location, to: destinationURL)
                 
                 main {
-                    audioUrl = destinationURL
+                    withAnimation {
+                        audioUrl = destinationURL
+                    }
                 }
             } catch {
                 print("Error during file copy: \(error.localizedDescription)")
