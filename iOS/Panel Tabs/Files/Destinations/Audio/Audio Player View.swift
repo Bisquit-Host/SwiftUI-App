@@ -1,91 +1,39 @@
 import ScrechKit
-import PteroNet
 import AudioVisualizer
 
 struct AudioPlayerView: View {
+    @State private var vm: AudioPlayerVM
+    
     private let id, root, name: String
     
     init(_ id: String, root: String, name: String) {
         self.id = id
         self.root = root
         self.name = name
+        self.vm = AudioPlayerVM(id)
     }
-    
-    @State private var audioUrl: URL?
     
     var body: some View {
         VStack {
-            if let audioUrl {
-                AudioVisualizerView(audioUrl, fileName: name, image: Image(.artwork))
+            if let url = vm.audioUrl {
+                AudioVisualizerView(url, fileName: name, image: Image(.artwork))
             } else {
                 ProgressView()
             }
         }
         .ignoresSafeArea()
         .task {
-            downloadFile(name, root: root)
+            vm.downloadFile(name, root: root)
         }
         .toolbar {
-            if let audioUrl {
-                ShareLink(item: audioUrl)
+            if let url = vm.audioUrl {
+                ShareLink(item: url)
                     .transition(.identity)
             } else {
                 ShareLink(item: name)
-                    .disabled(audioUrl == nil)
+                    .disabled(vm.audioUrl == nil)
             }
         }
-    }
-    
-    private func downloadFile(_ file: String, root: String) {
-        fileDownloadAPI(id, path: root + "/\(file)") { result in
-            switch result {
-            case .success(let model):
-                if let model = model?.attributes.url {
-                    downloadVideo(model, name: file)
-                }
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-            }
-        }
-    }
-    
-    private func downloadVideo(_ urlString: String, name: String) {
-        let fm = FileManager.default
-        
-        guard let url = URL(string: urlString) else {
-            print("Invalid URL")
-            return
-        }
-        
-        let tempDirectoryURL = fm.temporaryDirectory
-        let destinationURL = tempDirectoryURL.appendingPathComponent(name)
-        
-        URLSession.shared.downloadTask(with: url) { location, response, error in
-            let fm = FileManager.default
-            
-            guard let location, error == nil else {
-                print("Download error: \(error?.localizedDescription ?? "No error description available")")
-                return
-            }
-            
-            do {
-                if fm.fileExists(atPath: destinationURL.path) {
-                    try fm.removeItem(at: destinationURL)
-                }
-                
-                try fm.copyItem(at: location, to: destinationURL)
-                
-                main {
-                    withAnimation {
-                        audioUrl = destinationURL
-                    }
-                }
-            } catch {
-                print("Error during file copy: \(error.localizedDescription)")
-            }
-        }
-        .resume()
     }
 }
 

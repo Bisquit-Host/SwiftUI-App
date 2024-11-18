@@ -672,6 +672,9 @@
 		F39872162A1B73830022B00E /* Video File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39872152A1B73830022B00E /* Video File.swift */; };
 		F39872172A1B73830022B00E /* Video File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39872152A1B73830022B00E /* Video File.swift */; };
 		F398823F2987BF6E00B9BA2C /* Schedule Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = F398823E2987BF6E00B9BA2C /* Schedule Task.swift */; };
+		F398E0E02CEB562400AA4DD7 /* Audio Player VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F398E0DF2CEB562400AA4DD7 /* Audio Player VM.swift */; };
+		F398E0E12CEB562400AA4DD7 /* Audio Player VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F398E0DF2CEB562400AA4DD7 /* Audio Player VM.swift */; };
+		F398E0E22CEB562400AA4DD7 /* Audio Player VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F398E0DF2CEB562400AA4DD7 /* Audio Player VM.swift */; };
 		F39919172A4653A300CC73DA /* Linear Gauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39919162A4653A300CC73DA /* Linear Gauge.swift */; };
 		F399933A2AF2E491006E8A9A /* Other Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39993392AF2E491006E8A9A /* Other Settings.swift */; };
 		F399933B2AF2E491006E8A9A /* Other Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39993392AF2E491006E8A9A /* Other Settings.swift */; };
@@ -1624,6 +1627,7 @@
 		F398720F2A1AE3CE0022B00E /* Video Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Video Player.swift"; sourceTree = "<group>"; };
 		F39872152A1B73830022B00E /* Video File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Video File.swift"; sourceTree = "<group>"; };
 		F398823E2987BF6E00B9BA2C /* Schedule Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Schedule Task.swift"; sourceTree = "<group>"; };
+		F398E0DF2CEB562400AA4DD7 /* Audio Player VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Audio Player VM.swift"; sourceTree = "<group>"; };
 		F39919162A4653A300CC73DA /* Linear Gauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Linear Gauge.swift"; sourceTree = "<group>"; };
 		F39993392AF2E491006E8A9A /* Other Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Other Settings.swift"; sourceTree = "<group>"; };
 		F39CF3572A50C00C0077996D /* User View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User View.swift"; sourceTree = "<group>"; };
@@ -2652,6 +2656,7 @@
 			isa = PBXGroup;
 			children = (
 				F36B73A22C8B0B7B00E858FE /* Audio Player View.swift */,
+				F398E0DF2CEB562400AA4DD7 /* Audio Player VM.swift */,
 			);
 			path = Audio;
 			sourceTree = "<group>";
@@ -4223,6 +4228,7 @@
 				F31BA57F2959012D0006D126 /* Guide.swift in Sources */,
 				F3496DC529E0091A0089FC28 /* Section Header.swift in Sources */,
 				F367977B2A3A55F4009F2788 /* Log Card.swift in Sources */,
+				F398E0E22CEB562400AA4DD7 /* Audio Player VM.swift in Sources */,
 				F358132B2A1F5D2A002ADFA4 /* Linking VM.swift in Sources */,
 				F3878ECD2A1BCE5000AD8657 /* Dev Settings.swift in Sources */,
 				F3496DC929E00CE70089FC28 /* Create Button.swift in Sources */,
@@ -4623,6 +4629,7 @@
 				F36D53222A05B83B007324C6 /* Websocket Message.swift in Sources */,
 				F3DD93D42A372BED006A41AA /* Console Overlay.swift in Sources */,
 				F36D533E2A05B8EC007324C6 /* Text File VM.swift in Sources */,
+				F398E0E12CEB562400AA4DD7 /* Audio Player VM.swift in Sources */,
 				F389BB682A05B5C100911EBF /* Guide.swift in Sources */,
 				F36D53252A05B85B007324C6 /* Data Tab.swift in Sources */,
 				F367977F2A3A5AB6009F2788 /* Log VM.swift in Sources */,
@@ -4811,6 +4818,7 @@
 				F3D295772AF39F2900ED43A0 /* Folder Path VM.swift in Sources */,
 				F3D295A12AF3A09D00ED43A0 /* Log List.swift in Sources */,
 				F3D295452AF39D9000ED43A0 /* Intro Model.swift in Sources */,
+				F398E0E02CEB562400AA4DD7 /* Audio Player VM.swift in Sources */,
 				F3D2959B2AF3A06B00ED43A0 /* Text File VM.swift in Sources */,
 				F3D2952A2AF39B2400ED43A0 /* Users VM.swift in Sources */,
 				F33DE50F2B36E3FB00E257D8 /* App Delegate.swift in Sources */,
