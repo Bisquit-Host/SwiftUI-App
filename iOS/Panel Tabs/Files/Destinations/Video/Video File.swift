@@ -34,6 +34,10 @@ struct VideoFile: View {
         .toolbar {
             if let url = vm.localVideoUrl {
                 ShareLink(item: url)
+                    .transition(.identity)
+            } else {
+                ShareLink(item: name)
+                    .disabled(vm.localVideoUrl == nil)
             }
             
             if vm.isSensitive {

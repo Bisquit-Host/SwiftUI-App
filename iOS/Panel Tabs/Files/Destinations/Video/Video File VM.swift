@@ -63,7 +63,10 @@ final class VideoFileVM {
                     Task {
                         await processor.checkVideo(fileURL) { blur in
                             self.isSensitive = blur
-                            self.localVideoUrl = fileURL
+                            
+                            withAnimation {
+                                self.localVideoUrl = fileURL
+                            }
                         }
                     }
 #else
