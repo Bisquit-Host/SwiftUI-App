@@ -22,6 +22,7 @@ struct TopbarGridButton: View {
             
             Image(systemName: icon)
         }
+        .keyboardShortcut("L", modifiers: .option)
     }
 }
 
