@@ -3081,8 +3081,8 @@
 			isa = PBXGroup;
 			children = (
 				F3EB09EC2A2987F00073916A /* QuickLook File.swift */,
-				F3D037002CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift */,
 				F38F9E272CEB33510033EFE3 /* QuickLook File VM.swift */,
+				F3D037002CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift */,
 				F38F9E2B2CEB39D80033EFE3 /* Metadata List.swift */,
 			);
 			path = "Quick Look";
