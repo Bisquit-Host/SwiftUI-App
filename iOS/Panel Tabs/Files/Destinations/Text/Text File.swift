@@ -1,7 +1,4 @@
 import ScrechKit
-//import HighlightedTextEditor
-
-//let betweenUnderscores = try! NSRegularExpression(pattern: "_[^_]+_", options: [])
 
 struct TextFile: View {
     private var vm: TextFileVM
@@ -19,20 +16,6 @@ struct TextFile: View {
         self.name = name
         self.vm = TextFileVM(id)
     }
-    
-    //    private let rules: [HighlightRule] = [
-    //        HighlightRule(pattern: betweenUnderscores, formattingRules: [
-    //            TextFormattingRule(fontTraits: [.traitItalic, .traitBold]),
-    //            TextFormattingRule(key: .foregroundStyle, value: UIColor.red),
-    //            TextFormattingRule(key: .underlineStyle) { content, range in
-    //                if content.count > 10 {
-    //                    return NSUnderlineStyle.double.rawValue
-    //                } else {
-    //                    return NSUnderlineStyle.single.rawValue
-    //                }
-    //            }
-    //        ])
-    //    ]
     
     var body: some View {
         @Bindable var vm = vm
@@ -52,17 +35,9 @@ struct TextFile: View {
                     }
             }
             
-            //                HighlightedTextEditor(text: $text, highlightRules: rules)
-            //                    .padding(10)
-            //                    .autocorrectionDisabled()
-            
             TextEditor(text: $vm.text)
                 .padding(10)
                 .disableAutocorrection(true)
-                .onSubmit {
-#warning("???")
-                    print("Submit")
-                }
 #elseif os(watchOS)
             ScrollView {
                 Text(vm.text)
