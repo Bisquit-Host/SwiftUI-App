@@ -4,8 +4,8 @@ struct FileIcon: View {
     private let icon: String
     private let color: Color
     
-    init(_ mimeType: String, filename: String = "") {
-        let (icon, color) = getFileIcon(mimeType: mimeType, filename: filename)
+    init(_ mimeType: String, name: String = "") {
+        let (icon, color) = getFileIcon(mimeType: mimeType, filename: name)
         self.icon = icon
         self.color = color
     }
@@ -66,7 +66,7 @@ fileprivate func getFileIcon(mimeType: String, filename: String = "") -> (String
         FileIcon("video")
         FileIcon("pdf")
         FileIcon("audio")
-        FileIcon("", filename: ".usdz")
+        FileIcon("", name: ".usdz")
         FileIcon("lock.doc")
     }
 }

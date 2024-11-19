@@ -46,7 +46,7 @@ struct FileView: View {
             HStack {
                 VStack(alignment: .leading) {
                     HStack {
-                        FileIcon(mimeType, filename: name)
+                        FileIcon(mimeType, name: name)
                             .semibold()
                             .frame(width: 20)
                         
