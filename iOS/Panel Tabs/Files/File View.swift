@@ -43,24 +43,34 @@ struct FileView: View {
                     .environmentObject(vm)
             }
         } label: {
-            VStack(alignment: .leading) {
-                HStack {
-                    FileIcon(mimeType, filename: name)
-                        .semibold()
-                        .frame(width: 20)
+            HStack {
+                VStack(alignment: .leading) {
+                    HStack {
+                        FileIcon(mimeType, filename: name)
+                            .semibold()
+                            .frame(width: 20)
+                        
+                        Text(name)
+                            .foregroundStyle(.primary)
+                            .minimumScaleFactor(0.5)
+                            .scaledToFit()
+                            .lineLimit(1)
+                    }
                     
-                    Text(name)
-                        .foregroundStyle(.primary)
-                        .minimumScaleFactor(0.5)
-                        .scaledToFit()
-                        .lineLimit(1)
+                    if settings.adminMode {
+                        Text(mimeType)
+                            .footnote()
+                            .secondary()
+                    }
                 }
                 
-                if settings.adminMode {
-                    Text(mimeType)
-                        .footnote()
-                        .secondary()
-                }
+                Spacer()
+                
+                let size = formatBytes(file.size)
+                
+                Text(size)
+                    .footnote()
+                    .secondary()
             }
         }
         .fileContextMenu(file, root: root)
