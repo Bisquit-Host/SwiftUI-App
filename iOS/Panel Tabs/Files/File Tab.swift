@@ -19,8 +19,6 @@ struct FileTab: View {
         vm.filteredFiles.count
     }
     
-    @State private var sheetRecorder = false
-    
     var body: some View {
         List {
             FileSearch($vm.searchField)
@@ -36,15 +34,6 @@ struct FileTab: View {
             if vm.isUploading {
                 UploadProgress()
             }
-            
-#if DEBUG
-            Button("Voice Memos") {
-                sheetRecorder = true
-            }
-            .sheet($sheetRecorder) {
-                AudioRecorder()
-            }
-#endif
             
             Section {
                 ForEach(vm.filteredFiles, id: \.name) { file in

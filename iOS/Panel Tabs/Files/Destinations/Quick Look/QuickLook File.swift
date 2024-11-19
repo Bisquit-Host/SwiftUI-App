@@ -13,7 +13,6 @@ struct QuickLookFile: View {
         self.vm = QuickLookFileVM(id)
     }
     
-    @State private var sheetPlayground = false
     @State private var sheetMetadata = false
     
     var body: some View {
@@ -37,6 +36,10 @@ struct QuickLookFile: View {
         }
         .toolbar {
             if let url = vm.fileURL {
+                if #available(iOS 18.1, *) {
+                    ImagePlaygroundToolbarButton(url, root: root, name: name)
+                }
+                
                 Menu {
                     Button {
                         sheetMetadata = true
@@ -47,25 +50,6 @@ struct QuickLookFile: View {
                     ShareLink(item: url)
                 } label: {
                     Image(systemName: "ellipsis.circle")
-                }
-                
-                if #available(iOS 18.1, *) {
-                    @Environment(\.supportsImagePlayground) var supportsImagePlayground
-                    
-                    Button {
-                        sheetPlayground = true
-                    } label: {
-                        Image(.appleIntelligence)
-                            .resizable()
-                            .frame(width: 25, height: 25)
-                            .opacity(supportsImagePlayground ? 1 : 0.3)
-                    }
-                    .disabled(!supportsImagePlayground)
-                    .sheet($sheetPlayground) {
-                        NavigationView {
-                            ImagePlayground(url, root: root)
-                        }
-                    }
                 }
             }
             
