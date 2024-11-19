@@ -32,14 +32,6 @@ struct VideoFile: View {
             vm.fetchVideoUrl(name, root: root)
         }
         .toolbar {
-            if let url = vm.localVideoUrl {
-                ShareLink(item: url)
-                    .transition(.identity)
-            } else {
-                ShareLink(item: name)
-                    .disabled(vm.localVideoUrl == nil)
-            }
-            
             if vm.isSensitive {
                 Button {
                     withAnimation {
@@ -48,6 +40,14 @@ struct VideoFile: View {
                 } label: {
                     Image(systemName: "eye.slash")
                 }
+            }
+            
+            if let url = vm.localVideoUrl {
+                ShareLink(item: url)
+                    .transition(.identity)
+            } else {
+                ShareLink(item: name)
+                    .disabled(vm.localVideoUrl == nil)
             }
         }
     }
