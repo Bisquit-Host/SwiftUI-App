@@ -2066,7 +2066,14 @@
 
     },
     "Grant all permissions" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Предоставить все разрешения"
+          }
+        }
+      }
     },
     "Grid" : {
       "extractionState" : "stale",
@@ -3401,7 +3408,14 @@
 
     },
     "Permissions" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Разрешения"
+          }
+        }
+      }
     },
     "Photo Library" : {
 
@@ -3672,7 +3686,14 @@
 
     },
     "Revoke all permissions" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отозвать все разрешения"
+          }
+        }
+      }
     },
     "Rotate password" : {
 
