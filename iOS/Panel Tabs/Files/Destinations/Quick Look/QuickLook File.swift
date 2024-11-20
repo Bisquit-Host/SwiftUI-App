@@ -1,5 +1,6 @@
 import ScrechKit
 import QuickLooking
+import UniformTypeIdentifiers
 
 struct QuickLookFile: View {
     @State private var vm: QuickLookFileVM
@@ -61,5 +62,14 @@ struct QuickLookFile: View {
                 }
             }
         }
+    }
+    
+#warning("Make use of")
+    private func isImage(_ url: URL) -> Bool {
+        guard let fileType = UTType(filenameExtension: url.pathExtension) else {
+            return false
+        }
+        
+        return fileType.conforms(to: .image)
     }
 }
