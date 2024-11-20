@@ -54,12 +54,10 @@ struct QuickLookFile: View {
             }
             
             if vm.isSensitive {
-                Button {
+                SFButton("eye.slash") {
                     withAnimation {
                         vm.isSensitive = false
                     }
-                } label: {
-                    Image(systemName: "eye.slash")
                 }
             }
         }
