@@ -35,36 +35,43 @@ struct QuickLookFile: View {
         .task {
             vm.downloadFile(name, root: root)
         }
-        .toolbar {
-            if let url = vm.fileURL {
-                if #available(iOS 18.1, *) {
-                    ImagePlaygroundToolbarButton(url, root: root, name: name)
-                }
-                
-                Menu {
-                    Button {
-                        sheetMetadata = true
-                    } label: {
-                        Label("Metadata", systemImage: "tag")
-                    }
-                    
-                    ShareLink(item: url)
-                } label: {
-                    Image(systemName: "ellipsis.circle")
-                }
-            }
-            
+        .overlay {
             if vm.isSensitive {
                 SFButton("eye.slash") {
                     withAnimation {
                         vm.isSensitive = false
                     }
                 }
+                .title(.semibold)
+                .padding()
+                .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
+            }
+        }
+        .toolbar {
+            if let url = vm.fileURL {
+                if #available(iOS 18.1, *) {
+                    if isImage(url) {
+                        ImagePlaygroundToolbarButton(url, root: root, name: name)
+                    }
+                }
+            }
+            
+            Menu {
+                Button {
+                    sheetMetadata = true
+                } label: {
+                    Label("Metadata", systemImage: "tag")
+                }
+                
+                if let url = vm.fileURL {
+                    ShareLink(item: url)
+                }
+            } label: {
+                Image(systemName: "ellipsis.circle")
             }
         }
     }
     
-#warning("Make use of")
     private func isImage(_ url: URL) -> Bool {
         guard let fileType = UTType(filenameExtension: url.pathExtension) else {
             return false
