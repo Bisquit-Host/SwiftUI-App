@@ -35,13 +35,14 @@ struct Discover: View {
                 }
                 
                 Section("Apps") {
-                    DiscoverCard(
-                        DiscoverItem(
-                            "More apps by Bisquit.Host",
-                            icon: "app.gift",
-                            url: "https://apps.apple.com/au/developer/sergei-saliukov/id1639409936"
-                        )
-                    )
+                    ListButton(
+                        "More apps by Bisquit.Host",
+                        icon: "app.gift",
+                        actionIcon: "link",
+                        color: .blue
+                    ) {
+                        openSafari("https://apps.apple.com/au/developer/sergei-saliukov/id1639409936")
+                    }
                     
                     DiscoverCard(
                         DiscoverItem(
