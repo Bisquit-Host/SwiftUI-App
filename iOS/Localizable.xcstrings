@@ -799,6 +799,9 @@
     "Assign allocation" : {
 
     },
+    "Attribute Modification Date" : {
+
+    },
     "Available configurations" : {
 
     },
@@ -1212,6 +1215,9 @@
     "Contacts provider" : {
 
     },
+    "Content Type" : {
+
+    },
     "Continue on failure" : {
 
     },
@@ -1402,6 +1408,9 @@
           }
         }
       }
+    },
+    "Created" : {
+
     },
     "Created: %@" : {
       "localizations" : {
@@ -1729,6 +1738,9 @@
     "Docker Image" : {
 
     },
+    "Document Identifier" : {
+
+    },
     "Done" : {
 
     },
@@ -1944,6 +1956,12 @@
     "Execute" : {
 
     },
+    "File Allocated Size" : {
+
+    },
+    "File Identifier" : {
+
+    },
     "File Manager" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1954,6 +1972,9 @@
           }
         }
       }
+    },
+    "File Size" : {
+
     },
     "Files" : {
       "extractionState" : "manual",
@@ -2060,6 +2081,9 @@
       }
     },
     "Generate" : {
+
+    },
+    "Generation Identifier" : {
 
     },
     "GitHub" : {
@@ -2604,6 +2628,30 @@
     "IP: %@" : {
 
     },
+    "Is Alias File" : {
+
+    },
+    "Is Directory" : {
+
+    },
+    "Is Excluded from Backup" : {
+
+    },
+    "Is Executable" : {
+
+    },
+    "Is Hidden" : {
+
+    },
+    "Is Package" : {
+
+    },
+    "Is Readable" : {
+
+    },
+    "Is Regular File" : {
+
+    },
     "is Suspended" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2637,6 +2685,12 @@
         }
       }
     },
+    "Is Symbolic Link" : {
+
+    },
+    "Is System Immutable" : {
+
+    },
     "Is the following information correct?" : {
       "localizations" : {
         "ru" : {
@@ -2646,6 +2700,12 @@
           }
         }
       }
+    },
+    "Is User Immutable" : {
+
+    },
+    "Is Writable" : {
+
     },
     "It is recommended to use the keyboard on your iPhone %@" : {
       "localizations" : {
@@ -2687,6 +2747,15 @@
           }
         }
       }
+    },
+    "Label Color" : {
+
+    },
+    "Label Number" : {
+
+    },
+    "Last opened" : {
+
     },
     "Last used: %@" : {
       "localizations" : {
@@ -2783,6 +2852,9 @@
         }
       }
     },
+    "Link Count" : {
+
+    },
     "listPath" : {
 
     },
@@ -2801,6 +2873,12 @@
       }
     },
     "Load data" : {
+
+    },
+    "Localized Name" : {
+
+    },
+    "Localized Type Description" : {
 
     },
     "Lock" : {
@@ -3483,6 +3561,9 @@
           }
         }
       }
+    },
+    "Preferred IO Block Size" : {
+
     },
     "Preview" : {
       "localizations" : {
@@ -4534,6 +4615,12 @@
         }
       }
     },
+    "Total File Allocated Size" : {
+
+    },
+    "Total File Size" : {
+
+    },
     "Total: %lld" : {
       "localizations" : {
         "nl" : {
@@ -4602,6 +4689,9 @@
     "Type here" : {
 
     },
+    "Type Identifier" : {
+
+    },
     "Unable to view the contents of %@" : {
       "localizations" : {
         "ru" : {
@@ -4621,6 +4711,9 @@
           }
         }
       }
+    },
+    "Unknown Key" : {
+
     },
     "Unlock" : {
 
