@@ -17,6 +17,8 @@ struct TextFile: View {
         self.vm = TextFileVM(id)
     }
     
+    private var tip = Tip_JsonFormatter()
+    
     var body: some View {
         @Bindable var vm = vm
         
@@ -56,9 +58,19 @@ struct TextFile: View {
                 .disabled(vm.text.isEmpty)
             
             if vm.showPrettyButton {
-                SFButton("ellipsis.curlybraces") {
+                Button {
+                    tip.invalidate(reason: .actionPerformed)
                     vm.makePretty()
+                } label: {
+                    Image(systemName: "ellipsis.curlybraces")
                 }
+#if !os(watchOS)
+                .popoverTip(tip) { action in
+                    if action.id == "format-json" {
+                        vm.makePretty()
+                    }
+                }
+#endif
             }
         }
     }

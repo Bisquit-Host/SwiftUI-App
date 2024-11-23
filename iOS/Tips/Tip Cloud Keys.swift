@@ -18,7 +18,7 @@ struct Tip_CloudKeys: Tip {
     VStack {
         TipView(Tip_CloudKeys())
     }
-#if os(iOS)
+#if !os(watchOS)
     .popoverTip(Tip_CloudKeys())
 #endif
 }

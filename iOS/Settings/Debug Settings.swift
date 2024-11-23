@@ -1,4 +1,5 @@
 import SwiftUI
+import TipKit
 
 #if canImport(ContactProvider)
 import ContactProvider
@@ -11,6 +12,13 @@ struct DebugSettings: View {
     
     var body: some View {
         List {
+            Button {
+                Tips.showAllTipsForTesting()
+            } label: {
+                Label("Show all tips", systemImage: "lightbulb.max")
+                    .foregroundStyle(.yellow)
+            }
+            
             Section("Contacts provider") {
                 Toggle("Save contacts automatically", isOn: $storage.contactsProviderEnabled)
                 

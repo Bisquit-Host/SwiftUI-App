@@ -1,5 +1,4 @@
 import ScrechKit
-import TipKit
 
 struct SuspendedServerCard: View {
     @EnvironmentObject private var settings: SettingsStorage

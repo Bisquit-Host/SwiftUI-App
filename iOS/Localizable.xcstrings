@@ -1815,6 +1815,9 @@
         }
       }
     },
+    "Easily format and visualize your JSON data" : {
+
+    },
     "Email" : {
 
     },
@@ -2041,6 +2044,9 @@
           }
         }
       }
+    },
+    "Format" : {
+
     },
     "Formatting" : {
 
@@ -2707,6 +2713,9 @@
           }
         }
       }
+    },
+    "JSON Formatter" : {
+
     },
     "Key list" : {
       "extractionState" : "stale",
@@ -4093,6 +4102,9 @@
           }
         }
       }
+    },
+    "Show all tips" : {
+
     },
     "Show description (ru)" : {
       "localizations" : {

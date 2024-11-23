@@ -804,6 +804,14 @@
 		F3A994AC2A17904F00530615 /* Map VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A92A177ED100530615 /* Map VM.swift */; };
 		F3A994AE2A17A9B100530615 /* Map List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994AD2A17A9B100530615 /* Map List.swift */; };
 		F3A994AF2A17AED500530615 /* Map List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994AD2A17A9B100530615 /* Map List.swift */; };
+		F3AB4A772CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A762CF1D97C00A8252F /* Tip JSON Formatter.swift */; };
+		F3AB4A782CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A762CF1D97C00A8252F /* Tip JSON Formatter.swift */; };
+		F3AB4A792CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A762CF1D97C00A8252F /* Tip JSON Formatter.swift */; };
+		F3AB4A7A2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A762CF1D97C00A8252F /* Tip JSON Formatter.swift */; };
+		F3AB4A7B2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A762CF1D97C00A8252F /* Tip JSON Formatter.swift */; };
+		F3AB4A7C2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A762CF1D97C00A8252F /* Tip JSON Formatter.swift */; };
+		F3AB4A7D2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A762CF1D97C00A8252F /* Tip JSON Formatter.swift */; };
+		F3AB4A7E2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A762CF1D97C00A8252F /* Tip JSON Formatter.swift */; };
 		F3AE522329ACF7D600CB3895 /* Server Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* Server Card VM.swift */; };
 		F3AF91C12B423492001D8F80 /* SSH VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91C02B423492001D8F80 /* SSH VM.swift */; };
 		F3AF91C22B423492001D8F80 /* SSH VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91C02B423492001D8F80 /* SSH VM.swift */; };
@@ -1669,6 +1677,7 @@
 		F3A994A72A177DA400530615 /* Map View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Map View.swift"; sourceTree = "<group>"; };
 		F3A994A92A177ED100530615 /* Map VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Map VM.swift"; sourceTree = "<group>"; };
 		F3A994AD2A17A9B100530615 /* Map List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Map List.swift"; sourceTree = "<group>"; };
+		F3AB4A762CF1D97C00A8252F /* Tip JSON Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tip JSON Formatter.swift"; sourceTree = "<group>"; };
 		F3AE522229ACF7D600CB3895 /* Server Card VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card VM.swift"; sourceTree = "<group>"; };
 		F3AF91C02B423492001D8F80 /* SSH VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SSH VM.swift"; sourceTree = "<group>"; };
 		F3AF91C42B423535001D8F80 /* SSH List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SSH List.swift"; sourceTree = "<group>"; };
@@ -2581,6 +2590,7 @@
 			children = (
 				F35B89BD2A725710000B5EEF /* Tip Suspended Server.swift */,
 				F3A800312A7313E900CAC40B /* Tip Cloud Keys.swift */,
+				F3AB4A762CF1D97C00A8252F /* Tip JSON Formatter.swift */,
 			);
 			path = Tips;
 			sourceTree = "<group>";
@@ -4050,6 +4060,7 @@
 				F3EB09DA2A295C460073916A /* Video Player.swift in Sources */,
 				F342FAB32B2E43D500854270 /* Log Card.swift in Sources */,
 				F333B3BC2B80CF750005B84D /* Preview Property.swift in Sources */,
+				F3AB4A792CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
 				F30088F32B3B475C0051476C /* Startup Card.swift in Sources */,
 				F37061CA29774886009B4067 /* Nav Destinations.swift in Sources */,
 				F3EB09DD2A295F7C0073916A /* Text File VM.swift in Sources */,
@@ -4203,6 +4214,7 @@
 				F31BA591295901C00006D126 /* Browser VM.swift in Sources */,
 				F3AF91CD2B423A26001D8F80 /* SSH Create View.swift in Sources */,
 				F3A7CF692C8DF3C900413400 /* Video File VM.swift in Sources */,
+				F3AB4A7C2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
 				F3FA4DEA2A4CE82000547722 /* Account Settings.swift in Sources */,
 				F3E8415629FECB6800609DA3 /* Browser Sticker.swift in Sources */,
 				F385824229D6215100BEEE1D /* App Icon.swift in Sources */,
@@ -4465,6 +4477,7 @@
 				F3A31B0A2B0B161D00F89C51 /* Cloud Key Card.swift in Sources */,
 				F3A28ADA2C57ADF100010454 /* Demo Server.swift in Sources */,
 				F3D295152AF396FD00ED43A0 /* Tabs.swift in Sources */,
+				F3AB4A7A2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
 				F3EB09D82A2958710073916A /* Text File VM.swift in Sources */,
 				F37266E429D9A867005FD103 /* Console.swift in Sources */,
 				F37266DC29D9A27A005FD103 /* Suspended Card.swift in Sources */,
@@ -4528,6 +4541,7 @@
 				F36D53302A05B896007324C6 /* Section Header.swift in Sources */,
 				F325F7012A54BBCF00E89EC4 /* InfoTab Allocation.swift in Sources */,
 				F39626F32A7AD64B0057E356 /* Ansi.swift in Sources */,
+				F3AB4A7E2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
 				F30088A02B3A17DF0051476C /* Backup VM.swift in Sources */,
 				F3E2BF0F2C1EC94300B7A6D4 /* Contacts VM.swift in Sources */,
 				F3553FB62B40939C00EF0FD2 /* Allocation VM.swift in Sources */,
@@ -4912,6 +4926,7 @@
 				F3D2959A2AF3A06800ED43A0 /* Text File.swift in Sources */,
 				F3D2956B2AF39ECF00ED43A0 /* SptiteKit BisquitFall.swift in Sources */,
 				F3D295E62AF3A39D00ED43A0 /* Inspector Button.swift in Sources */,
+				F3AB4A772CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
 				F3D295DA2AF3A34500ED43A0 /* Console View.swift in Sources */,
 				F3D295872AF39FB900ED43A0 /* Server Card VM.swift in Sources */,
 			);
@@ -4987,6 +5002,7 @@
 				F3255E1F2C904A71008E04DE /* Enable 2FA View.swift in Sources */,
 				F3255E202C904A71008E04DE /* Disable 2FA View.swift in Sources */,
 				F3255E212C904A71008E04DE /* QR Code View.swift in Sources */,
+				F3AB4A7B2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
 				F3A7CF612C8C569300413400 /* Server List VM.swift in Sources */,
 				F3A7CEF42C8BB7E500413400 /* Network Calls.swift in Sources */,
 				F3A7CEEF2C8BB79500413400 /* Gauge Disk.swift in Sources */,
@@ -5109,6 +5125,7 @@
 				F32FD7212B1E065500723B88 /* Network Calls.swift in Sources */,
 				F35FEB142B0A2C8F004DA05D /* Enums.swift in Sources */,
 				F37B90792BFEA00300597624 /* Panel Ornament Info.swift in Sources */,
+				F3AB4A7D2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
 				F33174DD2B725E3E003758EA /* Backup List.swift in Sources */,
 				F3A7CF702A44FD5300331B51 /* Server Card Parent.swift in Sources */,
 			);
@@ -5214,6 +5231,7 @@
 				F3458BF02B36EA49000E8324 /* App Delegate.swift in Sources */,
 				F32FD7192B1E042C00723B88 /* Websocket Delegate.swift in Sources */,
 				F30C13122A54609000A7EFF0 /* Server List.swift in Sources */,
+				F3AB4A782CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
 				F32FD7172B1E042400723B88 /* Websocket.swift in Sources */,
 				F30088AD2B3A1F500051476C /* User View.swift in Sources */,
 				F30088DA2B3A3BF50051476C /* Console View.swift in Sources */,

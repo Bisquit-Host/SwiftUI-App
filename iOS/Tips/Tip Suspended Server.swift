@@ -18,7 +18,7 @@ struct Tip_SuspendedServer: Tip {
     VStack {
         TipView(Tip_SuspendedServer())
     }
-#if os(iOS)
+#if !os(watchOS)
     .popoverTip(Tip_SuspendedServer())
 #endif
 }
