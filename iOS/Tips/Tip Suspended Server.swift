@@ -21,6 +21,7 @@ struct Tip_SuspendedServer: Tip {
 #Preview {
     VStack {
         TipView(Tip_SuspendedServer())
+            .padding()
     }
 #if !os(watchOS)
     .popoverTip(Tip_SuspendedServer())

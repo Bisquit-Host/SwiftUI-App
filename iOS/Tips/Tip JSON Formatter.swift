@@ -21,6 +21,7 @@ struct Tip_JsonFormatter: Tip {
 #Preview {
     VStack {
         TipView(Tip_JsonFormatter())
+            .padding()
     }
 #if !os(watchOS)
     .popoverTip(Tip_JsonFormatter())
