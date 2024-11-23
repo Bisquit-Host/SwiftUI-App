@@ -6,7 +6,7 @@ struct Tip_SuspendedServer: Tip {
     }
     
     var message: Text? {
-        Text("Tip.SuspendedServer")
+        Text("Data may be lost if the service is not renewed")
     }
     
     var image: Image? {

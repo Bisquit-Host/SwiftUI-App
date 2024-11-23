@@ -1480,6 +1480,16 @@
         }
       }
     },
+    "Data may be lost if the service is not renewed" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Данные могут быть потеряны, если не продлить услугу"
+          }
+        }
+      }
+    },
     "Data type" : {
 
     },
@@ -2260,6 +2270,16 @@
         }
       }
     },
+    "iCloud ensures the secure and efficient storage of your precious data, including API-keys" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iCloud обеспечивает безопасное и эффективное хранение ваших данных, включая API-ключи"
+          }
+        }
+      }
+    },
     "iCloud Storage" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -2357,35 +2377,6 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Резервная копия - это надежный дубликат жизненно важных данных, позволяющий восстановить их в случае потери или повреждения, помогая предотвратить значительную потерю данных."
-          }
-        }
-      }
-    },
-    "Info.CloudStorage" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "iCloud ensures the secure and efficient storage of your precious data, including API-keys."
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "iCloud zorgt voor de veilige en efficiënte opslag van uw waardevolle gegevens, inclusief API-sleutels."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "iCloud обеспечивает безопасное и эффективное хранение ваших данных, включая API-ключи."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "iCloud обеспечивает безопасное и эффективное хранение ваших ценных данных, включая API-ключи."
           }
         }
       }
@@ -4532,35 +4523,6 @@
     },
     "Time offset: %@" : {
 
-    },
-    "Tip.SuspendedServer" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Data may be lost if the service is not renewed."
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gegevens kunnen verloren gaan als de dienst niet wordt verlengd."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Данные могут быть потеряны, если не продлить услугу."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Данные могут быть потеряны, если не продлить услугу."
-          }
-        }
-      }
     },
     "To activate the app, please enter a valid API-key" : {
       "localizations" : {
