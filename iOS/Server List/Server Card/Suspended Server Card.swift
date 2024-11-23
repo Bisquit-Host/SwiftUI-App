@@ -11,7 +11,7 @@ struct SuspendedServerCard: View {
     
     private var corner: CGFloat {
         switch settings.designCode {
-        case 0: 35
+        case 0: 22
         default: 16
         }
     }
@@ -31,7 +31,6 @@ struct SuspendedServerCard: View {
         .frame(maxWidth: 600, maxHeight: 200)
         .padding(10)
         .background(.ultraThinMaterial, in: .rect(cornerRadius: corner))
-        .popoverTip(Tip_SuspendedServer())
     }
 }
 

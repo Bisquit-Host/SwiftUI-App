@@ -17,7 +17,6 @@ struct ServerCardParent: View {
         VStack {
             if server.isSuspended {
                 SuspendedServerCard(server.name)
-                    .popoverTip(Tip_SuspendedServer())
             } else {
                 Button {
                     navState.navigate(.toPanel(server.id))

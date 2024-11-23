@@ -12,6 +12,10 @@ struct Tip_SuspendedServer: Tip {
     var image: Image? {
         Image(systemName: "snow")
     }
+    
+    var actions: [Action] {
+        Action(id: "open-billing", title: "Billing")
+    }
 }
 
 #Preview {

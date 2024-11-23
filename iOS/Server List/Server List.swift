@@ -1,11 +1,12 @@
 import ScrechKit
-import StoreKit
+import TipKit
 
 struct ServerList: View {
     @Environment(ServerListVM.self) private var vm
     @EnvironmentObject private var settings: SettingsStorage
     
     @State private var searchField = ""
+    @State private var showSafari = false
     
     var body: some View {
         @Bindable var vm = vm
@@ -13,12 +14,23 @@ struct ServerList: View {
 #warning("Present a warning when 2FA is disabled")
         
         ScrollView(showsIndicators: false) {
+            if vm.servers.contains(where: {
+                $0.isSuspended
+            }) {
+                TipView(Tip_SuspendedServer()) { action in
+                    if action.id == "open-billing" {
+                        showSafari = true
+                    }
+                }
+            }
+            
             ServerListGrid(vm.filteredServers)
-                .padding(4)
         }
+        .padding(4)
         .environment(vm)
         .searchable(text: $searchField)
         .navigationBarBackButtonHidden()
+        .safariCover($showSafari, url: "https://my.bisquit.host")
         .background {
             BisquitFall()
         }
