@@ -5,12 +5,7 @@ struct TextFile: View {
     
     private let id, path, name: String
     
-    init(
-        _ id: String,
-        path: String,
-        name: String,
-        model: TextFileVM = TextFileVM("")
-    ) {
+    init(_ id: String, path: String, name: String) {
         self.id = id
         self.path = path
         self.name = name
