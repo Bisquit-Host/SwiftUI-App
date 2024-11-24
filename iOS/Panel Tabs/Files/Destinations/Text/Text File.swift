@@ -49,9 +49,10 @@ struct TextFile: View {
             vm.getFileContents(path + name)
         }
         .toolbar {
+#if !os(tvOS)
             ShareLink(item: vm.text)
                 .disabled(vm.text.isEmpty)
-            
+#endif
             if vm.showPrettyButton {
                 Button {
                     tip.invalidate(reason: .actionPerformed)

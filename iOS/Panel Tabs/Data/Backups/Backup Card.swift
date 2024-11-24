@@ -71,13 +71,11 @@ struct BackupCard: View {
             .foregroundStyle(.foreground)
         }
 #if os(tvOS)
-        .sheet($vm.showSafari) {
-            QRCodeView(vm.downloadUrl)
+        .sheet($cardVm.showSafari) {
+            QRCodeView(cardVm.url)
         }
 #else
         .safariCover($cardVm.showSafari, url: cardVm.url)
-#endif
-#if !os(tvOS)
         .swipeActions {
             Button(role: .destructive) {
                 vm.deleteBackup(backup.uuid)

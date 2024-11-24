@@ -58,10 +58,9 @@ struct FileCard: View {
     
     private func FileLabel() -> some View {
         HStack {
-            FileIcon(file.mimetype, filename: file.name)
+            FileIcon(file.mimetype, name: file.name)
             
             Text(file.name)
-            
 #if DEBUG
             Text(file.mimetype)
                 .footnote()

@@ -42,6 +42,7 @@ struct VideoFile: View {
                 }
             }
             
+#if !os(tvOS)
             if let url = vm.localVideoUrl {
                 ShareLink(item: url)
                     .transition(.identity)
@@ -49,6 +50,7 @@ struct VideoFile: View {
                 ShareLink(item: name)
                     .disabled(vm.localVideoUrl == nil)
             }
+#endif
         }
     }
 }
