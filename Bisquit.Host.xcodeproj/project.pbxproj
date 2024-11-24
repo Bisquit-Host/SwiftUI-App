@@ -812,10 +812,6 @@
 		F3AB4A7C2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A762CF1D97C00A8252F /* Tip JSON Formatter.swift */; };
 		F3AB4A7D2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A762CF1D97C00A8252F /* Tip JSON Formatter.swift */; };
 		F3AB4A7E2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A762CF1D97C00A8252F /* Tip JSON Formatter.swift */; };
-		F3AB4A832CF3D39000A8252F /* DetectOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A7F2CF3D39000A8252F /* DetectOrientation.swift */; };
-		F3AB4A842CF3D39000A8252F /* DetectOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A7F2CF3D39000A8252F /* DetectOrientation.swift */; };
-		F3AB4A862CF3D39000A8252F /* DetectOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A7F2CF3D39000A8252F /* DetectOrientation.swift */; };
-		F3AB4A882CF3D3C300A8252F /* DetectOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A7F2CF3D39000A8252F /* DetectOrientation.swift */; };
 		F3AB4A8A2CF3DAC900A8252F /* Backup Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A892CF3DAC900A8252F /* Backup Card VM.swift */; };
 		F3AB4A8B2CF3DAC900A8252F /* Backup Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A892CF3DAC900A8252F /* Backup Card VM.swift */; };
 		F3AB4A8C2CF3DAC900A8252F /* Backup Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A892CF3DAC900A8252F /* Backup Card VM.swift */; };
@@ -1687,7 +1683,6 @@
 		F3A994A92A177ED100530615 /* Map VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Map VM.swift"; sourceTree = "<group>"; };
 		F3A994AD2A17A9B100530615 /* Map List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Map List.swift"; sourceTree = "<group>"; };
 		F3AB4A762CF1D97C00A8252F /* Tip JSON Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tip JSON Formatter.swift"; sourceTree = "<group>"; };
-		F3AB4A7F2CF3D39000A8252F /* DetectOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectOrientation.swift; sourceTree = "<group>"; };
 		F3AB4A892CF3DAC900A8252F /* Backup Card VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Backup Card VM.swift"; sourceTree = "<group>"; };
 		F3AE522229ACF7D600CB3895 /* Server Card VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card VM.swift"; sourceTree = "<group>"; };
 		F3AF91C02B423492001D8F80 /* SSH VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SSH VM.swift"; sourceTree = "<group>"; };
@@ -2157,7 +2152,6 @@
 				F3D52B242B13FE9C00167DD6 /* App Delegate.swift */,
 				F3BC03C02B2063820011F98A /* Debug Key.swift */,
 				F32FD71D2B1E054300723B88 /* Network Calls.swift */,
-				F3AB4A7F2CF3D39000A8252F /* DetectOrientation.swift */,
 				F36797722A39C4ED009F2788 /* Localizable.xcstrings */,
 				F378E3322AF38286009925DB /* PrivacyInfo.xcprivacy */,
 				F304498629E98AE4006DC0C7 /* Bisquit.Host.entitlements */,
@@ -4289,7 +4283,6 @@
 				F354E9832A48CA2000F6E359 /* Topbar Grid Button.swift in Sources */,
 				F3924EE929A28D9D00C4CC77 /* Biometry Usage View.swift in Sources */,
 				F3553FB92B4093E600EF0FD2 /* Allocation List.swift in Sources */,
-				F3AB4A832CF3D39000A8252F /* DetectOrientation.swift in Sources */,
 				F36797702A393631009F2788 /* Inspector Button.swift in Sources */,
 				F3F5BC962BF7668E00EB8FB1 /* Sensitivity Analyzer.swift in Sources */,
 				F3CB53D62971CF6B00A213B0 /* Database Card.swift in Sources */,
@@ -4744,7 +4737,6 @@
 				F389BB612A05B58300911EBF /* Gauge Disk.swift in Sources */,
 				F36D53362A05B8BB007324C6 /* Create Button.swift in Sources */,
 				F3E6FC472A1E85D600410C7C /* SptiteKit BisquitFall.swift in Sources */,
-				F3AB4A882CF3D3C300A8252F /* DetectOrientation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4859,7 +4851,6 @@
 				F3D295C92AF3A20B00ED43A0 /* Credential Field.swift in Sources */,
 				F3D295AC2AF3A0F700ED43A0 /* Cache Model.swift in Sources */,
 				F3D2955D2AF39E6800ED43A0 /* Map View.swift in Sources */,
-				F3AB4A842CF3D39000A8252F /* DetectOrientation.swift in Sources */,
 				F3D295ED2AF3A45300ED43A0 /* Server Name.swift in Sources */,
 				F3AF91C32B423492001D8F80 /* SSH VM.swift in Sources */,
 				F35FEB0D2B09F003004DA05D /* API Key.swift in Sources */,
@@ -5010,7 +5001,6 @@
 				F3A7CF652C8CA5FE00413400 /* API Key.swift in Sources */,
 				F3255E1C2C904A48008E04DE /* Account View.swift in Sources */,
 				F3A7CF132C8C4E3E00413400 /* Discover.swift in Sources */,
-				F3AB4A862CF3D39000A8252F /* DetectOrientation.swift in Sources */,
 				F3A7CF142C8C4E3E00413400 /* Discover Item.swift in Sources */,
 				F3A7CEDC2C8B95CB00413400 /* Home View.swift in Sources */,
 				F3255E1B2C904A3C008E04DE /* Account Parent.swift in Sources */,
