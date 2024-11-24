@@ -3,12 +3,12 @@ import PteroNet
 
 struct PanelView: View {
     @EnvironmentObject private var settings: SettingsStorage
-    private var vm: PanelVM
-    private var fileVM: FileTabVM
-    private var startupVM: StartupVM
-    private var backupVM: BackupVM
-    private var databaseVM: DatabaseVM
-    private var scheduleVM: ScheduleVM
+    @State private var vm: PanelVM
+    @State private var fileVM: FileTabVM
+    @State private var startupVM: StartupVM
+    @State private var backupVM: BackupVM
+    @State private var databaseVM: DatabaseVM
+    @State private var scheduleVM: ScheduleVM
     
     private let id: String
     
@@ -96,7 +96,7 @@ struct PanelView: View {
     }
     
     @ViewBuilder
-    func CustomTabBar() -> some View {
+    private func CustomTabBar() -> some View {
         HStack(spacing: 0) {
             ForEach($allTabs) { $animatedTab in
                 let tab = animatedTab.tab
@@ -119,7 +119,6 @@ struct PanelView: View {
                     withAnimation(.bouncy, completionCriteria: .logicallyComplete) {
                         settings.lastTabPanel = tab
                         animatedTab.isAnimating = true
-                        
                     } completion: {
                         var trasnaction = Transaction()
                         trasnaction.disablesAnimations = true
