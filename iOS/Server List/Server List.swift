@@ -14,6 +14,8 @@ struct ServerList: View {
 #warning("Present a warning when 2FA is disabled")
         
         ScrollView(showsIndicators: false) {
+            TipView(Tip_ServerCardContextMenu())
+            
             if vm.servers.contains(where: {
                 $0.isSuspended
             }) {

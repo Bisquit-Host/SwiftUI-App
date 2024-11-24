@@ -4,22 +4,19 @@ struct ServerListNodeFilter: View {
     @Environment(ServerListVM.self) private var vm
     @EnvironmentObject private var settings: SettingsStorage
     
-    private let nodes: [Node] = [
-        .swift,
-        .invictus,
-        .renaissance,
-        .exodus
-    ]
+    private var nodes: [String] {
+        Array(Set(vm.servers.map(\.node)))
+    }
     
     var body: some View {
         if settings.adminMode {
             Menu {
                 Button {
                     withAnimation {
-                        vm.displayedNode = .all
+                        vm.displayedNode = ""
                     }
                 } label: {
-                    if vm.displayedNode == .all {
+                    if vm.displayedNode.isEmpty {
                         Label("All", systemImage: "checkmark")
                     } else {
                         Text("All")
@@ -34,7 +31,7 @@ struct ServerListNodeFilter: View {
                             vm.displayedNode = node
                         }
                     } label: {
-                        let nodeName = node.rawValue.capitalized
+                        let nodeName = node.capitalized
                         
                         if vm.displayedNode == node {
                             Label(nodeName, systemImage: "checkmark")

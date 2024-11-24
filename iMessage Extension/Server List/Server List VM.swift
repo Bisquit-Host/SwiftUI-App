@@ -15,8 +15,8 @@ final class ServerListVM {
     
     // MARK: - Filter/Search
     var searchField = ""
+    var displayedNode = ""
     var filterBySuspended = false
-    var displayedNode: Node = .all
     
     var keys: [String] = []
     
@@ -26,7 +26,7 @@ final class ServerListVM {
         servers.filter { server in
             let prompt = searchField.lowercased()
             let matchesSearch = searchField.isEmpty || server.name.lowercased().contains(prompt) || server.description.lowercased().contains(prompt)
-            let matchesNode = displayedNode == .all || server.node == displayedNode.rawValue
+            let matchesNode = displayedNode.isEmpty || server.node == displayedNode
             let matchesSuspended = !filterBySuspended || server.isSuspended
             
             return matchesSearch && matchesNode && matchesSuspended

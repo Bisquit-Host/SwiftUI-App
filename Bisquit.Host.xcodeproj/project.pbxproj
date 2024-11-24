@@ -817,6 +817,14 @@
 		F3AB4A8C2CF3DAC900A8252F /* Backup Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A892CF3DAC900A8252F /* Backup Card VM.swift */; };
 		F3AB4A8D2CF3DAC900A8252F /* Backup Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A892CF3DAC900A8252F /* Backup Card VM.swift */; };
 		F3AB4A8E2CF3DAD500A8252F /* Backup Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A892CF3DAC900A8252F /* Backup Card VM.swift */; };
+		F3AB4A902CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A8F2CF3EC6700A8252F /* Tip Server Card Context Menu.swift */; };
+		F3AB4A912CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A8F2CF3EC6700A8252F /* Tip Server Card Context Menu.swift */; };
+		F3AB4A922CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A8F2CF3EC6700A8252F /* Tip Server Card Context Menu.swift */; };
+		F3AB4A932CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A8F2CF3EC6700A8252F /* Tip Server Card Context Menu.swift */; };
+		F3AB4A942CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A8F2CF3EC6700A8252F /* Tip Server Card Context Menu.swift */; };
+		F3AB4A952CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A8F2CF3EC6700A8252F /* Tip Server Card Context Menu.swift */; };
+		F3AB4A962CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A8F2CF3EC6700A8252F /* Tip Server Card Context Menu.swift */; };
+		F3AB4A972CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A8F2CF3EC6700A8252F /* Tip Server Card Context Menu.swift */; };
 		F3AE522329ACF7D600CB3895 /* Server Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* Server Card VM.swift */; };
 		F3AF91C12B423492001D8F80 /* SSH VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91C02B423492001D8F80 /* SSH VM.swift */; };
 		F3AF91C22B423492001D8F80 /* SSH VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91C02B423492001D8F80 /* SSH VM.swift */; };
@@ -1684,6 +1692,7 @@
 		F3A994AD2A17A9B100530615 /* Map List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Map List.swift"; sourceTree = "<group>"; };
 		F3AB4A762CF1D97C00A8252F /* Tip JSON Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tip JSON Formatter.swift"; sourceTree = "<group>"; };
 		F3AB4A892CF3DAC900A8252F /* Backup Card VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Backup Card VM.swift"; sourceTree = "<group>"; };
+		F3AB4A8F2CF3EC6700A8252F /* Tip Server Card Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tip Server Card Context Menu.swift"; sourceTree = "<group>"; };
 		F3AE522229ACF7D600CB3895 /* Server Card VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card VM.swift"; sourceTree = "<group>"; };
 		F3AF91C02B423492001D8F80 /* SSH VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SSH VM.swift"; sourceTree = "<group>"; };
 		F3AF91C42B423535001D8F80 /* SSH List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SSH List.swift"; sourceTree = "<group>"; };
@@ -2595,6 +2604,7 @@
 			isa = PBXGroup;
 			children = (
 				F35B89BD2A725710000B5EEF /* Tip Suspended Server.swift */,
+				F3AB4A8F2CF3EC6700A8252F /* Tip Server Card Context Menu.swift */,
 				F3A800312A7313E900CAC40B /* Tip Cloud Keys.swift */,
 				F3AB4A762CF1D97C00A8252F /* Tip JSON Formatter.swift */,
 			);
@@ -4059,6 +4069,7 @@
 				F3796562295C519C0074CA3D /* Chart View.swift in Sources */,
 				F37266CC29D96C93005FD103 /* Websocket Message.swift in Sources */,
 				F35FEB0A2B09F003004DA05D /* API Key.swift in Sources */,
+				F3AB4A952CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
 				F3BC03C22B2063820011F98A /* Debug Key.swift in Sources */,
 				F37266CF29D96ED9005FD103 /* Formatters.swift in Sources */,
 				F3F3FC792B21E332007C635B /* QR Code View.swift in Sources */,
@@ -4294,6 +4305,7 @@
 				F38F9E252CEAB3410033EFE3 /* Sidebar Adoptable TabView.swift in Sources */,
 				F3DC4E2229AEAF3E00D27EC5 /* Credentials Button.swift in Sources */,
 				F3B637522A35F3EA00CB374C /* Command Line.swift in Sources */,
+				F3AB4A942CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
 				F300892F2B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */,
 				F371468C2B123807001E0296 /* Activity View State.swift in Sources */,
 				F31BA58F295901B60006D126 /* Browser.swift in Sources */,
@@ -4412,6 +4424,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F30C13152A5461BA00A7EFF0 /* Cache VM.swift in Sources */,
+				F3AB4A972CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
 				F3499EF52A27553D006101B7 /* Panel VM.swift in Sources */,
 				F3F061D22A73C37500470F7E /* Map View.swift in Sources */,
 				F3F061DA2A73CE1200470F7E /* Server Card Parent.swift in Sources */,
@@ -4709,6 +4722,7 @@
 				F3D264422A66ABBE005C3777 /* Account VM.swift in Sources */,
 				F36D53382A05B8C5007324C6 /* Folder Path VM.swift in Sources */,
 				F3FA61552A1F8DB500A65AE1 /* Upload Menu.swift in Sources */,
+				F3AB4A912CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
 				F3FA61582A1F928500A65AE1 /* FileTab Search.swift in Sources */,
 				F3573BC72C6511040051259E /* Intents.intentdefinition in Sources */,
 				F330013C2A4CEC320063FE0F /* Apikey List.swift in Sources */,
@@ -4763,6 +4777,7 @@
 				F3D295DE2AF3A36700ED43A0 /* Schedule List.swift in Sources */,
 				F3D2955E2AF39E6E00ED43A0 /* Panel Model.swift in Sources */,
 				F3C9D84B2B30304F00265492 /* Des Video Watch.swift in Sources */,
+				F3AB4A932CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
 				F3D295942AF3A03700ED43A0 /* Contact Manager.swift in Sources */,
 				F3D295662AF39EB000ED43A0 /* Panel VM.swift in Sources */,
 				F3D295C82AF3A1FF00ED43A0 /* Credentials VM.swift in Sources */,
@@ -5028,6 +5043,7 @@
 				F3A7CF0D2C8C43B100413400 /* Topbar Grid Button.swift in Sources */,
 				F3255E1E2C904A63008E04DE /* SSH VM.swift in Sources */,
 				F3A7CEEE2C8BB78F00413400 /* Gauge Regular.swift in Sources */,
+				F3AB4A902CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
 				F3A7CEE52C8B9E7500413400 /* Messages VM.swift in Sources */,
 				F3A7CF662C8CA60E00413400 /* Cloud Key Context Menu.swift in Sources */,
 				F3A7CF082C8BBC7600413400 /* Guide.swift in Sources */,
@@ -5078,6 +5094,7 @@
 				F35FEB0E2B09F4D3004DA05D /* Network VM.swift in Sources */,
 				F30B61C82B2905CA00F447B4 /* System Alerts.swift in Sources */,
 				F32F43FF2B75450800C9470B /* User Card.swift in Sources */,
+				F3AB4A922CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
 				F35081AF2AF30E2B00835CC0 /* Tip Cloud Keys.swift in Sources */,
 				F37B907A2BFEA00300597624 /* Ornament Info Settings.swift in Sources */,
 				F32F44002B75450B00C9470B /* User List.swift in Sources */,
@@ -5237,6 +5254,7 @@
 				F3E08ECE2A2CEDD800116C1C /* Panel View.swift in Sources */,
 				F323D8D32A2D668D002EDC62 /* File Tab.swift in Sources */,
 				F333B3BB2B80CF750005B84D /* Preview Property.swift in Sources */,
+				F3AB4A962CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
 				F35FEB102B09F4D3004DA05D /* Network VM.swift in Sources */,
 				F3464D352A863A6800188B0C /* Send Command.swift in Sources */,
 				F30088DB2B3A3C0E0051476C /* Console VM.swift in Sources */,

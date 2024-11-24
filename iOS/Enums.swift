@@ -11,11 +11,3 @@ enum ServerState: String {
          stopping,
          offline
 }
-
-enum Node: String {
-    case all,
-         swift,
-         exodus,
-         renaissance,
-         invictus
-}
