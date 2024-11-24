@@ -2,7 +2,7 @@ import SwiftUI
 import DeviceKit
 
 struct DesignSettings: View {
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     
     @State private var animate = true
     
@@ -52,5 +52,5 @@ struct DesignSettings: View {
     List {
         DesignSettings()
     }
-    .environmentObject(SettingsStorage())
+    .environmentObject(ValueStorage())
 }

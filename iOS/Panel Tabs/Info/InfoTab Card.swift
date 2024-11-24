@@ -2,7 +2,7 @@ import SwiftUI
 import PteroNet
 
 struct InfoTabCard: View {
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     
     private let server: ServerAttributes
     
@@ -60,5 +60,5 @@ struct InfoTabCard: View {
         sampleJSON(.serverListAttributes)
     )
     .environment(PanelVM(""))
-    .environmentObject(SettingsStorage())
+    .environmentObject(ValueStorage())
 }

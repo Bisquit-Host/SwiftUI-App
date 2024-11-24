@@ -1,7 +1,7 @@
 import ScrechKit
 
 struct SuspendedServerCard: View {
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     
     private let name: String
     
@@ -36,5 +36,5 @@ struct SuspendedServerCard: View {
 
 #Preview {
     SuspendedServerCard("Test Server")
-        .environmentObject(SettingsStorage())
+        .environmentObject(ValueStorage())
 }

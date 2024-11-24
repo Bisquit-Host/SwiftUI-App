@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ServerSettings: View {
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     
     @State private var test = false
     

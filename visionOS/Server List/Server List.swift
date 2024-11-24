@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ServerList: View {
     @Environment(ServerListVM.self) private var vm
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     
     @State private var sheetSettings = false
     
@@ -44,5 +44,5 @@ struct ServerList: View {
         .padding()
         .glassBackgroundEffect()
         .environment(ServerListVM())
-        .environmentObject(SettingsStorage())
+        .environmentObject(ValueStorage())
 }

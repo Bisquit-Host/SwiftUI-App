@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct FolderPath: View {
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     private var vm = FolderPathVM()
     
     private let path: String

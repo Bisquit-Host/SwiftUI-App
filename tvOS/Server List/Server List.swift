@@ -3,7 +3,7 @@ import SwiftUI
 struct ServerList: View {
     @Environment(ServerListVM.self) private var vm
     @Environment(NavState.self) private var navState
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     
     private var adminButtonColor: Color {
         settings.adminServerList ? .green : .secondary
@@ -59,5 +59,5 @@ struct ServerList: View {
     ServerList()
         .environment(ServerListVM())
         .environment(NavState())
-        .environmentObject(SettingsStorage())
+        .environmentObject(ValueStorage())
 }

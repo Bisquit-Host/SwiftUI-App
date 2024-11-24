@@ -5,7 +5,7 @@ import SwiftData
 struct StartPage: View {
     @Bindable private var vm = StartPageVM()
     @Environment(NavState.self) private var navState
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     
     @Environment(\.modelContext) private var modelContext
     @Query(animation: .default) private var keys: [APIKey]
@@ -88,5 +88,5 @@ struct StartPage: View {
         .padding()
         .glassBackgroundEffect()
         .environment(NavState())
-        .environmentObject(SettingsStorage())
+        .environmentObject(ValueStorage())
 }

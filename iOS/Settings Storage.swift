@@ -1,7 +1,7 @@
 import ScrechKit
 import PteroNet
 
-final class SettingsStorage: ObservableObject {
+final class ValueStorage: ObservableObject {
     @Published var updateServers = false // Triggers update on pull gesture
     
     // MARK: - Auth
@@ -31,6 +31,7 @@ final class SettingsStorage: ObservableObject {
     @AppStorage("lastTabPanel") var lastTabPanel: Tabs = .info
     @AppStorage("tabViewBouncesDown") var tabViewBouncesDown = true
     @AppStorage("animateTabbar") var animatedTabbar = false
+    @AppStorage("rawStartupCommand") var rawStartupCommand = false
 #if os(iOS)
     @AppStorage("lastInfoTab") var lastInfoTab: TabInfo = .relative
     @AppStorage("contactsProviderEnabled") var contactsProviderEnabled = false

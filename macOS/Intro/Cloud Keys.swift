@@ -4,7 +4,7 @@ import PteroNet
 import TipKit
 
 struct CloudKeys: View {
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     @Environment(\.dismiss) private var dismiss
     
     @Environment(\.modelContext) private var modelContext
@@ -74,5 +74,5 @@ struct CloudKeys: View {
 
 #Preview {
     CloudKeys(.constant(""))
-        .environmentObject(SettingsStorage())
+        .environmentObject(ValueStorage())
 }

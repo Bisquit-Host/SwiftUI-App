@@ -3,7 +3,7 @@ import PteroNet
 
 struct PanelView: View {
     private var vm: PanelVM
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     
     private let server: ServerAttributes
     
@@ -147,5 +147,5 @@ struct PanelView: View {
 
 #Preview {
     PanelView(sampleJSON(.serverListAttributes))
-        .environmentObject(SettingsStorage())
+        .environmentObject(ValueStorage())
 }

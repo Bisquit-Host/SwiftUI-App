@@ -3,7 +3,7 @@ import SafariCover
 import MailCover
 
 struct Support: View {
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     
     @State private var sheetGuide = false
     @State private var showMailCover = false
@@ -108,5 +108,5 @@ struct Support: View {
         .sheet {
             Support()
         }
-        .environmentObject(SettingsStorage())
+        .environmentObject(ValueStorage())
 }

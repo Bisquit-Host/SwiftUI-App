@@ -1,7 +1,7 @@
 import ScrechKit
 
 struct BiometryUsageView: View {
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     
     var body: some View {
         NavigationView {
@@ -21,5 +21,5 @@ struct BiometryUsageView: View {
 
 #Preview {
     BiometryUsageView()
-        .environmentObject(SettingsStorage())
+        .environmentObject(ValueStorage())
 }

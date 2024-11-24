@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct TopbarGridButton: View {
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     
     var body: some View {
         Button {
@@ -28,5 +28,5 @@ struct TopbarGridButton: View {
 
 #Preview {
     TopbarGridButton()
-        .environmentObject(SettingsStorage())
+        .environmentObject(ValueStorage())
 }

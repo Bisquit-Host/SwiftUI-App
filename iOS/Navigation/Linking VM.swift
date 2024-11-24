@@ -14,7 +14,7 @@ final class DeepLinkVM {
     
     func handleDeepLink(
         _ navState: NavState,
-        settings: SettingsStorage,
+        settings: ValueStorage,
         url: URL
     ) {
         let components = url.pathComponents

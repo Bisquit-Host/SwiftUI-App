@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct IconSettings: View {
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     
     var body: some View {
         Section("ICON") {
@@ -15,6 +15,6 @@ struct IconSettings: View {
 #Preview {
     List {
         IconSettings()
-            .environmentObject(SettingsStorage())
+            .environmentObject(ValueStorage())
     }
 }

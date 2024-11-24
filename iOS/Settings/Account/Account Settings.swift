@@ -2,7 +2,7 @@ import SwiftUI
 
 struct AccountSettings: View {
     @State private var vm = ApikeyVM()
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     
     @State private var sheetApiKeys = false
     
@@ -39,5 +39,5 @@ struct AccountSettings: View {
     List {
         AccountSettings()
     }
-    .environmentObject(SettingsStorage())
+    .environmentObject(ValueStorage())
 }

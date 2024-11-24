@@ -6,7 +6,7 @@ struct PanelView: View {
     private var backupVM: BackupVM
     private var databaseVM: DatabaseVM
     private var scheduleVM: ScheduleVM
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     
     private let id: String
     
@@ -94,7 +94,7 @@ struct PanelView: View {
 
 #Preview {
     PanelView("")
-        .environmentObject(SettingsStorage())
+        .environmentObject(ValueStorage())
         .environment(BackupVM(""))
         .environment(DatabaseVM(""))
         .environment(ScheduleVM(""))

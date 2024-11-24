@@ -3,7 +3,7 @@ import PteroNet
 
 struct ServerCard: View {
     @Environment(ServerListVM.self) private var vm
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     
     private let server: ServerAttributes
     
@@ -48,6 +48,6 @@ struct ServerCard: View {
 
 #Preview {
     ServerCard(PreviewProperty.serverAttributes)
-        .environmentObject(SettingsStorage())
+        .environmentObject(ValueStorage())
         .environment(ServerListVM())
 }

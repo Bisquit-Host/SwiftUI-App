@@ -4,7 +4,7 @@ struct AuthView: View {
     @State private var vm = AuthVM()
     @Environment(ServerListVM.self) private var serverVM
     @Environment(NavState.self) private var navState
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     
     private let bounds = UIScreen.main.bounds
     
@@ -58,5 +58,5 @@ struct AuthView: View {
     AuthView()
         .environment(ServerListVM())
         .environment(NavState())
-        .environmentObject(SettingsStorage())
+        .environmentObject(ValueStorage())
 }

@@ -3,7 +3,7 @@ import PteroNet
 
 struct AppSettings: View {
     @Environment(NavState.self) private var navState
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     
     var body: some View {
         VStack {

@@ -3,6 +3,7 @@ import PteroNet
 
 struct StartupView: View {
     @Environment(StartupVM.self) private var vm
+    @EnvironmentObject private var storage: ValueStorage
     
     private let server: ServerAttributes
     
@@ -22,7 +23,7 @@ struct StartupView: View {
                     .caption2(design: .monospaced)
                     .animation(.default, value: showRawCommand)
                 
-                Toggle("Raw", isOn: $showRawCommand)
+                Toggle("Raw", isOn: $storage.rawStartupCommand)
             }
             
             Picker("Docker Image", selection: $currentDockerImage) {
@@ -52,4 +53,5 @@ struct StartupView: View {
         sampleJSON(.serverListAttributes)
     )
     .environment(ServerSettingsVM(""))
+    .environmentObject(ValueStorage())
 }

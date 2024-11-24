@@ -4,7 +4,7 @@ import PteroNet
 struct SettingsButton: View {
     @Environment(ServerListVM.self) private var vm
     //    @Environment(NavState.self) private var navState
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     
     @State private var sheetAccount = false
     @State private var sheetSettings = false
@@ -49,5 +49,5 @@ struct SettingsButton: View {
 #Preview {
     SettingsButton()
         .environment(ServerListVM())
-        .environmentObject(SettingsStorage())
+        .environmentObject(ValueStorage())
 }

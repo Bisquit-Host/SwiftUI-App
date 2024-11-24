@@ -1,7 +1,7 @@
 import ScrechKit
 import PteroNet
 
-final class SettingsStorage: ObservableObject {
+final class ValueStorage: ObservableObject {
     @Published var updateServers = false // Triggers update on pull gesture
     
     // MARK: - Auth

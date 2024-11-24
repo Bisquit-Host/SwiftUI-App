@@ -2,7 +2,7 @@ import ScrechKit
 
 struct ConsoleTab: View {
     @Environment(PanelVM.self) private var panelVM
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     
     private var vm: ConsoleVM
     private let id: String
@@ -67,5 +67,5 @@ struct ConsoleTab: View {
 #Preview {
     ConsoleTab("500028e3")
         .environment(PanelVM(""))
-        .environmentObject(SettingsStorage())
+        .environmentObject(ValueStorage())
 }

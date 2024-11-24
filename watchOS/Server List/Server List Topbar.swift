@@ -3,7 +3,7 @@ import ScrechKit
 struct ServerListTopbar: View {
     @Environment(ServerListVM.self) private var vm
     @Environment(NavState.self) private var navState
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     
 //    @State private var alertNetwork = false
     @State private var isRotating = false
@@ -45,5 +45,5 @@ struct ServerListTopbar: View {
     ServerListTopbar()
         .environment(ServerListVM())
         .environment(NavState())
-        .environmentObject(SettingsStorage())
+        .environmentObject(ValueStorage())
 }

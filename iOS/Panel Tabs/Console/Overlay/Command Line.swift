@@ -3,7 +3,7 @@ import PteroNet
 
 struct CommandLine: View {
     @Environment(ConsoleVM.self) private var vm
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     
     private let id: String
     
@@ -180,5 +180,5 @@ struct CommandLine: View {
 #Preview {
     CommandLine("")
         .environment(ConsoleVM(""))
-        .environmentObject(SettingsStorage())
+        .environmentObject(ValueStorage())
 }

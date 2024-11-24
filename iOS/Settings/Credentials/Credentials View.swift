@@ -78,5 +78,5 @@ struct CredentialsView: View {
 
 #Preview {
     CredentialsView("email")
-        .environmentObject(SettingsStorage())
+        .environmentObject(ValueStorage())
 }

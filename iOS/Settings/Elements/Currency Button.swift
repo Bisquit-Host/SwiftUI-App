@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct CurrencyButton: View {
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     
     private let currencies = ["₽", "€", "$"]
     

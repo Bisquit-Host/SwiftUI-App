@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ServerListNodeFilter: View {
     @Environment(ServerListVM.self) private var vm
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     
     private var nodes: [String] {
         Array(Set(vm.servers.map(\.node)))

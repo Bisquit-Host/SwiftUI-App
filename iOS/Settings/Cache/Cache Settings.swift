@@ -2,7 +2,7 @@ import SwiftUI
 
 struct CacheSettings: View {
     @State private var cache = CacheVM()
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     
     var body: some View {
         Section("Cache") {

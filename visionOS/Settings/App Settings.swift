@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct AppSettings: View {
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
@@ -30,7 +30,7 @@ struct AppSettings: View {
 
 #Preview {
     AppSettings()
-        .environmentObject(SettingsStorage())
+        .environmentObject(ValueStorage())
         .padding()
         .glassBackgroundEffect()
 }

@@ -3,7 +3,7 @@ import PteroNet
 
 struct AppSettings: View {
     @Environment(NavState.self) private var navState
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     
     private let bundle = Bundle.main
     private let device = WKInterfaceDevice.current()
@@ -58,5 +58,5 @@ struct AppSettings: View {
 
 #Preview {
     AppSettings()
-        .environmentObject(SettingsStorage())
+        .environmentObject(ValueStorage())
 }

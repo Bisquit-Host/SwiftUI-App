@@ -6,7 +6,7 @@ import ContactProvider
 #endif
 
 struct DebugSettings: View {
-    @EnvironmentObject private var storage: SettingsStorage
+    @EnvironmentObject private var storage: ValueStorage
     
     @State private var errorAlert = false
     
@@ -49,5 +49,5 @@ struct DebugSettings: View {
 
 #Preview {
     DebugSettings()
-        .environmentObject(SettingsStorage())
+        .environmentObject(ValueStorage())
 }

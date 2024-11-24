@@ -82,6 +82,6 @@ struct FileTab: View {
 
 #Preview {
     FileTab("")
-        .environmentObject(SettingsStorage())
+        .environmentObject(ValueStorage())
         .environmentObject(FileTabVM(""))
 }

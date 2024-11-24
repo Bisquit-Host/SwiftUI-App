@@ -1,7 +1,7 @@
 import ScrechKit
 
 struct DevSettings: View {
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     
     private let device = UIDevice.current
     private let bundle = Bundle.main
@@ -67,5 +67,5 @@ public extension UIDevice {
     List {
         DevSettings()
     }
-    .environmentObject(SettingsStorage())
+    .environmentObject(ValueStorage())
 }

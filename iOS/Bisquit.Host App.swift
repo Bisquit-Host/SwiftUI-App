@@ -12,7 +12,7 @@ struct BisquitHostApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 #endif
     
-    @StateObject private var settings = SettingsStorage()
+    @StateObject private var settings = ValueStorage()
     private var navState = NavState()
 #if !os(macOS)
     private var linking = DeepLinkVM()

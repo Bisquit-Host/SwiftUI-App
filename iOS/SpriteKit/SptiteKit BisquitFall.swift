@@ -17,7 +17,7 @@ final class SceneBisquitFall: SKScene {
 }
 
 struct BisquitFall: View {
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     @Environment(\.colorScheme) var colorScheme
     
     private var scene: SKScene {
@@ -46,5 +46,5 @@ struct BisquitFall: View {
 
 #Preview {
     BisquitFall()
-        .environmentObject(SettingsStorage())
+        .environmentObject(ValueStorage())
 }

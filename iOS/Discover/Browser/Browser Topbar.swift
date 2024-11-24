@@ -2,7 +2,7 @@ import ScrechKit
 
 struct BrowserTopbar: View {
     @Environment(BrowserVM.self) private var vm
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     
     private let categories = [
         "Minecraft",
@@ -28,5 +28,5 @@ struct BrowserTopbar: View {
 #Preview {
     BrowserTopbar()
         .environment(BrowserVM())
-        .environmentObject(SettingsStorage())
+        .environmentObject(ValueStorage())
 }

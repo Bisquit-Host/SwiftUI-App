@@ -2,7 +2,7 @@ import ScrechKit
 import PteroNet
 
 struct PanelView: View {
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     @State private var vm: PanelVM
     @State private var fileVM: FileTabVM
     @State private var startupVM: StartupVM
@@ -141,5 +141,5 @@ struct PanelView: View {
         .environment(DatabaseVM(""))
         .environment(ScheduleVM(""))
         .environmentObject(FileTabVM(""))
-        .environmentObject(SettingsStorage())
+        .environmentObject(ValueStorage())
 }

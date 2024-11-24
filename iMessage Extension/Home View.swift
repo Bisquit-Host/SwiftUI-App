@@ -3,7 +3,7 @@ import Messages
 import PteroNet
 
 struct HomeView: View {
-    @StateObject private var settings = SettingsStorage()
+    @StateObject private var settings = ValueStorage()
     @State private var serverVm = ServerListVM()
     @State private var vm: MessagesVM
     

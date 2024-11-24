@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct TopbarAdminButton: View {
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     
     private let fetchServers: () -> Void
     
@@ -31,5 +31,5 @@ struct TopbarAdminButton: View {
 
 #Preview {
     TopbarAdminButton()
-        .environmentObject(SettingsStorage())
+        .environmentObject(ValueStorage())
 }

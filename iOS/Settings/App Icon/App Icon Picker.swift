@@ -1,7 +1,7 @@
 import ScrechKit
 
 struct AppIconPicker: View {
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     
     private let icons = [
         "default",
@@ -44,5 +44,5 @@ struct AppIconPicker: View {
 
 #Preview {
     AppIconPicker()
-        .environmentObject(SettingsStorage())
+        .environmentObject(ValueStorage())
 }

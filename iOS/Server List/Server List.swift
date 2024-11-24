@@ -3,7 +3,7 @@ import TipKit
 
 struct ServerList: View {
     @Environment(ServerListVM.self) private var vm
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     
     @State private var searchField = ""
     @State private var showSafari = false
@@ -98,5 +98,5 @@ struct ServerList: View {
     }
     .environment(ServerListVM())
     .environment(NavState())
-    .environmentObject(SettingsStorage())
+    .environmentObject(ValueStorage())
 }

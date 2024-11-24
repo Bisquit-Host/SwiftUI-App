@@ -3,7 +3,7 @@ import Kingfisher
 import PteroNet
 
 struct Guide: View {
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     @Environment(\.dismiss) private var dismiss
     @Environment(\.colorScheme) private var colorScheme
     
@@ -142,5 +142,5 @@ struct Guide: View {
 
 #Preview {
     Guide()
-        .environmentObject(SettingsStorage())
+        .environmentObject(ValueStorage())
 }

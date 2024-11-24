@@ -5,7 +5,7 @@ import SafariCover
 
 @main
 struct ClipDemoApp: App {
-    @StateObject private var settings = SettingsStorage()
+    @StateObject private var settings = ValueStorage()
     private var navState = NavState()
     
     var body: some Scene {

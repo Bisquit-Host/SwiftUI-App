@@ -2,7 +2,7 @@ import SwiftUI
 
 struct OtherSettings: View {
     @Environment(SettingsVM.self) private var vm
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     
     var body: some View {
         Section("Other") {
@@ -32,5 +32,5 @@ struct OtherSettings: View {
         OtherSettings()
     }
     .environment(SettingsVM())
-    .environmentObject(SettingsStorage())
+    .environmentObject(ValueStorage())
 }

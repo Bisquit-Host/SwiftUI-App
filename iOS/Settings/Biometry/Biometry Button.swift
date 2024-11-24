@@ -2,7 +2,7 @@ import SwiftUI
 
 struct BiometryButton: View {
     @Environment(SettingsVM.self) private var vm
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     
     var body: some View {
         Toggle(isOn: $settings.useBiometry) {

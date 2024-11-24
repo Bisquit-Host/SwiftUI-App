@@ -7,7 +7,7 @@ import DeviceKit
 struct AppContainer: View {
     @State private var vm = ServerListVM()
     @Environment(NavState.self) private var navState
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     @Environment(\.scenePhase) private var scenePhase
     
     @State private var showBadge = false

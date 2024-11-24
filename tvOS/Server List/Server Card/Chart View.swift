@@ -7,7 +7,7 @@ struct Value: Identifiable {
 }
 
 struct ChartView: View {
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     
     private let caption, unit: String
     private let max: Double

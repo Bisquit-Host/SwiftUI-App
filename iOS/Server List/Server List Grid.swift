@@ -2,7 +2,7 @@ import ScrechKit
 import PteroNet
 
 struct ServerListGrid: View {
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     
     private let servers: [ServerAttributes]
     
@@ -43,5 +43,5 @@ struct ServerListGrid: View {
         sampleJSON(.serverListDataArray)
     )
 ///    .environment(NavState())
-    .environmentObject(SettingsStorage())
+    .environmentObject(ValueStorage())
 }

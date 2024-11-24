@@ -1218,6 +1218,9 @@
     "Content Type" : {
 
     },
+    "Context Menu" : {
+
+    },
     "Continue on failure" : {
 
     },
@@ -2225,6 +2228,9 @@
           }
         }
       }
+    },
+    "Hold down the server card for a moment to access the context menu." : {
+
     },
     "Hosting Support" : {
 

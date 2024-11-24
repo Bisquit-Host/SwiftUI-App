@@ -29,5 +29,5 @@ struct InfoTab: View {
         sampleJSON(.serverListAttributes)
     )
     .environment(PanelVM(""))
-    .environmentObject(SettingsStorage())
+    .environmentObject(ValueStorage())
 }

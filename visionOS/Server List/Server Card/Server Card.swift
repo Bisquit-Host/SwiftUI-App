@@ -2,7 +2,7 @@ import SwiftUI
 import PteroNet
 
 struct ServerCard: View {
-    @EnvironmentObject private var settings: SettingsStorage
+    @EnvironmentObject private var settings: ValueStorage
     @State private var vm: ServerCardVM
     
     private let server: ServerAttributes
