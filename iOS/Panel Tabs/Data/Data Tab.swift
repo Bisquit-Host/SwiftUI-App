@@ -16,7 +16,7 @@ struct DataTab: View {
     
     var body: some View {
         List {
-            BackupList(limits.backups)
+            BackupList(id, backupLimit: limits.backups)
 #if os(tvOS)
             Divider()
             

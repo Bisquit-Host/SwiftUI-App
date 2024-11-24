@@ -3,6 +3,7 @@ import PteroNet
 
 struct BackupContextMenu: View {
     @Environment(BackupVM.self) private var vm
+    @Environment(BackupCardVM.self) private var cardVm
     
     private let backup: BackupAttributes
     
@@ -15,7 +16,7 @@ struct BackupContextMenu: View {
         
         ControlGroup {
             MenuButton("Download", icon: "square.and.arrow.down") {
-                vm.downloadBackup(uuid)
+                cardVm.downloadBackup(uuid)
             }
             
             if backup.isLocked {

@@ -3,16 +3,14 @@ import PteroNet
 
 @Observable
 final class BackupVM {
-    private let id: String
+    let id: String
     
     init(_ id: String) {
         self.id = id
     }
     
     var backups: [BackupAttributes] = []
-    var downloadUrl = ""
     var textCreateBackup = ""
-    var showSafari = false
     var alertCreateBackup = false
     
     var dateAndTime: String {
@@ -47,23 +45,7 @@ final class BackupVM {
             }
         }
     }
-    
-    func downloadBackup(_ uuid: String) {
-        backupDownloadAPI(id, uuid: uuid) { result in
-            switch result {
-            case .success(let model):
-                if let model = model?.attributes {
-                    self.downloadUrl = model.url
-                    
-                    self.showSafari = true
-                }
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-            }
-        }
-    }
-    
+        
     func lockBackup(_ uuid: String) {
         backupLockAPI(id, uuid: uuid) { result in
             switch result {

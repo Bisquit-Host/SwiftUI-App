@@ -1,5 +1,3 @@
-import Foundation
-
 extension ConfigurationAppIntent {
     static var empty: ConfigurationAppIntent {
         let intent = ConfigurationAppIntent()
