@@ -26,7 +26,7 @@ struct ServerList: View {
             
             ServerListGrid(vm.filteredServers)
         }
-        .padding(4)
+        .padding(.horizontal, 4)
         .environment(vm)
         .searchable(text: $searchField)
         .navigationBarBackButtonHidden()
