@@ -45,7 +45,7 @@ final class BackupVM {
             }
         }
     }
-        
+    
     func lockBackup(_ uuid: String) {
         backupLockAPI(id, uuid: uuid) { result in
             switch result {
@@ -100,6 +100,7 @@ final class BackupVM {
         backupRestoreAPI(id, uuid: uuid, truncate: truncate) { result in
             switch result {
             case .success:
+                #warning("Present an alert (AlertKit)")
                 print("Restored")
                 
             case .failure(let error):
