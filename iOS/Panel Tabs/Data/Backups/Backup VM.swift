@@ -108,6 +108,8 @@ final class BackupVM {
                 
             case .failure(let error):
                 SystemAlert.error(error)
+                
+                self.fetchBackups()
             }
         }
     }
