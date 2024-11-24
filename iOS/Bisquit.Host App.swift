@@ -49,11 +49,6 @@ struct BisquitHostApp: App {
                     )
                 }
 #endif
-            //                .alert("Error", isPresented: $linking.alertError) {
-            //
-            //                } message: {
-            //                    Text(linking.errorMessage)
-            //                }
         }
         .environment(navState)
         .modelContainer(container)

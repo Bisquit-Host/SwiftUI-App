@@ -5,12 +5,16 @@ import DeviceKit
 #endif
 
 struct AppContainer: View {
+    @State private var vm = ServerListVM()
     @Environment(NavState.self) private var navState
     @EnvironmentObject private var settings: SettingsStorage
     @Environment(\.scenePhase) private var scenePhase
     
     @State private var showBadge = false
-    @State private var vm = ServerListVM()
+    
+#if os(iOS)
+    @State private var orientation = UIDevice.current.orientation
+#endif
     
     var body: some View {
         @Bindable var navState = navState
@@ -40,8 +44,9 @@ struct AppContainer: View {
             }
         }
 #if os(iOS)
+        .detectOrientation($orientation)
         .overlay(alignment: .top) {
-            if Device.current.hasDynamicIsland && showBadge {
+            if Device.current.hasDynamicIsland && showBadge && orientation.isPortrait {
                 DynamicIslandBadge()
             }
         }
