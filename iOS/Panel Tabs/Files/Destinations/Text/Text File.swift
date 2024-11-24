@@ -60,13 +60,11 @@ struct TextFile: View {
                 } label: {
                     Image(systemName: "ellipsis.curlybraces")
                 }
-#if !os(watchOS)
-                .popoverTip(tip) { action in
+                .popTip(tip) { action in
                     if action.id == "format-json" {
                         vm.makePretty()
                     }
                 }
-#endif
             }
         }
     }
