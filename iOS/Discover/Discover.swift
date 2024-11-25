@@ -2,6 +2,8 @@ import ScrechKit
 import SafariCover
 
 struct Discover: View {
+    @EnvironmentObject private var settings: ValueStorage
+    
     @State private var sheetConfigurations = false
     
     var body: some View {
@@ -13,6 +15,7 @@ struct Discover: View {
                     }
                     .foregroundStyle(.foreground)
                 }
+                .listRowBackground(settings.transparentList ? .clear : Color.list)
                 
                 Section("Support") {
                     DiscoverCard(
@@ -33,6 +36,7 @@ struct Discover: View {
                         )
                     )
                 }
+                .listRowBackground(settings.transparentList ? .clear : Color.list)
                 
                 Section("Apps") {
                     ListButton(
@@ -52,6 +56,7 @@ struct Discover: View {
                         )
                     )
                 }
+                .listRowBackground(settings.transparentList ? .clear : Color.list)
                 
                 Section("Other") {
                     DiscoverCard(
@@ -81,13 +86,17 @@ struct Discover: View {
                         openSafari("https://github.com/TopScrech")
                     }
                 }
+                .listRowBackground(settings.transparentList ? .clear : Color.list)
                 
                 NavigationLink {
                     MapView()
                 } label: {
                     ListButton("Places we recommend", icon: "map")
                 }
+                .listRowBackground(settings.transparentList ? .clear : Color.list)
             }
+            .scrollContentBackground(settings.transparentSheet ? .hidden : .visible)
+            .presentationBackground(settings.transparentSheet ? .ultraThinMaterial : .regular)
             .scrollIndicators(.never)
         }
         .sheet($sheetConfigurations) {
@@ -98,4 +107,5 @@ struct Discover: View {
 
 #Preview {
     Discover()
+        .environmentObject(ValueStorage())
 }

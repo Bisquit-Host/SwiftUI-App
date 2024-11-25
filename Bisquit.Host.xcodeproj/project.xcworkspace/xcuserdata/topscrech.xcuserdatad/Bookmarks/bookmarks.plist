@@ -1391,13 +1391,13 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>55</string>
+					<string>60</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>54</string>
+					<string>59</string>
 					<key>Timestamp</key>
-					<string>753961248.306661</string>
+					<string>754226509.3257819</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -1416,8 +1416,8 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 				<string>                
 </string>
 				<key>leading</key>
-				<string>                    )
-                }
+				<string>                }
+                .listRowBackground(settings.transparentList ? .clear : Color.list)
 </string>
 				<key>trailing</key>
 				<string>                Section("Other") {
