@@ -36,9 +36,7 @@ struct ConsoleTab: View {
             
             if panelVM.searchedMessages.isEmpty {
                 if panelVM.searchRule.isEmpty {
-                    ContentUnavailableView("Console is empty",
-                                           systemImage: "apple.terminal"
-                    )
+                    ContentUnavailableView("Console is empty", systemImage: "apple.terminal")
                 } else {
                     ContentUnavailableView.search(text: panelVM.searchRule)
                 }
