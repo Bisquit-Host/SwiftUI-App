@@ -3,19 +3,23 @@ import ScrechKit
 struct AccountView: View {
     @State private var vm = AccountVM()
     @State private var sshVM = SSHVM()
+    @EnvironmentObject private var settings: ValueStorage
     
     @State private var sheetDisable2Fa = false
     @State private var sheetEnable2Fa = false
     
     var body: some View {
         List {
-            if let account = vm.account {
-                param("First name", value: account.firstName)
-                
-                param("Last name", value: account.lastName)
-                
-                param("E-mail", value: account.email)
+            Section {
+                if let account = vm.account {
+                    param("First name", value: account.firstName)
+                    
+                    param("Last name", value: account.lastName)
+                    
+                    param("E-mail", value: account.email)
+                }
             }
+            .listRowBackground(settings.transparentList ? .clear : Color.list)
             
             Section("2FA") {
                 if vm.twoFaEnabled {
@@ -61,12 +65,16 @@ struct AccountView: View {
                     //                    }
                 }
             }
+            .listRowBackground(settings.transparentList ? .clear : Color.list)
             
             Section("SSH Keys") {
                 SSHList()
                     .environment(sshVM)
             }
+            .listRowBackground(settings.transparentList ? .clear : Color.list)
         }
+        .scrollContentBackground(settings.transparentSheet ? .hidden : .visible)
+        .presentationBackground(settings.transparentSheet ? .ultraThinMaterial : .regular)
         .navigationTitle("Account")
         .toolbarTitleDisplayMode(.inline)
         .refreshableTask {
