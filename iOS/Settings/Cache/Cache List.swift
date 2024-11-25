@@ -2,6 +2,7 @@ import SwiftUI
 
 struct CacheList: View {
     @State private var vm = CacheListVM()
+    @EnvironmentObject private var settings: ValueStorage
     
     var body: some View {
         List {
@@ -15,6 +16,7 @@ struct CacheList: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 100, height: 100)
+                        .clipShape(.rect(cornerRadius: 16))
                     
                     Spacer()
                     
