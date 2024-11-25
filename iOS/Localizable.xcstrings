@@ -668,9 +668,6 @@
     "Allocations" : {
 
     },
-    "Animate tabbar" : {
-
-    },
     "API" : {
       "localizations" : {
         "ru" : {
@@ -916,12 +913,6 @@
           }
         }
       }
-    },
-    "Bounces Down" : {
-
-    },
-    "Bounces Up" : {
-
     },
     "Cache" : {
       "extractionState" : "manual",
@@ -4479,9 +4470,6 @@
       }
     },
     "System status" : {
-
-    },
-    "Tab icons bounce" : {
 
     },
     "Take Photo" : {

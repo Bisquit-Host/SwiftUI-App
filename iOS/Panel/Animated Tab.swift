@@ -9,19 +9,12 @@ struct AnimatedTab: Identifiable {
 #if !os(watchOS) && !os(macOS)
 extension View {
     @ViewBuilder
-    func setUpTab(_ tab: Tabs, isAnimated: Bool) -> some View {
-        if isAnimated {
-            self
-                .tag(tab)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .toolbar(.hidden, for: .tabBar)
-        } else {
-            self
-                .tag(tab)
-                .tabItem {
-                    Label(tab.title, systemImage: tab.rawValue)
-                }
-        }
+    func tab(_ tab: Tabs) -> some View {
+        self
+            .tag(tab)
+            .tabItem {
+                Label(tab.title, systemImage: tab.rawValue)
+            }
     }
 }
 #endif

@@ -30,12 +30,12 @@ struct ApikeyList: View {
                     .fontWeight(.medium)
             }
         }
+        .refreshableTask {
+            vm.fetchKeys()
+        }
         .sheet($sheetCreate) {
             CreateApikey()
                 .presentationDetents([.medium])
-        }
-        .refreshableTask {
-            vm.fetchKeys()
         }
     }
     

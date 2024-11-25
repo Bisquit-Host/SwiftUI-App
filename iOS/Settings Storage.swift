@@ -30,7 +30,6 @@ final class ValueStorage: ObservableObject {
     @AppStorage("preferredCurrency") var preferredCurrency = "₽"
     @AppStorage("lastTabPanel") var lastTabPanel: Tabs = .info
     @AppStorage("tabViewBouncesDown") var tabViewBouncesDown = true
-    @AppStorage("animateTabbar") var animatedTabbar = false
     @AppStorage("rawStartupCommand") var rawStartupCommand = false
 #if os(iOS)
     @AppStorage("lastInfoTab") var lastInfoTab: TabInfo = .relative

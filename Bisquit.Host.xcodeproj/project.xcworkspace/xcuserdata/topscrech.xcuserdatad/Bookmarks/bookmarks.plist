@@ -431,16 +431,12 @@
 			<dict>
 				<key>location-parameters</key>
 				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>46</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
+					<string>44</string>
 					<key>StartingLineNumber</key>
-					<string>45</string>
+					<string>44</string>
 					<key>Timestamp</key>
-					<string>754183875.549669</string>
+					<string>754185294.8785861</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -1301,13 +1297,13 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>62</string>
+					<string>51</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>61</string>
+					<string>50</string>
 					<key>Timestamp</key>
-					<string>753578816.243398</string>
+					<string>754185411.894644</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -1326,7 +1322,7 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 				<string>        .ignoresSafeArea(.keyboard, edges: .bottom)
 </string>
 				<key>leading</key>
-				<string>        }
+				<string>        .sidebarAdaptableStyle()
         .environment(vm)
 </string>
 				<key>trailing</key>
@@ -1545,13 +1541,13 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>137</string>
+					<string>88</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>136</string>
+					<string>87</string>
 					<key>Timestamp</key>
-					<string>754178039.929775</string>
+					<string>754185411.894276</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -1587,16 +1583,12 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 			<dict>
 				<key>location-parameters</key>
 				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>67</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
+					<string>65</string>
 					<key>StartingLineNumber</key>
-					<string>66</string>
+					<string>65</string>
 					<key>Timestamp</key>
-					<string>754183875.549647</string>
+					<string>754185294.878846</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>

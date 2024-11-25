@@ -22,42 +22,31 @@ struct PanelView: View {
         self.startupVM = StartupVM(id)
     }
     
-    @State private var allTabs: [AnimatedTab] = Tabs.allCases.compactMap { tab -> AnimatedTab? in
-            .init(tab: tab)
-    }
-    
     var body: some View {
-        VStack(spacing: 0) {
-            TabView(selection: $settings.lastTabPanel) {
-                if let server = vm.server {
-                    InfoTab(server)
-                        .environment(vm)
-                        .setUpTab(.info, isAnimated: settings.animatedTabbar)
-                    
-                    ConsoleTab(id)
-                        .setUpTab(.console, isAnimated: settings.animatedTabbar)
-                    
-                    FileTab(id)
-                        .environmentObject(fileVM)
-                        .setUpTab(.files, isAnimated: settings.animatedTabbar)
-                    
-                    DataTab(id, limits: server.featureLimits)
-                        .environment(backupVM)
-                        .environment(databaseVM)
-                        .environment(scheduleVM)
-                        .setUpTab(.backup, isAnimated: settings.animatedTabbar)
-                    
-                    StartupView(server)
-                        .environment(startupVM)
-                        .setUpTab(.startup, isAnimated: settings.animatedTabbar)
-                }
-            }
-            .sidebarAdaptableStyle()
-            
-            if settings.animatedTabbar {
-                CustomTabBar()
+        TabView(selection: $settings.lastTabPanel) {
+            if let server = vm.server {
+                InfoTab(server)
+                    .tab(.info)
+                
+                ConsoleTab(id)
+                    .tab(.console)
+                
+                FileTab(id)
+                    .environmentObject(fileVM)
+                    .tab(.files)
+                
+                DataTab(id, limits: server.featureLimits)
+                    .environment(backupVM)
+                    .environment(databaseVM)
+                    .environment(scheduleVM)
+                    .tab(.backup)
+                
+                StartupView(server)
+                    .environment(startupVM)
+                    .tab(.startup)
             }
         }
+        .sidebarAdaptableStyle()
         .environment(vm)
         .ignoresSafeArea(.keyboard, edges: .bottom)
         .task {
@@ -93,44 +82,6 @@ struct PanelView: View {
                 }
             }
         }
-    }
-    
-    @ViewBuilder
-    private func CustomTabBar() -> some View {
-        HStack(spacing: 0) {
-            ForEach($allTabs) { $animatedTab in
-                let tab = animatedTab.tab
-                
-                VStack(spacing: 4) {
-                    Image(systemName: tab.rawValue)
-                        .title()
-                        .symbolEffect(settings.tabViewBouncesDown ? .bounce.down.byLayer : .bounce.up.byLayer, value: animatedTab.isAnimating)
-                    
-                    Text(tab.title)
-                        .caption2()
-                        .textScale(.secondary)
-                }
-                .frame(maxWidth: .infinity)
-                .foregroundStyle(settings.lastTabPanel == tab ? Color.primary : .gray.opacity(0.8))
-                .padding(.top, 15)
-                .padding(.bottom, 10)
-                .contentShape(.rect)
-                .onTapGesture {
-                    withAnimation(.bouncy, completionCriteria: .logicallyComplete) {
-                        settings.lastTabPanel = tab
-                        animatedTab.isAnimating = true
-                    } completion: {
-                        var trasnaction = Transaction()
-                        trasnaction.disablesAnimations = true
-                        
-                        withTransaction(trasnaction) {
-                            animatedTab.isAnimating = nil
-                        }
-                    }
-                }
-            }
-        }
-        .background(.ultraThinMaterial)
     }
 }
 

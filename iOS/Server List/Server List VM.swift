@@ -25,11 +25,12 @@ final class ServerListVM {
     var filteredServers: [ServerAttributes] {
         servers.filter { server in
             let prompt = searchField.lowercased()
-            let matchesSearch = searchField.isEmpty || server.name.lowercased().contains(prompt) || server.description.lowercased().contains(prompt)
+            let matchesName = searchField.isEmpty || server.name.lowercased().contains(prompt)
+            let matchesDescription = searchField.isEmpty || server.description.lowercased().contains(prompt)
             let matchesNode = displayedNode.isEmpty || server.node == displayedNode
             let matchesSuspended = !filterBySuspended || server.isSuspended
             
-            return matchesSearch && matchesNode && matchesSuspended
+            return matchesName && matchesDescription && matchesNode && matchesSuspended
         }
     }
     

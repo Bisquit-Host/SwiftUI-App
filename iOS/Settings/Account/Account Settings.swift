@@ -30,8 +30,8 @@ struct AccountSettings: View {
         }
         .sheet($sheetApiKeys) {
             ApikeyList()
+                .environment(vm)
         }
-        .environment(vm)
     }
 }
 
