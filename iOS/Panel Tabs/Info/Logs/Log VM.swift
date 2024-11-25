@@ -10,7 +10,8 @@ final class LogVM {
     }
     
     var searchField = ""
-    var logs: [LogAttributes] = []
+    private var logs: [LogAttributes] = []
+    
     var searchedLogs: [LogAttributes] {
         guard !searchField.isEmpty else {
             return logs
