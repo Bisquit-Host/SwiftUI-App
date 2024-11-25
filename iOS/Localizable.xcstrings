@@ -1797,6 +1797,9 @@
     "Duplicate" : {
 
     },
+    "Dynamic Island badge" : {
+
+    },
     "E-mail" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -4129,9 +4132,6 @@
           }
         }
       }
-    },
-    "Show Dynamic Island badge" : {
-
     },
     "Show power buttons" : {
 

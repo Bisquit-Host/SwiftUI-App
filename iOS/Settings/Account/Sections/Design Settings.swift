@@ -9,7 +9,7 @@ struct DesignSettings: View {
     var body: some View {
         Section("Design") {
             if Device.current.hasDynamicIsland {
-                Toggle("Show Dynamic Island badge", isOn: $settings.showDynamicIslandBadge)
+                Toggle("Dynamic Island badge", isOn: $settings.showDynamicIslandBadge)
             }
             
             Toggle("Transparent sheets", isOn: $settings.transparentSheet)
