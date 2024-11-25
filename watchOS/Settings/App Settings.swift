@@ -49,7 +49,7 @@ struct AppSettings: View {
                         .font(parameter.0 == "Device and system" ? .footnote : .none)
                 }
                 
-                Toggle("Admin mode", isOn: $settings.adminMode)
+                Toggle("Developer mode", isOn: $settings.devMode)
             }
         }
         .navigationTitle("Settings")

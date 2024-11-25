@@ -22,7 +22,7 @@ struct AppSettings: View {
             Divider()
                 .padding(.bottom)
             
-            Toggle("Admin mode", isOn: $settings.adminMode)
+            Toggle("Developer mode", isOn: $settings.devMode)
         }
         .padding()
     }

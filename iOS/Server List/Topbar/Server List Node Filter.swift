@@ -9,7 +9,7 @@ struct ServerListNodeFilter: View {
     }
     
     var body: some View {
-        if settings.adminMode {
+        if settings.devMode {
             Menu {
                 Button {
                     withAnimation {

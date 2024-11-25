@@ -23,6 +23,7 @@ struct CredentialsButton: View {
                     .secondary()
             }
         }
+        .foregroundStyle(.primary)
         .sheet($sheetUpdateEmail) {
             CredentialsView("email")
         }

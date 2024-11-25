@@ -34,7 +34,7 @@ import ScrechKit
 //                ListParam(parameter.0, param: parameter.1)
 //            }
 //
-//            Toggle("Admin mode", isOn: $settings.adminMode)
+//            Toggle("Developer mode", isOn: $settings.devMode)
 //
 //            Toggle("BisquitFall", isOn: $settings.enableBisquitFall)
 //

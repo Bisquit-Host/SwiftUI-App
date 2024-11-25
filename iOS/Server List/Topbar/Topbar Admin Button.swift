@@ -18,7 +18,7 @@ struct TopbarAdminButton: View {
     }
     
     var body: some View {
-        if settings.adminMode {
+        if settings.devMode {
             Button {
                 settings.adminServerList.toggle()
                 fetchServers()

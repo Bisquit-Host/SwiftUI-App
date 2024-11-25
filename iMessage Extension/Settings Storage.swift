@@ -34,7 +34,7 @@ final class ValueStorage: ObservableObject {
 #endif
     
     // MARK: - Beta
-    @AppStorage("adminMode") var adminMode = false
+    @AppStorage("dev_mode") var devMode = false
     @AppStorage("adminServerList") var adminServerList = false
     @AppStorage("enableBisquitFall") var enableBisquitFall = false
     @AppStorage("widgetCpuUsage") var widgetCpuUsage = 0.0

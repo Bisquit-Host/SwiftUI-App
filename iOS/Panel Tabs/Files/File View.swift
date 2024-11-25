@@ -57,7 +57,7 @@ struct FileView: View {
                             .lineLimit(1)
                     }
                     
-                    if settings.adminMode {
+                    if settings.devMode {
                         Text(mimeType)
                             .footnote()
                             .secondary()

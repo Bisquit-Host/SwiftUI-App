@@ -32,7 +32,7 @@ struct DevSettings: View {
                 )
             }
             
-            Toggle("Admin mode", isOn: $settings.adminMode)
+            Toggle("Developer mode", isOn: $settings.devMode)
             
             //#if !os(tvOS)
             //            ColorPicker("Background color (disabled)", selection: $settings.backgroundColor)

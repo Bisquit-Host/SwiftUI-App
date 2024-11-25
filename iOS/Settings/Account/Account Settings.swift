@@ -22,8 +22,8 @@ struct AccountSettings: View {
                         .secondary()
                 }
             }
+            .foregroundStyle(.primary)
         }
-        .foregroundStyle(.primary)
         .listRowBackground(settings.transparentList ? .clear : Color.list)
         .task {
             vm.fetchKeys()

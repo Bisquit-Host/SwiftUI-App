@@ -13,7 +13,7 @@ struct ServerList: View {
     
     var body: some View {
         List {
-            if settings.adminMode {
+            if settings.devMode {
                 Button {
                     settings.adminServerList.toggle()
                     vm.fetchServers(settings.adminServerList)
