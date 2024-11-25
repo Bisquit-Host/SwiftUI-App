@@ -20,14 +20,8 @@ struct SettingsView: View {
             OtherSettings()
                 .environment(vm)
             
-            Group {
-                WideListButton("Change language", color: .orange.gradient) {
-                    openSettings()
-                }
-                
-                WideListButton("Need help?", color: .blue.gradient) {
-                    vm.sheetSupport = true
-                }
+            WideListButton("Need help?", color: .blue.gradient) {
+                vm.sheetSupport = true
             }
             .semibold()
             .listRowBackground(Color.clear)

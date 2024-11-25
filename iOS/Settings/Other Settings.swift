@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct OtherSettings: View {
     @Environment(SettingsVM.self) private var vm
@@ -17,11 +17,9 @@ struct OtherSettings: View {
             
             CurrencyButton()
             
-#if DEBUG
-            NavigationLink("Debug") {
-                DebugSettings()
+            ListButton("Change language", actionIcon: "globe") {
+                openSettings()
             }
-#endif
         }
         .listRowBackground(settings.transparentList ? .clear : Color.list)
     }

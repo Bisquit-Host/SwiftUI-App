@@ -24,7 +24,7 @@ struct DevSettings: View {
     }
     
     var body: some View {
-        Section("Admin") {
+        Section("Dev") {
             ForEach(parameters, id: \.0) { parameter in
                 ListParam(
                     parameter.0,
@@ -34,9 +34,9 @@ struct DevSettings: View {
             
             Toggle("Developer mode", isOn: $settings.devMode)
             
-            //#if !os(tvOS)
-            //            ColorPicker("Background color (disabled)", selection: $settings.backgroundColor)
-            //#endif
+            NavigationLink("Debug") {
+                DebugSettings()
+            }
             
             ServerListFooter()
         }
