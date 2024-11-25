@@ -16,10 +16,11 @@ struct BackupCard: View {
         Button {
             
         } label: {
-            HStack(spacing: 16) {
+            HStack {
                 if backup.completedAt != nil {
                     Image(systemName: "doc.zipper")
                         .title2(.semibold)
+                        .frame(width: 32)
                 } else {
                     ZStack {
                         ProgressView()
@@ -27,6 +28,7 @@ struct BackupCard: View {
                         
                         Image(systemName: "doc.zipper")
                             .title2(.semibold)
+                            .frame(width: 32)
                             .opacity(0)
                     }
                 }
@@ -56,17 +58,12 @@ struct BackupCard: View {
                         .secondary()
                         .minimumScaleFactor(0.5)
                         .lineLimit(1)
-                    
-                    let size = Text(formatBytes(backup.bytes))
-                        .foregroundStyle(.primary)
-                    
-                    Text("Size: \(size)")
-                        .footnote()
-                        .secondary()
                 }
-#if os(tvOS)
+                
                 Spacer()
-#endif
+                
+                Text(formatBytes(backup.bytes))
+                    .secondary()
             }
             .foregroundStyle(.foreground)
         }
@@ -103,4 +100,5 @@ struct BackupCard: View {
     List {
         BackupCard(sampleJSON(.backupAttributes), id: "")
     }
+    .environment(BackupVM(""))
 }

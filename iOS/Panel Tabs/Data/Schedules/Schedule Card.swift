@@ -23,12 +23,6 @@ struct ScheduleCard: View {
         return dayOfMonth + dayOfWeek + hour + minute
     }
     
-#if os(tvOS)
-    private let spacing: CGFloat = 16
-#else
-    private let spacing: CGFloat = 6
-#endif
-    
     var body: some View {
         @Bindable var vm = vm
         
@@ -39,24 +33,19 @@ struct ScheduleCard: View {
                 Image(systemName: "calendar")
                     .title2(.semibold)
                     .symbolRenderingMode(.multicolor)
+                    .frame(width: 32)
+                    .foregroundStyle(schedule.isActive ? .green : .red)
                 
                 VStack(alignment: .leading, spacing: 0) {
-                    HStack(spacing: spacing) {
-                        Text(schedule.name)
-                            .title3()
-                        
-                        Circle()
-                            .background(schedule.isActive ? .green : .red, in: .circle)
-                            .foregroundStyle(schedule.isActive ? .green : .red)
-#if os(tvOS)
-                            .frame(width: 24)
-#else
-                            .frame(width: 12)
-#endif
-                    }
+                    Text(schedule.name)
+                        .headline()
+                    
+                    let cron = Text(cron)
+                        .foregroundStyle(.primary)
                     
                     Text("Cron: \(cron)")
                         .footnote()
+                        .secondary()
                 }
                 
                 Spacer()

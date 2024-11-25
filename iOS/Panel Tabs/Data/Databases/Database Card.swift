@@ -18,9 +18,10 @@ struct DatabaseCard: View {
         Button {
             
         } label: {
-            HStack(spacing: 16) {
+            HStack {
                 Image(systemName: "tray.2")
-                    .title2()
+                    .title2(.semibold)
+                    .frame(width: 32)
                 
                 VStack(alignment: .leading) {
                     Text(database.name)
