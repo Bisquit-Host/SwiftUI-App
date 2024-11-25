@@ -11,8 +11,11 @@ struct InspectorButton: View {
         SFButton("bold.italic.underline") {
             inspectorPresented = true
         }
-        .semibold()
+        .title3(.semibold)
         .foregroundColor(.primary)
+        .frame(width: 35, height: 35)
+        .padding(10)
+        .background(.ultraThinMaterial, in: .circle)
     }
 }
 
