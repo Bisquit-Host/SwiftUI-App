@@ -636,6 +636,7 @@
       }
     },
     "Admin mode" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -1706,6 +1707,9 @@
           }
         }
       }
+    },
+    "Developer mode" : {
+
     },
     "Disable 2FA" : {
 

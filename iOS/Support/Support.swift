@@ -1,6 +1,5 @@
 import ScrechKit
 import SafariCover
-import MailCover
 
 struct Support: View {
     @EnvironmentObject private var settings: ValueStorage
@@ -25,6 +24,7 @@ struct Support: View {
                 }
                 .listRowBackground(settings.transparentList ? .clear : Color.list)
             }
+            .foregroundStyle(.primary)
             .navigationTitle("Support")
             .toolbarTitleDisplayMode(.inline)
         }
@@ -32,73 +32,98 @@ struct Support: View {
         .presentationDetents([.large, .medium])
         .scrollContentBackground(settings.transparentSheet ? .hidden : .visible)
         .presentationBackground(settings.transparentSheet ? .ultraThinMaterial : .regular)
+        .sheet($sheetGuide) {
+            Guide()
+        }
         .mailCover(
             $showMailCover,
             message: "Hello there! \n",
             subject: "Bisquit.Host Feedback",
             recipients: ["sergei_saliukov@icloud.com"]
         )
-        .sheet($sheetGuide) {
-            Guide()
-        }
     }
     
-    var buttonWiki: some View {
-        SafariButton("https://wiki.bisquit.host") {
-            ListButton(
-                "Wiki / FAQ",
-                icon: "books.vertical",
-                actionIcon: "link",
-                color: .blue
-            )
-        }
-    }
-    
-    var buttonSupportApp: some View {
-        SafariButton("https://topscrech.dev/app/support") {
-            ListButton(
-                "App Support",
-                icon: "questionmark.bubble.fill",
-                actionIcon: "link",
-                color: .purple
-            )
-        }
-    }
-    
-    var buttonSupportHosting: some View {
-        SafariButton("https://my.bisquit.host/contact.php") {
-            ListButton(
-                "Hosting Support",
-                icon: "questionmark.bubble.fill",
-                actionIcon: "link",
-                color: .purple
-            )
-        }
-    }
-    
-    var buttonApi: some View {
-        ListButton(
-            "Where to find the API-key?",
-            icon: "key.fill",
-            actionIcon: "chevron.forward"
-        ) {
+    private var buttonApi: some View {
+        Button {
             sheetGuide = true
+        } label: {
+            HStack {
+                Text("Where to find the API-key?")
+                
+                Spacer()
+                
+                Image(systemName: "key.fill")
+                    .secondary()
+            }
         }
     }
     
-    var buttonMail: some View {
-        ListButton(
-            "Mail",
-            icon: "envelope.fill",
-            actionIcon: "envelope"
-        ) {
-            showMailCover = true
+    private var buttonWiki: some View {
+        SafariButton("https://wiki.bisquit.host") {
+            HStack {
+                Text("Wiki / FAQ")
+                
+                Spacer()
+                
+                Image(systemName: "link")
+                    .secondary()
+            }
         }
     }
     
-    var buttonTelegram: some View {
-        ListButton("Telegram Chat", icon: "paperplane.fill", actionIcon: "link") {
+    private var buttonSupportApp: some View {
+        SafariButton("https://topscrech.dev/app/support") {
+            HStack {
+                Text("App Support")
+                
+                Spacer()
+                
+                Image(systemName: "link")
+                    .secondary()
+            }
+        }
+    }
+    
+    private var buttonSupportHosting: some View {
+        SafariButton("https://my.bisquit.host/contact.php") {
+            HStack {
+                Text("Hosting Support")
+                
+                Spacer()
+                
+                Image(systemName: "link")
+                    .secondary()
+            }
+        }
+    }
+    
+    private var buttonTelegram: some View {
+        Button {
             openSafari("https://t.me/bisquit_host_chat")
+        } label: {
+            HStack {
+                Text("Telegram Chat")
+                
+                Spacer()
+                
+                Image(systemName: "paperplane")
+                    .secondary()
+            }
+        }
+    }
+    
+    private var buttonMail: some View {
+        Button {
+            showMailCover = true
+        } label: {
+            HStack {
+                Text("Mail")
+                
+                Spacer()
+                
+                Image(systemName: "envelope")
+                    .secondary()
+            }
         }
     }
 }
