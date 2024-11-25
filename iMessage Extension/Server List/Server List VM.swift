@@ -22,6 +22,10 @@ final class ServerListVM {
     
     var selectedServer: ServerAttributes?
     
+    var nodes: [String] {
+        Array(Set(servers.map(\.node)))
+    }
+    
     var filteredServers: [ServerAttributes] {
         servers.filter { server in
             let prompt = searchField.lowercased()
