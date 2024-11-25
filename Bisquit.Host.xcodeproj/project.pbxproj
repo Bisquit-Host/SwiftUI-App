@@ -1192,6 +1192,9 @@
 		F3E6FC462A1E85D600410C7C /* SptiteKit BisquitFall.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6FC452A1E85D600410C7C /* SptiteKit BisquitFall.swift */; };
 		F3E6FC472A1E85D600410C7C /* SptiteKit BisquitFall.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6FC452A1E85D600410C7C /* SptiteKit BisquitFall.swift */; };
 		F3E8415629FECB6800609DA3 /* Browser Sticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E8415529FECB6800609DA3 /* Browser Sticker.swift */; };
+		F3E8B34F2CF485FB005D25F8 /* Console Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E8B34E2CF485FB005D25F8 /* Console Message.swift */; };
+		F3E8B3502CF485FB005D25F8 /* Console Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E8B34E2CF485FB005D25F8 /* Console Message.swift */; };
+		F3E8B3512CF485FB005D25F8 /* Console Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E8B34E2CF485FB005D25F8 /* Console Message.swift */; };
 		F3E97C7929B4B569008CBDD6 /* Credentials VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E97C7829B4B569008CBDD6 /* Credentials VM.swift */; };
 		F3EB09CE2A29531B0073916A /* Des Image VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37F51C329DAF8D70030C1C4 /* Des Image VM.swift */; };
 		F3EB09CF2A2953200073916A /* Des Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5B6295903100006D126 /* Des Image.swift */; };
@@ -1800,6 +1803,7 @@
 		F3E6FC422A1E677000410C7C /* Bisquits.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Bisquits.sks; sourceTree = "<group>"; };
 		F3E6FC452A1E85D600410C7C /* SptiteKit BisquitFall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SptiteKit BisquitFall.swift"; sourceTree = "<group>"; };
 		F3E8415529FECB6800609DA3 /* Browser Sticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Browser Sticker.swift"; sourceTree = "<group>"; };
+		F3E8B34E2CF485FB005D25F8 /* Console Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Console Message.swift"; sourceTree = "<group>"; };
 		F3E97C7829B4B569008CBDD6 /* Credentials VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Credentials VM.swift"; sourceTree = "<group>"; };
 		F3EB09E12A29805A0073916A /* Des Video Watch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Des Video Watch.swift"; sourceTree = "<group>"; };
 		F3EB09EC2A2987F00073916A /* QuickLook File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuickLook File.swift"; sourceTree = "<group>"; };
@@ -2314,6 +2318,7 @@
 				F31BA5A2295902610006D126 /* Console Tab.swift */,
 				F31BA5A42959026D0006D126 /* Console VM.swift */,
 				F37A366A2A35158A00517EFC /* Console View.swift */,
+				F3E8B34E2CF485FB005D25F8 /* Console Message.swift */,
 				F39217C92A378C3800BE7CE8 /* Overlay */,
 			);
 			path = Console;
@@ -4338,6 +4343,7 @@
 				F3B1196D29A13CA6003BB68C /* Settings Storage.swift in Sources */,
 				F3B81DF12A49C96000633B66 /* Info Absolute Stats.swift in Sources */,
 				F34169A52A49DF64003985E7 /* InfoTab Button.swift in Sources */,
+				F3E8B3502CF485FB005D25F8 /* Console Message.swift in Sources */,
 				F37DDA7629E2AF7600B9680C /* Folder Path VM.swift in Sources */,
 				F335CA0B2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */,
 				F3A994AA2A177ED100530615 /* Map VM.swift in Sources */,
@@ -4690,6 +4696,7 @@
 				F30089212B3B896E0051476C /* File Permissions View.swift in Sources */,
 				F389BB702A05B5FF00911EBF /* Cache VM.swift in Sources */,
 				F39CF3592A50C00C0077996D /* User View.swift in Sources */,
+				F3E8B34F2CF485FB005D25F8 /* Console Message.swift in Sources */,
 				F389BB582A05B4F600911EBF /* Server List Grid.swift in Sources */,
 				F3F5BC972BF7668E00EB8FB1 /* Sensitivity Analyzer.swift in Sources */,
 				F389BB6D2A05B5EE00911EBF /* Cache Size.swift in Sources */,
@@ -4921,6 +4928,7 @@
 				F3D2959D2AF3A07F00ED43A0 /* Video File.swift in Sources */,
 				F3E024C82B228F4C00FFF686 /* New Task Sheet.swift in Sources */,
 				F3D295332AF39CB100ED43A0 /* Start Page VM.swift in Sources */,
+				F3E8B3512CF485FB005D25F8 /* Console Message.swift in Sources */,
 				F3D295C12AF3A1B200ED43A0 /* Log Detail View.swift in Sources */,
 				F38F9E0C2CE6CCF90033EFE3 /* Image Playground Button.swift in Sources */,
 				F3D295622AF39E8D00ED43A0 /* Upload Menu.swift in Sources */,

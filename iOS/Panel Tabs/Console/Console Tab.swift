@@ -11,22 +11,22 @@ struct ConsoleTab: View {
         self.id = id
         self.vm = ConsoleVM(id)
     }
-    
-    @State private var fontDesign: Font.Design = .monospaced
-    
-    private let fontSizes = [8, 10, 12, 14]
-    private let fontDesigns: [Font.Design] = [
-        .default,
-        .monospaced,
-        .rounded,
-        .serif
-    ]
-    
+        
     var body: some View {
         @Bindable var vm = vm
         
         VStack {
-            ConsoleView(fontDesign)
+            ConsoleView()
+        }
+        .environment(vm)
+        .environment(panelVM)
+        .toolbarBackground(.visible, for: .tabBar)
+        .toolbarBackground(.visible, for: .navigationBar)
+        .onAppear {
+            vm.fontSize = settings.consoleFontSize
+        }
+        .onDisappear {
+            settings.consoleFontSize = vm.fontSize
         }
         .inspector($vm.inspectorPresented) {
             ConsoleInspector()
@@ -42,20 +42,13 @@ struct ConsoleTab: View {
                 }
             }
         }
-        .environment(vm)
-        .environment(panelVM)
-        .toolbarBackground(.visible, for: .tabBar)
-        .toolbarBackground(.visible, for: .navigationBar)
-        .onAppear {
-            vm.fontSize = settings.consoleFontSize
-        }
-        .onDisappear {
-            settings.consoleFontSize = vm.fontSize
-        }
         .alert("Are you sure you want to perform the Kill action?", isPresented: $vm.alertKill) {
             Button("Kill", role: .destructive) {
                 panelVM.changePower(.kill)
             }
+        }
+        .toolbar {
+            
         }
     }
 }
