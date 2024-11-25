@@ -17,7 +17,7 @@ struct CacheLimit: View {
             }
         } label: {
             HStack {
-                Text("Cache limit")
+                Text("Limit")
                 
                 Spacer()
                 

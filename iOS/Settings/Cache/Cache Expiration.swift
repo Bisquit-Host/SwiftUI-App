@@ -18,7 +18,7 @@ struct CacheExpiration: View {
             }
         } label: {
             HStack {
-                Text("Cache expiration")
+                Text("Expiration")
                 
                 Spacer()
                 

@@ -12,7 +12,7 @@ struct CacheSettings: View {
             
             CacheExpiration()
             
-            NavigationLink("Retrieve cache") {
+            NavigationLink("Retrieve cached data") {
                 CacheList()
             }
         }

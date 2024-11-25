@@ -6,12 +6,12 @@ struct CacheSize: View {
     
     var body: some View {
         Menu {
-            Button("Clear cache", role: .destructive) {
+            Button("Clear entire cache", role: .destructive) {
                 cache.clearAll()
             }
         } label: {
             HStack {
-                Text("Cache size")
+                Text("Total size")
                 
                 Spacer()
                 

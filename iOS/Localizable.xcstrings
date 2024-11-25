@@ -939,6 +939,7 @@
       }
     },
     "Cache expiration" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -949,6 +950,7 @@
       }
     },
     "Cache limit" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -959,6 +961,7 @@
       }
     },
     "Cache size" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -1063,6 +1066,7 @@
       }
     },
     "Clear cache" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -1071,6 +1075,9 @@
           }
         }
       }
+    },
+    "Clear entire cache" : {
+
     },
     "Code" : {
 
@@ -1967,6 +1974,9 @@
     "Execute" : {
 
     },
+    "Expiration" : {
+
+    },
     "File Allocated Size" : {
 
     },
@@ -2829,6 +2839,9 @@
           }
         }
       }
+    },
+    "Limit" : {
+
     },
     "Link" : {
       "extractionState" : "manual",
@@ -3764,7 +3777,7 @@
     "Restore with truncate" : {
 
     },
-    "Retrieve cache" : {
+    "Retrieve cached data" : {
 
     },
     "Retrieved %lld cached images" : {
@@ -4594,6 +4607,9 @@
 
     },
     "Total File Size" : {
+
+    },
+    "Total size" : {
 
     },
     "Total: %lld" : {
