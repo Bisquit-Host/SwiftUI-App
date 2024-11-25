@@ -11,25 +11,28 @@ struct ConsoleTab: View {
         self.id = id
         self.vm = ConsoleVM(id)
     }
-        
+    
     var body: some View {
         @Bindable var vm = vm
         
         VStack {
             ConsoleView()
         }
-        .environment(vm)
-        .environment(panelVM)
         .toolbarBackground(.visible, for: .tabBar)
         .toolbarBackground(.visible, for: .navigationBar)
-        .onAppear {
+        .task {
             vm.fontSize = settings.consoleFontSize
+        }
+        .inspector($vm.inspectorPresented) {
+            ConsoleInspector()
         }
         .onDisappear {
             settings.consoleFontSize = vm.fontSize
         }
-        .inspector($vm.inspectorPresented) {
-            ConsoleInspector()
+        .alert("Are you sure you want to perform the Kill action?", isPresented: $vm.alertKill) {
+            Button("Kill", role: .destructive) {
+                panelVM.changePower(.kill)
+            }
         }
         .overlay(alignment: .bottom) {
             ConsoleOverlay(id)
@@ -42,14 +45,8 @@ struct ConsoleTab: View {
                 }
             }
         }
-        .alert("Are you sure you want to perform the Kill action?", isPresented: $vm.alertKill) {
-            Button("Kill", role: .destructive) {
-                panelVM.changePower(.kill)
-            }
-        }
-        .toolbar {
-            
-        }
+        .environment(vm)
+        .environment(panelVM)
     }
 }
 

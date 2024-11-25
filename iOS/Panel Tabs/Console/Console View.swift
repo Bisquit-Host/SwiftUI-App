@@ -34,7 +34,9 @@ struct ConsoleView: View {
                 }
             }
         }
-        .padding(2)
+        .environment(vm)
+        .environment(panelVM)
+        .padding(.horizontal, 2)
         .ignoresSafeArea(.keyboard)
     }
 }
