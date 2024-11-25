@@ -2372,10 +2372,10 @@
 			isa = PBXGroup;
 			children = (
 				F31BA5A1295902470006D126 /* Info */,
-				F306530C2B3E337A001682A2 /* SFTP */,
 				F31BA5AA2959028A0006D126 /* Console */,
 				F31BA5B3295902DC0006D126 /* Files */,
 				F31BA5D1295904E40006D126 /* Data */,
+				F306530C2B3E337A001682A2 /* SFTP */,
 			);
 			path = "Panel Tabs";
 			sourceTree = "<group>";

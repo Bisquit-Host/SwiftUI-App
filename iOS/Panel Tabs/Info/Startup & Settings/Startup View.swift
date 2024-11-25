@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import PteroNet
 
 struct StartupView: View {
@@ -17,13 +17,24 @@ struct StartupView: View {
     
     var body: some View {
         List {
-            Section("Startup Command") {
+            Section {
                 Text(showRawCommand ? vm.rawStartupCommand : vm.startupCommand)
                     .textSelection(.enabled)
                     .caption2(design: .monospaced)
                     .animation(.default, value: showRawCommand)
                 
                 Toggle("Raw", isOn: $storage.rawStartupCommand)
+            } header: {
+                HStack {
+                    Text("Startup Command")
+                    
+                    Spacer()
+                    
+                    SFButton("document.on.document") {
+                        UIPasteboard.general.string = showRawCommand ? vm.rawStartupCommand : vm.startupCommand
+                        SystemAlert.copied()
+                    }
+                }
             }
             
             Picker("Docker Image", selection: $currentDockerImage) {
