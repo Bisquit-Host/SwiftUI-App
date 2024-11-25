@@ -1,7 +1,7 @@
 import ScrechKit
 
 struct TextFile: View {
-    private var vm: TextFileVM
+    @State private var vm: TextFileVM
     
     private let id, path, name: String
     
@@ -19,19 +19,6 @@ struct TextFile: View {
         
         VStack {
 #if os(iOS)
-            Button {
-                vm.writeFile(vm.text, path: path + name)
-            } label: {
-                Text("Save changes")
-                    .foregroundStyle(.yellow)
-                    .title2(.bold)
-                    .padding(10)
-                    .overlay {
-                        Capsule()
-                            .stroke(.gray.opacity(0.5), lineWidth: 3)
-                    }
-            }
-            
             TextEditor(text: $vm.text)
                 .padding(10)
                 .disableAutocorrection(true)
@@ -49,23 +36,18 @@ struct TextFile: View {
             vm.getFileContents(path + name)
         }
         .toolbar {
+#if os(iOS)
+            Button("Save changes") {
+                vm.writeFile(vm.text, path: path + name)
+            }
+#endif
+            
 #if !os(tvOS)
             ShareLink(item: vm.text)
                 .disabled(vm.text.isEmpty)
 #endif
-            if vm.showPrettyButton {
-                Button {
-                    tip.invalidate(reason: .actionPerformed)
-                    vm.makePretty()
-                } label: {
-                    Image(systemName: "ellipsis.curlybraces")
-                }
-                .popTip(tip) { action in
-                    if action.id == "format-json" {
-                        vm.makePretty()
-                    }
-                }
-            }
+            JsonFormatterButton()
+                .environment(vm)
         }
     }
 }
