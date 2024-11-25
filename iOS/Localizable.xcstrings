@@ -3863,6 +3863,7 @@
       }
     },
     "Save changes" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {

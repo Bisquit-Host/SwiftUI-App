@@ -37,7 +37,7 @@ struct TextFile: View {
         }
         .toolbar {
 #if os(iOS)
-            Button("Save changes") {
+            Button("Save") {
                 vm.writeFile(vm.text, path: path + name)
             }
 #endif
