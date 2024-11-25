@@ -3,8 +3,8 @@ import ScrechKit
 struct ConsoleTab: View {
     @Environment(PanelVM.self) private var panelVM
     @EnvironmentObject private var settings: ValueStorage
+    @State private var vm: ConsoleVM
     
-    private var vm: ConsoleVM
     private let id: String
     
     init(_ id: String) {
@@ -44,10 +44,8 @@ struct ConsoleTab: View {
         }
         .environment(vm)
         .environment(panelVM)
-        .toolbarBackground(.visible,
-                           for: .tabBar)
-        .toolbarBackground(.visible,
-                           for: .navigationBar)
+        .toolbarBackground(.visible, for: .tabBar)
+        .toolbarBackground(.visible, for: .navigationBar)
         .onAppear {
             vm.fontSize = settings.consoleFontSize
         }
