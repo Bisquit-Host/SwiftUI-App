@@ -1004,7 +1004,6 @@
 		F3D295632AF39E9400ED43A0 /* Upload Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35DA9582A28F5B100803E7E /* Upload Progress.swift */; };
 		F3D295642AF39E9B00ED43A0 /* Folder Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5AF295902C70006D126 /* Folder Path.swift */; };
 		F3D295662AF39EB000ED43A0 /* Panel VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3429C0C84C00B08696 /* Panel VM.swift */; };
-		F3D295672AF39EB500ED43A0 /* Info Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FFB73E2A57F02C00220FA5 /* Info Tab.swift */; };
 		F3D2956A2AF39ECC00ED43A0 /* Server List Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B3A729BC6B5400CC1195 /* Server List Grid.swift */; };
 		F3D2956B2AF39ECF00ED43A0 /* SptiteKit BisquitFall.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6FC452A1E85D600410C7C /* SptiteKit BisquitFall.swift */; };
 		F3D2956C2AF39ED800ED43A0 /* SpriteKit Pyzh.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5852959016D0006D126 /* SpriteKit Pyzh.swift */; };
@@ -4970,7 +4969,6 @@
 				F3AB4A8D2CF3DAC900A8252F /* Backup Card VM.swift in Sources */,
 				F3A7CF6C2C8DF41300413400 /* Video File VM.swift in Sources */,
 				F3D295A92AF3A0E200ED43A0 /* Apikey VM.swift in Sources */,
-				F3D295672AF39EB500ED43A0 /* Info Tab.swift in Sources */,
 				F3D2959A2AF3A06800ED43A0 /* Text File.swift in Sources */,
 				F3D2956B2AF39ECF00ED43A0 /* SptiteKit BisquitFall.swift in Sources */,
 				F3D295E62AF3A39D00ED43A0 /* Inspector Button.swift in Sources */,

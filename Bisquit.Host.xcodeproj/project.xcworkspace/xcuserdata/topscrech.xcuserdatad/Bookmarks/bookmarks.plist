@@ -1900,13 +1900,13 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>14</string>
-					<key>StartingColumnNumber</key>
-					<string>37</string>
-					<key>StartingLineNumber</key>
 					<string>13</string>
+					<key>StartingColumnNumber</key>
+					<string>12</string>
+					<key>StartingLineNumber</key>
+					<string>12</string>
 					<key>Timestamp</key>
-					<string>724464140.836707</string>
+					<string>754314332.646751</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -1922,16 +1922,16 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>
+				<string>SFButton("wifi") {
 </string>
 				<key>leading</key>
-				<string>        HStack {
-            SFButton("wifi") {
-                //alertNetwork = true</string>
+				<string>    var body: some View {
+        HStack {
+            </string>
 				<key>trailing</key>
-				<string>            }
+				<string>                //alertNetwork = true
+            }
             .foregroundStyle(.green)
-            .symbolEffect(.variableColor.iterative)
 </string>
 			</dict>
 			<key>type</key>

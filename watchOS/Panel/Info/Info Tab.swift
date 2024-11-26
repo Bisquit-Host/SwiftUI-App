@@ -6,10 +6,7 @@ struct InfoTab: View {
     private var users: UsersVM
     private var logs: LogVM
     
-    init(_ server: ServerAttributes,
-         users: UsersVM = UsersVM(""),
-         logs: LogVM = LogVM("")
-    ) {
+    init(_ server: ServerAttributes) {
         self.server = server
         self.users = UsersVM(server.id)
         self.logs = LogVM(server.id)
@@ -17,14 +14,18 @@ struct InfoTab: View {
     
     var body: some View {
         ScrollView {
-            NavigationLink("Users") {
+            NavigationLink {
                 UserListParent()
                     .environment(users)
+            } label: {
+                Label("Users", systemImage: "person.3")
             }
             
-            NavigationLink("Logs") {
+            NavigationLink {
                 LogListParent()
                     .environment(logs)
+            } label: {
+                Label("Logs", systemImage: "list.bullet.rectangle")
             }
         }
         .navigationTitle("Info")
