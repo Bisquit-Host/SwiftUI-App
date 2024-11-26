@@ -3,11 +3,13 @@ import PteroNet
 
 struct BackupCard: View {
     @Environment(BackupVM.self) private var vm
+    @State private var cardVm: BackupCardVM
     
     private let backup: BackupAttributes
     
-    init(_ backup: BackupAttributes) {
+    init(_ id: String, _ backup: BackupAttributes) {
         self.backup = backup
+        self.cardVm = BackupCardVM(id)
     }
     
     var body: some View {
@@ -57,11 +59,31 @@ struct BackupCard: View {
             Text(formatBytes(backup.bytes))
                 .secondary()
         }
+        .safariCover($cardVm.showSafari, url: cardVm.url)
+        .swipeActions {
+            Button(role: .destructive) {
+                vm.deleteBackup(backup.uuid)
+            } label: {
+                Image(systemName: "trash")
+            }
+            
+            Button {
+                vm.lockBackup(backup.uuid)
+            } label: {
+                Image(systemName: backup.isLocked ? "lock.open" : "lock")
+                    .tint(backup.isLocked ? .orange : .green)
+            }
+        }
+        .contextMenu {
+            BackupContextMenu(backup)
+                .environment(vm)
+                .environment(cardVm)
+        }
     }
 }
 
 #Preview {
     List {
-        BackupCard(sampleJSON(.backupAttributes))
+        BackupCard("", sampleJSON(.backupAttributes))
     }
 }

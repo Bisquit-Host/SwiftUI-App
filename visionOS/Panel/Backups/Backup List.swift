@@ -13,7 +13,7 @@ struct BackupList: View {
     var body: some View {
         List {
             ForEach(vm.backups, id: \.uuid) { backup in
-                BackupCard(backup)
+                BackupCard(server.id, backup)
             }
             .onDelete(perform: vm.deleteBackups)
             

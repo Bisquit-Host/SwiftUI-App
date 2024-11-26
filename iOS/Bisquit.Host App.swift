@@ -1,6 +1,7 @@
 import ScrechKit
 import SwiftData
 import TipKit
+import SafariCover
 
 #if canImport(Pow)
 import Pow
