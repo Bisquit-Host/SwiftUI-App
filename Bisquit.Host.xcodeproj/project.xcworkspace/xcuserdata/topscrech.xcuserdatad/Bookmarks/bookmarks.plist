@@ -1324,6 +1324,7 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 			<dict>
 				<key>focused</key>
 				<string>        .ignoresSafeArea(.keyboard, edges: .bottom)
+        .toolbarBackground(.visible, for: .bottomBar)
 </string>
 				<key>leading</key>
 				<string>        .sidebarAdaptableStyle()
@@ -1545,13 +1546,13 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>88</string>
+					<string>89</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>87</string>
+					<string>88</string>
 					<key>Timestamp</key>
-					<string>754225028.141874</string>
+					<string>754311567.998</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>

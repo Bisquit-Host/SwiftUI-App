@@ -36,7 +36,7 @@ struct DataTab: View {
         }
     }
     
-    func fetchData() {
+    private func fetchData() {
         backupVM.fetchBackups()
         databaseVM.fetchDatabases()
         scheduleVM.fetchSchedules()
