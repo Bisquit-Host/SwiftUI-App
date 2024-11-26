@@ -33,10 +33,8 @@ struct ServerListTopbar: View {
             }
         }
         .title2(.bold)
-        .onAppear {
-            delay(0.1) {
-                isRotating = true
-            }
+        .task {
+            isRotating = true
         }
     }
 }
