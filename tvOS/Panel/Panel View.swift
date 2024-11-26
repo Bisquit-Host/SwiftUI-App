@@ -40,16 +40,14 @@ struct PanelView: View {
                         Text("Files")
                     }
                 
-                DataTab(server.id,
-                        limits: server.featureLimits
-                )
-                .environment(backupVM)
-                .environment(databaseVM)
-                .environment(scheduleVM)
-                .tag(Tab.backups)
-                .tabItem {
-                    Text("Data")
-                }
+                DataTab(server.id, limits: server.featureLimits)
+                    .environment(backupVM)
+                    .environment(databaseVM)
+                    .environment(scheduleVM)
+                    .tag(Tab.backups)
+                    .tabItem {
+                        Text("Data")
+                    }
                 
                 InfoTab(id)
                     .tag(Tab.other)
@@ -59,21 +57,7 @@ struct PanelView: View {
             }
         }
         .task {
-            vm.fetchServerDetails()
-            fileVM.fetchFiles()
-            backupVM.fetchBackups()
-            databaseVM.fetchDatabases()
-            scheduleVM.fetchSchedules()
-            
-            vm.consoleDetails { data in
-                if let data {
-                    vm.connectWebSocket(data)
-                }
-            }
-            
-            vm.updateBackups = {
-                backupVM.fetchBackups()
-            }
+            fetchData()
         }
         .onDisappear {
             vm.disconnectWebSocket()
@@ -88,6 +72,24 @@ struct PanelView: View {
                     vm.connectWebSocket(data)
                 }
             }
+        }
+    }
+    
+    private func fetchData() {
+        vm.fetchServerDetails()
+        fileVM.fetchFiles()
+        backupVM.fetchBackups()
+        databaseVM.fetchDatabases()
+        scheduleVM.fetchSchedules()
+        
+        vm.consoleDetails { data in
+            if let data {
+                vm.connectWebSocket(data)
+            }
+        }
+        
+        vm.updateBackups = {
+            backupVM.fetchBackups()
         }
     }
 }

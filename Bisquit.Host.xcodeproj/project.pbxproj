@@ -3107,9 +3107,9 @@
 				F3F2BBA62A540C4D00D44CA6 /* Intro */,
 				F3317AEB2A45E25500CA104D /* Guide */,
 				F3A7CF6C2A44FCE700331B51 /* Auth */,
-				F3A7CF6E2A44FD0100331B51 /* Settings */,
 				F3A7CF692A44F6CA00331B51 /* Server List */,
 				F38928212A44182400561CDF /* Panel */,
+				F3A7CF6E2A44FD0100331B51 /* Settings */,
 			);
 			path = visionOS;
 			sourceTree = "<group>";
