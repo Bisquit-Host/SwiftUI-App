@@ -1,36 +1,18 @@
 import ScrechKit
 
 struct Console: View {
-    @Environment(PanelVM.self) private var panelVM
+    @Environment(PanelVM.self) private var vm
     
     var body: some View {
-        @Bindable var panelVM = panelVM
+        @Bindable var vm = vm
         
         ScrollView {
-            ForEach(panelVM.messages, id: \.self) { message in
-                Text(message)
-                    .footnote()
-                //.fontDesign(fontDesign)
-                //.fontSize(fontSize)
-                    .multilineTextAlignment(.leading)
+            ForEach(vm.messages, id: \.self) { message in
+                ConsoleMessage(message)
             }
             .padding(.vertical)
         }
         .navigationTitle("Console")
-        .sheet($panelVM.showFormatting) {
-            Text("Formatting")
-        }
-        .overlay(alignment: .bottomTrailing) {
-            SFButton("bold.italic.underline") {
-                panelVM.showFormatting = true
-            }
-            .headline()
-            .padding(5)
-            .background(.blue, in: .capsule)
-            .padding(20)
-            .buttonStyle(.plain)
-        }
-        .ignoresSafeArea(edges: .bottom)
     }
 }
 

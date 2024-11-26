@@ -251,9 +251,9 @@
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>21</string>
+					<string>22</string>
 					<key>Timestamp</key>
-					<string>716206866.7943389</string>
+					<string>754313393.951961</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -269,17 +269,13 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>        }
-</string>
+				<string></string>
 				<key>leading</key>
-				<string>        .sheet($panelVM.showFormatting) {
-            Text("Formatting")
+				<string>        .environment(PanelVM(""))
+}
 </string>
 				<key>trailing</key>
-				<string>        .overlay(alignment: .bottomTrailing) {
-            SFButton("bold.italic.underline") {
-                panelVM.showFormatting = true
-</string>
+				<string></string>
 			</dict>
 			<key>title</key>
 			<string>No action</string>
