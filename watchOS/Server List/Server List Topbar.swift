@@ -5,7 +5,7 @@ struct ServerListTopbar: View {
     @Environment(NavState.self) private var navState
     @EnvironmentObject private var settings: ValueStorage
     
-//    @State private var alertNetwork = false
+    //    @State private var alertNetwork = false
     @State private var isRotating = false
     
     var body: some View {

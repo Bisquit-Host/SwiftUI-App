@@ -20,6 +20,7 @@ struct ServerCardParent: View {
                 ServerCard(server)
             }
         }
+        .buttonStyle(.plain)
     }
 }
 
