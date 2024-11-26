@@ -73,10 +73,10 @@ struct AccountView: View {
             }
             .listRowBackground(settings.transparentList ? .clear : Color.list)
         }
-        .scrollContentBackground(settings.transparentSheet ? .hidden : .visible)
-        .presentationBackground(settings.transparentSheet ? .ultraThinMaterial : .regular)
         .navigationTitle("Account")
         .toolbarTitleDisplayMode(.inline)
+        .scrollContentBackground(settings.transparentSheet ? .hidden : .visible)
+        .presentationBackground(settings.transparentSheet ? .ultraThinMaterial : .regular)
         .refreshableTask {
             vm.fetch()
             vm.twoFaDetails()
@@ -84,12 +84,11 @@ struct AccountView: View {
         }
         .sheet($sheetDisable2Fa) {
             Disable2FaView()
-                .environment(vm)
         }
         .sheet($sheetEnable2Fa) {
             Enable2FAView()
-                .environment(vm)
         }
+        .environment(vm)
     }
     
     private func param(_ param: String, value: String) -> some View {
