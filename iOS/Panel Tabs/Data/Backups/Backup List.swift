@@ -16,7 +16,7 @@ struct BackupList: View {
         
         Section {
             ForEach(vm.backups, id: \.uuid) { backup in
-                BackupCard(backup, id: id)
+                BackupCard(id, backup)
 #if !os(tvOS)
                     .focusable() // Applies to DB's & schedules as well
 #endif

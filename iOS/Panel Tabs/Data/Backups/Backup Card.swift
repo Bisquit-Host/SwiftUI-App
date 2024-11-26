@@ -7,7 +7,7 @@ struct BackupCard: View {
     
     private let backup: BackupAttributes
     
-    init(_ backup: BackupAttributes, id: String) {
+    init(_ id: String, _ backup: BackupAttributes) {
         self.backup = backup
         self.cardVm = BackupCardVM(id)
     }
@@ -98,7 +98,7 @@ struct BackupCard: View {
 
 #Preview {
     List {
-        BackupCard(sampleJSON(.backupAttributes), id: "")
+        BackupCard("", sampleJSON(.backupAttributes))
     }
     .environment(BackupVM(""))
 }
