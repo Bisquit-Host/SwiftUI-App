@@ -2310,7 +2310,6 @@
 				F3E467512A49903900FABE5F /* Info Stat.swift */,
 				F325F7022A54BF7A00E89EC4 /* InfoTab Model.swift */,
 				F3553FB72B4093B400EF0FD2 /* Allocations */,
-				F337C15E2A8C2B19006F321C /* Startup & Settings */,
 				F3FF5A012A4A318E003A1973 /* Users */,
 				F3C8C76F2A3A9B23000CC7E3 /* Logs */,
 			);
@@ -2381,6 +2380,7 @@
 		F32082442B3E170000CFED80 /* Panel Tabs */ = {
 			isa = PBXGroup;
 			children = (
+				F337C15E2A8C2B19006F321C /* Startup & Settings */,
 				F31BA5A1295902470006D126 /* Info */,
 				F31BA5AA2959028A0006D126 /* Console */,
 				F31BA5B3295902DC0006D126 /* Files */,
