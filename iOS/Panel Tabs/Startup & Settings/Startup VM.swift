@@ -16,8 +16,10 @@ final class StartupVM {
     var sortedDockerImages: [(key: String, value: String)] {
         Array(dockerImages)
             .sorted {
-                guard let firstKeyNumber = $0.key.split(separator: " ").last.flatMap({ Int($0) }),
-                      let secondKeyNumber = $1.key.split(separator: " ").last.flatMap({ Int($0) }) else {
+                guard
+                    let firstKeyNumber = $0.key.split(separator: " ").last.flatMap({ Int($0) }),
+                    let secondKeyNumber = $1.key.split(separator: " ").last.flatMap({ Int($0) })
+                else {
                     return false
                 }
                 
@@ -30,12 +32,13 @@ final class StartupVM {
             switch result {
             case .success(let model):
                 if let model {
+                    let meta = model.meta
+                    
                     self.startupVariables = model.data.map(\.attributes)
+                    self.startupCommand = meta.startupCommand
+                    self.rawStartupCommand = meta.rawStartupCommand
                     
-                    self.startupCommand = model.meta.startupCommand
-                    self.rawStartupCommand = model.meta.rawStartupCommand
-                    
-                    if let dockerImages = model.meta.dockerImages {
+                    if let dockerImages = meta.dockerImages {
                         self.dockerImages = dockerImages
                     }
                 }
