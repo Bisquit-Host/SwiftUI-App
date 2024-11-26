@@ -14,26 +14,13 @@ struct BackupContextMenu: View {
     var body: some View {
         let uuid = backup.uuid
         
+#if os(tvOS)
+        BackupContextMenuControlGroup(backup)
+#else
         ControlGroup {
-            MenuButton("Download", icon: "square.and.arrow.down") {
-                cardVm.downloadBackup(uuid)
-            }
-            
-            if backup.isLocked {
-                MenuButton("Unlock", icon: "lock.open") {
-                    vm.lockBackup(uuid)
-                }
-            } else {
-                MenuButton("Lock", icon: "lock") {
-                    vm.lockBackup(uuid)
-                }
-            }
-            
-            MenuButton("Restore", icon: "arrow.up.bin") {
-                vm.restoreBackup(uuid, truncate: false)
-            }
+            BackupContextMenuControlGroup(backup)
         }
-        
+#endif
         Section {
             MenuButton("Restore with truncate", role: .destructive, icon: "arrow.up.bin") {
                 vm.restoreBackup(uuid, truncate: true)

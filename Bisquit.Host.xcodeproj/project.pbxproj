@@ -208,6 +208,10 @@
 		F32F43FF2B75450800C9470B /* User Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F43FE2B7544A200C9470B /* User Card.swift */; };
 		F32F44002B75450B00C9470B /* User List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F43FD2B7544A200C9470B /* User List.swift */; };
 		F32FD02B2CF5E8DC0038D62C /* Console Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32FD0292CF5E8DC0038D62C /* Console Message.swift */; };
+		F32FD02E2CF606960038D62C /* Backup Context Menu Control Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32FD02D2CF606960038D62C /* Backup Context Menu Control Group.swift */; };
+		F32FD02F2CF606960038D62C /* Backup Context Menu Control Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32FD02D2CF606960038D62C /* Backup Context Menu Control Group.swift */; };
+		F32FD0302CF606960038D62C /* Backup Context Menu Control Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32FD02D2CF606960038D62C /* Backup Context Menu Control Group.swift */; };
+		F32FD0312CF606960038D62C /* Backup Context Menu Control Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32FD02D2CF606960038D62C /* Backup Context Menu Control Group.swift */; };
 		F32FD7162B1E041D00723B88 /* Websocket Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3729C0CB5A00B08696 /* Websocket Message.swift */; };
 		F32FD7172B1E042400723B88 /* Websocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BF97A929BFC7E9007B9C9C /* Websocket.swift */; };
 		F32FD7182B1E042500723B88 /* Websocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BF97A929BFC7E9007B9C9C /* Websocket.swift */; };
@@ -1491,6 +1495,7 @@
 		F32F43FD2B7544A200C9470B /* User List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User List.swift"; sourceTree = "<group>"; };
 		F32F43FE2B7544A200C9470B /* User Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Card.swift"; sourceTree = "<group>"; };
 		F32FD0292CF5E8DC0038D62C /* Console Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Console Message.swift"; sourceTree = "<group>"; };
+		F32FD02D2CF606960038D62C /* Backup Context Menu Control Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Backup Context Menu Control Group.swift"; sourceTree = "<group>"; };
 		F32FD71D2B1E054300723B88 /* Network Calls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network Calls.swift"; sourceTree = "<group>"; };
 		F330013A2A4CEC320063FE0F /* Apikey List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Apikey List.swift"; sourceTree = "<group>"; };
 		F33001402A4CEF840063FE0F /* Apikey VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Apikey VM.swift"; sourceTree = "<group>"; };
@@ -3139,6 +3144,7 @@
 				F375EC3729EE7213002CA969 /* Backup List.swift */,
 				F300889C2B3A17CC0051476C /* Backup VM.swift */,
 				F3BC03BB2B1FFBD50011F98A /* Backup Context Menu.swift */,
+				F32FD02D2CF606960038D62C /* Backup Context Menu Control Group.swift */,
 				F3AF96F829DF277A00D30A8F /* Backup Card.swift */,
 				F3AB4A892CF3DAC900A8252F /* Backup Card VM.swift */,
 				F3DDD59B2A62AC7C009FDFBF /* Create Backup Button.swift */,
@@ -4090,6 +4096,7 @@
 				F30C13192A54626D00A7EFF0 /* Bisquit.Host App.swift in Sources */,
 				F3EB09DA2A295C460073916A /* Video Player.swift in Sources */,
 				F342FAB32B2E43D500854270 /* Log Card.swift in Sources */,
+				F32FD02F2CF606960038D62C /* Backup Context Menu Control Group.swift in Sources */,
 				F333B3BC2B80CF750005B84D /* Preview Property.swift in Sources */,
 				F3AB4A792CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
 				F30088F32B3B475C0051476C /* Startup Card.swift in Sources */,
@@ -4320,6 +4327,7 @@
 				F38F9E252CEAB3410033EFE3 /* Sidebar Adoptable TabView.swift in Sources */,
 				F3DC4E2229AEAF3E00D27EC5 /* Credentials Button.swift in Sources */,
 				F3B637522A35F3EA00CB374C /* Command Line.swift in Sources */,
+				F32FD0312CF606960038D62C /* Backup Context Menu Control Group.swift in Sources */,
 				F3AB4A942CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
 				F300892F2B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */,
 				F371468C2B123807001E0296 /* Activity View State.swift in Sources */,
@@ -4769,6 +4777,7 @@
 				F389BB6F2A05B5F900911EBF /* Cache Expiration.swift in Sources */,
 				F310A2F12A56B0BE001AF45F /* Network VM.swift in Sources */,
 				F389BB612A05B58300911EBF /* Gauge Disk.swift in Sources */,
+				F32FD02E2CF606960038D62C /* Backup Context Menu Control Group.swift in Sources */,
 				F36D53362A05B8BB007324C6 /* Create Button.swift in Sources */,
 				F3E6FC472A1E85D600410C7C /* SptiteKit BisquitFall.swift in Sources */,
 			);
@@ -4875,6 +4884,7 @@
 				F3D295452AF39D9000ED43A0 /* Intro Model.swift in Sources */,
 				F398E0E02CEB562400AA4DD7 /* Audio Player VM.swift in Sources */,
 				F3D2959B2AF3A06B00ED43A0 /* Text File VM.swift in Sources */,
+				F32FD0302CF606960038D62C /* Backup Context Menu Control Group.swift in Sources */,
 				F3D2952A2AF39B2400ED43A0 /* Users VM.swift in Sources */,
 				F33DE50F2B36E3FB00E257D8 /* App Delegate.swift in Sources */,
 				F3D2955B2AF39E4300ED43A0 /* Server List Footer.swift in Sources */,
