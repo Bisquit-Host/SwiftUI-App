@@ -7,9 +7,7 @@ struct StartupCard: View {
     private let server: ServerAttributes
     private let variable: StartupVariable
     
-    init(_ server: ServerAttributes,
-         variable: StartupVariable
-    ) {
+    init(_ server: ServerAttributes, variable: StartupVariable) {
         self.server = server
         self.variable = variable
         self.vm = StartupVM(server.id)
