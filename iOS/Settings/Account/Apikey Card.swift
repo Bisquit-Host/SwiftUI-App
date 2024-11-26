@@ -4,8 +4,8 @@ import PteroNet
 struct ApikeyCard: View {
     private let key: ApiKeyAttributes
     
-    init(_ key: ApiKeyAttributes) {
-        self.key = key
+    init(_ key: ApiKeyListData) {
+        self.key = key.attributes
     }
     
     var body: some View {
@@ -29,12 +29,20 @@ struct ApikeyCard: View {
                         .secondary()
                 }
                 
-                Text("Created: \(timeSinceISO(key.created))")
+                let created = Text(timeSinceISO(key.created))
+                    .foregroundStyle(.primary)
+                
+                Text("Created: \(created))")
                     .footnote()
+                    .secondary()
                 
                 if let lastUsed = key.lastUsed {
-                    Text("Last used: \(timeSinceISO(lastUsed))")
+                    let lastUsed = Text(timeSinceISO(lastUsed))
+                        .foregroundStyle(.primary)
+                    
+                    Text("Last used: \(lastUsed)")
                         .footnote()
+                        .secondary()
                 }
             }
         }

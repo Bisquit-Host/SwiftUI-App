@@ -13,9 +13,7 @@ struct ApikeyList: View {
                 }
                 
                 Section {
-                    ForEach(vm.keys, id: \.attributes.id) { attributes in
-                        let key = attributes.attributes
-                        
+                    ForEach(vm.keys, id: \.attributes.id) { key in
                         ApikeyCard(key)
                     }
                     .onDelete { offsets in
@@ -52,4 +50,5 @@ struct ApikeyList: View {
             ApikeyList()
         }
         .environment(ApikeyVM())
+        .environmentObject(ValueStorage())
 }
