@@ -7,13 +7,12 @@ struct Disable2FaView: View {
     @State private var code = ""
     
     var body: some View {
-        VStack {
+        VStack(spacing: 25) {
             Text("Enter the 6-digit code from your authenticator app")
                 .headline()
-                .padding()
             
             TextField("Password", text: $code)
-                .padding()
+                .padding(.horizontal)
                 .textFieldStyle(.roundedBorder)
                 .textContentType(.password)
             
