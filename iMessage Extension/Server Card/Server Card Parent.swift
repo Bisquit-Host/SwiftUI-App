@@ -3,7 +3,7 @@ import PteroNet
 import SafariCover
 
 struct ServerCardParent: View {
-///    @Environment(NavState.self) private var navState
+    ///    @Environment(NavState.self) private var navState
     
     private let server: ServerAttributes
     
@@ -16,20 +16,20 @@ struct ServerCardParent: View {
     
     var body: some View {
         VStack {
-//            if server.isSuspended {
-//                SuspendedServerCard(server.name)
-//                    .popoverTip(Tip_SuspendedServer())
-//            } else {
-                Button {
-//                    navState.navigate(.toPanel(server.id))
-                } label: {
-                    ServerCard(server)
-                }
-//            }
+            //            if server.isSuspended {
+            //                SuspendedServerCard(server.name)
+            //                    .popoverTip(Tip_SuspendedServer())
+            //            } else {
+            Button {
+                //                    navState.navigate(.toPanel(server.id))
+            } label: {
+                ServerCard(server)
+            }
+            //            }
         }
         .safariCover($showSafari, url: "https://mgr.bisquit.host/server/\(server.id)")
         .contextMenu {
-            ServerCardContextMenu(server.id, showSafari: $showSafari, confirmKill: $confirmKill)
+            ServerCardContextMenu(server, $showSafari, $confirmKill)
         }
         .confirmationDialog("Perform kill action", isPresented: $confirmKill, titleVisibility: .visible) {
             Button("Kill", role: .destructive) {
@@ -41,6 +41,6 @@ struct ServerCardParent: View {
 
 #Preview {
     ServerCardParent(sampleJSON(.serverListAttributes))
-///        .environment(NavState())
+    ///        .environment(NavState())
         .environmentObject(ValueStorage())
 }

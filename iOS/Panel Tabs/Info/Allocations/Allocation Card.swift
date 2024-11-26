@@ -28,7 +28,7 @@ struct AllocationCard: View {
                 
                 VStack(alignment: .leading) {
                     Text("IP: \(ip)")
-                    Text("Port: \(allocation.port)")
+                    Text("Port: \(allocation.port.description)")
                 }
                 .footnote()
                 

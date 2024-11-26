@@ -28,7 +28,7 @@ struct ServerCardParent: View {
         .hoverEffect()
         .safariCover($showSafari, url: "https://mgr.bisquit.host/server/\(server.id)")
         .contextMenu {
-            ServerCardContextMenu(server.id, showSafari: $showSafari, confirmKill: $confirmKill)
+            ServerCardContextMenu(server, $showSafari, $confirmKill)
         }
         .confirmationDialog("Perform kill action", isPresented: $confirmKill, titleVisibility: .visible) {
             Button("Kill", role: .destructive) {

@@ -1,18 +1,48 @@
 import ScrechKit
+import PteroNet
 
 struct ServerCardContextMenu: View {
-    private let id: String
+    private let server: ServerAttributes
     @Binding private var showSafari: Bool
     @Binding private var confirmKill: Bool
     
-    init(_ id: String, showSafari: Binding<Bool>, confirmKill: Binding<Bool>) {
-        self.id = id
+    init(_ server: ServerAttributes, _ showSafari: Binding<Bool>, _ confirmKill: Binding<Bool>) {
+        self.server = server
         _showSafari = showSafari
         _confirmKill = confirmKill
     }
     
+    private var defaultAllocation: String? {
+        guard let alloc = server.relationships.allocations.data.first(where: {
+            $0.attributes.isDefault
+        }).map(\.attributes) else {
+            return nil
+        }
+        
+        let ip = alloc.ipAlias ?? alloc.ip
+        return ip + ":" + alloc.port.description
+    }
+    
     var body: some View {
+        let id = server.id
+        
         ControlGroup {
+            Section {
+                if let defaultAllocation {
+                    Menu {
+                        Button {
+                            UIPasteboard.general.string = defaultAllocation
+                        } label: {
+                            Label("Copy", systemImage: "doc.on.doc")
+                        }
+                        
+                        ShareLink(item: defaultAllocation)
+                    } label: {
+                        Text(defaultAllocation)
+                    }
+                }
+            }
+            
             MenuButton("Start", icon: "play") {
                 PteroNet.powerSignal(id, signal: .start)
             }
@@ -38,11 +68,11 @@ struct ServerCardContextMenu: View {
     }
 }
 
-#Preview {
-    Menu("Preview") {
-        ServerCardContextMenu("", showSafari: .constant(false), confirmKill: .constant(false))
-    }
-    .semibold()
-    .rounded()
-    .largeTitle()
-}
+//#Preview {
+//    Menu("Preview") {
+//        ServerCardContextMenu("", showSafari: .constant(false), confirmKill: .constant(false))
+//    }
+//    .semibold()
+//    .rounded()
+//    .largeTitle()
+//}
