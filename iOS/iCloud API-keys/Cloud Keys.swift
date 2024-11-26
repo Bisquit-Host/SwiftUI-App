@@ -4,6 +4,7 @@ import PteroNet
 import TipKit
 
 struct CloudKeys: View {
+    @EnvironmentObject private var settings: ValueStorage
     @Environment(\.dismiss) private var dismiss
     
     @Environment(\.modelContext) private var modelContext
@@ -12,10 +13,7 @@ struct CloudKeys: View {
     @Binding private var apiKey: String
     private let validate: () -> Void
     
-    init(
-        _ apiKey: Binding<String>,
-        validate: @escaping () -> Void = {}
-    ) {
+    init(_ apiKey: Binding<String>, validate: @escaping () -> Void = {}) {
         _apiKey = apiKey
         self.validate = validate
     }
@@ -38,6 +36,7 @@ struct CloudKeys: View {
                         Text("API-keys")
                     }
                 }
+                .listRowBackground(settings.transparentList ? .clear : Color.list)
 #if os(visionOS)
                 Button {
                     dismiss()
@@ -46,6 +45,8 @@ struct CloudKeys: View {
                 }
 #endif
             }
+            .scrollContentBackground(settings.transparentSheet ? .hidden : .visible)
+            .presentationBackground(settings.transparentSheet ? .ultraThinMaterial : .regular)
             .navigationTitle("iCloud")
             .toolbarTitleDisplayMode(.inline)
             .overlay {

@@ -20,6 +20,10 @@ struct CloudKeyCard: View {
     
     @State private var alertRename = false
     
+    private var isSelected: Bool {
+        key.key == selectedKey
+    }
+    
     var body: some View {
         Button {
             Keychain.save(key: "selectedApiKey", value: key.key)
@@ -38,12 +42,15 @@ struct CloudKeyCard: View {
 #if !os(watchOS)
                 Spacer()
                 
-                Image(systemName: "doc.on.clipboard")
-                    .subheadline(.semibold)
-                    .foregroundStyle(.green)
+                if isSelected {
+                    Image(systemName: "checkmark")
+                        .subheadline(.semibold)
+                        .foregroundStyle(.green)
+                }
 #endif
             }
         }
+        .disabled(isSelected)
         .foregroundStyle(.foreground)
 #if !os(watchOS)
         .contextMenu {

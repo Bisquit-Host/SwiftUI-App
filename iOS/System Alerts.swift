@@ -37,9 +37,8 @@ final class SystemAlert {
 #endif
     
     static func error(_ error: Error) {
-        if let error = error as? PterError {
-            
 #if canImport(AlertKit)
+        if let error = error as? PterError {
             DispatchQueue.main.async {
                 AlertKitAPI.present(
                     title: "\(error.status) - \(error.code)",
@@ -49,8 +48,8 @@ final class SystemAlert {
                     haptic: .error
                 )
             }
-#endif
         }
+#endif
         
         networkCallError(#function, error)
     }
