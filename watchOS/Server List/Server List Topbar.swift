@@ -19,6 +19,7 @@ struct ServerListTopbar: View {
             SFButton("arrow.triangle.2.circlepath") {
                 vm.fetchServers(settings.adminServerList)
             }
+            .background(.ultraThinMaterial)
             
             Button {
                 navState.navigate(.toSettings)
@@ -31,6 +32,7 @@ struct ServerListTopbar: View {
                         value: isRotating
                     )
             }
+            .background(.ultraThinMaterial)
         }
         .title2(.bold)
         .task {
