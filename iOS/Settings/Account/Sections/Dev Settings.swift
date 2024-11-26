@@ -14,30 +14,25 @@ struct DevSettings: View {
         bundle.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "N/A"
     }
     
-    private var parameters: [(String, String)] {
-        let params = [
-            ("App version", "\(appVersion) (\(appBuild))"),
-            ("Device and system", "\(device.modelIdentifier) (\(device.systemName) \(device.systemVersion))")
-        ]
-        
-        return params
+    private var version: String {
+        "\(appVersion) (\(appBuild))"
+    }
+    
+    private var deviceAndSystem: String {
+        "\(device.modelIdentifier) (\(device.systemName) \(device.systemVersion))"
     }
     
     var body: some View {
         Section("Dev") {
-            ForEach(parameters, id: \.0) { parameter in
-                ListParam(
-                    parameter.0,
-                    param: parameter.1
-                )
-            }
+            ListParam("App version", param: version)
+            ListParam("Device and system", param: deviceAndSystem)
             
             Toggle("Developer mode", isOn: $settings.devMode)
-            
+#if !os(tvOS)
             NavigationLink("Debug") {
                 DebugSettings()
             }
-            
+#endif
             ServerListFooter()
         }
 #if !os(tvOS)

@@ -45,7 +45,9 @@ struct CloudKeys: View {
                 }
 #endif
             }
+#if !os(tvOS)
             .scrollContentBackground(settings.transparentSheet ? .hidden : .visible)
+#endif
             .presentationBackground(settings.transparentSheet ? .ultraThinMaterial : .regular)
             .navigationTitle("iCloud")
             .toolbarTitleDisplayMode(.inline)
