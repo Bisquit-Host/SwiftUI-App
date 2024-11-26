@@ -14,6 +14,8 @@ struct ServerCardParent: View {
     @State private var confirmKill = false
     
     var body: some View {
+        let serverUrl = "https://mgr.bisquit.host/server/\(server.id)"
+        
         VStack {
             if server.isSuspended {
                 SuspendedServerCard(server.name)
@@ -25,8 +27,11 @@ struct ServerCardParent: View {
                 }
             }
         }
+        .onDrag {
+            NSItemProvider(contentsOf: URL(string: serverUrl))!
+        }
         .hoverEffect()
-        .safariCover($showSafari, url: "https://mgr.bisquit.host/server/\(server.id)")
+        .safariCover($showSafari, url: serverUrl)
         .contextMenu {
             ServerCardContextMenu(server, $showSafari, $confirmKill)
         }
