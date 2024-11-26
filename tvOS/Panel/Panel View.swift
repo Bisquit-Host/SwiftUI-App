@@ -40,7 +40,7 @@ struct PanelView: View {
                         Text("Files")
                     }
                 
-                DataTab(server.id, limits: server.featureLimits)
+                DataTab(server)
                     .environment(backupVM)
                     .environment(databaseVM)
                     .environment(scheduleVM)

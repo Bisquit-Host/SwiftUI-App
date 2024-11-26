@@ -6,17 +6,19 @@ struct DataTab: View {
     @Environment(DatabaseVM.self) private var databaseVM
     @Environment(ScheduleVM.self) private var scheduleVM
     
-    private let id: String
-    private let limits: ServerFeatureLimits
+    private let server: ServerAttributes
     
-    init(_ id: String, limits: ServerFeatureLimits) {
-        self.id = id
-        self.limits = limits
+    init(_ server: ServerAttributes) {
+        self.server = server
+    }
+    
+    private var limits: ServerFeatureLimits {
+        server.featureLimits
     }
     
     var body: some View {
         List {
-            BackupList(id, backupLimit: limits.backups)
+            BackupList(server.id, backupLimit: limits.backups)
 #if os(tvOS)
             Divider()
             
@@ -45,9 +47,9 @@ struct DataTab: View {
     }
 }
 
-#Preview {
-    DataTab("", limits: ServerFeatureLimits(backups: 5, databases: 5, allocations: 5))
-        .environment(BackupVM(""))
-        .environment(DatabaseVM(""))
-        .environment(ScheduleVM(""))
-}
+//#Preview {
+//    DataTab()
+//        .environment(BackupVM(""))
+//        .environment(DatabaseVM(""))
+//        .environment(ScheduleVM(""))
+//}
