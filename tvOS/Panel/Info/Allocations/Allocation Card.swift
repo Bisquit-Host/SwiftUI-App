@@ -9,14 +9,20 @@ struct AllocationCard: View {
     }
     
     var body: some View {
-        if let ipAlias = allocation.ipAlias {
-            Text(ipAlias + ":\(allocation.port)")
-        } else {
-            Text(allocation.ip + ":\(allocation.port)")
-        }
-        
-        if let notes = allocation.notes {
-            Text(notes)
+        Button {
+            
+        } label: {
+            VStack(alignment: .leading) {
+                if let ipAlias = allocation.ipAlias {
+                    Text(ipAlias + ":\(allocation.port)")
+                } else {
+                    Text(allocation.ip + ":\(allocation.port)")
+                }
+                
+                if let notes = allocation.notes {
+                    Text(notes)
+                }
+            }
         }
     }
 }
