@@ -24,16 +24,6 @@ struct FileTab: View {
             }
         }
         .navigationTitle("Files")
-        .overlay(alignment: .bottomTrailing) {
-            SFButton("arrow.triangle.2.circlepath") {
-                vm.fetchFiles(root)
-            }
-            .headline()
-            .padding(5)
-            .background(.blue, in: .capsule)
-            .padding(20)
-            .buttonStyle(.plain)
-        }
         .ignoresSafeArea(edges: .bottom)
         .task {
             vm.fetchFiles(root)

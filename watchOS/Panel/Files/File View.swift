@@ -5,10 +5,7 @@ struct FileView: View {
     private let file: FileAttributes
     private let id, root: String
     
-    init(_ id: String,
-         file: FileAttributes,
-         path: String = ""
-    ) {
+    init(_ id: String, file: FileAttributes, path: String = "") {
         self.id = id
         self.file = file
         self.root = path
@@ -24,23 +21,18 @@ struct FileView: View {
                     FileTab(id, root: root + "/" + name)
                     
                 } else if mimeType.contains("text") || file.mimetype.contains("json") {
-                    TextFile(id,
-                             path: root + "/",
-                             name: name)
+                    TextFile(id, path: root + "/", name: name)
                     
                 } else if mimeType.contains("image") {
-                    ImageFile(id,
-                              path: root + "/",
-                              name: name)
+                    ImageFile(id, path: root + "/", name: name)
                     
                 } else if mimeType.contains("video") {
-                    VideoFile(id,
-                              root: root + "/",
-                              name: name)
+                    VideoFile(id, root: root + "/", name: name)
                 } else {
-                    ContentUnavailableView("Warning",
-                                           systemImage: "exclamationmark.triangle",
-                                           description: Text("Unable to view the contents of \(name)")
+                    ContentUnavailableView(
+                        "Warning",
+                        systemImage: "exclamationmark.triangle",
+                        description: Text("Unable to view the contents of \(name)")
                     )
                 }
             } label: {
@@ -51,7 +43,5 @@ struct FileView: View {
 }
 
 #Preview {
-    FileView("",
-             file: sampleJSON(.fileListAttributes)
-    )
+    FileView("", file: sampleJSON(.fileListAttributes))
 }

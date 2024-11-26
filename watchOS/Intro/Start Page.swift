@@ -17,24 +17,17 @@ struct StartPage: View {
             TextField("API-key", text: $vm.apiKey)
                 .autocorrectionDisabled()
             
-            VStack {
-                Button("Validate") {
-                    vm.fetchAccountDetails()
-                }
-                .disabled(vm.apiKey.isEmpty)
-                .foregroundStyle(vm.apiKey.isEmpty ? .secondary : .primary)
+#if DEBUG
+            Button("Debug") {
+                Keychain.save(key: "selectedApiKey", value: debugKey)
                 
-                Button("Debug") {
-                    Keychain.save(key: "selectedApiKey", value: debugKey)
-                    
-                    if !keys.contains(where: { $0.key == debugKey }) {
-                        modelContext.insert(APIKey(key: debugKey))
-                    }
-                    
-                    settings.authSucced()
+                if !keys.contains(where: { $0.key == debugKey }) {
+                    modelContext.insert(APIKey(key: debugKey))
                 }
+                
+                settings.authSucced()
             }
-            .title3()
+#endif
         }
         .task {
             try? await Task.sleep(for: .seconds(0.5))
@@ -45,6 +38,11 @@ struct StartPage: View {
         }
         .sheet($vm.sheetCloudKeys) {
             CloudKeys($vm.apiKey)
+        }
+        .onChange(of: vm.apiKey) { _, newValue in
+            if newValue.count == 48 {
+                vm.fetchAccountDetails()
+            }
         }
         .alert("Error \(vm.errorCode)", isPresented: $vm.alertInvalid) {
             Button("Try again") {}
