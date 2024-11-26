@@ -634,6 +634,7 @@
 
     },
     "Actions" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
