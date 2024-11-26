@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import PteroNet
 
 struct FileLink: Codable, Hashable {
@@ -60,12 +60,20 @@ struct FileCard: View {
         HStack {
             FileIcon(file.mimetype, name: file.name)
             
-            Text(file.name)
+            HStack(alignment: .bottom) {
+                Text(file.name)
 #if DEBUG
-            Text(file.mimetype)
-                .footnote()
-                .secondary()
+                Text(file.mimetype)
+                    .footnote()
+                    .secondary()
 #endif
+            }
+            
+            Spacer()
+            
+            if !file.mimetype.contains("directory") {
+                Text(formatBytes(file.size))
+            }
         }
     }
 }
