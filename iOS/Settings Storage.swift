@@ -28,7 +28,7 @@ final class ValueStorage: ObservableObject {
     @AppStorage("currentIcon") var currentIcon = "Primary Icon"
     @AppStorage("showFullFilePath") var showFullFilePath = false
     @AppStorage("preferredCurrency") var preferredCurrency = "₽"
-    @AppStorage("lastTabPanel") var lastTabPanel: Tabs = .info
+    @AppStorage("last_tab_panel") var lastTabPanel: Tabs = .info
     @AppStorage("tabViewBouncesDown") var tabViewBouncesDown = true
     @AppStorage("rawStartupCommand") var rawStartupCommand = false
 #if os(iOS)
@@ -39,7 +39,7 @@ final class ValueStorage: ObservableObject {
     // MARK: - Beta
     @AppStorage("dev_mode") var devMode = false
     @AppStorage("adminServerList") var adminServerList = false
-    @AppStorage("enableBisquitFall") var enableBisquitFall = false
+    @AppStorage("enable_bisquit_fall") var enableBisquitFall = false
     @AppStorage("widgetCpuUsage") var widgetCpuUsage = 0.0
     @AppStorage("widgetRamUsage") var widgetRamUsage = 0.0
     //    @AppStorage("browserCategory") var browserCategory = "Minecraft"
