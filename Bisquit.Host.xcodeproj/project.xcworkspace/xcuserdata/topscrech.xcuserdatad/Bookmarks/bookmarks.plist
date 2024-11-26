@@ -81,12 +81,12 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>    //@AppStorage("consoleFontDesign") var consoleFontDesign = 1
+				<string>    @AppStorage("consoleFontDesign") var consoleFontDesign = 1
 </string>
 				<key>leading</key>
 				<string>    @AppStorage("consoleFontSize") var consoleFontSize = 10.0
     //    @AppStorage("coloredTextEnabled") var coloredTextEnabled = true
-</string>
+    //</string>
 				<key>trailing</key>
 				<string>    
     // MARK: - Other

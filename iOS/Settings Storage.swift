@@ -22,7 +22,7 @@ final class ValueStorage: ObservableObject {
     @AppStorage("spamEnabled") var spamEnabled = false
     @AppStorage("consoleFontSize") var consoleFontSize = 10.0
     //    @AppStorage("coloredTextEnabled") var coloredTextEnabled = true
-    //@AppStorage("consoleFontDesign") var consoleFontDesign = 1
+    //    @AppStorage("consoleFontDesign") var consoleFontDesign = 1
     
     // MARK: - Other
     @AppStorage("currentIcon") var currentIcon = "Primary Icon"
