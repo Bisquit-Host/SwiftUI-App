@@ -19,8 +19,9 @@ struct StartupView: View {
         List {
             Section {
                 Text(showRawCommand ? vm.rawStartupCommand : vm.startupCommand)
+                    .caption2()
+                    .monospaced()
                     .textSelection(.enabled)
-                    .caption2(design: .monospaced)
                     .animation(.default, value: showRawCommand)
                 
                 Toggle("Raw", isOn: $storage.rawStartupCommand)
