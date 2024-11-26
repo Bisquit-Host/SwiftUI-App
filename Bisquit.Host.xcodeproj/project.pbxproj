@@ -207,7 +207,6 @@
 		F32E88D32AF8494100959D49 /* Server List Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88D02AF8494100959D49 /* Server List Filter.swift */; };
 		F32F43FF2B75450800C9470B /* User Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F43FE2B7544A200C9470B /* User Card.swift */; };
 		F32F44002B75450B00C9470B /* User List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F43FD2B7544A200C9470B /* User List.swift */; };
-		F32FD02A2CF5E8DC0038D62C /* Console Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32FD0292CF5E8DC0038D62C /* Console Message.swift */; };
 		F32FD02B2CF5E8DC0038D62C /* Console Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32FD0292CF5E8DC0038D62C /* Console Message.swift */; };
 		F32FD7162B1E041D00723B88 /* Websocket Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3729C0CB5A00B08696 /* Websocket Message.swift */; };
 		F32FD7172B1E042400723B88 /* Websocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BF97A929BFC7E9007B9C9C /* Websocket.swift */; };
@@ -4787,7 +4786,6 @@
 				F3D295BA2AF3A17500ED43A0 /* Dev Settings.swift in Sources */,
 				F3D2953D2AF39D3A00ED43A0 /* Nav Destinations.swift in Sources */,
 				F3D2958B2AF39FD500ED43A0 /* Settings Parent.swift in Sources */,
-				F32FD02A2CF5E8DC0038D62C /* Console Message.swift in Sources */,
 				F3D295612AF39E8900ED43A0 /* FileTab NewFolder.swift in Sources */,
 				F3D295392AF39D1B00ED43A0 /* Settings Storage.swift in Sources */,
 				F3AF91C72B423535001D8F80 /* SSH List.swift in Sources */,
