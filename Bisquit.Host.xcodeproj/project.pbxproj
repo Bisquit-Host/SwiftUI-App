@@ -3143,9 +3143,9 @@
 			children = (
 				F375EC3729EE7213002CA969 /* Backup List.swift */,
 				F300889C2B3A17CC0051476C /* Backup VM.swift */,
+				F3AF96F829DF277A00D30A8F /* Backup Card.swift */,
 				F3BC03BB2B1FFBD50011F98A /* Backup Context Menu.swift */,
 				F32FD02D2CF606960038D62C /* Backup Context Menu Control Group.swift */,
-				F3AF96F829DF277A00D30A8F /* Backup Card.swift */,
 				F3AB4A892CF3DAC900A8252F /* Backup Card VM.swift */,
 				F3DDD59B2A62AC7C009FDFBF /* Create Backup Button.swift */,
 				F3F716BC29E4D46600838586 /* Backup List Footer.swift */,
