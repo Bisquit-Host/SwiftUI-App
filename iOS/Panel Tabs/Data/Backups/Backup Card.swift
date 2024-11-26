@@ -17,14 +17,16 @@ struct BackupCard: View {
             
         } label: {
             HStack {
-                ZStack {
+                if backup.completedAt != nil {
                     Image(systemName: "doc.zipper")
                         .title2(.semibold)
-                        .frame(width: 32)
-                    
-                    if backup.completedAt == nil {
+                } else {
+                    ZStack {
                         ProgressView()
-                            .scaleEffect(1.5)
+                        
+                        Image(systemName: "doc.zipper")
+                            .title2(.semibold)
+                            .opacity(0)
                     }
                 }
                 
