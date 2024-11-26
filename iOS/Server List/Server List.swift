@@ -8,6 +8,12 @@ struct ServerList: View {
     @State private var searchField = ""
     @State private var showSafari = false
     
+    private var hasFrozenServers: Bool {
+        vm.servers.contains {
+            $0.isSuspended
+        }
+    }
+    
     var body: some View {
         @Bindable var vm = vm
         
@@ -16,9 +22,7 @@ struct ServerList: View {
         ScrollView(showsIndicators: false) {
             TipView(Tip_ServerCardContextMenu())
             
-            if vm.servers.contains(where: {
-                $0.isSuspended
-            }) {
+            if hasFrozenServers {
                 TipView(Tip_SuspendedServer()) { action in
                     if action.id == "open-billing" {
                         showSafari = true
