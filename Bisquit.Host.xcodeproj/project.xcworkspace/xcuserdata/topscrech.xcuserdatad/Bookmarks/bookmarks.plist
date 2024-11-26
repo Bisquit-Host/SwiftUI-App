@@ -1307,7 +1307,7 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 					<key>StartingLineNumber</key>
 					<string>50</string>
 					<key>Timestamp</key>
-					<string>754225028.1419899</string>
+					<string>754311636.273398</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -1324,16 +1324,15 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 			<dict>
 				<key>focused</key>
 				<string>        .ignoresSafeArea(.keyboard, edges: .bottom)
-        .toolbarBackground(.visible, for: .bottomBar)
 </string>
 				<key>leading</key>
-				<string>        .sidebarAdaptableStyle()
-        .environment(vm)
+				<string>        .environment(vm)
+        .sidebarAdaptableStyle()
 </string>
 				<key>trailing</key>
 				<string>        .task {
-            vm.fetchServerDetails()
-            
+            fetchData()
+        }
 </string>
 			</dict>
 			<key>type</key>
@@ -1546,13 +1545,13 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>89</string>
+					<string>92</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>88</string>
+					<string>91</string>
 					<key>Timestamp</key>
-					<string>754311567.998</string>
+					<string>754311670.858703</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>

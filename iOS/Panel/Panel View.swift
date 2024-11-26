@@ -50,23 +50,7 @@ struct PanelView: View {
         .environment(vm)
         .ignoresSafeArea(.keyboard, edges: .bottom)
         .task {
-            vm.fetchServerDetails()
-            
-            vm.consoleDetails { data in
-                if let data {
-                    vm.connectWebSocket(data)
-                }
-            }
-            
-            fileVM.fetchFiles()
-            backupVM.fetchBackups()
-            databaseVM.fetchDatabases()
-            scheduleVM.fetchSchedules()
-            startupVM.fetchStartupVariables()
-            
-            vm.updateBackups = {
-                backupVM.fetchBackups()
-            }
+            fetchData()
         }
         .onDisappear {
             vm.disconnectWebSocket()
@@ -81,6 +65,26 @@ struct PanelView: View {
                     vm.connectWebSocket(data)
                 }
             }
+        }
+    }
+    
+    private func fetchData() {
+        vm.fetchServerDetails()
+        
+        vm.consoleDetails { data in
+            if let data {
+                vm.connectWebSocket(data)
+            }
+        }
+        
+        fileVM.fetchFiles()
+        backupVM.fetchBackups()
+        databaseVM.fetchDatabases()
+        scheduleVM.fetchSchedules()
+        startupVM.fetchStartupVariables()
+        
+        vm.updateBackups = {
+            backupVM.fetchBackups()
         }
     }
 }
