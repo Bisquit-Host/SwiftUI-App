@@ -14,6 +14,9 @@ struct CreateBackupButton: View {
             vm.alertCreateBackup = true
         }
         .disabled(vm.backups.count >= backupLimit)
+#if os(tvOS)
+        .buttonStyle(.bordered)
+#endif
     }
 }
 

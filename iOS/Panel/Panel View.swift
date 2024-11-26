@@ -35,7 +35,7 @@ struct PanelView: View {
                     .environmentObject(fileVM)
                     .tab(.files)
                 
-                DataTab(id, limits: server.featureLimits)
+                DataTab(server)
                     .environment(backupVM)
                     .environment(databaseVM)
                     .environment(scheduleVM)

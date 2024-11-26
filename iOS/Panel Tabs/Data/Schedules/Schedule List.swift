@@ -28,10 +28,8 @@ struct ScheduleList: View {
 #endif
             }
             
-            Button {
+            Button("Create Schedule") {
                 sheetCreateSchedule = true
-            } label: {
-                Text("Create Schedule")
             }
 #if os(tvOS)
             .buttonStyle(.borderedProminent)

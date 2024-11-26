@@ -23,10 +23,8 @@ struct DatabaseList: View {
             //                vm.deleteItems(.databases, offsets: offsets)
             //            }
             
-            Button {
+            Button("Create Database") {
                 alertCreate = true
-            } label: {
-                Text("Create Database")
             }
             .disabled(vm.databases.count >= databaseLimit)
 #if os(tvOS)
