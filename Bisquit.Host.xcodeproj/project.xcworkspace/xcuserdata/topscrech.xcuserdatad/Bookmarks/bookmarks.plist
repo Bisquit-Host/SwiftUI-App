@@ -383,13 +383,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>27</string>
+					<string>30</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>26</string>
+					<string>29</string>
 					<key>Timestamp</key>
-					<string>722173483.937608</string>
+					<string>754324696.181982</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -405,16 +405,16 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>        .listRowBackground(settings.transparentList ? .clear : Color.list)
+				<string>        }
 </string>
 				<key>leading</key>
-				<string>            .foregroundStyle(.primary)
-        }
+				<string>                    .environment(vm)
+            }
 </string>
 				<key>trailing</key>
-				<string>        .task {
+				<string>        .listRowBackground(settings.transparentList ? .clear : Color.list)
+        .task {
             vm.fetchKeys()
-        }
 </string>
 			</dict>
 			<key>title</key>

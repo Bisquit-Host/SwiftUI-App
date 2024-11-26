@@ -23,14 +23,14 @@ struct AccountSettings: View {
                 }
             }
             .foregroundStyle(.primary)
+            .sheet($sheetApiKeys) {
+                ApikeyList()
+                    .environment(vm)
+            }
         }
         .listRowBackground(settings.transparentList ? .clear : Color.list)
         .task {
             vm.fetchKeys()
-        }
-        .sheet($sheetApiKeys) {
-            ApikeyList()
-                .environment(vm)
         }
     }
 }
