@@ -48,7 +48,6 @@ final class ServerCardVM {
                 stateColor = .yellow
             }
             
-            print("Goida")
             isLoading = false
         }
     }
