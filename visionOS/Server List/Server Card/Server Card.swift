@@ -23,13 +23,14 @@ struct ServerCard: View {
             Text(server.name)
                 .title()
             
-            HStack(spacing: 20) {
+            HStack(spacing: 50) {
                 CircularGauge(
                     param: "CPU",
                     value: vm.cpuUsage,
                     limit: limits.cpu,
                     isRedacted: vm.isLoading
                 )
+                .scaleEffect(1.5)
                 
                 CircularGauge(
                     param: "RAM",
@@ -37,6 +38,7 @@ struct ServerCard: View {
                     limit: limits.memory,
                     isRedacted: vm.isLoading
                 )
+                .scaleEffect(1.5)
                 
                 CircularGauge(
                     param: "RAM",
@@ -44,6 +46,7 @@ struct ServerCard: View {
                     limit: limits.disk,
                     isRedacted: vm.isLoading
                 )
+                .scaleEffect(1.5)
                 
                 //                LinearGauge(value: vm.diskUsage, limit: limits.disk)
             }
