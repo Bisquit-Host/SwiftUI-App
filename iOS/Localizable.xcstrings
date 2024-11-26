@@ -1734,6 +1734,7 @@
 
     },
     "Developer (Beta)" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -1750,6 +1751,9 @@
       }
     },
     "Developer mode" : {
+
+    },
+    "Device and system" : {
 
     },
     "Disable 2FA" : {

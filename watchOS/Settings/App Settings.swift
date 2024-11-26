@@ -20,11 +20,8 @@ struct AppSettings: View {
         bundle.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "N/A"
     }
     
-    private var parameters: [(String, String)] {
-        [
-            ("App version", "\(appVersion) (\(appBuild))"),
-            ("Device and system", deviceAndName)
-        ]
+    private var version: String {
+        "\(appVersion) (\(appBuild))"
     }
     
     var body: some View {
@@ -39,14 +36,19 @@ struct AppSettings: View {
                 }
             }
             
-            Section("Developer (Beta)") {
+            Section("Dev") {
                 NavigationLink("Map") {
                     MapView()
                 }
                 
-                ForEach(parameters, id: \.0) { parameter in
-                    ListParam(parameter.0, param: parameter.1)
-                        .font(parameter.0 == "Device and system" ? .footnote : .none)
+                ListParam("App version", param: version)
+                
+                VStack(alignment: .leading) {
+                    Text("Device and system")
+                    
+                    Text(deviceAndName)
+                        .secondary()
+                        .footnote()
                 }
                 
                 Toggle("Developer mode", isOn: $settings.devMode)

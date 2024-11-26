@@ -1326,8 +1326,8 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 				<string>        .ignoresSafeArea(.keyboard, edges: .bottom)
 </string>
 				<key>leading</key>
-				<string>        .environment(vm)
-        .sidebarAdaptableStyle()
+				<string>        .sidebarAdaptableStyle()
+        .environment(vm)
 </string>
 				<key>trailing</key>
 				<string>        .task {
