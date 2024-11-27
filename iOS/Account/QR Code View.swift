@@ -30,7 +30,8 @@ struct QRCodeView: View {
         }
         .presentationDetents([.medium])
     }
-    func generateQRCode(_ url: String) -> UIImage? {
+    
+    private func generateQRCode(_ url: String) -> UIImage? {
         let data = url.data(using: .utf8)
         
         guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else {

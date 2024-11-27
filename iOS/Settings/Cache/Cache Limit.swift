@@ -30,7 +30,7 @@ struct CacheLimit: View {
         .foregroundStyle(.primary)
     }
     
-    func updateCacheLimit(_ limit: CacheLimit) {
+    private func updateCacheLimit(_ limit: CacheLimit) {
         let newCacheLimit: UInt
         
         switch limit {

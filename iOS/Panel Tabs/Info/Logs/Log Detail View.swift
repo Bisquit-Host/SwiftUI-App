@@ -55,7 +55,7 @@ struct LogDetailView: View {
         }
     }
     
-    func prepareProperties(_ properties: [String: CodableValue]) {
+    private func prepareProperties(_ properties: [String: CodableValue]) {
         properties.forEach { key, value in
             switch value {
             case .int(let x):

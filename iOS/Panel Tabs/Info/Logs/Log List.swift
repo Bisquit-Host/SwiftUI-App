@@ -5,7 +5,7 @@ struct LogList: View {
     
     @State private var searchField = ""
     
-    let dateFormatter: ISO8601DateFormatter = {
+    private let dateFormatter: ISO8601DateFormatter = {
         let formatter = ISO8601DateFormatter()
         
         formatter.formatOptions = [
@@ -16,15 +16,6 @@ struct LogList: View {
         
         return formatter
     }()
-    
-    func monthName(for isoTimestamp: String) -> String {
-        guard let date = dateFormatter.date(from: isoTimestamp) else {
-            return "Unknown Month"
-        }
-        
-        return DateFormatter()
-            .monthSymbols[Calendar.current.component(.month, from: date) - 1]
-    }
     
     var body: some View {
         @Bindable var vm = vm
@@ -58,6 +49,15 @@ struct LogList: View {
         .refreshableTask {
             vm.fetchLogs()
         }
+    }
+    
+    private func monthName(for isoTimestamp: String) -> String {
+        guard let date = dateFormatter.date(from: isoTimestamp) else {
+            return "Unknown Month"
+        }
+        
+        return DateFormatter()
+            .monthSymbols[Calendar.current.component(.month, from: date) - 1]
     }
 }
 

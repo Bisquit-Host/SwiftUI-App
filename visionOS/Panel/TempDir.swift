@@ -2,7 +2,7 @@ import SwiftUI
 
 struct TempDir: View {
     @State private var fileNames: [String] = []
-
+    
     var body: some View {
         List {
             Section {
@@ -18,10 +18,10 @@ struct TempDir: View {
             }
         }
     }
-
+    
     private func loadFiles() {
         let tempDirectory = FileManager.default.temporaryDirectory
-
+        
         do {
             let files = try FileManager.default.contentsOfDirectory(atPath: tempDirectory.path)
             fileNames = files

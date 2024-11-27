@@ -128,7 +128,7 @@ struct ImagePicker: View {
         }
     }
     
-    func writeDataToTemporaryURL(_ data: Data, pathExtension: String = "") -> URL? {
+    private func writeDataToTemporaryURL(_ data: Data, pathExtension: String = "") -> URL? {
         let temporaryDirectoryURL = FileManager.default.temporaryDirectory
         
         let temporaryFileURL = temporaryDirectoryURL
@@ -144,7 +144,7 @@ struct ImagePicker: View {
         }
     }
     
-    func extractImageOrVideo(_ photoItems: [PhotosPickerItem]) {
+    private func extractImageOrVideo(_ photoItems: [PhotosPickerItem]) {
         Task.detached {
             for item in photoItems {
                 guard let identifier = item.supportedContentTypes.first?.identifier

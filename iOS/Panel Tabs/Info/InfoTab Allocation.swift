@@ -49,7 +49,7 @@ struct InfoTabAllocation: View {
         }
     }
     
-    func getDefaultIp(_ server: ServerAttributes) -> String {
+    private func getDefaultIp(_ server: ServerAttributes) -> String {
         let allocations = server.relationships.allocations.data
         
         let defaultAllocation = allocations.first(where: {

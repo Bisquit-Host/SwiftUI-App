@@ -31,7 +31,7 @@ struct CacheExpiration: View {
         .foregroundStyle(.primary)
     }
     
-    func updateCacheExpiration(_ expiration: CacheExpiration) {
+    private func updateCacheExpiration(_ expiration: CacheExpiration) {
         let newCacheExpiration: StorageExpiration
         
         switch expiration {

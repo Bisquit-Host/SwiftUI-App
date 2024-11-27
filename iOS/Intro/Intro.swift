@@ -44,7 +44,7 @@ struct Intro: View {
     }
     
     @ViewBuilder
-    func IntroScreen() -> some View {
+    private func IntroScreen() -> some View {
         GeometryReader {
             let size = $0.size
             
@@ -100,7 +100,7 @@ struct Intro: View {
     }
     
     @ViewBuilder
-    func WalkThroughScreens() -> some View {
+    private func WalkThroughScreens() -> some View {
         let isLast = currentIndex == intros.count
         
         GeometryReader {
@@ -164,7 +164,7 @@ struct Intro: View {
     }
     
     @ViewBuilder
-    func ScreenView(size: CGSize, index: Int) -> some View {
+    private func ScreenView(size: CGSize, index: Int) -> some View {
         let intro = intros[index]
         
         VStack(spacing: 10) {
@@ -203,7 +203,7 @@ struct Intro: View {
     }
     
     @ViewBuilder
-    func WelcomeView(size: CGSize, index: Int) -> some View {
+    private func WelcomeView(size: CGSize, index: Int) -> some View {
         VStack(spacing: 10) {
             Text("We are Bisquit.Host")
                 .largeTitle(.bold, design: .rounded)
@@ -218,7 +218,7 @@ struct Intro: View {
     }
     
     @ViewBuilder
-    func NavBar() -> some View {
+    private func NavBar() -> some View {
         let isLast = currentIndex == intros.count
         
         HStack {

@@ -114,11 +114,11 @@ struct FilePermissionsView: View {
         }
     }
     
-    func initBit(_ letter: Character) -> Bool {
+    private func initBit(_ letter: Character) -> Bool {
         letter != "-"
     }
     
-    func parsePermissions(_ modeBits: String) -> (systemRead: Bool, systemWrite: Bool, systemExecute: Bool, adminRead: Bool, adminWrite: Bool, adminExecute: Bool, otherRead: Bool, otherWrite: Bool, otherExecute: Bool) {
+    private func parsePermissions(_ modeBits: String) -> (systemRead: Bool, systemWrite: Bool, systemExecute: Bool, adminRead: Bool, adminWrite: Bool, adminExecute: Bool, otherRead: Bool, otherWrite: Bool, otherExecute: Bool) {
         let permissions = modeBits.compactMap { UInt8(String($0), radix: 8) }
         
         func extractPermissions(from value: UInt8) -> (Bool, Bool, Bool) {

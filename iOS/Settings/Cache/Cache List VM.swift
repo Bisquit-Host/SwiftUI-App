@@ -22,7 +22,7 @@ final class CacheListVM {
         retrieveImages(cachePath)
     }
     
-    func retrieveImages(_ path: String) {
+    private func retrieveImages(_ path: String) {
         let fm = FileManager.default
         
         if let files = try? fm.contentsOfDirectory(atPath: path) {

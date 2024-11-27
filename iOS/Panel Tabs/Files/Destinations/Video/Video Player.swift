@@ -20,7 +20,7 @@ struct VideoPlayerView: View {
             }
     }
     
-    func setAudioSessionCategory(to value: AVAudioSession.Category) {
+    private func setAudioSessionCategory(to value: AVAudioSession.Category) {
         let audioSession = AVAudioSession.sharedInstance()
         
         do {
