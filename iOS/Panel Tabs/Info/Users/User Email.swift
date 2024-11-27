@@ -41,7 +41,7 @@ struct UserEmail: View {
                 Text(email)
             }
         }
-        .mailCover($mailCover)
+        .mailCover($mailCover, recipients: [email])
     }
 }
 
