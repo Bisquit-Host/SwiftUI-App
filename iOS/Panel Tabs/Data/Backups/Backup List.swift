@@ -6,7 +6,7 @@ struct BackupList: View {
     private let id: String
     private let backupLimit: Int
     
-    init(_ id: String, backupLimit: Int) {
+    init(_ id: String, _ backupLimit: Int) {
         self.id = id
         self.backupLimit = backupLimit
     }
@@ -46,7 +46,7 @@ struct BackupList: View {
 
 #Preview {
     List {
-        BackupList("", backupLimit: 4)
+        BackupList("", 4)
             .environment(BackupVM(""))
     }
 }

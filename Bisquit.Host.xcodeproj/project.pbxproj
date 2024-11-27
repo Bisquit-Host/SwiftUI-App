@@ -194,6 +194,9 @@
 		F32716D92CF6257F00F2DC31 /* Backup Context Menu Control Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32FD02D2CF606960038D62C /* Backup Context Menu Control Group.swift */; };
 		F32716DB2CF628CB00F2DC31 /* SafariCover in Frameworks */ = {isa = PBXBuildFile; productRef = F32716DA2CF628CB00F2DC31 /* SafariCover */; };
 		F32716DC2CF62C0D00F2DC31 /* Backup Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF96F829DF277A00D30A8F /* Backup Card.swift */; };
+		F32716DD2CF62C9900F2DC31 /* Backup List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F375EC3729EE7213002CA969 /* Backup List.swift */; };
+		F32716DE2CF62CAB00F2DC31 /* Create Backup Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DDD59B2A62AC7C009FDFBF /* Create Backup Button.swift */; };
+		F32716DF2CF62CC300F2DC31 /* Section Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3496DC429E0091A0089FC28 /* Section Header.swift */; };
 		F3287A762B10A0E4001AFE54 /* Live Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38282022B0E14B30088C48B /* Live Activity.swift */; };
 		F3287A792B10A11E001AFE54 /* Live Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38282022B0E14B30088C48B /* Live Activity.swift */; };
 		F3287A7A2B10A120001AFE54 /* Widget Live Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3287A732B109DD0001AFE54 /* Widget Live Activity.swift */; };
@@ -237,7 +240,6 @@
 		F33001422A4CEF840063FE0F /* Apikey VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33001402A4CEF840063FE0F /* Apikey VM.swift */; };
 		F33001442A4CF06D0063FE0F /* Apikey Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33001432A4CF06D0063FE0F /* Apikey Card.swift */; };
 		F33001452A4CF06D0063FE0F /* Apikey Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33001432A4CF06D0063FE0F /* Apikey Card.swift */; };
-		F33174DD2B725E3E003758EA /* Backup List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33174DB2B725D8D003758EA /* Backup List.swift */; };
 		F3317AEA2A45E24F00CA104D /* Guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3317AE92A45E24F00CA104D /* Guide.swift */; };
 		F3317AED2A45E26900CA104D /* Guide Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3317AEC2A45E26900CA104D /* Guide Model.swift */; };
 		F3317AEE2A45E33300CA104D /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA56F295900C20006D126 /* Formatters.swift */; };
@@ -1503,7 +1505,6 @@
 		F330013A2A4CEC320063FE0F /* Apikey List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Apikey List.swift"; sourceTree = "<group>"; };
 		F33001402A4CEF840063FE0F /* Apikey VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Apikey VM.swift"; sourceTree = "<group>"; };
 		F33001432A4CF06D0063FE0F /* Apikey Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Apikey Card.swift"; sourceTree = "<group>"; };
-		F33174DB2B725D8D003758EA /* Backup List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Backup List.swift"; sourceTree = "<group>"; };
 		F3317AE92A45E24F00CA104D /* Guide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guide.swift; sourceTree = "<group>"; };
 		F3317AEC2A45E26900CA104D /* Guide Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Guide Model.swift"; sourceTree = "<group>"; };
 		F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dynamic Island Badge.swift"; sourceTree = "<group>"; };
@@ -2464,14 +2465,6 @@
 			path = Account;
 			sourceTree = "<group>";
 		};
-		F33174DA2B725D8D003758EA /* Backups */ = {
-			isa = PBXGroup;
-			children = (
-				F33174DB2B725D8D003758EA /* Backup List.swift */,
-			);
-			path = Backups;
-			sourceTree = "<group>";
-		};
 		F3317AEB2A45E25500CA104D /* Guide */ = {
 			isa = PBXGroup;
 			children = (
@@ -2881,7 +2874,6 @@
 				F3DF03DE2B74F19B00CF6F5E /* Databases */,
 				F386941B2A4B3B1E002DEF90 /* Info */,
 				F32F43FC2B7544A200C9470B /* Users */,
-				F33174DA2B725D8D003758EA /* Backups */,
 				F389282C2A441D7000561CDF /* Console */,
 				F389282B2A441D6B00561CDF /* Settings */,
 			);
@@ -5130,6 +5122,7 @@
 				F3AB4A922CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
 				F35081AF2AF30E2B00835CC0 /* Tip Cloud Keys.swift in Sources */,
 				F37B907A2BFEA00300597624 /* Ornament Info Settings.swift in Sources */,
+				F32716DF2CF62CC300F2DC31 /* Section Header.swift in Sources */,
 				F32F44002B75450B00C9470B /* User List.swift in Sources */,
 				F3FD9F9D2C651BD100A69314 /* File Icon.swift in Sources */,
 				F386941A2A4B3AE1002DEF90 /* Info Tab.swift in Sources */,
@@ -5139,6 +5132,7 @@
 				F3464D1F2A86396500188B0C /* Change Power.swift in Sources */,
 				F30B61CB2B2905F300F447B4 /* Websocket Message.swift in Sources */,
 				F30C130B2A545ED900A7EFF0 /* Linking VM.swift in Sources */,
+				F32716DD2CF62C9900F2DC31 /* Backup List.swift in Sources */,
 				F348C6E62A543909002D5BD6 /* Intro.swift in Sources */,
 				F3F2BBAA2A540E4000D44CA6 /* Nav Destinations.swift in Sources */,
 				F3FD9FA12C65217C00A69314 /* Quick Look View.swift in Sources */,
@@ -5152,6 +5146,7 @@
 				F3FD9F9C2C651B3800A69314 /* File Card.swift in Sources */,
 				F3FD9F982C651A4E00A69314 /* File List.swift in Sources */,
 				F3DF03DB2B74F01C00CF6F5E /* Database VM.swift in Sources */,
+				F32716DE2CF62CAB00F2DC31 /* Create Backup Button.swift in Sources */,
 				F3F2BB9D2A5403DD00D44CA6 /* Server List VM.swift in Sources */,
 				F3F2BBAB2A540E4400D44CA6 /* Nav Extension.swift in Sources */,
 				F38928322A445EA900561CDF /* Server Card.swift in Sources */,
@@ -5190,7 +5185,6 @@
 				F35FEB142B0A2C8F004DA05D /* Enums.swift in Sources */,
 				F37B90792BFEA00300597624 /* Panel Ornament Info.swift in Sources */,
 				F3AB4A7D2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
-				F33174DD2B725E3E003758EA /* Backup List.swift in Sources */,
 				F3A7CF702A44FD5300331B51 /* Server Card Parent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -47,7 +47,7 @@ struct PanelView: View {
                             Label("Files", systemImage: "folder")
                         }
                     
-                    BackupList(server)
+                    BackupList(server.id, server.featureLimits.backups)
                         .environment(backupVM)
                         .tag(Tab.backups)
                         .tabItem {

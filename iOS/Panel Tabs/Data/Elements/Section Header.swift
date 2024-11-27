@@ -4,9 +4,7 @@ struct SectionHeader: View {
     private let name: LocalizedStringKey
     private let type: HeaderType
     
-    init(_ name: LocalizedStringKey,
-         type: HeaderType
-    ) {
+    init(_ name: LocalizedStringKey, type: HeaderType) {
         self.name = name
         self.type = type
     }
