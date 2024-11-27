@@ -6,17 +6,19 @@ struct UserCard: View {
     @Environment(UsersVM.self) private var vm
     
     private let user: UserAttributes
+    private let imageUrl: URL?
     
     init(_ user: UserAttributes) {
         self.user = user
+        self.imageUrl = URL(string: user.image)
     }
     
     @State private var sheetDetails = false
     
 #if os(tvOS)
-    private let imageSize: CGFloat = 64
+    private let imageSize = 64.0
 #else
-    private let imageSize: CGFloat = 32
+    private let imageSize = 32.0
 #endif
     
     var body: some View {
@@ -24,7 +26,7 @@ struct UserCard: View {
             sheetDetails = true
         } label: {
             HStack {
-                KFImage(URL(string: user.image))
+                KFImage(imageUrl)
                     .resizable()
                     .frame(width: imageSize, height: imageSize)
                     .clipShape(.rect(cornerRadius: 10))
