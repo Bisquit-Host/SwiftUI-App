@@ -33,7 +33,7 @@ struct UserList: View {
         }
     }
     
-    private func delete(offsets: IndexSet) {
+    private func delete(_ offsets: IndexSet) {
         offsets.forEach { index in
             let user = vm.users[index]
             vm.delete(user.uuid)

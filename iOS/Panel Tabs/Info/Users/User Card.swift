@@ -48,6 +48,9 @@ struct UserCard: View {
             }
             .foregroundStyle(.foreground)
         }
+        .sheet($sheetDetails) {
+            UserView(user)
+        }
 #if !os(watchOS)
         .contextMenu {
             MenuButton("Details", icon: "info.circle") {
@@ -61,9 +64,6 @@ struct UserCard: View {
             }
         }
 #endif
-        .sheet($sheetDetails) {
-            UserView(user)
-        }
     }
 }
 
