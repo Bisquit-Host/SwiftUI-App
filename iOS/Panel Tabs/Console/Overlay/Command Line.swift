@@ -14,8 +14,8 @@ struct CommandLine: View {
     @State private var text = ""
     @State private var showCommandLine = false
     @State private var showClearButton = false
-    @State private var offsetY: CGFloat = 0
-    @State private var offsetX: CGFloat = 0
+    @State private var offsetY = 0.0
+    @State private var offsetX = 0.0
     
     @FocusState private var focusState
     @Namespace private var animation

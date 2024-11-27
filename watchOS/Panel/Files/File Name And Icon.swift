@@ -9,9 +9,9 @@ struct FileNameAndIcon: View {
     }
     
 #if os(tvOS)
-    private let spacing: CGFloat = 16
+    private let spacing = 16.0
 #elseif os(watchOS)
-    private let spacing: CGFloat = 8
+    private let spacing = 8.0
 #endif
     
     var body: some View {
