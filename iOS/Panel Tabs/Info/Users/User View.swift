@@ -52,7 +52,7 @@ struct UserView: View {
         }
     }
     
-    func removePrefix(_ string: String) -> String {
+    private func removePrefix(_ string: String) -> String {
         let components = string.split(separator: ".")
         
         guard components.count > 1 else {
