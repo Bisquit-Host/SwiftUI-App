@@ -1,4 +1,5 @@
 import SwiftUI
+import PteroNet
 
 struct BackupList: View {
     @Environment(BackupVM.self) private var vm
@@ -6,9 +7,9 @@ struct BackupList: View {
     private let id: String
     private let backupLimit: Int
     
-    init(_ id: String, _ backupLimit: Int) {
-        self.id = id
-        self.backupLimit = backupLimit
+    init(_ server: ServerAttributes) {
+        self.id = server.id
+        self.backupLimit = server.featureLimits.backups
     }
     
     var body: some View {
@@ -46,7 +47,7 @@ struct BackupList: View {
 
 #Preview {
     List {
-        BackupList("", 4)
+        BackupList(sampleJSON(.serverListAttributes))
             .environment(BackupVM(""))
     }
 }

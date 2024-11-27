@@ -7,18 +7,16 @@ struct DataTab: View {
     @Environment(ScheduleVM.self) private var scheduleVM
     
     private let server: ServerAttributes
+    private let limits: ServerFeatureLimits
     
     init(_ server: ServerAttributes) {
         self.server = server
-    }
-    
-    private var limits: ServerFeatureLimits {
-        server.featureLimits
+        self.limits = server.featureLimits
     }
     
     var body: some View {
         List {
-            BackupList(server.id, backupLimit: limits.backups)
+            BackupList(server)
 #if os(tvOS)
             Divider()
             

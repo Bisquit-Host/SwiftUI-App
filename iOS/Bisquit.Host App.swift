@@ -1,7 +1,10 @@
 import ScrechKit
 import SwiftData
 import TipKit
+
+#if canImport(SafariCover)
 import SafariCover
+#endif
 
 #if canImport(Pow)
 import Pow
@@ -61,13 +64,11 @@ struct BisquitHostApp: App {
         
 #if canImport(AlertKit)
         .onChange(of: network.isNetworkSatisfied) { _, status in
-            guard let status else {
+            guard let status, status else {
                 return
             }
             
-            if !status {
-                SystemAlert.networkError()
-            }
+            SystemAlert.networkError()
         }
 #endif
         

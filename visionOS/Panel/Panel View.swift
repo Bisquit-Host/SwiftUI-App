@@ -33,26 +33,28 @@ struct PanelView: View {
                             Label("Info", systemImage: "info.circle")
                         }
                     
-                    Console(server.id)
+                    Console(id)
                         .environment(vm)
                         .tag(Tab.console)
                         .tabItem {
                             Label("Console", systemImage: "apple.terminal")
                         }
                     
-                    FileList(server.id)
+                    FileList(id)
                         .environmentObject(fileVM)
                         .tag(Tab.files)
                         .tabItem {
                             Label("Files", systemImage: "folder")
                         }
                     
-                    BackupList(server.id, server.featureLimits.backups)
-                        .environment(backupVM)
-                        .tag(Tab.backups)
-                        .tabItem {
-                            Label("Backups", systemImage: "archivebox")
-                        }
+                    List {
+                        BackupList(server)
+                    }
+                    .environment(backupVM)
+                    .tag(Tab.backups)
+                    .tabItem {
+                        Label("Backups", systemImage: "archivebox")
+                    }
                     
                     UserList()
                         .environment(userVM)
@@ -70,7 +72,7 @@ struct PanelView: View {
                 }
             }
         }
-        .navigationTitle(vm.server?.name ?? "Error")
+        .navigationTitle(vm.server?.name ?? "")
         .task {
             vm.fetchServerDetails()
             backupVM.fetchBackups()
