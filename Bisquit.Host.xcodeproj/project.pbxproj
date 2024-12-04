@@ -3167,8 +3167,8 @@
 			children = (
 				F375EC3929EE73AC002CA969 /* Database List.swift */,
 				F30088A12B3A18A20051476C /* Database VM.swift */,
-				F3BC03B62B1FF8E40011F98A /* Database Context Menu.swift */,
 				F3CB53D52971CF6B00A213B0 /* Database Card.swift */,
+				F3BC03B62B1FF8E40011F98A /* Database Context Menu.swift */,
 			);
 			path = Databases;
 			sourceTree = "<group>";

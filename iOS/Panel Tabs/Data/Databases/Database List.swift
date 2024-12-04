@@ -39,7 +39,6 @@ struct DatabaseList: View {
                 )
             )
         }
-        
         .alert("Create Database", isPresented: $alertCreate) {
             TextField("", text: $vm.newDatabaseName)
                 .autocorrectionDisabled()
