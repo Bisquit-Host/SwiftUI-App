@@ -39,7 +39,7 @@ struct FolderFile: View {
                     
                     Spacer()
                     
-                    Text("Total: \(vm.filteredFiles.count)")
+                    Text("\(vm.filteredFiles.count) files")
                 }
             }
         }

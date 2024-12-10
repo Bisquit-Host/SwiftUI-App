@@ -4656,35 +4656,8 @@
     "Total size" : {
 
     },
-    "Total: %lld" : {
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Totaal: %lld"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Всего: %lld"
-          }
-        }
-      }
-    },
     "Transparent lists" : {
 
-    },
-    "Transparent Lists" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Прозрачные Списки"
-          }
-        }
-      }
     },
     "Transparent sheets" : {
 
