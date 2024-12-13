@@ -2,7 +2,7 @@ import ScrechKit
 import PteroNet
 
 struct ServerCard: View {
-    private var vm: ServerCardVM
+    @State private var vm: ServerCardVM
     
     private let server: ServerAttributes
     
@@ -47,7 +47,5 @@ struct ServerCard: View {
 }
 
 #Preview {
-    ServerCard(
-        sampleJSON(.serverListAttributes)
-    )
+    ServerCard(sampleJSON(.serverListAttributes))
 }

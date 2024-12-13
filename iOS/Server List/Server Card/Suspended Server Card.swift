@@ -9,9 +9,9 @@ struct SuspendedServerCard: View {
         self.name = name
     }
     
-    private var corner: CGFloat {
+    private var rounding: CGFloat {
         switch settings.designCode {
-        case 0: 22
+        case 0: 25
         default: 16
         }
     }
@@ -30,7 +30,7 @@ struct SuspendedServerCard: View {
         }
         .frame(maxWidth: 600, maxHeight: 200)
         .padding(10)
-        .background(.ultraThinMaterial, in: .rect(cornerRadius: corner))
+        .background(.ultraThinMaterial, in: .rect(cornerRadius: rounding))
     }
 }
 

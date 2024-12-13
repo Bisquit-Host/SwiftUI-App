@@ -15,6 +15,13 @@ struct ServerCard: View {
     @Namespace private var animation
     private let bounds = UIScreen.main.bounds
     
+    private var rounding: CGFloat {
+        switch settings.designCode {
+        case 0: 25
+        default: 16
+        }
+    }
+    
     private var backgroundColor: Color {
         vm.stateColor.opacity(0.15)
     }
@@ -49,8 +56,8 @@ struct ServerCard: View {
                 .padding(.vertical, 5)
                 .padding(.horizontal, 10)
                 .frame(maxHeight: .infinity)
-                .background(.ultraThinMaterial, in: .rect(cornerRadius: vm.stateColor != .red ? 22 : 16))
-                .background(backgroundColor, in: .rect(cornerRadius: vm.stateColor != .red ? 22 : 16))
+                .background(.ultraThinMaterial, in: .rect(cornerRadius: rounding))
+                .background(backgroundColor, in: .rect(cornerRadius: rounding))
                 
             case 1:
                 // Line
@@ -72,8 +79,8 @@ struct ServerCard: View {
                 }
                 .frame(height: 90)
                 .padding(.horizontal)
-                .background(.ultraThinMaterial, in: .rect(cornerRadius: vm.stateColor != .red ? 22 : 16))
-                .background(backgroundColor, in: .rect(cornerRadius: vm.stateColor != .red ? 22 : 16))
+                .background(.ultraThinMaterial, in: .rect(cornerRadius: rounding))
+                .background(backgroundColor, in: .rect(cornerRadius: rounding))
                 
             default:
                 EmptyView()

@@ -12,8 +12,8 @@ final class ServerCardVM {
     var ramUsage = 0.0
     var cpuUsage = 0.0
     var diskUsage = 0.0
-    var stateColor: Color = .red
     var isLoading = true
+    var stateColor: Color = .red
     
     func fetchServerUsage() {
         serverUsageAPI(id) { result in
