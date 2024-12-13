@@ -65,10 +65,9 @@ struct BisquitHostApp: App {
 #if canImport(AlertKit)
         .onChange(of: network.isNetworkSatisfied) { _, status in
             guard let status, status else {
+                SystemAlert.networkError()
                 return
             }
-            
-            SystemAlert.networkError()
         }
 #endif
         
