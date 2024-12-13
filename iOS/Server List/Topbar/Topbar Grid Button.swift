@@ -3,6 +3,13 @@ import SwiftUI
 struct TopbarGridButton: View {
     @EnvironmentObject private var settings: ValueStorage
     
+    private var icon: String {
+        switch settings.designCode {
+        case 0: "rectangle.grid.1x2.fill"
+        default: "rectangle.grid.2x2.fill"
+        }
+    }
+    
     var body: some View {
         Button {
             withAnimation(.easeOut(duration: 1)) {
@@ -10,19 +17,13 @@ struct TopbarGridButton: View {
                 case 0:
                     settings.designCode = 1
                     
-                    //case 1:
-                    //settings.designCode = 2
-                    
                 default:
                     settings.designCode = 0
                 }
             }
         } label: {
-            let icon = settings.designCode == 0 ? "rectangle.grid.2x2.fill" : "rectangle.grid.1x2.fill"
-            
-            Image(systemName: icon)
+            Label("Layout", systemImage: icon)
         }
-        .keyboardShortcut("L", modifiers: .option)
     }
 }
 

@@ -13,12 +13,16 @@ struct SettingsButton: View {
         @Bindable var vm = vm
         
         Menu {
-            MenuButton("Account", icon: "person.crop.circle") {
-                sheetAccount = true
+            Section {
+                TopbarGridButton()
             }
             
             MenuButton("API-keys", icon: "key") {
                 vm.sheetKeyStorage = true
+            }
+            
+            MenuButton("Account", icon: "person.crop.circle") {
+                sheetAccount = true
             }
             
             MenuButton("Settings", icon: "gear") {
@@ -35,7 +39,8 @@ struct SettingsButton: View {
                 }
             }
         } label: {
-            Image(systemName: "person.crop.circle")
+            Image(systemName: "gear")
+                .bold()
         }
         .sheet($sheetAccount) {
             AccountParent()
