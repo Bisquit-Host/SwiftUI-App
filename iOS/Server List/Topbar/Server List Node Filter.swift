@@ -5,7 +5,7 @@ struct ServerListNodeFilter: View {
     @EnvironmentObject private var settings: ValueStorage
     
     var body: some View {
-        Menu("Nodes") {
+        Menu("Node") {
             Button {
                 withAnimation {
                     vm.displayedNode = ""

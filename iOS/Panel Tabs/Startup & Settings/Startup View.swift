@@ -12,19 +12,20 @@ struct StartupView: View {
         currentDockerImage = server.dockerImage
     }
     
-    @State private var showRawCommand = false
     @State private var currentDockerImage: String
     
     var body: some View {
         List {
             Section {
-                Text(showRawCommand ? vm.rawStartupCommand : vm.startupCommand)
+                Text(storage.rawStartupCommand ? vm.rawStartupCommand : vm.startupCommand)
                     .caption2()
                     .monospaced()
                     .textSelection(.enabled)
-                    .animation(.default, value: showRawCommand)
+                    .animation(.default, value: storage.rawStartupCommand)
                 
-                Toggle("Raw", isOn: $storage.rawStartupCommand)
+                if vm.rawStartupCommand != vm.startupCommand {
+                    Toggle("Raw", isOn: $storage.rawStartupCommand)
+                }
             } header: {
                 HStack {
                     Text("Startup Command")
@@ -32,7 +33,7 @@ struct StartupView: View {
                     Spacer()
                     
                     SFButton("document.on.document") {
-                        UIPasteboard.general.string = showRawCommand ? vm.rawStartupCommand : vm.startupCommand
+                        UIPasteboard.general.string = storage.rawStartupCommand ? vm.rawStartupCommand : vm.startupCommand
                         SystemAlert.copied()
                     }
                 }
