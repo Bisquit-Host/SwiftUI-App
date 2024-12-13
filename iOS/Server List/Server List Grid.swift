@@ -20,19 +20,15 @@ struct ServerListGrid: View {
 #else
         LazyVGrid(
             columns: [
-                GridItem(
-                    .adaptive(minimum: settings.designCode == 0 ? 170 : 360)
-                )
+                GridItem(.adaptive(
+                    minimum: settings.designCode == 0 ? 170 : 360
+                ))
             ],
             spacing: 8
         ) {
-            //            if settings.isApiKeyValid {
             ForEach(servers) { server in
                 ServerCardParent(server)
             }
-            //            } else {
-            //                ServerCardParent(demoServer)
-            //            }
         }
 #endif
     }
