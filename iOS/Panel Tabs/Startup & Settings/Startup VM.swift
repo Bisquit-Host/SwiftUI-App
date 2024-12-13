@@ -9,16 +9,17 @@ final class StartupVM {
     }
     
     var startupVariables: [StartupVariable] = []
-    var dockerImages: [String: String] = [:]
     var startupCommand = ""
     var rawStartupCommand = ""
+    
+    private var dockerImages: [String: String] = [:]
     
     var sortedDockerImages: [(key: String, value: String)] {
         Array(dockerImages)
             .sorted {
                 guard
-                    let firstKeyNumber = $0.key.split(separator: " ").last.flatMap({ Int($0) }),
-                    let secondKeyNumber = $1.key.split(separator: " ").last.flatMap({ Int($0) })
+                    let firstKeyNumber = $0.key.split(separator: " ").last.flatMap({ Double($0) }),
+                    let secondKeyNumber = $1.key.split(separator: " ").last.flatMap({ Double($0) })
                 else {
                     return false
                 }
