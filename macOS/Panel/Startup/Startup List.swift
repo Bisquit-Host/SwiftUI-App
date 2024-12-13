@@ -15,7 +15,7 @@ struct StartupList: View {
         ScrollView {
             LazyVStack(alignment: .leading) {
                 ForEach(vm.startupVariables, id: \.name) { variable in
-//                    VariableCard(plugin)
+                    //                    VariableCard(plugin)
                     Text(variable.name)
                 }
             }
@@ -35,7 +35,5 @@ struct StartupList: View {
 }
 
 #Preview {
-    StartupList(
-        sampleJSON(.serverListAttributes)
-    )
+    StartupList(sampleJSON(.serverListAttributes))
 }

@@ -22,8 +22,6 @@ struct StatsTab: View {
 }
 
 #Preview {
-    StatsTab(
-        sampleJSON(.serverListAttributes)
-    )
-    .padding()
+    StatsTab(sampleJSON(.serverListAttributes))
+        .padding()
 }

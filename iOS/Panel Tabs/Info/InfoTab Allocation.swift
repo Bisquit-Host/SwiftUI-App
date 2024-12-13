@@ -70,7 +70,5 @@ struct InfoTabAllocation: View {
 }
 
 #Preview {
-    InfoTabAllocation(
-        sampleJSON(.serverListAttributes)
-    )
+    InfoTabAllocation(sampleJSON(.serverListAttributes))
 }

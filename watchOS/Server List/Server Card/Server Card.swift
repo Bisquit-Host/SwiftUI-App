@@ -33,7 +33,5 @@ struct ServerCard: View {
 }
 
 #Preview {
-    ServerCard(
-        sampleJSON(.serverListAttributes)
-    )
+    ServerCard(sampleJSON(.serverListAttributes))
 }

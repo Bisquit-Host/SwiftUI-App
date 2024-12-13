@@ -26,22 +26,20 @@ struct ServerListGrid: View {
             ],
             spacing: 8
         ) {
-//            if settings.isApiKeyValid {
-                ForEach(servers) { server in
-                    ServerCardParent(server)
-                }
-//            } else {
-//                ServerCardParent(demoServer)
-//            }
+            //            if settings.isApiKeyValid {
+            ForEach(servers) { server in
+                ServerCardParent(server)
+            }
+            //            } else {
+            //                ServerCardParent(demoServer)
+            //            }
         }
 #endif
     }
 }
 
 #Preview {
-    ServerListGrid(
-        sampleJSON(.serverListDataArray)
-    )
-///    .environment(NavState())
-    .environmentObject(ValueStorage())
+    ServerListGrid(sampleJSON(.serverListDataArray))
+    ///    .environment(NavState())
+        .environmentObject(ValueStorage())
 }

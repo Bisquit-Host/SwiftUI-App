@@ -57,6 +57,12 @@ struct DatabaseCard: View {
         }
 #endif
         .contextMenu {
+            if let password = database.password {
+                Button("Copy password") {
+                    UIPasteboard.general.string = password
+                }
+            }
+            
             MenuButton("Rotate password", icon: "lock.open.rotation") {
                 vm.rotatePassword(database.id)
             }
@@ -79,8 +85,6 @@ struct DatabaseCard: View {
 
 #Preview {
     List {
-        DatabaseCard(
-            sampleJSON(.databaseAttributes)
-        )
+        DatabaseCard(sampleJSON(.databaseAttributes))
     }
 }

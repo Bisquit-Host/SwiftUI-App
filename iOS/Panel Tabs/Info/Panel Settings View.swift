@@ -63,8 +63,6 @@ struct PanelSettingsView: View {
 }
 
 #Preview {
-    PanelSettingsView(
-        sampleJSON(.serverListAttributes)
-    )
-    .environment(PanelVM(""))
+    PanelSettingsView(sampleJSON(.serverListAttributes))
+        .environment(PanelVM(""))
 }

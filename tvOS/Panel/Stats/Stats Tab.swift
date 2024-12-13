@@ -50,17 +50,11 @@ struct StatsTab: View {
                     .frame(width: 5, height: 280)
                 
                 HStack(spacing: 40) {
-                    ProgressBar("cpu",
-                                progress: vm.cpuUsage / limits.cpu
-                    )
+                    ProgressBar("cpu", progress: vm.cpuUsage / limits.cpu)
                     
-                    ProgressBar("ram",
-                                progress: vm.ramUsage / limits.memory
-                    )
+                    ProgressBar("ram", progress: vm.ramUsage / limits.memory)
                     
-                    ProgressBar("ssd",
-                                progress: vm.diskUsage / limits.disk
-                    )
+                    ProgressBar("ssd", progress: vm.diskUsage / limits.disk)
                 }
                 .frame(width: bounds.width * 0.33)
                 .onDisappear {
@@ -73,25 +67,15 @@ struct StatsTab: View {
                     .frame(width: 5, height: 280)
                 
                 VStack(alignment: .leading) {
-                    GaugeTV("uptime",
-                            param: millisecondsToTime(vm.uptime)
-                    )
+                    GaugeTV("uptime", param: millisecondsToTime(vm.uptime))
                     
-                    GaugeTV("backups",
-                            param: "\(backupVM.backups.count)/\(featureLimits.backups)"
-                    )
+                    GaugeTV("backups", param: "\(backupVM.backups.count)/\(featureLimits.backups)")
                     
-                    GaugeTV("databases",
-                            param: "\(databaseVM.databases.count)/\(featureLimits.databases)"
-                    )
+                    GaugeTV("databases", param: "\(databaseVM.databases.count)/\(featureLimits.databases)")
                     
-                    GaugeTV("identifier",
-                            param: server.id
-                    )
+                    GaugeTV("identifier", param: server.id)
                     
-                    GaugeTV("node",
-                            param: server.node.capitalized
-                    )
+                    GaugeTV("node", param: server.node.capitalized)
                 }
                 .minimumScaleFactor(0.5)
                 .lineLimit(1)
@@ -125,8 +109,6 @@ struct StatsTab: View {
 }
 
 #Preview {
-    StatsTab(
-        sampleJSON(.serverListAttributes)
-    )
-    .environmentObject(ValueStorage())
+    StatsTab(sampleJSON(.serverListAttributes))
+        .environmentObject(ValueStorage())
 }

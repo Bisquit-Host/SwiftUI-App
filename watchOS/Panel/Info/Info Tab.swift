@@ -37,7 +37,5 @@ struct InfoTab: View {
 }
 
 #Preview {
-    InfoTab(
-        sampleJSON(.serverListAttributes)
-    )
+    InfoTab(sampleJSON(.serverListAttributes))
 }

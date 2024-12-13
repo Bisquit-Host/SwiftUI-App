@@ -47,8 +47,6 @@ struct InfoRelativeStats: View {
 }
 
 #Preview {
-    InfoRelativeStats(
-        sampleJSON(.serverListAttributes)
-    )
-    .environment(PanelVM(""))
+    InfoRelativeStats(sampleJSON(.serverListAttributes))
+        .environment(PanelVM(""))
 }

@@ -25,9 +25,7 @@ struct InfoTab: View {
 }
 
 #Preview {
-    InfoTab(
-        sampleJSON(.serverListAttributes)
-    )
-    .environment(PanelVM(""))
-    .environmentObject(ValueStorage())
+    InfoTab(sampleJSON(.serverListAttributes))
+        .environment(PanelVM(""))
+        .environmentObject(ValueStorage())
 }

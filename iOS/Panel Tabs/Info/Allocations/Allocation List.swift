@@ -32,8 +32,6 @@ struct AllocationList: View {
 }
 
 #Preview {
-    AllocationList(
-        sampleJSON(.serverListAttributes)
-    )
-    .environment(AllocationVM(""))
+    AllocationList(sampleJSON(.serverListAttributes))
+        .environment(AllocationVM(""))
 }

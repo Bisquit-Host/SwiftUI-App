@@ -20,7 +20,5 @@ struct LogViewParent: View {
 }
 
 #Preview {
-    LogViewParent(
-        sampleJSON(.logAttributes)
-    )
+    LogViewParent(sampleJSON(.logAttributes))
 }

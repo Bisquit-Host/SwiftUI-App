@@ -25,8 +25,6 @@ struct ServerCardParent: View {
 }
 
 #Preview {
-    ServerCardParent(
-        sampleJSON(.serverListAttributes)
-    )
-    .environment(NavState())
+    ServerCardParent(sampleJSON(.serverListAttributes))
+        .environment(NavState())
 }

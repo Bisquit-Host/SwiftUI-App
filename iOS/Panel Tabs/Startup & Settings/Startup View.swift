@@ -61,9 +61,7 @@ struct StartupView: View {
 }
 
 #Preview {
-    StartupView(
-        sampleJSON(.serverListAttributes)
-    )
-    .environment(ServerSettingsVM(""))
-    .environmentObject(ValueStorage())
+    StartupView(sampleJSON(.serverListAttributes))
+        .environment(ServerSettingsVM(""))
+        .environmentObject(ValueStorage())
 }

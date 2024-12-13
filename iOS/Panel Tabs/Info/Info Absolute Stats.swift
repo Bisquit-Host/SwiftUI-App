@@ -99,8 +99,6 @@ struct InfoAbsoluteStats: View {
 }
 
 #Preview {
-    InfoAbsoluteStats(
-        sampleJSON(.serverListAttributes)
-    )
-    .environment(PanelVM(""))
+    InfoAbsoluteStats(sampleJSON(.serverListAttributes))
+        .environment(PanelVM(""))
 }

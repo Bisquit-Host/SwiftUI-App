@@ -143,8 +143,6 @@ struct PermissionCard: View {
 }
 
 #Preview {
-    PermissionListView(.constant(
-        sampleJSON(.userAttributes)
-    ))
-    .environment(UsersVM(""))
+    PermissionListView(.constant(sampleJSON(.userAttributes)))
+        .environment(UsersVM(""))
 }

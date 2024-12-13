@@ -56,9 +56,7 @@ struct InfoTabCard: View {
 }
 
 #Preview {
-    InfoTabCard(
-        sampleJSON(.serverListAttributes)
-    )
-    .environment(PanelVM(""))
-    .environmentObject(ValueStorage())
+    InfoTabCard(sampleJSON(.serverListAttributes))
+        .environment(PanelVM(""))
+        .environmentObject(ValueStorage())
 }
