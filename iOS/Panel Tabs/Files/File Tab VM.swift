@@ -287,11 +287,16 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func fileDelete(_ files: String, root: String) {
+    func deleteFile(
+        _ files: String,
+        at root: String,
+        onSuccess: @escaping (() -> Void) = {}
+    ) {
         fileDeleteAPI(id, files: [files], root: root) { result in
             switch result {
             case .success:
                 self.fetchFiles(root)
+                onSuccess()
                 
             case .failure(let error):
                 SystemAlert.error(error)

@@ -2,7 +2,6 @@ import ScrechKit
 import PteroNet
 
 struct FileView: View {
-    @Environment(NavState.self) private var navState
     @EnvironmentObject private var settings: ValueStorage
     @EnvironmentObject private var vm: FileTabVM
     

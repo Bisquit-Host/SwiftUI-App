@@ -65,7 +65,7 @@ struct FolderFile: View {
         for file in offsets {
             let name = vm.filteredFiles[file].name
             
-            vm.fileDelete(name, root: root)
+            vm.deleteFile(name, at: root)
         }
     }
 }

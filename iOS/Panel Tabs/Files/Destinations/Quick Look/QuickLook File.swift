@@ -4,6 +4,9 @@ import UniformTypeIdentifiers
 
 struct QuickLookFile: View {
     @State private var vm: QuickLookFileVM
+    @EnvironmentObject private var fileVm: FileTabVM
+    
+    @Environment(\.dismiss) private var dismiss
     
     private let id, root, name: String
     
@@ -65,6 +68,14 @@ struct QuickLookFile: View {
                 
                 if let url = vm.fileURL {
                     ShareLink(item: url)
+                }
+                
+                Section {
+                    Button("Delete", role: .destructive) {
+                        fileVm.deleteFile(name, at: root) {
+                            dismiss()
+                        }
+                    }
                 }
             } label: {
                 Image(systemName: "ellipsis.circle")

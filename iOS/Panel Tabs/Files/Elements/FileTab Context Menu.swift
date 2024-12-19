@@ -70,7 +70,7 @@ struct FileTabContextMenu: ViewModifier {
                 Divider()
                 
                 MenuButton("Delete", role: .destructive, icon: "trash") {
-                    vm.fileDelete(name, root: root)
+                    vm.deleteFile(name, at: root)
                 }
             }
             .sheet($sheetPermissions) {
