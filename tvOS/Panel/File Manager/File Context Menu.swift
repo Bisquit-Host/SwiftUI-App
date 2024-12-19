@@ -36,7 +36,7 @@ struct FileContextMenu: ViewModifier {
                     }
                     
                     MenuButton("Duplicate", icon: "doc.on.doc") {
-                        vm.duplicateFile(name, root: root)
+                        vm.duplicateFile(name, at: root)
                     }
                     
                     MenuButton("Permissions", icon: "lock.doc") {
@@ -46,34 +46,28 @@ struct FileContextMenu: ViewModifier {
                 
                 if mimeType.contains("gzip") {
                     MenuButton("Decompress", icon: "arrow.up.bin") {
-                        vm.fileCompressor(name,
-                                          root: root,
-                                          action: .decompress)
+                        vm.fileCompressor(name, at: root, action: .decompress)
                     }
                 } else {
                     MenuButton("Compress", icon: "archivebox") {
-                        vm.fileCompressor(name,
-                                          root: root,
-                                          action: .compress)
+                        vm.fileCompressor(name, at: root, action: .compress)
                     }
                 }
                 
                 Section {
                     MenuButton("Delete", role: .destructive, icon: "trash") {
-                        vm.fileDelete(name, root: root)
+                        vm.deleteFile(name, at: root)
                     }
                 }
             }
             .sheet($sheetPermissions) {
-                FilePermissionsParent(file, root: root)
+                FilePermissionsParent(file, at: root)
             }
             .alert("Rename \(name)", isPresented: $alertRename) {
                 TextField("", text: $vm.newFileName)
                 
                 Button("Rename", role: .destructive) {
-                    vm.renameFile(root,
-                                  oldName: name,
-                                  newName: vm.newFileName)
+                    vm.renameFile(root, oldName: name, newName: vm.newFileName)
                     
                     vm.newFileName = ""
                 }
@@ -82,13 +76,7 @@ struct FileContextMenu: ViewModifier {
 }
 
 extension View {
-    func fileContextMenu(
-        _ file: FileAttributes,
-        root: String
-    ) -> some View {
-        self.modifier(FileContextMenu(
-            file,
-            root: root)
-        )
+    func fileContextMenu(_ file: FileAttributes, root: String) -> some View {
+        self.modifier(FileContextMenu(file, root: root))
     }
 }

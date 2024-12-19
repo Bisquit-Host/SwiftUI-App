@@ -235,11 +235,11 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func renameFile(_ root: String, oldName: String, newName: String) {
-        fileRenameAPI(id, root: root, oldName: oldName, newName: newName) { result in
+    func renameFile(_ path: String, oldName: String, newName: String) {
+        fileRenameAPI(id, root: path, oldName: oldName, newName: newName) { result in
             switch result {
             case .success:
-                self.fetchFiles(root)
+                self.fetchFiles(path)
                 
                 main {
                     self.newFileName = ""
@@ -251,11 +251,11 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func duplicateFile(_ file: String, root: String) {
-        fileDuplicateAPI(id, file: file, root: root) { result in
+    func duplicateFile(_ file: String, at path: String) {
+        fileDuplicateAPI(id, file: file, root: path) { result in
             switch result {
             case .success:
-                self.fetchFiles(root)
+                self.fetchFiles(path)
                 
             case .failure(let error):
                 SystemAlert.error(error)
@@ -263,11 +263,11 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func fileCompressor(_ file: String, root: String, action: CompressorActions) {
-        fileCompressorAPI(id, file: file, root: root, do: action) { result in
+    func fileCompressor(_ file: String, at path: String, action: CompressorActions) {
+        fileCompressorAPI(id, file: file, root: path, do: action) { result in
             switch result {
             case .success:
-                self.fetchFiles(root)
+                self.fetchFiles(path)
                 
             case .failure(let error):
                 SystemAlert.error(error)
@@ -275,11 +275,11 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func createFolder(_ file: String, root: String) {
-        fileCreateFolderAPI(id, file: file, root: root) { result in
+    func createFolder(_ file: String, at path: String) {
+        fileCreateFolderAPI(id, file: file, root: path) { result in
             switch result {
             case .success:
-                self.fetchFiles(root)
+                self.fetchFiles(path)
                 
             case .failure(let error):
                 SystemAlert.error(error)
@@ -289,13 +289,13 @@ final class FileTabVM: ObservableObject {
     
     func deleteFile(
         _ files: String,
-        at root: String,
+        at path: String,
         onSuccess: @escaping (() -> Void) = {}
     ) {
-        fileDeleteAPI(id, files: [files], root: root) { result in
+        fileDeleteAPI(id, files: [files], root: path) { result in
             switch result {
             case .success:
-                self.fetchFiles(root)
+                self.fetchFiles(path)
                 
                 main {
                     onSuccess()

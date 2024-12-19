@@ -37,7 +37,7 @@ struct NewFolder: View {
                 .focused($isFocused)
                 .onSubmit {
                     if !vm.newFolderName.isEmpty {
-                        vm.createFolder(vm.newFolderName, root: path)
+                        vm.createFolder(vm.newFolderName, at: path)
                     }
                     
                     vm.showTextField = false

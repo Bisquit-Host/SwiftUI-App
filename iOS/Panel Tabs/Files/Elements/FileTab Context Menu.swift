@@ -31,11 +31,11 @@ struct FileTabContextMenu: ViewModifier {
                     
                     if mimeType.contains("gzip") {
                         MenuButton("Decompress", icon: "arrow.up.bin") {
-                            vm.fileCompressor(name, root: root, action: .decompress)
+                            vm.fileCompressor(name, at: root, action: .decompress)
                         }
                     } else {
                         MenuButton("Compress", icon: "archivebox") {
-                            vm.fileCompressor(name, root: root, action: .compress)
+                            vm.fileCompressor(name, at: root, action: .compress)
                         }
                     }
                     
@@ -59,7 +59,7 @@ struct FileTabContextMenu: ViewModifier {
                 
                 if !mimeType.contains("directory") {
                     MenuButton("Duplicate", icon: "plus.square.on.square") {
-                        vm.duplicateFile(name, root: root + "/")
+                        vm.duplicateFile(name, at: root + "/")
                     }
                 }
                 
@@ -74,7 +74,7 @@ struct FileTabContextMenu: ViewModifier {
                 }
             }
             .sheet($sheetPermissions) {
-                FilePermissionsParent(file, root: root)
+                FilePermissionsParent(file, at: root)
             }
             .alert("Rename \(name)", isPresented: $alertRename) {
                 TextField("I'm not a no-name 😢", text: $vm.newFileName)

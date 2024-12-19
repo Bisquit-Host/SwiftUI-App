@@ -26,27 +26,25 @@ struct FileTab: View {
                 NavigationLink {
                     if mimeType.contains("directory") {
                         FileTab(id, root: root + "/" + name)
-                        .environmentObject(vm)
+                            .environmentObject(vm)
                         
                     } else if mimeType.contains("text") || mimeType.contains("json") {
-                        TextFile(id,
-                                 path: root,
-                                 name: name)
+                        TextFile(id, path: root, name: name)
+                            .environmentObject(vm)
                         
                     } else if mimeType.contains("image") {
-                        ImageFile(id,
-                                  path: root,
-                                  name: name)
+                        ImageFile(id, path: root, name: name)
+                            .environmentObject(vm)
                         
                     } else if mimeType.contains("video") {
-                        VideoFile(id,
-                                  root: root,
-                                  name: name)
+                        VideoFile(id, path: root, name: name)
+                            .environmentObject(vm)
                         
                     } else {
-                        ContentUnavailableView("Warning",
-                                               systemImage: "exclamationmark.triangle",
-                                               description: Text("Unable to view the contents of \(name)")
+                        ContentUnavailableView(
+                            "Warning",
+                            systemImage: "exclamationmark.triangle",
+                            description: Text("Unable to view the contents of \(name)")
                         )
                     }
                     

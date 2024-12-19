@@ -4,16 +4,16 @@ import PteroNet
 struct DatabaseCard: View {
     @Environment(DatabaseVM.self) private var vm
     
-    private let database: DatabaseAttributes
+    private let db: DatabaseAttributes
     
-    init(_ database: DatabaseAttributes) {
-        self.database = database
+    init(_ db: DatabaseAttributes) {
+        self.db = db
     }
     
     @State private var alertDelete = false
     
     var body: some View {
-        let host = database.host
+        let host = db.host
         
         Button {
             
@@ -24,7 +24,7 @@ struct DatabaseCard: View {
                     .frame(width: 32)
                 
                 VStack(alignment: .leading) {
-                    Text(database.name)
+                    Text(db.name)
                         .headline()
                     
                     let endpoint = Text(host.address + ":\(host.port)")
@@ -34,7 +34,7 @@ struct DatabaseCard: View {
                         .footnote()
                         .secondary()
                     
-                    let id = Text(database.id)
+                    let id = Text(db.id)
                         .foregroundStyle(.primary)
                     
                     Text("Identifier: \(id)")
@@ -57,14 +57,15 @@ struct DatabaseCard: View {
         }
 #endif
         .contextMenu {
-            if let password = database.password {
+#if !os(tvOS)
+            if let password = db.password {
                 Button("Copy password") {
                     UIPasteboard.general.string = password
                 }
             }
-            
+#endif
             MenuButton("Rotate password", icon: "lock.open.rotation") {
-                vm.rotatePassword(database.id)
+                vm.rotatePassword(db.id)
             }
             
             Section {
@@ -75,10 +76,10 @@ struct DatabaseCard: View {
         }
         .alert("Detele Database", isPresented: $alertDelete) {
             Button("Delete", role: .destructive) {
-                vm.deleteDatabase(database.id)
+                vm.deleteDatabase(db.id)
             }
         } message: {
-            Text("Are you sure you want to delete \"\(database.name)\"? This database will be deleted immediately. You can't undo this action")
+            Text("Are you sure you want to delete \"\(db.name)\"? This database will be deleted immediately. You can't undo this action")
         }
     }
 }

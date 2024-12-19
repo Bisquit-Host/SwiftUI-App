@@ -26,7 +26,7 @@ struct FileView: View {
         }
         .padding(5)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .fileContextMenu(file, root: root)
+        .fileContextMenu(file, at: root)
     }
 }
 
