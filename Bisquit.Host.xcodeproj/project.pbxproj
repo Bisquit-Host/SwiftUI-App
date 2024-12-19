@@ -2341,10 +2341,10 @@
 				F37266BF29D826F5005FD103 /* File Details.swift */,
 				F37266A929D71A1B005FD103 /* File Icon.swift */,
 				F3F5BC952BF7668E00EB8FB1 /* Sensitivity Analyzer.swift */,
+				F37DDA7429E2AABF00B9680C /* Elements */,
 				F38F9E102CE764060033EFE3 /* Image Playground */,
 				F3BEEBC82A4AB45E00E686B8 /* Upload */,
 				F31BA5BA295903330006D126 /* Destinations */,
-				F37DDA7429E2AABF00B9680C /* Elements */,
 			);
 			path = Files;
 			sourceTree = "<group>";
