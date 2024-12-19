@@ -297,7 +297,7 @@ final class FileTabVM: ObservableObject {
             case .success:
                 self.fetchFiles(root)
                 
-                DispatchQueue.main.async {
+                main {
                     onSuccess()
                 }
                 

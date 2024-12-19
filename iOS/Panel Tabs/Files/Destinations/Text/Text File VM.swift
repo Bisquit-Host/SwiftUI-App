@@ -10,13 +10,8 @@ final class TextFileVM {
     }
     
     var text = ""
+    var initialText = ""
     var showPrettyButton = false
-    
-    private func checkPrettiness() {
-        if let pretty = ScrechKit.prettyJSON(text), pretty != text {
-            showPrettyButton = true
-        }
-    }
     
     func makePretty() {
         if let pretty = ScrechKit.prettyJSON(text) {
@@ -29,7 +24,7 @@ final class TextFileVM {
         fileWriteAPI(id, write: write, path: path) { result in
             switch result {
             case .success(let model):
-#warning("AlerKkit")
+#warning("AlertKit")
                 print(model)
                 
             case .failure(let error):
@@ -44,12 +39,19 @@ final class TextFileVM {
             case .success(let model):
                 main {
                     self.text = model
+                    self.initialText = model
                     self.checkPrettiness()
                 }
                 
             case .failure(let error):
                 SystemAlert.error(error)
             }
+        }
+    }
+    
+    private func checkPrettiness() {
+        if let pretty = ScrechKit.prettyJSON(text), pretty != text {
+            showPrettyButton = true
         }
     }
 }

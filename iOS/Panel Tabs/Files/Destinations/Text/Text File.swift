@@ -39,8 +39,10 @@ struct TextFile: View {
         }
         .toolbar {
 #if os(iOS)
-            Button("Save") {
-                vm.writeFile(vm.text, path: path + name)
+            if vm.initialText != vm.text {
+                Button("Save") {
+                    vm.writeFile(vm.text, path: path + name)
+                }
             }
 #endif
             JsonFormatterButton()
