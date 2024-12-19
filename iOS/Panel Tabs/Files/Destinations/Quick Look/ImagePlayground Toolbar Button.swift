@@ -6,7 +6,7 @@ struct ImagePlaygroundToolbarButton: View {
     
     private let url: URL, root, name: String
     
-    init(_ url: URL, root: String, name: String) {
+    init(_ url: URL, _ root: String, _ name: String) {
         self.url = url
         self.root = root
         self.name = name

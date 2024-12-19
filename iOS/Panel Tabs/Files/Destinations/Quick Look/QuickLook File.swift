@@ -25,9 +25,9 @@ struct QuickLookFile: View {
                 ProgressView()
             }
         }
+        .navigationTitle(name)
         .animation(.default, value: vm.fileURL)
         .blur(radius: vm.isSensitive ? 10 : 0)
-        .navigationTitle(name)
         .ignoresSafeArea(edges: .bottom)
         .sheet($sheetMetadata) {
             MetadataList(vm.metadata)
@@ -51,7 +51,7 @@ struct QuickLookFile: View {
             if let url = vm.fileURL {
                 if #available(iOS 18.1, *) {
                     if isImage(url) {
-                        ImagePlaygroundToolbarButton(url, root: root, name: name)
+                        ImagePlaygroundToolbarButton(url, root, name)
                     }
                 }
             }
