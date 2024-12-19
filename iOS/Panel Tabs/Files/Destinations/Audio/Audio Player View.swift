@@ -3,12 +3,15 @@ import AudioVisualizer
 
 struct AudioPlayerView: View {
     @State private var vm: AudioPlayerVM
+    @EnvironmentObject private var fileVm: FileTabVM
     
-    private let id, root, name: String
+    @Environment(\.dismiss) private var dismiss
     
-    init(_ id: String, root: String, name: String) {
+    private let id, path, name: String
+    
+    init(_ id: String, path: String, name: String) {
         self.id = id
-        self.root = root
+        self.path = path
         self.name = name
         self.vm = AudioPlayerVM(id)
     }
@@ -23,20 +26,35 @@ struct AudioPlayerView: View {
         }
         .ignoresSafeArea()
         .task {
-            vm.downloadFile(name, root: root)
+            vm.downloadFile(name, at: path)
         }
         .toolbar {
-            if let url = vm.audioUrl {
-                ShareLink(item: url)
-                    .transition(.identity)
-            } else {
-                ShareLink(item: name)
-                    .disabled(vm.audioUrl == nil)
+            Menu {
+                if let url = vm.audioUrl {
+                    ShareLink(item: url)
+                        .transition(.identity)
+                } else {
+                    ShareLink(item: name)
+                        .disabled(vm.audioUrl == nil)
+                }
+                
+                Section {
+                    Button(role: .destructive) {
+                        fileVm.deleteFile(name, at: path) {
+                            dismiss()
+                        }
+                    } label: {
+                        Label("Delete", systemImage: "trash")
+                    }
+                }
+            } label: {
+                Image(systemName: "ellipsis.circle")
             }
         }
     }
 }
 
 #Preview {
-    AudioPlayerView("", root: "", name: "Preview")
+    AudioPlayerView("", path: "", name: "Preview")
+        .environmentObject(FileTabVM(""))
 }

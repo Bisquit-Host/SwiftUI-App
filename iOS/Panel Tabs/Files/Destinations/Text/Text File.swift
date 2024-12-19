@@ -53,10 +53,12 @@ struct TextFile: View {
                     .disabled(vm.text.isEmpty)
 #endif
                 Section {
-                    Button("Delete", role: .destructive) {
+                    Button(role: .destructive) {
                         fileVm.deleteFile(name, at: path) {
                             dismiss()
                         }
+                    } label: {
+                        Label("Delete", systemImage: "trash")
                     }
                 }
             } label: {
@@ -69,4 +71,5 @@ struct TextFile: View {
 
 #Preview {
     TextFile("", path: "", name: "")
+        .environmentObject(FileTabVM(""))
 }

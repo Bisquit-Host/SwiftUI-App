@@ -27,7 +27,8 @@ struct FileView: View {
                     ImageFile(id, path: root + "/", name: name)
                     
                 } else if mimeType.contains("video") {
-                    VideoFile(id, root: root + "/", name: name)
+                    VideoFile(id, path: root + "/", name: name)
+                    
                 } else {
                     ContentUnavailableView(
                         "Warning",

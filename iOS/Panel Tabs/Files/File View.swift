@@ -11,7 +11,7 @@ struct FileView: View {
     init(
         _ id: String,
         file: FileAttributes,
-        root: String
+        at root: String
     ) {
         self.id = id
         self.file = file
@@ -33,10 +33,12 @@ struct FileView: View {
                 FolderFile(id, path: root + name)
                 
             } else if mimeType.contains("video") {
-                VideoFile(id, root: root, name: name)
+                VideoFile(id, path: root, name: name)
+                    .environmentObject(vm)
                 
             } else if mimeType.contains("audio") {
-                AudioPlayerView(id, root: root, name: name)
+                AudioPlayerView(id, path: root, name: name)
+                    .environmentObject(vm)
                 
             } else {
                 QuickLookFile(id, path: root, name: name)
@@ -75,13 +77,14 @@ struct FileView: View {
                 }
             }
         }
-        .fileContextMenu(file, root: root)
+        .fileContextMenu(file, at: root)
     }
 }
 
 #Preview {
     List {
-        FileView("", file: sampleJSON(.fileListAttributes), root: "")
-            .environment(NavState())
+        FileView("", file: sampleJSON(.fileListAttributes), at: "")
     }
+    .environment(NavState())
+    .environmentObject(FileTabVM(""))
 }

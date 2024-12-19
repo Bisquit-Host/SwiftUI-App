@@ -28,7 +28,7 @@ struct FolderFile: View {
             
             Section {
                 ForEach(vm.filteredFiles, id: \.name) { file in
-                    FileView(id, file: file, root: root)
+                    FileView(id, file: file, at: root)
                 }
                 .onDelete { offsets in
                     deleteItem(offsets)

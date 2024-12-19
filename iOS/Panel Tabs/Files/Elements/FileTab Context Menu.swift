@@ -92,7 +92,7 @@ struct FileTabContextMenu: ViewModifier {
 extension View {
     func fileContextMenu(
         _ file: FileAttributes,
-        root: String
+        at root: String
     ) -> some View {
         self.modifier(FileTabContextMenu(
             file,

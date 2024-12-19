@@ -11,8 +11,8 @@ final class AudioPlayerVM {
     
     var audioUrl: URL? = nil
     
-    func downloadFile(_ file: String, root: String) {
-        fileDownloadAPI(id, path: root + "/\(file)") { result in
+    func downloadFile(_ file: String, at path: String) {
+        fileDownloadAPI(id, path: path + "/\(file)") { result in
             switch result {
             case .success(let model):
                 if let model = model?.attributes.url {

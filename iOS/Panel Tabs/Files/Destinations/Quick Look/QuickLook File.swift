@@ -91,3 +91,8 @@ struct QuickLookFile: View {
         return fileType.conforms(to: .image)
     }
 }
+
+//#Preview {
+//    QuickLookFile("", path: "", name: "")
+//        .environmentObject(FileTabVM(""))
+//}

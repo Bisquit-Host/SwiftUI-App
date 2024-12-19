@@ -3,15 +3,18 @@ import AVKit
 
 struct VideoFile: View {
     @State private var vm: VideoFileVM
+    @EnvironmentObject private var fileVm: FileTabVM
     
-    private let id, root, name: String
+    @Environment(\.dismiss) private var dismiss
     
-    init(_ id: String, root: String, name: String) {
+    private let id, path, name: String
+    
+    init(_ id: String, path: String, name: String) {
         self.id = id
-        self.root = root
+        self.path = path
         self.name = name
         
-        self.vm = VideoFileVM(id, root: root, name: name)
+        self.vm = VideoFileVM(id, root: path, name: name)
     }
     
     var body: some View {
@@ -29,7 +32,7 @@ struct VideoFile: View {
         }
         .navigationTitle(name)
         .task {
-            vm.fetchVideoUrl(name, root: root)
+            vm.fetchVideoUrl(name, root: path)
         }
         .toolbar {
             if vm.isSensitive {
@@ -42,13 +45,28 @@ struct VideoFile: View {
                 }
             }
             
+#if !os(watchOS)
+            Menu {
 #if !os(tvOS)
-            if let url = vm.localVideoUrl {
-                ShareLink(item: url)
-                    .transition(.identity)
-            } else {
-                ShareLink(item: name)
-                    .disabled(vm.localVideoUrl == nil)
+                if let url = vm.localVideoUrl {
+                    ShareLink(item: url)
+                        .transition(.identity)
+                } else {
+                    ShareLink(item: name)
+                        .disabled(vm.localVideoUrl == nil)
+                }
+#endif
+                Section {
+                    Button(role: .destructive) {
+                        fileVm.deleteFile(name, at: path) {
+                            dismiss()
+                        }
+                    } label: {
+                        Label("Delete", systemImage: "trash")
+                    }
+                }
+            } label: {
+                Image(systemName: "ellipsis.circle")
             }
 #endif
         }
@@ -56,5 +74,6 @@ struct VideoFile: View {
 }
 
 #Preview {
-    VideoFile("id", root: "", name: "Preview")
+    VideoFile("id", path: "", name: "Preview")
+        .environmentObject(FileTabVM(""))
 }
