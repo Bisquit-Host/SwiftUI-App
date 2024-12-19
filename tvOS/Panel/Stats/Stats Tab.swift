@@ -86,10 +86,11 @@ struct StatsTab: View {
                 .frame(width: bounds.width * 0.9, height: 5)
             
             HStack(spacing: 0) {
-                ChartView("CPU",
-                          unit: "absolute",
-                          max: limits.cpu,
-                          values: vm.cpuValues
+                ChartView(
+                    "CPU",
+                    unit: "absolute",
+                    max: limits.cpu,
+                    values: vm.cpuValues
                 )
                 .frame(width: bounds.width * 0.33)
                 
@@ -97,10 +98,11 @@ struct StatsTab: View {
                     .frame(width: 1)
                     .foregroundStyle(.gray)
                 
-                ChartView("RAM",
-                          unit: "GB",
-                          max: limits.memory,
-                          values: vm.ramValues
+                ChartView(
+                    "RAM",
+                    unit: "GB",
+                    max: limits.memory,
+                    values: vm.ramValues
                 )
                 .frame(width: bounds.width * 0.33)
             }

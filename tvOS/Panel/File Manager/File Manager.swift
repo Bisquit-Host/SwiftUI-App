@@ -6,9 +6,7 @@ struct FileTab: View {
     
     private let id, root: String
     
-    init(_ id: String,
-         root: String = ""
-    ) {
+    init(_ id: String, root: String = "") {
         self.id = id
         self.root = root
     }
@@ -47,15 +45,9 @@ struct FileTab: View {
                             description: Text("Unable to view the contents of \(name)")
                         )
                     }
-                    
-                    //                    navState.navigate(
-                    //                        wvm.navigateBasedOnMimeType(id,
-                    //                                                   root: root,
-                    //                                                   file: file)
-                    //                    )
                 } label: {
                     FileNameAndIcon(file)
-                        .fileContextMenu(file, root: root)
+                        .fileContextMenu(file, at: root)
                 }
             }
         }
