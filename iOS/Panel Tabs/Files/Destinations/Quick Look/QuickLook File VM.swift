@@ -13,20 +13,6 @@ final class QuickLookFileVM {
     var isSensitive = false
     var metadata: [URLResourceKey: Any]? = nil
     
-    private func loadAndCheckImage() {
-        let processor = SensitivityAnalyzer()
-        
-        guard let fileURL else {
-            return
-        }
-        
-        Task {
-            await processor.checkImage(fileURL) { blur in
-                self.isSensitive = blur
-            }
-        }
-    }
-    
     func downloadFile(_ file: String, root: String) {
         fileDownloadAPI(id, path: root + "/\(file)") { result in
             switch result {
@@ -80,6 +66,20 @@ final class QuickLookFileVM {
             }
         }
         .resume()
+    }
+    
+    private func loadAndCheckImage() {
+        let processor = SensitivityAnalyzer()
+        
+        guard let fileURL else {
+            return
+        }
+        
+        Task {
+            await processor.checkImage(fileURL) { blur in
+                self.isSensitive = blur
+            }
+        }
     }
     
     func fetchMetadata(_ fileURL: URL) async {
