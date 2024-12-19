@@ -296,7 +296,10 @@ final class FileTabVM: ObservableObject {
             switch result {
             case .success:
                 self.fetchFiles(root)
-                onSuccess()
+                
+                DispatchQueue.main.async {
+                    onSuccess()
+                }
                 
             case .failure(let error):
                 SystemAlert.error(error)

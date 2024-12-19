@@ -2,6 +2,9 @@ import ScrechKit
 
 struct TextFile: View {
     @State private var vm: TextFileVM
+    @EnvironmentObject private var fileVm: FileTabVM
+    
+    @Environment(\.dismiss) private var dismiss
     
     private let id, path, name: String
     
@@ -28,7 +31,6 @@ struct TextFile: View {
             }
 #elseif os(tvOS)
             Text(vm.text)
-                .navigationTitle(name)
 #endif
         }
         .navigationTitle(name)
@@ -41,13 +43,26 @@ struct TextFile: View {
                 vm.writeFile(vm.text, path: path + name)
             }
 #endif
-            
-#if !os(tvOS)
-            ShareLink(item: vm.text)
-                .disabled(vm.text.isEmpty)
-#endif
             JsonFormatterButton()
                 .environment(vm)
+            
+#if !os(watchOS)
+            Menu {
+#if !os(tvOS)
+                ShareLink(item: vm.text)
+                    .disabled(vm.text.isEmpty)
+#endif
+                Section {
+                    Button("Delete", role: .destructive) {
+                        fileVm.deleteFile(name, at: path) {
+                            dismiss()
+                        }
+                    }
+                }
+            } label: {
+                Image(systemName: "ellipsis.circle")
+            }
+#endif
         }
     }
 }

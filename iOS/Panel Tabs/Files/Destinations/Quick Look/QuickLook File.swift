@@ -8,11 +8,11 @@ struct QuickLookFile: View {
     
     @Environment(\.dismiss) private var dismiss
     
-    private let id, root, name: String
+    private let id, path, name: String
     
-    init(_ id: String, root: String, name: String) {
+    init(_ id: String, path: String, name: String) {
         self.id = id
-        self.root = root
+        self.path = path
         self.name = name
         self.vm = QuickLookFileVM(id)
     }
@@ -36,7 +36,7 @@ struct QuickLookFile: View {
             MetadataList(vm.metadata)
         }
         .task {
-            vm.downloadFile(name, root: root)
+            vm.downloadFile(name, root: path)
         }
         .overlay {
             if vm.isSensitive {
@@ -54,7 +54,7 @@ struct QuickLookFile: View {
             if let url = vm.fileURL {
                 if #available(iOS 18.1, *) {
                     if isImage(url) {
-                        ImagePlaygroundToolbarButton(url, root, name)
+                        ImagePlaygroundToolbarButton(url, path, name)
                     }
                 }
             }
@@ -72,7 +72,7 @@ struct QuickLookFile: View {
                 
                 Section {
                     Button("Delete", role: .destructive) {
-                        fileVm.deleteFile(name, at: root) {
+                        fileVm.deleteFile(name, at: path) {
                             dismiss()
                         }
                     }

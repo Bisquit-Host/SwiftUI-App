@@ -27,6 +27,7 @@ struct FileView: View {
         NavigationLink {
             if mimeType.contains("text") || mimeType.contains("json") {
                 TextFile(id, path: root, name: name)
+                    .environmentObject(vm)
                 
             } else if mimeType.contains("directory") {
                 FolderFile(id, path: root + name)
@@ -38,7 +39,7 @@ struct FileView: View {
                 AudioPlayerView(id, root: root, name: name)
                 
             } else {
-                QuickLookFile(id, root: root, name: name)
+                QuickLookFile(id, path: root, name: name)
                     .environmentObject(vm)
             }
         } label: {
