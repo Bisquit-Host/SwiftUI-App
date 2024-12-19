@@ -4,7 +4,10 @@ import PteroNet
 struct ServerList: View {
     @Environment(ServerListVM.self) private var vm
     
-    private let gradient = Gradient(colors: [Color(0x3b58a4), Color(0x855da6)])
+    private let gradient = Gradient(colors: [
+        Color(0x3b58a4),
+        Color(0x855da6)
+    ])
     
     var body: some View {
         VStack(alignment: .leading) {

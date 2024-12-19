@@ -44,9 +44,7 @@ struct BackupList: View {
                 .autocorrectionDisabled()
                 .limitInputLength($vm.textCreateBackup, length: 191)
             
-            Button("Cancel", role: .cancel) {
-                
-            }
+            Button("Cancel", role: .cancel) {}
             
             Button("Create") {
                 vm.createBackup()

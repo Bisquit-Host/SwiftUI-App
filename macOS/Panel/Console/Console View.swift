@@ -19,8 +19,8 @@ struct ConsoleView: View {
                 VStack(alignment: .leading) {
                     ForEach(panelVM.searchedMessages.indices, id: \.self) { index in
                         Text(panelVM.searchedMessages[index])
-//                            .fontDesign(fontDesign)
-//                            .fontSize(vm.fontSize)
+                        //                            .fontDesign(fontDesign)
+                        //                            .fontSize(vm.fontSize)
                             .multilineTextAlignment(.leading)
                             .onAppear {
                                 if index == panelVM.searchedMessages.count - 1 {

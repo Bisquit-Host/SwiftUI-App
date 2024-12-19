@@ -14,7 +14,12 @@ struct PanelView: View {
     
     @AppStorage("selected_tab") private var selectedTab: Tab = .info
     
-    private let gradient = Gradient(colors: [Color(0xf7b948), Color(0xed5547), Color(0x893799)])
+    private let gradient = Gradient(colors: [
+        Color(0xf7b948),
+        Color(0xed5547),
+        Color(0x893799)
+    ])
+    
     private let tabs: [Tab] = [
         //        .info,
         //        .console,
@@ -31,10 +36,14 @@ struct PanelView: View {
     ]
     
 #if os(macOS)
-    let application = NSApplication.self
+    private let application = NSApplication.self
 #else
-    let application = UIApplication.self
+    private let application = UIApplication.self
 #endif
+    
+    private var id: String {
+        server.id
+    }
     
     var body: some View {
         VStack(spacing: 0) {
@@ -58,32 +67,32 @@ struct PanelView: View {
             Group {
                 switch selectedTab {
                 case .console:
-                    ConsoleView(server.id)
+                    ConsoleView(id)
                         .environment(vm)
                     
                 case .files:
-                    FileTab(server.id)
+                    FileTab(id)
                     
                 case .backups:
                     BackupList(server)
                     
                 case .databases:
-                    DatabaseList(server.id)
+                    DatabaseList(id)
                     
                 case .schedules:
-                    ScheduleList(server.id)
+                    ScheduleList(id)
                     
                 case .allocations:
-                    AllocationList(server.id)
+                    AllocationList(id)
                     
                 case .users:
-                    UserList(server.id)
+                    UserList(id)
                     
                 case .startup:
-                    StartupList(server.id)
+                    StartupList(id)
                     
                 case .logs:
-                    LogList(server.id)
+                    LogList(id)
                     
                 default:
                     Spacer()
@@ -94,7 +103,7 @@ struct PanelView: View {
                     Spacer()
                 }
             }
-            .id(server.id)
+            .id(id)
         }
         .offset(y: -30)
         .background {

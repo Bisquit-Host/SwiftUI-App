@@ -53,25 +53,25 @@ struct LogCard: View {
                     .footnote(.semibold)
             }
             
-//            if !log.properties.isEmpty {
-//                Spacer()
-//                
-//                Image(systemName: "info.circle")
-//                    .secondary()
-//            }
+            //            if !log.properties.isEmpty {
+            //                Spacer()
+            //
+            //                Image(systemName: "info.circle")
+            //                    .secondary()
+            //            }
         }
-//        .onTapGesture {
-//            if !log.properties.isEmpty {
-//                sheetDetails = true
-//            }
-//        }
-//        .sheet($sheetDetails) {
-//            LogViewParent(log.properties)
-//                .presentationDragIndicator(.hidden)
-//                .presentationDetents([.medium, .large],
-//                                     selection: .constant(.medium)
-//                )
-//        }
+        //        .onTapGesture {
+        //            if !log.properties.isEmpty {
+        //                sheetDetails = true
+        //            }
+        //        }
+        //        .sheet($sheetDetails) {
+        //            LogViewParent(log.properties)
+        //                .presentationDragIndicator(.hidden)
+        //                .presentationDetents([.medium, .large],
+        //                                     selection: .constant(.medium)
+        //                )
+        //        }
     }
 }
 

@@ -7,10 +7,7 @@ final class APIKey {
     @Attribute(.allowsCloudEncryption)
     var key = generateRandomKeyNumber()
     
-    init(
-        _ name: String = "",
-        key: String = generateRandomKeyNumber()
-    ) {
+    init(_ name: String = "", key: String = generateRandomKeyNumber()) {
         self.name = name
         self.key = key
     }
