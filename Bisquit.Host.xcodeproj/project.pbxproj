@@ -1604,7 +1604,7 @@
 		F375EC3729EE7213002CA969 /* Backup List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Backup List.swift"; sourceTree = "<group>"; };
 		F375EC3929EE73AC002CA969 /* Database List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database List.swift"; sourceTree = "<group>"; };
 		F375EC3B29EE88EA002CA969 /* Schedule List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Schedule List.swift"; sourceTree = "<group>"; };
-		F376D0552A02478600B7377A /* Bisquit.Host tvOSapp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Bisquit.Host tvOSapp.entitlements"; sourceTree = "<group>"; };
+		F376D0552A02478600B7377A /* Bisquit.Host tvOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Bisquit.Host tvOS.entitlements"; sourceTree = "<group>"; };
 		F378E3322AF38286009925DB /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		F378EF8229D6C91300BC4849 /* Gauge Disk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gauge Disk.swift"; sourceTree = "<group>"; };
 		F3796561295C519C0074CA3D /* Chart View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Chart View.swift"; sourceTree = "<group>"; };
@@ -1753,7 +1753,7 @@
 		F3CCB1D12CAE8B76000F8207 /* Bisquit-Host-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bisquit-Host-Info.plist"; sourceTree = "<group>"; };
 		F3CCB1D32CAE8BDA000F8207 /* Bisquit-Host-visionOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bisquit-Host-visionOS-Info.plist"; sourceTree = "<group>"; };
 		F3CCB1D52CAE8C4D000F8207 /* Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Watch-App-Info.plist"; sourceTree = "<group>"; };
-		F3CCB1D62CAE8C80000F8207 /* Bisquit-Host-tvOSapp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bisquit-Host-tvOSapp-Info.plist"; sourceTree = "<group>"; };
+		F3CCB1D62CAE8C80000F8207 /* Bisquit-Host-tvOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bisquit-Host-tvOS-Info.plist"; sourceTree = "<group>"; };
 		F3CCF5C02B34576F005FFF2C /* Allocation List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation List.swift"; sourceTree = "<group>"; };
 		F3CCF5C22B345792005FFF2C /* Allocation Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation Card.swift"; sourceTree = "<group>"; };
 		F3CCF5C42B3457AE005FFF2C /* Allocation VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation VM.swift"; sourceTree = "<group>"; };
@@ -2008,8 +2008,8 @@
 		F3000E06295A341000ABD30A /* tvOS */ = {
 			isa = PBXGroup;
 			children = (
-				F376D0552A02478600B7377A /* Bisquit.Host tvOSapp.entitlements */,
-				F3CCB1D62CAE8C80000F8207 /* Bisquit-Host-tvOSapp-Info.plist */,
+				F376D0552A02478600B7377A /* Bisquit.Host tvOS.entitlements */,
+				F3CCB1D62CAE8C80000F8207 /* Bisquit-Host-tvOS-Info.plist */,
 				F3000E0B295A341100ABD30A /* Assets.xcassets */,
 				F3796563295C51C80074CA3D /* Progress Bar.swift */,
 				F3796565295C51FF0074CA3D /* Gauge TV.swift */,
@@ -5389,7 +5389,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "tvOS/Bisquit.Host tvOSapp.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "tvOS/Bisquit.Host tvOS.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
@@ -5397,7 +5397,7 @@
 				DEVELOPMENT_TEAM = 8FQUA2F388;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "tvOS/Bisquit-Host-tvOSapp-Info.plist";
+				INFOPLIST_FILE = "tvOS/Bisquit-Host-tvOS-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Required to view your location on the map";
@@ -5425,7 +5425,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "tvOS/Bisquit.Host tvOSapp.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "tvOS/Bisquit.Host tvOS.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
@@ -5433,7 +5433,7 @@
 				DEVELOPMENT_TEAM = 8FQUA2F388;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "tvOS/Bisquit-Host-tvOSapp-Info.plist";
+				INFOPLIST_FILE = "tvOS/Bisquit-Host-tvOS-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Required to view your location on the map";
