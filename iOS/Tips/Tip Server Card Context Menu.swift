@@ -20,7 +20,7 @@ struct Tip_ServerCardContextMenu: Tip {
             .padding()
     }
     .task {
-        try? Tips.showAllTipsForTesting()
+        Tips.showAllTipsForTesting()
     }
 #if !os(watchOS)
     .popoverTip(Tip_ServerCardContextMenu())
