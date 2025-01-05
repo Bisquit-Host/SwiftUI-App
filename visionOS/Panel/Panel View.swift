@@ -116,8 +116,9 @@ struct PanelView: View {
                     Text(showPowerButtons ? "Hide power buttons" : "Show power buttons")
                 }
                 
+#warning("???")
 #if DEBUG
-                NavigationLink("Temp dir") {
+                NavigationLink("Temp dir (debug)") {
                     TempDir()
                 }
 #endif
