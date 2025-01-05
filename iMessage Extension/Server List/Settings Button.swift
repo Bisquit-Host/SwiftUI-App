@@ -16,14 +16,14 @@ struct SettingsButton: View {
             MenuButton("Account", icon: "person.crop.circle") {
                 sheetAccount = true
             }
-            
-            MenuButton("API-keys", icon: "key") {
-                vm.sheetKeyStorage = true
-            }
-            
-            MenuButton("Settings", icon: "gear") {
-                sheetSettings = true
-            }
+#warning("iMessage: Settings and API-keys")
+            //            MenuButton("API-keys", icon: "key") {
+            //                vm.sheetKeyStorage = true
+            //            }
+            //
+            //            MenuButton("Settings", icon: "gear") {
+            //                sheetSettings = true
+            //            }
             
             Divider()
             

@@ -25,7 +25,7 @@ class MessagesViewController: MSMessagesAppViewController {
         
         view.addConstraints(constraints)
     }
-        
+    
     // MARK: - Conversation Handling
     
     override func willBecomeActive(with conversation: MSConversation) {

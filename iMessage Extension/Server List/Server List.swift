@@ -12,10 +12,6 @@ struct ServerList: View {
         @Bindable var vm = vm
         
         ScrollView(showsIndicators: false) {
-            Button("Test") {
-                test = true
-            }
-            
             ServerListGrid(vm.filteredServers)
                 .padding(4)
                 .padding(.top, 60)
@@ -52,6 +48,11 @@ struct ServerList: View {
             }
             
             ToolbarItemGroup(placement: .navigationBarTrailing) {
+#warning("iMessage: Full screen button")
+                //                                Button("Test") {
+                //                                    test = true
+                //                                }
+                
                 TopbarAdminButton {
                     vm.fetchServers(settings.adminServerList)
                 }
@@ -83,7 +84,9 @@ struct ServerList: View {
             Text("The list of servers couldn't be loaded. Check your internet connection or contact support")
         }
         .fullScreenCover(isPresented: $test) {
-            Text("GEWlkfnweqoifnweofknx45")
+            ServerListGrid(vm.filteredServers)
+                .padding(4)
+                .padding(.top, 60)
         }
     }
 }
