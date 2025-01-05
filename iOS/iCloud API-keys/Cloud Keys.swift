@@ -36,7 +36,10 @@ struct CloudKeys: View {
                         Text("API-keys")
                     }
                 }
+#if !os(watchOS)
                 .listRowBackground(settings.transparentList ? .clear : Color.list)
+#endif
+                
 #if os(visionOS)
                 Button {
                     dismiss()
