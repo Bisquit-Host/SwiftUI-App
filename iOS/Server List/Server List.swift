@@ -51,7 +51,7 @@ struct ServerList: View {
         }
         .safeAreaInset(edge: .bottom) {
             ServerListFilter($vm.filterBySuspended)
-                .frame(maxWidth: .infinity, alignment: .leading)
+                .frame(maxWidth: .infinity, alignment: .trailing)
                 .environment(vm)
         }
         .toolbar {
