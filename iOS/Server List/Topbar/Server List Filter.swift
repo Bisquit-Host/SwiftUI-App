@@ -9,11 +9,17 @@ struct ServerListFilter: View {
         _filterBySuspended = filterBySuspended
     }
     
+    private var hasSuspendedServers: Bool {
+        vm.servers.filter(\.isSuspended).count > 0
+    }
+    
     var body: some View {
         Menu {
-            MenuButton("Suspended", icon: filterBySuspended ? "snowflake.circle.fill" : "snowflake") {
-                withAnimation {
-                    filterBySuspended.toggle()
+            if hasSuspendedServers {
+                MenuButton("Suspended", icon: filterBySuspended ? "snowflake.circle.fill" : "snowflake") {
+                    withAnimation {
+                        filterBySuspended.toggle()
+                    }
                 }
             }
             
@@ -28,7 +34,7 @@ struct ServerListFilter: View {
                 .background(.ultraThinMaterial, in: .circle)
         }
         .hoverEffect(.lift)
-        .padding(.leading)
+        .padding(.trailing)
     }
 }
 
