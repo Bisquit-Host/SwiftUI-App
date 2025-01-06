@@ -27,7 +27,8 @@
             "value" : ""
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "-" : {
       "localizations" : {
@@ -777,7 +778,8 @@
             "value" : "Приложения"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "Are you ready?" : {
       "extractionState" : "manual",
@@ -865,7 +867,8 @@
             "value" : "Бэкапы"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "Best Performance" : {
       "localizations" : {
@@ -945,7 +948,8 @@
             "value" : ""
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "Cache" : {
       "extractionState" : "manual",
@@ -968,7 +972,8 @@
             "value" : "Кеш"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "Cache expiration" : {
       "extractionState" : "stale",
@@ -1322,7 +1327,8 @@
             "value" : ""
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "Create" : {
       "extractionState" : "manual",
@@ -1500,7 +1506,8 @@
             "value" : "Cron: %@"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "Customize" : {
 
@@ -1519,7 +1526,8 @@
             "value" : "Данные"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "Data may be lost if the service is not renewed" : {
       "localizations" : {
@@ -1555,7 +1563,8 @@
             "value" : "База даних"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "Day of month" : {
 
@@ -1584,7 +1593,8 @@
             "value" : "Отладка"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "Debug API" : {
       "extractionState" : "stale",
@@ -1797,7 +1807,15 @@
 
     },
     "Docker Image" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Образ Docker"
+          }
+        }
+      },
+      "shouldTranslate" : false
     },
     "Document Identifier" : {
 
@@ -1867,7 +1885,8 @@
             "value" : "Електронна пошта"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "Easily format and visualize your JSON data" : {
 
@@ -2304,12 +2323,6 @@
     },
     "https://mgr.bisquit.host" : {
       "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "https://mgr.bisquit.host"
-          }
-        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2328,7 +2341,8 @@
             "value" : ""
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "I'm not a no-name 😢" : {
 
@@ -4319,7 +4333,8 @@
             "value" : "Спам"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "SSD" : {
       "localizations" : {
@@ -4370,16 +4385,31 @@
             "value" : "Старт"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "Start, Stop, Restart or Kill a server" : {
 
     },
     "Startup" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Запуск"
+          }
+        }
+      }
     },
     "Startup Command" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Команда Запуска"
+          }
+        }
+      }
     },
     "Stats" : {
       "localizations" : {
@@ -4960,7 +4990,8 @@
             "value" : "Веб"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "Where to find the API-key?" : {
 
