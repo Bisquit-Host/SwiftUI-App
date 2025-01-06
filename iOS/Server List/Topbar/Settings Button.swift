@@ -17,7 +17,7 @@ struct SettingsButton: View {
                 TopbarGridButton()
             }
             
-            MenuButton("API-keys", icon: "key") {
+            MenuButton("API-keys", icon: "key.fill") {
                 vm.sheetKeyStorage = true
             }
             
