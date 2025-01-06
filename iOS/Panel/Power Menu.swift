@@ -19,10 +19,10 @@ struct PowerSwitch: View {
                 MenuButton("Restart", icon: "arrow.clockwise") {
                     vm.changePower(.restart)
                 }
-            }
-            
-            MenuButton("Kill", role: .destructive, icon: "power") {
-                confirmKill = true
+                
+                MenuButton("Kill", role: .destructive, icon: "power") {
+                    confirmKill = true
+                }
             }
         } label: {
             Image(systemName: "power")
