@@ -1,5 +1,6 @@
 import ScrechKit
 import PteroNet
+import LaunchAtLogin
 
 struct AppSettings: View {
     @Environment(NavState.self) private var navState
@@ -7,8 +8,6 @@ struct AppSettings: View {
     
     var body: some View {
         VStack {
-            Text("Settings")
-            
             Button("Reset") {
                 main {
                     navState.path = NavigationPath()
@@ -16,6 +15,8 @@ struct AppSettings: View {
                     Keychain.delete(key: "selectedApiKey")
                 }
             }
+            
+            LaunchAtLogin.Toggle()
         }
         .padding()
         .frame(width: 300, height: 200)

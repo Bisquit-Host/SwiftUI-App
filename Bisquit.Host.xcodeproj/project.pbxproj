@@ -401,6 +401,7 @@
 		F3573BC82C6511040051259E /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F3573BC12C6511040051259E /* Intents.intentdefinition */; };
 		F358132B2A1F5D2A002ADFA4 /* Linking VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */; };
 		F358132C2A1F5D2A002ADFA4 /* Linking VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */; };
+		F358F02E2D2C1C5500BCC07B /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = F358F02D2D2C1C5500BCC07B /* LaunchAtLogin */; };
 		F35B2A0229FFD6AB006E5FD2 /* CloudKit Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B2A0129FFD6AB006E5FD2 /* CloudKit Model.swift */; };
 		F35B2A0329FFF857006E5FD2 /* CloudKit Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B2A0129FFD6AB006E5FD2 /* CloudKit Model.swift */; };
 		F35B89BE2A725710000B5EEF /* Tip Suspended Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B89BD2A725710000B5EEF /* Tip Suspended Server.swift */; };
@@ -1963,6 +1964,7 @@
 				F34745CE2A31F3A400EE2FB8 /* ScrechKit in Frameworks */,
 				F3B7BFDE2B38E206005B5003 /* Pow in Frameworks */,
 				F3E08EB22A2CE19900116C1C /* Kingfisher in Frameworks */,
+				F358F02E2D2C1C5500BCC07B /* LaunchAtLogin in Frameworks */,
 				F30860222B002D57004D776A /* PteroNet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3774,6 +3776,7 @@
 				F34745CD2A31F3A400EE2FB8 /* ScrechKit */,
 				F30860212B002D57004D776A /* PteroNet */,
 				F3B7BFDD2B38E206005B5003 /* Pow */,
+				F358F02D2D2C1C5500BCC07B /* LaunchAtLogin */,
 			);
 			productName = "Bisquit.Host Mac";
 			productReference = F3E08EA02A2CE17800116C1C /* Bisquit.Host.app */;
@@ -3895,6 +3898,7 @@
 				F335CA042C63E86D006C71C6 /* XCRemoteSwiftPackageReference "DeviceKit" */,
 				F33C2ABF2C69168C002FD150 /* XCRemoteSwiftPackageReference "QuickLooking" */,
 				F36B73952C8B055600E858FE /* XCRemoteSwiftPackageReference "Audio-Visualizer" */,
+				F358F02C2D2C1C5500BCC07B /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F31BA5242958FF7C0006D126 /* Products */;
@@ -6636,6 +6640,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		F358F02C2D2C1C5500BCC07B /* XCRemoteSwiftPackageReference "LaunchAtLogin" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TopScrech/LaunchAtLogin";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		F36B73952C8B055600E858FE /* XCRemoteSwiftPackageReference "Audio-Visualizer" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TopScrech/Audio-Visualizer";
@@ -6840,6 +6852,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F352AF992A4EE707004AD489 /* XCRemoteSwiftPackageReference "AlertKit" */;
 			productName = AlertKit;
+		};
+		F358F02D2D2C1C5500BCC07B /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F358F02C2D2C1C5500BCC07B /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;
+			productName = LaunchAtLogin;
 		};
 		F36B736C2C89B6BE00E858FE /* PteroNet */ = {
 			isa = XCSwiftPackageProductDependency;
