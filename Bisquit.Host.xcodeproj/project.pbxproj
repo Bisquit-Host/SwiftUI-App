@@ -2993,9 +2993,9 @@
 			isa = PBXGroup;
 			children = (
 				F3A7CEFD2C8BB97400413400 /* Server List.swift */,
+				F3A7CF602C8C569300413400 /* Server List VM.swift */,
 				F3255E162C9049AF008E04DE /* Settings Button.swift */,
 				F3255E192C904A03008E04DE /* Settings View.swift */,
-				F3A7CF602C8C569300413400 /* Server List VM.swift */,
 			);
 			path = "Server List";
 			sourceTree = "<group>";

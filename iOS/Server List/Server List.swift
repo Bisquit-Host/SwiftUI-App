@@ -50,9 +50,11 @@ struct ServerList: View {
             }
         }
         .safeAreaInset(edge: .bottom) {
-            ServerListFilter($vm.filterBySuspended)
-                .frame(maxWidth: .infinity, alignment: .trailing)
-                .environment(vm)
+            if vm.showFilter {
+                ServerListFilter($vm.filterBySuspended)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                    .environment(vm)
+            }
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {

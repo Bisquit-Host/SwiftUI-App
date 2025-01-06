@@ -9,13 +9,9 @@ struct ServerListFilter: View {
         _filterBySuspended = filterBySuspended
     }
     
-    private var hasSuspendedServers: Bool {
-        vm.servers.filter(\.isSuspended).count > 0
-    }
-    
     var body: some View {
         Menu {
-            if hasSuspendedServers {
+            if vm.hasSuspendedServers {
                 MenuButton("Suspended", icon: filterBySuspended ? "snowflake.circle.fill" : "snowflake") {
                     withAnimation {
                         filterBySuspended.toggle()
@@ -23,7 +19,9 @@ struct ServerListFilter: View {
                 }
             }
             
-            ServerListNodeFilter()
+            if vm.hasMultipleNodes {
+                ServerListNodeFilter()
+            }
         } label: {
             Image(systemName: "line.3.horizontal.decrease.circle")
                 .title(.semibold)
