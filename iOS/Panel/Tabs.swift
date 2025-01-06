@@ -1,11 +1,13 @@
+import SwiftUI
+
 enum Tabs: String, CaseIterable {
-    case info = "info.circle"
-    case console = "terminal"
-    case files = "folder"
-    case backup = "externaldrive.badge.icloud"
-    case startup = "play.circle"
+    case info = "info.circle",
+         console = "terminal",
+         files = "folder",
+         backup = "externaldrive.badge.icloud",
+         startup = "play.circle"
     
-    var title: String {
+    var title: LocalizedStringKey {
         switch self {
         case .info: "Info"
         case .console: "Console"

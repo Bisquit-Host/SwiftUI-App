@@ -1563,7 +1563,6 @@
 		F3573BC02C6511040051259E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = en; path = en.lproj/Intents.intentdefinition; sourceTree = "<group>"; };
 		F3573BCC2C6511140051259E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Intents.strings; sourceTree = "<group>"; };
 		F3573BDA2C6512580051259E /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Intents.strings; sourceTree = "<group>"; };
-		F3573BDB2C65125E0051259E /* sw */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sw; path = sw.lproj/Intents.strings; sourceTree = "<group>"; };
 		F3573BDD2C6512600051259E /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Intents.strings; sourceTree = "<group>"; };
 		F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Linking VM.swift"; sourceTree = "<group>"; };
 		F35B2A0129FFD6AB006E5FD2 /* CloudKit Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloudKit Model.swift"; sourceTree = "<group>"; };
@@ -3881,7 +3880,6 @@
 				ru,
 				nl,
 				uk,
-				sw,
 				Base,
 			);
 			mainGroup = F31BA51A2958FF7C0006D126;
@@ -5379,7 +5377,6 @@
 				F3573BC02C6511040051259E /* en */,
 				F3573BCC2C6511140051259E /* ru */,
 				F3573BDA2C6512580051259E /* nl */,
-				F3573BDB2C65125E0051259E /* sw */,
 				F3573BDD2C6512600051259E /* uk */,
 			);
 			name = Intents.intentdefinition;
