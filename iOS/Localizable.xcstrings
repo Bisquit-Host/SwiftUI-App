@@ -2180,6 +2180,16 @@
         }
       }
     },
+    "Grid layout" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Компоновка сетки"
+          }
+        }
+      }
+    },
     "Guide.Step1" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2858,9 +2868,6 @@
       }
     },
     "Launch the server to start receiving messages" : {
-
-    },
-    "Layout" : {
 
     },
     "Learn more..." : {
