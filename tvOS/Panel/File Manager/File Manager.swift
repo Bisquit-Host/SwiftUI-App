@@ -14,6 +14,7 @@ struct FileTab: View {
     var body: some View {
         List {
             NewFolder(root)
+                .environmentObject(vm)
             
             Divider()
             
@@ -22,37 +23,33 @@ struct FileTab: View {
                 let mimeType = file.mimetype
                 
                 NavigationLink {
-                    if mimeType.contains("directory") {
-                        FileTab(id, root: root + "/" + name)
-                            .environmentObject(vm)
-                        
-                    } else if mimeType.contains("text") || mimeType.contains("json") {
-                        TextFile(id, path: root, name: name)
-                            .environmentObject(vm)
-                        
-                    } else if mimeType.contains("image") {
-                        ImageFile(id, path: root, name: name)
-                            .environmentObject(vm)
-                        
-                    } else if mimeType.contains("video") {
-                        VideoFile(id, path: root, name: name)
-                            .environmentObject(vm)
-                        
-                    } else if mimeType.contains("audio") {
-                        AudioPlayerView(id, path: root, name: name)
-                            .environmentObject(vm)
-                        
-                    } else {
-                        FileErrorView(path: root, name: name)
-                            .environmentObject(vm)
+                    Group {
+                        if mimeType.contains("directory") {
+                            FileTab(id, root: root + "/" + name)
+                            
+                        } else if mimeType.contains("text") || mimeType.contains("json") {
+                            TextFile(id, path: root, name: name)
+                            
+                        } else if mimeType.contains("image") {
+                            ImageFile(id, path: root, name: name)
+                            
+                        } else if mimeType.contains("video") {
+                            VideoFile(id, path: root, name: name)
+                            
+                        } else if mimeType.contains("audio") {
+                            AudioPlayerView(id, path: root, name: name)
+                            
+                        } else {
+                            FileErrorView(path: root, name: name)
+                        }
                     }
+                    .environmentObject(vm)
                 } label: {
                     FileNameAndIcon(file)
                         .fileContextMenu(file, at: root)
                 }
             }
         }
-        .environmentObject(vm)
         .navigationTitle(root)
         .sheet($vm.showSafari) {
             QRCodeView(vm.downloadUrl)
