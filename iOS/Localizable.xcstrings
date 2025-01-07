@@ -135,59 +135,6 @@
       },
       "shouldTranslate" : false
     },
-    "%lld days ago" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld day ago"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "new",
-                  "value" : "%lld days ago"
-                }
-              }
-            }
-          }
-        },
-        "ru" : {
-          "variations" : {
-            "plural" : {
-              "few" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld дня назад"
-                }
-              },
-              "many" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld дней назад"
-                }
-              },
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld день назад"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld дни назад"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "%lld files" : {
       "localizations" : {
         "en" : {
@@ -233,112 +180,6 @@
                 "stringUnit" : {
                   "state" : "translated",
                   "value" : "%lld файлы"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "%lld hours ago" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld hour ago"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "new",
-                  "value" : "%lld hours ago"
-                }
-              }
-            }
-          }
-        },
-        "ru" : {
-          "variations" : {
-            "plural" : {
-              "few" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld часа назад"
-                }
-              },
-              "many" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld часов назад"
-                }
-              },
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld час назад"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld часы назад"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "%lld minutes ago" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld minute ago"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "new",
-                  "value" : "%lld minutes ago"
-                }
-              }
-            }
-          }
-        },
-        "ru" : {
-          "variations" : {
-            "plural" : {
-              "few" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld минуты назад"
-                }
-              },
-              "many" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld минут назад"
-                }
-              },
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld минуту назад"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld минуты назад"
                 }
               }
             }
@@ -468,59 +309,6 @@
         }
       }
     },
-    "%lld seconds ago" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld second ago"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "new",
-                  "value" : "%lld seconds ago"
-                }
-              }
-            }
-          }
-        },
-        "ru" : {
-          "variations" : {
-            "plural" : {
-              "few" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld секунды назад"
-                }
-              },
-              "many" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld секунд назад"
-                }
-              },
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld секунду назад"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld секунды назад"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "%lld/%lld" : {
       "localizations" : {
         "en" : {
@@ -605,7 +393,6 @@
       "shouldTranslate" : false
     },
     "Account" : {
-      "extractionState" : "manual",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -637,19 +424,7 @@
         }
       }
     },
-    "Actions" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Действия"
-          }
-        }
-      }
-    },
     "Admin" : {
-      "extractionState" : "manual",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -757,7 +532,6 @@
       }
     },
     "Are you ready?" : {
-      "extractionState" : "manual",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -788,17 +562,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Вы уверены, что хотите принудительно выключить сервер?"
-          }
-        }
-      }
-    },
-    "Are you sure?" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Вы уверены?"
           }
         }
       }
@@ -836,7 +599,6 @@
 
     },
     "Backups" : {
-      "extractionState" : "manual",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -947,7 +709,6 @@
       "shouldTranslate" : false
     },
     "Cache" : {
-      "extractionState" : "manual",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -970,7 +731,6 @@
       }
     },
     "Cancel" : {
-      "extractionState" : "manual",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -1033,29 +793,6 @@
     },
     "Clear" : {
 
-    },
-    "Clear all data" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Alle gegevens verwijderen"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Очистить все данные"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Очистити всі дані"
-          }
-        }
-      }
     },
     "Clear entire cache" : {
       "localizations" : {
@@ -1124,7 +861,6 @@
       }
     },
     "Confirm" : {
-      "extractionState" : "manual",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -1195,7 +931,6 @@
       }
     },
     "Contact support" : {
-      "extractionState" : "manual",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -1281,7 +1016,6 @@
       }
     },
     "Copy" : {
-      "extractionState" : "manual",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -1349,7 +1083,6 @@
       }
     },
     "Create" : {
-      "extractionState" : "manual",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -1367,17 +1100,6 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Создать"
-          }
-        }
-      }
-    },
-    "Create a new backup" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Создать новый бэкап"
           }
         }
       }
@@ -1557,7 +1279,6 @@
       }
     },
     "Databases" : {
-      "extractionState" : "manual",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -1600,7 +1321,6 @@
       }
     },
     "Debug" : {
-      "extractionState" : "manual",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -1698,7 +1418,6 @@
       }
     },
     "Design" : {
-      "extractionState" : "manual",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -1781,29 +1500,6 @@
     "Disabled" : {
 
     },
-    "Discover" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ontdekken"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Больше"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Больше"
-          }
-        }
-      }
-    },
     "Dismiss" : {
 
     },
@@ -1831,7 +1527,6 @@
 
     },
     "Download" : {
-      "extractionState" : "manual",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -1880,7 +1575,6 @@
       }
     },
     "E-mail" : {
-      "extractionState" : "manual",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -1916,7 +1610,6 @@
       }
     },
     "Empty" : {
-      "extractionState" : "manual",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -2009,58 +1702,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ошибка %lld"
-          }
-        }
-      }
-    },
-    "Error.TooManyRequests" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Too many requests"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Te veel verzoeken"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Слишком много запросов"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Слишком много запросов"
-          }
-        }
-      }
-    },
-    "Example" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Voorbeeld"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Пример"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Пример"
           }
         }
       }
@@ -2208,7 +1849,6 @@
       }
     },
     "Guide.Step1" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2237,7 +1877,6 @@
       }
     },
     "Guide.Step2" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2266,7 +1905,6 @@
       }
     },
     "Guide.Step3" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2420,29 +2058,6 @@
         }
       }
     },
-    "Information" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Informatie"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Информация"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Інформація"
-          }
-        }
-      }
-    },
     "Innovation" : {
       "localizations" : {
         "nl" : {
@@ -2460,7 +2075,6 @@
       }
     },
     "Intro.Text0" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2489,7 +2103,6 @@
       }
     },
     "Intro.Text1" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2513,64 +2126,6 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Все тарифы оснащены мощным процессором AMD Ryzen 9 5950X, работающим на частоте 4,9 ГГц, а также высокоскоростными NVMe SSD для оптимальной производительности"
-          }
-        }
-      }
-    },
-    "Intro.Text2" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "With our exclusive app you have the convenient opportunity to manage your servers from anywhere at any time"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Met onze exclusieve app heb je de handige mogelijkheid om je servers overal en altijd te beheren"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "С нашим эксклюзивным приложением у вас есть удобная возможность управлять своими серверами из любого места в любое время"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "С нашим эксклюзивным приложением у вас есть удобная возможность управлять своими серверами из любого места в любое время"
-          }
-        }
-      }
-    },
-    "Intro.Text3" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Our support team is available around the clock to assist you with any issues or questions you may have"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ons ondersteuningsteam staat 24/7 voor u klaar om u te helpen met eventuele problemen of vragen die u heeft"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Наша служба поддержки доступна круглосуточно, чтобы помочь вам с любыми проблемами или вопросами, которые могут возникнуть"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Наша служба поддержки доступна круглосуточно, чтобы помочь вам с любыми проблемами или вопросами, которые могут возникнуть"
           }
         }
       }
@@ -2684,17 +2239,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Форматтер JSON"
-          }
-        }
-      }
-    },
-    "Key list" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Список ключей"
           }
         }
       }
@@ -3159,17 +2703,6 @@
         }
       }
     },
-    "No Results for \"%@\"" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ничего не найдено по запросу “%@”"
-          }
-        }
-      }
-    },
     "Node" : {
       "localizations" : {
         "ru" : {
@@ -3306,28 +2839,6 @@
         }
       }
     },
-    "Please note, this action will not affect any given permissions. However, the app will be terminated and this action cannot be undone." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Обратите внимание, что это действие не повлияет на какие-либо выданные разрешения. Приложение будет принудительно закрыто. Это действие не может быть отменено."
-          }
-        }
-      }
-    },
-    "Plugins" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Плагины"
-          }
-        }
-      }
-    },
     "Port: %@" : {
       "localizations" : {
         "ru" : {
@@ -3428,7 +2939,6 @@
       "shouldTranslate" : false
     },
     "RAM" : {
-      "extractionState" : "manual",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -3456,17 +2966,6 @@
     "Read" : {
 
     },
-    "Refresh" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Обновить"
-          }
-        }
-      }
-    },
     "Reinstall" : {
       "localizations" : {
         "ru" : {
@@ -3489,23 +2988,6 @@
     },
     "Reinstalling your server will stop it, and then re-run the installation script that initially set it. Some files may be deleted or modified during this process, please back up your data before continuing" : {
 
-    },
-    "Remove all" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Alles verwijderen"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Удалить всё"
-          }
-        }
-      }
     },
     "Remove this key" : {
       "localizations" : {
@@ -3530,34 +3012,12 @@
     "Rename %@" : {
 
     },
-    "Rename server" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Переименовать сервер"
-          }
-        }
-      }
-    },
     "Reset" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Сброс"
-          }
-        }
-      }
-    },
-    "Reset all data" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Сбросить все данные"
           }
         }
       }
@@ -3576,7 +3036,6 @@
       }
     },
     "Restart" : {
-      "extractionState" : "manual",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -3657,17 +3116,6 @@
         }
       }
     },
-    "Save changes" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Сохранить изменения"
-          }
-        }
-      }
-    },
     "Save contacts automatically" : {
       "localizations" : {
         "ru" : {
@@ -3744,17 +3192,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Адрес сервера"
-          }
-        }
-      }
-    },
-    "Server count: %lld" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Кол-во серверов: %lld"
           }
         }
       }
@@ -3926,7 +3363,6 @@
       }
     },
     "Skip" : {
-      "extractionState" : "manual",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -4142,7 +3578,6 @@
       }
     },
     "Storage" : {
-      "extractionState" : "manual",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -4168,7 +3603,6 @@
 
     },
     "Support" : {
-      "extractionState" : "manual",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -4262,29 +3696,6 @@
         }
       }
     },
-    "Theme" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Thema"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Тема"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Тема"
-          }
-        }
-      }
-    },
     "Time offset (sec)" : {
 
     },
@@ -4297,52 +3708,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Чтобы активировать приложение, введите API-ключ"
-          }
-        }
-      }
-    },
-    "Today" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vandaag"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Сегодня"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Сьогодні"
-          }
-        }
-      }
-    },
-    "Total" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Totaal"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Всего"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Всего"
           }
         }
       }
@@ -4561,28 +3926,6 @@
         }
       }
     },
-    "User" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Пользователь"
-          }
-        }
-      }
-    },
-    "Username" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ник"
-          }
-        }
-      }
-    },
     "Users" : {
       "localizations" : {
         "nl" : {
@@ -4646,7 +3989,6 @@
       }
     },
     "We are Bisquit.Host" : {
-      "extractionState" : "manual",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -4669,7 +4011,6 @@
       }
     },
     "Web" : {
-      "extractionState" : "manual",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -4708,7 +4049,6 @@
 
     },
     "Yes" : {
-      "extractionState" : "manual",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -4726,29 +4066,6 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Да"
-          }
-        }
-      }
-    },
-    "Yesterday" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gisteren"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Вчера"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Вчора"
           }
         }
       }
