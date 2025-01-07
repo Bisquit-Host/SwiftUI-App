@@ -7,7 +7,7 @@ struct ChangePower: AppIntent, CustomIntentMigratedAppIntent, PredictableIntent 
     static var title: LocalizedStringResource = "Change Power"
     static var description = IntentDescription("123")
     
-    @Parameter(title: "Server ID")
+    @Parameter(title: "Server id")
     var id: String
     
     @Parameter(title: "Signal", default: .start)

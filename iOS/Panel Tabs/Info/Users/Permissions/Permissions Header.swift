@@ -45,7 +45,7 @@ struct PermissionsHeader: View {
                 let totalPerms = Text(permissionCount)
                     .monospaced()
                 
-                Text("\(userPerms) of \(totalPerms)")
+                Text("\(userPerms) / \(totalPerms)")
                     .foregroundStyle(permissionCountColor)
                     .animation(.easeInOut, value: user.permissions)
                     .numericTransition()

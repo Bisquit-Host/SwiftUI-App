@@ -7,7 +7,7 @@ struct CreateBackup: AppIntent, CustomIntentMigratedAppIntent, PredictableIntent
     static var title: LocalizedStringResource = "Create Backup"
     static var description = IntentDescription("")
     
-    @Parameter(title: "Server ID")
+    @Parameter(title: "Server id")
     var id: String
     
     @Parameter(title: "Backup name")
