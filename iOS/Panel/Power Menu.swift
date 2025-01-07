@@ -12,12 +12,12 @@ struct PowerSwitch: View {
                     vm.changePower(.start)
                 }
                 
-                MenuButton("Stop", icon: "pause") {
-                    vm.changePower(.stop)
-                }
-                
                 MenuButton("Restart", icon: "arrow.clockwise") {
                     vm.changePower(.restart)
+                }
+                
+                MenuButton("Stop", icon: "pause") {
+                    vm.changePower(.stop)
                 }
                 
                 MenuButton("Kill", role: .destructive, icon: "power") {

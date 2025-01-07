@@ -20,17 +20,17 @@ struct PanelOrnamentPower: View {
                 .disabled(vm.serverState != .offline)
                 
                 Button {
+                    vm.changePower(.restart)
+                } label: {
+                    Label("Restart", systemImage: "arrow.triangle.2.circlepath")
+                }
+                
+                Button {
                     vm.changePower(.stop)
                 } label: {
                     Label("Stop", systemImage: "pause")
                 }
                 .disabled(vm.serverState == .stopping || vm.serverState == .offline)
-                
-                Button {
-                    vm.changePower(.restart)
-                } label: {
-                    Label("Restart", systemImage: "arrow.triangle.2.circlepath")
-                }
                 
                 Capsule()
                     .fill(.primary)
