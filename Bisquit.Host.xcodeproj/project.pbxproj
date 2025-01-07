@@ -723,6 +723,7 @@
 		F39E683C2D2D6A300002BA96 /* Audio Player VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F398E0DF2CEB562400AA4DD7 /* Audio Player VM.swift */; };
 		F39E683D2D2D6A380002BA96 /* Audio Player View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B73A22C8B0B7B00E858FE /* Audio Player View.swift */; };
 		F39E683F2D2D6A510002BA96 /* AudioVisualizer in Frameworks */ = {isa = PBXBuildFile; productRef = F39E683E2D2D6A510002BA96 /* AudioVisualizer */; };
+		F39E68412D2D6D2F0002BA96 /* File Error View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E68402D2D6D2F0002BA96 /* File Error View.swift */; };
 		F3A123562A667804008E3E20 /* Log View Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* Log View Parent.swift */; };
 		F3A123572A667804008E3E20 /* Log View Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* Log View Parent.swift */; };
 		F3A123582A667804008E3E20 /* Log View Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* Log View Parent.swift */; };
@@ -1684,6 +1685,7 @@
 		F39E0A932C1BA06C00C4E906 /* Discover Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Discover Card.swift"; sourceTree = "<group>"; };
 		F39E0A972C1BA11600C4E906 /* Discover Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Discover Item.swift"; sourceTree = "<group>"; };
 		F39E68322D2D63980002BA96 /* Panel Ornament Power.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Ornament Power.swift"; sourceTree = "<group>"; };
+		F39E68402D2D6D2F0002BA96 /* File Error View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Error View.swift"; sourceTree = "<group>"; };
 		F3A123552A667804008E3E20 /* Log View Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log View Parent.swift"; sourceTree = "<group>"; };
 		F3A123592A6689FA008E3E20 /* User Email.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Email.swift"; sourceTree = "<group>"; };
 		F3A1D2302A201C570053261E /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
@@ -3422,6 +3424,7 @@
 			isa = PBXGroup;
 			children = (
 				F39D28562A27F1F5007B12C3 /* File Manager.swift */,
+				F39E68402D2D6D2F0002BA96 /* File Error View.swift */,
 				F3C9D8492B302AA200265492 /* File Context Menu.swift */,
 				F397E74A2B208A3B00DDF1CE /* New Folder.swift */,
 			);
@@ -4059,6 +4062,7 @@
 				F300889F2B3A17DE0051476C /* Backup VM.swift in Sources */,
 				F3464D332A863A6600188B0C /* Send Command.swift in Sources */,
 				F370804C2A2A1CAF0046CE70 /* Create Button.swift in Sources */,
+				F39E68412D2D6D2F0002BA96 /* File Error View.swift in Sources */,
 				F3CCF5BB2B34546F005FFF2C /* Permissions Header.swift in Sources */,
 				F39CB6292C63D56300B7B15E /* System Alerts.swift in Sources */,
 				F33CDC002A26B920008D0214 /* Browser VM.swift in Sources */,

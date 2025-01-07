@@ -43,11 +43,8 @@ struct FileTab: View {
                             .environmentObject(vm)
                         
                     } else {
-                        ContentUnavailableView(
-                            "Warning",
-                            systemImage: "exclamationmark.triangle",
-                            description: Text("Unable to view the contents of \(name)")
-                        )
+                        FileErrorView(path: root, name: name)
+                            .environmentObject(vm)
                     }
                 } label: {
                     FileNameAndIcon(file)
