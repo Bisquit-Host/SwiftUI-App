@@ -47,7 +47,7 @@ struct DatabaseList: View {
                 vm.createDatabase()
             }
             
-            Button("Cancel", role: .destructive) {
+            Button("Cancel", role: .cancel) {
                 vm.newDatabaseName = ""
             }
         }

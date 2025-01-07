@@ -22,7 +22,7 @@ struct TopbarGridButton: View {
                 }
             }
         } label: {
-            Label("Layout", systemImage: icon)
+            Label("Grid layout", systemImage: icon)
         }
     }
 }

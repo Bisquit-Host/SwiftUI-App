@@ -63,6 +63,11 @@ struct NewScheduleSheet: View {
             Divider()
 #endif
             Section {
+#if os(visionOS)
+                Button("Dismiss") {
+                    dismiss()
+                }
+#endif
                 Button("Create Schedule") {
                     vm.createSchedule(newSchedule)
                     dismiss()

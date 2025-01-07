@@ -48,10 +48,8 @@ struct FileTab: View {
                     
                     Spacer()
                     
-                    let count = Text(fileCount)
-                        .monospaced()
-                    
-                    Text("\(count) Files")
+                    Text("\(fileCount) files")
+                        .monospacedDigit()
                 }
                 .numericTransition()
             }

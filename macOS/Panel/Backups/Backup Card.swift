@@ -35,7 +35,7 @@ struct BackupCard: View {
             Button(role: .destructive) {
                 vm.deleteBackup(backup.uuid)
             } label: {
-                Label(backup.isLocked ? "Delete (locked)" : "Delete", systemImage: "trash")
+                Label("Delete", systemImage: "trash")
             }
             .disabled(backup.isLocked)
         }

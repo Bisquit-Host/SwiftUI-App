@@ -30,7 +30,7 @@ struct OrnamentInfoSettings: View {
             
             List {
                 Toggle("Name", isOn: $ornament.name)
-                Toggle("Server ID", isOn: $ornament.serverId)
+                Toggle("Server id", isOn: $ornament.serverId)
                 Toggle("Status", isOn: $ornament.status)
                 Toggle("Uptime", isOn: $ornament.uptime)
                 Toggle("CPU", isOn: $ornament.cpu)

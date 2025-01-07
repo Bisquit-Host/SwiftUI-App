@@ -38,6 +38,18 @@ final class ServerListVM {
         }
     }
     
+    var hasSuspendedServers: Bool {
+        servers.filter(\.isSuspended).count > 0
+    }
+    
+    var hasMultipleNodes: Bool {
+        nodes.count > 1
+    }
+    
+    var showFilter: Bool {
+        hasSuspendedServers || hasMultipleNodes
+    }
+    
 #if os(iOS)
     private func fetchUniqueUsers() {
         let ids = servers.map(\.id)

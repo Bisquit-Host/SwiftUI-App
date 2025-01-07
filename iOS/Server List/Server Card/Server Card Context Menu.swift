@@ -27,22 +27,6 @@ struct ServerCardContextMenu: View {
         let id = server.id
         
         ControlGroup {
-            Section {
-                if let defaultAllocation {
-                    Menu {
-                        Button {
-                            UIPasteboard.general.string = defaultAllocation
-                        } label: {
-                            Label("Copy", systemImage: "doc.on.doc")
-                        }
-                        
-                        ShareLink(item: defaultAllocation)
-                    } label: {
-                        Text(defaultAllocation)
-                    }
-                }
-            }
-            
             MenuButton("Start", icon: "play") {
                 PteroNet.powerSignal(id, signal: .start)
             }
@@ -60,19 +44,37 @@ struct ServerCardContextMenu: View {
             }
         }
         
-        MenuButton("Open in Safari", icon: "safari") {
-            showSafari = true
+        if let defaultAllocation {
+            Menu {
+                Button {
+                    UIPasteboard.general.string = defaultAllocation
+                } label: {
+                    Label("Copy", systemImage: "doc.on.doc")
+                }
+                
+                ShareLink(item: defaultAllocation)
+            } label: {
+                Text(defaultAllocation)
+            }
         }
         
-        ShareLink(item: "https://mgr.bisquit.host/server/\(id)")
+        Section {
+            MenuButton("Open in Safari", icon: "safari") {
+                showSafari = true
+            }
+            
+            ShareLink(item: "https://mgr.bisquit.host/server/\(id)")
+        }
     }
 }
 
-//#Preview {
-//    Menu("Preview") {
-//        ServerCardContextMenu("", showSafari: .constant(false), confirmKill: .constant(false))
-//    }
-//    .semibold()
-//    .rounded()
-//    .largeTitle()
-//}
+#Preview {
+    Text("Preview")
+        .contextMenu {
+            ServerCardContextMenu(
+                sampleJSON(.serverListAttributes),
+                .constant(false),
+                .constant(false)
+            )
+        }
+}

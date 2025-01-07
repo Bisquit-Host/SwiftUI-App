@@ -11,13 +11,17 @@ struct ServerListFilter: View {
     
     var body: some View {
         Menu {
-            MenuButton("Suspended", icon: filterBySuspended ? "snowflake.circle.fill" : "snowflake") {
-                withAnimation {
-                    filterBySuspended.toggle()
+            if vm.hasSuspendedServers {
+                MenuButton("Suspended", icon: filterBySuspended ? "snowflake.circle.fill" : "snowflake") {
+                    withAnimation {
+                        filterBySuspended.toggle()
+                    }
                 }
             }
             
-            ServerListNodeFilter()
+            if vm.hasMultipleNodes {
+                ServerListNodeFilter()
+            }
         } label: {
             Image(systemName: "line.3.horizontal.decrease.circle")
                 .title(.semibold)
@@ -28,7 +32,7 @@ struct ServerListFilter: View {
                 .background(.ultraThinMaterial, in: .circle)
         }
         .hoverEffect(.lift)
-        .padding(.leading)
+        .padding(.trailing)
     }
 }
 

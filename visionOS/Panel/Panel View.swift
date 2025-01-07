@@ -6,6 +6,7 @@ struct PanelView: View {
     private var fileVM: FileTabVM
     private var backupVM: BackupVM
     private var dbVM: DatabaseVM
+    private var scheduleVM: ScheduleVM
     private var userVM: UsersVM
     
     private let id: String
@@ -16,6 +17,7 @@ struct PanelView: View {
         self.fileVM = FileTabVM(id)
         self.backupVM = BackupVM(id)
         self.dbVM = DatabaseVM(id)
+        self.scheduleVM = ScheduleVM(id)
         self.userVM = UsersVM(id)
     }
     
@@ -56,19 +58,30 @@ struct PanelView: View {
                         Label("Backups", systemImage: "archivebox")
                     }
                     
+                    List {
+                        DatabaseList(server.featureLimits.databases)
+                    }
+                    .environment(dbVM)
+                    .tag(Tab.databases)
+                    .tabItem {
+                        Label("Databases", systemImage: "externaldrive.badge.icloud")
+                    }
+                    
+                    List {
+                        ScheduleList()
+                    }
+                    .environment(scheduleVM)
+                    .tag(Tab.schedules)
+                    .tabItem {
+                        Label("Schedules", systemImage: "calendar")
+                    }
+                    
                     UserList()
                         .environment(userVM)
                         .tag(Tab.users)
                         .tabItem {
                             Label("Users", systemImage: "person.3")
                         }
-                    
-                    //                    DatabaseList(server.featureLimits.databases)
-                    //                        .environment(dbVM)
-                    //                        .tag(Tab.databases)
-                    //                        .tabItem {
-                    //                            Label("Databases", systemImage: "externaldrive.badge.icloud")
-                    //                        }
                 }
             }
         }
@@ -115,14 +128,12 @@ struct PanelView: View {
                 } label: {
                     Text(showPowerButtons ? "Hide power buttons" : "Show power buttons")
                 }
-                
 #warning("???")
 #if DEBUG
                 NavigationLink("Temp dir (debug)") {
                     TempDir()
                 }
 #endif
-                
                 //                Button {
                 //                    withAnimation {
                 //                        showInfo.toggle()
@@ -144,46 +155,8 @@ struct PanelView: View {
         //            }
         //        }
         .ornament(attachmentAnchor: .scene(.top)) {
-            if showPowerButtons {
-                HStack {
-                    Button {
-                        vm.changePower(.start)
-                    } label: {
-                        Label("Start", systemImage: "play")
-                    }
-                    .disabled(vm.serverState == .running || vm.serverState == .stopping)
-                    
-                    Button {
-                        vm.changePower(.stop)
-                    } label: {
-                        Label("Stop", systemImage: "pause")
-                    }
-                    .disabled(vm.serverState == .stopping || vm.serverState == .offline)
-                    
-                    Button {
-                        vm.changePower(.restart)
-                    } label: {
-                        Label("Restart", systemImage: "arrow.triangle.2.circlepath")
-                    }
-                    .disabled(vm.serverState == .stopping || vm.serverState == .offline)
-                    
-                    Capsule()
-                        .fill(.primary)
-                        .frame(width: 4, height: 32)
-                    
-                    Menu {
-                        Button(role: .destructive) {
-                            vm.changePower(.kill)
-                        } label: {
-                            Label("Kill", systemImage: "power")
-                        }
-                    } label: {
-                        Label("Kill", systemImage: "power")
-                    }
-                    .disabled(vm.serverState == .offline)
-                }
-                .padding(.bottom, 90)
-            }
+            PanelOrnamentPower(showPowerButtons)
+                .environment(vm)
         }
 #warning("Finish ornament")
         //        .ornament(attachmentAnchor: .scene(.trailing)) {

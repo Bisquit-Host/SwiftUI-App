@@ -50,13 +50,15 @@ struct StartPage: View {
                     
                     settings.authSucced()
                 } label: {
-                    Text(key.key.prefix(10))
+                    VStack(alignment: .leading) {
+                        Text(key.name)
+                        
+                        Text(key.key.prefix(10))
+                            .footnote()
+                            .secondary()
+                    }
                 }
             }
-            
-            //            Button("Key list") {
-            //                vm.sheetCloudKeys = true
-            //            }
         }
         .task {
             try? await Task.sleep(for: .seconds(0.5))
@@ -94,11 +96,11 @@ struct StartPage: View {
             }
         }
         //        .sheet($vm.sheetSupport) {
-        //        Support()
-        //    }
+        //            Support()
+        //        }
         //        .sheet($vm.sheetBrowsePlans) {
-        //        Browser()
-        //    }
+        //            Browser()
+        //        }
         //        .sheet($vm.sheetCloudKeys) {
         //            CloudKeys($vm.apiKey)
         //                .frame(width: 400)

@@ -21,7 +21,7 @@ struct BackupList: View {
                 }
             }
             
-            Text("\(vm.backups.count) of \(server.featureLimits.backups) backups used")
+            Text("\(vm.backups.count) / \(server.featureLimits.backups) backups used")
             
             Button("Create backup") {
                 vm.alertCreateBackup = true

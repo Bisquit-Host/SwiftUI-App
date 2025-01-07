@@ -1,5 +1,5 @@
 {
-  "originHash" : "a5f797c4c8be1512f4566d8223b15275242590cbfcf1ee95d34fa28a4301a9ff",
+  "originHash" : "018e236fef6fa8989e256478b65bea52baf5f69f805b8d36081b6e0c590f898a",
   "pins" : [
     {
       "identity" : "alertkit",
@@ -16,7 +16,7 @@
       "location" : "https://github.com/TopScrech/Audio-Visualizer",
       "state" : {
         "branch" : "main",
-        "revision" : "decb2c99310238300148d96b59dc360687131f73"
+        "revision" : "1043d3050559752e5924c4aec6f60037ddf6764e"
       }
     },
     {
@@ -70,7 +70,7 @@
       "location" : "https://github.com/TopScrech/PteroNet",
       "state" : {
         "branch" : "main",
-        "revision" : "2cc13bb67a1e4eeba96bf18bb17b173102856477"
+        "revision" : "376380080fe7a34c5a31758e615637d57df45693"
       }
     },
     {

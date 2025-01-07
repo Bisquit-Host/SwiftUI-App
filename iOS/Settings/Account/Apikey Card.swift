@@ -32,7 +32,7 @@ struct ApikeyCard: View {
                 let created = Text(timeSinceISO(key.created))
                     .foregroundStyle(.primary)
                 
-                Text("Created: \(created))")
+                Text("Created: \(created)")
                     .footnote()
                     .secondary()
                 

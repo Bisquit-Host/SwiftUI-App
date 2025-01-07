@@ -29,7 +29,9 @@ struct AudioPlayerView: View {
             vm.downloadFile(name, at: path)
         }
         .toolbar {
+#warning("Doesn't work on tvOS")
             Menu {
+#if !os(tvOS)
                 if let url = vm.audioUrl {
                     ShareLink(item: url)
                         .transition(.identity)
@@ -37,7 +39,7 @@ struct AudioPlayerView: View {
                     ShareLink(item: name)
                         .disabled(vm.audioUrl == nil)
                 }
-                
+#endif
                 Section {
                     Button(role: .destructive) {
                         fileVm.deleteFile(name, at: path) {

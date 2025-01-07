@@ -6,7 +6,7 @@ struct Tip_ServerCardContextMenu: Tip {
     }
     
     var message: Text? {
-        Text("Hold down the server card for a moment to access the context menu.")
+        Text("Hold down the server card for a moment to access the context menu")
     }
     
     var image: Image? {
