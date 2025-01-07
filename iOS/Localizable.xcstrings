@@ -942,7 +942,7 @@
             "state" : "translated",
             "value" : ""
           }
-        },
+        }
       },
       "shouldTranslate" : false
     },
@@ -1987,29 +1987,6 @@
     "Enter the 6-digit code from your authenticator app" : {
 
     },
-    "Error" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fout"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ошибка"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Ошибка"
-          }
-        }
-      }
-    },
     "Error %@" : {
       "localizations" : {
         "ru" : {
@@ -2128,17 +2105,6 @@
         }
       }
     },
-    "File Manager" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Файловый Менеджер"
-          }
-        }
-      }
-    },
     "File Size" : {
       "localizations" : {
         "ru" : {
@@ -2150,47 +2116,11 @@
       }
     },
     "Files" : {
-      "extractionState" : "manual",
       "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Bestanden"
-          }
-        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Файлы"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Файлы"
-          }
-        }
-      }
-    },
-    "Filter" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Фильтр"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Фільтр"
           }
         }
       }
@@ -2216,24 +2146,11 @@
       }
     },
     "Full file path" : {
-      "extractionState" : "manual",
       "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Volledig bestandspad"
-          }
-        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Полный путь к файлу"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Повний шлях до файлу"
           }
         }
       }
@@ -2480,29 +2397,6 @@
         }
       }
     },
-    "Identifier" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Идентификатор"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ідентифікатор"
-          }
-        }
-      }
-    },
     "Identifier: %@" : {
       "localizations" : {
         "ru" : {
@@ -2522,93 +2416,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Инфо"
-          }
-        }
-      }
-    },
-    "Info.Backup" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A backup is a safeguard duplicate of vital data, enabling restoration in case of loss or damage, helping prevent significant data loss."
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Een back-up is een veiligheidsduplicaat van essentiële gegevens, waarmee herstel mogelijk is in geval van verlies of beschadiging, en helpt om aanzienlijk gegevensverlies te voorkomen."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Резервная копия - это надежный дубликат жизненно важных данных, позволяющий восстановить их в случае потери или повреждения, помогая предотвратить значительную потерю данных."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Резервная копия - это надежный дубликат жизненно важных данных, позволяющий восстановить их в случае потери или повреждения, помогая предотвратить значительную потерю данных."
-          }
-        }
-      }
-    },
-    "Info.Database" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Databases are essential for the operation of certain plugins and effective data management"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Databases zijn essentieel voor de werking van bepaalde plug-ins en effectief gegevensbeheer"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Базы данных необходимы для функционирования некоторых плагинов и эффективного управления данными"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Базы данных необходимы для функционирования некоторых плагинов и эффективного управления данными"
-          }
-        }
-      }
-    },
-    "Info.Schedule" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Schedules automate tasks such as sending commands, generating backups, or performing power actions. They enhance efficiency, reduce manual intervention, and help maintain consistent system operations."
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Schema's automatiseren taken zoals het sturen van commando's of het genereren van back-ups. Ze verhogen de efficiëntie, verminderen handmatige interventie en helpen bij het handhaven van consistente systeemoperaties."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Расписания автоматизируют такие задачи, как отправка команд, создание резервных копий или перезагрузка сервера. Они повышают эффективность, сокращают ручное вмешательство и помогают поддерживать согласованную работу системы."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Розклади автоматизують такі завдання, як надсилання команд, створення резервних копій або виконання дій з живленням. Вони підвищують ефективність, скорочують ручне втручання і допомагають підтримувати узгоджену роботу системи."
           }
         }
       }
@@ -3373,17 +3180,6 @@
         }
       }
     },
-    "Now" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Сейчас"
-          }
-        }
-      }
-    },
     "Only when online" : {
       "localizations" : {
         "ru" : {
@@ -3455,65 +3251,11 @@
       }
     },
     "Paste" : {
-      "extractionState" : "manual",
       "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Plakken"
-          }
-        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Вставить"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Вставивши"
-          }
-        }
-      }
-    },
-    "Paste from clipboard" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Plakken vanaf klembord"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Вставить из буфера обмена"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Вставити з буфера обміну"
-          }
-        }
-      }
-    },
-    "Path" : {
-      "comment" : "Bestandspad",
-      "extractionState" : "manual",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Путь"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Путь"
           }
         }
       }
@@ -3613,23 +3355,10 @@
 
     },
     "Preferred currency" : {
-      "extractionState" : "manual",
       "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Voorkeur valuta"
-          }
-        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Основная валюта"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "needs_review",
             "value" : "Основная валюта"
           }
         }
@@ -4823,21 +4552,8 @@
       }
     },
     "Uptime" : {
-      "extractionState" : "manual",
       "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Uptime"
-          }
-        },
         "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Аптайм"
-          }
-        },
-        "uk" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Аптайм"
