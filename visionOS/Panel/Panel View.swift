@@ -117,14 +117,12 @@ struct PanelView: View {
                 } label: {
                     Text(showPowerButtons ? "Hide power buttons" : "Show power buttons")
                 }
-                
 #warning("???")
 #if DEBUG
                 NavigationLink("Temp dir (debug)") {
                     TempDir()
                 }
 #endif
-                
                 //                Button {
                 //                    withAnimation {
                 //                        showInfo.toggle()
@@ -146,46 +144,8 @@ struct PanelView: View {
         //            }
         //        }
         .ornament(attachmentAnchor: .scene(.top)) {
-            if showPowerButtons {
-                HStack {
-                    Button {
-                        vm.changePower(.start)
-                    } label: {
-                        Label("Start", systemImage: "play")
-                    }
-                    .disabled(vm.serverState == .running || vm.serverState == .stopping)
-                    
-                    Button {
-                        vm.changePower(.stop)
-                    } label: {
-                        Label("Stop", systemImage: "pause")
-                    }
-                    .disabled(vm.serverState == .stopping || vm.serverState == .offline)
-                    
-                    Button {
-                        vm.changePower(.restart)
-                    } label: {
-                        Label("Restart", systemImage: "arrow.triangle.2.circlepath")
-                    }
-                    .disabled(vm.serverState == .stopping || vm.serverState == .offline)
-                    
-                    Capsule()
-                        .fill(.primary)
-                        .frame(width: 4, height: 32)
-                    
-                    Menu {
-                        Button(role: .destructive) {
-                            vm.changePower(.kill)
-                        } label: {
-                            Label("Kill", systemImage: "power")
-                        }
-                    } label: {
-                        Label("Kill", systemImage: "power")
-                    }
-                    .disabled(vm.serverState == .offline)
-                }
-                .padding(.bottom, 90)
-            }
+            PanelOrnamentPower(showPowerButtons)
+                .environment(vm)
         }
 #warning("Finish ornament")
         //        .ornament(attachmentAnchor: .scene(.trailing)) {

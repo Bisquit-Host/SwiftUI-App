@@ -711,6 +711,7 @@
 		F39E682F2D2D61680002BA96 /* Database Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BC03B62B1FF8E40011F98A /* Database Context Menu.swift */; };
 		F39E68302D2D61680002BA96 /* Database List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F375EC3929EE73AC002CA969 /* Database List.swift */; };
 		F39E68312D2D61680002BA96 /* Database Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB53D52971CF6B00A213B0 /* Database Card.swift */; };
+		F39E68332D2D63980002BA96 /* Panel Ornament Power.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E68322D2D63980002BA96 /* Panel Ornament Power.swift */; };
 		F3A123562A667804008E3E20 /* Log View Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* Log View Parent.swift */; };
 		F3A123572A667804008E3E20 /* Log View Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* Log View Parent.swift */; };
 		F3A123582A667804008E3E20 /* Log View Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* Log View Parent.swift */; };
@@ -1671,6 +1672,7 @@
 		F39D28562A27F1F5007B12C3 /* File Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Manager.swift"; sourceTree = "<group>"; };
 		F39E0A932C1BA06C00C4E906 /* Discover Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Discover Card.swift"; sourceTree = "<group>"; };
 		F39E0A972C1BA11600C4E906 /* Discover Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Discover Item.swift"; sourceTree = "<group>"; };
+		F39E68322D2D63980002BA96 /* Panel Ornament Power.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Ornament Power.swift"; sourceTree = "<group>"; };
 		F3A123552A667804008E3E20 /* Log View Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log View Parent.swift"; sourceTree = "<group>"; };
 		F3A123592A6689FA008E3E20 /* User Email.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Email.swift"; sourceTree = "<group>"; };
 		F3A1D2302A201C570053261E /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
@@ -2867,6 +2869,7 @@
 			children = (
 				F3BD76F82A43C890003E7385 /* Panel View.swift */,
 				F3FC99152C65888900150823 /* TempDir.swift */,
+				F39E68322D2D63980002BA96 /* Panel Ornament Power.swift */,
 				F37B90762BFEA00300597624 /* Panel Ornament Info.swift */,
 				F37B90772BFEA00300597624 /* Ornament Info Settings.swift */,
 				F37B90752BFEA00200597624 /* Ornament Info Properties.swift */,
@@ -5131,6 +5134,7 @@
 				F3317AEE2A45E33300CA104D /* Formatters.swift in Sources */,
 				F32716DC2CF62C0D00F2DC31 /* Backup Card.swift in Sources */,
 				F32716D92CF6257F00F2DC31 /* Backup Context Menu Control Group.swift in Sources */,
+				F39E68332D2D63980002BA96 /* Panel Ornament Power.swift in Sources */,
 				F37EA7992B70DEDE0029DE00 /* Console VM.swift in Sources */,
 				F35FEB0B2B09F003004DA05D /* API Key.swift in Sources */,
 				F3FD9F9C2C651B3800A69314 /* File Card.swift in Sources */,
