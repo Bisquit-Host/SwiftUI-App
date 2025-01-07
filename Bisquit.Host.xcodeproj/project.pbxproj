@@ -712,6 +712,14 @@
 		F39E68302D2D61680002BA96 /* Database List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F375EC3929EE73AC002CA969 /* Database List.swift */; };
 		F39E68312D2D61680002BA96 /* Database Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB53D52971CF6B00A213B0 /* Database Card.swift */; };
 		F39E68332D2D63980002BA96 /* Panel Ornament Power.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E68322D2D63980002BA96 /* Panel Ornament Power.swift */; };
+		F39E68342D2D67A70002BA96 /* Task Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BC03B12B1FF4830011F98A /* Task Context Menu.swift */; };
+		F39E68352D2D67A70002BA96 /* Schedule List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F375EC3B29EE88EA002CA969 /* Schedule List.swift */; };
+		F39E68362D2D67A70002BA96 /* New Task Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E024C42B228F4C00FFF686 /* New Task Sheet.swift */; };
+		F39E68372D2D67A70002BA96 /* Schedule Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = F398823E2987BF6E00B9BA2C /* Schedule Task.swift */; };
+		F39E68382D2D67A70002BA96 /* Schedule Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BC03AC2B1FF2FC0011F98A /* Schedule Context Menu.swift */; };
+		F39E68392D2D67A70002BA96 /* Schedule Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3437CA1297360D30064808F /* Schedule Card.swift */; };
+		F39E683A2D2D67A70002BA96 /* Schedule VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088A72B3A18E40051476C /* Schedule VM.swift */; };
+		F39E683B2D2D67A70002BA96 /* New Schedule Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BC03C52B20675E0011F98A /* New Schedule Sheet.swift */; };
 		F3A123562A667804008E3E20 /* Log View Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* Log View Parent.swift */; };
 		F3A123572A667804008E3E20 /* Log View Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* Log View Parent.swift */; };
 		F3A123582A667804008E3E20 /* Log View Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* Log View Parent.swift */; };
@@ -5176,6 +5184,14 @@
 				F38928302A445E9700561CDF /* Server List.swift in Sources */,
 				F3FC99112C65747700150823 /* Archieving.swift in Sources */,
 				F3464D252A86397F00188B0C /* PowerSignalAppEnum.swift in Sources */,
+				F39E68342D2D67A70002BA96 /* Task Context Menu.swift in Sources */,
+				F39E68352D2D67A70002BA96 /* Schedule List.swift in Sources */,
+				F39E68362D2D67A70002BA96 /* New Task Sheet.swift in Sources */,
+				F39E68372D2D67A70002BA96 /* Schedule Task.swift in Sources */,
+				F39E68382D2D67A70002BA96 /* Schedule Context Menu.swift in Sources */,
+				F39E68392D2D67A70002BA96 /* Schedule Card.swift in Sources */,
+				F39E683A2D2D67A70002BA96 /* Schedule VM.swift in Sources */,
+				F39E683B2D2D67A70002BA96 /* New Schedule Sheet.swift in Sources */,
 				F32FD7182B1E042500723B88 /* Websocket.swift in Sources */,
 				F32FD7212B1E065500723B88 /* Network Calls.swift in Sources */,
 				F35FEB142B0A2C8F004DA05D /* Enums.swift in Sources */,

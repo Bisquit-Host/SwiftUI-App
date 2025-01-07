@@ -6,6 +6,7 @@ struct PanelView: View {
     private var fileVM: FileTabVM
     private var backupVM: BackupVM
     private var dbVM: DatabaseVM
+    private var scheduleVM: ScheduleVM
     private var userVM: UsersVM
     
     private let id: String
@@ -16,6 +17,7 @@ struct PanelView: View {
         self.fileVM = FileTabVM(id)
         self.backupVM = BackupVM(id)
         self.dbVM = DatabaseVM(id)
+        self.scheduleVM = ScheduleVM(id)
         self.userVM = UsersVM(id)
     }
     
@@ -63,6 +65,15 @@ struct PanelView: View {
                     .tag(Tab.databases)
                     .tabItem {
                         Label("Databases", systemImage: "externaldrive.badge.icloud")
+                    }
+                    
+                    List {
+                        ScheduleList()
+                    }
+                    .environment(scheduleVM)
+                    .tag(Tab.schedules)
+                    .tabItem {
+                        Label("Schedules", systemImage: "calendar")
                     }
                     
                     UserList()
