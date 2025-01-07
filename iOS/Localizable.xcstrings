@@ -133,6 +133,16 @@
       },
       "shouldTranslate" : false
     },
+    "%lld / %lld backups used" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld / %2$lld backups used"
+          }
+        }
+      }
+    },
     "%lld files" : {
       "localizations" : {
         "en" : {
@@ -3231,16 +3241,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Переименовать %@"
-          }
-        }
-      }
-    },
-    "Reset" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Сброс"
           }
         }
       }
