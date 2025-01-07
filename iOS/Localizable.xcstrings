@@ -2250,16 +2250,6 @@
         }
       }
     },
-    "kill" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "убить"
-          }
-        }
-      }
-    },
     "Kill" : {
       "localizations" : {
         "ru" : {
@@ -3032,16 +3022,6 @@
     "Reset to default" : {
 
     },
-    "restart" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "рестарт"
-          }
-        }
-      }
-    },
     "Restart" : {
       "localizations" : {
         "nl" : {
@@ -3454,16 +3434,6 @@
         }
       }
     },
-    "start" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "старт"
-          }
-        }
-      }
-    },
     "Start" : {
       "localizations" : {
         "ru" : {
@@ -3538,16 +3508,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Шаг %lld"
-          }
-        }
-      }
-    },
-    "stop" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "стоп"
           }
         }
       }
