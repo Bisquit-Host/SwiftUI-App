@@ -15,12 +15,6 @@
             "value" : ""
           }
         },
-        "sw" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
@@ -949,12 +943,6 @@
             "value" : ""
           }
         },
-        "sw" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        }
       },
       "shouldTranslate" : false
     },
@@ -994,12 +982,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Отменить"
-          }
-        },
-        "sw" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Kufuta"
           }
         },
         "uk" : {
@@ -1313,12 +1295,6 @@
             "value" : "Копировать"
           }
         },
-        "sw" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Nakala"
-          }
-        },
         "uk" : {
           "stringUnit" : {
             "state" : "needs_review",
@@ -1362,12 +1338,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ЦПУ"
-          }
-        },
-        "sw" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
           }
         },
         "uk" : {
@@ -1742,12 +1712,6 @@
             "value" : "Дизайн"
           }
         },
-        "sw" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Kubuni"
-          }
-        },
         "uk" : {
           "stringUnit" : {
             "state" : "needs_review",
@@ -1879,12 +1843,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Скачать"
-          }
-        },
-        "sw" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Pakua"
           }
         },
         "uk" : {
@@ -2122,12 +2080,6 @@
             "value" : "Пример"
           }
         },
-        "sw" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Mfano"
-          }
-        },
         "uk" : {
           "stringUnit" : {
             "state" : "needs_review",
@@ -2276,12 +2228,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Полный путь к файлу"
-          }
-        },
-        "sw" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Njia kamili ya faili"
           }
         },
         "uk" : {
@@ -2473,12 +2419,6 @@
     "https://mgr.bisquit.host" : {
       "localizations" : {
         "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "sw" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : ""
@@ -2686,12 +2626,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Информация"
-          }
-        },
-        "sw" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Habari"
           }
         },
         "uk" : {
@@ -3320,12 +3254,6 @@
             "value" : "Нужна помощь?"
           }
         },
-        "sw" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Unahitaji msaada?"
-          }
-        },
         "uk" : {
           "stringUnit" : {
             "state" : "needs_review",
@@ -3541,12 +3469,6 @@
             "value" : "Вставить"
           }
         },
-        "sw" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Kuweka"
-          }
-        },
         "uk" : {
           "stringUnit" : {
             "state" : "needs_review",
@@ -3568,12 +3490,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Вставить из буфера обмена"
-          }
-        },
-        "sw" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Bandika kutoka kwa ubao wa kunakili"
           }
         },
         "uk" : {
@@ -3795,12 +3711,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ОЗУ"
-          }
-        },
-        "sw" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
           }
         },
         "uk" : {
@@ -4205,12 +4115,6 @@
             "value" : ""
           }
         },
-        "sw" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4354,12 +4258,6 @@
           }
         },
         "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "sw" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : ""
