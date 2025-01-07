@@ -74,7 +74,8 @@
             "value" : "%1$@ / %2$@"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "%@ / %@ GB" : {
       "localizations" : {
@@ -91,9 +92,6 @@
           }
         }
       }
-    },
-    "%@ files" : {
-
     },
     "%@ Log out" : {
       "localizations" : {
@@ -554,7 +552,14 @@
       }
     },
     "Are you sure you want to delete \"%@\"? This database will be deleted immediately. You can't undo this action" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы уверены, что хотите удалить “%@”? Эта база данных будет немедленно удалена. Вы не можете отменить это действие"
+          }
+        }
+      }
     },
     "Are you sure you want to perform the Kill action?" : {
       "localizations" : {
@@ -576,8 +581,15 @@
         }
       }
     },
-    "Attribute Modification Date" : {
-
+    "Attribute modification date" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дата изменения атрибута"
+          }
+        }
+      }
     },
     "Available configurations" : {
       "localizations" : {
@@ -975,12 +987,12 @@
     "Contacts provider" : {
 
     },
-    "Content Type" : {
+    "Content type" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Тип Контента"
+            "value" : "Тип контента"
           }
         }
       }
@@ -1513,7 +1525,7 @@
         }
       }
     },
-    "Document Identifier" : {
+    "Document identifier" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -1733,7 +1745,7 @@
         }
       }
     },
-    "File Allocated Size" : {
+    "File allocated size" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -1743,22 +1755,22 @@
         }
       }
     },
-    "File Identifier" : {
+    "File identifier" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Идентификатор Файла"
+            "value" : "Идентификатор файла"
           }
         }
       }
     },
-    "File Size" : {
+    "File size" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Размер Файла"
+            "value" : "Размер файла"
           }
         }
       }
@@ -1822,12 +1834,12 @@
     "Generate" : {
 
     },
-    "Generation Identifier" : {
+    "Generation identifier" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Идентификатор Поколения"
+            "value" : "Идентификатор поколения"
           }
         }
       }
@@ -2171,28 +2183,28 @@
     "IP: %@" : {
       "shouldTranslate" : false
     },
-    "Is Alias File" : {
+    "Is alias file" : {
 
     },
-    "Is Directory" : {
+    "Is directory" : {
 
     },
-    "Is Excluded from Backup" : {
+    "Is excluded from backup" : {
 
     },
-    "Is Executable" : {
+    "Is executable" : {
 
     },
-    "Is Hidden" : {
+    "Is hidden" : {
 
     },
-    "Is Package" : {
+    "Is package" : {
 
     },
-    "Is Readable" : {
+    "Is readable" : {
 
     },
-    "Is Regular File" : {
+    "Is regular file" : {
 
     },
     "is Suspended" : {
@@ -2208,10 +2220,10 @@
         }
       }
     },
-    "Is Symbolic Link" : {
+    "Is symbolic link" : {
 
     },
-    "Is System Immutable" : {
+    "Is system immutable" : {
 
     },
     "Is the following information correct?" : {
@@ -2224,10 +2236,10 @@
         }
       }
     },
-    "Is User Immutable" : {
+    "Is user immutable" : {
 
     },
-    "Is Writable" : {
+    "Is writable" : {
 
     },
     "It is recommended to use the keyboard on your iPhone %@" : {
@@ -2260,10 +2272,10 @@
         }
       }
     },
-    "Label Color" : {
+    "Label color" : {
 
     },
-    "Label Number" : {
+    "Label number" : {
 
     },
     "Last opened" : {
@@ -2338,7 +2350,7 @@
         }
       }
     },
-    "Link Count" : {
+    "Link count" : {
 
     },
     "listPath" : {
@@ -2350,10 +2362,10 @@
     "Load data" : {
 
     },
-    "Localized Name" : {
+    "Localized name" : {
 
     },
-    "Localized Type Description" : {
+    "Localized type description" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -2872,12 +2884,12 @@
         }
       }
     },
-    "Preferred IO Block Size" : {
+    "Preferred IO block size" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Предпочтительный Размер IO-блока"
+            "value" : "Предпочтительный размер IO-блока"
           }
         }
       }
@@ -3651,7 +3663,14 @@
 
     },
     "Temporary Files" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Временные Файлы"
+          }
+        }
+      }
     },
     "The list of servers couldn't be loaded. Check your internet connection or contact support" : {
       "localizations" : {
@@ -3664,10 +3683,24 @@
       }
     },
     "Time offset (sec)" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Смещение по времени (сек)"
+          }
+        }
+      }
     },
     "Time offset: %@" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Смещение по времени: %@"
+          }
+        }
+      }
     },
     "To activate the app, please enter a valid API-key" : {
       "localizations" : {
@@ -3679,15 +3712,22 @@
         }
       }
     },
-    "Total File Allocated Size" : {
-
-    },
-    "Total File Size" : {
+    "Total file allocated size" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Общий Размер Файла"
+            "value" : "Общий размер выделенного файла"
+          }
+        }
+      }
+    },
+    "Total file size" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Общий размер файла"
           }
         }
       }
@@ -3757,12 +3797,12 @@
     "Type here" : {
 
     },
-    "Type Identifier" : {
+    "Type identifier" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Идентификатор Типа"
+            "value" : "Идентификатор типа"
           }
         }
       }
@@ -3787,8 +3827,15 @@
         }
       }
     },
-    "Unknown Key" : {
-
+    "Unknown key" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Неизвестный параметр"
+          }
+        }
+      }
     },
     "Unlock" : {
       "localizations" : {
