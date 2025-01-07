@@ -720,6 +720,9 @@
 		F39E68392D2D67A70002BA96 /* Schedule Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3437CA1297360D30064808F /* Schedule Card.swift */; };
 		F39E683A2D2D67A70002BA96 /* Schedule VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088A72B3A18E40051476C /* Schedule VM.swift */; };
 		F39E683B2D2D67A70002BA96 /* New Schedule Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BC03C52B20675E0011F98A /* New Schedule Sheet.swift */; };
+		F39E683C2D2D6A300002BA96 /* Audio Player VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F398E0DF2CEB562400AA4DD7 /* Audio Player VM.swift */; };
+		F39E683D2D2D6A380002BA96 /* Audio Player View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B73A22C8B0B7B00E858FE /* Audio Player View.swift */; };
+		F39E683F2D2D6A510002BA96 /* AudioVisualizer in Frameworks */ = {isa = PBXBuildFile; productRef = F39E683E2D2D6A510002BA96 /* AudioVisualizer */; };
 		F3A123562A667804008E3E20 /* Log View Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* Log View Parent.swift */; };
 		F3A123572A667804008E3E20 /* Log View Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* Log View Parent.swift */; };
 		F3A123582A667804008E3E20 /* Log View Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* Log View Parent.swift */; };
@@ -1907,6 +1910,7 @@
 				F34745D22A31F3AB00EE2FB8 /* ScrechKit in Frameworks */,
 				F39D680D2A262C5E00B9BDFC /* Kingfisher in Frameworks */,
 				F308601E2B002D4A004D776A /* PteroNet in Frameworks */,
+				F39E683F2D2D6A510002BA96 /* AudioVisualizer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3521,6 +3525,7 @@
 				F34745D12A31F3AB00EE2FB8 /* ScrechKit */,
 				F308601D2B002D4A004D776A /* PteroNet */,
 				F342FAB62B2E49B600854270 /* Algorithms */,
+				F39E683E2D2D6A510002BA96 /* AudioVisualizer */,
 			);
 			productName = "Bisquit.Host tvOSapp";
 			productReference = F3000E05295A341000ABD30A /* tvOS.app */;
@@ -4105,6 +4110,7 @@
 				F33CDBFB2A26A571008D0214 /* Server Card.swift in Sources */,
 				F33CDBFC2A26A60D008D0214 /* Server Card VM.swift in Sources */,
 				F35F65922B1D066E00431EB7 /* Panel VM.swift in Sources */,
+				F39E683C2D2D6A300002BA96 /* Audio Player VM.swift in Sources */,
 				F35B89C12A725CFB000B5EEF /* Tip Suspended Server.swift in Sources */,
 				F3A28ADB2C57B06600010454 /* Server List Footer.swift in Sources */,
 				F3000E18295A496C00ABD30A /* Intro.swift in Sources */,
@@ -4125,6 +4131,7 @@
 				F38F9E202CEAB3410033EFE3 /* Sidebar Adoptable TabView.swift in Sources */,
 				F3464D262A86397F00188B0C /* PowerSignalAppEnum.swift in Sources */,
 				F3EB09DF2A297F090073916A /* Des Image.swift in Sources */,
+				F39E683D2D2D6A380002BA96 /* Audio Player View.swift in Sources */,
 				F3C9D8532B3060D100265492 /* Video Player VM.swift in Sources */,
 				F30088F52B3B55C10051476C /* User Invitation View.swift in Sources */,
 				F37266CD29D96C98005FD103 /* Websocket Delegate.swift in Sources */,
@@ -6929,6 +6936,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F37266E529D9EF25005FD103 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		F39E683E2D2D6A510002BA96 /* AudioVisualizer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F36B73952C8B055600E858FE /* XCRemoteSwiftPackageReference "Audio-Visualizer" */;
+			productName = AudioVisualizer;
 		};
 		F3A7CEDE2C8B981A00413400 /* PteroNet */ = {
 			isa = XCSwiftPackageProductDependency;

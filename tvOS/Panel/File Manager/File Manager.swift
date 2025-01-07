@@ -38,6 +38,10 @@ struct FileTab: View {
                         VideoFile(id, path: root, name: name)
                             .environmentObject(vm)
                         
+                    } else if mimeType.contains("audio") {
+                        AudioPlayerView(id, path: root, name: name)
+                            .environmentObject(vm)
+                        
                     } else {
                         ContentUnavailableView(
                             "Warning",
