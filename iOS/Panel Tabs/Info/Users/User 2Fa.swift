@@ -14,10 +14,12 @@ struct User2Fa: View {
             Spacer()
             
             if isEnabled {
-                let icon = Image(systemName: "lock.fill")
-                
-                Text("Enabled \(icon)")
-                    .foregroundStyle(.green)
+                Group {
+                    Text("Enabled")
+                    
+                    Image(systemName: "lock.fill")
+                }
+                .foregroundStyle(.green)
             } else {
                 Text("Disabled")
                     .foregroundStyle(.red)

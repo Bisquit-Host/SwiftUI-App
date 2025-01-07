@@ -2,7 +2,6 @@ import SwiftUI
 import PteroNet
 
 struct StartupCard: View {
-    
     private let variable: StartupVariable
     
     init(_ variable: StartupVariable) {
@@ -12,7 +11,7 @@ struct StartupCard: View {
     @State private var newValue = ""
     
     var body: some View {
-        Section(variable.name) {            
+        Section(variable.name) {
             Text(variable.description)
                 .secondary()
             

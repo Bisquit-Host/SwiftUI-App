@@ -5,13 +5,11 @@ struct StartupList: View {
     
     var body: some View {
         List {
-            Button("VIEW ONLY", role: .destructive) {}
-            
             ForEach(vm.startupVariables, id: \.name) { variable in
                 StartupCard(variable)
             }
         }
-        .navigationTitle("Startup")
+        .navigationTitle("Startup (view only)")
         .task {
             vm.fetchStartupVariables()
         }
@@ -19,5 +17,8 @@ struct StartupList: View {
 }
 
 #Preview {
-    StartupList()
+    NavigationView {
+        StartupList()
+            .environment(StartupVM(""))
+    }
 }

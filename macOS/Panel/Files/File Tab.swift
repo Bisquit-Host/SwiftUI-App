@@ -18,12 +18,14 @@ struct FileTab: View {
         VStack {
             TextField("Search", text: $vm.searchField)
                 .textFieldStyle(.roundedBorder)
+            
+#warning("Destination")
 #if os(macOS)
             ScrollView {
                 LazyVStack(alignment: .leading) {
                     ForEach(vm.filteredFiles, id: \.name) { file in
                         NavigationLink {
-                            Text("Destination")
+                            
                         } label: {
                             FileView(id, root: root, file: file)
                         }
@@ -37,7 +39,7 @@ struct FileTab: View {
             List {
                 ForEach(vm.filteredFiles, id: \.name) { file in
                     NavigationLink {
-                        Text("Destination")
+                        
                     } label: {
                         FileView(id, root: root, file: file)
                     }

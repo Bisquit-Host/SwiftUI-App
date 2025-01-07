@@ -150,6 +150,7 @@ struct PanelOrnamentInfo: View {
                 Button {
                     sheetOrnamentinfo = true
                 } label: {
+#warning("image")
                     Label("Customize", systemImage: "")
                 }
             }

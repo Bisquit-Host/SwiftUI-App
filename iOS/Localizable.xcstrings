@@ -608,7 +608,14 @@
 
     },
     "Backup name" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Название бэкапа"
+          }
+        }
+      }
     },
     "Backups" : {
       "localizations" : {
@@ -1213,7 +1220,14 @@
       }
     },
     "Created" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Создано"
+          }
+        }
+      }
     },
     "Created: %@" : {
       "localizations" : {
@@ -1230,9 +1244,6 @@
           }
         }
       }
-    },
-    "Created: %@)" : {
-
     },
     "Cron: %@" : {
       "localizations" : {
@@ -1252,7 +1263,14 @@
       "shouldTranslate" : false
     },
     "Customize" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настроить"
+          }
+        }
+      }
     },
     "Data" : {
       "localizations" : {
@@ -1365,7 +1383,14 @@
       }
     },
     "Default" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обычный"
+          }
+        }
+      }
     },
     "Delete" : {
       "localizations" : {
@@ -1510,7 +1535,14 @@
 
     },
     "Disabled" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выключено"
+          }
+        }
+      }
     },
     "Dismiss" : {
 
@@ -1616,7 +1648,14 @@
       }
     },
     "Easily format and visualize your JSON data" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Запросто форматируйте и визуализируйте JSON-данные"
+          }
+        }
+      }
     },
     "Email" : {
       "localizations" : {
@@ -1670,8 +1709,15 @@
         }
       }
     },
-    "Enabled %@" : {
-
+    "Enabled" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Включено"
+          }
+        }
+      }
     },
     "Endpoint: %@" : {
       "localizations" : {
@@ -1694,10 +1740,24 @@
       }
     },
     "Enter or drag-and-drop your public SSH-key" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Введите или перетащите свой публичный SSH-ключ"
+          }
+        }
+      }
     },
     "Enter the 6-digit code from your authenticator app" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Введите 6-значный код из вашего приложения для аутентификации"
+          }
+        }
+      }
     },
     "Error %@" : {
       "localizations" : {
@@ -1832,7 +1892,14 @@
       }
     },
     "Generate" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сгенерировать"
+          }
+        }
+      }
     },
     "Generation identifier" : {
       "localizations" : {
@@ -1952,7 +2019,14 @@
       }
     },
     "Hide power buttons" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скрыть кнопки питания"
+          }
+        }
+      }
     },
     "Hints" : {
       "localizations" : {
@@ -1964,11 +2038,25 @@
         }
       }
     },
-    "Hold down the server card for a moment to access the context menu." : {
-
+    "Hold down the server card for a moment to access the context menu" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удерживайте карточку сервера, чтобы получить доступ к контекстному меню"
+          }
+        }
+      }
     },
     "Hosting Support" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поддержка Хостинга"
+          }
+        }
+      }
     },
     "Hour" : {
       "localizations" : {
@@ -2012,7 +2100,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Дайте мне имя 😢"
+            "value" : "Дайте мне название 😢"
           }
         }
       }
@@ -2184,28 +2272,70 @@
       "shouldTranslate" : false
     },
     "Is alias file" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ярлык"
+          }
+        }
+      }
     },
     "Is directory" : {
 
     },
     "Is excluded from backup" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Исключён из резервного копирования"
+          }
+        }
+      }
     },
     "Is executable" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Исполняемый"
+          }
+        }
+      }
     },
     "Is hidden" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скрытый"
+          }
+        }
+      }
     },
     "Is package" : {
 
     },
     "Is readable" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Читаемый"
+          }
+        }
+      }
     },
     "Is regular file" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обычный файл"
+          }
+        }
+      }
     },
     "is Suspended" : {
 
@@ -2221,7 +2351,14 @@
       }
     },
     "Is symbolic link" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cимлинк"
+          }
+        }
+      }
     },
     "Is system immutable" : {
 
@@ -2273,10 +2410,24 @@
       }
     },
     "Label color" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Цвет метки"
+          }
+        }
+      }
     },
     "Label number" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Номер метки"
+          }
+        }
+      }
     },
     "Last opened" : {
 
@@ -2302,7 +2453,14 @@
       }
     },
     "Launch the server to start receiving messages" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Запустите сервер, чтобы начать получать сообщения"
+          }
+        }
+      }
     },
     "Learn more..." : {
       "localizations" : {
@@ -2351,7 +2509,14 @@
       }
     },
     "Link count" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Количество ссылок"
+          }
+        }
+      }
     },
     "listPath" : {
 
@@ -2363,7 +2528,14 @@
 
     },
     "Localized name" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Локализованное название"
+          }
+        }
+      }
     },
     "Localized type description" : {
       "localizations" : {
@@ -2442,7 +2614,14 @@
       }
     },
     "Member since" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Участник с"
+          }
+        }
+      }
     },
     "Memory" : {
       "localizations" : {
@@ -2579,7 +2758,14 @@
       }
     },
     "Name & description" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Название & описание"
+          }
+        }
+      }
     },
     "Name Backup" : {
 
@@ -2869,10 +3055,24 @@
       }
     },
     "Power" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Питание"
+          }
+        }
+      }
     },
     "Power Signal" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сигнал питания"
+          }
+        }
+      }
     },
     "Preferred currency" : {
       "localizations" : {
@@ -2996,7 +3196,14 @@
       }
     },
     "Reinstalling your server will stop it, and then re-run the installation script that initially set it. Some files may be deleted or modified during this process, please back up your data before continuing" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Переустановка сервера остановит его, а затем перезапустит установочный скрипт, который изначально его установил. Некоторые файлы могут быть удалены или изменены в ходе этого процесса. Пожалуйста, сделайте резервную копию ваших данных, прежде чем продолжить"
+          }
+        }
+      }
     },
     "Remove this key" : {
       "localizations" : {
@@ -3019,7 +3226,14 @@
       }
     },
     "Rename %@" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Переименовать %@"
+          }
+        }
+      }
     },
     "Reset" : {
       "localizations" : {
@@ -3032,7 +3246,14 @@
       }
     },
     "Reset to default" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сбросить до значений по умолчанию"
+          }
+        }
+      }
     },
     "Restart" : {
       "localizations" : {
@@ -3206,7 +3427,14 @@
       }
     },
     "Server id" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Идентификатор сервера"
+          }
+        }
+      }
     },
     "Server List" : {
       "localizations" : {
@@ -3235,7 +3463,14 @@
       }
     },
     "Server name" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Название сервера"
+          }
+        }
+      }
     },
     "Server Settings" : {
       "localizations" : {
@@ -3264,7 +3499,14 @@
 
     },
     "Setup with an authenticator app" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройка с помощью приложения аутентификации"
+          }
+        }
+      }
     },
     "SFTP" : {
       "localizations" : {
@@ -3469,6 +3711,16 @@
         }
       }
     },
+    "Startup (view only)" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Запуск (только просмотр)"
+          }
+        }
+      }
+    },
     "Startup Command" : {
       "localizations" : {
         "ru" : {
@@ -3490,7 +3742,14 @@
       }
     },
     "Status" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Состояние"
+          }
+        }
+      }
     },
     "Step" : {
       "localizations" : {
@@ -3579,7 +3838,14 @@
       }
     },
     "Stored keys" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сохраненные ключи"
+          }
+        }
+      }
     },
     "Support" : {
       "localizations" : {
@@ -3617,7 +3883,14 @@
       }
     },
     "Switch account" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Переключить аккаунт"
+          }
+        }
+      }
     },
     "System" : {
       "localizations" : {
@@ -3867,6 +4140,12 @@
             "state" : "new",
             "value" : "Update %1$@ to %2$@"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поменять %1$@ на %2$@"
+          }
         }
       }
     },
@@ -3977,20 +4256,17 @@
       }
     },
     "Variable" : {
-
-    },
-    "Verify" : {
-
-    },
-    "VIEW ONLY" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ТОЛЬКО ПРОСМОТР"
+            "value" : "Переменная"
           }
         }
       }
+    },
+    "Verify" : {
+
     },
     "Warning" : {
       "localizations" : {
@@ -4047,7 +4323,14 @@
       }
     },
     "Where to find the API-key?" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Где найти API-ключ?"
+          }
+        }
+      }
     },
     "Wiki / FAQ" : {
       "localizations" : {
