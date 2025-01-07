@@ -56,19 +56,21 @@ struct PanelView: View {
                         Label("Backups", systemImage: "archivebox")
                     }
                     
+                    List {
+                        DatabaseList(server.featureLimits.databases)
+                    }
+                    .environment(dbVM)
+                    .tag(Tab.databases)
+                    .tabItem {
+                        Label("Databases", systemImage: "externaldrive.badge.icloud")
+                    }
+                    
                     UserList()
                         .environment(userVM)
                         .tag(Tab.users)
                         .tabItem {
                             Label("Users", systemImage: "person.3")
                         }
-                    
-                    //                    DatabaseList(server.featureLimits.databases)
-                    //                        .environment(dbVM)
-                    //                        .tag(Tab.databases)
-                    //                        .tabItem {
-                    //                            Label("Databases", systemImage: "externaldrive.badge.icloud")
-                    //                        }
                 }
             }
         }

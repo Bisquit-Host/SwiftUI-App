@@ -708,6 +708,9 @@
 		F39E0A982C1BA11600C4E906 /* Discover Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E0A972C1BA11600C4E906 /* Discover Item.swift */; };
 		F39E0A992C1BA11600C4E906 /* Discover Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E0A972C1BA11600C4E906 /* Discover Item.swift */; };
 		F39E0A9A2C1BA11600C4E906 /* Discover Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E0A972C1BA11600C4E906 /* Discover Item.swift */; };
+		F39E682F2D2D61680002BA96 /* Database Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BC03B62B1FF8E40011F98A /* Database Context Menu.swift */; };
+		F39E68302D2D61680002BA96 /* Database List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F375EC3929EE73AC002CA969 /* Database List.swift */; };
+		F39E68312D2D61680002BA96 /* Database Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB53D52971CF6B00A213B0 /* Database Card.swift */; };
 		F3A123562A667804008E3E20 /* Log View Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* Log View Parent.swift */; };
 		F3A123572A667804008E3E20 /* Log View Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* Log View Parent.swift */; };
 		F3A123582A667804008E3E20 /* Log View Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* Log View Parent.swift */; };
@@ -1147,8 +1150,6 @@
 		F3DE1B982A556CCE007A1624 /* Log List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DE1B972A556CCE007A1624 /* Log List.swift */; };
 		F3DE1B992A556CCE007A1624 /* Log List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DE1B972A556CCE007A1624 /* Log List.swift */; };
 		F3DF03DB2B74F01C00CF6F5E /* Database VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088A12B3A18A20051476C /* Database VM.swift */; };
-		F3DF03E22B74F1AD00CF6F5E /* Database List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DF03E02B74F1A600CF6F5E /* Database List.swift */; };
-		F3DF03E32B74F1B000CF6F5E /* Database Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DF03E12B74F1A600CF6F5E /* Database Card.swift */; };
 		F3DF03E62B74F26F00CF6F5E /* Users VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A0B2A4A386F003A1973 /* Users VM.swift */; };
 		F3DF50C32B38FCCC00206CAE /* Users VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A0B2A4A386F003A1973 /* Users VM.swift */; };
 		F3DF50C52B38FCF900206CAE /* User Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D85B2B31146E00265492 /* User Avatar.swift */; };
@@ -1785,8 +1786,6 @@
 		F3DD93D22A372BED006A41AA /* Console Overlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Console Overlay.swift"; sourceTree = "<group>"; };
 		F3DDD59B2A62AC7C009FDFBF /* Create Backup Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Create Backup Button.swift"; sourceTree = "<group>"; };
 		F3DE1B972A556CCE007A1624 /* Log List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log List.swift"; sourceTree = "<group>"; };
-		F3DF03E02B74F1A600CF6F5E /* Database List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database List.swift"; sourceTree = "<group>"; };
-		F3DF03E12B74F1A600CF6F5E /* Database Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database Card.swift"; sourceTree = "<group>"; };
 		F3DF50CE2B39636A00206CAE /* User List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User List.swift"; sourceTree = "<group>"; };
 		F3E024C42B228F4C00FFF686 /* New Task Sheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "New Task Sheet.swift"; sourceTree = "<group>"; };
 		F3E08EA02A2CE17800116C1C /* Bisquit.Host.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bisquit.Host.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2872,7 +2871,6 @@
 				F37B90772BFEA00300597624 /* Ornament Info Settings.swift */,
 				F37B90752BFEA00200597624 /* Ornament Info Properties.swift */,
 				F3FD9F962C651A2600A69314 /* Files */,
-				F3DF03DE2B74F19B00CF6F5E /* Databases */,
 				F386941B2A4B3B1E002DEF90 /* Info */,
 				F32F43FC2B7544A200C9470B /* Users */,
 				F389282C2A441D7000561CDF /* Console */,
@@ -3298,15 +3296,6 @@
 				F3E2BEDE2C1C6BA800B7A6D4 /* Cache List VM.swift */,
 			);
 			path = Cache;
-			sourceTree = "<group>";
-		};
-		F3DF03DE2B74F19B00CF6F5E /* Databases */ = {
-			isa = PBXGroup;
-			children = (
-				F3DF03E02B74F1A600CF6F5E /* Database List.swift */,
-				F3DF03E12B74F1A600CF6F5E /* Database Card.swift */,
-			);
-			path = Databases;
 			sourceTree = "<group>";
 		};
 		F3DF4A0C2B485D50003C6922 /* SSH */ = {
@@ -5106,7 +5095,6 @@
 			files = (
 				F3D295172AF396FD00ED43A0 /* Tabs.swift in Sources */,
 				F3FD9F9A2C651AF300A69314 /* Upload File.swift in Sources */,
-				F3DF03E32B74F1B000CF6F5E /* Database Card.swift in Sources */,
 				F3BD76F92A43C890003E7385 /* Panel View.swift in Sources */,
 				F3AB4A8E2CF3DAD500A8252F /* Backup Card VM.swift in Sources */,
 				F30B61CC2B2907C900F447B4 /* Debug Key.swift in Sources */,
@@ -5155,7 +5143,6 @@
 				F3FD9F992C651A9200A69314 /* File Tab VM.swift in Sources */,
 				F3EEC03B2AF2F93800BFED78 /* Start Page VM.swift in Sources */,
 				F32FD71C2B1E044000723B88 /* Ansi.swift in Sources */,
-				F3DF03E22B74F1AD00CF6F5E /* Database List.swift in Sources */,
 				F320DDA52B704E3C00957D92 /* Preview Property.swift in Sources */,
 				F3A7CF752A45159B00331B51 /* Server List Toolbar.swift in Sources */,
 				F3A7CF662A44F44A00331B51 /* Auth View.swift in Sources */,
@@ -5175,6 +5162,9 @@
 				F3F2BBAC2A540E6500D44CA6 /* Cloud Keys.swift in Sources */,
 				F32FD71A2B1E042C00723B88 /* Websocket Delegate.swift in Sources */,
 				F38928252A441B5D00561CDF /* Server Settings.swift in Sources */,
+				F39E682F2D2D61680002BA96 /* Database Context Menu.swift in Sources */,
+				F39E68302D2D61680002BA96 /* Database List.swift in Sources */,
+				F39E68312D2D61680002BA96 /* Database Card.swift in Sources */,
 				F3464D312A863A6600188B0C /* Send Command.swift in Sources */,
 				F3317AED2A45E26900CA104D /* Guide Model.swift in Sources */,
 				F38928382A4460CC00561CDF /* Server Card VM.swift in Sources */,
