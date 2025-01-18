@@ -1,9 +1,9 @@
 import ScrechKit
 
 struct ConsoleTab: View {
+    @State private var vm: ConsoleVM
     @Environment(PanelVM.self) private var panelVM
     @EnvironmentObject private var settings: ValueStorage
-    @State private var vm: ConsoleVM
     
     private let id: String
     
