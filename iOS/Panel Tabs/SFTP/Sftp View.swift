@@ -42,7 +42,7 @@ struct SftpDetails: View {
             } label: {
                 HStack {
                     VStack(alignment: .leading) {
-                        Text("Login")
+                        Text("Username")
                         
                         Text(vm.username)
                     }
