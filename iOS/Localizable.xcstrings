@@ -2577,17 +2577,6 @@
         }
       }
     },
-    "Login" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Войти"
-          }
-        }
-      }
-    },
     "Logs" : {
       "localizations" : {
         "ru" : {
@@ -2859,12 +2848,12 @@
         }
       }
     },
-    "New User" : {
+    "New user" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Новый Пользователь"
+            "value" : "Новый пользователь"
           }
         }
       }

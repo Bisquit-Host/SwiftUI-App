@@ -14,7 +14,7 @@ struct UserList: View {
                 .onDelete(perform: delete)
             }
             
-            Button("New User") {
+            Button("New user") {
                 sheetInvitation = true
             }
         }
