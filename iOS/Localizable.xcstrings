@@ -2578,6 +2578,7 @@
       }
     },
     "Login" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -4216,6 +4217,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Аптайм"
+          }
+        }
+      }
+    },
+    "Username" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Имя пользователя"
           }
         }
       }
