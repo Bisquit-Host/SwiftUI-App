@@ -47,7 +47,6 @@ struct TextFile: View {
 #endif
             JsonFormatterButton()
                 .environment(vm)
-            
 #if !os(watchOS)
             Menu {
 #if !os(tvOS)
