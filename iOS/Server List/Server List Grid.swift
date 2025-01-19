@@ -36,6 +36,5 @@ struct ServerListGrid: View {
 
 #Preview {
     ServerListGrid(sampleJSON(.serverListDataArray))
-    ///    .environment(NavState())
         .environmentObject(ValueStorage())
 }

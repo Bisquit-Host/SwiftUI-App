@@ -55,7 +55,7 @@ struct ServerCard: View {
                 }
                 .padding(.vertical, 5)
                 .padding(.horizontal, 10)
-                .frame(maxHeight: .infinity)
+                .frame(height: 150)
                 .background(.ultraThinMaterial, in: .rect(cornerRadius: rounding))
                 .background(backgroundColor, in: .rect(cornerRadius: rounding))
                 
