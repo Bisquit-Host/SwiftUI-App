@@ -11,7 +11,7 @@ final class ConsoleVM {
     
     var alertKill = false
     var inspectorPresented = false
-    var server_power = ""
+    var command = ""
     var fontSize = 10.0
     var lastMessageIndex = 0
     
@@ -25,7 +25,9 @@ final class ConsoleVM {
         }
     }
     
-    func sendCommand(_ command: String) {
+    func sendCommand() {
         PteroNet.sendCommand(id, command: command)
+        
+        command = ""
     }
 }

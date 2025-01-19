@@ -25,12 +25,6 @@ struct ConsoleOverlay: View {
             }
             
             Spacer()
-            
-            HStack {
-                Spacer()
-                
-                CommandLine(id)
-            }
         }
         .padding()
     }
