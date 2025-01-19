@@ -35,6 +35,25 @@ struct VideoFile: View {
             vm.fetchVideoUrl(name, root: path)
         }
         .toolbar {
+#if os(tvOS)
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "arrow.left")
+                }
+            }
+            
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(role: .destructive) {
+                    dismiss()
+                } label: {
+                    Image(systemName: "trash")
+                }
+            }
+#endif
+            
+#if os(iOS)
             if vm.isSensitive {
                 Button {
                     withAnimation {
@@ -45,9 +64,7 @@ struct VideoFile: View {
                 }
             }
             
-#if !os(watchOS)
             Menu {
-#if !os(tvOS)
                 if let url = vm.localVideoUrl {
                     ShareLink(item: url)
                         .transition(.identity)
@@ -55,7 +72,7 @@ struct VideoFile: View {
                     ShareLink(item: name)
                         .disabled(vm.localVideoUrl == nil)
                 }
-#endif
+                
                 Section {
                     Button(role: .destructive) {
                         fileVm.deleteFile(name, at: path) {
