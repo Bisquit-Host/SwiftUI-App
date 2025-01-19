@@ -48,7 +48,6 @@ struct PanelView: View {
         }
         .sidebarAdaptableStyle()
         .environment(vm)
-        .ignoresSafeArea(.keyboard, edges: .bottom)
         .task {
             fetchData()
         }
