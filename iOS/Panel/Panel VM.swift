@@ -74,33 +74,23 @@ final class PanelVM {
                         switch status {
                         case "starting":
                             state = .starting
-                            withAnimation {
-                                self?.stateColor = .yellow
-                            }
+                            self?.stateColor = .yellow
                             
                         case "running":
                             state = .running
-                            withAnimation {
-                                self?.stateColor = .green
-                            }
+                            self?.stateColor = .green
                             
                         case "stopping":
                             state = .stopping
-                            withAnimation {
-                                self?.stateColor = .yellow
-                            }
+                            self?.stateColor = .yellow
                             
                         case "offline":
                             state = .offline
-                            withAnimation {
-                                self?.stateColor = .red
-                            }
+                            self?.stateColor = .red
                             
                         default:
                             state = .unknown
-                            withAnimation {
-                                self?.stateColor = .primary
-                            }
+                            self?.stateColor = .primary
                         }
                         
                         self?.serverState = state
