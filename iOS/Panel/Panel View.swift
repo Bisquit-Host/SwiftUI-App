@@ -46,7 +46,7 @@ struct PanelView: View {
                     .tab(.startup)
             }
         }
-        .sidebarAdaptableStyle()
+        .sidebarAdaptableTabView()
         .environment(vm)
         .task {
             fetchData()
@@ -90,10 +90,5 @@ struct PanelView: View {
 
 #Preview {
     PanelView("")
-        .environment(PanelVM(""))
-        .environment(BackupVM(""))
-        .environment(DatabaseVM(""))
-        .environment(ScheduleVM(""))
-        .environmentObject(FileTabVM(""))
         .environmentObject(ValueStorage())
 }

@@ -10,6 +10,8 @@ struct Guide: View {
     
     var body: some View {
         GeometryReader { geo in
+            let size = geo.size
+            
             TabView {
                 ForEach(steps, id: \.id) { step in
                     let text = step.text
@@ -26,7 +28,7 @@ struct Guide: View {
                         } placeholder: {
                             ProgressView()
                         }
-                        .frame(width: geo.size.width / 2, height: geo.size.height)
+                        .frame(width: size.width / 2, height: size.height)
                         
                         VStack {
                             Text(text)
@@ -44,7 +46,7 @@ struct Guide: View {
                             }
                         }
                         .semibold()
-                        .frame(width: geo.size.width / 2)
+                        .frame(width: size.width / 2)
                     }
                     .tabItem {
                         Label("Step", systemImage: "\(id).circle")
