@@ -77,7 +77,7 @@ struct FileView: View {
                 }
             }
         }
-        .fileContextMenu(file, at: root)
+        .fileContextMenu(id, file: file, at: root)
     }
 }
 

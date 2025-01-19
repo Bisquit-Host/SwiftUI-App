@@ -36,7 +36,7 @@ struct QuickLookFile: View {
             MetadataList(vm.metadata)
         }
         .task {
-            vm.downloadFile(name, root: path)
+            vm.getFileUrl(name, root: path)
         }
         .overlay {
             if vm.isSensitive {

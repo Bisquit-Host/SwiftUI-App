@@ -13,12 +13,12 @@ final class QuickLookFileVM {
     var isSensitive = false
     var metadata: [URLResourceKey: Any]? = nil
     
-    func downloadFile(_ file: String, root: String) {
+    func getFileUrl(_ file: String, root: String) {
         fileDownloadAPI(id, path: root + "/\(file)") { result in
             switch result {
             case .success(let model):
                 if let model = model?.attributes.url {
-                    self.downloadVideo(model, name: file)
+                    self.downloadFile(model, name: file)
                 }
                 
             case .failure(let error):
@@ -27,7 +27,7 @@ final class QuickLookFileVM {
         }
     }
     
-    private func downloadVideo(_ urlString: String, name: String) {
+    private func downloadFile(_ urlString: String, name: String) {
         let fm = FileManager.default
         
         guard let url = URL(string: urlString) else {
