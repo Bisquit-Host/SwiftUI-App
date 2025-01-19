@@ -37,8 +37,16 @@ struct PanelSettingsView: View {
             }
             
             Section {
-                ListButton("Reinstall", actionIcon: "arrow.triangle.2.circlepath", color: .red) {
+                Button(role: .destructive) {
                     alertReinstall = true
+                } label: {
+                    HStack {
+                        Text("Reinstall")
+                        
+                        Spacer()
+                        
+                        Image(systemName: "arrow.triangle.2.circlepath")
+                    }
                 }
             }
         }

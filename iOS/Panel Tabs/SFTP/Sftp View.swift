@@ -26,6 +26,7 @@ struct SftpDetails: View {
                         Text("Server address")
                         
                         Text(sftpAddress)
+                            .secondary()
                     }
                     
                     Spacer()
@@ -45,6 +46,7 @@ struct SftpDetails: View {
                         Text("Username")
                         
                         Text(vm.username)
+                            .secondary()
                     }
                     
                     Spacer()
