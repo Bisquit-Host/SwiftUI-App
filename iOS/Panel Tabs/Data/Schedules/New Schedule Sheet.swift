@@ -6,6 +6,7 @@ struct NewScheduleSheet: View {
     
     @Environment(\.dismiss) private var dismiss
     
+#warning("Make a single @State obejct")
     @State private var name = "New Schedule"
     @State private var isActive = true
     @State private var onlyWhenOnline = true
