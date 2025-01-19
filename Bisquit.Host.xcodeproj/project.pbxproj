@@ -365,6 +365,14 @@
 		F3499EFA2A277D0F006101B7 /* File Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3499EF92A277D0F006101B7 /* File Tab.swift */; };
 		F3499EFD2A277E3D006101B7 /* File Name And Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3499EFC2A277E3D006101B7 /* File Name And Icon.swift */; };
 		F3499EFE2A277FDF006101B7 /* File Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266A929D71A1B005FD103 /* File Icon.swift */; };
+		F34BB6B92D3DC2B800D27BE0 /* File Preview VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34BB6B82D3DC2B800D27BE0 /* File Preview VM.swift */; };
+		F34BB6BA2D3DC2B800D27BE0 /* File Preview VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34BB6B82D3DC2B800D27BE0 /* File Preview VM.swift */; };
+		F34BB6BB2D3DC2B800D27BE0 /* File Preview VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34BB6B82D3DC2B800D27BE0 /* File Preview VM.swift */; };
+		F34BB6BC2D3DC2B800D27BE0 /* File Preview VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34BB6B82D3DC2B800D27BE0 /* File Preview VM.swift */; };
+		F34BB6BE2D3DC2D300D27BE0 /* File Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34BB6BD2D3DC2D300D27BE0 /* File Preview.swift */; };
+		F34BB6BF2D3DC2D300D27BE0 /* File Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34BB6BD2D3DC2D300D27BE0 /* File Preview.swift */; };
+		F34BB6C02D3DC2D300D27BE0 /* File Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34BB6BD2D3DC2D300D27BE0 /* File Preview.swift */; };
+		F34BB6C12D3DC2D300D27BE0 /* File Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34BB6BD2D3DC2D300D27BE0 /* File Preview.swift */; };
 		F34C055929F11A4D0031ABE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F31BA52A2958FF7D0006D126 /* Assets.xcassets */; };
 		F34C055A29F11E010031ABE1 /* Server Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* Server Card VM.swift */; };
 		F34EB0952A4A75E70034A68A /* Intro Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34EB0942A4A75E70034A68A /* Intro Model.swift */; };
@@ -1553,6 +1561,8 @@
 		F3499EF92A277D0F006101B7 /* File Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Tab.swift"; sourceTree = "<group>"; };
 		F3499EFC2A277E3D006101B7 /* File Name And Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Name And Icon.swift"; sourceTree = "<group>"; };
 		F34AD7C62A5493CC007752A7 /* visionOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = visionOS.entitlements; sourceTree = "<group>"; };
+		F34BB6B82D3DC2B800D27BE0 /* File Preview VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Preview VM.swift"; sourceTree = "<group>"; };
+		F34BB6BD2D3DC2D300D27BE0 /* File Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Preview.swift"; sourceTree = "<group>"; };
 		F34C055C29F151250031ABE1 /* Watch App.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Watch App.entitlements"; sourceTree = "<group>"; };
 		F34EB0942A4A75E70034A68A /* Intro Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Intro Model.swift"; sourceTree = "<group>"; };
 		F34F28992ACDAD9B00FD618A /* Animated Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animated Tab.swift"; sourceTree = "<group>"; };
@@ -2346,6 +2356,7 @@
 				F37266BF29D826F5005FD103 /* File Details.swift */,
 				F37266A929D71A1B005FD103 /* File Icon.swift */,
 				F3F5BC952BF7668E00EB8FB1 /* Sensitivity Analyzer.swift */,
+				F34BB6B72D3DC2A300D27BE0 /* Context Menu */,
 				F37DDA7429E2AABF00B9680C /* Elements */,
 				F38F9E102CE764060033EFE3 /* Image Playground */,
 				F3BEEBC82A4AB45E00E686B8 /* Upload */,
@@ -2580,6 +2591,16 @@
 			path = Elements;
 			sourceTree = "<group>";
 		};
+		F34BB6B72D3DC2A300D27BE0 /* Context Menu */ = {
+			isa = PBXGroup;
+			children = (
+				F3C0F9CF29E204FA0040E277 /* FileTab Context Menu.swift */,
+				F34BB6B82D3DC2B800D27BE0 /* File Preview VM.swift */,
+				F34BB6BD2D3DC2D300D27BE0 /* File Preview.swift */,
+			);
+			path = "Context Menu";
+			sourceTree = "<group>";
+		};
 		F350638329DC2D2A0010B717 /* Elements */ = {
 			isa = PBXGroup;
 			children = (
@@ -2794,7 +2815,6 @@
 				F31BA5AF295902C70006D126 /* Folder Path.swift */,
 				F37DDA7529E2AF7600B9680C /* Folder Path VM.swift */,
 				F3C0F9D129E2A62A0040E277 /* FileTab NewFolder.swift */,
-				F3C0F9CF29E204FA0040E277 /* FileTab Context Menu.swift */,
 				F30089222B3BA5300051476C /* File Permissions Parent.swift */,
 				F300891D2B3B87FB0051476C /* File Permissions View.swift */,
 			);
@@ -4229,6 +4249,7 @@
 				F3287A7B2B10A17E001AFE54 /* Widget Live Activity.swift in Sources */,
 				F31BA5682959006F0006D126 /* App Container.swift in Sources */,
 				F3D2643E2A66ABB2005C3777 /* Account Parent.swift in Sources */,
+				F34BB6BE2D3DC2D300D27BE0 /* File Preview.swift in Sources */,
 				F36B73872C8AEAE700E858FE /* Model Asset.swift in Sources */,
 				F325F7002A54BBCF00E89EC4 /* Info Tab Allocation.swift in Sources */,
 				F3924EDF29A2333F00C4CC77 /* Settings VM.swift in Sources */,
@@ -4256,6 +4277,7 @@
 				F36797782A3A55E1009F2788 /* Log List Parent.swift in Sources */,
 				F380B3282BD7C4A4009062E8 /* Upload Preview List.swift in Sources */,
 				F3AF91C12B423492001D8F80 /* SSH VM.swift in Sources */,
+				F34BB6BC2D3DC2B800D27BE0 /* File Preview VM.swift in Sources */,
 				F3EDEE3129C06E9700B08696 /* Panel Model.swift in Sources */,
 				F37A36732A3515DC00517EFC /* Server Settings VM.swift in Sources */,
 				F311CAAE2A646612004E4A4A /* Log Detail View.swift in Sources */,
@@ -4689,6 +4711,7 @@
 				F3FF5A0D2A4A386F003A1973 /* Users VM.swift in Sources */,
 				F3D295182AF396FD00ED43A0 /* Tabs.swift in Sources */,
 				F3E1D3F42B320A6A009B7062 /* Permissions Header.swift in Sources */,
+				F34BB6BB2D3DC2B800D27BE0 /* File Preview VM.swift in Sources */,
 				F36D532D2A05B87E007324C6 /* Schedule List.swift in Sources */,
 				F36D531A2A05B7FB007324C6 /* Console Tab.swift in Sources */,
 				F389BB7A2A05B64600911EBF /* App Icon Picker.swift in Sources */,
@@ -4722,6 +4745,7 @@
 				F389BB6B2A05B5E500911EBF /* Settings VM.swift in Sources */,
 				F3E467532A49903900FABE5F /* Info Stat.swift in Sources */,
 				F37A44352A05B0AA004FFDB0 /* Value Storage.swift in Sources */,
+				F34BB6BF2D3DC2D300D27BE0 /* File Preview.swift in Sources */,
 				F3B637532A35F3EA00CB374C /* Command Line.swift in Sources */,
 				F3AF91C22B423492001D8F80 /* SSH VM.swift in Sources */,
 				F3FF5A0A2A4A3745003A1973 /* Info Tab Background.swift in Sources */,
@@ -4872,6 +4896,7 @@
 				F3D295D42AF3A30C00ED43A0 /* Console VM.swift in Sources */,
 				F3D7F84F2C8ED3D100368ECE /* Disable 2FA View.swift in Sources */,
 				F3D295772AF39F2900ED43A0 /* Folder Path VM.swift in Sources */,
+				F34BB6C02D3DC2D300D27BE0 /* File Preview.swift in Sources */,
 				F3D295A12AF3A09D00ED43A0 /* Log List.swift in Sources */,
 				F3D295452AF39D9000ED43A0 /* Intro Model.swift in Sources */,
 				F398E0E02CEB562400AA4DD7 /* Audio Player VM.swift in Sources */,
@@ -4888,6 +4913,7 @@
 				F3D295AC2AF3A0F700ED43A0 /* Cache Model.swift in Sources */,
 				F3D2955D2AF39E6800ED43A0 /* Map View.swift in Sources */,
 				F3D295ED2AF3A45300ED43A0 /* Server Name.swift in Sources */,
+				F34BB6B92D3DC2B800D27BE0 /* File Preview VM.swift in Sources */,
 				F3AF91C32B423492001D8F80 /* SSH VM.swift in Sources */,
 				F35FEB0D2B09F003004DA05D /* API Key.swift in Sources */,
 				F3D2956E2AF39EE800ED43A0 /* Websocket Message.swift in Sources */,
@@ -5221,12 +5247,14 @@
 				F3E08ED52A2CEE2300116C1C /* Auth View.swift in Sources */,
 				F33DE5092B364EBC00E257D8 /* Tab Info.swift in Sources */,
 				F35F65942B1D1A0B00431EB7 /* Panel VM.swift in Sources */,
+				F34BB6C12D3DC2D300D27BE0 /* File Preview.swift in Sources */,
 				F3B138722A2D232B0026EAEE /* Server Card VM.swift in Sources */,
 				F33DE4E72B35089000E257D8 /* Background Blur.swift in Sources */,
 				F3F061D52A73C9A000470F7E /* Map View.swift in Sources */,
 				F33DE4E92B350C8B00E257D8 /* Server Card.swift in Sources */,
 				F3464D222A86396700188B0C /* Change Power.swift in Sources */,
 				F390E53E2A84217D000B4460 /* Bisquit.Host App.swift in Sources */,
+				F34BB6BA2D3DC2B800D27BE0 /* File Preview VM.swift in Sources */,
 				F3D295142AF396FD00ED43A0 /* Tabs.swift in Sources */,
 				F300888E2B39FAA60051476C /* Allocation VM.swift in Sources */,
 				F30C130F2A54605B00A7EFF0 /* Nav Destinations.swift in Sources */,
