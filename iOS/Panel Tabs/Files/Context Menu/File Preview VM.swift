@@ -11,13 +11,36 @@ final class FilePreviewVM {
     
     var fileUrl: URL? = nil
     var isSensitive = false
+    var isLoaded = false
+    
+    private let fm = FileManager.default
+    
+    private var cacheDirectory: URL {
+        let dir = fm.temporaryDirectory.appendingPathComponent("FileCache", isDirectory: true)
+        
+        if !fm.fileExists(atPath: dir.path) {
+            try? fm.createDirectory(at: dir, withIntermediateDirectories: true)
+        }
+        
+        return dir
+    }
     
     func getFileUrl(_ file: String, at root: String) {
+        let cachedUrl = cacheDirectory.appendingPathComponent(file)
+        
+        if fm.fileExists(atPath: cachedUrl.path) {
+            fileUrl = cachedUrl
+            
+            Task {
+                checkFile()
+            }
+        }
+        
         fileDownloadAPI(id, path: root + "/" + file) { result in
             switch result {
             case .success(let model):
-                if let model = model?.attributes.url {
-                    self.downloadFile(model, name: file)
+                if let url = model?.attributes.url {
+                    self.downloadFile(url, name: file)
                 }
                 
             case .failure(let error):
@@ -27,15 +50,12 @@ final class FilePreviewVM {
     }
     
     private func downloadFile(_ urlString: String, name: String) {
-        let fm = FileManager.default
-        
         guard let url = URL(string: urlString) else {
-            print("Invalid URL")
+            print("Invalid URL string: \(urlString)")
             return
         }
         
-        let tempDirectoryUrl = fm.temporaryDirectory
-        let destinationUrl = tempDirectoryUrl.appendingPathComponent(name)
+        let destinationUrl = cacheDirectory.appendingPathComponent(name)
         
         URLSession.shared.downloadTask(with: url) { location, response, error in
             guard let location, error == nil else {
@@ -44,18 +64,15 @@ final class FilePreviewVM {
             }
             
             do {
-                if fm.fileExists(atPath: destinationUrl.path) {
-                    try fm.removeItem(at: destinationUrl)
+                if self.fm.fileExists(atPath: destinationUrl.path) {
+                    try self.fm.removeItem(at: destinationUrl)
                 }
                 
-                try fm.copyItem(at: location, to: destinationUrl)
+                try self.fm.copyItem(at: location, to: destinationUrl)
                 
                 main {
                     self.fileUrl = destinationUrl
-                    
-                    Task {
-                        self.loadAndCheckImage()
-                    }
+                    self.checkFile()
                 }
             } catch {
                 print("Error during file copy: \(error.localizedDescription)")
@@ -64,7 +81,7 @@ final class FilePreviewVM {
         .resume()
     }
     
-    private func loadAndCheckImage() {
+    private func checkFile() {
         let analyzer = SensitivityAnalyzer()
         
         guard let fileUrl else {
@@ -75,6 +92,8 @@ final class FilePreviewVM {
             await analyzer.checkImage(fileUrl) { blur in
                 self.isSensitive = blur
             }
+            
+            self.isLoaded = true
         }
     }
 }

@@ -1,6 +1,5 @@
 import ScrechKit
 import QuickLooking
-import UniformTypeIdentifiers
 
 struct FilePreview: View {
     @State private var vm: FilePreviewVM
@@ -16,15 +15,14 @@ struct FilePreview: View {
     
     var body: some View {
         VStack {
-            if let url = vm.fileUrl {
+            if let url = vm.fileUrl, vm.isLoaded {
                 QuickLookView(url)
-                    .transition(.opacity)
             } else {
                 ProgressView()
-                    .frame(width: 100, height: 100)
+                    .frame(width: 50, height: 50)
             }
         }
-        .animation(.default, value: vm.fileUrl)
+        .animation(.default, value: vm.isLoaded)
         .blur(radius: vm.isSensitive ? 10 : 0)
         .task {
             vm.getFileUrl(name, at: path)
@@ -44,13 +42,5 @@ struct FilePreview: View {
                 .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
             }
         }
-    }
-    
-    private func isImage(_ url: URL) -> Bool {
-        guard let fileType = UTType(filenameExtension: url.pathExtension) else {
-            return false
-        }
-        
-        return fileType.conforms(to: .image)
     }
 }

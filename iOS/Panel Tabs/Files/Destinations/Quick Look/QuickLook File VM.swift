@@ -55,10 +55,10 @@ final class QuickLookFileVM {
                 
                 main {
                     self.fileURL = destinationURL
+                    self.loadAndCheckImage()
                     
                     Task {
                         await self.fetchMetadata(destinationURL)
-                        self.loadAndCheckImage()
                     }
                 }
             } catch {

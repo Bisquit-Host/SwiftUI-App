@@ -51,7 +51,7 @@ struct FileTabContextMenu: ViewModifier {
                     }
                 }
                 
-#warning("Finish")
+#warning("File info")
                 //                    MenuButton("Get Info", icon: "info.circle") {
                 //
                 //                    }
@@ -77,8 +77,9 @@ struct FileTabContextMenu: ViewModifier {
                 MenuButton("Delete", role: .destructive, icon: "trash") {
                     vm.deleteFile(name, at: root)
                 }
-            } preview: {
-                FilePreview(id, path: root, name: name)
+#warning("File Preview")
+                //            } preview: {
+                //                FilePreview(id, path: root, name: name)
             }
             .sheet($sheetPermissions) {
                 FilePermissionsParent(file, at: root)
