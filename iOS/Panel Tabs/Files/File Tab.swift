@@ -11,7 +11,6 @@ struct FileTab: View {
     }
     
     @State private var image: UIImage?
-    @State private var url: URL?
     @State private var selectedItem: String?
     @State private var selectedIndex: Int?
     
@@ -25,7 +24,7 @@ struct FileTab: View {
             
             NewFolder(root)
             
-            UploadMenu($image, url: $url, root: root)
+            UploadMenu($image, root: root)
             
             if #available(iOS 18.1, *) {
                 ImagePlaygroundButton(root)
@@ -64,11 +63,6 @@ struct FileTab: View {
         .onChange(of: image) {
             if let image {
                 vm.handleImageImport(image, root: root)
-            }
-        }
-        .onChange(of: url) {
-            if let url {
-                vm.handleFileImport([url], root: root)
             }
         }
     }

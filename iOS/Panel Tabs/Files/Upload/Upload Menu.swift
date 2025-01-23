@@ -3,26 +3,24 @@ import ScrechKit
 struct UploadMenu: View {
     @EnvironmentObject private var vm: FileTabVM
     
-    @Binding private var url: URL?
     @Binding private var image: UIImage?
+//    @Binding private var url: URL?
     private let root: String
     
     init(
         _ image: Binding<UIImage?>,
-        url: Binding<URL?>,
+//        url: Binding<URL?>,
         root: String
     ) {
         _image = image
-        _url = url
+//        _url = url
         self.root = root
     }
     
     @State private var showFilePicker = false
     @State private var showCameraPicker = false
     @State private var showImagePicker = false
-    @State private var alertRemoteFile = false
-    @State private var remoteFileUrl = ""
-    @State private var remoteFileName = ""
+    @State private var sheetRemoteFile = false
     @State private var urls: [URL] = []
     
     var body: some View {
@@ -41,18 +39,10 @@ struct UploadMenu: View {
             
             Divider()
             
-            Menu {
-                Button("Paste") {
-                    if let url = UIPasteboard.general.string {
-                        vm.pullRemoteFile(url, directory: root)
-                    }
-                }
-                
-                Button("Enter manually") {
-                    alertRemoteFile = true
-                }
+            Button {
+                sheetRemoteFile = true
             } label: {
-                Label("Pull Remote File", systemImage: "link")
+                Label("Pull remote file", systemImage: "link")
             }
         } label: {
             HStack {
@@ -70,16 +60,8 @@ struct UploadMenu: View {
         .sheet($vm.sheetPreview) {
             UploadPreview(urls, root: root)
         }
-        .alert("Pull Remote File", isPresented: $alertRemoteFile) {
-            TextField("Name", text: $remoteFileName)
-                .autocorrectionDisabled()
-            
-            TextField("Link", text: $remoteFileUrl)
-            
-            Button("Confirm") {
-#warning("Arguments usage")
-                vm.pullRemoteFile(remoteFileUrl, directory: root)
-            }
+        .sheet($sheetRemoteFile) {
+            SheetRemoteFile(root)
         }
         .fileImporter(isPresented: $showFilePicker, allowedContentTypes: [.item], allowsMultipleSelection: true) { result in
             switch result {

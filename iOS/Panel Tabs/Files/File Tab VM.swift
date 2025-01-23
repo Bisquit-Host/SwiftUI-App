@@ -71,16 +71,17 @@ final class FileTabVM: ObservableObject {
     }
     
     func pullRemoteFile(
-        _ url: String,
-        directory: String = "",
-        filename: String? = nil,
-        useHeader: Bool = false,
-        foreground: Bool? = nil
+        _ file: FilePullRequestBody,
+        dir: String = "",
+        onSuccess: @escaping () -> ()
     ) {
-        pullRemoteFileAPI(id, url: url, directory: directory, filename: filename, useHeader: useHeader, foreground: foreground) { result in
+        pullRemoteFileAPI(
+            id, file: file
+        ) { result in
             switch result {
             case .success:
-                self.fetchFiles(directory)
+                onSuccess()
+                self.fetchFiles(dir)
                 
             case .failure(let error):
                 SystemAlert.error(error)

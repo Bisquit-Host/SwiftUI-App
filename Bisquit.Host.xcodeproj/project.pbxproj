@@ -11,6 +11,9 @@
 		F3000E16295A357800ABD30A /* Server List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3000E15295A357800ABD30A /* Server List.swift */; };
 		F3000E18295A496C00ABD30A /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3000E17295A496C00ABD30A /* Intro.swift */; };
 		F3000E1E295AE2B700ABD30A /* Guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3000E1D295AE2B700ABD30A /* Guide.swift */; };
+		F30038CA2D42387600363CF4 /* Sheet Remote File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30038C92D42387600363CF4 /* Sheet Remote File.swift */; };
+		F30038CB2D42387600363CF4 /* Sheet Remote File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30038C92D42387600363CF4 /* Sheet Remote File.swift */; };
+		F30038CC2D42387600363CF4 /* Sheet Remote File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30038C92D42387600363CF4 /* Sheet Remote File.swift */; };
 		F300888E2B39FAA60051476C /* Allocation VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCF5C42B3457AE005FFF2C /* Allocation VM.swift */; };
 		F30088902B39FAB80051476C /* Allocation List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300888F2B39FAB80051476C /* Allocation List.swift */; };
 		F30088912B39FB160051476C /* Allocation Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCF5C22B345792005FFF2C /* Allocation Card.swift */; };
@@ -1423,6 +1426,7 @@
 		F3000E15295A357800ABD30A /* Server List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List.swift"; sourceTree = "<group>"; };
 		F3000E17295A496C00ABD30A /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
 		F3000E1D295AE2B700ABD30A /* Guide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guide.swift; sourceTree = "<group>"; };
+		F30038C92D42387600363CF4 /* Sheet Remote File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sheet Remote File.swift"; sourceTree = "<group>"; };
 		F300888F2B39FAB80051476C /* Allocation List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation List.swift"; sourceTree = "<group>"; };
 		F30088922B3A02D50051476C /* Log List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log List.swift"; sourceTree = "<group>"; };
 		F30088992B3A0C740051476C /* User Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Card.swift"; sourceTree = "<group>"; };
@@ -3233,6 +3237,7 @@
 			isa = PBXGroup;
 			children = (
 				F3FA61532A1F8DB500A65AE1 /* Upload Menu.swift */,
+				F30038C92D42387600363CF4 /* Sheet Remote File.swift */,
 				F380B3232BD7B9B6009062E8 /* Image Picker.swift */,
 				F393C7BA2A18437300DE33F9 /* Upload File.swift */,
 				F39780242A2B9DB800956474 /* Upload Preview.swift */,
@@ -4390,6 +4395,7 @@
 				F337C1602A8C2CE0006F321C /* Startup View.swift in Sources */,
 				F32DB8A829AE6B800074E045 /* Start Page Footer.swift in Sources */,
 				F3DD93D32A372BED006A41AA /* Console Overlay.swift in Sources */,
+				F30038CB2D42387600363CF4 /* Sheet Remote File.swift in Sources */,
 				F3A1D2352A201CBB0053261E /* Browser Spec.swift in Sources */,
 				F3E467552A49939300FABE5F /* Info Relative Stats.swift in Sources */,
 				F36B73A92C8B0B7B00E858FE /* Audio Player View.swift in Sources */,
@@ -4795,6 +4801,7 @@
 				F310A2F12A56B0BE001AF45F /* Network VM.swift in Sources */,
 				F389BB612A05B58300911EBF /* Gauge Disk.swift in Sources */,
 				F32FD02E2CF606960038D62C /* Backup Context Menu Control Group.swift in Sources */,
+				F30038CA2D42387600363CF4 /* Sheet Remote File.swift in Sources */,
 				F36D53362A05B8BB007324C6 /* Create Button.swift in Sources */,
 				F3E6FC472A1E85D600410C7C /* SptiteKit BisquitFall.swift in Sources */,
 			);
@@ -4990,6 +4997,7 @@
 				F3BC03BA2B1FF8E40011F98A /* Database Context Menu.swift in Sources */,
 				F3D037032CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift in Sources */,
 				F3BC03B52B1FF4830011F98A /* Task Context Menu.swift in Sources */,
+				F30038CC2D42387600363CF4 /* Sheet Remote File.swift in Sources */,
 				F3D295E52AF3A39700ED43A0 /* Console Search.swift in Sources */,
 				F3D295C22AF3A1C600ED43A0 /* Credentials Button.swift in Sources */,
 				F3D295EB2AF3A40B00ED43A0 /* Gauge Disk.swift in Sources */,

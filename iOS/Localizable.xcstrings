@@ -1740,6 +1740,7 @@
       }
     },
     "Enter manually" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -2509,6 +2510,7 @@
       }
     },
     "Link" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -2757,6 +2759,16 @@
         }
       }
     },
+    "Name (optional)" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Название (необязательно)"
+          }
+        }
+      }
+    },
     "Name & description" : {
       "localizations" : {
         "ru" : {
@@ -2979,6 +2991,7 @@
       }
     },
     "Paste" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -3114,6 +3127,9 @@
         }
       }
     },
+    "Process in foreground" : {
+
+    },
     "Processor" : {
       "localizations" : {
         "ru" : {
@@ -3134,12 +3150,12 @@
         }
       }
     },
-    "Pull Remote File" : {
+    "Pull remote file" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Загрузить Удаленный Файл"
+            "value" : "Загрузить удаленный файл"
           }
         }
       }
@@ -4209,6 +4225,19 @@
           }
         }
       }
+    },
+    "Url" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ссылка"
+          }
+        }
+      }
+    },
+    "Use header" : {
+
     },
     "Username" : {
       "localizations" : {

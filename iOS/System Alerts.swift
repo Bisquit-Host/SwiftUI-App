@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import PteroNet
 
 #if canImport(AlertKit)
@@ -39,10 +39,16 @@ final class SystemAlert {
     static func error(_ error: Error) {
 #if canImport(AlertKit)
         if let error = error as? PterError {
-            DispatchQueue.main.async {
+            var title = error.detail
+            
+            if title.last == "." {
+                title.removeLast()
+            }
+            
+            main {
                 AlertKitAPI.present(
-                    title: "\(error.status) - \(error.code)",
-                    subtitle: error.detail,
+                    title: error.detail,
+                    subtitle: "\(error.status) - \(error.code)",
                     icon: .error,
                     style: .iOS17AppleMusic,
                     haptic: .error
