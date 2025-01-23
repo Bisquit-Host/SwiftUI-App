@@ -6,60 +6,48 @@ struct NewScheduleSheet: View {
     
     @Environment(\.dismiss) private var dismiss
     
-#warning("Make a single @State obejct")
-    @State private var name = "New Schedule"
-    @State private var isActive = true
-    @State private var onlyWhenOnline = true
-    @State private var minute = "*"
-    @State private var hour = "*"
-    @State private var dayOfMonth = "*"
-    @State private var month = "*"
-    @State private var dayOfWeek = "*"
-    
-    private var newSchedule: NewSchedule {
-        NewSchedule(
-            name: name,
-            isActive: isActive,
-            onlyWhenOnline: onlyWhenOnline,
-            minute: minute,
-            hour: hour,
-            dayOfMonth: dayOfMonth,
-            month: month,
-            dayOfWeek: dayOfWeek
-        )
-    }
+    @State private var newSchedule = NewSchedule(
+        name: "New schedule",
+        isActive: true,
+        onlyWhenOnline: true,
+        minute: "*",
+        hour: "*",
+        dayOfMonth: "*",
+        month: "*",
+        dayOfWeek: "*"
+    )
     
     var body: some View {
         List {
             Section("Name") {
-                TextField("Name", text: $name)
+                TextField("Name", text: $newSchedule.name)
             }
             
             Section("Minute") {
-                TextField("Minute", text: $minute)
+                TextField("Minute", text: $newSchedule.minute)
             }
             
             Section("Hour") {
-                TextField("Hour", text: $hour)
+                TextField("Hour", text: $newSchedule.hour)
             }
             
             Section("Day of month") {
-                TextField("Day of month", text: $dayOfMonth)
+                TextField("Day of month", text: $newSchedule.dayOfMonth)
             }
             
             Section("Month") {
-                TextField("Month", text: $month)
+                TextField("Month", text: $newSchedule.month)
             }
             
             Section("Day of week") {
-                TextField("Day of week", text: $dayOfWeek)
+                TextField("Day of week", text: $newSchedule.dayOfWeek)
             }
             
-            Toggle("Enable Schedule", isOn: $isActive)
-                .foregroundStyle(isActive ? .green : .red)
+            Toggle("Enable Schedule", isOn: $newSchedule.isActive)
+                .foregroundStyle(newSchedule.isActive ? .green : .red)
             
-            Toggle("Only when online", isOn: $onlyWhenOnline)
-                .foregroundStyle(onlyWhenOnline ? .green : .red)
+            Toggle("Only when online", isOn: $newSchedule.onlyWhenOnline)
+                .foregroundStyle(newSchedule.onlyWhenOnline ? .green : .red)
 #if os(tvOS)
             Divider()
 #endif
