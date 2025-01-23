@@ -4,16 +4,13 @@ struct UploadMenu: View {
     @EnvironmentObject private var vm: FileTabVM
     
     @Binding private var image: UIImage?
-//    @Binding private var url: URL?
     private let root: String
     
     init(
         _ image: Binding<UIImage?>,
-//        url: Binding<URL?>,
         root: String
     ) {
         _image = image
-//        _url = url
         self.root = root
     }
     
