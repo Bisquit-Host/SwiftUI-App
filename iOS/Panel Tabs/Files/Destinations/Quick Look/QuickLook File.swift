@@ -92,7 +92,7 @@ struct QuickLookFile: View {
     }
 }
 
-//#Preview {
-//    QuickLookFile("", path: "", name: "")
-//        .environmentObject(FileTabVM(""))
-//}
+#Preview {
+    QuickLookFile("", path: "", name: "")
+        .environmentObject(FileTabVM(""))
+}
