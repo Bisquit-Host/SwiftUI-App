@@ -2599,8 +2599,8 @@
 			isa = PBXGroup;
 			children = (
 				F3C0F9CF29E204FA0040E277 /* FileTab Context Menu.swift */,
-				F34BB6B82D3DC2B800D27BE0 /* File Preview VM.swift */,
 				F34BB6BD2D3DC2D300D27BE0 /* File Preview.swift */,
+				F34BB6B82D3DC2B800D27BE0 /* File Preview VM.swift */,
 			);
 			path = "Context Menu";
 			sourceTree = "<group>";
