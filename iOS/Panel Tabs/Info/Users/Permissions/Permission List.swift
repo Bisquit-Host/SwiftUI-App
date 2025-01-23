@@ -1,6 +1,5 @@
 import SwiftUI
 import PteroNet
-import Translation
 
 struct PermissionListView: View {
     @Environment(UsersVM.self) private var vm
@@ -90,7 +89,7 @@ struct PermissionSection: View {
                 if showDescription {
                     Text(permission.description)
 #if os(iOS) || os(macOS)
-                        .translationPresentation(isPresented: $showTranslation, text: permission.description)
+                        .translationPresentation($showTranslation, text: permission.description)
                         .onTapGesture {
                             showTranslation = true
                         }
@@ -131,7 +130,7 @@ struct PermissionCard: View {
                     Text(subValue)
                         .caption2()
 #if os(iOS) || os(macOS)
-                        .translationPresentation(isPresented: $showTranslation, text: subValue)
+                        .translationPresentation($showTranslation, text: subValue)
                         .onTapGesture {
                             showTranslation = true
                         }
