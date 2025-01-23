@@ -369,13 +369,11 @@
 		F3499EFD2A277E3D006101B7 /* File Name And Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3499EFC2A277E3D006101B7 /* File Name And Icon.swift */; };
 		F3499EFE2A277FDF006101B7 /* File Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266A929D71A1B005FD103 /* File Icon.swift */; };
 		F34BB6B92D3DC2B800D27BE0 /* File Preview VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34BB6B82D3DC2B800D27BE0 /* File Preview VM.swift */; };
-		F34BB6BA2D3DC2B800D27BE0 /* File Preview VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34BB6B82D3DC2B800D27BE0 /* File Preview VM.swift */; };
 		F34BB6BB2D3DC2B800D27BE0 /* File Preview VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34BB6B82D3DC2B800D27BE0 /* File Preview VM.swift */; };
 		F34BB6BC2D3DC2B800D27BE0 /* File Preview VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34BB6B82D3DC2B800D27BE0 /* File Preview VM.swift */; };
 		F34BB6BE2D3DC2D300D27BE0 /* File Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34BB6BD2D3DC2D300D27BE0 /* File Preview.swift */; };
 		F34BB6BF2D3DC2D300D27BE0 /* File Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34BB6BD2D3DC2D300D27BE0 /* File Preview.swift */; };
 		F34BB6C02D3DC2D300D27BE0 /* File Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34BB6BD2D3DC2D300D27BE0 /* File Preview.swift */; };
-		F34BB6C12D3DC2D300D27BE0 /* File Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34BB6BD2D3DC2D300D27BE0 /* File Preview.swift */; };
 		F34C055929F11A4D0031ABE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F31BA52A2958FF7D0006D126 /* Assets.xcassets */; };
 		F34C055A29F11E010031ABE1 /* Server Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* Server Card VM.swift */; };
 		F34EB0952A4A75E70034A68A /* Intro Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34EB0942A4A75E70034A68A /* Intro Model.swift */; };
@@ -5255,14 +5253,12 @@
 				F3E08ED52A2CEE2300116C1C /* Auth View.swift in Sources */,
 				F33DE5092B364EBC00E257D8 /* Tab Info.swift in Sources */,
 				F35F65942B1D1A0B00431EB7 /* Panel VM.swift in Sources */,
-				F34BB6C12D3DC2D300D27BE0 /* File Preview.swift in Sources */,
 				F3B138722A2D232B0026EAEE /* Server Card VM.swift in Sources */,
 				F33DE4E72B35089000E257D8 /* Background Blur.swift in Sources */,
 				F3F061D52A73C9A000470F7E /* Map View.swift in Sources */,
 				F33DE4E92B350C8B00E257D8 /* Server Card.swift in Sources */,
 				F3464D222A86396700188B0C /* Change Power.swift in Sources */,
 				F390E53E2A84217D000B4460 /* Bisquit.Host App.swift in Sources */,
-				F34BB6BA2D3DC2B800D27BE0 /* File Preview VM.swift in Sources */,
 				F3D295142AF396FD00ED43A0 /* Tabs.swift in Sources */,
 				F300888E2B39FAA60051476C /* Allocation VM.swift in Sources */,
 				F30C130F2A54605B00A7EFF0 /* Nav Destinations.swift in Sources */,

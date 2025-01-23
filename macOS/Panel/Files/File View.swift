@@ -23,7 +23,7 @@ struct FileView: View {
         }
         .padding(5)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .fileContextMenu(file, at: root)
+        .fileContextMenu(id, file: file, at: root)
     }
 }
 
