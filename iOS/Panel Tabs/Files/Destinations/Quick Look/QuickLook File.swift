@@ -21,7 +21,7 @@ struct QuickLookFile: View {
     
     var body: some View {
         VStack {
-            if let url = vm.fileURL {
+            if let url = vm.fileUrl {
                 QuickLookView(url)
                     .transition(.opacity)
             } else {
@@ -29,7 +29,7 @@ struct QuickLookFile: View {
             }
         }
         .navigationTitle(name)
-        .animation(.default, value: vm.fileURL)
+        .animation(.default, value: vm.fileUrl)
         .blur(radius: vm.isSensitive ? 10 : 0)
         .ignoresSafeArea(edges: .bottom)
         .sheet($sheetMetadata) {
@@ -51,7 +51,7 @@ struct QuickLookFile: View {
             }
         }
         .toolbar {
-            if let url = vm.fileURL {
+            if let url = vm.fileUrl {
                 if #available(iOS 18.1, *) {
                     if isImage(url) {
                         ImagePlaygroundToolbarButton(url, path, name)
@@ -66,7 +66,7 @@ struct QuickLookFile: View {
                     Label("Metadata", systemImage: "tag")
                 }
                 
-                if let url = vm.fileURL {
+                if let url = vm.fileUrl {
                     ShareLink(item: url)
                 }
                 
