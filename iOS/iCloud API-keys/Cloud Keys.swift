@@ -41,10 +41,8 @@ struct CloudKeys: View {
 #endif
                 
 #if os(visionOS)
-                Button {
+                Button("Dismiss") {
                     dismiss()
-                } label: {
-                    Text("Dismiss")
                 }
 #endif
             }
