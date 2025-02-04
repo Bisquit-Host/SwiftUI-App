@@ -61,7 +61,7 @@ struct Support: View {
     private var buttonWiki: some View {
         SafariButton("https://wiki.bisquit.host") {
             HStack {
-                Text("Wiki / FAQ")
+                Text("Wiki")
                 
                 Spacer()
                 

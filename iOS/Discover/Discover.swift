@@ -70,7 +70,7 @@ struct Discover: View {
                     
                     DiscoverCard(
                         DiscoverItem(
-                            "Wiki / FAQ",
+                            "Wiki",
                             icon: "books.vertical",
                             url: "https://wiki.bisquit.host",
                             color: .secondary

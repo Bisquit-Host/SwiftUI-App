@@ -4366,12 +4366,12 @@
         }
       }
     },
-    "Wiki / FAQ" : {
+    "Wiki" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Вики / ЧАВО"
+            "value" : "Вики"
           }
         }
       }
