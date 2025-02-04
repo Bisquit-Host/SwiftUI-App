@@ -2208,12 +2208,12 @@
 				F3BC03C02B2063820011F98A /* Debug Key.swift */,
 				F32FD71D2B1E054300723B88 /* Network Calls.swift */,
 				F31F31F72D52BD940095DD19 /* System.swift */,
+				F31BA564295900270006D126 /* Nav */,
 				F36797722A39C4ED009F2788 /* Localizable.xcstrings */,
 				F378E3322AF38286009925DB /* PrivacyInfo.xcprivacy */,
 				F304498629E98AE4006DC0C7 /* Bisquit.Host.entitlements */,
 				F3CCB1D12CAE8B76000F8207 /* Bisquit-Host-Info.plist */,
 				F31BA52A2958FF7D0006D126 /* Assets.xcassets */,
-				F31BA564295900270006D126 /* Navigation */,
 				F36436EE2A2FE91C00976374 /* SpriteKit */,
 				F3EDEE3629C0CB4500B08696 /* Networking */,
 				F35B89BC2A7256F4000B5EEF /* Tips */,
@@ -2264,7 +2264,7 @@
 			path = "Clip Demo";
 			sourceTree = "<group>";
 		};
-		F31BA564295900270006D126 /* Navigation */ = {
+		F31BA564295900270006D126 /* Nav */ = {
 			isa = PBXGroup;
 			children = (
 				F31BA5672959006F0006D126 /* App Container.swift */,
@@ -2274,7 +2274,7 @@
 				F3BAEC8C2959B3FE00111375 /* Nav Extension.swift */,
 				F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */,
 			);
-			path = Navigation;
+			path = Nav;
 			sourceTree = "<group>";
 		};
 		F31BA580295901400006D126 /* Intro */ = {
