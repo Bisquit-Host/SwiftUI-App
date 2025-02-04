@@ -8,6 +8,13 @@ struct DesignSettings: View {
     
     var body: some View {
         Section("Design") {
+            Picker("Color theme", selection: $store.colorTheme) {
+                ForEach(ColorTheme.allCases) { theme in
+                    Text(theme.rawValue.capitalized)
+                        .tag(theme)
+                }
+            }
+            
             if Device.current.hasDynamicIsland {
                 Toggle("Dynamic Island badge", isOn: $store.showDynamicIslandBadge)
             }

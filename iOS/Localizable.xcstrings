@@ -843,6 +843,9 @@
         }
       }
     },
+    "Color theme" : {
+
+    },
     "Command" : {
       "localizations" : {
         "ru" : {

@@ -6,8 +6,8 @@ import DeviceKit
 
 struct AppContainer: View {
     @State private var vm = ServerListVM()
-    @Environment(NavState.self) private var navState
     @EnvironmentObject private var store: ValueStore
+    @Environment(NavState.self) private var navState
     @Environment(\.scenePhase) private var scenePhase
     
     @State private var showBadge = false
@@ -34,6 +34,7 @@ struct AppContainer: View {
             }
         }
         .environment(vm)
+        .preferredColorScheme(store.colorTheme.scheme)
         .onChange(of: scenePhase) { _, newPhase in
             if newPhase == .inactive {
                 showBadge = false

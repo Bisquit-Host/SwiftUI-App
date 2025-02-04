@@ -37,10 +37,6 @@ import ScrechKit
 //            Toggle("Developer mode", isOn: $store.devMode)
 //
 //            Toggle("BisquitFall", isOn: $store.enableBisquitFall)
-//
-//#if !os(tvOS)
-//            ColorPicker("Background color (disabled)", selection: $store.backgroundColor)
-//#endif
 //        }
 //        .listRowBackground(store.transparentList ? .clear : Color.list)
 //    }

@@ -171,6 +171,14 @@
 		F31F31FD2D52BD940095DD19 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F31F72D52BD940095DD19 /* System.swift */; };
 		F31F31FE2D52BD940095DD19 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F31F72D52BD940095DD19 /* System.swift */; };
 		F31F31FF2D52BD940095DD19 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F31F72D52BD940095DD19 /* System.swift */; };
+		F31F32012D52DB950095DD19 /* Color Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F32002D52DB950095DD19 /* Color Theme.swift */; };
+		F31F32022D52DB950095DD19 /* Color Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F32002D52DB950095DD19 /* Color Theme.swift */; };
+		F31F32032D52DB950095DD19 /* Color Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F32002D52DB950095DD19 /* Color Theme.swift */; };
+		F31F32042D52DB950095DD19 /* Color Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F32002D52DB950095DD19 /* Color Theme.swift */; };
+		F31F32052D52DB950095DD19 /* Color Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F32002D52DB950095DD19 /* Color Theme.swift */; };
+		F31F32062D52DB950095DD19 /* Color Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F32002D52DB950095DD19 /* Color Theme.swift */; };
+		F31F32072D52DB950095DD19 /* Color Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F32002D52DB950095DD19 /* Color Theme.swift */; };
+		F31F32082D52DB950095DD19 /* Color Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F32002D52DB950095DD19 /* Color Theme.swift */; };
 		F320DDA52B704E3C00957D92 /* Preview Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = F320DDA42B704E3C00957D92 /* Preview Property.swift */; };
 		F323BF9F2B20B84100116B97 /* Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F323BF9E2B20B84100116B97 /* Server Card Context Menu.swift */; };
 		F323BFA22B20DC9000116B97 /* Power Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F323BFA12B20DC9000116B97 /* Power Widget.swift */; };
@@ -1506,6 +1514,7 @@
 		F31BA5C8295904AC0006D126 /* Data Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data Tab.swift"; sourceTree = "<group>"; };
 		F31D0BB42A2573E200119D07 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		F31F31F72D52BD940095DD19 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
+		F31F32002D52DB950095DD19 /* Color Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color Theme.swift"; sourceTree = "<group>"; };
 		F320DDA42B704E3C00957D92 /* Preview Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preview Property.swift"; sourceTree = "<group>"; };
 		F323BF9E2B20B84100116B97 /* Server Card Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Context Menu.swift"; sourceTree = "<group>"; };
 		F323BFA12B20DC9000116B97 /* Power Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Widget.swift"; sourceTree = "<group>"; };
@@ -2268,6 +2277,7 @@
 			isa = PBXGroup;
 			children = (
 				F31BA5672959006F0006D126 /* App Container.swift */,
+				F31F32002D52DB950095DD19 /* Color Theme.swift */,
 				F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */,
 				F31BA565295900300006D126 /* Nav State.swift */,
 				F31BA5692959007E0006D126 /* Nav Destinations.swift */,
@@ -4143,6 +4153,7 @@
 				F37061C829774869009B4067 /* Nav Extension.swift in Sources */,
 				F3A7CF682C8DF3C900413400 /* Video File VM.swift in Sources */,
 				F30088A62B3A18A80051476C /* Database VM.swift in Sources */,
+				F31F32062D52DB950095DD19 /* Color Theme.swift in Sources */,
 				F3AFCB952A4AF6C10080C257 /* File Name And Icon.swift in Sources */,
 				F3BC03BD2B1FFBD50011F98A /* Backup Context Menu.swift in Sources */,
 				F33CDC022A26B930008D0214 /* Browser.swift in Sources */,
@@ -4289,6 +4300,7 @@
 				F3E8415629FECB6800609DA3 /* Browser Sticker.swift in Sources */,
 				F385824229D6215100BEEE1D /* App Icon.swift in Sources */,
 				F36797782A3A55E1009F2788 /* Log List Parent.swift in Sources */,
+				F31F32052D52DB950095DD19 /* Color Theme.swift in Sources */,
 				F380B3282BD7C4A4009062E8 /* Upload Preview List.swift in Sources */,
 				F3AF91C12B423492001D8F80 /* SSH VM.swift in Sources */,
 				F34BB6BC2D3DC2B800D27BE0 /* File Preview VM.swift in Sources */,
@@ -4497,6 +4509,7 @@
 				F31F31FC2D52BD940095DD19 /* System.swift in Sources */,
 				F3A7BCC3296B2ABB00E080C1 /* Start Page.swift in Sources */,
 				F3EB09E22A29805A0073916A /* Des Video Watch.swift in Sources */,
+				F31F32072D52DB950095DD19 /* Color Theme.swift in Sources */,
 				F38C6E5E2A5475A500F2BDA6 /* Start Page VM.swift in Sources */,
 				F3878EDF2A1C228900AD8657 /* Server Card Stats.swift in Sources */,
 				F3C9D8612B319B9E00265492 /* Permission Card.swift in Sources */,
@@ -4623,6 +4636,7 @@
 				F325F7012A54BBCF00E89EC4 /* Info Tab Allocation.swift in Sources */,
 				F39626F32A7AD64B0057E356 /* Ansi.swift in Sources */,
 				F3AB4A7E2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
+				F31F32022D52DB950095DD19 /* Color Theme.swift in Sources */,
 				F30088A02B3A17DF0051476C /* Backup VM.swift in Sources */,
 				F3E2BF0F2C1EC94300B7A6D4 /* Contacts VM.swift in Sources */,
 				F3553FB62B40939C00EF0FD2 /* Allocation VM.swift in Sources */,
@@ -4947,6 +4961,7 @@
 				F3D2954A2AF39DB800ED43A0 /* Auth VM.swift in Sources */,
 				F3D295572AF39E2100ED43A0 /* Tip Suspended Server.swift in Sources */,
 				F3D295382AF39D1700ED43A0 /* Nav State.swift in Sources */,
+				F31F32042D52DB950095DD19 /* Color Theme.swift in Sources */,
 				F3D295A22AF3A0AA00ED43A0 /* Map VM.swift in Sources */,
 				F3D295AE2AF3A10300ED43A0 /* Cache Size.swift in Sources */,
 				F3D2954D2AF39DCB00ED43A0 /* Cloud Keys.swift in Sources */,
@@ -5125,6 +5140,7 @@
 				F3A7CF172C8C4E4300413400 /* Map VM.swift in Sources */,
 				F3A7CEF72C8BB82E00413400 /* Settings Storage.swift in Sources */,
 				F3A7CECB2C8B685500413400 /* Messages VC.swift in Sources */,
+				F31F32082D52DB950095DD19 /* Color Theme.swift in Sources */,
 				F3A7CF182C8C4E4A00413400 /* Browser Spec.swift in Sources */,
 				F3A7CF192C8C4E4A00413400 /* Browser VM.swift in Sources */,
 				F3A7CF642C8CA5CF00413400 /* Tip Cloud Keys.swift in Sources */,
@@ -5187,6 +5203,7 @@
 				F39E68332D2D63980002BA96 /* Panel Ornament Power.swift in Sources */,
 				F37EA7992B70DEDE0029DE00 /* Console VM.swift in Sources */,
 				F35FEB0B2B09F003004DA05D /* API Key.swift in Sources */,
+				F31F32012D52DB950095DD19 /* Color Theme.swift in Sources */,
 				F3FD9F9C2C651B3800A69314 /* File Card.swift in Sources */,
 				F3FD9F982C651A4E00A69314 /* File List.swift in Sources */,
 				F3DF03DB2B74F01C00CF6F5E /* Database VM.swift in Sources */,
@@ -5350,6 +5367,7 @@
 				F30088942B3A03050051476C /* Log VM.swift in Sources */,
 				F3464D282A86398000188B0C /* PowerSignalAppEnum.swift in Sources */,
 				F3DF50CA2B38FDDE00206CAE /* User 2Fa.swift in Sources */,
+				F31F32032D52DB950095DD19 /* Color Theme.swift in Sources */,
 				F35B9F5C2A2DC8D60045D014 /* Nav State.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
