@@ -16,7 +16,7 @@ struct DynamicIslandBadge: View {
         .background(.orange.gradient)
         .foregroundStyle(.white.gradient)
         .clipShape(.capsule)
-        .padding(.top, 14)
+        .padding(.top, 15)
         .ignoresSafeArea()
     }
 }

@@ -7,7 +7,7 @@ import DeviceKit
 struct AppContainer: View {
     @State private var vm = ServerListVM()
     @Environment(NavState.self) private var navState
-    @EnvironmentObject private var settings: ValueStorage
+    @EnvironmentObject private var store: ValueStorage
     @Environment(\.scenePhase) private var scenePhase
     
     @State private var showBadge = false
@@ -20,7 +20,7 @@ struct AppContainer: View {
         @Bindable var navState = navState
         
         NavigationStack(path: $navState.path) {
-            if settings.isApiKeyValid {
+            if store.isApiKeyValid {
 #if !os(watchOS)
                 AuthView()
                     .withNavDestinations()
@@ -44,6 +44,7 @@ struct AppContainer: View {
             }
         }
 #if os(iOS)
+        .statusBarHidden(store.hideStatusBar)
         .detectOrientation($orientation)
         .overlay(alignment: .top) {
             if Device.current.hasDynamicIsland && showBadge && orientation.isPortrait {
