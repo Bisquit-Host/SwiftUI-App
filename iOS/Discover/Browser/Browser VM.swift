@@ -1,5 +1,4 @@
 import ScrechKit
-import CloudKit
 
 @Observable
 final class BrowserVM {
@@ -7,15 +6,8 @@ final class BrowserVM {
     var filterRule = "Minecraft"
     var currencyImg = "rublesign.square"
     var showSafari = false
-    var planDictionary: [CKRecord.ID: Plan] = [:]
     
-    private let db = CKContainer.init(identifier: "iCloud.host.bisquit.Bisquit-host").publicCloudDatabase
-    
-    private var plans: [Plan] {
-        planDictionary.values.compactMap {
-            $0
-        }
-    }
+    private var plans: [Plan] = []
     
     private var sortedPlans: [Plan] {
         plans.sorted {
@@ -34,38 +26,7 @@ final class BrowserVM {
     }
     
     func fetchPlans() async {
-        do {
-            try await populatePlans()
-        } catch {
-            print("Error loading plans: \(error)")
-        }
-    }
-    
-    func populatePlans() async throws {
-        let predicate = NSPredicate(value: true)
         
-        let query = CKQuery(
-            recordType: PlanRecordKeys.type.rawValue,
-            predicate: predicate
-        )
-        
-        let result = try await db.records(matching: query)
-        
-        let records = result.matchResults.compactMap {
-            try? $0.1.get()
-        }
-        
-        let plans = records.compactMap {
-            Plan(record: $0)
-        }
-        
-        main { [self] in
-            withAnimation {
-                planDictionary = Dictionary(uniqueKeysWithValues: plans.map {
-                    ($0.recordId!, $0)
-                })
-            }
-        }
     }
     
     func currencyImage(_ currency: String) -> String {
