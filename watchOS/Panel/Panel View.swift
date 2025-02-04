@@ -50,5 +50,5 @@ struct PanelView: View {
 
 #Preview {
     PanelView("")
-        .environmentObject(ValueStorage())
+        .environmentObject(ValueStore())
 }

@@ -1,7 +1,7 @@
 import ScrechKit
 import PteroNet
 
-final class ValueStorage: ObservableObject {
+final class ValueStore: ObservableObject {
     @AppStorage("hide_status_bar") var hideStatusBar = false
     @Published var updateServers = false // Triggers update on pull gesture
     

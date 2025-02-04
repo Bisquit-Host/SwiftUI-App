@@ -16,7 +16,7 @@ struct BisquitHostApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 #endif
     
-    @StateObject private var settings = ValueStorage()
+    @StateObject private var store = ValueStore()
     private var navState = NavState()
 #if !os(macOS)
     private var linking = DeepLinkVM()
@@ -48,7 +48,7 @@ struct BisquitHostApp: App {
                 .onOpenURL { url in
                     linking.handleDeepLink(
                         navState,
-                        settings: settings,
+                        store: store,
                         url: url
                     )
                 }
@@ -56,7 +56,7 @@ struct BisquitHostApp: App {
         }
         .environment(navState)
         .modelContainer(container)
-        .environmentObject(settings)
+        .environmentObject(store)
         .defaultAppStorage(.init(suiteName: "group.Bisquit-host")!)
 #if os(macOS)
         .windowStyle(.hiddenTitleBar)
@@ -87,7 +87,7 @@ struct BisquitHostApp: App {
         Settings {
             AppSettings()
                 .environment(navState)
-                .environmentObject(settings)
+                .environmentObject(store)
         }
 #endif
     }

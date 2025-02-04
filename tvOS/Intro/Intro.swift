@@ -5,7 +5,7 @@ import PteroNet
 struct Intro: View {
     @Bindable private var vm = StartPageVM()
     @Environment(NavState.self) private var navState
-    @EnvironmentObject private var settings: ValueStorage
+    @EnvironmentObject private var store: ValueStore
     
     @Environment(\.modelContext) private var modelContext
     @Query(animation: .default) private var keys: [APIKey]
@@ -32,7 +32,6 @@ struct Intro: View {
                 ListLink("API-key Creation", icon: "exclamationmark.questionmark") {
                     Guide()
                 }
-                
 #if DEBUG
                 Button("Debug") {
                     Keychain.save(key: "selectedApiKey", value: debugKey)
@@ -41,7 +40,7 @@ struct Intro: View {
                         modelContext.insert(APIKey(key: debugKey))
                     }
                     
-                    settings.authSucced()
+                    store.authSucced()
                 }
 #endif
                 Button("Validate") {
@@ -75,7 +74,7 @@ struct Intro: View {
                     modelContext.insert(APIKey(key: vm.apiKey))
                 }
                 
-                settings.authSucced()
+                store.authSucced()
             }
             
             Button("No", role: .destructive) {
@@ -91,5 +90,5 @@ struct Intro: View {
 #Preview {
     Intro()
         .environment(NavState())
-        .environmentObject(ValueStorage())
+        .environmentObject(ValueStore())
 }

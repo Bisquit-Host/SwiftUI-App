@@ -3,20 +3,20 @@ import SwiftUI
 struct ServerList: View {
     @Environment(ServerListVM.self) private var vm
     @Environment(NavState.self) private var navState
-    @EnvironmentObject private var settings: ValueStorage
+    @EnvironmentObject private var store: ValueStore
     
     private var adminButtonColor: Color {
-        settings.adminServerList ? .green : .secondary
+        store.adminServerList ? .green : .secondary
     }
     
     @State private var sheetOverview = false
     
     var body: some View {
         List {
-            if settings.devMode {
+            if store.devMode {
                 Button {
-                    settings.adminServerList.toggle()
-                    vm.fetchServers(settings.adminServerList)
+                    store.adminServerList.toggle()
+                    vm.fetchServers(store.adminServerList)
                 } label: {
                     Label("Admin", systemImage: "person.badge.shield.checkmark")
                         .foregroundStyle(adminButtonColor)
@@ -44,7 +44,7 @@ struct ServerList: View {
         }
         .background(BisquitFall())
         .task {
-            vm.fetchServers(settings.adminServerList)
+            vm.fetchServers(store.adminServerList)
         }
 #if DEBUG
         .sheet($sheetOverview) {
@@ -59,5 +59,5 @@ struct ServerList: View {
     ServerList()
         .environment(ServerListVM())
         .environment(NavState())
-        .environmentObject(ValueStorage())
+        .environmentObject(ValueStore())
 }

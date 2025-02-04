@@ -2,7 +2,7 @@ import SwiftUI
 import PteroNet
 
 struct ServerCard: View {
-    @EnvironmentObject private var settings: ValueStorage
+    @EnvironmentObject private var store: ValueStore
     @State private var vm: ServerCardVM
     
     private let server: ServerAttributes
@@ -54,7 +54,7 @@ struct ServerCard: View {
             .task {
                 vm.fetchServerUsage()
             }
-            .onChange(of: settings.updateServers) {
+            .onChange(of: store.updateServers) {
                 vm.fetchServerUsage()
             }
         }

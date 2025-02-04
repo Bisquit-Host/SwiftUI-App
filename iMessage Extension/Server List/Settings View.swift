@@ -2,7 +2,7 @@ import ScrechKit
 
 struct SettingsView: View {
 //    private var vm = SettingsVM()
-//    @EnvironmentObject private var settings: ValueStorage
+//    @EnvironmentObject private var store: ValueStore
 //    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
@@ -39,8 +39,8 @@ struct SettingsView: View {
         .navigationTitle("Settings")
 //        .toolbarTitleDisplayMode(.inline)
 //        .scrollIndicators(.hidden)
-//        .scrollContentBackground(settings.transparentSheet ? .hidden : .visible)
-//        .presentationBackground(settings.transparentSheet ? .ultraThinMaterial : .regular)
+//        .scrollContentBackground(store.transparentSheet ? .hidden : .visible)
+//        .presentationBackground(store.transparentSheet ? .ultraThinMaterial : .regular)
 //        .sheet($vm.sheetSupport) {
 //            Support()
 //        }
@@ -50,7 +50,7 @@ struct SettingsView: View {
 //        .task {
 //            vm.defineBiometryType()
 //        }
-//        .onChange(of: settings.currentIcon) { _, newValue in
+//        .onChange(of: store.currentIcon) { _, newValue in
 //            UIApplication.shared.setAlternateIconName(newValue)
 //        }
     }
@@ -62,6 +62,6 @@ struct SettingsView: View {
             .sheet {
                 SettingsView()
             }
-            .environmentObject(ValueStorage())
+            .environmentObject(ValueStore())
     }
 }

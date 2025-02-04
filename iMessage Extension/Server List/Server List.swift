@@ -3,7 +3,7 @@ import StoreKit
 
 struct ServerList: View {
     @Environment(ServerListVM.self) private var vm
-    @EnvironmentObject private var settings: ValueStorage
+    @EnvironmentObject private var store: ValueStore
     
     @State private var searchField = ""
     @State private var test = false
@@ -23,8 +23,8 @@ struct ServerList: View {
         //            BisquitFall()
         //        }
         .refreshableTask {
-            vm.fetchServers(settings.adminServerList)
-            settings.updateServers.toggle()
+            vm.fetchServers(store.adminServerList)
+            store.updateServers.toggle()
         }
         .onChange(of: searchField) { _, search in
             withAnimation {
@@ -54,7 +54,7 @@ struct ServerList: View {
                 //                                }
                 
                 TopbarAdminButton {
-                    vm.fetchServers(settings.adminServerList)
+                    vm.fetchServers(store.adminServerList)
                 }
                 
                 SettingsButton()
@@ -75,7 +75,7 @@ struct ServerList: View {
         }
         .sheet($vm.sheetKeyStorage) {
             CloudKeys($vm.apiKey) {
-                vm.fetchServers(settings.adminServerList)
+                vm.fetchServers(store.adminServerList)
             }
         }
         .alert("Unknown Error", isPresented: $vm.alertError) {
@@ -96,5 +96,5 @@ struct ServerList: View {
         ServerList()
     }
     .environment(ServerListVM())
-    .environmentObject(ValueStorage())
+    .environmentObject(ValueStore())
 }

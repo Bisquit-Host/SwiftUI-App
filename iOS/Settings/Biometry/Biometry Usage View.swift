@@ -1,7 +1,7 @@
 import ScrechKit
 
 struct BiometryUsageView: View {
-    @EnvironmentObject private var settings: ValueStorage
+    @EnvironmentObject private var store: ValueStore
     
     var body: some View {
         NavigationView {
@@ -15,11 +15,11 @@ struct BiometryUsageView: View {
         }
         .monospaced()
         .presentationDetents([.medium])
-        .presentationBackground(settings.transparentSheet ? .ultraThinMaterial : .regular)
+        .presentationBackground(store.transparentSheet ? .ultraThinMaterial : .regular)
     }
 }
 
 #Preview {
     BiometryUsageView()
-        .environmentObject(ValueStorage())
+        .environmentObject(ValueStore())
 }

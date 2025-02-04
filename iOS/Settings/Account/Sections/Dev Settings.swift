@@ -1,7 +1,7 @@
 import ScrechKit
 
 struct DevSettings: View {
-    @EnvironmentObject private var settings: ValueStorage
+    @EnvironmentObject private var store: ValueStore
     
     private let device = UIDevice.current
     private let bundle = Bundle.main
@@ -27,7 +27,7 @@ struct DevSettings: View {
             ListParam("App version", param: version)
             ListParam("Device and system", param: deviceAndSystem)
             
-            Toggle("Developer mode", isOn: $settings.devMode)
+            Toggle("Developer mode", isOn: $store.devMode)
 #if !os(tvOS)
             NavigationLink("Debug") {
                 DebugSettings()
@@ -36,7 +36,7 @@ struct DevSettings: View {
             ServerListFooter()
         }
 #if !os(tvOS)
-        .listRowBackground(settings.transparentList ? .clear : Color.list)
+        .listRowBackground(store.transparentList ? .clear : Color.list)
 #endif
     }
 }
@@ -62,5 +62,5 @@ public extension UIDevice {
     List {
         DevSettings()
     }
-    .environmentObject(ValueStorage())
+    .environmentObject(ValueStore())
 }

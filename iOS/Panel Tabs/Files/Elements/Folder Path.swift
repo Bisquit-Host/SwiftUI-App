@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct FolderPath: View {
-    @EnvironmentObject private var settings: ValueStorage
+    @EnvironmentObject private var store: ValueStore
     private var vm = FolderPathVM()
     
     private let path: String
@@ -11,13 +11,13 @@ struct FolderPath: View {
     }
     
     private var listPath: String {
-        settings.showFullFilePath ? "/home/container/" + path : path
+        store.showFullFilePath ? "/home/container/" + path : path
     }
     
     var body: some View {
         if !path.isEmpty {
             Button {
-                vm.copyFilePath(path, withHomeContainer: settings.showFullFilePath)
+                vm.copyFilePath(path, withHomeContainer: store.showFullFilePath)
             } label: {
                 Text("listPath")
                     .footnote()

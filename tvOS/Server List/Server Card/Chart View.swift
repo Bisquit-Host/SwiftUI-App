@@ -7,8 +7,6 @@ struct Value: Identifiable {
 }
 
 struct ChartView: View {
-    @EnvironmentObject private var settings: ValueStorage
-    
     private let caption, unit: String
     private let max: Double
     private var values: [Value]
@@ -27,7 +25,7 @@ struct ChartView: View {
     var body: some View {
         VStack {
             Chart(values, id: \.id) { element in
-                //                if settings.showRuleMark {
+                //                if store.showRuleMark {
                 //                    RuleMark(y: .value("", max))
                 //                        .foregroundStyle(.red)
                 //                }

@@ -5,7 +5,6 @@ struct StatsTab: View {
     @Environment(PanelVM.self) private var vm
     @Environment(BackupVM.self) private var backupVM
     @Environment(DatabaseVM.self) private var databaseVM
-    @EnvironmentObject private var settings: ValueStorage
     
     private let server: ServerAttributes
     
@@ -112,5 +111,4 @@ struct StatsTab: View {
 
 #Preview {
     StatsTab(sampleJSON(.serverListAttributes))
-        .environmentObject(ValueStorage())
 }

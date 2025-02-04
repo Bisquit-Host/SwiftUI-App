@@ -11,7 +11,7 @@ struct FileCard: View {
     @EnvironmentObject private var vm: FileTabVM
     @Environment(\.openWindow) private var openWindow
     @Environment(NavState.self) private var navState
-    //    @EnvironmentObject private var settings: ValueStorage
+    //    @EnvironmentObject private var store: ValueStore
     
     private let id, root: String
     private let file: FileAttributes

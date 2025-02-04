@@ -4,7 +4,7 @@ import LaunchAtLogin
 
 struct AppSettings: View {
     @Environment(NavState.self) private var navState
-    @EnvironmentObject private var settings: ValueStorage
+    @EnvironmentObject private var store: ValueStore
     
     @Environment(\.dismiss) private var dismiss
     
@@ -15,7 +15,7 @@ struct AppSettings: View {
             Button("Log out") {
                 main {
                     navState.path = NavigationPath()
-                    settings.isApiKeyValid = false
+                    store.isApiKeyValid = false
                     Keychain.delete(key: "selectedApiKey")
                 }
                 

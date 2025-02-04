@@ -3,7 +3,7 @@ import TipKit
 
 struct ServerList: View {
     @Environment(ServerListVM.self) private var vm
-    @EnvironmentObject private var settings: ValueStorage
+    @EnvironmentObject private var store: ValueStore
     
     @State private var searchField = ""
     @State private var showSafari = false
@@ -39,8 +39,8 @@ struct ServerList: View {
         .safariCover($showSafari, url: "https://my.bisquit.host")
         .background(BisquitFall())
         .refreshableTask {
-            vm.fetchServers(settings.adminServerList)
-            settings.updateServers.toggle()
+            vm.fetchServers(store.adminServerList)
+            store.updateServers.toggle()
         }
         .onChange(of: searchField) { _, search in
             withAnimation {
@@ -63,7 +63,7 @@ struct ServerList: View {
             
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 TopbarAdminButton {
-                    vm.fetchServers(settings.adminServerList)
+                    vm.fetchServers(store.adminServerList)
                 }
                 
                 SettingsButton()
@@ -83,7 +83,7 @@ struct ServerList: View {
         }
         .sheet($vm.sheetKeyStorage) {
             CloudKeys($vm.apiKey) {
-                vm.fetchServers(settings.adminServerList)
+                vm.fetchServers(store.adminServerList)
             }
         }
         .alert("Unknown Error", isPresented: $vm.alertError) {
@@ -100,5 +100,5 @@ struct ServerList: View {
     }
     .environment(ServerListVM())
     .environment(NavState())
-    .environmentObject(ValueStorage())
+    .environmentObject(ValueStore())
 }

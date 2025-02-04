@@ -3,7 +3,7 @@
 //
 //struct CommandLine: View {
 //    @Environment(ConsoleVM.self) private var vm
-//    @EnvironmentObject private var settings: ValueStorage
+//    @EnvironmentObject private var store: ValueStore
 //    
 //    private let id: String
 //    
@@ -70,13 +70,13 @@
 //                        Divider().frame(height: 25)
 //                        
 //                        Button("Spam") {
-//                            settings.spamEnabled.toggle()
+//                            store.spamEnabled.toggle()
 //                        }
 //                        .subheadline()
-//                        .foregroundStyle(settings.spamEnabled ? .black : .white)
+//                        .foregroundStyle(store.spamEnabled ? .black : .white)
 //                        .frame(width: 50, height: 32)
 //                        .background {
-//                            if settings.spamEnabled {
+//                            if store.spamEnabled {
 //                                RoundedRectangle(cornerRadius: 12)
 //                                    .fill(.white)
 //                            } else {
@@ -180,5 +180,5 @@
 //#Preview {
 //    CommandLine("")
 //        .environment(ConsoleVM(""))
-//        .environmentObject(ValueStorage())
+//        .environmentObject(ValueStore())
 //}

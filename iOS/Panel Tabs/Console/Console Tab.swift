@@ -3,7 +3,7 @@ import ScrechKit
 struct ConsoleTab: View {
     @State private var vm: ConsoleVM
     @Environment(PanelVM.self) private var panelVM
-    @EnvironmentObject private var settings: ValueStorage
+    @EnvironmentObject private var store: ValueStore
     
     private let id: String
     
@@ -39,10 +39,10 @@ struct ConsoleTab: View {
         .toolbarBackground(.visible, for: .tabBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .task {
-            vm.fontSize = settings.consoleFontSize
+            vm.fontSize = store.consoleFontSize
         }
         .onDisappear {
-            settings.consoleFontSize = vm.fontSize
+            store.consoleFontSize = vm.fontSize
         }
         .inspector($vm.inspectorPresented) {
             ConsoleInspector()
@@ -71,5 +71,5 @@ struct ConsoleTab: View {
 #Preview {
     ConsoleTab("500028e3")
         .environment(PanelVM(""))
-        .environmentObject(ValueStorage())
+        .environmentObject(ValueStore())
 }

@@ -3,7 +3,7 @@ import ScrechKit
 struct AuthView: View {
     @Environment(ServerListVM.self) private var vm
     @Environment(NavState.self) private var navState
-    @EnvironmentObject private var settings: ValueStorage
+    @EnvironmentObject private var store: ValueStore
     
     var body: some View {
         VStack {
@@ -30,7 +30,7 @@ struct AuthView: View {
             //            .opacity(typing.isTitleFinished ? 1 : 0)
         }
         .task {
-            vm.fetchServers(settings.adminServerList)
+            vm.fetchServers(store.adminServerList)
         }
         .onAppear {
             delay(2) {
@@ -47,5 +47,5 @@ struct AuthView: View {
         .glassBackgroundEffect()
         .environment(ServerListVM())
         .environment(NavState())
-        .environmentObject(ValueStorage())
+        .environmentObject(ValueStore())
 }

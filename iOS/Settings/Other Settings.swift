@@ -2,17 +2,17 @@ import ScrechKit
 
 struct OtherSettings: View {
     @Environment(SettingsVM.self) private var vm
-    @EnvironmentObject private var settings: ValueStorage
+    @EnvironmentObject private var store: ValueStore
     
     var body: some View {
         Section("Other") {
             BiometryButton()
                 .environment(vm)
             
-            Toggle(isOn: $settings.showFullFilePath) {
+            Toggle(isOn: $store.showFullFilePath) {
                 Text("Full file path")
                 
-                Text(settings.showFullFilePath ? "/home/container/folder/example/" : "/folder/example/")
+                Text(store.showFullFilePath ? "/home/container/folder/example/" : "/folder/example/")
             }
             
             CurrencyButton()
@@ -21,7 +21,7 @@ struct OtherSettings: View {
                 openSettings()
             }
         }
-        .listRowBackground(settings.transparentList ? .clear : Color.list)
+        .listRowBackground(store.transparentList ? .clear : Color.list)
     }
 }
 
@@ -30,5 +30,5 @@ struct OtherSettings: View {
         OtherSettings()
     }
     .environment(SettingsVM())
-    .environmentObject(ValueStorage())
+    .environmentObject(ValueStore())
 }

@@ -3,7 +3,7 @@ import PteroNet
 
 struct StartupView: View {
     @Environment(StartupVM.self) private var vm
-    @EnvironmentObject private var storage: ValueStorage
+    @EnvironmentObject private var store: ValueStore
     
     private let server: ServerAttributes
     
@@ -17,14 +17,14 @@ struct StartupView: View {
     var body: some View {
         List {
             Section {
-                Text(storage.rawStartupCommand ? vm.rawStartupCommand : vm.startupCommand)
+                Text(store.rawStartupCommand ? vm.rawStartupCommand : vm.startupCommand)
                     .caption2()
                     .monospaced()
                     .textSelection(.enabled)
-                    .animation(.default, value: storage.rawStartupCommand)
+                    .animation(.default, value: store.rawStartupCommand)
                 
                 if vm.rawStartupCommand != vm.startupCommand {
-                    Toggle("Raw", isOn: $storage.rawStartupCommand)
+                    Toggle("Raw", isOn: $store.rawStartupCommand)
                 }
             } header: {
                 HStack {
@@ -33,7 +33,7 @@ struct StartupView: View {
                     Spacer()
                     
                     SFButton("document.on.document") {
-                        UIPasteboard.general.string = storage.rawStartupCommand ? vm.rawStartupCommand : vm.startupCommand
+                        UIPasteboard.general.string = store.rawStartupCommand ? vm.rawStartupCommand : vm.startupCommand
                         SystemAlert.copied()
                     }
                 }
@@ -64,5 +64,5 @@ struct StartupView: View {
 #Preview {
     StartupView(sampleJSON(.serverListAttributes))
         .environment(ServerSettingsVM(""))
-        .environmentObject(ValueStorage())
+        .environmentObject(ValueStore())
 }

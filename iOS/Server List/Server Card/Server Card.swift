@@ -3,7 +3,7 @@ import PteroNet
 
 struct ServerCard: View {
     @State private var vm: ServerCardVM
-    @EnvironmentObject private var settings: ValueStorage
+    @EnvironmentObject private var store: ValueStore
     
     private let server: ServerAttributes
     
@@ -16,7 +16,7 @@ struct ServerCard: View {
     private let bounds = UIScreen.main.bounds
     
     private var rounding: CGFloat {
-        switch settings.designCode {
+        switch store.designCode {
         case 0: 25
         default: 16
         }
@@ -36,7 +36,7 @@ struct ServerCard: View {
     
     var body: some View {
         VStack {
-            switch settings.designCode {
+            switch store.designCode {
             case 0:
                 // Rect
                 VStack {
@@ -89,7 +89,7 @@ struct ServerCard: View {
         .task {
             vm.fetchServerUsage()
         }
-        .onChange(of: settings.updateServers) {
+        .onChange(of: store.updateServers) {
             vm.fetchServerUsage()
         }
     }
@@ -142,5 +142,5 @@ struct ServerCard: View {
         ServerCard(sampleJSON(.serverListAttributes))
     }
     .padding(5)
-    .environmentObject(ValueStorage())
+    .environmentObject(ValueStore())
 }

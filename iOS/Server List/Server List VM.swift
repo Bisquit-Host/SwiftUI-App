@@ -127,7 +127,7 @@ final class ServerListVM {
                     }
                 }
 #if os(iOS)
-                if ValueStorage().contactsProviderEnabled {
+                if ValueStore().contactsProviderEnabled {
                     self.fetchUniqueUsers()
                 }
 #endif

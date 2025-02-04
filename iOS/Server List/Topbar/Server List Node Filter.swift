@@ -2,7 +2,6 @@ import SwiftUI
 
 struct ServerListNodeFilter: View {
     @Environment(ServerListVM.self) private var vm
-    @EnvironmentObject private var settings: ValueStorage
     
     var body: some View {
         Menu("Node") {
@@ -42,6 +41,4 @@ struct ServerListNodeFilter: View {
 #Preview {
     ServerListNodeFilter()
         .environment(ServerListVM())
-        .environmentObject(ValueStorage())
-    
 }

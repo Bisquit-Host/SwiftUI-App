@@ -2,7 +2,6 @@ import SwiftUI
 
 struct CacheList: View {
     @State private var vm = CacheListVM()
-    @EnvironmentObject private var settings: ValueStorage
     
     var body: some View {
         List {

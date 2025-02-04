@@ -3,7 +3,7 @@ import ScrechKit
 struct ServerList: View {
     @Environment(ServerListVM.self) private var vm
     @Environment(NavState.self) private var navState
-    @EnvironmentObject private var settings: ValueStorage
+    @EnvironmentObject private var store: ValueStore
     
     var body: some View {
         ScrollView {
@@ -14,7 +14,7 @@ struct ServerList: View {
         .navigationTitle("Bisquit.Host")
         .navigationBarBackButtonHidden()
         .task {
-            vm.fetchServers(settings.adminServerList)
+            vm.fetchServers(store.adminServerList)
         }
     }
 }
@@ -23,5 +23,5 @@ struct ServerList: View {
     ServerList()
         .environment(ServerListVM())
         .environment(NavState())
-        .environmentObject(ValueStorage())
+        .environmentObject(ValueStore())
 }

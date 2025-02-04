@@ -1,7 +1,7 @@
 import ScrechKit
 
 struct SuspendedServerCard: View {
-    @EnvironmentObject private var settings: ValueStorage
+    @EnvironmentObject private var store: ValueStore
     
     private let name: String
     
@@ -10,7 +10,7 @@ struct SuspendedServerCard: View {
     }
     
     private var rounding: CGFloat {
-        switch settings.designCode {
+        switch store.designCode {
         case 0: 25
         default: 16
         }
@@ -36,5 +36,5 @@ struct SuspendedServerCard: View {
 
 #Preview {
     SuspendedServerCard("Test Server")
-        .environmentObject(ValueStorage())
+        .environmentObject(ValueStore())
 }

@@ -50,5 +50,5 @@ struct ApikeyList: View {
             ApikeyList()
         }
         .environment(ApikeyVM())
-        .environmentObject(ValueStorage())
+        .environmentObject(ValueStore())
 }

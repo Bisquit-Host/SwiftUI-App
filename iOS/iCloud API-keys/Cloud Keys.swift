@@ -4,7 +4,7 @@ import PteroNet
 import TipKit
 
 struct CloudKeys: View {
-    @EnvironmentObject private var settings: ValueStorage
+    @EnvironmentObject private var store: ValueStore
     @Environment(\.dismiss) private var dismiss
     
     @Environment(\.modelContext) private var modelContext
@@ -37,7 +37,7 @@ struct CloudKeys: View {
                     }
                 }
 #if !os(watchOS)
-                .listRowBackground(settings.transparentList ? .clear : Color.list)
+                .listRowBackground(store.transparentList ? .clear : Color.list)
 #endif
                 
 #if os(visionOS)
@@ -47,9 +47,9 @@ struct CloudKeys: View {
 #endif
             }
 #if !os(tvOS)
-            .scrollContentBackground(settings.transparentSheet ? .hidden : .visible)
+            .scrollContentBackground(store.transparentSheet ? .hidden : .visible)
 #endif
-            .presentationBackground(settings.transparentSheet ? .ultraThinMaterial : .regular)
+            .presentationBackground(store.transparentSheet ? .ultraThinMaterial : .regular)
             .navigationTitle("iCloud")
             .toolbarTitleDisplayMode(.inline)
             .overlay {

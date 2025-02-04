@@ -3,7 +3,7 @@ import PteroNet
 
 struct AppSettings: View {
     @Environment(NavState.self) private var navState
-    @EnvironmentObject private var settings: ValueStorage
+    @EnvironmentObject private var store: ValueStore
     
     private let bundle = Bundle.main
     private let device = WKInterfaceDevice.current()
@@ -30,7 +30,7 @@ struct AppSettings: View {
                 Button("Log out", role: .destructive) {
                     main {
                         navState.path = NavigationPath()
-                        settings.isApiKeyValid = false
+                        store.isApiKeyValid = false
                         Keychain.delete(key: "selectedApiKey")
                     }
                 }
@@ -51,7 +51,7 @@ struct AppSettings: View {
                         .footnote()
                 }
                 
-                Toggle("Developer mode", isOn: $settings.devMode)
+                Toggle("Developer mode", isOn: $store.devMode)
             }
         }
         .navigationTitle("Settings")
@@ -60,5 +60,5 @@ struct AppSettings: View {
 
 #Preview {
     AppSettings()
-        .environmentObject(ValueStorage())
+        .environmentObject(ValueStore())
 }

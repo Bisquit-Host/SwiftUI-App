@@ -2,7 +2,7 @@ import ScrechKit
 import PteroNet
 
 struct ServerListGrid: View {
-    @EnvironmentObject private var settings: ValueStorage
+    @EnvironmentObject private var store: ValueStore
     
     private let servers: [ServerAttributes]
     
@@ -21,7 +21,7 @@ struct ServerListGrid: View {
         LazyVGrid(
             columns: [
                 GridItem(.adaptive(
-                    minimum: settings.designCode == 0 ? 170 : 360
+                    minimum: store.designCode == 0 ? 170 : 360
                 ))
             ],
             spacing: 8
@@ -36,5 +36,5 @@ struct ServerListGrid: View {
 
 #Preview {
     ServerListGrid(sampleJSON(.serverListDataArray))
-        .environmentObject(ValueStorage())
+        .environmentObject(ValueStore())
 }
