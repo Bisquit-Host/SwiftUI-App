@@ -96,6 +96,5 @@ struct ServerList: View {
         ServerList()
     }
     .environment(ServerListVM())
-    //    .environment(NavState())
     .environmentObject(ValueStorage())
 }
