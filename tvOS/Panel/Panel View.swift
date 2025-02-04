@@ -77,10 +77,13 @@ struct PanelView: View {
     
     private func fetchData() {
         vm.fetchServerDetails()
-        fileVM.fetchFiles()
-        backupVM.fetchBackups()
-        databaseVM.fetchDatabases()
-        scheduleVM.fetchSchedules()
+        
+        if !System.lowPowerMode {
+            fileVM.fetchFiles()
+            backupVM.fetchBackups()
+            databaseVM.fetchDatabases()
+            scheduleVM.fetchSchedules()
+        }
         
         vm.consoleDetails { data in
             if let data {
