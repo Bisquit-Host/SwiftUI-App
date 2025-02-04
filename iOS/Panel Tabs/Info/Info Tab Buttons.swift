@@ -25,8 +25,6 @@ struct InfoTabButtons: View {
     @State private var sheetAllocations = false
     @State private var isRotating = false
     
-    private let lowPowerMode = ProcessInfo.processInfo.isLowPowerModeEnabled
-    
     var body: some View {
         VStack {
             HStack {
@@ -117,7 +115,7 @@ struct InfoTabButtons: View {
             settingsVM.serverName = server.name
             settingsVM.serverDescription = server.description
             
-            if !lowPowerMode {
+            if !System.lowPowerMode {
                 logVM.fetchLogs()
                 userVM.fetchUsers()
             }

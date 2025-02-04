@@ -1018,7 +1018,7 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 </string>
 				<key>trailing</key>
 				<string>    BisquitFall()
-        .environmentObject(SettingsStorage())
+        .environmentObject(ValueStorage())
 }
 </string>
 			</dict>

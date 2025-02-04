@@ -22,8 +22,6 @@ struct PanelView: View {
         self.startupVM = StartupVM(id)
     }
     
-    private let lowPowerMode = ProcessInfo.processInfo.isLowPowerModeEnabled
-    
     var body: some View {
         TabView(selection: $settings.lastTabPanel) {
             if let server = vm.server {
@@ -78,7 +76,7 @@ struct PanelView: View {
             }
         }
         
-        if !lowPowerMode {
+        if !System.lowPowerMode {
             fileVM.fetchFiles()
             backupVM.fetchBackups()
             databaseVM.fetchDatabases()

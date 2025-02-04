@@ -23,7 +23,9 @@ struct AuthView: View {
         .task {
             vm.appear(settings.useBiometry, navState: navState)
             
-            serverVM.fetchServers(settings.adminServerList)
+            if !System.lowPowerMode {
+                serverVM.fetchServers(settings.adminServerList)
+            }
         }
     }
     

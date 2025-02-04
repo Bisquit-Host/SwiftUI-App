@@ -37,10 +37,8 @@ struct ServerList: View {
         .searchable(text: $searchField)
         .navigationBarBackButtonHidden()
         .safariCover($showSafari, url: "https://my.bisquit.host")
-        .background {
-            BisquitFall()
-        }
-        .refreshable {
+        .background(BisquitFall())
+        .refreshableTask {
             vm.fetchServers(settings.adminServerList)
             settings.updateServers.toggle()
         }

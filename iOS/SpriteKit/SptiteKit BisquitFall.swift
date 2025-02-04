@@ -35,7 +35,7 @@ struct BisquitFall: View {
     private let bounds = UIScreen.main.bounds
     
     var body: some View {
-        if settings.enableBisquitFall {
+        if settings.enableBisquitFall, !System.lowPowerMode {
             SpriteView(scene: scene)
                 .ignoresSafeArea()
                 .background(colorScheme == .light ? .white : .black)
