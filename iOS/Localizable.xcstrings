@@ -1027,6 +1027,9 @@
         }
       }
     },
+    "Continue" : {
+
+    },
     "Continue on failure" : {
       "localizations" : {
         "ru" : {

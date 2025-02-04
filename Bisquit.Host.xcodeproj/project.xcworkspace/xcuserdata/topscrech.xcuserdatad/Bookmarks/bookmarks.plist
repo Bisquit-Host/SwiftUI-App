@@ -106,13 +106,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>25</string>
+					<string>26</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>24</string>
+					<string>25</string>
 					<key>Timestamp</key>
-					<string>723374278.248118</string>
+					<string>760406270.102843</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -988,13 +988,13 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>47</string>
+					<string>48</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>46</string>
+					<string>47</string>
 					<key>Timestamp</key>
-					<string>737881636.384874</string>
+					<string>760406105.372907</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -1018,7 +1018,7 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 </string>
 				<key>trailing</key>
 				<string>    BisquitFall()
-        .environmentObject(ValueStorage())
+        .environmentObject(ValueStore())
 }
 </string>
 			</dict>

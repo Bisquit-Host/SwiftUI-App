@@ -8,6 +8,7 @@ struct AppContainer: View {
     @State private var vm = ServerListVM()
     @EnvironmentObject private var store: ValueStore
     @Environment(NavState.self) private var navState
+    
     @Environment(\.scenePhase) private var scenePhase
     
     @State private var showBadge = false

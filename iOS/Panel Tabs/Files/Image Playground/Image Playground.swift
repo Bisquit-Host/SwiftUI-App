@@ -5,6 +5,7 @@ import PhotosUI
 @available(iOS 18.1, *)
 struct ImagePlayground: View {
     @EnvironmentObject private var vm: FileTabVM
+    
     @Environment(\.dismiss) private var dismiss
     
     private let url: URL?

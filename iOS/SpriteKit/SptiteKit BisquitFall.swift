@@ -18,6 +18,7 @@ final class SceneBisquitFall: SKScene {
 
 struct BisquitFall: View {
     @EnvironmentObject private var store: ValueStore
+    
     @Environment(\.colorScheme) var colorScheme
     
     private var scene: SKScene {

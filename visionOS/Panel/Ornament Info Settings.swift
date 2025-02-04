@@ -3,6 +3,7 @@ import PteroNet
 
 struct OrnamentInfoSettings: View {
     @EnvironmentObject private var ornament: OrnamentProperty
+    
     @Environment(\.dismiss) private var dismiss
     
     private let server: ServerAttributes
@@ -10,7 +11,7 @@ struct OrnamentInfoSettings: View {
     init(_ server: ServerAttributes) {
         self.server = server
     }
-        
+    
     var body: some View {
         HStack {
             Spacer()

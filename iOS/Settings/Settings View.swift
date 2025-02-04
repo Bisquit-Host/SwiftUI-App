@@ -3,6 +3,7 @@ import ScrechKit
 struct SettingsView: View {
     @State private var vm = SettingsVM()
     @EnvironmentObject private var store: ValueStore
+    
     @Environment(\.colorScheme) private var colorScheme
     
     var body: some View {

@@ -3,11 +3,12 @@ import Algorithms
 
 struct UserInvitationView: View {
     @Environment(UsersVM.self) private var vm
+    
     @Environment(\.dismiss) private var dismiss
     
     @State private var email = ""
     @State private var sheetContacts = false
-        
+    
     var body: some View {
         List {
             Section {

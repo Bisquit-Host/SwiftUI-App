@@ -2,6 +2,7 @@ import SwiftUI
 
 struct FileErrorView: View {
     @EnvironmentObject private var vm: FileTabVM
+    
     @Environment(\.dismiss) private var dismiss
     
     private let path, name: String

@@ -5,8 +5,8 @@ import TipKit
 
 struct CloudKeys: View {
     @EnvironmentObject private var store: ValueStore
-    @Environment(\.dismiss) private var dismiss
     
+    @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     @Query(animation: .default) private var keys: [APIKey]
     

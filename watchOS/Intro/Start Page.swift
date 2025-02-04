@@ -16,6 +16,12 @@ struct StartPage: View {
             
             TextField("API-key", text: $vm.apiKey)
                 .autocorrectionDisabled()
+            
+            if vm.apiKey.count == 48 {
+                Button("Continue") {
+                    vm.fetchAccountDetails()
+                }
+            }
 #if DEBUG
             Button("Debug") {
                 Keychain.save(key: "selectedApiKey", value: debugKey)

@@ -3,6 +3,7 @@ import PteroNet
 
 struct FilePermissionsView: View {
     @EnvironmentObject private var vm: FileTabVM
+    
     @Environment(\.dismiss) private var dismiss
     
     private let file: FileAttributes
@@ -118,7 +119,17 @@ struct FilePermissionsView: View {
         letter != "-"
     }
     
-    private func parsePermissions(_ modeBits: String) -> (systemRead: Bool, systemWrite: Bool, systemExecute: Bool, adminRead: Bool, adminWrite: Bool, adminExecute: Bool, otherRead: Bool, otherWrite: Bool, otherExecute: Bool) {
+    private func parsePermissions(_ modeBits: String) -> (
+        systemRead: Bool,
+        systemWrite: Bool,
+        systemExecute: Bool,
+        adminRead: Bool,
+        adminWrite: Bool,
+        adminExecute: Bool,
+        otherRead: Bool,
+        otherWrite: Bool,
+        otherExecute: Bool
+    ) {
         let permissions = modeBits.compactMap { UInt8(String($0), radix: 8) }
         
         func extractPermissions(from value: UInt8) -> (Bool, Bool, Bool) {
