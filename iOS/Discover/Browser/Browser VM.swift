@@ -4,7 +4,6 @@ import ScrechKit
 final class BrowserVM {
     var chosenLink = ""
     var filterRule = "Minecraft"
-    var currencyImg = "rublesign.square"
     var showSafari = false
     
     private(set) var plans: [MinecraftPlan] = []
