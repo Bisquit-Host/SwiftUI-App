@@ -331,7 +331,7 @@
 		F3437CA2297360D30064808F /* Schedule Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3437CA1297360D30064808F /* Schedule Card.swift */; };
 		F345486C29708FE30038DFD6 /* Server Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F345486B29708FE30038DFD6 /* Server Card.swift */; };
 		F3458BF02B36EA49000E8324 /* App Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D52B242B13FE9C00167DD6 /* App Delegate.swift */; };
-		F3464CFB2A862D2D00188B0C /* IntentExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3464CFA2A862D2D00188B0C /* IntentExtension.swift */; };
+		F3464CFB2A862D2D00188B0C /* Intent Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3464CFA2A862D2D00188B0C /* Intent Extension.swift */; };
 		F3464D022A862D2D00188B0C /* Intent.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = F3464CF82A862D2C00188B0C /* Intent.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F3464D072A862DBE00188B0C /* PowerSignalAppEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392DF372A8593E50049EF7A /* PowerSignalAppEnum.swift */; };
 		F3464D082A862DC200188B0C /* Change Power.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392DF362A8593E50049EF7A /* Change Power.swift */; };
@@ -993,6 +993,7 @@
 		F3CE5C552D53A77C0094BD7B /* Subdomain Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C4C2D5395300094BD7B /* Subdomain Card.swift */; };
 		F3CE5C562D53A77C0094BD7B /* Subdomain List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C402D538FE60094BD7B /* Subdomain List.swift */; };
 		F3CE5C572D53A77C0094BD7B /* Subdomain VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C442D53907E0094BD7B /* Subdomain VM.swift */; };
+		F3CE5C5D2D53B04E0094BD7B /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F36797722A39C4ED009F2788 /* Localizable.xcstrings */; };
 		F3D037012CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D037002CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift */; };
 		F3D037022CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D037002CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift */; };
 		F3D037032CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D037002CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift */; };
@@ -1586,7 +1587,7 @@
 		F3437CA1297360D30064808F /* Schedule Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Schedule Card.swift"; sourceTree = "<group>"; };
 		F345486B29708FE30038DFD6 /* Server Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card.swift"; sourceTree = "<group>"; };
 		F3464CF82A862D2C00188B0C /* Intent.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = Intent.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		F3464CFA2A862D2D00188B0C /* IntentExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentExtension.swift; sourceTree = "<group>"; };
+		F3464CFA2A862D2D00188B0C /* Intent Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Intent Extension.swift"; sourceTree = "<group>"; };
 		F3464CFE2A862D2D00188B0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3464D0E2A862F9700188B0C /* Send Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Send Command.swift"; sourceTree = "<group>"; };
 		F3464D102A8632F200188B0C /* Create Backup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Create Backup.swift"; sourceTree = "<group>"; };
@@ -1615,9 +1616,6 @@
 		F3553FBE2B4094D700EF0FD2 /* Allocation Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation Card.swift"; sourceTree = "<group>"; };
 		F3573BBE2C64E0360051259E /* Log Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log Card.swift"; sourceTree = "<group>"; };
 		F3573BC02C6511040051259E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = en; path = en.lproj/Intents.intentdefinition; sourceTree = "<group>"; };
-		F3573BCC2C6511140051259E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Intents.strings; sourceTree = "<group>"; };
-		F3573BDA2C6512580051259E /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Intents.strings; sourceTree = "<group>"; };
-		F3573BDD2C6512600051259E /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Intents.strings; sourceTree = "<group>"; };
 		F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Linking VM.swift"; sourceTree = "<group>"; };
 		F35B2A0129FFD6AB006E5FD2 /* Plans Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plans Model.swift"; sourceTree = "<group>"; };
 		F35B89BD2A725710000B5EEF /* Tip Suspended Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tip Suspended Server.swift"; sourceTree = "<group>"; };
@@ -2589,7 +2587,7 @@
 			isa = PBXGroup;
 			children = (
 				F3573BC12C6511040051259E /* Intents.intentdefinition */,
-				F3464CFA2A862D2D00188B0C /* IntentExtension.swift */,
+				F3464CFA2A862D2D00188B0C /* Intent Extension.swift */,
 				F3464D0D2A862EC100188B0C /* Intents */,
 				F3464D0C2A862EB600188B0C /* Enum */,
 				F3464CFE2A862D2D00188B0C /* Info.plist */,
@@ -4057,6 +4055,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3CE5C5D2D53B04E0094BD7B /* Localizable.xcstrings in Resources */,
 				F38637422A8641150069F074 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5096,7 +5095,7 @@
 				F3464D112A8632F200188B0C /* Create Backup.swift in Sources */,
 				F3464D072A862DBE00188B0C /* PowerSignalAppEnum.swift in Sources */,
 				F32FD7252B1E071F00723B88 /* Network Calls.swift in Sources */,
-				F3464CFB2A862D2D00188B0C /* IntentExtension.swift in Sources */,
+				F3464CFB2A862D2D00188B0C /* Intent Extension.swift in Sources */,
 				F3573BC82C6511040051259E /* Intents.intentdefinition in Sources */,
 				F3464D082A862DC200188B0C /* Change Power.swift in Sources */,
 				F3464D0F2A862F9700188B0C /* Send Command.swift in Sources */,
@@ -5496,9 +5495,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				F3573BC02C6511040051259E /* en */,
-				F3573BCC2C6511140051259E /* ru */,
-				F3573BDA2C6512580051259E /* nl */,
-				F3573BDD2C6512600051259E /* uk */,
 			);
 			name = Intents.intentdefinition;
 			sourceTree = "<group>";
@@ -5766,7 +5762,7 @@
 				INFOPLIST_FILE = "watchOS/Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "host.bisquit.Bisquit-host";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "host.bisquit.Bisquit-host.debug";
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5857,7 +5853,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS/Bisquit-Host-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
+				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.debug;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSCameraUsageDescription = "App uses camera to create elements with dynamic color based on camera capture";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Access to contacts allows you to save new contacts directly from the app.";

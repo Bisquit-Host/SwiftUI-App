@@ -877,6 +877,9 @@
         }
       }
     },
+    "Configuration" : {
+
+    },
     "Configurations" : {
       "localizations" : {
         "nl" : {
@@ -892,6 +895,9 @@
           }
         }
       }
+    },
+    "Configure first" : {
+
     },
     "Confirm" : {
       "localizations" : {
@@ -1029,7 +1035,14 @@
       }
     },
     "Continue" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Продолжить"
+          }
+        }
+      }
     },
     "Continue on failure" : {
       "localizations" : {
@@ -2450,6 +2463,9 @@
         }
       }
     },
+    "Kill Server" : {
+
+    },
     "Label color" : {
       "localizations" : {
         "ru" : {
@@ -2880,6 +2896,9 @@
         }
       }
     },
+    "New Description" : {
+
+    },
     "New folder" : {
       "localizations" : {
         "ru" : {
@@ -2919,6 +2938,9 @@
           }
         }
       }
+    },
+    "New Widget" : {
+
     },
     "Next" : {
       "localizations" : {
@@ -3332,6 +3354,9 @@
           }
         }
       }
+    },
+    "Restart Server" : {
+
     },
     "Restore" : {
       "localizations" : {
@@ -3752,6 +3777,9 @@
         }
       }
     },
+    "Start Server" : {
+
+    },
     "Start, Stop, Restart or Kill a server" : {
 
     },
@@ -4003,6 +4031,9 @@
         }
       }
     },
+    "Test Server" : {
+
+    },
     "The list of servers couldn't be loaded. Check your internet connection or contact support" : {
       "localizations" : {
         "ru" : {
@@ -4012,6 +4043,9 @@
           }
         }
       }
+    },
+    "This is an example widget" : {
+
     },
     "Time offset (sec)" : {
       "localizations" : {
@@ -4236,6 +4270,9 @@
           }
         }
       }
+    },
+    "Updated" : {
+
     },
     "Upload" : {
       "localizations" : {
