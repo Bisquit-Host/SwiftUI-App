@@ -988,6 +988,7 @@
 		F3CE5C562D53A77C0094BD7B /* Subdomain List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C402D538FE60094BD7B /* Subdomain List.swift */; };
 		F3CE5C572D53A77C0094BD7B /* Subdomain VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C442D53907E0094BD7B /* Subdomain VM.swift */; };
 		F3CE5C5D2D53B04E0094BD7B /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F36797722A39C4ED009F2788 /* Localizable.xcstrings */; };
+		F3CE5C972D5412C60094BD7B /* Intent Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF632C89120D009EBB5C /* Intent Handler.swift */; };
 		F3D037012CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D037002CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift */; };
 		F3D037022CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D037002CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift */; };
 		F3D037032CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D037002CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift */; };
@@ -5094,6 +5095,7 @@
 				F386373C2A8641120069F074 /* Widgets Bundle.swift in Sources */,
 				F3187A4E2C891B2A008FB911 /* Intents.intentdefinition in Sources */,
 				F3287A792B10A11E001AFE54 /* Live Activity.swift in Sources */,
+				F3CE5C972D5412C60094BD7B /* Intent Handler.swift in Sources */,
 				F323BFA52B211C3700116B97 /* Power Entry.swift in Sources */,
 				F36B738A2C8AEC3D00E858FE /* Timeline Provider.swift in Sources */,
 				F371468E2B123807001E0296 /* Activity View State.swift in Sources */,
