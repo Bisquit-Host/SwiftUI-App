@@ -51,9 +51,11 @@ struct StatsTab: View {
                 HStack(spacing: 40) {
                     ProgressBar("cpu", progress: vm.cpuUsage / limits.cpu)
                     
-                    ProgressBar("ram", progress: vm.ramUsage / limits.memory)
+                    let ramUsage = vm.ramUsage / pow(1024, 2) / limits.memory
+                    ProgressBar("ram", progress: ramUsage)
                     
-                    ProgressBar("ssd", progress: vm.diskUsage / limits.disk)
+                    let ssdUsage = vm.diskUsage / pow(1024, 2) / limits.disk
+                    ProgressBar("ssd", progress: ssdUsage)
                 }
                 .frame(width: bounds.width * 0.33)
                 .onDisappear {
