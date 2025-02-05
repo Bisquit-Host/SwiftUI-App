@@ -2586,11 +2586,11 @@
 		F3464CF92A862D2D00188B0C /* Intent */ = {
 			isa = PBXGroup;
 			children = (
-				F3573BC12C6511040051259E /* Intents.intentdefinition */,
 				F3464CFA2A862D2D00188B0C /* Intent Extension.swift */,
+				F3573BC12C6511040051259E /* Intents.intentdefinition */,
+				F3464CFE2A862D2D00188B0C /* Info.plist */,
 				F3464D0D2A862EC100188B0C /* Intents */,
 				F3464D0C2A862EB600188B0C /* Enum */,
-				F3464CFE2A862D2D00188B0C /* Info.plist */,
 			);
 			path = Intent;
 			sourceTree = "<group>";
@@ -3534,9 +3534,9 @@
 		F3FDFF832C89121F009EBB5C /* Intent Handler */ = {
 			isa = PBXGroup;
 			children = (
-				F36B736E2C89BB7200E858FE /* Intent Handler.entitlements */,
 				F3FDFF632C89120D009EBB5C /* Intent Handler.swift */,
 				F3FDFF652C89120D009EBB5C /* Info.plist */,
+				F36B736E2C89BB7200E858FE /* Intent Handler.entitlements */,
 			);
 			path = "Intent Handler";
 			sourceTree = "<group>";
@@ -5762,7 +5762,7 @@
 				INFOPLIST_FILE = "watchOS/Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "host.bisquit.Bisquit-host.debug";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "host.bisquit.Bisquit-host";
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
