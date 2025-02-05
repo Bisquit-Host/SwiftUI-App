@@ -5,7 +5,8 @@ enum Tabs: String, CaseIterable {
          console = "terminal",
          files = "folder",
          backup = "externaldrive.badge.icloud",
-         startup = "play.circle"
+         startup = "play.circle",
+         subdomain = "globe"
     
     var title: LocalizedStringKey {
         switch self {
@@ -14,6 +15,7 @@ enum Tabs: String, CaseIterable {
         case .files: "Files"
         case .backup: "Data"
         case .startup: "Startup"
+        case .subdomain: "Subdomains"
         }
     }
 }

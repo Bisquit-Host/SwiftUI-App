@@ -974,6 +974,18 @@
 		F3CCF5C12B34576F005FFF2C /* Allocation List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCF5C02B34576F005FFF2C /* Allocation List.swift */; };
 		F3CCF5C32B345792005FFF2C /* Allocation Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCF5C22B345792005FFF2C /* Allocation Card.swift */; };
 		F3CCF5C52B3457AE005FFF2C /* Allocation VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCF5C42B3457AE005FFF2C /* Allocation VM.swift */; };
+		F3CE5C412D538FE60094BD7B /* Subdomain List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C402D538FE60094BD7B /* Subdomain List.swift */; };
+		F3CE5C422D538FE60094BD7B /* Subdomain List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C402D538FE60094BD7B /* Subdomain List.swift */; };
+		F3CE5C432D538FE60094BD7B /* Subdomain List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C402D538FE60094BD7B /* Subdomain List.swift */; };
+		F3CE5C452D53907E0094BD7B /* Subdomain VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C442D53907E0094BD7B /* Subdomain VM.swift */; };
+		F3CE5C462D53907E0094BD7B /* Subdomain VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C442D53907E0094BD7B /* Subdomain VM.swift */; };
+		F3CE5C472D53907E0094BD7B /* Subdomain VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C442D53907E0094BD7B /* Subdomain VM.swift */; };
+		F3CE5C492D53935A0094BD7B /* Subdomain Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C482D53935A0094BD7B /* Subdomain Model.swift */; };
+		F3CE5C4A2D53935A0094BD7B /* Subdomain Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C482D53935A0094BD7B /* Subdomain Model.swift */; };
+		F3CE5C4B2D53935A0094BD7B /* Subdomain Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C482D53935A0094BD7B /* Subdomain Model.swift */; };
+		F3CE5C4D2D5395300094BD7B /* Subdomain Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C4C2D5395300094BD7B /* Subdomain Card.swift */; };
+		F3CE5C4E2D5395300094BD7B /* Subdomain Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C4C2D5395300094BD7B /* Subdomain Card.swift */; };
+		F3CE5C4F2D5395300094BD7B /* Subdomain Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C4C2D5395300094BD7B /* Subdomain Card.swift */; };
 		F3D037012CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D037002CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift */; };
 		F3D037022CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D037002CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift */; };
 		F3D037032CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D037002CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift */; };
@@ -1793,6 +1805,10 @@
 		F3CCF5C02B34576F005FFF2C /* Allocation List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation List.swift"; sourceTree = "<group>"; };
 		F3CCF5C22B345792005FFF2C /* Allocation Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation Card.swift"; sourceTree = "<group>"; };
 		F3CCF5C42B3457AE005FFF2C /* Allocation VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation VM.swift"; sourceTree = "<group>"; };
+		F3CE5C402D538FE60094BD7B /* Subdomain List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subdomain List.swift"; sourceTree = "<group>"; };
+		F3CE5C442D53907E0094BD7B /* Subdomain VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subdomain VM.swift"; sourceTree = "<group>"; };
+		F3CE5C482D53935A0094BD7B /* Subdomain Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subdomain Model.swift"; sourceTree = "<group>"; };
+		F3CE5C4C2D5395300094BD7B /* Subdomain Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subdomain Card.swift"; sourceTree = "<group>"; };
 		F3D037002CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImagePlayground Toolbar Button.swift"; sourceTree = "<group>"; };
 		F3D264332A66A926005C3777 /* Settings Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings Button.swift"; sourceTree = "<group>"; };
 		F3D264362A66A9B9005C3777 /* Settings Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings Parent.swift"; sourceTree = "<group>"; };
@@ -2428,6 +2444,7 @@
 				F31BA5B3295902DC0006D126 /* Files */,
 				F31BA5D1295904E40006D126 /* Data */,
 				F306530C2B3E337A001682A2 /* SFTP */,
+				F3CE5C3F2D538FD10094BD7B /* Subdomains */,
 			);
 			path = "Panel Tabs";
 			sourceTree = "<group>";
@@ -3276,6 +3293,17 @@
 				F367977D2A3A5AB6009F2788 /* Log VM.swift */,
 			);
 			path = Logs;
+			sourceTree = "<group>";
+		};
+		F3CE5C3F2D538FD10094BD7B /* Subdomains */ = {
+			isa = PBXGroup;
+			children = (
+				F3CE5C402D538FE60094BD7B /* Subdomain List.swift */,
+				F3CE5C4C2D5395300094BD7B /* Subdomain Card.swift */,
+				F3CE5C442D53907E0094BD7B /* Subdomain VM.swift */,
+				F3CE5C482D53935A0094BD7B /* Subdomain Model.swift */,
+			);
+			path = Subdomains;
 			sourceTree = "<group>";
 		};
 		F3D2643C2A66AB97005C3777 /* Account */ = {
@@ -4234,6 +4262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3CE5C4E2D5395300094BD7B /* Subdomain Card.swift in Sources */,
 				F3AE522329ACF7D600CB3895 /* Server Card VM.swift in Sources */,
 				F3553FB52B40939800EF0FD2 /* Allocation VM.swift in Sources */,
 				F3E2BF102C1EC94300B7A6D4 /* Contacts VM.swift in Sources */,
@@ -4247,6 +4276,7 @@
 				F3E024C52B228F4C00FFF686 /* New Task Sheet.swift in Sources */,
 				F3116F262A33E142001F067C /* Folder File.swift in Sources */,
 				F333B3B92B80CF700005B84D /* Preview Property.swift in Sources */,
+				F3CE5C452D53907E0094BD7B /* Subdomain VM.swift in Sources */,
 				F3E1D3ED2B3208BE009B7062 /* User 2Fa.swift in Sources */,
 				F3924EE729A25FBF00C4CC77 /* App Icon Picker.swift in Sources */,
 				F38F9E282CEB33510033EFE3 /* QuickLook File VM.swift in Sources */,
@@ -4281,6 +4311,7 @@
 				F33001442A4CF06D0063FE0F /* Apikey Card.swift in Sources */,
 				F3BC03C12B2063820011F98A /* Debug Key.swift in Sources */,
 				F31BA59D295902280006D126 /* Info Tab.swift in Sources */,
+				F3CE5C432D538FE60094BD7B /* Subdomain List.swift in Sources */,
 				F37A36782A35180100517EFC /* Power Menu.swift in Sources */,
 				F3553FBC2B40945C00EF0FD2 /* Allocation List Parent.swift in Sources */,
 				F32E88C82AF83E3F00959D49 /* Topbar Admin Button.swift in Sources */,
@@ -4473,6 +4504,7 @@
 				F37266E929D9EFFE005FD103 /* Cache Size.swift in Sources */,
 				F3A800322A7313E900CAC40B /* Tip Cloud Keys.swift in Sources */,
 				F30089232B3BA5300051476C /* File Permissions Parent.swift in Sources */,
+				F3CE5C4B2D53935A0094BD7B /* Subdomain Model.swift in Sources */,
 				F3CCB1CC2CAE75D0000F8207 /* Debug Settings.swift in Sources */,
 				F30088A92B3A1A500051476C /* Schedule VM.swift in Sources */,
 				F3FDFF912C89150D009EBB5C /* Asset Fetcher.swift in Sources */,
@@ -4591,6 +4623,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3FF5A102A4A3ABD003A1973 /* User Card.swift in Sources */,
+				F3CE5C462D53907E0094BD7B /* Subdomain VM.swift in Sources */,
 				F36D53282A05B868007324C6 /* FileTab NewFolder.swift in Sources */,
 				F389BB722A05B61300911EBF /* Credentials View.swift in Sources */,
 				F389BB712A05B60D00911EBF /* Credentials Button.swift in Sources */,
@@ -4675,6 +4708,7 @@
 				F39872112A1AE3CE0022B00E /* Video Player.swift in Sources */,
 				F36D53182A05B7F3007324C6 /* Panel View.swift in Sources */,
 				F3D264452A66B3A6005C3777 /* QR Code View.swift in Sources */,
+				F3CE5C4D2D5395300094BD7B /* Subdomain Card.swift in Sources */,
 				F36D53372A05B8BF007324C6 /* Backup List Footer.swift in Sources */,
 				F337D75A2A4DBC840011524E /* Create Apikey.swift in Sources */,
 				F39780262A2B9DB800956474 /* Upload Preview.swift in Sources */,
@@ -4687,6 +4721,7 @@
 				F3D7F8512C8ED3D100368ECE /* Disable 2FA View.swift in Sources */,
 				F3EB09EE2A2987F00073916A /* QuickLook File.swift in Sources */,
 				F36D530C2A05B6C4007324C6 /* Server List.swift in Sources */,
+				F3CE5C412D538FE60094BD7B /* Subdomain List.swift in Sources */,
 				F36D53462A05B92E007324C6 /* Auth Background.swift in Sources */,
 				F3D295212AF3975300ED43A0 /* Cache Model.swift in Sources */,
 				F36D531D2A05B816007324C6 /* Websocket.swift in Sources */,
@@ -4774,6 +4809,7 @@
 				F337C1632A8CE962006F321C /* Startup View.swift in Sources */,
 				F36D534B2A05B974007324C6 /* Nav Destinations.swift in Sources */,
 				F37A36752A35173B00517EFC /* Server Settings VM.swift in Sources */,
+				F3CE5C492D53935A0094BD7B /* Subdomain Model.swift in Sources */,
 				F389BB6B2A05B5E500911EBF /* Settings VM.swift in Sources */,
 				F3E467532A49903900FABE5F /* Info Stat.swift in Sources */,
 				F37A44352A05B0AA004FFDB0 /* Value Store.swift in Sources */,
@@ -4864,6 +4900,7 @@
 				F3F5BC982BF7668E00EB8FB1 /* Sensitivity Analyzer.swift in Sources */,
 				F32E88D32AF8494100959D49 /* Server List Filter.swift in Sources */,
 				F3D295A62AF3A0D200ED43A0 /* Settings VM.swift in Sources */,
+				F3CE5C472D53907E0094BD7B /* Subdomain VM.swift in Sources */,
 				F337C1552A8C29CD006F321C /* Unit Tests.swift in Sources */,
 				F3A31B072B0B144200F89C51 /* Server List Node Filter.swift in Sources */,
 				F3D295402AF39D7600ED43A0 /* App Container.swift in Sources */,
@@ -4923,6 +4960,7 @@
 				F3D295F02AF3A51300ED43A0 /* Backup List Footer.swift in Sources */,
 				F3D295312AF39C7500ED43A0 /* Language Button.swift in Sources */,
 				F3D295552AF39E1600ED43A0 /* Formatters.swift in Sources */,
+				F3CE5C4F2D5395300094BD7B /* Subdomain Card.swift in Sources */,
 				F3D295442AF39D8A00ED43A0 /* Intro.swift in Sources */,
 				F38F9E2C2CEB39D80033EFE3 /* Metadata List.swift in Sources */,
 				F32FD7202B1E065500723B88 /* Network Calls.swift in Sources */,
@@ -4983,6 +5021,7 @@
 				F3D295BF2AF3A19700ED43A0 /* Topbar Grid Button.swift in Sources */,
 				F3D295782AF39F2F00ED43A0 /* User List.swift in Sources */,
 				F380B3262BD7BA16009062E8 /* Image Picker.swift in Sources */,
+				F3CE5C4A2D53935A0094BD7B /* Subdomain Model.swift in Sources */,
 				F3D295BE2AF3A18B00ED43A0 /* Biometry Button.swift in Sources */,
 				F3E2BEE12C1C6BA800B7A6D4 /* Cache List VM.swift in Sources */,
 				F3D295BB2AF3A17900ED43A0 /* Biometry Usage View.swift in Sources */,
@@ -5023,6 +5062,7 @@
 				F3D295CB2AF3A22700ED43A0 /* QR Code View.swift in Sources */,
 				F3D2956F2AF39EEA00ED43A0 /* Websocket Delegate.swift in Sources */,
 				F3BC03BA2B1FF8E40011F98A /* Database Context Menu.swift in Sources */,
+				F3CE5C422D538FE60094BD7B /* Subdomain List.swift in Sources */,
 				F3D037032CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift in Sources */,
 				F3BC03B52B1FF4830011F98A /* Task Context Menu.swift in Sources */,
 				F30038CC2D42387600363CF4 /* Sheet Remote File.swift in Sources */,
