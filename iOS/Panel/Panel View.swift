@@ -2,7 +2,7 @@ import ScrechKit
 import PteroNet
 
 struct PanelView: View {
-    @EnvironmentObject private var settings: ValueStorage
+    @EnvironmentObject private var store: ValueStore
     @State private var vm: PanelVM
     @State private var fileVM: FileTabVM
     @State private var startupVM: StartupVM
@@ -23,7 +23,7 @@ struct PanelView: View {
     }
     
     var body: some View {
-        TabView(selection: $settings.lastTabPanel) {
+        TabView(selection: $store.lastTabPanel) {
             if let server = vm.server {
                 InfoTab(server)
                     .tab(.info)
@@ -46,9 +46,8 @@ struct PanelView: View {
                     .tab(.startup)
             }
         }
-        .sidebarAdaptableStyle()
+        .sidebarAdaptableTabView()
         .environment(vm)
-        .ignoresSafeArea(.keyboard, edges: .bottom)
         .task {
             fetchData()
         }
@@ -77,11 +76,13 @@ struct PanelView: View {
             }
         }
         
-        fileVM.fetchFiles()
-        backupVM.fetchBackups()
-        databaseVM.fetchDatabases()
-        scheduleVM.fetchSchedules()
-        startupVM.fetchStartupVariables()
+        if !System.lowPowerMode {
+            fileVM.fetchFiles()
+            backupVM.fetchBackups()
+            databaseVM.fetchDatabases()
+            scheduleVM.fetchSchedules()
+            startupVM.fetchStartupVariables()
+        }
         
         vm.updateBackups = {
             backupVM.fetchBackups()
@@ -91,10 +92,5 @@ struct PanelView: View {
 
 #Preview {
     PanelView("")
-        .environment(PanelVM(""))
-        .environment(BackupVM(""))
-        .environment(DatabaseVM(""))
-        .environment(ScheduleVM(""))
-        .environmentObject(FileTabVM(""))
-        .environmentObject(ValueStorage())
+        .environmentObject(ValueStore())
 }

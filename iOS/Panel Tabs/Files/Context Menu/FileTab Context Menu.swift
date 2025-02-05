@@ -1,15 +1,20 @@
 import ScrechKit
 import PteroNet
+import Kingfisher
 
 struct FileTabContextMenu: ViewModifier {
     @EnvironmentObject private var vm: FileTabVM
     
+    private let id: String
     private let file: FileAttributes
     private let root: String
     
-    init(_ file: FileAttributes,
-         root: String
+    init(
+        _ id: String,
+        file: FileAttributes,
+        at root: String
     ) {
+        self.id = id
         self.file = file
         self.root = root
     }
@@ -46,7 +51,7 @@ struct FileTabContextMenu: ViewModifier {
                     }
                 }
                 
-#warning("Finish")
+#warning("File info")
                 //                    MenuButton("Get Info", icon: "info.circle") {
                 //
                 //                    }
@@ -72,6 +77,9 @@ struct FileTabContextMenu: ViewModifier {
                 MenuButton("Delete", role: .destructive, icon: "trash") {
                     vm.deleteFile(name, at: root)
                 }
+#warning("File Preview")
+                //            } preview: {
+                //                FilePreview(id, path: root, name: name)
             }
             .sheet($sheetPermissions) {
                 FilePermissionsParent(file, at: root)
@@ -91,12 +99,19 @@ struct FileTabContextMenu: ViewModifier {
 
 extension View {
     func fileContextMenu(
-        _ file: FileAttributes,
+        _ id: String,
+        file: FileAttributes,
         at root: String
     ) -> some View {
         self.modifier(FileTabContextMenu(
-            file,
-            root: root
+            id,
+            file: file,
+            at: root
         ))
     }
 }
+
+//#Preview {
+//    QuickLookFile("", path: "", name: "")
+//        .environmentObject(FileTabVM(""))
+//}

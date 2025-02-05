@@ -1,7 +1,9 @@
 import ScrechKit
 import PteroNet
 
-final class ValueStorage: ObservableObject {
+final class ValueStore: ObservableObject {
+    @AppStorage("hide_status_bar") var hideStatusBar = false
+    @AppStorage("color_theme") var colorTheme: ColorTheme = .system
     @Published var updateServers = false // Triggers update on pull gesture
     
     // MARK: - Auth
@@ -12,11 +14,7 @@ final class ValueStorage: ObservableObject {
     // MARK: - App Style/Design
     @AppStorage("designCode") var designCode = 0
     @AppStorage("transparentSheet") var transparentSheet = true
-    @AppStorage("transparentList") var transparentList = false
-    
-#if !os(macOS)
-    @AppStorage("backgroundColor") var backgroundColor: Color = .black
-#endif
+    @AppStorage("transparentList") var transparentList = true
     
     // MARK: - Console
     @AppStorage("spamEnabled") var spamEnabled = false

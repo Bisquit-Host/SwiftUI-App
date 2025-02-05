@@ -2,7 +2,7 @@ import ScrechKit
 import PteroNet
 
 struct FileView: View {
-    @EnvironmentObject private var settings: ValueStorage
+    @EnvironmentObject private var store: ValueStore
     @EnvironmentObject private var vm: FileTabVM
     
     private let id, root: String
@@ -59,7 +59,7 @@ struct FileView: View {
                             .lineLimit(1)
                     }
                     
-                    if settings.devMode {
+                    if store.devMode {
                         Text(mimeType)
                             .footnote()
                             .secondary()
@@ -77,7 +77,7 @@ struct FileView: View {
                 }
             }
         }
-        .fileContextMenu(file, at: root)
+        .fileContextMenu(id, file: file, at: root)
     }
 }
 

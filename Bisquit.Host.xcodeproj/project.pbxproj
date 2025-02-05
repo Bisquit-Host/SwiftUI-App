@@ -11,6 +11,9 @@
 		F3000E16295A357800ABD30A /* Server List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3000E15295A357800ABD30A /* Server List.swift */; };
 		F3000E18295A496C00ABD30A /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3000E17295A496C00ABD30A /* Intro.swift */; };
 		F3000E1E295AE2B700ABD30A /* Guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3000E1D295AE2B700ABD30A /* Guide.swift */; };
+		F30038CA2D42387600363CF4 /* Sheet Remote File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30038C92D42387600363CF4 /* Sheet Remote File.swift */; };
+		F30038CB2D42387600363CF4 /* Sheet Remote File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30038C92D42387600363CF4 /* Sheet Remote File.swift */; };
+		F30038CC2D42387600363CF4 /* Sheet Remote File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30038C92D42387600363CF4 /* Sheet Remote File.swift */; };
 		F300888E2B39FAA60051476C /* Allocation VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCF5C42B3457AE005FFF2C /* Allocation VM.swift */; };
 		F30088902B39FAB80051476C /* Allocation List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300888F2B39FAB80051476C /* Allocation List.swift */; };
 		F30088912B39FB160051476C /* Allocation Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCF5C22B345792005FFF2C /* Allocation Card.swift */; };
@@ -103,7 +106,7 @@
 		F30C13082A545D6E00A7EFF0 /* Linking VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */; };
 		F30C130A2A545E6F00A7EFF0 /* Linking VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */; };
 		F30C130B2A545ED900A7EFF0 /* Linking VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */; };
-		F30C130C2A545F4400A7EFF0 /* Value Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* Value Storage.swift */; };
+		F30C130C2A545F4400A7EFF0 /* Value Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* Value Store.swift */; };
 		F30C130F2A54605B00A7EFF0 /* Nav Destinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5692959007E0006D126 /* Nav Destinations.swift */; };
 		F30C13102A54606900A7EFF0 /* Nav Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BAEC8C2959B3FE00111375 /* Nav Extension.swift */; };
 		F30C13122A54609000A7EFF0 /* Server List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30C13112A54609000A7EFF0 /* Server List.swift */; };
@@ -160,6 +163,22 @@
 		F31BA5B2295902D50006D126 /* Text File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5B1295902D50006D126 /* Text File.swift */; };
 		F31BA5C9295904AC0006D126 /* Data Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5C8295904AC0006D126 /* Data Tab.swift */; };
 		F31D0BB52A2573E200119D07 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31D0BB42A2573E200119D07 /* Settings.swift */; };
+		F31F31F82D52BD940095DD19 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F31F72D52BD940095DD19 /* System.swift */; };
+		F31F31F92D52BD940095DD19 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F31F72D52BD940095DD19 /* System.swift */; };
+		F31F31FA2D52BD940095DD19 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F31F72D52BD940095DD19 /* System.swift */; };
+		F31F31FB2D52BD940095DD19 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F31F72D52BD940095DD19 /* System.swift */; };
+		F31F31FC2D52BD940095DD19 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F31F72D52BD940095DD19 /* System.swift */; };
+		F31F31FD2D52BD940095DD19 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F31F72D52BD940095DD19 /* System.swift */; };
+		F31F31FE2D52BD940095DD19 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F31F72D52BD940095DD19 /* System.swift */; };
+		F31F31FF2D52BD940095DD19 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F31F72D52BD940095DD19 /* System.swift */; };
+		F31F32012D52DB950095DD19 /* Color Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F32002D52DB950095DD19 /* Color Theme.swift */; };
+		F31F32022D52DB950095DD19 /* Color Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F32002D52DB950095DD19 /* Color Theme.swift */; };
+		F31F32032D52DB950095DD19 /* Color Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F32002D52DB950095DD19 /* Color Theme.swift */; };
+		F31F32042D52DB950095DD19 /* Color Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F32002D52DB950095DD19 /* Color Theme.swift */; };
+		F31F32052D52DB950095DD19 /* Color Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F32002D52DB950095DD19 /* Color Theme.swift */; };
+		F31F32062D52DB950095DD19 /* Color Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F32002D52DB950095DD19 /* Color Theme.swift */; };
+		F31F32072D52DB950095DD19 /* Color Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F32002D52DB950095DD19 /* Color Theme.swift */; };
+		F31F32082D52DB950095DD19 /* Color Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F32002D52DB950095DD19 /* Color Theme.swift */; };
 		F320DDA52B704E3C00957D92 /* Preview Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = F320DDA42B704E3C00957D92 /* Preview Property.swift */; };
 		F323BF9F2B20B84100116B97 /* Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F323BF9E2B20B84100116B97 /* Server Card Context Menu.swift */; };
 		F323BFA22B20DC9000116B97 /* Power Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F323BFA12B20DC9000116B97 /* Power Widget.swift */; };
@@ -181,10 +200,10 @@
 		F3255E222C904A7A008E04DE /* SSH Create View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91CC2B423A26001D8F80 /* SSH Create View.swift */; };
 		F3255E232C904A7A008E04DE /* SSH Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91C82B4235BB001D8F80 /* SSH Card.swift */; };
 		F3255E242C904A7A008E04DE /* SSH List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91C42B423535001D8F80 /* SSH List.swift */; };
-		F325F7002A54BBCF00E89EC4 /* InfoTab Allocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F6FF2A54BBCF00E89EC4 /* InfoTab Allocation.swift */; };
-		F325F7012A54BBCF00E89EC4 /* InfoTab Allocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F6FF2A54BBCF00E89EC4 /* InfoTab Allocation.swift */; };
-		F325F7032A54BF7A00E89EC4 /* InfoTab Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7022A54BF7A00E89EC4 /* InfoTab Model.swift */; };
-		F325F7042A54BF7A00E89EC4 /* InfoTab Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7022A54BF7A00E89EC4 /* InfoTab Model.swift */; };
+		F325F7002A54BBCF00E89EC4 /* Info Tab Allocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F6FF2A54BBCF00E89EC4 /* Info Tab Allocation.swift */; };
+		F325F7012A54BBCF00E89EC4 /* Info Tab Allocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F6FF2A54BBCF00E89EC4 /* Info Tab Allocation.swift */; };
+		F325F7032A54BF7A00E89EC4 /* Tab Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7022A54BF7A00E89EC4 /* Tab Info.swift */; };
+		F325F7042A54BF7A00E89EC4 /* Tab Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7022A54BF7A00E89EC4 /* Tab Info.swift */; };
 		F325F7062A54C4BC00E89EC4 /* System Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7052A54C4BC00E89EC4 /* System Alerts.swift */; };
 		F325F7072A54C4BC00E89EC4 /* System Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7052A54C4BC00E89EC4 /* System Alerts.swift */; };
 		F325F7092A54CB6600E89EC4 /* Carousel Button Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7082A54CB6600E89EC4 /* Carousel Button Style.swift */; };
@@ -257,9 +276,9 @@
 		F335CA0D2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */; };
 		F335CA0E2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */; };
 		F335CA1B2C63E9A7006C71C6 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = F335CA1A2C63E9A7006C71C6 /* DeviceKit */; };
-		F336232F2A22021E006A6271 /* Value Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* Value Storage.swift */; };
+		F336232F2A22021E006A6271 /* Value Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* Value Store.swift */; };
 		F33623302A220277006A6271 /* Panel Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3029C06E9700B08696 /* Panel Model.swift */; };
-		F33623312A22048C006A6271 /* Value Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* Value Storage.swift */; };
+		F33623312A22048C006A6271 /* Value Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* Value Store.swift */; };
 		F337B3A829BC6B5400CC1195 /* Server List Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B3A729BC6B5400CC1195 /* Server List Grid.swift */; };
 		F337B4062A89FAC600DD79AA /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B4052A89FAC600DD79AA /* Entry.swift */; };
 		F337B4092A89FB4300DD79AA /* System Small Widget View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B4082A89FB4300DD79AA /* System Small Widget View.swift */; };
@@ -276,8 +295,8 @@
 		F337C16A2A8D07E2006F321C /* Startup VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337C1682A8D07E2006F321C /* Startup VM.swift */; };
 		F337D7592A4DBC840011524E /* Create Apikey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337D7582A4DBC840011524E /* Create Apikey.swift */; };
 		F337D75A2A4DBC840011524E /* Create Apikey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337D7582A4DBC840011524E /* Create Apikey.swift */; };
-		F33944112A49022A00E2F0FC /* InfoTab Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33944102A49022A00E2F0FC /* InfoTab Card.swift */; };
-		F33944122A49022A00E2F0FC /* InfoTab Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33944102A49022A00E2F0FC /* InfoTab Card.swift */; };
+		F33944112A49022A00E2F0FC /* Info Tab Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33944102A49022A00E2F0FC /* Info Tab Card.swift */; };
+		F33944122A49022A00E2F0FC /* Info Tab Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33944102A49022A00E2F0FC /* Info Tab Card.swift */; };
 		F33C2AC12C69168C002FD150 /* QuickLooking in Frameworks */ = {isa = PBXBuildFile; productRef = F33C2AC02C69168C002FD150 /* QuickLooking */; };
 		F33C2AC32C691735002FD150 /* QuickLooking in Frameworks */ = {isa = PBXBuildFile; productRef = F33C2AC22C691735002FD150 /* QuickLooking */; };
 		F33C2AC52C691764002FD150 /* QuickLooking in Frameworks */ = {isa = PBXBuildFile; productRef = F33C2AC42C691764002FD150 /* QuickLooking */; };
@@ -292,13 +311,13 @@
 		F33DE4E72B35089000E257D8 /* Background Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33DE4E62B35089000E257D8 /* Background Blur.swift */; };
 		F33DE4E92B350C8B00E257D8 /* Server Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33DE4E82B350C8B00E257D8 /* Server Card.swift */; };
 		F33DE4EB2B35C3F000E257D8 /* FileTab Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C0F9CF29E204FA0040E277 /* FileTab Context Menu.swift */; };
-		F33DE5092B364EBC00E257D8 /* InfoTab Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7022A54BF7A00E89EC4 /* InfoTab Model.swift */; };
+		F33DE5092B364EBC00E257D8 /* Tab Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7022A54BF7A00E89EC4 /* Tab Info.swift */; };
 		F33DE50C2B36E3C300E257D8 /* App Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D52B242B13FE9C00167DD6 /* App Delegate.swift */; };
 		F33DE50F2B36E3FB00E257D8 /* App Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D52B242B13FE9C00167DD6 /* App Delegate.swift */; };
 		F34076502A37701C0054BDCA /* Console Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340764F2A37701C0054BDCA /* Console Search.swift */; };
 		F34076512A37701C0054BDCA /* Console Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340764F2A37701C0054BDCA /* Console Search.swift */; };
-		F34169A52A49DF64003985E7 /* InfoTab Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34169A42A49DF64003985E7 /* InfoTab Button.swift */; };
-		F34169A62A49DF64003985E7 /* InfoTab Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34169A42A49DF64003985E7 /* InfoTab Button.swift */; };
+		F34169A52A49DF64003985E7 /* Info Tab Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34169A42A49DF64003985E7 /* Info Tab Button.swift */; };
+		F34169A62A49DF64003985E7 /* Info Tab Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34169A42A49DF64003985E7 /* Info Tab Button.swift */; };
 		F342FAA02B2C5DF300854270 /* Pow in Frameworks */ = {isa = PBXBuildFile; productRef = F342FA9F2B2C5DF300854270 /* Pow */; };
 		F342FAA62B2C615A00854270 /* Pow in Frameworks */ = {isa = PBXBuildFile; productRef = F342FAA52B2C615A00854270 /* Pow */; };
 		F342FAA82B2C61ED00854270 /* Pow in Frameworks */ = {isa = PBXBuildFile; productRef = F342FAA72B2C61ED00854270 /* Pow */; };
@@ -365,6 +384,12 @@
 		F3499EFA2A277D0F006101B7 /* File Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3499EF92A277D0F006101B7 /* File Tab.swift */; };
 		F3499EFD2A277E3D006101B7 /* File Name And Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3499EFC2A277E3D006101B7 /* File Name And Icon.swift */; };
 		F3499EFE2A277FDF006101B7 /* File Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266A929D71A1B005FD103 /* File Icon.swift */; };
+		F34BB6B92D3DC2B800D27BE0 /* File Preview VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34BB6B82D3DC2B800D27BE0 /* File Preview VM.swift */; };
+		F34BB6BB2D3DC2B800D27BE0 /* File Preview VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34BB6B82D3DC2B800D27BE0 /* File Preview VM.swift */; };
+		F34BB6BC2D3DC2B800D27BE0 /* File Preview VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34BB6B82D3DC2B800D27BE0 /* File Preview VM.swift */; };
+		F34BB6BE2D3DC2D300D27BE0 /* File Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34BB6BD2D3DC2D300D27BE0 /* File Preview.swift */; };
+		F34BB6BF2D3DC2D300D27BE0 /* File Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34BB6BD2D3DC2D300D27BE0 /* File Preview.swift */; };
+		F34BB6C02D3DC2D300D27BE0 /* File Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34BB6BD2D3DC2D300D27BE0 /* File Preview.swift */; };
 		F34C055929F11A4D0031ABE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F31BA52A2958FF7D0006D126 /* Assets.xcassets */; };
 		F34C055A29F11E010031ABE1 /* Server Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* Server Card VM.swift */; };
 		F34EB0952A4A75E70034A68A /* Intro Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34EB0942A4A75E70034A68A /* Intro Model.swift */; };
@@ -565,7 +590,7 @@
 		F37A36762A35173F00517EFC /* Console View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A366A2A35158A00517EFC /* Console View.swift */; };
 		F37A36782A35180100517EFC /* Power Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A36772A35180100517EFC /* Power Menu.swift */; };
 		F37A36792A35180100517EFC /* Power Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A36772A35180100517EFC /* Power Menu.swift */; };
-		F37A44352A05B0AA004FFDB0 /* Value Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* Value Storage.swift */; };
+		F37A44352A05B0AA004FFDB0 /* Value Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* Value Store.swift */; };
 		F37B90782BFEA00300597624 /* Ornament Info Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37B90752BFEA00200597624 /* Ornament Info Properties.swift */; };
 		F37B90792BFEA00300597624 /* Panel Ornament Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37B90762BFEA00300597624 /* Panel Ornament Info.swift */; };
 		F37B907A2BFEA00300597624 /* Ornament Info Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37B90772BFEA00300597624 /* Ornament Info Settings.swift */; };
@@ -648,12 +673,6 @@
 		F38F9E152CE7647D0033EFE3 /* Image Playground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E112CE7647D0033EFE3 /* Image Playground.swift */; };
 		F38F9E162CE7647D0033EFE3 /* Image Playground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E112CE7647D0033EFE3 /* Image Playground.swift */; };
 		F38F9E1A2CEA18150033EFE3 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = F38F9E192CEA18150033EFE3 /* DeviceKit */; };
-		F38F9E202CEAB3410033EFE3 /* Sidebar Adoptable TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E1F2CEAB3410033EFE3 /* Sidebar Adoptable TabView.swift */; };
-		F38F9E212CEAB3410033EFE3 /* Sidebar Adoptable TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E1F2CEAB3410033EFE3 /* Sidebar Adoptable TabView.swift */; };
-		F38F9E222CEAB3410033EFE3 /* Sidebar Adoptable TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E1F2CEAB3410033EFE3 /* Sidebar Adoptable TabView.swift */; };
-		F38F9E242CEAB3410033EFE3 /* Sidebar Adoptable TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E1F2CEAB3410033EFE3 /* Sidebar Adoptable TabView.swift */; };
-		F38F9E252CEAB3410033EFE3 /* Sidebar Adoptable TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E1F2CEAB3410033EFE3 /* Sidebar Adoptable TabView.swift */; };
-		F38F9E262CEAB3410033EFE3 /* Sidebar Adoptable TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E1F2CEAB3410033EFE3 /* Sidebar Adoptable TabView.swift */; };
 		F38F9E282CEB33510033EFE3 /* QuickLook File VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E272CEB33510033EFE3 /* QuickLook File VM.swift */; };
 		F38F9E292CEB33510033EFE3 /* QuickLook File VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E272CEB33510033EFE3 /* QuickLook File VM.swift */; };
 		F38F9E2A2CEB33510033EFE3 /* QuickLook File VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E272CEB33510033EFE3 /* QuickLook File VM.swift */; };
@@ -871,7 +890,7 @@
 		F3AF96D329DE127400D30A8F /* Start Page VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA57B2959011B0006D126 /* Start Page VM.swift */; };
 		F3AF96F929DF277A00D30A8F /* Backup Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF96F829DF277A00D30A8F /* Backup Card.swift */; };
 		F3AFCB952A4AF6C10080C257 /* File Name And Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3499EFC2A277E3D006101B7 /* File Name And Icon.swift */; };
-		F3B1196D29A13CA6003BB68C /* Value Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* Value Storage.swift */; };
+		F3B1196D29A13CA6003BB68C /* Value Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* Value Store.swift */; };
 		F3B1196F29A155D8003BB68C /* Suspended Server Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196E29A155D8003BB68C /* Suspended Server Card.swift */; };
 		F3B138722A2D232B0026EAEE /* Server Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* Server Card VM.swift */; };
 		F3B1388A2A2D4D110026EAEE /* File Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266A929D71A1B005FD103 /* File Icon.swift */; };
@@ -987,8 +1006,8 @@
 		F3D295362AF39D0B00ED43A0 /* Linking VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */; };
 		F3D295372AF39D1300ED43A0 /* Tabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D295122AF396FD00ED43A0 /* Tabs.swift */; };
 		F3D295382AF39D1700ED43A0 /* Nav State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA565295900300006D126 /* Nav State.swift */; };
-		F3D295392AF39D1B00ED43A0 /* Value Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* Value Storage.swift */; };
-		F3D2953B2AF39D2B00ED43A0 /* InfoTab Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7022A54BF7A00E89EC4 /* InfoTab Model.swift */; };
+		F3D295392AF39D1B00ED43A0 /* Value Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* Value Store.swift */; };
+		F3D2953B2AF39D2B00ED43A0 /* Tab Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7022A54BF7A00E89EC4 /* Tab Info.swift */; };
 		F3D2953D2AF39D3A00ED43A0 /* Nav Destinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5692959007E0006D126 /* Nav Destinations.swift */; };
 		F3D2953E2AF39D5E00ED43A0 /* Bisquit.Host App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* Bisquit.Host App.swift */; };
 		F3D2953F2AF39D6B00ED43A0 /* Network VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F310A2EF2A56AF86001AF45F /* Network VM.swift */; };
@@ -1179,7 +1198,7 @@
 		F3E08EB22A2CE19900116C1C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F3E08EB12A2CE19900116C1C /* Kingfisher */; };
 		F3E08EB62A2CE56200116C1C /* App Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E08EB52A2CE56200116C1C /* App Settings.swift */; };
 		F3E08EBF2A2CE87800116C1C /* Start Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E08EBE2A2CE87800116C1C /* Start Page.swift */; };
-		F3E08EC22A2CE89400116C1C /* Value Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* Value Storage.swift */; };
+		F3E08EC22A2CE89400116C1C /* Value Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* Value Store.swift */; };
 		F3E08EC32A2CE92A00116C1C /* Panel Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3029C06E9700B08696 /* Panel Model.swift */; };
 		F3E08EC62A2CEA6400116C1C /* Start Page VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA57B2959011B0006D126 /* Start Page VM.swift */; };
 		F3E08ECE2A2CEDD800116C1C /* Panel View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E08ECD2A2CEDD800116C1C /* Panel View.swift */; };
@@ -1287,10 +1306,10 @@
 		F3FDFF912C89150D009EBB5C /* Asset Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF872C8912F1009EBB5C /* Asset Fetcher.swift */; };
 		F3FF59FF2A4A3188003A1973 /* User List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF59FE2A4A3188003A1973 /* User List.swift */; };
 		F3FF5A002A4A3188003A1973 /* User List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF59FE2A4A3188003A1973 /* User List.swift */; };
-		F3FF5A032A4A359C003A1973 /* InfoTab Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A022A4A359C003A1973 /* InfoTab Buttons.swift */; };
-		F3FF5A042A4A359C003A1973 /* InfoTab Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A022A4A359C003A1973 /* InfoTab Buttons.swift */; };
-		F3FF5A092A4A3745003A1973 /* InfoTab Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A082A4A3745003A1973 /* InfoTab Background.swift */; };
-		F3FF5A0A2A4A3745003A1973 /* InfoTab Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A082A4A3745003A1973 /* InfoTab Background.swift */; };
+		F3FF5A032A4A359C003A1973 /* Info Tab Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A022A4A359C003A1973 /* Info Tab Buttons.swift */; };
+		F3FF5A042A4A359C003A1973 /* Info Tab Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A022A4A359C003A1973 /* Info Tab Buttons.swift */; };
+		F3FF5A092A4A3745003A1973 /* Info Tab Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A082A4A3745003A1973 /* Info Tab Background.swift */; };
+		F3FF5A0A2A4A3745003A1973 /* Info Tab Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A082A4A3745003A1973 /* Info Tab Background.swift */; };
 		F3FF5A0C2A4A386F003A1973 /* Users VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A0B2A4A386F003A1973 /* Users VM.swift */; };
 		F3FF5A0D2A4A386F003A1973 /* Users VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A0B2A4A386F003A1973 /* Users VM.swift */; };
 		F3FF5A0F2A4A3ABD003A1973 /* User Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A0E2A4A3ABD003A1973 /* User Card.swift */; };
@@ -1421,6 +1440,7 @@
 		F3000E15295A357800ABD30A /* Server List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List.swift"; sourceTree = "<group>"; };
 		F3000E17295A496C00ABD30A /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
 		F3000E1D295AE2B700ABD30A /* Guide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guide.swift; sourceTree = "<group>"; };
+		F30038C92D42387600363CF4 /* Sheet Remote File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sheet Remote File.swift"; sourceTree = "<group>"; };
 		F300888F2B39FAB80051476C /* Allocation List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation List.swift"; sourceTree = "<group>"; };
 		F30088922B3A02D50051476C /* Log List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log List.swift"; sourceTree = "<group>"; };
 		F30088992B3A0C740051476C /* User Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Card.swift"; sourceTree = "<group>"; };
@@ -1493,6 +1513,8 @@
 		F31BA5B6295903100006D126 /* Des Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Des Image.swift"; sourceTree = "<group>"; };
 		F31BA5C8295904AC0006D126 /* Data Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data Tab.swift"; sourceTree = "<group>"; };
 		F31D0BB42A2573E200119D07 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		F31F31F72D52BD940095DD19 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
+		F31F32002D52DB950095DD19 /* Color Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color Theme.swift"; sourceTree = "<group>"; };
 		F320DDA42B704E3C00957D92 /* Preview Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preview Property.swift"; sourceTree = "<group>"; };
 		F323BF9E2B20B84100116B97 /* Server Card Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Context Menu.swift"; sourceTree = "<group>"; };
 		F323BFA12B20DC9000116B97 /* Power Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Widget.swift"; sourceTree = "<group>"; };
@@ -1501,8 +1523,8 @@
 		F323D8D22A2D668D002EDC62 /* File Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Tab.swift"; sourceTree = "<group>"; };
 		F3255E162C9049AF008E04DE /* Settings Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings Button.swift"; sourceTree = "<group>"; };
 		F3255E192C904A03008E04DE /* Settings View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings View.swift"; sourceTree = "<group>"; };
-		F325F6FF2A54BBCF00E89EC4 /* InfoTab Allocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InfoTab Allocation.swift"; sourceTree = "<group>"; };
-		F325F7022A54BF7A00E89EC4 /* InfoTab Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InfoTab Model.swift"; sourceTree = "<group>"; };
+		F325F6FF2A54BBCF00E89EC4 /* Info Tab Allocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab Allocation.swift"; sourceTree = "<group>"; };
+		F325F7022A54BF7A00E89EC4 /* Tab Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tab Info.swift"; sourceTree = "<group>"; };
 		F325F7052A54C4BC00E89EC4 /* System Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "System Alerts.swift"; sourceTree = "<group>"; };
 		F325F7082A54CB6600E89EC4 /* Carousel Button Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Carousel Button Style.swift"; sourceTree = "<group>"; };
 		F3287A732B109DD0001AFE54 /* Widget Live Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Widget Live Activity.swift"; sourceTree = "<group>"; };
@@ -1535,12 +1557,12 @@
 		F337C1612A8CE7C0006F321C /* Startup Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Startup Card.swift"; sourceTree = "<group>"; };
 		F337C1682A8D07E2006F321C /* Startup VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Startup VM.swift"; sourceTree = "<group>"; };
 		F337D7582A4DBC840011524E /* Create Apikey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Create Apikey.swift"; sourceTree = "<group>"; };
-		F33944102A49022A00E2F0FC /* InfoTab Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InfoTab Card.swift"; sourceTree = "<group>"; };
+		F33944102A49022A00E2F0FC /* Info Tab Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab Card.swift"; sourceTree = "<group>"; };
 		F33CDBFA2A26A571008D0214 /* Server Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card.swift"; sourceTree = "<group>"; };
 		F33DE4E62B35089000E257D8 /* Background Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Background Blur.swift"; sourceTree = "<group>"; };
 		F33DE4E82B350C8B00E257D8 /* Server Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card.swift"; sourceTree = "<group>"; };
 		F340764F2A37701C0054BDCA /* Console Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Console Search.swift"; sourceTree = "<group>"; };
-		F34169A42A49DF64003985E7 /* InfoTab Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InfoTab Button.swift"; sourceTree = "<group>"; };
+		F34169A42A49DF64003985E7 /* Info Tab Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab Button.swift"; sourceTree = "<group>"; };
 		F342FAAD2B2C6A5000854270 /* Info Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab.swift"; sourceTree = "<group>"; };
 		F342FAB22B2E43D500854270 /* Log Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log Card.swift"; sourceTree = "<group>"; };
 		F3437CA1297360D30064808F /* Schedule Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Schedule Card.swift"; sourceTree = "<group>"; };
@@ -1559,6 +1581,8 @@
 		F3499EF92A277D0F006101B7 /* File Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Tab.swift"; sourceTree = "<group>"; };
 		F3499EFC2A277E3D006101B7 /* File Name And Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Name And Icon.swift"; sourceTree = "<group>"; };
 		F34AD7C62A5493CC007752A7 /* visionOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = visionOS.entitlements; sourceTree = "<group>"; };
+		F34BB6B82D3DC2B800D27BE0 /* File Preview VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Preview VM.swift"; sourceTree = "<group>"; };
+		F34BB6BD2D3DC2D300D27BE0 /* File Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Preview.swift"; sourceTree = "<group>"; };
 		F34C055C29F151250031ABE1 /* Watch App.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Watch App.entitlements"; sourceTree = "<group>"; };
 		F34EB0942A4A75E70034A68A /* Intro Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Intro Model.swift"; sourceTree = "<group>"; };
 		F34F28992ACDAD9B00FD618A /* Animated Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animated Tab.swift"; sourceTree = "<group>"; };
@@ -1656,7 +1680,6 @@
 		F38928312A445EA900561CDF /* Server Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card.swift"; sourceTree = "<group>"; };
 		F38F9E082CE6CCF90033EFE3 /* Image Playground Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image Playground Button.swift"; sourceTree = "<group>"; };
 		F38F9E112CE7647D0033EFE3 /* Image Playground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image Playground.swift"; sourceTree = "<group>"; };
-		F38F9E1F2CEAB3410033EFE3 /* Sidebar Adoptable TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sidebar Adoptable TabView.swift"; sourceTree = "<group>"; };
 		F38F9E272CEB33510033EFE3 /* QuickLook File VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuickLook File VM.swift"; sourceTree = "<group>"; };
 		F38F9E2B2CEB39D80033EFE3 /* Metadata List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Metadata List.swift"; sourceTree = "<group>"; };
 		F3924EDA29A2291F00C4CC77 /* Language Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Language Button.swift"; sourceTree = "<group>"; };
@@ -1729,7 +1752,7 @@
 		F3AF91C82B4235BB001D8F80 /* SSH Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SSH Card.swift"; sourceTree = "<group>"; };
 		F3AF91CC2B423A26001D8F80 /* SSH Create View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SSH Create View.swift"; sourceTree = "<group>"; };
 		F3AF96F829DF277A00D30A8F /* Backup Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Backup Card.swift"; sourceTree = "<group>"; };
-		F3B1196C29A13CA6003BB68C /* Value Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Value Storage.swift"; sourceTree = "<group>"; };
+		F3B1196C29A13CA6003BB68C /* Value Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Value Store.swift"; sourceTree = "<group>"; };
 		F3B1196E29A155D8003BB68C /* Suspended Server Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Suspended Server Card.swift"; sourceTree = "<group>"; };
 		F3B4BD7829A8B955002A5A1B /* Auth View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auth View.swift"; sourceTree = "<group>"; };
 		F3B6372E2A35A82F00CB374C /* Console Inspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Console Inspector.swift"; sourceTree = "<group>"; };
@@ -1853,8 +1876,8 @@
 		F3FDFF8A2C89130F009EBB5C /* Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget.swift; sourceTree = "<group>"; };
 		F3FDFF8C2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = CryptoPriceWidget.intentdefinition; sourceTree = "<group>"; };
 		F3FF59FE2A4A3188003A1973 /* User List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User List.swift"; sourceTree = "<group>"; };
-		F3FF5A022A4A359C003A1973 /* InfoTab Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InfoTab Buttons.swift"; sourceTree = "<group>"; };
-		F3FF5A082A4A3745003A1973 /* InfoTab Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InfoTab Background.swift"; sourceTree = "<group>"; };
+		F3FF5A022A4A359C003A1973 /* Info Tab Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab Buttons.swift"; sourceTree = "<group>"; };
+		F3FF5A082A4A3745003A1973 /* Info Tab Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab Background.swift"; sourceTree = "<group>"; };
 		F3FF5A0B2A4A386F003A1973 /* Users VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Users VM.swift"; sourceTree = "<group>"; };
 		F3FF5A0E2A4A3ABD003A1973 /* User Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Card.swift"; sourceTree = "<group>"; };
 		F3FFB73E2A57F02C00220FA5 /* Info Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab.swift"; sourceTree = "<group>"; };
@@ -2189,16 +2212,17 @@
 			isa = PBXGroup;
 			children = (
 				F31BA5262958FF7C0006D126 /* Bisquit.Host App.swift */,
-				F3B1196C29A13CA6003BB68C /* Value Storage.swift */,
+				F3B1196C29A13CA6003BB68C /* Value Store.swift */,
 				F3D52B242B13FE9C00167DD6 /* App Delegate.swift */,
 				F3BC03C02B2063820011F98A /* Debug Key.swift */,
 				F32FD71D2B1E054300723B88 /* Network Calls.swift */,
+				F31F31F72D52BD940095DD19 /* System.swift */,
+				F31BA564295900270006D126 /* Nav */,
 				F36797722A39C4ED009F2788 /* Localizable.xcstrings */,
 				F378E3322AF38286009925DB /* PrivacyInfo.xcprivacy */,
 				F304498629E98AE4006DC0C7 /* Bisquit.Host.entitlements */,
 				F3CCB1D12CAE8B76000F8207 /* Bisquit-Host-Info.plist */,
 				F31BA52A2958FF7D0006D126 /* Assets.xcassets */,
-				F31BA564295900270006D126 /* Navigation */,
 				F36436EE2A2FE91C00976374 /* SpriteKit */,
 				F3EDEE3629C0CB4500B08696 /* Networking */,
 				F35B89BC2A7256F4000B5EEF /* Tips */,
@@ -2249,17 +2273,18 @@
 			path = "Clip Demo";
 			sourceTree = "<group>";
 		};
-		F31BA564295900270006D126 /* Navigation */ = {
+		F31BA564295900270006D126 /* Nav */ = {
 			isa = PBXGroup;
 			children = (
 				F31BA5672959006F0006D126 /* App Container.swift */,
+				F31F32002D52DB950095DD19 /* Color Theme.swift */,
 				F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */,
 				F31BA565295900300006D126 /* Nav State.swift */,
 				F31BA5692959007E0006D126 /* Nav Destinations.swift */,
 				F3BAEC8C2959B3FE00111375 /* Nav Extension.swift */,
 				F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */,
 			);
-			path = Navigation;
+			path = Nav;
 			sourceTree = "<group>";
 		};
 		F31BA580295901400006D126 /* Intro */ = {
@@ -2301,7 +2326,6 @@
 			children = (
 				F31BA595295901F70006D126 /* Panel View.swift */,
 				F3EDEE3429C0C84C00B08696 /* Panel VM.swift */,
-				F38F9E1F2CEAB3410033EFE3 /* Sidebar Adoptable TabView.swift */,
 				F3EDEE3029C06E9700B08696 /* Panel Model.swift */,
 				F34F28992ACDAD9B00FD618A /* Animated Tab.swift */,
 				F3D295122AF396FD00ED43A0 /* Tabs.swift */,
@@ -2315,17 +2339,17 @@
 			isa = PBXGroup;
 			children = (
 				F31BA59C295902280006D126 /* Info Tab.swift */,
-				F325F6FF2A54BBCF00E89EC4 /* InfoTab Allocation.swift */,
-				F3FF5A022A4A359C003A1973 /* InfoTab Buttons.swift */,
-				F3FF5A082A4A3745003A1973 /* InfoTab Background.swift */,
-				F34169A42A49DF64003985E7 /* InfoTab Button.swift */,
+				F325F6FF2A54BBCF00E89EC4 /* Info Tab Allocation.swift */,
+				F3FF5A022A4A359C003A1973 /* Info Tab Buttons.swift */,
+				F3FF5A082A4A3745003A1973 /* Info Tab Background.swift */,
+				F34169A42A49DF64003985E7 /* Info Tab Button.swift */,
 				F303214A2B3FEA45002A73B8 /* Panel Settings View.swift */,
 				F3553FB22B40653000EF0FD2 /* Panel Settings Parent.swift */,
-				F33944102A49022A00E2F0FC /* InfoTab Card.swift */,
+				F33944102A49022A00E2F0FC /* Info Tab Card.swift */,
 				F3E467542A49939300FABE5F /* Info Relative Stats.swift */,
 				F3B81DF02A49C96000633B66 /* Info Absolute Stats.swift */,
 				F3E467512A49903900FABE5F /* Info Stat.swift */,
-				F325F7022A54BF7A00E89EC4 /* InfoTab Model.swift */,
+				F325F7022A54BF7A00E89EC4 /* Tab Info.swift */,
 				F3553FB72B4093B400EF0FD2 /* Allocations */,
 				F3FF5A012A4A318E003A1973 /* Users */,
 				F3C8C76F2A3A9B23000CC7E3 /* Logs */,
@@ -2354,6 +2378,7 @@
 				F37266BF29D826F5005FD103 /* File Details.swift */,
 				F37266A929D71A1B005FD103 /* File Icon.swift */,
 				F3F5BC952BF7668E00EB8FB1 /* Sensitivity Analyzer.swift */,
+				F34BB6B72D3DC2A300D27BE0 /* Context Menu */,
 				F37DDA7429E2AABF00B9680C /* Elements */,
 				F38F9E102CE764060033EFE3 /* Image Playground */,
 				F3BEEBC82A4AB45E00E686B8 /* Upload */,
@@ -2588,6 +2613,16 @@
 			path = Elements;
 			sourceTree = "<group>";
 		};
+		F34BB6B72D3DC2A300D27BE0 /* Context Menu */ = {
+			isa = PBXGroup;
+			children = (
+				F3C0F9CF29E204FA0040E277 /* FileTab Context Menu.swift */,
+				F34BB6BD2D3DC2D300D27BE0 /* File Preview.swift */,
+				F34BB6B82D3DC2B800D27BE0 /* File Preview VM.swift */,
+			);
+			path = "Context Menu";
+			sourceTree = "<group>";
+		};
 		F350638329DC2D2A0010B717 /* Elements */ = {
 			isa = PBXGroup;
 			children = (
@@ -2802,7 +2837,6 @@
 				F31BA5AF295902C70006D126 /* Folder Path.swift */,
 				F37DDA7529E2AF7600B9680C /* Folder Path VM.swift */,
 				F3C0F9D129E2A62A0040E277 /* FileTab NewFolder.swift */,
-				F3C0F9CF29E204FA0040E277 /* FileTab Context Menu.swift */,
 				F30089222B3BA5300051476C /* File Permissions Parent.swift */,
 				F300891D2B3B87FB0051476C /* File Permissions View.swift */,
 			);
@@ -3221,6 +3255,7 @@
 			isa = PBXGroup;
 			children = (
 				F3FA61532A1F8DB500A65AE1 /* Upload Menu.swift */,
+				F30038C92D42387600363CF4 /* Sheet Remote File.swift */,
 				F380B3232BD7B9B6009062E8 /* Image Picker.swift */,
 				F393C7BA2A18437300DE33F9 /* Upload File.swift */,
 				F39780242A2B9DB800956474 /* Upload Preview.swift */,
@@ -3913,13 +3948,13 @@
 				F3000E04295A341000ABD30A /* tvOS */,
 				F3BD76F12A43C890003E7385 /* visionOS */,
 				F31BA54D2958FFAF0006D126 /* Clip Demo */,
-				F3464CF72A862D2C00188B0C /* Intent */,
 				F38637362A8641120069F074 /* Widgets Extension */,
+				F3E2BEF42C1DA07E00B7A6D4 /* Contact Provider Extension */,
+				F3A7CEC22C8B685500413400 /* iMessage Extension */,
+				F3464CF72A862D2C00188B0C /* Intent */,
 				F3FDFF5E2C89120D009EBB5C /* Intent Handler */,
 				F337C1512A8C29CD006F321C /* Unit Tests */,
 				F3D296062AF3BE5800ED43A0 /* UI Tests */,
-				F3E2BEF42C1DA07E00B7A6D4 /* Contact Provider Extension */,
-				F3A7CEC22C8B685500413400 /* iMessage Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -4118,6 +4153,7 @@
 				F37061C829774869009B4067 /* Nav Extension.swift in Sources */,
 				F3A7CF682C8DF3C900413400 /* Video File VM.swift in Sources */,
 				F30088A62B3A18A80051476C /* Database VM.swift in Sources */,
+				F31F32062D52DB950095DD19 /* Color Theme.swift in Sources */,
 				F3AFCB952A4AF6C10080C257 /* File Name And Icon.swift in Sources */,
 				F3BC03BD2B1FFBD50011F98A /* Backup Context Menu.swift in Sources */,
 				F33CDC022A26B930008D0214 /* Browser.swift in Sources */,
@@ -4128,7 +4164,6 @@
 				F3F2A5BB29AC296D00AD20A4 /* Server Card Suspended.swift in Sources */,
 				F30C13042A545ADC00A7EFF0 /* Nav State.swift in Sources */,
 				F37080512A2A1EBA0046CE70 /* Schedule Task.swift in Sources */,
-				F38F9E202CEAB3410033EFE3 /* Sidebar Adoptable TabView.swift in Sources */,
 				F3464D262A86397F00188B0C /* PowerSignalAppEnum.swift in Sources */,
 				F3EB09DF2A297F090073916A /* Des Image.swift in Sources */,
 				F39E683D2D2D6A380002BA96 /* Audio Player View.swift in Sources */,
@@ -4137,7 +4172,7 @@
 				F37266CD29D96C98005FD103 /* Websocket Delegate.swift in Sources */,
 				F35081B02AF30F4B00835CC0 /* Tip Cloud Keys.swift in Sources */,
 				F3BC03B32B1FF4830011F98A /* Task Context Menu.swift in Sources */,
-				F33623312A22048C006A6271 /* Value Storage.swift in Sources */,
+				F33623312A22048C006A6271 /* Value Store.swift in Sources */,
 				F3EB09DC2A295F780073916A /* Text File.swift in Sources */,
 				F3D22C092A26564C00721113 /* Cloud Keys.swift in Sources */,
 				F342FAAF2B2E07FF00854270 /* Users VM.swift in Sources */,
@@ -4167,6 +4202,7 @@
 				F39D68142A26373F00B9BDFC /* SptiteKit BisquitFall.swift in Sources */,
 				F30C13162A5461BB00A7EFF0 /* Cache VM.swift in Sources */,
 				F3796564295C51C80074CA3D /* Progress Bar.swift in Sources */,
+				F31F31FD2D52BD940095DD19 /* System.swift in Sources */,
 				F30089262B3BAD200051476C /* File Permissions View.swift in Sources */,
 				F3499EF42A26DE92006101B7 /* Guide Model.swift in Sources */,
 				F3E024C62B228F4C00FFF686 /* New Task Sheet.swift in Sources */,
@@ -4223,7 +4259,7 @@
 				F37266C029D826F5005FD103 /* File Details.swift in Sources */,
 				F3464D2A2A863A6000188B0C /* Create Backup.swift in Sources */,
 				F3E97C7929B4B569008CBDD6 /* Credentials VM.swift in Sources */,
-				F325F7032A54BF7A00E89EC4 /* InfoTab Model.swift in Sources */,
+				F325F7032A54BF7A00E89EC4 /* Tab Info.swift in Sources */,
 				F3A7CF052C8BBC3200413400 /* Server Card Context Menu.swift in Sources */,
 				F31BA57A295901110006D126 /* Start Page.swift in Sources */,
 				F31578B5296760710016A600 /* Server Card.swift in Sources */,
@@ -4238,8 +4274,9 @@
 				F3287A7B2B10A17E001AFE54 /* Widget Live Activity.swift in Sources */,
 				F31BA5682959006F0006D126 /* App Container.swift in Sources */,
 				F3D2643E2A66ABB2005C3777 /* Account Parent.swift in Sources */,
+				F34BB6BE2D3DC2D300D27BE0 /* File Preview.swift in Sources */,
 				F36B73872C8AEAE700E858FE /* Model Asset.swift in Sources */,
-				F325F7002A54BBCF00E89EC4 /* InfoTab Allocation.swift in Sources */,
+				F325F7002A54BBCF00E89EC4 /* Info Tab Allocation.swift in Sources */,
 				F3924EDF29A2333F00C4CC77 /* Settings VM.swift in Sources */,
 				F33001442A4CF06D0063FE0F /* Apikey Card.swift in Sources */,
 				F3BC03C12B2063820011F98A /* Debug Key.swift in Sources */,
@@ -4253,7 +4290,7 @@
 				F3A1D2312A201C570053261E /* Enums.swift in Sources */,
 				F3E467522A49903900FABE5F /* Info Stat.swift in Sources */,
 				F337C1692A8D07E2006F321C /* Startup VM.swift in Sources */,
-				F3FF5A032A4A359C003A1973 /* InfoTab Buttons.swift in Sources */,
+				F3FF5A032A4A359C003A1973 /* Info Tab Buttons.swift in Sources */,
 				F3DC4E2629AEC36300D27EC5 /* Credentials View.swift in Sources */,
 				F31BA591295901C00006D126 /* Browser VM.swift in Sources */,
 				F3AF91CD2B423A26001D8F80 /* SSH Create View.swift in Sources */,
@@ -4263,8 +4300,10 @@
 				F3E8415629FECB6800609DA3 /* Browser Sticker.swift in Sources */,
 				F385824229D6215100BEEE1D /* App Icon.swift in Sources */,
 				F36797782A3A55E1009F2788 /* Log List Parent.swift in Sources */,
+				F31F32052D52DB950095DD19 /* Color Theme.swift in Sources */,
 				F380B3282BD7C4A4009062E8 /* Upload Preview List.swift in Sources */,
 				F3AF91C12B423492001D8F80 /* SSH VM.swift in Sources */,
+				F34BB6BC2D3DC2B800D27BE0 /* File Preview VM.swift in Sources */,
 				F3EDEE3129C06E9700B08696 /* Panel Model.swift in Sources */,
 				F37A36732A3515DC00517EFC /* Server Settings VM.swift in Sources */,
 				F311CAAE2A646612004E4A4A /* Log Detail View.swift in Sources */,
@@ -4328,7 +4367,6 @@
 				F3FA61542A1F8DB500A65AE1 /* Upload Menu.swift in Sources */,
 				F34076502A37701C0054BDCA /* Console Search.swift in Sources */,
 				F3880A262A92A15E0052A978 /* Contact Manager.swift in Sources */,
-				F38F9E252CEAB3410033EFE3 /* Sidebar Adoptable TabView.swift in Sources */,
 				F3DC4E2229AEAF3E00D27EC5 /* Credentials Button.swift in Sources */,
 				F3B637522A35F3EA00CB374C /* Command Line.swift in Sources */,
 				F32FD0312CF606960038D62C /* Backup Context Menu Control Group.swift in Sources */,
@@ -4353,9 +4391,9 @@
 				F300889E2B3A17DD0051476C /* Backup VM.swift in Sources */,
 				F3EB09ED2A2987F00073916A /* QuickLook File.swift in Sources */,
 				F385824829D626FE00BEEE1D /* Biometry Button.swift in Sources */,
-				F3B1196D29A13CA6003BB68C /* Value Storage.swift in Sources */,
+				F3B1196D29A13CA6003BB68C /* Value Store.swift in Sources */,
 				F3B81DF12A49C96000633B66 /* Info Absolute Stats.swift in Sources */,
-				F34169A52A49DF64003985E7 /* InfoTab Button.swift in Sources */,
+				F34169A52A49DF64003985E7 /* Info Tab Button.swift in Sources */,
 				F3E8B3502CF485FB005D25F8 /* Console Message.swift in Sources */,
 				F37DDA7629E2AF7600B9680C /* Folder Path VM.swift in Sources */,
 				F335CA0B2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */,
@@ -4378,6 +4416,7 @@
 				F337C1602A8C2CE0006F321C /* Startup View.swift in Sources */,
 				F32DB8A829AE6B800074E045 /* Start Page Footer.swift in Sources */,
 				F3DD93D32A372BED006A41AA /* Console Overlay.swift in Sources */,
+				F30038CB2D42387600363CF4 /* Sheet Remote File.swift in Sources */,
 				F3A1D2352A201CBB0053261E /* Browser Spec.swift in Sources */,
 				F3E467552A49939300FABE5F /* Info Relative Stats.swift in Sources */,
 				F36B73A92C8B0B7B00E858FE /* Audio Player View.swift in Sources */,
@@ -4389,6 +4428,7 @@
 				F3D264342A66A926005C3777 /* Settings Button.swift in Sources */,
 				F31BA593295901D00006D126 /* Discover.swift in Sources */,
 				F3B6372F2A35A82F00CB374C /* Console Inspector.swift in Sources */,
+				F31F31FB2D52BD940095DD19 /* System.swift in Sources */,
 				F3EDEE3A29C0CB8000B08696 /* Websocket Delegate.swift in Sources */,
 				F3C62CE3298A7D8600434636 /* Support.swift in Sources */,
 				F3A391BA29DB5E6900591C84 /* Cache Expiration.swift in Sources */,
@@ -4414,7 +4454,7 @@
 				F325F7092A54CB6600E89EC4 /* Carousel Button Style.swift in Sources */,
 				F367977E2A3A5AB6009F2788 /* Log VM.swift in Sources */,
 				F38F9E2E2CEB39D80033EFE3 /* Metadata List.swift in Sources */,
-				F3FF5A092A4A3745003A1973 /* InfoTab Background.swift in Sources */,
+				F3FF5A092A4A3745003A1973 /* Info Tab Background.swift in Sources */,
 				F3A28AD82C57ADF100010454 /* Demo Server.swift in Sources */,
 				F3573BC22C6511040051259E /* Intents.intentdefinition in Sources */,
 				F31BA5A52959026D0006D126 /* Console VM.swift in Sources */,
@@ -4439,7 +4479,7 @@
 				F31BA5862959016D0006D126 /* SpriteKit Pyzh.swift in Sources */,
 				F30089002B3B62450051476C /* User Invitation Permission.swift in Sources */,
 				F3BBE36429AF97D800323C6B /* Credential Field.swift in Sources */,
-				F33944112A49022A00E2F0FC /* InfoTab Card.swift in Sources */,
+				F33944112A49022A00E2F0FC /* Info Tab Card.swift in Sources */,
 				F3A7BCD1296B44FF00E080C1 /* Nav Extension.swift in Sources */,
 				F3BC03B22B1FF4830011F98A /* Task Context Menu.swift in Sources */,
 				F3AF91C92B4235BB001D8F80 /* SSH Card.swift in Sources */,
@@ -4466,8 +4506,10 @@
 				F35B89C02A725CFA000B5EEF /* Tip Suspended Server.swift in Sources */,
 				F3FFB7442A57F43C00220FA5 /* User List.swift in Sources */,
 				F35FEB092B09F003004DA05D /* API Key.swift in Sources */,
+				F31F31FC2D52BD940095DD19 /* System.swift in Sources */,
 				F3A7BCC3296B2ABB00E080C1 /* Start Page.swift in Sources */,
 				F3EB09E22A29805A0073916A /* Des Video Watch.swift in Sources */,
+				F31F32072D52DB950095DD19 /* Color Theme.swift in Sources */,
 				F38C6E5E2A5475A500F2BDA6 /* Start Page VM.swift in Sources */,
 				F3878EDF2A1C228900AD8657 /* Server Card Stats.swift in Sources */,
 				F3C9D8612B319B9E00265492 /* Permission Card.swift in Sources */,
@@ -4538,7 +4580,7 @@
 				F3464D212A86396700188B0C /* Change Power.swift in Sources */,
 				F3BE36DB2A55E2EE007A0179 /* Server List Topbar.swift in Sources */,
 				F345486C29708FE30038DFD6 /* Server Card.swift in Sources */,
-				F336232F2A22021E006A6271 /* Value Storage.swift in Sources */,
+				F336232F2A22021E006A6271 /* Value Store.swift in Sources */,
 				F32FD7242B1E065700723B88 /* Network Calls.swift in Sources */,
 				F3AB4A992CF4031600A8252F /* Json Formatter Button.swift in Sources */,
 			);
@@ -4579,7 +4621,7 @@
 				F36FDB92295AF3AB00D45070 /* Intro.swift in Sources */,
 				F325F7072A54C4BC00E89EC4 /* System Alerts.swift in Sources */,
 				F3C9D85E2B31146E00265492 /* User Avatar.swift in Sources */,
-				F33944122A49022A00E2F0FC /* InfoTab Card.swift in Sources */,
+				F33944122A49022A00E2F0FC /* Info Tab Card.swift in Sources */,
 				F389BB6E2A05B5F400911EBF /* Cache Limit.swift in Sources */,
 				F3B637302A35A82F00CB374C /* Console Inspector.swift in Sources */,
 				F30089022B3B62460051476C /* User Invitation Permission.swift in Sources */,
@@ -4591,9 +4633,10 @@
 				F3CCB1CE2CAE75D0000F8207 /* Debug Settings.swift in Sources */,
 				F30089292B3C23A00051476C /* Contact Picker.swift in Sources */,
 				F36D53302A05B896007324C6 /* Section Header.swift in Sources */,
-				F325F7012A54BBCF00E89EC4 /* InfoTab Allocation.swift in Sources */,
+				F325F7012A54BBCF00E89EC4 /* Info Tab Allocation.swift in Sources */,
 				F39626F32A7AD64B0057E356 /* Ansi.swift in Sources */,
 				F3AB4A7E2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
+				F31F32022D52DB950095DD19 /* Color Theme.swift in Sources */,
 				F30088A02B3A17DF0051476C /* Backup VM.swift in Sources */,
 				F3E2BF0F2C1EC94300B7A6D4 /* Contacts VM.swift in Sources */,
 				F3553FB62B40939C00EF0FD2 /* Allocation VM.swift in Sources */,
@@ -4657,8 +4700,8 @@
 				F3D264382A66A9B9005C3777 /* Settings Parent.swift in Sources */,
 				F389BB742A05B61F00911EBF /* Credentials VM.swift in Sources */,
 				F333B3BD2B80CF760005B84D /* Preview Property.swift in Sources */,
+				F31F31F92D52BD940095DD19 /* System.swift in Sources */,
 				F36797712A393635009F2788 /* Inspector Button.swift in Sources */,
-				F38F9E222CEAB3410033EFE3 /* Sidebar Adoptable TabView.swift in Sources */,
 				F32E88D22AF8494100959D49 /* Server List Filter.swift in Sources */,
 				F36D53342A05B8AF007324C6 /* File View.swift in Sources */,
 				F3E2BEE02C1C6BA800B7A6D4 /* Cache List VM.swift in Sources */,
@@ -4700,6 +4743,7 @@
 				F3FF5A0D2A4A386F003A1973 /* Users VM.swift in Sources */,
 				F3D295182AF396FD00ED43A0 /* Tabs.swift in Sources */,
 				F3E1D3F42B320A6A009B7062 /* Permissions Header.swift in Sources */,
+				F34BB6BB2D3DC2B800D27BE0 /* File Preview VM.swift in Sources */,
 				F36D532D2A05B87E007324C6 /* Schedule List.swift in Sources */,
 				F36D531A2A05B7FB007324C6 /* Console Tab.swift in Sources */,
 				F389BB7A2A05B64600911EBF /* App Icon Picker.swift in Sources */,
@@ -4732,18 +4776,19 @@
 				F37A36752A35173B00517EFC /* Server Settings VM.swift in Sources */,
 				F389BB6B2A05B5E500911EBF /* Settings VM.swift in Sources */,
 				F3E467532A49903900FABE5F /* Info Stat.swift in Sources */,
-				F37A44352A05B0AA004FFDB0 /* Value Storage.swift in Sources */,
+				F37A44352A05B0AA004FFDB0 /* Value Store.swift in Sources */,
+				F34BB6BF2D3DC2D300D27BE0 /* File Preview.swift in Sources */,
 				F3B637532A35F3EA00CB374C /* Command Line.swift in Sources */,
 				F3AF91C22B423492001D8F80 /* SSH VM.swift in Sources */,
-				F3FF5A0A2A4A3745003A1973 /* InfoTab Background.swift in Sources */,
+				F3FF5A0A2A4A3745003A1973 /* Info Tab Background.swift in Sources */,
 				F3C9D85A2B31135B00265492 /* Permission List.swift in Sources */,
-				F3FF5A042A4A359C003A1973 /* InfoTab Buttons.swift in Sources */,
+				F3FF5A042A4A359C003A1973 /* Info Tab Buttons.swift in Sources */,
 				F36FDB97295AF4A900D45070 /* Browser VM.swift in Sources */,
 				F3A1D2362A201CBB0053261E /* Browser Spec.swift in Sources */,
 				F3BC03BE2B1FFBD50011F98A /* Backup Context Menu.swift in Sources */,
 				F3553FBD2B40945C00EF0FD2 /* Allocation List Parent.swift in Sources */,
 				F399933B2AF2E491006E8A9A /* Other Settings.swift in Sources */,
-				F325F7042A54BF7A00E89EC4 /* InfoTab Model.swift in Sources */,
+				F325F7042A54BF7A00E89EC4 /* Tab Info.swift in Sources */,
 				F32E88C92AF83E3F00959D49 /* Topbar Admin Button.swift in Sources */,
 				F3464D1E2A86396500188B0C /* Change Power.swift in Sources */,
 				F3553FB42B4065A300EF0FD2 /* Panel Settings Parent.swift in Sources */,
@@ -4765,7 +4810,7 @@
 				F37A36742A35173900517EFC /* Sftp View.swift in Sources */,
 				F33001422A4CEF840063FE0F /* Apikey VM.swift in Sources */,
 				F33001452A4CF06D0063FE0F /* Apikey Card.swift in Sources */,
-				F34169A62A49DF64003985E7 /* InfoTab Button.swift in Sources */,
+				F34169A62A49DF64003985E7 /* Info Tab Button.swift in Sources */,
 				F36D53472A05B932007324C6 /* Auth VM.swift in Sources */,
 				F389BB762A05B62C00911EBF /* Icon Settings.swift in Sources */,
 				F38F9E092CE6CCF90033EFE3 /* Image Playground Button.swift in Sources */,
@@ -4782,6 +4827,7 @@
 				F310A2F12A56B0BE001AF45F /* Network VM.swift in Sources */,
 				F389BB612A05B58300911EBF /* Gauge Disk.swift in Sources */,
 				F32FD02E2CF606960038D62C /* Backup Context Menu Control Group.swift in Sources */,
+				F30038CA2D42387600363CF4 /* Sheet Remote File.swift in Sources */,
 				F36D53362A05B8BB007324C6 /* Create Button.swift in Sources */,
 				F3E6FC472A1E85D600410C7C /* SptiteKit BisquitFall.swift in Sources */,
 			);
@@ -4799,7 +4845,7 @@
 				F3D2953D2AF39D3A00ED43A0 /* Nav Destinations.swift in Sources */,
 				F3D2958B2AF39FD500ED43A0 /* Settings Parent.swift in Sources */,
 				F3D295612AF39E8900ED43A0 /* FileTab NewFolder.swift in Sources */,
-				F3D295392AF39D1B00ED43A0 /* Value Storage.swift in Sources */,
+				F3D295392AF39D1B00ED43A0 /* Value Store.swift in Sources */,
 				F3AF91C72B423535001D8F80 /* SSH List.swift in Sources */,
 				F3D295D22AF3A30400ED43A0 /* Console Tab.swift in Sources */,
 				F3D295A82AF3A0DF00ED43A0 /* Account Settings.swift in Sources */,
@@ -4811,6 +4857,7 @@
 				F3D2955E2AF39E6E00ED43A0 /* Panel Model.swift in Sources */,
 				F3C9D84B2B30304F00265492 /* Des Video Watch.swift in Sources */,
 				F3AB4A932CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
+				F31F31FE2D52BD940095DD19 /* System.swift in Sources */,
 				F3D295942AF3A03700ED43A0 /* Contact Manager.swift in Sources */,
 				F3D295662AF39EB000ED43A0 /* Panel VM.swift in Sources */,
 				F3D295C82AF3A1FF00ED43A0 /* Credentials VM.swift in Sources */,
@@ -4834,7 +4881,6 @@
 				F3D295AA2AF3A0E600ED43A0 /* Cache Settings.swift in Sources */,
 				F3D295372AF39D1300ED43A0 /* Tabs.swift in Sources */,
 				F3D295892AF39FC700ED43A0 /* Upload File.swift in Sources */,
-				F38F9E242CEAB3410033EFE3 /* Sidebar Adoptable TabView.swift in Sources */,
 				F3D295D52AF3A32100ED43A0 /* Data Tab.swift in Sources */,
 				F3BC03C92B20675E0011F98A /* New Schedule Sheet.swift in Sources */,
 				F380B3292BD7C527009062E8 /* Upload Preview List.swift in Sources */,
@@ -4857,7 +4903,7 @@
 				F3E2BF112C1EC94300B7A6D4 /* Contacts VM.swift in Sources */,
 				F3D295842AF39FA500ED43A0 /* Discover.swift in Sources */,
 				F3D295922AF3A02300ED43A0 /* Server Card Stats.swift in Sources */,
-				F3D2953B2AF39D2B00ED43A0 /* InfoTab Model.swift in Sources */,
+				F3D2953B2AF39D2B00ED43A0 /* Tab Info.swift in Sources */,
 				F3D295E82AF3A3AD00ED43A0 /* Backup Card.swift in Sources */,
 				F3D2957F2AF39F5E00ED43A0 /* Suspended Card.swift in Sources */,
 				F3D2957E2AF39F5900ED43A0 /* Server Card Parent.swift in Sources */,
@@ -4884,6 +4930,7 @@
 				F3D295D42AF3A30C00ED43A0 /* Console VM.swift in Sources */,
 				F3D7F84F2C8ED3D100368ECE /* Disable 2FA View.swift in Sources */,
 				F3D295772AF39F2900ED43A0 /* Folder Path VM.swift in Sources */,
+				F34BB6C02D3DC2D300D27BE0 /* File Preview.swift in Sources */,
 				F3D295A12AF3A09D00ED43A0 /* Log List.swift in Sources */,
 				F3D295452AF39D9000ED43A0 /* Intro Model.swift in Sources */,
 				F398E0E02CEB562400AA4DD7 /* Audio Player VM.swift in Sources */,
@@ -4900,6 +4947,7 @@
 				F3D295AC2AF3A0F700ED43A0 /* Cache Model.swift in Sources */,
 				F3D2955D2AF39E6800ED43A0 /* Map View.swift in Sources */,
 				F3D295ED2AF3A45300ED43A0 /* Server Name.swift in Sources */,
+				F34BB6B92D3DC2B800D27BE0 /* File Preview VM.swift in Sources */,
 				F3AF91C32B423492001D8F80 /* SSH VM.swift in Sources */,
 				F35FEB0D2B09F003004DA05D /* API Key.swift in Sources */,
 				F3D2956E2AF39EE800ED43A0 /* Websocket Message.swift in Sources */,
@@ -4913,6 +4961,7 @@
 				F3D2954A2AF39DB800ED43A0 /* Auth VM.swift in Sources */,
 				F3D295572AF39E2100ED43A0 /* Tip Suspended Server.swift in Sources */,
 				F3D295382AF39D1700ED43A0 /* Nav State.swift in Sources */,
+				F31F32042D52DB950095DD19 /* Color Theme.swift in Sources */,
 				F3D295A22AF3A0AA00ED43A0 /* Map VM.swift in Sources */,
 				F3D295AE2AF3A10300ED43A0 /* Cache Size.swift in Sources */,
 				F3D2954D2AF39DCB00ED43A0 /* Cloud Keys.swift in Sources */,
@@ -4976,6 +5025,7 @@
 				F3BC03BA2B1FF8E40011F98A /* Database Context Menu.swift in Sources */,
 				F3D037032CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift in Sources */,
 				F3BC03B52B1FF4830011F98A /* Task Context Menu.swift in Sources */,
+				F30038CC2D42387600363CF4 /* Sheet Remote File.swift in Sources */,
 				F3D295E52AF3A39700ED43A0 /* Console Search.swift in Sources */,
 				F3D295C22AF3A1C600ED43A0 /* Credentials Button.swift in Sources */,
 				F3D295EB2AF3A40B00ED43A0 /* Gauge Disk.swift in Sources */,
@@ -5084,11 +5134,13 @@
 				F3A7CF0E2C8C43BB00413400 /* Topbar Admin Button.swift in Sources */,
 				F3A7CEE92C8BB73300413400 /* Enums.swift in Sources */,
 				F3255E1A2C904A03008E04DE /* Settings View.swift in Sources */,
+				F31F31FA2D52BD940095DD19 /* System.swift in Sources */,
 				F3A7CF152C8C4E4300413400 /* Map List.swift in Sources */,
 				F3A7CF162C8C4E4300413400 /* Map View.swift in Sources */,
 				F3A7CF172C8C4E4300413400 /* Map VM.swift in Sources */,
 				F3A7CEF72C8BB82E00413400 /* Settings Storage.swift in Sources */,
 				F3A7CECB2C8B685500413400 /* Messages VC.swift in Sources */,
+				F31F32082D52DB950095DD19 /* Color Theme.swift in Sources */,
 				F3A7CF182C8C4E4A00413400 /* Browser Spec.swift in Sources */,
 				F3A7CF192C8C4E4A00413400 /* Browser VM.swift in Sources */,
 				F3A7CF642C8CA5CF00413400 /* Tip Cloud Keys.swift in Sources */,
@@ -5126,6 +5178,7 @@
 				F32716D82CF6257800F2DC31 /* Backup Context Menu.swift in Sources */,
 				F30B61C82B2905CA00F447B4 /* System Alerts.swift in Sources */,
 				F32F43FF2B75450800C9470B /* User Card.swift in Sources */,
+				F31F31F82D52BD940095DD19 /* System.swift in Sources */,
 				F3AB4A922CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
 				F35081AF2AF30E2B00835CC0 /* Tip Cloud Keys.swift in Sources */,
 				F37B907A2BFEA00300597624 /* Ornament Info Settings.swift in Sources */,
@@ -5143,7 +5196,6 @@
 				F348C6E62A543909002D5BD6 /* Intro.swift in Sources */,
 				F3F2BBAA2A540E4000D44CA6 /* Nav Destinations.swift in Sources */,
 				F3FD9FA12C65217C00A69314 /* Quick Look View.swift in Sources */,
-				F38F9E212CEAB3410033EFE3 /* Sidebar Adoptable TabView.swift in Sources */,
 				F3464D2E2A863A6200188B0C /* Create Backup.swift in Sources */,
 				F3317AEE2A45E33300CA104D /* Formatters.swift in Sources */,
 				F32716DC2CF62C0D00F2DC31 /* Backup Card.swift in Sources */,
@@ -5151,6 +5203,7 @@
 				F39E68332D2D63980002BA96 /* Panel Ornament Power.swift in Sources */,
 				F37EA7992B70DEDE0029DE00 /* Console VM.swift in Sources */,
 				F35FEB0B2B09F003004DA05D /* API Key.swift in Sources */,
+				F31F32012D52DB950095DD19 /* Color Theme.swift in Sources */,
 				F3FD9F9C2C651B3800A69314 /* File Card.swift in Sources */,
 				F3FD9F982C651A4E00A69314 /* File List.swift in Sources */,
 				F3DF03DB2B74F01C00CF6F5E /* Database VM.swift in Sources */,
@@ -5168,7 +5221,7 @@
 				F3FC99162C65888900150823 /* TempDir.swift in Sources */,
 				F3F2BBA52A540B8800D44CA6 /* Start Page.swift in Sources */,
 				F3DF03E62B74F26F00CF6F5E /* Users VM.swift in Sources */,
-				F30C130C2A545F4400A7EFF0 /* Value Storage.swift in Sources */,
+				F30C130C2A545F4400A7EFF0 /* Value Store.swift in Sources */,
 				F38928232A44182F00561CDF /* Console.swift in Sources */,
 				F3F2BBA92A540DF900D44CA6 /* Nav State.swift in Sources */,
 				F34F289F2ACDADA600FD618A /* Animated Tab.swift in Sources */,
@@ -5232,7 +5285,7 @@
 				F300889B2B3A0E1A0051476C /* Startup VM.swift in Sources */,
 				F35B9F562A2D6D8A0045D014 /* Auth VM.swift in Sources */,
 				F3E08ED52A2CEE2300116C1C /* Auth View.swift in Sources */,
-				F33DE5092B364EBC00E257D8 /* InfoTab Model.swift in Sources */,
+				F33DE5092B364EBC00E257D8 /* Tab Info.swift in Sources */,
 				F35F65942B1D1A0B00431EB7 /* Panel VM.swift in Sources */,
 				F3B138722A2D232B0026EAEE /* Server Card VM.swift in Sources */,
 				F33DE4E72B35089000E257D8 /* Background Blur.swift in Sources */,
@@ -5268,7 +5321,6 @@
 				F363C7FD2B7F7938005F6FF2 /* System Alerts.swift in Sources */,
 				F323D8D52A2D67A3002EDC62 /* Upload File.swift in Sources */,
 				F3A800332A7313E900CAC40B /* Tip Cloud Keys.swift in Sources */,
-				F38F9E262CEAB3410033EFE3 /* Sidebar Adoptable TabView.swift in Sources */,
 				F3E08EC62A2CEA6400116C1C /* Start Page VM.swift in Sources */,
 				F3F061D62A73C9A300470F7E /* Map List.swift in Sources */,
 				F35B9F552A2D6D380045D014 /* Formatters.swift in Sources */,
@@ -5281,6 +5333,7 @@
 				F30088A22B3A18A20051476C /* Database VM.swift in Sources */,
 				F35B9F612A2DCF9C0045D014 /* Stats Tab.swift in Sources */,
 				F348C6E92A54483D002D5BD6 /* Intro.swift in Sources */,
+				F31F31FF2D52BD940095DD19 /* System.swift in Sources */,
 				F32FD7162B1E041D00723B88 /* Websocket Message.swift in Sources */,
 				F3573BBF2C64E0360051259E /* Log Card.swift in Sources */,
 				F30C13142A5461BA00A7EFF0 /* Cache VM.swift in Sources */,
@@ -5294,7 +5347,7 @@
 				F30088BD2B3A223E0051476C /* Database Card.swift in Sources */,
 				F300889D2B3A17CC0051476C /* Backup VM.swift in Sources */,
 				F30088DE2B3A3FBB0051476C /* Startup List.swift in Sources */,
-				F3E08EC22A2CE89400116C1C /* Value Storage.swift in Sources */,
+				F3E08EC22A2CE89400116C1C /* Value Store.swift in Sources */,
 				F3DF50C32B38FCCC00206CAE /* Users VM.swift in Sources */,
 				F34F289C2ACDADA500FD618A /* Animated Tab.swift in Sources */,
 				F3E08ECE2A2CEDD800116C1C /* Panel View.swift in Sources */,
@@ -5314,6 +5367,7 @@
 				F30088942B3A03050051476C /* Log VM.swift in Sources */,
 				F3464D282A86398000188B0C /* PowerSignalAppEnum.swift in Sources */,
 				F3DF50CA2B38FDDE00206CAE /* User 2Fa.swift in Sources */,
+				F31F32032D52DB950095DD19 /* Color Theme.swift in Sources */,
 				F35B9F5C2A2DC8D60045D014 /* Nav State.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5423,7 +5477,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0.1;
+				MARKETING_VERSION = 4.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -5431,7 +5485,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 17.0;
+				TVOS_DEPLOYMENT_TARGET = 18.0;
 				WATCHOS_DEPLOYMENT_TARGET = 9.1;
 			};
 			name = Debug;
@@ -5459,7 +5513,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0.1;
+				MARKETING_VERSION = 4.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -5467,7 +5521,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 17.0;
+				TVOS_DEPLOYMENT_TARGET = 18.0;
 				VALIDATE_PRODUCT = YES;
 				WATCHOS_DEPLOYMENT_TARGET = 9.1;
 			};
@@ -5629,7 +5683,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0.1;
+				MARKETING_VERSION = 4.0.2;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug.watchOSapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5666,7 +5720,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0.1;
+				MARKETING_VERSION = 4.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.watchOSapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -5710,12 +5764,12 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0.1;
+				MARKETING_VERSION = 4.0.2;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5764,12 +5818,12 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0.1;
+				MARKETING_VERSION = 4.0.2;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5812,12 +5866,12 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0.1;
+				MARKETING_VERSION = 4.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug.Clip";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -5857,12 +5911,12 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0.1;
+				MARKETING_VERSION = 4.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.Clip";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -5938,7 +5992,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 4.0.1;
+				MARKETING_VERSION = 4.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug.Intent";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -5972,7 +6026,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 4.0.1;
+				MARKETING_VERSION = 4.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.Intent";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -6017,7 +6071,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 4.0.1;
+				MARKETING_VERSION = 4.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug.Widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -6058,7 +6112,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 4.0.1;
+				MARKETING_VERSION = 4.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.Widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -6089,7 +6143,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 4.0.1;
+				MARKETING_VERSION = 4.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug.iMessageExtension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -6120,7 +6174,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 4.0.1;
+				MARKETING_VERSION = 4.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.iMessageExtension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -6155,7 +6209,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0.1;
+				MARKETING_VERSION = 4.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = xros;
@@ -6191,7 +6245,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0.1;
+				MARKETING_VERSION = 4.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = xros;
@@ -6265,13 +6319,13 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 14.4;
-				MARKETING_VERSION = 4.0.1;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 4.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug";
 				PRODUCT_NAME = Bisquit.Host;
 				SDKROOT = macosx;
@@ -6304,13 +6358,13 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 14.4;
-				MARKETING_VERSION = 4.0.1;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 4.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host";
 				PRODUCT_NAME = Bisquit.Host;
 				SDKROOT = macosx;
@@ -6342,7 +6396,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 4.0.1;
+				MARKETING_VERSION = 4.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug.Contact-Provider-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -6372,7 +6426,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 4.0.1;
+				MARKETING_VERSION = 4.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.Contact-Provider-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -6403,7 +6457,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 4.0.1;
+				MARKETING_VERSION = 4.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug.Intent-Handler";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = NO;
@@ -6439,7 +6493,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 4.0.1;
+				MARKETING_VERSION = 4.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.Intent-Handler";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = NO;

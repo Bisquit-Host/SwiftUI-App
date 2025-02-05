@@ -14,7 +14,7 @@ final class DeepLinkVM {
     
     func handleDeepLink(
         _ navState: NavState,
-        settings: ValueStorage,
+        store: ValueStore,
         url: URL
     ) {
         let components = url.pathComponents
@@ -34,7 +34,7 @@ final class DeepLinkVM {
             case .success:
                 let tabOnStart = self.tabMapping[tab] ?? .info
                 
-                settings.lastTabPanel = tabOnStart
+                store.lastTabPanel = tabOnStart
                 navState.navigate(.toPanel(id))
                 
             case .failure(let error):

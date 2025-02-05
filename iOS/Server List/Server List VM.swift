@@ -126,13 +126,11 @@ final class ServerListVM {
                         self.servers = loadedServers
                     }
                 }
-                
 #if os(iOS)
-                if ValueStorage().contactsProviderEnabled {
+                if ValueStore().contactsProviderEnabled {
                     self.fetchUniqueUsers()
                 }
 #endif
-                
             case .failure(let error):
                 SystemAlert.error(error)
             }

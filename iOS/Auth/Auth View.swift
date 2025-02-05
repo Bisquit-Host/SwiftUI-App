@@ -4,13 +4,13 @@ struct AuthView: View {
     @State private var vm = AuthVM()
     @Environment(ServerListVM.self) private var serverVM
     @Environment(NavState.self) private var navState
-    @EnvironmentObject private var settings: ValueStorage
+    @EnvironmentObject private var store: ValueStore
     
     private let bounds = UIScreen.main.bounds
     
     var body: some View {
         VStack {
-            if settings.useBiometry {
+            if store.useBiometry {
                 biometryView
             } else {
                 noBiometryView
@@ -21,9 +21,11 @@ struct AuthView: View {
         .background(AuthBackground())
         .ignoresSafeArea()
         .task {
-            vm.appear(settings.useBiometry, navState: navState)
+            vm.appear(store.useBiometry, navState: navState)
             
-            serverVM.fetchServers(settings.adminServerList)
+            if !System.lowPowerMode {
+                serverVM.fetchServers(store.adminServerList)
+            }
         }
     }
     
@@ -58,5 +60,5 @@ struct AuthView: View {
     AuthView()
         .environment(ServerListVM())
         .environment(NavState())
-        .environmentObject(ValueStorage())
+        .environmentObject(ValueStore())
 }

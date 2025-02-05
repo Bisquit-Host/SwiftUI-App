@@ -6,7 +6,6 @@ struct PanelView: View {
     private var backupVM: BackupVM
     private var databaseVM: DatabaseVM
     private var scheduleVM: ScheduleVM
-    @EnvironmentObject private var settings: ValueStorage
     
     private let id: String
     
@@ -77,10 +76,13 @@ struct PanelView: View {
     
     private func fetchData() {
         vm.fetchServerDetails()
-        fileVM.fetchFiles()
-        backupVM.fetchBackups()
-        databaseVM.fetchDatabases()
-        scheduleVM.fetchSchedules()
+        
+        if !System.lowPowerMode {
+            fileVM.fetchFiles()
+            backupVM.fetchBackups()
+            databaseVM.fetchDatabases()
+            scheduleVM.fetchSchedules()
+        }
         
         vm.consoleDetails { data in
             if let data {
@@ -96,7 +98,6 @@ struct PanelView: View {
 
 #Preview {
     PanelView("")
-        .environmentObject(ValueStorage())
         .environment(BackupVM(""))
         .environment(DatabaseVM(""))
         .environment(ScheduleVM(""))

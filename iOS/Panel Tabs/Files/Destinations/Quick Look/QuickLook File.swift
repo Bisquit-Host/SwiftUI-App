@@ -21,7 +21,7 @@ struct QuickLookFile: View {
     
     var body: some View {
         VStack {
-            if let url = vm.fileURL {
+            if let url = vm.fileUrl {
                 QuickLookView(url)
                     .transition(.opacity)
             } else {
@@ -29,14 +29,14 @@ struct QuickLookFile: View {
             }
         }
         .navigationTitle(name)
-        .animation(.default, value: vm.fileURL)
+        .animation(.default, value: vm.fileUrl)
         .blur(radius: vm.isSensitive ? 10 : 0)
         .ignoresSafeArea(edges: .bottom)
         .sheet($sheetMetadata) {
             MetadataList(vm.metadata)
         }
         .task {
-            vm.downloadFile(name, root: path)
+            vm.getFileUrl(name, root: path)
         }
         .overlay {
             if vm.isSensitive {
@@ -51,12 +51,8 @@ struct QuickLookFile: View {
             }
         }
         .toolbar {
-            if let url = vm.fileURL {
-                if #available(iOS 18.1, *) {
-                    if isImage(url) {
-                        ImagePlaygroundToolbarButton(url, path, name)
-                    }
-                }
+            if let url = vm.fileUrl, #available(iOS 18.1, *), isImage(url) {
+                ImagePlaygroundToolbarButton(url, path, name)
             }
             
             Menu {
@@ -66,7 +62,7 @@ struct QuickLookFile: View {
                     Label("Metadata", systemImage: "tag")
                 }
                 
-                if let url = vm.fileURL {
+                if let url = vm.fileUrl {
                     ShareLink(item: url)
                 }
                 
@@ -92,7 +88,7 @@ struct QuickLookFile: View {
     }
 }
 
-//#Preview {
-//    QuickLookFile("", path: "", name: "")
-//        .environmentObject(FileTabVM(""))
-//}
+#Preview {
+    QuickLookFile("", path: "", name: "")
+        .environmentObject(FileTabVM(""))
+}

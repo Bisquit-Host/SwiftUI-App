@@ -2,7 +2,6 @@ import ScrechKit
 
 struct BrowserTopbar: View {
     @Environment(BrowserVM.self) private var vm
-    @EnvironmentObject private var settings: ValueStorage
     
     private let categories = [
         "Minecraft",
@@ -14,7 +13,7 @@ struct BrowserTopbar: View {
         @Bindable var vm = vm
         
         Picker("Category", selection: $vm.filterRule) {
-            //        Picker("Category", selection: $settings.browserCategory) {
+            //        Picker("Category", selection: $store.browserCategory) {
             ForEach(categories, id: \.self) { category in
                 Text(category)
                     .tag(category)
@@ -28,5 +27,4 @@ struct BrowserTopbar: View {
 #Preview {
     BrowserTopbar()
         .environment(BrowserVM())
-        .environmentObject(ValueStorage())
 }

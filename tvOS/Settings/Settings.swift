@@ -4,8 +4,9 @@ import PteroNet
 
 struct Settings: View {
     @Environment(NavState.self) private var navState
+    @EnvironmentObject private var store: ValueStore
+    
     @Environment(\.dismiss) private var dismiss
-    @EnvironmentObject private var settings: ValueStorage
     
     @State private var sheetKeyStorage = false
     @State private var apiKey = Keychain.load(key: "selectedApiKey") ?? ""
@@ -35,7 +36,7 @@ struct Settings: View {
                     main {
                         dismiss()
                         navState.path = NavigationPath()
-                        settings.isApiKeyValid = false
+                        store.isApiKeyValid = false
                         Keychain.delete(key: "selectedApiKey")
                     }
                 } label: {
@@ -55,5 +56,5 @@ struct Settings: View {
 
 #Preview {
     Settings()
-        .environmentObject(ValueStorage())
+        .environmentObject(ValueStore())
 }

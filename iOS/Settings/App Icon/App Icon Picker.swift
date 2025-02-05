@@ -1,7 +1,7 @@
 import ScrechKit
 
 struct AppIconPicker: View {
-    @EnvironmentObject private var settings: ValueStorage
+    @EnvironmentObject private var store: ValueStore
     
     private let icons = [
         "default",
@@ -18,17 +18,17 @@ struct AppIconPicker: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
                 ForEach(icons, id: \.self) { icon in
-                    AppIcon(icon, isSelected: settings.currentIcon == icon)
+                    AppIcon(icon, isSelected: store.currentIcon == icon)
                         .onTapGesture {
                             withAnimation(.easeInOut(duration: 0.5)) {
-                                settings.currentIcon = icon
+                                store.currentIcon = icon
                             }
                         }
                 }
             }
             .padding(.horizontal, 5)
         }
-        .onChange(of: settings.currentIcon) { _, icon in
+        .onChange(of: store.currentIcon) { _, icon in
             if UIApplication.shared.supportsAlternateIcons {
                 if icon == "default" {
                     UIApplication.shared.setAlternateIconName(nil)
@@ -44,5 +44,5 @@ struct AppIconPicker: View {
 
 #Preview {
     AppIconPicker()
-        .environmentObject(ValueStorage())
+        .environmentObject(ValueStore())
 }

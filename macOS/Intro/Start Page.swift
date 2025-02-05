@@ -4,7 +4,7 @@ import SwiftData
 struct StartPage: View {
     @Bindable private var vm = StartPageVM()
     @Environment(NavState.self) private var navState
-    @EnvironmentObject private var settings: ValueStorage
+    @EnvironmentObject private var store: ValueStore
     
     @Environment(\.modelContext) private var modelContext
     @Query(animation: .default) private var keys: [APIKey]
@@ -48,7 +48,7 @@ struct StartPage: View {
                         modelContext.insert(APIKey(key: vm.apiKey))
                     }
                     
-                    settings.authSucced()
+                    store.authSucced()
                 } label: {
                     VStack(alignment: .leading) {
                         Text(key.name)
@@ -73,7 +73,7 @@ struct StartPage: View {
                     modelContext.insert(APIKey(key: vm.apiKey))
                 }
                 
-                settings.authSucced()
+                store.authSucced()
             }
             
             Button("No", role: .destructive) {
@@ -112,5 +112,5 @@ struct StartPage: View {
     StartPage()
         .padding()
         .environment(NavState())
-        .environmentObject(ValueStorage())
+        .environmentObject(ValueStore())
 }

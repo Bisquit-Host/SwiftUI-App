@@ -2,7 +2,7 @@ import SwiftUI
 import PteroNet
 
 struct InfoTabCard: View {
-    @EnvironmentObject private var settings: ValueStorage
+    @EnvironmentObject private var store: ValueStore
     
     private let server: ServerAttributes
     
@@ -36,7 +36,7 @@ struct InfoTabCard: View {
                 PowerSwitch()
             }
             
-            TabView(selection: $settings.lastInfoTab) {
+            TabView(selection: $store.lastInfoTab) {
                 InfoRelativeStats(server.limits)
                     .tag(TabInfo.relative)
                 
@@ -58,5 +58,5 @@ struct InfoTabCard: View {
 #Preview {
     InfoTabCard(sampleJSON(.serverListAttributes))
         .environment(PanelVM(""))
-        .environmentObject(ValueStorage())
+        .environmentObject(ValueStore())
 }

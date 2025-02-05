@@ -71,16 +71,17 @@ final class FileTabVM: ObservableObject {
     }
     
     func pullRemoteFile(
-        _ url: String,
-        directory: String = "",
-        filename: String? = nil,
-        useHeader: Bool = false,
-        foreground: Bool? = nil
+        _ file: FilePullRequestBody,
+        dir: String = "",
+        onSuccess: @escaping () -> ()
     ) {
-        pullRemoteFileAPI(id, url: url, directory: directory, filename: filename, useHeader: useHeader, foreground: foreground) { result in
+        pullRemoteFileAPI(
+            id, file: file
+        ) { result in
             switch result {
             case .success:
-                self.fetchFiles(directory)
+                onSuccess()
+                self.fetchFiles(dir)
                 
             case .failure(let error):
                 SystemAlert.error(error)
@@ -235,7 +236,11 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func renameFile(_ path: String, oldName: String, newName: String) {
+    func renameFile(
+        _ path: String,
+        oldName: String,
+        newName: String
+    ) {
         fileRenameAPI(id, root: path, oldName: oldName, newName: newName) { result in
             switch result {
             case .success:
@@ -263,7 +268,11 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func fileCompressor(_ file: String, at path: String, action: CompressorActions) {
+    func fileCompressor(
+        _ file: String,
+        at path: String,
+        action: CompressorActions
+    ) {
         fileCompressorAPI(id, file: file, root: path, do: action) { result in
             switch result {
             case .success:

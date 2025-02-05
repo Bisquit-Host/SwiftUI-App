@@ -45,7 +45,7 @@ struct BrowserCard: View {
     }
     
     //    private var price: Double {
-    //        switch ValueStorage().preferredCurrency {
+    //        switch ValueStore().preferredCurrency {
     //        case "€":
     //            plan.price_euro
     //
@@ -106,7 +106,7 @@ struct BrowserCard: View {
                         
                         //                        Spacer()
                         //
-                        //                        Text(customRound(price) + ValueStorage().preferredCurrency)
+                        //                        Text(customRound(price) + ValueStore().preferredCurrency)
                         //                            .subheadline(.bold)
                         //                            .padding(.vertical, 4)
                         //                            .padding(.horizontal, 10)

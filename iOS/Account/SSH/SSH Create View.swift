@@ -3,6 +3,7 @@ import UniformTypeIdentifiers
 
 struct SSHCreateView: View {
     @Environment(SSHVM.self) private var vm
+    
     @Environment(\.dismiss) private var dismiss
     
     @State private var isTargeted = false

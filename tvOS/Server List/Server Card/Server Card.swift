@@ -33,8 +33,8 @@ struct ServerCard: View {
             let ramUsage = vm.ramUsage / pow(1024, 2) / limits.memory
             ProgressBar("ram", progress: ramUsage)
             
-            let diskUsage = vm.diskUsage / pow(1024, 2) / limits.disk
-            ProgressBar("ssd", progress: diskUsage)
+            let ssdUsage = vm.diskUsage / pow(1024, 2) / limits.disk
+            ProgressBar("ssd", progress: ssdUsage)
         }
         .padding(.bottom)
         .task {

@@ -34,7 +34,8 @@ struct ProgressBar: View {
                 .foregroundStyle(.red)
                 
                 Text(String(format: "%.0f%%", min(progress, 1) * 100))
-                    .title3(.bold)
+                    .bold()
+                    .title3()
             }
             .frame(width: 150, height: 150)
         }

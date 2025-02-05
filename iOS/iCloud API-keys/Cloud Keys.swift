@@ -4,9 +4,9 @@ import PteroNet
 import TipKit
 
 struct CloudKeys: View {
-    @EnvironmentObject private var settings: ValueStorage
-    @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var store: ValueStore
     
+    @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     @Query(animation: .default) private var keys: [APIKey]
     
@@ -37,21 +37,19 @@ struct CloudKeys: View {
                     }
                 }
 #if !os(watchOS)
-                .listRowBackground(settings.transparentList ? .clear : Color.list)
+                .listRowBackground(store.transparentList ? .clear : Color.list)
 #endif
                 
 #if os(visionOS)
-                Button {
+                Button("Dismiss") {
                     dismiss()
-                } label: {
-                    Text("Dismiss")
                 }
 #endif
             }
 #if !os(tvOS)
-            .scrollContentBackground(settings.transparentSheet ? .hidden : .visible)
+            .scrollContentBackground(store.transparentSheet ? .hidden : .visible)
 #endif
-            .presentationBackground(settings.transparentSheet ? .ultraThinMaterial : .regular)
+            .presentationBackground(store.transparentSheet ? .ultraThinMaterial : .regular)
             .navigationTitle("iCloud")
             .toolbarTitleDisplayMode(.inline)
             .overlay {

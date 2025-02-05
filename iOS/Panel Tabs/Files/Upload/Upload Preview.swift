@@ -2,6 +2,7 @@ import ScrechKit
 
 struct UploadPreview: View {
     @EnvironmentObject private var vm: FileTabVM
+    
     @Environment(\.dismiss) private var dismiss
     
     private let urls: [URL]

@@ -1,10 +1,10 @@
 import SwiftUI
 
 struct TopbarGridButton: View {
-    @EnvironmentObject private var settings: ValueStorage
+    @EnvironmentObject private var store: ValueStore
     
     private var icon: String {
-        switch settings.designCode {
+        switch store.designCode {
         case 0: "rectangle.grid.1x2.fill"
         default: "rectangle.grid.2x2.fill"
         }
@@ -13,12 +13,12 @@ struct TopbarGridButton: View {
     var body: some View {
         Button {
             withAnimation(.easeOut(duration: 1)) {
-                switch settings.designCode {
+                switch store.designCode {
                 case 0:
-                    settings.designCode = 1
+                    store.designCode = 1
                     
                 default:
-                    settings.designCode = 0
+                    store.designCode = 0
                 }
             }
         } label: {
@@ -29,5 +29,5 @@ struct TopbarGridButton: View {
 
 #Preview {
     TopbarGridButton()
-        .environmentObject(ValueStorage())
+        .environmentObject(ValueStore())
 }

@@ -11,7 +11,7 @@ struct ConsoleInspector: View {
             
             Slider(value: $vm.fontSize, in: 6...16)
             
-//            Toggle("coloredTextEnabled", isOn: $settings.coloredTextEnabled)
+//            Toggle("coloredTextEnabled", isOn: $store.coloredTextEnabled)
         }
         .presentationDetents([.medium, .large])
     }

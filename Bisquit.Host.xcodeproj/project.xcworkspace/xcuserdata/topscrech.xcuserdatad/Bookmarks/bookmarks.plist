@@ -59,53 +59,6 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>25</string>
-					<key>StartingColumnNumber</key>
-					<string>6</string>
-					<key>StartingLineNumber</key>
-					<string>24</string>
-					<key>Timestamp</key>
-					<string>754326965.6672291</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>iOS/Settings Storage.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>    @AppStorage("consoleFontDesign") var consoleFontDesign = 1
-</string>
-				<key>leading</key>
-				<string>    @AppStorage("consoleFontSize") var consoleFontSize = 10.0
-    //    @AppStorage("coloredTextEnabled") var coloredTextEnabled = true
-    //</string>
-				<key>trailing</key>
-				<string>    
-    // MARK: - Other
-    @AppStorage("currentIcon") var currentIcon = "Primary Icon"
-</string>
-			</dict>
-			<key>title</key>
-			<string>Disabled</string>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
 					<string>6</string>
 					<key>StartingColumnNumber</key>
 					<string>58</string>
@@ -153,196 +106,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>18</string>
-					<key>StartingColumnNumber</key>
-					<string>36</string>
-					<key>StartingLineNumber</key>
-					<string>17</string>
-					<key>Timestamp</key>
-					<string>711672216.507466</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>iOS/Browser/Browser Spec.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>
-</string>
-				<key>leading</key>
-				<string>            .padding(.vertical, 5)
-            .background(.ultraThinMaterial, in: .rect(cornerRadius: 8))
-        //            .opacity(0.95)</string>
-				<key>trailing</key>
-				<string>    }
-}
-
-</string>
-			</dict>
-			<key>title</key>
-			<string>Disabled</string>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
-					<string>14</string>
+					<string>26</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>13</string>
-					<key>Timestamp</key>
-					<string>710427442.398371</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>watchOS/Server List/ServerList Topbar.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>                //alertNetwork = true
-</string>
-				<key>leading</key>
-				<string>        HStack {
-            SFButton("wifi") {
-</string>
-				<key>trailing</key>
-				<string>            }
-            .foregroundStyle(.green)
-            .symbolEffect(.variableColor.iterative)
-</string>
-			</dict>
-			<key>title</key>
-			<string>No action</string>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
-					<string>22</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
-					<key>StartingLineNumber</key>
-					<string>22</string>
-					<key>Timestamp</key>
-					<string>754313393.951961</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>watchOS/Panel/Console/Console.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string></string>
-				<key>leading</key>
-				<string>        .environment(PanelVM(""))
-}
-</string>
-				<key>trailing</key>
-				<string></string>
-			</dict>
-			<key>title</key>
-			<string>No action</string>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
-					<string>37</string>
-					<key>StartingColumnNumber</key>
-					<string>10</string>
-					<key>StartingLineNumber</key>
-					<string>36</string>
-					<key>Timestamp</key>
-					<string>710418792.519421</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>visionOS/Panel/Panel.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>
-</string>
-				<key>leading</key>
-				<string>}
-
-#Preview {</string>
-				<key>trailing</key>
-				<string>    Panel("")
-}
-</string>
-			</dict>
-			<key>title</key>
-			<string>Preview</string>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
 					<string>25</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
-					<key>StartingLineNumber</key>
-					<string>24</string>
 					<key>Timestamp</key>
-					<string>723374278.248118</string>
+					<string>760406270.102843</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -372,53 +142,6 @@
 			</dict>
 			<key>title</key>
 			<string>DIsabled</string>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
-					<string>30</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
-					<key>StartingLineNumber</key>
-					<string>29</string>
-					<key>Timestamp</key>
-					<string>754324696.181982</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>iOS/Settings/Account/Account Settings.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>        }
-</string>
-				<key>leading</key>
-				<string>                    .environment(vm)
-            }
-</string>
-				<key>trailing</key>
-				<string>        .listRowBackground(settings.transparentList ? .clear : Color.list)
-        .task {
-            vm.fetchKeys()
-</string>
-			</dict>
-			<key>title</key>
-			<string>Group in settings</string>
 			<key>type</key>
 			<string>bookmark</string>
 		</dict>
@@ -513,147 +236,6 @@ final class AudioRecorder {
 			</dict>
 			<key>title</key>
 			<string>Switch to AVAudioEngine</string>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
-					<string>10</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
-					<key>StartingLineNumber</key>
-					<string>9</string>
-					<key>Timestamp</key>
-					<string>725452581.681782</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>iOS/Panel/Files/File Details.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>    
-</string>
-				<key>leading</key>
-				<string>        self.file = file
-    }
-</string>
-				<key>trailing</key>
-				<string>    var body: some View {
-        VStack(alignment: .leading) {
-            if file.isFile {
-</string>
-			</dict>
-			<key>title</key>
-			<string>Unused</string>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
-					<string>56</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
-					<key>StartingLineNumber</key>
-					<string>55</string>
-					<key>Timestamp</key>
-					<string>724463738.994555</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>iOS/Panel/Console/Console Tab.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>        .onAppear {
-</string>
-				<key>leading</key>
-				<string>        .toolbarBackground(.visible,
-                           for: .navigationBar)
-</string>
-				<key>trailing</key>
-				<string>            vm.fontSize = settings.consoleFontSize
-        }
-        .onDisappear {
-</string>
-			</dict>
-			<key>title</key>
-			<string>Remove</string>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
-					<string>21</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
-					<key>StartingLineNumber</key>
-					<string>20</string>
-					<key>Timestamp</key>
-					<string>720469660.32568</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>iOS/Panel/Data/Backups/Datatab Backups.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>                Menu {
-</string>
-				<key>leading</key>
-				<string>                let backup = attributes.attributes
-#if !os(tvOS)
-</string>
-				<key>trailing</key>
-				<string>                    Section {
-                        MenuButton("Download", icon: "square.and.arrow.down") {
-                            model.downloadBackup($showSafari, uuid: backup.uuid)
-</string>
-			</dict>
-			<key>title</key>
-			<string>Remove</string>
 			<key>type</key>
 			<string>bookmark</string>
 		</dict>
@@ -1297,51 +879,6 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>51</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
-					<key>StartingLineNumber</key>
-					<string>50</string>
-					<key>Timestamp</key>
-					<string>754311636.273398</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>iOS/Panel/Panel View.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>        .ignoresSafeArea(.keyboard, edges: .bottom)
-</string>
-				<key>leading</key>
-				<string>        .sidebarAdaptableStyle()
-        .environment(vm)
-</string>
-				<key>trailing</key>
-				<string>        .task {
-            fetchData()
-        }
-</string>
-			</dict>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
 					<string>8</string>
 					<key>StartingColumnNumber</key>
 					<string>46</string>
@@ -1374,51 +911,6 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 				<string>        "backups": .backup,
         "files": .fileManager,
         "": .info
-</string>
-			</dict>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
-					<string>60</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
-					<key>StartingLineNumber</key>
-					<string>59</string>
-					<key>Timestamp</key>
-					<string>754226509.3257819</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>iOS/Discover/Discover.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>                
-</string>
-				<key>leading</key>
-				<string>                }
-                .listRowBackground(settings.transparentList ? .clear : Color.list)
-</string>
-				<key>trailing</key>
-				<string>                Section("Other") {
-                    DiscoverCard(
-                        DiscoverItem(
 </string>
 			</dict>
 			<key>type</key>
@@ -1496,13 +988,13 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>47</string>
+					<string>48</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>46</string>
+					<string>47</string>
 					<key>Timestamp</key>
-					<string>737881636.384874</string>
+					<string>760406105.372907</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -1526,53 +1018,8 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 </string>
 				<key>trailing</key>
 				<string>    BisquitFall()
-        .environmentObject(SettingsStorage())
+        .environmentObject(ValueStore())
 }
-</string>
-			</dict>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
-					<string>92</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
-					<key>StartingLineNumber</key>
-					<string>91</string>
-					<key>Timestamp</key>
-					<string>754311670.858703</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>iOS/Panel/Panel View.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>#Preview {
-</string>
-				<key>leading</key>
-				<string>}
-
-</string>
-				<key>trailing</key>
-				<string>    PanelView("")
-        .environment(PanelVM(""))
-        .environment(BackupVM(""))
 </string>
 			</dict>
 			<key>type</key>
@@ -1628,58 +1075,13 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>40</string>
+					<string>64</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>39</string>
+					<string>63</string>
 					<key>Timestamp</key>
-					<string>744716098.3824069</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>iOS/Server List/Server Card/Elements/Gauge Regular.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>        //        .gaugeStyle(.accessoryCircularCapacity)
-</string>
-				<key>leading</key>
-				<string>            }
-        }
-</string>
-				<key>trailing</key>
-				<string>        .gaugeStyle(.accessoryCircular)
-        .tint(gradient)
-    }
-</string>
-			</dict>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
-					<string>68</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
-					<key>StartingLineNumber</key>
-					<string>67</string>
-					<key>Timestamp</key>
-					<string>724633283.7949049</string>
+					<string>760405098.210797</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -1763,143 +1165,6 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>15</string>
-					<key>StartingColumnNumber</key>
-					<string>43</string>
-					<key>StartingLineNumber</key>
-					<string>14</string>
-					<key>Timestamp</key>
-					<string>723424778.494755</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>iOS/Panel/Data/Backups/Create Backup Button.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>
-</string>
-				<key>leading</key>
-				<string>        Menu("Create Backup") {
-            Button {
-                vm.alertCreateBackup = true</string>
-				<key>trailing</key>
-				<string>            } label: {
-                Label("Name Backup", systemImage: "pencil")
-            }
-</string>
-			</dict>
-			<key>title</key>
-			<string>Create tip for long press</string>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
-					<string>32</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
-					<key>StartingLineNumber</key>
-					<string>31</string>
-					<key>Timestamp</key>
-					<string>724860853.154479</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>iOS/Panel/Data/Schedules/Schedule List.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>                sheetCreateSchedule = true
-</string>
-				<key>leading</key>
-				<string>            
-            Button {
-</string>
-				<key>trailing</key>
-				<string>            } label: {
-                Text("Create Schedule")
-            }
-</string>
-			</dict>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
-					<string>27</string>
-					<key>StartingColumnNumber</key>
-					<string>60</string>
-					<key>StartingLineNumber</key>
-					<string>26</string>
-					<key>Timestamp</key>
-					<string>724109048.162773</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>iOS/Intro/StartPage/Cloud Keys.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>
-</string>
-				<key>leading</key>
-				<string>                    ContentUnavailableView("No API-keys found",
-                                           systemImage: "exclamationmark.triangle",
-                                           description: nil)</string>
-				<key>trailing</key>
-				<string>                } else {
-                    Section("API-keys") {
-                        TipView(Tip_CloudKeys())
-</string>
-			</dict>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
 					<string>13</string>
 					<key>StartingColumnNumber</key>
 					<string>12</string>
@@ -1932,51 +1197,6 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 				<string>                //alertNetwork = true
             }
             .foregroundStyle(.green)
-</string>
-			</dict>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
-					<string>18</string>
-					<key>StartingColumnNumber</key>
-					<string>28</string>
-					<key>StartingLineNumber</key>
-					<string>17</string>
-					<key>Timestamp</key>
-					<string>724577638.0014319</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>iOS/Panel/Files/Destinations/Text/DesText VM.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>
-</string>
-				<key>leading</key>
-				<string>            switch result {
-            case .success(let model):
-                print(model)</string>
-				<key>trailing</key>
-				<string>                
-            case .failure(let error):
-                networkCallError(#function, error)
 </string>
 			</dict>
 			<key>type</key>

@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct CurrencyButton: View {
-    @EnvironmentObject private var settings: ValueStorage
+    @EnvironmentObject private var store: ValueStore
     
     private let currencies = ["₽", "€", "$"]
     
@@ -11,7 +11,7 @@ struct CurrencyButton: View {
             
             Spacer()
             
-            Picker("Preferred currency", selection: $settings.preferredCurrency) {
+            Picker("Preferred currency", selection: $store.preferredCurrency) {
                 ForEach(currencies, id: \.self) { currency in
                     Text(currency)
                         .tag(currency)

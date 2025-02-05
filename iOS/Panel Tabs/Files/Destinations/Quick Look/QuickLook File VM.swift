@@ -9,16 +9,16 @@ final class QuickLookFileVM {
         self.id = id
     }
     
-    var fileURL: URL? = nil
+    var fileUrl: URL? = nil
     var isSensitive = false
     var metadata: [URLResourceKey: Any]? = nil
     
-    func downloadFile(_ file: String, root: String) {
+    func getFileUrl(_ file: String, root: String) {
         fileDownloadAPI(id, path: root + "/\(file)") { result in
             switch result {
             case .success(let model):
                 if let model = model?.attributes.url {
-                    self.downloadVideo(model, name: file)
+                    self.downloadFile(model, name: file)
                 }
                 
             case .failure(let error):
@@ -27,7 +27,7 @@ final class QuickLookFileVM {
         }
     }
     
-    private func downloadVideo(_ urlString: String, name: String) {
+    private func downloadFile(_ urlString: String, name: String) {
         let fm = FileManager.default
         
         guard let url = URL(string: urlString) else {
@@ -54,11 +54,11 @@ final class QuickLookFileVM {
                 try fm.copyItem(at: location, to: destinationURL)
                 
                 main {
-                    self.fileURL = destinationURL
+                    self.fileUrl = destinationURL
+                    self.loadAndCheckImage()
                     
                     Task {
                         await self.fetchMetadata(destinationURL)
-                        self.loadAndCheckImage()
                     }
                 }
             } catch {
@@ -71,12 +71,12 @@ final class QuickLookFileVM {
     private func loadAndCheckImage() {
         let processor = SensitivityAnalyzer()
         
-        guard let fileURL else {
+        guard let fileUrl else {
             return
         }
         
         Task {
-            await processor.checkImage(fileURL) { blur in
+            await processor.checkImage(fileUrl) { blur in
                 self.isSensitive = blur
             }
         }

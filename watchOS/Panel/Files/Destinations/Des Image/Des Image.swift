@@ -3,7 +3,6 @@ import Kingfisher
 
 struct ImageFile: View {
     private var vm: ImageFileVM
-    @EnvironmentObject private var settings: ValueStorage
     
     private let id, path, name: String
     

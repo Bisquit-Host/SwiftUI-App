@@ -30,7 +30,7 @@ struct CircularGauge: View {
     }
     
     private var gaugeValue: Double {
-        param == "RAM" ? value / pow(1024, 2) : value
+        param == "RAM" || param == "SSD" ? value / pow(1024, 2) : value
     }
     
     private let gradient = Gradient(colors: [.mint, .orange, .red])

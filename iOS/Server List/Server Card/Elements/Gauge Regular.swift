@@ -37,7 +37,6 @@ struct RegularGauge: View {
                 }
             }
         }
-        //        .gaugeStyle(.accessoryCircularCapacity)
         .gaugeStyle(.accessoryCircular)
         .tint(gradient)
     }

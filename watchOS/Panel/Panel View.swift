@@ -38,7 +38,9 @@ struct PanelView: View {
                 }
             }
             
-            fileVM.fetchFiles()
+            if !System.lowPowerMode {
+                fileVM.fetchFiles()
+            }
         }
         .onDisappear {
             vm.disconnectWebSocket()
@@ -48,5 +50,5 @@ struct PanelView: View {
 
 #Preview {
     PanelView("")
-        .environmentObject(ValueStorage())
+        .environmentObject(ValueStore())
 }

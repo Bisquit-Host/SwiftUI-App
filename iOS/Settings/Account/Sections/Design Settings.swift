@@ -2,23 +2,30 @@ import SwiftUI
 import DeviceKit
 
 struct DesignSettings: View {
-    @EnvironmentObject private var settings: ValueStorage
+    @EnvironmentObject private var store: ValueStore
     
     @State private var animate = true
     
     var body: some View {
         Section("Design") {
-            if Device.current.hasDynamicIsland {
-                Toggle("Dynamic Island badge", isOn: $settings.showDynamicIslandBadge)
+            Picker("Color theme", selection: $store.colorTheme) {
+                ForEach(ColorTheme.allCases) { theme in
+                    Text(theme.rawValue.capitalized)
+                        .tag(theme)
+                }
             }
             
-            Toggle("Transparent sheets", isOn: $settings.transparentSheet)
+            if Device.current.hasDynamicIsland {
+                Toggle("Dynamic Island badge", isOn: $store.showDynamicIslandBadge)
+            }
             
-            Toggle("Transparent lists", isOn: $settings.transparentList)
+            Toggle("Transparent sheets", isOn: $store.transparentSheet)
             
-            Toggle("Bisquit waterfall", isOn: $settings.enableBisquitFall)
+            Toggle("Transparent lists", isOn: $store.transparentList)
+            
+            Toggle("Bisquit waterfall", isOn: $store.enableBisquitFall)
         }
-        .listRowBackground(settings.transparentList ? .clear : Color.list)
+        .listRowBackground(store.transparentList ? .clear : Color.list)
     }
 }
 
@@ -26,5 +33,5 @@ struct DesignSettings: View {
     List {
         DesignSettings()
     }
-    .environmentObject(ValueStorage())
+    .environmentObject(ValueStore())
 }

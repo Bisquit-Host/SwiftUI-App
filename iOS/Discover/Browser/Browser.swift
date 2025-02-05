@@ -2,7 +2,6 @@ import ScrechKit
 
 struct Browser: View {
     private var vm = BrowserVM()
-    @EnvironmentObject private var settings: ValueStorage
     
     var body: some View {
         NavigationView {
@@ -43,5 +42,4 @@ struct Browser: View {
 
 #Preview {
     Browser()
-        .environmentObject(ValueStorage())
 }

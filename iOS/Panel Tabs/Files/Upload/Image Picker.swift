@@ -6,6 +6,7 @@ import AVKit
 // MARK: Image Picker with Drag & Drop
 struct ImagePicker: View {
     @EnvironmentObject private var vm: FileTabVM
+    
     @Environment(\.dismiss) private var dismiss
     
     var title: String

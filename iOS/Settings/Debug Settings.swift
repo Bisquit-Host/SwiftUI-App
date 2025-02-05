@@ -6,21 +6,27 @@ import ContactProvider
 #endif
 
 struct DebugSettings: View {
-    @EnvironmentObject private var storage: ValueStorage
+    @EnvironmentObject private var store: ValueStore
     
     @State private var errorAlert = false
     
     var body: some View {
         List {
-            Button {
-                Tips.showAllTipsForTesting()
-            } label: {
-                Label("Show all tips", systemImage: "lightbulb.max")
-                    .foregroundStyle(.yellow)
+            Section {
+                Toggle("Hide status bar", isOn: $store.hideStatusBar)
+            }
+            
+            Section {
+                Button {
+                    Tips.showAllTipsForTesting()
+                } label: {
+                    Label("Show all tips", systemImage: "lightbulb.max")
+                        .foregroundStyle(.yellow)
+                }
             }
             
             Section("Contacts provider") {
-                Toggle("Save contacts automatically", isOn: $storage.contactsProviderEnabled)
+                Toggle("Save contacts automatically", isOn: $store.contactsProviderEnabled)
                 
                 Button("Enable Extension") {
                     enableExtension()
@@ -49,5 +55,5 @@ struct DebugSettings: View {
 
 #Preview {
     DebugSettings()
-        .environmentObject(ValueStorage())
+        .environmentObject(ValueStore())
 }

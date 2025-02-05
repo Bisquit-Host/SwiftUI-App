@@ -17,15 +17,14 @@ struct SftpDetails: View {
     var body: some View {
         Group {
             Button {
-                UIPasteboard.general.string = sftpAddress
-                
-                SystemAlert.copied()
+                copy(sftpAddress)
             } label: {
                 HStack {
                     VStack(alignment: .leading) {
                         Text("Server address")
                         
                         Text(sftpAddress)
+                            .secondary()
                     }
                     
                     Spacer()
@@ -36,15 +35,14 @@ struct SftpDetails: View {
             }
             
             Button {
-                UIPasteboard.general.string = vm.username
-                
-                SystemAlert.copied()
+                copy(vm.username)
             } label: {
                 HStack {
                     VStack(alignment: .leading) {
-                        Text("Login")
+                        Text("Username")
                         
                         Text(vm.username)
+                            .secondary()
                     }
                     
                     Spacer()
@@ -56,6 +54,11 @@ struct SftpDetails: View {
         }
         .foregroundStyle(.primary)
         .frame(maxWidth: 500)
+    }
+    
+    private func copy(_ string: String) {
+        UIPasteboard.general.string = string
+        SystemAlert.copied()
     }
 }
 

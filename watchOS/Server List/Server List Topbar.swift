@@ -3,7 +3,7 @@ import ScrechKit
 struct ServerListTopbar: View {
     @Environment(ServerListVM.self) private var vm
     @Environment(NavState.self) private var navState
-    @EnvironmentObject private var settings: ValueStorage
+    @EnvironmentObject private var store: ValueStore
     
     //    @State private var alertNetwork = false
     @State private var isRotating = false
@@ -17,7 +17,7 @@ struct ServerListTopbar: View {
             .symbolEffect(.variableColor.iterative)
             
             SFButton("arrow.triangle.2.circlepath") {
-                vm.fetchServers(settings.adminServerList)
+                vm.fetchServers(store.adminServerList)
             }
             .background(.ultraThinMaterial)
             
@@ -45,5 +45,5 @@ struct ServerListTopbar: View {
     ServerListTopbar()
         .environment(ServerListVM())
         .environment(NavState())
-        .environmentObject(ValueStorage())
+        .environmentObject(ValueStore())
 }

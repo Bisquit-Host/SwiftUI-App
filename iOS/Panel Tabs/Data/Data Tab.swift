@@ -7,11 +7,9 @@ struct DataTab: View {
     @Environment(ScheduleVM.self) private var scheduleVM
     
     private let server: ServerAttributes
-    private let limits: ServerFeatureLimits
     
     init(_ server: ServerAttributes) {
         self.server = server
-        self.limits = server.featureLimits
     }
     
     var body: some View {
@@ -27,7 +25,7 @@ struct DataTab: View {
 #else
             ScheduleList()
 #endif
-            DatabaseList(limits.databases)
+            DatabaseList(databaseLimit)
         }
         .scrollIndicators(.hidden)
 #if !os(tvOS)
@@ -45,9 +43,15 @@ struct DataTab: View {
     }
 }
 
-//#Preview {
-//    DataTab()
-//        .environment(BackupVM(""))
-//        .environment(DatabaseVM(""))
-//        .environment(ScheduleVM(""))
-//}
+#Preview {
+    DataTab(sampleJSON(.serverListAttributes))
+        .environment(BackupVM(""))
+        .environment(DatabaseVM(""))
+        .environment(ScheduleVM(""))
+}
+
+fileprivate extension DataTab {
+    var databaseLimit: Int {
+        server.featureLimits.databases
+    }
+}

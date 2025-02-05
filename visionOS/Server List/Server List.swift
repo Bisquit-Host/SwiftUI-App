@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ServerList: View {
     @Environment(ServerListVM.self) private var vm
-    @EnvironmentObject private var settings: ValueStorage
+    @EnvironmentObject private var store: ValueStore
     
     @State private var sheetSettings = false
     
@@ -24,7 +24,7 @@ struct ServerList: View {
         //
         //#warning("doesn't update servers")
         //            //            ServerListToolbar {
-        //            //                vm.fetchServers(settings.adminServerList)
+        //            //                vm.fetchServers(store.adminServerList)
         //            //            }
         //        }
         .sheet($sheetSettings) {
@@ -34,7 +34,7 @@ struct ServerList: View {
             CloudKeys($vm.apiKey)
         }
         .refreshableTask {
-            vm.fetchServers(settings.adminServerList)
+            vm.fetchServers(store.adminServerList)
         }
     }
 }
@@ -44,5 +44,5 @@ struct ServerList: View {
         .padding()
         .glassBackgroundEffect()
         .environment(ServerListVM())
-        .environmentObject(ValueStorage())
+        .environmentObject(ValueStore())
 }

@@ -29,6 +29,7 @@ struct PowerSwitch: View {
                 .title(.semibold)
                 .symbolEffect(.bounce, value: vm.stateColor)
                 .foregroundStyle(vm.stateColor.gradient)
+                .animation(.default, value: vm.stateColor)
                 .frame(width: 35, height: 35)
                 .padding(10)
                 .background(.ultraThinMaterial, in: .circle)

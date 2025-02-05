@@ -10,7 +10,6 @@ struct InfoTabButtons: View {
     private var logVM: LogVM
     private var userVM: UsersVM
     private let server: ServerAttributes
-    @EnvironmentObject private var settings: ValueStorage
     
     init(_ server: ServerAttributes) {
         self.server = server
@@ -112,10 +111,13 @@ struct InfoTabButtons: View {
 #endif
         }
         .task {
-            logVM.fetchLogs()
-            userVM.fetchUsers()
             settingsVM.serverName = server.name
             settingsVM.serverDescription = server.description
+            
+            if !System.lowPowerMode {
+                logVM.fetchLogs()
+                userVM.fetchUsers()
+            }
         }
         .sheet($sheetSettings) {
             PanelSettingsParent(server)

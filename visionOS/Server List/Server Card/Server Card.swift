@@ -2,7 +2,7 @@ import SwiftUI
 import PteroNet
 
 struct ServerCard: View {
-    @EnvironmentObject private var settings: ValueStorage
+    @EnvironmentObject private var store: ValueStore
     @State private var vm: ServerCardVM
     
     private let server: ServerAttributes
@@ -24,37 +24,37 @@ struct ServerCard: View {
                 .title()
             
             HStack(spacing: 50) {
-                CircularGauge(
-                    param: "CPU",
-                    value: vm.cpuUsage,
-                    limit: limits.cpu,
-                    isRedacted: vm.isLoading
-                )
-                .scaleEffect(1.5)
-                
-                CircularGauge(
-                    param: "RAM",
-                    value: vm.ramUsage,
-                    limit: limits.memory,
-                    isRedacted: vm.isLoading
-                )
-                .scaleEffect(1.5)
-                
-                CircularGauge(
-                    param: "RAM",
-                    value: vm.diskUsage,
-                    limit: limits.disk,
-                    isRedacted: vm.isLoading
-                )
+                Group {
+                    CircularGauge(
+                        param: "CPU",
+                        value: vm.cpuUsage,
+                        limit: limits.cpu,
+                        isRedacted: vm.isLoading
+                    )
+                    
+                    CircularGauge(
+                        param: "RAM",
+                        value: vm.ramUsage,
+                        limit: limits.memory,
+                        isRedacted: vm.isLoading
+                    )
+                    
+                    CircularGauge(
+                        param: "SSD",
+                        value: vm.diskUsage,
+                        limit: limits.disk,
+                        isRedacted: vm.isLoading
+                    )
+                }
                 .scaleEffect(1.5)
                 
                 //                LinearGauge(value: vm.diskUsage, limit: limits.disk)
             }
-            .padding(.vertical)
+            .padding()
             .task {
                 vm.fetchServerUsage()
             }
-            .onChange(of: settings.updateServers) {
+            .onChange(of: store.updateServers) {
                 vm.fetchServerUsage()
             }
         }

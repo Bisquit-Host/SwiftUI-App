@@ -3,6 +3,7 @@ import Kingfisher
 
 struct CredentialsView: View {
     private var vm = CredentialsVM()
+    
     @Environment(\.dismiss) private var dismiss
     
     private let whatToUpdate: String
@@ -78,5 +79,5 @@ struct CredentialsView: View {
 
 #Preview {
     CredentialsView("email")
-        .environmentObject(ValueStorage())
+        .environmentObject(ValueStore())
 }

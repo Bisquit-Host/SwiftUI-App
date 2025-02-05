@@ -2,7 +2,7 @@ import ScrechKit
 import SafariCover
 
 struct Support: View {
-    @EnvironmentObject private var settings: ValueStorage
+    @EnvironmentObject private var store: ValueStore
     
     @State private var sheetGuide = false
     @State private var showMailCover = false
@@ -16,13 +16,13 @@ struct Support: View {
                     buttonSupportApp
                     buttonSupportHosting
                 }
-                .listRowBackground(settings.transparentList ? .clear : Color.list)
+                .listRowBackground(store.transparentList ? .clear : Color.list)
                 
                 Section("Contact") {
                     buttonTelegram
                     buttonMail
                 }
-                .listRowBackground(settings.transparentList ? .clear : Color.list)
+                .listRowBackground(store.transparentList ? .clear : Color.list)
             }
             .foregroundStyle(.primary)
             .navigationTitle("Support")
@@ -30,8 +30,8 @@ struct Support: View {
         }
         .presentationDragIndicator(.hidden)
         .presentationDetents([.large, .medium])
-        .scrollContentBackground(settings.transparentSheet ? .hidden : .visible)
-        .presentationBackground(settings.transparentSheet ? .ultraThinMaterial : .regular)
+        .scrollContentBackground(store.transparentSheet ? .hidden : .visible)
+        .presentationBackground(store.transparentSheet ? .ultraThinMaterial : .regular)
         .sheet($sheetGuide) {
             Guide()
         }
@@ -61,7 +61,7 @@ struct Support: View {
     private var buttonWiki: some View {
         SafariButton("https://wiki.bisquit.host") {
             HStack {
-                Text("Wiki / FAQ")
+                Text("Wiki")
                 
                 Spacer()
                 
@@ -133,5 +133,5 @@ struct Support: View {
         .sheet {
             Support()
         }
-        .environmentObject(ValueStorage())
+        .environmentObject(ValueStore())
 }

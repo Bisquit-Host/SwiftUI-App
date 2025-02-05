@@ -2,8 +2,6 @@ import ScrechKit
 import PteroNet
 
 struct CloudKeyCard: View {
-    @EnvironmentObject private var settings: ValueStorage
-    
     @Binding private var selectedKey: String
     @Bindable private var key: APIKey
     private let validate: () -> Void
@@ -91,5 +89,4 @@ struct CloudKeyCard: View {
                 key: "ptlc_1234567890"
             )) {}
     }
-    .environmentObject(ValueStorage())
 }

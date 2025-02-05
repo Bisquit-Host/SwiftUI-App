@@ -88,10 +88,11 @@ extension FileUploader: URLSessionDataDelegate {
 struct MultipartFormData {
     var data: Data
     
-    init(_ fileData: Data,
-         fileName: String,
-         mimeType: String,
-         boundary: String
+    init(
+        _ fileData: Data,
+        fileName: String,
+        mimeType: String,
+        boundary: String
     ) {
         var fullData = Data()
         

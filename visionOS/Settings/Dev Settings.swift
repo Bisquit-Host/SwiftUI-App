@@ -1,7 +1,7 @@
 import ScrechKit
 
 //struct DevSettings: View {
-//    @EnvironmentObject private var settings: ValueStorage
+//    @EnvironmentObject private var store: ValueStore
 //
 //    private let device = UIDevice.current
 //    private let bundle = Bundle.main
@@ -34,15 +34,11 @@ import ScrechKit
 //                ListParam(parameter.0, param: parameter.1)
 //            }
 //
-//            Toggle("Developer mode", isOn: $settings.devMode)
+//            Toggle("Developer mode", isOn: $store.devMode)
 //
-//            Toggle("BisquitFall", isOn: $settings.enableBisquitFall)
-//
-//#if !os(tvOS)
-//            ColorPicker("Background color (disabled)", selection: $settings.backgroundColor)
-//#endif
+//            Toggle("BisquitFall", isOn: $store.enableBisquitFall)
 //        }
-//        .listRowBackground(settings.transparentList ? .clear : Color.list)
+//        .listRowBackground(store.transparentList ? .clear : Color.list)
 //    }
 //}
 

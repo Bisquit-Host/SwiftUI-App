@@ -2,6 +2,7 @@ import SwiftUI
 
 struct Enable2FAView: View {
     @Environment(AccountVM.self) private var vm
+    
     @Environment(\.dismiss) private var dismiss
     
     @State private var code = ""

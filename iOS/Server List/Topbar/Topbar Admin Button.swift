@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct TopbarAdminButton: View {
-    @EnvironmentObject private var settings: ValueStorage
+    @EnvironmentObject private var store: ValueStore
     
     private let fetchServers: () -> Void
     
@@ -10,7 +10,7 @@ struct TopbarAdminButton: View {
     }
     
     private var icon: String {
-        if settings.adminServerList {
+        if store.adminServerList {
             "person.badge.shield.checkmark.fill"
         } else {
             "person.badge.shield.checkmark"
@@ -18,9 +18,9 @@ struct TopbarAdminButton: View {
     }
     
     var body: some View {
-        if settings.devMode {
+        if store.devMode {
             Button {
-                settings.adminServerList.toggle()
+                store.adminServerList.toggle()
                 fetchServers()
             } label: {
                 Image(systemName: icon)
@@ -31,5 +31,5 @@ struct TopbarAdminButton: View {
 
 #Preview {
     TopbarAdminButton()
-        .environmentObject(ValueStorage())
+        .environmentObject(ValueStore())
 }

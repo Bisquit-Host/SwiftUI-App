@@ -74,33 +74,23 @@ final class PanelVM {
                         switch status {
                         case "starting":
                             state = .starting
-                            withAnimation {
-                                self?.stateColor = .yellow
-                            }
+                            self?.stateColor = .yellow
                             
                         case "running":
                             state = .running
-                            withAnimation {
-                                self?.stateColor = .green
-                            }
+                            self?.stateColor = .green
                             
                         case "stopping":
                             state = .stopping
-                            withAnimation {
-                                self?.stateColor = .yellow
-                            }
+                            self?.stateColor = .yellow
                             
                         case "offline":
                             state = .offline
-                            withAnimation {
-                                self?.stateColor = .red
-                            }
+                            self?.stateColor = .red
                             
                         default:
                             state = .unknown
-                            withAnimation {
-                                self?.stateColor = .primary
-                            }
+                            self?.stateColor = .primary
                         }
                         
                         self?.serverState = state
@@ -115,6 +105,7 @@ final class PanelVM {
                     } else if let stats = message.serverStats {
                         do {
                             let jsonData = try JSONSerialization.data(withJSONObject: stats, options: [])
+                            
                             let decoder = JSONDecoder()
                             let stats = try decoder.decode(ServerStats.self, from: jsonData)
                             
@@ -124,6 +115,10 @@ final class PanelVM {
                                 self?.cpuUsage = stats.cpuAbsolute
                                 self?.ramUsage = stats.memoryBytes
                                 self?.diskUsage = stats.diskBytes / pow(1024, 2)
+#if os(tvOS)
+                                self?.cpuValues.append(Value(id: self?.cpuValues.count ?? 0, value: self?.cpuUsage ?? 0))
+                                self?.ramValues.append(Value(id: self?.ramValues.count ?? 0, value: self?.ramUsage ?? 0))
+#endif
                             }
                         } catch {
                             print("Error converting dictionary to JSON Data or decoding JSON: \(error)")

@@ -88,10 +88,13 @@ struct PanelView: View {
         .navigationTitle(vm.server?.name ?? "")
         .task {
             vm.fetchServerDetails()
-            backupVM.fetchBackups()
-            dbVM.fetchDatabases()
-            userVM.fetchUsers()
-            fileVM.fetchFiles()
+            
+            if !System.lowPowerMode {
+                backupVM.fetchBackups()
+                dbVM.fetchDatabases()
+                userVM.fetchUsers()
+                fileVM.fetchFiles()
+            }
             
             vm.updateBackups = {
                 delay {

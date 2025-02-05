@@ -3,7 +3,7 @@ import PteroNet
 
 struct Home: View {
     @Environment(ServerListVM.self) private var vm
-    @EnvironmentObject private var settings: ValueStorage
+    @EnvironmentObject private var store: ValueStore
     
     private let gradient = Gradient(colors: [
         Color(0xf7b948),
@@ -34,7 +34,7 @@ struct Home: View {
             .ignoresSafeArea()
         }
         .task {
-            vm.fetchServers(settings.adminServerList)
+            vm.fetchServers(store.adminServerList)
         }
     }
 }
@@ -42,5 +42,5 @@ struct Home: View {
 #Preview {
     Home()
         .environment(ServerListVM())
-        .environmentObject(ValueStorage())
+        .environmentObject(ValueStore())
 }
