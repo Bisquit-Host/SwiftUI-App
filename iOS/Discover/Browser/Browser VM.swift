@@ -23,11 +23,7 @@ final class BrowserVM {
     ]
     
     func fetchPlans() async {
-        guard
-            let url = URL(string: "https://plans.bisquit.host/plans/minecraft")
-        else {
-            return
-        }
+        let url = URL(string: "https://plans.bisquit.host/plans/minecraft")!
         
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
