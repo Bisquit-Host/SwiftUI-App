@@ -26,9 +26,9 @@ struct PermissionsHeader: View {
     
     private var permissionCountColor: Color {
         switch user.permissions.count {
-        case 0:                 .red
-        case permissionCount:   .green
-        default:                .yellow
+        case 0:               .red
+        case permissionCount: .green
+        default:              .yellow
         }
     }
     

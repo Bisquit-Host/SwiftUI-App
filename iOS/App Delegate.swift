@@ -120,7 +120,7 @@ private func postPushToken(email: String, token: String) {
     request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
     
     URLSession.shared.dataTask(with: request) { _, _, error in
-        guard let error else {
+        guard error != nil else {
             print(error?.localizedDescription ?? "Unknown error")
             return
         }

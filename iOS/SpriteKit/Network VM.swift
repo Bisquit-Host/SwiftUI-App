@@ -3,7 +3,7 @@ import Network
 
 @Observable
 final class NetworkVM {
-    var isNetworkSatisfied: Bool? = nil
+    private(set) var isNetworkSatisfied: Bool? = nil
     
     init() {
         defineNetworkStatus()

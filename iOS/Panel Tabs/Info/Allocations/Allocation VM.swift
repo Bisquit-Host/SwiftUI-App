@@ -8,7 +8,7 @@ final class AllocationVM {
         self.id = id
     }
     
-    var allocations: [AllocationAttributes] = []
+    private(set) var allocations: [AllocationAttributes] = []
     
     func fetchAllocations() {
         allocationListAPI(id) { result in

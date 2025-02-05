@@ -4,7 +4,7 @@ import PteroNet
 @Observable
 final class ServerListVM {
     // MARK: - PteroNet
-    var servers: [ServerAttributes] = []
+    private(set) var servers: [ServerAttributes] = []
     var apiKey = Keychain.load(key: "selectedApiKey") ?? ""
     
     // MARK: - Sheets / Alerts

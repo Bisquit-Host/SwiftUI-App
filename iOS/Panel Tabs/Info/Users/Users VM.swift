@@ -9,8 +9,8 @@ final class UsersVM {
         self.id = id
     }
     
-    var users: [UserAttributes] = []
-    var permissions: PermissionAttributes?
+    private(set) var users: [UserAttributes] = []
+    private(set) var permissions: PermissionAttributes?
     var newUserPermissions: [String] = []
     var allPermsTrigger = false
     

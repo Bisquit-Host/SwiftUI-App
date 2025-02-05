@@ -82,7 +82,7 @@ final class AuthVM {
             icon = "touchid"
             bioType = "Touch ID"
             
-        default:
+        @unknown default:
             textLogin = "Error :("
             icon = "exclamationmark.triangle"
         }

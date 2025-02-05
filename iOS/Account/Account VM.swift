@@ -4,9 +4,9 @@ import PteroNet
 
 @Observable
 final class AccountVM {
-    var account: AccountAttributes? = nil
-    var qrCodeUrl = ""
-    var twoFaEnabled = false
+    private(set) var account: AccountAttributes? = nil
+    private(set) var qrCodeUrl = ""
+    private(set) var twoFaEnabled = false
     
     func fetch() {
         accountDetailsAPI { [self] result in

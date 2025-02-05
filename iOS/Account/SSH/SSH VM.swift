@@ -3,7 +3,7 @@ import PteroNet
 
 @Observable
 final class SSHVM {
-    var keys: [SSHKey] = []
+    private(set) var keys: [SSHKey] = []
     var newName = ""
     var newPublicKey = ""
     

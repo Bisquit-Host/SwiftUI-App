@@ -9,11 +9,11 @@ final class ServerCardVM {
         self.id = id
     }
     
-    var ramUsage = 0.0
-    var cpuUsage = 0.0
-    var diskUsage = 0.0
-    var isLoading = true
-    var stateColor: Color = .red
+    private(set) var ramUsage = 0.0
+    private(set) var cpuUsage = 0.0
+    private(set) var diskUsage = 0.0
+    private(set) var isLoading = true
+    private(set) var stateColor: Color = .red
     
     func fetchServerUsage() {
         serverUsageAPI(id) { result in

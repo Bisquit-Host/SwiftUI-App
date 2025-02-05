@@ -37,6 +37,7 @@ final class MapVM: NSObject, CLLocationManagerDelegate {
         let id = UUID()
         let name: LocalizedStringResource
         let latitude, longitude: Double
+        
         var coordinate: CLLocationCoordinate2D {
             CLLocationCoordinate2D(
                 latitude: latitude,
