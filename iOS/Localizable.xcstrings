@@ -474,6 +474,16 @@
         }
       }
     },
+    "Animated background" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Анимированный фон"
+          }
+        }
+      }
+    },
     "API" : {
       "shouldTranslate" : false
     },
@@ -703,22 +713,6 @@
     },
     "Biscuits N' porn" : {
       "shouldTranslate" : false
-    },
-    "Bisquit waterfall" : {
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bisquit waterval"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Бисквитопад"
-          }
-        }
-      }
     },
     "Bisquit.Host" : {
       "localizations" : {

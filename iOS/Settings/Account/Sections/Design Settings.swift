@@ -23,7 +23,7 @@ struct DesignSettings: View {
             
             Toggle("Transparent lists", isOn: $store.transparentList)
             
-            Toggle("Bisquit waterfall", isOn: $store.enableBisquitFall)
+            Toggle("Animated background", isOn: $store.enableBisquitFall)
         }
         .listRowBackground(store.transparentList ? .clear : Color.list)
     }
