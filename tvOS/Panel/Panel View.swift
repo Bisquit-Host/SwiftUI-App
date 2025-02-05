@@ -75,7 +75,7 @@ struct PanelView: View {
                     }
                 
                 // allocations, logs, startup
-
+                
                 SubdomainList()
                     .environment(subdomainVM)
                     .tag(Tab.subdomains)
