@@ -17,5 +17,5 @@ struct UserList: View {
 
 #Preview {
     UserList()
-        .environment(UsersVM())
+        .environment(UsersVM(""))
 }
