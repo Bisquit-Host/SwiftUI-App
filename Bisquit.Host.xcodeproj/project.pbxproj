@@ -986,6 +986,10 @@
 		F3CE5C4D2D5395300094BD7B /* Subdomain Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C4C2D5395300094BD7B /* Subdomain Card.swift */; };
 		F3CE5C4E2D5395300094BD7B /* Subdomain Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C4C2D5395300094BD7B /* Subdomain Card.swift */; };
 		F3CE5C4F2D5395300094BD7B /* Subdomain Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C4C2D5395300094BD7B /* Subdomain Card.swift */; };
+		F3CE5C502D53A5820094BD7B /* Subdomain VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C442D53907E0094BD7B /* Subdomain VM.swift */; };
+		F3CE5C512D53A5820094BD7B /* Subdomain List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C402D538FE60094BD7B /* Subdomain List.swift */; };
+		F3CE5C522D53A5820094BD7B /* Subdomain Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C482D53935A0094BD7B /* Subdomain Model.swift */; };
+		F3CE5C532D53A5820094BD7B /* Subdomain Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C4C2D5395300094BD7B /* Subdomain Card.swift */; };
 		F3D037012CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D037002CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift */; };
 		F3D037022CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D037002CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift */; };
 		F3D037032CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D037002CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift */; };
@@ -1299,7 +1303,7 @@
 		F3FA61582A1F928500A65AE1 /* FileTab Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA61562A1F928500A65AE1 /* FileTab Search.swift */; };
 		F3FBDDFC29DABA0D00B170EC /* Auth Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FBDDFB29DABA0D00B170EC /* Auth Background.swift */; };
 		F3FC99112C65747700150823 /* Archieving.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC99102C65747700150823 /* Archieving.swift */; };
-		F3FC99162C65888900150823 /* TempDir.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC99152C65888900150823 /* TempDir.swift */; };
+		F3FC99162C65888900150823 /* Temp Dir.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC99152C65888900150823 /* Temp Dir.swift */; };
 		F3FD9F982C651A4E00A69314 /* File List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FD9F972C651A4E00A69314 /* File List.swift */; };
 		F3FD9F992C651A9200A69314 /* File Tab VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D558AB2A3360ED00608447 /* File Tab VM.swift */; };
 		F3FD9F9A2C651AF300A69314 /* Upload File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F393C7BA2A18437300DE33F9 /* Upload File.swift */; };
@@ -1879,7 +1883,7 @@
 		F3FA61562A1F928500A65AE1 /* FileTab Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileTab Search.swift"; sourceTree = "<group>"; };
 		F3FBDDFB29DABA0D00B170EC /* Auth Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auth Background.swift"; sourceTree = "<group>"; };
 		F3FC99102C65747700150823 /* Archieving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archieving.swift; sourceTree = "<group>"; };
-		F3FC99152C65888900150823 /* TempDir.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempDir.swift; sourceTree = "<group>"; };
+		F3FC99152C65888900150823 /* Temp Dir.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Temp Dir.swift"; sourceTree = "<group>"; };
 		F3FD9F972C651A4E00A69314 /* File List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File List.swift"; sourceTree = "<group>"; };
 		F3FD9F9B2C651B3800A69314 /* File Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Card.swift"; sourceTree = "<group>"; };
 		F3FD9FA02C65217C00A69314 /* Quick Look View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quick Look View.swift"; sourceTree = "<group>"; };
@@ -2930,7 +2934,7 @@
 			isa = PBXGroup;
 			children = (
 				F3BD76F82A43C890003E7385 /* Panel View.swift */,
-				F3FC99152C65888900150823 /* TempDir.swift */,
+				F3FC99152C65888900150823 /* Temp Dir.swift */,
 				F39E68322D2D63980002BA96 /* Panel Ornament Power.swift */,
 				F37B90762BFEA00300597624 /* Panel Ornament Info.swift */,
 				F37B90772BFEA00300597624 /* Ornament Info Settings.swift */,
@@ -5215,6 +5219,10 @@
 				F39919172A4653A300CC73DA /* Linear Gauge.swift in Sources */,
 				F30089322B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */,
 				F35FEB0E2B09F4D3004DA05D /* Network VM.swift in Sources */,
+				F3CE5C502D53A5820094BD7B /* Subdomain VM.swift in Sources */,
+				F3CE5C512D53A5820094BD7B /* Subdomain List.swift in Sources */,
+				F3CE5C522D53A5820094BD7B /* Subdomain Model.swift in Sources */,
+				F3CE5C532D53A5820094BD7B /* Subdomain Card.swift in Sources */,
 				F32716D82CF6257800F2DC31 /* Backup Context Menu.swift in Sources */,
 				F30B61C82B2905CA00F447B4 /* System Alerts.swift in Sources */,
 				F32F43FF2B75450800C9470B /* User Card.swift in Sources */,
@@ -5258,7 +5266,7 @@
 				F3A7CF752A45159B00331B51 /* Server List Toolbar.swift in Sources */,
 				F3A7CF662A44F44A00331B51 /* Auth View.swift in Sources */,
 				F348C6E42A5438EB002D5BD6 /* App Container.swift in Sources */,
-				F3FC99162C65888900150823 /* TempDir.swift in Sources */,
+				F3FC99162C65888900150823 /* Temp Dir.swift in Sources */,
 				F3F2BBA52A540B8800D44CA6 /* Start Page.swift in Sources */,
 				F3DF03E62B74F26F00CF6F5E /* Users VM.swift in Sources */,
 				F30C130C2A545F4400A7EFF0 /* Value Store.swift in Sources */,
