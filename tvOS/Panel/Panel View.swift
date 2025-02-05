@@ -74,7 +74,7 @@ struct PanelView: View {
                         Text("Other")
                     }
                 
-                // allocations, logs, startup
+                // allocations, startup
                 
                 SubdomainList()
                     .environment(subdomainVM)
