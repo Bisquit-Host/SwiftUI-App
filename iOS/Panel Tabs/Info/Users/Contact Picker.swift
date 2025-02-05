@@ -127,7 +127,7 @@ struct ContactsListView: View {
                 contacts.append(contact)
             }
         } catch {
-            print("Failed to fetch contacts: \(error)")
+            print("Failed to fetch contacts:", error)
         }
         
         return contacts
@@ -153,7 +153,7 @@ struct ContactsListView: View {
                 }
             } catch {
                 main {
-                    print("Failed to fetch contacts: \(error)")
+                    print("Failed to fetch contacts:", error)
                 }
             }
         }

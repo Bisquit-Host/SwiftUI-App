@@ -42,7 +42,7 @@ struct PermissionToggle: View {
         .onChange(of: isGranted) { _, newValue in
             if allowUpdate {
                 if newValue {
-                    userPermissions.append("\(key).\(subKey)")
+                    userPermissions.append(key + "." + subKey)
                 } else {
                     if vm.permissions?.permissions[key] != nil {
                         userPermissions.removeAll {

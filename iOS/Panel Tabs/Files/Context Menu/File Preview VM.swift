@@ -51,7 +51,7 @@ final class FilePreviewVM {
     
     private func downloadFile(_ urlString: String, name: String) {
         guard let url = URL(string: urlString) else {
-            print("Invalid URL string: \(urlString)")
+            print("Invalid URL string:", urlString)
             return
         }
         
@@ -59,7 +59,7 @@ final class FilePreviewVM {
         
         URLSession.shared.downloadTask(with: url) { location, response, error in
             guard let location, error == nil else {
-                print("Download error: \(error?.localizedDescription ?? "No error description available")")
+                print("Download error:", error?.localizedDescription ?? "Unknown error")
                 return
             }
             
@@ -75,7 +75,7 @@ final class FilePreviewVM {
                     self.checkFile()
                 }
             } catch {
-                print("Error during file copy: \(error.localizedDescription)")
+                print("Error during file copy:", error.localizedDescription)
             }
         }
         .resume()

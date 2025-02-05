@@ -63,7 +63,7 @@ struct ServerCardContextMenu: View {
                 showSafari = true
             }
             
-            ShareLink(item: "https://mgr.bisquit.host/server/\(id)")
+            ShareLink(item: "https://mgr.bisquit.host/server/" + id)
         }
     }
 }

@@ -28,7 +28,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         case .denied, .notDetermined:
             CNContactStore().requestAccess(for: .contacts) { granted, error in
                 if let error {
-                    print("Error requesting permissions: \(error)")
+                    print("Error requesting permissions:", error)
                 }
             }
             
@@ -70,7 +70,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let token = tokenParts.joined()
         
-        print("Device Token: \(token)")
+        print("Device Token:", token)
         
         sendToken(token)
     }
@@ -79,7 +79,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFailToRegisterForRemoteNotificationsWithError error: Error
     ) {
-        print("Failed to register for remote notifications: \(error)")
+        print("Failed to register for remote notifications:", error)
     }
 }
 

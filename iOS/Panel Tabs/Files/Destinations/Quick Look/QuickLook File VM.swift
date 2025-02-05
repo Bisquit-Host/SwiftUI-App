@@ -14,7 +14,7 @@ final class QuickLookFileVM {
     var metadata: [URLResourceKey: Any]? = nil
     
     func getFileUrl(_ file: String, root: String) {
-        fileDownloadAPI(id, path: root + "/\(file)") { result in
+        fileDownloadAPI(id, path: root + "/" + file) { result in
             switch result {
             case .success(let model):
                 if let model = model?.attributes.url {
@@ -42,7 +42,7 @@ final class QuickLookFileVM {
             let fm = FileManager.default
             
             guard let location, error == nil else {
-                print("Download error: \(error?.localizedDescription ?? "No error description available")")
+                print("Download error:", error?.localizedDescription ?? "Unknown error")
                 return
             }
             
@@ -62,7 +62,7 @@ final class QuickLookFileVM {
                     }
                 }
             } catch {
-                print("Error during file copy: \(error.localizedDescription)")
+                print("Error during file copy:", error.localizedDescription)
             }
         }
         .resume()
@@ -84,7 +84,7 @@ final class QuickLookFileVM {
     
     func fetchMetadata(_ fileURL: URL) async {
         guard FileManager.default.fileExists(atPath: fileURL.path) else {
-            print("File not found at URL: \(fileURL)")
+            print("File not found at URL:", fileURL)
             return
         }
         
@@ -130,7 +130,7 @@ final class QuickLookFileVM {
             
             metadata = allTags
         } catch {
-            print("Failed to fetch resource values: \(error)")
+            print("Failed to fetch resource values:", error)
         }
     }
 }

@@ -162,7 +162,7 @@ struct PanelOrnamentInfo: View {
         }
         //        .hoverEffect()
         //        .onHover { hovering in
-        //            print("onHover \(hovering)")
+        //            print("onHover", hovering)
         //
         //            withAnimation {
         //                isHovered = hovering

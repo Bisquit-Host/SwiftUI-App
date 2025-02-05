@@ -15,7 +15,7 @@ extension ServerListVM {
                 
                 try await manager.signalEnumerator()
             } catch {
-                print("Failed to add contact: \(error.localizedDescription)")
+                print("Failed to add contact:", error.localizedDescription)
             }
         }
     }
@@ -26,7 +26,7 @@ extension ServerListVM {
                 let manager = try ContactProviderManager()
                 try await manager.disable()
             } catch {
-                print("Failed to disable: \(error.localizedDescription)")
+                print("Failed to disable:", error.localizedDescription)
             }
         }
     }

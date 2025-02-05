@@ -50,7 +50,7 @@ struct QuickLookFile: View {
     }
     
     private func fetchDownloadUrl(_ file: String, root: String) {
-        fileDownloadAPI(id, path: root + "/\(file)") { result in
+        fileDownloadAPI(id, path: root + "/" + file) { result in
             switch result {
             case .success(let model):
                 if let model = model?.attributes.url {
@@ -90,7 +90,7 @@ struct QuickLookFile: View {
                     fileURL = destinationURL
                 }
             } catch {
-                print("Error during file copy: \(error.localizedDescription)")
+                print("Error during file copy:", error.localizedDescription)
             }
         }
         .resume()

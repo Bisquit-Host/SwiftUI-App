@@ -107,7 +107,7 @@ final class PteroNetTests: XCTestCase {
     //                print("Model: \(model)")
     //
     //            case .failure(let error):
-    //                print("Error: \(error.localizedDescription)")
+    //                print("Error:", error.localizedDescription)
     //
     //                XCTFail("Error: \(error.localizedDescription)")
     //            }

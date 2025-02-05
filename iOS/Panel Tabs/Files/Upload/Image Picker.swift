@@ -140,7 +140,7 @@ struct ImagePicker: View {
             try data.write(to: temporaryFileURL)
             return temporaryFileURL
         } catch {
-            print("Error writing video data to temporary file: \(error)")
+            print("Error writing video data to temporary file:", error)
             return nil
         }
     }
@@ -156,7 +156,7 @@ struct ImagePicker: View {
                     return
                 }
                 
-                print("Item: \(identifier)")
+                print("Item:", identifier)
                 
                 if let data = try? await item.loadTransferable(type: Data.self) {
                     await MainActor.run {

@@ -7,7 +7,7 @@
 //    func decompress(_ archivePath: String) -> URL? {
 //        // Validate file existence
 //        guard FileManager.default.fileExists(atPath: archivePath) else {
-//            print("File does not exist at path: \(archivePath)")
+//            print("File does not exist at path:", archivePath)
 //            return nil
 //        }
 //        
@@ -15,7 +15,7 @@
 //        if let fileData = FileManager.default.contents(atPath: archivePath) {
 //            print("File size: \(fileData.count) bytes")
 //        } else {
-//            print("Failed to read file data at path: \(archivePath)")
+//            print("Failed to read file data at path:", archivePath)
 //            return nil
 //        }
 //        
@@ -69,7 +69,7 @@
 //                )
 //            }
 //        } catch {
-//            print("Failed to create destination directory: \(error.localizedDescription)")
+//            print("Failed to create destination directory:", error.localizedDescription)
 //            return nil
 //        }
 //        
@@ -95,10 +95,10 @@
 //                writingTo: extractStream
 //            )
 //            
-//            print("Decompression successful to path: \(decompressPath)")
+//            print("Decompression successful to path:", decompressPath)
 //            return URL(fileURLWithPath: decompressPath)
 //        } catch {
-//            print("Decompression and extraction failed: \(error.localizedDescription)")
+//            print("Decompression and extraction failed:", error.localizedDescription)
 //            return nil
 //        }
 //    }

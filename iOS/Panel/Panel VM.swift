@@ -67,7 +67,7 @@ final class PanelVM {
                     let message = try JSONDecoder().decode(WebSocketMessage.self, from: jsonData)
                     
                     if let status = message.serverStatus {
-                        print("Server status: \(status)")
+                        print("Server status:", status)
                         
                         var state: ServerState
                         
@@ -121,7 +121,7 @@ final class PanelVM {
 #endif
                             }
                         } catch {
-                            print("Error converting dictionary to JSON Data or decoding JSON: \(error)")
+                            print("Error converting dictionary to JSON Data or decoding JSON:", error)
                         }
                         
                     } else if message.backupCompleted != nil {

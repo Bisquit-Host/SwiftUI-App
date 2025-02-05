@@ -29,7 +29,7 @@ final class BrowserVM {
             
             plans = fetchedPlans
         } catch {
-            print("Error: \(error)")
+            print("Error:", error)
         }
     }
     

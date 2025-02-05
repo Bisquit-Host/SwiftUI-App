@@ -27,7 +27,7 @@ struct TempDir: View {
             let files = try FileManager.default.contentsOfDirectory(atPath: tempDirectory.path)
             fileNames = files
         } catch {
-            print("Failed to load temporary directory files: \(error.localizedDescription)")
+            print("Failed to load temporary directory files:", error.localizedDescription)
         }
     }
 }

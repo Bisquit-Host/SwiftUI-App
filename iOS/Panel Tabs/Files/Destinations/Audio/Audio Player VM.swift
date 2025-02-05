@@ -40,7 +40,7 @@ final class AudioPlayerVM {
             let fm = FileManager.default
             
             guard let location, error == nil else {
-                print("Download error: \(error?.localizedDescription ?? "No error description available")")
+                print("Download error:", error?.localizedDescription ?? "Unknown error")
                 return
             }
             
@@ -57,7 +57,7 @@ final class AudioPlayerVM {
                     }
                 }
             } catch {
-                print("Error during file copy: \(error.localizedDescription)")
+                print("Error during file copy:", error.localizedDescription)
             }
         }
         .resume()

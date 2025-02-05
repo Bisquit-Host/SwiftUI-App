@@ -21,12 +21,12 @@ final class FileUploader: NSObject, ObservableObject {
         }
         
         guard let fileData = try? Data(contentsOf: fileUrl) else {
-            print("Could not retrieve data from file at URL: \(fileUrl)")
+            print("Could not retrieve data from file at URL:", fileUrl)
             return
         }
         
         guard let url = URL(string: urlString) else {
-            print("Invalid URL: \(urlString)")
+            print("Invalid URL:", urlString)
             return
         }
         
@@ -50,7 +50,7 @@ final class FileUploader: NSObject, ObservableObject {
         do {
             try multipartData.write(to: tempFileUrl)
         } catch {
-            print("Could not write multipart data to file: \(error)")
+            print("Could not write multipart data to file:", error)
             return
         }
         

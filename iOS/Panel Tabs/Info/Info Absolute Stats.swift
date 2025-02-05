@@ -53,7 +53,7 @@ struct InfoAbsoluteStats: View {
             countStyle: .memory
         )
         
-        let limitText = Text("/\(limit)")
+        let limitText = Text("/" + limit)
             .footnote()
             .foregroundStyle(.tertiary)
         
@@ -87,7 +87,7 @@ struct InfoAbsoluteStats: View {
             countStyle: .memory
         )
         
-        let limitText = Text("/\(limit)")
+        let limitText = Text("/" + limit)
             .footnote()
             .foregroundStyle(.tertiary)
         
