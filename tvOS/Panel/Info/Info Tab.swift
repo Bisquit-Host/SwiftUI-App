@@ -4,7 +4,6 @@ import PteroNet
 struct InfoTab: View {
     private let id: String
     private var logVM: LogVM
-    private var usersVM: UsersVM
     private var allocationVM: AllocationVM
     private var startupVM: StartupVM
     @Environment(NavState.self) private var navState
@@ -12,7 +11,6 @@ struct InfoTab: View {
     init(_ id: String) {
         self.id = id
         self.logVM = LogVM(id)
-        self.usersVM = UsersVM(id)
         self.allocationVM = AllocationVM(id)
         self.startupVM = StartupVM(id)
     }
@@ -20,15 +18,6 @@ struct InfoTab: View {
     var body: some View {
         VStack(spacing: 60) {
             HStack {
-                NavigationLink {
-                    UserListParent()
-                        .environment(usersVM)
-                } label: {
-                    Label("Users", systemImage: "person.3")
-                        .frame(width: 500, height: 250)
-                        .background(.ultraThinMaterial, in: .rect(cornerRadius: 64))
-                }
-                
                 NavigationLink {
                     LogList()
                         .environment(logVM)
@@ -62,7 +51,6 @@ struct InfoTab: View {
         .title2()
         .buttonStyle(.plain)
         .task {
-            usersVM.fetchUsers()
             logVM.fetchLogs()
             allocationVM.fetchAllocations()
             startupVM.fetchStartupVariables()
@@ -75,7 +63,6 @@ struct InfoTab: View {
         InfoTab("")
     }
     .environment(LogVM(""))
-    .environment(UsersVM(""))
     .environment(AllocationVM(""))
     .environment(StartupVM(""))
     .environment(NavState())
