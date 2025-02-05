@@ -62,7 +62,7 @@ struct PanelView: View {
                     .environment(usersVM)
                     .tag(Tab.users)
                     .tabItem {
-                        Label("Users", systemImage: "person.3")
+                        Label("Users", systemImage: "person")
                     }
                 
                 LogList()
