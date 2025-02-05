@@ -96,7 +96,9 @@ private func fetchEmail(completion: @escaping (String?) -> Void) {
 }
 
 private func postPushToken(email: String, token: String) {
-    guard let url = URL(string: "http://api.topscrech.dev/user/push_tokens/add") else {
+    guard
+        let url = URL(string: "http://api.topscrech.dev/user/push_tokens/add")
+    else {
         return
     }
     

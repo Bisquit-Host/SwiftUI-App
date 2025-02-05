@@ -49,7 +49,10 @@ public extension UIDevice {
         let machineMirror = Mirror(reflecting: systemInfo.machine)
         
         return machineMirror.children.reduce("") { identifier, element in
-            guard let value = element.value as? Int8, value != 0 else {
+            guard
+                let value = element.value as? Int8,
+                value != 0
+            else {
                 return identifier
             }
             

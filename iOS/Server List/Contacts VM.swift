@@ -50,11 +50,17 @@ extension ServerListVM {
             return
         }
         
-        let existingContacts = try store.unifiedContacts(matching: CNContact.predicateForContactsInContainer(withIdentifier: id), keysToFetch: [CNContactEmailAddressesKey as CNKeyDescriptor])
+        let existingContacts = try store.unifiedContacts(
+            matching: CNContact.predicateForContactsInContainer(withIdentifier: id),
+            keysToFetch: [CNContactEmailAddressesKey as CNKeyDescriptor]
+        )
         
         for user in users {
             let contact = CNMutableContact()
-            contact.emailAddresses = [CNLabeledValue(label: CNLabelHome, value: user.email as NSString)]
+            
+            contact.emailAddresses = [
+                CNLabeledValue(label: CNLabelHome, value: user.email as NSString)
+            ]
             
             // Check if a contact with the same email already exists
             if let _ = existingContacts.first(where: {

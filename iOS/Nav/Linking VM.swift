@@ -21,8 +21,10 @@ final class DeepLinkVM {
         print(url.description)
         print(components)
         
-        guard let index = components.firstIndex(of: "server"),
-              index + 1 < components.count else {
+        guard
+            let index = components.firstIndex(of: "server"),
+            index + 1 < components.count
+        else {
             return
         }
         
