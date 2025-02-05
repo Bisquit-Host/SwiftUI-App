@@ -23,7 +23,7 @@ final class SubdomainVM {
     }
     
     func fetchSubdomains() async {
-        let url = URL(string: "https://mgr.bisquit.host/api/client/extensions/subdomainmanager/servers/\(id)")
+        let url = URL(string: "https://mgr.bisquit.host/api/client/extensions/subdomainmanager/servers/" + id)
         
         guard let apiKey = Keychain.load(key: "selectedApiKey") else {
             return
