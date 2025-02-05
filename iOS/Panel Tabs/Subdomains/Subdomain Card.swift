@@ -20,6 +20,7 @@ struct SubdomainCard: View {
                 .secondary()
         }
         .navigationTitle("Subdomains")
+#if !os(tvOS)
         .contextMenu {
             Button {
                 UIPasteboard.general.string = fullDomain
@@ -29,6 +30,7 @@ struct SubdomainCard: View {
             
             ShareLink(item: fullDomain)
         }
+#endif
     }
 }
 

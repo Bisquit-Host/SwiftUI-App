@@ -6,6 +6,7 @@ struct PanelView: View {
     private var backupVM: BackupVM
     private var databaseVM: DatabaseVM
     private var scheduleVM: ScheduleVM
+    private var subdomainVM: SubdomainVM
     
     private let id: String
     
@@ -16,6 +17,7 @@ struct PanelView: View {
         self.scheduleVM = ScheduleVM(id)
         self.vm = PanelVM(id)
         self.fileVM = FileTabVM(id)
+        self.subdomainVM = SubdomainVM(id)
     }
     
     @AppStorage("tab_panel") private var tabPanel: Tab = .info
@@ -29,14 +31,14 @@ struct PanelView: View {
                     .environment(databaseVM)
                     .tag(Tab.info)
                     .tabItem {
-                        Text("Stats")
+                        Label("Info", systemImage: "info.circle")
                     }
                 
                 FileTab(id)
                     .environmentObject(fileVM)
                     .tag(Tab.files)
                     .tabItem {
-                        Text("Files")
+                        Label("Files", systemImage: "folder")
                     }
                 
                 DataTab(server)
@@ -45,7 +47,7 @@ struct PanelView: View {
                     .environment(scheduleVM)
                     .tag(Tab.backups)
                     .tabItem {
-                        Text("Data")
+                        Label("Data", systemImage: "archivebox")
                     }
                 
                 InfoTab(id)
@@ -53,8 +55,16 @@ struct PanelView: View {
                     .tabItem {
                         Text("Other")
                     }
+                
+                SubdomainList()
+                    .environment(subdomainVM)
+                    .tag(Tab.subdomains)
+                    .tabItem {
+                        Label("Subdomains", systemImage: "globe")
+                    }
             }
         }
+        .sidebarAdaptableTabView()
         .task {
             fetchData()
         }
@@ -82,6 +92,10 @@ struct PanelView: View {
             backupVM.fetchBackups()
             databaseVM.fetchDatabases()
             scheduleVM.fetchSchedules()
+            
+            Task {
+                await subdomainVM.fetchSubdomains()
+            }
         }
         
         vm.consoleDetails { data in

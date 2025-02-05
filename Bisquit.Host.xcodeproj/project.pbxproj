@@ -990,6 +990,10 @@
 		F3CE5C512D53A5820094BD7B /* Subdomain List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C402D538FE60094BD7B /* Subdomain List.swift */; };
 		F3CE5C522D53A5820094BD7B /* Subdomain Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C482D53935A0094BD7B /* Subdomain Model.swift */; };
 		F3CE5C532D53A5820094BD7B /* Subdomain Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C4C2D5395300094BD7B /* Subdomain Card.swift */; };
+		F3CE5C542D53A77C0094BD7B /* Subdomain Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C482D53935A0094BD7B /* Subdomain Model.swift */; };
+		F3CE5C552D53A77C0094BD7B /* Subdomain Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C4C2D5395300094BD7B /* Subdomain Card.swift */; };
+		F3CE5C562D53A77C0094BD7B /* Subdomain List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C402D538FE60094BD7B /* Subdomain List.swift */; };
+		F3CE5C572D53A77C0094BD7B /* Subdomain VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C442D53907E0094BD7B /* Subdomain VM.swift */; };
 		F3D037012CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D037002CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift */; };
 		F3D037022CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D037002CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift */; };
 		F3D037032CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D037002CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift */; };
@@ -4221,6 +4225,10 @@
 				F3AB4A8C2CF3DAC900A8252F /* Backup Card VM.swift in Sources */,
 				F30088AA2B3A1A510051476C /* Schedule VM.swift in Sources */,
 				F3C9D84A2B302AA200265492 /* File Context Menu.swift in Sources */,
+				F3CE5C542D53A77C0094BD7B /* Subdomain Model.swift in Sources */,
+				F3CE5C552D53A77C0094BD7B /* Subdomain Card.swift in Sources */,
+				F3CE5C562D53A77C0094BD7B /* Subdomain List.swift in Sources */,
+				F3CE5C572D53A77C0094BD7B /* Subdomain VM.swift in Sources */,
 				F3D49DB52B2336240033B52E /* Overview VM.swift in Sources */,
 				F3CCF5BA2B345466005FFF2C /* Permission List.swift in Sources */,
 				F3CCF5C12B34576F005FFF2C /* Allocation List.swift in Sources */,

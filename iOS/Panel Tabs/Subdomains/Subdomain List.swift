@@ -15,7 +15,6 @@ struct SubdomainList: View {
                 } label: {
                     Label("Create subdomain", systemImage: "plus")
                 }
-                .disabled(true)
                 .secondary()
             } footer: {
                 Text("Will be available soon")

@@ -8,7 +8,7 @@ struct PanelView: View {
     private var dbVM: DatabaseVM
     private var scheduleVM: ScheduleVM
     private var userVM: UsersVM
-    private var subdomainsVM: SubdomainVM
+    private var subdomainVM: SubdomainVM
     
     private let id: String
     
@@ -20,7 +20,7 @@ struct PanelView: View {
         self.dbVM = DatabaseVM(id)
         self.scheduleVM = ScheduleVM(id)
         self.userVM = UsersVM(id)
-        self.subdomainsVM = SubdomainVM(id)
+        self.subdomainVM = SubdomainVM(id)
     }
     
     @AppStorage("show_info") private var showInfo = true
@@ -86,7 +86,7 @@ struct PanelView: View {
                         }
                     
                     SubdomainList()
-                        .environment(subdomainsVM)
+                        .environment(subdomainVM)
                         .tag(Tab.subdomains)
                         .tabItem {
                             Label("Subdomains", systemImage: "globe")
@@ -105,7 +105,7 @@ struct PanelView: View {
                 fileVM.fetchFiles()
                 
                 Task {
-                    await subdomainsVM.fetchSubdomains()
+                    await subdomainVM.fetchSubdomains()
                 }
             }
             
