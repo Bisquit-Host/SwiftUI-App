@@ -27,11 +27,13 @@ struct ServerCard: View {
             
             Spacer()
             
-            let cpuUsage = vm.cpuUsage / limits.cpu
-            ProgressBar("cpu", progress: cpuUsage)
-            
-            let ramUsage = vm.ramUsage / pow(1024, 2) / limits.memory
-            ProgressBar("ram", progress: ramUsage)
+            if vm.stateColor != .red {
+                let cpuUsage = vm.cpuUsage / limits.cpu
+                ProgressBar("cpu", progress: cpuUsage)
+                
+                let ramUsage = vm.ramUsage / pow(1024, 2) / limits.memory
+                ProgressBar("ram", progress: ramUsage)
+            }
             
             let ssdUsage = vm.diskUsage / pow(1024, 2) / limits.disk
             ProgressBar("ssd", progress: ssdUsage)
