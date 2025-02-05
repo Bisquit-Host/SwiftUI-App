@@ -8,17 +8,6 @@ struct SubdomainList: View {
             ForEach(vm.subdomains) { subdomain in
                 SubdomainCard(subdomain)
             }
-#warning("Finish")
-            Section {
-                Button {
-                    
-                } label: {
-                    Label("Create subdomain", systemImage: "plus")
-                }
-                .secondary()
-            } footer: {
-                Text("Will be available soon")
-            }
         }
         .refreshableTask {
             await vm.fetchSubdomains()

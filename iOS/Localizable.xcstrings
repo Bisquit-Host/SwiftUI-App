@@ -1239,9 +1239,6 @@
         }
       }
     },
-    "Create subdomain" : {
-
-    },
     "Create Task" : {
       "localizations" : {
         "ru" : {
@@ -3715,6 +3712,7 @@
       }
     },
     "Smile" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -4459,9 +4457,6 @@
           }
         }
       }
-    },
-    "Will be available soon" : {
-
     },
     "Write" : {
 
