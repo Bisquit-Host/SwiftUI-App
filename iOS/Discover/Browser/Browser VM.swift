@@ -2,9 +2,7 @@ import ScrechKit
 
 @Observable
 final class BrowserVM {
-    var chosenLink = ""
     var filterRule = "Minecraft"
-    var showSafari = false
     
     private(set) var plans: [MinecraftPlan] = []
     
