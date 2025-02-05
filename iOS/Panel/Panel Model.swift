@@ -11,5 +11,6 @@ enum Tab: String, CaseIterable {
          databases = "Databases",
          allocations = "Allocations",
          logs = "Logs",
-         admin = "Admin"
+         admin = "Admin",
+         subdomains = "Subdomains"
 }
