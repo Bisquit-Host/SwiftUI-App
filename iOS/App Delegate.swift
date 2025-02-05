@@ -7,7 +7,10 @@ import Contacts
 
 #if !os(macOS)
 final class AppDelegate: UIResponder, UIApplicationDelegate {
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+    ) -> Bool {
         if ValueStore().isApiKeyValid {
             registerForPushNotifications(application: application)
         }
@@ -57,7 +60,10 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+    func application(
+        _ application: UIApplication,
+        didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
+    ) {
         let tokenParts = deviceToken.map {
             String(format: "%02.2hhx", $0)
         }
@@ -69,7 +75,10 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         sendToken(token)
     }
     
-    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+    func application(
+        _ application: UIApplication,
+        didFailToRegisterForRemoteNotificationsWithError error: Error
+    ) {
         print("Failed to register for remote notifications: \(error)")
     }
 }
@@ -111,7 +120,7 @@ private func postPushToken(email: String, token: String) {
     request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
     
     URLSession.shared.dataTask(with: request) { _, _, error in
-        guard error == nil else {
+        guard let error else {
             print(error?.localizedDescription ?? "Unknown error")
             return
         }
