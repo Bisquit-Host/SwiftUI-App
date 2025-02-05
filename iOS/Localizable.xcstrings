@@ -1559,7 +1559,14 @@
       }
     },
     "Disable 2FA" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выключить 2FA"
+          }
+        }
+      }
     },
     "Disabled" : {
       "localizations" : {
@@ -3543,7 +3550,14 @@
       }
     },
     "Setup 2FA" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настроить 2FA"
+          }
+        }
+      }
     },
     "Setup with an authenticator app" : {
       "localizations" : {
