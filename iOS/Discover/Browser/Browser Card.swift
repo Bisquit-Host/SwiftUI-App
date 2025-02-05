@@ -85,7 +85,6 @@ struct BrowserCard: View {
                         //                            .padding(.horizontal, 10)
                         //                            .foregroundStyle(.white)
                         //     .background(.blue, in: .capsule)
-                        
                     }
                 }
                 
