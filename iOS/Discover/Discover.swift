@@ -58,7 +58,7 @@ struct Discover: View {
                 }
                 .listRowBackground(store.transparentList ? .clear : Color.list)
                 
-                Section("Other") {
+                Section {
                     DiscoverCard(
                         DiscoverItem(
                             "System status",
@@ -85,6 +85,15 @@ struct Discover: View {
                     ) {
                         openSafari("https://github.com/TopScrech")
                     }
+                    
+                    DiscoverCard(
+                        DiscoverItem(
+                            "Client role in the Discord channel",
+                            icon: "person",
+                            url: "https://my.bisquit.host/discord.php",
+                            color: .secondary
+                        )
+                    )
                 }
                 .listRowBackground(store.transparentList ? .clear : Color.list)
                 
