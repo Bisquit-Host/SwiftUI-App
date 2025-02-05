@@ -22,7 +22,8 @@ struct CacheExpiration: View {
                 
                 Spacer()
                 
-                Text(cacheExpiration.rawValue.capitalized)
+#warning("Not localized")
+                Text(String(cacheExpiration.rawValue.capitalized))
                 
                 Image(systemName: "chevron.forward")
                     .secondary()
