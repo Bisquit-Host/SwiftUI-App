@@ -838,7 +838,14 @@
       }
     },
     "Color theme" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Цветовая тема"
+          }
+        }
+      }
     },
     "Command" : {
       "localizations" : {
@@ -1282,6 +1289,16 @@
         }
       }
     },
+    "Dark" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Темная"
+          }
+        }
+      }
+    },
     "Data" : {
       "localizations" : {
         "nl" : {
@@ -1667,16 +1684,6 @@
         }
       }
     },
-    "Email" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Почта"
-          }
-        }
-      }
-    },
     "Empty" : {
       "localizations" : {
         "nl" : {
@@ -1852,6 +1859,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Файлы"
+          }
+        }
+      }
+    },
+    "First name" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Имя"
           }
         }
       }
@@ -2443,6 +2460,16 @@
         }
       }
     },
+    "Last name" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фамилия"
+          }
+        }
+      }
+    },
     "Last opened" : {
 
     },
@@ -2498,6 +2525,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Поехали 🚀"
+          }
+        }
+      }
+    },
+    "Light" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Светлая"
           }
         }
       }
@@ -3651,17 +3688,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Скоро и здесь будет арт"
-          }
-        }
-      }
-    },
-    "Spam" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Спам"
           }
         }
       }
