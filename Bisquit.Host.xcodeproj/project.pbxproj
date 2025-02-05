@@ -322,7 +322,6 @@
 		F342FAA62B2C615A00854270 /* Pow in Frameworks */ = {isa = PBXBuildFile; productRef = F342FAA52B2C615A00854270 /* Pow */; };
 		F342FAA82B2C61ED00854270 /* Pow in Frameworks */ = {isa = PBXBuildFile; productRef = F342FAA72B2C61ED00854270 /* Pow */; };
 		F342FAAB2B2C67F800854270 /* Ansi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39626F12A7AD64B0057E356 /* Ansi.swift */; };
-		F342FAAE2B2C6A5000854270 /* Info Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F342FAAD2B2C6A5000854270 /* Info Tab.swift */; };
 		F342FAAF2B2E07FF00854270 /* Users VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A0B2A4A386F003A1973 /* Users VM.swift */; };
 		F342FAB02B2E08C100854270 /* Log VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367977D2A3A5AB6009F2788 /* Log VM.swift */; };
 		F342FAB32B2E43D500854270 /* Log Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F342FAB22B2E43D500854270 /* Log Card.swift */; };
@@ -1583,7 +1582,6 @@
 		F33DE4E82B350C8B00E257D8 /* Server Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card.swift"; sourceTree = "<group>"; };
 		F340764F2A37701C0054BDCA /* Console Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Console Search.swift"; sourceTree = "<group>"; };
 		F34169A42A49DF64003985E7 /* Info Tab Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab Button.swift"; sourceTree = "<group>"; };
-		F342FAAD2B2C6A5000854270 /* Info Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab.swift"; sourceTree = "<group>"; };
 		F342FAB22B2E43D500854270 /* Log Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log Card.swift"; sourceTree = "<group>"; };
 		F3437CA1297360D30064808F /* Schedule Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Schedule Card.swift"; sourceTree = "<group>"; };
 		F345486B29708FE30038DFD6 /* Server Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card.swift"; sourceTree = "<group>"; };
@@ -2587,18 +2585,6 @@
 			path = "Startup & Settings";
 			sourceTree = "<group>";
 		};
-		F342FAAC2B2C6A3800854270 /* Info */ = {
-			isa = PBXGroup;
-			children = (
-				F342FAAD2B2C6A5000854270 /* Info Tab.swift */,
-				F30088E32B3A5B0B0051476C /* Startup List.swift */,
-				F30088F22B3B475C0051476C /* Startup Card.swift */,
-				F333B3B82B80CE990005B84D /* Logs */,
-				F30088E52B3AD4DC0051476C /* Allocations */,
-			);
-			path = Info;
-			sourceTree = "<group>";
-		};
 		F3464CF92A862D2D00188B0C /* Intent */ = {
 			isa = PBXGroup;
 			children = (
@@ -3024,7 +3010,9 @@
 				F39D28542A27EE88007B12C3 /* Panel View.swift */,
 				F3EB09DE2A2977C50073916A /* Stats */,
 				F3EB09CA2A2940AA0073916A /* File Manager */,
-				F342FAAC2B2C6A3800854270 /* Info */,
+				F3CE5C5A2D53AC810094BD7B /* Startup */,
+				F333B3B82B80CE990005B84D /* Logs */,
+				F30088E52B3AD4DC0051476C /* Allocations */,
 			);
 			path = Panel;
 			sourceTree = "<group>";
@@ -3312,6 +3300,15 @@
 				F3CE5C482D53935A0094BD7B /* Subdomain Model.swift */,
 			);
 			path = Subdomains;
+			sourceTree = "<group>";
+		};
+		F3CE5C5A2D53AC810094BD7B /* Startup */ = {
+			isa = PBXGroup;
+			children = (
+				F30088E32B3A5B0B0051476C /* Startup List.swift */,
+				F30088F22B3B475C0051476C /* Startup Card.swift */,
+			);
+			path = Startup;
 			sourceTree = "<group>";
 		};
 		F3D2643C2A66AB97005C3777 /* Account */ = {
@@ -4157,7 +4154,6 @@
 				F37080502A2A1EB30046CE70 /* Schedule Card.swift in Sources */,
 				F3464D202A86396600188B0C /* Change Power.swift in Sources */,
 				F3DDD59D2A62AC7C009FDFBF /* Create Backup Button.swift in Sources */,
-				F342FAAE2B2C6A5000854270 /* Info Tab.swift in Sources */,
 				F3796562295C519C0074CA3D /* Chart View.swift in Sources */,
 				F37266CC29D96C93005FD103 /* Websocket Message.swift in Sources */,
 				F35FEB0A2B09F003004DA05D /* API Key.swift in Sources */,

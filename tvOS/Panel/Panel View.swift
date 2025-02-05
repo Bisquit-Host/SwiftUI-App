@@ -9,6 +9,8 @@ struct PanelView: View {
     private var subdomainVM: SubdomainVM
     private var usersVM: UsersVM
     private var logVM: LogVM
+    private var allocationVM: AllocationVM
+    private var startupVM: StartupVM
     
     private let id: String
     
@@ -22,6 +24,8 @@ struct PanelView: View {
         self.subdomainVM = SubdomainVM(id)
         self.usersVM = UsersVM(id)
         self.logVM = LogVM(id)
+        self.allocationVM = AllocationVM(id)
+        self.startupVM = StartupVM(id)
     }
     
     @AppStorage("tab_panel") private var tabPanel: Tab = .info
@@ -68,13 +72,19 @@ struct PanelView: View {
                         Label("Logs", systemImage: "terminal")
                     }
                 
-                InfoTab(id)
-                    .tag(Tab.other)
+                AllocationList()
+                    .environment(allocationVM)
+                    .tag(Tab.allocations)
                     .tabItem {
-                        Text("Other")
+                        Label("Allocations", systemImage: "network")
                     }
                 
-                // allocations, startup
+                StartupList()
+                    .environment(startupVM)
+                    .tag(Tab.startup)
+                    .tabItem {
+                        Label("Startup", systemImage: "airplane")
+                    }
                 
                 SubdomainList()
                     .environment(subdomainVM)
@@ -114,6 +124,8 @@ struct PanelView: View {
             scheduleVM.fetchSchedules()
             usersVM.fetchUsers()
             logVM.fetchLogs()
+            allocationVM.fetchAllocations()
+            startupVM.fetchStartupVariables()
             
             Task {
                 await subdomainVM.fetchSubdomains()
