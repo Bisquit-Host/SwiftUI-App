@@ -96,13 +96,9 @@ private func fetchEmail(completion: @escaping (String?) -> Void) {
 }
 
 private func postPushToken(email: String, token: String) {
-    guard
-        let url = URL(string: "http://api.topscrech.dev/user/push_tokens/add")
-    else {
-        return
-    }
+    let url = URL(string: "http://api.topscrech.dev/user/push_tokens/add")
     
-    var request = URLRequest(url: url)
+    var request = URLRequest(url: url!)
     request.httpMethod = "POST"
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
     
@@ -114,7 +110,7 @@ private func postPushToken(email: String, token: String) {
     
     request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
     
-    URLSession.shared.dataTask(with: request) { data, response, error in
+    URLSession.shared.dataTask(with: request) { _, _, error in
         guard error == nil else {
             print(error?.localizedDescription ?? "Unknown error")
             return

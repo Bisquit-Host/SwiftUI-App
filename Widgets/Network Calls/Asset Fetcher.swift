@@ -5,9 +5,9 @@ struct AssetFetcher {
         var assets: [Asset] = []
         
         do {
-            let url = URL(string: "https://mgr.bisquit.host/api/client")!
+            let url = URL(string: "https://mgr.bisquit.host/api/client")
             
-            var request = URLRequest(url: url)
+            var request = URLRequest(url: url!)
             
             if let apiKey = Keychain.load(key: "selectedApiKey") {
                 request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")

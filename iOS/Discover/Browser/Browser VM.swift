@@ -20,11 +20,12 @@ final class BrowserVM {
     ]
     
     func fetchPlans() async {
-        let url = URL(string: "https://plans.bisquit.host/plans/minecraft")!
+        let decoder = JSONDecoder()
+        let url = URL(string: "https://plans.bisquit.host/plans/minecraft")
         
         do {
-            let (data, _) = try await URLSession.shared.data(from: url)
-            let fetchedPlans = try JSONDecoder().decode([MinecraftPlan].self, from: data)
+            let (data, _) = try await URLSession.shared.data(from: url!)
+            let fetchedPlans = try decoder.decode([MinecraftPlan].self, from: data)
             
             plans = fetchedPlans
         } catch {

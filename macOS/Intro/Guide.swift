@@ -67,9 +67,9 @@ struct Guide: View {
                 .lineLimit(1...5)
             
             if step == 2 {
-                let url = URL(string: "https://mgr.bisquit.host")!
+                let url = URL(string: "https://mgr.bisquit.host")
                 
-                Link(destination: url) {
+                Link(destination: url!) {
                     Image(systemName: "link")
                         .title2(.semibold)
                         .padding()

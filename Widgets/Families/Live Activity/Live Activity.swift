@@ -23,11 +23,9 @@ final class LiveActivity {
     var LAToken = ""
     
     func postRequest(WSUrl: String, WSToken: String, liveActivityToken: String) {
-        guard let url = URL(string: "https://api.topscrech.dev/liveactivity/start") else {
-            return
-        }
+        let url = URL(string: "https://api.topscrech.dev/liveactivity/start")
         
-        var request = URLRequest(url: url)
+        var request = URLRequest(url: url!)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
