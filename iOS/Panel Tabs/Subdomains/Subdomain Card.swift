@@ -19,6 +19,16 @@ struct SubdomainCard: View {
                 .footnote()
                 .secondary()
         }
+        .navigationTitle("Subdomains")
+        .contextMenu {
+            Button {
+                UIPasteboard.general.string = fullDomain
+            } label: {
+                Label("Copy", systemImage: "document.on.document")
+            }
+            
+            ShareLink(item: fullDomain)
+        }
     }
 }
 

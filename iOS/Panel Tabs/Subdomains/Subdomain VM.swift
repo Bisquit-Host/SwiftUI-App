@@ -48,3 +48,15 @@ final class SubdomainVM {
         }
     }
 }
+
+// https://mgr.bisquit.host/api/client/extensions/subdomainmanager/servers/4e400cc0-ef40-4247-a375-676acaaa83a2
+//{ response
+//    "object": "server_subdomain",
+//    "attributes": {
+//        "id": 43,
+//        "subdomain": "test",
+//        "domain": "goida.host",
+//        "created_at": "2025-02-05 16:47:30"
+//    }
+//}
+// body: {"subdomain":"test","domain":1}
