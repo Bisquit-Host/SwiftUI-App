@@ -303,7 +303,7 @@
 		F33CDBFB2A26A571008D0214 /* Server Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33CDBFA2A26A571008D0214 /* Server Card.swift */; };
 		F33CDBFC2A26A60D008D0214 /* Server Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* Server Card VM.swift */; };
 		F33CDBFD2A26B7AD008D0214 /* Browser Spec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A1D2342A201CBB0053261E /* Browser Spec.swift */; };
-		F33CDBFE2A26B8BC008D0214 /* CloudKit Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B2A0129FFD6AB006E5FD2 /* CloudKit Model.swift */; };
+		F33CDBFE2A26B8BC008D0214 /* Plans Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B2A0129FFD6AB006E5FD2 /* Plans Model.swift */; };
 		F33CDC002A26B920008D0214 /* Browser VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA590295901C00006D126 /* Browser VM.swift */; };
 		F33CDC012A26B927008D0214 /* Browser Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3DBD029B8007B00096115 /* Browser Topbar.swift */; };
 		F33CDC022A26B930008D0214 /* Browser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA58E295901B60006D126 /* Browser.swift */; };
@@ -427,8 +427,8 @@
 		F358132B2A1F5D2A002ADFA4 /* Linking VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */; };
 		F358132C2A1F5D2A002ADFA4 /* Linking VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */; };
 		F358F02E2D2C1C5500BCC07B /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = F358F02D2D2C1C5500BCC07B /* LaunchAtLogin */; };
-		F35B2A0229FFD6AB006E5FD2 /* CloudKit Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B2A0129FFD6AB006E5FD2 /* CloudKit Model.swift */; };
-		F35B2A0329FFF857006E5FD2 /* CloudKit Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B2A0129FFD6AB006E5FD2 /* CloudKit Model.swift */; };
+		F35B2A0229FFD6AB006E5FD2 /* Plans Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B2A0129FFD6AB006E5FD2 /* Plans Model.swift */; };
+		F35B2A0329FFF857006E5FD2 /* Plans Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B2A0129FFD6AB006E5FD2 /* Plans Model.swift */; };
 		F35B89BE2A725710000B5EEF /* Tip Suspended Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B89BD2A725710000B5EEF /* Tip Suspended Server.swift */; };
 		F35B89BF2A725CF7000B5EEF /* Tip Suspended Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B89BD2A725710000B5EEF /* Tip Suspended Server.swift */; };
 		F35B89C02A725CFA000B5EEF /* Tip Suspended Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B89BD2A725710000B5EEF /* Tip Suspended Server.swift */; };
@@ -818,7 +818,7 @@
 		F3A7CF1C2C8C4E4A00413400 /* Browser Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3521E2A29F5C13900132CCB /* Browser Card.swift */; };
 		F3A7CF1D2C8C4E4A00413400 /* Browser Hints.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A1D2372A2024E10053261E /* Browser Hints.swift */; };
 		F3A7CF1E2C8C4E4A00413400 /* Browser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA58E295901B60006D126 /* Browser.swift */; };
-		F3A7CF1F2C8C4E4A00413400 /* CloudKit Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B2A0129FFD6AB006E5FD2 /* CloudKit Model.swift */; };
+		F3A7CF1F2C8C4E4A00413400 /* Plans Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B2A0129FFD6AB006E5FD2 /* Plans Model.swift */; };
 		F3A7CF222C8C4E9700413400 /* MailCover in Frameworks */ = {isa = PBXBuildFile; productRef = F3A7CF212C8C4E9700413400 /* MailCover */; };
 		F3A7CF232C8C509C00413400 /* Contact Provider Extension.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = F3E2BEF52C1DA07E00B7A6D4 /* Contact Provider Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F3A7CF612C8C569300413400 /* Server List VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF602C8C569300413400 /* Server List VM.swift */; };
@@ -1027,7 +1027,7 @@
 		F3D2954E2AF39DE000ED43A0 /* Browser Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3DBD029B8007B00096115 /* Browser Topbar.swift */; };
 		F3D2954F2AF39DE600ED43A0 /* Browser VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA590295901C00006D126 /* Browser VM.swift */; };
 		F3D295502AF39DEA00ED43A0 /* Browser Hints.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A1D2372A2024E10053261E /* Browser Hints.swift */; };
-		F3D295512AF39DFF00ED43A0 /* CloudKit Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B2A0129FFD6AB006E5FD2 /* CloudKit Model.swift */; };
+		F3D295512AF39DFF00ED43A0 /* Plans Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B2A0129FFD6AB006E5FD2 /* Plans Model.swift */; };
 		F3D295522AF39E0300ED43A0 /* Browser Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3521E2A29F5C13900132CCB /* Browser Card.swift */; };
 		F3D295532AF39E0800ED43A0 /* Guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA57E2959012D0006D126 /* Guide.swift */; };
 		F3D295542AF39E1200ED43A0 /* Carousel Button Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7082A54CB6600E89EC4 /* Carousel Button Style.swift */; };
@@ -1601,7 +1601,7 @@
 		F3573BDA2C6512580051259E /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Intents.strings; sourceTree = "<group>"; };
 		F3573BDD2C6512600051259E /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Intents.strings; sourceTree = "<group>"; };
 		F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Linking VM.swift"; sourceTree = "<group>"; };
-		F35B2A0129FFD6AB006E5FD2 /* CloudKit Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloudKit Model.swift"; sourceTree = "<group>"; };
+		F35B2A0129FFD6AB006E5FD2 /* Plans Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plans Model.swift"; sourceTree = "<group>"; };
 		F35B89BD2A725710000B5EEF /* Tip Suspended Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tip Suspended Server.swift"; sourceTree = "<group>"; };
 		F35B9F602A2DCF9C0045D014 /* Stats Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stats Tab.swift"; sourceTree = "<group>"; };
 		F35BB0362C656AC800631DBD /* Guide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guide.swift; sourceTree = "<group>"; };
@@ -2654,7 +2654,7 @@
 				F3E8415529FECB6800609DA3 /* Browser Sticker.swift */,
 				F3D3DBD029B8007B00096115 /* Browser Topbar.swift */,
 				F3A1D2372A2024E10053261E /* Browser Hints.swift */,
-				F35B2A0129FFD6AB006E5FD2 /* CloudKit Model.swift */,
+				F35B2A0129FFD6AB006E5FD2 /* Plans Model.swift */,
 			);
 			path = Browser;
 			sourceTree = "<group>";
@@ -4107,7 +4107,7 @@
 				F370804F2A2A1EAC0046CE70 /* Schedule List.swift in Sources */,
 				F3EB09DB2A295C550073916A /* Video File.swift in Sources */,
 				F3573BC52C6511040051259E /* Intents.intentdefinition in Sources */,
-				F33CDBFE2A26B8BC008D0214 /* CloudKit Model.swift in Sources */,
+				F33CDBFE2A26B8BC008D0214 /* Plans Model.swift in Sources */,
 				F33CDC032A26B95C008D0214 /* Browser Card.swift in Sources */,
 				F370804B2A2A1CA70046CE70 /* Backup List Footer.swift in Sources */,
 				F3BC03C72B20675E0011F98A /* New Schedule Sheet.swift in Sources */,
@@ -4399,7 +4399,7 @@
 				F335CA0B2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */,
 				F3A994AA2A177ED100530615 /* Map VM.swift in Sources */,
 				F30088FC2B3B56210051476C /* User List Parent.swift in Sources */,
-				F35B2A0229FFD6AB006E5FD2 /* CloudKit Model.swift in Sources */,
+				F35B2A0229FFD6AB006E5FD2 /* Plans Model.swift in Sources */,
 				F3A123562A667804008E3E20 /* Log View Parent.swift in Sources */,
 				F3FF5A0C2A4A386F003A1973 /* Users VM.swift in Sources */,
 				F31BA576295900E30006D126 /* Settings View.swift in Sources */,
@@ -4650,7 +4650,7 @@
 				F36D53442A05B90D007324C6 /* FileTab Context Menu.swift in Sources */,
 				F39872172A1B73830022B00E /* Video File.swift in Sources */,
 				F36D53312A05B89C007324C6 /* Schedule Card.swift in Sources */,
-				F35B2A0329FFF857006E5FD2 /* CloudKit Model.swift in Sources */,
+				F35B2A0329FFF857006E5FD2 /* Plans Model.swift in Sources */,
 				F3FF5A002A4A3188003A1973 /* User List.swift in Sources */,
 				F36D53122A05B6FE007324C6 /* Discover.swift in Sources */,
 				F36D534C2A05B976007324C6 /* Nav Extension.swift in Sources */,
@@ -5007,7 +5007,7 @@
 				F3D295422AF39D7F00ED43A0 /* Server List VM.swift in Sources */,
 				F3D295962AF3A04C00ED43A0 /* Ansi.swift in Sources */,
 				F337C15C2A8C2A04006F321C /* API Tests.swift in Sources */,
-				F3D295512AF39DFF00ED43A0 /* CloudKit Model.swift in Sources */,
+				F3D295512AF39DFF00ED43A0 /* Plans Model.swift in Sources */,
 				F3D295992AF3A06300ED43A0 /* Log List Parent.swift in Sources */,
 				F3D295C62AF3A1EE00ED43A0 /* FileTab Context Menu.swift in Sources */,
 				F3D295432AF39D8300ED43A0 /* System Alerts.swift in Sources */,
@@ -5151,7 +5151,7 @@
 				F3A7CF632C8CA5B900413400 /* Cloud Key Card.swift in Sources */,
 				F3A7CF1D2C8C4E4A00413400 /* Browser Hints.swift in Sources */,
 				F3A7CF1E2C8C4E4A00413400 /* Browser.swift in Sources */,
-				F3A7CF1F2C8C4E4A00413400 /* CloudKit Model.swift in Sources */,
+				F3A7CF1F2C8C4E4A00413400 /* Plans Model.swift in Sources */,
 				F3A7CF022C8BBB4700413400 /* Server Card Context Menu.swift in Sources */,
 				F3A7CEF22C8BB7BF00413400 /* System Alerts.swift in Sources */,
 				F3A7CF112C8C4C3100413400 /* Server List Node Filter.swift in Sources */,

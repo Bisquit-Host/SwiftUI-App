@@ -1,61 +1,40 @@
 import ScrechKit
 import Kingfisher
 
-func customRound(_ value: Double) -> String {
-    let roundedValue = round(value)
-    let formatter = NumberFormatter()
-    formatter.minimumFractionDigits = 0
-    formatter.maximumFractionDigits = (roundedValue == value) ? 0 : 1
-    
-    return formatter.string(from: NSNumber(value: value)) ?? "\(value)"
-}
+//func customRound(_ value: Double) -> String {
+//    let roundedValue = round(value)
+//    let formatter = NumberFormatter()
+//    formatter.minimumFractionDigits = 0
+//    formatter.maximumFractionDigits = (roundedValue == value) ? 0 : 1
+//
+//    return formatter.string(from: NSNumber(value: value)) ?? "\(value)"
+//}
 
 struct BrowserCard: View {
     @Environment(\.colorScheme) private var scheme
     
-    private let plan: Plan
+    private let plan: MinecraftPlan
     
-    init(_ plan: Plan) {
+    init(_ plan: MinecraftPlan) {
         self.plan = plan
     }
     
     private var url: String {
-        var path = ""
-        
-        switch plan.type {
-        case "Bot":
-            path = "bothost"
+        "https://my.bisquit.host/store/\(plan.name)"
+    }
+    
+    private var price: Double {
+        switch ValueStore().preferredCurrency {
+        case "€":
+            plan.price_eur
             
-        case "Web":
-            path = "web"
+        case "$":
+            plan.price_usd
             
         default:
-            path = "minecraft"
+            plan.price_rub
         }
-        
-        return "https://my.bisquit.host/store/\(path)/"
     }
-    
-    private var ram: Double {
-        plan.ram * pow(10, 9)
-    }
-    
-    private var disk: Double {
-        plan.disk * pow(10, 9)
-    }
-    
-    //    private var price: Double {
-    //        switch ValueStore().preferredCurrency {
-    //        case "€":
-    //            plan.price_euro
-    //
-    //        case "$":
-    //            plan.price_usd
-    //
-    //        default:
-    //            plan.price_rub
-    //        }
-    //    }
     
     var body: some View {
         ZStack {
@@ -84,7 +63,7 @@ struct BrowserCard: View {
             
             HStack {
                 VStack(alignment: .leading) {
-                    Text(plan.name)
+                    Text(plan.displayname)
                         .title(.semibold)
                         .foregroundStyle(.white)
                         .shadow(color: .black, radius: 5)
@@ -92,17 +71,11 @@ struct BrowserCard: View {
                     Spacer()
                     
                     HStack {
-                        if plan.type != "Web" {
-                            BrowserSpec("\(customRound(plan.cpu))x", icon: "cpu")
-                            
-                            BrowserSpec(formatBytes(ram, countStyle: .decimal), icon: "memorychip")
-                        } else {
-                            BrowserSpec("\(customRound(plan.cpu))x", icon: "macwindow.on.rectangle")
-                            
-                            BrowserSpec("\(Int(ram / 1_000_000_000))x", icon: "server.rack")
-                        }
+                        BrowserSpec("\(plan.cpu)x", icon: "macwindow.on.rectangle")
                         
-                        BrowserSpec(formatBytes(disk, countStyle: .decimal), icon: "internaldrive")
+                        BrowserSpec("\(Int(plan.ram / 1_000_000_000))x", icon: "server.rack")
+                        
+                        BrowserSpec(formatBytes(plan.disk, countStyle: .decimal), icon: "internaldrive")
                         
                         //                        Spacer()
                         //
@@ -131,17 +104,18 @@ struct BrowserCard: View {
 }
 
 #Preview {
-    BrowserCard(
-        Plan(
-            "",
-            type: "Minecraft",
-            url: "bee",
-            cpu: 4,
-            ram: 4,
-            disk: 64,
-            price_euro: 16,
-            price_rub: 1600,
-            price_usd: 16
-        )
-    )
+    BrowserCard(MinecraftPlan(
+        id: 16,
+        ram: 16,
+        disk: 16,
+        mysql: 16,
+        name: "preview",
+        location: "Netherlands",
+        displayname: "Preview",
+        cpu_model: "M4 Ultra",
+        cpu: "4",
+        price_rub: 2000,
+        price_eur: 20.4,
+        price_usd: 20.5
+    ))
 }

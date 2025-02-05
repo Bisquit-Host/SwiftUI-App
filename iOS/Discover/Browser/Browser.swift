@@ -10,11 +10,11 @@ struct Browser: View {
                     .environment(vm)
                 
                 ScrollView(showsIndicators: false) {
-                    ForEach(vm.filteredPlans, id: \.self) { plan in
+                    ForEach(vm.plans) { plan in
                         BrowserCard(plan)
                     }
                     
-                    if !vm.filteredPlans.isEmpty {
+                    if !vm.plans.isEmpty {
                         HStack {
                             BrowserSpec("CPU", icon: "cpu")
                             

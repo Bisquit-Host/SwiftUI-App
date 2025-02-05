@@ -7,26 +7,35 @@ final class BrowserVM {
     var currencyImg = "rublesign.square"
     var showSafari = false
     
-    private var plans: [Plan] = []
+    private(set) var plans: [MinecraftPlan] = []
     
-    private var sortedPlans: [Plan] {
+    private var sortedPlans: [MinecraftPlan] {
         plans.sorted {
             $0.disk < $1.disk
         }
     }
     
-    var filteredPlans: [Plan] {
-        if filterRule.isEmpty {
-            sortedPlans
-        } else {
-            sortedPlans.filter {
-                $0.type.lowercased().contains(filterRule.lowercased())
-            }
-        }
-    }
+    let categories = [
+        "Minecraft",
+        "Web",
+        "Bot"
+    ]
     
     func fetchPlans() async {
+        guard
+            let url = URL(string: "https://plans.bisquit.host/plans/minecraft")
+        else {
+            return
+        }
         
+        do {
+            let (data, _) = try await URLSession.shared.data(from: url)
+            let fetchedPlans = try JSONDecoder().decode([MinecraftPlan].self, from: data)
+            
+            plans = fetchedPlans
+        } catch {
+            print("Error: \(error)")
+        }
     }
     
     func currencyImage(_ currency: String) -> String {
