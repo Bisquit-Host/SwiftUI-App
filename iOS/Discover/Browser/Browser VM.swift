@@ -17,6 +17,7 @@ final class BrowserVM {
     
     let categories = [
         "Minecraft",
+        "VDS",
         "Web",
         "Bot"
     ]
