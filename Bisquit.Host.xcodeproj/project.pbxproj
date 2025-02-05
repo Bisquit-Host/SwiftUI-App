@@ -988,6 +988,7 @@
 		F3CE5C562D53A77C0094BD7B /* Subdomain List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C402D538FE60094BD7B /* Subdomain List.swift */; };
 		F3CE5C572D53A77C0094BD7B /* Subdomain VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C442D53907E0094BD7B /* Subdomain VM.swift */; };
 		F3CE5C5D2D53B04E0094BD7B /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F36797722A39C4ED009F2788 /* Localizable.xcstrings */; };
+		F3CE5C922D540EC40094BD7B /* Intent Handler.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F3FDFF5F2C89120D009EBB5C /* Intent Handler.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F3D037012CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D037002CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift */; };
 		F3D037022CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D037002CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift */; };
 		F3D037032CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D037002CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift */; };
@@ -1379,6 +1380,13 @@
 			remoteGlobalIDString = F3E2BEF42C1DA07E00B7A6D4;
 			remoteInfo = "Contact Provider Extension";
 		};
+		F3CE5C932D540EC40094BD7B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F31BA51B2958FF7C0006D126 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F3FDFF5E2C89120D009EBB5C;
+			remoteInfo = "Intent Handler";
+		};
 		F3D1E7342C9A38EF000C81FF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F31BA51B2958FF7C0006D126 /* Project object */;
@@ -1436,6 +1444,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				F3CE5C922D540EC40094BD7B /* Intent Handler.appex in Embed Foundation Extensions */,
 				F36710342C99C3A100A8901A /* iMessage Extension.appex in Embed Foundation Extensions */,
 				F3D1E7332C9A38EF000C81FF /* Widgets Extension.appex in Embed Foundation Extensions */,
 			);
@@ -3593,6 +3602,7 @@
 				F3A7CF252C8C509C00413400 /* PBXTargetDependency */,
 				F36710362C99C3A100A8901A /* PBXTargetDependency */,
 				F3D1E7352C9A38EF000C81FF /* PBXTargetDependency */,
+				F3CE5C942D540EC40094BD7B /* PBXTargetDependency */,
 			);
 			name = Bisquit.Host;
 			packageProductDependencies = (
@@ -5443,6 +5453,11 @@
 			isa = PBXTargetDependency;
 			target = F3E2BEF42C1DA07E00B7A6D4 /* Contact Provider Extension */;
 			targetProxy = F3A7CF242C8C509C00413400 /* PBXContainerItemProxy */;
+		};
+		F3CE5C942D540EC40094BD7B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F3FDFF5E2C89120D009EBB5C /* Intent Handler */;
+			targetProxy = F3CE5C932D540EC40094BD7B /* PBXContainerItemProxy */;
 		};
 		F3D1E7352C9A38EF000C81FF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
