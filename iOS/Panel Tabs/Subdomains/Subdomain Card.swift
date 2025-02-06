@@ -23,14 +23,6 @@ struct SubdomainCard: View {
         }
         .navigationTitle("Subdomains")
         .contextMenu {
-            Button(role: .destructive) {
-                Task {
-                    await vm.deleteSubdomain(subdomain.id)
-                }
-            } label: {
-                Label("Delete", systemImage: "trash")
-            }
-            
 #if !os(tvOS)
             Button {
                 UIPasteboard.general.string = fullDomain
@@ -40,6 +32,15 @@ struct SubdomainCard: View {
             
             ShareLink(item: fullDomain)
 #endif
+            Section {
+                Button(role: .destructive) {
+                    Task {
+                        await vm.deleteSubdomain(subdomain.id)
+                    }
+                } label: {
+                    Label("Delete", systemImage: "trash")
+                }
+            }
         }
     }
 }
