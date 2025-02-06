@@ -2907,9 +2907,6 @@
         }
       }
     },
-    "New Description" : {
-
-    },
     "New folder" : {
       "localizations" : {
         "ru" : {
@@ -2949,9 +2946,6 @@
           }
         }
       }
-    },
-    "New Widget" : {
-
     },
     "Next" : {
       "localizations" : {
@@ -3558,6 +3552,9 @@
           }
         }
       }
+    },
+    "Server Info" : {
+
     },
     "Server List" : {
       "localizations" : {

@@ -2,7 +2,7 @@ import SwiftUI
 import WidgetKit
 
 struct SomeNewWidget: Widget {
-    let kind = "Widgets test"
+    private let kind = "Widgets test"
     
     var body: some WidgetConfiguration {
         IntentConfiguration(
@@ -12,8 +12,8 @@ struct SomeNewWidget: Widget {
         ) { entry in
             CryptoPriceWidgetView(entry)
         }
-        .configurationDisplayName("New Widget")
-        .description("New Description")
+        .configurationDisplayName("Server Info")
+        // .description("")
         .supportedFamilies([
             .systemMedium
         ])

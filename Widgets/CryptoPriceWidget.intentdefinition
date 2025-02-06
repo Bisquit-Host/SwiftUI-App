@@ -9,11 +9,11 @@
 	<key>INIntentDefinitionNamespace</key>
 	<string>88xZPY</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>24B5035e</string>
+	<string>24D60</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
-	<string>16B5001e</string>
+	<string>16C5032a</string>
 	<key>INIntentDefinitionToolsVersion</key>
-	<string>16.1</string>
+	<string>16.2</string>
 	<key>INIntents</key>
 	<array>
 		<dict>
@@ -35,7 +35,7 @@
 					<key>INIntentParameterConfigurable</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>Selected Crypto</string>
+					<string>Server</string>
 					<key>INIntentParameterDisplayNameID</key>
 					<string>cFDvWz</string>
 					<key>INIntentParameterDisplayPriority</key>

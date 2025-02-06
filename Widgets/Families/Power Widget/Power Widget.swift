@@ -2,7 +2,7 @@ import SwiftUI
 import WidgetKit
 
 struct PowerWidget: Widget {
-    let kind = "Widgets"
+    private let kind = "Widgets"
     
     var body: some WidgetConfiguration {
         AppIntentConfiguration(
