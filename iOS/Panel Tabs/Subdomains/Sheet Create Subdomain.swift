@@ -4,6 +4,8 @@ import PteroNet
 struct SheetCreateSubdomain: View {
     @Environment(SubdomainVM.self) private var vm
     
+    @Environment(\.dismiss) private var dismiss
+    
     private var placeholder: String {
         let subdomain = vm.subdomain.isEmpty ? "<your subdomain>" : vm.subdomain
         
@@ -33,7 +35,11 @@ struct SheetCreateSubdomain: View {
             
             Section {
                 Button {
-                    vm.createSubdomain()
+                    Task {
+                        await vm.createSubdomain {
+                            dismiss()
+                        }
+                    }
                 } label: {
                     Label("Create", systemImage: "plus")
                 }

@@ -25,8 +25,51 @@ final class SubdomainVM {
         subdomainResponse?.subdomains.map(\.attributes) ?? []
     }
     
-    func createSubdomain() {
+    func createSubdomain(onSuccess: @escaping () -> Void) async {
+        guard
+            let url = URL(string: "https://mgr.bisquit.host/api/client/extensions/subdomainmanager/servers/" + id),
+            let apiKey = Keychain.load(key: "selectedApiKey")
+        else {
+            return
+        }
         
+        let boundary = UUID().uuidString
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpShouldHandleCookies = false
+        request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        
+        var body = Data()
+        
+        // Append subdomain
+        body.append("--\(boundary)\r\n".data(using: .utf8)!)
+        body.append("Content-Disposition: form-data; name=\"subdomain\"\r\n\r\n".data(using: .utf8)!)
+        body.append("\(subdomain)\r\n".data(using: .utf8)!)
+        
+        // Append domain
+        body.append("--\(boundary)\r\n".data(using: .utf8)!)
+        body.append("Content-Disposition: form-data; name=\"domain\"\r\n\r\n".data(using: .utf8)!)
+        body.append("\(selectedDomain)\r\n".data(using: .utf8)!)
+        
+        // Final boundary
+        body.append("--\(boundary)--\r\n".data(using: .utf8)!)
+        
+        request.httpBody = body
+        
+        do {
+            let (data, _) = try await URLSession.shared.data(for: request)
+            
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            
+            let _ = try decoder.decode(Subdomain.self, from: data)
+            
+            await fetchSubdomains()
+            onSuccess()
+        } catch {
+            print("Error:", error)
+        }
     }
     
     func fetchSubdomains() async {
