@@ -1,7 +1,7 @@
 import Intents
 
 class IntentHandler: INExtension, CryptoPriceConfigurationIntentHandling {
-    func provideSelectedCryptoOptionsCollection(
+    func provideSelectedServerOptionsCollection(
         for intent: CryptoPriceConfigurationIntent,
         with completion: @escaping (INObjectCollection<Crypto>?, Error?) -> Void
     ) {

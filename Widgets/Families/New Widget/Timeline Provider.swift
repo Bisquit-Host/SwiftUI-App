@@ -33,8 +33,8 @@ struct CryptoPriceTimelineProvider: IntentTimelineProvider {
         // Extract info from configuration
         
         guard
-            let name = configuration.selectedCrypto?.name,
-            let id = configuration.selectedCrypto?.id
+            let name = configuration.selectedServer?.name,
+            let id = configuration.selectedServer?.id
         else {
             showEmptyState(completion, error: "1")
             return

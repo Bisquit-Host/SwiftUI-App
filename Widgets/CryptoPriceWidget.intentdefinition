@@ -41,7 +41,7 @@
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>1</integer>
 					<key>INIntentParameterName</key>
-					<string>selectedCrypto</string>
+					<string>selectedServer</string>
 					<key>INIntentParameterObjectType</key>
 					<string>Crypto</string>
 					<key>INIntentParameterObjectTypeNamespace</key>
