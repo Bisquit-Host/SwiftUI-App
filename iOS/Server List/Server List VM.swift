@@ -17,9 +17,7 @@ final class ServerListVM {
     var searchField = ""
     var displayedNode = ""
     var filterBySuspended = false
-    
-//    private(set) var keys: [String] = []
-    
+        
     var selectedServer: ServerAttributes?
     
     var nodes: [String] {
