@@ -48,7 +48,7 @@ struct BisquitHostApp: App {
     var body: some Scene {
         WindowGroup {
             AppContainer()
-#if canImport(CoreSpotlight)
+#if canImport(CoreSpotlight) && !os(tvOS)
                 .onContinueUserActivity(CSSearchableItemActionType, perform: handleSpotlightActivity)
 #endif
             
@@ -100,7 +100,7 @@ struct BisquitHostApp: App {
 #endif
     }
     
-#if canImport(CoreSpotlight)
+#if canImport(CoreSpotlight) && !os(tvOS)
     func handleSpotlightActivity(_ activity: NSUserActivity) {
         guard
             let id = activity.userInfo?[CSSearchableItemActivityIdentifier] as? String
@@ -108,9 +108,12 @@ struct BisquitHostApp: App {
             return
         }
         
+#warning("macOS")
+#if !os(macOS)
         delay(0.4) {
             navState.navigate(.toPanel(id))
         }
+#endif
     }
 #endif
 }

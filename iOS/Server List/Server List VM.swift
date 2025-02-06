@@ -111,7 +111,7 @@ final class ServerListVM {
                 }
 #endif
                 
-#if canImport(CoreSpotlight)
+#if canImport(CoreSpotlight) && !os(tvOS)
                 self.indexItems(self.servers)
 #endif
             case .failure(let error):
@@ -208,7 +208,7 @@ final class ServerListVM {
         }
     }
     
-#if canImport(CoreSpotlight)
+#if canImport(CoreSpotlight) && !os(tvOS)
     private func indexItems(_ servers: [ServerAttributes]) {
         CSSearchableIndex.default().deleteAllSearchableItems()
         
