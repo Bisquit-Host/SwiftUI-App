@@ -69,17 +69,15 @@ final class ServerListVM {
                     withAnimation {
                         self.servers = loadedServers
                     }
-                    
-#if canImport(CoreSpotlight)
-                    for server in loadedServers {
-                        self.indexItem(server)
-                    }
-#endif
                 }
 #if canImport(ContactProvider)
                 if ValueStore().contactsProviderEnabled {
                     self.fetchUniqueUsers()
                 }
+#endif
+                
+#if canImport(CoreSpotlight)
+                self.indexItems(self.servers)
 #endif
             case .failure(let error):
                 SystemAlert.error(error)
@@ -176,29 +174,35 @@ final class ServerListVM {
     }
     
 #if canImport(CoreSpotlight)
-    func indexItem(_ server: ServerAttributes) {
-        let attributeSet = CSSearchableItemAttributeSet(contentType: .text)
-        attributeSet.title = server.name
-        attributeSet.contentDescription = server.description
-        attributeSet.identifier = server.id
+    private func indexItems(_ servers: [ServerAttributes]) {
+        CSSearchableIndex.default().deleteAllSearchableItems()
         
-        let item = CSSearchableItem(
-            uniqueIdentifier: server.id,
-            domainIdentifier: "host.bisquit.Bisquit-Host",
-            attributeSet: attributeSet
-        )
-        
-        CSSearchableIndex.default().deleteSearchableItems(withIdentifiers: [server.id]) { error in
-            guard error == nil else {
-                print("Error removing item from Spotlight: \(error!.localizedDescription)")
-                return
-            }
+        let searchableItems = servers.map { server -> CSSearchableItem in
+            let attributeSet = CSSearchableItemAttributeSet(contentType: .text)
+            attributeSet.title = server.name
+            attributeSet.contentDescription = server.description
+            attributeSet.identifier = server.id
+            
+            return CSSearchableItem(
+                uniqueIdentifier: server.id,
+                domainIdentifier: "host.bisquit.Bisquit-Host",
+                attributeSet: attributeSet
+            )
         }
         
-        CSSearchableIndex.default().indexSearchableItems([item]) { error in
+        let identifiers = servers.map(\.id)
+        
+        CSSearchableIndex.default().deleteSearchableItems(withIdentifiers: identifiers) { error in
             guard error == nil else {
-                print("Spotlight indexing error:", error!.localizedDescription)
+                print("Error removing items from Spotlight:", error!.localizedDescription)
                 return
+            }
+            
+            CSSearchableIndex.default().indexSearchableItems(searchableItems) { error in
+                guard error == nil else {
+                    print("Spotlight indexing error:", error!.localizedDescription)
+                    return
+                }
             }
         }
     }

@@ -101,15 +101,16 @@ struct BisquitHostApp: App {
     }
     
 #if canImport(CoreSpotlight)
-    func handleSpotlightActivity(_ userActivity: NSUserActivity) {
+    func handleSpotlightActivity(_ activity: NSUserActivity) {
         guard
-            let identifier = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String
+            let id = activity.userInfo?[CSSearchableItemActivityIdentifier] as? String
         else {
             return
         }
         
-        print("User tapped on Spotlight item with ID: \(identifier)")
-        // Handle nav to the appropriate screen based on the identifier
+        delay(0.4) {
+            navState.navigate(.toPanel(id))
+        }
     }
 #endif
 }
