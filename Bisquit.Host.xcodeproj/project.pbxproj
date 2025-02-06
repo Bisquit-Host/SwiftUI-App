@@ -1807,7 +1807,7 @@
 		F3CB53D52971CF6B00A213B0 /* Database Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database Card.swift"; sourceTree = "<group>"; };
 		F3CCB1CB2CAE75D0000F8207 /* Debug Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Debug Settings.swift"; sourceTree = "<group>"; };
 		F3CCB1CF2CAE8AF5000F8207 /* Bisquit-Host-Mac-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bisquit-Host-Mac-Info.plist"; sourceTree = "<group>"; };
-		F3CCB1D12CAE8B76000F8207 /* Bisquit-Host-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bisquit-Host-Info.plist"; sourceTree = "<group>"; };
+		F3CCB1D12CAE8B76000F8207 /* Bisquit-Host Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bisquit-Host Info.plist"; sourceTree = "<group>"; };
 		F3CCB1D32CAE8BDA000F8207 /* Bisquit-Host-visionOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bisquit-Host-visionOS-Info.plist"; sourceTree = "<group>"; };
 		F3CCB1D52CAE8C4D000F8207 /* Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Watch-App-Info.plist"; sourceTree = "<group>"; };
 		F3CCB1D62CAE8C80000F8207 /* Bisquit-Host-tvOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bisquit-Host-tvOS-Info.plist"; sourceTree = "<group>"; };
@@ -2245,7 +2245,7 @@
 				F36797722A39C4ED009F2788 /* Localizable.xcstrings */,
 				F378E3322AF38286009925DB /* PrivacyInfo.xcprivacy */,
 				F304498629E98AE4006DC0C7 /* Bisquit.Host.entitlements */,
-				F3CCB1D12CAE8B76000F8207 /* Bisquit-Host-Info.plist */,
+				F3CCB1D12CAE8B76000F8207 /* Bisquit-Host Info.plist */,
 				F31BA52A2958FF7D0006D126 /* Assets.xcassets */,
 				F36436EE2A2FE91C00976374 /* SpriteKit */,
 				F3EDEE3629C0CB4500B08696 /* Networking */,
@@ -5795,7 +5795,7 @@
 				DEVELOPMENT_TEAM = 8FQUA2F388;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "iOS/Bisquit-Host-Info.plist";
+				INFOPLIST_FILE = "iOS/Bisquit-Host Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.debug;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSCameraUsageDescription = "App uses camera to create elements with dynamic color based on camera capture";
@@ -5849,7 +5849,7 @@
 				DEVELOPMENT_TEAM = 8FQUA2F388;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "iOS/Bisquit-Host-Info.plist";
+				INFOPLIST_FILE = "iOS/Bisquit-Host Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.debug;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSCameraUsageDescription = "App uses camera to create elements with dynamic color based on camera capture";
