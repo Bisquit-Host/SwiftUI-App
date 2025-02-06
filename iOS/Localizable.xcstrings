@@ -2465,7 +2465,14 @@
       }
     },
     "Kill Server" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Принудительно Остановить Сервер"
+          }
+        }
+      }
     },
     "Label color" : {
       "localizations" : {
@@ -3363,7 +3370,14 @@
       }
     },
     "Restart Server" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перезагрузить Сервер"
+          }
+        }
+      }
     },
     "Restore" : {
       "localizations" : {
