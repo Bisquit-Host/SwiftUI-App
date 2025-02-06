@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct SubdomainCard: View {
+    @Environment(SubdomainVM.self) private var vm
+    
     let subdomain: SubdomainAttributes
     
     init(_ subdomain: SubdomainAttributes) {
@@ -20,8 +22,16 @@ struct SubdomainCard: View {
                 .secondary()
         }
         .navigationTitle("Subdomains")
-#if !os(tvOS)
         .contextMenu {
+            Button {
+                Task {
+                    await vm.deleteSubdomain(subdomain.id)
+                }
+            } label: {
+                Label("Delete", systemImage: "trash")
+            }
+            
+#if !os(tvOS)
             Button {
                 UIPasteboard.general.string = fullDomain
             } label: {
@@ -29,8 +39,8 @@ struct SubdomainCard: View {
             }
             
             ShareLink(item: fullDomain)
-        }
 #endif
+        }
     }
 }
 
@@ -41,4 +51,5 @@ struct SubdomainCard: View {
         subdomain: "super",
         createdAt: ""
     ))
+    .environment(SubdomainVM(""))
 }

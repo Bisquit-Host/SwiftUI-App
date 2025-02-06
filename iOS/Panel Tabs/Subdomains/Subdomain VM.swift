@@ -25,6 +25,26 @@ final class SubdomainVM {
         subdomainResponse?.subdomains.map(\.attributes) ?? []
     }
     
+    func deleteSubdomain(_ subdomainId: Int) async {
+        guard
+            let url = URL(string: "https://mgr.bisquit.host/api/client/extensions/subdomainmanager/servers/" + id + "/\(subdomainId)"),
+            let apiKey = Keychain.load(key: "selectedApiKey")
+        else {
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        request.httpShouldHandleCookies = false
+        request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
+        
+        do {
+            let _ = try await URLSession.shared.data(for: request)
+        } catch {
+            print("Error:", error)
+        }
+    }
+    
     func createSubdomain(onSuccess: @escaping () -> Void) async {
         guard
             let url = URL(string: "https://mgr.bisquit.host/api/client/extensions/subdomainmanager/servers/" + id),

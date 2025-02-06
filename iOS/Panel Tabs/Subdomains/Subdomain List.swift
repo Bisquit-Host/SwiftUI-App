@@ -5,11 +5,16 @@ struct SubdomainList: View {
     
     @State private var sheetCreate = false
     
+    private var disabled: Bool {
+        vm.subdomains.count >= vm.limit ?? 3
+    }
+    
     var body: some View {
         List {
             ForEach(vm.subdomains) { subdomain in
                 SubdomainCard(subdomain)
             }
+            .onDelete(perform: delete)
             
             Section {
                 Button {
@@ -17,6 +22,8 @@ struct SubdomainList: View {
                 } label: {
                     Label("Create Subdomain", systemImage: "plus")
                 }
+                .disabled(disabled)
+                .foregroundStyle(disabled ? .secondary : .primary)
             }
         }
         .refreshableTask {
@@ -24,6 +31,16 @@ struct SubdomainList: View {
         }
         .sheet($sheetCreate) {
             SheetCreateSubdomain()
+        }
+    }
+    
+    private func delete(at offsets: IndexSet) {
+        for index in offsets {
+            let subdomain = vm.subdomains[index]
+            
+            Task {
+                await vm.deleteSubdomain(subdomain.id)
+            }
         }
     }
 }
