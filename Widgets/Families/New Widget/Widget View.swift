@@ -29,6 +29,27 @@ struct CryptoPriceWidgetView: View {
                 .footnote()
             
             Button("Update", intent: RefreshIntent())
+            
+//            CircularGauge(
+//                param: "CPU",
+//                value: vm.cpuUsage,
+//                limit: limits.cpu,
+//                isRedacted: vm.isLoading
+//            )
+//            
+//            CircularGauge(
+//                param: "RAM",
+//                value: vm.ramUsage,
+//                limit: limits.memory,
+//                isRedacted: vm.isLoading
+//            )
+//            
+//            CircularGauge(
+//                param: "SSD",
+//                value: vm.diskUsage,
+//                limit: limits.disk,
+//                isRedacted: vm.isLoading
+//            )
         }
         .containerBackground(for: .widget) {}
     }
@@ -42,7 +63,7 @@ struct CryptoPriceWidgetView: View {
         name: "Preview",
         id: "bf7903cc",
         state: "Running",
-        test: ResourceUsageAttributes(
+        test: .init(
             state: "Running",
             usage: .init(
                 memory: 1024,
