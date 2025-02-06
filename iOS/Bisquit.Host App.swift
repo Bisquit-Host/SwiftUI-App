@@ -2,6 +2,10 @@ import ScrechKit
 import SwiftData
 import TipKit
 
+#if canImport(CoreSpotlight)
+import CoreSpotlight
+#endif
+
 #if canImport(SafariCover)
 import SafariCover
 #endif
@@ -44,6 +48,10 @@ struct BisquitHostApp: App {
     var body: some Scene {
         WindowGroup {
             AppContainer()
+#if canImport(CoreSpotlight)
+                .onContinueUserActivity(CSSearchableItemActionType, perform: handleSpotlightActivity)
+#endif
+            
 #if !os(macOS)
                 .onOpenURL { url in
                     linking.handleDeepLink(
@@ -91,4 +99,17 @@ struct BisquitHostApp: App {
         }
 #endif
     }
+    
+#if canImport(CoreSpotlight)
+    func handleSpotlightActivity(_ userActivity: NSUserActivity) {
+        guard
+            let identifier = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String
+        else {
+            return
+        }
+        
+        print("User tapped on Spotlight item with ID: \(identifier)")
+        // Handle nav to the appropriate screen based on the identifier
+    }
+#endif
 }

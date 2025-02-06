@@ -1,6 +1,10 @@
 import ScrechKit
 import PteroNet
 
+#if canImport(CoreSpotlight)
+import CoreSpotlight
+#endif
+
 @Observable
 final class ServerListVM {
     // MARK: - PteroNet
@@ -17,7 +21,7 @@ final class ServerListVM {
     var searchField = ""
     var displayedNode = ""
     var filterBySuspended = false
-        
+    
     var selectedServer: ServerAttributes?
     
     var nodes: [String] {
@@ -65,6 +69,12 @@ final class ServerListVM {
                     withAnimation {
                         self.servers = loadedServers
                     }
+                    
+#if canImport(CoreSpotlight)
+                    for server in loadedServers {
+                        self.indexItem(server)
+                    }
+#endif
                 }
 #if canImport(ContactProvider)
                 if ValueStore().contactsProviderEnabled {
@@ -164,4 +174,33 @@ final class ServerListVM {
             }
         }
     }
+    
+#if canImport(CoreSpotlight)
+    func indexItem(_ server: ServerAttributes) {
+        let attributeSet = CSSearchableItemAttributeSet(contentType: .text)
+        attributeSet.title = server.name
+        attributeSet.contentDescription = server.description
+        attributeSet.identifier = server.id
+        
+        let item = CSSearchableItem(
+            uniqueIdentifier: server.id,
+            domainIdentifier: "host.bisquit.Bisquit-Host",
+            attributeSet: attributeSet
+        )
+        
+        CSSearchableIndex.default().deleteSearchableItems(withIdentifiers: [server.id]) { error in
+            guard error == nil else {
+                print("Error removing item from Spotlight: \(error!.localizedDescription)")
+                return
+            }
+        }
+        
+        CSSearchableIndex.default().indexSearchableItems([item]) { error in
+            guard error == nil else {
+                print("Spotlight indexing error:", error!.localizedDescription)
+                return
+            }
+        }
+    }
+#endif
 }
