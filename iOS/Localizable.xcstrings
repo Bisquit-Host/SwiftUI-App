@@ -386,9 +386,6 @@
     "80%" : {
       "shouldTranslate" : false
     },
-    "123" : {
-      "shouldTranslate" : false
-    },
     "777" : {
       "localizations" : {
         "ru" : {
@@ -802,7 +799,14 @@
       }
     },
     "Change Power" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Переключить Питание"
+          }
+        }
+      }
     },
     "Choose File" : {
       "localizations" : {
@@ -1274,6 +1278,9 @@
           }
         }
       }
+    },
+    "Creates a new backup" : {
+
     },
     "Cron: %@" : {
       "localizations" : {
@@ -2708,6 +2715,9 @@
         }
       }
     },
+    "Minecraft" : {
+      "shouldTranslate" : false
+    },
     "Minute" : {
       "localizations" : {
         "ru" : {
@@ -3484,6 +3494,12 @@
           }
         }
       }
+    },
+    "Sends a command to the server" : {
+
+    },
+    "Sends a power signal to the server" : {
+
     },
     "Server address" : {
       "localizations" : {

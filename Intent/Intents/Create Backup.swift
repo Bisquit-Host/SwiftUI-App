@@ -5,7 +5,7 @@ struct CreateBackup: AppIntent, CustomIntentMigratedAppIntent, PredictableIntent
     static let intentClassName = "CreateBackupIntent"
     
     static var title: LocalizedStringResource = "Create Backup"
-    static var description = IntentDescription("")
+    static var description = IntentDescription("Creates a new backup", searchKeywords: ["Minecraft"])
     
     @Parameter(title: "Server id")
     var id: String
@@ -38,7 +38,7 @@ struct CreateBackup: AppIntent, CustomIntentMigratedAppIntent, PredictableIntent
         IntentPrediction(parameters: (\.$id, \.$backupName)) { id, name in
             DisplayRepresentation(
                 title: "Create Backup",
-                subtitle: "Create Backup of a server"
+                subtitle: "Creates a new backup"
             )
         }
     }
