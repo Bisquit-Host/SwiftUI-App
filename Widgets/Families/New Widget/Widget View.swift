@@ -21,7 +21,7 @@ struct CryptoPriceWidgetView: View {
                 .caption2()
                 .padding(.bottom, 8)
             
-            Text(entry.test?.usage.cpu.description ?? "Fuck")
+            Text(entry.test?.usage.cpu.description ?? "Error")
             
             Text(entry.date, format: .dateTime.minute().second())
                 .footnote()

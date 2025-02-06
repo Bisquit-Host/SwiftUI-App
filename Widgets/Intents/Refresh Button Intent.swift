@@ -1,8 +1,8 @@
 import AppIntents
 
 struct RefreshIntent: AppIntent {
-    static var title: LocalizedStringResource = "Stop Server"
-        
+    static var title: LocalizedStringResource = "Refresh"
+    
     init() {}
     
     func perform() async throws -> some IntentResult {
