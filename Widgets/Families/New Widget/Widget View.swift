@@ -1,4 +1,6 @@
 import SwiftUI
+import WidgetKit
+import PteroNet
 
 struct CryptoPriceWidgetView: View {
     private let entry: ResourcesUsageEntry
@@ -30,4 +32,22 @@ struct CryptoPriceWidgetView: View {
         }
         .containerBackground(for: .widget) {}
     }
+}
+
+#Preview(as: .systemMedium) {
+    SomeNewWidget()
+} timeline: {
+    ResourcesUsageEntry(
+        date: .now,
+        name: "Preview",
+        id: "bf7903cc",
+        state: "Running",
+        test: ResourceUsageAttributes(
+            state: "Running",
+            usage: .init(
+                memory: 1024,
+                cpu: 200,
+                disk: 1024
+            ))
+    )
 }
