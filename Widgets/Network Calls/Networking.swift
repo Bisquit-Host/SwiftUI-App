@@ -4,41 +4,27 @@ struct Networking {
     static func fetchServers() async throws -> [Asset] {
         var assets: [Asset] = []
         
-        do {
-            let url = URL(string: "https://mgr.bisquit.host/api/client")
-            
-            var request = URLRequest(url: url!)
-            
-            if let apiKey = Keychain.load(key: "selectedApiKey") {
-                request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
-            } else {
-                let asset = Asset(
-                    id: "69.1",
-                    name: "Error fetching value from Keychain"
-                )
+        serverListAPI { result in
+            switch result {
+            case .success(let model):
+                guard let model = model?.data else {
+                    return
+                }
                 
-                return [asset]
-            }
-            
-            let (data, _) = try await URLSession.shared.data(for: request)
-            
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            
-            let response = try decoder.decode(ServerListResponse.self, from: data)
-            
-            for server in response.data.map(\.attributes) {
-                let asset = Asset(
-                    id: server.id,
-                    name: server.name
-                )
+                for server in model.map(\.attributes) {
+                    let asset = Asset(
+                        id: server.id,
+                        name: server.name
+                    )
+                    
+                    assets.append(asset)
+                }
                 
-                assets.append(asset)
+            case .failure(let error):
+                let errorAsset = Asset(id: "69.2", name: error.localizedDescription)
+                
+                assets.append(errorAsset)
             }
-        } catch {
-            let errorAsset = Asset(id: "69.2", name: error.localizedDescription)
-            
-            assets.append(errorAsset)
         }
         
         return assets
