@@ -1,7 +1,7 @@
 import PteroNet
 
-struct AssetFetcher {
-    static func fetchTopTenAssets() async throws -> [Asset] {
+struct Networking {
+    static func fetchServers() async throws -> [Asset] {
         var assets: [Asset] = []
         
         do {
@@ -44,7 +44,7 @@ struct AssetFetcher {
         return assets
     }
     
-    static func fetchAssetDetails(_ id: String) async -> AssetDetails {
+    static func fetchResourceUsage(_ id: String) async -> AssetDetails {
         let assetDetails: AssetDetails
         
         do {

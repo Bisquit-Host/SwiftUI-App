@@ -7,9 +7,7 @@ class IntentHandler: INExtension, CryptoPriceConfigurationIntentHandling {
     ) {
         Task {
             do {
-                let assets = try await AssetFetcher.fetchTopTenAssets()
-                
-                let servers = assets.map {
+                let servers = try await Networking.fetchServers().map {
                     let server = Crypto(
                         identifier: $0.id,
                         display: "\($0.name) (\($0.id))"
@@ -22,6 +20,7 @@ class IntentHandler: INExtension, CryptoPriceConfigurationIntentHandling {
                 }
                 
                 let collection = INObjectCollection(items: servers)
+                
                 completion(collection, nil)
             } catch {
                 completion(nil, error)

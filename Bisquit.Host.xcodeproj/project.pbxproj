@@ -1310,13 +1310,13 @@
 		F3FD9FA12C65217C00A69314 /* Quick Look View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FD9FA02C65217C00A69314 /* Quick Look View.swift */; };
 		F3FDFF612C89120D009EBB5C /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3FDFF602C89120D009EBB5C /* Intents.framework */; };
 		F3FDFF642C89120D009EBB5C /* Intent Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF632C89120D009EBB5C /* Intent Handler.swift */; };
-		F3FDFF882C8912F1009EBB5C /* Asset Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF872C8912F1009EBB5C /* Asset Fetcher.swift */; };
+		F3FDFF882C8912F1009EBB5C /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF872C8912F1009EBB5C /* Networking.swift */; };
 		F3FDFF8B2C89130F009EBB5C /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF8A2C89130F009EBB5C /* Widget.swift */; };
 		F3FDFF8D2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF8C2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition */; };
-		F3FDFF8E2C891343009EBB5C /* Asset Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF872C8912F1009EBB5C /* Asset Fetcher.swift */; };
+		F3FDFF8E2C891343009EBB5C /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF872C8912F1009EBB5C /* Networking.swift */; };
 		F3FDFF8F2C8913AE009EBB5C /* CryptoPriceWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF8C2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition */; };
 		F3FDFF902C891500009EBB5C /* CryptoPriceWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF8C2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition */; };
-		F3FDFF912C89150D009EBB5C /* Asset Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF872C8912F1009EBB5C /* Asset Fetcher.swift */; };
+		F3FDFF912C89150D009EBB5C /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF872C8912F1009EBB5C /* Networking.swift */; };
 		F3FF59FF2A4A3188003A1973 /* User List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF59FE2A4A3188003A1973 /* User List.swift */; };
 		F3FF5A002A4A3188003A1973 /* User List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF59FE2A4A3188003A1973 /* User List.swift */; };
 		F3FF5A032A4A359C003A1973 /* Info Tab Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A022A4A359C003A1973 /* Info Tab Buttons.swift */; };
@@ -1890,7 +1890,7 @@
 		F3FDFF632C89120D009EBB5C /* Intent Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Intent Handler.swift"; sourceTree = "<group>"; };
 		F3FDFF652C89120D009EBB5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3FDFF6B2C89120D009EBB5C /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
-		F3FDFF872C8912F1009EBB5C /* Asset Fetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Asset Fetcher.swift"; sourceTree = "<group>"; };
+		F3FDFF872C8912F1009EBB5C /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		F3FDFF8A2C89130F009EBB5C /* Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget.swift; sourceTree = "<group>"; };
 		F3FDFF8C2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = CryptoPriceWidget.intentdefinition; sourceTree = "<group>"; };
 		F3FF59FE2A4A3188003A1973 /* User List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User List.swift"; sourceTree = "<group>"; };
@@ -2725,7 +2725,7 @@
 		F36B737C2C8AEA6B00E858FE /* Network Calls */ = {
 			isa = PBXGroup;
 			children = (
-				F3FDFF872C8912F1009EBB5C /* Asset Fetcher.swift */,
+				F3FDFF872C8912F1009EBB5C /* Networking.swift */,
 				F36B73852C8AEAE700E858FE /* Model Asset.swift */,
 			);
 			path = "Network Calls";
@@ -4499,7 +4499,7 @@
 				F3CE5C4B2D53935A0094BD7B /* Subdomain Model.swift in Sources */,
 				F3CCB1CC2CAE75D0000F8207 /* Debug Settings.swift in Sources */,
 				F30088A92B3A1A500051476C /* Schedule VM.swift in Sources */,
-				F3FDFF912C89150D009EBB5C /* Asset Fetcher.swift in Sources */,
+				F3FDFF912C89150D009EBB5C /* Networking.swift in Sources */,
 				F31BA5862959016D0006D126 /* SpriteKit Pyzh.swift in Sources */,
 				F30089002B3B62450051476C /* User Invitation Permission.swift in Sources */,
 				F3BBE36429AF97D800323C6B /* Credential Field.swift in Sources */,
@@ -5089,7 +5089,7 @@
 				F3FDFF8B2C89130F009EBB5C /* Widget.swift in Sources */,
 				F323BFA22B20DC9000116B97 /* Power Widget.swift in Sources */,
 				F337B4062A89FAC600DD79AA /* Entry.swift in Sources */,
-				F3FDFF882C8912F1009EBB5C /* Asset Fetcher.swift in Sources */,
+				F3FDFF882C8912F1009EBB5C /* Networking.swift in Sources */,
 				F318240D2A877BA90039866C /* Preview Extension.swift in Sources */,
 				F337B4092A89FB4300DD79AA /* System Small Widget View.swift in Sources */,
 				F36B738E2C8AEC8400E858FE /* Resources Usage Entry.swift in Sources */,
@@ -5418,7 +5418,7 @@
 			files = (
 				F36B73862C8AEAE700E858FE /* Model Asset.swift in Sources */,
 				F3FDFF642C89120D009EBB5C /* Intent Handler.swift in Sources */,
-				F3FDFF8E2C891343009EBB5C /* Asset Fetcher.swift in Sources */,
+				F3FDFF8E2C891343009EBB5C /* Networking.swift in Sources */,
 				F3FDFF8F2C8913AE009EBB5C /* CryptoPriceWidget.intentdefinition in Sources */,
 				F36B73702C8A4CAF00E858FE /* Refresh Button Intent.swift in Sources */,
 			);

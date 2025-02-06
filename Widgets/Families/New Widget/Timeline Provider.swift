@@ -30,7 +30,7 @@ struct CryptoPriceTimelineProvider: IntentTimelineProvider {
         in context: Context,
         completion: @escaping (Timeline<ResourcesUsageEntry>) -> ()
     ) {
-        // Extract info from configuration
+        // Extract info from config
         
         guard
             let name = configuration.selectedServer?.name,
@@ -41,16 +41,15 @@ struct CryptoPriceTimelineProvider: IntentTimelineProvider {
         }
         
         Task {
-            // Fetch asset details
-            let assetDetails = await AssetFetcher.fetchAssetDetails(id)
+            let usage = await Networking.fetchResourceUsage(id)
             
-            // Create Entry using based on user selected configuration & fetched info
+            // Create Entry using based on user selected config & fetched info
             let entry = ResourcesUsageEntry(
                 date: Date(),
                 name: name,
                 id: id,
-                state: assetDetails.state,
-                test: assetDetails.test
+                state: usage.state,
+                test: usage.test
             )
             
             // Trigger completion & next fetch in 15 mins
