@@ -12,7 +12,7 @@ struct BrowserHints: View {
     var body: some View {
         DisclosureGroup("Hints") {
             ForEach(hints.sorted(by: >), id: \.key) { hint, icon in
-                ListButton(LocalizedStringResource(stringLiteral: hint), icon: icon)
+                ListButton(LocalizedStringKey(hint), icon: icon)
             }
         }
         .padding(5)

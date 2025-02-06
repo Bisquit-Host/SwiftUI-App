@@ -831,6 +831,16 @@
         }
       }
     },
+    "Client role in the Discord channel" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Роль клиента в Discord-канале"
+          }
+        }
+      }
+    },
     "Code" : {
       "localizations" : {
         "ru" : {
@@ -3000,6 +3010,16 @@
     "Notes" : {
 
     },
+    "Offer" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Оферта"
+          }
+        }
+      }
+    },
     "Only when online" : {
       "localizations" : {
         "ru" : {
@@ -3203,6 +3223,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Назад"
+          }
+        }
+      }
+    },
+    "Privacy Policy" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Политика Приватности"
           }
         }
       }
@@ -4482,6 +4512,16 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Веб"
+          }
+        }
+      }
+    },
+    "Web panel" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Веб-панель"
           }
         }
       }
