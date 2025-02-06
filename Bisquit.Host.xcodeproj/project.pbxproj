@@ -595,6 +595,11 @@
 		F37B90782BFEA00300597624 /* Ornament Info Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37B90752BFEA00200597624 /* Ornament Info Properties.swift */; };
 		F37B90792BFEA00300597624 /* Panel Ornament Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37B90762BFEA00300597624 /* Panel Ornament Info.swift */; };
 		F37B907A2BFEA00300597624 /* Ornament Info Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37B90772BFEA00300597624 /* Ornament Info Settings.swift */; };
+		F37CE9C12D555D4400716D28 /* Value Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* Value Store.swift */; };
+		F37CE9C22D555D5200716D28 /* Tabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D295122AF396FD00ED43A0 /* Tabs.swift */; };
+		F37CE9C32D555D5A00716D28 /* Tab Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7022A54BF7A00E89EC4 /* Tab Info.swift */; };
+		F37CE9C42D555D9600716D28 /* Server List VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F352AF962A4EDB1D004AD489 /* Server List VM.swift */; };
+		F37CE9C52D555DAF00716D28 /* Contacts VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BF0A2C1EC94300B7A6D4 /* Contacts VM.swift */; };
 		F37DDA7629E2AF7600B9680C /* Folder Path VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DDA7529E2AF7600B9680C /* Folder Path VM.swift */; };
 		F37EA7992B70DEDE0029DE00 /* Console VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5A42959026D0006D126 /* Console VM.swift */; };
 		F37EA79C2B722B390029DE00 /* Backup VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300889C2B3A17CC0051476C /* Backup VM.swift */; };
@@ -789,7 +794,6 @@
 		F3A7CEF12C8BB7A300413400 /* Server Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* Server Card VM.swift */; };
 		F3A7CEF22C8BB7BF00413400 /* System Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7052A54C4BC00E89EC4 /* System Alerts.swift */; };
 		F3A7CEF42C8BB7E500413400 /* Network Calls.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32FD71D2B1E054300723B88 /* Network Calls.swift */; };
-		F3A7CEF72C8BB82E00413400 /* Settings Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CEF62C8BB82E00413400 /* Settings Storage.swift */; };
 		F3A7CEF92C8BB88E00413400 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3A7CEF82C8BB88E00413400 /* ScrechKit */; };
 		F3A7CEFB2C8BB8A300413400 /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3A7CEFA2C8BB8A300413400 /* AlertKit */; };
 		F3A7CEFE2C8BB97400413400 /* Server List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CEFD2C8BB97400413400 /* Server List.swift */; };
@@ -822,7 +826,6 @@
 		F3A7CF1F2C8C4E4A00413400 /* Plans Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B2A0129FFD6AB006E5FD2 /* Plans Model.swift */; };
 		F3A7CF222C8C4E9700413400 /* MailCover in Frameworks */ = {isa = PBXBuildFile; productRef = F3A7CF212C8C4E9700413400 /* MailCover */; };
 		F3A7CF232C8C509C00413400 /* Contact Provider Extension.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = F3E2BEF52C1DA07E00B7A6D4 /* Contact Provider Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		F3A7CF612C8C569300413400 /* Server List VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF602C8C569300413400 /* Server List VM.swift */; };
 		F3A7CF622C8CA5A900413400 /* Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304498929E990E9006DC0C7 /* Cloud Keys.swift */; };
 		F3A7CF632C8CA5B900413400 /* Cloud Key Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A31B082B0B161D00F89C51 /* Cloud Key Card.swift */; };
 		F3A7CF642C8CA5CF00413400 /* Tip Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A800312A7313E900CAC40B /* Tip Cloud Keys.swift */; };
@@ -1749,10 +1752,8 @@
 		F3A7CEE02C8B9BB700413400 /* App Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Container.swift"; sourceTree = "<group>"; };
 		F3A7CEE42C8B9E7500413400 /* Messages VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Messages VM.swift"; sourceTree = "<group>"; };
 		F3A7CEEB2C8BB77500413400 /* Server Card Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Parent.swift"; sourceTree = "<group>"; };
-		F3A7CEF62C8BB82E00413400 /* Settings Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings Storage.swift"; sourceTree = "<group>"; };
 		F3A7CEFD2C8BB97400413400 /* Server List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List.swift"; sourceTree = "<group>"; };
 		F3A7CF012C8BBB4700413400 /* Server Card Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Context Menu.swift"; sourceTree = "<group>"; };
-		F3A7CF602C8C569300413400 /* Server List VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List VM.swift"; sourceTree = "<group>"; };
 		F3A7CF652A44F44A00331B51 /* Auth View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auth View.swift"; sourceTree = "<group>"; };
 		F3A7CF672C8DF3C900413400 /* Video File VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Video File VM.swift"; sourceTree = "<group>"; };
 		F3A7CF6A2A44F6E000331B51 /* Circular Gauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Circular Gauge.swift"; sourceTree = "<group>"; };
@@ -3026,7 +3027,6 @@
 			children = (
 				F3A7CEE02C8B9BB700413400 /* App Container.swift */,
 				F3A7CECA2C8B685500413400 /* Messages VC.swift */,
-				F3A7CEF62C8BB82E00413400 /* Settings Storage.swift */,
 				F3A7CECF2C8B685600413400 /* Assets.xcassets */,
 				F3A7CEDD2C8B97A300413400 /* iMessage MessagesExtension.entitlements */,
 				F3A7CED12C8B685600413400 /* Info.plist */,
@@ -3042,7 +3042,6 @@
 			isa = PBXGroup;
 			children = (
 				F3A7CEFD2C8BB97400413400 /* Server List.swift */,
-				F3A7CF602C8C569300413400 /* Server List VM.swift */,
 				F3255E162C9049AF008E04DE /* Settings Button.swift */,
 				F3255E192C904A03008E04DE /* Settings View.swift */,
 			);
@@ -5147,12 +5146,13 @@
 				F3A7CEE12C8B9BB700413400 /* App Container.swift in Sources */,
 				F3A7CEF02C8BB79B00413400 /* Server Name.swift in Sources */,
 				F3A7CEFE2C8BB97400413400 /* Server List.swift in Sources */,
+				F37CE9C22D555D5200716D28 /* Tabs.swift in Sources */,
 				F3255E1F2C904A71008E04DE /* Enable 2FA View.swift in Sources */,
 				F3255E202C904A71008E04DE /* Disable 2FA View.swift in Sources */,
 				F3255E212C904A71008E04DE /* QR Code View.swift in Sources */,
 				F3AB4A7B2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
-				F3A7CF612C8C569300413400 /* Server List VM.swift in Sources */,
 				F3A7CEF42C8BB7E500413400 /* Network Calls.swift in Sources */,
+				F37CE9C52D555DAF00716D28 /* Contacts VM.swift in Sources */,
 				F3A7CEEF2C8BB79500413400 /* Gauge Disk.swift in Sources */,
 				F3255E222C904A7A008E04DE /* SSH Create View.swift in Sources */,
 				F3255E232C904A7A008E04DE /* SSH Card.swift in Sources */,
@@ -5167,7 +5167,9 @@
 				F3A7CEEE2C8BB78F00413400 /* Gauge Regular.swift in Sources */,
 				F3AB4A902CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
 				F3A7CEE52C8B9E7500413400 /* Messages VM.swift in Sources */,
+				F37CE9C12D555D4400716D28 /* Value Store.swift in Sources */,
 				F3A7CF662C8CA60E00413400 /* Cloud Key Context Menu.swift in Sources */,
+				F37CE9C42D555D9600716D28 /* Server List VM.swift in Sources */,
 				F3A7CF082C8BBC7600413400 /* Guide.swift in Sources */,
 				F3A7CEEC2C8BB77500413400 /* Server Card Parent.swift in Sources */,
 				F3A7CF0E2C8C43BB00413400 /* Topbar Admin Button.swift in Sources */,
@@ -5175,9 +5177,9 @@
 				F3255E1A2C904A03008E04DE /* Settings View.swift in Sources */,
 				F31F31FA2D52BD940095DD19 /* System.swift in Sources */,
 				F3A7CF152C8C4E4300413400 /* Map List.swift in Sources */,
+				F37CE9C32D555D5A00716D28 /* Tab Info.swift in Sources */,
 				F3A7CF162C8C4E4300413400 /* Map View.swift in Sources */,
 				F3A7CF172C8C4E4300413400 /* Map VM.swift in Sources */,
-				F3A7CEF72C8BB82E00413400 /* Settings Storage.swift in Sources */,
 				F3A7CECB2C8B685500413400 /* Messages VC.swift in Sources */,
 				F31F32082D52DB950095DD19 /* Color Theme.swift in Sources */,
 				F3A7CF182C8C4E4A00413400 /* Browser Spec.swift in Sources */,

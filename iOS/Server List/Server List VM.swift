@@ -50,6 +50,35 @@ final class ServerListVM {
         hasSuspendedServers || hasMultipleNodes
     }
     
+    func fetchServers(_ isAdmin: Bool) {
+        serverListAPI(isAdmin) { result in
+            switch result {
+            case .success(let model):
+                guard let model else {
+                    return
+                }
+                
+                let loadedServers = model.data.map(\.attributes)
+                let totalPages = model.meta.pagination.totalPages
+                
+                if totalPages > 1 {
+                    self.fetchAllPages(isAdmin, totalPages: totalPages, currentServers: loadedServers)
+                } else {
+                    withAnimation {
+                        self.servers = loadedServers
+                    }
+                }
+#if canImport(ContactProvider)
+                if ValueStore().contactsProviderEnabled {
+                    self.fetchUniqueUsers()
+                }
+#endif
+            case .failure(let error):
+                SystemAlert.error(error)
+            }
+        }
+    }
+    
 #if os(iOS)
     private func fetchUniqueUsers() {
         let ids = servers.map(\.id)
@@ -107,35 +136,6 @@ final class ServerListVM {
         }
     }
 #endif
-    
-    func fetchServers(_ isAdmin: Bool) {
-        serverListAPI(isAdmin) { result in
-            switch result {
-            case .success(let model):
-                guard let model else {
-                    return
-                }
-                
-                let loadedServers = model.data.map(\.attributes)
-                let totalPages = model.meta.pagination.totalPages
-                
-                if totalPages > 1 {
-                    self.fetchAllPages(isAdmin, totalPages: totalPages, currentServers: loadedServers)
-                } else {
-                    withAnimation {
-                        self.servers = loadedServers
-                    }
-                }
-#if os(iOS)
-                if ValueStore().contactsProviderEnabled {
-                    self.fetchUniqueUsers()
-                }
-#endif
-            case .failure(let error):
-                SystemAlert.error(error)
-            }
-        }
-    }
     
     private func fetchAllPages(_ isAdmin: Bool, totalPages: Int, currentServers: [ServerAttributes]) {
         var loadedServers = currentServers
