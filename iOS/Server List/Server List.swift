@@ -33,7 +33,7 @@ struct ServerList: View {
         }
         .padding(.horizontal, 4)
         .environment(vm)
-        .searchable(text: $searchField)
+//        .searchable(text: $searchField)
         .navigationBarBackButtonHidden()
         .safariCover($showSafari, url: "https://my.bisquit.host")
         .background(BisquitFall())
