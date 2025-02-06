@@ -457,6 +457,7 @@
 		F35FEB122B0A2C8D004DA05D /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A1D2302A201C570053261E /* Enums.swift */; };
 		F35FEB132B0A2C8E004DA05D /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A1D2302A201C570053261E /* Enums.swift */; };
 		F35FEB142B0A2C8F004DA05D /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A1D2302A201C570053261E /* Enums.swift */; };
+		F361F8882D545E4D007B0565 /* Intent Handler.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F3FDFF5F2C89120D009EBB5C /* Intent Handler.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F363C7FD2B7F7938005F6FF2 /* System Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7052A54C4BC00E89EC4 /* System Alerts.swift */; };
 		F36710342C99C3A100A8901A /* iMessage Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F3A7CEC32C8B685500413400 /* iMessage Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F36797702A393631009F2788 /* Inspector Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367976F2A393631009F2788 /* Inspector Button.swift */; };
@@ -1345,6 +1346,13 @@
 			remoteGlobalIDString = F31BA5222958FF7C0006D126;
 			remoteInfo = Bisquit.Host;
 		};
+		F361F8892D545E4D007B0565 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F31BA51B2958FF7C0006D126 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F3FDFF5E2C89120D009EBB5C;
+			remoteInfo = "Intent Handler";
+		};
 		F36710352C99C3A100A8901A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F31BA51B2958FF7C0006D126 /* Project object */;
@@ -1437,6 +1445,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				F361F8882D545E4D007B0565 /* Intent Handler.appex in Embed Foundation Extensions */,
 				F36710342C99C3A100A8901A /* iMessage Extension.appex in Embed Foundation Extensions */,
 				F3D1E7332C9A38EF000C81FF /* Widgets Extension.appex in Embed Foundation Extensions */,
 			);
@@ -3594,6 +3603,7 @@
 				F3A7CF252C8C509C00413400 /* PBXTargetDependency */,
 				F36710362C99C3A100A8901A /* PBXTargetDependency */,
 				F3D1E7352C9A38EF000C81FF /* PBXTargetDependency */,
+				F361F88A2D545E4D007B0565 /* PBXTargetDependency */,
 			);
 			name = Bisquit.Host;
 			packageProductDependencies = (
@@ -5419,6 +5429,11 @@
 			isa = PBXTargetDependency;
 			target = F31BA5222958FF7C0006D126 /* Bisquit.Host */;
 			targetProxy = F337C1562A8C29CD006F321C /* PBXContainerItemProxy */;
+		};
+		F361F88A2D545E4D007B0565 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F3FDFF5E2C89120D009EBB5C /* Intent Handler */;
+			targetProxy = F361F8892D545E4D007B0565 /* PBXContainerItemProxy */;
 		};
 		F36710362C99C3A100A8901A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
