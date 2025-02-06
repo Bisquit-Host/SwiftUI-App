@@ -13,7 +13,7 @@ struct AllocationList: View {
     
     var body: some View {
         List {
-            ForEach(vm.allocations, id: \.id) { allocation in
+            ForEach(vm.allocations) { allocation in
                 AllocationCard(allocation)
             }
             

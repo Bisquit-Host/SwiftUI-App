@@ -28,6 +28,7 @@ struct AllocationCard: View {
                 
                 VStack(alignment: .leading) {
                     Text("IP: \(ip)")
+                    
                     Text("Port: \(allocation.port.description)")
                 }
                 .footnote()
@@ -51,12 +52,8 @@ struct AllocationCard: View {
                 }
             }
             
-            TextEditor(text: $notes)
-            //            ListParam("IP", param: ip)
-            //
-            //            ListParam("Port", param: "\(allocation.port)")
-            //
-            //
+            TextField("Notes", text: $notes)
+            
             if showSaveButton {
                 Button("Save") {
                     vm.updateNotes(allocation.id, notes: notes)

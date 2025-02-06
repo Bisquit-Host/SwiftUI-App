@@ -1213,16 +1213,6 @@
         }
       }
     },
-    "Create Backup of a server" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Создать Бэкап сервера"
-          }
-        }
-      }
-    },
     "Create Database" : {
       "localizations" : {
         "ru" : {
@@ -1280,7 +1270,14 @@
       }
     },
     "Creates a new backup" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Создает новую резервную копию"
+          }
+        }
+      }
     },
     "Cron: %@" : {
       "localizations" : {
@@ -2999,6 +2996,9 @@
         }
       }
     },
+    "Notes" : {
+
+    },
     "Only when online" : {
       "localizations" : {
         "ru" : {
@@ -3496,10 +3496,24 @@
       }
     },
     "Sends a command to the server" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отправляет команду на сервер"
+          }
+        }
+      }
     },
     "Sends a power signal to the server" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отправляет сигнал питания на сервер"
+          }
+        }
+      }
     },
     "Server address" : {
       "localizations" : {
@@ -3945,7 +3959,14 @@
       }
     },
     "Subdomains" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поддомены"
+          }
+        }
+      }
     },
     "Support" : {
       "localizations" : {
