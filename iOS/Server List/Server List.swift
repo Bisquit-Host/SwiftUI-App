@@ -5,8 +5,11 @@ struct ServerList: View {
     @Environment(ServerListVM.self) private var vm
     @EnvironmentObject private var store: ValueStore
     
+    @Environment(\.openURL) private var openUrl
+    
     @State private var searchField = ""
     @State private var showSafari = false
+    @State private var alertUpdate = false
     
     private var hasFrozenServers: Bool {
         vm.servers.contains {
@@ -33,9 +36,9 @@ struct ServerList: View {
         }
         .padding(.horizontal, 4)
         .environment(vm)
-//        .searchable(text: $searchField)
         .navigationBarBackButtonHidden()
         .safariCover($showSafari, url: "https://my.bisquit.host")
+        .appStoreOverlay($alertUpdate, id: "1639409934")
         .background(BisquitFall())
         .refreshableTask {
             vm.fetchServers(store.adminServerList)
@@ -83,6 +86,11 @@ struct ServerList: View {
         .sheet($vm.sheetKeyStorage) {
             CloudKeys($vm.apiKey) {
                 vm.fetchServers(store.adminServerList)
+            }
+        }
+        .task {
+            if await vm.updateChecker() {
+                alertUpdate = true
             }
         }
         .alert("Unknown Error", isPresented: $vm.alertError) {

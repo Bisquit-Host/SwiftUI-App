@@ -52,6 +52,41 @@ final class ServerListVM {
         hasSuspendedServers || hasMultipleNodes
     }
     
+    func updateChecker() async -> Bool {
+        let decoder = JSONDecoder()
+        var appStoreVersion = "0"
+        
+        guard
+            let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
+            let url = URL(string: "https://itunes.apple.com/lookup?bundleId=host.bisquit.Bisquit-Host")
+        else {
+            return false
+        }
+        
+        let request = URLRequest(url: url)
+        
+        do {
+            let (data, _) = try await URLSession.shared.data(for: request)
+            let decoded = try decoder.decode(ItunesAppInfo.self, from: data)
+            appStoreVersion = decoded.results.first?.version ?? "0"
+        } catch {
+            return false
+        }
+        
+        print(currentVersion)
+        print(appStoreVersion)
+        
+        return currentVersion.compare(appStoreVersion, options: .numeric) == .orderedAscending
+    }
+    
+    struct ItunesAppInfo: Decodable {
+        let results: [ItunesAppInfoResult]
+    }
+    
+    struct ItunesAppInfoResult: Decodable {
+        let version: String
+    }
+    
     func fetchServers(_ isAdmin: Bool) {
         serverListAPI(isAdmin) { result in
             switch result {

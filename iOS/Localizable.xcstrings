@@ -5260,6 +5260,12 @@
     },
     "Update" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5276,6 +5282,12 @@
             "value" : "Update %1$@ to %2$@"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update %1$@ naar %2$@"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5286,6 +5298,12 @@
     },
     "Update credentials" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inloggegevens bijwerken"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5312,6 +5330,12 @@
     },
     "Update Password" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wachtwoord Bijwerken"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5321,7 +5345,14 @@
       }
     },
     "Updated" : {
-
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bijgewerkt"
+          }
+        }
+      }
     },
     "Upload" : {
       "localizations" : {
