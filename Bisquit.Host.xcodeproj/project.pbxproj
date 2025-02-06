@@ -3452,8 +3452,8 @@
 		F3E2BEF62C1DA07E00B7A6D4 /* Contact Provider Extension */ = {
 			isa = PBXGroup;
 			children = (
-				F3E2BEF72C1DA07E00B7A6D4 /* Info.plist */,
 				F3E2BEF82C1DA07E00B7A6D4 /* Contact Provider Extension.swift */,
+				F3E2BEF72C1DA07E00B7A6D4 /* Info.plist */,
 				F3E2BEF92C1DA07E00B7A6D4 /* Extension Root Container Enumerator.swift */,
 			);
 			path = "Contact Provider Extension";

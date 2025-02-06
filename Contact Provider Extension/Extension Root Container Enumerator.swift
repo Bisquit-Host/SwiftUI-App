@@ -36,14 +36,14 @@ class ExtensionRootContainerEnumerator: ContactItemEnumerator {
             }
         } catch {
             // Tell the observer an error occurred
-            //
+            
             // Note: The system will resume the enumeration from the last `ContactItemPage` that was enumerated successfully, if the error is resumable
             observer.didFinishEnumeratingContentWithError(error)
         }
         
         func currentGenerationMarker() -> Data {
             // TODO: Get the value specific to your data source identifying the current database generation
-            //
+            
             // Note: It is a programmer error to call `didFinishEnumeratingPage(upTo:)` with a `ContactItemPage.generationMarker` that is empty
             "<currentDatabaseGenerationMarker>".data(using: .utf8)!
         }
@@ -73,7 +73,7 @@ class ExtensionRootContainerEnumerator: ContactItemEnumerator {
             observer.didFinishEnumeratingChanges(upTo: changes.nextSyncAnchor, moreComing: changes.moreComing)
         } catch {
             // Tell the observer an error occurred
-            //
+            
             // Note: The system will resume the enumeration from the last `ContactItemSyncAnchor` that was enumerated successfully, if the error is resumable
             observer.didFinishEnumeratingChangesWithError(error)
         }
@@ -112,5 +112,4 @@ class ExtensionRootContainerEnumerator: ContactItemEnumerator {
         // TODO: Stop the enumeration and cleanup as the extension will be terminated
     }
 }
-
 #endif
