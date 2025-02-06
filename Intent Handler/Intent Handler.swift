@@ -8,9 +8,14 @@ class IntentHandler: INExtension, CryptoPriceConfigurationIntentHandling {
         Task {
             do {
                 let servers = try await Networking.fetchServers().map {
+#warning("Fetch image")
+                    // let image = INImage(imageData: <#T##Data#>)
+                    
                     let server = Crypto(
                         identifier: $0.id,
-                        display: "\($0.name) (\($0.id))"
+                        display: $0.name,
+                        subtitle: $0.id,
+                        image: nil
                     )
                     
                     server.id = $0.id

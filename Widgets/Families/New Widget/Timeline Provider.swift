@@ -41,7 +41,7 @@ struct CryptoPriceTimelineProvider: IntentTimelineProvider {
         }
         
         Task {
-            let usage = await Networking.fetchResourceUsage(id)
+            let usage = try await Networking.fetchResourceUsage(id)
             
             // Create Entry using based on user selected config & fetched info
             let entry = ResourcesUsageEntry(
