@@ -562,6 +562,11 @@
 		F37266E729D9EF25005FD103 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F37266E629D9EF25005FD103 /* Kingfisher */; };
 		F37266E929D9EFFE005FD103 /* Cache Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266E829D9EFFE005FD103 /* Cache Size.swift */; };
 		F37266EB29D9F06C005FD103 /* Cache VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266EA29D9F06C005FD103 /* Cache VM.swift */; };
+		F374F7BD2D54922F006771DD /* Sheet Create Subdomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F374F7BC2D54922F006771DD /* Sheet Create Subdomain.swift */; };
+		F374F7BE2D54922F006771DD /* Sheet Create Subdomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F374F7BC2D54922F006771DD /* Sheet Create Subdomain.swift */; };
+		F374F7BF2D54922F006771DD /* Sheet Create Subdomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F374F7BC2D54922F006771DD /* Sheet Create Subdomain.swift */; };
+		F374F7C02D54922F006771DD /* Sheet Create Subdomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F374F7BC2D54922F006771DD /* Sheet Create Subdomain.swift */; };
+		F374F7C12D54922F006771DD /* Sheet Create Subdomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F374F7BC2D54922F006771DD /* Sheet Create Subdomain.swift */; };
 		F375EC3829EE7213002CA969 /* Backup List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F375EC3729EE7213002CA969 /* Backup List.swift */; };
 		F375EC3A29EE73AC002CA969 /* Database List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F375EC3929EE73AC002CA969 /* Database List.swift */; };
 		F375EC3C29EE88EA002CA969 /* Schedule List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F375EC3B29EE88EA002CA969 /* Schedule List.swift */; };
@@ -1652,6 +1657,7 @@
 		F37266E329D9A867005FD103 /* Console.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Console.swift; sourceTree = "<group>"; };
 		F37266E829D9EFFE005FD103 /* Cache Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache Size.swift"; sourceTree = "<group>"; };
 		F37266EA29D9F06C005FD103 /* Cache VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache VM.swift"; sourceTree = "<group>"; };
+		F374F7BC2D54922F006771DD /* Sheet Create Subdomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sheet Create Subdomain.swift"; sourceTree = "<group>"; };
 		F375EC3729EE7213002CA969 /* Backup List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Backup List.swift"; sourceTree = "<group>"; };
 		F375EC3929EE73AC002CA969 /* Database List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database List.swift"; sourceTree = "<group>"; };
 		F375EC3B29EE88EA002CA969 /* Schedule List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Schedule List.swift"; sourceTree = "<group>"; };
@@ -3280,6 +3286,7 @@
 			isa = PBXGroup;
 			children = (
 				F3CE5C402D538FE60094BD7B /* Subdomain List.swift */,
+				F374F7BC2D54922F006771DD /* Sheet Create Subdomain.swift */,
 				F3CE5C4C2D5395300094BD7B /* Subdomain Card.swift */,
 				F3CE5C442D53907E0094BD7B /* Subdomain VM.swift */,
 				F3CE5C482D53935A0094BD7B /* Subdomain Model.swift */,
@@ -4191,6 +4198,7 @@
 				F37266CD29D96C98005FD103 /* Websocket Delegate.swift in Sources */,
 				F35081B02AF30F4B00835CC0 /* Tip Cloud Keys.swift in Sources */,
 				F3BC03B32B1FF4830011F98A /* Task Context Menu.swift in Sources */,
+				F374F7BE2D54922F006771DD /* Sheet Create Subdomain.swift in Sources */,
 				F33623312A22048C006A6271 /* Value Store.swift in Sources */,
 				F3EB09DC2A295F780073916A /* Text File.swift in Sources */,
 				F3D22C092A26564C00721113 /* Cloud Keys.swift in Sources */,
@@ -4377,6 +4385,7 @@
 				F3D295132AF396FD00ED43A0 /* Tabs.swift in Sources */,
 				F3C9D84E2B30598000265492 /* Video Player VM.swift in Sources */,
 				F3DAD6BE2A4793F8002ED405 /* Circular Gauge.swift in Sources */,
+				F374F7BF2D54922F006771DD /* Sheet Create Subdomain.swift in Sources */,
 				F3FA61572A1F928500A65AE1 /* FileTab Search.swift in Sources */,
 				F3C9D85C2B31146E00265492 /* User Avatar.swift in Sources */,
 				F354E9832A48CA2000F6E359 /* Topbar Grid Button.swift in Sources */,
@@ -4816,6 +4825,7 @@
 				F399933B2AF2E491006E8A9A /* Other Settings.swift in Sources */,
 				F325F7042A54BF7A00E89EC4 /* Tab Info.swift in Sources */,
 				F32E88C92AF83E3F00959D49 /* Topbar Admin Button.swift in Sources */,
+				F374F7C02D54922F006771DD /* Sheet Create Subdomain.swift in Sources */,
 				F3464D1E2A86396500188B0C /* Change Power.swift in Sources */,
 				F3553FB42B4065A300EF0FD2 /* Panel Settings Parent.swift in Sources */,
 				F34EB0962A4A75E70034A68A /* Intro Model.swift in Sources */,
@@ -4870,6 +4880,7 @@
 				F3D2953D2AF39D3A00ED43A0 /* Nav Destinations.swift in Sources */,
 				F3D2958B2AF39FD500ED43A0 /* Settings Parent.swift in Sources */,
 				F3D295612AF39E8900ED43A0 /* FileTab NewFolder.swift in Sources */,
+				F374F7C12D54922F006771DD /* Sheet Create Subdomain.swift in Sources */,
 				F3D295392AF39D1B00ED43A0 /* Value Store.swift in Sources */,
 				F3AF91C72B423535001D8F80 /* SSH List.swift in Sources */,
 				F3D295D22AF3A30400ED43A0 /* Console Tab.swift in Sources */,
@@ -5282,6 +5293,7 @@
 				F39E68382D2D67A70002BA96 /* Schedule Context Menu.swift in Sources */,
 				F39E68392D2D67A70002BA96 /* Schedule Card.swift in Sources */,
 				F39E683A2D2D67A70002BA96 /* Schedule VM.swift in Sources */,
+				F374F7BD2D54922F006771DD /* Sheet Create Subdomain.swift in Sources */,
 				F39E683B2D2D67A70002BA96 /* New Schedule Sheet.swift in Sources */,
 				F32FD7182B1E042500723B88 /* Websocket.swift in Sources */,
 				F32FD7212B1E065500723B88 /* Network Calls.swift in Sources */,

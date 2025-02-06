@@ -18,7 +18,6 @@ struct ServerList: View {
         @Bindable var vm = vm
         
 #warning("Present a warning when 2FA is disabled")
-        
         ScrollView(showsIndicators: false) {
             TipView(Tip_ServerCardContextMenu())
             

@@ -8,6 +8,9 @@ final class SubdomainVM {
         self.id = id
     }
     
+    var subdomain = ""
+    var selectedDomain = 1
+    
     private var subdomainResponse: SubdomainResponse?
     
     var limit: Int? {
