@@ -23,7 +23,7 @@ struct SubdomainCard: View {
         }
         .navigationTitle("Subdomains")
         .contextMenu {
-            Button {
+            Button(role: .destructive) {
                 Task {
                     await vm.deleteSubdomain(subdomain.id)
                 }
