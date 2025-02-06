@@ -25,6 +25,7 @@ struct DevSettings: View {
     var body: some View {
         Section("Dev") {
             ListParam("App version", param: version)
+            
             ListParam("Device and system", param: deviceAndSystem)
             
             Toggle("Developer mode", isOn: $store.devMode)
