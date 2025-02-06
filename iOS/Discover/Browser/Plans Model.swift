@@ -7,21 +7,12 @@ struct MinecraftPlan: Identifiable, Decodable {
 }
 
 struct Plan: Identifiable, Decodable {
-    let id: Int
-    let name: String
-    let displayName: String
-    let priceRub: Double
-    let priceEur: Double
-    let priceUsd: Double
-    let disk: Int
-    
-    let ram: Double?
-    let cpu: Double?
-    let mysql: Int?
-    let location: String?
-    let cpuModel: String?
-    let network: Int?
-    let sites: Int?
+    let id, disk: Int
+    let name, displayName: String
+    let priceRub, priceEur, priceUsd: Double
+    let ram, cpu: Double?
+    let location, cpuModel: String?
+    let mysql, network, sites: Int?
 }
 
 /// MC
