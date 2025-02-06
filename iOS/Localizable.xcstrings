@@ -140,6 +140,12 @@
             "state" : "new",
             "value" : "%1$lld / %2$lld backups used"
           }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld / %2$lld back-ups gebruikt"
+          }
         }
       }
     },
@@ -375,10 +381,17 @@
       "shouldTranslate" : false
     },
     "2FA" : {
-
+      "shouldTranslate" : false
     },
     "2FA enabled" : {
-
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2FA ingeschakeld"
+          }
+        }
+      }
     },
     "10" : {
       "shouldTranslate" : false
@@ -463,6 +476,12 @@
     },
     "Allocations" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toewijzingen"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -528,6 +547,12 @@
     },
     "App Support" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App-ondersteuning"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -538,6 +563,12 @@
     },
     "Apps" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apps"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -580,6 +611,12 @@
     },
     "Are you sure you want to perform the Kill action?" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weet je zeker dat je de Kill-actie wilt uitvoeren?"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -590,6 +627,12 @@
     },
     "Assign allocation" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toewijzing toewijzen"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -600,6 +643,12 @@
     },
     "Attribute modification date" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Attribuut wijzigingsdatum"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -610,6 +659,12 @@
     },
     "Available configurations" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beschikbare configuraties"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -619,13 +674,33 @@
       }
     },
     "Backup" : {
-
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back-up"
+          }
+        }
+      }
     },
     "Backup at %@" : {
-
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back-up op %@"
+          }
+        }
+      }
     },
     "Backup name" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back-up naam"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -639,7 +714,7 @@
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ""
+            "value" : "Back-ups"
           }
         },
         "ru" : {
@@ -674,6 +749,12 @@
     },
     "Beta" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beta"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -698,6 +779,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Enabling biometric access does not share your biometric data with Bisquit.Host. Bisquit.Host app uses the Keychain on your device to securely store authentication tokens that can only be accessed with your biometrics. You can disable biometric authentication (Face/Touch ID) at any time through the settings in the Bisquit.Host app"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Het inschakelen van biometrische toegang deelt uw biometrische gegevens niet met Bisquit.Host. De Bisquit.Host-app gebruikt de sleutelhanger op uw apparaat om authenticatietokens veilig op te slaan die alleen toegankelijk zijn met uw biometrische gegevens. U kunt biometrische authenticatie (Face/Touch ID) op elk gewenst moment uitschakelen via de instellingen in de Bisquit.Host-app"
           }
         },
         "ru" : {
@@ -733,7 +820,7 @@
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ""
+            "value" : "Cache"
           }
         },
         "ru" : {
@@ -790,6 +877,12 @@
     },
     "Change language" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taal veranderen"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -810,6 +903,12 @@
     },
     "Choose File" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kies Bestand"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -843,6 +942,12 @@
     },
     "Code" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Code"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -853,6 +958,12 @@
     },
     "Color theme" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kleurthema"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -863,6 +974,12 @@
     },
     "Command" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Commando"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -873,6 +990,12 @@
     },
     "Compiled in Russia with love ♥️" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gecompileerd in Rusland met liefde ♥️"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -892,7 +1015,20 @@
       }
     },
     "Configuration" : {
-
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configuratie"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Конфигурация"
+          }
+        }
+      }
     },
     "Configurations" : {
       "localizations" : {
@@ -911,7 +1047,20 @@
       }
     },
     "Configure first" : {
-
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eerst configureren"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Необходима конфигурация"
+          }
+        }
+      }
     },
     "Confirm" : {
       "localizations" : {
@@ -940,7 +1089,7 @@
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ""
+            "value" : "Console"
           }
         },
         "ru" : {
@@ -972,7 +1121,7 @@
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ""
+            "value" : "Contact"
           }
         },
         "ru" : {
@@ -1017,6 +1166,12 @@
     },
     "Contacts" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contacten"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1026,7 +1181,7 @@
       }
     },
     "Contacts provider" : {
-
+      "shouldTranslate" : false
     },
     "Content type" : {
       "localizations" : {
@@ -1040,6 +1195,12 @@
     },
     "Context Menu" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contextmenu"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1050,6 +1211,12 @@
     },
     "Continue" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Doorgaan"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1070,6 +1237,12 @@
     },
     "Copied" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gekopieerd"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1102,6 +1275,12 @@
     },
     "Copy password" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wachtwoord kopiëren"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1111,10 +1290,29 @@
       }
     },
     "Copy the setup url" : {
-
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kopieer de installatie-url"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скопировать URL-адрес установки"
+          }
+        }
+      }
     },
     "Couldn't enable the extension" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kon de extensie niet inschakelen"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1128,7 +1326,7 @@
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ""
+            "value" : "CPU"
           }
         },
         "ru" : {
@@ -1189,6 +1387,12 @@
     },
     "Create API-key" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "API-sleutel maken"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1199,6 +1403,12 @@
     },
     "Create backup" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maak een back-up"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1225,6 +1435,12 @@
     },
     "Create Database" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Database Maken"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1281,6 +1497,12 @@
     },
     "Creates a new backup" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maakt een nieuwe back-up"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1318,6 +1540,12 @@
     },
     "Dark" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Donker"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1331,7 +1559,7 @@
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ""
+            "value" : "Gegevens"
           }
         },
         "ru" : {
@@ -1354,6 +1582,12 @@
     },
     "Data type" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gegevenstype"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1367,7 +1601,7 @@
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ""
+            "value" : "Databases"
           }
         },
         "ru" : {
@@ -1386,6 +1620,12 @@
     },
     "Day of month" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dag van de maand"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1396,6 +1636,12 @@
     },
     "Day of week" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dag van de week"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1409,7 +1655,7 @@
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ""
+            "value" : "Debug"
           }
         },
         "ru" : {
@@ -1458,6 +1704,12 @@
     },
     "Demo" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Demo"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1547,10 +1799,30 @@
       }
     },
     "Destination" : {
-
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bestemming"
+          }
+        }
+      }
     },
     "Details" : {
-
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Details"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подробности"
+          }
+        }
+      }
     },
     "Detele Database" : {
       "localizations" : {
@@ -1563,10 +1835,16 @@
       }
     },
     "Dev" : {
-
+      "shouldTranslate" : false
     },
     "Developer mode" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ontwikkelaarsmodus"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1577,6 +1855,12 @@
     },
     "Device and system" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apparaat en systeem"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1587,6 +1871,12 @@
     },
     "Disable 2FA" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2FA Uitschakelen"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1606,10 +1896,23 @@
       }
     },
     "Dismiss" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скрыть"
+          }
+        }
+      }
     },
     "Docker Image" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Docker Image"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1661,13 +1964,39 @@
       }
     },
     "Download with QR" : {
-
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Downloaden met QR"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скачать с помощью QR"
+          }
+        }
+      }
     },
     "Drop here" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перетащите сюда"
+          }
+        }
+      }
     },
     "Duplicate" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dupliceren"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1678,6 +2007,12 @@
     },
     "Dynamic Island badge" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dynamic Island badge"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1691,7 +2026,7 @@
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ""
+            "value" : "E-mail"
           }
         },
         "ru" : {
@@ -1710,6 +2045,12 @@
     },
     "Easily format and visualize your JSON data" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eenvoudig uw JSON-gegevens opmaken en visualiseren"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1803,6 +2144,12 @@
     },
     "Enter the 6-digit code from your authenticator app" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voer de 6-cijferige code in vanuit uw authenticator-app"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1813,6 +2160,12 @@
     },
     "Error %@" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fout %@"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1839,6 +2192,12 @@
     },
     "Execute" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uitvoeren"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1879,6 +2238,12 @@
     },
     "File size" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bestandsgrootte"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1889,6 +2254,12 @@
     },
     "Files" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bestanden"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1899,6 +2270,12 @@
     },
     "First name" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voornaam"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1909,6 +2286,12 @@
     },
     "Font Size: %lld" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lettergrootte: %lld"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1919,6 +2302,12 @@
     },
     "Format" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Formaat"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1929,6 +2318,12 @@
     },
     "Full file path" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volledig bestandspad"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2091,7 +2486,20 @@
       }
     },
     "Hide status bar" : {
-
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statusbalk verbergen"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скрыть строку состояния"
+          }
+        }
+      }
     },
     "Hints" : {
       "localizations" : {
@@ -2105,6 +2513,12 @@
     },
     "Hold down the server card for a moment to access the context menu" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Houd de serverkaart even ingedrukt om toegang te krijgen tot het contextmenu"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2125,6 +2539,12 @@
     },
     "Hour" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uur"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2135,6 +2555,12 @@
     },
     "How to obtain an API-key" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hoe maak ik een API-sleutel"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2162,6 +2588,12 @@
     },
     "I'm not a no-name 😢" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ik ben geen no-name 😢"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2183,6 +2615,12 @@
     },
     "iCloud ensures the secure and efficient storage of your precious data, including API-keys" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iCloud zorgt voor de veilige en efficiënte opslag van uw kostbare gegevens, inclusief API-sleutels"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2196,7 +2634,7 @@
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ""
+            "value" : "ICON"
           }
         },
         "ru" : {
@@ -2222,6 +2660,12 @@
     },
     "Info" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Info"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2304,6 +2748,12 @@
     },
     "Invite user" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gebruiker uitnodigen"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2325,6 +2775,12 @@
     },
     "IP Address" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IP-adres"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2430,6 +2886,12 @@
     },
     "Is the following information correct?" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Is de volgende informatie juist?"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2456,6 +2918,12 @@
     },
     "JSON Formatter" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JSON Formatter"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2486,6 +2954,12 @@
     },
     "Label color" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Labelkleur"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2496,6 +2970,12 @@
     },
     "Label number" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Labelnummer"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2506,6 +2986,12 @@
     },
     "Last name" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Achternaam"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2519,6 +3005,12 @@
     },
     "Last used: %@" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Laatst gebruikt: %@"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2549,6 +3041,12 @@
     },
     "Learn more..." : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meer informatie..."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2575,6 +3073,12 @@
     },
     "Light" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Licht"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2585,6 +3089,12 @@
     },
     "Limit" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limiet"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2621,10 +3131,23 @@
       "shouldTranslate" : false
     },
     "Load data" : {
-
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gegevens laden"
+          }
+        }
+      }
     },
     "Localized name" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gelokaliseerde naam"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2635,6 +3158,12 @@
     },
     "Localized type description" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gelokaliseerde typebeschrijving"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2655,6 +3184,12 @@
     },
     "Log out" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uitloggen"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2665,6 +3200,12 @@
     },
     "Logs" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Logs"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2701,6 +3242,12 @@
     },
     "Member since" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lid sinds"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2711,6 +3258,12 @@
     },
     "Memory" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geheunen"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2734,6 +3287,12 @@
     },
     "Minute" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minuut"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2770,6 +3329,12 @@
     },
     "Month" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maand"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2822,6 +3387,12 @@
     },
     "My API-keys" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mijn API-sleutels"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2848,6 +3419,12 @@
     },
     "Name (optional)" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Naam (optioneel)"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2858,6 +3435,12 @@
     },
     "Name & description" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Naam & beschrijving"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2919,6 +3502,12 @@
     },
     "New folder" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nieuwe map"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2929,6 +3518,12 @@
     },
     "New Folder" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nieuwe Map"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2949,6 +3544,12 @@
     },
     "New user" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nieuwe gebruiker"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2969,6 +3570,12 @@
     },
     "No" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nee"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2979,6 +3586,12 @@
     },
     "No API-keys found" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geen API-sleutels gevonden"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2999,6 +3612,12 @@
     },
     "Node" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Node"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3008,10 +3627,29 @@
       }
     },
     "Notes" : {
-
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notities"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Заметки"
+          }
+        }
+      }
     },
     "Offer" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voorwaarden"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3022,6 +3660,12 @@
     },
     "Only when online" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alleen wanneer online"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3032,6 +3676,12 @@
     },
     "Open in a separate window" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open in een apart venster"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3042,6 +3692,12 @@
     },
     "Open in Safari" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open in Safari"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3062,6 +3718,12 @@
     },
     "Other users" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Andere gebruikers"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3072,6 +3734,12 @@
     },
     "Overview" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Overzicht"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3082,6 +3750,12 @@
     },
     "Password" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wachtwoord"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3139,6 +3813,12 @@
     },
     "Places we recommend" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plaatsen die we aanbevelen"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3149,6 +3829,12 @@
     },
     "Port: %@" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poort: %@"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3159,6 +3845,12 @@
     },
     "Port: %lld" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poort: %lld"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3179,6 +3871,12 @@
     },
     "Power Signal" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stroomsignaal"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3189,6 +3887,12 @@
     },
     "Preferred currency" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voorkeursvaluta"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3209,6 +3913,12 @@
     },
     "Preview" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preview"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3229,6 +3939,12 @@
     },
     "Privacy Policy" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacybeleid"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3238,10 +3954,23 @@
       }
     },
     "Process in foreground" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обработать в основном потоке"
+          }
+        }
+      }
     },
     "Processor" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Processor"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3278,7 +4007,7 @@
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ""
+            "value" : "RAM"
           }
         },
         "ru" : {
@@ -3296,7 +4025,14 @@
       }
     },
     "Raw" : {
-
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rauw"
+          }
+        }
+      }
     },
     "Read" : {
 
@@ -3323,6 +4059,12 @@
     },
     "Reinstalling your server will stop it, and then re-run the installation script that initially set it. Some files may be deleted or modified during this process, please back up your data before continuing" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Door uw server opnieuw te installeren, wordt deze gestopt en wordt het installatiescript dat deze oorspronkelijk heeft ingesteld opnieuw uitgevoerd. Sommige bestanden kunnen tijdens dit proces worden verwijderd of gewijzigd, maak een back-up van uw gegevens voordat u doorgaat"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3376,7 +4118,7 @@
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ""
+            "value" : "Restart"
           }
         },
         "ru" : {
@@ -3424,10 +4166,24 @@
       }
     },
     "Retrieve cached data" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Получить кэшированные данные"
+          }
+        }
+      }
     },
     "Retrieved %lld cached images" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Получено %lld кэшированных изображений"
+          }
+        }
+      }
     },
     "Revoke all permissions" : {
       "localizations" : {
@@ -3441,6 +4197,12 @@
     },
     "Rotate password" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wachtwoord roteren"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3454,6 +4216,12 @@
     },
     "Save" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opslaan"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3474,6 +4242,12 @@
     },
     "Save to Contacts" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opslaan in Contacten"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3505,6 +4279,12 @@
     },
     "Send Command" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Commando verzenden"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3515,6 +4295,12 @@
     },
     "Send command to a server" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stuur commando naar een server"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3535,6 +4321,12 @@
     },
     "Sends a command to the server" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stuurt een commando naar de server"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3545,6 +4337,12 @@
     },
     "Sends a power signal to the server" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stuurt een stroomsignaal naar de server"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3555,6 +4353,12 @@
     },
     "Server address" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serveradres"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3565,6 +4369,12 @@
     },
     "Server description" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serverbeschrijving"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3604,6 +4414,12 @@
     },
     "Server logs" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serverlogboeken"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3614,6 +4430,12 @@
     },
     "Server name" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Servernaam"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3624,6 +4446,12 @@
     },
     "Server Settings" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serverinstellingen"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3637,6 +4465,12 @@
     },
     "Settings" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instellingen"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3647,6 +4481,12 @@
     },
     "Setup 2FA" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2FA instellen"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3657,6 +4497,12 @@
     },
     "Setup with an authenticator app" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instellen met een authenticator-app"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3690,6 +4536,12 @@
     },
     "Share" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delen"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3720,6 +4572,12 @@
     },
     "Show description (ru)" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toon beschrijving (ru)"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3729,7 +4587,14 @@
       }
     },
     "Show power buttons" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Показать кнопки питания"
+          }
+        }
+      }
     },
     "Sign in" : {
       "localizations" : {
@@ -3746,9 +4611,6 @@
           }
         }
       }
-    },
-    "Signal" : {
-
     },
     "Size: %@" : {
       "localizations" : {
@@ -3795,6 +4657,12 @@
     },
     "Soon there will be an art here as well" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Binnenkort zal er hier ook een art zijn"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3828,6 +4696,12 @@
     },
     "SSH Keys" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SSH Sleutels"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3895,6 +4769,12 @@
     },
     "Status" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3939,7 +4819,7 @@
       "localizations" : {
         "nl" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : ""
           }
         },
@@ -4001,6 +4881,12 @@
     },
     "Subdomains" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Subdomeinen"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4014,7 +4900,7 @@
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Support"
+            "value" : "Ondersteuning"
           }
         },
         "ru" : {
@@ -4056,6 +4942,12 @@
     },
     "System" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Systeem"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4066,6 +4958,12 @@
     },
     "System status" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Systeemstatus"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4086,6 +4984,12 @@
     },
     "Telegram Chat" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telegram Chat"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4099,6 +5003,12 @@
     },
     "Temporary Files" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tijdelijke Bestanden"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4112,6 +5022,12 @@
     },
     "The list of servers couldn't be loaded. Check your internet connection or contact support" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "De lijst met servers kon niet worden geladen. Controleer uw internetverbinding of neem contact op met de ondersteuning"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4121,7 +5037,14 @@
       }
     },
     "This is an example widget" : {
-
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dit is een voorbeeldwidget"
+          }
+        }
+      }
     },
     "Time offset (sec)" : {
       "localizations" : {
@@ -4155,6 +5078,12 @@
     },
     "Total file allocated size" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Totale toegewezen bestandsgrootte"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4185,6 +5114,12 @@
     },
     "Transparent lists" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transparante lijsten"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4236,7 +5171,14 @@
       }
     },
     "Type here" : {
-
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Typ hier"
+          }
+        }
+      }
     },
     "Type identifier" : {
       "localizations" : {
@@ -4260,6 +5202,12 @@
     },
     "Unknown Error" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Onbekende Fout"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4329,6 +5277,12 @@
     },
     "Update Email" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E-mail bijwerken"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4352,6 +5306,12 @@
     },
     "Upload" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uploaden"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4362,6 +5322,12 @@
     },
     "Upload file" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bestand uploaden"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4372,6 +5338,12 @@
     },
     "Uploading to Server •" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uploaden naar Server •"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4382,6 +5354,12 @@
     },
     "Uptime" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uptime"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4392,6 +5370,12 @@
     },
     "Url" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Url"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4405,6 +5389,12 @@
     },
     "Username" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gebruikersnaam"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4431,6 +5421,12 @@
     },
     "Using your iPhone, paste the API-key from the clipboard" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plak met je iPhone de API-sleutel van het klembord"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4451,6 +5447,12 @@
     },
     "Variable" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Variabele"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4464,6 +5466,12 @@
     },
     "Warning" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waarschuwing"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4499,7 +5507,7 @@
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ""
+            "value" : "Web"
           }
         },
         "ru" : {
@@ -4518,6 +5526,12 @@
     },
     "Web panel" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Webpaneel"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4528,6 +5542,12 @@
     },
     "Where to find the API-key?" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waar vind je de API-sleutel?"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4538,6 +5558,12 @@
     },
     "Wiki" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wiki"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",

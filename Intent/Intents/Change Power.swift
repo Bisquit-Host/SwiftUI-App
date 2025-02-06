@@ -10,7 +10,7 @@ struct ChangePower: AppIntent, CustomIntentMigratedAppIntent, PredictableIntent 
     @Parameter(title: "Server id")
     var id: String
     
-    @Parameter(title: "Signal", default: .start)
+    @Parameter(title: "Power Signal", default: .start)
     var signal: PowerSignalAppEnum?
     
     static var parameterSummary: some ParameterSummary {
