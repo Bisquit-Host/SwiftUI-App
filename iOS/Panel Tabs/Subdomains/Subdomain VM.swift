@@ -25,14 +25,19 @@ final class SubdomainVM {
         subdomainResponse?.subdomains.map(\.attributes) ?? []
     }
     
-    func fetchSubdomains() async {
-        let url = URL(string: "https://mgr.bisquit.host/api/client/extensions/subdomainmanager/servers/" + id)
+    func createSubdomain() {
         
-        guard let apiKey = Keychain.load(key: "selectedApiKey") else {
+    }
+    
+    func fetchSubdomains() async {
+        guard
+            let url = URL(string: "https://mgr.bisquit.host/api/client/extensions/subdomainmanager/servers/" + id),
+            let apiKey = Keychain.load(key: "selectedApiKey")
+        else {
             return
         }
         
-        var request = URLRequest(url: url!)
+        var request = URLRequest(url: url)
         request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
         
         do {

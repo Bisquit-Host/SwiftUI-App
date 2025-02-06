@@ -30,6 +30,14 @@ struct SheetCreateSubdomain: View {
                 }
                 .pickerStyle(.inline)
             }
+            
+            Section {
+                Button {
+                    vm.createSubdomain()
+                } label: {
+                    Label("Create", systemImage: "plus")
+                }
+            }
         }
     }
 }

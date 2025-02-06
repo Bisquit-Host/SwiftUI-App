@@ -105,9 +105,13 @@ private func fetchEmail(completion: @escaping (String?) -> Void) {
 }
 
 private func postPushToken(email: String, token: String) {
-    let url = URL(string: "http://api.topscrech.dev/user/push_tokens/add")
+    guard
+        let url = URL(string: "http://api.topscrech.dev/user/push_tokens/add")
+    else {
+        return
+    }
     
-    var request = URLRequest(url: url!)
+    var request = URLRequest(url: url)
     request.httpMethod = "POST"
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
     
