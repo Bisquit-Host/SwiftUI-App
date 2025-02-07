@@ -40,9 +40,13 @@ struct ServerList: View {
             Discover()
         }
         .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
+            ToolbarItemGroup(placement: .topBarTrailing) {
                 SFButton("sparkles") {
                     vm.sheetDiscover = true
+                }
+                
+                SFButton("gear") {
+                    sheetSettings = true
                 }
             }
         }
