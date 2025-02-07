@@ -5,9 +5,13 @@ struct ServerList: View {
     @Environment(NavState.self) private var navState
     @EnvironmentObject private var store: ValueStore
     
+    @Environment(\.openURL) private var openUrl
+    
     @State private var sheetOverview = false
     
     var body: some View {
+        @Bindable var vm = vm
+        
         List {
             ForEach(vm.filteredServers) { server in
                 Button {
@@ -20,6 +24,15 @@ struct ServerList: View {
         .background(BisquitFall())
         .task {
             vm.fetchServers(store.adminServerList)
+        }
+        .alert("New Update Available", isPresented: $vm.alertUpdate) {
+            if let url = URL(string: "https://apps.apple.com/app/bisquit-host/id1639409934") {
+                Button("Update", role: .destructive) {
+                    openUrl(url)
+                }
+            }
+        } message: {
+            Text("Update now to enjoy the latest improvements!")
         }
         .toolbar {
             NavigationLink("Settings") {
@@ -46,6 +59,9 @@ struct ServerList: View {
             Overview()
         }
         .environment(vm)
+        .task {
+            await vm.checkForUpdates()
+        }
 #endif
     }
 }

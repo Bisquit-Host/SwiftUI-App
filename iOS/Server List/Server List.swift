@@ -81,9 +81,7 @@ struct ServerList: View {
             }
         }
         .task {
-            if await vm.updateChecker() {
-                vm.alertUpdate = true
-            }
+            await vm.checkForUpdates()
         }
         .alert("Unknown Error", isPresented: $vm.alertError) {
             

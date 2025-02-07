@@ -3562,6 +3562,9 @@
         }
       }
     },
+    "New Update Available" : {
+
+    },
     "New user" : {
       "localizations" : {
         "nl" : {
@@ -5334,6 +5337,9 @@
           }
         }
       }
+    },
+    "Update now to enjoy the latest improvements!" : {
+
     },
     "Update Password" : {
       "localizations" : {

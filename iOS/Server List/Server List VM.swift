@@ -56,7 +56,7 @@ final class ServerListVM {
         }
     }
     
-    func updateChecker() async -> Bool {
+    func checkForUpdates() async {
         let decoder = JSONDecoder()
         var appStoreVersion = "0"
         
@@ -64,7 +64,7 @@ final class ServerListVM {
             let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
             let url = URL(string: "https://itunes.apple.com/lookup?bundleId=host.bisquit.Bisquit-Host")
         else {
-            return false
+            return
         }
         
         let request = URLRequest(url: url)
@@ -74,10 +74,10 @@ final class ServerListVM {
             let decoded = try decoder.decode(ItunesAppInfo.self, from: data)
             appStoreVersion = decoded.results.first?.version ?? "0"
         } catch {
-            return false
+            return
         }
         
-        return currentVersion.compare(appStoreVersion, options: .numeric) == .orderedAscending
+        alertUpdate = currentVersion.compare(appStoreVersion, options: .numeric) == .orderedAscending
     }
     
     struct ItunesAppInfo: Decodable {

@@ -52,9 +52,7 @@ struct ServerList: View {
             Discover()
         }
         .task {
-            if await vm.updateChecker() {
-                vm.alertUpdate = true
-            }
+            await vm.checkForUpdates()
         }
         .toolbar {
             ToolbarItemGroup(placement: .topBarTrailing) {
