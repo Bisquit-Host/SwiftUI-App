@@ -214,6 +214,54 @@
 		F3202CDB2D5624B10030B3CC /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202CD72D5624B10030B3CC /* Plan.swift */; };
 		F3202CDC2D5624B10030B3CC /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202CD72D5624B10030B3CC /* Plan.swift */; };
 		F3202CDD2D5624B10030B3CC /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202CD72D5624B10030B3CC /* Plan.swift */; };
+		F3202CDF2D562A620030B3CC /* Browser List MC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202CDE2D562A620030B3CC /* Browser List MC.swift */; };
+		F3202CE02D562A620030B3CC /* Browser List MC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202CDE2D562A620030B3CC /* Browser List MC.swift */; };
+		F3202CE12D562A620030B3CC /* Browser List MC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202CDE2D562A620030B3CC /* Browser List MC.swift */; };
+		F3202CE22D562A620030B3CC /* Browser List MC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202CDE2D562A620030B3CC /* Browser List MC.swift */; };
+		F3202CE32D562A620030B3CC /* Browser List MC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202CDE2D562A620030B3CC /* Browser List MC.swift */; };
+		F3202CE42D562A620030B3CC /* Browser List MC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202CDE2D562A620030B3CC /* Browser List MC.swift */; };
+		F3202CFC2D562AE10030B3CC /* Browser List Bot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202CFB2D562AE10030B3CC /* Browser List Bot.swift */; };
+		F3202CFD2D562AE10030B3CC /* Browser List Bot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202CFB2D562AE10030B3CC /* Browser List Bot.swift */; };
+		F3202CFE2D562AE10030B3CC /* Browser List Bot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202CFB2D562AE10030B3CC /* Browser List Bot.swift */; };
+		F3202CFF2D562AE10030B3CC /* Browser List Bot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202CFB2D562AE10030B3CC /* Browser List Bot.swift */; };
+		F3202D002D562AE10030B3CC /* Browser List Bot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202CFB2D562AE10030B3CC /* Browser List Bot.swift */; };
+		F3202D012D562AE10030B3CC /* Browser List Bot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202CFB2D562AE10030B3CC /* Browser List Bot.swift */; };
+		F3202D032D562AE20030B3CC /* Browser List VDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D022D562AE20030B3CC /* Browser List VDS.swift */; };
+		F3202D042D562AE20030B3CC /* Browser List VDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D022D562AE20030B3CC /* Browser List VDS.swift */; };
+		F3202D052D562AE20030B3CC /* Browser List VDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D022D562AE20030B3CC /* Browser List VDS.swift */; };
+		F3202D062D562AE20030B3CC /* Browser List VDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D022D562AE20030B3CC /* Browser List VDS.swift */; };
+		F3202D072D562AE20030B3CC /* Browser List VDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D022D562AE20030B3CC /* Browser List VDS.swift */; };
+		F3202D082D562AE20030B3CC /* Browser List VDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D022D562AE20030B3CC /* Browser List VDS.swift */; };
+		F3202D0A2D562AE30030B3CC /* Browser List Web.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D092D562AE30030B3CC /* Browser List Web.swift */; };
+		F3202D0B2D562AE30030B3CC /* Browser List Web.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D092D562AE30030B3CC /* Browser List Web.swift */; };
+		F3202D0C2D562AE30030B3CC /* Browser List Web.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D092D562AE30030B3CC /* Browser List Web.swift */; };
+		F3202D0D2D562AE30030B3CC /* Browser List Web.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D092D562AE30030B3CC /* Browser List Web.swift */; };
+		F3202D0E2D562AE30030B3CC /* Browser List Web.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D092D562AE30030B3CC /* Browser List Web.swift */; };
+		F3202D0F2D562AE30030B3CC /* Browser List Web.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D092D562AE30030B3CC /* Browser List Web.swift */; };
+		F3202D112D562B250030B3CC /* Browser Card MC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D102D562B250030B3CC /* Browser Card MC.swift */; };
+		F3202D122D562B250030B3CC /* Browser Card MC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D102D562B250030B3CC /* Browser Card MC.swift */; };
+		F3202D132D562B250030B3CC /* Browser Card MC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D102D562B250030B3CC /* Browser Card MC.swift */; };
+		F3202D142D562B250030B3CC /* Browser Card MC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D102D562B250030B3CC /* Browser Card MC.swift */; };
+		F3202D152D562B250030B3CC /* Browser Card MC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D102D562B250030B3CC /* Browser Card MC.swift */; };
+		F3202D162D562B250030B3CC /* Browser Card MC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D102D562B250030B3CC /* Browser Card MC.swift */; };
+		F3202D192D562B980030B3CC /* Browser Card VDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D182D562B980030B3CC /* Browser Card VDS.swift */; };
+		F3202D1A2D562B980030B3CC /* Browser Card VDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D182D562B980030B3CC /* Browser Card VDS.swift */; };
+		F3202D1B2D562B980030B3CC /* Browser Card VDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D182D562B980030B3CC /* Browser Card VDS.swift */; };
+		F3202D1C2D562B980030B3CC /* Browser Card VDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D182D562B980030B3CC /* Browser Card VDS.swift */; };
+		F3202D1D2D562B980030B3CC /* Browser Card VDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D182D562B980030B3CC /* Browser Card VDS.swift */; };
+		F3202D1E2D562B980030B3CC /* Browser Card VDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D182D562B980030B3CC /* Browser Card VDS.swift */; };
+		F3202D202D562B990030B3CC /* Browser Card Web.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D1F2D562B990030B3CC /* Browser Card Web.swift */; };
+		F3202D212D562B990030B3CC /* Browser Card Web.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D1F2D562B990030B3CC /* Browser Card Web.swift */; };
+		F3202D222D562B990030B3CC /* Browser Card Web.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D1F2D562B990030B3CC /* Browser Card Web.swift */; };
+		F3202D232D562B990030B3CC /* Browser Card Web.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D1F2D562B990030B3CC /* Browser Card Web.swift */; };
+		F3202D242D562B990030B3CC /* Browser Card Web.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D1F2D562B990030B3CC /* Browser Card Web.swift */; };
+		F3202D252D562B990030B3CC /* Browser Card Web.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D1F2D562B990030B3CC /* Browser Card Web.swift */; };
+		F3202D272D562B9A0030B3CC /* Browser Card Bot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D262D562B9A0030B3CC /* Browser Card Bot.swift */; };
+		F3202D282D562B9A0030B3CC /* Browser Card Bot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D262D562B9A0030B3CC /* Browser Card Bot.swift */; };
+		F3202D292D562B9A0030B3CC /* Browser Card Bot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D262D562B9A0030B3CC /* Browser Card Bot.swift */; };
+		F3202D2A2D562B9A0030B3CC /* Browser Card Bot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D262D562B9A0030B3CC /* Browser Card Bot.swift */; };
+		F3202D2B2D562B9A0030B3CC /* Browser Card Bot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D262D562B9A0030B3CC /* Browser Card Bot.swift */; };
+		F3202D2C2D562B9A0030B3CC /* Browser Card Bot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D262D562B9A0030B3CC /* Browser Card Bot.swift */; };
 		F320DDA52B704E3C00957D92 /* Preview Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = F320DDA42B704E3C00957D92 /* Preview Property.swift */; };
 		F323BF9F2B20B84100116B97 /* Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F323BF9E2B20B84100116B97 /* Server Card Context Menu.swift */; };
 		F323BFA22B20DC9000116B97 /* Power Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F323BFA12B20DC9000116B97 /* Power Widget.swift */; };
@@ -1582,6 +1630,14 @@
 		F3202C792D558B210030B3CC /* Spotlight Index.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Spotlight Index.swift"; sourceTree = "<group>"; };
 		F3202CC92D559B240030B3CC /* Contacts Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contacts Provider.swift"; sourceTree = "<group>"; };
 		F3202CD72D5624B10030B3CC /* Plan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
+		F3202CDE2D562A620030B3CC /* Browser List MC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Browser List MC.swift"; sourceTree = "<group>"; };
+		F3202CFB2D562AE10030B3CC /* Browser List Bot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Browser List Bot.swift"; sourceTree = "<group>"; };
+		F3202D022D562AE20030B3CC /* Browser List VDS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Browser List VDS.swift"; sourceTree = "<group>"; };
+		F3202D092D562AE30030B3CC /* Browser List Web.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Browser List Web.swift"; sourceTree = "<group>"; };
+		F3202D102D562B250030B3CC /* Browser Card MC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Browser Card MC.swift"; sourceTree = "<group>"; };
+		F3202D182D562B980030B3CC /* Browser Card VDS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Browser Card VDS.swift"; sourceTree = "<group>"; };
+		F3202D1F2D562B990030B3CC /* Browser Card Web.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Browser Card Web.swift"; sourceTree = "<group>"; };
+		F3202D262D562B9A0030B3CC /* Browser Card Bot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Browser Card Bot.swift"; sourceTree = "<group>"; };
 		F320DDA42B704E3C00957D92 /* Preview Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preview Property.swift"; sourceTree = "<group>"; };
 		F323BF9E2B20B84100116B97 /* Server Card Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Context Menu.swift"; sourceTree = "<group>"; };
 		F323BFA12B20DC9000116B97 /* Power Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Widget.swift"; sourceTree = "<group>"; };
@@ -2479,6 +2535,28 @@
 			path = "VM extensions";
 			sourceTree = "<group>";
 		};
+		F3202CE52D562A650030B3CC /* Lists */ = {
+			isa = PBXGroup;
+			children = (
+				F3202CDE2D562A620030B3CC /* Browser List MC.swift */,
+				F3202D022D562AE20030B3CC /* Browser List VDS.swift */,
+				F3202D092D562AE30030B3CC /* Browser List Web.swift */,
+				F3202CFB2D562AE10030B3CC /* Browser List Bot.swift */,
+			);
+			path = Lists;
+			sourceTree = "<group>";
+		};
+		F3202D172D562B290030B3CC /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				F3202D102D562B250030B3CC /* Browser Card MC.swift */,
+				F3202D182D562B980030B3CC /* Browser Card VDS.swift */,
+				F3202D1F2D562B990030B3CC /* Browser Card Web.swift */,
+				F3202D262D562B9A0030B3CC /* Browser Card Bot.swift */,
+			);
+			path = Cards;
+			sourceTree = "<group>";
+		};
 		F32082442B3E170000CFED80 /* Panel Tabs */ = {
 			isa = PBXGroup;
 			children = (
@@ -2701,6 +2779,8 @@
 			children = (
 				F3202C732D5583680030B3CC /* Browser Parent.swift */,
 				F31BA58E295901B60006D126 /* Browser.swift */,
+				F3202CE52D562A650030B3CC /* Lists */,
+				F3202D172D562B290030B3CC /* Cards */,
 				F31BA590295901C00006D126 /* Browser VM.swift */,
 				F3521E2A29F5C13900132CCB /* Browser Card.swift */,
 				F3A1D2342A201CBB0053261E /* Browser Spec.swift */,
@@ -4183,6 +4263,7 @@
 				F31D0BB52A2573E200119D07 /* Settings.swift in Sources */,
 				F3FFB7472A57F91E00220FA5 /* Map View.swift in Sources */,
 				F370804F2A2A1EAC0046CE70 /* Schedule List.swift in Sources */,
+				F3202D1A2D562B980030B3CC /* Browser Card VDS.swift in Sources */,
 				F3EB09DB2A295C550073916A /* Video File.swift in Sources */,
 				F3573BC52C6511040051259E /* Intents.intentdefinition in Sources */,
 				F33CDBFE2A26B8BC008D0214 /* Plan Models.swift in Sources */,
@@ -4210,6 +4291,8 @@
 				F342FAB02B2E08C100854270 /* Log VM.swift in Sources */,
 				F30C13192A54626D00A7EFF0 /* Bisquit.Host App.swift in Sources */,
 				F3EB09DA2A295C460073916A /* Video Player.swift in Sources */,
+				F3202D042D562AE20030B3CC /* Browser List VDS.swift in Sources */,
+				F3202D112D562B250030B3CC /* Browser Card MC.swift in Sources */,
 				F342FAB32B2E43D500854270 /* Log Card.swift in Sources */,
 				F32FD02F2CF606960038D62C /* Backup Context Menu Control Group.swift in Sources */,
 				F333B3BC2B80CF750005B84D /* Preview Property.swift in Sources */,
@@ -4225,6 +4308,7 @@
 				F35F65922B1D066E00431EB7 /* Panel VM.swift in Sources */,
 				F39E683C2D2D6A300002BA96 /* Audio Player VM.swift in Sources */,
 				F35B89C12A725CFB000B5EEF /* Tip Suspended Server.swift in Sources */,
+				F3202CE32D562A620030B3CC /* Browser List MC.swift in Sources */,
 				F3A28ADB2C57B06600010454 /* Server List Footer.swift in Sources */,
 				F3000E18295A496C00ABD30A /* Intro.swift in Sources */,
 				F35F65932B1D068200431EB7 /* Ansi.swift in Sources */,
@@ -4237,6 +4321,7 @@
 				F33CDC022A26B930008D0214 /* Browser.swift in Sources */,
 				F3C9D8562B3090F500265492 /* Auth View.swift in Sources */,
 				F30088FA2B3B561E0051476C /* User List Parent.swift in Sources */,
+				F3202D282D562B9A0030B3CC /* Browser Card Bot.swift in Sources */,
 				F30088FF2B3B62050051476C /* User Invitation Permission.swift in Sources */,
 				F3BC03B82B1FF8E40011F98A /* Database Context Menu.swift in Sources */,
 				F3F2A5BB29AC296D00AD20A4 /* Server Card Suspended.swift in Sources */,
@@ -4252,6 +4337,7 @@
 				F3BC03B32B1FF4830011F98A /* Task Context Menu.swift in Sources */,
 				F374F7BE2D54922F006771DD /* Sheet Create Subdomain.swift in Sources */,
 				F33623312A22048C006A6271 /* Value Store.swift in Sources */,
+				F3202D212D562B990030B3CC /* Browser Card Web.swift in Sources */,
 				F3EB09DC2A295F780073916A /* Text File.swift in Sources */,
 				F3D22C092A26564C00721113 /* Cloud Keys.swift in Sources */,
 				F342FAAF2B2E07FF00854270 /* Users VM.swift in Sources */,
@@ -4293,12 +4379,14 @@
 				F35FEB132B0A2C8E004DA05D /* Enums.swift in Sources */,
 				F370804A2A2A1C9C0046CE70 /* Backup Card.swift in Sources */,
 				F39D68112A2634C700B9BDFC /* Dev Settings.swift in Sources */,
+				F3202D0B2D562AE30030B3CC /* Browser List Web.swift in Sources */,
 				F33CDC012A26B927008D0214 /* Browser Topbar.swift in Sources */,
 				F3A31B0B2B0B161D00F89C51 /* Cloud Key Card.swift in Sources */,
 				F30089252B3BAD190051476C /* File Permissions Parent.swift in Sources */,
 				F3CCF5BD2B3454AA005FFF2C /* User List.swift in Sources */,
 				F342FAB52B2E499300854270 /* Log List.swift in Sources */,
 				F39D28552A27EE88007B12C3 /* Panel View.swift in Sources */,
+				F3202CFD2D562AE10030B3CC /* Browser List Bot.swift in Sources */,
 				F3202CDA2D5624B10030B3CC /* Plan.swift in Sources */,
 				F3D49DB32B2330C30033B52E /* Overview.swift in Sources */,
 				F3CCF5BE2B3454AD005FFF2C /* User Card.swift in Sources */,
@@ -4349,6 +4437,7 @@
 				F31BA57A295901110006D126 /* Start Page.swift in Sources */,
 				F31578B5296760710016A600 /* Server Card.swift in Sources */,
 				F3D558AC2A3360ED00608447 /* File Tab VM.swift in Sources */,
+				F3202D202D562B990030B3CC /* Browser Card Web.swift in Sources */,
 				F337C1622A8CE7C0006F321C /* Startup Card.swift in Sources */,
 				F3A31B092B0B161D00F89C51 /* Cloud Key Card.swift in Sources */,
 				F38F9E132CE7647D0033EFE3 /* Image Playground.swift in Sources */,
@@ -4362,6 +4451,7 @@
 				F34BB6BE2D3DC2D300D27BE0 /* File Preview.swift in Sources */,
 				F36B73872C8AEAE700E858FE /* Model Asset.swift in Sources */,
 				F325F7002A54BBCF00E89EC4 /* Info Tab Allocation.swift in Sources */,
+				F3202CE02D562A620030B3CC /* Browser List MC.swift in Sources */,
 				F3924EDF29A2333F00C4CC77 /* Settings VM.swift in Sources */,
 				F33001442A4CF06D0063FE0F /* Apikey Card.swift in Sources */,
 				F3BC03C12B2063820011F98A /* Debug Key.swift in Sources */,
@@ -4380,6 +4470,7 @@
 				F3FF5A032A4A359C003A1973 /* Info Tab Buttons.swift in Sources */,
 				F3DC4E2629AEC36300D27EC5 /* Credentials View.swift in Sources */,
 				F31BA591295901C00006D126 /* Browser VM.swift in Sources */,
+				F3202D152D562B250030B3CC /* Browser Card MC.swift in Sources */,
 				F3AF91CD2B423A26001D8F80 /* SSH Create View.swift in Sources */,
 				F3A7CF692C8DF3C900413400 /* Video File VM.swift in Sources */,
 				F3AB4A7C2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
@@ -4390,6 +4481,7 @@
 				F31F32052D52DB950095DD19 /* Color Theme.swift in Sources */,
 				F380B3282BD7C4A4009062E8 /* Upload Preview List.swift in Sources */,
 				F3AF91C12B423492001D8F80 /* SSH VM.swift in Sources */,
+				F3202D272D562B9A0030B3CC /* Browser Card Bot.swift in Sources */,
 				F34BB6BC2D3DC2B800D27BE0 /* File Preview VM.swift in Sources */,
 				F3EDEE3129C06E9700B08696 /* Panel Model.swift in Sources */,
 				F37A36732A3515DC00517EFC /* Server Settings VM.swift in Sources */,
@@ -4509,6 +4601,7 @@
 				F36B73A92C8B0B7B00E858FE /* Audio Player View.swift in Sources */,
 				F37266C829D83394005FD103 /* Text File VM.swift in Sources */,
 				F3BC03AD2B1FF2FC0011F98A /* Schedule Context Menu.swift in Sources */,
+				F3202D032D562AE20030B3CC /* Browser List VDS.swift in Sources */,
 				F3D7D87B29E83D1800BCAFFE /* Cache Settings.swift in Sources */,
 				F3464D372A863A6900188B0C /* Send Command.swift in Sources */,
 				F31BA5AC295902B00006D126 /* File Tab.swift in Sources */,
@@ -4526,6 +4619,7 @@
 				F337D7592A4DBC840011524E /* Create Apikey.swift in Sources */,
 				F325F7062A54C4BC00E89EC4 /* System Alerts.swift in Sources */,
 				F3C9D8512B3059E700265492 /* UIVideoPlayer.swift in Sources */,
+				F3202CFC2D562AE10030B3CC /* Browser List Bot.swift in Sources */,
 				F3B1196F29A155D8003BB68C /* Suspended Server Card.swift in Sources */,
 				F3D264412A66ABBE005C3777 /* Account VM.swift in Sources */,
 				F39CF3582A50C00C0077996D /* User View.swift in Sources */,
@@ -4539,6 +4633,7 @@
 				F310A2F02A56AF86001AF45F /* Network VM.swift in Sources */,
 				F375EC3829EE7213002CA969 /* Backup List.swift in Sources */,
 				F325F7092A54CB6600E89EC4 /* Carousel Button Style.swift in Sources */,
+				F3202D192D562B980030B3CC /* Browser Card VDS.swift in Sources */,
 				F367977E2A3A5AB6009F2788 /* Log VM.swift in Sources */,
 				F38F9E2E2CEB39D80033EFE3 /* Metadata List.swift in Sources */,
 				F3FF5A092A4A3745003A1973 /* Info Tab Background.swift in Sources */,
@@ -4548,6 +4643,7 @@
 				F3BF97AA29BFC7E9007B9C9C /* Websocket.swift in Sources */,
 				F3D7F8502C8ED3D100368ECE /* Disable 2FA View.swift in Sources */,
 				F337B3A829BC6B5400CC1195 /* Server List Grid.swift in Sources */,
+				F3202D0A2D562AE30030B3CC /* Browser List Web.swift in Sources */,
 				F3AB4A8A2CF3DAC900A8252F /* Backup Card VM.swift in Sources */,
 				F3E2BEDF2C1C6BA800B7A6D4 /* Cache List VM.swift in Sources */,
 				F37266BC29D811B7005FD103 /* File View.swift in Sources */,
@@ -4693,6 +4789,7 @@
 				F36D532C2A05B87A007324C6 /* Database List.swift in Sources */,
 				F337C16A2A8D07E2006F321C /* Startup VM.swift in Sources */,
 				F35DA95A2A28F80900803E7E /* Upload Progress.swift in Sources */,
+				F3202D0D2D562AE30030B3CC /* Browser List Web.swift in Sources */,
 				F36D53192A05B7F6007324C6 /* Panel VM.swift in Sources */,
 				F389BB6C2A05B5EA00911EBF /* Cache Settings.swift in Sources */,
 				F389BB792A05B63C00911EBF /* Wide List Button.swift in Sources */,
@@ -4720,6 +4817,7 @@
 				F37A36762A35173F00517EFC /* Console View.swift in Sources */,
 				F39E0A992C1BA11600C4E906 /* Discover Item.swift in Sources */,
 				F3AF91CA2B4235BB001D8F80 /* SSH Card.swift in Sources */,
+				F3202D1C2D562B980030B3CC /* Browser Card VDS.swift in Sources */,
 				F3CCB1CE2CAE75D0000F8207 /* Debug Settings.swift in Sources */,
 				F30089292B3C23A00051476C /* Contact Picker.swift in Sources */,
 				F36D53302A05B896007324C6 /* Section Header.swift in Sources */,
@@ -4859,6 +4957,7 @@
 				F3464D242A86397E00188B0C /* PowerSignalAppEnum.swift in Sources */,
 				F36B73A82C8B0B7B00E858FE /* Audio Player View.swift in Sources */,
 				F36D532B2A05B875007324C6 /* Backup List.swift in Sources */,
+				F3202CE22D562A620030B3CC /* Browser List MC.swift in Sources */,
 				F3A994AB2A178A9E00530615 /* Map View.swift in Sources */,
 				F3DAD6BF2A4793F8002ED405 /* Circular Gauge.swift in Sources */,
 				F36D532E2A05B885007324C6 /* Schedule Task.swift in Sources */,
@@ -4877,6 +4976,7 @@
 				F3FF5A0A2A4A3745003A1973 /* Info Tab Background.swift in Sources */,
 				F3C9D85A2B31135B00265492 /* Permission List.swift in Sources */,
 				F3FF5A042A4A359C003A1973 /* Info Tab Buttons.swift in Sources */,
+				F3202D062D562AE20030B3CC /* Browser List VDS.swift in Sources */,
 				F36FDB97295AF4A900D45070 /* Browser VM.swift in Sources */,
 				F3A1D2362A201CBB0053261E /* Browser Spec.swift in Sources */,
 				F3BC03BE2B1FFBD50011F98A /* Backup Context Menu.swift in Sources */,
@@ -4887,6 +4987,7 @@
 				F374F7C02D54922F006771DD /* Sheet Create Subdomain.swift in Sources */,
 				F3464D1E2A86396500188B0C /* Change Power.swift in Sources */,
 				F3553FB42B4065A300EF0FD2 /* Panel Settings Parent.swift in Sources */,
+				F3202D142D562B250030B3CC /* Browser Card MC.swift in Sources */,
 				F34EB0962A4A75E70034A68A /* Intro Model.swift in Sources */,
 				F35B89C32A725CFC000B5EEF /* Tip Suspended Server.swift in Sources */,
 				F35FEB0C2B09F003004DA05D /* API Key.swift in Sources */,
@@ -4898,6 +4999,7 @@
 				F3AB4A912CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
 				F3FA61582A1F928500A65AE1 /* FileTab Search.swift in Sources */,
 				F3573BC72C6511040051259E /* Intents.intentdefinition in Sources */,
+				F3202CFF2D562AE10030B3CC /* Browser List Bot.swift in Sources */,
 				F330013C2A4CEC320063FE0F /* Apikey List.swift in Sources */,
 				F36D53352A05B8B6007324C6 /* Backup Card.swift in Sources */,
 				F3AF91C62B423535001D8F80 /* SSH List.swift in Sources */,
@@ -4911,12 +5013,14 @@
 				F38F9E092CE6CCF90033EFE3 /* Image Playground Button.swift in Sources */,
 				F393C7BC2A18442900DE33F9 /* File Tab.swift in Sources */,
 				F3AB4A8B2CF3DAC900A8252F /* Backup Card VM.swift in Sources */,
+				F3202D2A2D562B9A0030B3CC /* Browser Card Bot.swift in Sources */,
 				F3464D2F2A863A6200188B0C /* Create Backup.swift in Sources */,
 				F3D2643B2A66AB92005C3777 /* Account View.swift in Sources */,
 				F389BB632A05B59700911EBF /* Server Name.swift in Sources */,
 				F34F289B2ACDAD9B00FD618A /* Animated Tab.swift in Sources */,
 				F389BB732A05B61900911EBF /* Credential Field.swift in Sources */,
 				F3FA4DEB2A4CE82000547722 /* Account Settings.swift in Sources */,
+				F3202D232D562B990030B3CC /* Browser Card Web.swift in Sources */,
 				F36797792A3A55E1009F2788 /* Log List Parent.swift in Sources */,
 				F389BB6F2A05B5F900911EBF /* Cache Expiration.swift in Sources */,
 				F310A2F12A56B0BE001AF45F /* Network VM.swift in Sources */,
@@ -4935,9 +5039,11 @@
 				F39E0A942C1BA06C00C4E906 /* Discover Card.swift in Sources */,
 				F3202C752D5583680030B3CC /* Browser Parent.swift in Sources */,
 				F3D295B72AF3A16600ED43A0 /* App Icon Picker.swift in Sources */,
+				F3202D252D562B990030B3CC /* Browser Card Web.swift in Sources */,
 				F3D2953F2AF39D6B00ED43A0 /* Network VM.swift in Sources */,
 				F3D295F12AF3A52700ED43A0 /* Create Button.swift in Sources */,
 				F3D295BA2AF3A17500ED43A0 /* Dev Settings.swift in Sources */,
+				F3202D1E2D562B980030B3CC /* Browser Card VDS.swift in Sources */,
 				F3D2953D2AF39D3A00ED43A0 /* Nav Destinations.swift in Sources */,
 				F3D2958B2AF39FD500ED43A0 /* Settings Parent.swift in Sources */,
 				F3D295612AF39E8900ED43A0 /* FileTab NewFolder.swift in Sources */,
@@ -4947,11 +5053,13 @@
 				F3D295D22AF3A30400ED43A0 /* Console Tab.swift in Sources */,
 				F3D295A82AF3A0DF00ED43A0 /* Account Settings.swift in Sources */,
 				F3D295B52AF3A15D00ED43A0 /* Design Settings.swift in Sources */,
+				F3202D2C2D562B9A0030B3CC /* Browser Card Bot.swift in Sources */,
 				F3D295482AF39DAA00ED43A0 /* Nav Extension.swift in Sources */,
 				F3D295C42AF3A1CF00ED43A0 /* Create Apikey.swift in Sources */,
 				F3D295C32AF3A1CC00ED43A0 /* Apikey List.swift in Sources */,
 				F3D295DE2AF3A36700ED43A0 /* Schedule List.swift in Sources */,
 				F3D2955E2AF39E6E00ED43A0 /* Panel Model.swift in Sources */,
+				F3202D132D562B250030B3CC /* Browser Card MC.swift in Sources */,
 				F3C9D84B2B30304F00265492 /* Des Video Watch.swift in Sources */,
 				F3AB4A932CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
 				F31F31FE2D52BD940095DD19 /* System.swift in Sources */,
@@ -5015,6 +5123,7 @@
 				F3D2954B2AF39DC400ED43A0 /* Support.swift in Sources */,
 				F3D2957C2AF39F4F00ED43A0 /* Log VM.swift in Sources */,
 				F3D2954C2AF39DC700ED43A0 /* Browser.swift in Sources */,
+				F3202D012D562AE10030B3CC /* Browser List Bot.swift in Sources */,
 				F3D295362AF39D0B00ED43A0 /* Linking VM.swift in Sources */,
 				F3D295A52AF3A0CD00ED43A0 /* Settings View.swift in Sources */,
 				F3D295F02AF3A51300ED43A0 /* Backup List Footer.swift in Sources */,
@@ -5040,6 +5149,7 @@
 				F3D295702AF39EF400ED43A0 /* Settings Button.swift in Sources */,
 				F36B73A72C8B0B7B00E858FE /* Audio Player View.swift in Sources */,
 				F3D2954E2AF39DE000ED43A0 /* Browser Topbar.swift in Sources */,
+				F3202D082D562AE20030B3CC /* Browser List VDS.swift in Sources */,
 				F32E88CA2AF83E3F00959D49 /* Topbar Admin Button.swift in Sources */,
 				F3D295C92AF3A20B00ED43A0 /* Credential Field.swift in Sources */,
 				F3D295AC2AF3A0F700ED43A0 /* Cache Model.swift in Sources */,
@@ -5110,6 +5220,7 @@
 				F3D295512AF39DFF00ED43A0 /* Plan Models.swift in Sources */,
 				F3D295992AF3A06300ED43A0 /* Log List Parent.swift in Sources */,
 				F3D295C62AF3A1EE00ED43A0 /* FileTab Context Menu.swift in Sources */,
+				F3202D0F2D562AE30030B3CC /* Browser List Web.swift in Sources */,
 				F3D295432AF39D8300ED43A0 /* System Alerts.swift in Sources */,
 				F30089342B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */,
 				F3D295B92AF3A17000ED43A0 /* Wide List Button.swift in Sources */,
@@ -5138,6 +5249,7 @@
 				F3D295E62AF3A39D00ED43A0 /* Inspector Button.swift in Sources */,
 				F3AB4A772CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
 				F3D295DA2AF3A34500ED43A0 /* Console View.swift in Sources */,
+				F3202CDF2D562A620030B3CC /* Browser List MC.swift in Sources */,
 				F3D295872AF39FB900ED43A0 /* Server Card VM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5211,6 +5323,7 @@
 				F3202C762D5583680030B3CC /* Browser Parent.swift in Sources */,
 				F3A7CF092C8BBC7A00413400 /* Carousel Button Style.swift in Sources */,
 				F3A7CEE12C8B9BB700413400 /* App Container.swift in Sources */,
+				F3202D0E2D562AE30030B3CC /* Browser List Web.swift in Sources */,
 				F3A7CEF02C8BB79B00413400 /* Server Name.swift in Sources */,
 				F3A7CEFE2C8BB97400413400 /* Server List.swift in Sources */,
 				F37CE9C22D555D5200716D28 /* Tabs.swift in Sources */,
@@ -5228,25 +5341,31 @@
 				F3A7CF622C8CA5A900413400 /* Cloud Keys.swift in Sources */,
 				F3255E1D2C904A56008E04DE /* Account VM.swift in Sources */,
 				F3A7CF102C8C4C2700413400 /* Server List Filter.swift in Sources */,
+				F3202D2B2D562B9A0030B3CC /* Browser Card Bot.swift in Sources */,
 				F3A7CEEA2C8BB74D00413400 /* Server List Grid.swift in Sources */,
 				F3A7CF0D2C8C43B100413400 /* Topbar Grid Button.swift in Sources */,
+				F3202D072D562AE20030B3CC /* Browser List VDS.swift in Sources */,
 				F3255E1E2C904A63008E04DE /* SSH VM.swift in Sources */,
+				F3202D1D2D562B980030B3CC /* Browser Card VDS.swift in Sources */,
 				F3A7CEEE2C8BB78F00413400 /* Gauge Regular.swift in Sources */,
 				F3AB4A902CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
 				F3A7CEE52C8B9E7500413400 /* Messages VM.swift in Sources */,
 				F3202C812D558B210030B3CC /* Spotlight Index.swift in Sources */,
 				F37CE9C12D555D4400716D28 /* Value Store.swift in Sources */,
+				F3202D242D562B990030B3CC /* Browser Card Web.swift in Sources */,
 				F3A7CF662C8CA60E00413400 /* Cloud Key Context Menu.swift in Sources */,
 				F37CE9C42D555D9600716D28 /* Server List VM.swift in Sources */,
 				F3A7CF082C8BBC7600413400 /* Guide.swift in Sources */,
 				F3A7CEEC2C8BB77500413400 /* Server Card Parent.swift in Sources */,
 				F3A7CF0E2C8C43BB00413400 /* Topbar Admin Button.swift in Sources */,
+				F3202D002D562AE10030B3CC /* Browser List Bot.swift in Sources */,
 				F3A7CEE92C8BB73300413400 /* Enums.swift in Sources */,
 				F3255E1A2C904A03008E04DE /* Settings View.swift in Sources */,
 				F3202CCD2D559B240030B3CC /* Contacts Provider.swift in Sources */,
 				F31F31FA2D52BD940095DD19 /* System.swift in Sources */,
 				F3A7CF152C8C4E4300413400 /* Map List.swift in Sources */,
 				F37CE9C32D555D5A00716D28 /* Tab Info.swift in Sources */,
+				F3202D122D562B250030B3CC /* Browser Card MC.swift in Sources */,
 				F3A7CF162C8C4E4300413400 /* Map View.swift in Sources */,
 				F3A7CF172C8C4E4300413400 /* Map VM.swift in Sources */,
 				F3A7CECB2C8B685500413400 /* Messages VC.swift in Sources */,
@@ -5260,6 +5379,7 @@
 				F3255E172C9049AF008E04DE /* Settings Button.swift in Sources */,
 				F3A7CF632C8CA5B900413400 /* Cloud Key Card.swift in Sources */,
 				F3A7CF1D2C8C4E4A00413400 /* Browser Hints.swift in Sources */,
+				F3202CE12D562A620030B3CC /* Browser List MC.swift in Sources */,
 				F3A7CF1E2C8C4E4A00413400 /* Browser.swift in Sources */,
 				F3A7CF1F2C8C4E4A00413400 /* Plan Models.swift in Sources */,
 				F3A7CF022C8BBB4700413400 /* Server Card Context Menu.swift in Sources */,
@@ -5274,6 +5394,7 @@
 			files = (
 				F3D295172AF396FD00ED43A0 /* Tabs.swift in Sources */,
 				F3FD9F9A2C651AF300A69314 /* Upload File.swift in Sources */,
+				F3202D162D562B250030B3CC /* Browser Card MC.swift in Sources */,
 				F3BD76F92A43C890003E7385 /* Panel View.swift in Sources */,
 				F3AB4A8E2CF3DAD500A8252F /* Backup Card VM.swift in Sources */,
 				F30B61CC2B2907C900F447B4 /* Debug Key.swift in Sources */,
@@ -5288,6 +5409,7 @@
 				F3CE5C502D53A5820094BD7B /* Subdomain VM.swift in Sources */,
 				F3CE5C512D53A5820094BD7B /* Subdomain List.swift in Sources */,
 				F3CE5C522D53A5820094BD7B /* Subdomain Model.swift in Sources */,
+				F3202CE42D562A620030B3CC /* Browser List MC.swift in Sources */,
 				F3CE5C532D53A5820094BD7B /* Subdomain Card.swift in Sources */,
 				F32716D82CF6257800F2DC31 /* Backup Context Menu.swift in Sources */,
 				F30B61C82B2905CA00F447B4 /* System Alerts.swift in Sources */,
@@ -5315,6 +5437,7 @@
 				F3FD9FA12C65217C00A69314 /* Quick Look View.swift in Sources */,
 				F3464D2E2A863A6200188B0C /* Create Backup.swift in Sources */,
 				F3317AEE2A45E33300CA104D /* Formatters.swift in Sources */,
+				F3202D0C2D562AE30030B3CC /* Browser List Web.swift in Sources */,
 				F3202C852D5590D30030B3CC /* Browser VM.swift in Sources */,
 				F3202C862D5590D30030B3CC /* Browser Topbar.swift in Sources */,
 				F3202C872D5590D30030B3CC /* Browser Hints.swift in Sources */,
@@ -5324,6 +5447,7 @@
 				F3202C8B2D5590D30030B3CC /* Browser Spec.swift in Sources */,
 				F3202C8C2D5590D30030B3CC /* Browser.swift in Sources */,
 				F3202C8D2D5590D30030B3CC /* Browser Parent.swift in Sources */,
+				F3202D222D562B990030B3CC /* Browser Card Web.swift in Sources */,
 				F32716DC2CF62C0D00F2DC31 /* Backup Card.swift in Sources */,
 				F32716D92CF6257F00F2DC31 /* Backup Context Menu Control Group.swift in Sources */,
 				F39E68332D2D63980002BA96 /* Panel Ornament Power.swift in Sources */,
@@ -5378,9 +5502,13 @@
 				F39E68362D2D67A70002BA96 /* New Task Sheet.swift in Sources */,
 				F39E68372D2D67A70002BA96 /* Schedule Task.swift in Sources */,
 				F39E68382D2D67A70002BA96 /* Schedule Context Menu.swift in Sources */,
+				F3202CFE2D562AE10030B3CC /* Browser List Bot.swift in Sources */,
 				F39E68392D2D67A70002BA96 /* Schedule Card.swift in Sources */,
+				F3202D292D562B9A0030B3CC /* Browser Card Bot.swift in Sources */,
+				F3202D052D562AE20030B3CC /* Browser List VDS.swift in Sources */,
 				F39E683A2D2D67A70002BA96 /* Schedule VM.swift in Sources */,
 				F3202C7C2D558B210030B3CC /* Spotlight Index.swift in Sources */,
+				F3202D1B2D562B980030B3CC /* Browser Card VDS.swift in Sources */,
 				F374F7BD2D54922F006771DD /* Sheet Create Subdomain.swift in Sources */,
 				F39E683B2D2D67A70002BA96 /* New Schedule Sheet.swift in Sources */,
 				F32FD7182B1E042500723B88 /* Websocket.swift in Sources */,

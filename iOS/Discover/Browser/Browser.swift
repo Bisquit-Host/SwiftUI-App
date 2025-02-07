@@ -14,16 +14,16 @@ struct Browser: View {
             ScrollView(showsIndicators: false) {
                 switch vm.selectedCategory {
                 case .mc:
-                    Text("Minecraft \(vm.mcPlans.count)")
+                    BrowserListMC()
                     
                 case .vds:
-                    Text("VDS \(vm.vdsPlans.count)")
+                    BrowserListVds()
                     
                 case .web:
-                    Text("Web \(vm.webPlans.count)")
+                    BrowserListWeb()
                     
                 case .bot:
-                    Text("Bot \(vm.botPlans.count)")
+                    BrowserListBot()
                 }
                 
                 HStack {
@@ -41,6 +41,7 @@ struct Browser: View {
                 }
             }
         }
+        .environment(vm)
         .navigationTitle("Configurations")
         .toolbarTitleDisplayMode(.inline)
 #if !os(tvOS)
