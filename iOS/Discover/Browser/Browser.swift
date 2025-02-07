@@ -46,6 +46,7 @@ struct Browser: View {
         }
         .environment(vm)
         .navigationTitle("Configurations")
+        .animation(.default, value: vm.selectedCategory)
         .toolbarTitleDisplayMode(.inline)
 #if !os(tvOS)
         .scrollContentBackground(store.transparentSheet ? .hidden : .visible)
