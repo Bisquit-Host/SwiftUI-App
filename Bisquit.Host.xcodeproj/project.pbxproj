@@ -183,6 +183,12 @@
 		F3202C762D5583680030B3CC /* Browser Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202C732D5583680030B3CC /* Browser Parent.swift */; };
 		F3202C772D5583680030B3CC /* Browser Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202C732D5583680030B3CC /* Browser Parent.swift */; };
 		F3202C782D5583680030B3CC /* Browser Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202C732D5583680030B3CC /* Browser Parent.swift */; };
+		F3202C7A2D558B210030B3CC /* Spotlight Index.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202C792D558B210030B3CC /* Spotlight Index.swift */; };
+		F3202C7C2D558B210030B3CC /* Spotlight Index.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202C792D558B210030B3CC /* Spotlight Index.swift */; };
+		F3202C7D2D558B210030B3CC /* Spotlight Index.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202C792D558B210030B3CC /* Spotlight Index.swift */; };
+		F3202C7E2D558B210030B3CC /* Spotlight Index.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202C792D558B210030B3CC /* Spotlight Index.swift */; };
+		F3202C802D558B210030B3CC /* Spotlight Index.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202C792D558B210030B3CC /* Spotlight Index.swift */; };
+		F3202C812D558B210030B3CC /* Spotlight Index.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202C792D558B210030B3CC /* Spotlight Index.swift */; };
 		F320DDA52B704E3C00957D92 /* Preview Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = F320DDA42B704E3C00957D92 /* Preview Property.swift */; };
 		F323BF9F2B20B84100116B97 /* Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F323BF9E2B20B84100116B97 /* Server Card Context Menu.swift */; };
 		F323BFA22B20DC9000116B97 /* Power Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F323BFA12B20DC9000116B97 /* Power Widget.swift */; };
@@ -1549,6 +1555,7 @@
 		F31F31F72D52BD940095DD19 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
 		F31F32002D52DB950095DD19 /* Color Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color Theme.swift"; sourceTree = "<group>"; };
 		F3202C732D5583680030B3CC /* Browser Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Browser Parent.swift"; sourceTree = "<group>"; };
+		F3202C792D558B210030B3CC /* Spotlight Index.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Spotlight Index.swift"; sourceTree = "<group>"; };
 		F320DDA42B704E3C00957D92 /* Preview Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preview Property.swift"; sourceTree = "<group>"; };
 		F323BF9E2B20B84100116B97 /* Server Card Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Context Menu.swift"; sourceTree = "<group>"; };
 		F323BFA12B20DC9000116B97 /* Power Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Widget.swift"; sourceTree = "<group>"; };
@@ -2332,6 +2339,7 @@
 			children = (
 				F31578B229675F5D0016A600 /* Server List.swift */,
 				F352AF962A4EDB1D004AD489 /* Server List VM.swift */,
+				F3202C792D558B210030B3CC /* Spotlight Index.swift */,
 				F337B3A729BC6B5400CC1195 /* Server List Grid.swift */,
 				F3A28AD62C57ADF100010454 /* Demo Server.swift */,
 				F3E2BF0A2C1EC94300B7A6D4 /* Contacts VM.swift */,
@@ -4392,6 +4400,7 @@
 				F3A994AE2A17A9B100530615 /* Map List.swift in Sources */,
 				F3D295132AF396FD00ED43A0 /* Tabs.swift in Sources */,
 				F3C9D84E2B30598000265492 /* Video Player VM.swift in Sources */,
+				F3202C802D558B210030B3CC /* Spotlight Index.swift in Sources */,
 				F3DAD6BE2A4793F8002ED405 /* Circular Gauge.swift in Sources */,
 				F374F7BF2D54922F006771DD /* Sheet Create Subdomain.swift in Sources */,
 				F3FA61572A1F928500A65AE1 /* FileTab Search.swift in Sources */,
@@ -4765,6 +4774,7 @@
 				F30088FD2B3B56240051476C /* User List Parent.swift in Sources */,
 				F389BB752A05B62600911EBF /* Design Settings.swift in Sources */,
 				F3E2BEDC2C1C6B9500B7A6D4 /* Cache List.swift in Sources */,
+				F3202C7D2D558B210030B3CC /* Spotlight Index.swift in Sources */,
 				F389BB7C2A05B66B00911EBF /* App Icon.swift in Sources */,
 				F3A1235C2A6689FA008E3E20 /* User Email.swift in Sources */,
 				F380B3252BD7BA15009062E8 /* Image Picker.swift in Sources */,
@@ -4957,6 +4967,7 @@
 				F3D295D92AF3A34000ED43A0 /* Console Overlay.swift in Sources */,
 				F3D295AB2AF3A0E900ED43A0 /* Cache Limit.swift in Sources */,
 				F3D295472AF39DA000ED43A0 /* Start Page Footer.swift in Sources */,
+				F3202C7E2D558B210030B3CC /* Spotlight Index.swift in Sources */,
 				F3D295462AF39D9500ED43A0 /* Start Page.swift in Sources */,
 				F3D2955A2AF39E4000ED43A0 /* Server List.swift in Sources */,
 				F39E0A9A2C1BA11600C4E906 /* Discover Item.swift in Sources */,
@@ -5179,6 +5190,7 @@
 				F3A7CEEE2C8BB78F00413400 /* Gauge Regular.swift in Sources */,
 				F3AB4A902CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
 				F3A7CEE52C8B9E7500413400 /* Messages VM.swift in Sources */,
+				F3202C812D558B210030B3CC /* Spotlight Index.swift in Sources */,
 				F37CE9C12D555D4400716D28 /* Value Store.swift in Sources */,
 				F3A7CF662C8CA60E00413400 /* Cloud Key Context Menu.swift in Sources */,
 				F37CE9C42D555D9600716D28 /* Server List VM.swift in Sources */,
@@ -5307,6 +5319,7 @@
 				F39E68382D2D67A70002BA96 /* Schedule Context Menu.swift in Sources */,
 				F39E68392D2D67A70002BA96 /* Schedule Card.swift in Sources */,
 				F39E683A2D2D67A70002BA96 /* Schedule VM.swift in Sources */,
+				F3202C7C2D558B210030B3CC /* Spotlight Index.swift in Sources */,
 				F374F7BD2D54922F006771DD /* Sheet Create Subdomain.swift in Sources */,
 				F39E683B2D2D67A70002BA96 /* New Schedule Sheet.swift in Sources */,
 				F32FD7182B1E042500723B88 /* Websocket.swift in Sources */,
@@ -5337,6 +5350,7 @@
 				F30C13102A54606900A7EFF0 /* Nav Extension.swift in Sources */,
 				F300892A2B3C55CD0051476C /* File Permissions Parent.swift in Sources */,
 				F32FD7232B1E065600723B88 /* Network Calls.swift in Sources */,
+				F3202C7A2D558B210030B3CC /* Spotlight Index.swift in Sources */,
 				F3FD9F9E2C651F4800A69314 /* Sensitivity Analyzer.swift in Sources */,
 				F3573BC42C6511040051259E /* Intents.intentdefinition in Sources */,
 				F3DF50CC2B38FDE500206CAE /* Permissions Header.swift in Sources */,

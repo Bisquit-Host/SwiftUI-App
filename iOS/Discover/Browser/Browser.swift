@@ -33,8 +33,10 @@ struct Browser: View {
         }
         .navigationTitle("Configurations")
         .toolbarTitleDisplayMode(.inline)
+#if !os(tvOS)
         .scrollContentBackground(store.transparentSheet ? .hidden : .visible)
         .presentationBackground(store.transparentSheet ? .ultraThinMaterial : .regular)
+#endif
         .task {
             await vm.fetchPlans()
         }
