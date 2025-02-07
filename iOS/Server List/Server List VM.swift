@@ -131,11 +131,10 @@ final class ServerListVM {
             serverListAPI(isAdmin, page: page) { result in
                 switch result {
                 case .success(let model):
-                    if let model = model?.data {
-                        let servers = model.map(\.attributes)
+                    if let model {
+                        let servers = model.data.map(\.attributes)
                         loadedServers.append(contentsOf: servers)
                     }
-                    
                 case .failure(let error):
                     SystemAlert.error(error)
                 }
