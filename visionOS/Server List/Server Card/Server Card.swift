@@ -25,19 +25,21 @@ struct ServerCard: View {
             
             HStack(spacing: 50) {
                 Group {
-                    CircularGauge(
-                        param: "CPU",
-                        value: vm.cpuUsage,
-                        limit: limits.cpu,
-                        isRedacted: vm.isLoading
-                    )
-                    
-                    CircularGauge(
-                        param: "RAM",
-                        value: vm.ramUsage,
-                        limit: limits.memory,
-                        isRedacted: vm.isLoading
-                    )
+                    if vm.stateColor != .red {
+                        CircularGauge(
+                            param: "CPU",
+                            value: vm.cpuUsage,
+                            limit: limits.cpu,
+                            isRedacted: vm.isLoading
+                        )
+                        
+                        CircularGauge(
+                            param: "RAM",
+                            value: vm.ramUsage,
+                            limit: limits.memory,
+                            isRedacted: vm.isLoading
+                        )
+                    }
                     
                     CircularGauge(
                         param: "SSD",
