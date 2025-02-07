@@ -11,14 +11,7 @@ struct AppSettings: View {
         }
         .padding()
         .navigationTitle("Settings")
-#if os(visionOS)
-        .ornament(attachmentAnchor: .scene(.bottom)) {
-#warning("search by ornament and replace everywhere with a modifier")
-            Button("Dismiss") {
-                dismiss()
-            }
-        }
-#endif
+        .ornamentDismissButton()
     }
 }
 

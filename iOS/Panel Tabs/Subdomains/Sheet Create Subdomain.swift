@@ -45,6 +45,7 @@ struct SheetCreateSubdomain: View {
                 }
             }
         }
+        .ornamentDismissButton()
     }
 }
 

@@ -48,6 +48,7 @@ struct Browser: View {
         .navigationTitle("Configurations")
         .animation(.default, value: vm.selectedCategory)
         .toolbarTitleDisplayMode(.inline)
+        .ornamentDismissButton()
 #if !os(tvOS)
         .scrollContentBackground(store.transparentSheet ? .hidden : .visible)
         .presentationBackground(store.transparentSheet ? .ultraThinMaterial : .regular)
@@ -55,13 +56,6 @@ struct Browser: View {
         .refreshableTask {
             await vm.fetchAllPlans()
         }
-#if os(visionOS)
-        .ornament(attachmentAnchor: .scene(.bottom)) {
-            Button("Dismiss") {
-                dismiss()
-            }
-        }
-#endif
     }
 }
 

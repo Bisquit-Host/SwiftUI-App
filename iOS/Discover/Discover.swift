@@ -130,13 +130,7 @@ struct Discover: View {
             .scrollContentBackground(store.transparentSheet ? .hidden : .visible)
             .presentationBackground(store.transparentSheet ? .ultraThinMaterial : .regular)
             .scrollIndicators(.never)
-#if os(visionOS)
-            .ornament(attachmentAnchor: .scene(.bottom)) {
-                Button("Dismiss") {
-                    dismiss()
-                }
-            }
-#endif
+            .ornamentDismissButton()
         }
         .sheet($sheetConfigurations) {
             BrowserParent()

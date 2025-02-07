@@ -269,6 +269,14 @@
 		F3202D392D5633270030B3CC /* Browser List MCRU.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D342D5633270030B3CC /* Browser List MCRU.swift */; };
 		F3202D3A2D5633270030B3CC /* Browser List MCRU.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D342D5633270030B3CC /* Browser List MCRU.swift */; };
 		F3202D3B2D5636660030B3CC /* Tip Suspended Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B89BD2A725710000B5EEF /* Tip Suspended Server.swift */; };
+		F3202D3D2D5639610030B3CC /* Ornament Dismiss Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D3C2D5639610030B3CC /* Ornament Dismiss Button.swift */; };
+		F3202D3E2D5639610030B3CC /* Ornament Dismiss Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D3C2D5639610030B3CC /* Ornament Dismiss Button.swift */; };
+		F3202D3F2D5639610030B3CC /* Ornament Dismiss Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D3C2D5639610030B3CC /* Ornament Dismiss Button.swift */; };
+		F3202D402D5639610030B3CC /* Ornament Dismiss Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D3C2D5639610030B3CC /* Ornament Dismiss Button.swift */; };
+		F3202D412D5639610030B3CC /* Ornament Dismiss Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D3C2D5639610030B3CC /* Ornament Dismiss Button.swift */; };
+		F3202D422D5639610030B3CC /* Ornament Dismiss Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D3C2D5639610030B3CC /* Ornament Dismiss Button.swift */; };
+		F3202D432D5639610030B3CC /* Ornament Dismiss Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D3C2D5639610030B3CC /* Ornament Dismiss Button.swift */; };
+		F3202D442D5639610030B3CC /* Ornament Dismiss Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D3C2D5639610030B3CC /* Ornament Dismiss Button.swift */; };
 		F320DDA52B704E3C00957D92 /* Preview Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = F320DDA42B704E3C00957D92 /* Preview Property.swift */; };
 		F323BF9F2B20B84100116B97 /* Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F323BF9E2B20B84100116B97 /* Server Card Context Menu.swift */; };
 		F323BFA22B20DC9000116B97 /* Power Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F323BFA12B20DC9000116B97 /* Power Widget.swift */; };
@@ -1646,6 +1654,7 @@
 		F3202D1F2D562B990030B3CC /* Browser Card Web.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Browser Card Web.swift"; sourceTree = "<group>"; };
 		F3202D262D562B9A0030B3CC /* Browser Card Bot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Browser Card Bot.swift"; sourceTree = "<group>"; };
 		F3202D342D5633270030B3CC /* Browser List MCRU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Browser List MCRU.swift"; sourceTree = "<group>"; };
+		F3202D3C2D5639610030B3CC /* Ornament Dismiss Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ornament Dismiss Button.swift"; sourceTree = "<group>"; };
 		F320DDA42B704E3C00957D92 /* Preview Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preview Property.swift"; sourceTree = "<group>"; };
 		F323BF9E2B20B84100116B97 /* Server Card Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Context Menu.swift"; sourceTree = "<group>"; };
 		F323BFA12B20DC9000116B97 /* Power Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Widget.swift"; sourceTree = "<group>"; };
@@ -3293,6 +3302,7 @@
 				F3BD76FC2A43C892003E7385 /* Assets.xcassets */,
 				F3CCB1D32CAE8BDA000F8207 /* Bisquit-Host visionOS Info.plist */,
 				F320DDA42B704E3C00957D92 /* Preview Property.swift */,
+				F3202D3C2D5639610030B3CC /* Ornament Dismiss Button.swift */,
 				F3F2BBA62A540C4D00D44CA6 /* Intro */,
 				F3317AEB2A45E25500CA104D /* Guide */,
 				F3A7CF6C2A44FCE700331B51 /* Auth */,
@@ -4286,6 +4296,7 @@
 				F397E74B2B208A3B00DDF1CE /* New Folder.swift in Sources */,
 				F39D285C2A27F474007B12C3 /* File Icon.swift in Sources */,
 				F3CCF5BF2B3454B0005FFF2C /* User View.swift in Sources */,
+				F3202D402D5639610030B3CC /* Ornament Dismiss Button.swift in Sources */,
 				F37080502A2A1EB30046CE70 /* Schedule Card.swift in Sources */,
 				F3464D202A86396600188B0C /* Change Power.swift in Sources */,
 				F3DDD59D2A62AC7C009FDFBF /* Create Backup Button.swift in Sources */,
@@ -4631,6 +4642,7 @@
 				F325F7062A54C4BC00E89EC4 /* System Alerts.swift in Sources */,
 				F3C9D8512B3059E700265492 /* UIVideoPlayer.swift in Sources */,
 				F3202CFC2D562AE10030B3CC /* Browser List Bot.swift in Sources */,
+				F3202D3F2D5639610030B3CC /* Ornament Dismiss Button.swift in Sources */,
 				F3B1196F29A155D8003BB68C /* Suspended Server Card.swift in Sources */,
 				F3D264412A66ABBE005C3777 /* Account VM.swift in Sources */,
 				F39CF3582A50C00C0077996D /* User View.swift in Sources */,
@@ -4688,6 +4700,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F30C13152A5461BA00A7EFF0 /* Cache VM.swift in Sources */,
+				F3202D422D5639610030B3CC /* Ornament Dismiss Button.swift in Sources */,
 				F3AB4A972CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
 				F3499EF52A27553D006101B7 /* Panel VM.swift in Sources */,
 				F3F061D22A73C37500470F7E /* Map View.swift in Sources */,
@@ -4804,6 +4817,7 @@
 				F36D53192A05B7F6007324C6 /* Panel VM.swift in Sources */,
 				F389BB6C2A05B5EA00911EBF /* Cache Settings.swift in Sources */,
 				F389BB792A05B63C00911EBF /* Wide List Button.swift in Sources */,
+				F3202D3E2D5639610030B3CC /* Ornament Dismiss Button.swift in Sources */,
 				F3A1D2322A201C570053261E /* Enums.swift in Sources */,
 				F34076512A37701C0054BDCA /* Console Search.swift in Sources */,
 				F30089332B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */,
@@ -5173,6 +5187,7 @@
 				F35FEB0D2B09F003004DA05D /* API Key.swift in Sources */,
 				F3D2956E2AF39EE800ED43A0 /* Websocket Message.swift in Sources */,
 				F3D2959C2AF3A07200ED43A0 /* Folder File.swift in Sources */,
+				F3202D442D5639610030B3CC /* Ornament Dismiss Button.swift in Sources */,
 				F3BC03B02B1FF2FC0011F98A /* Schedule Context Menu.swift in Sources */,
 				F3D295712AF39EFF00ED43A0 /* Account Parent.swift in Sources */,
 				F3D295E42AF3A39400ED43A0 /* Power Menu.swift in Sources */,
@@ -5392,6 +5407,7 @@
 				F3255E172C9049AF008E04DE /* Settings Button.swift in Sources */,
 				F3A7CF632C8CA5B900413400 /* Cloud Key Card.swift in Sources */,
 				F3A7CF1D2C8C4E4A00413400 /* Browser Hints.swift in Sources */,
+				F3202D432D5639610030B3CC /* Ornament Dismiss Button.swift in Sources */,
 				F3202CE12D562A620030B3CC /* Browser List MC.swift in Sources */,
 				F3A7CF1E2C8C4E4A00413400 /* Browser.swift in Sources */,
 				F3202D392D5633270030B3CC /* Browser List MCRU.swift in Sources */,
@@ -5424,6 +5440,7 @@
 				F3CE5C512D53A5820094BD7B /* Subdomain List.swift in Sources */,
 				F3CE5C522D53A5820094BD7B /* Subdomain Model.swift in Sources */,
 				F3202CE42D562A620030B3CC /* Browser List MC.swift in Sources */,
+				F3202D3D2D5639610030B3CC /* Ornament Dismiss Button.swift in Sources */,
 				F3CE5C532D53A5820094BD7B /* Subdomain Card.swift in Sources */,
 				F32716D82CF6257800F2DC31 /* Backup Context Menu.swift in Sources */,
 				F30B61C82B2905CA00F447B4 /* System Alerts.swift in Sources */,
@@ -5644,6 +5661,7 @@
 				F3464D282A86398000188B0C /* PowerSignalAppEnum.swift in Sources */,
 				F3DF50CA2B38FDDE00206CAE /* User 2Fa.swift in Sources */,
 				F31F32032D52DB950095DD19 /* Color Theme.swift in Sources */,
+				F3202D412D5639610030B3CC /* Ornament Dismiss Button.swift in Sources */,
 				F35B9F5C2A2DC8D60045D014 /* Nav State.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
