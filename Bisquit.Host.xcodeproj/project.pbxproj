@@ -268,6 +268,7 @@
 		F3202D382D5633270030B3CC /* Browser List MCRU.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D342D5633270030B3CC /* Browser List MCRU.swift */; };
 		F3202D392D5633270030B3CC /* Browser List MCRU.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D342D5633270030B3CC /* Browser List MCRU.swift */; };
 		F3202D3A2D5633270030B3CC /* Browser List MCRU.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D342D5633270030B3CC /* Browser List MCRU.swift */; };
+		F3202D3B2D5636660030B3CC /* Tip Suspended Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B89BD2A725710000B5EEF /* Tip Suspended Server.swift */; };
 		F320DDA52B704E3C00957D92 /* Preview Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = F320DDA42B704E3C00957D92 /* Preview Property.swift */; };
 		F323BF9F2B20B84100116B97 /* Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F323BF9E2B20B84100116B97 /* Server Card Context Menu.swift */; };
 		F323BFA22B20DC9000116B97 /* Power Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F323BFA12B20DC9000116B97 /* Power Widget.swift */; };
@@ -5493,6 +5494,7 @@
 				F38928282A441D0C00561CDF /* Dev Settings.swift in Sources */,
 				F389282E2A445E4F00561CDF /* App Settings.swift in Sources */,
 				F37B90782BFEA00300597624 /* Ornament Info Properties.swift in Sources */,
+				F3202D3B2D5636660030B3CC /* Tip Suspended Server.swift in Sources */,
 				F335CA0E2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */,
 				F3F2BBAC2A540E6500D44CA6 /* Cloud Keys.swift in Sources */,
 				F32FD71A2B1E042C00723B88 /* Websocket Delegate.swift in Sources */,

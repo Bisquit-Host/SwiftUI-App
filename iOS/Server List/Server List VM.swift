@@ -12,6 +12,7 @@ final class ServerListVM {
     var sheetGuide = false
     var sheetKeyStorage = false
     var sheetDiscover = false
+    var showBilling = false
     
     // MARK: - Filter/Search
     var searchField = ""
@@ -46,6 +47,12 @@ final class ServerListVM {
     
     var showFilter: Bool {
         hasSuspendedServers || hasMultipleNodes
+    }
+    
+    var hasFrozenServers: Bool {
+        servers.contains {
+            $0.isSuspended
+        }
     }
     
     func updateChecker() async -> Bool {

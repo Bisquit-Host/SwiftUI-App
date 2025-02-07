@@ -8,14 +8,7 @@ struct ServerList: View {
     @Environment(\.openURL) private var openUrl
     
     @State private var searchField = ""
-    @State private var showSafari = false
     @State private var alertUpdate = false
-    
-    private var hasFrozenServers: Bool {
-        vm.servers.contains {
-            $0.isSuspended
-        }
-    }
     
     var body: some View {
         @Bindable var vm = vm
@@ -24,10 +17,10 @@ struct ServerList: View {
         ScrollView(showsIndicators: false) {
             TipView(Tip_ServerCardContextMenu())
             
-            if hasFrozenServers {
+            if vm.hasFrozenServers {
                 TipView(Tip_SuspendedServer()) { action in
                     if action.id == "open-billing" {
-                        showSafari = true
+                        vm.showBilling = true
                     }
                 }
             }
@@ -37,7 +30,7 @@ struct ServerList: View {
         .padding(.horizontal, 4)
         .environment(vm)
         .navigationBarBackButtonHidden()
-        .safariCover($showSafari, url: "https://my.bisquit.host")
+        .safariCover($vm.showBilling, url: "https://my.bisquit.host")
         .appStoreOverlay($alertUpdate, id: "1639409934")
         .background(BisquitFall())
         .refreshableTask {
