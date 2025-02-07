@@ -16,6 +16,9 @@ struct Browser: View {
                 case .mc:
                     BrowserListMC()
                     
+                case .mcru:
+                    BrowserListMCRU()
+                    
                 case .vds:
                     BrowserListVds()
                     

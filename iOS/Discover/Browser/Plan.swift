@@ -2,6 +2,7 @@ import SwiftUI
 
 enum Plan: String, Identifiable, CaseIterable {
     case mc,
+         mcru,
          vds,
          web,
          bot
@@ -9,6 +10,7 @@ enum Plan: String, Identifiable, CaseIterable {
     var path: String {
         switch self {
         case .mc: "minecraft"
+        case .mcru: "minecraft"
         case .vds: "vds"
         case .web: "webhosting"
         case .bot: "bot"
@@ -18,6 +20,7 @@ enum Plan: String, Identifiable, CaseIterable {
     var localized: LocalizedStringKey {
         switch self {
         case .mc: "Minecraft"
+        case .mcru: "Minecraft (Ru)"
         case .vds: "VDS"
         case .web: "Web"
         case .bot: "Bot"

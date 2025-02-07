@@ -3302,6 +3302,9 @@
     "Minecraft" : {
       "shouldTranslate" : false
     },
+    "Minecraft (Ru)" : {
+
+    },
     "Minute" : {
       "localizations" : {
         "nl" : {
@@ -5516,7 +5519,7 @@
       }
     },
     "VDS" : {
-
+      "shouldTranslate" : false
     },
     "Verify" : {
 

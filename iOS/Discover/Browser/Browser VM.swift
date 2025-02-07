@@ -5,6 +5,7 @@ final class BrowserVM {
     var selectedCategory: Plan = .mc
     
     private(set) var mcPlans: [MinecraftPlan] = []
+    private(set) var mcruPlans: [MinecraftPlan] = []
     private(set) var vdsPlans: [VdsPlan] = []
     private(set) var webPlans: [WebPlan] = []
     private(set) var botPlans: [BotPlan] = []
@@ -19,7 +20,14 @@ final class BrowserVM {
     }
     
     func fetchAllPlans() async {
-        mcPlans = await fetchPlans(.mc, as: MinecraftPlan.self)
+        mcPlans = await fetchPlans(.mc, as: MinecraftPlan.self).filter {
+            $0.location == "GERMANY"
+        }
+        
+        mcruPlans = await fetchPlans(.mc, as: MinecraftPlan.self).filter {
+            $0.location == "RUSSIA"
+        }
+        
         vdsPlans = await fetchPlans(.vds, as: VdsPlan.self)
         webPlans = await fetchPlans(.web, as: WebPlan.self)
         botPlans = await fetchPlans(.bot, as: BotPlan.self)
