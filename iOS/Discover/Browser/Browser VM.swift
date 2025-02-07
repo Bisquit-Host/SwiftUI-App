@@ -9,6 +9,15 @@ final class BrowserVM {
     private(set) var webPlans: [WebPlan] = []
     private(set) var botPlans: [BotPlan] = []
     
+    func currencyImage(_ currency: String) -> String {
+        switch currency {
+        case "₽": "rublesign.square"
+        case "€": "eurosign.square"
+        case "$": "dollarsign.square"
+        default:  "exclamationmark.triangle"
+        }
+    }
+    
     func fetchAllPlans() async {
         mcPlans = await fetchPlans(.mc, as: MinecraftPlan.self)
         vdsPlans = await fetchPlans(.vds, as: VdsPlan.self)
@@ -34,15 +43,6 @@ final class BrowserVM {
         } catch {
             print("Error:", error)
             return []
-        }
-    }
-    
-    func currencyImage(_ currency: String) -> String {
-        switch currency {
-        case "₽": "rublesign.square"
-        case "€": "eurosign.square"
-        case "$": "dollarsign.square"
-        default:  "exclamationmark.triangle"
         }
     }
 }
