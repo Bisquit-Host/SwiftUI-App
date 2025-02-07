@@ -178,6 +178,11 @@
 		F31F32062D52DB950095DD19 /* Color Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F32002D52DB950095DD19 /* Color Theme.swift */; };
 		F31F32072D52DB950095DD19 /* Color Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F32002D52DB950095DD19 /* Color Theme.swift */; };
 		F31F32082D52DB950095DD19 /* Color Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F32002D52DB950095DD19 /* Color Theme.swift */; };
+		F3202C742D5583680030B3CC /* Browser Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202C732D5583680030B3CC /* Browser Parent.swift */; };
+		F3202C752D5583680030B3CC /* Browser Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202C732D5583680030B3CC /* Browser Parent.swift */; };
+		F3202C762D5583680030B3CC /* Browser Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202C732D5583680030B3CC /* Browser Parent.swift */; };
+		F3202C772D5583680030B3CC /* Browser Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202C732D5583680030B3CC /* Browser Parent.swift */; };
+		F3202C782D5583680030B3CC /* Browser Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202C732D5583680030B3CC /* Browser Parent.swift */; };
 		F320DDA52B704E3C00957D92 /* Preview Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = F320DDA42B704E3C00957D92 /* Preview Property.swift */; };
 		F323BF9F2B20B84100116B97 /* Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F323BF9E2B20B84100116B97 /* Server Card Context Menu.swift */; };
 		F323BFA22B20DC9000116B97 /* Power Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F323BFA12B20DC9000116B97 /* Power Widget.swift */; };
@@ -1543,6 +1548,7 @@
 		F31D0BB42A2573E200119D07 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		F31F31F72D52BD940095DD19 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
 		F31F32002D52DB950095DD19 /* Color Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color Theme.swift"; sourceTree = "<group>"; };
+		F3202C732D5583680030B3CC /* Browser Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Browser Parent.swift"; sourceTree = "<group>"; };
 		F320DDA42B704E3C00957D92 /* Preview Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preview Property.swift"; sourceTree = "<group>"; };
 		F323BF9E2B20B84100116B97 /* Server Card Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Context Menu.swift"; sourceTree = "<group>"; };
 		F323BFA12B20DC9000116B97 /* Power Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Widget.swift"; sourceTree = "<group>"; };
@@ -2650,6 +2656,7 @@
 		F3565B7C295E5F9E0092874A /* Browser */ = {
 			isa = PBXGroup;
 			children = (
+				F3202C732D5583680030B3CC /* Browser Parent.swift */,
 				F31BA58E295901B60006D126 /* Browser.swift */,
 				F31BA590295901C00006D126 /* Browser VM.swift */,
 				F3521E2A29F5C13900132CCB /* Browser Card.swift */,
@@ -4153,6 +4160,7 @@
 				F3AB4A952CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
 				F3BC03C22B2063820011F98A /* Debug Key.swift in Sources */,
 				F37266CF29D96ED9005FD103 /* Formatters.swift in Sources */,
+				F3202C782D5583680030B3CC /* Browser Parent.swift in Sources */,
 				F3F3FC792B21E332007C635B /* QR Code View.swift in Sources */,
 				F342FAB02B2E08C100854270 /* Log VM.swift in Sources */,
 				F30C13192A54626D00A7EFF0 /* Bisquit.Host App.swift in Sources */,
@@ -4312,6 +4320,7 @@
 				F3924EDF29A2333F00C4CC77 /* Settings VM.swift in Sources */,
 				F33001442A4CF06D0063FE0F /* Apikey Card.swift in Sources */,
 				F3BC03C12B2063820011F98A /* Debug Key.swift in Sources */,
+				F3202C772D5583680030B3CC /* Browser Parent.swift in Sources */,
 				F31BA59D295902280006D126 /* Info Tab.swift in Sources */,
 				F3CE5C432D538FE60094BD7B /* Subdomain List.swift in Sources */,
 				F37A36782A35180100517EFC /* Power Menu.swift in Sources */,
@@ -4830,6 +4839,7 @@
 				F34EB0962A4A75E70034A68A /* Intro Model.swift in Sources */,
 				F35B89C32A725CFC000B5EEF /* Tip Suspended Server.swift in Sources */,
 				F35FEB0C2B09F003004DA05D /* API Key.swift in Sources */,
+				F3202C742D5583680030B3CC /* Browser Parent.swift in Sources */,
 				F3A28AD92C57ADF100010454 /* Demo Server.swift in Sources */,
 				F3D264422A66ABBE005C3777 /* Account VM.swift in Sources */,
 				F36D53382A05B8C5007324C6 /* Folder Path VM.swift in Sources */,
@@ -4872,6 +4882,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F39E0A942C1BA06C00C4E906 /* Discover Card.swift in Sources */,
+				F3202C752D5583680030B3CC /* Browser Parent.swift in Sources */,
 				F3D295B72AF3A16600ED43A0 /* App Icon Picker.swift in Sources */,
 				F3D2953F2AF39D6B00ED43A0 /* Network VM.swift in Sources */,
 				F3D295F12AF3A52700ED43A0 /* Create Button.swift in Sources */,
@@ -5142,6 +5153,7 @@
 				F3255E1B2C904A3C008E04DE /* Account Parent.swift in Sources */,
 				F3A7CEED2C8BB78A00413400 /* Server Card.swift in Sources */,
 				F3A7CF0A2C8BBCD400413400 /* Formatters.swift in Sources */,
+				F3202C762D5583680030B3CC /* Browser Parent.swift in Sources */,
 				F3A7CF092C8BBC7A00413400 /* Carousel Button Style.swift in Sources */,
 				F3A7CEE12C8B9BB700413400 /* App Container.swift in Sources */,
 				F3A7CEF02C8BB79B00413400 /* Server Name.swift in Sources */,

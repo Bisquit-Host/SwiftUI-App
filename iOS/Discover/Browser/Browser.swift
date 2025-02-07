@@ -1,39 +1,40 @@
 import ScrechKit
 
 struct Browser: View {
-    private var vm = BrowserVM()
+    @State private var vm = BrowserVM()
+    @EnvironmentObject private var store: ValueStore
     
     var body: some View {
-        NavigationView {
-            VStack {
-                BrowserTopbar()
-                    .environment(vm)
+        VStack {
+            BrowserTopbar()
+                .environment(vm)
+            
+            ScrollView(showsIndicators: false) {
+                ForEach(vm.plans) { plan in
+                    BrowserCard(plan)
+                }
                 
-                ScrollView(showsIndicators: false) {
-                    ForEach(vm.plans) { plan in
-                        BrowserCard(plan)
+                if !vm.plans.isEmpty {
+                    HStack {
+                        BrowserSpec("CPU", icon: "cpu")
+                        
+                        BrowserSpec("RAM", icon: "memorychip")
+                        
+                        BrowserSpec("SSD", icon: "internaldrive")
                     }
                     
-                    if !vm.plans.isEmpty {
-                        HStack {
-                            BrowserSpec("CPU", icon: "cpu")
-                            
-                            BrowserSpec("RAM", icon: "memorychip")
-                            
-                            BrowserSpec("SSD", icon: "internaldrive")
-                        }
+                    HStack {
+                        BrowserSpec("Websites", icon: "macwindow.on.rectangle")
                         
-                        HStack {
-                            BrowserSpec("Websites", icon: "macwindow.on.rectangle")
-                            
-                            BrowserSpec("MySQL Databases", icon: "server.rack")
-                        }
+                        BrowserSpec("MySQL Databases", icon: "server.rack")
                     }
                 }
             }
-            .navigationTitle("Configurations")
-            .toolbarTitleDisplayMode(.inline)
         }
+        .navigationTitle("Configurations")
+        .toolbarTitleDisplayMode(.inline)
+        .scrollContentBackground(store.transparentSheet ? .hidden : .visible)
+        .presentationBackground(store.transparentSheet ? .ultraThinMaterial : .regular)
         .task {
             await vm.fetchPlans()
         }
@@ -42,4 +43,5 @@ struct Browser: View {
 
 #Preview {
     Browser()
+        .environmentObject(ValueStore())
 }

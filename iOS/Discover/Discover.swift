@@ -130,7 +130,7 @@ struct Discover: View {
             .scrollIndicators(.never)
         }
         .sheet($sheetConfigurations) {
-            Browser()
+            BrowserParent()
         }
     }
 }

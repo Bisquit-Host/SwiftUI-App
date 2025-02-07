@@ -129,7 +129,7 @@ struct StartPage: View {
             Support()
         }
         .sheet($vm.sheetBrowsePlans) {
-            Browser()
+            BrowserParent()
         }
         .sheet($vm.sheetCloudKeys) {
             CloudKeys($vm.apiKey)
