@@ -2,30 +2,33 @@ import ScrechKit
 
 @Observable
 final class BrowserVM {
-    var filterRule = "Minecraft"
+    var selectedCategory: Plan = .mc
     
-    private(set) var plans: [MinecraftPlan] = []
+    private(set) var mcPlans: [MinecraftPlan] = []
+    private(set) var vdsPlans: [VdsPlan] = []
+    private(set) var webPlans: [WebPlan] = []
+    private(set) var botPlans: [BotPlan] = []
     
-    let categories = [
-        "Minecraft",
-        "VDS",
-        "Web",
-        "Bot"
-    ]
+    func fetchAllPlans() async {
+        mcPlans = await fetchPlans(.mc, as: MinecraftPlan.self)
+        vdsPlans = await fetchPlans(.vds, as: VdsPlan.self)
+        webPlans = await fetchPlans(.web, as: WebPlan.self)
+        botPlans = await fetchPlans(.bot, as: BotPlan.self)
+    }
     
-    func fetchPlans() async -> [MinecraftPlan] {
+    private func fetchPlans<T: Decodable>(_ category: Plan, as type: T.Type) async -> [T] {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         
         guard
-            let url = URL(string: "https://plans.bisquit.host/plans/minecraft")
+            let url = URL(string: "https://plans.bisquit.host/plans/" + category.path)
         else {
             return []
         }
         
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
-            let fetchedPlans = try decoder.decode([MinecraftPlan].self, from: data)
+            let fetchedPlans = try decoder.decode([T].self, from: data)
             
             return fetchedPlans
         } catch {

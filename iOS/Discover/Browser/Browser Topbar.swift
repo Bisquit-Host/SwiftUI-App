@@ -6,9 +6,9 @@ struct BrowserTopbar: View {
     var body: some View {
         @Bindable var vm = vm
         
-        Picker("Category", selection: $vm.filterRule) {
-            ForEach(vm.categories, id: \.self) { category in
-                Text(category)
+        Picker("Category", selection: $vm.selectedCategory) {
+            ForEach(Plan.allCases) { category in
+                Text(category.localized)
                     .tag(category)
             }
         }

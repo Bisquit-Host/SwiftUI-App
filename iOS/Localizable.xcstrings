@@ -816,6 +816,12 @@
       },
       "shouldTranslate" : false
     },
+    "Bot" : {
+
+    },
+    "Bot %lld" : {
+
+    },
     "Cache" : {
       "localizations" : {
         "nl" : {
@@ -3299,6 +3305,9 @@
     "Minecraft" : {
       "shouldTranslate" : false
     },
+    "Minecraft %lld" : {
+
+    },
     "Minute" : {
       "localizations" : {
         "nl" : {
@@ -5512,6 +5521,12 @@
         }
       }
     },
+    "VDS" : {
+
+    },
+    "VDS %lld" : {
+
+    },
     "Verify" : {
 
     },
@@ -5574,6 +5589,9 @@
           }
         }
       }
+    },
+    "Web %lld" : {
+
     },
     "Web panel" : {
       "localizations" : {

@@ -12,24 +12,32 @@ struct Browser: View {
                 .environment(vm)
             
             ScrollView(showsIndicators: false) {
-                ForEach(vm.plans) { plan in
-                    BrowserCard(plan)
+                switch vm.selectedCategory {
+                case .mc:
+                    Text("Minecraft \(vm.mcPlans.count)")
+                    
+                case .vds:
+                    Text("VDS \(vm.vdsPlans.count)")
+                    
+                case .web:
+                    Text("Web \(vm.webPlans.count)")
+                    
+                case .bot:
+                    Text("Bot \(vm.botPlans.count)")
                 }
                 
-                if !vm.plans.isEmpty {
-                    HStack {
-                        BrowserSpec("CPU", icon: "cpu")
-                        
-                        BrowserSpec("RAM", icon: "memorychip")
-                        
-                        BrowserSpec("SSD", icon: "internaldrive")
-                    }
+                HStack {
+                    BrowserSpec("CPU", icon: "cpu")
                     
-                    HStack {
-                        BrowserSpec("Websites", icon: "macwindow.on.rectangle")
-                        
-                        BrowserSpec("MySQL Databases", icon: "server.rack")
-                    }
+                    BrowserSpec("RAM", icon: "memorychip")
+                    
+                    BrowserSpec("SSD", icon: "internaldrive")
+                }
+                
+                HStack {
+                    BrowserSpec("Websites", icon: "macwindow.on.rectangle")
+                    
+                    BrowserSpec("MySQL Databases", icon: "server.rack")
                 }
             }
         }
@@ -39,8 +47,8 @@ struct Browser: View {
         .scrollContentBackground(store.transparentSheet ? .hidden : .visible)
         .presentationBackground(store.transparentSheet ? .ultraThinMaterial : .regular)
 #endif
-        .task {
-            await vm.fetchPlans()
+        .refreshableTask {
+            await vm.fetchAllPlans()
         }
 #if os(visionOS)
         .ornament(attachmentAnchor: .scene(.bottom)) {

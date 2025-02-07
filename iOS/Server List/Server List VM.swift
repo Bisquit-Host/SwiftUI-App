@@ -69,9 +69,6 @@ final class ServerListVM {
             return false
         }
         
-        print(currentVersion)
-        print(appStoreVersion)
-        
         return currentVersion.compare(appStoreVersion, options: .numeric) == .orderedAscending
     }
     
@@ -115,7 +112,7 @@ final class ServerListVM {
             }
         }
     }
-        
+    
     private func fetchAllPages(_ isAdmin: Bool, totalPages: Int, currentServers: [ServerAttributes]) {
         var loadedServers = currentServers
         let group = DispatchGroup()
