@@ -96,7 +96,6 @@
 		F30B61CD2B2907CA00F447B4 /* Debug Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BC03C02B2063820011F98A /* Debug Key.swift */; };
 		F30B61CE2B2907CA00F447B4 /* Debug Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BC03C02B2063820011F98A /* Debug Key.swift */; };
 		F30C12F82A5451C100A7EFF0 /* Server List VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F352AF962A4EDB1D004AD489 /* Server List VM.swift */; };
-		F30C12FB2A54536800A7EFF0 /* Auth Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30C12F92A54536800A7EFF0 /* Auth Page.swift */; };
 		F30C12FD2A54546900A7EFF0 /* App Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5672959006F0006D126 /* App Container.swift */; };
 		F30C12FE2A54546900A7EFF0 /* App Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5672959006F0006D126 /* App Container.swift */; };
 		F30C13002A54593700A7EFF0 /* Login Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BF6F242959FC470059F39B /* Login Container.swift */; };
@@ -1530,7 +1529,6 @@
 		F304498629E98AE4006DC0C7 /* Bisquit.Host.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bisquit.Host.entitlements; sourceTree = "<group>"; };
 		F304498929E990E9006DC0C7 /* Cloud Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cloud Keys.swift"; sourceTree = "<group>"; };
 		F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List Footer.swift"; sourceTree = "<group>"; };
-		F30C12F92A54536800A7EFF0 /* Auth Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auth Page.swift"; sourceTree = "<group>"; };
 		F30C13112A54609000A7EFF0 /* Server List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List.swift"; sourceTree = "<group>"; };
 		F310A2EF2A56AF86001AF45F /* Network VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network VM.swift"; sourceTree = "<group>"; };
 		F3116F252A33E142001F067C /* Folder File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Folder File.swift"; sourceTree = "<group>"; };
@@ -2109,7 +2107,6 @@
 				F3000E0B295A341100ABD30A /* Assets.xcassets */,
 				F3796563295C51C80074CA3D /* Progress Bar.swift */,
 				F3796565295C51FF0074CA3D /* Gauge TV.swift */,
-				F30C12F92A54536800A7EFF0 /* Auth Page.swift */,
 				F37061C429774846009B4067 /* Navigation */,
 				F3B86000295B196F00CE60C7 /* Intro */,
 				F3796571295C80740074CA3D /* Guide */,
@@ -4294,7 +4291,6 @@
 				F3CCF5BD2B3454AA005FFF2C /* User List.swift in Sources */,
 				F342FAB52B2E499300854270 /* Log List.swift in Sources */,
 				F39D28552A27EE88007B12C3 /* Panel View.swift in Sources */,
-				F30C12FB2A54536800A7EFF0 /* Auth Page.swift in Sources */,
 				F3D49DB32B2330C30033B52E /* Overview.swift in Sources */,
 				F3CCF5BE2B3454AD005FFF2C /* User Card.swift in Sources */,
 				F32FD7222B1E065600723B88 /* Network Calls.swift in Sources */,
