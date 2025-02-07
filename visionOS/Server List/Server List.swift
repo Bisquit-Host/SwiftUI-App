@@ -14,7 +14,6 @@ struct ServerList: View {
                 ServerCardParent(server)
             }
         }
-        .padding(.horizontal, 4)
         .navigationTitle("Server List")
         .navigationBarBackButtonHidden()
         //        #warning("Uncomment")
