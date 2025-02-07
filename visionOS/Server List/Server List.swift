@@ -27,6 +27,7 @@ struct ServerList: View {
         }
         .navigationTitle("Server List")
         .safariCover($vm.showBilling, url: "https://my.bisquit.host")
+        .appStoreOverlay($vm.alertUpdate, id: "1639409934")
         .navigationBarBackButtonHidden()
         //        #warning("Uncomment")
         //        .toolbar {
@@ -49,6 +50,11 @@ struct ServerList: View {
         }
         .sheet($vm.sheetDiscover) {
             Discover()
+        }
+        .task {
+            if await vm.updateChecker() {
+                vm.alertUpdate = true
+            }
         }
         .toolbar {
             ToolbarItemGroup(placement: .topBarTrailing) {

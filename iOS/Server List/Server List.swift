@@ -8,7 +8,6 @@ struct ServerList: View {
     @Environment(\.openURL) private var openUrl
     
     @State private var searchField = ""
-    @State private var alertUpdate = false
     
     var body: some View {
         @Bindable var vm = vm
@@ -31,7 +30,7 @@ struct ServerList: View {
         .environment(vm)
         .navigationBarBackButtonHidden()
         .safariCover($vm.showBilling, url: "https://my.bisquit.host")
-        .appStoreOverlay($alertUpdate, id: "1639409934")
+        .appStoreOverlay($vm.alertUpdate, id: "1639409934")
         .background(BisquitFall())
         .refreshableTask {
             vm.fetchServers(store.adminServerList)
@@ -83,7 +82,7 @@ struct ServerList: View {
         }
         .task {
             if await vm.updateChecker() {
-                alertUpdate = true
+                vm.alertUpdate = true
             }
         }
         .alert("Unknown Error", isPresented: $vm.alertError) {
