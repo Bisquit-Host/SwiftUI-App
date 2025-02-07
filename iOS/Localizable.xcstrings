@@ -104,6 +104,7 @@
       }
     },
     "%@ Settings" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
