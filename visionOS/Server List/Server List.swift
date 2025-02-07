@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct ServerList: View {
     @Environment(ServerListVM.self) private var vm
@@ -27,14 +27,24 @@ struct ServerList: View {
         //            //                vm.fetchServers(store.adminServerList)
         //            //            }
         //        }
+        .refreshableTask {
+            vm.fetchServers(store.adminServerList)
+        }
         .sheet($sheetSettings) {
             AppSettings()
         }
         .sheet($vm.sheetKeyStorage) {
             CloudKeys($vm.apiKey)
         }
-        .refreshableTask {
-            vm.fetchServers(store.adminServerList)
+        .sheet($vm.sheetDiscover) {
+            Discover()
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                SFButton("sparkles") {
+                    vm.sheetDiscover = true
+                }
+            }
         }
     }
 }

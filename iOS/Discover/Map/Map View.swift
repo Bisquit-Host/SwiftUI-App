@@ -13,7 +13,7 @@ struct MapView: View {
     @State private var showName = false
     //    @State private var sheetList = false
     
-    private let places: [MKMapItem] = [
+    private let places = [
         MKMapItem(placemark: .init(coordinate: .cafe)),
         MKMapItem(placemark: .init(coordinate: .church)),
         MKMapItem(placemark: .init(coordinate: .village))

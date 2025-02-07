@@ -4,6 +4,8 @@ struct Browser: View {
     @State private var vm = BrowserVM()
     @EnvironmentObject private var store: ValueStore
     
+    @Environment(\.dismiss) private var dismiss
+    
     var body: some View {
         VStack {
             BrowserTopbar()
@@ -40,6 +42,13 @@ struct Browser: View {
         .task {
             await vm.fetchPlans()
         }
+#if os(visionOS)
+        .ornament(attachmentAnchor: .scene(.bottom)) {
+            Button("Dismiss") {
+                dismiss()
+            }
+        }
+#endif
     }
 }
 

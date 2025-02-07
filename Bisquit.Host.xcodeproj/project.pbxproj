@@ -189,6 +189,22 @@
 		F3202C7E2D558B210030B3CC /* Spotlight Index.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202C792D558B210030B3CC /* Spotlight Index.swift */; };
 		F3202C802D558B210030B3CC /* Spotlight Index.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202C792D558B210030B3CC /* Spotlight Index.swift */; };
 		F3202C812D558B210030B3CC /* Spotlight Index.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202C792D558B210030B3CC /* Spotlight Index.swift */; };
+		F3202C822D5590CC0030B3CC /* Discover.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA592295901D00006D126 /* Discover.swift */; };
+		F3202C832D5590CC0030B3CC /* Discover Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E0A972C1BA11600C4E906 /* Discover Item.swift */; };
+		F3202C842D5590CC0030B3CC /* Discover Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E0A932C1BA06C00C4E906 /* Discover Card.swift */; };
+		F3202C852D5590D30030B3CC /* Browser VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA590295901C00006D126 /* Browser VM.swift */; };
+		F3202C862D5590D30030B3CC /* Browser Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3DBD029B8007B00096115 /* Browser Topbar.swift */; };
+		F3202C872D5590D30030B3CC /* Browser Hints.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A1D2372A2024E10053261E /* Browser Hints.swift */; };
+		F3202C882D5590D30030B3CC /* Plans Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B2A0129FFD6AB006E5FD2 /* Plans Model.swift */; };
+		F3202C892D5590D30030B3CC /* Browser Sticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E8415529FECB6800609DA3 /* Browser Sticker.swift */; };
+		F3202C8A2D5590D30030B3CC /* Browser Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3521E2A29F5C13900132CCB /* Browser Card.swift */; };
+		F3202C8B2D5590D30030B3CC /* Browser Spec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A1D2342A201CBB0053261E /* Browser Spec.swift */; };
+		F3202C8C2D5590D30030B3CC /* Browser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA58E295901B60006D126 /* Browser.swift */; };
+		F3202C8D2D5590D30030B3CC /* Browser Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202C732D5583680030B3CC /* Browser Parent.swift */; };
+		F3202C8F2D5590E20030B3CC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F3202C8E2D5590E20030B3CC /* Kingfisher */; };
+		F3202C902D5590FE0030B3CC /* Map VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A92A177ED100530615 /* Map VM.swift */; };
+		F3202C912D5590FE0030B3CC /* Map List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994AD2A17A9B100530615 /* Map List.swift */; };
+		F3202C922D5590FE0030B3CC /* Map View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A72A177DA400530615 /* Map View.swift */; };
 		F320DDA52B704E3C00957D92 /* Preview Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = F320DDA42B704E3C00957D92 /* Preview Property.swift */; };
 		F323BF9F2B20B84100116B97 /* Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F323BF9E2B20B84100116B97 /* Server Card Context Menu.swift */; };
 		F323BFA22B20DC9000116B97 /* Power Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F323BFA12B20DC9000116B97 /* Power Widget.swift */; };
@@ -2013,6 +2029,7 @@
 			files = (
 				F342FAA62B2C615A00854270 /* Pow in Frameworks */,
 				F30B61CA2B2905E100F447B4 /* AlertKit in Frameworks */,
+				F3202C8F2D5590E20030B3CC /* Kingfisher in Frameworks */,
 				F38928372A4460B200561CDF /* ScrechKit in Frameworks */,
 				F33C2AC32C691735002FD150 /* QuickLooking in Frameworks */,
 				F32716DB2CF628CB00F2DC31 /* SafariCover in Frameworks */,
@@ -3809,6 +3826,7 @@
 				F342FAA52B2C615A00854270 /* Pow */,
 				F33C2AC22C691735002FD150 /* QuickLooking */,
 				F32716DA2CF628CB00F2DC31 /* SafariCover */,
+				F3202C8E2D5590E20030B3CC /* Kingfisher */,
 			);
 			productName = "Bisquit.Host visionOS";
 			productReference = F3BD76F22A43C890003E7385 /* visionOS.app */;
@@ -5248,6 +5266,9 @@
 				F30B61C82B2905CA00F447B4 /* System Alerts.swift in Sources */,
 				F32F43FF2B75450800C9470B /* User Card.swift in Sources */,
 				F31F31F82D52BD940095DD19 /* System.swift in Sources */,
+				F3202C902D5590FE0030B3CC /* Map VM.swift in Sources */,
+				F3202C912D5590FE0030B3CC /* Map List.swift in Sources */,
+				F3202C922D5590FE0030B3CC /* Map View.swift in Sources */,
 				F3AB4A922CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
 				F35081AF2AF30E2B00835CC0 /* Tip Cloud Keys.swift in Sources */,
 				F37B907A2BFEA00300597624 /* Ornament Info Settings.swift in Sources */,
@@ -5267,6 +5288,15 @@
 				F3FD9FA12C65217C00A69314 /* Quick Look View.swift in Sources */,
 				F3464D2E2A863A6200188B0C /* Create Backup.swift in Sources */,
 				F3317AEE2A45E33300CA104D /* Formatters.swift in Sources */,
+				F3202C852D5590D30030B3CC /* Browser VM.swift in Sources */,
+				F3202C862D5590D30030B3CC /* Browser Topbar.swift in Sources */,
+				F3202C872D5590D30030B3CC /* Browser Hints.swift in Sources */,
+				F3202C882D5590D30030B3CC /* Plans Model.swift in Sources */,
+				F3202C892D5590D30030B3CC /* Browser Sticker.swift in Sources */,
+				F3202C8A2D5590D30030B3CC /* Browser Card.swift in Sources */,
+				F3202C8B2D5590D30030B3CC /* Browser Spec.swift in Sources */,
+				F3202C8C2D5590D30030B3CC /* Browser.swift in Sources */,
+				F3202C8D2D5590D30030B3CC /* Browser Parent.swift in Sources */,
 				F32716DC2CF62C0D00F2DC31 /* Backup Card.swift in Sources */,
 				F32716D92CF6257F00F2DC31 /* Backup Context Menu Control Group.swift in Sources */,
 				F39E68332D2D63980002BA96 /* Panel Ornament Power.swift in Sources */,
@@ -5302,6 +5332,9 @@
 				F3F2BBAC2A540E6500D44CA6 /* Cloud Keys.swift in Sources */,
 				F32FD71A2B1E042C00723B88 /* Websocket Delegate.swift in Sources */,
 				F38928252A441B5D00561CDF /* Server Settings.swift in Sources */,
+				F3202C822D5590CC0030B3CC /* Discover.swift in Sources */,
+				F3202C832D5590CC0030B3CC /* Discover Item.swift in Sources */,
+				F3202C842D5590CC0030B3CC /* Discover Card.swift in Sources */,
 				F39E682F2D2D61680002BA96 /* Database Context Menu.swift in Sources */,
 				F39E68302D2D61680002BA96 /* Database List.swift in Sources */,
 				F39E68312D2D61680002BA96 /* Database Card.swift in Sources */,
@@ -6888,6 +6921,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F318FE432A15925200DE0A5C /* XCRemoteSwiftPackageReference "swift-collections" */;
 			productName = OrderedCollections;
+		};
+		F3202C8E2D5590E20030B3CC /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F37266E529D9EF25005FD103 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 		F32675852A01B69600A026DC /* SafariCover */ = {
 			isa = XCSwiftPackageProductDependency;

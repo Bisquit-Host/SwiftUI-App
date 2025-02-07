@@ -4,6 +4,8 @@ import SafariCover
 struct Discover: View {
     @EnvironmentObject private var store: ValueStore
     
+    @Environment(\.dismiss) private var dismiss
+    
     @State private var sheetConfigurations = false
     
     var body: some View {
@@ -128,6 +130,13 @@ struct Discover: View {
             .scrollContentBackground(store.transparentSheet ? .hidden : .visible)
             .presentationBackground(store.transparentSheet ? .ultraThinMaterial : .regular)
             .scrollIndicators(.never)
+#if os(visionOS)
+            .ornament(attachmentAnchor: .scene(.bottom)) {
+                Button("Dismiss") {
+                    dismiss()
+                }
+            }
+#endif
         }
         .sheet($sheetConfigurations) {
             BrowserParent()
