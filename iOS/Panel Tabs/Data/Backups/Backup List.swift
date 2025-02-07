@@ -48,6 +48,6 @@ struct BackupList: View {
 #Preview {
     List {
         BackupList(sampleJSON(.serverListAttributes))
-            .environment(BackupVM(""))
     }
+    .environment(BackupVM(""))
 }
