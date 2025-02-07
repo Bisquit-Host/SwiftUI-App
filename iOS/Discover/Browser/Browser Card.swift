@@ -37,68 +37,73 @@ struct BrowserCard: View {
     }
     
     var body: some View {
-        ZStack {
-            KFImage(getImageUrl("plans/\(plan.name)"))
-                .placeholder {
-                    Text("Soon there will be an art here as well")
-                        .padding(.horizontal)
-                        .footnote()
-                        .monospaced()
-                }
-                .resizable()
-                .brightness(scheme == .dark ? -0.1 : 0)
+        Button {
             
-            KFImage(getImageUrl("plans/\(plan.name)"))
-                .resizable()
-                .mask(alignment: .topLeading) {
-                    Text(plan.name)
-                        .title()
-                        .padding(.horizontal, 14)
-                        .padding(.vertical, 10)
-                        .background()
-                        .cornerRadius(16)
-                }
-                .blur(radius: 4)
-                .brightness(scheme == .dark ? -0.1 : 0)
-            
-            HStack {
-                VStack(alignment: .leading) {
-                    Text(plan.displayname)
-                        .title(.semibold)
-                        .foregroundStyle(.white)
-                        .shadow(color: .black, radius: 5)
+        } label: {
+            ZStack {
+                KFImage(getImageUrl("plans/\(plan.name)"))
+                    .placeholder {
+                        Text("Soon there will be an art here as well")
+                            .padding(.horizontal)
+                            .footnote()
+                            .monospaced()
+                    }
+                    .resizable()
+                    .brightness(scheme == .dark ? -0.1 : 0)
+                
+                KFImage(getImageUrl("plans/\(plan.name)"))
+                    .resizable()
+                    .mask(alignment: .topLeading) {
+                        Text(plan.name)
+                            .title()
+                            .padding(.horizontal, 14)
+                            .padding(.vertical, 10)
+                            .background()
+                            .cornerRadius(16)
+                    }
+                    .blur(radius: 4)
+                    .brightness(scheme == .dark ? -0.1 : 0)
+                
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text(plan.displayname)
+                            .title(.semibold)
+                            .foregroundStyle(.white)
+                            .shadow(color: .black, radius: 5)
+                        
+                        Spacer()
+                        
+                        HStack {
+                            BrowserSpec("\(plan.cpu)x", icon: "macwindow.on.rectangle")
+                            
+                            BrowserSpec("\(Int(plan.ram / 1_000_000_000))x", icon: "server.rack")
+                            
+                            BrowserSpec(formatBytes(plan.disk, countStyle: .decimal), icon: "internaldrive")
+                            
+                            //                        Spacer()
+                            //
+                            //                        Text(customRound(price) + ValueStore().preferredCurrency)
+                            //                            .subheadline(.bold)
+                            //                            .padding(.vertical, 4)
+                            //                            .padding(.horizontal, 10)
+                            //                            .foregroundStyle(.white)
+                            //     .background(.blue, in: .capsule)
+                        }
+                    }
                     
                     Spacer()
-                    
-                    HStack {
-                        BrowserSpec("\(plan.cpu)x", icon: "macwindow.on.rectangle")
-                        
-                        BrowserSpec("\(Int(plan.ram / 1_000_000_000))x", icon: "server.rack")
-                        
-                        BrowserSpec(formatBytes(plan.disk, countStyle: .decimal), icon: "internaldrive")
-                        
-                        //                        Spacer()
-                        //
-                        //                        Text(customRound(price) + ValueStore().preferredCurrency)
-                        //                            .subheadline(.bold)
-                        //                            .padding(.vertical, 4)
-                        //                            .padding(.horizontal, 10)
-                        //                            .foregroundStyle(.white)
-                        //     .background(.blue, in: .capsule)
-                    }
                 }
-                
-                Spacer()
+                .padding()
             }
-            .padding()
-        }
 #if os(tvOS)
-        .frame(height: 500)
+            .frame(height: 500)
 #else
-        .frame(height: 160)
+            .frame(height: 160)
 #endif
-        .cornerRadius(20)
-        .padding(5)
+            .cornerRadius(20)
+            .padding(5)
+        }
+        .buttonStyle(.plain)
     }
 }
 
