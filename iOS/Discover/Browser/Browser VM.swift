@@ -6,12 +6,6 @@ final class BrowserVM {
     
     private(set) var plans: [MinecraftPlan] = []
     
-    private var sortedPlans: [MinecraftPlan] {
-        plans.sorted {
-            $0.disk < $1.disk
-        }
-    }
-    
     let categories = [
         "Minecraft",
         "VDS",
@@ -19,22 +13,23 @@ final class BrowserVM {
         "Bot"
     ]
     
-    func fetchPlans() async {
+    func fetchPlans() async -> [MinecraftPlan] {
         let decoder = JSONDecoder()
         
         guard
             let url = URL(string: "https://plans.bisquit.host/plans/minecraft")
         else {
-            return
+            return []
         }
         
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
             let fetchedPlans = try decoder.decode([MinecraftPlan].self, from: data)
             
-            plans = fetchedPlans
+            return fetchedPlans
         } catch {
             print("Error:", error)
+            return []
         }
     }
     
