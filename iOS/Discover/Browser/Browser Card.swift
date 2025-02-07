@@ -26,13 +26,13 @@ struct BrowserCard: View {
     private var price: Double {
         switch ValueStore().preferredCurrency {
         case "€":
-            plan.price_eur
+            plan.priceEur
             
         case "$":
-            plan.price_usd
+            plan.priceUsd
             
         default:
-            plan.price_rub
+            plan.priceRub
         }
     }
     
@@ -116,10 +116,10 @@ struct BrowserCard: View {
         name: "preview",
         location: "Netherlands",
         displayname: "Preview",
-        cpu_model: "M4 Ultra",
+        cpuModel: "M4 Ultra",
         cpu: "4",
-        price_rub: 2000,
-        price_eur: 20.4,
-        price_usd: 20.5
+        priceRub: 2000,
+        priceEur: 20.4,
+        priceUsd: 20.5
     ))
 }

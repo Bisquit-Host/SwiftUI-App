@@ -15,6 +15,7 @@ final class BrowserVM {
     
     func fetchPlans() async -> [MinecraftPlan] {
         let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
         
         guard
             let url = URL(string: "https://plans.bisquit.host/plans/minecraft")
