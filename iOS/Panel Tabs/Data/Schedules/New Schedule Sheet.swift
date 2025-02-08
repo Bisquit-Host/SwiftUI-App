@@ -21,6 +21,7 @@ struct NewScheduleSheet: View {
         List {
             Section("Name") {
                 TextField("Name", text: $newSchedule.name)
+                    .limitInputLength($newSchedule.name, length: 191)
             }
             
             Section("Minute") {

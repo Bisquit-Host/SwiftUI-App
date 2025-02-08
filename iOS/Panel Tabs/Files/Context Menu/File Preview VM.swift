@@ -1,3 +1,4 @@
+#if DEBUG
 import ScrechKit
 import PteroNet
 
@@ -97,3 +98,4 @@ final class FilePreviewVM {
         }
     }
 }
+#endif

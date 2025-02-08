@@ -21,6 +21,7 @@ struct PanelSettingsView: View {
             Section("Name & description") {
                 TextField("Server name", text: $vm.serverName)
                     .autocorrectionDisabled()
+                    .limitInputLength($vm.serverName, length: 191)
                 
                 TextField("Server description", text: $vm.serverDescription)
                 

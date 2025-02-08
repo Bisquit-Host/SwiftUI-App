@@ -1,3 +1,4 @@
+#if DEBUG
 import ScrechKit
 import QuickLooking
 
@@ -44,3 +45,4 @@ struct FilePreview: View {
         }
     }
 }
+#endif

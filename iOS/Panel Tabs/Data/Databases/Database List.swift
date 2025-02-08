@@ -42,6 +42,7 @@ struct DatabaseList: View {
         .alert("Create Database", isPresented: $alertCreate) {
             TextField("", text: $vm.newDatabaseName)
                 .autocorrectionDisabled()
+                .limitInputLength($vm.newDatabaseName, length: 48)
             
             Button("Create") {
                 vm.createDatabase()
