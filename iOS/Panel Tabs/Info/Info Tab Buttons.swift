@@ -115,8 +115,8 @@ struct InfoTabButtons: View {
             settingsVM.serverDescription = server.description
             
             if !System.lowPowerMode {
-                logVM.fetchLogs()
-                userVM.fetchUsers()
+                logVM.fetchLogs(true)
+                userVM.fetchUsers(true)
             }
         }
         .sheet($sheetSettings) {

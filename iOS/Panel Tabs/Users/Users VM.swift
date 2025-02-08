@@ -102,12 +102,16 @@ final class UsersVM {
         }
     }
     
-    func fetchUsers() {
+    func fetchUsers(_ prefetch: Bool = false) {
         userListAPI(id) { result in
             switch result {
             case .success(let model):
                 if let model = model?.data {
                     self.users = model.map(\.attributes)
+                    
+                    if !prefetch {
+                        self.prefetchUserImages()
+                    }
                 }
                 
             case .failure(let error):
@@ -127,5 +131,17 @@ final class UsersVM {
                 SystemAlert.error(error)
             }
         }
+    }
+    
+    private func prefetchUserImages() {
+        let uniqueImages = Array(Set(self.users.compactMap { user in
+            if let url = URL(string: user.image) {
+                return url
+            }
+            
+            return nil
+        }))
+        
+        prefetchImages(uniqueImages)
     }
 }

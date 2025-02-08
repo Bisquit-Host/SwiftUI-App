@@ -101,7 +101,8 @@ struct PanelView: View {
             if !System.lowPowerMode {
                 backupVM.fetchBackups()
                 dbVM.fetchDatabases()
-                userVM.fetchUsers()
+                userVM.fetchUsers(true)
+                // logVM.fetchLogs(true)
                 fileVM.fetchFiles()
                 
                 Task {

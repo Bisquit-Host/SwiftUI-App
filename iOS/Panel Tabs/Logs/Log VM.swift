@@ -27,7 +27,7 @@ final class LogVM {
         }
     }
     
-    func fetchLogs() {
+    func fetchLogs(_ prefetch: Bool = false) {
         logListAPI(id) { result in
             switch result {
             case .success(let model):
@@ -35,11 +35,29 @@ final class LogVM {
                     withAnimation {
                         self.logs = model.map(\.attributes)
                     }
+                    
+                    if prefetch {
+                        self.prefetchActorImages()
+                    }
                 }
                 
             case .failure(let error):
                 SystemAlert.error(error)
             }
         }
+    }
+    
+    private func prefetchActorImages() {
+        let uniqueImages = Array(Set(self.logs.compactMap { log in
+            let image = log.relationships.actor.attributes?.image
+            
+            if let image, let url = URL(string: image) {
+                return url
+            }
+            
+            return nil
+        }))
+        
+        prefetchImages(uniqueImages)
     }
 }

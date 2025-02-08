@@ -122,8 +122,8 @@ struct PanelView: View {
             backupVM.fetchBackups()
             databaseVM.fetchDatabases()
             scheduleVM.fetchSchedules()
-            usersVM.fetchUsers()
-            logVM.fetchLogs()
+            usersVM.fetchUsers(true)
+            logVM.fetchLogs(true)
             allocationVM.fetchAllocations()
             startupVM.fetchStartupVariables()
             
