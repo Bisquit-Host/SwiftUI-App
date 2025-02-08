@@ -15,11 +15,11 @@ struct OtherSettings: View {
                 Text(store.showFullFilePath ? "/home/container/folder/example/" : "/folder/example/")
             }
             
-            CurrencyButton()
-            
             ListButton("Change language", actionIcon: "globe") {
                 openSettings()
             }
+            
+            CurrencyButton()
         }
         .listRowBackground(store.transparentList ? .clear : Color.list)
     }

@@ -1,5 +1,4 @@
 import ScrechKit
-import Kingfisher
 
 struct AppIcon: View {
     private let iconName: String
@@ -14,9 +13,8 @@ struct AppIcon: View {
     
     var body: some View {
         VStack {
-            KFImage(getImageUrl(iconName + "Icon"))
+            Image(iconName + "Icon")
                 .resizable()
-                .fade(duration: 0.25)
                 .frame(width: 64, height: 64)
                 .cornerRadius(10)
                 .padding(.horizontal, 4)

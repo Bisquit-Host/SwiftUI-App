@@ -149,4 +149,20 @@ final class ServerListVM {
             }
         }
     }
+    
+    // MARK: - Observation Registration
+    @ObservationIgnored private let _$observationRegistrar = Observation.ObservationRegistrar()
+    
+    internal nonisolated func access<Member>(
+        keyPath: KeyPath<ServerListVM, Member>
+    ) {
+        _$observationRegistrar.access(self, keyPath: keyPath)
+    }
+    
+    internal nonisolated func withMutation<Member, MutationResult>(
+        keyPath: KeyPath<ServerListVM, Member>,
+        _ mutation: () throws -> MutationResult
+    ) rethrows -> MutationResult {
+        try _$observationRegistrar.withMutation(of: self, keyPath: keyPath, mutation)
+    }
 }
