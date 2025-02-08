@@ -1331,7 +1331,6 @@
 		F3E08EC32A2CE92A00116C1C /* Panel Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3029C06E9700B08696 /* Panel Model.swift */; };
 		F3E08EC62A2CEA6400116C1C /* Start Page VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA57B2959011B0006D126 /* Start Page VM.swift */; };
 		F3E08ECE2A2CEDD800116C1C /* Panel View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E08ECD2A2CEDD800116C1C /* Panel View.swift */; };
-		F3E08ED52A2CEE2300116C1C /* Auth View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E08ED42A2CEE2300116C1C /* Auth View.swift */; };
 		F3E08ED82A2CF74000116C1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F31BA52A2958FF7D0006D126 /* Assets.xcassets */; };
 		F3E1B2D02C903C9300AED3F1 /* Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF012C8BBB4700413400 /* Server Card Context Menu.swift */; };
 		F3E1D3ED2B3208BE009B7062 /* User 2Fa.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3EC2B3208BE009B7062 /* User 2Fa.swift */; };
@@ -1977,7 +1976,6 @@
 		F3E08EB52A2CE56200116C1C /* App Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Settings.swift"; sourceTree = "<group>"; };
 		F3E08EBE2A2CE87800116C1C /* Start Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page.swift"; sourceTree = "<group>"; };
 		F3E08ECD2A2CEDD800116C1C /* Panel View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel View.swift"; sourceTree = "<group>"; };
-		F3E08ED42A2CEE2300116C1C /* Auth View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auth View.swift"; sourceTree = "<group>"; };
 		F3E1D3EC2B3208BE009B7062 /* User 2Fa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User 2Fa.swift"; sourceTree = "<group>"; };
 		F3E1D3F12B320A6A009B7062 /* Permissions Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Permissions Header.swift"; sourceTree = "<group>"; };
 		F3E2BED92C1C6B9500B7A6D4 /* Cache List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache List.swift"; sourceTree = "<group>"; };
@@ -2832,14 +2830,6 @@
 			path = Tips;
 			sourceTree = "<group>";
 		};
-		F35B9F572A2D6F900045D014 /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				F3E08ED42A2CEE2300116C1C /* Auth View.swift */,
-			);
-			path = Auth;
-			sourceTree = "<group>";
-		};
 		F35B9F622A2DCFA10045D014 /* Stats */ = {
 			isa = PBXGroup;
 			children = (
@@ -3560,7 +3550,6 @@
 				F3CCB1CF2CAE8AF5000F8207 /* Bisquit-Host-Mac-Info.plist */,
 				F33DE4E62B35089000E257D8 /* Background Blur.swift */,
 				F3E08EC72A2CEA6F00116C1C /* Intro */,
-				F35B9F572A2D6F900045D014 /* Auth */,
 				F3E08EB72A2CE6D000116C1C /* Server List */,
 				F3E08ECF2A2CEDF200116C1C /* Panel */,
 				F3E08EBA2A2CE6FA00116C1C /* Settings */,
@@ -5594,7 +5583,6 @@
 				F3573BC42C6511040051259E /* Intents.intentdefinition in Sources */,
 				F3DF50CC2B38FDE500206CAE /* Permissions Header.swift in Sources */,
 				F300889B2B3A0E1A0051476C /* Startup VM.swift in Sources */,
-				F3E08ED52A2CEE2300116C1C /* Auth View.swift in Sources */,
 				F33DE5092B364EBC00E257D8 /* Tab Info.swift in Sources */,
 				F35F65942B1D1A0B00431EB7 /* Panel VM.swift in Sources */,
 				F3B138722A2D232B0026EAEE /* Server Card VM.swift in Sources */,

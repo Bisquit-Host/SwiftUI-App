@@ -22,8 +22,12 @@ struct AppContainer: View {
         
         NavigationStack(path: $navState.path) {
             if store.isApiKeyValid {
+#if os(macOS)
+                Home()
+#else
                 ServerList()
                     .withNavDestinations()
+#endif
             } else {
                 Intro()
                     .withNavDestinations()
