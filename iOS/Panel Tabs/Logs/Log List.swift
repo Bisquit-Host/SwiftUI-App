@@ -1,4 +1,5 @@
 import SwiftUI
+import Algorithms
 
 struct LogList: View {
     @Environment(LogVM.self) private var vm

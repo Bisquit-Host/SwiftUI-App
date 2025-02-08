@@ -285,6 +285,12 @@
 		F3202D4B2D56DC050030B3CC /* Prefetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D452D56DC050030B3CC /* Prefetcher.swift */; };
 		F3202D4C2D56DC050030B3CC /* Prefetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D452D56DC050030B3CC /* Prefetcher.swift */; };
 		F3202D4D2D56DC050030B3CC /* Prefetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D452D56DC050030B3CC /* Prefetcher.swift */; };
+		F3202D552D5758CE0030B3CC /* Log List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DE1B972A556CCE007A1624 /* Log List.swift */; };
+		F3202D562D5758DC0030B3CC /* Log VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367977D2A3A5AB6009F2788 /* Log VM.swift */; };
+		F3202D572D5758DC0030B3CC /* Log Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367977A2A3A55F4009F2788 /* Log Card.swift */; };
+		F3202D582D5758E50030B3CC /* Log View Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* Log View Parent.swift */; };
+		F3202D592D5758E50030B3CC /* Log Detail View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F311CAAD2A646612004E4A4A /* Log Detail View.swift */; };
+		F3202D5B2D5759690030B3CC /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = F3202D5A2D5759690030B3CC /* Algorithms */; };
 		F320DDA52B704E3C00957D92 /* Preview Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = F320DDA42B704E3C00957D92 /* Preview Property.swift */; };
 		F323BF9F2B20B84100116B97 /* Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F323BF9E2B20B84100116B97 /* Server Card Context Menu.swift */; };
 		F323BFA22B20DC9000116B97 /* Power Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F323BFA12B20DC9000116B97 /* Power Widget.swift */; };
@@ -2121,6 +2127,7 @@
 				F30B61CA2B2905E100F447B4 /* AlertKit in Frameworks */,
 				F3202C8F2D5590E20030B3CC /* Kingfisher in Frameworks */,
 				F38928372A4460B200561CDF /* ScrechKit in Frameworks */,
+				F3202D5B2D5759690030B3CC /* Algorithms in Frameworks */,
 				F33C2AC32C691735002FD150 /* QuickLooking in Frameworks */,
 				F32716DB2CF628CB00F2DC31 /* SafariCover in Frameworks */,
 				F308601A2B002D36004D776A /* PteroNet in Frameworks */,
@@ -3944,6 +3951,7 @@
 				F33C2AC22C691735002FD150 /* QuickLooking */,
 				F32716DA2CF628CB00F2DC31 /* SafariCover */,
 				F3202C8E2D5590E20030B3CC /* Kingfisher */,
+				F3202D5A2D5759690030B3CC /* Algorithms */,
 			);
 			productName = "Bisquit.Host visionOS";
 			productReference = F3BD76F22A43C890003E7385 /* visionOS.app */;
@@ -5463,8 +5471,12 @@
 				F386941A2A4B3AE1002DEF90 /* Info Tab.swift in Sources */,
 				F37EA79C2B722B390029DE00 /* Backup VM.swift in Sources */,
 				F30C131A2A54626D00A7EFF0 /* Bisquit.Host App.swift in Sources */,
+				F3202D582D5758E50030B3CC /* Log View Parent.swift in Sources */,
+				F3202D592D5758E50030B3CC /* Log Detail View.swift in Sources */,
 				F3A31B0C2B0B161D00F89C51 /* Cloud Key Card.swift in Sources */,
 				F3202D4C2D56DC050030B3CC /* Prefetcher.swift in Sources */,
+				F3202D562D5758DC0030B3CC /* Log VM.swift in Sources */,
+				F3202D572D5758DC0030B3CC /* Log Card.swift in Sources */,
 				F3464D1F2A86396500188B0C /* Change Power.swift in Sources */,
 				F30B61CB2B2905F300F447B4 /* Websocket Message.swift in Sources */,
 				F30C130B2A545ED900A7EFF0 /* Linking VM.swift in Sources */,
@@ -5538,6 +5550,7 @@
 				F3464D252A86397F00188B0C /* PowerSignalAppEnum.swift in Sources */,
 				F39E68342D2D67A70002BA96 /* Task Context Menu.swift in Sources */,
 				F39E68352D2D67A70002BA96 /* Schedule List.swift in Sources */,
+				F3202D552D5758CE0030B3CC /* Log List.swift in Sources */,
 				F39E68362D2D67A70002BA96 /* New Task Sheet.swift in Sources */,
 				F39E68372D2D67A70002BA96 /* Schedule Task.swift in Sources */,
 				F39E68382D2D67A70002BA96 /* Schedule Context Menu.swift in Sources */,
@@ -7122,6 +7135,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F37266E529D9EF25005FD103 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		F3202D5A2D5759690030B3CC /* Algorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			productName = Algorithms;
 		};
 		F32675852A01B69600A026DC /* SafariCover */ = {
 			isa = XCSwiftPackageProductDependency;
