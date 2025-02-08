@@ -33,7 +33,7 @@ struct LogList: View {
                 let logs = logsByMonth[index]
                 
                 Section(monthName(for: logs.first!.timestamp)) {
-                    ForEach(logs, id: \.id) { log in
+                    ForEach(logs) { log in
                         LogCard(log)
                     }
                 }
