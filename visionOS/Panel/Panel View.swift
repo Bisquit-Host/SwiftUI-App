@@ -32,6 +32,7 @@ struct PanelView: View {
             if let server = vm.server {
                 TabView(selection: $tabPanel) {
                     InfoTab(server)
+                        .environment(vm)
                         .tag(Tab.info)
                         .tabItem {
                             Label("Info", systemImage: "info.circle")

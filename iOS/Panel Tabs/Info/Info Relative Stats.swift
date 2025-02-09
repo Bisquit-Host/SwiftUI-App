@@ -2,7 +2,7 @@ import SwiftUI
 import PteroNet
 
 struct InfoRelativeStats: View {
-    @Environment(PanelVM.self) private var panelVM
+    @Environment(PanelVM.self) private var vm
     
     private let limits: ServerLimits
     
@@ -12,19 +12,19 @@ struct InfoRelativeStats: View {
     
     private var relativeRam: String {
         let limit = limits.memory * pow(1024, 2)
-        let usage = Int(panelVM.ramUsage / limit * 100)
+        let usage = Int(vm.ramUsage / limit * 100)
         
         return "\(usage)%"
     }
     
     private var relativeCpu: String {
-        let usage = Int(panelVM.cpuUsage / limits.cpu * 100)
+        let usage = Int(vm.cpuUsage / limits.cpu * 100)
         
         return "\(usage)%"
     }
     
     private var relativeDisk: String {
-        let usage = Int(panelVM.diskUsage / limits.disk * 100)
+        let usage = Int(vm.diskUsage / limits.disk * 100)
         
         return "\(usage)%"
     }
@@ -32,7 +32,7 @@ struct InfoRelativeStats: View {
     var body: some View {
         HStack {
             Group {
-                InfoStat("Uptime", value: millisecondsToTime(panelVM.uptime))
+                InfoStat("Uptime", value: millisecondsToTime(vm.uptime))
                 
                 InfoStat("Storage", value: relativeDisk)
                 

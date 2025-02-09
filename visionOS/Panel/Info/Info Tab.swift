@@ -3,6 +3,7 @@ import PteroNet
 
 struct InfoTab: View {
     private var logVM: LogVM
+    @Environment(PanelVM.self) private var vm
     @Environment(\.openURL) private var openUrl
     
     private let server: ServerAttributes
@@ -30,9 +31,18 @@ struct InfoTab: View {
                 .padding(8)
             }
             
-            Text(server.description)
-                .title3(.semibold)
-                .lineLimit(1)
+            if !server.description.isEmpty {
+                Text(server.description)
+                    .title3(.semibold)
+                    .lineLimit(1)
+            } else {
+#warning("Add a server description")
+            }
+            
+            Divider()
+            
+            ListParam("Uptime", param: millisecondsToTime(vm.uptime))
+                .monospacedDigit()
             
             Divider()
             
@@ -71,4 +81,5 @@ struct InfoTab: View {
     InfoTab(PreviewProperty.serverAttributes)
         .padding()
         .glassBackgroundEffect()
+        .environment(PanelVM(""))
 }
