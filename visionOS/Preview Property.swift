@@ -1,6 +1,6 @@
 import PteroNet
 
-final class PreviewProperty {
+final class PreviewProp {
     static let serverAttributes = ServerAttributes(
         id: "12345678",
         name: "Preview",

@@ -51,5 +51,5 @@ struct OrnamentInfoSettings: View {
 }
 
 #Preview {
-    OrnamentInfoSettings(PreviewProperty.serverAttributes)
+    OrnamentInfoSettings(PreviewProp.serverAttributes)
 }

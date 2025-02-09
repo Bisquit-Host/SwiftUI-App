@@ -71,7 +71,7 @@ struct ServerCard: View {
 
 #Preview {
     List {
-        ServerCard(PreviewProperty.serverAttributes)
+        ServerCard(PreviewProp.serverAttributes)
     }
     .padding()
 }

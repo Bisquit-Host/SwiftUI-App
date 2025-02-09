@@ -175,5 +175,5 @@ struct PanelOrnamentInfo: View {
 }
 
 #Preview {
-    PanelOrnamentInfo(PreviewProperty.serverAttributes)
+    PanelOrnamentInfo(PreviewProp.serverAttributes)
 }
