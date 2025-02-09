@@ -19,46 +19,52 @@ struct ServerCard: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text(server.name)
-                .title()
+        HStack(spacing: 50) {
+            VStack(alignment: .leading) {
+                Text(server.name)
+                    .largeTitle()
+                
+                if !server.description.isEmpty {
+                    Text(server.description)
+                        .title()
+                        .secondary()
+                }
+            }
             
-            HStack(spacing: 50) {
-                Group {
-                    if vm.stateColor != .red {
-                        CircularGauge(
-                            param: "CPU",
-                            value: vm.cpuUsage,
-                            limit: limits.cpu,
-                            isRedacted: vm.isLoading
-                        )
-                        
-                        CircularGauge(
-                            param: "RAM",
-                            value: vm.ramUsage,
-                            limit: limits.memory,
-                            isRedacted: vm.isLoading
-                        )
-                    }
+            Spacer()
+            
+            Group {
+                if vm.stateColor != .red {
+                    CircularGauge(
+                        param: "CPU",
+                        value: vm.cpuUsage,
+                        limit: limits.cpu,
+                        isRedacted: vm.isLoading
+                    )
                     
                     CircularGauge(
-                        param: "SSD",
-                        value: vm.diskUsage,
-                        limit: limits.disk,
+                        param: "RAM",
+                        value: vm.ramUsage,
+                        limit: limits.memory,
                         isRedacted: vm.isLoading
                     )
                 }
-                .scaleEffect(1.5)
                 
-                //                LinearGauge(value: vm.diskUsage, limit: limits.disk)
+                CircularGauge(
+                    param: "SSD",
+                    value: vm.diskUsage,
+                    limit: limits.disk,
+                    isRedacted: vm.isLoading
+                )
             }
-            .padding()
-            .task {
-                vm.fetchServerUsage()
-            }
-            .onChange(of: store.updateServers) {
-                vm.fetchServerUsage()
-            }
+            .scaleEffect(1.5)
+        }
+        .padding()
+        .task {
+            vm.fetchServerUsage()
+        }
+        .onChange(of: store.updateServers) {
+            vm.fetchServerUsage()
         }
     }
 }
