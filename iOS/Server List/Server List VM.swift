@@ -77,7 +77,9 @@ final class ServerListVM {
             return
         }
         
-        alertUpdate = currentVersion.compare(appStoreVersion, options: .numeric) == .orderedAscending
+        main {
+            self.alertUpdate = currentVersion.compare(appStoreVersion, options: .numeric) == .orderedAscending
+        }
     }
     
     struct ItunesAppInfo: Decodable {
@@ -135,6 +137,7 @@ final class ServerListVM {
                         let servers = model.data.map(\.attributes)
                         loadedServers.append(contentsOf: servers)
                     }
+                    
                 case .failure(let error):
                     SystemAlert.error(error)
                 }

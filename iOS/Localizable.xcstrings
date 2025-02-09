@@ -4060,6 +4060,16 @@
     "Read" : {
 
     },
+    "Recent Activity" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Недавняя Активность"
+          }
+        }
+      }
+    },
     "Refresh" : {
 
     },
@@ -5528,6 +5538,9 @@
       "shouldTranslate" : false
     },
     "Verify" : {
+
+    },
+    "View" : {
 
     },
     "Warning" : {

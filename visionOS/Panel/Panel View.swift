@@ -9,7 +9,6 @@ struct PanelView: View {
     private var scheduleVM: ScheduleVM
     private var userVM: UsersVM
     private var subdomainVM: SubdomainVM
-    private var logVM: LogVM
     
     private let id: String
     
@@ -22,7 +21,6 @@ struct PanelView: View {
         self.scheduleVM = ScheduleVM(id)
         self.userVM = UsersVM(id)
         self.subdomainVM = SubdomainVM(id)
-        self.logVM = LogVM(id)
     }
     
     @AppStorage("show_info") private var showInfo = true
@@ -87,13 +85,6 @@ struct PanelView: View {
                             Label("Users", systemImage: "person.3")
                         }
                     
-                    LogList()
-                        .environment(logVM)
-                        .tag(Tab.logs)
-                        .tabItem {
-                            Label("Logs", systemImage: "terminal")
-                        }
-                    
                     SubdomainList()
                         .environment(subdomainVM)
                         .tag(Tab.subdomains)
@@ -111,7 +102,6 @@ struct PanelView: View {
                 backupVM.fetchBackups()
                 dbVM.fetchDatabases()
                 userVM.fetchUsers(true)
-                logVM.fetchLogs(true)
                 fileVM.fetchFiles()
                 
                 Task {
