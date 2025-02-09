@@ -41,6 +41,7 @@ struct LogList: View {
         }
         .navigationTitle("Server logs")
         .toolbarTitleDisplayMode(.inline)
+        .ornamentDismissButton()
         .searchable(text: $vm.searchField)
         .overlay {
             if vm.searchedLogs.isEmpty {

@@ -54,8 +54,10 @@ struct InfoTab: View {
         .glassBackgroundEffect()
         .frame(width: 650)
         .sheet($sheetLogs) {
-            LogList()
-                .environment(logVM)
+            NavigationView {
+                LogList()
+            }
+            .environment(logVM)
         }
         .task {
             if !System.lowPowerMode {
