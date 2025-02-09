@@ -11,15 +11,18 @@ struct ServerList: View {
         @Bindable var vm = vm
         
         List {
-            TipView(Tip_ServerCardContextMenu())
-            
-            if vm.hasFrozenServers {
-                TipView(Tip_SuspendedServer()) { action in
-                    if action.id == "open-billing" {
-                        vm.showBilling = true
+            Section {
+                TipView(Tip_ServerCardContextMenu())
+                
+                if vm.hasFrozenServers {
+                    TipView(Tip_SuspendedServer()) { action in
+                        if action.id == "open-billing" {
+                            vm.showBilling = true
+                        }
                     }
                 }
             }
+            .listRowBackground(Color.clear)
             
             ForEach(vm.filteredServers) { server in
                 ServerCardParent(server)
