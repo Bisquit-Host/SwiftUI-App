@@ -16,7 +16,7 @@ struct BackupList: View {
         @Bindable var vm = vm
         
         Section {
-            ForEach(vm.backups, id: \.uuid) { backup in
+            ForEach(vm.backups) { backup in
                 BackupCard(id, backup)
 #if !os(tvOS)
                     .focusable() // Applies to DB's & schedules as well

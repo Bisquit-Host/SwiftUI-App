@@ -7,18 +7,18 @@ struct ScheduleList: View {
     var body: some View {
         Section {
             ForEach(vm.schedules) { schedule in
-                let tasks = schedule.relationships.tasks.data
+                let tasks = schedule.relationships.tasks.data.map(\.attributes)
 #if os(tvOS)
                 ScheduleCard(schedule)
                 
-                ForEach(tasks, id: \.attributes.action) { task in
-                    ScheduleTask(schedule, task: task.attributes)
+                ForEach(tasks) { task in
+                    ScheduleTask(schedule, task: task)
                         .padding(.leading, 64)
                 }
 #else
                 DisclosureGroup {
-                    ForEach(tasks, id: \.attributes.action) { task in
-                        ScheduleTask(schedule, task: task.attributes)
+                    ForEach(tasks) { task in
+                        ScheduleTask(schedule, task: task)
                     }
                 } label: {
                     ScheduleCard(schedule)

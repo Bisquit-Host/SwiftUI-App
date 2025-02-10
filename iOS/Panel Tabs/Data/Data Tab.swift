@@ -14,7 +14,7 @@ struct DataTab: View {
     
     var body: some View {
         @Bindable var backupVM = backupVM
-        @Bindable var dbVM = dbVM
+        @Bindable var databaseVM = dbVM
         @Bindable var scheduleVM = scheduleVM
         
         List {
@@ -41,17 +41,17 @@ struct DataTab: View {
         .sheet($scheduleVM.sheetCreate) {
             NewScheduleSheet()
         }
-        .alert("Create Database", isPresented: $dbVM.alertCreate) {
-            TextField("", text: $dbVM.newDatabaseName)
+        .alert("Create Database", isPresented: $databaseVM.alertCreate) {
+            TextField("", text: $databaseVM.newDatabaseName)
                 .autocorrectionDisabled()
-                .limitInputLength($dbVM.newDatabaseName, length: 48)
+                .limitInputLength($databaseVM.newDatabaseName, length: 48)
             
             Button("Create") {
-                dbVM.createDatabase()
+                databaseVM.createDatabase()
             }
             
             Button("Cancel", role: .cancel) {
-                dbVM.newDatabaseName = ""
+                databaseVM.newDatabaseName = ""
             }
         }
         .alert("Name Backup", isPresented: $backupVM.alertCreateBackup) {
