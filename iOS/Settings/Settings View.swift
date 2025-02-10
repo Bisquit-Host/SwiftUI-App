@@ -45,9 +45,6 @@ struct SettingsView: View {
         .task {
             vm.defineBiometryType()
         }
-        .onChange(of: store.currentIcon) { _, newValue in
-            UIApplication.shared.setAlternateIconName(newValue)
-        }
     }
 }
 

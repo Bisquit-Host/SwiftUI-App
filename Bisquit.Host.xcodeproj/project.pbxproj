@@ -124,6 +124,14 @@
 		F311CAAE2A646612004E4A4A /* Log Detail View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F311CAAD2A646612004E4A4A /* Log Detail View.swift */; };
 		F311CAAF2A646612004E4A4A /* Log Detail View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F311CAAD2A646612004E4A4A /* Log Detail View.swift */; };
 		F311CAB02A646612004E4A4A /* Log Detail View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F311CAAD2A646612004E4A4A /* Log Detail View.swift */; };
+		F314616A2D5A1F5E00547B6C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31461692D5A1F5E00547B6C /* Icon.swift */; };
+		F314616B2D5A1F5E00547B6C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31461692D5A1F5E00547B6C /* Icon.swift */; };
+		F314616C2D5A1F5E00547B6C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31461692D5A1F5E00547B6C /* Icon.swift */; };
+		F314616D2D5A1F6E00547B6C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31461692D5A1F5E00547B6C /* Icon.swift */; };
+		F314616E2D5A1F8100547B6C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31461692D5A1F5E00547B6C /* Icon.swift */; };
+		F314616F2D5A1F8100547B6C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31461692D5A1F5E00547B6C /* Icon.swift */; };
+		F31461702D5A1F8100547B6C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31461692D5A1F5E00547B6C /* Icon.swift */; };
+		F31461712D5A1F8100547B6C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31461692D5A1F5E00547B6C /* Icon.swift */; };
 		F31485212A34665000AF5CCA /* Browser Sticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E8415529FECB6800609DA3 /* Browser Sticker.swift */; };
 		F31578B329675F5D0016A600 /* Server List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31578B229675F5D0016A600 /* Server List.swift */; };
 		F31578B5296760710016A600 /* Server Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31578B4296760710016A600 /* Server Card.swift */; };
@@ -1615,6 +1623,7 @@
 		F310A2EF2A56AF86001AF45F /* Network VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network VM.swift"; sourceTree = "<group>"; };
 		F3116F252A33E142001F067C /* Folder File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Folder File.swift"; sourceTree = "<group>"; };
 		F311CAAD2A646612004E4A4A /* Log Detail View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log Detail View.swift"; sourceTree = "<group>"; };
+		F31461692D5A1F5E00547B6C /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 		F31578B229675F5D0016A600 /* Server List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List.swift"; sourceTree = "<group>"; };
 		F31578B4296760710016A600 /* Server Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card.swift"; sourceTree = "<group>"; };
 		F318240A2A8777CD0039866C /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
@@ -3018,6 +3027,7 @@
 				F3D7D87C29E83D6500BCAFFE /* Icon Settings.swift */,
 				F3924EE629A25FBF00C4CC77 /* App Icon Picker.swift */,
 				F385824129D6215100BEEE1D /* App Icon.swift */,
+				F31461692D5A1F5E00547B6C /* Icon.swift */,
 			);
 			path = "App Icon";
 			sourceTree = "<group>";
@@ -4386,6 +4396,7 @@
 				F3CE5C542D53A77C0094BD7B /* Subdomain Model.swift in Sources */,
 				F3CE5C552D53A77C0094BD7B /* Subdomain Card.swift in Sources */,
 				F3CE5C562D53A77C0094BD7B /* Subdomain List.swift in Sources */,
+				F314616F2D5A1F8100547B6C /* Icon.swift in Sources */,
 				F3CE5C572D53A77C0094BD7B /* Subdomain VM.swift in Sources */,
 				F3D49DB52B2336240033B52E /* Overview VM.swift in Sources */,
 				F3CCF5BA2B345466005FFF2C /* Permission List.swift in Sources */,
@@ -4692,6 +4703,7 @@
 				F3CE5C4B2D53935A0094BD7B /* Subdomain Model.swift in Sources */,
 				F3CCB1CC2CAE75D0000F8207 /* Debug Settings.swift in Sources */,
 				F30088A92B3A1A500051476C /* Schedule VM.swift in Sources */,
+				F314616A2D5A1F5E00547B6C /* Icon.swift in Sources */,
 				F3FDFF912C89150D009EBB5C /* Networking.swift in Sources */,
 				F31BA5862959016D0006D126 /* SpriteKit Pyzh.swift in Sources */,
 				F30089002B3B62450051476C /* User Invitation Permission.swift in Sources */,
@@ -4736,6 +4748,7 @@
 				F3FFB7492A57FF0B00220FA5 /* Log Card.swift in Sources */,
 				F3EB09CF2A2953200073916A /* Des Image.swift in Sources */,
 				F34C055A29F11E010031ABE1 /* Server Card VM.swift in Sources */,
+				F314616D2D5A1F6E00547B6C /* Icon.swift in Sources */,
 				F35FEB112B09F4D4004DA05D /* Network VM.swift in Sources */,
 				F3A800342A7313E900CAC40B /* Tip Cloud Keys.swift in Sources */,
 				F3464D2D2A863A6100188B0C /* Create Backup.swift in Sources */,
@@ -5055,6 +5068,7 @@
 				F3D2643B2A66AB92005C3777 /* Account View.swift in Sources */,
 				F389BB632A05B59700911EBF /* Server Name.swift in Sources */,
 				F34F289B2ACDAD9B00FD618A /* Animated Tab.swift in Sources */,
+				F314616B2D5A1F5E00547B6C /* Icon.swift in Sources */,
 				F389BB732A05B61900911EBF /* Credential Field.swift in Sources */,
 				F3FA4DEB2A4CE82000547722 /* Account Settings.swift in Sources */,
 				F3202D232D562B990030B3CC /* Browser Card Web.swift in Sources */,
@@ -5139,6 +5153,7 @@
 				F3D295B82AF3A16A00ED43A0 /* App Icon.swift in Sources */,
 				F3D2959E2AF3A08300ED43A0 /* Video Player.swift in Sources */,
 				F3D295EC2AF3A43300ED43A0 /* Server Card.swift in Sources */,
+				F314616C2D5A1F5E00547B6C /* Icon.swift in Sources */,
 				F3A28AD72C57ADF100010454 /* Demo Server.swift in Sources */,
 				F3D295C52AF3A1DF00ED43A0 /* Apikey Card.swift in Sources */,
 				F3D295602AF39E8400ED43A0 /* FileTab Search.swift in Sources */,
@@ -5427,6 +5442,7 @@
 				F3A7CF1F2C8C4E4A00413400 /* Plan Models.swift in Sources */,
 				F3A7CF022C8BBB4700413400 /* Server Card Context Menu.swift in Sources */,
 				F3A7CEF22C8BB7BF00413400 /* System Alerts.swift in Sources */,
+				F31461712D5A1F8100547B6C /* Icon.swift in Sources */,
 				F3A7CF112C8C4C3100413400 /* Server List Node Filter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5483,6 +5499,7 @@
 				F32716DD2CF62C9900F2DC31 /* Backup List.swift in Sources */,
 				F348C6E62A543909002D5BD6 /* Intro.swift in Sources */,
 				F3F2BBAA2A540E4000D44CA6 /* Nav Destinations.swift in Sources */,
+				F31461702D5A1F8100547B6C /* Icon.swift in Sources */,
 				F3FD9FA12C65217C00A69314 /* Quick Look View.swift in Sources */,
 				F3464D2E2A863A6200188B0C /* Create Backup.swift in Sources */,
 				F3317AEE2A45E33300CA104D /* Formatters.swift in Sources */,
@@ -5657,6 +5674,7 @@
 				F348C6EB2A544893002D5BD6 /* App Container.swift in Sources */,
 				F3DF50CF2B39636A00206CAE /* User List.swift in Sources */,
 				F30088BD2B3A223E0051476C /* Database Card.swift in Sources */,
+				F314616E2D5A1F8100547B6C /* Icon.swift in Sources */,
 				F300889D2B3A17CC0051476C /* Backup VM.swift in Sources */,
 				F30088DE2B3A3FBB0051476C /* Startup List.swift in Sources */,
 				F3E08EC22A2CE89400116C1C /* Value Store.swift in Sources */,

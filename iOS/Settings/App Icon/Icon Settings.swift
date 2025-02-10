@@ -6,7 +6,7 @@ struct IconSettings: View {
     var body: some View {
         Section("Icon") {
             AppIconPicker()
-                .padding(.horizontal, -20)
+                .offset(y: -10)
         }
         .listRowBackground(store.transparentList ? .clear : Color.list)
     }
@@ -15,6 +15,6 @@ struct IconSettings: View {
 #Preview {
     List {
         IconSettings()
-            .environmentObject(ValueStore())
     }
+    .environmentObject(ValueStore())
 }

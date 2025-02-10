@@ -23,7 +23,7 @@ final class ValueStore: ObservableObject {
     //    @AppStorage("consoleFontDesign") var consoleFontDesign = 1
     
     // MARK: - Other
-    @AppStorage("currentIcon") var currentIcon = "Primary Icon"
+    @AppStorage("currentIcon") var currentIcon: Icon = .def
     @AppStorage("showFullFilePath") var showFullFilePath = false
     @AppStorage("preferredCurrency") var preferredCurrency = "₽"
     @AppStorage("last_tab_panel") var lastTabPanel: Tabs = .info

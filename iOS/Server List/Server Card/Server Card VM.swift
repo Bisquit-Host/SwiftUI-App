@@ -20,7 +20,9 @@ final class ServerCardVM {
             switch result {
             case .success(let model):
                 if let model = model?.attributes {
-                    self.updateUsage(model)
+                    main {
+                        self.updateUsage(model)
+                    }
                 }
                 
             case .failure(let error):

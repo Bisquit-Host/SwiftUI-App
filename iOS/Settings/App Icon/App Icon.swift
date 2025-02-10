@@ -1,35 +1,32 @@
 import ScrechKit
 
 struct AppIcon: View {
-    private let iconName: String
+    private let icon: Icon
     private let isSelected: Bool
     
-    init(_ iconName: String, isSelected: Bool) {
-        self.iconName = iconName
+    init(_ icon: Icon, isSelected: Bool) {
+        self.icon = icon
         self.isSelected = isSelected
     }
     
-    @Namespace var animation
+    @Namespace private var animation
     
     var body: some View {
-        VStack {
-            Image(iconName + "Icon")
+        ZStack {
+            if isSelected {
+                Image(icon.img)
+                    .resizable()
+                    .blur(radius: 5)
+                    .frame(width: 70, height: 70)
+                    .matchedEffect("icon", in: animation)
+            }
+            
+            Image(icon.img)
                 .resizable()
                 .frame(width: 64, height: 64)
                 .cornerRadius(10)
                 .padding(.horizontal, 4)
-            
-            ZStack {
-                if isSelected {
-                    Capsule()
-                        .fill(.blue)
-                        .frame(width: 64, height: 20)
-                        .matchedEffect("icon", in: animation)
-                }
-                
-                Text(iconName)
-                    .footnote(.bold, design: .rounded)
-            }
         }
+        .frame(width: 80, height: 90)
     }
 }
