@@ -1,5 +1,5 @@
-import PteroNet
 import WidgetKit
+import PteroNet
 
 struct ResourcesUsageEntry: TimelineEntry {
     let date: Date
