@@ -1397,6 +1397,7 @@
 		F3E679B12D5A854700A7ADDE /* ServerOptionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E679AC2D5A854700A7ADDE /* ServerOptionsProvider.swift */; };
 		F3E679B22D5A854700A7ADDE /* ServerOptionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E679AC2D5A854700A7ADDE /* ServerOptionsProvider.swift */; };
 		F3E679B32D5A854700A7ADDE /* ServerOptionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E679AC2D5A854700A7ADDE /* ServerOptionsProvider.swift */; };
+		F3E679B42D5AB23A00A7ADDE /* ServerOptionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E679AC2D5A854700A7ADDE /* ServerOptionsProvider.swift */; };
 		F3E6FC432A1E677000410C7C /* Bisquits.sks in Resources */ = {isa = PBXBuildFile; fileRef = F3E6FC422A1E677000410C7C /* Bisquits.sks */; };
 		F3E6FC442A1E677000410C7C /* Bisquits.sks in Resources */ = {isa = PBXBuildFile; fileRef = F3E6FC422A1E677000410C7C /* Bisquits.sks */; };
 		F3E6FC462A1E85D600410C7C /* SptiteKit BisquitFall.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6FC452A1E85D600410C7C /* SptiteKit BisquitFall.swift */; };
@@ -2736,7 +2737,7 @@
 		F337B4072A89FB0200DD79AA /* Families */ = {
 			isa = PBXGroup;
 			children = (
-				F36B73772C8AE93000E858FE /* New Widget */,
+				F36B73772C8AE93000E858FE /* Resources Widget */,
 				F323BFA02B20DC7A00116B97 /* Power Widget */,
 				F36B737B2C8AEA2D00E858FE /* System Small */,
 				F337B40C2A89FDFB00DD79AA /* New Group */,
@@ -2895,7 +2896,7 @@
 			path = SpriteKit;
 			sourceTree = "<group>";
 		};
-		F36B73772C8AE93000E858FE /* New Widget */ = {
+		F36B73772C8AE93000E858FE /* Resources Widget */ = {
 			isa = PBXGroup;
 			children = (
 				F3FDFF8A2C89130F009EBB5C /* Widget.swift */,
@@ -2903,7 +2904,7 @@
 				F36B738D2C8AEC8400E858FE /* Resources Usage Entry.swift */,
 				F36B73892C8AEC3D00E858FE /* Timeline Provider.swift */,
 			);
-			path = "New Widget";
+			path = "Resources Widget";
 			sourceTree = "<group>";
 		};
 		F36B73782C8AE9CD00E858FE /* Intents */ = {
@@ -5392,6 +5393,7 @@
 				F3187A4E2C891B2A008FB911 /* Intents.intentdefinition in Sources */,
 				F3287A792B10A11E001AFE54 /* Live Activity.swift in Sources */,
 				F3CE5C972D5412C60094BD7B /* Intent Handler.swift in Sources */,
+				F3E679B42D5AB23A00A7ADDE /* ServerOptionsProvider.swift in Sources */,
 				F323BFA52B211C3700116B97 /* Power Entry.swift in Sources */,
 				F36B738A2C8AEC3D00E858FE /* Timeline Provider.swift in Sources */,
 				F371468E2B123807001E0296 /* Activity View State.swift in Sources */,

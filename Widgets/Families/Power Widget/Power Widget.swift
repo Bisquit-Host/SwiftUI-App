@@ -11,7 +11,7 @@ struct PowerWidget: Widget {
             provider: PowerProvider()
         ) { entry in
             VStack {
-                let id = entry.configuration.serverId
+                let id = entry.configuration.id
                 
                 if id.isEmpty || id.count != 8 {
                     Text("Configure first")
@@ -47,7 +47,7 @@ struct PowerWidget: Widget {
     PowerEntry(
         date: .now,
         configuration: .init(
-            serverId: .init(title: "", description: "", default: "1123")
+            id: .init(title: "", description: "", default: "1123")
         )
     )
 }
