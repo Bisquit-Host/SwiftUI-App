@@ -556,13 +556,6 @@
 		F3553FBF2B4094D700EF0FD2 /* Allocation Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3553FBE2B4094D700EF0FD2 /* Allocation Card.swift */; };
 		F3553FC02B4094D700EF0FD2 /* Allocation Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3553FBE2B4094D700EF0FD2 /* Allocation Card.swift */; };
 		F3573BBF2C64E0360051259E /* Log Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3573BBE2C64E0360051259E /* Log Card.swift */; };
-		F3573BC22C6511040051259E /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F3573BC12C6511040051259E /* Intents.intentdefinition */; };
-		F3573BC32C6511040051259E /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F3573BC12C6511040051259E /* Intents.intentdefinition */; };
-		F3573BC42C6511040051259E /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F3573BC12C6511040051259E /* Intents.intentdefinition */; };
-		F3573BC52C6511040051259E /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F3573BC12C6511040051259E /* Intents.intentdefinition */; };
-		F3573BC62C6511040051259E /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F3573BC12C6511040051259E /* Intents.intentdefinition */; };
-		F3573BC72C6511040051259E /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F3573BC12C6511040051259E /* Intents.intentdefinition */; };
-		F3573BC82C6511040051259E /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F3573BC12C6511040051259E /* Intents.intentdefinition */; };
 		F358132B2A1F5D2A002ADFA4 /* Linking VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */; };
 		F358132C2A1F5D2A002ADFA4 /* Linking VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */; };
 		F358F02E2D2C1C5500BCC07B /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = F358F02D2D2C1C5500BCC07B /* LaunchAtLogin */; };
@@ -1785,7 +1778,6 @@
 		F3553FBB2B40945C00EF0FD2 /* Allocation List Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation List Parent.swift"; sourceTree = "<group>"; };
 		F3553FBE2B4094D700EF0FD2 /* Allocation Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation Card.swift"; sourceTree = "<group>"; };
 		F3573BBE2C64E0360051259E /* Log Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log Card.swift"; sourceTree = "<group>"; };
-		F3573BC02C6511040051259E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = en; path = en.lproj/Intents.intentdefinition; sourceTree = "<group>"; };
 		F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Linking VM.swift"; sourceTree = "<group>"; };
 		F35B2A0129FFD6AB006E5FD2 /* Plan Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plan Models.swift"; sourceTree = "<group>"; };
 		F35B89BD2A725710000B5EEF /* Tip Suspended Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tip Suspended Server.swift"; sourceTree = "<group>"; };
@@ -2778,7 +2770,6 @@
 			isa = PBXGroup;
 			children = (
 				F3464CFA2A862D2D00188B0C /* Intent Extension.swift */,
-				F3573BC12C6511040051259E /* Intents.intentdefinition */,
 				F3464CFE2A862D2D00188B0C /* Info.plist */,
 				F3E679AC2D5A854700A7ADDE /* Server Options Provider.swift */,
 				F3464D0D2A862EC100188B0C /* Intents */,
@@ -4329,7 +4320,6 @@
 				F370804F2A2A1EAC0046CE70 /* Schedule List.swift in Sources */,
 				F3202D1A2D562B980030B3CC /* Browser Card VDS.swift in Sources */,
 				F3EB09DB2A295C550073916A /* Video File.swift in Sources */,
-				F3573BC52C6511040051259E /* Intents.intentdefinition in Sources */,
 				F33CDBFE2A26B8BC008D0214 /* Plan Models.swift in Sources */,
 				F33CDC032A26B95C008D0214 /* Browser Card.swift in Sources */,
 				F370804B2A2A1CA70046CE70 /* Backup List Footer.swift in Sources */,
@@ -4712,7 +4702,6 @@
 				F38F9E2E2CEB39D80033EFE3 /* Metadata List.swift in Sources */,
 				F3FF5A092A4A3745003A1973 /* Info Tab Background.swift in Sources */,
 				F3A28AD82C57ADF100010454 /* Demo Server.swift in Sources */,
-				F3573BC22C6511040051259E /* Intents.intentdefinition in Sources */,
 				F31BA5A52959026D0006D126 /* Console VM.swift in Sources */,
 				F3BF97AA29BFC7E9007B9C9C /* Websocket.swift in Sources */,
 				F3D7F8502C8ED3D100368ECE /* Disable 2FA View.swift in Sources */,
@@ -4815,7 +4804,6 @@
 				F3C9D85D2B31146E00265492 /* User Avatar.swift in Sources */,
 				F3D558B22A33C6A000608447 /* File Tab VM.swift in Sources */,
 				F3762D9F2A581B150016AC44 /* Log List Parent.swift in Sources */,
-				F3573BC32C6511040051259E /* Intents.intentdefinition in Sources */,
 				F37266E129D9A7BA005FD103 /* Panel View.swift in Sources */,
 				F348C6E12A54380D002D5BD6 /* Intro.swift in Sources */,
 				F3464D362A863A6800188B0C /* Send Command.swift in Sources */,
@@ -5086,7 +5074,6 @@
 				F3FA61552A1F8DB500A65AE1 /* Upload Menu.swift in Sources */,
 				F3AB4A912CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
 				F3FA61582A1F928500A65AE1 /* FileTab Search.swift in Sources */,
-				F3573BC72C6511040051259E /* Intents.intentdefinition in Sources */,
 				F3202CFF2D562AE10030B3CC /* Browser List Bot.swift in Sources */,
 				F330013C2A4CEC320063FE0F /* Apikey List.swift in Sources */,
 				F36D53352A05B8B6007324C6 /* Backup Card.swift in Sources */,
@@ -5356,7 +5343,6 @@
 				F32FD7252B1E071F00723B88 /* Network Calls.swift in Sources */,
 				F314617B2D5A829800547B6C /* Networking.swift in Sources */,
 				F3464CFB2A862D2D00188B0C /* Intent Extension.swift in Sources */,
-				F3573BC82C6511040051259E /* Intents.intentdefinition in Sources */,
 				F3E679AF2D5A854700A7ADDE /* Server Options Provider.swift in Sources */,
 				F314617C2D5A82C700547B6C /* Model Asset.swift in Sources */,
 				F3464D082A862DC200188B0C /* Change Power.swift in Sources */,
@@ -5508,7 +5494,6 @@
 				F3AB4A8E2CF3DAD500A8252F /* Backup Card VM.swift in Sources */,
 				F30B61CC2B2907C900F447B4 /* Debug Key.swift in Sources */,
 				F3317AEA2A45E24F00CA104D /* Guide.swift in Sources */,
-				F3573BC62C6511040051259E /* Intents.intentdefinition in Sources */,
 				F3A7CF722A45150F00331B51 /* Server List Ornament.swift in Sources */,
 				F38694182A4B3AAF002DEF90 /* Panel Model.swift in Sources */,
 				F35F65952B1D1A0D00431EB7 /* Panel VM.swift in Sources */,
@@ -5665,7 +5650,6 @@
 				F32FD7232B1E065600723B88 /* Network Calls.swift in Sources */,
 				F3202C7A2D558B210030B3CC /* Spotlight Index.swift in Sources */,
 				F3FD9F9E2C651F4800A69314 /* Sensitivity Analyzer.swift in Sources */,
-				F3573BC42C6511040051259E /* Intents.intentdefinition in Sources */,
 				F3DF50CC2B38FDE500206CAE /* Permissions Header.swift in Sources */,
 				F3E679AD2D5A854700A7ADDE /* Server Options Provider.swift in Sources */,
 				F300889B2B3A0E1A0051476C /* Startup VM.swift in Sources */,
@@ -5830,17 +5814,6 @@
 			targetProxy = F3D2960D2AF3BE5800ED43A0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		F3573BC12C6511040051259E /* Intents.intentdefinition */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F3573BC02C6511040051259E /* en */,
-			);
-			name = Intents.intentdefinition;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		F3000E11295A341100ABD30A /* Debug */ = {
