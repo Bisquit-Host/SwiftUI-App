@@ -1,6 +1,10 @@
 import Foundation
 
 func millisecondsToTime(_ milliseconds: Int) -> String {
+    guard milliseconds != 0 else {
+        return "-"
+    }
+    
     let totalSeconds = milliseconds / 1000
     let days = totalSeconds / (24 * 3600)
     let hours = (totalSeconds % (24 * 3600)) / 3600
