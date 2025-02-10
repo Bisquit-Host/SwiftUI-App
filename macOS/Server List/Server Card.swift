@@ -46,6 +46,6 @@ struct ServerCard: View {
 }
 
 #Preview {
-    ServerCard(PreviewProperty.serverAttributes)
+    ServerCard(PreviewProp.serverAttributes)
         .environment(ServerListVM())
 }
