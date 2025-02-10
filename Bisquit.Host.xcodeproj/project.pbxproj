@@ -157,7 +157,6 @@
 		F31578B329675F5D0016A600 /* Server List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31578B229675F5D0016A600 /* Server List.swift */; };
 		F31578B5296760710016A600 /* Server Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31578B4296760710016A600 /* Server Card.swift */; };
 		F318240B2A8777E30039866C /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F318240A2A8777CD0039866C /* Provider.swift */; };
-		F318240D2A877BA90039866C /* Preview Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F318240C2A877BA90039866C /* Preview Extension.swift */; };
 		F3187A4E2C891B2A008FB911 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F337B4012A89CAF500DD79AA /* Intents.intentdefinition */; };
 		F318FE452A15925200DE0A5C /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = F318FE442A15925200DE0A5C /* OrderedCollections */; };
 		F318FE472A1592AB00DE0A5C /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = F318FE462A1592AB00DE0A5C /* OrderedCollections */; };
@@ -1656,7 +1655,6 @@
 		F31578B229675F5D0016A600 /* Server List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List.swift"; sourceTree = "<group>"; };
 		F31578B4296760710016A600 /* Server Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card.swift"; sourceTree = "<group>"; };
 		F318240A2A8777CD0039866C /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
-		F318240C2A877BA90039866C /* Preview Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preview Extension.swift"; sourceTree = "<group>"; };
 		F31B444F297550CD0036868F /* Stats Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stats Tab.swift"; sourceTree = "<group>"; };
 		F31BA5232958FF7C0006D126 /* Bisquit.Host.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bisquit.Host.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F31BA5262958FF7C0006D126 /* Bisquit.Host App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bisquit.Host App.swift"; sourceTree = "<group>"; };
@@ -3082,7 +3080,6 @@
 				F38637432A8641150069F074 /* Info.plist */,
 				F38637442A8641150069F074 /* Widgets.entitlements */,
 				F337B4052A89FAC600DD79AA /* Entry.swift */,
-				F318240C2A877BA90039866C /* Preview Extension.swift */,
 				F318240A2A8777CD0039866C /* Provider.swift */,
 				F36B737C2C8AEA6B00E858FE /* Network Calls */,
 				F36B73782C8AE9CD00E858FE /* Intents */,
@@ -5376,7 +5373,6 @@
 				F323BFA22B20DC9000116B97 /* Power Widget.swift in Sources */,
 				F337B4062A89FAC600DD79AA /* Entry.swift in Sources */,
 				F3FDFF882C8912F1009EBB5C /* Networking.swift in Sources */,
-				F318240D2A877BA90039866C /* Preview Extension.swift in Sources */,
 				F337B4092A89FB4300DD79AA /* System Small Widget View.swift in Sources */,
 				F36B738E2C8AEC8400E858FE /* Resources Usage Entry.swift in Sources */,
 				F342FAAB2B2C67F800854270 /* Ansi.swift in Sources */,
