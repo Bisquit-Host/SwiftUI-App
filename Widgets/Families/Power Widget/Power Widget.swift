@@ -7,7 +7,7 @@ struct PowerWidget: Widget {
     var body: some WidgetConfiguration {
         AppIntentConfiguration(
             kind: kind,
-//            intent: ConfigurationAppIntent.self,
+            intent: ConfigurationAppIntent.self,
             provider: PowerProvider()
         ) { entry in
             VStack {
