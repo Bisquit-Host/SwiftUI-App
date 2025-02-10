@@ -30,26 +30,26 @@ struct CryptoPriceWidgetView: View {
             
             Button("Update", intent: RefreshIntent())
             
-//            CircularGauge(
-//                param: "CPU",
-//                value: vm.cpuUsage,
-//                limit: limits.cpu,
-//                isRedacted: vm.isLoading
-//            )
-//            
-//            CircularGauge(
-//                param: "RAM",
-//                value: vm.ramUsage,
-//                limit: limits.memory,
-//                isRedacted: vm.isLoading
-//            )
-//            
-//            CircularGauge(
-//                param: "SSD",
-//                value: vm.diskUsage,
-//                limit: limits.disk,
-//                isRedacted: vm.isLoading
-//            )
+            //            CircularGauge(
+            //                param: "CPU",
+            //                value: vm.cpuUsage,
+            //                limit: limits.cpu,
+            //                isRedacted: vm.isLoading
+            //            )
+            //
+            //            CircularGauge(
+            //                param: "RAM",
+            //                value: vm.ramUsage,
+            //                limit: limits.memory,
+            //                isRedacted: vm.isLoading
+            //            )
+            //
+            //            CircularGauge(
+            //                param: "SSD",
+            //                value: vm.diskUsage,
+            //                limit: limits.disk,
+            //                isRedacted: vm.isLoading
+            //            )
         }
         .containerBackground(for: .widget) {}
     }
