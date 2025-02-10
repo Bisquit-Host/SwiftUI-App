@@ -1390,14 +1390,14 @@
 		F3E467532A49903900FABE5F /* Info Stat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E467512A49903900FABE5F /* Info Stat.swift */; };
 		F3E467552A49939300FABE5F /* Info Relative Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E467542A49939300FABE5F /* Info Relative Stats.swift */; };
 		F3E467562A49939300FABE5F /* Info Relative Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E467542A49939300FABE5F /* Info Relative Stats.swift */; };
-		F3E679AD2D5A854700A7ADDE /* ServerOptionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E679AC2D5A854700A7ADDE /* ServerOptionsProvider.swift */; };
-		F3E679AE2D5A854700A7ADDE /* ServerOptionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E679AC2D5A854700A7ADDE /* ServerOptionsProvider.swift */; };
-		F3E679AF2D5A854700A7ADDE /* ServerOptionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E679AC2D5A854700A7ADDE /* ServerOptionsProvider.swift */; };
-		F3E679B02D5A854700A7ADDE /* ServerOptionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E679AC2D5A854700A7ADDE /* ServerOptionsProvider.swift */; };
-		F3E679B12D5A854700A7ADDE /* ServerOptionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E679AC2D5A854700A7ADDE /* ServerOptionsProvider.swift */; };
-		F3E679B22D5A854700A7ADDE /* ServerOptionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E679AC2D5A854700A7ADDE /* ServerOptionsProvider.swift */; };
-		F3E679B32D5A854700A7ADDE /* ServerOptionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E679AC2D5A854700A7ADDE /* ServerOptionsProvider.swift */; };
-		F3E679B42D5AB23A00A7ADDE /* ServerOptionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E679AC2D5A854700A7ADDE /* ServerOptionsProvider.swift */; };
+		F3E679AD2D5A854700A7ADDE /* Server Options Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E679AC2D5A854700A7ADDE /* Server Options Provider.swift */; };
+		F3E679AE2D5A854700A7ADDE /* Server Options Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E679AC2D5A854700A7ADDE /* Server Options Provider.swift */; };
+		F3E679AF2D5A854700A7ADDE /* Server Options Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E679AC2D5A854700A7ADDE /* Server Options Provider.swift */; };
+		F3E679B02D5A854700A7ADDE /* Server Options Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E679AC2D5A854700A7ADDE /* Server Options Provider.swift */; };
+		F3E679B12D5A854700A7ADDE /* Server Options Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E679AC2D5A854700A7ADDE /* Server Options Provider.swift */; };
+		F3E679B22D5A854700A7ADDE /* Server Options Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E679AC2D5A854700A7ADDE /* Server Options Provider.swift */; };
+		F3E679B32D5A854700A7ADDE /* Server Options Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E679AC2D5A854700A7ADDE /* Server Options Provider.swift */; };
+		F3E679B42D5AB23A00A7ADDE /* Server Options Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E679AC2D5A854700A7ADDE /* Server Options Provider.swift */; };
 		F3E6FC432A1E677000410C7C /* Bisquits.sks in Resources */ = {isa = PBXBuildFile; fileRef = F3E6FC422A1E677000410C7C /* Bisquits.sks */; };
 		F3E6FC442A1E677000410C7C /* Bisquits.sks in Resources */ = {isa = PBXBuildFile; fileRef = F3E6FC422A1E677000410C7C /* Bisquits.sks */; };
 		F3E6FC462A1E85D600410C7C /* SptiteKit BisquitFall.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6FC452A1E85D600410C7C /* SptiteKit BisquitFall.swift */; };
@@ -2031,7 +2031,7 @@
 		F3E2BF0A2C1EC94300B7A6D4 /* Contacts VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contacts VM.swift"; sourceTree = "<group>"; };
 		F3E467512A49903900FABE5F /* Info Stat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Stat.swift"; sourceTree = "<group>"; };
 		F3E467542A49939300FABE5F /* Info Relative Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Relative Stats.swift"; sourceTree = "<group>"; };
-		F3E679AC2D5A854700A7ADDE /* ServerOptionsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerOptionsProvider.swift; sourceTree = "<group>"; };
+		F3E679AC2D5A854700A7ADDE /* Server Options Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Options Provider.swift"; sourceTree = "<group>"; };
 		F3E6FC422A1E677000410C7C /* Bisquits.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Bisquits.sks; sourceTree = "<group>"; };
 		F3E6FC452A1E85D600410C7C /* SptiteKit BisquitFall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SptiteKit BisquitFall.swift"; sourceTree = "<group>"; };
 		F3E8415529FECB6800609DA3 /* Browser Sticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Browser Sticker.swift"; sourceTree = "<group>"; };
@@ -2782,7 +2782,7 @@
 				F3464CFA2A862D2D00188B0C /* Intent Extension.swift */,
 				F3573BC12C6511040051259E /* Intents.intentdefinition */,
 				F3464CFE2A862D2D00188B0C /* Info.plist */,
-				F3E679AC2D5A854700A7ADDE /* ServerOptionsProvider.swift */,
+				F3E679AC2D5A854700A7ADDE /* Server Options Provider.swift */,
 				F3464D0D2A862EC100188B0C /* Intents */,
 				F3464D0C2A862EB600188B0C /* Enum */,
 			);
@@ -4348,7 +4348,7 @@
 				F37080502A2A1EB30046CE70 /* Schedule Card.swift in Sources */,
 				F3464D202A86396600188B0C /* Change Power.swift in Sources */,
 				F3DDD59D2A62AC7C009FDFBF /* Create Backup Button.swift in Sources */,
-				F3E679AE2D5A854700A7ADDE /* ServerOptionsProvider.swift in Sources */,
+				F3E679AE2D5A854700A7ADDE /* Server Options Provider.swift in Sources */,
 				F3796562295C519C0074CA3D /* Chart View.swift in Sources */,
 				F37266CC29D96C93005FD103 /* Websocket Message.swift in Sources */,
 				F35FEB0A2B09F003004DA05D /* API Key.swift in Sources */,
@@ -4738,7 +4738,7 @@
 				F3CCB1CC2CAE75D0000F8207 /* Debug Settings.swift in Sources */,
 				F30088A92B3A1A500051476C /* Schedule VM.swift in Sources */,
 				F314616A2D5A1F5E00547B6C /* Icon.swift in Sources */,
-				F3E679B32D5A854700A7ADDE /* ServerOptionsProvider.swift in Sources */,
+				F3E679B32D5A854700A7ADDE /* Server Options Provider.swift in Sources */,
 				F3FDFF912C89150D009EBB5C /* Networking.swift in Sources */,
 				F31BA5862959016D0006D126 /* SpriteKit Pyzh.swift in Sources */,
 				F30089002B3B62450051476C /* User Invitation Permission.swift in Sources */,
@@ -4813,7 +4813,7 @@
 				F30088FB2B3B56210051476C /* User List Parent.swift in Sources */,
 				F333B3BA2B80CF750005B84D /* Preview Property.swift in Sources */,
 				F3499EF82A275556006101B7 /* Websocket Message.swift in Sources */,
-				F3E679B02D5A854700A7ADDE /* ServerOptionsProvider.swift in Sources */,
+				F3E679B02D5A854700A7ADDE /* Server Options Provider.swift in Sources */,
 				F30C12FD2A54546900A7EFF0 /* App Container.swift in Sources */,
 				F3C9D85D2B31146E00265492 /* User Avatar.swift in Sources */,
 				F3D558B22A33C6A000608447 /* File Tab VM.swift in Sources */,
@@ -4946,7 +4946,7 @@
 				F38F9E2D2CEB39D80033EFE3 /* Metadata List.swift in Sources */,
 				F3D037012CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift in Sources */,
 				F354E9842A48CA2000F6E359 /* Topbar Grid Button.swift in Sources */,
-				F3E679B12D5A854700A7ADDE /* ServerOptionsProvider.swift in Sources */,
+				F3E679B12D5A854700A7ADDE /* Server Options Provider.swift in Sources */,
 				F36D531F2A05B82B007324C6 /* Info Tab.swift in Sources */,
 				F36D530E2A05B6CE007324C6 /* Browser.swift in Sources */,
 				F39872112A1AE3CE0022B00E /* Video Player.swift in Sources */,
@@ -5360,7 +5360,7 @@
 				F314617B2D5A829800547B6C /* Networking.swift in Sources */,
 				F3464CFB2A862D2D00188B0C /* Intent Extension.swift in Sources */,
 				F3573BC82C6511040051259E /* Intents.intentdefinition in Sources */,
-				F3E679AF2D5A854700A7ADDE /* ServerOptionsProvider.swift in Sources */,
+				F3E679AF2D5A854700A7ADDE /* Server Options Provider.swift in Sources */,
 				F314617C2D5A82C700547B6C /* Model Asset.swift in Sources */,
 				F3464D082A862DC200188B0C /* Change Power.swift in Sources */,
 				F3464D0F2A862F9700188B0C /* Send Command.swift in Sources */,
@@ -5393,7 +5393,7 @@
 				F3187A4E2C891B2A008FB911 /* Intents.intentdefinition in Sources */,
 				F3287A792B10A11E001AFE54 /* Live Activity.swift in Sources */,
 				F3CE5C972D5412C60094BD7B /* Intent Handler.swift in Sources */,
-				F3E679B42D5AB23A00A7ADDE /* ServerOptionsProvider.swift in Sources */,
+				F3E679B42D5AB23A00A7ADDE /* Server Options Provider.swift in Sources */,
 				F323BFA52B211C3700116B97 /* Power Entry.swift in Sources */,
 				F36B738A2C8AEC3D00E858FE /* Timeline Provider.swift in Sources */,
 				F371468E2B123807001E0296 /* Activity View State.swift in Sources */,
@@ -5597,7 +5597,7 @@
 				F3F2BBA92A540DF900D44CA6 /* Nav State.swift in Sources */,
 				F34F289F2ACDADA600FD618A /* Animated Tab.swift in Sources */,
 				F3A7CF6B2A44F6E000331B51 /* Circular Gauge.swift in Sources */,
-				F3E679B22D5A854700A7ADDE /* ServerOptionsProvider.swift in Sources */,
+				F3E679B22D5A854700A7ADDE /* Server Options Provider.swift in Sources */,
 				F38928282A441D0C00561CDF /* Dev Settings.swift in Sources */,
 				F389282E2A445E4F00561CDF /* App Settings.swift in Sources */,
 				F37B90782BFEA00300597624 /* Ornament Info Properties.swift in Sources */,
@@ -5671,7 +5671,7 @@
 				F3FD9F9E2C651F4800A69314 /* Sensitivity Analyzer.swift in Sources */,
 				F3573BC42C6511040051259E /* Intents.intentdefinition in Sources */,
 				F3DF50CC2B38FDE500206CAE /* Permissions Header.swift in Sources */,
-				F3E679AD2D5A854700A7ADDE /* ServerOptionsProvider.swift in Sources */,
+				F3E679AD2D5A854700A7ADDE /* Server Options Provider.swift in Sources */,
 				F300889B2B3A0E1A0051476C /* Startup VM.swift in Sources */,
 				F33DE5092B364EBC00E257D8 /* Tab Info.swift in Sources */,
 				F35F65942B1D1A0B00431EB7 /* Panel VM.swift in Sources */,

@@ -8,7 +8,7 @@ struct CreateBackup: AppIntent, PredictableIntent {
     @Parameter(title: "Server id", optionsProvider: ServerOptionsProvider())
     var id: String
     
-    @Parameter(title: "Backup name")
+    @Parameter(title: "Backup name", description: "Optional", default: "")
     var backupName: String
     
     static var parameterSummary: some ParameterSummary {
