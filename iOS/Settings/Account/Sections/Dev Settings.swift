@@ -15,7 +15,7 @@ struct DevSettings: View {
     }
     
     private var version: String {
-        "\(appVersion) (\(appBuild))"
+        "\(appVersion) (B\(appBuild))"
     }
     
     private var deviceAndSystem: String {

@@ -21,7 +21,7 @@ struct AppSettings: View {
     }
     
     private var version: String {
-        "\(appVersion) (\(appBuild))"
+        "\(appVersion) (B\(appBuild))"
     }
     
     var body: some View {
