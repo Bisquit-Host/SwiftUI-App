@@ -19,7 +19,6 @@ struct FileView: View {
     }
     
     @State private var isExtended = false
-    @Namespace private var namespace
     
     var body: some View {
         let name = file.name
@@ -45,7 +44,6 @@ struct FileView: View {
                     }
                 }
                 .environmentObject(vm)
-                .navigationZoomTransition("zoom", in: namespace)
             }
         } label: {
             HStack {
@@ -79,7 +77,6 @@ struct FileView: View {
                         .secondary()
                 }
             }
-            .matchedTransitionSource("zoom", in: namespace)
         }
         .fileContextMenu(id, file: file, at: root)
     }
