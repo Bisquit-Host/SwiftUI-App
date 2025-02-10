@@ -10,8 +10,6 @@ struct SettingsView: View {
         @Bindable var vm = vm
         
         List {
-            AccountSettings()
-            
             DesignSettings()
             
             IconSettings()

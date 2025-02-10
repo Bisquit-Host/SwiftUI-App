@@ -132,6 +132,15 @@
 		F314616F2D5A1F8100547B6C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31461692D5A1F5E00547B6C /* Icon.swift */; };
 		F31461702D5A1F8100547B6C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31461692D5A1F5E00547B6C /* Icon.swift */; };
 		F31461712D5A1F8100547B6C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31461692D5A1F5E00547B6C /* Icon.swift */; };
+		F31461722D5A2B2B00547B6C /* Account Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA4DE92A4CE82000547722 /* Account Settings.swift */; };
+		F31461732D5A2B3800547B6C /* Credential Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BBE36329AF97D800323C6B /* Credential Field.swift */; };
+		F31461742D5A2B3800547B6C /* Credentials Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DC4E2129AEAF3E00D27EC5 /* Credentials Button.swift */; };
+		F31461752D5A2B3800547B6C /* Credentials VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E97C7829B4B569008CBDD6 /* Credentials VM.swift */; };
+		F31461762D5A2B3800547B6C /* Credentials View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DC4E2529AEC36300D27EC5 /* Credentials View.swift */; };
+		F31461772D5A2B4200547B6C /* Apikey VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33001402A4CEF840063FE0F /* Apikey VM.swift */; };
+		F31461782D5A2B6A00547B6C /* Apikey List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F330013A2A4CEC320063FE0F /* Apikey List.swift */; };
+		F31461792D5A2B7F00547B6C /* Apikey Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33001432A4CF06D0063FE0F /* Apikey Card.swift */; };
+		F314617A2D5A2B8B00547B6C /* Create Apikey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337D7582A4DBC840011524E /* Create Apikey.swift */; };
 		F31485212A34665000AF5CCA /* Browser Sticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E8415529FECB6800609DA3 /* Browser Sticker.swift */; };
 		F31578B329675F5D0016A600 /* Server List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31578B229675F5D0016A600 /* Server List.swift */; };
 		F31578B5296760710016A600 /* Server Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31578B4296760710016A600 /* Server Card.swift */; };
@@ -5373,11 +5382,14 @@
 				F3A7CF142C8C4E3E00413400 /* Discover Item.swift in Sources */,
 				F3A7CEDC2C8B95CB00413400 /* Home View.swift in Sources */,
 				F3255E1B2C904A3C008E04DE /* Account Parent.swift in Sources */,
+				F31461792D5A2B7F00547B6C /* Apikey Card.swift in Sources */,
 				F3A7CEED2C8BB78A00413400 /* Server Card.swift in Sources */,
 				F3A7CF0A2C8BBCD400413400 /* Formatters.swift in Sources */,
 				F3202C762D5583680030B3CC /* Browser Parent.swift in Sources */,
+				F31461772D5A2B4200547B6C /* Apikey VM.swift in Sources */,
 				F3A7CF092C8BBC7A00413400 /* Carousel Button Style.swift in Sources */,
 				F3A7CEE12C8B9BB700413400 /* App Container.swift in Sources */,
+				F31461722D5A2B2B00547B6C /* Account Settings.swift in Sources */,
 				F3202D0E2D562AE30030B3CC /* Browser List Web.swift in Sources */,
 				F3A7CEF02C8BB79B00413400 /* Server Name.swift in Sources */,
 				F3A7CEFE2C8BB97400413400 /* Server List.swift in Sources */,
@@ -5405,9 +5417,14 @@
 				F3202D1D2D562B980030B3CC /* Browser Card VDS.swift in Sources */,
 				F3A7CEEE2C8BB78F00413400 /* Gauge Regular.swift in Sources */,
 				F3AB4A902CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
+				F31461782D5A2B6A00547B6C /* Apikey List.swift in Sources */,
 				F3A7CEE52C8B9E7500413400 /* Messages VM.swift in Sources */,
 				F3202C812D558B210030B3CC /* Spotlight Index.swift in Sources */,
 				F37CE9C12D555D4400716D28 /* Value Store.swift in Sources */,
+				F31461732D5A2B3800547B6C /* Credential Field.swift in Sources */,
+				F31461742D5A2B3800547B6C /* Credentials Button.swift in Sources */,
+				F31461752D5A2B3800547B6C /* Credentials VM.swift in Sources */,
+				F31461762D5A2B3800547B6C /* Credentials View.swift in Sources */,
 				F3202D242D562B990030B3CC /* Browser Card Web.swift in Sources */,
 				F3A7CF662C8CA60E00413400 /* Cloud Key Context Menu.swift in Sources */,
 				F37CE9C42D555D9600716D28 /* Server List VM.swift in Sources */,
@@ -5418,6 +5435,7 @@
 				F3A7CEE92C8BB73300413400 /* Enums.swift in Sources */,
 				F3255E1A2C904A03008E04DE /* Settings View.swift in Sources */,
 				F3202CCD2D559B240030B3CC /* Contacts Provider.swift in Sources */,
+				F314617A2D5A2B8B00547B6C /* Create Apikey.swift in Sources */,
 				F31F31FA2D52BD940095DD19 /* System.swift in Sources */,
 				F3A7CF152C8C4E4300413400 /* Map List.swift in Sources */,
 				F37CE9C32D555D5A00716D28 /* Tab Info.swift in Sources */,

@@ -21,6 +21,8 @@ struct AccountView: View {
             }
             .listRowBackground(store.transparentList ? .clear : Color.list)
             
+            AccountSettings()
+            
             Section("2FA") {
                 if vm.twoFaEnabled {
                     Menu {
