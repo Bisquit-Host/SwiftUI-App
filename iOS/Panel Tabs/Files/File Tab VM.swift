@@ -145,7 +145,7 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func handleFileImport(_ urls: [URL], root: String) {
+    func handleFileImport(_ urls: [URL], root: String, onSuccess: @escaping () -> Void) {
         for fileURL in urls {
             let fileName = fileURL.lastPathComponent
             
@@ -169,6 +169,8 @@ final class FileTabVM: ObservableObject {
                         )
                         
                         self.fetchFiles(root)
+                        
+                        onSuccess()
                     }
                     
                 case .failure(let error):

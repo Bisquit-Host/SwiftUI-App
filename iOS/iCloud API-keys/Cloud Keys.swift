@@ -39,16 +39,11 @@ struct CloudKeys: View {
 #if !os(watchOS)
                 .listRowBackground(store.transparentList ? .clear : Color.list)
 #endif
-                
-#if os(visionOS)
-                Button("Dismiss") {
-                    dismiss()
-                }
-#endif
             }
 #if !os(tvOS)
             .scrollContentBackground(store.transparentSheet ? .hidden : .visible)
 #endif
+            .ornamentDismissButton()
             .presentationBackground(store.transparentSheet ? .ultraThinMaterial : .regular)
             .navigationTitle("iCloud")
             .toolbarTitleDisplayMode(.inline)

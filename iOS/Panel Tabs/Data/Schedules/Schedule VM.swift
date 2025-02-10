@@ -78,7 +78,7 @@ final class ScheduleVM {
         }
     }
     
-    func createScheduleTask(_ scheduleId: Int, newTask: NewScheduleTask) {
+    func createScheduleTask(_ scheduleId: Int, newTask: NewScheduleTask, onSuccess: @escaping () -> Void) {
         scheduleTaskCreateAPI(id, scheduleId: scheduleId, newTask: newTask) { result in
             switch result {
             case .success(let model):
@@ -90,6 +90,8 @@ final class ScheduleVM {
                             self.schedules[index].relationships.tasks.data.append(model)
                         }
                     }
+                    
+                    onSuccess()
                 }
                 
             case .failure(let error):

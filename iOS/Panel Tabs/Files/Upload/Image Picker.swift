@@ -45,8 +45,9 @@ struct ImagePicker: View {
                 Spacer()
                 
                 Button("Upload") {
-                    vm.handleFileImport(previewUrls, root: root)
-                    dismiss()
+                    vm.handleFileImport(previewUrls, root: root) {
+                        dismiss()
+                    }
                 }
             }
             .semibold()

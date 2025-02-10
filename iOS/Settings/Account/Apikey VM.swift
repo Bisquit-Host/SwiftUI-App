@@ -33,6 +33,8 @@ final class ApikeyVM {
                         
                         SystemAlert.copied()
                     }
+                    
+                    self.fetchKeys()
                 }
                 
             case .failure(let error):

@@ -25,14 +25,14 @@ struct SheetRemoteFile: View {
             Toggle("Use header", isOn: $remoteFile.use_header)
             
             Section {
-                Button("Confirm", role: .cancel) {
+                Button("Cancel") {
+                    dismiss()
+                }
+                
+                Button("Confirm") {
                     vm.pullRemoteFile(remoteFile, dir: root) {
                         dismiss()
                     }
-                }
-                
-                Button("Cancel", role: .destructive) {
-                    dismiss()
                 }
             }
         }
