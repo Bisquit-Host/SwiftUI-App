@@ -615,7 +615,7 @@
 		F36B73862C8AEAE700E858FE /* Model Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B73852C8AEAE700E858FE /* Model Asset.swift */; };
 		F36B73872C8AEAE700E858FE /* Model Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B73852C8AEAE700E858FE /* Model Asset.swift */; };
 		F36B73882C8AEAE700E858FE /* Model Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B73852C8AEAE700E858FE /* Model Asset.swift */; };
-		F36B738A2C8AEC3D00E858FE /* Timeline Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B73892C8AEC3D00E858FE /* Timeline Provider.swift */; };
+		F36B738A2C8AEC3D00E858FE /* Resources Timeline Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B73892C8AEC3D00E858FE /* Resources Timeline Provider.swift */; };
 		F36B738E2C8AEC8400E858FE /* Resources Usage Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B738D2C8AEC8400E858FE /* Resources Usage Entry.swift */; };
 		F36B73902C8AECB000E858FE /* Resources Widget View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B738F2C8AECB000E858FE /* Resources Widget View.swift */; };
 		F36B739B2C8B073B00E858FE /* AudioVisualizer in Frameworks */ = {isa = PBXBuildFile; productRef = F36B739A2C8B073B00E858FE /* AudioVisualizer */; };
@@ -1793,7 +1793,7 @@
 		F36B736F2C8A4CAF00E858FE /* Refresh Button Intent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Refresh Button Intent.swift"; sourceTree = "<group>"; };
 		F36B73792C8AE9D400E858FE /* Power Actions Intents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Actions Intents.swift"; sourceTree = "<group>"; };
 		F36B73852C8AEAE700E858FE /* Model Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model Asset.swift"; sourceTree = "<group>"; };
-		F36B73892C8AEC3D00E858FE /* Timeline Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timeline Provider.swift"; sourceTree = "<group>"; };
+		F36B73892C8AEC3D00E858FE /* Resources Timeline Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Resources Timeline Provider.swift"; sourceTree = "<group>"; };
 		F36B738D2C8AEC8400E858FE /* Resources Usage Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Resources Usage Entry.swift"; sourceTree = "<group>"; };
 		F36B738F2C8AECB000E858FE /* Resources Widget View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Resources Widget View.swift"; sourceTree = "<group>"; };
 		F36B73A22C8B0B7B00E858FE /* Audio Player View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Audio Player View.swift"; sourceTree = "<group>"; };
@@ -2889,7 +2889,7 @@
 				F3FDFF8A2C89130F009EBB5C /* Resources Widget.swift */,
 				F36B738F2C8AECB000E858FE /* Resources Widget View.swift */,
 				F36B738D2C8AEC8400E858FE /* Resources Usage Entry.swift */,
-				F36B73892C8AEC3D00E858FE /* Timeline Provider.swift */,
+				F36B73892C8AEC3D00E858FE /* Resources Timeline Provider.swift */,
 			);
 			path = "Resources Widget";
 			sourceTree = "<group>";
@@ -5373,7 +5373,7 @@
 				F3CE5C972D5412C60094BD7B /* Intent Handler.swift in Sources */,
 				F3E679B42D5AB23A00A7ADDE /* Server Options Provider.swift in Sources */,
 				F323BFA52B211C3700116B97 /* Power Entry.swift in Sources */,
-				F36B738A2C8AEC3D00E858FE /* Timeline Provider.swift in Sources */,
+				F36B738A2C8AEC3D00E858FE /* Resources Timeline Provider.swift in Sources */,
 				F371468E2B123807001E0296 /* Activity View State.swift in Sources */,
 				F386373E2A8641120069F074 /* System Small Widget.swift in Sources */,
 				F38637402A8641120069F074 /* Power Intent Config.swift in Sources */,

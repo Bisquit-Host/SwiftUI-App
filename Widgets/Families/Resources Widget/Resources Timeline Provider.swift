@@ -1,6 +1,6 @@
 import WidgetKit
 
-struct CryptoPriceTimelineProvider: IntentTimelineProvider {
+struct ResourcesTimelineProvider: IntentTimelineProvider {
     func placeholder(in context: Context) -> ResourcesUsageEntry {
         ResourcesUsageEntry(
             date: Date(),

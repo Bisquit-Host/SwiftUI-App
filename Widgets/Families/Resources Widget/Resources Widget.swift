@@ -8,7 +8,7 @@ struct ResourcesWidget: Widget {
         IntentConfiguration(
             kind: kind,
             intent: CryptoPriceConfigurationIntent.self,
-            provider: CryptoPriceTimelineProvider()
+            provider: ResourcesTimelineProvider()
         ) { entry in
             ResourcesWidgetView(entry)
         }

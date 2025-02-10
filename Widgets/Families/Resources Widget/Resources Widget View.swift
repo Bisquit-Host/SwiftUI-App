@@ -9,6 +9,10 @@ struct ResourcesWidgetView: View {
         self.entry = entry
     }
     
+    private var description: String {
+        entry.test?.usage.cpu.description ?? "Error"
+    }
+    
     var body: some View {
         VStack {
             HStack {
@@ -23,7 +27,7 @@ struct ResourcesWidgetView: View {
                 .caption2()
                 .padding(.bottom, 8)
             
-            Text(entry.test?.usage.cpu.description ?? "Error")
+            Text(description)
             
             Text(entry.date, format: .dateTime.minute().second())
                 .footnote()
@@ -56,7 +60,7 @@ struct ResourcesWidgetView: View {
 }
 
 #Preview(as: .systemMedium) {
-    SomeNewWidget()
+    ResourcesWidget()
 } timeline: {
     ResourcesUsageEntry(
         date: .now,
@@ -69,6 +73,7 @@ struct ResourcesWidgetView: View {
                 memory: 1024,
                 cpu: 200,
                 disk: 1024
-            ))
+            )
+        )
     )
 }
