@@ -157,7 +157,6 @@
 		F31578B329675F5D0016A600 /* Server List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31578B229675F5D0016A600 /* Server List.swift */; };
 		F31578B5296760710016A600 /* Server Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31578B4296760710016A600 /* Server Card.swift */; };
 		F318240B2A8777E30039866C /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F318240A2A8777CD0039866C /* Provider.swift */; };
-		F3187A4E2C891B2A008FB911 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F337B4012A89CAF500DD79AA /* Intents.intentdefinition */; };
 		F318FE452A15925200DE0A5C /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = F318FE442A15925200DE0A5C /* OrderedCollections */; };
 		F318FE472A1592AB00DE0A5C /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = F318FE462A1592AB00DE0A5C /* OrderedCollections */; };
 		F31B2D982A7AD8C800C08EE6 /* Ansi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39626F12A7AD64B0057E356 /* Ansi.swift */; };
@@ -1727,7 +1726,6 @@
 		F3317AEC2A45E26900CA104D /* Guide Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Guide Model.swift"; sourceTree = "<group>"; };
 		F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dynamic Island Badge.swift"; sourceTree = "<group>"; };
 		F337B3A729BC6B5400CC1195 /* Server List Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List Grid.swift"; sourceTree = "<group>"; };
-		F337B4012A89CAF500DD79AA /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
 		F337B4052A89FAC600DD79AA /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		F337B4082A89FB4300DD79AA /* System Small Widget View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "System Small Widget View.swift"; sourceTree = "<group>"; };
 		F337B40A2A89FC5100DD79AA /* Accessory Circular View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Accessory Circular View.swift"; sourceTree = "<group>"; };
@@ -3065,7 +3063,6 @@
 			isa = PBXGroup;
 			children = (
 				F386373B2A8641120069F074 /* Widgets Bundle.swift */,
-				F337B4012A89CAF500DD79AA /* Intents.intentdefinition */,
 				F3FDFF8C2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition */,
 				F38637412A8641150069F074 /* Assets.xcassets */,
 				F38637432A8641150069F074 /* Info.plist */,
@@ -5372,7 +5369,6 @@
 				F323BFA32B20DE4F00116B97 /* Network Calls.swift in Sources */,
 				F318240B2A8777E30039866C /* Provider.swift in Sources */,
 				F386373C2A8641120069F074 /* Widgets Bundle.swift in Sources */,
-				F3187A4E2C891B2A008FB911 /* Intents.intentdefinition in Sources */,
 				F3287A792B10A11E001AFE54 /* Live Activity.swift in Sources */,
 				F3CE5C972D5412C60094BD7B /* Intent Handler.swift in Sources */,
 				F3E679B42D5AB23A00A7ADDE /* Server Options Provider.swift in Sources */,
