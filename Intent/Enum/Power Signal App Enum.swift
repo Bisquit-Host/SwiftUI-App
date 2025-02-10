@@ -9,9 +9,9 @@ enum PowerSignalAppEnum: String, AppEnum {
     static var typeDisplayRepresentation = TypeDisplayRepresentation(name: "Power Signal")
     
     static var caseDisplayRepresentations: [Self: DisplayRepresentation] = [
-        .start: "Start",
-        .stop: "Stop",
+        .start:   "Start",
+        .stop:    "Stop",
         .restart: "Restart",
-        .kill: "Kill"
+        .kill:    "Kill"
     ]
 }

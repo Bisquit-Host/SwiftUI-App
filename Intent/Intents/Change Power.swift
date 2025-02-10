@@ -7,7 +7,7 @@ struct ChangePower: AppIntent, CustomIntentMigratedAppIntent, PredictableIntent 
     static var title: LocalizedStringResource = "Change Power"
     static var description = IntentDescription("Sends a power signal to the server", searchKeywords: ["Minecraft"])
     
-    @Parameter(title: "Server id")
+    @Parameter(title: "Server id", optionsProvider: ServerOptionsProvider())
     var id: String
     
     @Parameter(title: "Power Signal", default: .start)
@@ -29,28 +29,17 @@ struct ChangePower: AppIntent, CustomIntentMigratedAppIntent, PredictableIntent 
         }
     }
     
-    // func perform() async throws -> some IntentResult & ReturnsValue<Int> {
-    func perform() async throws -> some IntentResult {
-        var powerSignal = ServerSignal.start
-        
-        switch signal {
-        case .stop:
-            powerSignal = .stop
-            
-        case .restart:
-            powerSignal = .restart
-            
-        case .kill:
-            powerSignal = .kill
-            
-        default:
-            powerSignal = .start
+    func perform() async throws -> some IntentResult /*& ReturnsValue<Int>*/ {
+        let powerSignal: ServerSignal = switch signal {
+        case .stop:    .stop
+        case .restart: .restart
+        case .kill:    .kill
+        default:       .start
         }
         
         PteroNet.powerSignal(id, signal: powerSignal)
         
         return .result()
-        // return .result(value: Int(/* fill in result initializer here */))
     }
 }
 

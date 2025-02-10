@@ -141,6 +141,18 @@
 		F31461782D5A2B6A00547B6C /* Apikey List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F330013A2A4CEC320063FE0F /* Apikey List.swift */; };
 		F31461792D5A2B7F00547B6C /* Apikey Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33001432A4CF06D0063FE0F /* Apikey Card.swift */; };
 		F314617A2D5A2B8B00547B6C /* Create Apikey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337D7582A4DBC840011524E /* Create Apikey.swift */; };
+		F314617B2D5A829800547B6C /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF872C8912F1009EBB5C /* Networking.swift */; };
+		F314617C2D5A82C700547B6C /* Model Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B73852C8AEAE700E858FE /* Model Asset.swift */; };
+		F314617D2D5A82F000547B6C /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF872C8912F1009EBB5C /* Networking.swift */; };
+		F314617E2D5A82F000547B6C /* Model Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B73852C8AEAE700E858FE /* Model Asset.swift */; };
+		F314617F2D5A82F000547B6C /* Model Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B73852C8AEAE700E858FE /* Model Asset.swift */; };
+		F31461802D5A82F000547B6C /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF872C8912F1009EBB5C /* Networking.swift */; };
+		F31461812D5A82F000547B6C /* Model Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B73852C8AEAE700E858FE /* Model Asset.swift */; };
+		F31461822D5A82F000547B6C /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF872C8912F1009EBB5C /* Networking.swift */; };
+		F31461832D5A82F000547B6C /* Model Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B73852C8AEAE700E858FE /* Model Asset.swift */; };
+		F31461842D5A82F000547B6C /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF872C8912F1009EBB5C /* Networking.swift */; };
+		F31461852D5A830E00547B6C /* Model Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B73852C8AEAE700E858FE /* Model Asset.swift */; };
+		F31461862D5A830E00547B6C /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF872C8912F1009EBB5C /* Networking.swift */; };
 		F31485212A34665000AF5CCA /* Browser Sticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E8415529FECB6800609DA3 /* Browser Sticker.swift */; };
 		F31578B329675F5D0016A600 /* Server List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31578B229675F5D0016A600 /* Server List.swift */; };
 		F31578B5296760710016A600 /* Server Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31578B4296760710016A600 /* Server Card.swift */; };
@@ -462,7 +474,7 @@
 		F3458BF02B36EA49000E8324 /* App Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D52B242B13FE9C00167DD6 /* App Delegate.swift */; };
 		F3464CFB2A862D2D00188B0C /* Intent Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3464CFA2A862D2D00188B0C /* Intent Extension.swift */; };
 		F3464D022A862D2D00188B0C /* Intent.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = F3464CF82A862D2C00188B0C /* Intent.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		F3464D072A862DBE00188B0C /* PowerSignalAppEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392DF372A8593E50049EF7A /* PowerSignalAppEnum.swift */; };
+		F3464D072A862DBE00188B0C /* Power Signal App Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392DF372A8593E50049EF7A /* Power Signal App Enum.swift */; };
 		F3464D082A862DC200188B0C /* Change Power.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392DF362A8593E50049EF7A /* Change Power.swift */; };
 		F3464D0F2A862F9700188B0C /* Send Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3464D0E2A862F9700188B0C /* Send Command.swift */; };
 		F3464D112A8632F200188B0C /* Create Backup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3464D102A8632F200188B0C /* Create Backup.swift */; };
@@ -472,12 +484,12 @@
 		F3464D212A86396700188B0C /* Change Power.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392DF362A8593E50049EF7A /* Change Power.swift */; };
 		F3464D222A86396700188B0C /* Change Power.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392DF362A8593E50049EF7A /* Change Power.swift */; };
 		F3464D232A86396800188B0C /* Change Power.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392DF362A8593E50049EF7A /* Change Power.swift */; };
-		F3464D242A86397E00188B0C /* PowerSignalAppEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392DF372A8593E50049EF7A /* PowerSignalAppEnum.swift */; };
-		F3464D252A86397F00188B0C /* PowerSignalAppEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392DF372A8593E50049EF7A /* PowerSignalAppEnum.swift */; };
-		F3464D262A86397F00188B0C /* PowerSignalAppEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392DF372A8593E50049EF7A /* PowerSignalAppEnum.swift */; };
-		F3464D272A86398000188B0C /* PowerSignalAppEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392DF372A8593E50049EF7A /* PowerSignalAppEnum.swift */; };
-		F3464D282A86398000188B0C /* PowerSignalAppEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392DF372A8593E50049EF7A /* PowerSignalAppEnum.swift */; };
-		F3464D292A86398100188B0C /* PowerSignalAppEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392DF372A8593E50049EF7A /* PowerSignalAppEnum.swift */; };
+		F3464D242A86397E00188B0C /* Power Signal App Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392DF372A8593E50049EF7A /* Power Signal App Enum.swift */; };
+		F3464D252A86397F00188B0C /* Power Signal App Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392DF372A8593E50049EF7A /* Power Signal App Enum.swift */; };
+		F3464D262A86397F00188B0C /* Power Signal App Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392DF372A8593E50049EF7A /* Power Signal App Enum.swift */; };
+		F3464D272A86398000188B0C /* Power Signal App Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392DF372A8593E50049EF7A /* Power Signal App Enum.swift */; };
+		F3464D282A86398000188B0C /* Power Signal App Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392DF372A8593E50049EF7A /* Power Signal App Enum.swift */; };
+		F3464D292A86398100188B0C /* Power Signal App Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392DF372A8593E50049EF7A /* Power Signal App Enum.swift */; };
 		F3464D2A2A863A6000188B0C /* Create Backup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3464D102A8632F200188B0C /* Create Backup.swift */; };
 		F3464D2B2A863A6000188B0C /* Create Backup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3464D102A8632F200188B0C /* Create Backup.swift */; };
 		F3464D2C2A863A6100188B0C /* Create Backup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3464D102A8632F200188B0C /* Create Backup.swift */; };
@@ -1378,6 +1390,13 @@
 		F3E467532A49903900FABE5F /* Info Stat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E467512A49903900FABE5F /* Info Stat.swift */; };
 		F3E467552A49939300FABE5F /* Info Relative Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E467542A49939300FABE5F /* Info Relative Stats.swift */; };
 		F3E467562A49939300FABE5F /* Info Relative Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E467542A49939300FABE5F /* Info Relative Stats.swift */; };
+		F3E679AD2D5A854700A7ADDE /* ServerOptionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E679AC2D5A854700A7ADDE /* ServerOptionsProvider.swift */; };
+		F3E679AE2D5A854700A7ADDE /* ServerOptionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E679AC2D5A854700A7ADDE /* ServerOptionsProvider.swift */; };
+		F3E679AF2D5A854700A7ADDE /* ServerOptionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E679AC2D5A854700A7ADDE /* ServerOptionsProvider.swift */; };
+		F3E679B02D5A854700A7ADDE /* ServerOptionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E679AC2D5A854700A7ADDE /* ServerOptionsProvider.swift */; };
+		F3E679B12D5A854700A7ADDE /* ServerOptionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E679AC2D5A854700A7ADDE /* ServerOptionsProvider.swift */; };
+		F3E679B22D5A854700A7ADDE /* ServerOptionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E679AC2D5A854700A7ADDE /* ServerOptionsProvider.swift */; };
+		F3E679B32D5A854700A7ADDE /* ServerOptionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E679AC2D5A854700A7ADDE /* ServerOptionsProvider.swift */; };
 		F3E6FC432A1E677000410C7C /* Bisquits.sks in Resources */ = {isa = PBXBuildFile; fileRef = F3E6FC422A1E677000410C7C /* Bisquits.sks */; };
 		F3E6FC442A1E677000410C7C /* Bisquits.sks in Resources */ = {isa = PBXBuildFile; fileRef = F3E6FC422A1E677000410C7C /* Bisquits.sks */; };
 		F3E6FC462A1E85D600410C7C /* SptiteKit BisquitFall.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6FC452A1E85D600410C7C /* SptiteKit BisquitFall.swift */; };
@@ -1856,7 +1875,7 @@
 		F3924EE629A25FBF00C4CC77 /* App Icon Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Icon Picker.swift"; sourceTree = "<group>"; };
 		F3924EE829A28D9D00C4CC77 /* Biometry Usage View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Biometry Usage View.swift"; sourceTree = "<group>"; };
 		F392DF362A8593E50049EF7A /* Change Power.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Change Power.swift"; sourceTree = "<group>"; };
-		F392DF372A8593E50049EF7A /* PowerSignalAppEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerSignalAppEnum.swift; sourceTree = "<group>"; };
+		F392DF372A8593E50049EF7A /* Power Signal App Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Signal App Enum.swift"; sourceTree = "<group>"; };
 		F393C7BA2A18437300DE33F9 /* Upload File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Upload File.swift"; sourceTree = "<group>"; };
 		F394A28329E0A9810012B7D1 /* Server Card Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Parent.swift"; sourceTree = "<group>"; };
 		F39626F12A7AD64B0057E356 /* Ansi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ansi.swift; sourceTree = "<group>"; };
@@ -2011,6 +2030,7 @@
 		F3E2BF0A2C1EC94300B7A6D4 /* Contacts VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contacts VM.swift"; sourceTree = "<group>"; };
 		F3E467512A49903900FABE5F /* Info Stat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Stat.swift"; sourceTree = "<group>"; };
 		F3E467542A49939300FABE5F /* Info Relative Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Relative Stats.swift"; sourceTree = "<group>"; };
+		F3E679AC2D5A854700A7ADDE /* ServerOptionsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerOptionsProvider.swift; sourceTree = "<group>"; };
 		F3E6FC422A1E677000410C7C /* Bisquits.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Bisquits.sks; sourceTree = "<group>"; };
 		F3E6FC452A1E85D600410C7C /* SptiteKit BisquitFall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SptiteKit BisquitFall.swift"; sourceTree = "<group>"; };
 		F3E8415529FECB6800609DA3 /* Browser Sticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Browser Sticker.swift"; sourceTree = "<group>"; };
@@ -2761,6 +2781,7 @@
 				F3464CFA2A862D2D00188B0C /* Intent Extension.swift */,
 				F3573BC12C6511040051259E /* Intents.intentdefinition */,
 				F3464CFE2A862D2D00188B0C /* Info.plist */,
+				F3E679AC2D5A854700A7ADDE /* ServerOptionsProvider.swift */,
 				F3464D0D2A862EC100188B0C /* Intents */,
 				F3464D0C2A862EB600188B0C /* Enum */,
 			);
@@ -2770,7 +2791,7 @@
 		F3464D0C2A862EB600188B0C /* Enum */ = {
 			isa = PBXGroup;
 			children = (
-				F392DF372A8593E50049EF7A /* PowerSignalAppEnum.swift */,
+				F392DF372A8593E50049EF7A /* Power Signal App Enum.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -4326,6 +4347,7 @@
 				F37080502A2A1EB30046CE70 /* Schedule Card.swift in Sources */,
 				F3464D202A86396600188B0C /* Change Power.swift in Sources */,
 				F3DDD59D2A62AC7C009FDFBF /* Create Backup Button.swift in Sources */,
+				F3E679AE2D5A854700A7ADDE /* ServerOptionsProvider.swift in Sources */,
 				F3796562295C519C0074CA3D /* Chart View.swift in Sources */,
 				F37266CC29D96C93005FD103 /* Websocket Message.swift in Sources */,
 				F35FEB0A2B09F003004DA05D /* API Key.swift in Sources */,
@@ -4375,7 +4397,7 @@
 				F3F2A5BB29AC296D00AD20A4 /* Server Card Suspended.swift in Sources */,
 				F30C13042A545ADC00A7EFF0 /* Nav State.swift in Sources */,
 				F37080512A2A1EBA0046CE70 /* Schedule Task.swift in Sources */,
-				F3464D262A86397F00188B0C /* PowerSignalAppEnum.swift in Sources */,
+				F3464D262A86397F00188B0C /* Power Signal App Enum.swift in Sources */,
 				F3EB09DF2A297F090073916A /* Des Image.swift in Sources */,
 				F39E683D2D2D6A380002BA96 /* Audio Player View.swift in Sources */,
 				F3C9D8532B3060D100265492 /* Video Player VM.swift in Sources */,
@@ -4422,6 +4444,8 @@
 				F3796564295C51C80074CA3D /* Progress Bar.swift in Sources */,
 				F31F31FD2D52BD940095DD19 /* System.swift in Sources */,
 				F30089262B3BAD200051476C /* File Permissions View.swift in Sources */,
+				F31461812D5A82F000547B6C /* Model Asset.swift in Sources */,
+				F31461822D5A82F000547B6C /* Networking.swift in Sources */,
 				F3499EF42A26DE92006101B7 /* Guide Model.swift in Sources */,
 				F3E024C62B228F4C00FFF686 /* New Task Sheet.swift in Sources */,
 				F33CDBFD2A26B7AD008D0214 /* Browser Spec.swift in Sources */,
@@ -4545,7 +4569,7 @@
 				F31BA57D295901200006D126 /* Start Page VM.swift in Sources */,
 				F39E0A952C1BA06C00C4E906 /* Discover Card.swift in Sources */,
 				F306B9ED29BBDA770008C2D4 /* Server List Footer.swift in Sources */,
-				F3464D292A86398100188B0C /* PowerSignalAppEnum.swift in Sources */,
+				F3464D292A86398100188B0C /* Power Signal App Enum.swift in Sources */,
 				F31BA57F2959012D0006D126 /* Guide.swift in Sources */,
 				F3496DC529E0091A0089FC28 /* Section Header.swift in Sources */,
 				F367977B2A3A55F4009F2788 /* Log Card.swift in Sources */,
@@ -4713,6 +4737,7 @@
 				F3CCB1CC2CAE75D0000F8207 /* Debug Settings.swift in Sources */,
 				F30088A92B3A1A500051476C /* Schedule VM.swift in Sources */,
 				F314616A2D5A1F5E00547B6C /* Icon.swift in Sources */,
+				F3E679B32D5A854700A7ADDE /* ServerOptionsProvider.swift in Sources */,
 				F3FDFF912C89150D009EBB5C /* Networking.swift in Sources */,
 				F31BA5862959016D0006D126 /* SpriteKit Pyzh.swift in Sources */,
 				F30089002B3B62450051476C /* User Invitation Permission.swift in Sources */,
@@ -4767,7 +4792,7 @@
 				F3BE36D62A55E1D2007A0179 /* Nav Destinations.swift in Sources */,
 				F30B61CE2B2907CA00F447B4 /* Debug Key.swift in Sources */,
 				F3BF6F232959D15E0059F39B /* App Settings.swift in Sources */,
-				F3464D272A86398000188B0C /* PowerSignalAppEnum.swift in Sources */,
+				F3464D272A86398000188B0C /* Power Signal App Enum.swift in Sources */,
 				F3FFB7412A57F0AB00220FA5 /* Users VM.swift in Sources */,
 				F30C12F82A5451C100A7EFF0 /* Server List VM.swift in Sources */,
 				F3FFB7432A57F13D00220FA5 /* User View.swift in Sources */,
@@ -4787,6 +4812,7 @@
 				F30088FB2B3B56210051476C /* User List Parent.swift in Sources */,
 				F333B3BA2B80CF750005B84D /* Preview Property.swift in Sources */,
 				F3499EF82A275556006101B7 /* Websocket Message.swift in Sources */,
+				F3E679B02D5A854700A7ADDE /* ServerOptionsProvider.swift in Sources */,
 				F30C12FD2A54546900A7EFF0 /* App Container.swift in Sources */,
 				F3C9D85D2B31146E00265492 /* User Avatar.swift in Sources */,
 				F3D558B22A33C6A000608447 /* File Tab VM.swift in Sources */,
@@ -4809,6 +4835,8 @@
 				F3FFB7482A57FF0600220FA5 /* Log VM.swift in Sources */,
 				F3A31B0A2B0B161D00F89C51 /* Cloud Key Card.swift in Sources */,
 				F3A28ADA2C57ADF100010454 /* Demo Server.swift in Sources */,
+				F314617D2D5A82F000547B6C /* Networking.swift in Sources */,
+				F314617E2D5A82F000547B6C /* Model Asset.swift in Sources */,
 				F3D295152AF396FD00ED43A0 /* Tabs.swift in Sources */,
 				F3AB4A7A2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
 				F32FD02B2CF5E8DC0038D62C /* Console Message.swift in Sources */,
@@ -4917,6 +4945,7 @@
 				F38F9E2D2CEB39D80033EFE3 /* Metadata List.swift in Sources */,
 				F3D037012CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift in Sources */,
 				F354E9842A48CA2000F6E359 /* Topbar Grid Button.swift in Sources */,
+				F3E679B12D5A854700A7ADDE /* ServerOptionsProvider.swift in Sources */,
 				F36D531F2A05B82B007324C6 /* Info Tab.swift in Sources */,
 				F36D530E2A05B6CE007324C6 /* Browser.swift in Sources */,
 				F39872112A1AE3CE0022B00E /* Video Player.swift in Sources */,
@@ -5012,7 +5041,7 @@
 				F38F9E2A2CEB33510033EFE3 /* QuickLook File VM.swift in Sources */,
 				F3AF91CE2B423A26001D8F80 /* SSH Create View.swift in Sources */,
 				F3A1D2392A2024E10053261E /* Browser Hints.swift in Sources */,
-				F3464D242A86397E00188B0C /* PowerSignalAppEnum.swift in Sources */,
+				F3464D242A86397E00188B0C /* Power Signal App Enum.swift in Sources */,
 				F36B73A82C8B0B7B00E858FE /* Audio Player View.swift in Sources */,
 				F36D532B2A05B875007324C6 /* Backup List.swift in Sources */,
 				F3202CE22D562A620030B3CC /* Browser List MC.swift in Sources */,
@@ -5047,6 +5076,8 @@
 				F3464D1E2A86396500188B0C /* Change Power.swift in Sources */,
 				F3553FB42B4065A300EF0FD2 /* Panel Settings Parent.swift in Sources */,
 				F3202D142D562B250030B3CC /* Browser Card MC.swift in Sources */,
+				F31461852D5A830E00547B6C /* Model Asset.swift in Sources */,
+				F31461862D5A830E00547B6C /* Networking.swift in Sources */,
 				F34EB0962A4A75E70034A68A /* Intro Model.swift in Sources */,
 				F35B89C32A725CFC000B5EEF /* Tip Suspended Server.swift in Sources */,
 				F35FEB0C2B09F003004DA05D /* API Key.swift in Sources */,
@@ -5323,10 +5354,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3464D112A8632F200188B0C /* Create Backup.swift in Sources */,
-				F3464D072A862DBE00188B0C /* PowerSignalAppEnum.swift in Sources */,
+				F3464D072A862DBE00188B0C /* Power Signal App Enum.swift in Sources */,
 				F32FD7252B1E071F00723B88 /* Network Calls.swift in Sources */,
+				F314617B2D5A829800547B6C /* Networking.swift in Sources */,
 				F3464CFB2A862D2D00188B0C /* Intent Extension.swift in Sources */,
 				F3573BC82C6511040051259E /* Intents.intentdefinition in Sources */,
+				F3E679AF2D5A854700A7ADDE /* ServerOptionsProvider.swift in Sources */,
+				F314617C2D5A82C700547B6C /* Model Asset.swift in Sources */,
 				F3464D082A862DC200188B0C /* Change Power.swift in Sources */,
 				F3464D0F2A862F9700188B0C /* Send Command.swift in Sources */,
 			);
@@ -5561,10 +5595,13 @@
 				F3F2BBA92A540DF900D44CA6 /* Nav State.swift in Sources */,
 				F34F289F2ACDADA600FD618A /* Animated Tab.swift in Sources */,
 				F3A7CF6B2A44F6E000331B51 /* Circular Gauge.swift in Sources */,
+				F3E679B22D5A854700A7ADDE /* ServerOptionsProvider.swift in Sources */,
 				F38928282A441D0C00561CDF /* Dev Settings.swift in Sources */,
 				F389282E2A445E4F00561CDF /* App Settings.swift in Sources */,
 				F37B90782BFEA00300597624 /* Ornament Info Properties.swift in Sources */,
 				F3202D3B2D5636660030B3CC /* Tip Suspended Server.swift in Sources */,
+				F31461832D5A82F000547B6C /* Model Asset.swift in Sources */,
+				F31461842D5A82F000547B6C /* Networking.swift in Sources */,
 				F335CA0E2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */,
 				F3F2BBAC2A540E6500D44CA6 /* Cloud Keys.swift in Sources */,
 				F32FD71A2B1E042C00723B88 /* Websocket Delegate.swift in Sources */,
@@ -5582,7 +5619,7 @@
 				F3E1B2D02C903C9300AED3F1 /* Server Card Context Menu.swift in Sources */,
 				F38928302A445E9700561CDF /* Server List.swift in Sources */,
 				F3FC99112C65747700150823 /* Archieving.swift in Sources */,
-				F3464D252A86397F00188B0C /* PowerSignalAppEnum.swift in Sources */,
+				F3464D252A86397F00188B0C /* Power Signal App Enum.swift in Sources */,
 				F39E68342D2D67A70002BA96 /* Task Context Menu.swift in Sources */,
 				F39E68352D2D67A70002BA96 /* Schedule List.swift in Sources */,
 				F3202D552D5758CE0030B3CC /* Log List.swift in Sources */,
@@ -5622,6 +5659,8 @@
 			files = (
 				F32FD71B2B1E043F00723B88 /* Ansi.swift in Sources */,
 				F300892B2B3C55DA0051476C /* File Permissions View.swift in Sources */,
+				F314617F2D5A82F000547B6C /* Model Asset.swift in Sources */,
+				F31461802D5A82F000547B6C /* Networking.swift in Sources */,
 				F35B89BF2A725CF7000B5EEF /* Tip Suspended Server.swift in Sources */,
 				F30C13102A54606900A7EFF0 /* Nav Extension.swift in Sources */,
 				F300892A2B3C55CD0051476C /* File Permissions Parent.swift in Sources */,
@@ -5630,6 +5669,7 @@
 				F3FD9F9E2C651F4800A69314 /* Sensitivity Analyzer.swift in Sources */,
 				F3573BC42C6511040051259E /* Intents.intentdefinition in Sources */,
 				F3DF50CC2B38FDE500206CAE /* Permissions Header.swift in Sources */,
+				F3E679AD2D5A854700A7ADDE /* ServerOptionsProvider.swift in Sources */,
 				F300889B2B3A0E1A0051476C /* Startup VM.swift in Sources */,
 				F33DE5092B364EBC00E257D8 /* Tab Info.swift in Sources */,
 				F35F65942B1D1A0B00431EB7 /* Panel VM.swift in Sources */,
@@ -5713,7 +5753,7 @@
 				F30088AD2B3A1F500051476C /* User View.swift in Sources */,
 				F30088DA2B3A3BF50051476C /* Console View.swift in Sources */,
 				F30088942B3A03050051476C /* Log VM.swift in Sources */,
-				F3464D282A86398000188B0C /* PowerSignalAppEnum.swift in Sources */,
+				F3464D282A86398000188B0C /* Power Signal App Enum.swift in Sources */,
 				F3DF50CA2B38FDDE00206CAE /* User 2Fa.swift in Sources */,
 				F31F32032D52DB950095DD19 /* Color Theme.swift in Sources */,
 				F3202D412D5639610030B3CC /* Ornament Dismiss Button.swift in Sources */,
