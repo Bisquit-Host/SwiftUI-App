@@ -2791,6 +2791,7 @@
       "shouldTranslate" : false
     },
     "IP Address" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {

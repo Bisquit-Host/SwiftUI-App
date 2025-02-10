@@ -16,11 +16,8 @@ struct InfoTabAllocation: View {
     
     var body: some View {
         HStack {
-            InfoStat(
-                "IP Address",
-                value: ip,
-                alignment: .leading
-            )
+            Text(ip)
+                .monospaced()
             
             Spacer()
             
@@ -44,7 +41,6 @@ struct InfoTabAllocation: View {
                     Image(systemName: "square.and.arrow.up")
                 }
             }
-            .title3(.medium)
             .foregroundStyle(.primary)
         }
     }

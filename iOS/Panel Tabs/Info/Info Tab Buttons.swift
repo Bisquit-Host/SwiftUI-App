@@ -137,5 +137,5 @@ struct InfoTabButtons: View {
 }
 
 #Preview {
-    InfoTabButtons(PreviewProperty.serverAttributes)
+    InfoTabButtons(PreviewProp.serverAttributes)
 }
