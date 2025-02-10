@@ -3142,9 +3142,6 @@
         }
       }
     },
-    "listPath" : {
-
-    },
     "Live Activity" : {
       "shouldTranslate" : false
     },

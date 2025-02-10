@@ -30,7 +30,7 @@ struct FileView: View {
                     .environmentObject(vm)
                 
             } else if mimeType.contains("directory") {
-                FolderFile(id, path: root + name)
+                FolderFile(id, path: root + name + "/")
                 
             } else if mimeType.contains("video") {
                 VideoFile(id, path: root, name: name)
