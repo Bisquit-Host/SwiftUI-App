@@ -19,30 +19,33 @@ struct FileView: View {
     }
     
     @State private var isExtended = false
+    @Namespace private var namespace
     
     var body: some View {
         let name = file.name
         let mimeType = file.mimetype
         
         NavigationLink {
-            if mimeType.contains("text") || mimeType.contains("json") {
-                TextFile(id, path: root, name: name)
-                    .environmentObject(vm)
-                
-            } else if mimeType.contains("directory") {
+            if mimeType.contains("directory") {
                 FolderFile(id, path: root + name + "/")
                 
-            } else if mimeType.contains("video") {
-                VideoFile(id, path: root, name: name)
-                    .environmentObject(vm)
-                
-            } else if mimeType.contains("audio") {
-                AudioPlayerView(id, path: root, name: name)
-                    .environmentObject(vm)
-                
             } else {
-                QuickLookFile(id, path: root, name: name)
-                    .environmentObject(vm)
+                Group {
+                    if mimeType.contains("text") || mimeType.contains("json") {
+                        TextFile(id, path: root, name: name)
+                        
+                    } else if mimeType.contains("video") {
+                        VideoFile(id, path: root, name: name)
+                        
+                    } else if mimeType.contains("audio") {
+                        AudioPlayerView(id, path: root, name: name)
+                        
+                    } else {
+                        QuickLookFile(id, path: root, name: name)
+                    }
+                }
+                .environmentObject(vm)
+                .navigationZoomTransition("zoom", in: namespace)
             }
         } label: {
             HStack {
@@ -76,6 +79,7 @@ struct FileView: View {
                         .secondary()
                 }
             }
+            .matchedTransitionSource("zoom", in: namespace)
         }
         .fileContextMenu(id, file: file, at: root)
     }
