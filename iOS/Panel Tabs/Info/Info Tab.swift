@@ -15,6 +15,7 @@ struct InfoTab: View {
         ScrollView(showsIndicators: false) {
             InfoTabCard(server)
             
+            #warning("Tip")
             InfoTabAllocation(server)
                 .frame(height: 25)
                 .foregroundStyle(.foreground)

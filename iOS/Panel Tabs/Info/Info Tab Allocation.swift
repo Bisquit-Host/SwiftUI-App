@@ -13,35 +13,43 @@ struct InfoTabAllocation: View {
     }
     
     @State private var trigger = false
+    @State private var sheetAllocations = false
     
     var body: some View {
-        HStack {
-            Text(ip)
-                .monospaced()
-            
-            Spacer()
-            
-            HStack(spacing: 16) {
-                SFButton("doc.on.doc") {
-                    UIPasteboard.general.string = ip
-                    
-                    SystemAlert.copied()
-                    trigger.toggle()
-                }
-                .changeEffect(
-                    .spray(origin: .bottom) {
-                        Image(systemName: "doc.on.doc")
-                            .foregroundStyle(.white)
-                            .footnote()
-                    },
-                    value: trigger
-                )
+        Button {
+            sheetAllocations = true
+        } label: {
+            HStack {
+                Text(ip)
+                    .monospaced()
                 
-                ShareLink(item: ip) {
-                    Image(systemName: "square.and.arrow.up")
+                Spacer()
+                
+                HStack(spacing: 16) {
+                    SFButton("doc.on.doc") {
+                        UIPasteboard.general.string = ip
+                        
+                        SystemAlert.copied()
+                        trigger.toggle()
+                    }
+                    .changeEffect(
+                        .spray(origin: .bottom) {
+                            Image(systemName: "doc.on.doc")
+                                .foregroundStyle(.white)
+                                .footnote()
+                        },
+                        value: trigger
+                    )
+                    
+                    ShareLink(item: ip) {
+                        Image(systemName: "square.and.arrow.up")
+                    }
                 }
+                .foregroundStyle(.primary)
             }
-            .foregroundStyle(.primary)
+        }
+        .sheet($sheetAllocations) {
+            AllocationListParent(server)
         }
     }
     
