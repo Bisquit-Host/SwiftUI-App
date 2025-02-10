@@ -2641,18 +2641,12 @@
         }
       }
     },
-    "ICON" : {
+    "Icon" : {
       "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ICON"
-          }
-        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ИКОНКА"
+            "value" : "Иконка"
           }
         }
       }

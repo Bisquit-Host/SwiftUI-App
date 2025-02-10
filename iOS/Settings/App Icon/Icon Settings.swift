@@ -4,7 +4,7 @@ struct IconSettings: View {
     @EnvironmentObject private var store: ValueStore
     
     var body: some View {
-        Section("ICON") {
+        Section("Icon") {
             AppIconPicker()
                 .padding(.horizontal, -20)
         }
