@@ -53,7 +53,7 @@ struct Browser: View {
         .scrollContentBackground(store.transparentSheet ? .hidden : .visible)
         .presentationBackground(store.transparentSheet ? .ultraThinMaterial : .regular)
 #endif
-        .refreshableTask {
+        .task {
             await vm.fetchAllPlans()
         }
     }
