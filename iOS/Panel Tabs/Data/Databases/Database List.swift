@@ -9,8 +9,6 @@ struct DatabaseList: View {
         self.databaseLimit = databaseLimit
     }
     
-    @State private var alertCreate = false
-    
     var body: some View {
         @Bindable var vm = vm
         
@@ -24,7 +22,7 @@ struct DatabaseList: View {
             //            }
             
             Button("Create Database") {
-                alertCreate = true
+                vm.alertCreate = true
             }
             .disabled(vm.databases.count >= databaseLimit)
 #if os(tvOS)
@@ -38,19 +36,6 @@ struct DatabaseList: View {
                     limit: databaseLimit
                 )
             )
-        }
-        .alert("Create Database", isPresented: $alertCreate) {
-            TextField("", text: $vm.newDatabaseName)
-                .autocorrectionDisabled()
-                .limitInputLength($vm.newDatabaseName, length: 48)
-            
-            Button("Create") {
-                vm.createDatabase()
-            }
-            
-            Button("Cancel", role: .cancel) {
-                vm.newDatabaseName = ""
-            }
         }
     }
 }

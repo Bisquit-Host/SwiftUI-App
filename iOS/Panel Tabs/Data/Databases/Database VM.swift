@@ -11,6 +11,7 @@ final class DatabaseVM {
     
     var databases: [DatabaseAttributes] = []
     var newDatabaseName = ""
+    var alertCreate = false
     
     func fetchDatabases() {
         dataListAPI(id, endpoint: .databases) { (result: Result<DatabaseListResponse?, Error>) in

@@ -3,7 +3,7 @@ import PteroNet
 
 struct DataTab: View {
     @Environment(BackupVM.self) private var backupVM
-    @Environment(DatabaseVM.self) private var databaseVM
+    @Environment(DatabaseVM.self) private var dbVM
     @Environment(ScheduleVM.self) private var scheduleVM
     
     private let server: ServerAttributes
@@ -13,6 +13,8 @@ struct DataTab: View {
     }
     
     var body: some View {
+        @Bindable var backupVM = backupVM
+        @Bindable var dbVM = dbVM
         @Bindable var scheduleVM = scheduleVM
         
         List {
@@ -36,14 +38,38 @@ struct DataTab: View {
         .refreshableTask {
             fetchData()
         }
-        .sheet($scheduleVM.sheetNewSchedule) {
+        .sheet($scheduleVM.sheetCreate) {
             NewScheduleSheet()
+        }
+        .alert("Create Database", isPresented: $dbVM.alertCreate) {
+            TextField("", text: $dbVM.newDatabaseName)
+                .autocorrectionDisabled()
+                .limitInputLength($dbVM.newDatabaseName, length: 48)
+            
+            Button("Create") {
+                dbVM.createDatabase()
+            }
+            
+            Button("Cancel", role: .cancel) {
+                dbVM.newDatabaseName = ""
+            }
+        }
+        .alert("Name Backup", isPresented: $backupVM.alertCreateBackup) {
+            TextField("Backup at \(backupVM.dateAndTime)", text: $backupVM.textCreateBackup)
+                .autocorrectionDisabled()
+                .limitInputLength($backupVM.textCreateBackup, length: 191)
+            
+            Button("Cancel", role: .cancel) {}
+            
+            Button("Create") {
+                backupVM.createBackup()
+            }
         }
     }
     
     private func fetchData() {
         backupVM.fetchBackups()
-        databaseVM.fetchDatabases()
+        dbVM.fetchDatabases()
         scheduleVM.fetchSchedules()
     }
 }

@@ -27,7 +27,7 @@ struct ScheduleList: View {
             }
             
             Button("Create Schedule") {
-                vm.sheetNewSchedule = true
+                vm.sheetCreate = true
             }
 #if os(tvOS)
             .buttonStyle(.borderedProminent)

@@ -29,17 +29,6 @@ struct BackupList: View {
             SectionHeader("Backups", type: .backup(vm.backups.count, limit: backupLimit))
         }
         .environment(vm)
-        .alert("Name Backup", isPresented: $vm.alertCreateBackup) {
-            TextField("Backup at \(vm.dateAndTime)", text: $vm.textCreateBackup)
-                .autocorrectionDisabled()
-                .limitInputLength($vm.textCreateBackup, length: 191)
-            
-            Button("Cancel", role: .cancel) {}
-            
-            Button("Create") {
-                vm.createBackup()
-            }
-        }
     }
 }
 

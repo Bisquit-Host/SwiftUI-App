@@ -11,7 +11,7 @@ final class ScheduleVM {
     
     private(set) var schedules: [ScheduleAttributes] = []
     var sheetCreateTask = false
-    var sheetNewSchedule = false
+    var sheetCreate = false
     
     func fetchSchedules() {
         dataListAPI(id, endpoint: .schedules) { (result: Result<ScheduleListResponse?, Error>) in
