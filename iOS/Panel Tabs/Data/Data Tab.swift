@@ -13,6 +13,8 @@ struct DataTab: View {
     }
     
     var body: some View {
+        @Bindable var scheduleVM = scheduleVM
+        
         List {
             BackupList(server)
 #if os(tvOS)
@@ -33,6 +35,9 @@ struct DataTab: View {
 #endif
         .refreshableTask {
             fetchData()
+        }
+        .sheet($scheduleVM.sheetNewSchedule) {
+            NewScheduleSheet()
         }
     }
     

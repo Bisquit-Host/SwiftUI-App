@@ -9,8 +9,9 @@ final class ScheduleVM {
         self.id = id
     }
     
-    var schedules: [ScheduleAttributes] = []
+    private(set) var schedules: [ScheduleAttributes] = []
     var sheetCreateTask = false
+    var sheetNewSchedule = false
     
     func fetchSchedules() {
         dataListAPI(id, endpoint: .schedules) { (result: Result<ScheduleListResponse?, Error>) in
@@ -28,7 +29,7 @@ final class ScheduleVM {
         }
     }
     
-    func createSchedule(_ newSchedule: NewSchedule) {
+    func createSchedule(_ newSchedule: NewSchedule, onSuccess: @escaping () -> Void) {
         scheduleCreateAPI(id, newSchedule: newSchedule) { result in
             switch result {
             case .success(let model):
@@ -36,6 +37,8 @@ final class ScheduleVM {
                     withAnimation {
                         self.schedules.append(model)
                     }
+                    
+                    onSuccess()
                 }
                 
             case .failure(let error):

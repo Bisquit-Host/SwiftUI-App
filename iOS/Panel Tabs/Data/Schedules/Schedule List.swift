@@ -4,8 +4,6 @@ import PteroNet
 struct ScheduleList: View {
     @Environment(ScheduleVM.self) private var vm
     
-    @State private var sheetCreateSchedule = false
-    
     var body: some View {
         Section {
             ForEach(vm.schedules) { schedule in
@@ -29,7 +27,7 @@ struct ScheduleList: View {
             }
             
             Button("Create Schedule") {
-                sheetCreateSchedule = true
+                vm.sheetNewSchedule = true
             }
 #if os(tvOS)
             .buttonStyle(.borderedProminent)
@@ -38,9 +36,5 @@ struct ScheduleList: View {
             Text("Schedules")
                 .bold()
         }
-        .sheet($sheetCreateSchedule) {
-            NewScheduleSheet()
-        }
-        .environment(vm)
     }
 }

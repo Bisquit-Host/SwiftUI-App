@@ -103,17 +103,6 @@
         }
       }
     },
-    "%@ Settings" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ Настройки"
-          }
-        }
-      }
-    },
     "%@ will be availible soon..." : {
 
     },
@@ -390,6 +379,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "2FA ingeschakeld"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2FA включена"
           }
         }
       }
@@ -2098,22 +2093,22 @@
         }
       }
     },
+    "Enable" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Включить"
+          }
+        }
+      }
+    },
     "Enable Extension" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Включить Расширение"
-          }
-        }
-      }
-    },
-    "Enable Schedule" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Включить Расписание"
           }
         }
       }
