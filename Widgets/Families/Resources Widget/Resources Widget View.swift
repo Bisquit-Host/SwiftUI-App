@@ -2,7 +2,7 @@ import SwiftUI
 import WidgetKit
 import PteroNet
 
-struct CryptoPriceWidgetView: View {
+struct ResourcesWidgetView: View {
     private let entry: ResourcesUsageEntry
     
     init(_ entry: ResourcesUsageEntry) {

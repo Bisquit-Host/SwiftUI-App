@@ -617,7 +617,7 @@
 		F36B73882C8AEAE700E858FE /* Model Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B73852C8AEAE700E858FE /* Model Asset.swift */; };
 		F36B738A2C8AEC3D00E858FE /* Timeline Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B73892C8AEC3D00E858FE /* Timeline Provider.swift */; };
 		F36B738E2C8AEC8400E858FE /* Resources Usage Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B738D2C8AEC8400E858FE /* Resources Usage Entry.swift */; };
-		F36B73902C8AECB000E858FE /* Widget View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B738F2C8AECB000E858FE /* Widget View.swift */; };
+		F36B73902C8AECB000E858FE /* Resources Widget View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B738F2C8AECB000E858FE /* Resources Widget View.swift */; };
 		F36B739B2C8B073B00E858FE /* AudioVisualizer in Frameworks */ = {isa = PBXBuildFile; productRef = F36B739A2C8B073B00E858FE /* AudioVisualizer */; };
 		F36B739D2C8B074300E858FE /* AudioVisualizer in Frameworks */ = {isa = PBXBuildFile; productRef = F36B739C2C8B074300E858FE /* AudioVisualizer */; };
 		F36B739F2C8B077A00E858FE /* AudioVisualizer in Frameworks */ = {isa = PBXBuildFile; productRef = F36B739E2C8B077A00E858FE /* AudioVisualizer */; };
@@ -1459,7 +1459,7 @@
 		F3FDFF612C89120D009EBB5C /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3FDFF602C89120D009EBB5C /* Intents.framework */; };
 		F3FDFF642C89120D009EBB5C /* Intent Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF632C89120D009EBB5C /* Intent Handler.swift */; };
 		F3FDFF882C8912F1009EBB5C /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF872C8912F1009EBB5C /* Networking.swift */; };
-		F3FDFF8B2C89130F009EBB5C /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF8A2C89130F009EBB5C /* Widget.swift */; };
+		F3FDFF8B2C89130F009EBB5C /* Resources Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF8A2C89130F009EBB5C /* Resources Widget.swift */; };
 		F3FDFF8D2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF8C2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition */; };
 		F3FDFF8E2C891343009EBB5C /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF872C8912F1009EBB5C /* Networking.swift */; };
 		F3FDFF8F2C8913AE009EBB5C /* CryptoPriceWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF8C2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition */; };
@@ -1795,7 +1795,7 @@
 		F36B73852C8AEAE700E858FE /* Model Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model Asset.swift"; sourceTree = "<group>"; };
 		F36B73892C8AEC3D00E858FE /* Timeline Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timeline Provider.swift"; sourceTree = "<group>"; };
 		F36B738D2C8AEC8400E858FE /* Resources Usage Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Resources Usage Entry.swift"; sourceTree = "<group>"; };
-		F36B738F2C8AECB000E858FE /* Widget View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Widget View.swift"; sourceTree = "<group>"; };
+		F36B738F2C8AECB000E858FE /* Resources Widget View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Resources Widget View.swift"; sourceTree = "<group>"; };
 		F36B73A22C8B0B7B00E858FE /* Audio Player View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Audio Player View.swift"; sourceTree = "<group>"; };
 		F36FDB91295AF3AB00D45070 /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
 		F37061C729774869009B4067 /* Nav Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Extension.swift"; sourceTree = "<group>"; };
@@ -2050,7 +2050,7 @@
 		F3FDFF652C89120D009EBB5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3FDFF6B2C89120D009EBB5C /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
 		F3FDFF872C8912F1009EBB5C /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
-		F3FDFF8A2C89130F009EBB5C /* Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget.swift; sourceTree = "<group>"; };
+		F3FDFF8A2C89130F009EBB5C /* Resources Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Resources Widget.swift"; sourceTree = "<group>"; };
 		F3FDFF8C2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = CryptoPriceWidget.intentdefinition; sourceTree = "<group>"; };
 		F3FF59FE2A4A3188003A1973 /* User List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User List.swift"; sourceTree = "<group>"; };
 		F3FF5A022A4A359C003A1973 /* Info Tab Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab Buttons.swift"; sourceTree = "<group>"; };
@@ -2886,8 +2886,8 @@
 		F36B73772C8AE93000E858FE /* Resources Widget */ = {
 			isa = PBXGroup;
 			children = (
-				F3FDFF8A2C89130F009EBB5C /* Widget.swift */,
-				F36B738F2C8AECB000E858FE /* Widget View.swift */,
+				F3FDFF8A2C89130F009EBB5C /* Resources Widget.swift */,
+				F36B738F2C8AECB000E858FE /* Resources Widget View.swift */,
 				F36B738D2C8AEC8400E858FE /* Resources Usage Entry.swift */,
 				F36B73892C8AEC3D00E858FE /* Timeline Provider.swift */,
 			);
@@ -5352,7 +5352,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F36B73882C8AEAE700E858FE /* Model Asset.swift in Sources */,
-				F3FDFF8B2C89130F009EBB5C /* Widget.swift in Sources */,
+				F3FDFF8B2C89130F009EBB5C /* Resources Widget.swift in Sources */,
 				F323BFA22B20DC9000116B97 /* Power Widget.swift in Sources */,
 				F337B4062A89FAC600DD79AA /* Entry.swift in Sources */,
 				F3FDFF882C8912F1009EBB5C /* Networking.swift in Sources */,
@@ -5365,7 +5365,7 @@
 				F337B4102A89FE5C00DD79AA /* Static Entry.swift in Sources */,
 				F323BFA72B211C6D00116B97 /* Power Provider.swift in Sources */,
 				F3FDFF8D2C89132F009EBB5C /* CryptoPriceWidget.intentdefinition in Sources */,
-				F36B73902C8AECB000E858FE /* Widget View.swift in Sources */,
+				F36B73902C8AECB000E858FE /* Resources Widget View.swift in Sources */,
 				F323BFA32B20DE4F00116B97 /* Network Calls.swift in Sources */,
 				F318240B2A8777E30039866C /* Provider.swift in Sources */,
 				F386373C2A8641120069F074 /* Widgets Bundle.swift in Sources */,

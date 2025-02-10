@@ -5,7 +5,7 @@ struct WidgetsBundle: WidgetBundle {
     var body: some Widget {
         PowerWidget()
         
-        SomeNewWidget()
+        ResourcesWidget()
         
         //        SystemSmallWidget()
         

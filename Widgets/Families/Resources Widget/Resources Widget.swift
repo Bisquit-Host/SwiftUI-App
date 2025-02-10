@@ -1,7 +1,7 @@
 import SwiftUI
 import WidgetKit
 
-struct SomeNewWidget: Widget {
+struct ResourcesWidget: Widget {
     private let kind = "Widgets test"
     
     var body: some WidgetConfiguration {
@@ -10,7 +10,7 @@ struct SomeNewWidget: Widget {
             intent: CryptoPriceConfigurationIntent.self,
             provider: CryptoPriceTimelineProvider()
         ) { entry in
-            CryptoPriceWidgetView(entry)
+            ResourcesWidgetView(entry)
         }
         .configurationDisplayName("Server Info")
         // .description("")
@@ -21,7 +21,7 @@ struct SomeNewWidget: Widget {
 }
 
 #Preview(as: .systemSmall) {
-    SomeNewWidget()
+    ResourcesWidget()
 } timeline: {
     ResourcesUsageEntry(
         date: Date(),
