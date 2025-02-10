@@ -11,6 +11,10 @@ struct InfoRelativeStats: View {
     }
     
     private var relativeRam: String {
+        guard vm.serverState != .offline else {
+            return "-"
+        }
+        
         let limit = limits.memory * pow(1024, 2)
         let usage = Int(vm.ramUsage / limit * 100)
         
@@ -18,6 +22,10 @@ struct InfoRelativeStats: View {
     }
     
     private var relativeCpu: String {
+        guard vm.serverState != .offline else {
+            return "-"
+        }
+        
         let usage = Int(vm.cpuUsage / limits.cpu * 100)
         
         return "\(usage)%"
@@ -34,11 +42,11 @@ struct InfoRelativeStats: View {
             Group {
                 InfoStat("Uptime", value: millisecondsToTime(vm.uptime))
                 
-                InfoStat("Storage", value: relativeDisk)
-                
                 InfoStat("Processor", value: relativeCpu)
                 
                 InfoStat("Memory", value: relativeRam)
+                
+                InfoStat("Storage", value: relativeDisk)
             }
             .frame(maxWidth: .infinity)
         }
