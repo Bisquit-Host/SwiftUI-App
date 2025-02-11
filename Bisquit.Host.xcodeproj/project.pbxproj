@@ -1967,7 +1967,7 @@
 		F3CCB1CF2CAE8AF5000F8207 /* Bisquit-Host-Mac-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bisquit-Host-Mac-Info.plist"; sourceTree = "<group>"; };
 		F3CCB1D12CAE8B76000F8207 /* Bisquit-Host Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bisquit-Host Info.plist"; sourceTree = "<group>"; };
 		F3CCB1D32CAE8BDA000F8207 /* Bisquit-Host visionOS Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bisquit-Host visionOS Info.plist"; sourceTree = "<group>"; };
-		F3CCB1D52CAE8C4D000F8207 /* Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Watch-App-Info.plist"; sourceTree = "<group>"; };
+		F3CCB1D52CAE8C4D000F8207 /* Watch-App Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Watch-App Info.plist"; sourceTree = "<group>"; };
 		F3CCB1D62CAE8C80000F8207 /* Bisquit-Host tvOS Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bisquit-Host tvOS Info.plist"; sourceTree = "<group>"; };
 		F3CCF5C02B34576F005FFF2C /* Allocation List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation List.swift"; sourceTree = "<group>"; };
 		F3CCF5C22B345792005FFF2C /* Allocation Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation Card.swift"; sourceTree = "<group>"; };
@@ -2432,7 +2432,7 @@
 			isa = PBXGroup;
 			children = (
 				F34C055C29F151250031ABE1 /* Watch App.entitlements */,
-				F3CCB1D52CAE8C4D000F8207 /* Watch-App-Info.plist */,
+				F3CCB1D52CAE8C4D000F8207 /* Watch-App Info.plist */,
 				F31BA53C2958FF7E0006D126 /* Assets.xcassets */,
 				F37266D529D99B4C005FD103 /* Intro */,
 				F36FDB9A295B04B200D45070 /* Server List */,
@@ -5854,7 +5854,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -5890,7 +5890,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -6051,7 +6051,7 @@
 				DEVELOPMENT_TEAM = 8FQUA2F388;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "watchOS/Watch-App-Info.plist";
+				INFOPLIST_FILE = "watchOS/Watch-App Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "host.bisquit.Bisquit-host.debug";
@@ -6060,7 +6060,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 4.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug.watchOSapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -6088,7 +6088,7 @@
 				DEVELOPMENT_TEAM = 8FQUA2F388;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "watchOS/Watch-App-Info.plist";
+				INFOPLIST_FILE = "watchOS/Watch-App Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "host.bisquit.Bisquit-host";
@@ -6097,7 +6097,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.watchOSapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
