@@ -2,11 +2,15 @@ import ScrechKit
 import Kingfisher
 
 struct CacheExpiration: View {
-    @Environment(CacheVM.self) private var cache
+    @Environment(CacheVM.self)
+    private var cache
     
-    @AppStorage("cacheExpiration") private var cacheExpiration: CacheExpiration = .month
+    @AppStorage("cacheExpiration")
+    private var cacheExpiration: CacheExpiration = .month
     
-    private let intervals: [CacheExpiration] = [.day, .week, .month, .year, .never]
+    private let intervals: [CacheExpiration] = [
+        .day, .week, .month, .year, .never
+    ]
     
     var body: some View {
         Menu {
@@ -22,7 +26,8 @@ struct CacheExpiration: View {
                 
                 Spacer()
                 
-                Text(cacheExpiration.rawValue.capitalized)
+#warning("Not localized")
+                Text(String(cacheExpiration.rawValue.capitalized))
                 
                 Image(systemName: "chevron.forward")
                     .secondary()

@@ -6,26 +6,12 @@ struct AppSettings: View {
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        ScrollView {
-            HStack {
-                Text("Settings")
-                    .title()
-                
-                Spacer()
-                
-                Button(role: .destructive) {
-                    dismiss()
-                } label: {
-                    Image(systemName: "xmark")
-                }
-            }
-            
-            Divider()
-                .padding(.bottom)
-            
+        List {
             Toggle("Developer mode", isOn: $store.devMode)
         }
         .padding()
+        .navigationTitle("Settings")
+        .ornamentDismissButton()
     }
 }
 

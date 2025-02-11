@@ -45,10 +45,11 @@ final class SystemAlert {
                 title.removeLast()
             }
             
+            print("Error: \(error.status) - \(error.code)")
+            
             main {
                 AlertKitAPI.present(
                     title: error.detail,
-                    subtitle: "\(error.status) - \(error.code)",
                     icon: .error,
                     style: .iOS17AppleMusic,
                     haptic: .error

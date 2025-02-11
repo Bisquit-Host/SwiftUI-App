@@ -1,4 +1,5 @@
-import SwiftUI
+import ScrechKit
+import TipKit
 
 struct ServerList: View {
     @Environment(ServerListVM.self) private var vm
@@ -10,12 +11,26 @@ struct ServerList: View {
         @Bindable var vm = vm
         
         List {
+            Section {
+                TipView(Tip_ServerCardContextMenu())
+                
+                if vm.hasFrozenServers {
+                    TipView(Tip_SuspendedServer()) { action in
+                        if action.id == "open-billing" {
+                            vm.showBilling = true
+                        }
+                    }
+                }
+            }
+            .listRowBackground(Color.clear)
+            
             ForEach(vm.filteredServers) { server in
                 ServerCardParent(server)
             }
         }
-        .padding(.horizontal, 4)
         .navigationTitle("Server List")
+        .safariCover($vm.showBilling, url: "https://my.bisquit.host")
+        .appStoreOverlay($vm.alertUpdate, id: "1639409934")
         .navigationBarBackButtonHidden()
         //        #warning("Uncomment")
         //        .toolbar {
@@ -27,14 +42,33 @@ struct ServerList: View {
         //            //                vm.fetchServers(store.adminServerList)
         //            //            }
         //        }
+        .refreshableTask {
+            vm.fetchServers(store.adminServerList)
+        }
         .sheet($sheetSettings) {
             AppSettings()
         }
         .sheet($vm.sheetKeyStorage) {
             CloudKeys($vm.apiKey)
         }
-        .refreshableTask {
-            vm.fetchServers(store.adminServerList)
+        .sheet($vm.sheetDiscover) {
+            Discover()
+        }
+        .task {
+            if !System.lowPowerMode {
+                await vm.checkForUpdates()
+            }
+        }
+        .toolbar {
+            ToolbarItemGroup(placement: .topBarTrailing) {
+                SFButton("sparkles") {
+                    vm.sheetDiscover = true
+                }
+                
+                SFButton("gear") {
+                    sheetSettings = true
+                }
+            }
         }
     }
 }

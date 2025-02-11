@@ -3,7 +3,7 @@ import AppIntents
 struct StartServerIntent: AppIntent {
     static var title: LocalizedStringResource = "Start Server"
     
-    @Parameter(title: "Server id", default: "")
+    @Parameter(title: "Server id", optionsProvider: ServerOptionsProvider())
     var id: String
     
     init() {}
@@ -22,7 +22,7 @@ struct StartServerIntent: AppIntent {
 struct RestartServerIntent: AppIntent {
     static var title: LocalizedStringResource = "Restart Server"
     
-    @Parameter(title: "Server id", default: "")
+    @Parameter(title: "Server id", optionsProvider: ServerOptionsProvider())
     var id: String
     
     init() {}
@@ -41,7 +41,7 @@ struct RestartServerIntent: AppIntent {
 struct StopServerIntent: AppIntent {
     static var title: LocalizedStringResource = "Stop Server"
     
-    @Parameter(title: "Server id", default: "")
+    @Parameter(title: "Server id", optionsProvider: ServerOptionsProvider())
     var id: String
     
     init() {}
@@ -60,7 +60,7 @@ struct StopServerIntent: AppIntent {
 struct KillServerIntent: AppIntent {
     static var title: LocalizedStringResource = "Kill Server"
     
-    @Parameter(title: "Server id", default: "")
+    @Parameter(title: "Server id", optionsProvider: ServerOptionsProvider())
     var id: String
     
     init() {}

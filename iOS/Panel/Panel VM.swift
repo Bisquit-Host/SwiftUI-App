@@ -16,16 +16,16 @@ final class PanelVM {
     var diskValues: [Value] = []
 #endif
     
-    var server: ServerAttributes? = nil
-    var serverState: ServerState = .unknown
     var searchRule = ""
     var fieldSearch = ""
-    var uptime = 0
+    var showFormatting = false
     var cpuUsage = 0.0
     var ramUsage = 0.0
     var diskUsage = 0.0
-    var stateColor: Color = .primary
-    var showFormatting = false
+    private(set) var server: ServerAttributes? = nil
+    private(set) var serverState: ServerState = .unknown
+    private(set) var uptime = 0
+    private(set) var stateColor: Color = .primary
     
     var updateBackups: (() -> Void)? = nil
     
@@ -67,7 +67,7 @@ final class PanelVM {
                     let message = try JSONDecoder().decode(WebSocketMessage.self, from: jsonData)
                     
                     if let status = message.serverStatus {
-                        print("Server status: \(status)")
+                        print("Server status:", status)
                         
                         var state: ServerState
                         
@@ -121,7 +121,7 @@ final class PanelVM {
 #endif
                             }
                         } catch {
-                            print("Error converting dictionary to JSON Data or decoding JSON: \(error)")
+                            print("Error converting dictionary to JSON Data or decoding JSON:", error)
                         }
                         
                     } else if message.backupCompleted != nil {

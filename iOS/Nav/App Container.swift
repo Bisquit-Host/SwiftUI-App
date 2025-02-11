@@ -22,9 +22,8 @@ struct AppContainer: View {
         
         NavigationStack(path: $navState.path) {
             if store.isApiKeyValid {
-#if !os(watchOS)
-                AuthView()
-                    .withNavDestinations()
+#if os(macOS)
+                Home()
 #else
                 ServerList()
                     .withNavDestinations()

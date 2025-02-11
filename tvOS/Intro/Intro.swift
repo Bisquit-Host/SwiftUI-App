@@ -82,7 +82,7 @@ struct Intro: View {
                 vm.accountEmail.removeAll()
             }
         } message: {
-            Text("Name" + ": \(vm.accountName)\n" + "Email" + ": \(vm.accountEmail)")
+            Text("Name" + ": \(vm.accountName)\n" + "E-mail" + ": \(vm.accountEmail)")
         }
     }
 }

@@ -87,6 +87,7 @@ struct FileTabContextMenu: ViewModifier {
             .alert("Rename \(name)", isPresented: $alertRename) {
                 TextField("I'm not a no-name 😢", text: $vm.newFileName)
                     .autocorrectionDisabled()
+                    .limitInputLength($vm.newFileName, length: 255)
                 
                 Button("Rename", role: .destructive) {
                     vm.renameFile(root, oldName: name, newName: vm.newFileName)

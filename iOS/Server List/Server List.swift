@@ -5,27 +5,21 @@ struct ServerList: View {
     @Environment(ServerListVM.self) private var vm
     @EnvironmentObject private var store: ValueStore
     
-    @State private var searchField = ""
-    @State private var showSafari = false
+    @Environment(\.openURL) private var openUrl
     
-    private var hasFrozenServers: Bool {
-        vm.servers.contains {
-            $0.isSuspended
-        }
-    }
+    @State private var searchField = ""
     
     var body: some View {
         @Bindable var vm = vm
         
 #warning("Present a warning when 2FA is disabled")
-        
         ScrollView(showsIndicators: false) {
             TipView(Tip_ServerCardContextMenu())
             
-            if hasFrozenServers {
+            if vm.hasFrozenServers {
                 TipView(Tip_SuspendedServer()) { action in
                     if action.id == "open-billing" {
-                        showSafari = true
+                        vm.showBilling = true
                     }
                 }
             }
@@ -34,10 +28,15 @@ struct ServerList: View {
         }
         .padding(.horizontal, 4)
         .environment(vm)
-        .searchable(text: $searchField)
         .navigationBarBackButtonHidden()
-        .safariCover($showSafari, url: "https://my.bisquit.host")
+        .safariCover($vm.showBilling, url: "https://my.bisquit.host")
+        .appStoreOverlay($vm.alertUpdate, id: "1639409934")
         .background(BisquitFall())
+        .task {
+            if !System.lowPowerMode {
+                await vm.checkForUpdates()
+            }
+        }
         .refreshableTask {
             vm.fetchServers(store.adminServerList)
             store.updateServers.toggle()

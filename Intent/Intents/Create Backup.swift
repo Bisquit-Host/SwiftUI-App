@@ -1,16 +1,14 @@
 import AppIntents
 import PteroNet
 
-struct CreateBackup: AppIntent, CustomIntentMigratedAppIntent, PredictableIntent {
-    static let intentClassName = "CreateBackupIntent"
-    
+struct CreateBackup: AppIntent, PredictableIntent {
     static var title: LocalizedStringResource = "Create Backup"
-    static var description = IntentDescription("")
+    static var description = IntentDescription("Creates a new backup", searchKeywords: ["Minecraft"])
     
-    @Parameter(title: "Server id")
+    @Parameter(title: "Server id", optionsProvider: ServerOptionsProvider())
     var id: String
     
-    @Parameter(title: "Backup name")
+    @Parameter(title: "Backup name", description: "Optional", default: "")
     var backupName: String
     
     static var parameterSummary: some ParameterSummary {
@@ -38,7 +36,7 @@ struct CreateBackup: AppIntent, CustomIntentMigratedAppIntent, PredictableIntent
         IntentPrediction(parameters: (\.$id, \.$backupName)) { id, name in
             DisplayRepresentation(
                 title: "Create Backup",
-                subtitle: "Create Backup of a server"
+                subtitle: "Creates a new backup"
             )
         }
     }

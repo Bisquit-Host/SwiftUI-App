@@ -10,7 +10,7 @@ struct DesignSettings: View {
         Section("Design") {
             Picker("Color theme", selection: $store.colorTheme) {
                 ForEach(ColorTheme.allCases) { theme in
-                    Text(theme.rawValue.capitalized)
+                    Text(theme.localized)
                         .tag(theme)
                 }
             }
@@ -23,7 +23,7 @@ struct DesignSettings: View {
             
             Toggle("Transparent lists", isOn: $store.transparentList)
             
-            Toggle("Bisquit waterfall", isOn: $store.enableBisquitFall)
+            Toggle("Animated background", isOn: $store.enableBisquitFall)
         }
         .listRowBackground(store.transparentList ? .clear : Color.list)
     }

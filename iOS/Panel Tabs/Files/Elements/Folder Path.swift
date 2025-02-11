@@ -19,7 +19,7 @@ struct FolderPath: View {
             Button {
                 vm.copyFilePath(path, withHomeContainer: store.showFullFilePath)
             } label: {
-                Text("listPath")
+                Text(listPath)
                     .footnote()
                     .foregroundStyle(.primary)
                     .lineLimit(1)

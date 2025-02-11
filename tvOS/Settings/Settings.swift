@@ -27,8 +27,8 @@ struct Settings: View {
             //                    MapView()
             //                }
             
-            ListLink("Browser (Beta)", icon: "externaldrive.badge.plus") {
-                Browser()
+            ListLink("Configurations", icon: "externaldrive.badge.plus") {
+                BrowserParent()
             }
             
             Section {

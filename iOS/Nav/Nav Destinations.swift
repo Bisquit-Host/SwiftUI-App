@@ -1,10 +1,7 @@
 enum NavDestinations: Hashable {
-#if !os(watchOS)
-    case toAuth
-#endif
-    
     //#if os(watchOS)
     //    case toServerList(selectedServer: Int)
+    
     case toServerList
     
 #if !os(macOS)
@@ -12,8 +9,8 @@ enum NavDestinations: Hashable {
 #endif
     
 #if !os(visionOS)
-    case toMap
-    case toFileManager(_ id: String, root: String)
+    case toMap,
+         toFileManager(_ id: String, root: String)
 #endif
     
 #if os(watchOS)

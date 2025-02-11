@@ -4,7 +4,7 @@ import PteroNet
 @Observable
 final class ServerListVM {
     // MARK: - PteroNet
-    var servers: [ServerAttributes] = []
+    private(set) var servers: [ServerAttributes] = []
     var apiKey = Keychain.load(key: "selectedApiKey") ?? ""
     
     // MARK: - Sheets / Alerts
@@ -12,13 +12,13 @@ final class ServerListVM {
     var sheetGuide = false
     var sheetKeyStorage = false
     var sheetDiscover = false
+    var showBilling = false
+    var alertUpdate = false
     
     // MARK: - Filter/Search
     var searchField = ""
     var displayedNode = ""
     var filterBySuspended = false
-    
-    var keys: [String] = []
     
     var selectedServer: ServerAttributes?
     
@@ -50,63 +50,45 @@ final class ServerListVM {
         hasSuspendedServers || hasMultipleNodes
     }
     
-#if os(iOS)
-    private func fetchUniqueUsers() {
-        let ids = servers.map(\.id)
-        
-        var allUsers: [UserAttributes] = []
-        let dispatchGroup = DispatchGroup()
-        let queue = DispatchQueue(label: "host.bisquit.uniqueUsersQueue")
-        
-        for id in ids {
-            dispatchGroup.enter()
-            
-            fetchUsers(id) { users in
-                guard let users else {
-                    dispatchGroup.leave()
-                    return
-                }
-                
-                queue.async {
-                    for user in users {
-                        if !allUsers.contains(where: { $0.email == user.email }) {
-                            allUsers.append(user)
-                        }
-                    }
-                    
-                    dispatchGroup.leave()
-                }
-            }
-        }
-        
-        dispatchGroup.notify(queue: .main) {
-            let niggers = allUsers
-            
-            Task {
-                await self.saveContacts(niggers)
-            }
+    var hasFrozenServers: Bool {
+        servers.contains {
+            $0.isSuspended
         }
     }
     
-    private func fetchUsers(_ id: String, completion: @escaping ([UserAttributes]?) -> Void) {
-        userListAPI(id) { result in
-            switch result {
-            case .success(let model):
-                guard let model = model?.data else {
-                    completion(nil)
-                    return
-                }
-                
-                let attributes = model.map(\.attributes)
-                completion(attributes)
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-                completion(nil)
-            }
+    func checkForUpdates() async {
+        let decoder = JSONDecoder()
+        var appStoreVersion = "0"
+        
+        guard
+            let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
+            let url = URL(string: "https://itunes.apple.com/lookup?bundleId=host.bisquit.Bisquit-Host")
+        else {
+            return
+        }
+        
+        let request = URLRequest(url: url)
+        
+        do {
+            let (data, _) = try await URLSession.shared.data(for: request)
+            let decoded = try decoder.decode(ItunesAppInfo.self, from: data)
+            appStoreVersion = decoded.results.first?.version ?? "0"
+        } catch {
+            return
+        }
+        
+        main {
+            self.alertUpdate = currentVersion.compare(appStoreVersion, options: .numeric) == .orderedAscending
         }
     }
-#endif
+    
+    struct ItunesAppInfo: Decodable {
+        let results: [ItunesAppInfoResult]
+    }
+    
+    struct ItunesAppInfoResult: Decodable {
+        let version: String
+    }
     
     func fetchServers(_ isAdmin: Bool) {
         serverListAPI(isAdmin) { result in
@@ -126,10 +108,14 @@ final class ServerListVM {
                         self.servers = loadedServers
                     }
                 }
-#if os(iOS)
+#if canImport(ContactProvider)
                 if ValueStore().contactsProviderEnabled {
                     self.fetchUniqueUsers()
                 }
+#endif
+                
+#if canImport(CoreSpotlight) && !os(tvOS)
+                self.indexItems(self.servers)
 #endif
             case .failure(let error):
                 SystemAlert.error(error)
@@ -147,8 +133,8 @@ final class ServerListVM {
             serverListAPI(isAdmin, page: page) { result in
                 switch result {
                 case .success(let model):
-                    if let model = model?.data {
-                        let servers = model.map(\.attributes)
+                    if let model {
+                        let servers = model.data.map(\.attributes)
                         loadedServers.append(contentsOf: servers)
                     }
                     

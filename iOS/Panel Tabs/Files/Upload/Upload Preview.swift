@@ -23,8 +23,9 @@ struct UploadPreview: View {
                 Spacer()
                 
                 Button("Upload") {
-                    vm.handleFileImport(urls, root: root)
-                    dismiss()
+                    vm.handleFileImport(urls, root: root) {
+                        dismiss()
+                    }
                 }
             }
             .semibold()

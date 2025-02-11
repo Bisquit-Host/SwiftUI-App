@@ -12,7 +12,7 @@ struct DiscoverCard: View {
     
     var body: some View {
         ListButton(
-            LocalizedStringResource(stringLiteral: link.name),
+            link.name,
             icon: link.icon,
             actionIcon: "link",
             color: link.color

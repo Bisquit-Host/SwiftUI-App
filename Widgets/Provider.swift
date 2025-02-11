@@ -11,7 +11,7 @@ struct Provider: AppIntentTimelineProvider {
     ) -> Timeline<SystemSmallEntry> {
         var cpu = 0.0
         
-        serverUsageAPI(configuration.serverId) { result in
+        serverUsageAPI(configuration.id) { result in
             switch result {
             case .success(let model):
                 if let model {

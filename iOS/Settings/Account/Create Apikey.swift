@@ -27,10 +27,6 @@ struct CreateApikey: View {
                     }
                     
                     vm.create(text)
-                    delay {
-                        vm.fetchKeys()
-                        dismiss()
-                    }
                 } label: {
                     HStack {
                         Text("Create and copy")

@@ -15,6 +15,13 @@ struct InfoTab: View {
         ScrollView(showsIndicators: false) {
             InfoTabCard(server)
             
+#warning("Tip")
+            InfoTabAllocation(server)
+                .frame(height: 25)
+                .foregroundStyle(.foreground)
+                .padding()
+                .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
+            
             InfoTabButtons(server)
         }
         .padding(5)

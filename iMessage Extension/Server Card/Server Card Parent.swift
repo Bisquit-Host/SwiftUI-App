@@ -27,7 +27,7 @@ struct ServerCardParent: View {
             }
             //            }
         }
-        .safariCover($showSafari, url: "https://mgr.bisquit.host/server/\(server.id)")
+        .safariCover($showSafari, url: "https://mgr.bisquit.host/server/" + server.id)
         .contextMenu {
             ServerCardContextMenu(server, $showSafari, $confirmKill)
         }

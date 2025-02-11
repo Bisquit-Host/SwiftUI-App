@@ -2,16 +2,16 @@ import SwiftUI
 import WidgetKit
 
 struct PowerWidget: Widget {
-    let kind = "Widgets"
+    private let kind = "Widgets"
     
     var body: some WidgetConfiguration {
-        AppIntentConfiguration(
+        IntentConfiguration(
             kind: kind,
-            intent: ConfigurationAppIntent.self,
-            provider: PowerProvider()
+            intent: CryptoPriceConfigurationIntent.self,
+            provider: ResourcesTimelineProvider()
         ) { entry in
             VStack {
-                let id = entry.configuration.serverId
+                let id = entry.id
                 
                 if id.isEmpty || id.count != 8 {
                     Text("Configure first")
@@ -33,8 +33,10 @@ struct PowerWidget: Widget {
                     }
                 }
             }
-            .containerBackground(.fill.tertiary, for: .widget)
+            .containerBackground(for: .widget) {}
         }
+        .configurationDisplayName("Change Power")
+        .description("Send power signals to your server")
         .supportedFamilies([
             .systemSmall
         ])
@@ -47,7 +49,7 @@ struct PowerWidget: Widget {
     PowerEntry(
         date: .now,
         configuration: .init(
-            serverId: .init(title: "", description: "", default: "1123")
+            id: .init(title: "", description: "", default: "1123")
         )
     )
 }

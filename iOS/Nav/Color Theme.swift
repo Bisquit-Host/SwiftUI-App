@@ -14,4 +14,12 @@ enum ColorTheme: String, Identifiable, CaseIterable {
         case .light:  .light
         }
     }
+    
+    var localized: LocalizedStringKey {
+        switch self {
+        case .system: "System"
+        case .dark: "Dark"
+        case .light: "Light"
+        }
+    }
 }

@@ -42,9 +42,6 @@ struct InfoTabCard: View {
                 
                 InfoAbsoluteStats(server.limits)
                     .tag(TabInfo.absolute)
-                
-                InfoTabAllocation(server)
-                    .tag(TabInfo.ip)
             }
             .frame(height: 120)
             .padding(.vertical, -20)

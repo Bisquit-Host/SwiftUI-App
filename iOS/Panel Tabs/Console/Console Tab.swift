@@ -24,7 +24,9 @@ struct ConsoleTab: View {
                     .textFieldStyle(.roundedBorder)
                     .autocorrectionDisabled()
                     .onSubmit {
-                        vm.sendCommand()
+                        if !vm.command.isEmpty {
+                            vm.sendCommand()
+                        }
                     }
                 
                 if !vm.command.isEmpty {

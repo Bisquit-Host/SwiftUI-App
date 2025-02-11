@@ -19,12 +19,22 @@ struct ServerCard: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text(server.name)
-                .title()
+        HStack(spacing: 50) {
+            VStack(alignment: .leading) {
+                Text(server.name)
+                    .largeTitle()
+                
+                if !server.description.isEmpty {
+                    Text(server.description)
+                        .title()
+                        .secondary()
+                }
+            }
             
-            HStack(spacing: 50) {
-                Group {
+            Spacer()
+            
+            Group {
+                if vm.stateColor != .red {
                     CircularGauge(
                         param: "CPU",
                         value: vm.cpuUsage,
@@ -38,32 +48,30 @@ struct ServerCard: View {
                         limit: limits.memory,
                         isRedacted: vm.isLoading
                     )
-                    
-                    CircularGauge(
-                        param: "SSD",
-                        value: vm.diskUsage,
-                        limit: limits.disk,
-                        isRedacted: vm.isLoading
-                    )
                 }
-                .scaleEffect(1.5)
                 
-                //                LinearGauge(value: vm.diskUsage, limit: limits.disk)
+                CircularGauge(
+                    param: "SSD",
+                    value: vm.diskUsage,
+                    limit: limits.disk,
+                    isRedacted: vm.isLoading
+                )
             }
-            .padding()
-            .task {
-                vm.fetchServerUsage()
-            }
-            .onChange(of: store.updateServers) {
-                vm.fetchServerUsage()
-            }
+            .scaleEffect(1.5)
+        }
+        .padding()
+        .task {
+            vm.fetchServerUsage()
+        }
+        .onChange(of: store.updateServers) {
+            vm.fetchServerUsage()
         }
     }
 }
 
 #Preview {
     List {
-        ServerCard(PreviewProperty.serverAttributes)
+        ServerCard(PreviewProp.serverAttributes)
     }
     .padding()
 }

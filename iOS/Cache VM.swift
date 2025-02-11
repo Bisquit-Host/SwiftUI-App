@@ -3,7 +3,7 @@ import Kingfisher
 
 @Observable
 final class CacheVM {
-    var cacheSize = ""
+    private(set) var cacheSize = ""
     
     private let cache: ImageCache = .default
     

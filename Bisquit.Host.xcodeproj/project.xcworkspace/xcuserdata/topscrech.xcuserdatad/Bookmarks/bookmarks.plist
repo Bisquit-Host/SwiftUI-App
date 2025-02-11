@@ -1120,13 +1120,13 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>54</string>
+					<string>56</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>53</string>
+					<string>55</string>
 					<key>Timestamp</key>
-					<string>725243860.49871</string>
+					<string>760548183.815118</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -1301,11 +1301,11 @@ import PteroNet
 					<key>EndingLineNumber</key>
 					<string>31</string>
 					<key>StartingColumnNumber</key>
-					<string>8</string>
+					<string>0</string>
 					<key>StartingLineNumber</key>
 					<string>30</string>
 					<key>Timestamp</key>
-					<string>747472939.309242</string>
+					<string>760462807.813796</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -1321,12 +1321,12 @@ import PteroNet
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>//        Logger.webSocket.log("Received message: \(message)")
+				<string>        //        Logger.webSocket.log("Received message: \(message)")
 </string>
 				<key>leading</key>
 				<string>    
     func onTextMessage(connection: WebSocketConnection, message: String) {
-        </string>
+</string>
 				<key>trailing</key>
 				<string>        
         onTextMessage(message)

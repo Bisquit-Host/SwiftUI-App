@@ -10,8 +10,6 @@ struct SettingsView: View {
         @Bindable var vm = vm
         
         List {
-            AccountSettings()
-            
             DesignSettings()
             
             IconSettings()
@@ -44,9 +42,6 @@ struct SettingsView: View {
         }
         .task {
             vm.defineBiometryType()
-        }
-        .onChange(of: store.currentIcon) { _, newValue in
-            UIApplication.shared.setAlternateIconName(newValue)
         }
     }
 }

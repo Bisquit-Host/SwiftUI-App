@@ -23,7 +23,9 @@ final class LiveActivity {
     var LAToken = ""
     
     func postRequest(WSUrl: String, WSToken: String, liveActivityToken: String) {
-        guard let url = URL(string: "https://api.topscrech.dev/liveactivity/start") else {
+        guard
+            let url = URL(string: "https://api.topscrech.dev/liveactivity/start")
+        else {
             return
         }
         
@@ -189,7 +191,7 @@ final class LiveActivity {
                 self.consoleDetails(server.id)
             }
         } catch {
-            print("Error starting live activity: \(error.localizedDescription)")
+            print("Error starting live activity:", error.localizedDescription)
         }
     }
     

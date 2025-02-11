@@ -24,7 +24,7 @@ final class GameScene: SKScene {
         switch randomInt {
         case 0:
             box.texture = bisquitTexture
-            
+        
         default:
             box.texture = pyzhTexture
         }

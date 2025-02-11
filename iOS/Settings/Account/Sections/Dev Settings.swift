@@ -15,7 +15,7 @@ struct DevSettings: View {
     }
     
     private var version: String {
-        "\(appVersion) (\(appBuild))"
+        "\(appVersion) (B\(appBuild))"
     }
     
     private var deviceAndSystem: String {
@@ -25,6 +25,7 @@ struct DevSettings: View {
     var body: some View {
         Section("Dev") {
             ListParam("App version", param: version)
+            
             ListParam("Device and system", param: deviceAndSystem)
             
             Toggle("Developer mode", isOn: $store.devMode)
@@ -49,7 +50,10 @@ public extension UIDevice {
         let machineMirror = Mirror(reflecting: systemInfo.machine)
         
         return machineMirror.children.reduce("") { identifier, element in
-            guard let value = element.value as? Int8, value != 0 else {
+            guard
+                let value = element.value as? Int8,
+                value != 0
+            else {
                 return identifier
             }
             

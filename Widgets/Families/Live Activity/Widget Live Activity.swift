@@ -80,7 +80,7 @@ struct WidgetLiveActivity: Widget {
                     .bold()
                     .foregroundStyle(.orange)
             }
-            .widgetURL(URL(string: "http://www.apple.com"))
+            .widgetURL(URL(string: "bisquit:/server/\(context.attributes.id)/info"))
             .keylineTint(.orange)
         }
     }

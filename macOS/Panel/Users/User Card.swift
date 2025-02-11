@@ -34,7 +34,7 @@ struct UserCard: View {
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
                 
-                if let destination = URL(string: "mailto:\(user.email)") {
+                if let destination = URL(string: "mailto:" + user.email) {
                     Link(destination: destination) {
                         Text(user.email)
                             .footnote()

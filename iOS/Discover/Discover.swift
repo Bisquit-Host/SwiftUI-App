@@ -4,6 +4,8 @@ import SafariCover
 struct Discover: View {
     @EnvironmentObject private var store: ValueStore
     
+    @Environment(\.dismiss) private var dismiss
+    
     @State private var sheetConfigurations = false
     
     var body: some View {
@@ -20,7 +22,7 @@ struct Discover: View {
                 Section("Support") {
                     DiscoverCard(
                         DiscoverItem(
-                            "App support",
+                            "App Support",
                             icon: "questionmark.app.dashed",
                             url: "https://topscrech.dev/app/support/",
                             color: .purple
@@ -29,7 +31,7 @@ struct Discover: View {
                     
                     DiscoverCard(
                         DiscoverItem(
-                            "Hosting support",
+                            "Hosting Support",
                             icon: "questionmark.bubble",
                             url: "https://my.bisquit.host/login",
                             color: .purple
@@ -58,7 +60,7 @@ struct Discover: View {
                 }
                 .listRowBackground(store.transparentList ? .clear : Color.list)
                 
-                Section("Other") {
+                Section {
                     DiscoverCard(
                         DiscoverItem(
                             "System status",
@@ -85,6 +87,15 @@ struct Discover: View {
                     ) {
                         openSafari("https://github.com/TopScrech")
                     }
+                    
+                    DiscoverCard(
+                        DiscoverItem(
+                            "Client role in the Discord channel",
+                            icon: "person",
+                            url: "https://my.bisquit.host/discord.php",
+                            color: .secondary
+                        )
+                    )
                 }
                 .listRowBackground(store.transparentList ? .clear : Color.list)
                 
@@ -94,13 +105,35 @@ struct Discover: View {
                     ListButton("Places we recommend", icon: "map")
                 }
                 .listRowBackground(store.transparentList ? .clear : Color.list)
+                
+                Section {
+                    DiscoverCard(
+                        DiscoverItem(
+                            "Privacy Policy",
+                            icon: "text.document",
+                            url: "https://bisquit.host/policy.pdf",
+                            color: .secondary
+                        )
+                    )
+                    
+                    DiscoverCard(
+                        DiscoverItem(
+                            "Offer",
+                            icon: "text.document",
+                            url: "https://bisquit.host/offer.pdf",
+                            color: .secondary
+                        )
+                    )
+                }
+                .listRowBackground(store.transparentList ? .clear : Color.list)
             }
             .scrollContentBackground(store.transparentSheet ? .hidden : .visible)
             .presentationBackground(store.transparentSheet ? .ultraThinMaterial : .regular)
             .scrollIndicators(.never)
+            .ornamentDismissButton()
         }
         .sheet($sheetConfigurations) {
-            Browser()
+            BrowserParent()
         }
     }
 }

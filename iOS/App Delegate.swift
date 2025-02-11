@@ -7,7 +7,10 @@ import Contacts
 
 #if !os(macOS)
 final class AppDelegate: UIResponder, UIApplicationDelegate {
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+    ) -> Bool {
         if ValueStore().isApiKeyValid {
             registerForPushNotifications(application: application)
         }
@@ -25,7 +28,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         case .denied, .notDetermined:
             CNContactStore().requestAccess(for: .contacts) { granted, error in
                 if let error {
-                    print("Error requesting permissions: \(error)")
+                    print("Error requesting permissions:", error)
                 }
             }
             
@@ -57,20 +60,26 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+    func application(
+        _ application: UIApplication,
+        didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
+    ) {
         let tokenParts = deviceToken.map {
             String(format: "%02.2hhx", $0)
         }
         
         let token = tokenParts.joined()
         
-        print("Device Token: \(token)")
+        print("Device Token:", token)
         
         sendToken(token)
     }
     
-    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        print("Failed to register for remote notifications: \(error)")
+    func application(
+        _ application: UIApplication,
+        didFailToRegisterForRemoteNotificationsWithError error: Error
+    ) {
+        print("Failed to register for remote notifications:", error)
     }
 }
 
@@ -96,7 +105,9 @@ private func fetchEmail(completion: @escaping (String?) -> Void) {
 }
 
 private func postPushToken(email: String, token: String) {
-    guard let url = URL(string: "http://api.topscrech.dev/user/push_tokens/add") else {
+    guard
+        let url = URL(string: "http://api.topscrech.dev/user/push_tokens/add")
+    else {
         return
     }
     
@@ -112,8 +123,8 @@ private func postPushToken(email: String, token: String) {
     
     request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
     
-    URLSession.shared.dataTask(with: request) { data, response, error in
-        guard error == nil else {
+    URLSession.shared.dataTask(with: request) { _, _, error in
+        guard error != nil else {
             print(error?.localizedDescription ?? "Unknown error")
             return
         }

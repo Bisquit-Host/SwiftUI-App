@@ -25,24 +25,25 @@ struct FileView: View {
         let mimeType = file.mimetype
         
         NavigationLink {
-            if mimeType.contains("text") || mimeType.contains("json") {
-                TextFile(id, path: root, name: name)
-                    .environmentObject(vm)
-                
-            } else if mimeType.contains("directory") {
-                FolderFile(id, path: root + name)
-                
-            } else if mimeType.contains("video") {
-                VideoFile(id, path: root, name: name)
-                    .environmentObject(vm)
-                
-            } else if mimeType.contains("audio") {
-                AudioPlayerView(id, path: root, name: name)
-                    .environmentObject(vm)
+            if mimeType.contains("directory") {
+                FolderFile(id, path: root + name + "/")
                 
             } else {
-                QuickLookFile(id, path: root, name: name)
-                    .environmentObject(vm)
+                Group {
+                    if mimeType.contains("text") || mimeType.contains("json") {
+                        TextFile(id, path: root, name: name)
+                        
+                    } else if mimeType.contains("video") {
+                        VideoFile(id, path: root, name: name)
+                        
+                    } else if mimeType.contains("audio") {
+                        AudioPlayerView(id, path: root, name: name)
+                        
+                    } else {
+                        QuickLookFile(id, path: root, name: name)
+                    }
+                }
+                .environmentObject(vm)
             }
         } label: {
             HStack {

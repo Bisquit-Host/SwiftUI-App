@@ -8,6 +8,7 @@ struct PanelView: View {
     private var dbVM: DatabaseVM
     private var scheduleVM: ScheduleVM
     private var userVM: UsersVM
+    private var subdomainVM: SubdomainVM
     
     private let id: String
     
@@ -19,6 +20,7 @@ struct PanelView: View {
         self.dbVM = DatabaseVM(id)
         self.scheduleVM = ScheduleVM(id)
         self.userVM = UsersVM(id)
+        self.subdomainVM = SubdomainVM(id)
     }
     
     @AppStorage("show_info") private var showInfo = true
@@ -30,6 +32,7 @@ struct PanelView: View {
             if let server = vm.server {
                 TabView(selection: $tabPanel) {
                     InfoTab(server)
+                        .environment(vm)
                         .tag(Tab.info)
                         .tabItem {
                             Label("Info", systemImage: "info.circle")
@@ -82,6 +85,13 @@ struct PanelView: View {
                         .tabItem {
                             Label("Users", systemImage: "person.3")
                         }
+                    
+                    SubdomainList()
+                        .environment(subdomainVM)
+                        .tag(Tab.subdomains)
+                        .tabItem {
+                            Label("Subdomains", systemImage: "globe")
+                        }
                 }
             }
         }
@@ -92,8 +102,12 @@ struct PanelView: View {
             if !System.lowPowerMode {
                 backupVM.fetchBackups()
                 dbVM.fetchDatabases()
-                userVM.fetchUsers()
+                userVM.fetchUsers(true)
                 fileVM.fetchFiles()
+                
+                Task {
+                    await subdomainVM.fetchSubdomains()
+                }
             }
             
             vm.updateBackups = {

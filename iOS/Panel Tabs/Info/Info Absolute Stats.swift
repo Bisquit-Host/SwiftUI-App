@@ -2,7 +2,7 @@ import ScrechKit
 import PteroNet
 
 struct InfoAbsoluteStats: View {
-    @Environment(PanelVM.self) private var panelVM
+    @Environment(PanelVM.self) private var vm
     
     private let limits: ServerLimits
     
@@ -13,14 +13,6 @@ struct InfoAbsoluteStats: View {
     var body: some View {
         HStack {
             Group {
-                VStack {
-                    Text("Storage")
-                        .footnote()
-                        .secondary()
-                    
-                    diskAbsolute
-                }
-                
                 VStack {
                     Text("Processor")
                         .footnote()
@@ -36,6 +28,14 @@ struct InfoAbsoluteStats: View {
                     
                     ramAbsolute
                 }
+                
+                VStack {
+                    Text("Storage")
+                        .footnote()
+                        .secondary()
+                    
+                    diskAbsolute
+                }
             }
             .lineLimit(1)
             .minimumScaleFactor(0.5)
@@ -45,7 +45,7 @@ struct InfoAbsoluteStats: View {
     }
     
     private var diskAbsolute: some View {
-        let usage = formatBytes(panelVM.diskUsage * pow(1024, 2))
+        let usage = formatBytes(vm.diskUsage * pow(1024, 2))
         let usageText = Text(usage)
         
         let limit = formatBytes(
@@ -53,7 +53,7 @@ struct InfoAbsoluteStats: View {
             countStyle: .memory
         )
         
-        let limitText = Text("/\(limit)")
+        let limitText = Text("/" + limit)
             .footnote()
             .foregroundStyle(.tertiary)
         
@@ -64,10 +64,11 @@ struct InfoAbsoluteStats: View {
     }
     
     private var cpuAbsolute: some View {
-        let usage = Int(panelVM.cpuUsage)
-        let usageText = Text("\(usage)%")
+        let usage = Int(vm.cpuUsage)
+        let usageText = vm.serverState == .offline ? Text("-") : Text("\(usage)%")
         
         let limit = Int(limits.cpu)
+        
         let limitText = Text("/\(limit)%")
             .footnote()
             .foregroundStyle(.tertiary)
@@ -79,15 +80,15 @@ struct InfoAbsoluteStats: View {
     }
     
     private var ramAbsolute: some View {
-        let usage = formatBytes(panelVM.ramUsage, countStyle: .memory)
-        let usageText = Text(usage)
+        let usage = formatBytes(vm.ramUsage, countStyle: .memory)
+        let usageText = vm.serverState == .offline ? Text("-") : Text(usage)
         
         let limit = formatBytes(
             limits.memory * pow(1024, 2),
             countStyle: .memory
         )
         
-        let limitText = Text("/\(limit)")
+        let limitText = Text("/" + limit)
             .footnote()
             .foregroundStyle(.tertiary)
         

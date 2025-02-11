@@ -21,6 +21,7 @@ struct NewScheduleSheet: View {
         List {
             Section("Name") {
                 TextField("Name", text: $newSchedule.name)
+                    .limitInputLength($newSchedule.name, length: 191)
             }
             
             Section("Minute") {
@@ -43,7 +44,7 @@ struct NewScheduleSheet: View {
                 TextField("Day of week", text: $newSchedule.dayOfWeek)
             }
             
-            Toggle("Enable Schedule", isOn: $newSchedule.isActive)
+            Toggle("Enable", isOn: $newSchedule.isActive)
                 .foregroundStyle(newSchedule.isActive ? .green : .red)
             
             Toggle("Only when online", isOn: $newSchedule.onlyWhenOnline)
@@ -52,20 +53,18 @@ struct NewScheduleSheet: View {
             Divider()
 #endif
             Section {
-#if os(visionOS)
-                Button("Dismiss") {
-                    dismiss()
-                }
-#endif
                 Button("Create Schedule") {
-                    vm.createSchedule(newSchedule)
-                    dismiss()
+                    vm.createSchedule(newSchedule) {
+                        dismiss()
+                    }
                 }
+                .semibold()
 #if os(tvOS)
                 .buttonStyle(.borderedProminent)
 #endif
             }
         }
+        .ornamentDismissButton()
     }
 }
 

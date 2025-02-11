@@ -1,11 +1,14 @@
 import AppIntents
 
 struct RefreshIntent: AppIntent {
-    static var title: LocalizedStringResource = "Stop Server"
-        
+    static var title: LocalizedStringResource = "Refresh"
+    static var description = IntentDescription("Refreshes the content")
+    
+    static var isDiscoverable = false
+    
     init() {}
     
-    func perform() async throws -> some IntentResult {
+    func perform() async -> some IntentResult {
         .result()
     }
 }

@@ -3,8 +3,8 @@ import PteroNet
 
 @Observable
 final class DeepLinkVM {
-    var errorMessage = ""
-    var alertError = false
+    private(set) var errorMessage = ""
+    private(set) var alertError = false
     
     private let tabMapping: [String: Tabs] = [
         "backups": .backup,
@@ -21,8 +21,10 @@ final class DeepLinkVM {
         print(url.description)
         print(components)
         
-        guard let index = components.firstIndex(of: "server"),
-              index + 1 < components.count else {
+        guard
+            let index = components.firstIndex(of: "server"),
+            index + 1 < components.count
+        else {
             return
         }
         

@@ -21,6 +21,8 @@ struct AccountView: View {
             }
             .listRowBackground(store.transparentList ? .clear : Color.list)
             
+            AccountSettings()
+            
             Section("2FA") {
                 if vm.twoFaEnabled {
                     Menu {
@@ -91,7 +93,7 @@ struct AccountView: View {
         .environment(vm)
     }
     
-    private func param(_ param: String, value: String) -> some View {
+    private func param(_ param: LocalizedStringKey, value: String) -> some View {
         HStack {
             Text(param)
                 .secondary()

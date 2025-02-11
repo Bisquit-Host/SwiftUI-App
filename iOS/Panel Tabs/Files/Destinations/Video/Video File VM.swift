@@ -45,7 +45,7 @@ final class VideoFileVM {
             let fm = FileManager.default
             
             guard let location, error == nil else {
-                print("Download error: \(error?.localizedDescription ?? "No error description available")")
+                print("Download error:", error?.localizedDescription ?? "Unknown error")
                 return
             }
             
@@ -74,7 +74,7 @@ final class VideoFileVM {
 #endif
                 }
             } catch {
-                print("Error during file move: \(error.localizedDescription)")
+                print("Error during file move:" + error.localizedDescription)
             }
         }
         .resume()

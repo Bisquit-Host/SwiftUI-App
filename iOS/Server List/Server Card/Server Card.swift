@@ -69,7 +69,7 @@ struct ServerCard: View {
                     }
                     
                     if vm.stateColor != .red {
-                        HStack {
+                        HStack(spacing: 16) {
                             cpuGauge
                             
                             ramGauge

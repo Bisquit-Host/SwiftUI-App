@@ -2,6 +2,10 @@ import ScrechKit
 import SwiftData
 import TipKit
 
+#if canImport(CoreSpotlight)
+import CoreSpotlight
+#endif
+
 #if canImport(SafariCover)
 import SafariCover
 #endif
@@ -44,6 +48,10 @@ struct BisquitHostApp: App {
     var body: some Scene {
         WindowGroup {
             AppContainer()
+#if canImport(CoreSpotlight) && !os(tvOS)
+                .onContinueUserActivity(CSSearchableItemActionType, perform: handleSpotlightActivity)
+#endif
+            
 #if !os(macOS)
                 .onOpenURL { url in
                     linking.handleDeepLink(
@@ -91,4 +99,21 @@ struct BisquitHostApp: App {
         }
 #endif
     }
+    
+#if canImport(CoreSpotlight) && !os(tvOS)
+    func handleSpotlightActivity(_ activity: NSUserActivity) {
+        guard
+            let id = activity.userInfo?[CSSearchableItemActivityIdentifier] as? String
+        else {
+            return
+        }
+        
+#warning("macOS")
+#if !os(macOS)
+        delay(0.4) {
+            navState.navigate(.toPanel(id))
+        }
+#endif
+    }
+#endif
 }

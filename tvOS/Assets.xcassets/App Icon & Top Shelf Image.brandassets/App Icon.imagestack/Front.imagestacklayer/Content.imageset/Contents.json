@@ -1,22 +1,22 @@
 {
   "images" : [
     {
-      "filename" : "tvOS icon 2 copy 1.png",
+      "filename" : "front 3.png",
       "idiom" : "tv",
       "scale" : "1x"
     },
     {
-      "filename" : "tvOS App Icon Front.png",
+      "filename" : "front 1.png",
       "idiom" : "tv",
       "scale" : "2x"
     },
     {
-      "filename" : "tvOS icon 2 copy.png",
+      "filename" : "front 2.png",
       "idiom" : "tv-marketing",
       "scale" : "1x"
     },
     {
-      "filename" : "tvOS App Icon Front 1.png",
+      "filename" : "front.png",
       "idiom" : "tv-marketing",
       "scale" : "2x"
     }

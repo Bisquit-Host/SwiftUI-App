@@ -20,8 +20,7 @@ class CPExtension: ContactProviderExtension {
     }
     
     func invalidate() async {
-        // TODO: Stop any enumeration and cleanup as the extension will be terminated.
+        // TODO: Stop any enumeration and cleanup as the extension will be terminated
     }
 }
-
 #endif

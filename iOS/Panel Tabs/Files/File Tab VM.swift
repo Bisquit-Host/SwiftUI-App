@@ -145,12 +145,12 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func handleFileImport(_ urls: [URL], root: String) {
+    func handleFileImport(_ urls: [URL], root: String, onSuccess: @escaping () -> Void) {
         for fileURL in urls {
             let fileName = fileURL.lastPathComponent
             
             guard let mimeType = getMimeType(fileURL) else {
-                print("Unable to determine MIME type for file: \(fileName)")
+                print("Unable to determine MIME type for file:", fileName)
                 continue
             }
             
@@ -169,10 +169,12 @@ final class FileTabVM: ObservableObject {
                         )
                         
                         self.fetchFiles(root)
+                        
+                        onSuccess()
                     }
                     
                 case .failure(let error):
-                    print("Error in file API: \(error)")
+                    print("Error in file API:", error)
                 }
             }
         }
@@ -191,7 +193,7 @@ final class FileTabVM: ObservableObject {
         do {
             try imageData.write(to: fileURL, options: .completeFileProtection)
         } catch {
-            print("Could not write image data to temporary file: \(error)")
+            print("Could not write image data to temporary file:", error)
             return
         }
         

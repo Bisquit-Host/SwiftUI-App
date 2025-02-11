@@ -2,7 +2,11 @@ import SwiftUI
 import WidgetKit
 
 struct SystemSmallWidgetView: View {
-    var entry: Provider.Entry
+    private var entry: Provider.Entry
+    
+    init(_ entry: Provider.Entry) {
+        self.entry = entry
+    }
     
     private let gradient = Gradient(colors: [.mint, .orange, .red])
     
@@ -70,7 +74,6 @@ struct SystemSmallWidgetView: View {
                 Spacer()
             }
         }
-        .containerBackground(.ultraThinMaterial, for: .widget)
     }
 }
 

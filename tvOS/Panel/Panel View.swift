@@ -6,6 +6,11 @@ struct PanelView: View {
     private var backupVM: BackupVM
     private var databaseVM: DatabaseVM
     private var scheduleVM: ScheduleVM
+    private var subdomainVM: SubdomainVM
+    private var usersVM: UsersVM
+    private var logVM: LogVM
+    private var allocationVM: AllocationVM
+    private var startupVM: StartupVM
     
     private let id: String
     
@@ -16,6 +21,11 @@ struct PanelView: View {
         self.scheduleVM = ScheduleVM(id)
         self.vm = PanelVM(id)
         self.fileVM = FileTabVM(id)
+        self.subdomainVM = SubdomainVM(id)
+        self.usersVM = UsersVM(id)
+        self.logVM = LogVM(id)
+        self.allocationVM = AllocationVM(id)
+        self.startupVM = StartupVM(id)
     }
     
     @AppStorage("tab_panel") private var tabPanel: Tab = .info
@@ -29,14 +39,14 @@ struct PanelView: View {
                     .environment(databaseVM)
                     .tag(Tab.info)
                     .tabItem {
-                        Text("Stats")
+                        Label("Info", systemImage: "info.circle")
                     }
                 
                 FileTab(id)
                     .environmentObject(fileVM)
                     .tag(Tab.files)
                     .tabItem {
-                        Text("Files")
+                        Label("Files", systemImage: "folder")
                     }
                 
                 DataTab(server)
@@ -45,16 +55,46 @@ struct PanelView: View {
                     .environment(scheduleVM)
                     .tag(Tab.backups)
                     .tabItem {
-                        Text("Data")
+                        Label("Data", systemImage: "archivebox")
                     }
                 
-                InfoTab(id)
-                    .tag(Tab.other)
+                UserList()
+                    .environment(usersVM)
+                    .tag(Tab.users)
                     .tabItem {
-                        Text("Other")
+                        Label("Users", systemImage: "person")
+                    }
+                
+                LogList()
+                    .environment(logVM)
+                    .tag(Tab.logs)
+                    .tabItem {
+                        Label("Logs", systemImage: "terminal")
+                    }
+                
+                AllocationList()
+                    .environment(allocationVM)
+                    .tag(Tab.allocations)
+                    .tabItem {
+                        Label("Allocations", systemImage: "network")
+                    }
+                
+                StartupList()
+                    .environment(startupVM)
+                    .tag(Tab.startup)
+                    .tabItem {
+                        Label("Startup", systemImage: "airplane")
+                    }
+                
+                SubdomainList()
+                    .environment(subdomainVM)
+                    .tag(Tab.subdomains)
+                    .tabItem {
+                        Label("Subdomains", systemImage: "globe")
                     }
             }
         }
+        .sidebarAdaptableTabView()
         .task {
             fetchData()
         }
@@ -82,6 +122,14 @@ struct PanelView: View {
             backupVM.fetchBackups()
             databaseVM.fetchDatabases()
             scheduleVM.fetchSchedules()
+            usersVM.fetchUsers(true)
+            logVM.fetchLogs(true)
+            allocationVM.fetchAllocations()
+            startupVM.fetchStartupVariables()
+            
+            Task {
+                await subdomainVM.fetchSubdomains()
+            }
         }
         
         vm.consoleDetails { data in

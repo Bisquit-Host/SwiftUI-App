@@ -25,7 +25,7 @@ final class SettingsVM {
         case .touchID:
             bioType = "Touch ID"
             
-        default: break
+        @unknown default: break
         }
     }
 }

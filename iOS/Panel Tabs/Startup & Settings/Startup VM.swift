@@ -8,7 +8,7 @@ final class StartupVM {
         self.id = id
     }
     
-    var startupVariables: [StartupVariable] = []
+    private(set) var startupVariables: [StartupVariable] = []
     var startupCommand = ""
     var rawStartupCommand = ""
     
