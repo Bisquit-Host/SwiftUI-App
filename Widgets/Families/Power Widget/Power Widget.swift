@@ -35,6 +35,8 @@ struct PowerWidget: Widget {
             }
             .containerBackground(for: .widget) {}
         }
+        .configurationDisplayName("Change Power")
+        .description("Send power signals to your server")
         .supportedFamilies([
             .systemSmall
         ])

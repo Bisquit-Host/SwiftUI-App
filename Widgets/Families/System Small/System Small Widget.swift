@@ -10,13 +10,13 @@ struct SystemSmallWidget: Widget {
             intent: ConfigurationAppIntent.self,
             provider: Provider()
         ) { entry in
-            SystemSmallWidgetView(entry: entry)
+            SystemSmallWidgetView(entry)
                 .containerBackground(.fill.tertiary, for: .widget)
         }
         .supportedFamilies([
             .systemSmall
         ])
-        //                .onBackgroundURLSessionEvents(matching: "") { identifier,completion in
+        //                .onBackgroundURLSessionEvents(matching: "") { identifier, completion in
         //
         //                }
     }

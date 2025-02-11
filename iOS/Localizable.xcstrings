@@ -4348,6 +4348,9 @@
         }
       }
     },
+    "Send power signals to your server" : {
+
+    },
     "Sends a command to the server" : {
       "localizations" : {
         "nl" : {
@@ -5534,6 +5537,9 @@
 
     },
     "View" : {
+
+    },
+    "View resource usage of your servers" : {
 
     },
     "Warning" : {

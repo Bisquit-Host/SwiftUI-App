@@ -13,7 +13,7 @@ struct ResourcesWidget: Widget {
             ResourcesWidgetView(entry)
         }
         .configurationDisplayName("Server Info")
-        // .description("")
+        .description("View resource usage of your servers")
         .supportedFamilies([
             .systemMedium
         ])

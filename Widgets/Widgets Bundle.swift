@@ -7,7 +7,7 @@ struct WidgetsBundle: WidgetBundle {
         
         ResourcesWidget()
         
-        //        SystemSmallWidget()
+        SystemSmallWidget()
         
         // MARK: Lock Screen Widgets
         //        AccessoryCircularWindget()
