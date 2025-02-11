@@ -70,7 +70,6 @@ struct SystemSmallWidgetView: View {
                 Spacer()
             }
         }
-        .containerBackground(.ultraThinMaterial, for: .widget)
     }
 }
 
