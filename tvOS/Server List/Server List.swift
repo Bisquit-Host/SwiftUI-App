@@ -24,6 +24,10 @@ struct ServerList: View {
         .background(BisquitFall())
         .task {
             vm.fetchServers(store.adminServerList)
+            
+            if !System.lowPowerMode {
+                await vm.checkForUpdates()
+            }
         }
         .alert("New Update Available", isPresented: $vm.alertUpdate) {
             if let url = URL(string: "https://apps.apple.com/app/bisquit-host/id1639409934") {
@@ -59,9 +63,6 @@ struct ServerList: View {
             Overview()
         }
         .environment(vm)
-        .task {
-            await vm.checkForUpdates()
-        }
 #endif
     }
 }

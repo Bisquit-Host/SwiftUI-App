@@ -55,7 +55,9 @@ struct ServerList: View {
             Discover()
         }
         .task {
-            await vm.checkForUpdates()
+            if !System.lowPowerMode {
+                await vm.checkForUpdates()
+            }
         }
         .toolbar {
             ToolbarItemGroup(placement: .topBarTrailing) {

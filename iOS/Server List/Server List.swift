@@ -32,6 +32,11 @@ struct ServerList: View {
         .safariCover($vm.showBilling, url: "https://my.bisquit.host")
         .appStoreOverlay($vm.alertUpdate, id: "1639409934")
         .background(BisquitFall())
+        .task {
+            if !System.lowPowerMode {
+                await vm.checkForUpdates()
+            }
+        }
         .refreshableTask {
             vm.fetchServers(store.adminServerList)
             store.updateServers.toggle()
@@ -79,9 +84,6 @@ struct ServerList: View {
             CloudKeys($vm.apiKey) {
                 vm.fetchServers(store.adminServerList)
             }
-        }
-        .task {
-            await vm.checkForUpdates()
         }
         .alert("Unknown Error", isPresented: $vm.alertError) {
             
