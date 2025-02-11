@@ -39,7 +39,7 @@ struct Support: View {
             $showMailCover,
             message: "Hello there! \n",
             subject: "Bisquit.Host Feedback",
-            recipients: ["sergei_saliukov@icloud.com"]
+            recipients: ["topscrech@icloud.com"]
         )
     }
     
