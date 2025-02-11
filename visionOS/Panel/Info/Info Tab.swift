@@ -35,8 +35,6 @@ struct InfoTab: View {
                 Text(server.description)
                     .title3(.semibold)
                     .lineLimit(1)
-            } else {
-#warning("Add a server description")
             }
             
             Divider()
@@ -64,10 +62,8 @@ struct InfoTab: View {
         .glassBackgroundEffect()
         .frame(width: 650)
         .sheet($sheetLogs) {
-            NavigationView {
-                LogList()
-            }
-            .environment(logVM)
+            LogList()
+                .environment(logVM)
         }
         .task {
             if !System.lowPowerMode {
