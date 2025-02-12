@@ -1,7 +1,7 @@
 import ScrechKit
 import PteroNet
 
-#if os(visionOS)
+#if os(visionOS) || os(iOS)
 import GameKit
 #endif
 
@@ -95,7 +95,7 @@ final class ServerListVM {
     }
     
     func submitScore() async {
-#if os(visionOS)
+#if os(visionOS) || os(iOS)
         let score = self.servers.filter {
             $0.serverOwner
         }.count
