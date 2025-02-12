@@ -2629,8 +2629,8 @@
 		F32082442B3E170000CFED80 /* Panel Tabs */ = {
 			isa = PBXGroup;
 			children = (
-				F337C15E2A8C2B19006F321C /* Startup & Settings */,
 				F31BA5A1295902470006D126 /* Info */,
+				F337C15E2A8C2B19006F321C /* Startup & Settings */,
 				F3553FB72B4093B400EF0FD2 /* Allocations */,
 				F3FF5A012A4A318E003A1973 /* Users */,
 				F3C8C76F2A3A9B23000CC7E3 /* Logs */,

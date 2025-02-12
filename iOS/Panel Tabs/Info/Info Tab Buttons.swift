@@ -18,10 +18,8 @@ struct InfoTabButtons: View {
         self.userVM = UsersVM(server.id)
     }
     
-    @State private var sheetSettings = false
     @State private var sheetUsers = false
     @State private var sheetLogs = false
-    @State private var isRotating = false
     
     var body: some View {
         VStack {
@@ -30,33 +28,10 @@ struct InfoTabButtons: View {
             }
             .keyboardShortcut("L")
             
-            HStack {
-                Button {
-                    sheetSettings = true
-                } label: {
-                    Image(systemName: "gear")
-                        .foregroundStyle(.accent.gradient)
-                        .title2(.semibold)
-                        .rotate(isRotating ? 360 : 0)
-                        .animation(
-                            .linear(duration: 60)
-                            .repeatForever(autoreverses: false),
-                            value: isRotating
-                        )
-                        .frame(height: 25)
-                        .padding()
-                        .background(.ultraThinMaterial,in: .rect(cornerRadius: 16))
-                        .onAppear {
-                            isRotating = true
-                        }
-                }
-                .keyboardShortcut("S")
-                
-                InfoTabButton("Users", icon: "person.3.fill") {
-                    sheetUsers = true
-                }
-                .keyboardShortcut("U")
+            InfoTabButton("Users", icon: "person.3.fill") {
+                sheetUsers = true
             }
+            .keyboardShortcut("U")
             
             Spacer()
                 .frame(height: 20)
@@ -107,9 +82,6 @@ struct InfoTabButtons: View {
                 logVM.fetchLogs(true)
                 userVM.fetchUsers(true)
             }
-        }
-        .sheet($sheetSettings) {
-            PanelSettingsParent(server)
         }
         .sheet($sheetUsers) {
             UserListParent()
