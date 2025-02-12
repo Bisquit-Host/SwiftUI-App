@@ -22,9 +22,6 @@ struct BisquitHostApp: App {
     
     @StateObject private var store = ValueStore()
     private var navState = NavState()
-#if !os(macOS)
-    private var linking = DeepLinkVM()
-#endif
     private var network = NetworkVM()
     
     private let container: ModelContainer
@@ -50,16 +47,6 @@ struct BisquitHostApp: App {
             AppContainer()
 #if canImport(CoreSpotlight) && !os(tvOS)
                 .onContinueUserActivity(CSSearchableItemActionType, perform: handleSpotlightActivity)
-#endif
-            
-#if !os(macOS)
-                .onOpenURL { url in
-                    linking.handleDeepLink(
-                        navState,
-                        store: store,
-                        url: url
-                    )
-                }
 #endif
         }
         .environment(navState)

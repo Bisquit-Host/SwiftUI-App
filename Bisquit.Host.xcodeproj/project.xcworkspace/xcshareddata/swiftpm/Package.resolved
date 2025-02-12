@@ -70,7 +70,7 @@
       "location" : "https://github.com/TopScrech/PteroNet",
       "state" : {
         "branch" : "main",
-        "revision" : "8d04c459f435c3f266a2f7ccd4f88b9d62fe5772"
+        "revision" : "2f829ad1ed42dffe908a47f0954c45726202d3c4"
       }
     },
     {
@@ -105,8 +105,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-algorithms.git",
       "state" : {
-        "revision" : "f6919dfc309e7f1b56224378b11e28bab5bccc42",
-        "version" : "1.2.0"
+        "revision" : "87e50f483c54e6efd60e885f7f5aa946cee68023",
+        "version" : "1.2.1"
       }
     },
     {

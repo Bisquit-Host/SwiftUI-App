@@ -1,4 +1,6 @@
 import SwiftUI
+import SwiftData
+import PteroNet
 
 #if canImport(DeviceKit)
 import DeviceKit
@@ -6,10 +8,15 @@ import DeviceKit
 
 struct AppContainer: View {
     @State private var vm = ServerListVM()
+#if !os(macOS)
+    @State private var linking = DeepLinkVM()
+#endif
     @EnvironmentObject private var store: ValueStore
     @Environment(NavState.self) private var navState
     
     @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.modelContext) private var modelContext
+    @Query(animation: .default) private var keys: [APIKey]
     
     @State private var showBadge = false
     
@@ -44,6 +51,23 @@ struct AppContainer: View {
                 }
             }
         }
+#if !os(macOS)
+        .onOpenURL(perform: linking.handleDeepLink)
+        //        .onOpenURL { url in
+        //            linking.handleDeepLink(url)
+        //        }
+        .alert("Authentication with session", isPresented: $linking.alertAuth) {
+            Button("Confirm") {
+                auth()
+            }
+            
+            Button("Cancel", role: .cancel) {
+                auth()
+            }
+        } message: {
+            Text("Are you sure you want to continue?")
+        }
+#endif
 #if os(iOS)
         .statusBarHidden(store.hideStatusBar)
         .detectOrientation($orientation)
@@ -53,5 +77,18 @@ struct AppContainer: View {
             }
         }
 #endif
+    }
+    
+    private func auth() {
+        Keychain.save(
+            key: "selectedApiKey",
+            value: linking.session
+        )
+        
+        if !keys.contains(where: { $0.key == linking.session }) {
+            modelContext.insert(APIKey("Session", key: linking.session))
+        }
+        
+        store.authSucced()
     }
 }

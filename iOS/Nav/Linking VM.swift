@@ -3,8 +3,8 @@ import PteroNet
 
 @Observable
 final class DeepLinkVM {
-    private(set) var errorMessage = ""
-    private(set) var alertError = false
+    var session = ""
+    var alertAuth = false
     
     private let tabMapping: [String: Tabs] = [
         "backups": .backup,
@@ -12,11 +12,7 @@ final class DeepLinkVM {
         "": .info
     ]
     
-    func handleDeepLink(
-        _ navState: NavState,
-        store: ValueStore,
-        url: URL
-    ) {
+    func handleDeepLink(_ url: URL) {
         guard url.scheme == "bisq" else {
             return
         }
@@ -36,6 +32,7 @@ final class DeepLinkVM {
             return
         }
         
-        print("Let's auth! \(session)")
+        self.session = session
+        alertAuth = true
     }
 }

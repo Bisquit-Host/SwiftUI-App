@@ -598,6 +598,9 @@
         }
       }
     },
+    "Are you sure you want to continue?" : {
+
+    },
     "Are you sure you want to delete \"%@\"? This database will be deleted immediately. You can't undo this action" : {
       "localizations" : {
         "ru" : {
@@ -655,6 +658,9 @@
           }
         }
       }
+    },
+    "Authentication with session" : {
+
     },
     "Available configurations" : {
       "localizations" : {
