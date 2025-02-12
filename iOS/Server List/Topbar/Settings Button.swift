@@ -17,7 +17,7 @@ struct SettingsButton: View {
                 TopbarGridButton()
             }
             
-            MenuButton("API-keys", icon: "key.fill") {
+            MenuButton("Switch Account", icon: "key.icloud") {
                 vm.sheetKeyStorage = true
             }
             

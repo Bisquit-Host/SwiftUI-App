@@ -428,6 +428,9 @@
         }
       }
     },
+    "Accounts" : {
+
+    },
     "Action" : {
       "localizations" : {
         "ru" : {
@@ -2615,6 +2618,7 @@
       }
     },
     "iCloud" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -4965,12 +4969,12 @@
         }
       }
     },
-    "Switch account" : {
+    "Switch Account" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Переключить аккаунт"
+            "value" : "Сменить Аккаунт"
           }
         }
       }

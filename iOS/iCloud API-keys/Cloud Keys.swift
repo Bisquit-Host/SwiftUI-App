@@ -45,7 +45,7 @@ struct CloudKeys: View {
 #endif
             .ornamentDismissButton()
             .presentationBackground(store.transparentSheet ? .ultraThinMaterial : .regular)
-            .navigationTitle("iCloud")
+            .navigationTitle("Accounts")
             .toolbarTitleDisplayMode(.inline)
             .overlay {
                 if keys.isEmpty {
