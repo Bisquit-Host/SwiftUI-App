@@ -1,5 +1,6 @@
 import ScrechKit
 import PteroNet
+import GameKit
 
 @Observable
 final class ServerListVM {
@@ -90,6 +91,28 @@ final class ServerListVM {
         let version: String
     }
     
+    func submitScore() async {
+        guard !ValueStore().adminServerList else {
+            return
+        }
+        
+        let score = self.servers.filter {
+            $0.serverOwner
+        }.count
+        
+        do {
+            try await GKLeaderboard.submitScore(
+                score, context: 0,
+                player: GKLocalPlayer.local,
+                leaderboardIDs: ["owned_servers"]
+            )
+            
+            print("Score submitted successfully")
+        } catch {
+            print("Failed to submit score: \(error.localizedDescription)")
+        }
+    }
+    
     func fetchServers(_ isAdmin: Bool) {
         serverListAPI(isAdmin) { result in
             switch result {
@@ -108,6 +131,11 @@ final class ServerListVM {
                         self.servers = loadedServers
                     }
                 }
+                
+                Task {
+                    await self.submitScore()
+                }
+                
 #if canImport(ContactProvider)
                 if ValueStore().contactsProviderEnabled {
                     self.fetchUniqueUsers()

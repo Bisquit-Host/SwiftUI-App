@@ -23,6 +23,7 @@ final class PreviewProp {
             port: 0
         ),
         isSuspended: false,
+        serverOwner: true,
         relationships: .init(
             allocations: .init(data: [])
         )

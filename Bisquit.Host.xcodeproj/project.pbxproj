@@ -883,6 +883,7 @@
 		F39E683D2D2D6A380002BA96 /* Audio Player View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B73A22C8B0B7B00E858FE /* Audio Player View.swift */; };
 		F39E683F2D2D6A510002BA96 /* AudioVisualizer in Frameworks */ = {isa = PBXBuildFile; productRef = F39E683E2D2D6A510002BA96 /* AudioVisualizer */; };
 		F39E68412D2D6D2F0002BA96 /* File Error View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E68402D2D6D2F0002BA96 /* File Error View.swift */; };
+		F39EA2DF2D5CB5E200329468 /* Linking VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */; };
 		F3A123562A667804008E3E20 /* Log View Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* Log View Parent.swift */; };
 		F3A123572A667804008E3E20 /* Log View Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* Log View Parent.swift */; };
 		F3A123582A667804008E3E20 /* Log View Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* Log View Parent.swift */; };
@@ -895,10 +896,6 @@
 		F3A1D2362A201CBB0053261E /* Browser Spec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A1D2342A201CBB0053261E /* Browser Spec.swift */; };
 		F3A1D2382A2024E10053261E /* Browser Hints.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A1D2372A2024E10053261E /* Browser Hints.swift */; };
 		F3A1D2392A2024E10053261E /* Browser Hints.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A1D2372A2024E10053261E /* Browser Hints.swift */; };
-		F3A28AD72C57ADF100010454 /* Demo Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A28AD62C57ADF100010454 /* Demo Server.swift */; };
-		F3A28AD82C57ADF100010454 /* Demo Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A28AD62C57ADF100010454 /* Demo Server.swift */; };
-		F3A28AD92C57ADF100010454 /* Demo Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A28AD62C57ADF100010454 /* Demo Server.swift */; };
-		F3A28ADA2C57ADF100010454 /* Demo Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A28AD62C57ADF100010454 /* Demo Server.swift */; };
 		F3A28ADB2C57B06600010454 /* Server List Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */; };
 		F3A31B052B0B144200F89C51 /* Server List Node Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A31B042B0B144200F89C51 /* Server List Node Filter.swift */; };
 		F3A31B062B0B144200F89C51 /* Server List Node Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A31B042B0B144200F89C51 /* Server List Node Filter.swift */; };
@@ -1888,12 +1885,12 @@
 		F39E0A972C1BA11600C4E906 /* Discover Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Discover Item.swift"; sourceTree = "<group>"; };
 		F39E68322D2D63980002BA96 /* Panel Ornament Power.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Ornament Power.swift"; sourceTree = "<group>"; };
 		F39E68402D2D6D2F0002BA96 /* File Error View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Error View.swift"; sourceTree = "<group>"; };
+		F39EA2E02D5D45E800329468 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/iOSSupport/System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		F3A123552A667804008E3E20 /* Log View Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log View Parent.swift"; sourceTree = "<group>"; };
 		F3A123592A6689FA008E3E20 /* User Email.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Email.swift"; sourceTree = "<group>"; };
 		F3A1D2302A201C570053261E /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		F3A1D2342A201CBB0053261E /* Browser Spec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Browser Spec.swift"; sourceTree = "<group>"; };
 		F3A1D2372A2024E10053261E /* Browser Hints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Browser Hints.swift"; sourceTree = "<group>"; };
-		F3A28AD62C57ADF100010454 /* Demo Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Demo Server.swift"; sourceTree = "<group>"; };
 		F3A31B042B0B144200F89C51 /* Server List Node Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List Node Filter.swift"; sourceTree = "<group>"; };
 		F3A31B082B0B161D00F89C51 /* Cloud Key Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cloud Key Card.swift"; sourceTree = "<group>"; };
 		F3A391B929DB5E6900591C84 /* Cache Expiration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache Expiration.swift"; sourceTree = "<group>"; };
@@ -2486,7 +2483,6 @@
 				F352AF962A4EDB1D004AD489 /* Server List VM.swift */,
 				F3202CD22D559B6C0030B3CC /* VM extensions */,
 				F337B3A729BC6B5400CC1195 /* Server List Grid.swift */,
-				F3A28AD62C57ADF100010454 /* Demo Server.swift */,
 				F3E2BF0A2C1EC94300B7A6D4 /* Contacts VM.swift */,
 				F32E88CB2AF83FCB00959D49 /* Topbar */,
 				F3A391BD29DB838D00591C84 /* Server Card */,
@@ -3515,6 +3511,7 @@
 		F3D3437429BFE5A2007C0D58 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F39EA2E02D5D45E800329468 /* GameKit.framework */,
 				F350636629DC24AB0010B717 /* WidgetKit.framework */,
 				F350636829DC24AB0010B717 /* SwiftUI.framework */,
 				F3FDFF602C89120D009EBB5C /* Intents.framework */,
@@ -4702,7 +4699,6 @@
 				F367977E2A3A5AB6009F2788 /* Log VM.swift in Sources */,
 				F38F9E2E2CEB39D80033EFE3 /* Metadata List.swift in Sources */,
 				F3FF5A092A4A3745003A1973 /* Info Tab Background.swift in Sources */,
-				F3A28AD82C57ADF100010454 /* Demo Server.swift in Sources */,
 				F31BA5A52959026D0006D126 /* Console VM.swift in Sources */,
 				F3BF97AA29BFC7E9007B9C9C /* Websocket.swift in Sources */,
 				F3D7F8502C8ED3D100368ECE /* Disable 2FA View.swift in Sources */,
@@ -4821,7 +4817,6 @@
 				F3BE36D52A55E1D0007A0179 /* Nav Extension.swift in Sources */,
 				F3FFB7482A57FF0600220FA5 /* Log VM.swift in Sources */,
 				F3A31B0A2B0B161D00F89C51 /* Cloud Key Card.swift in Sources */,
-				F3A28ADA2C57ADF100010454 /* Demo Server.swift in Sources */,
 				F314617D2D5A82F000547B6C /* Networking.swift in Sources */,
 				F314617E2D5A82F000547B6C /* Model Asset.swift in Sources */,
 				F3D295152AF396FD00ED43A0 /* Tabs.swift in Sources */,
@@ -5069,7 +5064,6 @@
 				F35B89C32A725CFC000B5EEF /* Tip Suspended Server.swift in Sources */,
 				F35FEB0C2B09F003004DA05D /* API Key.swift in Sources */,
 				F3202C742D5583680030B3CC /* Browser Parent.swift in Sources */,
-				F3A28AD92C57ADF100010454 /* Demo Server.swift in Sources */,
 				F3D264422A66ABBE005C3777 /* Account VM.swift in Sources */,
 				F36D53382A05B8C5007324C6 /* Folder Path VM.swift in Sources */,
 				F3FA61552A1F8DB500A65AE1 /* Upload Menu.swift in Sources */,
@@ -5180,7 +5174,6 @@
 				F3D2959E2AF3A08300ED43A0 /* Video Player.swift in Sources */,
 				F3D295EC2AF3A43300ED43A0 /* Server Card.swift in Sources */,
 				F314616C2D5A1F5E00547B6C /* Icon.swift in Sources */,
-				F3A28AD72C57ADF100010454 /* Demo Server.swift in Sources */,
 				F3D295C52AF3A1DF00ED43A0 /* Apikey Card.swift in Sources */,
 				F3D295602AF39E8400ED43A0 /* FileTab Search.swift in Sources */,
 				F3E2BF112C1EC94300B7A6D4 /* Contacts VM.swift in Sources */,
@@ -5731,6 +5724,7 @@
 				F32FD7192B1E042C00723B88 /* Websocket Delegate.swift in Sources */,
 				F30C13122A54609000A7EFF0 /* Server List.swift in Sources */,
 				F3AB4A782CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
+				F39EA2DF2D5CB5E200329468 /* Linking VM.swift in Sources */,
 				F32FD7172B1E042400723B88 /* Websocket.swift in Sources */,
 				F30088AD2B3A1F500051476C /* User View.swift in Sources */,
 				F30088DA2B3A3BF50051476C /* Console View.swift in Sources */,
@@ -5845,7 +5839,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "tvOS/Bisquit-Host tvOS Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
+				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.debug;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Required to view your location on the map";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -5854,7 +5848,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 4.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -5890,7 +5884,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 4.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -6052,7 +6046,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "watchOS/Watch-App Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
+				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.debug;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "host.bisquit.Bisquit-host.debug";
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
@@ -6060,7 +6054,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 4.1.1;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug.watchOSapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -6097,7 +6091,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 4.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.watchOSapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -6146,7 +6140,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 4.1.1;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -6182,7 +6176,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS/Bisquit-Host Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.debug;
+				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSCameraUsageDescription = "App uses camera to create elements with dynamic color based on camera capture";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Access to contacts allows you to save new contacts directly from the app.";
@@ -6200,7 +6194,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 4.1.1;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -6248,7 +6242,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 4.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug.Clip";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -6280,7 +6274,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Clip Demo/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.debug;
+				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Access to contacts allows you to save new contacts directly from the app.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Required to view your location on the map";
@@ -6293,7 +6287,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 4.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.Clip";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -6317,6 +6311,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8FQUA2F388;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/System/iOSSupport/System/Library/Frameworks",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 3.1;
@@ -6338,6 +6336,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8FQUA2F388;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/System/iOSSupport/System/Library/Frameworks",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 3.1;
@@ -6362,14 +6364,14 @@
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Intent/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Intent;
+				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 4.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug.Intent";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -6396,14 +6398,14 @@
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Intent/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Intent;
+				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 4.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.Intent";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -6448,7 +6450,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 4.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug.Widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -6489,7 +6491,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 4.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.Widgets";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -6512,7 +6514,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iMessage Extension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
+				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.debug;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Bisquit.Host. All rights reserved.";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6520,7 +6522,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 4.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug.iMessageExtension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -6551,7 +6553,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 4.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.iMessageExtension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -6580,14 +6582,14 @@
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "visionOS/Bisquit-Host visionOS Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = BIsquit.debug;
+				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.debug;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Required to view your location on the map";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 4.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = xros;
@@ -6617,14 +6619,14 @@
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "visionOS/Bisquit-Host visionOS Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = BIsquit.debug;
+				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.host;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Required to view your location on the map";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 4.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = xros;
@@ -6705,7 +6707,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 4.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug";
 				PRODUCT_NAME = Bisquit.Host;
 				SDKROOT = macosx;
@@ -6745,7 +6747,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 4.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host";
 				PRODUCT_NAME = Bisquit.Host;
 				SDKROOT = macosx;
@@ -6777,7 +6779,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 4.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug.Contact-Provider-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -6807,7 +6809,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 4.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.Contact-Provider-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -6830,7 +6832,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Intent Handler/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.debug;
+				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Bisquit.Host. All rights reserved.";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6838,7 +6840,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 4.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug.Intent-Handler";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = NO;
@@ -6866,7 +6868,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Intent Handler/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.debug;
+				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Bisquit.Host. All rights reserved.";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -6874,7 +6876,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 4.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.Intent-Handler";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = NO;

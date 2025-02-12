@@ -68,15 +68,7 @@ struct CloudKeyCard: View {
     }
     
     private func showFirstEightLetters(_ string: String) -> String {
-        if string.count <= 8 {
-            return string
-        } else {
-            let index = string.index(string.startIndex, offsetBy: 8)
-            let truncatedString = string[string.startIndex..<index]
-            let dottedString = truncatedString + "..."
-            
-            return String(dottedString)
-        }
+        String(string.prefix(8)) + "..."
     }
 }
 

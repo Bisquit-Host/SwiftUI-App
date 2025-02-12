@@ -2,7 +2,7 @@ import ScrechKit
 import SwiftData
 
 struct StartPage: View {
-    @Bindable private var vm = StartPageVM()
+    @State private var vm = StartPageVM()
     @Environment(NavState.self) private var navState
     @EnvironmentObject private var store: ValueStore
     
@@ -74,7 +74,7 @@ struct StartPage: View {
         .background(Color(0xe3a65e))
         .statusBarHidden()
         .onChange(of: vm.apiKey) { _, newValue in
-            if newValue.count == 48 {
+            if newValue.count == 48 || newValue.count == 340 {
                 vm.fetchAccountDetails()
             }
         }

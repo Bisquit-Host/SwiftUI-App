@@ -1,6 +1,7 @@
 import ScrechKit
 import SwiftData
 import TipKit
+import GameKit
 
 #if canImport(CoreSpotlight)
 import CoreSpotlight
@@ -22,9 +23,6 @@ struct BisquitHostApp: App {
     
     @StateObject private var store = ValueStore()
     private var navState = NavState()
-#if !os(macOS)
-    private var linking = DeepLinkVM()
-#endif
     private var network = NetworkVM()
     
     private let container: ModelContainer
@@ -43,6 +41,26 @@ struct BisquitHostApp: App {
         try? Tips.configure([
             .displayFrequency(.immediate)
         ])
+        
+#if os(watchOS)
+        GKLocalPlayer.local.authenticateHandler = { error in
+            guard error == nil else {
+                print(error?.localizedDescription ?? "Game Center authentication failed")
+                return
+            }
+            
+            print("Game Center authenticated")
+        }
+#else
+        GKLocalPlayer.local.authenticateHandler = { vc, error in
+            guard error == nil else {
+                print(error?.localizedDescription ?? "")
+                return
+            }
+            
+            print("Game Center authenticated")
+        }
+#endif
     }
     
     var body: some Scene {
@@ -50,16 +68,6 @@ struct BisquitHostApp: App {
             AppContainer()
 #if canImport(CoreSpotlight) && !os(tvOS)
                 .onContinueUserActivity(CSSearchableItemActionType, perform: handleSpotlightActivity)
-#endif
-            
-#if !os(macOS)
-                .onOpenURL { url in
-                    linking.handleDeepLink(
-                        navState,
-                        store: store,
-                        url: url
-                    )
-                }
 #endif
         }
         .environment(navState)
