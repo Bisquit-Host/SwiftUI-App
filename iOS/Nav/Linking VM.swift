@@ -6,12 +6,6 @@ final class DeepLinkVM {
     var session = ""
     var alertAuth = false
     
-    private let tabMapping: [String: Tabs] = [
-        "backups": .backup,
-        "files": .files,
-        "": .info
-    ]
-    
     func handleDeepLink(_ url: URL) {
         guard url.scheme == "bisq" else {
             return
@@ -22,7 +16,10 @@ final class DeepLinkVM {
             return
         }
         
-        guard let action = components.host, action == "auth" else {
+        guard
+            let action = components.host,
+            action == "auth"
+        else {
             print("Unknown URL")
             return
         }

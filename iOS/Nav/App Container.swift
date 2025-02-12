@@ -7,12 +7,10 @@ import DeviceKit
 #endif
 
 struct AppContainer: View {
-    @State private var vm = ServerListVM()
-#if !os(macOS)
-    @State private var linking = DeepLinkVM()
-#endif
     @EnvironmentObject private var store: ValueStore
     @Environment(NavState.self) private var navState
+    @State private var vm = ServerListVM()
+    @State private var linking = DeepLinkVM()
     
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.modelContext) private var modelContext
@@ -51,7 +49,6 @@ struct AppContainer: View {
                 }
             }
         }
-#if !os(macOS)
         .onOpenURL(perform: linking.handleDeepLink)
         //        .onOpenURL { url in
         //            linking.handleDeepLink(url)
@@ -67,7 +64,6 @@ struct AppContainer: View {
         } message: {
             Text("Are you sure you want to continue?")
         }
-#endif
 #if os(iOS)
         .statusBarHidden(store.hideStatusBar)
         .detectOrientation($orientation)

@@ -883,6 +883,7 @@
 		F39E683D2D2D6A380002BA96 /* Audio Player View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B73A22C8B0B7B00E858FE /* Audio Player View.swift */; };
 		F39E683F2D2D6A510002BA96 /* AudioVisualizer in Frameworks */ = {isa = PBXBuildFile; productRef = F39E683E2D2D6A510002BA96 /* AudioVisualizer */; };
 		F39E68412D2D6D2F0002BA96 /* File Error View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E68402D2D6D2F0002BA96 /* File Error View.swift */; };
+		F39EA2DF2D5CB5E200329468 /* Linking VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */; };
 		F3A123562A667804008E3E20 /* Log View Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* Log View Parent.swift */; };
 		F3A123572A667804008E3E20 /* Log View Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* Log View Parent.swift */; };
 		F3A123582A667804008E3E20 /* Log View Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* Log View Parent.swift */; };
@@ -5731,6 +5732,7 @@
 				F32FD7192B1E042C00723B88 /* Websocket Delegate.swift in Sources */,
 				F30C13122A54609000A7EFF0 /* Server List.swift in Sources */,
 				F3AB4A782CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
+				F39EA2DF2D5CB5E200329468 /* Linking VM.swift in Sources */,
 				F32FD7172B1E042400723B88 /* Websocket.swift in Sources */,
 				F30088AD2B3A1F500051476C /* User View.swift in Sources */,
 				F30088DA2B3A3BF50051476C /* Console View.swift in Sources */,
