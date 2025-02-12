@@ -14,6 +14,10 @@ import SafariCover
 import Pow
 #endif
 
+#if os(visionOS)
+import GameKit
+#endif
+
 @main
 struct BisquitHostApp: App {
 #if os(iOS)
@@ -40,6 +44,17 @@ struct BisquitHostApp: App {
         try? Tips.configure([
             .displayFrequency(.immediate)
         ])
+        
+#if os(visionOS)
+        GKLocalPlayer.local.authenticateHandler = { vc, error in
+            guard error == nil else {
+                print(error?.localizedDescription ?? "")
+                return
+            }
+            
+            print("Game Center authenticated")
+        }
+#endif
     }
     
     var body: some Scene {

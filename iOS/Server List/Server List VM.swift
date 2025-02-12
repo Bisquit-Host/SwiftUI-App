@@ -55,7 +55,7 @@ final class ServerListVM {
             $0.isSuspended
         }
     }
-    
+        
     func checkForUpdates() async {
         let decoder = JSONDecoder()
         var appStoreVersion = "0"
