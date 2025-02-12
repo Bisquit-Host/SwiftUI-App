@@ -96,6 +96,10 @@ final class ServerListVM {
     
     func submitScore() async {
 #if os(visionOS) || os(iOS)
+        guard !ValueStore().adminServerList else {
+            return
+        }
+        
         let score = self.servers.filter {
             $0.serverOwner
         }.count
