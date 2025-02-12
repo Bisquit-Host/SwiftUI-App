@@ -50,9 +50,6 @@ struct AppContainer: View {
             }
         }
         .onOpenURL(perform: linking.handleDeepLink)
-        //        .onOpenURL { url in
-        //            linking.handleDeepLink(url)
-        //        }
         .alert("Authentication with session", isPresented: $linking.alertAuth) {
             Button("Confirm") {
                 auth()
