@@ -7,6 +7,8 @@ final class DeepLinkVM {
     var alertAuth = false
     
     func handleDeepLink(_ url: URL) {
+        print("Deeplink:", url)
+        
         guard url.scheme == "bisq" else {
             return
         }
