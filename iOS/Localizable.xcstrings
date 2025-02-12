@@ -3072,6 +3072,9 @@
         }
       }
     },
+    "Leaderboards" : {
+
+    },
     "Learn more..." : {
       "localizations" : {
         "nl" : {
@@ -5502,6 +5505,9 @@
       }
     },
     "Use header" : {
+
+    },
+    "Useful links" : {
 
     },
     "Username" : {

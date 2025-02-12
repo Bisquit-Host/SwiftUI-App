@@ -55,8 +55,16 @@ struct ServerList: View {
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                SFButton("sparkles") {
-                    vm.sheetDiscover = true
+                Menu {
+                    Button {
+                        vm.sheetDiscover = true
+                    } label: {
+                        Label("Useful links", systemImage: "sparkles")
+                    }
+                    
+                    LeaderboardButton()
+                } label: {
+                    Image(systemName: "sparkles")
                 }
             }
             
