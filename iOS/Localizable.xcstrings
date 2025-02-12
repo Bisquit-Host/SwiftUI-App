@@ -600,7 +600,14 @@
       }
     },
     "Are you sure you want to continue?" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы уверены, что хотите продолжить?"
+          }
+        }
+      }
     },
     "Are you sure you want to delete \"%@\"? This database will be deleted immediately. You can't undo this action" : {
       "localizations" : {
@@ -665,7 +672,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Аутентификация с помощью сеанса"
+            "value" : "Аутентификация с помощью сессии"
           }
         }
       }
