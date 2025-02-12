@@ -24,6 +24,7 @@ struct LeaderboardButton: View {
             playerScope: .global,
             timeScope: .allTime
         )
+        
         gcVC.gameCenterDelegate = GameCenterDelegate.shared
         rootVC.present(gcVC, animated: true)
 #endif
