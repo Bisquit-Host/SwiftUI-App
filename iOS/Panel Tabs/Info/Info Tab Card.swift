@@ -13,22 +13,19 @@ struct InfoTabCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack {
-                VStack(alignment: .leading) {
-                    HStack(alignment: .bottom, spacing: 4) {
-                        Text(server.name)
-                            .title3(.semibold)
-                            .animation(.default, value: server.name)
-                        
-                        Text(server.node)
-                            .footnote()
-                            .offset(y: -1)
-                            .foregroundStyle(.tertiary)
-                    }
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(server.name)
+                        .title3(.semibold)
+                        .animation(.default, value: server.name)
                     
                     Text(server.description)
                         .footnote()
                         .lineLimit(2)
                         .animation(.default, value: server.description)
+                    
+                    Text("\(server.id) • \(server.node)")
+                        .caption2()
+                        .foregroundStyle(.secondary)
                 }
                 
                 Spacer()
