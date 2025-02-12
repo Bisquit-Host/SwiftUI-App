@@ -36,8 +36,10 @@ final class DeepLinkVM {
             case .success:
                 let tabOnStart = self.tabMapping[tab] ?? .info
                 
-                store.lastTabPanel = tabOnStart
-                navState.navigate(.toPanel(id))
+                main {
+                    store.lastTabPanel = tabOnStart
+                    navState.navigate(.toPanel(id))
+                }
                 
             case .failure(let error):
                 SystemAlert.error(error)

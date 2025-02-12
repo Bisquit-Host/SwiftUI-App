@@ -10,7 +10,7 @@
 			<key>CFBundleURLIconFile</key>
 			<string></string>
 			<key>CFBundleURLName</key>
-			<string>server</string>
+			<string>host.bisquit.Bisquit-Host</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>bisquit</string>
