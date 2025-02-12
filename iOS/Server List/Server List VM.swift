@@ -1,9 +1,6 @@
 import ScrechKit
 import PteroNet
-
-#if os(visionOS) || os(iOS)
 import GameKit
-#endif
 
 @Observable
 final class ServerListVM {
@@ -95,7 +92,6 @@ final class ServerListVM {
     }
     
     func submitScore() async {
-#if os(visionOS) || os(iOS)
         guard !ValueStore().adminServerList else {
             return
         }
@@ -115,7 +111,6 @@ final class ServerListVM {
         } catch {
             print("Failed to submit score: \(error.localizedDescription)")
         }
-#endif
     }
     
     func fetchServers(_ isAdmin: Bool) {

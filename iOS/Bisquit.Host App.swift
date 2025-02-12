@@ -1,6 +1,7 @@
 import ScrechKit
 import SwiftData
 import TipKit
+import GameKit
 
 #if canImport(CoreSpotlight)
 import CoreSpotlight
@@ -12,10 +13,6 @@ import SafariCover
 
 #if canImport(Pow)
 import Pow
-#endif
-
-#if os(visionOS) || os(iOS)
-import GameKit
 #endif
 
 @main
@@ -45,7 +42,16 @@ struct BisquitHostApp: App {
             .displayFrequency(.immediate)
         ])
         
-#if os(visionOS) || os(iOS)
+#if os(watchOS)
+        GKLocalPlayer.local.authenticateHandler = { error in
+            guard error == nil else {
+                print(error?.localizedDescription ?? "Game Center authentication failed")
+                return
+            }
+            
+            print("Game Center authenticated")
+        }
+#else
         GKLocalPlayer.local.authenticateHandler = { vc, error in
             guard error == nil else {
                 print(error?.localizedDescription ?? "")
