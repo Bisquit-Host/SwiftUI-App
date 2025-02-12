@@ -31,10 +31,6 @@ struct CloudKeys: View {
                         }
                     }
                     .onDelete(perform: deleteItems)
-                } header: {
-                    if !keys.isEmpty {
-                        Text("API-keys")
-                    }
                 }
 #if !os(watchOS)
                 .listRowBackground(store.transparentList ? .clear : Color.list)
@@ -50,7 +46,7 @@ struct CloudKeys: View {
             .overlay {
                 if keys.isEmpty {
                     ContentUnavailableView(
-                        "No API-keys found",
+                        "No accounts found",
                         systemImage: "exclamationmark.triangle",
                         description: nil
                     )
