@@ -529,6 +529,7 @@
       }
     },
     "API-keys" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -660,7 +661,14 @@
       }
     },
     "Authentication with session" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Аутентификация с помощью сеанса"
+          }
+        }
+      }
     },
     "Available configurations" : {
       "localizations" : {
@@ -684,6 +692,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Back-up"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Бэкап"
           }
         }
       }
@@ -1468,7 +1482,14 @@
       }
     },
     "Create Subdomain" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Создать Поддомен"
+          }
+        }
+      }
     },
     "Create Task" : {
       "localizations" : {
@@ -2623,18 +2644,6 @@
         }
       }
     },
-    "iCloud" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        }
-      },
-      "shouldTranslate" : false
-    },
     "iCloud ensures the secure and efficient storage of your precious data, including API-keys" : {
       "localizations" : {
         "nl" : {
@@ -3300,7 +3309,7 @@
       "shouldTranslate" : false
     },
     "Minecraft (Ru)" : {
-
+      "shouldTranslate" : false
     },
     "Minute" : {
       "localizations" : {
@@ -3560,7 +3569,14 @@
       }
     },
     "New Update Available" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Доступно Новое Обновление"
+          }
+        }
+      }
     },
     "New user" : {
       "localizations" : {
@@ -3604,7 +3620,11 @@
         }
       }
     },
+    "No accounts found" : {
+
+    },
     "No API-keys found" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -4922,7 +4942,14 @@
       }
     },
     "Subdomain" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поддомен"
+          }
+        }
+      }
     },
     "Subdomains" : {
       "localizations" : {
@@ -5061,9 +5088,6 @@
           }
         }
       }
-    },
-    "Test Server" : {
-
     },
     "The list of servers couldn't be loaded. Check your internet connection or contact support" : {
       "localizations" : {
@@ -5355,7 +5379,14 @@
       }
     },
     "Update now to enjoy the latest improvements!" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Установите обновление, чтобы насладиться последними улучшениями!"
+          }
+        }
+      }
     },
     "Update Password" : {
       "localizations" : {

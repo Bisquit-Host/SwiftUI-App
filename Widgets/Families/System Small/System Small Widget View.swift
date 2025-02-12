@@ -24,8 +24,6 @@ struct SystemSmallWidgetView: View {
             //            .semibold()
             //
             //        } else {
-            Text("Test Server")
-                .lineLimit(1)
             
             Text(entry.cpuUsage, format: .number)
                 .footnote()
