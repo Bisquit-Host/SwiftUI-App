@@ -56,7 +56,7 @@ struct AppContainer: View {
             }
             
             Button("Cancel", role: .cancel) {
-                auth()
+                
             }
         } message: {
             Text("Are you sure you want to continue?")
