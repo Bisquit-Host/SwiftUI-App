@@ -13,7 +13,7 @@
 			<string>host.bisquit.Bisquit-Host</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>bisquit</string>
+				<string>bisq</string>
 			</array>
 		</dict>
 	</array>

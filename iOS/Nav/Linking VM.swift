@@ -17,36 +17,25 @@ final class DeepLinkVM {
         store: ValueStore,
         url: URL
     ) {
-        let components = url.pathComponents
-        print(url.description)
-        print(components)
-        
-        guard
-            let index = components.firstIndex(of: "server"),
-            index + 1 < components.count
-        else {
+        guard url.scheme == "bisq" else {
             return
         }
         
-        let id = components[index + 1]
-        let tab = (index + 2 < components.count) ? components[index + 2] : ""
-        
-        serverDetailsAPI(id) { result in
-            switch result {
-            case .success:
-                let tabOnStart = self.tabMapping[tab] ?? .info
-                
-                main {
-                    store.lastTabPanel = tabOnStart
-                    navState.navigate(.toPanel(id))
-                }
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-                
-                self.errorMessage = error.localizedDescription
-                self.alertError = true
-            }
+        guard let components = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
+            print("Invalid URL")
+            return
         }
+        
+        guard let action = components.host, action == "auth" else {
+            print("Unknown URL")
+            return
+        }
+        
+        guard let session = components.queryItems?.first(where: { $0.name == "session" })?.value else {
+            print("Recipe name not found")
+            return
+        }
+        
+        print("Let's auth! \(session)")
     }
 }
