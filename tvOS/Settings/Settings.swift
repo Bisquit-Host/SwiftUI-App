@@ -35,7 +35,7 @@ struct Settings: View {
                 Button(role: .destructive) {
                     main {
                         dismiss()
-                        navState.path = NavigationPath()
+                        navState.clear()
                         store.isApiKeyValid = false
                         Keychain.delete(key: "selectedApiKey")
                     }
