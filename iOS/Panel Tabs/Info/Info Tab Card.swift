@@ -29,6 +29,10 @@ struct InfoTabCard: View {
                         .caption2()
                         .foregroundStyle(.secondary)
                 }
+                .onTapGesture {
+                    UIPasteboard.general.string = server.id
+                    SystemAlert.copied()
+                }
                 
                 Spacer()
                 
