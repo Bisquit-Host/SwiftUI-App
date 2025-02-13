@@ -891,6 +891,7 @@
 		F39EA2E72D5D576D00329468 /* Leaderboard Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EA2E22D5D576D00329468 /* Leaderboard Button.swift */; };
 		F39EA2E92D5D576D00329468 /* Leaderboard Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EA2E22D5D576D00329468 /* Leaderboard Button.swift */; };
 		F39EA2EA2D5D576D00329468 /* Leaderboard Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EA2E22D5D576D00329468 /* Leaderboard Button.swift */; };
+		F39EA2F12D5E146300329468 /* Guide Step Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EA2F02D5E146300329468 /* Guide Step Card.swift */; };
 		F3A123562A667804008E3E20 /* Log View Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* Log View Parent.swift */; };
 		F3A123572A667804008E3E20 /* Log View Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* Log View Parent.swift */; };
 		F3A123582A667804008E3E20 /* Log View Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* Log View Parent.swift */; };
@@ -1894,6 +1895,7 @@
 		F39E68402D2D6D2F0002BA96 /* File Error View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Error View.swift"; sourceTree = "<group>"; };
 		F39EA2E02D5D45E800329468 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/iOSSupport/System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		F39EA2E22D5D576D00329468 /* Leaderboard Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Leaderboard Button.swift"; sourceTree = "<group>"; };
+		F39EA2F02D5E146300329468 /* Guide Step Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Guide Step Card.swift"; sourceTree = "<group>"; };
 		F3A123552A667804008E3E20 /* Log View Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log View Parent.swift"; sourceTree = "<group>"; };
 		F3A123592A6689FA008E3E20 /* User Email.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Email.swift"; sourceTree = "<group>"; };
 		F3A1D2302A201C570053261E /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
@@ -2718,6 +2720,7 @@
 			isa = PBXGroup;
 			children = (
 				F3317AE92A45E24F00CA104D /* Guide.swift */,
+				F39EA2F02D5E146300329468 /* Guide Step Card.swift */,
 				F3317AEC2A45E26900CA104D /* Guide Model.swift */,
 			);
 			path = Guide;
@@ -5559,6 +5562,7 @@
 				F32716DC2CF62C0D00F2DC31 /* Backup Card.swift in Sources */,
 				F32716D92CF6257F00F2DC31 /* Backup Context Menu Control Group.swift in Sources */,
 				F39E68332D2D63980002BA96 /* Panel Ornament Power.swift in Sources */,
+				F39EA2F12D5E146300329468 /* Guide Step Card.swift in Sources */,
 				F37EA7992B70DEDE0029DE00 /* Console VM.swift in Sources */,
 				F35FEB0B2B09F003004DA05D /* API Key.swift in Sources */,
 				F31F32012D52DB950095DD19 /* Color Theme.swift in Sources */,

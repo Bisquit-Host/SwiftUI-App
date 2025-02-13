@@ -2344,6 +2344,28 @@
         }
       }
     },
+    "Follow the link, log in to your account and go to profile settings" : {
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volg de link, log in op uw account en ga naar de profielinstellingen"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перейдя по ссылке, выполните вход в свой аккаунт и откройте настройки профиля"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перейдя по ссылке, выполните вход в свой аккаунт и откройте настройки профиля"
+          }
+        }
+      }
+    },
     "Font Size: %lld" : {
       "localizations" : {
         "nl" : {
@@ -2447,90 +2469,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Компоновка сетки"
-          }
-        }
-      }
-    },
-    "Guide.Step1" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Follow the link, log in to your account and go to profile settings"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Volg de link, log in op uw account en ga naar de profielinstellingen"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Перейдя по ссылке, выполните вход в свой аккаунт и откройте настройки профиля"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Перейдя по ссылке, выполните вход в свой аккаунт и откройте настройки профиля"
-          }
-        }
-      }
-    },
-    "Guide.Step2" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Open the API section, enter any name for the API-Key and click the Create button. Then save your key to the clipboard"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Open het API-gedeelte, voer een willekeurige naam in voor de API-sleutel en klik op de knop 'Aanmaken'. Sla vervolgens uw sleutel op naar het klembord"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Откройте раздел «API», введите любое название для API-ключа и нажмите кнопку «Создать». Затем сохраните ваш ключ в буфер обмена"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Откройте раздел «API», введите любое название для API-ключа и нажмите кнопку «Создать». Затем сохраните ваш ключ в буфер обмена"
-          }
-        }
-      }
-    },
-    "Guide.Step3" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "To avoid input errors, paste the API-key from the clipboard"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Om invoerfouten te vermijden, plak de API-sleutel vanuit het klembord"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Во избежание ошибок ввода вставьте API-ключ из буфера обмена"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Во избежание ошибок ввода вставьте API-ключ из буфера обмена"
           }
         }
       }
@@ -3767,6 +3705,28 @@
         }
       }
     },
+    "Open the API section, enter any name for the API-Key and click the Create button. Then save your key to the clipboard" : {
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open het API-gedeelte, voer een willekeurige naam in voor de API-sleutel en klik op de knop 'Aanmaken'. Sla vervolgens uw sleutel op naar het klembord"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Откройте раздел «API», введите любое название для API-ключа и нажмите кнопку «Создать». Затем сохраните ваш ключ в буфер обмена"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Откройте раздел «API», введите любое название для API-ключа и нажмите кнопку «Создать». Затем сохраните ваш ключ в буфер обмена"
+          }
+        }
+      }
+    },
     "Optional" : {
 
     },
@@ -4727,17 +4687,6 @@
         }
       }
     },
-    "Smile" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Улыбнись"
-          }
-        }
-      }
-    },
     "Soon there will be an art here as well" : {
       "localizations" : {
         "nl" : {
@@ -5162,6 +5111,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Чтобы активировать приложение, введите API-ключ"
+          }
+        }
+      }
+    },
+    "To avoid input errors, paste the API-key from the clipboard" : {
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Om invoerfouten te vermijden, plak de API-sleutel vanuit het klembord"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Во избежание ошибок ввода вставьте API-ключ из буфера обмена"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Во избежание ошибок ввода вставьте API-ключ из буфера обмена"
           }
         }
       }
