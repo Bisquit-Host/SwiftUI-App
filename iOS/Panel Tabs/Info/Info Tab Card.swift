@@ -18,10 +18,12 @@ struct InfoTabCard: View {
                         .title3(.semibold)
                         .animation(.default, value: server.name)
                     
-                    Text(server.description)
-                        .footnote()
-                        .lineLimit(2)
-                        .animation(.default, value: server.description)
+                    if !server.description.isEmpty {
+                        Text(server.description)
+                            .footnote()
+                            .lineLimit(2)
+                            .animation(.default, value: server.description)
+                    }
                     
                     Text("\(server.id) • \(server.node)")
                         .caption2()
