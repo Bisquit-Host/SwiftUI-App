@@ -72,7 +72,7 @@ struct PanelView: View {
                         Label("Logs", systemImage: "terminal")
                     }
                 
-                AllocationList()
+                AllocationList(server)
                     .environment(allocationVM)
                     .tag(Tab.allocations)
                     .tabItem {

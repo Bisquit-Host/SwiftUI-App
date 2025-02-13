@@ -1,7 +1,9 @@
-import SwiftUI
+import ScrechKit
 import PteroNet
 
 struct AllocationCard: View {
+    @Environment(AllocationVM.self) private var vm
+    
     private let allocation: AllocationAttributes
     
     init(_ allocation: AllocationAttributes) {
@@ -12,16 +14,35 @@ struct AllocationCard: View {
         Button {
             
         } label: {
-            VStack(alignment: .leading) {
-                if let ipAlias = allocation.ipAlias {
-                    Text(ipAlias + ":\(allocation.port)")
-                } else {
-                    Text(allocation.ip + ":\(allocation.port)")
+            HStack {
+                if allocation.isDefault {
+                    Image(systemName: "star.fill")
+                        .foregroundStyle(.yellow.gradient)
                 }
                 
-                if let notes = allocation.notes {
-                    Text(notes)
+                VStack(alignment: .leading) {
+                    if let ipAlias = allocation.ipAlias {
+                        Text(ipAlias + ":\(allocation.port)")
+                    } else {
+                        Text(allocation.ip + ":\(allocation.port)")
+                    }
+                    
+                    if let notes = allocation.notes {
+                        Text(notes)
+                    }
                 }
+            }
+        }
+        .animation(.default, value: allocation.isDefault)
+        .contextMenu {
+            if !allocation.isDefault {
+                MenuButton("Set default", icon: "star") {
+                    vm.setDefault(allocation.id)
+                }
+            }
+            
+            MenuButton("Delete", role: .destructive, icon: "trash") {
+                vm.unassignAllocation(allocation.id)
             }
         }
     }
@@ -31,4 +52,5 @@ struct AllocationCard: View {
 //    List {
 //        AllocationCard()
 //    }
+//    .environment(AllocationVM(""))
 //}

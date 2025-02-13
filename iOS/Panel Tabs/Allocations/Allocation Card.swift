@@ -40,6 +40,7 @@ struct AllocationCard: View {
                         .foregroundStyle(.yellow.gradient)
                 }
             }
+            .animation(.default, value: allocation.isDefault)
             .contextMenu {
                 if !allocation.isDefault {
                     MenuButton("Set default", icon: "star") {
