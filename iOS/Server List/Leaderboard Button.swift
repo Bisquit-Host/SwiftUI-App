@@ -43,7 +43,9 @@ class GameCenterDelegate: NSObject, GKGameCenterControllerDelegate {
 
 fileprivate extension UIWindowScene {
     var keyWindow: UIWindow? {
-        windows.first { $0.isKeyWindow }
+        windows.first {
+            $0.isKeyWindow
+        }
     }
 }
 #endif
