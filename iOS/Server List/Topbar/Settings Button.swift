@@ -17,7 +17,7 @@ struct SettingsButton: View {
                 TopbarGridButton()
             }
             
-            MenuButton("Switch Account", icon: "key.icloud") {
+            MenuButton("Switch Account", icon: "arrow.trianglehead.2.clockwise.rotate.90") {
                 vm.sheetKeyStorage = true
             }
             

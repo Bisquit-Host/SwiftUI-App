@@ -16,7 +16,7 @@ struct Settings: View {
             Button {
                 sheetKeyStorage = true
             } label: {
-                Label("Switch Account", systemImage: "key.icloud.fill")
+                Label("Switch Account", systemImage: "arrow.trianglehead.2.clockwise.rotate.90")
             }
             
             ListLink("API-key Creation") {
