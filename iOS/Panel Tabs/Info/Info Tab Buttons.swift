@@ -22,13 +22,36 @@ struct InfoTabButtons: View {
     @State private var sheetLogs = false
     
     var body: some View {
+        @Bindable var userVM = userVM
+        
         VStack {
             InfoTabButton("Logs", icon: "list.bullet.rectangle.fill") {
                 sheetLogs = true
             }
             .keyboardShortcut("L")
             
-            InfoTabButton("Users", icon: "person.3.fill") {
+            Menu {
+                Button {
+                    sheetUsers = true
+                    userVM.sheetInvitation = true
+                } label: {
+                    Label("New user", systemImage: "person.badge.plus")
+                }
+            } label: {
+                HStack {
+                    Text("Users")
+                        .rounded()
+                    
+                    Spacer()
+                    
+                    Image(systemName: "person.3.fill")
+                        .title2()
+                }
+                .frame(height: 25)
+                .foregroundStyle(.foreground)
+                .padding()
+                .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
+            } primaryAction: {
                 sheetUsers = true
             }
             .keyboardShortcut("U")

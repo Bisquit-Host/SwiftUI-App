@@ -13,6 +13,7 @@ final class UsersVM {
     private(set) var permissions: PermissionAttributes?
     var newUserPermissions: [String] = []
     var allPermsTrigger = false
+    var sheetInvitation = false
     
     var userPermissionsDict: [String: Bool] {
         var dict: [String: Bool] = [:]
