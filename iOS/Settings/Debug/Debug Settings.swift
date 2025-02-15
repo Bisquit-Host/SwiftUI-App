@@ -32,8 +32,24 @@ struct DebugSettings: View {
                     enableExtension()
                 }
             }
+            
+            Section {
+                Button("Clear all cookies") {
+                    clearAllCookies()
+                }
+            }
         }
         .alert("Couldn't enable the extension", isPresented: $errorAlert) {}
+    }
+    
+    private func clearAllCookies() {
+        guard let cookieStorage = HTTPCookieStorage.shared.cookies else {
+            return
+        }
+        
+        for cookie in cookieStorage {
+            HTTPCookieStorage.shared.deleteCookie(cookie)
+        }
     }
     
     private func enableExtension() {

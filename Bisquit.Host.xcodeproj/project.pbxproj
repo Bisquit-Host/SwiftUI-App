@@ -3168,13 +3168,13 @@
 				F31BA575295900E30006D126 /* Settings View.swift */,
 				F3924EDE29A2333F00C4CC77 /* Settings VM.swift */,
 				F39993392AF2E491006E8A9A /* Other Settings.swift */,
-				F3CCB1CB2CAE75D0000F8207 /* Debug Settings.swift */,
 				F33001392A4CEBFD0063FE0F /* Account */,
 				F375EC3329EE6DDD002CA969 /* Elements */,
 				F3D902DD29DC3E47004E76C9 /* Cache */,
 				F3BBE36229AF96E800323C6B /* Credentials */,
 				F385824429D6261300BEEE1D /* Biometry */,
 				F385824329D6260500BEEE1D /* App Icon */,
+				F3B66DEE2D60223100F1841B /* Debug */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -3307,6 +3307,14 @@
 				F3C62CE2298A7D8600434636 /* Support.swift */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		F3B66DEE2D60223100F1841B /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				F3CCB1CB2CAE75D0000F8207 /* Debug Settings.swift */,
+			);
+			path = Debug;
 			sourceTree = "<group>";
 		};
 		F3B86000295B196F00CE60C7 /* Intro */ = {
