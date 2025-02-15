@@ -22,8 +22,6 @@ struct InfoTabButtons: View {
     @State private var sheetLogs = false
     
     var body: some View {
-        @Bindable var userVM = userVM
-        
         VStack {
             InfoTabButton("Logs", icon: "list.bullet.rectangle.fill") {
                 sheetLogs = true
