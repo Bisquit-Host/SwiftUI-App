@@ -2,10 +2,6 @@ import ScrechKit
 import PteroNet
 
 struct InfoTabButtons: View {
-#if canImport(ActivityKit)
-    private var la = LiveActivity()
-#endif
-    
     private var settingsVM: ServerSettingsVM
     private var logVM: LogVM
     private var userVM: UsersVM
@@ -58,41 +54,7 @@ struct InfoTabButtons: View {
                 .frame(height: 20)
             
 #if canImport(ActivityKit)
-            VStack {
-                if la.activityViewState?.activityState == .active {
-                    Button {
-                        la.stopAllLiveActivities()
-                    } label: {
-                        Text("Cancel")
-                            .rounded()
-                            .title2(.semibold)
-                            .foregroundStyle(.red)
-                            .frame(height: 25)
-                            .padding()
-                            .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
-                    }
-                } else {
-                    Button {
-                        la.stopAllLiveActivities()
-                        la.startLiveActivity(server)
-                    } label: {
-                        Text("Live Activity")
-                            .title2(.semibold, design: .rounded)
-                            .foregroundStyle(.foreground)
-                            .frame(height: 25)
-                            .padding()
-                            .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
-                    }
-                }
-            }
-            .overlay(alignment: .topTrailing) {
-                Text("Beta")
-                    .footnote(.bold, design: .rounded)
-                    .foregroundStyle(.white.gradient)
-                    .padding(.horizontal, 4)
-                    .background(.blue.gradient, in: .capsule)
-                    .padding(-6)
-            }
+            InfoTabLAButton(server)
 #endif
         }
         .sheet($sheetUsers) {

@@ -1043,6 +1043,8 @@
 		F3B637302A35A82F00CB374C /* Console Inspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B6372E2A35A82F00CB374C /* Console Inspector.swift */; };
 		F3B637522A35F3EA00CB374C /* Command Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B637512A35F3EA00CB374C /* Command Line.swift */; };
 		F3B637532A35F3EA00CB374C /* Command Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B637512A35F3EA00CB374C /* Command Line.swift */; };
+		F3B66DF42D60B46F00F1841B /* Info Tab LA Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B66DF32D60B46F00F1841B /* Info Tab LA Button.swift */; };
+		F3B66DF52D60B46F00F1841B /* Info Tab LA Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B66DF32D60B46F00F1841B /* Info Tab LA Button.swift */; };
 		F3B7BFDE2B38E206005B5003 /* Pow in Frameworks */ = {isa = PBXBuildFile; productRef = F3B7BFDD2B38E206005B5003 /* Pow */; };
 		F3B81DF12A49C96000633B66 /* Info Absolute Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B81DF02A49C96000633B66 /* Info Absolute Stats.swift */; };
 		F3B81DF22A49C96000633B66 /* Info Absolute Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B81DF02A49C96000633B66 /* Info Absolute Stats.swift */; };
@@ -1943,6 +1945,7 @@
 		F3B1196E29A155D8003BB68C /* Suspended Server Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Suspended Server Card.swift"; sourceTree = "<group>"; };
 		F3B6372E2A35A82F00CB374C /* Console Inspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Console Inspector.swift"; sourceTree = "<group>"; };
 		F3B637512A35F3EA00CB374C /* Command Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Command Line.swift"; sourceTree = "<group>"; };
+		F3B66DF32D60B46F00F1841B /* Info Tab LA Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab LA Button.swift"; sourceTree = "<group>"; };
 		F3B81DF02A49C96000633B66 /* Info Absolute Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Absolute Stats.swift"; sourceTree = "<group>"; };
 		F3BAEC862959B1DE00111375 /* Server List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List.swift"; sourceTree = "<group>"; };
 		F3BAEC8C2959B3FE00111375 /* Nav Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Extension.swift"; sourceTree = "<group>"; };
@@ -2522,6 +2525,7 @@
 				F3B66DEF2D60B2B100F1841B /* Card */,
 				F325F6FF2A54BBCF00E89EC4 /* Info Tab Allocation.swift */,
 				F3FF5A022A4A359C003A1973 /* Info Tab Buttons.swift */,
+				F3B66DF32D60B46F00F1841B /* Info Tab LA Button.swift */,
 				F3FF5A082A4A3745003A1973 /* Info Tab Background.swift */,
 				F34169A42A49DF64003985E7 /* Info Tab Button.swift */,
 				F3553FB22B40653000EF0FD2 /* Panel Settings Parent.swift */,
@@ -4713,6 +4717,7 @@
 				F3202CFC2D562AE10030B3CC /* Browser List Bot.swift in Sources */,
 				F3202D3F2D5639610030B3CC /* Ornament Dismiss Button.swift in Sources */,
 				F3B1196F29A155D8003BB68C /* Suspended Server Card.swift in Sources */,
+				F3B66DF52D60B46F00F1841B /* Info Tab LA Button.swift in Sources */,
 				F3D264412A66ABBE005C3777 /* Account VM.swift in Sources */,
 				F39CF3582A50C00C0077996D /* User View.swift in Sources */,
 				F37A366B2A35158A00517EFC /* Console View.swift in Sources */,
@@ -5105,6 +5110,7 @@
 				F330013C2A4CEC320063FE0F /* Apikey List.swift in Sources */,
 				F36D53352A05B8B6007324C6 /* Backup Card.swift in Sources */,
 				F3AF91C62B423535001D8F80 /* SSH List.swift in Sources */,
+				F3B66DF42D60B46F00F1841B /* Info Tab LA Button.swift in Sources */,
 				F389BB542A05B37500911EBF /* Panel Model.swift in Sources */,
 				F367977C2A3A55F4009F2788 /* Log Card.swift in Sources */,
 				F37A36742A35173900517EFC /* Sftp View.swift in Sources */,
