@@ -30,7 +30,7 @@ struct CloudKeyCard: View {
         } label: {
             HStack {
                 VStack(alignment: .leading) {
-                    if !key.name.isEmpty {
+                    if key.name.isEmpty {
                         Text(showFirstEightLetters(key.key))
                             .headline(.semibold)
                     } else {
