@@ -97,6 +97,14 @@ struct InfoTabButtons: View {
             }
 #endif
         }
+        .sheet($sheetUsers) {
+            UserListParent()
+                .environment(userVM)
+        }
+        .sheet($sheetLogs) {
+            LogListParent()
+                .environment(logVM)
+        }
         .task {
             settingsVM.serverName = server.name
             settingsVM.serverDescription = server.description
@@ -105,14 +113,6 @@ struct InfoTabButtons: View {
                 logVM.fetchLogs(true)
                 userVM.fetchUsers(true)
             }
-        }
-        .sheet($sheetUsers) {
-            UserListParent()
-                .environment(userVM)
-        }
-        .sheet($sheetLogs) {
-            LogListParent()
-                .environment(logVM)
         }
     }
 }
