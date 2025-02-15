@@ -2519,13 +2519,13 @@
 			isa = PBXGroup;
 			children = (
 				F31BA59C295902280006D126 /* Info Tab.swift */,
+				F33944102A49022A00E2F0FC /* Info Tab Card.swift */,
 				F325F6FF2A54BBCF00E89EC4 /* Info Tab Allocation.swift */,
 				F3FF5A022A4A359C003A1973 /* Info Tab Buttons.swift */,
 				F3FF5A082A4A3745003A1973 /* Info Tab Background.swift */,
 				F34169A42A49DF64003985E7 /* Info Tab Button.swift */,
 				F3553FB22B40653000EF0FD2 /* Panel Settings Parent.swift */,
 				F303214A2B3FEA45002A73B8 /* Panel Settings View.swift */,
-				F33944102A49022A00E2F0FC /* Info Tab Card.swift */,
 				F3E467542A49939300FABE5F /* Info Relative Stats.swift */,
 				F3B81DF02A49C96000633B66 /* Info Absolute Stats.swift */,
 				F3E467512A49903900FABE5F /* Info Stat.swift */,
