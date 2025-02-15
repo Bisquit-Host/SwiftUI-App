@@ -6,26 +6,23 @@ struct ApikeyList: View {
     @State private var sheetCreate = false
     
     var body: some View {
-        NavigationView {
-            List {
-                ListButton("Create a new key", actionIcon: "plus") {
-                    sheetCreate = true
-                }
-                
-                Section {
-                    ForEach(vm.keys, id: \.attributes.id) { key in
-                        ApikeyCard(key)
-                    }
-                    .onDelete(perform: deleteItems)
-                }
+        List {
+            ListButton("Create a new key", actionIcon: "plus") {
+                sheetCreate = true
             }
-            .navigationTitle("My API-keys")
-            .toolbarTitleDisplayMode(.inline)
-            .animation(.default, value: vm.keys.count)
-            .toolbar {
-                EditButton()
-                    .fontWeight(.medium)
+            
+            Section {
+                ForEach(vm.keys, id: \.attributes.id) { key in
+                    ApikeyCard(key)
+                }
+                .onDelete(perform: deleteItems)
             }
+        }
+        .navigationTitle("My API-keys")
+        .toolbarTitleDisplayMode(.inline)
+        .animation(.default, value: vm.keys.count)
+        .toolbar {
+            EditButton()
         }
         .refreshableTask {
             vm.fetchKeys()

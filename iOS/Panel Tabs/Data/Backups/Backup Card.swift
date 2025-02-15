@@ -31,7 +31,7 @@ struct BackupCard: View {
                 }
                 
                 VStack(alignment: .leading) {
-                    HStack(spacing: 5) {
+                    HStack(spacing: 2) {
                         if backup.isLocked {
                             Image(systemName: "lock")
                                 .foregroundStyle(.orange)

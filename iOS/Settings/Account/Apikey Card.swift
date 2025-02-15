@@ -2,6 +2,8 @@ import ScrechKit
 import PteroNet
 
 struct ApikeyCard: View {
+    @Environment(ApikeyVM.self) private var vm
+    
     private let key: ApiKeyAttributes
     
     init(_ key: ApiKeyListData) {
@@ -46,6 +48,13 @@ struct ApikeyCard: View {
                 }
             }
         }
+        .contextMenu {
+            Button(role: .destructive) {
+                vm.delete(key.id)
+            } label: {
+                Label("Delete", systemImage: "trash")
+            }
+        }
     }
 }
 
@@ -53,4 +62,5 @@ struct ApikeyCard: View {
     List {
         ApikeyCard(sampleJSON(.apiKeyListAttributes))
     }
+    .environment(ApikeyVM())
 }

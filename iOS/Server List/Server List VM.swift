@@ -107,7 +107,7 @@ final class ServerListVM {
                 leaderboardIDs: ["owned_servers"]
             )
             
-            print("Score submitted successfully")
+            print("Score submitted")
         } catch {
             print("Failed to submit score: \(error.localizedDescription)")
         }

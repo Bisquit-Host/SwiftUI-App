@@ -21,21 +21,17 @@ struct CreateApikey: View {
                 }
                 
                 Button {
-                    vm.create(text)
+                    vm.create(text) {
+                        dismiss()
+                    }
                 } label: {
                     HStack {
                         Text("Create and copy")
                         
                         Spacer()
                         
-                        if vm.showProgress {
-                            ProgressView()
-                        } else {
-                            Image(systemName: "plus")
-                        }
+                        Image(systemName: "plus")
                     }
-                    .semibold()
-                    .animation(.default, value: vm.showProgress)
                     .foregroundStyle(text.isEmpty ? Color.secondary : .green)
                 }
                 .disabled(text.isEmpty)
