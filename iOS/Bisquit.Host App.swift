@@ -52,9 +52,9 @@ struct BisquitHostApp: App {
             print("Game Center authenticated")
         }
 #else
-        GKLocalPlayer.local.authenticateHandler = { vc, error in
+        GKLocalPlayer.local.authenticateHandler = { _, error in
             guard error == nil else {
-                print(error?.localizedDescription ?? "")
+                print(error?.localizedDescription ?? "Game Center authentication failed")
                 return
             }
             
