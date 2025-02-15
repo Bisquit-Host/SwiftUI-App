@@ -60,10 +60,12 @@ struct ServerCard: View {
                 .background(backgroundColor, in: .rect(cornerRadius: rounding))
                 
             case 1:
-                // Line
+                // Wide
                 HStack {
-                    VStack {
+                    VStack(alignment: .leading) {
                         serverName
+                        
+                        description
                         
                         diskGauge
                     }
@@ -77,7 +79,7 @@ struct ServerCard: View {
                         .matchedEffect("RAM_CPU", in: animation)
                     }
                 }
-                .frame(height: 90)
+                .frame(height: 100)
                 .padding(.horizontal)
                 .background(.ultraThinMaterial, in: .rect(cornerRadius: rounding))
                 .background(backgroundColor, in: .rect(cornerRadius: rounding))
@@ -99,9 +101,18 @@ struct ServerCard: View {
             .matchedEffect("name", in: animation)
     }
     
+    private var description: some View {
+        Text(server.description)
+            .footnote()
+            .secondary()
+            .foregroundStyle(.foreground)
+            .lineLimit(1)
+            .matchedEffect("description", in: animation)
+    }
+    
     private var diskGauge: some View {
         DiskGauge(vm.diskUsage, limit: limits.disk)
-            .padding(.top, 4)
+            .padding(.top, 2)
             .matchedEffect("disk", in: animation)
     }
     
@@ -128,9 +139,7 @@ struct ServerCard: View {
 
 #Preview {
     LazyVGrid(
-        columns: [
-            GridItem(.adaptive(minimum: 160, maximum: 400))
-        ],
+        columns: [GridItem(.adaptive(minimum: 160, maximum: 400))],
         spacing: 8
     ) {
         ServerCard(sampleJSON(.serverListAttributes))
