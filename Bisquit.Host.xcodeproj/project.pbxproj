@@ -3500,9 +3500,9 @@
 			isa = PBXGroup;
 			children = (
 				F3CE5C402D538FE60094BD7B /* Subdomain List.swift */,
+				F3CE5C442D53907E0094BD7B /* Subdomain VM.swift */,
 				F374F7BC2D54922F006771DD /* Sheet Create Subdomain.swift */,
 				F3CE5C4C2D5395300094BD7B /* Subdomain Card.swift */,
-				F3CE5C442D53907E0094BD7B /* Subdomain VM.swift */,
 				F3CE5C482D53935A0094BD7B /* Subdomain Model.swift */,
 			);
 			path = Subdomains;
