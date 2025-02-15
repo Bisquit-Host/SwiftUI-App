@@ -2708,9 +2708,9 @@
 			children = (
 				F3FA4DE92A4CE82000547722 /* Account Settings.swift */,
 				F330013A2A4CEC320063FE0F /* Apikey List.swift */,
+				F33001402A4CEF840063FE0F /* Apikey VM.swift */,
 				F33001432A4CF06D0063FE0F /* Apikey Card.swift */,
 				F337D7582A4DBC840011524E /* Create Apikey.swift */,
-				F33001402A4CEF840063FE0F /* Apikey VM.swift */,
 				F375EC3429EE6E17002CA969 /* Sections */,
 			);
 			path = Account;

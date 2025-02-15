@@ -16,9 +16,7 @@ struct ApikeyList: View {
                     ForEach(vm.keys, id: \.attributes.id) { key in
                         ApikeyCard(key)
                     }
-                    .onDelete { offsets in
-                        deleteItems(offsets)
-                    }
+                    .onDelete(perform: deleteItems)
                 }
             }
             .navigationTitle("My API-keys")
