@@ -63,7 +63,5 @@ struct SftpDetails: View {
 }
 
 //#Preview {
-//    SftpDetails(
-//        sampleJSON(.serverListAttributes)
-//    )
+//    SftpDetails(sampleJSON(.serverListAttributes))
 //}

@@ -16,7 +16,5 @@ struct ScheduleCard: View {
 }
 
 //#Preview {
-//    ScheduleCard(
-//        sampleJSON(.s)
-//    )
+//    ScheduleCard(sampleJSON(.s))
 //}

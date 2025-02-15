@@ -66,9 +66,7 @@ struct UserView: View {
 #Preview {
     Text("Preview")
         .sheet {
-            UserView(
-                sampleJSON(.userAttributes)
-            )
+            UserView(sampleJSON(.userAttributes))
         }
         .environment(UsersVM(""))
 }

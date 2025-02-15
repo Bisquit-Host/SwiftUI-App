@@ -66,9 +66,7 @@ struct AllocationCard: View {
 
 #Preview {
     List {
-        AllocationCard(
-            sampleJSON(.allocationAttributes)
-        )
+        AllocationCard(sampleJSON(.allocationAttributes))
     }
     .environment(AllocationVM(""))
 }
