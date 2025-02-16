@@ -24,6 +24,7 @@ struct CloudKeyCard: View {
     
     var body: some View {
         Button {
+            clearAllCookies()
             Keychain.save(key: "selectedApiKey", value: key.key)
             selectedKey = key.key
             validate()

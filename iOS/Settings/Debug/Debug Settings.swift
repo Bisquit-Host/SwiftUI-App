@@ -1,4 +1,5 @@
 import SwiftUI
+import PteroNet
 import TipKit
 
 #if canImport(ContactProvider)
@@ -40,16 +41,6 @@ struct DebugSettings: View {
             }
         }
         .alert("Couldn't enable the extension", isPresented: $errorAlert) {}
-    }
-    
-    private func clearAllCookies() {
-        guard let cookieStorage = HTTPCookieStorage.shared.cookies else {
-            return
-        }
-        
-        for cookie in cookieStorage {
-            HTTPCookieStorage.shared.deleteCookie(cookie)
-        }
     }
     
     private func enableExtension() {
