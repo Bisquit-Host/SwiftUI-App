@@ -2456,6 +2456,9 @@
     "GitHub" : {
       "shouldTranslate" : false
     },
+    "Go to settings" : {
+
+    },
     "Grant all permissions" : {
       "localizations" : {
         "ru" : {
@@ -3601,6 +3604,9 @@
           }
         }
       }
+    },
+    "No Internet Connection" : {
+
     },
     "No metadata available" : {
       "localizations" : {
@@ -5716,6 +5722,9 @@
           }
         }
       }
+    },
+    "Your iPhone is not connected to the internet. To connect, turn off Airplane Mode or connect to a Wi-Fi network." : {
+
     },
     "Деревня Пыжи\n(Кировская обл.)" : {
       "localizations" : {

@@ -11,6 +11,7 @@ struct AppContainer: View {
     @Environment(NavState.self) private var navState
     @State private var vm = ServerListVM()
     @State private var linking = DeepLinkVM()
+    @State private var network = NetworkVM()
     
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.modelContext) private var modelContext
@@ -39,7 +40,22 @@ struct AppContainer: View {
             }
         }
         .environment(vm)
+        .environment(network)
         .preferredColorScheme(store.colorTheme.scheme)
+#if canImport(AlertKit)
+        .onChange(of: network.isNetworkSatisfied) { _, status in
+            guard let status, status else {
+                SystemAlert.networkError()
+                return
+            }
+        }
+#else
+        .overlay {
+            if let satisfied = network.isNetworkSatisfied, !satisfied {
+                NetworkLostView()
+            }
+        }
+#endif
         .onChange(of: scenePhase) { _, newPhase in
             if newPhase == .inactive {
                 showBadge = false

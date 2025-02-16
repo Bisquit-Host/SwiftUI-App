@@ -1162,15 +1162,15 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 				<key>location-parameters</key>
 				<dict>
 					<key>EndingColumnNumber</key>
-					<string>0</string>
+					<string>16</string>
 					<key>EndingLineNumber</key>
-					<string>13</string>
+					<string>10</string>
 					<key>StartingColumnNumber</key>
-					<string>12</string>
+					<string>16</string>
 					<key>StartingLineNumber</key>
-					<string>12</string>
+					<string>10</string>
 					<key>Timestamp</key>
-					<string>754314332.646751</string>
+					<string>761442725.260076</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -1186,16 +1186,15 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>SFButton("wifi") {
-</string>
+				<string></string>
 				<key>leading</key>
-				<string>    var body: some View {
-        HStack {
-            </string>
+				<string>    
+    var body: some View {
+        HStack {</string>
 				<key>trailing</key>
-				<string>                //alertNetwork = true
-            }
-            .foregroundStyle(.green)
+				<string>
+            SFButton("arrow.triangle.2.circlepath") {
+                vm.fetchServers(store.adminServerList)
 </string>
 			</dict>
 			<key>type</key>

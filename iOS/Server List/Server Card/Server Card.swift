@@ -111,13 +111,13 @@ struct ServerCard: View {
     }
     
     private var diskGauge: some View {
-        DiskGauge(vm.diskUsage, limit: limits.disk)
+        GaugeDisk(vm.diskUsage, limit: limits.disk)
             .padding(.top, 2)
             .matchedEffect("disk", in: animation)
     }
     
     private var cpuGauge: some View {
-        RegularGauge(
+        GaugeRegular(
             name: .cpu,
             value: vm.cpuUsage,
             limit: limits.cpu,
@@ -127,7 +127,7 @@ struct ServerCard: View {
     }
     
     private var ramGauge: some View {
-        RegularGauge(
+        GaugeRegular(
             name: .ram,
             value: vm.ramUsage,
             limit: limits.memory,

@@ -1,6 +1,6 @@
 import ScrechKit
 
-struct DiskGauge: View {
+struct GaugeDisk: View {
     private var value: Double
     private var limit: Double
     
@@ -26,7 +26,7 @@ struct DiskGauge: View {
                     .frame(maxWidth: .infinity, alignment: .center)
             }
             .padding(.horizontal, 5)
-//            .gaugeStyle(.accessoryLinearCapacity) // CRASH
+            //            .gaugeStyle(.accessoryLinearCapacity) // CRASH
             .foregroundStyle(.foreground)
         } else {
             Text(formatBytes(value) + " / " + maximumValue)
@@ -36,5 +36,5 @@ struct DiskGauge: View {
 }
 
 #Preview {
-    DiskGauge(1024, limit: 2048 * 1024)
+    GaugeDisk(1024, limit: 2048 * 1024)
 }
