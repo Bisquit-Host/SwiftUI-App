@@ -79,7 +79,7 @@ struct AppContainer: View {
         )
         
         if !keys.contains(where: { $0.key == linking.session }) {
-            modelContext.insert(APIKey("Session", key: linking.session))
+            modelContext.insert(APIKey(key: linking.session))
         }
         
         store.authSucced()
