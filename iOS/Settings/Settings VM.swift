@@ -19,13 +19,20 @@ final class SettingsVM {
         biometryType = context.biometryType
         
         switch biometryType {
+        case .none:
+            bioType = "None"
+            
         case .faceID:
             bioType = "Face ID"
             
         case .touchID:
             bioType = "Touch ID"
             
-        @unknown default: break
+        case .opticID:
+            bioType = "Optic ID"
+            
+        @unknown
+        default: break
         }
     }
 }
