@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 
 struct Guide: View {
     private let steps = [

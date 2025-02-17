@@ -766,7 +766,6 @@
 		F38928202A43CB2600561CDF /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F36797722A39C4ED009F2788 /* Localizable.xcstrings */; };
 		F38928232A44182F00561CDF /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38928222A44182F00561CDF /* Console.swift */; };
 		F38928252A441B5D00561CDF /* Server Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38928242A441B5D00561CDF /* Server Settings.swift */; };
-		F38928282A441D0C00561CDF /* Dev Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38928272A441D0C00561CDF /* Dev Settings.swift */; };
 		F389282E2A445E4F00561CDF /* App Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F389282D2A445E4F00561CDF /* App Settings.swift */; };
 		F38928302A445E9700561CDF /* Server List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F389282F2A445E9700561CDF /* Server List.swift */; };
 		F38928322A445EA900561CDF /* Server Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38928312A445EA900561CDF /* Server Card.swift */; };
@@ -1874,7 +1873,6 @@
 		F3880A252A92A15E0052A978 /* Contact Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact Manager.swift"; sourceTree = "<group>"; };
 		F38928222A44182F00561CDF /* Console.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Console.swift; sourceTree = "<group>"; };
 		F38928242A441B5D00561CDF /* Server Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Settings.swift"; sourceTree = "<group>"; };
-		F38928272A441D0C00561CDF /* Dev Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dev Settings.swift"; sourceTree = "<group>"; };
 		F389282D2A445E4F00561CDF /* App Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Settings.swift"; sourceTree = "<group>"; };
 		F389282F2A445E9700561CDF /* Server List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List.swift"; sourceTree = "<group>"; };
 		F38928312A445EA900561CDF /* Server Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card.swift"; sourceTree = "<group>"; };
@@ -3284,7 +3282,6 @@
 			isa = PBXGroup;
 			children = (
 				F389282D2A445E4F00561CDF /* App Settings.swift */,
-				F38928272A441D0C00561CDF /* Dev Settings.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -5635,7 +5632,6 @@
 				F34F289F2ACDADA600FD618A /* Animated Tab.swift in Sources */,
 				F3A7CF6B2A44F6E000331B51 /* Circular Gauge.swift in Sources */,
 				F3E679B22D5A854700A7ADDE /* Server Options Provider.swift in Sources */,
-				F38928282A441D0C00561CDF /* Dev Settings.swift in Sources */,
 				F389282E2A445E4F00561CDF /* App Settings.swift in Sources */,
 				F37B90782BFEA00300597624 /* Ornament Info Properties.swift in Sources */,
 				F3202D3B2D5636660030B3CC /* Tip Suspended Server.swift in Sources */,

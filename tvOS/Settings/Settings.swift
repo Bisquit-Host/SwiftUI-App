@@ -23,6 +23,7 @@ struct Settings: View {
                 Guide()
             }
             
+            #warning("tvOS: Map")
             //                NavigationLink("Map") {
             //                    MapView()
             //                }
