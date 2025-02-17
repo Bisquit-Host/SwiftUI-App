@@ -44,6 +44,12 @@ struct StartPage: View {
             }
             .padding(10)
             
+            Button("Where to find the API-key?") {
+                vm.sheetGuide = true
+            }
+            .footnote(.semibold)
+            .foregroundStyle(.white)
+            
             Spacer()
             
             StartPageFooter()
@@ -58,7 +64,7 @@ struct StartPage: View {
                 vm.fetchAccountDetails()
             }
         }
-        .onAppear {
+        .task {
             if !keys.isEmpty {
                 delay(0.5) {
                     vm.sheetCloudKeys = true
@@ -87,9 +93,9 @@ struct StartPage: View {
             }
             
             Button("Remove this key", role: .destructive) {
-                let key = keys.first(where: {
+                let key = keys.first {
                     $0.key == vm.apiKey
-                })
+                }
                 
                 if let key {
                     modelContext.delete(key)
@@ -100,8 +106,8 @@ struct StartPage: View {
         } message: {
             Text(vm.errorDescription)
         }
-        .sheet($vm.sheetSupport) {
-            Support()
+        .sheet($vm.sheetGuide) {
+            Guide()
         }
         .sheet($vm.sheetBrowsePlans) {
             BrowserParent()

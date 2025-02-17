@@ -5,18 +5,6 @@ struct StartPageFooter: View {
     
     var body: some View {
         HStack {
-            Button("Need help?") {
-                vm.sheetSupport = true
-            }
-            .padding()
-            .background {
-                Capsule()
-                    .fill(.cookie.gradient)
-                    .shadow(radius: 8)
-            }
-            
-            Spacer()
-            
             SFButton("key.icloud") {
                 vm.sheetCloudKeys = true
             }
@@ -26,6 +14,8 @@ struct StartPageFooter: View {
                     .fill(.blue.gradient)
                     .shadow(radius: 8)
             }
+            
+            Spacer()
             
             SFButton("externaldrive.badge.plus") {
                 vm.sheetBrowsePlans = true
