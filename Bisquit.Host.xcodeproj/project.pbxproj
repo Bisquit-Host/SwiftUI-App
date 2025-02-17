@@ -2378,13 +2378,13 @@
 				F3E08EA12A2CE17900116C1C /* macOS */,
 				F3BD76F32A43C890003E7385 /* visionOS */,
 				F31BA54F2958FFAF0006D126 /* Clip Demo */,
-				F3464CF92A862D2D00188B0C /* Intent */,
 				F386373A2A8641120069F074 /* Widgets */,
-				F337C1532A8C29CD006F321C /* Unit Tests */,
-				F3D296082AF3BE5800ED43A0 /* UI Tests */,
-				F3E2BEF62C1DA07E00B7A6D4 /* Contact Provider Extension */,
+				F3464CF92A862D2D00188B0C /* Intent */,
 				F3FDFF832C89121F009EBB5C /* Intent Handler */,
 				F3A7CEE22C8B9D3800413400 /* iMessage Extension */,
+				F3E2BEF62C1DA07E00B7A6D4 /* Contact Provider Extension */,
+				F337C1532A8C29CD006F321C /* Unit Tests */,
+				F3D296082AF3BE5800ED43A0 /* UI Tests */,
 				F31BA5242958FF7C0006D126 /* Products */,
 				F3D3437429BFE5A2007C0D58 /* Frameworks */,
 			);
@@ -3238,7 +3238,6 @@
 				F3A7CEDB2C8B95CB00413400 /* Home View.swift */,
 				F3A7CEE42C8B9E7500413400 /* Messages VM.swift */,
 				F3A7CEFF2C8BBAFD00413400 /* Server List */,
-				F3A7CF002C8BBB0B00413400 /* Server Card */,
 			);
 			path = "iMessage Extension";
 			sourceTree = "<group>";
@@ -3249,6 +3248,7 @@
 				F3A7CEFD2C8BB97400413400 /* Server List.swift */,
 				F3255E162C9049AF008E04DE /* Settings Button.swift */,
 				F3255E192C904A03008E04DE /* Settings View.swift */,
+				F3A7CF002C8BBB0B00413400 /* Server Card */,
 			);
 			path = "Server List";
 			sourceTree = "<group>";
