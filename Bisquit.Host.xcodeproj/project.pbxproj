@@ -1446,14 +1446,6 @@
 		F3F0A2BC2D627ABB0084013B /* Network Lost View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F0A2B62D627ABB0084013B /* Network Lost View.swift */; };
 		F3F0A2BD2D627ABB0084013B /* Network Lost View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F0A2B62D627ABB0084013B /* Network Lost View.swift */; };
 		F3F0A2BE2D627ABB0084013B /* Network Lost View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F0A2B62D627ABB0084013B /* Network Lost View.swift */; };
-		F3F0A2D22D6291B00084013B /* Grant achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F0A2D12D6291B00084013B /* Grant achievement.swift */; };
-		F3F0A2D32D6291B00084013B /* Grant achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F0A2D12D6291B00084013B /* Grant achievement.swift */; };
-		F3F0A2D42D6291B00084013B /* Grant achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F0A2D12D6291B00084013B /* Grant achievement.swift */; };
-		F3F0A2D52D6291B00084013B /* Grant achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F0A2D12D6291B00084013B /* Grant achievement.swift */; };
-		F3F0A2D62D6291B00084013B /* Grant achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F0A2D12D6291B00084013B /* Grant achievement.swift */; };
-		F3F0A2D72D6291B00084013B /* Grant achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F0A2D12D6291B00084013B /* Grant achievement.swift */; };
-		F3F0A2D82D6291B00084013B /* Grant achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F0A2D12D6291B00084013B /* Grant achievement.swift */; };
-		F3F0A2D92D6291B10084013B /* Grant achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F0A2D12D6291B00084013B /* Grant achievement.swift */; };
 		F3F0A2DA2D62AEDC0084013B /* Gauge Disk.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378EF8229D6C91300BC4849 /* Gauge Disk.swift */; };
 		F3F2A5BB29AC296D00AD20A4 /* Server Card Suspended.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F2A5BA29AC296D00AD20A4 /* Server Card Suspended.swift */; };
 		F3F2BB9D2A5403DD00D44CA6 /* Server List VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F352AF962A4EDB1D004AD489 /* Server List VM.swift */; };
@@ -2065,7 +2057,6 @@
 		F3EDEE3929C0CB8000B08696 /* Websocket Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Websocket Delegate.swift"; sourceTree = "<group>"; };
 		F3F061D92A73CE1200470F7E /* Server Card Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Parent.swift"; sourceTree = "<group>"; };
 		F3F0A2B62D627ABB0084013B /* Network Lost View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network Lost View.swift"; sourceTree = "<group>"; };
-		F3F0A2D12D6291B00084013B /* Grant achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Grant achievement.swift"; sourceTree = "<group>"; };
 		F3F2A5BA29AC296D00AD20A4 /* Server Card Suspended.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Suspended.swift"; sourceTree = "<group>"; };
 		F3F2BBA42A540B8800D44CA6 /* Start Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page.swift"; sourceTree = "<group>"; };
 		F3F5BC952BF7668E00EB8FB1 /* Sensitivity Analyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sensitivity Analyzer.swift"; sourceTree = "<group>"; };
@@ -2429,7 +2420,6 @@
 				F3BC03C02B2063820011F98A /* Debug Key.swift */,
 				F32FD71D2B1E054300723B88 /* Network Calls.swift */,
 				F31F31F72D52BD940095DD19 /* System.swift */,
-				F3F0A2D12D6291B00084013B /* Grant achievement.swift */,
 				F31BA564295900270006D126 /* Nav */,
 				F36797722A39C4ED009F2788 /* Localizable.xcstrings */,
 				F378E3322AF38286009925DB /* PrivacyInfo.xcprivacy */,
@@ -4452,7 +4442,6 @@
 				F3D22C092A26564C00721113 /* Cloud Keys.swift in Sources */,
 				F342FAAF2B2E07FF00854270 /* Users VM.swift in Sources */,
 				F3C9D8542B3060E100265492 /* UIVideoPlayer.swift in Sources */,
-				F3F0A2D72D6291B00084013B /* Grant achievement.swift in Sources */,
 				F3CCF5C52B3457AE005FFF2C /* Allocation VM.swift in Sources */,
 				F37080522A2A1F6D0046CE70 /* Database List.swift in Sources */,
 				F342FAB42B2E45CB00854270 /* Log Detail View.swift in Sources */,
@@ -4693,7 +4682,6 @@
 				F3B81DF12A49C96000633B66 /* Info Absolute Stats.swift in Sources */,
 				F34169A52A49DF64003985E7 /* Info Tab Button.swift in Sources */,
 				F3E8B3502CF485FB005D25F8 /* Console Message.swift in Sources */,
-				F3F0A2D62D6291B00084013B /* Grant achievement.swift in Sources */,
 				F37DDA7629E2AF7600B9680C /* Folder Path VM.swift in Sources */,
 				F335CA0B2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */,
 				F3A994AA2A177ED100530615 /* Map VM.swift in Sources */,
@@ -4836,7 +4824,6 @@
 				F3BE36D62A55E1D2007A0179 /* Nav Destinations.swift in Sources */,
 				F30B61CE2B2907CA00F447B4 /* Debug Key.swift in Sources */,
 				F3BF6F232959D15E0059F39B /* App Settings.swift in Sources */,
-				F3F0A2D52D6291B00084013B /* Grant achievement.swift in Sources */,
 				F3464D272A86398000188B0C /* Power Signal App Enum.swift in Sources */,
 				F3FFB7412A57F0AB00220FA5 /* Users VM.swift in Sources */,
 				F30C12F82A5451C100A7EFF0 /* Server List VM.swift in Sources */,
@@ -5056,7 +5043,6 @@
 				F389BB6A2A05B5E100911EBF /* Settings View.swift in Sources */,
 				F3BC03AF2B1FF2FC0011F98A /* Schedule Context Menu.swift in Sources */,
 				F389BB7B2A05B64E00911EBF /* Biometry Usage View.swift in Sources */,
-				F3F0A2D22D6291B00084013B /* Grant achievement.swift in Sources */,
 				F3DE1B992A556CCE007A1624 /* Log List.swift in Sources */,
 				F36D53222A05B83B007324C6 /* Websocket Message.swift in Sources */,
 				F3DD93D42A372BED006A41AA /* Console Overlay.swift in Sources */,
@@ -5237,7 +5223,6 @@
 				F3D295522AF39E0300ED43A0 /* Browser Card.swift in Sources */,
 				F3D295AD2AF3A0FC00ED43A0 /* Cache Expiration.swift in Sources */,
 				F3D295CC2AF3A26E00ED43A0 /* Panel View.swift in Sources */,
-				F3F0A2D32D6291B00084013B /* Grant achievement.swift in Sources */,
 				F335CA0A2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */,
 				F3D295B82AF3A16A00ED43A0 /* App Icon.swift in Sources */,
 				F3D2959E2AF3A08300ED43A0 /* Video Player.swift in Sources */,
@@ -5478,7 +5463,6 @@
 				F37CE9C22D555D5200716D28 /* Tabs.swift in Sources */,
 				F3255E1F2C904A71008E04DE /* Enable 2FA View.swift in Sources */,
 				F3255E202C904A71008E04DE /* Disable 2FA View.swift in Sources */,
-				F3F0A2D42D6291B00084013B /* Grant achievement.swift in Sources */,
 				F3255E212C904A71008E04DE /* QR Code View.swift in Sources */,
 				F3AB4A7B2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
 				F3A7CEF42C8BB7E500413400 /* Network Calls.swift in Sources */,
@@ -5594,7 +5578,6 @@
 				F3A31B0C2B0B161D00F89C51 /* Cloud Key Card.swift in Sources */,
 				F3202D4C2D56DC050030B3CC /* Prefetcher.swift in Sources */,
 				F3202D562D5758DC0030B3CC /* Log VM.swift in Sources */,
-				F3F0A2D92D6291B10084013B /* Grant achievement.swift in Sources */,
 				F3202D572D5758DC0030B3CC /* Log Card.swift in Sources */,
 				F3464D1F2A86396500188B0C /* Change Power.swift in Sources */,
 				F30B61CB2B2905F300F447B4 /* Websocket Message.swift in Sources */,
@@ -5733,7 +5716,6 @@
 				F390E53E2A84217D000B4460 /* Bisquit.Host App.swift in Sources */,
 				F3D295142AF396FD00ED43A0 /* Tabs.swift in Sources */,
 				F300888E2B39FAA60051476C /* Allocation VM.swift in Sources */,
-				F3F0A2D82D6291B00084013B /* Grant achievement.swift in Sources */,
 				F30C130F2A54605B00A7EFF0 /* Nav Destinations.swift in Sources */,
 				F30088B62B3A21410051476C /* Schedule List.swift in Sources */,
 				F3DF50CD2B38FDE800206CAE /* Permission Card.swift in Sources */,
