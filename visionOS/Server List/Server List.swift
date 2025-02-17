@@ -49,7 +49,9 @@ struct ServerList: View {
             vm.fetchServers(store.adminServerList)
         }
         .sheet($sheetSettings) {
-            AppSettings()
+            NavigationView {
+                AppSettings()
+            }
         }
         .sheet($vm.sheetKeyStorage) {
             CloudKeys($vm.apiKey)
