@@ -64,6 +64,20 @@ final class SystemAlert {
 #endif
     }
     
+    static func changesSaved() {
+#if canImport(AlertKit)
+        main {
+            AlertKitAPI.present(
+                title: "Changes Saved",
+                subtitle: "The file has been saved",
+                icon: .done,
+                style: .iOS17AppleMusic,
+                haptic: .success
+            )
+        }
+#endif
+    }
+    
     static func error(_ error: Error) {
 #if canImport(AlertKit)
         if let error = error as? PterError {

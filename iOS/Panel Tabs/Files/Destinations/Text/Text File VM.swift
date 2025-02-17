@@ -24,8 +24,7 @@ final class TextFileVM {
         fileWriteAPI(id, write: write, path: path) { result in
             switch result {
             case .success(let model):
-#warning("AlertKit")
-                print(model)
+                SystemAlert.changesSaved()
                 
             case .failure(let error):
                 SystemAlert.error(error)
