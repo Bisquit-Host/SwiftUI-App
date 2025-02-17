@@ -23,8 +23,8 @@ struct TextFile: View {
         VStack {
 #if os(iOS)
             TextEditor(text: $vm.text)
-                .padding(10)
                 .disableAutocorrection(true)
+                .autocapitalization(.none)
 #elseif os(watchOS)
             ScrollView {
                 Text(vm.text)
