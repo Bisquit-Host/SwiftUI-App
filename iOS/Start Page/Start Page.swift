@@ -11,8 +11,6 @@ struct StartPage: View {
     
     var body: some View {
         VStack {
-            Spacer()
-            
             Text("To activate the app, please enter a valid API-key")
                 .title(.semibold)
                 .lineLimit(2)
@@ -49,16 +47,16 @@ struct StartPage: View {
             }
             .footnote(.semibold)
             .foregroundStyle(.white)
-            
-            Spacer()
-            
-            StartPageFooter()
-                .environment(vm)
         }
+        .frame(maxHeight: .infinity)
         .ignoresSafeArea()
         .navigationBarBackButtonHidden()
         .background(Color(0xe3a65e))
         .statusBarHidden()
+        .overlay(alignment: .bottom) {
+            StartPageFooter()
+                .environment(vm)
+        }
         .onChange(of: vm.apiKey) { _, newValue in
             if newValue.count == 48 || newValue.count == 340 {
                 vm.fetchAccountDetails()
