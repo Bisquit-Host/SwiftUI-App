@@ -6307,7 +6307,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 4.1.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug.Clip";
+				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.Clip";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
@@ -6338,7 +6338,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Clip Demo/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
+				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.debug;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Access to contacts allows you to save new contacts directly from the app.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Required to view your location on the map";
