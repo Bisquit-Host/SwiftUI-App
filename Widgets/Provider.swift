@@ -11,16 +11,18 @@ struct Provider: AppIntentTimelineProvider {
     ) -> Timeline<SystemSmallEntry> {
         var cpu = 0.0
         
-        serverUsageAPI(configuration.id) { result in
-            switch result {
-            case .success(let model):
-                if let model {
-                    let usage = model.attributes.usage
-                    cpu = usage.cpu
+        if let id = configuration.id {
+            serverUsageAPI(id) { result in
+                switch result {
+                case .success(let model):
+                    if let model {
+                        let usage = model.attributes.usage
+                        cpu = usage.cpu
+                    }
+                    
+                case .failure:
+                    cpu = -1
                 }
-                
-            case .failure:
-                cpu = -1
             }
         }
         
