@@ -25,11 +25,12 @@ final class PteroNet {
         }
     }
     
-    static func reinstallServer(_ id: String) {
+    static func reinstallServer(_ id: String, onSuccess: @escaping () -> Void = {}) {
         serverReinstallAPI(id) { result in
             switch result {
             case .success:
                 print("Reinstalled")
+                onSuccess()
                 
             case .failure(let error):
                 networkCallError(#function, error)

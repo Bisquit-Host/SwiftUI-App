@@ -63,7 +63,9 @@ struct PanelSettingsView: View {
         }
         .alert("Reinstall Server", isPresented: $alertReinstall) {
             Button("Reinstall", role: .destructive) {
-                PteroNet.reinstallServer(server.id)
+                PteroNet.reinstallServer(server.id) {
+                    SystemAlert.reinstalled()
+                }
             }
         } message: {
             Text("Reinstalling your server will stop it, and then re-run the installation script that initially set it. Some files may be deleted or modified during this process, please back up your data before continuing")

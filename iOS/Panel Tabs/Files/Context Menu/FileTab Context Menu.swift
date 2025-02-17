@@ -78,8 +78,8 @@ struct FileTabContextMenu: ViewModifier {
                     vm.deleteFile(name, at: root)
                 }
 #warning("File Preview")
-                //            } preview: {
-                //                FilePreview(id, path: root, name: name)
+//            } preview: {
+//                FilePreview(id, path: root, name: name)
             }
             .sheet($sheetPermissions) {
                 FilePermissionsParent(file, at: root)
