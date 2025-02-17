@@ -638,7 +638,7 @@
 		F36D53212A05B836007324C6 /* Websocket Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3929C0CB8000B08696 /* Websocket Delegate.swift */; };
 		F36D53222A05B83B007324C6 /* Websocket Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3729C0CB5A00B08696 /* Websocket Message.swift */; };
 		F36D53252A05B85B007324C6 /* Data Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5C8295904AC0006D126 /* Data Tab.swift */; };
-		F36D53282A05B868007324C6 /* FileTab NewFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C0F9D129E2A62A0040E277 /* FileTab NewFolder.swift */; };
+		F36D53282A05B868007324C6 /* New Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C0F9D129E2A62A0040E277 /* New Folder.swift */; };
 		F36D532B2A05B875007324C6 /* Backup List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F375EC3729EE7213002CA969 /* Backup List.swift */; };
 		F36D532C2A05B87A007324C6 /* Database List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F375EC3929EE73AC002CA969 /* Database List.swift */; };
 		F36D532D2A05B87E007324C6 /* Schedule List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F375EC3B29EE88EA002CA969 /* Schedule List.swift */; };
@@ -1080,7 +1080,7 @@
 		F3BF6F232959D15E0059F39B /* App Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BF6F222959D15E0059F39B /* App Settings.swift */; };
 		F3BF97AA29BFC7E9007B9C9C /* Websocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BF97A929BFC7E9007B9C9C /* Websocket.swift */; };
 		F3C0F9D029E204FA0040E277 /* FileTab Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C0F9CF29E204FA0040E277 /* FileTab Context Menu.swift */; };
-		F3C0F9D229E2A62A0040E277 /* FileTab NewFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C0F9D129E2A62A0040E277 /* FileTab NewFolder.swift */; };
+		F3C0F9D229E2A62A0040E277 /* New Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C0F9D129E2A62A0040E277 /* New Folder.swift */; };
 		F3C3BDB82C92BE9B00BF91EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F31BA52A2958FF7D0006D126 /* Assets.xcassets */; };
 		F3C53A5F29DBF5B900A08578 /* watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F31BA5332958FF7D0006D126 /* watchOS.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F3C62CE3298A7D8600434636 /* Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C62CE2298A7D8600434636 /* Support.swift */; };
@@ -1204,8 +1204,8 @@
 		F3D2955D2AF39E6800ED43A0 /* Map View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A72A177DA400530615 /* Map View.swift */; };
 		F3D2955E2AF39E6E00ED43A0 /* Panel Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3029C06E9700B08696 /* Panel Model.swift */; };
 		F3D2955F2AF39E7700ED43A0 /* File Tab VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D558AB2A3360ED00608447 /* File Tab VM.swift */; };
-		F3D295602AF39E8400ED43A0 /* FileTab Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA61562A1F928500A65AE1 /* FileTab Search.swift */; };
-		F3D295612AF39E8900ED43A0 /* FileTab NewFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C0F9D129E2A62A0040E277 /* FileTab NewFolder.swift */; };
+		F3D295602AF39E8400ED43A0 /* File Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA61562A1F928500A65AE1 /* File Search.swift */; };
+		F3D295612AF39E8900ED43A0 /* New Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C0F9D129E2A62A0040E277 /* New Folder.swift */; };
 		F3D295622AF39E8D00ED43A0 /* Upload Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA61532A1F8DB500A65AE1 /* Upload Menu.swift */; };
 		F3D295632AF39E9400ED43A0 /* Upload Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35DA9582A28F5B100803E7E /* Upload Progress.swift */; };
 		F3D295642AF39E9B00ED43A0 /* Folder Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5AF295902C70006D126 /* Folder Path.swift */; };
@@ -1469,8 +1469,8 @@
 		F3FA4DEB2A4CE82000547722 /* Account Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA4DE92A4CE82000547722 /* Account Settings.swift */; };
 		F3FA61542A1F8DB500A65AE1 /* Upload Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA61532A1F8DB500A65AE1 /* Upload Menu.swift */; };
 		F3FA61552A1F8DB500A65AE1 /* Upload Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA61532A1F8DB500A65AE1 /* Upload Menu.swift */; };
-		F3FA61572A1F928500A65AE1 /* FileTab Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA61562A1F928500A65AE1 /* FileTab Search.swift */; };
-		F3FA61582A1F928500A65AE1 /* FileTab Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA61562A1F928500A65AE1 /* FileTab Search.swift */; };
+		F3FA61572A1F928500A65AE1 /* File Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA61562A1F928500A65AE1 /* File Search.swift */; };
+		F3FA61582A1F928500A65AE1 /* File Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA61562A1F928500A65AE1 /* File Search.swift */; };
 		F3FC99112C65747700150823 /* Archieving.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC99102C65747700150823 /* Archieving.swift */; };
 		F3FC99162C65888900150823 /* Temp Dir.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC99152C65888900150823 /* Temp Dir.swift */; };
 		F3FD9F982C651A4E00A69314 /* File List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FD9F972C651A4E00A69314 /* File List.swift */; };
@@ -1973,7 +1973,7 @@
 		F3BF6F222959D15E0059F39B /* App Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Settings.swift"; sourceTree = "<group>"; };
 		F3BF97A929BFC7E9007B9C9C /* Websocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Websocket.swift; sourceTree = "<group>"; };
 		F3C0F9CF29E204FA0040E277 /* FileTab Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileTab Context Menu.swift"; sourceTree = "<group>"; };
-		F3C0F9D129E2A62A0040E277 /* FileTab NewFolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileTab NewFolder.swift"; sourceTree = "<group>"; };
+		F3C0F9D129E2A62A0040E277 /* New Folder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "New Folder.swift"; sourceTree = "<group>"; };
 		F3C62CE2298A7D8600434636 /* Support.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Support.swift; sourceTree = "<group>"; };
 		F3C9D8492B302AA200265492 /* File Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Context Menu.swift"; sourceTree = "<group>"; };
 		F3C9D84D2B30598000265492 /* Video Player VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Video Player VM.swift"; sourceTree = "<group>"; };
@@ -2064,7 +2064,7 @@
 		F3F716BC29E4D46600838586 /* Backup List Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Backup List Footer.swift"; sourceTree = "<group>"; };
 		F3FA4DE92A4CE82000547722 /* Account Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account Settings.swift"; sourceTree = "<group>"; };
 		F3FA61532A1F8DB500A65AE1 /* Upload Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Upload Menu.swift"; sourceTree = "<group>"; };
-		F3FA61562A1F928500A65AE1 /* FileTab Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileTab Search.swift"; sourceTree = "<group>"; };
+		F3FA61562A1F928500A65AE1 /* File Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Search.swift"; sourceTree = "<group>"; };
 		F3FC99102C65747700150823 /* Archieving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archieving.swift; sourceTree = "<group>"; };
 		F3FC99152C65888900150823 /* Temp Dir.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Temp Dir.swift"; sourceTree = "<group>"; };
 		F3FD9F972C651A4E00A69314 /* File List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File List.swift"; sourceTree = "<group>"; };
@@ -3039,10 +3039,10 @@
 		F37DDA7429E2AABF00B9680C /* Elements */ = {
 			isa = PBXGroup;
 			children = (
-				F3FA61562A1F928500A65AE1 /* FileTab Search.swift */,
+				F3FA61562A1F928500A65AE1 /* File Search.swift */,
 				F31BA5AF295902C70006D126 /* Folder Path.swift */,
 				F37DDA7529E2AF7600B9680C /* Folder Path VM.swift */,
-				F3C0F9D129E2A62A0040E277 /* FileTab NewFolder.swift */,
+				F3C0F9D129E2A62A0040E277 /* New Folder.swift */,
 				F30089222B3BA5300051476C /* File Permissions Parent.swift */,
 				F300891D2B3B87FB0051476C /* File Permissions View.swift */,
 			);
@@ -4590,7 +4590,7 @@
 				F311CAAE2A646612004E4A4A /* Log Detail View.swift in Sources */,
 				F3A1235A2A6689FA008E3E20 /* User Email.swift in Sources */,
 				F303214B2B3FEA45002A73B8 /* Panel Settings View.swift in Sources */,
-				F3C0F9D229E2A62A0040E277 /* FileTab NewFolder.swift in Sources */,
+				F3C0F9D229E2A62A0040E277 /* New Folder.swift in Sources */,
 				F31BA5B2295902D50006D126 /* Text File.swift in Sources */,
 				F3553FB32B40653000EF0FD2 /* Panel Settings Parent.swift in Sources */,
 				F3D264372A66A9B9005C3777 /* Settings Parent.swift in Sources */,
@@ -4637,7 +4637,7 @@
 				F3202C802D558B210030B3CC /* Spotlight Index.swift in Sources */,
 				F3DAD6BE2A4793F8002ED405 /* Circular Gauge.swift in Sources */,
 				F374F7BF2D54922F006771DD /* Sheet Create Subdomain.swift in Sources */,
-				F3FA61572A1F928500A65AE1 /* FileTab Search.swift in Sources */,
+				F3FA61572A1F928500A65AE1 /* File Search.swift in Sources */,
 				F3C9D85C2B31146E00265492 /* User Avatar.swift in Sources */,
 				F354E9832A48CA2000F6E359 /* Topbar Grid Button.swift in Sources */,
 				F3924EE929A28D9D00C4CC77 /* Biometry Usage View.swift in Sources */,
@@ -4891,7 +4891,7 @@
 			files = (
 				F3FF5A102A4A3ABD003A1973 /* User Card.swift in Sources */,
 				F3CE5C462D53907E0094BD7B /* Subdomain VM.swift in Sources */,
-				F36D53282A05B868007324C6 /* FileTab NewFolder.swift in Sources */,
+				F36D53282A05B868007324C6 /* New Folder.swift in Sources */,
 				F389BB722A05B61300911EBF /* Credentials View.swift in Sources */,
 				F389BB712A05B60D00911EBF /* Credentials Button.swift in Sources */,
 				F337C1642A8CE965006F321C /* Startup Card.swift in Sources */,
@@ -5123,7 +5123,7 @@
 				F36D53382A05B8C5007324C6 /* Folder Path VM.swift in Sources */,
 				F3FA61552A1F8DB500A65AE1 /* Upload Menu.swift in Sources */,
 				F3AB4A912CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
-				F3FA61582A1F928500A65AE1 /* FileTab Search.swift in Sources */,
+				F3FA61582A1F928500A65AE1 /* File Search.swift in Sources */,
 				F3202CFF2D562AE10030B3CC /* Browser List Bot.swift in Sources */,
 				F330013C2A4CEC320063FE0F /* Apikey List.swift in Sources */,
 				F36D53352A05B8B6007324C6 /* Backup Card.swift in Sources */,
@@ -5173,7 +5173,7 @@
 				F3202D1E2D562B980030B3CC /* Browser Card VDS.swift in Sources */,
 				F3D2953D2AF39D3A00ED43A0 /* Nav Destinations.swift in Sources */,
 				F3D2958B2AF39FD500ED43A0 /* Settings Parent.swift in Sources */,
-				F3D295612AF39E8900ED43A0 /* FileTab NewFolder.swift in Sources */,
+				F3D295612AF39E8900ED43A0 /* New Folder.swift in Sources */,
 				F374F7C12D54922F006771DD /* Sheet Create Subdomain.swift in Sources */,
 				F3D295392AF39D1B00ED43A0 /* Value Store.swift in Sources */,
 				F3AF91C72B423535001D8F80 /* SSH List.swift in Sources */,
@@ -5231,7 +5231,7 @@
 				F3D295EC2AF3A43300ED43A0 /* Server Card.swift in Sources */,
 				F314616C2D5A1F5E00547B6C /* Icon.swift in Sources */,
 				F3D295C52AF3A1DF00ED43A0 /* Apikey Card.swift in Sources */,
-				F3D295602AF39E8400ED43A0 /* FileTab Search.swift in Sources */,
+				F3D295602AF39E8400ED43A0 /* File Search.swift in Sources */,
 				F3E2BF112C1EC94300B7A6D4 /* Contacts VM.swift in Sources */,
 				F3D295842AF39FA500ED43A0 /* Discover.swift in Sources */,
 				F3D295922AF3A02300ED43A0 /* Server Card Stats.swift in Sources */,
