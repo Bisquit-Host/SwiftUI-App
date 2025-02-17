@@ -24,6 +24,7 @@ fileprivate let ansiToSwiftUIColorMap = [
 
 public func convertAnsiToAttributedString(_ input: String) -> AttributedString {
     let parts = input.split(separator: regex1)
+    
     let matches = regex.matches(
         in: input,
         options: [],
