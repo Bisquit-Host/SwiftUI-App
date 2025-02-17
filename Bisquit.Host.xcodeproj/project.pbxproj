@@ -2720,7 +2720,6 @@
 				F33001402A4CEF840063FE0F /* Apikey VM.swift */,
 				F33001432A4CF06D0063FE0F /* Apikey Card.swift */,
 				F337D7582A4DBC840011524E /* Create Apikey.swift */,
-				F375EC3429EE6E17002CA969 /* Sections */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -3177,6 +3176,7 @@
 				F31BA575295900E30006D126 /* Settings View.swift */,
 				F3924EDE29A2333F00C4CC77 /* Settings VM.swift */,
 				F39993392AF2E491006E8A9A /* Other Settings.swift */,
+				F375EC3429EE6E17002CA969 /* Sections */,
 				F33001392A4CEBFD0063FE0F /* Account */,
 				F375EC3329EE6DDD002CA969 /* Elements */,
 				F3D902DD29DC3E47004E76C9 /* Cache */,

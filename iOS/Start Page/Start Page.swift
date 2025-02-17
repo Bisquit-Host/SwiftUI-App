@@ -21,7 +21,6 @@ struct StartPage: View {
             
             HStack {
                 TextField("API-key", text: $vm.apiKey)
-                    .unbold()
                     .secondary()
                     .autocorrectionDisabled()
                     .textFieldStyle(.roundedBorder)
@@ -46,7 +45,7 @@ struct StartPage: View {
                 vm.sheetGuide = true
             }
             .footnote(.semibold)
-            .foregroundStyle(.white)
+            .foregroundStyle(.white.secondary)
         }
         .frame(maxHeight: .infinity)
         .ignoresSafeArea()

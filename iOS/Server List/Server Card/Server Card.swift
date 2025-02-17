@@ -30,10 +30,6 @@ struct ServerCard: View {
         server.limits
     }
     
-    private var name: String {
-        server.name.replacing(" ", with: "")
-    }
-    
     var body: some View {
         VStack {
             switch store.designCode {
@@ -97,7 +93,7 @@ struct ServerCard: View {
     }
     
     private var serverName: some View {
-        ServerName(name, color: vm.stateColor)
+        ServerName(server.name, color: vm.stateColor)
             .matchedEffect("name", in: animation)
     }
     
