@@ -98,7 +98,6 @@
 		F30C12F82A5451C100A7EFF0 /* Server List VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F352AF962A4EDB1D004AD489 /* Server List VM.swift */; };
 		F30C12FD2A54546900A7EFF0 /* App Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5672959006F0006D126 /* App Container.swift */; };
 		F30C12FE2A54546900A7EFF0 /* App Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5672959006F0006D126 /* App Container.swift */; };
-		F30C13002A54593700A7EFF0 /* Login Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BF6F242959FC470059F39B /* Login Container.swift */; };
 		F30C13012A5459A100A7EFF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F31BA52A2958FF7D0006D126 /* Assets.xcassets */; };
 		F30C13032A545ADB00A7EFF0 /* Nav State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA565295900300006D126 /* Nav State.swift */; };
 		F30C13042A545ADC00A7EFF0 /* Nav State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA565295900300006D126 /* Nav State.swift */; };
@@ -164,7 +163,6 @@
 		F31BA5272958FF7C0006D126 /* Bisquit.Host App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* Bisquit.Host App.swift */; };
 		F31BA52B2958FF7D0006D126 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F31BA52A2958FF7D0006D126 /* Assets.xcassets */; };
 		F31BA53D2958FF7E0006D126 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F31BA53C2958FF7E0006D126 /* Assets.xcassets */; };
-		F31BA5512958FFAF0006D126 /* Clip Demo App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5502958FFAF0006D126 /* Clip Demo App.swift */; };
 		F31BA55D2958FFB00006D126 /* Clip Demo.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = F31BA54E2958FFAF0006D126 /* Clip Demo.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F31BA566295900300006D126 /* Nav State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA565295900300006D126 /* Nav State.swift */; };
 		F31BA5682959006F0006D126 /* App Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5672959006F0006D126 /* App Container.swift */; };
@@ -663,7 +661,6 @@
 		F36D534B2A05B974007324C6 /* Nav Destinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5692959007E0006D126 /* Nav Destinations.swift */; };
 		F36D534C2A05B976007324C6 /* Nav Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BAEC8C2959B3FE00111375 /* Nav Extension.swift */; };
 		F36D534D2A05B98E007324C6 /* Nav State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA565295900300006D126 /* Nav State.swift */; };
-		F36FDB92295AF3AB00D45070 /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36FDB91295AF3AB00D45070 /* Intro.swift */; };
 		F36FDB97295AF4A900D45070 /* Browser VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA590295901C00006D126 /* Browser VM.swift */; };
 		F37061C829774869009B4067 /* Nav Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37061C729774869009B4067 /* Nav Extension.swift */; };
 		F37061CA29774886009B4067 /* Nav Destinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37061C929774886009B4067 /* Nav Destinations.swift */; };
@@ -1447,6 +1444,14 @@
 		F3F0A2BD2D627ABB0084013B /* Network Lost View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F0A2B62D627ABB0084013B /* Network Lost View.swift */; };
 		F3F0A2BE2D627ABB0084013B /* Network Lost View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F0A2B62D627ABB0084013B /* Network Lost View.swift */; };
 		F3F0A2DA2D62AEDC0084013B /* Gauge Disk.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378EF8229D6C91300BC4849 /* Gauge Disk.swift */; };
+		F3F0A2DB2D6339510084013B /* Bisquit.Host App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* Bisquit.Host App.swift */; };
+		F3F0A2DC2D63395F0084013B /* App Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5672959006F0006D126 /* App Container.swift */; };
+		F3F0A2DD2D6339680084013B /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA577295901010006D126 /* Intro.swift */; };
+		F3F0A2DE2D6339680084013B /* Language Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EDA29A2291F00C4CC77 /* Language Button.swift */; };
+		F3F0A2DF2D6339760084013B /* Start Page VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA57B2959011B0006D126 /* Start Page VM.swift */; };
+		F3F0A2E02D6339760084013B /* Start Page Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32DB8A729AE6B800074E045 /* Start Page Footer.swift */; };
+		F3F0A2E12D6339760084013B /* Start Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA579295901110006D126 /* Start Page.swift */; };
+		F3F0A2E22D63398B0084013B /* App Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D52B242B13FE9C00167DD6 /* App Delegate.swift */; };
 		F3F2A5BB29AC296D00AD20A4 /* Server Card Suspended.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F2A5BA29AC296D00AD20A4 /* Server Card Suspended.swift */; };
 		F3F2BB9D2A5403DD00D44CA6 /* Server List VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F352AF962A4EDB1D004AD489 /* Server List VM.swift */; };
 		F3F2BBA52A540B8800D44CA6 /* Start Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F2BBA42A540B8800D44CA6 /* Start Page.swift */; };
@@ -1641,7 +1646,6 @@
 		F30088BC2B3A223E0051476C /* Database Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database Card.swift"; sourceTree = "<group>"; };
 		F30088D92B3A3BF50051476C /* Console View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Console View.swift"; sourceTree = "<group>"; };
 		F30088DD2B3A3FBB0051476C /* Startup List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Startup List.swift"; sourceTree = "<group>"; };
-		F30088E12B3A4DCD0051476C /* Clip_DemoDebug.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Clip_DemoDebug.entitlements; sourceTree = "<group>"; };
 		F30088E32B3A5B0B0051476C /* Startup List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Startup List.swift"; sourceTree = "<group>"; };
 		F30088F22B3B475C0051476C /* Startup Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Startup Card.swift"; sourceTree = "<group>"; };
 		F30088F42B3B55C10051476C /* User Invitation View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Invitation View.swift"; sourceTree = "<group>"; };
@@ -1670,9 +1674,8 @@
 		F31BA5332958FF7D0006D126 /* watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watchOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F31BA53C2958FF7E0006D126 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F31BA54E2958FFAF0006D126 /* Clip Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Clip Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F31BA5502958FFAF0006D126 /* Clip Demo App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Clip Demo App.swift"; sourceTree = "<group>"; };
 		F31BA5592958FFB00006D126 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F31BA55A2958FFB00006D126 /* Clip_Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Clip_Demo.entitlements; sourceTree = "<group>"; };
+		F31BA55A2958FFB00006D126 /* Clip Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Clip Demo.entitlements"; sourceTree = "<group>"; };
 		F31BA565295900300006D126 /* Nav State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav State.swift"; sourceTree = "<group>"; };
 		F31BA5672959006F0006D126 /* App Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Container.swift"; sourceTree = "<group>"; };
 		F31BA5692959007E0006D126 /* Nav Destinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Destinations.swift"; sourceTree = "<group>"; };
@@ -1813,7 +1816,6 @@
 		F36B738D2C8AEC8400E858FE /* Resources Usage Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Resources Usage Entry.swift"; sourceTree = "<group>"; };
 		F36B738F2C8AECB000E858FE /* Resources Widget View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Resources Widget View.swift"; sourceTree = "<group>"; };
 		F36B73A22C8B0B7B00E858FE /* Audio Player View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Audio Player View.swift"; sourceTree = "<group>"; };
-		F36FDB91295AF3AB00D45070 /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
 		F37061C729774869009B4067 /* Nav Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Extension.swift"; sourceTree = "<group>"; };
 		F37061C929774886009B4067 /* Nav Destinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Destinations.swift"; sourceTree = "<group>"; };
 		F371468B2B123807001E0296 /* Activity View State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity View State.swift"; sourceTree = "<group>"; };
@@ -1969,7 +1971,6 @@
 		F3BD76F82A43C890003E7385 /* Panel View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel View.swift"; sourceTree = "<group>"; };
 		F3BD76FC2A43C892003E7385 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3BF6F222959D15E0059F39B /* App Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Settings.swift"; sourceTree = "<group>"; };
-		F3BF6F242959FC470059F39B /* Login Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login Container.swift"; sourceTree = "<group>"; };
 		F3BF97A929BFC7E9007B9C9C /* Websocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Websocket.swift; sourceTree = "<group>"; };
 		F3C0F9CF29E204FA0040E277 /* FileTab Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileTab Context Menu.swift"; sourceTree = "<group>"; };
 		F3C0F9D129E2A62A0040E277 /* FileTab NewFolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileTab NewFolder.swift"; sourceTree = "<group>"; };
@@ -2466,12 +2467,8 @@
 		F31BA54F2958FFAF0006D126 /* Clip Demo */ = {
 			isa = PBXGroup;
 			children = (
-				F31BA5502958FFAF0006D126 /* Clip Demo App.swift */,
-				F3BF6F242959FC470059F39B /* Login Container.swift */,
-				F36FDB91295AF3AB00D45070 /* Intro.swift */,
 				F31BA5592958FFB00006D126 /* Info.plist */,
-				F31BA55A2958FFB00006D126 /* Clip_Demo.entitlements */,
-				F30088E12B3A4DCD0051476C /* Clip_DemoDebug.entitlements */,
+				F31BA55A2958FFB00006D126 /* Clip Demo.entitlements */,
 			);
 			path = "Clip Demo";
 			sourceTree = "<group>";
@@ -4898,6 +4895,8 @@
 				F389BB722A05B61300911EBF /* Credentials View.swift in Sources */,
 				F389BB712A05B60D00911EBF /* Credentials Button.swift in Sources */,
 				F337C1642A8CE965006F321C /* Startup Card.swift in Sources */,
+				F3F0A2DD2D6339680084013B /* Intro.swift in Sources */,
+				F3F0A2DE2D6339680084013B /* Language Button.swift in Sources */,
 				F38F9E162CE7647D0033EFE3 /* Image Playground.swift in Sources */,
 				F30088A52B3A18A70051476C /* Database VM.swift in Sources */,
 				F3A800372A7313E900CAC40B /* Tip Cloud Keys.swift in Sources */,
@@ -4923,7 +4922,6 @@
 				F30088F82B3B55D10051476C /* User Invitation View.swift in Sources */,
 				F3BC03C82B20675E0011F98A /* New Schedule Sheet.swift in Sources */,
 				F389BB622A05B58E00911EBF /* Server Card VM.swift in Sources */,
-				F36FDB92295AF3AB00D45070 /* Intro.swift in Sources */,
 				F325F7072A54C4BC00E89EC4 /* System Alerts.swift in Sources */,
 				F3C9D85E2B31146E00265492 /* User Avatar.swift in Sources */,
 				F33944122A49022A00E2F0FC /* Info Tab Card.swift in Sources */,
@@ -4950,6 +4948,7 @@
 				F358132C2A1F5D2A002ADFA4 /* Linking VM.swift in Sources */,
 				F3E024C72B228F4C00FFF686 /* New Task Sheet.swift in Sources */,
 				F3C9D8622B319B9E00265492 /* Permission Card.swift in Sources */,
+				F3F0A2DC2D63395F0084013B /* App Container.swift in Sources */,
 				F389BB5F2A05B57900911EBF /* Server Card.swift in Sources */,
 				F380B32A2BD7C529009062E8 /* Upload Preview List.swift in Sources */,
 				F389BB652A05B5AF00911EBF /* Formatters.swift in Sources */,
@@ -4994,14 +4993,12 @@
 				F36D534D2A05B98E007324C6 /* Nav State.swift in Sources */,
 				F3553FBA2B4093E600EF0FD2 /* Allocation List.swift in Sources */,
 				F389BB602A05B57D00911EBF /* Gauge Regular.swift in Sources */,
-				F30C13002A54593700A7EFF0 /* Login Container.swift in Sources */,
 				F3D7F8512C8ED3D100368ECE /* Disable 2FA View.swift in Sources */,
 				F3EB09EE2A2987F00073916A /* QuickLook File.swift in Sources */,
 				F36D530C2A05B6C4007324C6 /* Server List.swift in Sources */,
 				F3CE5C412D538FE60094BD7B /* Subdomain List.swift in Sources */,
 				F3D295212AF3975300ED43A0 /* Cache Model.swift in Sources */,
 				F36D531D2A05B816007324C6 /* Websocket.swift in Sources */,
-				F31BA5512958FFAF0006D126 /* Clip Demo App.swift in Sources */,
 				F389BB772A05B63200911EBF /* Biometry Button.swift in Sources */,
 				F3D7F8532C8F258B00368ECE /* Enable 2FA View.swift in Sources */,
 				F3A994AF2A17AED500530615 /* Map List.swift in Sources */,
@@ -5046,6 +5043,7 @@
 				F3DE1B992A556CCE007A1624 /* Log List.swift in Sources */,
 				F36D53222A05B83B007324C6 /* Websocket Message.swift in Sources */,
 				F3DD93D42A372BED006A41AA /* Console Overlay.swift in Sources */,
+				F3F0A2DB2D6339510084013B /* Bisquit.Host App.swift in Sources */,
 				F36D533E2A05B8EC007324C6 /* Text File VM.swift in Sources */,
 				F398E0E12CEB562400AA4DD7 /* Audio Player VM.swift in Sources */,
 				F389BB682A05B5C100911EBF /* Guide.swift in Sources */,
@@ -5059,6 +5057,9 @@
 				F36D532D2A05B87E007324C6 /* Schedule List.swift in Sources */,
 				F36D531A2A05B7FB007324C6 /* Console Tab.swift in Sources */,
 				F389BB7A2A05B64600911EBF /* App Icon Picker.swift in Sources */,
+				F3F0A2DF2D6339760084013B /* Start Page VM.swift in Sources */,
+				F3F0A2E02D6339760084013B /* Start Page Footer.swift in Sources */,
+				F3F0A2E12D6339760084013B /* Start Page.swift in Sources */,
 				F3A7CF062C8BBC3200413400 /* Server Card Context Menu.swift in Sources */,
 				F3D264352A66A926005C3777 /* Settings Button.swift in Sources */,
 				F389BB5B2A05B53200911EBF /* Server Card Parent.swift in Sources */,
@@ -5066,6 +5067,7 @@
 				F30089212B3B896E0051476C /* File Permissions View.swift in Sources */,
 				F389BB702A05B5FF00911EBF /* Cache VM.swift in Sources */,
 				F39CF3592A50C00C0077996D /* User View.swift in Sources */,
+				F3F0A2E22D63398B0084013B /* App Delegate.swift in Sources */,
 				F3E8B34F2CF485FB005D25F8 /* Console Message.swift in Sources */,
 				F389BB582A05B4F600911EBF /* Server List Grid.swift in Sources */,
 				F3F5BC972BF7668E00EB8FB1 /* Sensitivity Analyzer.swift in Sources */,
@@ -6282,7 +6284,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = default;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = accentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
-				CODE_SIGN_ENTITLEMENTS = "Clip Demo/Clip_DemoDebug.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Clip Demo/Clip Demo.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
@@ -6327,7 +6329,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = default;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = accentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
-				CODE_SIGN_ENTITLEMENTS = "Clip Demo/Clip_Demo.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Clip Demo/Clip Demo.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;

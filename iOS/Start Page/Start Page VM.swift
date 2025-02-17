@@ -19,11 +19,6 @@ final class StartPageVM {
     var sheetCloudKeys = false
     var sheetBrowsePlans = false
     
-#if os(iOS)
-    var showDemo = false
-    var timer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
-#endif
-    
     func fetchAccountDetails() {
         Keychain.save(
             key: "selectedApiKey",

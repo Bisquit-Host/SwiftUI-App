@@ -1756,6 +1756,7 @@
       }
     },
     "Demo" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -1772,6 +1773,7 @@
       }
     },
     "Demo Preview" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {

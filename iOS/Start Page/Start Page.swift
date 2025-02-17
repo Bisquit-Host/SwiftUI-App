@@ -11,26 +11,6 @@ struct StartPage: View {
     
     var body: some View {
         VStack {
-            Group {
-                if vm.showDemo {
-                    Button("Demo") {
-                        navState.navigate(.toServerList)
-                    }
-                    .padding()
-                    .background(.blue.gradient, in: .capsule)
-                    .transition(.movingParts.glare)
-                } else {
-                    Button("Demo") {
-                        
-                    }
-                    .disabled(true)
-                    .opacity(0)
-                }
-            }
-            .title2(.semibold)
-            .foregroundStyle(.white)
-            .frame(height: 200)
-            
             Spacer()
             
             Text("To activate the app, please enter a valid API-key")
@@ -76,11 +56,6 @@ struct StartPage: View {
         .onChange(of: vm.apiKey) { _, newValue in
             if newValue.count == 48 || newValue.count == 340 {
                 vm.fetchAccountDetails()
-            }
-        }
-        .onReceive(vm.timer) { _ in
-            withAnimation {
-                vm.showDemo.toggle()
             }
         }
         .onAppear {
