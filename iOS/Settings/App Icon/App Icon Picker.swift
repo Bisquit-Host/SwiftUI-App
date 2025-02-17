@@ -9,12 +9,7 @@ struct AppIconPicker: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
                 ForEach(Icon.allCases) { icon in
-                    AppIcon(icon, isSelected: store.currentIcon == icon)
-                        .onTapGesture {
-                            withAnimation(.easeInOut) {
-                                store.currentIcon = icon
-                            }
-                        }
+                    AppIconCard(icon, isSelected: store.currentIcon == icon)
                 }
             }
             .padding(5)

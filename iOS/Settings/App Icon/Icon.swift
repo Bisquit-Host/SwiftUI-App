@@ -1,16 +1,11 @@
 import SwiftUI
 
 enum Icon: String, Identifiable, CaseIterable {
+    case def, cool, love, streamer, coin, modern
+    
     var id: String {
         self.rawValue
     }
-    
-    case def,
-         cool,
-         love,
-         streamer,
-         coin,
-         modern
     
     var img: ImageResource {
         switch self {

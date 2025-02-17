@@ -745,7 +745,7 @@
 		F384D8BC2D5BE495000FC41D /* Crypto Price Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F384D8BB2D5BE495000FC41D /* Crypto Price Widget.intentdefinition */; };
 		F384D8BD2D5BE495000FC41D /* Crypto Price Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F384D8BB2D5BE495000FC41D /* Crypto Price Widget.intentdefinition */; };
 		F384D8BE2D5BE495000FC41D /* Crypto Price Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F384D8BB2D5BE495000FC41D /* Crypto Price Widget.intentdefinition */; };
-		F385824229D6215100BEEE1D /* App Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F385824129D6215100BEEE1D /* App Icon.swift */; };
+		F385824229D6215100BEEE1D /* App Icon Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F385824129D6215100BEEE1D /* App Icon Card.swift */; };
 		F385824629D6268200BEEE1D /* Currency Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F385824529D6268200BEEE1D /* Currency Button.swift */; };
 		F385824829D626FE00BEEE1D /* Biometry Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F385824729D626FE00BEEE1D /* Biometry Button.swift */; };
 		F385824A29D6313D00BEEE1D /* Wide List Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F385824929D6313D00BEEE1D /* Wide List Button.swift */; };
@@ -803,7 +803,7 @@
 		F389BB792A05B63C00911EBF /* Wide List Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F385824929D6313D00BEEE1D /* Wide List Button.swift */; };
 		F389BB7A2A05B64600911EBF /* App Icon Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EE629A25FBF00C4CC77 /* App Icon Picker.swift */; };
 		F389BB7B2A05B64E00911EBF /* Biometry Usage View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EE829A28D9D00C4CC77 /* Biometry Usage View.swift */; };
-		F389BB7C2A05B66B00911EBF /* App Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F385824129D6215100BEEE1D /* App Icon.swift */; };
+		F389BB7C2A05B66B00911EBF /* App Icon Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F385824129D6215100BEEE1D /* App Icon Card.swift */; };
 		F38C6E5E2A5475A500F2BDA6 /* Start Page VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA57B2959011B0006D126 /* Start Page VM.swift */; };
 		F38F9E092CE6CCF90033EFE3 /* Image Playground Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E082CE6CCF90033EFE3 /* Image Playground Button.swift */; };
 		F38F9E0C2CE6CCF90033EFE3 /* Image Playground Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E082CE6CCF90033EFE3 /* Image Playground Button.swift */; };
@@ -1263,7 +1263,7 @@
 		F3D295B52AF3A15D00ED43A0 /* Design Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7D87E29E83DEE00BCAFFE /* Design Settings.swift */; };
 		F3D295B62AF3A16300ED43A0 /* Icon Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7D87C29E83D6500BCAFFE /* Icon Settings.swift */; };
 		F3D295B72AF3A16600ED43A0 /* App Icon Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EE629A25FBF00C4CC77 /* App Icon Picker.swift */; };
-		F3D295B82AF3A16A00ED43A0 /* App Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F385824129D6215100BEEE1D /* App Icon.swift */; };
+		F3D295B82AF3A16A00ED43A0 /* App Icon Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F385824129D6215100BEEE1D /* App Icon Card.swift */; };
 		F3D295B92AF3A17000ED43A0 /* Wide List Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F385824929D6313D00BEEE1D /* Wide List Button.swift */; };
 		F3D295BA2AF3A17500ED43A0 /* Dev Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3878ECC2A1BCE5000AD8657 /* Dev Settings.swift */; };
 		F3D295BB2AF3A17900ED43A0 /* Biometry Usage View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EE829A28D9D00C4CC77 /* Biometry Usage View.swift */; };
@@ -1857,7 +1857,7 @@
 		F384D8C22D5BE4A6000FC41D /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = "nl.lproj/Crypto Price Widget.strings"; sourceTree = "<group>"; };
 		F384D8C42D5BE4A7000FC41D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = "ru.lproj/Crypto Price Widget.strings"; sourceTree = "<group>"; };
 		F384D8C62D5BE4A8000FC41D /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = "uk.lproj/Crypto Price Widget.strings"; sourceTree = "<group>"; };
-		F385824129D6215100BEEE1D /* App Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Icon.swift"; sourceTree = "<group>"; };
+		F385824129D6215100BEEE1D /* App Icon Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Icon Card.swift"; sourceTree = "<group>"; };
 		F385824529D6268200BEEE1D /* Currency Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Currency Button.swift"; sourceTree = "<group>"; };
 		F385824729D626FE00BEEE1D /* Biometry Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Biometry Button.swift"; sourceTree = "<group>"; };
 		F385824929D6313D00BEEE1D /* Wide List Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Wide List Button.swift"; sourceTree = "<group>"; };
@@ -1882,6 +1882,7 @@
 		F38F9E112CE7647D0033EFE3 /* Image Playground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image Playground.swift"; sourceTree = "<group>"; };
 		F38F9E272CEB33510033EFE3 /* QuickLook File VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuickLook File VM.swift"; sourceTree = "<group>"; };
 		F38F9E2B2CEB39D80033EFE3 /* Metadata List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Metadata List.swift"; sourceTree = "<group>"; };
+		F39052482D63644100341CD2 /* Clip Demo Debug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Clip Demo Debug.entitlements"; sourceTree = "<group>"; };
 		F3924EDA29A2291F00C4CC77 /* Language Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Language Button.swift"; sourceTree = "<group>"; };
 		F3924EDE29A2333F00C4CC77 /* Settings VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings VM.swift"; sourceTree = "<group>"; };
 		F3924EE629A25FBF00C4CC77 /* App Icon Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Icon Picker.swift"; sourceTree = "<group>"; };
@@ -2470,6 +2471,7 @@
 			children = (
 				F31BA5592958FFB00006D126 /* Info.plist */,
 				F31BA55A2958FFB00006D126 /* Clip Demo.entitlements */,
+				F39052482D63644100341CD2 /* Clip Demo Debug.entitlements */,
 			);
 			path = "Clip Demo";
 			sourceTree = "<group>";
@@ -3064,7 +3066,7 @@
 			children = (
 				F3D7D87C29E83D6500BCAFFE /* Icon Settings.swift */,
 				F3924EE629A25FBF00C4CC77 /* App Icon Picker.swift */,
-				F385824129D6215100BEEE1D /* App Icon.swift */,
+				F385824129D6215100BEEE1D /* App Icon Card.swift */,
 				F31461692D5A1F5E00547B6C /* Icon.swift */,
 			);
 			path = "App Icon";
@@ -4577,7 +4579,7 @@
 				F3AB4A7C2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
 				F3FA4DEA2A4CE82000547722 /* Account Settings.swift in Sources */,
 				F3E8415629FECB6800609DA3 /* Browser Sticker.swift in Sources */,
-				F385824229D6215100BEEE1D /* App Icon.swift in Sources */,
+				F385824229D6215100BEEE1D /* App Icon Card.swift in Sources */,
 				F36797782A3A55E1009F2788 /* Log List Parent.swift in Sources */,
 				F3202D4D2D56DC050030B3CC /* Prefetcher.swift in Sources */,
 				F31F32052D52DB950095DD19 /* Color Theme.swift in Sources */,
@@ -5031,7 +5033,7 @@
 				F389BB752A05B62600911EBF /* Design Settings.swift in Sources */,
 				F3E2BEDC2C1C6B9500B7A6D4 /* Cache List.swift in Sources */,
 				F3202C7D2D558B210030B3CC /* Spotlight Index.swift in Sources */,
-				F389BB7C2A05B66B00911EBF /* App Icon.swift in Sources */,
+				F389BB7C2A05B66B00911EBF /* App Icon Card.swift in Sources */,
 				F3A1235C2A6689FA008E3E20 /* User Email.swift in Sources */,
 				F380B3252BD7BA15009062E8 /* Image Picker.swift in Sources */,
 				F36D53102A05B6E7007324C6 /* Cloud Keys.swift in Sources */,
@@ -5226,7 +5228,7 @@
 				F3D295AD2AF3A0FC00ED43A0 /* Cache Expiration.swift in Sources */,
 				F3D295CC2AF3A26E00ED43A0 /* Panel View.swift in Sources */,
 				F335CA0A2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */,
-				F3D295B82AF3A16A00ED43A0 /* App Icon.swift in Sources */,
+				F3D295B82AF3A16A00ED43A0 /* App Icon Card.swift in Sources */,
 				F3D2959E2AF3A08300ED43A0 /* Video Player.swift in Sources */,
 				F3D295EC2AF3A43300ED43A0 /* Server Card.swift in Sources */,
 				F314616C2D5A1F5E00547B6C /* Icon.swift in Sources */,
@@ -6240,7 +6242,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS/Bisquit-Host Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.debug;
+				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSCameraUsageDescription = "App uses camera to create elements with dynamic color based on camera capture";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Access to contacts allows you to save new contacts directly from the app.";
@@ -6284,7 +6286,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = default;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = accentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
-				CODE_SIGN_ENTITLEMENTS = "Clip Demo/Clip Demo.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Clip Demo/Clip Demo Debug.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
@@ -6293,7 +6295,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Clip Demo/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.debug;
+				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Access to contacts allows you to save new contacts directly from the app.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Required to view your location on the map";
@@ -6307,7 +6309,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 4.1.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.Clip";
+				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug.Clip";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
@@ -6338,7 +6340,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Clip Demo/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.debug;
+				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Access to contacts allows you to save new contacts directly from the app.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Required to view your location on the map";
