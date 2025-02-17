@@ -21,16 +21,16 @@ struct TextFile: View {
         @Bindable var vm = vm
         
         VStack {
-#if os(iOS)
-            TextEditor(text: $vm.text)
-                .disableAutocorrection(true)
-                .autocapitalization(.none)
-#elseif os(watchOS)
+#if os(watchOS)
             ScrollView {
                 Text(vm.text)
             }
 #elseif os(tvOS)
             Text(vm.text)
+#else
+            TextEditor(text: $vm.text)
+                .disableAutocorrection(true)
+                .autocapitalization(.none)
 #endif
         }
         .navigationTitle(name)
