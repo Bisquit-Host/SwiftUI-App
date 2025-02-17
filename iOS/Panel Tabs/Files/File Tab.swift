@@ -35,7 +35,7 @@ struct FileTab: View {
             }
             
             Section {
-                ForEach(vm.filteredFiles, id: \.name) { file in
+                ForEach(vm.filteredFiles) { file in
                     FileView(id, file: file, at: root + "/")
                 }
                 .onDelete(perform: deleteItem)
