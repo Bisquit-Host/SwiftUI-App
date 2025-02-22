@@ -1,3 +1,6 @@
 # Bisquit.Host
 
-Хрыч любит есть пыжмени и блинчики со сгущенкой
+Features:
+- Interactive widgets and Shortcuts with dynamic configuration
+- Live Activity
+- App Clip & iMessage extension
