@@ -93,6 +93,17 @@
         }
       }
     },
+    "%@ • %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ • %2$@"
+          }
+        }
+      },
+      "shouldTranslate" : false
+    },
     "%@ Log out" : {
       "localizations" : {
         "ru" : {
@@ -949,6 +960,9 @@
     "Clear" : {
 
     },
+    "Clear all cookies" : {
+
+    },
     "Clear entire cache" : {
       "localizations" : {
         "ru" : {
@@ -1742,6 +1756,7 @@
       }
     },
     "Demo" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -1758,6 +1773,7 @@
       }
     },
     "Demo Preview" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -2333,6 +2349,28 @@
         }
       }
     },
+    "Follow the link, log in to your account and go to profile settings" : {
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volg de link, log in op uw account en ga naar de profielinstellingen"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перейдя по ссылке, выполните вход в свой аккаунт и откройте настройки профиля"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перейдя по ссылке, выполните вход в свой аккаунт и откройте настройки профиля"
+          }
+        }
+      }
+    },
     "Font Size: %lld" : {
       "localizations" : {
         "nl" : {
@@ -2420,6 +2458,9 @@
     "GitHub" : {
       "shouldTranslate" : false
     },
+    "Go to settings" : {
+
+    },
     "Grant all permissions" : {
       "localizations" : {
         "ru" : {
@@ -2436,90 +2477,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Компоновка сетки"
-          }
-        }
-      }
-    },
-    "Guide.Step1" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Follow the link, log in to your account and go to profile settings"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Volg de link, log in op uw account en ga naar de profielinstellingen"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Перейдя по ссылке, выполните вход в свой аккаунт и откройте настройки профиля"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Перейдя по ссылке, выполните вход в свой аккаунт и откройте настройки профиля"
-          }
-        }
-      }
-    },
-    "Guide.Step2" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Open the API section, enter any name for the API-Key and click the Create button. Then save your key to the clipboard"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Open het API-gedeelte, voer een willekeurige naam in voor de API-sleutel en klik op de knop 'Aanmaken'. Sla vervolgens uw sleutel op naar het klembord"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Откройте раздел «API», введите любое название для API-ключа и нажмите кнопку «Создать». Затем сохраните ваш ключ в буфер обмена"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Откройте раздел «API», введите любое название для API-ключа и нажмите кнопку «Создать». Затем сохраните ваш ключ в буфер обмена"
-          }
-        }
-      }
-    },
-    "Guide.Step3" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "To avoid input errors, paste the API-key from the clipboard"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Om invoerfouten te vermijden, plak de API-sleutel vanuit het klembord"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Во избежание ошибок ввода вставьте API-ключ из буфера обмена"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Во избежание ошибок ввода вставьте API-ключ из буфера обмена"
           }
         }
       }
@@ -3071,6 +3028,9 @@
           }
         }
       }
+    },
+    "Leaderboards" : {
+
     },
     "Learn more..." : {
       "localizations" : {
@@ -3647,6 +3607,9 @@
         }
       }
     },
+    "No Internet Connection" : {
+
+    },
     "No metadata available" : {
       "localizations" : {
         "ru" : {
@@ -3749,6 +3712,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Открыть в Safari"
+          }
+        }
+      }
+    },
+    "Open the API section, enter any name for the API-Key and click the Create button. Then save your key to the clipboard" : {
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open het API-gedeelte, voer een willekeurige naam in voor de API-sleutel en klik op de knop 'Aanmaken'. Sla vervolgens uw sleutel op naar het klembord"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Откройте раздел «API», введите любое название для API-ключа и нажмите кнопку «Создать». Затем сохраните ваш ключ в буфер обмена"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Откройте раздел «API», введите любое название для API-ключа и нажмите кнопку «Создать». Затем сохраните ваш ключ в буфер обмена"
           }
         }
       }
@@ -4713,17 +4698,6 @@
         }
       }
     },
-    "Smile" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Улыбнись"
-          }
-        }
-      }
-    },
     "Soon there will be an art here as well" : {
       "localizations" : {
         "nl" : {
@@ -5152,6 +5126,28 @@
         }
       }
     },
+    "To avoid input errors, paste the API-key from the clipboard" : {
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Om invoerfouten te vermijden, plak de API-sleutel vanuit het klembord"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Во избежание ошибок ввода вставьте API-ключ из буфера обмена"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Во избежание ошибок ввода вставьте API-ключ из буфера обмена"
+          }
+        }
+      }
+    },
     "Total file allocated size" : {
       "localizations" : {
         "nl" : {
@@ -5504,6 +5500,9 @@
     "Use header" : {
 
     },
+    "Useful links" : {
+
+    },
     "Username" : {
       "localizations" : {
         "nl" : {
@@ -5585,6 +5584,9 @@
 
     },
     "View" : {
+
+    },
+    "View all allocations" : {
 
     },
     "View resource usage of your servers" : {
@@ -5722,6 +5724,9 @@
           }
         }
       }
+    },
+    "Your iPhone is not connected to the internet. To connect, turn off Airplane Mode or connect to a Wi-Fi network." : {
+
     },
     "Деревня Пыжи\n(Кировская обл.)" : {
       "localizations" : {

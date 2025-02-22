@@ -100,8 +100,7 @@ final class BackupVM {
         backupRestoreAPI(id, uuid: uuid, truncate: truncate) { result in
             switch result {
             case .success:
-                #warning("Present an alert (AlertKit)")
-                print("Restored")
+                SystemAlert.restored()
                 
             case .failure(let error):
                 SystemAlert.error(error)

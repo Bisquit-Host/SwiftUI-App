@@ -36,11 +36,11 @@ extension ServerListVM {
         
         let containers = try store.containers(matching: nil)
         
-        let bisqContainer = containers.first { container in
+        let bisqContainer = containers.first {
 #if DEBUG
-            container.name == "Bisquit.debug"
+            $0.name == "Bisquit.debug"
 #else
-            container.name == "Bisquit.Host"
+            $0.name == "Bisquit.Host"
 #endif
         }
         

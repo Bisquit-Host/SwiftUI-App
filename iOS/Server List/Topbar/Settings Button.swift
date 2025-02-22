@@ -17,7 +17,7 @@ struct SettingsButton: View {
                 TopbarGridButton()
             }
             
-            MenuButton("Switch Account", icon: "key.icloud") {
+            MenuButton("Switch Account", icon: "arrow.trianglehead.2.clockwise.rotate.90") {
                 vm.sheetKeyStorage = true
             }
             
@@ -33,7 +33,7 @@ struct SettingsButton: View {
             
             MenuButton("Log out", role: .destructive, icon: "rectangle.portrait.and.arrow.right") {
                 main {
-                    navState.path = NavigationPath()
+                    navState.clear()
                     store.isApiKeyValid = false
                     Keychain.delete(key: "selectedApiKey")
                 }

@@ -17,20 +17,41 @@ struct SuspendedServerCard: View {
     }
     
     var body: some View {
-        HStack {
-            Text(name)
-                .bold()
-                .minimumScaleFactor(0.5)
-                .lineLimit(1)
-                .scaledToFit()
+        switch store.designCode {
+        case 0:
+            VStack(spacing: 10) {
+                Text(name)
+                    .bold()
+                    .minimumScaleFactor(0.5)
+                    .lineLimit(1)
+                    .scaledToFit()
+                
+                Image(systemName: "snowflake")
+                    .fontSize(50)
+                    .symbolEffect(.pulse, options: .repeating)
+            }
+            .frame(height: 150)
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal, 10)
+            .background(.ultraThinMaterial, in: .rect(cornerRadius: rounding))
             
-            Image(systemName: "snowflake")
-                .largeTitle()
-                .symbolEffect(.pulse, options: .repeating)
+        default:
+            HStack {
+                Text(name)
+                    .bold()
+                    .minimumScaleFactor(0.5)
+                    .lineLimit(1)
+                    .scaledToFit()
+                
+                Image(systemName: "snowflake")
+                    .largeTitle()
+                    .symbolEffect(.pulse, options: .repeating)
+            }
+            .frame(height: 90)
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal, 10)
+            .background(.ultraThinMaterial, in: .rect(cornerRadius: rounding))
         }
-        .frame(maxWidth: 600, maxHeight: 200)
-        .padding(10)
-        .background(.ultraThinMaterial, in: .rect(cornerRadius: rounding))
     }
 }
 

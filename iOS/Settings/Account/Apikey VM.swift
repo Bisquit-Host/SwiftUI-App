@@ -4,15 +4,14 @@ import PteroNet
 @Observable
 final class ApikeyVM {
     var keys: [ApiKeyListData] = []
+    //    var showProgress = false
     
     func fetchKeys() {
         apiKeyListAPI { result in
             switch result {
             case .success(let model):
                 if let model {
-                    withAnimation {
-                        self.keys = model.data
-                    }
+                    self.keys = model.data
                 }
                 
             case .failure(let error):
@@ -21,7 +20,7 @@ final class ApikeyVM {
         }
     }
     
-    func create(_ identifier: String) {
+    func create(_ identifier: String, onSuccess: @escaping () -> Void) {
         apiKeyCreateAPI(identifier) { result in
             switch result {
             case .success(let model):
@@ -29,12 +28,16 @@ final class ApikeyVM {
                     let id = model.attributes.id
                     
                     if let meta = model.meta {
-                        UIPasteboard.general.string = id + meta.token
-                        
-                        SystemAlert.copied()
+                        main {
+                            UIPasteboard.general.string = id + meta.token
+                            
+                            SystemAlert.copied()
+                        }
                     }
                     
                     self.fetchKeys()
+                    
+                    onSuccess()
                 }
                 
             case .failure(let error):
@@ -44,8 +47,16 @@ final class ApikeyVM {
     }
     
     func delete(_ identifier: String) {
-        apiKeyDeleteAPI(identifier) { _ in
+        apiKeyDeleteAPI(identifier) { result in
+            switch result {
+            case .success:
+                break
+                
+            case .failure(let error):
+                SystemAlert.error(error)
+            }
             
+            self.fetchKeys()
         }
     }
 }

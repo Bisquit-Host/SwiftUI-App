@@ -11,28 +11,6 @@ struct StartPage: View {
     
     var body: some View {
         VStack {
-            Group {
-                if vm.showDemo {
-                    Button("Demo") {
-                        navState.navigate(.toServerList)
-                    }
-                    .padding()
-                    .background(.blue.gradient, in: .capsule)
-                    .transition(.movingParts.glare)
-                } else {
-                    Button("Demo") {
-                        
-                    }
-                    .disabled(true)
-                    .opacity(0)
-                }
-            }
-            .title2(.semibold)
-            .foregroundStyle(.white)
-            .frame(height: 200)
-            
-            Spacer()
-            
             Text("To activate the app, please enter a valid API-key")
                 .title(.semibold)
                 .lineLimit(2)
@@ -43,7 +21,6 @@ struct StartPage: View {
             
             HStack {
                 TextField("API-key", text: $vm.apiKey)
-                    .unbold()
                     .secondary()
                     .autocorrectionDisabled()
                     .textFieldStyle(.roundedBorder)
@@ -64,26 +41,27 @@ struct StartPage: View {
             }
             .padding(10)
             
-            Spacer()
-            
-            StartPageFooter()
-                .environment(vm)
+            Button("Where to find the API-key?") {
+                vm.sheetGuide = true
+            }
+            .footnote(.semibold)
+            .foregroundStyle(.white.secondary)
         }
+        .frame(maxHeight: .infinity)
         .ignoresSafeArea()
         .navigationBarBackButtonHidden()
         .background(Color(0xe3a65e))
         .statusBarHidden()
+        .overlay(alignment: .bottom) {
+            StartPageFooter()
+                .environment(vm)
+        }
         .onChange(of: vm.apiKey) { _, newValue in
             if newValue.count == 48 || newValue.count == 340 {
                 vm.fetchAccountDetails()
             }
         }
-        .onReceive(vm.timer) { _ in
-            withAnimation {
-                vm.showDemo.toggle()
-            }
-        }
-        .onAppear {
+        .task {
             if !keys.isEmpty {
                 delay(0.5) {
                     vm.sheetCloudKeys = true
@@ -112,9 +90,9 @@ struct StartPage: View {
             }
             
             Button("Remove this key", role: .destructive) {
-                let key = keys.first(where: {
+                let key = keys.first {
                     $0.key == vm.apiKey
-                })
+                }
                 
                 if let key {
                     modelContext.delete(key)
@@ -125,8 +103,8 @@ struct StartPage: View {
         } message: {
             Text(vm.errorDescription)
         }
-        .sheet($vm.sheetSupport) {
-            Support()
+        .sheet($vm.sheetGuide) {
+            Guide()
         }
         .sheet($vm.sheetBrowsePlans) {
             BrowserParent()

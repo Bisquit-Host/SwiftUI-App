@@ -28,6 +28,7 @@ struct SheetRemoteFile: View {
                 Button("Cancel") {
                     dismiss()
                 }
+                .foregroundStyle(.red)
                 
                 Button("Confirm") {
                     vm.pullRemoteFile(remoteFile, dir: root) {

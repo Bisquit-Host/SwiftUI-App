@@ -16,37 +16,31 @@ struct InfoTabAllocation: View {
     @State private var sheetAllocations = false
     
     var body: some View {
-        Button {
-            sheetAllocations = true
-        } label: {
-            HStack {
-                Text(ip)
-                    .monospaced()
+        Menu {
+            Button {
+                UIPasteboard.general.string = ip
                 
-                Spacer()
-                
-                HStack(spacing: 16) {
-                    SFButton("doc.on.doc") {
-                        UIPasteboard.general.string = ip
-                        
-                        SystemAlert.copied()
-                        trigger.toggle()
-                    }
-                    .changeEffect(
-                        .spray(origin: .bottom) {
-                            Image(systemName: "doc.on.doc")
-                                .foregroundStyle(.white)
-                                .footnote()
-                        },
-                        value: trigger
-                    )
-                    
-                    ShareLink(item: ip) {
-                        Image(systemName: "square.and.arrow.up")
-                    }
-                }
-                .foregroundStyle(.primary)
+                SystemAlert.copied()
+                trigger.toggle()
+            } label: {
+                Label("Copy", systemImage: "doc.on.doc")
             }
+            
+            ShareLink(item: ip)
+            
+            Section {
+                Button("View all allocations") {
+                    sheetAllocations = true
+                }
+            }
+        } label: {
+            Text(ip)
+                .monospaced()
+                .frame(height: 25)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .foregroundStyle(.foreground)
+                .padding()
+                .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
         }
         .sheet($sheetAllocations) {
             AllocationListParent(server)
@@ -56,9 +50,9 @@ struct InfoTabAllocation: View {
     private func getDefaultIp(_ server: ServerAttributes) -> String {
         let allocations = server.relationships.allocations.data
         
-        let defaultAllocation = allocations.first(where: {
+        let defaultAllocation = allocations.first {
             $0.attributes.isDefault
-        })
+        }
         
         let attributes = defaultAllocation?.attributes
         

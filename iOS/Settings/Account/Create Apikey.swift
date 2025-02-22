@@ -6,7 +6,6 @@ struct CreateApikey: View {
     @Environment(\.dismiss) private var dismiss
     
     @State private var text = ""
-    @State private var showProgress = false
     @FocusState private var focus
     
     var body: some View {
@@ -22,32 +21,24 @@ struct CreateApikey: View {
                 }
                 
                 Button {
-                    withAnimation {
-                        showProgress = true
+                    vm.create(text) {
+                        dismiss()
                     }
-                    
-                    vm.create(text)
                 } label: {
                     HStack {
                         Text("Create and copy")
                         
                         Spacer()
                         
-                        if showProgress {
-                            ProgressView()
-                        } else {
-                            Image(systemName: "plus")
-                        }
+                        Image(systemName: "plus")
                     }
                     .foregroundStyle(text.isEmpty ? Color.secondary : .green)
-                    .semibold()
                 }
                 .disabled(text.isEmpty)
             }
             .navigationTitle("Create API-key")
             .navigationBarTitleDisplayMode(.inline)
         }
-        .presentationDetents([.medium])
         .onAppear {
             focus = true
         }

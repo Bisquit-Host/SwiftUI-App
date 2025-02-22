@@ -27,11 +27,11 @@ struct ServerCardParent: View {
                 }
             }
         }
+        .hoverEffect()
+        .safariCover($showSafari, url: serverUrl)
         .onDrag {
             NSItemProvider(contentsOf: URL(string: serverUrl))!
         }
-        .hoverEffect()
-        .safariCover($showSafari, url: serverUrl)
         .contextMenu {
             ServerCardContextMenu(server, $showSafari, $confirmKill)
         }

@@ -16,13 +16,14 @@ struct Settings: View {
             Button {
                 sheetKeyStorage = true
             } label: {
-                Label("Switch Account", systemImage: "key.icloud.fill")
+                Label("Switch Account", systemImage: "arrow.trianglehead.2.clockwise.rotate.90")
             }
             
             ListLink("API-key Creation") {
                 Guide()
             }
             
+            #warning("tvOS: Map")
             //                NavigationLink("Map") {
             //                    MapView()
             //                }
@@ -35,7 +36,7 @@ struct Settings: View {
                 Button(role: .destructive) {
                     main {
                         dismiss()
-                        navState.path = NavigationPath()
+                        navState.clear()
                         store.isApiKeyValid = false
                         Keychain.delete(key: "selectedApiKey")
                     }

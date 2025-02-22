@@ -24,20 +24,24 @@ struct CloudKeyCard: View {
     
     var body: some View {
         Button {
+            clearAllCookies()
             Keychain.save(key: "selectedApiKey", value: key.key)
             selectedKey = key.key
             validate()
         } label: {
             HStack {
                 VStack(alignment: .leading) {
-                    if !key.name.isEmpty {
+                    if key.name.isEmpty {
+                        Text(showFirstEightLetters(key.key))
+                            .headline(.semibold)
+                    } else {
                         Text(key.name)
                             .headline(.semibold)
+                        
+                        Text(showFirstEightLetters(key.key))
+                            .footnote()
+                            .secondary()
                     }
-                    
-                    Text(showFirstEightLetters(key.key))
-                        .footnote()
-                        .secondary()
                 }
 #if !os(watchOS)
                 Spacer()

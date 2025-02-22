@@ -35,12 +35,10 @@ struct FileTab: View {
             }
             
             Section {
-                ForEach(vm.filteredFiles, id: \.name) { file in
+                ForEach(vm.filteredFiles) { file in
                     FileView(id, file: file, at: root + "/")
                 }
-                .onDelete { offsets in
-                    deleteItem(offsets)
-                }
+                .onDelete(perform: deleteItem)
             } header: {
                 HStack {
                     FolderPath(root)

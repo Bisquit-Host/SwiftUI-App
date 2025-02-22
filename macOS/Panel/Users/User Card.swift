@@ -65,8 +65,6 @@ struct UserCard: View {
 
 #Preview {
     List {
-        UserCard(
-            sampleJSON(.userAttributes)
-        )
+        UserCard(sampleJSON(.userAttributes))
     }
 }

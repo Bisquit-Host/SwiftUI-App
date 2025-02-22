@@ -41,7 +41,7 @@ final class SubdomainVM {
         do {
             let _ = try await URLSession.shared.data(for: request)
         } catch {
-            print("Error:", error)
+            SystemAlert.error(error)
         }
     }
     

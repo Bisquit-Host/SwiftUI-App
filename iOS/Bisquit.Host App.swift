@@ -23,7 +23,6 @@ struct BisquitHostApp: App {
     
     @StateObject private var store = ValueStore()
     private var navState = NavState()
-    private var network = NetworkVM()
     
     private let container: ModelContainer
     
@@ -52,9 +51,9 @@ struct BisquitHostApp: App {
             print("Game Center authenticated")
         }
 #else
-        GKLocalPlayer.local.authenticateHandler = { vc, error in
+        GKLocalPlayer.local.authenticateHandler = { _, error in
             guard error == nil else {
-                print(error?.localizedDescription ?? "")
+                print(error?.localizedDescription ?? "Game Center authentication failed")
                 return
             }
             
@@ -76,15 +75,6 @@ struct BisquitHostApp: App {
         .defaultAppStorage(.init(suiteName: "group.Bisquit-host")!)
 #if os(macOS)
         .windowStyle(.hiddenTitleBar)
-#endif
-        
-#if canImport(AlertKit)
-        .onChange(of: network.isNetworkSatisfied) { _, status in
-            guard let status, status else {
-                SystemAlert.networkError()
-                return
-            }
-        }
 #endif
         
 #if os(visionOS)

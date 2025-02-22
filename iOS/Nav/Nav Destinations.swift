@@ -1,7 +1,4 @@
 enum NavDestinations: Hashable {
-    //#if os(watchOS)
-    //    case toServerList(selectedServer: Int)
-    
     case toServerList
     
 #if !os(macOS)

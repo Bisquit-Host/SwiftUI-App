@@ -1,6 +1,6 @@
 import ScrechKit
 
-struct RegularGauge: View {
+struct GaugeRegular: View {
     private let name: StatsType
     private var value, limit: Double
     private var isRedacted: Bool
@@ -66,5 +66,5 @@ struct RegularGauge: View {
 }
 
 #Preview {
-    RegularGauge(value: 0.5, limit: 1)
+    GaugeRegular(value: 0.5, limit: 1)
 }

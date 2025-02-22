@@ -5,17 +5,10 @@ struct ServerListTopbar: View {
     @Environment(NavState.self) private var navState
     @EnvironmentObject private var store: ValueStore
     
-    //    @State private var alertNetwork = false
     @State private var isRotating = false
     
     var body: some View {
         HStack {
-            SFButton("wifi") {
-                //alertNetwork = true
-            }
-            .foregroundStyle(.green)
-            .symbolEffect(.variableColor.iterative)
-            
             SFButton("arrow.triangle.2.circlepath") {
                 vm.fetchServers(store.adminServerList)
             }

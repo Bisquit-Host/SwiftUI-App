@@ -5,5 +5,5 @@ struct ConfigurationAppIntent: WidgetConfigurationIntent {
     static var description = IntentDescription("This is an example widget")
     
     @Parameter(title: "Server id", optionsProvider: ServerOptionsProvider())
-    var id: String
+    var id: String?
 }

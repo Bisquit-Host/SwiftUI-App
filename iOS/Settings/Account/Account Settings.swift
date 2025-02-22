@@ -24,8 +24,10 @@ struct AccountSettings: View {
             }
             .foregroundStyle(.primary)
             .sheet($sheetApiKeys) {
-                ApikeyList()
-                    .environment(vm)
+                NavigationView {
+                    ApikeyList()
+                }
+                .environment(vm)
             }
         }
         .listRowBackground(store.transparentList ? .clear : Color.list)

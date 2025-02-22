@@ -30,10 +30,6 @@ struct ServerCard: View {
         server.limits
     }
     
-    private var name: String {
-        server.name.replacing(" ", with: "")
-    }
-    
     var body: some View {
         VStack {
             switch store.designCode {
@@ -60,10 +56,12 @@ struct ServerCard: View {
                 .background(backgroundColor, in: .rect(cornerRadius: rounding))
                 
             case 1:
-                // Line
+                // Wide
                 HStack {
-                    VStack {
+                    VStack(alignment: .leading) {
                         serverName
+                        
+                        description
                         
                         diskGauge
                     }
@@ -77,7 +75,7 @@ struct ServerCard: View {
                         .matchedEffect("RAM_CPU", in: animation)
                     }
                 }
-                .frame(height: 90)
+                .frame(height: 100)
                 .padding(.horizontal)
                 .background(.ultraThinMaterial, in: .rect(cornerRadius: rounding))
                 .background(backgroundColor, in: .rect(cornerRadius: rounding))
@@ -95,18 +93,27 @@ struct ServerCard: View {
     }
     
     private var serverName: some View {
-        ServerName(name, color: vm.stateColor)
+        ServerName(server.name, color: vm.stateColor)
             .matchedEffect("name", in: animation)
     }
     
+    private var description: some View {
+        Text(server.description)
+            .footnote()
+            .secondary()
+            .foregroundStyle(.foreground)
+            .lineLimit(1)
+            .matchedEffect("description", in: animation)
+    }
+    
     private var diskGauge: some View {
-        DiskGauge(vm.diskUsage, limit: limits.disk)
-            .padding(.top, 4)
+        GaugeDisk(vm.diskUsage, limit: limits.disk)
+            .padding(.top, 2)
             .matchedEffect("disk", in: animation)
     }
     
     private var cpuGauge: some View {
-        RegularGauge(
+        GaugeRegular(
             name: .cpu,
             value: vm.cpuUsage,
             limit: limits.cpu,
@@ -116,7 +123,7 @@ struct ServerCard: View {
     }
     
     private var ramGauge: some View {
-        RegularGauge(
+        GaugeRegular(
             name: .ram,
             value: vm.ramUsage,
             limit: limits.memory,
@@ -128,9 +135,7 @@ struct ServerCard: View {
 
 #Preview {
     LazyVGrid(
-        columns: [
-            GridItem(.adaptive(minimum: 160, maximum: 400))
-        ],
+        columns: [GridItem(.adaptive(minimum: 160, maximum: 400))],
         spacing: 8
     ) {
         ServerCard(sampleJSON(.serverListAttributes))

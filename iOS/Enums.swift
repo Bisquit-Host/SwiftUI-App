@@ -1,7 +1,5 @@
 enum StatsType: String {
-    case cpu,
-         ram,
-         ssd
+    case cpu, ram, ssd
 }
 
 enum ServerState: String {

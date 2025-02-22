@@ -8,9 +8,9 @@ struct Guide: View {
     @Environment(\.colorScheme) private var colorScheme
     
     private let steps = [
-        "Guide.Step1",
-        "Guide.Step2",
-        "Guide.Step3"
+        "Follow the link, log in to your account and go to profile settings",
+        "Open the API section, enter any name for the API-Key and click the Create button. Then save your key to the clipboard",
+        "To avoid input errors, paste the API-key from the clipboard"
     ]
     
     private let images = [

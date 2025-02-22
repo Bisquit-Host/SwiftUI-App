@@ -15,14 +15,9 @@ final class StartPageVM {
     var isActive = false
     var trigger = false
     
-    var sheetSupport = false
+    var sheetGuide = false
     var sheetCloudKeys = false
     var sheetBrowsePlans = false
-    
-#if os(iOS)
-    var showDemo = false
-    var timer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
-#endif
     
     func fetchAccountDetails() {
         Keychain.save(

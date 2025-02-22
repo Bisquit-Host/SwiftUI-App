@@ -1,4 +1,5 @@
 import SwiftUI
+import PteroNet
 import TipKit
 
 #if canImport(ContactProvider)
@@ -30,6 +31,12 @@ struct DebugSettings: View {
                 
                 Button("Enable Extension") {
                     enableExtension()
+                }
+            }
+            
+            Section {
+                Button("Clear all cookies") {
+                    clearAllCookies()
                 }
             }
         }

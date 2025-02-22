@@ -29,7 +29,7 @@ struct AppSettings: View {
             Section("General") {
                 Button("Log out", role: .destructive) {
                     main {
-                        navState.path = NavigationPath()
+                        navState.clear()
                         store.isApiKeyValid = false
                         Keychain.delete(key: "selectedApiKey")
                     }

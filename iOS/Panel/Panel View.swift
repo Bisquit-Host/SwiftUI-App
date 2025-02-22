@@ -24,11 +24,17 @@ struct PanelView: View {
         self.subdomainVM = SubdomainVM(id)
     }
     
+    @State private var sheetSettings = false
+    @State private var isRotating = false
+    
     var body: some View {
         TabView(selection: $store.lastTabPanel) {
             if let server = vm.server {
                 InfoTab(server)
                     .tab(.info)
+                    .sheet($sheetSettings) {
+                        PanelSettingsParent(server)
+                    }
                 
                 ConsoleTab(id)
                     .tab(.console)
@@ -59,6 +65,26 @@ struct PanelView: View {
         }
         .onDisappear {
             vm.disconnectWebSocket()
+        }
+        .toolbar {
+            Button {
+                sheetSettings = true
+            } label: {
+                Image(systemName: "gearshape")
+                    .foregroundStyle(.accent.gradient)
+                    .semibold()
+                    .rotate(isRotating ? 360 : 0)
+                    .animation(
+                        .linear(duration: 60)
+                        .repeatForever(autoreverses: false),
+                        value: isRotating
+                    )
+                    .onAppear {
+                        isRotating.toggle()
+                    }
+            }
+            .keyboardShortcut("S")
+            .animation(.default, value: store.lastTabPanel)
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
             vm.disconnectWebSocket()

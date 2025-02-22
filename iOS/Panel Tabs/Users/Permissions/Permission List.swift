@@ -142,6 +142,8 @@ struct PermissionCard: View {
 }
 
 #Preview {
-    PermissionListView(.constant(sampleJSON(.userAttributes)))
+    @Previewable @State var user: UserAttributes = sampleJSON(.userAttributes)
+    
+    PermissionListView($user)
         .environment(UsersVM(""))
 }

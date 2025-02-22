@@ -28,7 +28,7 @@ struct SettingsButton: View {
             
             //            MenuButton("Log out", role: .destructive, icon: "rectangle.portrait.and.arrow.right") {
             //                main {
-            //                    navState.path = NavigationPath()
+            //                    navState.clear()
             //                    store.isApiKeyValid = false
             //                    Keychain.delete(key: "selectedApiKey")
             //                }

@@ -11,4 +11,8 @@ final class NavState {
     func dismiss() {
         path.removeLast()
     }
+    
+    func clear() {
+        path = .init()
+    }
 }

@@ -19,9 +19,7 @@ struct FileTab: View {
             ForEach(vm.filteredFiles, id: \.name) { file in
                 FileView(id, file: file, path: root)
             }
-            .onDelete { offsets in
-                deleteItem(offsets)
-            }
+            .onDelete(perform: deleteItem)
         }
         .navigationTitle("Files")
         .ignoresSafeArea(edges: .bottom)

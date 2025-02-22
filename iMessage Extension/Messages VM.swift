@@ -32,8 +32,6 @@ final class MessagesVM {
         layout.trailingSubcaption = "22"
         message.layout = layout
         
-        conversation.insert(message)
-        
         conversation.insert(message) { error in
             if let error {
                 print("Error sending message:", error.localizedDescription)

@@ -14,7 +14,7 @@ struct AppSettings: View {
             
             Button("Log out") {
                 main {
-                    navState.path = NavigationPath()
+                    navState.clear()
                     store.isApiKeyValid = false
                     Keychain.delete(key: "selectedApiKey")
                 }

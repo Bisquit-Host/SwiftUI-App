@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct SubdomainCard: View {
     @Environment(SubdomainVM.self) private var vm
@@ -17,11 +17,17 @@ struct SubdomainCard: View {
         VStack(alignment: .leading) {
             Text(fullDomain)
             
-            Text(subdomain.createdAt)
+            let timeDifference = Text(timeSinceISO(subdomain.createdAt))
+                .foregroundStyle(.primary)
+            
+            Text("Created: \(timeDifference)")
                 .footnote()
                 .secondary()
+                .minimumScaleFactor(0.5)
+                .lineLimit(1)
         }
         .navigationTitle("Subdomains")
+        .foregroundStyle(.foreground)
         .contextMenu {
 #if !os(tvOS)
             Button {

@@ -3,9 +3,9 @@ import SwiftUI
 struct UserList: View {
     @Environment(UsersVM.self) private var vm
     
-    @State private var sheetInvitation = false
-    
     var body: some View {
+        @Bindable var vm = vm
+        
         List {
             Section {
                 ForEach(vm.users, id: \.uuid) { user in
@@ -14,8 +14,10 @@ struct UserList: View {
                 .onDelete(perform: delete)
             }
             
-            Button("New user") {
-                sheetInvitation = true
+            Button {
+                vm.sheetInvitation = true
+            } label: {
+                Label("New user", systemImage: "person.badge.plus")
             }
         }
         .environment(vm)
@@ -28,7 +30,7 @@ struct UserList: View {
         .refreshable {
             vm.fetchUsers()
         }
-        .sheet($sheetInvitation) {
+        .sheet($vm.sheetInvitation) {
             UserInvitationView()
         }
     }

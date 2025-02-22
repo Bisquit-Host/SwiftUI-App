@@ -7,9 +7,6 @@ struct FileSearch: View {
         _fieldSearch = fieldSearch
     }
     
-    #warning("TODO: Implement focus state")
-    //    @FocusState private var focusState
-    
     var body: some View {
         HStack {
             Image(systemName: "magnifyingglass")
@@ -18,7 +15,6 @@ struct FileSearch: View {
             
             TextField("Search", text: $fieldSearch)
                 .autocorrectionDisabled()
-            //                .focused($focusState)
         }
     }
 }

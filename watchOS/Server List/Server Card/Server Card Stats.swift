@@ -12,21 +12,23 @@ struct ServerCardStats: View {
     
     var body: some View {
         HStack {
-            RegularGauge(
-                name: .cpu,
-                value: vm.cpuUsage,
-                limit: limits.cpu,
-                isRedacted: vm.isLoading
-            )
+            if vm.stateColor != .red {
+                GaugeRegular(
+                    name: .cpu,
+                    value: vm.cpuUsage,
+                    limit: limits.cpu,
+                    isRedacted: vm.isLoading
+                )
+                
+                GaugeRegular(
+                    name: .ram,
+                    value: vm.ramUsage,
+                    limit: limits.memory,
+                    isRedacted: vm.isLoading
+                )
+            }
             
-            RegularGauge(
-                name: .ram,
-                value: vm.ramUsage,
-                limit: limits.memory,
-                isRedacted: vm.isLoading
-            )
-            
-            RegularGauge(
+            GaugeRegular(
                 name: .ssd,
                 value: vm.diskUsage,
                 limit: limits.disk,
