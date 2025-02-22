@@ -9,6 +9,7 @@ struct Settings: View {
     @Environment(\.dismiss) private var dismiss
     
     @State private var sheetKeyStorage = false
+    @State private var sheetGuide = false
     @State private var apiKey = Keychain.load(key: "selectedApiKey") ?? ""
     
     var body: some View {
@@ -19,11 +20,11 @@ struct Settings: View {
                 Label("Switch Account", systemImage: "arrow.trianglehead.2.clockwise.rotate.90")
             }
             
-            ListLink("API-key Creation") {
-                Guide()
+            Button("API-key Creation") {
+                sheetGuide = true
             }
             
-            #warning("tvOS: Map")
+#warning("tvOS: Map")
             //                NavigationLink("Map") {
             //                    MapView()
             //                }
@@ -51,6 +52,9 @@ struct Settings: View {
         .listStyle(.grouped)
         .sheet($sheetKeyStorage) {
             CloudKeys($apiKey)
+        }
+        .sheet($sheetGuide) {
+            Guide()
         }
     }
 }
