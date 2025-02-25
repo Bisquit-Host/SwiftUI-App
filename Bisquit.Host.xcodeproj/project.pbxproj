@@ -919,7 +919,6 @@
 		F3A7CED02C8B685600413400 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3A7CECF2C8B685600413400 /* Assets.xcassets */; };
 		F3A7CEDC2C8B95CB00413400 /* Home View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CEDB2C8B95CB00413400 /* Home View.swift */; };
 		F3A7CEDF2C8B981A00413400 /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F3A7CEDE2C8B981A00413400 /* PteroNet */; };
-		F3A7CEE12C8B9BB700413400 /* App Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CEE02C8B9BB700413400 /* App Container.swift */; };
 		F3A7CEE52C8B9E7500413400 /* Messages VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CEE42C8B9E7500413400 /* Messages VM.swift */; };
 		F3A7CEE92C8BB73300413400 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A1D2302A201C570053261E /* Enums.swift */; };
 		F3A7CEEA2C8BB74D00413400 /* Server List Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B3A729BC6B5400CC1195 /* Server List Grid.swift */; };
@@ -1925,7 +1924,6 @@
 		F3A7CED12C8B685600413400 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3A7CEDB2C8B95CB00413400 /* Home View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home View.swift"; sourceTree = "<group>"; };
 		F3A7CEDD2C8B97A300413400 /* iMessage MessagesExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "iMessage MessagesExtension.entitlements"; sourceTree = "<group>"; };
-		F3A7CEE02C8B9BB700413400 /* App Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Container.swift"; sourceTree = "<group>"; };
 		F3A7CEE42C8B9E7500413400 /* Messages VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Messages VM.swift"; sourceTree = "<group>"; };
 		F3A7CEEB2C8BB77500413400 /* Server Card Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Parent.swift"; sourceTree = "<group>"; };
 		F3A7CEFD2C8BB97400413400 /* Server List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List.swift"; sourceTree = "<group>"; };
@@ -3228,7 +3226,6 @@
 		F3A7CEE22C8B9D3800413400 /* iMessage Extension */ = {
 			isa = PBXGroup;
 			children = (
-				F3A7CEE02C8B9BB700413400 /* App Container.swift */,
 				F3A7CECA2C8B685500413400 /* Messages VC.swift */,
 				F3A7CECF2C8B685600413400 /* Assets.xcassets */,
 				F3A7CEDD2C8B97A300413400 /* iMessage MessagesExtension.entitlements */,
@@ -5456,7 +5453,6 @@
 				F3202C762D5583680030B3CC /* Browser Parent.swift in Sources */,
 				F31461772D5A2B4200547B6C /* Apikey VM.swift in Sources */,
 				F3A7CF092C8BBC7A00413400 /* Carousel Button Style.swift in Sources */,
-				F3A7CEE12C8B9BB700413400 /* App Container.swift in Sources */,
 				F31461722D5A2B2B00547B6C /* Account Settings.swift in Sources */,
 				F3202D0E2D562AE30030B3CC /* Browser List Web.swift in Sources */,
 				F3A7CEF02C8BB79B00413400 /* Server Name.swift in Sources */,
