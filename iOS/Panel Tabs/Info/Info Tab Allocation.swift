@@ -2,6 +2,8 @@ import ScrechKit
 import PteroNet
 
 struct InfoTabAllocation: View {
+    @Environment(\.openURL) private var openURL
+    
     private let server: ServerAttributes
     
     init(_ server: ServerAttributes) {
@@ -24,6 +26,23 @@ struct InfoTabAllocation: View {
                 trigger.toggle()
             } label: {
                 Label("Copy", systemImage: "doc.on.doc")
+            }
+            
+            Button {
+                guard
+                    let url = URL(string: "mc-stats://add-server?address=\(ip)"),
+                    let fallbackURL = URL(string: "https://apps.apple.com/app/id6740754881")
+                else {
+                    return
+                }
+                
+                openURL(url) { success in
+                    if !success {
+                        openURL(fallbackURL)
+                    }
+                }
+            } label: {
+                Label("Add to MC Stats", systemImage: "arrowshape.turn.up.right")
             }
             
             ShareLink(item: ip)
