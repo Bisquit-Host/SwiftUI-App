@@ -28,7 +28,7 @@ final class DeepLinkVM {
         guard
             let session = components.queryItems?.first(where: { $0.name == "session" || $0.name == "apikey" })?.value
         else {
-            print("Recipe name not found")
+            print("API-key/session missing")
             return
         }
         
