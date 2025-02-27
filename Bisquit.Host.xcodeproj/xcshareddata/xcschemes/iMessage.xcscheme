@@ -30,8 +30,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F3A7CEBA2C8B685400413400"
-               BuildableName = "iMessage.app"
+               BlueprintIdentifier = "F3A7CEC22C8B685500413400"
+               BuildableName = "iMessage.appex"
                BlueprintName = "iMessage"
                ReferencedContainer = "container:Bisquit.Host.xcodeproj">
             </BuildableReference>
@@ -68,15 +68,6 @@
             ReferencedContainer = "container:Bisquit.Host.xcodeproj">
          </BuildableReference>
       </RemoteRunnable>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F3A7CEBA2C8B685400413400"
-            BuildableName = "iMessage.app"
-            BlueprintName = "iMessage"
-            ReferencedContainer = "container:Bisquit.Host.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -90,8 +81,8 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F3A7CEBA2C8B685400413400"
-            BuildableName = "iMessage.app"
+            BlueprintIdentifier = "F3A7CEC22C8B685500413400"
+            BuildableName = "iMessage.appex"
             BlueprintName = "iMessage"
             ReferencedContainer = "container:Bisquit.Host.xcodeproj">
          </BuildableReference>
