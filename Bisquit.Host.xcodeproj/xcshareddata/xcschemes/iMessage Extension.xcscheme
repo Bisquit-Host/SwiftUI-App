@@ -17,8 +17,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F3A7CEC22C8B685500413400"
-               BuildableName = "iMessage Extension.appex"
-               BlueprintName = "iMessage Extension"
+               BuildableName = "iMessage.appex"
+               BlueprintName = "iMessage"
                ReferencedContainer = "container:Bisquit.Host.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -63,8 +63,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F3A7CEC22C8B685500413400"
-            BuildableName = "iMessage Extension.appex"
-            BlueprintName = "iMessage Extension"
+            BuildableName = "iMessage.appex"
+            BlueprintName = "iMessage"
             ReferencedContainer = "container:Bisquit.Host.xcodeproj">
          </BuildableReference>
       </RemoteRunnable>
