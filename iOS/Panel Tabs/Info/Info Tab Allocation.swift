@@ -30,7 +30,7 @@ struct InfoTabAllocation: View {
             
             Button {
                 guard
-                    let url = URL(string: "mc-stats://add-server?address=\(ip)"),
+                    let url = URL(string: "mc-stats://add-server?address=\(ip)&name=\(server.name)"),
                     let fallbackURL = URL(string: "https://apps.apple.com/app/id6740754881")
                 else {
                     return

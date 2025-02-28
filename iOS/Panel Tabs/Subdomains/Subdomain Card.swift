@@ -40,7 +40,7 @@ struct SubdomainCard: View {
             
             Button {
                 guard
-                    let url = URL(string: "mc-stats://add-server?address=\(subdomain)"),
+                    let url = URL(string: "mc-stats://add-server?address=\(fullDomain)&name=\(subdomain.subdomain)"),
                     let fallbackURL = URL(string: "https://apps.apple.com/app/id6740754881")
                 else {
                     return
