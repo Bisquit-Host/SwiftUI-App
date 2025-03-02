@@ -3,7 +3,7 @@ import ScrechKit
 struct SubdomainCard: View {
     @Environment(SubdomainVM.self) private var vm
     
-    @Environment(\.openURL) private var openURL
+    @Environment(\.openURL) private var openUrl
     
     let subdomain: SubdomainAttributes
     
@@ -46,9 +46,9 @@ struct SubdomainCard: View {
                     return
                 }
                 
-                openURL(url) { success in
+                openUrl(url) { success in
                     if !success {
-                        openURL(fallbackURL)
+                        openUrl(fallbackURL)
                     }
                 }
             } label: {
