@@ -3,6 +3,8 @@ import ScrechKit
 struct SubdomainCard: View {
     @Environment(SubdomainVM.self) private var vm
     
+    @Environment(\.openURL) private var openUrl
+    
     let subdomain: SubdomainAttributes
     
     init(_ subdomain: SubdomainAttributes) {
@@ -34,6 +36,23 @@ struct SubdomainCard: View {
                 UIPasteboard.general.string = fullDomain
             } label: {
                 Label("Copy", systemImage: "document.on.document")
+            }
+            
+            Button {
+                guard
+                    let url = URL(string: "mc-stats://add-server?address=\(fullDomain)&name=\(subdomain.subdomain)"),
+                    let fallbackURL = URL(string: "https://apps.apple.com/app/id6740754881")
+                else {
+                    return
+                }
+                
+                openUrl(url) { success in
+                    if !success {
+                        openUrl(fallbackURL)
+                    }
+                }
+            } label: {
+                Label("Add to MC Stats", systemImage: "arrowshape.turn.up.right")
             }
             
             ShareLink(item: fullDomain)

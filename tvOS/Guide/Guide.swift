@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 import Kingfisher
 
 struct Guide: View {

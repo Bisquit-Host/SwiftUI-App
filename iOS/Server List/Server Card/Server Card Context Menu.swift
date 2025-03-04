@@ -2,6 +2,8 @@ import ScrechKit
 import PteroNet
 
 struct ServerCardContextMenu: View {
+    @Environment(\.openURL) private var openUrl
+    
     private let server: ServerAttributes
     @Binding private var showSafari: Bool
     @Binding private var confirmKill: Bool
@@ -50,6 +52,23 @@ struct ServerCardContextMenu: View {
                     UIPasteboard.general.string = defaultAllocation
                 } label: {
                     Label("Copy", systemImage: "doc.on.doc")
+                }
+                
+                Button {
+                    guard
+                        let url = URL(string: "mc-stats://add-server?address=\(defaultAllocation)&name=\(server.name)"),
+                        let fallbackURL = URL(string: "https://apps.apple.com/app/id6740754881")
+                    else {
+                        return
+                    }
+                    
+                    openUrl(url) { success in
+                        if !success {
+                            openUrl(fallbackURL)
+                        }
+                    }
+                } label: {
+                    Label("Add to MC Stats", systemImage: "arrowshape.turn.up.right")
                 }
                 
                 ShareLink(item: defaultAllocation)
