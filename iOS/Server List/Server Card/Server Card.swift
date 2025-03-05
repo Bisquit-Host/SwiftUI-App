@@ -93,7 +93,7 @@ struct ServerCard: View {
     }
     
     private var serverName: some View {
-        ServerName(server.name, color: vm.stateColor)
+        ServerName(server.name)
             .matchedEffect("name", in: animation)
     }
     

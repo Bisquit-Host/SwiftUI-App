@@ -20,11 +20,7 @@ struct SuspendedServerCard: View {
         switch store.designCode {
         case 0:
             VStack(spacing: 10) {
-                Text(name)
-                    .bold()
-                    .minimumScaleFactor(0.5)
-                    .lineLimit(1)
-                    .scaledToFit()
+                serverName
                 
                 Image(systemName: "snowflake")
                     .fontSize(50)
@@ -37,11 +33,7 @@ struct SuspendedServerCard: View {
             
         default:
             HStack {
-                Text(name)
-                    .bold()
-                    .minimumScaleFactor(0.5)
-                    .lineLimit(1)
-                    .scaledToFit()
+                serverName
                 
                 Image(systemName: "snowflake")
                     .largeTitle()
@@ -52,6 +44,15 @@ struct SuspendedServerCard: View {
             .padding(.horizontal, 10)
             .background(.ultraThinMaterial, in: .rect(cornerRadius: rounding))
         }
+    }
+    
+    private var serverName: some View {
+        Text(name)
+            .bold()
+            .minimumScaleFactor(0.5)
+            .lineLimit(1)
+            .scaledToFit()
+            .blur(radius: store.hideServerNames ? 5 : 0)
     }
 }
 

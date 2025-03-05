@@ -2494,6 +2494,9 @@
         }
       }
     },
+    "Hide server names" : {
+
+    },
     "Hide status bar" : {
       "localizations" : {
         "nl" : {

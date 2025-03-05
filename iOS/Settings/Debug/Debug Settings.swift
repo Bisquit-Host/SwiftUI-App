@@ -15,6 +15,8 @@ struct DebugSettings: View {
         List {
             Section {
                 Toggle("Hide status bar", isOn: $store.hideStatusBar)
+                
+                Toggle("Hide server names", isOn: $store.hideServerNames)
             }
             
             Section {
