@@ -20,12 +20,9 @@ final class ServerListVM {
     var searchField = ""
     var displayedNode = ""
     var filterBySuspended = false
+    var filterByNotSuspended = false
     
     var selectedServer: ServerAttributes?
-    
-    var nodes: [String] {
-        Array(Set(servers.map(\.node)))
-    }
     
     var filteredServers: [ServerAttributes] {
         servers.filter { server in
@@ -34,9 +31,14 @@ final class ServerListVM {
             let matchesDescription = searchField.isEmpty || server.description.lowercased().contains(prompt)
             let matchesNode = displayedNode.isEmpty || server.node == displayedNode
             let matchesSuspended = !filterBySuspended || server.isSuspended
+            let matchesNotSuspended = !filterByNotSuspended || !server.isSuspended
             
-            return matchesName && matchesDescription && matchesNode && matchesSuspended
+            return matchesName && matchesDescription && matchesNode && matchesSuspended && matchesNotSuspended
         }
+    }
+    
+    var nodes: [String] {
+        Array(Set(servers.map(\.node)))
     }
     
     var hasSuspendedServers: Bool {

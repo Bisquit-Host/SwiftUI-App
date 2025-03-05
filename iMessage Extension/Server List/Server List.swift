@@ -32,7 +32,7 @@ struct ServerList: View {
             }
         }
         .safeAreaInset(edge: .bottom) {
-            ServerListFilter($vm.filterBySuspended)
+            ServerListFilter()
                 .padding(.bottom)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .environment(vm)

@@ -3,18 +3,20 @@ import ScrechKit
 struct ServerListFilter: View {
     @Environment(ServerListVM.self) private var vm
     
-    @Binding private var filterBySuspended: Bool
-    
-    init(_ filterBySuspended: Binding<Bool>) {
-        _filterBySuspended = filterBySuspended
-    }
-    
     var body: some View {
         Menu {
             if vm.hasSuspendedServers {
-                MenuButton("Suspended", icon: filterBySuspended ? "snowflake.circle.fill" : "snowflake") {
+                MenuButton("Suspended", icon: vm.filterBySuspended ? "snowflake.circle.fill" : "snowflake") {
                     withAnimation {
-                        filterBySuspended.toggle()
+                        vm.filterBySuspended.toggle()
+                        vm.filterByNotSuspended = false
+                    }
+                }
+                
+                MenuButton("Not suspended", icon: vm.filterByNotSuspended ? "snowflake.circle.fill" : "snowflake") {
+                    withAnimation {
+                        vm.filterByNotSuspended.toggle()
+                        vm.filterBySuspended = false
                     }
                 }
             }
@@ -28,7 +30,7 @@ struct ServerListFilter: View {
                 .foregroundColor(.white)
                 .shadow(color: .black.opacity(0.5), radius: 5)
                 .frame(width: 60, height: 60)
-                .symbolVariant(filterBySuspended ? .fill : .none)
+                .symbolVariant(vm.filterBySuspended || vm.filterByNotSuspended ? .fill : .none)
                 .background(.ultraThinMaterial, in: .circle)
         }
         .hoverEffect(.lift)
@@ -37,8 +39,6 @@ struct ServerListFilter: View {
 }
 
 #Preview {
-    @Previewable @State var filterBySuspended = false
-    
-    ServerListFilter($filterBySuspended)
+    ServerListFilter()
         .environment(ServerListVM())
 }
