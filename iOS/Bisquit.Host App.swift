@@ -41,7 +41,7 @@ struct BisquitHostApp: App {
             .displayFrequency(.immediate)
         ])
         
-#if canImport(MetricKit)
+#if canImport(MetricKit) && !os(tvOS)
         _ = MetricKitManager.shared
 #endif
         
