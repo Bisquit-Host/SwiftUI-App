@@ -1,29 +1,26 @@
 import SwiftUI
-import Kingfisher
 
 struct Guide: View {
     private let width = UIScreen.main.bounds.width
     private let steps = [
-        GuideStep("Follow the link, log in to your account and go to profile settings", id: 1, url: getImageUrl("step1")),
-        GuideStep("Open the API section, enter any name for the API-Key and click the Create button. Then save your key to the clipboard", id: 2, url: getImageUrl("step2")),
-        GuideStep("To avoid input errors, paste the API-key from the clipboard", id: 3, url: getImageUrl("bisquit"))
+        GuideStep("Open the link, log in, and navigate to account settings", id: 1, image: .step0),
+        GuideStep("Scroll down to the API/SSH section, enter a name for the API key, and tap Create", id: 2, image: .step1),
+        GuideStep("Tap Authorize App or copy the API key", id: 3, image: .step2)
     ]
     
     var body: some View {
         TabView {
             ForEach(steps) { step in
-                let text = step.text
                 let id = step.id
-                let url = step.url
                 
                 HStack {
-                    KFImage(url)
+                    Image(step.image)
                         .resizable()
                         .scaledToFit()
                         .frame(width: width / 2)
                     
                     VStack {
-                        Text(text)
+                        Text(step.text)
                         
                         if id == 1 {
                             Text("https://mgr.bisquit.host")

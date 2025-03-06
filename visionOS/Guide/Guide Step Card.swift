@@ -13,16 +13,12 @@ struct GuideStepCard: View {
         let size = geo.size
         
         HStack {
-            AsyncImage(url: step.url) { image in
-                image
-                    .resizable()
-                    .scaledToFit()
-                    .clipShape(.rect(cornerRadius: 16))
-                    .padding()
-            } placeholder: {
-                ProgressView()
-            }
-            .frame(width: size.width / 2, height: size.height)
+            Image(step.image)
+                .resizable()
+                .scaledToFit()
+                .clipShape(.rect(cornerRadius: 16))
+                .padding()
+                .frame(width: size.width / 2, height: size.height)
             
             VStack {
                 Text(step.text)
@@ -30,13 +26,14 @@ struct GuideStepCard: View {
                     .padding(20)
                     .multilineTextAlignment(.center)
                 
-                if step.id == 1 {
-                    Text("https://mgr.bisquit.host")
-                        .title2()
-#if !os(visionOS)
-                        .padding(20)
-                        .background(.blue, in: .capsule)
-#endif
+                if step.id == 1, let url = URL(string: "https://mgr.bisquit.host") {
+                    Link(destination: url) {
+                        Image(systemName: "link")
+                            .title2(.semibold)
+                            .padding()
+                            .foregroundStyle(.white)
+                            .background(.blue, in: .capsule)
+                    }
                 }
             }
             .semibold()

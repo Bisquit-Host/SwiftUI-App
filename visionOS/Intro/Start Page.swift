@@ -50,7 +50,7 @@ struct StartPage: View {
             .disabled(vm.apiKey.isEmpty)
         }
         .task {
-            if keys.isEmpty {
+            if !keys.isEmpty {
                 try? await Task.sleep(for: .seconds(0.5))
                 
                 vm.sheetCloudKeys = true
