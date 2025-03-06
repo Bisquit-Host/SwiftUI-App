@@ -39,6 +39,7 @@ struct AppContainer: View {
                     .withNavDestinations()
             }
         }
+        .animation(.default, value: store.isApiKeyValid)
         .environment(vm)
         .environment(network)
         .preferredColorScheme(store.colorTheme.scheme)
