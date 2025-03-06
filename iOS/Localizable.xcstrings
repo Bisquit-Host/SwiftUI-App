@@ -5394,6 +5394,7 @@
       }
     },
     "Update now to enjoy the latest improvements!" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
