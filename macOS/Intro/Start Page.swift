@@ -45,7 +45,7 @@ struct StartPage: View {
                     vm.apiKey = key.key
                     
                     if !keys.contains(where: { $0.key == vm.apiKey }) {
-                        modelContext.insert(APIKey(key: vm.apiKey))
+                        modelContext.insert(APIKey("", key: vm.apiKey))
                     }
                     
                     store.authSucced()
@@ -70,7 +70,7 @@ struct StartPage: View {
         .alert("Is the following information correct?", isPresented: $vm.alertValid) {
             Button("Yes", role: .cancel) {
                 if !keys.contains(where: { $0.key == vm.apiKey }) {
-                    modelContext.insert(APIKey(key: vm.apiKey))
+                    modelContext.insert(APIKey("", key: vm.apiKey))
                 }
                 
                 store.authSucced()
