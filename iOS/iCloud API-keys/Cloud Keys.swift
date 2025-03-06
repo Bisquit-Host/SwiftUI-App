@@ -33,7 +33,7 @@ struct CloudKeys: View {
                     .onDelete(perform: deleteItems)
                 }
 #if !os(watchOS)
-                .listRowBackground(store.transparentList ? .clear : Color.list)
+                .listRowBackground(store.transparentList ? Color.clear : .list)
 #endif
             }
 #if !os(tvOS)
