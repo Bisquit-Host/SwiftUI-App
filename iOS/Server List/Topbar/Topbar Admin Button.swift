@@ -17,7 +17,7 @@ struct TopbarAdminButton: View {
             } label: {
                 Image(systemName: "person.badge.shield.checkmark")
             }
-            .frame(maxWidth: 40)
+            .frame(maxWidth: 32)
             .symbolVariant(store.adminServerList ? .fill : .none)
         }
     }
