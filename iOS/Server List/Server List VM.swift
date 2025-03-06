@@ -80,8 +80,11 @@ final class ServerListVM {
             return
         }
         
-        main {
-            self.alertUpdate = currentVersion.compare(appStoreVersion, options: .numeric) == .orderedAscending
+        if currentVersion.compare(appStoreVersion, options: .numeric) == .orderedAscending {
+            print("Update available: \(currentVersion) -> \(appStoreVersion)")
+            self.alertUpdate = true
+        } else {
+            print("The app is up to date")
         }
     }
     
