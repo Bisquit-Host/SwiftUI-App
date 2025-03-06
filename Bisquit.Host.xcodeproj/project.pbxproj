@@ -988,14 +988,6 @@
 		F3A994AC2A17904F00530615 /* Map VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A92A177ED100530615 /* Map VM.swift */; };
 		F3A994AE2A17A9B100530615 /* Map List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994AD2A17A9B100530615 /* Map List.swift */; };
 		F3A994AF2A17AED500530615 /* Map List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994AD2A17A9B100530615 /* Map List.swift */; };
-		F3AB1DE32D79B20000387164 /* File.txt in Resources */ = {isa = PBXBuildFile; fileRef = F3AB1DE22D79B20000387164 /* File.txt */; };
-		F3AB1DE42D79B20000387164 /* File.txt in Resources */ = {isa = PBXBuildFile; fileRef = F3AB1DE22D79B20000387164 /* File.txt */; };
-		F3AB1DE52D79B20000387164 /* File.txt in Resources */ = {isa = PBXBuildFile; fileRef = F3AB1DE22D79B20000387164 /* File.txt */; };
-		F3AB1DE62D79B20000387164 /* File.txt in Resources */ = {isa = PBXBuildFile; fileRef = F3AB1DE22D79B20000387164 /* File.txt */; };
-		F3AB1DE72D79B20000387164 /* File.txt in Resources */ = {isa = PBXBuildFile; fileRef = F3AB1DE22D79B20000387164 /* File.txt */; };
-		F3AB1DE82D79B20000387164 /* File.txt in Resources */ = {isa = PBXBuildFile; fileRef = F3AB1DE22D79B20000387164 /* File.txt */; };
-		F3AB1DE92D79B20000387164 /* File.txt in Resources */ = {isa = PBXBuildFile; fileRef = F3AB1DE22D79B20000387164 /* File.txt */; };
-		F3AB1DEA2D79B20000387164 /* File.txt in Resources */ = {isa = PBXBuildFile; fileRef = F3AB1DE22D79B20000387164 /* File.txt */; };
 		F3AB4A772CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A762CF1D97C00A8252F /* Tip JSON Formatter.swift */; };
 		F3AB4A782CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A762CF1D97C00A8252F /* Tip JSON Formatter.swift */; };
 		F3AB4A792CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A762CF1D97C00A8252F /* Tip JSON Formatter.swift */; };
@@ -1947,7 +1939,6 @@
 		F3A994A72A177DA400530615 /* Map View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Map View.swift"; sourceTree = "<group>"; };
 		F3A994A92A177ED100530615 /* Map VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Map VM.swift"; sourceTree = "<group>"; };
 		F3A994AD2A17A9B100530615 /* Map List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Map List.swift"; sourceTree = "<group>"; };
-		F3AB1DE22D79B20000387164 /* File.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = File.txt; sourceTree = "<group>"; };
 		F3AB4A762CF1D97C00A8252F /* Tip JSON Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tip JSON Formatter.swift"; sourceTree = "<group>"; };
 		F3AB4A892CF3DAC900A8252F /* Backup Card VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Backup Card VM.swift"; sourceTree = "<group>"; };
 		F3AB4A8F2CF3EC6700A8252F /* Tip Server Card Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tip Server Card Context Menu.swift"; sourceTree = "<group>"; };
@@ -2511,7 +2502,6 @@
 				F31578B229675F5D0016A600 /* Server List.swift */,
 				F39EA2E22D5D576D00329468 /* Leaderboard Button.swift */,
 				F352AF962A4EDB1D004AD489 /* Server List VM.swift */,
-				F3AB1DE22D79B20000387164 /* File.txt */,
 				F3202CD22D559B6C0030B3CC /* VM extensions */,
 				F337B3A729BC6B5400CC1195 /* Server List Grid.swift */,
 				F3E2BF0A2C1EC94300B7A6D4 /* Contacts VM.swift */,
@@ -4222,7 +4212,6 @@
 			files = (
 				F378E3362AF3835C009925DB /* PrivacyInfo.xcprivacy in Resources */,
 				F36797762A39C4ED009F2788 /* Localizable.xcstrings in Resources */,
-				F3AB1DE82D79B20000387164 /* File.txt in Resources */,
 				F39D68132A26373900B9BDFC /* Bisquits.sks in Resources */,
 				F39D68152A26378500B9BDFC /* Assets.xcassets in Resources */,
 				F3000E0C295A341100ABD30A /* Assets.xcassets in Resources */,
@@ -4233,7 +4222,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3AB1DEA2D79B20000387164 /* File.txt in Resources */,
 				F3E6FC432A1E677000410C7C /* Bisquits.sks in Resources */,
 				F36797732A39C4ED009F2788 /* Localizable.xcstrings in Resources */,
 				F378E3332AF3835A009925DB /* PrivacyInfo.xcprivacy in Resources */,
@@ -4245,7 +4233,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3AB1DE32D79B20000387164 /* File.txt in Resources */,
 				F34C055929F11A4D0031ABE1 /* Assets.xcassets in Resources */,
 				F36797752A39C4ED009F2788 /* Localizable.xcstrings in Resources */,
 				F378E3352AF3835B009925DB /* PrivacyInfo.xcprivacy in Resources */,
@@ -4257,7 +4244,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3AB1DE42D79B20000387164 /* File.txt in Resources */,
 				F3E6FC442A1E677000410C7C /* Bisquits.sks in Resources */,
 				F36797742A39C4ED009F2788 /* Localizable.xcstrings in Resources */,
 				F378E3382AF3835E009925DB /* PrivacyInfo.xcprivacy in Resources */,
@@ -4269,7 +4255,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3AB1DE52D79B20000387164 /* File.txt in Resources */,
 				F3D295322AF39C8900ED43A0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4296,7 +4281,6 @@
 			files = (
 				F3C3BDB82C92BE9B00BF91EE /* Assets.xcassets in Resources */,
 				F3A7CED02C8B685600413400 /* Assets.xcassets in Resources */,
-				F3AB1DE72D79B20000387164 /* File.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4304,7 +4288,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3AB1DE92D79B20000387164 /* File.txt in Resources */,
 				F378E3372AF3835D009925DB /* PrivacyInfo.xcprivacy in Resources */,
 				F389281F2A43CB2600561CDF /* Localizable.xcstrings in Resources */,
 				F30C13012A5459A100A7EFF0 /* Assets.xcassets in Resources */,
@@ -4323,7 +4306,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3AB1DE62D79B20000387164 /* File.txt in Resources */,
 				F3E08ED82A2CF74000116C1C /* Assets.xcassets in Resources */,
 				F3E08EA72A2CE17A00116C1C /* Assets.xcassets in Resources */,
 				F378E3342AF3835B009925DB /* PrivacyInfo.xcprivacy in Resources */,
