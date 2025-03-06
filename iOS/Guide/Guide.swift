@@ -1,19 +1,18 @@
 import ScrechKit
-import SafariCover
-import Kingfisher
 import PteroNet
 
 struct Guide: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.colorScheme) private var colorScheme
     
-    private let steps = [
-        "Follow the link, log in to your account and go to profile settings",
-        "Open the API section, enter any name for the API-Key and click the Create button. Then save your key to the clipboard",
-        "To avoid input errors, paste the API-key from the clipboard"
+    private let steps: [LocalizedStringKey] = [
+        "Open the link, log in, and navigate to account settings",
+        "Scroll down to the API/SSH section, enter a name for the API key, and tap Create",
+        "Tap Authorize App or copy the API key"
     ]
     
     private let images = [
+        "step0",
         "step1",
         "step2"
     ]
@@ -50,16 +49,13 @@ struct Guide: View {
             
             Spacer()
             
-            if step <= 1 {
-                KFImage(getImageUrl(images[step]))
-                    .fade(duration: 0.25)
-                    .resizable()
-                    .scaledToFit()
-                    .cornerRadius(10)
-                    .padding()
-            }
+            Image(images[step])
+                .resizable()
+                .scaledToFit()
+                .cornerRadius(10)
+                .padding()
             
-            Text(LocalizedStringKey(steps[step]))
+            Text(steps[step])
                 .semibold()
                 .serif()
                 .fontSize(fontSize)
@@ -67,44 +63,14 @@ struct Guide: View {
                 .tightening(true)
                 .lineLimit(1...5)
             
-            switch step {
-            case 0:
-                Button("Skip") {
-                    step = 2
-                }
-                .bold()
-                .padding()
-                .foregroundStyle(.white)
-                .background(.blue, in: .capsule)
-                
-            case 1:
-                SafariButton("https://mgr.bisquit.host") {
+            if step == 0, let url = URL(string: "https://mgr.bisquit.host") {
+                Link(destination: url) {
                     Image(systemName: "link")
                         .title2(.semibold)
                         .padding()
                         .foregroundStyle(.white)
                         .background(.blue, in: .capsule)
                 }
-                
-            case 2:
-                TextField("My API-key...", text: $apiKey)
-                    .textFieldStyle(.roundedBorder)
-                    .background(.gray)
-                    .cornerRadius(16)
-                    .padding()
-                    .foregroundStyle(.black)
-                    .multilineTextAlignment(.center)
-                
-                Button("Save") {
-                    Keychain.save(key: "selectedApiKey", value: apiKey)
-                    dismiss()
-                }
-                .bold()
-                .padding()
-                .foregroundStyle(.white)
-                .background(.blue, in: .capsule)
-                
-            default: EmptyView()
             }
             
             Spacer()
@@ -115,13 +81,6 @@ struct Guide: View {
                         step -= 1
                     }
                 }
-                //                Button {
-                //                    withAnimation(.easeOut(duration: 0.6)) {
-                //                        step -= 1
-                //                    }
-                //                } label: {
-                //                    Label("Previous", systemImage: "chevron.backward")
-                //                }
                 .disabled(step - 1 < 0)
                 
                 Spacer()
@@ -131,13 +90,6 @@ struct Guide: View {
                         step += 1
                     }
                 }
-                //                Button {
-                //                    withAnimation(.easeOut(duration: 0.6)) {
-                //                        step += 1
-                //                    }
-                //                } label: {
-                //                    Label("Next", systemImage: "chevron.forward")
-                //                }
                 .disabled(step + 1 >= steps.count)
             }
             .buttonStyle(CarouselButtonStyle())

@@ -3,6 +3,7 @@ import PteroNet
 
 struct ServerList: View {
     @Environment(ServerListVM.self) private var vm
+    @Environment(\.openURL) private var openUrl
     
     private let gradient = Gradient(colors: [
         Color(0x3b58a4),
@@ -20,17 +21,30 @@ struct ServerList: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(.vertical)
             
-#if os(macOS)
+            if vm.alertUpdate {
+                if let url = URL(string: "https://apps.apple.com/app/bisquit-host/id1639409934") {
+                    Link(destination: url) {
+                        HStack {
+                            Image(systemName: "app.badge")
+                                .symbolRenderingMode(.multicolor)
+                            
+                            Text("Update available")
+                        }
+                        .title2(.semibold)
+                    }
+                    .buttonStyle(.plain)
+                    .padding(5)
+                }
+            }
+            
             SettingsLink {
                 Label("Settings", systemImage: "gear")
                     .title2(.semibold)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
             .buttonStyle(.plain)
-            .padding(10)
-#endif
+            .padding(5)
         }
-#if os(macOS)
         .background {
             ZStack {
                 BackgroundBlur()
@@ -41,7 +55,6 @@ struct ServerList: View {
             }
             .ignoresSafeArea()
         }
-#endif
     }
 }
 

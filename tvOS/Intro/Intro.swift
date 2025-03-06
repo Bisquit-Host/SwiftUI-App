@@ -37,7 +37,7 @@ struct Intro: View {
                     Keychain.save(key: "selectedApiKey", value: debugKey)
                     
                     if !keys.contains(where: { $0.key == debugKey }) {
-                        modelContext.insert(APIKey(key: debugKey))
+                        modelContext.insert(APIKey("Debug", key: debugKey))
                     }
                     
                     store.authSucced()
@@ -71,7 +71,7 @@ struct Intro: View {
         .alert("Is the following information correct?", isPresented: $vm.alertValid) {
             Button("Yes", role: .cancel) {
                 if !keys.contains(where: { $0.key == vm.apiKey }) {
-                    modelContext.insert(APIKey(key: vm.apiKey))
+                    modelContext.insert(APIKey("", key: vm.apiKey))
                 }
                 
                 store.authSucced()

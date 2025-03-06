@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import SwiftData
 import PteroNet
 
@@ -39,6 +39,7 @@ struct AppContainer: View {
                     .withNavDestinations()
             }
         }
+        .animation(.default, value: store.isApiKeyValid)
         .environment(vm)
         .environment(network)
         .preferredColorScheme(store.colorTheme.scheme)
@@ -49,18 +50,12 @@ struct AppContainer: View {
                 return
             }
         }
-#else
-        .overlay {
-            if let satisfied = network.isNetworkSatisfied, !satisfied {
-                NetworkLostView()
-            }
-        }
 #endif
         .onChange(of: scenePhase) { _, newPhase in
             if newPhase == .inactive {
                 showBadge = false
             } else if newPhase == .active {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                delay(0.5) {
                     showBadge = true
                 }
             }
@@ -71,9 +66,7 @@ struct AppContainer: View {
                 auth()
             }
             
-            Button("Cancel", role: .cancel) {
-                
-            }
+            Button("Cancel", role: .cancel) {}
         } message: {
             Text("Are you sure you want to continue?")
         }
@@ -95,7 +88,7 @@ struct AppContainer: View {
         )
         
         if !keys.contains(where: { $0.key == linking.session }) {
-            modelContext.insert(APIKey(key: linking.session))
+            modelContext.insert(APIKey("Session", key: linking.session))
         }
         
         store.authSucced()

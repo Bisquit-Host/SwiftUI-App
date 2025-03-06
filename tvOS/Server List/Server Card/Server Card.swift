@@ -2,6 +2,8 @@ import ScrechKit
 import PteroNet
 
 struct ServerCard: View {
+    @EnvironmentObject private var store: ValueStore
+    
     @State private var vm: ServerCardVM
     
     private let server: ServerAttributes
@@ -21,8 +23,10 @@ struct ServerCard: View {
                 Text(server.name)
                     .fontSize(70)
                     .fontWeight(.medium)
+                    .blur(radius: store.hideServerNames ? 12 : 0)
                 
                 Text(server.description)
+                    .blur(radius: store.hideServerNames ? 5 : 0)
             }
             
             Spacer()

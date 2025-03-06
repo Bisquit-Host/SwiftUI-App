@@ -1,12 +1,12 @@
 import SwiftUI
 
 struct ServerName: View {
-    private let name: String
-    private let color: Color
+    @EnvironmentObject private var store: ValueStore
     
-    init(_ name: String, color: Color) {
+    private let name: String
+    
+    init(_ name: String) {
         self.name = name
-        self.color = color
     }
     
     var body: some View {
@@ -16,6 +16,11 @@ struct ServerName: View {
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
                 .foregroundColor(.primary)
+                .blur(radius: store.hideServerNames ? 5 : 0)
         }
     }
+}
+
+#Preview {
+    ServerName("Preview")
 }

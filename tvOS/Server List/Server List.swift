@@ -13,6 +13,23 @@ struct ServerList: View {
         @Bindable var vm = vm
         
         List {
+            if vm.alertUpdate {
+                Section {
+                    if let url = URL(string: "https://apps.apple.com/app/bisquit-host/id1639409934") {
+                        Button {
+                            openUrl(url)
+                        } label: {
+                            HStack(spacing: 16) {
+                                Image(systemName: "link")
+                                
+                                Text("New Update Available")
+                            }
+                            .title3()
+                        }
+                    }
+                }
+            }
+            
             ForEach(vm.filteredServers) { server in
                 Button {
                     navState.navigate(.toPanel(server.id))
@@ -28,15 +45,6 @@ struct ServerList: View {
             if !System.lowPowerMode {
                 await vm.checkForUpdates()
             }
-        }
-        .alert("New Update Available", isPresented: $vm.alertUpdate) {
-            if let url = URL(string: "https://apps.apple.com/app/bisquit-host/id1639409934") {
-                Button("Update", role: .destructive) {
-                    openUrl(url)
-                }
-            }
-        } message: {
-            Text("Update now to enjoy the latest improvements!")
         }
         .toolbar {
             NavigationLink("Settings") {

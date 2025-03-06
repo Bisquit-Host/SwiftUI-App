@@ -9,22 +9,16 @@ struct TopbarAdminButton: View {
         self.fetchServers = fetchServers
     }
     
-    private var icon: String {
-        if store.adminServerList {
-            "person.badge.shield.checkmark.fill"
-        } else {
-            "person.badge.shield.checkmark"
-        }
-    }
-    
     var body: some View {
         if store.devMode {
             Button {
                 store.adminServerList.toggle()
                 fetchServers()
             } label: {
-                Image(systemName: icon)
+                Image(systemName: "person.badge.shield.checkmark")
             }
+            .frame(maxWidth: 32)
+            .symbolVariant(store.adminServerList ? .fill : .none)
         }
     }
 }

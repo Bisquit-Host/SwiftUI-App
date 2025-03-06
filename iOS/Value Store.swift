@@ -3,6 +3,7 @@ import PteroNet
 
 final class ValueStore: ObservableObject {
     @AppStorage("hide_status_bar") var hideStatusBar = false
+    @AppStorage("hide_server_names") var hideServerNames = false
     @AppStorage("color_theme") var colorTheme: ColorTheme = .system
     @Published var updateServers = false // Triggers update on pull gesture
     

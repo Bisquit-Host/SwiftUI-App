@@ -1,18 +1,18 @@
 import ScrechKit
-import Kingfisher
 import PteroNet
 
 struct Guide: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.colorScheme) private var colorScheme
     
-    private let steps = [
-        "Follow the link, log in to your account and go to profile settings",
-        "Open the API section, enter any name for the API-Key and click the Create button. Then save your key to the clipboard",
-        "To avoid input errors, paste the API-key from the clipboard"
+    private let steps: [LocalizedStringKey] = [
+        "Open the link, log in, and navigate to account settings",
+        "Scroll down to the API/SSH section, enter a name for the API key, and tap Create",
+        "Tap Authorize App or copy the API key"
     ]
     
     private let images = [
+        "step0",
         "step1",
         "step2"
     ]
@@ -49,16 +49,13 @@ struct Guide: View {
             
             Spacer()
             
-            if step <= 1 {
-                KFImage(getImageUrl(images[step]))
-                    .fade(duration: 0.25)
-                    .resizable()
-                    .scaledToFit()
-                    .cornerRadius(10)
-                    .padding()
-            }
+            Image(images[step])
+                .resizable()
+                .scaledToFit()
+                .cornerRadius(10)
+                .padding()
             
-            Text(LocalizedStringKey(steps[step]))
+            Text(steps[step])
                 .semibold()
                 .serif()
                 .fontSize(fontSize)
@@ -66,17 +63,17 @@ struct Guide: View {
                 .tightening(true)
                 .lineLimit(1...5)
             
-            if step == 2 {
-                if let url = URL(string: "https://mgr.bisquit.host") {
-                    Link(destination: url) {
-                        Image(systemName: "link")
-                            .title2(.semibold)
-                            .padding()
-                            .foregroundStyle(.white)
-                            .background(.blue, in: .capsule)
-                    }
+            if step == 0, let url = URL(string: "https://mgr.bisquit.host") {
+                Link(destination: url) {
+                    Image(systemName: "link")
+                        .title2(.semibold)
+                        .padding()
+                        .foregroundStyle(.white)
+                        .background(.blue, in: .capsule)
                 }
-                
+            }
+            
+            if step == 2 {
                 Button {
                     dismiss()
                 } label: {
@@ -88,27 +85,6 @@ struct Guide: View {
                 }
                 .buttonStyle(.plain)
             }
-            
-            //            case 2:
-            //                TextField("My API-key...", text: $apiKey)
-            //                    .textFieldStyle(.roundedBorder)
-            //                    .background(.gray)
-            //                    .cornerRadius(16)
-            //                    .padding()
-            //                    .foregroundStyle(.black)
-            //                    .multilineTextAlignment(.center)
-            
-            //                Button {
-            //                    Keychain.save(key: "selectedApiKey", value: apiKey)
-            //                    dismiss()
-            //                } label: {
-            //                    Text("Save")
-            //                        .bold()
-            //                        .padding()
-            //                        .foregroundStyle(.white)
-            //                        .background(.blue, in: .capsule)
-            //                }
-            //                .buttonStyle(.plain)
             
             Spacer()
             

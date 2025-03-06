@@ -1758,40 +1758,6 @@
         }
       }
     },
-    "Demo" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Demo"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Демо"
-          }
-        }
-      }
-    },
-    "Demo Preview" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Demo Preview"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Демо-версия"
-          }
-        }
-      }
-    },
     "Describe an image" : {
       "localizations" : {
         "ru" : {
@@ -2352,28 +2318,6 @@
         }
       }
     },
-    "Follow the link, log in to your account and go to profile settings" : {
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Volg de link, log in op uw account en ga naar de profielinstellingen"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Перейдя по ссылке, выполните вход в свой аккаунт и откройте настройки профиля"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Перейдя по ссылке, выполните вход в свой аккаунт и откройте настройки профиля"
-          }
-        }
-      }
-    },
     "Font Size: %lld" : {
       "localizations" : {
         "nl" : {
@@ -2461,9 +2405,6 @@
     "GitHub" : {
       "shouldTranslate" : false
     },
-    "Go to settings" : {
-
-    },
     "Grant all permissions" : {
       "localizations" : {
         "ru" : {
@@ -2493,6 +2434,9 @@
           }
         }
       }
+    },
+    "Hide server names" : {
+
     },
     "Hide status bar" : {
       "localizations" : {
@@ -3366,6 +3310,7 @@
       }
     },
     "My API-key..." : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -3610,9 +3555,6 @@
         }
       }
     },
-    "No Internet Connection" : {
-
-    },
     "No metadata available" : {
       "localizations" : {
         "ru" : {
@@ -3638,6 +3580,9 @@
           }
         }
       }
+    },
+    "Not suspended" : {
+
     },
     "Notes" : {
       "localizations" : {
@@ -3719,24 +3664,12 @@
         }
       }
     },
-    "Open the API section, enter any name for the API-Key and click the Create button. Then save your key to the clipboard" : {
+    "Open the link, log in, and navigate to account settings" : {
       "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Open het API-gedeelte, voer een willekeurige naam in voor de API-sleutel en klik op de knop 'Aanmaken'. Sla vervolgens uw sleutel op naar het klembord"
-          }
-        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Откройте раздел «API», введите любое название для API-ключа и нажмите кнопку «Создать». Затем сохраните ваш ключ в буфер обмена"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Откройте раздел «API», введите любое название для API-ключа и нажмите кнопку «Создать». Затем сохраните ваш ключ в буфер обмена"
+            "value" : "Откройте ссылку, войдите в аккаунт и перейдите в настройки"
           }
         }
       }
@@ -4316,6 +4249,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Расписания"
+          }
+        }
+      }
+    },
+    "Scroll down to the API/SSH section, enter a name for the API key, and tap Create" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Прокрутите вниз до раздела API/SSH, введите имя для ключа и нажмите Создать"
           }
         }
       }
@@ -5038,6 +4981,16 @@
         }
       }
     },
+    "Tap Authorize App or copy the API key" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нажмите Authorize App или скопируйте ключ API"
+          }
+        }
+      }
+    },
     "Telegram Chat" : {
       "localizations" : {
         "nl" : {
@@ -5125,28 +5078,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Чтобы активировать приложение, введите API-ключ"
-          }
-        }
-      }
-    },
-    "To avoid input errors, paste the API-key from the clipboard" : {
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Om invoerfouten te vermijden, plak de API-sleutel vanuit het klembord"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Во избежание ошибок ввода вставьте API-ключ из буфера обмена"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Во избежание ошибок ввода вставьте API-ключ из буфера обмена"
           }
         }
       }
@@ -5352,6 +5283,9 @@
         }
       }
     },
+    "Update available" : {
+
+    },
     "Update credentials" : {
       "localizations" : {
         "nl" : {
@@ -5380,16 +5314,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Сменить Почту"
-          }
-        }
-      }
-    },
-    "Update now to enjoy the latest improvements!" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Установите обновление, чтобы насладиться последними улучшениями!"
           }
         }
       }
@@ -5727,9 +5651,6 @@
           }
         }
       }
-    },
-    "Your iPhone is not connected to the internet. To connect, turn off Airplane Mode or connect to a Wi-Fi network." : {
-
     },
     "Деревня Пыжи\n(Кировская обл.)" : {
       "localizations" : {

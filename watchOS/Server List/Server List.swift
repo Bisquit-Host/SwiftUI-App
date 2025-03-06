@@ -13,6 +13,24 @@ struct ServerList: View {
         ScrollView {
             ServerListTopbar()
             
+            if vm.alertUpdate {
+                if let url = URL(string: "https://apps.apple.com/app/bisquit-host/id1639409934") {
+                    Button {
+                        openUrl(url)
+                    } label: {
+                        HStack(spacing: 16) {
+                            Image(systemName: "link")
+                            
+                            Text("New Update Available")
+                        }
+                        .title3()
+                    }
+                    .frame(maxWidth: .infinity)
+                    .background(.ultraThinMaterial)
+                    .padding(.bottom)
+                }
+            }
+            
             ServerListGrid(vm.filteredServers)
         }
         .navigationTitle("Bisquit.Host")
@@ -23,15 +41,6 @@ struct ServerList: View {
             if !System.lowPowerMode {
                 await vm.checkForUpdates()
             }
-        }
-        .alert("New Update Available", isPresented: $vm.alertUpdate) {
-            if let url = URL(string: "https://apps.apple.com/app/bisquit-host/id1639409934") {
-                Button("Update", role: .destructive) {
-                    openUrl(url)
-                }
-            }
-        } message: {
-            Text("Update now to enjoy the latest improvements!")
         }
     }
 }
