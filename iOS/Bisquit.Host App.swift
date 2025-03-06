@@ -103,7 +103,7 @@ struct BisquitHostApp: App {
     }
     
 #if canImport(CoreSpotlight) && !os(tvOS)
-    func handleSpotlightActivity(_ activity: NSUserActivity) {
+    private func handleSpotlightActivity(_ activity: NSUserActivity) {
         guard
             let id = activity.userInfo?[CSSearchableItemActivityIdentifier] as? String
         else {
