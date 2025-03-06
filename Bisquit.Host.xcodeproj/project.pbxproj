@@ -1433,14 +1433,6 @@
 		F3F061D72A73C9A500470F7E /* Map VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A92A177ED100530615 /* Map VM.swift */; };
 		F3F061D82A73CD4E00470F7E /* Server List Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B3A729BC6B5400CC1195 /* Server List Grid.swift */; };
 		F3F061DA2A73CE1200470F7E /* Server Card Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F061D92A73CE1200470F7E /* Server Card Parent.swift */; };
-		F3F0A2B72D627ABB0084013B /* Network Lost View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F0A2B62D627ABB0084013B /* Network Lost View.swift */; };
-		F3F0A2B82D627ABB0084013B /* Network Lost View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F0A2B62D627ABB0084013B /* Network Lost View.swift */; };
-		F3F0A2B92D627ABB0084013B /* Network Lost View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F0A2B62D627ABB0084013B /* Network Lost View.swift */; };
-		F3F0A2BA2D627ABB0084013B /* Network Lost View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F0A2B62D627ABB0084013B /* Network Lost View.swift */; };
-		F3F0A2BB2D627ABB0084013B /* Network Lost View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F0A2B62D627ABB0084013B /* Network Lost View.swift */; };
-		F3F0A2BC2D627ABB0084013B /* Network Lost View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F0A2B62D627ABB0084013B /* Network Lost View.swift */; };
-		F3F0A2BD2D627ABB0084013B /* Network Lost View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F0A2B62D627ABB0084013B /* Network Lost View.swift */; };
-		F3F0A2BE2D627ABB0084013B /* Network Lost View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F0A2B62D627ABB0084013B /* Network Lost View.swift */; };
 		F3F0A2DA2D62AEDC0084013B /* Gauge Disk.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378EF8229D6C91300BC4849 /* Gauge Disk.swift */; };
 		F3F0A2DB2D6339510084013B /* Bisquit.Host App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* Bisquit.Host App.swift */; };
 		F3F0A2DC2D63395F0084013B /* App Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5672959006F0006D126 /* App Container.swift */; };
@@ -2054,7 +2046,6 @@
 		F3EDEE3729C0CB5A00B08696 /* Websocket Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Websocket Message.swift"; sourceTree = "<group>"; };
 		F3EDEE3929C0CB8000B08696 /* Websocket Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Websocket Delegate.swift"; sourceTree = "<group>"; };
 		F3F061D92A73CE1200470F7E /* Server Card Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Parent.swift"; sourceTree = "<group>"; };
-		F3F0A2B62D627ABB0084013B /* Network Lost View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network Lost View.swift"; sourceTree = "<group>"; };
 		F3F2A5BA29AC296D00AD20A4 /* Server Card Suspended.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Suspended.swift"; sourceTree = "<group>"; };
 		F3F2BBA42A540B8800D44CA6 /* Start Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page.swift"; sourceTree = "<group>"; };
 		F3F5BC952BF7668E00EB8FB1 /* Sensitivity Analyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sensitivity Analyzer.swift"; sourceTree = "<group>"; };
@@ -2412,7 +2403,6 @@
 			isa = PBXGroup;
 			children = (
 				F31BA5262958FF7C0006D126 /* Bisquit.Host App.swift */,
-				F3F0A2B62D627ABB0084013B /* Network Lost View.swift */,
 				F3B1196C29A13CA6003BB68C /* Value Store.swift */,
 				F3D52B242B13FE9C00167DD6 /* App Delegate.swift */,
 				F3BC03C02B2063820011F98A /* Debug Key.swift */,
@@ -4355,7 +4345,6 @@
 				F3202D1A2D562B980030B3CC /* Browser Card VDS.swift in Sources */,
 				F3EB09DB2A295C550073916A /* Video File.swift in Sources */,
 				F33CDBFE2A26B8BC008D0214 /* Plan Models.swift in Sources */,
-				F3F0A2BA2D627ABB0084013B /* Network Lost View.swift in Sources */,
 				F33CDC032A26B95C008D0214 /* Browser Card.swift in Sources */,
 				F370804B2A2A1CA70046CE70 /* Backup List Footer.swift in Sources */,
 				F3BC03C72B20675E0011F98A /* New Schedule Sheet.swift in Sources */,
@@ -4647,7 +4636,6 @@
 				F34076502A37701C0054BDCA /* Console Search.swift in Sources */,
 				F3880A262A92A15E0052A978 /* Contact Manager.swift in Sources */,
 				F3DC4E2229AEAF3E00D27EC5 /* Credentials Button.swift in Sources */,
-				F3F0A2BC2D627ABB0084013B /* Network Lost View.swift in Sources */,
 				F3B637522A35F3EA00CB374C /* Command Line.swift in Sources */,
 				F32FD0312CF606960038D62C /* Backup Context Menu Control Group.swift in Sources */,
 				F3AB4A942CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
@@ -4843,7 +4831,6 @@
 				F3C9D85D2B31146E00265492 /* User Avatar.swift in Sources */,
 				F3D558B22A33C6A000608447 /* File Tab VM.swift in Sources */,
 				F3762D9F2A581B150016AC44 /* Log List Parent.swift in Sources */,
-				F3F0A2BB2D627ABB0084013B /* Network Lost View.swift in Sources */,
 				F37266E129D9A7BA005FD103 /* Panel View.swift in Sources */,
 				F348C6E12A54380D002D5BD6 /* Intro.swift in Sources */,
 				F3464D362A863A6800188B0C /* Send Command.swift in Sources */,
@@ -5047,7 +5034,6 @@
 				F367977F2A3A5AB6009F2788 /* Log VM.swift in Sources */,
 				F3FF5A0D2A4A386F003A1973 /* Users VM.swift in Sources */,
 				F3D295182AF396FD00ED43A0 /* Tabs.swift in Sources */,
-				F3F0A2BD2D627ABB0084013B /* Network Lost View.swift in Sources */,
 				F3E1D3F42B320A6A009B7062 /* Permissions Header.swift in Sources */,
 				F34BB6BB2D3DC2B800D27BE0 /* File Preview VM.swift in Sources */,
 				F36D532D2A05B87E007324C6 /* Schedule List.swift in Sources */,
@@ -5294,7 +5280,6 @@
 				F38F9E152CE7647D0033EFE3 /* Image Playground.swift in Sources */,
 				F3D295572AF39E2100ED43A0 /* Tip Suspended Server.swift in Sources */,
 				F3D295382AF39D1700ED43A0 /* Nav State.swift in Sources */,
-				F3F0A2B72D627ABB0084013B /* Network Lost View.swift in Sources */,
 				F31F32042D52DB950095DD19 /* Color Theme.swift in Sources */,
 				F3D295A22AF3A0AA00ED43A0 /* Map VM.swift in Sources */,
 				F3D295AE2AF3A10300ED43A0 /* Cache Size.swift in Sources */,
@@ -5492,7 +5477,6 @@
 				F3202D242D562B990030B3CC /* Browser Card Web.swift in Sources */,
 				F3A7CF662C8CA60E00413400 /* Cloud Key Context Menu.swift in Sources */,
 				F37CE9C42D555D9600716D28 /* Server List VM.swift in Sources */,
-				F3F0A2BE2D627ABB0084013B /* Network Lost View.swift in Sources */,
 				F3A7CF082C8BBC7600413400 /* Guide.swift in Sources */,
 				F3A7CEEC2C8BB77500413400 /* Server Card Parent.swift in Sources */,
 				F3A7CF0E2C8C43BB00413400 /* Topbar Admin Button.swift in Sources */,
@@ -5569,7 +5553,6 @@
 				F386941A2A4B3AE1002DEF90 /* Info Tab.swift in Sources */,
 				F37EA79C2B722B390029DE00 /* Backup VM.swift in Sources */,
 				F30C131A2A54626D00A7EFF0 /* Bisquit.Host App.swift in Sources */,
-				F3F0A2B92D627ABB0084013B /* Network Lost View.swift in Sources */,
 				F3202D582D5758E50030B3CC /* Log View Parent.swift in Sources */,
 				F3202D592D5758E50030B3CC /* Log Detail View.swift in Sources */,
 				F3A31B0C2B0B161D00F89C51 /* Cloud Key Card.swift in Sources */,
@@ -5741,7 +5724,6 @@
 				F323D8D52A2D67A3002EDC62 /* Upload File.swift in Sources */,
 				F3A800332A7313E900CAC40B /* Tip Cloud Keys.swift in Sources */,
 				F3E08EC62A2CEA6400116C1C /* Start Page VM.swift in Sources */,
-				F3F0A2B82D627ABB0084013B /* Network Lost View.swift in Sources */,
 				F3F061D62A73C9A300470F7E /* Map List.swift in Sources */,
 				F35B9F552A2D6D380045D014 /* Formatters.swift in Sources */,
 				F30088B32B3A20620051476C /* Backup Card.swift in Sources */,
