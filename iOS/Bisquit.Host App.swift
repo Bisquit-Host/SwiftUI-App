@@ -41,6 +41,10 @@ struct BisquitHostApp: App {
             .displayFrequency(.immediate)
         ])
         
+#if canImport(MetricKit)
+        _ = MetricKitManager.shared
+#endif
+        
 #if os(watchOS)
         GKLocalPlayer.local.authenticateHandler = { error in
             guard error == nil else {

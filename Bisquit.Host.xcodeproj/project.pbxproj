@@ -988,6 +988,12 @@
 		F3A994AC2A17904F00530615 /* Map VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A92A177ED100530615 /* Map VM.swift */; };
 		F3A994AE2A17A9B100530615 /* Map List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994AD2A17A9B100530615 /* Map List.swift */; };
 		F3A994AF2A17AED500530615 /* Map List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994AD2A17A9B100530615 /* Map List.swift */; };
+		F3AB1DF42D79C42B00387164 /* MetricKit Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB1DF32D79C42B00387164 /* MetricKit Manager.swift */; };
+		F3AB1DF52D79C42B00387164 /* MetricKit Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB1DF32D79C42B00387164 /* MetricKit Manager.swift */; };
+		F3AB1DF62D79C42B00387164 /* MetricKit Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB1DF32D79C42B00387164 /* MetricKit Manager.swift */; };
+		F3AB1DF72D79C42B00387164 /* MetricKit Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB1DF32D79C42B00387164 /* MetricKit Manager.swift */; };
+		F3AB1DF92D79C42B00387164 /* MetricKit Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB1DF32D79C42B00387164 /* MetricKit Manager.swift */; };
+		F3AB1DFA2D79C42B00387164 /* MetricKit Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB1DF32D79C42B00387164 /* MetricKit Manager.swift */; };
 		F3AB4A772CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A762CF1D97C00A8252F /* Tip JSON Formatter.swift */; };
 		F3AB4A782CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A762CF1D97C00A8252F /* Tip JSON Formatter.swift */; };
 		F3AB4A792CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A762CF1D97C00A8252F /* Tip JSON Formatter.swift */; };
@@ -1931,6 +1937,7 @@
 		F3A994A72A177DA400530615 /* Map View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Map View.swift"; sourceTree = "<group>"; };
 		F3A994A92A177ED100530615 /* Map VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Map VM.swift"; sourceTree = "<group>"; };
 		F3A994AD2A17A9B100530615 /* Map List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Map List.swift"; sourceTree = "<group>"; };
+		F3AB1DF32D79C42B00387164 /* MetricKit Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MetricKit Manager.swift"; sourceTree = "<group>"; };
 		F3AB4A762CF1D97C00A8252F /* Tip JSON Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tip JSON Formatter.swift"; sourceTree = "<group>"; };
 		F3AB4A892CF3DAC900A8252F /* Backup Card VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Backup Card VM.swift"; sourceTree = "<group>"; };
 		F3AB4A8F2CF3EC6700A8252F /* Tip Server Card Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tip Server Card Context Menu.swift"; sourceTree = "<group>"; };
@@ -2403,6 +2410,7 @@
 			isa = PBXGroup;
 			children = (
 				F31BA5262958FF7C0006D126 /* Bisquit.Host App.swift */,
+				F3AB1DF32D79C42B00387164 /* MetricKit Manager.swift */,
 				F3B1196C29A13CA6003BB68C /* Value Store.swift */,
 				F3D52B242B13FE9C00167DD6 /* App Delegate.swift */,
 				F3BC03C02B2063820011F98A /* Debug Key.swift */,
@@ -4757,6 +4765,7 @@
 				F3BBE36429AF97D800323C6B /* Credential Field.swift in Sources */,
 				F33944112A49022A00E2F0FC /* Info Tab Card.swift in Sources */,
 				F3A7BCD1296B44FF00E080C1 /* Nav Extension.swift in Sources */,
+				F3AB1DF72D79C42B00387164 /* MetricKit Manager.swift in Sources */,
 				F3BC03B22B1FF4830011F98A /* Task Context Menu.swift in Sources */,
 				F3AF91C92B4235BB001D8F80 /* SSH Card.swift in Sources */,
 				F384D8BC2D5BE495000FC41D /* Crypto Price Widget.intentdefinition in Sources */,
@@ -4907,6 +4916,7 @@
 				F389BB622A05B58E00911EBF /* Server Card VM.swift in Sources */,
 				F325F7072A54C4BC00E89EC4 /* System Alerts.swift in Sources */,
 				F3C9D85E2B31146E00265492 /* User Avatar.swift in Sources */,
+				F3AB1DF92D79C42B00387164 /* MetricKit Manager.swift in Sources */,
 				F33944122A49022A00E2F0FC /* Info Tab Card.swift in Sources */,
 				F389BB6E2A05B5F400911EBF /* Cache Limit.swift in Sources */,
 				F3B637302A35A82F00CB374C /* Console Inspector.swift in Sources */,
@@ -5261,6 +5271,7 @@
 				F36B73A72C8B0B7B00E858FE /* Audio Player View.swift in Sources */,
 				F3D2954E2AF39DE000ED43A0 /* Browser Topbar.swift in Sources */,
 				F3202D082D562AE20030B3CC /* Browser List VDS.swift in Sources */,
+				F3AB1DFA2D79C42B00387164 /* MetricKit Manager.swift in Sources */,
 				F32E88CA2AF83E3F00959D49 /* Topbar Admin Button.swift in Sources */,
 				F3D295C92AF3A20B00ED43A0 /* Credential Field.swift in Sources */,
 				F3D295AC2AF3A0F700ED43A0 /* Cache Model.swift in Sources */,
@@ -5458,6 +5469,7 @@
 				F3255E1D2C904A56008E04DE /* Account VM.swift in Sources */,
 				F3A7CF102C8C4C2700413400 /* Server List Filter.swift in Sources */,
 				F3202D2B2D562B9A0030B3CC /* Browser Card Bot.swift in Sources */,
+				F3AB1DF52D79C42B00387164 /* MetricKit Manager.swift in Sources */,
 				F3A7CEEA2C8BB74D00413400 /* Server List Grid.swift in Sources */,
 				F3A7CF0D2C8C43B100413400 /* Topbar Grid Button.swift in Sources */,
 				F3202D072D562AE20030B3CC /* Browser List VDS.swift in Sources */,
@@ -5608,6 +5620,7 @@
 				F30C130C2A545F4400A7EFF0 /* Value Store.swift in Sources */,
 				F38928232A44182F00561CDF /* Console.swift in Sources */,
 				F3F2BBA92A540DF900D44CA6 /* Nav State.swift in Sources */,
+				F3AB1DF42D79C42B00387164 /* MetricKit Manager.swift in Sources */,
 				F34F289F2ACDADA600FD618A /* Animated Tab.swift in Sources */,
 				F3A7CF6B2A44F6E000331B51 /* Circular Gauge.swift in Sources */,
 				F3E679B22D5A854700A7ADDE /* Server Options Provider.swift in Sources */,
@@ -5679,6 +5692,7 @@
 				F35B89BF2A725CF7000B5EEF /* Tip Suspended Server.swift in Sources */,
 				F30C13102A54606900A7EFF0 /* Nav Extension.swift in Sources */,
 				F300892A2B3C55CD0051476C /* File Permissions Parent.swift in Sources */,
+				F3AB1DF62D79C42B00387164 /* MetricKit Manager.swift in Sources */,
 				F32FD7232B1E065600723B88 /* Network Calls.swift in Sources */,
 				F3202C7A2D558B210030B3CC /* Spotlight Index.swift in Sources */,
 				F3FD9F9E2C651F4800A69314 /* Sensitivity Analyzer.swift in Sources */,
