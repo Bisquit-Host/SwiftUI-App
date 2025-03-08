@@ -51,7 +51,7 @@ struct PermissionsHeader: View {
                     .numericTransition()
             }
             
-            Toggle("Show description (ru)", isOn: $showDescription)
+            Toggle("Show description", isOn: $showDescription)
         }
     }
 }

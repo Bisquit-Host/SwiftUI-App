@@ -4570,21 +4570,8 @@
         }
       }
     },
-    "Show description (ru)" : {
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toon beschrijving (ru)"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Показать описание"
-          }
-        }
-      }
+    "Show description" : {
+
     },
     "Show power buttons" : {
       "localizations" : {
