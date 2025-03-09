@@ -53,7 +53,7 @@ struct StartPage: View {
         .background(Color(0xe3a65e))
         .statusBarHidden()
         .overlay(alignment: .bottom) {
-            StartPageFooter()
+            StartPageFooter(keys.count > 0)
                 .environment(vm)
         }
         .onChange(of: vm.apiKey) { _, newValue in
