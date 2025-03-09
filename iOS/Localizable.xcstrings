@@ -575,6 +575,9 @@
         }
       }
     },
+    "App version" : {
+
+    },
     "Apps" : {
       "localizations" : {
         "nl" : {
@@ -4925,6 +4928,9 @@
           }
         }
       }
+    },
+    "Sync" : {
+
     },
     "System" : {
       "localizations" : {

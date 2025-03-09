@@ -33,6 +33,14 @@ struct SubdomainCard: View {
         .contextMenu {
 #if !os(tvOS)
             Button {
+                Task {
+                    await vm.syncSubdomain(subdomain.id)
+                }
+            } label: {
+                Label("Sync", systemImage: "arrow.trianglehead.2.clockwise.rotate.90")
+            }
+            
+            Button {
                 UIPasteboard.general.string = fullDomain
             } label: {
                 Label("Copy", systemImage: "document.on.document")

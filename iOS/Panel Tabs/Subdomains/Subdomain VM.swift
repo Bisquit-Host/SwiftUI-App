@@ -45,6 +45,26 @@ final class SubdomainVM {
         }
     }
     
+    func syncSubdomain(_ subdomainId: Int) async {
+        guard
+            let url = URL(string: "https://mgr.bisquit.host/api/client/extensions/subdomainmanager/servers/" + id + "/" + String(subdomainId) + "/sync"),
+            let apiKey = Keychain.load(key: "selectedApiKey")
+        else {
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpShouldHandleCookies = false
+        request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
+        
+        do {
+            let _ = try await URLSession.shared.data(for: request)
+        } catch {
+            SystemAlert.error(error)
+        }
+    }
+    
     func createSubdomain(onSuccess: @escaping () -> Void) async {
         guard
             let url = URL(string: "https://mgr.bisquit.host/api/client/extensions/subdomainmanager/servers/" + id),
