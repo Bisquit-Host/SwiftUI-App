@@ -1,10 +1,13 @@
 import ScrechKit
 import PteroNet
+import SwiftData
 
 struct SettingsButton: View {
     @Environment(ServerListVM.self) private var vm
     @Environment(NavState.self) private var navState
     @EnvironmentObject private var store: ValueStore
+    
+    @Query(animation: .default) private var keys: [APIKey]
     
     @State private var sheetAccount = false
     @State private var sheetSettings = false
@@ -17,8 +20,10 @@ struct SettingsButton: View {
                 TopbarGridButton()
             }
             
-            MenuButton("Switch Account", icon: "arrow.trianglehead.2.clockwise.rotate.90") {
-                vm.sheetKeyStorage = true
+            if keys.count > 0 {
+                MenuButton("Switch Account", icon: "arrow.trianglehead.2.clockwise.rotate.90") {
+                    vm.sheetKeyStorage = true
+                }
             }
             
             MenuButton("Account", icon: "person.crop.circle") {
