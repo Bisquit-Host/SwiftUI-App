@@ -1,4 +1,5 @@
 import ScrechKit
+import SwiftData
 import Kingfisher
 import PteroNet
 
@@ -17,7 +18,7 @@ struct Settings: View {
             Button {
                 sheetKeyStorage = true
             } label: {
-                Label("Switch Account", systemImage: "arrow.trianglehead.2.clockwise.rotate.90")
+                Label("Accounts", systemImage: "arrow.trianglehead.2.clockwise.rotate.90")
             }
             
             Button("API-key Creation") {
