@@ -1088,7 +1088,6 @@
 		F3C9D8522B3059E700265492 /* UIVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D8502B3059E700265492 /* UIVideoPlayer.swift */; };
 		F3C9D8532B3060D100265492 /* Video Player VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D84D2B30598000265492 /* Video Player VM.swift */; };
 		F3C9D8542B3060E100265492 /* UIVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D8502B3059E700265492 /* UIVideoPlayer.swift */; };
-		F3C9D8562B3090F500265492 /* Auth View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D8552B3090F500265492 /* Auth View.swift */; };
 		F3C9D8582B31135B00265492 /* Permission List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D8572B31135B00265492 /* Permission List.swift */; };
 		F3C9D8592B31135B00265492 /* Permission List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D8572B31135B00265492 /* Permission List.swift */; };
 		F3C9D85A2B31135B00265492 /* Permission List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D8572B31135B00265492 /* Permission List.swift */; };
@@ -1964,7 +1963,6 @@
 		F3C9D8492B302AA200265492 /* File Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Context Menu.swift"; sourceTree = "<group>"; };
 		F3C9D84D2B30598000265492 /* Video Player VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Video Player VM.swift"; sourceTree = "<group>"; };
 		F3C9D8502B3059E700265492 /* UIVideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVideoPlayer.swift; sourceTree = "<group>"; };
-		F3C9D8552B3090F500265492 /* Auth View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auth View.swift"; sourceTree = "<group>"; };
 		F3C9D8572B31135B00265492 /* Permission List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Permission List.swift"; sourceTree = "<group>"; };
 		F3C9D85B2B31146E00265492 /* User Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Avatar.swift"; sourceTree = "<group>"; };
 		F3C9D85F2B319B9E00265492 /* Permission Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Permission Card.swift"; sourceTree = "<group>"; };
@@ -3325,7 +3323,6 @@
 			isa = PBXGroup;
 			children = (
 				F3000E17295A496C00ABD30A /* Intro.swift */,
-				F3C9D8552B3090F500265492 /* Auth View.swift */,
 			);
 			path = Intro;
 			sourceTree = "<group>";
@@ -4396,7 +4393,6 @@
 				F3202D362D5633270030B3CC /* Browser List MCRU.swift in Sources */,
 				F3BC03BD2B1FFBD50011F98A /* Backup Context Menu.swift in Sources */,
 				F33CDC022A26B930008D0214 /* Browser.swift in Sources */,
-				F3C9D8562B3090F500265492 /* Auth View.swift in Sources */,
 				F30088FA2B3B561E0051476C /* User List Parent.swift in Sources */,
 				F3202D282D562B9A0030B3CC /* Browser Card Bot.swift in Sources */,
 				F30088FF2B3B62050051476C /* User Invitation Permission.swift in Sources */,

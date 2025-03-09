@@ -79,7 +79,7 @@ struct ServerList: View {
                 }
                 
                 Menu {
-                    MenuButton("Accounts", icon: "arrow.trianglehead.2.clockwise.rotate.90") {
+                    MenuButton("Switch Account", icon: "arrow.trianglehead.2.clockwise.rotate.90") {
                         vm.sheetKeyStorage = true
                     }
                     
