@@ -35,16 +35,6 @@ struct ServerList: View {
         .safariCover($vm.showBilling, url: "https://my.bisquit.host")
         .appStoreOverlay($vm.alertUpdate, id: "1639409934")
         .navigationBarBackButtonHidden()
-        //#warning("Uncomment")
-        //        .toolbar {
-        //            ServerListOrnament($sheetSettings)
-        //                .environment(vm)
-        //
-        //#warning("doesn't update servers")
-        //            //            ServerListToolbar {
-        //            //                vm.fetchServers(store.adminServerList)
-        //            //            }
-        //        }
         .refreshableTask {
             vm.fetchServers(store.adminServerList)
         }
@@ -65,6 +55,16 @@ struct ServerList: View {
             }
         }
         .toolbar {
+#warning("Uncomment")
+            //        .toolbar {
+            //            ServerListOrnament($sheetSettings)
+            //                .environment(vm)
+            //
+            //        #warning("doesn't update servers")
+            //            //            ServerListToolbar {
+            //            //                vm.fetchServers(store.adminServerList)
+            //            //            }
+            //        }
             ToolbarItemGroup(placement: .topBarTrailing) {
                 Menu {
                     Button {

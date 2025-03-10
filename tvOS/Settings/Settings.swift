@@ -1,4 +1,5 @@
 import ScrechKit
+import SwiftData
 import Kingfisher
 import PteroNet
 

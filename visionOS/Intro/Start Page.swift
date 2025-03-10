@@ -28,16 +28,6 @@ struct StartPage: View {
             }
             .padding(10)
             
-            Button("Debug") {
-                Keychain.save(key: "selectedApiKey", value: debugKey)
-                
-                if !keys.contains(where: { $0.key == debugKey }) {
-                    modelContext.insert(APIKey("Debug", key: debugKey))
-                }
-                
-                store.authSucced()
-            }
-            
             NavigationLink("API-key Creation") {
                 Guide()
             }
@@ -63,6 +53,17 @@ struct StartPage: View {
             Button("Try again") {}
         } message: {
             Text(vm.errorDescription)
+        }
+        .toolbar {
+            Button("Debug") {
+                Keychain.save(key: "selectedApiKey", value: debugKey)
+                
+                if !keys.contains(where: { $0.key == debugKey }) {
+                    modelContext.insert(APIKey("Debug", key: debugKey))
+                }
+                
+                store.authSucced()
+            }
         }
         .alert("Is the following information correct?", isPresented: $vm.alertValid) {
             Button("Yes", role: .cancel) {
