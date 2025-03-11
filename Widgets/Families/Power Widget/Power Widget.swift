@@ -10,33 +10,12 @@ struct PowerWidget: Widget {
             intent: CryptoPriceConfigurationIntent.self,
             provider: ResourcesTimelineProvider()
         ) { entry in
-            VStack {
-                let id = entry.id
-                
-                if id.isEmpty || id.count != 8 {
-                    Text("Configure first")
-                } else {
-                    Text(id)
-                    
-                    HStack {
-                        Button(intent: StartServerIntent(id)) {
-                            Text("Start")
-                        }
-                        
-                        Button(role: .destructive, intent: StopServerIntent(id)) {
-                            Text("Stop")
-                        }
-                    }
-                    
-                    Button(intent: RestartServerIntent(id)) {
-                        Text("Restart")
-                    }
-                }
-            }
-            .containerBackground(for: .widget) {}
+            PowerWidgetView(entry)
+                .containerBackground(.ultraThinMaterial, for: .widget)
         }
         .configurationDisplayName("Change Power")
         .description("Send power signals to your server")
+        .contentMarginsDisabled()
         .supportedFamilies([
             .systemSmall
         ])

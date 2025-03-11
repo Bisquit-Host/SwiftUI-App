@@ -375,8 +375,30 @@
     "1" : {
       "shouldTranslate" : false
     },
+    "1. **Long press** the widget" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. **Удерживайте** виджет"
+          }
+        }
+      }
+    },
     "1.2.3.4.43.34" : {
       "shouldTranslate" : false
+    },
+    "2. Tap on **Edit Widget**" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. Нажмите на **Изменить виджет**"
+          }
+        }
+      }
     },
     "2d 12:12:12" : {
       "shouldTranslate" : false
@@ -396,6 +418,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "2FA включена"
+          }
+        }
+      }
+    },
+    "3. **Choose a server** from the list" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. **Выберите сервер** из списка"
           }
         }
       }
@@ -1091,22 +1123,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Конфигурации"
-          }
-        }
-      }
-    },
-    "Configure first" : {
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Eerst configureren"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Необходима конфигурация"
           }
         }
       }

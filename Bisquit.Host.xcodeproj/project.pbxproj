@@ -423,6 +423,7 @@
 		F337C16A2A8D07E2006F321C /* Startup VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337C1682A8D07E2006F321C /* Startup VM.swift */; };
 		F337D7592A4DBC840011524E /* Create Apikey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337D7582A4DBC840011524E /* Create Apikey.swift */; };
 		F337D75A2A4DBC840011524E /* Create Apikey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337D7582A4DBC840011524E /* Create Apikey.swift */; };
+		F3393E922D802C2300E71438 /* Power Widget View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3393E912D802C2300E71438 /* Power Widget View.swift */; };
 		F33944112A49022A00E2F0FC /* Info Tab Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33944102A49022A00E2F0FC /* Info Tab Card.swift */; };
 		F33944122A49022A00E2F0FC /* Info Tab Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33944102A49022A00E2F0FC /* Info Tab Card.swift */; };
 		F33C2AC12C69168C002FD150 /* QuickLooking in Frameworks */ = {isa = PBXBuildFile; productRef = F33C2AC02C69168C002FD150 /* QuickLooking */; };
@@ -1742,6 +1743,7 @@
 		F337C1612A8CE7C0006F321C /* Startup Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Startup Card.swift"; sourceTree = "<group>"; };
 		F337C1682A8D07E2006F321C /* Startup VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Startup VM.swift"; sourceTree = "<group>"; };
 		F337D7582A4DBC840011524E /* Create Apikey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Create Apikey.swift"; sourceTree = "<group>"; };
+		F3393E912D802C2300E71438 /* Power Widget View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Widget View.swift"; sourceTree = "<group>"; };
 		F33944102A49022A00E2F0FC /* Info Tab Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab Card.swift"; sourceTree = "<group>"; };
 		F33CDBFA2A26A571008D0214 /* Server Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card.swift"; sourceTree = "<group>"; };
 		F33DE4E62B35089000E257D8 /* Background Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Background Blur.swift"; sourceTree = "<group>"; };
@@ -2659,6 +2661,7 @@
 			isa = PBXGroup;
 			children = (
 				F323BFA12B20DC9000116B97 /* Power Widget.swift */,
+				F3393E912D802C2300E71438 /* Power Widget View.swift */,
 				F323BFA62B211C6D00116B97 /* Power Provider.swift */,
 				F323BFA42B211C3700116B97 /* Power Entry.swift */,
 				F386373F2A8641120069F074 /* Power Intent Config.swift */,
@@ -5399,6 +5402,7 @@
 				F3CE5C972D5412C60094BD7B /* Intent Handler.swift in Sources */,
 				F3E679B42D5AB23A00A7ADDE /* Server Options Provider.swift in Sources */,
 				F323BFA52B211C3700116B97 /* Power Entry.swift in Sources */,
+				F3393E922D802C2300E71438 /* Power Widget View.swift in Sources */,
 				F36B738A2C8AEC3D00E858FE /* Resources Timeline Provider.swift in Sources */,
 				F371468E2B123807001E0296 /* Activity View State.swift in Sources */,
 				F386373E2A8641120069F074 /* System Small Widget.swift in Sources */,
