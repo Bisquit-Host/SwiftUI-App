@@ -378,10 +378,40 @@
     "1. **Long press** the widget" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "variations" : {
+            "device" : {
+              "mac" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "1. **Right-click** the widget"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "new",
+                  "value" : "1. **Long press** the widget"
+                }
+              }
+            }
+          }
+        },
         "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "1. **Удерживайте** виджет"
+          "variations" : {
+            "device" : {
+              "mac" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "1. **ПКМ** по виджету"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "1. **Удерживайте** виджет"
+                }
+              }
+            }
           }
         }
       }
