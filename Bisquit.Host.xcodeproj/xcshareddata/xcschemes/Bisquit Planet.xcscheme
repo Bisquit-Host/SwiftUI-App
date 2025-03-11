@@ -52,8 +52,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F38637362A8641120069F074"
-               BuildableName = "Widgets Extension.appex"
-               BlueprintName = "Widgets Extension"
+               BuildableName = "Widgets.appex"
+               BlueprintName = "Widgets"
                ReferencedContainer = "container:Bisquit.Host.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

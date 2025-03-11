@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1600"
+   LastUpgradeVersion = "1630"
+   wasCreatedForAppExtension = "YES"
    version = "2.0">
    <BuildAction
       parallelizeBuildables = "YES"
-      buildImplicitDependencies = "YES">
+      buildImplicitDependencies = "YES"
+      buildArchitectures = "Automatic">
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
@@ -14,9 +16,23 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F38637362A8641120069F074"
-               BuildableName = "Widgets Extension.appex"
-               BlueprintName = "Widgets Extension"
+               BlueprintIdentifier = "F3E2BEF42C1DA07E00B7A6D4"
+               BuildableName = "Contact Provider.appex"
+               BlueprintName = "Contact Provider"
+               ReferencedContainer = "container:Bisquit.Host.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F31BA5222958FF7C0006D126"
+               BuildableName = "Bisquit.Host.app"
+               BlueprintName = "Bisquit.Host"
                ReferencedContainer = "container:Bisquit.Host.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -41,23 +57,16 @@
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
       launchAutomaticallySubstyle = "2">
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "_XCWidgetKind"
-            value = ""
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "_XCWidgetDefaultView"
-            value = "timeline"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "_XCWidgetFamily"
-            value = "systemMedium"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "F31BA5222958FF7C0006D126"
+            BuildableName = "Bisquit.Host.app"
+            BlueprintName = "Bisquit.Host"
+            ReferencedContainer = "container:Bisquit.Host.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -67,15 +76,16 @@
       debugDocumentVersioning = "YES"
       askForAppToLaunch = "Yes"
       launchAutomaticallySubstyle = "2">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F38637362A8641120069F074"
-            BuildableName = "Widgets Extension.appex"
-            BlueprintName = "Widgets Extension"
+            BlueprintIdentifier = "F31BA5222958FF7C0006D126"
+            BuildableName = "Bisquit.Host.app"
+            BlueprintName = "Bisquit.Host"
             ReferencedContainer = "container:Bisquit.Host.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
