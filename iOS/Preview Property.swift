@@ -19,8 +19,8 @@ final class PreviewProp {
             allocations: 5
         ),
         sftp: .init(
-            ip: "",
-            port: 0
+            ip: "1.23.456.78",
+            port: 1889
         ),
         isSuspended: false,
         serverOwner: true,

@@ -1,12 +1,20 @@
 import SwiftUI
 import GameKit
 
-struct LeaderboardButton: View {
+struct GameCenterButtons: View {
     var body: some View {
-        Button {
-            showLeaderboard()
-        } label: {
-            Label("Leaderboards", systemImage: "trophy")
+        Section {
+            Button {
+                showAchievements()
+            } label: {
+                Label("Achievements", systemImage: "star")
+            }
+            
+            Button {
+                showLeaderboard()
+            } label: {
+                Label("Leaderboards", systemImage: "trophy")
+            }
         }
     }
     
@@ -24,6 +32,22 @@ struct LeaderboardButton: View {
             playerScope: .global,
             timeScope: .allTime
         )
+        
+        gcVC.gameCenterDelegate = GameCenterDelegate.shared
+        rootVC.present(gcVC, animated: true)
+#endif
+    }
+    
+    private func showAchievements() {
+#if !os(macOS) && !os(watchOS)
+        guard
+            let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+            let rootVC = windowScene.keyWindow?.rootViewController
+        else {
+            return
+        }
+        
+        let gcVC = GKGameCenterViewController(state: .achievements)
         
         gcVC.gameCenterDelegate = GameCenterDelegate.shared
         rootVC.present(gcVC, animated: true)

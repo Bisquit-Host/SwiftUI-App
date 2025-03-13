@@ -872,13 +872,13 @@
 		F39E683F2D2D6A510002BA96 /* AudioVisualizer in Frameworks */ = {isa = PBXBuildFile; productRef = F39E683E2D2D6A510002BA96 /* AudioVisualizer */; };
 		F39E68412D2D6D2F0002BA96 /* File Error View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E68402D2D6D2F0002BA96 /* File Error View.swift */; };
 		F39EA2DF2D5CB5E200329468 /* Linking VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */; };
-		F39EA2E32D5D576D00329468 /* Leaderboard Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EA2E22D5D576D00329468 /* Leaderboard Button.swift */; };
-		F39EA2E42D5D576D00329468 /* Leaderboard Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EA2E22D5D576D00329468 /* Leaderboard Button.swift */; };
-		F39EA2E52D5D576D00329468 /* Leaderboard Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EA2E22D5D576D00329468 /* Leaderboard Button.swift */; };
-		F39EA2E62D5D576D00329468 /* Leaderboard Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EA2E22D5D576D00329468 /* Leaderboard Button.swift */; };
-		F39EA2E72D5D576D00329468 /* Leaderboard Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EA2E22D5D576D00329468 /* Leaderboard Button.swift */; };
-		F39EA2E92D5D576D00329468 /* Leaderboard Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EA2E22D5D576D00329468 /* Leaderboard Button.swift */; };
-		F39EA2EA2D5D576D00329468 /* Leaderboard Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EA2E22D5D576D00329468 /* Leaderboard Button.swift */; };
+		F39EA2E32D5D576D00329468 /* Game Center Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EA2E22D5D576D00329468 /* Game Center Buttons.swift */; };
+		F39EA2E42D5D576D00329468 /* Game Center Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EA2E22D5D576D00329468 /* Game Center Buttons.swift */; };
+		F39EA2E52D5D576D00329468 /* Game Center Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EA2E22D5D576D00329468 /* Game Center Buttons.swift */; };
+		F39EA2E62D5D576D00329468 /* Game Center Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EA2E22D5D576D00329468 /* Game Center Buttons.swift */; };
+		F39EA2E72D5D576D00329468 /* Game Center Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EA2E22D5D576D00329468 /* Game Center Buttons.swift */; };
+		F39EA2E92D5D576D00329468 /* Game Center Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EA2E22D5D576D00329468 /* Game Center Buttons.swift */; };
+		F39EA2EA2D5D576D00329468 /* Game Center Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EA2E22D5D576D00329468 /* Game Center Buttons.swift */; };
 		F39EA2F12D5E146300329468 /* Guide Step Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EA2F02D5E146300329468 /* Guide Step Card.swift */; };
 		F3A123562A667804008E3E20 /* Log View Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* Log View Parent.swift */; };
 		F3A123572A667804008E3E20 /* Log View Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* Log View Parent.swift */; };
@@ -1013,6 +1013,8 @@
 		F3AB4A9B2CF4031600A8252F /* Json Formatter Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A982CF4031600A8252F /* Json Formatter Button.swift */; };
 		F3AB4A9C2CF4031600A8252F /* Json Formatter Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A982CF4031600A8252F /* Json Formatter Button.swift */; };
 		F3AB4A9D2CF4031600A8252F /* Json Formatter Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A982CF4031600A8252F /* Json Formatter Button.swift */; };
+		F3AC0C0E2D82D2D90077AC61 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AC0C0D2D82D2D90077AC61 /* Home.swift */; };
+		F3AC0C0F2D82D2D90077AC61 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AC0C0D2D82D2D90077AC61 /* Home.swift */; };
 		F3AE522329ACF7D600CB3895 /* Server Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* Server Card VM.swift */; };
 		F3AF91C12B423492001D8F80 /* SSH VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91C02B423492001D8F80 /* SSH VM.swift */; };
 		F3AF91C22B423492001D8F80 /* SSH VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91C02B423492001D8F80 /* SSH VM.swift */; };
@@ -1894,7 +1896,7 @@
 		F39E68322D2D63980002BA96 /* Panel Ornament Power.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Ornament Power.swift"; sourceTree = "<group>"; };
 		F39E68402D2D6D2F0002BA96 /* File Error View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Error View.swift"; sourceTree = "<group>"; };
 		F39EA2E02D5D45E800329468 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/iOSSupport/System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
-		F39EA2E22D5D576D00329468 /* Leaderboard Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Leaderboard Button.swift"; sourceTree = "<group>"; };
+		F39EA2E22D5D576D00329468 /* Game Center Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Game Center Buttons.swift"; sourceTree = "<group>"; };
 		F39EA2F02D5E146300329468 /* Guide Step Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Guide Step Card.swift"; sourceTree = "<group>"; };
 		F3A123552A667804008E3E20 /* Log View Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log View Parent.swift"; sourceTree = "<group>"; };
 		F3A123592A6689FA008E3E20 /* User Email.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Email.swift"; sourceTree = "<group>"; };
@@ -1933,6 +1935,7 @@
 		F3AB4A892CF3DAC900A8252F /* Backup Card VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Backup Card VM.swift"; sourceTree = "<group>"; };
 		F3AB4A8F2CF3EC6700A8252F /* Tip Server Card Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tip Server Card Context Menu.swift"; sourceTree = "<group>"; };
 		F3AB4A982CF4031600A8252F /* Json Formatter Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Json Formatter Button.swift"; sourceTree = "<group>"; };
+		F3AC0C0D2D82D2D90077AC61 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		F3AE522229ACF7D600CB3895 /* Server Card VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card VM.swift"; sourceTree = "<group>"; };
 		F3AF91C02B423492001D8F80 /* SSH VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SSH VM.swift"; sourceTree = "<group>"; };
 		F3AF91C42B423535001D8F80 /* SSH List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SSH List.swift"; sourceTree = "<group>"; };
@@ -2488,7 +2491,7 @@
 			isa = PBXGroup;
 			children = (
 				F31578B229675F5D0016A600 /* Server List.swift */,
-				F39EA2E22D5D576D00329468 /* Leaderboard Button.swift */,
+				F39EA2E22D5D576D00329468 /* Game Center Buttons.swift */,
 				F352AF962A4EDB1D004AD489 /* Server List VM.swift */,
 				F3202CD22D559B6C0030B3CC /* VM extensions */,
 				F337B3A729BC6B5400CC1195 /* Server List Grid.swift */,
@@ -2517,6 +2520,7 @@
 			isa = PBXGroup;
 			children = (
 				F31BA59C295902280006D126 /* Info Tab.swift */,
+				F3AC0C0D2D82D2D90077AC61 /* Home.swift */,
 				F3B66DEF2D60B2B100F1841B /* Card */,
 				F325F6FF2A54BBCF00E89EC4 /* Info Tab Allocation.swift */,
 				F3FF5A022A4A359C003A1973 /* Info Tab Buttons.swift */,
@@ -4443,7 +4447,7 @@
 				F3EB09E02A297F250073916A /* Des Image VM.swift in Sources */,
 				F3BC03AE2B1FF2FC0011F98A /* Schedule Context Menu.swift in Sources */,
 				F37080532A2A1F730046CE70 /* Database Card.swift in Sources */,
-				F39EA2E62D5D576D00329468 /* Leaderboard Button.swift in Sources */,
+				F39EA2E62D5D576D00329468 /* Game Center Buttons.swift in Sources */,
 				F3FFB7452A57F8AD00220FA5 /* Map VM.swift in Sources */,
 				F3AB4A9C2CF4031600A8252F /* Json Formatter Button.swift in Sources */,
 				F39D68142A26373F00B9BDFC /* SptiteKit BisquitFall.swift in Sources */,
@@ -4507,6 +4511,7 @@
 				F39E0A982C1BA11600C4E906 /* Discover Item.swift in Sources */,
 				F300891F2B3B896C0051476C /* File Permissions View.swift in Sources */,
 				F3C9D8582B31135B00265492 /* Permission List.swift in Sources */,
+				F3AC0C0F2D82D2D90077AC61 /* Home.swift in Sources */,
 				F3EDEE3529C0C84C00B08696 /* Panel VM.swift in Sources */,
 				F3FF59FF2A4A3188003A1973 /* User List.swift in Sources */,
 				F37266C029D826F5005FD103 /* File Details.swift in Sources */,
@@ -4586,7 +4591,7 @@
 				F3D037022CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift in Sources */,
 				F3496DC929E00CE70089FC28 /* Create Button.swift in Sources */,
 				F3437CA2297360D30064808F /* Schedule Card.swift in Sources */,
-				F39EA2E52D5D576D00329468 /* Leaderboard Button.swift in Sources */,
+				F39EA2E52D5D576D00329468 /* Game Center Buttons.swift in Sources */,
 				F375EC3C29EE88EA002CA969 /* Schedule List.swift in Sources */,
 				F3202CCF2D559B240030B3CC /* Contacts Provider.swift in Sources */,
 				F3D7F8542C8F258B00368ECE /* Enable 2FA View.swift in Sources */,
@@ -4844,7 +4849,7 @@
 				F314617E2D5A82F000547B6C /* Model Asset.swift in Sources */,
 				F3D295152AF396FD00ED43A0 /* Tabs.swift in Sources */,
 				F3AB4A7A2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
-				F39EA2E92D5D576D00329468 /* Leaderboard Button.swift in Sources */,
+				F39EA2E92D5D576D00329468 /* Game Center Buttons.swift in Sources */,
 				F32FD02B2CF5E8DC0038D62C /* Console Message.swift in Sources */,
 				F3EB09D82A2958710073916A /* Text File VM.swift in Sources */,
 				F37266E429D9A867005FD103 /* Console.swift in Sources */,
@@ -4881,6 +4886,7 @@
 				F36D532C2A05B87A007324C6 /* Database List.swift in Sources */,
 				F337C16A2A8D07E2006F321C /* Startup VM.swift in Sources */,
 				F35DA95A2A28F80900803E7E /* Upload Progress.swift in Sources */,
+				F3AC0C0E2D82D2D90077AC61 /* Home.swift in Sources */,
 				F3202D0D2D562AE30030B3CC /* Browser List Web.swift in Sources */,
 				F36D53192A05B7F6007324C6 /* Panel VM.swift in Sources */,
 				F389BB6C2A05B5EA00911EBF /* Cache Settings.swift in Sources */,
@@ -4932,7 +4938,7 @@
 				F36D53442A05B90D007324C6 /* FileTab Context Menu.swift in Sources */,
 				F39872172A1B73830022B00E /* Video File.swift in Sources */,
 				F36D53312A05B89C007324C6 /* Schedule Card.swift in Sources */,
-				F39EA2E72D5D576D00329468 /* Leaderboard Button.swift in Sources */,
+				F39EA2E72D5D576D00329468 /* Game Center Buttons.swift in Sources */,
 				F35B2A0329FFF857006E5FD2 /* Plan Models.swift in Sources */,
 				F3FF5A002A4A3188003A1973 /* User List.swift in Sources */,
 				F36D53122A05B6FE007324C6 /* Discover.swift in Sources */,
@@ -5214,7 +5220,7 @@
 				F3D295E82AF3A3AD00ED43A0 /* Backup Card.swift in Sources */,
 				F3D2957F2AF39F5E00ED43A0 /* Suspended Card.swift in Sources */,
 				F3D2957E2AF39F5900ED43A0 /* Server Card Parent.swift in Sources */,
-				F39EA2EA2D5D576D00329468 /* Leaderboard Button.swift in Sources */,
+				F39EA2EA2D5D576D00329468 /* Game Center Buttons.swift in Sources */,
 				F3D295E12AF3A37A00ED43A0 /* Database List.swift in Sources */,
 				F3D295C72AF3A1FC00ED43A0 /* Credentials View.swift in Sources */,
 				F3D295D92AF3A34000ED43A0 /* Console Overlay.swift in Sources */,
@@ -5633,7 +5639,7 @@
 				F3202D552D5758CE0030B3CC /* Log List.swift in Sources */,
 				F39E68362D2D67A70002BA96 /* New Task Sheet.swift in Sources */,
 				F39E68372D2D67A70002BA96 /* Schedule Task.swift in Sources */,
-				F39EA2E32D5D576D00329468 /* Leaderboard Button.swift in Sources */,
+				F39EA2E32D5D576D00329468 /* Game Center Buttons.swift in Sources */,
 				F39E68382D2D67A70002BA96 /* Schedule Context Menu.swift in Sources */,
 				F3202CFE2D562AE10030B3CC /* Browser List Bot.swift in Sources */,
 				F39E68392D2D67A70002BA96 /* Schedule Card.swift in Sources */,
@@ -5704,7 +5710,7 @@
 				F3F061D72A73C9A500470F7E /* Map VM.swift in Sources */,
 				F3464D2B2A863A6000188B0C /* Create Backup.swift in Sources */,
 				F30088B82B3A218B0051476C /* Schedule Card.swift in Sources */,
-				F39EA2E42D5D576D00329468 /* Leaderboard Button.swift in Sources */,
+				F39EA2E42D5D576D00329468 /* Game Center Buttons.swift in Sources */,
 				F35BB0392C656AD300631DBD /* Carousel Button Style.swift in Sources */,
 				F3202D4B2D56DC050030B3CC /* Prefetcher.swift in Sources */,
 				F30088962B3A033F0051476C /* Log View Parent.swift in Sources */,
