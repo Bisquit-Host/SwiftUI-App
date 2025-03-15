@@ -22,8 +22,6 @@ struct FileTab: View {
         List {
             FileSearch($vm.searchField)
             
-            NewFolder(root)
-            
             UploadMenu($image, root: root)
             
             if #available(iOS 18.1, *) {
@@ -55,6 +53,9 @@ struct FileTab: View {
         .environmentObject(vm)
         .frame(maxWidth: 500)
         .safariCover($vm.showSafari, url: vm.downloadUrl)
+        .task {
+            vm.path = root
+        }
         .refreshableTask {
             vm.fetchFiles(root)
         }

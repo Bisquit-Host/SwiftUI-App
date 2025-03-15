@@ -2194,6 +2194,9 @@
         }
       }
     },
+    "Enter a folder name" : {
+
+    },
     "Enter manually" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -3218,6 +3221,9 @@
           }
         }
       }
+    },
+    "Me name folder" : {
+
     },
     "Member since" : {
       "localizations" : {

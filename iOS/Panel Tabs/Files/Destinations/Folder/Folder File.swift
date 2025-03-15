@@ -12,12 +12,11 @@ struct FolderFile: View {
     }
     
     @State private var image: UIImage?
+    @State private var alertNewFolder = false
     
     var body: some View {
         List {
             FileSearch($vm.searchField)
-            
-            NewFolder(root)
             
             UploadMenu($image, root: root)
             
@@ -43,6 +42,9 @@ struct FolderFile: View {
         .environmentObject(vm)
         .frame(maxWidth: 500)
         .safariCover($vm.showSafari, url: vm.downloadUrl)
+        .task {
+            vm.path = root
+        }
         .refreshableTask {
             vm.fetchFiles(root)
         }
@@ -50,6 +52,40 @@ struct FolderFile: View {
             if let image {
                 vm.handleImageImport(image, at: root)
             }
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    alertNewFolder = true
+                } label: {
+                    Image(systemName: "folder.badge.plus")
+                        .footnote(.bold)
+                        .frame(width: 35, height: 35)
+                        .background(.ultraThinMaterial, in: .circle)
+                }
+                .foregroundStyle(.primary)
+                .padding(.trailing, -10)
+            }
+        }
+        .alert(isPresented: $alertNewFolder) {
+            CustomDialog(
+                title: "New Folder",
+                content: "Enter a folder name",
+                image: .init(content: "folder.badge.plus", tint: .blue, foreground: .white),
+                button1: .init(content: "Create", tint: .blue, foreground: .white) { folder in
+                    if !folder.isEmpty {
+                        vm.createFolder(folder, at: root)
+                    }
+                    
+                    alertNewFolder = false
+                },
+                button2: .init(content: "Cancel", tint: .red, foreground: .white) { _ in
+                    alertNewFolder = false
+                },
+                addsTextField: true,
+                textFieldHint: "Me name folder"
+            )
+            .transition(.blurReplace.combined(with: .scale(0.8)))
         }
     }
     

@@ -27,6 +27,7 @@ struct PanelView: View {
     }
     
     @State private var sheetSettings = false
+    @State private var alertNewFolder = false
     
     var body: some View {
         TabView(selection: $store.lastTabPanel) {
@@ -81,7 +82,20 @@ struct PanelView: View {
                 .foregroundStyle(.primary)
             }
             
-            ToolbarItem(placement: .topBarTrailing) {
+            ToolbarItemGroup(placement: .topBarTrailing) {
+                if store.lastTabPanel == .files {
+                    Button {
+                        alertNewFolder = true
+                    } label: {
+                        Image(systemName: "folder.badge.plus")
+                            .footnote(.bold)
+                            .frame(width: 35, height: 35)
+                            .background(.ultraThinMaterial, in: .circle)
+                    }
+                    .foregroundStyle(.primary)
+                    .padding(.trailing, -10)
+                }
+                
                 Button {
                     sheetSettings = true
                 } label: {
@@ -105,6 +119,26 @@ struct PanelView: View {
                     vm.connectWebSocket(data)
                 }
             }
+        }
+        .alert(isPresented: $alertNewFolder) {
+            CustomDialog(
+                title: "New Folder",
+                content: "Enter a folder name",
+                image: .init(content: "folder.badge.plus", tint: .blue, foreground: .white),
+                button1: .init(content: "Create", tint: .blue, foreground: .white) { folder in
+                    if !folder.isEmpty {
+                        fileVM.createFolder(folder, at: fileVM.path)
+                    }
+                    
+                    alertNewFolder = false
+                },
+                button2: .init(content: "Cancel", tint: .red, foreground: .white) { _ in
+                    alertNewFolder = false
+                },
+                addsTextField: true,
+                textFieldHint: "Me name folder"
+            )
+            .transition(.blurReplace.combined(with: .scale(0.8)))
         }
     }
     
