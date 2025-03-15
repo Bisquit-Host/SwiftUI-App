@@ -858,22 +858,6 @@
         }
       }
     },
-    "Beta" : {
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Beta"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Бета"
-          }
-        }
-      }
-    },
     "Biometry Usage" : {
       "localizations" : {
         "ru" : {

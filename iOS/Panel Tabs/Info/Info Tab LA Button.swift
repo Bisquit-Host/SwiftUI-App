@@ -17,10 +17,13 @@ struct InfoTabLAButton: View {
                     la.stopAllLiveActivities()
                 } label: {
                     Text("Cancel")
-                        .foregroundStyle(.red)
-                        .frame(height: 25)
                         .padding()
-                        .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
+                        .foregroundStyle(.red)
+                        .background(.ultraThinMaterial, in: .capsule)
+                        .overlay {
+                            Capsule()
+                                .stroke(.gray.opacity(0.25), lineWidth: 1)
+                        }
                 }
             } else {
                 Button {
@@ -28,22 +31,17 @@ struct InfoTabLAButton: View {
                     la.startLiveActivity(server)
                 } label: {
                     Text("Live Activity")
-                        .frame(height: 25)
                         .padding()
-                        .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
+                        .background(.ultraThinMaterial, in: .capsule)
+                        .overlay {
+                            Capsule()
+                                .stroke(.gray.opacity(0.25), lineWidth: 1)
+                        }
                 }
             }
         }
         .title2(.semibold, design: .rounded)
         .foregroundStyle(.foreground)
-        .overlay(alignment: .topTrailing) {
-            Text("Beta")
-                .footnote(.bold, design: .rounded)
-                .foregroundStyle(.white.gradient)
-                .padding(.horizontal, 4)
-                .background(.blue.gradient, in: .capsule)
-                .padding(-6)
-        }
     }
 }
 

@@ -3,6 +3,7 @@ import PteroNet
 
 struct PermissionsHeader: View {
     @Environment(UsersVM.self) private var vm
+    @EnvironmentObject private var store: ValueStore
     
     private let user: UserAttributes
     @Binding private var showDescription: Bool
@@ -53,6 +54,7 @@ struct PermissionsHeader: View {
             
             Toggle("Show description", isOn: $showDescription)
         }
+        .listRowBackground(store.transparentList ? .clear : Color.list)
     }
 }
 

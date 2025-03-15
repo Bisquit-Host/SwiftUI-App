@@ -19,39 +19,60 @@ struct InfoTabButtons: View {
     
     var body: some View {
         VStack {
-            InfoTabButton("Logs", icon: "list.bullet.rectangle.fill") {
-                sheetLogs = true
-            }
-            .keyboardShortcut("L")
-            
-            Menu {
+            HStack {
                 Button {
-                    sheetUsers = true
-                    userVM.sheetInvitation = true
+                    sheetLogs = true
                 } label: {
-                    Label("New user", systemImage: "person.badge.plus")
+                    VStack(spacing: 5) {
+                        Image(systemName: "list.bullet.rectangle.fill")
+                            .foregroundStyle(.tertiary)
+                        
+                        Text("Logs")
+                            .semibold()
+                    }
+                    .footnote()
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .foregroundStyle(.foreground)
+                    .background(.ultraThinMaterial, in: .capsule)
+                    .overlay {
+                        Capsule()
+                            .stroke(.gray.opacity(0.25), lineWidth: 1)
+                    }
                 }
-            } label: {
-                HStack {
-                    Text("Users")
-                        .rounded()
-                    
-                    Spacer()
-                    
-                    Image(systemName: "person.3.fill")
-                        .title2()
+                
+                Menu {
+                    Button {
+                        sheetUsers = true
+                        userVM.sheetInvitation = true
+                    } label: {
+                        Label("New user", systemImage: "person.badge.plus")
+                    }
+                } label: {
+                    Button {
+                        sheetUsers = true
+                    } label: {
+                        VStack(spacing: 5) {
+                            Image(systemName: "person.3.fill")
+                                .foregroundStyle(.tertiary)
+                            
+                            Text("Users")
+                                .semibold()
+                        }
+                        .footnote()
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .foregroundStyle(.foreground)
+                        .background(.ultraThinMaterial, in: .capsule)
+                        .overlay {
+                            Capsule()
+                                .stroke(.gray.opacity(0.25), lineWidth: 1)
+                        }
+                    }
+                } primaryAction: {
+                    sheetUsers = true
                 }
-                .frame(height: 25)
-                .foregroundStyle(.foreground)
-                .padding()
-                .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
-            } primaryAction: {
-                sheetUsers = true
             }
-            .keyboardShortcut("U")
-            
-            Spacer()
-                .frame(height: 20)
             
 #if canImport(ActivityKit)
             InfoTabLAButton(server)

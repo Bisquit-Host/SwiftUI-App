@@ -60,6 +60,10 @@ struct InfoTabAllocation: View {
                 .foregroundStyle(.foreground)
                 .padding()
                 .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
+                .overlay {
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(.gray.opacity(0.25), lineWidth: 1)
+                }
         }
         .sheet($sheetAllocations) {
             AllocationListParent(server)
