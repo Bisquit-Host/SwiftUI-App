@@ -20,6 +20,7 @@ struct InfoTab: View {
             
             InfoTabButtons(server)
         }
+        .toolbarBackground(.visible, for: .tabBar)
         .padding(.horizontal, 5)
         .frame(maxWidth: 500)
         .background(InfoTabBackground())
