@@ -11,7 +11,8 @@ struct FileIcon: View {
     }
     
     var body: some View {
-        Image(systemName: icon).foregroundStyle(color)
+        Image(systemName: icon)
+            .foregroundStyle(color)
     }
 }
 

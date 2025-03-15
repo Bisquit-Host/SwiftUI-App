@@ -18,7 +18,7 @@ struct CustomDialog: View {
                 .title()
                 .foregroundStyle(image.foreground)
                 .frame(width: 65, height: 65)
-                .background(image.tint.gradient, in: .circle)
+                .background(image.tint, in: .circle)
                 .background {
                     Circle()
                         .stroke(.ultraThickMaterial, lineWidth: 8)
@@ -77,7 +77,7 @@ struct CustomDialog: View {
                 .foregroundStyle(config.foreground)
                 .padding(.vertical, 10)
                 .frame(maxWidth: .infinity)
-                .background(config.tint.gradient, in: .rect(cornerRadius: 10))
+                .background(config.tint, in: .rect(cornerRadius: 10))
         }
     }
     

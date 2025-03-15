@@ -49,7 +49,7 @@ fileprivate struct CustomAlertModifier<AlertContent: View, Background: View>: Vi
                     allowsInteraction = true
                 }
             }
-            .onChange(of: isPresented) { oldValue, newValue in
+            .onChange(of: isPresented) { _, newValue in
                 var transaction = Transaction()
                 transaction.disablesAnimations = true
                 
