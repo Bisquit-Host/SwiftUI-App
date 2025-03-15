@@ -17,7 +17,8 @@ struct InfoTabLAButton: View {
                     la.stopAllLiveActivities()
                 } label: {
                     Text("Cancel")
-                        .padding()
+                        .padding(.horizontal)
+                        .frame(height: 55)
                         .foregroundStyle(.red)
                         .background(.ultraThinMaterial, in: .capsule)
                         .overlay {
@@ -31,7 +32,8 @@ struct InfoTabLAButton: View {
                     la.startLiveActivity(server)
                 } label: {
                     Text("Live Activity")
-                        .padding()
+                        .padding(.horizontal)
+                        .frame(height: 55)
                         .background(.ultraThinMaterial, in: .capsule)
                         .overlay {
                             Capsule()

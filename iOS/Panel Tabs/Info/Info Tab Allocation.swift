@@ -54,11 +54,11 @@ struct InfoTabAllocation: View {
             }
         } label: {
             Text(ip)
+                .padding(.leading)
                 .monospaced()
-                .frame(height: 25)
+                .frame(height: 55)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .foregroundStyle(.foreground)
-                .padding()
                 .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
                 .overlay {
                     RoundedRectangle(cornerRadius: 16)

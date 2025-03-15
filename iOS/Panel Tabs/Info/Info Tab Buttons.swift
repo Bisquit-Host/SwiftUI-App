@@ -31,7 +31,7 @@ struct InfoTabButtons: View {
                             .semibold()
                     }
                     .footnote()
-                    .padding()
+                    .frame(height: 55)
                     .frame(maxWidth: .infinity)
                     .foregroundStyle(.foreground)
                     .background(.ultraThinMaterial, in: .capsule)
@@ -60,7 +60,7 @@ struct InfoTabButtons: View {
                                 .semibold()
                         }
                         .footnote()
-                        .padding()
+                        .frame(height: 55)
                         .frame(maxWidth: .infinity)
                         .foregroundStyle(.foreground)
                         .background(.ultraThinMaterial, in: .capsule)
