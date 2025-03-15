@@ -30,34 +30,76 @@ struct PanelView: View {
     @State private var alertNewFolder = false
     
     var body: some View {
-        TabView(selection: $store.lastTabPanel) {
-            if let server = vm.server {
-                InfoTab(server)
-                    .tab(.info)
-                    .sheet($sheetSettings) {
-                        PanelSettingsParent(server)
+        NavigationView {
+            TabView(selection: $store.lastTabPanel) {
+                if let server = vm.server {
+                    InfoTab(server)
+                        .tab(.info)
+                        .sheet($sheetSettings) {
+                            PanelSettingsParent(server)
+                        }
+                    
+                    ConsoleTab(id)
+                        .tab(.console)
+                    
+                    FileTab(id)
+                        .environmentObject(fileVM)
+                        .tab(.files)
+                    
+                    DataTab(server)
+                        .environment(backupVM)
+                        .environment(databaseVM)
+                        .environment(scheduleVM)
+                        .tab(.backup)
+                    
+                    StartupView(server)
+                        .environment(startupVM)
+                        .tab(.startup)
+                    
+                    SubdomainList()
+                        .environment(subdomainVM)
+                        .tab(.subdomain)
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "xmark")
+                            .footnote(.bold)
+                            .frame(width: 35, height: 35)
+                            .background(.ultraThinMaterial, in: .circle)
                     }
+                    .foregroundStyle(.primary)
+                }
                 
-                ConsoleTab(id)
-                    .tab(.console)
-                
-                FileTab(id)
-                    .environmentObject(fileVM)
-                    .tab(.files)
-                
-                DataTab(server)
-                    .environment(backupVM)
-                    .environment(databaseVM)
-                    .environment(scheduleVM)
-                    .tab(.backup)
-                
-                StartupView(server)
-                    .environment(startupVM)
-                    .tab(.startup)
-                
-                SubdomainList()
-                    .environment(subdomainVM)
-                    .tab(.subdomain)
+                ToolbarItemGroup(placement: .topBarTrailing) {
+                    if store.lastTabPanel == .files {
+                        Button {
+                            alertNewFolder = true
+                        } label: {
+                            Image(systemName: "folder.badge.plus")
+                                .footnote(.bold)
+                                .frame(width: 35, height: 35)
+                                .background(.ultraThinMaterial, in: .circle)
+                        }
+                        .foregroundStyle(.primary)
+                        .padding(.trailing, -10)
+                    }
+                    
+                    Button {
+                        sheetSettings = true
+                    } label: {
+                        Image(systemName: "ellipsis")
+                            .footnote(.bold)
+                            .frame(width: 35, height: 35)
+                            .background(.ultraThinMaterial, in: .circle)
+                    }
+                    .foregroundStyle(.primary)
+                    .keyboardShortcut("S")
+                    .animation(.default, value: store.lastTabPanel)
+                }
             }
         }
         .sidebarAdaptableTabView()
@@ -68,46 +110,6 @@ struct PanelView: View {
         }
         .onDisappear {
             vm.disconnectWebSocket()
-        }
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                Button {
-                    dismiss()
-                } label: {
-                    Image(systemName: "xmark")
-                        .footnote(.bold)
-                        .frame(width: 35, height: 35)
-                        .background(.ultraThinMaterial, in: .circle)
-                }
-                .foregroundStyle(.primary)
-            }
-            
-            ToolbarItemGroup(placement: .topBarTrailing) {
-                if store.lastTabPanel == .files {
-                    Button {
-                        alertNewFolder = true
-                    } label: {
-                        Image(systemName: "folder.badge.plus")
-                            .footnote(.bold)
-                            .frame(width: 35, height: 35)
-                            .background(.ultraThinMaterial, in: .circle)
-                    }
-                    .foregroundStyle(.primary)
-                    .padding(.trailing, -10)
-                }
-                
-                Button {
-                    sheetSettings = true
-                } label: {
-                    Image(systemName: "ellipsis")
-                        .footnote(.bold)
-                        .frame(width: 35, height: 35)
-                        .background(.ultraThinMaterial, in: .circle)
-                }
-                .foregroundStyle(.primary)
-                .keyboardShortcut("S")
-                .animation(.default, value: store.lastTabPanel)
-            }
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
             vm.disconnectWebSocket()
