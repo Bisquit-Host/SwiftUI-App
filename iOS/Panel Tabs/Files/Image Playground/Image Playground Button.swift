@@ -17,12 +17,26 @@ struct ImagePlaygroundButton: View {
             sheetImagePlayground = true
         } label: {
             HStack {
-                Image(.appleIntelligence)
-                    .resizable()
-                    .frame(width: 25, height: 25)
-                    .opacity(supportsImagePlayground ? 1 : 0.3)
-                
                 Text("Image Playground")
+                    .semibold()
+                    .rounded()
+                
+                Spacer()
+                
+                ZStack {
+                    Image(.appleIntelligence)
+                        .resizable()
+                        .frame(width: 25, height: 25)
+                        .frame(width: 25, height: 25)
+                        .opacity(supportsImagePlayground ? 1 : 0.3)
+                    
+                    if supportsImagePlayground {
+                        Image(.appleIntelligence)
+                            .resizable()
+                            .frame(width: 28, height: 28)
+                            .blur(radius: 3)
+                    }
+                }
             }
         }
         .keyboardShortcut("P")
@@ -36,7 +50,9 @@ struct ImagePlaygroundButton: View {
     }
 }
 
-@available(iOS 18.1, macOS 15.1, *)
+@available(iOS 18.1, *)
 #Preview {
-    ImagePlaygroundButton()
+    List {
+        ImagePlaygroundButton()
+    }
 }
