@@ -5,6 +5,8 @@ struct PanelSettingsView: View {
     private var vm: ServerSettingsVM
     @Environment(PanelVM.self) private var panelVM
     
+    @EnvironmentObject private var store: ValueStore
+    
     private let server: ServerAttributes
     
     init(_ server: ServerAttributes) {
@@ -31,11 +33,13 @@ struct PanelSettingsView: View {
                     }
                 }
             }
+            .listRowBackground(store.transparentList ? .clear : Color.list)
             
             Section("SFTP") {
                 SftpDetails(server.sftp)
                     .environment(vm)
             }
+            .listRowBackground(store.transparentList ? .clear : Color.list)
             
             Section {
                 Button(role: .destructive) {
@@ -50,9 +54,12 @@ struct PanelSettingsView: View {
                     }
                 }
             }
+            .listRowBackground(store.transparentList ? .clear : Color.list)
         }
         .navigationTitle("Server Settings")
         .toolbarTitleDisplayMode(.inline)
+        .scrollContentBackground(store.transparentSheet ? .hidden : .visible)
+        .presentationBackground(store.transparentSheet ? .ultraThinMaterial : .regular)
         .task {
             vm.accountDetails()
             vm.serverName = server.name
