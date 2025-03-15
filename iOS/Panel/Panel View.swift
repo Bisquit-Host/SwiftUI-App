@@ -11,6 +11,8 @@ struct PanelView: View {
     @State private var scheduleVM: ScheduleVM
     @State private var subdomainVM: SubdomainVM
     
+    @Environment(\.dismiss) private var dismiss
+    
     private let id: String
     
     init(_ id: String) {
@@ -25,7 +27,6 @@ struct PanelView: View {
     }
     
     @State private var sheetSettings = false
-    @State private var isRotating = false
     
     var body: some View {
         TabView(selection: $store.lastTabPanel) {
@@ -59,6 +60,7 @@ struct PanelView: View {
             }
         }
         .sidebarAdaptableTabView()
+        .navigationBarBackButtonHidden()
         .environment(vm)
         .task {
             fetchData()
@@ -67,24 +69,31 @@ struct PanelView: View {
             vm.disconnectWebSocket()
         }
         .toolbar {
-            Button {
-                sheetSettings = true
-            } label: {
-                Image(systemName: "gearshape")
-                    .foregroundStyle(.accent.gradient)
-                    .semibold()
-                    .rotate(isRotating ? 360 : 0)
-                    .animation(
-                        .linear(duration: 60)
-                        .repeatForever(autoreverses: false),
-                        value: isRotating
-                    )
-                    .onAppear {
-                        isRotating.toggle()
-                    }
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "xmark")
+                        .footnote(.bold)
+                        .frame(width: 35, height: 35)
+                        .background(.ultraThinMaterial, in: .circle)
+                }
+                .foregroundStyle(.primary)
             }
-            .keyboardShortcut("S")
-            .animation(.default, value: store.lastTabPanel)
+            
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    sheetSettings = true
+                } label: {
+                    Image(systemName: "ellipsis")
+                        .footnote(.bold)
+                        .frame(width: 35, height: 35)
+                        .background(.ultraThinMaterial, in: .circle)
+                }
+                .foregroundStyle(.primary)
+                .keyboardShortcut("S")
+                .animation(.default, value: store.lastTabPanel)
+            }
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
             vm.disconnectWebSocket()

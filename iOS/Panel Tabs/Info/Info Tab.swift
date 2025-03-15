@@ -14,7 +14,7 @@ struct InfoTab: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             InfoTabCard(server)
-                        
+            
 #warning("Tip")
             InfoTabAllocation(server)
             
