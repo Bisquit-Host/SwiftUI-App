@@ -4,8 +4,6 @@ import PteroNet
 import TipKit
 
 struct CloudKeys: View {
-    @EnvironmentObject private var store: ValueStore
-    
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     @Query(animation: .default) private var keys: [APIKey]
@@ -32,15 +30,10 @@ struct CloudKeys: View {
                     }
                     .onDelete(perform: deleteItems)
                 }
-#if !os(watchOS)
-                .listRowBackground(store.transparentList ? Color.clear : .list)
-#endif
+                .transparentSection()
             }
-#if !os(tvOS)
-            .scrollContentBackground(store.transparentSheet ? .hidden : .visible)
-#endif
             .ornamentDismissButton()
-            .presentationBackground(store.transparentSheet ? .ultraThinMaterial : .regular)
+            .transparentList()
             .navigationTitle("Accounts")
             .toolbarTitleDisplayMode(.inline)
             .overlay {

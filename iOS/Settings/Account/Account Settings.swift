@@ -2,7 +2,6 @@ import SwiftUI
 
 struct AccountSettings: View {
     @State private var vm = ApikeyVM()
-    @EnvironmentObject private var store: ValueStore
     
     @State private var sheetApiKeys = false
     
@@ -30,7 +29,7 @@ struct AccountSettings: View {
                 .environment(vm)
             }
         }
-        .listRowBackground(store.transparentList ? .clear : Color.list)
+        .transparentSection()
         .task {
             vm.fetchKeys()
         }

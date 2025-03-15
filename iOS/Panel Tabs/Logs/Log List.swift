@@ -3,7 +3,6 @@ import Algorithms
 
 struct LogList: View {
     @Environment(LogVM.self) private var vm
-    @EnvironmentObject private var store: ValueStore
     
     @State private var searchField = ""
     
@@ -38,15 +37,14 @@ struct LogList: View {
                         LogCard(log)
                     }
                 }
-                .listRowBackground(store.transparentList ? .clear : Color.list)
+                .transparentSection()
             }
         }
         .navigationTitle("Server logs")
         .toolbarTitleDisplayMode(.inline)
         .ornamentDismissButton()
         .searchable(text: $vm.searchField)
-        .scrollContentBackground(store.transparentSheet ? .hidden : .visible)
-        .presentationBackground(store.transparentSheet ? .ultraThinMaterial : .regular)
+        .transparentList()
         .overlay {
             if vm.searchedLogs.isEmpty {
                 ContentUnavailableView.search(text: vm.searchField)

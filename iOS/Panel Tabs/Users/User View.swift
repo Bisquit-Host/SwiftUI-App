@@ -4,7 +4,6 @@ import PteroNet
 
 struct UserView: View {
     @Environment(UsersVM.self) private var vm
-    @EnvironmentObject private var store: ValueStore
     
     @State private var user: UserAttributes
     
@@ -18,14 +17,14 @@ struct UserView: View {
                 UserAvatar(user.image)
 #if os(iOS)
                 UserEmail(user.email)
-                    .listRowBackground(store.transparentList ? .clear : Color.list)
+                    .transparentSection()
 #else
                 Text(user.email)
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
 #endif
                 User2Fa(user.twoFaEnabled)
-                    .listRowBackground(store.transparentList ? .clear : Color.list)
+                    .transparentSection()
                 
                 HStack {
                     Text("Member since")
@@ -42,19 +41,18 @@ struct UserView: View {
                 }
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
-                .listRowBackground(store.transparentList ? .clear : Color.list)
+                .transparentSection()
                 
                 PermissionListView($user)
                     .environment(vm)
             }
-            .refreshable {
-                vm.userDetails($user)
-            }
-            .scrollContentBackground(store.transparentSheet ? .hidden : .visible)
-            .presentationBackground(store.transparentSheet ? .ultraThinMaterial : .regular)
+            .transparentList()
             .navigationTitle(user.username)
             .toolbarTitleDisplayMode(.inline)
             .scrollIndicators(.never)
+            .refreshable {
+                vm.userDetails($user)
+            }
         }
     }
     

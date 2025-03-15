@@ -40,8 +40,7 @@ struct SettingsView: View {
         .navigationTitle("Settings")
         //        .toolbarTitleDisplayMode(.inline)
         //        .scrollIndicators(.hidden)
-        //        .scrollContentBackground(store.transparentSheet ? .hidden : .visible)
-        //        .presentationBackground(store.transparentSheet ? .ultraThinMaterial : .regular)
+        //        .transparentList()
         //        .sheet($vm.sheetSupport) {
         //            Support()
         //        }

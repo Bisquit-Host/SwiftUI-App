@@ -1424,6 +1424,14 @@
 		F3EDEE3529C0C84C00B08696 /* Panel VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3429C0C84C00B08696 /* Panel VM.swift */; };
 		F3EDEE3829C0CB5A00B08696 /* Websocket Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3729C0CB5A00B08696 /* Websocket Message.swift */; };
 		F3EDEE3A29C0CB8000B08696 /* Websocket Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3929C0CB8000B08696 /* Websocket Delegate.swift */; };
+		F3EE9F6F2D85CAB9000120A7 /* Transparency Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F6E2D85CAB9000120A7 /* Transparency Helper.swift */; };
+		F3EE9F702D85CAB9000120A7 /* Transparency Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F6E2D85CAB9000120A7 /* Transparency Helper.swift */; };
+		F3EE9F712D85CAB9000120A7 /* Transparency Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F6E2D85CAB9000120A7 /* Transparency Helper.swift */; };
+		F3EE9F722D85CAB9000120A7 /* Transparency Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F6E2D85CAB9000120A7 /* Transparency Helper.swift */; };
+		F3EE9F732D85CAB9000120A7 /* Transparency Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F6E2D85CAB9000120A7 /* Transparency Helper.swift */; };
+		F3EE9F742D85CAB9000120A7 /* Transparency Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F6E2D85CAB9000120A7 /* Transparency Helper.swift */; };
+		F3EE9F752D85CAB9000120A7 /* Transparency Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F6E2D85CAB9000120A7 /* Transparency Helper.swift */; };
+		F3EE9F762D85CAB9000120A7 /* Transparency Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F6E2D85CAB9000120A7 /* Transparency Helper.swift */; };
 		F3EEC03B2AF2F93800BFED78 /* Start Page VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA57B2959011B0006D126 /* Start Page VM.swift */; };
 		F3F061D12A73C37200470F7E /* Map List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994AD2A17A9B100530615 /* Map List.swift */; };
 		F3F061D22A73C37500470F7E /* Map View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A72A177DA400530615 /* Map View.swift */; };
@@ -2045,6 +2053,7 @@
 		F3EDEE3429C0C84C00B08696 /* Panel VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel VM.swift"; sourceTree = "<group>"; };
 		F3EDEE3729C0CB5A00B08696 /* Websocket Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Websocket Message.swift"; sourceTree = "<group>"; };
 		F3EDEE3929C0CB8000B08696 /* Websocket Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Websocket Delegate.swift"; sourceTree = "<group>"; };
+		F3EE9F6E2D85CAB9000120A7 /* Transparency Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transparency Helper.swift"; sourceTree = "<group>"; };
 		F3F061D92A73CE1200470F7E /* Server Card Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Parent.swift"; sourceTree = "<group>"; };
 		F3F2A5BA29AC296D00AD20A4 /* Server Card Suspended.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Suspended.swift"; sourceTree = "<group>"; };
 		F3F2BBA42A540B8800D44CA6 /* Start Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page.swift"; sourceTree = "<group>"; };
@@ -2409,6 +2418,7 @@
 				F3BC03C02B2063820011F98A /* Debug Key.swift */,
 				F32FD71D2B1E054300723B88 /* Network Calls.swift */,
 				F31F31F72D52BD940095DD19 /* System.swift */,
+				F3EE9F6E2D85CAB9000120A7 /* Transparency Helper.swift */,
 				F31BA564295900270006D126 /* Nav */,
 				F36797722A39C4ED009F2788 /* Localizable.xcstrings */,
 				F378E3322AF38286009925DB /* PrivacyInfo.xcprivacy */,
@@ -4431,6 +4441,7 @@
 				F30088E22B3A5A8A0051476C /* Startup VM.swift in Sources */,
 				F3000E1E295AE2B700ABD30A /* Guide.swift in Sources */,
 				F323BF9F2B20B84100116B97 /* Server Card Context Menu.swift in Sources */,
+				F3EE9F732D85CAB9000120A7 /* Transparency Helper.swift in Sources */,
 				F3AB4A8C2CF3DAC900A8252F /* Backup Card VM.swift in Sources */,
 				F30088AA2B3A1A510051476C /* Schedule VM.swift in Sources */,
 				F3C9D84A2B302AA200265492 /* File Context Menu.swift in Sources */,
@@ -4581,6 +4592,7 @@
 				F31BA57D295901200006D126 /* Start Page VM.swift in Sources */,
 				F39E0A952C1BA06C00C4E906 /* Discover Card.swift in Sources */,
 				F306B9ED29BBDA770008C2D4 /* Server List Footer.swift in Sources */,
+				F3EE9F752D85CAB9000120A7 /* Transparency Helper.swift in Sources */,
 				F3464D292A86398100188B0C /* Power Signal App Enum.swift in Sources */,
 				F31BA57F2959012D0006D126 /* Guide.swift in Sources */,
 				F3496DC529E0091A0089FC28 /* Section Header.swift in Sources */,
@@ -4767,6 +4779,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F30C13152A5461BA00A7EFF0 /* Cache VM.swift in Sources */,
+				F3EE9F6F2D85CAB9000120A7 /* Transparency Helper.swift in Sources */,
 				F3AB4A972CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
 				F3499EF52A27553D006101B7 /* Panel VM.swift in Sources */,
 				F3F061D22A73C37500470F7E /* Map View.swift in Sources */,
@@ -4923,6 +4936,7 @@
 				F325F7012A54BBCF00E89EC4 /* Info Tab Allocation.swift in Sources */,
 				F39626F32A7AD64B0057E356 /* Ansi.swift in Sources */,
 				F3AB4A7E2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
+				F3EE9F762D85CAB9000120A7 /* Transparency Helper.swift in Sources */,
 				F31F32022D52DB950095DD19 /* Color Theme.swift in Sources */,
 				F30088A02B3A17DF0051476C /* Backup VM.swift in Sources */,
 				F3E2BF0F2C1EC94300B7A6D4 /* Contacts VM.swift in Sources */,
@@ -5145,6 +5159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F39E0A942C1BA06C00C4E906 /* Discover Card.swift in Sources */,
+				F3EE9F722D85CAB9000120A7 /* Transparency Helper.swift in Sources */,
 				F3202C752D5583680030B3CC /* Browser Parent.swift in Sources */,
 				F3D295B72AF3A16600ED43A0 /* App Icon Picker.swift in Sources */,
 				F3202D252D562B990030B3CC /* Browser Card Web.swift in Sources */,
@@ -5509,6 +5524,7 @@
 				F3A7CF1F2C8C4E4A00413400 /* Plan Models.swift in Sources */,
 				F3A7CF022C8BBB4700413400 /* Server Card Context Menu.swift in Sources */,
 				F3A7CEF22C8BB7BF00413400 /* System Alerts.swift in Sources */,
+				F3EE9F702D85CAB9000120A7 /* Transparency Helper.swift in Sources */,
 				F31461712D5A1F8100547B6C /* Icon.swift in Sources */,
 				F3A7CF112C8C4C3100413400 /* Server List Node Filter.swift in Sources */,
 			);
@@ -5520,6 +5536,7 @@
 			files = (
 				F3D295172AF396FD00ED43A0 /* Tabs.swift in Sources */,
 				F3FD9F9A2C651AF300A69314 /* Upload File.swift in Sources */,
+				F3EE9F742D85CAB9000120A7 /* Transparency Helper.swift in Sources */,
 				F3202D162D562B250030B3CC /* Browser Card MC.swift in Sources */,
 				F3BD76F92A43C890003E7385 /* Panel View.swift in Sources */,
 				F3AB4A8E2CF3DAD500A8252F /* Backup Card VM.swift in Sources */,
@@ -5724,6 +5741,7 @@
 				F363C7FD2B7F7938005F6FF2 /* System Alerts.swift in Sources */,
 				F323D8D52A2D67A3002EDC62 /* Upload File.swift in Sources */,
 				F3A800332A7313E900CAC40B /* Tip Cloud Keys.swift in Sources */,
+				F3EE9F712D85CAB9000120A7 /* Transparency Helper.swift in Sources */,
 				F3E08EC62A2CEA6400116C1C /* Start Page VM.swift in Sources */,
 				F3F061D62A73C9A300470F7E /* Map List.swift in Sources */,
 				F35B9F552A2D6D380045D014 /* Formatters.swift in Sources */,

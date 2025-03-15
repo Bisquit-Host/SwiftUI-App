@@ -2,7 +2,6 @@ import SwiftUI
 
 struct UserList: View {
     @Environment(UsersVM.self) private var vm
-    @EnvironmentObject private var store: ValueStore
     
     var body: some View {
         @Bindable var vm = vm
@@ -14,20 +13,19 @@ struct UserList: View {
                 }
                 .onDelete(perform: delete)
             }
-            .listRowBackground(store.transparentList ? .clear : Color.list)
+            .transparentSection()
             
             Button {
                 vm.sheetInvitation = true
             } label: {
                 Label("New user", systemImage: "person.badge.plus")
             }
-            .listRowBackground(store.transparentList ? .clear : Color.list)
+            .transparentSection()
         }
         .environment(vm)
         .navigationTitle("Users")
         .toolbarTitleDisplayMode(.inline)
-        .scrollContentBackground(store.transparentSheet ? .hidden : .visible)
-        .presentationBackground(store.transparentSheet ? .ultraThinMaterial : .regular)
+        .transparentList()
         .task {
             vm.fetchUsers()
             vm.fetchPermissions()

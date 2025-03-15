@@ -4,7 +4,6 @@ import Algorithms
 struct UserInvitationView: View {
     @Environment(UsersVM.self) private var vm
     
-    @EnvironmentObject private var store: ValueStore
     @Environment(\.dismiss) private var dismiss
     
     @State private var email = ""
@@ -29,7 +28,7 @@ struct UserInvitationView: View {
                         .animation(.default, value: vm.allPermsTrigger)
                 }
             }
-            .listRowBackground(store.transparentList ? .clear : Color.list)
+            .transparentSection()
             
             ForEach(vm.chunkedPermissions.keys.sorted(), id: \.self) { type in
                 Section(type) {
@@ -37,7 +36,7 @@ struct UserInvitationView: View {
                         UserInvitationPermission(permission)
                     }
                 }
-                .listRowBackground(store.transparentList ? .clear : Color.list)
+                .transparentSection()
             }
             
             Section {
@@ -50,13 +49,12 @@ struct UserInvitationView: View {
                 }
                 .disabled(vm.newUserPermissions.isEmpty)
             }
-            .listRowBackground(store.transparentList ? .clear : Color.list)
+            .transparentSection()
         }
         .padding(.horizontal)
         .scrollIndicators(.never)
         .presentationDetents([.medium])
-        .scrollContentBackground(store.transparentSheet ? .hidden : .visible)
-        .presentationBackground(store.transparentSheet ? .ultraThinMaterial : .regular)
+        .transparentList()
         .task {
             vm.fetchPermissions()
         }

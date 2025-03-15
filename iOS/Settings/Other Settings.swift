@@ -21,7 +21,7 @@ struct OtherSettings: View {
             
             CurrencyButton()
         }
-        .listRowBackground(store.transparentList ? .clear : Color.list)
+        .transparentSection()
     }
 }
 

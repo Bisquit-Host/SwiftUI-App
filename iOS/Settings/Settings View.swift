@@ -2,7 +2,6 @@ import ScrechKit
 
 struct SettingsView: View {
     @State private var vm = SettingsVM()
-    @EnvironmentObject private var store: ValueStore
     
     @Environment(\.colorScheme) private var colorScheme
     
@@ -32,8 +31,7 @@ struct SettingsView: View {
         .navigationTitle("Settings")
         .toolbarTitleDisplayMode(.inline)
         .scrollIndicators(.hidden)
-        .scrollContentBackground(store.transparentSheet ? .hidden : .visible)
-        .presentationBackground(store.transparentSheet ? .ultraThinMaterial : .regular)
+        .transparentList()
         .sheet($vm.sheetSupport) {
             Support()
         }

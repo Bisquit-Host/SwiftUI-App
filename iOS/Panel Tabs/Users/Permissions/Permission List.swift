@@ -62,8 +62,6 @@ struct PermissionsList: View {
 }
 
 struct PermissionSection: View {
-    @EnvironmentObject private var store: ValueStore
-    
     var key: String
     var permission: Permission?
     @Binding var showDescription: Bool
@@ -98,7 +96,7 @@ struct PermissionSection: View {
 #endif
                 }
             }
-            .listRowBackground(store.transparentList ? .clear : Color.list)
+            .transparentSection()
 #if os(tvOS)
             Divider()
 #endif

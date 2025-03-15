@@ -25,7 +25,7 @@ struct DesignSettings: View {
             
             Toggle("Animated background", isOn: $store.enableBisquitFall)
         }
-        .listRowBackground(store.transparentList ? .clear : Color.list)
+        .transparentSection()
     }
 }
 

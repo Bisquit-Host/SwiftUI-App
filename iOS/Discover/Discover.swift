@@ -2,8 +2,6 @@ import ScrechKit
 import SafariCover
 
 struct Discover: View {
-    @EnvironmentObject private var store: ValueStore
-    
     @Environment(\.dismiss) private var dismiss
     
     @State private var sheetConfigurations = false
@@ -17,7 +15,7 @@ struct Discover: View {
                     }
                     .foregroundStyle(.foreground)
                 }
-                .listRowBackground(store.transparentList ? .clear : Color.list)
+                .transparentSection()
                 
                 Section("Support") {
                     DiscoverCard(
@@ -38,7 +36,7 @@ struct Discover: View {
                         )
                     )
                 }
-                .listRowBackground(store.transparentList ? .clear : Color.list)
+                .transparentSection()
                 
                 Section("Apps") {
                     ListButton(
@@ -58,7 +56,7 @@ struct Discover: View {
                         )
                     )
                 }
-                .listRowBackground(store.transparentList ? .clear : Color.list)
+                .transparentSection()
                 
                 Section {
                     DiscoverCard(
@@ -97,14 +95,14 @@ struct Discover: View {
                         )
                     )
                 }
-                .listRowBackground(store.transparentList ? .clear : Color.list)
+                .transparentSection()
                 
                 NavigationLink {
                     MapView()
                 } label: {
                     ListButton("Places we recommend", icon: "map")
                 }
-                .listRowBackground(store.transparentList ? .clear : Color.list)
+                .transparentSection()
                 
                 Section {
                     DiscoverCard(
@@ -125,10 +123,9 @@ struct Discover: View {
                         )
                     )
                 }
-                .listRowBackground(store.transparentList ? .clear : Color.list)
+                .transparentSection()
             }
-            .scrollContentBackground(store.transparentSheet ? .hidden : .visible)
-            .presentationBackground(store.transparentSheet ? .ultraThinMaterial : .regular)
+            .transparentList()
             .scrollIndicators(.never)
             .ornamentDismissButton()
         }

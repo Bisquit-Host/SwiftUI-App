@@ -2,8 +2,6 @@ import SwiftUI
 import PteroNet
 
 struct AllocationList: View {
-    @EnvironmentObject private var store: ValueStore
-    
     private var vm: AllocationVM
     
     private let server: ServerAttributes
@@ -17,20 +15,19 @@ struct AllocationList: View {
         List {
             ForEach(vm.allocations) { allocation in
                 AllocationCard(allocation)
-                    .listRowBackground(store.transparentList ? .clear : Color.list)
+                    .transparentSection()
             }
             
             Button("Assign allocation") {
                 vm.assignAllocation()
             }
             .disabled(vm.allocations.count >= server.featureLimits.allocations)
-            .listRowBackground(store.transparentList ? .clear : Color.list)
+            .transparentSection()
         }
         .environment(vm)
         .navigationTitle("Allocations")
         .toolbarTitleDisplayMode(.inline)
-        .scrollContentBackground(store.transparentSheet ? .hidden : .visible)
-        .presentationBackground(store.transparentSheet ? .ultraThinMaterial : .regular)
+        .transparentList()
         .refreshableTask {
             vm.fetchAllocations()
         }

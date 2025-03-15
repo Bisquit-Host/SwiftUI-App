@@ -73,7 +73,7 @@ struct ServerList: View {
                         Label("Useful links", systemImage: "sparkles")
                     }
                     
-                    LeaderboardButton()
+                    GameCenterButtons()
                 } label: {
                     Image(systemName: "sparkles")
                 }

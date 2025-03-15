@@ -38,9 +38,7 @@ struct DevSettings: View {
 #endif
             ServerListFooter()
         }
-#if !os(tvOS)
-        .listRowBackground(store.transparentList ? .clear : Color.list)
-#endif
+        .transparentSection()
     }
 }
 

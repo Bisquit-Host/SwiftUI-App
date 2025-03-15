@@ -2,8 +2,6 @@ import ScrechKit
 import SafariCover
 
 struct Support: View {
-    @EnvironmentObject private var store: ValueStore
-    
     @State private var sheetGuide = false
     @State private var showMailCover = false
     
@@ -16,13 +14,13 @@ struct Support: View {
                     buttonSupportApp
                     buttonSupportHosting
                 }
-                .listRowBackground(store.transparentList ? .clear : Color.list)
+                .transparentSection()
                 
                 Section("Contact") {
                     buttonTelegram
                     buttonMail
                 }
-                .listRowBackground(store.transparentList ? .clear : Color.list)
+                .transparentSection()
             }
             .foregroundStyle(.primary)
             .navigationTitle("Support")
@@ -30,8 +28,7 @@ struct Support: View {
         }
         .presentationDragIndicator(.hidden)
         .presentationDetents([.large, .medium])
-        .scrollContentBackground(store.transparentSheet ? .hidden : .visible)
-        .presentationBackground(store.transparentSheet ? .ultraThinMaterial : .regular)
+        .transparentList()
         .sheet($sheetGuide) {
             Guide()
         }

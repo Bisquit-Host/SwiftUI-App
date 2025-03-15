@@ -2,7 +2,6 @@ import ScrechKit
 
 struct Browser: View {
     @State private var vm = BrowserVM()
-    @EnvironmentObject private var store: ValueStore
     
     @Environment(\.dismiss) private var dismiss
     
@@ -49,10 +48,7 @@ struct Browser: View {
         .animation(.default, value: vm.selectedCategory)
         .toolbarTitleDisplayMode(.inline)
         .ornamentDismissButton()
-#if !os(tvOS)
-        .scrollContentBackground(store.transparentSheet ? .hidden : .visible)
-        .presentationBackground(store.transparentSheet ? .ultraThinMaterial : .regular)
-#endif
+        .transparentList()
         .task {
             await vm.fetchAllPlans()
         }
