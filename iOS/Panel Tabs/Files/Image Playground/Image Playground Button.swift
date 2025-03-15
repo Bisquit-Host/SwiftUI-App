@@ -24,18 +24,18 @@ struct ImagePlaygroundButton: View {
                 Spacer()
                 
                 ZStack {
-                    Image(.appleIntelligence)
-                        .resizable()
-                        .frame(width: 25, height: 25)
-                        .frame(width: 25, height: 25)
-                        .opacity(supportsImagePlayground ? 1 : 0.3)
-                    
                     if supportsImagePlayground {
                         Image(.appleIntelligence)
                             .resizable()
                             .frame(width: 28, height: 28)
                             .blur(radius: 3)
                     }
+                    
+                    Image(.appleIntelligence)
+                        .resizable()
+                        .frame(width: 25, height: 25)
+                        .frame(width: 25, height: 25)
+                        .opacity(supportsImagePlayground ? 1 : 0.3)
                 }
             }
         }
