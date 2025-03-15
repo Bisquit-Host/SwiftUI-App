@@ -48,7 +48,7 @@ struct FolderFile: View {
         }
         .onChange(of: image) {
             if let image {
-                vm.handleImageImport(image, root: root)
+                vm.handleImageImport(image, at: root)
             }
         }
     }

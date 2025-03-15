@@ -180,7 +180,7 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func handleImageImport(_ image: UIImage, root: String) {
+    func handleImageImport(_ image: UIImage, at root: String) {
         guard let imageData = image.heicData() else {
             print("Unable to convert image to data")
             return
