@@ -1,5 +1,4 @@
 import ScrechKit
-import Kingfisher
 import PteroNet
 
 struct InfoTab: View {
@@ -13,22 +12,24 @@ struct InfoTab: View {
     
     private let width = UIScreen.main.bounds.width
     
+    private let image: ImageResource = .defaultIcon
+    //    private let image: ImageResource = .darkBackgroundInfo
+    
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 0) {
-                Image(.darkBackgroundInfo)
-                //                Image(.defaultIcon)
+                Image(image)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: width, height: width)
                     .clipped()
                 
                 ZStack(alignment: .top) {
-                    Image(.darkBackgroundInfo)
+                    Image(image)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: width * 1.1)
-                        .frame(maxHeight: 800)
+                        .frame(height: 800)
                         .clipped()
                         .blur(radius: 55, opaque: true)
                         .offset(y: -30)
@@ -56,6 +57,7 @@ struct InfoTab: View {
                             Text("\(server.id) • \(server.node)")
                                 .footnote()
                                 .foregroundStyle(.tertiary)
+                                .shadow(color: .black, radius: 5)
                         }
                         .rounded()
                         
