@@ -22,9 +22,9 @@ struct InfoTabLAButton: View {
                         
                         Text("Cancel")
                             .semibold()
-                            .foregroundStyle(.red)
                     }
                     .footnote()
+                    .foregroundStyle(.red)
                     .padding(.horizontal)
                     .frame(height: 55)
                     .frame(maxWidth: .infinity)
