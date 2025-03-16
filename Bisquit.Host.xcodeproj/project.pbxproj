@@ -1444,7 +1444,6 @@
 		F3EE9FA02D86234A000120A7 /* Custom Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F922D86234A000120A7 /* Custom Dialog.swift */; };
 		F3EE9FA12D86234A000120A7 /* Custom Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F932D86234A000120A7 /* Custom Alert.swift */; };
 		F3EE9FA22D86234A000120A7 /* Custom Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F922D86234A000120A7 /* Custom Dialog.swift */; };
-		F3EE9FA32D86234A000120A7 /* Custom Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F932D86234A000120A7 /* Custom Alert.swift */; };
 		F3EEC03B2AF2F93800BFED78 /* Start Page VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA57B2959011B0006D126 /* Start Page VM.swift */; };
 		F3F061D12A73C37200470F7E /* Map List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994AD2A17A9B100530615 /* Map List.swift */; };
 		F3F061D22A73C37500470F7E /* Map View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A72A177DA400530615 /* Map View.swift */; };
@@ -5743,7 +5742,6 @@
 				F35BB0372C656AC800631DBD /* Guide.swift in Sources */,
 				F3DF50C92B38FD2000206CAE /* Contact Manager.swift in Sources */,
 				F3EE9FA22D86234A000120A7 /* Custom Dialog.swift in Sources */,
-				F3EE9FA32D86234A000120A7 /* Custom Alert.swift in Sources */,
 				F30B61CD2B2907CA00F447B4 /* Debug Key.swift in Sources */,
 				F3DF50CB2B38FDE300206CAE /* Permission List.swift in Sources */,
 				F3F061D72A73C9A500470F7E /* Map VM.swift in Sources */,

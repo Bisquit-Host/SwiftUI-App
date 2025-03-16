@@ -23,6 +23,7 @@ fileprivate struct CustomAlertModifier<AlertContent: View, Background: View>: Vi
     @State private var animatedValue = false
     @State private var allowsInteraction = false
     
+#warning("macOS")
     func body(content: Content) -> some View {
         content
         /// Using Full Screen Cover to show alert content on top of the current context
