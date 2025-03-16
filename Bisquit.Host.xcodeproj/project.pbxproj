@@ -1501,8 +1501,6 @@
 		F3FF5A002A4A3188003A1973 /* User List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF59FE2A4A3188003A1973 /* User List.swift */; };
 		F3FF5A032A4A359C003A1973 /* Info Tab Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A022A4A359C003A1973 /* Info Tab Buttons.swift */; };
 		F3FF5A042A4A359C003A1973 /* Info Tab Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A022A4A359C003A1973 /* Info Tab Buttons.swift */; };
-		F3FF5A092A4A3745003A1973 /* Info Tab Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A082A4A3745003A1973 /* Info Tab Background.swift */; };
-		F3FF5A0A2A4A3745003A1973 /* Info Tab Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A082A4A3745003A1973 /* Info Tab Background.swift */; };
 		F3FF5A0C2A4A386F003A1973 /* Users VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A0B2A4A386F003A1973 /* Users VM.swift */; };
 		F3FF5A0D2A4A386F003A1973 /* Users VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A0B2A4A386F003A1973 /* Users VM.swift */; };
 		F3FF5A0F2A4A3ABD003A1973 /* User Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A0E2A4A3ABD003A1973 /* User Card.swift */; };
@@ -2090,7 +2088,6 @@
 		F3FDFF8A2C89130F009EBB5C /* Resources Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Resources Widget.swift"; sourceTree = "<group>"; };
 		F3FF59FE2A4A3188003A1973 /* User List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User List.swift"; sourceTree = "<group>"; };
 		F3FF5A022A4A359C003A1973 /* Info Tab Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab Buttons.swift"; sourceTree = "<group>"; };
-		F3FF5A082A4A3745003A1973 /* Info Tab Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab Background.swift"; sourceTree = "<group>"; };
 		F3FF5A0B2A4A386F003A1973 /* Users VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Users VM.swift"; sourceTree = "<group>"; };
 		F3FF5A0E2A4A3ABD003A1973 /* User Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Card.swift"; sourceTree = "<group>"; };
 		F3FFB73E2A57F02C00220FA5 /* Info Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab.swift"; sourceTree = "<group>"; };
@@ -2551,7 +2548,6 @@
 				F325F6FF2A54BBCF00E89EC4 /* Info Tab Allocation.swift */,
 				F3FF5A022A4A359C003A1973 /* Info Tab Buttons.swift */,
 				F3B66DF32D60B46F00F1841B /* Info Tab LA Button.swift */,
-				F3FF5A082A4A3745003A1973 /* Info Tab Background.swift */,
 				F34169A42A49DF64003985E7 /* Info Tab Button.swift */,
 				F3553FB22B40653000EF0FD2 /* Panel Settings Parent.swift */,
 				F303214A2B3FEA45002A73B8 /* Panel Settings View.swift */,
@@ -4755,7 +4751,6 @@
 				F3202D192D562B980030B3CC /* Browser Card VDS.swift in Sources */,
 				F367977E2A3A5AB6009F2788 /* Log VM.swift in Sources */,
 				F38F9E2E2CEB39D80033EFE3 /* Metadata List.swift in Sources */,
-				F3FF5A092A4A3745003A1973 /* Info Tab Background.swift in Sources */,
 				F31BA5A52959026D0006D126 /* Console VM.swift in Sources */,
 				F3BF97AA29BFC7E9007B9C9C /* Websocket.swift in Sources */,
 				F3D7F8502C8ED3D100368ECE /* Disable 2FA View.swift in Sources */,
@@ -5113,7 +5108,6 @@
 				F34BB6BF2D3DC2D300D27BE0 /* File Preview.swift in Sources */,
 				F3B637532A35F3EA00CB374C /* Command Line.swift in Sources */,
 				F3AF91C22B423492001D8F80 /* SSH VM.swift in Sources */,
-				F3FF5A0A2A4A3745003A1973 /* Info Tab Background.swift in Sources */,
 				F3C9D85A2B31135B00265492 /* Permission List.swift in Sources */,
 				F3FF5A042A4A359C003A1973 /* Info Tab Buttons.swift in Sources */,
 				F3202D062D562AE20030B3CC /* Browser List VDS.swift in Sources */,

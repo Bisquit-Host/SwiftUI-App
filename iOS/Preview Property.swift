@@ -2,10 +2,10 @@ import PteroNet
 
 final class PreviewProp {
     static let serverAttributes = ServerAttributes(
-        id: "12345678",
+        id: "87c8b6a2",
         name: "Preview",
         uuid: "1234567890",
-        node: "preview",
+        node: "Vision",
         description: "Preview server description",
         dockerImage: "",
         limits: .init(
@@ -25,7 +25,11 @@ final class PreviewProp {
         isSuspended: false,
         serverOwner: true,
         relationships: .init(
-            allocations: .init(data: [])
+            allocations: ServerAllocations(
+                data: [
+                    
+                ]
+            )
         )
     )
 }
