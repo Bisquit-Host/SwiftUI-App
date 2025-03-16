@@ -26,7 +26,6 @@ struct PanelView: View {
         self.subdomainVM = SubdomainVM(id)
     }
     
-    @State private var sheetSettings = false
     @State private var alertNewFolder = false
     
     var body: some View {
@@ -35,7 +34,7 @@ struct PanelView: View {
                 if let server = vm.server {
                     InfoTab(server)
                         .tab(.info)
-                        .sheet($sheetSettings) {
+                        .sheet($vm.sheetSettings) {
                             PanelSettingsParent(server)
                         }
                     
@@ -89,7 +88,7 @@ struct PanelView: View {
                     }
                     
                     Button {
-                        sheetSettings = true
+                        vm.sheetSettings = true
                     } label: {
                         Image(systemName: "ellipsis")
                             .footnote(.bold)

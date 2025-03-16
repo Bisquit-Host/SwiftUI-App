@@ -3,6 +3,8 @@ import Kingfisher
 import PteroNet
 
 struct InfoTab: View {
+    @Environment(PanelVM.self) private var vm
+    
     private let server: ServerAttributes
     
     init(_ server: ServerAttributes) {
@@ -38,12 +40,21 @@ struct InfoTab: View {
                                 .largeTitle(.bold)
                                 .lineLimit(1)
                             
-                            Text(server.description)
-                                .secondary()
-                                .lineLimit(1)
+                            Group {
+                                if server.description.isEmpty {
+                                    Button("Add a description") {
+                                        vm.sheetSettings = true
+                                    }
+                                } else {
+                                    Text(server.description)
+                                }
+                            }
+                            .title3()
+                            .secondary()
+                            .lineLimit(1)
                             
                             Text("\(server.id) • \(server.node)")
-                                .caption2()
+                                .footnote()
                                 .foregroundStyle(.tertiary)
                         }
                         .rounded()

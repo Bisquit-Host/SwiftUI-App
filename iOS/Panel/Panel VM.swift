@@ -19,6 +19,7 @@ final class PanelVM {
     var searchRule = ""
     var fieldSearch = ""
     var showFormatting = false
+    var sheetSettings = false
     var cpuUsage = 0.0
     var ramUsage = 0.0
     var diskUsage = 0.0
