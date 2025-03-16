@@ -54,6 +54,10 @@ struct InfoTab: View {
                             InfoTabAllocation(server)
                             
                             InfoTabButtons(server)
+                            
+#if canImport(ActivityKit)
+            InfoTabLAButton(server)
+#endif
                         }
                         .padding(.horizontal, 10)
                         .frame(width: width)
@@ -70,18 +74,12 @@ struct InfoTab: View {
                     .blur(radius: 10)
                     .scaleEffect(x: 1, y: -1)
                 
-//                Text("А что вы делаете в моём холодильнике? Может вы хотите кушать?")
+                // Text("А что вы делаете в моём холодильнике? Может вы хотите кушать?")
             }
         }
         .ignoresSafeArea()
         .toolbarBackground(.visible, for: .tabBar)
         .frame(maxWidth: 500)
-//        .background {
-//            Image(.darkBackgroundInfo)
-//                .resizable()
-//                .aspectRatio(contentMode: .fill)
-//                .blur(radius: 100, opaque: true)
-//        }
     }
 }
 

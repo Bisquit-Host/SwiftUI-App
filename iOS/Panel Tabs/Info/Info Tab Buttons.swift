@@ -72,11 +72,7 @@ struct InfoTabButtons: View {
                 } primaryAction: {
                     sheetUsers = true
                 }
-            }
-            
-#if canImport(ActivityKit)
-            InfoTabLAButton(server)
-#endif
+            }            
         }
         .sheet($sheetUsers) {
             UserListParent()
