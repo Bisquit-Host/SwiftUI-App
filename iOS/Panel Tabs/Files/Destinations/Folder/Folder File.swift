@@ -19,7 +19,7 @@ struct FolderFile: View {
             FileSearch($vm.searchField)
             
             UploadMenu($image, root: root)
-            
+                        
             if vm.isUploading {
                 UploadProgress()
             }
@@ -54,7 +54,11 @@ struct FolderFile: View {
             }
         }
         .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
+            ToolbarItemGroup(placement: .topBarTrailing) {
+                if #available(iOS 18.1, *) {
+                    ImagePlaygroundButton(root)
+                }
+                
                 Button {
                     alertNewFolder = true
                 } label: {
@@ -64,7 +68,7 @@ struct FolderFile: View {
                         .background(.ultraThinMaterial, in: .circle)
                 }
                 .foregroundStyle(.primary)
-                .padding(.trailing, -10)
+                .padding(.horizontal, -10)
             }
         }
         .alert(isPresented: $alertNewFolder) {

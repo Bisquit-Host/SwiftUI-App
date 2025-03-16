@@ -75,6 +75,10 @@ struct PanelView: View {
                 
                 ToolbarItemGroup(placement: .topBarTrailing) {
                     if store.lastTabPanel == .files {
+                        if #available(iOS 18.1, *) {
+                            ImagePlaygroundButton(fileVM.path)
+                        }
+                        
                         Button {
                             alertNewFolder = true
                         } label: {
@@ -84,7 +88,7 @@ struct PanelView: View {
                                 .background(.ultraThinMaterial, in: .circle)
                         }
                         .foregroundStyle(.primary)
-                        .padding(.trailing, -10)
+                        .padding(.horizontal, -10)
                     }
                     
                     Button {
