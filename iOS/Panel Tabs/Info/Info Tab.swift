@@ -65,16 +65,19 @@ struct InfoTab: View {
                         }
                         .rounded()
                         
+                        HStack {
+#if canImport(ActivityKit)
+                            InfoTabLAButton(server)
+                            
+                            PowerSwitch()
+#endif
+                        }
+                        
                         InfoTabCard(server)
                         
                         InfoTabAllocation(server)
                         
                         InfoTabButtons(server)
-                        
-#if canImport(ActivityKit)
-                        InfoTabLAButton(server)
-#endif
-                        PowerSwitch()
                     }
                     .padding(.horizontal, 10)
                     .frame(width: width)

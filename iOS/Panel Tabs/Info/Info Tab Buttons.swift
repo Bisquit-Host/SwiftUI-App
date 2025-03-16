@@ -18,16 +18,44 @@ struct InfoTabButtons: View {
     @State private var sheetLogs = false
     
     var body: some View {
-        VStack {
-            HStack {
+        HStack {
+            Button {
+                sheetLogs = true
+            } label: {
+                VStack(spacing: 5) {
+                    Image(systemName: "list.bullet.rectangle.fill")
+                        .foregroundStyle(.tertiary)
+                    
+                    Text("Logs")
+                        .semibold()
+                }
+                .footnote()
+                .frame(height: 55)
+                .frame(maxWidth: .infinity)
+                .foregroundStyle(.foreground)
+                .background(.ultraThinMaterial, in: .capsule)
+                .overlay {
+                    Capsule()
+                        .stroke(.gray.opacity(0.25), lineWidth: 1)
+                }
+            }
+            
+            Menu {
                 Button {
-                    sheetLogs = true
+                    sheetUsers = true
+                    userVM.sheetInvitation = true
+                } label: {
+                    Label("New user", systemImage: "person.badge.plus")
+                }
+            } label: {
+                Button {
+                    sheetUsers = true
                 } label: {
                     VStack(spacing: 5) {
-                        Image(systemName: "list.bullet.rectangle.fill")
+                        Image(systemName: "person.3.fill")
                             .foregroundStyle(.tertiary)
                         
-                        Text("Logs")
+                        Text("Users")
                             .semibold()
                     }
                     .footnote()
@@ -40,39 +68,9 @@ struct InfoTabButtons: View {
                             .stroke(.gray.opacity(0.25), lineWidth: 1)
                     }
                 }
-                
-                Menu {
-                    Button {
-                        sheetUsers = true
-                        userVM.sheetInvitation = true
-                    } label: {
-                        Label("New user", systemImage: "person.badge.plus")
-                    }
-                } label: {
-                    Button {
-                        sheetUsers = true
-                    } label: {
-                        VStack(spacing: 5) {
-                            Image(systemName: "person.3.fill")
-                                .foregroundStyle(.tertiary)
-                            
-                            Text("Users")
-                                .semibold()
-                        }
-                        .footnote()
-                        .frame(height: 55)
-                        .frame(maxWidth: .infinity)
-                        .foregroundStyle(.foreground)
-                        .background(.ultraThinMaterial, in: .capsule)
-                        .overlay {
-                            Capsule()
-                                .stroke(.gray.opacity(0.25), lineWidth: 1)
-                        }
-                    }
-                } primaryAction: {
-                    sheetUsers = true
-                }
-            }            
+            } primaryAction: {
+                sheetUsers = true
+            }
         }
         .sheet($sheetUsers) {
             UserListParent()

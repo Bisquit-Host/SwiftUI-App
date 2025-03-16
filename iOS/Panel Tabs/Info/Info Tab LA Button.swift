@@ -16,34 +16,52 @@ struct InfoTabLAButton: View {
                 Button {
                     la.stopAllLiveActivities()
                 } label: {
-                    Text("Cancel")
-                        .padding(.horizontal)
-                        .frame(height: 55)
-                        .foregroundStyle(.red)
-                        .background(.ultraThinMaterial, in: .capsule)
-                        .overlay {
-                            Capsule()
-                                .stroke(.gray.opacity(0.25), lineWidth: 1)
-                        }
+                    VStack(spacing: 5) {
+                        Image(systemName: "clock.badge.fill")
+                            .foregroundStyle(.tertiary)
+                        
+                        Text("Cancel")
+                            .semibold()
+                    }
+                    .foregroundStyle(.red)
+                    .footnote()
+                    .padding(.horizontal)
+                    .frame(height: 55)
+                    .frame(maxWidth: .infinity)
+                    .foregroundStyle(.red)
+                    .background(.ultraThinMaterial, in: .capsule)
+                    .overlay {
+                        Capsule()
+                            .stroke(.gray.opacity(0.25), lineWidth: 1)
+                    }
                 }
             } else {
                 Button {
                     la.stopAllLiveActivities()
                     la.startLiveActivity(server)
                 } label: {
-                    Text("Live Activity")
-                        .padding(.horizontal)
-                        .frame(height: 55)
-                        .background(.ultraThinMaterial, in: .capsule)
-                        .overlay {
-                            Capsule()
-                                .stroke(.gray.opacity(0.25), lineWidth: 1)
-                        }
+                    VStack(spacing: 5) {
+                        Image(systemName: "clock.badge.fill")
+                            .foregroundStyle(.tertiary)
+                        
+                        Text("Live Activity")
+                            .semibold()
+                    }
+                    .footnote()
+                    .padding(.horizontal)
+                    .frame(height: 55)
+                    .frame(maxWidth: .infinity)
+                    .background(.ultraThinMaterial, in: .capsule)
+                    .overlay {
+                        Capsule()
+                            .stroke(.gray.opacity(0.25), lineWidth: 1)
+                    }
                 }
             }
         }
         .title2(.semibold, design: .rounded)
         .foregroundStyle(.foreground)
+        .animation(.default, value: la.activityViewState?.activityState)
     }
 }
 
