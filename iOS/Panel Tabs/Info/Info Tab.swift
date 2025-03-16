@@ -50,7 +50,7 @@ struct InfoTab: View {
                                     Text(server.description)
                                 }
                             }
-                            .title3()
+                            .title3(.semibold)
                             .secondary()
                             .lineLimit(1)
                             
@@ -62,7 +62,7 @@ struct InfoTab: View {
                         .rounded()
                         
                         InfoTabCard(server)
-#warning("Tip")
+                                                
                         InfoTabAllocation(server)
                         
                         InfoTabButtons(server)

@@ -555,6 +555,9 @@
         }
       }
     },
+    "All allocations %@" : {
+
+    },
     "Allocations" : {
       "localizations" : {
         "nl" : {
@@ -2755,7 +2758,6 @@
       "shouldTranslate" : false
     },
     "IP Address" : {
-      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
