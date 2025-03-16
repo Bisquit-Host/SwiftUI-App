@@ -67,8 +67,12 @@ struct InfoTab: View {
 #if canImport(ActivityKit)
                             InfoTabLAButton(server)
                             
-                            PowerSwitch()
 #endif
+                            PowerSwitch()
+                                .overlay {
+                                    Circle()
+                                        .stroke(.gray.opacity(0.25), lineWidth: 1)
+                                }
                         }
                         
                         InfoTabCard(server)
