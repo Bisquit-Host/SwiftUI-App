@@ -11,9 +11,7 @@ struct InfoTab: View {
     }
     
     private let width = UIScreen.main.bounds.width
-    
-    private let image: ImageResource = .defaultIcon
-    //    private let image: ImageResource = .darkBackgroundInfo
+    private let image: ImageResource = .darkBackgroundInfo
     
     var body: some View {
         ScrollView(showsIndicators: false) {

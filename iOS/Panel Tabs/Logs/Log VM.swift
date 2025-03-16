@@ -27,6 +27,52 @@ final class LogVM {
         }
     }
     
+    var loggedUserCount: Int {
+        Set(logs.map(\.relationships.actor)).count
+    }
+    
+    var daysLogged: Int? {
+        guard
+            let firstDate = logs.last?.timestamp,
+            let firstLoggedDate = dateFormatter.date(from: firstDate)
+        else {
+            return nil
+        }
+        
+        let calendar = Calendar.current
+        return calendar.dateComponents([.day], from: firstLoggedDate, to: Date()).day
+    }
+    
+    private let dateFormatter: ISO8601DateFormatter = {
+        let formatter = ISO8601DateFormatter()
+        
+        formatter.formatOptions = [
+            .withInternetDateTime,
+            .withDashSeparatorInDate,
+            .withColonSeparatorInTime
+        ]
+        
+        return formatter
+    }()
+    
+    var logsByMonth: [Array<LogAttributes>.SubSequence] {
+        searchedLogs.chunked { lhs, rhs in
+            let date1 = dateFormatter.date(from: lhs.timestamp)
+            let date2 = dateFormatter.date(from: rhs.timestamp)
+            
+            return Calendar.current.component(.month, from: date1!) == Calendar.current.component(.month, from: date2!)
+        }
+    }
+    
+    func monthName(for isoTimestamp: String) -> String {
+        guard let date = dateFormatter.date(from: isoTimestamp) else {
+            return "Unknown Month"
+        }
+        
+        return DateFormatter()
+            .monthSymbols[Calendar.current.component(.month, from: date) - 1]
+    }
+    
     func fetchLogs(_ prefetch: Bool = false) {
         logListAPI(id) { result in
             switch result {

@@ -1751,6 +1751,9 @@
         }
       }
     },
+    "Days Logged" : {
+
+    },
     "Debug" : {
       "localizations" : {
         "nl" : {
@@ -5122,6 +5125,9 @@
         }
       }
     },
+    "Total Entries" : {
+
+    },
     "Total file allocated size" : {
       "localizations" : {
         "nl" : {
@@ -5501,6 +5507,9 @@
           }
         }
       }
+    },
+    "Users Logged" : {
+
     },
     "Using your iPhone, paste the API-key from the clipboard" : {
       "localizations" : {

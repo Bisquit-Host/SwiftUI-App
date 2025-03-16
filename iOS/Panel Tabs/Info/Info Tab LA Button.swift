@@ -22,13 +22,12 @@ struct InfoTabLAButton: View {
                         
                         Text("Cancel")
                             .semibold()
+                            .foregroundStyle(.red)
                     }
-                    .foregroundStyle(.red)
                     .footnote()
                     .padding(.horizontal)
                     .frame(height: 55)
                     .frame(maxWidth: .infinity)
-                    .foregroundStyle(.red)
                     .background(.ultraThinMaterial, in: .capsule)
                     .overlay {
                         Capsule()
