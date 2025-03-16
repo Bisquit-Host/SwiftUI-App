@@ -7,12 +7,16 @@ struct ConsoleInspector: View {
         @Bindable var vm = vm
         
         List {
-            Stepper("Font Size: \(Int(vm.fontSize))", value: $vm.fontSize)
+            Section {
+                Stepper("Font Size: \(Int(vm.fontSize))", value: $vm.fontSize)
+                
+                Slider(value: $vm.fontSize, in: 6...16)
+            }
+            .transparentSection()
             
-            Slider(value: $vm.fontSize, in: 6...16)
-            
-//            Toggle("coloredTextEnabled", isOn: $store.coloredTextEnabled)
+            // Toggle("coloredTextEnabled", isOn: $store.coloredTextEnabled)
         }
+        .transparentList()
         .presentationDetents([.medium, .large])
     }
 }

@@ -58,11 +58,15 @@ struct InfoTab: View {
                                 .footnote()
                                 .foregroundStyle(.tertiary)
                                 .shadow(color: .black, radius: 5)
+                                .onTapGesture {
+                                    UIPasteboard.general.string = server.id
+                                    SystemAlert.copied()
+                                }
                         }
                         .rounded()
                         
                         InfoTabCard(server)
-                                                
+                        
                         InfoTabAllocation(server)
                         
                         InfoTabButtons(server)
@@ -70,6 +74,7 @@ struct InfoTab: View {
 #if canImport(ActivityKit)
                         InfoTabLAButton(server)
 #endif
+                        PowerSwitch()
                     }
                     .padding(.horizontal, 10)
                     .frame(width: width)
