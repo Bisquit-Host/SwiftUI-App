@@ -13,7 +13,7 @@ struct UserList: View {
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading) {
-                ForEach(vm.users, id: \.uuid) { user in
+                ForEach(vm.users) { user in
                     UserCard(user)
                 }
             }

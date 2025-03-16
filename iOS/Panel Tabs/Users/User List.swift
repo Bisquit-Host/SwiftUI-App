@@ -7,20 +7,33 @@ struct UserList: View {
         @Bindable var vm = vm
         
         List {
-            Section {
-                ForEach(vm.users, id: \.uuid) { user in
+            ForEach(vm.users) { user in
+                Section {
                     UserCard(user)
                 }
-                .onDelete(perform: delete)
+                .transparentSection()
+            }
+            .onDelete(perform: delete)
+#if os(iOS)
+            .listSectionSpacing(-10)
+#endif
+            Section {
+                Button {
+                    vm.sheetInvitation = true
+                } label: {
+                    Label("New user", systemImage: "person.badge.plus")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .foregroundStyle(.foreground)
+                        .padding()
+                        .background(.ultraThinMaterial.opacity(0.3), in: .rect(cornerRadius: 16))
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 16)
+                                .stroke(.gray.opacity(0.25), lineWidth: 1)
+                        }
+                }
             }
             .transparentSection()
-            
-            Button {
-                vm.sheetInvitation = true
-            } label: {
-                Label("New user", systemImage: "person.badge.plus")
-            }
-            .transparentSection()
+            .padding(.top)
         }
         .environment(vm)
         .navigationTitle("Users")

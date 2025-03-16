@@ -18,7 +18,7 @@ struct UserCard: View {
 #if os(tvOS)
     private let imageSize = 64.0
 #else
-    private let imageSize = 32.0
+    private let imageSize = 40.0
 #endif
     
     var body: some View {
@@ -29,12 +29,19 @@ struct UserCard: View {
                 KFImage(imageUrl)
                     .resizable()
                     .frame(width: imageSize, height: imageSize)
-                    .clipShape(.rect(cornerRadius: 10))
+                    .clipShape(.circle)
                 
                 VStack(alignment: .leading) {
-                    Text(user.username)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.5)
+                    HStack(spacing: 5) {
+                        Text(user.username)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.5)
+                        
+                        if !user.twoFaEnabled {
+                            Image(systemName: "lock.fill")
+                                .foregroundStyle(.red)
+                        }
+                    }
 #if !os(watchOS)
                     Text(user.email)
                         .footnote()
@@ -43,12 +50,14 @@ struct UserCard: View {
                 }
                 
                 Spacer()
-                
-                Image(systemName: "lock.fill")
-                    .title2()
-                    .foregroundStyle(user.twoFaEnabled ? .green : .red)
             }
             .foregroundStyle(.foreground)
+            .padding()
+            .background(.ultraThinMaterial.opacity(0.3), in: .rect(cornerRadius: 16))
+            .overlay {
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(.gray.opacity(0.25), lineWidth: 1)
+            }
         }
         .sheet($sheetDetails) {
             UserView(user)
