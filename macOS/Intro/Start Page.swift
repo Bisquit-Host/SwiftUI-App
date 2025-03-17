@@ -67,22 +67,6 @@ struct StartPage: View {
                 vm.sheetCloudKeys = true
             }
         }
-        .alert("Is the following information correct?", isPresented: $vm.alertValid) {
-            Button("Yes", role: .cancel) {
-                if !keys.contains(where: { $0.key == vm.apiKey }) {
-                    modelContext.insert(APIKey("", key: vm.apiKey))
-                }
-                
-                store.authSucced()
-            }
-            
-            Button("No", role: .destructive) {
-                vm.accountName = ""
-                vm.accountEmail = ""
-            }
-        } message: {
-            Text("Name: \(vm.accountName)\nE-mail: \(vm.accountEmail)")
-        }
         .alert("Error \(vm.errorCode)", isPresented: $vm.alertInvalid) {
             Button("Try again") {
                 
@@ -92,7 +76,7 @@ struct StartPage: View {
         }
         .onChange(of: vm.apiKey) { _, newValue in
             if newValue.count == 48 {
-                vm.fetchAccountDetails()
+                checkApiKey()
             }
         }
         //        .sheet($vm.sheetSupport) {

@@ -2890,6 +2890,7 @@
 
     },
     "Is the following information correct?" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -3473,6 +3474,7 @@
 
     },
     "Name: %@\nE-mail: %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3599,6 +3601,7 @@
       }
     },
     "No" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -5720,6 +5723,7 @@
 
     },
     "Yes" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {

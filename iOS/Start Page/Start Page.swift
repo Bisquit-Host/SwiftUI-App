@@ -2,13 +2,13 @@ import ScrechKit
 import SwiftData
 
 struct StartPage: View {
-    @State private var vm = StartPageVM()
+    @State var vm = StartPageVM()
     @Environment(NavState.self) private var navState
-    @EnvironmentObject private var store: ValueStore
+    @EnvironmentObject var store: ValueStore
     
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.modelContext) private var modelContext
-    @Query(animation: .default) private var keys: [APIKey]
+    @Environment(\.modelContext) var modelContext
+    @Query(animation: .default) var keys: [APIKey]
     
     var body: some View {
         VStack {
@@ -71,7 +71,7 @@ struct StartPage: View {
         }
         .onChange(of: vm.apiKey) { _, newValue in
             if newValue.count == 48 || newValue.count == 340 {
-                vm.fetchAccountDetails()
+                checkApiKey()
             }
         }
         .task {
@@ -81,25 +81,9 @@ struct StartPage: View {
                 }
             }
         }
-        .alert("Is the following information correct?", isPresented: $vm.alertValid) {
-            Button("Yes", role: .cancel) {
-                if !keys.contains(where: { $0.key == vm.apiKey }) {
-                    modelContext.insert(APIKey("", key: vm.apiKey))
-                }
-                
-                store.authSucced()
-            }
-            
-            Button("No", role: .destructive) {
-                vm.accountName = ""
-                vm.accountEmail = ""
-            }
-        } message: {
-            Text("Name: \(vm.accountName)\nE-mail: \(vm.accountEmail)")
-        }
         .alert("Error \(vm.errorCode)", isPresented: $vm.alertInvalid) {
             Button("Try again") {
-                vm.fetchAccountDetails()
+                checkApiKey()
             }
             
             Button("Remove this key", role: .destructive) {

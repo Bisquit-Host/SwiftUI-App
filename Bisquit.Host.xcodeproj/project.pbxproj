@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		F3000E0C295A341100ABD30A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3000E0B295A341100ABD30A /* Assets.xcassets */; };
 		F3000E16295A357800ABD30A /* Server List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3000E15295A357800ABD30A /* Server List.swift */; };
-		F3000E18295A496C00ABD30A /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3000E17295A496C00ABD30A /* Intro.swift */; };
+		F3000E18295A496C00ABD30A /* Start Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3000E17295A496C00ABD30A /* Start Page.swift */; };
 		F3000E1E295AE2B700ABD30A /* Guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3000E1D295AE2B700ABD30A /* Guide.swift */; };
 		F30038CA2D42387600363CF4 /* Sheet Remote File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30038C92D42387600363CF4 /* Sheet Remote File.swift */; };
 		F30038CB2D42387600363CF4 /* Sheet Remote File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30038C92D42387600363CF4 /* Sheet Remote File.swift */; };
@@ -688,6 +688,14 @@
 		F373CD772D88A386008B64BE /* Custom Text Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CD6B2D88A386008B64BE /* Custom Text Effect.swift */; };
 		F373CD782D88A386008B64BE /* Infinite Scroll View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CD6C2D88A386008B64BE /* Infinite Scroll View.swift */; };
 		F373CD792D88A386008B64BE /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CD6D2D88A386008B64BE /* Intro.swift */; };
+		F373CD7B2D88D389008B64BE /* Start Page Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CD7A2D88D389008B64BE /* Start Page Helper.swift */; };
+		F373CD7C2D88D389008B64BE /* Start Page Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CD7A2D88D389008B64BE /* Start Page Helper.swift */; };
+		F373CD7D2D88D389008B64BE /* Start Page Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CD7A2D88D389008B64BE /* Start Page Helper.swift */; };
+		F373CD7E2D88D389008B64BE /* Start Page Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CD7A2D88D389008B64BE /* Start Page Helper.swift */; };
+		F373CD7F2D88D389008B64BE /* Start Page Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CD7A2D88D389008B64BE /* Start Page Helper.swift */; };
+		F373CD812D88D426008B64BE /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CD802D88D426008B64BE /* Intro.swift */; };
+		F373CD832D88D496008B64BE /* Start Page Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CD7A2D88D389008B64BE /* Start Page Helper.swift */; };
+		F373CD842D88D496008B64BE /* Start Page Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CD7A2D88D389008B64BE /* Start Page Helper.swift */; };
 		F374F7BD2D54922F006771DD /* Sheet Create Subdomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F374F7BC2D54922F006771DD /* Sheet Create Subdomain.swift */; };
 		F374F7BE2D54922F006771DD /* Sheet Create Subdomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F374F7BC2D54922F006771DD /* Sheet Create Subdomain.swift */; };
 		F374F7BF2D54922F006771DD /* Sheet Create Subdomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F374F7BC2D54922F006771DD /* Sheet Create Subdomain.swift */; };
@@ -1643,7 +1651,7 @@
 		F3000E05295A341000ABD30A /* tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tvOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3000E0B295A341100ABD30A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3000E15295A357800ABD30A /* Server List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List.swift"; sourceTree = "<group>"; };
-		F3000E17295A496C00ABD30A /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
+		F3000E17295A496C00ABD30A /* Start Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page.swift"; sourceTree = "<group>"; };
 		F3000E1D295AE2B700ABD30A /* Guide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guide.swift; sourceTree = "<group>"; };
 		F30038C92D42387600363CF4 /* Sheet Remote File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sheet Remote File.swift"; sourceTree = "<group>"; };
 		F300888F2B39FAB80051476C /* Allocation List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation List.swift"; sourceTree = "<group>"; };
@@ -1844,6 +1852,8 @@
 		F373CD6B2D88A386008B64BE /* Custom Text Effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Custom Text Effect.swift"; sourceTree = "<group>"; };
 		F373CD6C2D88A386008B64BE /* Infinite Scroll View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Infinite Scroll View.swift"; sourceTree = "<group>"; };
 		F373CD6D2D88A386008B64BE /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
+		F373CD7A2D88D389008B64BE /* Start Page Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page Helper.swift"; sourceTree = "<group>"; };
+		F373CD802D88D426008B64BE /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
 		F374F7BC2D54922F006771DD /* Sheet Create Subdomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sheet Create Subdomain.swift"; sourceTree = "<group>"; };
 		F375EC3729EE7213002CA969 /* Backup List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Backup List.swift"; sourceTree = "<group>"; };
 		F375EC3929EE73AC002CA969 /* Database List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database List.swift"; sourceTree = "<group>"; };
@@ -2379,6 +2389,7 @@
 			children = (
 				F31BA579295901110006D126 /* Start Page.swift */,
 				F31BA57B2959011B0006D126 /* Start Page VM.swift */,
+				F373CD7A2D88D389008B64BE /* Start Page Helper.swift */,
 				F32DB8A729AE6B800074E045 /* Start Page Footer.swift */,
 				F30D723A29D36D0F0048D7BD /* Guide */,
 			);
@@ -3345,7 +3356,8 @@
 		F3B86000295B196F00CE60C7 /* Intro */ = {
 			isa = PBXGroup;
 			children = (
-				F3000E17295A496C00ABD30A /* Intro.swift */,
+				F373CD802D88D426008B64BE /* Intro.swift */,
+				F3000E17295A496C00ABD30A /* Start Page.swift */,
 			);
 			path = Intro;
 			sourceTree = "<group>";
@@ -4363,6 +4375,7 @@
 				F370804F2A2A1EAC0046CE70 /* Schedule List.swift in Sources */,
 				F3202D1A2D562B980030B3CC /* Browser Card VDS.swift in Sources */,
 				F3EB09DB2A295C550073916A /* Video File.swift in Sources */,
+				F373CD812D88D426008B64BE /* Intro.swift in Sources */,
 				F33CDBFE2A26B8BC008D0214 /* Plan Models.swift in Sources */,
 				F33CDC032A26B95C008D0214 /* Browser Card.swift in Sources */,
 				F370804B2A2A1CA70046CE70 /* Backup List Footer.swift in Sources */,
@@ -4409,7 +4422,7 @@
 				F35B89C12A725CFB000B5EEF /* Tip Suspended Server.swift in Sources */,
 				F3202CE32D562A620030B3CC /* Browser List MC.swift in Sources */,
 				F3A28ADB2C57B06600010454 /* Server List Footer.swift in Sources */,
-				F3000E18295A496C00ABD30A /* Intro.swift in Sources */,
+				F3000E18295A496C00ABD30A /* Start Page.swift in Sources */,
 				F35F65932B1D068200431EB7 /* Ansi.swift in Sources */,
 				F37061C829774869009B4067 /* Nav Extension.swift in Sources */,
 				F3A7CF682C8DF3C900413400 /* Video File VM.swift in Sources */,
@@ -4436,6 +4449,7 @@
 				F3BC03B32B1FF4830011F98A /* Task Context Menu.swift in Sources */,
 				F374F7BE2D54922F006771DD /* Sheet Create Subdomain.swift in Sources */,
 				F33623312A22048C006A6271 /* Value Store.swift in Sources */,
+				F373CD7F2D88D389008B64BE /* Start Page Helper.swift in Sources */,
 				F3202D212D562B990030B3CC /* Browser Card Web.swift in Sources */,
 				F3EB09DC2A295F780073916A /* Text File.swift in Sources */,
 				F3D22C092A26564C00721113 /* Cloud Keys.swift in Sources */,
@@ -4627,6 +4641,7 @@
 				F3A994A82A177DA400530615 /* Map View.swift in Sources */,
 				F394A28429E0A9810012B7D1 /* Server Card Parent.swift in Sources */,
 				F3C0F9D029E204FA0040E277 /* FileTab Context Menu.swift in Sources */,
+				F373CD7D2D88D389008B64BE /* Start Page Helper.swift in Sources */,
 				F3D264442A66B3A6005C3777 /* QR Code View.swift in Sources */,
 				F399933A2AF2E491006E8A9A /* Other Settings.swift in Sources */,
 				F30088F62B3B55CD0051476C /* User Invitation View.swift in Sources */,
@@ -4890,6 +4905,7 @@
 				F3BE36DB2A55E2EE007A0179 /* Server List Topbar.swift in Sources */,
 				F345486C29708FE30038DFD6 /* Server Card.swift in Sources */,
 				F336232F2A22021E006A6271 /* Value Store.swift in Sources */,
+				F373CD7E2D88D389008B64BE /* Start Page Helper.swift in Sources */,
 				F32FD7242B1E065700723B88 /* Network Calls.swift in Sources */,
 				F3AB4A992CF4031600A8252F /* Json Formatter Button.swift in Sources */,
 			);
@@ -5020,6 +5036,7 @@
 				F36D53342A05B8AF007324C6 /* File View.swift in Sources */,
 				F3E2BEE02C1C6BA800B7A6D4 /* Cache List VM.swift in Sources */,
 				F3287A762B10A0E4001AFE54 /* Live Activity.swift in Sources */,
+				F373CD7B2D88D389008B64BE /* Start Page Helper.swift in Sources */,
 				F36D53402A05B8F6007324C6 /* File Icon.swift in Sources */,
 				F3C9D8522B3059E700265492 /* UIVideoPlayer.swift in Sources */,
 				F3464D322A863A6600188B0C /* Send Command.swift in Sources */,
@@ -5294,6 +5311,7 @@
 				F3D295AC2AF3A0F700ED43A0 /* Cache Model.swift in Sources */,
 				F3EE9FC22D875767000120A7 /* Log Topbar.swift in Sources */,
 				F3D2955D2AF39E6800ED43A0 /* Map View.swift in Sources */,
+				F373CD7C2D88D389008B64BE /* Start Page Helper.swift in Sources */,
 				F3D295ED2AF3A45300ED43A0 /* Server Name.swift in Sources */,
 				F34BB6B92D3DC2B800D27BE0 /* File Preview VM.swift in Sources */,
 				F3AF91C32B423492001D8F80 /* SSH VM.swift in Sources */,
@@ -5661,6 +5679,7 @@
 				F38928252A441B5D00561CDF /* Server Settings.swift in Sources */,
 				F3202C822D5590CC0030B3CC /* Discover.swift in Sources */,
 				F3202C832D5590CC0030B3CC /* Discover Item.swift in Sources */,
+				F373CD842D88D496008B64BE /* Start Page Helper.swift in Sources */,
 				F3202C842D5590CC0030B3CC /* Discover Card.swift in Sources */,
 				F39E682F2D2D61680002BA96 /* Database Context Menu.swift in Sources */,
 				F39E68302D2D61680002BA96 /* Database List.swift in Sources */,
@@ -5747,6 +5766,7 @@
 				F3DF50C92B38FD2000206CAE /* Contact Manager.swift in Sources */,
 				F3EE9FA22D86234A000120A7 /* Custom Dialog.swift in Sources */,
 				F30B61CD2B2907CA00F447B4 /* Debug Key.swift in Sources */,
+				F373CD832D88D496008B64BE /* Start Page Helper.swift in Sources */,
 				F3DF50CB2B38FDE300206CAE /* Permission List.swift in Sources */,
 				F3F061D72A73C9A500470F7E /* Map VM.swift in Sources */,
 				F3464D2B2A863A6000188B0C /* Create Backup.swift in Sources */,
