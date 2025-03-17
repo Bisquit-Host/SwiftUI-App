@@ -7,6 +7,25 @@ struct UserList: View {
         @Bindable var vm = vm
         
         List {
+            HStack {
+                Text("Users")
+                    .largeTitle(.bold, design: .rounded)
+                
+                Spacer()
+                
+                Button {
+                    vm.sheetInvitation = true
+                } label: {
+                    Image(systemName: "person.crop.circle.badge.plus")
+                        .title3()
+                        .foregroundStyle(.foreground)
+                        .footnote(.bold)
+                        .frame(width: 35, height: 35)
+                        .background(.ultraThinMaterial, in: .circle)
+                }
+            }
+            .listRowBackground(Color.clear)
+            
             ForEach(vm.users) { user in
                 Section {
                     UserCard(user)
@@ -17,38 +36,32 @@ struct UserList: View {
 #if os(iOS)
             .listSectionSpacing(-10)
 #endif
-            Section {
-                Button {
-                    vm.sheetInvitation = true
-                } label: {
-                    Label("New user", systemImage: "person.badge.plus")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .foregroundStyle(.foreground)
-                        .padding()
-                        .background(.ultraThinMaterial.opacity(0.3), in: .rect(cornerRadius: 16))
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 16)
-                                .stroke(.gray.opacity(0.25), lineWidth: 1)
-                        }
-                }
-            }
-            .transparentSection()
-            .padding(.top)
         }
         .environment(vm)
-        .navigationTitle("Users")
-        .toolbarTitleDisplayMode(.inline)
+        .padding(.top, -16)
+//        .navigationTitle("Users")
+//#if os(iOS)
+//        .toolbarTitleDisplayMode(.inlineLarge)
+//#endif
         .transparentList()
         .task {
             vm.fetchUsers()
             vm.fetchPermissions()
         }
-        .refreshable {
-            vm.fetchUsers()
-        }
         .sheet($vm.sheetInvitation) {
             UserInvitationView()
         }
+//        .toolbar {
+//            Button {
+//                vm.sheetInvitation = true
+//            } label: {
+//                Image(systemName: "person.crop.circle.badge.plus")
+//                    .foregroundStyle(.foreground)
+//                    .footnote(.bold)
+//                    .frame(width: 35, height: 35)
+//                    .background(.ultraThinMaterial, in: .circle)
+//            }
+//        }
     }
     
     private func delete(_ offsets: IndexSet) {

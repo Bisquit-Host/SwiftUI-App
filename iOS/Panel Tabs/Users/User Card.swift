@@ -32,16 +32,9 @@ struct UserCard: View {
                     .clipShape(.circle)
                 
                 VStack(alignment: .leading) {
-                    HStack(spacing: 5) {
-                        Text(user.username)
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.5)
-                        
-                        if !user.twoFaEnabled {
-                            Image(systemName: "lock.fill")
-                                .foregroundStyle(.red)
-                        }
-                    }
+                    Text(user.username)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.5)
 #if !os(watchOS)
                     Text(user.email)
                         .footnote()
@@ -50,6 +43,12 @@ struct UserCard: View {
                 }
                 
                 Spacer()
+                
+                if !user.twoFaEnabled {
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .title3()
+                        .foregroundStyle(.yellow)
+                }
             }
             .foregroundStyle(.foreground)
             .padding()
