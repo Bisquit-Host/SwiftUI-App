@@ -21,7 +21,7 @@ struct TopbarAdminButton: View {
                     .background(.ultraThinMaterial, in: .circle)
             }
             .symbolVariant(store.adminServerList ? .fill : .none)
-            .padding(.horizontal, -10)
+            .foregroundStyle(.foreground)
         }
     }
 }

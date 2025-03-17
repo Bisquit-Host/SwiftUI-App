@@ -2518,9 +2518,9 @@
 				F31578B229675F5D0016A600 /* Server List.swift */,
 				F39EA2E22D5D576D00329468 /* Game Center Buttons.swift */,
 				F352AF962A4EDB1D004AD489 /* Server List VM.swift */,
-				F3202CD22D559B6C0030B3CC /* VM extensions */,
 				F337B3A729BC6B5400CC1195 /* Server List Grid.swift */,
 				F3E2BF0A2C1EC94300B7A6D4 /* Contacts VM.swift */,
+				F3202CD22D559B6C0030B3CC /* VM extensions */,
 				F32E88CB2AF83FCB00959D49 /* Topbar */,
 				F3A391BD29DB838D00591C84 /* Server Card */,
 			);

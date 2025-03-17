@@ -52,13 +52,6 @@ struct ServerList: View {
                 vm.searchField = search
             }
         }
-        .safeAreaInset(edge: .bottom) {
-            if vm.showFilter {
-                ServerListFilter()
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                    .environment(vm)
-            }
-        }
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Menu {
@@ -75,12 +68,15 @@ struct ServerList: View {
                         .frame(width: 35, height: 35)
                         .background(.ultraThinMaterial, in: .circle)
                 }
+                .foregroundStyle(.foreground)
             }
             
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 TopbarAdminButton {
                     vm.fetchServers(store.adminServerList)
                 }
+                
+                ServerListFilter()
                 
                 SettingsButton()
                     .environment(vm)

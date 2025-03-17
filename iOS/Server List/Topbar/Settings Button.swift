@@ -49,6 +49,7 @@ struct SettingsButton: View {
                 .frame(width: 35, height: 35)
                 .background(.ultraThinMaterial, in: .circle)
         }
+        .foregroundStyle(.foreground)
         .sheet($sheetAccount) {
             AccountParent()
         }

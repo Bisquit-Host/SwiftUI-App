@@ -26,15 +26,12 @@ struct ServerListFilter: View {
             }
         } label: {
             Image(systemName: "line.3.horizontal.decrease.circle")
-                .title(.semibold)
-                .foregroundColor(.white)
-                .shadow(color: .black.opacity(0.5), radius: 5)
-                .frame(width: 60, height: 60)
-                .symbolVariant(vm.filterBySuspended || vm.filterByNotSuspended ? .fill : .none)
+                .footnote(.bold)
+                .frame(width: 35, height: 35)
                 .background(.ultraThinMaterial, in: .circle)
         }
-        .hoverEffect(.lift)
-        .padding(.trailing)
+        .padding(.horizontal, -10)
+        .foregroundStyle(.foreground)
     }
 }
 
