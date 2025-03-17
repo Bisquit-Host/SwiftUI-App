@@ -3,8 +3,7 @@ import PteroNet
 
 struct LogList: View {
     @Environment(LogVM.self) private var vm
-    
-    @State private var searchField = ""
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         @Bindable var vm = vm
@@ -23,18 +22,41 @@ struct LogList: View {
                 .transparentSection()
             }
         }
-        .navigationTitle("Server logs")
+        .navigationTitle("Logs")
+#if !os(tvOS)
+        .toolbarTitleDisplayMode(.large)
+#endif
         .toolbarTitleDisplayMode(.inline)
         .ornamentDismissButton()
-        .searchable(text: $vm.searchField)
         .transparentList()
         .refreshableTask {
             vm.fetchLogs()
         }
-        .overlay {
-            if vm.searchedLogs.isEmpty {
-                ContentUnavailableView.search(text: vm.searchField)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "xmark")
+                        .footnote(.bold)
+                        .frame(width: 35, height: 35)
+                        .background(.ultraThinMaterial, in: .circle)
+                }
+                .foregroundStyle(.primary)
             }
+            
+#warning("Logs: filter by user")
+            //            ToolbarItem(placement: .topBarTrailing) {
+            //                Menu {
+            //
+            //                } label: {
+            //                    Image(systemName: "person.crop.circle.badge.plus")
+            //                        .foregroundStyle(.foreground)
+            //                        .footnote(.bold)
+            //                        .frame(width: 35, height: 35)
+            //                        .background(.ultraThinMaterial, in: .circle)
+            //                }
+            //            }
         }
     }
 }

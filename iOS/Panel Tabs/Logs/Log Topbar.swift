@@ -4,14 +4,14 @@ struct LogTopbar: View {
     @Environment(LogVM.self) private var vm
     
     var body: some View {
-        if !vm.searchedLogs.isEmpty {
+        if !vm.logs.isEmpty {
             Section {
                 HStack {
                     LogTopbarCard(
                         title: "Total Entries",
                         icon: "rectangle.stack.fill",
                         iconColor: .indigo,
-                        value: vm.searchedLogs.count
+                        value: vm.logs.count
                     )
                     
                     Divider()
