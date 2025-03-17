@@ -37,7 +37,9 @@ struct SubdomainList: View {
                 .resizable()
                 .blur(radius: 55, opaque: true)
         }
+#if !os(tvOS)
         .scrollContentBackground(.hidden)
+#endif
         .toolbarBackground(.visible, for: .tabBar)
     }
     

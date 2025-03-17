@@ -46,7 +46,9 @@ struct DataTab: View {
                 .resizable()
                 .blur(radius: 55, opaque: true)
         }
+#if !os(tvOS)
         .scrollContentBackground(.hidden)
+#endif
         .toolbarBackground(.visible, for: .tabBar)
         .alert("Create Database", isPresented: $databaseVM.alertCreate) {
             TextField("", text: $databaseVM.newDatabaseName)
