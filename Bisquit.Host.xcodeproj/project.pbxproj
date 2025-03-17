@@ -728,6 +728,9 @@
 		F37FF8802D877B8C00554B3F /* Log Topbar Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37FF87A2D877B8C00554B3F /* Log Topbar Card.swift */; };
 		F37FF8812D877B8C00554B3F /* Log Topbar Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37FF87A2D877B8C00554B3F /* Log Topbar Card.swift */; };
 		F37FF8832D87AE3800554B3F /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = F37FF8822D87AE3800554B3F /* Algorithms */; };
+		F37FF8852D87B20700554B3F /* Panel Toolbar Nav.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37FF8842D87B20700554B3F /* Panel Toolbar Nav.swift */; };
+		F37FF8862D87B20700554B3F /* Panel Toolbar Nav.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37FF8842D87B20700554B3F /* Panel Toolbar Nav.swift */; };
+		F37FF8882D87B20700554B3F /* Panel Toolbar Nav.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37FF8842D87B20700554B3F /* Panel Toolbar Nav.swift */; };
 		F380B3242BD7B9B6009062E8 /* Image Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380B3232BD7B9B6009062E8 /* Image Picker.swift */; };
 		F380B3252BD7BA15009062E8 /* Image Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380B3232BD7B9B6009062E8 /* Image Picker.swift */; };
 		F380B3262BD7BA16009062E8 /* Image Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380B3232BD7B9B6009062E8 /* Image Picker.swift */; };
@@ -1858,6 +1861,7 @@
 		F37DDA7529E2AF7600B9680C /* Folder Path VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Folder Path VM.swift"; sourceTree = "<group>"; };
 		F37F51C329DAF8D70030C1C4 /* Des Image VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Des Image VM.swift"; sourceTree = "<group>"; };
 		F37FF87A2D877B8C00554B3F /* Log Topbar Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log Topbar Card.swift"; sourceTree = "<group>"; };
+		F37FF8842D87B20700554B3F /* Panel Toolbar Nav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Toolbar Nav.swift"; sourceTree = "<group>"; };
 		F380B3232BD7B9B6009062E8 /* Image Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image Picker.swift"; sourceTree = "<group>"; };
 		F380B3272BD7C4A4009062E8 /* Upload Preview List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Upload Preview List.swift"; sourceTree = "<group>"; };
 		F38282022B0E14B30088C48B /* Live Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Live Activity.swift"; sourceTree = "<group>"; };
@@ -2530,6 +2534,7 @@
 			isa = PBXGroup;
 			children = (
 				F31BA595295901F70006D126 /* Panel View.swift */,
+				F37FF8842D87B20700554B3F /* Panel Toolbar Nav.swift */,
 				F3EDEE3429C0C84C00B08696 /* Panel VM.swift */,
 				F3EDEE3029C06E9700B08696 /* Panel Model.swift */,
 				F34F28992ACDAD9B00FD618A /* Animated Tab.swift */,
@@ -4517,6 +4522,7 @@
 				F38F9E0D2CE6CCF90033EFE3 /* Image Playground Button.swift in Sources */,
 				F375EC3A29EE73AC002CA969 /* Database List.swift in Sources */,
 				F385824629D6268200BEEE1D /* Currency Button.swift in Sources */,
+				F37FF8852D87B20700554B3F /* Panel Toolbar Nav.swift in Sources */,
 				F3D7D87D29E83D6500BCAFFE /* Icon Settings.swift in Sources */,
 				F3E024C52B228F4C00FFF686 /* New Task Sheet.swift in Sources */,
 				F3116F262A33E142001F067C /* Folder File.swift in Sources */,
@@ -5121,6 +5127,7 @@
 				F35B89C32A725CFC000B5EEF /* Tip Suspended Server.swift in Sources */,
 				F35FEB0C2B09F003004DA05D /* API Key.swift in Sources */,
 				F3202C742D5583680030B3CC /* Browser Parent.swift in Sources */,
+				F37FF8862D87B20700554B3F /* Panel Toolbar Nav.swift in Sources */,
 				F3D264422A66ABBE005C3777 /* Account VM.swift in Sources */,
 				F36D53382A05B8C5007324C6 /* Folder Path VM.swift in Sources */,
 				F3FA61552A1F8DB500A65AE1 /* Upload Menu.swift in Sources */,
@@ -5265,6 +5272,7 @@
 				F3EE9F9B2D86234A000120A7 /* Custom Alert.swift in Sources */,
 				F38F9E2C2CEB39D80033EFE3 /* Metadata List.swift in Sources */,
 				F32FD7202B1E065500723B88 /* Network Calls.swift in Sources */,
+				F37FF8882D87B20700554B3F /* Panel Toolbar Nav.swift in Sources */,
 				F3D295502AF39DEA00ED43A0 /* Browser Hints.swift in Sources */,
 				F3D295D42AF3A30C00ED43A0 /* Console VM.swift in Sources */,
 				F3D7F84F2C8ED3D100368ECE /* Disable 2FA View.swift in Sources */,
