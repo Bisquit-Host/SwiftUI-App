@@ -65,6 +65,9 @@ struct ServerList: View {
                     GameCenterButtons()
                 } label: {
                     Image(systemName: "sparkles")
+                        .footnote(.bold)
+                        .frame(width: 35, height: 35)
+                        .background(.ultraThinMaterial, in: .circle)
                 }
             }
             

@@ -16,9 +16,12 @@ struct TopbarAdminButton: View {
                 fetchServers()
             } label: {
                 Image(systemName: "person.badge.shield.checkmark")
+                    .footnote(.bold)
+                    .frame(width: 35, height: 35)
+                    .background(.ultraThinMaterial, in: .circle)
             }
-            .frame(maxWidth: 32)
             .symbolVariant(store.adminServerList ? .fill : .none)
+            .padding(.horizontal, -10)
         }
     }
 }
