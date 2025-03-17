@@ -11,10 +11,10 @@ struct Guide: View {
         "Tap Authorize App or copy the API key"
     ]
     
-    private let images = [
-        "step0",
-        "step1",
-        "step2"
+    private let images: [ImageResource] = [
+        .step0,
+        .step1,
+        .step2
     ]
     
     @State private var step = 0
