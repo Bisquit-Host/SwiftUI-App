@@ -29,6 +29,7 @@ struct PanelView: View {
     }
     
     @State private var alertNewFolder = false
+    @State private var navExpanded = false
     
     var body: some View {
         NavigationView {
@@ -132,7 +133,10 @@ struct PanelView: View {
                     }
                     
                     Button {
-                        vm.sheetSettings = true
+                        // vm.sheetSettings = true
+                        withAnimation(.easeOut) {
+                            navExpanded = true
+                        }
                     } label: {
                         Image(systemName: "ellipsis")
                             .footnote(.bold)
@@ -162,6 +166,12 @@ struct PanelView: View {
                 if let data {
                     vm.connectWebSocket(data)
                 }
+            }
+        }
+        .overlay(alignment: .topTrailing) {
+            if navExpanded {
+                PanelToolbarNav($navExpanded)
+                    .offset(x: -20)
             }
         }
         .alert(isPresented: $alertNewFolder) {
