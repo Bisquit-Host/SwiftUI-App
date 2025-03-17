@@ -40,7 +40,6 @@ struct Guide: View {
             
             Text(steps[step])
                 .semibold()
-                .serif()
                 .fontSize(fontSize)
                 .padding()
                 .tightening(true)
