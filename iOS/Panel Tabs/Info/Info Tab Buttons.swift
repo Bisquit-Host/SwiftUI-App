@@ -2,10 +2,10 @@ import ScrechKit
 import PteroNet
 
 struct InfoTabButtons: View {
+    private let server: ServerAttributes
     private var settingsVM: ServerSettingsVM
     private var logVM: LogVM
     private var userVM: UsersVM
-    private let server: ServerAttributes
     
     init(_ server: ServerAttributes) {
         self.server = server
