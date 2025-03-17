@@ -11,17 +11,19 @@ struct ConsoleTab: View {
         self.id = id
     }
     
+    private let width = UIScreen.main.bounds.width
+    
     var body: some View {
         @Bindable var vm = vm
         
-        VStack {
+        VStack(spacing: 0) {
             ConsoleView()
             
             HStack {
                 TextField("Type a command...", text: $vm.command)
                     .monospaced()
-                    .textFieldStyle(.roundedBorder)
                     .autocorrectionDisabled()
+                    .textInputAutocapitalization(.never)
                     .onSubmit {
                         if !vm.command.isEmpty {
                             vm.sendCommand()
@@ -32,10 +34,12 @@ struct ConsoleTab: View {
                     SFButton("delete.left") {
                         vm.command = ""
                     }
+                    .secondary()
                 }
             }
             .animation(.default, value: vm.command)
-            .padding(.bottom)
+            .padding()
+            .background(.ultraThinMaterial)
         }
         .toolbarBackground(.visible, for: .tabBar)
         .toolbarBackground(.visible, for: .navigationBar)
@@ -47,6 +51,11 @@ struct ConsoleTab: View {
         }
         .inspector($vm.inspectorPresented) {
             ConsoleInspector()
+        }
+        .background {
+            Image(.darkBackgroundInfo)
+                .resizable()
+                .blur(radius: 55)
         }
         .alert("Are you sure you want to perform the Kill action?", isPresented: $vm.alertKill) {
             Button("Kill", role: .destructive) {
@@ -64,6 +73,29 @@ struct ConsoleTab: View {
                 }
             }
         }
+//        .overlay(alignment: .bottom) {
+//            HStack {
+//                TextField("Type a command...", text: $vm.command)
+//                    .monospaced()
+//                    .autocorrectionDisabled()
+//                    .textInputAutocapitalization(.never)
+//                    .onSubmit {
+//                        if !vm.command.isEmpty {
+//                            vm.sendCommand()
+//                        }
+//                    }
+//                
+//                if !vm.command.isEmpty {
+//                    SFButton("delete.left") {
+//                        vm.command = ""
+//                    }
+//                    .secondary()
+//                }
+//            }
+//            .animation(.default, value: vm.command)
+//            .padding()
+//            .background(.ultraThinMaterial)
+//        }
     }
 }
 
