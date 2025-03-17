@@ -46,9 +46,16 @@ struct FileTab: View {
             }
         }
         .animation(.easeOut, value: vm.filteredFiles)
+        .toolbarBackground(.visible, for: .tabBar)
         .environmentObject(vm)
         .frame(maxWidth: 500)
         .safariCover($vm.showSafari, url: vm.downloadUrl)
+        .background {
+            Image(.darkBackgroundInfo)
+                .resizable()
+                .blur(radius: 55)
+        }
+        .scrollContentBackground(.hidden)
         .task {
             vm.path = root
         }

@@ -32,6 +32,13 @@ struct SubdomainList: View {
         .sheet($sheetCreate) {
             SheetCreateSubdomain()
         }
+        .background {
+            Image(.darkBackgroundInfo)
+                .resizable()
+                .blur(radius: 55)
+        }
+        .scrollContentBackground(.hidden)
+        .toolbarBackground(.visible, for: .tabBar)
     }
     
     private func delete(at offsets: IndexSet) {

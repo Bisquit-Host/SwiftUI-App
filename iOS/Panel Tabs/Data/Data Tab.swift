@@ -41,6 +41,13 @@ struct DataTab: View {
         .sheet($scheduleVM.sheetCreate) {
             NewScheduleSheet()
         }
+        .background {
+            Image(.darkBackgroundInfo)
+                .resizable()
+                .blur(radius: 55)
+        }
+        .scrollContentBackground(.hidden)
+        .toolbarBackground(.visible, for: .tabBar)
         .alert("Create Database", isPresented: $databaseVM.alertCreate) {
             TextField("", text: $databaseVM.newDatabaseName)
                 .autocorrectionDisabled()

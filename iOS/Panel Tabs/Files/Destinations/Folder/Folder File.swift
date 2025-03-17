@@ -48,6 +48,12 @@ struct FolderFile: View {
         .refreshableTask {
             vm.fetchFiles(root)
         }
+        .background {
+            Image(.darkBackgroundInfo)
+                .resizable()
+                .blur(radius: 55)
+        }
+        .scrollContentBackground(.hidden)
         .onChange(of: image) {
             if let image {
                 vm.handleImageImport(image, at: root)
