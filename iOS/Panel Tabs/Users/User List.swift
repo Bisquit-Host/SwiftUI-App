@@ -3,29 +3,12 @@ import SwiftUI
 struct UserList: View {
     @Environment(UsersVM.self) private var vm
     
+    @Environment(\.dismiss) private var dismiss
+    
     var body: some View {
         @Bindable var vm = vm
         
         List {
-            HStack {
-                Text("Users")
-                    .largeTitle(.bold, design: .rounded)
-                
-                Spacer()
-                
-                Button {
-                    vm.sheetInvitation = true
-                } label: {
-                    Image(systemName: "person.crop.circle.badge.plus")
-                        .title3()
-                        .foregroundStyle(.foreground)
-                        .footnote(.bold)
-                        .frame(width: 35, height: 35)
-                        .background(.ultraThinMaterial, in: .circle)
-                }
-            }
-            .listRowBackground(Color.clear)
-            
             ForEach(vm.users) { user in
                 Section {
                     UserCard(user)
@@ -38,11 +21,8 @@ struct UserList: View {
 #endif
         }
         .environment(vm)
-        .padding(.top, -16)
-//        .navigationTitle("Users")
-//#if os(iOS)
-//        .toolbarTitleDisplayMode(.inlineLarge)
-//#endif
+        .navigationTitle("Users")
+        .toolbarTitleDisplayMode(.large)
         .transparentList()
         .task {
             vm.fetchUsers()
@@ -51,17 +31,31 @@ struct UserList: View {
         .sheet($vm.sheetInvitation) {
             UserInvitationView()
         }
-//        .toolbar {
-//            Button {
-//                vm.sheetInvitation = true
-//            } label: {
-//                Image(systemName: "person.crop.circle.badge.plus")
-//                    .foregroundStyle(.foreground)
-//                    .footnote(.bold)
-//                    .frame(width: 35, height: 35)
-//                    .background(.ultraThinMaterial, in: .circle)
-//            }
-//        }
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "xmark")
+                        .footnote(.bold)
+                        .frame(width: 35, height: 35)
+                        .background(.ultraThinMaterial, in: .circle)
+                }
+                .foregroundStyle(.primary)
+            }
+            
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    vm.sheetInvitation = true
+                } label: {
+                    Image(systemName: "person.crop.circle.badge.plus")
+                        .foregroundStyle(.foreground)
+                        .footnote(.bold)
+                        .frame(width: 35, height: 35)
+                        .background(.ultraThinMaterial, in: .circle)
+                }
+            }
+        }
     }
     
     private func delete(_ offsets: IndexSet) {
