@@ -10,6 +10,7 @@ struct PanelView: View {
     @State private var databaseVM: DatabaseVM
     @State private var scheduleVM: ScheduleVM
     @State private var subdomainVM: SubdomainVM
+    @State private var consoleVM: ConsoleVM
     
     @Environment(\.dismiss) private var dismiss
     
@@ -24,6 +25,7 @@ struct PanelView: View {
         self.scheduleVM = ScheduleVM(id)
         self.startupVM = StartupVM(id)
         self.subdomainVM = SubdomainVM(id)
+        self.consoleVM = ConsoleVM(id)
     }
     
     @State private var alertNewFolder = false
@@ -39,6 +41,7 @@ struct PanelView: View {
                         }
                     
                     ConsoleTab(id)
+                        .environment(consoleVM)
                         .tab(.console)
                     
                     FileTab(id)
@@ -74,6 +77,20 @@ struct PanelView: View {
                 }
                 
                 ToolbarItemGroup(placement: .topBarTrailing) {
+                    if store.lastTabPanel == .console {
+                        Button {
+                            consoleVM.inspectorPresented = true
+                        } label: {
+                            Image(systemName: "bold.italic.underline")
+                                .fontSize(10)
+                                .bold()
+                                .frame(width: 35, height: 35)
+                                .background(.ultraThinMaterial, in: .circle)
+                        }
+                        .foregroundStyle(.primary)
+                        .padding(.horizontal, -10)
+                    }
+                    
                     if store.lastTabPanel == .files {
                         if #available(iOS 18.1, *) {
                             ImagePlaygroundButton(fileVM.path)

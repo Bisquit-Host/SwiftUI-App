@@ -1,7 +1,7 @@
 import ScrechKit
 
 struct ConsoleTab: View {
-    @State private var vm: ConsoleVM
+    @Environment(ConsoleVM.self) private var vm
     @Environment(PanelVM.self) private var panelVM
     @EnvironmentObject private var store: ValueStore
     
@@ -9,7 +9,6 @@ struct ConsoleTab: View {
     
     init(_ id: String) {
         self.id = id
-        self.vm = ConsoleVM(id)
     }
     
     var body: some View {
@@ -65,13 +64,12 @@ struct ConsoleTab: View {
                 }
             }
         }
-        .environment(vm)
-        .environment(panelVM)
     }
 }
 
 #Preview {
     ConsoleTab("500028e3")
         .environment(PanelVM(""))
+        .environment(ConsoleVM(""))
         .environmentObject(ValueStore())
 }

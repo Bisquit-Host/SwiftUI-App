@@ -20,8 +20,6 @@ struct ConsoleOverlay: View {
                 Spacer()
                 
                 ConsoleSearch()
-                
-                InspectorButton($vm.inspectorPresented)
             }
             
             Spacer()
