@@ -5483,7 +5483,14 @@
 
     },
     "Useful links" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Полезные ссылки"
+          }
+        }
+      }
     },
     "Username" : {
       "localizations" : {
