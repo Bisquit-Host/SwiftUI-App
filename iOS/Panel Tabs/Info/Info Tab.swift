@@ -38,7 +38,7 @@ struct InfoTab: View {
                         
                         HStack {
 #if canImport(ActivityKit)
-                            InfoTabLAButton(server)
+                            InfoTabLA(server)
 #endif
                             PowerSwitch()
                                 .overlay {

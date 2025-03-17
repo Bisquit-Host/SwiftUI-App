@@ -1,7 +1,7 @@
 import SwiftUI
 import PteroNet
 
-struct InfoTabLAButton: View {
+struct InfoTabLA: View {
     @State private var la = LiveActivity()
     
     private let server: ServerAttributes
@@ -65,5 +65,5 @@ struct InfoTabLAButton: View {
 }
 
 #Preview {
-    InfoTabLAButton(sampleJSON(.serverListAttributes))
+    InfoTabLA(sampleJSON(.serverListAttributes))
 }
