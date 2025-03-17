@@ -9,23 +9,7 @@ final class LogVM {
         self.id = id
     }
     
-    var searchField = ""
-    private var logs: [LogAttributes] = []
-    
-    var searchedLogs: [LogAttributes] {
-        guard !searchField.isEmpty else {
-            return logs
-        }
-        
-        let prompt = searchField.lowercased()
-        
-        return logs.filter {
-            $0.relationships.actor.attributes?.username
-                .lowercased().contains(prompt) ?? false ||
-            $0.relationships.actor.attributes?.email
-                .lowercased().contains(prompt) ?? false
-        }
-    }
+    var logs: [LogAttributes] = []
     
     var loggedUserCount: Int {
         Set(logs.map(\.relationships.actor)).count
@@ -56,7 +40,7 @@ final class LogVM {
     }()
     
     var logsByMonth: [Array<LogAttributes>.SubSequence] {
-        searchedLogs.chunked { lhs, rhs in
+        logs.chunked { lhs, rhs in
             let date1 = dateFormatter.date(from: lhs.timestamp)
             let date2 = dateFormatter.date(from: rhs.timestamp)
             
