@@ -727,6 +727,7 @@
 		F37FF87F2D877B8C00554B3F /* Log Topbar Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37FF87A2D877B8C00554B3F /* Log Topbar Card.swift */; };
 		F37FF8802D877B8C00554B3F /* Log Topbar Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37FF87A2D877B8C00554B3F /* Log Topbar Card.swift */; };
 		F37FF8812D877B8C00554B3F /* Log Topbar Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37FF87A2D877B8C00554B3F /* Log Topbar Card.swift */; };
+		F37FF8832D87AE3800554B3F /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = F37FF8822D87AE3800554B3F /* Algorithms */; };
 		F380B3242BD7B9B6009062E8 /* Image Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380B3232BD7B9B6009062E8 /* Image Picker.swift */; };
 		F380B3252BD7BA15009062E8 /* Image Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380B3232BD7B9B6009062E8 /* Image Picker.swift */; };
 		F380B3262BD7BA16009062E8 /* Image Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F380B3232BD7B9B6009062E8 /* Image Picker.swift */; };
@@ -2206,6 +2207,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F37FF8832D87AE3800554B3F /* Algorithms in Frameworks */,
 				F34745CE2A31F3A400EE2FB8 /* ScrechKit in Frameworks */,
 				F3B7BFDE2B38E206005B5003 /* Pow in Frameworks */,
 				F3E08EB22A2CE19900116C1C /* Kingfisher in Frameworks */,
@@ -4061,6 +4063,7 @@
 				F30860212B002D57004D776A /* PteroNet */,
 				F3B7BFDD2B38E206005B5003 /* Pow */,
 				F358F02D2D2C1C5500BCC07B /* LaunchAtLogin */,
+				F37FF8822D87AE3800554B3F /* Algorithms */,
 			);
 			productName = "Bisquit.Host Mac";
 			productReference = F3E08EA02A2CE17800116C1C /* Bisquit.Host.app */;
@@ -7401,6 +7404,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F37266E529D9EF25005FD103 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		F37FF8822D87AE3800554B3F /* Algorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			productName = Algorithms;
 		};
 		F38281FF2B0E126D0088C48B /* ScrechKit */ = {
 			isa = XCSwiftPackageProductDependency;

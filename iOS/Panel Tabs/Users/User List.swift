@@ -22,7 +22,9 @@ struct UserList: View {
         }
         .environment(vm)
         .navigationTitle("Users")
+#if !os(tvOS)
         .toolbarTitleDisplayMode(.large)
+#endif
         .transparentList()
         .task {
             vm.fetchUsers()
