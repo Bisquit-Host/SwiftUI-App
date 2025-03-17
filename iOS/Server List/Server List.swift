@@ -32,6 +32,12 @@ struct ServerList: View {
         .safariCover($vm.showBilling, url: "https://my.bisquit.host")
         .appStoreOverlay($vm.alertUpdate, id: "1639409934")
         .background(BisquitFall())
+        .background {
+            Image(.darkBackgroundInfo)
+                .resizable()
+                .blur(radius: 55, opaque: true)
+                .ignoresSafeArea()
+        }
         .task {
             if !System.lowPowerMode {
                 await vm.checkForUpdates()
