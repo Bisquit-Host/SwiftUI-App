@@ -35,7 +35,7 @@ struct Guide: View {
             Image(images[step])
                 .resizable()
                 .scaledToFit()
-                .cornerRadius(10)
+                .clipShape(.rect(cornerRadius: 10))
                 .padding()
             
             Text(steps[step])
