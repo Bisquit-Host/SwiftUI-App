@@ -17,23 +17,6 @@ struct Guide: View {
         "step2"
     ]
     
-    private var gradient: AngularGradient {
-        AngularGradient(
-            colors: colors,
-            center: .init(x: 0.5, y: 1.0),
-            angle: .degrees(180 * Double(step) / Double(steps.count - 1)))
-    }
-    
-    private var colors: [Color] {
-        switch colorScheme {
-        case .dark:
-            [.blue.opacity(0.5), .mint.opacity(0.5), .gray.opacity(0.5)]
-            
-        default:
-            [.blue, .mint, .gray]
-        }
-    }
-    
     @State private var step = 0
     @State private var apiKey = ""
     @ScaledMetric private var fontSize = 18
@@ -95,7 +78,7 @@ struct Guide: View {
             .buttonStyle(CarouselButtonStyle())
             .padding(20)
         }
-        .background(gradient)
+        .background(.ultraThinMaterial)
         .ignoresSafeArea(edges: .bottom)
     }
 }
