@@ -18,7 +18,7 @@ struct StartPageFooter: View {
                 .padding()
                 .background {
                     Circle()
-                        .fill(.blue.gradient)
+                        .fill(.ultraThinMaterial)
                         .shadow(radius: 8)
                 }
             }
@@ -31,7 +31,7 @@ struct StartPageFooter: View {
             .padding()
             .background {
                 Circle()
-                    .fill(.cookie.gradient)
+                    .fill(.ultraThinMaterial)
                     .shadow(radius: 8)
             }
         }

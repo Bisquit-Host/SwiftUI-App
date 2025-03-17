@@ -50,7 +50,11 @@ struct StartPage: View {
         .frame(maxHeight: .infinity)
         .ignoresSafeArea()
         .navigationBarBackButtonHidden()
-        .background(Color(0xe3a65e))
+        .background {
+            Image(.darkBackgroundInfo)
+                .resizable()
+                .blur(radius: 55)
+        }
         .statusBarHidden()
         .overlay(alignment: .bottom) {
             StartPageFooter(keys.count > 0)

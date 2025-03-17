@@ -673,6 +673,7 @@
       }
     },
     "Are you ready?" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -853,6 +854,7 @@
       }
     },
     "Best Performance" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -1114,6 +1116,9 @@
           }
         }
       }
+    },
+    "Comprehensive hosting solutions for VDS, game servers, websites, and bots — customized to fit your projects" : {
+
     },
     "Compress" : {
       "localizations" : {
@@ -2457,6 +2462,9 @@
         }
       }
     },
+    "Get Started" : {
+
+    },
     "GitHub" : {
       "shouldTranslate" : false
     },
@@ -2663,6 +2671,7 @@
       }
     },
     "Innovation" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -2679,6 +2688,7 @@
       }
     },
     "Intro.Text0" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2707,6 +2717,7 @@
       }
     },
     "Intro.Text1" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3054,6 +3065,7 @@
       }
     },
     "Lift-off 🚀" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -4646,6 +4658,7 @@
       }
     },
     "Sign in" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -4672,6 +4685,7 @@
       }
     },
     "Skip" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -5601,6 +5615,7 @@
       }
     },
     "We are Bisquit.Host" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -5659,6 +5674,9 @@
           }
         }
       }
+    },
+    "Welcome to" : {
+
     },
     "Where to find the API-key?" : {
       "localizations" : {
@@ -5727,6 +5745,9 @@
         }
       },
       "shouldTranslate" : false
+    },
+    "Сосать бебру" : {
+
     },
     "Храм святителя Николая\nМирликийского в Пыжах" : {
       "shouldTranslate" : false

@@ -35,8 +35,13 @@ struct AppContainer: View {
                     .withNavDestinations()
 #endif
             } else {
-                Intro()
-                    .withNavDestinations()
+                if #available(iOS 18, *) {
+                    Intro()
+                        .withNavDestinations()
+                } else {
+#warning("Intro for iOS 17")
+                    Text("Сосать бебру")
+                }
             }
         }
         .animation(.default, value: store.isApiKeyValid)
