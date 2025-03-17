@@ -2380,6 +2380,7 @@
 				F31BA579295901110006D126 /* Start Page.swift */,
 				F31BA57B2959011B0006D126 /* Start Page VM.swift */,
 				F32DB8A729AE6B800074E045 /* Start Page Footer.swift */,
+				F30D723A29D36D0F0048D7BD /* Guide */,
 			);
 			path = "Start Page";
 			sourceTree = "<group>";
@@ -2461,7 +2462,6 @@
 				F31BA59B295902140006D126 /* Panel */,
 				F32082442B3E170000CFED80 /* Panel Tabs */,
 				F3924EDD29A2308C00C4CC77 /* Settings */,
-				F30D723A29D36D0F0048D7BD /* Guide */,
 				F3A80E8529A1973600190EC6 /* Discover */,
 				F3A80E8A29A19C7F00190EC6 /* Support */,
 			);
