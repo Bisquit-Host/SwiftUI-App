@@ -20,6 +20,7 @@ final class PanelVM {
     var fieldSearch = ""
     var showFormatting = false
     var sheetSettings = false
+    var enableConsoleSearch = false
     var cpuUsage = 0.0
     var ramUsage = 0.0
     var diskUsage = 0.0
@@ -36,10 +37,14 @@ final class PanelVM {
     var messages: [AttributedString] = []
     
     var searchedMessages: [AttributedString] {
+        guard enableConsoleSearch else {
+            return messages
+        }
+        
         if searchRule.isEmpty {
-            messages
+            return messages
         } else {
-            messages.filter {
+            return messages.filter {
                 $0.description
                     .lowercased()
                     .contains(searchRule.lowercased())

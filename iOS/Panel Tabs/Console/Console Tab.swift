@@ -20,6 +20,11 @@ struct ConsoleTab: View {
             ConsoleView()
             
             HStack {
+                PowerSwitch()
+                    .scaleEffect(0.8)
+                    .frame(width: 35, height: 35)
+                    .padding(.trailing, 10)
+                
                 TextField("Type a command...", text: $vm.command)
                     .monospaced()
                     .autocorrectionDisabled()
@@ -27,6 +32,11 @@ struct ConsoleTab: View {
                     .onSubmit {
                         if !vm.command.isEmpty {
                             vm.sendCommand()
+                        }
+                    }
+                    .onChange(of: vm.command) { _, newValue in
+                        if panelVM.enableConsoleSearch {
+                            panelVM.searchRule = newValue
                         }
                     }
                 
@@ -63,8 +73,6 @@ struct ConsoleTab: View {
             }
         }
         .overlay {
-            ConsoleOverlay(id)
-            
             if panelVM.searchedMessages.isEmpty {
                 if panelVM.searchRule.isEmpty {
                     ContentUnavailableView("Console is empty", systemImage: "apple.terminal")
@@ -73,29 +81,6 @@ struct ConsoleTab: View {
                 }
             }
         }
-//        .overlay(alignment: .bottom) {
-//            HStack {
-//                TextField("Type a command...", text: $vm.command)
-//                    .monospaced()
-//                    .autocorrectionDisabled()
-//                    .textInputAutocapitalization(.never)
-//                    .onSubmit {
-//                        if !vm.command.isEmpty {
-//                            vm.sendCommand()
-//                        }
-//                    }
-//                
-//                if !vm.command.isEmpty {
-//                    SFButton("delete.left") {
-//                        vm.command = ""
-//                    }
-//                    .secondary()
-//                }
-//            }
-//            .animation(.default, value: vm.command)
-//            .padding()
-//            .background(.ultraThinMaterial)
-//        }
     }
 }
 

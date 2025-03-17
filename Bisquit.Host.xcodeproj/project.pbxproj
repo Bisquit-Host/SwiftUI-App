@@ -443,8 +443,6 @@
 		F33DE5092B364EBC00E257D8 /* Tab Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7022A54BF7A00E89EC4 /* Tab Info.swift */; };
 		F33DE50C2B36E3C300E257D8 /* App Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D52B242B13FE9C00167DD6 /* App Delegate.swift */; };
 		F33DE50F2B36E3FB00E257D8 /* App Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D52B242B13FE9C00167DD6 /* App Delegate.swift */; };
-		F34076502A37701C0054BDCA /* Console Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340764F2A37701C0054BDCA /* Console Search.swift */; };
-		F34076512A37701C0054BDCA /* Console Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340764F2A37701C0054BDCA /* Console Search.swift */; };
 		F34169A52A49DF64003985E7 /* Info Tab Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34169A42A49DF64003985E7 /* Info Tab Button.swift */; };
 		F34169A62A49DF64003985E7 /* Info Tab Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34169A42A49DF64003985E7 /* Info Tab Button.swift */; };
 		F342FAA02B2C5DF300854270 /* Pow in Frameworks */ = {isa = PBXBuildFile; productRef = F342FA9F2B2C5DF300854270 /* Pow */; };
@@ -1041,8 +1039,6 @@
 		F3B1388A2A2D4D110026EAEE /* File Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266A929D71A1B005FD103 /* File Icon.swift */; };
 		F3B6372F2A35A82F00CB374C /* Console Inspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B6372E2A35A82F00CB374C /* Console Inspector.swift */; };
 		F3B637302A35A82F00CB374C /* Console Inspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B6372E2A35A82F00CB374C /* Console Inspector.swift */; };
-		F3B637522A35F3EA00CB374C /* Command Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B637512A35F3EA00CB374C /* Command Line.swift */; };
-		F3B637532A35F3EA00CB374C /* Command Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B637512A35F3EA00CB374C /* Command Line.swift */; };
 		F3B66DF42D60B46F00F1841B /* Info Tab LA Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B66DF32D60B46F00F1841B /* Info Tab LA Button.swift */; };
 		F3B66DF52D60B46F00F1841B /* Info Tab LA Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B66DF32D60B46F00F1841B /* Info Tab LA Button.swift */; };
 		F3B7BFDE2B38E206005B5003 /* Pow in Frameworks */ = {isa = PBXBuildFile; productRef = F3B7BFDD2B38E206005B5003 /* Pow */; };
@@ -1288,7 +1284,6 @@
 		F3D295D32AF3A30700ED43A0 /* Console Inspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B6372E2A35A82F00CB374C /* Console Inspector.swift */; };
 		F3D295D42AF3A30C00ED43A0 /* Console VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5A42959026D0006D126 /* Console VM.swift */; };
 		F3D295D52AF3A32100ED43A0 /* Data Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5C8295904AC0006D126 /* Data Tab.swift */; };
-		F3D295D92AF3A34000ED43A0 /* Console Overlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DD93D22A372BED006A41AA /* Console Overlay.swift */; };
 		F3D295DA2AF3A34500ED43A0 /* Console View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A366A2A35158A00517EFC /* Console View.swift */; };
 		F3D295DD2AF3A36300ED43A0 /* Backup List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F375EC3729EE7213002CA969 /* Backup List.swift */; };
 		F3D295DE2AF3A36700ED43A0 /* Schedule List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F375EC3B29EE88EA002CA969 /* Schedule List.swift */; };
@@ -1298,10 +1293,8 @@
 		F3D295E22AF3A38A00ED43A0 /* Database Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB53D52971CF6B00A213B0 /* Database Card.swift */; };
 		F3D295E32AF3A38E00ED43A0 /* Section Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3496DC429E0091A0089FC28 /* Section Header.swift */; };
 		F3D295E42AF3A39400ED43A0 /* Power Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A36772A35180100517EFC /* Power Menu.swift */; };
-		F3D295E52AF3A39700ED43A0 /* Console Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340764F2A37701C0054BDCA /* Console Search.swift */; };
 		F3D295E72AF3A3A900ED43A0 /* Create Backup Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DDD59B2A62AC7C009FDFBF /* Create Backup Button.swift */; };
 		F3D295E82AF3A3AD00ED43A0 /* Backup Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF96F829DF277A00D30A8F /* Backup Card.swift */; };
-		F3D295EA2AF3A3CE00ED43A0 /* Command Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B637512A35F3EA00CB374C /* Command Line.swift */; };
 		F3D295EB2AF3A40B00ED43A0 /* Gauge Disk.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378EF8229D6C91300BC4849 /* Gauge Disk.swift */; };
 		F3D295EC2AF3A43300ED43A0 /* Server Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31578B4296760710016A600 /* Server Card.swift */; };
 		F3D295ED2AF3A45300ED43A0 /* Server Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A391BB29DB808B00591C84 /* Server Name.swift */; };
@@ -1333,8 +1326,6 @@
 		F3DAD6BF2A4793F8002ED405 /* Circular Gauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF6A2A44F6E000331B51 /* Circular Gauge.swift */; };
 		F3DC4E2229AEAF3E00D27EC5 /* Credentials Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DC4E2129AEAF3E00D27EC5 /* Credentials Button.swift */; };
 		F3DC4E2629AEC36300D27EC5 /* Credentials View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DC4E2529AEC36300D27EC5 /* Credentials View.swift */; };
-		F3DD93D32A372BED006A41AA /* Console Overlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DD93D22A372BED006A41AA /* Console Overlay.swift */; };
-		F3DD93D42A372BED006A41AA /* Console Overlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DD93D22A372BED006A41AA /* Console Overlay.swift */; };
 		F3DDD59C2A62AC7C009FDFBF /* Create Backup Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DDD59B2A62AC7C009FDFBF /* Create Backup Button.swift */; };
 		F3DDD59D2A62AC7C009FDFBF /* Create Backup Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DDD59B2A62AC7C009FDFBF /* Create Backup Button.swift */; };
 		F3DDD59E2A62AC7C009FDFBF /* Create Backup Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DDD59B2A62AC7C009FDFBF /* Create Backup Button.swift */; };
@@ -1779,7 +1770,6 @@
 		F33CDBFA2A26A571008D0214 /* Server Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card.swift"; sourceTree = "<group>"; };
 		F33DE4E62B35089000E257D8 /* Background Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Background Blur.swift"; sourceTree = "<group>"; };
 		F33DE4E82B350C8B00E257D8 /* Server Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card.swift"; sourceTree = "<group>"; };
-		F340764F2A37701C0054BDCA /* Console Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Console Search.swift"; sourceTree = "<group>"; };
 		F34169A42A49DF64003985E7 /* Info Tab Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab Button.swift"; sourceTree = "<group>"; };
 		F342FAB22B2E43D500854270 /* Log Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log Card.swift"; sourceTree = "<group>"; };
 		F3437CA1297360D30064808F /* Schedule Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Schedule Card.swift"; sourceTree = "<group>"; };
@@ -1974,7 +1964,6 @@
 		F3B1196C29A13CA6003BB68C /* Value Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Value Store.swift"; sourceTree = "<group>"; };
 		F3B1196E29A155D8003BB68C /* Suspended Server Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Suspended Server Card.swift"; sourceTree = "<group>"; };
 		F3B6372E2A35A82F00CB374C /* Console Inspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Console Inspector.swift"; sourceTree = "<group>"; };
-		F3B637512A35F3EA00CB374C /* Command Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Command Line.swift"; sourceTree = "<group>"; };
 		F3B66DF32D60B46F00F1841B /* Info Tab LA Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab LA Button.swift"; sourceTree = "<group>"; };
 		F3B81DF02A49C96000633B66 /* Info Absolute Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Absolute Stats.swift"; sourceTree = "<group>"; };
 		F3BAEC862959B1DE00111375 /* Server List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List.swift"; sourceTree = "<group>"; };
@@ -2038,7 +2027,6 @@
 		F3D902DE29DC445A004E76C9 /* Cache Limit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache Limit.swift"; sourceTree = "<group>"; };
 		F3DC4E2129AEAF3E00D27EC5 /* Credentials Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Credentials Button.swift"; sourceTree = "<group>"; };
 		F3DC4E2529AEC36300D27EC5 /* Credentials View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Credentials View.swift"; sourceTree = "<group>"; };
-		F3DD93D22A372BED006A41AA /* Console Overlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Console Overlay.swift"; sourceTree = "<group>"; };
 		F3DDD59B2A62AC7C009FDFBF /* Create Backup Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Create Backup Button.swift"; sourceTree = "<group>"; };
 		F3DE1B972A556CCE007A1624 /* Log List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log List.swift"; sourceTree = "<group>"; };
 		F3DF50CE2B39636A00206CAE /* User List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User List.swift"; sourceTree = "<group>"; };
@@ -2570,10 +2558,10 @@
 			isa = PBXGroup;
 			children = (
 				F31BA5A2295902610006D126 /* Console Tab.swift */,
-				F31BA5A42959026D0006D126 /* Console VM.swift */,
 				F37A366A2A35158A00517EFC /* Console View.swift */,
+				F31BA5A42959026D0006D126 /* Console VM.swift */,
 				F3E8B34E2CF485FB005D25F8 /* Console Message.swift */,
-				F39217C92A378C3800BE7CE8 /* Overlay */,
+				F3B6372E2A35A82F00CB374C /* Console Inspector.swift */,
 			);
 			path = Console;
 			sourceTree = "<group>";
@@ -3177,17 +3165,6 @@
 				F38F9E112CE7647D0033EFE3 /* Image Playground.swift */,
 			);
 			path = "Image Playground";
-			sourceTree = "<group>";
-		};
-		F39217C92A378C3800BE7CE8 /* Overlay */ = {
-			isa = PBXGroup;
-			children = (
-				F3DD93D22A372BED006A41AA /* Console Overlay.swift */,
-				F3B637512A35F3EA00CB374C /* Command Line.swift */,
-				F3B6372E2A35A82F00CB374C /* Console Inspector.swift */,
-				F340764F2A37701C0054BDCA /* Console Search.swift */,
-			);
-			path = Overlay;
 			sourceTree = "<group>";
 		};
 		F3924EDD29A2308C00C4CC77 /* Settings */ = {
@@ -4672,10 +4649,8 @@
 				F31BA596295901F70006D126 /* Panel View.swift in Sources */,
 				F378EF8329D6C91300BC4849 /* Gauge Disk.swift in Sources */,
 				F3FA61542A1F8DB500A65AE1 /* Upload Menu.swift in Sources */,
-				F34076502A37701C0054BDCA /* Console Search.swift in Sources */,
 				F3880A262A92A15E0052A978 /* Contact Manager.swift in Sources */,
 				F3DC4E2229AEAF3E00D27EC5 /* Credentials Button.swift in Sources */,
-				F3B637522A35F3EA00CB374C /* Command Line.swift in Sources */,
 				F32FD0312CF606960038D62C /* Backup Context Menu Control Group.swift in Sources */,
 				F3AB4A942CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
 				F300892F2B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */,
@@ -4722,7 +4697,6 @@
 				F32E88D12AF8494100959D49 /* Server List Filter.swift in Sources */,
 				F337C1602A8C2CE0006F321C /* Startup View.swift in Sources */,
 				F32DB8A829AE6B800074E045 /* Start Page Footer.swift in Sources */,
-				F3DD93D32A372BED006A41AA /* Console Overlay.swift in Sources */,
 				F30038CB2D42387600363CF4 /* Sheet Remote File.swift in Sources */,
 				F3A1D2352A201CBB0053261E /* Browser Spec.swift in Sources */,
 				F3E467552A49939300FABE5F /* Info Relative Stats.swift in Sources */,
@@ -4936,7 +4910,6 @@
 				F389BB6C2A05B5EA00911EBF /* Cache Settings.swift in Sources */,
 				F389BB792A05B63C00911EBF /* Wide List Button.swift in Sources */,
 				F3A1D2322A201C570053261E /* Enums.swift in Sources */,
-				F34076512A37701C0054BDCA /* Console Search.swift in Sources */,
 				F30089332B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */,
 				F389BB782A05B63600911EBF /* Currency Button.swift in Sources */,
 				F3DDD59E2A62AC7C009FDFBF /* Create Backup Button.swift in Sources */,
@@ -5069,7 +5042,6 @@
 				F3EE9FC32D875767000120A7 /* Log Topbar.swift in Sources */,
 				F3DE1B992A556CCE007A1624 /* Log List.swift in Sources */,
 				F36D53222A05B83B007324C6 /* Websocket Message.swift in Sources */,
-				F3DD93D42A372BED006A41AA /* Console Overlay.swift in Sources */,
 				F3F0A2DB2D6339510084013B /* Bisquit.Host App.swift in Sources */,
 				F36D533E2A05B8EC007324C6 /* Text File VM.swift in Sources */,
 				F398E0E12CEB562400AA4DD7 /* Audio Player VM.swift in Sources */,
@@ -5123,7 +5095,6 @@
 				F3E467532A49903900FABE5F /* Info Stat.swift in Sources */,
 				F37A44352A05B0AA004FFDB0 /* Value Store.swift in Sources */,
 				F34BB6BF2D3DC2D300D27BE0 /* File Preview.swift in Sources */,
-				F3B637532A35F3EA00CB374C /* Command Line.swift in Sources */,
 				F3AF91C22B423492001D8F80 /* SSH VM.swift in Sources */,
 				F3C9D85A2B31135B00265492 /* Permission List.swift in Sources */,
 				F3FF5A042A4A359C003A1973 /* Info Tab Buttons.swift in Sources */,
@@ -5233,7 +5204,6 @@
 				F3D2957A2AF39F3700ED43A0 /* User View.swift in Sources */,
 				F3D7F8552C8F258B00368ECE /* Enable 2FA View.swift in Sources */,
 				F3D295E72AF3A3A900ED43A0 /* Create Backup Button.swift in Sources */,
-				F3D295EA2AF3A3CE00ED43A0 /* Command Line.swift in Sources */,
 				F3D2953E2AF39D5E00ED43A0 /* Bisquit.Host App.swift in Sources */,
 				F3D295562AF39E1A00ED43A0 /* Tip Cloud Keys.swift in Sources */,
 				F3D2954F2AF39DE600ED43A0 /* Browser VM.swift in Sources */,
@@ -5271,7 +5241,6 @@
 				F39EA2EA2D5D576D00329468 /* Game Center Buttons.swift in Sources */,
 				F3D295E12AF3A37A00ED43A0 /* Database List.swift in Sources */,
 				F3D295C72AF3A1FC00ED43A0 /* Credentials View.swift in Sources */,
-				F3D295D92AF3A34000ED43A0 /* Console Overlay.swift in Sources */,
 				F3D295AB2AF3A0E900ED43A0 /* Cache Limit.swift in Sources */,
 				F3D295472AF39DA000ED43A0 /* Start Page Footer.swift in Sources */,
 				F3202C7E2D558B210030B3CC /* Spotlight Index.swift in Sources */,
@@ -5401,7 +5370,6 @@
 				F3D037032CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift in Sources */,
 				F3BC03B52B1FF4830011F98A /* Task Context Menu.swift in Sources */,
 				F30038CC2D42387600363CF4 /* Sheet Remote File.swift in Sources */,
-				F3D295E52AF3A39700ED43A0 /* Console Search.swift in Sources */,
 				F3D295C22AF3A1C600ED43A0 /* Credentials Button.swift in Sources */,
 				F3D295EB2AF3A40B00ED43A0 /* Gauge Disk.swift in Sources */,
 				F3AB4A8D2CF3DAC900A8252F /* Backup Card VM.swift in Sources */,

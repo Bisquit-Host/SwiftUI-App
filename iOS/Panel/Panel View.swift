@@ -79,6 +79,29 @@ struct PanelView: View {
                 ToolbarItemGroup(placement: .topBarTrailing) {
                     if store.lastTabPanel == .console {
                         Button {
+                            withAnimation {
+                                vm.enableConsoleSearch.toggle()
+                            }
+                            
+                            if vm.enableConsoleSearch {
+                                vm.searchRule = consoleVM.command
+                            }
+                        } label: {
+                            if vm.enableConsoleSearch {
+                                Image(systemName: "magnifyingglass.circle.fill")
+                                    .resizable()
+                                    .frame(width: 35, height: 35)
+                                    .background(.ultraThinMaterial, in: .circle)
+                            } else {
+                                Image(systemName: "magnifyingglass")
+                                    .footnote(.bold)
+                                    .frame(width: 35, height: 35)
+                                    .background(.ultraThinMaterial, in: .circle)
+                            }
+                        }
+                        .foregroundStyle(.primary)
+                        
+                        Button {
                             consoleVM.inspectorPresented = true
                         } label: {
                             Image(systemName: "bold.italic.underline")
