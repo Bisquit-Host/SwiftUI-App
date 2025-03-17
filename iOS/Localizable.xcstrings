@@ -773,6 +773,9 @@
         }
       }
     },
+    "Authorization" : {
+
+    },
     "Available configurations" : {
       "localizations" : {
         "nl" : {
@@ -2568,6 +2571,9 @@
           }
         }
       }
+    },
+    "How do I authorize?" : {
+
     },
     "How to obtain an API-key" : {
       "localizations" : {

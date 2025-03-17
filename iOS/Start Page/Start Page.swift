@@ -6,50 +6,59 @@ struct StartPage: View {
     @Environment(NavState.self) private var navState
     @EnvironmentObject private var store: ValueStore
     
+    @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     @Query(animation: .default) private var keys: [APIKey]
     
     var body: some View {
         VStack {
-            Text("To activate the app, please enter a valid API-key")
-                .title(.semibold)
-                .lineLimit(2)
-                .minimumScaleFactor(0.5)
-                .padding(.horizontal)
-                .foregroundStyle(.white)
-                .multilineTextAlignment(.center)
-            
-            HStack {
-                TextField("API-key", text: $vm.apiKey)
-                    .secondary()
-                    .autocorrectionDisabled()
-                    .textFieldStyle(.roundedBorder)
-                    .cornerRadius(20)
-                    .multilineTextAlignment(.center)
-                    .minimumScaleFactor(0.5)
-                    .changeEffect(
-                        .shake(rate: .fast),
-                        value: vm.trigger
-                    )
+            HStack(alignment: .top) {
+                VStack(spacing: 10) {
+                    TextField("API-key", text: $vm.apiKey)
+                        .secondary()
+                        .autocorrectionDisabled()
+                        .frame(height: 40)
+                        .background(.ultraThinMaterial.opacity(0.2), in: .capsule)
+                        .multilineTextAlignment(.center)
+                        .minimumScaleFactor(0.5)
+                        .overlay {
+                            Capsule()
+                                .stroke(.ultraThinMaterial, lineWidth: 1)
+                        }
+                        .changeEffect(
+                            .shake(rate: .fast),
+                            value: vm.trigger
+                        )
+                    
+                    Button("How do I authorize?") {
+                        vm.sheetGuide = true
+                    }
+                    .footnote(.semibold)
+                    .foregroundStyle(.white.secondary)
+                }
                 
-                SFButton("doc.on.clipboard") {
+                Button {
                     if let string = UIPasteboard.general.string {
                         vm.apiKey = string
                     }
+                } label: {
+                    Image(systemName: "doc.on.clipboard")
+                        .footnote(.bold)
+                        .frame(width: 40, height: 40)
+                        .background(.ultraThinMaterial.opacity(0.2), in: .circle)
+                        .overlay {
+                            Capsule()
+                                .stroke(.ultraThinMaterial, lineWidth: 1)
+                        }
                 }
-                .foregroundStyle(.white)
+                .foregroundStyle(.foreground)
             }
-            .padding(10)
-            
-            Button("Where to find the API-key?") {
-                vm.sheetGuide = true
-            }
-            .footnote(.semibold)
-            .foregroundStyle(.white.secondary)
+            .padding(.horizontal)
         }
         .frame(maxHeight: .infinity)
         .ignoresSafeArea()
         .navigationBarBackButtonHidden()
+        .navigationTitle("Authorization")
         .background {
             Image(.darkBackgroundInfo)
                 .resizable()

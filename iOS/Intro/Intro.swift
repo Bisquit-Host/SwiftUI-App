@@ -87,7 +87,9 @@ struct Intro: View {
             scrollPosition.scrollTo(x: currentScrollOffset)
         }
         .fullScreenCover(isPresented: $fullScreenCover) {
-            StartPage()
+            NavigationView {
+                StartPage()
+            }
         }
         .task {
             try? await Task.sleep(for: .seconds(0.35))
