@@ -58,7 +58,7 @@ struct ServerList: View {
                     Button {
                         vm.sheetDiscover = true
                     } label: {
-                        Label("Useful links", systemImage: "sparkles")
+                        Label("Useful links", systemImage: "link")
                     }
                     
                     GameCenterButtons()
