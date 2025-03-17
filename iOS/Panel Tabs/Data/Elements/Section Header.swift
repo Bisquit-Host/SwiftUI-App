@@ -30,13 +30,13 @@ struct SectionHeader: View {
             
             switch type {
             case .backup(let count, let limit):
-                if count != 0 {
+                if limit != 0, count != 0 {
                     Text("\(count)/\(limit)")
                         .foregroundStyle(count >= limit ? .yellow : .gray)
                 }
                 
             case .database(let count, let limit):
-                if count != 0 {
+                if limit != 0, count != 0 {
                     Text("\(count)/\(limit)")
                         .foregroundStyle(count >= limit ? .yellow : .gray)
                 }
