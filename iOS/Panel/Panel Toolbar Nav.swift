@@ -101,7 +101,10 @@ struct PanelToolbarNavCard: View {
     
     var body: some View {
         Button {
-            store.lastTabPanel = tab
+            withAnimation {
+                store.lastTabPanel = tab
+            }
+            
             completion()
         } label: {
             Label {

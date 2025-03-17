@@ -84,8 +84,6 @@ struct InfoTab: View {
                     .padding(.horizontal, 10)
                     .frame(width: width)
                 }
-                
-                // Text("А что вы делаете в моём холодильнике? Может вы хотите кушать?")
             }
         }
         .ignoresSafeArea()

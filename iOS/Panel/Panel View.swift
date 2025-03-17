@@ -148,8 +148,9 @@ struct PanelView: View {
                 }
             }
         }
-        .sidebarAdaptableTabView()
+//        .tabViewStyle(.page(indexDisplayMode: .never))
         .navigationBarBackButtonHidden()
+        .ignoresSafeArea()
         .environment(vm)
         .task {
             fetchData()

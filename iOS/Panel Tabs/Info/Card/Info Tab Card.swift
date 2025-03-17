@@ -11,19 +11,17 @@ struct InfoTabCard: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            TabView(selection: $store.lastInfoTab) {
-                InfoRelativeStats(server.limits)
-                    .tag(TabInfo.relative)
-                
-                InfoAbsoluteStats(server.limits)
-                    .tag(TabInfo.absolute)
-            }
-            .frame(height: 120)
-            .padding(.vertical, -20)
-            .tabViewStyle(.page)
+        TabView(selection: $store.lastInfoTab) {
+            InfoRelativeStats(server.limits)
+                .tag(TabInfo.relative)
+            
+            InfoAbsoluteStats(server.limits)
+                .tag(TabInfo.absolute)
         }
-        .padding()
+        .frame(height: 120)
+        .padding(.vertical, -20)
+        .tabViewStyle(.page)
+        .padding([.horizontal, .bottom])
         .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
         .overlay {
             RoundedRectangle(cornerRadius: 16)

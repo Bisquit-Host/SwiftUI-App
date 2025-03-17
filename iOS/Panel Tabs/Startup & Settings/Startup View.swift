@@ -56,7 +56,7 @@ struct StartupView: View {
         .background {
             Image(.darkBackgroundInfo)
                 .resizable()
-                .blur(radius: 55)
+                .blur(radius: 55, opaque: true)
         }
         .scrollContentBackground(.hidden)
         .refreshableTask {
