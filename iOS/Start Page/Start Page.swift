@@ -55,10 +55,10 @@ struct StartPage: View {
             }
             .padding(.horizontal)
         }
+        .navigationTitle("Authorization")
         .frame(maxHeight: .infinity)
         .ignoresSafeArea()
         .navigationBarBackButtonHidden()
-        .navigationTitle("Authorization")
         .background {
             Image(.darkBackgroundInfo)
                 .resizable()
