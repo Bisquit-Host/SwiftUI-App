@@ -1,5 +1,4 @@
 import SwiftUI
-import Algorithms
 import PteroNet
 
 struct LogList: View {

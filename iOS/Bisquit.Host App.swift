@@ -7,6 +7,10 @@ import GameKit
 import CoreSpotlight
 #endif
 
+#if canImport(Algorithms)
+import Algorithms
+#endif
+
 #if canImport(SafariCover)
 import SafariCover
 #endif
