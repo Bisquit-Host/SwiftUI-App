@@ -9,7 +9,6 @@ struct PanelView: View {
     @State private var backupVM: BackupVM
     @State private var databaseVM: DatabaseVM
     @State private var scheduleVM: ScheduleVM
-    @State private var subdomainVM: SubdomainVM
     @State private var consoleVM: ConsoleVM
     
     @Environment(\.dismiss) private var dismiss
@@ -24,7 +23,6 @@ struct PanelView: View {
         self.databaseVM = DatabaseVM(id)
         self.scheduleVM = ScheduleVM(id)
         self.startupVM = StartupVM(id)
-        self.subdomainVM = SubdomainVM(id)
         self.consoleVM = ConsoleVM(id)
     }
     
@@ -58,10 +56,6 @@ struct PanelView: View {
                     StartupView(server)
                         .environment(startupVM)
                         .tab(.startup)
-                    
-                    SubdomainList()
-                        .environment(subdomainVM)
-                        .tab(.subdomain)
                 }
             }
             .toolbar {
@@ -212,10 +206,6 @@ struct PanelView: View {
             databaseVM.fetchDatabases()
             scheduleVM.fetchSchedules()
             startupVM.fetchStartupVariables()
-            
-            Task {
-                await subdomainVM.fetchSubdomains()
-            }
         }
         
         vm.updateBackups = {
