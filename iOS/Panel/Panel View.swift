@@ -118,7 +118,6 @@ struct PanelView: View {
                     }
                     .foregroundStyle(.primary)
                     .keyboardShortcut("S")
-                    .animation(.default, value: store.lastTabPanel)
                 }
             }
         }
