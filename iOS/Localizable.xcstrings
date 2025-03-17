@@ -505,7 +505,14 @@
 
     },
     "Achievements" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Достижения"
+          }
+        }
+      }
     },
     "Action" : {
       "localizations" : {
@@ -3021,7 +3028,14 @@
       }
     },
     "Leaderboards" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Таблицы лидеров"
+          }
+        }
+      }
     },
     "Learn more..." : {
       "localizations" : {
@@ -4460,6 +4474,7 @@
       }
     },
     "Server logs" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
