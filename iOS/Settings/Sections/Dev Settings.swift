@@ -30,7 +30,6 @@ struct DevSettings: View {
             
             Toggle("Developer mode", isOn: $store.devMode)
             
-            Toggle("Hide server names", isOn: $store.hideServerNames)
 #if !os(tvOS)
             NavigationLink("Debug") {
                 DebugSettings()
