@@ -113,7 +113,9 @@ struct StartPage: View {
 }
 
 #Preview {
-    StartPage()
-        .environment(NavState())
-        .environmentObject(ValueStore())
+    NavigationView {
+        StartPage()
+    }
+    .environment(NavState())
+    .environmentObject(ValueStore())
 }
