@@ -3,6 +3,8 @@ import ScrechKit
 struct AccountView: View {
     @Environment(AccountVM.self) private var vm
     
+    @Environment(\.dismiss) private var dismiss
+    
     @State private var sheetDisable2Fa = false
     @State private var sheetEnable2Fa = false
     @State private var selectedTab = "Account"
@@ -84,6 +86,19 @@ struct AccountView: View {
             Disable2FaView()
         }
         .environment(vm)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "xmark")
+                        .footnote(.bold)
+                        .frame(width: 35, height: 35)
+                        .background(.ultraThinMaterial, in: .circle)
+                }
+                .foregroundStyle(.primary)
+            }
+        }
     }
     
     private func param(_ param: LocalizedStringKey, value: String) -> some View {

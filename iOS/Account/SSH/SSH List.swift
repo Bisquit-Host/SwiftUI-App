@@ -3,6 +3,8 @@ import SwiftUI
 struct SSHList: View {
     @Environment(SSHVM.self) private var vm
     
+    @Environment(\.dismiss) private var dismiss
+    
     @State private var sheetCreate = false
     
     var body: some View {
@@ -26,6 +28,19 @@ struct SSHList: View {
         }
         .sheet($sheetCreate) {
             SSHCreateView()
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "xmark")
+                        .footnote(.bold)
+                        .frame(width: 35, height: 35)
+                        .background(.ultraThinMaterial, in: .circle)
+                }
+                .foregroundStyle(.primary)
+            }
         }
     }
     
