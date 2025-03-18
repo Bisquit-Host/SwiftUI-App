@@ -32,6 +32,7 @@ struct LogCard: View {
             VStack(alignment: .leading, spacing: 0) {
                 HStack {
                     Text(actor?.username ?? "System")
+                        .semibold()
                     
                     Group {
                         if log.isApi {
@@ -50,7 +51,8 @@ struct LogCard: View {
                     .footnote(design: .monospaced)
                 
                 Text(timeSinceISO(log.timestamp))
-                    .footnote(.semibold)
+                    .secondary()
+                    .footnote()
             }
             
             if !log.properties.isEmpty {

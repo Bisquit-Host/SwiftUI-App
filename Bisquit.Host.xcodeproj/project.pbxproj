@@ -696,6 +696,20 @@
 		F373CD842D88D496008B64BE /* Start Page Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CD7A2D88D389008B64BE /* Start Page Helper.swift */; };
 		F373CDA62D88E9F9008B64BE /* Info Tab Heading.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CDA52D88E9F9008B64BE /* Info Tab Heading.swift */; };
 		F373CDA72D88E9F9008B64BE /* Info Tab Heading.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CDA52D88E9F9008B64BE /* Info Tab Heading.swift */; };
+		F373CDAC2D895419008B64BE /* Log Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CDA92D895419008B64BE /* Log Topbar.swift */; };
+		F373CDAD2D895419008B64BE /* Log Topbar Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CDAA2D895419008B64BE /* Log Topbar Card.swift */; };
+		F373CDAE2D895419008B64BE /* Log Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CDA92D895419008B64BE /* Log Topbar.swift */; };
+		F373CDAF2D895419008B64BE /* Log Topbar Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CDAA2D895419008B64BE /* Log Topbar Card.swift */; };
+		F373CDB02D895419008B64BE /* Log Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CDA92D895419008B64BE /* Log Topbar.swift */; };
+		F373CDB12D895419008B64BE /* Log Topbar Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CDAA2D895419008B64BE /* Log Topbar Card.swift */; };
+		F373CDB22D895419008B64BE /* Log Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CDA92D895419008B64BE /* Log Topbar.swift */; };
+		F373CDB32D895419008B64BE /* Log Topbar Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CDAA2D895419008B64BE /* Log Topbar Card.swift */; };
+		F373CDB42D895419008B64BE /* Log Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CDA92D895419008B64BE /* Log Topbar.swift */; };
+		F373CDB52D895419008B64BE /* Log Topbar Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CDAA2D895419008B64BE /* Log Topbar Card.swift */; };
+		F373CDB62D895419008B64BE /* Log Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CDA92D895419008B64BE /* Log Topbar.swift */; };
+		F373CDB72D895419008B64BE /* Log Topbar Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CDAA2D895419008B64BE /* Log Topbar Card.swift */; };
+		F373CDB82D895419008B64BE /* Log Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CDA92D895419008B64BE /* Log Topbar.swift */; };
+		F373CDB92D895419008B64BE /* Log Topbar Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CDAA2D895419008B64BE /* Log Topbar Card.swift */; };
 		F374F7BD2D54922F006771DD /* Sheet Create Subdomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F374F7BC2D54922F006771DD /* Sheet Create Subdomain.swift */; };
 		F374F7BE2D54922F006771DD /* Sheet Create Subdomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F374F7BC2D54922F006771DD /* Sheet Create Subdomain.swift */; };
 		F374F7BF2D54922F006771DD /* Sheet Create Subdomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F374F7BC2D54922F006771DD /* Sheet Create Subdomain.swift */; };
@@ -737,13 +751,6 @@
 		F37DDA7629E2AF7600B9680C /* Folder Path VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DDA7529E2AF7600B9680C /* Folder Path VM.swift */; };
 		F37EA7992B70DEDE0029DE00 /* Console VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5A42959026D0006D126 /* Console VM.swift */; };
 		F37EA79C2B722B390029DE00 /* Backup VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300889C2B3A17CC0051476C /* Backup VM.swift */; };
-		F37FF87B2D877B8C00554B3F /* Log Topbar Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37FF87A2D877B8C00554B3F /* Log Topbar Card.swift */; };
-		F37FF87C2D877B8C00554B3F /* Log Topbar Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37FF87A2D877B8C00554B3F /* Log Topbar Card.swift */; };
-		F37FF87D2D877B8C00554B3F /* Log Topbar Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37FF87A2D877B8C00554B3F /* Log Topbar Card.swift */; };
-		F37FF87E2D877B8C00554B3F /* Log Topbar Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37FF87A2D877B8C00554B3F /* Log Topbar Card.swift */; };
-		F37FF87F2D877B8C00554B3F /* Log Topbar Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37FF87A2D877B8C00554B3F /* Log Topbar Card.swift */; };
-		F37FF8802D877B8C00554B3F /* Log Topbar Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37FF87A2D877B8C00554B3F /* Log Topbar Card.swift */; };
-		F37FF8812D877B8C00554B3F /* Log Topbar Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37FF87A2D877B8C00554B3F /* Log Topbar Card.swift */; };
 		F37FF8832D87AE3800554B3F /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = F37FF8822D87AE3800554B3F /* Algorithms */; };
 		F37FF8852D87B20700554B3F /* Panel Toolbar Nav.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37FF8842D87B20700554B3F /* Panel Toolbar Nav.swift */; };
 		F37FF8862D87B20700554B3F /* Panel Toolbar Nav.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37FF8842D87B20700554B3F /* Panel Toolbar Nav.swift */; };
@@ -1454,13 +1461,6 @@
 		F3EE9FA02D86234A000120A7 /* Custom Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F922D86234A000120A7 /* Custom Dialog.swift */; };
 		F3EE9FA12D86234A000120A7 /* Custom Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F932D86234A000120A7 /* Custom Alert.swift */; };
 		F3EE9FA22D86234A000120A7 /* Custom Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F922D86234A000120A7 /* Custom Dialog.swift */; };
-		F3EE9FBD2D875767000120A7 /* Log Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9FBC2D875767000120A7 /* Log Topbar.swift */; };
-		F3EE9FBE2D875767000120A7 /* Log Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9FBC2D875767000120A7 /* Log Topbar.swift */; };
-		F3EE9FBF2D875767000120A7 /* Log Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9FBC2D875767000120A7 /* Log Topbar.swift */; };
-		F3EE9FC02D875767000120A7 /* Log Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9FBC2D875767000120A7 /* Log Topbar.swift */; };
-		F3EE9FC12D875767000120A7 /* Log Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9FBC2D875767000120A7 /* Log Topbar.swift */; };
-		F3EE9FC22D875767000120A7 /* Log Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9FBC2D875767000120A7 /* Log Topbar.swift */; };
-		F3EE9FC32D875767000120A7 /* Log Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9FBC2D875767000120A7 /* Log Topbar.swift */; };
 		F3EEC03B2AF2F93800BFED78 /* Start Page VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA57B2959011B0006D126 /* Start Page VM.swift */; };
 		F3F061D12A73C37200470F7E /* Map List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994AD2A17A9B100530615 /* Map List.swift */; };
 		F3F061D22A73C37500470F7E /* Map View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A72A177DA400530615 /* Map View.swift */; };
@@ -1854,6 +1854,8 @@
 		F373CD7A2D88D389008B64BE /* Start Page Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page Helper.swift"; sourceTree = "<group>"; };
 		F373CD802D88D426008B64BE /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
 		F373CDA52D88E9F9008B64BE /* Info Tab Heading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab Heading.swift"; sourceTree = "<group>"; };
+		F373CDA92D895419008B64BE /* Log Topbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log Topbar.swift"; sourceTree = "<group>"; };
+		F373CDAA2D895419008B64BE /* Log Topbar Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log Topbar Card.swift"; sourceTree = "<group>"; };
 		F374F7BC2D54922F006771DD /* Sheet Create Subdomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sheet Create Subdomain.swift"; sourceTree = "<group>"; };
 		F375EC3729EE7213002CA969 /* Backup List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Backup List.swift"; sourceTree = "<group>"; };
 		F375EC3929EE73AC002CA969 /* Database List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database List.swift"; sourceTree = "<group>"; };
@@ -1873,7 +1875,6 @@
 		F37B90772BFEA00300597624 /* Ornament Info Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ornament Info Settings.swift"; sourceTree = "<group>"; };
 		F37DDA7529E2AF7600B9680C /* Folder Path VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Folder Path VM.swift"; sourceTree = "<group>"; };
 		F37F51C329DAF8D70030C1C4 /* Des Image VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Des Image VM.swift"; sourceTree = "<group>"; };
-		F37FF87A2D877B8C00554B3F /* Log Topbar Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log Topbar Card.swift"; sourceTree = "<group>"; };
 		F37FF8842D87B20700554B3F /* Panel Toolbar Nav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Toolbar Nav.swift"; sourceTree = "<group>"; };
 		F380B3232BD7B9B6009062E8 /* Image Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image Picker.swift"; sourceTree = "<group>"; };
 		F380B3272BD7C4A4009062E8 /* Upload Preview List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Upload Preview List.swift"; sourceTree = "<group>"; };
@@ -2080,7 +2081,6 @@
 		F3EE9F6E2D85CAB9000120A7 /* Transparency Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transparency Helper.swift"; sourceTree = "<group>"; };
 		F3EE9F922D86234A000120A7 /* Custom Dialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Custom Dialog.swift"; sourceTree = "<group>"; };
 		F3EE9F932D86234A000120A7 /* Custom Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Custom Alert.swift"; sourceTree = "<group>"; };
-		F3EE9FBC2D875767000120A7 /* Log Topbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log Topbar.swift"; sourceTree = "<group>"; };
 		F3F061D92A73CE1200470F7E /* Server Card Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Parent.swift"; sourceTree = "<group>"; };
 		F3F2A5BA29AC296D00AD20A4 /* Server Card Suspended.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Suspended.swift"; sourceTree = "<group>"; };
 		F3F2BBA42A540B8800D44CA6 /* Start Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page.swift"; sourceTree = "<group>"; };
@@ -3038,6 +3038,15 @@
 			path = Panel;
 			sourceTree = "<group>";
 		};
+		F373CDAB2D895419008B64BE /* Topbar */ = {
+			isa = PBXGroup;
+			children = (
+				F373CDA92D895419008B64BE /* Log Topbar.swift */,
+				F373CDAA2D895419008B64BE /* Log Topbar Card.swift */,
+			);
+			path = Topbar;
+			sourceTree = "<group>";
+		};
 		F375EC3329EE6DDD002CA969 /* Elements */ = {
 			isa = PBXGroup;
 			children = (
@@ -3510,12 +3519,11 @@
 			children = (
 				F36797772A3A55E1009F2788 /* Log List Parent.swift */,
 				F3DE1B972A556CCE007A1624 /* Log List.swift */,
-				F3EE9FBC2D875767000120A7 /* Log Topbar.swift */,
-				F37FF87A2D877B8C00554B3F /* Log Topbar Card.swift */,
 				F367977D2A3A5AB6009F2788 /* Log VM.swift */,
 				F367977A2A3A55F4009F2788 /* Log Card.swift */,
 				F3A123552A667804008E3E20 /* Log View Parent.swift */,
 				F311CAAD2A646612004E4A4A /* Log Detail View.swift */,
+				F373CDAB2D895419008B64BE /* Topbar */,
 			);
 			path = Logs;
 			sourceTree = "<group>";
@@ -4368,6 +4376,8 @@
 				F3499EF22A26DCA0006101B7 /* Panel Model.swift in Sources */,
 				F3CCF5C32B345792005FFF2C /* Allocation Card.swift in Sources */,
 				F39D28572A27F1F5007B12C3 /* File Manager.swift in Sources */,
+				F373CDB82D895419008B64BE /* Log Topbar.swift in Sources */,
+				F373CDB92D895419008B64BE /* Log Topbar Card.swift in Sources */,
 				F3464D2C2A863A6100188B0C /* Create Backup.swift in Sources */,
 				F30C13082A545D6E00A7EFF0 /* Linking VM.swift in Sources */,
 				F31D0BB52A2573E200119D07 /* Settings.swift in Sources */,
@@ -4474,7 +4484,6 @@
 				F314616F2D5A1F8100547B6C /* Icon.swift in Sources */,
 				F3CE5C572D53A77C0094BD7B /* Subdomain VM.swift in Sources */,
 				F3D49DB52B2336240033B52E /* Overview VM.swift in Sources */,
-				F37FF8812D877B8C00554B3F /* Log Topbar Card.swift in Sources */,
 				F3CCF5BA2B345466005FFF2C /* Permission List.swift in Sources */,
 				F3CCF5C12B34576F005FFF2C /* Allocation List.swift in Sources */,
 				F30C12FE2A54546900A7EFF0 /* App Container.swift in Sources */,
@@ -4486,7 +4495,6 @@
 				F3FFB7452A57F8AD00220FA5 /* Map VM.swift in Sources */,
 				F3AB4A9C2CF4031600A8252F /* Json Formatter Button.swift in Sources */,
 				F39D68142A26373F00B9BDFC /* SptiteKit BisquitFall.swift in Sources */,
-				F3EE9FBE2D875767000120A7 /* Log Topbar.swift in Sources */,
 				F30C13162A5461BB00A7EFF0 /* Cache VM.swift in Sources */,
 				F3EE9F9E2D86234A000120A7 /* Custom Dialog.swift in Sources */,
 				F3EE9F9F2D86234A000120A7 /* Custom Alert.swift in Sources */,
@@ -4654,7 +4662,6 @@
 				F3202D352D5633270030B3CC /* Browser List MCRU.swift in Sources */,
 				F3EDEE3829C0CB5A00B08696 /* Websocket Message.swift in Sources */,
 				F3AB4A9A2CF4031600A8252F /* Json Formatter Button.swift in Sources */,
-				F37FF87C2D877B8C00554B3F /* Log Topbar Card.swift in Sources */,
 				F39872162A1B73830022B00E /* Video File.swift in Sources */,
 				F3A994AE2A17A9B100530615 /* Map List.swift in Sources */,
 				F3D295132AF396FD00ED43A0 /* Tabs.swift in Sources */,
@@ -4689,6 +4696,8 @@
 				F3BC03B72B1FF8E40011F98A /* Database Context Menu.swift in Sources */,
 				F3DE1B982A556CCE007A1624 /* Log List.swift in Sources */,
 				F3E6FC462A1E85D600410C7C /* SptiteKit BisquitFall.swift in Sources */,
+				F373CDB62D895419008B64BE /* Log Topbar.swift in Sources */,
+				F373CDB72D895419008B64BE /* Log Topbar Card.swift in Sources */,
 				F394A28729E0CB8D0012B7D1 /* Gauge Regular.swift in Sources */,
 				F35DA9592A28F5B100803E7E /* Upload Progress.swift in Sources */,
 				F35B89BE2A725710000B5EEF /* Tip Suspended Server.swift in Sources */,
@@ -4771,7 +4780,6 @@
 				F337B3A829BC6B5400CC1195 /* Server List Grid.swift in Sources */,
 				F3202D0A2D562AE30030B3CC /* Browser List Web.swift in Sources */,
 				F3AB4A8A2CF3DAC900A8252F /* Backup Card VM.swift in Sources */,
-				F3EE9FBD2D875767000120A7 /* Log Topbar.swift in Sources */,
 				F3E2BEDF2C1C6BA800B7A6D4 /* Cache List VM.swift in Sources */,
 				F37266BC29D811B7005FD103 /* File View.swift in Sources */,
 				F3AF91C52B423535001D8F80 /* SSH List.swift in Sources */,
@@ -4839,13 +4847,11 @@
 				F35FEB112B09F4D4004DA05D /* Network VM.swift in Sources */,
 				F3A800342A7313E900CAC40B /* Tip Cloud Keys.swift in Sources */,
 				F3464D2D2A863A6100188B0C /* Create Backup.swift in Sources */,
-				F3EE9FC02D875767000120A7 /* Log Topbar.swift in Sources */,
 				F34F289D2ACDADA500FD618A /* Animated Tab.swift in Sources */,
 				F31B2D982A7AD8C800C08EE6 /* Ansi.swift in Sources */,
 				F3499EFE2A277FDF006101B7 /* File Icon.swift in Sources */,
 				F3BE36D62A55E1D2007A0179 /* Nav Destinations.swift in Sources */,
 				F30B61CE2B2907CA00F447B4 /* Debug Key.swift in Sources */,
-				F37FF8802D877B8C00554B3F /* Log Topbar Card.swift in Sources */,
 				F3BF6F232959D15E0059F39B /* App Settings.swift in Sources */,
 				F3464D272A86398000188B0C /* Power Signal App Enum.swift in Sources */,
 				F3FFB7412A57F0AB00220FA5 /* Users VM.swift in Sources */,
@@ -4872,6 +4878,8 @@
 				F30C12FD2A54546900A7EFF0 /* App Container.swift in Sources */,
 				F3C9D85D2B31146E00265492 /* User Avatar.swift in Sources */,
 				F3D558B22A33C6A000608447 /* File Tab VM.swift in Sources */,
+				F373CDB02D895419008B64BE /* Log Topbar.swift in Sources */,
+				F373CDB12D895419008B64BE /* Log Topbar Card.swift in Sources */,
 				F3762D9F2A581B150016AC44 /* Log List Parent.swift in Sources */,
 				F37266E129D9A7BA005FD103 /* Panel View.swift in Sources */,
 				F348C6E12A54380D002D5BD6 /* Intro.swift in Sources */,
@@ -4935,6 +4943,8 @@
 				F3A1D2322A201C570053261E /* Enums.swift in Sources */,
 				F30089332B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */,
 				F389BB782A05B63600911EBF /* Currency Button.swift in Sources */,
+				F373CDAC2D895419008B64BE /* Log Topbar.swift in Sources */,
+				F373CDAD2D895419008B64BE /* Log Topbar Card.swift in Sources */,
 				F3DDD59E2A62AC7C009FDFBF /* Create Backup Button.swift in Sources */,
 				F3E467562A49939300FABE5F /* Info Relative Stats.swift in Sources */,
 				F3D2643F2A66ABB2005C3777 /* Account Parent.swift in Sources */,
@@ -5063,7 +5073,6 @@
 				F389BB6A2A05B5E100911EBF /* Settings View.swift in Sources */,
 				F3BC03AF2B1FF2FC0011F98A /* Schedule Context Menu.swift in Sources */,
 				F389BB7B2A05B64E00911EBF /* Biometry Usage View.swift in Sources */,
-				F3EE9FC32D875767000120A7 /* Log Topbar.swift in Sources */,
 				F3DE1B992A556CCE007A1624 /* Log List.swift in Sources */,
 				F36D53222A05B83B007324C6 /* Websocket Message.swift in Sources */,
 				F3F0A2DB2D6339510084013B /* Bisquit.Host App.swift in Sources */,
@@ -5136,7 +5145,6 @@
 				F3464D1E2A86396500188B0C /* Change Power.swift in Sources */,
 				F3553FB42B4065A300EF0FD2 /* Panel Settings Parent.swift in Sources */,
 				F3202D142D562B250030B3CC /* Browser Card MC.swift in Sources */,
-				F37FF87B2D877B8C00554B3F /* Log Topbar Card.swift in Sources */,
 				F31461852D5A830E00547B6C /* Model Asset.swift in Sources */,
 				F31461862D5A830E00547B6C /* Networking.swift in Sources */,
 				F35B89C32A725CFC000B5EEF /* Tip Suspended Server.swift in Sources */,
@@ -5260,7 +5268,6 @@
 				F3D295602AF39E8400ED43A0 /* File Search.swift in Sources */,
 				F3E2BF112C1EC94300B7A6D4 /* Contacts VM.swift in Sources */,
 				F3D295842AF39FA500ED43A0 /* Discover.swift in Sources */,
-				F37FF87D2D877B8C00554B3F /* Log Topbar Card.swift in Sources */,
 				F3D295922AF3A02300ED43A0 /* Server Card Stats.swift in Sources */,
 				F3D2953B2AF39D2B00ED43A0 /* Tab Info.swift in Sources */,
 				F3D295E82AF3A3AD00ED43A0 /* Backup Card.swift in Sources */,
@@ -5309,7 +5316,6 @@
 				F32E88CA2AF83E3F00959D49 /* Topbar Admin Button.swift in Sources */,
 				F3D295C92AF3A20B00ED43A0 /* Credential Field.swift in Sources */,
 				F3D295AC2AF3A0F700ED43A0 /* Cache Model.swift in Sources */,
-				F3EE9FC22D875767000120A7 /* Log Topbar.swift in Sources */,
 				F3D2955D2AF39E6800ED43A0 /* Map View.swift in Sources */,
 				F373CD7C2D88D389008B64BE /* Start Page Helper.swift in Sources */,
 				F3D295ED2AF3A45300ED43A0 /* Server Name.swift in Sources */,
@@ -5393,6 +5399,8 @@
 				F3E2BEDA2C1C6B9500B7A6D4 /* Cache List.swift in Sources */,
 				F3D295742AF39F1800ED43A0 /* File View.swift in Sources */,
 				F3AB4A9D2CF4031600A8252F /* Json Formatter Button.swift in Sources */,
+				F373CDAE2D895419008B64BE /* Log Topbar.swift in Sources */,
+				F373CDAF2D895419008B64BE /* Log Topbar Card.swift in Sources */,
 				F3D295CB2AF3A22700ED43A0 /* QR Code View.swift in Sources */,
 				F3D2956F2AF39EEA00ED43A0 /* Websocket Delegate.swift in Sources */,
 				F3BC03BA2B1FF8E40011F98A /* Database Context Menu.swift in Sources */,
@@ -5619,7 +5627,6 @@
 				F348C6E62A543909002D5BD6 /* Intro.swift in Sources */,
 				F3F2BBAA2A540E4000D44CA6 /* Nav Destinations.swift in Sources */,
 				F31461702D5A1F8100547B6C /* Icon.swift in Sources */,
-				F37FF87E2D877B8C00554B3F /* Log Topbar Card.swift in Sources */,
 				F3FD9FA12C65217C00A69314 /* Quick Look View.swift in Sources */,
 				F3464D2E2A863A6200188B0C /* Create Backup.swift in Sources */,
 				F3317AEE2A45E33300CA104D /* Formatters.swift in Sources */,
@@ -5698,7 +5705,6 @@
 				F39E68372D2D67A70002BA96 /* Schedule Task.swift in Sources */,
 				F39EA2E32D5D576D00329468 /* Game Center Buttons.swift in Sources */,
 				F39E68382D2D67A70002BA96 /* Schedule Context Menu.swift in Sources */,
-				F3EE9FBF2D875767000120A7 /* Log Topbar.swift in Sources */,
 				F3202CFE2D562AE10030B3CC /* Browser List Bot.swift in Sources */,
 				F39E68392D2D67A70002BA96 /* Schedule Card.swift in Sources */,
 				F3202D292D562B9A0030B3CC /* Browser Card Bot.swift in Sources */,
@@ -5708,6 +5714,8 @@
 				F3202D1B2D562B980030B3CC /* Browser Card VDS.swift in Sources */,
 				F374F7BD2D54922F006771DD /* Sheet Create Subdomain.swift in Sources */,
 				F39E683B2D2D67A70002BA96 /* New Schedule Sheet.swift in Sources */,
+				F373CDB22D895419008B64BE /* Log Topbar.swift in Sources */,
+				F373CDB32D895419008B64BE /* Log Topbar Card.swift in Sources */,
 				F32FD7182B1E042500723B88 /* Websocket.swift in Sources */,
 				F32FD7212B1E065500723B88 /* Network Calls.swift in Sources */,
 				F35FEB142B0A2C8F004DA05D /* Enums.swift in Sources */,
@@ -5744,7 +5752,6 @@
 				F3DF50CC2B38FDE500206CAE /* Permissions Header.swift in Sources */,
 				F3E679AD2D5A854700A7ADDE /* Server Options Provider.swift in Sources */,
 				F300889B2B3A0E1A0051476C /* Startup VM.swift in Sources */,
-				F37FF87F2D877B8C00554B3F /* Log Topbar Card.swift in Sources */,
 				F33DE5092B364EBC00E257D8 /* Tab Info.swift in Sources */,
 				F35F65942B1D1A0B00431EB7 /* Panel VM.swift in Sources */,
 				F3B138722A2D232B0026EAEE /* Server Card VM.swift in Sources */,
@@ -5776,7 +5783,6 @@
 				F3202D4B2D56DC050030B3CC /* Prefetcher.swift in Sources */,
 				F30088962B3A033F0051476C /* Log View Parent.swift in Sources */,
 				F33DE4EB2B35C3F000E257D8 /* FileTab Context Menu.swift in Sources */,
-				F3EE9FC12D875767000120A7 /* Log Topbar.swift in Sources */,
 				F3DF50C52B38FCF900206CAE /* User Avatar.swift in Sources */,
 				F300889A2B3A0C740051476C /* User Card.swift in Sources */,
 				F3E08EB62A2CE56200116C1C /* App Settings.swift in Sources */,
@@ -5835,6 +5841,8 @@
 				F30088942B3A03050051476C /* Log VM.swift in Sources */,
 				F3464D282A86398000188B0C /* Power Signal App Enum.swift in Sources */,
 				F3DF50CA2B38FDDE00206CAE /* User 2Fa.swift in Sources */,
+				F373CDB42D895419008B64BE /* Log Topbar.swift in Sources */,
+				F373CDB52D895419008B64BE /* Log Topbar Card.swift in Sources */,
 				F31F32032D52DB950095DD19 /* Color Theme.swift in Sources */,
 				F35B9F5C2A2DC8D60045D014 /* Nav State.swift in Sources */,
 			);
