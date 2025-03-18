@@ -45,7 +45,6 @@ struct LogList: View {
                 .foregroundStyle(.primary)
             }
             
-#warning("Logs: filter by user")
 #if !os(watchOS)
             ToolbarItem(placement: .topBarTrailing) {
                 Menu {
@@ -72,13 +71,18 @@ struct LogList: View {
                                     vm.selectedActor = actor
                                 }
                             } label: {
-                                Label {
-                                    Text(actor.username)
-                                } icon: {
-                                    if vm.selectedActor == actor {
-                                        Image(systemName: "checkmark")
-                                            .symbolVariant(vm.selectedActor == nil ? .none : .fill)
+                                if let username = actor.actor.attributes?.username {
+                                    Text(username)
+                                    
+                                    if let email = actor.actor.attributes?.email {
+                                        Text(email)
                                     }
+                                } else {
+                                    Text("System")
+                                }
+                                
+                                if vm.selectedActor == actor {
+                                    Image(systemName: "checkmark")
                                 }
                             }
                         }
@@ -88,6 +92,7 @@ struct LogList: View {
                         .footnote(.bold)
                         .frame(width: 35, height: 35)
                         .background(.ultraThinMaterial, in: .circle)
+                        .symbolVariant(vm.selectedActor == nil ? .none : .fill)
                 }
                 .foregroundStyle(.foreground)
             }

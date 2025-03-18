@@ -15,12 +15,14 @@ final class LogVM {
         Set(filteredLogs.map(\.relationships.actor)).count
     }
     
-    var selectedActor: LogActorAttributes? = nil
+    var selectedActor: LogRelationships? = nil
     
-    var actors: [LogActorAttributes?] {
+    var actors: [LogRelationships?] {
         Array(Set(
-            logs.map(\.relationships.actor.attributes)
-        ))
+            logs.compactMap(\.relationships)
+        )).sorted {
+            $0.actor.attributes?.username ?? "" < $1.actor.attributes?.username ?? ""
+        }
     }
     
     var filteredLogs: [LogAttributes] {
@@ -29,7 +31,7 @@ final class LogVM {
         }
         
         return logs.filter {
-            $0.relationships.actor.attributes == selectedActor
+            $0.relationships == selectedActor
         }
     }
     
