@@ -19,6 +19,7 @@ struct CreateApikey: View {
                             focus = false
                         }
                 }
+                .transparentSection()
                 
                 Button {
                     vm.create(text) {
@@ -35,9 +36,11 @@ struct CreateApikey: View {
                     .foregroundStyle(text.isEmpty ? Color.secondary : .green)
                 }
                 .disabled(text.isEmpty)
+                .transparentSection()
             }
             .navigationTitle("Create API-key")
             .navigationBarTitleDisplayMode(.inline)
+            .transparentList()
         }
         .onAppear {
             focus = true

@@ -10,7 +10,7 @@ struct AccountParent: View {
     @State private var sheetApiKeys = false
     
     var body: some View {
-        TabView {
+        TabView(selection: $accountSelectedTab) {
             NavigationView {
                 AccountView()
             }
