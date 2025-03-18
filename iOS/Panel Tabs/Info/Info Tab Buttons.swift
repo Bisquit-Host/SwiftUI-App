@@ -107,8 +107,10 @@ struct InfoTabButtons: View {
                 .environment(logVM)
         }
         .sheet($sheetSubdomains) {
-            SubdomainList()
-                .environment(subdomainVM)
+            NavigationView {
+                SubdomainList()
+            }
+            .environment(subdomainVM)
         }
         .task {
             settingsVM.serverName = server.name

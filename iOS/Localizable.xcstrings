@@ -1563,6 +1563,7 @@
       }
     },
     "Create Subdomain" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {

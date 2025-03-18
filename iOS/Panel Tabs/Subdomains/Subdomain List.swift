@@ -3,6 +3,8 @@ import SwiftUI
 struct SubdomainList: View {
     @Environment(SubdomainVM.self) private var vm
     
+    @Environment(\.dismiss) private var dismiss
+    
     @State private var sheetCreate = false
     
     private var disabled: Bool {
@@ -15,32 +17,43 @@ struct SubdomainList: View {
                 SubdomainCard(subdomain)
             }
             .onDelete(perform: delete)
-            
-            Section {
-                Button {
-                    sheetCreate = true
-                } label: {
-                    Label("Create Subdomain", systemImage: "plus")
-                }
-                .disabled(disabled)
-                .foregroundStyle(disabled ? .secondary : .primary)
-            }
         }
+        .navigationTitle("Subdomains")
+#if !os(tvOS)
+        .toolbarTitleDisplayMode(.large)
+#endif
+        .transparentList()
         .refreshableTask {
             await vm.fetchSubdomains()
         }
         .sheet($sheetCreate) {
             SheetCreateSubdomain()
         }
-        .background {
-            Image(.darkBackgroundInfo)
-                .resizable()
-                .blur(radius: 55, opaque: true)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "xmark")
+                        .footnote(.bold)
+                        .frame(width: 35, height: 35)
+                        .background(.ultraThinMaterial, in: .circle)
+                }
+                .foregroundStyle(.primary)
+            }
+            
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    sheetCreate = true
+                } label: {
+                    Image(systemName: "link.badge.plus")
+                        .foregroundStyle(.foreground)
+                        .footnote(.bold)
+                        .frame(width: 35, height: 35)
+                        .background(.ultraThinMaterial, in: .circle)
+                }
+            }
         }
-#if !os(tvOS)
-        .scrollContentBackground(.hidden)
-#endif
-        .toolbarBackground(.visible, for: .tabBar)
     }
     
     private func delete(at offsets: IndexSet) {

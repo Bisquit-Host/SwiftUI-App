@@ -16,20 +16,29 @@ struct SubdomainCard: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(fullDomain)
-            
-            let timeDifference = Text(timeSinceISO(subdomain.createdAt))
-                .foregroundStyle(.primary)
-            
-            Text("Created: \(timeDifference)")
-                .footnote()
-                .secondary()
-                .minimumScaleFactor(0.5)
-                .lineLimit(1)
+        Section {
+            VStack(alignment: .leading) {
+                Text(fullDomain)
+                
+                let timeDifference = Text(timeSinceISO(subdomain.createdAt))
+                    .foregroundStyle(.primary)
+                
+                Text("Created: \(timeDifference)")
+                    .footnote()
+                    .secondary()
+                    .minimumScaleFactor(0.5)
+                    .lineLimit(1)
+            }
+            .foregroundStyle(.foreground)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding()
+            .background(.ultraThinMaterial.opacity(0.3), in: .rect(cornerRadius: 16))
+            .overlay {
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(.gray.opacity(0.25), lineWidth: 1)
+            }
         }
-        .navigationTitle("Subdomains")
-        .foregroundStyle(.foreground)
+        .transparentSection()
         .contextMenu {
 #if !os(tvOS)
             Button {
