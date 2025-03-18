@@ -2,12 +2,12 @@ import ScrechKit
 import SwiftData
 
 struct StartPage: View {
-    @Bindable private var vm = StartPageVM()
+    @Bindable var vm = StartPageVM()
     @Environment(NavState.self) private var navState
-    @EnvironmentObject private var store: ValueStore
+    @EnvironmentObject var store: ValueStore
     
-    @Environment(\.modelContext) private var modelContext
-    @Query(animation: .default) private var keys: [APIKey]
+    @Environment(\.modelContext) var modelContext
+    @Query(animation: .default) var keys: [APIKey]
     
     var body: some View {
         VStack {
