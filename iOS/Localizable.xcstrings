@@ -1468,6 +1468,7 @@
       }
     },
     "Create a new key" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {

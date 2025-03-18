@@ -74,7 +74,6 @@ struct AccountView: View {
         }
         .transparentList()
         .navigationTitle("Account")
-        .toolbarTitleDisplayMode(.large)
         .refreshableTask {
             vm.fetch()
             vm.twoFaDetails()
@@ -86,6 +85,13 @@ struct AccountView: View {
             Disable2FaView()
         }
         .environment(vm)
+        .background {
+            Image(.darkBackgroundInfo)
+                .resizable()
+                .blur(radius: 55, opaque: true)
+                .ignoresSafeArea()
+        }
+        .scrollContentBackground(.hidden)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button {

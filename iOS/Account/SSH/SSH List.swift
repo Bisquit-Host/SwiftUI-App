@@ -9,15 +9,11 @@ struct SSHList: View {
     
     var body: some View {
         List {
-            ForEach(vm.keys, id: \.name) { key in
-                SSHCard(key)
-            }
-            .onDelete(perform: deleteItems)
-            
             Section {
-                Button("Create") {
-                    sheetCreate = true
+                ForEach(vm.keys, id: \.name) { key in
+                    SSHCard(key)
                 }
+                .onDelete(perform: deleteItems)
             }
             .transparentSection()
         }
@@ -29,6 +25,13 @@ struct SSHList: View {
         .sheet($sheetCreate) {
             SSHCreateView()
         }
+        .background {
+            Image(.darkBackgroundInfo)
+                .resizable()
+                .blur(radius: 55, opaque: true)
+                .ignoresSafeArea()
+        }
+        .scrollContentBackground(.hidden)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button {
@@ -40,6 +43,18 @@ struct SSHList: View {
                         .background(.ultraThinMaterial, in: .circle)
                 }
                 .foregroundStyle(.primary)
+            }
+            
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    sheetCreate = true
+                } label: {
+                    Image(systemName: "plus")
+                        .foregroundStyle(.foreground)
+                        .footnote(.bold)
+                        .frame(width: 35, height: 35)
+                        .background(.ultraThinMaterial, in: .circle)
+                }
             }
         }
     }

@@ -84,9 +84,9 @@ struct ApikeyList: View {
     
     var body: some View {
         List {
-            ListButton("Create a new key", actionIcon: "plus") {
-                sheetCreate = true
-            }
+#warning("Remove")
+            EditButton()
+                .transparentSection()
             
             Section {
                 ForEach(vm.keys, id: \.attributes.id) { key in
@@ -94,8 +94,10 @@ struct ApikeyList: View {
                 }
                 .onDelete(perform: deleteItems)
             }
+            .transparentSection()
         }
         .navigationTitle("My API-keys")
+        .transparentList()
         .animation(.default, value: vm.keys.count)
         .refreshableTask {
             vm.fetchKeys()
@@ -103,6 +105,13 @@ struct ApikeyList: View {
         .sheet($sheetCreate) {
             CreateApikey()
         }
+        .background {
+            Image(.darkBackgroundInfo)
+                .resizable()
+                .blur(radius: 55, opaque: true)
+                .ignoresSafeArea()
+        }
+        .scrollContentBackground(.hidden)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button {
@@ -117,16 +126,15 @@ struct ApikeyList: View {
             }
             
             ToolbarItem(placement: .topBarTrailing) {
-                EditButton()
-                //                Button {
-                //                    vm.sheetInvitation = true
-                //                } label: {
-                //                    Image(systemName: "person.crop.circle.badge.plus")
-                //                        .foregroundStyle(.foreground)
-                //                        .footnote(.bold)
-                //                        .frame(width: 35, height: 35)
-                //                        .background(.ultraThinMaterial, in: .circle)
-                //                }
+                Button {
+                    sheetCreate = true
+                } label: {
+                    Image(systemName: "plus")
+                        .foregroundStyle(.foreground)
+                        .footnote(.bold)
+                        .frame(width: 35, height: 35)
+                        .background(.ultraThinMaterial, in: .circle)
+                }
             }
         }
     }

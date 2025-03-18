@@ -12,12 +12,6 @@ struct ApikeyCard: View {
     
     var body: some View {
         HStack {
-            Image(systemName: "key.radiowaves.forward.fill")
-                .title()
-                .padding(.trailing, 8)
-                .symbolEffect(.variableColor)
-                .foregroundStyle(.yellow)
-            
             VStack(alignment: .leading) {
                 HStack {
                     Text(key.description)
@@ -31,12 +25,9 @@ struct ApikeyCard: View {
                         .secondary()
                 }
                 
-                let created = Text(timeSinceISO(key.created))
+                Text(timeSinceISO(key.created))
                     .foregroundStyle(.primary)
-                
-                Text("Created: \(created)")
                     .footnote()
-                    .secondary()
                 
                 if let lastUsed = key.lastUsed {
                     let lastUsed = Text(timeSinceISO(lastUsed))
