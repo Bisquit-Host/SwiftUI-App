@@ -18,6 +18,7 @@ struct ConsoleInspector: View {
         }
         .transparentList()
         .presentationDetents([.medium, .large])
+        .presentationDragIndicator(.hidden)
     }
 }
 
