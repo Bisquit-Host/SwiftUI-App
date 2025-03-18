@@ -70,9 +70,7 @@ struct LogCard: View {
         .sheet($sheetDetails) {
             LogViewParent(log.properties)
                 .presentationDragIndicator(.hidden)
-                .presentationDetents([.medium, .large],
-                                     selection: .constant(.medium)
-                )
+                .presentationDetents([.medium, .large], selection: .constant(.medium))
         }
     }
 }
