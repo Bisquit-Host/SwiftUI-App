@@ -621,7 +621,6 @@
       }
     },
     "API-keys" : {
-      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -4707,7 +4706,11 @@
       },
       "shouldTranslate" : false
     },
+    "SSH" : {
+
+    },
     "SSH Keys" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -4722,6 +4725,9 @@
           }
         }
       }
+    },
+    "SSH-keys" : {
+
     },
     "Start" : {
       "localizations" : {

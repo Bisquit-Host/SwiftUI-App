@@ -131,7 +131,6 @@
 		F314616F2D5A1F8100547B6C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31461692D5A1F5E00547B6C /* Icon.swift */; };
 		F31461702D5A1F8100547B6C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31461692D5A1F5E00547B6C /* Icon.swift */; };
 		F31461712D5A1F8100547B6C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31461692D5A1F5E00547B6C /* Icon.swift */; };
-		F31461722D5A2B2B00547B6C /* Account Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA4DE92A4CE82000547722 /* Account Settings.swift */; };
 		F31461732D5A2B3800547B6C /* Credential Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BBE36329AF97D800323C6B /* Credential Field.swift */; };
 		F31461742D5A2B3800547B6C /* Credentials Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DC4E2129AEAF3E00D27EC5 /* Credentials Button.swift */; };
 		F31461752D5A2B3800547B6C /* Credentials VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E97C7829B4B569008CBDD6 /* Credentials VM.swift */; };
@@ -318,7 +317,6 @@
 		F3255E172C9049AF008E04DE /* Settings Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3255E162C9049AF008E04DE /* Settings Button.swift */; };
 		F3255E182C9049DC008E04DE /* Settings Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264362A66A9B9005C3777 /* Settings Parent.swift */; };
 		F3255E1A2C904A03008E04DE /* Settings View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3255E192C904A03008E04DE /* Settings View.swift */; };
-		F3255E1B2C904A3C008E04DE /* Account Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D2643D2A66ABB2005C3777 /* Account Parent.swift */; };
 		F3255E1C2C904A48008E04DE /* Account View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264392A66AB92005C3777 /* Account View.swift */; };
 		F3255E1D2C904A56008E04DE /* Account VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264402A66ABBE005C3777 /* Account VM.swift */; };
 		F3255E1E2C904A63008E04DE /* SSH VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91C02B423492001D8F80 /* SSH VM.swift */; };
@@ -525,6 +523,10 @@
 		F35081B02AF30F4B00835CC0 /* Tip Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A800312A7313E900CAC40B /* Tip Cloud Keys.swift */; };
 		F3521E2B29F5C13900132CCB /* Browser Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3521E2A29F5C13900132CCB /* Browser Card.swift */; };
 		F352AF9B2A4EE707004AD489 /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = F352AF9A2A4EE707004AD489 /* AlertKit */; };
+		F353B0412D8A31BF00E4EC07 /* Account Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B0402D8A31BF00E4EC07 /* Account Parent.swift */; };
+		F353B0422D8A31BF00E4EC07 /* Account Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B0402D8A31BF00E4EC07 /* Account Parent.swift */; };
+		F353B0432D8A31BF00E4EC07 /* Account Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B0402D8A31BF00E4EC07 /* Account Parent.swift */; };
+		F353B0442D8A31BF00E4EC07 /* Account Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B0402D8A31BF00E4EC07 /* Account Parent.swift */; };
 		F354E9832A48CA2000F6E359 /* Topbar Grid Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F354E9822A48CA2000F6E359 /* Topbar Grid Button.swift */; };
 		F354E9842A48CA2000F6E359 /* Topbar Grid Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F354E9822A48CA2000F6E359 /* Topbar Grid Button.swift */; };
 		F3553FB32B40653000EF0FD2 /* Panel Settings Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3553FB22B40653000EF0FD2 /* Panel Settings Parent.swift */; };
@@ -1172,8 +1174,6 @@
 		F3D264382A66A9B9005C3777 /* Settings Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264362A66A9B9005C3777 /* Settings Parent.swift */; };
 		F3D2643A2A66AB92005C3777 /* Account View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264392A66AB92005C3777 /* Account View.swift */; };
 		F3D2643B2A66AB92005C3777 /* Account View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264392A66AB92005C3777 /* Account View.swift */; };
-		F3D2643E2A66ABB2005C3777 /* Account Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D2643D2A66ABB2005C3777 /* Account Parent.swift */; };
-		F3D2643F2A66ABB2005C3777 /* Account Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D2643D2A66ABB2005C3777 /* Account Parent.swift */; };
 		F3D264412A66ABBE005C3777 /* Account VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264402A66ABBE005C3777 /* Account VM.swift */; };
 		F3D264422A66ABBE005C3777 /* Account VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264402A66ABBE005C3777 /* Account VM.swift */; };
 		F3D264442A66B3A6005C3777 /* QR Code View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264432A66B3A6005C3777 /* QR Code View.swift */; };
@@ -1235,7 +1235,6 @@
 		F3D2956E2AF39EE800ED43A0 /* Websocket Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3729C0CB5A00B08696 /* Websocket Message.swift */; };
 		F3D2956F2AF39EEA00ED43A0 /* Websocket Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3929C0CB8000B08696 /* Websocket Delegate.swift */; };
 		F3D295702AF39EF400ED43A0 /* Settings Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264332A66A926005C3777 /* Settings Button.swift */; };
-		F3D295712AF39EFF00ED43A0 /* Account Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D2643D2A66ABB2005C3777 /* Account Parent.swift */; };
 		F3D295722AF39F0200ED43A0 /* Account View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264392A66AB92005C3777 /* Account View.swift */; };
 		F3D295732AF39F1400ED43A0 /* Account VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264402A66ABBE005C3777 /* Account VM.swift */; };
 		F3D295742AF39F1800ED43A0 /* File View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266BB29D811B7005FD103 /* File View.swift */; };
@@ -1270,7 +1269,6 @@
 		F3D295A52AF3A0CD00ED43A0 /* Settings View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA575295900E30006D126 /* Settings View.swift */; };
 		F3D295A62AF3A0D200ED43A0 /* Settings VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EDE29A2333F00C4CC77 /* Settings VM.swift */; };
 		F3D295A72AF3A0DB00ED43A0 /* Log Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367977A2A3A55F4009F2788 /* Log Card.swift */; };
-		F3D295A82AF3A0DF00ED43A0 /* Account Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA4DE92A4CE82000547722 /* Account Settings.swift */; };
 		F3D295A92AF3A0E200ED43A0 /* Apikey VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33001402A4CEF840063FE0F /* Apikey VM.swift */; };
 		F3D295AA2AF3A0E600ED43A0 /* Cache Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7D87A29E83D1800BCAFFE /* Cache Settings.swift */; };
 		F3D295AB2AF3A0E900ED43A0 /* Cache Limit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D902DE29DC445A004E76C9 /* Cache Limit.swift */; };
@@ -1490,8 +1488,6 @@
 		F3F5BC982BF7668E00EB8FB1 /* Sensitivity Analyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5BC952BF7668E00EB8FB1 /* Sensitivity Analyzer.swift */; };
 		F3F6ACAF2A51E48700EE417F /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3F6ACAE2A51E48700EE417F /* AlertKit */; };
 		F3F716BD29E4D46600838586 /* Backup List Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F716BC29E4D46600838586 /* Backup List Footer.swift */; };
-		F3FA4DEA2A4CE82000547722 /* Account Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA4DE92A4CE82000547722 /* Account Settings.swift */; };
-		F3FA4DEB2A4CE82000547722 /* Account Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA4DE92A4CE82000547722 /* Account Settings.swift */; };
 		F3FA61542A1F8DB500A65AE1 /* Upload Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA61532A1F8DB500A65AE1 /* Upload Menu.swift */; };
 		F3FA61552A1F8DB500A65AE1 /* Upload Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA61532A1F8DB500A65AE1 /* Upload Menu.swift */; };
 		F3FA61572A1F928500A65AE1 /* File Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA61562A1F928500A65AE1 /* File Search.swift */; };
@@ -1807,6 +1803,7 @@
 		F350636829DC24AB0010B717 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		F3521E2A29F5C13900132CCB /* Browser Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Browser Card.swift"; sourceTree = "<group>"; };
 		F352AF962A4EDB1D004AD489 /* Server List VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List VM.swift"; sourceTree = "<group>"; };
+		F353B0402D8A31BF00E4EC07 /* Account Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account Parent.swift"; sourceTree = "<group>"; };
 		F354E9822A48CA2000F6E359 /* Topbar Grid Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Topbar Grid Button.swift"; sourceTree = "<group>"; };
 		F3553FB22B40653000EF0FD2 /* Panel Settings Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Settings Parent.swift"; sourceTree = "<group>"; };
 		F3553FB82B4093E600EF0FD2 /* Allocation List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation List.swift"; sourceTree = "<group>"; };
@@ -2023,7 +2020,6 @@
 		F3D264332A66A926005C3777 /* Settings Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings Button.swift"; sourceTree = "<group>"; };
 		F3D264362A66A9B9005C3777 /* Settings Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings Parent.swift"; sourceTree = "<group>"; };
 		F3D264392A66AB92005C3777 /* Account View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account View.swift"; sourceTree = "<group>"; };
-		F3D2643D2A66ABB2005C3777 /* Account Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account Parent.swift"; sourceTree = "<group>"; };
 		F3D264402A66ABBE005C3777 /* Account VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account VM.swift"; sourceTree = "<group>"; };
 		F3D264432A66B3A6005C3777 /* QR Code View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QR Code View.swift"; sourceTree = "<group>"; };
 		F3D295122AF396FD00ED43A0 /* Tabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabs.swift; sourceTree = "<group>"; };
@@ -2086,7 +2082,6 @@
 		F3F2BBA42A540B8800D44CA6 /* Start Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page.swift"; sourceTree = "<group>"; };
 		F3F5BC952BF7668E00EB8FB1 /* Sensitivity Analyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sensitivity Analyzer.swift"; sourceTree = "<group>"; };
 		F3F716BC29E4D46600838586 /* Backup List Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Backup List Footer.swift"; sourceTree = "<group>"; };
-		F3FA4DE92A4CE82000547722 /* Account Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account Settings.swift"; sourceTree = "<group>"; };
 		F3FA61532A1F8DB500A65AE1 /* Upload Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Upload Menu.swift"; sourceTree = "<group>"; };
 		F3FA61562A1F928500A65AE1 /* File Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Search.swift"; sourceTree = "<group>"; };
 		F3FC99102C65747700150823 /* Archieving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archieving.swift; sourceTree = "<group>"; };
@@ -2743,16 +2738,15 @@
 			path = Users;
 			sourceTree = "<group>";
 		};
-		F33001392A4CEBFD0063FE0F /* Account */ = {
+		F33001392A4CEBFD0063FE0F /* API keys */ = {
 			isa = PBXGroup;
 			children = (
-				F3FA4DE92A4CE82000547722 /* Account Settings.swift */,
 				F330013A2A4CEC320063FE0F /* Apikey List.swift */,
 				F33001402A4CEF840063FE0F /* Apikey VM.swift */,
 				F33001432A4CF06D0063FE0F /* Apikey Card.swift */,
 				F337D7582A4DBC840011524E /* Create Apikey.swift */,
 			);
-			path = Account;
+			path = "API keys";
 			sourceTree = "<group>";
 		};
 		F3317AEB2A45E25500CA104D /* Guide */ = {
@@ -3203,7 +3197,6 @@
 				F3924EDE29A2333F00C4CC77 /* Settings VM.swift */,
 				F39993392AF2E491006E8A9A /* Other Settings.swift */,
 				F375EC3429EE6E17002CA969 /* Sections */,
-				F33001392A4CEBFD0063FE0F /* Account */,
 				F375EC3329EE6DDD002CA969 /* Elements */,
 				F3D902DD29DC3E47004E76C9 /* Cache */,
 				F3BBE36229AF96E800323C6B /* Credentials */,
@@ -3552,12 +3545,13 @@
 		F3D2643C2A66AB97005C3777 /* Account */ = {
 			isa = PBXGroup;
 			children = (
-				F3D2643D2A66ABB2005C3777 /* Account Parent.swift */,
+				F353B0402D8A31BF00E4EC07 /* Account Parent.swift */,
 				F3D264392A66AB92005C3777 /* Account View.swift */,
 				F3D264402A66ABBE005C3777 /* Account VM.swift */,
 				F3D7F8522C8F258B00368ECE /* Enable 2FA View.swift */,
 				F3D7F84E2C8ED3D100368ECE /* Disable 2FA View.swift */,
 				F3D264432A66B3A6005C3777 /* QR Code View.swift */,
+				F33001392A4CEBFD0063FE0F /* API keys */,
 				F3DF4A0C2B485D50003C6922 /* SSH */,
 			);
 			path = Account;
@@ -4578,7 +4572,6 @@
 				F3C9D8602B319B9E00265492 /* Permission Card.swift in Sources */,
 				F3287A7B2B10A17E001AFE54 /* Widget Live Activity.swift in Sources */,
 				F31BA5682959006F0006D126 /* App Container.swift in Sources */,
-				F3D2643E2A66ABB2005C3777 /* Account Parent.swift in Sources */,
 				F34BB6BE2D3DC2D300D27BE0 /* File Preview.swift in Sources */,
 				F36B73872C8AEAE700E858FE /* Model Asset.swift in Sources */,
 				F325F7002A54BBCF00E89EC4 /* Info Tab Allocation.swift in Sources */,
@@ -4605,7 +4598,6 @@
 				F3AF91CD2B423A26001D8F80 /* SSH Create View.swift in Sources */,
 				F3A7CF692C8DF3C900413400 /* Video File VM.swift in Sources */,
 				F3AB4A7C2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
-				F3FA4DEA2A4CE82000547722 /* Account Settings.swift in Sources */,
 				F3E8415629FECB6800609DA3 /* Browser Sticker.swift in Sources */,
 				F385824229D6215100BEEE1D /* App Icon Card.swift in Sources */,
 				F36797782A3A55E1009F2788 /* Log List Parent.swift in Sources */,
@@ -4613,6 +4605,7 @@
 				F31F32052D52DB950095DD19 /* Color Theme.swift in Sources */,
 				F380B3282BD7C4A4009062E8 /* Upload Preview List.swift in Sources */,
 				F3AF91C12B423492001D8F80 /* SSH VM.swift in Sources */,
+				F353B0412D8A31BF00E4EC07 /* Account Parent.swift in Sources */,
 				F3202D272D562B9A0030B3CC /* Browser Card Bot.swift in Sources */,
 				F34BB6BC2D3DC2B800D27BE0 /* File Preview VM.swift in Sources */,
 				F3EDEE3129C06E9700B08696 /* Panel Model.swift in Sources */,
@@ -4947,7 +4940,6 @@
 				F373CDAD2D895419008B64BE /* Log Topbar Card.swift in Sources */,
 				F3DDD59E2A62AC7C009FDFBF /* Create Backup Button.swift in Sources */,
 				F3E467562A49939300FABE5F /* Info Relative Stats.swift in Sources */,
-				F3D2643F2A66ABB2005C3777 /* Account Parent.swift in Sources */,
 				F325F70A2A54CB6600E89EC4 /* Carousel Button Style.swift in Sources */,
 				F36D53482A05B939007324C6 /* SpriteKit Pyzh.swift in Sources */,
 				F30088F82B3B55D10051476C /* User Invitation View.swift in Sources */,
@@ -5181,7 +5173,6 @@
 				F34F289B2ACDAD9B00FD618A /* Animated Tab.swift in Sources */,
 				F314616B2D5A1F5E00547B6C /* Icon.swift in Sources */,
 				F389BB732A05B61900911EBF /* Credential Field.swift in Sources */,
-				F3FA4DEB2A4CE82000547722 /* Account Settings.swift in Sources */,
 				F3202D232D562B990030B3CC /* Browser Card Web.swift in Sources */,
 				F36797792A3A55E1009F2788 /* Log List Parent.swift in Sources */,
 				F389BB6F2A05B5F900911EBF /* Cache Expiration.swift in Sources */,
@@ -5190,6 +5181,7 @@
 				F32FD02E2CF606960038D62C /* Backup Context Menu Control Group.swift in Sources */,
 				F30038CA2D42387600363CF4 /* Sheet Remote File.swift in Sources */,
 				F36D53362A05B8BB007324C6 /* Create Button.swift in Sources */,
+				F353B0432D8A31BF00E4EC07 /* Account Parent.swift in Sources */,
 				F3E6FC472A1E85D600410C7C /* SptiteKit BisquitFall.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5213,11 +5205,11 @@
 				F3D295392AF39D1B00ED43A0 /* Value Store.swift in Sources */,
 				F3AF91C72B423535001D8F80 /* SSH List.swift in Sources */,
 				F3D295D22AF3A30400ED43A0 /* Console Tab.swift in Sources */,
-				F3D295A82AF3A0DF00ED43A0 /* Account Settings.swift in Sources */,
 				F3D295B52AF3A15D00ED43A0 /* Design Settings.swift in Sources */,
 				F3202D2C2D562B9A0030B3CC /* Browser Card Bot.swift in Sources */,
 				F3D295482AF39DAA00ED43A0 /* Nav Extension.swift in Sources */,
 				F3D295C42AF3A1CF00ED43A0 /* Create Apikey.swift in Sources */,
+				F353B0442D8A31BF00E4EC07 /* Account Parent.swift in Sources */,
 				F3D295C32AF3A1CC00ED43A0 /* Apikey List.swift in Sources */,
 				F3D295DE2AF3A36700ED43A0 /* Schedule List.swift in Sources */,
 				F3D2955E2AF39E6E00ED43A0 /* Panel Model.swift in Sources */,
@@ -5325,7 +5317,6 @@
 				F3D2956E2AF39EE800ED43A0 /* Websocket Message.swift in Sources */,
 				F3D2959C2AF3A07200ED43A0 /* Folder File.swift in Sources */,
 				F3BC03B02B1FF2FC0011F98A /* Schedule Context Menu.swift in Sources */,
-				F3D295712AF39EFF00ED43A0 /* Account Parent.swift in Sources */,
 				F3D295E42AF3A39400ED43A0 /* Power Menu.swift in Sources */,
 				F3D295722AF39F0200ED43A0 /* Account View.swift in Sources */,
 				F3CCB1CD2CAE75D0000F8207 /* Debug Settings.swift in Sources */,
@@ -5488,7 +5479,6 @@
 				F3A7CF132C8C4E3E00413400 /* Discover.swift in Sources */,
 				F3A7CF142C8C4E3E00413400 /* Discover Item.swift in Sources */,
 				F3A7CEDC2C8B95CB00413400 /* Home View.swift in Sources */,
-				F3255E1B2C904A3C008E04DE /* Account Parent.swift in Sources */,
 				F3EE9F982D86234A000120A7 /* Custom Dialog.swift in Sources */,
 				F3EE9F992D86234A000120A7 /* Custom Alert.swift in Sources */,
 				F31461792D5A2B7F00547B6C /* Apikey Card.swift in Sources */,
@@ -5497,7 +5487,6 @@
 				F3202C762D5583680030B3CC /* Browser Parent.swift in Sources */,
 				F31461772D5A2B4200547B6C /* Apikey VM.swift in Sources */,
 				F3A7CF092C8BBC7A00413400 /* Carousel Button Style.swift in Sources */,
-				F31461722D5A2B2B00547B6C /* Account Settings.swift in Sources */,
 				F3202D0E2D562AE30030B3CC /* Browser List Web.swift in Sources */,
 				F3A7CEF02C8BB79B00413400 /* Server Name.swift in Sources */,
 				F3A7CEFE2C8BB97400413400 /* Server List.swift in Sources */,
@@ -5546,6 +5535,7 @@
 				F3202CCD2D559B240030B3CC /* Contacts Provider.swift in Sources */,
 				F314617A2D5A2B8B00547B6C /* Create Apikey.swift in Sources */,
 				F31F31FA2D52BD940095DD19 /* System.swift in Sources */,
+				F353B0422D8A31BF00E4EC07 /* Account Parent.swift in Sources */,
 				F3A7CF152C8C4E4300413400 /* Map List.swift in Sources */,
 				F37CE9C32D555D5A00716D28 /* Tab Info.swift in Sources */,
 				F3202D122D562B250030B3CC /* Browser Card MC.swift in Sources */,

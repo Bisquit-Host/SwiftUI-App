@@ -19,7 +19,6 @@ struct ApikeyList: View {
             }
         }
         .navigationTitle("My API-keys")
-        .toolbarTitleDisplayMode(.inline)
         .animation(.default, value: vm.keys.count)
         .toolbar {
             EditButton()

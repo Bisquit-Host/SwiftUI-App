@@ -1,11 +1,11 @@
 import ScrechKit
 
 struct AccountView: View {
-    @State private var vm = AccountVM()
-    @State private var sshVM = SSHVM()
+    @Environment(AccountVM.self) private var vm
     
     @State private var sheetDisable2Fa = false
     @State private var sheetEnable2Fa = false
+    @State private var selectedTab = "Account"
     
     var body: some View {
         List {
@@ -19,7 +19,10 @@ struct AccountView: View {
             }
             .transparentSection()
             
-            AccountSettings()
+            Section("Account") {
+                CredentialsButton()
+            }
+            .transparentSection()
             
             Section("2FA") {
                 if vm.twoFaEnabled {
@@ -66,26 +69,19 @@ struct AccountView: View {
                 }
             }
             .transparentSection()
-            
-            Section("SSH Keys") {
-                SSHList()
-                    .environment(sshVM)
-            }
-            .transparentSection()
         }
+        .transparentList()
         .navigationTitle("Account")
         .toolbarTitleDisplayMode(.large)
-        .transparentList()
         .refreshableTask {
             vm.fetch()
             vm.twoFaDetails()
-            sshVM.fetchKeys()
-        }
-        .sheet($sheetDisable2Fa) {
-            Disable2FaView()
         }
         .sheet($sheetEnable2Fa) {
             Enable2FAView()
+        }
+        .sheet($sheetDisable2Fa) {
+            Disable2FaView()
         }
         .environment(vm)
     }
@@ -104,4 +100,5 @@ struct AccountView: View {
 
 #Preview {
     AccountView()
+        .environment(AccountVM())
 }

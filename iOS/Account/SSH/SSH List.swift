@@ -6,17 +6,22 @@ struct SSHList: View {
     @State private var sheetCreate = false
     
     var body: some View {
-        ForEach(vm.keys, id: \.name) { key in
-            SSHCard(key)
-        }
-        .onDelete(perform: deleteItems)
-        
-        Section {
-            Button("Create") {
-                sheetCreate = true
+        List {
+            ForEach(vm.keys, id: \.name) { key in
+                SSHCard(key)
             }
+            .onDelete(perform: deleteItems)
+            
+            Section {
+                Button("Create") {
+                    sheetCreate = true
+                }
+            }
+            .transparentSection()
         }
-        .task {
+        .navigationTitle("SSH")
+        .transparentList()
+        .refreshableTask {
             vm.fetchKeys()
         }
         .sheet($sheetCreate) {
@@ -33,4 +38,5 @@ struct SSHList: View {
 
 #Preview {
     SSHList()
+        .environment(SSHVM())
 }
