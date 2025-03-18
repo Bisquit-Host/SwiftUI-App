@@ -20,10 +20,7 @@ struct SubdomainCard: View {
             VStack(alignment: .leading) {
                 Text(fullDomain)
                 
-                let timeDifference = Text(timeSinceISO(subdomain.createdAt))
-                    .foregroundStyle(.primary)
-                
-                Text("Created: \(timeDifference)")
+                Text(timeSinceISO(subdomain.createdAt))
                     .footnote()
                     .secondary()
                     .minimumScaleFactor(0.5)
