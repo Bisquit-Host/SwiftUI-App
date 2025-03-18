@@ -46,17 +46,52 @@ struct LogList: View {
             }
             
 #warning("Logs: filter by user")
-            //            ToolbarItem(placement: .topBarTrailing) {
-            //                Menu {
-            //
-            //                } label: {
-            //                    Image(systemName: "person.crop.circle.badge.plus")
-            //                        .foregroundStyle(.foreground)
-            //                        .footnote(.bold)
-            //                        .frame(width: 35, height: 35)
-            //                        .background(.ultraThinMaterial, in: .circle)
-            //                }
-            //            }
+#if !os(watchOS)
+            ToolbarItem(placement: .topBarTrailing) {
+                Menu {
+                    Section {
+                        Button {
+                            withAnimation {
+                                vm.selectedActor = nil
+                            }
+                        } label: {
+                            Label {
+                                Text("All")
+                            } icon: {
+                                if vm.selectedActor == nil {
+                                    Image(systemName: "checkmark")
+                                }
+                            }
+                        }
+                    }
+                    
+                    ForEach(vm.actors, id: \.self) { actor in
+                        if let actor {
+                            Button {
+                                withAnimation {
+                                    vm.selectedActor = actor
+                                }
+                            } label: {
+                                Label {
+                                    Text(actor.username)
+                                } icon: {
+                                    if vm.selectedActor == actor {
+                                        Image(systemName: "checkmark")
+                                            .symbolVariant(vm.selectedActor == nil ? .none : .fill)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } label: {
+                    Image(systemName: "line.3.horizontal.decrease.circle")
+                        .footnote(.bold)
+                        .frame(width: 35, height: 35)
+                        .background(.ultraThinMaterial, in: .circle)
+                }
+                .foregroundStyle(.foreground)
+            }
+#endif
         }
     }
 }

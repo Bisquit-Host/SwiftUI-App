@@ -12,12 +12,30 @@ final class LogVM {
     var logs: [LogAttributes] = []
     
     var loggedUserCount: Int {
-        Set(logs.map(\.relationships.actor)).count
+        Set(filteredLogs.map(\.relationships.actor)).count
+    }
+    
+    var selectedActor: LogActorAttributes? = nil
+    
+    var actors: [LogActorAttributes?] {
+        Array(Set(
+            logs.map(\.relationships.actor.attributes)
+        ))
+    }
+    
+    var filteredLogs: [LogAttributes] {
+        guard let selectedActor else {
+            return logs
+        }
+        
+        return logs.filter {
+            $0.relationships.actor.attributes == selectedActor
+        }
     }
     
     var daysLogged: Int? {
         guard
-            let firstDate = logs.last?.timestamp,
+            let firstDate = filteredLogs.last?.timestamp,
             let firstLoggedDate = dateFormatter.date(from: firstDate)
         else {
             return nil
@@ -40,7 +58,7 @@ final class LogVM {
     }()
     
     var logsByMonth: [Array<LogAttributes>.SubSequence] {
-        logs.chunked { lhs, rhs in
+        filteredLogs.chunked { lhs, rhs in
             let date1 = dateFormatter.date(from: lhs.timestamp)
             let date2 = dateFormatter.date(from: rhs.timestamp)
             

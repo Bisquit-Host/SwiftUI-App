@@ -11,7 +11,7 @@ struct LogTopbar: View {
                         title: "Total Entries",
                         icon: "rectangle.stack.fill",
                         iconColor: .indigo,
-                        value: vm.logs.count
+                        value: vm.filteredLogs.count
                     )
                     
                     Divider()

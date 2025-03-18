@@ -14,6 +14,7 @@ struct LogTopbarCard: View {
                 
                 Text(value)
                     .semibold()
+                    .numericTransition()
             }
             
             Text(title)
