@@ -11,10 +11,9 @@ struct AccountView: View {
         List {
             Section {
                 if let account = vm.account {
-                    param("First name", value: account.firstName)
+                    let name = "\(account.firstName) \(account.lastName)"
                     
-                    param("Last name", value: account.lastName)
-                    
+                    param("Name", value: name)
                     param("E-mail", value: account.email)
                 }
             }
@@ -75,7 +74,7 @@ struct AccountView: View {
             .transparentSection()
         }
         .navigationTitle("Account")
-        .toolbarTitleDisplayMode(.inline)
+        .toolbarTitleDisplayMode(.large)
         .transparentList()
         .refreshableTask {
             vm.fetch()

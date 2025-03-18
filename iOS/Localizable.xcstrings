@@ -2366,22 +2366,6 @@
         }
       }
     },
-    "First name" : {
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Voornaam"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Имя"
-          }
-        }
-      }
-    },
     "Font Size: %lld" : {
       "localizations" : {
         "nl" : {
@@ -2991,22 +2975,6 @@
         }
       }
     },
-    "Last name" : {
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Achternaam"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Фамилия"
-          }
-        }
-      }
-    },
     "Last opened" : {
 
     },
@@ -3434,7 +3402,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Название"
+            "value" : "Имя"
           }
         }
       }
@@ -3473,23 +3441,6 @@
     },
     "Name Backup" : {
 
-    },
-    "Name: %@\nE-mail: %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Name: %1$@\nE-mail: %2$@"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Имя: %1$@\nПочта: %2$@"
-          }
-        }
-      }
     },
     "Need help?" : {
       "localizations" : {
