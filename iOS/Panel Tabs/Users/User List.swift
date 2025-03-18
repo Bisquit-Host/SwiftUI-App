@@ -8,7 +8,7 @@ struct UserList: View {
     var body: some View {
         @Bindable var vm = vm
         
-        List {
+        ScrollView {
             ForEach(vm.users) { user in
                 Section {
                     UserCard(user)
@@ -20,6 +20,7 @@ struct UserList: View {
             .listSectionSpacing(-10)
 #endif
         }
+        .padding(.horizontal)
         .environment(vm)
         .navigationTitle("Users")
 #if !os(tvOS)
