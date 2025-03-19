@@ -52,7 +52,9 @@ struct MapSection: View {
             .padding(.horizontal)
             .offset(y: 5)
             
-            Map(position: $cameraPosition)
+            ZStack {
+                Map(position: $cameraPosition, interactionModes: [])
+            }
         }
         .clipShape(.rect(cornerRadius: 16))
         .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
