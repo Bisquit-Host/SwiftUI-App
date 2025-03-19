@@ -254,6 +254,16 @@
         }
       }
     },
+    "%lld ms" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld мс"
+          }
+        }
+      }
+    },
     "%lld objects" : {
       "localizations" : {
         "en" : {
@@ -2404,6 +2414,9 @@
         }
       }
     },
+    "Frankfurt, Germany" : {
+
+    },
     "Full file path" : {
       "localizations" : {
         "nl" : {
@@ -3157,6 +3170,9 @@
           }
         }
       }
+    },
+    "Location" : {
+
     },
     "Lock" : {
       "localizations" : {

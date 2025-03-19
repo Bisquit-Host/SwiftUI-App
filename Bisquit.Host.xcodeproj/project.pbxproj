@@ -527,6 +527,12 @@
 		F353B0422D8A31BF00E4EC07 /* Account Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B0402D8A31BF00E4EC07 /* Account Parent.swift */; };
 		F353B0432D8A31BF00E4EC07 /* Account Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B0402D8A31BF00E4EC07 /* Account Parent.swift */; };
 		F353B0442D8A31BF00E4EC07 /* Account Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B0402D8A31BF00E4EC07 /* Account Parent.swift */; };
+		F353B04F2D8AA6FB00E4EC07 /* Ping Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B04C2D8AA6FB00E4EC07 /* Ping Error.swift */; };
+		F353B0502D8AA6FB00E4EC07 /* Swifty Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B04D2D8AA6FB00E4EC07 /* Swifty Ping.swift */; };
+		F353B0512D8AA6FB00E4EC07 /* Ping Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B04C2D8AA6FB00E4EC07 /* Ping Error.swift */; };
+		F353B0522D8AA6FB00E4EC07 /* Swifty Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B04D2D8AA6FB00E4EC07 /* Swifty Ping.swift */; };
+		F353B0542D8AA73C00E4EC07 /* Map Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B0532D8AA73C00E4EC07 /* Map Section.swift */; };
+		F353B0552D8AA73C00E4EC07 /* Map Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B0532D8AA73C00E4EC07 /* Map Section.swift */; };
 		F354E9832A48CA2000F6E359 /* Topbar Grid Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F354E9822A48CA2000F6E359 /* Topbar Grid Button.swift */; };
 		F354E9842A48CA2000F6E359 /* Topbar Grid Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F354E9822A48CA2000F6E359 /* Topbar Grid Button.swift */; };
 		F3553FB32B40653000EF0FD2 /* Panel Settings Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3553FB22B40653000EF0FD2 /* Panel Settings Parent.swift */; };
@@ -1804,6 +1810,9 @@
 		F3521E2A29F5C13900132CCB /* Browser Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Browser Card.swift"; sourceTree = "<group>"; };
 		F352AF962A4EDB1D004AD489 /* Server List VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List VM.swift"; sourceTree = "<group>"; };
 		F353B0402D8A31BF00E4EC07 /* Account Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account Parent.swift"; sourceTree = "<group>"; };
+		F353B04C2D8AA6FB00E4EC07 /* Ping Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ping Error.swift"; sourceTree = "<group>"; };
+		F353B04D2D8AA6FB00E4EC07 /* Swifty Ping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swifty Ping.swift"; sourceTree = "<group>"; };
+		F353B0532D8AA73C00E4EC07 /* Map Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Map Section.swift"; sourceTree = "<group>"; };
 		F354E9822A48CA2000F6E359 /* Topbar Grid Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Topbar Grid Button.swift"; sourceTree = "<group>"; };
 		F3553FB22B40653000EF0FD2 /* Panel Settings Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Settings Parent.swift"; sourceTree = "<group>"; };
 		F3553FB82B4093E600EF0FD2 /* Allocation List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation List.swift"; sourceTree = "<group>"; };
@@ -2564,6 +2573,7 @@
 				F3B66DF32D60B46F00F1841B /* Info Tab LA.swift */,
 				F3553FB22B40653000EF0FD2 /* Panel Settings Parent.swift */,
 				F303214A2B3FEA45002A73B8 /* Panel Settings View.swift */,
+				F353B04E2D8AA6FB00E4EC07 /* Map */,
 			);
 			path = Info;
 			sourceTree = "<group>";
@@ -2865,6 +2875,16 @@
 				F378EF8229D6C91300BC4849 /* Gauge Disk.swift */,
 			);
 			path = Elements;
+			sourceTree = "<group>";
+		};
+		F353B04E2D8AA6FB00E4EC07 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				F353B0532D8AA73C00E4EC07 /* Map Section.swift */,
+				F353B04D2D8AA6FB00E4EC07 /* Swifty Ping.swift */,
+				F353B04C2D8AA6FB00E4EC07 /* Ping Error.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 		F3553FB72B4093B400EF0FD2 /* Allocations */ = {
@@ -4578,6 +4598,8 @@
 				F3202CE02D562A620030B3CC /* Browser List MC.swift in Sources */,
 				F3924EDF29A2333F00C4CC77 /* Settings VM.swift in Sources */,
 				F33001442A4CF06D0063FE0F /* Apikey Card.swift in Sources */,
+				F353B04F2D8AA6FB00E4EC07 /* Ping Error.swift in Sources */,
+				F353B0502D8AA6FB00E4EC07 /* Swifty Ping.swift in Sources */,
 				F3BC03C12B2063820011F98A /* Debug Key.swift in Sources */,
 				F3202C772D5583680030B3CC /* Browser Parent.swift in Sources */,
 				F31BA59D295902280006D126 /* Info Tab.swift in Sources */,
@@ -4756,6 +4778,7 @@
 				F39CF3582A50C00C0077996D /* User View.swift in Sources */,
 				F37A366B2A35158A00517EFC /* Console View.swift in Sources */,
 				F39872102A1AE3CE0022B00E /* Video Player.swift in Sources */,
+				F353B0542D8AA73C00E4EC07 /* Map Section.swift in Sources */,
 				F31BA566295900300006D126 /* Nav State.swift in Sources */,
 				F3BC03C62B20675E0011F98A /* New Schedule Sheet.swift in Sources */,
 				F3DDD59C2A62AC7C009FDFBF /* Create Backup Button.swift in Sources */,
@@ -4919,6 +4942,8 @@
 				F3FF5A102A4A3ABD003A1973 /* User Card.swift in Sources */,
 				F3CE5C462D53907E0094BD7B /* Subdomain VM.swift in Sources */,
 				F389BB722A05B61300911EBF /* Credentials View.swift in Sources */,
+				F353B0512D8AA6FB00E4EC07 /* Ping Error.swift in Sources */,
+				F353B0522D8AA6FB00E4EC07 /* Swifty Ping.swift in Sources */,
 				F389BB712A05B60D00911EBF /* Credentials Button.swift in Sources */,
 				F337C1642A8CE965006F321C /* Startup Card.swift in Sources */,
 				F38F9E162CE7647D0033EFE3 /* Image Playground.swift in Sources */,
@@ -4960,6 +4985,7 @@
 				F3AF91CA2B4235BB001D8F80 /* SSH Card.swift in Sources */,
 				F3202D1C2D562B980030B3CC /* Browser Card VDS.swift in Sources */,
 				F3CCB1CE2CAE75D0000F8207 /* Debug Settings.swift in Sources */,
+				F353B0552D8AA73C00E4EC07 /* Map Section.swift in Sources */,
 				F30089292B3C23A00051476C /* Contact Picker.swift in Sources */,
 				F36D53302A05B896007324C6 /* Section Header.swift in Sources */,
 				F325F7012A54BBCF00E89EC4 /* Info Tab Allocation.swift in Sources */,

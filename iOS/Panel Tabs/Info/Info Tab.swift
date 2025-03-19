@@ -13,6 +13,18 @@ struct InfoTab: View {
     private let width = UIScreen.main.bounds.width
     private let image: ImageResource = .darkBackgroundInfo
     
+    private var ip: String? {
+        let allocation = server.relationships.allocations.data.map(\.attributes).filter {
+            $0.isDefault
+        }.first
+        
+        if let ipAlias = allocation?.ipAlias {
+            return ipAlias
+        } else {
+            return allocation?.ip
+        }
+    }
+    
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 0) {
@@ -27,7 +39,7 @@ struct InfoTab: View {
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: width * 1.1)
-                        .frame(height: 800)
+                        .frame(height: 1000)
                         .clipped()
                         .blur(radius: 55, opaque: true)
                         .offset(y: -30)
@@ -52,6 +64,8 @@ struct InfoTab: View {
                         InfoTabAllocation(server)
                         
                         InfoTabButtons(server)
+                        
+                        MapSection(ip)
                     }
                     .padding(.horizontal, 10)
                     .frame(width: width)
