@@ -23,13 +23,6 @@ struct Guide: View {
     
     var body: some View {
         VStack {
-            Text("API-key Creation")
-                .headline()
-                .padding(.top)
-            
-            Text("Step \(step + 1)")
-                .subheadline()
-            
             Spacer()
             
             Image(images[step])
