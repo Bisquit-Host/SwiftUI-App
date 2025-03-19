@@ -65,7 +65,7 @@ struct InfoTab: View {
                         
                         InfoTabButtons(server)
                         
-                        MapSection(ip)
+                        MapSection(ip, node: server.node)
                     }
                     .padding(.horizontal, 10)
                     .frame(width: width)

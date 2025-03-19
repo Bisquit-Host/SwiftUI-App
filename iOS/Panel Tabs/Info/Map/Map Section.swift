@@ -3,28 +3,26 @@ import MapKit
 
 struct MapSection: View {
     private let address: String?
+    private let node: String
     
-    init(_ address: String?) {
+    init(_ address: String?, node: String) {
         self.address = address
-        
-        let scaleMeters: CLLocationDistance = 20000
-        
-        _cameraPosition = State(initialValue: .region(
-            .init(
-                center: .init(
-                    latitude: 50.11056,
-                    longitude: 8.68017
-                ),
-                latitudinalMeters: scaleMeters,
-                longitudinalMeters: scaleMeters
-            )
-        ))
+        self.node = node
     }
     
     private let timer = Timer.publish(every: 1, on: .main, in: .default).autoconnect()
     
-    @State private var cameraPosition: MapCameraPosition
     @State private var ping: Int?
+    @State private var cameraPosition: MapCameraPosition = .region(
+        .init(
+            center: .init(
+                latitude: 50.11056,
+                longitude: 8.68017
+            ),
+            latitudinalMeters: 20000,
+            longitudinalMeters: 20000
+        )
+    )
     
     var body: some View {
         VStack {
@@ -33,6 +31,9 @@ struct MapSection: View {
                     Text("Location")
                         .footnote()
                         .secondary()
+                    
+                    Text(node)
+                        .title3(.bold, design: .rounded)
                     
                     Text("Frankfurt, Germany")
                         .semibold()
@@ -53,9 +54,7 @@ struct MapSection: View {
             .padding(.horizontal)
             .offset(y: 5)
             
-            ZStack {
-                Map(position: $cameraPosition, interactionModes: [])
-            }
+            Map(position: $cameraPosition, interactionModes: [])
         }
         .clipShape(.rect(cornerRadius: 16))
         .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
@@ -66,6 +65,9 @@ struct MapSection: View {
         }
         .onReceive(timer) { _ in
             checkPing()
+        }
+        .task {
+            location(node)
         }
     }
     
@@ -86,6 +88,30 @@ struct MapSection: View {
             let pingDuration = Int(round(pingResult.duration * 1000))
             self.ping = pingDuration
         }
+    }
+    
+    private func location(_ node: String) {
+        let center: CLLocationCoordinate2D
+        
+        if ["Fabric", "Forge", "Fusion"].contains(node) {
+            center = .init( // Moscow
+                latitude: 55.75866,
+                longitude: 37.61929
+            )
+        } else {
+            center = .init( // Frankfurt
+                latitude: 50.11056,
+                longitude: 8.68017
+            )
+        }
+        
+        cameraPosition = .region(
+            .init(
+                center: center,
+                latitudinalMeters: 20000,
+                longitudinalMeters: 20000
+            )
+        )
     }
 }
 

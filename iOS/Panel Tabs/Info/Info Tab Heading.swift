@@ -29,7 +29,7 @@ struct InfoTabHeading: View {
             .secondary()
             .lineLimit(1)
             
-            Text("\(server.id) • \(server.node)")
+            Text(server.id)
                 .footnote()
                 .foregroundStyle(.tertiary)
                 .shadow(color: .black, radius: 5)
