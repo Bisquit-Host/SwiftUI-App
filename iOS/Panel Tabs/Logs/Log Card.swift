@@ -83,6 +83,10 @@ struct LogCard: View {
     
     private func eventDescription() -> LocalizedStringKey {
         switch log.event {
+            // Modpack
+        case "server:modpack.install":
+            "Installed modpack ID **`\(eventProp("modpack_id"))`**, version **`\(eventProp("modpack_version_id"))`** from **`\(eventProp("provider"))`**"
+            
             // Schedules
         case "server:schedule.delete":
             "Deleted the **`\(eventProp("name"))`** schedule"

@@ -2793,6 +2793,16 @@
     "Installed **`%@`**" : {
 
     },
+    "Installed modpack ID  **`%@`**, version  **`%@`** from  **`%@`**" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Installed modpack ID  **`%1$@`**, version  **`%2$@`** from  **`%3$@`**"
+          }
+        }
+      }
+    },
     "Intro.Text0" : {
       "extractionState" : "stale",
       "localizations" : {
