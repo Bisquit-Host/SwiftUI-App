@@ -49,10 +49,21 @@ struct CredentialsView: View {
                 Button("Update", role: .destructive) {
                     switch whatToUpdate {
                     case "email":
-                        vm.updateCredentials(type: .email(email: email, password: password))
+                        vm.updateCredentials(
+                            type: .email(
+                                email: email,
+                                password: password
+                            )
+                        )
                         
                     case "password":
-                        vm.updateCredentials(type: .password(currentPassword: password, newPassword: newPassword, passwordConfirmation: newPasswordAgain))
+                        vm.updateCredentials(
+                            type: .password(
+                                currentPassword: password,
+                                newPassword: newPassword,
+                                passwordConfirmation: newPasswordAgain
+                            )
+                        )
                         
                     default: break
                     }
@@ -70,6 +81,7 @@ struct CredentialsView: View {
                 .aspectRatio(3/2, contentMode: .fit)
                 .padding(.leading)
         }
+        .transparentList()
         .presentationDetents([.medium])
         .monospaced()
         .ignoresSafeArea()

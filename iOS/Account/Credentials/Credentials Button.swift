@@ -9,19 +9,19 @@ struct CredentialsButton: View {
             Button("Change E-mail") {
                 sheetUpdateEmail = true
             }
+            .sheet($sheetUpdateEmail) {
+                CredentialsView("email")
+            }
             
             Button("Change Password") {
                 sheetUpdatePassword = true
             }
+            .sheet($sheetUpdatePassword) {
+                CredentialsView("password")
+            }
         }
         .transparentSection()
         .foregroundStyle(.primary)
-        .sheet($sheetUpdateEmail) {
-            CredentialsView("email")
-        }
-        .sheet($sheetUpdatePassword) {
-            CredentialsView("password")
-        }
     }
 }
 
