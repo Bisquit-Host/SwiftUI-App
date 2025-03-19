@@ -20,13 +20,16 @@ struct FileTab: View {
     
     var body: some View {
         List {
-            FileSearch($vm.searchField)
-            
-            UploadMenu($image, root: root)
-            
-            if vm.isUploading {
-                UploadProgress()
+            Section {
+                FileSearch($vm.searchField)
+                
+                UploadMenu($image, root: root)
+                
+                if vm.isUploading {
+                    UploadProgress()
+                }
             }
+            .transparentSection()
             
             Section {
                 ForEach(vm.filteredFiles) { file in
@@ -44,6 +47,7 @@ struct FileTab: View {
                 }
                 .numericTransition()
             }
+            .transparentSection()
         }
         .animation(.easeOut, value: vm.filteredFiles)
         .toolbarBackground(.visible, for: .tabBar)
@@ -54,6 +58,7 @@ struct FileTab: View {
             Image(.darkBackgroundInfo)
                 .resizable()
                 .blur(radius: 55, opaque: true)
+                .ignoresSafeArea()
         }
         .scrollContentBackground(.hidden)
         .task {

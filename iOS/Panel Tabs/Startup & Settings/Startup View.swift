@@ -38,6 +38,7 @@ struct StartupView: View {
                     }
                 }
             }
+            .transparentSection()
             
             Picker("Docker Image", selection: $currentDockerImage) {
                 ForEach(vm.sortedDockerImages, id: \.key) { key, value in
@@ -45,9 +46,11 @@ struct StartupView: View {
                         .tag(value)
                 }
             }
+            .transparentSection()
             
             ForEach(vm.startupVariables, id: \.name) { variable in
                 StartupCard(server, variable: variable)
+                    .transparentSection()
             }
         }
         .scrollIndicators(.never)
@@ -57,6 +60,7 @@ struct StartupView: View {
             Image(.darkBackgroundInfo)
                 .resizable()
                 .blur(radius: 55, opaque: true)
+                .ignoresSafeArea()
         }
         .scrollContentBackground(.hidden)
         .refreshableTask {

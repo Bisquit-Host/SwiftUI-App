@@ -19,6 +19,7 @@ struct DataTab: View {
         
         List {
             BackupList(server)
+                .transparentSection()
 #if os(tvOS)
             Divider()
             
@@ -28,8 +29,10 @@ struct DataTab: View {
             Divider()
 #else
             ScheduleList()
+                .transparentSection()
 #endif
             DatabaseList(databaseLimit)
+                .transparentSection()
         }
         .scrollIndicators(.hidden)
 #if !os(tvOS)
@@ -45,6 +48,7 @@ struct DataTab: View {
             Image(.darkBackgroundInfo)
                 .resizable()
                 .blur(radius: 55, opaque: true)
+                .ignoresSafeArea()
         }
 #if !os(tvOS)
         .scrollContentBackground(.hidden)
