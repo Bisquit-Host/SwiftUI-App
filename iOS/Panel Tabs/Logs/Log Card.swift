@@ -49,9 +49,12 @@ struct LogCard: View {
                             .foregroundStyle(.blue)
                         }
                         
-                        Text(timeSinceISO(log.timestamp))
-                            .secondary()
-                            .footnote()
+                        TimelineView(.everyMinute) { _ in
+                            Text(timeSinceISO(log.timestamp))
+                                .monospacedDigit()
+                                .secondary()
+                                .footnote()
+                        }
                     }
                 }
                 
