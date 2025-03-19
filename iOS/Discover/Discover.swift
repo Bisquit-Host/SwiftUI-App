@@ -17,27 +17,6 @@ struct Discover: View {
                 }
                 .transparentSection()
                 
-                Section("Support") {
-                    DiscoverCard(
-                        DiscoverItem(
-                            "App Support",
-                            icon: "questionmark.app.dashed",
-                            url: "https://topscrech.dev/app/support/",
-                            color: .purple
-                        )
-                    )
-                    
-                    DiscoverCard(
-                        DiscoverItem(
-                            "Hosting Support",
-                            icon: "questionmark.bubble",
-                            url: "https://my.bisquit.host/login",
-                            color: .purple
-                        )
-                    )
-                }
-                .transparentSection()
-                
                 Section("Apps") {
                     ListButton(
                         "More apps by Bisquit.Host",
@@ -91,6 +70,27 @@ struct Discover: View {
                     MapView()
                 } label: {
                     ListButton("Places we recommend", actionIcon: "map")
+                }
+                .transparentSection()
+                
+                Section("Support") {
+                    DiscoverCard(
+                        DiscoverItem(
+                            "App support",
+                            icon: "questionmark.app.dashed",
+                            url: "https://topscrech.dev/app/support",
+                            color: .purple
+                        )
+                    )
+                    
+                    DiscoverCard(
+                        DiscoverItem(
+                            "Hosting support",
+                            icon: "questionmark.bubble",
+                            url: "https://my.bisquit.host/login",
+                            color: .purple
+                        )
+                    )
                 }
                 .transparentSection()
                 
