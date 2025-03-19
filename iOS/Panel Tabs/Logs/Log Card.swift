@@ -4,9 +4,11 @@ import PteroNet
 
 struct LogCard: View {
     private let log: LogAttributes
+    private let showInfoButton: Bool
     
-    init(_ log: LogAttributes) {
+    init(_ log: LogAttributes, showInfoButton: Bool = true) {
         self.log = log
+        self.showInfoButton = showInfoButton
     }
     
     @State private var sheetDetails = false
@@ -46,7 +48,7 @@ struct LogCard: View {
                                 }
                             }
                             .subheadline(.semibold)
-                            .foregroundStyle(.blue)
+                            .secondary()
                         }
                         
                         TimelineView(.everyMinute) { _ in
@@ -62,7 +64,7 @@ struct LogCard: View {
                     .footnote(design: .monospaced)
             }
             
-            if !log.properties.isEmpty {
+            if !log.properties.isEmpty && showInfoButton {
                 Spacer()
                 
                 Image(systemName: "info.circle")
@@ -70,7 +72,7 @@ struct LogCard: View {
             }
         }
         .onTapGesture {
-            if !log.properties.isEmpty {
+            if !log.properties.isEmpty && showInfoButton {
                 sheetDetails = true
             }
         }

@@ -81,19 +81,37 @@ struct InfoTabButtons: View {
                 sheetLogs = true
             } label: {
                 VStack(spacing: 5) {
-                    Image(systemName: "list.bullet.rectangle.fill")
-                        .foregroundStyle(.tertiary)
+//                    Image(systemName: "list.bullet.rectangle.fill")
+//                        .foregroundStyle(.tertiary)
                     
                     Text("Logs")
-                        .semibold()
+                        .footnote()
+                        .secondary()
+                        .rounded()
+                    
+                    if let log = logVM.logs.first {
+                        LogCard(log, showInfoButton: false)
+                            .multilineTextAlignment(.leading)
+                    }
+                    
+                    let count = logVM.logs.count
+                    
+                    if count > 0 {
+                        let chevron = Image(systemName: "arrow.right")
+                        
+                        Text("\(count - 1) more entries \(chevron)")
+                            .caption2()
+                            .foregroundStyle(.tertiary)
+                    }
                 }
                 .footnote()
-                .frame(height: 55)
-                .frame(maxWidth: .infinity)
+                .padding()
+                .frame(minHeight: 55)
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .foregroundStyle(.foreground)
-                .background(.ultraThinMaterial, in: .capsule)
+                .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
                 .overlay {
-                    Capsule()
+                    RoundedRectangle(cornerRadius: 16)
                         .stroke(.gray.opacity(0.25), lineWidth: 1)
                 }
             }
@@ -103,6 +121,9 @@ struct InfoTabButtons: View {
             } label: {
                 HStack {
                     VStack(alignment: .leading) {
+                        //                    Image(systemName: "globe")
+                        //                        .foregroundStyle(.tertiary)
+                        
                         Text("Subdomains")
                             .footnote()
                             .secondary()
@@ -123,13 +144,13 @@ struct InfoTabButtons: View {
                         .foregroundStyle(.tertiary)
                 }
                 .footnote()
-                .frame(height: 55)
+                .frame(minHeight: 55)
                 .padding(.horizontal)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .foregroundStyle(.foreground)
-                .background(.ultraThinMaterial, in: .capsule)
+                .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
                 .overlay {
-                    Capsule()
+                    RoundedRectangle(cornerRadius: 16)
                         .stroke(.gray.opacity(0.25), lineWidth: 1)
                 }
             }
