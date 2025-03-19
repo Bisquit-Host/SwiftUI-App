@@ -17,42 +17,46 @@ struct LogCard: View {
     
     var body: some View {
         HStack {
-            if let image = actor?.image {
-                KFImage(URL(string: image))
-                    .resizable()
-                    .frame(width: 32, height: 32)
-                    .clipShape(.rect(cornerRadius: 10))
-            } else {
-                Image(systemName: "apple.terminal")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 32, height: 32)
-            }
-            
-            VStack(alignment: .leading, spacing: 0) {
+            VStack(alignment: .leading) {
                 HStack {
-                    Text(actor?.username ?? "System")
-                        .semibold()
+                    if let image = actor?.image {
+                        KFImage(URL(string: image))
+                            .resizable()
+                            .frame(width: 32, height: 32)
+                            .clipShape(.circle)
+                    } else {
+                        Image(systemName: "apple.terminal")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 32, height: 32)
+                    }
                     
-                    Group {
-                        if log.isApi {
-                            Text("API")
+                    VStack(alignment: .leading, spacing: 0) {
+                        HStack {
+                            Text(actor?.username ?? "System")
+                                .semibold()
+                            
+                            Group {
+                                if log.isApi {
+                                    Text("API")
+                                }
+                                
+                                if log.event.contains("SFTP") {
+                                    Text("SFTP")
+                                }
+                            }
+                            .subheadline(.semibold)
+                            .foregroundStyle(.blue)
                         }
                         
-                        if log.event.contains("SFTP") {
-                            Text("SFTP")
-                        }
+                        Text(timeSinceISO(log.timestamp))
+                            .secondary()
+                            .footnote()
                     }
-                    .subheadline(.semibold)
-                    .foregroundStyle(.blue)
                 }
                 
                 Text(log.event)
                     .footnote(design: .monospaced)
-                
-                Text(timeSinceISO(log.timestamp))
-                    .secondary()
-                    .footnote()
             }
             
             if !log.properties.isEmpty {
