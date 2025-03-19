@@ -18,10 +18,14 @@ struct InfoTab: View {
             $0.isDefault
         }.first
         
-        if let ipAlias = allocation?.ipAlias {
+        guard let allocation else {
+            return nil
+        }
+        
+        if let ipAlias = allocation.ipAlias {
             return ipAlias
         } else {
-            return allocation?.ip
+            return allocation.ip
         }
     }
     
