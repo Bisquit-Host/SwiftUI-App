@@ -43,6 +43,7 @@ struct MapSection: View {
                 
                 if let ping {
                     Text("\(ping) ms")
+                        .monospacedDigit()
                         .padding(.vertical, 5)
                         .padding(.horizontal, 10)
                         .background(.ultraThinMaterial, in: .rect(cornerRadius: 8))
