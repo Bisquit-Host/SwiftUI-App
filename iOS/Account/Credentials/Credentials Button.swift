@@ -1,28 +1,20 @@
-import ScrechKit
+import SwiftUI
 
 struct CredentialsButton: View {
     @State private var sheetUpdateEmail = false
     @State private var sheetUpdatePassword = false
     
     var body: some View {
-        Menu {
-            MenuButton("E-mail", icon: "envelope.open") {
+        Section {
+            Button("Change E-mail") {
                 sheetUpdateEmail = true
             }
             
-            MenuButton("Password", icon: "key") {
+            Button("Change Password") {
                 sheetUpdatePassword = true
             }
-        } label: {
-            HStack {
-                Text("Update credentials")
-                
-                Spacer()
-                
-                Image(systemName: "chevron.forward")
-                    .secondary()
-            }
         }
+        .transparentSection()
         .foregroundStyle(.primary)
         .sheet($sheetUpdateEmail) {
             CredentialsView("email")

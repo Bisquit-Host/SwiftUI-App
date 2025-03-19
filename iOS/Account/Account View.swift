@@ -21,10 +21,7 @@ struct AccountView: View {
             }
             .transparentSection()
             
-            Section("Account") {
-                CredentialsButton()
-            }
-            .transparentSection()
+            CredentialsButton()
             
             Section("2FA") {
                 if vm.twoFaEnabled {
@@ -73,6 +70,7 @@ struct AccountView: View {
             .transparentSection()
         }
         .transparentList()
+        .toolbarBackground(.visible, for: .tabBar)
         .navigationTitle("Account")
         .refreshableTask {
             vm.fetch()

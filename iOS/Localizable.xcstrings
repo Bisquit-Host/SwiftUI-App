@@ -987,6 +987,9 @@
         }
       }
     },
+    "Change E-mail" : {
+
+    },
     "Change language" : {
       "localizations" : {
         "nl" : {
@@ -1002,6 +1005,9 @@
           }
         }
       }
+    },
+    "Change Password" : {
+
     },
     "Change Power" : {
       "localizations" : {
@@ -5324,6 +5330,7 @@
 
     },
     "Update credentials" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {

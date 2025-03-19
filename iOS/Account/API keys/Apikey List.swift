@@ -98,6 +98,7 @@ struct ApikeyList: View {
         }
         .navigationTitle("My API-keys")
         .transparentList()
+        .toolbarBackground(.visible, for: .tabBar)
         .animation(.default, value: vm.keys.count)
         .refreshableTask {
             vm.fetchKeys()
