@@ -35,9 +35,15 @@ struct MapSection: View {
                     Text(node)
                         .title3(.bold, design: .rounded)
                     
-                    Text("Frankfurt, Germany")
-                        .semibold()
-                        .rounded()
+                    if isMoscow(node) {
+                        Text("Moscow, Russia")
+                            .semibold()
+                            .rounded()
+                    } else {
+                        Text("Frankfurt, Germany")
+                            .semibold()
+                            .rounded()
+                    }
                 }
                 
                 Spacer()
@@ -90,10 +96,14 @@ struct MapSection: View {
         }
     }
     
+    private func isMoscow(_ node: String) -> Bool {
+        ["Fabric", "Forge", "Fusion"].contains(node)
+    }
+    
     private func location(_ node: String) {
         let center: CLLocationCoordinate2D
         
-        if ["Fabric", "Forge", "Fusion"].contains(node) {
+        if isMoscow(node) {
             center = .init( // Moscow
                 latitude: 55.75866,
                 longitude: 37.61929
