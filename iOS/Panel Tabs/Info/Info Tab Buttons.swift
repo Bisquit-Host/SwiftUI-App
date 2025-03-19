@@ -154,6 +154,7 @@ struct InfoTabButtons: View {
                         .stroke(.gray.opacity(0.25), lineWidth: 1)
                 }
             }
+            .frame(maxWidth: .infinity)
         }
         .sheet($sheetUsers) {
             UserListParent()
