@@ -116,7 +116,7 @@ struct Discover: View {
                         DiscoverItem(
                             "Offer",
                             icon: "text.document",
-                            url: "https://bisquit.host/offer.pdf",
+                            url: "https://bisquit.host/terms.pdf",
                             color: .secondary
                         )
                     )
