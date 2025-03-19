@@ -62,7 +62,7 @@ struct StartPage: View {
         .background {
             Image(.darkBackgroundInfo)
                 .resizable()
-                .blur(radius: 55)
+                .blur(radius: 55, opaque: true)
         }
         .statusBarHidden()
         .overlay(alignment: .bottom) {
