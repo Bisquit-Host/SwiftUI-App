@@ -35,20 +35,31 @@ struct InfoTabButtons: View {
                     sheetUsers = true
                 } label: {
                     VStack(spacing: 12) {
-                        Text("Users")
-                            .footnote(.semibold)
-                        
-                        HStack {
-                            ForEach(userVM.users.prefix(7)) { user in
-                                if let url = URL(string: user.image) {
-                                    KFImage(url)
-                                        .resizable()
-                                        .frame(width: 32, height: 32)
-                                        .clipShape(.circle)
-                                        .overlay {
-                                            Circle()
-                                                .stroke(.gray.opacity(0.25), lineWidth: 1)
-                                        }
+                        if userVM.users.count == 0 {
+                            VStack(spacing: 5) {
+                                Image(systemName: "person.3.fill")
+                                    .foregroundStyle(.tertiary)
+                                
+                                Text("Users")
+                                    .semibold()
+                            }
+                            .footnote()
+                        } else {
+                            Text("Users")
+                                .footnote(.semibold)
+                            
+                            HStack {
+                                ForEach(userVM.users.prefix(7)) { user in
+                                    if let url = URL(string: user.image) {
+                                        KFImage(url)
+                                            .resizable()
+                                            .frame(width: 32, height: 32)
+                                            .clipShape(.circle)
+                                            .overlay {
+                                                Circle()
+                                                    .stroke(.gray.opacity(0.25), lineWidth: 1)
+                                            }
+                                    }
                                 }
                             }
                         }
