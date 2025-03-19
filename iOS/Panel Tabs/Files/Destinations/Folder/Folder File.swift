@@ -16,13 +16,16 @@ struct FolderFile: View {
     
     var body: some View {
         List {
-            FileSearch($vm.searchField)
-            
-            UploadMenu($image, root: root)
-                        
-            if vm.isUploading {
-                UploadProgress()
+            Section {
+                FileSearch($vm.searchField)
+                
+                UploadMenu($image, root: root)
+                
+                if vm.isUploading {
+                    UploadProgress()
+                }
             }
+            .transparentSection()
             
             Section {
                 ForEach(vm.filteredFiles, id: \.name) { file in
@@ -38,6 +41,7 @@ struct FolderFile: View {
                     Text("\(vm.filteredFiles.count) files")
                 }
             }
+            .transparentSection()
         }
         .environmentObject(vm)
         .frame(maxWidth: 500)
@@ -52,6 +56,7 @@ struct FolderFile: View {
             Image(.darkBackgroundInfo)
                 .resizable()
                 .blur(radius: 55, opaque: true)
+                .ignoresSafeArea()
         }
         .scrollContentBackground(.hidden)
         .onChange(of: image) {
