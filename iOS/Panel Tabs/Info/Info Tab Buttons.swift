@@ -77,47 +77,60 @@ struct InfoTabButtons: View {
                 sheetUsers = true
             }
             
-            HStack {
-                Button {
-                    sheetLogs = true
-                } label: {
-                    VStack(spacing: 5) {
-                        Image(systemName: "list.bullet.rectangle.fill")
-                            .foregroundStyle(.tertiary)
-                        
-                        Text("Logs")
-                            .semibold()
-                    }
-                    .footnote()
-                    .frame(height: 55)
-                    .frame(maxWidth: .infinity)
-                    .foregroundStyle(.foreground)
-                    .background(.ultraThinMaterial, in: .capsule)
-                    .overlay {
-                        Capsule()
-                            .stroke(.gray.opacity(0.25), lineWidth: 1)
-                    }
+            Button {
+                sheetLogs = true
+            } label: {
+                VStack(spacing: 5) {
+                    Image(systemName: "list.bullet.rectangle.fill")
+                        .foregroundStyle(.tertiary)
+                    
+                    Text("Logs")
+                        .semibold()
                 }
-                
-                Button {
-                    sheetSubdomains = true
-                } label: {
-                    VStack(spacing: 5) {
-                        Image(systemName: "globe")
-                            .foregroundStyle(.tertiary)
-                        
+                .footnote()
+                .frame(height: 55)
+                .frame(maxWidth: .infinity)
+                .foregroundStyle(.foreground)
+                .background(.ultraThinMaterial, in: .capsule)
+                .overlay {
+                    Capsule()
+                        .stroke(.gray.opacity(0.25), lineWidth: 1)
+                }
+            }
+            
+            Button {
+                sheetSubdomains = true
+            } label: {
+                HStack {
+                    VStack(alignment: .leading) {
                         Text("Subdomains")
-                            .semibold()
+                            .footnote()
+                            .secondary()
+                            .rounded()
+                        
+                        ForEach(subdomainVM.subdomains) { subdomain in
+                            Text("\(subdomain.subdomain).\(subdomain.domain)")
+                                .monospaced()
+                        }
                     }
-                    .footnote()
-                    .frame(height: 55)
-                    .frame(maxWidth: .infinity)
-                    .foregroundStyle(.foreground)
-                    .background(.ultraThinMaterial, in: .capsule)
-                    .overlay {
-                        Capsule()
-                            .stroke(.gray.opacity(0.25), lineWidth: 1)
-                    }
+                    
+                    Spacer()
+                    
+                    let chevron = Image(systemName: "arrow.right")
+                    
+                    Text("All subdomains \(chevron)")
+                        .caption2()
+                        .foregroundStyle(.tertiary)
+                }
+                .footnote()
+                .frame(height: 55)
+                .padding(.horizontal)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .foregroundStyle(.foreground)
+                .background(.ultraThinMaterial, in: .capsule)
+                .overlay {
+                    Capsule()
+                        .stroke(.gray.opacity(0.25), lineWidth: 1)
                 }
             }
         }

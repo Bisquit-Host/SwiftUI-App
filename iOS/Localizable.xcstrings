@@ -106,6 +106,16 @@
     "%@ will be availible soon..." : {
 
     },
+    "%@.%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@.%2$@"
+          }
+        }
+      }
+    },
     "%lld" : {
       "localizations" : {
         "nl" : {
@@ -568,6 +578,9 @@
       }
     },
     "All allocations %@" : {
+
+    },
+    "All subdomains %@" : {
 
     },
     "Allocations" : {
@@ -2793,12 +2806,12 @@
     "Installed **`%@`**" : {
 
     },
-    "Installed modpack ID  **`%@`**, version  **`%@`** from  **`%@`**" : {
+    "Installed modpack ID **`%@`**, version **`%@`** from **`%@`**" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Installed modpack ID  **`%1$@`**, version  **`%2$@`** from  **`%3$@`**"
+            "value" : "Installed modpack ID **`%1$@`**, version **`%2$@`** from **`%3$@`**"
           }
         }
       }
