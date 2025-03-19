@@ -529,6 +529,12 @@
     "Add to MC Stats" : {
 
     },
+    "Added **`%@`** as a subuser" : {
+
+    },
+    "Added **`%@`** to the server" : {
+
+    },
     "Admin" : {
       "localizations" : {
         "nl" : {
@@ -1021,6 +1027,26 @@
         }
       }
     },
+    "Changed the **`%@`** variable from **`%@`** to **`%@`**" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Changed the **`%1$@`** variable from **`%2$@`** to **`%3$@`**"
+          }
+        }
+      }
+    },
+    "Changed the server description from **`%@`** to **`%@`**" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Changed the server description from **`%1$@`** to **`%2$@`**"
+          }
+        }
+      }
+    },
     "Choose File" : {
       "localizations" : {
         "nl" : {
@@ -1127,6 +1153,9 @@
         }
       }
     },
+    "Completed restoration of the **`%@`** backup" : {
+
+    },
     "Comprehensive hosting solutions for VDS, game servers, websites, and bots — customized to fit your projects" : {
 
     },
@@ -1136,6 +1165,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Сжать"
+          }
+        }
+      }
+    },
+    "Compressed **`%@`** in **`%@`**" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Compressed **`%1$@`** in **`%2$@`**"
           }
         }
       }
@@ -1601,6 +1640,18 @@
         }
       }
     },
+    "Created **`%@`** schedule" : {
+
+    },
+    "Created a copy of **`%@`**" : {
+
+    },
+    "Created new database **`%@`**" : {
+
+    },
+    "Created the **`%@`** subdomain" : {
+
+    },
     "Created: %@" : {
       "localizations" : {
         "nl" : {
@@ -1807,6 +1858,16 @@
         }
       }
     },
+    "Decompressed **`%@`** in **`%@`**" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Decompressed **`%1$@`** in **`%2$@`**"
+          }
+        }
+      }
+    },
     "Default" : {
       "localizations" : {
         "ru" : {
@@ -1826,6 +1887,24 @@
           }
         }
       }
+    },
+    "Deleted **`%@`**" : {
+
+    },
+    "Deleted database **`%@`**" : {
+
+    },
+    "Deleted the **`%@`** allocation" : {
+
+    },
+    "Deleted the **`%@`** backup" : {
+
+    },
+    "Deleted the **`%@`** schedule" : {
+
+    },
+    "Deleted the **`%@`** subdomain" : {
+
     },
     "Describe an image" : {
       "localizations" : {
@@ -2082,6 +2161,12 @@
         }
       }
     },
+    "Downloaded **`%@`**" : {
+
+    },
+    "Downloaded the **`%@`** backup" : {
+
+    },
     "Drop here" : {
       "localizations" : {
         "ru" : {
@@ -2311,6 +2396,9 @@
           }
         }
       }
+    },
+    "Executed **`%@`** on the server" : {
+
     },
     "Expiration" : {
       "localizations" : {
@@ -2689,6 +2777,9 @@
         }
       }
     },
+    "Installed **`%@`**" : {
+
+    },
     "Intro.Text0" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -2954,6 +3045,9 @@
         }
       }
     },
+    "Killed the server process" : {
+
+    },
     "Label color" : {
       "localizations" : {
         "nl" : {
@@ -3179,6 +3273,9 @@
         }
       }
     },
+    "Locked the **`%@`** backup" : {
+
+    },
     "Log out" : {
       "localizations" : {
         "nl" : {
@@ -3236,6 +3333,9 @@
           }
         }
       }
+    },
+    "Marked the **`%@`** backup as complete" : {
+
     },
     "Me name folder" : {
 
@@ -3786,6 +3886,9 @@
         }
       }
     },
+    "Password rotated for database **`%@`**" : {
+
+    },
     "Paste" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -4095,6 +4198,9 @@
         }
       }
     },
+    "Reinstalled server" : {
+
+    },
     "Reinstalling your server will stop it, and then re-run the installation script that initially set it. Some files may be deleted or modified during this process, please back up your data before continuing" : {
       "localizations" : {
         "nl" : {
@@ -4121,6 +4227,9 @@
         }
       }
     },
+    "Removed **`%@`** as a subuser" : {
+
+    },
     "Rename" : {
       "localizations" : {
         "ru" : {
@@ -4137,6 +4246,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Переименовать %@"
+          }
+        }
+      }
+    },
+    "Renamed the server from **`%@`** to **`%@`**" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Renamed the server from **`%1$@`** to **`%2$@`**"
           }
         }
       }
@@ -4183,6 +4302,9 @@
         }
       }
     },
+    "Restarted the server" : {
+
+    },
     "Restore" : {
       "localizations" : {
         "ru" : {
@@ -4199,6 +4321,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Восстановить с удалением данных"
+          }
+        }
+      }
+    },
+    "Restored the **`%@`** backup (truncate: **`%@`**)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Restored the **`%1$@`** backup (truncate: **`%2$@`**)"
           }
         }
       }
@@ -4512,6 +4644,9 @@
         }
       }
     },
+    "Set **`%@`** as the primary server allocation" : {
+
+    },
     "Set default" : {
 
     },
@@ -4763,6 +4898,12 @@
     "Start, Stop, Restart or Kill a server" : {
 
     },
+    "Started a new backup **`%@`**" : {
+
+    },
+    "Started the server" : {
+
+    },
     "Startup" : {
       "localizations" : {
         "ru" : {
@@ -4883,6 +5024,9 @@
           }
         }
       }
+    },
+    "Stopped the server" : {
+
     },
     "Storage" : {
       "localizations" : {
@@ -5296,6 +5440,9 @@
         }
       }
     },
+    "Unlocked **`%@`** backup" : {
+
+    },
     "Unnamed" : {
 
     },
@@ -5398,6 +5545,32 @@
           }
         }
       }
+    },
+    "Updated **`%@`** schedule" : {
+
+    },
+    "Updated the Docker Image for the server from **`%@`** to **`%@`**" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Updated the Docker Image for the server from **`%1$@`** to **`%2$@`**"
+          }
+        }
+      }
+    },
+    "Updated the notes for **`%@`** from **`%@`** to **`%@`**" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Updated the notes for **`%1$@`** from **`%2$@`** to **`%3$@`**"
+          }
+        }
+      }
+    },
+    "Updated the subuser permissions for **`%@`** as a subuser" : {
+
     },
     "Upload" : {
       "localizations" : {
@@ -5584,6 +5757,9 @@
     "View resource usage of your servers" : {
 
     },
+    "Viewed the contents of **`%@`**" : {
+
+    },
     "Warning" : {
       "localizations" : {
         "nl" : {
@@ -5697,6 +5873,9 @@
       }
     },
     "Write" : {
+
+    },
+    "Wrote new content to **`%@`**" : {
 
     },
     "Yes" : {

@@ -32,6 +32,13 @@ struct LogList: View {
         .refreshableTask {
             vm.fetchLogs()
         }
+#if os(iOS)
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+            if !System.lowPowerMode {
+                vm.fetchLogs()
+            }
+        }
+#endif
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button {
