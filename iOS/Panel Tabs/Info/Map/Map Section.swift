@@ -19,10 +19,14 @@ struct MapSection: View {
                 latitude: 50.11056,
                 longitude: 8.68017
             ),
-            latitudinalMeters: 20000,
-            longitudinalMeters: 20000
+            latitudinalMeters: 12000,
+            longitudinalMeters: 12000
         )
     )
+    
+    private var isMoscow: Bool {
+        ["Fabric", "Forge", "Fusion"].contains(node)
+    }
     
     var body: some View {
         VStack {
@@ -35,7 +39,7 @@ struct MapSection: View {
                     Text(node)
                         .title3(.bold, design: .rounded)
                     
-                    if isMoscow(node) {
+                    if isMoscow {
                         Text("Moscow, Russia")
                             .semibold()
                             .rounded()
@@ -96,14 +100,11 @@ struct MapSection: View {
         }
     }
     
-    private func isMoscow(_ node: String) -> Bool {
-        ["Fabric", "Forge", "Fusion"].contains(node)
-    }
-    
     private func location(_ node: String) {
+        let scaleMeters = isMoscow ? 25000.0 : 12000.0
         let center: CLLocationCoordinate2D
         
-        if isMoscow(node) {
+        if isMoscow {
             center = .init( // Moscow
                 latitude: 55.75866,
                 longitude: 37.61929
@@ -118,8 +119,8 @@ struct MapSection: View {
         cameraPosition = .region(
             .init(
                 center: center,
-                latitudinalMeters: 20000,
-                longitudinalMeters: 20000
+                latitudinalMeters: scaleMeters,
+                longitudinalMeters: scaleMeters
             )
         )
     }
