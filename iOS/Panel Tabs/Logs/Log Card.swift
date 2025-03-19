@@ -93,6 +93,15 @@ struct LogCard: View {
         case "server:schedule.update":
             "Updated **`\(eventProp("name"))`** schedule"
             
+        case "server:task.delete":
+            "Deleted a task in your **`\(eventProp("name"))`** schedule"
+            
+        case "server:task.create":
+            "Created a new **`\(eventProp("action"))`** task in your **`\(eventProp("name"))`** schedule"
+            
+        case "server:task.update":
+            "Updated a task in your **`\(eventProp("name"))`** schedule"
+            
             // Users
         case "server:subuser.delete":
             "Removed **`\(eventProp("email"))`** as a subuser"

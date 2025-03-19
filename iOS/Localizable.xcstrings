@@ -1646,6 +1646,16 @@
     "Created a copy of **`%@`**" : {
 
     },
+    "Created a new **`%@`** task in your **`%@`** schedule" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Created a new **`%1$@`** task in your **`%2$@`** schedule"
+          }
+        }
+      }
+    },
     "Created new database **`%@`**" : {
 
     },
@@ -1889,6 +1899,9 @@
       }
     },
     "Deleted **`%@`**" : {
+
+    },
+    "Deleted a task in your **`%@`** schedule" : {
 
     },
     "Deleted database **`%@`**" : {
@@ -5547,6 +5560,9 @@
       }
     },
     "Updated **`%@`** schedule" : {
+
+    },
+    "Updated a task in your **`%@`** schedule" : {
 
     },
     "Updated the Docker Image for the server from **`%@`** to **`%@`**" : {
