@@ -13,8 +13,7 @@ struct DiscoverCard: View {
     var body: some View {
         ListButton(
             link.name,
-            icon: link.icon,
-            actionIcon: "link",
+            actionIcon: link.icon,
             color: link.color
         ) {
             showSafari = true

@@ -5026,7 +5026,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Нажмите Authorize App или скопируйте ключ API"
+            "value" : "Нажмите Authorize App или скопируйте API-ключ"
           }
         }
       }

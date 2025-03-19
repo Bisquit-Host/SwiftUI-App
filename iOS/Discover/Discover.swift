@@ -41,8 +41,7 @@ struct Discover: View {
                 Section("Apps") {
                     ListButton(
                         "More apps by Bisquit.Host",
-                        icon: "app.gift",
-                        actionIcon: "link",
+                        actionIcon: "app.gift",
                         color: .blue
                     ) {
                         openSafari("https://apps.apple.com/au/developer/sergei-saliukov/id1639409936")
@@ -79,8 +78,7 @@ struct Discover: View {
                     
                     ListButton(
                         "GitHub",
-                        icon: "app.connected.to.app.below.fill",
-                        actionIcon: "link",
+                        actionIcon: "app.connected.to.app.below.fill",
                         color: .secondary
                     ) {
                         openSafari("https://github.com/TopScrech")
@@ -100,7 +98,7 @@ struct Discover: View {
                 NavigationLink {
                     MapView()
                 } label: {
-                    ListButton("Places we recommend", icon: "map")
+                    ListButton("Places we recommend", actionIcon: "map")
                 }
                 .transparentSection()
                 
