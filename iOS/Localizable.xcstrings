@@ -2459,9 +2459,6 @@
     "Get Started" : {
 
     },
-    "GitHub" : {
-      "shouldTranslate" : false
-    },
     "Grant all permissions" : {
       "localizations" : {
         "ru" : {

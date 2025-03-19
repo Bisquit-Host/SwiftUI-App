@@ -18,17 +18,14 @@ struct StartPage: View {
                         .secondary()
                         .autocorrectionDisabled()
                         .frame(height: 40)
-                        .background(.ultraThinMaterial.opacity(0.2), in: .capsule)
+                        .background(.ultraThickMaterial.opacity(0.2), in: .capsule)
                         .multilineTextAlignment(.center)
                         .minimumScaleFactor(0.5)
                         .overlay {
                             Capsule()
                                 .stroke(.ultraThinMaterial, lineWidth: 1)
                         }
-                        .changeEffect(
-                            .shake(rate: .fast),
-                            value: vm.trigger
-                        )
+                        .changeEffect(.shake(rate: .fast), value: vm.trigger)
                     
                     Button("How do I authorize?") {
                         vm.sheetGuide = true
@@ -63,6 +60,7 @@ struct StartPage: View {
             Image(.darkBackgroundInfo)
                 .resizable()
                 .blur(radius: 55, opaque: true)
+                .ignoresSafeArea()
         }
         .statusBarHidden()
         .overlay(alignment: .bottom) {

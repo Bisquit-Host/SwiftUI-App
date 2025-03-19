@@ -76,14 +76,6 @@ struct Discover: View {
                         )
                     )
                     
-                    ListButton(
-                        "GitHub",
-                        actionIcon: "app.connected.to.app.below.fill",
-                        color: .secondary
-                    ) {
-                        openSafari("https://github.com/TopScrech")
-                    }
-                    
                     DiscoverCard(
                         DiscoverItem(
                             "Client role in the Discord channel",
