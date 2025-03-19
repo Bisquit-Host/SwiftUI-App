@@ -80,6 +80,9 @@ struct MapSection: View {
         .onReceive(timer) { _ in
             checkPing()
         }
+        .onDisappear {
+            timer.upstream.connect().cancel()
+        }
         .task {
             location(node)
         }
@@ -91,16 +94,14 @@ struct MapSection: View {
             return
         }
         
-        Task {
-            let pingResult = await SwiftyPing.pingServer(address)
-            
-            guard pingResult.error == nil else {
-                print("Ping error:", pingResult.error ?? "Unknown")
-                return
+        tcpPing(host: address, port: 22) { result in
+            switch result {
+            case .success(let pingDuration):
+                self.ping = Int(round(pingDuration * 1000))
+                
+            case .failure(let error):
+                print("TCP ping failed with error", error.localizedDescription)
             }
-            
-            let pingDuration = Int(round(pingResult.duration * 1000))
-            self.ping = pingDuration
         }
     }
     

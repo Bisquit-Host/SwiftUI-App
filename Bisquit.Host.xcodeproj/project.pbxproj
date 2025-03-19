@@ -75,6 +75,8 @@
 		F30089322B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300892E2B3DC4B20051476C /* Cloud Key Context Menu.swift */; };
 		F30089332B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300892E2B3DC4B20051476C /* Cloud Key Context Menu.swift */; };
 		F30089342B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300892E2B3DC4B20051476C /* Cloud Key Context Menu.swift */; };
+		F30207D52D8B2A6000C26008 /* Swifty Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30207D42D8B2A6000C26008 /* Swifty Ping.swift */; };
+		F30207D62D8B2A6000C26008 /* Swifty Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30207D42D8B2A6000C26008 /* Swifty Ping.swift */; };
 		F303214B2B3FEA45002A73B8 /* Panel Settings View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F303214A2B3FEA45002A73B8 /* Panel Settings View.swift */; };
 		F303214C2B3FEDC6002A73B8 /* Panel Settings View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F303214A2B3FEA45002A73B8 /* Panel Settings View.swift */; };
 		F304498A29E990E9006DC0C7 /* Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304498929E990E9006DC0C7 /* Cloud Keys.swift */; };
@@ -527,10 +529,6 @@
 		F353B0422D8A31BF00E4EC07 /* Account Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B0402D8A31BF00E4EC07 /* Account Parent.swift */; };
 		F353B0432D8A31BF00E4EC07 /* Account Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B0402D8A31BF00E4EC07 /* Account Parent.swift */; };
 		F353B0442D8A31BF00E4EC07 /* Account Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B0402D8A31BF00E4EC07 /* Account Parent.swift */; };
-		F353B04F2D8AA6FB00E4EC07 /* Ping Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B04C2D8AA6FB00E4EC07 /* Ping Error.swift */; };
-		F353B0502D8AA6FB00E4EC07 /* Swifty Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B04D2D8AA6FB00E4EC07 /* Swifty Ping.swift */; };
-		F353B0512D8AA6FB00E4EC07 /* Ping Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B04C2D8AA6FB00E4EC07 /* Ping Error.swift */; };
-		F353B0522D8AA6FB00E4EC07 /* Swifty Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B04D2D8AA6FB00E4EC07 /* Swifty Ping.swift */; };
 		F353B0542D8AA73C00E4EC07 /* Map Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B0532D8AA73C00E4EC07 /* Map Section.swift */; };
 		F353B0552D8AA73C00E4EC07 /* Map Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B0532D8AA73C00E4EC07 /* Map Section.swift */; };
 		F354E9832A48CA2000F6E359 /* Topbar Grid Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F354E9822A48CA2000F6E359 /* Topbar Grid Button.swift */; };
@@ -1680,6 +1678,7 @@
 		F30089222B3BA5300051476C /* File Permissions Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Permissions Parent.swift"; sourceTree = "<group>"; };
 		F30089272B3C23A00051476C /* Contact Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact Picker.swift"; sourceTree = "<group>"; };
 		F300892E2B3DC4B20051476C /* Cloud Key Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cloud Key Context Menu.swift"; sourceTree = "<group>"; };
+		F30207D42D8B2A6000C26008 /* Swifty Ping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swifty Ping.swift"; sourceTree = "<group>"; };
 		F303214A2B3FEA45002A73B8 /* Panel Settings View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Settings View.swift"; sourceTree = "<group>"; };
 		F304498629E98AE4006DC0C7 /* Bisquit.Host.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bisquit.Host.entitlements; sourceTree = "<group>"; };
 		F304498929E990E9006DC0C7 /* Cloud Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cloud Keys.swift"; sourceTree = "<group>"; };
@@ -1810,8 +1809,6 @@
 		F3521E2A29F5C13900132CCB /* Browser Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Browser Card.swift"; sourceTree = "<group>"; };
 		F352AF962A4EDB1D004AD489 /* Server List VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List VM.swift"; sourceTree = "<group>"; };
 		F353B0402D8A31BF00E4EC07 /* Account Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account Parent.swift"; sourceTree = "<group>"; };
-		F353B04C2D8AA6FB00E4EC07 /* Ping Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ping Error.swift"; sourceTree = "<group>"; };
-		F353B04D2D8AA6FB00E4EC07 /* Swifty Ping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swifty Ping.swift"; sourceTree = "<group>"; };
 		F353B0532D8AA73C00E4EC07 /* Map Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Map Section.swift"; sourceTree = "<group>"; };
 		F354E9822A48CA2000F6E359 /* Topbar Grid Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Topbar Grid Button.swift"; sourceTree = "<group>"; };
 		F3553FB22B40653000EF0FD2 /* Panel Settings Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Settings Parent.swift"; sourceTree = "<group>"; };
@@ -2890,8 +2887,7 @@
 			isa = PBXGroup;
 			children = (
 				F353B0532D8AA73C00E4EC07 /* Map Section.swift */,
-				F353B04D2D8AA6FB00E4EC07 /* Swifty Ping.swift */,
-				F353B04C2D8AA6FB00E4EC07 /* Ping Error.swift */,
+				F30207D42D8B2A6000C26008 /* Swifty Ping.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -4606,8 +4602,6 @@
 				F3202CE02D562A620030B3CC /* Browser List MC.swift in Sources */,
 				F3924EDF29A2333F00C4CC77 /* Settings VM.swift in Sources */,
 				F33001442A4CF06D0063FE0F /* Apikey Card.swift in Sources */,
-				F353B04F2D8AA6FB00E4EC07 /* Ping Error.swift in Sources */,
-				F353B0502D8AA6FB00E4EC07 /* Swifty Ping.swift in Sources */,
 				F3BC03C12B2063820011F98A /* Debug Key.swift in Sources */,
 				F3202C772D5583680030B3CC /* Browser Parent.swift in Sources */,
 				F31BA59D295902280006D126 /* Info Tab.swift in Sources */,
@@ -4696,6 +4690,7 @@
 				F3C9D85C2B31146E00265492 /* User Avatar.swift in Sources */,
 				F354E9832A48CA2000F6E359 /* Topbar Grid Button.swift in Sources */,
 				F3924EE929A28D9D00C4CC77 /* Biometry Usage View.swift in Sources */,
+				F30207D62D8B2A6000C26008 /* Swifty Ping.swift in Sources */,
 				F3553FB92B4093E600EF0FD2 /* Allocation List.swift in Sources */,
 				F3F5BC962BF7668E00EB8FB1 /* Sensitivity Analyzer.swift in Sources */,
 				F3CB53D62971CF6B00A213B0 /* Database Card.swift in Sources */,
@@ -4950,8 +4945,6 @@
 				F3FF5A102A4A3ABD003A1973 /* User Card.swift in Sources */,
 				F3CE5C462D53907E0094BD7B /* Subdomain VM.swift in Sources */,
 				F389BB722A05B61300911EBF /* Credentials View.swift in Sources */,
-				F353B0512D8AA6FB00E4EC07 /* Ping Error.swift in Sources */,
-				F353B0522D8AA6FB00E4EC07 /* Swifty Ping.swift in Sources */,
 				F389BB712A05B60D00911EBF /* Credentials Button.swift in Sources */,
 				F337C1642A8CE965006F321C /* Startup Card.swift in Sources */,
 				F38F9E162CE7647D0033EFE3 /* Image Playground.swift in Sources */,
@@ -5045,6 +5038,7 @@
 				F3D264452A66B3A6005C3777 /* QR Code View.swift in Sources */,
 				F3CE5C4D2D5395300094BD7B /* Subdomain Card.swift in Sources */,
 				F36D53372A05B8BF007324C6 /* Backup List Footer.swift in Sources */,
+				F30207D52D8B2A6000C26008 /* Swifty Ping.swift in Sources */,
 				F337D75A2A4DBC840011524E /* Create Apikey.swift in Sources */,
 				F39780262A2B9DB800956474 /* Upload Preview.swift in Sources */,
 				F389BB662A05B5B500911EBF /* Support.swift in Sources */,
