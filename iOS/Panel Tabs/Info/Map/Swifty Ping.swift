@@ -21,8 +21,9 @@ public func tcpPing(
         let error = NSError(
             domain: "TCPPingError",
             code: -1,
-            userInfo: [NSLocalizedDescriptionKey: "Invalid port number."]
+            userInfo: [NSLocalizedDescriptionKey: "Invalid port number"]
         )
+        
         completion(.failure(error))
         return
     }
@@ -57,11 +58,13 @@ public func tcpPing(
             break
         default:
             connection.cancel()
+            
             let timeoutError = NSError(
                 domain: "TCPPingError",
                 code: -1001,
-                userInfo: [NSLocalizedDescriptionKey: "Connection timed out."]
+                userInfo: [NSLocalizedDescriptionKey: "Connection timed out"]
             )
+            
             completion(.failure(timeoutError))
         }
     }
