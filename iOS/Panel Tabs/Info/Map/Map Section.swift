@@ -58,6 +58,10 @@ struct MapSection: View {
                         .padding(.vertical, 5)
                         .padding(.horizontal, 10)
                         .background(.ultraThinMaterial, in: .rect(cornerRadius: 8))
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(.gray.opacity(0.25), lineWidth: 1)
+                        }
                 }
             }
             .frame(height: 80)
