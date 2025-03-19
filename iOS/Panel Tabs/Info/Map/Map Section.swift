@@ -42,15 +42,10 @@ struct MapSection: View {
                 Spacer()
                 
                 if let ping {
-                    Button {
-                        checkPing()
-                    } label: {
-                        Text("\(ping) ms")
-                            .padding(.vertical, 5)
-                            .padding(.horizontal, 10)
-                            .background(.ultraThinMaterial, in: .rect(cornerRadius: 8))
-                    }
-                    .foregroundStyle(.foreground)
+                    Text("\(ping) ms")
+                        .padding(.vertical, 5)
+                        .padding(.horizontal, 10)
+                        .background(.ultraThinMaterial, in: .rect(cornerRadius: 8))
                 }
             }
             .frame(height: 80)
