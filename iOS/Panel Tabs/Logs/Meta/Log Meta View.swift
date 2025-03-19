@@ -1,7 +1,7 @@
 import SwiftUI
 import PteroNet
 
-struct LogDetailView: View {
+struct LogMetaView: View {
     private let properties: [String: CodableValue]
     
     init(_ properties: [String: CodableValue]) {
@@ -81,7 +81,7 @@ struct LogDetailView: View {
     NavigationView {
         Text("Preview")
             .sheet {
-                LogDetailView(sampleJSON(.logAttributes))
+                LogMetaView(sampleJSON(.logAttributes))
             }
     }
 }

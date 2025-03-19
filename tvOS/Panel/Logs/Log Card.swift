@@ -68,7 +68,7 @@ struct LogCard: View {
             }
         }
         .sheet($sheetDetails) {
-            LogDetailView(log.properties)
+            LogMetaView(log.properties)
         }
     }
 }

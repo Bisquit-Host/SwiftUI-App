@@ -1,7 +1,7 @@
 import SwiftUI
 import PteroNet
 
-struct LogViewParent: View {
+struct LogMetaParent: View {
     private let properties: [String: CodableValue]
     
     init(_ properties: [String: CodableValue]) {
@@ -10,15 +10,15 @@ struct LogViewParent: View {
     
     var body: some View {
 #if os(watchOS) && os(macOS)
-        LogDetailView(properties)
+        LogMetaView(properties)
 #else
         NavigationView {
-            LogDetailView(properties)
+            LogMetaView(properties)
         }
 #endif
     }
 }
 
 #Preview {
-    LogViewParent(sampleJSON(.logAttributes))
+    LogMetaParent(sampleJSON(.logAttributes))
 }
