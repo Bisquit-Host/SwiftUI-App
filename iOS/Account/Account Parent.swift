@@ -5,7 +5,7 @@ struct AccountParent: View {
     @State private var apiKeysVM = ApikeyVM()
     @State private var sshVM = SSHVM()
     
-    @AppStorage("account_selected_tab") private var accountSelectedTab = 0
+    @AppStorage("acc_selected_tab") private var accountSelectedTab = 0
     
     @State private var sheetApiKeys = false
     

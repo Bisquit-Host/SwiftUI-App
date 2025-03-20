@@ -33,10 +33,11 @@ struct ServerList: View {
         .appStoreOverlay($vm.alertUpdate, id: "1639409934")
         .background(BisquitFall())
         .background {
-            Image(.darkBackgroundInfo)
-                .resizable()
-                .blur(radius: 55, opaque: true)
-                .ignoresSafeArea()
+            BackgroundImage()
+//            Image(.darkBackgroundInfo)
+//                .resizable()
+//                .blur(radius: 55, opaque: true)
+//                .ignoresSafeArea()
         }
         .task {
             if !System.lowPowerMode {
