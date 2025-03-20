@@ -4,7 +4,7 @@ func getDocumentsDirectory() -> URL {
     FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
 }
 
-func saveImageToDisk(image: UIImage) -> String? {
+func saveImageToDisk(_ image: UIImage) -> String? {
     guard let data = image.heicData() else {
         print("Could not get HEIC data from image")
         return nil
@@ -25,12 +25,12 @@ func saveImageToDisk(image: UIImage) -> String? {
     }
 }
 
-func loadImageFromDisk(fileName: String) -> UIImage? {
+func loadImageFromDisk(_ fileName: String) -> UIImage? {
     let fileURL = getDocumentsDirectory().appendingPathComponent(fileName)
     
     // Check whether the file exists
     guard FileManager.default.fileExists(atPath: fileURL.path) else {
-        print("File does not exist at path: \(fileURL.path)")
+        print("File does not exist at path:", fileURL.path)
         return nil
     }
     
@@ -38,14 +38,14 @@ func loadImageFromDisk(fileName: String) -> UIImage? {
         let data = try Data(contentsOf: fileURL)
         
         if data.isEmpty {
-            print("Data is empty at path: \(fileURL.path)")
+            print("Data is empty at path:", fileURL.path)
             return nil
         }
         
         if let image = UIImage(data: data) {
             return image
         } else {
-            print("Failed to create UIImage from data at path: \(fileURL.path)")
+            print("Failed to create UIImage from data at path:", fileURL.path)
             return nil
         }
     } catch {
@@ -55,6 +55,8 @@ func loadImageFromDisk(fileName: String) -> UIImage? {
 }
 
 struct BackgroundImagePickerView: View {
+    @EnvironmentObject private var store: ValueStore
+    
     @State private var selectedImage: UIImage? = nil
     
     var body: some View {
@@ -67,14 +69,16 @@ struct BackgroundImagePickerView: View {
             ) { image in
                 selectedImage = image
                 
-                if let fileName = saveImageToDisk(image: image) {
+                if let fileName = saveImageToDisk(image) {
                     UserDefaults.standard.set(fileName, forKey: "background_image_fileName")
                 }
+                
+                store.updateBackground.toggle()
             }
         }
         .onAppear {
             if let fileName = UserDefaults.standard.string(forKey: "background_image_fileName"),
-               let image = loadImageFromDisk(fileName: fileName) {
+               let image = loadImageFromDisk(fileName) {
                 selectedImage = image
             }
         }
@@ -95,6 +99,8 @@ struct BackgroundImagePickerView: View {
 }
 
 struct BackgroundImage: View {
+    @EnvironmentObject private var store: ValueStore
+    
     @State private var selectedImage: UIImage? = nil
     
     var body: some View {
@@ -103,11 +109,18 @@ struct BackgroundImage: View {
             .blur(radius: 55, opaque: true)
             .ignoresSafeArea()
             .onAppear {
-                if let fileName = UserDefaults.standard.string(forKey: "background_image_fileName"),
-                   let image = loadImageFromDisk(fileName: fileName) {
-                    selectedImage = image
-                }
+                update()
             }
+            .onChange(of: store.updateBackground) {
+                update()
+            }
+    }
+    
+    private func update() {
+        if let fileName = UserDefaults.standard.string(forKey: "background_image_fileName"),
+           let image = loadImageFromDisk(fileName) {
+            selectedImage = image
+        }
     }
 }
 
