@@ -2,6 +2,7 @@ import ScrechKit
 import PteroNet
 
 final class ValueStore: ObservableObject {
+    @AppStorage("request_permissions") var requestPermissions = true
     @AppStorage("hide_status_bar") var hideStatusBar = false
     @AppStorage("hide_server_names") var hideServerNames = false
     @AppStorage("color_theme") var colorTheme: ColorTheme = .system

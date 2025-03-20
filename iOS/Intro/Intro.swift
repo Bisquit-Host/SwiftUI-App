@@ -1,7 +1,13 @@
 import SwiftUI
+import PermissionsSwiftUINotification
+import PermissionsSwiftUIBiometrics
+import PermissionsSwiftUICamera
+import PermissionsSwiftUIContacts
 
 @available(iOS 18, *)
 struct Intro: View {
+    @EnvironmentObject private var store: ValueStore
+    
     @State private var activeCard = cards.first
     @State private var scrollPosition = ScrollPosition()
     @State private var currentScrollOffset = 0.0
@@ -82,6 +88,15 @@ struct Intro: View {
             }
             .safeAreaPadding(15)
         }
+        .JMAlert(showModal: $store.requestPermissions, for: [.notification, .opticBiometrics, .contacts, .camera], autoDismiss: true, onDisappear: {
+            store.requestPermissions = false
+        })
+        .setPermissionComponent(for: .notification, description: "Allow to recieve Live Activity updates")
+        .setPermissionComponent(for: .biometrics, description: "Allow to verify certain destructive actions")
+        .setPermissionComponent(for: .contacts, description: "Allow to quickly invite subusers to your server")
+        .setPermissionComponent(for: .camera, description: "Allow to use camera for uploading media to your server")
+        .setAccentColor(to: .cookie)
+        .changeHeaderDescriptionTo("In order for you to use certain features of Bisquit.Host, you need to give permissions. See description for each permission")
         .onReceive(timer) { _ in
             currentScrollOffset += 0.35
             scrollPosition.scrollTo(x: currentScrollOffset)
@@ -92,6 +107,17 @@ struct Intro: View {
             }
         }
         .task {
+            if !store.requestPermissions {
+                activate()
+            }
+        }
+        .onChange(of: store.requestPermissions) {
+            activate()
+        }
+    }
+    
+    private func activate() {
+        Task {
             try? await Task.sleep(for: .seconds(0.35))
             
             withAnimation(.smooth(duration: 0.75, extraBounce: 0)) {
@@ -150,11 +176,6 @@ struct Intro: View {
     }
 }
 
-@available(iOS 18, *)
-#Preview {
-    Intro()
-}
-
 extension View {
     func blurOpacityEffect(_ show: Bool) -> some View {
         self
@@ -162,4 +183,10 @@ extension View {
             .opacity(show ? 1 : 0)
             .scaleEffect(show ? 1 : 0.9)
     }
+}
+
+@available(iOS 18, *)
+#Preview {
+    Intro()
+        .environmentObject(ValueStore())
 }
