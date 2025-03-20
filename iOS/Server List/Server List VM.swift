@@ -26,9 +26,8 @@ final class ServerListVM {
     
     var filteredServers: [ServerAttributes] {
         servers.filter { server in
-            let prompt = searchField.lowercased()
-            let matchesName = searchField.isEmpty || server.name.lowercased().contains(prompt)
-            let matchesDescription = searchField.isEmpty || server.description.lowercased().contains(prompt)
+            let matchesName = searchField.isEmpty || server.name.localizedStandardContains(searchField)
+            let matchesDescription = searchField.isEmpty || server.description.localizedStandardContains(searchField)
             let matchesNode = displayedNode.isEmpty || server.node == displayedNode
             let matchesSuspended = !filterBySuspended || server.isSuspended
             let matchesNotSuspended = !filterByNotSuspended || !server.isSuspended

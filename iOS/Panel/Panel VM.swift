@@ -46,8 +46,7 @@ final class PanelVM {
         } else {
             return messages.filter {
                 $0.description
-                    .lowercased()
-                    .contains(searchRule.lowercased())
+                    .localizedStandardContains(searchRule)
             }
         }
     }
