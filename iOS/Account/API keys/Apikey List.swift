@@ -107,10 +107,7 @@ struct ApikeyList: View {
             CreateApikey()
         }
         .background {
-            Image(.darkBackgroundInfo)
-                .resizable()
-                .blur(radius: 55, opaque: true)
-                .ignoresSafeArea()
+            BackgroundImage()
         }
         .scrollContentBackground(.hidden)
         .toolbar {

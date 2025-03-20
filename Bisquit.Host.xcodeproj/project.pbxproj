@@ -81,6 +81,8 @@
 		F300C4662D8C388400743300 /* Background Image Picker View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300C4622D8C388400743300 /* Background Image Picker View.swift */; };
 		F300C4672D8C388400743300 /* Background Image Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300C4612D8C388400743300 /* Background Image Picker.swift */; };
 		F300C4682D8C388400743300 /* Background Image Picker View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300C4622D8C388400743300 /* Background Image Picker View.swift */; };
+		F300C46A2D8C471A00743300 /* Background Image Picker View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300C4622D8C388400743300 /* Background Image Picker View.swift */; };
+		F300C46B2D8C473800743300 /* Background Image Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300C4612D8C388400743300 /* Background Image Picker.swift */; };
 		F30207D52D8B2A6000C26008 /* Swifty Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30207D42D8B2A6000C26008 /* Swifty Ping.swift */; };
 		F30207D62D8B2A6000C26008 /* Swifty Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30207D42D8B2A6000C26008 /* Swifty Ping.swift */; };
 		F303214B2B3FEA45002A73B8 /* Panel Settings View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F303214A2B3FEA45002A73B8 /* Panel Settings View.swift */; };
@@ -5528,6 +5530,7 @@
 				F3A7CF652C8CA5FE00413400 /* API Key.swift in Sources */,
 				F3255E1C2C904A48008E04DE /* Account View.swift in Sources */,
 				F3202CDB2D5624B10030B3CC /* Plan.swift in Sources */,
+				F300C46B2D8C473800743300 /* Background Image Picker.swift in Sources */,
 				F3A7CF132C8C4E3E00413400 /* Discover.swift in Sources */,
 				F3A7CF142C8C4E3E00413400 /* Discover Item.swift in Sources */,
 				F3A7CEDC2C8B95CB00413400 /* Home View.swift in Sources */,
@@ -5551,6 +5554,7 @@
 				F37CE9C52D555DAF00716D28 /* Contacts VM.swift in Sources */,
 				F3A7CEEF2C8BB79500413400 /* Gauge Disk.swift in Sources */,
 				F3255E222C904A7A008E04DE /* SSH Create View.swift in Sources */,
+				F300C46A2D8C471A00743300 /* Background Image Picker View.swift in Sources */,
 				F3255E232C904A7A008E04DE /* SSH Card.swift in Sources */,
 				F3255E242C904A7A008E04DE /* SSH List.swift in Sources */,
 				F3A7CEF12C8BB7A300413400 /* Server Card VM.swift in Sources */,

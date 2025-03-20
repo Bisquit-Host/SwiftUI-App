@@ -45,10 +45,7 @@ struct DataTab: View {
             NewScheduleSheet()
         }
         .background {
-            Image(.darkBackgroundInfo)
-                .resizable()
-                .blur(radius: 55, opaque: true)
-                .ignoresSafeArea()
+            BackgroundImage()
         }
 #if !os(tvOS)
         .scrollContentBackground(.hidden)

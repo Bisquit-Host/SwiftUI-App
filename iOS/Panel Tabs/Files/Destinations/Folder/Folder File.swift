@@ -53,10 +53,7 @@ struct FolderFile: View {
             vm.fetchFiles(root)
         }
         .background {
-            Image(.darkBackgroundInfo)
-                .resizable()
-                .blur(radius: 55, opaque: true)
-                .ignoresSafeArea()
+            BackgroundImage()
         }
         .scrollContentBackground(.hidden)
         .onChange(of: image) {

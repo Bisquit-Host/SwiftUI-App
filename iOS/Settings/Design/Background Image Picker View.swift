@@ -79,7 +79,7 @@ struct BackgroundImagePickerView: View {
         }
         .navigationTitle("Image Picker")
         .background {
-            if let selectedImage = selectedImage {
+            if let selectedImage {
                 Image(uiImage: selectedImage)
                     .resizable()
                     .blur(radius: 55, opaque: true)

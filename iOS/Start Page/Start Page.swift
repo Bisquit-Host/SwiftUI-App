@@ -57,10 +57,7 @@ struct StartPage: View {
         .ignoresSafeArea()
         .navigationBarBackButtonHidden()
         .background {
-            Image(.darkBackgroundInfo)
-                .resizable()
-                .blur(radius: 55, opaque: true)
-                .ignoresSafeArea()
+            BackgroundImage()
         }
         .statusBarHidden()
         .overlay(alignment: .bottom) {

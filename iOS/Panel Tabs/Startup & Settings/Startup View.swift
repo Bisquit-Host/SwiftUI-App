@@ -57,10 +57,7 @@ struct StartupView: View {
         .frame(maxWidth: 500)
         .toolbarBackground(.visible, for: .tabBar)
         .background {
-            Image(.darkBackgroundInfo)
-                .resizable()
-                .blur(radius: 55, opaque: true)
-                .ignoresSafeArea()
+            BackgroundImage()
         }
         .scrollContentBackground(.hidden)
         .refreshableTask {

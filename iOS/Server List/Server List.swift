@@ -34,10 +34,6 @@ struct ServerList: View {
         .background(BisquitFall())
         .background {
             BackgroundImage()
-//            Image(.darkBackgroundInfo)
-//                .resizable()
-//                .blur(radius: 55, opaque: true)
-//                .ignoresSafeArea()
         }
         .task {
             if !System.lowPowerMode {

@@ -63,10 +63,7 @@ struct ConsoleTab: View {
             ConsoleInspector()
         }
         .background {
-            Image(.darkBackgroundInfo)
-                .resizable()
-                .blur(radius: 55, opaque: true)
-                .ignoresSafeArea()
+            BackgroundImage()
         }
         .alert("Are you sure you want to perform the Kill action?", isPresented: $vm.alertKill) {
             Button("Kill", role: .destructive) {
