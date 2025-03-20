@@ -30,7 +30,8 @@ struct CacheExpiration: View {
                 Text(String(cacheExpiration.rawValue.capitalized))
                 
                 Image(systemName: "chevron.forward")
-                    .secondary()
+                    .caption2(.bold)
+                    .foregroundStyle(.tertiary)
             }
         }
         .foregroundStyle(.primary)

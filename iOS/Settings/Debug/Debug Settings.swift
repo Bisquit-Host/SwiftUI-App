@@ -18,6 +18,7 @@ struct DebugSettings: View {
                 
                 Toggle("Hide server names", isOn: $store.hideServerNames)
             }
+            .transparentSection()
             
             Section {
                 Button {
@@ -27,6 +28,7 @@ struct DebugSettings: View {
                         .foregroundStyle(.yellow)
                 }
             }
+            .transparentSection()
             
             Section("Contacts provider") {
                 Toggle("Save contacts automatically", isOn: $store.contactsProviderEnabled)
@@ -35,13 +37,16 @@ struct DebugSettings: View {
                     enableExtension()
                 }
             }
+            .transparentSection()
             
             Section {
                 Button("Clear all cookies") {
                     clearAllCookies()
                 }
             }
+            .transparentSection()
         }
+        .transparentList()
         .alert("Couldn't enable the extension", isPresented: $errorAlert) {}
     }
     
