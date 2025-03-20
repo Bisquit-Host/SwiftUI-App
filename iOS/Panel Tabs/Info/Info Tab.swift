@@ -10,8 +10,8 @@ struct InfoTab: View {
         self.server = server
     }
     
+    @State private var selectedImage: UIImage? = nil
     private let width = UIScreen.main.bounds.width
-    private let image: ImageResource = .darkBackgroundInfo
     
     private var ip: String? {
         let allocation = server.relationships.allocations.data.map(\.attributes).filter {
@@ -32,14 +32,14 @@ struct InfoTab: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 0) {
-                Image(image)
+                Image(uiImage: selectedImage ?? .darkBackgroundInfo)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: width, height: width)
                     .clipped()
                 
                 ZStack(alignment: .top) {
-                    Image(image)
+                    Image(uiImage: selectedImage ?? .darkBackgroundInfo)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: width * 1.1)
@@ -78,6 +78,12 @@ struct InfoTab: View {
         }
         .ignoresSafeArea()
         .toolbarBackground(.visible, for: .tabBar)
+        .onAppear {
+            if let fileName = UserDefaults.standard.string(forKey: "background_image_fileName"),
+               let image = loadImageFromDisk(fileName: fileName) {
+                selectedImage = image
+            }
+        }
     }
 }
 
