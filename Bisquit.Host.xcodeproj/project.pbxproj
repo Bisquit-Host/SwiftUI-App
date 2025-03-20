@@ -75,6 +75,12 @@
 		F30089322B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300892E2B3DC4B20051476C /* Cloud Key Context Menu.swift */; };
 		F30089332B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300892E2B3DC4B20051476C /* Cloud Key Context Menu.swift */; };
 		F30089342B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300892E2B3DC4B20051476C /* Cloud Key Context Menu.swift */; };
+		F300C4632D8C388400743300 /* Background Image Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300C4612D8C388400743300 /* Background Image Picker.swift */; };
+		F300C4642D8C388400743300 /* Background Image Picker View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300C4622D8C388400743300 /* Background Image Picker View.swift */; };
+		F300C4652D8C388400743300 /* Background Image Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300C4612D8C388400743300 /* Background Image Picker.swift */; };
+		F300C4662D8C388400743300 /* Background Image Picker View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300C4622D8C388400743300 /* Background Image Picker View.swift */; };
+		F300C4672D8C388400743300 /* Background Image Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300C4612D8C388400743300 /* Background Image Picker.swift */; };
+		F300C4682D8C388400743300 /* Background Image Picker View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300C4622D8C388400743300 /* Background Image Picker View.swift */; };
 		F30207D52D8B2A6000C26008 /* Swifty Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30207D42D8B2A6000C26008 /* Swifty Ping.swift */; };
 		F30207D62D8B2A6000C26008 /* Swifty Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30207D42D8B2A6000C26008 /* Swifty Ping.swift */; };
 		F303214B2B3FEA45002A73B8 /* Panel Settings View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F303214A2B3FEA45002A73B8 /* Panel Settings View.swift */; };
@@ -1675,6 +1681,8 @@
 		F30089222B3BA5300051476C /* File Permissions Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Permissions Parent.swift"; sourceTree = "<group>"; };
 		F30089272B3C23A00051476C /* Contact Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact Picker.swift"; sourceTree = "<group>"; };
 		F300892E2B3DC4B20051476C /* Cloud Key Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cloud Key Context Menu.swift"; sourceTree = "<group>"; };
+		F300C4612D8C388400743300 /* Background Image Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Background Image Picker.swift"; sourceTree = "<group>"; };
+		F300C4622D8C388400743300 /* Background Image Picker View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Background Image Picker View.swift"; sourceTree = "<group>"; };
 		F30207D42D8B2A6000C26008 /* Swifty Ping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swifty Ping.swift"; sourceTree = "<group>"; };
 		F303214A2B3FEA45002A73B8 /* Panel Settings View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Settings View.swift"; sourceTree = "<group>"; };
 		F304498629E98AE4006DC0C7 /* Bisquit.Host.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bisquit.Host.entitlements; sourceTree = "<group>"; };
@@ -2389,6 +2397,15 @@
 			path = Alerts;
 			sourceTree = "<group>";
 		};
+		F300C4692D8C38E700743300 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				F39993392AF2E491006E8A9A /* Other Settings.swift */,
+				F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
 		F30207D02D8B039100C26008 /* Meta */ = {
 			isa = PBXGroup;
 			children = (
@@ -3086,14 +3103,12 @@
 			path = Elements;
 			sourceTree = "<group>";
 		};
-		F375EC3429EE6E17002CA969 /* Sections */ = {
+		F375EC3429EE6E17002CA969 /* Design */ = {
 			isa = PBXGroup;
 			children = (
-				F3878ECC2A1BCE5000AD8657 /* Dev Settings.swift */,
-				F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */,
 				F3D7D87E29E83DEE00BCAFFE /* Design Settings.swift */,
 			);
-			path = Sections;
+			path = Design;
 			sourceTree = "<group>";
 		};
 		F3796571295C80740074CA3D /* Guide */ = {
@@ -3228,16 +3243,18 @@
 		F3924EDD29A2308C00C4CC77 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				F300C4612D8C388400743300 /* Background Image Picker.swift */,
+				F300C4622D8C388400743300 /* Background Image Picker View.swift */,
 				F3D264362A66A9B9005C3777 /* Settings Parent.swift */,
 				F31BA575295900E30006D126 /* Settings View.swift */,
 				F3924EDE29A2333F00C4CC77 /* Settings VM.swift */,
-				F39993392AF2E491006E8A9A /* Other Settings.swift */,
-				F375EC3429EE6E17002CA969 /* Sections */,
+				F375EC3429EE6E17002CA969 /* Design */,
 				F375EC3329EE6DDD002CA969 /* Elements */,
 				F3D902DD29DC3E47004E76C9 /* Cache */,
 				F385824429D6261300BEEE1D /* Biometry */,
 				F385824329D6260500BEEE1D /* App Icon */,
-				F3B66DEE2D60223100F1841B /* Debug */,
+				F3B66DEE2D60223100F1841B /* Debug & Dev */,
+				F300C4692D8C38E700743300 /* Other */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -3362,12 +3379,13 @@
 			path = Discover;
 			sourceTree = "<group>";
 		};
-		F3B66DEE2D60223100F1841B /* Debug */ = {
+		F3B66DEE2D60223100F1841B /* Debug & Dev */ = {
 			isa = PBXGroup;
 			children = (
 				F3CCB1CB2CAE75D0000F8207 /* Debug Settings.swift */,
+				F3878ECC2A1BCE5000AD8657 /* Dev Settings.swift */,
 			);
-			path = Debug;
+			path = "Debug & Dev";
 			sourceTree = "<group>";
 		};
 		F3B66DEF2D60B2B100F1841B /* Card */ = {
@@ -4696,6 +4714,8 @@
 				F30207D62D8B2A6000C26008 /* Swifty Ping.swift in Sources */,
 				F3553FB92B4093E600EF0FD2 /* Allocation List.swift in Sources */,
 				F3F5BC962BF7668E00EB8FB1 /* Sensitivity Analyzer.swift in Sources */,
+				F300C4632D8C388400743300 /* Background Image Picker.swift in Sources */,
+				F300C4642D8C388400743300 /* Background Image Picker View.swift in Sources */,
 				F3CB53D62971CF6B00A213B0 /* Database Card.swift in Sources */,
 				F31BA596295901F70006D126 /* Panel View.swift in Sources */,
 				F378EF8329D6C91300BC4849 /* Gauge Disk.swift in Sources */,
@@ -5025,6 +5045,8 @@
 				F3C9D84F2B30598000265492 /* Video Player VM.swift in Sources */,
 				F3AB4A9B2CF4031600A8252F /* Json Formatter Button.swift in Sources */,
 				F36D53392A05B8CA007324C6 /* Text File.swift in Sources */,
+				F300C4672D8C388400743300 /* Background Image Picker.swift in Sources */,
+				F300C4682D8C388400743300 /* Background Image Picker View.swift in Sources */,
 				F36D530D2A05B6C9007324C6 /* Server List Footer.swift in Sources */,
 				F3878ECE2A1BCE5000AD8657 /* Dev Settings.swift in Sources */,
 				F3202CCE2D559B240030B3CC /* Contacts Provider.swift in Sources */,
@@ -5308,6 +5330,8 @@
 				F3202D012D562AE10030B3CC /* Browser List Bot.swift in Sources */,
 				F3D295362AF39D0B00ED43A0 /* Linking VM.swift in Sources */,
 				F3D295A52AF3A0CD00ED43A0 /* Settings View.swift in Sources */,
+				F300C4652D8C388400743300 /* Background Image Picker.swift in Sources */,
+				F300C4662D8C388400743300 /* Background Image Picker View.swift in Sources */,
 				F3D295F02AF3A51300ED43A0 /* Backup List Footer.swift in Sources */,
 				F3D295552AF39E1600ED43A0 /* Formatters.swift in Sources */,
 				F3CE5C4F2D5395300094BD7B /* Subdomain Card.swift in Sources */,

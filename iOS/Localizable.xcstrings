@@ -823,6 +823,9 @@
         }
       }
     },
+    "Background image" : {
+
+    },
     "Backup" : {
       "localizations" : {
         "nl" : {
@@ -2782,6 +2785,9 @@
           }
         }
       }
+    },
+    "Image Picker" : {
+
     },
     "Info" : {
       "localizations" : {
