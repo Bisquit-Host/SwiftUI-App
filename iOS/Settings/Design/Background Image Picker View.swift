@@ -5,18 +5,19 @@ func getDocumentsDirectory() -> URL {
 }
 
 func saveImageToDisk(image: UIImage) -> String? {
-    guard let data = image.jpegData(compressionQuality: 1) else {
-        print("Could not get JPEG data from image.")
+    guard let data = image.heicData() else {
+        print("Could not get HEIC data from image")
         return nil
     }
     
-    let fileName = UUID().uuidString + ".jpg"
+    let fileName = UUID().uuidString + ".heic"
     let fileURL = getDocumentsDirectory().appendingPathComponent(fileName)
     
     do {
         try data.write(to: fileURL)
         print("Image saved at: \(fileURL.path)")
-        // Return only the file name.
+        
+        // Return only the file name
         return fileName
     } catch {
         print("Error saving image:", error)
