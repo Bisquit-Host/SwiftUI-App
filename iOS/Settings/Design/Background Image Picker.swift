@@ -31,16 +31,13 @@ struct BackgroundImagePicker: View {
                     .caption()
                     .foregroundStyle(.gray)
             }
-            .opacity(previewImage == nil ? 1 : 0)
+            .padding()
+            .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
+            .overlay {
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(.ultraThinMaterial, lineWidth: 1)
+            }
             .frame(width: size.width, height: size.height)
-//            .overlay {
-//                if let previewImage {
-//                    Image(uiImage: previewImage)
-//                        .resizable()
-//                        .scaledToFit()
-//                        .padding(15)
-//                }
-//            }
             // Loading UI
             .overlay {
                 if isLoading {

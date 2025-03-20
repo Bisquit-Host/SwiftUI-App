@@ -3107,6 +3107,8 @@
 			isa = PBXGroup;
 			children = (
 				F3D7D87E29E83DEE00BCAFFE /* Design Settings.swift */,
+				F300C4622D8C388400743300 /* Background Image Picker View.swift */,
+				F300C4612D8C388400743300 /* Background Image Picker.swift */,
 			);
 			path = Design;
 			sourceTree = "<group>";
@@ -3243,8 +3245,6 @@
 		F3924EDD29A2308C00C4CC77 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				F300C4612D8C388400743300 /* Background Image Picker.swift */,
-				F300C4622D8C388400743300 /* Background Image Picker View.swift */,
 				F3D264362A66A9B9005C3777 /* Settings Parent.swift */,
 				F31BA575295900E30006D126 /* Settings View.swift */,
 				F3924EDE29A2333F00C4CC77 /* Settings VM.swift */,
