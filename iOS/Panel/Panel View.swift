@@ -101,8 +101,12 @@ struct PanelView: View {
                         }
                         .foregroundStyle(.primary)
                         .padding(.horizontal, -10)
+                    }              
+#if canImport(ActivityKit)
+                    if store.lastTabPanel == .info, let server = vm.server {
+                        InfoTabLA(server)
                     }
-                    
+#endif
                     if store.lastTabPanel == .files {
                         if #available(iOS 18.1, *) {
                             ImagePlaygroundButton(fileVM.path)

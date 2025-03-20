@@ -33,6 +33,10 @@ struct PowerSwitch: View {
                 .frame(width: 35, height: 35)
                 .padding(10)
                 .background(.ultraThinMaterial, in: .circle)
+                .overlay {
+                    Circle()
+                        .stroke(.gray.opacity(0.25), lineWidth: 1)
+                }
         }
         .hoverEffect(.lift)
         .confirmationDialog("Perform kill action", isPresented: $confirmKill, titleVisibility: .visible) {

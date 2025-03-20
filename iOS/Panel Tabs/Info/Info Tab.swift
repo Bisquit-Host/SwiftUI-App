@@ -52,14 +52,7 @@ struct InfoTab: View {
                         InfoTabHeading(server)
                         
                         HStack {
-#if canImport(ActivityKit)
-                            InfoTabLA(server)
-#endif
                             PowerSwitch()
-                                .overlay {
-                                    Circle()
-                                        .stroke(.gray.opacity(0.25), lineWidth: 1)
-                                }
                         }
                         
                         InfoTabCard(server)
