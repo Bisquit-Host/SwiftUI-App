@@ -2,6 +2,8 @@ import SwiftUI
 import MapKit
 
 struct MapSection: View {
+    @Environment(\.openURL) private var openUrl
+    
     private let address: String?
     private let node: String
     
@@ -26,6 +28,14 @@ struct MapSection: View {
     
     private var isMoscow: Bool {
         ["Fabric", "Forge", "Fusion"].contains(node)
+    }
+    
+    private var mapUrl: String {
+        if isMoscow {
+            "https://maps.apple.com/place?address=Moscow,%20Russia&auid=12646685065745334150&coordinate=55.758664,37.619292&lsp=6489&name=Moscow&map=explore"
+        } else {
+            "https://maps.apple.com/place?address=Frankfurt,%20Hesse,%20Germany&auid=7497387549351306333&coordinate=50.110556,8.680173&lsp=7618&name=Frankfurt&map=explore"
+        }
     }
     
     var body: some View {
@@ -85,6 +95,15 @@ struct MapSection: View {
         }
         .task {
             location(node)
+        }
+        .contextMenu {
+            Button {
+                if let url = URL(string: mapUrl) {
+                    openUrl(url)
+                }
+            } label: {
+                Label("Open in Maps", systemImage: "map")
+            }
         }
     }
     

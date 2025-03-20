@@ -3855,6 +3855,9 @@
         }
       }
     },
+    "Open in Maps" : {
+
+    },
     "Open in Safari" : {
       "localizations" : {
         "nl" : {
