@@ -60,15 +60,9 @@ struct PanelView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button {
+                    DismissButton {
                         dismiss()
-                    } label: {
-                        Image(systemName: "xmark")
-                            .footnote(.bold)
-                            .frame(width: 35, height: 35)
-                            .background(.ultraThinMaterial, in: .circle)
                     }
-                    .foregroundStyle(.primary)
                 }
                 
                 ToolbarItemGroup(placement: .topBarTrailing) {
@@ -127,7 +121,6 @@ struct PanelView: View {
                     }
                     
                     Button {
-                        // vm.sheetSettings = true
                         withAnimation(.easeOut) {
                             navExpanded = true
                         }
@@ -142,7 +135,6 @@ struct PanelView: View {
                 }
             }
         }
-//        .tabViewStyle(.page(indexDisplayMode: .never))
         .navigationBarBackButtonHidden()
         .ignoresSafeArea()
         .environment(vm)

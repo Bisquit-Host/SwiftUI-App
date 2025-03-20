@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct TransparentList: ViewModifier {
     @EnvironmentObject private var store: ValueStore
@@ -30,5 +30,21 @@ extension View {
     
     func transparentSection() -> some View {
         modifier(TransparentSection())
+    }
+}
+
+struct DismissButton: View {
+    var dismiss: () -> Void
+    
+    var body: some View {
+        // Do not use SFButton()
+        
+        Button(action: dismiss) {
+            Image(systemName: "xmark")
+                .footnote(.bold)
+                .frame(width: 35, height: 35)
+                .background(.ultraThinMaterial, in: .circle)
+                .foregroundStyle(.foreground)
+        }
     }
 }

@@ -36,15 +36,9 @@ struct UserList: View {
         }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
-                Button {
+                DismissButton {
                     dismiss()
-                } label: {
-                    Image(systemName: "xmark")
-                        .footnote(.bold)
-                        .frame(width: 35, height: 35)
-                        .background(.ultraThinMaterial, in: .circle)
                 }
-                .foregroundStyle(.primary)
             }
             
             ToolbarItem(placement: .topBarTrailing) {
