@@ -5,14 +5,12 @@ struct DesignSettings: View {
     @EnvironmentObject private var store: ValueStore
     
     @State private var animate = true
-//    @State private var imagePicker = false
+    @State private var imagePicker = false
     
     var body: some View {
         Section("Design") {
-            NavigationLink {
-//            Button {
-//                imagePicker = true
-                BackgroundImagePickerView()
+            Button {
+                imagePicker = true
             } label: {
                 HStack {
                     Text("Background image")
@@ -24,11 +22,11 @@ struct DesignSettings: View {
                 }
             }
             .foregroundStyle(.foreground)
-//            .sheet($imagePicker) {
-//                NavigationView {
-//                    BackgroundImagePickerView()
-//                }
-//            }
+            .sheet($imagePicker) {
+                NavigationView {
+                    BackgroundImagePickerView()
+                }
+            }
             
             Picker("Color theme", selection: $store.colorTheme) {
                 ForEach(ColorTheme.allCases) { theme in
