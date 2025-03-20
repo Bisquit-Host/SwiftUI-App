@@ -810,7 +810,6 @@
 		F389BB622A05B58E00911EBF /* Server Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* Server Card VM.swift */; };
 		F389BB632A05B59700911EBF /* Server Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A391BB29DB808B00591C84 /* Server Name.swift */; };
 		F389BB652A05B5AF00911EBF /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA56F295900C20006D126 /* Formatters.swift */; };
-		F389BB662A05B5B500911EBF /* Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C62CE2298A7D8600434636 /* Support.swift */; };
 		F389BB682A05B5C100911EBF /* Guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA57E2959012D0006D126 /* Guide.swift */; };
 		F389BB6A2A05B5E100911EBF /* Settings View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA575295900E30006D126 /* Settings View.swift */; };
 		F389BB6B2A05B5E500911EBF /* Settings VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EDE29A2333F00C4CC77 /* Settings VM.swift */; };
@@ -1112,7 +1111,6 @@
 		F3C0F9D029E204FA0040E277 /* FileTab Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C0F9CF29E204FA0040E277 /* FileTab Context Menu.swift */; };
 		F3C3BDB82C92BE9B00BF91EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F31BA52A2958FF7D0006D126 /* Assets.xcassets */; };
 		F3C53A5F29DBF5B900A08578 /* watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F31BA5332958FF7D0006D126 /* watchOS.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		F3C62CE3298A7D8600434636 /* Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C62CE2298A7D8600434636 /* Support.swift */; };
 		F3C9D84A2B302AA200265492 /* File Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D8492B302AA200265492 /* File Context Menu.swift */; };
 		F3C9D84B2B30304F00265492 /* Des Video Watch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EB09E12A29805A0073916A /* Des Video Watch.swift */; };
 		F3C9D84E2B30598000265492 /* Video Player VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D84D2B30598000265492 /* Video Player VM.swift */; };
@@ -1207,7 +1205,6 @@
 		F3D295462AF39D9500ED43A0 /* Start Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA579295901110006D126 /* Start Page.swift */; };
 		F3D295472AF39DA000ED43A0 /* Start Page Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32DB8A729AE6B800074E045 /* Start Page Footer.swift */; };
 		F3D295482AF39DAA00ED43A0 /* Nav Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BAEC8C2959B3FE00111375 /* Nav Extension.swift */; };
-		F3D2954B2AF39DC400ED43A0 /* Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C62CE2298A7D8600434636 /* Support.swift */; };
 		F3D2954C2AF39DC700ED43A0 /* Browser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA58E295901B60006D126 /* Browser.swift */; };
 		F3D2954D2AF39DCB00ED43A0 /* Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304498929E990E9006DC0C7 /* Cloud Keys.swift */; };
 		F3D2954E2AF39DE000ED43A0 /* Browser Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3DBD029B8007B00096115 /* Browser Topbar.swift */; };
@@ -2001,7 +1998,6 @@
 		F3BF6F222959D15E0059F39B /* App Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Settings.swift"; sourceTree = "<group>"; };
 		F3BF97A929BFC7E9007B9C9C /* Websocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Websocket.swift; sourceTree = "<group>"; };
 		F3C0F9CF29E204FA0040E277 /* FileTab Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileTab Context Menu.swift"; sourceTree = "<group>"; };
-		F3C62CE2298A7D8600434636 /* Support.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Support.swift; sourceTree = "<group>"; };
 		F3C9D8492B302AA200265492 /* File Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Context Menu.swift"; sourceTree = "<group>"; };
 		F3C9D84D2B30598000265492 /* Video Player VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Video Player VM.swift"; sourceTree = "<group>"; };
 		F3C9D8502B3059E700265492 /* UIVideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVideoPlayer.swift; sourceTree = "<group>"; };
@@ -2484,7 +2480,6 @@
 				F32082442B3E170000CFED80 /* Panel Tabs */,
 				F3924EDD29A2308C00C4CC77 /* Settings */,
 				F3A80E8529A1973600190EC6 /* Discover */,
-				F3A80E8A29A19C7F00190EC6 /* Support */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -3349,14 +3344,6 @@
 				F3878EDB2A1C1E9F00AD8657 /* Map */,
 			);
 			path = Discover;
-			sourceTree = "<group>";
-		};
-		F3A80E8A29A19C7F00190EC6 /* Support */ = {
-			isa = PBXGroup;
-			children = (
-				F3C62CE2298A7D8600434636 /* Support.swift */,
-			);
-			path = Support;
 			sourceTree = "<group>";
 		};
 		F3B66DEE2D60223100F1841B /* Debug */ = {
@@ -4765,7 +4752,6 @@
 				F3B6372F2A35A82F00CB374C /* Console Inspector.swift in Sources */,
 				F31F31FB2D52BD940095DD19 /* System.swift in Sources */,
 				F3EDEE3A29C0CB8000B08696 /* Websocket Delegate.swift in Sources */,
-				F3C62CE3298A7D8600434636 /* Support.swift in Sources */,
 				F3A391BA29DB5E6900591C84 /* Cache Expiration.swift in Sources */,
 				F393C7BB2A18437400DE33F9 /* Upload File.swift in Sources */,
 				F34F289A2ACDAD9B00FD618A /* Animated Tab.swift in Sources */,
@@ -5041,7 +5027,6 @@
 				F30207D52D8B2A6000C26008 /* Swifty Ping.swift in Sources */,
 				F337D75A2A4DBC840011524E /* Create Apikey.swift in Sources */,
 				F39780262A2B9DB800956474 /* Upload Preview.swift in Sources */,
-				F389BB662A05B5B500911EBF /* Support.swift in Sources */,
 				F32FD71F2B1E060400723B88 /* Network Calls.swift in Sources */,
 				F36D534D2A05B98E007324C6 /* Nav State.swift in Sources */,
 				F3553FBA2B4093E600EF0FD2 /* Allocation List.swift in Sources */,
@@ -5302,7 +5287,6 @@
 				F3D295462AF39D9500ED43A0 /* Start Page.swift in Sources */,
 				F3D2955A2AF39E4000ED43A0 /* Server List.swift in Sources */,
 				F39E0A9A2C1BA11600C4E906 /* Discover Item.swift in Sources */,
-				F3D2954B2AF39DC400ED43A0 /* Support.swift in Sources */,
 				F3D2957C2AF39F4F00ED43A0 /* Log VM.swift in Sources */,
 				F3D2954C2AF39DC700ED43A0 /* Browser.swift in Sources */,
 				F3202D012D562AE10030B3CC /* Browser List Bot.swift in Sources */,

@@ -1,10 +1,12 @@
 import ScrechKit
 import SafariCover
+import MailCover
 
 struct Discover: View {
     @Environment(\.dismiss) private var dismiss
     
     @State private var sheetConfigurations = false
+    @State private var showMailCover = false
     
     var body: some View {
         NavigationView {
@@ -95,6 +97,36 @@ struct Discover: View {
                 .transparentSection()
                 
                 Section {
+                    Button {
+                        openSafari("https://t.me/bisquit_host_chat")
+                    } label: {
+                        HStack {
+                            Text("Telegram Chat")
+                            
+                            Spacer()
+                            
+                            Image(systemName: "paperplane")
+                                .secondary()
+                        }
+                    }
+                    
+                    Button {
+                        showMailCover = true
+                    } label: {
+                        HStack {
+                            Text("Mail")
+                            
+                            Spacer()
+                            
+                            Image(systemName: "envelope")
+                                .secondary()
+                        }
+                    }
+                }
+                .transparentSection()
+                .foregroundStyle(.foreground)
+                
+                Section {
                     DiscoverCard(
                         DiscoverItem(
                             "Privacy Policy",
@@ -118,6 +150,12 @@ struct Discover: View {
             .transparentList()
             .scrollIndicators(.never)
             .ornamentDismissButton()
+            .mailCover(
+                $showMailCover,
+                message: "Hello there! \n",
+                subject: "Bisquit.Host Feedback",
+                recipients: ["topscrech@icloud.com"]
+            )
         }
         .sheet($sheetConfigurations) {
             BrowserParent()

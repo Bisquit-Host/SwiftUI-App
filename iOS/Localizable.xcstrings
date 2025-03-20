@@ -668,6 +668,7 @@
 
     },
     "App Support" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -1289,6 +1290,7 @@
       }
     },
     "Contact" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -2667,6 +2669,7 @@
 
     },
     "Hosting Support" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -3606,6 +3609,7 @@
 
     },
     "Need help?" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -5890,6 +5894,7 @@
 
     },
     "Where to find the API-key?" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
