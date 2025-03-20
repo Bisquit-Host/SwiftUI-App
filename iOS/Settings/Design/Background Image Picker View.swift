@@ -5,30 +5,52 @@ func getDocumentsDirectory() -> URL {
 }
 
 func saveImageToDisk(image: UIImage) -> String? {
-    guard let data = image.jpegData(compressionQuality: 1) else { return nil }
-    let filename = UUID().uuidString + ".jpg"
-    let fileURL = getDocumentsDirectory().appendingPathComponent(filename)
+    guard let data = image.jpegData(compressionQuality: 1) else {
+        print("Could not get JPEG data from image.")
+        return nil
+    }
+    
+    let fileName = UUID().uuidString + ".jpg"
+    let fileURL = getDocumentsDirectory().appendingPathComponent(fileName)
     
     do {
         try data.write(to: fileURL)
-        return fileURL.path
+        print("Image saved at: \(fileURL.path)")
+        // Return only the file name.
+        return fileName
     } catch {
         print("Error saving image:", error)
         return nil
     }
 }
 
-func loadImageFromDisk(filePath: String) -> UIImage? {
-    let url = URL(fileURLWithPath: filePath)
+func loadImageFromDisk(fileName: String) -> UIImage? {
+    let fileURL = getDocumentsDirectory().appendingPathComponent(fileName)
     
-    guard
-        FileManager.default.fileExists(atPath: url.path),
-        let data = try? Data(contentsOf: url)
-    else {
+    // Check whether the file exists
+    guard FileManager.default.fileExists(atPath: fileURL.path) else {
+        print("File does not exist at path: \(fileURL.path)")
         return nil
     }
     
-    return UIImage(data: data)
+    do {
+        let data = try Data(contentsOf: fileURL)
+        
+        if data.isEmpty {
+            print("Data is empty at path: \(fileURL.path)")
+            return nil
+        }
+        
+        if let image = UIImage(data: data) {
+            return image
+        } else {
+            print("Failed to create UIImage from data at path: \(fileURL.path)")
+            return nil
+        }
+    } catch {
+        print("Error loading data from path: \(fileURL.path) - \(error)")
+        return nil
+    }
 }
 
 struct BackgroundImagePickerView: View {
@@ -44,15 +66,14 @@ struct BackgroundImagePickerView: View {
             ) { image in
                 selectedImage = image
                 
-                if let path = saveImageToDisk(image: image) {
-                    UserDefaults.standard.set(path, forKey: "background_image_path")
+                if let fileName = saveImageToDisk(image: image) {
+                    UserDefaults.standard.set(fileName, forKey: "background_image_fileName")
                 }
             }
         }
         .onAppear {
-            if let path = UserDefaults.standard
-                .string(forKey: "background_image_path"),
-               let image = loadImageFromDisk(filePath: path) {
+            if let fileName = UserDefaults.standard.string(forKey: "background_image_fileName"),
+               let image = loadImageFromDisk(fileName: fileName) {
                 selectedImage = image
             }
         }
@@ -81,9 +102,8 @@ struct BackgroundImage: View {
             .blur(radius: 55, opaque: true)
             .ignoresSafeArea()
             .onAppear {
-                if let path = UserDefaults.standard
-                    .string(forKey: "background_image_path"),
-                   let image = loadImageFromDisk(filePath: path) {
+                if let fileName = UserDefaults.standard.string(forKey: "background_image_fileName"),
+                   let image = loadImageFromDisk(fileName: fileName) {
                     selectedImage = image
                 }
             }
