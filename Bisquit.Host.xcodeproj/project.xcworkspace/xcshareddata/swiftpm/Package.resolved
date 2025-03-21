@@ -1,5 +1,5 @@
 {
-  "originHash" : "4408a6a917e867020400f78621d914d77301a426728ff31cf2c85498a0a93f45",
+  "originHash" : "a8fa5c22273bffb79c6665a6866295a302b9660a942b60911c46c26305488f30",
   "pins" : [
     {
       "identity" : "alertkit",
@@ -56,15 +56,6 @@
       }
     },
     {
-      "identity" : "permissionsswiftui",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/jevonmao/PermissionsSwiftUI",
-      "state" : {
-        "revision" : "94b6eaf87d8009757bdf61b64caa74c097c418fa",
-        "version" : "1.5.11"
-      }
-    },
-    {
       "identity" : "pow",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/EmergeTools/Pow",
@@ -107,6 +98,15 @@
       "state" : {
         "branch" : "main",
         "revision" : "a9e514f6f23d100e521b4ffc1c0b068e8a378535"
+      }
+    },
+    {
+      "identity" : "sperms",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/TopScrech/SPerms",
+      "state" : {
+        "branch" : "main",
+        "revision" : "a97af6e1532d98910d0e9aca5294c92f3677d8a9"
       }
     },
     {

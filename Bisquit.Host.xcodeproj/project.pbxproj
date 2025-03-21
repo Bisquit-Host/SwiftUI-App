@@ -1114,18 +1114,21 @@
 		F3BE36D52A55E1D0007A0179 /* Nav Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BAEC8C2959B3FE00111375 /* Nav Extension.swift */; };
 		F3BE36D62A55E1D2007A0179 /* Nav Destinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5692959007E0006D126 /* Nav Destinations.swift */; };
 		F3BE36DB2A55E2EE007A0179 /* Server List Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266D729D99BB8005FD103 /* Server List Topbar.swift */; };
-		F3BED0B12D8C75D800CD6E3B /* PermissionsSwiftUIContacts in Frameworks */ = {isa = PBXBuildFile; productRef = F3BED0B02D8C75D800CD6E3B /* PermissionsSwiftUIContacts */; };
-		F3BED0B32D8C75D800CD6E3B /* PermissionsSwiftUINotification in Frameworks */ = {isa = PBXBuildFile; productRef = F3BED0B22D8C75D800CD6E3B /* PermissionsSwiftUINotification */; };
-		F3BED0B52D8C7AD100CD6E3B /* PermissionsSwiftUINotification in Frameworks */ = {isa = PBXBuildFile; productRef = F3BED0B42D8C7AD100CD6E3B /* PermissionsSwiftUINotification */; };
-		F3BED0B72D8C7AE100CD6E3B /* PermissionsSwiftUIBiometrics in Frameworks */ = {isa = PBXBuildFile; productRef = F3BED0B62D8C7AE100CD6E3B /* PermissionsSwiftUIBiometrics */; };
-		F3BED0B92D8C7AEE00CD6E3B /* PermissionsSwiftUIBiometrics in Frameworks */ = {isa = PBXBuildFile; productRef = F3BED0B82D8C7AEE00CD6E3B /* PermissionsSwiftUIBiometrics */; };
-		F3BED0BB2D8C7AF600CD6E3B /* PermissionsSwiftUIContacts in Frameworks */ = {isa = PBXBuildFile; productRef = F3BED0BA2D8C7AF600CD6E3B /* PermissionsSwiftUIContacts */; };
-		F3BED0BD2D8C7AFC00CD6E3B /* PermissionsSwiftUICamera in Frameworks */ = {isa = PBXBuildFile; productRef = F3BED0BC2D8C7AFC00CD6E3B /* PermissionsSwiftUICamera */; };
-		F3BED0BF2D8C7B0A00CD6E3B /* PermissionsSwiftUICamera in Frameworks */ = {isa = PBXBuildFile; productRef = F3BED0BE2D8C7B0A00CD6E3B /* PermissionsSwiftUICamera */; };
-		F3BED0C12D8C7B0F00CD6E3B /* PermissionsSwiftUIContacts in Frameworks */ = {isa = PBXBuildFile; productRef = F3BED0C02D8C7B0F00CD6E3B /* PermissionsSwiftUIContacts */; };
-		F3BED0C32D8C7B1C00CD6E3B /* PermissionsSwiftUIBiometrics in Frameworks */ = {isa = PBXBuildFile; productRef = F3BED0C22D8C7B1C00CD6E3B /* PermissionsSwiftUIBiometrics */; };
-		F3BED0C52D8C7B2300CD6E3B /* PermissionsSwiftUINotification in Frameworks */ = {isa = PBXBuildFile; productRef = F3BED0C42D8C7B2300CD6E3B /* PermissionsSwiftUINotification */; };
-		F3BED0C72D8CDA5400CD6E3B /* PermissionsSwiftUICamera in Frameworks */ = {isa = PBXBuildFile; productRef = F3BED0C62D8CDA5400CD6E3B /* PermissionsSwiftUICamera */; };
+		F3BED0CA2D8CDAB400CD6E3B /* CorePermissionsSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = F3BED0C92D8CDAB400CD6E3B /* CorePermissionsSwiftUI */; };
+		F3BED0D62D8CDB2900CD6E3B /* CorePermissionsSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = F3BED0D52D8CDB2900CD6E3B /* CorePermissionsSwiftUI */; };
+		F3BED0D92D8CDBBC00CD6E3B /* CorePermissionsSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = F3BED0D82D8CDBBC00CD6E3B /* CorePermissionsSwiftUI */; };
+		F3BED0DB2D8CDBD100CD6E3B /* PermissionsSwiftUIBiometrics in Frameworks */ = {isa = PBXBuildFile; productRef = F3BED0DA2D8CDBD100CD6E3B /* PermissionsSwiftUIBiometrics */; };
+		F3BED0DD2D8CDBD700CD6E3B /* PermissionsSwiftUICamera in Frameworks */ = {isa = PBXBuildFile; productRef = F3BED0DC2D8CDBD700CD6E3B /* PermissionsSwiftUICamera */; };
+		F3BED0DF2D8CDBDE00CD6E3B /* PermissionsSwiftUINotification in Frameworks */ = {isa = PBXBuildFile; productRef = F3BED0DE2D8CDBDE00CD6E3B /* PermissionsSwiftUINotification */; };
+		F3BED0E12D8CDBF400CD6E3B /* PermissionsSwiftUIContacts in Frameworks */ = {isa = PBXBuildFile; productRef = F3BED0E02D8CDBF400CD6E3B /* PermissionsSwiftUIContacts */; };
+		F3BED0E32D8CDBFF00CD6E3B /* PermissionsSwiftUICamera in Frameworks */ = {isa = PBXBuildFile; productRef = F3BED0E22D8CDBFF00CD6E3B /* PermissionsSwiftUICamera */; };
+		F3BED0E52D8CDC0400CD6E3B /* PermissionsSwiftUINotification in Frameworks */ = {isa = PBXBuildFile; productRef = F3BED0E42D8CDC0400CD6E3B /* PermissionsSwiftUINotification */; };
+		F3BED0E72D8CDC0A00CD6E3B /* PermissionsSwiftUIContacts in Frameworks */ = {isa = PBXBuildFile; productRef = F3BED0E62D8CDC0A00CD6E3B /* PermissionsSwiftUIContacts */; };
+		F3BED0E92D8CDC1200CD6E3B /* PermissionsSwiftUIBiometrics in Frameworks */ = {isa = PBXBuildFile; productRef = F3BED0E82D8CDC1200CD6E3B /* PermissionsSwiftUIBiometrics */; };
+		F3BED0EB2D8CDC1B00CD6E3B /* PermissionsSwiftUIContacts in Frameworks */ = {isa = PBXBuildFile; productRef = F3BED0EA2D8CDC1B00CD6E3B /* PermissionsSwiftUIContacts */; };
+		F3BED0ED2D8CDC2000CD6E3B /* PermissionsSwiftUIBiometrics in Frameworks */ = {isa = PBXBuildFile; productRef = F3BED0EC2D8CDC2000CD6E3B /* PermissionsSwiftUIBiometrics */; };
+		F3BED0EF2D8CDC2500CD6E3B /* PermissionsSwiftUINotification in Frameworks */ = {isa = PBXBuildFile; productRef = F3BED0EE2D8CDC2500CD6E3B /* PermissionsSwiftUINotification */; };
+		F3BED0F12D8CDC2B00CD6E3B /* PermissionsSwiftUICamera in Frameworks */ = {isa = PBXBuildFile; productRef = F3BED0F02D8CDC2B00CD6E3B /* PermissionsSwiftUICamera */; };
 		F3BF6F232959D15E0059F39B /* App Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BF6F222959D15E0059F39B /* App Settings.swift */; };
 		F3BF97AA29BFC7E9007B9C9C /* Websocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BF97A929BFC7E9007B9C9C /* Websocket.swift */; };
 		F3C0F9D029E204FA0040E277 /* FileTab Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C0F9CF29E204FA0040E277 /* FileTab Context Menu.swift */; };
@@ -2017,6 +2020,7 @@
 		F3BD76F22A43C890003E7385 /* visionOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = visionOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3BD76F82A43C890003E7385 /* Panel View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel View.swift"; sourceTree = "<group>"; };
 		F3BD76FC2A43C892003E7385 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F3BED0D32D8CDAC600CD6E3B /* LockedCameraCapture.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LockedCameraCapture.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.4.sdk/System/Library/Frameworks/LockedCameraCapture.framework; sourceTree = DEVELOPER_DIR; };
 		F3BF6F222959D15E0059F39B /* App Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Settings.swift"; sourceTree = "<group>"; };
 		F3BF97A929BFC7E9007B9C9C /* Websocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Websocket.swift; sourceTree = "<group>"; };
 		F3C0F9CF29E204FA0040E277 /* FileTab Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileTab Context Menu.swift"; sourceTree = "<group>"; };
@@ -2184,17 +2188,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3BED0C32D8C7B1C00CD6E3B /* PermissionsSwiftUIBiometrics in Frameworks */,
-				F3BED0C52D8C7B2300CD6E3B /* PermissionsSwiftUINotification in Frameworks */,
-				F3BED0BF2D8C7B0A00CD6E3B /* PermissionsSwiftUICamera in Frameworks */,
+				F3BED0EF2D8CDC2500CD6E3B /* PermissionsSwiftUINotification in Frameworks */,
+				F3BED0ED2D8CDC2000CD6E3B /* PermissionsSwiftUIBiometrics in Frameworks */,
+				F3BED0EB2D8CDC1B00CD6E3B /* PermissionsSwiftUIContacts in Frameworks */,
 				F3A7CF222C8C4E9700413400 /* MailCover in Frameworks */,
 				F3A7CF0C2C8BBCE400413400 /* Kingfisher in Frameworks */,
 				F3A7CEFB2C8BB8A300413400 /* AlertKit in Frameworks */,
 				F3A7CEF92C8BB88E00413400 /* ScrechKit in Frameworks */,
 				F3A7CF042C8BBB7800413400 /* SafariCover in Frameworks */,
 				F3A7CEC82C8B685500413400 /* Messages.framework in Frameworks */,
-				F3BED0C12D8C7B0F00CD6E3B /* PermissionsSwiftUIContacts in Frameworks */,
 				F3A7CEDF2C8B981A00413400 /* PteroNet in Frameworks */,
+				F3BED0F12D8CDC2B00CD6E3B /* PermissionsSwiftUICamera in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2206,15 +2210,15 @@
 				F389BB572A05B47000911EBF /* SafariCover in Frameworks */,
 				F308601C2B002D40004D776A /* PteroNet in Frameworks */,
 				F36B739B2C8B073B00E858FE /* AudioVisualizer in Frameworks */,
+				F3BED0E92D8CDC1200CD6E3B /* PermissionsSwiftUIBiometrics in Frameworks */,
 				F34745CA2A31F39600EE2FB8 /* MailCover in Frameworks */,
 				F38F9E1A2CEA18150033EFE3 /* DeviceKit in Frameworks */,
-				F3BED0B72D8C7AE100CD6E3B /* PermissionsSwiftUIBiometrics in Frameworks */,
-				F3BED0BB2D8C7AF600CD6E3B /* PermissionsSwiftUIContacts in Frameworks */,
-				F3BED0BD2D8C7AFC00CD6E3B /* PermissionsSwiftUICamera in Frameworks */,
 				F3F6ACAF2A51E48700EE417F /* AlertKit in Frameworks */,
+				F3BED0E72D8CDC0A00CD6E3B /* PermissionsSwiftUIContacts in Frameworks */,
+				F3BED0E32D8CDBFF00CD6E3B /* PermissionsSwiftUICamera in Frameworks */,
+				F3BED0E52D8CDC0400CD6E3B /* PermissionsSwiftUINotification in Frameworks */,
 				F34745C82A31F39100EE2FB8 /* ScrechKit in Frameworks */,
 				F328D8622A8242610038512F /* Algorithms in Frameworks */,
-				F3BED0B52D8C7AD100CD6E3B /* PermissionsSwiftUINotification in Frameworks */,
 				F318FE472A1592AB00DE0A5C /* OrderedCollections in Frameworks */,
 				F33C2AC52C691764002FD150 /* QuickLooking in Frameworks */,
 				F36D534A2A05B961007324C6 /* Kingfisher in Frameworks */,
@@ -2271,18 +2275,21 @@
 			files = (
 				F342FAA02B2C5DF300854270 /* Pow in Frameworks */,
 				F335CA062C63E86D006C71C6 /* DeviceKit in Frameworks */,
+				F3BED0DF2D8CDBDE00CD6E3B /* PermissionsSwiftUINotification in Frameworks */,
 				F34745CC2A31F3A000EE2FB8 /* MailCover in Frameworks */,
+				F3BED0D62D8CDB2900CD6E3B /* CorePermissionsSwiftUI in Frameworks */,
+				F3BED0DB2D8CDBD100CD6E3B /* PermissionsSwiftUIBiometrics in Frameworks */,
 				F36B73A12C8B07E100E858FE /* AudioVisualizer in Frameworks */,
-				F3BED0B92D8C7AEE00CD6E3B /* PermissionsSwiftUIBiometrics in Frameworks */,
+				F3BED0D92D8CDBBC00CD6E3B /* CorePermissionsSwiftUI in Frameworks */,
 				F30860142B002B31004D776A /* PteroNet in Frameworks */,
-				F3BED0B32D8C75D800CD6E3B /* PermissionsSwiftUINotification in Frameworks */,
 				F352AF9B2A4EE707004AD489 /* AlertKit in Frameworks */,
-				F3BED0C72D8CDA5400CD6E3B /* PermissionsSwiftUICamera in Frameworks */,
-				F3BED0B12D8C75D800CD6E3B /* PermissionsSwiftUIContacts in Frameworks */,
 				F37266E729D9EF25005FD103 /* Kingfisher in Frameworks */,
+				F3BED0CA2D8CDAB400CD6E3B /* CorePermissionsSwiftUI in Frameworks */,
 				F328D8592A82402A0038512F /* Algorithms in Frameworks */,
 				F318FE452A15925200DE0A5C /* OrderedCollections in Frameworks */,
+				F3BED0E12D8CDBF400CD6E3B /* PermissionsSwiftUIContacts in Frameworks */,
 				F39A02862A31480800A92515 /* ScrechKit in Frameworks */,
+				F3BED0DD2D8CDBD700CD6E3B /* PermissionsSwiftUICamera in Frameworks */,
 				F32675862A01B69600A026DC /* SafariCover in Frameworks */,
 				F33C2AC12C69168C002FD150 /* QuickLooking in Frameworks */,
 			);
@@ -3640,6 +3647,7 @@
 		F3D3437429BFE5A2007C0D58 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F3BED0D32D8CDAC600CD6E3B /* LockedCameraCapture.framework */,
 				F39EA2E02D5D45E800329468 /* GameKit.framework */,
 				F350636629DC24AB0010B717 /* WidgetKit.framework */,
 				F350636829DC24AB0010B717 /* SwiftUI.framework */,
@@ -3938,10 +3946,13 @@
 				F335CA052C63E86D006C71C6 /* DeviceKit */,
 				F33C2AC02C69168C002FD150 /* QuickLooking */,
 				F36B73A02C8B07E100E858FE /* AudioVisualizer */,
-				F3BED0B02D8C75D800CD6E3B /* PermissionsSwiftUIContacts */,
-				F3BED0B22D8C75D800CD6E3B /* PermissionsSwiftUINotification */,
-				F3BED0B82D8C7AEE00CD6E3B /* PermissionsSwiftUIBiometrics */,
-				F3BED0C62D8CDA5400CD6E3B /* PermissionsSwiftUICamera */,
+				F3BED0C92D8CDAB400CD6E3B /* CorePermissionsSwiftUI */,
+				F3BED0D52D8CDB2900CD6E3B /* CorePermissionsSwiftUI */,
+				F3BED0D82D8CDBBC00CD6E3B /* CorePermissionsSwiftUI */,
+				F3BED0DA2D8CDBD100CD6E3B /* PermissionsSwiftUIBiometrics */,
+				F3BED0DC2D8CDBD700CD6E3B /* PermissionsSwiftUICamera */,
+				F3BED0DE2D8CDBDE00CD6E3B /* PermissionsSwiftUINotification */,
+				F3BED0E02D8CDBF400CD6E3B /* PermissionsSwiftUIContacts */,
 			);
 			productName = Bisquit.Host;
 			productReference = F31BA5232958FF7C0006D126 /* Bisquit.Host.app */;
@@ -3997,10 +4008,10 @@
 				F33C2AC42C691764002FD150 /* QuickLooking */,
 				F36B739A2C8B073B00E858FE /* AudioVisualizer */,
 				F38F9E192CEA18150033EFE3 /* DeviceKit */,
-				F3BED0B42D8C7AD100CD6E3B /* PermissionsSwiftUINotification */,
-				F3BED0B62D8C7AE100CD6E3B /* PermissionsSwiftUIBiometrics */,
-				F3BED0BA2D8C7AF600CD6E3B /* PermissionsSwiftUIContacts */,
-				F3BED0BC2D8C7AFC00CD6E3B /* PermissionsSwiftUICamera */,
+				F3BED0E22D8CDBFF00CD6E3B /* PermissionsSwiftUICamera */,
+				F3BED0E42D8CDC0400CD6E3B /* PermissionsSwiftUINotification */,
+				F3BED0E62D8CDC0A00CD6E3B /* PermissionsSwiftUIContacts */,
+				F3BED0E82D8CDC1200CD6E3B /* PermissionsSwiftUIBiometrics */,
 			);
 			productName = "Clip Demo";
 			productReference = F31BA54E2958FFAF0006D126 /* Clip Demo.app */;
@@ -4089,10 +4100,10 @@
 				F3A7CF032C8BBB7800413400 /* SafariCover */,
 				F3A7CF0B2C8BBCE400413400 /* Kingfisher */,
 				F3A7CF212C8C4E9700413400 /* MailCover */,
-				F3BED0BE2D8C7B0A00CD6E3B /* PermissionsSwiftUICamera */,
-				F3BED0C02D8C7B0F00CD6E3B /* PermissionsSwiftUIContacts */,
-				F3BED0C22D8C7B1C00CD6E3B /* PermissionsSwiftUIBiometrics */,
-				F3BED0C42D8C7B2300CD6E3B /* PermissionsSwiftUINotification */,
+				F3BED0EA2D8CDC1B00CD6E3B /* PermissionsSwiftUIContacts */,
+				F3BED0EC2D8CDC2000CD6E3B /* PermissionsSwiftUIBiometrics */,
+				F3BED0EE2D8CDC2500CD6E3B /* PermissionsSwiftUINotification */,
+				F3BED0F02D8CDC2B00CD6E3B /* PermissionsSwiftUICamera */,
 			);
 			productName = "iMessage MessagesExtension";
 			productReference = F3A7CEC32C8B685500413400 /* iMessage.appex */;
@@ -4288,7 +4299,7 @@
 				F33C2ABF2C69168C002FD150 /* XCRemoteSwiftPackageReference "QuickLooking" */,
 				F36B73952C8B055600E858FE /* XCRemoteSwiftPackageReference "Audio-Visualizer" */,
 				F358F02C2D2C1C5500BCC07B /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
-				F3BED0AD2D8C75D800CD6E3B /* XCRemoteSwiftPackageReference "PermissionsSwiftUI" */,
+				F3BED0D72D8CDBBC00CD6E3B /* XCRemoteSwiftPackageReference "SPerms" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F31BA5242958FF7C0006D126 /* Products */;
@@ -7275,12 +7286,12 @@
 				kind = branch;
 			};
 		};
-		F3BED0AD2D8C75D800CD6E3B /* XCRemoteSwiftPackageReference "PermissionsSwiftUI" */ = {
+		F3BED0D72D8CDBBC00CD6E3B /* XCRemoteSwiftPackageReference "SPerms" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/jevonmao/PermissionsSwiftUI";
+			repositoryURL = "https://github.com/TopScrech/SPerms";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.5.11;
+				branch = main;
+				kind = branch;
 			};
 		};
 		F3E7BDD82A315C9D00CD03C3 /* XCRemoteSwiftPackageReference "MailCover" */ = {
@@ -7589,64 +7600,77 @@
 			package = F342FA9E2B2C5DF200854270 /* XCRemoteSwiftPackageReference "Pow" */;
 			productName = Pow;
 		};
-		F3BED0B02D8C75D800CD6E3B /* PermissionsSwiftUIContacts */ = {
+		F3BED0C92D8CDAB400CD6E3B /* CorePermissionsSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F3BED0AD2D8C75D800CD6E3B /* XCRemoteSwiftPackageReference "PermissionsSwiftUI" */;
-			productName = PermissionsSwiftUIContacts;
+			productName = CorePermissionsSwiftUI;
 		};
-		F3BED0B22D8C75D800CD6E3B /* PermissionsSwiftUINotification */ = {
+		F3BED0D52D8CDB2900CD6E3B /* CorePermissionsSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F3BED0AD2D8C75D800CD6E3B /* XCRemoteSwiftPackageReference "PermissionsSwiftUI" */;
-			productName = PermissionsSwiftUINotification;
+			productName = CorePermissionsSwiftUI;
 		};
-		F3BED0B42D8C7AD100CD6E3B /* PermissionsSwiftUINotification */ = {
+		F3BED0D82D8CDBBC00CD6E3B /* CorePermissionsSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F3BED0AD2D8C75D800CD6E3B /* XCRemoteSwiftPackageReference "PermissionsSwiftUI" */;
-			productName = PermissionsSwiftUINotification;
+			package = F3BED0D72D8CDBBC00CD6E3B /* XCRemoteSwiftPackageReference "SPerms" */;
+			productName = CorePermissionsSwiftUI;
 		};
-		F3BED0B62D8C7AE100CD6E3B /* PermissionsSwiftUIBiometrics */ = {
+		F3BED0DA2D8CDBD100CD6E3B /* PermissionsSwiftUIBiometrics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F3BED0AD2D8C75D800CD6E3B /* XCRemoteSwiftPackageReference "PermissionsSwiftUI" */;
+			package = F3BED0D72D8CDBBC00CD6E3B /* XCRemoteSwiftPackageReference "SPerms" */;
 			productName = PermissionsSwiftUIBiometrics;
 		};
-		F3BED0B82D8C7AEE00CD6E3B /* PermissionsSwiftUIBiometrics */ = {
+		F3BED0DC2D8CDBD700CD6E3B /* PermissionsSwiftUICamera */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F3BED0AD2D8C75D800CD6E3B /* XCRemoteSwiftPackageReference "PermissionsSwiftUI" */;
-			productName = PermissionsSwiftUIBiometrics;
-		};
-		F3BED0BA2D8C7AF600CD6E3B /* PermissionsSwiftUIContacts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3BED0AD2D8C75D800CD6E3B /* XCRemoteSwiftPackageReference "PermissionsSwiftUI" */;
-			productName = PermissionsSwiftUIContacts;
-		};
-		F3BED0BC2D8C7AFC00CD6E3B /* PermissionsSwiftUICamera */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3BED0AD2D8C75D800CD6E3B /* XCRemoteSwiftPackageReference "PermissionsSwiftUI" */;
+			package = F3BED0D72D8CDBBC00CD6E3B /* XCRemoteSwiftPackageReference "SPerms" */;
 			productName = PermissionsSwiftUICamera;
 		};
-		F3BED0BE2D8C7B0A00CD6E3B /* PermissionsSwiftUICamera */ = {
+		F3BED0DE2D8CDBDE00CD6E3B /* PermissionsSwiftUINotification */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F3BED0AD2D8C75D800CD6E3B /* XCRemoteSwiftPackageReference "PermissionsSwiftUI" */;
-			productName = PermissionsSwiftUICamera;
-		};
-		F3BED0C02D8C7B0F00CD6E3B /* PermissionsSwiftUIContacts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3BED0AD2D8C75D800CD6E3B /* XCRemoteSwiftPackageReference "PermissionsSwiftUI" */;
-			productName = PermissionsSwiftUIContacts;
-		};
-		F3BED0C22D8C7B1C00CD6E3B /* PermissionsSwiftUIBiometrics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3BED0AD2D8C75D800CD6E3B /* XCRemoteSwiftPackageReference "PermissionsSwiftUI" */;
-			productName = PermissionsSwiftUIBiometrics;
-		};
-		F3BED0C42D8C7B2300CD6E3B /* PermissionsSwiftUINotification */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3BED0AD2D8C75D800CD6E3B /* XCRemoteSwiftPackageReference "PermissionsSwiftUI" */;
+			package = F3BED0D72D8CDBBC00CD6E3B /* XCRemoteSwiftPackageReference "SPerms" */;
 			productName = PermissionsSwiftUINotification;
 		};
-		F3BED0C62D8CDA5400CD6E3B /* PermissionsSwiftUICamera */ = {
+		F3BED0E02D8CDBF400CD6E3B /* PermissionsSwiftUIContacts */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F3BED0AD2D8C75D800CD6E3B /* XCRemoteSwiftPackageReference "PermissionsSwiftUI" */;
+			package = F3BED0D72D8CDBBC00CD6E3B /* XCRemoteSwiftPackageReference "SPerms" */;
+			productName = PermissionsSwiftUIContacts;
+		};
+		F3BED0E22D8CDBFF00CD6E3B /* PermissionsSwiftUICamera */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3BED0D72D8CDBBC00CD6E3B /* XCRemoteSwiftPackageReference "SPerms" */;
+			productName = PermissionsSwiftUICamera;
+		};
+		F3BED0E42D8CDC0400CD6E3B /* PermissionsSwiftUINotification */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3BED0D72D8CDBBC00CD6E3B /* XCRemoteSwiftPackageReference "SPerms" */;
+			productName = PermissionsSwiftUINotification;
+		};
+		F3BED0E62D8CDC0A00CD6E3B /* PermissionsSwiftUIContacts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3BED0D72D8CDBBC00CD6E3B /* XCRemoteSwiftPackageReference "SPerms" */;
+			productName = PermissionsSwiftUIContacts;
+		};
+		F3BED0E82D8CDC1200CD6E3B /* PermissionsSwiftUIBiometrics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3BED0D72D8CDBBC00CD6E3B /* XCRemoteSwiftPackageReference "SPerms" */;
+			productName = PermissionsSwiftUIBiometrics;
+		};
+		F3BED0EA2D8CDC1B00CD6E3B /* PermissionsSwiftUIContacts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3BED0D72D8CDBBC00CD6E3B /* XCRemoteSwiftPackageReference "SPerms" */;
+			productName = PermissionsSwiftUIContacts;
+		};
+		F3BED0EC2D8CDC2000CD6E3B /* PermissionsSwiftUIBiometrics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3BED0D72D8CDBBC00CD6E3B /* XCRemoteSwiftPackageReference "SPerms" */;
+			productName = PermissionsSwiftUIBiometrics;
+		};
+		F3BED0EE2D8CDC2500CD6E3B /* PermissionsSwiftUINotification */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3BED0D72D8CDBBC00CD6E3B /* XCRemoteSwiftPackageReference "SPerms" */;
+			productName = PermissionsSwiftUINotification;
+		};
+		F3BED0F02D8CDC2B00CD6E3B /* PermissionsSwiftUICamera */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3BED0D72D8CDBBC00CD6E3B /* XCRemoteSwiftPackageReference "SPerms" */;
 			productName = PermissionsSwiftUICamera;
 		};
 		F3E08EB12A2CE19900116C1C /* Kingfisher */ = {
