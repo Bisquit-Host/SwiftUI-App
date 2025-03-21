@@ -69,7 +69,7 @@ struct BackgroundImagePickerView: View {
             ) { image in
                 selectedImage = image
                 
-                if let fileName = saveImageToDisk(image) {
+                if let image, let fileName = saveImageToDisk(image) {
                     UserDefaults.standard.set(fileName, forKey: "background_image_fileName")
                 }
                 

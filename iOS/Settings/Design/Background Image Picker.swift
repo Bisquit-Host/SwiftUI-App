@@ -6,7 +6,7 @@ import PhotosUI
 struct BackgroundImagePicker: View {
     var title, subTitle, systemImage: String
     var tint: Color
-    var onImageChange: (UIImage) -> ()
+    var onImageChange: (UIImage?) -> ()
     
     @State private var showImagePicker = false
     @State private var photoItem: PhotosPickerItem?
@@ -30,6 +30,13 @@ struct BackgroundImagePicker: View {
                 Text(subTitle)
                     .caption()
                     .foregroundStyle(.gray)
+                
+                Button("Clear") {
+                    previewImage = nil
+                    onImageChange(previewImage)
+                }
+                .padding()
+                .foregroundStyle(.foreground)
             }
             .padding()
             .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
