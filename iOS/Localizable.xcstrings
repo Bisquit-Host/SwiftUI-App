@@ -3542,23 +3542,6 @@
         }
       }
     },
-    "My API-key..." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mijn API-sleutel"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Мой API-ключ"
-          }
-        }
-      }
-    },
     "My API-keys" : {
       "localizations" : {
         "nl" : {
@@ -3625,29 +3608,6 @@
     },
     "Name Backup" : {
 
-    },
-    "Need help?" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hulp nodig?"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Нужна помощь?"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Нужна помощь?"
-          }
-        }
-      }
     },
     "Network Error" : {
       "localizations" : {
