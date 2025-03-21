@@ -88,13 +88,13 @@ struct Intro: View {
             }
             .safeAreaPadding(15)
         }
-        .JMAlert(showModal: $store.requestPermissions, for: [.notification, .opticBiometrics, .contacts, .camera], autoDismiss: true, onDisappear: {
+        .JMAlert(showModal: $store.requestPermissions, for: [.notification, .opticBiometrics, .contacts, .camera], onDisappear: {
             store.requestPermissions = false
         })
-        .setPermissionComponent(for: .notification, description: "Allow to recieve Live Activity updates")
-        .setPermissionComponent(for: .biometrics, description: "Allow to verify certain destructive actions")
-        .setPermissionComponent(for: .contacts, description: "Allow to quickly invite subusers to your server")
-        .setPermissionComponent(for: .camera, description: "Allow to use camera for uploading media to your server")
+        .setPermissionComponent(.notification, description: "Allow to recieve Live Activity updates")
+        .setPermissionComponent(.biometrics, description: "Allow to verify certain destructive actions")
+        .setPermissionComponent(.contacts, description: "Allow to quickly invite subusers to your server")
+        .setPermissionComponent(.camera, description: "Allow to use camera for uploading media to your server")
         .setAccentColor(to: .cookie)
         .changeHeaderDescriptionTo("In order for you to use certain features of Bisquit.Host, you need to give permissions. See description for each permission")
         .onReceive(timer) { _ in
