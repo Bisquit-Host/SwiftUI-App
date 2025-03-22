@@ -35,8 +35,14 @@ struct BackgroundImagePicker: View {
                     previewImage = nil
                     onImageChange(previewImage)
                 }
-                .padding()
+                .padding(.vertical, 8)
+                .padding(.horizontal)
                 .foregroundStyle(.foreground)
+                .background(.ultraThinMaterial, in: .rect(cornerRadius: 8))
+                .overlay {
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(.ultraThinMaterial, lineWidth: 1)
+                }
             }
             .padding()
             .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
