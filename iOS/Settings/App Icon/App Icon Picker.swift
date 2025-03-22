@@ -15,13 +15,14 @@ struct AppIconPicker: View {
             .padding(5)
         }
         .onChange(of: store.currentIcon) { _, icon in
-            if UIApplication.shared.supportsAlternateIcons {
-                UIApplication.shared.setAlternateIconName(
-                    icon == .def ? nil : icon.rawValue
-                )
-            } else {
+            guard UIApplication.shared.supportsAlternateIcons else {
                 print("Device doesn't support alternate app icons")
+                return
             }
+            
+            UIApplication.shared.setAlternateIconName(
+                icon == .def ? nil : icon.rawValue
+            )
         }
     }
 }
