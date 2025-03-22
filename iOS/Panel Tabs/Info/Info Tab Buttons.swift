@@ -125,33 +125,40 @@ struct InfoTabButtons: View {
                 sheetSubdomains = true
             } label: {
                 HStack {
-                    VStack(alignment: .leading) {
-                        //                    Image(systemName: "globe")
-                        //                        .foregroundStyle(.tertiary)
-                        
-                        Text("Subdomains")
-                            .footnote()
-                            .secondary()
-                            .rounded()
-                        
-                        ForEach(subdomainVM.subdomains) { subdomain in
-                            Text("\(subdomain.subdomain).\(subdomain.domain)")
-                                .monospaced()
+                    if subdomainVM.subdomains.isEmpty {
+                        VStack(spacing: 5) {
+                            Image(systemName: "globe")
+                                .foregroundStyle(.tertiary)
+                            
+                            Text("Subdomains")
+                                .semibold()
                         }
+                    } else {
+                        VStack(alignment: .leading) {
+                            Text("Subdomains")
+                                .footnote()
+                                .secondary()
+                                .rounded()
+                            
+                            ForEach(subdomainVM.subdomains) { subdomain in
+                                Text("\(subdomain.subdomain).\(subdomain.domain)")
+                                    .monospaced()
+                            }
+                        }
+                        
+                        Spacer()
+                        
+                        let chevron = Image(systemName: "arrow.right")
+                        
+                        Text("All subdomains \(chevron)")
+                            .caption2()
+                            .foregroundStyle(.tertiary)
                     }
-                    
-                    Spacer()
-                    
-                    let chevron = Image(systemName: "arrow.right")
-                    
-                    Text("All subdomains \(chevron)")
-                        .caption2()
-                        .foregroundStyle(.tertiary)
                 }
                 .footnote()
                 .frame(minHeight: 55)
                 .padding(.horizontal)
-                .frame(maxWidth: .infinity, alignment: .leading)
+                .frame(maxWidth: .infinity, alignment: subdomainVM.subdomains.isEmpty ? .center : .leading)
                 .foregroundStyle(.foreground)
                 .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
                 .overlay {
