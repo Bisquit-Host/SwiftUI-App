@@ -11,7 +11,7 @@ struct InfoTabHeading: View {
     }
     
     var body: some View {
-        VStack(spacing: 5) {
+        VStack(spacing: 4) {
             Text(server.name)
                 .largeTitle(.bold)
                 .lineLimit(1)
@@ -30,7 +30,7 @@ struct InfoTabHeading: View {
             .lineLimit(1)
             
             Text(server.id)
-                .footnote()
+                .footnote(design: .monospaced)
                 .foregroundStyle(.tertiary)
                 .shadow(color: .black, radius: 5)
                 .onTapGesture {

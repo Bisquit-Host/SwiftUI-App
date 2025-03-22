@@ -81,33 +81,38 @@ struct InfoTabButtons: View {
                 sheetLogs = true
             } label: {
                 VStack(spacing: 5) {
-//                    Image(systemName: "list.bullet.rectangle.fill")
-//                        .foregroundStyle(.tertiary)
-                    
-                    Text("Logs")
-                        .footnote()
-                        .secondary()
-                        .rounded()
-                    
-                    if let log = logVM.logs.first {
-                        LogCard(log, showInfoButton: false)
-                            .multilineTextAlignment(.leading)
-                    }
-                    
-                    let count = logVM.logs.count
-                    
-                    if count > 0 {
-                        let chevron = Image(systemName: "arrow.right")
-                        
-                        Text("\(count - 1) more entries \(chevron)")
-                            .caption2()
+                    if logVM.logs.isEmpty {
+                        Image(systemName: "list.bullet.rectangle.fill")
                             .foregroundStyle(.tertiary)
+                        
+                        Text("Users")
+                            .semibold()
+                    } else {
+                        Text("Logs")
+                            .footnote()
+                            .secondary()
+                            .rounded()
+                        
+                        if let log = logVM.logs.first {
+                            LogCard(log, showInfoButton: false)
+                                .multilineTextAlignment(.leading)
+                        }
+                        
+                        let count = logVM.logs.count
+                        
+                        if count > 0 {
+                            let chevron = Image(systemName: "arrow.right")
+                            
+                            Text("\(count - 1) more entries \(chevron)")
+                                .caption2()
+                                .foregroundStyle(.tertiary)
+                        }
                     }
                 }
                 .footnote()
                 .padding()
                 .frame(minHeight: 55)
-                .frame(maxWidth: .infinity, alignment: .leading)
+                .frame(maxWidth: .infinity, alignment: logVM.logs.isEmpty ? .center : .leading)
                 .foregroundStyle(.foreground)
                 .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
                 .overlay {

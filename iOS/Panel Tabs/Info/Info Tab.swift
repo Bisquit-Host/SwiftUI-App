@@ -45,8 +45,8 @@ struct InfoTab: View {
                         .frame(width: width * 1.1, height: 1000)
                         .clipped()
                         .blur(radius: 55, opaque: true)
-                        .offset(y: -30)
                         .blur(radius: 10)
+                        .offset(y: -15) // +15 to the ZStack's offset
                     
                     VStack(spacing: 10) {
                         InfoTabHeading(server)
@@ -66,6 +66,7 @@ struct InfoTab: View {
                     .padding(.horizontal, 10)
                     .frame(width: width)
                 }
+                .offset(y: -15) // The border will be visible if smaller
             }
         }
         .ignoresSafeArea()
