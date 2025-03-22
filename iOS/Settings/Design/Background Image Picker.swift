@@ -45,8 +45,9 @@ struct BackgroundImagePicker: View {
                     .stroke(.ultraThinMaterial, lineWidth: 1)
             }
             .frame(width: size.width, height: size.height)
-            // Loading UI
             .overlay {
+                // Loading UI
+                
                 if isLoading {
                     ProgressView()
                         .padding(10)

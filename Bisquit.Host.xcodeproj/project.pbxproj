@@ -367,6 +367,10 @@
 		F32E88D12AF8494100959D49 /* Server List Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88D02AF8494100959D49 /* Server List Filter.swift */; };
 		F32E88D22AF8494100959D49 /* Server List Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88D02AF8494100959D49 /* Server List Filter.swift */; };
 		F32E88D32AF8494100959D49 /* Server List Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88D02AF8494100959D49 /* Server List Filter.swift */; };
+		F32F3AAB2D8EB8EC00E69B98 /* Background Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F3AAA2D8EB8EC00E69B98 /* Background Image.swift */; };
+		F32F3AAC2D8EB8EC00E69B98 /* Background Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F3AAA2D8EB8EC00E69B98 /* Background Image.swift */; };
+		F32F3AAD2D8EB8EC00E69B98 /* Background Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F3AAA2D8EB8EC00E69B98 /* Background Image.swift */; };
+		F32F3AAE2D8EB8EC00E69B98 /* Background Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F3AAA2D8EB8EC00E69B98 /* Background Image.swift */; };
 		F32F43FF2B75450800C9470B /* User Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F43FE2B7544A200C9470B /* User Card.swift */; };
 		F32F44002B75450B00C9470B /* User List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F43FD2B7544A200C9470B /* User List.swift */; };
 		F32FD02B2CF5E8DC0038D62C /* Console Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32FD0292CF5E8DC0038D62C /* Console Message.swift */; };
@@ -1777,6 +1781,7 @@
 		F32DB8A729AE6B800074E045 /* Start Page Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page Footer.swift"; sourceTree = "<group>"; };
 		F32E88C72AF83E3F00959D49 /* Topbar Admin Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Topbar Admin Button.swift"; sourceTree = "<group>"; };
 		F32E88D02AF8494100959D49 /* Server List Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server List Filter.swift"; sourceTree = "<group>"; };
+		F32F3AAA2D8EB8EC00E69B98 /* Background Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Background Image.swift"; sourceTree = "<group>"; };
 		F32F43FD2B7544A200C9470B /* User List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User List.swift"; sourceTree = "<group>"; };
 		F32F43FE2B7544A200C9470B /* User Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Card.swift"; sourceTree = "<group>"; };
 		F32FD0292CF5E8DC0038D62C /* Console Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Console Message.swift"; sourceTree = "<group>"; };
@@ -3140,6 +3145,7 @@
 			isa = PBXGroup;
 			children = (
 				F3D7D87E29E83DEE00BCAFFE /* Design Settings.swift */,
+				F32F3AAA2D8EB8EC00E69B98 /* Background Image.swift */,
 				F300C4622D8C388400743300 /* Background Image Picker View.swift */,
 				F300C4612D8C388400743300 /* Background Image Picker.swift */,
 			);
@@ -4669,6 +4675,7 @@
 				F31BA5682959006F0006D126 /* App Container.swift in Sources */,
 				F34BB6BE2D3DC2D300D27BE0 /* File Preview.swift in Sources */,
 				F36B73872C8AEAE700E858FE /* Model Asset.swift in Sources */,
+				F32F3AAB2D8EB8EC00E69B98 /* Background Image.swift in Sources */,
 				F325F7002A54BBCF00E89EC4 /* Info Tab Allocation.swift in Sources */,
 				F3202CE02D562A620030B3CC /* Browser List MC.swift in Sources */,
 				F3924EDF29A2333F00C4CC77 /* Settings VM.swift in Sources */,
@@ -5234,6 +5241,7 @@
 				F325F7042A54BF7A00E89EC4 /* Tab Info.swift in Sources */,
 				F32E88C92AF83E3F00959D49 /* Topbar Admin Button.swift in Sources */,
 				F374F7C02D54922F006771DD /* Sheet Create Subdomain.swift in Sources */,
+				F32F3AAC2D8EB8EC00E69B98 /* Background Image.swift in Sources */,
 				F3202D482D56DC050030B3CC /* Prefetcher.swift in Sources */,
 				F3464D1E2A86396500188B0C /* Change Power.swift in Sources */,
 				F3553FB42B4065A300EF0FD2 /* Panel Settings Parent.swift in Sources */,
@@ -5449,6 +5457,7 @@
 				F380B3262BD7BA16009062E8 /* Image Picker.swift in Sources */,
 				F3CE5C4A2D53935A0094BD7B /* Subdomain Model.swift in Sources */,
 				F3D295BE2AF3A18B00ED43A0 /* Biometry Button.swift in Sources */,
+				F32F3AAD2D8EB8EC00E69B98 /* Background Image.swift in Sources */,
 				F3E2BEE12C1C6BA800B7A6D4 /* Cache List VM.swift in Sources */,
 				F3D295BB2AF3A17900ED43A0 /* Biometry Usage View.swift in Sources */,
 				F3D295D12AF3A30000ED43A0 /* Animated Tab.swift in Sources */,
@@ -5609,6 +5618,7 @@
 				F3A7CF622C8CA5A900413400 /* Cloud Keys.swift in Sources */,
 				F3255E1D2C904A56008E04DE /* Account VM.swift in Sources */,
 				F3A7CF102C8C4C2700413400 /* Server List Filter.swift in Sources */,
+				F32F3AAE2D8EB8EC00E69B98 /* Background Image.swift in Sources */,
 				F3202D2B2D562B9A0030B3CC /* Browser Card Bot.swift in Sources */,
 				F3AB1DF52D79C42B00387164 /* MetricKit Manager.swift in Sources */,
 				F3A7CEEA2C8BB74D00413400 /* Server List Grid.swift in Sources */,
