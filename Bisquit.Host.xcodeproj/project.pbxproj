@@ -367,6 +367,26 @@
 		F32E88D12AF8494100959D49 /* Server List Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88D02AF8494100959D49 /* Server List Filter.swift */; };
 		F32E88D22AF8494100959D49 /* Server List Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88D02AF8494100959D49 /* Server List Filter.swift */; };
 		F32E88D32AF8494100959D49 /* Server List Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88D02AF8494100959D49 /* Server List Filter.swift */; };
+		F32F2CC82D8F6FA8007CF4DE /* Discover Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CC72D8F6FA8007CF4DE /* Discover Model.swift */; };
+		F32F2CC92D8F6FA8007CF4DE /* Discover Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CC72D8F6FA8007CF4DE /* Discover Model.swift */; };
+		F32F2CCA2D8F6FA8007CF4DE /* Discover Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CC72D8F6FA8007CF4DE /* Discover Model.swift */; };
+		F32F2CCB2D8F6FA8007CF4DE /* Discover Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CC72D8F6FA8007CF4DE /* Discover Model.swift */; };
+		F32F2CCC2D8F6FA8007CF4DE /* Discover Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CC72D8F6FA8007CF4DE /* Discover Model.swift */; };
+		F32F2CCE2D8F6FCE007CF4DE /* Discover Card Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CCD2D8F6FCE007CF4DE /* Discover Card Layout.swift */; };
+		F32F2CCF2D8F6FCE007CF4DE /* Discover Card Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CCD2D8F6FCE007CF4DE /* Discover Card Layout.swift */; };
+		F32F2CD02D8F6FCE007CF4DE /* Discover Card Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CCD2D8F6FCE007CF4DE /* Discover Card Layout.swift */; };
+		F32F2CD12D8F6FCE007CF4DE /* Discover Card Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CCD2D8F6FCE007CF4DE /* Discover Card Layout.swift */; };
+		F32F2CD22D8F6FCE007CF4DE /* Discover Card Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CCD2D8F6FCE007CF4DE /* Discover Card Layout.swift */; };
+		F32F2CD42D8F6FDC007CF4DE /* Avg Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CD32D8F6FDC007CF4DE /* Avg Color.swift */; };
+		F32F2CD52D8F6FDC007CF4DE /* Avg Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CD32D8F6FDC007CF4DE /* Avg Color.swift */; };
+		F32F2CD62D8F6FDC007CF4DE /* Avg Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CD32D8F6FDC007CF4DE /* Avg Color.swift */; };
+		F32F2CD72D8F6FDC007CF4DE /* Avg Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CD32D8F6FDC007CF4DE /* Avg Color.swift */; };
+		F32F2CD82D8F6FDC007CF4DE /* Avg Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CD32D8F6FDC007CF4DE /* Avg Color.swift */; };
+		F32F2CDA2D8F7047007CF4DE /* Discover View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CD92D8F7047007CF4DE /* Discover View.swift */; };
+		F32F2CDB2D8F7047007CF4DE /* Discover View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CD92D8F7047007CF4DE /* Discover View.swift */; };
+		F32F2CDC2D8F7047007CF4DE /* Discover View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CD92D8F7047007CF4DE /* Discover View.swift */; };
+		F32F2CDD2D8F7047007CF4DE /* Discover View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CD92D8F7047007CF4DE /* Discover View.swift */; };
+		F32F2CDE2D8F7047007CF4DE /* Discover View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CD92D8F7047007CF4DE /* Discover View.swift */; };
 		F32F3AAB2D8EB8EC00E69B98 /* Background Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F3AAA2D8EB8EC00E69B98 /* Background Image.swift */; };
 		F32F3AAC2D8EB8EC00E69B98 /* Background Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F3AAA2D8EB8EC00E69B98 /* Background Image.swift */; };
 		F32F3AAD2D8EB8EC00E69B98 /* Background Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F3AAA2D8EB8EC00E69B98 /* Background Image.swift */; };
@@ -1781,6 +1801,10 @@
 		F32DB8A729AE6B800074E045 /* Start Page Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page Footer.swift"; sourceTree = "<group>"; };
 		F32E88C72AF83E3F00959D49 /* Topbar Admin Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Topbar Admin Button.swift"; sourceTree = "<group>"; };
 		F32E88D02AF8494100959D49 /* Server List Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server List Filter.swift"; sourceTree = "<group>"; };
+		F32F2CC72D8F6FA8007CF4DE /* Discover Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Discover Model.swift"; sourceTree = "<group>"; };
+		F32F2CCD2D8F6FCE007CF4DE /* Discover Card Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Discover Card Layout.swift"; sourceTree = "<group>"; };
+		F32F2CD32D8F6FDC007CF4DE /* Avg Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Avg Color.swift"; sourceTree = "<group>"; };
+		F32F2CD92D8F7047007CF4DE /* Discover View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Discover View.swift"; sourceTree = "<group>"; };
 		F32F3AAA2D8EB8EC00E69B98 /* Background Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Background Image.swift"; sourceTree = "<group>"; };
 		F32F43FD2B7544A200C9470B /* User List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User List.swift"; sourceTree = "<group>"; };
 		F32F43FE2B7544A200C9470B /* User Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Card.swift"; sourceTree = "<group>"; };
@@ -2530,11 +2554,11 @@
 				F3D52B242B13FE9C00167DD6 /* App Delegate.swift */,
 				F300C45F2D8C2B0100743300 /* Helpers */,
 				F31BA564295900270006D126 /* Nav */,
-				F36797722A39C4ED009F2788 /* Localizable.xcstrings */,
-				F378E3322AF38286009925DB /* PrivacyInfo.xcprivacy */,
-				F304498629E98AE4006DC0C7 /* Bisquit.Host.entitlements */,
 				F3CCB1D12CAE8B76000F8207 /* Bisquit-Host Info.plist */,
+				F304498629E98AE4006DC0C7 /* Bisquit.Host.entitlements */,
+				F36797722A39C4ED009F2788 /* Localizable.xcstrings */,
 				F31BA52A2958FF7D0006D126 /* Assets.xcassets */,
+				F378E3322AF38286009925DB /* PrivacyInfo.xcprivacy */,
 				F36436EE2A2FE91C00976374 /* SpriteKit */,
 				F3EDEE3629C0CB4500B08696 /* Networking */,
 				F35B89BC2A7256F4000B5EEF /* Tips */,
@@ -3409,6 +3433,10 @@
 		F3A80E8529A1973600190EC6 /* Discover */ = {
 			isa = PBXGroup;
 			children = (
+				F32F2CD92D8F7047007CF4DE /* Discover View.swift */,
+				F32F2CCD2D8F6FCE007CF4DE /* Discover Card Layout.swift */,
+				F32F2CC72D8F6FA8007CF4DE /* Discover Model.swift */,
+				F32F2CD32D8F6FDC007CF4DE /* Avg Color.swift */,
 				F31BA592295901D00006D126 /* Discover.swift */,
 				F39E0A932C1BA06C00C4E906 /* Discover Card.swift */,
 				F39E0A972C1BA11600C4E906 /* Discover Item.swift */,
@@ -4733,6 +4761,7 @@
 				F358132B2A1F5D2A002ADFA4 /* Linking VM.swift in Sources */,
 				F3878ECD2A1BCE5000AD8657 /* Dev Settings.swift in Sources */,
 				F3D037022CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift in Sources */,
+				F32F2CDC2D8F7047007CF4DE /* Discover View.swift in Sources */,
 				F3496DC929E00CE70089FC28 /* Create Button.swift in Sources */,
 				F3437CA2297360D30064808F /* Schedule Card.swift in Sources */,
 				F39EA2E52D5D576D00329468 /* Game Center Buttons.swift in Sources */,
@@ -4801,6 +4830,7 @@
 				F35B89BE2A725710000B5EEF /* Tip Suspended Server.swift in Sources */,
 				F310BB392A54E31700843F14 /* Server List VM.swift in Sources */,
 				F3E1D3F22B320A6A009B7062 /* Permissions Header.swift in Sources */,
+				F32F2CCE2D8F6FCE007CF4DE /* Discover Card Layout.swift in Sources */,
 				F31BA5B0295902C70006D126 /* Folder Path.swift in Sources */,
 				F3D902DF29DC445A004E76C9 /* Cache Limit.swift in Sources */,
 				F330013B2A4CEC320063FE0F /* Apikey List.swift in Sources */,
@@ -4823,6 +4853,7 @@
 				F3E2BEDB2C1C6B9500B7A6D4 /* Cache List.swift in Sources */,
 				F398823F2987BF6E00B9BA2C /* Schedule Task.swift in Sources */,
 				F304498A29E990E9006DC0C7 /* Cloud Keys.swift in Sources */,
+				F32F2CD52D8F6FDC007CF4DE /* Avg Color.swift in Sources */,
 				F36B73712C8A4CAF00E858FE /* Refresh Button Intent.swift in Sources */,
 				F3FF5A0F2A4A3ABD003A1973 /* User Card.swift in Sources */,
 				F31578B329675F5D0016A600 /* Server List.swift in Sources */,
@@ -4883,6 +4914,7 @@
 				F3AF91C52B423535001D8F80 /* SSH List.swift in Sources */,
 				F31BA56A2959007E0006D126 /* Nav Destinations.swift in Sources */,
 				F3D2643A2A66AB92005C3777 /* Account View.swift in Sources */,
+				F32F2CCC2D8F6FA8007CF4DE /* Discover Model.swift in Sources */,
 				F3A391BC29DB808B00591C84 /* Server Name.swift in Sources */,
 				F3521E2B29F5C13900132CCB /* Browser Card.swift in Sources */,
 				F3202CD92D5624B10030B3CC /* Plan.swift in Sources */,
@@ -5022,6 +5054,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3FF5A102A4A3ABD003A1973 /* User Card.swift in Sources */,
+				F32F2CDB2D8F7047007CF4DE /* Discover View.swift in Sources */,
 				F3CE5C462D53907E0094BD7B /* Subdomain VM.swift in Sources */,
 				F389BB722A05B61300911EBF /* Credentials View.swift in Sources */,
 				F389BB712A05B60D00911EBF /* Credentials Button.swift in Sources */,
@@ -5074,6 +5107,7 @@
 				F3EE9F762D85CAB9000120A7 /* Transparency.swift in Sources */,
 				F31F32022D52DB950095DD19 /* Color Theme.swift in Sources */,
 				F30088A02B3A17DF0051476C /* Backup VM.swift in Sources */,
+				F32F2CCB2D8F6FA8007CF4DE /* Discover Model.swift in Sources */,
 				F3E2BF0F2C1EC94300B7A6D4 /* Contacts VM.swift in Sources */,
 				F3553FB62B40939C00EF0FD2 /* Allocation VM.swift in Sources */,
 				F358132C2A1F5D2A002ADFA4 /* Linking VM.swift in Sources */,
@@ -5179,6 +5213,7 @@
 				F36D533E2A05B8EC007324C6 /* Text File VM.swift in Sources */,
 				F398E0E12CEB562400AA4DD7 /* Audio Player VM.swift in Sources */,
 				F389BB682A05B5C100911EBF /* Guide.swift in Sources */,
+				F32F2CD02D8F6FCE007CF4DE /* Discover Card Layout.swift in Sources */,
 				F3EE9F942D86234A000120A7 /* Custom Dialog.swift in Sources */,
 				F3EE9F952D86234A000120A7 /* Custom Alert.swift in Sources */,
 				F36D53252A05B85B007324C6 /* Data Tab.swift in Sources */,
@@ -5253,6 +5288,7 @@
 				F3202C742D5583680030B3CC /* Browser Parent.swift in Sources */,
 				F37FF8862D87B20700554B3F /* Panel Toolbar Nav.swift in Sources */,
 				F3D264422A66ABBE005C3777 /* Account VM.swift in Sources */,
+				F32F2CD62D8F6FDC007CF4DE /* Avg Color.swift in Sources */,
 				F36D53382A05B8C5007324C6 /* Folder Path VM.swift in Sources */,
 				F3FA61552A1F8DB500A65AE1 /* Upload Menu.swift in Sources */,
 				F3AB4A912CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
@@ -5312,6 +5348,7 @@
 				F3D2958B2AF39FD500ED43A0 /* Settings Parent.swift in Sources */,
 				F374F7C12D54922F006771DD /* Sheet Create Subdomain.swift in Sources */,
 				F3D295392AF39D1B00ED43A0 /* Value Store.swift in Sources */,
+				F32F2CDD2D8F7047007CF4DE /* Discover View.swift in Sources */,
 				F3AF91C72B423535001D8F80 /* SSH List.swift in Sources */,
 				F3D295D22AF3A30400ED43A0 /* Console Tab.swift in Sources */,
 				F3D295B52AF3A15D00ED43A0 /* Design Settings.swift in Sources */,
@@ -5390,6 +5427,7 @@
 				F3D295A52AF3A0CD00ED43A0 /* Settings View.swift in Sources */,
 				F300C4652D8C388400743300 /* Background Image Picker.swift in Sources */,
 				F300C4662D8C388400743300 /* Background Image Picker View.swift in Sources */,
+				F32F2CD12D8F6FCE007CF4DE /* Discover Card Layout.swift in Sources */,
 				F3D295F02AF3A51300ED43A0 /* Backup List Footer.swift in Sources */,
 				F3D295552AF39E1600ED43A0 /* Formatters.swift in Sources */,
 				F3CE5C4F2D5395300094BD7B /* Subdomain Card.swift in Sources */,
@@ -5470,6 +5508,7 @@
 				F3D295332AF39CB100ED43A0 /* Start Page VM.swift in Sources */,
 				F3E8B3512CF485FB005D25F8 /* Console Message.swift in Sources */,
 				F3D295C12AF3A1B200ED43A0 /* Log Meta View.swift in Sources */,
+				F32F2CD82D8F6FDC007CF4DE /* Avg Color.swift in Sources */,
 				F38F9E0C2CE6CCF90033EFE3 /* Image Playground Button.swift in Sources */,
 				F3D295622AF39E8D00ED43A0 /* Upload Menu.swift in Sources */,
 				F3D295582AF39E2B00ED43A0 /* Browser Spec.swift in Sources */,
@@ -5495,6 +5534,7 @@
 				F373CD722D88A386008B64BE /* Card.swift in Sources */,
 				F373CD732D88A386008B64BE /* Custom Text Effect.swift in Sources */,
 				F373CD742D88A386008B64BE /* Infinite Scroll View.swift in Sources */,
+				F32F2CCA2D8F6FA8007CF4DE /* Discover Model.swift in Sources */,
 				F373CD752D88A386008B64BE /* Intro.swift in Sources */,
 				F3D295BC2AF3A18400ED43A0 /* Other Settings.swift in Sources */,
 				F3A7CF072C8BBC3200413400 /* Server Card Context Menu.swift in Sources */,
@@ -5620,9 +5660,11 @@
 				F3A7CF102C8C4C2700413400 /* Server List Filter.swift in Sources */,
 				F32F3AAE2D8EB8EC00E69B98 /* Background Image.swift in Sources */,
 				F3202D2B2D562B9A0030B3CC /* Browser Card Bot.swift in Sources */,
+				F32F2CDE2D8F7047007CF4DE /* Discover View.swift in Sources */,
 				F3AB1DF52D79C42B00387164 /* MetricKit Manager.swift in Sources */,
 				F3A7CEEA2C8BB74D00413400 /* Server List Grid.swift in Sources */,
 				F3A7CF0D2C8C43B100413400 /* Topbar Grid Button.swift in Sources */,
+				F32F2CCF2D8F6FCE007CF4DE /* Discover Card Layout.swift in Sources */,
 				F3202D072D562AE20030B3CC /* Browser List VDS.swift in Sources */,
 				F3255E1E2C904A63008E04DE /* SSH VM.swift in Sources */,
 				F3202D462D56DC050030B3CC /* Prefetcher.swift in Sources */,
@@ -5668,12 +5710,14 @@
 				F3A7CF1D2C8C4E4A00413400 /* Browser Hints.swift in Sources */,
 				F3202CE12D562A620030B3CC /* Browser List MC.swift in Sources */,
 				F3A7CF1E2C8C4E4A00413400 /* Browser.swift in Sources */,
+				F32F2CC82D8F6FA8007CF4DE /* Discover Model.swift in Sources */,
 				F3202D392D5633270030B3CC /* Browser List MCRU.swift in Sources */,
 				F3A7CF1F2C8C4E4A00413400 /* Plan Models.swift in Sources */,
 				F3A7CF022C8BBB4700413400 /* Server Card Context Menu.swift in Sources */,
 				F3A7CEF22C8BB7BF00413400 /* System Alerts.swift in Sources */,
 				F3EE9F702D85CAB9000120A7 /* Transparency.swift in Sources */,
 				F31461712D5A1F8100547B6C /* Icon.swift in Sources */,
+				F32F2CD72D8F6FDC007CF4DE /* Avg Color.swift in Sources */,
 				F3A7CF112C8C4C3100413400 /* Server List Node Filter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5684,6 +5728,7 @@
 			files = (
 				F3D295172AF396FD00ED43A0 /* Tabs.swift in Sources */,
 				F3FD9F9A2C651AF300A69314 /* Upload File.swift in Sources */,
+				F32F2CC92D8F6FA8007CF4DE /* Discover Model.swift in Sources */,
 				F3EE9F742D85CAB9000120A7 /* Transparency.swift in Sources */,
 				F3202D162D562B250030B3CC /* Browser Card MC.swift in Sources */,
 				F3BD76F92A43C890003E7385 /* Panel View.swift in Sources */,
@@ -5771,6 +5816,7 @@
 				F348C6E42A5438EB002D5BD6 /* App Container.swift in Sources */,
 				F3FC99162C65888900150823 /* Temp Dir.swift in Sources */,
 				F3F2BBA52A540B8800D44CA6 /* Start Page.swift in Sources */,
+				F32F2CD42D8F6FDC007CF4DE /* Avg Color.swift in Sources */,
 				F3DF03E62B74F26F00CF6F5E /* Users VM.swift in Sources */,
 				F30C130C2A545F4400A7EFF0 /* Value Store.swift in Sources */,
 				F38928232A44182F00561CDF /* Console.swift in Sources */,
@@ -5820,7 +5866,9 @@
 				F39E683B2D2D67A70002BA96 /* New Schedule Sheet.swift in Sources */,
 				F373CDB22D895419008B64BE /* Log Topbar.swift in Sources */,
 				F373CDB32D895419008B64BE /* Log Topbar Card.swift in Sources */,
+				F32F2CDA2D8F7047007CF4DE /* Discover View.swift in Sources */,
 				F32FD7182B1E042500723B88 /* Websocket.swift in Sources */,
+				F32F2CD22D8F6FCE007CF4DE /* Discover Card Layout.swift in Sources */,
 				F32FD7212B1E065500723B88 /* Network Calls.swift in Sources */,
 				F35FEB142B0A2C8F004DA05D /* Enums.swift in Sources */,
 				F37B90792BFEA00300597624 /* Panel Ornament Info.swift in Sources */,

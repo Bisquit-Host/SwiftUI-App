@@ -676,9 +676,6 @@
         }
       }
     },
-    "App support" : {
-
-    },
     "App Support" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -700,6 +697,7 @@
 
     },
     "Apps" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -820,6 +818,7 @@
 
     },
     "Available configurations" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -834,6 +833,9 @@
           }
         }
       }
+    },
+    "Available to buy" : {
+
     },
     "Background image" : {
 
@@ -919,6 +921,9 @@
         }
       }
     },
+    "Best places" : {
+
+    },
     "Biometry Usage" : {
       "localizations" : {
         "ru" : {
@@ -972,6 +977,9 @@
       "shouldTranslate" : false
     },
     "Bot" : {
+
+    },
+    "By Bisquit.Host" : {
 
     },
     "Cache" : {
@@ -1086,6 +1094,9 @@
         }
       }
     },
+    "Channel" : {
+
+    },
     "Choose File" : {
       "localizations" : {
         "nl" : {
@@ -1118,7 +1129,11 @@
         }
       }
     },
+    "Client role" : {
+
+    },
     "Client role in the Discord channel" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -2120,6 +2135,9 @@
         }
       }
     },
+    "Discord" : {
+
+    },
     "Dismiss" : {
       "localizations" : {
         "ru" : {
@@ -2145,6 +2163,9 @@
           }
         }
       }
+    },
+    "Document" : {
+
     },
     "Document identifier" : {
       "localizations" : {
@@ -2463,6 +2484,12 @@
         }
       }
     },
+    "Feature requests" : {
+
+    },
+    "Feedback" : {
+
+    },
     "File allocated size" : {
       "localizations" : {
         "ru" : {
@@ -2625,6 +2652,9 @@
         }
       }
     },
+    "Guild" : {
+
+    },
     "Hide power buttons" : {
       "localizations" : {
         "ru" : {
@@ -2680,9 +2710,6 @@
         }
       }
     },
-    "Hosting support" : {
-
-    },
     "Hosting Support" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -2728,6 +2755,9 @@
           }
         }
       }
+    },
+    "How to...?" : {
+
     },
     "https://mgr.bisquit.host" : {
       "localizations" : {
@@ -3376,6 +3406,7 @@
       }
     },
     "Mail" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -3401,10 +3432,16 @@
         }
       }
     },
+    "Maps" : {
+
+    },
     "Marked the **`%@`** backup as complete" : {
 
     },
     "Me name folder" : {
+
+    },
+    "Me Potato, me HELP" : {
 
     },
     "Member since" : {
@@ -3513,7 +3550,11 @@
         }
       }
     },
+    "More apps" : {
+
+    },
     "More apps by Bisquit.Host" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -3780,6 +3821,7 @@
       }
     },
     "Offer" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -3901,6 +3943,9 @@
         }
       }
     },
+    "Panel" : {
+
+    },
     "Password" : {
       "localizations" : {
         "nl" : {
@@ -3968,6 +4013,7 @@
       }
     },
     "Places we recommend" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -3982,6 +4028,9 @@
           }
         }
       }
+    },
+    "Policy" : {
+
     },
     "Port: %@" : {
       "localizations" : {
@@ -4093,7 +4142,11 @@
         }
       }
     },
+    "Privacy" : {
+
+    },
     "Privacy Policy" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -5182,6 +5235,7 @@
       }
     },
     "System status" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -5217,7 +5271,11 @@
         }
       }
     },
+    "Telegram" : {
+
+    },
     "Telegram Chat" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -5251,6 +5309,9 @@
           }
         }
       }
+    },
+    "Terms" : {
+
     },
     "The list of servers couldn't be loaded. Check your internet connection or contact support" : {
       "localizations" : {
@@ -5856,6 +5917,7 @@
       }
     },
     "Web panel" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
