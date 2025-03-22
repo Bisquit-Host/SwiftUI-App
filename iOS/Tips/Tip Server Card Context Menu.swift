@@ -17,6 +17,7 @@ struct Tip_ServerCardContextMenu: Tip {
 #Preview {
     VStack {
         TipView(Tip_ServerCardContextMenu())
+            .tipBackground(.ultraThinMaterial)
             .padding()
     }
     .task {

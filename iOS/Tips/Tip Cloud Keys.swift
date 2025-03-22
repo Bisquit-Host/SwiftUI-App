@@ -17,6 +17,7 @@ struct Tip_CloudKeys: Tip {
 #Preview {
     VStack {
         TipView(Tip_CloudKeys())
+            .tipBackground(.ultraThinMaterial)
             .padding()
     }
 #if !os(watchOS)

@@ -15,6 +15,7 @@ struct ServerList: View {
 #warning("Present a warning when 2FA is disabled")
         ScrollView(showsIndicators: false) {
             TipView(Tip_ServerCardContextMenu())
+                .tipBackground(.ultraThinMaterial)
             
             if vm.hasFrozenServers {
                 TipView(Tip_SuspendedServer()) { action in
@@ -22,6 +23,7 @@ struct ServerList: View {
                         vm.showBilling = true
                     }
                 }
+                .tipBackground(.ultraThinMaterial)
             }
             
             ServerListGrid(vm.filteredServers)

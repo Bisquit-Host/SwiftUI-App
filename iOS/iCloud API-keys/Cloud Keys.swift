@@ -21,6 +21,7 @@ struct CloudKeys: View {
             List {
                 Section {
                     TipView(Tip_CloudKeys())
+                        .tipBackground(.ultraThinMaterial)
                     
                     ForEach(keys) { key in
                         CloudKeyCard($apiKey, key: key) {

@@ -21,6 +21,7 @@ struct Tip_JsonFormatter: Tip {
 #Preview {
     VStack {
         TipView(Tip_JsonFormatter())
+            .tipBackground(.ultraThinMaterial)
             .padding()
     }
 #if !os(watchOS)

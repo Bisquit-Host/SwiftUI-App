@@ -16,6 +16,7 @@ struct ServerList: View {
         List {
             Section {
                 TipView(Tip_ServerCardContextMenu())
+                    .tipBackground(.ultraThinMaterial)
                 
                 if vm.hasFrozenServers {
                     TipView(Tip_SuspendedServer()) { action in
@@ -23,6 +24,7 @@ struct ServerList: View {
                             vm.showBilling = true
                         }
                     }
+                    .tipBackground(.ultraThinMaterial)
                 }
             }
             .listRowBackground(Color.clear)
