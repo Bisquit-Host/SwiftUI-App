@@ -13,22 +13,6 @@ struct InfoTab: View {
     @State private var selectedImage: UIImage? = nil
     private let width = UIScreen.main.bounds.width
     
-    private var ip: String? {
-        let allocation = server.relationships.allocations.data.map(\.attributes).filter {
-            $0.isDefault
-        }.first
-        
-        guard let allocation else {
-            return nil
-        }
-        
-        if let ipAlias = allocation.ipAlias {
-            return ipAlias
-        } else {
-            return allocation.ip
-        }
-    }
-    
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 0) {
@@ -76,6 +60,22 @@ struct InfoTab: View {
                let image = loadImageFromDisk(fileName) {
                 selectedImage = image
             }
+        }
+    }
+    
+    private var ip: String? {
+        let allocation = server.relationships.allocations.data.map(\.attributes).filter {
+            $0.isDefault
+        }.first
+        
+        guard let allocation else {
+            return nil
+        }
+        
+        if let ipAlias = allocation.ipAlias {
+            return ipAlias
+        } else {
+            return allocation.ip
         }
     }
 }
