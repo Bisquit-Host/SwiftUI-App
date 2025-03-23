@@ -2434,7 +2434,7 @@
 			path = Allocations;
 			sourceTree = "<group>";
 		};
-		F300892C2B3D988C0051476C /* iCloud API-keys */ = {
+		F300892C2B3D988C0051476C /* Cloud Store */ = {
 			isa = PBXGroup;
 			children = (
 				F304498929E990E9006DC0C7 /* Cloud Keys.swift */,
@@ -2442,7 +2442,7 @@
 				F300892E2B3DC4B20051476C /* Cloud Key Context Menu.swift */,
 				F35FEB062B09F003004DA05D /* API Key.swift */,
 			);
-			path = "iCloud API-keys";
+			path = "Cloud Store";
 			sourceTree = "<group>";
 		};
 		F300C45F2D8C2B0100743300 /* Helpers */ = {
@@ -2579,7 +2579,7 @@
 				F37266EA29D9F06C005FD103 /* Cache VM.swift */,
 				F31BA580295901400006D126 /* Intro */,
 				F31A3F4A29EEEB8200BC0DFB /* Start Page */,
-				F300892C2B3D988C0051476C /* iCloud API-keys */,
+				F300892C2B3D988C0051476C /* Cloud Store */,
 				F31BA594295901DC0006D126 /* Server List */,
 				F3D2643C2A66AB97005C3777 /* Account */,
 				F31BA59B295902140006D126 /* Panel */,
