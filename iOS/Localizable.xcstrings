@@ -924,6 +924,9 @@
     "Best places" : {
 
     },
+    "Beta Testing" : {
+
+    },
     "Biometry Usage" : {
       "localizations" : {
         "ru" : {
@@ -5311,6 +5314,9 @@
       }
     },
     "Terms" : {
+
+    },
+    "TestFlight" : {
 
     },
     "The list of servers couldn't be loaded. Check your internet connection or contact support" : {
