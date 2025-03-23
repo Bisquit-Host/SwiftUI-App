@@ -46,7 +46,7 @@ struct FileCard: View {
                 //                TextFile(id, path: root, name: name)
                 //
                 //            } else if mimeType.contains("video") {
-                //                VideoFile(id, root: root, name: name)
+                //                VideoFile(id, name: name, at: root)
                 
                 let link = FileLink(id: id, name: name, root: root)
                 

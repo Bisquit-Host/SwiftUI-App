@@ -34,7 +34,7 @@ struct FileView: View {
                         TextFile(id, path: root, name: name)
                         
                     } else if mimeType.contains("video") {
-                        VideoFile(id, path: root, name: name)
+                        VideoFile(id, name: name, at: root)
                         
                     } else if mimeType.contains("audio") {
                         AudioPlayerView(id, path: root, name: name)

@@ -7,13 +7,12 @@ struct VideoFile: View {
     
     @Environment(\.dismiss) private var dismiss
     
-    private let id, path, name: String
+    private let id, name, path: String
     
-    init(_ id: String, path: String, name: String) {
+    init(_ id: String, name: String, at path: String) {
         self.id = id
-        self.path = path
         self.name = name
-        
+        self.path = path
         self.vm = VideoFileVM(id, root: path, name: name)
     }
     
@@ -91,6 +90,6 @@ struct VideoFile: View {
 }
 
 #Preview {
-    VideoFile("id", path: "", name: "Preview")
+    VideoFile("id", name: "Preview", at: "")
         .environmentObject(FileTabVM(""))
 }
