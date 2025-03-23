@@ -25,9 +25,7 @@ final class PreviewProp {
         isSuspended: false,
         serverOwner: true,
         relationships: .init(
-            allocations: ServerAllocations(
-                data: []
-            )
+            allocations: ServerAllocations(data: [])
         )
     )
 }
