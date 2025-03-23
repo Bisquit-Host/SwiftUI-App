@@ -387,6 +387,15 @@
 		F32F2CDC2D8F7047007CF4DE /* Discover View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CD92D8F7047007CF4DE /* Discover View.swift */; };
 		F32F2CDD2D8F7047007CF4DE /* Discover View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CD92D8F7047007CF4DE /* Discover View.swift */; };
 		F32F2CDE2D8F7047007CF4DE /* Discover View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CD92D8F7047007CF4DE /* Discover View.swift */; };
+		F32F2CFD2D908DED007CF4DE /* Background Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F3AAA2D8EB8EC00E69B98 /* Background Image.swift */; };
+		F32F2CFE2D908DED007CF4DE /* Background Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F3AAA2D8EB8EC00E69B98 /* Background Image.swift */; };
+		F32F2D002D908E1D007CF4DE /* Background Image Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CFF2D908E1D007CF4DE /* Background Image Helper.swift */; };
+		F32F2D012D908E1D007CF4DE /* Background Image Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CFF2D908E1D007CF4DE /* Background Image Helper.swift */; };
+		F32F2D022D908E1D007CF4DE /* Background Image Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CFF2D908E1D007CF4DE /* Background Image Helper.swift */; };
+		F32F2D032D908E1D007CF4DE /* Background Image Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CFF2D908E1D007CF4DE /* Background Image Helper.swift */; };
+		F32F2D042D908E53007CF4DE /* Background Image Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CFF2D908E1D007CF4DE /* Background Image Helper.swift */; };
+		F32F2D052D908E53007CF4DE /* Background Image Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CFF2D908E1D007CF4DE /* Background Image Helper.swift */; };
+		F32F2D072D908FE5007CF4DE /* MailCover in Frameworks */ = {isa = PBXBuildFile; productRef = F32F2D062D908FE5007CF4DE /* MailCover */; };
 		F32F3AAB2D8EB8EC00E69B98 /* Background Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F3AAA2D8EB8EC00E69B98 /* Background Image.swift */; };
 		F32F3AAC2D8EB8EC00E69B98 /* Background Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F3AAA2D8EB8EC00E69B98 /* Background Image.swift */; };
 		F32F3AAD2D8EB8EC00E69B98 /* Background Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F3AAA2D8EB8EC00E69B98 /* Background Image.swift */; };
@@ -1805,6 +1814,7 @@
 		F32F2CCD2D8F6FCE007CF4DE /* Discover Card Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Discover Card Layout.swift"; sourceTree = "<group>"; };
 		F32F2CD32D8F6FDC007CF4DE /* Avg Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Avg Color.swift"; sourceTree = "<group>"; };
 		F32F2CD92D8F7047007CF4DE /* Discover View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Discover View.swift"; sourceTree = "<group>"; };
+		F32F2CFF2D908E1D007CF4DE /* Background Image Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Background Image Helper.swift"; sourceTree = "<group>"; };
 		F32F3AAA2D8EB8EC00E69B98 /* Background Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Background Image.swift"; sourceTree = "<group>"; };
 		F32F43FD2B7544A200C9470B /* User List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User List.swift"; sourceTree = "<group>"; };
 		F32F43FE2B7544A200C9470B /* User Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Card.swift"; sourceTree = "<group>"; };
@@ -2265,6 +2275,7 @@
 				F3202D5B2D5759690030B3CC /* Algorithms in Frameworks */,
 				F33C2AC32C691735002FD150 /* QuickLooking in Frameworks */,
 				F32716DB2CF628CB00F2DC31 /* SafariCover in Frameworks */,
+				F32F2D072D908FE5007CF4DE /* MailCover in Frameworks */,
 				F308601A2B002D36004D776A /* PteroNet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3172,6 +3183,7 @@
 				F32F3AAA2D8EB8EC00E69B98 /* Background Image.swift */,
 				F300C4622D8C388400743300 /* Background Image Picker View.swift */,
 				F300C4612D8C388400743300 /* Background Image Picker.swift */,
+				F32F2CFF2D908E1D007CF4DE /* Background Image Helper.swift */,
 			);
 			path = Design;
 			sourceTree = "<group>";
@@ -4165,6 +4177,7 @@
 				F32716DA2CF628CB00F2DC31 /* SafariCover */,
 				F3202C8E2D5590E20030B3CC /* Kingfisher */,
 				F3202D5A2D5759690030B3CC /* Algorithms */,
+				F32F2D062D908FE5007CF4DE /* MailCover */,
 			);
 			productName = "Bisquit.Host visionOS";
 			productReference = F3BD76F22A43C890003E7385 /* visionOS.app */;
@@ -4508,6 +4521,7 @@
 				F370804F2A2A1EAC0046CE70 /* Schedule List.swift in Sources */,
 				F3202D1A2D562B980030B3CC /* Browser Card VDS.swift in Sources */,
 				F3EB09DB2A295C550073916A /* Video File.swift in Sources */,
+				F32F2D042D908E53007CF4DE /* Background Image Helper.swift in Sources */,
 				F373CD812D88D426008B64BE /* Intro.swift in Sources */,
 				F33CDBFE2A26B8BC008D0214 /* Plan Models.swift in Sources */,
 				F33CDC032A26B95C008D0214 /* Browser Card.swift in Sources */,
@@ -4544,6 +4558,7 @@
 				F3AB4A792CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
 				F30088F32B3B475C0051476C /* Startup Card.swift in Sources */,
 				F37061CA29774886009B4067 /* Nav Destinations.swift in Sources */,
+				F32F2CFD2D908DED007CF4DE /* Background Image.swift in Sources */,
 				F3EB09DD2A295F7C0073916A /* Text File VM.swift in Sources */,
 				F3D295162AF396FD00ED43A0 /* Tabs.swift in Sources */,
 				F3CCF5B92B34543B005FFF2C /* User 2Fa.swift in Sources */,
@@ -4813,6 +4828,7 @@
 				F373CD6F2D88A386008B64BE /* Custom Text Effect.swift in Sources */,
 				F373CD702D88A386008B64BE /* Infinite Scroll View.swift in Sources */,
 				F373CD712D88A386008B64BE /* Intro.swift in Sources */,
+				F32F2D012D908E1D007CF4DE /* Background Image Helper.swift in Sources */,
 				F3AB4A942CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
 				F300892F2B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */,
 				F371468C2B123807001E0296 /* Activity View State.swift in Sources */,
@@ -5064,6 +5080,7 @@
 				F3A800372A7313E900CAC40B /* Tip Cloud Keys.swift in Sources */,
 				F3D3DBD429B889E600096115 /* Browser Topbar.swift in Sources */,
 				F3BC03B42B1FF4830011F98A /* Task Context Menu.swift in Sources */,
+				F32F2D002D908E1D007CF4DE /* Background Image Helper.swift in Sources */,
 				F36D532C2A05B87A007324C6 /* Database List.swift in Sources */,
 				F337C16A2A8D07E2006F321C /* Startup VM.swift in Sources */,
 				F35DA95A2A28F80900803E7E /* Upload Progress.swift in Sources */,
@@ -5466,6 +5483,7 @@
 				F3D2959C2AF3A07200ED43A0 /* Folder File.swift in Sources */,
 				F3BC03B02B1FF2FC0011F98A /* Schedule Context Menu.swift in Sources */,
 				F3D295E42AF3A39400ED43A0 /* Power Menu.swift in Sources */,
+				F32F2D022D908E1D007CF4DE /* Background Image Helper.swift in Sources */,
 				F3D295722AF39F0200ED43A0 /* Account View.swift in Sources */,
 				F3CCB1CD2CAE75D0000F8207 /* Debug Settings.swift in Sources */,
 				F38F9E152CE7647D0033EFE3 /* Image Playground.swift in Sources */,
@@ -5667,6 +5685,7 @@
 				F32F2CCF2D8F6FCE007CF4DE /* Discover Card Layout.swift in Sources */,
 				F3202D072D562AE20030B3CC /* Browser List VDS.swift in Sources */,
 				F3255E1E2C904A63008E04DE /* SSH VM.swift in Sources */,
+				F32F2D032D908E1D007CF4DE /* Background Image Helper.swift in Sources */,
 				F3202D462D56DC050030B3CC /* Prefetcher.swift in Sources */,
 				F3202D1D2D562B980030B3CC /* Browser Card VDS.swift in Sources */,
 				F3A7CEEE2C8BB78F00413400 /* Gauge Regular.swift in Sources */,
@@ -5767,6 +5786,7 @@
 				F3202D592D5758E50030B3CC /* Log Meta View.swift in Sources */,
 				F3A31B0C2B0B161D00F89C51 /* Cloud Key Card.swift in Sources */,
 				F3202D4C2D56DC050030B3CC /* Prefetcher.swift in Sources */,
+				F32F2D052D908E53007CF4DE /* Background Image Helper.swift in Sources */,
 				F3202D562D5758DC0030B3CC /* Log VM.swift in Sources */,
 				F3202D572D5758DC0030B3CC /* Log Card.swift in Sources */,
 				F3464D1F2A86396500188B0C /* Change Power.swift in Sources */,
@@ -5804,6 +5824,7 @@
 				F3DF03DB2B74F01C00CF6F5E /* Database VM.swift in Sources */,
 				F32716DE2CF62CAB00F2DC31 /* Create Backup Button.swift in Sources */,
 				F3F2BB9D2A5403DD00D44CA6 /* Server List VM.swift in Sources */,
+				F32F2CFE2D908DED007CF4DE /* Background Image.swift in Sources */,
 				F3F2BBAB2A540E4400D44CA6 /* Nav Extension.swift in Sources */,
 				F38928322A445EA900561CDF /* Server Card.swift in Sources */,
 				F3FD9F992C651A9200A69314 /* File Tab VM.swift in Sources */,
@@ -7464,6 +7485,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms" */;
 			productName = Algorithms;
+		};
+		F32F2D062D908FE5007CF4DE /* MailCover */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3E7BDD82A315C9D00CD03C3 /* XCRemoteSwiftPackageReference "MailCover" */;
+			productName = MailCover;
 		};
 		F335CA052C63E86D006C71C6 /* DeviceKit */ = {
 			isa = XCSwiftPackageProductDependency;

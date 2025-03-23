@@ -7,7 +7,7 @@ struct FileErrorView: View {
     
     private let path, name: String
     
-    init(path: String, name: String) {
+    init(_ name: String, at path: String) {
         self.path = path
         self.name = name
     }
@@ -30,6 +30,6 @@ struct FileErrorView: View {
 }
 
 #Preview {
-    FileErrorView(path: "path", name: "name")
+    FileErrorView("name", at: "path")
         .environmentObject(FileTabVM(""))
 }

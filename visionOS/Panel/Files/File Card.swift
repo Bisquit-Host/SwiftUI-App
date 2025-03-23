@@ -5,6 +5,12 @@ struct FileLink: Codable, Hashable {
     let id: String
     let name: String
     let root: String
+    
+    init(id: String, name: String, at root: String) {
+        self.id = id
+        self.name = name
+        self.root = root
+    }
 }
 
 struct FileCard: View {
@@ -81,7 +87,7 @@ struct FileCard: View {
 
 #Preview {
     List {
-        FileCard("", file: sampleJSON(.fileListAttributes), root: "")
+        FileCard("", file: sampleJSON(.fileListAttributes), at: "")
             .environment(NavState())
     }
 }

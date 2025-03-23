@@ -37,10 +37,10 @@ struct FileView: View {
                         VideoFile(id, name: name, at: root)
                         
                     } else if mimeType.contains("audio") {
-                        AudioPlayerView(id, path: root, name: name)
+                        AudioPlayerView(id, name: name, at: root)
                         
                     } else {
-                        QuickLookFile(id, path: root, name: name)
+                        QuickLookFile(id, name: name, at: root)
                     }
                 }
                 .environmentObject(vm)

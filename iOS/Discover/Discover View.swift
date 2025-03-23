@@ -18,10 +18,20 @@ struct Discover: View {
     //        .init("Offer", subtitle: "Document", image: .docYellow)
     //    ]
     
-    private let columns = Array(
-        repeating: GridItem(.fixed(UIScreen.main.bounds.width * 0.45 + 2), spacing: 16),
-        count: 2
-    )
+    private var screenWidth: CGFloat {
+#if os(visionOS)
+        100
+#else
+        UIScreen.main.bounds.width
+#endif
+    }
+    
+    private var columns: [GridItem] {
+        Array(
+            repeating: GridItem(.fixed(screenWidth * 0.45 + 2), spacing: 16),
+            count: 2
+        )
+    }
     
     @State private var sheetConfigurations = false
     @State private var showMailCover = false

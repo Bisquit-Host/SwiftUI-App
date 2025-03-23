@@ -8,7 +8,14 @@ struct DiscoverCardLayout: View {
     }
     
     private let imageSize = 60.0
-    private let screenWidth = UIScreen.main.bounds.width
+    
+    private var screenWidth: CGFloat {
+#if os(visionOS)
+        100
+#else
+        UIScreen.main.bounds.width
+#endif
+    }
     
     private var squareSize: CGFloat {
         screenWidth * 0.45
@@ -26,7 +33,7 @@ struct DiscoverCardLayout: View {
                         .foregroundStyle(Color(averageColor))
                         .frame(width: imageSize + 3, height: imageSize + 3)
                 }
-                                
+                
                 Image(link.image)
                     .resizable()
                     .frame(width: imageSize, height: imageSize)

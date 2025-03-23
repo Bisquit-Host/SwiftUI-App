@@ -8,9 +8,9 @@ struct QuickLookFile: View {
     
     @Environment(\.dismiss) private var dismiss
     
-    private let id, path, name: String
+    private let id, name, path: String
     
-    init(_ id: String, path: String, name: String) {
+    init(_ id: String, name: String, at path: String) {
         self.id = id
         self.path = path
         self.name = name
@@ -89,6 +89,6 @@ struct QuickLookFile: View {
 }
 
 #Preview {
-    QuickLookFile("", path: "", name: "")
+    QuickLookFile("", name: "", at: "")
         .environmentObject(FileTabVM(""))
 }

@@ -28,6 +28,6 @@ struct FileView: View {
 }
 
 #Preview {
-    FileView("", root: "", file: sampleJSON(.fileListAttributes))
+    FileView("", at: "", file: sampleJSON(.fileListAttributes))
         .padding()
 }

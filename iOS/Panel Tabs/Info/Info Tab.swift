@@ -57,7 +57,7 @@ struct InfoTab: View {
         .toolbarBackground(.visible, for: .tabBar)
         .onAppear {
             if let fileName = UserDefaults.standard.string(forKey: "background_image_fileName"),
-               let image = loadImageFromDisk(fileName) {
+               let image = BackgroundImageHelper.loadImageFromDisk(fileName) {
                 selectedImage = image
             }
         }

@@ -7,9 +7,9 @@ struct AudioPlayerView: View {
     
     @Environment(\.dismiss) private var dismiss
     
-    private let id, path, name: String
+    private let id, name, path: String
     
-    init(_ id: String, path: String, name: String) {
+    init(_ id: String, name: String, at path: String) {
         self.id = id
         self.path = path
         self.name = name
@@ -73,6 +73,6 @@ struct AudioPlayerView: View {
 }
 
 #Preview {
-    AudioPlayerView("", path: "", name: "Preview")
+    AudioPlayerView("", name: "Preview", at: "")
         .environmentObject(FileTabVM(""))
 }
