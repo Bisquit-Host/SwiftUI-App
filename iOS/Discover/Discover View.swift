@@ -37,17 +37,13 @@ struct Discover: View {
                     )
                 }
                 
-                Button {
-                    openSafari("https://my.bisquit.host/login")
-                } label: {
+                DiscoverCard("https://my.bisquit.host/login") {
                     DiscoverCardLayout(
                         .init("Support", subtitle: "Me Potato, me HELP", image: .support)
                     )
                 }
                 
-                Button {
-                    openSafari("https://status.bisquit.host/status/bisquithost")
-                } label: {
+                DiscoverCard("https://status.bisquit.host/status/bisquithost") {
                     DiscoverCardLayout(
                         .init("Status", subtitle: "System", image: .status)
                     )
@@ -93,17 +89,13 @@ struct Discover: View {
                     )
                 }
                 
-                Button {
-                    openSafari("https://wiki.bisquit.host")
-                } label: {
+                DiscoverCard("https://wiki.bisquit.host") {
                     DiscoverCardLayout(
                         .init("Wiki", subtitle: "How to...?", image: .wiki)
                     )
                 }
                 
-                Button {
-                    openSafari("https://mgr.bisquit.host")
-                } label: {
+                DiscoverCard("https://mgr.bisquit.host") {
                     DiscoverCardLayout(
                         .init("Panel", subtitle: "Web", image: .safari)
                     )
@@ -117,17 +109,13 @@ struct Discover: View {
                     )
                 }
                 
-                Button {
-                    openSafari("https://bisquit.host/policy.pdf")
-                } label: {
+                DiscoverCard("https://bisquit.host/policy.pdf") {
                     DiscoverCardLayout(
                         .init("Privacy", subtitle: "Policy", image: .docBlue)
                     )
                 }
                 
-                Button {
-                    openSafari("https://bisquit.host/terms.pdf")
-                } label: {
+                DiscoverCard("https://bisquit.host/terms.pdf") {
                     DiscoverCardLayout(
                         .init("Terms", subtitle: "Document", image: .docYellow)
                     )

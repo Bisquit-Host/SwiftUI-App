@@ -1,19 +1,19 @@
-import SwiftUI
-
-struct DiscoverItem {
-    let name: LocalizedStringKey
-    let icon, url: String
-    let color: Color
-    
-    init(
-        _ name: LocalizedStringKey,
-        icon: String,
-        url: String,
-        color: Color = .blue
-    ) {
-        self.name = name
-        self.icon = icon
-        self.url = url
-        self.color = color
-    }
-}
+//import SwiftUI
+//
+//struct DiscoverItem {
+//    let name: LocalizedStringKey
+//    let icon, url: String
+//    let color: Color
+//    
+//    init(
+//        _ name: LocalizedStringKey,
+//        icon: String,
+//        url: String,
+//        color: Color = .blue
+//    ) {
+//        self.name = name
+//        self.icon = icon
+//        self.url = url
+//        self.color = color
+//    }
+//}
