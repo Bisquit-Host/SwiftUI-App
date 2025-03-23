@@ -18,7 +18,7 @@ struct FileView: View {
         HStack {
             NavigationLink {
                 if mimeType.contains("directory") {
-                    FileTab(id, root: root + "/" + name)
+                    FileTab(id, at: root + "/" + name)
                     
                 } else if mimeType.contains("text") || file.mimetype.contains("json") {
                     TextFile(id, name: name, at: root + "/")

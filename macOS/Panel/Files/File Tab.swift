@@ -27,7 +27,7 @@ struct FileTab: View {
                         NavigationLink {
                             
                         } label: {
-                            FileView(id, root: root, file: file)
+                            FileView(id, at: root, file: file)
                         }
                     }
                 }
@@ -41,7 +41,7 @@ struct FileTab: View {
                     NavigationLink {
                         
                     } label: {
-                        FileView(id, root: root, file: file)
+                        FileView(id, at: root, file: file)
                     }
                 }
             }

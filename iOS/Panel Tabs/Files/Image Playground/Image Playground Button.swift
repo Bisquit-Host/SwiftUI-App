@@ -37,7 +37,7 @@ struct ImagePlaygroundButton: View {
         .disabled(!supportsImagePlayground)
         .sheet($sheetImagePlayground) {
             NavigationView {
-                ImagePlayground(root: root)
+                ImagePlayground(at: root)
             }
         }
     }

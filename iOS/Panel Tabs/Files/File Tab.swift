@@ -5,7 +5,7 @@ struct FileTab: View {
     
     private let id, root: String
     
-    init(_ id: String, root: String = "") {
+    init(_ id: String, at root: String = "") {
         self.id = id
         self.root = root
     }
@@ -23,7 +23,7 @@ struct FileTab: View {
             Section {
                 FileSearch($vm.searchField)
                 
-                UploadMenu($image, root: root)
+                UploadMenu($image, at: root)
                 
                 if vm.isUploading {
                     UploadProgress()

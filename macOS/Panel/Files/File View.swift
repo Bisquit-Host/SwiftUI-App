@@ -7,7 +7,7 @@ struct FileView: View {
     private let id, root: String
     private let file: FileAttributes
     
-    init(_ id: String, root: String, file: FileAttributes) {
+    init(_ id: String, at root: String, file: FileAttributes) {
         self.id = id
         self.root = root
         self.file = file

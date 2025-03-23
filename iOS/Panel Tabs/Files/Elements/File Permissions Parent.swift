@@ -12,10 +12,10 @@ struct FilePermissionsParent: View {
     
     var body: some View {
 #if os(watchOS) || os(macOS)
-        FilePermissionsView(file, root: root)
+        FilePermissionsView(file, at: root)
 #else
         NavigationView {
-            FilePermissionsView(file, root: root)
+            FilePermissionsView(file, at: root)
         }
 #endif
     }

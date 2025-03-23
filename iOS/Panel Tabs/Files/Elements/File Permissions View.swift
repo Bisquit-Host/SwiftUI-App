@@ -9,7 +9,7 @@ struct FilePermissionsView: View {
     private let file: FileAttributes
     private let root: String
     
-    init(_ file: FileAttributes, root: String) {
+    init(_ file: FileAttributes, at root: String) {
         self.file = file
         self.root = root
     }
@@ -66,7 +66,7 @@ struct FilePermissionsView: View {
             
             Button {
                 if isDifferent {
-                    vm.changeChmod(file.name, root: root, mode: newMode) {
+                    vm.changeChmod(file.name, at: root, mode: newMode) {
                         dismiss()
                     }
                 } else {
@@ -153,7 +153,7 @@ fileprivate extension Array {
 #Preview {
     FilePermissionsView(
         sampleJSON(.fileListAttributes),
-        root: ""
+        at: ""
     )
     .environmentObject(FileTabVM(""))
 }

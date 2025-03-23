@@ -19,7 +19,7 @@ struct FolderFile: View {
             Section {
                 FileSearch($vm.searchField)
                 
-                UploadMenu($image, root: root)
+                UploadMenu($image, at: root)
                 
                 if vm.isUploading {
                     UploadProgress()

@@ -5,7 +5,7 @@ struct FileTab: View {
     
     private let id, root: String
     
-    init(_ id: String, root: String = "") {
+    init(_ id: String, at root: String = "") {
         self.id = id
         self.root = root
         _vm = StateObject(wrappedValue: FileTabVM(id))

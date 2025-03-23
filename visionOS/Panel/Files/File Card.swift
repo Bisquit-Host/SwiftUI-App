@@ -20,7 +20,7 @@ struct FileCard: View {
     init(
         _ id: String,
         file: FileAttributes,
-        root: String = ""
+        at root: String = ""
     ) {
         self.id = id
         self.file = file
@@ -33,7 +33,7 @@ struct FileCard: View {
         
         if mimeType.contains("directory") {
             NavigationLink {
-                FileList(id, root: root + name + "/")
+                FileList(id, at: root + name + "/")
                     .environmentObject(vm)
                 
                 //                FolderFile(id, path: root + name)
@@ -48,7 +48,7 @@ struct FileCard: View {
                 //            } else if mimeType.contains("video") {
                 //                VideoFile(id, name: name, at: root)
                 
-                let link = FileLink(id: id, name: name, root: root)
+                let link = FileLink(id: id, name: name, at: root)
                 
                 openWindow(id: "QuickLook", value: link)
             } label: {

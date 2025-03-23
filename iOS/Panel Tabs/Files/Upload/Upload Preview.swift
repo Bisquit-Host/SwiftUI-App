@@ -8,7 +8,7 @@ struct UploadPreview: View {
     private let urls: [URL]
     private let root: String
     
-    init(_ urls: [URL], root: String = "") {
+    init(_ urls: [URL], at root: String = "") {
         self.urls = urls
         self.root = root
     }
@@ -23,7 +23,7 @@ struct UploadPreview: View {
                 Spacer()
                 
                 Button("Upload") {
-                    vm.handleFileImport(urls, root: root) {
+                    vm.handleFileImport(urls, at: root) {
                         dismiss()
                     }
                 }

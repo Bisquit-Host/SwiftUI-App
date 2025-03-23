@@ -57,7 +57,7 @@ final class FileTabVM: ObservableObject {
         return String(permission)
     }
     
-    func changeChmod(_ file: String, root: String, mode: String, onSuccess: @escaping () -> ()) {
+    func changeChmod(_ file: String, at root: String, mode: String, onSuccess: @escaping () -> ()) {
         fileChmodAPI(id, root: root, file: file, mode: mode) { result in
             switch result {
             case .success:
@@ -118,7 +118,7 @@ final class FileTabVM: ObservableObject {
     func uploadFile(
         _ urlString: String,
         name: String,
-        root: String,
+        at root: String,
         mimeType: String,
         fileUrl: URL
     ) {
@@ -145,7 +145,7 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func handleFileImport(_ urls: [URL], root: String, onSuccess: @escaping () -> Void) {
+    func handleFileImport(_ urls: [URL], at root: String, onSuccess: @escaping () -> Void) {
         for fileURL in urls {
             let fileName = fileURL.lastPathComponent
             
@@ -163,7 +163,7 @@ final class FileTabVM: ObservableObject {
                         self.uploadFile(
                             url,
                             name: fileName,
-                            root: root,
+                            at: root,
                             mimeType: mimeType,
                             fileUrl: fileURL
                         )
@@ -206,7 +206,7 @@ final class FileTabVM: ObservableObject {
                     self.uploadFile(
                         url,
                         name: "Image\(UUID().uuidString).heic",
-                        root: root,
+                        at: root,
                         mimeType: mimeType,
                         fileUrl: fileURL
                     )
