@@ -2013,7 +2013,7 @@
 		F3A7CEC72C8B685500413400 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = Library/Frameworks/Messages.framework; sourceTree = DEVELOPER_DIR; };
 		F3A7CECA2C8B685500413400 /* Messages VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Messages VC.swift"; sourceTree = "<group>"; };
 		F3A7CECF2C8B685600413400 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F3A7CED12C8B685600413400 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3A7CED12C8B685600413400 /* iMessage.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = iMessage.plist; sourceTree = "<group>"; };
 		F3A7CEDB2C8B95CB00413400 /* Home View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home View.swift"; sourceTree = "<group>"; };
 		F3A7CEDD2C8B97A300413400 /* iMessage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iMessage.entitlements; sourceTree = "<group>"; };
 		F3A7CEE42C8B9E7500413400 /* Messages VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Messages VM.swift"; sourceTree = "<group>"; };
@@ -3377,7 +3377,7 @@
 				F3A7CECA2C8B685500413400 /* Messages VC.swift */,
 				F3A7CECF2C8B685600413400 /* Assets.xcassets */,
 				F3A7CEDD2C8B97A300413400 /* iMessage.entitlements */,
-				F3A7CED12C8B685600413400 /* Info.plist */,
+				F3A7CED12C8B685600413400 /* iMessage.plist */,
 				F3A7CEDB2C8B95CB00413400 /* Home View.swift */,
 				F3A7CEE42C8B9E7500413400 /* Messages VM.swift */,
 				F3A7CEFF2C8BBAFD00413400 /* Server List */,
@@ -6778,7 +6778,7 @@
 				CURRENT_PROJECT_VERSION = 0;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "iMessage Extension/Info.plist";
+				INFOPLIST_FILE = "iMessage Extension/iMessage.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Bisquit.Host. All rights reserved.";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -6807,7 +6807,7 @@
 				CURRENT_PROJECT_VERSION = 0;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "iMessage Extension/Info.plist";
+				INFOPLIST_FILE = "iMessage Extension/iMessage.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Bisquit.Host. All rights reserved.";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
