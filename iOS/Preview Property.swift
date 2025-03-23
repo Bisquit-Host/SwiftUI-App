@@ -26,9 +26,7 @@ final class PreviewProp {
         serverOwner: true,
         relationships: .init(
             allocations: ServerAllocations(
-                data: [
-                    
-                ]
+                data: []
             )
         )
     )
