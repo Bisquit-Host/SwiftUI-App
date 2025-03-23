@@ -80,7 +80,7 @@ struct Discover: View {
                     openSafari("https://my.bisquit.host/discord.php")
                 } label: {
                     DiscoverCardLayout(
-                        .init("Client role", subtitle: "Guild", image: .testFlight)
+                        .init("Client role", subtitle: "Guild", image: .discord)
                     )
                 }
                 
@@ -88,7 +88,7 @@ struct Discover: View {
                     openSafari("https://testflight.apple.com/join/mkaX3AO1")
                 } label: {
                     DiscoverCardLayout(
-                        .init("TestFlight", subtitle: "Beta Testing", image: .defaultIcon)
+                        .init("TestFlight", subtitle: "Beta Testing", image: .testFlight)
                     )
                 }
                 
