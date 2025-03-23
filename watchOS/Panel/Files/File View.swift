@@ -21,10 +21,10 @@ struct FileView: View {
                     FileTab(id, root: root + "/" + name)
                     
                 } else if mimeType.contains("text") || file.mimetype.contains("json") {
-                    TextFile(id, path: root + "/", name: name)
+                    TextFile(id, name: name, at: root + "/")
                     
                 } else if mimeType.contains("image") {
-                    ImageFile(id, path: root + "/", name: name)
+                    ImageFile(id, name: name, at: root + "/")
                     
                 } else if mimeType.contains("video") {
                     VideoFile(id, name: name, at: root + "/")

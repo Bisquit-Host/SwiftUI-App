@@ -31,7 +31,7 @@ struct FileView: View {
             } else {
                 Group {
                     if mimeType.contains("text") || mimeType.contains("json") {
-                        TextFile(id, path: root, name: name)
+                        TextFile(id, name: name, at: root)
                         
                     } else if mimeType.contains("video") {
                         VideoFile(id, name: name, at: root)

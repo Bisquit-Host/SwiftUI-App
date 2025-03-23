@@ -28,7 +28,7 @@ struct FileTab: View {
                             FileTab(id, root: root + "/" + name)
                             
                         } else if mimeType.contains("text") || mimeType.contains("json") {
-                            TextFile(id, path: root, name: name)
+                            TextFile(id, name: name, at: root)
                             
                         } else if mimeType.contains("image") {
                             ImageFile(id, path: root, name: name)

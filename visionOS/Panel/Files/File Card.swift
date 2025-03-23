@@ -10,7 +10,7 @@ struct FileLink: Codable, Hashable {
 struct FileCard: View {
     @EnvironmentObject private var vm: FileTabVM
     @Environment(NavState.self) private var navState
-    //    @EnvironmentObject private var store: ValueStore
+    // @EnvironmentObject private var store: ValueStore
     
     @Environment(\.openWindow) private var openWindow
     
@@ -43,7 +43,7 @@ struct FileCard: View {
         } else {
             Button {
                 //            if mimeType.contains("text") || mimeType.contains("json") {
-                //                TextFile(id, path: root, name: name)
+                //                TextFile(id, name: name, at: root)
                 //
                 //            } else if mimeType.contains("video") {
                 //                VideoFile(id, name: name, at: root)

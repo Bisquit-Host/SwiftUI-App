@@ -20,7 +20,7 @@ final class TextFileVM {
         }
     }
     
-    func writeFile(_ write: String, path: String) {
+    func writeFile(_ write: String, at path: String) {
         fileWriteAPI(id, write: write, path: path) { result in
             switch result {
             case .success:
