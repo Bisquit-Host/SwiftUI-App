@@ -4,7 +4,7 @@
 - iOS/iPadOS 17+
 - macOS 14+
 - watchOS 10+
-- tvOS 18+
+- tvOS 17+
 - visionOS 1+
 
 ### Features
