@@ -30,7 +30,7 @@ struct InfoTab: View {
                         .clipped()
                         .blur(radius: 55, opaque: true)
                         .blur(radius: 10)
-                        .offset(y: -15) // +15 to the ZStack's offset
+                        .offset(y: -15) // +15 to ZStack's offset
                     
                     VStack(spacing: 10) {
                         InfoTabHeading(server)
