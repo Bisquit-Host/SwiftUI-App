@@ -1726,7 +1726,7 @@
 		F300C4622D8C388400743300 /* Background Image Picker View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Background Image Picker View.swift"; sourceTree = "<group>"; };
 		F30207D42D8B2A6000C26008 /* Swifty Ping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swifty Ping.swift"; sourceTree = "<group>"; };
 		F303214A2B3FEA45002A73B8 /* Panel Settings View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Settings View.swift"; sourceTree = "<group>"; };
-		F304498629E98AE4006DC0C7 /* Bisquit.Host.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bisquit.Host.entitlements; sourceTree = "<group>"; };
+		F304498629E98AE4006DC0C7 /* iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOS.entitlements; sourceTree = "<group>"; };
 		F304498929E990E9006DC0C7 /* Cloud Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cloud Keys.swift"; sourceTree = "<group>"; };
 		F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List Footer.swift"; sourceTree = "<group>"; };
 		F30C13112A54609000A7EFF0 /* Server List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List.swift"; sourceTree = "<group>"; };
@@ -2062,7 +2062,7 @@
 		F3CB53D52971CF6B00A213B0 /* Database Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database Card.swift"; sourceTree = "<group>"; };
 		F3CCB1CB2CAE75D0000F8207 /* Debug Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Debug Settings.swift"; sourceTree = "<group>"; };
 		F3CCB1CF2CAE8AF5000F8207 /* Bisquit-Host-Mac-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bisquit-Host-Mac-Info.plist"; sourceTree = "<group>"; };
-		F3CCB1D12CAE8B76000F8207 /* Bisquit-Host Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bisquit-Host Info.plist"; sourceTree = "<group>"; };
+		F3CCB1D12CAE8B76000F8207 /* iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = iOS.plist; sourceTree = "<group>"; };
 		F3CCB1D32CAE8BDA000F8207 /* visionOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = visionOS.plist; sourceTree = "<group>"; };
 		F3CCB1D52CAE8C4D000F8207 /* Watch-App Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Watch-App Info.plist"; sourceTree = "<group>"; };
 		F3CCB1D62CAE8C80000F8207 /* Bisquit-Host tvOS Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bisquit-Host tvOS Info.plist"; sourceTree = "<group>"; };
@@ -2554,8 +2554,8 @@
 				F3D52B242B13FE9C00167DD6 /* App Delegate.swift */,
 				F300C45F2D8C2B0100743300 /* Helpers */,
 				F31BA564295900270006D126 /* Nav */,
-				F3CCB1D12CAE8B76000F8207 /* Bisquit-Host Info.plist */,
-				F304498629E98AE4006DC0C7 /* Bisquit.Host.entitlements */,
+				F3CCB1D12CAE8B76000F8207 /* iOS.plist */,
+				F304498629E98AE4006DC0C7 /* iOS.entitlements */,
 				F36797722A39C4ED009F2788 /* Localizable.xcstrings */,
 				F31BA52A2958FF7D0006D126 /* Assets.xcassets */,
 				F378E3322AF38286009925DB /* PrivacyInfo.xcprivacy */,
@@ -6372,14 +6372,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = accentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				BUNDLE_ID_SUFFIX = "-debug";
-				CODE_SIGN_ENTITLEMENTS = iOS/Bisquit.Host.entitlements;
+				CODE_SIGN_ENTITLEMENTS = iOS/iOS.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "iOS/Bisquit-Host Info.plist";
+				INFOPLIST_FILE = iOS/iOS.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.debug;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
@@ -6425,14 +6425,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = accentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				BUNDLE_ID_SUFFIX = "";
-				CODE_SIGN_ENTITLEMENTS = iOS/Bisquit.Host.entitlements;
+				CODE_SIGN_ENTITLEMENTS = iOS/iOS.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "iOS/Bisquit-Host Info.plist";
+				INFOPLIST_FILE = iOS/iOS.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.debug;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
