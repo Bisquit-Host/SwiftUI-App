@@ -16,6 +16,7 @@ struct Discover: View {
     //        .init("Maps", subtitle: "Best places", image: .maps),
     //        .init("Privacy Policy", subtitle: "Document", image: .docBlue),
     //        .init("Offer", subtitle: "Document", image: .docYellow)
+    // TestFlight
     //    ]
     
     private var screenWidth: CGFloat {
@@ -84,10 +85,10 @@ struct Discover: View {
                 }
                 
                 Button {
-                    showMailCover = true
+                    openSafari("https://testflight.apple.com/join/mkaX3AO1")
                 } label: {
                     DiscoverCardLayout(
-                        .init("Feedback", subtitle: "Feature requests", image: .mail)
+                        .init("TestFlight", subtitle: "Beta Testing", image: .defaultIcon)
                     )
                 }
                 
@@ -96,6 +97,14 @@ struct Discover: View {
                 } label: {
                     DiscoverCardLayout(
                         .init("More apps", subtitle: "By Bisquit.Host", image: .defaultIcon)
+                    )
+                }
+                
+                Button {
+                    showMailCover = true
+                } label: {
+                    DiscoverCardLayout(
+                        .init("Feedback", subtitle: "Feature requests", image: .mail)
                     )
                 }
                 
