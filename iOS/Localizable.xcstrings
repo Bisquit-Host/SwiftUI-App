@@ -588,7 +588,14 @@
       }
     },
     "All allocations %@" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Все порты %@"
+          }
+        }
+      }
     },
     "All subdomains %@" : {
 
@@ -835,7 +842,14 @@
       }
     },
     "Available to buy" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Доступные"
+          }
+        }
+      }
     },
     "Background image" : {
 
@@ -922,10 +936,24 @@
       }
     },
     "Best places" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Лучшие места"
+          }
+        }
+      }
     },
     "Beta Testing" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Бета-тестирование"
+          }
+        }
+      }
     },
     "Biometry Usage" : {
       "localizations" : {
@@ -983,7 +1011,14 @@
 
     },
     "By Bisquit.Host" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "От Bisquit.Host"
+          }
+        }
+      }
     },
     "Cache" : {
       "localizations" : {
@@ -1098,7 +1133,14 @@
       }
     },
     "Channel" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Канал"
+          }
+        }
+      }
     },
     "Choose File" : {
       "localizations" : {
@@ -1133,15 +1175,11 @@
       }
     },
     "Client role" : {
-
-    },
-    "Client role in the Discord channel" : {
-      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Роль клиента в Discord-канале"
+            "value" : "Роль клиента"
           }
         }
       }
@@ -2139,7 +2177,7 @@
       }
     },
     "Discord" : {
-
+      "shouldTranslate" : false
     },
     "Dismiss" : {
       "localizations" : {
@@ -2168,7 +2206,14 @@
       }
     },
     "Document" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Документ"
+          }
+        }
+      }
     },
     "Document identifier" : {
       "localizations" : {
@@ -2488,10 +2533,24 @@
       }
     },
     "Feature requests" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Запрос фич"
+          }
+        }
+      }
     },
     "Feedback" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Оставить отзыв"
+          }
+        }
+      }
     },
     "File allocated size" : {
       "localizations" : {
@@ -2578,7 +2637,14 @@
       }
     },
     "Frankfurt, Germany" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Франкфурт, Германия"
+          }
+        }
+      }
     },
     "Full file path" : {
       "localizations" : {
@@ -2656,7 +2722,14 @@
       }
     },
     "Guild" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Гильдия"
+          }
+        }
+      }
     },
     "Hide power buttons" : {
       "localizations" : {
@@ -2760,7 +2833,14 @@
       }
     },
     "How to...?" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Как правильно какать?"
+          }
+        }
+      }
     },
     "https://mgr.bisquit.host" : {
       "localizations" : {
@@ -3361,7 +3441,14 @@
       }
     },
     "Location" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Локация"
+          }
+        }
+      }
     },
     "Lock" : {
       "localizations" : {
@@ -3436,7 +3523,14 @@
       }
     },
     "Maps" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Карты"
+          }
+        }
+      }
     },
     "Marked the **`%@`** backup as complete" : {
 
@@ -3445,7 +3539,14 @@
 
     },
     "Me Potato, me HELP" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ПАМАГИТИ"
+          }
+        }
+      }
     },
     "Member since" : {
       "localizations" : {
@@ -3554,27 +3655,24 @@
       }
     },
     "More apps" : {
-
-    },
-    "More apps by Bisquit.Host" : {
-      "extractionState" : "stale",
       "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Meer apps van Bisquit.Host"
-          }
-        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Больше приложений от Bisquit.Host"
+            "value" : "Приложения"
           }
         }
       }
     },
     "Moscow, Russia" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Москва, Россия"
+          }
+        }
+      }
     },
     "Mute" : {
       "localizations" : {
@@ -3872,8 +3970,15 @@
         }
       }
     },
-    "Open in Maps" : {
-
+    "Open in Apple Maps" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Открыть в Apple Maps"
+          }
+        }
+      }
     },
     "Open in Safari" : {
       "localizations" : {
@@ -3947,7 +4052,14 @@
       }
     },
     "Panel" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Панель"
+          }
+        }
+      }
     },
     "Password" : {
       "localizations" : {
@@ -4015,25 +4127,15 @@
         }
       }
     },
-    "Places we recommend" : {
-      "extractionState" : "stale",
+    "Policy" : {
       "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Plaatsen die we aanbevelen"
-          }
-        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Места для посещения"
+            "value" : "Политика"
           }
         }
       }
-    },
-    "Policy" : {
-
     },
     "Port: %@" : {
       "localizations" : {
@@ -4146,21 +4248,11 @@
       }
     },
     "Privacy" : {
-
-    },
-    "Privacy Policy" : {
-      "extractionState" : "stale",
       "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Privacybeleid"
-          }
-        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Политика Приватности"
+            "value" : "Приватность"
           }
         }
       }
@@ -5275,24 +5367,7 @@
       }
     },
     "Telegram" : {
-
-    },
-    "Telegram Chat" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Telegram Chat"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Telegram-чат"
-          }
-        }
-      }
+      "shouldTranslate" : false
     },
     "Temp dir (debug)" : {
 
@@ -5314,10 +5389,17 @@
       }
     },
     "Terms" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Оферта"
+          }
+        }
+      }
     },
     "TestFlight" : {
-
+      "shouldTranslate" : false
     },
     "The list of servers couldn't be loaded. Check your internet connection or contact support" : {
       "localizations" : {
@@ -5583,7 +5665,14 @@
       }
     },
     "Update available" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Доступно обновление"
+          }
+        }
+      }
     },
     "Update credentials" : {
       "extractionState" : "stale",
@@ -5853,7 +5942,14 @@
 
     },
     "View all allocations" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Посмотреть все порты"
+          }
+        }
+      }
     },
     "View resource usage of your servers" : {
 
@@ -5918,23 +6014,6 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Веб"
-          }
-        }
-      }
-    },
-    "Web panel" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Webpaneel"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Веб-панель"
           }
         }
       }

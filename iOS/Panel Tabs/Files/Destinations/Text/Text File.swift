@@ -17,6 +17,10 @@ struct TextFile: View {
     
     private var tip = Tip_JsonFormatter()
     
+    private var showSaveButton: Bool {
+        vm.initialText != vm.text
+    }
+    
     var body: some View {
         @Bindable var vm = vm
         
@@ -39,10 +43,11 @@ struct TextFile: View {
         }
         .toolbar {
 #if os(iOS)
-            if vm.initialText != vm.text {
+            if showSaveButton {
                 Button("Save") {
                     vm.writeFile(vm.text, at: path + name)
                 }
+                .animation(.default, value: showSaveButton)
             }
 #endif
             JsonFormatterButton()

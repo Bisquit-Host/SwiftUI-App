@@ -102,7 +102,7 @@ struct MapSection: View {
                     openUrl(url)
                 }
             } label: {
-                Label("Open in Maps", systemImage: "map")
+                Label("Open in Apple Maps", systemImage: "map")
             }
         }
     }
