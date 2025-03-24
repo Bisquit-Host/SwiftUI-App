@@ -16,12 +16,16 @@ struct ScheduleList: View {
                         .padding(.leading, 64)
                 }
 #else
-                DisclosureGroup {
-                    ForEach(tasks) { task in
-                        ScheduleTask(schedule, task: task)
-                    }
-                } label: {
+                if tasks.isEmpty {
                     ScheduleCard(schedule)
+                } else {
+                    DisclosureGroup {
+                        ForEach(tasks) { task in
+                            ScheduleTask(schedule, task: task)
+                        }
+                    } label: {
+                        ScheduleCard(schedule)
+                    }
                 }
 #endif
             }
