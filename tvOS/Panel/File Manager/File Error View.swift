@@ -5,7 +5,7 @@ struct FileErrorView: View {
     
     @Environment(\.dismiss) private var dismiss
     
-    private let path, name: String
+    private let name, path: String
     
     init(_ name: String, at path: String) {
         self.path = path
