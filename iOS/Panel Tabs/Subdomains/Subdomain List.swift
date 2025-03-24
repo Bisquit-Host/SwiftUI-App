@@ -29,6 +29,15 @@ struct SubdomainList: View {
         .sheet($sheetCreate) {
             SheetCreateSubdomain()
         }
+        .overlay {
+            if vm.subdomains.isEmpty {
+                ContentUnavailableView(
+                    "No subdomains have been created yet",
+                    systemImage: "link.badge.plus",
+                    description: Text("Use the button in the top right corner to create one")
+                )
+            }
+        }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 DismissButton {

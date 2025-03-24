@@ -39,6 +39,14 @@ struct LogList: View {
             }
         }
 #endif
+        .overlay {
+            if vm.logs.isEmpty {
+                ContentUnavailableView(
+                    "No recent actions have been logged",
+                    systemImage: "list.bullet.rectangle.fill"
+                )
+            }
+        }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 DismissButton {
@@ -47,55 +55,57 @@ struct LogList: View {
             }
             
 #if !os(watchOS)
-            ToolbarItem(placement: .topBarTrailing) {
-                Menu {
-                    Section {
-                        Button {
-                            withAnimation {
-                                vm.selectedActor = nil
-                            }
-                        } label: {
-                            Label {
-                                Text("All")
-                            } icon: {
-                                if vm.selectedActor == nil {
-                                    Image(systemName: "checkmark")
-                                }
-                            }
-                        }
-                    }
-                    
-                    ForEach(vm.actors, id: \.self) { actor in
-                        if let actor {
+            if !vm.logs.isEmpty {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Menu {
+                        Section {
                             Button {
                                 withAnimation {
-                                    vm.selectedActor = actor
+                                    vm.selectedActor = nil
                                 }
                             } label: {
-                                if let username = actor.actor.attributes?.username {
-                                    Text(username)
-                                    
-                                    if let email = actor.actor.attributes?.email {
-                                        Text(email)
+                                Label {
+                                    Text("All")
+                                } icon: {
+                                    if vm.selectedActor == nil {
+                                        Image(systemName: "checkmark")
                                     }
-                                } else {
-                                    Text("System")
-                                }
-                                
-                                if vm.selectedActor == actor {
-                                    Image(systemName: "checkmark")
                                 }
                             }
                         }
+                        
+                        ForEach(vm.actors, id: \.self) { actor in
+                            if let actor {
+                                Button {
+                                    withAnimation {
+                                        vm.selectedActor = actor
+                                    }
+                                } label: {
+                                    if let username = actor.actor.attributes?.username {
+                                        Text(username)
+                                        
+                                        if let email = actor.actor.attributes?.email {
+                                            Text(email)
+                                        }
+                                    } else {
+                                        Text("System")
+                                    }
+                                    
+                                    if vm.selectedActor == actor {
+                                        Image(systemName: "checkmark")
+                                    }
+                                }
+                            }
+                        }
+                    } label: {
+                        Image(systemName: "line.3.horizontal.decrease.circle")
+                            .footnote(.bold)
+                            .frame(width: 35, height: 35)
+                            .background(.ultraThinMaterial, in: .circle)
+                            .symbolVariant(vm.selectedActor == nil ? .none : .fill)
                     }
-                } label: {
-                    Image(systemName: "line.3.horizontal.decrease.circle")
-                        .footnote(.bold)
-                        .frame(width: 35, height: 35)
-                        .background(.ultraThinMaterial, in: .circle)
-                        .symbolVariant(vm.selectedActor == nil ? .none : .fill)
+                    .foregroundStyle(.foreground)
                 }
-                .foregroundStyle(.foreground)
             }
 #endif
         }

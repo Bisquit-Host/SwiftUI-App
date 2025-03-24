@@ -85,7 +85,7 @@ struct InfoTabButtons: View {
                         Image(systemName: "list.bullet.rectangle.fill")
                             .foregroundStyle(.tertiary)
                         
-                        Text("Users")
+                        Text("Logs")
                             .semibold()
                     } else {
                         Text("Logs")

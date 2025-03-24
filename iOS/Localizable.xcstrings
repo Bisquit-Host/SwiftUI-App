@@ -3775,6 +3775,12 @@
         }
       }
     },
+    "No recent actions have been logged" : {
+
+    },
+    "No subdomains have been created yet" : {
+
+    },
     "Node" : {
       "localizations" : {
         "nl" : {
@@ -5732,6 +5738,9 @@
       }
     },
     "Use header" : {
+
+    },
+    "Use the button in the top right corner to create one" : {
 
     },
     "Useful links" : {

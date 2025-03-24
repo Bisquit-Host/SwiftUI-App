@@ -20,9 +20,9 @@ struct UserList: View {
             .listSectionSpacing(-10)
 #endif
         }
+        .navigationTitle("Users")
         .padding(.horizontal)
         .environment(vm)
-        .navigationTitle("Users")
 #if !os(tvOS)
         .toolbarTitleDisplayMode(.large)
 #endif
@@ -34,6 +34,15 @@ struct UserList: View {
         .sheet($vm.sheetInvitation) {
             UserInvitationView()
         }
+//        .overlay {
+//            if vm.users.isEmpty {
+//                ContentUnavailableView(
+//                    "This server currently has no users",
+//                    systemImage: "person.3.fill",
+//                    description: Text("Click the button in the top right corner to send an invitation")
+//                )
+//            }
+//        }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 DismissButton {
