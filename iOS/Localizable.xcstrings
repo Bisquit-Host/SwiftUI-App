@@ -1154,6 +1154,9 @@
         }
       }
     },
+    "Click the button in the top right corner to send an invitation" : {
+
+    },
     "Client role" : {
       "localizations" : {
         "ru" : {
@@ -5321,6 +5324,9 @@
           }
         }
       }
+    },
+    "This server currently has no users" : {
+
     },
     "Time offset (sec)" : {
       "localizations" : {

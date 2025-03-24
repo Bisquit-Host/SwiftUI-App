@@ -8,20 +8,18 @@ struct UserList: View {
     var body: some View {
         @Bindable var vm = vm
         
-        ScrollView {
+        List {
             ForEach(vm.users) { user in
                 Section {
                     UserCard(user)
                 }
                 .transparentSection()
             }
-            .onDelete(perform: delete)
 #if os(iOS)
             .listSectionSpacing(-10)
 #endif
         }
         .navigationTitle("Users")
-        .padding(.horizontal)
         .environment(vm)
 #if !os(tvOS)
         .toolbarTitleDisplayMode(.large)
@@ -34,15 +32,15 @@ struct UserList: View {
         .sheet($vm.sheetInvitation) {
             UserInvitationView()
         }
-//        .overlay {
-//            if vm.users.isEmpty {
-//                ContentUnavailableView(
-//                    "This server currently has no users",
-//                    systemImage: "person.3.fill",
-//                    description: Text("Click the button in the top right corner to send an invitation")
-//                )
-//            }
-//        }
+        .overlay {
+            if vm.users.isEmpty {
+                ContentUnavailableView(
+                    "This server currently has no users",
+                    systemImage: "person.3.fill",
+                    description: Text("Click the button in the top right corner to send an invitation")
+                )
+            }
+        }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 DismissButton {
