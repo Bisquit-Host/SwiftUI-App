@@ -95,7 +95,7 @@ struct InfoTabButtons: View {
                         
                         if let log = logVM.logs.first {
                             LogCard(log, showInfoButton: false)
-                                .multilineTextAlignment(.leading)
+                                .frame(maxWidth: .infinity, alignment: .leading)
                         }
                         
                         let count = logVM.logs.count
@@ -112,7 +112,7 @@ struct InfoTabButtons: View {
                 .footnote()
                 .padding()
                 .frame(minHeight: 55)
-                .frame(maxWidth: .infinity, alignment: logVM.logs.isEmpty ? .center : .leading)
+                .frame(maxWidth: .infinity, alignment: .center)
                 .foregroundStyle(.foreground)
                 .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
                 .overlay {
