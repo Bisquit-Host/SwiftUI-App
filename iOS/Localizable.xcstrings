@@ -4412,16 +4412,6 @@
         }
       }
     },
-    "Retrieve cached data" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Получить кэшированные данные"
-          }
-        }
-      }
-    },
     "Retrieved %lld cached images" : {
       "localizations" : {
         "ru" : {
@@ -5851,6 +5841,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Посмотреть все порты"
+          }
+        }
+      }
+    },
+    "View cache" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Просмотр кэша"
           }
         }
       }
