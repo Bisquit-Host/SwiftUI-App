@@ -95,6 +95,7 @@ struct InfoTabButtons: View {
                         
                         if let log = logVM.logs.first {
                             LogCard(log, showInfoButton: false)
+                                .multilineTextAlignment(.leading)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }
                         
