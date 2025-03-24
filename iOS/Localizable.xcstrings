@@ -683,23 +683,6 @@
         }
       }
     },
-    "App Support" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "App-ondersteuning"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Поддержка Приложения"
-          }
-        }
-      }
-    },
     "App version" : {
 
     },
@@ -823,23 +806,6 @@
     },
     "Authorization" : {
 
-    },
-    "Available configurations" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Beschikbare configuraties"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Доступные конфигурации"
-          }
-        }
-      }
     },
     "Available to buy" : {
       "localizations" : {
@@ -1791,6 +1757,7 @@
       }
     },
     "Cron: %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -2786,17 +2753,6 @@
         }
       }
     },
-    "Hosting Support" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Поддержка Хостинга"
-          }
-        }
-      }
-    },
     "Hour" : {
       "localizations" : {
         "nl" : {
@@ -2933,23 +2889,6 @@
         }
       }
     },
-    "Innovation" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Innovatie"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Инновация"
-          }
-        }
-      }
-    },
     "Installed **`%@`**" : {
 
     },
@@ -2959,35 +2898,6 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Installed modpack ID **`%1$@`**, version **`%2$@`** from **`%3$@`**"
-          }
-        }
-      }
-    },
-    "Intro.Text0" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Your favorite hosting is now always in your pocket!"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Je favoriete hosting zit nu altijd in je zak!"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ваш любимый хостинг теперь всегда в кармане!"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Ваш любимый хостинг теперь всегда в кармане!"
           }
         }
       }
@@ -3158,23 +3068,6 @@
     },
     "Is system immutable" : {
 
-    },
-    "Is the following information correct?" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Is de volgende informatie juist?"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Верна ли эта информация?"
-          }
-        }
-      }
     },
     "Is user immutable" : {
 
@@ -5969,29 +5862,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Предупреждение"
-          }
-        }
-      }
-    },
-    "We are Bisquit.Host" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wij zijn Bisquit.Host"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Мы - Bisquit.Host"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Мы - Bisquit.Host"
           }
         }
       }

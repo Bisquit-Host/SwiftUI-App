@@ -40,10 +40,7 @@ struct ScheduleCard: View {
                     Text(schedule.name)
                         .headline()
                     
-                    let cron = Text(cron)
-                        .foregroundStyle(.primary)
-                    
-                    Text("Cron: \(cron)")
+                    Text(cron)
                         .footnote()
                         .secondary()
                 }

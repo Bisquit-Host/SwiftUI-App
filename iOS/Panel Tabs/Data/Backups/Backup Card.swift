@@ -47,10 +47,7 @@ struct BackupCard: View {
                     .animation(.default, value: backup.isLocked)
                     .headline()
                     
-                    let timeDifference = Text(timeSinceISO(backup.createdAt))
-                        .foregroundStyle(.primary)
-                    
-                    Text("Created: \(timeDifference)")
+                    Text(timeSinceISO(backup.createdAt))
                         .footnote()
                         .secondary()
                         .minimumScaleFactor(0.5)
