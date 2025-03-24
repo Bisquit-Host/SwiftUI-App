@@ -29,13 +29,15 @@ struct DatabaseList: View {
             .buttonStyle(.borderedProminent)
 #endif
         } header: {
-            SectionHeader(
-                "Databases",
-                type: .database(
-                    vm.databases.count,
-                    limit: databaseLimit
+            if !vm.databases.isEmpty {
+                SectionHeader(
+                    "Databases",
+                    type: .database(
+                        vm.databases.count,
+                        limit: databaseLimit
+                    )
                 )
-            )
+            }
         }
     }
 }

@@ -37,8 +37,10 @@ struct ScheduleList: View {
             .buttonStyle(.borderedProminent)
 #endif
         } header: {
-            Text("Schedules")
-                .bold()
+            if !vm.schedules.isEmpty {
+                Text("Schedules")
+                    .bold()
+            }
         }
     }
 }
