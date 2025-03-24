@@ -2653,6 +2653,7 @@
 				F3D295122AF396FD00ED43A0 /* Tabs.swift */,
 				F39626F12A7AD64B0057E356 /* Ansi.swift */,
 				F37A36772A35180100517EFC /* Power Menu.swift */,
+				F37A36722A3515DC00517EFC /* Server Settings VM.swift */,
 			);
 			path = Panel;
 			sourceTree = "<group>";
@@ -2771,7 +2772,7 @@
 			isa = PBXGroup;
 			children = (
 				F31BA5A1295902470006D126 /* Info */,
-				F337C15E2A8C2B19006F321C /* Startup & Settings */,
+				F337C15E2A8C2B19006F321C /* Startup */,
 				F3553FB72B4093B400EF0FD2 /* Allocations */,
 				F3FF5A012A4A318E003A1973 /* Users */,
 				F3C8C76F2A3A9B23000CC7E3 /* Logs */,
@@ -2902,15 +2903,14 @@
 			path = "Unit Tests";
 			sourceTree = "<group>";
 		};
-		F337C15E2A8C2B19006F321C /* Startup & Settings */ = {
+		F337C15E2A8C2B19006F321C /* Startup */ = {
 			isa = PBXGroup;
 			children = (
 				F337C15F2A8C2CE0006F321C /* Startup View.swift */,
 				F337C1612A8CE7C0006F321C /* Startup Card.swift */,
 				F337C1682A8D07E2006F321C /* Startup VM.swift */,
-				F37A36722A3515DC00517EFC /* Server Settings VM.swift */,
 			);
-			path = "Startup & Settings";
+			path = Startup;
 			sourceTree = "<group>";
 		};
 		F3464CF92A862D2D00188B0C /* Intent */ = {
