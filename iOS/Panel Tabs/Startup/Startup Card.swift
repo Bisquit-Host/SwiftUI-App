@@ -11,10 +11,10 @@ struct StartupCard: View {
         self.server = server
         self.variable = variable
         self.vm = StartupVM(server.id)
-        value = variable.serverValue
+        value = variable.serverValue ?? ""
     }
     
-    @State private var value: String
+    @State private var value = ""
     
     var body: some View {
         Section {
@@ -51,7 +51,7 @@ struct StartupCard: View {
                         key: variable.envVariable,
                         value: value
                     ) {
-                        value = variable.serverValue
+                        value = variable.serverValue ?? ""
                     }
                 }
             }
