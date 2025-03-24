@@ -684,7 +684,14 @@
       }
     },
     "App version" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Версия приложения"
+          }
+        }
+      }
     },
     "Apps" : {
       "extractionState" : "stale",
@@ -818,7 +825,14 @@
       }
     },
     "Background image" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фоновое изображение"
+          }
+        }
+      }
     },
     "Backup" : {
       "localizations" : {
@@ -1755,24 +1769,6 @@
           }
         }
       }
-    },
-    "Cron: %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cron: %@"
-          }
-        }
-      },
-      "shouldTranslate" : false
     },
     "Customize" : {
       "localizations" : {
