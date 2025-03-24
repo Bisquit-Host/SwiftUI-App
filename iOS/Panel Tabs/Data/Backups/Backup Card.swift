@@ -57,6 +57,7 @@ struct BackupCard: View {
                 Spacer()
                 
                 Text(formatBytes(backup.bytes))
+                    .footnote()
                     .secondary()
             }
             .foregroundStyle(.foreground)
