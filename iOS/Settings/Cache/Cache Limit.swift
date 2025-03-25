@@ -5,12 +5,12 @@ struct CacheLimit: View {
     
     @AppStorage("cacheLimit") private var cacheLimit: CacheLimit = .GB1
     
-    private let limits: [CacheLimit] = [.MB50, .MB250, .GB1]
+    private let limits: [CacheLimit] = [.MB250, .GB1]
     
     var body: some View {
         Menu {
-            ForEach(limits, id: \.self) { limit in
-                Button(limit.rawValue) {
+            ForEach(limits) { limit in
+                Button(limit.loc) {
                     cacheLimit = limit
                     updateCacheLimit(limit)
                 }
@@ -21,7 +21,7 @@ struct CacheLimit: View {
                 
                 Spacer()
                 
-                Text(cacheLimit.rawValue)
+                Text(cacheLimit.loc)
                 
                 Image(systemName: "chevron.forward")
                     .caption2(.bold)
@@ -35,9 +35,6 @@ struct CacheLimit: View {
         let newCacheLimit: UInt
         
         switch limit {
-        case .MB50:
-            newCacheLimit = 50 * 1024 * 2
-            
         case .MB250:
             newCacheLimit = 250 * 1024 * 2
             
@@ -45,7 +42,7 @@ struct CacheLimit: View {
             newCacheLimit = 1000 * 1024 * 2
         }
         
-        cache.updateLimit(to: newCacheLimit)
+        cache.updateLimit(newCacheLimit)
     }
 }
 

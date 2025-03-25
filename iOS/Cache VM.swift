@@ -21,7 +21,7 @@ final class CacheVM {
         print(cache.diskStorage.config.expiration)
     }
     
-    func updateLimit(to limit: UInt) {
+    func updateLimit(_ limit: UInt) {
         cache.diskStorage.config.sizeLimit = limit
         cache.memoryStorage.config.totalCostLimit = Int(limit)
         

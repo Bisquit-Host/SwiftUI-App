@@ -394,6 +394,16 @@
     "1" : {
       "shouldTranslate" : false
     },
+    "1 GB" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 ГБ"
+          }
+        }
+      }
+    },
     "1. **Long press** the widget" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -486,6 +496,16 @@
     },
     "80%" : {
       "shouldTranslate" : false
+    },
+    "250 MB" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "250 МБ"
+          }
+        }
+      }
     },
     "777" : {
       "localizations" : {
@@ -1859,6 +1879,16 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "База даних"
+          }
+        }
+      }
+    },
+    "Day" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "День"
           }
         }
       }
@@ -3649,6 +3679,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ошибка Сети"
+          }
+        }
+      }
+    },
+    "Never" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Никогда"
           }
         }
       }
@@ -5899,6 +5939,16 @@
         }
       }
     },
+    "Week" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Неделя"
+          }
+        }
+      }
+    },
     "Welcome to" : {
 
     },
@@ -5940,6 +5990,16 @@
     },
     "Wrote new content to **`%@`**" : {
 
+    },
+    "Year" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Год"
+          }
+        }
+      }
     },
     "Yes" : {
       "extractionState" : "stale",
