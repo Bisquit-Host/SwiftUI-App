@@ -1167,9 +1167,9 @@
 		F3C9D8582B31135B00265492 /* Permission List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D8572B31135B00265492 /* Permission List.swift */; };
 		F3C9D8592B31135B00265492 /* Permission List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D8572B31135B00265492 /* Permission List.swift */; };
 		F3C9D85A2B31135B00265492 /* Permission List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D8572B31135B00265492 /* Permission List.swift */; };
-		F3C9D85C2B31146E00265492 /* User Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D85B2B31146E00265492 /* User Avatar.swift */; };
-		F3C9D85D2B31146E00265492 /* User Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D85B2B31146E00265492 /* User Avatar.swift */; };
-		F3C9D85E2B31146E00265492 /* User Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D85B2B31146E00265492 /* User Avatar.swift */; };
+		F3C9D85C2B31146E00265492 /* User Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D85B2B31146E00265492 /* User Image.swift */; };
+		F3C9D85D2B31146E00265492 /* User Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D85B2B31146E00265492 /* User Image.swift */; };
+		F3C9D85E2B31146E00265492 /* User Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D85B2B31146E00265492 /* User Image.swift */; };
 		F3C9D8602B319B9E00265492 /* Permission Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D85F2B319B9E00265492 /* Permission Card.swift */; };
 		F3C9D8612B319B9E00265492 /* Permission Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D85F2B319B9E00265492 /* Permission Card.swift */; };
 		F3C9D8622B319B9E00265492 /* Permission Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D85F2B319B9E00265492 /* Permission Card.swift */; };
@@ -1177,7 +1177,7 @@
 		F3CCB1CC2CAE75D0000F8207 /* Debug Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCB1CB2CAE75D0000F8207 /* Debug Settings.swift */; };
 		F3CCB1CD2CAE75D0000F8207 /* Debug Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCB1CB2CAE75D0000F8207 /* Debug Settings.swift */; };
 		F3CCB1CE2CAE75D0000F8207 /* Debug Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCB1CB2CAE75D0000F8207 /* Debug Settings.swift */; };
-		F3CCF5B82B345367005FFF2C /* User Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D85B2B31146E00265492 /* User Avatar.swift */; };
+		F3CCF5B82B345367005FFF2C /* User Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D85B2B31146E00265492 /* User Image.swift */; };
 		F3CCF5B92B34543B005FFF2C /* User 2Fa.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3EC2B3208BE009B7062 /* User 2Fa.swift */; };
 		F3CCF5BA2B345466005FFF2C /* Permission List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D8572B31135B00265492 /* Permission List.swift */; };
 		F3CCF5BB2B34546F005FFF2C /* Permissions Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3F12B320A6A009B7062 /* Permissions Header.swift */; };
@@ -1398,7 +1398,7 @@
 		F3DF03DB2B74F01C00CF6F5E /* Database VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088A12B3A18A20051476C /* Database VM.swift */; };
 		F3DF03E62B74F26F00CF6F5E /* Users VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A0B2A4A386F003A1973 /* Users VM.swift */; };
 		F3DF50C32B38FCCC00206CAE /* Users VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A0B2A4A386F003A1973 /* Users VM.swift */; };
-		F3DF50C52B38FCF900206CAE /* User Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D85B2B31146E00265492 /* User Avatar.swift */; };
+		F3DF50C52B38FCF900206CAE /* User Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D85B2B31146E00265492 /* User Image.swift */; };
 		F3DF50C92B38FD2000206CAE /* Contact Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3880A252A92A15E0052A978 /* Contact Manager.swift */; };
 		F3DF50CA2B38FDDE00206CAE /* User 2Fa.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3EC2B3208BE009B7062 /* User 2Fa.swift */; };
 		F3DF50CB2B38FDE300206CAE /* Permission List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D8572B31135B00265492 /* Permission List.swift */; };
@@ -2051,7 +2051,7 @@
 		F3C9D84D2B30598000265492 /* Video Player VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Video Player VM.swift"; sourceTree = "<group>"; };
 		F3C9D8502B3059E700265492 /* UIVideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVideoPlayer.swift; sourceTree = "<group>"; };
 		F3C9D8572B31135B00265492 /* Permission List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Permission List.swift"; sourceTree = "<group>"; };
-		F3C9D85B2B31146E00265492 /* User Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Avatar.swift"; sourceTree = "<group>"; };
+		F3C9D85B2B31146E00265492 /* User Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Image.swift"; sourceTree = "<group>"; };
 		F3C9D85F2B319B9E00265492 /* Permission Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Permission Card.swift"; sourceTree = "<group>"; };
 		F3CB53D52971CF6B00A213B0 /* Database Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database Card.swift"; sourceTree = "<group>"; };
 		F3CCB1CB2CAE75D0000F8207 /* Debug Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Debug Settings.swift"; sourceTree = "<group>"; };
@@ -3711,6 +3711,19 @@
 			path = Cache;
 			sourceTree = "<group>";
 		};
+		F3DDD23D2D92AB52002CB1B9 /* User View */ = {
+			isa = PBXGroup;
+			children = (
+				F39CF3572A50C00C0077996D /* User View.swift */,
+				F3E1D3EC2B3208BE009B7062 /* User 2Fa.swift */,
+				F3C9D85B2B31146E00265492 /* User Image.swift */,
+				F3A123592A6689FA008E3E20 /* User Email.swift */,
+				F3880A252A92A15E0052A978 /* Contact Manager.swift */,
+				F3E1D3F02B320A4B009B7062 /* Permissions */,
+			);
+			path = "User View";
+			sourceTree = "<group>";
+		};
 		F3DF4A0C2B485D50003C6922 /* SSH */ = {
 			isa = PBXGroup;
 			children = (
@@ -3883,12 +3896,7 @@
 				F30089272B3C23A00051476C /* Contact Picker.swift */,
 				F30088FE2B3B62050051476C /* User Invitation Permission.swift */,
 				F3FF5A0E2A4A3ABD003A1973 /* User Card.swift */,
-				F39CF3572A50C00C0077996D /* User View.swift */,
-				F3E1D3EC2B3208BE009B7062 /* User 2Fa.swift */,
-				F3C9D85B2B31146E00265492 /* User Avatar.swift */,
-				F3A123592A6689FA008E3E20 /* User Email.swift */,
-				F3880A252A92A15E0052A978 /* Contact Manager.swift */,
-				F3E1D3F02B320A4B009B7062 /* Permissions */,
+				F3DDD23D2D92AB52002CB1B9 /* User View */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -4474,7 +4482,7 @@
 			files = (
 				F370804D2A2A1CB60046CE70 /* Section Header.swift in Sources */,
 				F31B4450297550CD0036868F /* Stats Tab.swift in Sources */,
-				F3CCF5B82B345367005FFF2C /* User Avatar.swift in Sources */,
+				F3CCF5B82B345367005FFF2C /* User Image.swift in Sources */,
 				F300889F2B3A17DE0051476C /* Backup VM.swift in Sources */,
 				F3464D332A863A6600188B0C /* Send Command.swift in Sources */,
 				F370804C2A2A1CAF0046CE70 /* Create Button.swift in Sources */,
@@ -4781,7 +4789,7 @@
 				F3DAD6BE2A4793F8002ED405 /* Circular Gauge.swift in Sources */,
 				F374F7BF2D54922F006771DD /* Sheet Create Subdomain.swift in Sources */,
 				F3FA61572A1F928500A65AE1 /* File Search.swift in Sources */,
-				F3C9D85C2B31146E00265492 /* User Avatar.swift in Sources */,
+				F3C9D85C2B31146E00265492 /* User Image.swift in Sources */,
 				F354E9832A48CA2000F6E359 /* Topbar Grid Button.swift in Sources */,
 				F3924EE929A28D9D00C4CC77 /* Biometry Usage View.swift in Sources */,
 				F30207D62D8B2A6000C26008 /* Swifty Ping.swift in Sources */,
@@ -4992,7 +5000,7 @@
 				F3499EF82A275556006101B7 /* Websocket Message.swift in Sources */,
 				F3E679B02D5A854700A7ADDE /* Server Options Provider.swift in Sources */,
 				F30C12FD2A54546900A7EFF0 /* App Container.swift in Sources */,
-				F3C9D85D2B31146E00265492 /* User Avatar.swift in Sources */,
+				F3C9D85D2B31146E00265492 /* User Image.swift in Sources */,
 				F3D558B22A33C6A000608447 /* File Tab VM.swift in Sources */,
 				F373CDB02D895419008B64BE /* Log Topbar.swift in Sources */,
 				F373CDB12D895419008B64BE /* Log Topbar Card.swift in Sources */,
@@ -5070,7 +5078,7 @@
 				F3BC03C82B20675E0011F98A /* New Schedule Sheet.swift in Sources */,
 				F389BB622A05B58E00911EBF /* Server Card VM.swift in Sources */,
 				F325F7072A54C4BC00E89EC4 /* System Alerts.swift in Sources */,
-				F3C9D85E2B31146E00265492 /* User Avatar.swift in Sources */,
+				F3C9D85E2B31146E00265492 /* User Image.swift in Sources */,
 				F3AB1DF92D79C42B00387164 /* MetricKit Manager.swift in Sources */,
 				F33944122A49022A00E2F0FC /* Info Tab Card.swift in Sources */,
 				F389BB6E2A05B5F400911EBF /* Cache Limit.swift in Sources */,
@@ -5916,7 +5924,7 @@
 				F3202D4B2D56DC050030B3CC /* Prefetcher.swift in Sources */,
 				F30088962B3A033F0051476C /* Log Meta Parent.swift in Sources */,
 				F33DE4EB2B35C3F000E257D8 /* FileTab Context Menu.swift in Sources */,
-				F3DF50C52B38FCF900206CAE /* User Avatar.swift in Sources */,
+				F3DF50C52B38FCF900206CAE /* User Image.swift in Sources */,
 				F300889A2B3A0C740051476C /* User Card.swift in Sources */,
 				F3E08EB62A2CE56200116C1C /* App Settings.swift in Sources */,
 				F335CA082C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */,

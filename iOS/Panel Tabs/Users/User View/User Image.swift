@@ -1,7 +1,7 @@
 import SwiftUI
 import Kingfisher
 
-struct UserAvatar: View {
+struct UserImage: View {
     private let image: String
     
     init(_ image: String) {
@@ -24,6 +24,6 @@ struct UserAvatar: View {
 
 #Preview {
     List {
-        UserAvatar("https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Example_image.svg/600px-Example_image.svg.png")
+        UserImage("https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Example_image.svg/600px-Example_image.svg.png")
     }
 }
