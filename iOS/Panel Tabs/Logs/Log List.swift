@@ -13,11 +13,16 @@ struct LogList: View {
             
             ForEach(vm.logsByMonth.indices, id: \.self) { index in
                 let logs = vm.logsByMonth[index]
+                let month = vm.monthName(for: logs.first!.timestamp)
                 
-                Section(vm.monthName(for: logs.first!.timestamp)) {
+                Section {
                     ForEach(logs) { log in
                         LogCard(log)
                     }
+                } header: {
+                    Text(month)
+                        .title3(.semibold, design: .rounded)
+                        .foregroundStyle(.primary)
                 }
                 .transparentSection()
             }

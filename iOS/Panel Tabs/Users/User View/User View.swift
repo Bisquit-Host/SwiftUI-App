@@ -14,7 +14,7 @@ struct UserView: View {
     var body: some View {
         NavigationView {
             List {
-                UserAvatar(user.image)
+                UserImage(user.image)
 #if os(iOS)
                 UserEmail(user.email)
                     .transparentSection()

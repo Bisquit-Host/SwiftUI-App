@@ -30,7 +30,7 @@ struct PermissionListView: View {
     
     var body: some View {
         if let permissions = vm.permissions {
-            PermissionsHeader($showDescription, user: user)
+            PermissionGroupHeader($showDescription, user: user)
             
             PermissionsList(
                 permissions: permissions.permissions,
