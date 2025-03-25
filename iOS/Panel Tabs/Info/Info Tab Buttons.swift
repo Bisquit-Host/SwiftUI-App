@@ -89,8 +89,7 @@ struct InfoTabButtons: View {
                             .semibold()
                     } else {
                         Text("Logs")
-                            .footnote()
-                            .secondary()
+                            .semibold()
                             .rounded()
                         
                         if let log = logVM.logs.first {
