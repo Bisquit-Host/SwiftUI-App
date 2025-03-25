@@ -67,7 +67,7 @@ struct FileTab: View {
             vm.fetchFiles(root)
         }
         .onChange(of: vm.isUploading) { _, newValue in
-            if newValue {
+            if !newValue {
                 trigger.toggle()
             }
         }
