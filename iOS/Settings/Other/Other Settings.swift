@@ -19,7 +19,7 @@ struct OtherSettings: View {
                 openSettings()
             }
             
-            CurrencyButton()
+            CurrencyPicker()
         }
         .transparentSection()
     }

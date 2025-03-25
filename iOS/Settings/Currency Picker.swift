@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct CurrencyButton: View {
+struct CurrencyPicker: View {
     @EnvironmentObject private var store: ValueStore
     
     private let currencies = ["₽", "€", "$"]

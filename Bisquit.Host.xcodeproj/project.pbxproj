@@ -811,9 +811,8 @@
 		F384D8BD2D5BE495000FC41D /* Crypto Price Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F384D8BB2D5BE495000FC41D /* Crypto Price Widget.intentdefinition */; };
 		F384D8BE2D5BE495000FC41D /* Crypto Price Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F384D8BB2D5BE495000FC41D /* Crypto Price Widget.intentdefinition */; };
 		F385824229D6215100BEEE1D /* App Icon Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F385824129D6215100BEEE1D /* App Icon Card.swift */; };
-		F385824629D6268200BEEE1D /* Currency Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F385824529D6268200BEEE1D /* Currency Button.swift */; };
+		F385824629D6268200BEEE1D /* Currency Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F385824529D6268200BEEE1D /* Currency Picker.swift */; };
 		F385824829D626FE00BEEE1D /* Biometry Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F385824729D626FE00BEEE1D /* Biometry Button.swift */; };
-		F385824A29D6313D00BEEE1D /* Wide List Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F385824929D6313D00BEEE1D /* Wide List Button.swift */; };
 		F38637382A8641120069F074 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F350636629DC24AB0010B717 /* WidgetKit.framework */; };
 		F38637392A8641120069F074 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F350636829DC24AB0010B717 /* SwiftUI.framework */; };
 		F386373C2A8641120069F074 /* Widgets Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F386373B2A8641120069F074 /* Widgets Bundle.swift */; };
@@ -862,8 +861,7 @@
 		F389BB752A05B62600911EBF /* Design Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7D87E29E83DEE00BCAFFE /* Design Settings.swift */; };
 		F389BB762A05B62C00911EBF /* Icon Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7D87C29E83D6500BCAFFE /* Icon Settings.swift */; };
 		F389BB772A05B63200911EBF /* Biometry Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F385824729D626FE00BEEE1D /* Biometry Button.swift */; };
-		F389BB782A05B63600911EBF /* Currency Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F385824529D6268200BEEE1D /* Currency Button.swift */; };
-		F389BB792A05B63C00911EBF /* Wide List Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F385824929D6313D00BEEE1D /* Wide List Button.swift */; };
+		F389BB782A05B63600911EBF /* Currency Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F385824529D6268200BEEE1D /* Currency Picker.swift */; };
 		F389BB7A2A05B64600911EBF /* App Icon Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EE629A25FBF00C4CC77 /* App Icon Picker.swift */; };
 		F389BB7B2A05B64E00911EBF /* Biometry Usage View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EE829A28D9D00C4CC77 /* Biometry Usage View.swift */; };
 		F389BB7C2A05B66B00911EBF /* App Icon Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F385824129D6215100BEEE1D /* App Icon Card.swift */; };
@@ -1327,11 +1325,10 @@
 		F3D295B62AF3A16300ED43A0 /* Icon Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7D87C29E83D6500BCAFFE /* Icon Settings.swift */; };
 		F3D295B72AF3A16600ED43A0 /* App Icon Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EE629A25FBF00C4CC77 /* App Icon Picker.swift */; };
 		F3D295B82AF3A16A00ED43A0 /* App Icon Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F385824129D6215100BEEE1D /* App Icon Card.swift */; };
-		F3D295B92AF3A17000ED43A0 /* Wide List Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F385824929D6313D00BEEE1D /* Wide List Button.swift */; };
 		F3D295BA2AF3A17500ED43A0 /* Dev Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3878ECC2A1BCE5000AD8657 /* Dev Settings.swift */; };
 		F3D295BB2AF3A17900ED43A0 /* Biometry Usage View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EE829A28D9D00C4CC77 /* Biometry Usage View.swift */; };
 		F3D295BC2AF3A18400ED43A0 /* Other Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39993392AF2E491006E8A9A /* Other Settings.swift */; };
-		F3D295BD2AF3A18700ED43A0 /* Currency Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F385824529D6268200BEEE1D /* Currency Button.swift */; };
+		F3D295BD2AF3A18700ED43A0 /* Currency Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F385824529D6268200BEEE1D /* Currency Picker.swift */; };
 		F3D295BE2AF3A18B00ED43A0 /* Biometry Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F385824729D626FE00BEEE1D /* Biometry Button.swift */; };
 		F3D295BF2AF3A19700ED43A0 /* Topbar Grid Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F354E9822A48CA2000F6E359 /* Topbar Grid Button.swift */; };
 		F3D295C02AF3A1B000ED43A0 /* Log Meta Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* Log Meta Parent.swift */; };
@@ -1938,9 +1935,8 @@
 		F384D8C42D5BE4A7000FC41D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = "ru.lproj/Crypto Price Widget.strings"; sourceTree = "<group>"; };
 		F384D8C62D5BE4A8000FC41D /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = "uk.lproj/Crypto Price Widget.strings"; sourceTree = "<group>"; };
 		F385824129D6215100BEEE1D /* App Icon Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Icon Card.swift"; sourceTree = "<group>"; };
-		F385824529D6268200BEEE1D /* Currency Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Currency Button.swift"; sourceTree = "<group>"; };
+		F385824529D6268200BEEE1D /* Currency Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Currency Picker.swift"; sourceTree = "<group>"; };
 		F385824729D626FE00BEEE1D /* Biometry Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Biometry Button.swift"; sourceTree = "<group>"; };
-		F385824929D6313D00BEEE1D /* Wide List Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Wide List Button.swift"; sourceTree = "<group>"; };
 		F38637372A8641120069F074 /* Widgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Widgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F386373B2A8641120069F074 /* Widgets Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Widgets Bundle.swift"; sourceTree = "<group>"; };
 		F386373D2A8641120069F074 /* System Small Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "System Small Widget.swift"; sourceTree = "<group>"; };
@@ -3155,15 +3151,6 @@
 			path = Topbar;
 			sourceTree = "<group>";
 		};
-		F375EC3329EE6DDD002CA969 /* Elements */ = {
-			isa = PBXGroup;
-			children = (
-				F385824529D6268200BEEE1D /* Currency Button.swift */,
-				F385824929D6313D00BEEE1D /* Wide List Button.swift */,
-			);
-			path = Elements;
-			sourceTree = "<group>";
-		};
 		F375EC3429EE6E17002CA969 /* Design */ = {
 			isa = PBXGroup;
 			children = (
@@ -3311,8 +3298,8 @@
 				F3D264362A66A9B9005C3777 /* Settings Parent.swift */,
 				F31BA575295900E30006D126 /* Settings View.swift */,
 				F3924EDE29A2333F00C4CC77 /* Settings VM.swift */,
+				F385824529D6268200BEEE1D /* Currency Picker.swift */,
 				F375EC3429EE6E17002CA969 /* Design */,
-				F375EC3329EE6DDD002CA969 /* Elements */,
 				F3D902DD29DC3E47004E76C9 /* Cache */,
 				F385824429D6261300BEEE1D /* Biometry */,
 				F385824329D6260500BEEE1D /* App Icon */,
@@ -4668,7 +4655,7 @@
 				F3D2951C2AF3975300ED43A0 /* Cache Model.swift in Sources */,
 				F38F9E0D2CE6CCF90033EFE3 /* Image Playground Button.swift in Sources */,
 				F375EC3A29EE73AC002CA969 /* Database List.swift in Sources */,
-				F385824629D6268200BEEE1D /* Currency Button.swift in Sources */,
+				F385824629D6268200BEEE1D /* Currency Picker.swift in Sources */,
 				F37FF8852D87B20700554B3F /* Panel Toolbar Nav.swift in Sources */,
 				F3D7D87D29E83D6500BCAFFE /* Icon Settings.swift in Sources */,
 				F3E024C52B228F4C00FFF686 /* New Task Sheet.swift in Sources */,
@@ -4858,7 +4845,6 @@
 				F36B73712C8A4CAF00E858FE /* Refresh Button Intent.swift in Sources */,
 				F3FF5A0F2A4A3ABD003A1973 /* User Card.swift in Sources */,
 				F31578B329675F5D0016A600 /* Server List.swift in Sources */,
-				F385824A29D6313D00BEEE1D /* Wide List Button.swift in Sources */,
 				F32E88D12AF8494100959D49 /* Server List Filter.swift in Sources */,
 				F337C1602A8C2CE0006F321C /* Startup View.swift in Sources */,
 				F32DB8A829AE6B800074E045 /* Start Page Footer.swift in Sources */,
@@ -5071,10 +5057,9 @@
 				F3202D0D2D562AE30030B3CC /* Browser List Web.swift in Sources */,
 				F36D53192A05B7F6007324C6 /* Panel VM.swift in Sources */,
 				F389BB6C2A05B5EA00911EBF /* Cache Settings.swift in Sources */,
-				F389BB792A05B63C00911EBF /* Wide List Button.swift in Sources */,
 				F3A1D2322A201C570053261E /* Enums.swift in Sources */,
 				F30089332B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */,
-				F389BB782A05B63600911EBF /* Currency Button.swift in Sources */,
+				F389BB782A05B63600911EBF /* Currency Picker.swift in Sources */,
 				F373CDAC2D895419008B64BE /* Log Topbar.swift in Sources */,
 				F373CDAD2D895419008B64BE /* Log Topbar Card.swift in Sources */,
 				F3DDD59E2A62AC7C009FDFBF /* Create Backup Button.swift in Sources */,
@@ -5526,8 +5511,7 @@
 				F3202D0F2D562AE30030B3CC /* Browser List Web.swift in Sources */,
 				F3D295432AF39D8300ED43A0 /* System Alerts.swift in Sources */,
 				F30089342B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */,
-				F3D295B92AF3A17000ED43A0 /* Wide List Button.swift in Sources */,
-				F3D295BD2AF3A18700ED43A0 /* Currency Button.swift in Sources */,
+				F3D295BD2AF3A18700ED43A0 /* Currency Picker.swift in Sources */,
 				F3D295C02AF3A1B000ED43A0 /* Log Meta Parent.swift in Sources */,
 				F373CD722D88A386008B64BE /* Card.swift in Sources */,
 				F373CD732D88A386008B64BE /* Custom Text Effect.swift in Sources */,
