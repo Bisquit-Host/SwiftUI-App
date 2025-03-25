@@ -5286,9 +5286,6 @@
         }
       }
     },
-    "test" : {
-
-    },
     "TestFlight" : {
       "shouldTranslate" : false
     },
