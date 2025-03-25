@@ -1,7 +1,7 @@
 import SwiftUI
 import PteroNet
 
-struct PermissionsHeader: View {
+struct PermissionGroupHeader: View {
     @Environment(UsersVM.self) private var vm
     
     private let user: UserAttributes
@@ -61,6 +61,6 @@ struct PermissionsHeader: View {
     @Previewable @State var showDescription = false
     
     List {
-        PermissionsHeader($showDescription, user: sampleJSON(.userAttributes))
+        PermissionGroupHeader($showDescription, user: sampleJSON(.userAttributes))
     }
 }

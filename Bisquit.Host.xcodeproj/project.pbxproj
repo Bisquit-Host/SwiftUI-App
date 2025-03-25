@@ -1180,7 +1180,7 @@
 		F3CCF5B82B345367005FFF2C /* User Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D85B2B31146E00265492 /* User Image.swift */; };
 		F3CCF5B92B34543B005FFF2C /* User 2Fa.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3EC2B3208BE009B7062 /* User 2Fa.swift */; };
 		F3CCF5BA2B345466005FFF2C /* Permission List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D8572B31135B00265492 /* Permission List.swift */; };
-		F3CCF5BB2B34546F005FFF2C /* Permissions Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3F12B320A6A009B7062 /* Permissions Header.swift */; };
+		F3CCF5BB2B34546F005FFF2C /* Permission Group Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3F12B320A6A009B7062 /* Permission Group Header.swift */; };
 		F3CCF5BC2B345472005FFF2C /* Permission Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D85F2B319B9E00265492 /* Permission Card.swift */; };
 		F3CCF5BD2B3454AA005FFF2C /* User List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF59FE2A4A3188003A1973 /* User List.swift */; };
 		F3CCF5BE2B3454AD005FFF2C /* User Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A0E2A4A3ABD003A1973 /* User Card.swift */; };
@@ -1402,7 +1402,7 @@
 		F3DF50C92B38FD2000206CAE /* Contact Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3880A252A92A15E0052A978 /* Contact Manager.swift */; };
 		F3DF50CA2B38FDDE00206CAE /* User 2Fa.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3EC2B3208BE009B7062 /* User 2Fa.swift */; };
 		F3DF50CB2B38FDE300206CAE /* Permission List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D8572B31135B00265492 /* Permission List.swift */; };
-		F3DF50CC2B38FDE500206CAE /* Permissions Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3F12B320A6A009B7062 /* Permissions Header.swift */; };
+		F3DF50CC2B38FDE500206CAE /* Permission Group Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3F12B320A6A009B7062 /* Permission Group Header.swift */; };
 		F3DF50CD2B38FDE800206CAE /* Permission Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D85F2B319B9E00265492 /* Permission Card.swift */; };
 		F3DF50CF2B39636A00206CAE /* User List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DF50CE2B39636A00206CAE /* User List.swift */; };
 		F3E024C52B228F4C00FFF686 /* New Task Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E024C42B228F4C00FFF686 /* New Task Sheet.swift */; };
@@ -1423,9 +1423,9 @@
 		F3E1D3ED2B3208BE009B7062 /* User 2Fa.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3EC2B3208BE009B7062 /* User 2Fa.swift */; };
 		F3E1D3EE2B3208BE009B7062 /* User 2Fa.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3EC2B3208BE009B7062 /* User 2Fa.swift */; };
 		F3E1D3EF2B3208DE009B7062 /* User 2Fa.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3EC2B3208BE009B7062 /* User 2Fa.swift */; };
-		F3E1D3F22B320A6A009B7062 /* Permissions Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3F12B320A6A009B7062 /* Permissions Header.swift */; };
-		F3E1D3F32B320A6A009B7062 /* Permissions Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3F12B320A6A009B7062 /* Permissions Header.swift */; };
-		F3E1D3F42B320A6A009B7062 /* Permissions Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3F12B320A6A009B7062 /* Permissions Header.swift */; };
+		F3E1D3F22B320A6A009B7062 /* Permission Group Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3F12B320A6A009B7062 /* Permission Group Header.swift */; };
+		F3E1D3F32B320A6A009B7062 /* Permission Group Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3F12B320A6A009B7062 /* Permission Group Header.swift */; };
+		F3E1D3F42B320A6A009B7062 /* Permission Group Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3F12B320A6A009B7062 /* Permission Group Header.swift */; };
 		F3E2BEDA2C1C6B9500B7A6D4 /* Cache List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BED92C1C6B9500B7A6D4 /* Cache List.swift */; };
 		F3E2BEDB2C1C6B9500B7A6D4 /* Cache List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BED92C1C6B9500B7A6D4 /* Cache List.swift */; };
 		F3E2BEDC2C1C6B9500B7A6D4 /* Cache List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BED92C1C6B9500B7A6D4 /* Cache List.swift */; };
@@ -2103,7 +2103,7 @@
 		F3E08EBE2A2CE87800116C1C /* Start Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page.swift"; sourceTree = "<group>"; };
 		F3E08ECD2A2CEDD800116C1C /* Panel View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel View.swift"; sourceTree = "<group>"; };
 		F3E1D3EC2B3208BE009B7062 /* User 2Fa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User 2Fa.swift"; sourceTree = "<group>"; };
-		F3E1D3F12B320A6A009B7062 /* Permissions Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Permissions Header.swift"; sourceTree = "<group>"; };
+		F3E1D3F12B320A6A009B7062 /* Permission Group Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Permission Group Header.swift"; sourceTree = "<group>"; };
 		F3E2BED92C1C6B9500B7A6D4 /* Cache List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache List.swift"; sourceTree = "<group>"; };
 		F3E2BEDE2C1C6BA800B7A6D4 /* Cache List VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache List VM.swift"; sourceTree = "<group>"; };
 		F3E2BEF52C1DA07E00B7A6D4 /* Contact Provider.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = "Contact Provider.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3811,7 +3811,7 @@
 			isa = PBXGroup;
 			children = (
 				F3C9D8572B31135B00265492 /* Permission List.swift */,
-				F3E1D3F12B320A6A009B7062 /* Permissions Header.swift */,
+				F3E1D3F12B320A6A009B7062 /* Permission Group Header.swift */,
 				F3C9D85F2B319B9E00265492 /* Permission Card.swift */,
 			);
 			path = Permissions;
@@ -4487,7 +4487,7 @@
 				F3464D332A863A6600188B0C /* Send Command.swift in Sources */,
 				F370804C2A2A1CAF0046CE70 /* Create Button.swift in Sources */,
 				F39E68412D2D6D2F0002BA96 /* File Error View.swift in Sources */,
-				F3CCF5BB2B34546F005FFF2C /* Permissions Header.swift in Sources */,
+				F3CCF5BB2B34546F005FFF2C /* Permission Group Header.swift in Sources */,
 				F39CB6292C63D56300B7B15E /* System Alerts.swift in Sources */,
 				F33CDC002A26B920008D0214 /* Browser VM.swift in Sources */,
 				F3499EF22A26DCA0006101B7 /* Panel Model.swift in Sources */,
@@ -4825,7 +4825,7 @@
 				F35DA9592A28F5B100803E7E /* Upload Progress.swift in Sources */,
 				F35B89BE2A725710000B5EEF /* Tip Suspended Server.swift in Sources */,
 				F310BB392A54E31700843F14 /* Server List VM.swift in Sources */,
-				F3E1D3F22B320A6A009B7062 /* Permissions Header.swift in Sources */,
+				F3E1D3F22B320A6A009B7062 /* Permission Group Header.swift in Sources */,
 				F32F2CCE2D8F6FCE007CF4DE /* Discover Card Layout.swift in Sources */,
 				F31BA5B0295902C70006D126 /* Folder Path.swift in Sources */,
 				F3D902DF29DC445A004E76C9 /* Cache Limit.swift in Sources */,
@@ -4950,7 +4950,7 @@
 				F3762DA02A581B1C0016AC44 /* Log List.swift in Sources */,
 				F3C9D8592B31135B00265492 /* Permission List.swift in Sources */,
 				F3499EF62A275546006101B7 /* Websocket.swift in Sources */,
-				F3E1D3F32B320A6A009B7062 /* Permissions Header.swift in Sources */,
+				F3E1D3F32B320A6A009B7062 /* Permission Group Header.swift in Sources */,
 				F3F061D32A73C37700470F7E /* Map VM.swift in Sources */,
 				F35B89C02A725CFA000B5EEF /* Tip Suspended Server.swift in Sources */,
 				F3FFB7442A57F43C00220FA5 /* User List.swift in Sources */,
@@ -5212,7 +5212,7 @@
 				F367977F2A3A5AB6009F2788 /* Log VM.swift in Sources */,
 				F3FF5A0D2A4A386F003A1973 /* Users VM.swift in Sources */,
 				F3D295182AF396FD00ED43A0 /* Tabs.swift in Sources */,
-				F3E1D3F42B320A6A009B7062 /* Permissions Header.swift in Sources */,
+				F3E1D3F42B320A6A009B7062 /* Permission Group Header.swift in Sources */,
 				F34BB6BB2D3DC2B800D27BE0 /* File Preview VM.swift in Sources */,
 				F36D532D2A05B87E007324C6 /* Schedule List.swift in Sources */,
 				F36D531A2A05B7FB007324C6 /* Console Tab.swift in Sources */,
@@ -5890,7 +5890,7 @@
 				F32FD7232B1E065600723B88 /* Network Calls.swift in Sources */,
 				F3202C7A2D558B210030B3CC /* Spotlight Index.swift in Sources */,
 				F3FD9F9E2C651F4800A69314 /* Sensitivity Analyzer.swift in Sources */,
-				F3DF50CC2B38FDE500206CAE /* Permissions Header.swift in Sources */,
+				F3DF50CC2B38FDE500206CAE /* Permission Group Header.swift in Sources */,
 				F3E679AD2D5A854700A7ADDE /* Server Options Provider.swift in Sources */,
 				F300889B2B3A0E1A0051476C /* Startup VM.swift in Sources */,
 				F33DE5092B364EBC00E257D8 /* Tab Info.swift in Sources */,
