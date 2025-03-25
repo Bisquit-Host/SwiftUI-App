@@ -26,7 +26,7 @@ struct AccountParent: View {
             .environment(apiKeysVM)
             .tag(1)
             .tabItem {
-                Label("API-keys", systemImage: "hammer")
+                Label("API-keys", systemImage: "key.2.on.ring")
             }
             
             NavigationView {
@@ -35,7 +35,7 @@ struct AccountParent: View {
             .environment(sshVM)
             .tag(2)
             .tabItem {
-                Label("SSH-keys", systemImage: "hammer")
+                Label("SSH-keys", systemImage: "key.2.on.ring")
             }
         }
         .task {
