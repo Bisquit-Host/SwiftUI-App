@@ -159,12 +159,6 @@ struct PanelView: View {
                 }
             }
         }
-        .overlay(alignment: .topTrailing) {
-            if navExpanded {
-                PanelToolbarNav($navExpanded)
-                    .offset(x: -20)
-            }
-        }
         .alert(isPresented: $alertNewFolder) {
             CustomDialog(
                 title: "New Folder",
