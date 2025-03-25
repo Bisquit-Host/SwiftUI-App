@@ -27,7 +27,7 @@ struct PanelView: View {
     }
     
     @State private var alertNewFolder = false
-    @State private var navExpanded = false
+    @State private var sheetSettings = false
     
     var body: some View {
         NavigationView {
@@ -126,7 +126,7 @@ struct PanelView: View {
                     
                     Button {
                         withAnimation(.easeOut) {
-                            navExpanded = true
+                            sheetSettings = true
                         }
                     } label: {
                         Image(systemName: "ellipsis")
@@ -141,6 +141,11 @@ struct PanelView: View {
         }
         .navigationBarBackButtonHidden()
         .ignoresSafeArea()
+        .sheet($sheetSettings) {
+            if let server = vm.server {
+                PanelSettingsParent(server)
+            }
+        }
         .environment(vm)
         .task {
             fetchData()

@@ -2644,6 +2644,8 @@
 				F3D295122AF396FD00ED43A0 /* Tabs.swift */,
 				F39626F12A7AD64B0057E356 /* Ansi.swift */,
 				F37A36772A35180100517EFC /* Power Menu.swift */,
+				F3553FB22B40653000EF0FD2 /* Panel Settings Parent.swift */,
+				F303214A2B3FEA45002A73B8 /* Panel Settings View.swift */,
 				F37A36722A3515DC00517EFC /* Server Settings VM.swift */,
 			);
 			path = Panel;
@@ -2658,8 +2660,6 @@
 				F325F6FF2A54BBCF00E89EC4 /* Info Tab Allocation.swift */,
 				F3FF5A022A4A359C003A1973 /* Info Tab Buttons.swift */,
 				F3B66DF32D60B46F00F1841B /* Info Tab LA.swift */,
-				F3553FB22B40653000EF0FD2 /* Panel Settings Parent.swift */,
-				F303214A2B3FEA45002A73B8 /* Panel Settings View.swift */,
 				F353B04E2D8AA6FB00E4EC07 /* Map */,
 			);
 			path = Info;
