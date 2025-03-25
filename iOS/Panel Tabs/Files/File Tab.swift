@@ -13,6 +13,7 @@ struct FileTab: View {
     @State private var image: UIImage?
     @State private var selectedItem: String?
     @State private var selectedIndex: Int?
+    @State private var trigger = false
     
     private var fileCount: Int {
         vm.filteredFiles.count
@@ -54,6 +55,7 @@ struct FileTab: View {
         .environmentObject(vm)
         .frame(maxWidth: 500)
         .safariCover($vm.showSafari, url: vm.downloadUrl)
+        .sensoryFeedback(.success, trigger: trigger)
         .background {
             BackgroundImage()
         }
@@ -63,6 +65,11 @@ struct FileTab: View {
         }
         .refreshableTask {
             vm.fetchFiles(root)
+        }
+        .onChange(of: vm.isUploading) { _, newValue in
+            if newValue {
+                trigger.toggle()
+            }
         }
         .onChange(of: image) {
             if let image {
