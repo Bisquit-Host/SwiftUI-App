@@ -713,46 +713,6 @@
         }
       }
     },
-    "Apps" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Apps"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Приложения"
-          }
-        }
-      }
-    },
-    "Are you ready?" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ben jij er klaar voor?"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "А вы готовы?"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "А ты готов?"
-          }
-        }
-      }
-    },
     "Are you sure you want to continue?" : {
       "localizations" : {
         "ru" : {
@@ -914,23 +874,6 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Бэкапы"
-          }
-        }
-      }
-    },
-    "Best Performance" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Beste Prestaties"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Лучшая Производительность"
           }
         }
       }
@@ -1359,23 +1302,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Консоль пуста"
-          }
-        }
-      }
-    },
-    "Contact" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Contact"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Связь"
           }
         }
       }
@@ -3250,23 +3176,6 @@
         }
       }
     },
-    "Lift-off 🚀" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lift-off 🚀"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Поехали 🚀"
-          }
-        }
-      }
-    },
     "Light" : {
       "localizations" : {
         "nl" : {
@@ -3413,17 +3322,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Логи"
-          }
-        }
-      }
-    },
-    "Mail" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Почта"
           }
         }
       }
@@ -3855,23 +3753,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Заметки"
-          }
-        }
-      }
-    },
-    "Offer" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Voorwaarden"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Оферта"
           }
         }
       }
@@ -4702,23 +4583,6 @@
         }
       }
     },
-    "Server logs" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Serverlogboeken"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Логи сервера"
-          }
-        }
-      }
-    },
     "Server name" : {
       "localizations" : {
         "nl" : {
@@ -5037,17 +4901,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Команда Запуска"
-          }
-        }
-      }
-    },
-    "Stats" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Стата"
           }
         }
       }
@@ -5951,23 +5804,6 @@
     },
     "Welcome to" : {
 
-    },
-    "Where to find the API-key?" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Waar vind je de API-sleutel?"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Где найти API-ключ?"
-          }
-        }
-      }
     },
     "Wiki" : {
       "localizations" : {
