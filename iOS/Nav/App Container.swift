@@ -7,12 +7,12 @@ import DeviceKit
 #endif
 
 struct AppContainer: View {
-    @EnvironmentObject private var store: ValueStore
-    @Environment(NavState.self) private var navState
     @State private var vm = ServerListVM()
     @State private var linking = DeepLinkVM()
     @State private var network = NetworkVM()
     
+    @EnvironmentObject private var store: ValueStore
+    @Environment(NavState.self) private var navState
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.modelContext) private var modelContext
     @Query(animation: .default) private var keys: [APIKey]
