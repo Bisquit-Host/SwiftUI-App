@@ -3,7 +3,7 @@ import PteroNet
 
 @Observable
 final class DeepLinkVM {
-    var session = ""
+    var apiKey = ""
     var alertAuth = false
     
     func handleDeepLink(_ url: URL) {
@@ -32,7 +32,7 @@ final class DeepLinkVM {
             return
         }
         
-        self.session = session
+        self.apiKey = session
         alertAuth = true
     }
 }

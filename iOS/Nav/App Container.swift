@@ -35,24 +35,14 @@ struct AppContainer: View {
                     .withNavDestinations()
 #endif
             } else {
-#if os(iOS)
-                if #available(iOS 18, *) {
-                    Intro()
-                        .withNavDestinations()
-                } else {
-                    StartPage()
-                        .withNavDestinations()
-                }
-#else
-                Intro()
+                IntroParent()
                     .withNavDestinations()
-#endif
             }
         }
         .animation(.default, value: store.isApiKeyValid)
         .environment(vm)
-        .environment(network)
         .preferredColorScheme(store.colorTheme.scheme)
+        .onOpenURL(perform: linking.handleDeepLink)
 #if canImport(AlertKit)
         .onChange(of: network.isNetworkSatisfied) { _, status in
             guard let status, status else {
@@ -70,7 +60,6 @@ struct AppContainer: View {
                 }
             }
         }
-        .onOpenURL(perform: linking.handleDeepLink)
         .alert("Authentication with session", isPresented: $linking.alertAuth) {
             Button("Confirm") {
                 auth()
@@ -94,11 +83,13 @@ struct AppContainer: View {
     private func auth() {
         Keychain.save(
             key: "selectedApiKey",
-            value: linking.session
+            value: linking.apiKey
         )
         
-        if !keys.contains(where: { $0.key == linking.session }) {
-            modelContext.insert(APIKey("Session", key: linking.session))
+        if !keys.contains(where: { $0.key == linking.apiKey }) {
+            modelContext.insert(
+                APIKey("Session", key: linking.apiKey)
+            )
         }
         
         store.authSucced()
