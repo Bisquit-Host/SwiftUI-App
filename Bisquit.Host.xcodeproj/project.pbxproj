@@ -1548,6 +1548,14 @@
 		F3FDFF8B2C89130F009EBB5C /* Resources Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF8A2C89130F009EBB5C /* Resources Widget.swift */; };
 		F3FDFF8E2C891343009EBB5C /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF872C8912F1009EBB5C /* Networking.swift */; };
 		F3FDFF912C89150D009EBB5C /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF872C8912F1009EBB5C /* Networking.swift */; };
+		F3FF3E872D93576B00EDFBC6 /* Update Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF3E862D93576B00EDFBC6 /* Update Checker.swift */; };
+		F3FF3E882D93576B00EDFBC6 /* Update Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF3E862D93576B00EDFBC6 /* Update Checker.swift */; };
+		F3FF3E892D93576B00EDFBC6 /* Update Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF3E862D93576B00EDFBC6 /* Update Checker.swift */; };
+		F3FF3E8A2D93576B00EDFBC6 /* Update Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF3E862D93576B00EDFBC6 /* Update Checker.swift */; };
+		F3FF3E8B2D93576B00EDFBC6 /* Update Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF3E862D93576B00EDFBC6 /* Update Checker.swift */; };
+		F3FF3E8C2D93576B00EDFBC6 /* Update Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF3E862D93576B00EDFBC6 /* Update Checker.swift */; };
+		F3FF3E8D2D93576B00EDFBC6 /* Update Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF3E862D93576B00EDFBC6 /* Update Checker.swift */; };
+		F3FF3E8E2D93576B00EDFBC6 /* Update Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF3E862D93576B00EDFBC6 /* Update Checker.swift */; };
 		F3FF59FF2A4A3188003A1973 /* User List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF59FE2A4A3188003A1973 /* User List.swift */; };
 		F3FF5A002A4A3188003A1973 /* User List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF59FE2A4A3188003A1973 /* User List.swift */; };
 		F3FF5A032A4A359C003A1973 /* Info Tab Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A022A4A359C003A1973 /* Info Tab Buttons.swift */; };
@@ -2143,6 +2151,7 @@
 		F3FDFF6B2C89120D009EBB5C /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
 		F3FDFF872C8912F1009EBB5C /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		F3FDFF8A2C89130F009EBB5C /* Resources Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Resources Widget.swift"; sourceTree = "<group>"; };
+		F3FF3E862D93576B00EDFBC6 /* Update Checker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Update Checker.swift"; sourceTree = "<group>"; };
 		F3FF59FE2A4A3188003A1973 /* User List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User List.swift"; sourceTree = "<group>"; };
 		F3FF5A022A4A359C003A1973 /* Info Tab Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab Buttons.swift"; sourceTree = "<group>"; };
 		F3FF5A0B2A4A386F003A1973 /* Users VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Users VM.swift"; sourceTree = "<group>"; };
@@ -2429,6 +2438,7 @@
 			isa = PBXGroup;
 			children = (
 				F3AB1DF32D79C42B00387164 /* MetricKit Manager.swift */,
+				F3FF3E862D93576B00EDFBC6 /* Update Checker.swift */,
 				F3B1196C29A13CA6003BB68C /* Value Store.swift */,
 				F3BC03C02B2063820011F98A /* Debug Key.swift */,
 				F32FD71D2B1E054300723B88 /* Network Calls.swift */,
@@ -4506,6 +4516,7 @@
 				F33DE50C2B36E3C300E257D8 /* App Delegate.swift in Sources */,
 				F34F28A02ACDADB200FD618A /* Animated Tab.swift in Sources */,
 				F370804E2A2A1D180046CE70 /* Data Tab.swift in Sources */,
+				F3FF3E892D93576B00EDFBC6 /* Update Checker.swift in Sources */,
 				F335CA0D2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */,
 				F397E74B2B208A3B00DDF1CE /* New Folder.swift in Sources */,
 				F39D285C2A27F474007B12C3 /* File Icon.swift in Sources */,
@@ -4680,6 +4691,7 @@
 				F31BA57A295901110006D126 /* Start Page.swift in Sources */,
 				F31578B5296760710016A600 /* Server Card.swift in Sources */,
 				F3D558AC2A3360ED00608447 /* File Tab VM.swift in Sources */,
+				F3FF3E8D2D93576B00EDFBC6 /* Update Checker.swift in Sources */,
 				F3202D202D562B990030B3CC /* Browser Card Web.swift in Sources */,
 				F337C1622A8CE7C0006F321C /* Startup Card.swift in Sources */,
 				F3A31B092B0B161D00F89C51 /* Cloud Key Card.swift in Sources */,
@@ -4954,6 +4966,7 @@
 				F3EB09E22A29805A0073916A /* Des Video Watch.swift in Sources */,
 				F31F32072D52DB950095DD19 /* Color Theme.swift in Sources */,
 				F38C6E5E2A5475A500F2BDA6 /* Start Page VM.swift in Sources */,
+				F3FF3E8C2D93576B00EDFBC6 /* Update Checker.swift in Sources */,
 				F3878EDF2A1C228900AD8657 /* Server Card Stats.swift in Sources */,
 				F3C9D8612B319B9E00265492 /* Permission Card.swift in Sources */,
 				F30C130A2A545E6F00A7EFF0 /* Linking VM.swift in Sources */,
@@ -5051,6 +5064,7 @@
 				F30088A52B3A18A70051476C /* Database VM.swift in Sources */,
 				F3A800372A7313E900CAC40B /* Tip Cloud Keys.swift in Sources */,
 				F3D3DBD429B889E600096115 /* Browser Topbar.swift in Sources */,
+				F3FF3E882D93576B00EDFBC6 /* Update Checker.swift in Sources */,
 				F3BC03B42B1FF4830011F98A /* Task Context Menu.swift in Sources */,
 				F32F2D002D908E1D007CF4DE /* Background Image Helper.swift in Sources */,
 				F36D532C2A05B87A007324C6 /* Database List.swift in Sources */,
@@ -5528,6 +5542,7 @@
 				F3D295CB2AF3A22700ED43A0 /* QR Code View.swift in Sources */,
 				F3D2956F2AF39EEA00ED43A0 /* Websocket Delegate.swift in Sources */,
 				F3BC03BA2B1FF8E40011F98A /* Database Context Menu.swift in Sources */,
+				F3FF3E8B2D93576B00EDFBC6 /* Update Checker.swift in Sources */,
 				F3CE5C422D538FE60094BD7B /* Subdomain List.swift in Sources */,
 				F3202D472D56DC050030B3CC /* Prefetcher.swift in Sources */,
 				F3D037032CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift in Sources */,
@@ -5608,6 +5623,7 @@
 				F3255E182C9049DC008E04DE /* Settings Parent.swift in Sources */,
 				F3A7CF652C8CA5FE00413400 /* API Key.swift in Sources */,
 				F3255E1C2C904A48008E04DE /* Account View.swift in Sources */,
+				F3FF3E8E2D93576B00EDFBC6 /* Update Checker.swift in Sources */,
 				F3202CDB2D5624B10030B3CC /* Plan.swift in Sources */,
 				F300C46B2D8C473800743300 /* Background Image Picker.swift in Sources */,
 				F3A7CEDC2C8B95CB00413400 /* Home View.swift in Sources */,
@@ -5755,6 +5771,7 @@
 				F30B61CB2B2905F300F447B4 /* Websocket Message.swift in Sources */,
 				F30C130B2A545ED900A7EFF0 /* Linking VM.swift in Sources */,
 				F32716DD2CF62C9900F2DC31 /* Backup List.swift in Sources */,
+				F3FF3E8A2D93576B00EDFBC6 /* Update Checker.swift in Sources */,
 				F348C6E62A543909002D5BD6 /* Intro.swift in Sources */,
 				F3F2BBAA2A540E4000D44CA6 /* Nav Destinations.swift in Sources */,
 				F31461702D5A1F8100547B6C /* Icon.swift in Sources */,
@@ -5962,6 +5979,7 @@
 				F3AB4A962CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
 				F35FEB102B09F4D3004DA05D /* Network VM.swift in Sources */,
 				F3464D352A863A6800188B0C /* Send Command.swift in Sources */,
+				F3FF3E872D93576B00EDFBC6 /* Update Checker.swift in Sources */,
 				F30088DB2B3A3C0E0051476C /* Console VM.swift in Sources */,
 				F3458BF02B36EA49000E8324 /* App Delegate.swift in Sources */,
 				F32FD7192B1E042C00723B88 /* Websocket Delegate.swift in Sources */,
