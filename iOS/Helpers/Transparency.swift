@@ -21,9 +21,9 @@ struct TransparentSection: ViewModifier {
 #else
         if store.transparentList {
             content
+                .listRowBackground(Color.clear)
         } else {
             content
-                .listRowBackground(Color.clear)
         }
 #endif
     }
