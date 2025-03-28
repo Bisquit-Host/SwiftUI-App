@@ -13,7 +13,7 @@ struct UserView: View {
     var body: some View {
         NavigationView {
             List {
-                UserAvatar(user.image)
+                UserImage(user.image)
                 
                 Text(user.email)
                     .lineLimit(1)
