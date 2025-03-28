@@ -49,9 +49,9 @@ struct ServerList: View {
             
             ToolbarItemGroup(placement: .navigationBarTrailing) {
 #warning("iMessage: Full screen button")
-                //                                Button("Test") {
-                //                                    test = true
-                //                                }
+                //Button("Test") {
+                //    test = true
+                //}
                 
                 TopbarAdminButton {
                     vm.fetchServers(store.adminServerList)
