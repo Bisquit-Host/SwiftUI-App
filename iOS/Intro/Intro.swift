@@ -95,7 +95,7 @@ struct Intro: View {
         .setPermissionComponent(.biometrics, description: "Allow to verify certain destructive actions")
         .setPermissionComponent(.contacts, description: "Allow to quickly invite subusers to your server")
         .setPermissionComponent(.camera, description: "Allow to use camera for uploading media to your server")
-        .setAccentColor(to: .cookie)
+        .setAccentColor(to: .accentColor)
         .changeHeaderDescriptionTo("In order for you to use certain features of Bisquit.Host, you need to give permissions. See description for each permission")
         .onReceive(timer) { _ in
             currentScrollOffset += 0.35
