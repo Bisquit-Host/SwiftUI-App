@@ -38,7 +38,7 @@ struct CustomDialog: View {
                     .padding(.horizontal, 15)
                     .padding(.vertical, 12)
                     .background {
-                        RoundedRectangle(cornerRadius: 10)
+                        Capsule()
                             .fill(.gray.opacity(0.1))
                     }
                     .padding(.bottom, 5)
@@ -53,7 +53,7 @@ struct CustomDialog: View {
         }
         .padding([.horizontal, .bottom], 15)
         .background {
-            RoundedRectangle(cornerRadius: 15)
+            RoundedRectangle(cornerRadius: 32)
                 .fill(.ultraThinMaterial)
                 .padding(.top, 30)
         }
@@ -73,7 +73,7 @@ struct CustomDialog: View {
                 .foregroundStyle(config.foreground)
                 .padding(.vertical, 10)
                 .frame(maxWidth: .infinity)
-                .background(config.tint.secondary, in: .rect(cornerRadius: 10))
+                .background(config.tint.secondary, in: .capsule)
         }
     }
     
