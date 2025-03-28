@@ -96,7 +96,7 @@ struct Discover: View {
                     openSafari("https://apps.apple.com/au/developer/sergei-saliukov/id1639409936")
                 } label: {
                     DiscoverCardLayout(
-                        .init("More apps", subtitle: "By Bisquit.Host", image: .defaultIcon)
+                        .init("More apps", subtitle: "By Bisquit.Host", image: .logo)
                     )
                 }
                 

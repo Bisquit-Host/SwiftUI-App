@@ -26,7 +26,7 @@ final class ValueStore: ObservableObject {
     //    @AppStorage("consoleFontDesign") var consoleFontDesign = 1
     
     // MARK: - Other
-#if !os(watchOS) && !os(tvOS)
+#if os(iOS) || os(macOS)
     @AppStorage("currentIcon") var currentIcon: Icon = .def
 #endif
     
