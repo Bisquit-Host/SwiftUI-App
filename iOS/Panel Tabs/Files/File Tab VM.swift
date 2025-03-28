@@ -58,7 +58,7 @@ final class FileTabVM: ObservableObject {
     }
     
     func changeChmod(_ file: String, at root: String, mode: String, onSuccess: @escaping () -> ()) {
-        fileChmodAPI(id, root: root, file: file, mode: mode) { result in
+        fileChmodAPI(id, file: file, at: root, mode: mode) { result in
             switch result {
             case .success:
                 onSuccess()
@@ -243,7 +243,7 @@ final class FileTabVM: ObservableObject {
         from oldName: String,
         to newName: String
     ) {
-        fileRenameAPI(id, root: path, oldName: oldName, newName: newName) { result in
+        fileRenameAPI(id, at: path, from: oldName, to: newName) { result in
             switch result {
             case .success:
                 self.fetchFiles(path)
@@ -259,7 +259,7 @@ final class FileTabVM: ObservableObject {
     }
     
     func duplicateFile(_ file: String, at path: String) {
-        fileDuplicateAPI(id, file: file, root: path) { result in
+        fileDuplicateAPI(id, file: file, at: path) { result in
             switch result {
             case .success:
                 self.fetchFiles(path)
@@ -275,7 +275,7 @@ final class FileTabVM: ObservableObject {
         at path: String,
         action: CompressorActions
     ) {
-        fileCompressorAPI(id, file: file, root: path, do: action) { result in
+        fileCompressorAPI(id, file: file, at: path, do: action) { result in
             switch result {
             case .success:
                 self.fetchFiles(path)
@@ -287,7 +287,7 @@ final class FileTabVM: ObservableObject {
     }
     
     func createFolder(_ file: String, at path: String) {
-        fileCreateFolderAPI(id, file: file, root: path) { result in
+        fileCreateFolderAPI(id, file: file, at: path) { result in
             switch result {
             case .success:
                 self.fetchFiles(path)
@@ -303,7 +303,7 @@ final class FileTabVM: ObservableObject {
         at path: String,
         onSuccess: @escaping (() -> Void) = {}
     ) {
-        fileDeleteAPI(id, files: [files], root: path) { result in
+        fileDeleteAPI(id, files: [files], at: path) { result in
             switch result {
             case .success:
                 self.fetchFiles(path)
