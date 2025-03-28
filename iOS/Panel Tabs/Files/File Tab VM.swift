@@ -240,8 +240,8 @@ final class FileTabVM: ObservableObject {
     
     func renameFile(
         _ path: String,
-        oldName: String,
-        newName: String
+        from oldName: String,
+        to newName: String
     ) {
         fileRenameAPI(id, root: path, oldName: oldName, newName: newName) { result in
             switch result {

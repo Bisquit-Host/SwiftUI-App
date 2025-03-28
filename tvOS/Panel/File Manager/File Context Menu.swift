@@ -66,7 +66,7 @@ struct FileContextMenu: ViewModifier {
                 TextField("", text: $vm.newFileName)
                 
                 Button("Rename", role: .destructive) {
-                    vm.renameFile(path, oldName: name, newName: vm.newFileName)
+                    vm.renameFile(path, from: name, to: vm.newFileName)
                     
                     vm.newFileName = ""
                 }
