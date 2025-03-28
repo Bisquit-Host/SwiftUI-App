@@ -26,7 +26,10 @@ final class ValueStore: ObservableObject {
     //    @AppStorage("consoleFontDesign") var consoleFontDesign = 1
     
     // MARK: - Other
+#if !os(watchOS)
     @AppStorage("currentIcon") var currentIcon: Icon = .def
+#endif
+    
     @AppStorage("showFullFilePath") var showFullFilePath = false
     @AppStorage("preferredCurrency") var preferredCurrency = "₽"
     @AppStorage("last_tab_panel") var lastTabPanel: Tabs = .info

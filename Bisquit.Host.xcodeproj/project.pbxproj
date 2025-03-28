@@ -136,7 +136,6 @@
 		F314616A2D5A1F5E00547B6C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31461692D5A1F5E00547B6C /* Icon.swift */; };
 		F314616B2D5A1F5E00547B6C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31461692D5A1F5E00547B6C /* Icon.swift */; };
 		F314616C2D5A1F5E00547B6C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31461692D5A1F5E00547B6C /* Icon.swift */; };
-		F314616D2D5A1F6E00547B6C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31461692D5A1F5E00547B6C /* Icon.swift */; };
 		F314616E2D5A1F8100547B6C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31461692D5A1F5E00547B6C /* Icon.swift */; };
 		F314616F2D5A1F8100547B6C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31461692D5A1F5E00547B6C /* Icon.swift */; };
 		F31461702D5A1F8100547B6C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31461692D5A1F5E00547B6C /* Icon.swift */; };
@@ -434,7 +433,6 @@
 		F333B3BD2B80CF760005B84D /* Preview Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = F320DDA42B704E3C00957D92 /* Preview Property.swift */; };
 		F335CA062C63E86D006C71C6 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = F335CA052C63E86D006C71C6 /* DeviceKit */; };
 		F335CA082C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */; };
-		F335CA092C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */; };
 		F335CA0A2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */; };
 		F335CA0B2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */; };
 		F335CA0C2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */; };
@@ -551,7 +549,6 @@
 		F34BB6BE2D3DC2D300D27BE0 /* File Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34BB6BD2D3DC2D300D27BE0 /* File Preview.swift */; };
 		F34BB6BF2D3DC2D300D27BE0 /* File Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34BB6BD2D3DC2D300D27BE0 /* File Preview.swift */; };
 		F34BB6C02D3DC2D300D27BE0 /* File Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34BB6BD2D3DC2D300D27BE0 /* File Preview.swift */; };
-		F34C055929F11A4D0031ABE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F31BA52A2958FF7D0006D126 /* Assets.xcassets */; };
 		F34C055A29F11E010031ABE1 /* Server Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* Server Card VM.swift */; };
 		F34F289A2ACDAD9B00FD618A /* Animated Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34F28992ACDAD9B00FD618A /* Animated Tab.swift */; };
 		F34F289B2ACDAD9B00FD618A /* Animated Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34F28992ACDAD9B00FD618A /* Animated Tab.swift */; };
@@ -4393,7 +4390,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F34C055929F11A4D0031ABE1 /* Assets.xcassets in Resources */,
 				F36797752A39C4ED009F2788 /* Localizable.xcstrings in Resources */,
 				F378E3352AF3835B009925DB /* PrivacyInfo.xcprivacy in Resources */,
 				F31BA53D2958FF7E0006D126 /* Assets.xcassets in Resources */,
@@ -4985,7 +4981,6 @@
 				F3FFB7492A57FF0B00220FA5 /* Log Card.swift in Sources */,
 				F3EB09CF2A2953200073916A /* Des Image.swift in Sources */,
 				F34C055A29F11E010031ABE1 /* Server Card VM.swift in Sources */,
-				F314616D2D5A1F6E00547B6C /* Icon.swift in Sources */,
 				F35FEB112B09F4D4004DA05D /* Network VM.swift in Sources */,
 				F3A800342A7313E900CAC40B /* Tip Cloud Keys.swift in Sources */,
 				F3464D2D2A863A6100188B0C /* Create Backup.swift in Sources */,
@@ -5010,7 +5005,6 @@
 				F3E1D3EF2B3208DE009B7062 /* User 2Fa.swift in Sources */,
 				F3EB09D22A29533D0073916A /* Formatters.swift in Sources */,
 				F3499EFA2A277D0F006101B7 /* File Tab.swift in Sources */,
-				F335CA092C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */,
 				F3E2BEE22C1C6BA800B7A6D4 /* Cache List VM.swift in Sources */,
 				F3FF3E942D9411B400EDFBC6 /* Intro Parent.swift in Sources */,
 				F3EB09E52A2982680073916A /* Video File.swift in Sources */,
