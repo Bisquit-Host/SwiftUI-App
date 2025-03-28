@@ -26,16 +26,13 @@ final class ValueStore: ObservableObject {
     //    @AppStorage("consoleFontDesign") var consoleFontDesign = 1
     
     // MARK: - Other
-#if os(iOS) || os(macOS)
-    @AppStorage("currentIcon") var currentIcon: Icon = .def
-#endif
-    
     @AppStorage("showFullFilePath") var showFullFilePath = false
     @AppStorage("preferredCurrency") var preferredCurrency = "₽"
     @AppStorage("last_tab_panel") var lastTabPanel: Tabs = .info
     @AppStorage("tabViewBouncesDown") var tabViewBouncesDown = true
     @AppStorage("rawStartupCommand") var rawStartupCommand = false
 #if os(iOS)
+    @AppStorage("currentIcon") var currentIcon: Icon = .def
     @AppStorage("lastInfoTab") var lastInfoTab: TabInfo = .relative
     @AppStorage("contactsProviderEnabled") var contactsProviderEnabled = false
 #endif
