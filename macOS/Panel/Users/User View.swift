@@ -36,8 +36,7 @@ struct UserView: View {
                 }
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
-                
-#warning("Uncomment")
+#warning("macOS")
 #if !os(macOS)
                 PermissionList($user)
                     .environment(vm)
