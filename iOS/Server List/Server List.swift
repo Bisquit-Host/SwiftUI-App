@@ -36,7 +36,7 @@ struct ServerList: View {
         .background {
             BackgroundImage()
         }
-        .task {
+        .onFirstAppear {
             if !System.lowPowerMode {
                 await vm.checkForUpdates()
             }
