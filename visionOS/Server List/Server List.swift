@@ -51,7 +51,7 @@ struct ServerList: View {
         .sheet($vm.sheetDiscover) {
             Discover()
         }
-        .task {
+        .onFirstAppear {
             if !System.lowPowerMode {
                 await vm.checkForUpdates()
             }
