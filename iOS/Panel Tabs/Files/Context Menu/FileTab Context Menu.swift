@@ -79,7 +79,7 @@ struct FileTabContextMenu: ViewModifier {
                 }
 #warning("File Preview")
                 //            } preview: {
-                //                FilePreview(id, path: root, name: name)
+                //                FilePreview(id, name: name, at: root)
             }
             .sheet($sheetPermissions) {
                 FilePermissionsParent(file, at: root)

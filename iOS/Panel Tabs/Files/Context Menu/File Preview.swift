@@ -5,12 +5,12 @@ import QuickLooking
 struct FilePreview: View {
     @State private var vm: FilePreviewVM
     
-    private let id, path, name: String
+    private let id, name, path: String
     
-    init(_ id: String, path: String, name: String) {
+    init(_ id: String, name: String, at path: String) {
         self.id = id
-        self.path = path
         self.name = name
+        self.path = path
         self.vm = FilePreviewVM(id)
     }
     
