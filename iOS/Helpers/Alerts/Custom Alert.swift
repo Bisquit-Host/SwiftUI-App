@@ -9,7 +9,11 @@ extension View {
         }
     ) -> some View {
         self
-            .modifier(CustomAlertModifier(isPresented: isPresented, alertContent: content, background: background))
+            .modifier(CustomAlertModifier(
+                isPresented,
+                content: content,
+                background: background
+            ))
     }
 }
 
@@ -18,6 +22,12 @@ fileprivate struct CustomAlertModifier<AlertContent: View, Background: View>: Vi
     @Binding var isPresented: Bool
     @ViewBuilder var alertContent: AlertContent
     @ViewBuilder var background: Background
+    
+    init(_ isPresented: Binding<Bool>, content: @escaping () -> AlertContent, background: @escaping () -> Background) {
+        _isPresented = isPresented
+        self.alertContent = content()
+        self.background = background()
+    }
     
     @State private var showFullScreenCover = false
     @State private var animatedValue = false
