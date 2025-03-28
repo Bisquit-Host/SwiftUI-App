@@ -17,11 +17,10 @@ extension View {
     }
 }
 
-/// Helper Modifier
 fileprivate struct CustomAlertModifier<AlertContent: View, Background: View>: ViewModifier {
-    @Binding var isPresented: Bool
-    @ViewBuilder var alertContent: AlertContent
-    @ViewBuilder var background: Background
+    @Binding private var isPresented: Bool
+    @ViewBuilder private var alertContent: AlertContent
+    @ViewBuilder private var background: Background
     
     init(_ isPresented: Binding<Bool>, content: @escaping () -> AlertContent, background: @escaping () -> Background) {
         _isPresented = isPresented
