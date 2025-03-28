@@ -137,7 +137,6 @@
 		F314616B2D5A1F5E00547B6C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31461692D5A1F5E00547B6C /* Icon.swift */; };
 		F314616C2D5A1F5E00547B6C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31461692D5A1F5E00547B6C /* Icon.swift */; };
 		F314616E2D5A1F8100547B6C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31461692D5A1F5E00547B6C /* Icon.swift */; };
-		F314616F2D5A1F8100547B6C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31461692D5A1F5E00547B6C /* Icon.swift */; };
 		F31461702D5A1F8100547B6C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31461692D5A1F5E00547B6C /* Icon.swift */; };
 		F31461712D5A1F8100547B6C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31461692D5A1F5E00547B6C /* Icon.swift */; };
 		F31461732D5A2B3800547B6C /* Credential Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BBE36329AF97D800323C6B /* Credential Field.swift */; };
@@ -432,12 +431,9 @@
 		F333B3BC2B80CF750005B84D /* Preview Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = F320DDA42B704E3C00957D92 /* Preview Property.swift */; };
 		F333B3BD2B80CF760005B84D /* Preview Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = F320DDA42B704E3C00957D92 /* Preview Property.swift */; };
 		F335CA062C63E86D006C71C6 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = F335CA052C63E86D006C71C6 /* DeviceKit */; };
-		F335CA082C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */; };
 		F335CA0A2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */; };
 		F335CA0B2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */; };
 		F335CA0C2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */; };
-		F335CA0D2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */; };
-		F335CA0E2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */; };
 		F335CA1B2C63E9A7006C71C6 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = F335CA1A2C63E9A7006C71C6 /* DeviceKit */; };
 		F336232F2A22021E006A6271 /* Value Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* Value Store.swift */; };
 		F33623302A220277006A6271 /* Panel Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3029C06E9700B08696 /* Panel Model.swift */; };
@@ -911,7 +907,6 @@
 		F39D68112A2634C700B9BDFC /* Dev Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3878ECC2A1BCE5000AD8657 /* Dev Settings.swift */; };
 		F39D68132A26373900B9BDFC /* Bisquits.sks in Resources */ = {isa = PBXBuildFile; fileRef = F3E6FC422A1E677000410C7C /* Bisquits.sks */; };
 		F39D68142A26373F00B9BDFC /* SptiteKit BisquitFall.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6FC452A1E85D600410C7C /* SptiteKit BisquitFall.swift */; };
-		F39D68152A26378500B9BDFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F31BA52A2958FF7D0006D126 /* Assets.xcassets */; };
 		F39E0A942C1BA06C00C4E906 /* Discover Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E0A932C1BA06C00C4E906 /* Discover Card.swift */; };
 		F39E0A952C1BA06C00C4E906 /* Discover Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E0A932C1BA06C00C4E906 /* Discover Card.swift */; };
 		F39E0A962C1BA06C00C4E906 /* Discover Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E0A932C1BA06C00C4E906 /* Discover Card.swift */; };
@@ -4370,7 +4365,6 @@
 				F378E3362AF3835C009925DB /* PrivacyInfo.xcprivacy in Resources */,
 				F36797762A39C4ED009F2788 /* Localizable.xcstrings in Resources */,
 				F39D68132A26373900B9BDFC /* Bisquits.sks in Resources */,
-				F39D68152A26378500B9BDFC /* Assets.xcassets in Resources */,
 				F3000E0C295A341100ABD30A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4523,7 +4517,6 @@
 				F34F28A02ACDADB200FD618A /* Animated Tab.swift in Sources */,
 				F370804E2A2A1D180046CE70 /* Data Tab.swift in Sources */,
 				F3FF3E892D93576B00EDFBC6 /* Update Checker.swift in Sources */,
-				F335CA0D2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */,
 				F397E74B2B208A3B00DDF1CE /* New Folder.swift in Sources */,
 				F39D285C2A27F474007B12C3 /* File Icon.swift in Sources */,
 				F3CCF5BF2B3454B0005FFF2C /* User View.swift in Sources */,
@@ -4612,7 +4605,6 @@
 				F3CE5C542D53A77C0094BD7B /* Subdomain Model.swift in Sources */,
 				F3CE5C552D53A77C0094BD7B /* Subdomain Card.swift in Sources */,
 				F3CE5C562D53A77C0094BD7B /* Subdomain List.swift in Sources */,
-				F314616F2D5A1F8100547B6C /* Icon.swift in Sources */,
 				F3CE5C572D53A77C0094BD7B /* Subdomain VM.swift in Sources */,
 				F3D49DB52B2336240033B52E /* Overview VM.swift in Sources */,
 				F3CCF5BA2B345466005FFF2C /* Permission List.swift in Sources */,
@@ -5839,7 +5831,6 @@
 				F3202D3B2D5636660030B3CC /* Tip Suspended Server.swift in Sources */,
 				F31461832D5A82F000547B6C /* Model Asset.swift in Sources */,
 				F31461842D5A82F000547B6C /* Networking.swift in Sources */,
-				F335CA0E2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */,
 				F3F2BBAC2A540E6500D44CA6 /* Cloud Keys.swift in Sources */,
 				F32FD71A2B1E042C00723B88 /* Websocket Delegate.swift in Sources */,
 				F38928252A441B5D00561CDF /* Server Settings.swift in Sources */,
@@ -5946,7 +5937,6 @@
 				F3DF50C52B38FCF900206CAE /* User Image.swift in Sources */,
 				F300889A2B3A0C740051476C /* User Card.swift in Sources */,
 				F3E08EB62A2CE56200116C1C /* App Settings.swift in Sources */,
-				F335CA082C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */,
 				F380C0B32A4F1D42002D400F /* Server List VM.swift in Sources */,
 				F30088A82B3A18E40051476C /* Schedule VM.swift in Sources */,
 				F363C7FD2B7F7938005F6FF2 /* System Alerts.swift in Sources */,
