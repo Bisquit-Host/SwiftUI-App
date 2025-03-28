@@ -2445,9 +2445,9 @@
 		F300C45F2D8C2B0100743300 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				F3B1196C29A13CA6003BB68C /* Value Store.swift */,
 				F3AB1DF32D79C42B00387164 /* MetricKit Manager.swift */,
 				F3FF3E862D93576B00EDFBC6 /* Update Checker.swift */,
-				F3B1196C29A13CA6003BB68C /* Value Store.swift */,
 				F3BC03C02B2063820011F98A /* Debug Key.swift */,
 				F32FD71D2B1E054300723B88 /* Network Calls.swift */,
 				F31F31F72D52BD940095DD19 /* System lowPowerMode.swift */,

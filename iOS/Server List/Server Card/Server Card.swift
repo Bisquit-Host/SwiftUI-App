@@ -61,7 +61,9 @@ struct ServerCard: View {
                     VStack(alignment: .leading) {
                         serverName
                         
-                        description
+                        if !server.description.isEmpty {
+                            description
+                        }
                         
                         diskGauge
                     }

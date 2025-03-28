@@ -15,7 +15,7 @@ final class ValueStore: ObservableObject {
     @AppStorage("show_dynamic_island_badge") var showDynamicIslandBadge = true
     
     // MARK: - App Style/Design
-    @AppStorage("designCode") var designCode = 0
+    @AppStorage("designCode") var designCode = 1
     @AppStorage("transparentSheet") var transparentSheet = true
     @AppStorage("transparentList") var transparentList = true
     
