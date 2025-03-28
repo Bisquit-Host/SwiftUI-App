@@ -1,8 +1,7 @@
 import SpriteKit
 
 final class GameScene: SKScene {
-    private let bisquitTexture = SKTexture(imageNamed: "Bisquit")
-    private let pyzhTexture = SKTexture(imageNamed: "Пыжмень")
+    private let bisquitTexture = SKTexture(image: .bitquit)
     
     override func didMove(to view: SKView) {
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
@@ -14,20 +13,14 @@ final class GameScene: SKScene {
         }
         
         let location = touch.location(in: self)
+        let box = SKSpriteNode(
+            color: .red,
+            size: CGSize(width: 80, height: 80)
+        )
         
-        let box = SKSpriteNode(color: .red, size: CGSize(width: 80, height: 80))
         box.position = location
-        box.physicsBody = SKPhysicsBody(rectangleOf: box.size)
-        
-        let randomInt = Int.random(in: 0...10)
-        
-        switch randomInt {
-        case 0:
-            box.texture = bisquitTexture
-        
-        default:
-            box.texture = pyzhTexture
-        }
+        box.physicsBody = .init(rectangleOf: box.size)
+        box.texture = bisquitTexture
         
         addChild(box)
     }
