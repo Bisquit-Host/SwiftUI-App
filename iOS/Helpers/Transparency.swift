@@ -16,9 +16,15 @@ struct TransparentSection: ViewModifier {
     @EnvironmentObject private var store: ValueStore
     
     func body(content: Content) -> some View {
+#if !os(iOS)
         content
-#if os(iOS)
-            .listRowBackground(store.transparentList ? .clear : Color.list)
+#else
+        if store.transparentList {
+            content
+        } else {
+            content
+                .listRowBackground(Color.clear)
+        }
 #endif
     }
 }
