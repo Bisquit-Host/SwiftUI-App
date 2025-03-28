@@ -83,7 +83,7 @@ struct ServerList: View {
         } message: {
             Text("The list of servers couldn't be loaded. Check your internet connection or contact support")
         }
-        .fullScreenCover(isPresented: $test) {
+        .fullScreenCover($test) {
             ServerListGrid(vm.filteredServers)
                 .padding(4)
                 .padding(.top, 60)

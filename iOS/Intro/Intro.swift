@@ -101,7 +101,7 @@ struct Intro: View {
             currentScrollOffset += 0.35
             scrollPosition.scrollTo(x: currentScrollOffset)
         }
-        .fullScreenCover(isPresented: $fullScreenCover) {
+        .fullScreenCover($fullScreenCover) {
             NavigationView {
                 StartPage()
             }

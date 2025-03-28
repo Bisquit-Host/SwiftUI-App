@@ -40,7 +40,7 @@ fileprivate struct CustomAlertModifier<AlertContent: View, Background: View>: Vi
     func body(content: Content) -> some View {
         content
         /// Using Full Screen Cover to show alert content on top of the current context
-            .fullScreenCover(isPresented: $showFullScreenCover) {
+            .fullScreenCover($showFullScreenCover) {
                 ZStack {
                     if animatedValue {
                         alertContent
