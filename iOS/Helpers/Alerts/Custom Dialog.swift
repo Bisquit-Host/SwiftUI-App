@@ -3,9 +3,9 @@ import SwiftUI
 struct CustomDialog: View {
     var title: LocalizedStringKey
     var content: LocalizedStringKey?
-    var image: Config
-    var button1: Config
-    var button2: Config?
+    var image: ImageConfig
+    var button1: ButtonConfig
+    var button2: ButtonConfig?
     var addsTextField = false
     var textFieldHint: LocalizedStringKey = ""
     
@@ -68,7 +68,7 @@ struct CustomDialog: View {
         }
     }
     
-    private func ButtonView(_ config: Config) -> some View {
+    private func ButtonView(_ config: ButtonConfig) -> some View {
         Button {
             config.action(addsTextField ? text : "")
         } label: {
@@ -81,7 +81,14 @@ struct CustomDialog: View {
         }
     }
     
-    struct Config {
+    struct ButtonConfig {
+        var content: LocalizedStringKey
+        var tint: Color
+        var foreground: Color
+        var action: (String) -> () = { _ in }
+    }
+    
+    struct ImageConfig {
         var content: String
         var tint: Color
         var foreground: Color

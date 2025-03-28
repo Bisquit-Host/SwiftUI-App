@@ -3356,7 +3356,14 @@
 
     },
     "Me name folder" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Меня звать Папка"
+          }
+        }
+      }
     },
     "Me Potato, me HELP" : {
       "localizations" : {
