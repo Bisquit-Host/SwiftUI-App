@@ -18,11 +18,7 @@ struct CustomDialog: View {
                 .title()
                 .foregroundStyle(image.foreground)
                 .frame(width: 65, height: 65)
-                .background(image.tint, in: .circle)
-                .background {
-                    Circle()
-                        .stroke(.ultraThickMaterial, lineWidth: 8)
-                }
+                .background(.ultraThinMaterial, in: .circle)
             
             Text(title)
                 .title3(.bold)
@@ -32,7 +28,7 @@ struct CustomDialog: View {
                     .fontSize(14)
                     .multilineTextAlignment(.center)
                     .lineLimit(2)
-                    .foregroundStyle(.gray)
+                    .foregroundStyle(.secondary)
                     .padding(.vertical, 4)
             }
             
@@ -77,7 +73,7 @@ struct CustomDialog: View {
                 .foregroundStyle(config.foreground)
                 .padding(.vertical, 10)
                 .frame(maxWidth: .infinity)
-                .background(config.tint, in: .rect(cornerRadius: 10))
+                .background(config.tint.secondary, in: .rect(cornerRadius: 10))
         }
     }
     
