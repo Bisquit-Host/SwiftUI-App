@@ -16,9 +16,8 @@ struct ServerList: View {
                 .padding(4)
                 .padding(.top, 60)
         }
-        .environment(vm)
-        //        .searchable(text: $searchField)
         .navigationBarBackButtonHidden()
+        //        .searchable(text: $searchField)
         //        .background {
         //            BisquitFall()
         //        }
@@ -53,12 +52,9 @@ struct ServerList: View {
                 //    test = true
                 //}
                 
-                TopbarAdminButton {
-                    vm.fetchServers(store.adminServerList)
-                }
+                TopbarAdminButton()
                 
                 SettingsButton()
-                    .environment(vm)
                     .padding(.trailing)
             }
         }

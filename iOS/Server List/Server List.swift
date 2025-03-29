@@ -68,14 +68,11 @@ struct ServerList: View {
             }
             
             ToolbarItemGroup(placement: .navigationBarTrailing) {
-                TopbarAdminButton {
-                    vm.fetchServers(store.adminServerList)
-                }
+                TopbarAdminButton()
                 
                 ServerListFilter()
                 
                 SettingsButton()
-                    .environment(vm)
             }
         }
         .overlay {
