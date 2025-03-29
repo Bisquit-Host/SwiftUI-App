@@ -5190,6 +5190,7 @@
       "shouldTranslate" : false
     },
     "The list of servers couldn't be loaded. Check your internet connection or contact support" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -5376,6 +5377,7 @@
       }
     },
     "Unknown Error" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {

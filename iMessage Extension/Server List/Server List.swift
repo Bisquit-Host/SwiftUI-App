@@ -74,11 +74,6 @@ struct ServerList: View {
                 vm.fetchServers(store.adminServerList)
             }
         }
-        .alert("Unknown Error", isPresented: $vm.alertError) {
-            
-        } message: {
-            Text("The list of servers couldn't be loaded. Check your internet connection or contact support")
-        }
         .fullScreenCover($test) {
             ServerListGrid(vm.filteredServers)
                 .padding(4)

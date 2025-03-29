@@ -9,7 +9,6 @@ final class ServerListVM {
     var apiKey = Keychain.load(key: "selectedApiKey") ?? ""
     
     // MARK: - Sheets / Alerts
-    var alertError = false
     var sheetGuide = false
     var sheetKeyStorage = false
     var sheetDiscover = false
