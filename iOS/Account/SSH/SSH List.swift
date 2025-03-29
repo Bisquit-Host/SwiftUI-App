@@ -28,6 +28,15 @@ struct SSHList: View {
         }
         .background(BackgroundImage())
         .scrollContentBackground(.hidden)
+        .overlay {
+            if vm.keys.isEmpty {
+                ContentUnavailableView(
+                    "No SSH-keys have been created yet",
+                    systemImage: "link.badge.plus",
+                    description: Text("Use the button in the top right corner to create one")
+                )
+            }
+        }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 DismissButton {
