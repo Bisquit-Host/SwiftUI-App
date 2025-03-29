@@ -25,7 +25,7 @@ struct FolderFile: View {
                     UploadProgress()
                 }
             }
-            .transparentSection()
+            .listRowBackground(Color.gray.opacity(0.2))
             
             Section {
                 ForEach(vm.filteredFiles, id: \.name) { file in
@@ -41,7 +41,7 @@ struct FolderFile: View {
                     Text("\(vm.filteredFiles.count) files")
                 }
             }
-            .transparentSection()
+            .listRowBackground(Color.gray.opacity(0.2))
         }
         .environmentObject(vm)
         .frame(maxWidth: 500)

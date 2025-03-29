@@ -30,7 +30,7 @@ struct FileTab: View {
                     UploadProgress()
                 }
             }
-            .transparentSection()
+            .listRowBackground(Color.gray.opacity(0.2))
             
             Section {
                 ForEach(vm.filteredFiles) { file in
@@ -48,7 +48,7 @@ struct FileTab: View {
                 }
                 .numericTransition()
             }
-            .transparentSection()
+            .listRowBackground(Color.gray.opacity(0.2))
         }
         .animation(.easeOut, value: vm.filteredFiles)
         .toolbarBackground(.visible, for: .tabBar)
