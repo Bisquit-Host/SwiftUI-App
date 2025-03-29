@@ -1,5 +1,4 @@
 import ScrechKit
-import TipKit
 
 struct ServerList: View {
     @Environment(ServerListVM.self) private var vm
@@ -11,22 +10,11 @@ struct ServerList: View {
         @Bindable var vm = vm
         
         ScrollView(showsIndicators: false) {
-            TipView(Tip_ServerCardContextMenu())
-                .tipBackground(.ultraThinMaterial)
-            
-            if vm.hasFrozenServers {
-                TipView(Tip_SuspendedServer()) { action in
-                    if action.id == "open-billing" {
-                        vm.showBilling = true
-                    }
-                }
-                .tipBackground(.ultraThinMaterial)
-            }
+            ServerListTips()
             
             ServerListGrid(vm.filteredServers)
         }
         .padding(.horizontal, 4)
-        .environment(vm)
         .navigationBarBackButtonHidden()
         .safariCover($vm.showBilling, url: "https://my.bisquit.host")
         .appStoreOverlay($vm.alertUpdate, id: "1639409934")

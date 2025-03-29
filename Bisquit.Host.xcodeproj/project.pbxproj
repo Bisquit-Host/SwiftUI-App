@@ -555,6 +555,9 @@
 		F353B0442D8A31BF00E4EC07 /* Account Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B0402D8A31BF00E4EC07 /* Account Parent.swift */; };
 		F353B0542D8AA73C00E4EC07 /* Map Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B0532D8AA73C00E4EC07 /* Map Section.swift */; };
 		F353B0552D8AA73C00E4EC07 /* Map Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B0532D8AA73C00E4EC07 /* Map Section.swift */; };
+		F353D4FD2D980A5000EC9F3A /* Server List Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353D4FA2D980A5000EC9F3A /* Server List Tips.swift */; };
+		F353D4FE2D980A5000EC9F3A /* Server List Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353D4FA2D980A5000EC9F3A /* Server List Tips.swift */; };
+		F353D5022D980A5000EC9F3A /* Server List Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353D4FA2D980A5000EC9F3A /* Server List Tips.swift */; };
 		F354E9832A48CA2000F6E359 /* Topbar Grid Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F354E9822A48CA2000F6E359 /* Topbar Grid Button.swift */; };
 		F354E9842A48CA2000F6E359 /* Topbar Grid Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F354E9822A48CA2000F6E359 /* Topbar Grid Button.swift */; };
 		F3553FB32B40653000EF0FD2 /* Panel Settings Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3553FB22B40653000EF0FD2 /* Panel Settings Parent.swift */; };
@@ -1857,6 +1860,7 @@
 		F352AF962A4EDB1D004AD489 /* Server List VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List VM.swift"; sourceTree = "<group>"; };
 		F353B0402D8A31BF00E4EC07 /* Account Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account Parent.swift"; sourceTree = "<group>"; };
 		F353B0532D8AA73C00E4EC07 /* Map Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Map Section.swift"; sourceTree = "<group>"; };
+		F353D4FA2D980A5000EC9F3A /* Server List Tips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List Tips.swift"; sourceTree = "<group>"; };
 		F354E9822A48CA2000F6E359 /* Topbar Grid Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Topbar Grid Button.swift"; sourceTree = "<group>"; };
 		F3553FB22B40653000EF0FD2 /* Panel Settings Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Settings Parent.swift"; sourceTree = "<group>"; };
 		F3553FB82B4093E600EF0FD2 /* Allocation List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation List.swift"; sourceTree = "<group>"; };
@@ -2634,6 +2638,7 @@
 				F31578B229675F5D0016A600 /* Server List.swift */,
 				F352AF962A4EDB1D004AD489 /* Server List VM.swift */,
 				F337B3A729BC6B5400CC1195 /* Server List Grid.swift */,
+				F353D4FA2D980A5000EC9F3A /* Server List Tips.swift */,
 				F3E2BF0A2C1EC94300B7A6D4 /* Contacts VM.swift */,
 				F39EA2E22D5D576D00329468 /* Game Center Buttons.swift */,
 				F3202CD22D559B6C0030B3CC /* VM extensions */,
@@ -4756,6 +4761,7 @@
 				F398E0E22CEB562400AA4DD7 /* Audio Player VM.swift in Sources */,
 				F358132B2A1F5D2A002ADFA4 /* Linking VM.swift in Sources */,
 				F3878ECD2A1BCE5000AD8657 /* Dev Settings.swift in Sources */,
+				F353D4FD2D980A5000EC9F3A /* Server List Tips.swift in Sources */,
 				F3D037022CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift in Sources */,
 				F32F2CDC2D8F7047007CF4DE /* Discover View.swift in Sources */,
 				F3496DC929E00CE70089FC28 /* Create Button.swift in Sources */,
@@ -5229,6 +5235,7 @@
 				F3FF3E952D9411B400EDFBC6 /* Intro Parent.swift in Sources */,
 				F30089212B3B896E0051476C /* File Permissions View.swift in Sources */,
 				F389BB702A05B5FF00911EBF /* Cache VM.swift in Sources */,
+				F353D4FE2D980A5000EC9F3A /* Server List Tips.swift in Sources */,
 				F39CF3592A50C00C0077996D /* User View.swift in Sources */,
 				F3F0A2E22D63398B0084013B /* App Delegate.swift in Sources */,
 				F3E8B34F2CF485FB005D25F8 /* Console Message.swift in Sources */,
@@ -5464,6 +5471,7 @@
 				F38F9E152CE7647D0033EFE3 /* Image Playground.swift in Sources */,
 				F3D295572AF39E2100ED43A0 /* Tip Suspended Server.swift in Sources */,
 				F3D295382AF39D1700ED43A0 /* Nav State.swift in Sources */,
+				F353D5022D980A5000EC9F3A /* Server List Tips.swift in Sources */,
 				F31F32042D52DB950095DD19 /* Color Theme.swift in Sources */,
 				F3D295A22AF3A0AA00ED43A0 /* Map VM.swift in Sources */,
 				F3D295AE2AF3A10300ED43A0 /* Cache Size.swift in Sources */,
