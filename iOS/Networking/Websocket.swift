@@ -138,7 +138,7 @@ final class WebSocketTaskConnection: NSObject, WebSocketConnection, URLSessionWe
                         message: data
                     )
                     
-                @unknown default:
+                default:
                     fatalError("Received unknown message type")
                 }
                 
