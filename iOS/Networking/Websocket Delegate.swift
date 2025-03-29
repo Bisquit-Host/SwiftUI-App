@@ -28,7 +28,7 @@ final class MyWebSocketDelegate: WebSocketConnectionDelegate {
     }
     
     func onTextMessage(connection: WebSocketConnection, message: String) {
-        //        Logger.webSocket.log("Received message: \(message)")
+        //Logger.webSocket.log("Received message:", message)
         
         onTextMessage(message)
     }
