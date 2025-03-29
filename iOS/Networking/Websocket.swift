@@ -149,9 +149,7 @@ final class WebSocketTaskConnection: NSObject, WebSocketConnection, URLSessionWe
 }
 
 enum WebSocketConnectionState {
-    case connecting,
-         connected,
-         disconnected
+    case connecting, connected, disconnected
 }
 
 protocol WebSocketConnectionDelegate: AnyObject {
