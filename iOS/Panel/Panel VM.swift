@@ -16,14 +16,18 @@ final class PanelVM {
     var diskValues: [Value] = []
 #endif
     
+    // Toolbar
+    var alertNewFolder = false
+    var sheetSettings = false
+    
     var searchRule = ""
     var fieldSearch = ""
     var showFormatting = false
-    var sheetSettings = false
     var enableConsoleSearch = false
     var cpuUsage = 0.0
     var ramUsage = 0.0
     var diskUsage = 0.0
+    
     private(set) var server: ServerAttributes? = nil
     private(set) var serverState: ServerState = .unknown
     private(set) var uptime = 0

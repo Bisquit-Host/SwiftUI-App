@@ -558,6 +558,9 @@
 		F353D4FD2D980A5000EC9F3A /* Server List Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353D4FA2D980A5000EC9F3A /* Server List Tips.swift */; };
 		F353D4FE2D980A5000EC9F3A /* Server List Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353D4FA2D980A5000EC9F3A /* Server List Tips.swift */; };
 		F353D5022D980A5000EC9F3A /* Server List Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353D4FA2D980A5000EC9F3A /* Server List Tips.swift */; };
+		F353D5042D98427500EC9F3A /* Panel Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353D5032D98427500EC9F3A /* Panel Toolbar.swift */; };
+		F353D5052D98427500EC9F3A /* Panel Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353D5032D98427500EC9F3A /* Panel Toolbar.swift */; };
+		F353D5062D98427500EC9F3A /* Panel Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353D5032D98427500EC9F3A /* Panel Toolbar.swift */; };
 		F354E9832A48CA2000F6E359 /* Topbar Grid Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F354E9822A48CA2000F6E359 /* Topbar Grid Button.swift */; };
 		F354E9842A48CA2000F6E359 /* Topbar Grid Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F354E9822A48CA2000F6E359 /* Topbar Grid Button.swift */; };
 		F3553FB32B40653000EF0FD2 /* Panel Settings Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3553FB22B40653000EF0FD2 /* Panel Settings Parent.swift */; };
@@ -1861,6 +1864,7 @@
 		F353B0402D8A31BF00E4EC07 /* Account Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account Parent.swift"; sourceTree = "<group>"; };
 		F353B0532D8AA73C00E4EC07 /* Map Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Map Section.swift"; sourceTree = "<group>"; };
 		F353D4FA2D980A5000EC9F3A /* Server List Tips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List Tips.swift"; sourceTree = "<group>"; };
+		F353D5032D98427500EC9F3A /* Panel Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Toolbar.swift"; sourceTree = "<group>"; };
 		F354E9822A48CA2000F6E359 /* Topbar Grid Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Topbar Grid Button.swift"; sourceTree = "<group>"; };
 		F3553FB22B40653000EF0FD2 /* Panel Settings Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Settings Parent.swift"; sourceTree = "<group>"; };
 		F3553FB82B4093E600EF0FD2 /* Allocation List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation List.swift"; sourceTree = "<group>"; };
@@ -2653,6 +2657,7 @@
 			children = (
 				F31BA595295901F70006D126 /* Panel View.swift */,
 				F3EDEE3429C0C84C00B08696 /* Panel VM.swift */,
+				F353D5032D98427500EC9F3A /* Panel Toolbar.swift */,
 				F3EDEE3029C06E9700B08696 /* Panel Model.swift */,
 				F34F28992ACDAD9B00FD618A /* Animated Tab.swift */,
 				F3D295122AF396FD00ED43A0 /* Tabs.swift */,
@@ -4718,6 +4723,7 @@
 				F32E88C82AF83E3F00959D49 /* Topbar Admin Button.swift in Sources */,
 				F31BA570295900C20006D126 /* Formatters.swift in Sources */,
 				F39626F22A7AD64B0057E356 /* Ansi.swift in Sources */,
+				F353D5062D98427500EC9F3A /* Panel Toolbar.swift in Sources */,
 				F35FEB072B09F003004DA05D /* API Key.swift in Sources */,
 				F3A1D2312A201C570053261E /* Enums.swift in Sources */,
 				F3E467522A49903900FABE5F /* Info Stat.swift in Sources */,
@@ -5173,6 +5179,7 @@
 				F3116F272A33E142001F067C /* Folder File.swift in Sources */,
 				F389BB5C2A05B53800911EBF /* Suspended Server Card.swift in Sources */,
 				F3D264382A66A9B9005C3777 /* Settings Parent.swift in Sources */,
+				F353D5052D98427500EC9F3A /* Panel Toolbar.swift in Sources */,
 				F389BB742A05B61F00911EBF /* Credentials VM.swift in Sources */,
 				F333B3BD2B80CF760005B84D /* Preview Property.swift in Sources */,
 				F31F31F92D52BD940095DD19 /* System lowPowerMode.swift in Sources */,
@@ -5371,6 +5378,7 @@
 				F32E88D32AF8494100959D49 /* Server List Filter.swift in Sources */,
 				F3D295A62AF3A0D200ED43A0 /* Settings VM.swift in Sources */,
 				F3CE5C472D53907E0094BD7B /* Subdomain VM.swift in Sources */,
+				F353D5042D98427500EC9F3A /* Panel Toolbar.swift in Sources */,
 				F337C1552A8C29CD006F321C /* Unit Tests.swift in Sources */,
 				F3A31B072B0B144200F89C51 /* Server List Node Filter.swift in Sources */,
 				F3202D3A2D5633270030B3CC /* Browser List MCRU.swift in Sources */,

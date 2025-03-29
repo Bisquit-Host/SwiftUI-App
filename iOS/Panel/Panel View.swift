@@ -26,10 +26,9 @@ struct PanelView: View {
         self.consoleVM = ConsoleVM(id)
     }
     
-    @State private var alertNewFolder = false
-    @State private var sheetSettings = false
-    
     var body: some View {
+        @Bindable var vm = vm
+        
         NavigationView {
             TabView(selection: $store.lastTabPanel) {
                 if let server = vm.server {
@@ -40,112 +39,28 @@ struct PanelView: View {
                         }
                     
                     ConsoleTab(id)
-                        .environment(consoleVM)
                         .tab(.console)
                     
                     FileTab(id)
-                        .environmentObject(fileVM)
                         .tab(.files)
                     
                     DataTab(server)
-                        .environment(backupVM)
-                        .environment(databaseVM)
-                        .environment(scheduleVM)
                         .tab(.backup)
                     
                     StartupView(server)
-                        .environment(startupVM)
                         .tab(.startup)
                 }
             }
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    DismissButton {
-                        dismiss()
-                    }
-                }
-                
-                ToolbarItemGroup(placement: .topBarTrailing) {
-                    if store.lastTabPanel == .console {
-                        Button {
-                            withAnimation {
-                                vm.enableConsoleSearch.toggle()
-                            }
-                            
-                            if vm.enableConsoleSearch {
-                                vm.searchRule = consoleVM.command
-                            }
-                        } label: {
-                            if vm.enableConsoleSearch {
-                                Image(systemName: "magnifyingglass.circle.fill")
-                                    .resizable()
-                                    .frame(width: 35, height: 35)
-                                    .background(.ultraThinMaterial, in: .circle)
-                            } else {
-                                Image(systemName: "magnifyingglass")
-                                    .footnote(.bold)
-                                    .frame(width: 35, height: 35)
-                                    .background(.ultraThinMaterial, in: .circle)
-                            }
-                        }
-                        .foregroundStyle(.primary)
-                        
-                        Button {
-                            consoleVM.inspectorPresented = true
-                        } label: {
-                            Image(systemName: "bold.italic.underline")
-                                .fontSize(10)
-                                .bold()
-                                .frame(width: 35, height: 35)
-                                .background(.ultraThinMaterial, in: .circle)
-                        }
-                        .foregroundStyle(.primary)
-                        .padding(.horizontal, -10)
-                    }              
-#if canImport(ActivityKit)
-                    if store.lastTabPanel == .info, let server = vm.server {
-                        InfoTabLA(server)
-                    }
-#endif
-                    if store.lastTabPanel == .files {
-                        if #available(iOS 18.1, *) {
-                            ImagePlaygroundButton(fileVM.path)
-                        }
-                        
-                        Button {
-                            alertNewFolder = true
-                        } label: {
-                            Image(systemName: "folder.badge.plus")
-                                .footnote(.bold)
-                                .frame(width: 35, height: 35)
-                                .background(.ultraThinMaterial, in: .circle)
-                        }
-                        .foregroundStyle(.primary)
-                        .padding(.horizontal, -10)
-                    }
-                    
-                    Button {
-                        withAnimation(.easeOut) {
-                            sheetSettings = true
-                        }
-                    } label: {
-                        Image(systemName: "ellipsis")
-                            .footnote(.bold)
-                            .frame(width: 35, height: 35)
-                            .background(.ultraThinMaterial, in: .circle)
-                    }
-                    .foregroundStyle(.primary)
-                    .keyboardShortcut("S")
-                }
-            }
+            .panelToolbar()
+            .environment(consoleVM)
+            .environmentObject(fileVM)
+            .environment(backupVM)
+            .environment(databaseVM)
+            .environment(scheduleVM)
+            .environment(startupVM)
         }
         .navigationBarBackButtonHidden()
         .ignoresSafeArea()
-        .sheet($sheetSettings) {
-            if let server = vm.server {
-                PanelSettingsParent(server)
-            }
-        }
         .environment(vm)
         .task {
             fetchData()
@@ -164,7 +79,7 @@ struct PanelView: View {
                 }
             }
         }
-        .alert(isPresented: $alertNewFolder) {
+        .alert(isPresented: $vm.alertNewFolder) {
             CustomDialog(
                 title: "New Folder",
                 content: "Enter a folder name",
@@ -174,10 +89,10 @@ struct PanelView: View {
                         fileVM.createFolder(folder, at: fileVM.path)
                     }
                     
-                    alertNewFolder = false
+                    vm.alertNewFolder = false
                 },
                 button2: .init(content: "Cancel", tint: .red, foreground: .white) { _ in
-                    alertNewFolder = false
+                    vm.alertNewFolder = false
                 },
                 addsTextField: true,
                 textFieldHint: "Me name folder"
