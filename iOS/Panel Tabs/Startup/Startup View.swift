@@ -56,9 +56,7 @@ struct StartupView: View {
         .scrollIndicators(.never)
         .frame(maxWidth: 500)
         .toolbarBackground(.visible, for: .tabBar)
-        .background {
-            BackgroundImage()
-        }
+        .background(BackgroundImage())
         .scrollContentBackground(.hidden)
         .refreshableTask {
             vm.fetchStartupVariables()

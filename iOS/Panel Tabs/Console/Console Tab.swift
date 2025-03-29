@@ -62,9 +62,7 @@ struct ConsoleTab: View {
         .inspector($vm.inspectorPresented) {
             ConsoleInspector()
         }
-        .background {
-            BackgroundImage()
-        }
+        .background(BackgroundImage())
         .alert("Are you sure you want to perform the Kill action?", isPresented: $vm.alertKill) {
             Button("Kill", role: .destructive) {
                 panelVM.changePower(.kill)

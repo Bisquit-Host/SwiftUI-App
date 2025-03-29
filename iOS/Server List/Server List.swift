@@ -19,9 +19,7 @@ struct ServerList: View {
         .safariCover($vm.showBilling, url: "https://my.bisquit.host")
         .appStoreOverlay($vm.alertUpdate, id: "1639409934")
         .background(BisquitFall())
-        .background {
-            BackgroundImage()
-        }
+        .background(BackgroundImage())
         .onFirstAppear {
             if !System.lowPowerMode {
                 await vm.checkForUpdates()
@@ -34,6 +32,22 @@ struct ServerList: View {
         .onChange(of: searchField) { _, search in
             withAnimation {
                 vm.searchField = search
+            }
+        }
+        .overlay {
+            if vm.filteredServers.isEmpty, !vm.searchField.isEmpty {
+                ContentUnavailableView.search(text: vm.searchField)
+            }
+        }
+        .sheet($vm.sheetGuide) {
+            Guide()
+        }
+        .sheet($vm.sheetDiscover) {
+            Discover()
+        }
+        .sheet($vm.sheetKeyStorage) {
+            CloudKeys($vm.apiKey) {
+                vm.fetchServers(store.adminServerList)
             }
         }
         .toolbar {
@@ -61,22 +75,6 @@ struct ServerList: View {
                 ServerListFilter()
                 
                 SettingsButton()
-            }
-        }
-        .overlay {
-            if vm.filteredServers.isEmpty, !vm.searchField.isEmpty {
-                ContentUnavailableView.search(text: vm.searchField)
-            }
-        }
-        .sheet($vm.sheetGuide) {
-            Guide()
-        }
-        .sheet($vm.sheetDiscover) {
-            Discover()
-        }
-        .sheet($vm.sheetKeyStorage) {
-            CloudKeys($vm.apiKey) {
-                vm.fetchServers(store.adminServerList)
             }
         }
     }

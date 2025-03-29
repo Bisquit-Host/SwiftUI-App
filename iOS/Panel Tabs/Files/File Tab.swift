@@ -56,9 +56,7 @@ struct FileTab: View {
         .frame(maxWidth: 500)
         .safariCover($vm.showSafari, url: vm.downloadUrl)
         .sensoryFeedback(.success, trigger: trigger)
-        .background {
-            BackgroundImage()
-        }
+        .background(BackgroundImage())
         .scrollContentBackground(.hidden)
         .task {
             vm.path = root

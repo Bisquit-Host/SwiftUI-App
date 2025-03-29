@@ -82,10 +82,7 @@ struct AccountView: View {
         .sheet($sheetDisable2Fa) {
             Disable2FaView()
         }
-        .environment(vm)
-        .background {
-            BackgroundImage()
-        }
+        .background(BackgroundImage())
         .scrollContentBackground(.hidden)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {

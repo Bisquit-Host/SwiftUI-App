@@ -26,9 +26,7 @@ struct SSHList: View {
         .sheet($sheetCreate) {
             SSHCreateView()
         }
-        .background {
-            BackgroundImage()
-        }
+        .background(BackgroundImage())
         .scrollContentBackground(.hidden)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {

@@ -52,9 +52,7 @@ struct FolderFile: View {
         .refreshableTask {
             vm.fetchFiles(root)
         }
-        .background {
-            BackgroundImage()
-        }
+        .background(BackgroundImage())
         .scrollContentBackground(.hidden)
         .onChange(of: image) {
             if let image {

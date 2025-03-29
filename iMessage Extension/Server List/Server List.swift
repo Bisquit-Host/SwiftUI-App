@@ -18,9 +18,7 @@ struct ServerList: View {
         }
         .navigationBarBackButtonHidden()
         //        .searchable(text: $searchField)
-        //        .background {
-        //            BisquitFall()
-        //        }
+        //        .background(BisquitFall())
         .refreshableTask {
             vm.fetchServers(store.adminServerList)
             store.updateServers.toggle()

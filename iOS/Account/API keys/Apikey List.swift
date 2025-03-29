@@ -106,9 +106,7 @@ struct ApikeyList: View {
         .sheet($sheetCreate) {
             CreateApikey()
         }
-        .background {
-            BackgroundImage()
-        }
+        .background(BackgroundImage())
         .scrollContentBackground(.hidden)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
