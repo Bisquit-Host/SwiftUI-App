@@ -1,9 +1,8 @@
 import SwiftUI
 import MapKit
+import SafariCover
 
 struct MapSection: View {
-    @Environment(\.openURL) private var openUrl
-    
     private let address: String?
     private let node: String
     
@@ -98,9 +97,7 @@ struct MapSection: View {
         }
         .contextMenu {
             Button {
-                if let url = URL(string: mapUrl) {
-                    openUrl(url)
-                }
+                openSafari(mapUrl)
             } label: {
                 Label("Open in Apple Maps", systemImage: "map")
             }

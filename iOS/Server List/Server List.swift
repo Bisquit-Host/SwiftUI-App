@@ -5,8 +5,6 @@ struct ServerList: View {
     @Environment(ServerListVM.self) private var vm
     @EnvironmentObject private var store: ValueStore
     
-    @Environment(\.openURL) private var openUrl
-    
     @State private var searchField = ""
     
     var body: some View {
