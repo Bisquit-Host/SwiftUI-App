@@ -6318,7 +6318,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.debug;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "host.bisquit.Bisquit-host.debug";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "host.bisquit.Bisquit-host";
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6351,10 +6351,10 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = watchOS/watchOS.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
+				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.debug;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "host.bisquit.Bisquit-host.debug";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "host.bisquit.Bisquit-host";
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
