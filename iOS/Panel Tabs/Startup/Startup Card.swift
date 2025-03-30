@@ -54,6 +54,7 @@ struct StartupCard: View {
                         value = variable.serverValue ?? ""
                     }
                 }
+                .foregroundStyle(.foreground)
             }
         }
     }

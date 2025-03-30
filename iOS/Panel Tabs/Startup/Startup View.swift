@@ -38,7 +38,8 @@ struct StartupView: View {
                     }
                 }
             }
-            .transparentSection()
+            .listRowBackground(Color.gray.opacity(0.2))
+            //            .transparentSection()
             
             Picker("Docker Image", selection: $currentDockerImage) {
                 ForEach(vm.sortedDockerImages, id: \.key) { key, value in
@@ -46,11 +47,13 @@ struct StartupView: View {
                         .tag(value)
                 }
             }
-            .transparentSection()
+            .listRowBackground(Color.gray.opacity(0.2))
+            //            .transparentSection()
             
             ForEach(vm.startupVariables, id: \.name) { variable in
                 StartupCard(server, variable: variable)
-                    .transparentSection()
+                //                    .transparentSection()
+                    .listRowBackground(Color.gray.opacity(0.2))
             }
         }
         .scrollIndicators(.never)
