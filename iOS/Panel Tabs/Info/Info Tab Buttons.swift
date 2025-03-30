@@ -4,10 +4,10 @@ import Kingfisher
 
 struct InfoTabButtons: View {
     private let server: ServerAttributes
-    private var settingsVM: ServerSettingsVM
-    private var logVM: LogVM
-    private var userVM: UsersVM
-    private var subdomainVM: SubdomainVM
+    @State private var settingsVM: ServerSettingsVM
+    @State private var logVM: LogVM
+    @State private var userVM: UsersVM
+    @State private var subdomainVM: SubdomainVM
     
     init(_ server: ServerAttributes) {
         self.server = server
@@ -185,7 +185,7 @@ struct InfoTabButtons: View {
         .task {
             settingsVM.serverName = server.name
             settingsVM.serverDescription = server.description
-            
+            print("Godia")
             if !System.lowPowerMode {
                 logVM.fetchLogs(true)
                 userVM.fetchUsers(true)

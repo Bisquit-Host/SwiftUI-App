@@ -208,6 +208,12 @@
             "state" : "new",
             "value" : "%1$lld more entries %2$@"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ещё %1$lld записи %2$@"
+          }
         }
       }
     },
@@ -618,7 +624,14 @@
       }
     },
     "All subdomains %@" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Все поддомены %@"
+          }
+        }
+      }
     },
     "Allocations" : {
       "localizations" : {
