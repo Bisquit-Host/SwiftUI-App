@@ -65,9 +65,7 @@ struct LogList: View {
                     Menu {
                         Section {
                             Button {
-                                withAnimation {
-                                    vm.selectedActor = nil
-                                }
+                                vm.selectedActor = nil
                             } label: {
                                 Label {
                                     Text("All")
@@ -82,7 +80,9 @@ struct LogList: View {
                         ForEach(vm.actors, id: \.self) { actor in
                             if let actor {
                                 Button {
-                                    withAnimation {
+                                    if vm.selectedActor == actor {
+                                        vm.selectedActor = nil
+                                    } else {
                                         vm.selectedActor = actor
                                     }
                                 } label: {
@@ -108,6 +108,7 @@ struct LogList: View {
                             .frame(width: 35, height: 35)
                             .background(.ultraThinMaterial, in: .circle)
                             .symbolVariant(vm.selectedActor == nil ? .none : .fill)
+                            .animation(.default, value: vm.selectedActor)
                     }
                     .foregroundStyle(.foreground)
                 }
