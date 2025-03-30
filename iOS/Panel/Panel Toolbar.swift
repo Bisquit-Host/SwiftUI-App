@@ -48,11 +48,11 @@ struct PanelToolbarModifier: ViewModifier {
                         .padding(.horizontal, -10)
                     }
                     
-#if canImport(ActivityKit)
                     if store.lastTabPanel == .info, let server = vm.server {
+#if canImport(ActivityKit)
                         InfoTabLA(server)
-                    }
 #endif
+                    }
                     
                     if store.lastTabPanel == .files {
                         if #available(iOS 18.1, *) {
