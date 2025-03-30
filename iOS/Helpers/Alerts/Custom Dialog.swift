@@ -73,20 +73,18 @@ struct CustomDialog: View {
                 .foregroundStyle(config.foreground)
                 .padding(.vertical, 10)
                 .frame(maxWidth: .infinity)
-                .background(config.tint.secondary, in: .capsule)
+                .background(.ultraThinMaterial, in: .capsule)
         }
     }
     
     struct ButtonConfig {
         var content: LocalizedStringKey
-        var tint: Color
         var foreground: Color
         var action: (String) -> () = { _ in }
     }
     
     struct ImageConfig {
         var content: String
-        var tint: Color
         var foreground: Color
         var action: (String) -> () = { _ in }
     }

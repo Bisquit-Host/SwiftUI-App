@@ -81,15 +81,15 @@ struct FolderFile: View {
             CustomDialog(
                 title: "New Folder",
                 content: "Enter a folder name",
-                image: .init(content: "folder.badge.plus", tint: .blue, foreground: .white),
-                button1: .init(content: "Create", tint: .blue, foreground: .white) { folder in
+                image: .init(content: "folder.badge.plus", foreground: .white),
+                button1: .init(content: "Create", foreground: .white) { folder in
                     if !folder.isEmpty {
                         vm.createFolder(folder, at: root)
                     }
                     
                     alertNewFolder = false
                 },
-                button2: .init(content: "Cancel", tint: .red, foreground: .white) { _ in
+                button2: .init(content: "Cancel", foreground: .white) { _ in
                     alertNewFolder = false
                 },
                 addsTextField: true,

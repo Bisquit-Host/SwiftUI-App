@@ -83,15 +83,15 @@ struct PanelView: View {
             CustomDialog(
                 title: "New Folder",
                 content: "Enter a folder name",
-                image: .init(content: "folder.badge.plus", tint: .blue, foreground: .white),
-                button1: .init(content: "Create", tint: .blue, foreground: .white) { folder in
+                image: .init(content: "folder.badge.plus", foreground: .white),
+                button1: .init(content: "Create", foreground: .white) { folder in
                     if !folder.isEmpty {
                         fileVM.createFolder(folder, at: fileVM.path)
                     }
                     
                     vm.alertNewFolder = false
                 },
-                button2: .init(content: "Cancel", tint: .red, foreground: .white) { _ in
+                button2: .init(content: "Cancel", foreground: .red) { _ in
                     vm.alertNewFolder = false
                 },
                 addsTextField: true,
