@@ -1166,6 +1166,7 @@
 		F3C9D8612B319B9E00265492 /* Permission Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D85F2B319B9E00265492 /* Permission Card.swift */; };
 		F3C9D8622B319B9E00265492 /* Permission Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D85F2B319B9E00265492 /* Permission Card.swift */; };
 		F3CB53D62971CF6B00A213B0 /* Database Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB53D52971CF6B00A213B0 /* Database Card.swift */; };
+		F3CBC6D22D99FEF90081C302 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3CBC6D12D99FEF90081C302 /* ScrechKit */; };
 		F3CCB1CC2CAE75D0000F8207 /* Debug Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCB1CB2CAE75D0000F8207 /* Debug Settings.swift */; };
 		F3CCB1CD2CAE75D0000F8207 /* Debug Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCB1CB2CAE75D0000F8207 /* Debug Settings.swift */; };
 		F3CCB1CE2CAE75D0000F8207 /* Debug Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCB1CB2CAE75D0000F8207 /* Debug Settings.swift */; };
@@ -2307,6 +2308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F342FAA02B2C5DF300854270 /* Pow in Frameworks */,
+				F3CBC6D22D99FEF90081C302 /* ScrechKit in Frameworks */,
 				F335CA062C63E86D006C71C6 /* DeviceKit in Frameworks */,
 				F3BED0DF2D8CDBDE00CD6E3B /* PermissionsSwiftUINotification in Frameworks */,
 				F34745CC2A31F3A000EE2FB8 /* MailCover in Frameworks */,
@@ -3992,6 +3994,7 @@
 				F3BED0DE2D8CDBDE00CD6E3B /* PermissionsSwiftUINotification */,
 				F3BED0E02D8CDBF400CD6E3B /* PermissionsSwiftUIContacts */,
 				F3C17AA02D976B60005D284A /* ScrechKit */,
+				F3CBC6D12D99FEF90081C302 /* ScrechKit */,
 			);
 			productName = Bisquit.Host;
 			productReference = F31BA5232958FF7C0006D126 /* Bisquit.Host.app */;
@@ -4339,7 +4342,7 @@
 				F36B73952C8B055600E858FE /* XCRemoteSwiftPackageReference "Audio-Visualizer" */,
 				F358F02C2D2C1C5500BCC07B /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
 				F3BED0D72D8CDBBC00CD6E3B /* XCRemoteSwiftPackageReference "SPerms" */,
-				F3C17A9F2D976B60005D284A /* XCLocalSwiftPackageReference "../../SPM/ScrechKit" */,
+				F3CBC6D02D99FEF90081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F31BA5242958FF7C0006D126 /* Products */;
@@ -7256,13 +7259,6 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		F3C17A9F2D976B60005D284A /* XCLocalSwiftPackageReference "../../SPM/ScrechKit" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ../../SPM/ScrechKit;
-		};
-/* End XCLocalSwiftPackageReference section */
-
 /* Begin XCRemoteSwiftPackageReference section */
 		F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "PteroNet" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -7355,6 +7351,14 @@
 		F3BED0D72D8CDBBC00CD6E3B /* XCRemoteSwiftPackageReference "SPerms" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TopScrech/SPerms";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		F3CBC6D02D99FEF90081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TopScrech/ScrechKit";
 			requirement = {
 				branch = main;
 				kind = branch;
@@ -7734,6 +7738,11 @@
 		};
 		F3C17AAE2D976B90005D284A /* ScrechKit */ = {
 			isa = XCSwiftPackageProductDependency;
+			productName = ScrechKit;
+		};
+		F3CBC6D12D99FEF90081C302 /* ScrechKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3CBC6D02D99FEF90081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */;
 			productName = ScrechKit;
 		};
 		F3E08EB12A2CE19900116C1C /* Kingfisher */ = {

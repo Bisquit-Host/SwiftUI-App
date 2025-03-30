@@ -1,5 +1,5 @@
 {
-  "originHash" : "05d3fe4de9668f30aa4a1fd26520ea2fffce683916bbab2f658e8ca31c5feea3",
+  "originHash" : "c28a9548236e7d74f0d7c01625fb75758e65aed12cad534d0e0b939ab3db3617",
   "pins" : [
     {
       "identity" : "alertkit",
@@ -89,6 +89,15 @@
       "state" : {
         "branch" : "main",
         "revision" : "5644d4accf16dc4bd1f5acd8d043539909c09ee7"
+      }
+    },
+    {
+      "identity" : "screchkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/TopScrech/ScrechKit",
+      "state" : {
+        "branch" : "main",
+        "revision" : "7269c00f5e353c581924456dd4ae84a0424e41f3"
       }
     },
     {
