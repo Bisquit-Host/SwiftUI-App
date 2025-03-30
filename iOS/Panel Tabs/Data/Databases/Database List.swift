@@ -24,6 +24,7 @@ struct DatabaseList: View {
             Button("Create Database") {
                 vm.alertCreate = true
             }
+            .foregroundStyle(.foreground)
             .disabled(vm.databases.count >= databaseLimit)
 #if os(tvOS)
             .buttonStyle(.borderedProminent)
