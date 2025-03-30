@@ -1974,6 +1974,7 @@
 		F394A28329E0A9810012B7D1 /* Server Card Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Parent.swift"; sourceTree = "<group>"; };
 		F39626F12A7AD64B0057E356 /* Ansi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ansi.swift; sourceTree = "<group>"; };
 		F39780242A2B9DB800956474 /* Upload Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Upload Preview.swift"; sourceTree = "<group>"; };
+		F397A9FF2D99FCF300CDAFF0 /* ScrechKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ScrechKit; sourceTree = "<group>"; };
 		F397E74A2B208A3B00DDF1CE /* New Folder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "New Folder.swift"; sourceTree = "<group>"; };
 		F398720F2A1AE3CE0022B00E /* Video Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Video Player.swift"; sourceTree = "<group>"; };
 		F39872152A1B73830022B00E /* Video File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Video File.swift"; sourceTree = "<group>"; };
@@ -2054,7 +2055,6 @@
 		F3BF6F222959D15E0059F39B /* App Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Settings.swift"; sourceTree = "<group>"; };
 		F3BF97A929BFC7E9007B9C9C /* Websocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Websocket.swift; sourceTree = "<group>"; };
 		F3C0F9CF29E204FA0040E277 /* FileTab Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileTab Context Menu.swift"; sourceTree = "<group>"; };
-		F3C17A9E2D976B3B005D284A /* ScrechKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ScrechKit; path = "/Users/topscrech/Library/Mobile Documents/com~apple~CloudDocs/Projects/SPM/ScrechKit"; sourceTree = "<absolute>"; };
 		F3C9D8492B302AA200265492 /* File Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Context Menu.swift"; sourceTree = "<group>"; };
 		F3C9D84D2B30598000265492 /* Video Player VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Video Player VM.swift"; sourceTree = "<group>"; };
 		F3C9D8502B3059E700265492 /* UIVideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVideoPlayer.swift; sourceTree = "<group>"; };
@@ -2526,9 +2526,9 @@
 				F3FDFF832C89121F009EBB5C /* Intent Handler */,
 				F3A7CEE22C8B9D3800413400 /* iMessage Extension */,
 				F3E2BEF62C1DA07E00B7A6D4 /* Contact Provider Extension */,
+				F397A9FF2D99FCF300CDAFF0 /* ScrechKit */,
 				F337C1532A8C29CD006F321C /* Unit Tests */,
 				F3D296082AF3BE5800ED43A0 /* UI Tests */,
-				F3C17A9E2D976B3B005D284A /* ScrechKit */,
 				F31BA5242958FF7C0006D126 /* Products */,
 				F3D3437429BFE5A2007C0D58 /* Frameworks */,
 			);
