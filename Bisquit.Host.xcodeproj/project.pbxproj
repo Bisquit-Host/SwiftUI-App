@@ -2449,7 +2449,12 @@
 				F31F31F72D52BD940095DD19 /* System lowPowerMode.swift */,
 				F3EE9F6E2D85CAB9000120A7 /* Transparency.swift */,
 				F3202D452D56DC050030B3CC /* Prefetcher.swift */,
+				F31BA56F295900C20006D126 /* Formatters.swift */,
+				F320DDA42B704E3C00957D92 /* Preview Property.swift */,
+				F3A1D2302A201C570053261E /* Enums.swift */,
 				F300C4602D8C2B0E00743300 /* Alerts */,
+				F35B89BC2A7256F4000B5EEF /* Tips */,
+				F36436EE2A2FE91C00976374 /* SpriteKit */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -2558,19 +2563,12 @@
 				F31BA5262958FF7C0006D126 /* Bisquit.Host App.swift */,
 				F3D52B242B13FE9C00167DD6 /* App Delegate.swift */,
 				F31BA564295900270006D126 /* Nav */,
+				F300C45F2D8C2B0100743300 /* Helpers */,
 				F3CCB1D12CAE8B76000F8207 /* iOS.plist */,
 				F304498629E98AE4006DC0C7 /* iOS.entitlements */,
 				F36797722A39C4ED009F2788 /* Localizable.xcstrings */,
 				F31BA52A2958FF7D0006D126 /* Assets.xcassets */,
 				F378E3322AF38286009925DB /* PrivacyInfo.xcprivacy */,
-				F300C45F2D8C2B0100743300 /* Helpers */,
-				F36436EE2A2FE91C00976374 /* SpriteKit */,
-				F3EDEE3629C0CB4500B08696 /* Networking */,
-				F35B89BC2A7256F4000B5EEF /* Tips */,
-				F320DDA42B704E3C00957D92 /* Preview Property.swift */,
-				F3A1D2302A201C570053261E /* Enums.swift */,
-				F31BA56F295900C20006D126 /* Formatters.swift */,
-				F37266EA29D9F06C005FD103 /* Cache VM.swift */,
 				F31BA580295901400006D126 /* Intro */,
 				F31A3F4A29EEEB8200BC0DFB /* Start Page */,
 				F300892C2B3D988C0051476C /* Cloud Store */,
@@ -2664,6 +2662,7 @@
 				F3553FB22B40653000EF0FD2 /* Panel Settings Parent.swift */,
 				F303214A2B3FEA45002A73B8 /* Panel Settings View.swift */,
 				F37A36722A3515DC00517EFC /* Server Settings VM.swift */,
+				F3EDEE3629C0CB4500B08696 /* Websocket */,
 			);
 			path = Panel;
 			sourceTree = "<group>";
@@ -3713,6 +3712,7 @@
 			isa = PBXGroup;
 			children = (
 				F3D7D87A29E83D1800BCAFFE /* Cache Settings.swift */,
+				F37266EA29D9F06C005FD103 /* Cache VM.swift */,
 				F37266E829D9EFFE005FD103 /* Cache Size.swift */,
 				F3D902DE29DC445A004E76C9 /* Cache Limit.swift */,
 				F3A391B929DB5E6900591C84 /* Cache Expiration.swift */,
@@ -3858,14 +3858,14 @@
 			path = Stats;
 			sourceTree = "<group>";
 		};
-		F3EDEE3629C0CB4500B08696 /* Networking */ = {
+		F3EDEE3629C0CB4500B08696 /* Websocket */ = {
 			isa = PBXGroup;
 			children = (
 				F3BF97A929BFC7E9007B9C9C /* Websocket.swift */,
 				F3EDEE3729C0CB5A00B08696 /* Websocket Message.swift */,
 				F3EDEE3929C0CB8000B08696 /* Websocket Delegate.swift */,
 			);
-			path = Networking;
+			path = Websocket;
 			sourceTree = "<group>";
 		};
 		F3F2BBA62A540C4D00D44CA6 /* Intro */ = {
