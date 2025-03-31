@@ -6316,7 +6316,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = watchOS/watchOS.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.debug;
-				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "host.bisquit.Bisquit-host";
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
@@ -6351,8 +6350,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = watchOS/watchOS.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
-				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.debug;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "host.bisquit.Bisquit-host";
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
@@ -6495,7 +6493,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Clip Demo/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.debug;
-				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Access to contacts allows you to save new contacts directly from the app.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Required to view your location on the map";
@@ -6538,8 +6535,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Clip Demo/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
-				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.debug;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Access to contacts allows you to save new contacts directly from the app.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Required to view your location on the map";
