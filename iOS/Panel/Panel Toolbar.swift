@@ -48,11 +48,17 @@ struct PanelToolbarModifier: ViewModifier {
                         .padding(.horizontal, -10)
                     }
                     
-                    if store.lastTabPanel == .info, let server = vm.server {
+                    if store.lastTabPanel == .info {
+                        if let server = vm.server {
 #if canImport(ActivityKit)
-                        InfoTabLA(server)
+                            InfoTabLA(server)
 #endif
+                        }
+                        
+                        PowerSwitchToolbar()
+                            .padding(.trailing, -10)
                     }
+                    
                     
                     if store.lastTabPanel == .files {
                         if #available(iOS 18.1, *) {

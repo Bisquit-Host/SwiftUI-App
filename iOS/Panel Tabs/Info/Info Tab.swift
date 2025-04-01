@@ -35,10 +35,6 @@ struct InfoTab: View {
                     VStack(spacing: 10) {
                         InfoTabHeading(server)
                         
-                        HStack {
-                            PowerSwitch()
-                        }
-                        
                         InfoTabCard(server)
                         
                         InfoTabAllocation(server)

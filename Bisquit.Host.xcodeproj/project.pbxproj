@@ -1061,6 +1061,9 @@
 		F3AB4A9B2CF4031600A8252F /* Json Formatter Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A982CF4031600A8252F /* Json Formatter Button.swift */; };
 		F3AB4A9C2CF4031600A8252F /* Json Formatter Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A982CF4031600A8252F /* Json Formatter Button.swift */; };
 		F3AB4A9D2CF4031600A8252F /* Json Formatter Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A982CF4031600A8252F /* Json Formatter Button.swift */; };
+		F3ADA60F2D9BFC9D00F2DAA6 /* Power Switch Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ADA60D2D9BFC9D00F2DAA6 /* Power Switch Toolbar.swift */; };
+		F3ADA6102D9BFC9D00F2DAA6 /* Power Switch Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ADA60D2D9BFC9D00F2DAA6 /* Power Switch Toolbar.swift */; };
+		F3ADA6132D9BFC9D00F2DAA6 /* Power Switch Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ADA60D2D9BFC9D00F2DAA6 /* Power Switch Toolbar.swift */; };
 		F3AE522329ACF7D600CB3895 /* Server Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* Server Card VM.swift */; };
 		F3AF91C12B423492001D8F80 /* SSH VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91C02B423492001D8F80 /* SSH VM.swift */; };
 		F3AF91C22B423492001D8F80 /* SSH VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91C02B423492001D8F80 /* SSH VM.swift */; };
@@ -2027,6 +2030,7 @@
 		F3AB4A892CF3DAC900A8252F /* Backup Card VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Backup Card VM.swift"; sourceTree = "<group>"; };
 		F3AB4A8F2CF3EC6700A8252F /* Tip Server Card Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tip Server Card Context Menu.swift"; sourceTree = "<group>"; };
 		F3AB4A982CF4031600A8252F /* Json Formatter Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Json Formatter Button.swift"; sourceTree = "<group>"; };
+		F3ADA60D2D9BFC9D00F2DAA6 /* Power Switch Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Switch Toolbar.swift"; sourceTree = "<group>"; };
 		F3AE522229ACF7D600CB3895 /* Server Card VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card VM.swift"; sourceTree = "<group>"; };
 		F3AF91C02B423492001D8F80 /* SSH VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SSH VM.swift"; sourceTree = "<group>"; };
 		F3AF91C42B423535001D8F80 /* SSH List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SSH List.swift"; sourceTree = "<group>"; };
@@ -2659,6 +2663,7 @@
 				F3D295122AF396FD00ED43A0 /* Tabs.swift */,
 				F39626F12A7AD64B0057E356 /* Ansi.swift */,
 				F37A36772A35180100517EFC /* Power Switch.swift */,
+				F3ADA60D2D9BFC9D00F2DAA6 /* Power Switch Toolbar.swift */,
 				F3553FB22B40653000EF0FD2 /* Panel Settings Parent.swift */,
 				F303214A2B3FEA45002A73B8 /* Panel Settings View.swift */,
 				F37A36722A3515DC00517EFC /* Server Settings VM.swift */,
@@ -4721,6 +4726,7 @@
 				F32E88C82AF83E3F00959D49 /* Topbar Admin Button.swift in Sources */,
 				F31BA570295900C20006D126 /* Formatters.swift in Sources */,
 				F39626F22A7AD64B0057E356 /* Ansi.swift in Sources */,
+				F3ADA6132D9BFC9D00F2DAA6 /* Power Switch Toolbar.swift in Sources */,
 				F353D5062D98427500EC9F3A /* Panel Toolbar.swift in Sources */,
 				F35FEB072B09F003004DA05D /* API Key.swift in Sources */,
 				F3A1D2312A201C570053261E /* Enums.swift in Sources */,
@@ -5190,6 +5196,7 @@
 				F3C9D8522B3059E700265492 /* UIVideoPlayer.swift in Sources */,
 				F3464D322A863A6600188B0C /* Send Command.swift in Sources */,
 				F3A994AC2A17904F00530615 /* Map VM.swift in Sources */,
+				F3ADA6102D9BFC9D00F2DAA6 /* Power Switch Toolbar.swift in Sources */,
 				F3B81DF22A49C96000633B66 /* Info Absolute Stats.swift in Sources */,
 				F3553FC02B4094D700EF0FD2 /* Allocation Card.swift in Sources */,
 				F3880A272A92A15E0052A978 /* Contact Manager.swift in Sources */,
@@ -5531,6 +5538,7 @@
 				F337C15C2A8C2A04006F321C /* API Tests.swift in Sources */,
 				F3D295512AF39DFF00ED43A0 /* Plan Models.swift in Sources */,
 				F3D295992AF3A06300ED43A0 /* Log List Parent.swift in Sources */,
+				F3ADA60F2D9BFC9D00F2DAA6 /* Power Switch Toolbar.swift in Sources */,
 				F3D295C62AF3A1EE00ED43A0 /* FileTab Context Menu.swift in Sources */,
 				F3202D0F2D562AE30030B3CC /* Browser List Web.swift in Sources */,
 				F3D295432AF39D8300ED43A0 /* System Alerts.swift in Sources */,
