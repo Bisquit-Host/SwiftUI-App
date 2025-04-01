@@ -12,6 +12,5 @@ struct Card: Identifiable, Hashable {
 let cards = [
     Card(.intro1),
     Card(.intro2),
-    Card(.intro3),
-    Card(.intro4)
+    Card(.intro3)
 ]
