@@ -60,7 +60,7 @@ struct LogCard: View {
                     }
                 }
                 
-                Text(eventDescription())
+                Text(eventDescription)
                     .footnote(design: .monospaced)
             }
             
@@ -134,7 +134,7 @@ struct LogCard: View {
         return "\(sinceNowDays) days ago"
     }
     
-    private func eventDescription() -> LocalizedStringKey {
+    private var eventDescription: LocalizedStringKey {
         switch log.event {
             // Modpack
         case "server:modpack.install":
