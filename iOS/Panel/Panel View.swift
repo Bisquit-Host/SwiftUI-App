@@ -29,35 +29,14 @@ struct PanelView: View {
     var body: some View {
         @Bindable var vm = vm
         
-        NavigationView {
-            TabView(selection: $store.lastTabPanel) {
-                if let server = vm.server {
-                    InfoTab(server)
-                        .tab(.info)
-                        .sheet($vm.sheetSettings) {
-                            PanelSettingsParent(server)
-                        }
-                    
-                    ConsoleTab(id)
-                        .tab(.console)
-                    
-                    FileTab(id)
-                        .tab(.files)
-                    
-                    DataTab(server)
-                        .tab(.backup)
-                    
-                    StartupView(server)
-                        .tab(.startup)
+        VStack {
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                panel
+            } else {
+                NavigationView {
+                    panel
                 }
             }
-            .panelToolbar()
-            .environment(consoleVM)
-            .environmentObject(fileVM)
-            .environment(backupVM)
-            .environment(databaseVM)
-            .environment(scheduleVM)
-            .environment(startupVM)
         }
         .navigationBarBackButtonHidden()
         .ignoresSafeArea()
@@ -121,6 +100,37 @@ struct PanelView: View {
         vm.updateBackups = {
             backupVM.fetchBackups()
         }
+    }
+    
+    private var panel: some View {
+        TabView(selection: $store.lastTabPanel) {
+            if let server = vm.server {
+                InfoTab(server)
+                    .tab(.info)
+                    .sheet($vm.sheetSettings) {
+                        PanelSettingsParent(server)
+                    }
+                
+                ConsoleTab(id)
+                    .tab(.console)
+                
+                FileTab(id)
+                    .tab(.files)
+                
+                DataTab(server)
+                    .tab(.backup)
+                
+                StartupView(server)
+                    .tab(.startup)
+            }
+        }
+        .panelToolbar()
+        .environment(consoleVM)
+        .environmentObject(fileVM)
+        .environment(backupVM)
+        .environment(databaseVM)
+        .environment(scheduleVM)
+        .environment(startupVM)
     }
 }
 
