@@ -11,6 +11,7 @@ struct ServerList: View {
         
         ScrollView(showsIndicators: false) {
             ServerListTips()
+                .frame(maxWidth: 360)
             
             ServerListGrid(vm.filteredServers)
         }
