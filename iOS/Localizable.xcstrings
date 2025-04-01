@@ -820,7 +820,14 @@
 
     },
     "Added **`%@`** as a subuser" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавлен пользователь **`%@`**"
+          }
+        }
+      }
     },
     "Added **`%@`** to the server" : {
 
@@ -1319,6 +1326,12 @@
             "state" : "new",
             "value" : "Changed the **`%1$@`** variable from **`%2$@`** to **`%3$@`**"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Изменена переменная **`%1$@`** с **`%2$@`** на **`%3$@`**"
+          }
         }
       }
     },
@@ -1328,6 +1341,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Changed the server description from **`%1$@`** to **`%2$@`**"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Описание сервера изменено с **`%1$@`** на **`%2$@`**"
           }
         }
       }
@@ -1923,7 +1942,14 @@
       }
     },
     "Created **`%@`** schedule" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Создано расписание **`%@`**"
+          }
+        }
+      }
     },
     "Created a copy of **`%@`**" : {
 
@@ -1935,11 +1961,24 @@
             "state" : "new",
             "value" : "Created a new **`%1$@`** task in your **`%2$@`** schedule"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Создана новая задача “**`%1$@`**” для раписания **`%2$@`**"
+          }
         }
       }
     },
     "Created new database **`%@`**" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Создана новая база данных **`%@`**"
+          }
+        }
+      }
     },
     "Created the **`%@`** subdomain" : {
 
@@ -2177,19 +2216,54 @@
 
     },
     "Deleted a task in your **`%@`** schedule" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалена задача для расписания **`%@`**"
+          }
+        }
+      }
     },
     "Deleted database **`%@`**" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалена база данных **`%@`**"
+          }
+        }
+      }
     },
     "Deleted the **`%@`** allocation" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удален порт **`%@`**"
+          }
+        }
+      }
     },
     "Deleted the **`%@`** backup" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удален бэкап **`%@`**"
+          }
+        }
+      }
     },
     "Deleted the **`%@`** schedule" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалено расписание **`%@`**"
+          }
+        }
+      }
     },
     "Deleted the **`%@`** subdomain" : {
 
@@ -2466,7 +2540,14 @@
 
     },
     "Downloaded the **`%@`** backup" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скачан бэкап **`%@`**"
+          }
+        }
+      }
     },
     "Drop here" : {
       "localizations" : {
@@ -3111,6 +3192,12 @@
             "state" : "new",
             "value" : "Installed modpack ID **`%1$@`**, version **`%2$@`** from **`%3$@`**"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Утановлен модпак ID **`%1$@`**, версии **`%2$@`** с **`%3$@`**"
+          }
         }
       }
     },
@@ -3549,7 +3636,14 @@
       }
     },
     "Locked the **`%@`** backup" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Бэкап **`%@`** заблокирован"
+          }
+        }
+      }
     },
     "Log out" : {
       "localizations" : {
@@ -3610,7 +3704,14 @@
       }
     },
     "Marked the **`%@`** backup as complete" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Бэкап **`%@`** помечен как завершенный"
+          }
+        }
+      }
     },
     "Me name folder" : {
       "localizations" : {
@@ -4167,7 +4268,14 @@
       }
     },
     "Password rotated for database **`%@`**" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Изменен пароль базы данных **`%@`**"
+          }
+        }
+      }
     },
     "Paste" : {
       "extractionState" : "stale",
@@ -4467,7 +4575,14 @@
       }
     },
     "Reinstalled server" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сервер переустановлен"
+          }
+        }
+      }
     },
     "Reinstalling your server will stop it, and then re-run the installation script that initially set it. Some files may be deleted or modified during this process, please back up your data before continuing" : {
       "localizations" : {
@@ -4496,7 +4611,14 @@
       }
     },
     "Removed **`%@`** as a subuser" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удален пользователь **`%@`**"
+          }
+        }
+      }
     },
     "Rename" : {
       "localizations" : {
@@ -4524,6 +4646,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Renamed the server from **`%1$@`** to **`%2$@`**"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сервер переименован с **`%1$@`** на **`%2$@`**"
           }
         }
       }
@@ -4571,7 +4699,14 @@
       }
     },
     "Restarted the server" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сервер перезапущен"
+          }
+        }
+      }
     },
     "Restore" : {
       "localizations" : {
@@ -4886,7 +5021,14 @@
       }
     },
     "Set **`%@`** as the primary server allocation" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Порт **`%@`** установлен как основной"
+          }
+        }
+      }
     },
     "Set default" : {
 
@@ -5143,7 +5285,14 @@
 
     },
     "Started the server" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сервер запущен"
+          }
+        }
+      }
     },
     "Startup" : {
       "localizations" : {
@@ -5256,7 +5405,14 @@
       }
     },
     "Stopped the server" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сервер остановлен"
+          }
+        }
+      }
     },
     "Storage" : {
       "localizations" : {
@@ -5677,7 +5833,14 @@
       }
     },
     "Unlocked **`%@`** backup" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Бэкап **`%@`** разблокирован"
+          }
+        }
+      }
     },
     "Unnamed" : {
 
@@ -5790,10 +5953,24 @@
       }
     },
     "Updated **`%@`** schedule" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обновлено расписание **`%@`**"
+          }
+        }
+      }
     },
     "Updated a task in your **`%@`** schedule" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обновлена задача для расписания **`%@`**"
+          }
+        }
+      }
     },
     "Updated the Docker Image for the server from **`%@`** to **`%@`**" : {
       "localizations" : {
@@ -5816,7 +5993,14 @@
       }
     },
     "Updated the subuser permissions for **`%@`** as a subuser" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обновлены права пользователя **`%@`**"
+          }
+        }
+      }
     },
     "Upload" : {
       "localizations" : {

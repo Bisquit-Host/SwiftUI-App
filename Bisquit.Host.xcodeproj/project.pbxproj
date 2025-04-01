@@ -1064,6 +1064,13 @@
 		F3ADA60F2D9BFC9D00F2DAA6 /* Power Switch Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ADA60D2D9BFC9D00F2DAA6 /* Power Switch Toolbar.swift */; };
 		F3ADA6102D9BFC9D00F2DAA6 /* Power Switch Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ADA60D2D9BFC9D00F2DAA6 /* Power Switch Toolbar.swift */; };
 		F3ADA6132D9BFC9D00F2DAA6 /* Power Switch Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ADA60D2D9BFC9D00F2DAA6 /* Power Switch Toolbar.swift */; };
+		F3ADA61D2D9C16AC00F2DAA6 /* Loc Logs.txt in Resources */ = {isa = PBXBuildFile; fileRef = F3ADA61C2D9C16AC00F2DAA6 /* Loc Logs.txt */; };
+		F3ADA61E2D9C16AC00F2DAA6 /* Loc Logs.txt in Resources */ = {isa = PBXBuildFile; fileRef = F3ADA61C2D9C16AC00F2DAA6 /* Loc Logs.txt */; };
+		F3ADA61F2D9C16AC00F2DAA6 /* Loc Logs.txt in Resources */ = {isa = PBXBuildFile; fileRef = F3ADA61C2D9C16AC00F2DAA6 /* Loc Logs.txt */; };
+		F3ADA6202D9C16AC00F2DAA6 /* Loc Logs.txt in Resources */ = {isa = PBXBuildFile; fileRef = F3ADA61C2D9C16AC00F2DAA6 /* Loc Logs.txt */; };
+		F3ADA6212D9C16AC00F2DAA6 /* Loc Logs.txt in Resources */ = {isa = PBXBuildFile; fileRef = F3ADA61C2D9C16AC00F2DAA6 /* Loc Logs.txt */; };
+		F3ADA6222D9C16AC00F2DAA6 /* Loc Logs.txt in Resources */ = {isa = PBXBuildFile; fileRef = F3ADA61C2D9C16AC00F2DAA6 /* Loc Logs.txt */; };
+		F3ADA6232D9C16AC00F2DAA6 /* Loc Logs.txt in Resources */ = {isa = PBXBuildFile; fileRef = F3ADA61C2D9C16AC00F2DAA6 /* Loc Logs.txt */; };
 		F3AE522329ACF7D600CB3895 /* Server Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* Server Card VM.swift */; };
 		F3AF91C12B423492001D8F80 /* SSH VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91C02B423492001D8F80 /* SSH VM.swift */; };
 		F3AF91C22B423492001D8F80 /* SSH VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91C02B423492001D8F80 /* SSH VM.swift */; };
@@ -2031,6 +2038,7 @@
 		F3AB4A8F2CF3EC6700A8252F /* Tip Server Card Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tip Server Card Context Menu.swift"; sourceTree = "<group>"; };
 		F3AB4A982CF4031600A8252F /* Json Formatter Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Json Formatter Button.swift"; sourceTree = "<group>"; };
 		F3ADA60D2D9BFC9D00F2DAA6 /* Power Switch Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Switch Toolbar.swift"; sourceTree = "<group>"; };
+		F3ADA61C2D9C16AC00F2DAA6 /* Loc Logs.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Loc Logs.txt"; sourceTree = "<group>"; };
 		F3AE522229ACF7D600CB3895 /* Server Card VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card VM.swift"; sourceTree = "<group>"; };
 		F3AF91C02B423492001D8F80 /* SSH VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SSH VM.swift"; sourceTree = "<group>"; };
 		F3AF91C42B423535001D8F80 /* SSH List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SSH List.swift"; sourceTree = "<group>"; };
@@ -3627,6 +3635,7 @@
 				F3DE1B972A556CCE007A1624 /* Log List.swift */,
 				F367977D2A3A5AB6009F2788 /* Log VM.swift */,
 				F367977A2A3A55F4009F2788 /* Log Card.swift */,
+				F3ADA61C2D9C16AC00F2DAA6 /* Loc Logs.txt */,
 				F30207D02D8B039100C26008 /* Meta */,
 				F373CDAB2D895419008B64BE /* Topbar */,
 			);
@@ -4373,6 +4382,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3ADA6222D9C16AC00F2DAA6 /* Loc Logs.txt in Resources */,
 				F378E3362AF3835C009925DB /* PrivacyInfo.xcprivacy in Resources */,
 				F36797762A39C4ED009F2788 /* Localizable.xcstrings in Resources */,
 				F39D68132A26373900B9BDFC /* Bisquits.sks in Resources */,
@@ -4384,6 +4394,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3ADA6212D9C16AC00F2DAA6 /* Loc Logs.txt in Resources */,
 				F3E6FC432A1E677000410C7C /* Bisquits.sks in Resources */,
 				F36797732A39C4ED009F2788 /* Localizable.xcstrings in Resources */,
 				F378E3332AF3835A009925DB /* PrivacyInfo.xcprivacy in Resources */,
@@ -4397,6 +4408,7 @@
 			files = (
 				F36797752A39C4ED009F2788 /* Localizable.xcstrings in Resources */,
 				F378E3352AF3835B009925DB /* PrivacyInfo.xcprivacy in Resources */,
+				F3ADA61F2D9C16AC00F2DAA6 /* Loc Logs.txt in Resources */,
 				F31BA53D2958FF7E0006D126 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4405,6 +4417,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3ADA6232D9C16AC00F2DAA6 /* Loc Logs.txt in Resources */,
 				F3E6FC442A1E677000410C7C /* Bisquits.sks in Resources */,
 				F36797742A39C4ED009F2788 /* Localizable.xcstrings in Resources */,
 				F378E3382AF3835E009925DB /* PrivacyInfo.xcprivacy in Resources */,
@@ -4416,6 +4429,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3ADA61E2D9C16AC00F2DAA6 /* Loc Logs.txt in Resources */,
 				F3D295322AF39C8900ED43A0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4451,6 +4465,7 @@
 			files = (
 				F378E3372AF3835D009925DB /* PrivacyInfo.xcprivacy in Resources */,
 				F389281F2A43CB2600561CDF /* Localizable.xcstrings in Resources */,
+				F3ADA61D2D9C16AC00F2DAA6 /* Loc Logs.txt in Resources */,
 				F3BD76FD2A43C892003E7385 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4468,6 +4483,7 @@
 			files = (
 				F3E08EA72A2CE17A00116C1C /* Assets.xcassets in Resources */,
 				F378E3342AF3835B009925DB /* PrivacyInfo.xcprivacy in Resources */,
+				F3ADA6202D9C16AC00F2DAA6 /* Loc Logs.txt in Resources */,
 				F38928202A43CB2600561CDF /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
