@@ -21,6 +21,7 @@ struct DesignSettings: View {
                         .secondary()
                 }
             }
+            .disabled(store.enableBisquitFall)
             .foregroundStyle(.foreground)
             .sheet($imagePicker) {
                 NavigationView {
