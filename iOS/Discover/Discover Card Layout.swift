@@ -7,13 +7,15 @@ struct DiscoverCardLayout: View {
         self.link = link
     }
     
-    private let imageSize = 60.0
-    
     private var screenWidth: CGFloat {
 #if os(visionOS)
         100
 #else
-        UIScreen.main.bounds.width
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            380
+        } else {
+            UIScreen.main.bounds.width
+        }
 #endif
     }
     
@@ -24,6 +26,8 @@ struct DiscoverCardLayout: View {
     private var averageColor: UIColor? {
         UIImage(resource: link.image).findAverageColor(.simple)
     }
+    
+    private let imageSize = 60.0
     
     var body: some View {
         VStack(alignment: .leading) {

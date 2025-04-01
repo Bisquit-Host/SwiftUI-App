@@ -23,14 +23,18 @@ struct Discover: View {
 #if os(visionOS)
         100
 #else
-        UIScreen.main.bounds.width
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            380
+        } else {
+            UIScreen.main.bounds.width
+        }
 #endif
     }
     
     private var columns: [GridItem] {
         Array(
             repeating: GridItem(.fixed(screenWidth * 0.45 + 2), spacing: 16),
-            count: 2
+            count: UIDevice.current.userInterfaceIdiom == .pad ? 3 : 2
         )
     }
     
