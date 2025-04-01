@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 import Kingfisher
 import PteroNet
 
@@ -81,6 +81,57 @@ struct LogCard: View {
                 .presentationDragIndicator(.hidden)
                 .presentationDetents([.medium, .large], selection: .constant(.medium))
         }
+    }
+    
+    private func eventProp(_ called: String) -> String {
+        log.properties[called]?.description ?? "???"
+    }
+    
+    private func subdomain() -> String {
+        let subdomain = eventProp("domain")
+        let domain = eventProp("subdomain")
+        
+        return "\(subdomain).\(domain)"
+    }
+    
+    private func coreVersion() -> String {
+        let version = eventProp("version")
+        let build = eventProp("build")
+        let type = eventProp("type")
+        let deletefiles = eventProp("deletefiles")
+        
+        return "\(type) \(version) \(build) (delete files: \(deletefiles))"
+    }
+    
+    private func timeSinceISO(_ date: String) -> LocalizedStringKey {
+        let formatter = ISO8601DateFormatter()
+        
+        guard let date = formatter.date(from: date) else {
+            return "-"
+        }
+        
+        let sinceNowSeconds = Int(date.timeIntervalSinceNow * -1)
+        
+        guard sinceNowSeconds > 1 else {
+            return "Now"
+        }
+        
+        guard sinceNowSeconds > 60 else {
+            return "\(sinceNowSeconds) seconds ago"
+        }
+        
+        let sinceNowMinutes = sinceNowSeconds / 60
+        guard sinceNowMinutes > 60 else {
+            return "\(sinceNowMinutes) minutes ago"
+        }
+        
+        let sinceNowHours = sinceNowMinutes / 60
+        guard sinceNowHours > 24 else {
+            return "\(sinceNowHours) hours ago"
+        }
+        
+        let sinceNowDays = sinceNowHours / 24
+        return "\(sinceNowDays) days ago"
     }
     
     private func eventDescription() -> LocalizedStringKey {
@@ -237,26 +288,6 @@ struct LogCard: View {
         default:
             LocalizedStringKey(log.event)
         }
-    }
-    
-    private func eventProp(_ called: String) -> String {
-        log.properties[called]?.description ?? "???"
-    }
-    
-    private func subdomain() -> String {
-        let subdomain = eventProp("domain")
-        let domain = eventProp("subdomain")
-        
-        return "\(subdomain).\(domain)"
-    }
-    
-    private func coreVersion() -> String {
-        let version = eventProp("version")
-        let build = eventProp("build")
-        let type = eventProp("type")
-        let deletefiles = eventProp("deletefiles")
-        
-        return "\(type) \(version) \(build) (delete files: \(deletefiles))"
     }
 }
 
