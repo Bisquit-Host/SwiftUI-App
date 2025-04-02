@@ -6397,7 +6397,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOS/iOS.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.debug;
+				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSCameraUsageDescription = "App uses camera to create elements with dynamic color based on camera capture";
