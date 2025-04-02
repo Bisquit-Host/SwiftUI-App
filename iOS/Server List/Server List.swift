@@ -22,6 +22,8 @@ struct ServerList: View {
         .background(BisquitFall())
         .background(BackgroundImage())
         .onFirstAppear {
+            vm.loadServers()
+            
             if !System.lowPowerMode {
                 await vm.checkForUpdates()
             }

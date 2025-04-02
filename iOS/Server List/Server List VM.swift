@@ -2,6 +2,26 @@ import ScrechKit
 import PteroNet
 import GameKit
 
+extension UserDefaults {
+    func setServerAttributesArray(_ servers: [ServerAttributes], forKey key: String) {
+        let encoder = JSONEncoder()
+        
+        if let data = try? encoder.encode(servers) {
+            set(data, forKey: key)
+        }
+    }
+    
+    func serverAttributesArray(forKey key: String) -> [ServerAttributes]? {
+        guard let data = data(forKey: key) else {
+            return nil
+        }
+        
+        let decoder = JSONDecoder()
+        
+        return try? decoder.decode([ServerAttributes].self, from: data)
+    }
+}
+
 @Observable
 final class ServerListVM {
     // MARK: - PteroNet
@@ -56,6 +76,16 @@ final class ServerListVM {
         servers.contains {
             $0.isSuspended
         }
+    }
+    
+    func loadServers() {
+        if let loadedServers = UserDefaults.standard.serverAttributesArray(forKey: "servers") {
+            servers = loadedServers
+        }
+    }
+    
+    private func saveServers() {
+        UserDefaults.standard.setServerAttributesArray(servers, forKey: "servers")
     }
     
     func checkForUpdates() async {
@@ -134,6 +164,8 @@ final class ServerListVM {
                     withAnimation {
                         self.servers = loadedServers
                     }
+                    
+                    self.saveServers()
                 }
                 
                 Task {
@@ -182,6 +214,8 @@ final class ServerListVM {
             withAnimation {
                 self.servers = loadedServers
             }
+            
+            self.saveServers()
         }
     }
 }
