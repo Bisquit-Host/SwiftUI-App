@@ -6,16 +6,20 @@ struct TextFile: View {
     
     @Environment(\.dismiss) private var dismiss
     
-    private let id, path, name: String
+    private let id, name, path: String
     
-    init(_ id: String, path: String, name: String) {
+    init(_ id: String, name: String, at path: String) {
         self.id = id
-        self.path = path
         self.name = name
+        self.path = path
         self.vm = TextFileVM(id)
     }
     
     private var tip = Tip_JsonFormatter()
+    
+    private var showSaveButton: Bool {
+        vm.initialText != vm.text
+    }
     
     var body: some View {
         @Bindable var vm = vm
@@ -39,10 +43,11 @@ struct TextFile: View {
         }
         .toolbar {
 #if os(iOS)
-            if vm.initialText != vm.text {
+            if showSaveButton {
                 Button("Save") {
-                    vm.writeFile(vm.text, path: path + name)
+                    vm.writeFile(vm.text, at: path + name)
                 }
+                .animation(.default, value: showSaveButton)
             }
 #endif
             JsonFormatterButton()
@@ -71,6 +76,6 @@ struct TextFile: View {
 }
 
 #Preview {
-    TextFile("", path: "", name: "")
+    TextFile("", name: "Preview", at: "")
         .environmentObject(FileTabVM(""))
 }

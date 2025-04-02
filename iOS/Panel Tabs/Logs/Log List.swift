@@ -1,65 +1,120 @@
 import SwiftUI
-import Algorithms
+import PteroNet
 
 struct LogList: View {
     @Environment(LogVM.self) private var vm
-    
-    @State private var searchField = ""
-    
-    private let dateFormatter: ISO8601DateFormatter = {
-        let formatter = ISO8601DateFormatter()
-        
-        formatter.formatOptions = [
-            .withInternetDateTime,
-            .withDashSeparatorInDate,
-            .withColonSeparatorInTime
-        ]
-        
-        return formatter
-    }()
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         @Bindable var vm = vm
         
         List {
-            let logsByMonth = vm.searchedLogs.chunked { lhs, rhs in
-                let date1 = dateFormatter.date(from: lhs.timestamp)
-                let date2 = dateFormatter.date(from: rhs.timestamp)
-                
-                return Calendar.current.component(.month, from: date1!) == Calendar.current.component(.month, from: date2!)
-            }
+            LogTopbar()
             
-            ForEach(logsByMonth.indices, id: \.self) { index in
-                let logs = logsByMonth[index]
+            ForEach(vm.logsByMonth.indices, id: \.self) { index in
+                let logs = vm.logsByMonth[index]
+                let month = vm.monthName(for: logs.first!.timestamp)
                 
-                Section(monthName(for: logs.first!.timestamp)) {
+                Section {
                     ForEach(logs) { log in
                         LogCard(log)
                     }
+                } header: {
+                    Text(month)
+                        .title3(.semibold, design: .rounded)
+                        .foregroundStyle(.primary)
                 }
+                .transparentSection()
             }
         }
-        .navigationTitle("Server logs")
+        .navigationTitle("Logs")
+#if !os(tvOS)
+        .toolbarTitleDisplayMode(.large)
+#endif
         .toolbarTitleDisplayMode(.inline)
         .ornamentDismissButton()
-        .searchable(text: $vm.searchField)
-        .overlay {
-            if vm.searchedLogs.isEmpty {
-                ContentUnavailableView.search(text: vm.searchField)
-            }
-        }
+        .transparentList()
         .refreshableTask {
             vm.fetchLogs()
         }
-    }
-    
-    private func monthName(for isoTimestamp: String) -> String {
-        guard let date = dateFormatter.date(from: isoTimestamp) else {
-            return "Unknown Month"
+#if os(iOS)
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+            if !System.lowPowerMode {
+                vm.fetchLogs()
+            }
         }
-        
-        return DateFormatter()
-            .monthSymbols[Calendar.current.component(.month, from: date) - 1]
+#endif
+        .overlay {
+            if vm.logs.isEmpty {
+                ContentUnavailableView(
+                    "No recent actions have been logged",
+                    systemImage: "list.bullet.rectangle.fill"
+                )
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                DismissButton {
+                    dismiss()
+                }
+            }
+            
+#if !os(watchOS)
+            if !vm.logs.isEmpty {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Menu {
+                        Section {
+                            Button {
+                                vm.selectedActor = nil
+                            } label: {
+                                Label {
+                                    Text("All")
+                                } icon: {
+                                    if vm.selectedActor == nil {
+                                        Image(systemName: "checkmark")
+                                    }
+                                }
+                            }
+                        }
+                        
+                        ForEach(vm.actors, id: \.self) { actor in
+                            if let actor {
+                                Button {
+                                    if vm.selectedActor == actor {
+                                        vm.selectedActor = nil
+                                    } else {
+                                        vm.selectedActor = actor
+                                    }
+                                } label: {
+                                    if let username = actor.actor.attributes?.username {
+                                        Text(username)
+                                        
+                                        if let email = actor.actor.attributes?.email {
+                                            Text(email)
+                                        }
+                                    } else {
+                                        Text("System")
+                                    }
+                                    
+                                    if vm.selectedActor == actor {
+                                        Image(systemName: "checkmark")
+                                    }
+                                }
+                            }
+                        }
+                    } label: {
+                        Image(systemName: "line.3.horizontal.decrease.circle")
+                            .footnote(.bold)
+                            .frame(width: 35, height: 35)
+                            .background(.ultraThinMaterial, in: .circle)
+                            .symbolVariant(vm.selectedActor == nil ? .none : .fill)
+                            .animation(.default, value: vm.selectedActor)
+                    }
+                    .foregroundStyle(.foreground)
+                }
+            }
+#endif
+        }
     }
 }
 
@@ -67,5 +122,6 @@ struct LogList: View {
     NavigationView {
         LogList()
             .environment(LogVM(""))
+            .environmentObject(ValueStore())
     }
 }

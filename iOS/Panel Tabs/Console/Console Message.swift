@@ -14,14 +14,6 @@ struct ConsoleMessage: View {
     
     @State private var fontDesign: Font.Design = .monospaced
     
-    private let fontSizes = [8, 10, 12, 14]
-    private let fontDesigns: [Font.Design] = [
-        .default,
-        .monospaced,
-        .rounded,
-        .serif
-    ]
-    
     var body: some View {
         Text(message)
             .fontDesign(fontDesign)

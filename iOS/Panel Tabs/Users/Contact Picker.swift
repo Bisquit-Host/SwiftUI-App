@@ -49,11 +49,9 @@ struct ContactsListView: View {
             contacts
         } else {
             contacts.filter { contact in
-                let searchLowercased = searchField.lowercased()
-                
-                return contact.emailAddresses.contains(where: { $0.value.lowercased.contains(searchLowercased) }) ||
-                contact.givenName.lowercased().contains(searchLowercased) ||
-                contact.familyName.lowercased().contains(searchLowercased)
+                return contact.emailAddresses.contains(where: { $0.value.localizedStandardContains(searchField) }) ||
+                contact.givenName.localizedStandardContains(searchField) ||
+                contact.familyName.localizedStandardContains(searchField)
             }
         }
     }

@@ -3,35 +3,62 @@ import SwiftUI
 struct UserList: View {
     @Environment(UsersVM.self) private var vm
     
+    @Environment(\.dismiss) private var dismiss
+    
     var body: some View {
         @Bindable var vm = vm
         
         List {
-            Section {
-                ForEach(vm.users, id: \.uuid) { user in
+            ForEach(vm.users) { user in
+                Section {
                     UserCard(user)
                 }
-                .onDelete(perform: delete)
+                .transparentSection()
             }
-            
-            Button {
-                vm.sheetInvitation = true
-            } label: {
-                Label("New user", systemImage: "person.badge.plus")
-            }
+#if os(iOS)
+            .listSectionSpacing(-10)
+#endif
         }
-        .environment(vm)
         .navigationTitle("Users")
-        .toolbarTitleDisplayMode(.inline)
+        .environment(vm)
+#if !os(tvOS)
+        .toolbarTitleDisplayMode(.large)
+#endif
+        .transparentList()
         .task {
             vm.fetchUsers()
             vm.fetchPermissions()
         }
-        .refreshable {
-            vm.fetchUsers()
-        }
         .sheet($vm.sheetInvitation) {
             UserInvitationView()
+        }
+        .overlay {
+            if vm.users.isEmpty {
+                ContentUnavailableView(
+                    "This server currently has no users",
+                    systemImage: "person.3.fill",
+                    description: Text("Click the button in the top right corner to send an invitation")
+                )
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                DismissButton {
+                    dismiss()
+                }
+            }
+            
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    vm.sheetInvitation = true
+                } label: {
+                    Image(systemName: "person.crop.circle.badge.plus")
+                        .foregroundStyle(.foreground)
+                        .footnote(.bold)
+                        .frame(width: 35, height: 35)
+                        .background(.ultraThinMaterial, in: .circle)
+                }
+            }
         }
     }
     

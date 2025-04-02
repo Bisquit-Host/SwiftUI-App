@@ -16,13 +16,20 @@ struct ImagePlaygroundButton: View {
         Button {
             sheetImagePlayground = true
         } label: {
-            HStack {
+            ZStack {
+                if supportsImagePlayground {
+                    Image(.appleIntelligence)
+                        .resizable()
+                        .frame(width: 35, height: 35)
+                        .clipShape(.circle)
+                        .blur(radius: 3)
+                }
+                
                 Image(.appleIntelligence)
                     .resizable()
-                    .frame(width: 25, height: 25)
-                    .opacity(supportsImagePlayground ? 1 : 0.3)
-                
-                Text("Image Playground")
+                    .frame(width: 32, height: 32)
+                    .clipShape(.circle)
+                    .opacity(supportsImagePlayground ? 1 : 0.2)
             }
         }
         .keyboardShortcut("P")
@@ -30,13 +37,13 @@ struct ImagePlaygroundButton: View {
         .disabled(!supportsImagePlayground)
         .sheet($sheetImagePlayground) {
             NavigationView {
-                ImagePlayground(root: root)
+                ImagePlayground(at: root)
             }
         }
     }
 }
 
-@available(iOS 18.1, macOS 15.1, *)
+@available(iOS 18.1, *)
 #Preview {
     ImagePlaygroundButton()
 }

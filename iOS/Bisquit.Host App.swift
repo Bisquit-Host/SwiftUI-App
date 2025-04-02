@@ -7,6 +7,10 @@ import GameKit
 import CoreSpotlight
 #endif
 
+#if canImport(Algorithms)
+import Algorithms
+#endif
+
 #if canImport(SafariCover)
 import SafariCover
 #endif
@@ -17,12 +21,12 @@ import Pow
 
 @main
 struct BisquitHostApp: App {
+    @StateObject private var store = ValueStore()
+    private var navState = NavState()
+
 #if os(iOS)
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 #endif
-    
-    @StateObject private var store = ValueStore()
-    private var navState = NavState()
     
     private let container: ModelContainer
     

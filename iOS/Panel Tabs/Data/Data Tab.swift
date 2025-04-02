@@ -19,6 +19,8 @@ struct DataTab: View {
         
         List {
             BackupList(server)
+            //                .transparentSection()
+                .listRowBackground(Color.gray.opacity(0.2))
 #if os(tvOS)
             Divider()
             
@@ -28,8 +30,12 @@ struct DataTab: View {
             Divider()
 #else
             ScheduleList()
+            //                .transparentSection()
+                .listRowBackground(Color.gray.opacity(0.2))
 #endif
             DatabaseList(databaseLimit)
+            //                .transparentSection()
+                .listRowBackground(Color.gray.opacity(0.2))
         }
         .scrollIndicators(.hidden)
 #if !os(tvOS)
@@ -41,6 +47,11 @@ struct DataTab: View {
         .sheet($scheduleVM.sheetCreate) {
             NewScheduleSheet()
         }
+        .background(BackgroundImage())
+#if !os(tvOS)
+        .scrollContentBackground(.hidden)
+#endif
+        .toolbarBackground(.visible, for: .tabBar)
         .alert("Create Database", isPresented: $databaseVM.alertCreate) {
             TextField("", text: $databaseVM.newDatabaseName)
                 .autocorrectionDisabled()

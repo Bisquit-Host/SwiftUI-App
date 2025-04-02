@@ -50,7 +50,7 @@ struct BrowserCardMC: View {
                             .padding(.horizontal, 14)
                             .padding(.vertical, 10)
                             .background()
-                            .cornerRadius(16)
+                            .clipShape(.rect(cornerRadius: 16))
                     }
                     .blur(radius: 4)
                     .brightness(scheme == .dark ? -0.1 : 0)
@@ -91,7 +91,7 @@ struct BrowserCardMC: View {
 #else
             .frame(height: 160)
 #endif
-            .cornerRadius(20)
+            .clipShape(.rect(cornerRadius: 20))
             .padding(5)
         }
         .buttonStyle(.plain)

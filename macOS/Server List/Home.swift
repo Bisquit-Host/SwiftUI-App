@@ -35,7 +35,8 @@ struct Home: View {
         }
         .task {
             vm.fetchServers(store.adminServerList)
-            
+        }
+        .onFirstAppear {
             if !System.lowPowerMode {
                 await vm.checkForUpdates()
             }

@@ -1,0 +1,48 @@
+import ScrechKit
+
+struct PowerSwitchToolbar: View {
+    @Environment(PanelVM.self) private var vm
+    
+    @State private var confirmKill = false
+    
+    var body: some View {
+        Menu {
+            ControlGroup {
+                MenuButton("Start", icon: "play") {
+                    vm.changePower(.start)
+                }
+                
+                MenuButton("Restart", icon: "arrow.clockwise") {
+                    vm.changePower(.restart)
+                }
+                
+                MenuButton("Stop", icon: "pause") {
+                    vm.changePower(.stop)
+                }
+                
+                MenuButton("Kill", role: .destructive, icon: "power") {
+                    confirmKill = true
+                }
+            }
+        } label: {
+            Image(systemName: "power")
+                .footnote(.semibold)
+                .symbolEffect(.bounce, value: vm.stateColor)
+                .foregroundStyle(vm.stateColor.gradient)
+                .animation(.default, value: vm.stateColor)
+                .frame(width: 35, height: 35)
+                .background(.ultraThinMaterial, in: .circle)
+        }
+        .hoverEffect(.lift)
+        .confirmationDialog("Perform kill action", isPresented: $confirmKill, titleVisibility: .visible) {
+            Button("Kill", role: .destructive) {
+                vm.changePower(.kill)
+            }
+        }
+    }
+}
+
+#Preview {
+    PowerSwitchToolbar()
+        .environment(PanelVM(""))
+}

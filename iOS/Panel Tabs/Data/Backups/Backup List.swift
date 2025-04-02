@@ -26,7 +26,9 @@ struct BackupList: View {
             
             CreateBackupButton(backupLimit)
         } header: {
-            SectionHeader("Backups", type: .backup(vm.backups.count, limit: backupLimit))
+            if !vm.backups.isEmpty {
+                SectionHeader("Backups", type: .backup(vm.backups.count, limit: backupLimit))
+            }
         }
         .environment(vm)
     }

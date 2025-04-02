@@ -4,13 +4,9 @@ import Kingfisher
 struct ImageFile: View {
     private var vm: ImageFileVM
     
-    private let id, path, name: String
+    private let id, name, path: String
     
-    init(_ id: String,
-         path: String,
-         name: String,
-         model: ImageFileVM = ImageFileVM("")
-    ) {
+    init(_ id: String, name: String, at path: String) {
         self.id = id
         self.path = path
         self.name = name
@@ -19,27 +15,25 @@ struct ImageFile: View {
     
     var body: some View {
         VStack {
-            GeometryReader { geo in
-                if let image = vm.cachedImage {
-                    Image(uiImage: image)
-                        .resizable()
-                        .scaledToFit()
-                } else {
-                    KFImage(stringToUrl(vm.url))
-                        .fade(duration: 0.25)
-                        .memoryCacheExpiration(.seconds(300))
-                        .diskCacheExpiration(.days(1))
-                        .onSuccess { result in
-                            KingfisherManager.shared.cache.store(
-                                result.image,
-                                forKey: path + name
-                            )
-                            
-                            vm.cachedImage = result.image
-                        }
-                        .resizable()
-                        .scaledToFit()
-                }
+            if let image = vm.cachedImage {
+                Image(uiImage: image)
+                    .resizable()
+                    .scaledToFit()
+            } else {
+                KFImage(stringToUrl(vm.url))
+                    .fade(duration: 0.25)
+                    .memoryCacheExpiration(.seconds(300))
+                    .diskCacheExpiration(.days(1))
+                    .onSuccess { result in
+                        KingfisherManager.shared.cache.store(
+                            result.image,
+                            forKey: path + name
+                        )
+                        
+                        vm.cachedImage = result.image
+                    }
+                    .resizable()
+                    .scaledToFit()
             }
         }
         .navigationTitle(name)
@@ -47,5 +41,5 @@ struct ImageFile: View {
             vm.loadCachedImage(path + name)
             vm.downloadImage(path + name)
         }
-    }    
+    }
 }

@@ -15,7 +15,7 @@ struct CacheExpiration: View {
     var body: some View {
         Menu {
             ForEach(intervals, id: \.self) { interval in
-                Button(interval.rawValue.capitalized) {
+                Button(interval.loc) {
                     cacheExpiration = interval
                     updateCacheExpiration(interval)
                 }
@@ -26,11 +26,11 @@ struct CacheExpiration: View {
                 
                 Spacer()
                 
-#warning("Not localized")
-                Text(String(cacheExpiration.rawValue.capitalized))
+                Text(cacheExpiration.loc)
                 
                 Image(systemName: "chevron.forward")
-                    .secondary()
+                    .caption2(.bold)
+                    .foregroundStyle(.tertiary)
             }
         }
         .foregroundStyle(.primary)

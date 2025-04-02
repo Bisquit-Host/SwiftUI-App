@@ -18,8 +18,12 @@ struct StartPageFooter: View {
                 .padding()
                 .background {
                     Circle()
-                        .fill(.blue.gradient)
+                        .fill(.ultraThinMaterial.opacity(0.3))
                         .shadow(radius: 8)
+                }
+                .overlay {
+                    Circle()
+                        .stroke(.ultraThinMaterial, lineWidth: 1)
                 }
             }
             
@@ -31,8 +35,12 @@ struct StartPageFooter: View {
             .padding()
             .background {
                 Circle()
-                    .fill(.cookie.gradient)
+                    .fill(.ultraThinMaterial.opacity(0.3))
                     .shadow(radius: 8)
+            }
+            .overlay {
+                Circle()
+                    .stroke(.ultraThinMaterial, lineWidth: 1)
             }
         }
         .title3(.bold)

@@ -5,7 +5,7 @@ struct FileList: View {
     
     private let id, root: String
     
-    init(_ id: String, root: String = "/") {
+    init(_ id: String, at root: String = "/") {
         self.id = id
         self.root = root
     }
@@ -13,7 +13,7 @@ struct FileList: View {
     var body: some View {
         List {
             ForEach(vm.filteredFiles, id: \.name) { file in
-                FileCard(id, file: file, root: root)
+                FileCard(id, file: file, at: root)
             }
         }
         .navigationTitle(root)

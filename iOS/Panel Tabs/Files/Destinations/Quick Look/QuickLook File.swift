@@ -8,9 +8,9 @@ struct QuickLookFile: View {
     
     @Environment(\.dismiss) private var dismiss
     
-    private let id, path, name: String
+    private let id, name, path: String
     
-    init(_ id: String, path: String, name: String) {
+    init(_ id: String, name: String, at path: String) {
         self.id = id
         self.path = path
         self.name = name
@@ -36,7 +36,7 @@ struct QuickLookFile: View {
             MetadataList(vm.metadata)
         }
         .task {
-            vm.getFileUrl(name, root: path)
+            vm.getFileUrl(name, at: path)
         }
         .overlay {
             if vm.isSensitive {
@@ -51,7 +51,7 @@ struct QuickLookFile: View {
             }
         }
         .toolbar {
-            if let url = vm.fileUrl, #available(iOS 18.1, *), isImage(url) {
+            if #available(iOS 18.1, *), let url = vm.fileUrl, isImage(url) {
                 ImagePlaygroundToolbarButton(url, path, name)
             }
             
@@ -89,6 +89,6 @@ struct QuickLookFile: View {
 }
 
 #Preview {
-    QuickLookFile("", path: "", name: "")
+    QuickLookFile("", name: "", at: "")
         .environmentObject(FileTabVM(""))
 }

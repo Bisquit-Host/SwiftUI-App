@@ -1,5 +1,5 @@
 {
-  "originHash" : "018e236fef6fa8989e256478b65bea52baf5f69f805b8d36081b6e0c590f898a",
+  "originHash" : "a8fa5c22273bffb79c6665a6866295a302b9660a942b60911c46c26305488f30",
   "pins" : [
     {
       "identity" : "alertkit",
@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/devicekit/DeviceKit",
       "state" : {
-        "revision" : "7ff5331960151aec74fb422e1d45f54ef6cc086d",
-        "version" : "5.5.0"
+        "revision" : "513b9d7e7a1bd46504a1009bbab943b75ce2f195",
+        "version" : "5.6.0"
       }
     },
     {
@@ -70,7 +70,7 @@
       "location" : "https://github.com/TopScrech/PteroNet",
       "state" : {
         "branch" : "main",
-        "revision" : "78b2efc8c1cecb620bf773cba3619a7d798f025f"
+        "revision" : "23469871712a9d4ce26c843accea1bf1b961d5d0"
       }
     },
     {
@@ -79,7 +79,7 @@
       "location" : "https://github.com/TopScrech/QuickLooking",
       "state" : {
         "branch" : "main",
-        "revision" : "83b4dc673af60a9068aca150e8a474f9036f80bc"
+        "revision" : "a7545a0a6953a08b64ac134877d7f15f0397be8d"
       }
     },
     {
@@ -97,7 +97,16 @@
       "location" : "https://github.com/TopScrech/ScrechKit",
       "state" : {
         "branch" : "main",
-        "revision" : "52b6d52d1f3e0ab63d9fee40c7c3a40ff173cf02"
+        "revision" : "9eae2d3e9788b854b1eb5306f75aaed67156760c"
+      }
+    },
+    {
+      "identity" : "sperms",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/TopScrech/SPerms",
+      "state" : {
+        "branch" : "main",
+        "revision" : "09554ed108cfd68025a1c8559e8bd8f79a82e738"
       }
     },
     {
@@ -125,6 +134,15 @@
       "state" : {
         "revision" : "e0ec0f5f3af6f3e4d5e7a19d2af26b481acb6ba8",
         "version" : "1.0.3"
+      }
+    },
+    {
+      "identity" : "swiftui-introspect",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/siteline/SwiftUI-Introspect",
+      "state" : {
+        "revision" : "121c146fe591b1320238d054ae35c81ffa45f45a",
+        "version" : "0.12.0"
       }
     }
   ],

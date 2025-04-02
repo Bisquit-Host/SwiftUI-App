@@ -21,7 +21,7 @@ struct StartupCard: View {
             Divider()
         }
         .task {
-            newValue = variable.serverValue
+            newValue = variable.serverValue ?? ""
         }
     }
 }

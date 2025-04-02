@@ -7,12 +7,12 @@ import DeviceKit
 #endif
 
 struct AppContainer: View {
-    @EnvironmentObject private var store: ValueStore
-    @Environment(NavState.self) private var navState
     @State private var vm = ServerListVM()
     @State private var linking = DeepLinkVM()
     @State private var network = NetworkVM()
     
+    @EnvironmentObject private var store: ValueStore
+    @Environment(NavState.self) private var navState
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.modelContext) private var modelContext
     @Query(animation: .default) private var keys: [APIKey]
@@ -35,14 +35,14 @@ struct AppContainer: View {
                     .withNavDestinations()
 #endif
             } else {
-                Intro()
+                IntroParent()
                     .withNavDestinations()
             }
         }
         .animation(.default, value: store.isApiKeyValid)
         .environment(vm)
-        .environment(network)
         .preferredColorScheme(store.colorTheme.scheme)
+        .onOpenURL(perform: linking.handleDeepLink)
 #if canImport(AlertKit)
         .onChange(of: network.isNetworkSatisfied) { _, status in
             guard let status, status else {
@@ -60,7 +60,6 @@ struct AppContainer: View {
                 }
             }
         }
-        .onOpenURL(perform: linking.handleDeepLink)
         .alert("Authentication with session", isPresented: $linking.alertAuth) {
             Button("Confirm") {
                 auth()
@@ -84,11 +83,13 @@ struct AppContainer: View {
     private func auth() {
         Keychain.save(
             key: "selectedApiKey",
-            value: linking.session
+            value: linking.apiKey
         )
         
-        if !keys.contains(where: { $0.key == linking.session }) {
-            modelContext.insert(APIKey("Session", key: linking.session))
+        if !keys.contains(where: { $0.key == linking.apiKey }) {
+            modelContext.insert(
+                APIKey("Session", key: linking.apiKey)
+            )
         }
         
         store.authSucced()

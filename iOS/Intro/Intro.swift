@@ -1,244 +1,192 @@
-import ScrechKit
-import Kingfisher
+import SwiftUI
+import PermissionsSwiftUINotification
+import PermissionsSwiftUIBiometrics
+import PermissionsSwiftUICamera
+import PermissionsSwiftUIContacts
 
+@available(iOS 18, *)
 struct Intro: View {
-    @State private var currentIndex = 0
-    @State private var showHomeview = false
-    @State private var showWalkThroughScreens = false
-    @State private var color = Color(0xe3a65e).opacity(0.8)
+    @EnvironmentObject private var store: ValueStore
     
-    private let intros = [
-        IntroItem("Best Performance", text: "Intro.Text1", imageName: "streamer"),
-        IntroItem("Innovation", text: "Intro.Text1", imageName: "badge"),
-        IntroItem("Support", text: "Intro.Text1", imageName: "heart")
-    ]
-    
-    @State private var trigger = true
+    @State private var activeCard = cards.first
+    @State private var scrollPosition = ScrollPosition()
+    @State private var currentScrollOffset = 0.0
+    @State private var timer = Timer.publish(every: 0.01, on: .current, in: .default).autoconnect()
+    @State private var initialAnimation = false
+    @State private var titleProgress = 0.0
+    @State private var scrollPhase: ScrollPhase = .idle
+    @State private var fullScreenCover = false
     
     var body: some View {
         ZStack {
-            if showHomeview {
-                StartPage()
-                    .transition(.move(edge: .trailing))
-            } else {
-                ZStack {
-                    color.ignoresSafeArea()
-                    IntroScreen()
-                    WalkThroughScreens()
-                    NavBar()
-                }
-                .foregroundStyle(.white)
-                .animation(
-                    .interactiveSpring(
-                        response: 1.1,
-                        dampingFraction: 0.85,
-                        blendDuration: 0.85
-                    ),
-                    value: showWalkThroughScreens
-                )
-                .transition(.move(edge: .leading))
-            }
-        }
-        .animation(.easeInOut(duration: 0.5),
-                   value: showHomeview)
-    }
-    
-    @ViewBuilder
-    private func IntroScreen() -> some View {
-        GeometryReader {
-            let size = $0.size
+            AmbientBackground()
+                .animation(.easeInOut(duration: 1), value: activeCard)
             
-            VStack(spacing: 10) {
-                Image(.logo)
-                    .resizable()
-                    .frame(width: size.width / 1.5, height: size.width / 1.5)
-                    .frame(maxWidth: 500, maxHeight: 500)
-                
-                Spacer().frame(height: 20)
-                
-                Text("Bisquit.Host")
-                    .largeTitle(.bold, design: .rounded)
-                
-                Text("Intro.Text0")
-                    .title(.bold, design: .rounded)
-                    .multilineTextAlignment(.center)
-                    .padding()
-                
-                Spacer().frame(height: 40)
-                
-                HStack {
-                    Button {
-                        withAnimation(.easeOut(duration: 1)) {
-                            showWalkThroughScreens.toggle()
-                            color = Color(0xe3a65e)
-                        }
-                    } label: {
-                        Text("Lift-off 🚀")
-                            .title3(.semibold)
-                            .padding(.horizontal, 25)
-                            .padding(.vertical, 16)
-                            .foregroundStyle(.white)
-                            .background(.blue.gradient, in: .capsule)
-                            .conditionalEffect(
-                                .repeat(
-                                    .glow(color: .blue),
-                                    every: 2
-                                ),
-                                condition: trigger
-                            )
+            VStack(spacing: 40) {
+                InfiniteScrollView {
+                    ForEach(cards) { card in
+                        CarouselCardView(card)
                     }
-                    
-                    Spacer().frame(width: 32)
-                    
-                    LanguageButton()
                 }
+                .scrollIndicators(.hidden)
+                .scrollPosition($scrollPosition)
+                .scrollClipDisabled()
+                .containerRelativeFrame(.vertical) { value, _ in
+                    value * 0.45
+                }
+                .onScrollPhaseChange { _, newPhase in
+                    scrollPhase = newPhase
+                }
+                .onScrollGeometryChange(for: CGFloat.self) {
+                    $0.contentOffset.x + $0.contentInsets.leading
+                } action: { _, newValue in
+                    currentScrollOffset = newValue
+                    
+                    if scrollPhase != .decelerating || scrollPhase != .animating {
+                        let activeIndex = Int((currentScrollOffset / 220).rounded()) % cards.count
+                        activeCard = cards[activeIndex]
+                    }
+                }
+                .visualEffect { [initialAnimation] content, proxy in
+                    content
+                        .offset(y: !initialAnimation ? -(proxy.size.height + 200) : 0)
+                }
+                
+                VStack(spacing: 4) {
+                    Text("Welcome to")
+                        .semibold()
+                        .foregroundStyle(.white.secondary)
+                        .blurOpacityEffect(initialAnimation)
+                    
+                    Text("Bisquit.Host")
+                        .largeTitle(.bold)
+                        .foregroundStyle(.white)
+                        .textRenderer(TitleTextRenderer(progress: titleProgress))
+                        .padding(.bottom, 12)
+                    
+                    Text("Comprehensive hosting solutions for VDS, game servers, websites, and bots — customized to fit your projects")
+                        .callout()
+                        .multilineTextAlignment(.center)
+                        .foregroundStyle(.white.secondary)
+                        .blurOpacityEffect(initialAnimation)
+                }
+                
+                Button {
+                    // Cancel the timer before leaving
+                    timer.upstream.connect().cancel()
+                    
+                    fullScreenCover = true
+                } label: {
+                    Text("Get Started")
+                        .semibold()
+                        .foregroundStyle(.black)
+                        .padding(.horizontal, 25)
+                        .padding(.vertical, 12)
+                        .background(.white, in: .capsule)
+                }
+                .blurOpacityEffect(initialAnimation)
             }
-            .padding(.bottom)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .offset(y: showWalkThroughScreens ? -size.height * 1.1 : 0)
+            .safeAreaPadding(15)
+        }
+        .JMAlert(showModal: $store.requestPermissions, for: [.notification, .opticBiometrics, .contacts, .camera], onDisappear: {
+            store.requestPermissions = false
+        })
+        .setPermissionComponent(.notification, description: "Allow to recieve Live Activity updates")
+        .setPermissionComponent(.biometrics, description: "Allow to verify certain destructive actions")
+        .setPermissionComponent(.contacts, description: "Allow to quickly invite subusers to your server")
+        .setPermissionComponent(.camera, description: "Allow to use camera for uploading media to your server")
+        .setAccentColor(to: .accentColor)
+        .changeHeaderDescriptionTo("In order for you to use certain features of Bisquit.Host, you need to give permissions. See description for each permission")
+        .onReceive(timer) { _ in
+            currentScrollOffset += 0.35
+            scrollPosition.scrollTo(x: currentScrollOffset)
+        }
+        .fullScreenCover($fullScreenCover) {
+            NavigationView {
+                StartPage()
+            }
+        }
+        .task {
+            if !store.requestPermissions {
+                activate()
+            }
+        }
+        .onChange(of: store.requestPermissions) {
+            activate()
         }
     }
     
-    @ViewBuilder
-    private func WalkThroughScreens() -> some View {
-        let isLast = currentIndex == intros.count
-        
+    private func activate() {
+        Task {
+            try? await Task.sleep(for: .seconds(0.35))
+            
+            withAnimation(.smooth(duration: 0.75, extraBounce: 0)) {
+                initialAnimation = true
+            }
+            
+            withAnimation(.smooth(duration: 2.5, extraBounce: 0).delay(0.3)) {
+                titleProgress = 1
+            }
+        }
+    }
+    
+    private func AmbientBackground() -> some View {
         GeometryReader {
             let size = $0.size
             
             ZStack {
-                ForEach(intros.indices, id: \.self) { index in
-                    ScreenView(size: size, index: index)
+                ForEach(cards) { card in
+                    /// You can use downsized image for this, but for the video tutorial purpose, I'm going to use the actual Image!
+                    Image(card.image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .ignoresSafeArea()
+                        .frame(width: size.width, height: size.height)
+                    /// Only Showing active Card Image
+                        .opacity(activeCard?.id == card.id ? 1 : 0)
                 }
                 
-                WelcomeView(size: size, index: intros.count)
+                Rectangle()
+                    .fill(.black.opacity(0.45))
+                    .ignoresSafeArea()
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .overlay(alignment: .bottom) {
-                ZStack {
-                    Image(systemName: "chevron.right")
-                        .title(.semibold)
-                        .scaleEffect(isLast ? 0.001 : 1)
-                        .opacity(isLast ? 0 : 1)
-                    
-                    HStack {
-                        Text("Sign in")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        
-                        Image(systemName: "arrow.right")
-                            .title3(.semibold)
-                    }
-                    .foregroundStyle(.white)
-                    .padding(.horizontal, 15)
-                    .scaleEffect(isLast ? 1 : 0.001)
-                    .frame(height: isLast ? nil : 0)
-                    .opacity(isLast ? 1 : 0)
-                }
-                .frame(width: isLast ? size.width / 1.5 : 55, height: isLast ? 50 : 55)
-                .foregroundStyle(.white)
-                .background {
-                    RoundedRectangle(cornerRadius: isLast ? 10 : 30, style: isLast ? .continuous : .circular)
-                        .fill(.blue.gradient)
-                }
-                .onTapGesture {
-                    if currentIndex == intros.count {
-                        withAnimation {
-                            showHomeview = true
-                        }
-                    } else {
-                        currentIndex += 1
-                    }
-                }
-                .offset(y: isLast ? -40 : -90)
-                .animation(
-                    .interactiveSpring(
-                        response: 0.9,
-                        dampingFraction: 0.8,
-                        blendDuration: 0.5
-                    ),
-                    value: isLast
-                )
-            }
-            .offset(y: showWalkThroughScreens ? 0 : size.height)
+            .compositingGroup()
+            .blur(radius: 90, opaque: true)
+            .ignoresSafeArea()
         }
     }
     
-    @ViewBuilder
-    private func ScreenView(size: CGSize, index: Int) -> some View {
-        let intro = intros[index]
-        
-        VStack(spacing: 10) {
-            KFImage(getImageUrl(intro.imageName))
+    private func CarouselCardView(_ card: Card) -> some View {
+        GeometryReader {
+            let size = $0.size
+            
+            Image(card.image)
                 .resizable()
-                .fade(duration: 0.25)
-                .scaledToFit()
-                .padding(.horizontal)
-                .frame(maxHeight: 260)
-                .animation(
-                    .interactiveSpring(
-                        response: 0.9,
-                        dampingFraction: 0.8,
-                        blendDuration: 0.5
-                    ).delay(0.1),
-                    value: currentIndex
-                )
-            
-            Text(intro.title)
-                .title(.semibold)
-                .minimumScaleFactor(0.1)
-                .scaledToFit()
-                .padding(.horizontal)
-                .animation(.interactiveSpring(response: 0.9, dampingFraction: 0.8, blendDuration: 0.5).delay(0.2), value: currentIndex)
-            
-            Text(intro.text)
-                .title2(.medium, design: .rounded)
-                .multilineTextAlignment(.leading)
-                .animation(.interactiveSpring(response: 0.9, dampingFraction: 0.8, blendDuration: 0.5).delay(0.3), value: currentIndex)
-                .padding(20)
-                .multilineTextAlignment(.center)
-            
-            Spacer().frame(height: 40)
+                .aspectRatio(contentMode: .fill)
+                .frame(width: size.width, height: size.height)
+                .clipShape(.rect(cornerRadius: 20))
+                .shadow(color: .black.opacity(0.4), radius: 10, x: 1, y: 0)
         }
-        .offset(x: -size.width * CGFloat(currentIndex - index), y: -30)
-    }
-    
-    @ViewBuilder
-    private func WelcomeView(size: CGSize, index: Int) -> some View {
-        VStack(spacing: 10) {
-            Text("We are Bisquit.Host")
-                .largeTitle(.bold, design: .rounded)
-                .animation(.interactiveSpring(response: 0.9, dampingFraction: 0.8, blendDuration: 0.5).delay(0.1), value: currentIndex)
-            
-            Text("Are you ready?")
-                .title(design: .serif)
-                .multilineTextAlignment(.center)
-                .animation(.interactiveSpring(response: 0.9, dampingFraction: 0.8, blendDuration: 0.5).delay(0.2), value: currentIndex)
+        .frame(width: 220)
+        .scrollTransition(.interactive.threshold(.centered), axis: .horizontal) { content, phase in
+            content
+                .offset(y: phase == .identity ? -10 : 0)
+                .rotationEffect(.degrees(phase.value * 5), anchor: .bottom)
         }
-        .offset(x: -size.width * CGFloat(currentIndex - index), y: -30)
-    }
-    
-    @ViewBuilder
-    private func NavBar() -> some View {
-        let isLast = currentIndex == intros.count
-        
-        HStack {
-            Button {
-                currentIndex = intros.count
-            } label: {
-                Label("Skip", systemImage: "arrowshape.bounce.forward.fill")
-                    .footnote()
-                    .foregroundStyle(.white)
-                    .opacity(isLast ? 0 : 1)
-                    .animation(.easeInOut, value: isLast)
-            }
-        }
-        .padding(.horizontal, 15)
-        .padding(.top, 10)
-        .frame(maxHeight: .infinity, alignment: .top)
-        .offset(y: showWalkThroughScreens ? 0 : -120)
     }
 }
 
+extension View {
+    func blurOpacityEffect(_ show: Bool) -> some View {
+        self
+            .blur(radius: show ? 0 : 2)
+            .opacity(show ? 1 : 0)
+            .scaleEffect(show ? 1 : 0.9)
+    }
+}
+
+@available(iOS 18, *)
 #Preview {
     Intro()
+        .environmentObject(ValueStore())
 }

@@ -30,6 +30,7 @@ final class FileTabVM: ObservableObject {
     @Published var files: [FileAttributes] = []
     @Published var showTextField = false
     @Published var downloadUrl = ""
+    @Published var path = ""
     @Published var showSafari = false
     @Published var newFolderName = ""
     @Published var searchField = ""
@@ -41,8 +42,7 @@ final class FileTabVM: ObservableObject {
         } else {
             files.filter {
                 $0.name
-                    .lowercased()
-                    .contains(searchField.lowercased())
+                    .localizedStandardContains(searchField)
             }
         }
     }
@@ -57,8 +57,8 @@ final class FileTabVM: ObservableObject {
         return String(permission)
     }
     
-    func changeChmod(_ file: String, root: String, mode: String, onSuccess: @escaping () -> ()) {
-        fileChmodAPI(id, root: root, file: file, mode: mode) { result in
+    func changeChmod(_ file: String, at root: String, mode: String, onSuccess: @escaping () -> ()) {
+        fileChmodAPI(id, file: file, at: root, mode: mode) { result in
             switch result {
             case .success:
                 onSuccess()
@@ -118,7 +118,7 @@ final class FileTabVM: ObservableObject {
     func uploadFile(
         _ urlString: String,
         name: String,
-        root: String,
+        at root: String,
         mimeType: String,
         fileUrl: URL
     ) {
@@ -145,7 +145,7 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func handleFileImport(_ urls: [URL], root: String, onSuccess: @escaping () -> Void) {
+    func handleFileImport(_ urls: [URL], at root: String, onSuccess: @escaping () -> Void) {
         for fileURL in urls {
             let fileName = fileURL.lastPathComponent
             
@@ -163,7 +163,7 @@ final class FileTabVM: ObservableObject {
                         self.uploadFile(
                             url,
                             name: fileName,
-                            root: root,
+                            at: root,
                             mimeType: mimeType,
                             fileUrl: fileURL
                         )
@@ -180,7 +180,7 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func handleImageImport(_ image: UIImage, root: String) {
+    func handleImageImport(_ image: UIImage, at root: String) {
         guard let imageData = image.heicData() else {
             print("Unable to convert image to data")
             return
@@ -206,7 +206,7 @@ final class FileTabVM: ObservableObject {
                     self.uploadFile(
                         url,
                         name: "Image\(UUID().uuidString).heic",
-                        root: root,
+                        at: root,
                         mimeType: mimeType,
                         fileUrl: fileURL
                     )
@@ -240,10 +240,10 @@ final class FileTabVM: ObservableObject {
     
     func renameFile(
         _ path: String,
-        oldName: String,
-        newName: String
+        from oldName: String,
+        to newName: String
     ) {
-        fileRenameAPI(id, root: path, oldName: oldName, newName: newName) { result in
+        fileRenameAPI(id, at: path, from: oldName, to: newName) { result in
             switch result {
             case .success:
                 self.fetchFiles(path)
@@ -259,7 +259,7 @@ final class FileTabVM: ObservableObject {
     }
     
     func duplicateFile(_ file: String, at path: String) {
-        fileDuplicateAPI(id, file: file, root: path) { result in
+        fileDuplicateAPI(id, file: file, at: path) { result in
             switch result {
             case .success:
                 self.fetchFiles(path)
@@ -275,7 +275,7 @@ final class FileTabVM: ObservableObject {
         at path: String,
         action: CompressorActions
     ) {
-        fileCompressorAPI(id, file: file, root: path, do: action) { result in
+        fileCompressorAPI(id, file: file, at: path, do: action) { result in
             switch result {
             case .success:
                 self.fetchFiles(path)
@@ -287,7 +287,7 @@ final class FileTabVM: ObservableObject {
     }
     
     func createFolder(_ file: String, at path: String) {
-        fileCreateFolderAPI(id, file: file, root: path) { result in
+        fileCreateFolderAPI(id, file: file, at: path) { result in
             switch result {
             case .success:
                 self.fetchFiles(path)
@@ -303,7 +303,7 @@ final class FileTabVM: ObservableObject {
         at path: String,
         onSuccess: @escaping (() -> Void) = {}
     ) {
-        fileDeleteAPI(id, files: [files], root: path) { result in
+        fileDeleteAPI(id, files: [files], at: path) { result in
             switch result {
             case .success:
                 self.fetchFiles(path)

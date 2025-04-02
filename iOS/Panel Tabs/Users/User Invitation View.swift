@@ -1,5 +1,4 @@
 import SwiftUI
-import Algorithms
 
 struct UserInvitationView: View {
     @Environment(UsersVM.self) private var vm
@@ -28,6 +27,7 @@ struct UserInvitationView: View {
                         .animation(.default, value: vm.allPermsTrigger)
                 }
             }
+            .transparentSection()
             
             ForEach(vm.chunkedPermissions.keys.sorted(), id: \.self) { type in
                 Section(type) {
@@ -35,6 +35,7 @@ struct UserInvitationView: View {
                         UserInvitationPermission(permission)
                     }
                 }
+                .transparentSection()
             }
             
             Section {
@@ -47,10 +48,12 @@ struct UserInvitationView: View {
                 }
                 .disabled(vm.newUserPermissions.isEmpty)
             }
+            .transparentSection()
         }
         .padding(.horizontal)
         .scrollIndicators(.never)
         .presentationDetents([.medium])
+        .transparentList()
         .task {
             vm.fetchPermissions()
         }

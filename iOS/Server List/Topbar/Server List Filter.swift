@@ -3,6 +3,10 @@ import ScrechKit
 struct ServerListFilter: View {
     @Environment(ServerListVM.self) private var vm
     
+    private var filterEnabled: Bool {
+        vm.filterBySuspended || vm.filterByNotSuspended || !vm.displayedNode.isEmpty
+    }
+    
     var body: some View {
         Menu {
             if vm.hasSuspendedServers {
@@ -26,15 +30,13 @@ struct ServerListFilter: View {
             }
         } label: {
             Image(systemName: "line.3.horizontal.decrease.circle")
-                .title(.semibold)
-                .foregroundColor(.white)
-                .shadow(color: .black.opacity(0.5), radius: 5)
-                .frame(width: 60, height: 60)
-                .symbolVariant(vm.filterBySuspended || vm.filterByNotSuspended ? .fill : .none)
+                .footnote(.bold)
+                .frame(width: 35, height: 35)
                 .background(.ultraThinMaterial, in: .circle)
+                .symbolVariant(filterEnabled ? .fill : .none)
         }
-        .hoverEffect(.lift)
-        .padding(.trailing)
+        .padding(.horizontal, -10)
+        .foregroundStyle(.foreground)
     }
 }
 

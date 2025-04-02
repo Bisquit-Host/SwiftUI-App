@@ -11,7 +11,7 @@ struct ImagePlayground: View {
     private let url: URL?
     private let root: String
     
-    init(_ url: URL? = nil, root: String) {
+    init(_ url: URL? = nil, at root: String) {
         self.url = url
         self.root = root
     }
@@ -132,7 +132,7 @@ struct ImagePlayground: View {
         .toolbar {
             Button("Upload") {
                 if let genImageURL {
-                    vm.handleFileImport([genImageURL], root: root) {
+                    vm.handleFileImport([genImageURL], at: root) {
                         dismiss()
                     }
                 }
@@ -195,6 +195,6 @@ fileprivate extension View {
 @available(iOS 18.1, macOS 15.1, *)
 #Preview {
     NavigationView {
-        ImagePlayground(root: "")
+        ImagePlayground(at: "")
     }
 }

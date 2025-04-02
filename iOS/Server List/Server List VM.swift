@@ -9,7 +9,6 @@ final class ServerListVM {
     var apiKey = Keychain.load(key: "selectedApiKey") ?? ""
     
     // MARK: - Sheets / Alerts
-    var alertError = false
     var sheetGuide = false
     var sheetKeyStorage = false
     var sheetDiscover = false
@@ -26,11 +25,10 @@ final class ServerListVM {
     
     var filteredServers: [ServerAttributes] {
         servers.filter { server in
-            let prompt = searchField.lowercased()
-            let matchesName = searchField.isEmpty || server.name.lowercased().contains(prompt)
-            let matchesDescription = searchField.isEmpty || server.description.lowercased().contains(prompt)
-            let matchesNode = displayedNode.isEmpty || server.node == displayedNode
-            let matchesSuspended = !filterBySuspended || server.isSuspended
+            let matchesName = searchField.isEmpty           || server.name.localizedStandardContains(searchField)
+            let matchesDescription = searchField.isEmpty    || server.description.localizedStandardContains(searchField)
+            let matchesNode = displayedNode.isEmpty         || server.node == displayedNode
+            let matchesSuspended = !filterBySuspended       || server.isSuspended
             let matchesNotSuspended = !filterByNotSuspended || !server.isSuspended
             
             return matchesName && matchesDescription && matchesNode && matchesSuspended && matchesNotSuspended
@@ -39,6 +37,7 @@ final class ServerListVM {
     
     var nodes: [String] {
         Array(Set(servers.map(\.node)))
+            .sorted()
     }
     
     var hasSuspendedServers: Bool {

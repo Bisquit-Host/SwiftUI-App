@@ -15,16 +15,19 @@ struct AllocationList: View {
         List {
             ForEach(vm.allocations) { allocation in
                 AllocationCard(allocation)
+                    .transparentSection()
             }
             
             Button("Assign allocation") {
                 vm.assignAllocation()
             }
             .disabled(vm.allocations.count >= server.featureLimits.allocations)
+            .transparentSection()
         }
         .environment(vm)
         .navigationTitle("Allocations")
         .toolbarTitleDisplayMode(.inline)
+        .transparentList()
         .refreshableTask {
             vm.fetchAllocations()
         }

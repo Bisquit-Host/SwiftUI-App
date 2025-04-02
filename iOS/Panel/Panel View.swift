@@ -9,7 +9,9 @@ struct PanelView: View {
     @State private var backupVM: BackupVM
     @State private var databaseVM: DatabaseVM
     @State private var scheduleVM: ScheduleVM
-    @State private var subdomainVM: SubdomainVM
+    @State private var consoleVM: ConsoleVM
+    
+    @Environment(\.dismiss) private var dismiss
     
     private let id: String
     
@@ -21,70 +23,29 @@ struct PanelView: View {
         self.databaseVM = DatabaseVM(id)
         self.scheduleVM = ScheduleVM(id)
         self.startupVM = StartupVM(id)
-        self.subdomainVM = SubdomainVM(id)
+        self.consoleVM = ConsoleVM(id)
     }
     
-    @State private var sheetSettings = false
-    @State private var isRotating = false
-    
     var body: some View {
-        TabView(selection: $store.lastTabPanel) {
-            if let server = vm.server {
-                InfoTab(server)
-                    .tab(.info)
-                    .sheet($sheetSettings) {
-                        PanelSettingsParent(server)
-                    }
-                
-                ConsoleTab(id)
-                    .tab(.console)
-                
-                FileTab(id)
-                    .environmentObject(fileVM)
-                    .tab(.files)
-                
-                DataTab(server)
-                    .environment(backupVM)
-                    .environment(databaseVM)
-                    .environment(scheduleVM)
-                    .tab(.backup)
-                
-                StartupView(server)
-                    .environment(startupVM)
-                    .tab(.startup)
-                
-                SubdomainList()
-                    .environment(subdomainVM)
-                    .tab(.subdomain)
+        @Bindable var vm = vm
+        
+        VStack {
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                panel
+            } else {
+                NavigationView {
+                    panel
+                }
             }
         }
-        .sidebarAdaptableTabView()
+        .navigationBarBackButtonHidden()
+        .ignoresSafeArea()
         .environment(vm)
         .task {
             fetchData()
         }
         .onDisappear {
             vm.disconnectWebSocket()
-        }
-        .toolbar {
-            Button {
-                sheetSettings = true
-            } label: {
-                Image(systemName: "gearshape")
-                    .foregroundStyle(.accent.gradient)
-                    .semibold()
-                    .rotate(isRotating ? 360 : 0)
-                    .animation(
-                        .linear(duration: 60)
-                        .repeatForever(autoreverses: false),
-                        value: isRotating
-                    )
-                    .onAppear {
-                        isRotating.toggle()
-                    }
-            }
-            .keyboardShortcut("S")
-            .animation(.default, value: store.lastTabPanel)
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
             vm.disconnectWebSocket()
@@ -96,6 +57,26 @@ struct PanelView: View {
                     vm.connectWebSocket(data)
                 }
             }
+        }
+        .alert(isPresented: $vm.alertNewFolder) {
+            CustomDialog(
+                title: "New Folder",
+                content: "Enter a folder name",
+                image: .init(content: "folder.badge.plus", foreground: .white),
+                button1: .init(content: "Create", foreground: .white) { folder in
+                    if !folder.isEmpty {
+                        fileVM.createFolder(folder, at: fileVM.path)
+                    }
+                    
+                    vm.alertNewFolder = false
+                },
+                button2: .init(content: "Cancel", foreground: .red) { _ in
+                    vm.alertNewFolder = false
+                },
+                addsTextField: true,
+                textFieldHint: "Me name folder"
+            )
+            .transition(.blurReplace.combined(with: .scale(0.8)))
         }
     }
     
@@ -114,15 +95,42 @@ struct PanelView: View {
             databaseVM.fetchDatabases()
             scheduleVM.fetchSchedules()
             startupVM.fetchStartupVariables()
-            
-            Task {
-                await subdomainVM.fetchSubdomains()
-            }
         }
         
         vm.updateBackups = {
             backupVM.fetchBackups()
         }
+    }
+    
+    private var panel: some View {
+        TabView(selection: $store.lastTabPanel) {
+            if let server = vm.server {
+                InfoTab(server)
+                    .tab(.info)
+                    .sheet($vm.sheetSettings) {
+                        PanelSettingsParent(server)
+                    }
+                
+                ConsoleTab(id)
+                    .tab(.console)
+                
+                FileTab(id)
+                    .tab(.files)
+                
+                DataTab(server)
+                    .tab(.backup)
+                
+                StartupView(server)
+                    .tab(.startup)
+            }
+        }
+        .panelToolbar()
+        .environment(consoleVM)
+        .environmentObject(fileVM)
+        .environment(backupVM)
+        .environment(databaseVM)
+        .environment(scheduleVM)
+        .environment(startupVM)
     }
 }
 

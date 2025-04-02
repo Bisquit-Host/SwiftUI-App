@@ -23,6 +23,7 @@ struct SheetCreateSubdomain: View {
                     .autocorrectionDisabled()
                     .textInputAutocapitalization(.never)
             }
+            .transparentSection()
             
             if let domains = vm.domains {
                 Picker("Domain", selection: $vm.selectedDomain) {
@@ -31,6 +32,7 @@ struct SheetCreateSubdomain: View {
                     }
                 }
                 .pickerStyle(.inline)
+                .transparentSection()
             }
             
             Section {
@@ -44,7 +46,9 @@ struct SheetCreateSubdomain: View {
                     Label("Create", systemImage: "plus")
                 }
             }
+            .transparentSection()
         }
+        .transparentList()
         .ornamentDismissButton()
     }
 }

@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import WidgetKit
 import PteroNet
 
@@ -14,48 +14,52 @@ struct ResourcesWidgetView: View {
     }
     
     var body: some View {
-        VStack {
-            HStack {
-                Text(entry.name)
-                    .title(.bold)
+        if entry.id.isEmpty {
+            ConfigureWidgetView("Bisquit.Host", image: Image(.defaultIcon), lastStep: "3. **Choose a server** from the list")
+        } else {
+            VStack {
+                HStack {
+                    Text(entry.name)
+                        .title(.bold)
+                    
+                    Text(entry.id)
+                        .footnote()
+                }
                 
-                Text(entry.id)
+                Text(entry.state)
+                    .caption2()
+                    .padding(.bottom, 8)
+                
+                Text(description)
+                
+                Text(entry.date, format: .dateTime.minute().second())
                     .footnote()
+                
+                Button("Update", intent: RefreshIntent())
+                
+                //            CircularGauge(
+                //                param: "CPU",
+                //                value: vm.cpuUsage,
+                //                limit: limits.cpu,
+                //                isRedacted: vm.isLoading
+                //            )
+                //
+                //            CircularGauge(
+                //                param: "RAM",
+                //                value: vm.ramUsage,
+                //                limit: limits.memory,
+                //                isRedacted: vm.isLoading
+                //            )
+                //
+                //            CircularGauge(
+                //                param: "SSD",
+                //                value: vm.diskUsage,
+                //                limit: limits.disk,
+                //                isRedacted: vm.isLoading
+                //            )
             }
-            
-            Text(entry.state)
-                .caption2()
-                .padding(.bottom, 8)
-            
-            Text(description)
-            
-            Text(entry.date, format: .dateTime.minute().second())
-                .footnote()
-            
-            Button("Update", intent: RefreshIntent())
-            
-            //            CircularGauge(
-            //                param: "CPU",
-            //                value: vm.cpuUsage,
-            //                limit: limits.cpu,
-            //                isRedacted: vm.isLoading
-            //            )
-            //
-            //            CircularGauge(
-            //                param: "RAM",
-            //                value: vm.ramUsage,
-            //                limit: limits.memory,
-            //                isRedacted: vm.isLoading
-            //            )
-            //
-            //            CircularGauge(
-            //                param: "SSD",
-            //                value: vm.diskUsage,
-            //                limit: limits.disk,
-            //                isRedacted: vm.isLoading
-            //            )
+            .containerBackground(for: .widget) {}
         }
-        .containerBackground(for: .widget) {}
     }
 }
 

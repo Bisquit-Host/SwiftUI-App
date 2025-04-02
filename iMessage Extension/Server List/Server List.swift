@@ -16,12 +16,9 @@ struct ServerList: View {
                 .padding(4)
                 .padding(.top, 60)
         }
-        .environment(vm)
-        //        .searchable(text: $searchField)
         .navigationBarBackButtonHidden()
-        //        .background {
-        //            BisquitFall()
-        //        }
+        //        .searchable(text: $searchField)
+        //        .background(BisquitFall())
         .refreshableTask {
             vm.fetchServers(store.adminServerList)
             store.updateServers.toggle()
@@ -49,16 +46,13 @@ struct ServerList: View {
             
             ToolbarItemGroup(placement: .navigationBarTrailing) {
 #warning("iMessage: Full screen button")
-                //                                Button("Test") {
-                //                                    test = true
-                //                                }
+                //Button("Test") {
+                //    test = true
+                //}
                 
-                TopbarAdminButton {
-                    vm.fetchServers(store.adminServerList)
-                }
+                TopbarAdminButton()
                 
                 SettingsButton()
-                    .environment(vm)
                     .padding(.trailing)
             }
         }
@@ -78,12 +72,7 @@ struct ServerList: View {
                 vm.fetchServers(store.adminServerList)
             }
         }
-        .alert("Unknown Error", isPresented: $vm.alertError) {
-            
-        } message: {
-            Text("The list of servers couldn't be loaded. Check your internet connection or contact support")
-        }
-        .fullScreenCover(isPresented: $test) {
+        .fullScreenCover($test) {
             ServerListGrid(vm.filteredServers)
                 .padding(4)
                 .padding(.top, 60)

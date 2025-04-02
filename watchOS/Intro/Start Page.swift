@@ -3,12 +3,12 @@ import SwiftData
 import PteroNet
 
 struct StartPage: View {
-    @Bindable private var vm = StartPageVM()
+    @Bindable var vm = StartPageVM()
     @Environment(NavState.self) private var navState
-    @EnvironmentObject private var store: ValueStore
+    @EnvironmentObject var store: ValueStore
     
-    @Environment(\.modelContext) private var modelContext
-    @Query(animation: .default) private var keys: [APIKey]
+    @Environment(\.modelContext) var modelContext
+    @Query(animation: .default) var keys: [APIKey]
     
     var body: some View {
         ScrollView {
@@ -19,7 +19,7 @@ struct StartPage: View {
             
             if vm.apiKey.count == 48 {
                 Button("Continue") {
-                    vm.fetchAccountDetails()
+                    checkApiKey()
                 }
             }
 #if DEBUG
@@ -46,29 +46,13 @@ struct StartPage: View {
         }
         .onChange(of: vm.apiKey) { _, newValue in
             if newValue.count == 48 {
-                vm.fetchAccountDetails()
+                checkApiKey()
             }
         }
         .alert("Error \(vm.errorCode)", isPresented: $vm.alertInvalid) {
             Button("Try again") {}
         } message: {
             Text(vm.errorDescription)
-        }
-        .alert("Is the following information correct?", isPresented: $vm.alertValid) {
-            Button("Yes", role: .cancel) {
-                if !keys.contains(where: { $0.key == vm.apiKey }) {
-                    modelContext.insert(APIKey("", key: vm.apiKey))
-                }
-                
-                store.authSucced()
-            }
-            
-            Button("No", role: .destructive) {
-                vm.accountName = ""
-                vm.accountEmail = ""
-            }
-        } message: {
-            Text("Name: \(vm.accountName)\nE-mail: \(vm.accountEmail)")
         }
     }
 }

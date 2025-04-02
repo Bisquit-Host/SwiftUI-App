@@ -6,7 +6,7 @@ struct FileTab: View {
     
     private let id, root: String
     
-    init(_ id: String, root: String = "") {
+    init(_ id: String, at root: String = "") {
         self.id = id
         self.root = root
     }
@@ -25,22 +25,22 @@ struct FileTab: View {
                 NavigationLink {
                     Group {
                         if mimeType.contains("directory") {
-                            FileTab(id, root: root + "/" + name)
+                            FileTab(id, at: root + "/" + name)
                             
                         } else if mimeType.contains("text") || mimeType.contains("json") {
-                            TextFile(id, path: root, name: name)
+                            TextFile(id, name: name, at: root)
                             
                         } else if mimeType.contains("image") {
-                            ImageFile(id, path: root, name: name)
+                            ImageFile(id, name: name, at: root)
                             
                         } else if mimeType.contains("video") {
-                            VideoFile(id, path: root, name: name)
+                            VideoFile(id, name: name, at: root)
                             
                         } else if mimeType.contains("audio") {
-                            AudioPlayerView(id, path: root, name: name)
+                            AudioPlayerView(id, name: name, at: root)
                             
                         } else {
-                            FileErrorView(path: root, name: name)
+                            FileErrorView(name, at: root)
                         }
                     }
                     .environmentObject(vm)

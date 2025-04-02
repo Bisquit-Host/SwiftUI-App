@@ -16,6 +16,7 @@ struct ServerList: View {
         List {
             Section {
                 TipView(Tip_ServerCardContextMenu())
+                    .tipBackground(.ultraThinMaterial)
                 
                 if vm.hasFrozenServers {
                     TipView(Tip_SuspendedServer()) { action in
@@ -23,6 +24,7 @@ struct ServerList: View {
                             vm.showBilling = true
                         }
                     }
+                    .tipBackground(.ultraThinMaterial)
                 }
             }
             .listRowBackground(Color.clear)
@@ -49,7 +51,7 @@ struct ServerList: View {
         .sheet($vm.sheetDiscover) {
             Discover()
         }
-        .task {
+        .onFirstAppear {
             if !System.lowPowerMode {
                 await vm.checkForUpdates()
             }
@@ -73,7 +75,7 @@ struct ServerList: View {
                         Label("Useful links", systemImage: "sparkles")
                     }
                     
-                    LeaderboardButton()
+                    GameCenterButtons()
                 } label: {
                     Image(systemName: "sparkles")
                 }

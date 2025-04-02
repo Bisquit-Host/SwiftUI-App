@@ -33,7 +33,7 @@ struct AppIconCard: View {
                 Image(icon.img)
                     .resizable()
                     .frame(width: 64, height: 64)
-                    .cornerRadius(10)
+                    .clipShape(.rect(cornerRadius: 10))
                     .padding(.horizontal, 4)
             }
             .frame(width: 80, height: 90)

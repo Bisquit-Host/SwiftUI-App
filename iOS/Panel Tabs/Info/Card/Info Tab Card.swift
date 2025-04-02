@@ -11,47 +11,22 @@ struct InfoTabCard: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            HStack {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(server.name)
-                        .title3(.semibold)
-                        .animation(.default, value: server.name)
-                    
-                    if !server.description.isEmpty {
-                        Text(server.description)
-                            .footnote()
-                            .lineLimit(2)
-                            .animation(.default, value: server.description)
-                    }
-                    
-                    Text("\(server.id) • \(server.node)")
-                        .caption2()
-                        .foregroundStyle(.secondary)
-                }
-                .onTapGesture {
-                    UIPasteboard.general.string = server.id
-                    SystemAlert.copied()
-                }
-                
-                Spacer()
-                
-                PowerSwitch()
-            }
+        TabView(selection: $store.lastInfoTab) {
+            InfoRelativeStats(server.limits)
+                .tag(TabInfo.relative)
             
-            TabView(selection: $store.lastInfoTab) {
-                InfoRelativeStats(server.limits)
-                    .tag(TabInfo.relative)
-                
-                InfoAbsoluteStats(server.limits)
-                    .tag(TabInfo.absolute)
-            }
-            .frame(height: 120)
-            .padding(.vertical, -20)
-            .tabViewStyle(.page)
+            InfoAbsoluteStats(server.limits)
+                .tag(TabInfo.absolute)
         }
-        .padding()
+        .frame(height: 120)
+        .padding(.vertical, -20)
+        .tabViewStyle(.page)
+        .padding([.horizontal, .bottom])
         .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
+        .overlay {
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(.gray.opacity(0.25), lineWidth: 1)
+        }
     }
 }
 

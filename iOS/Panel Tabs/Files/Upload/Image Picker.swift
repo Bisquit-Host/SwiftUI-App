@@ -19,7 +19,7 @@ struct ImagePicker: View {
         title: String,
         subtitle: String,
         icon: String = "square.and.arrow.up",
-        root: String = "",
+        at root: String = "",
         tint: Color = .blue
     ) {
         self.title = title
@@ -45,7 +45,7 @@ struct ImagePicker: View {
                 Spacer()
                 
                 Button("Upload") {
-                    vm.handleFileImport(previewUrls, root: root) {
+                    vm.handleFileImport(previewUrls, at: root) {
                         dismiss()
                     }
                 }
@@ -191,7 +191,7 @@ extension View {
                     title: title,
                     subtitle: subtitle,
                     icon: icon,
-                    root: root,
+                    at: root,
                     tint: tint
                 )
                 .padding()

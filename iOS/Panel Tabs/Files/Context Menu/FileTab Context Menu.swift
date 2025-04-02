@@ -79,7 +79,7 @@ struct FileTabContextMenu: ViewModifier {
                 }
 #warning("File Preview")
                 //            } preview: {
-                //                FilePreview(id, path: root, name: name)
+                //                FilePreview(id, name: name, at: root)
             }
             .sheet($sheetPermissions) {
                 FilePermissionsParent(file, at: root)
@@ -90,7 +90,7 @@ struct FileTabContextMenu: ViewModifier {
                     .limitInputLength($vm.newFileName, length: 255)
                 
                 Button("Rename", role: .destructive) {
-                    vm.renameFile(root, oldName: name, newName: vm.newFileName)
+                    vm.renameFile(root, from: name, to: vm.newFileName)
                     
                     vm.newFileName = ""
                 }

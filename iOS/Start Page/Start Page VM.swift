@@ -4,13 +4,10 @@ import PteroNet
 @Observable
 final class StartPageVM {
     var apiKey = ""
-    var accountName = ""
-    var accountEmail = ""
     
     var errorDescription = ""
     var errorCode = "0"
     
-    var alertValid = false
     var alertInvalid = false
     var isActive = false
     var trigger = false
@@ -19,7 +16,7 @@ final class StartPageVM {
     var sheetCloudKeys = false
     var sheetBrowsePlans = false
     
-    func fetchAccountDetails() {
+    func fetchAccountDetails(onSuccess: @escaping () -> Void) {
         Keychain.save(
             key: "selectedApiKey",
             value: apiKey
@@ -28,10 +25,8 @@ final class StartPageVM {
         accountDetailsAPI { result in
             main { [self] in
                 switch result {
-                case .success(let model):
-                    if let model = model?.attributes {
-                        validateKey(model)
-                    }
+                case .success:
+                    onSuccess()
                     
                 case .failure(let error):
                     if let error = error as? PterError {
@@ -51,15 +46,6 @@ final class StartPageVM {
     func askToDeleteKey() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.alertInvalid = true
-        }
-    }
-    
-    func validateKey(_ attributes: AccountAttributes) {
-        self.accountName = attributes.firstName + " " + attributes.lastName
-        self.accountEmail = attributes.email
-        
-        withAnimation {
-            alertValid = true
         }
     }
 }

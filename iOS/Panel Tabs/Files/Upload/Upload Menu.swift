@@ -6,10 +6,7 @@ struct UploadMenu: View {
     @Binding private var image: UIImage?
     private let root: String
     
-    init(
-        _ image: Binding<UIImage?>,
-        root: String
-    ) {
+    init( _ image: Binding<UIImage?>, at root: String) {
         _image = image
         self.root = root
     }
@@ -55,7 +52,7 @@ struct UploadMenu: View {
         .cameraPicker($showCameraPicker, image: $image)
         .libraryPicker($showImagePicker, title: "Drag & Drop", subtitle: "Tap to add an Image")
         .sheet($vm.sheetPreview) {
-            UploadPreview(urls, root: root)
+            UploadPreview(urls, at: root)
         }
         .sheet($sheetRemoteFile) {
             SheetRemoteFile(root)

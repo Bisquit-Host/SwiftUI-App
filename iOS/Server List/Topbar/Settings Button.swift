@@ -45,8 +45,11 @@ struct SettingsButton: View {
             }
         } label: {
             Image(systemName: "gear")
-                .bold()
+                .footnote(.bold)
+                .frame(width: 35, height: 35)
+                .background(.ultraThinMaterial, in: .circle)
         }
+        .foregroundStyle(.foreground)
         .sheet($sheetAccount) {
             AccountParent()
         }

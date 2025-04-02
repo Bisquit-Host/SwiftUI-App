@@ -28,52 +28,54 @@ struct ServerCardContextMenu: View {
     var body: some View {
         let id = server.id
         
-        ControlGroup {
-            MenuButton("Start", icon: "play") {
-                PteroNet.powerSignal(id, signal: .start)
-            }
-            
-            MenuButton("Stop", icon: "pause") {
-                PteroNet.powerSignal(id, signal: .stop)
-            }
-            
-            MenuButton("Restart", icon: "arrow.triangle.2.circlepath") {
-                PteroNet.powerSignal(id, signal: .restart)
-            }
-            
-            MenuButton("Kill", role: .destructive, icon: "power") {
-                confirmKill = true
-            }
-        }
-        
-        if let defaultAllocation {
-            Menu {
-                Button {
-                    UIPasteboard.general.string = defaultAllocation
-                } label: {
-                    Label("Copy", systemImage: "doc.on.doc")
+        if !server.isSuspended {
+            ControlGroup {
+                MenuButton("Start", icon: "play") {
+                    PteroNet.powerSignal(id, signal: .start)
                 }
                 
-                Button {
-                    guard
-                        let url = URL(string: "mc-stats://add-server?address=\(defaultAllocation)&name=\(server.name)"),
-                        let fallbackURL = URL(string: "https://apps.apple.com/app/id6740754881")
-                    else {
-                        return
+                MenuButton("Stop", icon: "pause") {
+                    PteroNet.powerSignal(id, signal: .stop)
+                }
+                
+                MenuButton("Restart", icon: "arrow.triangle.2.circlepath") {
+                    PteroNet.powerSignal(id, signal: .restart)
+                }
+                
+                MenuButton("Kill", role: .destructive, icon: "power") {
+                    confirmKill = true
+                }
+            }
+            
+            if let defaultAllocation {
+                Menu {
+                    Button {
+                        UIPasteboard.general.string = defaultAllocation
+                    } label: {
+                        Label("Copy", systemImage: "doc.on.doc")
                     }
                     
-                    openUrl(url) { success in
-                        if !success {
-                            openUrl(fallbackURL)
+                    Button {
+                        guard
+                            let url = URL(string: "mc-stats://add-server?address=\(defaultAllocation)&name=\(server.name)"),
+                            let fallbackURL = URL(string: "https://apps.apple.com/app/id6740754881")
+                        else {
+                            return
                         }
+                        
+                        openUrl(url) { success in
+                            if !success {
+                                openUrl(fallbackURL)
+                            }
+                        }
+                    } label: {
+                        Label("Add to MC Stats", systemImage: "arrowshape.turn.up.right")
                     }
+                    
+                    ShareLink(item: defaultAllocation)
                 } label: {
-                    Label("Add to MC Stats", systemImage: "arrowshape.turn.up.right")
+                    Text(defaultAllocation)
                 }
-                
-                ShareLink(item: defaultAllocation)
-            } label: {
-                Text(defaultAllocation)
             }
         }
         

@@ -1,7 +1,7 @@
 import ScrechKit
 
 struct ConsoleTab: View {
-    @State private var vm: ConsoleVM
+    @Environment(ConsoleVM.self) private var vm
     @Environment(PanelVM.self) private var panelVM
     @EnvironmentObject private var store: ValueStore
     
@@ -9,23 +9,34 @@ struct ConsoleTab: View {
     
     init(_ id: String) {
         self.id = id
-        self.vm = ConsoleVM(id)
     }
+    
+    private let width = UIScreen.main.bounds.width
     
     var body: some View {
         @Bindable var vm = vm
         
-        VStack {
+        VStack(spacing: 0) {
             ConsoleView()
             
             HStack {
+                PowerSwitch()
+                    .scaleEffect(0.8)
+                    .frame(width: 35, height: 35)
+                    .padding(.trailing, 10)
+                
                 TextField("Type a command...", text: $vm.command)
                     .monospaced()
-                    .textFieldStyle(.roundedBorder)
                     .autocorrectionDisabled()
+                    .textInputAutocapitalization(.never)
                     .onSubmit {
                         if !vm.command.isEmpty {
                             vm.sendCommand()
+                        }
+                    }
+                    .onChange(of: vm.command) { _, newValue in
+                        if panelVM.enableConsoleSearch {
+                            panelVM.searchRule = newValue
                         }
                     }
                 
@@ -33,10 +44,12 @@ struct ConsoleTab: View {
                     SFButton("delete.left") {
                         vm.command = ""
                     }
+                    .secondary()
                 }
             }
             .animation(.default, value: vm.command)
-            .padding(.bottom)
+            .padding()
+            .background(.ultraThinMaterial)
         }
         .toolbarBackground(.visible, for: .tabBar)
         .toolbarBackground(.visible, for: .navigationBar)
@@ -49,14 +62,13 @@ struct ConsoleTab: View {
         .inspector($vm.inspectorPresented) {
             ConsoleInspector()
         }
+        .background(BackgroundImage())
         .alert("Are you sure you want to perform the Kill action?", isPresented: $vm.alertKill) {
             Button("Kill", role: .destructive) {
                 panelVM.changePower(.kill)
             }
         }
         .overlay {
-            ConsoleOverlay(id)
-            
             if panelVM.searchedMessages.isEmpty {
                 if panelVM.searchRule.isEmpty {
                     ContentUnavailableView("Console is empty", systemImage: "apple.terminal")
@@ -65,13 +77,12 @@ struct ConsoleTab: View {
                 }
             }
         }
-        .environment(vm)
-        .environment(panelVM)
     }
 }
 
 #Preview {
     ConsoleTab("500028e3")
         .environment(PanelVM(""))
+        .environment(ConsoleVM(""))
         .environmentObject(ValueStore())
 }

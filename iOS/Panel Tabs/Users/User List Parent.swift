@@ -9,7 +9,6 @@ struct UserListParent: View {
             UserList()
         }
         .presentationDragIndicator(.hidden)
-        .presentationDetents([.medium, .large])
 #endif
     }
 }

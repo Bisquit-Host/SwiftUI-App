@@ -13,7 +13,7 @@ final class QuickLookFileVM {
     var isSensitive = false
     var metadata: [URLResourceKey: Any]? = nil
     
-    func getFileUrl(_ file: String, root: String) {
+    func getFileUrl(_ file: String, at root: String) {
         fileDownloadAPI(id, path: root + "/" + file) { result in
             switch result {
             case .success(let model):
@@ -31,7 +31,7 @@ final class QuickLookFileVM {
         let fm = FileManager.default
         
         guard let url = URL(string: urlString) else {
-            print("Invalid URL")
+            print("Invalid URL:", urlString)
             return
         }
         

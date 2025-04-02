@@ -5,7 +5,7 @@ struct UserList: View {
     
     var body: some View {
         List {
-            ForEach(vm.users, id: \.uuid) { user in
+            ForEach(vm.users) { user in
                 UserCard(user)
             }
         }

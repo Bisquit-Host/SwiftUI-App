@@ -18,7 +18,7 @@ struct UserCard: View {
 #if os(tvOS)
     private let imageSize = 64.0
 #else
-    private let imageSize = 32.0
+    private let imageSize = 40.0
 #endif
     
     var body: some View {
@@ -29,7 +29,7 @@ struct UserCard: View {
                 KFImage(imageUrl)
                     .resizable()
                     .frame(width: imageSize, height: imageSize)
-                    .clipShape(.rect(cornerRadius: 10))
+                    .clipShape(.circle)
                 
                 VStack(alignment: .leading) {
                     Text(user.username)
@@ -44,11 +44,19 @@ struct UserCard: View {
                 
                 Spacer()
                 
-                Image(systemName: "lock.fill")
-                    .title2()
-                    .foregroundStyle(user.twoFaEnabled ? .green : .red)
+                if !user.twoFaEnabled {
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .title3()
+                        .foregroundStyle(.yellow)
+                }
             }
             .foregroundStyle(.foreground)
+            .padding()
+            .background(.ultraThinMaterial.opacity(0.3), in: .rect(cornerRadius: 16))
+            .overlay {
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(.gray.opacity(0.25), lineWidth: 1)
+            }
         }
         .sheet($sheetDetails) {
             UserView(user)

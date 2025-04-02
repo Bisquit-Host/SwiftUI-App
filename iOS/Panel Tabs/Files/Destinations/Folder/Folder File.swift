@@ -12,18 +12,20 @@ struct FolderFile: View {
     }
     
     @State private var image: UIImage?
+    @State private var alertNewFolder = false
     
     var body: some View {
         List {
-            FileSearch($vm.searchField)
-            
-            NewFolder(root)
-            
-            UploadMenu($image, root: root)
-            
-            if vm.isUploading {
-                UploadProgress()
+            Section {
+                FileSearch($vm.searchField)
+                
+                UploadMenu($image, at: root)
+                
+                if vm.isUploading {
+                    UploadProgress()
+                }
             }
+            .listRowBackground(Color.gray.opacity(0.2))
             
             Section {
                 ForEach(vm.filteredFiles, id: \.name) { file in
@@ -39,17 +41,61 @@ struct FolderFile: View {
                     Text("\(vm.filteredFiles.count) files")
                 }
             }
+            .listRowBackground(Color.gray.opacity(0.2))
         }
         .environmentObject(vm)
         .frame(maxWidth: 500)
         .safariCover($vm.showSafari, url: vm.downloadUrl)
+        .task {
+            vm.path = root
+        }
         .refreshableTask {
             vm.fetchFiles(root)
         }
+        .background(BackgroundImage())
+        .scrollContentBackground(.hidden)
         .onChange(of: image) {
             if let image {
-                vm.handleImageImport(image, root: root)
+                vm.handleImageImport(image, at: root)
             }
+        }
+        .toolbar {
+            ToolbarItemGroup(placement: .topBarTrailing) {
+                if #available(iOS 18.1, *) {
+                    ImagePlaygroundButton(root)
+                }
+                
+                Button {
+                    alertNewFolder = true
+                } label: {
+                    Image(systemName: "folder.badge.plus")
+                        .footnote(.bold)
+                        .frame(width: 35, height: 35)
+                        .background(.ultraThinMaterial, in: .circle)
+                }
+                .foregroundStyle(.primary)
+                .padding(.horizontal, -10)
+            }
+        }
+        .alert(isPresented: $alertNewFolder) {
+            CustomDialog(
+                title: "New Folder",
+                content: "Enter a folder name",
+                image: .init(content: "folder.badge.plus", foreground: .white),
+                button1: .init(content: "Create", foreground: .white) { folder in
+                    if !folder.isEmpty {
+                        vm.createFolder(folder, at: root)
+                    }
+                    
+                    alertNewFolder = false
+                },
+                button2: .init(content: "Cancel", foreground: .white) { _ in
+                    alertNewFolder = false
+                },
+                addsTextField: true,
+                textFieldHint: "Me name folder"
+            )
+            .transition(.blurReplace.combined(with: .scale(0.8)))
         }
     }
     

@@ -18,16 +18,16 @@ struct FileView: View {
         HStack {
             NavigationLink {
                 if mimeType.contains("directory") {
-                    FileTab(id, root: root + "/" + name)
+                    FileTab(id, at: root + "/" + name)
                     
                 } else if mimeType.contains("text") || file.mimetype.contains("json") {
-                    TextFile(id, path: root + "/", name: name)
+                    TextFile(id, name: name, at: root + "/")
                     
                 } else if mimeType.contains("image") {
-                    ImageFile(id, path: root + "/", name: name)
+                    ImageFile(id, name: name, at: root + "/")
                     
                 } else if mimeType.contains("video") {
-                    VideoFile(id, path: root + "/", name: name)
+                    VideoFile(id, name: name, at: root + "/")
                     
                 } else {
                     ContentUnavailableView(

@@ -1,38 +1,27 @@
 import ScrechKit
-import TipKit
 
 struct ServerList: View {
     @Environment(ServerListVM.self) private var vm
     @EnvironmentObject private var store: ValueStore
-    
-    @Environment(\.openURL) private var openUrl
     
     @State private var searchField = ""
     
     var body: some View {
         @Bindable var vm = vm
         
-#warning("Present a warning when 2FA is disabled")
         ScrollView(showsIndicators: false) {
-            TipView(Tip_ServerCardContextMenu())
-            
-            if vm.hasFrozenServers {
-                TipView(Tip_SuspendedServer()) { action in
-                    if action.id == "open-billing" {
-                        vm.showBilling = true
-                    }
-                }
-            }
+            ServerListTips()
+                .frame(maxWidth: 360)
             
             ServerListGrid(vm.filteredServers)
         }
         .padding(.horizontal, 4)
-        .environment(vm)
         .navigationBarBackButtonHidden()
         .safariCover($vm.showBilling, url: "https://my.bisquit.host")
         .appStoreOverlay($vm.alertUpdate, id: "1639409934")
         .background(BisquitFall())
-        .task {
+        .background(BackgroundImage())
+        .onFirstAppear {
             if !System.lowPowerMode {
                 await vm.checkForUpdates()
             }
@@ -44,37 +33,6 @@ struct ServerList: View {
         .onChange(of: searchField) { _, search in
             withAnimation {
                 vm.searchField = search
-            }
-        }
-        .safeAreaInset(edge: .bottom) {
-            if vm.showFilter {
-                ServerListFilter()
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                    .environment(vm)
-            }
-        }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Menu {
-                    Button {
-                        vm.sheetDiscover = true
-                    } label: {
-                        Label("Useful links", systemImage: "sparkles")
-                    }
-                    
-                    LeaderboardButton()
-                } label: {
-                    Image(systemName: "sparkles")
-                }
-            }
-            
-            ToolbarItemGroup(placement: .navigationBarTrailing) {
-                TopbarAdminButton {
-                    vm.fetchServers(store.adminServerList)
-                }
-                
-                SettingsButton()
-                    .environment(vm)
             }
         }
         .overlay {
@@ -93,10 +51,32 @@ struct ServerList: View {
                 vm.fetchServers(store.adminServerList)
             }
         }
-        .alert("Unknown Error", isPresented: $vm.alertError) {
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Menu {
+                    Button {
+                        vm.sheetDiscover = true
+                    } label: {
+                        Label("Useful links", systemImage: "link")
+                    }
+                    
+                    GameCenterButtons()
+                } label: {
+                    Image(systemName: "sparkles")
+                        .footnote(.bold)
+                        .frame(width: 35, height: 35)
+                        .background(.ultraThinMaterial, in: .circle)
+                }
+                .foregroundStyle(.foreground)
+            }
             
-        } message: {
-            Text("The list of servers couldn't be loaded. Check your internet connection or contact support")
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                TopbarAdminButton()
+                
+                ServerListFilter()
+                
+                SettingsButton()
+            }
         }
     }
 }

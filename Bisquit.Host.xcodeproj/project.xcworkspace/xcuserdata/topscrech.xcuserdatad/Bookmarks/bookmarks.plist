@@ -897,7 +897,7 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>        //        Logger.webSocket.log("Received message: \(message)")
+				<string>        //Logger.webSocket.log("Received message:", message)
 </string>
 				<key>leading</key>
 				<string>    

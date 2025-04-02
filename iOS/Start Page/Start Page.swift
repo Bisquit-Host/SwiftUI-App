@@ -2,55 +2,63 @@ import ScrechKit
 import SwiftData
 
 struct StartPage: View {
-    @State private var vm = StartPageVM()
+    @State var vm = StartPageVM()
     @Environment(NavState.self) private var navState
-    @EnvironmentObject private var store: ValueStore
+    @EnvironmentObject var store: ValueStore
     
-    @Environment(\.modelContext) private var modelContext
-    @Query(animation: .default) private var keys: [APIKey]
+    @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) var modelContext
+    @Query(animation: .default) var keys: [APIKey]
     
     var body: some View {
         VStack {
-            Text("To activate the app, please enter a valid API-key")
-                .title(.semibold)
-                .lineLimit(2)
-                .minimumScaleFactor(0.5)
-                .padding(.horizontal)
-                .foregroundStyle(.white)
-                .multilineTextAlignment(.center)
-            
-            HStack {
-                TextField("API-key", text: $vm.apiKey)
-                    .secondary()
-                    .autocorrectionDisabled()
-                    .textFieldStyle(.roundedBorder)
-                    .cornerRadius(20)
-                    .multilineTextAlignment(.center)
-                    .minimumScaleFactor(0.5)
-                    .changeEffect(
-                        .shake(rate: .fast),
-                        value: vm.trigger
-                    )
+            HStack(alignment: .top) {
+                VStack(spacing: 10) {
+                    TextField("API-key", text: $vm.apiKey)
+                        .secondary()
+                        .autocorrectionDisabled()
+                        .frame(height: 40)
+                        .background(.ultraThickMaterial.opacity(0.2), in: .capsule)
+                        .multilineTextAlignment(.center)
+                        .minimumScaleFactor(0.5)
+                        .overlay {
+                            Capsule()
+                                .stroke(.ultraThinMaterial, lineWidth: 1)
+                        }
+                        .changeEffect(.shake(rate: .fast), value: vm.trigger)
+                    
+                    Button("How do I authorize?") {
+                        vm.sheetGuide = true
+                    }
+                    .footnote(.semibold)
+                    .foregroundStyle(.white.secondary)
+                }
                 
-                SFButton("doc.on.clipboard") {
+                Button {
                     if let string = UIPasteboard.general.string {
                         vm.apiKey = string
                     }
+                } label: {
+                    Image(systemName: "doc.on.clipboard")
+                        .footnote(.bold)
+                        .frame(width: 40, height: 40)
+                        .background(.ultraThinMaterial.opacity(0.2), in: .circle)
+                        .overlay {
+                            Capsule()
+                                .stroke(.ultraThinMaterial, lineWidth: 1)
+                        }
                 }
-                .foregroundStyle(.white)
+                .foregroundStyle(.foreground)
             }
-            .padding(10)
-            
-            Button("Where to find the API-key?") {
-                vm.sheetGuide = true
-            }
-            .footnote(.semibold)
-            .foregroundStyle(.white.secondary)
+            .padding(.horizontal)
         }
+        .navigationTitle("Authorization")
         .frame(maxHeight: .infinity)
         .ignoresSafeArea()
         .navigationBarBackButtonHidden()
-        .background(Color(0xe3a65e))
+        .background {
+            BackgroundImage()
+        }
         .statusBarHidden()
         .overlay(alignment: .bottom) {
             StartPageFooter(keys.count > 0)
@@ -58,7 +66,7 @@ struct StartPage: View {
         }
         .onChange(of: vm.apiKey) { _, newValue in
             if newValue.count == 48 || newValue.count == 340 {
-                vm.fetchAccountDetails()
+                checkApiKey()
             }
         }
         .task {
@@ -68,25 +76,9 @@ struct StartPage: View {
                 }
             }
         }
-        .alert("Is the following information correct?", isPresented: $vm.alertValid) {
-            Button("Yes", role: .cancel) {
-                if !keys.contains(where: { $0.key == vm.apiKey }) {
-                    modelContext.insert(APIKey("", key: vm.apiKey))
-                }
-                
-                store.authSucced()
-            }
-            
-            Button("No", role: .destructive) {
-                vm.accountName = ""
-                vm.accountEmail = ""
-            }
-        } message: {
-            Text("Name: \(vm.accountName)\nE-mail: \(vm.accountEmail)")
-        }
         .alert("Error \(vm.errorCode)", isPresented: $vm.alertInvalid) {
             Button("Try again") {
-                vm.fetchAccountDetails()
+                checkApiKey()
             }
             
             Button("Remove this key", role: .destructive) {
@@ -116,7 +108,9 @@ struct StartPage: View {
 }
 
 #Preview {
-    StartPage()
-        .environment(NavState())
-        .environmentObject(ValueStore())
+    NavigationView {
+        StartPage()
+    }
+    .environment(NavState())
+    .environmentObject(ValueStore())
 }

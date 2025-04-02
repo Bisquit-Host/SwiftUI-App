@@ -41,7 +41,8 @@ struct ServerList: View {
         .background(BisquitFall())
         .task {
             vm.fetchServers(store.adminServerList)
-            
+        }
+        .onFirstAppear {
             if !System.lowPowerMode {
                 await vm.checkForUpdates()
             }

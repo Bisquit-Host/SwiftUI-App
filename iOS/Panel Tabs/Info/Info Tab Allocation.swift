@@ -53,13 +53,34 @@ struct InfoTabAllocation: View {
                 }
             }
         } label: {
-            Text(ip)
-                .monospaced()
-                .frame(height: 25)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .foregroundStyle(.foreground)
-                .padding()
-                .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
+            HStack {
+                VStack(alignment: .leading) {
+                    Text("IP Address")
+                        .footnote()
+                        .secondary()
+                        .rounded()
+                    
+                    Text(ip)
+                        .monospaced()
+                }
+                
+                Spacer()
+                
+                let chevron = Image(systemName: "arrow.right")
+                
+                Text("All allocations \(chevron)")
+                    .caption2()
+                    .foregroundStyle(.tertiary)
+            }
+            .padding(.horizontal)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .foregroundStyle(.foreground)
+            .frame(height: 55)
+            .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
+            .overlay {
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(.gray.opacity(0.25), lineWidth: 1)
+            }
         }
         .sheet($sheetAllocations) {
             AllocationListParent(server)

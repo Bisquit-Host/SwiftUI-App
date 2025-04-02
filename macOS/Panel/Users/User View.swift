@@ -13,7 +13,7 @@ struct UserView: View {
     var body: some View {
         NavigationView {
             List {
-                UserAvatar(user.image)
+                UserImage(user.image)
                 
                 Text(user.email)
                     .lineLimit(1)
@@ -36,8 +36,7 @@ struct UserView: View {
                 }
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
-                
-#warning("Uncomment")
+#warning("macOS")
 #if !os(macOS)
                 PermissionList($user)
                     .environment(vm)

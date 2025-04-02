@@ -1,24 +1,22 @@
 import SwiftUI
 
 struct TopbarAdminButton: View {
+    @Environment(ServerListVM.self) private var vm
     @EnvironmentObject private var store: ValueStore
-    
-    private let fetchServers: () -> Void
-    
-    init(_ fetchServers: @escaping () -> Void = {}) {
-        self.fetchServers = fetchServers
-    }
     
     var body: some View {
         if store.devMode {
             Button {
                 store.adminServerList.toggle()
-                fetchServers()
+                vm.fetchServers(store.adminServerList)
             } label: {
                 Image(systemName: "person.badge.shield.checkmark")
+                    .footnote(.bold)
+                    .frame(width: 35, height: 35)
+                    .background(.ultraThinMaterial, in: .circle)
             }
-            .frame(maxWidth: 32)
             .symbolVariant(store.adminServerList ? .fill : .none)
+            .foregroundStyle(.foreground)
         }
     }
 }

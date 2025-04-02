@@ -1,27 +1,27 @@
 import ScrechKit
 
 struct AccountView: View {
-    @State private var vm = AccountVM()
-    @State private var sshVM = SSHVM()
-    @EnvironmentObject private var store: ValueStore
+    @Environment(AccountVM.self) private var vm
+    
+    @Environment(\.dismiss) private var dismiss
     
     @State private var sheetDisable2Fa = false
     @State private var sheetEnable2Fa = false
+    @State private var selectedTab = "Account"
     
     var body: some View {
         List {
             Section {
                 if let account = vm.account {
-                    param("First name", value: account.firstName)
+                    let name = "\(account.firstName) \(account.lastName)"
                     
-                    param("Last name", value: account.lastName)
-                    
+                    param("Name", value: name)
                     param("E-mail", value: account.email)
                 }
             }
-            .listRowBackground(store.transparentList ? .clear : Color.list)
+            .transparentSection()
             
-            AccountSettings()
+            CredentialsButton()
             
             Section("2FA") {
                 if vm.twoFaEnabled {
@@ -67,30 +67,30 @@ struct AccountView: View {
                     //                    }
                 }
             }
-            .listRowBackground(store.transparentList ? .clear : Color.list)
-            
-            Section("SSH Keys") {
-                SSHList()
-                    .environment(sshVM)
-            }
-            .listRowBackground(store.transparentList ? .clear : Color.list)
+            .transparentSection()
         }
+        .transparentList()
+        .toolbarBackground(.visible, for: .tabBar)
         .navigationTitle("Account")
-        .toolbarTitleDisplayMode(.inline)
-        .scrollContentBackground(store.transparentSheet ? .hidden : .visible)
-        .presentationBackground(store.transparentSheet ? .ultraThinMaterial : .regular)
         .refreshableTask {
             vm.fetch()
             vm.twoFaDetails()
-            sshVM.fetchKeys()
-        }
-        .sheet($sheetDisable2Fa) {
-            Disable2FaView()
         }
         .sheet($sheetEnable2Fa) {
             Enable2FAView()
         }
-        .environment(vm)
+        .sheet($sheetDisable2Fa) {
+            Disable2FaView()
+        }
+        .background(BackgroundImage())
+        .scrollContentBackground(.hidden)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                DismissButton {
+                    dismiss()
+                }
+            }
+        }
     }
     
     private func param(_ param: LocalizedStringKey, value: String) -> some View {
@@ -107,4 +107,5 @@ struct AccountView: View {
 
 #Preview {
     AccountView()
+        .environment(AccountVM())
 }

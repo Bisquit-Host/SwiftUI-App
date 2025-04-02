@@ -5,7 +5,7 @@ struct FileTab: View {
     
     private let id, root: String
     
-    init(_ id: String, root: String = "") {
+    init(_ id: String, at root: String = "") {
         self.id = id
         self.root = root
     }
@@ -13,6 +13,7 @@ struct FileTab: View {
     @State private var image: UIImage?
     @State private var selectedItem: String?
     @State private var selectedIndex: Int?
+    @State private var trigger = false
     
     private var fileCount: Int {
         vm.filteredFiles.count
@@ -20,19 +21,16 @@ struct FileTab: View {
     
     var body: some View {
         List {
-            FileSearch($vm.searchField)
-            
-            NewFolder(root)
-            
-            UploadMenu($image, root: root)
-            
-            if #available(iOS 18.1, *) {
-                ImagePlaygroundButton(root)
+            Section {
+                FileSearch($vm.searchField)
+                
+                UploadMenu($image, at: root)
+                
+                if vm.isUploading {
+                    UploadProgress()
+                }
             }
-            
-            if vm.isUploading {
-                UploadProgress()
-            }
+            .listRowBackground(Color.gray.opacity(0.2))
             
             Section {
                 ForEach(vm.filteredFiles) { file in
@@ -50,17 +48,30 @@ struct FileTab: View {
                 }
                 .numericTransition()
             }
+            .listRowBackground(Color.gray.opacity(0.2))
         }
         .animation(.easeOut, value: vm.filteredFiles)
+        .toolbarBackground(.visible, for: .tabBar)
         .environmentObject(vm)
         .frame(maxWidth: 500)
         .safariCover($vm.showSafari, url: vm.downloadUrl)
+        .sensoryFeedback(.success, trigger: trigger)
+        .background(BackgroundImage())
+        .scrollContentBackground(.hidden)
+        .task {
+            vm.path = root
+        }
         .refreshableTask {
             vm.fetchFiles(root)
         }
+        .onChange(of: vm.isUploading) { _, newValue in
+            if !newValue {
+                trigger.toggle()
+            }
+        }
         .onChange(of: image) {
             if let image {
-                vm.handleImageImport(image, root: root)
+                vm.handleImageImport(image, at: root)
             }
         }
     }

@@ -1,24 +1,22 @@
 import ScrechKit
-import SafariCover
 
-struct DiscoverCard: View {
-    private let link: DiscoverItem
+struct DiscoverCard<Label: View>: View {
+    private let url: String
+    private let label: () -> Label
     
-    init(_ link: DiscoverItem) {
-        self.link = link
+    init(_ url: String, label: @escaping () -> Label) {
+        self.url = url
+        self.label = label
     }
     
     @State private var showSafari = false
     
     var body: some View {
-        ListButton(
-            link.name,
-            icon: link.icon,
-            actionIcon: "link",
-            color: link.color
-        ) {
+        Button {
             showSafari = true
+        } label: {
+            label()
         }
-        .safariCover($showSafari, url: link.url)
+        .safariCover($showSafari, url: url)
     }
 }
