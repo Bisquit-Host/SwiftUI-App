@@ -2337,8 +2337,8 @@
 		F3000E06295A341000ABD30A /* tvOS */ = {
 			isa = PBXGroup;
 			children = (
-				F376D0552A02478600B7377A /* tvOS.entitlements */,
 				F3CCB1D62CAE8C80000F8207 /* tvOS.plist */,
+				F376D0552A02478600B7377A /* tvOS.entitlements */,
 				F3000E0B295A341100ABD30A /* Assets.xcassets */,
 				F3796563295C51C80074CA3D /* Progress Bar.swift */,
 				F3796565295C51FF0074CA3D /* Gauge TV.swift */,
