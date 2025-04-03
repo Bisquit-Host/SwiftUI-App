@@ -50,16 +50,7 @@ struct InfoTabButtons: View {
                             
                             HStack {
                                 ForEach(userVM.users.prefix(7)) { user in
-                                    if let url = URL(string: user.image) {
-                                        KFImage(url)
-                                            .resizable()
-                                            .frame(width: 32, height: 32)
-                                            .clipShape(.circle)
-                                            .overlay {
-                                                Circle()
-                                                    .stroke(.gray.opacity(0.25), lineWidth: 1)
-                                            }
-                                    }
+                                    InfoTabButtonsUserImg(user.image)
                                 }
                             }
                         }
@@ -185,7 +176,7 @@ struct InfoTabButtons: View {
         .task {
             settingsVM.serverName = server.name
             settingsVM.serverDescription = server.description
-            print("Godia")
+            
             if !System.lowPowerMode {
                 logVM.fetchLogs(true)
                 userVM.fetchUsers(true)
