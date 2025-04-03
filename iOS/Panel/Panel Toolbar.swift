@@ -50,7 +50,6 @@ struct PanelToolbarModifier: ViewModifier {
                     
                     if store.lastTabPanel == .info {
                         PowerSwitchToolbar()
-                            .padding(.trailing, -10)
                         
                         if let server = vm.server {
 #if canImport(ActivityKit)
