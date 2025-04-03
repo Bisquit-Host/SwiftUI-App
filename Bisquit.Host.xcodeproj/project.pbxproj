@@ -317,7 +317,6 @@
 		F323D8D32A2D668D002EDC62 /* File Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F323D8D22A2D668D002EDC62 /* File Tab.swift */; };
 		F323D8D52A2D67A3002EDC62 /* Upload File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F393C7BA2A18437300DE33F9 /* Upload File.swift */; };
 		F3255E172C9049AF008E04DE /* Settings Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3255E162C9049AF008E04DE /* Settings Button.swift */; };
-		F3255E182C9049DC008E04DE /* Settings Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264362A66A9B9005C3777 /* Settings Parent.swift */; };
 		F3255E1A2C904A03008E04DE /* Settings View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3255E192C904A03008E04DE /* Settings View.swift */; };
 		F3255E1C2C904A48008E04DE /* Account View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264392A66AB92005C3777 /* Account View.swift */; };
 		F3255E1D2C904A56008E04DE /* Account VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264402A66ABBE005C3777 /* Account VM.swift */; };
@@ -1212,8 +1211,6 @@
 		F3D22C092A26564C00721113 /* Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304498929E990E9006DC0C7 /* Cloud Keys.swift */; };
 		F3D264342A66A926005C3777 /* Settings Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264332A66A926005C3777 /* Settings Button.swift */; };
 		F3D264352A66A926005C3777 /* Settings Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264332A66A926005C3777 /* Settings Button.swift */; };
-		F3D264372A66A9B9005C3777 /* Settings Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264362A66A9B9005C3777 /* Settings Parent.swift */; };
-		F3D264382A66A9B9005C3777 /* Settings Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264362A66A9B9005C3777 /* Settings Parent.swift */; };
 		F3D2643A2A66AB92005C3777 /* Account View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264392A66AB92005C3777 /* Account View.swift */; };
 		F3D2643B2A66AB92005C3777 /* Account View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264392A66AB92005C3777 /* Account View.swift */; };
 		F3D264412A66ABBE005C3777 /* Account VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264402A66ABBE005C3777 /* Account VM.swift */; };
@@ -1292,7 +1289,6 @@
 		F3D295872AF39FB900ED43A0 /* Server Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* Server Card VM.swift */; };
 		F3D295892AF39FC700ED43A0 /* Upload File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F393C7BA2A18437300DE33F9 /* Upload File.swift */; };
 		F3D2958A2AF39FD000ED43A0 /* User Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123592A6689FA008E3E20 /* User Email.swift */; };
-		F3D2958B2AF39FD500ED43A0 /* Settings Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264362A66A9B9005C3777 /* Settings Parent.swift */; };
 		F3D295922AF3A02300ED43A0 /* Server Card Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3878EDE2A1C228900AD8657 /* Server Card Stats.swift */; };
 		F3D295932AF3A02600ED43A0 /* Gauge Regular.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266D029D99570005FD103 /* Gauge Regular.swift */; };
 		F3D295942AF3A03700ED43A0 /* Contact Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3880A252A92A15E0052A978 /* Contact Manager.swift */; };
@@ -2086,7 +2082,6 @@
 		F3CE5C4C2D5395300094BD7B /* Subdomain Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subdomain Card.swift"; sourceTree = "<group>"; };
 		F3D037002CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImagePlayground Toolbar Button.swift"; sourceTree = "<group>"; };
 		F3D264332A66A926005C3777 /* Settings Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings Button.swift"; sourceTree = "<group>"; };
-		F3D264362A66A9B9005C3777 /* Settings Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings Parent.swift"; sourceTree = "<group>"; };
 		F3D264392A66AB92005C3777 /* Account View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account View.swift"; sourceTree = "<group>"; };
 		F3D264402A66ABBE005C3777 /* Account VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account VM.swift"; sourceTree = "<group>"; };
 		F3D264432A66B3A6005C3777 /* QR Code View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QR Code View.swift"; sourceTree = "<group>"; };
@@ -3319,7 +3314,6 @@
 		F3924EDD29A2308C00C4CC77 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				F3D264362A66A9B9005C3777 /* Settings Parent.swift */,
 				F31BA575295900E30006D126 /* Settings View.swift */,
 				F3924EDE29A2333F00C4CC77 /* Settings VM.swift */,
 				F385824529D6268200BEEE1D /* Currency Picker.swift */,
@@ -4768,7 +4762,6 @@
 				F303214B2B3FEA45002A73B8 /* Panel Settings View.swift in Sources */,
 				F31BA5B2295902D50006D126 /* Text File.swift in Sources */,
 				F3553FB32B40653000EF0FD2 /* Panel Settings Parent.swift in Sources */,
-				F3D264372A66A9B9005C3777 /* Settings Parent.swift in Sources */,
 				F31BA57D295901200006D126 /* Start Page VM.swift in Sources */,
 				F39E0A952C1BA06C00C4E906 /* Discover Card.swift in Sources */,
 				F306B9ED29BBDA770008C2D4 /* Server List Footer.swift in Sources */,
@@ -5193,7 +5186,6 @@
 				F36D53212A05B836007324C6 /* Websocket Delegate.swift in Sources */,
 				F3116F272A33E142001F067C /* Folder File.swift in Sources */,
 				F389BB5C2A05B53800911EBF /* Suspended Server Card.swift in Sources */,
-				F3D264382A66A9B9005C3777 /* Settings Parent.swift in Sources */,
 				F353D5052D98427500EC9F3A /* Panel Toolbar.swift in Sources */,
 				F389BB742A05B61F00911EBF /* Credentials VM.swift in Sources */,
 				F333B3BD2B80CF760005B84D /* Preview Property.swift in Sources */,
@@ -5371,7 +5363,6 @@
 				F3EE6D772D9E8E2000F0A633 /* Bakground Task.swift in Sources */,
 				F3202D1E2D562B980030B3CC /* Browser Card VDS.swift in Sources */,
 				F3D2953D2AF39D3A00ED43A0 /* Nav Destinations.swift in Sources */,
-				F3D2958B2AF39FD500ED43A0 /* Settings Parent.swift in Sources */,
 				F374F7C12D54922F006771DD /* Sheet Create Subdomain.swift in Sources */,
 				F3D295392AF39D1B00ED43A0 /* Value Store.swift in Sources */,
 				F32F2CDD2D8F7047007CF4DE /* Discover View.swift in Sources */,
@@ -5651,7 +5642,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3A7CF122C8C4E3E00413400 /* Discover Card.swift in Sources */,
-				F3255E182C9049DC008E04DE /* Settings Parent.swift in Sources */,
 				F3A7CF652C8CA5FE00413400 /* API Key.swift in Sources */,
 				F3255E1C2C904A48008E04DE /* Account View.swift in Sources */,
 				F3FF3E8E2D93576B00EDFBC6 /* Update Checker.swift in Sources */,
