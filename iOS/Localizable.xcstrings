@@ -1815,17 +1815,6 @@
         }
       }
     },
-    "Create a new key" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Создать новый ключ"
-          }
-        }
-      }
-    },
     "Create and copy" : {
       "localizations" : {
         "ru" : {
@@ -1906,17 +1895,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Создать Расписание"
-          }
-        }
-      }
-    },
-    "Create Subdomain" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Создать Поддомен"
           }
         }
       }
@@ -2101,16 +2079,6 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "База даних"
-          }
-        }
-      }
-    },
-    "Day" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "День"
           }
         }
       }
@@ -2694,17 +2662,6 @@
     "Enter a folder name" : {
 
     },
-    "Enter manually" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ввести вручную"
-          }
-        }
-      }
-    },
     "Enter or drag-and-drop your public SSH-key" : {
       "localizations" : {
         "ru" : {
@@ -3201,35 +3158,6 @@
         }
       }
     },
-    "Intro.Text1" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "All plans feature the powerful AMD Ryzen 9 5950X processor running at 4.9GHz, as well as high-speed NVMe SSD drives for optimal performance"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Alle abonnementen zijn voorzien van de krachtige AMD Ryzen 9 5950X-processor die draait op 4,9 GHz, evenals snelle NVMe SSD voor optimale prestaties"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Все тарифы оснащены мощным процессором AMD Ryzen 9 5950X, работающим на частоте 4,9 ГГц, а также высокоскоростными NVMe SSD для оптимальной производительности"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Все тарифы оснащены мощным процессором AMD Ryzen 9 5950X, работающим на частоте 4,9 ГГц, а также высокоскоростными NVMe SSD для оптимальной производительности"
-          }
-        }
-      }
-    },
     "Invite user" : {
       "localizations" : {
         "nl" : {
@@ -3548,17 +3476,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Лимит"
-          }
-        }
-      }
-    },
-    "Link" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ссылка"
           }
         }
       }
@@ -4034,42 +3951,8 @@
         }
       }
     },
-    "No" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nee"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Нет"
-          }
-        }
-      }
-    },
     "No accounts found" : {
 
-    },
-    "No API-keys found" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Geen API-sleutels gevonden"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "API-ключи не найдены"
-          }
-        }
-      }
     },
     "No metadata available" : {
       "localizations" : {
@@ -4273,17 +4156,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Изменен пароль базы данных **`%@`**"
-          }
-        }
-      }
-    },
-    "Paste" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Вставить"
           }
         }
       }
@@ -5153,52 +5025,12 @@
         }
       }
     },
-    "Sign in" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Inloggen"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Войти"
-          }
-        }
-      }
-    },
     "Size: %@" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Размер: %@"
-          }
-        }
-      }
-    },
-    "Skip" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Overslaan"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Пропустить"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Пропустить"
           }
         }
       }
@@ -5244,23 +5076,6 @@
     },
     "SSH" : {
 
-    },
-    "SSH Keys" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "SSH Sleutels"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "SSH-ключи"
-          }
-        }
-      }
     },
     "SSH-keys" : {
 
@@ -5536,23 +5351,6 @@
         }
       }
     },
-    "System status" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Systeemstatus"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Состояние системы"
-          }
-        }
-      }
-    },
     "Take Photo" : {
       "localizations" : {
         "ru" : {
@@ -5607,23 +5405,6 @@
     },
     "TestFlight" : {
       "shouldTranslate" : false
-    },
-    "The list of servers couldn't be loaded. Check your internet connection or contact support" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "De lijst met servers kon niet worden geladen. Controleer uw internetverbinding of neem contact op met de ondersteuning"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Не удалось загрузить список серверов. Проверьте подключение к интернету или обратитесь в службу поддержки"
-          }
-        }
-      }
     },
     "This is an example widget" : {
       "localizations" : {
@@ -5795,23 +5576,6 @@
         }
       }
     },
-    "Unknown Error" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Onbekende Fout"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Неизвестная ошибка"
-          }
-        }
-      }
-    },
     "Unknown key" : {
       "localizations" : {
         "ru" : {
@@ -5889,23 +5653,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Доступно обновление"
-          }
-        }
-      }
-    },
-    "Update credentials" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Inloggegevens bijwerken"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Сменить данные входа"
           }
         }
       }
@@ -6248,16 +5995,6 @@
         }
       }
     },
-    "Week" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Неделя"
-          }
-        }
-      }
-    },
     "Welcome to" : {
 
     },
@@ -6289,29 +6026,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Год"
-          }
-        }
-      }
-    },
-    "Yes" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ja"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Да"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Да"
           }
         }
       }
