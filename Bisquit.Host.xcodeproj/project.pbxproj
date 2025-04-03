@@ -967,6 +967,12 @@
 		F3A5632B2D9EF21B009AA363 /* Log Meta Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A563262D9EF21B009AA363 /* Log Meta Card.swift */; };
 		F3A5632C2D9EF21B009AA363 /* Log Meta Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A563262D9EF21B009AA363 /* Log Meta Card.swift */; };
 		F3A5632D2D9EF21B009AA363 /* Log Meta Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A563262D9EF21B009AA363 /* Log Meta Card.swift */; };
+		F3A5632F2D9EF323009AA363 /* Log Toolbar Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A5632E2D9EF323009AA363 /* Log Toolbar Actor.swift */; };
+		F3A563302D9EF323009AA363 /* Log Toolbar Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A5632E2D9EF323009AA363 /* Log Toolbar Actor.swift */; };
+		F3A563322D9EF323009AA363 /* Log Toolbar Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A5632E2D9EF323009AA363 /* Log Toolbar Actor.swift */; };
+		F3A563332D9EF323009AA363 /* Log Toolbar Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A5632E2D9EF323009AA363 /* Log Toolbar Actor.swift */; };
+		F3A563342D9EF323009AA363 /* Log Toolbar Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A5632E2D9EF323009AA363 /* Log Toolbar Actor.swift */; };
+		F3A563352D9EF323009AA363 /* Log Toolbar Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A5632E2D9EF323009AA363 /* Log Toolbar Actor.swift */; };
 		F3A7BCC3296B2ABB00E080C1 /* Start Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7BCC2296B2ABB00E080C1 /* Start Page.swift */; };
 		F3A7BCD1296B44FF00E080C1 /* Nav Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BAEC8C2959B3FE00111375 /* Nav Extension.swift */; };
 		F3A7CEC82C8B685500413400 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3A7CEC72C8B685500413400 /* Messages.framework */; };
@@ -2010,6 +2016,7 @@
 		F3A5631F2D9EEECB009AA363 /* Allow Drag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allow Drag.swift"; sourceTree = "<group>"; };
 		F3A563232D9EF114009AA363 /* Info Tab Buttons User Img.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab Buttons User Img.swift"; sourceTree = "<group>"; };
 		F3A563262D9EF21B009AA363 /* Log Meta Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log Meta Card.swift"; sourceTree = "<group>"; };
+		F3A5632E2D9EF323009AA363 /* Log Toolbar Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log Toolbar Actor.swift"; sourceTree = "<group>"; };
 		F3A7BCC2296B2ABB00E080C1 /* Start Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page.swift"; sourceTree = "<group>"; };
 		F3A7CEC32C8B685500413400 /* iMessage.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iMessage.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A7CEC72C8B685500413400 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = Library/Frameworks/Messages.framework; sourceTree = DEVELOPER_DIR; };
@@ -3612,6 +3619,7 @@
 				F36797772A3A55E1009F2788 /* Log List Parent.swift */,
 				F3DE1B972A556CCE007A1624 /* Log List.swift */,
 				F367977D2A3A5AB6009F2788 /* Log VM.swift */,
+				F3A5632E2D9EF323009AA363 /* Log Toolbar Actor.swift */,
 				F367977A2A3A55F4009F2788 /* Log Card.swift */,
 				F3ADA61C2D9C16AC00F2DAA6 /* Loc Logs.txt */,
 				F30207D02D8B039100C26008 /* Meta */,
@@ -4527,6 +4535,7 @@
 				F3464D262A86397F00188B0C /* Power Signal App Enum.swift in Sources */,
 				F3EB09DF2A297F090073916A /* Des Image.swift in Sources */,
 				F39E683D2D2D6A380002BA96 /* Audio Player View.swift in Sources */,
+				F3A5632F2D9EF323009AA363 /* Log Toolbar Actor.swift in Sources */,
 				F3C9D8532B3060D100265492 /* Video Player VM.swift in Sources */,
 				F30088F52B3B55C10051476C /* User Invitation View.swift in Sources */,
 				F37266CD29D96C98005FD103 /* Websocket Delegate.swift in Sources */,
@@ -4789,6 +4798,7 @@
 				F3D902DF29DC445A004E76C9 /* Cache Limit.swift in Sources */,
 				F330013B2A4CEC320063FE0F /* Apikey List.swift in Sources */,
 				F300889E2B3A17DD0051476C /* Backup VM.swift in Sources */,
+				F3A563332D9EF323009AA363 /* Log Toolbar Actor.swift in Sources */,
 				F3EB09ED2A2987F00073916A /* QuickLook File.swift in Sources */,
 				F385824829D626FE00BEEE1D /* Biometry Button.swift in Sources */,
 				F3B1196D29A13CA6003BB68C /* Value Store.swift in Sources */,
@@ -4924,6 +4934,7 @@
 				F30C130A2A545E6F00A7EFF0 /* Linking VM.swift in Sources */,
 				F3EB09D42A29547E0073916A /* File View.swift in Sources */,
 				F3FFB7492A57FF0B00220FA5 /* Log Card.swift in Sources */,
+				F3A563322D9EF323009AA363 /* Log Toolbar Actor.swift in Sources */,
 				F3EB09CF2A2953200073916A /* Des Image.swift in Sources */,
 				F34C055A29F11E010031ABE1 /* Server Card VM.swift in Sources */,
 				F35FEB112B09F4D4004DA05D /* Network VM.swift in Sources */,
@@ -5129,6 +5140,7 @@
 				F3A563252D9EF114009AA363 /* Info Tab Buttons User Img.swift in Sources */,
 				F32E88D22AF8494100959D49 /* Server List Filter.swift in Sources */,
 				F36D53342A05B8AF007324C6 /* File View.swift in Sources */,
+				F3A563352D9EF323009AA363 /* Log Toolbar Actor.swift in Sources */,
 				F3E2BEE02C1C6BA800B7A6D4 /* Cache List VM.swift in Sources */,
 				F3287A762B10A0E4001AFE54 /* Live Activity.swift in Sources */,
 				F373CD7B2D88D389008B64BE /* Start Page Helper.swift in Sources */,
@@ -5335,6 +5347,7 @@
 				F3D2957A2AF39F3700ED43A0 /* User View.swift in Sources */,
 				F3D7F8552C8F258B00368ECE /* Enable 2FA View.swift in Sources */,
 				F3D295E72AF3A3A900ED43A0 /* Create Backup Button.swift in Sources */,
+				F3A563302D9EF323009AA363 /* Log Toolbar Actor.swift in Sources */,
 				F3D2953E2AF39D5E00ED43A0 /* Bisquit.Host App.swift in Sources */,
 				F3D295562AF39E1A00ED43A0 /* Tip Cloud Keys.swift in Sources */,
 				F3D2954F2AF39DE600ED43A0 /* Browser VM.swift in Sources */,
@@ -5704,6 +5717,7 @@
 				F3202C922D5590FE0030B3CC /* Map View.swift in Sources */,
 				F3AB4A922CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
 				F3FF3E962D9411B400EDFBC6 /* Intro Parent.swift in Sources */,
+				F3A563342D9EF323009AA363 /* Log Toolbar Actor.swift in Sources */,
 				F35081AF2AF30E2B00835CC0 /* Tip Cloud Keys.swift in Sources */,
 				F37B907A2BFEA00300597624 /* Ornament Info Settings.swift in Sources */,
 				F32716DF2CF62CC300F2DC31 /* Section Header.swift in Sources */,
