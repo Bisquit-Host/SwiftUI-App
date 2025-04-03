@@ -432,7 +432,7 @@
 		F335CA0C2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */; };
 		F335CA1B2C63E9A7006C71C6 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = F335CA1A2C63E9A7006C71C6 /* DeviceKit */; };
 		F336232F2A22021E006A6271 /* Value Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* Value Store.swift */; };
-		F33623302A220277006A6271 /* Panel Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3029C06E9700B08696 /* Panel Model.swift */; };
+		F33623302A220277006A6271 /* Panel Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3029C06E9700B08696 /* Panel Tab.swift */; };
 		F33623312A22048C006A6271 /* Value Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* Value Store.swift */; };
 		F337B3A829BC6B5400CC1195 /* Server List Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B3A729BC6B5400CC1195 /* Server List Grid.swift */; };
 		F337B4062A89FAC600DD79AA /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B4052A89FAC600DD79AA /* Entry.swift */; };
@@ -522,7 +522,7 @@
 		F348C6EB2A544893002D5BD6 /* App Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5672959006F0006D126 /* App Container.swift */; };
 		F3496DC529E0091A0089FC28 /* Section Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3496DC429E0091A0089FC28 /* Section Header.swift */; };
 		F3496DC929E00CE70089FC28 /* Create Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3496DC829E00CE70089FC28 /* Create Button.swift */; };
-		F3499EF22A26DCA0006101B7 /* Panel Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3029C06E9700B08696 /* Panel Model.swift */; };
+		F3499EF22A26DCA0006101B7 /* Panel Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3029C06E9700B08696 /* Panel Tab.swift */; };
 		F3499EF42A26DE92006101B7 /* Guide Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3499EF32A26DE92006101B7 /* Guide Model.swift */; };
 		F3499EF52A27553D006101B7 /* Panel VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3429C0C84C00B08696 /* Panel VM.swift */; };
 		F3499EF62A275546006101B7 /* Websocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BF97A929BFC7E9007B9C9C /* Websocket.swift */; };
@@ -806,7 +806,7 @@
 		F386373E2A8641120069F074 /* System Small Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F386373D2A8641120069F074 /* System Small Widget.swift */; };
 		F38637402A8641120069F074 /* Power Intent Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = F386373F2A8641120069F074 /* Power Intent Config.swift */; };
 		F38637422A8641150069F074 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F38637412A8641150069F074 /* Assets.xcassets */; };
-		F38694182A4B3AAF002DEF90 /* Panel Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3029C06E9700B08696 /* Panel Model.swift */; };
+		F38694182A4B3AAF002DEF90 /* Panel Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3029C06E9700B08696 /* Panel Tab.swift */; };
 		F386941A2A4B3AE1002DEF90 /* Info Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38694192A4B3AE1002DEF90 /* Info Tab.swift */; };
 		F3878ECD2A1BCE5000AD8657 /* Dev Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3878ECC2A1BCE5000AD8657 /* Dev Settings.swift */; };
 		F3878ECE2A1BCE5000AD8657 /* Dev Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3878ECC2A1BCE5000AD8657 /* Dev Settings.swift */; };
@@ -821,7 +821,7 @@
 		F38928302A445E9700561CDF /* Server List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F389282F2A445E9700561CDF /* Server List.swift */; };
 		F38928322A445EA900561CDF /* Server Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38928312A445EA900561CDF /* Server Card.swift */; };
 		F38928382A4460CC00561CDF /* Server Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* Server Card VM.swift */; };
-		F389BB542A05B37500911EBF /* Panel Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3029C06E9700B08696 /* Panel Model.swift */; };
+		F389BB542A05B37500911EBF /* Panel Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3029C06E9700B08696 /* Panel Tab.swift */; };
 		F389BB572A05B47000911EBF /* SafariCover in Frameworks */ = {isa = PBXBuildFile; productRef = F389BB562A05B47000911EBF /* SafariCover */; };
 		F389BB582A05B4F600911EBF /* Server List Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B3A729BC6B5400CC1195 /* Server List Grid.swift */; };
 		F389BB5B2A05B53200911EBF /* Server Card Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F394A28329E0A9810012B7D1 /* Server Card Parent.swift */; };
@@ -1277,7 +1277,7 @@
 		F3D2955B2AF39E4300ED43A0 /* Server List Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */; };
 		F3D2955C2AF39E5D00ED43A0 /* File Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5AB295902B00006D126 /* File Tab.swift */; };
 		F3D2955D2AF39E6800ED43A0 /* Map View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A72A177DA400530615 /* Map View.swift */; };
-		F3D2955E2AF39E6E00ED43A0 /* Panel Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3029C06E9700B08696 /* Panel Model.swift */; };
+		F3D2955E2AF39E6E00ED43A0 /* Panel Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3029C06E9700B08696 /* Panel Tab.swift */; };
 		F3D2955F2AF39E7700ED43A0 /* File Tab VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D558AB2A3360ED00608447 /* File Tab VM.swift */; };
 		F3D295602AF39E8400ED43A0 /* File Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA61562A1F928500A65AE1 /* File Search.swift */; };
 		F3D295622AF39E8D00ED43A0 /* Upload Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA61532A1F8DB500A65AE1 /* Upload Menu.swift */; };
@@ -1424,7 +1424,7 @@
 		F3E08EB62A2CE56200116C1C /* App Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E08EB52A2CE56200116C1C /* App Settings.swift */; };
 		F3E08EBF2A2CE87800116C1C /* Start Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E08EBE2A2CE87800116C1C /* Start Page.swift */; };
 		F3E08EC22A2CE89400116C1C /* Value Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* Value Store.swift */; };
-		F3E08EC32A2CE92A00116C1C /* Panel Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3029C06E9700B08696 /* Panel Model.swift */; };
+		F3E08EC32A2CE92A00116C1C /* Panel Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3029C06E9700B08696 /* Panel Tab.swift */; };
 		F3E08EC62A2CEA6400116C1C /* Start Page VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA57B2959011B0006D126 /* Start Page VM.swift */; };
 		F3E08ECE2A2CEDD800116C1C /* Panel View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E08ECD2A2CEDD800116C1C /* Panel View.swift */; };
 		F3E1B2D02C903C9300AED3F1 /* Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF012C8BBB4700413400 /* Server Card Context Menu.swift */; };
@@ -1484,7 +1484,7 @@
 		F3EB09E52A2982680073916A /* Video File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39872152A1B73830022B00E /* Video File.swift */; };
 		F3EB09ED2A2987F00073916A /* QuickLook File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EB09EC2A2987F00073916A /* QuickLook File.swift */; };
 		F3EB09EE2A2987F00073916A /* QuickLook File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EB09EC2A2987F00073916A /* QuickLook File.swift */; };
-		F3EDEE3129C06E9700B08696 /* Panel Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3029C06E9700B08696 /* Panel Model.swift */; };
+		F3EDEE3129C06E9700B08696 /* Panel Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3029C06E9700B08696 /* Panel Tab.swift */; };
 		F3EDEE3529C0C84C00B08696 /* Panel VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3429C0C84C00B08696 /* Panel VM.swift */; };
 		F3EDEE3829C0CB5A00B08696 /* Websocket Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3729C0CB5A00B08696 /* Websocket Message.swift */; };
 		F3EDEE3A29C0CB8000B08696 /* Websocket Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3929C0CB8000B08696 /* Websocket Delegate.swift */; };
@@ -2147,7 +2147,7 @@
 		F3E97C7829B4B569008CBDD6 /* Credentials VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Credentials VM.swift"; sourceTree = "<group>"; };
 		F3EB09E12A29805A0073916A /* Des Video Watch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Des Video Watch.swift"; sourceTree = "<group>"; };
 		F3EB09EC2A2987F00073916A /* QuickLook File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuickLook File.swift"; sourceTree = "<group>"; };
-		F3EDEE3029C06E9700B08696 /* Panel Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Model.swift"; sourceTree = "<group>"; };
+		F3EDEE3029C06E9700B08696 /* Panel Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Tab.swift"; sourceTree = "<group>"; };
 		F3EDEE3429C0C84C00B08696 /* Panel VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel VM.swift"; sourceTree = "<group>"; };
 		F3EDEE3729C0CB5A00B08696 /* Websocket Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Websocket Message.swift"; sourceTree = "<group>"; };
 		F3EDEE3929C0CB8000B08696 /* Websocket Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Websocket Delegate.swift"; sourceTree = "<group>"; };
@@ -2650,7 +2650,7 @@
 				F31BA595295901F70006D126 /* Panel View.swift */,
 				F3EDEE3429C0C84C00B08696 /* Panel VM.swift */,
 				F353D5032D98427500EC9F3A /* Panel Toolbar.swift */,
-				F3EDEE3029C06E9700B08696 /* Panel Model.swift */,
+				F3EDEE3029C06E9700B08696 /* Panel Tab.swift */,
 				F34F28992ACDAD9B00FD618A /* Animated Tab.swift */,
 				F3D295122AF396FD00ED43A0 /* Tabs.swift */,
 				F39626F12A7AD64B0057E356 /* Ansi.swift */,
@@ -4451,7 +4451,7 @@
 				F3CCF5BB2B34546F005FFF2C /* Permission Group Header.swift in Sources */,
 				F39CB6292C63D56300B7B15E /* System Alerts.swift in Sources */,
 				F33CDC002A26B920008D0214 /* Browser VM.swift in Sources */,
-				F3499EF22A26DCA0006101B7 /* Panel Model.swift in Sources */,
+				F3499EF22A26DCA0006101B7 /* Panel Tab.swift in Sources */,
 				F3CCF5C32B345792005FFF2C /* Allocation Card.swift in Sources */,
 				F39D28572A27F1F5007B12C3 /* File Manager.swift in Sources */,
 				F373CDB82D895419008B64BE /* Log Topbar.swift in Sources */,
@@ -4698,7 +4698,7 @@
 				F353B0412D8A31BF00E4EC07 /* Account Parent.swift in Sources */,
 				F3202D272D562B9A0030B3CC /* Browser Card Bot.swift in Sources */,
 				F34BB6BC2D3DC2B800D27BE0 /* File Preview VM.swift in Sources */,
-				F3EDEE3129C06E9700B08696 /* Panel Model.swift in Sources */,
+				F3EDEE3129C06E9700B08696 /* Panel Tab.swift in Sources */,
 				F3EE9FA02D86234A000120A7 /* Custom Dialog.swift in Sources */,
 				F3EE9FA12D86234A000120A7 /* Custom Alert.swift in Sources */,
 				F37A36732A3515DC00517EFC /* Server Settings VM.swift in Sources */,
@@ -5001,7 +5001,7 @@
 				F37266DC29D9A27A005FD103 /* Suspended Card.swift in Sources */,
 				F3A123572A667804008E3E20 /* Log Meta Parent.swift in Sources */,
 				F39CB6282C63D56300B7B15E /* System Alerts.swift in Sources */,
-				F33623302A220277006A6271 /* Panel Model.swift in Sources */,
+				F33623302A220277006A6271 /* Panel Tab.swift in Sources */,
 				F3464D212A86396700188B0C /* Change Power.swift in Sources */,
 				F3BE36DB2A55E2EE007A0179 /* Server List Topbar.swift in Sources */,
 				F345486C29708FE30038DFD6 /* Server Card.swift in Sources */,
@@ -5265,7 +5265,7 @@
 				F36D53352A05B8B6007324C6 /* Backup Card.swift in Sources */,
 				F3AF91C62B423535001D8F80 /* SSH List.swift in Sources */,
 				F3B66DF42D60B46F00F1841B /* Info Tab LA.swift in Sources */,
-				F389BB542A05B37500911EBF /* Panel Model.swift in Sources */,
+				F389BB542A05B37500911EBF /* Panel Tab.swift in Sources */,
 				F367977C2A3A55F4009F2788 /* Log Card.swift in Sources */,
 				F37A36742A35173900517EFC /* Sftp View.swift in Sources */,
 				F33001422A4CEF840063FE0F /* Apikey VM.swift in Sources */,
@@ -5326,7 +5326,7 @@
 				F3D295C32AF3A1CC00ED43A0 /* Apikey List.swift in Sources */,
 				F3D295DE2AF3A36700ED43A0 /* Schedule List.swift in Sources */,
 				F3A563202D9EEECB009AA363 /* Allow Drag.swift in Sources */,
-				F3D2955E2AF39E6E00ED43A0 /* Panel Model.swift in Sources */,
+				F3D2955E2AF39E6E00ED43A0 /* Panel Tab.swift in Sources */,
 				F3202D132D562B250030B3CC /* Browser Card MC.swift in Sources */,
 				F3C9D84B2B30304F00265492 /* Des Video Watch.swift in Sources */,
 				F3AB4A932CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
@@ -5698,7 +5698,7 @@
 				F30B61CC2B2907C900F447B4 /* Debug Key.swift in Sources */,
 				F3317AEA2A45E24F00CA104D /* Guide.swift in Sources */,
 				F3A7CF722A45150F00331B51 /* Server List Ornament.swift in Sources */,
-				F38694182A4B3AAF002DEF90 /* Panel Model.swift in Sources */,
+				F38694182A4B3AAF002DEF90 /* Panel Tab.swift in Sources */,
 				F35F65952B1D1A0D00431EB7 /* Panel VM.swift in Sources */,
 				F39919172A4653A300CC73DA /* Linear Gauge.swift in Sources */,
 				F30089322B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */,
@@ -5914,7 +5914,7 @@
 				F3B1388A2A2D4D110026EAEE /* File Icon.swift in Sources */,
 				F35FEB082B09F003004DA05D /* API Key.swift in Sources */,
 				F30088902B39FAB80051476C /* Allocation List.swift in Sources */,
-				F3E08EC32A2CE92A00116C1C /* Panel Model.swift in Sources */,
+				F3E08EC32A2CE92A00116C1C /* Panel Tab.swift in Sources */,
 				F30088A22B3A18A20051476C /* Database VM.swift in Sources */,
 				F35B9F612A2DCF9C0045D014 /* Stats Tab.swift in Sources */,
 				F348C6E92A54483D002D5BD6 /* Intro.swift in Sources */,
@@ -6074,7 +6074,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 17.0;
+				TVOS_DEPLOYMENT_TARGET = 18.0;
 				WATCHOS_DEPLOYMENT_TARGET = 9.1;
 			};
 			name = Debug;
@@ -6108,7 +6108,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 17.0;
+				TVOS_DEPLOYMENT_TARGET = 18.0;
 				VALIDATE_PRODUCT = YES;
 				WATCHOS_DEPLOYMENT_TARGET = 9.1;
 			};

@@ -28,7 +28,7 @@ struct PanelView: View {
         self.startupVM = StartupVM(id)
     }
     
-    @AppStorage("tab_panel") private var tabPanel: Tab = .info
+    @AppStorage("tab_panel") private var tabPanel: PanelTab = .info
     
     var body: some View {
         TabView(selection: $tabPanel) {
@@ -37,14 +37,14 @@ struct PanelView: View {
                     .environment(vm)
                     .environment(backupVM)
                     .environment(databaseVM)
-                    .tag(Tab.info)
+                    .tag(PanelTab.info)
                     .tabItem {
                         Label("Info", systemImage: "info.circle")
                     }
                 
                 FileTab(id)
                     .environmentObject(fileVM)
-                    .tag(Tab.files)
+                    .tag(PanelTab.files)
                     .tabItem {
                         Label("Files", systemImage: "folder")
                     }
@@ -53,48 +53,47 @@ struct PanelView: View {
                     .environment(backupVM)
                     .environment(databaseVM)
                     .environment(scheduleVM)
-                    .tag(Tab.backups)
+                    .tag(PanelTab.backups)
                     .tabItem {
                         Label("Data", systemImage: "archivebox")
                     }
                 
                 UserList()
                     .environment(usersVM)
-                    .tag(Tab.users)
+                    .tag(PanelTab.users)
                     .tabItem {
                         Label("Users", systemImage: "person")
                     }
                 
                 LogList()
                     .environment(logVM)
-                    .tag(Tab.logs)
+                    .tag(PanelTab.logs)
                     .tabItem {
                         Label("Logs", systemImage: "terminal")
                     }
                 
                 AllocationList(server)
                     .environment(allocationVM)
-                    .tag(Tab.allocations)
+                    .tag(PanelTab.allocations)
                     .tabItem {
                         Label("Allocations", systemImage: "network")
                     }
                 
                 StartupList()
                     .environment(startupVM)
-                    .tag(Tab.startup)
+                    .tag(PanelTab.startup)
                     .tabItem {
                         Label("Startup", systemImage: "airplane")
                     }
                 
                 SubdomainList()
                     .environment(subdomainVM)
-                    .tag(Tab.subdomains)
+                    .tag(PanelTab.subdomains)
                     .tabItem {
                         Label("Subdomains", systemImage: "globe")
                     }
             }
         }
-        .sidebarAdaptableTabView()
         .task {
             fetchData()
         }

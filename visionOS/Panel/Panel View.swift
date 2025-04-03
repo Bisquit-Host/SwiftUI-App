@@ -24,7 +24,7 @@ struct PanelView: View {
     }
     
     @AppStorage("show_info") private var showInfo = true
-    @AppStorage("tab_panel") private var tabPanel: Tab = .info
+    @AppStorage("tab_panel") private var tabPanel: PanelTab = .info
     @AppStorage("show_power_buttons") private var showPowerButtons = true
     
     var body: some View {
@@ -33,21 +33,21 @@ struct PanelView: View {
                 TabView(selection: $tabPanel) {
                     InfoTab(server)
                         .environment(vm)
-                        .tag(Tab.info)
+                        .tag(PanelTab.info)
                         .tabItem {
                             Label("Info", systemImage: "info.circle")
                         }
                     
                     Console(id)
                         .environment(vm)
-                        .tag(Tab.console)
+                        .tag(PanelTab.console)
                         .tabItem {
                             Label("Console", systemImage: "apple.terminal")
                         }
                     
                     FileList(id)
                         .environmentObject(fileVM)
-                        .tag(Tab.files)
+                        .tag(PanelTab.files)
                         .tabItem {
                             Label("Files", systemImage: "folder")
                         }
@@ -56,7 +56,7 @@ struct PanelView: View {
                         BackupList(server)
                     }
                     .environment(backupVM)
-                    .tag(Tab.backups)
+                    .tag(PanelTab.backups)
                     .tabItem {
                         Label("Backups", systemImage: "archivebox")
                     }
@@ -65,7 +65,7 @@ struct PanelView: View {
                         DatabaseList(server.featureLimits.databases)
                     }
                     .environment(dbVM)
-                    .tag(Tab.databases)
+                    .tag(PanelTab.databases)
                     .tabItem {
                         Label("Databases", systemImage: "externaldrive.badge.icloud")
                     }
@@ -74,21 +74,21 @@ struct PanelView: View {
                         ScheduleList()
                     }
                     .environment(scheduleVM)
-                    .tag(Tab.schedules)
+                    .tag(PanelTab.schedules)
                     .tabItem {
                         Label("Schedules", systemImage: "calendar")
                     }
                     
                     UserList()
                         .environment(userVM)
-                        .tag(Tab.users)
+                        .tag(PanelTab.users)
                         .tabItem {
                             Label("Users", systemImage: "person.3")
                         }
                     
                     SubdomainList()
                         .environment(subdomainVM)
-                        .tag(Tab.subdomains)
+                        .tag(PanelTab.subdomains)
                         .tabItem {
                             Label("Subdomains", systemImage: "globe")
                         }
