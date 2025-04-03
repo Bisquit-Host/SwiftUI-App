@@ -1,6 +1,5 @@
 import ScrechKit
 import PteroNet
-import Kingfisher
 
 struct InfoTabButtons: View {
     private let server: ServerAttributes
