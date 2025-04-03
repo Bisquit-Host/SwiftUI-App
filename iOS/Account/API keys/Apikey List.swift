@@ -9,10 +9,6 @@ struct ApikeyList: View {
     
     var body: some View {
         List {
-#warning("Remove")
-            EditButton()
-                .transparentSection()
-            
             Section {
                 ForEach(vm.keys, id: \.attributes.id) { key in
                     ApikeyCard(key)
