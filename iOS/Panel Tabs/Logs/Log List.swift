@@ -78,29 +78,7 @@ struct LogList: View {
                         }
                         
                         ForEach(vm.actors, id: \.self) { actor in
-                            if let actor {
-                                Button {
-                                    if vm.selectedActor == actor {
-                                        vm.selectedActor = nil
-                                    } else {
-                                        vm.selectedActor = actor
-                                    }
-                                } label: {
-                                    if let username = actor.actor.attributes?.username {
-                                        Text(username)
-                                        
-                                        if let email = actor.actor.attributes?.email {
-                                            Text(email)
-                                        }
-                                    } else {
-                                        Text("System")
-                                    }
-                                    
-                                    if vm.selectedActor == actor {
-                                        Image(systemName: "checkmark")
-                                    }
-                                }
-                            }
+                            LogToolbarActor(actor)
                         }
                     } label: {
                         Image(systemName: "line.3.horizontal.decrease.circle")

@@ -22,7 +22,7 @@ struct ConsoleView: View {
                         //                            .fontDesign(fontDesign)
                         //                            .fontSize(vm.fontSize)
                             .multilineTextAlignment(.leading)
-                            .onAppear {
+                            .task {
                                 if index == panelVM.searchedMessages.count - 1 {
                                     lastMessageIndex = index
                                 }
@@ -31,7 +31,7 @@ struct ConsoleView: View {
                 }
                 .padding(.bottom, 10)
                 .textSelection(.enabled)
-                .onAppear {
+                .task {
                     delay {
                         if let _ = panelVM.searchedMessages.last {
                             withAnimation {

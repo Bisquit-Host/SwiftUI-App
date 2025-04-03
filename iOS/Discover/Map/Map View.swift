@@ -75,7 +75,7 @@ struct MapView: View {
             //            }
             //#endif
         }
-        .onAppear {
+        .task {
             map.searchResults = places
         }
         .onChange(of: map.searchResults) {

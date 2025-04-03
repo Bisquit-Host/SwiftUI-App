@@ -14,10 +14,14 @@ struct StartupView: View {
     
     @State private var currentDockerImage: String
     
+    private var command: String {
+        store.rawStartupCommand ? vm.rawStartupCommand : vm.startupCommand
+    }
+    
     var body: some View {
         List {
             Section {
-                Text(store.rawStartupCommand ? vm.rawStartupCommand : vm.startupCommand)
+                Text(command)
                     .caption2()
                     .monospaced()
                     .textSelection(.enabled)
@@ -33,13 +37,12 @@ struct StartupView: View {
                     Spacer()
                     
                     SFButton("document.on.document") {
-                        UIPasteboard.general.string = store.rawStartupCommand ? vm.rawStartupCommand : vm.startupCommand
+                        UIPasteboard.general.string = command
                         SystemAlert.copied()
                     }
                 }
             }
             .listRowBackground(Color.gray.opacity(0.2))
-            //            .transparentSection()
             
             Picker("Docker Image", selection: $currentDockerImage) {
                 ForEach(vm.sortedDockerImages, id: \.key) { key, value in
@@ -48,11 +51,9 @@ struct StartupView: View {
                 }
             }
             .listRowBackground(Color.gray.opacity(0.2))
-            //            .transparentSection()
             
             ForEach(vm.startupVariables, id: \.name) { variable in
                 StartupCard(server, variable: variable)
-                //                    .transparentSection()
                     .listRowBackground(Color.gray.opacity(0.2))
             }
         }

@@ -23,7 +23,7 @@ struct QRCodeView: View {
                 //                    }
             }
         }
-        .onAppear {
+        .task {
             if let url {
                 image = generateQRCode(url)
             }

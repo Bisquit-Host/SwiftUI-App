@@ -16,13 +16,13 @@ struct Console: View {
     @State private var lastMessageIndex = 0
     @State private var fontDesign: Font.Design = .monospaced
     
-    private let fontSizes = [8, 10, 12, 14]
-    private let fontDesigns: [Font.Design] = [
-        .default,
-        .monospaced,
-        .rounded,
-        .serif
-    ]
+    //    private let fontSizes = [8, 10, 12, 14]
+    //    private let fontDesigns: [Font.Design] = [
+    //        .default,
+    //        .monospaced,
+    //        .rounded,
+    //        .serif
+    //    ]
     
     var body: some View {
         VStack {
@@ -34,7 +34,7 @@ struct Console: View {
                                 .fontDesign(fontDesign)
                                 .fontSize(vm.fontSize)
                                 .multilineTextAlignment(.leading)
-                                .onAppear {
+                                .task {
                                     if index == panelVM.searchedMessages.count - 1 {
                                         lastMessageIndex = index
                                     }
@@ -43,7 +43,7 @@ struct Console: View {
                     }
                     .padding(.bottom, 10)
                     .textSelection(.enabled)
-                    .onAppear {
+                    .task {
                         delay {
                             if let _ = panelVM.searchedMessages.last {
                                 withAnimation {

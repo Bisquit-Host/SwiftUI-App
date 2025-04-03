@@ -42,7 +42,7 @@ struct CreateApikey: View {
             .navigationBarTitleDisplayMode(.inline)
             .transparentList()
         }
-        .onAppear {
+        .task {
             focus = true
         }
     }

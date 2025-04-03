@@ -20,12 +20,10 @@ extension CacheLimit {
 
 extension CacheExpiration {
     enum CacheExpiration: String {
-        case day, week, month, year, never
+        case month, year, never
         
         var loc: LocalizedStringKey {
             switch self {
-            case .day: "Day"
-            case .week: "Week"
             case .month: "Month"
             case .year: "Year"
             case .never: "Never"

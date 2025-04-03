@@ -9,7 +9,7 @@ struct CacheExpiration: View {
     private var cacheExpiration: CacheExpiration = .month
     
     private let intervals: [CacheExpiration] = [
-        .day, .week, .month, .year, .never
+        .month, .year, .never
     ]
     
     var body: some View {
@@ -40,8 +40,6 @@ struct CacheExpiration: View {
         let newCacheExpiration: StorageExpiration
         
         switch expiration {
-        case .day: newCacheExpiration = .days(1)
-        case .week: newCacheExpiration = .days(7)
         case .month: newCacheExpiration = .days(30)
         case .year: newCacheExpiration = .days(365)
         case .never: newCacheExpiration = .never

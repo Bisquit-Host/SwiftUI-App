@@ -51,7 +51,7 @@ struct StartPage: View {
         }
         .navigationTitle("Bisquit.Host")
         .multilineTextAlignment(.center)
-        .onAppear {
+        .task {
             if !keys.isEmpty {
                 delay(0.5) {
                     vm.sheetCloudKeys = true

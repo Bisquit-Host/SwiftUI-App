@@ -32,9 +32,7 @@ struct InfiniteScrollView<Content: View>: View {
                         
                         HStack(spacing: spacing) {
                             ForEach(0..<repeatingCount, id: \.self) { index in
-                                let view = Array(collection)[index % collection.count]
-                                
-                                view
+                                Array(collection)[index % collection.count]
                             }
                         }
                     }

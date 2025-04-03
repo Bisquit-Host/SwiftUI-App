@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 90;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -317,7 +317,6 @@
 		F323D8D32A2D668D002EDC62 /* File Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F323D8D22A2D668D002EDC62 /* File Tab.swift */; };
 		F323D8D52A2D67A3002EDC62 /* Upload File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F393C7BA2A18437300DE33F9 /* Upload File.swift */; };
 		F3255E172C9049AF008E04DE /* Settings Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3255E162C9049AF008E04DE /* Settings Button.swift */; };
-		F3255E182C9049DC008E04DE /* Settings Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264362A66A9B9005C3777 /* Settings Parent.swift */; };
 		F3255E1A2C904A03008E04DE /* Settings View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3255E192C904A03008E04DE /* Settings View.swift */; };
 		F3255E1C2C904A48008E04DE /* Account View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264392A66AB92005C3777 /* Account View.swift */; };
 		F3255E1D2C904A56008E04DE /* Account VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264402A66ABBE005C3777 /* Account VM.swift */; };
@@ -956,6 +955,24 @@
 		F3A391BA29DB5E6900591C84 /* Cache Expiration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A391B929DB5E6900591C84 /* Cache Expiration.swift */; };
 		F3A391BC29DB808B00591C84 /* Server Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A391BB29DB808B00591C84 /* Server Name.swift */; };
 		F3A49CC42D7A500C0067EEA8 /* Guide Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3499EF32A26DE92006101B7 /* Guide Model.swift */; };
+		F3A563202D9EEECB009AA363 /* Allow Drag.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A5631F2D9EEECB009AA363 /* Allow Drag.swift */; };
+		F3A563212D9EEECB009AA363 /* Allow Drag.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A5631F2D9EEECB009AA363 /* Allow Drag.swift */; };
+		F3A563222D9EEECB009AA363 /* Allow Drag.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A5631F2D9EEECB009AA363 /* Allow Drag.swift */; };
+		F3A563242D9EF114009AA363 /* Info Tab Buttons User Img.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A563232D9EF114009AA363 /* Info Tab Buttons User Img.swift */; };
+		F3A563252D9EF114009AA363 /* Info Tab Buttons User Img.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A563232D9EF114009AA363 /* Info Tab Buttons User Img.swift */; };
+		F3A563272D9EF21B009AA363 /* Log Meta Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A563262D9EF21B009AA363 /* Log Meta Card.swift */; };
+		F3A563282D9EF21B009AA363 /* Log Meta Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A563262D9EF21B009AA363 /* Log Meta Card.swift */; };
+		F3A563292D9EF21B009AA363 /* Log Meta Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A563262D9EF21B009AA363 /* Log Meta Card.swift */; };
+		F3A5632A2D9EF21B009AA363 /* Log Meta Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A563262D9EF21B009AA363 /* Log Meta Card.swift */; };
+		F3A5632B2D9EF21B009AA363 /* Log Meta Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A563262D9EF21B009AA363 /* Log Meta Card.swift */; };
+		F3A5632C2D9EF21B009AA363 /* Log Meta Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A563262D9EF21B009AA363 /* Log Meta Card.swift */; };
+		F3A5632D2D9EF21B009AA363 /* Log Meta Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A563262D9EF21B009AA363 /* Log Meta Card.swift */; };
+		F3A5632F2D9EF323009AA363 /* Log Toolbar Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A5632E2D9EF323009AA363 /* Log Toolbar Actor.swift */; };
+		F3A563302D9EF323009AA363 /* Log Toolbar Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A5632E2D9EF323009AA363 /* Log Toolbar Actor.swift */; };
+		F3A563322D9EF323009AA363 /* Log Toolbar Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A5632E2D9EF323009AA363 /* Log Toolbar Actor.swift */; };
+		F3A563332D9EF323009AA363 /* Log Toolbar Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A5632E2D9EF323009AA363 /* Log Toolbar Actor.swift */; };
+		F3A563342D9EF323009AA363 /* Log Toolbar Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A5632E2D9EF323009AA363 /* Log Toolbar Actor.swift */; };
+		F3A563352D9EF323009AA363 /* Log Toolbar Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A5632E2D9EF323009AA363 /* Log Toolbar Actor.swift */; };
 		F3A7BCC3296B2ABB00E080C1 /* Start Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7BCC2296B2ABB00E080C1 /* Start Page.swift */; };
 		F3A7BCD1296B44FF00E080C1 /* Nav Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BAEC8C2959B3FE00111375 /* Nav Extension.swift */; };
 		F3A7CEC82C8B685500413400 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3A7CEC72C8B685500413400 /* Messages.framework */; };
@@ -1212,8 +1229,6 @@
 		F3D22C092A26564C00721113 /* Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304498929E990E9006DC0C7 /* Cloud Keys.swift */; };
 		F3D264342A66A926005C3777 /* Settings Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264332A66A926005C3777 /* Settings Button.swift */; };
 		F3D264352A66A926005C3777 /* Settings Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264332A66A926005C3777 /* Settings Button.swift */; };
-		F3D264372A66A9B9005C3777 /* Settings Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264362A66A9B9005C3777 /* Settings Parent.swift */; };
-		F3D264382A66A9B9005C3777 /* Settings Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264362A66A9B9005C3777 /* Settings Parent.swift */; };
 		F3D2643A2A66AB92005C3777 /* Account View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264392A66AB92005C3777 /* Account View.swift */; };
 		F3D2643B2A66AB92005C3777 /* Account View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264392A66AB92005C3777 /* Account View.swift */; };
 		F3D264412A66ABBE005C3777 /* Account VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264402A66ABBE005C3777 /* Account VM.swift */; };
@@ -1292,7 +1307,6 @@
 		F3D295872AF39FB900ED43A0 /* Server Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* Server Card VM.swift */; };
 		F3D295892AF39FC700ED43A0 /* Upload File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F393C7BA2A18437300DE33F9 /* Upload File.swift */; };
 		F3D2958A2AF39FD000ED43A0 /* User Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123592A6689FA008E3E20 /* User Email.swift */; };
-		F3D2958B2AF39FD500ED43A0 /* Settings Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264362A66A9B9005C3777 /* Settings Parent.swift */; };
 		F3D295922AF3A02300ED43A0 /* Server Card Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3878EDE2A1C228900AD8657 /* Server Card Stats.swift */; };
 		F3D295932AF3A02600ED43A0 /* Gauge Regular.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266D029D99570005FD103 /* Gauge Regular.swift */; };
 		F3D295942AF3A03700ED43A0 /* Contact Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3880A252A92A15E0052A978 /* Contact Manager.swift */; };
@@ -1474,6 +1488,11 @@
 		F3EDEE3529C0C84C00B08696 /* Panel VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3429C0C84C00B08696 /* Panel VM.swift */; };
 		F3EDEE3829C0CB5A00B08696 /* Websocket Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3729C0CB5A00B08696 /* Websocket Message.swift */; };
 		F3EDEE3A29C0CB8000B08696 /* Websocket Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3929C0CB8000B08696 /* Websocket Delegate.swift */; };
+		F3EE6D762D9E8E2000F0A633 /* Bakground Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE6D742D9E8E2000F0A633 /* Bakground Task.swift */; };
+		F3EE6D772D9E8E2000F0A633 /* Bakground Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE6D742D9E8E2000F0A633 /* Bakground Task.swift */; };
+		F3EE6D782D9E8E2000F0A633 /* Bakground Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE6D742D9E8E2000F0A633 /* Bakground Task.swift */; };
+		F3EE6D7A2D9E8E2000F0A633 /* Bakground Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE6D742D9E8E2000F0A633 /* Bakground Task.swift */; };
+		F3EE6D7B2D9E8E2000F0A633 /* Bakground Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE6D742D9E8E2000F0A633 /* Bakground Task.swift */; };
 		F3EE9F6F2D85CAB9000120A7 /* Transparency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F6E2D85CAB9000120A7 /* Transparency.swift */; };
 		F3EE9F702D85CAB9000120A7 /* Transparency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F6E2D85CAB9000120A7 /* Transparency.swift */; };
 		F3EE9F712D85CAB9000120A7 /* Transparency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F6E2D85CAB9000120A7 /* Transparency.swift */; };
@@ -1649,50 +1668,42 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		F31BA5612958FFB00006D126 /* Embed App Clips */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
 			dstPath = "$(CONTENTS_FOLDER_PATH)/AppClips";
-			dstSubfolderSpec = 16;
+			dstSubfolder = Product;
 			files = (
 				F31BA55D2958FFB00006D126 /* Clip Demo.app in Embed App Clips */,
 			);
 			name = "Embed App Clips";
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3464D012A862D2D00188B0C /* Embed ExtensionKit Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
 			dstPath = "$(EXTENSIONS_FOLDER_PATH)";
-			dstSubfolderSpec = 16;
+			dstSubfolder = Product;
 			files = (
 				F3A7CF232C8C509C00413400 /* Contact Provider.appex in Embed ExtensionKit Extensions */,
 				F3464D022A862D2D00188B0C /* Intent.appex in Embed ExtensionKit Extensions */,
 			);
 			name = "Embed ExtensionKit Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F35FF61C29DBEF96004748E3 /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 12;
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
-			dstSubfolderSpec = 16;
+			dstSubfolder = Product;
 			files = (
 				F3C53A5F29DBF5B900A08578 /* watchOS.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F36710372C99C3A200A8901A /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
 			dstPath = "";
-			dstSubfolderSpec = 13;
+			dstSubfolder = PlugIns;
 			files = (
 				F361F8882D545E4D007B0565 /* Intent Handler.appex in Embed Foundation Extensions */,
 				F36710342C99C3A100A8901A /* iMessage.appex in Embed Foundation Extensions */,
 				F3D1E7332C9A38EF000C81FF /* Widgets.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -2002,6 +2013,10 @@
 		F3A31B082B0B161D00F89C51 /* Cloud Key Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cloud Key Card.swift"; sourceTree = "<group>"; };
 		F3A391B929DB5E6900591C84 /* Cache Expiration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache Expiration.swift"; sourceTree = "<group>"; };
 		F3A391BB29DB808B00591C84 /* Server Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Name.swift"; sourceTree = "<group>"; };
+		F3A5631F2D9EEECB009AA363 /* Allow Drag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allow Drag.swift"; sourceTree = "<group>"; };
+		F3A563232D9EF114009AA363 /* Info Tab Buttons User Img.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab Buttons User Img.swift"; sourceTree = "<group>"; };
+		F3A563262D9EF21B009AA363 /* Log Meta Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log Meta Card.swift"; sourceTree = "<group>"; };
+		F3A5632E2D9EF323009AA363 /* Log Toolbar Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log Toolbar Actor.swift"; sourceTree = "<group>"; };
 		F3A7BCC2296B2ABB00E080C1 /* Start Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page.swift"; sourceTree = "<group>"; };
 		F3A7CEC32C8B685500413400 /* iMessage.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iMessage.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A7CEC72C8B685500413400 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = Library/Frameworks/Messages.framework; sourceTree = DEVELOPER_DIR; };
@@ -2081,7 +2096,6 @@
 		F3CE5C4C2D5395300094BD7B /* Subdomain Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subdomain Card.swift"; sourceTree = "<group>"; };
 		F3D037002CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImagePlayground Toolbar Button.swift"; sourceTree = "<group>"; };
 		F3D264332A66A926005C3777 /* Settings Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings Button.swift"; sourceTree = "<group>"; };
-		F3D264362A66A9B9005C3777 /* Settings Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings Parent.swift"; sourceTree = "<group>"; };
 		F3D264392A66AB92005C3777 /* Account View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account View.swift"; sourceTree = "<group>"; };
 		F3D264402A66ABBE005C3777 /* Account VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account VM.swift"; sourceTree = "<group>"; };
 		F3D264432A66B3A6005C3777 /* QR Code View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QR Code View.swift"; sourceTree = "<group>"; };
@@ -2137,6 +2151,7 @@
 		F3EDEE3429C0C84C00B08696 /* Panel VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel VM.swift"; sourceTree = "<group>"; };
 		F3EDEE3729C0CB5A00B08696 /* Websocket Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Websocket Message.swift"; sourceTree = "<group>"; };
 		F3EDEE3929C0CB8000B08696 /* Websocket Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Websocket Delegate.swift"; sourceTree = "<group>"; };
+		F3EE6D742D9E8E2000F0A633 /* Bakground Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bakground Task.swift"; sourceTree = "<group>"; };
 		F3EE9F6E2D85CAB9000120A7 /* Transparency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transparency.swift; sourceTree = "<group>"; };
 		F3EE9F922D86234A000120A7 /* Custom Dialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Custom Dialog.swift"; sourceTree = "<group>"; };
 		F3EE9F932D86234A000120A7 /* Custom Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Custom Alert.swift"; sourceTree = "<group>"; };
@@ -2171,35 +2186,28 @@
 /* Begin PBXFrameworksBuildPhase section */
 		F337C14F2A8C29CD006F321C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F30860202B002D50004D776A /* PteroNet in Frameworks */,
 				F36B739F2C8B077A00E858FE /* AudioVisualizer in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3464CF52A862D2C00188B0C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F30860162B002B93004D776A /* PteroNet in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F38637342A8641120069F074 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F38637392A8641120069F074 /* SwiftUI.framework in Frameworks */,
 				F3CBC6E32D9A02970081C302 /* ScrechKit in Frameworks */,
 				F38637382A8641120069F074 /* WidgetKit.framework in Frameworks */,
 				F30860262B002FDE004D776A /* PteroNet in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F39CA31829BF4160009AD679 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F328D85E2A8240930038512F /* Algorithms in Frameworks */,
 				F3CBC6D72D9A02660081C302 /* ScrechKit in Frameworks */,
@@ -2207,11 +2215,9 @@
 				F30860182B002C18004D776A /* PteroNet in Frameworks */,
 				F3EB09D12A29532D0073916A /* Kingfisher in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F39CA31B29BF4194009AD679 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F342FAB72B2E49B600854270 /* Algorithms in Frameworks */,
 				F3CBC6DD2D9A027B0081C302 /* ScrechKit in Frameworks */,
@@ -2219,11 +2225,9 @@
 				F308601E2B002D4A004D776A /* PteroNet in Frameworks */,
 				F39E683F2D2D6A510002BA96 /* AudioVisualizer in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3A7CEC02C8B685500413400 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F3BED0EF2D8CDC2500CD6E3B /* PermissionsSwiftUINotification in Frameworks */,
 				F3BED0ED2D8CDC2000CD6E3B /* PermissionsSwiftUIBiometrics in Frameworks */,
@@ -2237,11 +2241,9 @@
 				F3CBC6E52D9A029E0081C302 /* ScrechKit in Frameworks */,
 				F3BED0F12D8CDC2B00CD6E3B /* PermissionsSwiftUICamera in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3B761DB29BDE2D500ECE879 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F342FAA82B2C61ED00854270 /* Pow in Frameworks */,
 				F389BB572A05B47000911EBF /* SafariCover in Frameworks */,
@@ -2260,11 +2262,9 @@
 				F33C2AC52C691764002FD150 /* QuickLooking in Frameworks */,
 				F36D534A2A05B961007324C6 /* Kingfisher in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3BD76EF2A43C890003E7385 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F342FAA62B2C615A00854270 /* Pow in Frameworks */,
 				F30B61CA2B2905E100F447B4 /* AlertKit in Frameworks */,
@@ -2276,20 +2276,16 @@
 				F32F2D072D908FE5007CF4DE /* MailCover in Frameworks */,
 				F308601A2B002D36004D776A /* PteroNet in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3D296042AF3BE5800ED43A0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F30860242B002FD8004D776A /* PteroNet in Frameworks */,
 				F36B739D2C8B074300E858FE /* AudioVisualizer in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3E08E9D2A2CE17800116C1C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F37FF8832D87AE3800554B3F /* Algorithms in Frameworks */,
 				F3B7BFDE2B38E206005B5003 /* Pow in Frameworks */,
@@ -2298,18 +2294,14 @@
 				F358F02E2D2C1C5500BCC07B /* LaunchAtLogin in Frameworks */,
 				F30860222B002D57004D776A /* PteroNet in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3E2BEF22C1DA07E00B7A6D4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3F304BC29BDDF7D00F004B9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F342FAA02B2C5DF300854270 /* Pow in Frameworks */,
 				F335CA062C63E86D006C71C6 /* DeviceKit in Frameworks */,
@@ -2331,16 +2323,13 @@
 				F32675862A01B69600A026DC /* SafariCover in Frameworks */,
 				F33C2AC12C69168C002FD150 /* QuickLooking in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3FDFF5C2C89120D009EBB5C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F3FDFF612C89120D009EBB5C /* Intents.framework in Frameworks */,
 				F36B736D2C89B6BE00E858FE /* PteroNet in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
@@ -2446,6 +2435,7 @@
 		F300C45F2D8C2B0100743300 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				F3EE6D742D9E8E2000F0A633 /* Bakground Task.swift */,
 				F3B1196C29A13CA6003BB68C /* Value Store.swift */,
 				F3AB1DF32D79C42B00387164 /* MetricKit Manager.swift */,
 				F3FF3E862D93576B00EDFBC6 /* Update Checker.swift */,
@@ -2488,6 +2478,7 @@
 			children = (
 				F3A123552A667804008E3E20 /* Log Meta Parent.swift */,
 				F311CAAD2A646612004E4A4A /* Log Meta View.swift */,
+				F3A563262D9EF21B009AA363 /* Log Meta Card.swift */,
 			);
 			path = Meta;
 			sourceTree = "<group>";
@@ -2681,6 +2672,7 @@
 				F3B66DEF2D60B2B100F1841B /* Card */,
 				F325F6FF2A54BBCF00E89EC4 /* Info Tab Allocation.swift */,
 				F3FF5A022A4A359C003A1973 /* Info Tab Buttons.swift */,
+				F3A563232D9EF114009AA363 /* Info Tab Buttons User Img.swift */,
 				F3B66DF32D60B46F00F1841B /* Info Tab LA.swift */,
 				F353B04E2D8AA6FB00E4EC07 /* Map */,
 			);
@@ -3305,6 +3297,7 @@
 			children = (
 				F38F9E082CE6CCF90033EFE3 /* Image Playground Button.swift */,
 				F38F9E112CE7647D0033EFE3 /* Image Playground.swift */,
+				F3A5631F2D9EEECB009AA363 /* Allow Drag.swift */,
 			);
 			path = "Image Playground";
 			sourceTree = "<group>";
@@ -3312,7 +3305,6 @@
 		F3924EDD29A2308C00C4CC77 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				F3D264362A66A9B9005C3777 /* Settings Parent.swift */,
 				F31BA575295900E30006D126 /* Settings View.swift */,
 				F3924EDE29A2333F00C4CC77 /* Settings VM.swift */,
 				F385824529D6268200BEEE1D /* Currency Picker.swift */,
@@ -3627,6 +3619,7 @@
 				F36797772A3A55E1009F2788 /* Log List Parent.swift */,
 				F3DE1B972A556CCE007A1624 /* Log List.swift */,
 				F367977D2A3A5AB6009F2788 /* Log VM.swift */,
+				F3A5632E2D9EF323009AA363 /* Log Toolbar Actor.swift */,
 				F367977A2A3A55F4009F2788 /* Log Card.swift */,
 				F3ADA61C2D9C16AC00F2DAA6 /* Loc Logs.txt */,
 				F30207D02D8B039100C26008 /* Meta */,
@@ -3941,8 +3934,6 @@
 			);
 			buildRules = (
 			);
-			dependencies = (
-			);
 			name = tvOS;
 			packageProductDependencies = (
 				F39D680C2A262C5E00B9BDFC /* Kingfisher */,
@@ -4014,8 +4005,6 @@
 			);
 			buildRules = (
 			);
-			dependencies = (
-			);
 			name = watchOS;
 			packageProductDependencies = (
 				F3EB09D02A29532D0073916A /* Kingfisher */,
@@ -4037,8 +4026,6 @@
 				F3B761DB29BDE2D500ECE879 /* Frameworks */,
 			);
 			buildRules = (
-			);
-			dependencies = (
 			);
 			name = "Clip Demo";
 			packageProductDependencies = (
@@ -4095,8 +4082,6 @@
 			);
 			buildRules = (
 			);
-			dependencies = (
-			);
 			name = Intent;
 			packageProductDependencies = (
 				F30860152B002B93004D776A /* PteroNet */,
@@ -4114,8 +4099,6 @@
 				F38637352A8641120069F074 /* Resources */,
 			);
 			buildRules = (
-			);
-			dependencies = (
 			);
 			name = Widgets;
 			packageProductDependencies = (
@@ -4135,8 +4118,6 @@
 				F3A7CEC12C8B685500413400 /* Resources */,
 			);
 			buildRules = (
-			);
-			dependencies = (
 			);
 			name = iMessage;
 			packageProductDependencies = (
@@ -4164,8 +4145,6 @@
 				F3BD76F02A43C890003E7385 /* Resources */,
 			);
 			buildRules = (
-			);
-			dependencies = (
 			);
 			name = visionOS;
 			packageProductDependencies = (
@@ -4215,8 +4194,6 @@
 			);
 			buildRules = (
 			);
-			dependencies = (
-			);
 			name = macOS;
 			packageProductDependencies = (
 				F3E08EB12A2CE19900116C1C /* Kingfisher */,
@@ -4240,8 +4217,6 @@
 			);
 			buildRules = (
 			);
-			dependencies = (
-			);
 			name = "Contact Provider";
 			productName = "Contact Provider Extension";
 			productReference = F3E2BEF52C1DA07E00B7A6D4 /* Contact Provider.appex */;
@@ -4256,8 +4231,6 @@
 				F3FDFF5D2C89120D009EBB5C /* Resources */,
 			);
 			buildRules = (
-			);
-			dependencies = (
 			);
 			name = "Intent Handler";
 			packageProductDependencies = (
@@ -4348,7 +4321,7 @@
 				F3BED0D72D8CDBBC00CD6E3B /* XCRemoteSwiftPackageReference "SPerms" */,
 				F3CBC6D32D9A025A0081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */,
 			);
-			preferredProjectObjectVersion = 77;
+			preferredProjectObjectVersion = 90;
 			productRefGroup = F31BA5242958FF7C0006D126 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -4373,127 +4346,100 @@
 /* Begin PBXResourcesBuildPhase section */
 		F3000E03295A341000ABD30A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F378E3362AF3835C009925DB /* PrivacyInfo.xcprivacy in Resources */,
 				F36797762A39C4ED009F2788 /* Localizable.xcstrings in Resources */,
 				F39D68132A26373900B9BDFC /* Bisquits.sks in Resources */,
 				F3000E0C295A341100ABD30A /* Assets.xcassets in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F31BA5212958FF7C0006D126 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F3E6FC432A1E677000410C7C /* Bisquits.sks in Resources */,
 				F36797732A39C4ED009F2788 /* Localizable.xcstrings in Resources */,
 				F378E3332AF3835A009925DB /* PrivacyInfo.xcprivacy in Resources */,
 				F31BA52B2958FF7D0006D126 /* Assets.xcassets in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F31BA5312958FF7D0006D126 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F36797752A39C4ED009F2788 /* Localizable.xcstrings in Resources */,
 				F378E3352AF3835B009925DB /* PrivacyInfo.xcprivacy in Resources */,
 				F31BA53D2958FF7E0006D126 /* Assets.xcassets in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F31BA54C2958FFAF0006D126 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F3E6FC442A1E677000410C7C /* Bisquits.sks in Resources */,
 				F36797742A39C4ED009F2788 /* Localizable.xcstrings in Resources */,
 				F378E3382AF3835E009925DB /* PrivacyInfo.xcprivacy in Resources */,
 				F36A0F312A167D5F00696207 /* Assets.xcassets in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F337C1502A8C29CD006F321C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F3D295322AF39C8900ED43A0 /* Assets.xcassets in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3464CF62A862D2C00188B0C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F38637352A8641120069F074 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F3CE5C5D2D53B04E0094BD7B /* Localizable.xcstrings in Resources */,
 				F38637422A8641150069F074 /* Assets.xcassets in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3A7CEC12C8B685500413400 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F3C3BDB82C92BE9B00BF91EE /* Assets.xcassets in Resources */,
 				F3A7CED02C8B685600413400 /* Assets.xcassets in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3BD76F02A43C890003E7385 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F378E3372AF3835D009925DB /* PrivacyInfo.xcprivacy in Resources */,
 				F389281F2A43CB2600561CDF /* Localizable.xcstrings in Resources */,
 				F3BD76FD2A43C892003E7385 /* Assets.xcassets in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3D296052AF3BE5800ED43A0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3E08E9E2A2CE17800116C1C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F3E08EA72A2CE17A00116C1C /* Assets.xcassets in Resources */,
 				F378E3342AF3835B009925DB /* PrivacyInfo.xcprivacy in Resources */,
 				F38928202A43CB2600561CDF /* Localizable.xcstrings in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3E2BEF32C1DA07E00B7A6D4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3FDFF5D2C89120D009EBB5C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F3000E01295A341000ABD30A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F370804D2A2A1CB60046CE70 /* Section Header.swift in Sources */,
 				F31B4450297550CD0036868F /* Stats Tab.swift in Sources */,
@@ -4517,6 +4463,7 @@
 				F370804F2A2A1EAC0046CE70 /* Schedule List.swift in Sources */,
 				F3202D1A2D562B980030B3CC /* Browser Card VDS.swift in Sources */,
 				F3EB09DB2A295C550073916A /* Video File.swift in Sources */,
+				F3EE6D782D9E8E2000F0A633 /* Bakground Task.swift in Sources */,
 				F32F2D042D908E53007CF4DE /* Background Image Helper.swift in Sources */,
 				F3FF3E982D9411B400EDFBC6 /* Intro Parent.swift in Sources */,
 				F373CD812D88D426008B64BE /* Intro.swift in Sources */,
@@ -4584,9 +4531,11 @@
 				F3F2A5BB29AC296D00AD20A4 /* Server Card Suspended.swift in Sources */,
 				F30C13042A545ADC00A7EFF0 /* Nav State.swift in Sources */,
 				F37080512A2A1EBA0046CE70 /* Schedule Task.swift in Sources */,
+				F3A5632B2D9EF21B009AA363 /* Log Meta Card.swift in Sources */,
 				F3464D262A86397F00188B0C /* Power Signal App Enum.swift in Sources */,
 				F3EB09DF2A297F090073916A /* Des Image.swift in Sources */,
 				F39E683D2D2D6A380002BA96 /* Audio Player View.swift in Sources */,
+				F3A5632F2D9EF323009AA363 /* Log Toolbar Actor.swift in Sources */,
 				F3C9D8532B3060D100265492 /* Video Player VM.swift in Sources */,
 				F30088F52B3B55C10051476C /* User Invitation View.swift in Sources */,
 				F37266CD29D96C98005FD103 /* Websocket Delegate.swift in Sources */,
@@ -4663,11 +4612,9 @@
 				F3FFB7462A57F91700220FA5 /* Map List.swift in Sources */,
 				F3BB07BD2A5421B700F5EE2E /* Server List VM.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F31BA51F2958FF7C0006D126 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F3CE5C4E2D5395300094BD7B /* Subdomain Card.swift in Sources */,
 				F3AE522329ACF7D600CB3895 /* Server Card VM.swift in Sources */,
@@ -4760,7 +4707,6 @@
 				F303214B2B3FEA45002A73B8 /* Panel Settings View.swift in Sources */,
 				F31BA5B2295902D50006D126 /* Text File.swift in Sources */,
 				F3553FB32B40653000EF0FD2 /* Panel Settings Parent.swift in Sources */,
-				F3D264372A66A9B9005C3777 /* Settings Parent.swift in Sources */,
 				F31BA57D295901200006D126 /* Start Page VM.swift in Sources */,
 				F39E0A952C1BA06C00C4E906 /* Discover Card.swift in Sources */,
 				F306B9ED29BBDA770008C2D4 /* Server List Footer.swift in Sources */,
@@ -4770,6 +4716,7 @@
 				F3496DC529E0091A0089FC28 /* Section Header.swift in Sources */,
 				F367977B2A3A55F4009F2788 /* Log Card.swift in Sources */,
 				F373CDA72D88E9F9008B64BE /* Info Tab Heading.swift in Sources */,
+				F3EE6D7A2D9E8E2000F0A633 /* Bakground Task.swift in Sources */,
 				F398E0E22CEB562400AA4DD7 /* Audio Player VM.swift in Sources */,
 				F358132B2A1F5D2A002ADFA4 /* Linking VM.swift in Sources */,
 				F3878ECD2A1BCE5000AD8657 /* Dev Settings.swift in Sources */,
@@ -4809,6 +4756,7 @@
 				F374F7BF2D54922F006771DD /* Sheet Create Subdomain.swift in Sources */,
 				F3FA61572A1F928500A65AE1 /* File Search.swift in Sources */,
 				F3C9D85C2B31146E00265492 /* User Image.swift in Sources */,
+				F3A563242D9EF114009AA363 /* Info Tab Buttons User Img.swift in Sources */,
 				F354E9832A48CA2000F6E359 /* Topbar Grid Button.swift in Sources */,
 				F3924EE929A28D9D00C4CC77 /* Biometry Usage View.swift in Sources */,
 				F30207D62D8B2A6000C26008 /* Swifty Ping.swift in Sources */,
@@ -4850,6 +4798,7 @@
 				F3D902DF29DC445A004E76C9 /* Cache Limit.swift in Sources */,
 				F330013B2A4CEC320063FE0F /* Apikey List.swift in Sources */,
 				F300889E2B3A17DD0051476C /* Backup VM.swift in Sources */,
+				F3A563332D9EF323009AA363 /* Log Toolbar Actor.swift in Sources */,
 				F3EB09ED2A2987F00073916A /* QuickLook File.swift in Sources */,
 				F385824829D626FE00BEEE1D /* Biometry Button.swift in Sources */,
 				F3B1196D29A13CA6003BB68C /* Value Store.swift in Sources */,
@@ -4863,6 +4812,7 @@
 				F3A123562A667804008E3E20 /* Log Meta Parent.swift in Sources */,
 				F3FF5A0C2A4A386F003A1973 /* Users VM.swift in Sources */,
 				F31BA576295900E30006D126 /* Settings View.swift in Sources */,
+				F3A563222D9EEECB009AA363 /* Allow Drag.swift in Sources */,
 				F3D3DBD129B8007B00096115 /* Browser Topbar.swift in Sources */,
 				F30088A32B3A18A50051476C /* Database VM.swift in Sources */,
 				F3E2BEDB2C1C6B9500B7A6D4 /* Cache List.swift in Sources */,
@@ -4885,6 +4835,7 @@
 				F3D7D87B29E83D1800BCAFFE /* Cache Settings.swift in Sources */,
 				F3464D372A863A6900188B0C /* Send Command.swift in Sources */,
 				F31BA5AC295902B00006D126 /* File Tab.swift in Sources */,
+				F3A5632C2D9EF21B009AA363 /* Log Meta Card.swift in Sources */,
 				F3D264342A66A926005C3777 /* Settings Button.swift in Sources */,
 				F3B6372F2A35A82F00CB374C /* Console Inspector.swift in Sources */,
 				F31F31FB2D52BD940095DD19 /* System lowPowerMode.swift in Sources */,
@@ -4950,11 +4901,9 @@
 				F3AF91C92B4235BB001D8F80 /* SSH Card.swift in Sources */,
 				F384D8BC2D5BE495000FC41D /* Crypto Price Widget.intentdefinition in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F31BA52F2958FF7D0006D126 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F3EE9F962D86234A000120A7 /* Custom Dialog.swift in Sources */,
 				F3EE9F972D86234A000120A7 /* Custom Alert.swift in Sources */,
@@ -4985,6 +4934,7 @@
 				F30C130A2A545E6F00A7EFF0 /* Linking VM.swift in Sources */,
 				F3EB09D42A29547E0073916A /* File View.swift in Sources */,
 				F3FFB7492A57FF0B00220FA5 /* Log Card.swift in Sources */,
+				F3A563322D9EF323009AA363 /* Log Toolbar Actor.swift in Sources */,
 				F3EB09CF2A2953200073916A /* Des Image.swift in Sources */,
 				F34C055A29F11E010031ABE1 /* Server Card VM.swift in Sources */,
 				F35FEB112B09F4D4004DA05D /* Network VM.swift in Sources */,
@@ -5059,12 +5009,11 @@
 				F373CD7E2D88D389008B64BE /* Start Page Helper.swift in Sources */,
 				F32FD7242B1E065700723B88 /* Network Calls.swift in Sources */,
 				F3AB4A992CF4031600A8252F /* Json Formatter Button.swift in Sources */,
+				F3A5632A2D9EF21B009AA363 /* Log Meta Card.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F31BA54A2958FFAF0006D126 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F3FF5A102A4A3ABD003A1973 /* User Card.swift in Sources */,
 				F32F2CDB2D8F7047007CF4DE /* Discover View.swift in Sources */,
@@ -5184,13 +5133,14 @@
 				F36D53212A05B836007324C6 /* Websocket Delegate.swift in Sources */,
 				F3116F272A33E142001F067C /* Folder File.swift in Sources */,
 				F389BB5C2A05B53800911EBF /* Suspended Server Card.swift in Sources */,
-				F3D264382A66A9B9005C3777 /* Settings Parent.swift in Sources */,
 				F353D5052D98427500EC9F3A /* Panel Toolbar.swift in Sources */,
 				F389BB742A05B61F00911EBF /* Credentials VM.swift in Sources */,
 				F333B3BD2B80CF760005B84D /* Preview Property.swift in Sources */,
 				F31F31F92D52BD940095DD19 /* System lowPowerMode.swift in Sources */,
+				F3A563252D9EF114009AA363 /* Info Tab Buttons User Img.swift in Sources */,
 				F32E88D22AF8494100959D49 /* Server List Filter.swift in Sources */,
 				F36D53342A05B8AF007324C6 /* File View.swift in Sources */,
+				F3A563352D9EF323009AA363 /* Log Toolbar Actor.swift in Sources */,
 				F3E2BEE02C1C6BA800B7A6D4 /* Cache List VM.swift in Sources */,
 				F3287A762B10A0E4001AFE54 /* Live Activity.swift in Sources */,
 				F373CD7B2D88D389008B64BE /* Start Page Helper.swift in Sources */,
@@ -5225,6 +5175,7 @@
 				F36D53222A05B83B007324C6 /* Websocket Message.swift in Sources */,
 				F3F0A2DB2D6339510084013B /* Bisquit.Host App.swift in Sources */,
 				F36D533E2A05B8EC007324C6 /* Text File VM.swift in Sources */,
+				F3A563292D9EF21B009AA363 /* Log Meta Card.swift in Sources */,
 				F398E0E12CEB562400AA4DD7 /* Audio Player VM.swift in Sources */,
 				F389BB682A05B5C100911EBF /* Guide.swift in Sources */,
 				F32F2CD02D8F6FCE007CF4DE /* Discover Card Layout.swift in Sources */,
@@ -5232,6 +5183,7 @@
 				F3EE9F952D86234A000120A7 /* Custom Alert.swift in Sources */,
 				F36D53252A05B85B007324C6 /* Data Tab.swift in Sources */,
 				F367977F2A3A5AB6009F2788 /* Log VM.swift in Sources */,
+				F3EE6D7B2D9E8E2000F0A633 /* Bakground Task.swift in Sources */,
 				F3FF5A0D2A4A386F003A1973 /* Users VM.swift in Sources */,
 				F3D295182AF396FD00ED43A0 /* Tabs.swift in Sources */,
 				F3E1D3F42B320A6A009B7062 /* Permission Group Header.swift in Sources */,
@@ -5337,6 +5289,7 @@
 				F36797792A3A55E1009F2788 /* Log List Parent.swift in Sources */,
 				F389BB6F2A05B5F900911EBF /* Cache Expiration.swift in Sources */,
 				F310A2F12A56B0BE001AF45F /* Network VM.swift in Sources */,
+				F3A563212D9EEECB009AA363 /* Allow Drag.swift in Sources */,
 				F389BB612A05B58300911EBF /* Gauge Disk.swift in Sources */,
 				F32FD02E2CF606960038D62C /* Backup Context Menu Control Group.swift in Sources */,
 				F30038CA2D42387600363CF4 /* Sheet Remote File.swift in Sources */,
@@ -5344,23 +5297,22 @@
 				F353B0432D8A31BF00E4EC07 /* Account Parent.swift in Sources */,
 				F3E6FC472A1E85D600410C7C /* SptiteKit BisquitFall.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F337C14E2A8C29CD006F321C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F39E0A942C1BA06C00C4E906 /* Discover Card.swift in Sources */,
 				F3EE9F722D85CAB9000120A7 /* Transparency.swift in Sources */,
 				F3202C752D5583680030B3CC /* Browser Parent.swift in Sources */,
 				F3D295B72AF3A16600ED43A0 /* App Icon Picker.swift in Sources */,
 				F3202D252D562B990030B3CC /* Browser Card Web.swift in Sources */,
+				F3A563272D9EF21B009AA363 /* Log Meta Card.swift in Sources */,
 				F3D2953F2AF39D6B00ED43A0 /* Network VM.swift in Sources */,
 				F3D295F12AF3A52700ED43A0 /* Create Button.swift in Sources */,
 				F3D295BA2AF3A17500ED43A0 /* Dev Settings.swift in Sources */,
+				F3EE6D772D9E8E2000F0A633 /* Bakground Task.swift in Sources */,
 				F3202D1E2D562B980030B3CC /* Browser Card VDS.swift in Sources */,
 				F3D2953D2AF39D3A00ED43A0 /* Nav Destinations.swift in Sources */,
-				F3D2958B2AF39FD500ED43A0 /* Settings Parent.swift in Sources */,
 				F374F7C12D54922F006771DD /* Sheet Create Subdomain.swift in Sources */,
 				F3D295392AF39D1B00ED43A0 /* Value Store.swift in Sources */,
 				F32F2CDD2D8F7047007CF4DE /* Discover View.swift in Sources */,
@@ -5373,6 +5325,7 @@
 				F353B0442D8A31BF00E4EC07 /* Account Parent.swift in Sources */,
 				F3D295C32AF3A1CC00ED43A0 /* Apikey List.swift in Sources */,
 				F3D295DE2AF3A36700ED43A0 /* Schedule List.swift in Sources */,
+				F3A563202D9EEECB009AA363 /* Allow Drag.swift in Sources */,
 				F3D2955E2AF39E6E00ED43A0 /* Panel Model.swift in Sources */,
 				F3202D132D562B250030B3CC /* Browser Card MC.swift in Sources */,
 				F3C9D84B2B30304F00265492 /* Des Video Watch.swift in Sources */,
@@ -5394,6 +5347,7 @@
 				F3D2957A2AF39F3700ED43A0 /* User View.swift in Sources */,
 				F3D7F8552C8F258B00368ECE /* Enable 2FA View.swift in Sources */,
 				F3D295E72AF3A3A900ED43A0 /* Create Backup Button.swift in Sources */,
+				F3A563302D9EF323009AA363 /* Log Toolbar Actor.swift in Sources */,
 				F3D2953E2AF39D5E00ED43A0 /* Bisquit.Host App.swift in Sources */,
 				F3D295562AF39E1A00ED43A0 /* Tip Cloud Keys.swift in Sources */,
 				F3D2954F2AF39DE600ED43A0 /* Browser VM.swift in Sources */,
@@ -5580,11 +5534,9 @@
 				F3202CDF2D562A620030B3CC /* Browser List MC.swift in Sources */,
 				F3D295872AF39FB900ED43A0 /* Server Card VM.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3464CF42A862D2C00188B0C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F3464D112A8632F200188B0C /* Create Backup.swift in Sources */,
 				F3464D072A862DBE00188B0C /* Power Signal App Enum.swift in Sources */,
@@ -5596,11 +5548,9 @@
 				F3464D082A862DC200188B0C /* Change Power.swift in Sources */,
 				F3464D0F2A862F9700188B0C /* Send Command.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F38637332A8641120069F074 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F36B73882C8AEAE700E858FE /* Model Asset.swift in Sources */,
 				F3FDFF8B2C89130F009EBB5C /* Resources Widget.swift in Sources */,
@@ -5633,14 +5583,11 @@
 				F337B40B2A89FC5100DD79AA /* Accessory Circular View.swift in Sources */,
 				F337B40E2A89FE0D00DD79AA /* Static Provider.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3A7CEBF2C8B685500413400 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F3A7CF122C8C4E3E00413400 /* Discover Card.swift in Sources */,
-				F3255E182C9049DC008E04DE /* Settings Parent.swift in Sources */,
 				F3A7CF652C8CA5FE00413400 /* API Key.swift in Sources */,
 				F3255E1C2C904A48008E04DE /* Account View.swift in Sources */,
 				F3FF3E8E2D93576B00EDFBC6 /* Update Checker.swift in Sources */,
@@ -5737,11 +5684,9 @@
 				F32F2CD72D8F6FDC007CF4DE /* Avg Color.swift in Sources */,
 				F3A7CF112C8C4C3100413400 /* Server List Node Filter.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3BD76EE2A43C890003E7385 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F3D295172AF396FD00ED43A0 /* Tabs.swift in Sources */,
 				F3FD9F9A2C651AF300A69314 /* Upload File.swift in Sources */,
@@ -5772,6 +5717,7 @@
 				F3202C922D5590FE0030B3CC /* Map View.swift in Sources */,
 				F3AB4A922CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
 				F3FF3E962D9411B400EDFBC6 /* Intro Parent.swift in Sources */,
+				F3A563342D9EF323009AA363 /* Log Toolbar Actor.swift in Sources */,
 				F35081AF2AF30E2B00835CC0 /* Tip Cloud Keys.swift in Sources */,
 				F37B907A2BFEA00300597624 /* Ornament Info Settings.swift in Sources */,
 				F32716DF2CF62CC300F2DC31 /* Section Header.swift in Sources */,
@@ -5790,6 +5736,7 @@
 				F3202D572D5758DC0030B3CC /* Log Card.swift in Sources */,
 				F3464D1F2A86396500188B0C /* Change Power.swift in Sources */,
 				F30B61CB2B2905F300F447B4 /* Websocket Message.swift in Sources */,
+				F3EE6D762D9E8E2000F0A633 /* Bakground Task.swift in Sources */,
 				F30C130B2A545ED900A7EFF0 /* Linking VM.swift in Sources */,
 				F32716DD2CF62C9900F2DC31 /* Backup List.swift in Sources */,
 				F3FF3E8A2D93576B00EDFBC6 /* Update Checker.swift in Sources */,
@@ -5861,6 +5808,7 @@
 				F3464D312A863A6600188B0C /* Send Command.swift in Sources */,
 				F3202CD82D5624B10030B3CC /* Plan.swift in Sources */,
 				F38928382A4460CC00561CDF /* Server Card VM.swift in Sources */,
+				F3A5632D2D9EF21B009AA363 /* Log Meta Card.swift in Sources */,
 				F3E1B2D02C903C9300AED3F1 /* Server Card Context Menu.swift in Sources */,
 				F38928302A445E9700561CDF /* Server List.swift in Sources */,
 				F3FC99112C65747700150823 /* Archieving.swift in Sources */,
@@ -5892,20 +5840,16 @@
 				F3AB4A7D2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
 				F3A7CF702A44FD5300331B51 /* Server Card Parent.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3D296032AF3BE5800ED43A0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F3D2960C2AF3BE5800ED43A0 /* UI TestsLaunchTests.swift in Sources */,
 				F3D2960A2AF3BE5800ED43A0 /* UI Tests.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3E08E9C2A2CE17800116C1C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F32FD71B2B1E043F00723B88 /* Ansi.swift in Sources */,
 				F300892B2B3C55DA0051476C /* File Permissions View.swift in Sources */,
@@ -6002,6 +5946,7 @@
 				F3458BF02B36EA49000E8324 /* App Delegate.swift in Sources */,
 				F32FD7192B1E042C00723B88 /* Websocket Delegate.swift in Sources */,
 				F30C13122A54609000A7EFF0 /* Server List.swift in Sources */,
+				F3A563282D9EF21B009AA363 /* Log Meta Card.swift in Sources */,
 				F3AB4A782CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
 				F39EA2DF2D5CB5E200329468 /* Linking VM.swift in Sources */,
 				F32FD7172B1E042400723B88 /* Websocket.swift in Sources */,
@@ -6015,20 +5960,16 @@
 				F31F32032D52DB950095DD19 /* Color Theme.swift in Sources */,
 				F35B9F5C2A2DC8D60045D014 /* Nav State.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3E2BEF12C1DA07E00B7A6D4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F3E2BEFA2C1DA07E00B7A6D4 /* Contact Provider Extension.swift in Sources */,
 				F3E2BEFB2C1DA07E00B7A6D4 /* Extension Root Container Enumerator.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3FDFF5B2C89120D009EBB5C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F36B73862C8AEAE700E858FE /* Model Asset.swift in Sources */,
 				F3FDFF642C89120D009EBB5C /* Intent Handler.swift in Sources */,
@@ -6036,7 +5977,6 @@
 				F384D8BE2D5BE495000FC41D /* Crypto Price Widget.intentdefinition in Sources */,
 				F36B73702C8A4CAF00E858FE /* Refresh Button Intent.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
@@ -6105,7 +6045,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		F3000E11295A341100ABD30A /* Debug */ = {
+		F3000E11295A341100ABD30A /* Debug configuration for PBXNativeTarget "tvOS" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
@@ -6139,7 +6079,7 @@
 			};
 			name = Debug;
 		};
-		F3000E12295A341100ABD30A /* Release */ = {
+		F3000E12295A341100ABD30A /* Release configuration for PBXNativeTarget "tvOS" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
@@ -6174,7 +6114,7 @@
 			};
 			name = Release;
 		};
-		F31BA5412958FF7E0006D126 /* Debug */ = {
+		F31BA5412958FF7E0006D126 /* Debug configuration for PBXProject "Bisquit.Host" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -6233,7 +6173,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 5.0;
+				MARKETING_VERSION = 5.0.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -6246,7 +6186,7 @@
 			};
 			name = Debug;
 		};
-		F31BA5422958FF7E0006D126 /* Release */ = {
+		F31BA5422958FF7E0006D126 /* Release configuration for PBXProject "Bisquit.Host" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -6299,7 +6239,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 5.0;
+				MARKETING_VERSION = 5.0.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "";
@@ -6311,7 +6251,7 @@
 			};
 			name = Release;
 		};
-		F31BA5442958FF7E0006D126 /* Debug */ = {
+		F31BA5442958FF7E0006D126 /* Debug configuration for PBXNativeTarget "watchOS" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -6346,7 +6286,7 @@
 			};
 			name = Debug;
 		};
-		F31BA5452958FF7E0006D126 /* Release */ = {
+		F31BA5452958FF7E0006D126 /* Release configuration for PBXNativeTarget "watchOS" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -6381,7 +6321,7 @@
 			};
 			name = Release;
 		};
-		F31BA5482958FF7E0006D126 /* Debug */ = {
+		F31BA5482958FF7E0006D126 /* Debug configuration for PBXNativeTarget "Bisquit.Host" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "coin love streamer cool";
@@ -6397,7 +6337,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOS/iOS.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.debug;
+				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSCameraUsageDescription = "App uses camera to create elements with dynamic color based on camera capture";
@@ -6434,7 +6374,7 @@
 			};
 			name = Debug;
 		};
-		F31BA5492958FF7E0006D126 /* Release */ = {
+		F31BA5492958FF7E0006D126 /* Release configuration for PBXNativeTarget "Bisquit.Host" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "coin love streamer cool";
@@ -6487,7 +6427,7 @@
 			};
 			name = Release;
 		};
-		F31BA55F2958FFB00006D126 /* Debug */ = {
+		F31BA55F2958FFB00006D126 /* Debug configuration for PBXNativeTarget "Clip Demo" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "coin love streamer cool";
@@ -6530,7 +6470,7 @@
 			};
 			name = Debug;
 		};
-		F31BA5602958FFB00006D126 /* Release */ = {
+		F31BA5602958FFB00006D126 /* Release configuration for PBXNativeTarget "Clip Demo" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "coin love streamer cool";
@@ -6574,7 +6514,7 @@
 			};
 			name = Release;
 		};
-		F337C1592A8C29CE006F321C /* Debug */ = {
+		F337C1592A8C29CE006F321C /* Debug configuration for PBXNativeTarget "Unit Tests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -6598,7 +6538,7 @@
 			};
 			name = Debug;
 		};
-		F337C15A2A8C29CE006F321C /* Release */ = {
+		F337C15A2A8C29CE006F321C /* Release configuration for PBXNativeTarget "Unit Tests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -6622,7 +6562,7 @@
 			};
 			name = Release;
 		};
-		F3464D042A862D2D00188B0C /* Debug */ = {
+		F3464D042A862D2D00188B0C /* Debug configuration for PBXNativeTarget "Intent" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -6654,7 +6594,7 @@
 			};
 			name = Debug;
 		};
-		F3464D052A862D2D00188B0C /* Release */ = {
+		F3464D052A862D2D00188B0C /* Release configuration for PBXNativeTarget "Intent" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -6686,7 +6626,7 @@
 			};
 			name = Release;
 		};
-		F38637492A8641150069F074 /* Debug */ = {
+		F38637492A8641150069F074 /* Debug configuration for PBXNativeTarget "Widgets" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -6726,7 +6666,7 @@
 			};
 			name = Debug;
 		};
-		F386374A2A8641150069F074 /* Release */ = {
+		F386374A2A8641150069F074 /* Release configuration for PBXNativeTarget "Widgets" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -6765,7 +6705,7 @@
 			};
 			name = Release;
 		};
-		F3A7CED42C8B685600413400 /* Debug */ = {
+		F3A7CED42C8B685600413400 /* Debug configuration for PBXNativeTarget "iMessage" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
@@ -6794,7 +6734,7 @@
 			};
 			name = Debug;
 		};
-		F3A7CED52C8B685600413400 /* Release */ = {
+		F3A7CED52C8B685600413400 /* Release configuration for PBXNativeTarget "iMessage" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
@@ -6823,7 +6763,7 @@
 			};
 			name = Release;
 		};
-		F3BD77022A43C892003E7385 /* Debug */ = {
+		F3BD77022A43C892003E7385 /* Debug configuration for PBXNativeTarget "visionOS" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -6858,7 +6798,7 @@
 			};
 			name = Debug;
 		};
-		F3BD77032A43C892003E7385 /* Release */ = {
+		F3BD77032A43C892003E7385 /* Release configuration for PBXNativeTarget "visionOS" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -6893,7 +6833,7 @@
 			};
 			name = Release;
 		};
-		F3D296102AF3BE5800ED43A0 /* Debug */ = {
+		F3D296102AF3BE5800ED43A0 /* Debug configuration for PBXNativeTarget "UI Tests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -6913,7 +6853,7 @@
 			};
 			name = Debug;
 		};
-		F3D296112AF3BE5800ED43A0 /* Release */ = {
+		F3D296112AF3BE5800ED43A0 /* Release configuration for PBXNativeTarget "UI Tests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -6933,7 +6873,7 @@
 			};
 			name = Release;
 		};
-		F3E08EAC2A2CE17A00116C1C /* Debug */ = {
+		F3E08EAC2A2CE17A00116C1C /* Debug configuration for PBXNativeTarget "macOS" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -6972,7 +6912,7 @@
 			};
 			name = Debug;
 		};
-		F3E08EAD2A2CE17A00116C1C /* Release */ = {
+		F3E08EAD2A2CE17A00116C1C /* Release configuration for PBXNativeTarget "macOS" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -7011,7 +6951,7 @@
 			};
 			name = Release;
 		};
-		F3E2BF002C1DA07E00B7A6D4 /* Debug */ = {
+		F3E2BF002C1DA07E00B7A6D4 /* Debug configuration for PBXNativeTarget "Contact Provider" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -7039,7 +6979,7 @@
 			};
 			name = Debug;
 		};
-		F3E2BF012C1DA07E00B7A6D4 /* Release */ = {
+		F3E2BF012C1DA07E00B7A6D4 /* Release configuration for PBXNativeTarget "Contact Provider" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -7067,7 +7007,7 @@
 			};
 			name = Release;
 		};
-		F3FDFF7A2C89120D009EBB5C /* Debug */ = {
+		F3FDFF7A2C89120D009EBB5C /* Debug configuration for PBXNativeTarget "Intent Handler" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Intent Handler/Intent Handler.entitlements";
@@ -7101,7 +7041,7 @@
 			};
 			name = Debug;
 		};
-		F3FDFF7B2C89120D009EBB5C /* Release */ = {
+		F3FDFF7B2C89120D009EBB5C /* Release configuration for PBXNativeTarget "Intent Handler" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Intent Handler/Intent Handler.entitlements";
@@ -7141,127 +7081,113 @@
 		F3000E10295A341100ABD30A /* Build configuration list for PBXNativeTarget "tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F3000E11295A341100ABD30A /* Debug */,
-				F3000E12295A341100ABD30A /* Release */,
+				F3000E11295A341100ABD30A /* Debug configuration for PBXNativeTarget "tvOS" */,
+				F3000E12295A341100ABD30A /* Release configuration for PBXNativeTarget "tvOS" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		F31BA51E2958FF7C0006D126 /* Build configuration list for PBXProject "Bisquit.Host" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F31BA5412958FF7E0006D126 /* Debug */,
-				F31BA5422958FF7E0006D126 /* Release */,
+				F31BA5412958FF7E0006D126 /* Debug configuration for PBXProject "Bisquit.Host" */,
+				F31BA5422958FF7E0006D126 /* Release configuration for PBXProject "Bisquit.Host" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		F31BA5432958FF7E0006D126 /* Build configuration list for PBXNativeTarget "watchOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F31BA5442958FF7E0006D126 /* Debug */,
-				F31BA5452958FF7E0006D126 /* Release */,
+				F31BA5442958FF7E0006D126 /* Debug configuration for PBXNativeTarget "watchOS" */,
+				F31BA5452958FF7E0006D126 /* Release configuration for PBXNativeTarget "watchOS" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		F31BA5472958FF7E0006D126 /* Build configuration list for PBXNativeTarget "Bisquit.Host" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F31BA5482958FF7E0006D126 /* Debug */,
-				F31BA5492958FF7E0006D126 /* Release */,
+				F31BA5482958FF7E0006D126 /* Debug configuration for PBXNativeTarget "Bisquit.Host" */,
+				F31BA5492958FF7E0006D126 /* Release configuration for PBXNativeTarget "Bisquit.Host" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		F31BA55E2958FFB00006D126 /* Build configuration list for PBXNativeTarget "Clip Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F31BA55F2958FFB00006D126 /* Debug */,
-				F31BA5602958FFB00006D126 /* Release */,
+				F31BA55F2958FFB00006D126 /* Debug configuration for PBXNativeTarget "Clip Demo" */,
+				F31BA5602958FFB00006D126 /* Release configuration for PBXNativeTarget "Clip Demo" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		F337C1582A8C29CE006F321C /* Build configuration list for PBXNativeTarget "Unit Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F337C1592A8C29CE006F321C /* Debug */,
-				F337C15A2A8C29CE006F321C /* Release */,
+				F337C1592A8C29CE006F321C /* Debug configuration for PBXNativeTarget "Unit Tests" */,
+				F337C15A2A8C29CE006F321C /* Release configuration for PBXNativeTarget "Unit Tests" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		F3464D032A862D2D00188B0C /* Build configuration list for PBXNativeTarget "Intent" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F3464D042A862D2D00188B0C /* Debug */,
-				F3464D052A862D2D00188B0C /* Release */,
+				F3464D042A862D2D00188B0C /* Debug configuration for PBXNativeTarget "Intent" */,
+				F3464D052A862D2D00188B0C /* Release configuration for PBXNativeTarget "Intent" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		F38637482A8641150069F074 /* Build configuration list for PBXNativeTarget "Widgets" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F38637492A8641150069F074 /* Debug */,
-				F386374A2A8641150069F074 /* Release */,
+				F38637492A8641150069F074 /* Debug configuration for PBXNativeTarget "Widgets" */,
+				F386374A2A8641150069F074 /* Release configuration for PBXNativeTarget "Widgets" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		F3A7CED32C8B685600413400 /* Build configuration list for PBXNativeTarget "iMessage" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F3A7CED42C8B685600413400 /* Debug */,
-				F3A7CED52C8B685600413400 /* Release */,
+				F3A7CED42C8B685600413400 /* Debug configuration for PBXNativeTarget "iMessage" */,
+				F3A7CED52C8B685600413400 /* Release configuration for PBXNativeTarget "iMessage" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		F3BD77012A43C892003E7385 /* Build configuration list for PBXNativeTarget "visionOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F3BD77022A43C892003E7385 /* Debug */,
-				F3BD77032A43C892003E7385 /* Release */,
+				F3BD77022A43C892003E7385 /* Debug configuration for PBXNativeTarget "visionOS" */,
+				F3BD77032A43C892003E7385 /* Release configuration for PBXNativeTarget "visionOS" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		F3D2960F2AF3BE5800ED43A0 /* Build configuration list for PBXNativeTarget "UI Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F3D296102AF3BE5800ED43A0 /* Debug */,
-				F3D296112AF3BE5800ED43A0 /* Release */,
+				F3D296102AF3BE5800ED43A0 /* Debug configuration for PBXNativeTarget "UI Tests" */,
+				F3D296112AF3BE5800ED43A0 /* Release configuration for PBXNativeTarget "UI Tests" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		F3E08EAE2A2CE17A00116C1C /* Build configuration list for PBXNativeTarget "macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F3E08EAC2A2CE17A00116C1C /* Debug */,
-				F3E08EAD2A2CE17A00116C1C /* Release */,
+				F3E08EAC2A2CE17A00116C1C /* Debug configuration for PBXNativeTarget "macOS" */,
+				F3E08EAD2A2CE17A00116C1C /* Release configuration for PBXNativeTarget "macOS" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		F3E2BEFF2C1DA07E00B7A6D4 /* Build configuration list for PBXNativeTarget "Contact Provider" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F3E2BF002C1DA07E00B7A6D4 /* Debug */,
-				F3E2BF012C1DA07E00B7A6D4 /* Release */,
+				F3E2BF002C1DA07E00B7A6D4 /* Debug configuration for PBXNativeTarget "Contact Provider" */,
+				F3E2BF012C1DA07E00B7A6D4 /* Release configuration for PBXNativeTarget "Contact Provider" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		F3FDFF7F2C89120D009EBB5C /* Build configuration list for PBXNativeTarget "Intent Handler" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F3FDFF7A2C89120D009EBB5C /* Debug */,
-				F3FDFF7B2C89120D009EBB5C /* Release */,
+				F3FDFF7A2C89120D009EBB5C /* Debug configuration for PBXNativeTarget "Intent Handler" */,
+				F3FDFF7B2C89120D009EBB5C /* Release configuration for PBXNativeTarget "Intent Handler" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */

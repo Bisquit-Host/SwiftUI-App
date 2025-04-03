@@ -14,24 +14,7 @@ struct LogMetaView: View {
     var body: some View {
         List {
             ForEach(simpleProperties.sorted { $0.key < $1.key }, id: \.key) { key, value in
-#if os(tvOS)
-                Button {
-                    
-                } label: {
-                    HStack {
-                        Text(key)
-                        
-                        Spacer()
-                        
-                        Text(value)
-                            .secondary()
-                    }
-                }
-#else
-                Section(key) {
-                    Text(value)
-                }
-#endif
+                LogMetaCard(key: key, value: value)
             }
             
             ForEach(arrayProperties.sorted { $0.key < $1.key }, id: \.key) { key, values in

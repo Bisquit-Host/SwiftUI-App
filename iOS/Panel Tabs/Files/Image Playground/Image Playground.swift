@@ -167,32 +167,7 @@ struct ImagePlayground: View {
     }
 }
 
-fileprivate struct AllowDrag: ViewModifier {
-    private let url: URL?
-    
-    init(_ url: URL?) {
-        self.url = url
-    }
-    
-    func body(content: Content) -> some View {
-        if let url {
-            content
-                .onDrag {
-                    NSItemProvider(object: url as NSURL)
-                }
-        } else {
-            content
-        }
-    }
-}
-
-fileprivate extension View {
-    func allowDrag(_ url: URL?) -> some View {
-        self.modifier(AllowDrag(url))
-    }
-}
-
-@available(iOS 18.1, macOS 15.1, *)
+@available(iOS 18.1, *)
 #Preview {
     NavigationView {
         ImagePlayground(at: "")

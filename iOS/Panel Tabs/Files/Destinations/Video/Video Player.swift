@@ -10,7 +10,7 @@ struct VideoPlayerView: View {
     
     var body: some View {
         UIVideoPlayer(videoPlayerVM.player)
-            .onAppear {
+            .task {
                 setAudioSessionCategory(to: .playback)
                 videoPlayerVM.player.play()
             }

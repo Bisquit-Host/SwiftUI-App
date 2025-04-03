@@ -23,7 +23,11 @@ import Pow
 struct BisquitHostApp: App {
     @StateObject private var store = ValueStore()
     private var navState = NavState()
-
+    
+#if os(iOS) || os(tvOS) || os(visionOS)
+    @Environment(\.scenePhase) private var phase
+#endif
+    
 #if os(iOS)
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 #endif
@@ -81,6 +85,17 @@ struct BisquitHostApp: App {
         .modelContainer(container)
         .environmentObject(store)
         .defaultAppStorage(.init(suiteName: "group.Bisquit-host")!)
+#if os(iOS) || os(tvOS) || os(visionOS)
+        .onChange(of: phase) { _, newPhase in
+            switch newPhase {
+            case .background: BackgroundTaskManager.scheduleAppRefresh()
+            default: break
+            }
+        }
+        .backgroundTask(.appRefresh("host.bisquit.Bisquit-Host.Background-Task")) {
+            ServerListVM().loadServers()
+        }
+#endif
 #if os(macOS)
         .windowStyle(.hiddenTitleBar)
 #endif
