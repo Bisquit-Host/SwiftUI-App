@@ -11,8 +11,7 @@ struct LogList: View {
         List {
             LogTopbar()
             
-            ForEach(vm.logsByMonth.indices, id: \.self) { index in
-                let logs = vm.logsByMonth[index]
+            ForEach(vm.logsByMonth, id: \.self) { logs in
                 let month = vm.monthName(for: logs.first!.timestamp)
                 
                 Section {
@@ -59,36 +58,10 @@ struct LogList: View {
                 }
             }
             
-#if !os(watchOS)
+#if !os(watchOS) && !os(tvOS)
             if !vm.logs.isEmpty {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Menu {
-                        Section {
-                            Button {
-                                vm.selectedActor = nil
-                            } label: {
-                                Label {
-                                    Text("All")
-                                } icon: {
-                                    if vm.selectedActor == nil {
-                                        Image(systemName: "checkmark")
-                                    }
-                                }
-                            }
-                        }
-                        
-                        ForEach(vm.actors, id: \.self) { actor in
-                            LogToolbarActor(actor)
-                        }
-                    } label: {
-                        Image(systemName: "line.3.horizontal.decrease.circle")
-                            .footnote(.bold)
-                            .frame(width: 35, height: 35)
-                            .background(.ultraThinMaterial, in: .circle)
-                            .symbolVariant(vm.selectedActor == nil ? .none : .fill)
-                            .animation(.default, value: vm.selectedActor)
-                    }
-                    .foregroundStyle(.foreground)
+                    LogListFilter()
                 }
             }
 #endif

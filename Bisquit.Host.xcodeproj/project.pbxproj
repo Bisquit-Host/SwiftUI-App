@@ -104,6 +104,12 @@
 		F3015DEA2D9F27E800B9BCC6 /* Log Card Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3015DE52D9F27E800B9BCC6 /* Log Card Image.swift */; };
 		F3015DEB2D9F27E800B9BCC6 /* Log Card Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3015DE52D9F27E800B9BCC6 /* Log Card Image.swift */; };
 		F3015DEC2D9F27E800B9BCC6 /* Log Card Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3015DE52D9F27E800B9BCC6 /* Log Card Image.swift */; };
+		F3015DEE2D9F427700B9BCC6 /* Log List Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3015DED2D9F427700B9BCC6 /* Log List Filter.swift */; };
+		F3015DEF2D9F427700B9BCC6 /* Log List Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3015DED2D9F427700B9BCC6 /* Log List Filter.swift */; };
+		F3015DF02D9F427700B9BCC6 /* Log List Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3015DED2D9F427700B9BCC6 /* Log List Filter.swift */; };
+		F3015DF12D9F427700B9BCC6 /* Log List Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3015DED2D9F427700B9BCC6 /* Log List Filter.swift */; };
+		F3015DF22D9F427700B9BCC6 /* Log List Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3015DED2D9F427700B9BCC6 /* Log List Filter.swift */; };
+		F3015DF32D9F427700B9BCC6 /* Log List Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3015DED2D9F427700B9BCC6 /* Log List Filter.swift */; };
 		F30207D52D8B2A6000C26008 /* Swifty Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30207D42D8B2A6000C26008 /* Swifty Ping.swift */; };
 		F30207D62D8B2A6000C26008 /* Swifty Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30207D42D8B2A6000C26008 /* Swifty Ping.swift */; };
 		F303214B2B3FEA45002A73B8 /* Panel Settings View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F303214A2B3FEA45002A73B8 /* Panel Settings View.swift */; };
@@ -1764,6 +1770,7 @@
 		F3015DD52D9F24F600B9BCC6 /* Log Card Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log Card Event.swift"; sourceTree = "<group>"; };
 		F3015DDD2D9F26C600B9BCC6 /* Log Card Timestamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log Card Timestamp.swift"; sourceTree = "<group>"; };
 		F3015DE52D9F27E800B9BCC6 /* Log Card Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log Card Image.swift"; sourceTree = "<group>"; };
+		F3015DED2D9F427700B9BCC6 /* Log List Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log List Filter.swift"; sourceTree = "<group>"; };
 		F30207D42D8B2A6000C26008 /* Swifty Ping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swifty Ping.swift"; sourceTree = "<group>"; };
 		F303214A2B3FEA45002A73B8 /* Panel Settings View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Settings View.swift"; sourceTree = "<group>"; };
 		F304498629E98AE4006DC0C7 /* iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOS.entitlements; sourceTree = "<group>"; };
@@ -3642,6 +3649,7 @@
 			children = (
 				F36797772A3A55E1009F2788 /* Log List Parent.swift */,
 				F3DE1B972A556CCE007A1624 /* Log List.swift */,
+				F3015DED2D9F427700B9BCC6 /* Log List Filter.swift */,
 				F367977D2A3A5AB6009F2788 /* Log VM.swift */,
 				F3A5632E2D9EF323009AA363 /* Log Toolbar Actor.swift */,
 				F367977A2A3A55F4009F2788 /* Log Card.swift */,
@@ -4554,6 +4562,7 @@
 				F3BC03BD2B1FFBD50011F98A /* Backup Context Menu.swift in Sources */,
 				F33CDC022A26B930008D0214 /* Browser.swift in Sources */,
 				F30088FA2B3B561E0051476C /* User List Parent.swift in Sources */,
+				F3015DF02D9F427700B9BCC6 /* Log List Filter.swift in Sources */,
 				F3202D282D562B9A0030B3CC /* Browser Card Bot.swift in Sources */,
 				F30088FF2B3B62050051476C /* User Invitation Permission.swift in Sources */,
 				F3BC03B82B1FF8E40011F98A /* Database Context Menu.swift in Sources */,
@@ -4792,6 +4801,7 @@
 				F354E9832A48CA2000F6E359 /* Topbar Grid Button.swift in Sources */,
 				F3924EE929A28D9D00C4CC77 /* Biometry Usage View.swift in Sources */,
 				F30207D62D8B2A6000C26008 /* Swifty Ping.swift in Sources */,
+				F3015DF22D9F427700B9BCC6 /* Log List Filter.swift in Sources */,
 				F3553FB92B4093E600EF0FD2 /* Allocation List.swift in Sources */,
 				F3F5BC962BF7668E00EB8FB1 /* Sensitivity Analyzer.swift in Sources */,
 				F300C4632D8C388400743300 /* Background Image Picker.swift in Sources */,
@@ -5116,6 +5126,7 @@
 				F380B32A2BD7C529009062E8 /* Upload Preview List.swift in Sources */,
 				F389BB652A05B5AF00911EBF /* Formatters.swift in Sources */,
 				F3A31B062B0B144200F89C51 /* Server List Node Filter.swift in Sources */,
+				F3015DEF2D9F427700B9BCC6 /* Log List Filter.swift in Sources */,
 				F36D53442A05B90D007324C6 /* FileTab Context Menu.swift in Sources */,
 				F39872172A1B73830022B00E /* Video File.swift in Sources */,
 				F36D53312A05B89C007324C6 /* Schedule Card.swift in Sources */,
@@ -5514,6 +5525,7 @@
 				F3D295542AF39E1200ED43A0 /* Carousel Button Style.swift in Sources */,
 				F3D295752AF39F1F00ED43A0 /* File Icon.swift in Sources */,
 				F3D2959D2AF3A07F00ED43A0 /* Video File.swift in Sources */,
+				F3015DF32D9F427700B9BCC6 /* Log List Filter.swift in Sources */,
 				F3202CD02D559B240030B3CC /* Contacts Provider.swift in Sources */,
 				F3E024C82B228F4C00FFF686 /* New Task Sheet.swift in Sources */,
 				F3202CDD2D5624B10030B3CC /* Plan.swift in Sources */,
@@ -5745,6 +5757,7 @@
 				F35F65952B1D1A0D00431EB7 /* Panel VM.swift in Sources */,
 				F39919172A4653A300CC73DA /* Linear Gauge.swift in Sources */,
 				F30089322B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */,
+				F3015DF12D9F427700B9BCC6 /* Log List Filter.swift in Sources */,
 				F35FEB0E2B09F4D3004DA05D /* Network VM.swift in Sources */,
 				F3CE5C502D53A5820094BD7B /* Subdomain VM.swift in Sources */,
 				F3CE5C512D53A5820094BD7B /* Subdomain List.swift in Sources */,
@@ -5994,6 +6007,7 @@
 				F3458BF02B36EA49000E8324 /* App Delegate.swift in Sources */,
 				F32FD7192B1E042C00723B88 /* Websocket Delegate.swift in Sources */,
 				F30C13122A54609000A7EFF0 /* Server List.swift in Sources */,
+				F3015DEE2D9F427700B9BCC6 /* Log List Filter.swift in Sources */,
 				F3A563282D9EF21B009AA363 /* Log Meta Card.swift in Sources */,
 				F3AB4A782CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
 				F39EA2DF2D5CB5E200329468 /* Linking VM.swift in Sources */,
