@@ -51,12 +51,7 @@ struct LogCard: View {
                             .secondary()
                         }
                         
-                        TimelineView(.everyMinute) { _ in
-                            Text(timeSinceISO(log.timestamp))
-                                .monospacedDigit()
-                                .secondary()
-                                .footnote()
-                        }
+                        LogCardTimestamp(log.timestamp)
                     }
                 }
                 
@@ -80,37 +75,6 @@ struct LogCard: View {
                 .presentationDragIndicator(.hidden)
                 .presentationDetents([.medium, .large], selection: .constant(.medium))
         }
-    }
-    
-    private func timeSinceISO(_ date: String) -> LocalizedStringKey {
-        let formatter = ISO8601DateFormatter()
-        
-        guard let date = formatter.date(from: date) else {
-            return "-"
-        }
-        
-        let sinceNowSeconds = Int(date.timeIntervalSinceNow * -1)
-        
-        guard sinceNowSeconds > 1 else {
-            return "Now"
-        }
-        
-        guard sinceNowSeconds > 60 else {
-            return "\(sinceNowSeconds) seconds ago"
-        }
-        
-        let sinceNowMinutes = sinceNowSeconds / 60
-        guard sinceNowMinutes > 60 else {
-            return "\(sinceNowMinutes) minutes ago"
-        }
-        
-        let sinceNowHours = sinceNowMinutes / 60
-        guard sinceNowHours > 24 else {
-            return "\(sinceNowHours) hours ago"
-        }
-        
-        let sinceNowDays = sinceNowHours / 24
-        return "\(sinceNowDays) days ago"
     }
 }
 

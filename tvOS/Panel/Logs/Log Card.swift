@@ -56,8 +56,7 @@ struct LogCard: View {
                 
                 Spacer()
                 
-                Text(timeSinceISO(log.timestamp))
-                    .footnote()
+                LogCardTimestamp(log.timestamp)
                 
                 if !log.properties.isEmpty {
                     Image(systemName: "info.circle")

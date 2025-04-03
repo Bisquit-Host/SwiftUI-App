@@ -48,8 +48,7 @@ struct LogCard: View {
                 
                 LogCardEvent(log)
                 
-                Text(timeSinceISO(log.timestamp))
-                    .footnote(.semibold)
+                LogCardTimestamp(log.timestamp)
             }
             
             //            if !log.properties.isEmpty {
