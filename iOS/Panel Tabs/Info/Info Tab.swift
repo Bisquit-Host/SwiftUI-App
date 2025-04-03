@@ -51,7 +51,7 @@ struct InfoTab: View {
         }
         .ignoresSafeArea()
         .toolbarBackground(.visible, for: .tabBar)
-        .onAppear {
+        .task {
             if let fileName = UserDefaults.standard.string(forKey: "background_image_fileName"),
                let image = BackgroundImageHelper.loadImageFromDisk(fileName) {
                 selectedImage = image

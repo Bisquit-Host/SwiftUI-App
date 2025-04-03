@@ -32,7 +32,7 @@ struct AuthView: View {
         .task {
             vm.fetchServers(store.adminServerList)
         }
-        .onAppear {
+        .task {
             delay(2) {
                 //            delay(5) {
                 navState.navigate(.toServerList)

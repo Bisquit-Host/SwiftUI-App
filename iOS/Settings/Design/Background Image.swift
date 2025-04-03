@@ -10,7 +10,7 @@ struct BackgroundImage: View {
             .resizable()
             .blur(radius: 55, opaque: true)
             .ignoresSafeArea()
-            .onAppear {
+            .task {
                 update()
             }
             .onChange(of: store.updateBackground) {
