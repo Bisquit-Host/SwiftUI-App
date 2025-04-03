@@ -110,6 +110,7 @@
 		F3015DF12D9F427700B9BCC6 /* Log List Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3015DED2D9F427700B9BCC6 /* Log List Filter.swift */; };
 		F3015DF22D9F427700B9BCC6 /* Log List Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3015DED2D9F427700B9BCC6 /* Log List Filter.swift */; };
 		F3015DF32D9F427700B9BCC6 /* Log List Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3015DED2D9F427700B9BCC6 /* Log List Filter.swift */; };
+		F3015DF52D9F468200B9BCC6 /* Log Toolbar Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A5632E2D9EF323009AA363 /* Log Toolbar Actor.swift */; };
 		F30207D52D8B2A6000C26008 /* Swifty Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30207D42D8B2A6000C26008 /* Swifty Ping.swift */; };
 		F30207D62D8B2A6000C26008 /* Swifty Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30207D42D8B2A6000C26008 /* Swifty Ping.swift */; };
 		F303214B2B3FEA45002A73B8 /* Panel Settings View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F303214A2B3FEA45002A73B8 /* Panel Settings View.swift */; };
@@ -5973,6 +5974,7 @@
 				F30088B32B3A20620051476C /* Backup Card.swift in Sources */,
 				F35FEB122B0A2C8D004DA05D /* Enums.swift in Sources */,
 				F3B1388A2A2D4D110026EAEE /* File Icon.swift in Sources */,
+				F3015DF52D9F468200B9BCC6 /* Log Toolbar Actor.swift in Sources */,
 				F35FEB082B09F003004DA05D /* API Key.swift in Sources */,
 				F30088902B39FAB80051476C /* Allocation List.swift in Sources */,
 				F3E08EC32A2CE92A00116C1C /* Panel Tab.swift in Sources */,
