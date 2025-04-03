@@ -51,8 +51,7 @@ struct LogCard: View {
                         .foregroundStyle(.blue)
                     }
                     
-                    Text(log.event)
-                        .footnote(.semibold, design: .monospaced)
+                    LogCardEvent(log)
                 }
                 
                 Spacer()

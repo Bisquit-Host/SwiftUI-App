@@ -46,8 +46,7 @@ struct LogCard: View {
                     .foregroundStyle(.blue)
                 }
                 
-                Text(log.event)
-                    .footnote(design: .monospaced)
+                LogCardEvent(log)
                 
                 Text(timeSinceISO(log.timestamp))
                     .footnote(.semibold)
