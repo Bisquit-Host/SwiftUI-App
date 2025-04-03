@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 90;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -1653,50 +1653,42 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		F31BA5612958FFB00006D126 /* Embed App Clips */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
 			dstPath = "$(CONTENTS_FOLDER_PATH)/AppClips";
-			dstSubfolderSpec = 16;
+			dstSubfolder = Product;
 			files = (
 				F31BA55D2958FFB00006D126 /* Clip Demo.app in Embed App Clips */,
 			);
 			name = "Embed App Clips";
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3464D012A862D2D00188B0C /* Embed ExtensionKit Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
 			dstPath = "$(EXTENSIONS_FOLDER_PATH)";
-			dstSubfolderSpec = 16;
+			dstSubfolder = Product;
 			files = (
 				F3A7CF232C8C509C00413400 /* Contact Provider.appex in Embed ExtensionKit Extensions */,
 				F3464D022A862D2D00188B0C /* Intent.appex in Embed ExtensionKit Extensions */,
 			);
 			name = "Embed ExtensionKit Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F35FF61C29DBEF96004748E3 /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 12;
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
-			dstSubfolderSpec = 16;
+			dstSubfolder = Product;
 			files = (
 				F3C53A5F29DBF5B900A08578 /* watchOS.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F36710372C99C3A200A8901A /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
 			dstPath = "";
-			dstSubfolderSpec = 13;
+			dstSubfolder = PlugIns;
 			files = (
 				F361F8882D545E4D007B0565 /* Intent Handler.appex in Embed Foundation Extensions */,
 				F36710342C99C3A100A8901A /* iMessage.appex in Embed Foundation Extensions */,
 				F3D1E7332C9A38EF000C81FF /* Widgets.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -2176,35 +2168,28 @@
 /* Begin PBXFrameworksBuildPhase section */
 		F337C14F2A8C29CD006F321C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F30860202B002D50004D776A /* PteroNet in Frameworks */,
 				F36B739F2C8B077A00E858FE /* AudioVisualizer in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3464CF52A862D2C00188B0C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F30860162B002B93004D776A /* PteroNet in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F38637342A8641120069F074 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F38637392A8641120069F074 /* SwiftUI.framework in Frameworks */,
 				F3CBC6E32D9A02970081C302 /* ScrechKit in Frameworks */,
 				F38637382A8641120069F074 /* WidgetKit.framework in Frameworks */,
 				F30860262B002FDE004D776A /* PteroNet in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F39CA31829BF4160009AD679 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F328D85E2A8240930038512F /* Algorithms in Frameworks */,
 				F3CBC6D72D9A02660081C302 /* ScrechKit in Frameworks */,
@@ -2212,11 +2197,9 @@
 				F30860182B002C18004D776A /* PteroNet in Frameworks */,
 				F3EB09D12A29532D0073916A /* Kingfisher in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F39CA31B29BF4194009AD679 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F342FAB72B2E49B600854270 /* Algorithms in Frameworks */,
 				F3CBC6DD2D9A027B0081C302 /* ScrechKit in Frameworks */,
@@ -2224,11 +2207,9 @@
 				F308601E2B002D4A004D776A /* PteroNet in Frameworks */,
 				F39E683F2D2D6A510002BA96 /* AudioVisualizer in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3A7CEC02C8B685500413400 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F3BED0EF2D8CDC2500CD6E3B /* PermissionsSwiftUINotification in Frameworks */,
 				F3BED0ED2D8CDC2000CD6E3B /* PermissionsSwiftUIBiometrics in Frameworks */,
@@ -2242,11 +2223,9 @@
 				F3CBC6E52D9A029E0081C302 /* ScrechKit in Frameworks */,
 				F3BED0F12D8CDC2B00CD6E3B /* PermissionsSwiftUICamera in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3B761DB29BDE2D500ECE879 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F342FAA82B2C61ED00854270 /* Pow in Frameworks */,
 				F389BB572A05B47000911EBF /* SafariCover in Frameworks */,
@@ -2265,11 +2244,9 @@
 				F33C2AC52C691764002FD150 /* QuickLooking in Frameworks */,
 				F36D534A2A05B961007324C6 /* Kingfisher in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3BD76EF2A43C890003E7385 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F342FAA62B2C615A00854270 /* Pow in Frameworks */,
 				F30B61CA2B2905E100F447B4 /* AlertKit in Frameworks */,
@@ -2281,20 +2258,16 @@
 				F32F2D072D908FE5007CF4DE /* MailCover in Frameworks */,
 				F308601A2B002D36004D776A /* PteroNet in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3D296042AF3BE5800ED43A0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F30860242B002FD8004D776A /* PteroNet in Frameworks */,
 				F36B739D2C8B074300E858FE /* AudioVisualizer in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3E08E9D2A2CE17800116C1C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F37FF8832D87AE3800554B3F /* Algorithms in Frameworks */,
 				F3B7BFDE2B38E206005B5003 /* Pow in Frameworks */,
@@ -2303,18 +2276,14 @@
 				F358F02E2D2C1C5500BCC07B /* LaunchAtLogin in Frameworks */,
 				F30860222B002D57004D776A /* PteroNet in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3E2BEF22C1DA07E00B7A6D4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3F304BC29BDDF7D00F004B9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F342FAA02B2C5DF300854270 /* Pow in Frameworks */,
 				F335CA062C63E86D006C71C6 /* DeviceKit in Frameworks */,
@@ -2336,16 +2305,13 @@
 				F32675862A01B69600A026DC /* SafariCover in Frameworks */,
 				F33C2AC12C69168C002FD150 /* QuickLooking in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3FDFF5C2C89120D009EBB5C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F3FDFF612C89120D009EBB5C /* Intents.framework in Frameworks */,
 				F36B736D2C89B6BE00E858FE /* PteroNet in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
@@ -3947,8 +3913,6 @@
 			);
 			buildRules = (
 			);
-			dependencies = (
-			);
 			name = tvOS;
 			packageProductDependencies = (
 				F39D680C2A262C5E00B9BDFC /* Kingfisher */,
@@ -4020,8 +3984,6 @@
 			);
 			buildRules = (
 			);
-			dependencies = (
-			);
 			name = watchOS;
 			packageProductDependencies = (
 				F3EB09D02A29532D0073916A /* Kingfisher */,
@@ -4043,8 +4005,6 @@
 				F3B761DB29BDE2D500ECE879 /* Frameworks */,
 			);
 			buildRules = (
-			);
-			dependencies = (
 			);
 			name = "Clip Demo";
 			packageProductDependencies = (
@@ -4101,8 +4061,6 @@
 			);
 			buildRules = (
 			);
-			dependencies = (
-			);
 			name = Intent;
 			packageProductDependencies = (
 				F30860152B002B93004D776A /* PteroNet */,
@@ -4120,8 +4078,6 @@
 				F38637352A8641120069F074 /* Resources */,
 			);
 			buildRules = (
-			);
-			dependencies = (
 			);
 			name = Widgets;
 			packageProductDependencies = (
@@ -4141,8 +4097,6 @@
 				F3A7CEC12C8B685500413400 /* Resources */,
 			);
 			buildRules = (
-			);
-			dependencies = (
 			);
 			name = iMessage;
 			packageProductDependencies = (
@@ -4170,8 +4124,6 @@
 				F3BD76F02A43C890003E7385 /* Resources */,
 			);
 			buildRules = (
-			);
-			dependencies = (
 			);
 			name = visionOS;
 			packageProductDependencies = (
@@ -4221,8 +4173,6 @@
 			);
 			buildRules = (
 			);
-			dependencies = (
-			);
 			name = macOS;
 			packageProductDependencies = (
 				F3E08EB12A2CE19900116C1C /* Kingfisher */,
@@ -4246,8 +4196,6 @@
 			);
 			buildRules = (
 			);
-			dependencies = (
-			);
 			name = "Contact Provider";
 			productName = "Contact Provider Extension";
 			productReference = F3E2BEF52C1DA07E00B7A6D4 /* Contact Provider.appex */;
@@ -4262,8 +4210,6 @@
 				F3FDFF5D2C89120D009EBB5C /* Resources */,
 			);
 			buildRules = (
-			);
-			dependencies = (
 			);
 			name = "Intent Handler";
 			packageProductDependencies = (
@@ -4354,7 +4300,7 @@
 				F3BED0D72D8CDBBC00CD6E3B /* XCRemoteSwiftPackageReference "SPerms" */,
 				F3CBC6D32D9A025A0081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */,
 			);
-			preferredProjectObjectVersion = 77;
+			preferredProjectObjectVersion = 90;
 			productRefGroup = F31BA5242958FF7C0006D126 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -4379,127 +4325,100 @@
 /* Begin PBXResourcesBuildPhase section */
 		F3000E03295A341000ABD30A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F378E3362AF3835C009925DB /* PrivacyInfo.xcprivacy in Resources */,
 				F36797762A39C4ED009F2788 /* Localizable.xcstrings in Resources */,
 				F39D68132A26373900B9BDFC /* Bisquits.sks in Resources */,
 				F3000E0C295A341100ABD30A /* Assets.xcassets in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F31BA5212958FF7C0006D126 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F3E6FC432A1E677000410C7C /* Bisquits.sks in Resources */,
 				F36797732A39C4ED009F2788 /* Localizable.xcstrings in Resources */,
 				F378E3332AF3835A009925DB /* PrivacyInfo.xcprivacy in Resources */,
 				F31BA52B2958FF7D0006D126 /* Assets.xcassets in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F31BA5312958FF7D0006D126 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F36797752A39C4ED009F2788 /* Localizable.xcstrings in Resources */,
 				F378E3352AF3835B009925DB /* PrivacyInfo.xcprivacy in Resources */,
 				F31BA53D2958FF7E0006D126 /* Assets.xcassets in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F31BA54C2958FFAF0006D126 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F3E6FC442A1E677000410C7C /* Bisquits.sks in Resources */,
 				F36797742A39C4ED009F2788 /* Localizable.xcstrings in Resources */,
 				F378E3382AF3835E009925DB /* PrivacyInfo.xcprivacy in Resources */,
 				F36A0F312A167D5F00696207 /* Assets.xcassets in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F337C1502A8C29CD006F321C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F3D295322AF39C8900ED43A0 /* Assets.xcassets in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3464CF62A862D2C00188B0C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F38637352A8641120069F074 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F3CE5C5D2D53B04E0094BD7B /* Localizable.xcstrings in Resources */,
 				F38637422A8641150069F074 /* Assets.xcassets in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3A7CEC12C8B685500413400 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F3C3BDB82C92BE9B00BF91EE /* Assets.xcassets in Resources */,
 				F3A7CED02C8B685600413400 /* Assets.xcassets in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3BD76F02A43C890003E7385 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F378E3372AF3835D009925DB /* PrivacyInfo.xcprivacy in Resources */,
 				F389281F2A43CB2600561CDF /* Localizable.xcstrings in Resources */,
 				F3BD76FD2A43C892003E7385 /* Assets.xcassets in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3D296052AF3BE5800ED43A0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3E08E9E2A2CE17800116C1C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F3E08EA72A2CE17A00116C1C /* Assets.xcassets in Resources */,
 				F378E3342AF3835B009925DB /* PrivacyInfo.xcprivacy in Resources */,
 				F38928202A43CB2600561CDF /* Localizable.xcstrings in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3E2BEF32C1DA07E00B7A6D4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3FDFF5D2C89120D009EBB5C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F3000E01295A341000ABD30A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F370804D2A2A1CB60046CE70 /* Section Header.swift in Sources */,
 				F31B4450297550CD0036868F /* Stats Tab.swift in Sources */,
@@ -4670,11 +4589,9 @@
 				F3FFB7462A57F91700220FA5 /* Map List.swift in Sources */,
 				F3BB07BD2A5421B700F5EE2E /* Server List VM.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F31BA51F2958FF7C0006D126 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F3CE5C4E2D5395300094BD7B /* Subdomain Card.swift in Sources */,
 				F3AE522329ACF7D600CB3895 /* Server Card VM.swift in Sources */,
@@ -4958,11 +4875,9 @@
 				F3AF91C92B4235BB001D8F80 /* SSH Card.swift in Sources */,
 				F384D8BC2D5BE495000FC41D /* Crypto Price Widget.intentdefinition in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F31BA52F2958FF7D0006D126 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F3EE9F962D86234A000120A7 /* Custom Dialog.swift in Sources */,
 				F3EE9F972D86234A000120A7 /* Custom Alert.swift in Sources */,
@@ -5068,11 +4983,9 @@
 				F32FD7242B1E065700723B88 /* Network Calls.swift in Sources */,
 				F3AB4A992CF4031600A8252F /* Json Formatter Button.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F31BA54A2958FFAF0006D126 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F3FF5A102A4A3ABD003A1973 /* User Card.swift in Sources */,
 				F32F2CDB2D8F7047007CF4DE /* Discover View.swift in Sources */,
@@ -5353,11 +5266,9 @@
 				F353B0432D8A31BF00E4EC07 /* Account Parent.swift in Sources */,
 				F3E6FC472A1E85D600410C7C /* SptiteKit BisquitFall.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F337C14E2A8C29CD006F321C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F39E0A942C1BA06C00C4E906 /* Discover Card.swift in Sources */,
 				F3EE9F722D85CAB9000120A7 /* Transparency.swift in Sources */,
@@ -5590,11 +5501,9 @@
 				F3202CDF2D562A620030B3CC /* Browser List MC.swift in Sources */,
 				F3D295872AF39FB900ED43A0 /* Server Card VM.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3464CF42A862D2C00188B0C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F3464D112A8632F200188B0C /* Create Backup.swift in Sources */,
 				F3464D072A862DBE00188B0C /* Power Signal App Enum.swift in Sources */,
@@ -5606,11 +5515,9 @@
 				F3464D082A862DC200188B0C /* Change Power.swift in Sources */,
 				F3464D0F2A862F9700188B0C /* Send Command.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F38637332A8641120069F074 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F36B73882C8AEAE700E858FE /* Model Asset.swift in Sources */,
 				F3FDFF8B2C89130F009EBB5C /* Resources Widget.swift in Sources */,
@@ -5643,11 +5550,9 @@
 				F337B40B2A89FC5100DD79AA /* Accessory Circular View.swift in Sources */,
 				F337B40E2A89FE0D00DD79AA /* Static Provider.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3A7CEBF2C8B685500413400 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F3A7CF122C8C4E3E00413400 /* Discover Card.swift in Sources */,
 				F3A7CF652C8CA5FE00413400 /* API Key.swift in Sources */,
@@ -5746,11 +5651,9 @@
 				F32F2CD72D8F6FDC007CF4DE /* Avg Color.swift in Sources */,
 				F3A7CF112C8C4C3100413400 /* Server List Node Filter.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3BD76EE2A43C890003E7385 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F3D295172AF396FD00ED43A0 /* Tabs.swift in Sources */,
 				F3FD9F9A2C651AF300A69314 /* Upload File.swift in Sources */,
@@ -5902,20 +5805,16 @@
 				F3AB4A7D2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
 				F3A7CF702A44FD5300331B51 /* Server Card Parent.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3D296032AF3BE5800ED43A0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F3D2960C2AF3BE5800ED43A0 /* UI TestsLaunchTests.swift in Sources */,
 				F3D2960A2AF3BE5800ED43A0 /* UI Tests.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3E08E9C2A2CE17800116C1C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F32FD71B2B1E043F00723B88 /* Ansi.swift in Sources */,
 				F300892B2B3C55DA0051476C /* File Permissions View.swift in Sources */,
@@ -6025,20 +5924,16 @@
 				F31F32032D52DB950095DD19 /* Color Theme.swift in Sources */,
 				F35B9F5C2A2DC8D60045D014 /* Nav State.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3E2BEF12C1DA07E00B7A6D4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F3E2BEFA2C1DA07E00B7A6D4 /* Contact Provider Extension.swift in Sources */,
 				F3E2BEFB2C1DA07E00B7A6D4 /* Extension Root Container Enumerator.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F3FDFF5B2C89120D009EBB5C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F36B73862C8AEAE700E858FE /* Model Asset.swift in Sources */,
 				F3FDFF642C89120D009EBB5C /* Intent Handler.swift in Sources */,
@@ -6046,7 +5941,6 @@
 				F384D8BE2D5BE495000FC41D /* Crypto Price Widget.intentdefinition in Sources */,
 				F36B73702C8A4CAF00E858FE /* Refresh Button Intent.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
@@ -6115,7 +6009,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		F3000E11295A341100ABD30A /* Debug */ = {
+		F3000E11295A341100ABD30A /* Debug configuration for PBXNativeTarget "tvOS" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
@@ -6149,7 +6043,7 @@
 			};
 			name = Debug;
 		};
-		F3000E12295A341100ABD30A /* Release */ = {
+		F3000E12295A341100ABD30A /* Release configuration for PBXNativeTarget "tvOS" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
@@ -6184,7 +6078,7 @@
 			};
 			name = Release;
 		};
-		F31BA5412958FF7E0006D126 /* Debug */ = {
+		F31BA5412958FF7E0006D126 /* Debug configuration for PBXProject "Bisquit.Host" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -6256,7 +6150,7 @@
 			};
 			name = Debug;
 		};
-		F31BA5422958FF7E0006D126 /* Release */ = {
+		F31BA5422958FF7E0006D126 /* Release configuration for PBXProject "Bisquit.Host" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -6321,7 +6215,7 @@
 			};
 			name = Release;
 		};
-		F31BA5442958FF7E0006D126 /* Debug */ = {
+		F31BA5442958FF7E0006D126 /* Debug configuration for PBXNativeTarget "watchOS" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -6356,7 +6250,7 @@
 			};
 			name = Debug;
 		};
-		F31BA5452958FF7E0006D126 /* Release */ = {
+		F31BA5452958FF7E0006D126 /* Release configuration for PBXNativeTarget "watchOS" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -6391,7 +6285,7 @@
 			};
 			name = Release;
 		};
-		F31BA5482958FF7E0006D126 /* Debug */ = {
+		F31BA5482958FF7E0006D126 /* Debug configuration for PBXNativeTarget "Bisquit.Host" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "coin love streamer cool";
@@ -6444,7 +6338,7 @@
 			};
 			name = Debug;
 		};
-		F31BA5492958FF7E0006D126 /* Release */ = {
+		F31BA5492958FF7E0006D126 /* Release configuration for PBXNativeTarget "Bisquit.Host" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "coin love streamer cool";
@@ -6497,7 +6391,7 @@
 			};
 			name = Release;
 		};
-		F31BA55F2958FFB00006D126 /* Debug */ = {
+		F31BA55F2958FFB00006D126 /* Debug configuration for PBXNativeTarget "Clip Demo" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "coin love streamer cool";
@@ -6540,7 +6434,7 @@
 			};
 			name = Debug;
 		};
-		F31BA5602958FFB00006D126 /* Release */ = {
+		F31BA5602958FFB00006D126 /* Release configuration for PBXNativeTarget "Clip Demo" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "coin love streamer cool";
@@ -6584,7 +6478,7 @@
 			};
 			name = Release;
 		};
-		F337C1592A8C29CE006F321C /* Debug */ = {
+		F337C1592A8C29CE006F321C /* Debug configuration for PBXNativeTarget "Unit Tests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -6608,7 +6502,7 @@
 			};
 			name = Debug;
 		};
-		F337C15A2A8C29CE006F321C /* Release */ = {
+		F337C15A2A8C29CE006F321C /* Release configuration for PBXNativeTarget "Unit Tests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -6632,7 +6526,7 @@
 			};
 			name = Release;
 		};
-		F3464D042A862D2D00188B0C /* Debug */ = {
+		F3464D042A862D2D00188B0C /* Debug configuration for PBXNativeTarget "Intent" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -6664,7 +6558,7 @@
 			};
 			name = Debug;
 		};
-		F3464D052A862D2D00188B0C /* Release */ = {
+		F3464D052A862D2D00188B0C /* Release configuration for PBXNativeTarget "Intent" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -6696,7 +6590,7 @@
 			};
 			name = Release;
 		};
-		F38637492A8641150069F074 /* Debug */ = {
+		F38637492A8641150069F074 /* Debug configuration for PBXNativeTarget "Widgets" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -6736,7 +6630,7 @@
 			};
 			name = Debug;
 		};
-		F386374A2A8641150069F074 /* Release */ = {
+		F386374A2A8641150069F074 /* Release configuration for PBXNativeTarget "Widgets" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -6775,7 +6669,7 @@
 			};
 			name = Release;
 		};
-		F3A7CED42C8B685600413400 /* Debug */ = {
+		F3A7CED42C8B685600413400 /* Debug configuration for PBXNativeTarget "iMessage" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
@@ -6804,7 +6698,7 @@
 			};
 			name = Debug;
 		};
-		F3A7CED52C8B685600413400 /* Release */ = {
+		F3A7CED52C8B685600413400 /* Release configuration for PBXNativeTarget "iMessage" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
@@ -6833,7 +6727,7 @@
 			};
 			name = Release;
 		};
-		F3BD77022A43C892003E7385 /* Debug */ = {
+		F3BD77022A43C892003E7385 /* Debug configuration for PBXNativeTarget "visionOS" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -6868,7 +6762,7 @@
 			};
 			name = Debug;
 		};
-		F3BD77032A43C892003E7385 /* Release */ = {
+		F3BD77032A43C892003E7385 /* Release configuration for PBXNativeTarget "visionOS" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -6903,7 +6797,7 @@
 			};
 			name = Release;
 		};
-		F3D296102AF3BE5800ED43A0 /* Debug */ = {
+		F3D296102AF3BE5800ED43A0 /* Debug configuration for PBXNativeTarget "UI Tests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -6923,7 +6817,7 @@
 			};
 			name = Debug;
 		};
-		F3D296112AF3BE5800ED43A0 /* Release */ = {
+		F3D296112AF3BE5800ED43A0 /* Release configuration for PBXNativeTarget "UI Tests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -6943,7 +6837,7 @@
 			};
 			name = Release;
 		};
-		F3E08EAC2A2CE17A00116C1C /* Debug */ = {
+		F3E08EAC2A2CE17A00116C1C /* Debug configuration for PBXNativeTarget "macOS" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -6982,7 +6876,7 @@
 			};
 			name = Debug;
 		};
-		F3E08EAD2A2CE17A00116C1C /* Release */ = {
+		F3E08EAD2A2CE17A00116C1C /* Release configuration for PBXNativeTarget "macOS" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -7021,7 +6915,7 @@
 			};
 			name = Release;
 		};
-		F3E2BF002C1DA07E00B7A6D4 /* Debug */ = {
+		F3E2BF002C1DA07E00B7A6D4 /* Debug configuration for PBXNativeTarget "Contact Provider" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -7049,7 +6943,7 @@
 			};
 			name = Debug;
 		};
-		F3E2BF012C1DA07E00B7A6D4 /* Release */ = {
+		F3E2BF012C1DA07E00B7A6D4 /* Release configuration for PBXNativeTarget "Contact Provider" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -7077,7 +6971,7 @@
 			};
 			name = Release;
 		};
-		F3FDFF7A2C89120D009EBB5C /* Debug */ = {
+		F3FDFF7A2C89120D009EBB5C /* Debug configuration for PBXNativeTarget "Intent Handler" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Intent Handler/Intent Handler.entitlements";
@@ -7111,7 +7005,7 @@
 			};
 			name = Debug;
 		};
-		F3FDFF7B2C89120D009EBB5C /* Release */ = {
+		F3FDFF7B2C89120D009EBB5C /* Release configuration for PBXNativeTarget "Intent Handler" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Intent Handler/Intent Handler.entitlements";
@@ -7151,127 +7045,113 @@
 		F3000E10295A341100ABD30A /* Build configuration list for PBXNativeTarget "tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F3000E11295A341100ABD30A /* Debug */,
-				F3000E12295A341100ABD30A /* Release */,
+				F3000E11295A341100ABD30A /* Debug configuration for PBXNativeTarget "tvOS" */,
+				F3000E12295A341100ABD30A /* Release configuration for PBXNativeTarget "tvOS" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		F31BA51E2958FF7C0006D126 /* Build configuration list for PBXProject "Bisquit.Host" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F31BA5412958FF7E0006D126 /* Debug */,
-				F31BA5422958FF7E0006D126 /* Release */,
+				F31BA5412958FF7E0006D126 /* Debug configuration for PBXProject "Bisquit.Host" */,
+				F31BA5422958FF7E0006D126 /* Release configuration for PBXProject "Bisquit.Host" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		F31BA5432958FF7E0006D126 /* Build configuration list for PBXNativeTarget "watchOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F31BA5442958FF7E0006D126 /* Debug */,
-				F31BA5452958FF7E0006D126 /* Release */,
+				F31BA5442958FF7E0006D126 /* Debug configuration for PBXNativeTarget "watchOS" */,
+				F31BA5452958FF7E0006D126 /* Release configuration for PBXNativeTarget "watchOS" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		F31BA5472958FF7E0006D126 /* Build configuration list for PBXNativeTarget "Bisquit.Host" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F31BA5482958FF7E0006D126 /* Debug */,
-				F31BA5492958FF7E0006D126 /* Release */,
+				F31BA5482958FF7E0006D126 /* Debug configuration for PBXNativeTarget "Bisquit.Host" */,
+				F31BA5492958FF7E0006D126 /* Release configuration for PBXNativeTarget "Bisquit.Host" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		F31BA55E2958FFB00006D126 /* Build configuration list for PBXNativeTarget "Clip Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F31BA55F2958FFB00006D126 /* Debug */,
-				F31BA5602958FFB00006D126 /* Release */,
+				F31BA55F2958FFB00006D126 /* Debug configuration for PBXNativeTarget "Clip Demo" */,
+				F31BA5602958FFB00006D126 /* Release configuration for PBXNativeTarget "Clip Demo" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		F337C1582A8C29CE006F321C /* Build configuration list for PBXNativeTarget "Unit Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F337C1592A8C29CE006F321C /* Debug */,
-				F337C15A2A8C29CE006F321C /* Release */,
+				F337C1592A8C29CE006F321C /* Debug configuration for PBXNativeTarget "Unit Tests" */,
+				F337C15A2A8C29CE006F321C /* Release configuration for PBXNativeTarget "Unit Tests" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		F3464D032A862D2D00188B0C /* Build configuration list for PBXNativeTarget "Intent" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F3464D042A862D2D00188B0C /* Debug */,
-				F3464D052A862D2D00188B0C /* Release */,
+				F3464D042A862D2D00188B0C /* Debug configuration for PBXNativeTarget "Intent" */,
+				F3464D052A862D2D00188B0C /* Release configuration for PBXNativeTarget "Intent" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		F38637482A8641150069F074 /* Build configuration list for PBXNativeTarget "Widgets" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F38637492A8641150069F074 /* Debug */,
-				F386374A2A8641150069F074 /* Release */,
+				F38637492A8641150069F074 /* Debug configuration for PBXNativeTarget "Widgets" */,
+				F386374A2A8641150069F074 /* Release configuration for PBXNativeTarget "Widgets" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		F3A7CED32C8B685600413400 /* Build configuration list for PBXNativeTarget "iMessage" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F3A7CED42C8B685600413400 /* Debug */,
-				F3A7CED52C8B685600413400 /* Release */,
+				F3A7CED42C8B685600413400 /* Debug configuration for PBXNativeTarget "iMessage" */,
+				F3A7CED52C8B685600413400 /* Release configuration for PBXNativeTarget "iMessage" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		F3BD77012A43C892003E7385 /* Build configuration list for PBXNativeTarget "visionOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F3BD77022A43C892003E7385 /* Debug */,
-				F3BD77032A43C892003E7385 /* Release */,
+				F3BD77022A43C892003E7385 /* Debug configuration for PBXNativeTarget "visionOS" */,
+				F3BD77032A43C892003E7385 /* Release configuration for PBXNativeTarget "visionOS" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		F3D2960F2AF3BE5800ED43A0 /* Build configuration list for PBXNativeTarget "UI Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F3D296102AF3BE5800ED43A0 /* Debug */,
-				F3D296112AF3BE5800ED43A0 /* Release */,
+				F3D296102AF3BE5800ED43A0 /* Debug configuration for PBXNativeTarget "UI Tests" */,
+				F3D296112AF3BE5800ED43A0 /* Release configuration for PBXNativeTarget "UI Tests" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		F3E08EAE2A2CE17A00116C1C /* Build configuration list for PBXNativeTarget "macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F3E08EAC2A2CE17A00116C1C /* Debug */,
-				F3E08EAD2A2CE17A00116C1C /* Release */,
+				F3E08EAC2A2CE17A00116C1C /* Debug configuration for PBXNativeTarget "macOS" */,
+				F3E08EAD2A2CE17A00116C1C /* Release configuration for PBXNativeTarget "macOS" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		F3E2BEFF2C1DA07E00B7A6D4 /* Build configuration list for PBXNativeTarget "Contact Provider" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F3E2BF002C1DA07E00B7A6D4 /* Debug */,
-				F3E2BF012C1DA07E00B7A6D4 /* Release */,
+				F3E2BF002C1DA07E00B7A6D4 /* Debug configuration for PBXNativeTarget "Contact Provider" */,
+				F3E2BF012C1DA07E00B7A6D4 /* Release configuration for PBXNativeTarget "Contact Provider" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		F3FDFF7F2C89120D009EBB5C /* Build configuration list for PBXNativeTarget "Intent Handler" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F3FDFF7A2C89120D009EBB5C /* Debug */,
-				F3FDFF7B2C89120D009EBB5C /* Release */,
+				F3FDFF7A2C89120D009EBB5C /* Debug configuration for PBXNativeTarget "Intent Handler" */,
+				F3FDFF7B2C89120D009EBB5C /* Release configuration for PBXNativeTarget "Intent Handler" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
