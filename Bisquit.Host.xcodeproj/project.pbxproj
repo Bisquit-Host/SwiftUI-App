@@ -955,6 +955,9 @@
 		F3A391BA29DB5E6900591C84 /* Cache Expiration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A391B929DB5E6900591C84 /* Cache Expiration.swift */; };
 		F3A391BC29DB808B00591C84 /* Server Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A391BB29DB808B00591C84 /* Server Name.swift */; };
 		F3A49CC42D7A500C0067EEA8 /* Guide Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3499EF32A26DE92006101B7 /* Guide Model.swift */; };
+		F3A563202D9EEECB009AA363 /* Allow Drag.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A5631F2D9EEECB009AA363 /* Allow Drag.swift */; };
+		F3A563212D9EEECB009AA363 /* Allow Drag.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A5631F2D9EEECB009AA363 /* Allow Drag.swift */; };
+		F3A563222D9EEECB009AA363 /* Allow Drag.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A5631F2D9EEECB009AA363 /* Allow Drag.swift */; };
 		F3A7BCC3296B2ABB00E080C1 /* Start Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7BCC2296B2ABB00E080C1 /* Start Page.swift */; };
 		F3A7BCD1296B44FF00E080C1 /* Nav Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BAEC8C2959B3FE00111375 /* Nav Extension.swift */; };
 		F3A7CEC82C8B685500413400 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3A7CEC72C8B685500413400 /* Messages.framework */; };
@@ -2003,6 +2006,7 @@
 		F3A31B082B0B161D00F89C51 /* Cloud Key Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cloud Key Card.swift"; sourceTree = "<group>"; };
 		F3A391B929DB5E6900591C84 /* Cache Expiration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache Expiration.swift"; sourceTree = "<group>"; };
 		F3A391BB29DB808B00591C84 /* Server Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Name.swift"; sourceTree = "<group>"; };
+		F3A5631F2D9EEECB009AA363 /* Allow Drag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allow Drag.swift"; sourceTree = "<group>"; };
 		F3A7BCC2296B2ABB00E080C1 /* Start Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page.swift"; sourceTree = "<group>"; };
 		F3A7CEC32C8B685500413400 /* iMessage.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iMessage.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A7CEC72C8B685500413400 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = Library/Frameworks/Messages.framework; sourceTree = DEVELOPER_DIR; };
@@ -3307,6 +3311,7 @@
 			children = (
 				F38F9E082CE6CCF90033EFE3 /* Image Playground Button.swift */,
 				F38F9E112CE7647D0033EFE3 /* Image Playground.swift */,
+				F3A5631F2D9EEECB009AA363 /* Allow Drag.swift */,
 			);
 			path = "Image Playground";
 			sourceTree = "<group>";
@@ -4865,6 +4870,7 @@
 				F3A123562A667804008E3E20 /* Log Meta Parent.swift in Sources */,
 				F3FF5A0C2A4A386F003A1973 /* Users VM.swift in Sources */,
 				F31BA576295900E30006D126 /* Settings View.swift in Sources */,
+				F3A563222D9EEECB009AA363 /* Allow Drag.swift in Sources */,
 				F3D3DBD129B8007B00096115 /* Browser Topbar.swift in Sources */,
 				F30088A32B3A18A50051476C /* Database VM.swift in Sources */,
 				F3E2BEDB2C1C6B9500B7A6D4 /* Cache List.swift in Sources */,
@@ -5339,6 +5345,7 @@
 				F36797792A3A55E1009F2788 /* Log List Parent.swift in Sources */,
 				F389BB6F2A05B5F900911EBF /* Cache Expiration.swift in Sources */,
 				F310A2F12A56B0BE001AF45F /* Network VM.swift in Sources */,
+				F3A563212D9EEECB009AA363 /* Allow Drag.swift in Sources */,
 				F389BB612A05B58300911EBF /* Gauge Disk.swift in Sources */,
 				F32FD02E2CF606960038D62C /* Backup Context Menu Control Group.swift in Sources */,
 				F30038CA2D42387600363CF4 /* Sheet Remote File.swift in Sources */,
@@ -5375,6 +5382,7 @@
 				F353B0442D8A31BF00E4EC07 /* Account Parent.swift in Sources */,
 				F3D295C32AF3A1CC00ED43A0 /* Apikey List.swift in Sources */,
 				F3D295DE2AF3A36700ED43A0 /* Schedule List.swift in Sources */,
+				F3A563202D9EEECB009AA363 /* Allow Drag.swift in Sources */,
 				F3D2955E2AF39E6E00ED43A0 /* Panel Model.swift in Sources */,
 				F3202D132D562B250030B3CC /* Browser Card MC.swift in Sources */,
 				F3C9D84B2B30304F00265492 /* Des Video Watch.swift in Sources */,
