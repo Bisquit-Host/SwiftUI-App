@@ -1,15 +1,6 @@
 import ScrechKit
 import Kingfisher
 
-//func customRound(_ value: Double) -> String {
-//    let roundedValue = round(value)
-//    let formatter = NumberFormatter()
-//    formatter.minimumFractionDigits = 0
-//    formatter.maximumFractionDigits = (roundedValue == value) ? 0 : 1
-//
-//    return formatter.string(from: NSNumber(value: value)) ?? "\(value)"
-//}
-
 struct BrowserCard: View {
     @Environment(\.colorScheme) private var scheme
     
@@ -80,14 +71,14 @@ struct BrowserCard: View {
                             
                             BrowserSpec(formatBytes(plan.disk, countStyle: .decimal), icon: "internaldrive")
                             
-                            //                        Spacer()
-                            //
-                            //                        Text(customRound(price) + ValueStore().preferredCurrency)
-                            //                            .subheadline(.bold)
-                            //                            .padding(.vertical, 4)
-                            //                            .padding(.horizontal, 10)
-                            //                            .foregroundStyle(.white)
-                            //     .background(.blue, in: .capsule)
+                            Spacer()
+                            
+                            Text(customRound(price) + ValueStore().preferredCurrency)
+                                .subheadline(.bold)
+                                .padding(.vertical, 4)
+                                .padding(.horizontal, 10)
+                                .foregroundStyle(.white)
+                                .background(.blue, in: .capsule)
                         }
                     }
                     
@@ -104,6 +95,16 @@ struct BrowserCard: View {
             .padding(5)
         }
         .buttonStyle(.plain)
+    }
+    
+    private func customRound(_ value: Double) -> String {
+        let roundedValue = round(value)
+        
+        let formatter = NumberFormatter()
+        formatter.minimumFractionDigits = 0
+        formatter.maximumFractionDigits = (roundedValue == value) ? 0 : 1
+        
+        return formatter.string(from: NSNumber(value: value)) ?? "\(value)"
     }
 }
 

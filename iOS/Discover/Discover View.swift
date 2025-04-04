@@ -1,6 +1,7 @@
 import SwiftUI
 import SafariCover
 import MailCover
+import PostHog
 
 struct Discover: View {
     //    private let links: [DiscoverModel] = [
@@ -20,15 +21,11 @@ struct Discover: View {
     //    ]
     
     private var screenWidth: CGFloat {
-#if os(visionOS)
-        100
-#else
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            380
-        } else {
-            UIScreen.main.bounds.width
+        switch UIDevice.current.userInterfaceIdiom {
+        case .vision: 100
+        case .pad: 380
+        default: UIScreen.main.bounds.width
         }
-#endif
     }
     
     private var columns: [GridItem] {
@@ -44,12 +41,14 @@ struct Discover: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             LazyVGrid(columns: columns, spacing: 16) {
-                Button {
-                    sheetConfigurations = true
-                } label: {
-                    DiscoverCardLayout(
-                        .init("Configurations", subtitle: "Available to buy", image: .server)
-                    )
+                if PostHogSDK.shared.isFeatureEnabled("show-available-plans") {
+                    Button {
+                        sheetConfigurations = true
+                    } label: {
+                        DiscoverCardLayout(
+                            .init("Configurations", subtitle: "Available to buy", image: .server)
+                        )
+                    }
                 }
                 
                 DiscoverCard("https://my.bisquit.host/login") {

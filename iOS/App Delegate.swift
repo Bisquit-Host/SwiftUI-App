@@ -1,5 +1,6 @@
 import SwiftUI
 import PteroNet
+import PostHog
 
 #if canImport(Contacts)
 import Contacts
@@ -12,10 +13,24 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
         if ValueStore().isApiKeyValid {
-            registerForPushNotifications(application: application)
+            registerForPushNotifications(application)
         }
         
+        setupPosthog()
+        
         return true
+    }
+    
+    func setupPosthog() {
+        let apiKey = "phc_yrj8JlMnFPUFx1V5hccpO2WqxPatmqBq4AkddjSd2Bk"
+        let host = "https://eu.i.posthog.com"
+        
+        let config = PostHogConfig(
+            apiKey: apiKey,
+            host: host
+        )
+        
+        PostHogSDK.shared.setup(config)
     }
     
     // MARK: - Contacts
@@ -38,7 +53,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 #endif
     
-    private func registerForPushNotifications(application: UIApplication) {
+    private func registerForPushNotifications(_ application: UIApplication) {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { [weak self] granted, _ in
             guard granted else {
                 return
