@@ -12,20 +12,20 @@ struct PanelView: View {
         self.fileVM = FileTabVM(id)
     }
     
-    @AppStorage("panelTab") private var tab: Tab = .info
+    @AppStorage("panelTab") private var tab: PanelTab = .info
     
     var body: some View {
         TabView(selection: $tab) {
             if let server = vm.server {
                 InfoTab(server)
-                    .tag(Tab.info)
+                    .tag(PanelTab.info)
                 
                 Console()
-                    .tag(Tab.console)
+                    .tag(PanelTab.console)
                 
                 FileTab(id)
                     .environmentObject(fileVM)
-                    .tag(Tab.files)
+                    .tag(PanelTab.files)
             }
         }
         .environment(vm)

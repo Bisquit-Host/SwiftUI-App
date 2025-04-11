@@ -12,7 +12,8 @@ struct PanelView: View {
         self.vm = PanelVM(server.id)
     }
     
-    @AppStorage("selected_tab") private var selectedTab: Tab = .info
+    #warning("Move to the ValueStore")
+    @AppStorage("selected_tab") private var selectedTab: PanelTab = .info
     
     private let gradient = Gradient(colors: [
         Color(0xf7b948),
@@ -20,7 +21,7 @@ struct PanelView: View {
         Color(0x893799)
     ])
     
-    private let tabs: [Tab] = [
+    private let tabs: [PanelTab] = [
         //        .info,
         //        .console,
         //        .files,

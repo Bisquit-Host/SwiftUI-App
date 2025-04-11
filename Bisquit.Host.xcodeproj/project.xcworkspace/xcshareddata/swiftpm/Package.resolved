@@ -1,5 +1,5 @@
 {
-  "originHash" : "a8fa5c22273bffb79c6665a6866295a302b9660a942b60911c46c26305488f30",
+  "originHash" : "7c9b4ada11d382fd607c516af17f173f1d0f342686547d2f792e9b02cb1a6fe2",
   "pins" : [
     {
       "identity" : "alertkit",
@@ -56,6 +56,15 @@
       }
     },
     {
+      "identity" : "posthog-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/PostHog/posthog-ios.git",
+      "state" : {
+        "revision" : "889f89a0da78544df735674d6bd1cb18481817c9",
+        "version" : "3.21.0"
+      }
+    },
+    {
       "identity" : "pow",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/EmergeTools/Pow",
@@ -70,7 +79,7 @@
       "location" : "https://github.com/TopScrech/PteroNet",
       "state" : {
         "branch" : "main",
-        "revision" : "23469871712a9d4ce26c843accea1bf1b961d5d0"
+        "revision" : "050358a4efcb7a71778b677f589f295199b60eb2"
       }
     },
     {

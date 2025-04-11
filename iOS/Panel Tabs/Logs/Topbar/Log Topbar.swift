@@ -37,6 +37,11 @@ struct LogTopbar: View {
                             value: daysLogged
                         )
                     }
+#if os(tvOS)
+                    Spacer()
+                    
+                    LogListFilter()
+#endif
                 }
                 .footnote()
             }

@@ -1,4 +1,4 @@
-enum Tab: String, CaseIterable {
+enum PanelTab: String, CaseIterable {
     case info = "Info",
          console = "Console",
          files = "Files",

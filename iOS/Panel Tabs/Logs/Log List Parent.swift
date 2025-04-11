@@ -2,7 +2,6 @@ import ScrechKit
 
 struct LogListParent: View {
     var body: some View {
-        
 #if os(watchOS)
         LogList()
 #else

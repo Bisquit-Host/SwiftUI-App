@@ -1,5 +1,4 @@
-import ScrechKit
-import Kingfisher
+import SwiftUI
 import PteroNet
 
 struct LogCard: View {
@@ -17,17 +16,7 @@ struct LogCard: View {
     
     var body: some View {
         HStack {
-            if let image = actor?.image {
-                KFImage(URL(string: image))
-                    .resizable()
-                    .frame(width: 32, height: 32)
-                    .clipShape(.rect(cornerRadius: 10))
-            } else {
-                Image(systemName: "apple.terminal")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 32, height: 32)
-            }
+            LogCardImage(actor?.image)
             
             VStack(alignment: .leading, spacing: 0) {
                 HStack {
@@ -46,11 +35,9 @@ struct LogCard: View {
                     .foregroundStyle(.blue)
                 }
                 
-                Text(log.event)
-                    .footnote(design: .monospaced)
+                LogCardEvent(log)
                 
-                Text(timeSinceISO(log.timestamp))
-                    .footnote(.semibold)
+                LogCardTimestamp(log.timestamp)
             }
             
             //            if !log.properties.isEmpty {
