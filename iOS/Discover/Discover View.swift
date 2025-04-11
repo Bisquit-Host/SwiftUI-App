@@ -21,11 +21,14 @@ struct Discover: View {
     //    ]
     
     private var screenWidth: CGFloat {
+#if os(visionOS)
+        100
+#else
         switch UIDevice.current.userInterfaceIdiom {
-        case .vision: 100
         case .pad: 380
         default: UIScreen.main.bounds.width
         }
+#endif
     }
     
     private var columns: [GridItem] {
