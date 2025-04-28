@@ -28,6 +28,7 @@ struct GaugeDisk: View {
             .padding(.horizontal, 5)
             // .gaugeStyle(.accessoryLinearCapacity) // CRASH
             .foregroundStyle(.foreground)
+            .tint(.accent)
         } else {
             Text(formatBytes(value) + " / " + maximumValue)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
