@@ -73,7 +73,7 @@ struct AppContainer: View {
         .statusBarHidden(store.hideStatusBar)
         .detectOrientation($orientation)
         .overlay(alignment: .top) {
-            if Device.current.hasDynamicIsland && showBadge && orientation.isPortrait {
+            if Device.current.hasDynamicIsland && showBadge && orientation.isPortrait, store.showDynamicIslandBadge {
                 DynamicIslandBadge()
             }
         }
