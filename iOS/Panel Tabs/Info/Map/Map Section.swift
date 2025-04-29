@@ -26,7 +26,8 @@ struct MapSection: View {
     )
     
     private var isMoscow: Bool {
-        ["Fabric", "Forge", "Fusion"].contains(node)
+        ["Fabric", "Forge", "Fusion"]
+            .contains(node)
     }
     
     private var mapUrl: String {
