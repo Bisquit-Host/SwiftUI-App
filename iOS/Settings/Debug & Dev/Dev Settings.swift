@@ -27,9 +27,6 @@ struct DevSettings: View {
             ListParam("App version", param: version)
             
             ListParam("Device and system", param: deviceAndSystem)
-            
-            Toggle("Developer mode", isOn: $store.devMode)
-            
 #if !os(tvOS)
             NavigationLink("Debug") {
                 DebugSettings()

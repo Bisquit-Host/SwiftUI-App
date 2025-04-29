@@ -14,6 +14,8 @@ struct DebugSettings: View {
     var body: some View {
         List {
             Section {
+                Toggle("Developer mode", isOn: $store.devMode)
+                
                 Toggle("Hide status bar", isOn: $store.hideStatusBar)
                 
                 Toggle("Hide server names", isOn: $store.hideServerNames)
