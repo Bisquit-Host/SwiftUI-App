@@ -71,6 +71,8 @@ struct MapSection: View {
                     
                     if let ping {
                         Text("\(ping) ms")
+                            .animation(.default, value: ping)
+                            .numericTransition()
                             .monospacedDigit()
                             .padding(.vertical, 5)
                             .padding(.horizontal, 10)
@@ -118,8 +120,8 @@ struct MapSection: View {
             case .success(let pingDuration):
                 self.ping = Int(round(pingDuration * 1000))
                 
-            case .failure(let error):
-                print("TCP ping failed with error", error.localizedDescription)
+            default:
+                break
             }
         }
     }

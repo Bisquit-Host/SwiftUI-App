@@ -29,6 +29,7 @@ struct PanelSettingsView: View {
                     Button("Save") {
                         vm.serverRename()
                     }
+                    .animation(.default, value: vm.serverName + vm.serverDescription)
                 }
             }
             .transparentSection()
