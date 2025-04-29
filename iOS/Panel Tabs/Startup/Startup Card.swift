@@ -33,6 +33,7 @@ struct StartupCard: View {
                     } label: {
                         Image(systemName: "ellipsis.circle")
                             .semibold()
+                            .foregroundStyle(.foreground)
                     }
                 }
                 

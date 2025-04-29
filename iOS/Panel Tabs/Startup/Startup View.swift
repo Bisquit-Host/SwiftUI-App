@@ -40,6 +40,7 @@ struct StartupView: View {
                         UIPasteboard.general.string = command
                         SystemAlert.copied()
                     }
+                    .foregroundStyle(.foreground)
                 }
             }
             .listRowBackground(Color.gray.opacity(0.2))
