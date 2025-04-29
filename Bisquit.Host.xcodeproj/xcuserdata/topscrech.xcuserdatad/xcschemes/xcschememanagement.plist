@@ -9,11 +9,6 @@
 			<key>orderHint</key>
 			<integer>6</integer>
 		</dict>
-		<key>Bisquit Planet.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>0</integer>
-		</dict>
 		<key>Bisquit.Host Mac.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
@@ -32,7 +27,7 @@
 		<key>Contact Provider.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>13</integer>
+			<integer>11</integer>
 		</dict>
 		<key>DeviceKitPlayground (Playground).xcscheme</key>
 		<dict>
@@ -149,6 +144,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>F337C1512A8C29CD006F321C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>F3464CF72A862D2C00188B0C</key>
 		<dict>
 			<key>primary</key>
@@ -180,6 +180,11 @@
 			<true/>
 		</dict>
 		<key>F3BD76F12A43C890003E7385</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F3D296062AF3BE5800ED43A0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
