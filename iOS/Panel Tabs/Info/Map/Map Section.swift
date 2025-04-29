@@ -38,47 +38,56 @@ struct MapSection: View {
     }
     
     var body: some View {
-        VStack {
-            HStack {
-                VStack(alignment: .leading) {
-                    Text("Location")
-                        .footnote()
-                        .secondary()
+        Menu {
+            Button {
+                openSafari(mapUrl)
+            } label: {
+                Label("Open in Apple Maps", systemImage: "map")
+            }
+        } label: {
+            VStack {
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text("Location")
+                            .footnote()
+                            .secondary()
+                        
+                        Text(node)
+                            .title3(.bold, design: .rounded)
+                        
+                        if isMoscow {
+                            Text("Moscow, Russia")
+                                .semibold()
+                                .rounded()
+                        } else {
+                            Text("Frankfurt, Germany")
+                                .semibold()
+                                .rounded()
+                        }
+                    }
                     
-                    Text(node)
-                        .title3(.bold, design: .rounded)
+                    Spacer()
                     
-                    if isMoscow {
-                        Text("Moscow, Russia")
-                            .semibold()
-                            .rounded()
-                    } else {
-                        Text("Frankfurt, Germany")
-                            .semibold()
-                            .rounded()
+                    if let ping {
+                        Text("\(ping) ms")
+                            .monospacedDigit()
+                            .padding(.vertical, 5)
+                            .padding(.horizontal, 10)
+                            .background(.ultraThinMaterial, in: .rect(cornerRadius: 8))
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(.gray.opacity(0.25), lineWidth: 1)
+                            }
                     }
                 }
+                .frame(height: 80)
+                .padding(.horizontal)
+                .offset(y: 5)
                 
-                Spacer()
-                
-                if let ping {
-                    Text("\(ping) ms")
-                        .monospacedDigit()
-                        .padding(.vertical, 5)
-                        .padding(.horizontal, 10)
-                        .background(.ultraThinMaterial, in: .rect(cornerRadius: 8))
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 8)
-                                .stroke(.gray.opacity(0.25), lineWidth: 1)
-                        }
-                }
+                Map(position: $cameraPosition, interactionModes: [])
             }
-            .frame(height: 80)
-            .padding(.horizontal)
-            .offset(y: 5)
-            
-            Map(position: $cameraPosition, interactionModes: [])
         }
+        .foregroundStyle(.foreground)
         .clipShape(.rect(cornerRadius: 16))
         .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
         .frame(height: 250)
@@ -94,13 +103,6 @@ struct MapSection: View {
         }
         .task {
             location(node)
-        }
-        .contextMenu {
-            Button {
-                openSafari(mapUrl)
-            } label: {
-                Label("Open in Apple Maps", systemImage: "map")
-            }
         }
     }
     
