@@ -472,6 +472,12 @@
 		F33711BA2DC2D4010014B427 /* Gamepad Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = F390C7472DC2AF940069F965 /* Gamepad Debug.swift */; };
 		F33711BB2DC2D4010014B427 /* Gamepad Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = F390C7472DC2AF940069F965 /* Gamepad Debug.swift */; };
 		F33711BC2DC2D4010014B427 /* Gamepad Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = F390C7472DC2AF940069F965 /* Gamepad Debug.swift */; };
+		F33711BE2DC2D7A70014B427 /* Gamepad Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33711BD2DC2D7A70014B427 /* Gamepad Manager.swift */; };
+		F33711BF2DC2D7A70014B427 /* Gamepad Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33711BD2DC2D7A70014B427 /* Gamepad Manager.swift */; };
+		F33711C02DC2D7A70014B427 /* Gamepad Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33711BD2DC2D7A70014B427 /* Gamepad Manager.swift */; };
+		F33711C12DC2D7A70014B427 /* Gamepad Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33711BD2DC2D7A70014B427 /* Gamepad Manager.swift */; };
+		F33711C32DC2D7A70014B427 /* Gamepad Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33711BD2DC2D7A70014B427 /* Gamepad Manager.swift */; };
+		F33711C42DC2D7A70014B427 /* Gamepad Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33711BD2DC2D7A70014B427 /* Gamepad Manager.swift */; };
 		F337B3A829BC6B5400CC1195 /* Server List Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B3A729BC6B5400CC1195 /* Server List Grid.swift */; };
 		F337B4062A89FAC600DD79AA /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B4052A89FAC600DD79AA /* Entry.swift */; };
 		F337B4092A89FB4300DD79AA /* System Small Widget View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B4082A89FB4300DD79AA /* System Small Widget View.swift */; };
@@ -1876,6 +1882,7 @@
 		F33001432A4CF06D0063FE0F /* Apikey Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Apikey Card.swift"; sourceTree = "<group>"; };
 		F3317AE92A45E24F00CA104D /* Guide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guide.swift; sourceTree = "<group>"; };
 		F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dynamic Island Badge.swift"; sourceTree = "<group>"; };
+		F33711BD2DC2D7A70014B427 /* Gamepad Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gamepad Manager.swift"; sourceTree = "<group>"; };
 		F337B3A729BC6B5400CC1195 /* Server List Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List Grid.swift"; sourceTree = "<group>"; };
 		F337B4052A89FAC600DD79AA /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		F337B4082A89FB4300DD79AA /* System Small Widget View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "System Small Widget View.swift"; sourceTree = "<group>"; };
@@ -2609,6 +2616,7 @@
 			children = (
 				F31BA5262958FF7C0006D126 /* Bisquit.Host App.swift */,
 				F3D52B242B13FE9C00167DD6 /* App Delegate.swift */,
+				F33711BD2DC2D7A70014B427 /* Gamepad Manager.swift */,
 				F31BA564295900270006D126 /* Nav */,
 				F300C45F2D8C2B0100743300 /* Helpers */,
 				F3CCB1D12CAE8B76000F8207 /* iOS.plist */,
@@ -4673,6 +4681,7 @@
 				F32FD7222B1E065600723B88 /* Network Calls.swift in Sources */,
 				F3CCF5BC2B345472005FFF2C /* Permission Card.swift in Sources */,
 				F30088E42B3A5B0B0051476C /* Startup List.swift in Sources */,
+				F33711C02DC2D7A70014B427 /* Gamepad Manager.swift in Sources */,
 				F30089312B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */,
 				F3015DD62D9F24F600B9BCC6 /* Log Card Event.swift in Sources */,
 				F3D558B32A33C6A000608447 /* File Tab VM.swift in Sources */,
@@ -4869,6 +4878,7 @@
 				F31BA5B0295902C70006D126 /* Folder Path.swift in Sources */,
 				F3D902DF29DC445A004E76C9 /* Cache Limit.swift in Sources */,
 				F330013B2A4CEC320063FE0F /* Apikey List.swift in Sources */,
+				F33711BF2DC2D7A70014B427 /* Gamepad Manager.swift in Sources */,
 				F300889E2B3A17DD0051476C /* Backup VM.swift in Sources */,
 				F3A563332D9EF323009AA363 /* Log Toolbar Actor.swift in Sources */,
 				F3EB09ED2A2987F00073916A /* QuickLook File.swift in Sources */,
@@ -5318,6 +5328,7 @@
 				F3FF5A042A4A359C003A1973 /* Info Tab Buttons.swift in Sources */,
 				F3202D062D562AE20030B3CC /* Browser List VDS.swift in Sources */,
 				F36FDB97295AF4A900D45070 /* Browser VM.swift in Sources */,
+				F33711C32DC2D7A70014B427 /* Gamepad Manager.swift in Sources */,
 				F3A1D2362A201CBB0053261E /* Browser Spec.swift in Sources */,
 				F3BC03BE2B1FFBD50011F98A /* Backup Context Menu.swift in Sources */,
 				F3553FBD2B40945C00EF0FD2 /* Allocation List Parent.swift in Sources */,
@@ -5413,6 +5424,7 @@
 				F3C9D84B2B30304F00265492 /* Des Video Watch.swift in Sources */,
 				F3AB4A932CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
 				F31F31FE2D52BD940095DD19 /* System lowPowerMode.swift in Sources */,
+				F33711C12DC2D7A70014B427 /* Gamepad Manager.swift in Sources */,
 				F3D295942AF3A03700ED43A0 /* Contact Manager.swift in Sources */,
 				F3D295662AF39EB000ED43A0 /* Panel VM.swift in Sources */,
 				F3D295C82AF3A1FF00ED43A0 /* Credentials VM.swift in Sources */,
@@ -5888,6 +5900,7 @@
 				F3F2BBAC2A540E6500D44CA6 /* Cloud Keys.swift in Sources */,
 				F32FD71A2B1E042C00723B88 /* Websocket Delegate.swift in Sources */,
 				F38928252A441B5D00561CDF /* Server Settings.swift in Sources */,
+				F33711C42DC2D7A70014B427 /* Gamepad Manager.swift in Sources */,
 				F373CD842D88D496008B64BE /* Start Page Helper.swift in Sources */,
 				F3202C842D5590CC0030B3CC /* Discover Card.swift in Sources */,
 				F39E682F2D2D61680002BA96 /* Database Context Menu.swift in Sources */,
@@ -6052,6 +6065,7 @@
 				F30088942B3A03050051476C /* Log VM.swift in Sources */,
 				F3464D282A86398000188B0C /* Power Signal App Enum.swift in Sources */,
 				F3DF50CA2B38FDDE00206CAE /* User 2Fa.swift in Sources */,
+				F33711BE2DC2D7A70014B427 /* Gamepad Manager.swift in Sources */,
 				F373CDB42D895419008B64BE /* Log Topbar.swift in Sources */,
 				F373CDB52D895419008B64BE /* Log Topbar Card.swift in Sources */,
 				F31F32032D52DB950095DD19 /* Color Theme.swift in Sources */,
