@@ -768,6 +768,9 @@
       },
       "shouldTranslate" : false
     },
+    "A Pressed" : {
+
+    },
     "Account" : {
       "localizations" : {
         "nl" : {
@@ -1068,6 +1071,9 @@
         }
       }
     },
+    "B Pressed" : {
+
+    },
     "Background image" : {
       "localizations" : {
         "ru" : {
@@ -1141,6 +1147,9 @@
           }
         }
       }
+    },
+    "Battery: %lld%%" : {
+
     },
     "Best places" : {
       "localizations" : {
@@ -2879,6 +2888,9 @@
         }
       }
     },
+    "Gamepad Test" : {
+
+    },
     "General" : {
       "localizations" : {
         "nl" : {
@@ -3448,6 +3460,15 @@
         }
       }
     },
+    "Left Shoulder Pressed" : {
+
+    },
+    "Left Stick Pressed" : {
+
+    },
+    "Left Trigger Pressed" : {
+
+    },
     "Light" : {
       "localizations" : {
         "nl" : {
@@ -3681,6 +3702,9 @@
           }
         }
       }
+    },
+    "Menu Pressed" : {
+
     },
     "Metadata" : {
       "localizations" : {
@@ -4082,6 +4106,9 @@
     "Optional" : {
 
     },
+    "Options Pressed" : {
+
+    },
     "Other" : {
       "localizations" : {
         "ru" : {
@@ -4289,6 +4316,42 @@
           }
         }
       }
+    },
+    "Press A" : {
+
+    },
+    "Press B" : {
+
+    },
+    "Press Left Shoulder" : {
+
+    },
+    "Press Left Stick" : {
+
+    },
+    "Press Left Trigger" : {
+
+    },
+    "Press Menu" : {
+
+    },
+    "Press Options" : {
+
+    },
+    "Press Right Shoulder" : {
+
+    },
+    "Press Right Stick" : {
+
+    },
+    "Press Right Trigger" : {
+
+    },
+    "Press X" : {
+
+    },
+    "Press Y" : {
+
     },
     "Preview" : {
       "localizations" : {
@@ -4629,6 +4692,15 @@
           }
         }
       }
+    },
+    "Right Shoulder Pressed" : {
+
+    },
+    "Right Stick Pressed" : {
+
+    },
+    "Right Trigger Pressed" : {
+
     },
     "Rotate password" : {
       "localizations" : {
@@ -6021,6 +6093,12 @@
 
     },
     "Wrote new content to **`%@`**" : {
+
+    },
+    "X Pressed" : {
+
+    },
+    "Y Pressed" : {
 
     },
     "Year" : {

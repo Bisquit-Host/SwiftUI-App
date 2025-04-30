@@ -157,6 +157,7 @@
 		F30C13182A54626C00A7EFF0 /* Bisquit.Host App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* Bisquit.Host App.swift */; };
 		F30C13192A54626D00A7EFF0 /* Bisquit.Host App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* Bisquit.Host App.swift */; };
 		F30C131A2A54626D00A7EFF0 /* Bisquit.Host App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* Bisquit.Host App.swift */; };
+		F31022FF2DC2B56500CAAAE9 /* Gamepad Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = F390C7472DC2AF940069F965 /* Gamepad Debug.swift */; };
 		F310A2F02A56AF86001AF45F /* Network VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F310A2EF2A56AF86001AF45F /* Network VM.swift */; };
 		F310A2F12A56B0BE001AF45F /* Network VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F310A2EF2A56AF86001AF45F /* Network VM.swift */; };
 		F310BB392A54E31700843F14 /* Server List VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F352AF962A4EDB1D004AD489 /* Server List VM.swift */; };
@@ -468,6 +469,9 @@
 		F336232F2A22021E006A6271 /* Value Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* Value Store.swift */; };
 		F33623302A220277006A6271 /* Panel Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3029C06E9700B08696 /* Panel Tab.swift */; };
 		F33623312A22048C006A6271 /* Value Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* Value Store.swift */; };
+		F33711BA2DC2D4010014B427 /* Gamepad Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = F390C7472DC2AF940069F965 /* Gamepad Debug.swift */; };
+		F33711BB2DC2D4010014B427 /* Gamepad Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = F390C7472DC2AF940069F965 /* Gamepad Debug.swift */; };
+		F33711BC2DC2D4010014B427 /* Gamepad Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = F390C7472DC2AF940069F965 /* Gamepad Debug.swift */; };
 		F337B3A829BC6B5400CC1195 /* Server List Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B3A729BC6B5400CC1195 /* Server List Grid.swift */; };
 		F337B4062A89FAC600DD79AA /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B4052A89FAC600DD79AA /* Entry.swift */; };
 		F337B4092A89FB4300DD79AA /* System Small Widget View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B4082A89FB4300DD79AA /* System Small Widget View.swift */; };
@@ -899,6 +903,8 @@
 		F38F9E2C2CEB39D80033EFE3 /* Metadata List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E2B2CEB39D80033EFE3 /* Metadata List.swift */; };
 		F38F9E2D2CEB39D80033EFE3 /* Metadata List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E2B2CEB39D80033EFE3 /* Metadata List.swift */; };
 		F38F9E2E2CEB39D80033EFE3 /* Metadata List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E2B2CEB39D80033EFE3 /* Metadata List.swift */; };
+		F390C74A2DC2AF940069F965 /* Gamepad Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = F390C7472DC2AF940069F965 /* Gamepad Debug.swift */; };
+		F390C74B2DC2AF940069F965 /* Gamepad Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = F390C7472DC2AF940069F965 /* Gamepad Debug.swift */; };
 		F390E53E2A84217D000B4460 /* Bisquit.Host App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* Bisquit.Host App.swift */; };
 		F3924EDF29A2333F00C4CC77 /* Settings VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EDE29A2333F00C4CC77 /* Settings VM.swift */; };
 		F3924EE729A25FBF00C4CC77 /* App Icon Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EE629A25FBF00C4CC77 /* App Icon Picker.swift */; };
@@ -2017,6 +2023,7 @@
 		F38F9E272CEB33510033EFE3 /* QuickLook File VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuickLook File VM.swift"; sourceTree = "<group>"; };
 		F38F9E2B2CEB39D80033EFE3 /* Metadata List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Metadata List.swift"; sourceTree = "<group>"; };
 		F39052482D63644100341CD2 /* Clip Demo Debug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Clip Demo Debug.entitlements"; sourceTree = "<group>"; };
+		F390C7472DC2AF940069F965 /* Gamepad Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gamepad Debug.swift"; sourceTree = "<group>"; };
 		F3924EDE29A2333F00C4CC77 /* Settings VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings VM.swift"; sourceTree = "<group>"; };
 		F3924EE629A25FBF00C4CC77 /* App Icon Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Icon Picker.swift"; sourceTree = "<group>"; };
 		F3924EE829A28D9D00C4CC77 /* Biometry Usage View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Biometry Usage View.swift"; sourceTree = "<group>"; };
@@ -3487,8 +3494,9 @@
 		F3B66DEE2D60223100F1841B /* Debug & Dev */ = {
 			isa = PBXGroup;
 			children = (
-				F3CCB1CB2CAE75D0000F8207 /* Debug Settings.swift */,
 				F3878ECC2A1BCE5000AD8657 /* Dev Settings.swift */,
+				F3CCB1CB2CAE75D0000F8207 /* Debug Settings.swift */,
+				F390C7472DC2AF940069F965 /* Gamepad Debug.swift */,
 			);
 			path = "Debug & Dev";
 			sourceTree = "<group>";
@@ -4580,6 +4588,7 @@
 				F3AFCB952A4AF6C10080C257 /* File Name And Icon.swift in Sources */,
 				F3202D362D5633270030B3CC /* Browser List MCRU.swift in Sources */,
 				F3BC03BD2B1FFBD50011F98A /* Backup Context Menu.swift in Sources */,
+				F33711BB2DC2D4010014B427 /* Gamepad Debug.swift in Sources */,
 				F33CDC022A26B930008D0214 /* Browser.swift in Sources */,
 				F30088FA2B3B561E0051476C /* User List Parent.swift in Sources */,
 				F3015DF02D9F427700B9BCC6 /* Log List Filter.swift in Sources */,
@@ -4796,6 +4805,7 @@
 				F3A994A82A177DA400530615 /* Map View.swift in Sources */,
 				F394A28429E0A9810012B7D1 /* Server Card Parent.swift in Sources */,
 				F3C0F9D029E204FA0040E277 /* FileTab Context Menu.swift in Sources */,
+				F390C74A2DC2AF940069F965 /* Gamepad Debug.swift in Sources */,
 				F373CD7D2D88D389008B64BE /* Start Page Helper.swift in Sources */,
 				F3D264442A66B3A6005C3777 /* QR Code View.swift in Sources */,
 				F399933A2AF2E491006E8A9A /* Other Settings.swift in Sources */,
@@ -5120,6 +5130,7 @@
 				F3B637302A35A82F00CB374C /* Console Inspector.swift in Sources */,
 				F30089022B3B62460051476C /* User Invitation Permission.swift in Sources */,
 				F3A7CF6A2C8DF3C900413400 /* Video File VM.swift in Sources */,
+				F31022FF2DC2B56500CAAAE9 /* Gamepad Debug.swift in Sources */,
 				F31485212A34665000AF5CCA /* Browser Sticker.swift in Sources */,
 				F3202D382D5633270030B3CC /* Browser List MCRU.swift in Sources */,
 				F37A36762A35173F00517EFC /* Console View.swift in Sources */,
@@ -5385,6 +5396,7 @@
 				F3D2953D2AF39D3A00ED43A0 /* Nav Destinations.swift in Sources */,
 				F374F7C12D54922F006771DD /* Sheet Create Subdomain.swift in Sources */,
 				F3D295392AF39D1B00ED43A0 /* Value Store.swift in Sources */,
+				F390C74B2DC2AF940069F965 /* Gamepad Debug.swift in Sources */,
 				F32F2CDD2D8F7047007CF4DE /* Discover View.swift in Sources */,
 				F3AF91C72B423535001D8F80 /* SSH List.swift in Sources */,
 				F3D295D22AF3A30400ED43A0 /* Console Tab.swift in Sources */,
@@ -5905,6 +5917,7 @@
 				F3202C7C2D558B210030B3CC /* Spotlight Index.swift in Sources */,
 				F3202D1B2D562B980030B3CC /* Browser Card VDS.swift in Sources */,
 				F374F7BD2D54922F006771DD /* Sheet Create Subdomain.swift in Sources */,
+				F33711BC2DC2D4010014B427 /* Gamepad Debug.swift in Sources */,
 				F39E683B2D2D67A70002BA96 /* New Schedule Sheet.swift in Sources */,
 				F373CDB22D895419008B64BE /* Log Topbar.swift in Sources */,
 				F373CDB32D895419008B64BE /* Log Topbar Card.swift in Sources */,
@@ -6024,6 +6037,7 @@
 				F35FEB102B09F4D3004DA05D /* Network VM.swift in Sources */,
 				F3464D352A863A6800188B0C /* Send Command.swift in Sources */,
 				F3FF3E872D93576B00EDFBC6 /* Update Checker.swift in Sources */,
+				F33711BA2DC2D4010014B427 /* Gamepad Debug.swift in Sources */,
 				F30088DB2B3A3C0E0051476C /* Console VM.swift in Sources */,
 				F3458BF02B36EA49000E8324 /* App Delegate.swift in Sources */,
 				F32FD7192B1E042C00723B88 /* Websocket Delegate.swift in Sources */,
@@ -6423,6 +6437,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOS/iOS.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
+				INFOPLIST_KEY_GCSupportsControllerUserInteraction = YES;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSCameraUsageDescription = "App uses camera to create elements with dynamic color based on camera capture";
@@ -6436,7 +6451,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -6476,6 +6491,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOS/iOS.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
+				INFOPLIST_KEY_GCSupportsControllerUserInteraction = YES;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSCameraUsageDescription = "App uses camera to create elements with dynamic color based on camera capture";
@@ -6489,7 +6505,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
