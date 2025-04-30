@@ -41,7 +41,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             break
             
         case .denied, .notDetermined:
-            CNContactStore().requestAccess(for: .contacts) { granted, error in
+            CNContactStore().requestAccess(for: .contacts) { _, error in
                 if let error {
                     print("Error requesting permissions:", error)
                 }

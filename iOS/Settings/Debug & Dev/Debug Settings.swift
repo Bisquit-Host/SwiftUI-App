@@ -47,6 +47,12 @@ struct DebugSettings: View {
                 }
             }
             .transparentSection()
+            
+            Section {
+                NavigationLink("Gamepad Test") {
+                    GamepadDebug()
+                }
+            }
         }
         .transparentList()
         .alert("Couldn't enable the extension", isPresented: $errorAlert) {}

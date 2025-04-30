@@ -9,6 +9,11 @@ final class NavState {
     }
     
     func dismiss() {
+        guard !path.isEmpty else {
+            print("Error: nav path is empty")
+            return
+        }
+        
         path.removeLast()
     }
     
