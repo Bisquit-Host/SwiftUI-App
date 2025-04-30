@@ -1,10 +1,11 @@
-import SwiftUI
+import Foundation
 import GameController
 
 @Observable
 final class GamepadManager {
     static let shared = GamepadManager()
     
+    // Buttons
     var isAPressed = false
     var isBPressed = false
     var isXPressed = false
@@ -17,6 +18,14 @@ final class GamepadManager {
     var isRightShoulderPressed = false
     var isLeftTriggerPressed = false
     var isRightTriggerPressed = false
+    
+    // D-Pad
+    var isDpadUpPressed = false
+    var isDpadDownPressed = false
+    var isDpadLeftPressed = false
+    var isDpadRightPressed = false
+    
+    // Battery
     var batteryLevel: Float = -1
     
     private init() {
@@ -34,7 +43,7 @@ final class GamepadManager {
     
     private func setupControllers() {
         for controller in GCController.controllers() {
-            self.batteryLevel = controller.battery?.batteryLevel ?? -1
+            batteryLevel = controller.battery?.batteryLevel ?? -1
             
             controller.extendedGamepad?.valueChangedHandler = { [weak self] _, element in
                 guard let self else {
@@ -61,309 +70,17 @@ final class GamepadManager {
                 check(gamepad?.rightShoulder)         { self.isRightShoulderPressed = $0 }
                 check(gamepad?.leftTrigger)           { self.isLeftTriggerPressed = $0 }
                 check(gamepad?.rightTrigger)          { self.isRightTriggerPressed = $0 }
+                
+                if let dpad = element as? GCControllerDirectionPad {
+                    let x = dpad.xAxis.value
+                    let y = dpad.yAxis.value
+                    
+                    self.isDpadUpPressed    = x == 0 && y == 1
+                    self.isDpadDownPressed  = x == 0 && y == -1
+                    self.isDpadLeftPressed  = x == -1 && y == 0
+                    self.isDpadRightPressed = x == 1 && y == 0
+                }
             }
         }
-    }
-}
-
-struct GamepadAPressedModifier: ViewModifier {
-    @State private var controller = GamepadManager.shared
-    private var action: () -> Void
-    
-    init(
-        controller: GamepadManager = GamepadManager.shared,
-        _ action: @escaping () -> Void
-    ) {
-        self.controller = controller
-        self.action = action
-    }
-    
-    func body(content: Content) -> some View {
-        content
-            .onChange(of: controller.isAPressed) {
-                if controller.isAPressed {
-                    action()
-                }
-            }
-    }
-}
-
-struct GamepadBPressedModifier: ViewModifier {
-    @State private var controller = GamepadManager.shared
-    private var action: () -> Void
-    
-    init(
-        controller: GamepadManager = GamepadManager.shared,
-        _ action: @escaping () -> Void
-    ) {
-        self.controller = controller
-        self.action = action
-    }
-    
-    func body(content: Content) -> some View {
-        content
-            .onChange(of: controller.isBPressed) {
-                if controller.isBPressed {
-                    action()
-                }
-            }
-    }
-}
-
-struct GamepadXPressedModifier: ViewModifier {
-    @State private var controller = GamepadManager.shared
-    private var action: () -> Void
-    
-    init(
-        controller: GamepadManager = GamepadManager.shared,
-        _ action: @escaping () -> Void
-    ) {
-        self.controller = controller
-        self.action = action
-    }
-    
-    func body(content: Content) -> some View {
-        content
-            .onChange(of: controller.isXPressed) {
-                if controller.isXPressed {
-                    action()
-                }
-            }
-    }
-}
-
-struct GamepadYPressedModifier: ViewModifier {
-    @State private var controller = GamepadManager.shared
-    private var action: () -> Void
-    
-    init(
-        controller: GamepadManager = GamepadManager.shared,
-        _ action: @escaping () -> Void
-    ) {
-        self.controller = controller
-        self.action = action
-    }
-    
-    func body(content: Content) -> some View {
-        content
-            .onChange(of: controller.isYPressed) {
-                if controller.isYPressed {
-                    action()
-                }
-            }
-    }
-}
-
-struct GamepadMenuPressedModifier: ViewModifier {
-    @State private var controller = GamepadManager.shared
-    private var action: () -> Void
-    
-    init(
-        controller: GamepadManager = GamepadManager.shared,
-        _ action: @escaping () -> Void
-    ) {
-        self.controller = controller
-        self.action = action
-    }
-    
-    func body(content: Content) -> some View {
-        content
-            .onChange(of: controller.isMenuPressed) {
-                if controller.isMenuPressed {
-                    action()
-                }
-            }
-    }
-}
-
-struct GamepadOptionsPressedModifier: ViewModifier {
-    @State private var controller = GamepadManager.shared
-    private var action: () -> Void
-    
-    init(
-        controller: GamepadManager = GamepadManager.shared,
-        _ action: @escaping () -> Void
-    ) {
-        self.controller = controller
-        self.action = action
-    }
-    
-    func body(content: Content) -> some View {
-        content
-            .onChange(of: controller.isOptionsPressed) {
-                if controller.isOptionsPressed {
-                    action()
-                }
-            }
-    }
-}
-
-struct GamepadLeftThumbstickPressedModifier: ViewModifier {
-    @State private var controller = GamepadManager.shared
-    private var action: () -> Void
-    
-    init(
-        controller: GamepadManager = GamepadManager.shared,
-        _ action: @escaping () -> Void
-    ) {
-        self.controller = controller
-        self.action = action
-    }
-    
-    func body(content: Content) -> some View {
-        content
-            .onChange(of: controller.isLeftThumbstickPressed) {
-                if controller.isLeftThumbstickPressed {
-                    action()
-                }
-            }
-    }
-}
-
-struct GamepadRightThumbstickPressedModifier: ViewModifier {
-    @State private var controller = GamepadManager.shared
-    private var action: () -> Void
-    
-    init(
-        controller: GamepadManager = GamepadManager.shared,
-        _ action: @escaping () -> Void
-    ) {
-        self.controller = controller
-        self.action = action
-    }
-    
-    func body(content: Content) -> some View {
-        content
-            .onChange(of: controller.isRightThumbstickPressed) {
-                if controller.isRightThumbstickPressed {
-                    action()
-                }
-            }
-    }
-}
-
-struct GamepadLeftShoulderPressedModifier: ViewModifier {
-    @State private var controller = GamepadManager.shared
-    private var action: () -> Void
-    
-    init(controller: GamepadManager = GamepadManager.shared, _ action: @escaping () -> Void) {
-        self.controller = controller
-        self.action = action
-    }
-    
-    func body(content: Content) -> some View {
-        content
-            .onChange(of: controller.isLeftShoulderPressed) {
-                if controller.isLeftShoulderPressed {
-                    action()
-                }
-            }
-    }
-}
-
-struct GamepadRightShoulderPressedModifier: ViewModifier {
-    @State private var controller = GamepadManager.shared
-    private var action: () -> Void
-    
-    init(controller: GamepadManager = GamepadManager.shared, _ action: @escaping () -> Void) {
-        self.controller = controller
-        self.action = action
-    }
-    
-    func body(content: Content) -> some View {
-        content
-            .onChange(of: controller.isRightShoulderPressed) {
-                if controller.isRightShoulderPressed {
-                    action()
-                }
-            }
-    }
-}
-
-struct GamepadLeftTriggerPressedModifier: ViewModifier {
-    @State private var controller = GamepadManager.shared
-    private var action: () -> Void
-    
-    init(controller: GamepadManager = GamepadManager.shared, _ action: @escaping () -> Void) {
-        self.controller = controller
-        self.action = action
-    }
-    
-    func body(content: Content) -> some View {
-        content
-            .onChange(of: controller.isLeftTriggerPressed) {
-                if controller.isLeftTriggerPressed {
-                    action()
-                }
-            }
-    }
-}
-
-struct GamepadRightTriggerPressedModifier: ViewModifier {
-    @State private var controller = GamepadManager.shared
-    private var action: () -> Void
-    
-    init(controller: GamepadManager = GamepadManager.shared, _ action: @escaping () -> Void) {
-        self.controller = controller
-        self.action = action
-    }
-    
-    func body(content: Content) -> some View {
-        content
-            .onChange(of: controller.isRightTriggerPressed) {
-                if controller.isRightTriggerPressed {
-                    action()
-                }
-            }
-    }
-}
-
-extension View {
-    func onGamepadPressedA(_ action: @escaping () -> Void) -> some View {
-        modifier(GamepadAPressedModifier(action))
-    }
-    
-    func onGamepadPressedB(_ action: @escaping () -> Void) -> some View {
-        modifier(GamepadBPressedModifier(action))
-    }
-    
-    func onGamepadPressedX(_ action: @escaping () -> Void) -> some View {
-        modifier(GamepadXPressedModifier(action))
-    }
-    
-    func onGamepadPressedY(_ action: @escaping () -> Void) -> some View {
-        modifier(GamepadYPressedModifier(action))
-    }
-    
-    func onGamepadPressedMenu(_ action: @escaping () -> Void) -> some View {
-        modifier(GamepadMenuPressedModifier(action))
-    }
-    
-    func onGamepadPressedOptions(_ action: @escaping () -> Void) -> some View {
-        modifier(GamepadOptionsPressedModifier(action))
-    }
-    
-    func onGamepadPressedLeftThumbstick(_ action: @escaping () -> Void) -> some View {
-        modifier(GamepadLeftThumbstickPressedModifier(action))
-    }
-    
-    func onGamepadPressedRightThumbstick(_ action: @escaping () -> Void) -> some View {
-        modifier(GamepadRightThumbstickPressedModifier(action))
-    }
-    
-    func onGamepadPressedLeftShoulder(_ action: @escaping () -> Void) -> some View {
-        modifier(GamepadLeftShoulderPressedModifier(action))
-    }
-    
-    func onGamepadPressedRightShoulder(_ action: @escaping () -> Void) -> some View {
-        modifier(GamepadRightShoulderPressedModifier(action))
-    }
-    
-    func onGamepadPressedLeftTrigger(_ action: @escaping () -> Void) -> some View {
-        modifier(GamepadLeftTriggerPressedModifier(action))
-    }
-    
-    func onGamepadPressedRightTrigger(_ action: @escaping () -> Void) -> some View {
-        modifier(GamepadRightTriggerPressedModifier(action))
     }
 }

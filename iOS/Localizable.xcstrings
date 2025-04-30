@@ -2526,6 +2526,18 @@
         }
       }
     },
+    "DPad Down Pressed" : {
+
+    },
+    "DPad Left Pressed" : {
+
+    },
+    "DPad Right Pressed" : {
+
+    },
+    "DPad Up Pressed" : {
+
+    },
     "Drop here" : {
       "localizations" : {
         "ru" : {
@@ -4321,6 +4333,18 @@
 
     },
     "Press B" : {
+
+    },
+    "Press DPad Down" : {
+
+    },
+    "Press DPad Left" : {
+
+    },
+    "Press DPad Right" : {
+
+    },
+    "Press DPad Up" : {
 
     },
     "Press Left Shoulder" : {
