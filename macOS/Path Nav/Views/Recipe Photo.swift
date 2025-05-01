@@ -4,7 +4,11 @@ import SwiftUI
 import PteroNet
 
 struct RecipePhoto: View {
-    var recipe: ServerAttributes
+    private let recipe: ServerAttributes
+    
+    init(_ recipe: ServerAttributes) {
+        self.recipe = recipe
+    }
     
     var body: some View {
 //        if let imageName = recipe.imageName {

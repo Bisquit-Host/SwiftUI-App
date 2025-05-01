@@ -14,7 +14,7 @@ struct RecipeTile: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            RecipePhoto(recipe: recipe)
+            RecipePhoto(recipe)
                 .aspectRatio(1, contentMode: .fill)
                 .frame(maxWidth: 240, maxHeight: 240)
             

@@ -33,13 +33,13 @@ enum Experience: Int, Identifiable, CaseIterable, Codable {
     var localizedDescription: LocalizedStringKey {
         switch self {
         case .stack:
-            "Presents a stack of views over a root view."
+            "Presents a stack of views over a root view"
             
         case .twoColumn:
-            "Presents views in two columns: sidebar and detail."
+            "Presents views in two columns: sidebar and detail"
             
         case .threeColumn:
-            "Presents views in three columns: sidebar, content, and detail."
+            "Presents views in three columns: sidebar, content, and detail"
         }
     }
 }
