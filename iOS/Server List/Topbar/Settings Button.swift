@@ -50,6 +50,9 @@ struct SettingsButton: View {
                 .background(.ultraThinMaterial, in: .circle)
         }
         .foregroundStyle(.foreground)
+        .onGamepadPressed(.menu) {
+            sheetSettings = true
+        }
         .sheet($sheetAccount) {
             AccountParent()
         }

@@ -19,6 +19,10 @@ import SafariCover
 import Pow
 #endif
 
+#if canImport(GaypadKit)
+import GaypadKit
+#endif
+
 @main
 struct BisquitHostApp: App {
     @StateObject private var store = ValueStore()

@@ -24,6 +24,7 @@ struct SettingsView: View {
         .toolbarTitleDisplayMode(.inline)
         .scrollIndicators(.hidden)
         .transparentList()
+        .dismissWithGamepad()
         .sheet($vm.sheetBio) {
             BiometryUsageView()
         }
