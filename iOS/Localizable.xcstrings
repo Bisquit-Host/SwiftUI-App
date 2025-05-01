@@ -5504,12 +5504,12 @@
         }
       }
     },
-    "Tap Authorize App or copy the API key" : {
+    "Tap \"Authorize App\" or copy the API key" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Нажмите Authorize App или скопируйте API-ключ"
+            "value" : "Нажмите “Authorize App” или скопируйте API-ключ"
           }
         }
       }
