@@ -1,5 +1,5 @@
 {
-  "originHash" : "958e50f9f77cd7d1e222557445e1c8e64219fd23ab6cfdffce318a2ca0b48a2d",
+  "originHash" : "ee64f2c92d7d918d1b3743b9a943fab8b93e9fe99f20747187f40554766d00ae",
   "pins" : [
     {
       "identity" : "alertkit",
@@ -26,6 +26,15 @@
       "state" : {
         "revision" : "513b9d7e7a1bd46504a1009bbab943b75ce2f195",
         "version" : "5.6.0"
+      }
+    },
+    {
+      "identity" : "gaypadkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/TopScrech/GaypadKit",
+      "state" : {
+        "branch" : "main",
+        "revision" : "ce8e561ea4404c48d47afe99bda40a72dbf1984c"
       }
     },
     {
