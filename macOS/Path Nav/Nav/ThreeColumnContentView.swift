@@ -1,10 +1,13 @@
-import SwiftUI
+import ScrechKit
 
 struct ThreeColumnContentView: View {
+    @State private var sectionsVM = PanelSectionVM()
     @Environment(NavModel.self) private var nav
     @Environment(DataModel.self) private var dataModel
     
     private let categories = Tabs.allCases
+    
+    @State private var sheetCustomization = false
     
     var body: some View {
         @Bindable var nav = nav
@@ -51,6 +54,11 @@ struct ThreeColumnContentView: View {
                 .onDisappear {
                     nav.selectedTab = nil
                 }
+                .toolbar {
+                    SFButton("pencil") {
+                        sheetCustomization = true
+                    }
+                }
             } else {
                 Text("Choose a server")
                     .navigationTitle("")
@@ -87,6 +95,13 @@ struct ThreeColumnContentView: View {
             //                }
             //                .buttonStyle(.plain)
             //            }
+        }
+        .sheet($sheetCustomization) {
+            NavigationStack {
+                PanelSectionList()
+                    .environment(sectionsVM)
+            }
+            .frame(minHeight: 500)
         }
     }
 }

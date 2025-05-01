@@ -698,6 +698,10 @@
 		F36B14912DC3BC3E008C1AF9 /* NavModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14702DC3BC3E008C1AF9 /* NavModel.swift */; };
 		F36B14922DC3BC3E008C1AF9 /* ExperienceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14772DC3BC3E008C1AF9 /* ExperienceButton.swift */; };
 		F36B14972DC3BC52008C1AF9 /* Bisquit.Host App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14942DC3BC52008C1AF9 /* Bisquit.Host App.swift */; };
+		F36B149C2DC3E9BB008C1AF9 /* Panel Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33712192DC2FD240014B427 /* Panel Section.swift */; };
+		F36B149E2DC3E9BB008C1AF9 /* Panel Section VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0B48C2DC300D6003C8B27 /* Panel Section VM.swift */; };
+		F36B149F2DC3E9BB008C1AF9 /* Panel Section Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337121A2DC2FD240014B427 /* Panel Section Row.swift */; };
+		F36B14A12DC3EA70008C1AF9 /* Panel Section List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14A02DC3EA70008C1AF9 /* Panel Section List.swift */; };
 		F36B736D2C89B6BE00E858FE /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F36B736C2C89B6BE00E858FE /* PteroNet */; };
 		F36B73702C8A4CAF00E858FE /* Refresh Button Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B736F2C8A4CAF00E858FE /* Refresh Button Intent.swift */; };
 		F36B73712C8A4CAF00E858FE /* Refresh Button Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B736F2C8A4CAF00E858FE /* Refresh Button Intent.swift */; };
@@ -2007,6 +2011,7 @@
 		F36B147D2DC3BC3E008C1AF9 /* RecipePhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipePhoto.swift; sourceTree = "<group>"; };
 		F36B147E2DC3BC3E008C1AF9 /* RecipeTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTile.swift; sourceTree = "<group>"; };
 		F36B14942DC3BC52008C1AF9 /* Bisquit.Host App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bisquit.Host App.swift"; sourceTree = "<group>"; };
+		F36B14A02DC3EA70008C1AF9 /* Panel Section List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Section List.swift"; sourceTree = "<group>"; };
 		F36B736E2C89BB7200E858FE /* Intent Handler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Intent Handler.entitlements"; sourceTree = "<group>"; };
 		F36B736F2C8A4CAF00E858FE /* Refresh Button Intent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Refresh Button Intent.swift"; sourceTree = "<group>"; };
 		F36B73792C8AE9D400E858FE /* Power Actions Intents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Actions Intents.swift"; sourceTree = "<group>"; };
@@ -3202,6 +3207,7 @@
 				F36B146B2DC3BC3E008C1AF9 /* StackContentView.swift */,
 				F36B146C2DC3BC3E008C1AF9 /* TwoColumnContentView.swift */,
 				F36B146D2DC3BC3E008C1AF9 /* ThreeColumnContentView.swift */,
+				F36B14A02DC3EA70008C1AF9 /* Panel Section List.swift */,
 			);
 			path = Nav;
 			sourceTree = "<group>";
@@ -6179,6 +6185,9 @@
 				F348C6E92A54483D002D5BD6 /* Intro.swift in Sources */,
 				F31F31FF2D52BD940095DD19 /* System lowPowerMode.swift in Sources */,
 				F32FD7162B1E041D00723B88 /* Websocket Message.swift in Sources */,
+				F36B149C2DC3E9BB008C1AF9 /* Panel Section.swift in Sources */,
+				F36B149E2DC3E9BB008C1AF9 /* Panel Section VM.swift in Sources */,
+				F36B149F2DC3E9BB008C1AF9 /* Panel Section Row.swift in Sources */,
 				F3573BBF2C64E0360051259E /* Log Card.swift in Sources */,
 				F30C13142A5461BA00A7EFF0 /* Cache VM.swift in Sources */,
 				F3D558B12A33C69F00608447 /* File Tab VM.swift in Sources */,
@@ -6227,6 +6236,7 @@
 				F36B14912DC3BC3E008C1AF9 /* NavModel.swift in Sources */,
 				F36B14922DC3BC3E008C1AF9 /* ExperienceButton.swift in Sources */,
 				F3015DEE2D9F427700B9BCC6 /* Log List Filter.swift in Sources */,
+				F36B14A12DC3EA70008C1AF9 /* Panel Section List.swift in Sources */,
 				F3A563282D9EF21B009AA363 /* Log Meta Card.swift in Sources */,
 				F3AB4A782CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
 				F39EA2DF2D5CB5E200329468 /* Linking VM.swift in Sources */,
