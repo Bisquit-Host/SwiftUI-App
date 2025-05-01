@@ -8,7 +8,6 @@ struct PanelSectionList: View {
             Section {
                 Text("Reorder or hide sections to personalize your view")
                     .foregroundStyle(.secondary)
-                    .padding(-20)
             }
             .listRowBackground(Color.clear)
             

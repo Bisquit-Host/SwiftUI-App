@@ -38,15 +38,17 @@ struct FileTab: View {
                 }
                 .onDelete(perform: deleteItem)
             } header: {
-                HStack {
-                    FolderPath(root)
-                    
-                    Spacer()
-                    
-                    Text("\(fileCount) files")
-                        .monospacedDigit()
+                if fileCount != 0 {
+                    HStack {
+                        FolderPath(root)
+                        
+                        Spacer()
+                        
+                        Text("\(fileCount) files")
+                            .monospacedDigit()
+                    }
+                    .numericTransition()
                 }
-                .numericTransition()
             }
             .listRowBackground(Color.gray.opacity(0.2))
         }
