@@ -16,7 +16,7 @@ struct StackContentView: View {
             List(categories) { category in
                 Section {
                     ForEach(dataModel.servers) { recipe in
-//                    ForEach(dataModel.recipes(in: category)) { recipe in
+//                    ForEach(vm.recipes(in: category)) { recipe in
                         NavigationLink(recipe.name, value: recipe)
                     }
                 } header: {

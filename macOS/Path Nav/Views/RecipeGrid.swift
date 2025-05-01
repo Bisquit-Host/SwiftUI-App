@@ -12,7 +12,7 @@ struct RecipeGrid: View {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(dataModel.servers) { recipe in
-//                    ForEach(dataModel.recipes(in: category)) { recipe in
+//                    ForEach(vm.recipes(in: category)) { recipe in
                         NavigationLink(value: recipe) {
                             RecipeTile(recipe)
                         }

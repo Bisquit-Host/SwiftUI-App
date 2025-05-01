@@ -40,7 +40,7 @@ struct ThreeColumnContentView: View {
             .navigationTitle("Servers")
             //            }
         } content: {
-//            if let selectedServer = nav.selectedServer {
+            if nav.selectedTab != nil {
                 List(selection: $nav.selectedTab) {
                     ForEach(Tabs.allCases) { tab in
                         //                    ForEach(dataModel.recipes(in: category)) { recipe in
@@ -51,25 +51,32 @@ struct ThreeColumnContentView: View {
                 .onDisappear {
                     nav.selectedTab = nil
                 }
-                .experienceToolbar()
-//            } else {
-//                Text("Choose a server")
-//                    .navigationTitle("")
-//            }
-        } detail: {
-            if let selectedRecipe = nav.selectedServer.first {
-                Text("Seleted \(nav.selectedServer.count)")
-                
-                RecipeDetail(recipe: selectedRecipe) { relatedRecipe in
-                    Button {
-                        //                        nav.selectedCategory = relatedRecipe.category //
-                        //                        nav.selectedServer = relatedRecipe
-                    } label: {
-                        RecipeTile(relatedRecipe)
-                    }
-                    .buttonStyle(.plain)
-                }
+            } else {
+                Text("Choose a server")
+                    .navigationTitle("")
             }
+        } detail: {
+            switch nav.selectedTab {
+            case .info:
+                Text("Info")
+                
+            default:
+                Text("Select a tab")
+            }
+            
+            //            if let selectedRecipe = nav.selectedServer.first {
+            //                Text("Seleted \(nav.selectedServer.count)")
+            //
+            //                RecipeDetail(recipe: selectedRecipe) { relatedRecipe in
+            //                    Button {
+            //                        //                        nav.selectedCategory = relatedRecipe.category //
+            //                        //                        nav.selectedServer = relatedRecipe
+            //                    } label: {
+            //                        RecipeTile(relatedRecipe)
+            //                    }
+            //                    .buttonStyle(.plain)
+            //                }
+            //            }
             
             //            RecipeDetail(recipe: nav.selectedServer) { relatedRecipe in
             //                Button {

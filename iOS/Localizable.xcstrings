@@ -1413,6 +1413,9 @@
     "Choose a recipe" : {
 
     },
+    "Choose a server" : {
+
+    },
     "Choose File" : {
       "localizations" : {
         "nl" : {
@@ -4893,7 +4896,7 @@
         }
       }
     },
-    "Seleted %lld" : {
+    "Select a tab" : {
 
     },
     "Send Command" : {
