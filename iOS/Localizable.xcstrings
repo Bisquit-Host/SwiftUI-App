@@ -3094,22 +3094,6 @@
     "How do I authorize?" : {
 
     },
-    "How to obtain an API-key" : {
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hoe maak ik een API-sleutel"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Как получить API-ключ"
-          }
-        }
-      }
-    },
     "How to...?" : {
       "localizations" : {
         "ru" : {

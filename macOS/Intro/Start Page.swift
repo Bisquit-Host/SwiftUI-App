@@ -11,7 +11,7 @@ struct StartPage: View {
     
     var body: some View {
         VStack {
-            NavigationLink("How to obtain an API-key") {
+            NavigationLink("How do I authorize?") {
                 Guide()
                     .frame(width: 300, height: 600)
             }
