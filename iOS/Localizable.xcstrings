@@ -3017,7 +3017,14 @@
       }
     },
     "Hide server names" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скрыть названия серверов"
+          }
+        }
+      }
     },
     "Hide status bar" : {
       "localizations" : {
