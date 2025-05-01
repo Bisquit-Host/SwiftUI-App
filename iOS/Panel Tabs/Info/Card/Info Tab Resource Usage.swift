@@ -1,7 +1,7 @@
 import SwiftUI
 import PteroNet
 
-struct InfoTabCard: View {
+struct InfoTabResourceUsage: View {
     @EnvironmentObject private var store: ValueStore
     
     private let server: ServerAttributes
@@ -31,7 +31,7 @@ struct InfoTabCard: View {
 }
 
 #Preview {
-    InfoTabCard(sampleJSON(.serverListAttributes))
+    InfoTabResourceUsage(sampleJSON(.serverListAttributes))
         .environment(PanelVM(""))
         .environmentObject(ValueStore())
 }

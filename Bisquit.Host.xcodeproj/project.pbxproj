@@ -507,8 +507,8 @@
 		F337D7592A4DBC840011524E /* Create Apikey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337D7582A4DBC840011524E /* Create Apikey.swift */; };
 		F337D75A2A4DBC840011524E /* Create Apikey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337D7582A4DBC840011524E /* Create Apikey.swift */; };
 		F3393E922D802C2300E71438 /* Power Widget View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3393E912D802C2300E71438 /* Power Widget View.swift */; };
-		F33944112A49022A00E2F0FC /* Info Tab Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33944102A49022A00E2F0FC /* Info Tab Card.swift */; };
-		F33944122A49022A00E2F0FC /* Info Tab Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33944102A49022A00E2F0FC /* Info Tab Card.swift */; };
+		F33944112A49022A00E2F0FC /* Info Tab Resource Usage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33944102A49022A00E2F0FC /* Info Tab Resource Usage.swift */; };
+		F33944122A49022A00E2F0FC /* Info Tab Resource Usage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33944102A49022A00E2F0FC /* Info Tab Resource Usage.swift */; };
 		F33C2AC12C69168C002FD150 /* QuickLooking in Frameworks */ = {isa = PBXBuildFile; productRef = F33C2AC02C69168C002FD150 /* QuickLooking */; };
 		F33C2AC32C691735002FD150 /* QuickLooking in Frameworks */ = {isa = PBXBuildFile; productRef = F33C2AC22C691735002FD150 /* QuickLooking */; };
 		F33C2AC52C691764002FD150 /* QuickLooking in Frameworks */ = {isa = PBXBuildFile; productRef = F33C2AC42C691764002FD150 /* QuickLooking */; };
@@ -1485,6 +1485,14 @@
 		F3E08EC32A2CE92A00116C1C /* Panel Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3029C06E9700B08696 /* Panel Tab.swift */; };
 		F3E08EC62A2CEA6400116C1C /* Start Page VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA57B2959011B0006D126 /* Start Page VM.swift */; };
 		F3E08ECE2A2CEDD800116C1C /* Panel View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E08ECD2A2CEDD800116C1C /* Panel View.swift */; };
+		F3E0B48D2DC300D6003C8B27 /* Panel Section VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0B48C2DC300D6003C8B27 /* Panel Section VM.swift */; };
+		F3E0B48E2DC300D6003C8B27 /* Panel Section VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0B48C2DC300D6003C8B27 /* Panel Section VM.swift */; };
+		F3E0B4902DC3033A003C8B27 /* Info Tab Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0B48F2DC3033A003C8B27 /* Info Tab Users.swift */; };
+		F3E0B4912DC3033A003C8B27 /* Info Tab Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0B48F2DC3033A003C8B27 /* Info Tab Users.swift */; };
+		F3E0B4932DC30347003C8B27 /* Info Tab Logs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0B4922DC30347003C8B27 /* Info Tab Logs.swift */; };
+		F3E0B4942DC30347003C8B27 /* Info Tab Logs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0B4922DC30347003C8B27 /* Info Tab Logs.swift */; };
+		F3E0B4962DC30351003C8B27 /* Info Tab Allocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0B4952DC30351003C8B27 /* Info Tab Allocations.swift */; };
+		F3E0B4972DC30351003C8B27 /* Info Tab Allocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0B4952DC30351003C8B27 /* Info Tab Allocations.swift */; };
 		F3E1B2D02C903C9300AED3F1 /* Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF012C8BBB4700413400 /* Server Card Context Menu.swift */; };
 		F3E1D3ED2B3208BE009B7062 /* User 2Fa.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3EC2B3208BE009B7062 /* User 2Fa.swift */; };
 		F3E1D3EE2B3208BE009B7062 /* User 2Fa.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3EC2B3208BE009B7062 /* User 2Fa.swift */; };
@@ -1639,8 +1647,6 @@
 		F3FF3E9A2D9411B400EDFBC6 /* Intro Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF3E932D9411B400EDFBC6 /* Intro Parent.swift */; };
 		F3FF59FF2A4A3188003A1973 /* User List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF59FE2A4A3188003A1973 /* User List.swift */; };
 		F3FF5A002A4A3188003A1973 /* User List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF59FE2A4A3188003A1973 /* User List.swift */; };
-		F3FF5A032A4A359C003A1973 /* Info Tab Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A022A4A359C003A1973 /* Info Tab Buttons.swift */; };
-		F3FF5A042A4A359C003A1973 /* Info Tab Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A022A4A359C003A1973 /* Info Tab Buttons.swift */; };
 		F3FF5A0C2A4A386F003A1973 /* Users VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A0B2A4A386F003A1973 /* Users VM.swift */; };
 		F3FF5A0D2A4A386F003A1973 /* Users VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A0B2A4A386F003A1973 /* Users VM.swift */; };
 		F3FF5A0F2A4A3ABD003A1973 /* User Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A0E2A4A3ABD003A1973 /* User Card.swift */; };
@@ -1913,7 +1919,7 @@
 		F337C1682A8D07E2006F321C /* Startup VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Startup VM.swift"; sourceTree = "<group>"; };
 		F337D7582A4DBC840011524E /* Create Apikey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Create Apikey.swift"; sourceTree = "<group>"; };
 		F3393E912D802C2300E71438 /* Power Widget View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Widget View.swift"; sourceTree = "<group>"; };
-		F33944102A49022A00E2F0FC /* Info Tab Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab Card.swift"; sourceTree = "<group>"; };
+		F33944102A49022A00E2F0FC /* Info Tab Resource Usage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab Resource Usage.swift"; sourceTree = "<group>"; };
 		F33CDBFA2A26A571008D0214 /* Server Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card.swift"; sourceTree = "<group>"; };
 		F33DE4E62B35089000E257D8 /* Background Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Background Blur.swift"; sourceTree = "<group>"; };
 		F33DE4E82B350C8B00E257D8 /* Server Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card.swift"; sourceTree = "<group>"; };
@@ -2196,6 +2202,10 @@
 		F3E08EB52A2CE56200116C1C /* App Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Settings.swift"; sourceTree = "<group>"; };
 		F3E08EBE2A2CE87800116C1C /* Start Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page.swift"; sourceTree = "<group>"; };
 		F3E08ECD2A2CEDD800116C1C /* Panel View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel View.swift"; sourceTree = "<group>"; };
+		F3E0B48C2DC300D6003C8B27 /* Panel Section VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Section VM.swift"; sourceTree = "<group>"; };
+		F3E0B48F2DC3033A003C8B27 /* Info Tab Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab Users.swift"; sourceTree = "<group>"; };
+		F3E0B4922DC30347003C8B27 /* Info Tab Logs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab Logs.swift"; sourceTree = "<group>"; };
+		F3E0B4952DC30351003C8B27 /* Info Tab Allocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab Allocations.swift"; sourceTree = "<group>"; };
 		F3E1D3EC2B3208BE009B7062 /* User 2Fa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User 2Fa.swift"; sourceTree = "<group>"; };
 		F3E1D3F12B320A6A009B7062 /* Permission Group Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Permission Group Header.swift"; sourceTree = "<group>"; };
 		F3E2BED92C1C6B9500B7A6D4 /* Cache List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache List.swift"; sourceTree = "<group>"; };
@@ -2245,7 +2255,6 @@
 		F3FF3E862D93576B00EDFBC6 /* Update Checker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Update Checker.swift"; sourceTree = "<group>"; };
 		F3FF3E932D9411B400EDFBC6 /* Intro Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Intro Parent.swift"; sourceTree = "<group>"; };
 		F3FF59FE2A4A3188003A1973 /* User List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User List.swift"; sourceTree = "<group>"; };
-		F3FF5A022A4A359C003A1973 /* Info Tab Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab Buttons.swift"; sourceTree = "<group>"; };
 		F3FF5A0B2A4A386F003A1973 /* Users VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Users VM.swift"; sourceTree = "<group>"; };
 		F3FF5A0E2A4A3ABD003A1973 /* User Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Card.swift"; sourceTree = "<group>"; };
 		F3FFB73E2A57F02C00220FA5 /* Info Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab.swift"; sourceTree = "<group>"; };
@@ -2744,10 +2753,12 @@
 			isa = PBXGroup;
 			children = (
 				F31BA59C295902280006D126 /* Info Tab.swift */,
+				F3E0B48F2DC3033A003C8B27 /* Info Tab Users.swift */,
+				F3E0B4922DC30347003C8B27 /* Info Tab Logs.swift */,
+				F3E0B4952DC30351003C8B27 /* Info Tab Allocations.swift */,
 				F373CDA52D88E9F9008B64BE /* Info Tab Heading.swift */,
 				F3B66DEF2D60B2B100F1841B /* Card */,
 				F325F6FF2A54BBCF00E89EC4 /* Info Tab Allocation.swift */,
-				F3FF5A022A4A359C003A1973 /* Info Tab Buttons.swift */,
 				F3A563232D9EF114009AA363 /* Info Tab Buttons User Img.swift */,
 				F3B66DF32D60B46F00F1841B /* Info Tab LA.swift */,
 				F33712212DC2FD2A0014B427 /* Castomization */,
@@ -2958,6 +2969,7 @@
 			isa = PBXGroup;
 			children = (
 				F33712182DC2FD240014B427 /* Panel Section List.swift */,
+				F3E0B48C2DC300D6003C8B27 /* Panel Section VM.swift */,
 				F337121A2DC2FD240014B427 /* Panel Section Row.swift */,
 				F33712192DC2FD240014B427 /* Panel Section.swift */,
 			);
@@ -3540,7 +3552,7 @@
 		F3B66DEF2D60B2B100F1841B /* Card */ = {
 			isa = PBXGroup;
 			children = (
-				F33944102A49022A00E2F0FC /* Info Tab Card.swift */,
+				F33944102A49022A00E2F0FC /* Info Tab Resource Usage.swift */,
 				F3E467542A49939300FABE5F /* Info Relative Stats.swift */,
 				F3B81DF02A49C96000633B66 /* Info Absolute Stats.swift */,
 				F3E467512A49903900FABE5F /* Info Stat.swift */,
@@ -4789,7 +4801,6 @@
 				F3A1D2312A201C570053261E /* Enums.swift in Sources */,
 				F3E467522A49903900FABE5F /* Info Stat.swift in Sources */,
 				F337C1692A8D07E2006F321C /* Startup VM.swift in Sources */,
-				F3FF5A032A4A359C003A1973 /* Info Tab Buttons.swift in Sources */,
 				F337121B2DC2FD240014B427 /* Panel Section.swift in Sources */,
 				F337121C2DC2FD240014B427 /* Panel Section List.swift in Sources */,
 				F337121D2DC2FD240014B427 /* Panel Section Row.swift in Sources */,
@@ -4804,6 +4815,7 @@
 				F36797782A3A55E1009F2788 /* Log List Parent.swift in Sources */,
 				F3202D4D2D56DC050030B3CC /* Prefetcher.swift in Sources */,
 				F31F32052D52DB950095DD19 /* Color Theme.swift in Sources */,
+				F3E0B4912DC3033A003C8B27 /* Info Tab Users.swift in Sources */,
 				F380B3282BD7C4A4009062E8 /* Upload Preview List.swift in Sources */,
 				F3AF91C12B423492001D8F80 /* SSH VM.swift in Sources */,
 				F353B0412D8A31BF00E4EC07 /* Account Parent.swift in Sources */,
@@ -4813,6 +4825,7 @@
 				F3EE9FA02D86234A000120A7 /* Custom Dialog.swift in Sources */,
 				F3EE9FA12D86234A000120A7 /* Custom Alert.swift in Sources */,
 				F37A36732A3515DC00517EFC /* Server Settings VM.swift in Sources */,
+				F3E0B4942DC30347003C8B27 /* Info Tab Logs.swift in Sources */,
 				F311CAAE2A646612004E4A4A /* Log Meta View.swift in Sources */,
 				F3A1235A2A6689FA008E3E20 /* User Email.swift in Sources */,
 				F303214B2B3FEA45002A73B8 /* Panel Settings View.swift in Sources */,
@@ -4919,6 +4932,7 @@
 				F3B81DF12A49C96000633B66 /* Info Absolute Stats.swift in Sources */,
 				F3E8B3502CF485FB005D25F8 /* Console Message.swift in Sources */,
 				F37DDA7629E2AF7600B9680C /* Folder Path VM.swift in Sources */,
+				F3E0B4962DC30351003C8B27 /* Info Tab Allocations.swift in Sources */,
 				F335CA0B2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */,
 				F3A994AA2A177ED100530615 /* Map VM.swift in Sources */,
 				F30088FC2B3B56210051476C /* User List Parent.swift in Sources */,
@@ -4926,6 +4940,7 @@
 				F3A123562A667804008E3E20 /* Log Meta Parent.swift in Sources */,
 				F3FF5A0C2A4A386F003A1973 /* Users VM.swift in Sources */,
 				F31BA576295900E30006D126 /* Settings View.swift in Sources */,
+				F3E0B48E2DC300D6003C8B27 /* Panel Section VM.swift in Sources */,
 				F3A563222D9EEECB009AA363 /* Allow Drag.swift in Sources */,
 				F3D3DBD129B8007B00096115 /* Browser Topbar.swift in Sources */,
 				F30088A32B3A18A50051476C /* Database VM.swift in Sources */,
@@ -5010,7 +5025,7 @@
 				F31BA5862959016D0006D126 /* SpriteKit Pyzh.swift in Sources */,
 				F30089002B3B62450051476C /* User Invitation Permission.swift in Sources */,
 				F3BBE36429AF97D800323C6B /* Credential Field.swift in Sources */,
-				F33944112A49022A00E2F0FC /* Info Tab Card.swift in Sources */,
+				F33944112A49022A00E2F0FC /* Info Tab Resource Usage.swift in Sources */,
 				F3A7BCD1296B44FF00E080C1 /* Nav Extension.swift in Sources */,
 				F3AB1DF72D79C42B00387164 /* MetricKit Manager.swift in Sources */,
 				F3BC03B22B1FF4830011F98A /* Task Context Menu.swift in Sources */,
@@ -5153,6 +5168,7 @@
 				F337121E2DC2FD240014B427 /* Panel Section.swift in Sources */,
 				F337121F2DC2FD240014B427 /* Panel Section List.swift in Sources */,
 				F33712202DC2FD240014B427 /* Panel Section Row.swift in Sources */,
+				F3E0B4972DC30351003C8B27 /* Info Tab Allocations.swift in Sources */,
 				F3202D0D2D562AE30030B3CC /* Browser List Web.swift in Sources */,
 				F36D53192A05B7F6007324C6 /* Panel VM.swift in Sources */,
 				F389BB6C2A05B5EA00911EBF /* Cache Settings.swift in Sources */,
@@ -5171,7 +5187,7 @@
 				F325F7072A54C4BC00E89EC4 /* System Alerts.swift in Sources */,
 				F3C9D85E2B31146E00265492 /* User Image.swift in Sources */,
 				F3AB1DF92D79C42B00387164 /* MetricKit Manager.swift in Sources */,
-				F33944122A49022A00E2F0FC /* Info Tab Card.swift in Sources */,
+				F33944122A49022A00E2F0FC /* Info Tab Resource Usage.swift in Sources */,
 				F389BB6E2A05B5F400911EBF /* Cache Limit.swift in Sources */,
 				F3B637302A35A82F00CB374C /* Console Inspector.swift in Sources */,
 				F30089022B3B62460051476C /* User Invitation Permission.swift in Sources */,
@@ -5232,6 +5248,7 @@
 				F3D037012CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift in Sources */,
 				F354E9842A48CA2000F6E359 /* Topbar Grid Button.swift in Sources */,
 				F3E679B12D5A854700A7ADDE /* Server Options Provider.swift in Sources */,
+				F3E0B4932DC30347003C8B27 /* Info Tab Logs.swift in Sources */,
 				F36D531F2A05B82B007324C6 /* Info Tab.swift in Sources */,
 				F36D530E2A05B6CE007324C6 /* Browser.swift in Sources */,
 				F39872112A1AE3CE0022B00E /* Video Player.swift in Sources */,
@@ -5259,6 +5276,7 @@
 				F3116F272A33E142001F067C /* Folder File.swift in Sources */,
 				F389BB5C2A05B53800911EBF /* Suspended Server Card.swift in Sources */,
 				F353D5052D98427500EC9F3A /* Panel Toolbar.swift in Sources */,
+				F3E0B4902DC3033A003C8B27 /* Info Tab Users.swift in Sources */,
 				F389BB742A05B61F00911EBF /* Credentials VM.swift in Sources */,
 				F3015DE62D9F27E800B9BCC6 /* Log Card Image.swift in Sources */,
 				F333B3BD2B80CF760005B84D /* Preview Property.swift in Sources */,
@@ -5361,8 +5379,8 @@
 				F37A44352A05B0AA004FFDB0 /* Value Store.swift in Sources */,
 				F34BB6BF2D3DC2D300D27BE0 /* File Preview.swift in Sources */,
 				F3AF91C22B423492001D8F80 /* SSH VM.swift in Sources */,
+				F3E0B48D2DC300D6003C8B27 /* Panel Section VM.swift in Sources */,
 				F3C9D85A2B31135B00265492 /* Permission List.swift in Sources */,
-				F3FF5A042A4A359C003A1973 /* Info Tab Buttons.swift in Sources */,
 				F3202D062D562AE20030B3CC /* Browser List VDS.swift in Sources */,
 				F36FDB97295AF4A900D45070 /* Browser VM.swift in Sources */,
 				F33711C32DC2D7A70014B427 /* Gamepad Manager Modifiers.swift in Sources */,
@@ -6326,7 +6344,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 5.0.3;
+				MARKETING_VERSION = 5.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -6392,7 +6410,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 5.0.3;
+				MARKETING_VERSION = 5.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "";

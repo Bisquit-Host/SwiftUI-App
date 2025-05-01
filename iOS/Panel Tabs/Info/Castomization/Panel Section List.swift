@@ -1,65 +1,7 @@
 import SwiftUI
 
-@Observable
-class PanelSectionListVM {
-    var items: [PanelSection] = []
-    
-    private let storageKey = "savedItems"
-    
-    init() {
-        load()
-    }
-    
-    func toggle(_ item: PanelSection) {
-        guard let index = items.firstIndex(of: item) else {
-            return
-        }
-        
-        items[index].isChecked.toggle()
-        save()
-    }
-    
-    func move(from: IndexSet, to: Int) {
-        items.move(fromOffsets: from, toOffset: to)
-        save()
-    }
-    
-    func save() {
-        guard let data = try? JSONEncoder().encode(items) else {
-            print("❌ Save error")
-            return
-        }
-        
-        UserDefaults.standard.set(data, forKey: storageKey)
-        
-        print("✅ Saved")
-    }
-    
-    private func load() {
-        guard
-            let data = UserDefaults.standard.data(forKey: storageKey),
-            let decoded = try? JSONDecoder().decode([PanelSection].self, from: data)
-        else {
-            items = [
-                .init("Resource Usage"),
-                .init("Allocations"),
-                .init("Users"),
-                .init("Logs"),
-                .init("Subdomains"),
-                .init("Map")
-            ]
-            
-            return
-        }
-        
-        items = decoded
-    }
-}
-
-import SwiftUI
-
-struct ContentView: View {
-    @State private var vm = PanelSectionListVM()
+struct PanelSectionList: View {
+    @Environment(PanelSectionVM.self) private var vm
     
     var body: some View {
         List {
@@ -70,8 +12,8 @@ struct ContentView: View {
             }
             .listRowBackground(Color.clear)
             
-            ForEach(vm.items) { item in
-                PanelSectionRow(item: item) {
+            ForEach(vm.sections) { item in
+                PanelSectionRow(item) {
                     vm.toggle(item)
                     vm.save()
                 }
@@ -82,23 +24,17 @@ struct ContentView: View {
                 vm.move(from: from, to: to)
             }
         }
+        .transparentList()
         .navigationTitle("Customize & Reorder")
         .environment(\.editMode, .constant(.active))
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button("Reset", role: .destructive) {
-                    vm.items = [
-                        .init("Resource Usage"),
-                        .init("Allocations"),
-                        .init("Users"),
-                        .init("Logs"),
-                        .init("Subdomains"),
-                        .init("Location")
-                    ]
+                    vm.sections = vm.defaultSections
                     
                     vm.save()
                 }
-                .foregroundStyle(.red.gradient)
+                .foregroundStyle(.red)
                 .semibold()
             }
         }
@@ -106,6 +42,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    PanelSectionList()
         .darkSchemePreferred()
 }
