@@ -1485,6 +1485,8 @@
 		F3E08EC32A2CE92A00116C1C /* Panel Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3029C06E9700B08696 /* Panel Tab.swift */; };
 		F3E08EC62A2CEA6400116C1C /* Start Page VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA57B2959011B0006D126 /* Start Page VM.swift */; };
 		F3E08ECE2A2CEDD800116C1C /* Panel View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E08ECD2A2CEDD800116C1C /* Panel View.swift */; };
+		F3E0B48D2DC300D6003C8B27 /* Panel Section List VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0B48C2DC300D6003C8B27 /* Panel Section List VM.swift */; };
+		F3E0B48E2DC300D6003C8B27 /* Panel Section List VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0B48C2DC300D6003C8B27 /* Panel Section List VM.swift */; };
 		F3E1B2D02C903C9300AED3F1 /* Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF012C8BBB4700413400 /* Server Card Context Menu.swift */; };
 		F3E1D3ED2B3208BE009B7062 /* User 2Fa.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3EC2B3208BE009B7062 /* User 2Fa.swift */; };
 		F3E1D3EE2B3208BE009B7062 /* User 2Fa.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3EC2B3208BE009B7062 /* User 2Fa.swift */; };
@@ -2196,6 +2198,7 @@
 		F3E08EB52A2CE56200116C1C /* App Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Settings.swift"; sourceTree = "<group>"; };
 		F3E08EBE2A2CE87800116C1C /* Start Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page.swift"; sourceTree = "<group>"; };
 		F3E08ECD2A2CEDD800116C1C /* Panel View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel View.swift"; sourceTree = "<group>"; };
+		F3E0B48C2DC300D6003C8B27 /* Panel Section List VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Section List VM.swift"; sourceTree = "<group>"; };
 		F3E1D3EC2B3208BE009B7062 /* User 2Fa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User 2Fa.swift"; sourceTree = "<group>"; };
 		F3E1D3F12B320A6A009B7062 /* Permission Group Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Permission Group Header.swift"; sourceTree = "<group>"; };
 		F3E2BED92C1C6B9500B7A6D4 /* Cache List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache List.swift"; sourceTree = "<group>"; };
@@ -2958,6 +2961,7 @@
 			isa = PBXGroup;
 			children = (
 				F33712182DC2FD240014B427 /* Panel Section List.swift */,
+				F3E0B48C2DC300D6003C8B27 /* Panel Section List VM.swift */,
 				F337121A2DC2FD240014B427 /* Panel Section Row.swift */,
 				F33712192DC2FD240014B427 /* Panel Section.swift */,
 			);
@@ -4926,6 +4930,7 @@
 				F3A123562A667804008E3E20 /* Log Meta Parent.swift in Sources */,
 				F3FF5A0C2A4A386F003A1973 /* Users VM.swift in Sources */,
 				F31BA576295900E30006D126 /* Settings View.swift in Sources */,
+				F3E0B48E2DC300D6003C8B27 /* Panel Section List VM.swift in Sources */,
 				F3A563222D9EEECB009AA363 /* Allow Drag.swift in Sources */,
 				F3D3DBD129B8007B00096115 /* Browser Topbar.swift in Sources */,
 				F30088A32B3A18A50051476C /* Database VM.swift in Sources */,
@@ -5361,6 +5366,7 @@
 				F37A44352A05B0AA004FFDB0 /* Value Store.swift in Sources */,
 				F34BB6BF2D3DC2D300D27BE0 /* File Preview.swift in Sources */,
 				F3AF91C22B423492001D8F80 /* SSH VM.swift in Sources */,
+				F3E0B48D2DC300D6003C8B27 /* Panel Section List VM.swift in Sources */,
 				F3C9D85A2B31135B00265492 /* Permission List.swift in Sources */,
 				F3FF5A042A4A359C003A1973 /* Info Tab Buttons.swift in Sources */,
 				F3202D062D562AE20030B3CC /* Browser List VDS.swift in Sources */,
