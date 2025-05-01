@@ -2,7 +2,7 @@ import Foundation
 
 @Observable
 class PanelSectionListVM {
-    var items: [PanelSection] = []
+    var sections: [PanelSection] = []
     
     private let storageKey = "savedItems"
     
@@ -11,21 +11,21 @@ class PanelSectionListVM {
     }
     
     func toggle(_ item: PanelSection) {
-        guard let index = items.firstIndex(of: item) else {
+        guard let index = sections.firstIndex(of: item) else {
             return
         }
         
-        items[index].isChecked.toggle()
+        sections[index].isChecked.toggle()
         save()
     }
     
     func move(from: IndexSet, to: Int) {
-        items.move(fromOffsets: from, toOffset: to)
+        sections.move(fromOffsets: from, toOffset: to)
         save()
     }
     
     func save() {
-        guard let data = try? JSONEncoder().encode(items) else {
+        guard let data = try? JSONEncoder().encode(sections) else {
             print("❌ Save error")
             return
         }
@@ -40,7 +40,7 @@ class PanelSectionListVM {
             let data = UserDefaults.standard.data(forKey: storageKey),
             let decoded = try? JSONDecoder().decode([PanelSection].self, from: data)
         else {
-            items = [
+            sections = [
                 .init("Resource Usage"),
                 .init("Allocations"),
                 .init("Users"),
@@ -52,6 +52,6 @@ class PanelSectionListVM {
             return
         }
         
-        items = decoded
+        sections = decoded
     }
 }

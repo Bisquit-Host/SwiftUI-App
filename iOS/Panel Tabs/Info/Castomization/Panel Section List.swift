@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct ContentView: View {
-    @State private var vm = PanelSectionListVM()
+struct PanelSectionList: View {
+    @Environment(PanelSectionListVM.self) private var vm
     
     var body: some View {
         List {
@@ -12,7 +12,7 @@ struct ContentView: View {
             }
             .listRowBackground(Color.clear)
             
-            ForEach(vm.items) { item in
+            ForEach(vm.sections) { item in
                 PanelSectionRow(item: item) {
                     vm.toggle(item)
                     vm.save()
@@ -29,7 +29,7 @@ struct ContentView: View {
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button("Reset", role: .destructive) {
-                    vm.items = [
+                    vm.sections = [
                         .init("Resource Usage"),
                         .init("Allocations"),
                         .init("Users"),
@@ -48,6 +48,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    PanelSectionList()
         .darkSchemePreferred()
 }

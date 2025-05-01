@@ -35,6 +35,6 @@ struct PanelSectionRow: View {
 }
 
 #Preview {
-    ContentView()
+    PanelSectionList()
         .darkSchemePreferred()
 }

@@ -2,6 +2,7 @@ import ScrechKit
 import PteroNet
 
 struct InfoTab: View {
+    @State private var sectionsVM = PanelSectionListVM()
     @Environment(PanelVM.self) private var vm
     
     private let server: ServerAttributes
@@ -36,13 +37,21 @@ struct InfoTab: View {
                     VStack(spacing: 10) {
                         InfoTabHeading(server)
                         
-                        InfoTabCard(server)
+                        InfoTabResourceUsage(server)
                         
                         InfoTabAllocation(server)
                         
                         InfoTabButtons(server)
                         
-                        MapSection(ip, node: server.node)
+                        ForEach(sectionsVM.sections.filter(\.isChecked)) { section in
+                            switch section.name {
+                            case "Map":
+                                MapSection(ip, node: server.node)
+                                
+                            default:
+                                EmptyView()
+                            }
+                        }
                         
                         Button {
                             sheetCustomization = true
@@ -64,11 +73,14 @@ struct InfoTab: View {
         .toolbarBackground(.visible, for: .tabBar)
         .sheet($sheetCustomization) {
             NavigationView {
-                ContentView()
+                PanelSectionList()
+                    .environment(sectionsVM)
             }
         }
         .task {
-            if let fileName = UserDefaults.standard.string(forKey: "background_image_fileName"),
+            let key = "background_image_fileName"
+            
+            if let fileName = UserDefaults.standard.string(forKey: key),
                let image = BackgroundImageHelper.loadImageFromDisk(fileName) {
                 selectedImage = image
             }
