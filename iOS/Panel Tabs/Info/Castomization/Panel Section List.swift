@@ -71,7 +71,7 @@ struct ContentView: View {
             .listRowBackground(Color.clear)
             
             ForEach(vm.items) { item in
-                ItemRowView(item: item) {
+                PanelSectionRow(item: item) {
                     vm.toggle(item)
                     vm.save()
                 }

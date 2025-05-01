@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ItemRowView: View {
+struct PanelSectionRow: View {
     var item: PanelSection
     var toggle: () -> Void
     
