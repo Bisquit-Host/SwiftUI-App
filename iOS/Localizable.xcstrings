@@ -382,19 +382,19 @@
             "plural" : {
               "few" : {
                 "stringUnit" : {
-                  "state" : "needs_review",
+                  "state" : "translated",
                   "value" : "Ещё %1$lld записи %2$@"
                 }
               },
               "many" : {
                 "stringUnit" : {
-                  "state" : "needs_review",
+                  "state" : "translated",
                   "value" : "Ещё %1$lld записи %2$@"
                 }
               },
               "one" : {
                 "stringUnit" : {
-                  "state" : "needs_review",
+                  "state" : "translated",
                   "value" : "Ещё %1$lld записи %2$@"
                 }
               },
