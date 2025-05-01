@@ -1421,7 +1421,14 @@
 
     },
     "Clear all cookies" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Очистить все cookie"
+          }
+        }
+      }
     },
     "Clear entire cache" : {
       "localizations" : {
