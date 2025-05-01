@@ -23,15 +23,15 @@ struct RecipeGrid: View {
             }
             .navigationTitle(category.title)
             .navigationDestination(for: ServerAttributes.self) { recipe in
-                RecipeDetail(recipe: recipe) { relatedRecipe in
-                    Button {
-                        navigationModel.recipePath.append(relatedRecipe)
-                    } label: {
-                        RecipeTile(relatedRecipe)
-                    }
-                    .buttonStyle(.plain)
-                }
-                .experienceToolbar()
+//                RecipeDetail(recipe: recipe) { relatedRecipe in
+//                    Button {
+//                        navigationModel.recipePath.append(relatedRecipe)
+//                    } label: {
+//                        RecipeTile(relatedRecipe)
+//                    }
+//                    .buttonStyle(.plain)
+//                }
+//                .experienceToolbar()
             }
         } else {
             Text("Choose a category")

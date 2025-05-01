@@ -1,41 +1,58 @@
 // The content view for the navigation stack view experience
 
-import SwiftUI
+import ScrechKit
 import PteroNet
 
 struct StackContentView: View {
+    @State private var sectionsVM = PanelSectionVM()
     @Environment(NavModel.self) private var nav
     @Environment(DataModel.self) private var dataModel
     
     private let categories = Tabs.allCases
     
+    @State private var sheetCustomization = false
+    
     var body: some View {
         @Bindable var nav = nav
         
         NavigationStack(path: $nav.recipePath) {
-            List(categories) { category in
-                Section {
-                    ForEach(dataModel.servers) { recipe in
-//                    ForEach(vm.recipes(in: category)) { recipe in
-                        NavigationLink(recipe.name, value: recipe)
+            List(dataModel.servers) { server in
+                NavigationLink(value: server) {
+                    VStack(alignment: .leading) {
+                        Text(server.name)
+                        
+                        Text(server.description)
+                            .secondary()
+                            .footnote()
                     }
-                } header: {
-                    Text(category.title)
+                    .padding(.vertical, 5)
                 }
             }
-            .navigationTitle("Categories")
+            .navigationTitle("Servers")
             .experienceToolbar()
-            .navigationDestination(for: ServerAttributes.self) { recipe in
-                RecipeDetail(recipe: recipe) { relatedRecipe in
-                    Button {
-                        nav.recipePath.append(relatedRecipe)
-                    } label: {
-                        RecipeTile(relatedRecipe)
+            .navigationDestination(for: ServerAttributes.self) { server in
+                List(selection: $nav.selectedTab) {
+                    ForEach(Tabs.allCases) { tab in
+                        NavigationLink(tab.title, value: tab)
                     }
-                    .buttonStyle(.plain)
                 }
-                .experienceToolbar()
+                .navigationTitle(nav.selectedServer.first?.name ?? "Multiple servers selected")
+                .onDisappear {
+                    nav.selectedTab = nil
+                }
+                .toolbar {
+                    SFButton("pencil") {
+                        sheetCustomization = true
+                    }
+                }
             }
+        }
+        .sheet($sheetCustomization) {
+            NavigationStack {
+                PanelSectionList()
+                    .environment(sectionsVM)
+            }
+            .frame(minHeight: 500)
         }
     }
 }
