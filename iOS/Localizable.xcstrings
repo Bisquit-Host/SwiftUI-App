@@ -627,6 +627,9 @@
       },
       "shouldTranslate" : false
     },
+    "🧑🏼‍🍳 Bon appétit!" : {
+
+    },
     "🚀" : {
       "shouldTranslate" : false
     },
@@ -1311,6 +1314,9 @@
         }
       }
     },
+    "Categories" : {
+
+    },
     "Category" : {
       "localizations" : {
         "nl" : {
@@ -1401,6 +1407,12 @@
         }
       }
     },
+    "Choose a category" : {
+
+    },
+    "Choose a recipe" : {
+
+    },
     "Choose File" : {
       "localizations" : {
         "nl" : {
@@ -1416,6 +1428,9 @@
           }
         }
       }
+    },
+    "Choose your navigation experience" : {
+
     },
     "Clear" : {
 
@@ -2350,6 +2365,9 @@
         }
       }
     },
+    "Dessert" : {
+
+    },
     "Destination" : {
       "localizations" : {
         "nl" : {
@@ -2801,6 +2819,9 @@
     "Executed **`%@`** on the server" : {
 
     },
+    "Experience" : {
+
+    },
     "Expiration" : {
       "localizations" : {
         "ru" : {
@@ -3194,6 +3215,9 @@
           }
         }
       }
+    },
+    "Ingredients" : {
+
     },
     "Installed **`%@`**" : {
 
@@ -4202,6 +4226,9 @@
         }
       }
     },
+    "Pancake" : {
+
+    },
     "Panel" : {
       "localizations" : {
         "ru" : {
@@ -4367,6 +4394,15 @@
           }
         }
       }
+    },
+    "Presents a stack of views over a root view." : {
+
+    },
+    "Presents views in three columns: sidebar, content, and detail." : {
+
+    },
+    "Presents views in two columns: sidebar and detail." : {
+
     },
     "Press A" : {
 
@@ -4598,6 +4634,9 @@
         }
       }
     },
+    "Related Recipes" : {
+
+    },
     "Remove this key" : {
       "localizations" : {
         "ru" : {
@@ -4790,6 +4829,12 @@
     "Running" : {
 
     },
+    "Salad" : {
+
+    },
+    "Sandwich" : {
+
+    },
     "Save" : {
       "localizations" : {
         "nl" : {
@@ -4862,6 +4907,9 @@
           }
         }
       }
+    },
+    "Seleted %lld" : {
+
     },
     "Send Command" : {
       "localizations" : {
@@ -5221,6 +5269,9 @@
     "SSH-keys" : {
 
     },
+    "Stack" : {
+
+    },
     "Start" : {
       "localizations" : {
         "ru" : {
@@ -5560,6 +5611,9 @@
     "This server currently has no users" : {
 
     },
+    "Three columns" : {
+
+    },
     "Time offset (sec)" : {
       "localizations" : {
         "ru" : {
@@ -5670,6 +5724,9 @@
           }
         }
       }
+    },
+    "Two columns" : {
+
     },
     "Type a command..." : {
       "localizations" : {
