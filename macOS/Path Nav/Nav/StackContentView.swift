@@ -1,6 +1,7 @@
 // The content view for the navigation stack view experience
 
 import SwiftUI
+import PteroNet
 
 struct StackContentView: View {
     @Environment(NavModel.self) private var nav
@@ -14,7 +15,8 @@ struct StackContentView: View {
         NavigationStack(path: $nav.recipePath) {
             List(categories) { category in
                 Section {
-                    ForEach(dataModel.recipes(in: category)) { recipe in
+                    ForEach(dataModel.servers) { recipe in
+//                    ForEach(dataModel.recipes(in: category)) { recipe in
                         NavigationLink(recipe.name, value: recipe)
                     }
                 } header: {
@@ -23,7 +25,7 @@ struct StackContentView: View {
             }
             .navigationTitle("Categories")
             .experienceToolbar()
-            .navigationDestination(for: Recipe.self) { recipe in
+            .navigationDestination(for: ServerAttributes.self) { recipe in
                 RecipeDetail(recipe: recipe) { relatedRecipe in
                     Button {
                         nav.recipePath.append(relatedRecipe)

@@ -1,10 +1,11 @@
 // A detail view the app uses to display the metadata for a given recipe, as well as its related servers
 
 import SwiftUI
+import PteroNet
 
 struct RecipeDetail<Link: View>: View {
-    var recipe: Recipe?
-    var relatedLink: (Recipe) -> Link
+    var recipe: ServerAttributes?
+    var relatedLink: (ServerAttributes) -> Link
     
     var body: some View {
         if let recipe {
@@ -20,8 +21,8 @@ struct RecipeDetail<Link: View>: View {
 private struct Content<Link: View>: View {
     @Environment(DataModel.self) private var dataModel
     
-    var recipe: Recipe
-    var relatedLink: (Recipe) -> Link
+    var recipe: ServerAttributes
+    var relatedLink: (ServerAttributes) -> Link
     
     var body: some View {
         ScrollView {
@@ -102,19 +103,19 @@ private struct Content<Link: View>: View {
                 .title2(.bold)
                 .padding(padding)
             
-            VStack(alignment: .leading) {
-                ForEach(recipe.ingredients) { ingredient in
-                    Text(ingredient.description)
-                }
-            }
+//            VStack(alignment: .leading) {
+//                ForEach(recipe.ingredients) { ingredient in
+//                    Text(ingredient.description)
+//                }
+//            }
         }
         .frame(minWidth: 300, alignment: .leading)
     }
 }
 
-#Preview() {
-    RecipeDetail(recipe: .mock) { _ in
-        EmptyView()
-    }
-    .environment(DataModel.shared)
-}
+//#Preview() {
+//    RecipeDetail(recipe: .mock) { _ in
+//        EmptyView()
+//    }
+//    .environment(DataModel.shared)
+//}

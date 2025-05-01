@@ -1,6 +1,7 @@
 // A navigation model used to persist and restore the navigation state
 
 import SwiftUI
+import PteroNet
 
 @Observable
 final class NavModel: Codable {
@@ -8,7 +9,7 @@ final class NavModel: Codable {
     var selectedCategory: Category?
     
     /// The homogenous navigation state used by the app's navigation stacks
-    var recipePath: [Recipe]
+    var recipePath: [ServerAttributes]
     
     /// The leading columns' visibility state used by the app's navigation split views
     var columnVisibility: NavigationSplitViewVisibility
@@ -39,7 +40,7 @@ final class NavModel: Codable {
     init(
         columnVisibility: NavigationSplitViewVisibility = .automatic,
         selectedCategory: Category? = nil,
-        recipePath: [Recipe] = []
+        recipePath: [ServerAttributes] = []
     ) {
         self.columnVisibility = columnVisibility
         self.selectedCategory = selectedCategory
@@ -83,7 +84,7 @@ final class NavModel: Codable {
 //            recipePath = [newValue].compactMap { $0 }
 //        }
 //    }
-    var selectedRecipe: Set<Recipe> {
+    var selectedRecipe: Set<ServerAttributes> {
         get {
             Set(recipePath)
         } set {

@@ -686,7 +686,7 @@
 		F36B14852DC3BC3E008C1AF9 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14712DC3BC3E008C1AF9 /* Category.swift */; };
 		F36B14862DC3BC3E008C1AF9 /* RecipeTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B147E2DC3BC3E008C1AF9 /* RecipeTile.swift */; };
 		F36B14872DC3BC3E008C1AF9 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B146F2DC3BC3E008C1AF9 /* DataModel.swift */; };
-		F36B14882DC3BC3E008C1AF9 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14742DC3BC3E008C1AF9 /* Recipe.swift */; };
+		F36B14882DC3BC3E008C1AF9 /* ServerAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14742DC3BC3E008C1AF9 /* ServerAttributes.swift */; };
 		F36B14892DC3BC3E008C1AF9 /* ExperienceToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B147A2DC3BC3E008C1AF9 /* ExperienceToolbar.swift */; };
 		F36B148A2DC3BC3E008C1AF9 /* ThreeColumnContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B146D2DC3BC3E008C1AF9 /* ThreeColumnContentView.swift */; };
 		F36B148B2DC3BC3E008C1AF9 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14732DC3BC3E008C1AF9 /* Ingredient.swift */; };
@@ -697,7 +697,6 @@
 		F36B14902DC3BC3E008C1AF9 /* RecipeGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B147C2DC3BC3E008C1AF9 /* RecipeGrid.swift */; };
 		F36B14912DC3BC3E008C1AF9 /* NavModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14702DC3BC3E008C1AF9 /* NavModel.swift */; };
 		F36B14922DC3BC3E008C1AF9 /* ExperienceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14772DC3BC3E008C1AF9 /* ExperienceButton.swift */; };
-		F36B14932DC3BC3E008C1AF9 /* Recipes.json in Resources */ = {isa = PBXBuildFile; fileRef = F36B14692DC3BC3E008C1AF9 /* Recipes.json */; };
 		F36B14972DC3BC52008C1AF9 /* Bisquit.Host App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14942DC3BC52008C1AF9 /* Bisquit.Host App.swift */; };
 		F36B736D2C89B6BE00E858FE /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F36B736C2C89B6BE00E858FE /* PteroNet */; };
 		F36B73702C8A4CAF00E858FE /* Refresh Button Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B736F2C8A4CAF00E858FE /* Refresh Button Intent.swift */; };
@@ -1988,7 +1987,6 @@
 		F367977A2A3A55F4009F2788 /* Log Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log Card.swift"; sourceTree = "<group>"; };
 		F367977D2A3A5AB6009F2788 /* Log VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log VM.swift"; sourceTree = "<group>"; };
 		F36B14612DC39F6A008C1AF9 /* Debug Settings Tips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Debug Settings Tips.swift"; sourceTree = "<group>"; };
-		F36B14692DC3BC3E008C1AF9 /* Recipes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Recipes.json; sourceTree = "<group>"; };
 		F36B146A2DC3BC3E008C1AF9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F36B146B2DC3BC3E008C1AF9 /* StackContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackContentView.swift; sourceTree = "<group>"; };
 		F36B146C2DC3BC3E008C1AF9 /* TwoColumnContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoColumnContentView.swift; sourceTree = "<group>"; };
@@ -1998,7 +1996,7 @@
 		F36B14712DC3BC3E008C1AF9 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		F36B14722DC3BC3E008C1AF9 /* Experience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Experience.swift; sourceTree = "<group>"; };
 		F36B14732DC3BC3E008C1AF9 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
-		F36B14742DC3BC3E008C1AF9 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		F36B14742DC3BC3E008C1AF9 /* ServerAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerAttributes.swift; sourceTree = "<group>"; };
 		F36B14762DC3BC3E008C1AF9 /* ContinueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinueButton.swift; sourceTree = "<group>"; };
 		F36B14772DC3BC3E008C1AF9 /* ExperienceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceButton.swift; sourceTree = "<group>"; };
 		F36B14782DC3BC3E008C1AF9 /* ExperiencePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperiencePicker.swift; sourceTree = "<group>"; };
@@ -3216,7 +3214,7 @@
 				F36B14712DC3BC3E008C1AF9 /* Category.swift */,
 				F36B14722DC3BC3E008C1AF9 /* Experience.swift */,
 				F36B14732DC3BC3E008C1AF9 /* Ingredient.swift */,
-				F36B14742DC3BC3E008C1AF9 /* Recipe.swift */,
+				F36B14742DC3BC3E008C1AF9 /* ServerAttributes.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -3961,7 +3959,6 @@
 				F3CCB1CF2CAE8AF5000F8207 /* macOS.plist */,
 				F3E08EAB2A2CE17A00116C1C /* macOS.entitlements */,
 				F3E08EA62A2CE17A00116C1C /* Assets.xcassets */,
-				F36B14692DC3BC3E008C1AF9 /* Recipes.json */,
 				F33DE4E62B35089000E257D8 /* Background Blur.swift */,
 				F36B14682DC3BC3A008C1AF9 /* Path Nav */,
 				F3E08EC72A2CEA6F00116C1C /* Intro */,
@@ -4636,7 +4633,6 @@
 				F3E08EA72A2CE17A00116C1C /* Assets.xcassets in Resources */,
 				F378E3342AF3835B009925DB /* PrivacyInfo.xcprivacy in Resources */,
 				F38928202A43CB2600561CDF /* Localizable.xcstrings in Resources */,
-				F36B14932DC3BC3E008C1AF9 /* Recipes.json in Resources */,
 			);
 		};
 		F3E2BEF32C1DA07E00B7A6D4 /* Resources */ = {
@@ -6219,7 +6215,7 @@
 				F36B14852DC3BC3E008C1AF9 /* Category.swift in Sources */,
 				F36B14862DC3BC3E008C1AF9 /* RecipeTile.swift in Sources */,
 				F36B14872DC3BC3E008C1AF9 /* DataModel.swift in Sources */,
-				F36B14882DC3BC3E008C1AF9 /* Recipe.swift in Sources */,
+				F36B14882DC3BC3E008C1AF9 /* ServerAttributes.swift in Sources */,
 				F36B14892DC3BC3E008C1AF9 /* ExperienceToolbar.swift in Sources */,
 				F36B148A2DC3BC3E008C1AF9 /* ThreeColumnContentView.swift in Sources */,
 				F36B148B2DC3BC3E008C1AF9 /* Ingredient.swift in Sources */,

@@ -1,11 +1,12 @@
 // A recipe tile, displaying the recipe's photo and name
 
 import SwiftUI
+import PteroNet
 
 struct RecipeTile: View {
-    private var recipe: Recipe
+    private var recipe: ServerAttributes
     
-    init(_ recipe: Recipe) {
+    init(_ recipe: ServerAttributes) {
         self.recipe = recipe
     }
     
@@ -32,6 +33,6 @@ struct RecipeTile: View {
     }
 }
 
-#Preview() {
-    RecipeTile(.mock)
-}
+//#Preview() {
+//    RecipeTile(.mock)
+//}

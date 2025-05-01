@@ -17,7 +17,8 @@ struct ThreeColumnContentView: View {
         } content: {
             if let category = nav.selectedCategory {
                 List(selection: $nav.selectedRecipe) {
-                    ForEach(dataModel.recipes(in: category)) { recipe in
+                    ForEach(dataModel.servers) { recipe in
+//                    ForEach(dataModel.recipes(in: category)) { recipe in
                         NavigationLink(recipe.name, value: recipe)
                     }
                 }
@@ -38,7 +39,7 @@ struct ThreeColumnContentView: View {
                 
                 RecipeDetail(recipe: selectedRecipe) { relatedRecipe in
                     Button {
-                        nav.selectedCategory = relatedRecipe.category
+//                        nav.selectedCategory = relatedRecipe.category //
 //                        nav.selectedRecipe = relatedRecipe
                     } label: {
                         RecipeTile(relatedRecipe)

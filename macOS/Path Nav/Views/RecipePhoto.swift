@@ -1,16 +1,17 @@
 // A photo view for a given recipe, displaying the recipe's image or a placeholder
 
 import SwiftUI
+import PteroNet
 
 struct RecipePhoto: View {
-    var recipe: Recipe
+    var recipe: ServerAttributes
     
     var body: some View {
-        if let imageName = recipe.imageName {
-            Image(imageName)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-        } else {
+//        if let imageName = recipe.imageName {
+//            Image(imageName)
+//                .resizable()
+//                .aspectRatio(contentMode: .fit)
+//        } else {
             ZStack {
                 Rectangle()
                     .fill(.tertiary)
@@ -19,10 +20,10 @@ struct RecipePhoto: View {
                     .fontSize(64)
                     .secondary()
             }
-        }
+//        }
     }
 }
 
-#Preview() {
-    RecipePhoto(recipe: .mock)
-}
+//#Preview() {
+//    RecipePhoto(recipe: .mock)
+//}

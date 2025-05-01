@@ -1,6 +1,7 @@
 // A grid of recipe tiles, based on a given recipe category
 
 import SwiftUI
+import PteroNet
 
 struct RecipeGrid: View {
     @Environment(NavModel.self) private var navigationModel
@@ -10,7 +11,8 @@ struct RecipeGrid: View {
         if let category = navigationModel.selectedCategory {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(dataModel.recipes(in: category)) { recipe in
+                    ForEach(dataModel.servers) { recipe in
+//                    ForEach(dataModel.recipes(in: category)) { recipe in
                         NavigationLink(value: recipe) {
                             RecipeTile(recipe)
                         }
@@ -20,7 +22,7 @@ struct RecipeGrid: View {
                 .padding()
             }
             .navigationTitle(category.localizedName)
-            .navigationDestination(for: Recipe.self) { recipe in
+            .navigationDestination(for: ServerAttributes.self) { recipe in
                 RecipeDetail(recipe: recipe) { relatedRecipe in
                     Button {
                         navigationModel.recipePath.append(relatedRecipe)
