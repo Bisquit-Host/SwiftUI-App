@@ -1,8 +1,17 @@
 import Foundation
 
 @Observable
-class PanelSectionListVM {
+class PanelSectionVM {
     var sections: [PanelSection] = []
+    
+    let defaultSections: [PanelSection] = [
+        .init("Resource Usage"),
+        .init("Allocations"),
+        .init("Users"),
+        .init("Logs"),
+        .init("Subdomains"),
+        .init("Location")
+    ]
     
     private let storageKey = "savedItems"
     
@@ -40,14 +49,7 @@ class PanelSectionListVM {
             let data = UserDefaults.standard.data(forKey: storageKey),
             let decoded = try? JSONDecoder().decode([PanelSection].self, from: data)
         else {
-            sections = [
-                .init("Resource Usage"),
-                .init("Allocations"),
-                .init("Users"),
-                .init("Logs"),
-                .init("Subdomains"),
-                .init("Map")
-            ]
+            sections = defaultSections
             
             return
         }

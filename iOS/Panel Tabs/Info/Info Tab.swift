@@ -2,13 +2,21 @@ import ScrechKit
 import PteroNet
 
 struct InfoTab: View {
-    @State private var sectionsVM = PanelSectionListVM()
+    @State private var sectionsVM = PanelSectionVM()
+    @State private var serverSettingsVM: ServerSettingsVM
+    @State private var logVM: LogVM
+    @State private var userVM: UsersVM
+    @State private var subdomainVM: SubdomainVM
     @Environment(PanelVM.self) private var vm
     
     private let server: ServerAttributes
     
     init(_ server: ServerAttributes) {
         self.server = server
+        self.serverSettingsVM = ServerSettingsVM(server.id)
+        self.logVM = LogVM(server.id)
+        self.userVM = UsersVM(server.id)
+        self.subdomainVM = SubdomainVM(server.id)
     }
     
     @State private var sheetCustomization = false
@@ -37,15 +45,27 @@ struct InfoTab: View {
                     VStack(spacing: 10) {
                         InfoTabHeading(server)
                         
-                        InfoTabResourceUsage(server)
-                        
-                        InfoTabAllocation(server)
-                        
-                        InfoTabButtons(server)
-                        
                         ForEach(sectionsVM.sections.filter(\.isChecked)) { section in
                             switch section.name {
-                            case "Map":
+                            case "Resource Usage":
+                                InfoTabResourceUsage(server)
+                                
+                            case "Allocations":
+                                InfoTabAllocation(server)
+                                
+                            case "Users":
+                                InfoTabUsers()
+                                    .environment(userVM)
+                                
+                            case "Logs":
+                                InfoTabLogs()
+                                    .environment(logVM)
+                                
+                            case "Subdomains":
+                                InfoTabSubdomains()
+                                    .environment(subdomainVM)
+                                
+                            case "Location":
                                 MapSection(ip, node: server.node)
                                 
                             default:
@@ -83,6 +103,18 @@ struct InfoTab: View {
             if let fileName = UserDefaults.standard.string(forKey: key),
                let image = BackgroundImageHelper.loadImageFromDisk(fileName) {
                 selectedImage = image
+            }
+            
+            serverSettingsVM.serverName = server.name
+            serverSettingsVM.serverDescription = server.description
+            
+            if !System.lowPowerMode {
+                logVM.fetchLogs(true)
+                userVM.fetchUsers(true)
+                
+                Task {
+                    await subdomainVM.fetchSubdomains()
+                }
             }
         }
     }

@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct PanelSectionList: View {
-    @Environment(PanelSectionListVM.self) private var vm
+    @Environment(PanelSectionVM.self) private var vm
     
     var body: some View {
         List {
@@ -24,23 +24,17 @@ struct PanelSectionList: View {
                 vm.move(from: from, to: to)
             }
         }
+        .transparentList()
         .navigationTitle("Customize & Reorder")
         .environment(\.editMode, .constant(.active))
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button("Reset", role: .destructive) {
-                    vm.sections = [
-                        .init("Resource Usage"),
-                        .init("Allocations"),
-                        .init("Users"),
-                        .init("Logs"),
-                        .init("Subdomains"),
-                        .init("Location")
-                    ]
+                    vm.sections = vm.defaultSections
                     
                     vm.save()
                 }
-                .foregroundStyle(.red.gradient)
+                .foregroundStyle(.red)
                 .semibold()
             }
         }
