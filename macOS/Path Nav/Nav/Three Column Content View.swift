@@ -13,13 +13,8 @@ struct ThreeColumnContentView: View {
         @Bindable var nav = nav
         
         NavigationSplitView(columnVisibility: $nav.columnVisibility) {
-            //            List(categories, selection: $nav.selectedCategory) { category in
-            //                NavigationLink(category.localizedName, value: category)
-            //            }
-            //            if let server = nav.selectedServer {
             List(selection: $nav.selectedServer) {
                 ForEach(dataModel.servers) { server in
-                    //                    ForEach(dataModel.recipes(in: category)) { recipe in
                     NavigationLink(value: server) {
                         VStack(alignment: .leading) {
                             Text(server.name)
@@ -35,18 +30,14 @@ struct ThreeColumnContentView: View {
             .frame(minWidth: 200)
             .navigationTitle(nav.selectedServer.first?.name ?? "Multiple servers selected")
             .onDisappear {
-                //                    if nav.selectedServer == nil {
                 nav.selectedServer.removeAll()
-                //                    }
             }
             .experienceToolbar()
             .navigationTitle("Servers")
-            //            }
         } content: {
             if nav.selectedTab != nil {
                 List(selection: $nav.selectedTab) {
                     ForEach(Tabs.allCases) { tab in
-                        //                    ForEach(dataModel.recipes(in: category)) { recipe in
                         NavigationLink(tab.title, value: tab)
                     }
                 }
@@ -71,30 +62,6 @@ struct ThreeColumnContentView: View {
             default:
                 Text("Select a tab")
             }
-            
-            //            if let selectedRecipe = nav.selectedServer.first {
-            //                Text("Seleted \(nav.selectedServer.count)")
-            //
-            //                RecipeDetail(recipe: selectedRecipe) { relatedRecipe in
-            //                    Button {
-            //                        //                        nav.selectedCategory = relatedRecipe.category //
-            //                        //                        nav.selectedServer = relatedRecipe
-            //                    } label: {
-            //                        RecipeTile(relatedRecipe)
-            //                    }
-            //                    .buttonStyle(.plain)
-            //                }
-            //            }
-            
-            //            RecipeDetail(recipe: nav.selectedServer) { relatedRecipe in
-            //                Button {
-            //                    nav.selectedCategory = relatedRecipe.category
-            //                    nav.selectedServer = relatedRecipe
-            //                } label: {
-            //                    RecipeTile(relatedRecipe)
-            //                }
-            //                .buttonStyle(.plain)
-            //            }
         }
         .sheet($sheetCustomization) {
             NavigationStack {
