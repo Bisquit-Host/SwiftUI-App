@@ -4844,12 +4844,12 @@
         }
       }
     },
-    "Scroll down to the API/SSH section, enter a name for the API key, and tap Create" : {
+    "Scroll down to the \"API/SSH\" section, enter a name for the API key, and tap \"Create\"" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Прокрутите вниз до раздела API/SSH, введите имя для ключа и нажмите Создать"
+            "value" : "Прокрутите вниз до раздела “API/SSH”, введите имя для ключа и нажмите “Создать”"
           }
         }
       }
