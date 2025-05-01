@@ -1,10 +1,10 @@
-// An observable data model of recipes and miscellaneous groupings
+// An observable data model of servers and miscellaneous groupings
 
 import SwiftUI
 
 @Observable
 final class DataModel {
-    private(set) var recipes: [Recipe] = []
+    private(set) var servers: [Recipe] = []
     
     private var recipesById: [Recipe.ID: Recipe] = [:]
     
@@ -27,17 +27,10 @@ final class DataModel {
         }
     }
     
-    /// The recipes for a given category, sorted by name
+    /// The servers for a given category, sorted by name
     func recipes(in category: Category?) -> [Recipe] {
-        recipes.filter {
+        servers.filter {
             $0.category == category
-        }
-    }
-    
-    /// The related recipes for a given recipe, sorted by name
-    func recipes(relatedTo recipe: Recipe) -> [Recipe] {
-        recipes.filter {
-            recipe.related.contains($0.id)
         }
     }
     

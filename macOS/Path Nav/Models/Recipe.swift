@@ -1,4 +1,4 @@
-// A data model for a recipe and its metadata, including its related recipes
+// A data model for a recipe and its metadata, including its related servers
 
 import SwiftUI
 
@@ -7,12 +7,11 @@ struct Recipe: Codable, Hashable, Identifiable {
     var name: String
     var category: Category
     var ingredients: [Ingredient]
-    var related: [Recipe.ID] = []
     var imageName: String? = nil
 }
 
 extension Recipe {
     static var mock: Recipe {
-        DataModel.shared.recipes[0]
+        DataModel.shared.servers[0]
     }
 }

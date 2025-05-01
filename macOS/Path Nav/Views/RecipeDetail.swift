@@ -1,4 +1,4 @@
-// A detail view the app uses to display the metadata for a given recipe, as well as its related recipes
+// A detail view the app uses to display the metadata for a given recipe, as well as its related servers
 
 import SwiftUI
 
@@ -44,8 +44,6 @@ private struct Content<Link: View>: View {
                 
                 Spacer()
             }
-            
-            relatedRecipes
         }
     }
     
@@ -67,7 +65,6 @@ private struct Content<Link: View>: View {
             title
             image
             ingredients
-            relatedRecipes
         }
     }
     
@@ -112,27 +109,6 @@ private struct Content<Link: View>: View {
             }
         }
         .frame(minWidth: 300, alignment: .leading)
-    }
-    
-    @ViewBuilder
-    private var relatedRecipes: some View {
-        let padding = EdgeInsets(top: 16, leading: 0, bottom: 8, trailing: 0)
-        
-        if !recipe.related.isEmpty {
-            VStack(alignment: .leading) {
-                Text("Related Recipes")
-                    .title2(.bold)
-                    .padding(padding)
-                
-                LazyVGrid(columns: columns, alignment: .leading, spacing: 20) {
-                    let relatedRecipes = dataModel.recipes(relatedTo: recipe)
-                    
-                    ForEach(relatedRecipes) { relatedRecipe in
-                        relatedLink(relatedRecipe)
-                    }
-                }
-            }
-        }
     }
 }
 
