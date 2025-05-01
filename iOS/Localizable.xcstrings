@@ -794,7 +794,14 @@
       }
     },
     "Accounts" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Аккаунты"
+          }
+        }
+      }
     },
     "Achievements" : {
       "localizations" : {
@@ -4015,7 +4022,14 @@
       }
     },
     "No accounts found" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Аккаунты не найдены"
+          }
+        }
+      }
     },
     "No metadata available" : {
       "localizations" : {
