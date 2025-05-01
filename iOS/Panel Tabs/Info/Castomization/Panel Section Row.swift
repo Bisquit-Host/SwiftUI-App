@@ -1,8 +1,13 @@
 import SwiftUI
 
 struct PanelSectionRow: View {
-    var item: PanelSection
-    var toggle: () -> Void
+    private var item: PanelSection
+    private var toggle: () -> Void
+    
+    init(_ item: PanelSection, toggle: @escaping () -> Void) {
+        self.item = item
+        self.toggle = toggle
+    }
     
     var body: some View {
         VStack(alignment: .leading) {

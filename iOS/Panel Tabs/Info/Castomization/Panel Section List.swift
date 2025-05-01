@@ -13,7 +13,7 @@ struct PanelSectionList: View {
             .listRowBackground(Color.clear)
             
             ForEach(vm.sections) { item in
-                PanelSectionRow(item: item) {
+                PanelSectionRow(item) {
                     vm.toggle(item)
                     vm.save()
                 }

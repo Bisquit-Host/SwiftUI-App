@@ -45,7 +45,7 @@ struct InfoTab: View {
                     VStack(spacing: 10) {
                         InfoTabHeading(server)
                         
-                        ForEach(sectionsVM.sections.filter(\.isChecked)) { section in
+                        ForEach(sectionsVM.activeSections) { section in
                             switch section.name {
                             case "Resource Usage":
                                 InfoTabResourceUsage(server)
@@ -89,6 +89,7 @@ struct InfoTab: View {
                 .offset(y: -15) // Border visible if smaller
             }
         }
+        .animation(.default, value: sectionsVM.activeSections)
         .ignoresSafeArea()
         .toolbarBackground(.visible, for: .tabBar)
         .sheet($sheetCustomization) {

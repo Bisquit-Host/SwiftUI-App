@@ -4,6 +4,10 @@ import Foundation
 class PanelSectionVM {
     var sections: [PanelSection] = []
     
+    var activeSections: [PanelSection] {
+        sections.filter(\.isChecked)
+    }
+    
     let defaultSections: [PanelSection] = [
         .init("Resource Usage"),
         .init("Allocations"),
