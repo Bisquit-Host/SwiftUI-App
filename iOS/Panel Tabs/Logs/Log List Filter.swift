@@ -10,7 +10,7 @@ struct LogListFilter: View {
                     vm.selectedActor = nil
                 } label: {
                     Label {
-                        Text("All")
+                        Text("All users")
                     } icon: {
                         if vm.selectedActor == nil {
                             Image(systemName: "checkmark")
