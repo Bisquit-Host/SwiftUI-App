@@ -10,6 +10,7 @@ struct InfoTab: View {
         self.server = server
     }
     
+    @State private var sheetCustomization = false
     @State private var selectedImage: UIImage? = nil
     private let width = UIScreen.main.bounds.width
     
@@ -42,15 +43,30 @@ struct InfoTab: View {
                         InfoTabButtons(server)
                         
                         MapSection(ip, node: server.node)
+                        
+                        Button {
+                            sheetCustomization = true
+                        } label: {
+                            Text("Customize & Reorder")
+                                .semibold()
+                                .secondary()
+                                .foregroundStyle(.foreground)
+                        }
+                        .padding(.top, 10)
                     }
                     .padding(.horizontal, 10)
                     .frame(width: width)
                 }
-                .offset(y: -15) // The border will be visible if smaller
+                .offset(y: -15) // Border visible if smaller
             }
         }
         .ignoresSafeArea()
         .toolbarBackground(.visible, for: .tabBar)
+        .sheet($sheetCustomization) {
+            NavigationView {
+                ContentView()
+            }
+        }
         .task {
             if let fileName = UserDefaults.standard.string(forKey: "background_image_fileName"),
                let image = BackgroundImageHelper.loadImageFromDisk(fileName) {

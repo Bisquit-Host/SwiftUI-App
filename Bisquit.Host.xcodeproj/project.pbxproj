@@ -484,6 +484,12 @@
 		F33711C92DC2E0330014B427 /* Gamepad Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33711C52DC2E0330014B427 /* Gamepad Manager.swift */; };
 		F33711CA2DC2E0330014B427 /* Gamepad Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33711C52DC2E0330014B427 /* Gamepad Manager.swift */; };
 		F33711CB2DC2E0330014B427 /* Gamepad Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33711C52DC2E0330014B427 /* Gamepad Manager.swift */; };
+		F337121B2DC2FD240014B427 /* Panel Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33712192DC2FD240014B427 /* Panel Section.swift */; };
+		F337121C2DC2FD240014B427 /* Panel Section List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33712182DC2FD240014B427 /* Panel Section List.swift */; };
+		F337121D2DC2FD240014B427 /* Item Row View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337121A2DC2FD240014B427 /* Item Row View.swift */; };
+		F337121E2DC2FD240014B427 /* Panel Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33712192DC2FD240014B427 /* Panel Section.swift */; };
+		F337121F2DC2FD240014B427 /* Panel Section List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33712182DC2FD240014B427 /* Panel Section List.swift */; };
+		F33712202DC2FD240014B427 /* Item Row View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337121A2DC2FD240014B427 /* Item Row View.swift */; };
 		F337B3A829BC6B5400CC1195 /* Server List Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B3A729BC6B5400CC1195 /* Server List Grid.swift */; };
 		F337B4062A89FAC600DD79AA /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B4052A89FAC600DD79AA /* Entry.swift */; };
 		F337B4092A89FB4300DD79AA /* System Small Widget View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B4082A89FB4300DD79AA /* System Small Widget View.swift */; };
@@ -1890,6 +1896,9 @@
 		F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dynamic Island Badge.swift"; sourceTree = "<group>"; };
 		F33711BD2DC2D7A70014B427 /* Gamepad Manager Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gamepad Manager Modifiers.swift"; sourceTree = "<group>"; };
 		F33711C52DC2E0330014B427 /* Gamepad Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gamepad Manager.swift"; sourceTree = "<group>"; };
+		F33712182DC2FD240014B427 /* Panel Section List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Section List.swift"; sourceTree = "<group>"; };
+		F33712192DC2FD240014B427 /* Panel Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Section.swift"; sourceTree = "<group>"; };
+		F337121A2DC2FD240014B427 /* Item Row View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item Row View.swift"; sourceTree = "<group>"; };
 		F337B3A729BC6B5400CC1195 /* Server List Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List Grid.swift"; sourceTree = "<group>"; };
 		F337B4052A89FAC600DD79AA /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		F337B4082A89FB4300DD79AA /* System Small Widget View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "System Small Widget View.swift"; sourceTree = "<group>"; };
@@ -2741,6 +2750,7 @@
 				F3FF5A022A4A359C003A1973 /* Info Tab Buttons.swift */,
 				F3A563232D9EF114009AA363 /* Info Tab Buttons User Img.swift */,
 				F3B66DF32D60B46F00F1841B /* Info Tab LA.swift */,
+				F33712212DC2FD2A0014B427 /* Castomization */,
 				F353B04E2D8AA6FB00E4EC07 /* Map */,
 			);
 			path = Info;
@@ -2942,6 +2952,16 @@
 				F342FAB22B2E43D500854270 /* Log Card.swift */,
 			);
 			path = Logs;
+			sourceTree = "<group>";
+		};
+		F33712212DC2FD2A0014B427 /* Castomization */ = {
+			isa = PBXGroup;
+			children = (
+				F33712182DC2FD240014B427 /* Panel Section List.swift */,
+				F337121A2DC2FD240014B427 /* Item Row View.swift */,
+				F33712192DC2FD240014B427 /* Panel Section.swift */,
+			);
+			path = Castomization;
 			sourceTree = "<group>";
 		};
 		F337B4072A89FB0200DD79AA /* Families */ = {
@@ -4770,6 +4790,9 @@
 				F3E467522A49903900FABE5F /* Info Stat.swift in Sources */,
 				F337C1692A8D07E2006F321C /* Startup VM.swift in Sources */,
 				F3FF5A032A4A359C003A1973 /* Info Tab Buttons.swift in Sources */,
+				F337121B2DC2FD240014B427 /* Panel Section.swift in Sources */,
+				F337121C2DC2FD240014B427 /* Panel Section List.swift in Sources */,
+				F337121D2DC2FD240014B427 /* Item Row View.swift in Sources */,
 				F3DC4E2629AEC36300D27EC5 /* Credentials View.swift in Sources */,
 				F31BA591295901C00006D126 /* Browser VM.swift in Sources */,
 				F3202D152D562B250030B3CC /* Browser Card MC.swift in Sources */,
@@ -5127,6 +5150,9 @@
 				F36D532C2A05B87A007324C6 /* Database List.swift in Sources */,
 				F337C16A2A8D07E2006F321C /* Startup VM.swift in Sources */,
 				F35DA95A2A28F80900803E7E /* Upload Progress.swift in Sources */,
+				F337121E2DC2FD240014B427 /* Panel Section.swift in Sources */,
+				F337121F2DC2FD240014B427 /* Panel Section List.swift in Sources */,
+				F33712202DC2FD240014B427 /* Item Row View.swift in Sources */,
 				F3202D0D2D562AE30030B3CC /* Browser List Web.swift in Sources */,
 				F36D53192A05B7F6007324C6 /* Panel VM.swift in Sources */,
 				F389BB6C2A05B5EA00911EBF /* Cache Settings.swift in Sources */,

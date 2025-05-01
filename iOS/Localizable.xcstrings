@@ -2012,6 +2012,9 @@
         }
       }
     },
+    "Customize & Reorder" : {
+
+    },
     "Dark" : {
       "localizations" : {
         "nl" : {
@@ -4615,6 +4618,12 @@
         }
       }
     },
+    "Reorder or hide sections to personalize your view" : {
+
+    },
+    "Reset" : {
+
+    },
     "Reset to default" : {
       "localizations" : {
         "ru" : {
@@ -5109,6 +5118,9 @@
       }
     },
     "Show description" : {
+
+    },
+    "Show Ping" : {
 
     },
     "Show power buttons" : {
