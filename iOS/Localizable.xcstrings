@@ -820,7 +820,14 @@
 
     },
     "Add to MC Stats" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить в Гойдакрафт"
+          }
+        }
+      }
     },
     "Added **`%@`** as a subuser" : {
       "localizations" : {
