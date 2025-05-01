@@ -1076,7 +1076,14 @@
       }
     },
     "Authorization" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Авторизация"
+          }
+        }
+      }
     },
     "Available to buy" : {
       "localizations" : {
