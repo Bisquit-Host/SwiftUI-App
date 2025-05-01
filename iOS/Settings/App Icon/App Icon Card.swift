@@ -36,7 +36,7 @@ struct AppIconCard: View {
                     .clipShape(.rect(cornerRadius: 10))
                     .padding(.horizontal, 4)
             }
-            .frame(width: 80, height: 90)
+            .frame(width: 70, height: 70)
         }
     }
 }

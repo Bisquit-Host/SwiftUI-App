@@ -14,6 +14,7 @@ struct AppIconPicker: View {
             }
             .padding(5)
         }
+        .scrollClipDisabled()
         .onChange(of: store.currentIcon) { _, icon in
             guard UIApplication.shared.supportsAlternateIcons else {
                 print("Device doesn't support alternate app icons")
