@@ -61,9 +61,7 @@ struct ServerCard: View {
                     VStack(alignment: .leading) {
                         serverName
                         
-                        if !server.description.isEmpty {
-                            description
-                        }
+                        description
                         
                         diskGauge
                     }
@@ -100,12 +98,16 @@ struct ServerCard: View {
     }
     
     private var description: some View {
-        Text(server.description)
-            .footnote()
-            .secondary()
-            .foregroundStyle(.foreground)
-            .lineLimit(1)
-            .matchedEffect("description", in: animation)
+        VStack {
+            if !server.description.isEmpty {
+                Text(server.description)
+                    .footnote()
+                    .secondary()
+                    .foregroundStyle(.foreground)
+                    .lineLimit(1)
+            }
+        }
+        .matchedEffect("description", in: animation)
     }
     
     private var diskGauge: some View {
