@@ -7,7 +7,7 @@ struct StackContentView: View {
     @Environment(NavModel.self) private var nav
     @Environment(DataModel.self) private var dataModel
     
-    private let categories = Category.allCases
+    private let categories = Tabs.allCases
     
     var body: some View {
         @Bindable var nav = nav
@@ -20,7 +20,7 @@ struct StackContentView: View {
                         NavigationLink(recipe.name, value: recipe)
                     }
                 } header: {
-                    Text(category.localizedName)
+                    Text(category.title)
                 }
             }
             .navigationTitle("Categories")

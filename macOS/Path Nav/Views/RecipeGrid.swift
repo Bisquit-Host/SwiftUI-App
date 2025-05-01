@@ -8,7 +8,7 @@ struct RecipeGrid: View {
     @Environment(DataModel.self) private var dataModel
     
     var body: some View {
-        if let category = navigationModel.selectedCategory {
+        if let category = navigationModel.selectedTab {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(dataModel.servers) { recipe in
@@ -21,7 +21,7 @@ struct RecipeGrid: View {
                 }
                 .padding()
             }
-            .navigationTitle(category.localizedName)
+            .navigationTitle(category.title)
             .navigationDestination(for: ServerAttributes.self) { recipe in
                 RecipeDetail(recipe: recipe) { relatedRecipe in
                     Button {
@@ -44,11 +44,11 @@ struct RecipeGrid: View {
     }
 }
 
-#Preview() {
-    RecipeGrid()
-        .environment(DataModel.shared)
-        .environment(NavModel(selectedCategory: .dessert))
-}
+//#Preview() {
+//    RecipeGrid()
+//        .environment(DataModel.shared)
+//        .environment(NavModel(selectedCategory: .dessert))
+//}
 
 #Preview() {
     RecipeGrid()

@@ -45,6 +45,7 @@ struct ContentView: View {
         }
         .task {
             try? nav.load()
+            dataModel.fetchServers(false)
         }
         .onChange(of: scenePhase) { _, newScenePhase in
             if newScenePhase == .background {

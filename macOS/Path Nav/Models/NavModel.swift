@@ -6,7 +6,7 @@ import PteroNet
 @Observable
 final class NavModel: Codable {
     /// The selected recipe category; otherwise returns `nil`
-    var selectedCategory: Category?
+    var selectedTab: Tabs?
     
     /// The homogenous navigation state used by the app's navigation stacks
     var recipePath: [ServerAttributes]
@@ -39,11 +39,11 @@ final class NavModel: Codable {
     /// visibility, selected recipe category, and navigation state based on recipe data
     init(
         columnVisibility: NavigationSplitViewVisibility = .automatic,
-        selectedCategory: Category? = nil,
+        selectedCategory: Tabs? = nil,
         recipePath: [ServerAttributes] = []
     ) {
         self.columnVisibility = columnVisibility
-        self.selectedCategory = selectedCategory
+        self.selectedTab = selectedCategory
         self.recipePath = recipePath
     }
     
@@ -57,7 +57,7 @@ final class NavModel: Codable {
         
         self.init(
             columnVisibility: model.columnVisibility,
-            selectedCategory: model.selectedCategory,
+            selectedCategory: model.selectedTab,
             recipePath: model.recipePath
         )
     }
@@ -66,7 +66,7 @@ final class NavModel: Codable {
     func load() throws {
         let model = try NavModel(contentsOf: Self.dataURL)
         
-        selectedCategory = model.selectedCategory
+        selectedTab = model.selectedTab
         recipePath = model.recipePath
         columnVisibility = model.columnVisibility
     }
@@ -77,14 +77,14 @@ final class NavModel: Codable {
     }
     
 //    /// The selected recipe; otherwise returns `nil`
-//    var selectedRecipe: Recipe? {
+//    var selectedServer: Recipe? {
 //        get {
 //            recipePath.first
 //        } set {
 //            recipePath = [newValue].compactMap { $0 }
 //        }
 //    }
-    var selectedRecipe: Set<ServerAttributes> {
+    var selectedServer: Set<ServerAttributes> {
         get {
             Set(recipePath)
         } set {
@@ -104,8 +104,8 @@ final class NavModel: Codable {
                 return
             }
             
-            selectedCategory = model.selectedCategory
-            recipePath = model.recipePath
+            selectedTab = model.selectedTab
+            recipePath       = model.recipePath
             columnVisibility = model.columnVisibility
         }
     }

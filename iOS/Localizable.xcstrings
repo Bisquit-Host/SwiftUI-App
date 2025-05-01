@@ -2365,9 +2365,6 @@
         }
       }
     },
-    "Dessert" : {
-
-    },
     "Destination" : {
       "localizations" : {
         "nl" : {
@@ -4226,9 +4223,6 @@
         }
       }
     },
-    "Pancake" : {
-
-    },
     "Panel" : {
       "localizations" : {
         "ru" : {
@@ -4826,12 +4820,6 @@
     "Running" : {
 
     },
-    "Salad" : {
-
-    },
-    "Sandwich" : {
-
-    },
     "Save" : {
       "localizations" : {
         "nl" : {
@@ -5077,6 +5065,9 @@
           }
         }
       }
+    },
+    "Servers" : {
+
     },
     "Set **`%@`** as the primary server allocation" : {
       "localizations" : {
