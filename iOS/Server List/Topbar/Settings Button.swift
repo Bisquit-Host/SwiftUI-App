@@ -21,7 +21,7 @@ struct SettingsButton: View {
             }
             
             if keys.count > 0 {
-                MenuButton("Switch Account", icon: "arrow.trianglehead.2.clockwise.rotate.90") {
+                MenuButton("Switch account", icon: "chevron.up.chevron.down") {
                     vm.sheetKeyStorage = true
                 }
             }

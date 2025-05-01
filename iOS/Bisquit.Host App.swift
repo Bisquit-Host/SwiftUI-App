@@ -96,6 +96,7 @@ struct BisquitHostApp: App {
             ServerListVM().loadServers()
         }
 #endif
+        
 #if os(macOS)
         .windowStyle(.hiddenTitleBar)
 #endif
@@ -129,7 +130,6 @@ struct BisquitHostApp: App {
             return
         }
         
-#warning("macOS")
 #if !os(macOS)
         delay(0.4) {
             navState.navigate(.toPanel(id))

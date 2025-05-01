@@ -15,6 +15,7 @@ struct ServerListTips: View {
                 }
             }
             .tipBackground(.ultraThinMaterial)
+            .tint(.primary)
         }
     }
 }

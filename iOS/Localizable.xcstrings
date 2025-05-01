@@ -768,6 +768,9 @@
       },
       "shouldTranslate" : false
     },
+    "A Pressed" : {
+
+    },
     "Account" : {
       "localizations" : {
         "nl" : {
@@ -1068,6 +1071,9 @@
         }
       }
     },
+    "B Pressed" : {
+
+    },
     "Background image" : {
       "localizations" : {
         "ru" : {
@@ -1141,6 +1147,9 @@
           }
         }
       }
+    },
+    "Battery: %lld%%" : {
+
     },
     "Best places" : {
       "localizations" : {
@@ -2003,6 +2012,9 @@
         }
       }
     },
+    "Customize & Reorder" : {
+
+    },
     "Dark" : {
       "localizations" : {
         "nl" : {
@@ -2517,6 +2529,18 @@
         }
       }
     },
+    "DPad Down Pressed" : {
+
+    },
+    "DPad Left Pressed" : {
+
+    },
+    "DPad Right Pressed" : {
+
+    },
+    "DPad Up Pressed" : {
+
+    },
     "Drop here" : {
       "localizations" : {
         "ru" : {
@@ -2878,6 +2902,9 @@
           }
         }
       }
+    },
+    "Gamepad Test" : {
+
     },
     "General" : {
       "localizations" : {
@@ -3448,6 +3475,15 @@
         }
       }
     },
+    "Left Shoulder Pressed" : {
+
+    },
+    "Left Stick Pressed" : {
+
+    },
+    "Left Trigger Pressed" : {
+
+    },
     "Light" : {
       "localizations" : {
         "nl" : {
@@ -3681,6 +3717,9 @@
           }
         }
       }
+    },
+    "Menu Pressed" : {
+
     },
     "Metadata" : {
       "localizations" : {
@@ -4082,6 +4121,9 @@
     "Optional" : {
 
     },
+    "Options Pressed" : {
+
+    },
     "Other" : {
       "localizations" : {
         "ru" : {
@@ -4289,6 +4331,54 @@
           }
         }
       }
+    },
+    "Press A" : {
+
+    },
+    "Press B" : {
+
+    },
+    "Press DPad Down" : {
+
+    },
+    "Press DPad Left" : {
+
+    },
+    "Press DPad Right" : {
+
+    },
+    "Press DPad Up" : {
+
+    },
+    "Press Left Shoulder" : {
+
+    },
+    "Press Left Stick" : {
+
+    },
+    "Press Left Trigger" : {
+
+    },
+    "Press Menu" : {
+
+    },
+    "Press Options" : {
+
+    },
+    "Press Right Shoulder" : {
+
+    },
+    "Press Right Stick" : {
+
+    },
+    "Press Right Trigger" : {
+
+    },
+    "Press X" : {
+
+    },
+    "Press Y" : {
+
     },
     "Preview" : {
       "localizations" : {
@@ -4528,6 +4618,12 @@
         }
       }
     },
+    "Reorder or hide sections to personalize your view" : {
+
+    },
+    "Reset" : {
+
+    },
     "Reset to default" : {
       "localizations" : {
         "ru" : {
@@ -4629,6 +4725,15 @@
           }
         }
       }
+    },
+    "Right Shoulder Pressed" : {
+
+    },
+    "Right Stick Pressed" : {
+
+    },
+    "Right Trigger Pressed" : {
+
     },
     "Rotate password" : {
       "localizations" : {
@@ -5321,6 +5426,9 @@
           }
         }
       }
+    },
+    "Switch account" : {
+
     },
     "Switch Account" : {
       "localizations" : {
@@ -6018,6 +6126,12 @@
 
     },
     "Wrote new content to **`%@`**" : {
+
+    },
+    "X Pressed" : {
+
+    },
+    "Y Pressed" : {
 
     },
     "Year" : {

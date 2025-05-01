@@ -14,6 +14,8 @@ struct DebugSettings: View {
     var body: some View {
         List {
             Section {
+                Toggle("Developer mode", isOn: $store.devMode)
+                
                 Toggle("Hide status bar", isOn: $store.hideStatusBar)
                 
                 Toggle("Hide server names", isOn: $store.hideServerNames)
@@ -45,6 +47,12 @@ struct DebugSettings: View {
                 }
             }
             .transparentSection()
+            
+            Section {
+                NavigationLink("Gamepad Test") {
+                    GamepadDebug()
+                }
+            }
         }
         .transparentList()
         .alert("Couldn't enable the extension", isPresented: $errorAlert) {}

@@ -12,9 +12,10 @@ struct AppContainer: View {
     @State private var network = NetworkVM()
     
     @EnvironmentObject private var store: ValueStore
-    @Environment(NavState.self) private var navState
+    @Environment(NavState.self) private var nav
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.dismiss) private var dismiss
     @Query(animation: .default) private var keys: [APIKey]
     
     @State private var showBadge = false
@@ -24,9 +25,9 @@ struct AppContainer: View {
 #endif
     
     var body: some View {
-        @Bindable var navState = navState
+        @Bindable var nav = nav
         
-        NavigationStack(path: $navState.path) {
+        NavigationStack(path: $nav.path) {
             if store.isApiKeyValid {
 #if os(macOS)
                 Home()
@@ -73,7 +74,7 @@ struct AppContainer: View {
         .statusBarHidden(store.hideStatusBar)
         .detectOrientation($orientation)
         .overlay(alignment: .top) {
-            if Device.current.hasDynamicIsland && showBadge && orientation.isPortrait {
+            if Device.current.hasDynamicIsland && showBadge && orientation.isPortrait, store.showDynamicIslandBadge {
                 DynamicIslandBadge()
             }
         }
