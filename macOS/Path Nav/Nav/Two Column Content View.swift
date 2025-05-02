@@ -45,7 +45,8 @@ struct TwoColumnContentView: View {
                                     }
                             }
                             
-                        default: EmptyView()
+                        default:
+                            EmptyView()
                         }
                     }
             }

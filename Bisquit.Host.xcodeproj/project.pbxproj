@@ -678,22 +678,17 @@
 		F36B14652DC39F6A008C1AF9 /* Debug Settings Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14612DC39F6A008C1AF9 /* Debug Settings Tips.swift */; };
 		F36B14662DC39F6A008C1AF9 /* Debug Settings Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14612DC39F6A008C1AF9 /* Debug Settings Tips.swift */; };
 		F36B14672DC39F6A008C1AF9 /* Debug Settings Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14612DC39F6A008C1AF9 /* Debug Settings Tips.swift */; };
-		F36B14802DC3BC3E008C1AF9 /* Recipe Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B147B2DC3BC3E008C1AF9 /* Recipe Detail.swift */; };
 		F36B14812DC3BC3E008C1AF9 /* Content View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B146A2DC3BC3E008C1AF9 /* Content View.swift */; };
 		F36B14822DC3BC3E008C1AF9 /* Stack Content View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B146B2DC3BC3E008C1AF9 /* Stack Content View.swift */; };
 		F36B14832DC3BC3E008C1AF9 /* Experience Picker Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14792DC3BC3E008C1AF9 /* Experience Picker Row.swift */; };
 		F36B14842DC3BC3E008C1AF9 /* Continue Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14762DC3BC3E008C1AF9 /* Continue Button.swift */; };
-		F36B14852DC3BC3E008C1AF9 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14712DC3BC3E008C1AF9 /* Category.swift */; };
-		F36B14862DC3BC3E008C1AF9 /* Recipe Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B147E2DC3BC3E008C1AF9 /* Recipe Tile.swift */; };
 		F36B14872DC3BC3E008C1AF9 /* Data Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B146F2DC3BC3E008C1AF9 /* Data Model.swift */; };
-		F36B14882DC3BC3E008C1AF9 /* Server Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14742DC3BC3E008C1AF9 /* Server Attributes.swift */; };
 		F36B14892DC3BC3E008C1AF9 /* Experience Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B147A2DC3BC3E008C1AF9 /* Experience Toolbar.swift */; };
 		F36B148A2DC3BC3E008C1AF9 /* Three Column Content View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B146D2DC3BC3E008C1AF9 /* Three Column Content View.swift */; };
 		F36B148B2DC3BC3E008C1AF9 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14732DC3BC3E008C1AF9 /* Ingredient.swift */; };
 		F36B148C2DC3BC3E008C1AF9 /* Two Column Content View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B146C2DC3BC3E008C1AF9 /* Two Column Content View.swift */; };
 		F36B148D2DC3BC3E008C1AF9 /* Experience Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14782DC3BC3E008C1AF9 /* Experience Picker.swift */; };
 		F36B148E2DC3BC3E008C1AF9 /* Experience.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14722DC3BC3E008C1AF9 /* Experience.swift */; };
-		F36B148F2DC3BC3E008C1AF9 /* Recipe Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B147D2DC3BC3E008C1AF9 /* Recipe Photo.swift */; };
 		F36B14902DC3BC3E008C1AF9 /* Recipe Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B147C2DC3BC3E008C1AF9 /* Recipe Grid.swift */; };
 		F36B14912DC3BC3E008C1AF9 /* Nav Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14702DC3BC3E008C1AF9 /* Nav Model.swift */; };
 		F36B14922DC3BC3E008C1AF9 /* Experience Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14772DC3BC3E008C1AF9 /* Experience Button.swift */; };
@@ -1998,19 +1993,14 @@
 		F36B146D2DC3BC3E008C1AF9 /* Three Column Content View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Three Column Content View.swift"; sourceTree = "<group>"; };
 		F36B146F2DC3BC3E008C1AF9 /* Data Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data Model.swift"; sourceTree = "<group>"; };
 		F36B14702DC3BC3E008C1AF9 /* Nav Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Model.swift"; sourceTree = "<group>"; };
-		F36B14712DC3BC3E008C1AF9 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		F36B14722DC3BC3E008C1AF9 /* Experience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Experience.swift; sourceTree = "<group>"; };
 		F36B14732DC3BC3E008C1AF9 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
-		F36B14742DC3BC3E008C1AF9 /* Server Attributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Attributes.swift"; sourceTree = "<group>"; };
 		F36B14762DC3BC3E008C1AF9 /* Continue Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Continue Button.swift"; sourceTree = "<group>"; };
 		F36B14772DC3BC3E008C1AF9 /* Experience Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Experience Button.swift"; sourceTree = "<group>"; };
 		F36B14782DC3BC3E008C1AF9 /* Experience Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Experience Picker.swift"; sourceTree = "<group>"; };
 		F36B14792DC3BC3E008C1AF9 /* Experience Picker Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Experience Picker Row.swift"; sourceTree = "<group>"; };
 		F36B147A2DC3BC3E008C1AF9 /* Experience Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Experience Toolbar.swift"; sourceTree = "<group>"; };
-		F36B147B2DC3BC3E008C1AF9 /* Recipe Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recipe Detail.swift"; sourceTree = "<group>"; };
 		F36B147C2DC3BC3E008C1AF9 /* Recipe Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recipe Grid.swift"; sourceTree = "<group>"; };
-		F36B147D2DC3BC3E008C1AF9 /* Recipe Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recipe Photo.swift"; sourceTree = "<group>"; };
-		F36B147E2DC3BC3E008C1AF9 /* Recipe Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recipe Tile.swift"; sourceTree = "<group>"; };
 		F36B14942DC3BC52008C1AF9 /* Bisquit.Host App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bisquit.Host App.swift"; sourceTree = "<group>"; };
 		F36B14A02DC3EA70008C1AF9 /* Panel Section List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Section List.swift"; sourceTree = "<group>"; };
 		F36B14A22DC4CAF6008C1AF9 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
@@ -3220,10 +3210,8 @@
 			children = (
 				F36B146F2DC3BC3E008C1AF9 /* Data Model.swift */,
 				F36B14702DC3BC3E008C1AF9 /* Nav Model.swift */,
-				F36B14712DC3BC3E008C1AF9 /* Category.swift */,
 				F36B14722DC3BC3E008C1AF9 /* Experience.swift */,
 				F36B14732DC3BC3E008C1AF9 /* Ingredient.swift */,
-				F36B14742DC3BC3E008C1AF9 /* Server Attributes.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -3236,10 +3224,7 @@
 				F36B14782DC3BC3E008C1AF9 /* Experience Picker.swift */,
 				F36B14792DC3BC3E008C1AF9 /* Experience Picker Row.swift */,
 				F36B147A2DC3BC3E008C1AF9 /* Experience Toolbar.swift */,
-				F36B147B2DC3BC3E008C1AF9 /* Recipe Detail.swift */,
 				F36B147C2DC3BC3E008C1AF9 /* Recipe Grid.swift */,
-				F36B147D2DC3BC3E008C1AF9 /* Recipe Photo.swift */,
-				F36B147E2DC3BC3E008C1AF9 /* Recipe Tile.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -6219,22 +6204,17 @@
 				F3458BF02B36EA49000E8324 /* App Delegate.swift in Sources */,
 				F32FD7192B1E042C00723B88 /* Websocket Delegate.swift in Sources */,
 				F30C13122A54609000A7EFF0 /* Server List.swift in Sources */,
-				F36B14802DC3BC3E008C1AF9 /* Recipe Detail.swift in Sources */,
 				F36B14812DC3BC3E008C1AF9 /* Content View.swift in Sources */,
 				F36B14822DC3BC3E008C1AF9 /* Stack Content View.swift in Sources */,
 				F36B14832DC3BC3E008C1AF9 /* Experience Picker Row.swift in Sources */,
 				F36B14842DC3BC3E008C1AF9 /* Continue Button.swift in Sources */,
-				F36B14852DC3BC3E008C1AF9 /* Category.swift in Sources */,
-				F36B14862DC3BC3E008C1AF9 /* Recipe Tile.swift in Sources */,
 				F36B14872DC3BC3E008C1AF9 /* Data Model.swift in Sources */,
-				F36B14882DC3BC3E008C1AF9 /* Server Attributes.swift in Sources */,
 				F36B14892DC3BC3E008C1AF9 /* Experience Toolbar.swift in Sources */,
 				F36B148A2DC3BC3E008C1AF9 /* Three Column Content View.swift in Sources */,
 				F36B148B2DC3BC3E008C1AF9 /* Ingredient.swift in Sources */,
 				F36B148C2DC3BC3E008C1AF9 /* Two Column Content View.swift in Sources */,
 				F36B148D2DC3BC3E008C1AF9 /* Experience Picker.swift in Sources */,
 				F36B148E2DC3BC3E008C1AF9 /* Experience.swift in Sources */,
-				F36B148F2DC3BC3E008C1AF9 /* Recipe Photo.swift in Sources */,
 				F36B14902DC3BC3E008C1AF9 /* Recipe Grid.swift in Sources */,
 				F36B14912DC3BC3E008C1AF9 /* Nav Model.swift in Sources */,
 				F36B14922DC3BC3E008C1AF9 /* Experience Button.swift in Sources */,
