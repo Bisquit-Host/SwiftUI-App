@@ -5,12 +5,10 @@ import SwiftUI
 struct TwoColumnContentView: View {
     @Environment(NavModel.self) private var nav
     @Environment(DataModel.self) private var dataModel
-    
-    private let categories = Tabs.allCases
-    
+
     var body: some View {
         @Bindable var nav = nav
-        
+
         NavigationSplitView(columnVisibility: $nav.columnVisibility) {
             List(selection: $nav.selectedServer) {
                 ForEach(dataModel.servers) { server in
@@ -34,14 +32,11 @@ struct TwoColumnContentView: View {
             .experienceToolbar()
             .navigationTitle("Servers")
         } detail: {
-            NavigationStack(path: $nav.recipePath) {
-//                if let selectedTab = nav.selectedTab {
-//                    Text("Selected \(selectedTab.title)")
-//                } else {
-//                    Text("Not selected")
-//                }
-                
+            NavigationStack(path: $nav.tabPath) {
                 RecipeGrid()
+                    .navigationDestination(for: Tabs.self) { tab in
+                        Text(tab.title)
+                    }
             }
         }
     }

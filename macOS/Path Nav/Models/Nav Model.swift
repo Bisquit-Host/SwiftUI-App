@@ -10,6 +10,7 @@ final class NavModel: Codable {
     
     /// The homogenous navigation state used by the app's navigation stacks
     var recipePath: [ServerAttributes]
+    var tabPath: [Tabs] = []
     
     /// The leading columns' visibility state used by the app's navigation split views
     var columnVisibility: NavigationSplitViewVisibility
@@ -73,6 +74,8 @@ final class NavModel: Codable {
     
     /// Saves the JSON data for the navigation model at its current state
     func save() throws {
+        print("Nav save")
+        
         try jsonData?.write(to: Self.dataURL)
     }
     

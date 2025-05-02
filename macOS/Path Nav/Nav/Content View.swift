@@ -52,6 +52,12 @@ struct ContentView: View {
                 try? nav.save()
             }
         }
+        .onChange(of: nav.selectedTab) {
+            try? nav.save()
+        }
+        .onChange(of: nav.selectedServer) {
+            try? nav.save()
+        }
 #if os(macOS)
         .onChange(of: appearsActive) { _, appearsActive in
             if !appearsActive {
