@@ -24,11 +24,9 @@ struct StackContentView: View {
             Section {
                 Text(nav.path.description)
             }
-//        NavigationStack(path: $nav.recipePath) {
             
             List(dataModel.servers) { server in
                 NavigationLink(value: Route.server(server)) {
-//                NavigationLink(value: server) {
                     VStack(alignment: .leading) {
                         Text(server.name)
                         
@@ -65,7 +63,7 @@ struct StackContentView: View {
                             sheetCustomization = true
                         }
                     }
-
+                    
                 case .tab(let tab):
                     VStack {
                         Text(nav.path.description)
