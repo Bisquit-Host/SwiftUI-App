@@ -1,46 +1,43 @@
 // A grid of recipe tiles, based on a given recipe category
 
-import SwiftUI
+import ScrechKit
 import PteroNet
 
 struct RecipeGrid: View {
-    @Environment(NavModel.self) private var navigationModel
+    @Environment(NavModel.self) private var nav
     @Environment(DataModel.self) private var dataModel
     
+    private let columns = [
+        GridItem(.adaptive(minimum: 240))
+    ]
+    
     var body: some View {
-        if let category = navigationModel.selectedTab {
-            ScrollView {
-                LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(dataModel.servers) { recipe in
-//                    ForEach(vm.recipes(in: category)) { recipe in
-                        NavigationLink(value: recipe) {
-                            RecipeTile(recipe)
-                        }
-                        .buttonStyle(.plain)
+        @Bindable var nav = nav
+        
+        VStack {
+            if !nav.selectedServer.isEmpty {
+                List(selection: $nav.selectedTab) {
+                    ForEach(Tabs.allCases) { tab in
+                        NavigationLink(tab.title, value: tab)
                     }
                 }
-                .padding()
+                .navigationTitle(nav.selectedServer.first?.name ?? "Multiple servers selected")
+                .onDisappear {
+                    nav.selectedTab = nil
+                }
+                .toolbar {
+                    SFButton("pencil") {
+//                        sheetCustomization = true
+                    }
+                }
+            } else {
+                Text("Choose a server")
+                    .navigationTitle("")
             }
-            .navigationTitle(category.title)
-            .navigationDestination(for: ServerAttributes.self) { recipe in
-//                RecipeDetail(recipe: recipe) { relatedRecipe in
-//                    Button {
-//                        navigationModel.recipePath.append(relatedRecipe)
-//                    } label: {
-//                        RecipeTile(relatedRecipe)
-//                    }
-//                    .buttonStyle(.plain)
-//                }
-//                .experienceToolbar()
-            }
-        } else {
-            Text("Choose a category")
-                .navigationTitle("")
         }
-    }
-    
-    var columns: [GridItem] {
-        [ GridItem(.adaptive(minimum: 240)) ]
+        .navigationDestination(for: ServerAttributes.self) { server in
+            Text("Details of: \(server.name)")
+        }
     }
 }
 

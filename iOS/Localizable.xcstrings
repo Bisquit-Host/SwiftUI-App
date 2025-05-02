@@ -1404,9 +1404,6 @@
         }
       }
     },
-    "Choose a category" : {
-
-    },
     "Choose a server" : {
 
     },
@@ -2387,6 +2384,9 @@
           }
         }
       }
+    },
+    "Details of: %@" : {
+
     },
     "Detele Database" : {
       "localizations" : {
@@ -4383,13 +4383,13 @@
         }
       }
     },
-    "Presents a stack of views over a root view." : {
+    "Presents a stack of views over a root view" : {
 
     },
-    "Presents views in three columns: sidebar, content, and detail." : {
+    "Presents views in three columns: sidebar, content, and detail" : {
 
     },
-    "Presents views in two columns: sidebar and detail." : {
+    "Presents views in two columns: sidebar and detail" : {
 
     },
     "Press A" : {

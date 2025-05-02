@@ -35,7 +35,7 @@ struct ThreeColumnContentView: View {
             .experienceToolbar()
             .navigationTitle("Servers")
         } content: {
-            if nav.selectedTab != nil {
+            if !nav.selectedServer.isEmpty {
                 List(selection: $nav.selectedTab) {
                     ForEach(Tabs.allCases) { tab in
                         NavigationLink(tab.title, value: tab)

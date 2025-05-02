@@ -12,15 +12,37 @@ struct TwoColumnContentView: View {
         @Bindable var nav = nav
         
         NavigationSplitView(columnVisibility: $nav.columnVisibility) {
-//            List(categories, selection: $nav.selectedTab) { category in
-//                NavigationLink(category.localizedName, value: category)
-//            }
-//            .navigationTitle("Categories")
-        } detail: {
-            NavigationStack(path: $nav.recipePath) {
-                RecipeGrid()
+            List(selection: $nav.selectedServer) {
+                ForEach(dataModel.servers) { server in
+                    NavigationLink(value: server) {
+                        VStack(alignment: .leading) {
+                            Text(server.name)
+                            
+                            Text(server.description)
+                                .secondary()
+                                .footnote()
+                        }
+                        .padding(.vertical, 5)
+                    }
+                }
+            }
+            .frame(minWidth: 200)
+            .navigationTitle(nav.selectedServer.first?.name ?? "Multiple servers selected")
+            .onDisappear {
+                nav.selectedServer.removeAll()
             }
             .experienceToolbar()
+            .navigationTitle("Servers")
+        } detail: {
+            NavigationStack(path: $nav.recipePath) {
+//                if let selectedTab = nav.selectedTab {
+//                    Text("Selected \(selectedTab.title)")
+//                } else {
+//                    Text("Not selected")
+//                }
+                
+                RecipeGrid()
+            }
         }
     }
 }
