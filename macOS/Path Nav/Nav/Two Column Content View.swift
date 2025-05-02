@@ -25,7 +25,6 @@ struct TwoColumnContentView: View {
                 }
             }
             .frame(minWidth: 200)
-            .navigationTitle(nav.selectedServer.first?.name ?? "Multiple servers selected")
             .onDisappear {
                 nav.selectedServer.removeAll()
             }

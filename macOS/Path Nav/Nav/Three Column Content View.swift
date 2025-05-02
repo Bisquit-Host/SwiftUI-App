@@ -41,7 +41,6 @@ struct ThreeColumnContentView: View {
                         NavigationLink(tab.title, value: tab)
                     }
                 }
-                .navigationTitle(nav.selectedServer.first?.name ?? "Multiple servers selected")
                 .onDisappear {
                     nav.selectedTab = nil
                 }
@@ -55,13 +54,7 @@ struct ThreeColumnContentView: View {
                     .navigationTitle("")
             }
         } detail: {
-            switch nav.selectedTab {
-            case .info:
-                Text("Info")
-                
-            default:
-                Text("Select a tab")
-            }
+            Text(nav.selectedTab?.title ?? "Select a section")
         }
         .sheet($sheetCustomization) {
             NavigationStack {

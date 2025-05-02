@@ -19,7 +19,6 @@ final class NavModel: Codable {
     var showExperiencePicker = false
     
     private static let decoder = JSONDecoder()
-    
     private static let encoder = JSONEncoder()
     
     /// The URL for the JSON file that stores the recipe data

@@ -17,7 +17,6 @@ struct RecipeGrid: View {
                     NavigationLink(tab.title, value: tab)
                 }
             }
-            .navigationTitle(nav.selectedServer.first?.name ?? "Multiple servers selected")
             .onDisappear {
                 nav.selectedTab = nil
             }
