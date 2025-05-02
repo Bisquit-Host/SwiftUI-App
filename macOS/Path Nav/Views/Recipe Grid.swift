@@ -35,8 +35,8 @@ struct RecipeGrid: View {
                     .navigationTitle("")
             }
         }
-        .navigationDestination(for: ServerAttributes.self) { server in
-            Text("Details of: \(server.name)")
+        .navigationDestination(for: Tabs.self) { tab in
+            Text("Tab: \(tab.title)")
         }
     }
 }
