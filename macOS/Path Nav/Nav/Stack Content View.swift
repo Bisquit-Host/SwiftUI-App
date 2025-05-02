@@ -3,6 +3,11 @@
 import ScrechKit
 import PteroNet
 
+enum Route: Hashable, Codable {
+    case server(ServerAttributes),
+         tab(Tabs)
+}
+
 struct StackContentView: View {
     @State private var sectionsVM = PanelSectionVM()
     @Environment(NavModel.self) private var nav
@@ -15,9 +20,15 @@ struct StackContentView: View {
     var body: some View {
         @Bindable var nav = nav
         
-        NavigationStack(path: $nav.recipePath) {
+        NavigationStack(path: $nav.path) {
+            Section {
+                Text(nav.path.description)
+            }
+//        NavigationStack(path: $nav.recipePath) {
+            
             List(dataModel.servers) { server in
-                NavigationLink(value: server) {
+                NavigationLink(value: Route.server(server)) {
+//                NavigationLink(value: server) {
                     VStack(alignment: .leading) {
                         Text(server.name)
                         
@@ -30,19 +41,39 @@ struct StackContentView: View {
             }
             .navigationTitle("Servers")
             .experienceToolbar()
-            .navigationDestination(for: ServerAttributes.self) { server in
-                List(selection: $nav.selectedTab) {
-                    ForEach(Tabs.allCases) { tab in
-                        NavigationLink(tab.title, value: tab)
+            .navigationDestination(for: Route.self) { route in
+                switch route {
+                case .server(let server):
+                    List(selection: $nav.selectedTab) {
+                        Section {
+                            Text(nav.path.description)
+                        }
+                        
+                        ForEach(Tabs.allCases) { tab in
+                            NavigationLink(tab.title, value: Route.tab(tab))
+                        }
                     }
-                }
-                .navigationTitle(nav.selectedServer.first?.name ?? "Multiple servers selected")
-                .onDisappear {
-                    nav.selectedTab = nil
-                }
-                .toolbar {
-                    SFButton("pencil") {
-                        sheetCustomization = true
+                    .navigationTitle(nav.selectedServer.first?.name ?? "Multiple servers selected")
+                    .onAppear {
+                        try? nav.save()
+                    }
+                    .onDisappear {
+                        nav.selectedTab = nil
+                    }
+                    .toolbar {
+                        SFButton("pencil") {
+                            sheetCustomization = true
+                        }
+                    }
+
+                case .tab(let tab):
+                    VStack {
+                        Text(nav.path.description)
+                        
+                        Text(tab.title)
+                            .onAppear {
+                                try? nav.save()
+                            }
                     }
                 }
             }

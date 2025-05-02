@@ -55,6 +55,9 @@ struct ContentView: View {
         .onChange(of: nav.selectedTab) {
             try? nav.save()
         }
+        .onChange(of: nav.path) {
+            try? nav.save()
+        }
         .onChange(of: nav.selectedServer) {
             try? nav.save()
         }
