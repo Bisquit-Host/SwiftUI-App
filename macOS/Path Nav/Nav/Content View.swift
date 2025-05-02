@@ -44,8 +44,8 @@ struct ContentView: View {
             ExperiencePicker($experience)
         }
         .task {
-            try? nav.load()
             dataModel.fetchServers(false)
+            try? nav.load()
         }
         .onChange(of: scenePhase) { _, newScenePhase in
             if newScenePhase == .background {

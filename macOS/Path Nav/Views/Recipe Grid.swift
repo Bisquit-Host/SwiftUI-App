@@ -14,12 +14,12 @@ struct RecipeGrid: View {
         } else {
             List(selection: $nav.selectedTab) {
                 ForEach(Tabs.allCases) { tab in
-                    NavigationLink(tab.title, value: tab)
+                    NavigationLink(tab.title, value: Route.tab(tab))
                 }
             }
-            .onDisappear {
-                nav.selectedTab = nil
-            }
+//            .onDisappear {
+//                nav.selectedTab = nil
+//            }
             .toolbar {
                 SFButton("pencil") {
                     //                        sheetCustomization = true

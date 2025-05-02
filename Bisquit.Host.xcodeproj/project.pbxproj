@@ -702,6 +702,7 @@
 		F36B149E2DC3E9BB008C1AF9 /* Panel Section VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0B48C2DC300D6003C8B27 /* Panel Section VM.swift */; };
 		F36B149F2DC3E9BB008C1AF9 /* Panel Section Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337121A2DC2FD240014B427 /* Panel Section Row.swift */; };
 		F36B14A12DC3EA70008C1AF9 /* Panel Section List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14A02DC3EA70008C1AF9 /* Panel Section List.swift */; };
+		F36B14A32DC4CAF6008C1AF9 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14A22DC4CAF6008C1AF9 /* Route.swift */; };
 		F36B736D2C89B6BE00E858FE /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F36B736C2C89B6BE00E858FE /* PteroNet */; };
 		F36B73702C8A4CAF00E858FE /* Refresh Button Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B736F2C8A4CAF00E858FE /* Refresh Button Intent.swift */; };
 		F36B73712C8A4CAF00E858FE /* Refresh Button Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B736F2C8A4CAF00E858FE /* Refresh Button Intent.swift */; };
@@ -2012,6 +2013,7 @@
 		F36B147E2DC3BC3E008C1AF9 /* Recipe Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recipe Tile.swift"; sourceTree = "<group>"; };
 		F36B14942DC3BC52008C1AF9 /* Bisquit.Host App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bisquit.Host App.swift"; sourceTree = "<group>"; };
 		F36B14A02DC3EA70008C1AF9 /* Panel Section List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Section List.swift"; sourceTree = "<group>"; };
+		F36B14A22DC4CAF6008C1AF9 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		F36B736E2C89BB7200E858FE /* Intent Handler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Intent Handler.entitlements"; sourceTree = "<group>"; };
 		F36B736F2C8A4CAF00E858FE /* Refresh Button Intent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Refresh Button Intent.swift"; sourceTree = "<group>"; };
 		F36B73792C8AE9D400E858FE /* Power Actions Intents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Actions Intents.swift"; sourceTree = "<group>"; };
@@ -3204,6 +3206,7 @@
 			isa = PBXGroup;
 			children = (
 				F36B146A2DC3BC3E008C1AF9 /* Content View.swift */,
+				F36B14A22DC4CAF6008C1AF9 /* Route.swift */,
 				F36B146B2DC3BC3E008C1AF9 /* Stack Content View.swift */,
 				F36B146C2DC3BC3E008C1AF9 /* Two Column Content View.swift */,
 				F36B146D2DC3BC3E008C1AF9 /* Three Column Content View.swift */,
@@ -6241,6 +6244,7 @@
 				F3AB4A782CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
 				F39EA2DF2D5CB5E200329468 /* Linking VM.swift in Sources */,
 				F32FD7172B1E042400723B88 /* Websocket.swift in Sources */,
+				F36B14A32DC4CAF6008C1AF9 /* Route.swift in Sources */,
 				F30088AD2B3A1F500051476C /* User View.swift in Sources */,
 				F30088DA2B3A3BF50051476C /* Console View.swift in Sources */,
 				F30088942B3A03050051476C /* Log VM.swift in Sources */,

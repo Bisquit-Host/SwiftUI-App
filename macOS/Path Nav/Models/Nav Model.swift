@@ -10,7 +10,6 @@ final class NavModel: Codable {
     
     /// The homogenous navigation state used by the app's navigation stacks
     var recipePath: [ServerAttributes]
-    var tabPath: [Tabs] = []
     var path: [Route] = []
     
     /// The leading columns' visibility state used by the app's navigation split views

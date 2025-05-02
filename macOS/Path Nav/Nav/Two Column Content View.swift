@@ -1,14 +1,14 @@
 // The content view for the two-column navigation split view experience
 
-import SwiftUI
+import ScrechKit
 
 struct TwoColumnContentView: View {
     @Environment(NavModel.self) private var nav
     @Environment(DataModel.self) private var dataModel
-
+    
     var body: some View {
         @Bindable var nav = nav
-
+        
         NavigationSplitView(columnVisibility: $nav.columnVisibility) {
             List(selection: $nav.selectedServer) {
                 ForEach(dataModel.servers) { server in
@@ -31,10 +31,22 @@ struct TwoColumnContentView: View {
             .experienceToolbar()
             .navigationTitle("Servers")
         } detail: {
-            NavigationStack(path: $nav.tabPath) {
+            NavigationStack(path: $nav.path) {
                 RecipeGrid()
-                    .navigationDestination(for: Tabs.self) { tab in
-                        Text(tab.title)
+                    .navigationDestination(for: Route.self) { route in
+                        switch route {
+                        case .tab(let tab):
+                            VStack {
+                                Text(nav.path.description)
+                                
+                                Text(tab.title)
+                                    .onAppear {
+                                        try? nav.save()
+                                    }
+                            }
+                            
+                        default: EmptyView()
+                        }
                     }
             }
         }

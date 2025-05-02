@@ -3,11 +3,6 @@
 import ScrechKit
 import PteroNet
 
-enum Route: Hashable, Codable {
-    case server(ServerAttributes),
-         tab(Tabs)
-}
-
 struct StackContentView: View {
     @State private var sectionsVM = PanelSectionVM()
     @Environment(NavModel.self) private var nav
