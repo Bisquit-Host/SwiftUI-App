@@ -3201,9 +3201,9 @@
 			children = (
 				F36B146A2DC3BC3E008C1AF9 /* Content View.swift */,
 				F36B146B2DC3BC3E008C1AF9 /* Stack Content View.swift */,
-				F36B146C2DC3BC3E008C1AF9 /* Two Column Content View.swift */,
 				F36B14A42DC62F8D008C1AF9 /* Sidebar.swift */,
 				F36B14A62DC6325F008C1AF9 /* Sidebar Server Card.swift */,
+				F36B146C2DC3BC3E008C1AF9 /* Two Column Content View.swift */,
 				F36B146D2DC3BC3E008C1AF9 /* Three Column Content View.swift */,
 				F36B14A02DC3EA70008C1AF9 /* Panel Section List.swift */,
 				F36B147C2DC3BC3E008C1AF9 /* Recipe Grid.swift */,
