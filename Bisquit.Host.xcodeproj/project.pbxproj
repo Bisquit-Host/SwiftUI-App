@@ -700,6 +700,12 @@
 		F36B14A32DC4CAF6008C1AF9 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14A22DC4CAF6008C1AF9 /* Route.swift */; };
 		F36B14A52DC62F8D008C1AF9 /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14A42DC62F8D008C1AF9 /* Sidebar.swift */; };
 		F36B14A72DC6325F008C1AF9 /* Sidebar Server Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14A62DC6325F008C1AF9 /* Sidebar Server Card.swift */; };
+		F36B14A92DC632D9008C1AF9 /* User Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14A82DC632D9008C1AF9 /* User Defaults.swift */; };
+		F36B14AA2DC632D9008C1AF9 /* User Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14A82DC632D9008C1AF9 /* User Defaults.swift */; };
+		F36B14AB2DC632D9008C1AF9 /* User Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14A82DC632D9008C1AF9 /* User Defaults.swift */; };
+		F36B14AC2DC632D9008C1AF9 /* User Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14A82DC632D9008C1AF9 /* User Defaults.swift */; };
+		F36B14AD2DC632D9008C1AF9 /* User Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14A82DC632D9008C1AF9 /* User Defaults.swift */; };
+		F36B14AE2DC632D9008C1AF9 /* User Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14A82DC632D9008C1AF9 /* User Defaults.swift */; };
 		F36B736D2C89B6BE00E858FE /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F36B736C2C89B6BE00E858FE /* PteroNet */; };
 		F36B73702C8A4CAF00E858FE /* Refresh Button Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B736F2C8A4CAF00E858FE /* Refresh Button Intent.swift */; };
 		F36B73712C8A4CAF00E858FE /* Refresh Button Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B736F2C8A4CAF00E858FE /* Refresh Button Intent.swift */; };
@@ -2008,6 +2014,7 @@
 		F36B14A22DC4CAF6008C1AF9 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		F36B14A42DC62F8D008C1AF9 /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
 		F36B14A62DC6325F008C1AF9 /* Sidebar Server Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sidebar Server Card.swift"; sourceTree = "<group>"; };
+		F36B14A82DC632D9008C1AF9 /* User Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Defaults.swift"; sourceTree = "<group>"; };
 		F36B736E2C89BB7200E858FE /* Intent Handler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Intent Handler.entitlements"; sourceTree = "<group>"; };
 		F36B736F2C8A4CAF00E858FE /* Refresh Button Intent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Refresh Button Intent.swift"; sourceTree = "<group>"; };
 		F36B73792C8AE9D400E858FE /* Power Actions Intents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Actions Intents.swift"; sourceTree = "<group>"; };
@@ -2874,6 +2881,7 @@
 			isa = PBXGroup;
 			children = (
 				F3202C792D558B210030B3CC /* Spotlight Index.swift */,
+				F36B14A82DC632D9008C1AF9 /* User Defaults.swift */,
 				F3202CC92D559B240030B3CC /* Contacts Provider.swift */,
 			);
 			path = "VM extensions";
@@ -4929,6 +4937,7 @@
 				F3A1235A2A6689FA008E3E20 /* User Email.swift in Sources */,
 				F303214B2B3FEA45002A73B8 /* Panel Settings View.swift in Sources */,
 				F31BA5B2295902D50006D126 /* Text File.swift in Sources */,
+				F36B14AE2DC632D9008C1AF9 /* User Defaults.swift in Sources */,
 				F3553FB32B40653000EF0FD2 /* Panel Settings Parent.swift in Sources */,
 				F31BA57D295901200006D126 /* Start Page VM.swift in Sources */,
 				F39E0A952C1BA06C00C4E906 /* Discover Card.swift in Sources */,
@@ -5283,6 +5292,7 @@
 				F3BC03C82B20675E0011F98A /* New Schedule Sheet.swift in Sources */,
 				F389BB622A05B58E00911EBF /* Server Card VM.swift in Sources */,
 				F325F7072A54C4BC00E89EC4 /* System Alerts.swift in Sources */,
+				F36B14AB2DC632D9008C1AF9 /* User Defaults.swift in Sources */,
 				F3C9D85E2B31146E00265492 /* User Image.swift in Sources */,
 				F3AB1DF92D79C42B00387164 /* MetricKit Manager.swift in Sources */,
 				F33944122A49022A00E2F0FC /* Info Tab Resource Usage.swift in Sources */,
@@ -5748,6 +5758,7 @@
 				F3D295432AF39D8300ED43A0 /* System Alerts.swift in Sources */,
 				F30089342B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */,
 				F3D295BD2AF3A18700ED43A0 /* Currency Picker.swift in Sources */,
+				F36B14AD2DC632D9008C1AF9 /* User Defaults.swift in Sources */,
 				F3D295C02AF3A1B000ED43A0 /* Log Meta Parent.swift in Sources */,
 				F373CD722D88A386008B64BE /* Card.swift in Sources */,
 				F373CD732D88A386008B64BE /* Custom Text Effect.swift in Sources */,
@@ -5920,6 +5931,7 @@
 				F3A7CF1C2C8C4E4A00413400 /* Browser Card.swift in Sources */,
 				F3255E172C9049AF008E04DE /* Settings Button.swift in Sources */,
 				F3A7CF632C8CA5B900413400 /* Cloud Key Card.swift in Sources */,
+				F36B14AA2DC632D9008C1AF9 /* User Defaults.swift in Sources */,
 				F3A7CF1D2C8C4E4A00413400 /* Browser Hints.swift in Sources */,
 				F3202CE12D562A620030B3CC /* Browser List MC.swift in Sources */,
 				F3A7CF1E2C8C4E4A00413400 /* Browser.swift in Sources */,
@@ -5974,6 +5986,7 @@
 				F32716DF2CF62CC300F2DC31 /* Section Header.swift in Sources */,
 				F32F44002B75450B00C9470B /* User List.swift in Sources */,
 				F3FD9F9D2C651BD100A69314 /* File Icon.swift in Sources */,
+				F36B14AC2DC632D9008C1AF9 /* User Defaults.swift in Sources */,
 				F386941A2A4B3AE1002DEF90 /* Info Tab.swift in Sources */,
 				F37EA79C2B722B390029DE00 /* Backup VM.swift in Sources */,
 				F30C131A2A54626D00A7EFF0 /* Bisquit.Host App.swift in Sources */,
@@ -6108,6 +6121,7 @@
 			files = (
 				F32FD71B2B1E043F00723B88 /* Ansi.swift in Sources */,
 				F300892B2B3C55DA0051476C /* File Permissions View.swift in Sources */,
+				F36B14A92DC632D9008C1AF9 /* User Defaults.swift in Sources */,
 				F314617F2D5A82F000547B6C /* Model Asset.swift in Sources */,
 				F31461802D5A82F000547B6C /* Networking.swift in Sources */,
 				F35B89BF2A725CF7000B5EEF /* Tip Suspended Server.swift in Sources */,
