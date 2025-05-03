@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct NavModeButton: View {
-    @Environment(NavModel.self) private var navModel
+    @Environment(NavModel.self) private var nav
     
     @AppStorage("nav_mode") private var navMode: NavMode?
     
@@ -14,8 +14,10 @@ struct NavModeButton: View {
     }
     
     var body: some View {
+        @Bindable var nav = nav
+        
         Button {
-            navModel.showNavModePicker = true
+            nav.showNavModePicker = true
         } label: {
             Label(name, systemImage: icon)
         }

@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    private var nav: NavModel = .shared
+    @Environment(NavModel.self) private var nav
     private var vm = ServerListVM()
     
     @Environment(\.scenePhase) private var scenePhase
@@ -35,7 +35,7 @@ struct ContentView: View {
         }
         .environment(nav)
         .environment(vm)
-        .sheet(isPresented: $nav.showNavModePicker) {
+        .sheet($nav.showNavModePicker) {
             NavModePicker($navMode)
         }
         .onFirstAppear {
@@ -75,4 +75,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environment(NavModel())
 }

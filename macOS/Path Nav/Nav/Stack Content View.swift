@@ -15,10 +15,6 @@ struct StackContentView: View {
         @Bindable var nav = nav
         
         NavigationStack(path: $nav.path) {
-            Section {
-                Text(nav.path.description)
-            }
-            
             List(vm.servers) { server in
                 NavigationLink(value: Route.server(server)) {
                     VStack(alignment: .leading) {
@@ -36,10 +32,6 @@ struct StackContentView: View {
                 switch route {
                 case .server:
                     List(selection: $nav.selectedTab) {
-                        Section {
-                            Text(nav.path.description)
-                        }
-                        
                         ForEach(Tabs.allCases) { tab in
                             NavigationLink(tab.title, value: Route.tab(tab))
                         }
@@ -54,8 +46,6 @@ struct StackContentView: View {
                     
                 case .tab(let tab):
                     VStack {
-                        Text(nav.path.description)
-                        
                         Text(tab.title)
                             .onAppear {
                                 try? nav.save()

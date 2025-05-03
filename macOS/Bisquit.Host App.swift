@@ -61,7 +61,6 @@ struct BisquitHostApp: App {
             SettingsTab(.new(title: "General", image: Image(systemName: "gear")), id: "general") {
                 SettingsSubtab(.noSelection, id: "no-selection") {
                     GeneralSettings()
-                        .environment(navModel)
                 }
             }
             
@@ -73,7 +72,7 @@ struct BisquitHostApp: App {
             //            }
         }
 #endif
-        
+        .environment(navModel)        
 #if os(macOS)
         .windowStyle(.hiddenTitleBar)
 #endif

@@ -17,8 +17,6 @@ struct TwoColumnContentView: View {
                         switch route {
                         case .tab(let tab):
                             VStack {
-                                Text(nav.path.description)
-                                
                                 Text(tab.title)
                                     .onAppear {
                                         try? nav.save()
