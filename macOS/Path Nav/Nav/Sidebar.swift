@@ -14,6 +14,7 @@ struct Sidebar: View {
         }
         .navigationTitle("Servers")
         .frame(minWidth: 300)
+        .scrollIndicators(.never)
         .onDisappear {
             nav.selectedServer.removeAll()
         }

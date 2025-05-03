@@ -1,9 +1,8 @@
 // A grid of recipe tiles, based on a given recipe category
 
-import ScrechKit
-import PteroNet
+import SwiftUI
 
-struct RecipeGrid: View {
+struct SectionList: View {
     @Environment(NavModel.self) private var nav
     
     var body: some View {
@@ -17,26 +16,24 @@ struct RecipeGrid: View {
                     NavigationLink(tab.title, value: Route.tab(tab))
                 }
             }
-//            .onDisappear {
-//                nav.selectedTab = nil
-//            }
-            .toolbar {
-                SFButton("pencil") {
-                    //                        sheetCustomization = true
-                }
+            .scrollContentBackground(.hidden)
+            .backgroundBlur()
+            .frame(minWidth: 300)
+            .onDisappear {
+                nav.selectedTab = nil
             }
         }
     }
 }
 
 //#Preview() {
-//    RecipeGrid()
+//    PanelSectionList()
 //        .environment(ServerListVM())
 //        .environment(NavModel(selectedCategory: .dessert))
 //}
 
 #Preview() {
-    RecipeGrid()
+    SectionList()
         .environment(ServerListVM())
         .environment(NavModel(selectedCategory: nil))
 }

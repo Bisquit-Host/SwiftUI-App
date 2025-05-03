@@ -683,7 +683,7 @@
 		F36B148A2DC3BC3E008C1AF9 /* Three Column Content View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B146D2DC3BC3E008C1AF9 /* Three Column Content View.swift */; };
 		F36B148B2DC3BC3E008C1AF9 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14732DC3BC3E008C1AF9 /* Ingredient.swift */; };
 		F36B148C2DC3BC3E008C1AF9 /* Two Column Content View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B146C2DC3BC3E008C1AF9 /* Two Column Content View.swift */; };
-		F36B14902DC3BC3E008C1AF9 /* Recipe Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B147C2DC3BC3E008C1AF9 /* Recipe Grid.swift */; };
+		F36B14902DC3BC3E008C1AF9 /* Section List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B147C2DC3BC3E008C1AF9 /* Section List.swift */; };
 		F36B14912DC3BC3E008C1AF9 /* Nav Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14702DC3BC3E008C1AF9 /* Nav Model.swift */; };
 		F36B14972DC3BC52008C1AF9 /* Bisquit.Host App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14942DC3BC52008C1AF9 /* Bisquit.Host App.swift */; };
 		F36B149C2DC3E9BB008C1AF9 /* Panel Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33712192DC2FD240014B427 /* Panel Section.swift */; };
@@ -2009,7 +2009,7 @@
 		F36B146D2DC3BC3E008C1AF9 /* Three Column Content View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Three Column Content View.swift"; sourceTree = "<group>"; };
 		F36B14702DC3BC3E008C1AF9 /* Nav Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Model.swift"; sourceTree = "<group>"; };
 		F36B14732DC3BC3E008C1AF9 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
-		F36B147C2DC3BC3E008C1AF9 /* Recipe Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recipe Grid.swift"; sourceTree = "<group>"; };
+		F36B147C2DC3BC3E008C1AF9 /* Section List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Section List.swift"; sourceTree = "<group>"; };
 		F36B14942DC3BC52008C1AF9 /* Bisquit.Host App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bisquit.Host App.swift"; sourceTree = "<group>"; };
 		F36B14A02DC3EA70008C1AF9 /* Panel Section List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Section List.swift"; sourceTree = "<group>"; };
 		F36B14A22DC4CAF6008C1AF9 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
@@ -3221,7 +3221,7 @@
 				F36B146C2DC3BC3E008C1AF9 /* Two Column Content View.swift */,
 				F36B146D2DC3BC3E008C1AF9 /* Three Column Content View.swift */,
 				F36B14A02DC3EA70008C1AF9 /* Panel Section List.swift */,
-				F36B147C2DC3BC3E008C1AF9 /* Recipe Grid.swift */,
+				F36B147C2DC3BC3E008C1AF9 /* Section List.swift */,
 				F36B14C42DC64DF2008C1AF9 /* Nav Mode */,
 			);
 			path = Nav;
@@ -6246,7 +6246,7 @@
 				F36B148A2DC3BC3E008C1AF9 /* Three Column Content View.swift in Sources */,
 				F36B148B2DC3BC3E008C1AF9 /* Ingredient.swift in Sources */,
 				F36B148C2DC3BC3E008C1AF9 /* Two Column Content View.swift in Sources */,
-				F36B14902DC3BC3E008C1AF9 /* Recipe Grid.swift in Sources */,
+				F36B14902DC3BC3E008C1AF9 /* Section List.swift in Sources */,
 				F36B14912DC3BC3E008C1AF9 /* Nav Model.swift in Sources */,
 				F36B14B12DC63324008C1AF9 /* GameKit.swift in Sources */,
 				F3015DEE2D9F427700B9BCC6 /* Log List Filter.swift in Sources */,

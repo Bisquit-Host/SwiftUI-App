@@ -14,21 +14,7 @@ struct ThreeColumnContentView: View {
         NavigationSplitView(columnVisibility: $nav.columnVisibility) {
             Sidebar()
         } content: {
-            if !nav.selectedServer.isEmpty {
-                List(selection: $nav.selectedTab) {
-                    ForEach(Tabs.allCases) { tab in
-                        NavigationLink(tab.title, value: tab)
-                    }
-                }
-                .scrollContentBackground(.hidden)
-                .backgroundBlur()
-                .onDisappear {
-                    nav.selectedTab = nil
-                }
-            } else {
-                Text("Choose a server")
-                    .navigationTitle("")
-            }
+            SectionList()
         } detail: {
             Text(nav.selectedTab?.title ?? "Select a section")
         }

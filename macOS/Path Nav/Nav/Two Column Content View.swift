@@ -12,7 +12,7 @@ struct TwoColumnContentView: View {
             Sidebar()
         } detail: {
             NavigationStack(path: $nav.path) {
-                RecipeGrid()
+                SectionList()
                     .navigationDestination(for: Route.self) { route in
                         switch route {
                         case .tab(let tab):
