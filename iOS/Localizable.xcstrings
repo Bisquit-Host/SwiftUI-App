@@ -627,9 +627,6 @@
       },
       "shouldTranslate" : false
     },
-    "🧑🏼‍🍳 Bon appétit!" : {
-
-    },
     "🚀" : {
       "shouldTranslate" : false
     },
@@ -1426,6 +1423,9 @@
     "Choose your navigation experience" : {
 
     },
+    "Choose your navigation mode" : {
+
+    },
     "Clear" : {
 
     },
@@ -1448,6 +1448,12 @@
           }
         }
       }
+    },
+    "Clear navigation path" : {
+
+    },
+    "Click" : {
+
     },
     "Click the button in the top right corner to send an invitation" : {
 
@@ -2810,9 +2816,6 @@
     "Executed **`%@`** on the server" : {
 
     },
-    "Experience" : {
-
-    },
     "Expiration" : {
       "localizations" : {
         "ru" : {
@@ -3931,6 +3934,9 @@
       }
     },
     "Name Backup" : {
+
+    },
+    "Navigation mode" : {
 
     },
     "Network Error" : {
@@ -6212,6 +6218,9 @@
           }
         }
       }
+    },
+    "You might need to restart the app" : {
+
     },
     "Деревня Пыжи\n(Кировская обл.)" : {
       "localizations" : {

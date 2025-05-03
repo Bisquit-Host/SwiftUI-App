@@ -1,21 +1,21 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Environment(\.scenePhase) private var scenePhase
     private var nav: NavModel = .shared
     private var vm = ServerListVM()
+    
+    @Environment(\.scenePhase) private var scenePhase
+    @AppStorage("nav_mode") private var navMode: NavMode?
     
 #if os(macOS)
     @Environment(\.appearsActive) private var appearsActive
 #endif
     
-    @AppStorage("experience") private var experience: Experience?
-    
     var body: some View {
         @Bindable var nav = nav
         
         Group {
-            switch experience {
+            switch navMode {
             case .stack?:
                 StackContentView()
                 
@@ -26,22 +26,17 @@ struct ContentView: View {
                 ThreeColumnContentView()
                 
             case nil:
-                VStack {
-                    Text("🧑🏼‍🍳 Bon appétit!")
-                        .largeTitle()
-                    
-                    ExperienceButton()
-                }
-                .padding()
-                .onAppear {
-                    nav.showExperiencePicker = true
-                }
+                NavModeButton()
+                    .padding()
+                    .onAppear {
+                        nav.showNavModePicker = true
+                    }
             }
         }
         .environment(nav)
         .environment(vm)
-        .sheet(isPresented: $nav.showExperiencePicker) {
-            ExperiencePicker($experience)
+        .sheet(isPresented: $nav.showNavModePicker) {
+            NavModePicker($navMode)
         }
         .onFirstAppear {
             vm.loadServers()

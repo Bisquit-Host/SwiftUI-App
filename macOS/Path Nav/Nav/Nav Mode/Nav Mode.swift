@@ -1,8 +1,6 @@
-// An enumeration of navigation experiences used to define the app architecture
-
 import SwiftUI
 
-enum Experience: Int, Identifiable, CaseIterable, Codable {
+enum NavMode: Int, Identifiable, CaseIterable, Codable {
     case stack,
          twoColumn,
          threeColumn
@@ -11,7 +9,6 @@ enum Experience: Int, Identifiable, CaseIterable, Codable {
         rawValue
     }
     
-    /// The image name of the navigation experience.
     var imageName: String {
         switch self {
         case .stack: "list.bullet.rectangle.portrait"
@@ -20,7 +17,6 @@ enum Experience: Int, Identifiable, CaseIterable, Codable {
         }
     }
     
-    /// The localized name of the navigation experience.
     var localizedName: LocalizedStringKey {
         switch self {
         case .stack: "Stack"
@@ -29,7 +25,6 @@ enum Experience: Int, Identifiable, CaseIterable, Codable {
         }
     }
     
-    /// The localized descriptioon of the navigation experience.
     var localizedDescription: LocalizedStringKey {
         switch self {
         case .stack:

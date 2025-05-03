@@ -2,31 +2,20 @@ import ScrechKit
 import SwiftData
 import TipKit
 import GameKit
-
-#if canImport(CoreSpotlight)
-import CoreSpotlight
-#endif
-
-#if canImport(Algorithms)
 import Algorithms
-#endif
-
-#if canImport(SafariCover)
-import SafariCover
-#endif
-
-#if canImport(Pow)
+import CoreSpotlight
 import Pow
-#endif
-
-#if canImport(GaypadKit)
 import GaypadKit
+
+#if canImport(SettingsKit)
+import SettingsKit
 #endif
 
 @main
 struct BisquitHostApp: App {
     @StateObject private var store = ValueStore()
-    private var navState = NavState()
+    private var nav = NavState()
+    private var navModel = NavModel()
     
     private let container: ModelContainer
     
@@ -60,28 +49,39 @@ struct BisquitHostApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-//            AppContainer()
+            // AppContainer()
                 .onContinueUserActivity(CSSearchableItemActionType, perform: handleSpotlightActivity)
         }
-        .environment(navState)
+        .environment(nav)
         .modelContainer(container)
         .environmentObject(store)
         .defaultAppStorage(.init(suiteName: "group.Bisquit-host")!)
+#if canImport(SettingsKit)
+        .settings(design: .sidebar) {
+            SettingsTab(.new(title: "General", image: Image(systemName: "gear")), id: "general") {
+                SettingsSubtab(.noSelection, id: "no-selection") {
+                    GeneralSettings()
+                        .environment(navModel)
+                }
+            }
+            
+            //            SettingsTab(.new(title: "Layout", image: Image(systemName: "paintbrush")), id: "layout", color: .yellow) {
+            //                SettingsSubtab(.noSelection, id: "no-selection") {
+            //                    LayoutSettings()
+            //                        .environmentObject(store)
+            //                }
+            //            }
+        }
+#endif
+        
 #if os(macOS)
         .windowStyle(.hiddenTitleBar)
-#endif
-#if os(macOS)
-        Settings {
-            AppSettings()
-                .environment(navState)
-                .environmentObject(store)
-        }
 #endif
     }
     
     private func handleSpotlightActivity(_ activity: NSUserActivity) {
         guard
-            let id = activity.userInfo?[CSSearchableItemActivityIdentifier] as? String
+            let _ = activity.userInfo?[CSSearchableItemActivityIdentifier] as? String
         else {
             return
         }

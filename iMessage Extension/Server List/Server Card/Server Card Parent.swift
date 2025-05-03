@@ -3,7 +3,7 @@ import PteroNet
 import SafariCover
 
 struct ServerCardParent: View {
-    //    @Environment(NavState.self) private var navState
+    //    @Environment(NavState.self) private var nav
     
     private let server: ServerAttributes
     
@@ -20,7 +20,7 @@ struct ServerCardParent: View {
             //                SuspendedServerCard(server.name)
             //            } else {
             Button {
-                //                    navState.navigate(.toPanel(server.id))
+                //                    nav.navigate(.toPanel(server.id))
             } label: {
                 ServerCard(server)
             }

@@ -16,7 +16,7 @@ final class NavModel: Codable {
     var columnVisibility: NavigationSplitViewVisibility
     
     /// The leading columns' visibility state used by the app's navigation split views
-    var showExperiencePicker = false
+    var showNavModePicker = false
     
     private static let decoder = JSONDecoder()
     private static let encoder = JSONEncoder()
@@ -108,6 +108,14 @@ final class NavModel: Codable {
             recipePath       = model.recipePath
             columnVisibility = model.columnVisibility
             path             = model.path
+        }
+    }
+    
+    func clearNavCache() {
+        do {
+            try FileManager.default.removeItem(at: Self.dataURL)
+        } catch {
+            print(error)
         }
     }
 }

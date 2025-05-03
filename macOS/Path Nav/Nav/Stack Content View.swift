@@ -1,4 +1,4 @@
-// The content view for the navigation stack view experience
+// The content view for the navigation stack view navMode
 
 import ScrechKit
 import PteroNet
@@ -33,7 +33,6 @@ struct StackContentView: View {
                 }
             }
             .navigationTitle("Servers")
-            .experienceToolbar()
             .navigationDestination(for: Route.self) { route in
                 switch route {
                 case .server(let server):

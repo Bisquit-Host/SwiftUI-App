@@ -1,51 +1,57 @@
-// A navigation experience picker row that displays the icon, name, and description for each experience
-
 import SwiftUI
 
-struct ExperiencePickerItem: View {
-    @Binding var selection: Experience?
+struct NavModePickerItem: View {
+    @Environment(\.dismiss) private var dismiss
     
-    var experience: Experience
+    @Binding private var selection: NavMode?
+    
+    private var navMode: NavMode
+    
+    init(_ selection: Binding<NavMode?>, for navMode: NavMode) {
+        _selection = selection
+        self.navMode = navMode
+    }
     
     var body: some View {
         Button {
-            selection = experience
+            selection = navMode
+            dismiss()
         } label: {
-            Label(selection: $selection, experience: experience)
+            Label(selection: $selection, navMode: navMode)
         }
         .buttonStyle(.plain)
     }
 }
 
 private struct Label: View {
-    @Binding var selection: Experience?
-    var experience: Experience
+    @Binding var selection: NavMode?
+    var navMode: NavMode
     
     @State private var isHovering = false
     
     var body: some View {
         HStack(spacing: 20) {
-            Image(systemName: experience.imageName)
+            Image(systemName: navMode.imageName)
                 .title()
                 .foregroundStyle(shapeStyle(Color.accentColor))
             
             VStack(alignment: .leading) {
-                Text(experience.localizedName)
+                Text(navMode.localizedName)
                     .bold()
                     .foregroundStyle(shapeStyle(Color.primary))
                 
-                Text(experience.localizedDescription)
+                Text(navMode.localizedDescription)
                     .callout()
                     .lineLimit(3, reservesSpace: true)
                     .multilineTextAlignment(.leading)
                     .foregroundStyle(shapeStyle(Color.secondary))
             }
         }
-        .shadow(radius: selection == experience ? 4 : 0)
+        .shadow(radius: selection == navMode ? 4 : 0)
         .padding()
         .background {
             RoundedRectangle(cornerRadius: 12, style: .continuous)
-                .fill(selection == experience ?
+                .fill(selection == navMode ?
                       AnyShapeStyle(Color.accentColor) :
                         AnyShapeStyle(BackgroundStyle()))
             
@@ -61,7 +67,7 @@ private struct Label: View {
     }
     
     private func shapeStyle<S: ShapeStyle>(_ style: S) -> some ShapeStyle {
-        if selection == experience {
+        if selection == navMode {
             AnyShapeStyle(.background)
         } else {
             AnyShapeStyle(style)
@@ -69,11 +75,14 @@ private struct Label: View {
     }
 }
 
-#Preview() {
-    ForEach(Experience.allCases) {
-        ExperiencePickerItem(
-            selection: .constant($0),
-            experience: $0
+#Preview {
+    @Previewable @State
+    var selection: NavMode?
+    
+    ForEach(NavMode.allCases) {
+        NavModePickerItem(
+            $selection,
+            for: $0
         )
     }
 }

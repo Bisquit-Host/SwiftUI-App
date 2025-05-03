@@ -14,7 +14,6 @@ struct Sidebar: View {
         }
         .navigationTitle("Servers")
         .frame(minWidth: 300)
-        .experienceToolbar()
         .onDisappear {
             nav.selectedServer.removeAll()
         }
