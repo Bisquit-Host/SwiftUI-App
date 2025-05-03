@@ -3,7 +3,7 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.scenePhase) private var scenePhase
     private var nav: NavModel = .shared
-    private var dataModel: DataModel = .shared
+    private var vm: DataModel = .shared
     
 #if os(macOS)
     @Environment(\.appearsActive) private var appearsActive
@@ -39,12 +39,12 @@ struct ContentView: View {
             }
         }
         .environment(nav)
-        .environment(dataModel)
+        .environment(vm)
         .sheet(isPresented: $nav.showExperiencePicker) {
             ExperiencePicker($experience)
         }
         .task {
-            dataModel.fetchServers(false)
+            vm.fetchServers(false)
             try? nav.load()
         }
         .onChange(of: scenePhase) { _, newScenePhase in
