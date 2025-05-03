@@ -8,21 +8,23 @@ struct SectionList: View {
     var body: some View {
         @Bindable var nav = nav
         
-        if nav.selectedServer.isEmpty {
-            ContentUnavailableView("Choose a server", systemImage: "server.rack")
-        } else {
-            List(selection: $nav.selectedTab) {
-                ForEach(Tabs.allCases) { tab in
-                    NavigationLink(tab.title, value: Route.tab(tab))
+        VStack {
+            if nav.selectedServer.isEmpty {
+                ContentUnavailableView("Choose a server", systemImage: "server.rack")
+            } else {
+                List(selection: $nav.selectedTab) {
+                    ForEach(Tabs.allCases) { tab in
+                        NavigationLink(tab.title, value: Route.tab(tab))
+                    }
+                }
+                .scrollContentBackground(.hidden)
+                .onDisappear {
+                    nav.selectedTab = nil
                 }
             }
-            .scrollContentBackground(.hidden)
-            .backgroundBlur()
-            .frame(minWidth: 300)
-            .onDisappear {
-                nav.selectedTab = nil
-            }
         }
+        .frame(minWidth: 300, maxWidth: .infinity, maxHeight: .infinity)
+        .backgroundBlur()
     }
 }
 
