@@ -21,8 +21,6 @@ struct Sidebar: View {
     }
 }
 
-
-
 #Preview {
     Sidebar()
         .environment(DataModel())
