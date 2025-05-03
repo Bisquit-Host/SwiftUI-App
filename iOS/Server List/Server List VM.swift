@@ -1,6 +1,13 @@
 import ScrechKit
 import PteroNet
-import GameKit
+
+struct ItunesAppInfo: Decodable {
+    let results: [ItunesAppInfoResult]
+}
+
+struct ItunesAppInfoResult: Decodable {
+    let version: String
+}
 
 @Observable
 final class ServerListVM {
@@ -96,37 +103,7 @@ final class ServerListVM {
             print("The app is up to date")
         }
     }
-    
-    struct ItunesAppInfo: Decodable {
-        let results: [ItunesAppInfoResult]
-    }
-    
-    struct ItunesAppInfoResult: Decodable {
-        let version: String
-    }
-    
-    func submitScore() async {
-        guard !ValueStore().adminServerList else {
-            return
-        }
         
-        let score = self.servers.filter {
-            $0.serverOwner
-        }.count
-        
-        do {
-            try await GKLeaderboard.submitScore(
-                score, context: 0,
-                player: GKLocalPlayer.local,
-                leaderboardIDs: ["owned_servers"]
-            )
-            
-            print("Score submitted")
-        } catch {
-            print("Failed to submit score: \(error.localizedDescription)")
-        }
-    }
-    
     func fetchServers(_ isAdmin: Bool) {
         serverListAPI(isAdmin) { result in
             switch result {

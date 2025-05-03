@@ -706,6 +706,14 @@
 		F36B14AC2DC632D9008C1AF9 /* User Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14A82DC632D9008C1AF9 /* User Defaults.swift */; };
 		F36B14AD2DC632D9008C1AF9 /* User Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14A82DC632D9008C1AF9 /* User Defaults.swift */; };
 		F36B14AE2DC632D9008C1AF9 /* User Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14A82DC632D9008C1AF9 /* User Defaults.swift */; };
+		F36B14B02DC63324008C1AF9 /* GameKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14AF2DC63324008C1AF9 /* GameKit.swift */; };
+		F36B14B12DC63324008C1AF9 /* GameKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14AF2DC63324008C1AF9 /* GameKit.swift */; };
+		F36B14B22DC63324008C1AF9 /* GameKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14AF2DC63324008C1AF9 /* GameKit.swift */; };
+		F36B14B32DC63324008C1AF9 /* GameKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14AF2DC63324008C1AF9 /* GameKit.swift */; };
+		F36B14B42DC63324008C1AF9 /* GameKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14AF2DC63324008C1AF9 /* GameKit.swift */; };
+		F36B14B52DC63324008C1AF9 /* GameKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14AF2DC63324008C1AF9 /* GameKit.swift */; };
+		F36B14B62DC6334E008C1AF9 /* GameKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14AF2DC63324008C1AF9 /* GameKit.swift */; };
+		F36B14B72DC63369008C1AF9 /* User Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14A82DC632D9008C1AF9 /* User Defaults.swift */; };
 		F36B736D2C89B6BE00E858FE /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F36B736C2C89B6BE00E858FE /* PteroNet */; };
 		F36B73702C8A4CAF00E858FE /* Refresh Button Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B736F2C8A4CAF00E858FE /* Refresh Button Intent.swift */; };
 		F36B73712C8A4CAF00E858FE /* Refresh Button Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B736F2C8A4CAF00E858FE /* Refresh Button Intent.swift */; };
@@ -2015,6 +2023,7 @@
 		F36B14A42DC62F8D008C1AF9 /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
 		F36B14A62DC6325F008C1AF9 /* Sidebar Server Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sidebar Server Card.swift"; sourceTree = "<group>"; };
 		F36B14A82DC632D9008C1AF9 /* User Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Defaults.swift"; sourceTree = "<group>"; };
+		F36B14AF2DC63324008C1AF9 /* GameKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameKit.swift; sourceTree = "<group>"; };
 		F36B736E2C89BB7200E858FE /* Intent Handler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Intent Handler.entitlements"; sourceTree = "<group>"; };
 		F36B736F2C8A4CAF00E858FE /* Refresh Button Intent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Refresh Button Intent.swift"; sourceTree = "<group>"; };
 		F36B73792C8AE9D400E858FE /* Power Actions Intents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Actions Intents.swift"; sourceTree = "<group>"; };
@@ -2882,6 +2891,7 @@
 			children = (
 				F3202C792D558B210030B3CC /* Spotlight Index.swift */,
 				F36B14A82DC632D9008C1AF9 /* User Defaults.swift */,
+				F36B14AF2DC63324008C1AF9 /* GameKit.swift */,
 				F3202CC92D559B240030B3CC /* Contacts Provider.swift */,
 			);
 			path = "VM extensions";
@@ -5051,6 +5061,7 @@
 				F3A563222D9EEECB009AA363 /* Allow Drag.swift in Sources */,
 				F3D3DBD129B8007B00096115 /* Browser Topbar.swift in Sources */,
 				F30088A32B3A18A50051476C /* Database VM.swift in Sources */,
+				F36B14B32DC63324008C1AF9 /* GameKit.swift in Sources */,
 				F3E2BEDB2C1C6B9500B7A6D4 /* Cache List.swift in Sources */,
 				F3015DE02D9F26C600B9BCC6 /* Log Card Timestamp.swift in Sources */,
 				F398823F2987BF6E00B9BA2C /* Schedule Task.swift in Sources */,
@@ -5170,6 +5181,7 @@
 				F3878EDF2A1C228900AD8657 /* Server Card Stats.swift in Sources */,
 				F3C9D8612B319B9E00265492 /* Permission Card.swift in Sources */,
 				F30C130A2A545E6F00A7EFF0 /* Linking VM.swift in Sources */,
+				F36B14B62DC6334E008C1AF9 /* GameKit.swift in Sources */,
 				F3EB09D42A29547E0073916A /* File View.swift in Sources */,
 				F3FFB7492A57FF0B00220FA5 /* Log Card.swift in Sources */,
 				F3A563322D9EF323009AA363 /* Log Toolbar Actor.swift in Sources */,
@@ -5206,6 +5218,7 @@
 				F30088FB2B3B56210051476C /* User List Parent.swift in Sources */,
 				F333B3BA2B80CF750005B84D /* Preview Property.swift in Sources */,
 				F3499EF82A275556006101B7 /* Websocket Message.swift in Sources */,
+				F36B14B72DC63369008C1AF9 /* User Defaults.swift in Sources */,
 				F3E679B02D5A854700A7ADDE /* Server Options Provider.swift in Sources */,
 				F30C12FD2A54546900A7EFF0 /* App Container.swift in Sources */,
 				F3C9D85D2B31146E00265492 /* User Image.swift in Sources */,
@@ -5370,6 +5383,7 @@
 				F3553FBA2B4093E600EF0FD2 /* Allocation List.swift in Sources */,
 				F389BB602A05B57D00911EBF /* Gauge Regular.swift in Sources */,
 				F3D7F8512C8ED3D100368ECE /* Disable 2FA View.swift in Sources */,
+				F36B14B52DC63324008C1AF9 /* GameKit.swift in Sources */,
 				F3EB09EE2A2987F00073916A /* QuickLook File.swift in Sources */,
 				F36D530C2A05B6C4007324C6 /* Server List.swift in Sources */,
 				F3CE5C412D538FE60094BD7B /* Subdomain List.swift in Sources */,
@@ -5639,6 +5653,7 @@
 				F3D295C72AF3A1FC00ED43A0 /* Credentials View.swift in Sources */,
 				F3D295AB2AF3A0E900ED43A0 /* Cache Limit.swift in Sources */,
 				F3D295472AF39DA000ED43A0 /* Start Page Footer.swift in Sources */,
+				F36B14B42DC63324008C1AF9 /* GameKit.swift in Sources */,
 				F3202C7E2D558B210030B3CC /* Spotlight Index.swift in Sources */,
 				F3D295462AF39D9500ED43A0 /* Start Page.swift in Sources */,
 				F3D2955A2AF39E4000ED43A0 /* Server List.swift in Sources */,
@@ -5884,6 +5899,7 @@
 				F32F3AAE2D8EB8EC00E69B98 /* Background Image.swift in Sources */,
 				F3202D2B2D562B9A0030B3CC /* Browser Card Bot.swift in Sources */,
 				F32F2CDE2D8F7047007CF4DE /* Discover View.swift in Sources */,
+				F36B14B02DC63324008C1AF9 /* GameKit.swift in Sources */,
 				F3AB1DF52D79C42B00387164 /* MetricKit Manager.swift in Sources */,
 				F3A7CEEA2C8BB74D00413400 /* Server List Grid.swift in Sources */,
 				F3A7CF0D2C8C43B100413400 /* Topbar Grid Button.swift in Sources */,
@@ -6052,6 +6068,7 @@
 				F3DF03E62B74F26F00CF6F5E /* Users VM.swift in Sources */,
 				F30C130C2A545F4400A7EFF0 /* Value Store.swift in Sources */,
 				F38928232A44182F00561CDF /* Console.swift in Sources */,
+				F36B14B22DC63324008C1AF9 /* GameKit.swift in Sources */,
 				F3F2BBA92A540DF900D44CA6 /* Nav State.swift in Sources */,
 				F3AB1DF42D79C42B00387164 /* MetricKit Manager.swift in Sources */,
 				F34F289F2ACDADA600FD618A /* Animated Tab.swift in Sources */,
@@ -6240,6 +6257,7 @@
 				F36B14902DC3BC3E008C1AF9 /* Recipe Grid.swift in Sources */,
 				F36B14912DC3BC3E008C1AF9 /* Nav Model.swift in Sources */,
 				F36B14922DC3BC3E008C1AF9 /* Experience Button.swift in Sources */,
+				F36B14B12DC63324008C1AF9 /* GameKit.swift in Sources */,
 				F3015DEE2D9F427700B9BCC6 /* Log List Filter.swift in Sources */,
 				F36B14A12DC3EA70008C1AF9 /* Panel Section List.swift in Sources */,
 				F3A563282D9EF21B009AA363 /* Log Meta Card.swift in Sources */,
