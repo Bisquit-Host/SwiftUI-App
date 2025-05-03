@@ -49,7 +49,7 @@ final class NavModel: Codable {
         self.path = path
     }
     
-    /// Initialize a `DataModel` with the contents of a `URL`
+    /// Initialize a `ServerListVM` with the contents of a `URL`
     private convenience init(
         contentsOf url: URL,
         options: Data.ReadingOptions = .mappedIfSafe

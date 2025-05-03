@@ -48,5 +48,5 @@ struct ThreeColumnContentView: View {
 #Preview() {
     ThreeColumnContentView()
         .environment(NavModel(columnVisibility: .all))
-        .environment(DataModel())
+        .environment(ServerListVM())
 }

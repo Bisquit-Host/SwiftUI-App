@@ -6,7 +6,7 @@ import PteroNet
 struct StackContentView: View {
     @State private var sectionsVM = PanelSectionVM()
     @Environment(NavModel.self) private var nav
-    @Environment(DataModel.self) private var vm
+    @Environment(ServerListVM.self) private var vm
     
     private let categories = Tabs.allCases
     
@@ -83,6 +83,6 @@ struct StackContentView: View {
 
 #Preview() {
     StackContentView()
-        .environment(DataModel())
+        .environment(ServerListVM())
         .environment(NavModel.shared)
 }

@@ -36,6 +36,6 @@ struct TwoColumnContentView: View {
 
 #Preview() {
     TwoColumnContentView()
-        .environment(DataModel())
+        .environment(ServerListVM())
         .environment(NavModel.shared)
 }

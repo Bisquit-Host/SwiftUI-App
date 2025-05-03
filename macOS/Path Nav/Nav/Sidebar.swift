@@ -2,7 +2,7 @@ import SwiftUI
 
 struct Sidebar: View {
     @Environment(NavModel.self) private var nav
-    @Environment(DataModel.self) private var vm
+    @Environment(ServerListVM.self) private var vm
     
     var body: some View {
         @Bindable var nav = nav
@@ -23,6 +23,6 @@ struct Sidebar: View {
 
 #Preview {
     Sidebar()
-        .environment(DataModel())
+        .environment(ServerListVM())
         .environment(NavModel())
 }

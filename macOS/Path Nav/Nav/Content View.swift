@@ -3,7 +3,7 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.scenePhase) private var scenePhase
     private var nav: NavModel = .shared
-    private var vm = DataModel()
+    private var vm = ServerListVM()
     
 #if os(macOS)
     @Environment(\.appearsActive) private var appearsActive
@@ -42,6 +42,13 @@ struct ContentView: View {
         .environment(vm)
         .sheet(isPresented: $nav.showExperiencePicker) {
             ExperiencePicker($experience)
+        }
+        .onFirstAppear {
+            vm.loadServers()
+            
+            if !System.lowPowerMode {
+                await vm.checkForUpdates()
+            }
         }
         .task {
             vm.fetchServers(false)

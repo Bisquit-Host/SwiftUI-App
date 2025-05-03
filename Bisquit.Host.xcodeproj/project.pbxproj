@@ -682,7 +682,6 @@
 		F36B14822DC3BC3E008C1AF9 /* Stack Content View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B146B2DC3BC3E008C1AF9 /* Stack Content View.swift */; };
 		F36B14832DC3BC3E008C1AF9 /* Experience Picker Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14792DC3BC3E008C1AF9 /* Experience Picker Row.swift */; };
 		F36B14842DC3BC3E008C1AF9 /* Continue Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14762DC3BC3E008C1AF9 /* Continue Button.swift */; };
-		F36B14872DC3BC3E008C1AF9 /* Data Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B146F2DC3BC3E008C1AF9 /* Data Model.swift */; };
 		F36B14892DC3BC3E008C1AF9 /* Experience Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B147A2DC3BC3E008C1AF9 /* Experience Toolbar.swift */; };
 		F36B148A2DC3BC3E008C1AF9 /* Three Column Content View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B146D2DC3BC3E008C1AF9 /* Three Column Content View.swift */; };
 		F36B148B2DC3BC3E008C1AF9 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14732DC3BC3E008C1AF9 /* Ingredient.swift */; };
@@ -2007,7 +2006,6 @@
 		F36B146B2DC3BC3E008C1AF9 /* Stack Content View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stack Content View.swift"; sourceTree = "<group>"; };
 		F36B146C2DC3BC3E008C1AF9 /* Two Column Content View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Two Column Content View.swift"; sourceTree = "<group>"; };
 		F36B146D2DC3BC3E008C1AF9 /* Three Column Content View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Three Column Content View.swift"; sourceTree = "<group>"; };
-		F36B146F2DC3BC3E008C1AF9 /* Data Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data Model.swift"; sourceTree = "<group>"; };
 		F36B14702DC3BC3E008C1AF9 /* Nav Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Model.swift"; sourceTree = "<group>"; };
 		F36B14722DC3BC3E008C1AF9 /* Experience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Experience.swift; sourceTree = "<group>"; };
 		F36B14732DC3BC3E008C1AF9 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
@@ -3233,7 +3231,6 @@
 			isa = PBXGroup;
 			children = (
 				F36B14A22DC4CAF6008C1AF9 /* Route.swift */,
-				F36B146F2DC3BC3E008C1AF9 /* Data Model.swift */,
 				F36B14702DC3BC3E008C1AF9 /* Nav Model.swift */,
 				F36B14722DC3BC3E008C1AF9 /* Experience.swift */,
 				F36B14732DC3BC3E008C1AF9 /* Ingredient.swift */,
@@ -6247,7 +6244,6 @@
 				F36B14832DC3BC3E008C1AF9 /* Experience Picker Row.swift in Sources */,
 				F36B14842DC3BC3E008C1AF9 /* Continue Button.swift in Sources */,
 				F36B14A72DC6325F008C1AF9 /* Sidebar Server Card.swift in Sources */,
-				F36B14872DC3BC3E008C1AF9 /* Data Model.swift in Sources */,
 				F36B14892DC3BC3E008C1AF9 /* Experience Toolbar.swift in Sources */,
 				F36B148A2DC3BC3E008C1AF9 /* Three Column Content View.swift in Sources */,
 				F36B148B2DC3BC3E008C1AF9 /* Ingredient.swift in Sources */,
