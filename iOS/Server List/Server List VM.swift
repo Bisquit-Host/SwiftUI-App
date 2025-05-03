@@ -30,18 +30,6 @@ final class ServerListVM {
     
     var selectedServer: ServerAttributes?
     
-    var filteredServers: [ServerAttributes] {
-        servers.filter { server in
-            let matchesName = searchField.isEmpty           || server.name.localizedStandardContains(searchField)
-            let matchesDescription = searchField.isEmpty    || server.description.localizedStandardContains(searchField)
-            let matchesNode = displayedNode.isEmpty         || server.node == displayedNode
-            let matchesSuspended = !filterBySuspended       || server.isSuspended
-            let matchesNotSuspended = !filterByNotSuspended || !server.isSuspended
-            
-            return matchesName && matchesDescription && matchesNode && matchesSuspended && matchesNotSuspended
-        }
-    }
-    
     var nodes: [String] {
         Array(Set(servers.map(\.node)))
             .sorted()
@@ -62,6 +50,18 @@ final class ServerListVM {
     var hasFrozenServers: Bool {
         servers.contains {
             $0.isSuspended
+        }
+    }
+    
+    var filteredServers: [ServerAttributes] {
+        servers.filter { server in
+            let matchesName = searchField.isEmpty           || server.name.localizedStandardContains(searchField)
+            let matchesDescription = searchField.isEmpty    || server.description.localizedStandardContains(searchField)
+            let matchesNode = displayedNode.isEmpty         || server.node == displayedNode
+            let matchesSuspended = !filterBySuspended       || server.isSuspended
+            let matchesNotSuspended = !filterByNotSuspended || !server.isSuspended
+            
+            return matchesName && matchesDescription && matchesNode && matchesSuspended && matchesNotSuspended
         }
     }
     
@@ -103,7 +103,7 @@ final class ServerListVM {
             print("The app is up to date")
         }
     }
-        
+    
     func fetchServers(_ isAdmin: Bool) {
         serverListAPI(isAdmin) { result in
             switch result {
