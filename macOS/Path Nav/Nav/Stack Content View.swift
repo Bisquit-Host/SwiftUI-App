@@ -83,6 +83,6 @@ struct StackContentView: View {
 
 #Preview() {
     StackContentView()
-        .environment(DataModel.shared)
+        .environment(DataModel())
         .environment(NavModel.shared)
 }

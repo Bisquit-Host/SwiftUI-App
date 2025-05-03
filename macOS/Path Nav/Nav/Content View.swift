@@ -3,7 +3,7 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.scenePhase) private var scenePhase
     private var nav: NavModel = .shared
-    private var vm: DataModel = .shared
+    private var vm = DataModel()
     
 #if os(macOS)
     @Environment(\.appearsActive) private var appearsActive

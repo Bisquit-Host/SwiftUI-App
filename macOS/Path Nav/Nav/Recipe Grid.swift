@@ -31,12 +31,12 @@ struct RecipeGrid: View {
 
 //#Preview() {
 //    RecipeGrid()
-//        .environment(DataModel.shared)
+//        .environment(DataModel())
 //        .environment(NavModel(selectedCategory: .dessert))
 //}
 
 #Preview() {
     RecipeGrid()
-        .environment(DataModel.shared)
+        .environment(DataModel())
         .environment(NavModel(selectedCategory: nil))
 }
