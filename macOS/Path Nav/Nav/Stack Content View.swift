@@ -1,7 +1,6 @@
 // The content view for the navigation stack view navMode
 
-import ScrechKit
-import PteroNet
+import SwiftUI
 
 struct StackContentView: View {
     @State private var sectionsVM = PanelSectionVM()
@@ -35,7 +34,7 @@ struct StackContentView: View {
             .navigationTitle("Servers")
             .navigationDestination(for: Route.self) { route in
                 switch route {
-                case .server(let server):
+                case .server:
                     List(selection: $nav.selectedTab) {
                         Section {
                             Text(nav.path.description)
@@ -51,11 +50,6 @@ struct StackContentView: View {
                     }
                     .onDisappear {
                         nav.selectedTab = nil
-                    }
-                    .toolbar {
-                        SFButton("pencil") {
-                            sheetCustomization = true
-                        }
                     }
                     
                 case .tab(let tab):

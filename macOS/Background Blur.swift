@@ -11,3 +11,21 @@ struct BackgroundBlur: NSViewRepresentable {
     
     func updateNSView(_ nsView: NSVisualEffectView, context: Context) {}
 }
+
+@available(macOS 10.15, *)
+struct BackgroundBlurModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .background {
+                BackgroundBlur()
+                    .ignoresSafeArea()
+            }
+    }
+}
+
+@available(macOS 10.15, *)
+extension View {
+    public func backgroundBlur() -> some View {
+        modifier(BackgroundBlurModifier())
+    }
+}

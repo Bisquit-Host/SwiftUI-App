@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 
 struct ThreeColumnContentView: View {
     @State private var sectionsVM = PanelSectionVM()
@@ -20,13 +20,10 @@ struct ThreeColumnContentView: View {
                         NavigationLink(tab.title, value: tab)
                     }
                 }
+                .scrollContentBackground(.hidden)
+                .backgroundBlur()
                 .onDisappear {
                     nav.selectedTab = nil
-                }
-                .toolbar {
-                    SFButton("pencil") {
-                        sheetCustomization = true
-                    }
                 }
             } else {
                 Text("Choose a server")
@@ -35,6 +32,8 @@ struct ThreeColumnContentView: View {
         } detail: {
             Text(nav.selectedTab?.title ?? "Select a section")
         }
+        
+        .backgroundBlur()
         .sheet($sheetCustomization) {
             NavigationStack {
                 PanelSectionList()

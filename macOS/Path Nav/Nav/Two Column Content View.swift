@@ -1,6 +1,6 @@
 // The content view for the two-column navigation split view navMode
 
-import ScrechKit
+import SwiftUI
 
 struct TwoColumnContentView: View {
     @Environment(NavModel.self) private var nav

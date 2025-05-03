@@ -12,11 +12,11 @@ struct SidebarServerCard: View {
         NavigationLink(value: server) {
             VStack(alignment: .leading) {
                 Text(server.name)
+                    .title3(.semibold)
                 
                 if !server.description.isEmpty {
                     Text(server.description)
                         .secondary()
-                        .footnote()
                 }
             }
             .padding(.vertical, 5)
