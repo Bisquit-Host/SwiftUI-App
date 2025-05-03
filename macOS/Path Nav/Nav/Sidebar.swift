@@ -9,16 +9,7 @@ struct Sidebar: View {
         
         List(selection: $nav.selectedServer) {
             ForEach(vm.servers) { server in
-                NavigationLink(value: server) {
-                    VStack(alignment: .leading) {
-                        Text(server.name)
-                        
-                        Text(server.description)
-                            .secondary()
-                            .footnote()
-                    }
-                    .padding(.vertical, 5)
-                }
+                SidebarServerCard(server)
             }
         }
         .navigationTitle("Servers")
@@ -29,6 +20,8 @@ struct Sidebar: View {
         }
     }
 }
+
+
 
 #Preview {
     Sidebar()

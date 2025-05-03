@@ -699,6 +699,7 @@
 		F36B14A12DC3EA70008C1AF9 /* Panel Section List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14A02DC3EA70008C1AF9 /* Panel Section List.swift */; };
 		F36B14A32DC4CAF6008C1AF9 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14A22DC4CAF6008C1AF9 /* Route.swift */; };
 		F36B14A52DC62F8D008C1AF9 /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14A42DC62F8D008C1AF9 /* Sidebar.swift */; };
+		F36B14A72DC6325F008C1AF9 /* Sidebar Server Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14A62DC6325F008C1AF9 /* Sidebar Server Card.swift */; };
 		F36B736D2C89B6BE00E858FE /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F36B736C2C89B6BE00E858FE /* PteroNet */; };
 		F36B73702C8A4CAF00E858FE /* Refresh Button Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B736F2C8A4CAF00E858FE /* Refresh Button Intent.swift */; };
 		F36B73712C8A4CAF00E858FE /* Refresh Button Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B736F2C8A4CAF00E858FE /* Refresh Button Intent.swift */; };
@@ -2006,6 +2007,7 @@
 		F36B14A02DC3EA70008C1AF9 /* Panel Section List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Section List.swift"; sourceTree = "<group>"; };
 		F36B14A22DC4CAF6008C1AF9 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		F36B14A42DC62F8D008C1AF9 /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
+		F36B14A62DC6325F008C1AF9 /* Sidebar Server Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sidebar Server Card.swift"; sourceTree = "<group>"; };
 		F36B736E2C89BB7200E858FE /* Intent Handler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Intent Handler.entitlements"; sourceTree = "<group>"; };
 		F36B736F2C8A4CAF00E858FE /* Refresh Button Intent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Refresh Button Intent.swift"; sourceTree = "<group>"; };
 		F36B73792C8AE9D400E858FE /* Power Actions Intents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Actions Intents.swift"; sourceTree = "<group>"; };
@@ -3201,6 +3203,7 @@
 				F36B146B2DC3BC3E008C1AF9 /* Stack Content View.swift */,
 				F36B146C2DC3BC3E008C1AF9 /* Two Column Content View.swift */,
 				F36B14A42DC62F8D008C1AF9 /* Sidebar.swift */,
+				F36B14A62DC6325F008C1AF9 /* Sidebar Server Card.swift */,
 				F36B146D2DC3BC3E008C1AF9 /* Three Column Content View.swift */,
 				F36B14A02DC3EA70008C1AF9 /* Panel Section List.swift */,
 				F36B147C2DC3BC3E008C1AF9 /* Recipe Grid.swift */,
@@ -6212,6 +6215,7 @@
 				F36B14822DC3BC3E008C1AF9 /* Stack Content View.swift in Sources */,
 				F36B14832DC3BC3E008C1AF9 /* Experience Picker Row.swift in Sources */,
 				F36B14842DC3BC3E008C1AF9 /* Continue Button.swift in Sources */,
+				F36B14A72DC6325F008C1AF9 /* Sidebar Server Card.swift in Sources */,
 				F36B14872DC3BC3E008C1AF9 /* Data Model.swift in Sources */,
 				F36B14892DC3BC3E008C1AF9 /* Experience Toolbar.swift in Sources */,
 				F36B148A2DC3BC3E008C1AF9 /* Three Column Content View.swift in Sources */,
