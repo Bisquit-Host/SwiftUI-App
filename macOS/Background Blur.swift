@@ -1,6 +1,6 @@
 import SwiftUI
 
-#if os(macOS)
+@available(macOS 10.10, *)
 struct BackgroundBlur: NSViewRepresentable {
     func makeNSView(context: Context) -> NSVisualEffectView {
         let view = NSVisualEffectView()
@@ -11,4 +11,3 @@ struct BackgroundBlur: NSViewRepresentable {
     
     func updateNSView(_ nsView: NSVisualEffectView, context: Context) {}
 }
-#endif
