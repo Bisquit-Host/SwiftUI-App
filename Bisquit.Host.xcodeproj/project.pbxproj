@@ -3198,7 +3198,6 @@
 			isa = PBXGroup;
 			children = (
 				F36B146A2DC3BC3E008C1AF9 /* Content View.swift */,
-				F36B14A22DC4CAF6008C1AF9 /* Route.swift */,
 				F36B146B2DC3BC3E008C1AF9 /* Stack Content View.swift */,
 				F36B146C2DC3BC3E008C1AF9 /* Two Column Content View.swift */,
 				F36B14A42DC62F8D008C1AF9 /* Sidebar.swift */,
@@ -3212,6 +3211,7 @@
 		F36B14752DC3BC3E008C1AF9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F36B14A22DC4CAF6008C1AF9 /* Route.swift */,
 				F36B146F2DC3BC3E008C1AF9 /* Data Model.swift */,
 				F36B14702DC3BC3E008C1AF9 /* Nav Model.swift */,
 				F36B14722DC3BC3E008C1AF9 /* Experience.swift */,
