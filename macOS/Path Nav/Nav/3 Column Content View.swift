@@ -15,7 +15,7 @@ struct ThreeColumnContentView: View {
         } content: {
             ThreeColumnContent()
         } detail: {
-            ThreeColumnDetail()
+            ColumnDetail()
         }
         .backgroundBlur()
         .task {

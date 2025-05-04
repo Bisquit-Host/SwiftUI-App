@@ -954,7 +954,7 @@
 		F38F9E2C2CEB39D80033EFE3 /* Metadata List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E2B2CEB39D80033EFE3 /* Metadata List.swift */; };
 		F38F9E2D2CEB39D80033EFE3 /* Metadata List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E2B2CEB39D80033EFE3 /* Metadata List.swift */; };
 		F38F9E2E2CEB39D80033EFE3 /* Metadata List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E2B2CEB39D80033EFE3 /* Metadata List.swift */; };
-		F39038B02DC815BD006DF071 /* 3 Column Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39038AF2DC815BD006DF071 /* 3 Column Detail.swift */; };
+		F39038B02DC815BD006DF071 /* Column Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39038AF2DC815BD006DF071 /* Column Detail.swift */; };
 		F390C74A2DC2AF940069F965 /* Gamepad Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = F390C7472DC2AF940069F965 /* Gamepad Debug.swift */; };
 		F390C74B2DC2AF940069F965 /* Gamepad Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = F390C7472DC2AF940069F965 /* Gamepad Debug.swift */; };
 		F3924EDF29A2333F00C4CC77 /* Settings VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EDE29A2333F00C4CC77 /* Settings VM.swift */; };
@@ -2103,7 +2103,7 @@
 		F38F9E112CE7647D0033EFE3 /* Image Playground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image Playground.swift"; sourceTree = "<group>"; };
 		F38F9E272CEB33510033EFE3 /* QuickLook File VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuickLook File VM.swift"; sourceTree = "<group>"; };
 		F38F9E2B2CEB39D80033EFE3 /* Metadata List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Metadata List.swift"; sourceTree = "<group>"; };
-		F39038AF2DC815BD006DF071 /* 3 Column Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "3 Column Detail.swift"; sourceTree = "<group>"; };
+		F39038AF2DC815BD006DF071 /* Column Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Column Detail.swift"; sourceTree = "<group>"; };
 		F39052482D63644100341CD2 /* Clip Demo Debug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Clip Demo Debug.entitlements"; sourceTree = "<group>"; };
 		F390C7472DC2AF940069F965 /* Gamepad Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gamepad Debug.swift"; sourceTree = "<group>"; };
 		F3924EDE29A2333F00C4CC77 /* Settings VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings VM.swift"; sourceTree = "<group>"; };
@@ -3220,11 +3220,11 @@
 				F36B146B2DC3BC3E008C1AF9 /* Stack Content View.swift */,
 				F36B14A42DC62F8D008C1AF9 /* Sidebar.swift */,
 				F36B14A62DC6325F008C1AF9 /* Sidebar Server Card.swift */,
+				F39038AF2DC815BD006DF071 /* Column Detail.swift */,
 				F36B146C2DC3BC3E008C1AF9 /* 2 Column Content View.swift */,
 				F36B147C2DC3BC3E008C1AF9 /* 2 Column Section List.swift */,
 				F36B146D2DC3BC3E008C1AF9 /* 3 Column Content View.swift */,
 				F3C1E5962DC741C6007F2054 /* 3 Column Content.swift */,
-				F39038AF2DC815BD006DF071 /* 3 Column Detail.swift */,
 				F36B14A02DC3EA70008C1AF9 /* Panel Section List.swift */,
 				F36B14C42DC64DF2008C1AF9 /* Nav Mode */,
 			);
@@ -6163,7 +6163,7 @@
 				F33DE4E92B350C8B00E257D8 /* Server Card.swift in Sources */,
 				F3464D222A86396700188B0C /* Change Power.swift in Sources */,
 				F300888E2B39FAA60051476C /* Allocation VM.swift in Sources */,
-				F39038B02DC815BD006DF071 /* 3 Column Detail.swift in Sources */,
+				F39038B02DC815BD006DF071 /* Column Detail.swift in Sources */,
 				F3015DE32D9F26C600B9BCC6 /* Log Card Timestamp.swift in Sources */,
 				F30C130F2A54605B00A7EFF0 /* Nav Destinations.swift in Sources */,
 				F30088B62B3A21410051476C /* Schedule List.swift in Sources */,

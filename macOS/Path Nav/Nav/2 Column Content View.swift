@@ -17,12 +17,7 @@ struct TwoColumnContentView: View {
                     .navigationDestination(for: Route.self) { route in
                         switch route {
                         case .tab(let tab):
-                            VStack {
-                                Text(tab.title)
-                                    .onAppear {
-                                        try? nav.save()
-                                    }
-                            }
+                            ColumnDetail(tab)
                             
                         default:
                             EmptyView()
