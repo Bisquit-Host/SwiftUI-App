@@ -3,14 +3,14 @@ import SwiftUI
 struct NavModeButton: View {
     @Environment(NavModel.self) private var nav
     
-    @AppStorage("nav_mode") private var navMode: NavMode?
+    @EnvironmentObject private var store: ValueStore
     
     private var icon: String {
-        navMode?.imageName ?? "questionmark"
+        store.navMode?.imageName ?? "questionmark"
     }
     
     private var name: LocalizedStringKey {
-        navMode?.localizedName ?? ""
+        store.navMode?.localizedName ?? ""
     }
     
     var body: some View {
@@ -21,7 +21,7 @@ struct NavModeButton: View {
         } label: {
             Label(name, systemImage: icon)
         }
-        .help("Choose your navigation mode")
+        .help("Change your navigation mode")
     }
 }
 

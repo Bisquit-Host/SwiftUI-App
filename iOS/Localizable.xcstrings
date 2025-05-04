@@ -1359,6 +1359,9 @@
         }
       }
     },
+    "Change your navigation mode" : {
+
+    },
     "Changed the **`%@`** variable from **`%@`** to **`%@`**" : {
       "localizations" : {
         "en" : {
@@ -1421,9 +1424,6 @@
       }
     },
     "Choose your navigation experience" : {
-
-    },
-    "Choose your navigation mode" : {
 
     },
     "Clear" : {
@@ -4719,6 +4719,9 @@
         }
       }
     },
+    "Restart app" : {
+
+    },
     "Restart Server" : {
       "localizations" : {
         "ru" : {
@@ -5579,9 +5582,6 @@
           }
         }
       }
-    },
-    "Test" : {
-
     },
     "TestFlight" : {
       "shouldTranslate" : false

@@ -54,7 +54,6 @@ struct BisquitHostApp: App {
         }
         .environment(nav)
         .modelContainer(container)
-        .environmentObject(store)
         .defaultAppStorage(.init(suiteName: "group.Bisquit-host")!)
 #if canImport(SettingsKit)
         .settings(design: .sidebar) {
@@ -72,7 +71,8 @@ struct BisquitHostApp: App {
             //            }
         }
 #endif
-        .environment(navModel)        
+        .environmentObject(store)
+        .environment(navModel)
 #if os(macOS)
         .windowStyle(.hiddenTitleBar)
 #endif

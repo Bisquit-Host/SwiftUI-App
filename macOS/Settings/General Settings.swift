@@ -25,21 +25,13 @@ struct GeneralSettings: View {
             Section {
                 Button("Log out") {
                     main {
-                        // nav.clear()
                         store.isApiKeyValid = false
                         Keychain.delete(key: "selectedApiKey")
                     }
                 }
             }
-            
-            Section {
-                Button("Test") {
-                    restartApp()
-                }
-            }
-            
-            Section {
 #if DEBUG
+            Section("Debug") {
                 HStack {
                     Text("Clear navigation path")
                     
@@ -49,11 +41,12 @@ struct GeneralSettings: View {
                         nav.clearNavCache()
                     }
                 }
-#endif
-            } header: {
-                Text("Debug")
-                    .headline()
+                
+                Button("Restart app") {
+                    restartApp()
+                }
             }
+#endif
         }
     }
     

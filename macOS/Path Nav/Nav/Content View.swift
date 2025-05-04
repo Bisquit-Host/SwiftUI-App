@@ -5,7 +5,7 @@ struct ContentView: View {
     private var vm = ServerListVM()
     
     @Environment(\.scenePhase) private var scenePhase
-    @AppStorage("nav_mode") private var navMode: NavMode?
+    @EnvironmentObject private var store: ValueStore
     
 #if os(macOS)
     @Environment(\.appearsActive) private var appearsActive
@@ -15,7 +15,7 @@ struct ContentView: View {
         @Bindable var nav = nav
         
         Group {
-            switch navMode {
+            switch store.navMode {
             case .stack?:
                 StackContentView()
                 
@@ -39,7 +39,7 @@ struct ContentView: View {
         .environment(vm)
         .backgroundBlur()
         .sheet($nav.showNavModePicker) {
-            NavModePicker($navMode)
+            NavModePicker($store.navMode)
         }
         .onFirstAppear {
             vm.loadServers()
