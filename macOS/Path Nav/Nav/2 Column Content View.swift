@@ -4,6 +4,7 @@ import SwiftUI
 
 struct TwoColumnContentView: View {
     @Environment(NavModel.self) private var nav
+    @Environment(ServerListVM.self) private var vm
     
     var body: some View {
         @Bindable var nav = nav
@@ -28,6 +29,9 @@ struct TwoColumnContentView: View {
                         }
                     }
             }
+        }
+        .task {
+            vm.loadServers()
         }
     }
 }

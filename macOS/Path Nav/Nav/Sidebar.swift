@@ -1,8 +1,9 @@
-import SwiftUI
+import ScrechKit
 
 struct Sidebar: View {
     @Environment(NavModel.self) private var nav
     @Environment(ServerListVM.self) private var vm
+    @EnvironmentObject private var store: ValueStore
     
     var body: some View {
         @Bindable var nav = nav
@@ -17,6 +18,12 @@ struct Sidebar: View {
         .scrollIndicators(.never)
         .onDisappear {
             nav.selectedServer.removeAll()
+        }
+        .toolbar {
+            SFButton("arrow.trianglehead.2.clockwise.rotate.90") {
+                vm.fetchServers(store.adminServerList)
+            }
+            .keyboardShortcut("r")
         }
     }
 }

@@ -3,6 +3,7 @@ import SwiftUI
 struct ThreeColumnContentView: View {
     @State private var sectionsVM = PanelSectionVM()
     @Environment(NavModel.self) private var nav
+    @Environment(ServerListVM.self) private var vm
     
     private let categories = Tabs.allCases
     
@@ -23,6 +24,9 @@ struct ThreeColumnContentView: View {
             }
         }
         .backgroundBlur()
+        .task {
+            vm.loadServers()
+        }
         .sheet($sheetCustomization) {
             NavigationStack {
                 PanelSectionList()

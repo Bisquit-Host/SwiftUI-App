@@ -54,6 +54,9 @@ struct StackContentView: View {
                 }
             }
         }
+        .task {
+            vm.loadServers()
+        }
         .scrollContentBackground(.hidden)
         .sheet($sheetCustomization) {
             NavigationStack {

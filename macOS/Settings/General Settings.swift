@@ -53,35 +53,18 @@ struct GeneralSettings: View {
     private func restartApp() {
         let bundlePath = Bundle.main.bundlePath
         
-        let script = """
-        #!/bin/bash
-        sleep 0.1
-        open "\(bundlePath)"
+        let command = """
+        sleep 0.1; open "\(bundlePath)"
         """
         
-        let tempURL = URL(fileURLWithPath: NSTemporaryDirectory())
-            .appendingPathComponent(UUID().uuidString)
-            .appendingPathExtension("sh")
+        let task = Process()
+        task.executableURL = URL(fileURLWithPath: "/bin/bash")
+        task.arguments = ["-c", command]
         
         do {
-            try script.write(
-                to: tempURL,
-                atomically: true,
-                encoding: .utf8
-            )
-            
-            try FileManager.default.setAttributes(
-                [.posixPermissions: 0o755],
-                ofItemAtPath: tempURL.path
-            )
-            
-            let task = Process()
-            task.executableURL = URL(fileURLWithPath: "/bin/bash")
-            task.arguments = [tempURL.path]
-            
             try task.run()
         } catch {
-            print("Error creating restart script:", error)
+            print("Error restarting app:", error)
         }
         
         exit(0)

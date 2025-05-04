@@ -19,6 +19,7 @@ struct ContentView: View {
             case .stack?:
                 StackContentView()
                 
+                
             case .twoColumn?:
                 TwoColumnContentView()
                 
@@ -49,30 +50,34 @@ struct ContentView: View {
             }
         }
         .task {
-            vm.fetchServers(false)
             try? nav.load()
+            vm.fetchServers(store.adminServerList)
         }
         .onChange(of: scenePhase) { _, newScenePhase in
             if newScenePhase == .background {
-                try? nav.save()
+                save()
             }
         }
         .onChange(of: nav.selectedTab) {
-            try? nav.save()
+            save()
         }
         .onChange(of: nav.path) {
-            try? nav.save()
+            save()
         }
         .onChange(of: nav.selectedServer) {
-            try? nav.save()
+            save()
         }
 #if os(macOS)
         .onChange(of: appearsActive) { _, appearsActive in
             if !appearsActive {
-                try? nav.save()
+                save()
             }
         }
 #endif
+    }
+    
+    private func save() {
+        try? nav.save()
     }
 }
 
