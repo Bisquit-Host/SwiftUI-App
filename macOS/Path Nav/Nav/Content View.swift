@@ -35,6 +35,7 @@ struct ContentView: View {
         }
         .environment(nav)
         .environment(vm)
+        .backgroundBlur()
         .sheet($nav.showNavModePicker) {
             NavModePicker($navMode)
         }

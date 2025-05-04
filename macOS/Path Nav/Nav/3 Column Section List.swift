@@ -18,21 +18,14 @@ struct ThreeColumnDetailView: View {
                     }
                 }
                 .scrollContentBackground(.hidden)
-//                .onDisappear {
-//                    nav.selectedTab = nil
-//                }
+                .onDisappear {
+                    nav.selectedTab = nil
+                }
             }
         }
         .frame(minWidth: 300, maxWidth: .infinity, maxHeight: .infinity)
-        .backgroundBlur()
     }
 }
-
-//#Preview() {
-//    PanelSectionList()
-//        .environment(ServerListVM())
-//        .environment(NavModel(selectedCategory: .dessert))
-//}
 
 #Preview() {
     ThreeColumnDetailView()

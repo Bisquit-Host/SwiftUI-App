@@ -24,7 +24,6 @@ struct TwoColumnDetailView: View {
             }
         }
         .frame(minWidth: 300, maxWidth: .infinity, maxHeight: .infinity)
-        .backgroundBlur()
     }
 }
 

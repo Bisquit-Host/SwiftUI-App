@@ -54,6 +54,7 @@ struct StackContentView: View {
                 }
             }
         }
+        .scrollContentBackground(.hidden)
         .sheet($sheetCustomization) {
             NavigationStack {
                 PanelSectionList()
