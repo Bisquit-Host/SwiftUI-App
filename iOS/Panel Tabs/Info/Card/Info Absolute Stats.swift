@@ -55,7 +55,7 @@ struct InfoAbsoluteStats: View {
         
         let limitText = Text("/" + limit)
             .footnote()
-            .foregroundStyle(.tertiary)
+            .tertiary()
         
         return HStack(alignment: .bottom, spacing: 0) {
             usageText
@@ -71,7 +71,7 @@ struct InfoAbsoluteStats: View {
         
         let limitText = Text("/\(limit)%")
             .footnote()
-            .foregroundStyle(.tertiary)
+            .tertiary()
         
         return HStack(alignment: .bottom, spacing: 0) {
             usageText
@@ -90,7 +90,7 @@ struct InfoAbsoluteStats: View {
         
         let limitText = Text("/" + limit)
             .footnote()
-            .foregroundStyle(.tertiary)
+            .tertiary()
         
         return HStack(alignment: .bottom, spacing: 0) {
             usageText

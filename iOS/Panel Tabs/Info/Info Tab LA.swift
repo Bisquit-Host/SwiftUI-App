@@ -39,7 +39,7 @@ struct InfoTabLA: View {
 //                } label: {
 //                    VStack(spacing: 5) {
 //                        Image(systemName: "clock.badge.fill")
-//                            .foregroundStyle(.tertiary)
+//                            .tertiary()
 //                        
 //                        Text("Cancel")
 //                            .semibold()
@@ -62,7 +62,7 @@ struct InfoTabLA: View {
 //                } label: {
 //                    VStack(spacing: 5) {
 //                        Image(systemName: "clock.badge.fill")
-//                            .foregroundStyle(.tertiary)
+//                            .tertiary()
 //                        
 //                        Text("Live Activity")
 //                            .semibold()

@@ -70,7 +70,7 @@ struct InfoTabAllocation: View {
                 
                 Text("All allocations \(chevron)")
                     .caption2()
-                    .foregroundStyle(.tertiary)
+                    .tertiary()
             }
             .padding(.horizontal)
             .frame(maxWidth: .infinity, alignment: .leading)

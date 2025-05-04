@@ -13,7 +13,7 @@ struct InfoTabSubdomains: View {
                 if vm.subdomains.isEmpty {
                     VStack(spacing: 5) {
                         Image(systemName: "globe")
-                            .foregroundStyle(.tertiary)
+                            .tertiary()
                         
                         Text("Subdomains")
                             .semibold()
@@ -36,7 +36,7 @@ struct InfoTabSubdomains: View {
                     let chevron = Image(systemName: "arrow.right")
                     Text("All subdomains \(chevron)")
                         .caption2()
-                        .foregroundStyle(.tertiary)
+                        .tertiary()
                 }
             }
             .footnote()

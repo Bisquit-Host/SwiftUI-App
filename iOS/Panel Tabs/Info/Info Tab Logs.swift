@@ -12,21 +12,29 @@ struct InfoTabLogs: View {
             VStack(spacing: 5) {
                 if vm.logs.isEmpty {
                     Image(systemName: "list.bullet.rectangle.fill")
-                        .foregroundStyle(.tertiary)
-                    Text("Logs").semibold()
+                        .tertiary()
+                    
+                    Text("Logs")
+                        .semibold()
                 } else {
-                    Text("Logs").semibold().rounded()
+                    Text("Logs")
+                        .semibold()
+                        .rounded()
+                    
                     if let log = vm.logs.first {
                         LogCard(log, showInfoButton: false)
                             .multilineTextAlignment(.leading)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
+                    
                     let count = vm.logs.count
+                    
                     if count > 0 {
                         let chevron = Image(systemName: "arrow.right")
+                        
                         Text("\(count - 1) more entries \(chevron)")
                             .caption2()
-                            .foregroundStyle(.tertiary)
+                            .tertiary()
                     }
                 }
             }

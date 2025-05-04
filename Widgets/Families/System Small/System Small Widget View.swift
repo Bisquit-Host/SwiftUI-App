@@ -55,7 +55,7 @@ struct SystemSmallWidgetView: View {
                 
                 VStack(alignment: .center) {
                     Text("Updated")
-                        .foregroundStyle(.tertiary)
+                        .tertiary()
                     
                     Text(Date(), style: .time)
                         .secondary()

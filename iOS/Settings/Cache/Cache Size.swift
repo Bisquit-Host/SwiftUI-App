@@ -19,7 +19,7 @@ struct CacheSize: View {
                 
                 Image(systemName: "chevron.forward")
                     .caption2(.bold)
-                    .foregroundStyle(.tertiary)
+                    .tertiary()
             }
             .foregroundStyle(.foreground)
         }
