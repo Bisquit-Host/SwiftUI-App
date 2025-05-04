@@ -4,15 +4,19 @@ struct ThreeColumnDetail: View {
     @Environment(NavModel.self) private var nav
     
     var body: some View {
-        switch nav.selectedTab {
-//        case .logs:
-//            Text("Logs")
+        if let server = nav.selectedServers.first {
+            let id = server.id
             
-        case nil:
-            Text("Select a section")
-            
-        default:
-            Text("Oops...")
+            switch nav.selectedTab {
+            case .logs:
+                LogList(id)
+                
+            case nil:
+                Text("Select a section")
+                
+            default:
+                Text("Oops...")
+            }
         }
     }
 }

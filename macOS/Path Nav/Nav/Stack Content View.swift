@@ -6,9 +6,7 @@ struct StackContentView: View {
     @State private var sectionsVM = PanelSectionVM()
     @Environment(NavModel.self) private var nav
     @Environment(ServerListVM.self) private var vm
-    
-    private let categories = Tabs.allCases
-    
+        
     @State private var sheetCustomization = false
     
     var body: some View {
@@ -32,11 +30,11 @@ struct StackContentView: View {
                 switch route {
                 case .server:
                     List(selection: $nav.selectedTab) {
-                        ForEach(Tabs.allCases) { tab in
+                        ForEach(PanelTab.allCases) { tab in
                             NavigationLink(tab.title, value: Route.tab(tab))
                         }
                     }
-                    .navigationTitle(nav.selectedServer.first?.name ?? "Multiple servers selected")
+                    .navigationTitle(nav.selectedServers.first?.name ?? "Multiple servers selected")
                     .onAppear {
                         try? nav.save()
                     }

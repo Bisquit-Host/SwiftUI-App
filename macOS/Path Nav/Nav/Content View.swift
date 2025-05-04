@@ -64,7 +64,7 @@ struct ContentView: View {
         .onChange(of: nav.path) {
             save()
         }
-        .onChange(of: nav.selectedServer) {
+        .onChange(of: nav.selectedServers) {
             save()
         }
 #if os(macOS)

@@ -17,11 +17,9 @@ struct LogList: View {
                     LogCard(log)
                 }
             }
+            .padding()
         }
         .navigationTitle("Logs")
-        .padding()
-        .background(.clear)
-        .clipShape(.rect(cornerRadius: 16))
         .task {
             vm.fetchLogs()
         }

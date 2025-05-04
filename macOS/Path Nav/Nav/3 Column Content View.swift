@@ -5,8 +5,6 @@ struct ThreeColumnContentView: View {
     @Environment(NavModel.self) private var nav
     @Environment(ServerListVM.self) private var vm
     
-    private let categories = Tabs.allCases
-    
     @State private var sheetCustomization = false
     
     var body: some View {

@@ -8,7 +8,7 @@ struct Sidebar: View {
     var body: some View {
         @Bindable var nav = nav
         
-        List(selection: $nav.selectedServer) {
+        List(selection: $nav.selectedServers) {
             ForEach(vm.servers) { server in
                 SidebarServerCard(server)
             }
@@ -17,7 +17,7 @@ struct Sidebar: View {
         .frame(minWidth: 300)
         .scrollIndicators(.never)
         .onDisappear {
-            nav.selectedServer.removeAll()
+            nav.selectedServers.removeAll()
         }
         .toolbar {
             SFButton("arrow.trianglehead.2.clockwise.rotate.90") {

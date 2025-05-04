@@ -9,11 +9,11 @@ struct TwoColumnDetailView: View {
         @Bindable var nav = nav
         
         VStack {
-            if nav.selectedServer.isEmpty {
+            if nav.selectedServers.isEmpty {
                 ContentUnavailableView("Choose a server", systemImage: "server.rack")
             } else {
                 List(selection: $nav.selectedTab) {
-                    ForEach(Tabs.allCases) { tab in
+                    ForEach(PanelTab.allCases) { tab in
                         NavigationLink(tab.title, value: Route.tab(tab))
                     }
                 }

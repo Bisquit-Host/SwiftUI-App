@@ -583,7 +583,6 @@
 		F34C055A29F11E010031ABE1 /* Server Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* Server Card VM.swift */; };
 		F34F289A2ACDAD9B00FD618A /* Animated Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34F28992ACDAD9B00FD618A /* Animated Tab.swift */; };
 		F34F289B2ACDAD9B00FD618A /* Animated Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34F28992ACDAD9B00FD618A /* Animated Tab.swift */; };
-		F34F289C2ACDADA500FD618A /* Animated Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34F28992ACDAD9B00FD618A /* Animated Tab.swift */; };
 		F34F289D2ACDADA500FD618A /* Animated Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34F28992ACDAD9B00FD618A /* Animated Tab.swift */; };
 		F34F289F2ACDADA600FD618A /* Animated Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34F28992ACDAD9B00FD618A /* Animated Tab.swift */; };
 		F34F28A02ACDADB200FD618A /* Animated Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34F28992ACDAD9B00FD618A /* Animated Tab.swift */; };
@@ -1331,7 +1330,6 @@
 		F3D264442A66B3A6005C3777 /* QR Code View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264432A66B3A6005C3777 /* QR Code View.swift */; };
 		F3D264452A66B3A6005C3777 /* QR Code View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264432A66B3A6005C3777 /* QR Code View.swift */; };
 		F3D295132AF396FD00ED43A0 /* Tabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D295122AF396FD00ED43A0 /* Tabs.swift */; };
-		F3D295142AF396FD00ED43A0 /* Tabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D295122AF396FD00ED43A0 /* Tabs.swift */; };
 		F3D295152AF396FD00ED43A0 /* Tabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D295122AF396FD00ED43A0 /* Tabs.swift */; };
 		F3D295162AF396FD00ED43A0 /* Tabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D295122AF396FD00ED43A0 /* Tabs.swift */; };
 		F3D295172AF396FD00ED43A0 /* Tabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D295122AF396FD00ED43A0 /* Tabs.swift */; };
@@ -6164,7 +6162,6 @@
 				F3F061D52A73C9A000470F7E /* Map View.swift in Sources */,
 				F33DE4E92B350C8B00E257D8 /* Server Card.swift in Sources */,
 				F3464D222A86396700188B0C /* Change Power.swift in Sources */,
-				F3D295142AF396FD00ED43A0 /* Tabs.swift in Sources */,
 				F300888E2B39FAA60051476C /* Allocation VM.swift in Sources */,
 				F39038B02DC815BD006DF071 /* 3 Column Detail.swift in Sources */,
 				F3015DE32D9F26C600B9BCC6 /* Log Card Timestamp.swift in Sources */,
@@ -6233,7 +6230,6 @@
 				F30088DE2B3A3FBB0051476C /* Startup List.swift in Sources */,
 				F3E08EC22A2CE89400116C1C /* Value Store.swift in Sources */,
 				F3DF50C32B38FCCC00206CAE /* Users VM.swift in Sources */,
-				F34F289C2ACDADA500FD618A /* Animated Tab.swift in Sources */,
 				F3E08ECE2A2CEDD800116C1C /* Panel View.swift in Sources */,
 				F323D8D32A2D668D002EDC62 /* File Tab.swift in Sources */,
 				F333B3BB2B80CF750005B84D /* Preview Property.swift in Sources */,

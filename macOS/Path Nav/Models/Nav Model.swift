@@ -6,7 +6,7 @@ import PteroNet
 @Observable
 final class NavModel: Codable {
     /// The selected recipe category; otherwise returns `nil`
-    var selectedTab: Tabs?
+    var selectedTab: PanelTab?
     
     /// The homogenous navigation state used by the app's navigation stacks
     var recipePath: [ServerAttributes]
@@ -39,7 +39,7 @@ final class NavModel: Codable {
     /// visibility, selected recipe category, and navigation state based on recipe data
     init(
         columnVisibility: NavigationSplitViewVisibility = .automatic,
-        selectedCategory: Tabs? = nil,
+        selectedCategory: PanelTab? = nil,
         recipePath: [ServerAttributes] = [],
         path: [Route] = []
     ) {
@@ -84,7 +84,7 @@ final class NavModel: Codable {
         try jsonData?.write(to: Self.dataURL)
     }
     
-    var selectedServer: Set<ServerAttributes> {
+    var selectedServers: Set<ServerAttributes> {
         get {
             Set(recipePath)
         } set {
