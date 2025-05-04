@@ -14,11 +14,14 @@ struct ThreeColumnContentView: View {
         NavigationSplitView(columnVisibility: $nav.columnVisibility) {
             Sidebar()
         } content: {
-            SectionList()
+            ThreeColumnDetailView()
         } detail: {
-            Text(nav.selectedTab?.title ?? "Select a section")
+            if let selectedTab = nav.selectedTab {
+                Text(selectedTab.title)
+            } else {
+                Text("Select a section")
+            }
         }
-        
         .backgroundBlur()
         .sheet($sheetCustomization) {
             NavigationStack {

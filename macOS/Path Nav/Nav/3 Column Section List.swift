@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-struct SectionList: View {
+struct ThreeColumnDetailView: View {
     @Environment(NavModel.self) private var nav
     
     var body: some View {
@@ -14,13 +14,13 @@ struct SectionList: View {
             } else {
                 List(selection: $nav.selectedTab) {
                     ForEach(Tabs.allCases) { tab in
-                        NavigationLink(tab.title, value: Route.tab(tab))
+                        NavigationLink(tab.title, value: tab)
                     }
                 }
                 .scrollContentBackground(.hidden)
-                .onDisappear {
-                    nav.selectedTab = nil
-                }
+//                .onDisappear {
+//                    nav.selectedTab = nil
+//                }
             }
         }
         .frame(minWidth: 300, maxWidth: .infinity, maxHeight: .infinity)
@@ -35,7 +35,7 @@ struct SectionList: View {
 //}
 
 #Preview() {
-    SectionList()
+    ThreeColumnDetailView()
         .environment(ServerListVM())
         .environment(NavModel(selectedCategory: nil))
 }
