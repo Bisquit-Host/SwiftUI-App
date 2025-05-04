@@ -3,7 +3,7 @@ import PteroNet
 
 struct SettingsButton: View {
     @Environment(ServerListVM.self) private var vm
-    //    @Environment(NavState.self) private var navState
+    //    @Environment(NavState.self) private var nav
     
     @State private var sheetAccount = false
     @State private var sheetSettings = false
@@ -28,7 +28,7 @@ struct SettingsButton: View {
             
             //            MenuButton("Log out", role: .destructive, icon: "rectangle.portrait.and.arrow.right") {
             //                main {
-            //                    navState.clear()
+            //                    nav.clear()
             //                    store.isApiKeyValid = false
             //                    Keychain.delete(key: "selectedApiKey")
             //                }

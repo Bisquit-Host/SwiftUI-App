@@ -3,7 +3,6 @@ import SwiftData
 
 struct StartPage: View {
     @Bindable var vm = StartPageVM()
-    @Environment(NavState.self) private var navState
     @EnvironmentObject var store: ValueStore
     
     @Environment(\.modelContext) var modelContext
@@ -11,7 +10,7 @@ struct StartPage: View {
     
     var body: some View {
         VStack {
-            NavigationLink("How to obtain an API-key") {
+            NavigationLink("How do I authorize?") {
                 Guide()
                     .frame(width: 300, height: 600)
             }
@@ -95,6 +94,5 @@ struct StartPage: View {
 #Preview {
     StartPage()
         .padding()
-        .environment(NavState())
         .environmentObject(ValueStore())
 }

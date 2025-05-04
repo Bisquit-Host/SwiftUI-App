@@ -1359,6 +1359,9 @@
         }
       }
     },
+    "Change your navigation mode" : {
+
+    },
     "Changed the **`%@`** variable from **`%@`** to **`%@`**" : {
       "localizations" : {
         "en" : {
@@ -1401,6 +1404,9 @@
         }
       }
     },
+    "Choose a server" : {
+
+    },
     "Choose File" : {
       "localizations" : {
         "nl" : {
@@ -1417,11 +1423,21 @@
         }
       }
     },
+    "Choose your navigation experience" : {
+
+    },
     "Clear" : {
 
     },
     "Clear all cookies" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Очистить все cookie"
+          }
+        }
+      }
     },
     "Clear entire cache" : {
       "localizations" : {
@@ -1432,6 +1448,12 @@
           }
         }
       }
+    },
+    "Clear navigation path" : {
+
+    },
+    "Click" : {
+
     },
     "Click the button in the top right corner to send an invitation" : {
 
@@ -3017,7 +3039,14 @@
       }
     },
     "Hide server names" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скрыть названия серверов"
+          }
+        }
+      }
     },
     "Hide status bar" : {
       "localizations" : {
@@ -3079,22 +3108,6 @@
     },
     "How do I authorize?" : {
 
-    },
-    "How to obtain an API-key" : {
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hoe maak ik een API-sleutel"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Как получить API-ключ"
-          }
-        }
-      }
     },
     "How to...?" : {
       "localizations" : {
@@ -3923,6 +3936,9 @@
     "Name Backup" : {
 
     },
+    "Navigation mode" : {
+
+    },
     "Network Error" : {
       "localizations" : {
         "ru" : {
@@ -4103,6 +4119,9 @@
           }
         }
       }
+    },
+    "Oops..." : {
+
     },
     "Open in a separate window" : {
       "localizations" : {
@@ -4369,6 +4388,15 @@
           }
         }
       }
+    },
+    "Presents a stack of views over a root view" : {
+
+    },
+    "Presents views in three columns: sidebar, content, and detail" : {
+
+    },
+    "Presents views in two columns: sidebar and detail" : {
+
     },
     "Press A" : {
 
@@ -4694,6 +4722,9 @@
         }
       }
     },
+    "Restart app" : {
+
+    },
     "Restart Server" : {
       "localizations" : {
         "ru" : {
@@ -4865,6 +4896,9 @@
         }
       }
     },
+    "Select a section" : {
+
+    },
     "Send Command" : {
       "localizations" : {
         "nl" : {
@@ -5034,6 +5068,9 @@
           }
         }
       }
+    },
+    "Servers" : {
+
     },
     "Set **`%@`** as the primary server allocation" : {
       "localizations" : {
@@ -5221,6 +5258,9 @@
 
     },
     "SSH-keys" : {
+
+    },
+    "Stack" : {
 
     },
     "Start" : {
@@ -5562,6 +5602,9 @@
     "This server currently has no users" : {
 
     },
+    "Three columns" : {
+
+    },
     "Time offset (sec)" : {
       "localizations" : {
         "ru" : {
@@ -5672,6 +5715,9 @@
           }
         }
       }
+    },
+    "Two columns" : {
+
     },
     "Type a command..." : {
       "localizations" : {
@@ -6178,6 +6224,9 @@
           }
         }
       }
+    },
+    "You might need to restart the app" : {
+
     },
     "Деревня Пыжи\n(Кировская обл.)" : {
       "localizations" : {

@@ -23,7 +23,10 @@ struct InfiniteScrollView<Content: View>: View {
                         .onGeometryChange(for: CGSize.self) {
                             $0.size
                         } action: { newValue in
-                            contentSize = .init(width: newValue.width + spacing, height: newValue.height)
+                            contentSize = .init(
+                                width: newValue.width + spacing,
+                                height: newValue.height
+                            )
                         }
                         
                         /// Repeating Content for creating Infinite(Looping) ScrollView
@@ -124,7 +127,11 @@ fileprivate struct InfiniteScrollHelper: UIViewRepresentable {
             defaultDelegate?.scrollViewWillBeginDragging?(scrollView)
         }
         
-        func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        func scrollViewWillEndDragging(
+            _ scrollView: UIScrollView,
+            withVelocity velocity: CGPoint,
+            targetContentOffset: UnsafeMutablePointer<CGPoint>
+        ) {
             defaultDelegate?.scrollViewWillEndDragging?(
                 scrollView,
                 withVelocity: velocity,

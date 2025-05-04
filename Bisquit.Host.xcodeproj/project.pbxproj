@@ -583,7 +583,6 @@
 		F34C055A29F11E010031ABE1 /* Server Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* Server Card VM.swift */; };
 		F34F289A2ACDAD9B00FD618A /* Animated Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34F28992ACDAD9B00FD618A /* Animated Tab.swift */; };
 		F34F289B2ACDAD9B00FD618A /* Animated Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34F28992ACDAD9B00FD618A /* Animated Tab.swift */; };
-		F34F289C2ACDADA500FD618A /* Animated Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34F28992ACDAD9B00FD618A /* Animated Tab.swift */; };
 		F34F289D2ACDADA500FD618A /* Animated Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34F28992ACDAD9B00FD618A /* Animated Tab.swift */; };
 		F34F289F2ACDADA600FD618A /* Animated Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34F28992ACDAD9B00FD618A /* Animated Tab.swift */; };
 		F34F28A02ACDADB200FD618A /* Animated Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34F28992ACDAD9B00FD618A /* Animated Tab.swift */; };
@@ -678,6 +677,41 @@
 		F36B14652DC39F6A008C1AF9 /* Debug Settings Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14612DC39F6A008C1AF9 /* Debug Settings Tips.swift */; };
 		F36B14662DC39F6A008C1AF9 /* Debug Settings Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14612DC39F6A008C1AF9 /* Debug Settings Tips.swift */; };
 		F36B14672DC39F6A008C1AF9 /* Debug Settings Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14612DC39F6A008C1AF9 /* Debug Settings Tips.swift */; };
+		F36B14812DC3BC3E008C1AF9 /* Content View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B146A2DC3BC3E008C1AF9 /* Content View.swift */; };
+		F36B14822DC3BC3E008C1AF9 /* Stack Content View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B146B2DC3BC3E008C1AF9 /* Stack Content View.swift */; };
+		F36B148A2DC3BC3E008C1AF9 /* 3 Column Content View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B146D2DC3BC3E008C1AF9 /* 3 Column Content View.swift */; };
+		F36B148B2DC3BC3E008C1AF9 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14732DC3BC3E008C1AF9 /* Ingredient.swift */; };
+		F36B148C2DC3BC3E008C1AF9 /* 2 Column Content View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B146C2DC3BC3E008C1AF9 /* 2 Column Content View.swift */; };
+		F36B14902DC3BC3E008C1AF9 /* 2 Column Section List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B147C2DC3BC3E008C1AF9 /* 2 Column Section List.swift */; };
+		F36B14912DC3BC3E008C1AF9 /* Nav Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14702DC3BC3E008C1AF9 /* Nav Model.swift */; };
+		F36B14972DC3BC52008C1AF9 /* Bisquit.Host App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14942DC3BC52008C1AF9 /* Bisquit.Host App.swift */; };
+		F36B149C2DC3E9BB008C1AF9 /* Panel Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33712192DC2FD240014B427 /* Panel Section.swift */; };
+		F36B149E2DC3E9BB008C1AF9 /* Panel Section VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0B48C2DC300D6003C8B27 /* Panel Section VM.swift */; };
+		F36B149F2DC3E9BB008C1AF9 /* Panel Section Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337121A2DC2FD240014B427 /* Panel Section Row.swift */; };
+		F36B14A12DC3EA70008C1AF9 /* Panel Section List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14A02DC3EA70008C1AF9 /* Panel Section List.swift */; };
+		F36B14A32DC4CAF6008C1AF9 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14A22DC4CAF6008C1AF9 /* Route.swift */; };
+		F36B14A52DC62F8D008C1AF9 /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14A42DC62F8D008C1AF9 /* Sidebar.swift */; };
+		F36B14A72DC6325F008C1AF9 /* Sidebar Server Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14A62DC6325F008C1AF9 /* Sidebar Server Card.swift */; };
+		F36B14A92DC632D9008C1AF9 /* User Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14A82DC632D9008C1AF9 /* User Defaults.swift */; };
+		F36B14AA2DC632D9008C1AF9 /* User Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14A82DC632D9008C1AF9 /* User Defaults.swift */; };
+		F36B14AB2DC632D9008C1AF9 /* User Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14A82DC632D9008C1AF9 /* User Defaults.swift */; };
+		F36B14AC2DC632D9008C1AF9 /* User Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14A82DC632D9008C1AF9 /* User Defaults.swift */; };
+		F36B14AD2DC632D9008C1AF9 /* User Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14A82DC632D9008C1AF9 /* User Defaults.swift */; };
+		F36B14AE2DC632D9008C1AF9 /* User Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14A82DC632D9008C1AF9 /* User Defaults.swift */; };
+		F36B14B02DC63324008C1AF9 /* GameKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14AF2DC63324008C1AF9 /* GameKit.swift */; };
+		F36B14B12DC63324008C1AF9 /* GameKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14AF2DC63324008C1AF9 /* GameKit.swift */; };
+		F36B14B22DC63324008C1AF9 /* GameKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14AF2DC63324008C1AF9 /* GameKit.swift */; };
+		F36B14B32DC63324008C1AF9 /* GameKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14AF2DC63324008C1AF9 /* GameKit.swift */; };
+		F36B14B42DC63324008C1AF9 /* GameKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14AF2DC63324008C1AF9 /* GameKit.swift */; };
+		F36B14B52DC63324008C1AF9 /* GameKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14AF2DC63324008C1AF9 /* GameKit.swift */; };
+		F36B14B62DC6334E008C1AF9 /* GameKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14AF2DC63324008C1AF9 /* GameKit.swift */; };
+		F36B14B72DC63369008C1AF9 /* User Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14A82DC632D9008C1AF9 /* User Defaults.swift */; };
+		F36B14BA2DC64CDF008C1AF9 /* SettingsKit in Frameworks */ = {isa = PBXBuildFile; productRef = F36B14B92DC64CDF008C1AF9 /* SettingsKit */; };
+		F36B14BE2DC64D29008C1AF9 /* General Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14BB2DC64D29008C1AF9 /* General Settings.swift */; };
+		F36B14C52DC64DF2008C1AF9 /* Nav Mode Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14C02DC64DF2008C1AF9 /* Nav Mode Button.swift */; };
+		F36B14C62DC64DF2008C1AF9 /* Nav Mode Picker Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14C22DC64DF2008C1AF9 /* Nav Mode Picker Row.swift */; };
+		F36B14C72DC64DF2008C1AF9 /* Nav Mode Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14C12DC64DF2008C1AF9 /* Nav Mode Picker.swift */; };
+		F36B14C82DC64DF2008C1AF9 /* Nav Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14C32DC64DF2008C1AF9 /* Nav Mode.swift */; };
 		F36B736D2C89B6BE00E858FE /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F36B736C2C89B6BE00E858FE /* PteroNet */; };
 		F36B73702C8A4CAF00E858FE /* Refresh Button Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B736F2C8A4CAF00E858FE /* Refresh Button Intent.swift */; };
 		F36B73712C8A4CAF00E858FE /* Refresh Button Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B736F2C8A4CAF00E858FE /* Refresh Button Intent.swift */; };
@@ -920,9 +954,9 @@
 		F38F9E2C2CEB39D80033EFE3 /* Metadata List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E2B2CEB39D80033EFE3 /* Metadata List.swift */; };
 		F38F9E2D2CEB39D80033EFE3 /* Metadata List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E2B2CEB39D80033EFE3 /* Metadata List.swift */; };
 		F38F9E2E2CEB39D80033EFE3 /* Metadata List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E2B2CEB39D80033EFE3 /* Metadata List.swift */; };
+		F39038B02DC815BD006DF071 /* 3 Column Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39038AF2DC815BD006DF071 /* 3 Column Detail.swift */; };
 		F390C74A2DC2AF940069F965 /* Gamepad Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = F390C7472DC2AF940069F965 /* Gamepad Debug.swift */; };
 		F390C74B2DC2AF940069F965 /* Gamepad Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = F390C7472DC2AF940069F965 /* Gamepad Debug.swift */; };
-		F390E53E2A84217D000B4460 /* Bisquit.Host App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* Bisquit.Host App.swift */; };
 		F3924EDF29A2333F00C4CC77 /* Settings VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EDE29A2333F00C4CC77 /* Settings VM.swift */; };
 		F3924EE729A25FBF00C4CC77 /* App Icon Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EE629A25FBF00C4CC77 /* App Icon Picker.swift */; };
 		F3924EE929A28D9D00C4CC77 /* Biometry Usage View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EE829A28D9D00C4CC77 /* Biometry Usage View.swift */; };
@@ -1215,6 +1249,9 @@
 		F3BF6F232959D15E0059F39B /* App Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BF6F222959D15E0059F39B /* App Settings.swift */; };
 		F3BF97AA29BFC7E9007B9C9C /* Websocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BF97A929BFC7E9007B9C9C /* Websocket.swift */; };
 		F3C0F9D029E204FA0040E277 /* FileTab Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C0F9CF29E204FA0040E277 /* FileTab Context Menu.swift */; };
+		F3C1E5922DC653BF007F2054 /* User Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14A82DC632D9008C1AF9 /* User Defaults.swift */; };
+		F3C1E5932DC653CB007F2054 /* GameKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14AF2DC63324008C1AF9 /* GameKit.swift */; };
+		F3C1E5972DC741C6007F2054 /* 3 Column Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C1E5962DC741C6007F2054 /* 3 Column Content.swift */; };
 		F3C3BDB82C92BE9B00BF91EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F31BA52A2958FF7D0006D126 /* Assets.xcassets */; };
 		F3C53A5F29DBF5B900A08578 /* watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F31BA5332958FF7D0006D126 /* watchOS.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F3C9D84A2B302AA200265492 /* File Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D8492B302AA200265492 /* File Context Menu.swift */; };
@@ -1293,7 +1330,6 @@
 		F3D264442A66B3A6005C3777 /* QR Code View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264432A66B3A6005C3777 /* QR Code View.swift */; };
 		F3D264452A66B3A6005C3777 /* QR Code View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264432A66B3A6005C3777 /* QR Code View.swift */; };
 		F3D295132AF396FD00ED43A0 /* Tabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D295122AF396FD00ED43A0 /* Tabs.swift */; };
-		F3D295142AF396FD00ED43A0 /* Tabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D295122AF396FD00ED43A0 /* Tabs.swift */; };
 		F3D295152AF396FD00ED43A0 /* Tabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D295122AF396FD00ED43A0 /* Tabs.swift */; };
 		F3D295162AF396FD00ED43A0 /* Tabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D295122AF396FD00ED43A0 /* Tabs.swift */; };
 		F3D295172AF396FD00ED43A0 /* Tabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D295122AF396FD00ED43A0 /* Tabs.swift */; };
@@ -1478,7 +1514,6 @@
 		F3E08EA52A2CE17900116C1C /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E08EA42A2CE17900116C1C /* Home.swift */; };
 		F3E08EA72A2CE17A00116C1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3E08EA62A2CE17A00116C1C /* Assets.xcassets */; };
 		F3E08EB22A2CE19900116C1C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F3E08EB12A2CE19900116C1C /* Kingfisher */; };
-		F3E08EB62A2CE56200116C1C /* App Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E08EB52A2CE56200116C1C /* App Settings.swift */; };
 		F3E08EBF2A2CE87800116C1C /* Start Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E08EBE2A2CE87800116C1C /* Start Page.swift */; };
 		F3E08EC22A2CE89400116C1C /* Value Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* Value Store.swift */; };
 		F3E08EC32A2CE92A00116C1C /* Panel Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3029C06E9700B08696 /* Panel Tab.swift */; };
@@ -1968,6 +2003,25 @@
 		F367977A2A3A55F4009F2788 /* Log Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log Card.swift"; sourceTree = "<group>"; };
 		F367977D2A3A5AB6009F2788 /* Log VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log VM.swift"; sourceTree = "<group>"; };
 		F36B14612DC39F6A008C1AF9 /* Debug Settings Tips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Debug Settings Tips.swift"; sourceTree = "<group>"; };
+		F36B146A2DC3BC3E008C1AF9 /* Content View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Content View.swift"; sourceTree = "<group>"; };
+		F36B146B2DC3BC3E008C1AF9 /* Stack Content View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stack Content View.swift"; sourceTree = "<group>"; };
+		F36B146C2DC3BC3E008C1AF9 /* 2 Column Content View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "2 Column Content View.swift"; sourceTree = "<group>"; };
+		F36B146D2DC3BC3E008C1AF9 /* 3 Column Content View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "3 Column Content View.swift"; sourceTree = "<group>"; };
+		F36B14702DC3BC3E008C1AF9 /* Nav Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Model.swift"; sourceTree = "<group>"; };
+		F36B14732DC3BC3E008C1AF9 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
+		F36B147C2DC3BC3E008C1AF9 /* 2 Column Section List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "2 Column Section List.swift"; sourceTree = "<group>"; };
+		F36B14942DC3BC52008C1AF9 /* Bisquit.Host App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bisquit.Host App.swift"; sourceTree = "<group>"; };
+		F36B14A02DC3EA70008C1AF9 /* Panel Section List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Section List.swift"; sourceTree = "<group>"; };
+		F36B14A22DC4CAF6008C1AF9 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		F36B14A42DC62F8D008C1AF9 /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
+		F36B14A62DC6325F008C1AF9 /* Sidebar Server Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sidebar Server Card.swift"; sourceTree = "<group>"; };
+		F36B14A82DC632D9008C1AF9 /* User Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Defaults.swift"; sourceTree = "<group>"; };
+		F36B14AF2DC63324008C1AF9 /* GameKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameKit.swift; sourceTree = "<group>"; };
+		F36B14BB2DC64D29008C1AF9 /* General Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "General Settings.swift"; sourceTree = "<group>"; };
+		F36B14C02DC64DF2008C1AF9 /* Nav Mode Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Mode Button.swift"; sourceTree = "<group>"; };
+		F36B14C12DC64DF2008C1AF9 /* Nav Mode Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Mode Picker.swift"; sourceTree = "<group>"; };
+		F36B14C22DC64DF2008C1AF9 /* Nav Mode Picker Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Mode Picker Row.swift"; sourceTree = "<group>"; };
+		F36B14C32DC64DF2008C1AF9 /* Nav Mode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Mode.swift"; sourceTree = "<group>"; };
 		F36B736E2C89BB7200E858FE /* Intent Handler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Intent Handler.entitlements"; sourceTree = "<group>"; };
 		F36B736F2C8A4CAF00E858FE /* Refresh Button Intent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Refresh Button Intent.swift"; sourceTree = "<group>"; };
 		F36B73792C8AE9D400E858FE /* Power Actions Intents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Actions Intents.swift"; sourceTree = "<group>"; };
@@ -2049,6 +2103,7 @@
 		F38F9E112CE7647D0033EFE3 /* Image Playground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image Playground.swift"; sourceTree = "<group>"; };
 		F38F9E272CEB33510033EFE3 /* QuickLook File VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuickLook File VM.swift"; sourceTree = "<group>"; };
 		F38F9E2B2CEB39D80033EFE3 /* Metadata List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Metadata List.swift"; sourceTree = "<group>"; };
+		F39038AF2DC815BD006DF071 /* 3 Column Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "3 Column Detail.swift"; sourceTree = "<group>"; };
 		F39052482D63644100341CD2 /* Clip Demo Debug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Clip Demo Debug.entitlements"; sourceTree = "<group>"; };
 		F390C7472DC2AF940069F965 /* Gamepad Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gamepad Debug.swift"; sourceTree = "<group>"; };
 		F3924EDE29A2333F00C4CC77 /* Settings VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings VM.swift"; sourceTree = "<group>"; };
@@ -2146,6 +2201,7 @@
 		F3BF6F222959D15E0059F39B /* App Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Settings.swift"; sourceTree = "<group>"; };
 		F3BF97A929BFC7E9007B9C9C /* Websocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Websocket.swift; sourceTree = "<group>"; };
 		F3C0F9CF29E204FA0040E277 /* FileTab Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileTab Context Menu.swift"; sourceTree = "<group>"; };
+		F3C1E5962DC741C6007F2054 /* 3 Column Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "3 Column Content.swift"; sourceTree = "<group>"; };
 		F3C9D8492B302AA200265492 /* File Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Context Menu.swift"; sourceTree = "<group>"; };
 		F3C9D84D2B30598000265492 /* Video Player VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Video Player VM.swift"; sourceTree = "<group>"; };
 		F3C9D8502B3059E700265492 /* UIVideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVideoPlayer.swift; sourceTree = "<group>"; };
@@ -2197,7 +2253,6 @@
 		F3E08EA42A2CE17900116C1C /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		F3E08EA62A2CE17A00116C1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3E08EAB2A2CE17A00116C1C /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
-		F3E08EB52A2CE56200116C1C /* App Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Settings.swift"; sourceTree = "<group>"; };
 		F3E08EBE2A2CE87800116C1C /* Start Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page.swift"; sourceTree = "<group>"; };
 		F3E08ECD2A2CEDD800116C1C /* Panel View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel View.swift"; sourceTree = "<group>"; };
 		F3E0B48C2DC300D6003C8B27 /* Panel Section VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Section VM.swift"; sourceTree = "<group>"; };
@@ -2370,6 +2425,7 @@
 			isa = PBXFrameworksBuildPhase;
 			files = (
 				F37FF8832D87AE3800554B3F /* Algorithms in Frameworks */,
+				F36B14BA2DC64CDF008C1AF9 /* SettingsKit in Frameworks */,
 				F3B7BFDE2B38E206005B5003 /* Pow in Frameworks */,
 				F3015DFA2D9FCCCC00B9BCC6 /* PostHog in Frameworks */,
 				F3E08EB22A2CE19900116C1C /* Kingfisher in Frameworks */,
@@ -2834,6 +2890,8 @@
 			isa = PBXGroup;
 			children = (
 				F3202C792D558B210030B3CC /* Spotlight Index.swift */,
+				F36B14A82DC632D9008C1AF9 /* User Defaults.swift */,
+				F36B14AF2DC63324008C1AF9 /* GameKit.swift */,
 				F3202CC92D559B240030B3CC /* Contacts Provider.swift */,
 			);
 			path = "VM extensions";
@@ -3144,6 +3202,54 @@
 				F310A2EF2A56AF86001AF45F /* Network VM.swift */,
 			);
 			path = SpriteKit;
+			sourceTree = "<group>";
+		};
+		F36B14682DC3BC3A008C1AF9 /* Path Nav */ = {
+			isa = PBXGroup;
+			children = (
+				F36B146E2DC3BC3E008C1AF9 /* Nav */,
+				F36B14752DC3BC3E008C1AF9 /* Models */,
+			);
+			path = "Path Nav";
+			sourceTree = "<group>";
+		};
+		F36B146E2DC3BC3E008C1AF9 /* Nav */ = {
+			isa = PBXGroup;
+			children = (
+				F36B146A2DC3BC3E008C1AF9 /* Content View.swift */,
+				F36B146B2DC3BC3E008C1AF9 /* Stack Content View.swift */,
+				F36B14A42DC62F8D008C1AF9 /* Sidebar.swift */,
+				F36B14A62DC6325F008C1AF9 /* Sidebar Server Card.swift */,
+				F36B146C2DC3BC3E008C1AF9 /* 2 Column Content View.swift */,
+				F36B147C2DC3BC3E008C1AF9 /* 2 Column Section List.swift */,
+				F36B146D2DC3BC3E008C1AF9 /* 3 Column Content View.swift */,
+				F3C1E5962DC741C6007F2054 /* 3 Column Content.swift */,
+				F39038AF2DC815BD006DF071 /* 3 Column Detail.swift */,
+				F36B14A02DC3EA70008C1AF9 /* Panel Section List.swift */,
+				F36B14C42DC64DF2008C1AF9 /* Nav Mode */,
+			);
+			path = Nav;
+			sourceTree = "<group>";
+		};
+		F36B14752DC3BC3E008C1AF9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F36B14A22DC4CAF6008C1AF9 /* Route.swift */,
+				F36B14702DC3BC3E008C1AF9 /* Nav Model.swift */,
+				F36B14732DC3BC3E008C1AF9 /* Ingredient.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F36B14C42DC64DF2008C1AF9 /* Nav Mode */ = {
+			isa = PBXGroup;
+			children = (
+				F36B14C02DC64DF2008C1AF9 /* Nav Mode Button.swift */,
+				F36B14C12DC64DF2008C1AF9 /* Nav Mode Picker.swift */,
+				F36B14C22DC64DF2008C1AF9 /* Nav Mode Picker Row.swift */,
+				F36B14C32DC64DF2008C1AF9 /* Nav Mode.swift */,
+			);
+			path = "Nav Mode";
 			sourceTree = "<group>";
 		};
 		F36B73772C8AE93000E858FE /* Resources Widget */ = {
@@ -3866,10 +3972,12 @@
 		F3E08EA12A2CE17900116C1C /* macOS */ = {
 			isa = PBXGroup;
 			children = (
+				F36B14942DC3BC52008C1AF9 /* Bisquit.Host App.swift */,
 				F3CCB1CF2CAE8AF5000F8207 /* macOS.plist */,
 				F3E08EAB2A2CE17A00116C1C /* macOS.entitlements */,
 				F3E08EA62A2CE17A00116C1C /* Assets.xcassets */,
 				F33DE4E62B35089000E257D8 /* Background Blur.swift */,
+				F36B14682DC3BC3A008C1AF9 /* Path Nav */,
 				F3E08EC72A2CEA6F00116C1C /* Intro */,
 				F3E08EB72A2CE6D000116C1C /* Server List */,
 				F3E08ECF2A2CEDF200116C1C /* Panel */,
@@ -3891,7 +3999,7 @@
 		F3E08EBA2A2CE6FA00116C1C /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				F3E08EB52A2CE56200116C1C /* App Settings.swift */,
+				F36B14BB2DC64D29008C1AF9 /* General Settings.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -4319,6 +4427,7 @@
 				F3CBC6DA2D9A02750081C302 /* ScrechKit */,
 				F3015DF92D9FCCCC00B9BCC6 /* PostHog */,
 				F36B14582DC39F08008C1AF9 /* GaypadKit */,
+				F36B14B92DC64CDF008C1AF9 /* SettingsKit */,
 			);
 			productName = "Bisquit.Host Mac";
 			productReference = F3E08EA02A2CE17800116C1C /* Bisquit.Host.app */;
@@ -4439,6 +4548,7 @@
 				F3CBC6D32D9A025A0081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */,
 				F3015DF62D9FCB8500B9BCC6 /* XCRemoteSwiftPackageReference "posthog-ios" */,
 				F36B14552DC39DD8008C1AF9 /* XCRemoteSwiftPackageReference "GaypadKit" */,
+				F36B14B82DC64CDF008C1AF9 /* XCRemoteSwiftPackageReference "SettingsKit" */,
 			);
 			preferredProjectObjectVersion = 90;
 			productRefGroup = F31BA5242958FF7C0006D126 /* Products */;
@@ -4721,12 +4831,14 @@
 				F3A31B0B2B0B161D00F89C51 /* Cloud Key Card.swift in Sources */,
 				F30089252B3BAD190051476C /* File Permissions Parent.swift in Sources */,
 				F3CCF5BD2B3454AA005FFF2C /* User List.swift in Sources */,
+				F3C1E5922DC653BF007F2054 /* User Defaults.swift in Sources */,
 				F342FAB52B2E499300854270 /* Log List.swift in Sources */,
 				F39D28552A27EE88007B12C3 /* Panel View.swift in Sources */,
 				F3202CFD2D562AE10030B3CC /* Browser List Bot.swift in Sources */,
 				F3202CDA2D5624B10030B3CC /* Plan.swift in Sources */,
 				F3D49DB32B2330C30033B52E /* Overview.swift in Sources */,
 				F3CCF5BE2B3454AD005FFF2C /* User Card.swift in Sources */,
+				F3C1E5932DC653CB007F2054 /* GameKit.swift in Sources */,
 				F32FD7222B1E065600723B88 /* Network Calls.swift in Sources */,
 				F3CCF5BC2B345472005FFF2C /* Permission Card.swift in Sources */,
 				F30088E42B3A5B0B0051476C /* Startup List.swift in Sources */,
@@ -4838,6 +4950,7 @@
 				F3A1235A2A6689FA008E3E20 /* User Email.swift in Sources */,
 				F303214B2B3FEA45002A73B8 /* Panel Settings View.swift in Sources */,
 				F31BA5B2295902D50006D126 /* Text File.swift in Sources */,
+				F36B14AE2DC632D9008C1AF9 /* User Defaults.swift in Sources */,
 				F3553FB32B40653000EF0FD2 /* Panel Settings Parent.swift in Sources */,
 				F31BA57D295901200006D126 /* Start Page VM.swift in Sources */,
 				F39E0A952C1BA06C00C4E906 /* Discover Card.swift in Sources */,
@@ -4951,6 +5064,7 @@
 				F3A563222D9EEECB009AA363 /* Allow Drag.swift in Sources */,
 				F3D3DBD129B8007B00096115 /* Browser Topbar.swift in Sources */,
 				F30088A32B3A18A50051476C /* Database VM.swift in Sources */,
+				F36B14B32DC63324008C1AF9 /* GameKit.swift in Sources */,
 				F3E2BEDB2C1C6B9500B7A6D4 /* Cache List.swift in Sources */,
 				F3015DE02D9F26C600B9BCC6 /* Log Card Timestamp.swift in Sources */,
 				F398823F2987BF6E00B9BA2C /* Schedule Task.swift in Sources */,
@@ -5070,6 +5184,7 @@
 				F3878EDF2A1C228900AD8657 /* Server Card Stats.swift in Sources */,
 				F3C9D8612B319B9E00265492 /* Permission Card.swift in Sources */,
 				F30C130A2A545E6F00A7EFF0 /* Linking VM.swift in Sources */,
+				F36B14B62DC6334E008C1AF9 /* GameKit.swift in Sources */,
 				F3EB09D42A29547E0073916A /* File View.swift in Sources */,
 				F3FFB7492A57FF0B00220FA5 /* Log Card.swift in Sources */,
 				F3A563322D9EF323009AA363 /* Log Toolbar Actor.swift in Sources */,
@@ -5106,6 +5221,7 @@
 				F30088FB2B3B56210051476C /* User List Parent.swift in Sources */,
 				F333B3BA2B80CF750005B84D /* Preview Property.swift in Sources */,
 				F3499EF82A275556006101B7 /* Websocket Message.swift in Sources */,
+				F36B14B72DC63369008C1AF9 /* User Defaults.swift in Sources */,
 				F3E679B02D5A854700A7ADDE /* Server Options Provider.swift in Sources */,
 				F30C12FD2A54546900A7EFF0 /* App Container.swift in Sources */,
 				F3C9D85D2B31146E00265492 /* User Image.swift in Sources */,
@@ -5192,6 +5308,7 @@
 				F3BC03C82B20675E0011F98A /* New Schedule Sheet.swift in Sources */,
 				F389BB622A05B58E00911EBF /* Server Card VM.swift in Sources */,
 				F325F7072A54C4BC00E89EC4 /* System Alerts.swift in Sources */,
+				F36B14AB2DC632D9008C1AF9 /* User Defaults.swift in Sources */,
 				F3C9D85E2B31146E00265492 /* User Image.swift in Sources */,
 				F3AB1DF92D79C42B00387164 /* MetricKit Manager.swift in Sources */,
 				F33944122A49022A00E2F0FC /* Info Tab Resource Usage.swift in Sources */,
@@ -5269,6 +5386,7 @@
 				F3553FBA2B4093E600EF0FD2 /* Allocation List.swift in Sources */,
 				F389BB602A05B57D00911EBF /* Gauge Regular.swift in Sources */,
 				F3D7F8512C8ED3D100368ECE /* Disable 2FA View.swift in Sources */,
+				F36B14B52DC63324008C1AF9 /* GameKit.swift in Sources */,
 				F3EB09EE2A2987F00073916A /* QuickLook File.swift in Sources */,
 				F36D530C2A05B6C4007324C6 /* Server List.swift in Sources */,
 				F3CE5C412D538FE60094BD7B /* Subdomain List.swift in Sources */,
@@ -5538,6 +5656,7 @@
 				F3D295C72AF3A1FC00ED43A0 /* Credentials View.swift in Sources */,
 				F3D295AB2AF3A0E900ED43A0 /* Cache Limit.swift in Sources */,
 				F3D295472AF39DA000ED43A0 /* Start Page Footer.swift in Sources */,
+				F36B14B42DC63324008C1AF9 /* GameKit.swift in Sources */,
 				F3202C7E2D558B210030B3CC /* Spotlight Index.swift in Sources */,
 				F3D295462AF39D9500ED43A0 /* Start Page.swift in Sources */,
 				F3D2955A2AF39E4000ED43A0 /* Server List.swift in Sources */,
@@ -5657,6 +5776,7 @@
 				F3D295432AF39D8300ED43A0 /* System Alerts.swift in Sources */,
 				F30089342B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */,
 				F3D295BD2AF3A18700ED43A0 /* Currency Picker.swift in Sources */,
+				F36B14AD2DC632D9008C1AF9 /* User Defaults.swift in Sources */,
 				F3D295C02AF3A1B000ED43A0 /* Log Meta Parent.swift in Sources */,
 				F373CD722D88A386008B64BE /* Card.swift in Sources */,
 				F373CD732D88A386008B64BE /* Custom Text Effect.swift in Sources */,
@@ -5782,6 +5902,7 @@
 				F32F3AAE2D8EB8EC00E69B98 /* Background Image.swift in Sources */,
 				F3202D2B2D562B9A0030B3CC /* Browser Card Bot.swift in Sources */,
 				F32F2CDE2D8F7047007CF4DE /* Discover View.swift in Sources */,
+				F36B14B02DC63324008C1AF9 /* GameKit.swift in Sources */,
 				F3AB1DF52D79C42B00387164 /* MetricKit Manager.swift in Sources */,
 				F3A7CEEA2C8BB74D00413400 /* Server List Grid.swift in Sources */,
 				F3A7CF0D2C8C43B100413400 /* Topbar Grid Button.swift in Sources */,
@@ -5829,6 +5950,7 @@
 				F3A7CF1C2C8C4E4A00413400 /* Browser Card.swift in Sources */,
 				F3255E172C9049AF008E04DE /* Settings Button.swift in Sources */,
 				F3A7CF632C8CA5B900413400 /* Cloud Key Card.swift in Sources */,
+				F36B14AA2DC632D9008C1AF9 /* User Defaults.swift in Sources */,
 				F3A7CF1D2C8C4E4A00413400 /* Browser Hints.swift in Sources */,
 				F3202CE12D562A620030B3CC /* Browser List MC.swift in Sources */,
 				F3A7CF1E2C8C4E4A00413400 /* Browser.swift in Sources */,
@@ -5883,6 +6005,7 @@
 				F32716DF2CF62CC300F2DC31 /* Section Header.swift in Sources */,
 				F32F44002B75450B00C9470B /* User List.swift in Sources */,
 				F3FD9F9D2C651BD100A69314 /* File Icon.swift in Sources */,
+				F36B14AC2DC632D9008C1AF9 /* User Defaults.swift in Sources */,
 				F386941A2A4B3AE1002DEF90 /* Info Tab.swift in Sources */,
 				F37EA79C2B722B390029DE00 /* Backup VM.swift in Sources */,
 				F30C131A2A54626D00A7EFF0 /* Bisquit.Host App.swift in Sources */,
@@ -5948,6 +6071,7 @@
 				F3DF03E62B74F26F00CF6F5E /* Users VM.swift in Sources */,
 				F30C130C2A545F4400A7EFF0 /* Value Store.swift in Sources */,
 				F38928232A44182F00561CDF /* Console.swift in Sources */,
+				F36B14B22DC63324008C1AF9 /* GameKit.swift in Sources */,
 				F3F2BBA92A540DF900D44CA6 /* Nav State.swift in Sources */,
 				F3AB1DF42D79C42B00387164 /* MetricKit Manager.swift in Sources */,
 				F34F289F2ACDADA600FD618A /* Animated Tab.swift in Sources */,
@@ -6017,6 +6141,7 @@
 			files = (
 				F32FD71B2B1E043F00723B88 /* Ansi.swift in Sources */,
 				F300892B2B3C55DA0051476C /* File Permissions View.swift in Sources */,
+				F36B14A92DC632D9008C1AF9 /* User Defaults.swift in Sources */,
 				F314617F2D5A82F000547B6C /* Model Asset.swift in Sources */,
 				F31461802D5A82F000547B6C /* Networking.swift in Sources */,
 				F35B89BF2A725CF7000B5EEF /* Tip Suspended Server.swift in Sources */,
@@ -6037,9 +6162,8 @@
 				F3F061D52A73C9A000470F7E /* Map View.swift in Sources */,
 				F33DE4E92B350C8B00E257D8 /* Server Card.swift in Sources */,
 				F3464D222A86396700188B0C /* Change Power.swift in Sources */,
-				F390E53E2A84217D000B4460 /* Bisquit.Host App.swift in Sources */,
-				F3D295142AF396FD00ED43A0 /* Tabs.swift in Sources */,
 				F300888E2B39FAA60051476C /* Allocation VM.swift in Sources */,
+				F39038B02DC815BD006DF071 /* 3 Column Detail.swift in Sources */,
 				F3015DE32D9F26C600B9BCC6 /* Log Card Timestamp.swift in Sources */,
 				F30C130F2A54605B00A7EFF0 /* Nav Destinations.swift in Sources */,
 				F30088B62B3A21410051476C /* Schedule List.swift in Sources */,
@@ -6065,8 +6189,8 @@
 				F30088962B3A033F0051476C /* Log Meta Parent.swift in Sources */,
 				F33DE4EB2B35C3F000E257D8 /* FileTab Context Menu.swift in Sources */,
 				F3DF50C52B38FCF900206CAE /* User Image.swift in Sources */,
+				F36B14972DC3BC52008C1AF9 /* Bisquit.Host App.swift in Sources */,
 				F300889A2B3A0C740051476C /* User Card.swift in Sources */,
-				F3E08EB62A2CE56200116C1C /* App Settings.swift in Sources */,
 				F380C0B32A4F1D42002D400F /* Server List VM.swift in Sources */,
 				F30088A82B3A18E40051476C /* Schedule VM.swift in Sources */,
 				F363C7FD2B7F7938005F6FF2 /* System Alerts.swift in Sources */,
@@ -6085,9 +6209,13 @@
 				F3E08EC32A2CE92A00116C1C /* Panel Tab.swift in Sources */,
 				F30088A22B3A18A20051476C /* Database VM.swift in Sources */,
 				F35B9F612A2DCF9C0045D014 /* Stats Tab.swift in Sources */,
+				F36B14A52DC62F8D008C1AF9 /* Sidebar.swift in Sources */,
 				F348C6E92A54483D002D5BD6 /* Intro.swift in Sources */,
 				F31F31FF2D52BD940095DD19 /* System lowPowerMode.swift in Sources */,
 				F32FD7162B1E041D00723B88 /* Websocket Message.swift in Sources */,
+				F36B149C2DC3E9BB008C1AF9 /* Panel Section.swift in Sources */,
+				F36B149E2DC3E9BB008C1AF9 /* Panel Section VM.swift in Sources */,
+				F36B149F2DC3E9BB008C1AF9 /* Panel Section Row.swift in Sources */,
 				F3573BBF2C64E0360051259E /* Log Card.swift in Sources */,
 				F30C13142A5461BA00A7EFF0 /* Cache VM.swift in Sources */,
 				F3D558B12A33C69F00608447 /* File Tab VM.swift in Sources */,
@@ -6102,7 +6230,6 @@
 				F30088DE2B3A3FBB0051476C /* Startup List.swift in Sources */,
 				F3E08EC22A2CE89400116C1C /* Value Store.swift in Sources */,
 				F3DF50C32B38FCCC00206CAE /* Users VM.swift in Sources */,
-				F34F289C2ACDADA500FD618A /* Animated Tab.swift in Sources */,
 				F3E08ECE2A2CEDD800116C1C /* Panel View.swift in Sources */,
 				F323D8D32A2D668D002EDC62 /* File Tab.swift in Sources */,
 				F333B3BB2B80CF750005B84D /* Preview Property.swift in Sources */,
@@ -6116,20 +6243,37 @@
 				F3458BF02B36EA49000E8324 /* App Delegate.swift in Sources */,
 				F32FD7192B1E042C00723B88 /* Websocket Delegate.swift in Sources */,
 				F30C13122A54609000A7EFF0 /* Server List.swift in Sources */,
+				F36B14812DC3BC3E008C1AF9 /* Content View.swift in Sources */,
+				F36B14822DC3BC3E008C1AF9 /* Stack Content View.swift in Sources */,
+				F3C1E5972DC741C6007F2054 /* 3 Column Content.swift in Sources */,
+				F36B14A72DC6325F008C1AF9 /* Sidebar Server Card.swift in Sources */,
+				F36B148A2DC3BC3E008C1AF9 /* 3 Column Content View.swift in Sources */,
+				F36B148B2DC3BC3E008C1AF9 /* Ingredient.swift in Sources */,
+				F36B148C2DC3BC3E008C1AF9 /* 2 Column Content View.swift in Sources */,
+				F36B14902DC3BC3E008C1AF9 /* 2 Column Section List.swift in Sources */,
+				F36B14912DC3BC3E008C1AF9 /* Nav Model.swift in Sources */,
+				F36B14B12DC63324008C1AF9 /* GameKit.swift in Sources */,
 				F3015DEE2D9F427700B9BCC6 /* Log List Filter.swift in Sources */,
+				F36B14A12DC3EA70008C1AF9 /* Panel Section List.swift in Sources */,
 				F3A563282D9EF21B009AA363 /* Log Meta Card.swift in Sources */,
 				F3AB4A782CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
 				F39EA2DF2D5CB5E200329468 /* Linking VM.swift in Sources */,
 				F32FD7172B1E042400723B88 /* Websocket.swift in Sources */,
+				F36B14A32DC4CAF6008C1AF9 /* Route.swift in Sources */,
 				F30088AD2B3A1F500051476C /* User View.swift in Sources */,
 				F30088DA2B3A3BF50051476C /* Console View.swift in Sources */,
 				F30088942B3A03050051476C /* Log VM.swift in Sources */,
 				F3464D282A86398000188B0C /* Power Signal App Enum.swift in Sources */,
 				F3DF50CA2B38FDDE00206CAE /* User 2Fa.swift in Sources */,
+				F36B14C52DC64DF2008C1AF9 /* Nav Mode Button.swift in Sources */,
+				F36B14C62DC64DF2008C1AF9 /* Nav Mode Picker Row.swift in Sources */,
+				F36B14C72DC64DF2008C1AF9 /* Nav Mode Picker.swift in Sources */,
+				F36B14C82DC64DF2008C1AF9 /* Nav Mode.swift in Sources */,
 				F373CDB42D895419008B64BE /* Log Topbar.swift in Sources */,
 				F373CDB52D895419008B64BE /* Log Topbar Card.swift in Sources */,
 				F31F32032D52DB950095DD19 /* Color Theme.swift in Sources */,
 				F35B9F5C2A2DC8D60045D014 /* Nav State.swift in Sources */,
+				F36B14BE2DC64D29008C1AF9 /* General Settings.swift in Sources */,
 			);
 		};
 		F3E2BEF12C1DA07E00B7A6D4 /* Sources */ = {
@@ -7458,6 +7602,14 @@
 				kind = branch;
 			};
 		};
+		F36B14B82DC64CDF008C1AF9 /* XCRemoteSwiftPackageReference "SettingsKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TopScrech/SettingsKit";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		F36B73952C8B055600E858FE /* XCRemoteSwiftPackageReference "Audio-Visualizer" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TopScrech/Audio-Visualizer";
@@ -7725,6 +7877,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F36B14552DC39DD8008C1AF9 /* XCRemoteSwiftPackageReference "GaypadKit" */;
 			productName = GaypadKit;
+		};
+		F36B14B92DC64CDF008C1AF9 /* SettingsKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F36B14B82DC64CDF008C1AF9 /* XCRemoteSwiftPackageReference "SettingsKit" */;
+			productName = SettingsKit;
 		};
 		F36B736C2C89B6BE00E858FE /* PteroNet */ = {
 			isa = XCSwiftPackageProductDependency;

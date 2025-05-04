@@ -1,25 +1,12 @@
 import ScrechKit
 import PteroNet
-import GameKit
 
-extension UserDefaults {
-    func setServerAttributesArray(_ servers: [ServerAttributes], forKey key: String) {
-        let encoder = JSONEncoder()
-        
-        if let data = try? encoder.encode(servers) {
-            set(data, forKey: key)
-        }
-    }
-    
-    func serverAttributesArray(forKey key: String) -> [ServerAttributes]? {
-        guard let data = data(forKey: key) else {
-            return nil
-        }
-        
-        let decoder = JSONDecoder()
-        
-        return try? decoder.decode([ServerAttributes].self, from: data)
-    }
+struct ItunesAppInfo: Decodable {
+    let results: [ItunesAppInfoResult]
+}
+
+struct ItunesAppInfoResult: Decodable {
+    let version: String
 }
 
 @Observable
@@ -43,18 +30,6 @@ final class ServerListVM {
     
     var selectedServer: ServerAttributes?
     
-    var filteredServers: [ServerAttributes] {
-        servers.filter { server in
-            let matchesName = searchField.isEmpty           || server.name.localizedStandardContains(searchField)
-            let matchesDescription = searchField.isEmpty    || server.description.localizedStandardContains(searchField)
-            let matchesNode = displayedNode.isEmpty         || server.node == displayedNode
-            let matchesSuspended = !filterBySuspended       || server.isSuspended
-            let matchesNotSuspended = !filterByNotSuspended || !server.isSuspended
-            
-            return matchesName && matchesDescription && matchesNode && matchesSuspended && matchesNotSuspended
-        }
-    }
-    
     var nodes: [String] {
         Array(Set(servers.map(\.node)))
             .sorted()
@@ -75,6 +50,18 @@ final class ServerListVM {
     var hasFrozenServers: Bool {
         servers.contains {
             $0.isSuspended
+        }
+    }
+    
+    var filteredServers: [ServerAttributes] {
+        servers.filter { server in
+            let matchesName = searchField.isEmpty           || server.name.localizedStandardContains(searchField)
+            let matchesDescription = searchField.isEmpty    || server.description.localizedStandardContains(searchField)
+            let matchesNode = displayedNode.isEmpty         || server.node == displayedNode
+            let matchesSuspended = !filterBySuspended       || server.isSuspended
+            let matchesNotSuspended = !filterByNotSuspended || !server.isSuspended
+            
+            return matchesName && matchesDescription && matchesNode && matchesSuspended && matchesNotSuspended
         }
     }
     
@@ -114,36 +101,6 @@ final class ServerListVM {
             self.alertUpdate = true
         } else {
             print("The app is up to date")
-        }
-    }
-    
-    struct ItunesAppInfo: Decodable {
-        let results: [ItunesAppInfoResult]
-    }
-    
-    struct ItunesAppInfoResult: Decodable {
-        let version: String
-    }
-    
-    func submitScore() async {
-        guard !ValueStore().adminServerList else {
-            return
-        }
-        
-        let score = self.servers.filter {
-            $0.serverOwner
-        }.count
-        
-        do {
-            try await GKLeaderboard.submitScore(
-                score, context: 0,
-                player: GKLocalPlayer.local,
-                leaderboardIDs: ["owned_servers"]
-            )
-            
-            print("Score submitted")
-        } catch {
-            print("Failed to submit score: \(error.localizedDescription)")
         }
     }
     

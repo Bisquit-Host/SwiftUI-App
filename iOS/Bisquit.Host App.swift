@@ -2,13 +2,10 @@ import ScrechKit
 import SwiftData
 import TipKit
 import GameKit
+import Algorithms
 
 #if canImport(CoreSpotlight)
 import CoreSpotlight
-#endif
-
-#if canImport(Algorithms)
-import Algorithms
 #endif
 
 #if canImport(SafariCover)
@@ -26,7 +23,7 @@ import GaypadKit
 @main
 struct BisquitHostApp: App {
     @StateObject private var store = ValueStore()
-    private var navState = NavState()
+    private var nav = NavState()
     
 #if os(iOS) || os(tvOS) || os(visionOS)
     @Environment(\.scenePhase) private var phase
@@ -85,7 +82,7 @@ struct BisquitHostApp: App {
                 .onContinueUserActivity(CSSearchableItemActionType, perform: handleSpotlightActivity)
 #endif
         }
-        .environment(navState)
+        .environment(nav)
         .modelContainer(container)
         .environmentObject(store)
         .defaultAppStorage(.init(suiteName: "group.Bisquit-host")!)
@@ -136,7 +133,7 @@ struct BisquitHostApp: App {
         
 #if !os(macOS)
         delay(0.4) {
-            navState.navigate(.toPanel(id))
+            nav.navigate(.toPanel(id))
         }
 #endif
     }

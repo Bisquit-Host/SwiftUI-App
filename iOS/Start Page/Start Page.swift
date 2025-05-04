@@ -3,7 +3,7 @@ import SwiftData
 
 struct StartPage: View {
     @State var vm = StartPageVM()
-    @Environment(NavState.self) private var navState
+    @Environment(NavState.self) private var nav
     @EnvironmentObject var store: ValueStore
     
     @Environment(\.dismiss) private var dismiss
