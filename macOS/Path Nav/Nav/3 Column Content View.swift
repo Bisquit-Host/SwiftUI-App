@@ -15,13 +15,9 @@ struct ThreeColumnContentView: View {
         NavigationSplitView(columnVisibility: $nav.columnVisibility) {
             Sidebar()
         } content: {
-            ThreeColumnDetailView()
+            ThreeColumnContent()
         } detail: {
-            if let selectedTab = nav.selectedTab {
-                Text(selectedTab.title)
-            } else {
-                Text("Select a section")
-            }
+            ThreeColumnDetail()
         }
         .backgroundBlur()
         .task {

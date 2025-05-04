@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-struct ThreeColumnDetailView: View {
+struct ThreeColumnContent: View {
     @Environment(NavModel.self) private var nav
     
     var body: some View {
@@ -28,7 +28,7 @@ struct ThreeColumnDetailView: View {
 }
 
 #Preview() {
-    ThreeColumnDetailView()
+    ThreeColumnContent()
         .environment(ServerListVM())
         .environment(NavModel(selectedCategory: nil))
 }

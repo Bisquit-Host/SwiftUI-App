@@ -1,4 +1,4 @@
-enum PanelTab: String, CaseIterable {
+enum PanelTab: String, CaseIterable, Identifiable, Codable {
     case info = "Info",
          console = "Console",
          files = "Files",
@@ -13,4 +13,8 @@ enum PanelTab: String, CaseIterable {
          logs = "Logs",
          admin = "Admin",
          subdomains = "Subdomains"
+    
+    var id: String {
+        rawValue
+    }
 }
