@@ -19,7 +19,6 @@ struct ContentView: View {
             case .stack?:
                 StackContentView()
                 
-                
             case .twoColumn?:
                 TwoColumnContentView()
                 
