@@ -14,10 +14,16 @@ struct ColumnDetail: View {
     
     private let tab: PanelTab?
     private let server: ServerAttributes
+    private var focusedList: FocusState<FocusedList?>.Binding
     
-    init(_ tab: PanelTab? = nil, server: ServerAttributes) {
+    init(
+        _ tab: PanelTab? = nil,
+        server: ServerAttributes,
+        focusedList: FocusState<FocusedList?>.Binding
+    ) {
         self.tab = tab
         self.server = server
+        self.focusedList = focusedList
         
         let id = server.id
         vm = PanelVM(id)
@@ -118,6 +124,6 @@ struct ColumnDetail: View {
     }
 }
 
-#Preview {
-    ColumnDetail(server: PreviewProp.serverAttributes)
-}
+//#Preview {
+//    ColumnDetail(server: PreviewProp.serverAttributes)
+//}

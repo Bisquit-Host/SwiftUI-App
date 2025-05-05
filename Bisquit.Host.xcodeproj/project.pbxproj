@@ -1567,6 +1567,7 @@
 		F3E8B3502CF485FB005D25F8 /* Console Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E8B34E2CF485FB005D25F8 /* Console Message.swift */; };
 		F3E8B3512CF485FB005D25F8 /* Console Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E8B34E2CF485FB005D25F8 /* Console Message.swift */; };
 		F3E97C7929B4B569008CBDD6 /* Credentials VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E97C7829B4B569008CBDD6 /* Credentials VM.swift */; };
+		F3EAD3DF2DC960DA00D5D28D /* Focused List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EAD3DE2DC960DA00D5D28D /* Focused List.swift */; };
 		F3EB09CE2A29531B0073916A /* Des Image VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37F51C329DAF8D70030C1C4 /* Des Image VM.swift */; };
 		F3EB09CF2A2953200073916A /* Des Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5B6295903100006D126 /* Des Image.swift */; };
 		F3EB09D12A29532D0073916A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F3EB09D02A29532D0073916A /* Kingfisher */; };
@@ -2276,6 +2277,7 @@
 		F3E8415529FECB6800609DA3 /* Browser Sticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Browser Sticker.swift"; sourceTree = "<group>"; };
 		F3E8B34E2CF485FB005D25F8 /* Console Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Console Message.swift"; sourceTree = "<group>"; };
 		F3E97C7829B4B569008CBDD6 /* Credentials VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Credentials VM.swift"; sourceTree = "<group>"; };
+		F3EAD3DE2DC960DA00D5D28D /* Focused List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Focused List.swift"; sourceTree = "<group>"; };
 		F3EB09E12A29805A0073916A /* Des Video Watch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Des Video Watch.swift"; sourceTree = "<group>"; };
 		F3EB09EC2A2987F00073916A /* QuickLook File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuickLook File.swift"; sourceTree = "<group>"; };
 		F3EDEE3029C06E9700B08696 /* Panel Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Tab.swift"; sourceTree = "<group>"; };
@@ -3237,6 +3239,7 @@
 				F36B14A22DC4CAF6008C1AF9 /* Route.swift */,
 				F36B14702DC3BC3E008C1AF9 /* Nav Model.swift */,
 				F36B14732DC3BC3E008C1AF9 /* Ingredient.swift */,
+				F3EAD3DE2DC960DA00D5D28D /* Focused List.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -6156,6 +6159,7 @@
 				F3FF3E972D9411B400EDFBC6 /* Intro Parent.swift in Sources */,
 				F300889B2B3A0E1A0051476C /* Startup VM.swift in Sources */,
 				F33DE5092B364EBC00E257D8 /* Tab Info.swift in Sources */,
+				F3EAD3DF2DC960DA00D5D28D /* Focused List.swift in Sources */,
 				F35F65942B1D1A0B00431EB7 /* Panel VM.swift in Sources */,
 				F3B138722A2D232B0026EAEE /* Server Card VM.swift in Sources */,
 				F33DE4E72B35089000E257D8 /* Background Blur.swift in Sources */,

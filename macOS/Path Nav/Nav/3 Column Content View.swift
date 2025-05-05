@@ -1,9 +1,5 @@
 import SwiftUI
 
-enum FocusedList: String, Hashable {
-    case serverList, sectionList
-}
-
 struct ThreeColumnContentView: View {
     @State private var sectionsVM = PanelSectionVM()
     @Environment(NavModel.self) private var nav
@@ -24,7 +20,7 @@ struct ThreeColumnContentView: View {
                 .focused($focusedList, equals: .sectionList)
         } detail: {
             if let server = nav.selectedServers.first {
-                ColumnDetail(server: server)
+                ColumnDetail(server: server, focusedList: $focusedList)
             } else {
                 Text("Multiple servers selected")
             }
