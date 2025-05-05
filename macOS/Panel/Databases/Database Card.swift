@@ -32,6 +32,11 @@ struct DatabaseCard: View {
         }
         .padding()
         .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
+        .overlay {
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(.gray.opacity(0.25), lineWidth: 1)
+        }
+        .frame(minWidth: 200, maxWidth: 800)
         .contextMenu {
             MenuButton("Rotate password", icon: "lock.open.rotation") {
                 vm.rotatePassword(database.id)
