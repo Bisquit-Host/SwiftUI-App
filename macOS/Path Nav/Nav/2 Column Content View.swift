@@ -17,7 +17,11 @@ struct TwoColumnContentView: View {
                     .navigationDestination(for: Route.self) { route in
                         switch route {
                         case .tab(let tab):
-                            ColumnDetail(tab)
+                            if let server = nav.selectedServers.first {
+                                ColumnDetail(tab, server: server)
+                            } else {
+                                Text("Multiple servers selected")
+                            }
                             
                         default:
                             EmptyView()

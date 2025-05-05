@@ -15,7 +15,11 @@ struct ThreeColumnContentView: View {
         } content: {
             ThreeColumnContent()
         } detail: {
-            ColumnDetail()
+            if let server = nav.selectedServers.first {
+                ColumnDetail(server: server)
+            } else {
+                Text("Multiple servers selected")
+            }
         }
         .backgroundBlur()
         .task {

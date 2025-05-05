@@ -8,7 +8,7 @@ struct AllocationList: View {
     
     init(_ server: ServerAttributes) {
         self.server = server
-        self.vm = AllocationVM(server.id)
+        vm = AllocationVM(server.id)
     }
     
     var body: some View {

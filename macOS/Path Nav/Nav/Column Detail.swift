@@ -1,12 +1,33 @@
 import SwiftUI
+import PteroNet
 
 struct ColumnDetail: View {
     @Environment(NavModel.self) private var nav
+    @State private var vm: PanelVM
+    @State private var fileVM: FileTabVM
+    @State private var startupVM: StartupVM
+    @State private var backupVM: BackupVM
+    @State private var databaseVM: DatabaseVM
+    @State private var scheduleVM: ScheduleVM
+    @State private var consoleVM: ConsoleVM
+    @State private var allocationVM: AllocationVM
     
     private let tab: PanelTab?
+    private let server: ServerAttributes
     
-    init(_ tab: PanelTab? = nil) {
+    init(_ tab: PanelTab? = nil, server: ServerAttributes) {
         self.tab = tab
+        self.server = server
+        
+        let id = server.id
+        vm = PanelVM(id)
+        fileVM = FileTabVM(id)
+        backupVM = BackupVM(id)
+        databaseVM = DatabaseVM(id)
+        scheduleVM = ScheduleVM(id)
+        startupVM = StartupVM(id)
+        consoleVM = ConsoleVM(id)
+        allocationVM = AllocationVM(id)
     }
     
     private var activeTab: PanelTab? {
@@ -18,23 +39,86 @@ struct ColumnDetail: View {
     }
     
     var body: some View {
-        if let server = nav.selectedServers.first {
-            let id = server.id
-            
-            switch activeTab {
-            case .logs:
-                LogList(id)
+        VStack {
+            if let server = nav.selectedServers.first {
+                let id = server.id
                 
-            case nil:
-                Text("Select a section")
-                
-            default:
-                Text("Oops...")
+                switch activeTab {
+                case .logs:
+                    LogList(id)
+                    
+                case .allocations:
+                    AllocationList(id)
+                        .environment(allocationVM)
+                    
+                case .databases:
+                    DatabaseList(id)
+                        .environment(databaseVM)
+                    
+                case .backups:
+                    BackupList(server)
+                        .environment(backupVM)
+                    
+                case .files:
+                    FileTab(id)
+                        .environmentObject(fileVM)
+                    
+                case .schedules:
+                    ScheduleList(id)
+                        .environment(scheduleVM)
+                    
+                case .startup:
+                    StartupList(id)
+                    
+                case .console:
+                    ConsoleView(id)
+                        .environment(vm)
+                    
+                case .users: UserList(id)
+                    
+                    //            case .subdomains: SubdomainList(id)
+                    
+                    
+                case nil:
+                    Text("Select a section")
+                    
+                default:
+                    Text("Oops...")
+                }
             }
+        }
+        .environment(vm)
+        .task {
+            fetchData()
+        }
+        .onDisappear {
+            vm.disconnectWebSocket()
+        }
+    }
+    
+    private func fetchData() {
+        vm.fetchServerDetails()
+        
+        vm.consoleDetails { data in
+            if let data {
+                vm.connectWebSocket(data)
+            }
+        }
+        
+        if !System.lowPowerMode {
+            fileVM.fetchFiles()
+            backupVM.fetchBackups()
+            databaseVM.fetchDatabases()
+            scheduleVM.fetchSchedules()
+            startupVM.fetchStartupVariables()
+        }
+        
+        vm.updateBackups = {
+            backupVM.fetchBackups()
         }
     }
 }
 
 #Preview {
-    ColumnDetail()
+    ColumnDetail(server: PreviewProp.serverAttributes)
 }

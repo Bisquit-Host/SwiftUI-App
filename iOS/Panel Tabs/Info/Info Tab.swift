@@ -13,10 +13,12 @@ struct InfoTab: View {
     
     init(_ server: ServerAttributes) {
         self.server = server
-        self.serverSettingsVM = ServerSettingsVM(server.id)
-        self.logVM = LogVM(server.id)
-        self.userVM = UsersVM(server.id)
-        self.subdomainVM = SubdomainVM(server.id)
+        let id = server.id
+        
+        serverSettingsVM = ServerSettingsVM(id)
+        logVM = LogVM(id)
+        userVM = UsersVM(id)
+        subdomainVM = SubdomainVM(id)
     }
     
     @State private var sheetCustomization = false
