@@ -9,6 +9,7 @@ struct ContentView: View {
     
 #if os(macOS)
     @Environment(\.appearsActive) private var appearsActive
+    @Environment(\.openSettings) private var openSettings
 #endif
     
     var body: some View {
@@ -71,6 +72,9 @@ struct ContentView: View {
             if !appearsActive {
                 save()
             }
+        }
+        .onGamepadPressed(.menu) {
+            openSettings()
         }
 #endif
     }

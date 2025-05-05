@@ -76,8 +76,7 @@ struct ColumnDetail: View {
                     
                 case .users: UserList(id)
                     
-                    //            case .subdomains: SubdomainList(id)
-                    
+                    // case .subdomains: SubdomainList(id)
                     
                 case nil:
                     Text("Select a section")
