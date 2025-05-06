@@ -12,7 +12,13 @@ struct BackupCard: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(backup.name)
+            HStack {
+                Text(backup.name)
+                
+                if backup.isLocked {
+                    Image(systemName: "lock")
+                }
+            }
             
             Text(backup.createdAt)
                 .footnote()
@@ -20,11 +26,11 @@ struct BackupCard: View {
         }
         .padding()
         .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
-        .overlay(alignment: .topTrailing) {
-            if backup.isLocked {
-                Image(systemName: "lock")
-            }
+        .overlay {
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(.gray.opacity(0.25), lineWidth: 1)
         }
+        .frame(minWidth: 200, maxWidth: 800)
         .contextMenu {
             Button {
                 vm.lockBackup(backup.uuid)

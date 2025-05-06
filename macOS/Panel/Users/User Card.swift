@@ -45,11 +45,18 @@ struct UserCard: View {
             
             Spacer()
             
-            Image(systemName: "lock.fill")
+            Image(systemName: "lock")
                 .title2()
                 .foregroundStyle(user.twoFaEnabled ? .green : .red)
         }
         .foregroundStyle(.foreground)
+        .padding()
+        .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
+        .overlay {
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(.gray.opacity(0.25), lineWidth: 1)
+        }
+        .frame(minWidth: 200, maxWidth: 800)
         .contextMenu {
             Section {
                 MenuButton("Delete", role: .destructive, icon: "trash") {
