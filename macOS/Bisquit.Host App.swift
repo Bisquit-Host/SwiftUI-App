@@ -36,13 +36,15 @@ struct BisquitHostApp: App {
         
         _ = MetricKitManager.shared
         
-        GKLocalPlayer.local.authenticateHandler = { _, error in
-            guard error == nil else {
-                print(error?.localizedDescription ?? "Game Center auth failed")
-                return
+        if ValueStore().enableGameCenter {
+            GKLocalPlayer.local.authenticateHandler = { _, error in
+                guard error == nil else {
+                    print(error?.localizedDescription ?? "Game Center auth failed")
+                    return
+                }
+                
+                print("Game Center authenticated")
             }
-            
-            print("Game Center authenticated")
         }
     }
     

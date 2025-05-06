@@ -54,25 +54,27 @@ struct BisquitHostApp: App {
         _ = MetricKitManager.shared
 #endif
         
+        if ValueStore().enableGameCenter {
 #if os(watchOS)
-        GKLocalPlayer.local.authenticateHandler = { error in
-            guard error == nil else {
-                print(error?.localizedDescription ?? "Game Center authentication failed")
-                return
+            GKLocalPlayer.local.authenticateHandler = { error in
+                guard error == nil else {
+                    print(error?.localizedDescription ?? "Game Center authentication failed")
+                    return
+                }
+                
+                print("Game Center authenticated")
             }
-            
-            print("Game Center authenticated")
-        }
 #else
-        GKLocalPlayer.local.authenticateHandler = { _, error in
-            guard error == nil else {
-                print(error?.localizedDescription ?? "Game Center authentication failed")
-                return
+            GKLocalPlayer.local.authenticateHandler = { _, error in
+                guard error == nil else {
+                    print(error?.localizedDescription ?? "Game Center authentication failed")
+                    return
+                }
+                
+                print("Game Center authenticated")
             }
-            
-            print("Game Center authenticated")
-        }
 #endif
+        }
     }
     
     var body: some Scene {

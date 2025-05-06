@@ -6,6 +6,7 @@ final class ValueStore: ObservableObject {
     @AppStorage("nav_mode") var navMode: NavMode?
 #endif
     
+    @AppStorage("enable_game_center") var enableGameCenter = true
     @AppStorage("request_permissions") var requestPermissions = true
     @AppStorage("hide_status_bar") var hideStatusBar = false
     @AppStorage("hide_server_names") var hideServerNames = false

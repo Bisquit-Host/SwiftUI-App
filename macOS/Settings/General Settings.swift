@@ -19,6 +19,8 @@ struct GeneralSettings: View {
             }
             
             Section {
+                Toggle("Game Center", isOn: $store.enableGameCenter)
+                
                 LaunchAtLogin.Toggle()
             }
             
