@@ -52,7 +52,7 @@ struct SftpDetails: View {
                 }
             }
         }
-        .foregroundStyle(.primary)
+        .primary()
         .frame(maxWidth: 500)
     }
     

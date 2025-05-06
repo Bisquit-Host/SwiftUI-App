@@ -29,7 +29,7 @@ struct LogMetaView: View {
         .textSelection(.enabled)
 #endif
         .navigationTitle("Properties")
-        .foregroundStyle(.primary)
+        .primary()
         .toolbarTitleDisplayMode(.inline)
         .presentationDragIndicator(.hidden)
         .presentationDetents([.medium, .large])

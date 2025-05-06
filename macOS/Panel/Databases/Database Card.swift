@@ -17,26 +17,27 @@ struct DatabaseCard: View {
             Text(database.name)
             
             let endpoint = Text(host.address + ":\(host.port)")
-                .foregroundStyle(.primary)
+                .primary()
             
             Text("Endpoint: \(endpoint)")
                 .footnote()
                 .secondary()
             
             let id = Text(database.id)
-                .foregroundStyle(.primary)
+                .primary()
             
             Text("Identifier: \(id)")
                 .footnote()
                 .secondary()
         }
         .padding()
+        .frame(width: 800)
         .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
         .overlay {
             RoundedRectangle(cornerRadius: 16)
                 .stroke(.gray.opacity(0.25), lineWidth: 1)
         }
-        .frame(minWidth: 200, maxWidth: 800)
+//        .frame(minWidth: 200, maxWidth: 800)
         .contextMenu {
             MenuButton("Rotate password", icon: "lock.open.rotation") {
                 vm.rotatePassword(database.id)

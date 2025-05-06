@@ -33,7 +33,7 @@ struct PanelToolbarModifier: ViewModifier {
                                 .frame(width: 35, height: 35)
                                 .background(.ultraThinMaterial, in: .circle)
                         }
-                        .foregroundStyle(.primary)
+                        .primary()
                         
                         Button {
                             consoleVM.inspectorPresented = true
@@ -44,7 +44,7 @@ struct PanelToolbarModifier: ViewModifier {
                                 .frame(width: 35, height: 35)
                                 .background(.ultraThinMaterial, in: .circle)
                         }
-                        .foregroundStyle(.primary)
+                        .primary()
                         .padding(.horizontal, -10)
                     }
                     
@@ -71,7 +71,7 @@ struct PanelToolbarModifier: ViewModifier {
                                 .frame(width: 35, height: 35)
                                 .background(.ultraThinMaterial, in: .circle)
                         }
-                        .foregroundStyle(.primary)
+                        .primary()
                         .padding(.horizontal, -10)
                     }
                     
@@ -85,7 +85,7 @@ struct PanelToolbarModifier: ViewModifier {
                             .frame(width: 35, height: 35)
                             .background(.ultraThinMaterial, in: .circle)
                     }
-                    .foregroundStyle(.primary)
+                    .primary()
                     .keyboardShortcut("S")
                 }
             }

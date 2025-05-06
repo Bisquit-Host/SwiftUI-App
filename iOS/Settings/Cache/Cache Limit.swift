@@ -28,7 +28,7 @@ struct CacheLimit: View {
                     .tertiary()
             }
         }
-        .foregroundStyle(.primary)
+        .primary()
     }
     
     private func updateCacheLimit(_ limit: CacheLimit) {

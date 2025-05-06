@@ -21,6 +21,7 @@ struct ThreeColumnContentView: View {
         } detail: {
             if let server = nav.selectedServers.first {
                 ColumnDetail(server: server, focusedList: $focusedList)
+                    .id(server.id)
             } else {
                 Text("Multiple servers selected")
             }
