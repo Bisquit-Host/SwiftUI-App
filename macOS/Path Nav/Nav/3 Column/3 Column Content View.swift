@@ -49,6 +49,23 @@ struct ThreeColumnContentView: View {
             }
             .frame(minHeight: 500)
         }
+        .toolbar {
+            Button("") {
+                if focusedList == .sectionList {
+                    focusedList = .serverList
+                }
+            }
+            .opacity(0)
+            .keyboardShortcut(.leftArrow, modifiers: [])
+            
+            Button("") {
+                if focusedList == .serverList {
+                    focusedList = .sectionList
+                }
+            }
+            .opacity(0)
+            .keyboardShortcut(.rightArrow, modifiers: [])
+        }
     }
     
     private func moveSelectionDown() {
