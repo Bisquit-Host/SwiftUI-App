@@ -18,7 +18,7 @@ struct BrowserHints: View {
         .padding(5)
         .padding(.horizontal, 8)
         .background(.regularMaterial, in: .rect(cornerRadius: 5))
-        .primary()
+        .foregroundStyle(.primary)
         .padding(.horizontal)
     }
 }

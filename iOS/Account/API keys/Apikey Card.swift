@@ -31,7 +31,7 @@ struct ApikeyCard: View {
                 
                 if let lastUsed = key.lastUsed {
                     let lastUsed = Text(timeSinceISO(lastUsed))
-                        .primary()
+                        .foregroundStyle(.primary)
                     
                     Text("Last used: \(lastUsed)")
                         .footnote()

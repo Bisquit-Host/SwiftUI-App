@@ -29,6 +29,11 @@ struct DatabaseList: View {
         .onChange(of: id) {
             vm.fetchDatabases()
         }
+        .overlay {
+            if vm.databases.isEmpty {
+                ContentUnavailableView("No databases found", systemImage: "externaldrive.badge.icloud")
+            }
+        }
     }
 }
 

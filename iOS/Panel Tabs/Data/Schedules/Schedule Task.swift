@@ -29,13 +29,13 @@ struct ScheduleTask: View {
                         .subheadline()
                     
                     let offset = Text(task.timeOffset == 0 ? "-" : "\(task.timeOffset)")
-                        .primary()
+                        .foregroundStyle(.primary)
                     
                     Text("Time offset: \(offset)")
                         .secondary()
                     
                     let payload = Text(task.payload)
-                        .primary()
+                        .foregroundStyle(.primary)
                     
                     Text("Payload: \(payload)")
                         .secondary()

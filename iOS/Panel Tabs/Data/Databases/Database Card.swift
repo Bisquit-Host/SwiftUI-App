@@ -28,14 +28,14 @@ struct DatabaseCard: View {
                         .headline()
                     
                     let endpoint = Text(host.address + ":\(host.port)")
-                        .primary()
+                        .foregroundStyle(.primary)
                     
                     Text("Endpoint: \(endpoint)")
                         .footnote()
                         .secondary()
                     
                     let id = Text(db.id)
-                        .primary()
+                        .foregroundStyle(.primary)
                     
                     Text("Identifier: \(id)")
                         .footnote()

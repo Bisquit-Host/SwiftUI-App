@@ -73,7 +73,7 @@ struct FolderFile: View {
                         .frame(width: 35, height: 35)
                         .background(.ultraThinMaterial, in: .circle)
                 }
-                .primary()
+                .foregroundStyle(.primary)
                 .padding(.horizontal, -10)
             }
         }

@@ -21,7 +21,7 @@ struct CredentialsButton: View {
             }
         }
         .transparentSection()
-        .primary()
+        .foregroundStyle(.primary)
     }
 }
 

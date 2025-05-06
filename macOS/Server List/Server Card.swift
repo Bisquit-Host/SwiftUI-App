@@ -34,7 +34,7 @@ struct ServerCard: View {
             }
         }
         .padding(.horizontal)
-        .primary()
+        .foregroundStyle(.primary)
         .title2(design: .rounded)
         .buttonStyle(.borderless)
         .onHover { hover in

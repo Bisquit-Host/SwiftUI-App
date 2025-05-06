@@ -21,7 +21,7 @@ struct LogList: View {
                 } header: {
                     Text(month)
                         .title3(.semibold, design: .rounded)
-                        .primary()
+                        .foregroundStyle(.primary)
                 }
                 .transparentSection()
             }

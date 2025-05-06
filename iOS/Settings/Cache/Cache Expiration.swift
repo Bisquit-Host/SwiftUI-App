@@ -33,7 +33,7 @@ struct CacheExpiration: View {
                     .tertiary()
             }
         }
-        .primary()
+        .foregroundStyle(.primary)
     }
     
     private func updateCacheExpiration(_ expiration: CacheExpiration) {

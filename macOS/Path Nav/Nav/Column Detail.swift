@@ -92,6 +92,7 @@ struct ColumnDetail: View {
                 }
             }
         }
+        .frame(minWidth: 300)
         .environment(vm)
         .task {
             fetchData()
