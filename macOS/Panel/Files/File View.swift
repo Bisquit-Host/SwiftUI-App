@@ -14,16 +14,26 @@ struct FileView: View {
     }
     
     var body: some View {
-        HStack {
-            FileIcon(file.mimetype)
-                .semibold()
-                .frame(width: 20)
+        NavigationLink {
             
-            Text(file.name)
+        } label: {
+            HStack {
+                FileIcon(file.mimetype)
+                    .semibold()
+                    .frame(width: 20)
+                
+                Text(file.name)
+            }
         }
+        .buttonStyle(.plain)
         .padding(5)
         .frame(maxWidth: .infinity, alignment: .leading)
         .fileContextMenu(id, file: file, at: root)
+        .background(.ultraThinMaterial, in: .rect(cornerRadius: 8))
+        .overlay {
+            RoundedRectangle(cornerRadius: 8)
+                .stroke(.gray.opacity(0.25), lineWidth: 1)
+        }
     }
 }
 
