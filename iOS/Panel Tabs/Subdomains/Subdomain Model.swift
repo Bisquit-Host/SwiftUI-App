@@ -1,5 +1,3 @@
-import Foundation
-
 struct SubdomainResponse: Decodable {
     let limit: Int
     let domains: [Domain]
