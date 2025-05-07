@@ -16,7 +16,6 @@
 		F30038CC2D42387600363CF4 /* Sheet Remote File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30038C92D42387600363CF4 /* Sheet Remote File.swift */; };
 		F300888E2B39FAA60051476C /* Allocation VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCF5C42B3457AE005FFF2C /* Allocation VM.swift */; };
 		F30088902B39FAB80051476C /* Allocation List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300888F2B39FAB80051476C /* Allocation List.swift */; };
-		F30088912B39FB160051476C /* Allocation Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCF5C22B345792005FFF2C /* Allocation Card.swift */; };
 		F30088932B3A02D50051476C /* Log List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088922B3A02D50051476C /* Log List.swift */; };
 		F30088942B3A03050051476C /* Log VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367977D2A3A5AB6009F2788 /* Log VM.swift */; };
 		F30088962B3A033F0051476C /* Log Meta Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* Log Meta Parent.swift */; };
@@ -653,6 +652,7 @@
 		F361F8882D545E4D007B0565 /* Intent Handler.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F3FDFF5F2C89120D009EBB5C /* Intent Handler.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F361F88E2D546BA1007B0565 /* Circular Gauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF6A2A44F6E000331B51 /* Circular Gauge.swift */; };
 		F363C7FD2B7F7938005F6FF2 /* System Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7052A54C4BC00E89EC4 /* System Alerts.swift */; };
+		F3648ED32DCB9773001609AA /* Allocation Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3648ED22DCB9773001609AA /* Allocation Card.swift */; };
 		F36710342C99C3A100A8901A /* iMessage.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F3A7CEC32C8B685500413400 /* iMessage.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F36797732A39C4ED009F2788 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F36797722A39C4ED009F2788 /* Localizable.xcstrings */; };
 		F36797742A39C4ED009F2788 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F36797722A39C4ED009F2788 /* Localizable.xcstrings */; };
@@ -1999,6 +1999,7 @@
 		F35BB0382C656AD300631DBD /* Carousel Button Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Carousel Button Style.swift"; sourceTree = "<group>"; };
 		F35DA9582A28F5B100803E7E /* Upload Progress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Upload Progress.swift"; sourceTree = "<group>"; };
 		F35FEB062B09F003004DA05D /* API Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API Key.swift"; sourceTree = "<group>"; };
+		F3648ED22DCB9773001609AA /* Allocation Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation Card.swift"; sourceTree = "<group>"; };
 		F36797722A39C4ED009F2788 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		F36797772A3A55E1009F2788 /* Log List Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log List Parent.swift"; sourceTree = "<group>"; };
 		F367977A2A3A55F4009F2788 /* Log Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log Card.swift"; sourceTree = "<group>"; };
@@ -2509,6 +2510,7 @@
 			isa = PBXGroup;
 			children = (
 				F300888F2B39FAB80051476C /* Allocation List.swift */,
+				F3648ED22DCB9773001609AA /* Allocation Card.swift */,
 			);
 			path = Allocations;
 			sourceTree = "<group>";
@@ -6258,7 +6260,6 @@
 				F3E08EBF2A2CE87800116C1C /* Start Page.swift in Sources */,
 				F3E08EA52A2CE17900116C1C /* Home.swift in Sources */,
 				F30088BB2B3A21F80051476C /* Database List.swift in Sources */,
-				F30088912B39FB160051476C /* Allocation Card.swift in Sources */,
 				F348C6EB2A544893002D5BD6 /* App Container.swift in Sources */,
 				F3DF50CF2B39636A00206CAE /* User List.swift in Sources */,
 				F30088BD2B3A223E0051476C /* Database Card.swift in Sources */,
@@ -6286,6 +6287,7 @@
 				F36B148A2DC3BC3E008C1AF9 /* 3 Column Content View.swift in Sources */,
 				F36B148B2DC3BC3E008C1AF9 /* Ingredient.swift in Sources */,
 				F36B148C2DC3BC3E008C1AF9 /* 2 Column Content View.swift in Sources */,
+				F3648ED32DCB9773001609AA /* Allocation Card.swift in Sources */,
 				F36B14902DC3BC3E008C1AF9 /* 2 Column Section List.swift in Sources */,
 				F36B14912DC3BC3E008C1AF9 /* Nav Model.swift in Sources */,
 				F36B14B12DC63324008C1AF9 /* GameKit.swift in Sources */,
