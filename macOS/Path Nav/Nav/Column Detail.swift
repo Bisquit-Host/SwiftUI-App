@@ -11,6 +11,7 @@ struct ColumnDetail: View {
     @State private var scheduleVM: ScheduleVM
     @State private var consoleVM: ConsoleVM
     @State private var allocationVM: AllocationVM
+    @State private var subdomainVM: SubdomainVM
     
     private let tab: PanelTab?
     private let server: ServerAttributes
@@ -34,6 +35,7 @@ struct ColumnDetail: View {
         startupVM = StartupVM(id)
         consoleVM = ConsoleVM(id)
         allocationVM = AllocationVM(id)
+        subdomainVM = SubdomainVM(id)
     }
     
     private var activeTab: PanelTab? {
@@ -80,9 +82,12 @@ struct ColumnDetail: View {
                     ConsoleView(id)
                         .environment(vm)
                     
-                case .users: UserList(id)
+                case .subdomains:
+                    SubdomainList()
+                        .environment(subdomainVM)
                     
-                    // case .subdomains: SubdomainList(id)
+                case .users:
+                    UserList(id)
                     
                 case nil:
                     Text("Select a section")
@@ -117,6 +122,10 @@ struct ColumnDetail: View {
             databaseVM.fetchDatabases()
             scheduleVM.fetchSchedules()
             startupVM.fetchStartupVariables()
+            
+            Task {
+                await subdomainVM.fetchSubdomains()
+            }
         }
         
         vm.updateBackups = {

@@ -47,7 +47,11 @@ struct SubdomainCard: View {
             }
             
             Button {
+#if os(macOS)
+                NSPasteboard.general.setString(fullDomain, forType: .URL)
+#else
                 UIPasteboard.general.string = fullDomain
+#endif
             } label: {
                 Label("Copy", systemImage: "document.on.document")
             }

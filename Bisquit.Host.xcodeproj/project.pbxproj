@@ -653,6 +653,10 @@
 		F361F88E2D546BA1007B0565 /* Circular Gauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF6A2A44F6E000331B51 /* Circular Gauge.swift */; };
 		F363C7FD2B7F7938005F6FF2 /* System Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7052A54C4BC00E89EC4 /* System Alerts.swift */; };
 		F3648ED32DCB9773001609AA /* Allocation Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3648ED22DCB9773001609AA /* Allocation Card.swift */; };
+		F3648ED52DCB987C001609AA /* Subdomain Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C482D53935A0094BD7B /* Subdomain Model.swift */; };
+		F3648ED72DCB987C001609AA /* Subdomain Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C4C2D5395300094BD7B /* Subdomain Card.swift */; };
+		F3648ED82DCB987C001609AA /* Subdomain VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C442D53907E0094BD7B /* Subdomain VM.swift */; };
+		F3648EDB2DCB98BE001609AA /* Subdomain List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3648EDA2DCB98BE001609AA /* Subdomain List.swift */; };
 		F36710342C99C3A100A8901A /* iMessage.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F3A7CEC32C8B685500413400 /* iMessage.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F36797732A39C4ED009F2788 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F36797722A39C4ED009F2788 /* Localizable.xcstrings */; };
 		F36797742A39C4ED009F2788 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F36797722A39C4ED009F2788 /* Localizable.xcstrings */; };
@@ -2000,6 +2004,7 @@
 		F35DA9582A28F5B100803E7E /* Upload Progress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Upload Progress.swift"; sourceTree = "<group>"; };
 		F35FEB062B09F003004DA05D /* API Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API Key.swift"; sourceTree = "<group>"; };
 		F3648ED22DCB9773001609AA /* Allocation Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation Card.swift"; sourceTree = "<group>"; };
+		F3648EDA2DCB98BE001609AA /* Subdomain List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subdomain List.swift"; sourceTree = "<group>"; };
 		F36797722A39C4ED009F2788 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		F36797772A3A55E1009F2788 /* Log List Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log List Parent.swift"; sourceTree = "<group>"; };
 		F367977A2A3A55F4009F2788 /* Log Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log Card.swift"; sourceTree = "<group>"; };
@@ -3208,6 +3213,14 @@
 			path = SpriteKit;
 			sourceTree = "<group>";
 		};
+		F3648ED92DCB98B8001609AA /* Subdomains */ = {
+			isa = PBXGroup;
+			children = (
+				F3648EDA2DCB98BE001609AA /* Subdomain List.swift */,
+			);
+			path = Subdomains;
+			sourceTree = "<group>";
+		};
 		F36B14682DC3BC3A008C1AF9 /* Path Nav */ = {
 			isa = PBXGroup;
 			children = (
@@ -4021,6 +4034,7 @@
 			isa = PBXGroup;
 			children = (
 				F3E08ECD2A2CEDD800116C1C /* Panel View.swift */,
+				F3648ED92DCB98B8001609AA /* Subdomains */,
 				F323D8D62A2D6868002EDC62 /* Files */,
 				F30088DF2B3A44F60051476C /* Startup */,
 				F30088DC2B3A3FAC0051476C /* Console */,
@@ -6203,6 +6217,7 @@
 				F300888E2B39FAA60051476C /* Allocation VM.swift in Sources */,
 				F39038B02DC815BD006DF071 /* Column Detail.swift in Sources */,
 				F3015DE32D9F26C600B9BCC6 /* Log Card Timestamp.swift in Sources */,
+				F3648EDB2DCB98BE001609AA /* Subdomain List.swift in Sources */,
 				F30C130F2A54605B00A7EFF0 /* Nav Destinations.swift in Sources */,
 				F30088B62B3A21410051476C /* Schedule List.swift in Sources */,
 				F3DF50CD2B38FDE800206CAE /* Permission Card.swift in Sources */,
@@ -6249,6 +6264,9 @@
 				F35B9F612A2DCF9C0045D014 /* Stats Tab.swift in Sources */,
 				F36B14A52DC62F8D008C1AF9 /* Sidebar.swift in Sources */,
 				F348C6E92A54483D002D5BD6 /* Intro.swift in Sources */,
+				F3648ED52DCB987C001609AA /* Subdomain Model.swift in Sources */,
+				F3648ED72DCB987C001609AA /* Subdomain Card.swift in Sources */,
+				F3648ED82DCB987C001609AA /* Subdomain VM.swift in Sources */,
 				F31F31FF2D52BD940095DD19 /* System lowPowerMode.swift in Sources */,
 				F32FD7162B1E041D00723B88 /* Websocket Message.swift in Sources */,
 				F36B149C2DC3E9BB008C1AF9 /* Panel Section.swift in Sources */,
