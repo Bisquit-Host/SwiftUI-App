@@ -31,8 +31,6 @@ struct BackupList: View {
         .environment(vm)
         .navigationTitle("Backups")
         .padding()
-        .background(.clear)
-        .clipShape(.rect(cornerRadius: 16))
         .task {
             vm.fetchBackups()
         }

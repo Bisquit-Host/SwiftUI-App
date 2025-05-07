@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import PteroNet
 
 struct BackupCard: View {
@@ -11,18 +11,22 @@ struct BackupCard: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Text(backup.name)
-                
-                if backup.isLocked {
-                    Image(systemName: "lock")
+        HStack {
+            VStack(alignment: .leading) {
+                HStack {
+                    Text(backup.name)
+                    
+                    if backup.isLocked {
+                        Image(systemName: "lock")
+                    }
                 }
+                
+                Text(timeSinceISO(backup.createdAt))
+                    .footnote()
+                    .secondary()
             }
             
-            Text(backup.createdAt)
-                .footnote()
-                .secondary()
+            Spacer()
         }
         .padding()
         .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
