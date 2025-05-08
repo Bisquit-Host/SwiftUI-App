@@ -14,7 +14,7 @@ struct TwoColumnDetailView: View {
             } else {
                 List(selection: $nav.selectedTab) {
                     ForEach(PanelTab.allCases) { tab in
-                        NavigationLink(tab.title, value: Route.tab(tab))
+                        NavigationLink(tab.name, value: Route.tab(tab))
                     }
                 }
                 .scrollContentBackground(.hidden)

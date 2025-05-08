@@ -13,14 +13,13 @@ enum PanelTab: String, CaseIterable, Identifiable, Codable {
          databases,
          allocations,
          logs,
-         admin,
          subdomains
     
     var id: String {
         rawValue
     }
     
-    var title: LocalizedStringKey {
+    var name: LocalizedStringKey {
         switch self {
         case .info: "Info"
         case .console: "Console"
@@ -34,7 +33,6 @@ enum PanelTab: String, CaseIterable, Identifiable, Codable {
         case .databases: "Databases"
         case .allocations: "Allocations"
         case .logs: "Logs"
-        case .admin: "Admin"
         case .subdomains: "Subdomains"
         }
     }

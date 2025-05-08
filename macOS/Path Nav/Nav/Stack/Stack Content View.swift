@@ -31,7 +31,7 @@ struct StackContentView: View {
                 case .server:
                     List(selection: $nav.selectedTab) {
                         ForEach(PanelTab.allCases) { tab in
-                            NavigationLink(tab.title, value: Route.tab(tab))
+                            NavigationLink(tab.name, value: Route.tab(tab))
                         }
                     }
                     .navigationTitle(nav.selectedServers.first?.name ?? "Multiple servers selected")
@@ -44,7 +44,7 @@ struct StackContentView: View {
                     
                 case .tab(let tab):
                     VStack {
-                        Text(tab.title)
+                        Text(tab.name)
                             .onAppear {
                                 try? nav.save()
                             }

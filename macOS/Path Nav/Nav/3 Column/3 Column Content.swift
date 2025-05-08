@@ -14,7 +14,7 @@ struct ThreeColumnContent: View {
             } else {
                 List(selection: $nav.selectedTab) {
                     ForEach(PanelTab.allCases) { tab in
-                        NavigationLink(tab.title, value: tab)
+                        NavigationLink(tab.name, value: tab)
                     }
                 }
                 .scrollContentBackground(.hidden)
