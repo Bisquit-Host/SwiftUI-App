@@ -6,6 +6,12 @@ struct SheetCreateSubdomain: View {
     
     @Environment(\.dismiss) private var dismiss
     
+    private let allocations: [AllocationAttributes]
+    
+    init(_ allocations: [AllocationAttributes]) {
+        self.allocations = allocations
+    }
+    
     private var placeholder: String {
         let subdomain = vm.subdomain.isEmpty ? "<your subdomain>" : vm.subdomain
         
@@ -31,11 +37,23 @@ struct SheetCreateSubdomain: View {
                         Text(domain.domain)
                     }
                 }
-                .pickerStyle(.inline)
                 .transparentSection()
             }
             
+            Picker("Allocation", selection: $vm.selectedAllocation) {
+                ForEach(allocations) { allocation in
+                    let ip = allocation.ipAlias ?? allocation.ip
+                    let port = allocation.port.description
+                    
+                    Text(ip + ":" + port)
+                        .tag(allocation.id)
+                }
+            }
+            .transparentSection()
+            
             Section {
+                let disabled = vm.selectedAllocation == nil || vm.subdomain.isEmpty
+                
                 Button {
                     Task {
                         await vm.createSubdomain {
@@ -45,16 +63,19 @@ struct SheetCreateSubdomain: View {
                 } label: {
                     Label("Create", systemImage: "plus")
                 }
+                .foregroundStyle(disabled ? .secondary : .primary)
+                .disabled(disabled)
             }
             .transparentSection()
         }
+        .pickerStyle(.inline)
         .transparentList()
         .ornamentDismissButton()
     }
 }
 
 #Preview {
-    SheetCreateSubdomain()
+    SheetCreateSubdomain([])
         .environment(SubdomainVM(""))
         .darkSchemePreferred()
 }

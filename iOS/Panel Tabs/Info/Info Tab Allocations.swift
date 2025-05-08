@@ -1,7 +1,14 @@
 import SwiftUI
+import PteroNet
 
 struct InfoTabSubdomains: View {
     @Environment(SubdomainVM.self) private var vm
+    
+    private let allocations: [AllocationAttributes]
+    
+    init(_ allocations: [AllocationAttributes]) {
+        self.allocations = allocations
+    }
     
     @State private var sheetSubdomains = false
     
@@ -34,6 +41,7 @@ struct InfoTabSubdomains: View {
                     Spacer()
                     
                     let chevron = Image(systemName: "arrow.right")
+                    
                     Text("All subdomains \(chevron)")
                         .caption2()
                         .tertiary()
@@ -52,7 +60,7 @@ struct InfoTabSubdomains: View {
         }
         .sheet($sheetSubdomains) {
             NavigationView {
-                SubdomainList()
+                SubdomainList(allocations)
             }
             .environment(vm)
         }

@@ -1,9 +1,16 @@
 import SwiftUI
+import PteroNet
 
 struct SubdomainList: View {
     @Environment(SubdomainVM.self) private var vm
     
     @Environment(\.dismiss) private var dismiss
+    
+    private let allocations: [AllocationAttributes]
+    
+    init(_ allocations: [AllocationAttributes]) {
+        self.allocations = allocations
+    }
     
     @State private var sheetCreate = false
     
@@ -27,7 +34,7 @@ struct SubdomainList: View {
             await vm.fetchSubdomains()
         }
         .sheet($sheetCreate) {
-            SheetCreateSubdomain()
+            SheetCreateSubdomain(allocations)
         }
         .overlay {
             if vm.subdomains.isEmpty {
@@ -71,6 +78,6 @@ struct SubdomainList: View {
 }
 
 #Preview {
-    SubdomainList()
+    SubdomainList([])
         .environment(SubdomainVM(""))
 }

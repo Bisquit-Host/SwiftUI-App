@@ -10,6 +10,7 @@ final class SubdomainVM {
     
     var subdomain = ""
     var selectedDomain = 1
+    var selectedAllocation: Int?
     
     private var subdomainResponse: SubdomainResponse?
     
@@ -66,7 +67,10 @@ final class SubdomainVM {
     }
     
     func createSubdomain(onSuccess: @escaping () -> Void) async {
+        print("Creating subdomain \(subdomain) on domain \(selectedDomain) for server \(id)")
+        
         guard
+            let selectedAllocation,
             let url = URL(string: "https://mgr.bisquit.host/api/client/extensions/subdomainmanager/servers/" + id),
             let apiKey = Keychain.load(key: "selectedApiKey")
         else {
@@ -81,16 +85,22 @@ final class SubdomainVM {
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
         
         var body = Data()
+        let boudary = "--\(boundary)\r\n".data(using: .utf8)!
         
         // Append subdomain
-        body.append("--\(boundary)\r\n".data(using: .utf8)!)
+        body.append(boudary)
         body.append("Content-Disposition: form-data; name=\"subdomain\"\r\n\r\n".data(using: .utf8)!)
         body.append("\(subdomain)\r\n".data(using: .utf8)!)
         
         // Append domain
-        body.append("--\(boundary)\r\n".data(using: .utf8)!)
+        body.append(boudary)
         body.append("Content-Disposition: form-data; name=\"domain\"\r\n\r\n".data(using: .utf8)!)
         body.append("\(selectedDomain)\r\n".data(using: .utf8)!)
+        
+        // Append allocation
+        body.append(boudary)
+        body.append("Content-Disposition: form-data; name=\"allocation\"\r\n\r\n".data(using: .utf8)!)
+        body.append("\(selectedAllocation)\r\n".data(using: .utf8)!)
         
         // Final boundary
         body.append("--\(boundary)--\r\n".data(using: .utf8)!)
@@ -108,7 +118,11 @@ final class SubdomainVM {
             await fetchSubdomains()
             onSuccess()
         } catch {
-            print("Error:", error)
+            print("⛔️ Error:", error)
+            
+            if let bodyString = String(data: body, encoding: .utf8) {
+                print("Request Body:\n" + bodyString)
+            }
         }
     }
     

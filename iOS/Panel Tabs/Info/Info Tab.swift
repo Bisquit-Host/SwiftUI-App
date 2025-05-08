@@ -29,6 +29,10 @@ struct InfoTab: View {
         UIDevice.current.userInterfaceIdiom == .pad
     }
     
+    private var allocations: [AllocationAttributes] {
+        server.relationships.allocations.data.map(\.attributes)
+    }
+    
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 0) {
@@ -70,7 +74,7 @@ struct InfoTab: View {
                                     .environment(logVM)
                                 
                             case "Subdomains":
-                                InfoTabSubdomains()
+                                InfoTabSubdomains(allocations)
                                     .environment(subdomainVM)
                                 
                             case "Location":

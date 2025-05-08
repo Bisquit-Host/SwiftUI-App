@@ -911,6 +911,9 @@
         }
       }
     },
+    "Allocation" : {
+
+    },
     "Allocations" : {
       "localizations" : {
         "nl" : {
@@ -3275,9 +3278,6 @@
         }
       }
     },
-    "IP: %@" : {
-      "shouldTranslate" : false
-    },
     "Is alias file" : {
       "localizations" : {
         "ru" : {
@@ -4315,6 +4315,7 @@
       }
     },
     "Port: %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -4331,6 +4332,7 @@
       }
     },
     "Port: %lld" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {

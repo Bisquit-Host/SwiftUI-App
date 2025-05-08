@@ -3,6 +3,7 @@ import PteroNet
 
 struct AllocationCard: View {
     @Environment(AllocationVM.self) private var vm
+    @EnvironmentObject private var store: ValueStore
     
     private let allocation: AllocationAttributes
     
@@ -27,11 +28,15 @@ struct AllocationCard: View {
                 Image(systemName: "app.connected.to.app.below.fill")
                 
                 VStack(alignment: .leading) {
-                    Text("IP: \(ip)")
+                    Text(ip + ":" + allocation.port.description)
+                        .semibold()
                     
-                    Text("Port: \(allocation.port.description)")
+                    if store.devMode {
+                        Text(allocation.id)
+                            .secondary()
+                            .footnote()
+                    }
                 }
-                .footnote()
                 
                 Spacer()
                 
@@ -69,4 +74,5 @@ struct AllocationCard: View {
         AllocationCard(sampleJSON(.allocationAttributes))
     }
     .environment(AllocationVM(""))
+    .environmentObject(ValueStore())
 }
