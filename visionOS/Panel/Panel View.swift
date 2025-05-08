@@ -1,4 +1,5 @@
 import ScrechKit
+import PteroNet
 
 struct PanelView: View {
     @StateObject private var ornament = OrnamentProperty()
@@ -10,10 +11,13 @@ struct PanelView: View {
     private var userVM: UsersVM
     private var subdomainVM: SubdomainVM
     
+    private let server: ServerAttributes
     private let id: String
     
-    init(_ id: String) {
-        self.id = id
+    init(_ server: ServerAttributes) {
+        self.id = server.id
+        self.server = server
+        
         self.vm = PanelVM(id)
         self.fileVM = FileTabVM(id)
         self.backupVM = BackupVM(id)
@@ -26,6 +30,10 @@ struct PanelView: View {
     @AppStorage("show_info") private var showInfo = true
     @AppStorage("tab_panel") private var tabPanel: PanelTab = .info
     @AppStorage("show_power_buttons") private var showPowerButtons = true
+    
+    private var allocations: [AllocationAttributes] {
+        server.relationships.allocations.data.map(\.attributes)
+    }
     
     var body: some View {
         VStack {
@@ -86,7 +94,7 @@ struct PanelView: View {
                             Label("Users", systemImage: "person.3")
                         }
                     
-                    SubdomainList()
+                    SubdomainList(allocations)
                         .environment(subdomainVM)
                         .tag(PanelTab.subdomains)
                         .tabItem {
@@ -187,7 +195,7 @@ struct PanelView: View {
 
 #Preview {
     NavigationView {
-        PanelView("")
+        PanelView(PreviewProp.serverAttributes)
     }
     .navigationViewStyle(.stack)
 }

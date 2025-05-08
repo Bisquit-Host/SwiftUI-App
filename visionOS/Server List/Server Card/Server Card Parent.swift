@@ -13,7 +13,7 @@ struct ServerCardParent: View {
     
     var body: some View {
         NavigationLink {
-            PanelView(server.id)
+            PanelView(server)
         } label: {
             ServerCard(server)
         }

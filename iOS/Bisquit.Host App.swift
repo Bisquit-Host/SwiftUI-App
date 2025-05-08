@@ -132,8 +132,7 @@ struct BisquitHostApp: App {
         else {
             return
         }
-        
-#if !os(macOS)
+#if !os(macOS) && !os(visionOS)
         delay(0.4) {
             nav.navigate(.toPanel(id))
         }
