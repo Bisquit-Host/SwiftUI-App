@@ -49,7 +49,7 @@ struct InfoTabSubdomains: View {
             }
             .footnote()
             .frame(minHeight: 55)
-            .padding(.horizontal)
+            .padding()
             .frame(maxWidth: .infinity, alignment: vm.subdomains.isEmpty ? .center : .leading)
             .foregroundStyle(.foreground)
             .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
