@@ -15,6 +15,7 @@ struct SubdomainList: View {
         List {
             ForEach(vm.subdomains) { subdomain in
                 SubdomainCard(subdomain)
+                    .listRowSeparator(.hidden)
             }
             .onDelete(perform: delete)
             
