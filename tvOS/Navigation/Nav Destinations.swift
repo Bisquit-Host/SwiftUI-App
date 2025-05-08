@@ -1,6 +1,6 @@
-import SwiftUI
+import PteroNet
 
 enum NavDestinations: Hashable {
     case toGuide
-    case toPanel(_ id: String)
+    case toPanel(_ server: ServerAttributes)
 }
