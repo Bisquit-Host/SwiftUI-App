@@ -1277,14 +1277,7 @@
 		F3C9D8612B319B9E00265492 /* Permission Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D85F2B319B9E00265492 /* Permission Card.swift */; };
 		F3C9D8622B319B9E00265492 /* Permission Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9D85F2B319B9E00265492 /* Permission Card.swift */; };
 		F3CB53D62971CF6B00A213B0 /* Database Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB53D52971CF6B00A213B0 /* Database Card.swift */; };
-		F3CBC6D72D9A02660081C302 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3CBC6D62D9A02660081C302 /* ScrechKit */; };
-		F3CBC6D92D9A026F0081C302 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3CBC6D82D9A026F0081C302 /* ScrechKit */; };
-		F3CBC6DB2D9A02750081C302 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3CBC6DA2D9A02750081C302 /* ScrechKit */; };
-		F3CBC6DD2D9A027B0081C302 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3CBC6DC2D9A027B0081C302 /* ScrechKit */; };
-		F3CBC6DF2D9A02830081C302 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3CBC6DE2D9A02830081C302 /* ScrechKit */; };
-		F3CBC6E12D9A02910081C302 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3CBC6E02D9A02910081C302 /* ScrechKit */; };
 		F3CBC6E32D9A02970081C302 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3CBC6E22D9A02970081C302 /* ScrechKit */; };
-		F3CBC6E52D9A029E0081C302 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3CBC6E42D9A029E0081C302 /* ScrechKit */; };
 		F3CCB1CC2CAE75D0000F8207 /* Debug Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCB1CB2CAE75D0000F8207 /* Debug Settings.swift */; };
 		F3CCB1CD2CAE75D0000F8207 /* Debug Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCB1CB2CAE75D0000F8207 /* Debug Settings.swift */; };
 		F3CCB1CE2CAE75D0000F8207 /* Debug Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCB1CB2CAE75D0000F8207 /* Debug Settings.swift */; };
@@ -1492,6 +1485,18 @@
 		F3D7F8532C8F258B00368ECE /* Enable 2FA View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7F8522C8F258B00368ECE /* Enable 2FA View.swift */; };
 		F3D7F8542C8F258B00368ECE /* Enable 2FA View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7F8522C8F258B00368ECE /* Enable 2FA View.swift */; };
 		F3D7F8552C8F258B00368ECE /* Enable 2FA View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7F8522C8F258B00368ECE /* Enable 2FA View.swift */; };
+		F3D807052DCD774F00598908 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3D807042DCD774F00598908 /* ScrechKit */; };
+		F3D807092DCD77C400598908 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3D807082DCD77C400598908 /* ScrechKit */; };
+		F3D8070C2DCD791E00598908 /* ScrechKit in Embed Frameworks */ = {isa = PBXBuildFile; productRef = F3D807042DCD774F00598908 /* ScrechKit */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F3D8070E2DCD793500598908 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3D8070D2DCD793500598908 /* ScrechKit */; };
+		F3D8070F2DCD793500598908 /* ScrechKit in Embed Frameworks */ = {isa = PBXBuildFile; productRef = F3D8070D2DCD793500598908 /* ScrechKit */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F3D807162DCD794C00598908 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3D807152DCD794C00598908 /* ScrechKit */; };
+		F3D807172DCD794C00598908 /* ScrechKit in Embed Frameworks */ = {isa = PBXBuildFile; productRef = F3D807152DCD794C00598908 /* ScrechKit */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F3D8071A2DCD795700598908 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3D807192DCD795700598908 /* ScrechKit */; };
+		F3D8071B2DCD795700598908 /* ScrechKit in Embed Frameworks */ = {isa = PBXBuildFile; productRef = F3D807192DCD795700598908 /* ScrechKit */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F3D8071D2DCD796100598908 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3D8071C2DCD796100598908 /* ScrechKit */; };
+		F3D8071E2DCD796100598908 /* ScrechKit in Embed Frameworks */ = {isa = PBXBuildFile; productRef = F3D8071C2DCD796100598908 /* ScrechKit */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F3D807212DCD796B00598908 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3D807202DCD796B00598908 /* ScrechKit */; };
 		F3D902DF29DC445A004E76C9 /* Cache Limit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D902DE29DC445A004E76C9 /* Cache Limit.swift */; };
 		F3DAD6BE2A4793F8002ED405 /* Circular Gauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF6A2A44F6E000331B51 /* Circular Gauge.swift */; };
 		F3DAD6BF2A4793F8002ED405 /* Circular Gauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF6A2A44F6E000331B51 /* Circular Gauge.swift */; };
@@ -1808,6 +1813,67 @@
 				F3D1E7332C9A38EF000C81FF /* Widgets.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
+		};
+		F3D807072DCD774F00598908 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			dstPath = "";
+			dstSubfolder = Frameworks;
+			files = (
+				F3D8070C2DCD791E00598908 /* ScrechKit in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+		};
+		F3D8070B2DCD77C400598908 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			dstPath = "";
+			dstSubfolder = Frameworks;
+			files = (
+			);
+			name = "Embed Frameworks";
+		};
+		F3D807102DCD793500598908 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			dstPath = "";
+			dstSubfolder = Frameworks;
+			files = (
+				F3D8070F2DCD793500598908 /* ScrechKit in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+		};
+		F3D807142DCD794300598908 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			dstPath = "";
+			dstSubfolder = Frameworks;
+			files = (
+				F3D8071B2DCD795700598908 /* ScrechKit in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+		};
+		F3D807182DCD794C00598908 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			dstPath = "";
+			dstSubfolder = Frameworks;
+			files = (
+				F3D807172DCD794C00598908 /* ScrechKit in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+		};
+		F3D8071F2DCD796100598908 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			dstPath = "";
+			dstSubfolder = Frameworks;
+			files = (
+				F3D8071E2DCD796100598908 /* ScrechKit in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+		};
+		F3D807232DCD796B00598908 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			dstPath = "";
+			dstSubfolder = Frameworks;
+			files = (
+			);
+			name = "Embed Frameworks";
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -2350,7 +2416,7 @@
 			isa = PBXFrameworksBuildPhase;
 			files = (
 				F328D85E2A8240930038512F /* Algorithms in Frameworks */,
-				F3CBC6D72D9A02660081C302 /* ScrechKit in Frameworks */,
+				F3D807162DCD794C00598908 /* ScrechKit in Frameworks */,
 				F335CA1B2C63E9A7006C71C6 /* DeviceKit in Frameworks */,
 				F30860182B002C18004D776A /* PteroNet in Frameworks */,
 				F3EB09D12A29532D0073916A /* Kingfisher in Frameworks */,
@@ -2360,7 +2426,7 @@
 			isa = PBXFrameworksBuildPhase;
 			files = (
 				F342FAB72B2E49B600854270 /* Algorithms in Frameworks */,
-				F3CBC6DD2D9A027B0081C302 /* ScrechKit in Frameworks */,
+				F3D8071A2DCD795700598908 /* ScrechKit in Frameworks */,
 				F36B145D2DC39F13008C1AF9 /* GaypadKit in Frameworks */,
 				F39D680D2A262C5E00B9BDFC /* Kingfisher in Frameworks */,
 				F3015DFC2D9FCCD200B9BCC6 /* PostHog in Frameworks */,
@@ -2380,8 +2446,8 @@
 				F3A7CEFB2C8BB8A300413400 /* AlertKit in Frameworks */,
 				F3A7CF042C8BBB7800413400 /* SafariCover in Frameworks */,
 				F3A7CEC82C8B685500413400 /* Messages.framework in Frameworks */,
+				F3D807212DCD796B00598908 /* ScrechKit in Frameworks */,
 				F3A7CEDF2C8B981A00413400 /* PteroNet in Frameworks */,
-				F3CBC6E52D9A029E0081C302 /* ScrechKit in Frameworks */,
 				F3BED0F12D8CDC2B00CD6E3B /* PermissionsSwiftUICamera in Frameworks */,
 			);
 		};
@@ -2398,12 +2464,12 @@
 				F38F9E1A2CEA18150033EFE3 /* DeviceKit in Frameworks */,
 				F3F6ACAF2A51E48700EE417F /* AlertKit in Frameworks */,
 				F3BED0E72D8CDC0A00CD6E3B /* PermissionsSwiftUIContacts in Frameworks */,
-				F3CBC6E12D9A02910081C302 /* ScrechKit in Frameworks */,
 				F3BED0E32D8CDBFF00CD6E3B /* PermissionsSwiftUICamera in Frameworks */,
 				F3BED0E52D8CDC0400CD6E3B /* PermissionsSwiftUINotification in Frameworks */,
 				F328D8622A8242610038512F /* Algorithms in Frameworks */,
 				F318FE472A1592AB00DE0A5C /* OrderedCollections in Frameworks */,
 				F33C2AC52C691764002FD150 /* QuickLooking in Frameworks */,
+				F3D807092DCD77C400598908 /* ScrechKit in Frameworks */,
 				F36D534A2A05B961007324C6 /* Kingfisher in Frameworks */,
 				F36B145F2DC39F2C008C1AF9 /* GaypadKit in Frameworks */,
 			);
@@ -2417,10 +2483,10 @@
 				F3202D5B2D5759690030B3CC /* Algorithms in Frameworks */,
 				F33C2AC32C691735002FD150 /* QuickLooking in Frameworks */,
 				F32716DB2CF628CB00F2DC31 /* SafariCover in Frameworks */,
-				F3CBC6DF2D9A02830081C302 /* ScrechKit in Frameworks */,
 				F3015E022D9FCD5A00B9BCC6 /* PostHog in Frameworks */,
 				F36B145B2DC39F0E008C1AF9 /* GaypadKit in Frameworks */,
 				F32F2D072D908FE5007CF4DE /* MailCover in Frameworks */,
+				F3D8071D2DCD796100598908 /* ScrechKit in Frameworks */,
 				F308601A2B002D36004D776A /* PteroNet in Frameworks */,
 			);
 		};
@@ -2439,8 +2505,8 @@
 				F3B7BFDE2B38E206005B5003 /* Pow in Frameworks */,
 				F3015DFA2D9FCCCC00B9BCC6 /* PostHog in Frameworks */,
 				F3E08EB22A2CE19900116C1C /* Kingfisher in Frameworks */,
-				F3CBC6DB2D9A02750081C302 /* ScrechKit in Frameworks */,
 				F358F02E2D2C1C5500BCC07B /* LaunchAtLogin in Frameworks */,
+				F3D8070E2DCD793500598908 /* ScrechKit in Frameworks */,
 				F30860222B002D57004D776A /* PteroNet in Frameworks */,
 				F36B14592DC39F08008C1AF9 /* GaypadKit in Frameworks */,
 			);
@@ -2467,8 +2533,8 @@
 				F352AF9B2A4EE707004AD489 /* AlertKit in Frameworks */,
 				F37266E729D9EF25005FD103 /* Kingfisher in Frameworks */,
 				F3BED0CA2D8CDAB400CD6E3B /* CorePermissionsSwiftUI in Frameworks */,
-				F3CBC6D92D9A026F0081C302 /* ScrechKit in Frameworks */,
 				F328D8592A82402A0038512F /* Algorithms in Frameworks */,
+				F3D807052DCD774F00598908 /* ScrechKit in Frameworks */,
 				F318FE452A15925200DE0A5C /* OrderedCollections in Frameworks */,
 				F3BED0E12D8CDBF400CD6E3B /* PermissionsSwiftUIContacts in Frameworks */,
 				F3BED0DD2D8CDBD700CD6E3B /* PermissionsSwiftUICamera in Frameworks */,
@@ -4199,6 +4265,7 @@
 				F3000E01295A341000ABD30A /* Sources */,
 				F3000E03295A341000ABD30A /* Resources */,
 				F39CA31B29BF4194009AD679 /* Frameworks */,
+				F3D807142DCD794300598908 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -4208,9 +4275,9 @@
 				F308601D2B002D4A004D776A /* PteroNet */,
 				F342FAB62B2E49B600854270 /* Algorithms */,
 				F39E683E2D2D6A510002BA96 /* AudioVisualizer */,
-				F3CBC6DC2D9A027B0081C302 /* ScrechKit */,
 				F3015DFB2D9FCCD200B9BCC6 /* PostHog */,
 				F36B145C2DC39F13008C1AF9 /* GaypadKit */,
+				F3D807192DCD795700598908 /* ScrechKit */,
 			);
 			productName = "Bisquit.Host tvOSapp";
 			productReference = F3000E05295A341000ABD30A /* tvOS.app */;
@@ -4227,6 +4294,7 @@
 				F3F304BC29BDDF7D00F004B9 /* Frameworks */,
 				F3464D012A862D2D00188B0C /* Embed ExtensionKit Extensions */,
 				F36710372C99C3A200A8901A /* Embed Foundation Extensions */,
+				F3D807072DCD774F00598908 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -4259,9 +4327,9 @@
 				F3BED0DC2D8CDBD700CD6E3B /* PermissionsSwiftUICamera */,
 				F3BED0DE2D8CDBDE00CD6E3B /* PermissionsSwiftUINotification */,
 				F3BED0E02D8CDBF400CD6E3B /* PermissionsSwiftUIContacts */,
-				F3CBC6D82D9A026F0081C302 /* ScrechKit */,
 				F3015DF72D9FCB8500B9BCC6 /* PostHog */,
 				F36B14562DC39DD8008C1AF9 /* GaypadKit */,
+				F3D807042DCD774F00598908 /* ScrechKit */,
 			);
 			productName = Bisquit.Host;
 			productReference = F31BA5232958FF7C0006D126 /* Bisquit.Host.app */;
@@ -4274,6 +4342,7 @@
 				F31BA52F2958FF7D0006D126 /* Sources */,
 				F31BA5312958FF7D0006D126 /* Resources */,
 				F39CA31829BF4160009AD679 /* Frameworks */,
+				F3D807182DCD794C00598908 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -4283,7 +4352,7 @@
 				F328D85D2A8240930038512F /* Algorithms */,
 				F30860172B002C18004D776A /* PteroNet */,
 				F335CA1A2C63E9A7006C71C6 /* DeviceKit */,
-				F3CBC6D62D9A02660081C302 /* ScrechKit */,
+				F3D807152DCD794C00598908 /* ScrechKit */,
 			);
 			productName = "Bisquit.Host Watch App";
 			productReference = F31BA5332958FF7D0006D126 /* watchOS.app */;
@@ -4296,6 +4365,7 @@
 				F31BA54A2958FFAF0006D126 /* Sources */,
 				F31BA54C2958FFAF0006D126 /* Resources */,
 				F3B761DB29BDE2D500ECE879 /* Frameworks */,
+				F3D8070B2DCD77C400598908 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -4316,9 +4386,9 @@
 				F3BED0E42D8CDC0400CD6E3B /* PermissionsSwiftUINotification */,
 				F3BED0E62D8CDC0A00CD6E3B /* PermissionsSwiftUIContacts */,
 				F3BED0E82D8CDC1200CD6E3B /* PermissionsSwiftUIBiometrics */,
-				F3CBC6E02D9A02910081C302 /* ScrechKit */,
 				F3015DFD2D9FCCDA00B9BCC6 /* PostHog */,
 				F36B145E2DC39F2C008C1AF9 /* GaypadKit */,
+				F3D807082DCD77C400598908 /* ScrechKit */,
 			);
 			productName = "Clip Demo";
 			productReference = F31BA54E2958FFAF0006D126 /* Clip Demo.app */;
@@ -4390,6 +4460,7 @@
 				F3A7CEBF2C8B685500413400 /* Sources */,
 				F3A7CEC02C8B685500413400 /* Frameworks */,
 				F3A7CEC12C8B685500413400 /* Resources */,
+				F3D807232DCD796B00598908 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -4404,8 +4475,8 @@
 				F3BED0EC2D8CDC2000CD6E3B /* PermissionsSwiftUIBiometrics */,
 				F3BED0EE2D8CDC2500CD6E3B /* PermissionsSwiftUINotification */,
 				F3BED0F02D8CDC2B00CD6E3B /* PermissionsSwiftUICamera */,
-				F3CBC6E42D9A029E0081C302 /* ScrechKit */,
 				F3015DFF2D9FCD5500B9BCC6 /* PostHog */,
+				F3D807202DCD796B00598908 /* ScrechKit */,
 			);
 			productName = "iMessage MessagesExtension";
 			productReference = F3A7CEC32C8B685500413400 /* iMessage.appex */;
@@ -4418,6 +4489,7 @@
 				F3BD76EE2A43C890003E7385 /* Sources */,
 				F3BD76EF2A43C890003E7385 /* Frameworks */,
 				F3BD76F02A43C890003E7385 /* Resources */,
+				F3D8071F2DCD796100598908 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -4431,9 +4503,9 @@
 				F3202C8E2D5590E20030B3CC /* Kingfisher */,
 				F3202D5A2D5759690030B3CC /* Algorithms */,
 				F32F2D062D908FE5007CF4DE /* MailCover */,
-				F3CBC6DE2D9A02830081C302 /* ScrechKit */,
 				F3015E012D9FCD5A00B9BCC6 /* PostHog */,
 				F36B145A2DC39F0E008C1AF9 /* GaypadKit */,
+				F3D8071C2DCD796100598908 /* ScrechKit */,
 			);
 			productName = "Bisquit.Host visionOS";
 			productReference = F3BD76F22A43C890003E7385 /* visionOS.app */;
@@ -4468,6 +4540,7 @@
 				F3E08E9C2A2CE17800116C1C /* Sources */,
 				F3E08E9D2A2CE17800116C1C /* Frameworks */,
 				F3E08E9E2A2CE17800116C1C /* Resources */,
+				F3D807102DCD793500598908 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -4478,10 +4551,10 @@
 				F3B7BFDD2B38E206005B5003 /* Pow */,
 				F358F02D2D2C1C5500BCC07B /* LaunchAtLogin */,
 				F37FF8822D87AE3800554B3F /* Algorithms */,
-				F3CBC6DA2D9A02750081C302 /* ScrechKit */,
 				F3015DF92D9FCCCC00B9BCC6 /* PostHog */,
 				F36B14582DC39F08008C1AF9 /* GaypadKit */,
 				F36B14B92DC64CDF008C1AF9 /* SettingsKit */,
+				F3D8070D2DCD793500598908 /* ScrechKit */,
 			);
 			productName = "Bisquit.Host Mac";
 			productReference = F3E08EA02A2CE17800116C1C /* Bisquit.Host.app */;
@@ -8106,42 +8179,42 @@
 			package = F3BED0D72D8CDBBC00CD6E3B /* XCRemoteSwiftPackageReference "SPerms" */;
 			productName = PermissionsSwiftUICamera;
 		};
-		F3CBC6D62D9A02660081C302 /* ScrechKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3CBC6D32D9A025A0081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */;
-			productName = ScrechKit;
-		};
-		F3CBC6D82D9A026F0081C302 /* ScrechKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3CBC6D32D9A025A0081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */;
-			productName = ScrechKit;
-		};
-		F3CBC6DA2D9A02750081C302 /* ScrechKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3CBC6D32D9A025A0081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */;
-			productName = ScrechKit;
-		};
-		F3CBC6DC2D9A027B0081C302 /* ScrechKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3CBC6D32D9A025A0081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */;
-			productName = ScrechKit;
-		};
-		F3CBC6DE2D9A02830081C302 /* ScrechKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3CBC6D32D9A025A0081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */;
-			productName = ScrechKit;
-		};
-		F3CBC6E02D9A02910081C302 /* ScrechKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3CBC6D32D9A025A0081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */;
-			productName = ScrechKit;
-		};
 		F3CBC6E22D9A02970081C302 /* ScrechKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F3CBC6D32D9A025A0081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */;
 			productName = ScrechKit;
 		};
-		F3CBC6E42D9A029E0081C302 /* ScrechKit */ = {
+		F3D807042DCD774F00598908 /* ScrechKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3CBC6D32D9A025A0081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */;
+			productName = ScrechKit;
+		};
+		F3D807082DCD77C400598908 /* ScrechKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3CBC6D32D9A025A0081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */;
+			productName = ScrechKit;
+		};
+		F3D8070D2DCD793500598908 /* ScrechKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3CBC6D32D9A025A0081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */;
+			productName = ScrechKit;
+		};
+		F3D807152DCD794C00598908 /* ScrechKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3CBC6D32D9A025A0081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */;
+			productName = ScrechKit;
+		};
+		F3D807192DCD795700598908 /* ScrechKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3CBC6D32D9A025A0081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */;
+			productName = ScrechKit;
+		};
+		F3D8071C2DCD796100598908 /* ScrechKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3CBC6D32D9A025A0081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */;
+			productName = ScrechKit;
+		};
+		F3D807202DCD796B00598908 /* ScrechKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F3CBC6D32D9A025A0081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */;
 			productName = ScrechKit;
