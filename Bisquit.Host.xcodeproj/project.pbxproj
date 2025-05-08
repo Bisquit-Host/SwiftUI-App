@@ -657,6 +657,7 @@
 		F3648ED72DCB987C001609AA /* Subdomain Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C4C2D5395300094BD7B /* Subdomain Card.swift */; };
 		F3648ED82DCB987C001609AA /* Subdomain VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C442D53907E0094BD7B /* Subdomain VM.swift */; };
 		F3648EDB2DCB98BE001609AA /* Subdomain List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3648EDA2DCB98BE001609AA /* Subdomain List.swift */; };
+		F3648EDD2DCB9BFD001609AA /* Sheet Create Subdomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3648EDC2DCB9BFD001609AA /* Sheet Create Subdomain.swift */; };
 		F36710342C99C3A100A8901A /* iMessage.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F3A7CEC32C8B685500413400 /* iMessage.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F36797732A39C4ED009F2788 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F36797722A39C4ED009F2788 /* Localizable.xcstrings */; };
 		F36797742A39C4ED009F2788 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F36797722A39C4ED009F2788 /* Localizable.xcstrings */; };
@@ -2005,6 +2006,7 @@
 		F35FEB062B09F003004DA05D /* API Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API Key.swift"; sourceTree = "<group>"; };
 		F3648ED22DCB9773001609AA /* Allocation Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation Card.swift"; sourceTree = "<group>"; };
 		F3648EDA2DCB98BE001609AA /* Subdomain List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subdomain List.swift"; sourceTree = "<group>"; };
+		F3648EDC2DCB9BFD001609AA /* Sheet Create Subdomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sheet Create Subdomain.swift"; sourceTree = "<group>"; };
 		F36797722A39C4ED009F2788 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		F36797772A3A55E1009F2788 /* Log List Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log List Parent.swift"; sourceTree = "<group>"; };
 		F367977A2A3A55F4009F2788 /* Log Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log Card.swift"; sourceTree = "<group>"; };
@@ -3217,6 +3219,7 @@
 			isa = PBXGroup;
 			children = (
 				F3648EDA2DCB98BE001609AA /* Subdomain List.swift */,
+				F3648EDC2DCB9BFD001609AA /* Sheet Create Subdomain.swift */,
 			);
 			path = Subdomains;
 			sourceTree = "<group>";
@@ -6275,6 +6278,7 @@
 				F3573BBF2C64E0360051259E /* Log Card.swift in Sources */,
 				F30C13142A5461BA00A7EFF0 /* Cache VM.swift in Sources */,
 				F3D558B12A33C69F00608447 /* File Tab VM.swift in Sources */,
+				F3648EDD2DCB9BFD001609AA /* Sheet Create Subdomain.swift in Sources */,
 				F3E08EBF2A2CE87800116C1C /* Start Page.swift in Sources */,
 				F3E08EA52A2CE17900116C1C /* Home.swift in Sources */,
 				F30088BB2B3A21F80051476C /* Database List.swift in Sources */,

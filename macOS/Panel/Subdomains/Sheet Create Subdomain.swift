@@ -1,0 +1,55 @@
+import SwiftUI
+import PteroNet
+
+struct SheetCreateSubdomain: View {
+    @Environment(SubdomainVM.self) private var vm
+    
+    @Environment(\.dismiss) private var dismiss
+    
+    private var placeholder: String {
+        let subdomain = vm.subdomain.isEmpty ? "<your subdomain>" : vm.subdomain
+        
+        return subdomain + "." + (vm.domains?.first(where: { $0.id == vm.selectedDomain })?.domain ?? "<selected domain>")
+    }
+    
+    var body: some View {
+        @Bindable var vm = vm
+        
+        List {
+            Section {
+                Text(placeholder)
+                
+                TextField("Subdomain", text: $vm.subdomain)
+                    .autocorrectionDisabled()
+            }
+            
+            if let domains = vm.domains {
+                Picker("Domain", selection: $vm.selectedDomain) {
+                    ForEach(domains) { domain in
+                        Text(domain.domain)
+                    }
+                }
+                .pickerStyle(.inline)
+            }
+            
+            Section {
+                Button {
+                    Task {
+                        await vm.createSubdomain {
+                            dismiss()
+                        }
+                    }
+                } label: {
+                    Label("Create", systemImage: "plus")
+                }
+            }
+        }
+        .ornamentDismissButton()
+    }
+}
+
+#Preview {
+    SheetCreateSubdomain()
+        .environment(SubdomainVM(""))
+        .darkSchemePreferred()
+}

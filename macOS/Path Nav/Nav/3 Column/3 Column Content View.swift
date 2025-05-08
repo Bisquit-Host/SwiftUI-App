@@ -26,6 +26,8 @@ struct ThreeColumnContentView: View {
                 Text("Multiple servers selected")
             }
         }
+        .animation(.default, value: nav.selectedServers)
+        .animation(.default, value: nav.selectedTab)
         .backgroundBlur()
         .task {
             vm.loadServers()

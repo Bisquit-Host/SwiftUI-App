@@ -17,15 +17,33 @@ struct SubdomainList: View {
                 SubdomainCard(subdomain)
             }
             .onDelete(perform: delete)
+            
+            Section {
+                Button {
+                    sheetCreate = true
+                } label: {
+                    Image(systemName: "link.badge.plus")
+                        .foregroundStyle(.foreground)
+                        .bold()
+                        .frame(width: 30, height: 30)
+                        .background(.ultraThinMaterial.opacity(0.3), in: .circle)
+                        .overlay {
+                            Circle()
+                                .stroke(.gray.opacity(0.25), lineWidth: 1)
+                        }
+                }
+                .buttonStyle(.plain)
+                .keyboardShortcut("n", modifiers: [.command, .shift])
+            }
         }
         .navigationTitle("Subdomains")
         .scrollContentBackground(.hidden)
         .refreshableTask {
             await vm.fetchSubdomains()
         }
-        //        .sheet($sheetCreate) {
-        //            SheetCreateSubdomain()
-        //        }
+        .sheet($sheetCreate) {
+            SheetCreateSubdomain()
+        }
         .overlay {
             if vm.subdomains.isEmpty {
                 ContentUnavailableView(
@@ -35,19 +53,6 @@ struct SubdomainList: View {
                 )
             }
         }
-        //        .toolbar {
-        //            ToolbarItem(placement: .topBarTrailing) {
-        //                Button {
-        //                    sheetCreate = true
-        //                } label: {
-        //                    Image(systemName: "link.badge.plus")
-        //                        .foregroundStyle(.foreground)
-        //                        .footnote(.bold)
-        //                        .frame(width: 35, height: 35)
-        //                        .background(.ultraThinMaterial, in: .circle)
-        //                }
-        //            }
-        //        }
     }
     
     private func delete(at offsets: IndexSet) {
