@@ -23,7 +23,7 @@ struct LogCardImage: View {
                 .frame(width: 32, height: 32)
                 .clipShape(.circle)
         } else {
-            Image(systemName: "apple.terminal")
+            Image(systemName: "pc")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 32, height: 32)
