@@ -824,7 +824,14 @@
       }
     },
     "Add a description" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить описание"
+          }
+        }
+      }
     },
     "Add to MC Stats" : {
       "localizations" : {
