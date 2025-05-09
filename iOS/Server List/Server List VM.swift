@@ -120,7 +120,6 @@ final class ServerListVM {
                 } else {
                     withAnimation {
                         self.servers = loadedServers
-                        print(loadedServers)
                     }
                     
                     self.saveServers()
