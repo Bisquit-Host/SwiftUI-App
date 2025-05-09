@@ -1497,6 +1497,8 @@
 		F3D8071D2DCD796100598908 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3D8071C2DCD796100598908 /* ScrechKit */; };
 		F3D8071E2DCD796100598908 /* ScrechKit in Embed Frameworks */ = {isa = PBXBuildFile; productRef = F3D8071C2DCD796100598908 /* ScrechKit */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		F3D807212DCD796B00598908 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3D807202DCD796B00598908 /* ScrechKit */; };
+		F3D807382DCD8F1600598908 /* Contact Access Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D807372DCD8F1600598908 /* Contact Access Picker.swift */; };
+		F3D807392DCD8F1600598908 /* Contact Access Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D807372DCD8F1600598908 /* Contact Access Picker.swift */; };
 		F3D902DF29DC445A004E76C9 /* Cache Limit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D902DE29DC445A004E76C9 /* Cache Limit.swift */; };
 		F3DAD6BE2A4793F8002ED405 /* Circular Gauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF6A2A44F6E000331B51 /* Circular Gauge.swift */; };
 		F3DAD6BF2A4793F8002ED405 /* Circular Gauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF6A2A44F6E000331B51 /* Circular Gauge.swift */; };
@@ -2317,6 +2319,7 @@
 		F3D7D87E29E83DEE00BCAFFE /* Design Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Design Settings.swift"; sourceTree = "<group>"; };
 		F3D7F84E2C8ED3D100368ECE /* Disable 2FA View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Disable 2FA View.swift"; sourceTree = "<group>"; };
 		F3D7F8522C8F258B00368ECE /* Enable 2FA View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enable 2FA View.swift"; sourceTree = "<group>"; };
+		F3D807372DCD8F1600598908 /* Contact Access Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact Access Picker.swift"; sourceTree = "<group>"; };
 		F3D902DE29DC445A004E76C9 /* Cache Limit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache Limit.swift"; sourceTree = "<group>"; };
 		F3DC4E2129AEAF3E00D27EC5 /* Credentials Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Credentials Button.swift"; sourceTree = "<group>"; };
 		F3DC4E2529AEC36300D27EC5 /* Credentials View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Credentials View.swift"; sourceTree = "<group>"; };
@@ -4240,6 +4243,7 @@
 				F3FF5A0B2A4A386F003A1973 /* Users VM.swift */,
 				F30088F42B3B55C10051476C /* User Invitation View.swift */,
 				F30089272B3C23A00051476C /* Contact Picker.swift */,
+				F3D807372DCD8F1600598908 /* Contact Access Picker.swift */,
 				F30088FE2B3B62050051476C /* User Invitation Permission.swift */,
 				F3FF5A0E2A4A3ABD003A1973 /* User Card.swift */,
 				F3DDD23D2D92AB52002CB1B9 /* User View */,
@@ -5131,6 +5135,7 @@
 				F3C9D85C2B31146E00265492 /* User Image.swift in Sources */,
 				F3A563242D9EF114009AA363 /* Info Tab Buttons User Img.swift in Sources */,
 				F354E9832A48CA2000F6E359 /* Topbar Grid Button.swift in Sources */,
+				F3D807382DCD8F1600598908 /* Contact Access Picker.swift in Sources */,
 				F3924EE929A28D9D00C4CC77 /* Biometry Usage View.swift in Sources */,
 				F30207D62D8B2A6000C26008 /* Swifty Ping.swift in Sources */,
 				F3015DF22D9F427700B9BCC6 /* Log List Filter.swift in Sources */,
@@ -5691,6 +5696,7 @@
 				F32FD02E2CF606960038D62C /* Backup Context Menu Control Group.swift in Sources */,
 				F30038CA2D42387600363CF4 /* Sheet Remote File.swift in Sources */,
 				F36D53362A05B8BB007324C6 /* Create Button.swift in Sources */,
+				F3D807392DCD8F1600598908 /* Contact Access Picker.swift in Sources */,
 				F353B0432D8A31BF00E4EC07 /* Account Parent.swift in Sources */,
 				F3E6FC472A1E85D600410C7C /* SptiteKit BisquitFall.swift in Sources */,
 			);

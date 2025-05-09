@@ -1,34 +1,6 @@
 import ScrechKit
 import ContactsUI
 
-fileprivate struct ContactAccessPickerModifier: ViewModifier {
-    @Binding private var isPresented: Bool
-    
-    init(_ isPresented: Binding<Bool>) {
-        _isPresented = isPresented
-    }
-    
-    func body(content: Content) -> some View {
-        if #available(iOS 18, *) {
-            content
-                .contactAccessPicker(isPresented: $isPresented)
-                .toolbar {
-                    SFButton("person.crop.circle.badge.plus") {
-                        isPresented = true
-                    }
-                }
-        } else {
-            content
-        }
-    }
-}
-
-fileprivate extension View {
-    func contactAccessPicker(_ isPresented: Binding<Bool>) -> some View {
-        self.modifier(ContactAccessPickerModifier(isPresented))
-    }
-}
-
 struct ContactsListView: View {
     @Environment(\.dismiss) private var dismiss
     
@@ -39,7 +11,6 @@ struct ContactsListView: View {
     }
     
     @State private var contacts: [CNContact] = []
-    @State private var moreContacts: [CNContact] = []
     @State private var searchField = ""
     @State private var authStatus: CNAuthorizationStatus = .notDetermined
     @State private var showPicker = false
@@ -71,21 +42,6 @@ struct ContactsListView: View {
                         }
                     }
                 }
-                
-                ForEach(moreContacts, id: \.identifier) { contact in
-                    Text(contact.fullName)
-                }
-                .animation(.default, value: filteredContacts)
-                
-                if #available(iOS 18, *) {
-                    if authStatus == .limited || authStatus == .notDetermined {
-                        Section {
-                            ContactAccessButton(queryString: searchField) { identifiers in
-                                handleFetchContacts(identifiers)
-                            }
-                        }
-                    }
-                }
             }
             .navigationTitle("Contacts")
             .searchable(text: $searchField)
@@ -96,18 +52,9 @@ struct ContactsListView: View {
         }
     }
     
-    private func handleFetchContacts(_ identifiers: [String]) {
-        Task {
-            let fetchedContacts = await fetchContacts(identifiers)
-            
-            DispatchQueue.main.async {
-                self.moreContacts = fetchedContacts
-            }
-        }
-    }
-    
     private func fetchContacts(_ identifiers: [String]) async -> [CNContact] {
         let store = CNContactStore()
+        
         let keysToFetch = [
             CNContactGivenNameKey,
             CNContactFamilyNameKey,
@@ -121,7 +68,7 @@ struct ContactsListView: View {
         var contacts = [CNContact]()
         
         do {
-            try store.enumerateContacts(with: fetchRequest) { contact, stop in
+            try store.enumerateContacts(with: fetchRequest) { contact, _ in
                 contacts.append(contact)
             }
         } catch {
@@ -140,7 +87,7 @@ struct ContactsListView: View {
             do {
                 var contactsWithEmail = [CNContact]()
                 
-                try store.enumerateContacts(with: request) { contact, stop in
+                try store.enumerateContacts(with: request) { contact, _ in
                     if !contact.emailAddresses.isEmpty {
                         contactsWithEmail.append(contact)
                     }
@@ -150,9 +97,7 @@ struct ContactsListView: View {
                     self.contacts = contactsWithEmail
                 }
             } catch {
-                main {
-                    print("Failed to fetch contacts:", error)
-                }
+                print("Failed to fetch contacts:", error)
             }
         }
     }
