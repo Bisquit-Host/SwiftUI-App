@@ -1,4 +1,4 @@
-// A grid of recipe tiles, based on a given recipe category
+// A grid of server tiles, based on a given server category
 
 import SwiftUI
 

@@ -1,4 +1,4 @@
-// A data model for an ingredient for a given recipe
+// A data model for an ingredient for a given server
 
 import SwiftUI
 
