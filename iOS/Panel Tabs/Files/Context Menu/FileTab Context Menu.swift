@@ -72,9 +72,6 @@ struct FileTabContextMenu: ViewModifier {
                 MenuButton("Delete", role: .destructive, icon: "trash") {
                     vm.deleteFile(name, at: root)
                 }
-#warning("File Preview")
-                //            } preview: {
-                //                FilePreview(id, name: name, at: root)
             }
             .sheet($sheetPermissions) {
                 FilePermissionsParent(file, at: root)
