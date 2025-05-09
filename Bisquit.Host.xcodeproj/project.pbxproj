@@ -2787,6 +2787,7 @@
 				F36797722A39C4ED009F2788 /* Localizable.xcstrings */,
 				F31BA52A2958FF7D0006D126 /* Assets.xcassets */,
 				F378E3322AF38286009925DB /* PrivacyInfo.xcprivacy */,
+				F3ADA61C2D9C16AC00F2DAA6 /* Loc Logs.txt */,
 				F31BA580295901400006D126 /* Intro */,
 				F31A3F4A29EEEB8200BC0DFB /* Start Page */,
 				F300892C2B3D988C0051476C /* Cloud Store */,
@@ -3916,11 +3917,7 @@
 				F3015DED2D9F427700B9BCC6 /* Log List Filter.swift */,
 				F367977D2A3A5AB6009F2788 /* Log VM.swift */,
 				F3A5632E2D9EF323009AA363 /* Log Toolbar Actor.swift */,
-				F367977A2A3A55F4009F2788 /* Log Card.swift */,
-				F3015DE52D9F27E800B9BCC6 /* Log Card Image.swift */,
-				F3015DD52D9F24F600B9BCC6 /* Log Card Event.swift */,
-				F3015DDD2D9F26C600B9BCC6 /* Log Card Timestamp.swift */,
-				F3ADA61C2D9C16AC00F2DAA6 /* Loc Logs.txt */,
+				F3D7DB712DCDF8F300ED2F0A /* Log Card */,
 				F30207D02D8B039100C26008 /* Meta */,
 				F373CDAB2D895419008B64BE /* Topbar */,
 			);
@@ -4005,6 +4002,17 @@
 				F321CC2F2A4AC95C004AF1F0 /* Destinations */,
 			);
 			path = Files;
+			sourceTree = "<group>";
+		};
+		F3D7DB712DCDF8F300ED2F0A /* Log Card */ = {
+			isa = PBXGroup;
+			children = (
+				F367977A2A3A55F4009F2788 /* Log Card.swift */,
+				F3015DE52D9F27E800B9BCC6 /* Log Card Image.swift */,
+				F3015DD52D9F24F600B9BCC6 /* Log Card Event.swift */,
+				F3015DDD2D9F26C600B9BCC6 /* Log Card Timestamp.swift */,
+			);
+			path = "Log Card";
 			sourceTree = "<group>";
 		};
 		F3D902DD29DC3E47004E76C9 /* Cache */ = {
