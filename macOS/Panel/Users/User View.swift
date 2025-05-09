@@ -36,7 +36,7 @@ struct UserView: View {
                 }
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
-#warning("Add")
+#warning("macOS")
                 //                PermissionList($user)
                 //                    .environment(vm)
             }
