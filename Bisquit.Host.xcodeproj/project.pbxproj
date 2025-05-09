@@ -2857,7 +2857,6 @@
 				F352AF962A4EDB1D004AD489 /* Server List VM.swift */,
 				F337B3A729BC6B5400CC1195 /* Server List Grid.swift */,
 				F353D4FA2D980A5000EC9F3A /* Server List Tips.swift */,
-				F3E2BF0A2C1EC94300B7A6D4 /* Contacts VM.swift */,
 				F39EA2E22D5D576D00329468 /* Game Center Buttons.swift */,
 				F3202CD22D559B6C0030B3CC /* VM extensions */,
 				F32E88CB2AF83FCB00959D49 /* Topbar */,
@@ -2973,6 +2972,7 @@
 				F36B14A82DC632D9008C1AF9 /* User Defaults.swift */,
 				F36B14AF2DC63324008C1AF9 /* GameKit.swift */,
 				F3202CC92D559B240030B3CC /* Contacts Provider.swift */,
+				F3E2BF0A2C1EC94300B7A6D4 /* Contacts VM.swift */,
 			);
 			path = "VM extensions";
 			sourceTree = "<group>";
