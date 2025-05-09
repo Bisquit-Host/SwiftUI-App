@@ -360,8 +360,8 @@
 		F3255E222C904A7A008E04DE /* SSH Create View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91CC2B423A26001D8F80 /* SSH Create View.swift */; };
 		F3255E232C904A7A008E04DE /* SSH Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91C82B4235BB001D8F80 /* SSH Card.swift */; };
 		F3255E242C904A7A008E04DE /* SSH List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91C42B423535001D8F80 /* SSH List.swift */; };
-		F325F7002A54BBCF00E89EC4 /* Info Tab Allocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F6FF2A54BBCF00E89EC4 /* Info Tab Allocation.swift */; };
-		F325F7012A54BBCF00E89EC4 /* Info Tab Allocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F6FF2A54BBCF00E89EC4 /* Info Tab Allocation.swift */; };
+		F325F7002A54BBCF00E89EC4 /* Info Tab Allocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F6FF2A54BBCF00E89EC4 /* Info Tab Allocations.swift */; };
+		F325F7012A54BBCF00E89EC4 /* Info Tab Allocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F6FF2A54BBCF00E89EC4 /* Info Tab Allocations.swift */; };
 		F325F7032A54BF7A00E89EC4 /* Tab Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7022A54BF7A00E89EC4 /* Tab Info.swift */; };
 		F325F7042A54BF7A00E89EC4 /* Tab Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7022A54BF7A00E89EC4 /* Tab Info.swift */; };
 		F325F7062A54C4BC00E89EC4 /* System Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7052A54C4BC00E89EC4 /* System Alerts.swift */; };
@@ -1537,8 +1537,8 @@
 		F3E0B4912DC3033A003C8B27 /* Info Tab Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0B48F2DC3033A003C8B27 /* Info Tab Users.swift */; };
 		F3E0B4932DC30347003C8B27 /* Info Tab Logs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0B4922DC30347003C8B27 /* Info Tab Logs.swift */; };
 		F3E0B4942DC30347003C8B27 /* Info Tab Logs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0B4922DC30347003C8B27 /* Info Tab Logs.swift */; };
-		F3E0B4962DC30351003C8B27 /* Info Tab Allocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0B4952DC30351003C8B27 /* Info Tab Allocations.swift */; };
-		F3E0B4972DC30351003C8B27 /* Info Tab Allocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0B4952DC30351003C8B27 /* Info Tab Allocations.swift */; };
+		F3E0B4962DC30351003C8B27 /* Info Tab Subdomains.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0B4952DC30351003C8B27 /* Info Tab Subdomains.swift */; };
+		F3E0B4972DC30351003C8B27 /* Info Tab Subdomains.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0B4952DC30351003C8B27 /* Info Tab Subdomains.swift */; };
 		F3E1B2D02C903C9300AED3F1 /* Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF012C8BBB4700413400 /* Server Card Context Menu.swift */; };
 		F3E1D3ED2B3208BE009B7062 /* User 2Fa.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3EC2B3208BE009B7062 /* User 2Fa.swift */; };
 		F3E1D3EE2B3208BE009B7062 /* User 2Fa.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3EC2B3208BE009B7062 /* User 2Fa.swift */; };
@@ -1983,7 +1983,7 @@
 		F323D8D22A2D668D002EDC62 /* File Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Tab.swift"; sourceTree = "<group>"; };
 		F3255E162C9049AF008E04DE /* Settings Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings Button.swift"; sourceTree = "<group>"; };
 		F3255E192C904A03008E04DE /* Settings View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings View.swift"; sourceTree = "<group>"; };
-		F325F6FF2A54BBCF00E89EC4 /* Info Tab Allocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab Allocation.swift"; sourceTree = "<group>"; };
+		F325F6FF2A54BBCF00E89EC4 /* Info Tab Allocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab Allocations.swift"; sourceTree = "<group>"; };
 		F325F7022A54BF7A00E89EC4 /* Tab Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tab Info.swift"; sourceTree = "<group>"; };
 		F325F7052A54C4BC00E89EC4 /* System Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "System Alerts.swift"; sourceTree = "<group>"; };
 		F325F7082A54CB6600E89EC4 /* Carousel Button Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Carousel Button Style.swift"; sourceTree = "<group>"; };
@@ -2336,7 +2336,7 @@
 		F3E0B48C2DC300D6003C8B27 /* Panel Section VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Section VM.swift"; sourceTree = "<group>"; };
 		F3E0B48F2DC3033A003C8B27 /* Info Tab Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab Users.swift"; sourceTree = "<group>"; };
 		F3E0B4922DC30347003C8B27 /* Info Tab Logs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab Logs.swift"; sourceTree = "<group>"; };
-		F3E0B4952DC30351003C8B27 /* Info Tab Allocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab Allocations.swift"; sourceTree = "<group>"; };
+		F3E0B4952DC30351003C8B27 /* Info Tab Subdomains.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab Subdomains.swift"; sourceTree = "<group>"; };
 		F3E1D3EC2B3208BE009B7062 /* User 2Fa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User 2Fa.swift"; sourceTree = "<group>"; };
 		F3E1D3F12B320A6A009B7062 /* Permission Group Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Permission Group Header.swift"; sourceTree = "<group>"; };
 		F3E2BED92C1C6B9500B7A6D4 /* Cache List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache List.swift"; sourceTree = "<group>"; };
@@ -2892,10 +2892,10 @@
 				F31BA59C295902280006D126 /* Info Tab.swift */,
 				F3E0B48F2DC3033A003C8B27 /* Info Tab Users.swift */,
 				F3E0B4922DC30347003C8B27 /* Info Tab Logs.swift */,
-				F3E0B4952DC30351003C8B27 /* Info Tab Allocations.swift */,
+				F3E0B4952DC30351003C8B27 /* Info Tab Subdomains.swift */,
 				F373CDA52D88E9F9008B64BE /* Info Tab Heading.swift */,
 				F3B66DEF2D60B2B100F1841B /* Card */,
-				F325F6FF2A54BBCF00E89EC4 /* Info Tab Allocation.swift */,
+				F325F6FF2A54BBCF00E89EC4 /* Info Tab Allocations.swift */,
 				F3A563232D9EF114009AA363 /* Info Tab Buttons User Img.swift */,
 				F3B66DF32D60B46F00F1841B /* Info Tab LA.swift */,
 				F33712212DC2FD2A0014B427 /* Castomization */,
@@ -5033,7 +5033,7 @@
 				F3FF3E992D9411B400EDFBC6 /* Intro Parent.swift in Sources */,
 				F36B73872C8AEAE700E858FE /* Model Asset.swift in Sources */,
 				F32F3AAB2D8EB8EC00E69B98 /* Background Image.swift in Sources */,
-				F325F7002A54BBCF00E89EC4 /* Info Tab Allocation.swift in Sources */,
+				F325F7002A54BBCF00E89EC4 /* Info Tab Allocations.swift in Sources */,
 				F3202CE02D562A620030B3CC /* Browser List MC.swift in Sources */,
 				F3924EDF29A2333F00C4CC77 /* Settings VM.swift in Sources */,
 				F33001442A4CF06D0063FE0F /* Apikey Card.swift in Sources */,
@@ -5184,7 +5184,7 @@
 				F3B81DF12A49C96000633B66 /* Info Absolute Stats.swift in Sources */,
 				F3E8B3502CF485FB005D25F8 /* Console Message.swift in Sources */,
 				F37DDA7629E2AF7600B9680C /* Folder Path VM.swift in Sources */,
-				F3E0B4962DC30351003C8B27 /* Info Tab Allocations.swift in Sources */,
+				F3E0B4962DC30351003C8B27 /* Info Tab Subdomains.swift in Sources */,
 				F335CA0B2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */,
 				F3A994AA2A177ED100530615 /* Map VM.swift in Sources */,
 				F30088FC2B3B56210051476C /* User List Parent.swift in Sources */,
@@ -5422,7 +5422,7 @@
 				F337121E2DC2FD240014B427 /* Panel Section.swift in Sources */,
 				F337121F2DC2FD240014B427 /* Panel Section List.swift in Sources */,
 				F33712202DC2FD240014B427 /* Panel Section Row.swift in Sources */,
-				F3E0B4972DC30351003C8B27 /* Info Tab Allocations.swift in Sources */,
+				F3E0B4972DC30351003C8B27 /* Info Tab Subdomains.swift in Sources */,
 				F3202D0D2D562AE30030B3CC /* Browser List Web.swift in Sources */,
 				F36D53192A05B7F6007324C6 /* Panel VM.swift in Sources */,
 				F389BB6C2A05B5EA00911EBF /* Cache Settings.swift in Sources */,
@@ -5457,7 +5457,7 @@
 				F353B0552D8AA73C00E4EC07 /* Map Section.swift in Sources */,
 				F30089292B3C23A00051476C /* Contact Picker.swift in Sources */,
 				F36D53302A05B896007324C6 /* Section Header.swift in Sources */,
-				F325F7012A54BBCF00E89EC4 /* Info Tab Allocation.swift in Sources */,
+				F325F7012A54BBCF00E89EC4 /* Info Tab Allocations.swift in Sources */,
 				F39626F32A7AD64B0057E356 /* Ansi.swift in Sources */,
 				F3AB4A7E2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
 				F3EE9F762D85CAB9000120A7 /* Transparency.swift in Sources */,

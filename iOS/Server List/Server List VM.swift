@@ -77,7 +77,7 @@ final class ServerListVM {
     
     func checkForUpdates() async {
         let decoder = JSONDecoder()
-        var appStoreVersion = "0"
+        var newVersion = "0"
         
         guard
             let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
@@ -91,13 +91,13 @@ final class ServerListVM {
         do {
             let (data, _) = try await URLSession.shared.data(for: request)
             let decoded = try decoder.decode(ItunesAppInfo.self, from: data)
-            appStoreVersion = decoded.results.first?.version ?? "0"
+            newVersion = decoded.results.first?.version ?? "0"
         } catch {
             return
         }
         
-        if currentVersion.compare(appStoreVersion, options: .numeric) == .orderedAscending {
-            print("Update available: \(currentVersion) -> \(appStoreVersion)")
+        if currentVersion.compare(newVersion, options: .numeric) == .orderedAscending {
+            print("Update available:", currentVersion, "->", newVersion)
             self.alertUpdate = true
         } else {
             print("The app is up to date")
@@ -120,6 +120,7 @@ final class ServerListVM {
                 } else {
                     withAnimation {
                         self.servers = loadedServers
+                        print(loadedServers)
                     }
                     
                     self.saveServers()

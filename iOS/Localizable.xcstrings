@@ -1964,6 +1964,9 @@
         }
       }
     },
+    "Create subdomain" : {
+
+    },
     "Create Task" : {
       "localizations" : {
         "ru" : {

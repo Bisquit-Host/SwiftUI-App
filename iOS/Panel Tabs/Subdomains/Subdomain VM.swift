@@ -14,8 +14,8 @@ final class SubdomainVM {
     
     private var subdomainResponse: SubdomainResponse?
     
-    var limit: Int? {
-        subdomainResponse?.limit
+    var limit: Int {
+        subdomainResponse?.limit ?? 0
     }
     
     var domains: [Domain]? {
@@ -67,15 +67,16 @@ final class SubdomainVM {
     }
     
     func createSubdomain(onSuccess: @escaping () -> Void) async {
-        print("Creating subdomain \(subdomain) on domain \(selectedDomain) for server \(id)")
-        
         guard
+            limit > subdomains.count,
             let selectedAllocation,
             let url = URL(string: "https://mgr.bisquit.host/api/client/extensions/subdomainmanager/servers/" + id),
             let apiKey = Keychain.load(key: "selectedApiKey")
         else {
             return
         }
+        
+        print("Creating subdomain \(subdomain) on domain \(selectedDomain) for server \(id)")
         
         let boundary = UUID().uuidString
         var request = URLRequest(url: url)
@@ -116,6 +117,10 @@ final class SubdomainVM {
             let _ = try decoder.decode(Subdomain.self, from: data)
             
             await fetchSubdomains()
+            
+            self.selectedAllocation = nil
+            subdomain = ""
+            
             onSuccess()
         } catch {
             print("⛔️ Error:", error)

@@ -52,7 +52,9 @@ struct SheetCreateSubdomain: View {
             .transparentSection()
             
             Section {
-                let disabled = vm.selectedAllocation == nil || vm.subdomain.isEmpty
+                let disabled = vm.selectedAllocation == nil
+                || vm.subdomain.isEmpty
+                || vm.limit <= vm.subdomains.count
                 
                 Button {
                     Task {
