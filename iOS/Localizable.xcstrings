@@ -5509,7 +5509,7 @@
     "Telegram" : {
       "shouldTranslate" : false
     },
-    "Temp dir (debug)" : {
+    "Temp dir contents (debug)" : {
 
     },
     "Temporary Files" : {

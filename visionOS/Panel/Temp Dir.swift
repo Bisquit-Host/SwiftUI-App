@@ -1,6 +1,5 @@
 import SwiftUI
 
-#warning("Remove? Debug?")
 struct TempDir: View {
     @State private var fileNames: [String] = []
     
