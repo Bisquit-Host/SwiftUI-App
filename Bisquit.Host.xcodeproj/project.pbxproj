@@ -790,7 +790,6 @@
 		F371468E2B123807001E0296 /* Activity View State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F371468B2B123807001E0296 /* Activity View State.swift */; };
 		F37266AA29D71A1B005FD103 /* File Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266A929D71A1B005FD103 /* File Icon.swift */; };
 		F37266BC29D811B7005FD103 /* File View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266BB29D811B7005FD103 /* File View.swift */; };
-		F37266C029D826F5005FD103 /* File Details.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266BF29D826F5005FD103 /* File Details.swift */; };
 		F37266C829D83394005FD103 /* Text File VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266C729D83394005FD103 /* Text File VM.swift */; };
 		F37266CB29D96C80005FD103 /* Websocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BF97A929BFC7E9007B9C9C /* Websocket.swift */; };
 		F37266CC29D96C93005FD103 /* Websocket Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3729C0CB5A00B08696 /* Websocket Message.swift */; };
@@ -2112,7 +2111,6 @@
 		F371468B2B123807001E0296 /* Activity View State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity View State.swift"; sourceTree = "<group>"; };
 		F37266A929D71A1B005FD103 /* File Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Icon.swift"; sourceTree = "<group>"; };
 		F37266BB29D811B7005FD103 /* File View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File View.swift"; sourceTree = "<group>"; };
-		F37266BF29D826F5005FD103 /* File Details.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Details.swift"; sourceTree = "<group>"; };
 		F37266C729D83394005FD103 /* Text File VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text File VM.swift"; sourceTree = "<group>"; };
 		F37266D029D99570005FD103 /* Gauge Regular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gauge Regular.swift"; sourceTree = "<group>"; };
 		F37266D729D99BB8005FD103 /* Server List Topbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List Topbar.swift"; sourceTree = "<group>"; };
@@ -2922,7 +2920,6 @@
 				F31BA5AB295902B00006D126 /* File Tab.swift */,
 				F3D558AB2A3360ED00608447 /* File Tab VM.swift */,
 				F37266BB29D811B7005FD103 /* File View.swift */,
-				F37266BF29D826F5005FD103 /* File Details.swift */,
 				F37266A929D71A1B005FD103 /* File Icon.swift */,
 				F3F5BC952BF7668E00EB8FB1 /* Sensitivity Analyzer.swift */,
 				F34BB6B72D3DC2A300D27BE0 /* Context Menu */,
@@ -5018,7 +5015,6 @@
 				F3C9D8582B31135B00265492 /* Permission List.swift in Sources */,
 				F3EDEE3529C0C84C00B08696 /* Panel VM.swift in Sources */,
 				F3FF59FF2A4A3188003A1973 /* User List.swift in Sources */,
-				F37266C029D826F5005FD103 /* File Details.swift in Sources */,
 				F3464D2A2A863A6000188B0C /* Create Backup.swift in Sources */,
 				F3E97C7929B4B569008CBDD6 /* Credentials VM.swift in Sources */,
 				F325F7032A54BF7A00E89EC4 /* Tab Info.swift in Sources */,
