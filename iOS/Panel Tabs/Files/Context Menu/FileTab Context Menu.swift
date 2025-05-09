@@ -51,11 +51,6 @@ struct FileTabContextMenu: ViewModifier {
                     }
                 }
                 
-#warning("File info")
-                //                MenuButton("Get Info", icon: "info.circle") {
-                //
-                //                }
-                
                 if !mimeType.contains("directory") {
                     MenuButton("Download", icon: "square.and.arrow.down") {
                         vm.downloadFile(root + "/" + name)

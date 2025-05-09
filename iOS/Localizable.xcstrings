@@ -2037,6 +2037,7 @@
 
     },
     "Created: %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -3821,6 +3822,7 @@
       }
     },
     "Modified: %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -5193,6 +5195,7 @@
       }
     },
     "Size: %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
