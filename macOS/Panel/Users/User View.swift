@@ -36,11 +36,9 @@ struct UserView: View {
                 }
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
-#warning("macOS")
-#if !os(macOS)
-                PermissionList($user)
-                    .environment(vm)
-#endif
+#warning("Add")
+                //                PermissionList($user)
+                //                    .environment(vm)
             }
             .refreshable {
                 vm.userDetails($user)
