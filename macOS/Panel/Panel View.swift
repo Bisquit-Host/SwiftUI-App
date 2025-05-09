@@ -12,7 +12,6 @@ struct PanelView: View {
         self.vm = PanelVM(server.id)
     }
     
-    #warning("Move to the ValueStore")
     @AppStorage("selected_tab") private var selectedTab: PanelTab = .info
     
     private let gradient = Gradient(colors: [
@@ -50,7 +49,7 @@ struct PanelView: View {
         VStack(spacing: 0) {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
-                    ForEach(tabs, id: \.self) { tab in
+                    ForEach(tabs) { tab in
                         Button {
                             selectedTab = tab
                         } label: {
