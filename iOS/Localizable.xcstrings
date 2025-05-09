@@ -5657,7 +5657,14 @@
       }
     },
     "Total Entries" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Всего"
+          }
+        }
+      }
     },
     "Total file allocated size" : {
       "localizations" : {
