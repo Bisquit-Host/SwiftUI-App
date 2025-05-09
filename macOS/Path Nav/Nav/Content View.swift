@@ -33,9 +33,7 @@ struct ContentView: View {
                         nav.showNavModePicker = true
                     }
             }
-#warning("macOS 15")
         }
-        //        .windowFullScreenBehavior(.disabled)
         .environment(nav)
         .environment(vm)
         .backgroundBlur()
