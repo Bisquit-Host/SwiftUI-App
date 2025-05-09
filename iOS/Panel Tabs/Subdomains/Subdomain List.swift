@@ -15,7 +15,7 @@ struct SubdomainList: View {
     @State private var sheetCreate = false
     
     private var disabled: Bool {
-        vm.subdomains.count >= vm.limit ?? 3
+        vm.subdomains.count >= vm.limit
     }
     
     var body: some View {
