@@ -843,17 +843,17 @@
         }
       }
     },
-    "Added **`%@`** as a subuser" : {
+    "Added \"**`%@`**\" as a subuser" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Добавлен пользователь **`%@`**"
+            "value" : "Добавлен пользователь \"**`%@`**\""
           }
         }
       }
     },
-    "Added **`%@`** to the server" : {
+    "Added \"**`%@`**\" to the server" : {
 
     },
     "Admin" : {
@@ -1372,34 +1372,34 @@
     "Change your navigation mode" : {
 
     },
-    "Changed the **`%@`** variable from **`%@`** to **`%@`**" : {
+    "Changed the \"**`%@`**\" variable from \"**`%@`**\" to \"**`%@`**\"" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Changed the **`%1$@`** variable from **`%2$@`** to **`%3$@`**"
+            "value" : "Changed the \"**`%1$@`**\" variable from \"**`%2$@`**\" to \"**`%3$@`**\""
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Изменена переменная **`%1$@`** с **`%2$@`** на **`%3$@`**"
+            "value" : "Изменена переменная \"**`%@`**\" с \"**`%@`**\" на \"**`%@`**\""
           }
         }
       }
     },
-    "Changed the server description from **`%@`** to **`%@`**" : {
+    "Changed the server description from \"**`%@`**\" to \"**`%@`**\"" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Changed the server description from **`%1$@`** to **`%2$@`**"
+            "value" : "Changed the server description from \"**`%1$@`**\" to \"**`%2$@`**\""
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Описание сервера изменено с **`%1$@`** на **`%2$@`**"
+            "value" : "Описание сервера изменено с \"**`%@`**\" на \"**`%@`**\""
           }
         }
       }
@@ -1542,7 +1542,7 @@
         }
       }
     },
-    "Completed restoration of the **`%@`** backup" : {
+    "Completed restoration of the \"**`%@`**\" backup" : {
 
     },
     "Comprehensive hosting solutions for VDS, game servers, websites, and bots — customized to fit your projects" : {
@@ -1558,12 +1558,12 @@
         }
       }
     },
-    "Compressed **`%@`** in **`%@`**" : {
+    "Compressed \"**`%@`**\" in \"**`%@`**\"" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Compressed **`%1$@`** in **`%2$@`**"
+            "value" : "Compressed \"**`%1$@`**\" in \"**`%2$@`**\""
           }
         }
       }
@@ -1994,64 +1994,54 @@
         }
       }
     },
-    "Created **`%@`** schedule" : {
+    "Created \"**`%@`**\" schedule" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Создано расписание **`%@`**"
+            "value" : "Создано расписание \"**`%@`**\""
           }
         }
       }
     },
-    "Created a copy of **`%@`**" : {
-
+    "Created a copy of \"**`%@`**\"" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Создана копия \"**`%@`**\""
+          }
+        }
+      }
     },
-    "Created a new **`%@`** task in your **`%@`** schedule" : {
+    "Created a new \"**`%@`**\" task in your \"**`%@`**\" schedule" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Created a new **`%1$@`** task in your **`%2$@`** schedule"
+            "value" : "Created a new \"**`%1$@`**\" task in your \"**`%2$@`**\" schedule"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Создана новая задача “**`%1$@`**” для раписания **`%2$@`**"
+            "value" : "Создана новая задача \"**`%@`**\" для расписания \"**`%@`**\""
           }
         }
       }
     },
-    "Created new database **`%@`**" : {
+    "Created new database \"**`%@`**\"" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Создана новая база данных **`%@`**"
+            "value" : "Создана новая база данных \"**`%@`**\""
           }
         }
       }
     },
-    "Created the **`%@`** subdomain" : {
+    "Created the \"**`%@`**\" subdomain" : {
 
-    },
-    "Created: %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aanmaak: %@"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Создано: %@"
-          }
-        }
-      }
     },
     "Creates a new backup" : {
       "localizations" : {
@@ -2229,12 +2219,12 @@
         }
       }
     },
-    "Decompressed **`%@`** in **`%@`**" : {
+    "Decompressed \"**`%@`**\" in \"**`%@`**\"" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Decompressed **`%1$@`** in **`%2$@`**"
+            "value" : "Decompressed \"**`%1$@`**\" in \"**`%2$@`**\""
           }
         }
       }
@@ -2259,50 +2249,50 @@
         }
       }
     },
-    "Deleted **`%@`**" : {
+    "Deleted \"**`%@`**\"" : {
 
     },
-    "Deleted a task in your **`%@`** schedule" : {
+    "Deleted a task in your \"**`%@`**\" schedule" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Удалена задача для расписания **`%@`**"
+            "value" : "Удалена задача для расписания \"**`%@`**\""
           }
         }
       }
     },
-    "Deleted database **`%@`**" : {
+    "Deleted database \"**`%@`**\"" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Удалена база данных **`%@`**"
+            "value" : "Удалена база данных \"**`%@`**\""
           }
         }
       }
     },
-    "Deleted the **`%@`** allocation" : {
+    "Deleted the \"**`%@`**\" allocation" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Удален порт **`%@`**"
+            "value" : "Удален порт \"**`%@`**\""
           }
         }
       }
     },
-    "Deleted the **`%@`** backup" : {
+    "Deleted the \"**`%@`**\" backup" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Удален бэкап **`%@`**"
+            "value" : "Удален бэкап \"**`%@`**\""
           }
         }
       }
     },
-    "Deleted the **`%@`** schedule" : {
+    "Deleted the \"**`%@`**\" schedule" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -2312,7 +2302,7 @@
         }
       }
     },
-    "Deleted the **`%@`** subdomain" : {
+    "Deleted the \"**`%@`**\" subdomain" : {
 
     },
     "Describe an image" : {
@@ -2583,15 +2573,15 @@
         }
       }
     },
-    "Downloaded **`%@`**" : {
+    "Downloaded \"**`%@`**\"" : {
 
     },
-    "Downloaded the **`%@`** backup" : {
+    "Downloaded the \"**`%@`**\" backup" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Скачан бэкап **`%@`**"
+            "value" : "Скачан бэкап \"**`%@`**\""
           }
         }
       }
@@ -2827,7 +2817,7 @@
         }
       }
     },
-    "Executed **`%@`** on the server" : {
+    "Executed \"**`%@`**\" on the server" : {
 
     },
     "Expiration" : {
@@ -3227,21 +3217,21 @@
         }
       }
     },
-    "Installed **`%@`**" : {
+    "Installed \"**`%@`**\"" : {
 
     },
-    "Installed modpack ID **`%@`**, version **`%@`** from **`%@`**" : {
+    "Installed modpack ID \"**`%@`**\", version \"**`%@`**\" from \"**`%@`**\"" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Installed modpack ID **`%1$@`**, version **`%2$@`** from **`%3$@`**"
+            "value" : "Installed modpack ID \"**`%1$@`**\", version \"**`%2$@`**\" from \"**`%3$@`**\""
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Утановлен модпак ID **`%1$@`**, версии **`%2$@`** с **`%3$@`**"
+            "value" : "Утановлен модпак ID \"**`%@`**\", версии \"**`%@`**\" с \"**`%@`**\""
           }
         }
       }
@@ -3646,12 +3636,12 @@
         }
       }
     },
-    "Locked the **`%@`** backup" : {
+    "Locked the \"**`%@`**\" backup" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Бэкап **`%@`** заблокирован"
+            "value" : "Бэкап \"**`%@`**\" заблокирован"
           }
         }
       }
@@ -3714,12 +3704,12 @@
         }
       }
     },
-    "Marked the **`%@`** backup as complete" : {
+    "Marked the \"**`%@`**\" backup as complete" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Бэкап **`%@`** помечен как завершенный"
+            "value" : "Бэкап \"**`%@`**\" помечен как завершенный"
           }
         }
       }
@@ -3817,23 +3807,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Изменён"
-          }
-        }
-      }
-    },
-    "Modified: %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bewerkt: %@"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Изменено: %@"
           }
         }
       }
@@ -4270,12 +4243,12 @@
         }
       }
     },
-    "Password rotated for database **`%@`**" : {
+    "Password rotated for database \"**`%@`**\"" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Изменен пароль базы данных **`%@`**"
+            "value" : "Изменен пароль базы данных \"**`%@`**\""
           }
         }
       }
@@ -4627,12 +4600,12 @@
         }
       }
     },
-    "Removed **`%@`** as a subuser" : {
+    "Removed \"**`%@`**\" as a subuser" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Удален пользователь **`%@`**"
+            "value" : "Удален пользователь \"**`%@`**\""
           }
         }
       }
@@ -4657,18 +4630,18 @@
         }
       }
     },
-    "Renamed the server from **`%@`** to **`%@`**" : {
+    "Renamed the server from \"**`%@`**\" to \"**`%@`**\"" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Renamed the server from **`%1$@`** to **`%2$@`**"
+            "value" : "Renamed the server from \"**`%1$@`**\" to \"**`%2$@`**\""
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Сервер переименован с **`%1$@`** на **`%2$@`**"
+            "value" : "Сервер переименован с \"**`%@`**\" на \"**`%@`**\""
           }
         }
       }
@@ -4754,12 +4727,12 @@
         }
       }
     },
-    "Restored the **`%@`** backup (truncate: **`%@`**)" : {
+    "Restored the \"**`%@`**\" backup (truncate: \"**`%@`**\")" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Restored the **`%1$@`** backup (truncate: **`%2$@`**)"
+            "value" : "Restored the \"**`%1$@`**\" backup (truncate: \"**`%2$@`**\")"
           }
         }
       }
@@ -5061,12 +5034,12 @@
     "Servers" : {
 
     },
-    "Set **`%@`** as the primary server allocation" : {
+    "Set \"**`%@`**\" as the primary server allocation" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Порт **`%@`** установлен как основной"
+            "value" : "Порт \"**`%@`**\" установлен как основной"
           }
         }
       }
@@ -5194,17 +5167,6 @@
         }
       }
     },
-    "Size: %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Размер: %@"
-          }
-        }
-      }
-    },
     "Soon there will be an art here as well" : {
       "localizations" : {
         "nl" : {
@@ -5269,7 +5231,7 @@
     "Start, Stop, Restart or Kill a server" : {
 
     },
-    "Started a new backup **`%@`**" : {
+    "Started a new backup \"**`%@`**\"" : {
 
     },
     "Started the server" : {
@@ -5782,12 +5744,12 @@
         }
       }
     },
-    "Unlocked **`%@`** backup" : {
+    "Unlocked \"**`%@`**\" backup" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Бэкап **`%@`** разблокирован"
+            "value" : "Бэкап \"**`%@`**\" разблокирован"
           }
         }
       }
@@ -5885,52 +5847,52 @@
         }
       }
     },
-    "Updated **`%@`** schedule" : {
+    "Updated \"**`%@`**\" schedule" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Обновлено расписание **`%@`**"
+            "value" : "Обновлено расписание \"**`%@`**\""
           }
         }
       }
     },
-    "Updated a task in your **`%@`** schedule" : {
+    "Updated a task in your \"**`%@`**\" schedule" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Обновлена задача для расписания **`%@`**"
+            "value" : "Обновлена задача для расписания \"**`%@`**\""
           }
         }
       }
     },
-    "Updated the Docker Image for the server from **`%@`** to **`%@`**" : {
+    "Updated the Docker Image for the server from \"**`%@`**\" to \"**`%@`**\"" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Updated the Docker Image for the server from **`%1$@`** to **`%2$@`**"
+            "value" : "Updated the Docker Image for the server from \"**`%1$@`**\" to \"**`%2$@`**\""
           }
         }
       }
     },
-    "Updated the notes for **`%@`** from **`%@`** to **`%@`**" : {
+    "Updated the notes for \"**`%@`**\" from \"**`%@`**\" to \"**`%@`**\"" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Updated the notes for **`%1$@`** from **`%2$@`** to **`%3$@`**"
+            "value" : "Updated the notes for \"**`%1$@`**\" from \"**`%2$@`**\" to \"**`%3$@`**\""
           }
         }
       }
     },
-    "Updated the subuser permissions for **`%@`** as a subuser" : {
+    "Updated the subuser permissions for \"**`%@`**\" as a subuser" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Обновлены права пользователя **`%@`**"
+            "value" : "Обновлены права пользователя \"**`%@`**\""
           }
         }
       }
@@ -6140,7 +6102,7 @@
     "View resource usage of your servers" : {
 
     },
-    "Viewed the contents of **`%@`**" : {
+    "Viewed the contents of \"**`%@`**\"" : {
 
     },
     "Warning" : {
@@ -6203,7 +6165,7 @@
     "Write" : {
 
     },
-    "Wrote new content to **`%@`**" : {
+    "Wrote new content to \"**`%@`**\"" : {
 
     },
     "X Pressed" : {

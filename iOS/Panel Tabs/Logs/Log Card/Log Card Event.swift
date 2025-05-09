@@ -37,77 +37,77 @@ struct LogCardEvent: View {
         switch log.event {
             // Modpack
         case "server:modpack.install":
-            "Installed modpack ID **`\(eventProp("modpack_id"))`**, version **`\(eventProp("modpack_version_id"))`** from **`\(eventProp("provider"))`**"
+            "Installed modpack ID \"**`\(eventProp("modpack_id"))`**\", version \"**`\(eventProp("modpack_version_id"))`**\" from \"**`\(eventProp("provider"))`**\""
             
             // Schedules
         case "server:schedule.delete":
-            "Deleted the **`\(eventProp("name"))`** schedule"
+            "Deleted the \"**`\(eventProp("name"))`**\" schedule"
             
         case "server:schedule.create":
-            "Created **`\(eventProp("name"))`** schedule"
+            "Created \"**`\(eventProp("name"))`**\" schedule"
             
         case "server:schedule.update":
-            "Updated **`\(eventProp("name"))`** schedule"
+            "Updated \"**`\(eventProp("name"))`**\" schedule"
             
         case "server:task.delete":
-            "Deleted a task in your **`\(eventProp("name"))`** schedule"
+            "Deleted a task in your \"**`\(eventProp("name"))`**\" schedule"
             
         case "server:task.create":
-            "Created a new **`\(eventProp("action"))`** task in your **`\(eventProp("name"))`** schedule"
+            "Created a new \"**`\(eventProp("action"))`**\" task in your \"**`\(eventProp("name"))`**\" schedule"
             
         case "server:task.update":
-            "Updated a task in your **`\(eventProp("name"))`** schedule"
+            "Updated a task in your \"**`\(eventProp("name"))`**\" schedule"
             
             // Users
         case "server:subuser.delete":
-            "Removed **`\(eventProp("email"))`** as a subuser"
+            "Removed \"**`\(eventProp("email"))`**\" as a subuser"
             
         case "server:subuser.create":
-            "Added **`\(eventProp("email"))`** as a subuser"
+            "Added \"**`\(eventProp("email"))`**\" as a subuser"
             
         case "server:subuser.update":
-            "Updated the subuser permissions for **`\(eventProp("email"))`** as a subuser"
+            "Updated the subuser permissions for \"**`\(eventProp("email"))`**\" as a subuser"
             
             // Versions
         case "server:version.install":
-            "Installed **`\(coreVersion())`**"
+            "Installed \"**`\(coreVersion())`**\""
             
             // Startup
         case "server:startup.edit":
-            "Changed the **`\(eventProp("variable"))`** variable from **`\(eventProp("old"))`** to **`\(eventProp("new"))`**"
+            "Changed the \"**`\(eventProp("variable"))`**\" variable from \"**`\(eventProp("old"))`**\" to \"**`\(eventProp("new"))`**\""
             
         case "server:startup.image":
-            "Updated the Docker Image for the server from **`\(eventProp("old"))`** to **`\(eventProp("new"))`**"
+            "Updated the Docker Image for the server from \"**`\(eventProp("old"))`**\" to \"**`\(eventProp("new"))`**\""
             
             // Allocation
         case "server:allocation.delete":
-            "Deleted the **`\(eventProp("allocation"))`** allocation"
+            "Deleted the \"**`\(eventProp("allocation"))`**\" allocation"
             
         case "server:allocation.primary":
-            "Set **`\(eventProp("allocation"))`** as the primary server allocation"
+            "Set \"**`\(eventProp("allocation"))`**\" as the primary server allocation"
             
         case "server:allocation.create":
-            "Added **`\(eventProp("allocation"))`** to the server"
+            "Added \"**`\(eventProp("allocation"))`**\" to the server"
             
         case "server:allocation.notes":
-            "Updated the notes for **`\(eventProp("allocation"))`** from **`\(eventProp("old"))`** to **`\(eventProp("new"))`**"
+            "Updated the notes for \"**`\(eventProp("allocation"))`**\" from \"**`\(eventProp("old"))`**\" to \"**`\(eventProp("new"))`**\""
             
             // DB
         case "server:database.delete":
-            "Deleted database **`\(eventProp("name"))`**"
+            "Deleted database \"**`\(eventProp("name"))`**\""
             
         case "server:database.rotate-password":
-            "Password rotated for database **`\(eventProp("name"))`**"
+            "Password rotated for database \"**`\(eventProp("name"))`**\""
             
         case "server:database.create":
-            "Created new database **`\(eventProp("name"))`**"
+            "Created new database \"**`\(eventProp("name"))`**\""
             
             // Settings
         case "server:settings.description":
-            "Changed the server description from **`\(eventProp("old"))`** to **`\(eventProp("new"))`**"
+            "Changed the server description from \"**`\(eventProp("old"))`**\" to \"**`\(eventProp("new"))`**\""
             
         case "server:settings.rename":
-            "Renamed the server from **`\(eventProp("old"))`** to **`\(eventProp("new"))`**"
+            "Renamed the server from \"**`\(eventProp("old"))`**\" to \"**`\(eventProp("new"))`**\""
             
         case "server:reinstall":
             "Reinstalled server"
@@ -127,62 +127,62 @@ struct LogCardEvent: View {
             
             // Console
         case "server:console.command":
-            "Executed **`\(eventProp("command"))`** on the server"
+            "Executed \"**`\(eventProp("command"))`**\" on the server"
             
             // Files
         case "server:file.copy":
-            "Created a copy of **`\(eventProp("file"))`**"
+            "Created a copy of \"**`\(eventProp("file"))`**\""
             
         case "server:file.read":
-            "Viewed the contents of **`\(eventProp("file"))`**"
+            "Viewed the contents of \"**`\(eventProp("file"))`**\""
             
         case "server:file.compress":
-            "Compressed **`\(eventProp("files"))`** in **`\(eventProp("directory"))`**"
+            "Compressed \"**`\(eventProp("files"))`**\" in \"**`\(eventProp("directory"))`**\""
             
         case "server:file.decompress":
-            "Decompressed **`\(eventProp("files"))`** in **`\(eventProp("directory"))`**"
+            "Decompressed \"**`\(eventProp("files"))`**\" in \"**`\(eventProp("directory"))`**\""
             
         case "server:file.download":
-            "Downloaded **`\(eventProp("file"))`**"
+            "Downloaded \"**`\(eventProp("file"))`**\""
             
             // Array
         case "server:file.delete":
-            "Deleted **`\(eventProp("files"))`**"
+            "Deleted \"**`\(eventProp("files"))`**\""
             
         case "server:file.write":
-            "Wrote new content to **`\(eventProp("file"))`**"
+            "Wrote new content to \"**`\(eventProp("file"))`**\""
             
             // Backups
         case "server:backup.delete":
-            "Deleted the **`\(eventProp("name"))`** backup"
+            "Deleted the \"**`\(eventProp("name"))`**\" backup"
             
         case "server:backup.complete":
-            "Marked the **`\(eventProp("name"))`** backup as complete"
+            "Marked the \"**`\(eventProp("name"))`**\" backup as complete"
             
         case "server:backup.lock":
-            "Locked the **`\(eventProp("name"))`** backup"
+            "Locked the \"**`\(eventProp("name"))`**\" backup"
             
         case "server:backup.unlock":
-            "Unlocked **`\(eventProp("name"))`** backup"
+            "Unlocked \"**`\(eventProp("name"))`**\" backup"
             
         case "server:backup.start":
-            "Started a new backup **`\(eventProp("name"))`**"
+            "Started a new backup \"**`\(eventProp("name"))`**\""
             
         case "server:backup.download":
-            "Downloaded the **`\(eventProp("name"))`** backup"
+            "Downloaded the \"**`\(eventProp("name"))`**\" backup"
             
         case "server:backup.restore-complete":
-            "Completed restoration of the **`\(eventProp("name"))`** backup"
+            "Completed restoration of the \"**`\(eventProp("name"))`**\" backup"
             
         case "server:backup.restore":
-            "Restored the **`\(eventProp("name"))`** backup (truncate: **`\(eventProp("truncate"))`**)"
+            "Restored the \"**`\(eventProp("name"))`**\" backup (truncate: \"**`\(eventProp("truncate"))`**\")"
             
             // Subdomains
         case "server:subdomain.delete":
-            "Created the **`\(subdomain())`** subdomain"
+            "Created the \"**`\(subdomain())`**\" subdomain"
             
         case "server:subdomain.create":
-            "Deleted the **`\(subdomain())`** subdomain"
+            "Deleted the \"**`\(subdomain())`**\" subdomain"
             
         default:
             LocalizedStringKey(log.event)
