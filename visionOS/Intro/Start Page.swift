@@ -56,7 +56,7 @@ struct StartPage: View {
         }
         .toolbar {
             Button("Debug") {
-                Keychain.save(key: "selectedApiKey", value: debugKey)
+                Keychain.save(debugKey, forKey: "selectedApiKey")
                 
                 if !keys.contains(where: { $0.key == debugKey }) {
                     modelContext.insert(APIKey("Debug", key: debugKey))

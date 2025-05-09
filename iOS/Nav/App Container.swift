@@ -82,10 +82,7 @@ struct AppContainer: View {
     }
     
     private func auth() {
-        Keychain.save(
-            key: "selectedApiKey",
-            value: linking.apiKey
-        )
+        Keychain.save(linking.apiKey, forKey: "selectedApiKey")
         
         if !keys.contains(where: { $0.key == linking.apiKey }) {
             modelContext.insert(
