@@ -20,14 +20,14 @@ struct ImagePlaygroundButton: View {
                 if supportsImagePlayground {
                     Image(.appleIntelligence)
                         .resizable()
-                        .frame(width: 35, height: 35)
+                        .frame(35)
                         .clipShape(.circle)
                         .blur(radius: 3)
                 }
                 
                 Image(.appleIntelligence)
                     .resizable()
-                    .frame(width: 32, height: 32)
+                    .frame(32)
                     .clipShape(.circle)
                     .opacity(supportsImagePlayground ? 1 : 0.2)
             }

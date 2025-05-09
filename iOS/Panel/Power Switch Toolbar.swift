@@ -30,7 +30,7 @@ struct PowerSwitchToolbar: View {
                 .symbolEffect(.bounce, value: vm.stateColor)
                 .foregroundStyle(vm.stateColor.gradient)
                 .animation(.default, value: vm.stateColor)
-                .frame(width: 35, height: 35)
+                .frame(35)
                 .background(.ultraThinMaterial, in: .circle)
         }
         .hoverEffect(.lift)

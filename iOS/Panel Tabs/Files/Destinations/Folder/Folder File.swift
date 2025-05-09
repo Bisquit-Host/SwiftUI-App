@@ -70,7 +70,7 @@ struct FolderFile: View {
                 } label: {
                     Image(systemName: "folder.badge.plus")
                         .footnote(.bold)
-                        .frame(width: 35, height: 35)
+                        .frame(35)
                         .background(.ultraThinMaterial, in: .circle)
                 }
                 .foregroundStyle(.primary)

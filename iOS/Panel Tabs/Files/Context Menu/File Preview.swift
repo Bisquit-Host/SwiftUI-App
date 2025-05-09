@@ -20,7 +20,7 @@ struct FilePreview: View {
                 QuickLookView(url)
             } else {
                 ProgressView()
-                    .frame(width: 50, height: 50)
+                    .frame(50)
             }
         }
         .animation(.default, value: vm.isLoaded)

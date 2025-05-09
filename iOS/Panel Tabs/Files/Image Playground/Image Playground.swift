@@ -53,7 +53,7 @@ struct ImagePlayground: View {
                 selectedImage
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 300, height: 300)
+                    .frame(300)
                     .clipShape(.rect(cornerRadius: 16))
                     .overlay {
                         RoundedRectangle(cornerRadius: 16)

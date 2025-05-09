@@ -5,7 +5,7 @@ struct DynamicIslandBadge: View {
         HStack(spacing: 5) {
             Image(.bitquit)
                 .resizable()
-                .frame(width: 20, height: 20)
+                .frame(20)
                 .shadow(color: .black.opacity(0.5), radius: 2)
             
             Text("Bisquit.Host")

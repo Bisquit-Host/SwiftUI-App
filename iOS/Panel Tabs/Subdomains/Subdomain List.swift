@@ -59,7 +59,7 @@ struct SubdomainList: View {
                     Image(systemName: "link.badge.plus")
                         .foregroundStyle(.foreground)
                         .footnote(.bold)
-                        .frame(width: 35, height: 35)
+                        .frame(35)
                         .background(.ultraThinMaterial, in: .circle)
                 }
             }

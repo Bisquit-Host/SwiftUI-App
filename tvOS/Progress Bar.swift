@@ -37,7 +37,7 @@ struct ProgressBar: View {
                     .bold()
                     .title3()
             }
-            .frame(width: 150, height: 150)
+            .frame(150)
         }
     }
 }

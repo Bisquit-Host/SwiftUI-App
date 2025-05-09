@@ -28,7 +28,7 @@ struct UserCard: View {
             HStack {
                 KFImage(imageUrl)
                     .resizable()
-                    .frame(width: imageSize, height: imageSize)
+                    .frame(imageSize)
                     .clipShape(.circle)
                 
                 VStack(alignment: .leading) {

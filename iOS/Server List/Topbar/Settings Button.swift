@@ -46,7 +46,7 @@ struct SettingsButton: View {
         } label: {
             Image(systemName: "gear")
                 .footnote(.bold)
-                .frame(width: 35, height: 35)
+                .frame(35)
                 .background(.ultraThinMaterial, in: .circle)
         }
         .foregroundStyle(.foreground)

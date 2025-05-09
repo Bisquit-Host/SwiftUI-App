@@ -26,7 +26,7 @@ struct SubdomainList: View {
                     Image(systemName: "link.badge.plus")
                         .foregroundStyle(.foreground)
                         .bold()
-                        .frame(width: 30, height: 30)
+                        .frame(30)
                         .background(.ultraThinMaterial.opacity(0.3), in: .circle)
                         .overlay {
                             Circle()

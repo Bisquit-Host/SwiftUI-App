@@ -41,7 +41,7 @@ struct StartPage: View {
                 } label: {
                     Image(systemName: "doc.on.clipboard")
                         .footnote(.bold)
-                        .frame(width: 40, height: 40)
+                        .frame(40)
                         .background(.ultraThinMaterial.opacity(0.2), in: .circle)
                         .overlay {
                             Capsule()
