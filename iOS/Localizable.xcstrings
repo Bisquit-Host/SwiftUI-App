@@ -4324,40 +4324,6 @@
         }
       }
     },
-    "Port: %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Poort: %@"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Порт: %@"
-          }
-        }
-      }
-    },
-    "Port: %lld" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Poort: %lld"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Порт: %lld"
-          }
-        }
-      }
-    },
     "Power" : {
       "localizations" : {
         "ru" : {
