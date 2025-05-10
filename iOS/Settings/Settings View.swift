@@ -17,7 +17,7 @@ struct SettingsView: View {
             
             OtherSettings()
                 .environment(vm)
-                        
+            
             DevSettings()
         }
         .navigationTitle("Settings")
