@@ -851,7 +851,14 @@
       }
     },
     "Added \"**`%@`**\" to the server" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавлен порт \"**`%@`**\""
+          }
+        }
+      }
     },
     "Admin" : {
       "localizations" : {
@@ -916,7 +923,14 @@
       }
     },
     "Allocation" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Порт"
+          }
+        }
+      }
     },
     "Allocations" : {
       "localizations" : {
@@ -1184,7 +1198,14 @@
       }
     },
     "Battery: %lld%%" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Аккумулятор: %lld%%"
+          }
+        }
+      }
     },
     "Best places" : {
       "localizations" : {
@@ -1377,7 +1398,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Изменена переменная \"**`%@`**\" с \"**`%@`**\" на \"**`%@`**\""
+            "value" : "Изменена переменная \"**`%1$@`**\" с \"**`%2$@`**\" на \"**`%3$@`**\""
           }
         }
       }
@@ -1393,7 +1414,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Описание сервера изменено с \"**`%@`**\" на \"**`%@`**\""
+            "value" : "Описание сервера изменено с “**`%1$@`**” на “**`%2$@`**”"
           }
         }
       }
@@ -1537,7 +1558,14 @@
       }
     },
     "Completed restoration of the \"**`%@`**\" backup" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Завершено восстановление бэкапа \"**`%@`**\""
+          }
+        }
+      }
     },
     "Comprehensive hosting solutions for VDS, game servers, websites, and bots — customized to fit your projects" : {
 
@@ -1558,6 +1586,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Compressed \"**`%1$@`**\" in \"**`%2$@`**\""
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сжат \"**`%1$@`**\" в \"**`%2$@`**\""
           }
         }
       }
@@ -2019,7 +2053,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Создана новая задача \"**`%@`**\" для расписания \"**`%@`**\""
+            "value" : "Создана новая задача “**`%1$@`**” для расписания “**`%2$@`**”"
           }
         }
       }
@@ -2035,7 +2069,14 @@
       }
     },
     "Created the \"**`%@`**\" subdomain" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Создан поддомен \"**`%@`**\""
+          }
+        }
+      }
     },
     "Creates a new backup" : {
       "localizations" : {
@@ -2220,6 +2261,12 @@
             "state" : "new",
             "value" : "Decompressed \"**`%1$@`**\" in \"**`%2$@`**\""
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Распакованы файлы \"**`%1$@`**\" в \"**`%2$@`**\""
+          }
         }
       }
     },
@@ -2244,7 +2291,14 @@
       }
     },
     "Deleted \"**`%@`**\"" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удален \"**`%@`**\""
+          }
+        }
+      }
     },
     "Deleted a task in your \"**`%@`**\" schedule" : {
       "localizations" : {
@@ -2297,7 +2351,14 @@
       }
     },
     "Deleted the \"**`%@`**\" subdomain" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалён поддомен \"**`%@`**\""
+          }
+        }
+      }
     },
     "Describe an image" : {
       "localizations" : {
@@ -2568,7 +2629,14 @@
       }
     },
     "Downloaded \"**`%@`**\"" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скачан файл \"**`%@`**\""
+          }
+        }
+      }
     },
     "Downloaded the \"**`%@`**\" backup" : {
       "localizations" : {
@@ -2950,7 +3018,7 @@
       }
     },
     "Game Center" : {
-
+      "shouldTranslate" : false
     },
     "Gamepad test" : {
 
@@ -3103,7 +3171,14 @@
       }
     },
     "How do I authorize?" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Как мне авторизоваться?"
+          }
+        }
+      }
     },
     "How to...?" : {
       "localizations" : {
@@ -3207,7 +3282,14 @@
       }
     },
     "Installed \"**`%@`**\"" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Установлено ядро \"**`%@`**\""
+          }
+        }
+      }
     },
     "Installed modpack ID \"**`%@`**\", version \"**`%@`**\" from \"**`%@`**\"" : {
       "localizations" : {
@@ -3220,7 +3302,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Утановлен модпак ID \"**`%@`**\", версии \"**`%@`**\" с \"**`%@`**\""
+            "value" : "Утановлен модпак ID “**`%1$@`**”, версии “**`%2$@`**” с “**`%3$@`**”"
           }
         }
       }
@@ -4567,7 +4649,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Сервер переименован с \"**`%@`**\" на \"**`%@`**\""
+            "value" : "Сервер переименован с “**`%1$@`**” на “**`%2$@`**”"
           }
         }
       }
@@ -4664,7 +4746,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Восстановлен бэкап \"**`%@`**\" (удаление файлов: \"**`%@`**\")"
+            "value" : "Восстановлен бэкап “**`%1$@`**” (удаление файлов: “**`%2$@`**”)"
           }
         }
       }
@@ -5804,6 +5886,12 @@
             "state" : "new",
             "value" : "Updated the Docker Image for the server from \"**`%1$@`**\" to \"**`%2$@`**\""
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обновлен образ Docker для сервера с \"**`%1$@`**\" на \"**`%2$@`**\""
+          }
         }
       }
     },
@@ -5818,7 +5906,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Обновлены заметки для \"**`%@`**\" с \"**`%@`**\" на \"**`%@`**\""
+            "value" : "Обновлены заметки для “**`%1$@`**” с “**`%2$@`**” на “**`%3$@`**”"
           }
         }
       }
