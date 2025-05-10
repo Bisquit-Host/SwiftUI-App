@@ -10,38 +10,34 @@ struct GeneralSettings: View {
         Form {
             Section {
                 HStack {
-                    Text("Navigation mode")
+                    Label("Navigation mode", systemImage: "safari")
                     
                     Spacer()
                     
                     NavModeButton()
                 }
-            }
-            
-            Section {
-                Toggle("Game Center", isOn: $store.enableGameCenter)
+                
+                Toggle(isOn: $store.enableGameCenter) {
+                    Label("Game Center", systemImage: "gamecontroller.fill")
+                }
                 
                 LaunchAtLogin.Toggle()
             }
             
             Section {
-                Button("Log out") {
+                Button {
                     main {
                         store.isApiKeyValid = false
                         Keychain.delete(key: "selectedApiKey")
                     }
+                } label: {
+                    Label("Log out", systemImage: "rectangle.portrait.and.arrow.right")
                 }
             }
 #if DEBUG
             Section("Debug") {
-                HStack {
-                    Text("Clear navigation path")
-                    
-                    Spacer()
-                    
-                    Button("Click") {
-                        nav.clearNavCache()
-                    }
+                Button("Clear navigation path") {
+                    nav.clearNavCache()
                 }
                 
                 Button("Restart app") {
@@ -50,6 +46,10 @@ struct GeneralSettings: View {
             }
 #endif
         }
+        .navigationTitle("Settings")
+        .formStyle(.grouped)
+        .buttonStyle(.plain)
+        .frame(width: 500, height: 600)
     }
     
     private func restartApp() {

@@ -1,5 +1,5 @@
 {
-  "originHash" : "e8022edede84145f47842e0454ba1120d6ae59604489a225876f0cc5d9f9acd0",
+  "originHash" : "ee64f2c92d7d918d1b3743b9a943fab8b93e9fe99f20747187f40554766d00ae",
   "pins" : [
     {
       "identity" : "alertkit",
@@ -116,15 +116,6 @@
       "state" : {
         "branch" : "main",
         "revision" : "6b5e6f0e278ba0d2b2c9d144479128f54b8f20db"
-      }
-    },
-    {
-      "identity" : "settingskit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/TopScrech/SettingsKit",
-      "state" : {
-        "branch" : "main",
-        "revision" : "62505ec5e0fdcd8d6c85f182b85c52e652e2f237"
       }
     },
     {

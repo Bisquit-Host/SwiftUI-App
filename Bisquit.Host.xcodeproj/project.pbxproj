@@ -705,7 +705,6 @@
 		F36B14B52DC63324008C1AF9 /* GameKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14AF2DC63324008C1AF9 /* GameKit.swift */; };
 		F36B14B62DC6334E008C1AF9 /* GameKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14AF2DC63324008C1AF9 /* GameKit.swift */; };
 		F36B14B72DC63369008C1AF9 /* User Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14A82DC632D9008C1AF9 /* User Defaults.swift */; };
-		F36B14BA2DC64CDF008C1AF9 /* SettingsKit in Frameworks */ = {isa = PBXBuildFile; productRef = F36B14B92DC64CDF008C1AF9 /* SettingsKit */; };
 		F36B14BE2DC64D29008C1AF9 /* General Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14BB2DC64D29008C1AF9 /* General Settings.swift */; };
 		F36B14C52DC64DF2008C1AF9 /* Nav Mode Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14C02DC64DF2008C1AF9 /* Nav Mode Button.swift */; };
 		F36B14C62DC64DF2008C1AF9 /* Nav Mode Picker Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14C22DC64DF2008C1AF9 /* Nav Mode Picker Row.swift */; };
@@ -2494,7 +2493,6 @@
 			isa = PBXFrameworksBuildPhase;
 			files = (
 				F37FF8832D87AE3800554B3F /* Algorithms in Frameworks */,
-				F36B14BA2DC64CDF008C1AF9 /* SettingsKit in Frameworks */,
 				F3B7BFDE2B38E206005B5003 /* Pow in Frameworks */,
 				F3015DFA2D9FCCCC00B9BCC6 /* PostHog in Frameworks */,
 				F3E08EB22A2CE19900116C1C /* Kingfisher in Frameworks */,
@@ -4552,7 +4550,6 @@
 				F37FF8822D87AE3800554B3F /* Algorithms */,
 				F3015DF92D9FCCCC00B9BCC6 /* PostHog */,
 				F36B14582DC39F08008C1AF9 /* GaypadKit */,
-				F36B14B92DC64CDF008C1AF9 /* SettingsKit */,
 				F3D8070D2DCD793500598908 /* ScrechKit */,
 			);
 			productName = "Bisquit.Host Mac";
@@ -4674,7 +4671,6 @@
 				F3CBC6D32D9A025A0081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */,
 				F3015DF62D9FCB8500B9BCC6 /* XCRemoteSwiftPackageReference "posthog-ios" */,
 				F36B14552DC39DD8008C1AF9 /* XCRemoteSwiftPackageReference "GaypadKit" */,
-				F36B14B82DC64CDF008C1AF9 /* XCRemoteSwiftPackageReference "SettingsKit" */,
 			);
 			preferredProjectObjectVersion = 90;
 			productRefGroup = F31BA5242958FF7C0006D126 /* Products */;
@@ -7729,14 +7725,6 @@
 				kind = branch;
 			};
 		};
-		F36B14B82DC64CDF008C1AF9 /* XCRemoteSwiftPackageReference "SettingsKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/TopScrech/SettingsKit";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 		F36B73952C8B055600E858FE /* XCRemoteSwiftPackageReference "Audio-Visualizer" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TopScrech/Audio-Visualizer";
@@ -8004,11 +7992,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F36B14552DC39DD8008C1AF9 /* XCRemoteSwiftPackageReference "GaypadKit" */;
 			productName = GaypadKit;
-		};
-		F36B14B92DC64CDF008C1AF9 /* SettingsKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F36B14B82DC64CDF008C1AF9 /* XCRemoteSwiftPackageReference "SettingsKit" */;
-			productName = SettingsKit;
 		};
 		F36B736C2C89B6BE00E858FE /* PteroNet */ = {
 			isa = XCSwiftPackageProductDependency;

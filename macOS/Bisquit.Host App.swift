@@ -7,10 +7,6 @@ import CoreSpotlight
 import Pow
 import GaypadKit
 
-#if canImport(SettingsKit)
-import SettingsKit
-#endif
-
 @main
 struct BisquitHostApp: App {
     @StateObject private var store = ValueStore()
@@ -55,28 +51,22 @@ struct BisquitHostApp: App {
                 .onContinueUserActivity(CSSearchableItemActionType, perform: handleSpotlightActivity)
         }
         .environment(nav)
+        .environment(navModel)
+        .environmentObject(store)
         .modelContainer(container)
         .defaultAppStorage(.init(suiteName: "group.Bisquit-host")!)
-#if canImport(SettingsKit)
-        .settings(design: .sidebar) {
-            SettingsTab(.new(title: "General", image: Image(systemName: "gear")), id: "general") {
-                SettingsSubtab(.noSelection, id: "no-selection") {
-                    GeneralSettings()
-                }
-            }
-            
-            //            SettingsTab(.new(title: "Layout", image: Image(systemName: "paintbrush")), id: "layout", color: .yellow) {
-            //                SettingsSubtab(.noSelection, id: "no-selection") {
-            //                    LayoutSettings()
-            //                        .environmentObject(store)
-            //                }
-            //            }
-        }
-#endif
-        .environmentObject(store)
-        .environment(navModel)
 #if os(macOS)
         .windowStyle(.hiddenTitleBar)
+#endif
+        
+#if os(macOS)
+        Settings {
+            NavigationStack {
+                GeneralSettings()
+            }
+            .environmentObject(store)
+            .environment(navModel)
+        }
 #endif
     }
     
