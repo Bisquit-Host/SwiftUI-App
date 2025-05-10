@@ -80,6 +80,7 @@ struct GamepadDebug: View {
             Text("Battery: \(Int(gamepad.batteryLevel * 100))%")
                 .largeTitle()
         }
+        .foregroundStyle(gamepad.isConnected ? .primary : .secondary)
         .fontSize(50)
     }
 }
