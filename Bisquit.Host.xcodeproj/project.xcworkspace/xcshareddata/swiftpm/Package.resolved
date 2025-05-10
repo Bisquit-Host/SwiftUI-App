@@ -1,5 +1,5 @@
 {
-  "originHash" : "ee64f2c92d7d918d1b3743b9a943fab8b93e9fe99f20747187f40554766d00ae",
+  "originHash" : "a3c332ab30e8d75903ba7dd329d53000d331ccde91b2c4a00de268e43a15c3c8",
   "pins" : [
     {
       "identity" : "alertkit",
@@ -88,7 +88,7 @@
       "location" : "https://github.com/TopScrech/PteroNet",
       "state" : {
         "branch" : "main",
-        "revision" : "2812cbb096f5eea154526a61e2e35da3ac3b83ac"
+        "revision" : "41cf053db6d061f7c90b57b0da72949a3d95194f"
       }
     },
     {
@@ -119,15 +119,6 @@
       }
     },
     {
-      "identity" : "sperms",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/TopScrech/SPerms",
-      "state" : {
-        "branch" : "main",
-        "revision" : "2974ccf50a10b789603a943698f946d3cba99b7a"
-      }
-    },
-    {
       "identity" : "swift-algorithms",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-algorithms.git",
@@ -152,15 +143,6 @@
       "state" : {
         "revision" : "e0ec0f5f3af6f3e4d5e7a19d2af26b481acb6ba8",
         "version" : "1.0.3"
-      }
-    },
-    {
-      "identity" : "swiftui-introspect",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/siteline/SwiftUI-Introspect",
-      "state" : {
-        "revision" : "121c146fe591b1320238d054ae35c81ffa45f45a",
-        "version" : "0.12.0"
       }
     }
   ],

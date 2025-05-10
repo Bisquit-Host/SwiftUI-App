@@ -1,11 +1,5 @@
 import SwiftUI
 
-struct AnimatedTab: Identifiable {
-    var id: UUID = .init()
-    var tab: Tabs
-    var isAnimating: Bool?
-}
-
 #if !os(watchOS) && !os(macOS)
 extension View {
     @ViewBuilder

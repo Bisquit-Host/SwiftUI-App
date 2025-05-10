@@ -948,18 +948,6 @@
         }
       }
     },
-    "Allow to quickly invite subusers to your server" : {
-
-    },
-    "Allow to recieve Live Activity updates" : {
-
-    },
-    "Allow to use camera for uploading media to your server" : {
-
-    },
-    "Allow to verify certain destructive actions" : {
-
-    },
     "Animated background" : {
       "localizations" : {
         "ru" : {
@@ -3257,9 +3245,6 @@
       }
     },
     "Image Picker" : {
-
-    },
-    "In order for you to use certain features of Bisquit.Host, you need to give permissions. See description for each permission" : {
 
     },
     "Info" : {

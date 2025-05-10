@@ -1,8 +1,4 @@
 import SwiftUI
-import PermissionsSwiftUINotification
-import PermissionsSwiftUIBiometrics
-import PermissionsSwiftUICamera
-import PermissionsSwiftUIContacts
 
 @available(iOS 18, *)
 struct Intro: View {
@@ -88,15 +84,7 @@ struct Intro: View {
             }
             .safeAreaPadding(15)
         }
-        .JMAlert(showModal: $store.requestPermissions, for: [.notification, .opticBiometrics, .contacts, .camera], onDisappear: {
-            store.requestPermissions = false
-        })
-        .setPermissionComponent(.notification, description: "Allow to recieve Live Activity updates")
-        .setPermissionComponent(.biometrics, description: "Allow to verify certain destructive actions")
-        .setPermissionComponent(.contacts, description: "Allow to quickly invite subusers to your server")
-        .setPermissionComponent(.camera, description: "Allow to use camera for uploading media to your server")
-        .setAccentColor(to: .accentColor)
-        .changeHeaderDescriptionTo("In order for you to use certain features of Bisquit.Host, you need to give permissions. See description for each permission")
+        //            store.requestPermissions = false
         .onReceive(timer) { _ in
             currentScrollOffset += 0.35
             scrollPosition.scrollTo(x: currentScrollOffset)
