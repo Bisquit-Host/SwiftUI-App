@@ -2818,7 +2818,14 @@
       }
     },
     "Executed \"**`%@`**\" on the server" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выполнена команда \"**`%@`**\" на сервере"
+          }
+        }
+      }
     },
     "Expiration" : {
       "localizations" : {
@@ -4734,6 +4741,12 @@
             "state" : "new",
             "value" : "Restored the \"**`%1$@`**\" backup (truncate: \"**`%2$@`**\")"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Восстановлен бэкап \"**`%@`**\" (удаление файлов: \"**`%@`**\")"
+          }
         }
       }
     },
@@ -5232,7 +5245,14 @@
 
     },
     "Started a new backup \"**`%@`**\"" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Начат новый бэкап \"**`%@`**\""
+          }
+        }
+      }
     },
     "Started the server" : {
       "localizations" : {
@@ -5884,6 +5904,12 @@
             "state" : "new",
             "value" : "Updated the notes for \"**`%1$@`**\" from \"**`%2$@`**\" to \"**`%3$@`**\""
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обновлены заметки для \"**`%@`**\" с \"**`%@`**\" на \"**`%@`**\""
+          }
         }
       }
     },
@@ -6103,7 +6129,14 @@
 
     },
     "Viewed the contents of \"**`%@`**\"" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Просмотрен файл \"**`%@`**\""
+          }
+        }
+      }
     },
     "Warning" : {
       "localizations" : {
@@ -6166,7 +6199,14 @@
 
     },
     "Wrote new content to \"**`%@`**\"" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Записано новое содержимое в \"**`%@`**\""
+          }
+        }
+      }
     },
     "X Pressed" : {
 
@@ -6185,7 +6225,14 @@
       }
     },
     "You might need to restart the app" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Возможно, вам придется перезапустить приложение"
+          }
+        }
+      }
     },
     "Деревня Пыжи\n(Кировская обл.)" : {
       "localizations" : {
