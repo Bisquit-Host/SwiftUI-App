@@ -24,7 +24,6 @@ struct FileView: View {
         //        let mimeType = file.mimetype
         
         Button {
-            qlVM.fileUrl = nil
             qlVM.getFileUrl(name, at: root)
             
             //        NavigationLink {
@@ -64,6 +63,11 @@ struct FileView: View {
             }
         }
         .quickLookPreview($showQuickLook, url: qlVM.fileUrl, blur: qlVM.isSensitive)
+        .onChange(of: showQuickLook) { _, isPresented in
+            if !isPresented {
+                qlVM.fileUrl = nil
+            }
+        }
         .onChange(of: qlVM.fileUrl) { _, url in
             if let url {
                 print(url.description)

@@ -24,6 +24,7 @@ struct FileTab: View {
                 LazyVStack(alignment: .leading) {
                     ForEach(vm.filteredFiles) { file in
                         FileView(id, at: root, file: file)
+                            .id(file)
                     }
                 }
                 .animation(.default, value: vm.filteredFiles.indices)

@@ -72,6 +72,7 @@ struct PanelView: View {
                     
                 case .files:
                     FileTab(id)
+                        .id(PanelTab.files)
                     
                 case .backups:
                     BackupList(server)
