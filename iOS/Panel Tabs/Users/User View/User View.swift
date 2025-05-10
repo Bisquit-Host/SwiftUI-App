@@ -43,7 +43,7 @@ struct UserView: View {
                 .minimumScaleFactor(0.5)
                 .transparentSection()
                 
-                PermissionListView($user)
+                PermissionList($user)
                     .environment(vm)
             }
             .transparentList()

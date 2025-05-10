@@ -11,42 +11,42 @@ struct UserView: View {
     }
     
     var body: some View {
-        NavigationView {
-            List {
-                UserImage(user.image)
-                
-                Text(user.email)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.5)
-                
-                User2Fa(user.twoFaEnabled)
-                
-                HStack {
-                    Text("Member since")
-                    
-                    Spacer()
-                    
-                    VStack {
-                        Text(formatISO(user.createdAt))
-                        
-                        Text(timeSinceISO(user.createdAt))
-                            .footnote()
-                            .secondary()
-                    }
-                }
+        Form {
+            UserImage(user.image)
+            
+            Text(user.email)
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
-#warning("macOS: Permission list not implemented")
-                //                PermissionList($user)
-                //                    .environment(vm)
+            
+            User2Fa(user.twoFaEnabled)
+            
+            HStack {
+                Text("Member since")
+                
+                Spacer()
+                
+                VStack {
+                    Text(formatISO(user.createdAt))
+                    
+                    Text(timeSinceISO(user.createdAt))
+                        .footnote()
+                        .secondary()
+                }
             }
-            .refreshable {
-                vm.userDetails($user)
-            }
-            .navigationTitle(user.username)
-            .toolbarTitleDisplayMode(.inline)
-            .scrollIndicators(.never)
+            .lineLimit(1)
+            .minimumScaleFactor(0.5)
+            
+            PermissionList($user)
+                .environment(vm)
         }
+        .formStyle(.grouped)
+        .frame(height: 600)
+        .refreshable {
+            vm.userDetails($user)
+        }
+        .navigationTitle(user.username)
+        .toolbarTitleDisplayMode(.inline)
+        .scrollIndicators(.never)
     }
     
     private func removePrefix(_ string: String) -> String {
