@@ -1230,8 +1230,6 @@
 		F3BE36D52A55E1D0007A0179 /* Nav Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BAEC8C2959B3FE00111375 /* Nav Extension.swift */; };
 		F3BE36D62A55E1D2007A0179 /* Nav Destinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5692959007E0006D126 /* Nav Destinations.swift */; };
 		F3BE36DB2A55E2EE007A0179 /* Server List Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266D729D99BB8005FD103 /* Server List Topbar.swift */; };
-		F3BED0CA2D8CDAB400CD6E3B /* CorePermissionsSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = F3BED0C92D8CDAB400CD6E3B /* CorePermissionsSwiftUI */; };
-		F3BED0D62D8CDB2900CD6E3B /* CorePermissionsSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = F3BED0D52D8CDB2900CD6E3B /* CorePermissionsSwiftUI */; };
 		F3BF6F232959D15E0059F39B /* App Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BF6F222959D15E0059F39B /* App Settings.swift */; };
 		F3BF97AA29BFC7E9007B9C9C /* Websocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BF97A929BFC7E9007B9C9C /* Websocket.swift */; };
 		F3C0F9D029E204FA0040E277 /* FileTab Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C0F9CF29E204FA0040E277 /* FileTab Context Menu.swift */; };
@@ -2498,13 +2496,11 @@
 				F335CA062C63E86D006C71C6 /* DeviceKit in Frameworks */,
 				F36B14572DC39DD8008C1AF9 /* GaypadKit in Frameworks */,
 				F34745CC2A31F3A000EE2FB8 /* MailCover in Frameworks */,
-				F3BED0D62D8CDB2900CD6E3B /* CorePermissionsSwiftUI in Frameworks */,
 				F36B73A12C8B07E100E858FE /* AudioVisualizer in Frameworks */,
 				F3015DF82D9FCB8500B9BCC6 /* PostHog in Frameworks */,
 				F30860142B002B31004D776A /* PteroNet in Frameworks */,
 				F352AF9B2A4EE707004AD489 /* AlertKit in Frameworks */,
 				F37266E729D9EF25005FD103 /* Kingfisher in Frameworks */,
-				F3BED0CA2D8CDAB400CD6E3B /* CorePermissionsSwiftUI in Frameworks */,
 				F328D8592A82402A0038512F /* Algorithms in Frameworks */,
 				F3D807052DCD774F00598908 /* ScrechKit in Frameworks */,
 				F318FE452A15925200DE0A5C /* OrderedCollections in Frameworks */,
@@ -4297,8 +4293,6 @@
 				F335CA052C63E86D006C71C6 /* DeviceKit */,
 				F33C2AC02C69168C002FD150 /* QuickLooking */,
 				F36B73A02C8B07E100E858FE /* AudioVisualizer */,
-				F3BED0C92D8CDAB400CD6E3B /* CorePermissionsSwiftUI */,
-				F3BED0D52D8CDB2900CD6E3B /* CorePermissionsSwiftUI */,
 				F3015DF72D9FCB8500B9BCC6 /* PostHog */,
 				F36B14562DC39DD8008C1AF9 /* GaypadKit */,
 				F3D807042DCD774F00598908 /* ScrechKit */,
@@ -8048,14 +8042,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F342FA9E2B2C5DF200854270 /* XCRemoteSwiftPackageReference "Pow" */;
 			productName = Pow;
-		};
-		F3BED0C92D8CDAB400CD6E3B /* CorePermissionsSwiftUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = CorePermissionsSwiftUI;
-		};
-		F3BED0D52D8CDB2900CD6E3B /* CorePermissionsSwiftUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = CorePermissionsSwiftUI;
 		};
 		F3CBC6E22D9A02970081C302 /* ScrechKit */ = {
 			isa = XCSwiftPackageProductDependency;
