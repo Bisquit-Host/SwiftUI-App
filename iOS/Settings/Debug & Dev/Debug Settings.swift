@@ -40,8 +40,10 @@ struct DebugSettings: View {
             .transparentSection()
             
             Section {
-                NavigationLink("Gamepad Test") {
+                NavigationLink {
                     GamepadDebug()
+                } label: {
+                    Label("Gamepad test", systemImage: "gamecontroller")
                 }
             }
         }

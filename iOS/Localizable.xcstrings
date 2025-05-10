@@ -768,9 +768,6 @@
       },
       "shouldTranslate" : false
     },
-    "A Pressed" : {
-
-    },
     "Account" : {
       "localizations" : {
         "nl" : {
@@ -1111,9 +1108,6 @@
           }
         }
       }
-    },
-    "B Pressed" : {
-
     },
     "Background image" : {
       "localizations" : {
@@ -2586,18 +2580,6 @@
         }
       }
     },
-    "DPad Down Pressed" : {
-
-    },
-    "DPad Left Pressed" : {
-
-    },
-    "DPad Right Pressed" : {
-
-    },
-    "DPad Up Pressed" : {
-
-    },
     "Drop here" : {
       "localizations" : {
         "ru" : {
@@ -2970,7 +2952,7 @@
     "Game Center" : {
 
     },
-    "Gamepad Test" : {
+    "Gamepad test" : {
 
     },
     "General" : {
@@ -3530,15 +3512,6 @@
         }
       }
     },
-    "Left Shoulder Pressed" : {
-
-    },
-    "Left Stick Pressed" : {
-
-    },
-    "Left Trigger Pressed" : {
-
-    },
     "Light" : {
       "localizations" : {
         "nl" : {
@@ -3772,9 +3745,6 @@
           }
         }
       }
-    },
-    "Menu Pressed" : {
-
     },
     "Metadata" : {
       "localizations" : {
@@ -4179,9 +4149,6 @@
     "Optional" : {
 
     },
-    "Options Pressed" : {
-
-    },
     "Other" : {
       "localizations" : {
         "ru" : {
@@ -4365,54 +4332,6 @@
 
     },
     "Presents views in two columns: sidebar and detail" : {
-
-    },
-    "Press A" : {
-
-    },
-    "Press B" : {
-
-    },
-    "Press DPad Down" : {
-
-    },
-    "Press DPad Left" : {
-
-    },
-    "Press DPad Right" : {
-
-    },
-    "Press DPad Up" : {
-
-    },
-    "Press Left Shoulder" : {
-
-    },
-    "Press Left Stick" : {
-
-    },
-    "Press Left Trigger" : {
-
-    },
-    "Press Menu" : {
-
-    },
-    "Press Options" : {
-
-    },
-    "Press Right Shoulder" : {
-
-    },
-    "Press Right Stick" : {
-
-    },
-    "Press Right Trigger" : {
-
-    },
-    "Press X" : {
-
-    },
-    "Press Y" : {
 
     },
     "Preview" : {
@@ -4769,15 +4688,6 @@
           }
         }
       }
-    },
-    "Right Shoulder Pressed" : {
-
-    },
-    "Right Stick Pressed" : {
-
-    },
-    "Right Trigger Pressed" : {
-
     },
     "Rotate password" : {
       "localizations" : {
@@ -6207,12 +6117,6 @@
           }
         }
       }
-    },
-    "X Pressed" : {
-
-    },
-    "Y Pressed" : {
-
     },
     "Year" : {
       "localizations" : {
