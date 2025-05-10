@@ -160,6 +160,8 @@
 		F310A2F12A56B0BE001AF45F /* Network VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F310A2EF2A56AF86001AF45F /* Network VM.swift */; };
 		F310BB392A54E31700843F14 /* Server List VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F352AF962A4EDB1D004AD489 /* Server List VM.swift */; };
 		F310BB3A2A54E31800843F14 /* Server List VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F352AF962A4EDB1D004AD489 /* Server List VM.swift */; };
+		F31163E62DCF7DA20093B722 /* QuickLooking in Frameworks */ = {isa = PBXBuildFile; productRef = F31163E52DCF7DA20093B722 /* QuickLooking */; };
+		F31163E82DCF7DB30093B722 /* Quick Look File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31163E72DCF7DB30093B722 /* Quick Look File.swift */; };
 		F3116F262A33E142001F067C /* Folder File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3116F252A33E142001F067C /* Folder File.swift */; };
 		F3116F272A33E142001F067C /* Folder File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3116F252A33E142001F067C /* Folder File.swift */; };
 		F311CAAE2A646612004E4A4A /* Log Meta View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F311CAAD2A646612004E4A4A /* Log Meta View.swift */; };
@@ -1630,6 +1632,7 @@
 		F3F061D72A73C9A500470F7E /* Map VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A92A177ED100530615 /* Map VM.swift */; };
 		F3F061D82A73CD4E00470F7E /* Server List Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B3A729BC6B5400CC1195 /* Server List Grid.swift */; };
 		F3F061DA2A73CE1200470F7E /* Server Card Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F061D92A73CE1200470F7E /* Server Card Parent.swift */; };
+		F3F08F9D2DCF7C1D00EFD7DB /* QuickLook File VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E272CEB33510033EFE3 /* QuickLook File VM.swift */; };
 		F3F0A2DA2D62AEDC0084013B /* Gauge Disk.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378EF8229D6C91300BC4849 /* Gauge Disk.swift */; };
 		F3F0A2DB2D6339510084013B /* Bisquit.Host App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* Bisquit.Host App.swift */; };
 		F3F0A2DC2D63395F0084013B /* App Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5672959006F0006D126 /* App Container.swift */; };
@@ -1915,6 +1918,7 @@
 		F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List Footer.swift"; sourceTree = "<group>"; };
 		F30C13112A54609000A7EFF0 /* Server List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List.swift"; sourceTree = "<group>"; };
 		F310A2EF2A56AF86001AF45F /* Network VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network VM.swift"; sourceTree = "<group>"; };
+		F31163E72DCF7DB30093B722 /* Quick Look File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quick Look File.swift"; sourceTree = "<group>"; };
 		F3116F252A33E142001F067C /* Folder File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Folder File.swift"; sourceTree = "<group>"; };
 		F311CAAD2A646612004E4A4A /* Log Meta View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log Meta View.swift"; sourceTree = "<group>"; };
 		F31461692D5A1F5E00547B6C /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
@@ -2493,6 +2497,7 @@
 			isa = PBXFrameworksBuildPhase;
 			files = (
 				F37FF8832D87AE3800554B3F /* Algorithms in Frameworks */,
+				F31163E62DCF7DA20093B722 /* QuickLooking in Frameworks */,
 				F3B7BFDE2B38E206005B5003 /* Pow in Frameworks */,
 				F3015DFA2D9FCCCC00B9BCC6 /* PostHog in Frameworks */,
 				F3E08EB22A2CE19900116C1C /* Kingfisher in Frameworks */,
@@ -3039,6 +3044,7 @@
 			children = (
 				F323D8D22A2D668D002EDC62 /* File Tab.swift */,
 				F3A8BE8A2A2FA9B3001B13D8 /* File View.swift */,
+				F31163E72DCF7DB30093B722 /* Quick Look File.swift */,
 			);
 			path = Files;
 			sourceTree = "<group>";
@@ -4551,6 +4557,7 @@
 				F3015DF92D9FCCCC00B9BCC6 /* PostHog */,
 				F36B14582DC39F08008C1AF9 /* GaypadKit */,
 				F3D8070D2DCD793500598908 /* ScrechKit */,
+				F31163E52DCF7DA20093B722 /* QuickLooking */,
 			);
 			productName = "Bisquit.Host Mac";
 			productReference = F3E08EA02A2CE17800116C1C /* Bisquit.Host.app */;
@@ -6266,6 +6273,7 @@
 				F300892A2B3C55CD0051476C /* File Permissions Parent.swift in Sources */,
 				F3AB1DF62D79C42B00387164 /* MetricKit Manager.swift in Sources */,
 				F32FD7232B1E065600723B88 /* Network Calls.swift in Sources */,
+				F3F08F9D2DCF7C1D00EFD7DB /* QuickLook File VM.swift in Sources */,
 				F3202C7A2D558B210030B3CC /* Spotlight Index.swift in Sources */,
 				F3FD9F9E2C651F4800A69314 /* Sensitivity Analyzer.swift in Sources */,
 				F3DF50CC2B38FDE500206CAE /* Permission Group Header.swift in Sources */,
@@ -6286,6 +6294,7 @@
 				F3648EDB2DCB98BE001609AA /* Subdomain List.swift in Sources */,
 				F30C130F2A54605B00A7EFF0 /* Nav Destinations.swift in Sources */,
 				F30088B62B3A21410051476C /* Schedule List.swift in Sources */,
+				F31163E82DCF7DB30093B722 /* Quick Look File.swift in Sources */,
 				F3DF50CD2B38FDE800206CAE /* Permission Card.swift in Sources */,
 				F30088B12B3A20150051476C /* Backup List.swift in Sources */,
 				F30088972B3A03440051476C /* Log Meta View.swift in Sources */,
@@ -7852,6 +7861,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F352AF992A4EE707004AD489 /* XCRemoteSwiftPackageReference "AlertKit" */;
 			productName = AlertKit;
+		};
+		F31163E52DCF7DA20093B722 /* QuickLooking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F33C2ABF2C69168C002FD150 /* XCRemoteSwiftPackageReference "QuickLooking" */;
+			productName = QuickLooking;
 		};
 		F318FE442A15925200DE0A5C /* OrderedCollections */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -14,8 +14,38 @@ struct FileView: View {
     }
     
     var body: some View {
-        NavigationLink {
+        let name = file.name
+//        let mimeType = file.mimetype
+        
+//        Button {
             
+        NavigationLink {
+            QuickLookFile(id, name: name, at: root)
+//            if mimeType.contains("directory") {
+//                //                FolderFile(id, path: root + name + "/")
+//                Text("Folder")
+//                
+//            } else {
+//                Group {
+//                    if mimeType.contains("text") || mimeType.contains("json") {
+//                        //                        TextFile(id, name: name, at: root)
+//                        Text("Text")
+//                        
+//                    } else if mimeType.contains("video") {
+//                        //                        VideoFile(id, name: name, at: root)
+//                        Text("Video")
+//
+//                    } else if mimeType.contains("audio") {
+//                        //                        AudioPlayerView(id, name: name, at: root)
+//                        Text("AudioPlayer")
+//                        
+//                    } else {
+//                        //                        QuickLookFile(id, name: name, at: root)
+//                        Text("QuickLook")
+//                    }
+//                }
+//                .environmentObject(vm)
+//            }
         } label: {
             HStack {
                 FileIcon(file.mimetype)
