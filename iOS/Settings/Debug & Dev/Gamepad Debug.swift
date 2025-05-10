@@ -65,7 +65,6 @@ struct GamepadDebug: View {
             
             HStack {
                 Image(systemName: dpadIcon)
-                
                 Image(systemName: actionIcon)
             }
             
