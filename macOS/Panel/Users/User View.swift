@@ -36,7 +36,7 @@ struct UserView: View {
                 }
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
-#warning("macOS")
+#warning("macOS: Permission list not implemented")
                 //                PermissionList($user)
                 //                    .environment(vm)
             }
