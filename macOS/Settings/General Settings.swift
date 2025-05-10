@@ -43,6 +43,11 @@ struct GeneralSettings: View {
                 Button("Restart app") {
                     restartApp()
                 }
+                
+                NavigationLink("Gamepad test") {
+                    GamepadDebug()
+                        .frame(width: 500, height: 600)
+                }
             }
 #endif
         }
