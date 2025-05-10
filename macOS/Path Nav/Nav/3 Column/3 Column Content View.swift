@@ -63,6 +63,10 @@ struct ThreeColumnContentView: View {
             Button("") {
                 if focusedList == .serverList {
                     focusedList = .sectionList
+                    
+                    if nav.selectedTab == nil {
+                        nav.selectedTab = .info
+                    }
                 }
             }
             .opacity(0)
