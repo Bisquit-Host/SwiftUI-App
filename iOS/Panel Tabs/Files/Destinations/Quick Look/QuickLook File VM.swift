@@ -36,9 +36,9 @@ final class QuickLookFileVM {
         }
         
         let tempDirectoryURL = fm.temporaryDirectory
-        let destinationURL = tempDirectoryURL.appendingPathComponent(name)
+        let destinationUrl = tempDirectoryURL.appendingPathComponent(name)
         
-        URLSession.shared.downloadTask(with: url) { location, response, error in
+        URLSession.shared.downloadTask(with: url) { location, _, error in
             let fm = FileManager.default
             
             guard let location, error == nil else {
@@ -47,18 +47,17 @@ final class QuickLookFileVM {
             }
             
             do {
-                if fm.fileExists(atPath: destinationURL.path) {
-                    try fm.removeItem(at: destinationURL)
+                if fm.fileExists(atPath: destinationUrl.path) {
+                    try fm.removeItem(at: destinationUrl)
                 }
                 
-                try fm.copyItem(at: location, to: destinationURL)
+                try fm.copyItem(at: location, to: destinationUrl)
                 
                 main {
-                    self.fileUrl = destinationURL
-                    self.loadAndCheckImage()
-                    
                     Task {
-                        await self.fetchMetadata(destinationURL)
+                        await self.loadAndCheckImage(destinationUrl)
+                        await self.fetchMetadata(destinationUrl)
+                        self.fileUrl = destinationUrl
                     }
                 }
             } catch {
@@ -68,17 +67,17 @@ final class QuickLookFileVM {
         .resume()
     }
     
-    private func loadAndCheckImage() {
-        let processor = SensitivityAnalyzer()
-        
-        guard let fileUrl else {
+    private func loadAndCheckImage(_ url: URL?) async {
+        guard let url else {
             return
         }
         
-        Task {
-            await processor.checkImage(fileUrl) { blur in
-                self.isSensitive = blur
-            }
+        let processor = SensitivityAnalyzer()
+        
+        await processor.checkImage(url) { blur in
+            print(blur ? "🍆 Sensetive content found" : "Content is safe")
+            
+            self.isSensitive = blur
         }
     }
     

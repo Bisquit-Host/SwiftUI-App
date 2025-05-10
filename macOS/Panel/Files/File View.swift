@@ -1,7 +1,9 @@
 import ScrechKit
 import PteroNet
+import QuickLooking
 
 struct FileView: View {
+    @State private var qlVM: QuickLookFileVM
     @EnvironmentObject private var vm: FileTabVM
     
     private let id, root: String
@@ -11,41 +13,47 @@ struct FileView: View {
         self.id = id
         self.root = root
         self.file = file
+        qlVM = QuickLookFileVM(id)
     }
+    
+    //    @State private var sheetMetadata = false
+    @State private var showQuickLook = false
     
     var body: some View {
         let name = file.name
-//        let mimeType = file.mimetype
+        //        let mimeType = file.mimetype
         
-//        Button {
+        Button {
+            qlVM.fileUrl = nil
+            qlVM.getFileUrl(name, at: root)
             
-        NavigationLink {
-            QuickLookFile(id, name: name, at: root)
-//            if mimeType.contains("directory") {
-//                //                FolderFile(id, path: root + name + "/")
-//                Text("Folder")
-//                
-//            } else {
-//                Group {
-//                    if mimeType.contains("text") || mimeType.contains("json") {
-//                        //                        TextFile(id, name: name, at: root)
-//                        Text("Text")
-//                        
-//                    } else if mimeType.contains("video") {
-//                        //                        VideoFile(id, name: name, at: root)
-//                        Text("Video")
-//
-//                    } else if mimeType.contains("audio") {
-//                        //                        AudioPlayerView(id, name: name, at: root)
-//                        Text("AudioPlayer")
-//                        
-//                    } else {
-//                        //                        QuickLookFile(id, name: name, at: root)
-//                        Text("QuickLook")
-//                    }
-//                }
-//                .environmentObject(vm)
-//            }
+            //        NavigationLink {
+            //            QuickLookFile(id, name: name, at: root)
+            //            if mimeType.contains("directory") {
+            //                //                FolderFile(id, path: root + name + "/")
+            //                Text("Folder")
+            //
+            //            } else {
+            //                Group {
+            //                    if mimeType.contains("text") || mimeType.contains("json") {
+            //                        //                        TextFile(id, name: name, at: root)
+            //                        Text("Text")
+            //
+            //                    } else if mimeType.contains("video") {
+            //                        //                        VideoFile(id, name: name, at: root)
+            //                        Text("Video")
+            //
+            //                    } else if mimeType.contains("audio") {
+            //                        //                        AudioPlayerView(id, name: name, at: root)
+            //                        Text("AudioPlayer")
+            //
+            //                    } else {
+            //                        //                        QuickLookFile(id, name: name, at: root)
+            //                        Text("QuickLook")
+            //                    }
+            //                }
+            //                .environmentObject(vm)
+            //            }
         } label: {
             HStack {
                 FileIcon(file.mimetype)
@@ -53,6 +61,14 @@ struct FileView: View {
                     .frame(width: 20)
                 
                 Text(file.name)
+            }
+        }
+        .quickLookPreview($showQuickLook, url: qlVM.fileUrl, blur: qlVM.isSensitive)
+        .onChange(of: qlVM.fileUrl) { _, url in
+            if let url {
+                print(url.description)
+                
+                showQuickLook = true
             }
         }
         .buttonStyle(.plain)
