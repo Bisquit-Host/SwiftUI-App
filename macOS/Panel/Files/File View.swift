@@ -60,6 +60,16 @@ struct FileView: View {
                     .frame(width: 20)
                 
                 Text(file.name)
+                
+                Spacer()
+                
+                if file.isFile {
+                    let size = formatBytes(file.size)
+                    
+                    Text(size)
+                        .footnote()
+                        .secondary()
+                }
             }
         }
         .quickLookPreview($showQuickLook, url: qlVM.fileUrl, blur: qlVM.isSensitive)
