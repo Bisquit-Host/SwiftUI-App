@@ -577,9 +577,7 @@
 		F3499EFA2A277D0F006101B7 /* File Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3499EF92A277D0F006101B7 /* File Tab.swift */; };
 		F3499EFD2A277E3D006101B7 /* File Name And Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3499EFC2A277E3D006101B7 /* File Name And Icon.swift */; };
 		F3499EFE2A277FDF006101B7 /* File Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266A929D71A1B005FD103 /* File Icon.swift */; };
-		F34BF0C32DD07DE00041BE04 /* PreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F34BF0BF2DD07DE00041BE04 /* PreviewViewController.xib */; };
-		F34BF0C42DD07DE00041BE04 /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34BF0BC2DD07DE00041BE04 /* PreviewProvider.swift */; };
-		F34BF0C52DD07DE00041BE04 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34BF0BD2DD07DE00041BE04 /* PreviewViewController.swift */; };
+		F34BF0C52DD07DE00041BE04 /* Preview VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34BF0BD2DD07DE00041BE04 /* Preview VC.swift */; };
 		F34C055A29F11E010031ABE1 /* Server Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* Server Card VM.swift */; };
 		F34F289A2ACDAD9B00FD618A /* tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34F28992ACDAD9B00FD618A /* tab.swift */; };
 		F34F289B2ACDAD9B00FD618A /* tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34F28992ACDAD9B00FD618A /* tab.swift */; };
@@ -2051,9 +2049,7 @@
 		F3499EFC2A277E3D006101B7 /* File Name And Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Name And Icon.swift"; sourceTree = "<group>"; };
 		F34AD7C62A5493CC007752A7 /* visionOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = visionOS.entitlements; sourceTree = "<group>"; };
 		F34BF0BB2DD07DE00041BE04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F34BF0BC2DD07DE00041BE04 /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
-		F34BF0BD2DD07DE00041BE04 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
-		F34BF0BE2DD07DE00041BE04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PreviewViewController.xib; sourceTree = "<group>"; };
+		F34BF0BD2DD07DE00041BE04 /* Preview VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preview VC.swift"; sourceTree = "<group>"; };
 		F34BF0C02DD07DE00041BE04 /* QuickLook_Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QuickLook_Extension.entitlements; sourceTree = "<group>"; };
 		F34C055C29F151250031ABE1 /* watchOS.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = watchOS.entitlements; sourceTree = "<group>"; };
 		F34F28992ACDAD9B00FD618A /* tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tab.swift; sourceTree = "<group>"; };
@@ -3206,10 +3202,8 @@
 		F34BF0C12DD07DE00041BE04 /* QuickLook Extension */ = {
 			isa = PBXGroup;
 			children = (
+				F34BF0BD2DD07DE00041BE04 /* Preview VC.swift */,
 				F34BF0BB2DD07DE00041BE04 /* Info.plist */,
-				F34BF0BC2DD07DE00041BE04 /* PreviewProvider.swift */,
-				F34BF0BD2DD07DE00041BE04 /* PreviewViewController.swift */,
-				F34BF0BF2DD07DE00041BE04 /* PreviewViewController.xib */,
 				F34BF0C02DD07DE00041BE04 /* QuickLook_Extension.entitlements */,
 			);
 			path = "QuickLook Extension";
@@ -4766,7 +4760,6 @@
 		F3310F2A2DD07CA100FA0AEC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
-				F34BF0C32DD07DE00041BE04 /* PreviewViewController.xib in Resources */,
 			);
 		};
 		F337C1502A8C29CD006F321C /* Resources */ = {
@@ -5729,8 +5722,7 @@
 		F3310F282DD07CA100FA0AEC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			files = (
-				F34BF0C42DD07DE00041BE04 /* PreviewProvider.swift in Sources */,
-				F34BF0C52DD07DE00041BE04 /* PreviewViewController.swift in Sources */,
+				F34BF0C52DD07DE00041BE04 /* Preview VC.swift in Sources */,
 			);
 		};
 		F337C14E2A8C29CD006F321C /* Sources */ = {
@@ -6521,14 +6513,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		F34BF0BF2DD07DE00041BE04 /* PreviewViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F34BF0BE2DD07DE00041BE04 /* Base */,
-			);
-			name = PreviewViewController.xib;
-			sourceTree = "<group>";
-		};
 		F384D8BB2D5BE495000FC41D /* Crypto Price Widget.intentdefinition */ = {
 			isa = PBXVariantGroup;
 			children = (
