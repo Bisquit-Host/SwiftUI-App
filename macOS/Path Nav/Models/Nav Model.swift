@@ -1,10 +1,15 @@
-// A navigation model used to persist and restore the navigation state
-
 import SwiftUI
 import PteroNet
 
+struct NavModelData: Codable {
+    var selectedTab: PanelTab?
+    var serverPath: [ServerAttributes]
+    var path: [Route]
+    var columnVisibility: NavigationSplitViewVisibility
+}
+
 @Observable
-final class NavModel: Codable {
+final class NavModel {
     /// The selected server category; otherwise returns `nil`
     var selectedTab: PanelTab?
     
@@ -49,13 +54,13 @@ final class NavModel: Codable {
         self.path = path
     }
     
-    /// Initialize a `ServerListVM` with the contents of a `URL`
+    /// Initialize a `NavModel` with the contents of a `URL`
     private convenience init(
         contentsOf url: URL,
         options: Data.ReadingOptions = .mappedIfSafe
     ) throws {
         let data = try Data(contentsOf: url, options: options)
-        let model = try Self.decoder.decode(Self.self, from: data)
+        let model = try Self.decoder.decode(NavModelData.self, from: data)
         
         self.init(
             columnVisibility: model.columnVisibility,
@@ -95,11 +100,18 @@ final class NavModel: Codable {
     /// The JSON data used to encode and decode the navigation model at its current state
     var jsonData: Data? {
         get {
-            try? Self.encoder.encode(self)
+            let dataStruct = NavModelData(
+                selectedTab: selectedTab,
+                serverPath: serverPath,
+                path: path,
+                columnVisibility: columnVisibility
+            )
+            
+            return try? Self.encoder.encode(dataStruct)
         } set {
             guard
                 let data = newValue,
-                let model = try? Self.decoder.decode(Self.self, from: data)
+                let model = try? Self.decoder.decode(NavModelData.self, from: data)
             else {
                 return
             }

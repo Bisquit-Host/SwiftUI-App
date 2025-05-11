@@ -686,7 +686,6 @@
 		F36B148B2DC3BC3E008C1AF9 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14732DC3BC3E008C1AF9 /* Ingredient.swift */; };
 		F36B148C2DC3BC3E008C1AF9 /* 2 Column Content View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B146C2DC3BC3E008C1AF9 /* 2 Column Content View.swift */; };
 		F36B14902DC3BC3E008C1AF9 /* 2 Column Section List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B147C2DC3BC3E008C1AF9 /* 2 Column Section List.swift */; };
-		F36B14912DC3BC3E008C1AF9 /* Nav Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14702DC3BC3E008C1AF9 /* Nav Model.swift */; };
 		F36B14972DC3BC52008C1AF9 /* Bisquit.Host App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14942DC3BC52008C1AF9 /* Bisquit.Host App.swift */; };
 		F36B149C2DC3E9BB008C1AF9 /* Panel Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33712192DC2FD240014B427 /* Panel Section.swift */; };
 		F36B149E2DC3E9BB008C1AF9 /* Panel Section VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0B48C2DC300D6003C8B27 /* Panel Section VM.swift */; };
@@ -1170,6 +1169,7 @@
 		F3AB4A9B2CF4031600A8252F /* Json Formatter Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A982CF4031600A8252F /* Json Formatter Button.swift */; };
 		F3AB4A9C2CF4031600A8252F /* Json Formatter Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A982CF4031600A8252F /* Json Formatter Button.swift */; };
 		F3AB4A9D2CF4031600A8252F /* Json Formatter Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A982CF4031600A8252F /* Json Formatter Button.swift */; };
+		F3ADA1D72DD0E8D40097F86F /* Nav Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ADA1D62DD0E8D40097F86F /* Nav Model.swift */; };
 		F3ADA60F2D9BFC9D00F2DAA6 /* Power Switch Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ADA60D2D9BFC9D00F2DAA6 /* Power Switch Toolbar.swift */; };
 		F3ADA6102D9BFC9D00F2DAA6 /* Power Switch Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ADA60D2D9BFC9D00F2DAA6 /* Power Switch Toolbar.swift */; };
 		F3ADA6132D9BFC9D00F2DAA6 /* Power Switch Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3ADA60D2D9BFC9D00F2DAA6 /* Power Switch Toolbar.swift */; };
@@ -2086,7 +2086,6 @@
 		F36B146B2DC3BC3E008C1AF9 /* Stack Content View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stack Content View.swift"; sourceTree = "<group>"; };
 		F36B146C2DC3BC3E008C1AF9 /* 2 Column Content View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "2 Column Content View.swift"; sourceTree = "<group>"; };
 		F36B146D2DC3BC3E008C1AF9 /* 3 Column Content View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "3 Column Content View.swift"; sourceTree = "<group>"; };
-		F36B14702DC3BC3E008C1AF9 /* Nav Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Model.swift"; sourceTree = "<group>"; };
 		F36B14732DC3BC3E008C1AF9 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		F36B147C2DC3BC3E008C1AF9 /* 2 Column Section List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "2 Column Section List.swift"; sourceTree = "<group>"; };
 		F36B14942DC3BC52008C1AF9 /* Bisquit.Host App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bisquit.Host App.swift"; sourceTree = "<group>"; };
@@ -2250,6 +2249,7 @@
 		F3AB4A892CF3DAC900A8252F /* Backup Card VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Backup Card VM.swift"; sourceTree = "<group>"; };
 		F3AB4A8F2CF3EC6700A8252F /* Tip Server Card Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tip Server Card Context Menu.swift"; sourceTree = "<group>"; };
 		F3AB4A982CF4031600A8252F /* Json Formatter Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Json Formatter Button.swift"; sourceTree = "<group>"; };
+		F3ADA1D62DD0E8D40097F86F /* Nav Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Model.swift"; sourceTree = "<group>"; };
 		F3ADA60D2D9BFC9D00F2DAA6 /* Power Switch Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Switch Toolbar.swift"; sourceTree = "<group>"; };
 		F3ADA61C2D9C16AC00F2DAA6 /* Loc Logs.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Loc Logs.txt"; sourceTree = "<group>"; };
 		F3AE522229ACF7D600CB3895 /* Server Card VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card VM.swift"; sourceTree = "<group>"; };
@@ -3323,7 +3323,7 @@
 			isa = PBXGroup;
 			children = (
 				F36B14A22DC4CAF6008C1AF9 /* Route.swift */,
-				F36B14702DC3BC3E008C1AF9 /* Nav Model.swift */,
+				F3ADA1D62DD0E8D40097F86F /* Nav Model.swift */,
 				F36B14732DC3BC3E008C1AF9 /* Ingredient.swift */,
 				F3EAD3DE2DC960DA00D5D28D /* Focused List.swift */,
 			);
@@ -6312,6 +6312,7 @@
 				F33DE5092B364EBC00E257D8 /* Tab Info.swift in Sources */,
 				F3EAD3DF2DC960DA00D5D28D /* Focused List.swift in Sources */,
 				F35F65942B1D1A0B00431EB7 /* Panel VM.swift in Sources */,
+				F3ADA1D72DD0E8D40097F86F /* Nav Model.swift in Sources */,
 				F3B138722A2D232B0026EAEE /* Server Card VM.swift in Sources */,
 				F33DE4E72B35089000E257D8 /* Background Blur.swift in Sources */,
 				F3F061D52A73C9A000470F7E /* Map View.swift in Sources */,
@@ -6412,7 +6413,6 @@
 				F36B148C2DC3BC3E008C1AF9 /* 2 Column Content View.swift in Sources */,
 				F3648ED32DCB9773001609AA /* Allocation Card.swift in Sources */,
 				F36B14902DC3BC3E008C1AF9 /* 2 Column Section List.swift in Sources */,
-				F36B14912DC3BC3E008C1AF9 /* Nav Model.swift in Sources */,
 				F36B14B12DC63324008C1AF9 /* GameKit.swift in Sources */,
 				F3015DEE2D9F427700B9BCC6 /* Log List Filter.swift in Sources */,
 				F36B14A12DC3EA70008C1AF9 /* Panel Section List.swift in Sources */,
