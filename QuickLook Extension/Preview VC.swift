@@ -10,7 +10,6 @@ class PreviewViewController: NSViewController, QLPreviewingController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addLabel("Hello, Quick Look!")
     }
     
     func addLabel(_ text: String) {
