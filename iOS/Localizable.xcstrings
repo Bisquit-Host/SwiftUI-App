@@ -2410,6 +2410,7 @@
       }
     },
     "Destination" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {

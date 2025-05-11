@@ -21,10 +21,12 @@ struct FileView: View {
 #warning("Destinations")
     var body: some View {
         let name = file.name
-        //        let mimeType = file.mimetype
+        let mimeType = file.mimetype
         
         Button {
-            qlVM.getFileUrl(name, at: root)
+            if !mimeType.contains("directory") {
+                qlVM.getFileUrl(name, at: root)
+            }
             
             //        NavigationLink {
             //            QuickLookFile(id, name: name, at: root)
