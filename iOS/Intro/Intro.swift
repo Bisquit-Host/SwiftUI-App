@@ -84,7 +84,6 @@ struct Intro: View {
             }
             .safeAreaPadding(15)
         }
-        //            store.requestPermissions = false
         .onReceive(timer) { _ in
             currentScrollOffset += 0.35
             scrollPosition.scrollTo(x: currentScrollOffset)
@@ -94,12 +93,7 @@ struct Intro: View {
                 StartPage()
             }
         }
-        .task {
-            if !store.requestPermissions {
-                activate()
-            }
-        }
-        .onChange(of: store.requestPermissions) {
+        .onAppear {
             activate()
         }
     }
