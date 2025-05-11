@@ -70,6 +70,11 @@
 			<key>orderHint</key>
 			<integer>8</integer>
 		</dict>
+		<key>QuickLook Extension.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>12</integer>
+		</dict>
 		<key>Tests (Playground) 1.xcscheme</key>
 		<dict>
 			<key>isShown</key>
