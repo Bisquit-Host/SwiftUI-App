@@ -16,33 +16,37 @@ class PreviewViewController: NSViewController, QLPreviewingController {
     func addLabel(_ text: String) {
         scrollView?.removeFromSuperview()
         
-        // Create the text view with a non-zero frame
         let textView = NSTextView(frame: .zero)
         textView.string = text
         textView.isEditable = false
         textView.isSelectable = true
         textView.font = .systemFont(ofSize: 14)
-        textView.drawsBackground = false
+        textView.drawsBackground = false // clear background
         textView.isVerticallyResizable = true
         textView.isHorizontallyResizable = true
         textView.autoresizingMask = [.width]
-        textView.textContainer?.containerSize = NSSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)
         textView.textContainer?.widthTracksTextView = true
+        textView.textContainer?.containerSize = NSSize(
+            width: CGFloat.greatestFiniteMagnitude,
+            height: CGFloat.greatestFiniteMagnitude
+        )
         
         let scroll = NSScrollView()
         scroll.translatesAutoresizingMaskIntoConstraints = false
         scroll.documentView = textView
         scroll.hasVerticalScroller = true
-        scroll.borderType = .bezelBorder
+        scroll.drawsBackground = false // clear background
         
         view.addSubview(scroll)
         scrollView = scroll
         
+        let padding = 5.0
+        
         NSLayoutConstraint.activate([
-            scroll.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
-            scroll.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10),
-            scroll.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            scroll.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
+            scroll.topAnchor.constraint(equalTo: view.topAnchor, constant: padding),
+            scroll.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -padding),
+            scroll.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            scroll.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding)
         ])
     }
     
