@@ -2,6 +2,7 @@ import ScrechKit
 import PteroNet
 
 struct FileTab: View {
+    @Environment(NavModel.self) private var nav
     @StateObject private var vm: FileTabVM
     
     private let id, root: String
@@ -13,10 +14,11 @@ struct FileTab: View {
     }
     
     @State private var showToolbar = false
-    @State private var path: [String] = []
     
     var body: some View {
-        NavigationStack(path: $path) {
+        @Bindable var nav = nav
+        
+        NavigationStack(path: $nav.folderPath) {
             VStack {
                 TextField("Search", text: $vm.searchField)
                     .textFieldStyle(.roundedBorder)
@@ -48,8 +50,8 @@ struct FileTab: View {
                 Text(file)
             }
         }
-        .environmentObject(vm)
         .navigationTitle("Files")
+        .environmentObject(vm)
         .frame(minWidth: 200, maxWidth: 800)
 #if os(macOS)
         .padding()
@@ -59,6 +61,12 @@ struct FileTab: View {
 #endif
         .onChange(of: id) {
             vm.fetchFiles(root)
+        }
+        .onChange(of: nav.selectedServers) {
+            nav.folderPath.removeAll()
+        }
+        .onChange(of: nav.folderPath) {
+            try? nav.save()
         }
         .task {
             showToolbar = true

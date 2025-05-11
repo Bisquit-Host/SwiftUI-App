@@ -6,6 +6,7 @@ struct NavModelData: Codable {
     var serverPath: [ServerAttributes]
     var path: [Route]
     var columnVisibility: NavigationSplitViewVisibility
+    var folderPath: [String]
 }
 
 @Observable
@@ -15,7 +16,8 @@ final class NavModel {
     
     /// The homogenous navigation state used by the app's navigation stacks
     var serverPath: [ServerAttributes]
-    var path: [Route] = []
+    var path: [Route]
+    var folderPath: [String]
     
     /// The leading columns' visibility state used by the app's navigation split views
     var columnVisibility: NavigationSplitViewVisibility
@@ -46,12 +48,14 @@ final class NavModel {
         columnVisibility: NavigationSplitViewVisibility = .automatic,
         selectedCategory: PanelTab? = nil,
         serverPath: [ServerAttributes] = [],
-        path: [Route] = []
+        path: [Route] = [],
+        folderPath: [String] = []
     ) {
         self.columnVisibility = columnVisibility
         self.selectedTab = selectedCategory
         self.serverPath = serverPath
         self.path = path
+        self.folderPath = folderPath
     }
     
     /// Initialize a `NavModel` with the contents of a `URL`
@@ -66,7 +70,8 @@ final class NavModel {
             columnVisibility: model.columnVisibility,
             selectedCategory: model.selectedTab,
             serverPath: model.serverPath,
-            path: model.path
+            path: model.path,
+            folderPath: model.folderPath
         )
     }
     
@@ -76,10 +81,11 @@ final class NavModel {
         
         let model = try NavModel(contentsOf: Self.dataURL)
         
-        selectedTab =      model.selectedTab
-        serverPath =       model.serverPath
+        selectedTab      = model.selectedTab
+        serverPath       = model.serverPath
         columnVisibility = model.columnVisibility
-        path =             model.path
+        path             = model.path
+        folderPath       = model.folderPath
     }
     
     /// Saves the JSON data for the navigation model at its current state
@@ -104,7 +110,8 @@ final class NavModel {
                 selectedTab: selectedTab,
                 serverPath: serverPath,
                 path: path,
-                columnVisibility: columnVisibility
+                columnVisibility: columnVisibility,
+                folderPath: folderPath
             )
             
             return try? Self.encoder.encode(dataStruct)
@@ -120,6 +127,7 @@ final class NavModel {
             serverPath       = model.serverPath
             columnVisibility = model.columnVisibility
             path             = model.path
+            folderPath       = model.folderPath
         }
     }
     
