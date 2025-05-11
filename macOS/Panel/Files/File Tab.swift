@@ -19,7 +19,6 @@ struct FileTab: View {
             TextField("Search", text: $vm.searchField)
                 .textFieldStyle(.roundedBorder)
 #if os(macOS)
-#warning("Destination")
             ScrollView {
                 LazyVStack(alignment: .leading) {
                     ForEach(vm.filteredFiles) { file in

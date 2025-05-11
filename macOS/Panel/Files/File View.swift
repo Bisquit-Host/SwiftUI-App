@@ -18,7 +18,7 @@ struct FileView: View {
     
     //    @State private var sheetMetadata = false
     @State private var showQuickLook = false
-    
+#warning("Destinations")
     var body: some View {
         let name = file.name
         //        let mimeType = file.mimetype
