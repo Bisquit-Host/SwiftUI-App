@@ -455,7 +455,7 @@
 		F33001442A4CF06D0063FE0F /* Apikey Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33001432A4CF06D0063FE0F /* Apikey Card.swift */; };
 		F33001452A4CF06D0063FE0F /* Apikey Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33001432A4CF06D0063FE0F /* Apikey Card.swift */; };
 		F3310F2E2DD07CA100FA0AEC /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3310F2D2DD07CA100FA0AEC /* Quartz.framework */; };
-		F3310F3B2DD07CA200FA0AEC /* QuickLook Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F3310F2C2DD07CA100FA0AEC /* QuickLook Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F3310F3B2DD07CA200FA0AEC /* QuickLook.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F3310F2C2DD07CA100FA0AEC /* QuickLook.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F3317AEA2A45E24F00CA104D /* Guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3317AE92A45E24F00CA104D /* Guide.swift */; };
 		F3317AEE2A45E33300CA104D /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA56F295900C20006D126 /* Formatters.swift */; };
 		F333B3B92B80CF700005B84D /* Preview Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = F320DDA42B704E3C00957D92 /* Preview Property.swift */; };
@@ -1781,7 +1781,7 @@
 			dstPath = "";
 			dstSubfolder = PlugIns;
 			files = (
-				F3310F3B2DD07CA200FA0AEC /* QuickLook Extension.appex in Embed Foundation Extensions */,
+				F3310F3B2DD07CA200FA0AEC /* QuickLook.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 		};
@@ -2006,7 +2006,7 @@
 		F330013A2A4CEC320063FE0F /* Apikey List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Apikey List.swift"; sourceTree = "<group>"; };
 		F33001402A4CEF840063FE0F /* Apikey VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Apikey VM.swift"; sourceTree = "<group>"; };
 		F33001432A4CF06D0063FE0F /* Apikey Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Apikey Card.swift"; sourceTree = "<group>"; };
-		F3310F2C2DD07CA100FA0AEC /* QuickLook Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "QuickLook Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3310F2C2DD07CA100FA0AEC /* QuickLook.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = QuickLook.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3310F2D2DD07CA100FA0AEC /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		F3317AE92A45E24F00CA104D /* Guide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guide.swift; sourceTree = "<group>"; };
 		F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dynamic Island Badge.swift"; sourceTree = "<group>"; };
@@ -2765,7 +2765,7 @@
 				F3E2BEF52C1DA07E00B7A6D4 /* Contact Provider.appex */,
 				F3FDFF5F2C89120D009EBB5C /* Intent Handler.appex */,
 				F3A7CEC32C8B685500413400 /* iMessage.appex */,
-				F3310F2C2DD07CA100FA0AEC /* QuickLook Extension.appex */,
+				F3310F2C2DD07CA100FA0AEC /* QuickLook.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -4399,9 +4399,9 @@
 			productReference = F31BA54E2958FFAF0006D126 /* Clip Demo.app */;
 			productType = "com.apple.product-type.application.on-demand-install-capable";
 		};
-		F3310F2B2DD07CA100FA0AEC /* QuickLook Extension */ = {
+		F3310F2B2DD07CA100FA0AEC /* QuickLook */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F3310F3D2DD07CA200FA0AEC /* Build configuration list for PBXNativeTarget "QuickLook Extension" */;
+			buildConfigurationList = F3310F3D2DD07CA200FA0AEC /* Build configuration list for PBXNativeTarget "QuickLook" */;
 			buildPhases = (
 				F3310F282DD07CA100FA0AEC /* Sources */,
 				F3310F292DD07CA100FA0AEC /* Frameworks */,
@@ -4409,9 +4409,9 @@
 			);
 			buildRules = (
 			);
-			name = "QuickLook Extension";
+			name = QuickLook;
 			productName = "QuickLook Extension";
-			productReference = F3310F2C2DD07CA100FA0AEC /* QuickLook Extension.appex */;
+			productReference = F3310F2C2DD07CA100FA0AEC /* QuickLook.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		F337C1512A8C29CD006F321C /* Unit Tests */ = {
@@ -4712,7 +4712,7 @@
 				F38637362A8641120069F074 /* Widgets */,
 				F3A7CEC22C8B685500413400 /* iMessage */,
 				F3E2BEF42C1DA07E00B7A6D4 /* Contact Provider */,
-				F3310F2B2DD07CA100FA0AEC /* QuickLook Extension */,
+				F3310F2B2DD07CA100FA0AEC /* QuickLook */,
 				F3464CF72A862D2C00188B0C /* Intent */,
 				F3FDFF5E2C89120D009EBB5C /* Intent Handler */,
 				F337C1512A8C29CD006F321C /* Unit Tests */,
@@ -6461,7 +6461,7 @@
 /* Begin PBXTargetDependency section */
 		F3310F3A2DD07CA200FA0AEC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F3310F2B2DD07CA100FA0AEC /* QuickLook Extension */;
+			target = F3310F2B2DD07CA100FA0AEC /* QuickLook */;
 			targetProxy = F3310F392DD07CA200FA0AEC /* PBXContainerItemProxy */;
 		};
 		F337C1572A8C29CD006F321C /* PBXTargetDependency */ = {
@@ -7003,7 +7003,7 @@
 			};
 			name = Release;
 		};
-		F3310F3E2DD07CA200FA0AEC /* Debug configuration for PBXNativeTarget "QuickLook Extension" */ = {
+		F3310F3E2DD07CA200FA0AEC /* Debug configuration for PBXNativeTarget "QuickLook" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "QuickLook Extension/QuickLook_Extension.entitlements";
@@ -7030,7 +7030,7 @@
 			};
 			name = Debug;
 		};
-		F3310F3F2DD07CA200FA0AEC /* Release configuration for PBXNativeTarget "QuickLook Extension" */ = {
+		F3310F3F2DD07CA200FA0AEC /* Release configuration for PBXNativeTarget "QuickLook" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "QuickLook Extension/QuickLook_Extension.entitlements";
@@ -7662,11 +7662,11 @@
 			);
 			defaultConfigurationName = Release;
 		};
-		F3310F3D2DD07CA200FA0AEC /* Build configuration list for PBXNativeTarget "QuickLook Extension" */ = {
+		F3310F3D2DD07CA200FA0AEC /* Build configuration list for PBXNativeTarget "QuickLook" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F3310F3E2DD07CA200FA0AEC /* Debug configuration for PBXNativeTarget "QuickLook Extension" */,
-				F3310F3F2DD07CA200FA0AEC /* Release configuration for PBXNativeTarget "QuickLook Extension" */,
+				F3310F3E2DD07CA200FA0AEC /* Debug configuration for PBXNativeTarget "QuickLook" */,
+				F3310F3F2DD07CA200FA0AEC /* Release configuration for PBXNativeTarget "QuickLook" */,
 			);
 			defaultConfigurationName = Release;
 		};
