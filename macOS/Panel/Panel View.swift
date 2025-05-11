@@ -106,7 +106,6 @@ struct PanelView: View {
             }
             .id(id)
         }
-        .offset(y: -30)
         .background {
             ZStack {
 #if os(macOS)

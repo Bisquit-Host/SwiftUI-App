@@ -25,9 +25,9 @@ struct FileView: View {
         
         VStack {
             if mimeType.contains("directory") {
-                NavigationLink(value: name) {
+                NavigationLink(name) {
                     HStack {
-                        FileIcon(file.mimetype)
+                        FileIcon(mimeType)
                             .semibold()
                             .frame(width: 20)
                         
@@ -78,7 +78,7 @@ struct FileView: View {
                     //            }
                 } label: {
                     HStack {
-                        FileIcon(file.mimetype)
+                        FileIcon(mimeType)
                             .semibold()
                             .frame(width: 20)
                         

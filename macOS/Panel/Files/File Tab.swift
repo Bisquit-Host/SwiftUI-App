@@ -19,33 +19,21 @@ struct FileTab: View {
         @Bindable var nav = nav
         
         NavigationStack(path: $nav.folderPath) {
-            VStack {
-                TextField("Search", text: $vm.searchField)
-                    .textFieldStyle(.roundedBorder)
-#if os(macOS)
-                ScrollView {
-                    LazyVStack(alignment: .leading) {
-                        ForEach(vm.filteredFiles) { file in
-                            FileView(id, at: root, file: file)
-                                .id(file)
-                        }
-                    }
-                    .animation(.default, value: vm.filteredFiles.indices)
-                    .padding(.trailing, 20)
+            List {
+                Section {
+                    TextField("Search", text: $vm.searchField)
+                        .textFieldStyle(.roundedBorder)
                 }
-                .background(.clear)
-#else
-                List {
-                    ForEach(vm.filteredFiles) { file in
-                        NavigationLink {
-                            
-                        } label: {
-                            FileView(id, at: root, file: file)
-                        }
-                    }
+                
+                ForEach(vm.filteredFiles) { file in
+                    FileView(id, at: root, file: file)
+                        .id(file)
                 }
-#endif
+                .listRowSeparator(.hidden)
+                .animation(.default, value: vm.filteredFiles.indices)
             }
+            .transparentList()
+            .scrollContentBackground(.hidden)
             .navigationDestination(for: String.self) { file in
                 Text(file)
             }
