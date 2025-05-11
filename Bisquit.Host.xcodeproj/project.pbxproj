@@ -577,6 +577,9 @@
 		F3499EFA2A277D0F006101B7 /* File Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3499EF92A277D0F006101B7 /* File Tab.swift */; };
 		F3499EFD2A277E3D006101B7 /* File Name And Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3499EFC2A277E3D006101B7 /* File Name And Icon.swift */; };
 		F3499EFE2A277FDF006101B7 /* File Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266A929D71A1B005FD103 /* File Icon.swift */; };
+		F34BF0C32DD07DE00041BE04 /* PreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F34BF0BF2DD07DE00041BE04 /* PreviewViewController.xib */; };
+		F34BF0C42DD07DE00041BE04 /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34BF0BC2DD07DE00041BE04 /* PreviewProvider.swift */; };
+		F34BF0C52DD07DE00041BE04 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34BF0BD2DD07DE00041BE04 /* PreviewViewController.swift */; };
 		F34C055A29F11E010031ABE1 /* Server Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* Server Card VM.swift */; };
 		F34F289A2ACDAD9B00FD618A /* tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34F28992ACDAD9B00FD618A /* tab.swift */; };
 		F34F289B2ACDAD9B00FD618A /* tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34F28992ACDAD9B00FD618A /* tab.swift */; };
@@ -2047,6 +2050,11 @@
 		F3499EF92A277D0F006101B7 /* File Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Tab.swift"; sourceTree = "<group>"; };
 		F3499EFC2A277E3D006101B7 /* File Name And Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Name And Icon.swift"; sourceTree = "<group>"; };
 		F34AD7C62A5493CC007752A7 /* visionOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = visionOS.entitlements; sourceTree = "<group>"; };
+		F34BF0BB2DD07DE00041BE04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F34BF0BC2DD07DE00041BE04 /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
+		F34BF0BD2DD07DE00041BE04 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		F34BF0BE2DD07DE00041BE04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PreviewViewController.xib; sourceTree = "<group>"; };
+		F34BF0C02DD07DE00041BE04 /* QuickLook_Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QuickLook_Extension.entitlements; sourceTree = "<group>"; };
 		F34C055C29F151250031ABE1 /* watchOS.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = watchOS.entitlements; sourceTree = "<group>"; };
 		F34F28992ACDAD9B00FD618A /* tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tab.swift; sourceTree = "<group>"; };
 		F350636629DC24AB0010B717 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -2389,27 +2397,6 @@
 		F3FF5A0E2A4A3ABD003A1973 /* User Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Card.swift"; sourceTree = "<group>"; };
 		F3FFB73E2A57F02C00220FA5 /* Info Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		F3310F3C2DD07CA200FA0AEC /* Exceptions for "QuickLook Extension" folder in "QuickLook Extension" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = F3310F2B2DD07CA100FA0AEC /* QuickLook Extension */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		F3310F2F2DD07CA100FA0AEC /* QuickLook Extension */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				F3310F3C2DD07CA200FA0AEC /* Exceptions for "QuickLook Extension" folder in "QuickLook Extension" target */,
-			);
-			path = "QuickLook Extension";
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		F3310F292DD07CA100FA0AEC /* Frameworks */ = {
@@ -2760,7 +2747,7 @@
 				F3E2BEF62C1DA07E00B7A6D4 /* Contact Provider Extension */,
 				F337C1532A8C29CD006F321C /* Unit Tests */,
 				F3D296082AF3BE5800ED43A0 /* UI Tests */,
-				F3310F2F2DD07CA100FA0AEC /* QuickLook Extension */,
+				F34BF0C12DD07DE00041BE04 /* QuickLook Extension */,
 				F31BA5242958FF7C0006D126 /* Products */,
 				F3D3437429BFE5A2007C0D58 /* Frameworks */,
 			);
@@ -3214,6 +3201,18 @@
 				F3C0F9CF29E204FA0040E277 /* FileTab Context Menu.swift */,
 			);
 			path = "Context Menu";
+			sourceTree = "<group>";
+		};
+		F34BF0C12DD07DE00041BE04 /* QuickLook Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F34BF0BB2DD07DE00041BE04 /* Info.plist */,
+				F34BF0BC2DD07DE00041BE04 /* PreviewProvider.swift */,
+				F34BF0BD2DD07DE00041BE04 /* PreviewViewController.swift */,
+				F34BF0BF2DD07DE00041BE04 /* PreviewViewController.xib */,
+				F34BF0C02DD07DE00041BE04 /* QuickLook_Extension.entitlements */,
+			);
+			path = "QuickLook Extension";
 			sourceTree = "<group>";
 		};
 		F350638329DC2D2A0010B717 /* Elements */ = {
@@ -4416,9 +4415,6 @@
 			);
 			buildRules = (
 			);
-			fileSystemSynchronizedGroups = (
-				F3310F2F2DD07CA100FA0AEC /* QuickLook Extension */,
-			);
 			name = "QuickLook Extension";
 			productName = "QuickLook Extension";
 			productReference = F3310F2C2DD07CA100FA0AEC /* QuickLook Extension.appex */;
@@ -4770,6 +4766,7 @@
 		F3310F2A2DD07CA100FA0AEC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
+				F34BF0C32DD07DE00041BE04 /* PreviewViewController.xib in Resources */,
 			);
 		};
 		F337C1502A8C29CD006F321C /* Resources */ = {
@@ -5732,6 +5729,8 @@
 		F3310F282DD07CA100FA0AEC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			files = (
+				F34BF0C42DD07DE00041BE04 /* PreviewProvider.swift in Sources */,
+				F34BF0C52DD07DE00041BE04 /* PreviewViewController.swift in Sources */,
 			);
 		};
 		F337C14E2A8C29CD006F321C /* Sources */ = {
@@ -6522,6 +6521,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		F34BF0BF2DD07DE00041BE04 /* PreviewViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F34BF0BE2DD07DE00041BE04 /* Base */,
+			);
+			name = PreviewViewController.xib;
+			sourceTree = "<group>";
+		};
 		F384D8BB2D5BE495000FC41D /* Crypto Price Widget.intentdefinition */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -7029,7 +7036,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.QuickLook-Extension";
+				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug.QuickLook-Extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
