@@ -59,7 +59,8 @@ struct FileView: View {
                     .semibold()
                     .frame(width: 20)
                 
-                Text(file.name)
+                Text(name)
+                    .lineLimit(3)
                 
                 Spacer()
                 
