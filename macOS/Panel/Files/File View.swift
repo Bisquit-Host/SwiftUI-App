@@ -23,55 +23,78 @@ struct FileView: View {
         let name = file.name
         let mimeType = file.mimetype
         
-        Button {
-            if !mimeType.contains("directory") {
-                qlVM.getFileUrl(name, at: root)
-            }
-            
-            //        NavigationLink {
-            //            QuickLookFile(id, name: name, at: root)
-            //            if mimeType.contains("directory") {
-            //                //                FolderFile(id, path: root + name + "/")
-            //                Text("Folder")
-            //
-            //            } else {
-            //                Group {
-            //                    if mimeType.contains("text") || mimeType.contains("json") {
-            //                        //                        TextFile(id, name: name, at: root)
-            //                        Text("Text")
-            //
-            //                    } else if mimeType.contains("video") {
-            //                        //                        VideoFile(id, name: name, at: root)
-            //                        Text("Video")
-            //
-            //                    } else if mimeType.contains("audio") {
-            //                        //                        AudioPlayerView(id, name: name, at: root)
-            //                        Text("AudioPlayer")
-            //
-            //                    } else {
-            //                        //                        QuickLookFile(id, name: name, at: root)
-            //                        Text("QuickLook")
-            //                    }
-            //                }
-            //                .environmentObject(vm)
-            //            }
-        } label: {
-            HStack {
-                FileIcon(file.mimetype)
-                    .semibold()
-                    .frame(width: 20)
-                
-                Text(name)
-                    .lineLimit(3)
-                
-                Spacer()
-                
-                if file.isFile {
-                    let size = formatBytes(file.size)
+        VStack {
+            if mimeType.contains("directory") {
+                NavigationLink(value: name) {
+                    HStack {
+                        FileIcon(file.mimetype)
+                            .semibold()
+                            .frame(width: 20)
+                        
+                        Text(name)
+                            .lineLimit(3)
+                        
+                        Spacer()
+                        
+                        if file.isFile {
+                            let size = formatBytes(file.size)
+                            
+                            Text(size)
+                                .footnote()
+                                .secondary()
+                        }
+                    }
+                }
+            } else {
+                Button {
+                    qlVM.getFileUrl(name, at: root)
                     
-                    Text(size)
-                        .footnote()
-                        .secondary()
+                    //        NavigationLink {
+                    //            QuickLookFile(id, name: name, at: root)
+                    //            if mimeType.contains("directory") {
+                    //                //                FolderFile(id, path: root + name + "/")
+                    //                Text("Folder")
+                    //
+                    //            } else {
+                    //                Group {
+                    //                    if mimeType.contains("text") || mimeType.contains("json") {
+                    //                        //                        TextFile(id, name: name, at: root)
+                    //                        Text("Text")
+                    //
+                    //                    } else if mimeType.contains("video") {
+                    //                        //                        VideoFile(id, name: name, at: root)
+                    //                        Text("Video")
+                    //
+                    //                    } else if mimeType.contains("audio") {
+                    //                        //                        AudioPlayerView(id, name: name, at: root)
+                    //                        Text("AudioPlayer")
+                    //
+                    //                    } else {
+                    //                        //                        QuickLookFile(id, name: name, at: root)
+                    //                        Text("QuickLook")
+                    //                    }
+                    //                }
+                    //                .environmentObject(vm)
+                    //            }
+                } label: {
+                    HStack {
+                        FileIcon(file.mimetype)
+                            .semibold()
+                            .frame(width: 20)
+                        
+                        Text(name)
+                            .lineLimit(3)
+                        
+                        Spacer()
+                        
+                        if file.isFile {
+                            let size = formatBytes(file.size)
+                            
+                            Text(size)
+                                .footnote()
+                                .secondary()
+                        }
+                    }
                 }
             }
         }

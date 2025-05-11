@@ -13,34 +13,40 @@ struct FileTab: View {
     }
     
     @State private var showToolbar = false
+    @State private var path: [String] = []
     
     var body: some View {
-        VStack {
-            TextField("Search", text: $vm.searchField)
-                .textFieldStyle(.roundedBorder)
+        NavigationStack(path: $path) {
+            VStack {
+                TextField("Search", text: $vm.searchField)
+                    .textFieldStyle(.roundedBorder)
 #if os(macOS)
-            ScrollView {
-                LazyVStack(alignment: .leading) {
-                    ForEach(vm.filteredFiles) { file in
-                        FileView(id, at: root, file: file)
-                            .id(file)
+                ScrollView {
+                    LazyVStack(alignment: .leading) {
+                        ForEach(vm.filteredFiles) { file in
+                            FileView(id, at: root, file: file)
+                                .id(file)
+                        }
                     }
+                    .animation(.default, value: vm.filteredFiles.indices)
+                    .padding(.trailing, 20)
                 }
-                .animation(.default, value: vm.filteredFiles.indices)
-                .padding(.trailing, 20)
-            }
-            .background(.clear)
+                .background(.clear)
 #else
-            List {
-                ForEach(vm.filteredFiles) { file in
-                    NavigationLink {
-                        
-                    } label: {
-                        FileView(id, at: root, file: file)
+                List {
+                    ForEach(vm.filteredFiles) { file in
+                        NavigationLink {
+                            
+                        } label: {
+                            FileView(id, at: root, file: file)
+                        }
                     }
                 }
-            }
 #endif
+            }
+            .navigationDestination(for: String.self) { file in
+                Text(file)
+            }
         }
         .environmentObject(vm)
         .navigationTitle("Files")
