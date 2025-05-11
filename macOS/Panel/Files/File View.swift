@@ -17,8 +17,10 @@ struct FileView: View {
     }
     
     //    @State private var sheetMetadata = false
-    @State private var showQuickLook = false
-#warning("Destinations")
+    @State private var showPreview = false
+    
+#warning("Destinations/nav")
+    
     var body: some View {
         let name = file.name
         let mimeType = file.mimetype
@@ -26,24 +28,7 @@ struct FileView: View {
         VStack {
             if mimeType.contains("directory") {
                 NavigationLink(name) {
-                    HStack {
-                        FileIcon(mimeType)
-                            .semibold()
-                            .frame(width: 20)
-                        
-                        Text(name)
-                            .lineLimit(3)
-                        
-                        Spacer()
-                        
-                        if file.isFile {
-                            let size = formatBytes(file.size)
-                            
-                            Text(size)
-                                .footnote()
-                                .secondary()
-                        }
-                    }
+                    FileCard(file)
                 }
             } else {
                 Button {
@@ -77,40 +62,11 @@ struct FileView: View {
                     //                .environmentObject(vm)
                     //            }
                 } label: {
-                    HStack {
-                        FileIcon(mimeType)
-                            .semibold()
-                            .frame(width: 20)
-                        
-                        Text(name)
-                            .lineLimit(3)
-                        
-                        Spacer()
-                        
-                        if file.isFile {
-                            let size = formatBytes(file.size)
-                            
-                            Text(size)
-                                .footnote()
-                                .secondary()
-                        }
-                    }
+                    FileCard(file)
                 }
             }
         }
-        .quickLookPreview($showQuickLook, url: qlVM.fileUrl, blur: qlVM.isSensitive)
-        .onChange(of: showQuickLook) { _, isPresented in
-            if !isPresented {
-                qlVM.fileUrl = nil
-            }
-        }
-        .onChange(of: qlVM.fileUrl) { _, url in
-            if let url {
-                print(url.description)
-                
-                showQuickLook = true
-            }
-        }
+        .quickLookPreview($showPreview, url: qlVM.fileUrl, blur: qlVM.isSensitive)
         .buttonStyle(.plain)
         .padding(5)
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -119,6 +75,18 @@ struct FileView: View {
         .overlay {
             RoundedRectangle(cornerRadius: 8)
                 .stroke(.gray.opacity(0.25), lineWidth: 1)
+        }
+        .onChange(of: showPreview) { _, isPresented in
+            if !isPresented {
+                qlVM.fileUrl = nil
+            }
+        }
+        .onChange(of: qlVM.fileUrl) { _, url in
+            if let url {
+                print(url.description)
+                
+                showPreview = true
+            }
         }
     }
 }

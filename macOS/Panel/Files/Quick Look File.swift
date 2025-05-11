@@ -18,15 +18,15 @@
 //    }
 //    
 //    @State private var sheetMetadata = false
-//    @State private var showQuickLook = false
+//    @State private var showPreview = false
 //    
 //    var body: some View {
 //        VStack {
 //            if let url = vm.fileUrl {
 //                Text(name)
-//                    .quickLookPreview($showQuickLook, url: url)
+//                    .quickLookPreview($showPreview, url: url)
 //                    .onTapGesture {
-//                        showQuickLook = true
+//                        showPreview = true
 //                    }
 //            } else {
 //                ProgressView()
