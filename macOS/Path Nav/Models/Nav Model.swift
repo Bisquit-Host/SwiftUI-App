@@ -11,18 +11,12 @@ struct NavModelData: Codable {
 
 @Observable
 final class NavModel {
-    /// The selected server category; otherwise returns `nil`
+    var columnVisibility: NavigationSplitViewVisibility
     var selectedTab: PanelTab?
-    
-    /// The homogenous navigation state used by the app's navigation stacks
     var serverPath: [ServerAttributes]
     var path: [Route]
     var folderPath: [String]
     
-    /// The leading columns' visibility state used by the app's navigation split views
-    var columnVisibility: NavigationSplitViewVisibility
-    
-    /// The leading columns' visibility state used by the app's navigation split views
     var showNavModePicker = false
     
     private static let decoder = JSONDecoder()
@@ -33,7 +27,7 @@ final class NavModel {
         .cachesDirectory.appending(path: "NavigationData.json")
     }
     
-    /// The shared singleton navigation model object
+    /// Shared singleton NavModel obj
     static let shared = {
         if let model = try? NavModel(contentsOf: dataURL) {
             model
@@ -42,7 +36,7 @@ final class NavModel {
         }
     }()
     
-    /// Initialize a `NavigationModel` that enables programmatic control of leading columns’
+    /// Initialize a `NavModel` that enables programmatic control of leading columns’
     /// visibility, selected server category, and navigation state based on server data
     init(
         columnVisibility: NavigationSplitViewVisibility = .automatic,
@@ -75,7 +69,7 @@ final class NavModel {
         )
     }
     
-    /// Loads the navigation data for the navigation model from a previously saved state
+    /// Loads the nav data for the navigation model from a previously saved state
     func load() throws {
         print("New load")
         
