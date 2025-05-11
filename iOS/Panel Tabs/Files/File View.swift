@@ -55,7 +55,7 @@ struct FileView: View {
                         
                         Text(name)
                             .foregroundStyle(.primary)
-                            .minimumScaleFactor(0.5)
+                            .minimumScaleFactor(0.75)
                             .scaledToFit()
                             .lineLimit(1)
                     }
