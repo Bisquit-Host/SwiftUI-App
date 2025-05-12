@@ -61,6 +61,7 @@ struct AllocationCard: View {
                 }
                 
                 TextField("Notes", text: $notes)
+                    .limitInputLength($notes, length: 256)
                 
                 if showSaveButton {
                     Button("Save") {
