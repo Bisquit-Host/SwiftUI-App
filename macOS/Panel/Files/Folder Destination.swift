@@ -26,19 +26,18 @@ struct FolderDestination: View {
                     
                     Text(root)
                 }
-            }
-            
-            Section {
+                
                 TextField("Search", text: $vm.searchField)
                     .textFieldStyle(.roundedBorder)
             }
+            .listRowSeparator(.hidden)
             
             ForEach(vm.filteredFiles) { file in
                 FileView(id, at: root, file: file)
                     .id(file)
             }
-            .listRowSeparator(.hidden)
             .animation(.default, value: vm.filteredFiles.indices)
+            .listRowSeparator(.hidden)
         }
         .transparentList()
         .scrollContentBackground(.hidden)
@@ -46,9 +45,6 @@ struct FolderDestination: View {
         .environmentObject(vm)
         .frame(minWidth: 200, maxWidth: 800)
 #if os(macOS)
-        .padding()
-        .background(.clear)
-        .clipShape(.rect(cornerRadius: 16))
         .navigationSubtitle(root)
 #endif
         //        .onChange(of: id) {

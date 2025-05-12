@@ -42,9 +42,6 @@ struct FileTab: View {
         .environmentObject(vm)
         .frame(minWidth: 200, maxWidth: 800)
 #if os(macOS)
-        .padding()
-        .background(.clear)
-        .clipShape(.rect(cornerRadius: 16))
         .navigationSubtitle(root)
 #endif
         .onChange(of: id) {
