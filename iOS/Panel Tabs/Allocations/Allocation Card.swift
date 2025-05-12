@@ -20,7 +20,8 @@ struct AllocationCard: View {
     }
     
     private var ip: String {
-        allocation.ipAlias ?? allocation.ip
+        (allocation.ipAlias ?? allocation.ip) +
+        ":" + String(allocation.port)
     }
     
     var body: some View {
@@ -30,7 +31,7 @@ struct AllocationCard: View {
                     Image(systemName: "app.connected.to.app.below.fill")
                     
                     VStack(alignment: .leading) {
-                        Text(ip + ":" + allocation.port.description)
+                        Text(ip)
                             .semibold()
                         
                         if store.devMode {
