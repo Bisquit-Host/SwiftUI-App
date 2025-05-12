@@ -2,6 +2,17 @@ import ScrechKit
 import PteroNet
 import QuickLooking
 
+struct NavTest {
+    private let id, root: String
+    private let file: FileAttributes
+    
+    init(_ id: String, at root: String, file: FileAttributes) {
+        self.id = id
+        self.root = root
+        self.file = file
+    }
+}
+
 struct FileView: View {
     @State private var qlVM: QuickLookFileVM
     @EnvironmentObject private var vm: FileTabVM
@@ -86,11 +97,12 @@ struct FileView: View {
             }
         }
         .onChange(of: qlVM.fileUrl) { _, url in
-            if let url {
-                print(url.description)
-                
-                showPreview = true
+            guard let url else {
+                return
             }
+            
+            print(url.description)
+            showPreview = true
         }
     }
 }
