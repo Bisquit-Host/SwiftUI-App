@@ -9,17 +9,14 @@ struct SheetCreateAllocation: View {
     
     var body: some View {
         List {
-            Picker("Category", selection: $selectedCategory) {
-                Text("Not selected")
-                    .secondary()
-                    .tag(-1)
-                
+            Picker("", selection: $selectedCategory) {
                 ForEach(vm.categories) { category in
                     Text(category.name)
                         .tag(category.id)
                 }
             }
             .pickerStyle(.inline)
+            .transparentSection()
             
             Section {
                 Button("Create") {
@@ -27,10 +24,14 @@ struct SheetCreateAllocation: View {
                         dismiss()
                     }
                 }
+                .semibold()
                 .foregroundStyle(.foreground)
                 .disabled(selectedCategory == -1)
             }
+            .transparentSection()
         }
+        .navigationTitle("Create allocation")
+        .transparentList()
         .scrollIndicators(.never)
         .task {
             vm.fetchCategories()

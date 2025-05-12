@@ -33,7 +33,9 @@ struct AllocationList: View {
             vm.fetchAllocations()
         }
         .sheet($sheetCreate) {
-            SheetCreateAllocation()
+            NavigationView {
+                SheetCreateAllocation()
+            }
         }
         .environment(vm)
     }

@@ -1900,6 +1900,9 @@
         }
       }
     },
+    "Create allocation" : {
+
+    },
     "Create and copy" : {
       "localizations" : {
         "ru" : {
@@ -4109,9 +4112,6 @@
           }
         }
       }
-    },
-    "Not selected" : {
-
     },
     "Not suspended" : {
 
