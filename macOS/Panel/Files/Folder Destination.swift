@@ -18,7 +18,16 @@ struct FolderDestination: View {
         
         List {
             Section {
-                Text(root)
+                HStack(spacing: 0) {
+                    Button {
+                        nav.folderPath.removeAll()
+                    } label: {
+                        Text("root")
+                    }
+                    .buttonStyle(.plain)
+                    
+                    Text(root)
+                }
             }
             
             Section {

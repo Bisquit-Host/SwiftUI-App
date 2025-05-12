@@ -4746,6 +4746,9 @@
         }
       }
     },
+    "root" : {
+
+    },
     "Rotate password" : {
       "localizations" : {
         "nl" : {
