@@ -2409,17 +2409,6 @@
         }
       }
     },
-    "Destination" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bestemming"
-          }
-        }
-      }
-    },
     "Details" : {
       "localizations" : {
         "nl" : {
