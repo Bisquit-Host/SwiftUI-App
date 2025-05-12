@@ -42,17 +42,17 @@ struct FileCard: View {
                 FileList(id, at: root + name + "/")
                     .environmentObject(vm)
                 
-                //                FolderFile(id, path: root + name)
+                //                FolderFile(id, path: path + name)
             } label: {
                 FileLabel()
             }
         } else {
             Button {
                 //            if mimeType.contains("text") || mimeType.contains("json") {
-                //                TextFile(id, name: name, at: root)
+                //                TextFile(id, name: name, at: path)
                 //
                 //            } else if mimeType.contains("video") {
-                //                VideoFile(id, name: name, at: root)
+                //                VideoFile(id, name: name, at: path)
                 
                 let link = FileLink(id: id, name: name, at: root)
                 

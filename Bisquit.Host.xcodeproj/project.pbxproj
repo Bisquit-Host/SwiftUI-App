@@ -1642,6 +1642,9 @@
 		F3F716BD29E4D46600838586 /* Backup List Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F716BC29E4D46600838586 /* Backup List Footer.swift */; };
 		F3FA30952DD1708A00280133 /* File Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA30942DD1708A00280133 /* File Card.swift */; };
 		F3FA30972DD1E26200280133 /* Folder Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA30962DD1E26200280133 /* Folder Destination.swift */; };
+		F3FA30992DD1EB4300280133 /* File List Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA30982DD1EB4300280133 /* File List Header.swift */; };
+		F3FA309B2DD1EB4300280133 /* File List Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA30982DD1EB4300280133 /* File List Header.swift */; };
+		F3FA309E2DD1EB4300280133 /* File List Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA30982DD1EB4300280133 /* File List Header.swift */; };
 		F3FA61542A1F8DB500A65AE1 /* Upload Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA61532A1F8DB500A65AE1 /* Upload Menu.swift */; };
 		F3FA61552A1F8DB500A65AE1 /* Upload Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA61532A1F8DB500A65AE1 /* Upload Menu.swift */; };
 		F3FA61572A1F928500A65AE1 /* File Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA61562A1F928500A65AE1 /* File Search.swift */; };
@@ -2375,6 +2378,7 @@
 		F3F716BC29E4D46600838586 /* Backup List Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Backup List Footer.swift"; sourceTree = "<group>"; };
 		F3FA30942DD1708A00280133 /* File Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Card.swift"; sourceTree = "<group>"; };
 		F3FA30962DD1E26200280133 /* Folder Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Folder Destination.swift"; sourceTree = "<group>"; };
+		F3FA30982DD1EB4300280133 /* File List Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File List Header.swift"; sourceTree = "<group>"; };
 		F3FA61532A1F8DB500A65AE1 /* Upload Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Upload Menu.swift"; sourceTree = "<group>"; };
 		F3FA61562A1F928500A65AE1 /* File Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Search.swift"; sourceTree = "<group>"; };
 		F3FC99102C65747700150823 /* Archieving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archieving.swift; sourceTree = "<group>"; };
@@ -2921,6 +2925,7 @@
 				F37266BB29D811B7005FD103 /* File View.swift */,
 				F37266A929D71A1B005FD103 /* File Icon.swift */,
 				F3F5BC952BF7668E00EB8FB1 /* Sensitivity Analyzer.swift */,
+				F3FA30982DD1EB4300280133 /* File List Header.swift */,
 				F34BB6B72D3DC2A300D27BE0 /* Context Menu */,
 				F37DDA7429E2AABF00B9680C /* Elements */,
 				F38F9E102CE764060033EFE3 /* Image Playground */,
@@ -5256,6 +5261,7 @@
 				F325F7062A54C4BC00E89EC4 /* System Alerts.swift in Sources */,
 				F3C9D8512B3059E700265492 /* UIVideoPlayer.swift in Sources */,
 				F3202CFC2D562AE10030B3CC /* Browser List Bot.swift in Sources */,
+				F3FA309E2DD1EB4300280133 /* File List Header.swift in Sources */,
 				F3B1196F29A155D8003BB68C /* Suspended Server Card.swift in Sources */,
 				F3B66DF52D60B46F00F1841B /* Info Tab LA.swift in Sources */,
 				F3D264412A66ABBE005C3777 /* Account VM.swift in Sources */,
@@ -5493,6 +5499,7 @@
 				F358132C2A1F5D2A002ADFA4 /* Linking VM.swift in Sources */,
 				F3E024C72B228F4C00FFF686 /* New Task Sheet.swift in Sources */,
 				F3C9D8622B319B9E00265492 /* Permission Card.swift in Sources */,
+				F3FA309B2DD1EB4300280133 /* File List Header.swift in Sources */,
 				F3F0A2DC2D63395F0084013B /* App Container.swift in Sources */,
 				F389BB5F2A05B57900911EBF /* Server Card.swift in Sources */,
 				F380B32A2BD7C529009062E8 /* Upload Preview List.swift in Sources */,
@@ -5819,6 +5826,7 @@
 				F3D295472AF39DA000ED43A0 /* Start Page Footer.swift in Sources */,
 				F36B14B42DC63324008C1AF9 /* GameKit.swift in Sources */,
 				F3202C7E2D558B210030B3CC /* Spotlight Index.swift in Sources */,
+				F3FA30992DD1EB4300280133 /* File List Header.swift in Sources */,
 				F3D295462AF39D9500ED43A0 /* Start Page.swift in Sources */,
 				F3D2955A2AF39E4000ED43A0 /* Server List.swift in Sources */,
 				F3D2957C2AF39F4F00ED43A0 /* Log VM.swift in Sources */,

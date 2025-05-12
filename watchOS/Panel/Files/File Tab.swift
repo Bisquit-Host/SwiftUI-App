@@ -16,7 +16,7 @@ struct FileTab: View {
             TextField("Search", text: $vm.searchField)
                 .autocorrectionDisabled()
             
-            ForEach(vm.filteredFiles, id: \.name) { file in
+            ForEach(vm.filteredFiles) { file in
                 FileView(id, file: file, path: root)
             }
             .onDelete(perform: deleteItem)

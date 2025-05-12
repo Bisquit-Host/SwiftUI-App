@@ -52,7 +52,7 @@ struct FolderDestination: View {
         .navigationSubtitle(root)
 #endif
         //        .onChange(of: id) {
-        //            vm.fetchFiles(root)
+        //            vm.fetchFiles(path)
         //        }
         //        .onChange(of: nav.selectedServers) {
         //            nav.folderPath.removeAll()

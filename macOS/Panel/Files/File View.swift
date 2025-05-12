@@ -48,27 +48,27 @@ struct FileView: View {
                     qlVM.getFileUrl(name, at: root)
                     
                     //        NavigationLink {
-                    //            QuickLookFile(id, name: name, at: root)
+                    //            QuickLookFile(id, name: name, at: path)
                     //            if mimeType.contains("directory") {
-                    //                //                FolderFile(id, path: root + name + "/")
+                    //                //                FolderFile(id, path: path + name + "/")
                     //                Text("Folder")
                     //
                     //            } else {
                     //                Group {
                     //                    if mimeType.contains("text") || mimeType.contains("json") {
-                    //                        //                        TextFile(id, name: name, at: root)
+                    //                        //                        TextFile(id, name: name, at: path)
                     //                        Text("Text")
                     //
                     //                    } else if mimeType.contains("video") {
-                    //                        //                        VideoFile(id, name: name, at: root)
+                    //                        //                        VideoFile(id, name: name, at: path)
                     //                        Text("Video")
                     //
                     //                    } else if mimeType.contains("audio") {
-                    //                        //                        AudioPlayerView(id, name: name, at: root)
+                    //                        //                        AudioPlayerView(id, name: name, at: path)
                     //                        Text("AudioPlayer")
                     //
                     //                    } else {
-                    //                        //                        QuickLookFile(id, name: name, at: root)
+                    //                        //                        QuickLookFile(id, name: name, at: path)
                     //                        Text("QuickLook")
                     //                    }
                     //                }

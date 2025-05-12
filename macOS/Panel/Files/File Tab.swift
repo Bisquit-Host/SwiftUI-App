@@ -66,7 +66,7 @@ struct FileTab: View {
         //        .toolbar {
         //            //            if showToolbar {
         //            Button {
-        //                vm.fetchFiles(root)
+        //                vm.fetchFiles(path)
         //            } label: {
         //                Image(systemName: "arrow.triangle.2.circlepath")
         //                    .rotate(vm.degrees)

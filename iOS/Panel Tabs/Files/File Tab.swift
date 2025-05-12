@@ -15,10 +15,6 @@ struct FileTab: View {
     @State private var selectedIndex: Int?
     @State private var trigger = false
     
-    private var fileCount: Int {
-        vm.filteredFiles.count
-    }
-    
     var body: some View {
         List {
             Section {
@@ -38,17 +34,7 @@ struct FileTab: View {
                 }
                 .onDelete(perform: deleteItem)
             } header: {
-                if fileCount != 0 {
-                    HStack {
-                        FolderPath(root)
-                        
-                        Spacer()
-                        
-                        Text("\(fileCount) files")
-                            .monospacedDigit()
-                    }
-                    .numericTransition()
-                }
+                FileListHeader(root)
             }
             .listRowBackground(Color.gray.opacity(0.2))
         }

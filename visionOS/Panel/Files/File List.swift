@@ -12,7 +12,7 @@ struct FileList: View {
     
     var body: some View {
         List {
-            ForEach(vm.filteredFiles, id: \.name) { file in
+            ForEach(vm.filteredFiles) { file in
                 FileCard(id, file: file, at: root)
             }
         }

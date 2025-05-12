@@ -36,6 +36,10 @@ final class FileTabVM: ObservableObject {
     @Published var searchField = ""
     @Published var newFileName = ""
     
+    var fileCount: Int {
+        filteredFiles.count
+    }
+    
     var filteredFiles: [FileAttributes] {
         if searchField.isEmpty {
             files
