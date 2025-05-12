@@ -30,8 +30,6 @@ struct FileView: View {
     //    @State private var sheetMetadata = false
     @State private var showPreview = false
     
-#warning("Destinations/nav")
-    
     var body: some View {
         let name = file.name
         let mimeType = file.mimetype
@@ -39,7 +37,7 @@ struct FileView: View {
         VStack {
             if mimeType.contains("directory") {
 #if DEBUG
-                NavigationLink(value: name) {
+                NavigationLink(value: root + "/" + name) {
                     FileCard(file)
                 }
 #else

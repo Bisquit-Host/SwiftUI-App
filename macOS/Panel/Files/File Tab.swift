@@ -35,7 +35,7 @@ struct FileTab: View {
             .transparentList()
             .scrollContentBackground(.hidden)
             .navigationDestination(for: String.self) { file in
-                Text(file)
+                FolderDestination(id, at: root + "/" + file)
             }
         }
         .navigationTitle("Files")

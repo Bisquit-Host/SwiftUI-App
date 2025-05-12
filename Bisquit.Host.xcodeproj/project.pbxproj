@@ -1641,6 +1641,7 @@
 		F3F6ACAF2A51E48700EE417F /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3F6ACAE2A51E48700EE417F /* AlertKit */; };
 		F3F716BD29E4D46600838586 /* Backup List Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F716BC29E4D46600838586 /* Backup List Footer.swift */; };
 		F3FA30952DD1708A00280133 /* File Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA30942DD1708A00280133 /* File Card.swift */; };
+		F3FA30972DD1E26200280133 /* Folder Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA30962DD1E26200280133 /* Folder Destination.swift */; };
 		F3FA61542A1F8DB500A65AE1 /* Upload Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA61532A1F8DB500A65AE1 /* Upload Menu.swift */; };
 		F3FA61552A1F8DB500A65AE1 /* Upload Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA61532A1F8DB500A65AE1 /* Upload Menu.swift */; };
 		F3FA61572A1F928500A65AE1 /* File Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA61562A1F928500A65AE1 /* File Search.swift */; };
@@ -2373,6 +2374,7 @@
 		F3F5BC952BF7668E00EB8FB1 /* Sensitivity Analyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sensitivity Analyzer.swift"; sourceTree = "<group>"; };
 		F3F716BC29E4D46600838586 /* Backup List Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Backup List Footer.swift"; sourceTree = "<group>"; };
 		F3FA30942DD1708A00280133 /* File Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Card.swift"; sourceTree = "<group>"; };
+		F3FA30962DD1E26200280133 /* Folder Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Folder Destination.swift"; sourceTree = "<group>"; };
 		F3FA61532A1F8DB500A65AE1 /* Upload Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Upload Menu.swift"; sourceTree = "<group>"; };
 		F3FA61562A1F928500A65AE1 /* File Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Search.swift"; sourceTree = "<group>"; };
 		F3FC99102C65747700150823 /* Archieving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archieving.swift; sourceTree = "<group>"; };
@@ -3045,6 +3047,7 @@
 			isa = PBXGroup;
 			children = (
 				F323D8D22A2D668D002EDC62 /* File Tab.swift */,
+				F3FA30962DD1E26200280133 /* Folder Destination.swift */,
 				F3A8BE8A2A2FA9B3001B13D8 /* File View.swift */,
 				F3FA30942DD1708A00280133 /* File Card.swift */,
 				F31163E72DCF7DB30093B722 /* Quick Look File.swift */,
@@ -6345,6 +6348,7 @@
 				F3015DDC2D9F25B000B9BCC6 /* Log Card Event.swift in Sources */,
 				F3464D2B2A863A6000188B0C /* Create Backup.swift in Sources */,
 				F30088B82B3A218B0051476C /* Schedule Card.swift in Sources */,
+				F3FA30972DD1E26200280133 /* Folder Destination.swift in Sources */,
 				F39EA2E42D5D576D00329468 /* Game Center Buttons.swift in Sources */,
 				F35BB0392C656AD300631DBD /* Carousel Button Style.swift in Sources */,
 				F3202D4B2D56DC050030B3CC /* Prefetcher.swift in Sources */,

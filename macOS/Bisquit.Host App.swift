@@ -55,9 +55,9 @@ struct BisquitHostApp: App {
         .environmentObject(store)
         .modelContainer(container)
         .defaultAppStorage(.init(suiteName: "group.Bisquit-host")!)
-#if os(macOS)
-        .windowStyle(.hiddenTitleBar)
-#endif
+//#if os(macOS)
+//        .windowStyle(.hiddenTitleBar)
+//#endif
         
 #if os(macOS)
         Settings {
