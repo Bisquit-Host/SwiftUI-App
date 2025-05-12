@@ -9,6 +9,7 @@ final class AllocationVM {
     }
     
     private(set) var allocations: [AllocationAttributes] = []
+    private(set) var categories: [AllocationCategory] = []
     
     func fetchAllocations() {
         allocationListAPI(id) { result in
@@ -48,11 +49,14 @@ final class AllocationVM {
         }
     }
     
-    func assignAllocation() {
-        allocationCreateAPI(id, printResponse: true) { result in
+    func fetchCategories() {
+        allocationCategoriesAPI(id) { result in
             switch result {
-            case .success/*(let model)*/:
-                self.fetchAllocations()
+            case .success(let model):
+                if let model {
+                    self.categories = model
+                    print("✅ Fethced \(model.count) categories")
+                }
                 
             case .failure(let error):
                 SystemAlert.error(error)
@@ -60,8 +64,21 @@ final class AllocationVM {
         }
     }
     
-    func updateNotes(_ allocationId: Int, notes: String) {
-        allocationNoteAPI(id, allocationId: allocationId, notes: notes) { result in
+    func assignAllocation(_ category: Int, onSuccess: @escaping () -> Void = {}) {
+        allocationCreateAPI(id, category: category, printResponse: true) { result in
+            switch result {
+            case .success/*(let model)*/:
+                self.fetchAllocations()
+                onSuccess()
+                
+            case .failure(let error):
+                SystemAlert.error(error)
+            }
+        }
+    }
+    
+    func updateNotes(_ allocId: Int, notes: String) {
+        allocationNoteAPI(id, allocationId: allocId, notes: notes) { result in
             switch result {
             case .success/*(let model)*/:
                 self.fetchAllocations()

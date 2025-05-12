@@ -11,6 +11,8 @@ struct AllocationList: View {
         vm = AllocationVM(server.id)
     }
     
+    @State private var sheetCreate = false
+    
     var body: some View {
         List {
             ForEach(vm.allocations) { allocation in
@@ -19,18 +21,21 @@ struct AllocationList: View {
             }
             
             Button("Assign allocation") {
-                vm.assignAllocation()
+                sheetCreate = true
             }
             .disabled(vm.allocations.count >= server.featureLimits.allocations)
             .transparentSection()
         }
-        .environment(vm)
         .navigationTitle("Allocations")
         .toolbarTitleDisplayMode(.inline)
         .transparentList()
         .refreshableTask {
             vm.fetchAllocations()
         }
+        .sheet($sheetCreate) {
+            SheetCreateAllocation()
+        }
+        .environment(vm)
     }
 }
 

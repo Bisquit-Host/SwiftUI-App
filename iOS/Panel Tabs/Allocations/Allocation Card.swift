@@ -15,7 +15,8 @@ struct AllocationCard: View {
     @State private var notes: String
     
     private var showSaveButton: Bool {
-        (allocation.notes != nil && notes != allocation.notes) || (allocation.notes == nil && !notes.isEmpty)
+        (allocation.notes != nil && notes != allocation.notes) ||
+        (allocation.notes == nil && !notes.isEmpty)
     }
     
     private var ip: String {
@@ -24,45 +25,47 @@ struct AllocationCard: View {
     
     var body: some View {
         Section {
-            HStack {
-                Image(systemName: "app.connected.to.app.below.fill")
-                
-                VStack(alignment: .leading) {
-                    Text(ip + ":" + allocation.port.description)
-                        .semibold()
+            VStack {
+                HStack {
+                    Image(systemName: "app.connected.to.app.below.fill")
                     
-                    if store.devMode {
-                        Text(allocation.id)
-                            .secondary()
-                            .footnote()
+                    VStack(alignment: .leading) {
+                        Text(ip + ":" + allocation.port.description)
+                            .semibold()
+                        
+                        if store.devMode {
+                            Text(allocation.id)
+                                .secondary()
+                                .footnote()
+                        }
+                    }
+                    
+                    Spacer()
+                    
+                    if allocation.isDefault {
+                        Image(systemName: "star.fill")
+                            .foregroundStyle(.yellow.gradient)
+                    }
+                }
+                .animation(.default, value: allocation.isDefault)
+                .contextMenu {
+                    if !allocation.isDefault {
+                        MenuButton("Set default", icon: "star") {
+                            vm.setDefault(allocation.id)
+                        }
+                    }
+                    
+                    MenuButton("Delete", role: .destructive, icon: "trash") {
+                        vm.unassignAllocation(allocation.id)
                     }
                 }
                 
-                Spacer()
+                TextField("Notes", text: $notes)
                 
-                if allocation.isDefault {
-                    Image(systemName: "star.fill")
-                        .foregroundStyle(.yellow.gradient)
-                }
-            }
-            .animation(.default, value: allocation.isDefault)
-            .contextMenu {
-                if !allocation.isDefault {
-                    MenuButton("Set default", icon: "star") {
-                        vm.setDefault(allocation.id)
+                if showSaveButton {
+                    Button("Save") {
+                        vm.updateNotes(allocation.id, notes: notes)
                     }
-                }
-                
-                MenuButton("Delete", role: .destructive, icon: "trash") {
-                    vm.unassignAllocation(allocation.id)
-                }
-            }
-            
-            TextField("Notes", text: $notes)
-            
-            if showSaveButton {
-                Button("Save") {
-                    vm.updateNotes(allocation.id, notes: notes)
                 }
             }
         }
