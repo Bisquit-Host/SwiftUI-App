@@ -27,7 +27,7 @@ struct FileView: View {
         
         VStack {
             if mimeType.contains("directory") {
-                NavigationLink(name) {
+                NavigationLink(value: name) {
                     FileCard(file)
                 }
             } else {
