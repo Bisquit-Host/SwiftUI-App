@@ -9,28 +9,53 @@ struct SheetCreateAllocation: View {
     
     var body: some View {
         List {
-            Picker("", selection: $selectedCategory) {
-                ForEach(vm.categories) { category in
+            ForEach(vm.categories) { category in
+                let background: Material = selectedCategory == category.id ? .ultraThickMaterial : .ultraThinMaterial
+                
+                Button {
+                    selectedCategory = category.id
+                } label: {
                     Text(category.name)
-                        .tag(category.id)
+                        .foregroundStyle(.foreground)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(background.opacity(0.5), in: .rect(cornerRadius: 16))
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 16)
+                                .stroke(.gray.opacity(0.25), lineWidth: 1)
+                        }
                 }
             }
-            .pickerStyle(.inline)
+            .environment(\.lineSpacing, 2)
             .transparentSection()
+            .listRowSeparator(.hidden)
             
             Section {
-                Button("Create") {
+                Button {
                     vm.assignAllocation(selectedCategory) {
                         dismiss()
                     }
+                } label: {
+                    Text("Create")
+                        .semibold()
+                        .foregroundStyle(.foreground)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(.green.opacity(0.25), in: .rect(cornerRadius: 16))
+                    //                        .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 16)
+                                .stroke(.green.opacity(0.5), lineWidth: 1)
+                        }
                 }
-                .semibold()
-                .foregroundStyle(.foreground)
                 .disabled(selectedCategory == -1)
+                .padding(.top)
             }
             .transparentSection()
+            .listRowSeparator(.hidden)
         }
         .navigationTitle("Create allocation")
+        .listStyle(.plain)
         .transparentList()
         .scrollIndicators(.never)
         .task {
