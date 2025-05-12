@@ -27,9 +27,13 @@ struct FileView: View {
         
         VStack {
             if mimeType.contains("directory") {
+#if DEBUG
                 NavigationLink(value: name) {
                     FileCard(file)
                 }
+#else
+                FileCard(file)
+#endif
             } else {
                 Button {
                     qlVM.getFileUrl(name, at: root)

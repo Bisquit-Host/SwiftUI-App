@@ -36,6 +36,8 @@ struct GeneralSettings: View {
             }
 #if DEBUG
             Section("Debug") {
+                Toggle("Dev mode", isOn: $store.devMode)
+                
                 Button("Clear navigation path") {
                     nav.clearNavCache()
                 }

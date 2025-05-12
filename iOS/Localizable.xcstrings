@@ -2449,6 +2449,9 @@
     "Dev" : {
       "shouldTranslate" : false
     },
+    "Dev mode" : {
+
+    },
     "Developer mode" : {
       "localizations" : {
         "nl" : {
