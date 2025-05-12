@@ -25,10 +25,9 @@ struct Settings: View {
                 sheetGuide = true
             }
             
-#warning("tvOS: Map")
-            //                NavigationLink("Map") {
-            //                    MapView()
-            //                }
+            NavigationLink("Best places") {
+                MapView()
+            }
             
             ListLink("Configurations", icon: "externaldrive.badge.plus") {
                 BrowserParent()
