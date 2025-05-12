@@ -19,7 +19,7 @@ struct FileTab: View {
         @Bindable var nav = nav
         
         NavigationStack(path: $nav.folderPath) {
-            List {
+            List {                
                 Section {
                     TextField("Search", text: $vm.searchField)
                         .textFieldStyle(.roundedBorder)
@@ -35,7 +35,7 @@ struct FileTab: View {
             .transparentList()
             .scrollContentBackground(.hidden)
             .navigationDestination(for: String.self) { file in
-                FolderDestination(id, at: root + "/" + file)
+                FolderDestination(id, at: file)
             }
         }
         .navigationTitle("Files")

@@ -18,6 +18,10 @@ struct FolderDestination: View {
         
         List {
             Section {
+                Text(root)
+            }
+            
+            Section {
                 TextField("Search", text: $vm.searchField)
                     .textFieldStyle(.roundedBorder)
             }
