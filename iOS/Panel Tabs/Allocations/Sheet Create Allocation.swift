@@ -8,7 +8,7 @@ struct SheetCreateAllocation: View {
     @State private var selectedCategory = -1
     
     var body: some View {
-        List {
+        ScrollView {
             ForEach(vm.categories) { category in
                 let background: Material = selectedCategory == category.id ? .ultraThickMaterial : .ultraThinMaterial
                 
@@ -16,7 +16,6 @@ struct SheetCreateAllocation: View {
                     selectedCategory = category.id
                 } label: {
                     Text(category.name)
-                        .foregroundStyle(.foreground)
                         .padding()
                         .frame(maxWidth: .infinity)
                         .background(background.opacity(0.5), in: .rect(cornerRadius: 16))
@@ -25,39 +24,32 @@ struct SheetCreateAllocation: View {
                                 .stroke(.gray.opacity(0.25), lineWidth: 1)
                         }
                 }
+                .foregroundStyle(.foreground)
             }
-            .environment(\.lineSpacing, 2)
-            .transparentSection()
-            .listRowSeparator(.hidden)
             
-            Section {
-                Button {
-                    vm.assignAllocation(selectedCategory) {
-                        dismiss()
-                    }
-                } label: {
-                    Text("Create")
-                        .semibold()
-                        .foregroundStyle(.foreground)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(.green.opacity(0.25), in: .rect(cornerRadius: 16))
-                    //                        .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 16)
-                                .stroke(.green.opacity(0.5), lineWidth: 1)
-                        }
+            Button {
+                vm.assignAllocation(selectedCategory) {
+                    dismiss()
                 }
-                .disabled(selectedCategory == -1)
-                .padding(.top)
+            } label: {
+                Text("Create")
+                    .semibold()
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(.green.opacity(0.25), in: .rect(cornerRadius: 16))
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(.green.opacity(0.5), lineWidth: 1)
+                    }
             }
-            .transparentSection()
-            .listRowSeparator(.hidden)
+            .disabled(selectedCategory == -1)
+            .padding(.top)
+            .foregroundStyle(.foreground)
         }
         .navigationTitle("Create allocation")
-        .listStyle(.plain)
-        .transparentList()
         .scrollIndicators(.never)
+        .padding(.horizontal)
+        .transparentList()
         .task {
             vm.fetchCategories()
         }
