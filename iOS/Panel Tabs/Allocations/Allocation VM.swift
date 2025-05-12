@@ -24,8 +24,8 @@ final class AllocationVM {
         }
     }
     
-    func setDefault(_ allocationId: Int) {
-        allocationSetPrimaryAPI(id, allocationId: allocationId) { result in
+    func setDefault(_ allocId: Int) {
+        allocationSetPrimaryAPI(id, allocationId: allocId) { result in
             switch result {
             case .success/*(let model)*/:
                 self.fetchAllocations()
@@ -36,8 +36,8 @@ final class AllocationVM {
         }
     }
     
-    func unassignAllocation(_ allocationId: Int) {
-        allocationDeleteAPI(id, allocationId: allocationId) { result in
+    func unassignAllocation(_ alloсId: Int) {
+        allocationDeleteAPI(id, allocationId: alloсId) { result in
             switch result {
             case .success:
                 self.fetchAllocations()
