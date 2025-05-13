@@ -18,7 +18,7 @@ struct AppSettings: View {
                 }
                 
                 Toggle(isOn: $store.enableGameCenter) {
-                    Label("Game Center", systemImage: "gamecontroller.fill")
+                    Label("Game Center", systemImage: "gamecontroller")
                 }
                 
                 LaunchAtLogin.Toggle()
@@ -36,7 +36,9 @@ struct AppSettings: View {
             }
 #if DEBUG
             Section("Debug") {
-                Toggle("Dev mode", isOn: $store.devMode)
+                Toggle(isOn: $store.devMode) {
+                    Label("Dev mode", systemImage: "hammer")
+                }
                 
                 Button("Clear navigation path") {
                     nav.clearNavCache()
