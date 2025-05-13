@@ -2056,9 +2056,9 @@
 		F3499EF92A277D0F006101B7 /* File Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Tab.swift"; sourceTree = "<group>"; };
 		F3499EFC2A277E3D006101B7 /* File Name And Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Name And Icon.swift"; sourceTree = "<group>"; };
 		F34AD7C62A5493CC007752A7 /* visionOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = visionOS.entitlements; sourceTree = "<group>"; };
-		F34BF0BB2DD07DE00041BE04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F34BF0BB2DD07DE00041BE04 /* QuickLook.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = QuickLook.plist; sourceTree = "<group>"; };
 		F34BF0BD2DD07DE00041BE04 /* Preview VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preview VC.swift"; sourceTree = "<group>"; };
-		F34BF0C02DD07DE00041BE04 /* QuickLook_Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QuickLook_Extension.entitlements; sourceTree = "<group>"; };
+		F34BF0C02DD07DE00041BE04 /* QuickLook.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QuickLook.entitlements; sourceTree = "<group>"; };
 		F34C055C29F151250031ABE1 /* watchOS.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = watchOS.entitlements; sourceTree = "<group>"; };
 		F34F28992ACDAD9B00FD618A /* tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tab.swift; sourceTree = "<group>"; };
 		F350636629DC24AB0010B717 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -3218,8 +3218,8 @@
 			isa = PBXGroup;
 			children = (
 				F34BF0BD2DD07DE00041BE04 /* Preview VC.swift */,
-				F34BF0BB2DD07DE00041BE04 /* Info.plist */,
-				F34BF0C02DD07DE00041BE04 /* QuickLook_Extension.entitlements */,
+				F34BF0BB2DD07DE00041BE04 /* QuickLook.plist */,
+				F34BF0C02DD07DE00041BE04 /* QuickLook.entitlements */,
 			);
 			path = "QuickLook Extension";
 			sourceTree = "<group>";
@@ -7030,12 +7030,12 @@
 		F3310F3E2DD07CA200FA0AEC /* Debug configuration for PBXNativeTarget "QuickLook" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "QuickLook Extension/QuickLook_Extension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "QuickLook Extension/QuickLook.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "QuickLook Extension/Info.plist";
+				INFOPLIST_FILE = "QuickLook Extension/QuickLook.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2025 Bisquit.Host. All rights reserved.";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -7057,12 +7057,12 @@
 		F3310F3F2DD07CA200FA0AEC /* Release configuration for PBXNativeTarget "QuickLook" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "QuickLook Extension/QuickLook_Extension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "QuickLook Extension/QuickLook.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "QuickLook Extension/Info.plist";
+				INFOPLIST_FILE = "QuickLook Extension/QuickLook.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2025 Bisquit.Host. All rights reserved.";
 				LD_RUNPATH_SEARCH_PATHS = (
