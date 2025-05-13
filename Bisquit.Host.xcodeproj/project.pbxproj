@@ -3636,7 +3636,6 @@
 			children = (
 				F33CDBFA2A26A571008D0214 /* Server Card.swift */,
 				F323BF9E2B20B84100116B97 /* Server Card Context Menu.swift */,
-				F3796561295C519C0074CA3D /* Chart View.swift */,
 				F3F2A5BA29AC296D00AD20A4 /* Server Card Suspended.swift */,
 			);
 			path = "Server Card";
@@ -4184,6 +4183,7 @@
 			isa = PBXGroup;
 			children = (
 				F31B444F297550CD0036868F /* Stats Tab.swift */,
+				F3796561295C519C0074CA3D /* Chart View.swift */,
 			);
 			path = Stats;
 			sourceTree = "<group>";

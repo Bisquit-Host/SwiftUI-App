@@ -25,7 +25,7 @@ struct ChartView: View {
     
     var body: some View {
         VStack {
-            Chart(values, id: \.id) { element in
+            Chart(values) { element in
                 //                if store.showRuleMark {
                 //                    RuleMark(y: .value("", max))
                 //                        .foregroundStyle(.red)
