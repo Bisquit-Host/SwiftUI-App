@@ -11,10 +11,11 @@ struct ChartView: View {
     private let max: Double
     private var values: [Value]
     
-    init(_ caption: String,
-         unit: String,
-         max: Double,
-         values: [Value]
+    init(
+        _ caption: String,
+        unit: String,
+        max: Double,
+        values: [Value]
     ) {
         self.caption = caption
         self.unit = unit
