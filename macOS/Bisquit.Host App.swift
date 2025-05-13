@@ -62,7 +62,7 @@ struct BisquitHostApp: App {
 #if os(macOS)
         Settings {
             NavigationStack {
-                GeneralSettings()
+                AppSettings()
             }
             .environmentObject(store)
             .environment(navModel)

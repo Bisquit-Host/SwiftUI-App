@@ -2,7 +2,7 @@ import ScrechKit
 import LaunchAtLogin
 import PteroNet
 
-struct GeneralSettings: View {
+struct AppSettings: View {
     @Environment(NavModel.self) private var nav
     @EnvironmentObject private var store: ValueStore
     
@@ -81,6 +81,6 @@ struct GeneralSettings: View {
 }
 
 #Preview {
-    GeneralSettings()
+    AppSettings()
         .environment(NavModel.shared)
 }

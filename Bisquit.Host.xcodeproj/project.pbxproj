@@ -713,7 +713,7 @@
 		F36B14B52DC63324008C1AF9 /* GameKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14AF2DC63324008C1AF9 /* GameKit.swift */; };
 		F36B14B62DC6334E008C1AF9 /* GameKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14AF2DC63324008C1AF9 /* GameKit.swift */; };
 		F36B14B72DC63369008C1AF9 /* User Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14A82DC632D9008C1AF9 /* User Defaults.swift */; };
-		F36B14BE2DC64D29008C1AF9 /* General Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14BB2DC64D29008C1AF9 /* General Settings.swift */; };
+		F36B14BE2DC64D29008C1AF9 /* App Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14BB2DC64D29008C1AF9 /* App Settings.swift */; };
 		F36B14C52DC64DF2008C1AF9 /* Nav Mode Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14C02DC64DF2008C1AF9 /* Nav Mode Button.swift */; };
 		F36B14C62DC64DF2008C1AF9 /* Nav Mode Picker Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14C22DC64DF2008C1AF9 /* Nav Mode Picker Row.swift */; };
 		F36B14C72DC64DF2008C1AF9 /* Nav Mode Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B14C12DC64DF2008C1AF9 /* Nav Mode Picker.swift */; };
@@ -2109,7 +2109,7 @@
 		F36B14A62DC6325F008C1AF9 /* Sidebar Server Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sidebar Server Card.swift"; sourceTree = "<group>"; };
 		F36B14A82DC632D9008C1AF9 /* User Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Defaults.swift"; sourceTree = "<group>"; };
 		F36B14AF2DC63324008C1AF9 /* GameKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameKit.swift; sourceTree = "<group>"; };
-		F36B14BB2DC64D29008C1AF9 /* General Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "General Settings.swift"; sourceTree = "<group>"; };
+		F36B14BB2DC64D29008C1AF9 /* App Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Settings.swift"; sourceTree = "<group>"; };
 		F36B14C02DC64DF2008C1AF9 /* Nav Mode Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Mode Button.swift"; sourceTree = "<group>"; };
 		F36B14C12DC64DF2008C1AF9 /* Nav Mode Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Mode Picker.swift"; sourceTree = "<group>"; };
 		F36B14C22DC64DF2008C1AF9 /* Nav Mode Picker Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Mode Picker Row.swift"; sourceTree = "<group>"; };
@@ -4118,7 +4118,7 @@
 		F3E08EBA2A2CE6FA00116C1C /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				F36B14BB2DC64D29008C1AF9 /* General Settings.swift */,
+				F36B14BB2DC64D29008C1AF9 /* App Settings.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -6470,7 +6470,7 @@
 				F373CDB52D895419008B64BE /* Log Topbar Card.swift in Sources */,
 				F31F32032D52DB950095DD19 /* Color Theme.swift in Sources */,
 				F35B9F5C2A2DC8D60045D014 /* Nav State.swift in Sources */,
-				F36B14BE2DC64D29008C1AF9 /* General Settings.swift in Sources */,
+				F36B14BE2DC64D29008C1AF9 /* App Settings.swift in Sources */,
 			);
 		};
 		F3E2BEF12C1DA07E00B7A6D4 /* Sources */ = {
