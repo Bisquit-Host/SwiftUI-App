@@ -4,11 +4,11 @@ struct UploadMenu: View {
     @EnvironmentObject private var vm: FileTabVM
     
     @Binding private var image: UIImage?
-    private let root: String
+    private let path: String
     
-    init( _ image: Binding<UIImage?>, at root: String) {
+    init( _ image: Binding<UIImage?>, at path: String) {
         _image = image
-        self.root = root
+        self.path = path
     }
     
     @State private var showFilePicker = false
@@ -52,10 +52,10 @@ struct UploadMenu: View {
         .cameraPicker($showCameraPicker, image: $image)
         .libraryPicker($showImagePicker, title: "Drag & Drop", subtitle: "Tap to add an Image")
         .sheet($vm.sheetPreview) {
-            UploadPreview(urls, at: root)
+            UploadPreview(urls, at: path)
         }
         .sheet($sheetRemoteFile) {
-            SheetRemoteFile(root)
+            SheetRemoteFile(path)
         }
         .fileImporter(isPresented: $showFilePicker, allowedContentTypes: [.item], allowsMultipleSelection: true) { result in
             switch result {
