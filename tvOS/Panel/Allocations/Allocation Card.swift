@@ -10,6 +10,10 @@ struct AllocationCard: View {
         self.allocation = allocation
     }
     
+    private var ip: String {
+        allocation.ipAlias ?? allocation.ip
+    }
+    
     var body: some View {
         Button {
             
@@ -21,11 +25,12 @@ struct AllocationCard: View {
                 }
                 
                 VStack(alignment: .leading) {
-                    if let ipAlias = allocation.ipAlias {
-                        Text(ipAlias + ":\(allocation.port)")
-                    } else {
-                        Text(allocation.ip + ":\(allocation.port)")
-                    }
+                    Text(ip) +
+                    
+                    Text(":")
+                        .foregroundStyle(.secondary) +
+                    
+                    Text(allocation.port)
                     
                     if let notes = allocation.notes {
                         Text(notes)

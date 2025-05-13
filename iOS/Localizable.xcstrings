@@ -35,6 +35,9 @@
       },
       "shouldTranslate" : false
     },
+    ":" : {
+      "shouldTranslate" : false
+    },
     "/%@" : {
       "localizations" : {
         "ru" : {

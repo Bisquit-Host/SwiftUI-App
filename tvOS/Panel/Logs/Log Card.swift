@@ -20,7 +20,7 @@ struct LogCard: View {
                 sheetDetails = true
             }
         } label: {
-            HStack(spacing: 32) {
+            HStack(spacing: 25) {
                 LogCardImage(actor?.image)
                 
                 VStack(alignment: .leading, spacing: 0) {

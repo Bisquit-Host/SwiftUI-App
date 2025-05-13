@@ -20,13 +20,13 @@ struct LogCardImage: View {
         if let image {
             KFImage(URL(string: image))
                 .resizable()
-                .frame(32)
+                .frame(size)
                 .clipShape(.circle)
         } else {
             Image(systemName: "pc")
                 .resizable()
                 .scaledToFit()
-                .frame(32)
+                .frame(size)
         }
     }
 }
