@@ -14,7 +14,7 @@ struct AllocationCard: View {
         Button {
             
         } label: {
-            HStack {
+            HStack(spacing: 16) {
                 if allocation.isDefault {
                     Image(systemName: "star.fill")
                         .foregroundStyle(.yellow.gradient)
@@ -29,6 +29,7 @@ struct AllocationCard: View {
                     
                     if let notes = allocation.notes {
                         Text(notes)
+                            .secondary()
                     }
                 }
             }

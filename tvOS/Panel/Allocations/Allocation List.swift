@@ -10,6 +10,8 @@ struct AllocationList: View {
         self.server = server
     }
     
+    @State private var sheetCreate = false
+    
     var body: some View {
         List {
             ForEach(vm.allocations) { allocation in
@@ -18,7 +20,7 @@ struct AllocationList: View {
             
             Section {
                 Button {
-                    vm.assignAllocation()
+                    sheetCreate = true
                 } label: {
                     Label("Assign allocation", systemImage: "plus")
                 }
@@ -29,6 +31,9 @@ struct AllocationList: View {
         .animation(.default, value: vm.allocations.count)
         .task {
             vm.fetchAllocations()
+        }
+        .sheet($sheetCreate) {
+            SheetCreateAllocation()
         }
     }
 }

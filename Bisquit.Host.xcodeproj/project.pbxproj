@@ -467,6 +467,7 @@
 		F335CA0B2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */; };
 		F335CA0C2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */; };
 		F335CA1B2C63E9A7006C71C6 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = F335CA1A2C63E9A7006C71C6 /* DeviceKit */; };
+		F335F6E52DD324BD00D743FF /* Sheet Create Allocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335F6E42DD324BD00D743FF /* Sheet Create Allocation.swift */; };
 		F336232F2A22021E006A6271 /* Value Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* Value Store.swift */; };
 		F33623302A220277006A6271 /* Panel Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3029C06E9700B08696 /* Panel Tab.swift */; };
 		F33623312A22048C006A6271 /* Value Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* Value Store.swift */; };
@@ -2016,6 +2017,7 @@
 		F3310F2D2DD07CA100FA0AEC /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		F3317AE92A45E24F00CA104D /* Guide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guide.swift; sourceTree = "<group>"; };
 		F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dynamic Island Badge.swift"; sourceTree = "<group>"; };
+		F335F6E42DD324BD00D743FF /* Sheet Create Allocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sheet Create Allocation.swift"; sourceTree = "<group>"; };
 		F33712182DC2FD240014B427 /* Panel Section List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Section List.swift"; sourceTree = "<group>"; };
 		F33712192DC2FD240014B427 /* Panel Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Section.swift"; sourceTree = "<group>"; };
 		F337121A2DC2FD240014B427 /* Panel Section Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Section Row.swift"; sourceTree = "<group>"; };
@@ -2641,6 +2643,7 @@
 			children = (
 				F3CCF5C02B34576F005FFF2C /* Allocation List.swift */,
 				F3CCF5C22B345792005FFF2C /* Allocation Card.swift */,
+				F335F6E42DD324BD00D743FF /* Sheet Create Allocation.swift */,
 			);
 			path = Allocations;
 			sourceTree = "<group>";
@@ -4840,6 +4843,7 @@
 				F370804D2A2A1CB60046CE70 /* Section Header.swift in Sources */,
 				F31B4450297550CD0036868F /* Stats Tab.swift in Sources */,
 				F3CCF5B82B345367005FFF2C /* User Image.swift in Sources */,
+				F335F6E52DD324BD00D743FF /* Sheet Create Allocation.swift in Sources */,
 				F300889F2B3A17DE0051476C /* Backup VM.swift in Sources */,
 				F3464D332A863A6600188B0C /* Send Command.swift in Sources */,
 				F370804C2A2A1CAF0046CE70 /* Create Button.swift in Sources */,
