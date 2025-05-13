@@ -14,6 +14,7 @@ struct FileList: View {
         List {
             ForEach(vm.filteredFiles) { file in
                 FileCard(id, file: file, at: root)
+                    .fileContextMenu(id, file: file, at: root)
             }
         }
         .navigationTitle(root)

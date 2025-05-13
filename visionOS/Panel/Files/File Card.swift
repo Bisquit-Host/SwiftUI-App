@@ -1,18 +1,6 @@
 import ScrechKit
 import PteroNet
 
-struct FileLink: Codable, Hashable {
-    let id: String
-    let name: String
-    let root: String
-    
-    init(id: String, name: String, at root: String) {
-        self.id = id
-        self.name = name
-        self.root = root
-    }
-}
-
 struct FileCard: View {
     @EnvironmentObject private var vm: FileTabVM
     @Environment(NavState.self) private var navState
@@ -54,7 +42,7 @@ struct FileCard: View {
                 //            } else if mimeType.contains("video") {
                 //                VideoFile(id, name: name, at: path)
                 
-                let link = FileLink(id: id, name: name, at: root)
+                let link = FileLink(id, name: name, at: root)
                 
                 openWindow(id: "QuickLook", value: link)
             } label: {

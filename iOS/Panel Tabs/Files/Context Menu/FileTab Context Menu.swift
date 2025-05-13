@@ -7,16 +7,16 @@ struct FileTabContextMenu: ViewModifier {
     
     private let id: String
     private let file: FileAttributes
-    private let root: String
+    private let path: String
     
     init(
         _ id: String,
         file: FileAttributes,
-        at root: String
+        at path: String
     ) {
         self.id = id
         self.file = file
-        self.root = root
+        self.path = path
     }
     
     @State private var alertRename = false
@@ -36,11 +36,11 @@ struct FileTabContextMenu: ViewModifier {
                     
                     if mimeType.contains("gzip") {
                         MenuButton("Decompress", icon: "arrow.up.bin") {
-                            vm.fileCompressor(name, at: root, action: .decompress)
+                            vm.fileCompressor(name, at: path, action: .decompress)
                         }
                     } else {
                         MenuButton("Compress", icon: "archivebox") {
-                            vm.fileCompressor(name, at: root, action: .compress)
+                            vm.fileCompressor(name, at: path, action: .compress)
                         }
                     }
                     
@@ -53,13 +53,13 @@ struct FileTabContextMenu: ViewModifier {
                 
                 if !mimeType.contains("directory") {
                     MenuButton("Download", icon: "square.and.arrow.down") {
-                        vm.downloadFile(root + "/" + name)
+                        vm.downloadFile(path + "/" + name)
                     }
                 }
                 
                 if !mimeType.contains("directory") {
                     MenuButton("Duplicate", icon: "plus.square.on.square") {
-                        vm.duplicateFile(name, at: root + "/")
+                        vm.duplicateFile(name, at: path + "/")
                     }
                 }
                 
@@ -70,11 +70,11 @@ struct FileTabContextMenu: ViewModifier {
                 Divider()
                 
                 MenuButton("Delete", role: .destructive, icon: "trash") {
-                    vm.deleteFile(name, at: root)
+                    vm.deleteFile(name, at: path)
                 }
             }
             .sheet($sheetPermissions) {
-                FilePermissionsParent(file, at: root)
+                FilePermissionsParent(file, at: path)
             }
             .alert("Rename \(name)", isPresented: $alertRename) {
                 TextField("I'm not a no-name 😢", text: $vm.newFileName)
@@ -82,7 +82,7 @@ struct FileTabContextMenu: ViewModifier {
                     .limitInputLength($vm.newFileName, length: 255)
                 
                 Button("Rename", role: .destructive) {
-                    vm.renameFile(root, from: name, to: vm.newFileName)
+                    vm.renameFile(path, from: name, to: vm.newFileName)
                     
                     vm.newFileName = ""
                 }
