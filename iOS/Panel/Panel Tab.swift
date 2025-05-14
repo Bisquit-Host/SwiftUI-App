@@ -6,7 +6,6 @@ enum PanelTab: String, CaseIterable, Identifiable, Codable {
          files,
          backups,
          settings,
-         other,
          startup,
          users,
          schedules,
@@ -26,7 +25,6 @@ enum PanelTab: String, CaseIterable, Identifiable, Codable {
         case .files: "Files"
         case .backups: "Backups"
         case .settings: "Settings"
-        case .other: "Other"
         case .startup: "Startup"
         case .users: "Users"
         case .schedules: "Schedules"
