@@ -414,7 +414,6 @@
 		F32F2CDD2D8F7047007CF4DE /* Discover View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CD92D8F7047007CF4DE /* Discover View.swift */; };
 		F32F2CDE2D8F7047007CF4DE /* Discover View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CD92D8F7047007CF4DE /* Discover View.swift */; };
 		F32F2CFD2D908DED007CF4DE /* Background Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F3AAA2D8EB8EC00E69B98 /* Background Image.swift */; };
-		F32F2CFE2D908DED007CF4DE /* Background Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F3AAA2D8EB8EC00E69B98 /* Background Image.swift */; };
 		F32F2D002D908E1D007CF4DE /* Background Image Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CFF2D908E1D007CF4DE /* Background Image Helper.swift */; };
 		F32F2D012D908E1D007CF4DE /* Background Image Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CFF2D908E1D007CF4DE /* Background Image Helper.swift */; };
 		F32F2D022D908E1D007CF4DE /* Background Image Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CFF2D908E1D007CF4DE /* Background Image Helper.swift */; };
@@ -6231,7 +6230,6 @@
 				F3DF03DB2B74F01C00CF6F5E /* Database VM.swift in Sources */,
 				F32716DE2CF62CAB00F2DC31 /* Create Backup Button.swift in Sources */,
 				F3F2BB9D2A5403DD00D44CA6 /* Server List VM.swift in Sources */,
-				F32F2CFE2D908DED007CF4DE /* Background Image.swift in Sources */,
 				F3F2BBAB2A540E4400D44CA6 /* Nav Extension.swift in Sources */,
 				F38928322A445EA900561CDF /* Server Card.swift in Sources */,
 				F3FD9F992C651A9200A69314 /* File Tab VM.swift in Sources */,
