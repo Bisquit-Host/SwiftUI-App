@@ -16,7 +16,7 @@ struct FileCard: View {
                 HStack(spacing: 5) {
                     FileIcon(file.mimetype)
                         .semibold()
-                        .frame(width: 20)
+                        .frame(width: 16)
                     
                     Text(file.name)
                         .lineLimit(3)
