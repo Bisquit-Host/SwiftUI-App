@@ -7,9 +7,9 @@ struct DiscoverModel: Identifiable {
     let subtitle: LocalizedStringKey
     let image: ImageResource
     
-    init(_ title: LocalizedStringKey, subtitle: LocalizedStringKey, img: ImageResource) {
+    init(_ title: LocalizedStringKey, subtitle: LocalizedStringKey, image: ImageResource) {
         self.title = title
         self.subtitle = subtitle
-        self.image = img
+        self.image = image
     }
 }
