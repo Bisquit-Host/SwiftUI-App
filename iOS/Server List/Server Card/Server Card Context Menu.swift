@@ -15,14 +15,14 @@ struct ServerCardContextMenu: View {
     }
     
     private var defaultAllocation: String? {
-        guard let alloc = server.relationships.allocations.data.first(where: {
+        guard let allocation = server.relationships.allocations.data.first(where: {
             $0.attributes.isDefault
         }).map(\.attributes) else {
             return nil
         }
         
-        let ip = alloc.ipAlias ?? alloc.ip
-        return ip + ":" + alloc.port.description
+        let ip = allocation.ipAlias ?? allocation.ip
+        return ip + ":" + String(allocation.port)
     }
     
     var body: some View {
