@@ -33,7 +33,7 @@ struct PanelOrnamentPower: View {
                 .disabled(vm.serverState == .stopping || vm.serverState == .offline)
                 
                 Capsule()
-                    .fill(.primary)
+                    .fill(.tertiary)
                     .frame(width: 4, height: 32)
                 
                 Menu {
