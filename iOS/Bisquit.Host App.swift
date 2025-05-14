@@ -25,7 +25,7 @@ struct BisquitHostApp: App {
     @StateObject private var store = ValueStore()
     private var nav = NavState()
     
-#if os(iOS) || os(tvOS) || os(visionOS)
+#if !os(watchOS)
     @Environment(\.scenePhase) private var phase
 #endif
     
@@ -88,7 +88,7 @@ struct BisquitHostApp: App {
         .modelContainer(container)
         .environmentObject(store)
         .defaultAppStorage(.init(suiteName: "group.Bisquit-host")!)
-#if os(iOS) || os(tvOS) || os(visionOS)
+#if !os(watchOS)
         .onChange(of: phase) { _, newPhase in
             switch newPhase {
             case .background: BackgroundTaskManager.scheduleAppRefresh()
@@ -100,10 +100,6 @@ struct BisquitHostApp: App {
         }
 #endif
         
-#if os(macOS)
-        .windowStyle(.hiddenTitleBar)
-#endif
-        
 #if os(visionOS)
         WindowGroup(id: "console") {
             Text("Console")
@@ -113,14 +109,6 @@ struct BisquitHostApp: App {
             NavigationStack {
                 QuickLookFile($file)
             }
-        }
-#endif
-        
-#if os(macOS)
-        Settings {
-            AppSettings()
-                .environment(navState)
-                .environmentObject(store)
         }
 #endif
     }
