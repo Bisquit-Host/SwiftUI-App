@@ -47,7 +47,7 @@ struct PanelView: View {
                     .environment(databaseVM)
                     .tag(PanelTab.info)
                     .tabItem {
-                        Label("Info", systemImage: "info.circle")
+                        Label("Stats", systemImage: "gauge.open.with.lines.needle.33percent")
                     }
                 
                 FileTab(id)

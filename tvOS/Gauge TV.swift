@@ -11,11 +11,13 @@ struct GaugeTV: View {
     var body: some View {
         HStack(spacing: 0) {
             Text(name.capitalized)
+                .secondary()
             
             Spacer()
             
             Text(parameter)
                 .bold()
+                .monospacedDigit()
         }
         .title3()
         .padding(.horizontal, 30)

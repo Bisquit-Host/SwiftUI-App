@@ -5270,6 +5270,9 @@
         }
       }
     },
+    "Stats" : {
+
+    },
     "Status" : {
       "localizations" : {
         "nl" : {
