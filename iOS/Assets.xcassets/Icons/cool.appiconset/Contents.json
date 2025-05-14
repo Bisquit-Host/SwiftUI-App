@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "пыжикона.png",
+      "filename" : "Cool+ -50%.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -13,7 +13,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "Cool+ (2).png",
+      "filename" : "Cool+ Dark -50%.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -25,7 +25,7 @@
           "value" : "tinted"
         }
       ],
-      "filename" : "Cool+ (2)1.png",
+      "filename" : "Cool+ Tinted copy.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
