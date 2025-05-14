@@ -87,7 +87,7 @@ struct ThreeColumnContentView: View {
             nav.selectedServers = [vm.servers[index + 1]]
             
         case .sectionList:
-            let tabs = PanelTab.allCases
+            let tabs = nav.enabledTabs
             
             guard let selectedTab = nav.selectedTab,
                   let index = tabs.firstIndex(of: selectedTab),
@@ -117,8 +117,8 @@ struct ThreeColumnContentView: View {
             nav.selectedServers = [vm.servers[index - 1]]
             
         case .sectionList:
-            let tabs = PanelTab.allCases
-            
+            let tabs = nav.enabledTabs
+                        
             guard
                 let selectedTab = nav.selectedTab,
                 let index = tabs.firstIndex(of: selectedTab),

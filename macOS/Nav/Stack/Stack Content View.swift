@@ -6,7 +6,7 @@ struct StackContentView: View {
     @State private var sectionsVM = PanelSectionVM()
     @Environment(NavModel.self) private var nav
     @Environment(ServerListVM.self) private var vm
-        
+    
     @State private var sheetCustomization = false
     
     var body: some View {
@@ -30,7 +30,7 @@ struct StackContentView: View {
                 switch route {
                 case .server:
                     List(selection: $nav.selectedTab) {
-                        ForEach(PanelTab.allCases) { tab in
+                        ForEach(nav.enabledTabs) { tab in
                             NavigationLink(tab.name, value: Route.tab(tab))
                         }
                     }

@@ -22,6 +22,21 @@ final class NavModel {
     private static let decoder = JSONDecoder()
     private static let encoder = JSONEncoder()
     
+    let enabledTabs: [PanelTab] = [
+        //                .info,
+        //                .console,
+        .files,
+        .backups,
+        //                .settings,
+        //                .startup,
+            .users,
+        //                .schedules,
+        .databases,
+        .allocations,
+        .logs,
+        .subdomains
+    ]
+    
     /// The URL for the JSON file that stores the server data
     private static var dataURL: URL {
         .cachesDirectory.appending(path: "NavigationData.json")

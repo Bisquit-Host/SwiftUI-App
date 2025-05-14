@@ -3318,16 +3318,7 @@
 			path = Subdomains;
 			sourceTree = "<group>";
 		};
-		F36B14682DC3BC3A008C1AF9 /* Path Nav */ = {
-			isa = PBXGroup;
-			children = (
-				F36B146E2DC3BC3E008C1AF9 /* Nav */,
-				F36B14752DC3BC3E008C1AF9 /* Models */,
-			);
-			path = "Path Nav";
-			sourceTree = "<group>";
-		};
-		F36B146E2DC3BC3E008C1AF9 /* Nav */ = {
+		F36B14682DC3BC3A008C1AF9 /* Nav */ = {
 			isa = PBXGroup;
 			children = (
 				F36B146A2DC3BC3E008C1AF9 /* Content View.swift */,
@@ -3338,6 +3329,7 @@
 				F3ED916D2DC9EC540070320B /* 2 Column */,
 				F3ED916C2DC9EC480070320B /* 3 Column */,
 				F36B14C42DC64DF2008C1AF9 /* Nav Mode */,
+				F36B14752DC3BC3E008C1AF9 /* Models */,
 			);
 			path = Nav;
 			sourceTree = "<group>";
@@ -4096,7 +4088,7 @@
 				F3E08EAB2A2CE17A00116C1C /* macOS.entitlements */,
 				F3E08EA62A2CE17A00116C1C /* Assets.xcassets */,
 				F33DE4E62B35089000E257D8 /* Background Blur.swift */,
-				F36B14682DC3BC3A008C1AF9 /* Path Nav */,
+				F36B14682DC3BC3A008C1AF9 /* Nav */,
 				F3E08EC72A2CEA6F00116C1C /* Intro */,
 				F3E08EB72A2CE6D000116C1C /* Server List */,
 				F3E08ECF2A2CEDF200116C1C /* Panel */,

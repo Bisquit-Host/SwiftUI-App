@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-struct TwoColumnDetailView: View {
+struct ThreeColumnContent: View {
     @Environment(NavModel.self) private var nav
     
     var body: some View {
@@ -13,8 +13,8 @@ struct TwoColumnDetailView: View {
                 ContentUnavailableView("Choose a server", systemImage: "server.rack")
             } else {
                 List(selection: $nav.selectedTab) {
-                    ForEach(PanelTab.allCases) { tab in
-                        NavigationLink(tab.name, value: Route.tab(tab))
+                    ForEach(nav.enabledTabs) { tab in
+                        NavigationLink(tab.name, value: tab)
                     }
                 }
                 .scrollContentBackground(.hidden)
@@ -27,14 +27,8 @@ struct TwoColumnDetailView: View {
     }
 }
 
-//#Preview() {
-//    PanelSectionList()
-//        .environment(ServerListVM())
-//        .environment(NavModel(selectedCategory: .dessert))
-//}
-
 #Preview() {
-    TwoColumnDetailView()
+    ThreeColumnContent()
         .environment(ServerListVM())
         .environment(NavModel(selectedCategory: nil))
 }
