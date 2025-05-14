@@ -408,11 +408,11 @@
 		F32F2CD62D8F6FDC007CF4DE /* Avg Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CD32D8F6FDC007CF4DE /* Avg Color.swift */; };
 		F32F2CD72D8F6FDC007CF4DE /* Avg Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CD32D8F6FDC007CF4DE /* Avg Color.swift */; };
 		F32F2CD82D8F6FDC007CF4DE /* Avg Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CD32D8F6FDC007CF4DE /* Avg Color.swift */; };
-		F32F2CDA2D8F7047007CF4DE /* Discover View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CD92D8F7047007CF4DE /* Discover View.swift */; };
-		F32F2CDB2D8F7047007CF4DE /* Discover View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CD92D8F7047007CF4DE /* Discover View.swift */; };
-		F32F2CDC2D8F7047007CF4DE /* Discover View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CD92D8F7047007CF4DE /* Discover View.swift */; };
-		F32F2CDD2D8F7047007CF4DE /* Discover View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CD92D8F7047007CF4DE /* Discover View.swift */; };
-		F32F2CDE2D8F7047007CF4DE /* Discover View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CD92D8F7047007CF4DE /* Discover View.swift */; };
+		F32F2CDA2D8F7047007CF4DE /* Discover.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CD92D8F7047007CF4DE /* Discover.swift */; };
+		F32F2CDB2D8F7047007CF4DE /* Discover.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CD92D8F7047007CF4DE /* Discover.swift */; };
+		F32F2CDC2D8F7047007CF4DE /* Discover.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CD92D8F7047007CF4DE /* Discover.swift */; };
+		F32F2CDD2D8F7047007CF4DE /* Discover.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CD92D8F7047007CF4DE /* Discover.swift */; };
+		F32F2CDE2D8F7047007CF4DE /* Discover.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CD92D8F7047007CF4DE /* Discover.swift */; };
 		F32F2CFD2D908DED007CF4DE /* Background Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F3AAA2D8EB8EC00E69B98 /* Background Image.swift */; };
 		F32F2D002D908E1D007CF4DE /* Background Image Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CFF2D908E1D007CF4DE /* Background Image Helper.swift */; };
 		F32F2D012D908E1D007CF4DE /* Background Image Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CFF2D908E1D007CF4DE /* Background Image Helper.swift */; };
@@ -2005,7 +2005,7 @@
 		F32F2CC72D8F6FA8007CF4DE /* Discover Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Discover Model.swift"; sourceTree = "<group>"; };
 		F32F2CCD2D8F6FCE007CF4DE /* Discover Card Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Discover Card Layout.swift"; sourceTree = "<group>"; };
 		F32F2CD32D8F6FDC007CF4DE /* Avg Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Avg Color.swift"; sourceTree = "<group>"; };
-		F32F2CD92D8F7047007CF4DE /* Discover View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Discover View.swift"; sourceTree = "<group>"; };
+		F32F2CD92D8F7047007CF4DE /* Discover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Discover.swift; sourceTree = "<group>"; };
 		F32F2CFF2D908E1D007CF4DE /* Background Image Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Background Image Helper.swift"; sourceTree = "<group>"; };
 		F32F3AAA2D8EB8EC00E69B98 /* Background Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Background Image.swift"; sourceTree = "<group>"; };
 		F32F43FD2B7544A200C9470B /* User List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User List.swift"; sourceTree = "<group>"; };
@@ -3737,7 +3737,7 @@
 		F3A80E8529A1973600190EC6 /* Discover */ = {
 			isa = PBXGroup;
 			children = (
-				F32F2CD92D8F7047007CF4DE /* Discover View.swift */,
+				F32F2CD92D8F7047007CF4DE /* Discover.swift */,
 				F32F2CCD2D8F6FCE007CF4DE /* Discover Card Layout.swift */,
 				F32F2CC72D8F6FA8007CF4DE /* Discover Model.swift */,
 				F32F2CD32D8F6FDC007CF4DE /* Avg Color.swift */,
@@ -5132,7 +5132,7 @@
 				F3878ECD2A1BCE5000AD8657 /* Dev Settings.swift in Sources */,
 				F353D4FD2D980A5000EC9F3A /* Server List Tips.swift in Sources */,
 				F3D037022CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift in Sources */,
-				F32F2CDC2D8F7047007CF4DE /* Discover View.swift in Sources */,
+				F32F2CDC2D8F7047007CF4DE /* Discover.swift in Sources */,
 				F3496DC929E00CE70089FC28 /* Create Button.swift in Sources */,
 				F3437CA2297360D30064808F /* Schedule Card.swift in Sources */,
 				F39EA2E52D5D576D00329468 /* Game Center Buttons.swift in Sources */,
@@ -5440,7 +5440,7 @@
 			isa = PBXSourcesBuildPhase;
 			files = (
 				F3FF5A102A4A3ABD003A1973 /* User Card.swift in Sources */,
-				F32F2CDB2D8F7047007CF4DE /* Discover View.swift in Sources */,
+				F32F2CDB2D8F7047007CF4DE /* Discover.swift in Sources */,
 				F3CE5C462D53907E0094BD7B /* Subdomain VM.swift in Sources */,
 				F389BB722A05B61300911EBF /* Credentials View.swift in Sources */,
 				F389BB712A05B60D00911EBF /* Credentials Button.swift in Sources */,
@@ -5761,7 +5761,7 @@
 				F374F7C12D54922F006771DD /* Sheet Create Subdomain.swift in Sources */,
 				F3D295392AF39D1B00ED43A0 /* Value Store.swift in Sources */,
 				F390C74B2DC2AF940069F965 /* Gamepad Debug.swift in Sources */,
-				F32F2CDD2D8F7047007CF4DE /* Discover View.swift in Sources */,
+				F32F2CDD2D8F7047007CF4DE /* Discover.swift in Sources */,
 				F3AF91C72B423535001D8F80 /* SSH List.swift in Sources */,
 				F3D295D22AF3A30400ED43A0 /* Console Tab.swift in Sources */,
 				F3D295B52AF3A15D00ED43A0 /* Design Settings.swift in Sources */,
@@ -6075,7 +6075,7 @@
 				F3A7CF102C8C4C2700413400 /* Server List Filter.swift in Sources */,
 				F32F3AAE2D8EB8EC00E69B98 /* Background Image.swift in Sources */,
 				F3202D2B2D562B9A0030B3CC /* Browser Card Bot.swift in Sources */,
-				F32F2CDE2D8F7047007CF4DE /* Discover View.swift in Sources */,
+				F32F2CDE2D8F7047007CF4DE /* Discover.swift in Sources */,
 				F36B14B02DC63324008C1AF9 /* GameKit.swift in Sources */,
 				F3AB1DF52D79C42B00387164 /* MetricKit Manager.swift in Sources */,
 				F3A7CEEA2C8BB74D00413400 /* Server List Grid.swift in Sources */,
@@ -6294,7 +6294,7 @@
 				F39E683B2D2D67A70002BA96 /* New Schedule Sheet.swift in Sources */,
 				F373CDB22D895419008B64BE /* Log Topbar.swift in Sources */,
 				F373CDB32D895419008B64BE /* Log Topbar Card.swift in Sources */,
-				F32F2CDA2D8F7047007CF4DE /* Discover View.swift in Sources */,
+				F32F2CDA2D8F7047007CF4DE /* Discover.swift in Sources */,
 				F335F6E72DD3564A00D743FF /* File Link.swift in Sources */,
 				F32FD7182B1E042500723B88 /* Websocket.swift in Sources */,
 				F32F2CD22D8F6FCE007CF4DE /* Discover Card Layout.swift in Sources */,

@@ -146,9 +146,7 @@ struct Discover: View {
                     )
                 }
             }
-#if os(visionOS)
             .padding(.vertical)
-#endif
         }
 #if os(visionOS)
         .buttonBorderShape(.roundedRectangle(radius: 27))
