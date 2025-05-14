@@ -31,15 +31,15 @@ struct ServerCardContextMenu: View {
         if !server.isSuspended {
             ControlGroup {
                 MenuButton("Start", icon: "play") {
-                    PteroNet.powerSignal(id, signal: .start)
+                    PteroNet.powerSignal(id, do: .start)
                 }
                 
                 MenuButton("Stop", icon: "pause") {
-                    PteroNet.powerSignal(id, signal: .stop)
+                    PteroNet.powerSignal(id, do: .stop)
                 }
                 
                 MenuButton("Restart", icon: "arrow.triangle.2.circlepath") {
-                    PteroNet.powerSignal(id, signal: .restart)
+                    PteroNet.powerSignal(id, do: .restart)
                 }
                 
                 MenuButton("Kill", role: .destructive, icon: "power") {

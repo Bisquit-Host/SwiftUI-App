@@ -35,7 +35,7 @@ struct ChangePower: AppIntent, PredictableIntent {
         default:       .start
         }
         
-        PteroNet.powerSignal(id, signal: powerSignal)
+        PteroNet.powerSignal(id, do: powerSignal)
         
         return .result()
     }
