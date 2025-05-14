@@ -9,7 +9,7 @@ struct DiscoverCardLayout: View {
     
     private var screenWidth: CGFloat {
 #if os(visionOS)
-        100
+        500
 #else
         if UIDevice.current.userInterfaceIdiom == .pad {
             380

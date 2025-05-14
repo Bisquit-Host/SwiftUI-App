@@ -22,7 +22,7 @@ struct Discover: View {
     
     private var screenWidth: CGFloat {
 #if os(visionOS)
-        100
+        500
 #else
         switch UIDevice.current.userInterfaceIdiom {
         case .pad: 380
@@ -146,8 +146,14 @@ struct Discover: View {
                     )
                 }
             }
+#if os(visionOS)
             .padding(.vertical)
+#endif
         }
+#if os(visionOS)
+        .buttonBorderShape(.roundedRectangle(radius: 27))
+        .buttonStyle(.plain)
+#endif
         .ignoresSafeArea()
         .transparentList()
         .foregroundStyle(.foreground)
