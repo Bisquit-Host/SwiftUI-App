@@ -127,7 +127,7 @@ struct MapSection: View {
     }
     
     private func location(_ node: String) {
-        let scaleMeters = isMoscow ? 25000.0 : 12000.0
+        let scaleMeters = isMoscow ? 25000.0 : 12000
         let center: CLLocationCoordinate2D
         
         if isMoscow {
@@ -152,6 +152,7 @@ struct MapSection: View {
     }
 }
 
-//#Preview {
-//    MapSection()
-//}
+#Preview {
+    MapSection(nil, node: "Fabric")
+        .darkSchemePreferred()
+}
