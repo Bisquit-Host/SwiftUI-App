@@ -580,6 +580,10 @@
 		F3499EFA2A277D0F006101B7 /* File Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3499EF92A277D0F006101B7 /* File Tab.swift */; };
 		F3499EFD2A277E3D006101B7 /* File Name And Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3499EFC2A277E3D006101B7 /* File Name And Icon.swift */; };
 		F3499EFE2A277FDF006101B7 /* File Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266A929D71A1B005FD103 /* File Icon.swift */; };
+		F34AEF4F2DD603C600909562 /* Discover.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F34AEF4E2DD602A900909562 /* Discover.xcassets */; };
+		F34AEF502DD603C600909562 /* Discover.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F34AEF4E2DD602A900909562 /* Discover.xcassets */; };
+		F34AEF512DD603C600909562 /* Discover.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F34AEF4E2DD602A900909562 /* Discover.xcassets */; };
+		F34AEF522DD603CC00909562 /* Discover.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F34AEF4E2DD602A900909562 /* Discover.xcassets */; };
 		F34BF0C52DD07DE00041BE04 /* Preview VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34BF0BD2DD07DE00041BE04 /* Preview VC.swift */; };
 		F34C055A29F11E010031ABE1 /* Server Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* Server Card VM.swift */; };
 		F34F289A2ACDAD9B00FD618A /* tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34F28992ACDAD9B00FD618A /* tab.swift */; };
@@ -2056,6 +2060,7 @@
 		F3499EF92A277D0F006101B7 /* File Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Tab.swift"; sourceTree = "<group>"; };
 		F3499EFC2A277E3D006101B7 /* File Name And Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Name And Icon.swift"; sourceTree = "<group>"; };
 		F34AD7C62A5493CC007752A7 /* visionOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = visionOS.entitlements; sourceTree = "<group>"; };
+		F34AEF4E2DD602A900909562 /* Discover.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Discover.xcassets; sourceTree = "<group>"; };
 		F34BF0BB2DD07DE00041BE04 /* QuickLook.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = QuickLook.plist; sourceTree = "<group>"; };
 		F34BF0BD2DD07DE00041BE04 /* Preview VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preview VC.swift"; sourceTree = "<group>"; };
 		F34BF0C02DD07DE00041BE04 /* QuickLook.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QuickLook.entitlements; sourceTree = "<group>"; };
@@ -2792,6 +2797,7 @@
 				F304498629E98AE4006DC0C7 /* iOS.entitlements */,
 				F36797722A39C4ED009F2788 /* Localizable.xcstrings */,
 				F31BA52A2958FF7D0006D126 /* Assets.xcassets */,
+				F34AEF4E2DD602A900909562 /* Discover.xcassets */,
 				F378E3322AF38286009925DB /* PrivacyInfo.xcprivacy */,
 				F3ADA61C2D9C16AC00F2DAA6 /* Loc Logs.txt */,
 				F31BA580295901400006D126 /* Intro */,
@@ -4742,6 +4748,7 @@
 			isa = PBXResourcesBuildPhase;
 			files = (
 				F3E6FC432A1E677000410C7C /* Bisquits.sks in Resources */,
+				F34AEF4F2DD603C600909562 /* Discover.xcassets in Resources */,
 				F36797732A39C4ED009F2788 /* Localizable.xcstrings in Resources */,
 				F378E3332AF3835A009925DB /* PrivacyInfo.xcprivacy in Resources */,
 				F31BA52B2958FF7D0006D126 /* Assets.xcassets in Resources */,
@@ -4759,6 +4766,7 @@
 			isa = PBXResourcesBuildPhase;
 			files = (
 				F3E6FC442A1E677000410C7C /* Bisquits.sks in Resources */,
+				F34AEF502DD603C600909562 /* Discover.xcassets in Resources */,
 				F36797742A39C4ED009F2788 /* Localizable.xcstrings in Resources */,
 				F378E3382AF3835E009925DB /* PrivacyInfo.xcprivacy in Resources */,
 				F36A0F312A167D5F00696207 /* Assets.xcassets in Resources */,
@@ -4792,11 +4800,13 @@
 			files = (
 				F3C3BDB82C92BE9B00BF91EE /* Assets.xcassets in Resources */,
 				F3A7CED02C8B685600413400 /* Assets.xcassets in Resources */,
+				F34AEF512DD603C600909562 /* Discover.xcassets in Resources */,
 			);
 		};
 		F3BD76F02A43C890003E7385 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
+				F34AEF522DD603CC00909562 /* Discover.xcassets in Resources */,
 				F378E3372AF3835D009925DB /* PrivacyInfo.xcprivacy in Resources */,
 				F389281F2A43CB2600561CDF /* Localizable.xcstrings in Resources */,
 				F3BD76FD2A43C892003E7385 /* Assets.xcassets in Resources */,
