@@ -11,9 +11,14 @@ struct MapSection: View {
         self.node = node
     }
     
-    private let timer = Timer.publish(every: 1, on: .main, in: .default).autoconnect()
+    private let timer = Timer.publish(
+        every: 1,
+        on: .main,
+        in: .default
+    ).autoconnect()
     
     @State private var ping: Int?
+    
     @State private var cameraPosition: MapCameraPosition = .region(
         .init(
             center: .init(
