@@ -3057,6 +3057,7 @@
       }
     },
     "Grid layout" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {

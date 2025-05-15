@@ -16,10 +16,6 @@ struct SettingsButton: View {
         @Bindable var vm = vm
         
         Menu {
-            Section {
-                TopbarGridButton()
-            }
-            
             if keys.count > 0 {
                 MenuButton("Switch account", icon: "chevron.up.chevron.down") {
                     vm.sheetKeyStorage = true
