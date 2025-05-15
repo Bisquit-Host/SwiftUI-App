@@ -2,12 +2,11 @@ import ScrechKit
 import PteroNet
 import Kingfisher
 
-struct FileTabContextMenu: ViewModifier {
+struct FileContextMenu: ViewModifier {
     @EnvironmentObject private var vm: FileTabVM
     
-    private let id: String
+    private let id, path: String
     private let file: FileAttributes
-    private let path: String
     
     init(
         _ id: String,
@@ -22,40 +21,20 @@ struct FileTabContextMenu: ViewModifier {
     @State private var alertRename = false
     @State private var sheetPermissions = false
     
+    private var name: String {
+        file.name
+    }
+    
+    private var mimeType: String {
+        file.mimetype
+    }
+    
     func body(content: Content) -> some View {
-        let mimeType = file.mimetype
-        let name = file.name
-        
         content
             .contextMenu {
-                ControlGroup {
-                    MenuButton("Rename", icon: "pencil") {
-                        vm.newFileName = ""
-                        alertRename = true
-                    }
-                    
-                    if mimeType.contains("gzip") {
-                        MenuButton("Decompress", icon: "arrow.up.bin") {
-                            vm.fileCompressor(name, at: path, action: .decompress)
-                        }
-                    } else {
-                        MenuButton("Compress", icon: "archivebox") {
-                            vm.fileCompressor(name, at: path, action: .compress)
-                        }
-                    }
-                    
-                    if !mimeType.contains("directory") {
-                        ShareLink(item: vm.downloadUrl) {
-                            Label("Share", systemImage: "square.and.arrow.up")
-                        }
-                    }
-                }
+                RenameButton()
                 
-                if !mimeType.contains("directory") {
-                    MenuButton("Download", icon: "square.and.arrow.down") {
-                        vm.downloadFile(path + "/" + name)
-                    }
-                }
+                CompressButton()
                 
                 if !mimeType.contains("directory") {
                     MenuButton("Duplicate", icon: "plus.square.on.square") {
@@ -65,6 +44,18 @@ struct FileTabContextMenu: ViewModifier {
                 
                 MenuButton("Permissions", icon: "lock.doc") {
                     sheetPermissions = true
+                }
+                
+                Divider()
+                
+                if !mimeType.contains("directory") {
+                    MenuButton("Download", icon: "square.and.arrow.down") {
+                        vm.downloadFile(path + "/" + name)
+                    }
+                }
+                
+                if !mimeType.contains("directory") {
+                    ShareButton()
                 }
                 
                 Divider()
@@ -88,6 +79,29 @@ struct FileTabContextMenu: ViewModifier {
                 }
             }
     }
+    
+    private func RenameButton() -> some View {
+        MenuButton("Rename", icon: "pencil") {
+            vm.newFileName = ""
+            alertRename = true
+        }
+    }
+    
+    private func CompressButton() -> some View {
+        if mimeType.contains("gzip") {
+            MenuButton("Decompress", icon: "arrow.up.bin") {
+                vm.fileCompressor(name, at: path, do: .decompress)
+            }
+        } else {
+            MenuButton("Compress", icon: "archivebox") {
+                vm.fileCompressor(name, at: path, do: .compress)
+            }
+        }
+    }
+    
+    private func ShareButton() -> some View {
+        ShareLink(item: vm.downloadUrl)
+    }
 }
 
 extension View {
@@ -96,7 +110,7 @@ extension View {
         file: FileAttributes,
         at root: String
     ) -> some View {
-        self.modifier(FileTabContextMenu(
+        self.modifier(FileContextMenu(
             id,
             file: file,
             at: root

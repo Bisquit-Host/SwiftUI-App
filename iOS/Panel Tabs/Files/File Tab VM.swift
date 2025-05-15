@@ -277,9 +277,14 @@ final class FileTabVM: ObservableObject {
     func fileCompressor(
         _ file: String,
         at path: String,
-        action: CompressorActions
+        do action: CompressorActions
     ) {
-        fileCompressorAPI(id, file: file, at: path, do: action) { result in
+        fileCompressorAPI(
+            id,
+            file: file,
+            at: path,
+            do: action
+        ) { result in
             switch result {
             case .success:
                 self.fetchFiles(path)

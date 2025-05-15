@@ -5107,22 +5107,6 @@
       },
       "shouldTranslate" : false
     },
-    "Share" : {
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Delen"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Поделиться"
-          }
-        }
-      }
-    },
     "Share..." : {
       "localizations" : {
         "ru" : {
