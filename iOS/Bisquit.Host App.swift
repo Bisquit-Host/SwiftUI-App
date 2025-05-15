@@ -111,26 +111,27 @@ struct BisquitHostApp: App {
 #endif
     
     private func setupGameCenter() {
-        if ValueStore().enableGameCenter {
-#if os(watchOS)
-            GKLocalPlayer.local.authenticateHandler = { error in
-                guard error == nil else {
-                    print(error?.localizedDescription ?? "Game Center authentication failed")
-                    return
-                }
-                
-                print("Game Center authenticated")
-            }
-#else
-            GKLocalPlayer.local.authenticateHandler = { _, error in
-                guard error == nil else {
-                    print(error?.localizedDescription ?? "Game Center authentication failed")
-                    return
-                }
-                
-                print("Game Center authenticated")
-            }
-#endif
+        guard ValueStore().enableGameCenter else {
+            return
         }
+#if os(watchOS)
+        GKLocalPlayer.local.authenticateHandler = { error in
+            guard error == nil else {
+                print(error?.localizedDescription ?? "Game Center authentication failed")
+                return
+            }
+            
+            print("Game Center authenticated")
+        }
+#else
+        GKLocalPlayer.local.authenticateHandler = { _, error in
+            guard error == nil else {
+                print(error?.localizedDescription ?? "Game Center authentication failed")
+                return
+            }
+            
+            print("Game Center authenticated")
+        }
+#endif
     }
 }
