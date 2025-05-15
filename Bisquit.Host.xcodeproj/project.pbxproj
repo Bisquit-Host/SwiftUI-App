@@ -413,7 +413,6 @@
 		F32F2CDC2D8F7047007CF4DE /* Discover.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CD92D8F7047007CF4DE /* Discover.swift */; };
 		F32F2CDD2D8F7047007CF4DE /* Discover.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CD92D8F7047007CF4DE /* Discover.swift */; };
 		F32F2CDE2D8F7047007CF4DE /* Discover.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CD92D8F7047007CF4DE /* Discover.swift */; };
-		F32F2CFD2D908DED007CF4DE /* Background Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F3AAA2D8EB8EC00E69B98 /* Background Image.swift */; };
 		F32F2D002D908E1D007CF4DE /* Background Image Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CFF2D908E1D007CF4DE /* Background Image Helper.swift */; };
 		F32F2D012D908E1D007CF4DE /* Background Image Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CFF2D908E1D007CF4DE /* Background Image Helper.swift */; };
 		F32F2D022D908E1D007CF4DE /* Background Image Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CFF2D908E1D007CF4DE /* Background Image Helper.swift */; };
@@ -584,6 +583,12 @@
 		F34AEF502DD603C600909562 /* Discover.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F34AEF4E2DD602A900909562 /* Discover.xcassets */; };
 		F34AEF512DD603C600909562 /* Discover.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F34AEF4E2DD602A900909562 /* Discover.xcassets */; };
 		F34AEF522DD603CC00909562 /* Discover.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F34AEF4E2DD602A900909562 /* Discover.xcassets */; };
+		F34AEF542DD640F900909562 /* Guide.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F34AEF532DD640F900909562 /* Guide.xcassets */; };
+		F34AEF552DD6411300909562 /* Guide.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F34AEF532DD640F900909562 /* Guide.xcassets */; };
+		F34AEF562DD6411300909562 /* Guide.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F34AEF532DD640F900909562 /* Guide.xcassets */; };
+		F34AEF572DD6413200909562 /* Guide.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F34AEF532DD640F900909562 /* Guide.xcassets */; };
+		F34AEF582DD6413200909562 /* Guide.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F34AEF532DD640F900909562 /* Guide.xcassets */; };
+		F34AEF592DD6413200909562 /* Guide.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F34AEF532DD640F900909562 /* Guide.xcassets */; };
 		F34BF0C52DD07DE00041BE04 /* Preview VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34BF0BD2DD07DE00041BE04 /* Preview VC.swift */; };
 		F34C055A29F11E010031ABE1 /* Server Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* Server Card VM.swift */; };
 		F34F289A2ACDAD9B00FD618A /* tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34F28992ACDAD9B00FD618A /* tab.swift */; };
@@ -2061,6 +2066,7 @@
 		F3499EFC2A277E3D006101B7 /* File Name And Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Name And Icon.swift"; sourceTree = "<group>"; };
 		F34AD7C62A5493CC007752A7 /* visionOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = visionOS.entitlements; sourceTree = "<group>"; };
 		F34AEF4E2DD602A900909562 /* Discover.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Discover.xcassets; sourceTree = "<group>"; };
+		F34AEF532DD640F900909562 /* Guide.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Guide.xcassets; sourceTree = "<group>"; };
 		F34BF0BB2DD07DE00041BE04 /* QuickLook.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = QuickLook.plist; sourceTree = "<group>"; };
 		F34BF0BD2DD07DE00041BE04 /* Preview VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preview VC.swift"; sourceTree = "<group>"; };
 		F34BF0C02DD07DE00041BE04 /* QuickLook.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QuickLook.entitlements; sourceTree = "<group>"; };
@@ -2798,6 +2804,7 @@
 				F36797722A39C4ED009F2788 /* Localizable.xcstrings */,
 				F31BA52A2958FF7D0006D126 /* Assets.xcassets */,
 				F34AEF4E2DD602A900909562 /* Discover.xcassets */,
+				F34AEF532DD640F900909562 /* Guide.xcassets */,
 				F378E3322AF38286009925DB /* PrivacyInfo.xcprivacy */,
 				F3ADA61C2D9C16AC00F2DAA6 /* Loc Logs.txt */,
 				F31BA580295901400006D126 /* Intro */,
@@ -4742,11 +4749,13 @@
 				F36797762A39C4ED009F2788 /* Localizable.xcstrings in Resources */,
 				F39D68132A26373900B9BDFC /* Bisquits.sks in Resources */,
 				F3000E0C295A341100ABD30A /* Assets.xcassets in Resources */,
+				F34AEF582DD6413200909562 /* Guide.xcassets in Resources */,
 			);
 		};
 		F31BA5212958FF7C0006D126 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
+				F34AEF542DD640F900909562 /* Guide.xcassets in Resources */,
 				F3E6FC432A1E677000410C7C /* Bisquits.sks in Resources */,
 				F34AEF4F2DD603C600909562 /* Discover.xcassets in Resources */,
 				F36797732A39C4ED009F2788 /* Localizable.xcstrings in Resources */,
@@ -4765,6 +4774,7 @@
 		F31BA54C2958FFAF0006D126 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
+				F34AEF552DD6411300909562 /* Guide.xcassets in Resources */,
 				F3E6FC442A1E677000410C7C /* Bisquits.sks in Resources */,
 				F34AEF502DD603C600909562 /* Discover.xcassets in Resources */,
 				F36797742A39C4ED009F2788 /* Localizable.xcstrings in Resources */,
@@ -4798,6 +4808,7 @@
 		F3A7CEC12C8B685500413400 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
+				F34AEF562DD6411300909562 /* Guide.xcassets in Resources */,
 				F3C3BDB82C92BE9B00BF91EE /* Assets.xcassets in Resources */,
 				F3A7CED02C8B685600413400 /* Assets.xcassets in Resources */,
 				F34AEF512DD603C600909562 /* Discover.xcassets in Resources */,
@@ -4810,6 +4821,7 @@
 				F378E3372AF3835D009925DB /* PrivacyInfo.xcprivacy in Resources */,
 				F389281F2A43CB2600561CDF /* Localizable.xcstrings in Resources */,
 				F3BD76FD2A43C892003E7385 /* Assets.xcassets in Resources */,
+				F34AEF592DD6413200909562 /* Guide.xcassets in Resources */,
 			);
 		};
 		F3D296052AF3BE5800ED43A0 /* Resources */ = {
@@ -4820,6 +4832,7 @@
 		F3E08E9E2A2CE17800116C1C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
+				F34AEF572DD6413200909562 /* Guide.xcassets in Resources */,
 				F3E08EA72A2CE17A00116C1C /* Assets.xcassets in Resources */,
 				F378E3342AF3835B009925DB /* PrivacyInfo.xcprivacy in Resources */,
 				F38928202A43CB2600561CDF /* Localizable.xcstrings in Resources */,
@@ -4904,7 +4917,6 @@
 				F3AB4A792CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
 				F30088F32B3B475C0051476C /* Startup Card.swift in Sources */,
 				F37061CA29774886009B4067 /* Nav Destinations.swift in Sources */,
-				F32F2CFD2D908DED007CF4DE /* Background Image.swift in Sources */,
 				F3EB09DD2A295F7C0073916A /* Text File VM.swift in Sources */,
 				F3D295162AF396FD00ED43A0 /* Tabs.swift in Sources */,
 				F3CCF5B92B34543B005FFF2C /* User 2Fa.swift in Sources */,
