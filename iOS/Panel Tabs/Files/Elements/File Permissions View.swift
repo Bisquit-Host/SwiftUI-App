@@ -45,24 +45,28 @@ struct FilePermissionsView: View {
         
         List {
             TextField("777", text: $newModeBits)
+                .transparentSection()
             
             Section("System") {
                 Toggle("Read", isOn: $systemRead)
                 Toggle("Write", isOn: $systemWrite)
                 Toggle("Execute", isOn: $systemExecute)
             }
+            .transparentSection()
             
             Section("Admin") {
                 Toggle("Read", isOn: $adminRead)
                 Toggle("Write", isOn: $adminWrite)
                 Toggle("Execute", isOn: $adminExecute)
             }
+            .transparentSection()
             
             Section("Other users") {
                 Toggle("Read", isOn: $otherRead)
                 Toggle("Write", isOn: $otherWrite)
                 Toggle("Execute", isOn: $otherExecute)
             }
+            .transparentSection()
             
             Button {
                 if isDifferent {
@@ -76,11 +80,14 @@ struct FilePermissionsView: View {
                 Text(isDifferent ? "Update \(oldBits) to \(newBits)" : "Cancel")
                     .numericTransition()
                     .animation(.default, value: newMode)
+                    .foregroundStyle(.foreground)
             }
+            .transparentSection()
         }
         .navigationTitle("Permissions")
+        .transparentList()
         .toolbarTitleDisplayMode(.inline)
-        .onChange(of: newMode) { _, newValue in
+        .onChange(of: newMode) {
             newModeBits = newMode
         }
         .onChange(of: newModeBits) { _, newValue in
@@ -130,17 +137,23 @@ struct FilePermissionsView: View {
         otherWrite: Bool,
         otherExecute: Bool
     ) {
-        let permissions = modeBits.compactMap { UInt8(String($0), radix: 8) }
+        let permissions = modeBits.compactMap {
+            UInt8(String($0), radix: 8)
+        }
         
-        func extractPermissions(from value: UInt8) -> (Bool, Bool, Bool) {
+        func extractPermissions(_ value: UInt8) -> (Bool, Bool, Bool) {
             (value & 4 != 0, value & 2 != 0, value & 1 != 0)
         }
         
-        let (systemRead, systemWrite, systemExecute) = extractPermissions(from: permissions[safe: 0] ?? 0)
-        let (adminRead, adminWrite, adminExecute) = extractPermissions(from: permissions[safe: 1] ?? 0)
-        let (otherRead, otherWrite, otherExecute) = extractPermissions(from: permissions[safe: 2] ?? 0)
+        let (systemRead, systemWrite, systemExecute) = extractPermissions(permissions[safe: 0] ?? 0)
+        let (adminRead, adminWrite, adminExecute) = extractPermissions(permissions[safe: 1] ?? 0)
+        let (otherRead, otherWrite, otherExecute) = extractPermissions(permissions[safe: 2] ?? 0)
         
-        return (systemRead, systemWrite, systemExecute, adminRead, adminWrite, adminExecute, otherRead, otherWrite, otherExecute)
+        return (
+            systemRead, systemWrite, systemExecute,
+            adminRead, adminWrite, adminExecute,
+            otherRead, otherWrite, otherExecute
+        )
     }
 }
 
