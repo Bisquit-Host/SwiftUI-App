@@ -43,7 +43,11 @@ struct LogCard: View {
                         LogCardTimestamp(log.timestamp)
                     }
                 }
-                
+#if DEBUG
+                Text(log.event)
+                    .footnote()
+                    .secondary()
+#endif
                 LogCardEvent(log)
             }
             
