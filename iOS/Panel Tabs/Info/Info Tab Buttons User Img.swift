@@ -12,7 +12,7 @@ struct InfoTabButtonsUserImg: View {
         if let url = URL(string: img) {
             KFImage(url)
                 .resizable()
-                .frame(width: 32, height: 32)
+                .frame(32)
                 .clipShape(.circle)
                 .overlay {
                     Circle()

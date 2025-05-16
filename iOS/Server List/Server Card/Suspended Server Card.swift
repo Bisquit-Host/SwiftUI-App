@@ -9,41 +9,18 @@ struct SuspendedServerCard: View {
         self.name = name
     }
     
-    private var rounding: CGFloat {
-        switch store.designCode {
-        case 0: 25
-        default: 16
-        }
-    }
-    
     var body: some View {
-        switch store.designCode {
-        case 0:
-            VStack(spacing: 10) {
-                serverName
-                
-                Image(systemName: "snowflake")
-                    .fontSize(50)
-                    .symbolEffect(.pulse, options: .repeating)
-            }
-            .frame(height: 150)
-            .frame(maxWidth: .infinity)
-            .padding(.horizontal, 10)
-            .background(.ultraThinMaterial, in: .rect(cornerRadius: rounding))
+        HStack {
+            serverName
             
-        default:
-            HStack {
-                serverName
-                
-                Image(systemName: "snowflake")
-                    .largeTitle()
-                    .symbolEffect(.pulse, options: .repeating)
-            }
-            .frame(height: 90)
-            .frame(maxWidth: .infinity)
-            .padding(.horizontal, 10)
-            .background(.ultraThinMaterial, in: .rect(cornerRadius: rounding))
+            Image(systemName: "snowflake")
+                .largeTitle()
+                .symbolEffect(.pulse, options: .repeating)
         }
+        .frame(height: 90)
+        .frame(maxWidth: .infinity)
+        .padding(.horizontal, 10)
+        .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
     }
     
     private var serverName: some View {
@@ -58,5 +35,4 @@ struct SuspendedServerCard: View {
 
 #Preview {
     SuspendedServerCard("Test Server")
-        .environmentObject(ValueStore())
 }

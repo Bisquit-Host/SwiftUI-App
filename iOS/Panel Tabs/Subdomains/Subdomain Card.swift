@@ -28,12 +28,14 @@ struct SubdomainCard: View {
             }
             .foregroundStyle(.foreground)
             .frame(maxWidth: .infinity, alignment: .leading)
+#if os(iOS) || os(macOS)
             .padding()
             .background(.ultraThinMaterial.opacity(0.3), in: .rect(cornerRadius: 16))
             .overlay {
                 RoundedRectangle(cornerRadius: 16)
                     .stroke(.gray.opacity(0.25), lineWidth: 1)
             }
+#endif
         }
         .transparentSection()
         .contextMenu {
@@ -47,7 +49,11 @@ struct SubdomainCard: View {
             }
             
             Button {
+#if os(macOS)
+                NSPasteboard.general.setString(fullDomain, forType: .URL)
+#else
                 UIPasteboard.general.string = fullDomain
+#endif
             } label: {
                 Label("Copy", systemImage: "document.on.document")
             }
@@ -85,11 +91,17 @@ struct SubdomainCard: View {
 }
 
 #Preview {
-    SubdomainCard(.init(
-        id: 0,
-        domain: "goida.host",
-        subdomain: "super",
-        createdAt: ""
-    ))
+    List {
+        SubdomainCard(.init(
+            id: 0,
+            domain: "goida.host",
+            subdomain: "super",
+            createdAt: "Yesterday"
+        ))
+    }
     .environment(SubdomainVM(""))
+#if os(visionOS)
+    .padding()
+    .glassBackgroundEffect()
+#endif
 }

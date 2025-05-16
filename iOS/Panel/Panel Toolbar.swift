@@ -30,7 +30,7 @@ struct PanelToolbarModifier: ViewModifier {
                         } label: {
                             Image(systemName: vm.enableConsoleSearch ? "magnifyingglass.circle.fill" : "magnifyingglass")
                                 .fontSize(16)
-                                .frame(width: 35, height: 35)
+                                .frame(35)
                                 .background(.ultraThinMaterial, in: .circle)
                         }
                         .foregroundStyle(.primary)
@@ -41,7 +41,7 @@ struct PanelToolbarModifier: ViewModifier {
                             Image(systemName: "bold.italic.underline")
                                 .fontSize(10)
                                 .bold()
-                                .frame(width: 35, height: 35)
+                                .frame(35)
                                 .background(.ultraThinMaterial, in: .circle)
                         }
                         .foregroundStyle(.primary)
@@ -68,7 +68,7 @@ struct PanelToolbarModifier: ViewModifier {
                         } label: {
                             Image(systemName: "folder.badge.plus")
                                 .footnote(.bold)
-                                .frame(width: 35, height: 35)
+                                .frame(35)
                                 .background(.ultraThinMaterial, in: .circle)
                         }
                         .foregroundStyle(.primary)
@@ -82,7 +82,7 @@ struct PanelToolbarModifier: ViewModifier {
                     } label: {
                         Image(systemName: "ellipsis")
                             .footnote(.bold)
-                            .frame(width: 35, height: 35)
+                            .frame(35)
                             .background(.ultraThinMaterial, in: .circle)
                     }
                     .foregroundStyle(.primary)

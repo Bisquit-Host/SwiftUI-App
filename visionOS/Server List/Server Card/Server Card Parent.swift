@@ -13,7 +13,7 @@ struct ServerCardParent: View {
     
     var body: some View {
         NavigationLink {
-            PanelView(server.id)
+            PanelView(server)
         } label: {
             ServerCard(server)
         }
@@ -22,7 +22,7 @@ struct ServerCardParent: View {
         }
         .confirmationDialog("Perform kill action", isPresented: $confirmKill, titleVisibility: .visible) {
             Button("Kill", role: .destructive) {
-                PteroNet.powerSignal(server.id, signal: .kill)
+                PteroNet.powerSignal(server.id, do: .kill)
             }
         }
     }

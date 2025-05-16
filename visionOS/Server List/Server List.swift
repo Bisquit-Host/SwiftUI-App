@@ -13,24 +13,25 @@ struct ServerList: View {
     var body: some View {
         @Bindable var vm = vm
         
-        List {
-            Section {
-                TipView(Tip_ServerCardContextMenu())
-                    .tipBackground(.ultraThinMaterial)
-                
-                if vm.hasFrozenServers {
-                    TipView(Tip_SuspendedServer()) { action in
-                        if action.id == "open-billing" {
-                            vm.showBilling = true
-                        }
-                    }
-                    .tipBackground(.ultraThinMaterial)
-                }
-            }
-            .listRowBackground(Color.clear)
+        VStack {
+            TipView(Tip_ServerCardContextMenu())
+                .padding(.horizontal, 25)
+                .tipCornerRadius(14)
             
-            ForEach(vm.filteredServers) { server in
-                ServerCardParent(server)
+            if vm.hasFrozenServers {
+                TipView(Tip_SuspendedServer()) { action in
+                    if action.id == "open-billing" {
+                        vm.showBilling = true
+                    }
+                }
+                .padding(.horizontal, 25)
+                .tipCornerRadius(14)
+            }
+            
+            List {
+                ForEach(vm.filteredServers) { server in
+                    ServerCardParent(server)
+                }
             }
         }
         .navigationTitle("Server List")
@@ -81,7 +82,7 @@ struct ServerList: View {
                 }
                 
                 Menu {
-                    MenuButton("Switch Account", icon: "arrow.trianglehead.2.clockwise.rotate.90") {
+                    MenuButton("Switch account", icon: "arrow.trianglehead.2.clockwise.rotate.90") {
                         vm.sheetKeyStorage = true
                     }
                     

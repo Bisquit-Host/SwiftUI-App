@@ -2,13 +2,10 @@ import ScrechKit
 import SwiftData
 import TipKit
 import GameKit
+import Algorithms
 
 #if canImport(CoreSpotlight)
 import CoreSpotlight
-#endif
-
-#if canImport(Algorithms)
-import Algorithms
 #endif
 
 #if canImport(SafariCover)
@@ -19,12 +16,16 @@ import SafariCover
 import Pow
 #endif
 
+#if canImport(GaypadKit)
+import GaypadKit
+#endif
+
 @main
 struct BisquitHostApp: App {
     @StateObject private var store = ValueStore()
-    private var navState = NavState()
+    private var nav = NavState()
     
-#if os(iOS) || os(tvOS) || os(visionOS)
+#if !os(watchOS)
     @Environment(\.scenePhase) private var phase
 #endif
     
@@ -53,6 +54,66 @@ struct BisquitHostApp: App {
         _ = MetricKitManager.shared
 #endif
         
+#if !DEBUG
+        setupGameCenter()
+#endif
+    }
+    
+    var body: some Scene {
+        WindowGroup {
+            AppContainer()
+#if canImport(CoreSpotlight) && !os(tvOS)
+                .onContinueUserActivity(CSSearchableItemActionType, perform: handleSpotlightActivity)
+#endif
+        }
+        .environment(nav)
+        .modelContainer(container)
+        .environmentObject(store)
+        .defaultAppStorage(.init(suiteName: "group.Bisquit-host")!)
+#if !os(watchOS)
+        .onChange(of: phase) { _, newPhase in
+            switch newPhase {
+            case .background: BackgroundTaskManager.scheduleAppRefresh()
+            default: break
+            }
+        }
+        .backgroundTask(.appRefresh("host.bisquit.Bisquit-Host.Background-Task")) {
+            ServerListVM().loadServers()
+        }
+#endif
+        
+#if os(visionOS)
+        WindowGroup(id: "console") {
+            Text("Console")
+        }
+        
+        WindowGroup(id: "QuickLook", for: FileLink.self) { $file in
+            NavigationStack {
+                QuickLookFile($file)
+            }
+        }
+#endif
+    }
+    
+#if canImport(CoreSpotlight) && !os(tvOS)
+    private func handleSpotlightActivity(_ activity: NSUserActivity) {
+        guard
+            let id = activity.userInfo?[CSSearchableItemActivityIdentifier] as? String
+        else {
+            return
+        }
+#if !os(macOS) && !os(visionOS)
+        delay(0.4) {
+            nav.navigate(.toPanel(id))
+        }
+#endif
+    }
+#endif
+    
+    private func setupGameCenter() {
+        guard ValueStore().enableGameCenter else {
+            return
+        }
 #if os(watchOS)
         GKLocalPlayer.local.authenticateHandler = { error in
             guard error == nil else {
@@ -73,68 +134,4 @@ struct BisquitHostApp: App {
         }
 #endif
     }
-    
-    var body: some Scene {
-        WindowGroup {
-            AppContainer()
-#if canImport(CoreSpotlight) && !os(tvOS)
-                .onContinueUserActivity(CSSearchableItemActionType, perform: handleSpotlightActivity)
-#endif
-        }
-        .environment(navState)
-        .modelContainer(container)
-        .environmentObject(store)
-        .defaultAppStorage(.init(suiteName: "group.Bisquit-host")!)
-#if os(iOS) || os(tvOS) || os(visionOS)
-        .onChange(of: phase) { _, newPhase in
-            switch newPhase {
-            case .background: BackgroundTaskManager.scheduleAppRefresh()
-            default: break
-            }
-        }
-        .backgroundTask(.appRefresh("host.bisquit.Bisquit-Host.Background-Task")) {
-            ServerListVM().loadServers()
-        }
-#endif
-        
-#if os(macOS)
-        .windowStyle(.hiddenTitleBar)
-#endif
-        
-#if os(visionOS)
-        WindowGroup(id: "console") {
-            Text("Console")
-        }
-        
-        WindowGroup(id: "QuickLook", for: FileLink.self) { $file in
-            NavigationStack {
-                QuickLookFile($file)
-            }
-        }
-#endif
-        
-#if os(macOS)
-        Settings {
-            AppSettings()
-                .environment(navState)
-                .environmentObject(store)
-        }
-#endif
-    }
-    
-#if canImport(CoreSpotlight) && !os(tvOS)
-    private func handleSpotlightActivity(_ activity: NSUserActivity) {
-        guard
-            let id = activity.userInfo?[CSSearchableItemActivityIdentifier] as? String
-        else {
-            return
-        }
-        
-#if !os(macOS)
-        delay(0.4) {
-            navState.navigate(.toPanel(id))
-        }
-#endif
-    }
-#endif
 }

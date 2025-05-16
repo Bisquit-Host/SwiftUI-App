@@ -23,7 +23,7 @@ struct AuthView: View {
             //                image
             //                    .resizable()
             //                    .frame(depth: 32)
-            //                    .frame(width: 300, height: 300)
+            //                    .frame(300)
             //            } placeholder: {
             //                ProgressView()
             //            }

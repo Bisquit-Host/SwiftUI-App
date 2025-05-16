@@ -16,7 +16,7 @@ struct CreateBackupButton: View {
         .disabled(vm.backups.count >= backupLimit)
         .foregroundStyle(.foreground)
 #if os(tvOS)
-        .buttonStyle(.bordered)
+        .buttonStyle(.borderedProminent)
 #endif
     }
 }

@@ -12,7 +12,7 @@
 //        ZStack {
 //            Image(image)
 //                .resizable()
-//                .frame(width: 64, height: 64)
+//                .frame(64)
 //            
 //            Text
 //                .footnote()

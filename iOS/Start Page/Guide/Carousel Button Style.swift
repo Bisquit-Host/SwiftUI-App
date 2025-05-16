@@ -8,7 +8,7 @@ struct CarouselButtonStyle: ButtonStyle {
             Circle()
                 .fill(.ultraThinMaterial.shadow(.inner(
                     radius: configuration.isPressed ? 3 : 0)))
-                .frame(width: 44, height: 44)
+                .frame(44)
             
             configuration.label
                 .labelStyle(.iconOnly)

@@ -247,188 +247,6 @@ final class AudioRecorder {
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>55</string>
-					<key>StartingColumnNumber</key>
-					<string>10</string>
-					<key>StartingLineNumber</key>
-					<string>54</string>
-					<key>Timestamp</key>
-					<string>713730780.890447</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>iOS/Settings/Account/List Keys.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>()
-</string>
-				<key>leading</key>
-				<string>
-#Preview {
-    ApikeyList</string>
-				<key>trailing</key>
-				<string>        .sheet(.constant(true)) {
-            ApikeyList()
-        }
-</string>
-			</dict>
-			<key>title</key>
-			<string>Preview</string>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
-					<string>3</string>
-					<key>StartingColumnNumber</key>
-					<string>43</string>
-					<key>StartingLineNumber</key>
-					<string>2</string>
-					<key>Timestamp</key>
-					<string>713732473.273128</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>iOS/Networking/iCloud Storage.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>
-</string>
-				<key>leading</key>
-				<string>import Foundation
-
-func syncWithCloud(_ keys: [String] = []) {</string>
-				<key>trailing</key>
-				<string>    Keychain.saveArray(key: "apiKeys", value: keys)
-}
-
-</string>
-			</dict>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
-					<string>33</string>
-					<key>StartingColumnNumber</key>
-					<string>7</string>
-					<key>StartingLineNumber</key>
-					<string>32</string>
-					<key>Timestamp</key>
-					<string>713786963.255563</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>watchOS/Server List/ServerList View.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>   }
-</string>
-				<key>leading</key>
-				<string>    //            model.fetchServers(settings.adminServerList)
-    //        }
-    // </string>
-				<key>trailing</key>
-				<string>    
-    var body: some View {
-        @Bindable var binding = model
-</string>
-			</dict>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
-					<string>47</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
-					<key>StartingLineNumber</key>
-					<string>46</string>
-					<key>Timestamp</key>
-					<string>716199116.174304</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>watchOS/Server List/ServerList View.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>        //        .searchable(text: $binding.searchField)
-</string>
-				<key>leading</key>
-				<string>        .navigationTitle("Bisquit.Host")
-        .navigationBarBackButtonHidden()
-</string>
-				<key>trailing</key>
-				<string>        .task {
-            model.fetchServers(settings.adminServerList)
-        }
-</string>
-			</dict>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
 					<string>54</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
@@ -688,93 +506,6 @@ func syncWithCloud(_ keys: [String] = []) {</string>
         "files": .fileManager,
         "": .info
 </string>
-			</dict>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
-					<string>10</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
-					<key>StartingLineNumber</key>
-					<string>9</string>
-					<key>Timestamp</key>
-					<string>721601929.8081141</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>iOS/Bisquit Host App.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>#if os(iOS)
-</string>
-				<key>leading</key>
-				<string>    private var navState = NavState()
-    
-</string>
-				<key>trailing</key>
-				<string>    private var network = NetworkVM()
-#endif
-    
-</string>
-			</dict>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
-					<string>66</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
-					<key>StartingLineNumber</key>
-					<string>65</string>
-					<key>Timestamp</key>
-					<string>754185870.348538</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>iOS/Settings Storage.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>}
-</string>
-				<key>leading</key>
-				<string>        }
-    }
-</string>
-				<key>trailing</key>
-				<string></string>
 			</dict>
 			<key>type</key>
 			<string>bookmark</string>
@@ -1095,6 +826,51 @@ func syncWithCloud(_ keys: [String] = []) {</string>
 			</dict>
 			<key>title</key>
 			<string>Spacers</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>20</string>
+					<key>StartingColumnNumber</key>
+					<string>49</string>
+					<key>StartingLineNumber</key>
+					<string>19</string>
+					<key>Timestamp</key>
+					<string>768569234.85912</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>iMessage Extension/Server List/Server List.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>
+</string>
+				<key>leading</key>
+				<string>        }
+        .navigationBarBackButtonHidden()
+        //        .searchable(text: $searchField)</string>
+				<key>trailing</key>
+				<string>        //        .background(BisquitFall())
+        .refreshableTask {
+            vm.fetchServers(store.adminServerList)
+</string>
+			</dict>
 			<key>type</key>
 			<string>bookmark</string>
 		</dict>

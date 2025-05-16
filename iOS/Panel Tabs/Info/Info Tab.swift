@@ -13,30 +13,42 @@ struct InfoTab: View {
     
     init(_ server: ServerAttributes) {
         self.server = server
-        self.serverSettingsVM = ServerSettingsVM(server.id)
-        self.logVM = LogVM(server.id)
-        self.userVM = UsersVM(server.id)
-        self.subdomainVM = SubdomainVM(server.id)
+        let id = server.id
+        
+        serverSettingsVM = ServerSettingsVM(id)
+        logVM = LogVM(id)
+        userVM = UsersVM(id)
+        subdomainVM = SubdomainVM(id)
     }
     
     @State private var sheetCustomization = false
     @State private var selectedImage: UIImage? = nil
     private let width = UIScreen.main.bounds.width
     
+    private var isIpad: Bool {
+        UIDevice.current.userInterfaceIdiom == .pad
+    }
+    
+    private var allocations: [AllocationAttributes] {
+        server.relationships.allocations.data.map(\.attributes)
+    }
+    
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 0) {
-                Image(uiImage: selectedImage ?? .darkBackgroundInfo)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: width, height: width)
-                    .clipped()
+                if !isIpad {
+                    Image(uiImage: selectedImage ?? .darkBackgroundInfo)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: width, height: width)
+                        .clipped()
+                }
                 
                 ZStack(alignment: .top) {
                     Image(uiImage: selectedImage ?? .darkBackgroundInfo)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(width: width * 1.1, height: 1000)
+                        .frame(width: width * 1.1, height: 1200)
                         .clipped()
                         .blur(radius: 55, opaque: true)
                         .blur(radius: 10)
@@ -62,7 +74,7 @@ struct InfoTab: View {
                                     .environment(logVM)
                                 
                             case "Subdomains":
-                                InfoTabSubdomains()
+                                InfoTabSubdomains(allocations)
                                     .environment(subdomainVM)
                                 
                             case "Location":
@@ -85,6 +97,7 @@ struct InfoTab: View {
                     }
                     .padding(.horizontal, 10)
                     .frame(width: width)
+                    .offset(y: isIpad ? 160 : 0)
                 }
                 .offset(y: -15) // Border visible if smaller
             }

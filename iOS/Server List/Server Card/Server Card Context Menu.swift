@@ -15,14 +15,14 @@ struct ServerCardContextMenu: View {
     }
     
     private var defaultAllocation: String? {
-        guard let alloc = server.relationships.allocations.data.first(where: {
+        guard let allocation = server.relationships.allocations.data.first(where: {
             $0.attributes.isDefault
         }).map(\.attributes) else {
             return nil
         }
         
-        let ip = alloc.ipAlias ?? alloc.ip
-        return ip + ":" + alloc.port.description
+        let ip = allocation.ipAlias ?? allocation.ip
+        return ip + ":" + String(allocation.port)
     }
     
     var body: some View {
@@ -31,15 +31,15 @@ struct ServerCardContextMenu: View {
         if !server.isSuspended {
             ControlGroup {
                 MenuButton("Start", icon: "play") {
-                    PteroNet.powerSignal(id, signal: .start)
+                    PteroNet.powerSignal(id, do: .start)
                 }
                 
                 MenuButton("Stop", icon: "pause") {
-                    PteroNet.powerSignal(id, signal: .stop)
+                    PteroNet.powerSignal(id, do: .stop)
                 }
                 
                 MenuButton("Restart", icon: "arrow.triangle.2.circlepath") {
-                    PteroNet.powerSignal(id, signal: .restart)
+                    PteroNet.powerSignal(id, do: .restart)
                 }
                 
                 MenuButton("Kill", role: .destructive, icon: "power") {

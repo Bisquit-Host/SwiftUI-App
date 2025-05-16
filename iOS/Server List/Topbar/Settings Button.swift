@@ -16,10 +16,6 @@ struct SettingsButton: View {
         @Bindable var vm = vm
         
         Menu {
-            Section {
-                TopbarGridButton()
-            }
-            
             if keys.count > 0 {
                 MenuButton("Switch account", icon: "chevron.up.chevron.down") {
                     vm.sheetKeyStorage = true
@@ -46,10 +42,13 @@ struct SettingsButton: View {
         } label: {
             Image(systemName: "gear")
                 .footnote(.bold)
-                .frame(width: 35, height: 35)
+                .frame(35)
                 .background(.ultraThinMaterial, in: .circle)
         }
         .foregroundStyle(.foreground)
+        .onGamepadPressed(.menu) {
+            sheetSettings = true
+        }
         .sheet($sheetAccount) {
             AccountParent()
         }

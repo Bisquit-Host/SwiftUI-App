@@ -9,21 +9,21 @@ struct ServerCardContextMenu: View {
     
     var body: some View {
         MenuButton("Start", icon: "play") {
-            PteroNet.powerSignal(id, signal: .start)
+            PteroNet.powerSignal(id, do: .start)
         }
         
         MenuButton("Restart", icon: "arrow.triangle.2.circlepath") {
-            PteroNet.powerSignal(id, signal: .restart)
+            PteroNet.powerSignal(id, do: .restart)
         }
         
         MenuButton("Stop", icon: "pause") {
-            PteroNet.powerSignal(id, signal: .stop)
+            PteroNet.powerSignal(id, do: .stop)
         }
         
         Divider()
         
         MenuButton("Kill", role: .destructive, icon: "xmark") {
-            PteroNet.powerSignal(id, signal: .kill)
+            PteroNet.powerSignal(id, do: .kill)
         }
     }
 }

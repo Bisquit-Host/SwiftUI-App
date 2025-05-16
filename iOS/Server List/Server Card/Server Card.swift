@@ -14,13 +14,7 @@ struct ServerCard: View {
     
     @Namespace private var animation
     private let bounds = UIScreen.main.bounds
-    
-    private var rounding: CGFloat {
-        switch store.designCode {
-        case 0: 25
-        default: 16
-        }
-    }
+    private let rounding = 16.0
     
     private var backgroundColor: Color {
         vm.stateColor.opacity(0.15)
@@ -31,61 +25,29 @@ struct ServerCard: View {
     }
     
     var body: some View {
-        VStack {
-            switch store.designCode {
-            case 0:
-                // Rect
-                VStack {
+            // Wide
+            HStack {
+                VStack(alignment: .leading) {
                     serverName
                     
-                    if vm.stateColor != .red {
-                        HStack(spacing: 20) {
-                            cpuGauge
-                            
-                            ramGauge
-                        }
-                        .matchedEffect("RAM_CPU", in: animation)
-                    }
+                    description
                     
                     diskGauge
                 }
-                .padding(.vertical, 5)
-                .padding(.horizontal, 10)
-                .frame(height: 150)
-                .background(.ultraThinMaterial, in: .rect(cornerRadius: rounding))
-                .background(backgroundColor, in: .rect(cornerRadius: rounding))
                 
-            case 1:
-                // Wide
-                HStack {
-                    VStack(alignment: .leading) {
-                        serverName
+                if vm.stateColor != .red {
+                    HStack(spacing: 16) {
+                        cpuGauge
                         
-                        if !server.description.isEmpty {
-                            description
-                        }
-                        
-                        diskGauge
+                        ramGauge
                     }
-                    
-                    if vm.stateColor != .red {
-                        HStack(spacing: 16) {
-                            cpuGauge
-                            
-                            ramGauge
-                        }
-                        .matchedEffect("RAM_CPU", in: animation)
-                    }
+                    .matchedEffect("RAM_CPU", in: animation)
                 }
-                .frame(height: 100)
-                .padding(.horizontal)
-                .background(.ultraThinMaterial, in: .rect(cornerRadius: rounding))
-                .background(backgroundColor, in: .rect(cornerRadius: rounding))
-                
-            default:
-                EmptyView()
             }
-        }
+            .frame(height: 100)
+            .padding(.horizontal)
+            .background(.ultraThinMaterial, in: .rect(cornerRadius: rounding))
+            .background(backgroundColor, in: .rect(cornerRadius: rounding))
         .task {
             vm.fetchServerUsage()
         }
@@ -100,12 +62,16 @@ struct ServerCard: View {
     }
     
     private var description: some View {
-        Text(server.description)
-            .footnote()
-            .secondary()
-            .foregroundStyle(.foreground)
-            .lineLimit(1)
-            .matchedEffect("description", in: animation)
+        VStack {
+            if !server.description.isEmpty {
+                Text(server.description)
+                    .footnote()
+                    .secondary()
+                    .foregroundStyle(.foreground)
+                    .lineLimit(1)
+            }
+        }
+        .matchedEffect("description", in: animation)
     }
     
     private var diskGauge: some View {

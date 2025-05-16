@@ -30,7 +30,7 @@ struct CacheExpiration: View {
                 
                 Image(systemName: "chevron.forward")
                     .caption2(.bold)
-                    .foregroundStyle(.tertiary)
+                    .tertiary()
             }
         }
         .foregroundStyle(.primary)

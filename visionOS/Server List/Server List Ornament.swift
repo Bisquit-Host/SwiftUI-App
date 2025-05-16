@@ -14,7 +14,7 @@ struct ServerListOrnament: View {
             Button {
                 vm.sheetKeyStorage = true
             } label: {
-                Label("Switch Account", image: "arrow.trianglehead.2.clockwise.rotate.90")
+                Label("Switch account", image: "arrow.trianglehead.2.clockwise.rotate.90")
             }
             
             //            Button {

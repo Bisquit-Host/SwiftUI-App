@@ -26,17 +26,17 @@ struct AppIconCard: View {
                     Image(icon.img)
                         .resizable()
                         .blur(radius: 5)
-                        .frame(width: 70, height: 70)
+                        .frame(70)
                         .matchedEffect("icon", in: animation)
                 }
                 
                 Image(icon.img)
                     .resizable()
-                    .frame(width: 64, height: 64)
+                    .frame(64)
                     .clipShape(.rect(cornerRadius: 10))
                     .padding(.horizontal, 4)
             }
-            .frame(width: 80, height: 90)
+            .frame(70)
         }
     }
 }

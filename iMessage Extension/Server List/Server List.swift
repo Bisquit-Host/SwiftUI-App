@@ -40,8 +40,6 @@ struct ServerList: View {
                     vm.sheetDiscover = true
                 }
                 .padding(.leading)
-                
-                TopbarGridButton()
             }
             
             ToolbarItemGroup(placement: .navigationBarTrailing) {

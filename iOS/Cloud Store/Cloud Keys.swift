@@ -37,6 +37,7 @@ struct CloudKeys: View {
             .transparentList()
             .navigationTitle("Accounts")
             .toolbarTitleDisplayMode(.inline)
+            .scrollIndicators(.never)
             .overlay {
                 if keys.isEmpty {
                     ContentUnavailableView(

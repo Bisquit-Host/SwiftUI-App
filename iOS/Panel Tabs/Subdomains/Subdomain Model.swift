@@ -1,5 +1,3 @@
-import Foundation
-
 struct SubdomainResponse: Decodable {
     let limit: Int
     let domains: [Domain]
@@ -11,11 +9,11 @@ struct Domain: Identifiable, Decodable {
     let domain: String
 }
 
-struct Subdomain: Decodable {
+struct Subdomain: Decodable, Equatable {
     let attributes: SubdomainAttributes
 }
 
-struct SubdomainAttributes: Identifiable, Decodable {
+struct SubdomainAttributes: Identifiable, Decodable, Equatable {
     let id: Int
     let domain, subdomain: String
     let createdAt: String

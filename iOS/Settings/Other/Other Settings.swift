@@ -15,6 +15,8 @@ struct OtherSettings: View {
                 Text(store.showFullFilePath ? "/home/container/folder/example/" : "/folder/example/")
             }
             
+            Toggle("Game Center", isOn: $store.enableGameCenter)
+            
             ListButton("Change language", actionIcon: "globe") {
                 openSettings()
             }

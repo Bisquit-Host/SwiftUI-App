@@ -45,11 +45,11 @@ struct FileContextMenu: ViewModifier {
                 
                 if mimeType.contains("gzip") {
                     MenuButton("Decompress", icon: "arrow.up.bin") {
-                        vm.fileCompressor(name, at: path, action: .decompress)
+                        vm.fileCompressor(name, at: path, do: .decompress)
                     }
                 } else {
                     MenuButton("Compress", icon: "archivebox") {
-                        vm.fileCompressor(name, at: path, action: .compress)
+                        vm.fileCompressor(name, at: path, do: .compress)
                     }
                 }
                 

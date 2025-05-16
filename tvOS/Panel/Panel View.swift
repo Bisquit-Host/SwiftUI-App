@@ -1,4 +1,5 @@
 import ScrechKit
+import PteroNet
 
 struct PanelView: View {
     private var vm: PanelVM
@@ -12,10 +13,13 @@ struct PanelView: View {
     private var allocationVM: AllocationVM
     private var startupVM: StartupVM
     
+    private let server: ServerAttributes
     private let id: String
     
-    init(_ id: String) {
-        self.id = id
+    init(_ server: ServerAttributes) {
+        self.server = server
+        self.id = server.id
+        
         self.backupVM = BackupVM(id)
         self.databaseVM = DatabaseVM(id)
         self.scheduleVM = ScheduleVM(id)
@@ -30,6 +34,10 @@ struct PanelView: View {
     
     @AppStorage("tab_panel") private var tabPanel: PanelTab = .info
     
+    private var allocations: [AllocationAttributes] {
+        server.relationships.allocations.data.map(\.attributes)
+    }
+    
     var body: some View {
         TabView(selection: $tabPanel) {
             if let server = vm.server {
@@ -39,7 +47,7 @@ struct PanelView: View {
                     .environment(databaseVM)
                     .tag(PanelTab.info)
                     .tabItem {
-                        Label("Info", systemImage: "info.circle")
+                        Label("Stats", systemImage: "gauge.open.with.lines.needle.33percent")
                     }
                 
                 FileTab(id)
@@ -86,7 +94,7 @@ struct PanelView: View {
                         Label("Startup", systemImage: "airplane")
                     }
                 
-                SubdomainList()
+                SubdomainList(allocations)
                     .environment(subdomainVM)
                     .tag(PanelTab.subdomains)
                     .tabItem {
@@ -144,7 +152,7 @@ struct PanelView: View {
 }
 
 #Preview {
-    PanelView("")
+    PanelView(PreviewProp.serverAttributes)
         .environment(BackupVM(""))
         .environment(DatabaseVM(""))
         .environment(ScheduleVM(""))

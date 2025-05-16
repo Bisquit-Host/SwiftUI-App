@@ -9,7 +9,7 @@ struct DiscoverCardLayout: View {
     
     private var screenWidth: CGFloat {
 #if os(visionOS)
-        100
+        500
 #else
         if UIDevice.current.userInterfaceIdiom == .pad {
             380
@@ -35,12 +35,12 @@ struct DiscoverCardLayout: View {
                 if let averageColor {
                     RoundedRectangle(cornerRadius: 17)
                         .foregroundStyle(Color(averageColor))
-                        .frame(width: imageSize + 3, height: imageSize + 3)
+                        .frame(imageSize + 3)
                 }
                 
                 Image(link.image)
                     .resizable()
-                    .frame(width: imageSize, height: imageSize)
+                    .frame(imageSize)
                     .clipShape(.rect(cornerRadius: 16))
             }
             
@@ -61,7 +61,7 @@ struct DiscoverCardLayout: View {
                 .frame(maxWidth: squareSize, alignment: .leading)
         }
         .padding(10)
-        .frame(width: squareSize, height: squareSize)
+        .frame(squareSize)
         .background(.ultraThinMaterial, in: .rect(cornerRadius: 25))
         .padding(2)
         .background(Color(uiColor: averageColor ?? .gray), in: .rect(cornerRadius: 27))

@@ -2,6 +2,7 @@ import ScrechKit
 import PteroNet
 
 struct FileTab: View {
+    @Environment(NavModel.self) private var nav
     @StateObject private var vm: FileTabVM
     
     private let id, root: String
@@ -15,48 +16,42 @@ struct FileTab: View {
     @State private var showToolbar = false
     
     var body: some View {
-        VStack {
-            TextField("Search", text: $vm.searchField)
-                .textFieldStyle(.roundedBorder)
-            
-#warning("Destination")
-#if os(macOS)
-            ScrollView {
-                LazyVStack(alignment: .leading) {
-                    ForEach(vm.filteredFiles, id: \.name) { file in
-                        NavigationLink {
-                            
-                        } label: {
-                            FileView(id, at: root, file: file)
-                        }
-                    }
+        @Bindable var nav = nav
+        
+        NavigationStack(path: $nav.folderPath) {
+            List {                
+                Section {
+                    TextField("Search", text: $vm.searchField)
+                        .textFieldStyle(.roundedBorder)
                 }
+                
+                ForEach(vm.filteredFiles) { file in
+                    FileView(id, at: root, file: file)
+                        .id(file)
+                }
+                .listRowSeparator(.hidden)
                 .animation(.default, value: vm.filteredFiles.indices)
-                .padding(.trailing, 20)
             }
-            .background(.clear)
-#else
-            List {
-                ForEach(vm.filteredFiles, id: \.name) { file in
-                    NavigationLink {
-                        
-                    } label: {
-                        FileView(id, at: root, file: file)
-                    }
-                }
+            .transparentList()
+            .scrollContentBackground(.hidden)
+            .navigationDestination(for: String.self) { file in
+                FolderDestination(id, at: file)
             }
-#endif
         }
-        .environmentObject(vm)
         .navigationTitle("Files")
+        .environmentObject(vm)
+        .frame(minWidth: 200, maxWidth: 800)
 #if os(macOS)
-        .padding()
-        .background(.clear)
-        .clipShape(.rect(cornerRadius: 16))
         .navigationSubtitle(root)
 #endif
         .onChange(of: id) {
             vm.fetchFiles(root)
+        }
+        .onChange(of: nav.selectedServers) {
+            nav.folderPath.removeAll()
+        }
+        .onChange(of: nav.folderPath) {
+            try? nav.save()
         }
         .task {
             showToolbar = true
@@ -68,7 +63,7 @@ struct FileTab: View {
         //        .toolbar {
         //            //            if showToolbar {
         //            Button {
-        //                vm.fetchFiles(root)
+        //                vm.fetchFiles(path)
         //            } label: {
         //                Image(systemName: "arrow.triangle.2.circlepath")
         //                    .rotate(vm.degrees)

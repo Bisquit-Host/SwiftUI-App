@@ -65,7 +65,7 @@ struct Enable2FAView: View {
                             Image(systemName: "square.and.arrow.up")
                                 .title(.semibold)
                                 .foregroundStyle(.white)
-                                .frame(width: 55, height: 55)
+                                .frame(55)
                                 .background(.blue.gradient, in: .rect(cornerRadius: 16))
                         }
                     }
@@ -76,7 +76,7 @@ struct Enable2FAView: View {
                         Image(systemName: "qrcode")
                             .title(.semibold)
                             .foregroundStyle(.white)
-                            .frame(width: 55, height: 55)
+                            .frame(55)
                             .background(.blue.gradient, in: .rect(cornerRadius: 16))
                     }
                 }

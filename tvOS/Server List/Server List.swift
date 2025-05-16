@@ -32,7 +32,7 @@ struct ServerList: View {
             
             ForEach(vm.filteredServers) { server in
                 Button {
-                    navState.navigate(.toPanel(server.id))
+                    navState.navigate(.toPanel(server))
                 } label: {
                     ServerCard(server)
                 }

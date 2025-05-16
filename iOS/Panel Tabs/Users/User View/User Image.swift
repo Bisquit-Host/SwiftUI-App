@@ -13,7 +13,7 @@ struct UserImage: View {
             HStack {
                 KFImage(stringToUrl(image))
                     .resizable()
-                    .frame(width: 160, height: 160)
+                    .frame(160)
                     .clipShape(.circle)
             }
             .frame(maxWidth: .infinity, alignment: .center)

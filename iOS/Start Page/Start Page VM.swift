@@ -17,10 +17,7 @@ final class StartPageVM {
     var sheetBrowsePlans = false
     
     func fetchAccountDetails(onSuccess: @escaping () -> Void) {
-        Keychain.save(
-            key: "selectedApiKey",
-            value: apiKey
-        )
+        Keychain.save(apiKey, forKey: "selectedApiKey")
         
         accountDetailsAPI { result in
             main { [self] in

@@ -8,8 +8,10 @@ struct AllocationList: View {
     
     init(_ server: ServerAttributes) {
         self.server = server
-        self.vm = AllocationVM(server.id)
+        vm = AllocationVM(server.id)
     }
+    
+    @State private var sheetCreate = false
     
     var body: some View {
         List {
@@ -19,18 +21,23 @@ struct AllocationList: View {
             }
             
             Button("Assign allocation") {
-                vm.assignAllocation()
+                sheetCreate = true
             }
             .disabled(vm.allocations.count >= server.featureLimits.allocations)
             .transparentSection()
         }
-        .environment(vm)
         .navigationTitle("Allocations")
         .toolbarTitleDisplayMode(.inline)
         .transparentList()
         .refreshableTask {
             vm.fetchAllocations()
         }
+        .sheet($sheetCreate) {
+            NavigationView {
+                SheetCreateAllocation()
+            }
+        }
+        .environment(vm)
     }
 }
 

@@ -47,8 +47,8 @@ struct DataTab: View {
         .sheet($scheduleVM.sheetCreate) {
             NewScheduleSheet()
         }
-        .background(BackgroundImage())
 #if !os(tvOS)
+        .background(BackgroundImage())
         .scrollContentBackground(.hidden)
 #endif
         .toolbarBackground(.visible, for: .tabBar)

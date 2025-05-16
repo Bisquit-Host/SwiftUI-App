@@ -13,25 +13,34 @@ struct DatabaseCard: View {
     var body: some View {
         let host = database.host
         
-        VStack(alignment: .leading) {
-            Text(database.name)
+        HStack {
+            VStack(alignment: .leading) {
+                Text(database.name)
+                
+                let endpoint = Text(host.address + ":\(host.port)")
+                    .foregroundStyle(.primary)
+                
+                Text("Endpoint: \(endpoint)")
+                    .footnote()
+                    .secondary()
+                
+                let id = Text(database.id)
+                    .foregroundStyle(.primary)
+                
+                Text("Identifier: \(id)")
+                    .footnote()
+                    .secondary()
+            }
             
-            let endpoint = Text(host.address + ":\(host.port)")
-                .foregroundStyle(.primary)
-            
-            Text("Endpoint: \(endpoint)")
-                .footnote()
-                .secondary()
-            
-            let id = Text(database.id)
-                .foregroundStyle(.primary)
-            
-            Text("Identifier: \(id)")
-                .footnote()
-                .secondary()
+            Spacer()
         }
         .padding()
         .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
+        .overlay {
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(.gray.opacity(0.25), lineWidth: 1)
+        }
+        .frame(minWidth: 200, maxWidth: 800)
         .contextMenu {
             MenuButton("Rotate password", icon: "lock.open.rotation") {
                 vm.rotatePassword(database.id)

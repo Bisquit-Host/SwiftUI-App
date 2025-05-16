@@ -6,10 +6,10 @@ struct SheetRemoteFile: View {
     
     @Environment(\.dismiss) private var dismiss
     
-    private let root: String
+    private let path: String
     
-    init(_ root: String) {
-        self.root = root
+    init(_ path: String) {
+        self.path = path
     }
     
     @State private var remoteFile = FilePullRequestBody()
@@ -31,7 +31,7 @@ struct SheetRemoteFile: View {
                 .foregroundStyle(.red)
                 
                 Button("Confirm") {
-                    vm.pullRemoteFile(remoteFile, dir: root) {
+                    vm.pullRemoteFile(remoteFile, dir: path) {
                         dismiss()
                     }
                 }

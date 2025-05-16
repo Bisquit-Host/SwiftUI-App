@@ -162,7 +162,7 @@ final class PanelVM {
     }
     
     func changePower(_ signal: ServerSignal) {
-        PteroNet.powerSignal(id, signal: signal)
+        PteroNet.powerSignal(id, do: signal)
     }
     
     func consoleDetails(completion: @escaping (ConsoleDetails?) -> Void) {

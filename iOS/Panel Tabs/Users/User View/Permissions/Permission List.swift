@@ -1,7 +1,7 @@
 import SwiftUI
 import PteroNet
 
-struct PermissionListView: View {
+struct PermissionList: View {
     @Environment(UsersVM.self) private var vm
     
     @Binding private var user: UserAttributes
@@ -84,10 +84,12 @@ struct PermissionSection: View {
                     )
                 }
             } header: {
-                Text(key)
+                Text(key.capitalized)
             } footer: {
                 if showDescription {
                     Text(permission.description)
+                        .secondary()
+                        .multilineTextAlignment(.leading)
 #if os(iOS) || os(macOS)
                         .translationPresentation($showTranslation, text: permission.description)
                         .onTapGesture {
@@ -130,6 +132,8 @@ struct PermissionCard: View {
                 if showDescription {
                     Text(subValue)
                         .caption2()
+                        .secondary()
+                        .multilineTextAlignment(.leading)
 #if os(iOS) || os(macOS)
                         .translationPresentation($showTranslation, text: subValue)
                         .onTapGesture {
@@ -145,6 +149,6 @@ struct PermissionCard: View {
 #Preview {
     @Previewable @State var user: UserAttributes = sampleJSON(.userAttributes)
     
-    PermissionListView($user)
+    PermissionList($user)
         .environment(UsersVM(""))
 }

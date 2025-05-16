@@ -3,7 +3,7 @@ import SwiftData
 
 struct StartPage: View {
     @State var vm = StartPageVM()
-    @Environment(NavState.self) private var navState
+    @Environment(NavState.self) private var nav
     @EnvironmentObject var store: ValueStore
     
     @Environment(\.dismiss) private var dismiss
@@ -13,7 +13,7 @@ struct StartPage: View {
     var body: some View {
         VStack {
             HStack(alignment: .top) {
-                VStack(spacing: 10) {
+                VStack(spacing: 16) {
                     TextField("API-key", text: $vm.apiKey)
                         .secondary()
                         .autocorrectionDisabled()
@@ -41,7 +41,7 @@ struct StartPage: View {
                 } label: {
                     Image(systemName: "doc.on.clipboard")
                         .footnote(.bold)
-                        .frame(width: 40, height: 40)
+                        .frame(40)
                         .background(.ultraThinMaterial.opacity(0.2), in: .circle)
                         .overlay {
                             Capsule()

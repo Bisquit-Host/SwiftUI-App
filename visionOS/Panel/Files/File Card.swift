@@ -1,18 +1,6 @@
 import ScrechKit
 import PteroNet
 
-struct FileLink: Codable, Hashable {
-    let id: String
-    let name: String
-    let root: String
-    
-    init(id: String, name: String, at root: String) {
-        self.id = id
-        self.name = name
-        self.root = root
-    }
-}
-
 struct FileCard: View {
     @EnvironmentObject private var vm: FileTabVM
     @Environment(NavState.self) private var navState
@@ -20,17 +8,17 @@ struct FileCard: View {
     
     @Environment(\.openWindow) private var openWindow
     
-    private let id, root: String
+    private let id, path: String
     private let file: FileAttributes
     
     init(
         _ id: String,
         file: FileAttributes,
-        at root: String = ""
+        at path: String = ""
     ) {
         self.id = id
         self.file = file
-        self.root = root
+        self.path = path
     }
     
     var body: some View {
@@ -39,22 +27,22 @@ struct FileCard: View {
         
         if mimeType.contains("directory") {
             NavigationLink {
-                FileList(id, at: root + name + "/")
+                FileList(id, at: path + name + "/")
                     .environmentObject(vm)
                 
-                //                FolderFile(id, path: root + name)
+                //                FolderFile(id, path: path + name)
             } label: {
                 FileLabel()
             }
         } else {
             Button {
                 //            if mimeType.contains("text") || mimeType.contains("json") {
-                //                TextFile(id, name: name, at: root)
+                //                TextFile(id, name: name, at: path)
                 //
                 //            } else if mimeType.contains("video") {
-                //                VideoFile(id, name: name, at: root)
+                //                VideoFile(id, name: name, at: path)
                 
-                let link = FileLink(id: id, name: name, at: root)
+                let link = FileLink(id, name: name, at: path)
                 
                 openWindow(id: "QuickLook", value: link)
             } label: {

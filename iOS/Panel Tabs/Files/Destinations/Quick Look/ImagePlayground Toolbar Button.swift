@@ -20,7 +20,7 @@ struct ImagePlaygroundToolbarButton: View {
         } label: {
             Image(.appleIntelligence)
                 .resizable()
-                .frame(width: 25, height: 25)
+                .frame(25)
                 .opacity(supportsImagePlayground ? 1 : 0.3)
         }
         .disabled(!supportsImagePlayground)

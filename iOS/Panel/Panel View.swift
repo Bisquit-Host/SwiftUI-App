@@ -17,13 +17,13 @@ struct PanelView: View {
     
     init(_ id: String) {
         self.id = id
-        self.vm = PanelVM(id)
-        self.fileVM = FileTabVM(id)
-        self.backupVM = BackupVM(id)
-        self.databaseVM = DatabaseVM(id)
-        self.scheduleVM = ScheduleVM(id)
-        self.startupVM = StartupVM(id)
-        self.consoleVM = ConsoleVM(id)
+        vm = PanelVM(id)
+        fileVM = FileTabVM(id)
+        startupVM = StartupVM(id)
+        backupVM = BackupVM(id)
+        databaseVM = DatabaseVM(id)
+        scheduleVM = ScheduleVM(id)
+        consoleVM = ConsoleVM(id)
     }
     
     var body: some View {

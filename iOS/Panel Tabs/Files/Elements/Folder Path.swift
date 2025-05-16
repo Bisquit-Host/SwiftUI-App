@@ -21,7 +21,7 @@ struct FolderPath: View {
             } label: {
                 Text(listPath)
                     .footnote()
-                    .foregroundStyle(.primary)
+                    .foregroundStyle(.foreground)
                     .lineLimit(1)
                     .minimumScaleFactor(0.75)
             }

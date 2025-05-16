@@ -10,7 +10,7 @@ struct LogListFilter: View {
                     vm.selectedActor = nil
                 } label: {
                     Label {
-                        Text("All")
+                        Text("All users")
                     } icon: {
                         if vm.selectedActor == nil {
                             Image(systemName: "checkmark")
@@ -25,7 +25,7 @@ struct LogListFilter: View {
         } label: {
             Image(systemName: "line.3.horizontal.decrease.circle")
                 .footnote(.bold)
-                .frame(width: 35, height: 35)
+                .frame(35)
                 .background(.ultraThinMaterial, in: .circle)
                 .symbolVariant(vm.selectedActor == nil ? .none : .fill)
                 .animation(.default, value: vm.selectedActor)

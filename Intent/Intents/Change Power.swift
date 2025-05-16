@@ -35,7 +35,7 @@ struct ChangePower: AppIntent, PredictableIntent {
         default:       .start
         }
         
-        PteroNet.powerSignal(id, signal: powerSignal)
+        PteroNet.powerSignal(id, do: powerSignal)
         
         return .result()
     }
@@ -43,7 +43,7 @@ struct ChangePower: AppIntent, PredictableIntent {
 
 //fileprivate extension IntentDialog {
 //    static func idParameterDisambiguationIntro(count: Int, id: String) -> Self {
-//        "There are \(count) options matching ‘\(id)’."
+//        "There are \(count) options matching ‘\(id)’"
 //    }
 //
 //    static func idParameterConfirmation(id: String) -> Self {
@@ -51,7 +51,7 @@ struct ChangePower: AppIntent, PredictableIntent {
 //    }
 //
 //    static func signalParameterDisambiguationIntro(count: Int, signal: PowerSignalAppEnum) -> Self {
-//        "There are \(count) options matching ‘\(signal)’."
+//        "There are \(count) options matching ‘\(signal)’"
 //    }
 //
 //    static func signalParameterConfirmation(signal: PowerSignalAppEnum) -> Self {

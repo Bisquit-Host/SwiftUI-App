@@ -17,13 +17,14 @@ struct SettingsView: View {
             
             OtherSettings()
                 .environment(vm)
-                        
+            
             DevSettings()
         }
         .navigationTitle("Settings")
         .toolbarTitleDisplayMode(.inline)
         .scrollIndicators(.hidden)
         .transparentList()
+        .dismissWithGamepad()
         .sheet($vm.sheetBio) {
             BiometryUsageView()
         }

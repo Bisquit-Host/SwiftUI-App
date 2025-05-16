@@ -40,13 +40,20 @@ struct LogCard: View {
                 LogCardTimestamp(log.timestamp)
             }
             
+            Spacer()
+            
             //            if !log.properties.isEmpty {
-            //                Spacer()
-            //
             //                Image(systemName: "info.circle")
             //                    .secondary()
             //            }
         }
+        .padding()
+        .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
+        .overlay {
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(.gray.opacity(0.25), lineWidth: 1)
+        }
+        .frame(minWidth: 200, maxWidth: 800)
         //        .onTapGesture {
         //            if !log.properties.isEmpty {
         //                sheetDetails = true

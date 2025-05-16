@@ -1,16 +1,37 @@
-enum PanelTab: String, CaseIterable {
-    case info = "Info",
-         console = "Console",
-         files = "Files",
-         backups = "Backups",
-         settings = "Settings",
-         other = "Other",
-         startup = "Startup",
-         users = "Users",
-         schedules = "Schedules",
-         databases = "Databases",
-         allocations = "Allocations",
-         logs = "Logs",
-         admin = "Admin",
-         subdomains = "Subdomains"
+import SwiftUI
+
+enum PanelTab: String, CaseIterable, Identifiable, Codable {
+    case info,
+         console,
+         files,
+         backups,
+         settings,
+         startup,
+         users,
+         schedules,
+         databases,
+         allocations,
+         logs,
+         subdomains
+    
+    var id: String {
+        rawValue
+    }
+    
+    var name: LocalizedStringKey {
+        switch self {
+        case .info: "Info"
+        case .console: "Console"
+        case .files: "Files"
+        case .backups: "Backups"
+        case .settings: "Settings"
+        case .startup: "Startup"
+        case .users: "Users"
+        case .schedules: "Schedules"
+        case .databases: "Databases"
+        case .allocations: "Allocations"
+        case .logs: "Logs"
+        case .subdomains: "Subdomains"
+        }
+    }
 }

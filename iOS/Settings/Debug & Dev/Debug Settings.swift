@@ -1,6 +1,5 @@
 import SwiftUI
 import PteroNet
-import TipKit
 
 #if canImport(ContactProvider)
 import ContactProvider
@@ -22,15 +21,7 @@ struct DebugSettings: View {
             }
             .transparentSection()
             
-            Section {
-                Button {
-                    Tips.showAllTipsForTesting()
-                } label: {
-                    Label("Show all tips", systemImage: "lightbulb.max")
-                        .foregroundStyle(.yellow)
-                }
-            }
-            .transparentSection()
+            DebugSettingsTips()
             
             Section("Contacts provider") {
                 Toggle("Save contacts automatically", isOn: $store.contactsProviderEnabled)
@@ -49,8 +40,10 @@ struct DebugSettings: View {
             .transparentSection()
             
             Section {
-                NavigationLink("Gamepad Test") {
+                NavigationLink {
                     GamepadDebug()
+                } label: {
+                    Label("Gamepad test", systemImage: "gamecontroller")
                 }
             }
         }

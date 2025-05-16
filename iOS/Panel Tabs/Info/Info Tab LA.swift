@@ -27,7 +27,7 @@ struct InfoTabLA: View {
         }
         .symbolVariant(isActive ? .fill : .none)
         .footnote(.bold)
-        .frame(width: 35, height: 35)
+        .frame(35)
         .background(.ultraThinMaterial, in: .circle)
         .foregroundStyle(isActive ? .red : .primary)
         .animation(.default, value: la.activityViewState?.activityState)
@@ -39,7 +39,7 @@ struct InfoTabLA: View {
 //                } label: {
 //                    VStack(spacing: 5) {
 //                        Image(systemName: "clock.badge.fill")
-//                            .foregroundStyle(.tertiary)
+//                            .tertiary()
 //                        
 //                        Text("Cancel")
 //                            .semibold()
@@ -62,7 +62,7 @@ struct InfoTabLA: View {
 //                } label: {
 //                    VStack(spacing: 5) {
 //                        Image(systemName: "clock.badge.fill")
-//                            .foregroundStyle(.tertiary)
+//                            .tertiary()
 //                        
 //                        Text("Live Activity")
 //                            .semibold()

@@ -1,0 +1,80 @@
+import ScrechKit
+import SwiftData
+import TipKit
+import GameKit
+import Algorithms
+import CoreSpotlight
+import Pow
+import GaypadKit
+
+@main
+struct BisquitHostApp: App {
+    @StateObject private var store = ValueStore()
+    private var nav = NavState()
+    private var navModel = NavModel()
+    
+    private let container: ModelContainer
+    
+    init() {
+        let schema = Schema([
+            APIKey.self
+        ])
+        
+        do {
+            container = try ModelContainer(for: schema)
+        } catch {
+            fatalError("Failed to create model container")
+        }
+        
+        try? Tips.configure([
+            .displayFrequency(.immediate)
+        ])
+        
+        _ = MetricKitManager.shared
+        
+        if ValueStore().enableGameCenter {
+            GKLocalPlayer.local.authenticateHandler = { _, error in
+                guard error == nil else {
+                    print(error?.localizedDescription ?? "Game Center auth failed")
+                    return
+                }
+                
+                print("Game Center authenticated")
+            }
+        }
+    }
+    
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+            // AppContainer()
+                .onContinueUserActivity(CSSearchableItemActionType, perform: handleSpotlightActivity)
+        }
+        .environment(nav)
+        .environment(navModel)
+        .environmentObject(store)
+        .modelContainer(container)
+        .defaultAppStorage(.init(suiteName: "group.Bisquit-host")!)
+//#if os(macOS)
+//        .windowStyle(.hiddenTitleBar)
+//#endif
+        
+#if os(macOS)
+        Settings {
+            NavigationStack {
+                AppSettings()
+            }
+            .environmentObject(store)
+            .environment(navModel)
+        }
+#endif
+    }
+    
+    private func handleSpotlightActivity(_ activity: NSUserActivity) {
+        guard
+            let _ = activity.userInfo?[CSSearchableItemActivityIdentifier] as? String
+        else {
+            return
+        }
+    }
+}

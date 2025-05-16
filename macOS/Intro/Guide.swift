@@ -7,8 +7,8 @@ struct Guide: View {
     
     private let steps: [LocalizedStringKey] = [
         "Open the link, log in, and navigate to account settings",
-        "Scroll down to the API/SSH section, enter a name for the API key, and tap Create",
-        "Tap Authorize App or copy the API key"
+        "Scroll down to the \"API/SSH\" section, enter a name for the API key, and tap \"Create\"",
+        "Tap \"Authorize App\" or copy the API key"
     ]
     
     private let images = [

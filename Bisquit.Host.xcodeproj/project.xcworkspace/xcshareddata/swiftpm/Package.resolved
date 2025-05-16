@@ -1,5 +1,5 @@
 {
-  "originHash" : "958e50f9f77cd7d1e222557445e1c8e64219fd23ab6cfdffce318a2ca0b48a2d",
+  "originHash" : "a3c332ab30e8d75903ba7dd329d53000d331ccde91b2c4a00de268e43a15c3c8",
   "pins" : [
     {
       "identity" : "alertkit",
@@ -26,6 +26,15 @@
       "state" : {
         "revision" : "513b9d7e7a1bd46504a1009bbab943b75ce2f195",
         "version" : "5.6.0"
+      }
+    },
+    {
+      "identity" : "gaypadkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/TopScrech/GaypadKit",
+      "state" : {
+        "branch" : "main",
+        "revision" : "dfe4af71678cafa297a46658260eb369df579a9d"
       }
     },
     {
@@ -60,8 +69,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/PostHog/posthog-ios.git",
       "state" : {
-        "revision" : "d640df892fcb3bbeadf02b9ec28eeb682df53d24",
-        "version" : "3.25.0"
+        "revision" : "479ce5ba9ce899dfe969dea7c88cd110adb800e7",
+        "version" : "3.25.1"
       }
     },
     {
@@ -79,7 +88,7 @@
       "location" : "https://github.com/TopScrech/PteroNet",
       "state" : {
         "branch" : "main",
-        "revision" : "050358a4efcb7a71778b677f589f295199b60eb2"
+        "revision" : "d26b24490532274d1a7392966a3f07e6756d74da"
       }
     },
     {
@@ -88,7 +97,7 @@
       "location" : "https://github.com/TopScrech/QuickLooking",
       "state" : {
         "branch" : "main",
-        "revision" : "a7545a0a6953a08b64ac134877d7f15f0397be8d"
+        "revision" : "edf0c04157add9209a8f8508cea3b497c319e17a"
       }
     },
     {
@@ -97,7 +106,7 @@
       "location" : "https://github.com/TopScrech/SafariCover",
       "state" : {
         "branch" : "main",
-        "revision" : "5644d4accf16dc4bd1f5acd8d043539909c09ee7"
+        "revision" : "6846539c6cf560373fa357fc8df82896705d390c"
       }
     },
     {
@@ -106,16 +115,7 @@
       "location" : "https://github.com/TopScrech/ScrechKit",
       "state" : {
         "branch" : "main",
-        "revision" : "9eae2d3e9788b854b1eb5306f75aaed67156760c"
-      }
-    },
-    {
-      "identity" : "sperms",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/TopScrech/SPerms",
-      "state" : {
-        "branch" : "main",
-        "revision" : "09554ed108cfd68025a1c8559e8bd8f79a82e738"
+        "revision" : "6b5e6f0e278ba0d2b2c9d144479128f54b8f20db"
       }
     },
     {
@@ -143,15 +143,6 @@
       "state" : {
         "revision" : "e0ec0f5f3af6f3e4d5e7a19d2af26b481acb6ba8",
         "version" : "1.0.3"
-      }
-    },
-    {
-      "identity" : "swiftui-introspect",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/siteline/SwiftUI-Introspect",
-      "state" : {
-        "revision" : "121c146fe591b1320238d054ae35c81ffa45f45a",
-        "version" : "0.12.0"
       }
     }
   ],

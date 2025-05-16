@@ -10,17 +10,15 @@ struct PanelSectionRow: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Image(systemName: item.isChecked ? "checkmark.circle.fill" : "circle")
-                    .onTapGesture {
-                        toggle()
-                    }
-                
-                Text(item.name)
-            }
-            .title3(.semibold)
+        HStack {
+            Image(systemName: item.isChecked ? "checkmark.circle.fill" : "circle")
+                .onTapGesture {
+                    toggle()
+                }
+            
+            Text(item.loc)
         }
+        .title3(.semibold)
     }
 }
 

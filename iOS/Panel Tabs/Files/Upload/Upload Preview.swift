@@ -6,11 +6,11 @@ struct UploadPreview: View {
     @Environment(\.dismiss) private var dismiss
     
     private let urls: [URL]
-    private let root: String
+    private let path: String
     
-    init(_ urls: [URL], at root: String = "") {
+    init(_ urls: [URL], at path: String = "") {
         self.urls = urls
-        self.root = root
+        self.path = path
     }
     
     var body: some View {
@@ -23,7 +23,7 @@ struct UploadPreview: View {
                 Spacer()
                 
                 Button("Upload") {
-                    vm.handleFileImport(urls, at: root) {
+                    vm.handleFileImport(urls, at: path) {
                         dismiss()
                     }
                 }

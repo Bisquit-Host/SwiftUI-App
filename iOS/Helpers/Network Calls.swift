@@ -1,7 +1,7 @@
 import PteroNet
 
 final class PteroNet {
-    static func powerSignal(_ id: String, signal: ServerSignal) {
+    static func powerSignal(_ id: String, do signal: ServerSignal) {
         serverPowerAPI(id, signal: signal) { result in
             switch result {
             case .success(let model):

@@ -12,7 +12,7 @@ struct TopbarAdminButton: View {
             } label: {
                 Image(systemName: "person.badge.shield.checkmark")
                     .footnote(.bold)
-                    .frame(width: 35, height: 35)
+                    .frame(35)
                     .background(.ultraThinMaterial, in: .circle)
             }
             .symbolVariant(store.adminServerList ? .fill : .none)

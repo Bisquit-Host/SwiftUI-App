@@ -1,32 +1,88 @@
 import ScrechKit
-import PteroNet
 import LaunchAtLogin
+import PteroNet
 
 struct AppSettings: View {
-    @Environment(NavState.self) private var navState
+    @Environment(NavModel.self) private var nav
     @EnvironmentObject private var store: ValueStore
     
-    @Environment(\.dismiss) private var dismiss
-    
     var body: some View {
-        VStack {
-            LaunchAtLogin.Toggle()
-            
-            Button("Log out") {
-                main {
-                    navState.clear()
-                    store.isApiKeyValid = false
-                    Keychain.delete(key: "selectedApiKey")
+        Form {
+            Section {
+                HStack {
+                    Label("Navigation mode", systemImage: "safari")
+                    
+                    Spacer()
+                    
+                    NavModeButton()
                 }
                 
-                dismiss()
+                Toggle(isOn: $store.enableGameCenter) {
+                    Label("Game Center", systemImage: "gamecontroller")
+                }
+                
+                LaunchAtLogin.Toggle()
             }
+            
+            Section {
+                Button {
+                    main {
+                        store.isApiKeyValid = false
+                        Keychain.delete(key: "selectedApiKey")
+                    }
+                } label: {
+                    Label("Log out", systemImage: "rectangle.portrait.and.arrow.right")
+                }
+            }
+#if DEBUG
+            Section("Debug") {
+                Toggle(isOn: $store.devMode) {
+                    Label("Dev mode", systemImage: "hammer")
+                }
+                
+                Button("Clear navigation path") {
+                    nav.clearNavCache()
+                }
+                
+                Button("Restart app") {
+                    restartApp()
+                }
+                
+                NavigationLink("Gamepad test") {
+                    GamepadDebug()
+                        .frame(width: 500, height: 600)
+                }
+            }
+#endif
         }
-        .padding()
-        .frame(width: 300, height: 200)
+        .navigationTitle("Settings")
+        .formStyle(.grouped)
+        .buttonStyle(.plain)
+        .frame(width: 500, height: 600)
+    }
+    
+    private func restartApp() {
+        let bundlePath = Bundle.main.bundlePath
+        
+        let command = """
+        sleep 0.1; open "\(bundlePath)"
+        """
+        
+        let task = Process()
+        task.executableURL = URL(fileURLWithPath: "/bin/bash")
+        task.arguments = ["-c", command]
+        
+        do {
+            try task.run()
+        } catch {
+            print("Error restarting app:", error)
+        }
+        
+        exit(0)
     }
 }
 
 #Preview {
     AppSettings()
+        .environment(NavModel.shared)
 }

@@ -3,11 +3,11 @@ import ScrechKit
 struct FolderFile: View {
     @StateObject private var vm: FileTabVM
     
-    private let id, root: String
+    private let id, path: String
     
     init(_ id: String, path: String = "") {
         self.id = id
-        self.root = path
+        self.path = path
         _vm = StateObject(wrappedValue: FileTabVM(id))
     }
     
@@ -19,7 +19,7 @@ struct FolderFile: View {
             Section {
                 FileSearch($vm.searchField)
                 
-                UploadMenu($image, at: root)
+                UploadMenu($image, at: path)
                 
                 if vm.isUploading {
                     UploadProgress()
@@ -28,18 +28,12 @@ struct FolderFile: View {
             .listRowBackground(Color.gray.opacity(0.2))
             
             Section {
-                ForEach(vm.filteredFiles, id: \.name) { file in
-                    FileView(id, file: file, at: root)
+                ForEach(vm.filteredFiles) { file in
+                    FileView(id, file: file, at: path)
                 }
                 .onDelete(perform: deleteItem)
             } header: {
-                HStack {
-                    FolderPath(root)
-                    
-                    Spacer()
-                    
-                    Text("\(vm.filteredFiles.count) files")
-                }
+                FileListHeader(path)
             }
             .listRowBackground(Color.gray.opacity(0.2))
         }
@@ -47,22 +41,22 @@ struct FolderFile: View {
         .frame(maxWidth: 500)
         .safariCover($vm.showSafari, url: vm.downloadUrl)
         .task {
-            vm.path = root
+            vm.path = path
         }
         .refreshableTask {
-            vm.fetchFiles(root)
+            vm.fetchFiles(path)
         }
         .background(BackgroundImage())
         .scrollContentBackground(.hidden)
         .onChange(of: image) {
             if let image {
-                vm.handleImageImport(image, at: root)
+                vm.handleImageImport(image, at: path)
             }
         }
         .toolbar {
             ToolbarItemGroup(placement: .topBarTrailing) {
                 if #available(iOS 18.1, *) {
-                    ImagePlaygroundButton(root)
+                    ImagePlaygroundButton(path)
                 }
                 
                 Button {
@@ -70,7 +64,7 @@ struct FolderFile: View {
                 } label: {
                     Image(systemName: "folder.badge.plus")
                         .footnote(.bold)
-                        .frame(width: 35, height: 35)
+                        .frame(35)
                         .background(.ultraThinMaterial, in: .circle)
                 }
                 .foregroundStyle(.primary)
@@ -84,7 +78,7 @@ struct FolderFile: View {
                 image: .init(content: "folder.badge.plus", foreground: .white),
                 button1: .init(content: "Create", foreground: .white) { folder in
                     if !folder.isEmpty {
-                        vm.createFolder(folder, at: root)
+                        vm.createFolder(folder, at: path)
                     }
                     
                     alertNewFolder = false
@@ -103,7 +97,7 @@ struct FolderFile: View {
         for file in offsets {
             let name = vm.filteredFiles[file].name
             
-            vm.deleteFile(name, at: root)
+            vm.deleteFile(name, at: path)
         }
     }
 }

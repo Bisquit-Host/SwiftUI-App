@@ -8,6 +8,8 @@ struct AppSettings: View {
     var body: some View {
         List {
             Toggle("Developer mode", isOn: $store.devMode)
+            
+            Toggle("Game Center", isOn: $store.enableGameCenter)
         }
         .padding()
         .navigationTitle("Settings")

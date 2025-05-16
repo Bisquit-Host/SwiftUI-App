@@ -3,11 +3,11 @@ import ScrechKit
 struct FileTab: View {
     @EnvironmentObject private var vm: FileTabVM
     
-    private let id, root: String
+    private let id, path: String
     
-    init(_ id: String, at root: String = "") {
+    init(_ id: String, at path: String = "") {
         self.id = id
-        self.root = root
+        self.path = path
     }
     
     @State private var image: UIImage?
@@ -15,16 +15,12 @@ struct FileTab: View {
     @State private var selectedIndex: Int?
     @State private var trigger = false
     
-    private var fileCount: Int {
-        vm.filteredFiles.count
-    }
-    
     var body: some View {
         List {
             Section {
                 FileSearch($vm.searchField)
                 
-                UploadMenu($image, at: root)
+                UploadMenu($image, at: path)
                 
                 if vm.isUploading {
                     UploadProgress()
@@ -34,19 +30,11 @@ struct FileTab: View {
             
             Section {
                 ForEach(vm.filteredFiles) { file in
-                    FileView(id, file: file, at: root + "/")
+                    FileView(id, file: file, at: path + "/")
                 }
                 .onDelete(perform: deleteItem)
             } header: {
-                HStack {
-                    FolderPath(root)
-                    
-                    Spacer()
-                    
-                    Text("\(fileCount) files")
-                        .monospacedDigit()
-                }
-                .numericTransition()
+                FileListHeader(path)
             }
             .listRowBackground(Color.gray.opacity(0.2))
         }
@@ -59,10 +47,10 @@ struct FileTab: View {
         .background(BackgroundImage())
         .scrollContentBackground(.hidden)
         .task {
-            vm.path = root
+            vm.path = path
         }
         .refreshableTask {
-            vm.fetchFiles(root)
+            vm.fetchFiles(path)
         }
         .onChange(of: vm.isUploading) { _, newValue in
             if !newValue {
@@ -71,7 +59,7 @@ struct FileTab: View {
         }
         .onChange(of: image) {
             if let image {
-                vm.handleImageImport(image, at: root)
+                vm.handleImageImport(image, at: path)
             }
         }
     }
@@ -80,7 +68,7 @@ struct FileTab: View {
         for file in offsets {
             let name = vm.filteredFiles[file].name
             
-            vm.deleteFile(name, at: root)
+            vm.deleteFile(name, at: path)
         }
     }
 }

@@ -2,7 +2,11 @@ import ScrechKit
 import PteroNet
 
 final class ValueStore: ObservableObject {
-    @AppStorage("request_permissions") var requestPermissions = true
+#if os(macOS)
+    @AppStorage("nav_mode") var navMode: NavMode?
+#endif
+    
+    @AppStorage("enable_game_center") var enableGameCenter = true
     @AppStorage("hide_status_bar") var hideStatusBar = false
     @AppStorage("hide_server_names") var hideServerNames = false
     @AppStorage("color_theme") var colorTheme: ColorTheme = .system
@@ -15,7 +19,6 @@ final class ValueStore: ObservableObject {
     @AppStorage("show_dynamic_island_badge") var showDynamicIslandBadge = true
     
     // MARK: - App Style/Design
-    @AppStorage("designCode") var designCode = 1
     @AppStorage("transparentSheet") var transparentSheet = true
     @AppStorage("transparentList") var transparentList = true
     
@@ -26,9 +29,11 @@ final class ValueStore: ObservableObject {
     //    @AppStorage("consoleFontDesign") var consoleFontDesign = 1
     
     // MARK: - Other
+#if !os(macOS)
+    @AppStorage("last_tab_panel") var lastTabPanel: Tabs = .info
+#endif
     @AppStorage("showFullFilePath") var showFullFilePath = false
     @AppStorage("preferredCurrency") var preferredCurrency = "₽"
-    @AppStorage("last_tab_panel") var lastTabPanel: Tabs = .info
     @AppStorage("tabViewBouncesDown") var tabViewBouncesDown = true
     @AppStorage("rawStartupCommand") var rawStartupCommand = false
 #if os(iOS)

@@ -89,7 +89,7 @@ struct MapView: View {
         //                sheetList = true
         //            }
         //            .clipShape(.circle)
-        //            .frame(width: 32, height: 32)
+        //            .frame(32)
         //            .padding(20)
         //        }
         //#else

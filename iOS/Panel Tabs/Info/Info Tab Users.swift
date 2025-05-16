@@ -21,7 +21,7 @@ struct InfoTabUsers: View {
                     if vm.users.count == 0 {
                         VStack(spacing: 5) {
                             Image(systemName: "person.3.fill")
-                                .foregroundStyle(.tertiary)
+                                .tertiary()
                             
                             Text("Users").semibold()
                         }

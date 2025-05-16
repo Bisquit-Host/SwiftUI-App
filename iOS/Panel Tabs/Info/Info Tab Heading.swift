@@ -31,7 +31,7 @@ struct InfoTabHeading: View {
             
             Text(server.id)
                 .footnote(design: .monospaced)
-                .foregroundStyle(.tertiary)
+                .secondary()
                 .shadow(color: .black, radius: 5)
                 .onTapGesture {
                     UIPasteboard.general.string = server.id

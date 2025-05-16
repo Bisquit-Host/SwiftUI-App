@@ -17,7 +17,7 @@ struct CustomDialog: View {
             Image(systemName: image.content)
                 .title()
                 .foregroundStyle(image.foreground)
-                .frame(width: 65, height: 65)
+                .frame(65)
                 .background(.ultraThinMaterial, in: .circle)
             
             Text(title)

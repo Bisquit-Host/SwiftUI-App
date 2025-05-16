@@ -8,8 +8,8 @@ extension View {
             case .toGuide:
                 Guide()
                 
-            case .toPanel(let id):
-                PanelView(id)
+            case .toPanel(let server):
+                PanelView(server)
             }
         }
     }
