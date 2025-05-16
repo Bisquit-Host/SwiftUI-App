@@ -3056,17 +3056,6 @@
         }
       }
     },
-    "Grid layout" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Компоновка сетки"
-          }
-        }
-      }
-    },
     "Guild" : {
       "localizations" : {
         "ru" : {
@@ -3134,7 +3123,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Удерживайте карточку сервера, чтобы получить доступ к контекстному меню"
+            "value" : "Удерживайте карточку сервера, чтобы открыть контекстное меню"
           }
         }
       }
