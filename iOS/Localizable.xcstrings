@@ -3197,18 +3197,18 @@
         }
       }
     },
-    "iCloud ensures the secure and efficient storage of your precious data, including API-keys" : {
+    "iCloud ensures the secure storage of your precious data, including API-keys" : {
       "localizations" : {
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "iCloud zorgt voor de veilige en efficiënte opslag van uw kostbare gegevens, inclusief API-sleutels"
+            "value" : "iCloud zorgt voor de veilige opslag van uw kostbare gegevens, inclusief API-sleutels"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "iCloud обеспечивает безопасное и эффективное хранение ваших данных, включая API-ключи"
+            "value" : "iCloud обеспечивает безопасное хранение ваших данных, включая API-ключи"
           }
         }
       }
