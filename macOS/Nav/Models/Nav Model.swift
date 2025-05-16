@@ -1,16 +1,8 @@
 import SwiftUI
 import PteroNet
 
-struct NavModelData: Codable {
-    var selectedTab: PanelTab?
-    var serverPath: [ServerAttributes]
-    var path: [Route]
-    var columnVisibility: NavigationSplitViewVisibility
-    var folderPath: [String]
-}
-
 @Observable
-final class NavModel {
+final class NavModel: Codable {
     var columnVisibility: NavigationSplitViewVisibility
     var selectedTab: PanelTab?
     var serverPath: [ServerAttributes]
@@ -36,6 +28,14 @@ final class NavModel {
         .logs,
         .subdomains
     ]
+    
+    private enum CodingKeys: String, CodingKey {
+        case _selectedTab = "selectedTab",
+             _serverPath = "serverPath",
+             _path = "path",
+             _columnVisibility = "columnVisibility",
+             _folderPath = "folderPath"
+    }
     
     /// The URL for the JSON file that stores the server data
     private static var dataURL: URL {
@@ -73,7 +73,7 @@ final class NavModel {
         options: Data.ReadingOptions = .mappedIfSafe
     ) throws {
         let data = try Data(contentsOf: url, options: options)
-        let model = try Self.decoder.decode(NavModelData.self, from: data)
+        let model = try Self.decoder.decode(NavModel.self, from: data)
         
         self.init(
             columnVisibility: model.columnVisibility,
@@ -115,19 +115,11 @@ final class NavModel {
     /// The JSON data used to encode and decode the navigation model at its current state
     var jsonData: Data? {
         get {
-            let dataStruct = NavModelData(
-                selectedTab: selectedTab,
-                serverPath: serverPath,
-                path: path,
-                columnVisibility: columnVisibility,
-                folderPath: folderPath
-            )
-            
-            return try? Self.encoder.encode(dataStruct)
+            return try? Self.encoder.encode(self)
         } set {
             guard
                 let data = newValue,
-                let model = try? Self.decoder.decode(NavModelData.self, from: data)
+                let model = try? Self.decoder.decode(NavModel.self, from: data)
             else {
                 return
             }
