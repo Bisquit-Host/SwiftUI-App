@@ -13,7 +13,7 @@ struct StartPage: View {
     var body: some View {
         VStack {
             HStack(alignment: .top) {
-                VStack(spacing: 10) {
+                VStack(spacing: 16) {
                     TextField("API-key", text: $vm.apiKey)
                         .secondary()
                         .autocorrectionDisabled()
