@@ -33,7 +33,6 @@ struct ServerList: View {
             
             ServerListGrid(vm.filteredServers)
         }
-        .navigationTitle("Bisquit.Host")
         .navigationBarBackButtonHidden()
         .task {
             vm.fetchServers(store.adminServerList)
