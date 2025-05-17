@@ -85,15 +85,7 @@ struct InfoTab: View {
                             }
                         }
                         
-                        Button {
-                            sheetCustomization = true
-                        } label: {
-                            Text("Customize & Reorder")
-                                .semibold()
-                                .secondary()
-                                .foregroundStyle(.foreground)
-                        }
-                        .padding(.top, 10)
+                        CustomizeButton()
                     }
                     .padding(.horizontal, 10)
                     .frame(width: width)
@@ -131,6 +123,18 @@ struct InfoTab: View {
                 }
             }
         }
+    }
+    
+    private func CustomizeButton() -> some View {
+        Button {
+            sheetCustomization = true
+        } label: {
+            Text("Customize & Reorder")
+                .semibold()
+                .secondary()
+                .foregroundStyle(.foreground)
+        }
+        .padding(.top, 10)
     }
     
     private var ip: String? {
