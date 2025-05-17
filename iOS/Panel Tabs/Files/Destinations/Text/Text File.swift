@@ -1,9 +1,8 @@
-import ScrechKit
+import SwiftUI
 
 struct TextFile: View {
     @State private var vm: TextFileVM
     @EnvironmentObject private var fileVm: FileTabVM
-    
     @Environment(\.dismiss) private var dismiss
     
     private let id, name, path: String
@@ -12,7 +11,7 @@ struct TextFile: View {
         self.id = id
         self.name = name
         self.path = path
-        self.vm = TextFileVM(id)
+        vm = TextFileVM(id)
     }
     
     private var tip = Tip_JsonFormatter()
@@ -29,12 +28,12 @@ struct TextFile: View {
             ScrollView {
                 Text(vm.text)
             }
-#elseif os(tvOS)
-            Text(vm.text)
 #else
-            TextEditor(text: $vm.text)
-                .disableAutocorrection(true)
-                .autocapitalization(.none)
+            HighlightrTextView(
+                text: $vm.text
+                //                language: "swift"
+            )
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
 #endif
         }
         .navigationTitle(name)
