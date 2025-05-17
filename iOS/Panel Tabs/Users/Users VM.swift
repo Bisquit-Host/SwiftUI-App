@@ -11,6 +11,7 @@ final class UsersVM {
     
     private(set) var users: [UserAttributes] = []
     private(set) var permissions: PermissionAttributes?
+    
     var newUserPermissions: [String] = []
     var allPermsTrigger = false
     var sheetInvitation = false

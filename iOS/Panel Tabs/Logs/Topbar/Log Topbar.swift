@@ -53,7 +53,7 @@ struct LogTopbar: View {
 #Preview {
     List {
         LogTopbar()
-            .environment(LogVM(""))
-            .environmentObject(ValueStore())
     }
+    .environment(LogVM(""))
+    .environmentObject(ValueStore())
 }
