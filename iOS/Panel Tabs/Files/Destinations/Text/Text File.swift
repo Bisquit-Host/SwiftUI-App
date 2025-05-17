@@ -14,8 +14,6 @@ struct TextFile: View {
         vm = TextFileVM(id)
     }
     
-    private var tip = Tip_JsonFormatter()
-    
     private var showSaveButton: Bool {
         vm.initialText != vm.text
     }
