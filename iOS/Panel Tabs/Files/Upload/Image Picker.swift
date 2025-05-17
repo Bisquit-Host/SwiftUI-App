@@ -176,7 +176,6 @@ struct ImagePicker: View {
 }
 
 extension View {
-    @ViewBuilder
     func libraryPicker(
         _ isPresented: Binding<Bool>,
         title: String,

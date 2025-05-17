@@ -20,6 +20,6 @@ struct SettingsView: View {
             .sheet {
                 SettingsView()
             }
-            .environmentObject(ValueStore())
     }
+    .environmentObject(ValueStore())
 }

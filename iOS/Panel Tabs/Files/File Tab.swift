@@ -76,6 +76,6 @@ struct FileTab: View {
 #Preview {
     NavigationView {
         FileTab("")
-            .environmentObject(FileTabVM(""))
     }
+    .environmentObject(FileTabVM(""))
 }

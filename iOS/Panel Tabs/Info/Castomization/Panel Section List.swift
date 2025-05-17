@@ -42,5 +42,6 @@ struct PanelSectionList: View {
 
 #Preview {
     PanelSectionList()
+        .environment(PanelSectionVM())
         .darkSchemePreferred()
 }

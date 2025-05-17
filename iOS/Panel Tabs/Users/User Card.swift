@@ -83,4 +83,5 @@ struct UserCard: View {
     List {
         UserCard(sampleJSON(.userAttributes))
     }
+    .environment(UsersVM(""))
 }

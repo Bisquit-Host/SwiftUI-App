@@ -21,7 +21,7 @@ struct LogCardEvent: View {
         let subdomain = eventProp("domain")
         let domain = eventProp("subdomain")
         
-        return "\(subdomain).\(domain)"
+        return subdomain + "." + domain
     }
     
     private func coreVersion() -> String {

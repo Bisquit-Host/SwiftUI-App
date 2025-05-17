@@ -76,6 +76,6 @@ struct FileCard: View {
 #Preview {
     List {
         FileCard("", file: sampleJSON(.fileListAttributes), at: "")
-            .environment(NavState())
     }
+    .environment(NavState())
 }

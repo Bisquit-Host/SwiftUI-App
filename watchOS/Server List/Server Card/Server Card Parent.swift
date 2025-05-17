@@ -10,10 +10,10 @@ struct ServerCardParent: View {
         self.server = server
     }
     
+    @State private var contextMenu = false
+    
     var body: some View {
-        Button {
-            navState.navigate(.toPanel(server.id))
-        } label: {
+        VStack {
             if server.isSuspended {
                 SuspendedCard(server.name)
             } else {
@@ -21,6 +21,17 @@ struct ServerCardParent: View {
             }
         }
         .buttonStyle(.plain)
+        .onTapGesture {
+            navState.navigate(.toPanel(server.id))
+        }
+        .onLongPressGesture {
+            if !server.isSuspended {
+                contextMenu = true
+            }
+        }
+        .sheet($contextMenu) {
+            ServerCardContextMenu(server)
+        }
     }
 }
 

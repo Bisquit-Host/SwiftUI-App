@@ -73,7 +73,6 @@ struct LogList: View {
 #Preview {
     NavigationView {
         LogList()
-            .environment(LogVM(""))
-            .environmentObject(ValueStore())
     }
+    .environment(LogVM(""))
 }

@@ -41,3 +41,9 @@ struct InfoTabHeading: View {
         .rounded()
     }
 }
+
+#Preview {
+    InfoTabHeading(PreviewProp.serverAttributes)
+        .environment(PanelVM(""))
+        .darkSchemePreferred()
+}
