@@ -5,7 +5,7 @@ struct StartupList: View {
     
     var body: some View {
         List {
-            ForEach(vm.startupVariables, id: \.name) { variable in
+            ForEach(vm.startupVariables) { variable in
                 StartupCard(variable)
             }
         }

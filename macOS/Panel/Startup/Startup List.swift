@@ -14,7 +14,7 @@ struct StartupList: View {
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading) {
-                ForEach(vm.startupVariables, id: \.name) { variable in
+                ForEach(vm.startupVariables) { variable in
                     //                    VariableCard(plugin)
                     Text(variable.name)
                 }

@@ -1,5 +1,5 @@
 {
-  "originHash" : "ad04d1976451b6d26af67ce742e8e7f90958b09e08914d3c39287ed54c37d378",
+  "originHash" : "5790419ac341a3d410fd982a755c80edc22682c0f893a895e50a23c1819a000a",
   "pins" : [
     {
       "identity" : "alertkit",
@@ -97,7 +97,7 @@
       "location" : "https://github.com/TopScrech/PteroNet",
       "state" : {
         "branch" : "main",
-        "revision" : "d26b24490532274d1a7392966a3f07e6756d74da"
+        "revision" : "1ea274af97dfa08c88e9b49f297a4451a34d1be7"
       }
     },
     {
