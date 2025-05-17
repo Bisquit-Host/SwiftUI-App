@@ -55,3 +55,9 @@ struct InfoTabLogs: View {
         }
     }
 }
+
+#Preview {
+    InfoTabLogs()
+        .environment(LogVM(""))
+        .darkSchemePreferred()
+}
