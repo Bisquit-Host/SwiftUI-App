@@ -55,3 +55,8 @@ struct InfoTabUsers: View {
         }
     }
 }
+
+#Preview {
+    InfoTabUsers()
+        .environment(UsersVM(""))
+}
