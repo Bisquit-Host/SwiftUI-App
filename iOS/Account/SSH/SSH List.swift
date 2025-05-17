@@ -60,7 +60,9 @@ struct SSHList: View {
     
     private func deleteItems(offsets: IndexSet) {
         offsets.forEach { index in
-            vm.deleteKey(vm.keys[index].fingerprint)
+            let key = vm.keys[index].fingerprint
+            
+            vm.deleteKey(key)
         }
     }
 }
