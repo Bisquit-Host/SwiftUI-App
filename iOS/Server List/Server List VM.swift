@@ -1,14 +1,6 @@
 import ScrechKit
 import PteroNet
 
-struct ItunesAppInfo: Decodable {
-    let results: [ItunesAppInfoResult]
-}
-
-struct ItunesAppInfoResult: Decodable {
-    let version: String
-}
-
 @Observable
 final class ServerListVM {
     // MARK: - PteroNet
@@ -75,35 +67,6 @@ final class ServerListVM {
         UserDefaults.standard.setServerAttributesArray(servers, forKey: "servers")
     }
     
-    func checkForUpdates() async {
-        let decoder = JSONDecoder()
-        var newVersion = "0"
-        
-        guard
-            let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
-            let url = URL(string: "https://itunes.apple.com/lookup?bundleId=host.bisquit.Bisquit-Host")
-        else {
-            return
-        }
-        
-        let request = URLRequest(url: url)
-        
-        do {
-            let (data, _) = try await URLSession.shared.data(for: request)
-            let decoded = try decoder.decode(ItunesAppInfo.self, from: data)
-            newVersion = decoded.results.first?.version ?? "0"
-        } catch {
-            return
-        }
-        
-        if currentVersion.compare(newVersion, options: .numeric) == .orderedAscending {
-            print("Update available:", currentVersion, "->", newVersion)
-            self.alertUpdate = true
-        } else {
-            print("The app is up to date")
-        }
-    }
-    
     func fetchServers(_ isAdmin: Bool) {
         serverListAPI(isAdmin) { result in
             switch result {
@@ -144,7 +107,11 @@ final class ServerListVM {
         }
     }
     
-    private func fetchAllPages(_ isAdmin: Bool, totalPages: Int, currentServers: [ServerAttributes]) {
+    private func fetchAllPages(
+        _ isAdmin: Bool,
+        totalPages: Int,
+        currentServers: [ServerAttributes]
+    ) {
         var loadedServers = currentServers
         let group = DispatchGroup()
         

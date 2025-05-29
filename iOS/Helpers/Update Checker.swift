@@ -1,8 +1,14 @@
 import Foundation
 
-final class UpdateChecker: Observable {
+@Observable
+final class UpdateChecker {
     var alertUpdate = false
-    
+#error("iOS")
+#error("watchOS")
+#error("macOS")
+#error("visionOS")
+#error("tvOS")
+#error("iMessage")
     func checkForUpdates() async {
         let decoder = JSONDecoder()
         var appStoreVersion = "0"
