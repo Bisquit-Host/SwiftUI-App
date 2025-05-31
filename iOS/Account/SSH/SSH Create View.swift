@@ -38,8 +38,10 @@ struct SSHCreateView: View {
             .transparentSection()
             
             Button("Create") {
-                vm.createKey() {
-                    dismiss()
+                Task {
+                    await vm.createKey() {
+                        dismiss()
+                    }
                 }
             }
             .disabled(vm.newName.isEmpty || vm.newPublicKey.isEmpty)

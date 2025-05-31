@@ -34,7 +34,9 @@ struct SSHCard: View {
             
             Section {
                 MenuButton("Delete", role: .destructive, icon: "trash") {
-                    vm.deleteKey(key.fingerprint)
+                    Task {
+                        await vm.deleteKey(key.fingerprint)
+                    }
                 }
             }
         }

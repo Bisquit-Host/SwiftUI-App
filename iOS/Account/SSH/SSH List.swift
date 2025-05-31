@@ -21,7 +21,7 @@ struct SSHList: View {
         .toolbarBackground(.visible, for: .tabBar)
         .transparentList()
         .refreshableTask {
-            vm.fetchKeys()
+            await vm.fetchKeys()
         }
         .sheet($sheetCreate) {
             SSHCreateView()
@@ -62,7 +62,9 @@ struct SSHList: View {
         offsets.forEach { index in
             let key = vm.keys[index].fingerprint
             
-            vm.deleteKey(key)
+            Task {
+                await vm.deleteKey(key)
+            }
         }
     }
 }
