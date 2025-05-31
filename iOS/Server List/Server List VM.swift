@@ -93,7 +93,9 @@ final class ServerListVM {
                 
 #if canImport(ContactProvider)
                 if ValueStore().contactsProviderEnabled {
-                    self.fetchUniqueUsers()
+                    Task {
+                        await self.fetchUniqueUsers()
+                    }
                 }
 #endif
                 

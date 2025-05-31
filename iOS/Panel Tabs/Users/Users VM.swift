@@ -47,46 +47,33 @@ final class UsersVM {
         return dict
     }
     
-    func createUser(_ email: String, onSuccess: @escaping () -> ()) {
-        userCreateAPI(id, email: email, permissions: newUserPermissions) { result in
-            switch result {
-            case .success(let model):
-                if let user = model?.attributes {
-                    self.users.append(user)
-                }
-                
-                onSuccess()
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-            }
+    func createUser(
+        _ email: String,
+        onSuccess: @escaping () -> ()
+    ) async {
+        do {
+            let user = try await userCreateAPI(id, email: email, permissions: newUserPermissions)
+            users.append(user)
+            
+            onSuccess()
+        } catch {
+            SystemAlert.error(error)
         }
     }
     
-    func updateUser(_ userId: String, permissions: [String], onSuccess: @escaping () -> Void, onError: @escaping () -> Void) {
-        userUpdateAPI(id, userId: userId, permissions: permissions) { result in
-            switch result {
-            case .success:
-                onSuccess()
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-                onError()
-            }
-        }
+    func updateUser(
+        _ userId: String,
+        permissions: [String]
+    ) async throws {
+        try await userUpdateAPI(id, userId: userId, permissions: permissions)
     }
     
-    func userDetails(_ user: Binding<UserAttributes>) {
-        userDetailsAPI(id, userId: user.wrappedValue.uuid) { result in
-            switch result {
-            case .success(let model):
-                if let model = model?.attributes {
-                    user.wrappedValue = model
-                }
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-            }
+    func userDetails(_ user: Binding<UserAttributes>) async {
+        do {
+            let userDetails = try await userDetailsAPI(id, userId: user.wrappedValue.uuid)
+            user.wrappedValue = userDetails
+        } catch {
+            SystemAlert.error(error)
         }
     }
     
@@ -104,35 +91,26 @@ final class UsersVM {
         }
     }
     
-    func fetchUsers(_ prefetch: Bool = false) {
-        userListAPI(id) { result in
-            switch result {
-            case .success(let model):
-                if let model = model?.data {
-                    self.users = model.map(\.attributes)
-                    
-                    if !prefetch {
-                        self.prefetchUserImages()
-                    }
-                }
-                
-            case .failure(let error):
-                SystemAlert.error(error)
+    func fetchUsers(_ prefetch: Bool = false) async {
+        do {
+            self.users = try await userListAPI(id, printResponse: true)
+            
+            if !prefetch {
+                self.prefetchUserImages()
             }
+        } catch {
+            SystemAlert.error(error)
         }
     }
     
-    func delete(_ uuid: String) {
-        userDeleteAPI(id, uuid: uuid) { result in
-            switch result {
-            case .success:
-                self.fetchUsers()
-                
-            case .failure(let error):
-                self.fetchUsers()
-                SystemAlert.error(error)
-            }
+    func delete(_ uuid: String) async {
+        do {
+            try await userDeleteAPI(id, uuid: uuid)
+        } catch {
+            SystemAlert.error(error)
         }
+        
+        await fetchUsers()
     }
     
     private func prefetchUserImages() {

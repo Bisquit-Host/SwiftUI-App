@@ -129,11 +129,11 @@ struct PanelView: View {
             backupVM.fetchBackups()
             databaseVM.fetchDatabases()
             scheduleVM.fetchSchedules()
-            usersVM.fetchUsers(true)
             allocationVM.fetchAllocations()
             startupVM.fetchStartupVariables()
             
             Task {
+                await usersVM.fetchUsers(true)
                 await logVM.fetchLogs(true)
                 await subdomainVM.fetchSubdomains()
             }

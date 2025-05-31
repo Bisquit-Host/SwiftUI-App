@@ -110,10 +110,10 @@ struct PanelView: View {
             if !System.lowPowerMode {
                 backupVM.fetchBackups()
                 dbVM.fetchDatabases()
-                userVM.fetchUsers(true)
                 fileVM.fetchFiles()
                 
                 Task {
+                    await userVM.fetchUsers(true)
                     await subdomainVM.fetchSubdomains()
                 }
             }

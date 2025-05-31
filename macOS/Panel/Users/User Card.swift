@@ -58,7 +58,9 @@ struct UserCard: View {
         .contextMenu {
             Section {
                 MenuButton("Delete", role: .destructive, icon: "trash") {
-                    vm.delete(user.uuid)
+                    Task {
+                        await vm.delete(user.uuid)
+                    }
                 }
             }
         }

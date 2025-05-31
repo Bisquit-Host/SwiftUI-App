@@ -116,7 +116,7 @@ struct InfoTab: View {
             
             if !System.lowPowerMode {
                 await logVM.fetchLogs(true)
-                userVM.fetchUsers(true)
+                await userVM.fetchUsers(true)
                 
                 Task {
                     await subdomainVM.fetchSubdomains()

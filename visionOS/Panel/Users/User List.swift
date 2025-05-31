@@ -10,7 +10,7 @@ struct UserList: View {
             }
         }
         .refreshableTask {
-            vm.fetchUsers()
+            await vm.fetchUsers()
         }
     }
 }

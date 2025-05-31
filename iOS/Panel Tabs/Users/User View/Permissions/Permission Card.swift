@@ -51,11 +51,15 @@ struct PermissionToggle: View {
                     }
                 }
                 
-                vm.updateUser(user.uuid, permissions: userPermissions) {
-                    vm.userDetails($user)
-                } onError: {
-                    allowUpdate = false
-                    isGranted.toggle()
+                Task {
+                    do {
+                        try await vm.updateUser(user.uuid, permissions: userPermissions)
+                        await vm.userDetails($user)
+                    } catch {
+                        allowUpdate = false
+                        isGranted.toggle()
+                        SystemAlert.error(error)
+                    }
                 }
             }
             

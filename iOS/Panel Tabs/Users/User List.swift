@@ -26,7 +26,7 @@ struct UserList: View {
 #endif
         .transparentList()
         .task {
-            vm.fetchUsers()
+            await vm.fetchUsers()
             vm.fetchPermissions()
         }
         .sheet($vm.sheetInvitation) {
@@ -65,7 +65,10 @@ struct UserList: View {
     private func delete(_ offsets: IndexSet) {
         offsets.forEach { index in
             let user = vm.users[index]
-            vm.delete(user.uuid)
+            
+            Task {
+                await vm.delete(user.uuid)
+            }
         }
     }
 }

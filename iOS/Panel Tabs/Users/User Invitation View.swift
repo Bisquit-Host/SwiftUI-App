@@ -40,8 +40,10 @@ struct UserInvitationView: View {
             
             Section {
                 Button {
-                    vm.createUser(email) {
-                        dismiss()
+                    Task {
+                        await vm.createUser(email) {
+                            dismiss()
+                        }
                     }
                 } label: {
                     Text("Invite user")

@@ -25,11 +25,14 @@ struct UserList: View {
         .background(.clear)
         .clipShape(.rect(cornerRadius: 16))
         .task {
-            vm.fetchUsers()
+            await vm.fetchUsers()
             vm.fetchPermissions()
         }
         .onChange(of: id) {
-            vm.fetchUsers()
+            Task {
+                await vm.fetchUsers()
+            }
+            
             vm.fetchPermissions()
         }
     }
