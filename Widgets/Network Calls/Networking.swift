@@ -33,34 +33,16 @@ struct Networking {
         }
     }
     
-    static func fetchResourceUsage(_ id: String) async throws -> AssetDetails {
-        try await withCheckedThrowingContinuation { continuation in
-            serverUsageAPI(id) { result in
-                switch result {
-                case .success(let model):
-                    guard let model else {
-                        continuation.resume(returning: AssetDetails(
-                            state: "No data"
-                        ))
-                        
-                        return
-                    }
-                    
-                    let state = model.attributes.state
-                    
-                    let assetDetails = AssetDetails(
-                        state: state,
-                        test: model.attributes
-                    )
-                    
-                    continuation.resume(returning: assetDetails)
-                    
-                case .failure(let error):
-                    continuation.resume(returning: AssetDetails(
-                        state: error.localizedDescription
-                    ))
-                }
-            }
+    static func fetchResourceUsage(_ id: String) async -> AssetDetails {
+        do {
+            let model = try await serverUsageAPI(id)
+            
+            return AssetDetails(
+                state: model.state,
+                test: model
+            )
+        } catch {
+            return AssetDetails(state: error.localizedDescription)
         }
     }
 }

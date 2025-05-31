@@ -49,10 +49,12 @@ struct ServerCard: View {
             .background(.ultraThinMaterial, in: .rect(cornerRadius: rounding))
             .background(backgroundColor, in: .rect(cornerRadius: rounding))
         .task {
-            vm.fetchServerUsage()
+            await vm.fetchServerUsage()
         }
         .onChange(of: store.updateServers) {
-            vm.fetchServerUsage()
+            Task {
+                await vm.fetchServerUsage()
+            }
         }
     }
     

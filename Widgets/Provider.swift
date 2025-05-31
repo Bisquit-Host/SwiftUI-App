@@ -8,21 +8,15 @@ struct Provider: AppIntentTimelineProvider {
     func timeline(
         for configuration: ConfigurationAppIntent,
         in context: Context
-    ) -> Timeline<SystemSmallEntry> {
+    ) async -> Timeline<SystemSmallEntry> {
         var cpu = 0.0
         
         if let id = configuration.id {
-            serverUsageAPI(id) { result in
-                switch result {
-                case .success(let model):
-                    if let model {
-                        let usage = model.attributes.usage
-                        cpu = usage.cpu
-                    }
-                    
-                case .failure:
-                    cpu = -1
-                }
+            do {
+                let model = try await serverUsageAPI(id)
+                cpu = model.usage.cpu
+            } catch {
+                cpu = -1
             }
         }
         
@@ -39,12 +33,10 @@ struct Provider: AppIntentTimelineProvider {
             )
         ]
         
-        let timeline = Timeline(
+        return Timeline(
             entries: entries,
             policy: .atEnd
         )
-        
-        return timeline
     }
     
     func snapshot(

@@ -41,7 +41,7 @@ struct ResourcesTimelineProvider: IntentTimelineProvider {
         }
         
         Task {
-            let usage = try await Networking.fetchResourceUsage(id)
+            let usage = await Networking.fetchResourceUsage(id)
             
             // Create Entry using based on user selected config & fetched info
             let entry = ResourcesUsageEntry(

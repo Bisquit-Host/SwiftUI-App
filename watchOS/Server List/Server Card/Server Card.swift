@@ -27,7 +27,7 @@ struct ServerCard: View {
                 .environment(vm)
         }
         .task {
-            vm.fetchServerUsage()
+            await vm.fetchServerUsage()
         }
     }
 }
