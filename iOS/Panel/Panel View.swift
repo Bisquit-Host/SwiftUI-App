@@ -52,8 +52,8 @@ struct PanelView: View {
             vm.messages.removeAll()
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
-            vm.consoleDetails { data in
-                if let data {
+            Task {
+                if let data = await vm.consoleDetails() {
                     vm.connectWebSocket(data)
                 }
             }
@@ -78,65 +78,63 @@ struct PanelView: View {
             )
             .transition(.blurReplace.combined(with: .scale(0.8)))
         }
+}
+
+private func fetchData() async {
+    await vm.fetchServerDetails()
+    
+    Task {
+        if let data = await vm.consoleDetails() {
+            vm.connectWebSocket(data)
+        }
+    }
+
+    if !System.lowPowerMode {
+        fileVM.fetchFiles()
+        
+        Task {
+            await startupVM.fetchStartupVariables()
+            await scheduleVM.fetchSchedules()
+            await backupVM.fetchBackups()
+            await databaseVM.fetchDatabases()
+        }
     }
     
-    private func fetchData() async {
-        await vm.fetchServerDetails()
-        
-        vm.consoleDetails { data in
-            if let data {
-                vm.connectWebSocket(data)
-            }
-        }
-        
-        if !System.lowPowerMode {
-            fileVM.fetchFiles()
+    vm.updateBackups = {
+        await backupVM.fetchBackups()
+    }
+}
+
+private var panel: some View {
+    TabView(selection: $store.lastTabPanel) {
+        if let server = vm.server {
+            InfoTab(server)
+                .tab(.info)
+                .sheet($vm.sheetSettings) {
+                    PanelSettingsParent(server)
+                }
             
-            Task {
-                await startupVM.fetchStartupVariables()
-                await scheduleVM.fetchSchedules()
-                await backupVM.fetchBackups()
-                await databaseVM.fetchDatabases()
-            }
-        }
-        
-        vm.updateBackups = {
-            Task {
-                await backupVM.fetchBackups()
-            }
+            ConsoleTab(id)
+                .tab(.console)
+            
+            FileTab(id)
+                .tab(.files)
+            
+            DataTab(server)
+                .tab(.backup)
+            
+            StartupView(server)
+                .tab(.startup)
         }
     }
-    
-    private var panel: some View {
-        TabView(selection: $store.lastTabPanel) {
-            if let server = vm.server {
-                InfoTab(server)
-                    .tab(.info)
-                    .sheet($vm.sheetSettings) {
-                        PanelSettingsParent(server)
-                    }
-                
-                ConsoleTab(id)
-                    .tab(.console)
-                
-                FileTab(id)
-                    .tab(.files)
-                
-                DataTab(server)
-                    .tab(.backup)
-                
-                StartupView(server)
-                    .tab(.startup)
-            }
-        }
-        .panelToolbar()
-        .environment(consoleVM)
-        .environmentObject(fileVM)
-        .environment(backupVM)
-        .environment(databaseVM)
-        .environment(scheduleVM)
-        .environment(startupVM)
-    }
+    .panelToolbar()
+    .environment(consoleVM)
+    .environmentObject(fileVM)
+    .environment(backupVM)
+    .environment(databaseVM)
+    .environment(scheduleVM)
+    .environment(startupVM)
+}
 }
 
 #Preview {

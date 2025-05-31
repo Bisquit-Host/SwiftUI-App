@@ -1,7 +1,10 @@
 import PteroNet
 
 final class PteroNet {
-    static func powerSignal(_ id: String, do signal: ServerSignal) async {
+    static func powerSignal(
+        _ id: String,
+        do signal: ServerSignal
+    ) async {
         do {
             try await serverPowerAPI(id, signal: signal)
         } catch {
@@ -9,7 +12,10 @@ final class PteroNet {
         }
     }
     
-    static func sendCommand(_ id: String, command: String) async {
+    static func sendCommand(
+        _ id: String,
+        command: String
+    ) async {
         do {
             try await serverCommandAPI(id, command: command)
         } catch {
@@ -17,16 +23,15 @@ final class PteroNet {
         }
     }
     
-    static func reinstallServer(_ id: String, onSuccess: @escaping () -> Void = {}) {
-        serverReinstallAPI(id) { result in
-            switch result {
-            case .success:
-                print("Reinstalled")
-                onSuccess()
-                
-            case .failure(let error):
-                networkCallError(#function, error)
-            }
+    static func reinstallServer(
+        _ id: String,
+        onSuccess: @escaping () -> Void = {}
+    ) async {
+        do {
+            try await serverReinstallAPI(id)
+            onSuccess()
+        } catch {
+            networkCallError(#function, error)
         }
     }
 }

@@ -110,10 +110,8 @@ struct ColumnDetail: View {
     private func fetchData() async {
         await vm.fetchServerDetails()
         
-        vm.consoleDetails { data in
-            if let data {
-                vm.connectWebSocket(data)
-            }
+        if let data = await vm.consoleDetails() {
+            vm.connectWebSocket(data)
         }
         
         if !System.lowPowerMode {
@@ -129,9 +127,7 @@ struct ColumnDetail: View {
         }
         
         vm.updateBackups = {
-            Task {
-                await backupVM.fetchBackups()
-            }
+            await backupVM.fetchBackups()
         }
     }
 }

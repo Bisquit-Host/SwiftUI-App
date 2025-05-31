@@ -119,15 +119,11 @@ struct PanelView: View {
             }
             
             vm.updateBackups = {
-                Task {
-                    await backupVM.fetchBackups()
-                }
+                await backupVM.fetchBackups()
             }
             
-            vm.consoleDetails { data in
-                if let data {
-                    vm.connectWebSocket(data)
-                }
+            if let data = await vm.consoleDetails() {
+                vm.connectWebSocket(data)
             }
         }
         .onDisappear {
@@ -138,8 +134,8 @@ struct PanelView: View {
             vm.messages.removeAll()
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
-            vm.consoleDetails { data in
-                if let data {
+            Task {
+                if let data = await vm.consoleDetails() {
                     vm.connectWebSocket(data)
                 }
             }

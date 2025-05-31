@@ -72,8 +72,10 @@ struct PanelSettingsView: View {
         }
         .alert("Reinstall Server", isPresented: $alertReinstall) {
             Button("Reinstall", role: .destructive) {
-                PteroNet.reinstallServer(server.id) {
-                    SystemAlert.reinstalled()
+                Task {
+                    await PteroNet.reinstallServer(server.id) {
+                        SystemAlert.reinstalled()
+                    }
                 }
             }
         } message: {
