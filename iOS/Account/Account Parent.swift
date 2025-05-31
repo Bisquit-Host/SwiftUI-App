@@ -42,8 +42,11 @@ struct AccountParent: View {
             if !System.lowPowerMode {
                 vm.fetch()
                 vm.twoFaDetails()
-                apiKeysVM.fetchKeys()
                 sshVM.fetchKeys()
+                
+                Task {
+                    await apiKeysVM.fetchKeys()
+                }
             }
         }
     }

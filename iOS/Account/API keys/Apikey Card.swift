@@ -41,7 +41,9 @@ struct ApikeyCard: View {
         }
         .contextMenu {
             Button(role: .destructive) {
-                vm.delete(key.id)
+                Task {
+                    await vm.delete(key.id)
+                }
             } label: {
                 Label("Delete", systemImage: "trash")
             }

@@ -22,8 +22,10 @@ struct CreateApikey: View {
                 .transparentSection()
                 
                 Button {
-                    vm.create(text) {
-                        dismiss()
+                    Task {
+                        await vm.create(text) {
+                            dismiss()
+                        }
                     }
                 } label: {
                     HStack {
