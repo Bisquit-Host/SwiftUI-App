@@ -54,8 +54,10 @@ struct NewScheduleSheet: View {
 #endif
             Section {
                 Button("Create Schedule") {
-                    vm.createSchedule(newSchedule) {
-                        dismiss()
+                    Task {
+                        await vm.createSchedule(newSchedule) {
+                            dismiss()
+                        }
                     }
                 }
                 .semibold()

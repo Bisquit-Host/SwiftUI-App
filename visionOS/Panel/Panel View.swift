@@ -120,7 +120,6 @@ struct PanelView: View {
             
             vm.updateBackups = {
                 Task {
-                    try? await Task.sleep(nanoseconds: 1_000_000_000)
                     await backupVM.fetchBackups()
                 }
             }

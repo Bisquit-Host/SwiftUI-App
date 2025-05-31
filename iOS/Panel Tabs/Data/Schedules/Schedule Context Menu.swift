@@ -13,7 +13,9 @@ struct ScheduleContextMenu: View {
     var body: some View {
         ControlGroup {
             MenuButton("Execute", icon: "play") {
-                vm.executeSchedule(schedule.id)
+                Task {
+                    await vm.executeSchedule(schedule.id)
+                }
             }
             
             MenuButton("New task", icon: "plus") {

@@ -14,7 +14,9 @@ struct TaskContextMenu: View {
     
     var body: some View {
         MenuButton("Delete", role: .destructive, icon: "trash") {
-            vm.deleteScheduleTask(schedule.id, taskId: task.id)
+            Task {
+                await vm.deleteScheduleTask(schedule.id, taskId: task.id)
+            }
         }
     }
 }
