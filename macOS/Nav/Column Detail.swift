@@ -118,18 +118,20 @@ struct ColumnDetail: View {
         
         if !System.lowPowerMode {
             fileVM.fetchFiles()
-            backupVM.fetchBackups()
-            databaseVM.fetchDatabases()
-            scheduleVM.fetchSchedules()
             startupVM.fetchStartupVariables()
             
             Task {
+                await backupVM.fetchBackups()
+                await databaseVM.fetchDatabases()
+                await scheduleVM.fetchSchedules()
                 await subdomainVM.fetchSubdomains()
             }
         }
         
         vm.updateBackups = {
-            backupVM.fetchBackups()
+            Task {
+                await backupVM.fetchBackups()
+            }
         }
     }
 }

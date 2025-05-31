@@ -24,10 +24,12 @@ struct ScheduleList: View {
         .background(.clear)
         .clipShape(.rect(cornerRadius: 16))
         .task {
-            vm.fetchSchedules()
+            await vm.fetchSchedules()
         }
         .onChange(of: id) {
-            vm.fetchSchedules()
+            Task {
+                await vm.fetchSchedules()
+            }
         }
     }
 }

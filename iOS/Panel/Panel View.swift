@@ -91,14 +91,19 @@ struct PanelView: View {
         
         if !System.lowPowerMode {
             fileVM.fetchFiles()
-            backupVM.fetchBackups()
-            databaseVM.fetchDatabases()
-            scheduleVM.fetchSchedules()
             startupVM.fetchStartupVariables()
+            
+            Task {
+                await scheduleVM.fetchSchedules()
+                await backupVM.fetchBackups()
+                await databaseVM.fetchDatabases()
+            }
         }
         
         vm.updateBackups = {
-            backupVM.fetchBackups()
+            Task {
+                await backupVM.fetchBackups()
+            }
         }
     }
     

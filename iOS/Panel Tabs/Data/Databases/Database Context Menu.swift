@@ -12,12 +12,16 @@ struct DatabaseContextMenu: View {
     
     var body: some View {
         MenuButton("Rotate password", icon: "lock.open.rotation") {
-            vm.rotatePassword(db.id)
+            Task {
+                await vm.rotatePassword(db.id)
+            }
         }
         
         Section {
             MenuButton("Delete", role: .destructive, icon: "trash") {
-                vm.deleteDatabase(db.id)
+                Task {
+                    await vm.deleteDatabase(db.id)
+                }
             }
         }
     }

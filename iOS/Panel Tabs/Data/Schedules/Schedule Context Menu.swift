@@ -23,7 +23,9 @@ struct ScheduleContextMenu: View {
         
         Section {
             MenuButton("Delete", role: .destructive, icon: "trash") {
-                vm.deleteSchedule(schedule.id.description)
+                Task {
+                    await vm.deleteSchedule(schedule.id.description)
+                }
             }
         }
     }

@@ -22,7 +22,11 @@ struct BackupList: View {
                     .focusable() // Applies to DB's & schedules as well
 #endif
             }
-            .onDelete(perform: vm.deleteBackups)
+            .onDelete { indexSet in
+                Task {
+                    await vm.deleteBackups(indexSet)
+                }
+            }
             
             CreateBackupButton(backupLimit)
         } header: {

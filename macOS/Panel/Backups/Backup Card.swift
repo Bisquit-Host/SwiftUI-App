@@ -37,13 +37,17 @@ struct BackupCard: View {
         .frame(minWidth: 200, maxWidth: 800)
         .contextMenu {
             Button {
-                vm.lockBackup(backup.uuid)
+                Task {
+                    await vm.lockBackup(backup.uuid)
+                }
             } label: {
                 Label(backup.isLocked ? "Unlock" : "Lock", systemImage: backup.isLocked ? "lock.open" : "lock")
             }
             
             Button(role: .destructive) {
-                vm.deleteBackup(backup.uuid)
+                Task {
+                    await vm.deleteBackup(backup.uuid)
+                }
             } label: {
                 Label("Delete", systemImage: "trash")
             }

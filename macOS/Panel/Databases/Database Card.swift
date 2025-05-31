@@ -43,7 +43,9 @@ struct DatabaseCard: View {
         .frame(minWidth: 200, maxWidth: 800)
         .contextMenu {
             MenuButton("Rotate password", icon: "lock.open.rotation") {
-                vm.rotatePassword(database.id)
+                Task {
+                    await vm.rotatePassword(database.id)
+                }
             }
         }
     }

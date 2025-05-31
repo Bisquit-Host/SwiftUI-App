@@ -42,7 +42,7 @@ struct DataTab: View {
         .frame(maxWidth: 500)
 #endif
         .refreshableTask {
-            fetchData()
+            await fetchData()
         }
         .sheet($scheduleVM.sheetCreate) {
             NewScheduleSheet()
@@ -58,7 +58,7 @@ struct DataTab: View {
                 .limitInputLength($databaseVM.newDatabaseName, length: 48)
             
             Button("Create") {
-                databaseVM.createDatabase()
+                createDatabase()
             }
             
             Button("Cancel", role: .cancel) {
@@ -73,15 +73,27 @@ struct DataTab: View {
             Button("Cancel", role: .cancel) {}
             
             Button("Create") {
-                backupVM.createBackup()
+                createBackup()
             }
         }
     }
     
-    private func fetchData() {
-        backupVM.fetchBackups()
-        dbVM.fetchDatabases()
-        scheduleVM.fetchSchedules()
+    private func createBackup() {
+        Task {
+            await backupVM.createBackup()
+        }
+    }
+    
+    private func createDatabase() {
+        Task {
+            await dbVM.createDatabase()
+        }
+    }
+    
+    private func fetchData() async {
+        await backupVM.fetchBackups()
+        await dbVM.fetchDatabases()
+        await scheduleVM.fetchSchedules()
     }
 }
 

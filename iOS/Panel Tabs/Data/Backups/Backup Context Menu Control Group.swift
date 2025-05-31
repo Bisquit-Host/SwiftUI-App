@@ -15,21 +15,29 @@ struct BackupContextMenuControlGroup: View {
         let uuid = backup.uuid
         
         MenuButton("Download", icon: "square.and.arrow.down") {
-            cardVm.downloadBackup(uuid)
+            Task {
+                await cardVm.downloadBackup(uuid)
+            }
         }
         
         if backup.isLocked {
             MenuButton("Unlock", icon: "lock.open") {
-                vm.lockBackup(uuid)
+                Task {
+                    await vm.lockBackup(uuid)
+                }
             }
         } else {
             MenuButton("Lock", icon: "lock") {
-                vm.lockBackup(uuid)
+                Task {
+                    await vm.lockBackup(uuid)
+                }
             }
         }
         
         MenuButton("Restore", icon: "arrow.up.bin") {
-            vm.restoreBackup(uuid, truncate: false)
+            Task {
+                await vm.restoreBackup(uuid, truncate: false)
+            }
         }
     }
 }

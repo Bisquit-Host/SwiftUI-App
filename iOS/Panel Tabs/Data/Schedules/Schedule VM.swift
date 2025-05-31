@@ -13,19 +13,18 @@ final class ScheduleVM {
     var sheetCreateTask = false
     var sheetCreate = false
     
-    func fetchSchedules() {
-        dataListAPI(id, endpoint: .schedules) { (result: Result<ScheduleListResponse?, Error>) in
-            switch result {
-            case .success(let model):
-                if let model = model?.data {
-                    withAnimation {
-                        self.schedules = model.map(\.attributes)
-                    }
-                }
-                
-            case .failure(let error):
-                SystemAlert.error(error)
+    func fetchSchedules() async {
+        do {
+            let schedules: ScheduleListResponse? = try await dataListAPI(
+                id,
+                endpoint: .schedules
+            )
+            
+            if let schedules = schedules?.data.map(\.attributes) {
+                self.schedules = schedules
             }
+        } catch {
+            SystemAlert.error(error)
         }
     }
     
@@ -59,22 +58,19 @@ final class ScheduleVM {
         }
     }
     
-    func deleteSchedules(_ offsets: IndexSet) {
+    func deleteSchedules(_ offsets: IndexSet) async {
         for index in offsets {
             let id = schedules[index].id.description
-            deleteSchedule(id)
+            await deleteSchedule(id)
         }
     }
     
-    func deleteSchedule(_ uuid: String) {
-        dataDeleteAPI(id, itemId: uuid, endpoint: .schedules) { result in
-            switch result {
-            case .success:
-                self.fetchSchedules()
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-            }
+    func deleteSchedule(_ uuid: String) async {
+        do {
+            try await dataDeleteAPI(id, itemId: uuid, endpoint: .schedules)
+            await fetchSchedules()
+        } catch {
+            SystemAlert.error(error)
         }
     }
     

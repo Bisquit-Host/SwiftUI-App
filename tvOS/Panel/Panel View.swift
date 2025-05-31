@@ -126,13 +126,13 @@ struct PanelView: View {
         
         if !System.lowPowerMode {
             fileVM.fetchFiles()
-            backupVM.fetchBackups()
-            databaseVM.fetchDatabases()
-            scheduleVM.fetchSchedules()
             allocationVM.fetchAllocations()
             startupVM.fetchStartupVariables()
             
             Task {
+                await backupVM.fetchBackups()
+                await databaseVM.fetchDatabases()
+                await scheduleVM.fetchSchedules()
                 await usersVM.fetchUsers(true)
                 await logVM.fetchLogs(true)
                 await subdomainVM.fetchSubdomains()
@@ -146,7 +146,9 @@ struct PanelView: View {
         }
         
         vm.updateBackups = {
-            backupVM.fetchBackups()
+            Task {
+                await backupVM.fetchBackups()
+            }
         }
     }
 }

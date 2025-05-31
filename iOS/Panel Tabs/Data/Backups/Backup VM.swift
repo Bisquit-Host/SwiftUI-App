@@ -22,89 +22,70 @@ final class BackupVM {
         return dateFormatter.string(from: date)
     }
     
-    func deleteBackups(_ offsets: IndexSet) {
+    func deleteBackups(_ offsets: IndexSet) async {
         for index in offsets {
             let uuid = backups[index].uuid
             
-            deleteBackup(uuid)
+            await deleteBackup(uuid)
         }
     }
     
-    func fetchBackups() {
-        dataListAPI(id, endpoint: .backups) { (result: Result<BackupListResponse?, Error>) in
-            switch result {
-            case .success(let model):
-                if let model = model?.data {
-                    withAnimation {
-                        self.backups = model.map(\.attributes)
-                    }
-                }
-                
-            case .failure(let error):
-                SystemAlert.error(error)
+    func fetchBackups() async {
+        do {
+            let backups: BackupListResponse? = try await dataListAPI(
+                id,
+                endpoint: .backups
+            )
+            
+            if let backups = backups?.data.map(\.attributes) {
+                self.backups = backups
             }
+        } catch {
+            SystemAlert.error(error)
         }
     }
     
-    func lockBackup(_ uuid: String) {
-        backupLockAPI(id, uuid: uuid) { result in
-            switch result {
-            case .success(let model):
-                if let model = model?.attributes {
-                    if let index = self.backups.firstIndex(where: {
-                        $0.uuid == model.uuid
-                    }) {
-                        self.backups[index] = model
-                    }
-                }
-                
-            case .failure(let error):
-                SystemAlert.error(error)
+    func lockBackup(_ uuid: String) async {
+        do {
+            let backup = try await backupLockAPI(id, uuid: uuid)
+            
+            if let index = self.backups.firstIndex(where: {
+                $0.uuid == backup.uuid
+            }) {
+                self.backups[index] = backup
             }
+        } catch {
+            SystemAlert.error(error)
         }
     }
     
-    func createBackup() {
-        backupCreateAPI(id, name: textCreateBackup) { result in
-            switch result {
-            case .success(let model):
-                if let model = model?.attributes {
-                    withAnimation {
-                        self.backups.append(model)
-                    }
-                }
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-            }
+    func createBackup() async {
+        do {
+            let backup = try await backupCreateAPI(id, name: textCreateBackup)
+            self.backups.append(backup)
+        } catch {
+            SystemAlert.error(error)
         }
         
         textCreateBackup = ""
     }
     
-    func deleteBackup(_ uuid: String) {
-        dataDeleteAPI(id, itemId: uuid, endpoint: .backups) { result in
-            switch result {
-            case .success:
-                self.fetchBackups()
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-                
-                self.fetchBackups()
-            }
+    func deleteBackup(_ uuid: String) async {
+        do {
+            try await dataDeleteAPI(id, itemId: uuid, endpoint: .backups)
+        } catch {
+            SystemAlert.error(error)
         }
+        
+        await fetchBackups()
     }
     
-    func restoreBackup(_ uuid: String, truncate: Bool) {
-        backupRestoreAPI(id, uuid: uuid, truncate: truncate) { result in
-            switch result {
-            case .success:
-                SystemAlert.restored()
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-            }
+    func restoreBackup(_ uuid: String, truncate: Bool) async {
+        do {
+            try await backupRestoreAPI(id, uuid: uuid, truncate: truncate)
+            SystemAlert.restored()
+        } catch {
+            SystemAlert.error(error)
         }
     }
 }

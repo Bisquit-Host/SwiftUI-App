@@ -61,10 +61,12 @@ struct ServerCard: View {
         }
         .padding()
         .task {
-            vm.fetchServerUsage()
+            await vm.fetchServerUsage()
         }
         .onChange(of: store.updateServers) {
-            vm.fetchServerUsage()
+            Task {
+                await vm.fetchServerUsage()
+            }
         }
     }
 }
