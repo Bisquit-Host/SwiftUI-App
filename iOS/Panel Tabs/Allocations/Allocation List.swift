@@ -30,7 +30,7 @@ struct AllocationList: View {
         .toolbarTitleDisplayMode(.inline)
         .transparentList()
         .refreshableTask {
-            vm.fetchAllocations()
+            await vm.fetchAllocations()
         }
         .sheet($sheetCreate) {
             NavigationView {

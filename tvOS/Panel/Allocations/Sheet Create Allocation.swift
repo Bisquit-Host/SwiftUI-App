@@ -7,20 +7,22 @@ struct SheetCreateAllocation: View {
     var body: some View {
         List(vm.categories) { category in
             Button(category.name) {
-                assignAllocation(category.id)
+                assign(category.id)
             }
         }
         .navigationTitle("Create allocation")
         .foregroundStyle(.foreground)
         .frame(maxWidth: .infinity)
         .task {
-            vm.fetchCategories()
+            await vm.fetchCategories()
         }
     }
     
-    private func assignAllocation(_ category: Int) {
-        vm.assignAllocation(category) {
-            dismiss()
+    private func assign(_ category: Int) {
+        Task {
+            await vm.assignAllocation(category) {
+                dismiss()
+            }
         }
     }
 }

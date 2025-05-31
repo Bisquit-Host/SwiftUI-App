@@ -126,9 +126,9 @@ struct PanelView: View {
         
         if !System.lowPowerMode {
             fileVM.fetchFiles()
-            allocationVM.fetchAllocations()
             
             Task {
+                await allocationVM.fetchAllocations()
                 await startupVM.fetchStartupVariables()
                 await backupVM.fetchBackups()
                 await databaseVM.fetchDatabases()
