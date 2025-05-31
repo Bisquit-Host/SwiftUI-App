@@ -57,7 +57,7 @@ struct UserInvitationView: View {
         .presentationDetents([.medium])
         .transparentList()
         .task {
-            vm.fetchPermissions()
+            await vm.fetchPermissions()
         }
 #if os(iOS)
         .sheet(isPresented: $sheetContacts) {

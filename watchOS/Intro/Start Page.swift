@@ -19,7 +19,9 @@ struct StartPage: View {
             
             if vm.apiKey.count == 48 {
                 Button("Continue") {
-                    checkApiKey()
+                    Task {
+                        await checkApiKey()
+                    }
                 }
             }
 #if DEBUG
@@ -46,7 +48,9 @@ struct StartPage: View {
         }
         .onChange(of: vm.apiKey) { _, newValue in
             if newValue.count == 48 {
-                checkApiKey()
+                Task {
+                    await checkApiKey()
+                }
             }
         }
         .alert("Error \(vm.errorCode)", isPresented: $vm.alertInvalid) {

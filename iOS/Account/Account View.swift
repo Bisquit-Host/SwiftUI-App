@@ -73,8 +73,8 @@ struct AccountView: View {
         .toolbarBackground(.visible, for: .tabBar)
         .navigationTitle("Account")
         .refreshableTask {
-            vm.fetch()
-            vm.twoFaDetails()
+            await vm.fetch()
+            await vm.twoFaDetails()
         }
         .sheet($sheetEnable2Fa) {
             Enable2FAView()

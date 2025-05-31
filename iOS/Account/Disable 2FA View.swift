@@ -18,8 +18,10 @@ struct Disable2FaView: View {
                 .textContentType(.password)
             
             Button("Disable 2FA") {
-                vm.disable2Fa(code) {
-                    dismiss()
+                Task {
+                    await vm.disable2Fa(code) {
+                        dismiss()
+                    }
                 }
             }
         }

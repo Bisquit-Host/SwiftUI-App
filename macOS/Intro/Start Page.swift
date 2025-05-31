@@ -75,7 +75,9 @@ struct StartPage: View {
         }
         .onChange(of: vm.apiKey) { _, newValue in
             if newValue.count == 48 {
-                checkApiKey()
+                Task {
+                    await checkApiKey()
+                }
             }
         }
         //        .sheet($vm.sheetSupport) {

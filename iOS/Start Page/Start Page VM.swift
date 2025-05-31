@@ -16,27 +16,20 @@ final class StartPageVM {
     var sheetCloudKeys = false
     var sheetBrowsePlans = false
     
-    func fetchAccountDetails(onSuccess: @escaping () -> Void) {
+    func fetchAccountDetails(onSuccess: @escaping () -> Void) async {
         Keychain.save(apiKey, forKey: "selectedApiKey")
         
-        accountDetailsAPI { result in
-            main { [self] in
-                switch result {
-                case .success:
-                    onSuccess()
-                    
-                case .failure(let error):
-                    if let error = error as? PterError {
-                        errorCode = error.code
-                    }
-                    
-                    trigger.toggle()
-                    
-                    SystemAlert.error(error)
-                    
-                    askToDeleteKey()
-                }
+        do {
+            _ = try await accountDetailsAPI()
+            onSuccess()
+        } catch {
+            if let error = error as? PterError {
+                errorCode = error.code
             }
+            
+            trigger.toggle()
+            SystemAlert.error(error)
+            askToDeleteKey()
         }
     }
     

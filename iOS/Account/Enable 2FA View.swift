@@ -19,8 +19,10 @@ struct Enable2FAView: View {
                 .keyboardType(.numberPad)
             
             Button {
-                vm.enable2Fa(code) {
-                    dismiss()
+                Task {
+                    await vm.enable2Fa(code) {
+                        dismiss()
+                    }
                 }
             } label: {
                 Text("Verify")

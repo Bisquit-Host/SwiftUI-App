@@ -61,7 +61,7 @@ struct PanelSettingsView: View {
         .toolbarTitleDisplayMode(.inline)
         .transparentList()
         .task {
-            vm.accountDetails()
+            await vm.accountDetails()
             vm.serverName = server.name
             vm.serverDescription = server.description
         }

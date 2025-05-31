@@ -22,17 +22,11 @@ final class ServerSettingsVM {
         }
     }
     
-    func accountDetails() {
-        accountDetailsAPI { [self] result in
-            switch result {
-            case .success(let model):
-                if let model = model?.attributes {
-                    username = model.username
-                }
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-            }
+    func accountDetails() async {
+        do {
+            username = try await accountDetailsAPI().username
+        } catch {
+            SystemAlert.error(error)
         }
     }
 }

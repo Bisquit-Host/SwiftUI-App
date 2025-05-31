@@ -77,17 +77,11 @@ final class UsersVM {
         }
     }
     
-    func fetchPermissions() {
-        permissionListAPI { result in
-            switch result {
-            case .success(let model):
-                if let model = model?.attributes {
-                    self.permissions = model
-                }
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-            }
+    func fetchPermissions() async {
+        do {
+            permissions = try await permissionListAPI()
+        } catch {
+            SystemAlert.error(error)
         }
     }
     

@@ -27,7 +27,7 @@ struct UserList: View {
         .transparentList()
         .task {
             await vm.fetchUsers()
-            vm.fetchPermissions()
+            await vm.fetchPermissions()
         }
         .sheet($vm.sheetInvitation) {
             UserInvitationView()
