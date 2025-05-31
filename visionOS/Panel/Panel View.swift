@@ -105,7 +105,7 @@ struct PanelView: View {
         }
         .navigationTitle(vm.server?.name ?? "")
         .task {
-            vm.fetchServerDetails()
+            await vm.fetchServerDetails()
             
             if !System.lowPowerMode {
                 backupVM.fetchBackups()

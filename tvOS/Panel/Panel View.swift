@@ -103,7 +103,7 @@ struct PanelView: View {
             }
         }
         .task {
-            fetchData()
+            await fetchData()
         }
         .onDisappear {
             vm.disconnectWebSocket()
@@ -121,8 +121,8 @@ struct PanelView: View {
         }
     }
     
-    private func fetchData() {
-        vm.fetchServerDetails()
+    private func fetchData() async {
+        await vm.fetchServerDetails()
         
         if !System.lowPowerMode {
             fileVM.fetchFiles()

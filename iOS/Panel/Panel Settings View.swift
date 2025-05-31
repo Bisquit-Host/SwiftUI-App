@@ -64,7 +64,9 @@ struct PanelSettingsView: View {
             vm.serverDescription = server.description
         }
         .onDisappear {
-            panelVM.fetchServerDetails()
+            Task {
+                await panelVM.fetchServerDetails()
+            }
         }
         .alert("Reinstall Server", isPresented: $alertReinstall) {
             Button("Reinstall", role: .destructive) {

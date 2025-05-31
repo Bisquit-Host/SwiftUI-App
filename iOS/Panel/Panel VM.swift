@@ -55,17 +55,11 @@ final class PanelVM {
         }
     }
     
-    func fetchServerDetails() {
-        serverDetailsAPI(id) { result in
-            switch result {
-            case .success(let model):
-                if let model = model?.attributes {
-                    self.server = model
-                }
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-            }
+    func fetchServerDetails() async {
+        do {
+            server = try await serverDetailsAPI(id)
+        } catch {
+            SystemAlert.error(error)
         }
     }
     

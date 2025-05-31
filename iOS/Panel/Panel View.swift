@@ -42,7 +42,7 @@ struct PanelView: View {
         .ignoresSafeArea()
         .environment(vm)
         .task {
-            fetchData()
+            await fetchData()
         }
         .onDisappear {
             vm.disconnectWebSocket()
@@ -80,8 +80,8 @@ struct PanelView: View {
         }
     }
     
-    private func fetchData() {
-        vm.fetchServerDetails()
+    private func fetchData() async {
+        await vm.fetchServerDetails()
         
         vm.consoleDetails { data in
             if let data {

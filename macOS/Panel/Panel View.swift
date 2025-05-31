@@ -120,7 +120,7 @@ struct PanelView: View {
             .ignoresSafeArea()
         }
         .task {
-            vm.fetchServerDetails()
+            await vm.fetchServerDetails()
             
             vm.consoleDetails { data in
                 if let data {
@@ -129,7 +129,9 @@ struct PanelView: View {
             }
         }
         .onChange(of: server.id) {
-            vm.fetchServerDetails()
+            Task {
+                await vm.fetchServerDetails()
+            }
             
             vm.consoleDetails { data in
                 if let data {

@@ -100,15 +100,15 @@ struct ColumnDetail: View {
         .frame(minWidth: 300)
         .environment(vm)
         .task {
-            fetchData()
+            await fetchData()
         }
         .onDisappear {
             vm.disconnectWebSocket()
         }
     }
     
-    private func fetchData() {
-        vm.fetchServerDetails()
+    private func fetchData() async {
+        await vm.fetchServerDetails()
         
         vm.consoleDetails { data in
             if let data {

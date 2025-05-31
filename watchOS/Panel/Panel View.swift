@@ -30,7 +30,7 @@ struct PanelView: View {
         }
         .environment(vm)
         .task {
-            vm.fetchServerDetails()
+            await vm.fetchServerDetails()
             
             vm.consoleDetails { data in
                 if let data {
