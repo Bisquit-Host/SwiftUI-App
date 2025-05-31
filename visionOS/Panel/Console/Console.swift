@@ -80,7 +80,9 @@ struct Console: View {
                     Text("Launch the server to start receiving messages")
                 } actions: {
                     Button("🚀") {
-                        panelVM.changePower(.start)
+                        Task {
+                            await panelVM.changePower(.start)
+                        }
                     }
                 }
             }

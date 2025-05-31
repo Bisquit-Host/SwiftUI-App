@@ -30,7 +30,7 @@ struct AuthView: View {
             //            .opacity(typing.isTitleFinished ? 1 : 0)
         }
         .task {
-            vm.fetchServers(store.adminServerList)
+            await vm.fetchServers(store.adminServerList)
         }
         .task {
             delay(2) {

@@ -8,7 +8,10 @@ struct TopbarAdminButton: View {
         if store.devMode {
             Button {
                 store.adminServerList.toggle()
-                vm.fetchServers(store.adminServerList)
+                
+                Task {
+                    await vm.fetchServers(store.adminServerList)
+                }
             } label: {
                 Image(systemName: "person.badge.shield.checkmark")
                     .footnote(.bold)

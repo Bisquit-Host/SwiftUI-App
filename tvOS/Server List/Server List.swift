@@ -41,7 +41,7 @@ struct ServerList: View {
         }
         .background(BisquitFall())
         .task {
-            vm.fetchServers(store.adminServerList)
+            await vm.fetchServers(store.adminServerList)
         }
         .toolbar {
             NavigationLink("Settings") {
@@ -51,7 +51,10 @@ struct ServerList: View {
             if store.devMode {
                 Button {
                     store.adminServerList.toggle()
-                    vm.fetchServers(store.adminServerList)
+                    
+                    Task {
+                        await vm.fetchServers(store.adminServerList)
+                    }
                 } label: {
                     Text("Admin")
                         .foregroundStyle(store.adminServerList ? .primary : .secondary)

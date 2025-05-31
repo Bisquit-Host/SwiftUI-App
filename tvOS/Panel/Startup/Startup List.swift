@@ -11,7 +11,7 @@ struct StartupList: View {
         }
         .navigationTitle("Startup (view only)")
         .task {
-            vm.fetchStartupVariables()
+            await vm.fetchStartupVariables()
         }
     }
 }

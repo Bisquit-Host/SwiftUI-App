@@ -31,7 +31,9 @@ struct ConsoleTab: View {
                     .textInputAutocapitalization(.never)
                     .onSubmit {
                         if !vm.command.isEmpty {
-                            vm.sendCommand()
+                            Task {
+                                await vm.sendCommand()
+                            }
                         }
                     }
                     .onChange(of: vm.command) { _, newValue in
@@ -65,7 +67,9 @@ struct ConsoleTab: View {
         .background(BackgroundImage())
         .alert("Are you sure you want to perform the Kill action?", isPresented: $vm.alertKill) {
             Button("Kill", role: .destructive) {
-                panelVM.changePower(.kill)
+                Task {
+                    await panelVM.changePower(.kill)
+                }
             }
         }
         .overlay {

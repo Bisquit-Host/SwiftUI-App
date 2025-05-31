@@ -32,7 +32,9 @@ struct ServerCardParent: View {
         }
         .confirmationDialog("Perform kill action", isPresented: $confirmKill, titleVisibility: .visible) {
             Button("Kill", role: .destructive) {
-                PteroNet.powerSignal(server.id, do: .kill)
+                Task {
+                    await PteroNet.powerSignal(server.id, do: .kill)
+                }
             }
         }
     }

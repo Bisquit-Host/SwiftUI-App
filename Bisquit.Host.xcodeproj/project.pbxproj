@@ -3175,8 +3175,8 @@
 			isa = PBXGroup;
 			children = (
 				F337C15F2A8C2CE0006F321C /* Startup View.swift */,
-				F337C1612A8CE7C0006F321C /* Startup Card.swift */,
 				F337C1682A8D07E2006F321C /* Startup VM.swift */,
+				F337C1612A8CE7C0006F321C /* Startup Card.swift */,
 			);
 			path = Startup;
 			sourceTree = "<group>";

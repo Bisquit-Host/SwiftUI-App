@@ -27,7 +27,9 @@ struct PanelSettingsView: View {
                 
                 if vm.serverName != server.name || vm.serverDescription != server.description {
                     Button("Save") {
-                        vm.serverRename()
+                        Task {
+                            await vm.serverRename()
+                        }
                     }
                     .animation(.default, value: vm.serverName + vm.serverDescription)
                 }

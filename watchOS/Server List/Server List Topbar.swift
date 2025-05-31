@@ -10,7 +10,9 @@ struct ServerListTopbar: View {
     var body: some View {
         HStack {
             SFButton("arrow.triangle.2.circlepath") {
-                vm.fetchServers(store.adminServerList)
+                Task {
+                    await vm.fetchServers(store.adminServerList)
+                }
             }
             .background(.ultraThinMaterial)
             

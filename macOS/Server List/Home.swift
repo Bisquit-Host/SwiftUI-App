@@ -34,7 +34,7 @@ struct Home: View {
             .ignoresSafeArea()
         }
         .task {
-            vm.fetchServers(store.adminServerList)
+            await vm.fetchServers(store.adminServerList)
         }
     }
 }

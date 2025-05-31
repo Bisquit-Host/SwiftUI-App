@@ -36,7 +36,7 @@ struct ServerList: View {
         }
         .navigationBarBackButtonHidden()
         .task {
-            vm.fetchServers(store.adminServerList)
+            await vm.fetchServers(store.adminServerList)
         }
     }
 }

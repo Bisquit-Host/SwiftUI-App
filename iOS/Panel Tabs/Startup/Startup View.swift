@@ -64,10 +64,12 @@ struct StartupView: View {
         .background(BackgroundImage())
         .scrollContentBackground(.hidden)
         .refreshableTask {
-            vm.fetchStartupVariables()
+            await vm.fetchStartupVariables()
         }
         .onChange(of: currentDockerImage) { _, newDockerImage in
-            vm.updateDockerImage(newDockerImage)
+            Task {
+                await vm.updateDockerImage(newDockerImage)
+            }
         }
     }
 }

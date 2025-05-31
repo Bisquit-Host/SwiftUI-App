@@ -548,7 +548,7 @@ final class AudioRecorder {
 				<key>trailing</key>
 				<string>
             SFButton("arrow.triangle.2.circlepath") {
-                vm.fetchServers(store.adminServerList)
+                Task {
 </string>
 			</dict>
 			<key>type</key>

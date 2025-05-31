@@ -9,15 +9,21 @@ struct PowerSwitchToolbar: View {
         Menu {
             ControlGroup {
                 MenuButton("Start", icon: "play") {
-                    vm.changePower(.start)
+                    Task {
+                        await vm.changePower(.start)
+                    }
                 }
                 
                 MenuButton("Restart", icon: "arrow.clockwise") {
-                    vm.changePower(.restart)
+                    Task {
+                        await vm.changePower(.restart)
+                    }
                 }
                 
                 MenuButton("Stop", icon: "pause") {
-                    vm.changePower(.stop)
+                    Task {
+                        await vm.changePower(.stop)
+                    }
                 }
                 
                 MenuButton("Kill", role: .destructive, icon: "power") {
@@ -36,7 +42,9 @@ struct PowerSwitchToolbar: View {
         .hoverEffect(.lift)
         .confirmationDialog("Perform kill action", isPresented: $confirmKill, titleVisibility: .visible) {
             Button("Kill", role: .destructive) {
-                vm.changePower(.kill)
+                Task {
+                    await vm.changePower(.kill)
+                }
             }
         }
     }

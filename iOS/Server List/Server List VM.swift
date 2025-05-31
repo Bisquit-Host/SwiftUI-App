@@ -66,45 +66,36 @@ final class ServerListVM {
         UserDefaults.standard.setServerAttributesArray(servers, forKey: "servers")
     }
     
-    func fetchServers(_ isAdmin: Bool) {
-        serverListAPI(isAdmin) { result in
-            switch result {
-            case .success(let model):
-                guard let model else {
-                    return
+    func fetchServers(_ isAdmin: Bool) async {
+        do {
+            let model = try await serverListAPI(isAdmin)
+            
+            let loadedServers = model.data.map(\.attributes)
+            let totalPages = model.meta.pagination.totalPages
+            
+            if totalPages > 1 {
+                await fetchAllPages(isAdmin, totalPages: totalPages, currentServers: loadedServers)
+            } else {
+                withAnimation {
+                    servers = loadedServers
                 }
                 
-                let loadedServers = model.data.map(\.attributes)
-                let totalPages = model.meta.pagination.totalPages
-                
-                if totalPages > 1 {
-                    self.fetchAllPages(isAdmin, totalPages: totalPages, currentServers: loadedServers)
-                } else {
-                    withAnimation {
-                        self.servers = loadedServers
-                    }
-                    
-                    self.saveServers()
-                }
-                
-                Task {
-                    await self.submitScore()
-                }
-                
-#if canImport(ContactProvider)
-                if ValueStore().contactsProviderEnabled {
-                    Task {
-                        await self.fetchUniqueUsers()
-                    }
-                }
-#endif
-                
-#if canImport(CoreSpotlight) && !os(tvOS)
-                self.indexItems(self.servers)
-#endif
-            case .failure(let error):
-                SystemAlert.error(error)
+                saveServers()
             }
+            
+            await self.submitScore()
+            
+#if canImport(ContactProvider)
+            if ValueStore().contactsProviderEnabled {
+                await self.fetchUniqueUsers()
+            }
+#endif
+            
+#if canImport(CoreSpotlight) && !os(tvOS)
+            self.indexItems(self.servers)
+#endif
+        } catch {
+            SystemAlert.error(error)
         }
     }
     
@@ -112,35 +103,23 @@ final class ServerListVM {
         _ isAdmin: Bool,
         totalPages: Int,
         currentServers: [ServerAttributes]
-    ) {
+    ) async {
         var loadedServers = currentServers
-        let group = DispatchGroup()
         
         for page in 2...totalPages {
-            group.enter()
-            
-            serverListAPI(isAdmin, page: page) { result in
-                switch result {
-                case .success(let model):
-                    if let model {
-                        let servers = model.data.map(\.attributes)
-                        loadedServers.append(contentsOf: servers)
-                    }
-                    
-                case .failure(let error):
-                    SystemAlert.error(error)
-                }
-                
-                group.leave()
+            do {
+                let model = try await serverListAPI(isAdmin, page: page)
+                let servers = model.data.map(\.attributes)
+                loadedServers.append(contentsOf: servers)
+            } catch {
+                SystemAlert.error(error)
             }
         }
         
-        group.notify(queue: .main) {
-            withAnimation {
-                self.servers = loadedServers
-            }
-            
-            self.saveServers()
+        withAnimation {
+            self.servers = loadedServers
         }
+        
+        self.saveServers()
     }
 }
