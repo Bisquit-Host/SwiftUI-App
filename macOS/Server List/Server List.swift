@@ -3,6 +3,7 @@ import PteroNet
 
 struct ServerList: View {
     @Environment(ServerListVM.self) private var vm
+    @Environment(UpdateChecker.self) private var updater
     @Environment(\.openURL) private var openUrl
     
     private let gradient = Gradient(colors: [
@@ -21,7 +22,7 @@ struct ServerList: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(.vertical)
             
-            if vm.alertUpdate {
+            if updater.alertUpdate {
                 if let url = URL(string: "https://apps.apple.com/app/bisquit-host/id1639409934") {
                     Link(destination: url) {
                         HStack {
@@ -62,4 +63,5 @@ struct ServerList: View {
     ServerList()
         .padding()
         .environment(ServerListVM())
+        .environment(UpdateChecker())
 }

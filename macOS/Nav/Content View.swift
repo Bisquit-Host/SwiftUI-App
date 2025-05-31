@@ -42,10 +42,6 @@ struct ContentView: View {
         }
         .onFirstAppear {
             vm.loadServers()
-            
-            if !System.lowPowerMode {
-                await vm.checkForUpdates()
-            }
         }
         .task {
             try? nav.load()

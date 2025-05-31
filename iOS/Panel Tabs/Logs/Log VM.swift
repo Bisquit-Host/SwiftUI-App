@@ -77,23 +77,15 @@ final class LogVM {
             .monthSymbols[Calendar.current.component(.month, from: date) - 1]
     }
     
-    func fetchLogs(_ prefetch: Bool = false) {
-        logListAPI(id) { result in
-            switch result {
-            case .success(let model):
-                if let model = model?.data {
-                    withAnimation {
-                        self.logs = model.map(\.attributes)
-                    }
-                    
-                    if prefetch {
-                        self.prefetchActorImages()
-                    }
-                }
-                
-            case .failure(let error):
-                SystemAlert.error(error)
+    func fetchLogs(_ prefetch: Bool = false) async {
+        do {
+            self.logs = try await logListAPI(id, printResponse: true)
+            
+            if prefetch {
+                self.prefetchActorImages()
             }
+        } catch {
+            SystemAlert.error(error)
         }
     }
     

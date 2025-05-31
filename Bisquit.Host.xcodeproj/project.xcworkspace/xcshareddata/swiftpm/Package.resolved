@@ -34,7 +34,7 @@
       "location" : "https://github.com/TopScrech/GaypadKit",
       "state" : {
         "branch" : "main",
-        "revision" : "dfe4af71678cafa297a46658260eb369df579a9d"
+        "revision" : "ba199aa6b8ec805a61e417633b10340c477bb52f"
       }
     },
     {
@@ -78,8 +78,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/PostHog/posthog-ios.git",
       "state" : {
-        "revision" : "479ce5ba9ce899dfe969dea7c88cd110adb800e7",
-        "version" : "3.25.1"
+        "revision" : "e4600bc73a038747f57e8ff94fe01ad6d79204ee",
+        "version" : "3.26.1"
       }
     },
     {
@@ -97,7 +97,7 @@
       "location" : "https://github.com/TopScrech/PteroNet",
       "state" : {
         "branch" : "main",
-        "revision" : "1ea274af97dfa08c88e9b49f297a4451a34d1be7"
+        "revision" : "b07942dc20759528623f075f4a7f8f38502054bf"
       }
     },
     {
@@ -106,7 +106,7 @@
       "location" : "https://github.com/TopScrech/QuickLooking",
       "state" : {
         "branch" : "main",
-        "revision" : "edf0c04157add9209a8f8508cea3b497c319e17a"
+        "revision" : "cac8718105ed30889153c02a87413eb41aa5b95e"
       }
     },
     {
@@ -124,7 +124,7 @@
       "location" : "https://github.com/TopScrech/ScrechKit",
       "state" : {
         "branch" : "main",
-        "revision" : "6b5e6f0e278ba0d2b2c9d144479128f54b8f20db"
+        "revision" : "b4ffcdfc764889a0def8c74993b3218732cb8351"
       }
     },
     {
@@ -141,8 +141,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-collections.git",
       "state" : {
-        "revision" : "671108c96644956dddcd89dd59c203dcdb36cec7",
-        "version" : "1.1.4"
+        "revision" : "c1805596154bb3a265fd91b8ac0c4433b4348fb0",
+        "version" : "1.2.0"
       }
     },
     {

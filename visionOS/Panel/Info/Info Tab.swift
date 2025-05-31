@@ -67,7 +67,7 @@ struct InfoTab: View {
         }
         .task {
             if !System.lowPowerMode {
-                logVM.fetchLogs(true)
+                await logVM.fetchLogs(true)
             }
         }
     }

@@ -31,7 +31,7 @@ struct InfoTab: View {
         .navigationTitle("Info")
         .task {
             users.fetchUsers()
-            logs.fetchLogs()
+            await logs.fetchLogs()
         }
     }
 }

@@ -115,7 +115,7 @@ struct InfoTab: View {
             serverSettingsVM.serverDescription = server.description
             
             if !System.lowPowerMode {
-                logVM.fetchLogs(true)
+                await logVM.fetchLogs(true)
                 userVM.fetchUsers(true)
                 
                 Task {

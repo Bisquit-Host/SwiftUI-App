@@ -12,7 +12,6 @@ final class ServerListVM {
     var sheetKeyStorage = false
     var sheetDiscover = false
     var showBilling = false
-    var alertUpdate = false
     
     // MARK: - Filter/Search
     var searchField = ""
