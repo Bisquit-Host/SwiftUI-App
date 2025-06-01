@@ -593,7 +593,6 @@
 		F34C055A29F11E010031ABE1 /* Server Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* Server Card VM.swift */; };
 		F34F289A2ACDAD9B00FD618A /* tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34F28992ACDAD9B00FD618A /* tab.swift */; };
 		F34F289B2ACDAD9B00FD618A /* tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34F28992ACDAD9B00FD618A /* tab.swift */; };
-		F34F289D2ACDADA500FD618A /* tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34F28992ACDAD9B00FD618A /* tab.swift */; };
 		F34F289F2ACDADA600FD618A /* tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34F28992ACDAD9B00FD618A /* tab.swift */; };
 		F34F28A02ACDADB200FD618A /* tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34F28992ACDAD9B00FD618A /* tab.swift */; };
 		F35081AF2AF30E2B00835CC0 /* Tip Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A800312A7313E900CAC40B /* Tip Cloud Keys.swift */; };
@@ -5386,7 +5385,6 @@
 				F35FEB112B09F4D4004DA05D /* Network VM.swift in Sources */,
 				F3A800342A7313E900CAC40B /* Tip Cloud Keys.swift in Sources */,
 				F3464D2D2A863A6100188B0C /* Create Backup.swift in Sources */,
-				F34F289D2ACDADA500FD618A /* tab.swift in Sources */,
 				F3015DD92D9F24F600B9BCC6 /* Log Card Event.swift in Sources */,
 				F31B2D982A7AD8C800C08EE6 /* Ansi.swift in Sources */,
 				F3499EFE2A277FDF006101B7 /* File Icon.swift in Sources */,
