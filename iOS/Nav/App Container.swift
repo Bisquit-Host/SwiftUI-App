@@ -50,6 +50,7 @@ struct AppContainer: View {
         .onOpenURL(perform: linking.handleDeepLink)
         .onFirstAppear {
             await updater.checkForUpdates()
+            network.defineStatus()
         }
 #if os(iOS) || os(visionOS)
         .appStoreOverlay($updater.alertUpdate, id: "1639409934")
