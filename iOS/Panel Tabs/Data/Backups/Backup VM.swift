@@ -83,7 +83,7 @@ final class BackupVM {
     func restoreBackup(_ uuid: String, truncate: Bool) async {
         do {
             try await backupRestoreAPI(id, uuid: uuid, truncate: truncate)
-            SystemAlert.restored()
+            await SystemAlert.restored()
         } catch {
             SystemAlert.error(error)
         }

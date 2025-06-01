@@ -7,6 +7,8 @@ import AlertKit
 
 final class SystemAlert {
 #if canImport(AlertKit)
+    
+    @MainActor
     static func copied() {
         AlertKitAPI.present(
             title: NSLocalizedString("Copied", comment: ""),
@@ -19,14 +21,17 @@ final class SystemAlert {
     static func networkError() {
         let image = UIImage(systemName: "exclamationmark.triangle")!
         
-        AlertKitAPI.present(
-            title: NSLocalizedString("Network Error", comment: ""),
-            icon: .custom(image),
-            style: .iOS17AppleMusic,
-            haptic: .error
-        )
+        main {
+            AlertKitAPI.present(
+                title: NSLocalizedString("Network Error", comment: ""),
+                icon: .custom(image),
+                style: .iOS17AppleMusic,
+                haptic: .error
+            )
+        }
     }
     
+    @MainActor
     static func error(_ title: String, subtitle: String?) {
         AlertKitAPI.present(
             title: title,
@@ -38,37 +43,35 @@ final class SystemAlert {
     }
 #endif
     
+    @MainActor
     static func restored() {
 #if canImport(AlertKit)
-        main {
-            AlertKitAPI.present(
-                title: "Restored",
-                subtitle: "The server has been restored",
-                icon: .done,
-                style: .iOS17AppleMusic,
-                haptic: .success
-            )
-        }
+        AlertKitAPI.present(
+            title: "Restored",
+            subtitle: "The server has been restored",
+            icon: .done,
+            style: .iOS17AppleMusic,
+            haptic: .success
+        )
 #endif
     }
     
+    @MainActor
     static func reinstalled() {
 #if canImport(AlertKit)
-        main {
-            AlertKitAPI.present(
-                title: "Reinstalled",
-                subtitle: "The server has been reinstalled",
-                icon: .done,
-                style: .iOS17AppleMusic,
-                haptic: .success
-            )
-        }
+        AlertKitAPI.present(
+            title: "Reinstalled",
+            subtitle: "The server has been reinstalled",
+            icon: .done,
+            style: .iOS17AppleMusic,
+            haptic: .success
+        )
 #endif
     }
     
+    @MainActor
     static func changesSaved() {
 #if canImport(AlertKit)
-        main {
             AlertKitAPI.present(
                 title: "Changes Saved",
                 subtitle: "The file has been saved",
@@ -76,7 +79,6 @@ final class SystemAlert {
                 style: .iOS17AppleMusic,
                 haptic: .success
             )
-        }
 #endif
     }
     
