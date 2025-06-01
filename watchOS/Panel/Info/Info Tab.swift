@@ -30,8 +30,10 @@ struct InfoTab: View {
         }
         .navigationTitle("Info")
         .task {
-            await users.fetchUsers()
-            await logs.fetchLogs()
+            async let users: () = users.fetchUsers()
+            async let logs: () = logs.fetchLogs()
+            
+            _ = await (users, logs)
         }
     }
 }

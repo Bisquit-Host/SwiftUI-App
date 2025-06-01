@@ -115,14 +115,21 @@ struct ColumnDetail: View {
         }
         
         if !System.lowPowerMode {
-            Task {
-                await fileVM.fetchFiles()
-                await startupVM.fetchStartupVariables()
-                await backupVM.fetchBackups()
-                await databaseVM.fetchDatabases()
-                await scheduleVM.fetchSchedules()
-                await subdomainVM.fetchSubdomains()
-            }
+            async let files: () = fileVM.fetchFiles()
+            async let startup: () = startupVM.fetchStartupVariables()
+            async let backups: () = backupVM.fetchBackups()
+            async let databases: () = databaseVM.fetchDatabases()
+            async let schedules: () = scheduleVM.fetchSchedules()
+            async let subdomains: () = subdomainVM.fetchSubdomains()
+            
+            _ = await (
+                files,
+                startup,
+                backups,
+                databases,
+                schedules,
+                subdomains
+            )
         }
         
         vm.updateBackups = {

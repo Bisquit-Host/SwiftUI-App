@@ -868,7 +868,7 @@ final class AudioRecorder {
 				<key>trailing</key>
 				<string>        //        .background(BisquitFall())
         .refreshableTask {
-            vm.fetchServers(store.adminServerList)
+            await vm.fetchServers(store.adminServerList)
 </string>
 			</dict>
 			<key>type</key>

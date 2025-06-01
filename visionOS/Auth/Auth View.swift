@@ -31,10 +31,8 @@ struct AuthView: View {
         }
         .task {
             await vm.fetchServers(store.adminServerList)
-        }
-        .task {
+            
             delay(2) {
-                //            delay(5) {
                 navState.navigate(.toServerList)
             }
         }

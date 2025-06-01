@@ -25,8 +25,16 @@ struct UserList: View {
         .background(.clear)
         .clipShape(.rect(cornerRadius: 16))
         .task {
-            await vm.fetchUsers()
-            await vm.fetchPermissions()
+            let usersTask = Task {
+                await vm.fetchUsers()
+            }
+            
+            let permissionsTask = Task {
+                await vm.fetchPermissions()
+            }
+            
+            await usersTask.value
+            await permissionsTask.value
         }
         .onChange(of: id) {
             Task {

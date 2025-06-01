@@ -107,20 +107,28 @@ struct PanelView: View {
         .task {
             await vm.fetchServerDetails()
             
+            if let data = await vm.consoleDetails() {
+                vm.connectWebSocket(data)
+            }
+            
             if !System.lowPowerMode {
-                await fileVM.fetchFiles()
-                await userVM.fetchUsers(true)
-                await subdomainVM.fetchSubdomains()
-                await backupVM.fetchBackups()
-                await dbVM.fetchDatabases()
+                async let files: () = fileVM.fetchFiles()
+                async let users: () = userVM.fetchUsers(true)
+                async let subdomains: () = subdomainVM.fetchSubdomains()
+                async let backups: () = backupVM.fetchBackups()
+                async let databases: () = dbVM.fetchDatabases()
+                
+                _ = await (
+                    files,
+                    users,
+                    subdomains,
+                    backups,
+                    databases
+                )
             }
             
             vm.updateBackups = {
                 await backupVM.fetchBackups()
-            }
-            
-            if let data = await vm.consoleDetails() {
-                vm.connectWebSocket(data)
             }
         }
         .onDisappear {

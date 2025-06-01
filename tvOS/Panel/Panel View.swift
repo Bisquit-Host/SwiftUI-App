@@ -124,20 +124,32 @@ struct PanelView: View {
     private func fetchData() async {
         await vm.fetchServerDetails()
         
-        if !System.lowPowerMode {
-            await fileVM.fetchFiles()
-            await allocationVM.fetchAllocations()
-            await startupVM.fetchStartupVariables()
-            await backupVM.fetchBackups()
-            await databaseVM.fetchDatabases()
-            await scheduleVM.fetchSchedules()
-            await usersVM.fetchUsers(true)
-            await logVM.fetchLogs(true)
-            await subdomainVM.fetchSubdomains()
-        }
-        
         if let data = await vm.consoleDetails() {
             vm.connectWebSocket(data)
+        }
+        
+        if !System.lowPowerMode {
+            async let files: () = fileVM.fetchFiles()
+            async let allocations: () = allocationVM.fetchAllocations()
+            async let startup: () = startupVM.fetchStartupVariables()
+            async let backups: () = backupVM.fetchBackups()
+            async let databases: () = databaseVM.fetchDatabases()
+            async let schedules: () = scheduleVM.fetchSchedules()
+            async let users: () = usersVM.fetchUsers(true)
+            async let logs: () = logVM.fetchLogs(true)
+            async let subdomains: () = subdomainVM.fetchSubdomains()
+            
+            _ = await (
+                files,
+                allocations,
+                startup,
+                backups,
+                databases,
+                schedules,
+                users,
+                logs,
+                subdomains
+            )
         }
         
         vm.updateBackups = {
