@@ -17,14 +17,14 @@ final class ServerCardVM {
     
     func fetchServerUsage() async {
         do {
-            let resourceUsage = try await serverUsageAPI(id)
-            updateUsage(resourceUsage)
+            let usage = try await serverUsageAPI(id)
+            updateUsage(usage)
         } catch {
             SystemAlert.error(error)
         }
     }
     
-    func updateUsage(_ model: ResourceUsageAttributes) {
+    private func updateUsage(_ model: ResourceUsageAttributes) {
         let usage = model.usage
         
         cpuUsage = usage.cpu
