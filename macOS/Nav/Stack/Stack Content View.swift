@@ -45,9 +45,9 @@ struct StackContentView: View {
                 case .tab(let tab):
                     VStack {
                         Text(tab.name)
-                            .onAppear {
-                                try? nav.save()
-                            }
+                    }
+                    .onAppear {
+                        try? nav.save()
                     }
                 }
             }
