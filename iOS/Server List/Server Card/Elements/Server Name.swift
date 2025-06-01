@@ -15,7 +15,7 @@ struct ServerName: View {
                 .headline()
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
-                .foregroundColor(.primary)
+                .primary()
                 .blur(radius: store.hideServerNames ? 5 : 0)
         }
     }

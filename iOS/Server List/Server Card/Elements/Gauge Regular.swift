@@ -43,7 +43,7 @@ struct GaugeRegular: View {
     
     private var titleLabel: some View {
         Text(name.rawValue.uppercased())
-            .foregroundColor(.primary)
+            .primary()
     }
     
     private var valueLabel: some View {
@@ -60,7 +60,7 @@ struct GaugeRegular: View {
                 Text(formatBytes(value).replacing(" ", with: ""))
             }
         }
-        .foregroundColor(.primary)
+        .primary()
         .redacted(isRedacted)
     }
 }
