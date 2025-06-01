@@ -95,10 +95,14 @@ final class FileTabVM: ObservableObject {
     
     func fetchFiles(_ path: String = "") async {
         do {
-            files = try await fileListAPI(id, path: path).reversed()
+            let files = try await fileListAPI(id, path: path)
+            
+            await MainActor.run {
+                self.files = files.reversed()
 #if os(macOS)
-            self.degrees += 360
+                degrees += 360
 #endif
+            }
         } catch {
             SystemAlert.error(error)
         }
