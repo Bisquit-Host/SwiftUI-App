@@ -56,7 +56,7 @@ struct FileTab: View {
             QRCodeView(vm.downloadUrl)
         }
         .task {
-            vm.fetchFiles(root)
+            await vm.fetchFiles(root)
         }
     }
 }

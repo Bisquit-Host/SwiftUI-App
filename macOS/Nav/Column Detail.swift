@@ -115,9 +115,8 @@ struct ColumnDetail: View {
         }
         
         if !System.lowPowerMode {
-            fileVM.fetchFiles()
-            
             Task {
+                await fileVM.fetchFiles()
                 await startupVM.fetchStartupVariables()
                 await backupVM.fetchBackups()
                 await databaseVM.fetchDatabases()

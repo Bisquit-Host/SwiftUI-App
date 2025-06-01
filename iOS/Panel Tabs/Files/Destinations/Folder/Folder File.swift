@@ -44,13 +44,15 @@ struct FolderFile: View {
             vm.path = path
         }
         .refreshableTask {
-            vm.fetchFiles(path)
+            await vm.fetchFiles(path)
         }
         .background(BackgroundImage())
         .scrollContentBackground(.hidden)
         .onChange(of: image) {
             if let image {
-                vm.handleImageImport(image, at: path)
+                Task {
+                    await vm.handleImageImport(image, at: path)
+                }
             }
         }
         .toolbar {
@@ -78,7 +80,9 @@ struct FolderFile: View {
                 image: .init(content: "folder.badge.plus", foreground: .white),
                 button1: .init(content: "Create", foreground: .white) { folder in
                     if !folder.isEmpty {
-                        vm.createFolder(folder, at: path)
+                        Task {
+                            await vm.createFolder(folder, at: path)
+                        }
                     }
                     
                     alertNewFolder = false
@@ -97,7 +101,9 @@ struct FolderFile: View {
         for file in offsets {
             let name = vm.filteredFiles[file].name
             
-            vm.deleteFile(name, at: path)
+            Task {
+                await vm.deleteFile(name, at: path)
+            }
         }
     }
 }

@@ -45,7 +45,9 @@ struct FileView: View {
 #endif
             } else {
                 Button {
-                    qlVM.getFileUrl(name, at: root)
+                    Task {
+                        await qlVM.getFileUrl(name, at: root)
+                    }
                     
                     //        NavigationLink {
                     //            QuickLookFile(id, name: name, at: path)

@@ -40,7 +40,7 @@ struct QuickLookFile: View {
         .navigationTitle(name)
         .ignoresSafeArea(edges: .bottom)
         .task {
-            fetchDownloadUrl(name, at: root)
+            await fetchDownloadUrl(name, at: root)
         }
         .toolbar {
             if let fileURL {
@@ -49,17 +49,12 @@ struct QuickLookFile: View {
         }
     }
     
-    private func fetchDownloadUrl(_ file: String, at root: String) {
-        fileDownloadAPI(id, path: root + "/" + file) { result in
-            switch result {
-            case .success(let model):
-                if let model = model?.attributes.url {
-                    downloadFile(model, name: file)
-                }
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-            }
+    private func fetchDownloadUrl(_ file: String, at root: String) async {
+        do {
+            let url = try await fileDownloadAPI(id, path: root + "/" + file)
+            downloadFile(url, name: file)
+        } catch {
+            SystemAlert.error(error)
         }
     }
     

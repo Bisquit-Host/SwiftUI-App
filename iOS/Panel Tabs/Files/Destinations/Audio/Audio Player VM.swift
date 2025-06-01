@@ -11,17 +11,12 @@ final class AudioPlayerVM {
     
     var audioUrl: URL? = nil
     
-    func downloadFile(_ file: String, at path: String) {
-        fileDownloadAPI(id, path: path + "/\(file)") { result in
-            switch result {
-            case .success(let model):
-                if let model = model?.attributes.url {
-                    self.downloadVideo(model, name: file)
-                }
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-            }
+    func downloadFile(_ file: String, at path: String) async {
+        do {
+            let url = try await fileDownloadAPI(id, path: path + "/\(file)")
+            self.downloadVideo(url, name: file)
+        } catch {
+            SystemAlert.error(error)
         }
     }
     

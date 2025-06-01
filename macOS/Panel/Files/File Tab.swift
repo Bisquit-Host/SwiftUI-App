@@ -45,7 +45,9 @@ struct FileTab: View {
         .navigationSubtitle(root)
 #endif
         .onChange(of: id) {
-            vm.fetchFiles(root)
+            Task {
+                await vm.fetchFiles(root)
+            }
         }
         .onChange(of: nav.selectedServers) {
             nav.folderPath.removeAll()
@@ -55,7 +57,7 @@ struct FileTab: View {
         }
         .task {
             showToolbar = true
-            vm.fetchFiles(root)
+            await vm.fetchFiles(root)
         }
         .onDisappear {
             showToolbar = false

@@ -37,7 +37,7 @@ struct PanelView: View {
             }
             
             if !System.lowPowerMode {
-                fileVM.fetchFiles()
+                await fileVM.fetchFiles()
             }
         }
         .onDisappear {

@@ -14,19 +14,12 @@ final class VideoFileVM {
     var isSensitive = false
     var localVideoUrl: URL?
     
-    func fetchVideoUrl(_ name: String, root: String) {
-        fileDownloadAPI(id, path: root + "/" + name) { result in
-            switch result {
-            case .success(let model):
-                guard let model = model?.attributes else {
-                    return
-                }
-                
-                self.saveVideo(model.url)
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-            }
+    func fetchVideoUrl(_ name: String, root: String) async {
+        do {
+            let url = try await fileDownloadAPI(id, path: root + "/" + name)
+            self.saveVideo(url)
+        } catch {
+            SystemAlert.error(error)
         }
     }
     

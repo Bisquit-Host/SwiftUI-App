@@ -31,7 +31,7 @@ struct VideoFile: View {
         }
         .navigationTitle(name)
         .task {
-            vm.fetchVideoUrl(name, root: path)
+            await vm.fetchVideoUrl(name, root: path)
         }
         .toolbar {
 #if os(tvOS)
@@ -74,8 +74,10 @@ struct VideoFile: View {
                 
                 Section {
                     Button(role: .destructive) {
-                        fileVm.deleteFile(name, at: path) {
-                            dismiss()
+                        Task {
+                            await fileVm.deleteFile(name, at: path) {
+                                dismiss()
+                            }
                         }
                     } label: {
                         Label("Delete", systemImage: "trash")

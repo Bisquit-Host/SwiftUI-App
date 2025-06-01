@@ -47,26 +47,7 @@ struct CredentialsView: View {
                 Spacer()
                 
                 Button("Update", role: .destructive) {
-                    switch whatToUpdate {
-                    case "email":
-                        vm.updateCredentials(
-                            type: .email(
-                                email: email,
-                                password: password
-                            )
-                        )
-                        
-                    case "password":
-                        vm.updateCredentials(
-                            type: .password(
-                                currentPassword: password,
-                                newPassword: newPassword,
-                                passwordConfirmation: newPasswordAgain
-                            )
-                        )
-                        
-                    default: break
-                    }
+                    update()
                 }
                 
                 Spacer()
@@ -86,6 +67,31 @@ struct CredentialsView: View {
         .monospaced()
         .ignoresSafeArea()
         .multilineTextAlignment(.center)
+    }
+    
+    private func update() {
+        Task {
+            switch whatToUpdate {
+            case "email":
+                await vm.updateCredentials(
+                    type: .email(
+                        email: email,
+                        password: password
+                    )
+                )
+                
+            case "password":
+                await vm.updateCredentials(
+                    type: .password(
+                        currentPassword: password,
+                        newPassword: newPassword,
+                        passwordConfirmation: newPasswordAgain
+                    )
+                )
+                
+            default: break
+            }
+        }
     }
 }
 

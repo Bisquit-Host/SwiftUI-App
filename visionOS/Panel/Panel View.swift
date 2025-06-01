@@ -108,14 +108,11 @@ struct PanelView: View {
             await vm.fetchServerDetails()
             
             if !System.lowPowerMode {
-                fileVM.fetchFiles()
-                
-                Task {
-                    await userVM.fetchUsers(true)
-                    await subdomainVM.fetchSubdomains()
-                    await backupVM.fetchBackups()
-                    await dbVM.fetchDatabases()
-                }
+                await fileVM.fetchFiles()
+                await userVM.fetchUsers(true)
+                await subdomainVM.fetchSubdomains()
+                await backupVM.fetchBackups()
+                await dbVM.fetchDatabases()
             }
             
             vm.updateBackups = {

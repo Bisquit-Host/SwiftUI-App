@@ -21,8 +21,10 @@ struct FileErrorView: View {
             }
             
             Button("Delete", role: .destructive) {
-                vm.deleteFile(name, at: path) {
-                    dismiss()
+                Task {
+                    await vm.deleteFile(name, at: path) {
+                        dismiss()
+                    }
                 }
             }
         }

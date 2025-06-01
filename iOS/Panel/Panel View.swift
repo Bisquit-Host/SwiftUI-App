@@ -65,7 +65,9 @@ struct PanelView: View {
                 image: .init(content: "folder.badge.plus", foreground: .white),
                 button1: .init(content: "Create", foreground: .white) { folder in
                     if !folder.isEmpty {
-                        fileVM.createFolder(folder, at: fileVM.path)
+                        Task {
+                            await fileVM.createFolder(folder, at: fileVM.path)
+                        }
                     }
                     
                     vm.alertNewFolder = false
@@ -78,63 +80,58 @@ struct PanelView: View {
             )
             .transition(.blurReplace.combined(with: .scale(0.8)))
         }
-}
-
-private func fetchData() async {
-    await vm.fetchServerDetails()
+    }
     
-    Task {
+    private func fetchData() async {
+        await vm.fetchServerDetails()
+        
         if let data = await vm.consoleDetails() {
             vm.connectWebSocket(data)
         }
-    }
-
-    if !System.lowPowerMode {
-        fileVM.fetchFiles()
         
-        Task {
+        if !System.lowPowerMode {
+            await fileVM.fetchFiles()
             await startupVM.fetchStartupVariables()
             await scheduleVM.fetchSchedules()
             await backupVM.fetchBackups()
             await databaseVM.fetchDatabases()
         }
-    }
-    
-    vm.updateBackups = {
-        await backupVM.fetchBackups()
-    }
-}
-
-private var panel: some View {
-    TabView(selection: $store.lastTabPanel) {
-        if let server = vm.server {
-            InfoTab(server)
-                .tab(.info)
-                .sheet($vm.sheetSettings) {
-                    PanelSettingsParent(server)
-                }
-            
-            ConsoleTab(id)
-                .tab(.console)
-            
-            FileTab(id)
-                .tab(.files)
-            
-            DataTab(server)
-                .tab(.backup)
-            
-            StartupView(server)
-                .tab(.startup)
+        
+        vm.updateBackups = {
+            await backupVM.fetchBackups()
         }
     }
-    .panelToolbar()
-    .environment(consoleVM)
-    .environmentObject(fileVM)
-    .environment(backupVM)
-    .environment(databaseVM)
-    .environment(scheduleVM)
-    .environment(startupVM)
-}
+    
+    private var panel: some View {
+        TabView(selection: $store.lastTabPanel) {
+            if let server = vm.server {
+                InfoTab(server)
+                    .tab(.info)
+                    .sheet($vm.sheetSettings) {
+                        PanelSettingsParent(server)
+                    }
+                
+                ConsoleTab(id)
+                    .tab(.console)
+                
+                FileTab(id)
+                    .tab(.files)
+                
+                DataTab(server)
+                    .tab(.backup)
+                
+                StartupView(server)
+                    .tab(.startup)
+            }
+        }
+        .panelToolbar()
+        .environment(consoleVM)
+        .environmentObject(fileVM)
+        .environment(backupVM)
+        .environment(databaseVM)
+        .environment(scheduleVM)
+        .environment(startupVM)
+    }
 }
 
 #Preview {

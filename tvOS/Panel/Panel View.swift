@@ -125,18 +125,15 @@ struct PanelView: View {
         await vm.fetchServerDetails()
         
         if !System.lowPowerMode {
-            fileVM.fetchFiles()
-            
-            Task {
-                await allocationVM.fetchAllocations()
-                await startupVM.fetchStartupVariables()
-                await backupVM.fetchBackups()
-                await databaseVM.fetchDatabases()
-                await scheduleVM.fetchSchedules()
-                await usersVM.fetchUsers(true)
-                await logVM.fetchLogs(true)
-                await subdomainVM.fetchSubdomains()
-            }
+            await fileVM.fetchFiles()
+            await allocationVM.fetchAllocations()
+            await startupVM.fetchStartupVariables()
+            await backupVM.fetchBackups()
+            await databaseVM.fetchDatabases()
+            await scheduleVM.fetchSchedules()
+            await usersVM.fetchUsers(true)
+            await logVM.fetchLogs(true)
+            await subdomainVM.fetchSubdomains()
         }
         
         if let data = await vm.consoleDetails() {

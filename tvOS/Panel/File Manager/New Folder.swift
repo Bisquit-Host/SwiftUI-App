@@ -28,7 +28,10 @@ struct NewFolder: View {
             TextField("", text: $newFolderName)
             
             Button("Create") {
-                vm.createFolder(newFolderName, at: root)
+                Task {
+                    await vm.createFolder(newFolderName, at: root)
+                }
+                
                 newFolderName = ""
             }
             

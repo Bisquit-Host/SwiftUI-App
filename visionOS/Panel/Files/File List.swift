@@ -19,7 +19,7 @@ struct FileList: View {
         }
         .navigationTitle(root)
         .refreshableTask {
-            vm.fetchFiles(root)
+            await vm.fetchFiles(root)
         }
     }
 }

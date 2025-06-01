@@ -39,7 +39,7 @@ struct ImageFile: View {
         .navigationTitle(name)
         .task {
             vm.loadCachedImage(path + name)
-            vm.downloadImage(path + name)
+            await vm.downloadImage(path + name)
         }
     }
 }

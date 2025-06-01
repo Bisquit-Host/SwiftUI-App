@@ -24,7 +24,7 @@ struct FileTab: View {
         .navigationTitle("Files")
         .ignoresSafeArea(edges: .bottom)
         .task {
-            vm.fetchFiles(root)
+            await vm.fetchFiles(root)
         }
     }
     
@@ -32,7 +32,9 @@ struct FileTab: View {
         for file in offsets {
             let name = vm.filteredFiles[file].name
             
-            vm.deleteFile(name, at: root)
+            Task {
+                await vm.deleteFile(name, at: root)
+            }
         }
     }
 }
