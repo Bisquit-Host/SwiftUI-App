@@ -20,7 +20,7 @@ struct CreateBackup: AppIntent, PredictableIntent {
     
     func createBackup(_ name: String) async {
         do {
-            let backup = try await backupCreateAPI(id, name: name)
+            _ = try await backupCreateAPI(id, name: name)
         } catch {
             networkCallError(#function, error)
         }
