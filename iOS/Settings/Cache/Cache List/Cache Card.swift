@@ -8,14 +8,12 @@ struct CacheCard: View {
     }
     
     var body: some View {
-        HStack {
+        VStack {
             Image(uiImage: cache.image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(100)
                 .clipShape(.rect(cornerRadius: 16))
-            
-            Spacer()
             
             Text(cache.size)
                 .secondary()
