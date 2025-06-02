@@ -1651,6 +1651,9 @@
 		F3F60A722DEB94CA00A15737 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3F60A712DEB94CA00A15737 /* ScrechKit */; };
 		F3F60A742DEB94D100A15737 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3F60A732DEB94D100A15737 /* ScrechKit */; };
 		F3F60A762DEB94DA00A15737 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3F60A752DEB94DA00A15737 /* ScrechKit */; };
+		F3F60A7A2DED9FFB00A15737 /* Cache Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F60A792DED9FFB00A15737 /* Cache Card.swift */; };
+		F3F60A7B2DED9FFB00A15737 /* Cache Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F60A792DED9FFB00A15737 /* Cache Card.swift */; };
+		F3F60A7D2DED9FFB00A15737 /* Cache Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F60A792DED9FFB00A15737 /* Cache Card.swift */; };
 		F3F6ACAF2A51E48700EE417F /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3F6ACAE2A51E48700EE417F /* AlertKit */; };
 		F3F716BD29E4D46600838586 /* Backup List Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F716BC29E4D46600838586 /* Backup List Footer.swift */; };
 		F3FA30952DD1708A00280133 /* File Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA30942DD1708A00280133 /* File Card.swift */; };
@@ -2389,6 +2392,7 @@
 		F3F2A5BA29AC296D00AD20A4 /* Server Card Suspended.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Suspended.swift"; sourceTree = "<group>"; };
 		F3F2BBA42A540B8800D44CA6 /* Start Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page.swift"; sourceTree = "<group>"; };
 		F3F5BC952BF7668E00EB8FB1 /* Sensitivity Analyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sensitivity Analyzer.swift"; sourceTree = "<group>"; };
+		F3F60A792DED9FFB00A15737 /* Cache Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache Card.swift"; sourceTree = "<group>"; };
 		F3F716BC29E4D46600838586 /* Backup List Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Backup List Footer.swift"; sourceTree = "<group>"; };
 		F3FA30942DD1708A00280133 /* File Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Card.swift"; sourceTree = "<group>"; };
 		F3FA30962DD1E26200280133 /* Folder Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Folder Destination.swift"; sourceTree = "<group>"; };
@@ -4050,8 +4054,7 @@
 				F3D902DE29DC445A004E76C9 /* Cache Limit.swift */,
 				F3A391B929DB5E6900591C84 /* Cache Expiration.swift */,
 				F3D2951B2AF3975300ED43A0 /* Cache Model.swift */,
-				F3E2BED92C1C6B9500B7A6D4 /* Cache List.swift */,
-				F3E2BEDE2C1C6BA800B7A6D4 /* Cache List VM.swift */,
+				F3F60A782DED9FE700A15737 /* Cache List */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -4247,6 +4250,16 @@
 				F3F2BBA42A540B8800D44CA6 /* Start Page.swift */,
 			);
 			path = Intro;
+			sourceTree = "<group>";
+		};
+		F3F60A782DED9FE700A15737 /* Cache List */ = {
+			isa = PBXGroup;
+			children = (
+				F3E2BED92C1C6B9500B7A6D4 /* Cache List.swift */,
+				F3E2BEDE2C1C6BA800B7A6D4 /* Cache List VM.swift */,
+				F3F60A792DED9FFB00A15737 /* Cache Card.swift */,
+			);
+			path = "Cache List";
 			sourceTree = "<group>";
 		};
 		F3FD9F962C651A2600A69314 /* Files */ = {
@@ -5071,6 +5084,7 @@
 				F300891F2B3B896C0051476C /* File Permissions View.swift in Sources */,
 				F3C9D8582B31135B00265492 /* Permission List.swift in Sources */,
 				F3EDEE3529C0C84C00B08696 /* Panel VM.swift in Sources */,
+				F3F60A7B2DED9FFB00A15737 /* Cache Card.swift in Sources */,
 				F3FF59FF2A4A3188003A1973 /* User List.swift in Sources */,
 				F3464D2A2A863A6000188B0C /* Create Backup.swift in Sources */,
 				F3E97C7929B4B569008CBDD6 /* Credentials VM.swift in Sources */,
@@ -5709,6 +5723,7 @@
 				F374F7C02D54922F006771DD /* Sheet Create Subdomain.swift in Sources */,
 				F32F3AAC2D8EB8EC00E69B98 /* Background Image.swift in Sources */,
 				F3202D482D56DC050030B3CC /* Prefetcher.swift in Sources */,
+				F3F60A7D2DED9FFB00A15737 /* Cache Card.swift in Sources */,
 				F3464D1E2A86396500188B0C /* Change Power.swift in Sources */,
 				F3553FB42B4065A300EF0FD2 /* Panel Settings Parent.swift in Sources */,
 				F3202D142D562B250030B3CC /* Browser Card MC.swift in Sources */,
@@ -5971,6 +5986,7 @@
 				F3D295512AF39DFF00ED43A0 /* Plan Models.swift in Sources */,
 				F3D295992AF3A06300ED43A0 /* Log List Parent.swift in Sources */,
 				F3ADA60F2D9BFC9D00F2DAA6 /* Power Switch Toolbar.swift in Sources */,
+				F3F60A7A2DED9FFB00A15737 /* Cache Card.swift in Sources */,
 				F3D295C62AF3A1EE00ED43A0 /* FileTab Context Menu.swift in Sources */,
 				F3202D0F2D562AE30030B3CC /* Browser List Web.swift in Sources */,
 				F3D295432AF39D8300ED43A0 /* System Alerts.swift in Sources */,

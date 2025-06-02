@@ -308,6 +308,9 @@
         }
       }
     },
+    "%lld images" : {
+
+    },
     "%lld minutes ago" : {
       "localizations" : {
         "en" : {
@@ -4718,16 +4721,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Восстановлен бэкап “**`%1$@`**” (удаление файлов: “**`%2$@`**”)"
-          }
-        }
-      }
-    },
-    "Retrieved %lld cached images" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Получено %lld кэшированных изображений"
           }
         }
       }
