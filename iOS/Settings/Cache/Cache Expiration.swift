@@ -27,6 +27,7 @@ struct CacheExpiration: View {
                 Spacer()
                 
                 Text(cacheExpiration.loc)
+                    .secondary()
                 
                 Image(systemName: "chevron.forward")
                     .caption2(.bold)

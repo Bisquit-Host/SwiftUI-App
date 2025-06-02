@@ -22,6 +22,7 @@ struct CacheLimit: View {
                 Spacer()
                 
                 Text(cacheLimit.loc)
+                    .secondary()
                 
                 Image(systemName: "chevron.forward")
                     .caption2(.bold)

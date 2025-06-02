@@ -10,10 +10,6 @@ struct CacheSettings: View {
             CacheLimit()
             
             CacheExpiration()
-            
-            NavigationLink("View cache") {
-                CacheList()
-            }
         }
         .environment(cache)
         .transparentSection()
