@@ -24,6 +24,7 @@ struct ServerCardParent: View {
                     navState.navigate(.toPanel(server.id))
                 } label: {
                     ServerCard(server)
+                        .foregroundStyle(.foreground)
                 }
             }
         }

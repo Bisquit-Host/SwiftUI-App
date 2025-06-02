@@ -25,29 +25,28 @@ struct ServerCard: View {
     }
     
     var body: some View {
-            // Wide
-            HStack {
-                VStack(alignment: .leading) {
-                    serverName
-                    
-                    description
-                    
-                    diskGauge
-                }
+        HStack {
+            VStack(alignment: .leading) {
+                serverName
                 
-                if vm.stateColor != .red {
-                    HStack(spacing: 16) {
-                        cpuGauge
-                        
-                        ramGauge
-                    }
-                    .matchedEffect("RAM_CPU", in: animation)
-                }
+                description
+                
+                diskGauge
             }
-            .frame(height: 100)
-            .padding(.horizontal)
-            .background(.ultraThinMaterial, in: .rect(cornerRadius: rounding))
-            .background(backgroundColor, in: .rect(cornerRadius: rounding))
+            
+            if vm.stateColor != .red {
+                HStack(spacing: 16) {
+                    cpuGauge
+                    
+                    ramGauge
+                }
+                .matchedEffect("RAM_CPU", in: animation)
+            }
+        }
+        .frame(height: 100)
+        .padding(.horizontal)
+        .background(.ultraThinMaterial, in: .rect(cornerRadius: rounding))
+        .background(backgroundColor, in: .rect(cornerRadius: rounding))
         .task {
             await vm.fetchServerUsage()
         }
