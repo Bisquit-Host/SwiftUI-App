@@ -7,11 +7,14 @@ struct DebugSettingsTips: View {
             Button {
                 Tips.showAllTipsForTesting()
             } label: {
-                Label("Show all tips", systemImage: "lightbulb.max")
-                    .foregroundStyle(.yellow)
+                Label {
+                    Text("Show all tips")
+                } icon: {
+                    Image(systemName: "lightbulb.max")
+                        .foregroundStyle(.yellow)
+                }
             }
         }
-        .transparentSection()
     }
 }
 
