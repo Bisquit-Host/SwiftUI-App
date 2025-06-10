@@ -67,4 +67,5 @@ struct GaugeRegular: View {
 
 #Preview {
     GaugeRegular(value: 0.5, limit: 1)
+        .darkSchemePreferred()
 }
