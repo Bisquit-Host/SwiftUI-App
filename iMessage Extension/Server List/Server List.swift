@@ -35,7 +35,7 @@ struct ServerList: View {
                 .environment(vm)
         }
         .toolbar {
-            ToolbarItemGroup(placement: .navigationBarLeading) {
+            ToolbarItemGroup(placement: .topBarLeading) {
                 SFButton("sparkles") {
                     vm.sheetDiscover = true
                 }

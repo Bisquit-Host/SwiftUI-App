@@ -807,6 +807,7 @@
       }
     },
     "Achievements" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -3049,9 +3050,6 @@
     "Get Started" : {
 
     },
-    "Goida" : {
-
-    },
     "Grant all permissions" : {
       "localizations" : {
         "ru" : {
@@ -3546,6 +3544,7 @@
       }
     },
     "Leaderboards" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {

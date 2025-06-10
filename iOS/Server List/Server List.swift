@@ -51,21 +51,15 @@ struct ServerList: View {
             }
         }
         .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Menu {
-                    Button {
-                        vm.sheetDiscover = true
-                    } label: {
-                        Label("Useful links", systemImage: "link")
-                    }
-                    
-                    GameCenterButtons()
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    vm.sheetDiscover = true
                 } label: {
                     Image(systemName: "sparkles")
                 }
             }
             
-            ToolbarItemGroup(placement: .navigationBarTrailing) {
+            ToolbarItemGroup {
                 TopbarAdminButton()
                 
                 ServerListFilter()
