@@ -17,7 +17,7 @@ struct ServerCard: View {
     private let rounding = 16.0
     
     private var backgroundColor: Color {
-        vm.stateColor.opacity(0.15)
+        vm.stateColor.opacity(0.12)
     }
     
     private var limits: ServerLimits {
@@ -45,8 +45,20 @@ struct ServerCard: View {
         }
         .frame(height: 100)
         .padding(.horizontal)
-        .background(.ultraThinMaterial, in: .rect(cornerRadius: rounding))
-        .background(backgroundColor, in: .rect(cornerRadius: rounding))
+        .background(
+            ZStack {
+                RoundedRectangle(cornerRadius: rounding)
+                    .fill(.ultraThinMaterial)
+                
+                RoundedRectangle(cornerRadius: rounding)
+                    .fill(backgroundColor)
+            }
+        )
+        .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
+        .overlay {
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(.gray.opacity(0.25), lineWidth: 1)
+        }
         .task {
             await vm.fetchServerUsage()
         }

@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 import PteroNet
 
 @Observable
@@ -49,23 +49,21 @@ final class VideoFileVM {
                 
                 try fm.moveItem(at: location, to: fileURL)
                 
-                main {
 #if !os(watchOS) && !os(tvOS)
-                    let processor = SensitivityAnalyzer()
-                    
-                    Task {
-                        await processor.checkVideo(fileURL) { blur in
-                            self.isSensitive = blur
-                            
-                            withAnimation {
-                                self.localVideoUrl = fileURL
-                            }
+                let processor = SensitivityAnalyzer()
+                
+                Task { @MainActor in
+                    await processor.checkVideo(fileURL) { blur in
+                        self.isSensitive = blur
+                        
+                        withAnimation {
+                            self.localVideoUrl = fileURL
                         }
                     }
-#else
-                    self.localVideoUrl = fileURL
-#endif
                 }
+#else
+                self.localVideoUrl = fileURL
+#endif
             } catch {
                 print("Error during file move:" + error.localizedDescription)
             }
