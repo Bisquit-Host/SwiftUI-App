@@ -104,7 +104,7 @@ struct PanelView: View {
             
             _ = await (files, startup, schedules, backups, databases)
         }
-                
+        
         vm.updateBackups = {
             await backupVM.fetchBackups()
         }
@@ -113,25 +113,31 @@ struct PanelView: View {
     private var panel: some View {
         TabView(selection: $store.lastTabPanel) {
             if let server = vm.server {
-                InfoTab(server)
-                    .tab(.info)
-                    .sheet($vm.sheetSettings) {
-                        PanelSettingsParent(server)
-                    }
+                Tab("Info", systemImage: "info.circle", value: .info) {
+                    InfoTab(server)
+                        .sheet($vm.sheetSettings) {
+                            PanelSettingsParent(server)
+                        }
+                }
                 
-                ConsoleTab(id)
-                    .tab(.console)
+                Tab("Console", systemImage: "terminal", value: .console) {
+                    ConsoleTab(server.id)
+                }
                 
-                FileTab(id)
-                    .tab(.files)
+                Tab("Files", systemImage: "folder", value: .files) {
+                    FileTab(server.id)
+                }
                 
-                DataTab(server)
-                    .tab(.backup)
+                Tab("Data", systemImage: "externaldrive.badge.icloud", value: .backup) {
+                    DataTab(server)
+                }
                 
-                StartupView(server)
-                    .tab(.startup)
+                Tab("Startup", systemImage: "play.circle", value: .startup) {
+                    StartupView(server)
+                }
             }
         }
+        .tabViewStyle(.sidebarAdaptable)
     }
 }
 
