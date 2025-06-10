@@ -1,6 +1,8 @@
 import ScrechKit
 
 struct GaugeRegular: View {
+    @Environment(\.colorScheme) private var colorScheme
+    
     private let name: StatsType
     private var value, limit: Double
     private var isRedacted: Bool
@@ -27,6 +29,7 @@ struct GaugeRegular: View {
                     titleLabel
                 } currentValueLabel: {
                     valueLabel
+                        .foregroundStyle(colorScheme == .dark ? .white : .black)
                 }
                 
             case .ram, .ssd:
@@ -34,6 +37,7 @@ struct GaugeRegular: View {
                     titleLabel
                 } currentValueLabel: {
                     valueLabel
+                        .foregroundStyle(colorScheme == .dark ? .white : .black)
                 }
             }
         }
@@ -43,7 +47,7 @@ struct GaugeRegular: View {
     
     private var titleLabel: some View {
         Text(name.rawValue.uppercased())
-            .primary()
+            .foregroundStyle(colorScheme == .dark ? .white : .black)
     }
     
     private var valueLabel: some View {
@@ -60,7 +64,6 @@ struct GaugeRegular: View {
                 Text(formatBytes(value).replacing(" ", with: ""))
             }
         }
-        .primary()
         .redacted(isRedacted)
     }
 }
