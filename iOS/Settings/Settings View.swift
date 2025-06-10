@@ -21,7 +21,6 @@ struct SettingsView: View {
             DevSettings()
         }
         .navigationTitle("Settings")
-        .toolbarTitleDisplayMode(.inline)
         .scrollIndicators(.hidden)
         .transparentList()
         .dismissWithGamepad()

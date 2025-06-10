@@ -3,10 +3,10 @@ import SwiftUI
 struct IconSettings: View {
     var body: some View {
         VStack {
-            Text("Icon".uppercased())
+            Text("Icon")
+                .headline()
                 .secondary()
-                .footnote()
-                .frame(maxWidth: .infinity, alignment: .center)
+                .frame(maxWidth: .infinity, alignment: .leading)
             
             AppIconPicker()
         }

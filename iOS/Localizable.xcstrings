@@ -828,6 +828,7 @@
       }
     },
     "Add a description" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
