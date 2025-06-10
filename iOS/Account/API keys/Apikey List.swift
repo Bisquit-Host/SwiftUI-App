@@ -45,10 +45,6 @@ struct ApikeyList: View {
                     sheetCreate = true
                 } label: {
                     Image(systemName: "plus")
-                        .foregroundStyle(.foreground)
-                        .footnote(.bold)
-                        .frame(35)
-                        .background(.ultraThinMaterial, in: .circle)
                 }
             }
         }
