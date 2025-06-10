@@ -3,6 +3,7 @@ import ScrechKit
 struct ServerList: View {
     @Environment(ServerListVM.self) private var vm
     @Environment(NavState.self) private var navState
+    @Environment(UpdateChecker.self) private var updater
     @EnvironmentObject private var store: ValueStore
     
     @Environment(\.openURL) private var openUrl
@@ -13,7 +14,7 @@ struct ServerList: View {
         ScrollView {
             ServerListTopbar()
             
-            if vm.alertUpdate {
+            if updater.alertUpdate {
                 if let url = URL(string: "https://apps.apple.com/app/bisquit-host/id1639409934") {
                     Button {
                         openUrl(url)
@@ -35,12 +36,7 @@ struct ServerList: View {
         }
         .navigationBarBackButtonHidden()
         .task {
-            vm.fetchServers(store.adminServerList)
-        }
-        .onFirstAppear {
-            if !System.lowPowerMode {
-                await vm.checkForUpdates()
-            }
+            await vm.fetchServers(store.adminServerList)
         }
     }
 }
@@ -49,5 +45,6 @@ struct ServerList: View {
     ServerList()
         .environment(ServerListVM())
         .environment(NavState())
+        .environment(UpdateChecker())
         .environmentObject(ValueStore())
 }

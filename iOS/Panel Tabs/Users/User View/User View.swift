@@ -51,7 +51,7 @@ struct UserView: View {
             .toolbarTitleDisplayMode(.inline)
             .scrollIndicators(.never)
             .refreshable {
-                vm.userDetails($user)
+                await vm.userDetails($user)
             }
         }
     }

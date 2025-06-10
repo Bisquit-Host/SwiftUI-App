@@ -23,11 +23,15 @@ struct BackupContextMenu: View {
 #endif
         Section {
             MenuButton("Restore with truncate", role: .destructive, icon: "arrow.up.bin") {
-                vm.restoreBackup(uuid, truncate: true)
+                Task {
+                    await vm.restoreBackup(uuid, truncate: true)
+                }
             }
             
             MenuButton("Delete", role: .destructive, icon: "trash") {
-                vm.deleteBackup(uuid)
+                Task {
+                    await vm.deleteBackup(uuid)
+                }
             }
         }
     }

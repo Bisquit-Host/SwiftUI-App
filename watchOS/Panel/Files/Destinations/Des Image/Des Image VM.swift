@@ -13,17 +13,11 @@ final class ImageFileVM {
     var cachedImage: UIImage? = nil
     var url = ""
     
-    func downloadImage(_ path: String) {
-        fileDownloadAPI(id, path: path) { result in
-            switch result {
-            case .success(let model):
-                if let model = model?.attributes.url {
-                    self.url = model
-                }
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-            }
+    func downloadImage(_ path: String) async {
+        do {
+            url = try await fileDownloadAPI(id, path: path)
+        } catch {
+            SystemAlert.error(error)
         }
     }
     

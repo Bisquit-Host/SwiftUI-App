@@ -11,12 +11,12 @@ struct SettingsView: View {
         List {
             DesignSettings()
             
-            IconSettings()
-            
             CacheSettings()
             
             OtherSettings()
                 .environment(vm)
+            
+            IconSettings()
             
             DevSettings()
         }

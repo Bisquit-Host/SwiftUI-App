@@ -10,6 +10,7 @@ struct AppContainer: View {
     @State private var vm = ServerListVM()
     @State private var linking = DeepLinkVM()
     @State private var network = NetworkVM()
+    @State private var updater = UpdateChecker()
     
     @EnvironmentObject private var store: ValueStore
     @Environment(NavState.self) private var nav
@@ -42,8 +43,20 @@ struct AppContainer: View {
         }
         .animation(.default, value: store.isApiKeyValid)
         .environment(vm)
+#if !os(iOS) || !os(visionOS)
+        .environment(updater)
+#endif
         .preferredColorScheme(store.colorTheme.scheme)
         .onOpenURL(perform: linking.handleDeepLink)
+        .onFirstAppear {
+            await updater.checkForUpdates()
+            network.defineStatus()
+        }
+#if os(iOS) || os(visionOS)
+        .appStoreOverlay($updater.alertUpdate, id: "1639409934")
+#elseif os(macOS)
+        
+#endif
 #if canImport(AlertKit)
         .onChange(of: network.isNetworkSatisfied) { _, status in
             guard let status, status else {

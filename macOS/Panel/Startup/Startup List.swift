@@ -26,10 +26,12 @@ struct StartupList: View {
         .background(.clear)
         .clipShape(.rect(cornerRadius: 16))
         .task {
-            vm.fetchStartupVariables()
+            await vm.fetchStartupVariables()
         }
         .onChange(of: id) {
-            vm.fetchStartupVariables()
+            Task {
+                await vm.fetchStartupVariables()
+            }
         }
     }
 }

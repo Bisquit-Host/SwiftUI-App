@@ -26,7 +26,7 @@ struct AudioPlayerView: View {
         }
         .ignoresSafeArea()
         .task {
-            vm.downloadFile(name, at: path)
+            await vm.downloadFile(name, at: path)
         }
         .toolbar {
 #if os(tvOS)
@@ -57,8 +57,10 @@ struct AudioPlayerView: View {
                 
                 Section {
                     Button(role: .destructive) {
-                        fileVm.deleteFile(name, at: path) {
-                            dismiss()
+                        Task {
+                            await fileVm.deleteFile(name, at: path) {
+                                dismiss()
+                            }
                         }
                     } label: {
                         Label("Delete", systemImage: "trash")

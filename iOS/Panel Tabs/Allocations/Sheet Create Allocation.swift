@@ -28,8 +28,10 @@ struct SheetCreateAllocation: View {
             }
             
             Button {
-                vm.assignAllocation(selectedCategory) {
-                    dismiss()
+                Task {
+                    await vm.assignAllocation(selectedCategory) {
+                        dismiss()
+                    }
                 }
             } label: {
                 Text("Create")
@@ -51,7 +53,7 @@ struct SheetCreateAllocation: View {
         .padding(.horizontal)
         .transparentList()
         .task {
-            vm.fetchCategories()
+            await vm.fetchCategories()
         }
     }
 }

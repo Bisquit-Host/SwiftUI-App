@@ -42,7 +42,7 @@ struct UserView: View {
         .formStyle(.grouped)
         .frame(height: 600)
         .refreshable {
-            vm.userDetails($user)
+            await vm.userDetails($user)
         }
         .navigationTitle(user.username)
         .toolbarTitleDisplayMode(.inline)

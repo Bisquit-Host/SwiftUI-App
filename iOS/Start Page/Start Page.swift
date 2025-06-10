@@ -66,7 +66,9 @@ struct StartPage: View {
         }
         .onChange(of: vm.apiKey) { _, newValue in
             if newValue.count == 48 || newValue.count == 340 {
-                checkApiKey()
+                Task {
+                    await checkApiKey()
+                }
             }
         }
         .task {
@@ -78,7 +80,9 @@ struct StartPage: View {
         }
         .alert("Error \(vm.errorCode)", isPresented: $vm.alertInvalid) {
             Button("Try again") {
-                checkApiKey()
+                Task {
+                    await checkApiKey()
+                }
             }
             
             Button("Remove this key", role: .destructive) {

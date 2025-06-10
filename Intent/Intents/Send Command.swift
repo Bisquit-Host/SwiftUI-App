@@ -17,8 +17,8 @@ struct SendCommand: AppIntent, PredictableIntent {
         }
     }
     
-    func sendCommand(_ command: String) {
-        PteroNet.sendCommand(id, command: command)
+    func sendCommand(_ command: String) async {
+        await PteroNet.sendCommand(id, command: command)
     }
     
     static var predictionConfiguration: some IntentPredictionConfiguration {
@@ -31,7 +31,7 @@ struct SendCommand: AppIntent, PredictableIntent {
     }
     
     func perform() async throws -> some IntentResult {
-        sendCommand(command)
+        await sendCommand(command)
         
         return .result()
     }

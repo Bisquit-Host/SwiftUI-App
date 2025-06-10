@@ -14,29 +14,19 @@ final class ServerSettingsVM {
     var serverDescription = ""
     var username = ""
     
-    func serverRename() {
-        serverRenameAPI(id, name: serverName, description: serverDescription) { result in
-            switch result {
-            case .success:
-                print("Sucsess")
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-            }
+    func serverRename() async {
+        do {
+            try await serverRenameAPI(id, name: serverName, description: serverDescription)
+        } catch {
+            SystemAlert.error(error)
         }
     }
     
-    func accountDetails() {
-        accountDetailsAPI { [self] result in
-            switch result {
-            case .success(let model):
-                if let model = model?.attributes {
-                    username = model.username
-                }
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-            }
+    func accountDetails() async {
+        do {
+            username = try await accountDetailsAPI().username
+        } catch {
+            SystemAlert.error(error)
         }
     }
 }

@@ -36,7 +36,7 @@ struct QuickLookFile: View {
             MetadataList(vm.metadata)
         }
         .task {
-            vm.getFileUrl(name, at: path)
+            await vm.getFileUrl(name, at: path)
         }
         .overlay {
             if vm.isSensitive {
@@ -68,8 +68,10 @@ struct QuickLookFile: View {
                 
                 Section {
                     Button("Delete", role: .destructive) {
-                        fileVm.deleteFile(name, at: path) {
-                            dismiss()
+                        Task {
+                            await fileVm.deleteFile(name, at: path) {
+                                dismiss()
+                            }
                         }
                     }
                 }

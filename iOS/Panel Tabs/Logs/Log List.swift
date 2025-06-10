@@ -35,12 +35,14 @@ struct LogList: View {
         .transparentList()
         .animation(.default, value: vm.filteredLogs)
         .refreshableTask {
-            vm.fetchLogs()
+            await vm.fetchLogs()
         }
 #if os(iOS)
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
             if !System.lowPowerMode {
-                vm.fetchLogs()
+                Task {
+                    await vm.fetchLogs()
+                }
             }
         }
 #endif

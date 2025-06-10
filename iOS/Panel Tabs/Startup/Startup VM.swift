@@ -28,56 +28,48 @@ final class StartupVM {
             }
     }
     
-    func fetchStartupVariables() {
-        startupListAPI(id) { result in
-            switch result {
-            case .success(let model):
-                if let model {
-                    let meta = model.meta
-                    
-                    self.startupVariables = model.data.map(\.attributes)
-                    self.startupCommand = meta.startupCommand
-                    self.rawStartupCommand = meta.rawStartupCommand
-                    
-                    if let dockerImages = meta.dockerImages {
-                        self.dockerImages = dockerImages
-                    }
-                }
-                
-            case .failure(let error):
-                SystemAlert.error(error)
+    func fetchStartupVariables() async {
+        do {
+            let model = try await startupListAPI(id)
+            let meta = model.meta
+            
+            self.startupVariables = model.data.map(\.attributes)
+            self.startupCommand = meta.startupCommand
+            self.rawStartupCommand = meta.rawStartupCommand
+            
+            if let dockerImages = meta.dockerImages {
+                self.dockerImages = dockerImages
             }
+        } catch {
+            SystemAlert.error(error)
         }
     }
     
-    func updateVariable(key: String, value: String, onFailure: @escaping () -> ()) {
-        startupUpdateAPI(id, key: key, value: value) { result in
-            switch result {
-            case .success(let model):
-                if let model {
-                    if let index = self.startupVariables.firstIndex(where: {
-                        $0.envVariable == model.attributes.envVariable
-                    }) {
-                        self.startupVariables[index] = model.attributes
-                    }
-                }
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-                onFailure()
+    func updateVariable(
+        key: String,
+        value: String,
+        onFailure: @escaping () -> ()
+    ) async {
+        do {
+            let model = try await startupUpdateAPI(id, key: key, value: value)
+            
+            if let index = self.startupVariables.firstIndex(where: {
+                $0.envVariable == model.attributes.envVariable
+            }) {
+                self.startupVariables[index] = model.attributes
             }
+        } catch {
+            SystemAlert.error(error)
+            onFailure()
         }
     }
     
-    func updateDockerImage(_ newImage: String) {
-        dockerUpdateAPI(id, newImage: newImage) { result in
-            switch result {
-            case .success:
-                print("Updates")
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-            }
+    func updateDockerImage(_ newImage: String) async {
+        do {
+            try await dockerUpdateAPI(id, newImage: newImage)
+            print("Updates")
+        } catch {
+            SystemAlert.error(error)
         }
     }
 }

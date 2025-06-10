@@ -21,7 +21,9 @@ struct Sidebar: View {
         }
         .toolbar {
             SFButton("arrow.trianglehead.2.clockwise.rotate.90") {
-                vm.fetchServers(store.adminServerList)
+                Task {
+                    await vm.fetchServers(store.adminServerList)
+                }
             }
             .keyboardShortcut("r")
         }

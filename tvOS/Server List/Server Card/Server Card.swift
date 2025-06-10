@@ -44,7 +44,7 @@ struct ServerCard: View {
         }
         .padding(.bottom)
         .task {
-            vm.fetchServerUsage()
+            await vm.fetchServerUsage()
         }
         .contextMenu {
             ServerCardContextMenu(server.id)

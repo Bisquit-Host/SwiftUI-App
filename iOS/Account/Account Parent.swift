@@ -40,10 +40,12 @@ struct AccountParent: View {
         }
         .task {
             if !System.lowPowerMode {
-                vm.fetch()
-                vm.twoFaDetails()
-                apiKeysVM.fetchKeys()
-                sshVM.fetchKeys()
+                async let fetch: () = vm.fetch()
+                async let twoFa: () = vm.twoFaDetails()
+                async let ssh: () = sshVM.fetchKeys()
+                async let api: () = apiKeysVM.fetchKeys()
+                
+                _ = await (fetch, twoFa, ssh, api)
             }
         }
     }

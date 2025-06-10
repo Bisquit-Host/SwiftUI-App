@@ -13,20 +13,26 @@ struct PanelOrnamentPower: View {
         if showPowerButtons {
             HStack {
                 Button {
-                    vm.changePower(.start)
+                    Task{
+                        await vm.changePower(.start)
+                    }
                 } label: {
                     Label("Start", systemImage: "play")
                 }
                 .disabled(vm.serverState != .offline)
                 
                 Button {
-                    vm.changePower(.restart)
+                    Task{
+                        await vm.changePower(.restart)
+                    }
                 } label: {
                     Label("Restart", systemImage: "arrow.triangle.2.circlepath")
                 }
                 
                 Button {
-                    vm.changePower(.stop)
+                    Task{
+                        await vm.changePower(.stop)
+                    }
                 } label: {
                     Label("Stop", systemImage: "pause")
                 }
@@ -38,7 +44,9 @@ struct PanelOrnamentPower: View {
                 
                 Menu {
                     Button(role: .destructive) {
-                        vm.changePower(.kill)
+                        Task{
+                            await vm.changePower(.kill)
+                        }
                     } label: {
                         Label("Kill", systemImage: "power")
                     }

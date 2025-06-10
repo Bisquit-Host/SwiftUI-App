@@ -27,7 +27,9 @@ struct PanelSettingsView: View {
                 
                 if vm.serverName != server.name || vm.serverDescription != server.description {
                     Button("Save") {
-                        vm.serverRename()
+                        Task {
+                            await vm.serverRename()
+                        }
                     }
                     .animation(.default, value: vm.serverName + vm.serverDescription)
                 }
@@ -59,17 +61,21 @@ struct PanelSettingsView: View {
         .toolbarTitleDisplayMode(.inline)
         .transparentList()
         .task {
-            vm.accountDetails()
+            await vm.accountDetails()
             vm.serverName = server.name
             vm.serverDescription = server.description
         }
         .onDisappear {
-            panelVM.fetchServerDetails()
+            Task {
+                await panelVM.fetchServerDetails()
+            }
         }
         .alert("Reinstall Server", isPresented: $alertReinstall) {
             Button("Reinstall", role: .destructive) {
-                PteroNet.reinstallServer(server.id) {
-                    SystemAlert.reinstalled()
+                Task {
+                    await PteroNet.reinstallServer(server.id) {
+                        SystemAlert.reinstalled()
+                    }
                 }
             }
         } message: {

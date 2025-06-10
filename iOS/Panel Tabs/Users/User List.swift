@@ -26,8 +26,20 @@ struct UserList: View {
 #endif
         .transparentList()
         .task {
-            vm.fetchUsers()
-            vm.fetchPermissions()
+            // Both funcs will run in parallel
+            // Shouldn't change same props,
+            // Otherwise will cause a data race
+            
+            let usersTask = Task {
+                await vm.fetchUsers()
+            }
+            
+            let permissionsTask = Task {
+                await vm.fetchPermissions()
+            }
+            
+            await usersTask.value
+            await permissionsTask.value
         }
         .sheet($vm.sheetInvitation) {
             UserInvitationView()
@@ -65,7 +77,10 @@ struct UserList: View {
     private func delete(_ offsets: IndexSet) {
         offsets.forEach { index in
             let user = vm.users[index]
-            vm.delete(user.uuid)
+            
+            Task {
+                await vm.delete(user.uuid)
+            }
         }
     }
 }

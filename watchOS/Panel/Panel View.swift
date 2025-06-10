@@ -30,16 +30,14 @@ struct PanelView: View {
         }
         .environment(vm)
         .task {
-            vm.fetchServerDetails()
+            await vm.fetchServerDetails()
             
-            vm.consoleDetails { data in
-                if let data {
-                    vm.connectWebSocket(data)
-                }
+            if let data = await vm.consoleDetails() {
+                vm.connectWebSocket(data)
             }
             
             if !System.lowPowerMode {
-                fileVM.fetchFiles()
+                await fileVM.fetchFiles()
             }
         }
         .onDisappear {

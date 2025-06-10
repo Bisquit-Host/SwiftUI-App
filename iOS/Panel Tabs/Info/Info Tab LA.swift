@@ -20,7 +20,10 @@ struct InfoTabLA: View {
                 la.stopAllLiveActivities()
             } else {
                 la.stopAllLiveActivities()
-                la.startLiveActivity(server)
+                
+                Task {
+                    await la.startLiveActivity(server)
+                }
             }
         } label: {
             Image(systemName: "clock.badge")

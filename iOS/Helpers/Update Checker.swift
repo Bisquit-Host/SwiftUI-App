@@ -1,6 +1,7 @@
 import Foundation
 
-final class UpdateChecker: Observable {
+@Observable
+final class UpdateChecker {
     var alertUpdate = false
     
     func checkForUpdates() async {

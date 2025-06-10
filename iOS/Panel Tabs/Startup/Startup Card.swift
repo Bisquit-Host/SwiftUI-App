@@ -48,14 +48,20 @@ struct StartupCard: View {
             
             if value != variable.serverValue {
                 Button("Save") {
-                    vm.updateVariable(
-                        key: variable.envVariable,
-                        value: value
-                    ) {
-                        value = variable.serverValue ?? ""
-                    }
+                    save()
                 }
                 .foregroundStyle(.foreground)
+            }
+        }
+    }
+    
+    private func save() {
+        Task {
+            await vm.updateVariable(
+                key: variable.envVariable,
+                value: value
+            ) {
+                value = variable.serverValue ?? ""
             }
         }
     }

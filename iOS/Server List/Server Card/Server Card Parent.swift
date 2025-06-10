@@ -13,9 +13,11 @@ struct ServerCardParent: View {
     @State private var showSafari = false
     @State private var confirmKill = false
     
+    private var serverUrl: String {
+        "https://mgr.bisquit.host/server/\(server.id)"
+    }
+    
     var body: some View {
-        let serverUrl = "https://mgr.bisquit.host/server/\(server.id)"
-        
         VStack {
             if server.isSuspended {
                 SuspendedServerCard(server.name)
@@ -24,21 +26,30 @@ struct ServerCardParent: View {
                     navState.navigate(.toPanel(server.id))
                 } label: {
                     ServerCard(server)
+                        .foregroundStyle(.foreground)
                 }
             }
         }
         .hoverEffect()
         .safariCover($showSafari, url: serverUrl)
-        .onDrag {
-            NSItemProvider(contentsOf: URL(string: serverUrl))!
-        }
         .contextMenu {
             ServerCardContextMenu(server, $showSafari, $confirmKill)
         }
         .confirmationDialog("Perform kill action", isPresented: $confirmKill, titleVisibility: .visible) {
             Button("Kill", role: .destructive) {
-                PteroNet.powerSignal(server.id, do: .kill)
+                Task {
+                    await PteroNet.powerSignal(server.id, do: .kill)
+                }
             }
+        }
+        .onDrag {
+            let url = URL(string: serverUrl)
+            
+            if let itemProvider = NSItemProvider(contentsOf: url) {
+                return itemProvider
+            }
+            
+            return NSItemProvider()
         }
     }
 }

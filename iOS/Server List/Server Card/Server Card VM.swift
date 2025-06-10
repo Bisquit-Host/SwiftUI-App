@@ -15,23 +15,16 @@ final class ServerCardVM {
     private(set) var isLoading = true
     private(set) var stateColor: Color = .red
     
-    func fetchServerUsage() {
-        serverUsageAPI(id) { result in
-            switch result {
-            case .success(let model):
-                if let model = model?.attributes {
-                    main {
-                        self.updateUsage(model)
-                    }
-                }
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-            }
+    func fetchServerUsage() async {
+        do {
+            let usage = try await serverUsageAPI(id)
+            updateUsage(usage)
+        } catch {
+            SystemAlert.error(error)
         }
     }
     
-    func updateUsage(_ model: ResourceUsageAttributes) {
+    private func updateUsage(_ model: ResourceUsageAttributes) {
         let usage = model.usage
         
         cpuUsage = usage.cpu

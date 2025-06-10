@@ -65,7 +65,9 @@ struct DatabaseCard: View {
             }
 #endif
             MenuButton("Rotate password", icon: "lock.open.rotation") {
-                vm.rotatePassword(db.id)
+                Task {
+                    await vm.rotatePassword(db.id)
+                }
             }
             
             Section {
@@ -76,7 +78,9 @@ struct DatabaseCard: View {
         }
         .alert("Detele Database", isPresented: $alertDelete) {
             Button("Delete", role: .destructive) {
-                vm.deleteDatabase(db.id)
+                Task {
+                    await vm.deleteDatabase(db.id)
+                }
             }
         } message: {
             Text("Are you sure you want to delete \"\(db.name)\"? This database will be deleted immediately. You can't undo this action")
@@ -86,6 +90,8 @@ struct DatabaseCard: View {
 
 #Preview {
     List {
-        DatabaseCard(sampleJSON(.databaseAttributes))
+        DatabaseCard(
+            sampleJSON(.databaseAttributes)
+        )
     }
 }

@@ -42,14 +42,10 @@ struct ContentView: View {
         }
         .onFirstAppear {
             vm.loadServers()
-            
-            if !System.lowPowerMode {
-                await vm.checkForUpdates()
-            }
         }
         .task {
             try? nav.load()
-            vm.fetchServers(store.adminServerList)
+            await vm.fetchServers(store.adminServerList)
         }
         .onChange(of: scenePhase) { _, newScenePhase in
             if newScenePhase == .background {

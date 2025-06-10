@@ -44,7 +44,9 @@ struct StartPage: View {
                 }
 #endif
                 Button("Validate") {
-                    checkApiKey()
+                    Task {
+                        await checkApiKey()
+                    }
                 }
                 .disabled(vm.apiKey.isEmpty)
             }

@@ -50,7 +50,7 @@ struct FileTab: View {
             vm.path = path
         }
         .refreshableTask {
-            vm.fetchFiles(path)
+            await vm.fetchFiles(path)
         }
         .onChange(of: vm.isUploading) { _, newValue in
             if !newValue {
@@ -59,7 +59,9 @@ struct FileTab: View {
         }
         .onChange(of: image) {
             if let image {
-                vm.handleImageImport(image, at: path)
+                Task {
+                    await vm.handleImageImport(image, at: path)
+                }
             }
         }
     }
@@ -68,7 +70,9 @@ struct FileTab: View {
         for file in offsets {
             let name = vm.filteredFiles[file].name
             
-            vm.deleteFile(name, at: path)
+            Task {
+                await vm.deleteFile(name, at: path)
+            }
         }
     }
 }

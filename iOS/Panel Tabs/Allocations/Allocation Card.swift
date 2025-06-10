@@ -52,12 +52,16 @@ struct AllocationCard: View {
                 .contextMenu {
                     if !allocation.isDefault {
                         MenuButton("Set default", icon: "star") {
-                            vm.setDefault(allocation.id)
+                            Task {
+                                await vm.setDefault(allocation.id)
+                            }
                         }
                     }
                     
                     MenuButton("Delete", role: .destructive, icon: "trash") {
-                        vm.unassignAllocation(allocation.id)
+                        Task {
+                            await vm.unassignAllocation(allocation.id)
+                        }
                     }
                 }
                 
@@ -66,7 +70,9 @@ struct AllocationCard: View {
                 
                 if showSaveButton {
                     Button("Save") {
-                        vm.updateNotes(allocation.id, notes: notes)
+                        Task {
+                            await vm.updateNotes(allocation.id, notes: notes)
+                        }
                     }
                 }
             }

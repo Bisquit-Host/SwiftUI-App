@@ -24,10 +24,12 @@ struct DatabaseList: View {
         .background(.clear)
         .clipShape(.rect(cornerRadius: 16))
         .task {
-            vm.fetchDatabases()
+            await vm.fetchDatabases()
         }
         .onChange(of: id) {
-            vm.fetchDatabases()
+            Task {
+                await vm.fetchDatabases()
+            }
         }
         .overlay {
             if vm.databases.isEmpty {

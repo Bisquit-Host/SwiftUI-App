@@ -13,72 +13,57 @@ final class DatabaseVM {
     var newDatabaseName = ""
     var alertCreate = false
     
-    func fetchDatabases() {
-        dataListAPI(id, endpoint: .databases) { (result: Result<DatabaseListResponse?, Error>) in
-            switch result {
-            case .success(let model):
-                if let model = model?.data {
-                    withAnimation {
-                        self.databases = model.map(\.attributes)
-                    }
-                }
-                
-            case .failure(let error):
-                SystemAlert.error(error)
+    func fetchDatabases() async {
+        do {
+            let databases: DatabaseListResponse? = try await dataListAPI(
+                id,
+                endpoint: .databases
+            )
+            
+            if let databases = databases?.data.map(\.attributes) {
+                self.databases = databases
             }
+        } catch {
+            SystemAlert.error(error)
         }
     }
     
-    func rotatePassword(_ dbId: String) {
-        databaseRotatePasswordAPI(id, dbId: dbId) { result in
-            switch result {
-            case .success(let model):
-                if let model = model?.attributes {
-                    if let index = self.databases.firstIndex(where: { $0.id == model.id }) {
-                        self.databases[index] = model
-                    }
-                }
-                
-            case .failure(let error):
-                SystemAlert.error(error)
+    func rotatePassword(_ dbId: String) async {
+        do {
+            let model = try await databaseRotatePasswordAPI(id, dbId: dbId)
+            
+            if let index = databases.firstIndex(where: { $0.id == model.id }) {
+                databases[index] = model
             }
+        } catch {
+            SystemAlert.error(error)
         }
     }
     
-    func createDatabase() {
-        databaseCreateAPI(id, name: newDatabaseName) { result in
-            switch result {
-            case .success(let model):
-                if let model = model?.attributes {
-                    withAnimation {
-                        self.databases.append(model)
-                    }
-                    
-                    self.newDatabaseName = ""
-                }
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-            }
+    func createDatabase() async {
+        do {
+            let db = try await databaseCreateAPI(id, name: newDatabaseName)
+            
+            databases.append(db)
+            newDatabaseName = ""
+        } catch {
+            SystemAlert.error(error)
         }
     }
     
-    func deleteDatabases(_ offsets: IndexSet) {
+    func deleteDatabases(_ offsets: IndexSet) async {
         for index in offsets {
             let id = databases[index].id
-            deleteDatabase(id)
+            await deleteDatabase(id)
         }
     }
     
-    func deleteDatabase(_ uuid: String) {
-        dataDeleteAPI(id, itemId: uuid, endpoint: .databases) { result in
-            switch result {
-            case .success:
-                self.fetchDatabases()
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-            }
+    func deleteDatabase(_ uuid: String) async {
+        do {
+            try await dataDeleteAPI(id, itemId: uuid, endpoint: .databases)
+            await fetchDatabases()
+        } catch {
+            SystemAlert.error(error)
         }
     }
 }

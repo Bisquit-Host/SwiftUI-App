@@ -31,8 +31,10 @@ struct SheetRemoteFile: View {
                 .foregroundStyle(.red)
                 
                 Button("Confirm") {
-                    vm.pullRemoteFile(remoteFile, dir: path) {
-                        dismiss()
+                    Task {
+                        await vm.pullRemoteFile(remoteFile, dir: path) {
+                            dismiss()
+                        }
                     }
                 }
             }

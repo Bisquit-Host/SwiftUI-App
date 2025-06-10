@@ -32,10 +32,12 @@ struct BackupList: View {
         .navigationTitle("Backups")
         .padding()
         .task {
-            vm.fetchBackups()
+            await vm.fetchBackups()
         }
         .onChange(of: server.id) {
-            vm.fetchBackups()
+            Task {
+                await vm.fetchBackups()
+            }
         }
         .alert("Name Backup", isPresented: $vm.alertCreateBackup) {
             TextField("Backup at \(vm.dateAndTime)", text: $vm.textCreateBackup)
@@ -45,7 +47,9 @@ struct BackupList: View {
             Button("Cancel", role: .cancel) {}
             
             Button("Create") {
-                vm.createBackup()
+                Task {
+                    await vm.createBackup()
+                }
             }
         }
     }

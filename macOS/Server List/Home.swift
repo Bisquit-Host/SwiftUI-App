@@ -34,12 +34,7 @@ struct Home: View {
             .ignoresSafeArea()
         }
         .task {
-            vm.fetchServers(store.adminServerList)
-        }
-        .onFirstAppear {
-            if !System.lowPowerMode {
-                await vm.checkForUpdates()
-            }
+            await vm.fetchServers(store.adminServerList)
         }
     }
 }

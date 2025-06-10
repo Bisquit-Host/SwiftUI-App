@@ -52,7 +52,9 @@ struct ScheduleCard: View {
 #if !os(tvOS)
         .swipeActions {
             Button(role: .destructive) {
-                vm.deleteSchedule(schedule.id.description)
+                Task {
+                    await vm.deleteSchedule(schedule.id.description)
+                }
             } label: {
                 Image(systemName: "trash")
             }

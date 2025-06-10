@@ -64,10 +64,16 @@ struct StartupView: View {
         .background(BackgroundImage())
         .scrollContentBackground(.hidden)
         .refreshableTask {
-            vm.fetchStartupVariables()
+            await vm.fetchStartupVariables()
         }
         .onChange(of: currentDockerImage) { _, newDockerImage in
-            vm.updateDockerImage(newDockerImage)
+            updateDockerImage(newDockerImage)
+        }
+    }
+    
+    private func updateDockerImage(_ newImage: String) {
+        Task {
+            await vm.updateDockerImage(newImage)
         }
     }
 }

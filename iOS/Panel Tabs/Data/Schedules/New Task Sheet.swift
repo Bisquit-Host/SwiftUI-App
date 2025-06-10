@@ -58,8 +58,10 @@ struct NewTaskSheet: View {
 #endif
             Section {
                 Button("Create Task") {
-                    vm.createScheduleTask(scheudleId, newTask: newTask) {
-                        dismiss()
+                    Task {
+                        await vm.createScheduleTask(scheudleId, newTask: newTask) {
+                            dismiss()
+                        }
                     }
                 }
 #if os(tvOS)

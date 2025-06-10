@@ -61,16 +61,19 @@ final class FileTabVM: ObservableObject {
         return String(permission)
     }
     
-    func changeChmod(_ file: String, at root: String, mode: String, onSuccess: @escaping () -> ()) {
-        fileChmodAPI(id, file: file, at: root, mode: mode) { result in
-            switch result {
-            case .success:
-                onSuccess()
-                self.fetchFiles(root)
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-            }
+    func changeChmod(
+        _ file: String,
+        at root: String,
+        mode: String,
+        onSuccess: @escaping () -> ()
+    ) async {
+        do {
+            try await fileChmodAPI(id, file: file, at: root, mode: mode)
+            onSuccess()
+            await fetchFiles(root)
+            
+        } catch {
+            SystemAlert.error(error)
         }
     }
     
@@ -78,39 +81,30 @@ final class FileTabVM: ObservableObject {
         _ file: FilePullRequestBody,
         dir: String = "",
         onSuccess: @escaping () -> ()
-    ) {
-        pullRemoteFileAPI(
-            id, file: file
-        ) { result in
-            switch result {
-            case .success:
-                onSuccess()
-                self.fetchFiles(dir)
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-            }
+    ) async {
+        do {
+            try await pullRemoteFileAPI(id, file: file)
+            
+            onSuccess()
+            
+            await fetchFiles(dir)
+        } catch {
+            SystemAlert.error(error)
         }
     }
     
-    func fetchFiles(_ path: String = "") {
-        fileListAPI(id, path: path) { result in
-            switch result {
-            case .success(let model):
-                if let model = model?.data {
-                    withAnimation {
-                        main {
+    func fetchFiles(_ path: String = "") async {
+        do {
+            let files = try await fileListAPI(id, path: path)
+            
+            await MainActor.run {
+                self.files = files.reversed()
 #if os(macOS)
-                            self.degrees += 360
+                degrees += 360
 #endif
-                            self.files = model.map(\.attributes).reversed()
-                        }
-                    }
-                }
-                
-            case .failure(let error):
-                SystemAlert.error(error)
             }
+        } catch {
+            SystemAlert.error(error)
         }
     }
     
@@ -144,12 +138,19 @@ final class FileTabVM: ObservableObject {
                 }
                 
                 self.uploadProgress = 0
-                self.fetchFiles(root)
+                
+                Task {
+                    await self.fetchFiles(root)
+                }
             }
         }
     }
     
-    func handleFileImport(_ urls: [URL], at root: String, onSuccess: @escaping () -> Void) {
+    func handleFileImport(
+        _ urls: [URL],
+        at root: String,
+        onSuccess: @escaping () -> Void
+    ) async {
         for fileURL in urls {
             let fileName = fileURL.lastPathComponent
             
@@ -158,33 +159,30 @@ final class FileTabVM: ObservableObject {
                 continue
             }
             
-            fileUploadAPI(id) { result in
-                switch result {
-                case .success(let model):
-                    if let model = model?.attributes {
-                        let url = model.url
-                        
-                        self.uploadFile(
-                            url,
-                            name: fileName,
-                            at: root,
-                            mimeType: mimeType,
-                            fileUrl: fileURL
-                        )
-                        
-                        self.fetchFiles(root)
-                        
-                        onSuccess()
-                    }
-                    
-                case .failure(let error):
-                    print("Error in file API:", error)
-                }
+            do {
+                let url = try await fileUploadAPI(id)
+                
+                self.uploadFile(
+                    url,
+                    name: fileName,
+                    at: root,
+                    mimeType: mimeType,
+                    fileUrl: fileURL
+                )
+                
+                await fetchFiles(root)
+                
+                onSuccess()
+            } catch {
+                print("Error in file API:", error)
             }
         }
     }
     
-    func handleImageImport(_ image: UIImage, at root: String) {
+    func handleImageImport(
+        _ image: UIImage,
+        at root: String
+    ) async {
         guard let imageData = image.heicData() else {
             print("Unable to convert image to data")
             return
@@ -201,44 +199,31 @@ final class FileTabVM: ObservableObject {
             return
         }
         
-        fileUploadAPI(id) { result in
-            switch result {
-            case .success(let model):
-                if let vm = model?.attributes {
-                    let url = vm.url
-                    
-                    self.uploadFile(
-                        url,
-                        name: "Image\(UUID().uuidString).heic",
-                        at: root,
-                        mimeType: mimeType,
-                        fileUrl: fileURL
-                    )
-                    
-                    self.fetchFiles(root)
-                }
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-            }
+        do {
+            let url = try await fileUploadAPI(id)
+            
+            self.uploadFile(
+                url,
+                name: "Image\(UUID().uuidString).heic",
+                at: root,
+                mimeType: mimeType,
+                fileUrl: fileURL
+            )
+            
+            await fetchFiles(root)
+            
+        } catch {
+            SystemAlert.error(error)
         }
     }
 #endif
     
-    func downloadFile(_ path: String) {
-        fileDownloadAPI(id, path: path) { result in
-            switch result {
-            case .success(let model):
-                if let model = model?.attributes {
-                    main {
-                        self.downloadUrl = model.url
-                        self.showSafari = true
-                    }
-                }
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-            }
+    func downloadFile(_ path: String) async {
+        do {
+            downloadUrl = try await fileDownloadAPI(id, path: path)
+            self.showSafari = true
+        } catch {
+            SystemAlert.error(error)
         }
     }
     
@@ -246,31 +231,24 @@ final class FileTabVM: ObservableObject {
         _ path: String,
         from oldName: String,
         to newName: String
-    ) {
-        fileRenameAPI(id, at: path, from: oldName, to: newName) { result in
-            switch result {
-            case .success:
-                self.fetchFiles(path)
-                
-                main {
-                    self.newFileName = ""
-                }
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-            }
+    ) async {
+        do {
+            try await fileRenameAPI(id, at: path, from: oldName, to: newName)
+            await fetchFiles(path)
+            
+            self.newFileName = ""
+        } catch {
+            SystemAlert.error(error)
+            
         }
     }
     
-    func duplicateFile(_ file: String, at path: String) {
-        fileDuplicateAPI(id, file: file, at: path) { result in
-            switch result {
-            case .success:
-                self.fetchFiles(path)
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-            }
+    func duplicateFile(_ file: String, at path: String) async {
+        do {
+            try await fileDuplicateAPI(id, file: file, at: path)
+            await fetchFiles(path)
+        } catch {
+            SystemAlert.error(error)
         }
     }
     
@@ -278,32 +256,28 @@ final class FileTabVM: ObservableObject {
         _ file: String,
         at path: String,
         do action: CompressorActions
-    ) {
-        fileCompressorAPI(
-            id,
-            file: file,
-            at: path,
-            do: action
-        ) { result in
-            switch result {
-            case .success:
-                self.fetchFiles(path)
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-            }
+    ) async {
+        do {
+            try await fileCompressorAPI(
+                id,
+                file: file,
+                at: path,
+                do: action
+            )
+            
+            await fetchFiles(path)
+        } catch {
+            SystemAlert.error(error)
         }
     }
     
-    func createFolder(_ file: String, at path: String) {
-        fileCreateFolderAPI(id, file: file, at: path) { result in
-            switch result {
-            case .success:
-                self.fetchFiles(path)
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-            }
+    func createFolder(_ file: String, at path: String) async {
+        do {
+            try await fileCreateFolderAPI(id, file: file, at: path)
+            
+            await fetchFiles(path)
+        } catch {
+            SystemAlert.error(error)
         }
     }
     
@@ -311,19 +285,17 @@ final class FileTabVM: ObservableObject {
         _ files: String,
         at path: String,
         onSuccess: @escaping (() -> Void) = {}
-    ) {
-        fileDeleteAPI(id, files: [files], at: path) { result in
-            switch result {
-            case .success:
-                self.fetchFiles(path)
-                
-                main {
-                    onSuccess()
-                }
-                
-            case .failure(let error):
-                SystemAlert.error(error)
+    ) async {
+        do {
+            try await fileDeleteAPI(id, files: [files], at: path)
+            
+            await fetchFiles(path)
+            
+            main {
+                onSuccess()
             }
+        } catch {
+            SystemAlert.error(error)
         }
     }
 }

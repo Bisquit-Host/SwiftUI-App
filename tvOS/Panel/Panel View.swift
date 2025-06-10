@@ -103,7 +103,7 @@ struct PanelView: View {
             }
         }
         .task {
-            fetchData()
+            await fetchData()
         }
         .onDisappear {
             vm.disconnectWebSocket()
@@ -113,40 +113,47 @@ struct PanelView: View {
             vm.messages.removeAll()
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
-            vm.consoleDetails { data in
-                if let data {
+            Task {
+                if let data = await vm.consoleDetails() {
                     vm.connectWebSocket(data)
                 }
             }
         }
     }
     
-    private func fetchData() {
-        vm.fetchServerDetails()
+    private func fetchData() async {
+        await vm.fetchServerDetails()
         
-        if !System.lowPowerMode {
-            fileVM.fetchFiles()
-            backupVM.fetchBackups()
-            databaseVM.fetchDatabases()
-            scheduleVM.fetchSchedules()
-            usersVM.fetchUsers(true)
-            logVM.fetchLogs(true)
-            allocationVM.fetchAllocations()
-            startupVM.fetchStartupVariables()
-            
-            Task {
-                await subdomainVM.fetchSubdomains()
-            }
+        if let data = await vm.consoleDetails() {
+            vm.connectWebSocket(data)
         }
         
-        vm.consoleDetails { data in
-            if let data {
-                vm.connectWebSocket(data)
-            }
+        if !System.lowPowerMode {
+            async let files: () = fileVM.fetchFiles()
+            async let allocations: () = allocationVM.fetchAllocations()
+            async let startup: () = startupVM.fetchStartupVariables()
+            async let backups: () = backupVM.fetchBackups()
+            async let databases: () = databaseVM.fetchDatabases()
+            async let schedules: () = scheduleVM.fetchSchedules()
+            async let users: () = usersVM.fetchUsers(true)
+            async let logs: () = logVM.fetchLogs(true)
+            async let subdomains: () = subdomainVM.fetchSubdomains()
+            
+            _ = await (
+                files,
+                allocations,
+                startup,
+                backups,
+                databases,
+                schedules,
+                users,
+                logs,
+                subdomains
+            )
         }
         
         vm.updateBackups = {
-            backupVM.fetchBackups()
+            await backupVM.fetchBackups()
         }
     }
 }

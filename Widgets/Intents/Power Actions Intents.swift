@@ -13,7 +13,7 @@ struct StartServerIntent: AppIntent {
     }
     
     func perform() async throws -> some IntentResult {
-        PteroNet.powerSignal(id, do: .start)
+        await PteroNet.powerSignal(id, do: .start)
         
         return .result()
     }
@@ -32,7 +32,7 @@ struct RestartServerIntent: AppIntent {
     }
     
     func perform() async throws -> some IntentResult {
-        PteroNet.powerSignal(id, do: .restart)
+        await PteroNet.powerSignal(id, do: .restart)
         
         return .result()
     }
@@ -51,7 +51,7 @@ struct StopServerIntent: AppIntent {
     }
     
     func perform() async throws -> some IntentResult {
-        PteroNet.powerSignal(id, do: .stop)
+        await PteroNet.powerSignal(id, do: .stop)
         
         return .result()
     }
@@ -70,7 +70,7 @@ struct KillServerIntent: AppIntent {
     }
     
     func perform() async throws -> some IntentResult {
-        PteroNet.powerSignal(id, do: .kill)
+        await PteroNet.powerSignal(id, do: .kill)
         
         return .result()
     }

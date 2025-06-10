@@ -2,9 +2,11 @@ import ScrechKit
 
 @Observable
 final class FolderPathVM {
-    func copyFilePath(_ path: String, withHomeContainer: Bool) {
-        UIPasteboard.general.string = "\(withHomeContainer ? "/home/container/" : "")\(path)"
+    func copyFilePath(_ path: String, withHomeContainer: Bool) async {
+        let string = "\(withHomeContainer ? "/home/container/" : "")\(path)"
         
-        SystemAlert.copied()
+        UIPasteboard.general.string = string
+        
+        await SystemAlert.copied()
     }
 }

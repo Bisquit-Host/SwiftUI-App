@@ -6,8 +6,15 @@ struct CacheSize: View {
     
     var body: some View {
         Menu {
-            Button("Clear entire cache", role: .destructive) {
-                cache.clearAll()
+#if DEBUG
+            NavigationLink("View cache") {
+                CacheList()
+            }
+#endif
+            Section {
+                Button("Clear entire cache", role: .destructive) {
+                    cache.clearAll()
+                }
             }
         } label: {
             HStack {
@@ -16,6 +23,7 @@ struct CacheSize: View {
                 Spacer()
                 
                 Text(cache.cacheSize)
+                    .secondary()
                 
                 Image(systemName: "chevron.forward")
                     .caption2(.bold)

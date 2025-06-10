@@ -13,7 +13,12 @@ struct ApikeyList: View {
                 ForEach(vm.keys, id: \.attributes.id) { key in
                     ApikeyCard(key)
                 }
-                .onDelete(perform: deleteItems)
+                .onDelete { indexSet in
+                    Task {
+                        await deleteItems(indexSet)
+                    }
+                }
+
             }
             .transparentSection()
         }
@@ -22,7 +27,7 @@ struct ApikeyList: View {
         .toolbarBackground(.visible, for: .tabBar)
         .animation(.default, value: vm.keys.count)
         .refreshableTask {
-            vm.fetchKeys()
+            await vm.fetchKeys()
         }
         .sheet($sheetCreate) {
             CreateApikey()
@@ -50,9 +55,9 @@ struct ApikeyList: View {
         }
     }
     
-    private func deleteItems(_ offsets: IndexSet) {
+    private func deleteItems(_ offsets: IndexSet) async {
         for key in offsets {
-            vm.delete(vm.keys[key].attributes.id)
+            await vm.delete(vm.keys[key].attributes.id)
         }
     }
 }

@@ -87,7 +87,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         
         print("Device Token:", token)
         
-        sendToken(token)
+        Task {
+            await sendToken(token)
+        }
     }
     
     func application(
@@ -98,24 +100,18 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
-private func sendToken(_ token: String) {
-    fetchEmail { email in
-        if let email {
-            postPushToken(email: email, token: token)
-        }
+private func sendToken(_ token: String) async {
+    if let email = await fetchEmail() {
+        postPushToken(email: email, token: token)
     }
 }
 
-private func fetchEmail(completion: @escaping (String?) -> Void) {
-    accountDetailsAPI { result in
-        switch result {
-        case .success(let model):
-            completion(model?.attributes.email)
-            
-        case .failure(let error):
-            SystemAlert.error(error)
-            completion(nil)
-        }
+private func fetchEmail() async -> String? {
+    do {
+        return try await accountDetailsAPI().email
+    } catch {
+        SystemAlert.error(error)
+        return nil
     }
 }
 

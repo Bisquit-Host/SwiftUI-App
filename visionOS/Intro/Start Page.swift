@@ -33,7 +33,9 @@ struct StartPage: View {
             }
             
             Button("Confirm") {
-                checkApiKey()
+                Task {
+                    await checkApiKey()
+                }
             }
             .title()
             .padding()

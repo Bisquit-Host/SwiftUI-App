@@ -30,12 +30,16 @@ struct FileContextMenu: ViewModifier {
                     MenuButton("Download with QR", icon: "qrcode") {
                         // Context menu needs some time to close and allow the sheet to display
                         delay(0.75) {
-                            vm.downloadFile(path + name)
+                            Task {
+                                await vm.downloadFile(path + name)
+                            }
                         }
                     }
                     
                     MenuButton("Duplicate", icon: "doc.on.doc") {
-                        vm.duplicateFile(name, at: path)
+                        Task {
+                            await vm.duplicateFile(name, at: path)
+                        }
                     }
                     
                     MenuButton("Permissions", icon: "lock.doc") {
@@ -45,17 +49,23 @@ struct FileContextMenu: ViewModifier {
                 
                 if mimeType.contains("gzip") {
                     MenuButton("Decompress", icon: "arrow.up.bin") {
-                        vm.fileCompressor(name, at: path, do: .decompress)
+                        Task {
+                            await vm.fileCompressor(name, at: path, do: .decompress)
+                        }
                     }
                 } else {
                     MenuButton("Compress", icon: "archivebox") {
-                        vm.fileCompressor(name, at: path, do: .compress)
+                        Task {
+                            await vm.fileCompressor(name, at: path, do: .compress)
+                        }
                     }
                 }
                 
                 Section {
                     MenuButton("Delete", role: .destructive, icon: "trash") {
-                        vm.deleteFile(name, at: path)
+                        Task {
+                            await vm.deleteFile(name, at: path)
+                        }
                     }
                 }
             }
@@ -66,7 +76,9 @@ struct FileContextMenu: ViewModifier {
                 TextField("", text: $vm.newFileName)
                 
                 Button("Rename", role: .destructive) {
-                    vm.renameFile(path, from: name, to: vm.newFileName)
+                    Task {
+                        await vm.renameFile(path, from: name, to: vm.newFileName)
+                    }
                     
                     vm.newFileName = ""
                 }

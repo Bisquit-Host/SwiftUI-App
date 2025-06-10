@@ -105,29 +105,30 @@ struct PanelView: View {
         }
         .navigationTitle(vm.server?.name ?? "")
         .task {
-            vm.fetchServerDetails()
+            await vm.fetchServerDetails()
+            
+            if let data = await vm.consoleDetails() {
+                vm.connectWebSocket(data)
+            }
             
             if !System.lowPowerMode {
-                backupVM.fetchBackups()
-                dbVM.fetchDatabases()
-                userVM.fetchUsers(true)
-                fileVM.fetchFiles()
+                async let files: () = fileVM.fetchFiles()
+                async let users: () = userVM.fetchUsers(true)
+                async let subdomains: () = subdomainVM.fetchSubdomains()
+                async let backups: () = backupVM.fetchBackups()
+                async let databases: () = dbVM.fetchDatabases()
                 
-                Task {
-                    await subdomainVM.fetchSubdomains()
-                }
+                _ = await (
+                    files,
+                    users,
+                    subdomains,
+                    backups,
+                    databases
+                )
             }
             
             vm.updateBackups = {
-                delay {
-                    backupVM.fetchBackups()
-                }
-            }
-            
-            vm.consoleDetails { data in
-                if let data {
-                    vm.connectWebSocket(data)
-                }
+                await backupVM.fetchBackups()
             }
         }
         .onDisappear {
@@ -138,8 +139,8 @@ struct PanelView: View {
             vm.messages.removeAll()
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
-            vm.consoleDetails { data in
-                if let data {
+            Task {
+                if let data = await vm.consoleDetails() {
                     vm.connectWebSocket(data)
                 }
             }

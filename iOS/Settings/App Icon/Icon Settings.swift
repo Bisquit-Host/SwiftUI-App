@@ -2,7 +2,12 @@ import SwiftUI
 
 struct IconSettings: View {
     var body: some View {
-        Section("Icon") {
+        VStack {
+            Text("Icon".uppercased())
+                .secondary()
+                .footnote()
+                .frame(maxWidth: .infinity, alignment: .center)
+            
             AppIconPicker()
         }
         .transparentSection()

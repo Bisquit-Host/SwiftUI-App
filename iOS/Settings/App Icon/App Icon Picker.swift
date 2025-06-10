@@ -2,19 +2,24 @@ import ScrechKit
 
 struct AppIconPicker: View {
     @EnvironmentObject private var store: ValueStore
-    
     @Namespace private var animation
     
+    private let columns = [
+        GridItem(.adaptive(minimum: 70, maximum: 70), spacing: 10)
+    ]
+    
     var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack {
+        ScrollView {
+            LazyVGrid(columns: columns, spacing: 10) {
                 ForEach(Icon.allCases) { icon in
                     AppIconCard(icon, isSelected: store.currentIcon == icon)
+                        .onTapGesture {
+                            store.currentIcon = icon
+                        }
                 }
             }
-            .padding(5)
+            .padding(.vertical, 16)
         }
-        .scrollClipDisabled()
         .onChange(of: store.currentIcon) { _, icon in
             guard UIApplication.shared.supportsAlternateIcons else {
                 print("Device doesn't support alternate app icons")

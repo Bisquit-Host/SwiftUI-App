@@ -70,8 +70,10 @@ struct FilePermissionsView: View {
             
             Button {
                 if isDifferent {
-                    vm.changeChmod(file.name, at: root, mode: newMode) {
-                        dismiss()
+                    Task {
+                        await vm.changeChmod(file.name, at: root, mode: newMode) {
+                            dismiss()
+                        }
                     }
                 } else {
                     dismiss()

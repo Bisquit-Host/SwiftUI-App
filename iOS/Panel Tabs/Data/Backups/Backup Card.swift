@@ -70,13 +70,17 @@ struct BackupCard: View {
         .safariCover($cardVm.showSafari, url: cardVm.url)
         .swipeActions {
             Button(role: .destructive) {
-                vm.deleteBackup(backup.uuid)
+                Task {
+                    await vm.deleteBackup(backup.uuid)
+                }
             } label: {
                 Image(systemName: "trash")
             }
             
             Button {
-                vm.lockBackup(backup.uuid)
+                Task {
+                    await vm.lockBackup(backup.uuid)
+                }
             } label: {
                 Image(systemName: backup.isLocked ? "lock.open" : "lock")
                     .tint(backup.isLocked ? .orange : .green)

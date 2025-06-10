@@ -115,12 +115,11 @@ struct InfoTab: View {
             serverSettingsVM.serverDescription = server.description
             
             if !System.lowPowerMode {
-                logVM.fetchLogs(true)
-                userVM.fetchUsers(true)
+                async let logs: () = logVM.fetchLogs(true)
+                async let users: () = userVM.fetchUsers(true)
+                async let subdomains: () = subdomainVM.fetchSubdomains()
                 
-                Task {
-                    await subdomainVM.fetchSubdomains()
-                }
+                _ = await (logs, users, subdomains)
             }
         }
     }

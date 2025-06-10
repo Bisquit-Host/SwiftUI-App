@@ -45,8 +45,10 @@ struct ImagePicker: View {
                 Spacer()
                 
                 Button("Upload") {
-                    vm.handleFileImport(previewUrls, at: root) {
-                        dismiss()
+                    Task {
+                        await vm.handleFileImport(previewUrls, at: root) {
+                            dismiss()
+                        }
                     }
                 }
             }

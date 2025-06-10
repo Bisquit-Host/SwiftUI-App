@@ -18,17 +18,11 @@ struct CreateBackup: AppIntent, PredictableIntent {
         }
     }
     
-    func createBackup(_ name: String) {
-        backupCreateAPI(id, name: name) { result in
-            switch result {
-            case .success(let model):
-                if let model {
-                    print(model)
-                }
-                
-            case .failure(let error):
-                networkCallError(#function, error)
-            }
+    func createBackup(_ name: String) async {
+        do {
+            _ = try await backupCreateAPI(id, name: name)
+        } catch {
+            networkCallError(#function, error)
         }
     }
     
@@ -42,7 +36,7 @@ struct CreateBackup: AppIntent, PredictableIntent {
     }
     
     func perform() async throws -> some IntentResult {
-        createBackup(backupName)
+        await createBackup(backupName)
         
         return .result()
     }

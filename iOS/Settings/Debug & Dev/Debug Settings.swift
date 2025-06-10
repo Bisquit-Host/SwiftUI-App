@@ -19,7 +19,6 @@ struct DebugSettings: View {
                 
                 Toggle("Hide server names", isOn: $store.hideServerNames)
             }
-            .transparentSection()
             
             DebugSettingsTips()
             
@@ -30,14 +29,12 @@ struct DebugSettings: View {
                     enableExtension()
                 }
             }
-            .transparentSection()
             
             Section {
                 Button("Clear all cookies") {
                     clearAllCookies()
                 }
             }
-            .transparentSection()
             
             Section {
                 NavigationLink {
@@ -47,7 +44,7 @@ struct DebugSettings: View {
                 }
             }
         }
-        .transparentList()
+        .foregroundStyle(.foreground)
         .alert("Couldn't enable the extension", isPresented: $errorAlert) {}
     }
     

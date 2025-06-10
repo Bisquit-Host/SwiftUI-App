@@ -38,7 +38,9 @@ struct FileContextMenu: ViewModifier {
                 
                 if !mimeType.contains("directory") {
                     MenuButton("Duplicate", icon: "plus.square.on.square") {
-                        vm.duplicateFile(name, at: path + "/")
+                        Task {
+                            await vm.duplicateFile(name, at: path + "/")
+                        }
                     }
                 }
                 
@@ -50,7 +52,9 @@ struct FileContextMenu: ViewModifier {
                 
                 if !mimeType.contains("directory") {
                     MenuButton("Download", icon: "square.and.arrow.down") {
-                        vm.downloadFile(path + "/" + name)
+                        Task {
+                            await vm.downloadFile(path + "/" + name)
+                        }
                     }
                 }
                 
@@ -61,7 +65,9 @@ struct FileContextMenu: ViewModifier {
                 Divider()
                 
                 MenuButton("Delete", role: .destructive, icon: "trash") {
-                    vm.deleteFile(name, at: path)
+                    Task {
+                        await vm.deleteFile(name, at: path)
+                    }
                 }
             }
             .sheet($sheetPermissions) {
@@ -73,7 +79,9 @@ struct FileContextMenu: ViewModifier {
                     .limitInputLength($vm.newFileName, length: 255)
                 
                 Button("Rename", role: .destructive) {
-                    vm.renameFile(path, from: name, to: vm.newFileName)
+                    Task {
+                        await vm.renameFile(path, from: name, to: vm.newFileName)
+                    }
                     
                     vm.newFileName = ""
                 }
@@ -90,11 +98,15 @@ struct FileContextMenu: ViewModifier {
     private func CompressButton() -> some View {
         if mimeType.contains("gzip") {
             MenuButton("Decompress", icon: "arrow.up.bin") {
-                vm.fileCompressor(name, at: path, do: .decompress)
+                Task {
+                    await vm.fileCompressor(name, at: path, do: .decompress)
+                }
             }
         } else {
             MenuButton("Compress", icon: "archivebox") {
-                vm.fileCompressor(name, at: path, do: .compress)
+                Task {
+                    await vm.fileCompressor(name, at: path, do: .compress)
+                }
             }
         }
     }

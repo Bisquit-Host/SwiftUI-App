@@ -8,70 +8,45 @@ final class AccountVM {
     private(set) var qrCodeUrl = ""
     private(set) var twoFaEnabled = false
     
-    func fetch() {
-        accountDetailsAPI { [self] result in
-            switch result {
-            case .success(let model):
-                if let model = model?.attributes {
-                    account = model
-                }
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-            }
+    func fetch() async {
+        do {
+            account = try await accountDetailsAPI()
+        } catch {
+            SystemAlert.error(error)
         }
     }
     
-    func twoFaDetails() {
-        twoFaDetailtsAPI { [self] result in
-            switch result {
-            case .success(let model):
-                twoFaEnabled = false
-                
-                if let model = model?.data.imageUrlData {
-                    qrCodeUrl = model
-                }
-                
-            case .failure(let error):
-                guard
-                    let error = error as? PterError,
-                    error.status == "400"
-                else {
-                    SystemAlert.error(error)
-                    return
-                }
-                
+    func twoFaDetails() async {
+        twoFaEnabled = false
+        
+        do {
+            qrCodeUrl = try await twoFaDetailtsAPI()
+        } catch {
+            if let error = error as? PterError, error.status == "400" {
                 twoFaEnabled = true
+            } else {
+                SystemAlert.error(error)
             }
         }
     }
     
-    func enable2Fa(_ code: String, onSuccess: @escaping () -> ()) {
-        twoFaEnableAPI(code) { result in
-            switch result {
-            case .success(let model):
-                if let tokens = model?.attributes.tokens {
-                    print(tokens)
+    func enable2Fa(_ code: String, onSuccess: @escaping () -> ()) async {
+        do {
+            let tokens = try await twoFaEnableAPI(code)
+            print(tokens.tokens)
 #warning("Finish")
-                    onSuccess()
-                }
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-            }
+            onSuccess()
+        } catch {
+            SystemAlert.error(error)
         }
     }
     
-    func disable2Fa(_ code: String, onSuccess: @escaping () -> ()) {
-        twoFaDisableAPI(code) { result in
-            switch result {
-            case .success(let model):
-                print(model)
-                onSuccess()
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-            }
+    func disable2Fa(_ code: String, onSuccess: @escaping () -> ()) async {
+        do {
+            try await twoFaDisableAPI(code)
+            onSuccess()
+        } catch {
+            SystemAlert.error(error)
         }
     }
 }

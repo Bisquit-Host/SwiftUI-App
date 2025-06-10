@@ -30,7 +30,7 @@ struct AllocationList: View {
         .navigationTitle("Allocations")
         .animation(.default, value: vm.allocations.count)
         .task {
-            vm.fetchAllocations()
+            await vm.fetchAllocations()
         }
         .sheet($sheetCreate) {
             SheetCreateAllocation()

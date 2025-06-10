@@ -120,19 +120,17 @@ struct PanelView: View {
             .ignoresSafeArea()
         }
         .task {
-            vm.fetchServerDetails()
+            await vm.fetchServerDetails()
             
-            vm.consoleDetails { data in
-                if let data {
-                    vm.connectWebSocket(data)
-                }
+            if let data = await vm.consoleDetails() {
+                vm.connectWebSocket(data)
             }
         }
         .onChange(of: server.id) {
-            vm.fetchServerDetails()
-            
-            vm.consoleDetails { data in
-                if let data {
+            Task {
+                await vm.fetchServerDetails()
+                
+                if let data = await vm.consoleDetails() {
                     vm.connectWebSocket(data)
                 }
             }
@@ -145,8 +143,8 @@ struct PanelView: View {
             vm.messages.removeAll()
         }
         .onReceive(NotificationCenter.default.publisher(for: application.didBecomeActiveNotification)) { _ in
-            vm.consoleDetails { data in
-                if let data {
+            Task {
+                if let data = await vm.consoleDetails() {
                     vm.connectWebSocket(data)
                 }
             }

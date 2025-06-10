@@ -20,31 +20,25 @@ final class TextFileVM {
         }
     }
     
-    func writeFile(_ write: String, at path: String) {
-        fileWriteAPI(id, write: write, path: path) { result in
-            switch result {
-            case .success:
-                SystemAlert.changesSaved()
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-            }
+    func writeFile(_ write: String, at path: String) async {
+        do {
+            try await fileWriteAPI(id, write: write, path: path)
+            await SystemAlert.changesSaved()
+        } catch {
+            SystemAlert.error(error)
         }
     }
     
-    func getFileContents(_ path: String) {
-        fileContentsAPI(id, path: path) { result in
-            switch result {
-            case .success(let model):
-                main {
-                    self.text = model
-                    self.initialText = model
-                    self.checkPrettiness()
-                }
-                
-            case .failure(let error):
-                SystemAlert.error(error)
+    func getFileContents(_ path: String) async {
+        do {
+            let model = try await fileContentsAPI(id, path: path)
+            main {
+                self.text = model
+                self.initialText = model
+                self.checkPrettiness()
             }
+        } catch {
+            SystemAlert.error(error)
         }
     }
     

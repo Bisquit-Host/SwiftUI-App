@@ -100,36 +100,40 @@ struct ColumnDetail: View {
         .frame(minWidth: 300)
         .environment(vm)
         .task {
-            fetchData()
+            await fetchData()
         }
         .onDisappear {
             vm.disconnectWebSocket()
         }
     }
     
-    private func fetchData() {
-        vm.fetchServerDetails()
+    private func fetchData() async {
+        await vm.fetchServerDetails()
         
-        vm.consoleDetails { data in
-            if let data {
-                vm.connectWebSocket(data)
-            }
+        if let data = await vm.consoleDetails() {
+            vm.connectWebSocket(data)
         }
         
         if !System.lowPowerMode {
-            fileVM.fetchFiles()
-            backupVM.fetchBackups()
-            databaseVM.fetchDatabases()
-            scheduleVM.fetchSchedules()
-            startupVM.fetchStartupVariables()
+            async let files: () = fileVM.fetchFiles()
+            async let startup: () = startupVM.fetchStartupVariables()
+            async let backups: () = backupVM.fetchBackups()
+            async let databases: () = databaseVM.fetchDatabases()
+            async let schedules: () = scheduleVM.fetchSchedules()
+            async let subdomains: () = subdomainVM.fetchSubdomains()
             
-            Task {
-                await subdomainVM.fetchSubdomains()
-            }
+            _ = await (
+                files,
+                startup,
+                backups,
+                databases,
+                schedules,
+                subdomains
+            )
         }
         
         vm.updateBackups = {
-            backupVM.fetchBackups()
+            await backupVM.fetchBackups()
         }
     }
 }

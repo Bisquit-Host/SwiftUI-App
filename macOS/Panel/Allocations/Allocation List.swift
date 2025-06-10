@@ -24,10 +24,12 @@ struct AllocationList: View {
         .background(.clear)
         .clipShape(.rect(cornerRadius: 16))
         .task {
-            vm.fetchAllocations()
+            await vm.fetchAllocations()
         }
         .onChange(of: id) {
-            vm.fetchAllocations()
+            Task {
+                await vm.fetchAllocations()
+            }
         }
     }
 }

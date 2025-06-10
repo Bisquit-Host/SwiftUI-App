@@ -58,28 +58,23 @@ final class LiveActivity {
         .resume()
     }
     
-    func consoleDetails(_ id: String) {
-        consoleDetailsAPI(id) { result in
-            switch result {
-            case .success(let model):
-                if let model = model?.data {
-                    let socket = model.socket
-                    let token = model.token
-                    
-                    self.postRequest(
-                        WSUrl: socket.description,
-                        WSToken: token,
-                        liveActivityToken: self.LAToken
-                    )
-                }
-                
-            case .failure(let error):
-                networkCallError(#function, error)
-            }
+    func consoleDetails(_ id: String) async {
+        do {
+            let model = try await consoleDetailsAPI(id)
+            let socket = model.socket
+            let token = model.token
+            
+            postRequest(
+                WSUrl: socket.description,
+                WSToken: token,
+                liveActivityToken: LAToken
+            )
+        } catch {
+            networkCallError(#function, error)
         }
     }
     
-    func setup(withActivity activity: Activity<WidgetsAttributes>) {
+    func setup(_ activity: Activity<WidgetsAttributes>) {
         currentActivity = activity
         
         activityViewState = .init(
@@ -162,7 +157,7 @@ final class LiveActivity {
         }
     }
     
-    func startLiveActivity(_ server: ServerAttributes) {
+    func startLiveActivity(_ server: ServerAttributes) async {
         let attributes = WidgetsAttributes(
             id: server.id,
             name: server.name,
@@ -185,10 +180,12 @@ final class LiveActivity {
                 pushType: .token
             )
             
-            setup(withActivity: activity)
+            setup(activity)
             
             delay(2) {
-                self.consoleDetails(server.id)
+                Task {
+                    await self.consoleDetails(server.id)
+                }
             }
         } catch {
             print("Error starting live activity:", error.localizedDescription)

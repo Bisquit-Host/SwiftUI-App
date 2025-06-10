@@ -132,8 +132,10 @@ struct ImagePlayground: View {
         .toolbar {
             Button("Upload") {
                 if let genImageURL {
-                    vm.handleFileImport([genImageURL], at: root) {
-                        dismiss()
+                    Task {
+                        await vm.handleFileImport([genImageURL], at: root) {
+                            dismiss()
+                        }
                     }
                 }
             }

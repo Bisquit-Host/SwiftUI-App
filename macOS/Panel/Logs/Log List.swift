@@ -21,10 +21,12 @@ struct LogList: View {
         }
         .navigationTitle("Logs")
         .task {
-            vm.fetchLogs()
+            await vm.fetchLogs()
         }
         .onChange(of: id) {
-            vm.fetchLogs()
+            Task {
+                await vm.fetchLogs()
+            }
         }
     }
 }

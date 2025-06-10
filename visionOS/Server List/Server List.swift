@@ -36,10 +36,9 @@ struct ServerList: View {
         }
         .navigationTitle("Server List")
         .safariCover($vm.showBilling, url: "https://my.bisquit.host")
-        .appStoreOverlay($vm.alertUpdate, id: "1639409934")
         .navigationBarBackButtonHidden()
         .refreshableTask {
-            vm.fetchServers(store.adminServerList)
+            await vm.fetchServers(store.adminServerList)
         }
         .sheet($sheetSettings) {
             NavigationView {
@@ -51,11 +50,6 @@ struct ServerList: View {
         }
         .sheet($vm.sheetDiscover) {
             Discover()
-        }
-        .onFirstAppear {
-            if !System.lowPowerMode {
-                await vm.checkForUpdates()
-            }
         }
         .toolbar {
 #warning("Uncomment")

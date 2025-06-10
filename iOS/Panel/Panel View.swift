@@ -42,7 +42,7 @@ struct PanelView: View {
         .ignoresSafeArea()
         .environment(vm)
         .task {
-            fetchData()
+            await fetchData()
         }
         .onDisappear {
             vm.disconnectWebSocket()
@@ -52,8 +52,8 @@ struct PanelView: View {
             vm.messages.removeAll()
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
-            vm.consoleDetails { data in
-                if let data {
+            Task {
+                if let data = await vm.consoleDetails() {
                     vm.connectWebSocket(data)
                 }
             }
@@ -65,7 +65,9 @@ struct PanelView: View {
                 image: .init(content: "folder.badge.plus", foreground: .white),
                 button1: .init(content: "Create", foreground: .white) { folder in
                     if !folder.isEmpty {
-                        fileVM.createFolder(folder, at: fileVM.path)
+                        Task {
+                            await fileVM.createFolder(folder, at: fileVM.path)
+                        }
                     }
                     
                     vm.alertNewFolder = false
@@ -80,25 +82,25 @@ struct PanelView: View {
         }
     }
     
-    private func fetchData() {
-        vm.fetchServerDetails()
+    private func fetchData() async {
+        await vm.fetchServerDetails()
         
-        vm.consoleDetails { data in
-            if let data {
-                vm.connectWebSocket(data)
-            }
+        if let data = await vm.consoleDetails() {
+            vm.connectWebSocket(data)
         }
         
         if !System.lowPowerMode {
-            fileVM.fetchFiles()
-            backupVM.fetchBackups()
-            databaseVM.fetchDatabases()
-            scheduleVM.fetchSchedules()
-            startupVM.fetchStartupVariables()
+            async let files: () =     fileVM.fetchFiles()
+            async let startup: () =   startupVM.fetchStartupVariables()
+            async let schedules: () = scheduleVM.fetchSchedules()
+            async let backups: () =   backupVM.fetchBackups()
+            async let databases: () = databaseVM.fetchDatabases()
+            
+            _ = await (files, startup, schedules, backups, databases)
         }
-        
+                
         vm.updateBackups = {
-            backupVM.fetchBackups()
+            await backupVM.fetchBackups()
         }
     }
     

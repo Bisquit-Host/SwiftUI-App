@@ -57,7 +57,7 @@ struct FolderDestination: View {
         //            try? nav.save()
         //        }
         .task {
-            vm.fetchFiles(root)
+            await vm.fetchFiles(root)
         }
     }
 }

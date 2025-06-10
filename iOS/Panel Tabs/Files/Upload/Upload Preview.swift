@@ -23,8 +23,10 @@ struct UploadPreview: View {
                 Spacer()
                 
                 Button("Upload") {
-                    vm.handleFileImport(urls, at: path) {
-                        dismiss()
+                    Task {
+                        await vm.handleFileImport(urls, at: path) {
+                            dismiss()
+                        }
                     }
                 }
             }

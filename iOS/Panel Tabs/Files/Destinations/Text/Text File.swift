@@ -36,13 +36,15 @@ struct TextFile: View {
         }
         .navigationTitle(name)
         .task {
-            vm.getFileContents(path + name)
+            await vm.getFileContents(path + name)
         }
         .toolbar {
 #if os(iOS)
             if showSaveButton {
                 Button("Save") {
-                    vm.writeFile(vm.text, at: path + name)
+                    Task {
+                        await vm.writeFile(vm.text, at: path + name)
+                    }
                 }
                 .animation(.default, value: showSaveButton)
             }
@@ -57,8 +59,10 @@ struct TextFile: View {
 #endif
                 Section {
                     Button(role: .destructive) {
-                        fileVm.deleteFile(name, at: path) {
-                            dismiss()
+                        Task {
+                            await fileVm.deleteFile(name, at: path) {
+                                dismiss()
+                            }
                         }
                     } label: {
                         Label("Delete", systemImage: "trash")

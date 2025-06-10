@@ -17,7 +17,9 @@ struct FolderPath: View {
     var body: some View {
         if !path.isEmpty {
             Button {
-                vm.copyFilePath(path, withHomeContainer: store.showFullFilePath)
+                Task {
+                    await vm.copyFilePath(path, withHomeContainer: store.showFullFilePath)
+                }
             } label: {
                 Text(listPath)
                     .footnote()

@@ -1,14 +1,6 @@
 import ScrechKit
 import PteroNet
 
-struct ItunesAppInfo: Decodable {
-    let results: [ItunesAppInfoResult]
-}
-
-struct ItunesAppInfoResult: Decodable {
-    let version: String
-}
-
 @Observable
 final class ServerListVM {
     // MARK: - PteroNet
@@ -20,7 +12,6 @@ final class ServerListVM {
     var sheetKeyStorage = false
     var sheetDiscover = false
     var showBilling = false
-    var alertUpdate = false
     
     // MARK: - Filter/Search
     var searchField = ""
@@ -75,104 +66,60 @@ final class ServerListVM {
         UserDefaults.standard.setServerAttributesArray(servers, forKey: "servers")
     }
     
-    func checkForUpdates() async {
-        let decoder = JSONDecoder()
-        var newVersion = "0"
-        
-        guard
-            let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
-            let url = URL(string: "https://itunes.apple.com/lookup?bundleId=host.bisquit.Bisquit-Host")
-        else {
-            return
-        }
-        
-        let request = URLRequest(url: url)
-        
+    func fetchServers(_ isAdmin: Bool) async {
         do {
-            let (data, _) = try await URLSession.shared.data(for: request)
-            let decoded = try decoder.decode(ItunesAppInfo.self, from: data)
-            newVersion = decoded.results.first?.version ?? "0"
+            let model = try await serverListAPI(isAdmin)
+            
+            let loadedServers = model.data.map(\.attributes)
+            let totalPages = model.meta.pagination.totalPages
+            
+            if totalPages > 1 {
+                await fetchAllPages(isAdmin, totalPages: totalPages, currentServers: loadedServers)
+            } else {
+                withAnimation {
+                    servers = loadedServers
+                }
+                
+                saveServers()
+            }
+            
+            await self.submitScore()
+            
+#if canImport(ContactProvider)
+            if ValueStore().contactsProviderEnabled {
+                await self.fetchUniqueUsers()
+            }
+#endif
+            
+#if canImport(CoreSpotlight) && !os(tvOS)
+            self.indexItems(self.servers)
+#endif
         } catch {
-            return
-        }
-        
-        if currentVersion.compare(newVersion, options: .numeric) == .orderedAscending {
-            print("Update available:", currentVersion, "->", newVersion)
-            self.alertUpdate = true
-        } else {
-            print("The app is up to date")
+            SystemAlert.error(error)
         }
     }
     
-    func fetchServers(_ isAdmin: Bool) {
-        serverListAPI(isAdmin) { result in
-            switch result {
-            case .success(let model):
-                guard let model else {
-                    return
-                }
-                
-                let loadedServers = model.data.map(\.attributes)
-                let totalPages = model.meta.pagination.totalPages
-                
-                if totalPages > 1 {
-                    self.fetchAllPages(isAdmin, totalPages: totalPages, currentServers: loadedServers)
-                } else {
-                    withAnimation {
-                        self.servers = loadedServers
-                    }
-                    
-                    self.saveServers()
-                }
-                
-                Task {
-                    await self.submitScore()
-                }
-                
-#if canImport(ContactProvider)
-                if ValueStore().contactsProviderEnabled {
-                    self.fetchUniqueUsers()
-                }
-#endif
-                
-#if canImport(CoreSpotlight) && !os(tvOS)
-                self.indexItems(self.servers)
-#endif
-            case .failure(let error):
+    private func fetchAllPages(
+        _ isAdmin: Bool,
+        totalPages: Int,
+        currentServers: [ServerAttributes]
+    ) async {
+        var loadedServers = currentServers
+        
+        for page in 2...totalPages {
+            do {
+                let model = try await serverListAPI(isAdmin, page: page)
+                let servers = model.data.map(\.attributes)
+                loadedServers.append(contentsOf: servers)
+            } catch {
                 SystemAlert.error(error)
             }
         }
-    }
-    
-    private func fetchAllPages(_ isAdmin: Bool, totalPages: Int, currentServers: [ServerAttributes]) {
-        var loadedServers = currentServers
-        let group = DispatchGroup()
         
-        for page in 2...totalPages {
-            group.enter()
-            
-            serverListAPI(isAdmin, page: page) { result in
-                switch result {
-                case .success(let model):
-                    if let model {
-                        let servers = model.data.map(\.attributes)
-                        loadedServers.append(contentsOf: servers)
-                    }
-                    
-                case .failure(let error):
-                    SystemAlert.error(error)
-                }
-                
-                group.leave()
-            }
+        withAnimation {
+            self.servers = loadedServers
         }
         
-        group.notify(queue: .main) {
-            withAnimation {
-                self.servers = loadedServers
-            }
-            
-            self.saveServers()
-        }
+        self.saveServers()
     }
 }

@@ -25,34 +25,35 @@ struct ServerCard: View {
     }
     
     var body: some View {
-            // Wide
-            HStack {
-                VStack(alignment: .leading) {
-                    serverName
-                    
-                    description
-                    
-                    diskGauge
-                }
+        HStack {
+            VStack(alignment: .leading) {
+                serverName
                 
-                if vm.stateColor != .red {
-                    HStack(spacing: 16) {
-                        cpuGauge
-                        
-                        ramGauge
-                    }
-                    .matchedEffect("RAM_CPU", in: animation)
-                }
+                description
+                
+                diskGauge
             }
-            .frame(height: 100)
-            .padding(.horizontal)
-            .background(.ultraThinMaterial, in: .rect(cornerRadius: rounding))
-            .background(backgroundColor, in: .rect(cornerRadius: rounding))
+            
+            if vm.stateColor != .red {
+                HStack(spacing: 16) {
+                    cpuGauge
+                    
+                    ramGauge
+                }
+                .matchedEffect("RAM_CPU", in: animation)
+            }
+        }
+        .frame(height: 100)
+        .padding(.horizontal)
+        .background(.ultraThinMaterial, in: .rect(cornerRadius: rounding))
+        .background(backgroundColor, in: .rect(cornerRadius: rounding))
         .task {
-            vm.fetchServerUsage()
+            await vm.fetchServerUsage()
         }
         .onChange(of: store.updateServers) {
-            vm.fetchServerUsage()
+            Task {
+                await vm.fetchServerUsage()
+            }
         }
     }
     
@@ -103,7 +104,9 @@ struct ServerCard: View {
 
 #Preview {
     LazyVGrid(
-        columns: [GridItem(.adaptive(minimum: 160, maximum: 400))],
+        columns: [
+            GridItem(.adaptive(minimum: 360))
+        ],
         spacing: 8
     ) {
         ServerCard(sampleJSON(.serverListAttributes))
@@ -116,4 +119,5 @@ struct ServerCard: View {
     }
     .padding(5)
     .environmentObject(ValueStore())
+    .darkSchemePreferred()
 }

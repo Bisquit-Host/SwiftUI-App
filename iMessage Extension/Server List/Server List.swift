@@ -20,7 +20,7 @@ struct ServerList: View {
         //        .searchable(text: $searchField)
         //        .background(BisquitFall())
         .refreshableTask {
-            vm.fetchServers(store.adminServerList)
+            await vm.fetchServers(store.adminServerList)
             store.updateServers.toggle()
         }
         .onChange(of: searchField) { _, search in
@@ -67,7 +67,9 @@ struct ServerList: View {
         }
         .sheet($vm.sheetKeyStorage) {
             CloudKeys($vm.apiKey) {
-                vm.fetchServers(store.adminServerList)
+                Task {
+                    await vm.fetchServers(store.adminServerList)
+                }
             }
         }
         .fullScreenCover($test) {

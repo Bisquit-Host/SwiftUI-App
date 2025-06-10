@@ -7,57 +7,40 @@ final class SSHVM {
     var newName = ""
     var newPublicKey = ""
     
-    func fetchKeys() {
-        sshListAPI { result in
-            switch result {
-            case .success(let model):
-                if let model = model?.data {
-                    withAnimation {
-                        self.keys = model.map(\.attributes)
-                    }
-                }
-                
-            case .failure(let error):
-                SystemAlert.error(error)
-            }
+    func fetchKeys() async {
+        do {
+            keys = try await sshListAPI()
+        } catch {
+            SystemAlert.error(error)
         }
     }
     
-    func createKey(onSuccess: @escaping () -> ()) {
-        sshCreateAPI(newName, publicKey: newPublicKey, printResponse: true) { result in
-            switch result {
-            case .success(let model):
-                if let model = model?.attributes {
-                    withAnimation {
-                        self.keys.append(model)
-                    }
-                    
-                    onSuccess()
-                } else {
-                    self.fetchKeys()
-                }
-                
-            case .failure(let error):
-                SystemAlert.error(error)
+    func createKey(onSuccess: @escaping () -> ()) async {
+        do {
+            let model = try await sshCreateAPI(newName, publicKey: newPublicKey, printResponse: true)
+            
+            withAnimation {
+                self.keys.append(model)
             }
+            
+            onSuccess()
+            await fetchKeys()
+        } catch {
+            SystemAlert.error(error)
         }
     }
     
-    func deleteKey(_ fingerprint: String) {
-        sshDeleteAPI(fingerprint) { result in
-            switch result {
-            case .success:
-                if let index = self.keys.firstIndex(where: {
-                    $0.fingerprint == fingerprint
-                }) {
-                    self.keys.remove(at: index)
-                } else {
-                    self.fetchKeys()
-                }
-                
-            case .failure(let error):
-                SystemAlert.error(error)
+    func deleteKey(_ fingerprint: String) async {
+        do {
+            try await sshDeleteAPI(fingerprint)
+            
+            if let index = self.keys.firstIndex(where: { $0.fingerprint == fingerprint }) {
+                self.keys.remove(at: index)
+            } else {
+                await fetchKeys()
             }
+        } catch {
+            SystemAlert.error(error)
         }
     }
     
