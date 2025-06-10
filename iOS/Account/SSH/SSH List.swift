@@ -18,7 +18,6 @@ struct SSHList: View {
             .transparentSection()
         }
         .navigationTitle("SSH")
-        .toolbarBackground(.visible, for: .tabBar)
         .transparentList()
         .refreshableTask {
             await vm.fetchKeys()

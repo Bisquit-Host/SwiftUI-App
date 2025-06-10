@@ -96,7 +96,6 @@ struct InfoTab: View {
         }
         .animation(.default, value: sectionsVM.activeSections)
         .ignoresSafeArea()
-        .toolbarBackground(.visible, for: .tabBar)
         .sheet($sheetCustomization) {
             NavigationView {
                 PanelSectionList()

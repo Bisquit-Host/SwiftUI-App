@@ -29,9 +29,6 @@ struct InfoTabLA: View {
             Image(systemName: "clock.badge")
         }
         .symbolVariant(isActive ? .fill : .none)
-        .footnote(.bold)
-        .frame(35)
-        .background(.ultraThinMaterial, in: .circle)
         .foregroundStyle(isActive ? .red : .primary)
         .animation(.default, value: la.activityViewState?.activityState)
         
@@ -82,8 +79,6 @@ struct InfoTabLA: View {
         //                }
         //            }
         //        }
-        .title2(.semibold, design: .rounded)
-        .foregroundStyle(.foreground)
         //        .animation(.default, value: la.activityViewState?.activityState)
     }
 }

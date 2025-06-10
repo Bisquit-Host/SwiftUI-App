@@ -51,7 +51,6 @@ struct DataTab: View {
         .background(BackgroundImage())
         .scrollContentBackground(.hidden)
 #endif
-        .toolbarBackground(.visible, for: .tabBar)
         .alert("Create Database", isPresented: $databaseVM.alertCreate) {
             TextField("", text: $databaseVM.newDatabaseName)
                 .autocorrectionDisabled()

@@ -65,10 +65,6 @@ struct UserList: View {
                     vm.sheetInvitation = true
                 } label: {
                     Image(systemName: "person.crop.circle.badge.plus")
-                        .foregroundStyle(.foreground)
-                        .footnote(.bold)
-                        .frame(35)
-                        .background(.ultraThinMaterial, in: .circle)
                 }
             }
         }

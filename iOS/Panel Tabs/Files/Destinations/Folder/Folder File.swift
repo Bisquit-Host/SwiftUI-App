@@ -65,12 +65,7 @@ struct FolderFile: View {
                     alertNewFolder = true
                 } label: {
                     Image(systemName: "folder.badge.plus")
-                        .footnote(.bold)
-                        .frame(35)
-                        .background(.ultraThinMaterial, in: .circle)
                 }
-                .foregroundStyle(.primary)
-                .padding(.horizontal, -10)
             }
         }
         .alert(isPresented: $alertNewFolder) {

@@ -38,9 +38,15 @@ struct PanelView: View {
                 }
             }
         }
-        .navigationBarBackButtonHidden()
-        .ignoresSafeArea()
+        .panelToolbar()
+        .environment(consoleVM)
+        .environmentObject(fileVM)
+        .environment(backupVM)
+        .environment(databaseVM)
+        .environment(scheduleVM)
+        .environment(startupVM)
         .environment(vm)
+        .ignoresSafeArea()
         .task {
             await fetchData()
         }
@@ -126,13 +132,6 @@ struct PanelView: View {
                     .tab(.startup)
             }
         }
-        .panelToolbar()
-        .environment(consoleVM)
-        .environmentObject(fileVM)
-        .environment(backupVM)
-        .environment(databaseVM)
-        .environment(scheduleVM)
-        .environment(startupVM)
     }
 }
 

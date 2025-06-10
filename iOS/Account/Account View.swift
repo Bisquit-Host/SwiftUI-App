@@ -70,7 +70,6 @@ struct AccountView: View {
             .transparentSection()
         }
         .transparentList()
-        .toolbarBackground(.visible, for: .tabBar)
         .navigationTitle("Account")
         .refreshableTask {
             let fetchTask = Task {

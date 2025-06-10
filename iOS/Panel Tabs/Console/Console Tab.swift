@@ -53,8 +53,6 @@ struct ConsoleTab: View {
             .padding()
             .background(.ultraThinMaterial)
         }
-        .toolbarBackground(.visible, for: .tabBar)
-        .toolbarBackground(.visible, for: .navigationBar)
         .task {
             vm.fontSize = store.consoleFontSize
         }

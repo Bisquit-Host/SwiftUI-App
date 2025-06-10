@@ -24,13 +24,9 @@ struct LogListFilter: View {
             }
         } label: {
             Image(systemName: "line.3.horizontal.decrease.circle")
-                .footnote(.bold)
-                .frame(35)
-                .background(.ultraThinMaterial, in: .circle)
                 .symbolVariant(vm.selectedActor == nil ? .none : .fill)
                 .animation(.default, value: vm.selectedActor)
         }
-        .foregroundStyle(.foreground)
     }
 }
 

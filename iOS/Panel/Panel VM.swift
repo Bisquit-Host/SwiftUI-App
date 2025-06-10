@@ -64,83 +64,92 @@ final class PanelVM {
     }
     
     func appendMessage(_ message: String) async {
-        if let jsonData = message.data(using: .utf8) {
-            do {
-                let message = try JSONDecoder().decode(WebSocketMessage.self, from: jsonData)
+        guard
+            let jsonData = message.data(using: .utf8)
+        else {
+            return
+        }
+        
+        do {
+            let message = try JSONDecoder().decode(WebSocketMessage.self, from: jsonData)
+            
+            if let status = message.serverStatus {
+                print("Server status:", status)
                 
-                if let status = message.serverStatus {
-                    print("Server status:", status)
+                var state: ServerState
+                
+                switch status {
+                case "starting":
+                    state = .starting
+                    stateColor = .yellow
                     
-                    var state: ServerState
+                case "running":
+                    state = .running
+                    stateColor = .green
                     
-                    switch status {
-                    case "starting":
-                        state = .starting
-                        self.stateColor = .yellow
-                    case "running":
-                        state = .running
-                        self.stateColor = .green
-                    case "stopping":
-                        state = .stopping
-                        self.stateColor = .yellow
-                    case "offline":
-                        state = .offline
-                        self.stateColor = .red
-                    default:
-                        state = .unknown
-                        self.stateColor = .primary
-                    }
+                case "stopping":
+                    state = .stopping
+                    stateColor = .yellow
                     
-                    self.serverState = state
+                case "offline":
+                    state = .offline
+                    stateColor = .red
                     
-                } else if let consoleOutput = message.consoleOutput {
-                    self.messages.append(
-                        convertAnsiToAttributedString(
-                            consoleOutput.replacing(">....", with: "")
-                        )
-                    )
-                    
-                } else if let stats = message.serverStats {
-                    do {
-                        let jsonData = try JSONSerialization.data(withJSONObject: stats, options: [])
-                        let decoder = JSONDecoder()
-                        let stats = try decoder.decode(ServerStats.self, from: jsonData)
-                        
-                        self.uptime = stats.uptime
-                        
-                        withAnimation {
-                            self.cpuUsage = stats.cpuAbsolute
-                            self.ramUsage = stats.memoryBytes
-                            self.diskUsage = stats.diskBytes / pow(1024, 2)
-#if os(tvOS)
-                            self.cpuValues.append(Value(id: self.cpuValues.count, value: self.cpuUsage))
-                            self.ramValues.append(Value(id: self.ramValues.count, value: self.ramUsage))
-#endif
-                        }
-                    } catch {
-                        print("Error converting dictionary to JSON Data or decoding JSON:", error)
-                    }
-                    
-                } else if message.backupCompleted != nil {
-                    await updateBackups?()
-                    
-                } else if message.authSuccess != nil {
-                    print("WebSocket authentication successful")
-                    
-                } else if message.tokenExpiring != nil {
-                    print("WebSocket token expiring soon")
-                    
-                    if let data = await consoleDetails() {
-                        connectWebSocket(data)
-                    }
-                } else if message.tokenExpired != nil {
-                    if let data = await consoleDetails() {
-                        connectWebSocket(data)
-                    }
+                default:
+                    state = .unknown
+                    stateColor = .primary
                 }
-            } catch {
-                networkCallError(#function, error)
+                
+                serverState = state
+                
+            } else if let consoleOutput = message.consoleOutput {
+                messages.append(
+                    convertAnsiToAttributedString(
+                        consoleOutput.replacing(">....", with: "")
+                    )
+                )
+                
+            } else if let stats = message.serverStats {
+                do {
+                    let jsonData = try JSONSerialization.data(withJSONObject: stats, options: [])
+                    
+                    let decoder = JSONDecoder()
+                    let stats = try decoder.decode(ServerStats.self, from: jsonData)
+                    
+                    uptime = stats.uptime
+                    
+                    withAnimation {
+                        cpuUsage = stats.cpuAbsolute
+                        ramUsage = stats.memoryBytes
+                        diskUsage = stats.diskBytes / pow(1024, 2)
+#if os(tvOS)
+                        cpuValues.append(Value(id: cpuValues.count, value: cpuUsage))
+                        ramValues.append(Value(id: ramValues.count, value: ramUsage))
+#endif
+                    }
+                } catch {
+                    print("Error converting dictionary to JSON Data or decoding JSON:", error)
+                }
+                
+            } else if message.backupCompleted != nil {
+                await updateBackups?()
+                
+            } else if message.authSuccess != nil {
+                print("WebSocket authentication successful")
+                
+            } else if message.tokenExpiring != nil {
+                print("WebSocket token expiring soon")
+                
+                if let data = await consoleDetails() {
+                    connectWebSocket(data)
+                }
+            } else if message.tokenExpired != nil {
+                if let data = await consoleDetails() {
+                    connectWebSocket(data)
+                }
             }
+        } catch {
+            networkCallError(#function, error)
         }
     }
     

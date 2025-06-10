@@ -62,11 +62,7 @@ struct ServerList: View {
                     GameCenterButtons()
                 } label: {
                     Image(systemName: "sparkles")
-                        .footnote(.bold)
-                        .frame(35)
-                        .background(.ultraThinMaterial, in: .circle)
                 }
-                .foregroundStyle(.foreground)
             }
             
             ToolbarItemGroup(placement: .navigationBarTrailing) {

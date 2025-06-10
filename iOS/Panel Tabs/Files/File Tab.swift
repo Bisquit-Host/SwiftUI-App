@@ -39,7 +39,6 @@ struct FileTab: View {
             .listRowBackground(Color.gray.opacity(0.2))
         }
         .animation(.easeOut, value: vm.filteredFiles)
-        .toolbarBackground(.visible, for: .tabBar)
         .environmentObject(vm)
         .frame(maxWidth: 500)
         .safariCover($vm.showSafari, url: vm.downloadUrl)

@@ -33,7 +33,6 @@ struct ImagePlaygroundButton: View {
             }
         }
         .keyboardShortcut("P")
-        .foregroundStyle(.foreground)
         .disabled(!supportsImagePlayground)
         .sheet($sheetImagePlayground) {
             NavigationView {

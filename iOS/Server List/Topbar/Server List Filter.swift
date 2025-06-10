@@ -30,13 +30,8 @@ struct ServerListFilter: View {
             }
         } label: {
             Image(systemName: "line.3.horizontal.decrease.circle")
-                .footnote(.bold)
-                .frame(35)
-                .background(.ultraThinMaterial, in: .circle)
                 .symbolVariant(filterEnabled ? .fill : .none)
         }
-        .padding(.horizontal, -10)
-        .foregroundStyle(.foreground)
     }
 }
 

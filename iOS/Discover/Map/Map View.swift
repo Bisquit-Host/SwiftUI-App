@@ -100,9 +100,6 @@ struct MapView: View {
         //        }
         //#endif
         .ignoresSafeArea()
-#if !os(macOS)
-        .toolbarBackground(.visible, for: .navigationBar)
-#endif
         .onChange(of: map.region.span.latitudeDelta) { _, newValue in
             withAnimation {
                 showName = newValue < 16

@@ -11,12 +11,6 @@ struct PanelToolbarModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    DismissButton {
-                        dismiss()
-                    }
-                }
-                
                 ToolbarItemGroup(placement: .topBarTrailing) {
                     if store.lastTabPanel == .console {
                         Button {
@@ -29,23 +23,13 @@ struct PanelToolbarModifier: ViewModifier {
                             }
                         } label: {
                             Image(systemName: vm.enableConsoleSearch ? "magnifyingglass.circle.fill" : "magnifyingglass")
-                                .fontSize(16)
-                                .frame(35)
-                                .background(.ultraThinMaterial, in: .circle)
                         }
-                        .foregroundStyle(.primary)
                         
                         Button {
                             consoleVM.inspectorPresented = true
                         } label: {
                             Image(systemName: "bold.italic.underline")
-                                .fontSize(10)
-                                .bold()
-                                .frame(35)
-                                .background(.ultraThinMaterial, in: .circle)
                         }
-                        .foregroundStyle(.primary)
-                        .padding(.horizontal, -10)
                     }
                     
                     if store.lastTabPanel == .info {
@@ -67,12 +51,7 @@ struct PanelToolbarModifier: ViewModifier {
                             vm.alertNewFolder = true
                         } label: {
                             Image(systemName: "folder.badge.plus")
-                                .footnote(.bold)
-                                .frame(35)
-                                .background(.ultraThinMaterial, in: .circle)
                         }
-                        .foregroundStyle(.primary)
-                        .padding(.horizontal, -10)
                     }
                     
                     Button {
@@ -81,11 +60,7 @@ struct PanelToolbarModifier: ViewModifier {
                         }
                     } label: {
                         Image(systemName: "ellipsis")
-                            .footnote(.bold)
-                            .frame(35)
-                            .background(.ultraThinMaterial, in: .circle)
                     }
-                    .foregroundStyle(.primary)
                     .keyboardShortcut("S")
                 }
             }
@@ -94,6 +69,7 @@ struct PanelToolbarModifier: ViewModifier {
 
 extension View {
     func panelToolbar() -> some View {
-        self.modifier(PanelToolbarModifier())
+        self
+            .modifier(PanelToolbarModifier())
     }
 }

@@ -41,11 +41,7 @@ struct SettingsButton: View {
             }
         } label: {
             Image(systemName: "gear")
-                .footnote(.bold)
-                .frame(35)
-                .background(.ultraThinMaterial, in: .circle)
         }
-        .foregroundStyle(.foreground)
         .onGamepadPressed(.menu) {
             sheetSettings = true
         }
