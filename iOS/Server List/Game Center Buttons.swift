@@ -60,7 +60,9 @@ struct GameCenterButtons: View {
 class GameCenterDelegate: NSObject, GKGameCenterControllerDelegate {
     static let shared = GameCenterDelegate()
     
-    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
+    func gameCenterViewControllerDidFinish(
+        _ gameCenterViewController: GKGameCenterViewController
+    ) {
         gameCenterViewController.dismiss(animated: true)
     }
 }
