@@ -44,55 +44,54 @@ struct MapSection: View {
     }
     
     var body: some View {
-        Menu {
+        VStack {
+            HStack {
+                VStack(alignment: .leading) {
+                    Text("Location")
+                        .footnote()
+                        .secondary()
+                    
+                    Text(node)
+                        .title3(.bold, design: .rounded)
+                    
+                    if isMoscow {
+                        Text("Moscow, Russia")
+                            .semibold()
+                            .rounded()
+                    } else {
+                        Text("Frankfurt, Germany")
+                            .semibold()
+                            .rounded()
+                    }
+                }
+                
+                Spacer()
+                
+                if let ping {
+                    Text("\(ping) ms")
+                        .animation(.default, value: ping)
+                        .numericTransition()
+                        .monospacedDigit()
+                        .padding(.vertical, 5)
+                        .padding(.horizontal, 10)
+                        .background(.ultraThinMaterial, in: .rect(cornerRadius: 8))
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(.gray.opacity(0.25), lineWidth: 1)
+                        }
+                }
+            }
+            .frame(height: 80)
+            .padding(.horizontal)
+            .offset(y: 5)
+            
+            Map(position: $cameraPosition, interactionModes: [])
+        }
+        .contextMenu {
             Button {
                 openSafari(mapUrl)
             } label: {
                 Label("Open in Apple Maps", systemImage: "map")
-            }
-        } label: {
-            VStack {
-                HStack {
-                    VStack(alignment: .leading) {
-                        Text("Location")
-                            .footnote()
-                            .secondary()
-                        
-                        Text(node)
-                            .title3(.bold, design: .rounded)
-                        
-                        if isMoscow {
-                            Text("Moscow, Russia")
-                                .semibold()
-                                .rounded()
-                        } else {
-                            Text("Frankfurt, Germany")
-                                .semibold()
-                                .rounded()
-                        }
-                    }
-                    
-                    Spacer()
-                    
-                    if let ping {
-                        Text("\(ping) ms")
-                            .animation(.default, value: ping)
-                            .numericTransition()
-                            .monospacedDigit()
-                            .padding(.vertical, 5)
-                            .padding(.horizontal, 10)
-                            .background(.ultraThinMaterial, in: .rect(cornerRadius: 8))
-                            .overlay {
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(.gray.opacity(0.25), lineWidth: 1)
-                            }
-                    }
-                }
-                .frame(height: 80)
-                .padding(.horizontal)
-                .offset(y: 5)
-                
-                Map(position: $cameraPosition, interactionModes: [])
             }
         }
         .foregroundStyle(.foreground)

@@ -57,10 +57,6 @@ struct SubdomainList: View {
                     sheetCreate = true
                 } label: {
                     Image(systemName: "link.badge.plus")
-                        .foregroundStyle(.foreground)
-                        .footnote(.bold)
-                        .frame(35)
-                        .background(.ultraThinMaterial, in: .circle)
                 }
             }
         }

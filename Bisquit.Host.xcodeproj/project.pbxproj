@@ -2915,11 +2915,11 @@
 			isa = PBXGroup;
 			children = (
 				F31BA59C295902280006D126 /* Info Tab.swift */,
-				F3E0B48F2DC3033A003C8B27 /* Info Tab Users.swift */,
 				F3E0B4922DC30347003C8B27 /* Info Tab Logs.swift */,
 				F3E0B4952DC30351003C8B27 /* Info Tab Subdomains.swift */,
 				F373CDA52D88E9F9008B64BE /* Info Tab Heading.swift */,
 				F325F6FF2A54BBCF00E89EC4 /* Info Tab Allocations.swift */,
+				F3E0B48F2DC3033A003C8B27 /* Info Tab Users.swift */,
 				F3B66DEF2D60B2B100F1841B /* Card */,
 				F3A563232D9EF114009AA363 /* Info Tab Buttons User Img.swift */,
 				F3B66DF32D60B46F00F1841B /* Info Tab LA.swift */,

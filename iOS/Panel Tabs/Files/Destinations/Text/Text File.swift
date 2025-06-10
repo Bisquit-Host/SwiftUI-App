@@ -69,7 +69,7 @@ struct TextFile: View {
                     }
                 }
             } label: {
-                Image(systemName: "ellipsis.circle")
+                Image(systemName: "ellipsis")
             }
 #endif
         }

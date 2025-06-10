@@ -48,10 +48,6 @@ struct DismissButton: View {
         
         Button(action: dismiss) {
             Image(systemName: "xmark")
-                .footnote(.bold)
-                .frame(35)
-                .background(.ultraThinMaterial, in: .circle)
-                .foregroundStyle(.foreground)
         }
     }
 }

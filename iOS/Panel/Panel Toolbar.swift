@@ -11,58 +11,58 @@ struct PanelToolbarModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .toolbar {
-                ToolbarItemGroup(placement: .topBarTrailing) {
-                    if store.lastTabPanel == .console {
-                        Button {
-                            withAnimation {
-                                vm.enableConsoleSearch.toggle()
-                            }
-                            
-                            if vm.enableConsoleSearch {
-                                vm.searchRule = consoleVM.command
-                            }
-                        } label: {
-                            Image(systemName: vm.enableConsoleSearch ? "magnifyingglass.circle.fill" : "magnifyingglass")
+                //                ToolbarItemGroup(placement: .topBarTrailing) {
+                if store.lastTabPanel == .console {
+                    Button {
+                        withAnimation {
+                            vm.enableConsoleSearch.toggle()
                         }
                         
-                        Button {
-                            consoleVM.inspectorPresented = true
-                        } label: {
-                            Image(systemName: "bold.italic.underline")
+                        if vm.enableConsoleSearch {
+                            vm.searchRule = consoleVM.command
                         }
-                    }
-                    
-                    if store.lastTabPanel == .info {
-                        PowerSwitchToolbar()
-                        
-                        if let server = vm.server {
-#if canImport(ActivityKit)
-                            InfoTabLA(server)
-#endif
-                        }
-                    }
-                    
-                    if store.lastTabPanel == .files {
-                        if #available(iOS 18.1, *) {
-                            ImagePlaygroundButton(fileVM.path)
-                        }
-                        
-                        Button {
-                            vm.alertNewFolder = true
-                        } label: {
-                            Image(systemName: "folder.badge.plus")
-                        }
+                    } label: {
+                        Image(systemName: vm.enableConsoleSearch ? "magnifyingglass.circle.fill" : "magnifyingglass")
                     }
                     
                     Button {
-                        withAnimation(.easeOut) {
-                            vm.sheetSettings = true
-                        }
+                        consoleVM.inspectorPresented = true
                     } label: {
-                        Image(systemName: "ellipsis")
+                        Image(systemName: "bold.italic.underline")
                     }
-                    .keyboardShortcut("S")
                 }
+                
+                if store.lastTabPanel == .info {
+                    PowerSwitchToolbar()
+                    
+                    if let server = vm.server {
+#if canImport(ActivityKit)
+                        InfoTabLA(server)
+#endif
+                    }
+                }
+                
+                if store.lastTabPanel == .files {
+                    if #available(iOS 18.1, *) {
+                        ImagePlaygroundButton(fileVM.path)
+                    }
+                    
+                    Button {
+                        vm.alertNewFolder = true
+                    } label: {
+                        Image(systemName: "folder.badge.plus")
+                    }
+                }
+                
+                Button {
+                    withAnimation(.easeOut) {
+                        vm.sheetSettings = true
+                    }
+                } label: {
+                    Image(systemName: "ellipsis")
+                }
+                .keyboardShortcut("S")
+                //                }
             }
     }
 }

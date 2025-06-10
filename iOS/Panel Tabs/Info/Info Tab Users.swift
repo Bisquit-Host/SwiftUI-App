@@ -23,7 +23,8 @@ struct InfoTabUsers: View {
                             Image(systemName: "person.3.fill")
                                 .tertiary()
                             
-                            Text("Users").semibold()
+                            Text("Users")
+                                .semibold()
                         }
                         .footnote()
                     } else {
