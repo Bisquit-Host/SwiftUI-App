@@ -36,7 +36,6 @@ struct ConsoleView: View {
         }
         .environment(vm)
         .environment(panelVM)
-        .padding(.horizontal, 2)
         .ignoresSafeArea(.keyboard)
     }
 }
