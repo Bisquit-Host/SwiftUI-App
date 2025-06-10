@@ -58,6 +58,8 @@ struct StartupView: View {
                     .listRowBackground(Color.gray.opacity(0.2))
             }
         }
+        .navigationTitle("Startup")
+        .navigationSubtitle("Goida")
         .scrollIndicators(.never)
         .frame(maxWidth: 500)
         .background(BackgroundImage())
