@@ -55,8 +55,6 @@ struct InfoTab: View {
                         .offset(y: -15) // +15 to ZStack's offset
                     
                     VStack(spacing: 10) {
-                        InfoTabHeading(server)
-                        
                         ForEach(sectionsVM.activeSections) { section in
                             switch section.name {
                             case "Resource Usage":
@@ -87,7 +85,7 @@ struct InfoTab: View {
                         
                         CustomizeButton()
                     }
-                    .padding(.horizontal, 10)
+                    .padding(10)
                     .frame(width: width)
                     .offset(y: isIpad ? 160 : 0)
                 }

@@ -827,8 +827,6 @@
 		F373CD812D88D426008B64BE /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CD802D88D426008B64BE /* Intro.swift */; };
 		F373CD832D88D496008B64BE /* Start Page Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CD7A2D88D389008B64BE /* Start Page Helper.swift */; };
 		F373CD842D88D496008B64BE /* Start Page Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CD7A2D88D389008B64BE /* Start Page Helper.swift */; };
-		F373CDA62D88E9F9008B64BE /* Info Tab Heading.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CDA52D88E9F9008B64BE /* Info Tab Heading.swift */; };
-		F373CDA72D88E9F9008B64BE /* Info Tab Heading.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CDA52D88E9F9008B64BE /* Info Tab Heading.swift */; };
 		F373CDAC2D895419008B64BE /* Log Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CDA92D895419008B64BE /* Log Topbar.swift */; };
 		F373CDAD2D895419008B64BE /* Log Topbar Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CDAA2D895419008B64BE /* Log Topbar Card.swift */; };
 		F373CDAE2D895419008B64BE /* Log Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CDA92D895419008B64BE /* Log Topbar.swift */; };
@@ -2139,7 +2137,6 @@
 		F373CD6D2D88A386008B64BE /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
 		F373CD7A2D88D389008B64BE /* Start Page Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page Helper.swift"; sourceTree = "<group>"; };
 		F373CD802D88D426008B64BE /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
-		F373CDA52D88E9F9008B64BE /* Info Tab Heading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab Heading.swift"; sourceTree = "<group>"; };
 		F373CDA92D895419008B64BE /* Log Topbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log Topbar.swift"; sourceTree = "<group>"; };
 		F373CDAA2D895419008B64BE /* Log Topbar Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log Topbar Card.swift"; sourceTree = "<group>"; };
 		F374F7BC2D54922F006771DD /* Sheet Create Subdomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sheet Create Subdomain.swift"; sourceTree = "<group>"; };
@@ -2908,7 +2905,6 @@
 				F31BA59C295902280006D126 /* Info Tab.swift */,
 				F3E0B4922DC30347003C8B27 /* Info Tab Logs.swift */,
 				F3E0B4952DC30351003C8B27 /* Info Tab Subdomains.swift */,
-				F373CDA52D88E9F9008B64BE /* Info Tab Heading.swift */,
 				F325F6FF2A54BBCF00E89EC4 /* Info Tab Allocations.swift */,
 				F3E0B48F2DC3033A003C8B27 /* Info Tab Users.swift */,
 				F3B66DEF2D60B2B100F1841B /* Card */,
@@ -5154,7 +5150,6 @@
 				F31BA57F2959012D0006D126 /* Guide.swift in Sources */,
 				F3496DC529E0091A0089FC28 /* Section Header.swift in Sources */,
 				F367977B2A3A55F4009F2788 /* Log Card.swift in Sources */,
-				F373CDA72D88E9F9008B64BE /* Info Tab Heading.swift in Sources */,
 				F3EE6D7A2D9E8E2000F0A633 /* Bakground Task.swift in Sources */,
 				F398E0E22CEB562400AA4DD7 /* Audio Player VM.swift in Sources */,
 				F358132B2A1F5D2A002ADFA4 /* Linking VM.swift in Sources */,
@@ -5681,7 +5676,6 @@
 				F3464D242A86397E00188B0C /* Power Signal App Enum.swift in Sources */,
 				F36B73A82C8B0B7B00E858FE /* Audio Player View.swift in Sources */,
 				F36D532B2A05B875007324C6 /* Backup List.swift in Sources */,
-				F373CDA62D88E9F9008B64BE /* Info Tab Heading.swift in Sources */,
 				F3015DD72D9F24F600B9BCC6 /* Log Card Event.swift in Sources */,
 				F3202CE22D562A620030B3CC /* Browser List MC.swift in Sources */,
 				F3A994AB2A178A9E00530615 /* Map View.swift in Sources */,

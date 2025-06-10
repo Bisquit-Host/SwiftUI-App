@@ -38,6 +38,8 @@ struct PanelView: View {
                 }
             }
         }
+        .navigationTitle(vm.server?.name ?? "")
+        .navigationSubtitle(vm.server?.description ?? "")
         .panelToolbar()
         .environment(consoleVM)
         .environmentObject(fileVM)
