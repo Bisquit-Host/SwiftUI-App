@@ -23,7 +23,6 @@ final class PanelVM {
     var searchRule = ""
     var fieldSearch = ""
     var showFormatting = false
-    var enableConsoleSearch = false
     var cpuUsage = 0.0
     var ramUsage = 0.0
     var diskUsage = 0.0
@@ -41,14 +40,10 @@ final class PanelVM {
     var messages: [AttributedString] = []
     
     var searchedMessages: [AttributedString] {
-        guard enableConsoleSearch else {
-            return messages
-        }
-        
         if searchRule.isEmpty {
-            return messages
+            messages
         } else {
-            return messages.filter {
+            messages.filter {
                 $0.description
                     .localizedStandardContains(searchRule)
             }
@@ -63,6 +58,7 @@ final class PanelVM {
         }
     }
     
+    @MainActor
     func appendMessage(_ message: String) async {
         guard
             let jsonData = message.data(using: .utf8)

@@ -14,20 +14,6 @@ struct PanelToolbarModifier: ViewModifier {
                 ToolbarItemGroup {
                     if store.lastTabPanel == .console {
                         Button {
-                            withAnimation {
-                                vm.enableConsoleSearch.toggle()
-                            }
-                            
-                            if vm.enableConsoleSearch {
-                                vm.searchRule = consoleVM.command
-                            }
-                        } label: {
-                            let icon = vm.enableConsoleSearch ? "magnifyingglass.circle.fill" : "magnifyingglass"
-                            
-                            Image(systemName: icon)
-                        }
-                        
-                        Button {
                             consoleVM.inspectorPresented = true
                         } label: {
                             Image(systemName: "bold.italic.underline")

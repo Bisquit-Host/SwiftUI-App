@@ -22,7 +22,7 @@ struct ConsoleMessage: View {
             .fontDesign(fontDesign)
             .fontSize(vm.fontSize)
             .multilineTextAlignment(.leading)
-            .task {
+            .onAppear {
                 if index == panelVM.searchedMessages.count - 1 {
                     vm.lastMessageIndex = index
                 }

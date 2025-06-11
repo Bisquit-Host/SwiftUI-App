@@ -15,6 +15,7 @@ struct ConsoleTab: View {
     
     var body: some View {
         @Bindable var vm = vm
+        @Bindable var panelVM = panelVM
         
         VStack(spacing: 0) {
             ConsoleView()
@@ -34,11 +35,6 @@ struct ConsoleTab: View {
                             Task {
                                 await vm.sendCommand()
                             }
-                        }
-                    }
-                    .onChange(of: vm.command) { _, newValue in
-                        if panelVM.enableConsoleSearch {
-                            panelVM.searchRule = newValue
                         }
                     }
                 
