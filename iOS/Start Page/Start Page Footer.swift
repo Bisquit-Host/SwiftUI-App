@@ -16,15 +16,7 @@ struct StartPageFooter: View {
                     vm.sheetCloudKeys = true
                 }
                 .padding()
-                .background {
-                    Circle()
-                        .fill(.ultraThinMaterial.opacity(0.3))
-                        .shadow(radius: 8)
-                }
-                .overlay {
-                    Circle()
-                        .stroke(.ultraThinMaterial, lineWidth: 1)
-                }
+                .glassEffect()
             }
             
             Spacer()
@@ -33,15 +25,7 @@ struct StartPageFooter: View {
                 vm.sheetBrowsePlans = true
             }
             .padding()
-            .background {
-                Circle()
-                    .fill(.ultraThinMaterial.opacity(0.3))
-                    .shadow(radius: 8)
-            }
-            .overlay {
-                Circle()
-                    .stroke(.ultraThinMaterial, lineWidth: 1)
-            }
+            .glassEffect()
         }
         .title3(.bold)
         .foregroundStyle(.white)

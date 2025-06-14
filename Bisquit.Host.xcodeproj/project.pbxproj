@@ -498,6 +498,7 @@
 		F337C16A2A8D07E2006F321C /* Startup VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337C1682A8D07E2006F321C /* Startup VM.swift */; };
 		F337D7592A4DBC840011524E /* Create Apikey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337D7582A4DBC840011524E /* Create Apikey.swift */; };
 		F337D75A2A4DBC840011524E /* Create Apikey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337D7582A4DBC840011524E /* Create Apikey.swift */; };
+		F338F1692DFCC8E9005B7226 /* default.icon in Resources */ = {isa = PBXBuildFile; fileRef = F338F1682DFCC8D8005B7226 /* default.icon */; };
 		F3393E922D802C2300E71438 /* Power Widget View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3393E912D802C2300E71438 /* Power Widget View.swift */; };
 		F33944112A49022A00E2F0FC /* Info Tab Resource Usage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33944102A49022A00E2F0FC /* Info Tab Resource Usage.swift */; };
 		F33944122A49022A00E2F0FC /* Info Tab Resource Usage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33944102A49022A00E2F0FC /* Info Tab Resource Usage.swift */; };
@@ -2034,6 +2035,7 @@
 		F337C1612A8CE7C0006F321C /* Startup Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Startup Card.swift"; sourceTree = "<group>"; };
 		F337C1682A8D07E2006F321C /* Startup VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Startup VM.swift"; sourceTree = "<group>"; };
 		F337D7582A4DBC840011524E /* Create Apikey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Create Apikey.swift"; sourceTree = "<group>"; };
+		F338F1682DFCC8D8005B7226 /* default.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = default.icon; sourceTree = "<group>"; };
 		F3393E912D802C2300E71438 /* Power Widget View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Widget View.swift"; sourceTree = "<group>"; };
 		F33944102A49022A00E2F0FC /* Info Tab Resource Usage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab Resource Usage.swift"; sourceTree = "<group>"; };
 		F33CDBFA2A26A571008D0214 /* Server Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card.swift"; sourceTree = "<group>"; };
@@ -2801,6 +2803,7 @@
 				F34AEF4E2DD602A900909562 /* Discover.xcassets */,
 				F34AEF532DD640F900909562 /* Guide.xcassets */,
 				F378E3322AF38286009925DB /* PrivacyInfo.xcprivacy */,
+				F338F1682DFCC8D8005B7226 /* default.icon */,
 				F3ADA61C2D9C16AC00F2DAA6 /* Loc Logs.txt */,
 				F31BA580295901400006D126 /* Intro */,
 				F31A3F4A29EEEB8200BC0DFB /* Start Page */,
@@ -4766,6 +4769,7 @@
 				F34AEF542DD640F900909562 /* Guide.xcassets in Resources */,
 				F3E6FC432A1E677000410C7C /* Bisquits.sks in Resources */,
 				F34AEF4F2DD603C600909562 /* Discover.xcassets in Resources */,
+				F338F1692DFCC8E9005B7226 /* default.icon in Resources */,
 				F36797732A39C4ED009F2788 /* Localizable.xcstrings in Resources */,
 				F378E3332AF3835A009925DB /* PrivacyInfo.xcprivacy in Resources */,
 				F31BA52B2958FF7D0006D126 /* Assets.xcassets in Resources */,

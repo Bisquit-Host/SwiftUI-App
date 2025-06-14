@@ -68,17 +68,17 @@ struct Intro: View {
                 }
                 
                 Button {
-                    // Cancel the timer before leaving
+                    // Cancel timer before leaving
                     timer.upstream.connect().cancel()
                     
                     fullScreenCover = true
                 } label: {
                     Text("Get Started")
                         .semibold()
-                        .foregroundStyle(.black)
+                        .foregroundStyle(.white)
                         .padding(.horizontal, 25)
                         .padding(.vertical, 12)
-                        .background(.white, in: .capsule)
+                        .glassEffect()
                 }
                 .blurOpacityEffect(initialAnimation)
             }

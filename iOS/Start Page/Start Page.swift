@@ -18,13 +18,9 @@ struct StartPage: View {
                         .secondary()
                         .autocorrectionDisabled()
                         .frame(height: 40)
-                        .background(.ultraThickMaterial.opacity(0.2), in: .capsule)
                         .multilineTextAlignment(.center)
                         .minimumScaleFactor(0.5)
-                        .overlay {
-                            Capsule()
-                                .stroke(.ultraThinMaterial, lineWidth: 1)
-                        }
+                        .glassEffect()
                         .changeEffect(.shake(rate: .fast), value: vm.trigger)
                     
                     Button("How do I authorize?") {
@@ -42,11 +38,7 @@ struct StartPage: View {
                     Image(systemName: "doc.on.clipboard")
                         .footnote(.bold)
                         .frame(40)
-                        .background(.ultraThinMaterial.opacity(0.2), in: .circle)
-                        .overlay {
-                            Capsule()
-                                .stroke(.ultraThinMaterial, lineWidth: 1)
-                        }
+                        .glassEffect()
                 }
                 .foregroundStyle(.foreground)
             }
@@ -59,7 +51,6 @@ struct StartPage: View {
         .background {
             BackgroundImage()
         }
-        .statusBarHidden()
         .overlay(alignment: .bottom) {
             StartPageFooter(keys.count > 0)
                 .environment(vm)

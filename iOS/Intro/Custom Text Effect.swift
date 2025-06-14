@@ -21,7 +21,7 @@ struct TitleTextRenderer: TextRenderer, Animatable {
             let sliceProgress = max(min(sliceProgressIndex / CGFloat(index + 1), 1), 0)
             
             /// If you want each slice to begin from its origin point, create a copy context for each loop, such as
-            /// “var copy = context.”
+            /// “var copy = context”
             /// However, I want the context to be incremented after each loop, so I’m using the context directly without copying!
             ctx.addFilter(.blur(radius: 5 - (5 * sliceProgress)))
             ctx.opacity = sliceProgress

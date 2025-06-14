@@ -30,8 +30,8 @@ struct InfiniteScrollView<Content: View>: View {
                         }
                         
                         /// Repeating Content for creating Infinite(Looping) ScrollView
-                        let averageWidth = contentSize.width / CGFloat(collection.count)
-                        let repeatingCount = contentSize.width > 0 ? Int((width / averageWidth).rounded()) + 1 : 1
+                        let avgWidth = contentSize.width / CGFloat(collection.count)
+                        let repeatingCount = contentSize.width > 0 ? Int((width / avgWidth).rounded()) + 1 : 1
                         
                         HStack(spacing: spacing) {
                             ForEach(0..<repeatingCount, id: \.self) { index in
