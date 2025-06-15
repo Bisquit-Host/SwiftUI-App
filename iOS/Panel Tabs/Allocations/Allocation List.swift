@@ -19,6 +19,7 @@ struct AllocationList: View {
                 AllocationCard(allocation)
                     .transparentSection()
             }
+            .onDelete(perform: delete)
             
             Button("Assign allocation") {
                 sheetCreate = true
@@ -38,6 +39,16 @@ struct AllocationList: View {
             }
         }
         .environment(vm)
+    }
+    
+    private func delete(offsets: IndexSet) {
+        for index in offsets {
+            let id = vm.allocations[index].id
+            
+            Task {
+                await vm.unassignAllocation(id)
+            }
+        }
     }
 }
 
