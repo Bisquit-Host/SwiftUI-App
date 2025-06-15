@@ -26,9 +26,14 @@ struct AllocationCard: View {
     
     var body: some View {
         Section {
-            VStack {
+            VStack(alignment: .leading) {
                 HStack {
-                    Image(systemName: "app.connected.to.app.below.fill")
+                    if allocation.isDefault {
+                        Image(systemName: "star.fill")
+                            .foregroundStyle(.yellow.gradient)
+                    } else {
+                        Image(systemName: "app.connected.to.app.below.fill")
+                    }
                     
                     VStack(alignment: .leading) {
                         Text(ip)
@@ -39,13 +44,6 @@ struct AllocationCard: View {
                                 .secondary()
                                 .footnote()
                         }
-                    }
-                    
-                    Spacer()
-                    
-                    if allocation.isDefault {
-                        Image(systemName: "star.fill")
-                            .foregroundStyle(.yellow.gradient)
                     }
                 }
                 .animation(.default, value: allocation.isDefault)
