@@ -387,6 +387,7 @@
 		F328D85E2A8240930038512F /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = F328D85D2A8240930038512F /* Algorithms */; };
 		F328D8622A8242610038512F /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = F328D8612A8242610038512F /* Algorithms */; };
 		F32A02722DFEA9BC003CE74D /* default.icon in Resources */ = {isa = PBXBuildFile; fileRef = F338F1682DFCC8D8005B7226 /* default.icon */; };
+		F32A02732DFEAA6A003CE74D /* default.icon in Resources */ = {isa = PBXBuildFile; fileRef = F338F1682DFCC8D8005B7226 /* default.icon */; };
 		F32DB8A829AE6B800074E045 /* Start Page Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32DB8A729AE6B800074E045 /* Start Page Footer.swift */; };
 		F32E88C82AF83E3F00959D49 /* Topbar Admin Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88C72AF83E3F00959D49 /* Topbar Admin Button.swift */; };
 		F32E88C92AF83E3F00959D49 /* Topbar Admin Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88C72AF83E3F00959D49 /* Topbar Admin Button.swift */; };
@@ -4768,6 +4769,7 @@
 			files = (
 				F34AEF552DD6411300909562 /* Guide.xcassets in Resources */,
 				F3E6FC442A1E677000410C7C /* Bisquits.sks in Resources */,
+				F32A02732DFEAA6A003CE74D /* default.icon in Resources */,
 				F34AEF502DD603C600909562 /* Discover.xcassets in Resources */,
 				F36797742A39C4ED009F2788 /* Localizable.xcstrings in Resources */,
 				F378E3382AF3835E009925DB /* PrivacyInfo.xcprivacy in Resources */,
