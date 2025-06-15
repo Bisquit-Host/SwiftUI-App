@@ -5,7 +5,7 @@ import Network
 final class NetworkVM {
     private(set) var isNetworkSatisfied: Bool? = nil
     
-    func defineStatus() {
+    func observeStatus() {
         let monitor = NWPathMonitor()
         let queue = DispatchQueue(label: "ConnectionMonitor")
         

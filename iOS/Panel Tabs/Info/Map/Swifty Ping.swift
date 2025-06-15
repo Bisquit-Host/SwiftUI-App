@@ -44,6 +44,7 @@ public func tcpPing(
         case .failed(let nwError): // Use a different identifier to avoid conflicts
             connection.cancel()
             completion(.failure(nwError))
+            
         default:
             break
         }
@@ -56,6 +57,7 @@ public func tcpPing(
         switch connection.state {
         case .ready, .failed:
             break
+            
         default:
             connection.cancel()
             
