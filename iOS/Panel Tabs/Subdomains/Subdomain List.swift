@@ -26,9 +26,6 @@ struct SubdomainList: View {
             .onDelete(perform: delete)
         }
         .navigationTitle("Subdomains")
-#if !os(tvOS)
-        .toolbarTitleDisplayMode(.large)
-#endif
         .refreshableTask {
             await vm.fetchSubdomains()
         }
@@ -45,13 +42,15 @@ struct SubdomainList: View {
             }
         }
         .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
+            ToolbarItem(placement: .bottomBar) {
                 DismissButton {
                     dismiss()
                 }
             }
-            
-            ToolbarItem(placement: .topBarTrailing) {
+#if !os(tvOS)
+            ToolbarSpacer(.flexible, placement: .bottomBar)
+#endif
+            ToolbarItem(placement: .bottomBar) {
                 Button {
                     sheetCreate = true
                 } label: {
