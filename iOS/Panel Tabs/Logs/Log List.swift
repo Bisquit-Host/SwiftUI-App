@@ -52,16 +52,22 @@ struct LogList: View {
                 )
             }
         }
+        //        .searchable(text: $vm.searchPrompt)
         .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
+            ToolbarItem(placement: .bottomBar) {
                 DismissButton {
                     dismiss()
                 }
             }
-            
 #if !os(watchOS) && !os(tvOS)
+            ToolbarSpacer(.flexible, placement: .bottomBar)
+            
+            //            DefaultToolbarItem(kind: .search, placement: .bottomBar)
+            //
+            //            ToolbarSpacer(.fixed, placement: .bottomBar)
+            
             if !vm.logs.isEmpty {
-                ToolbarItem(placement: .topBarTrailing) {
+                ToolbarItem(placement: .bottomBar) {
                     LogListFilter()
                 }
             }

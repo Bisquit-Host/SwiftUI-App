@@ -10,12 +10,12 @@ final class LogVM {
     }
     
     var logs: [LogAttributes] = []
+    //    var searchPrompt = ""
+    var selectedActor: LogRelationships? = nil
     
     var loggedUserCount: Int {
         Set(filteredLogs.map(\.relationships.actor)).count
     }
-    
-    var selectedActor: LogRelationships? = nil
     
     var actors: [LogRelationships?] {
         Array(Set(
@@ -34,6 +34,16 @@ final class LogVM {
             $0.relationships == selectedActor
         }
     }
+    
+    //    var searchedLogs: [LogAttributes] {
+    //        guard !searchPrompt.isEmpty else {
+    //            return filteredLogs
+    //        }
+    //
+    //        return filteredLogs.filter {
+    //            $0.event.localizedStandardContains(searchPrompt)
+    //        }
+    //    }
     
     var daysLogged: Int? {
         guard
