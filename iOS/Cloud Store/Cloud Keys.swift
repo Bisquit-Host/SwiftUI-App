@@ -31,7 +31,6 @@ struct CloudKeys: View {
                     }
                     .onDelete(perform: deleteItems)
                 }
-                .transparentSection()
             }
             .ornamentDismissButton()
             .transparentList()

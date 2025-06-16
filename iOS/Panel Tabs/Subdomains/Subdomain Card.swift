@@ -37,7 +37,6 @@ struct SubdomainCard: View {
             }
 #endif
         }
-        .transparentSection()
         .contextMenu {
 #if !os(tvOS)
             Button {

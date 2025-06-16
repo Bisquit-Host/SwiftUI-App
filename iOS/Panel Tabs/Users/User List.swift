@@ -13,7 +13,6 @@ struct UserList: View {
                 Section {
                     UserCard(user)
                 }
-                .transparentSection()
             }
 #if os(iOS)
             .listSectionSpacing(-10)

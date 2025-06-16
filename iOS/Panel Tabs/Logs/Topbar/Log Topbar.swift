@@ -45,7 +45,6 @@ struct LogTopbar: View {
                 }
                 .footnote()
             }
-            .transparentSection()
         }
     }
 }

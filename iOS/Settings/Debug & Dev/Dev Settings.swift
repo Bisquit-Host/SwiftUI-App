@@ -34,7 +34,6 @@ struct DevSettings: View {
 #endif
             ServerListFooter()
         }
-        .transparentSection()
     }
 }
 

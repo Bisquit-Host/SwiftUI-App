@@ -19,7 +19,6 @@ struct AccountView: View {
                     param("E-mail", value: account.email)
                 }
             }
-            .transparentSection()
             
             CredentialsButton()
             
@@ -67,7 +66,6 @@ struct AccountView: View {
                     //                    }
                 }
             }
-            .transparentSection()
         }
         .transparentList()
         .navigationTitle("Account")

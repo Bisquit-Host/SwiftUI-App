@@ -34,13 +34,11 @@ struct PanelSettingsView: View {
                     .animation(.default, value: vm.serverName + vm.serverDescription)
                 }
             }
-            .transparentSection()
             
             Section("SFTP") {
                 SftpDetails(server.sftp)
                     .environment(vm)
             }
-            .transparentSection()
             
             Section {
                 Button(role: .destructive) {
@@ -55,7 +53,6 @@ struct PanelSettingsView: View {
                     }
                 }
             }
-            .transparentSection()
         }
         .navigationTitle("Server Settings")
         .toolbarTitleDisplayMode(.inline)

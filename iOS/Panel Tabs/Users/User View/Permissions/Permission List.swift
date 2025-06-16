@@ -98,7 +98,6 @@ struct PermissionSection: View {
 #endif
                 }
             }
-            .transparentSection()
 #if os(tvOS)
             Divider()
 #endif

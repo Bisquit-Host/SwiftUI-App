@@ -45,28 +45,24 @@ struct FilePermissionsView: View {
         
         List {
             TextField("777", text: $newModeBits)
-                .transparentSection()
             
             Section("System") {
                 Toggle("Read", isOn: $systemRead)
                 Toggle("Write", isOn: $systemWrite)
                 Toggle("Execute", isOn: $systemExecute)
             }
-            .transparentSection()
             
             Section("Admin") {
                 Toggle("Read", isOn: $adminRead)
                 Toggle("Write", isOn: $adminWrite)
                 Toggle("Execute", isOn: $adminExecute)
             }
-            .transparentSection()
             
             Section("Other users") {
                 Toggle("Read", isOn: $otherRead)
                 Toggle("Write", isOn: $otherWrite)
                 Toggle("Execute", isOn: $otherExecute)
             }
-            .transparentSection()
             
             Button {
                 if isDifferent {
@@ -84,7 +80,6 @@ struct FilePermissionsView: View {
                     .animation(.default, value: newMode)
                     .foregroundStyle(.foreground)
             }
-            .transparentSection()
         }
         .navigationTitle("Permissions")
         .transparentList()

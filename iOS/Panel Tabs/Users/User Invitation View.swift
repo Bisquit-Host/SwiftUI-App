@@ -27,7 +27,6 @@ struct UserInvitationView: View {
                         .animation(.default, value: vm.allPermsTrigger)
                 }
             }
-            .transparentSection()
             
             ForEach(vm.chunkedPermissions.keys.sorted(), id: \.self) { type in
                 Section(type) {
@@ -35,7 +34,6 @@ struct UserInvitationView: View {
                         UserInvitationPermission(permission)
                     }
                 }
-                .transparentSection()
             }
             
             Section {
@@ -50,7 +48,6 @@ struct UserInvitationView: View {
                 }
                 .disabled(vm.newUserPermissions.isEmpty)
             }
-            .transparentSection()
         }
         .padding(.horizontal)
         .scrollIndicators(.never)

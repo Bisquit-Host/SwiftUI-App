@@ -12,7 +12,7 @@ struct PanelSettingsParent: View {
         NavigationView {
             PanelSettingsView(server)
         }
-        .presentationDetents([.medium, .large])
-        .presentationDragIndicator(.hidden)
+//        .presentationDetents([.medium, .large])
+//        .presentationDragIndicator(.hidden)
     }
 }

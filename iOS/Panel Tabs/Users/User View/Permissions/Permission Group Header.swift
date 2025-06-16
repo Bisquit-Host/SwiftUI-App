@@ -53,7 +53,6 @@ struct PermissionGroupHeader: View {
             
             Toggle("Show description", isOn: $showDescription)
         }
-        .transparentSection()
     }
 }
 

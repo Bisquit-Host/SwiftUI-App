@@ -23,7 +23,6 @@ struct LogList: View {
                         .title3(.semibold, design: .rounded)
                         .foregroundStyle(.primary)
                 }
-                .transparentSection()
             }
         }
         .navigationTitle("Logs")

@@ -42,11 +42,8 @@ struct DesignSettings: View {
             
             Toggle("Transparent sheets", isOn: $store.transparentSheet)
             
-            Toggle("Transparent lists", isOn: $store.transparentList)
-            
             Toggle("Animated background", isOn: $store.enableBisquitFall)
         }
-        .transparentSection()
     }
 }
 

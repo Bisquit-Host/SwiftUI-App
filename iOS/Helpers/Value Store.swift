@@ -20,7 +20,6 @@ final class ValueStore: ObservableObject {
     
     // MARK: - App Style/Design
     @AppStorage("transparentSheet") var transparentSheet = true
-    @AppStorage("transparentList") var transparentList = true
     
     // MARK: - Console
     @AppStorage("spamEnabled") var spamEnabled = false

@@ -35,7 +35,6 @@ struct SSHCreateView: View {
             } footer: {
                 Text("Enter or drag-and-drop your public SSH-key")
             }
-            .transparentSection()
             
             Button("Create") {
                 Task {
@@ -45,7 +44,6 @@ struct SSHCreateView: View {
                 }
             }
             .disabled(vm.newName.isEmpty || vm.newPublicKey.isEmpty)
-            .transparentSection()
         }
         .transparentList()
     }

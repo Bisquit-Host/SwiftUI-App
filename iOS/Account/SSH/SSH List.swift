@@ -15,7 +15,6 @@ struct SSHList: View {
                 }
                 .onDelete(perform: deleteItems)
             }
-            .transparentSection()
         }
         .navigationTitle("SSH")
         .transparentList()

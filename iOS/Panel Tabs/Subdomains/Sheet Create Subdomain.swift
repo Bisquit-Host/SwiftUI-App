@@ -29,7 +29,6 @@ struct SheetCreateSubdomain: View {
                     .autocorrectionDisabled()
                     .textInputAutocapitalization(.never)
             }
-            .transparentSection()
             
             if let domains = vm.domains {
                 Picker("Domain", selection: $vm.selectedDomain) {
@@ -37,7 +36,6 @@ struct SheetCreateSubdomain: View {
                         Text(domain.domain)
                     }
                 }
-                .transparentSection()
             }
             
             Picker("Allocation", selection: $vm.selectedAllocation) {
@@ -49,7 +47,6 @@ struct SheetCreateSubdomain: View {
                         .tag(allocation.id)
                 }
             }
-            .transparentSection()
             
             Section {
                 let disabled = vm.selectedAllocation == nil
@@ -68,7 +65,6 @@ struct SheetCreateSubdomain: View {
                 .foregroundStyle(disabled ? .secondary : .primary)
                 .disabled(disabled)
             }
-            .transparentSection()
         }
         .pickerStyle(.inline)
         .transparentList()

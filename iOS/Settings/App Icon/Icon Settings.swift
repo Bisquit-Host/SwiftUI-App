@@ -10,7 +10,6 @@ struct IconSettings: View {
             
             AppIconPicker()
         }
-        .transparentSection()
     }
 }
 

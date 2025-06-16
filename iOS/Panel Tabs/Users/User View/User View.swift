@@ -17,14 +17,12 @@ struct UserView: View {
                 UserImage(user.image)
 #if os(iOS)
                 UserEmail(user.email)
-                    .transparentSection()
 #else
                 Text(user.email)
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
 #endif
                 User2Fa(user.twoFaEnabled)
-                    .transparentSection()
                 
                 HStack {
                     Text("Member since")
@@ -41,7 +39,6 @@ struct UserView: View {
                 }
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
-                .transparentSection()
                 
                 PermissionList($user)
                     .environment(vm)

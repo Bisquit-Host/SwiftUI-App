@@ -20,7 +20,6 @@ struct ApikeyList: View {
                 }
 
             }
-            .transparentSection()
         }
         .navigationTitle("My API-keys")
         .transparentList()

@@ -20,7 +20,6 @@ struct CredentialsButton: View {
                 CredentialsView("password")
             }
         }
-        .transparentSection()
         .foregroundStyle(.primary)
     }
 }

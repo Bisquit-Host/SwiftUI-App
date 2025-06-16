@@ -12,30 +12,9 @@ struct TransparentList: ViewModifier {
     }
 }
 
-struct TransparentSection: ViewModifier {
-    @EnvironmentObject private var store: ValueStore
-    
-    func body(content: Content) -> some View {
-#if !os(iOS)
-        content
-#else
-        if store.transparentList {
-            content
-                .listRowBackground(Color.clear)
-        } else {
-            content
-        }
-#endif
-    }
-}
-
 extension View {
     func transparentList() -> some View {
         modifier(TransparentList())
-    }
-    
-    func transparentSection() -> some View {
-        modifier(TransparentSection())
     }
 }
 

@@ -17,7 +17,6 @@ struct AllocationList: View {
         List {
             ForEach(vm.allocations) { allocation in
                 AllocationCard(allocation)
-                    .transparentSection()
             }
             .onDelete(perform: delete)
             
@@ -25,7 +24,6 @@ struct AllocationList: View {
                 sheetCreate = true
             }
             .disabled(vm.allocations.count >= server.featureLimits.allocations)
-            .transparentSection()
         }
         .navigationTitle("Allocations")
         .toolbarTitleDisplayMode(.inline)

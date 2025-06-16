@@ -23,7 +23,6 @@ struct OtherSettings: View {
             
             CurrencyPicker()
         }
-        .transparentSection()
     }
 }
 
