@@ -16,27 +16,16 @@ struct SubdomainCard: View {
     }
     
     var body: some View {
-        Section {
-            VStack(alignment: .leading) {
-                Text(fullDomain)
-                
-                Text(timeSinceISO(subdomain.createdAt))
-                    .footnote()
-                    .secondary()
-                    .minimumScaleFactor(0.5)
-                    .lineLimit(1)
-            }
-            .foregroundStyle(.foreground)
-            .frame(maxWidth: .infinity, alignment: .leading)
-#if os(iOS) || os(macOS)
-            .padding()
-            .background(.ultraThinMaterial.opacity(0.3), in: .rect(cornerRadius: 16))
-            .overlay {
-                RoundedRectangle(cornerRadius: 16)
-                    .stroke(.gray.opacity(0.25), lineWidth: 1)
-            }
-#endif
+        VStack(alignment: .leading) {
+            Text(fullDomain)
+            
+            Text(timeSinceISO(subdomain.createdAt))
+                .footnote()
+                .secondary()
+                .minimumScaleFactor(0.5)
+                .lineLimit(1)
         }
+        .foregroundStyle(.foreground)
         .contextMenu {
 #if !os(tvOS)
             Button {
@@ -60,14 +49,14 @@ struct SubdomainCard: View {
             Button {
                 guard
                     let url = URL(string: "mc-stats://add-server?address=\(fullDomain)&name=\(subdomain.subdomain)"),
-                    let fallbackURL = URL(string: "https://apps.apple.com/app/id6740754881")
+                    let fallbackUrl = URL(string: "https://apps.apple.com/app/id6740754881")
                 else {
                     return
                 }
                 
                 openUrl(url) { success in
                     if !success {
-                        openUrl(fallbackURL)
+                        openUrl(fallbackUrl)
                     }
                 }
             } label: {
