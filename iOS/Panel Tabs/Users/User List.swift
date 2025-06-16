@@ -12,6 +12,7 @@ struct UserList: View {
             ForEach(vm.users) { user in
                 UserCard(user)
             }
+            .onDelete(perform: delete)
 #if os(iOS)
             .listSectionSpacing(-10)
 #endif
@@ -21,11 +22,7 @@ struct UserList: View {
 #if !os(tvOS)
         .toolbarTitleDisplayMode(.large)
 #endif
-        .task {
-            // Both funcs will run parallel
-            // Shouldn't change same props,
-            // Otherwise will cause a data race
-            
+        .refreshableTask {
             let usersTask = Task {
                 await vm.fetchUsers()
             }
