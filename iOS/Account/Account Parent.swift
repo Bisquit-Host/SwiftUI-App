@@ -11,31 +11,25 @@ struct AccountParent: View {
     
     var body: some View {
         TabView(selection: $accountSelectedTab) {
-            NavigationView {
-                AccountView()
-            }
-            .environment(vm)
-            .tag(0)
-            .tabItem {
-                Label("Account", systemImage: "person.circle")
+            Tab("Account", systemImage: "person.circle", value: 0) {
+                NavigationView {
+                    AccountView()
+                }
+                .environment(vm)
             }
             
-            NavigationView {
-                ApikeyList()
-            }
-            .environment(apiKeysVM)
-            .tag(1)
-            .tabItem {
-                Label("API-keys", systemImage: "key.2.on.ring")
+            Tab("API-keys", systemImage: "key.2.on.ring", value: 1) {
+                NavigationView {
+                    ApikeyList()
+                }
+                .environment(apiKeysVM)
             }
             
-            NavigationView {
-                SSHList()
-            }
-            .environment(sshVM)
-            .tag(2)
-            .tabItem {
-                Label("SSH-keys", systemImage: "key.2.on.ring")
+            Tab("SSH-keys", systemImage: "key.2.on.ring", value: 2) {
+                NavigationView {
+                    SSHList()
+                }
+                .environment(sshVM)
             }
         }
         .task {
