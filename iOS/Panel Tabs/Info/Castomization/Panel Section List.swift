@@ -5,12 +5,6 @@ struct PanelSectionList: View {
     
     var body: some View {
         List {
-            Section {
-                Text("Reorder or hide sections to personalize your view")
-                    .foregroundStyle(.secondary)
-            }
-            .listRowBackground(Color.clear)
-            
             ForEach(vm.sections) { item in
                 PanelSectionRow(item) {
                     vm.toggle(item)
@@ -24,6 +18,7 @@ struct PanelSectionList: View {
             }
         }
         .navigationTitle("Customize & Reorder")
+        .navigationSubtitle("Reorder or hide sections to personalize your view")
         .environment(\.editMode, .constant(.active))
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {

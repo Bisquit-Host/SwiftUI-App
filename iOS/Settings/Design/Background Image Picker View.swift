@@ -22,13 +22,13 @@ struct BackgroundImagePickerView: View {
                 store.updateBackground.toggle()
             }
         }
+        .navigationTitle("Image Picker")
         .task {
             if let fileName = UserDefaults.standard.string(forKey: "background_image_fileName"),
                let image = BackgroundImageHelper.loadImageFromDisk(fileName) {
                 selectedImage = image
             }
         }
-        .navigationTitle("Image Picker")
         .background {
             if let selectedImage {
                 Image(uiImage: selectedImage)
