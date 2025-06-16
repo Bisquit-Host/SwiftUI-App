@@ -54,9 +54,8 @@ struct ServerCard: View {
                     .fill(backgroundColor)
             }
         )
-        .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
         .overlay {
-            RoundedRectangle(cornerRadius: 16)
+            RoundedRectangle(cornerRadius: rounding)
                 .stroke(.gray.opacity(0.25), lineWidth: 1)
         }
         .task {
