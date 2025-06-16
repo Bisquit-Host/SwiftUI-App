@@ -26,10 +26,7 @@ struct LogList: View {
             }
         }
         .navigationTitle("Logs")
-#if !os(tvOS)
-        .toolbarTitleDisplayMode(.large)
-#endif
-        .toolbarTitleDisplayMode(.inline)
+        //        .searchToolbarBehavior(.minimize)
         .ornamentDismissButton()
         .animation(.default, value: vm.filteredLogs)
         .refreshableTask {

@@ -19,9 +19,6 @@ struct UserList: View {
         }
         .navigationTitle("Users")
         .environment(vm)
-#if !os(tvOS)
-        .toolbarTitleDisplayMode(.large)
-#endif
         .refreshableTask {
             let usersTask = Task {
                 await vm.fetchUsers()

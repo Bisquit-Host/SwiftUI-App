@@ -17,14 +17,13 @@ struct SSHList: View {
             }
         }
         .navigationTitle("SSH")
+        .scrollContentBackground(.hidden)
         .refreshableTask {
             await vm.fetchKeys()
         }
         .sheet($sheetCreate) {
             SSHCreateView()
         }
-        .background(BackgroundImage())
-        .scrollContentBackground(.hidden)
         .overlay {
             if vm.keys.isEmpty {
                 ContentUnavailableView(

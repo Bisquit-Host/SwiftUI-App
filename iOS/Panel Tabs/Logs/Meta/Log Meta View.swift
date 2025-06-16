@@ -30,7 +30,6 @@ struct LogMetaView: View {
 #endif
         .navigationTitle("Properties")
         .foregroundStyle(.primary)
-        .toolbarTitleDisplayMode(.inline)
         .presentationDragIndicator(.hidden)
         .presentationDetents([.medium, .large])
         .task {

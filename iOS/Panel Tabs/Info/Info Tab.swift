@@ -25,75 +25,48 @@ struct InfoTab: View {
     @State private var selectedImage: UIImage? = nil
     private let width = UIScreen.main.bounds.width
     
-    private var isIpad: Bool {
-        UIDevice.current.userInterfaceIdiom == .pad
-    }
-    
     private var allocations: [AllocationAttributes] {
         server.relationships.allocations.data.map(\.attributes)
     }
     
     var body: some View {
         ScrollView(showsIndicators: false) {
-            VStack(spacing: 0) {
-                if !isIpad {
-                    Image(uiImage: selectedImage ?? .darkBackgroundInfo)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: width, height: width)
-                        .clipped()
+            VStack(spacing: 10) {
+                ForEach(sectionsVM.activeSections) { section in
+                    switch section.name {
+                    case "Resource Usage":
+                        InfoTabResourceUsage(server)
+                        
+                    case "Allocations":
+                        InfoTabAllocation(server)
+                        
+                    case "Users":
+                        InfoTabUsers()
+                            .environment(userVM)
+                        
+                    case "Logs":
+                        InfoTabLogs()
+                            .environment(logVM)
+                        
+                    case "Subdomains":
+                        InfoTabSubdomains(allocations)
+                            .environment(subdomainVM)
+                        
+                    case "Location":
+                        MapSection(ip, node: server.node)
+                        
+                    default:
+                        EmptyView()
+                    }
                 }
                 
-                ZStack(alignment: .top) {
-                    Image(uiImage: selectedImage ?? .darkBackgroundInfo)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: width * 1.1, height: 1200)
-                        .clipped()
-                        .blur(radius: 55, opaque: true)
-                        .blur(radius: 10)
-                        .offset(y: -15) // +15 to ZStack's offset
-                    
-                    VStack(spacing: 10) {
-                        ForEach(sectionsVM.activeSections) { section in
-                            switch section.name {
-                            case "Resource Usage":
-                                InfoTabResourceUsage(server)
-                                
-                            case "Allocations":
-                                InfoTabAllocation(server)
-                                
-                            case "Users":
-                                InfoTabUsers()
-                                    .environment(userVM)
-                                
-                            case "Logs":
-                                InfoTabLogs()
-                                    .environment(logVM)
-                                
-                            case "Subdomains":
-                                InfoTabSubdomains(allocations)
-                                    .environment(subdomainVM)
-                                
-                            case "Location":
-                                MapSection(ip, node: server.node)
-                                
-                            default:
-                                EmptyView()
-                            }
-                        }
-                        
-                        CustomizeButton()
-                    }
-                    .padding(10)
-                    .frame(width: width)
-                    .offset(y: isIpad ? 160 : 0)
-                }
-                .offset(y: -15) // Border visible if smaller
+                CustomizeButton()
             }
+            .padding(.horizontal, 4)
+            .frame(width: width)
         }
+        .background(BackgroundImage())
         .animation(.default, value: sectionsVM.activeSections)
-        .ignoresSafeArea()
         .sheet($sheetCustomization) {
             NavigationView {
                 PanelSectionList()

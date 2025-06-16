@@ -45,7 +45,6 @@ struct UserView: View {
             await vm.userDetails($user)
         }
         .navigationTitle(user.username)
-        .toolbarTitleDisplayMode(.inline)
         .scrollIndicators(.never)
     }
     

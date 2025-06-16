@@ -39,7 +39,6 @@ struct CreateApikey: View {
                 .disabled(text.isEmpty)
             }
             .navigationTitle("Create API-key")
-            .navigationBarTitleDisplayMode(.inline)
         }
         .task {
             focus = true

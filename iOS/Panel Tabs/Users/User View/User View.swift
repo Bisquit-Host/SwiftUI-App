@@ -1,9 +1,16 @@
 import ScrechKit
-import Kingfisher
 import PteroNet
+
+#if canImport(MailCover)
+import MailCover
+#endif
 
 struct UserView: View {
     @Environment(UsersVM.self) private var vm
+    
+#if !os(tvOS) && !os(watchOS)
+    @State private var contacts = ContactManager()
+#endif
     
     @State private var user: UserAttributes
     
@@ -11,43 +18,82 @@ struct UserView: View {
         self.user = user
     }
     
+    @State private var mailCover = false
+    
     var body: some View {
         NavigationView {
             List {
-                UserImage(user.image)
-#if os(iOS)
-                UserEmail(user.email)
-#else
+#if !os(iOS)
                 Text(user.email)
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
 #endif
-                User2Fa(user.twoFaEnabled)
-                
-                HStack {
-                    Text("Member since")
+                Section {
+                    User2Fa(user.twoFaEnabled)
                     
-                    Spacer()
-                    
-                    VStack {
-                        Text(formatISO(user.createdAt))
+                    HStack {
+                        Text("Member since")
                         
-                        Text(timeSinceISO(user.createdAt))
-                            .footnote()
-                            .secondary()
+                        Spacer()
+                        
+                        VStack {
+                            Text(formatISO(user.createdAt))
+                            
+                            Text(timeSinceISO(user.createdAt))
+                                .footnote()
+                                .secondary()
+                        }
                     }
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
                 }
-                .lineLimit(1)
-                .minimumScaleFactor(0.5)
                 
                 PermissionList($user)
                     .environment(vm)
             }
             .navigationTitle(user.username)
+#if os(iOS)
+            .navigationSubtitle(user.email)
+#endif
             .toolbarTitleDisplayMode(.inline)
             .scrollIndicators(.never)
+#if canImport(MailCover)
+            .mailCover($mailCover, recipients: [user.email])
+#endif
             .refreshable {
                 await vm.userDetails($user)
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    UserImage(user.image)
+                }
+                
+#if os(iOS)
+                ToolbarItem(placement: .topBarTrailing) {
+                    Menu {
+                        MenuButton("Copy", icon: "doc.on.doc") {
+#if os(macOS)
+                            NSPasteboard.general.setString(user.email, forType: .string)
+#else
+                            UIPasteboard.general.string = user.email
+                            SystemAlert.copied()
+#endif
+                        }
+#if canImport(MailCover)
+                        MenuButton("Send email", icon: "envelope") {
+                            mailCover = true
+                        }
+#endif
+                        MenuButton("Save to Contacts", icon: "person.crop.circle.badge.plus") {
+                            contacts.saveContact(user.email)
+                        }
+                        
+                        ShareLink(item: user.email)
+                    } label: {
+                        Image(systemName: "envelope")
+                    }
+                }
+#endif
             }
         }
     }

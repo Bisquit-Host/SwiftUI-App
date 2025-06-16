@@ -11,7 +11,10 @@ struct CloudKeys: View {
     @Binding private var apiKey: String
     private let validate: () -> Void
     
-    init(_ apiKey: Binding<String>, validate: @escaping () -> Void = {}) {
+    init(
+        _ apiKey: Binding<String>,
+        validate: @escaping () -> Void = {}
+    ) {
         _apiKey = apiKey
         self.validate = validate
     }
@@ -32,9 +35,8 @@ struct CloudKeys: View {
                     .onDelete(perform: deleteItems)
                 }
             }
-            .ornamentDismissButton()
             .navigationTitle("Accounts")
-            .toolbarTitleDisplayMode(.inline)
+            .ornamentDismissButton()
             .scrollIndicators(.never)
             .overlay {
                 if keys.isEmpty {

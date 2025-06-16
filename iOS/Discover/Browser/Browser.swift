@@ -43,10 +43,10 @@ struct Browser: View {
                 }
             }
         }
-        .environment(vm)
         .navigationTitle("Configurations")
-        .animation(.default, value: vm.selectedCategory)
         .toolbarTitleDisplayMode(.inline)
+        .environment(vm)
+        .animation(.default, value: vm.selectedCategory)
         .ornamentDismissButton()
         .task {
             await vm.fetchAllPlans()

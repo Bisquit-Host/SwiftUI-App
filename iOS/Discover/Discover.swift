@@ -148,7 +148,6 @@ struct Discover: View {
             }
             .padding(.vertical)
         }
-        .background(BackgroundImage())
 #if os(visionOS)
         .buttonBorderShape(.roundedRectangle(radius: 27))
         .buttonStyle(.plain)

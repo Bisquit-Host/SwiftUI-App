@@ -26,7 +26,6 @@ struct AllocationList: View {
             .disabled(vm.allocations.count >= server.featureLimits.allocations)
         }
         .navigationTitle("Allocations")
-        .toolbarTitleDisplayMode(.inline)
         .refreshableTask {
             await vm.fetchAllocations()
         }
