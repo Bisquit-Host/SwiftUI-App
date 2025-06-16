@@ -45,6 +45,7 @@ struct ServerCard: View {
         }
         .frame(height: 100)
         .padding(.horizontal)
+//        .glassEffect(in: .rect(cornerRadius: rounding))
         .background(
             ZStack {
                 RoundedRectangle(cornerRadius: rounding)
