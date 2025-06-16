@@ -21,15 +21,15 @@ struct StartupView: View {
     var body: some View {
         List {
             Section {
+                if vm.rawStartupCommand != vm.startupCommand {
+                    Toggle("Raw", isOn: $store.rawStartupCommand)
+                }
+                
                 Text(command)
                     .caption2()
                     .monospaced()
                     .textSelection(.enabled)
                     .animation(.default, value: store.rawStartupCommand)
-                
-                if vm.rawStartupCommand != vm.startupCommand {
-                    Toggle("Raw", isOn: $store.rawStartupCommand)
-                }
             } header: {
                 HStack {
                     Text("Startup Command")
