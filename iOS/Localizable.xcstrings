@@ -806,34 +806,12 @@
         }
       }
     },
-    "Achievements" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Достижения"
-          }
-        }
-      }
-    },
     "Action" : {
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Действие"
-          }
-        }
-      }
-    },
-    "Add a description" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Добавить описание"
           }
         }
       }
@@ -3544,17 +3522,6 @@
         }
       }
     },
-    "Leaderboards" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Таблицы лидеров"
-          }
-        }
-      }
-    },
     "Learn more..." : {
       "localizations" : {
         "nl" : {
@@ -5598,33 +5565,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Общий размер"
-          }
-        }
-      }
-    },
-    "Transparent lists" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Transparante lijsten"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Прозрачные списки"
-          }
-        }
-      }
-    },
-    "Transparent sheets" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Прозрачные окна"
           }
         }
       }
