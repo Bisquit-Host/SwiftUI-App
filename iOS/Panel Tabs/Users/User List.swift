@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct UserList: View {
     @Environment(UsersVM.self) private var vm
@@ -50,17 +50,17 @@ struct UserList: View {
             }
         }
         .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
+            ToolbarItem(placement: .bottomBar) {
                 DismissButton {
                     dismiss()
                 }
             }
-            
-            ToolbarItem(placement: .topBarTrailing) {
-                Button {
+#if !os(watchOS) && !os(tvOS)
+            ToolbarSpacer(.flexible, placement: .bottomBar)
+#endif
+            ToolbarItem(placement: .bottomBar) {
+                SFButton("person.crop.circle.badge.plus") {
                     vm.sheetInvitation = true
-                } label: {
-                    Image(systemName: "person.crop.circle.badge.plus")
                 }
             }
         }
