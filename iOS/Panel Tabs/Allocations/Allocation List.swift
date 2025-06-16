@@ -27,7 +27,6 @@ struct AllocationList: View {
         }
         .navigationTitle("Allocations")
         .toolbarTitleDisplayMode(.inline)
-        .transparentList()
         .refreshableTask {
             await vm.fetchAllocations()
         }

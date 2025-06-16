@@ -17,7 +17,6 @@ struct SSHList: View {
             }
         }
         .navigationTitle("SSH")
-        .transparentList()
         .refreshableTask {
             await vm.fetchKeys()
         }

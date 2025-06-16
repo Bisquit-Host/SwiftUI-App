@@ -33,7 +33,6 @@ struct CloudKeys: View {
                 }
             }
             .ornamentDismissButton()
-            .transparentList()
             .navigationTitle("Accounts")
             .toolbarTitleDisplayMode(.inline)
             .scrollIndicators(.never)

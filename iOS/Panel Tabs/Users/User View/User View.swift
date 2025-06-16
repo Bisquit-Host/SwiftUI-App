@@ -43,7 +43,6 @@ struct UserView: View {
                 PermissionList($user)
                     .environment(vm)
             }
-            .transparentList()
             .navigationTitle(user.username)
             .toolbarTitleDisplayMode(.inline)
             .scrollIndicators(.never)

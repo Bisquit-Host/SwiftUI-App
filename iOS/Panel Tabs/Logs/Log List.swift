@@ -31,7 +31,6 @@ struct LogList: View {
 #endif
         .toolbarTitleDisplayMode(.inline)
         .ornamentDismissButton()
-        .transparentList()
         .animation(.default, value: vm.filteredLogs)
         .refreshableTask {
             await vm.fetchLogs()

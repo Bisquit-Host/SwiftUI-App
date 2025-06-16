@@ -23,7 +23,6 @@ struct UserList: View {
 #if !os(tvOS)
         .toolbarTitleDisplayMode(.large)
 #endif
-        .transparentList()
         .task {
             // Both funcs will run in parallel
             // Shouldn't change same props,

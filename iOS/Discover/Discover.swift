@@ -154,7 +154,6 @@ struct Discover: View {
         .buttonStyle(.plain)
 #endif
         .ignoresSafeArea()
-        .transparentList()
         .foregroundStyle(.foreground)
         .ornamentDismissButton()
         .mailCover(

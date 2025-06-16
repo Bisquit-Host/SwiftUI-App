@@ -62,7 +62,6 @@ struct CredentialsView: View {
                 .aspectRatio(3/2, contentMode: .fit)
                 .padding(.leading)
         }
-        .transparentList()
         .presentationDetents([.medium])
         .monospaced()
         .ignoresSafeArea()

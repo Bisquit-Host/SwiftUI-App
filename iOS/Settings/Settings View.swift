@@ -22,7 +22,6 @@ struct SettingsView: View {
         }
         .navigationTitle("Settings")
         .scrollIndicators(.hidden)
-        .transparentList()
         .dismissWithGamepad()
         .sheet($vm.sheetBio) {
             BiometryUsageView()

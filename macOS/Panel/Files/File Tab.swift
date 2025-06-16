@@ -32,7 +32,6 @@ struct FileTab: View {
                 .listRowSeparator(.hidden)
                 .animation(.default, value: vm.filteredFiles.indices)
             }
-            .transparentList()
             .scrollContentBackground(.hidden)
             .navigationDestination(for: String.self) { file in
                 FolderDestination(id, at: file)

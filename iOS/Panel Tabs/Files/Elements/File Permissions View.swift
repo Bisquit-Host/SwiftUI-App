@@ -82,7 +82,6 @@ struct FilePermissionsView: View {
             }
         }
         .navigationTitle("Permissions")
-        .transparentList()
         .toolbarTitleDisplayMode(.inline)
         .onChange(of: newMode) {
             newModeBits = newMode

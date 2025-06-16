@@ -40,8 +40,6 @@ struct DesignSettings: View {
                 Toggle("Dynamic Island badge", isOn: $store.showDynamicIslandBadge)
             }
             
-            Toggle("Transparent sheets", isOn: $store.transparentSheet)
-            
             Toggle("Animated background", isOn: $store.enableBisquitFall)
         }
     }

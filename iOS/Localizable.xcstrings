@@ -5603,6 +5603,7 @@
       }
     },
     "Transparent lists" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {

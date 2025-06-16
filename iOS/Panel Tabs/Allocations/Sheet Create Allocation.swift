@@ -51,7 +51,6 @@ struct SheetCreateAllocation: View {
         .navigationTitle("Create allocation")
         .scrollIndicators(.never)
         .padding(.horizontal)
-        .transparentList()
         .task {
             await vm.fetchCategories()
         }

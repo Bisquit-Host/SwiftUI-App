@@ -67,7 +67,6 @@ struct AccountView: View {
                 }
             }
         }
-        .transparentList()
         .navigationTitle("Account")
         .refreshableTask {
             let fetchTask = Task {

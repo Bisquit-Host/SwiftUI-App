@@ -1585,14 +1585,14 @@
 		F3EE6D782D9E8E2000F0A633 /* Bakground Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE6D742D9E8E2000F0A633 /* Bakground Task.swift */; };
 		F3EE6D7A2D9E8E2000F0A633 /* Bakground Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE6D742D9E8E2000F0A633 /* Bakground Task.swift */; };
 		F3EE6D7B2D9E8E2000F0A633 /* Bakground Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE6D742D9E8E2000F0A633 /* Bakground Task.swift */; };
-		F3EE9F6F2D85CAB9000120A7 /* Transparency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F6E2D85CAB9000120A7 /* Transparency.swift */; };
-		F3EE9F702D85CAB9000120A7 /* Transparency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F6E2D85CAB9000120A7 /* Transparency.swift */; };
-		F3EE9F712D85CAB9000120A7 /* Transparency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F6E2D85CAB9000120A7 /* Transparency.swift */; };
-		F3EE9F722D85CAB9000120A7 /* Transparency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F6E2D85CAB9000120A7 /* Transparency.swift */; };
-		F3EE9F732D85CAB9000120A7 /* Transparency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F6E2D85CAB9000120A7 /* Transparency.swift */; };
-		F3EE9F742D85CAB9000120A7 /* Transparency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F6E2D85CAB9000120A7 /* Transparency.swift */; };
-		F3EE9F752D85CAB9000120A7 /* Transparency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F6E2D85CAB9000120A7 /* Transparency.swift */; };
-		F3EE9F762D85CAB9000120A7 /* Transparency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F6E2D85CAB9000120A7 /* Transparency.swift */; };
+		F3EE9F6F2D85CAB9000120A7 /* Dismiss Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F6E2D85CAB9000120A7 /* Dismiss Button.swift */; };
+		F3EE9F702D85CAB9000120A7 /* Dismiss Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F6E2D85CAB9000120A7 /* Dismiss Button.swift */; };
+		F3EE9F712D85CAB9000120A7 /* Dismiss Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F6E2D85CAB9000120A7 /* Dismiss Button.swift */; };
+		F3EE9F722D85CAB9000120A7 /* Dismiss Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F6E2D85CAB9000120A7 /* Dismiss Button.swift */; };
+		F3EE9F732D85CAB9000120A7 /* Dismiss Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F6E2D85CAB9000120A7 /* Dismiss Button.swift */; };
+		F3EE9F742D85CAB9000120A7 /* Dismiss Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F6E2D85CAB9000120A7 /* Dismiss Button.swift */; };
+		F3EE9F752D85CAB9000120A7 /* Dismiss Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F6E2D85CAB9000120A7 /* Dismiss Button.swift */; };
+		F3EE9F762D85CAB9000120A7 /* Dismiss Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F6E2D85CAB9000120A7 /* Dismiss Button.swift */; };
 		F3EE9F942D86234A000120A7 /* Custom Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F922D86234A000120A7 /* Custom Dialog.swift */; };
 		F3EE9F952D86234A000120A7 /* Custom Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F932D86234A000120A7 /* Custom Alert.swift */; };
 		F3EE9F962D86234A000120A7 /* Custom Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F922D86234A000120A7 /* Custom Dialog.swift */; };
@@ -2361,7 +2361,7 @@
 		F3EDEE3729C0CB5A00B08696 /* Websocket Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Websocket Message.swift"; sourceTree = "<group>"; };
 		F3EDEE3929C0CB8000B08696 /* Websocket Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Websocket Delegate.swift"; sourceTree = "<group>"; };
 		F3EE6D742D9E8E2000F0A633 /* Bakground Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bakground Task.swift"; sourceTree = "<group>"; };
-		F3EE9F6E2D85CAB9000120A7 /* Transparency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transparency.swift; sourceTree = "<group>"; };
+		F3EE9F6E2D85CAB9000120A7 /* Dismiss Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dismiss Button.swift"; sourceTree = "<group>"; };
 		F3EE9F922D86234A000120A7 /* Custom Dialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Custom Dialog.swift"; sourceTree = "<group>"; };
 		F3EE9F932D86234A000120A7 /* Custom Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Custom Alert.swift"; sourceTree = "<group>"; };
 		F3F061D92A73CE1200470F7E /* Server Card Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Parent.swift"; sourceTree = "<group>"; };
@@ -2661,7 +2661,7 @@
 				F3BC03C02B2063820011F98A /* Debug Key.swift */,
 				F32FD71D2B1E054300723B88 /* Network Calls.swift */,
 				F31F31F72D52BD940095DD19 /* System lowPowerMode.swift */,
-				F3EE9F6E2D85CAB9000120A7 /* Transparency.swift */,
+				F3EE9F6E2D85CAB9000120A7 /* Dismiss Button.swift */,
 				F3202D452D56DC050030B3CC /* Prefetcher.swift */,
 				F31BA56F295900C20006D126 /* Formatters.swift */,
 				F320DDA42B704E3C00957D92 /* Preview Property.swift */,
@@ -4971,7 +4971,7 @@
 				F30088E22B3A5A8A0051476C /* Startup VM.swift in Sources */,
 				F3000E1E295AE2B700ABD30A /* Guide.swift in Sources */,
 				F323BF9F2B20B84100116B97 /* Server Card Context Menu.swift in Sources */,
-				F3EE9F732D85CAB9000120A7 /* Transparency.swift in Sources */,
+				F3EE9F732D85CAB9000120A7 /* Dismiss Button.swift in Sources */,
 				F3AB4A8C2CF3DAC900A8252F /* Backup Card VM.swift in Sources */,
 				F30088AA2B3A1A510051476C /* Schedule VM.swift in Sources */,
 				F3C9D84A2B302AA200265492 /* File Context Menu.swift in Sources */,
@@ -5132,7 +5132,7 @@
 				F31BA57D295901200006D126 /* Start Page VM.swift in Sources */,
 				F39E0A952C1BA06C00C4E906 /* Discover Card.swift in Sources */,
 				F306B9ED29BBDA770008C2D4 /* Server List Footer.swift in Sources */,
-				F3EE9F752D85CAB9000120A7 /* Transparency.swift in Sources */,
+				F3EE9F752D85CAB9000120A7 /* Dismiss Button.swift in Sources */,
 				F3464D292A86398100188B0C /* Power Signal App Enum.swift in Sources */,
 				F31BA57F2959012D0006D126 /* Guide.swift in Sources */,
 				F3496DC529E0091A0089FC28 /* Section Header.swift in Sources */,
@@ -5337,7 +5337,7 @@
 				F3EE9F962D86234A000120A7 /* Custom Dialog.swift in Sources */,
 				F3EE9F972D86234A000120A7 /* Custom Alert.swift in Sources */,
 				F30C13152A5461BA00A7EFF0 /* Cache VM.swift in Sources */,
-				F3EE9F6F2D85CAB9000120A7 /* Transparency.swift in Sources */,
+				F3EE9F6F2D85CAB9000120A7 /* Dismiss Button.swift in Sources */,
 				F3015DE42D9F26C600B9BCC6 /* Log Card Timestamp.swift in Sources */,
 				F3AB4A972CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
 				F3499EF52A27553D006101B7 /* Panel VM.swift in Sources */,
@@ -5505,7 +5505,7 @@
 				F325F7012A54BBCF00E89EC4 /* Info Tab Allocations.swift in Sources */,
 				F39626F32A7AD64B0057E356 /* Ansi.swift in Sources */,
 				F3AB4A7E2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
-				F3EE9F762D85CAB9000120A7 /* Transparency.swift in Sources */,
+				F3EE9F762D85CAB9000120A7 /* Dismiss Button.swift in Sources */,
 				F31F32022D52DB950095DD19 /* Color Theme.swift in Sources */,
 				F30088A02B3A17DF0051476C /* Backup VM.swift in Sources */,
 				F32F2CCB2D8F6FA8007CF4DE /* Discover Model.swift in Sources */,
@@ -5755,7 +5755,7 @@
 			isa = PBXSourcesBuildPhase;
 			files = (
 				F39E0A942C1BA06C00C4E906 /* Discover Card.swift in Sources */,
-				F3EE9F722D85CAB9000120A7 /* Transparency.swift in Sources */,
+				F3EE9F722D85CAB9000120A7 /* Dismiss Button.swift in Sources */,
 				F3202C752D5583680030B3CC /* Browser Parent.swift in Sources */,
 				F3D295B72AF3A16600ED43A0 /* App Icon Picker.swift in Sources */,
 				F3202D252D562B990030B3CC /* Browser Card Web.swift in Sources */,
@@ -6140,7 +6140,7 @@
 				F3A7CF1F2C8C4E4A00413400 /* Plan Models.swift in Sources */,
 				F3A7CF022C8BBB4700413400 /* Server Card Context Menu.swift in Sources */,
 				F3A7CEF22C8BB7BF00413400 /* System Alerts.swift in Sources */,
-				F3EE9F702D85CAB9000120A7 /* Transparency.swift in Sources */,
+				F3EE9F702D85CAB9000120A7 /* Dismiss Button.swift in Sources */,
 				F31461712D5A1F8100547B6C /* Icon.swift in Sources */,
 				F32F2CD72D8F6FDC007CF4DE /* Avg Color.swift in Sources */,
 				F3A7CF112C8C4C3100413400 /* Server List Node Filter.swift in Sources */,
@@ -6152,7 +6152,7 @@
 				F3D295172AF396FD00ED43A0 /* Tabs.swift in Sources */,
 				F3FD9F9A2C651AF300A69314 /* Upload File.swift in Sources */,
 				F32F2CC92D8F6FA8007CF4DE /* Discover Model.swift in Sources */,
-				F3EE9F742D85CAB9000120A7 /* Transparency.swift in Sources */,
+				F3EE9F742D85CAB9000120A7 /* Dismiss Button.swift in Sources */,
 				F3202D162D562B250030B3CC /* Browser Card MC.swift in Sources */,
 				F3015DD82D9F24F600B9BCC6 /* Log Card Event.swift in Sources */,
 				F3BD76F92A43C890003E7385 /* Panel View.swift in Sources */,
@@ -6385,7 +6385,7 @@
 				F363C7FD2B7F7938005F6FF2 /* System Alerts.swift in Sources */,
 				F323D8D52A2D67A3002EDC62 /* Upload File.swift in Sources */,
 				F3A800332A7313E900CAC40B /* Tip Cloud Keys.swift in Sources */,
-				F3EE9F712D85CAB9000120A7 /* Transparency.swift in Sources */,
+				F3EE9F712D85CAB9000120A7 /* Dismiss Button.swift in Sources */,
 				F3E08EC62A2CEA6400116C1C /* Start Page VM.swift in Sources */,
 				F3F061D62A73C9A300470F7E /* Map List.swift in Sources */,
 				F35B9F552A2D6D380045D014 /* Formatters.swift in Sources */,

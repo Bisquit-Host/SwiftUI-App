@@ -48,7 +48,6 @@ struct Browser: View {
         .animation(.default, value: vm.selectedCategory)
         .toolbarTitleDisplayMode(.inline)
         .ornamentDismissButton()
-        .transparentList()
         .task {
             await vm.fetchAllPlans()
         }

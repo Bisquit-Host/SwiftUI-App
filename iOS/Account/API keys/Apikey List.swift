@@ -22,7 +22,6 @@ struct ApikeyList: View {
             }
         }
         .navigationTitle("My API-keys")
-        .transparentList()
         .animation(.default, value: vm.keys.count)
         .refreshableTask {
             await vm.fetchKeys()

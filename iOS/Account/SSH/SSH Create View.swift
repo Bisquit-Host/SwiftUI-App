@@ -45,7 +45,6 @@ struct SSHCreateView: View {
             }
             .disabled(vm.newName.isEmpty || vm.newPublicKey.isEmpty)
         }
-        .transparentList()
     }
 }
 

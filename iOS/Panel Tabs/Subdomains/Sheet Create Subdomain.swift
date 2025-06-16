@@ -67,7 +67,6 @@ struct SheetCreateSubdomain: View {
             }
         }
         .pickerStyle(.inline)
-        .transparentList()
         .ornamentDismissButton()
     }
 }

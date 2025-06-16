@@ -25,7 +25,6 @@ struct PanelSectionList: View {
                 vm.move(from: from, to: to)
             }
         }
-        .transparentList()
         .navigationTitle("Customize & Reorder")
         .toolbar {
             ToolbarItem(placement: .destructiveAction) {

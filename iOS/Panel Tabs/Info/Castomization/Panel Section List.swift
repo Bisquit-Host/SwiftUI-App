@@ -23,7 +23,6 @@ struct PanelSectionList: View {
                 vm.move(from: from, to: to)
             }
         }
-        .transparentList()
         .navigationTitle("Customize & Reorder")
         .environment(\.editMode, .constant(.active))
         .toolbar {

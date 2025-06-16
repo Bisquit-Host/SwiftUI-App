@@ -70,7 +70,6 @@ struct Guide: View {
             .buttonStyle(CarouselButtonStyle())
             .padding(20)
         }
-        .transparentList()
         .ignoresSafeArea(edges: .bottom)
     }
 }

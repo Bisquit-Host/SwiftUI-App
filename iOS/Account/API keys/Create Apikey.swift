@@ -40,7 +40,6 @@ struct CreateApikey: View {
             }
             .navigationTitle("Create API-key")
             .navigationBarTitleDisplayMode(.inline)
-            .transparentList()
         }
         .task {
             focus = true

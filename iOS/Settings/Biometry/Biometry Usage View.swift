@@ -15,7 +15,6 @@ struct BiometryUsageView: View {
         }
         .monospaced()
         .presentationDetents([.medium])
-        .presentationBackground(store.transparentSheet ? .ultraThinMaterial : .regular)
     }
 }
 

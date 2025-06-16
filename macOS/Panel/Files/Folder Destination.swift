@@ -39,9 +39,8 @@ struct FolderDestination: View {
             .animation(.default, value: vm.filteredFiles.indices)
             .listRowSeparator(.hidden)
         }
-        .transparentList()
-        .scrollContentBackground(.hidden)
         .navigationTitle("Files")
+        .scrollContentBackground(.hidden)
         .environmentObject(vm)
         .frame(minWidth: 200, maxWidth: 800)
 #if os(macOS)

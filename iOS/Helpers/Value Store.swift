@@ -18,9 +18,6 @@ final class ValueStore: ObservableObject {
     @AppStorage("useBiometry") var useBiometry = false
     @AppStorage("show_dynamic_island_badge") var showDynamicIslandBadge = true
     
-    // MARK: - App Style/Design
-    @AppStorage("transparentSheet") var transparentSheet = true
-    
     // MARK: - Console
     @AppStorage("spamEnabled") var spamEnabled = false
     @AppStorage("consoleFontSize") var consoleFontSize = 10.0

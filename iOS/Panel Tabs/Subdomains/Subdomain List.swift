@@ -29,7 +29,6 @@ struct SubdomainList: View {
 #if !os(tvOS)
         .toolbarTitleDisplayMode(.large)
 #endif
-        .transparentList()
         .refreshableTask {
             await vm.fetchSubdomains()
         }
