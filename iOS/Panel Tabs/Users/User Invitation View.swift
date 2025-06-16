@@ -51,7 +51,6 @@ struct UserInvitationView: View {
         }
         .padding(.horizontal)
         .scrollIndicators(.never)
-        .presentationDetents([.medium])
         .task {
             await vm.fetchPermissions()
         }
