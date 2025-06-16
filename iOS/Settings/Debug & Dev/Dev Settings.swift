@@ -23,7 +23,7 @@ struct DevSettings: View {
     }
     
     var body: some View {
-        Section("Dev") {
+        Section {
             ListParam("App version", param: version)
             
             ListParam("Device and system", param: deviceAndSystem)
@@ -32,6 +32,9 @@ struct DevSettings: View {
                 DebugSettings()
             }
 #endif
+        } header: {
+            Text("Dev")
+        } footer: {
             ServerListFooter()
         }
     }
