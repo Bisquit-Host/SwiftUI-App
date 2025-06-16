@@ -1,6 +1,6 @@
 import ScrechKit
 
-struct AppIconPicker: View {
+struct AppIconSettings: View {
     @EnvironmentObject private var store: ValueStore
     @Namespace private var animation
     
@@ -9,7 +9,7 @@ struct AppIconPicker: View {
     ]
     
     var body: some View {
-        ScrollView {
+        Section("Icon") {
             LazyVGrid(columns: columns, spacing: 10) {
                 ForEach(Icon.allCases) { icon in
                     AppIconCard(icon, isSelected: store.currentIcon == icon)
@@ -34,6 +34,6 @@ struct AppIconPicker: View {
 }
 
 #Preview {
-    AppIconPicker()
+    AppIconSettings()
         .environmentObject(ValueStore())
 }

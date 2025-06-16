@@ -16,7 +16,7 @@ struct SettingsView: View {
             OtherSettings()
                 .environment(vm)
             
-            IconSettings()
+            AppIconSettings()
             
             DevSettings()
         }
