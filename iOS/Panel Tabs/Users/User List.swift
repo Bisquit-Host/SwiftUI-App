@@ -10,9 +10,7 @@ struct UserList: View {
         
         List {
             ForEach(vm.users) { user in
-                Section {
-                    UserCard(user)
-                }
+                UserCard(user)
             }
 #if os(iOS)
             .listSectionSpacing(-10)
@@ -24,7 +22,7 @@ struct UserList: View {
         .toolbarTitleDisplayMode(.large)
 #endif
         .task {
-            // Both funcs will run in parallel
+            // Both funcs will run parallel
             // Shouldn't change same props,
             // Otherwise will cause a data race
             

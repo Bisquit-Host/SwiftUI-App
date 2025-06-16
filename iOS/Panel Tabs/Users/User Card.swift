@@ -51,14 +51,6 @@ struct UserCard: View {
                 }
             }
             .foregroundStyle(.foreground)
-            .padding()
-#if !os(tvOS)
-            .background(.ultraThinMaterial.opacity(0.3), in: .rect(cornerRadius: 16))
-            .overlay {
-                RoundedRectangle(cornerRadius: 16)
-                    .stroke(.gray.opacity(0.25), lineWidth: 1)
-            }
-#endif
         }
         .sheet($sheetDetails) {
             UserView(user)
