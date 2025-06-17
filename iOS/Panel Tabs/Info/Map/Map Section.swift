@@ -91,7 +91,7 @@ struct MapSection: View {
             Button {
                 openSafari(mapUrl)
             } label: {
-                Label("Open in Apple Maps", systemImage: "map")
+                Label("Open in Apple Maps", image: .maps)
             }
         }
         .foregroundStyle(.foreground)
