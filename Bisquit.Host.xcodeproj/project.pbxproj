@@ -3910,8 +3910,8 @@
 			children = (
 				F36797772A3A55E1009F2788 /* Log List Parent.swift */,
 				F3DE1B972A556CCE007A1624 /* Log List.swift */,
-				F3015DED2D9F427700B9BCC6 /* Log List Filter.swift */,
 				F367977D2A3A5AB6009F2788 /* Log VM.swift */,
+				F3015DED2D9F427700B9BCC6 /* Log List Filter.swift */,
 				F3A5632E2D9EF323009AA363 /* Log Toolbar Actor.swift */,
 				F3D7DB712DCDF8F300ED2F0A /* Log Card */,
 				F30207D02D8B039100C26008 /* Meta */,
