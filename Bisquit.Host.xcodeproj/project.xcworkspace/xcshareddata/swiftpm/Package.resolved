@@ -78,8 +78,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/PostHog/posthog-ios.git",
       "state" : {
-        "revision" : "e4600bc73a038747f57e8ff94fe01ad6d79204ee",
-        "version" : "3.26.1"
+        "revision" : "95bba2b66874dc01e624da6610dd8732817165c8",
+        "version" : "3.27.0"
       }
     },
     {
@@ -106,7 +106,7 @@
       "location" : "https://github.com/TopScrech/QuickLooking",
       "state" : {
         "branch" : "main",
-        "revision" : "cac8718105ed30889153c02a87413eb41aa5b95e"
+        "revision" : "cb36fec0734c36fa5962163729ff3295871fa249"
       }
     },
     {
@@ -124,7 +124,7 @@
       "location" : "https://github.com/TopScrech/ScrechKit",
       "state" : {
         "branch" : "main",
-        "revision" : "b4ffcdfc764889a0def8c74993b3218732cb8351"
+        "revision" : "6fb0d3db11605d175261a14fa03d57a8feb8f8fa"
       }
     },
     {

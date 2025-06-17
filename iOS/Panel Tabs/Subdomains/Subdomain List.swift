@@ -47,7 +47,7 @@ struct SubdomainList: View {
                     dismiss()
                 }
             }
-#if !os(tvOS)
+#if os(iOS) || os(macOS)
             ToolbarSpacer(.flexible, placement: .bottomBar)
 #endif
             ToolbarItem(placement: .bottomBar) {

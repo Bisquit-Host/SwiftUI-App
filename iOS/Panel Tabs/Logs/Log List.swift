@@ -56,13 +56,14 @@ struct LogList: View {
                     dismiss()
                 }
             }
-#if !os(watchOS) && !os(tvOS)
+#if os(iOS) || os(macOS)
             ToolbarSpacer(.flexible, placement: .bottomBar)
-            
+#endif
             //            DefaultToolbarItem(kind: .search, placement: .bottomBar)
             //
             //            ToolbarSpacer(.fixed, placement: .bottomBar)
             
+#if !os(watchOS) && !os(tvOS)
             if !vm.logs.isEmpty {
                 ToolbarItem(placement: .bottomBar) {
                     LogListFilter()
