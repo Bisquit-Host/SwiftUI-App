@@ -22,8 +22,12 @@ struct ConsoleTab: View {
             
             HStack {
                 PowerSwitch()
-                    .scaleEffect(0.8)
-                    .frame(35)
+                    .padding(10)
+                    .background(.ultraThinMaterial, in: .circle)
+                    .overlay {
+                        Circle()
+                            .stroke(.gray.opacity(0.25), lineWidth: 1)
+                    }
                     .padding(.trailing, 10)
                 
                 TextField("Type a command...", text: $vm.command)

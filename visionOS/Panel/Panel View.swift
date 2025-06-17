@@ -180,7 +180,8 @@ struct PanelView: View {
         //            }
         //        }
         .ornament(attachmentAnchor: .scene(.top)) {
-            PanelOrnamentPower(showPowerButtons)
+            PowerSwitch()
+                .padding(.bottom, 100)
                 .environment(vm)
         }
 #warning("Finish ornament")
