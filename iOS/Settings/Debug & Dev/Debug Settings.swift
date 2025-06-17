@@ -44,6 +44,7 @@ struct DebugSettings: View {
                 }
             }
         }
+        .navigationTitle("Debug")
         .foregroundStyle(.foreground)
         .alert("Couldn't enable the extension", isPresented: $errorAlert) {}
     }
