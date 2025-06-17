@@ -64,14 +64,16 @@ struct StartPage: View {
         }
 #if DEBUG
         .toolbar {
-            Button("Debug") {
-                Keychain.save(debugKey, forKey: "selectedApiKey")
-                
-                if !keys.contains(where: { $0.key == debugKey }) {
-                    modelContext.insert(APIKey("Debug", key: debugKey))
+            ToolbarItem(placement: .topBarTrailing) {
+                Button("Debug") {
+                    Keychain.save(debugKey, forKey: "selectedApiKey")
+                    
+                    if !keys.contains(where: { $0.key == debugKey }) {
+                        modelContext.insert(APIKey("Debug", key: debugKey))
+                    }
+                    
+                    store.authSucced()
                 }
-                
-                store.authSucced()
             }
         }
 #endif
