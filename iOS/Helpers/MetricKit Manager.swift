@@ -15,7 +15,6 @@ final class MetricKitManager: NSObject, MXMetricManagerSubscriber {
         MXMetricManager.shared.remove(self)
     }
     
-#if !os(macOS)
     func didReceive(_ payloads: [MXMetricPayload]) {
         for payload in payloads {
             print("Received metrics:", payload)
@@ -27,7 +26,6 @@ final class MetricKitManager: NSObject, MXMetricManagerSubscriber {
             print("Received diagnostics:", payload)
         }
     }
-#endif
 }
 
 //extension AppDelegate: MXMetricManagerSubscriber {
