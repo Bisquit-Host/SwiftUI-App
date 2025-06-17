@@ -52,25 +52,11 @@ struct ServerList: View {
             Discover()
         }
         .toolbar {
-#warning("Uncomment")
-            //        .toolbar {
-            //            ServerListOrnament($sheetSettings)
-            //                .environment(vm)
-            //
-            //        #warning("doesn't update servers")
-            //            //            ServerListToolbar {
-            //            //                vm.fetchServers(store.adminServerList)
-            //            //            }
-            //        }
             ToolbarItemGroup(placement: .topBarTrailing) {
-                Menu {
-                    Button {
-                        vm.sheetDiscover = true
-                    } label: {
-                        Label("Useful links", systemImage: "sparkles")
-                    }
+                Button {
+                    vm.sheetDiscover = true
                 } label: {
-                    Image(systemName: "sparkles")
+                    Label("Useful links", systemImage: "sparkles")
                 }
                 
                 Menu {

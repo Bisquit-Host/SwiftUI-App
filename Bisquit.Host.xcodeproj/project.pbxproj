@@ -1119,8 +1119,6 @@
 		F3A7CF6B2C8DF41300413400 /* Video File VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF672C8DF3C900413400 /* Video File VM.swift */; };
 		F3A7CF6C2C8DF41300413400 /* Video File VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF672C8DF3C900413400 /* Video File VM.swift */; };
 		F3A7CF702A44FD5300331B51 /* Server Card Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF6F2A44FD5300331B51 /* Server Card Parent.swift */; };
-		F3A7CF722A45150F00331B51 /* Server List Ornament.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF712A45150F00331B51 /* Server List Ornament.swift */; };
-		F3A7CF752A45159B00331B51 /* Server List Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF742A45159B00331B51 /* Server List Toolbar.swift */; };
 		F3A800322A7313E900CAC40B /* Tip Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A800312A7313E900CAC40B /* Tip Cloud Keys.swift */; };
 		F3A800332A7313E900CAC40B /* Tip Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A800312A7313E900CAC40B /* Tip Cloud Keys.swift */; };
 		F3A800342A7313E900CAC40B /* Tip Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A800312A7313E900CAC40B /* Tip Cloud Keys.swift */; };
@@ -2220,8 +2218,6 @@
 		F3A7CF672C8DF3C900413400 /* Video File VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Video File VM.swift"; sourceTree = "<group>"; };
 		F3A7CF6A2A44F6E000331B51 /* Circular Gauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Circular Gauge.swift"; sourceTree = "<group>"; };
 		F3A7CF6F2A44FD5300331B51 /* Server Card Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Parent.swift"; sourceTree = "<group>"; };
-		F3A7CF712A45150F00331B51 /* Server List Ornament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List Ornament.swift"; sourceTree = "<group>"; };
-		F3A7CF742A45159B00331B51 /* Server List Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List Toolbar.swift"; sourceTree = "<group>"; };
 		F3A800312A7313E900CAC40B /* Tip Cloud Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tip Cloud Keys.swift"; sourceTree = "<group>"; };
 		F3A8BE8A2A2FA9B3001B13D8 /* File View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "File View.swift"; sourceTree = "<group>"; };
 		F3A994A72A177DA400530615 /* Map View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Map View.swift"; sourceTree = "<group>"; };
@@ -3667,8 +3663,6 @@
 			isa = PBXGroup;
 			children = (
 				F389282F2A445E9700561CDF /* Server List.swift */,
-				F3A7CF712A45150F00331B51 /* Server List Ornament.swift */,
-				F3A7CF742A45159B00331B51 /* Server List Toolbar.swift */,
 				F3A7CF732A45158900331B51 /* Server Card */,
 			);
 			path = "Server List";
@@ -6123,7 +6117,6 @@
 				F3AB4A8E2CF3DAD500A8252F /* Backup Card VM.swift in Sources */,
 				F30B61CC2B2907C900F447B4 /* Debug Key.swift in Sources */,
 				F3317AEA2A45E24F00CA104D /* Guide.swift in Sources */,
-				F3A7CF722A45150F00331B51 /* Server List Ornament.swift in Sources */,
 				F38694182A4B3AAF002DEF90 /* Panel Tab.swift in Sources */,
 				F35F65952B1D1A0D00431EB7 /* Panel VM.swift in Sources */,
 				F39919172A4653A300CC73DA /* Linear Gauge.swift in Sources */,
@@ -6208,7 +6201,6 @@
 				F32FD71C2B1E044000723B88 /* Ansi.swift in Sources */,
 				F3202D372D5633270030B3CC /* Browser List MCRU.swift in Sources */,
 				F320DDA52B704E3C00957D92 /* Preview Property.swift in Sources */,
-				F3A7CF752A45159B00331B51 /* Server List Toolbar.swift in Sources */,
 				F3A7CF662A44F44A00331B51 /* Auth View.swift in Sources */,
 				F348C6E42A5438EB002D5BD6 /* App Container.swift in Sources */,
 				F3FC99162C65888900150823 /* Temp Dir.swift in Sources */,
