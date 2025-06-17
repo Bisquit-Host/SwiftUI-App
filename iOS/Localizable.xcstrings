@@ -4602,7 +4602,14 @@
 
     },
     "Reset" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сбросить"
+          }
+        }
+      }
     },
     "Reset to default" : {
       "localizations" : {

@@ -2891,7 +2891,7 @@
 				F3B66DEF2D60B2B100F1841B /* Card */,
 				F3A563232D9EF114009AA363 /* Info Tab Buttons User Img.swift */,
 				F3B66DF32D60B46F00F1841B /* Info Tab LA.swift */,
-				F33712212DC2FD2A0014B427 /* Castomization */,
+				F33712212DC2FD2A0014B427 /* Customization */,
 				F353B04E2D8AA6FB00E4EC07 /* Map */,
 			);
 			path = Info;
@@ -3100,7 +3100,7 @@
 			path = Logs;
 			sourceTree = "<group>";
 		};
-		F33712212DC2FD2A0014B427 /* Castomization */ = {
+		F33712212DC2FD2A0014B427 /* Customization */ = {
 			isa = PBXGroup;
 			children = (
 				F33712182DC2FD240014B427 /* Panel Section List.swift */,
@@ -3108,7 +3108,7 @@
 				F337121A2DC2FD240014B427 /* Panel Section Row.swift */,
 				F33712192DC2FD240014B427 /* Panel Section.swift */,
 			);
-			path = Castomization;
+			path = Customization;
 			sourceTree = "<group>";
 		};
 		F337B4072A89FB0200DD79AA /* Families */ = {
