@@ -3198,6 +3198,7 @@
 				F3A391BB29DB808B00591C84 /* Server Name.swift */,
 				F37266D029D99570005FD103 /* Gauge Regular.swift */,
 				F378EF8229D6C91300BC4849 /* Gauge Disk.swift */,
+				F3A7CF6A2A44F6E000331B51 /* Circular Gauge.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -3689,7 +3690,6 @@
 			children = (
 				F3A7CF6F2A44FD5300331B51 /* Server Card Parent.swift */,
 				F38928312A445EA900561CDF /* Server Card.swift */,
-				F3A7CF6A2A44F6E000331B51 /* Circular Gauge.swift */,
 				F39919162A4653A300CC73DA /* Linear Gauge.swift */,
 			);
 			path = "Server Card";
