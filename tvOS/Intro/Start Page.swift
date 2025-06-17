@@ -25,24 +25,16 @@ struct StartPage: View {
                 }
             }
             
-            Text("It is recommended to use the keyboard on your iPhone \(Image(systemName: "keyboard.chevron.compact.down"))")
+            let icon = Image(systemName: "keyboard.chevron.compact.down")
+            
+            Text("It is recommended to use the keyboard on your iPhone \(icon)")
                 .title3()
             
-            HStack(spacing: 40) {
+            HStack {
                 ListLink("API-key Creation", icon: "exclamationmark.questionmark") {
                     Guide()
                 }
-#if DEBUG
-                Button("Debug") {
-                    Keychain.save(debugKey, forKey: "selectedApiKey")
-                    
-                    if !keys.contains(where: { $0.key == debugKey }) {
-                        modelContext.insert(APIKey("Debug", key: debugKey))
-                    }
-                    
-                    store.authSucced()
-                }
-#endif
+                
                 Button("Validate") {
                     Task {
                         await checkApiKey()
@@ -53,15 +45,6 @@ struct StartPage: View {
         }
         .navigationTitle("Bisquit.Host")
         .multilineTextAlignment(.center)
-        .task {
-            if !keys.isEmpty {
-                delay(0.5) {
-                    vm.sheetCloudKeys = true
-                }
-            } else {
-                print("No keys found")
-            }
-        }
         .sheet($vm.sheetCloudKeys) {
             CloudKeys($vm.apiKey)
         }
@@ -70,6 +53,28 @@ struct StartPage: View {
         } message: {
             Text(vm.errorDescription)
         }
+        .onFirstAppear {
+            if !keys.isEmpty {
+                delay(0.5) {
+                    vm.sheetCloudKeys = true
+                }
+            } else {
+                print("No keys found")
+            }
+        }
+#if DEBUG
+        .toolbar {
+            Button("Debug") {
+                Keychain.save(debugKey, forKey: "selectedApiKey")
+                
+                if !keys.contains(where: { $0.key == debugKey }) {
+                    modelContext.insert(APIKey("Debug", key: debugKey))
+                }
+                
+                store.authSucced()
+            }
+        }
+#endif
     }
 }
 
