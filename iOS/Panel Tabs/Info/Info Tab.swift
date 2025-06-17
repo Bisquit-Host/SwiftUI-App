@@ -103,7 +103,7 @@ struct InfoTab: View {
                 .secondary()
                 .foregroundStyle(.foreground)
         }
-        .padding(.top, 10)
+        .padding(.vertical, 10)
     }
     
     private var ip: String? {
