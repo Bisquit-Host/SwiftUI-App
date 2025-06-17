@@ -1,5 +1,5 @@
 {
-  "originHash" : "5790419ac341a3d410fd982a755c80edc22682c0f893a895e50a23c1819a000a",
+  "originHash" : "7f26f923d2b960ba32e58a1a98565e34a13fc2010b08f4d6c6bcbc07ee16de1b",
   "pins" : [
     {
       "identity" : "alertkit",
@@ -71,15 +71,6 @@
       "state" : {
         "branch" : "main",
         "revision" : "c33771592360b836f114ebe32ad660590c7afc28"
-      }
-    },
-    {
-      "identity" : "posthog-ios",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/PostHog/posthog-ios.git",
-      "state" : {
-        "revision" : "95bba2b66874dc01e624da6610dd8732817165c8",
-        "version" : "3.27.0"
       }
     },
     {

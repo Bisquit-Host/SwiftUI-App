@@ -110,12 +110,6 @@
 		F3015DF22D9F427700B9BCC6 /* Log List Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3015DED2D9F427700B9BCC6 /* Log List Filter.swift */; };
 		F3015DF32D9F427700B9BCC6 /* Log List Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3015DED2D9F427700B9BCC6 /* Log List Filter.swift */; };
 		F3015DF52D9F468200B9BCC6 /* Log Toolbar Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A5632E2D9EF323009AA363 /* Log Toolbar Actor.swift */; };
-		F3015DF82D9FCB8500B9BCC6 /* PostHog in Frameworks */ = {isa = PBXBuildFile; productRef = F3015DF72D9FCB8500B9BCC6 /* PostHog */; };
-		F3015DFA2D9FCCCC00B9BCC6 /* PostHog in Frameworks */ = {isa = PBXBuildFile; productRef = F3015DF92D9FCCCC00B9BCC6 /* PostHog */; };
-		F3015DFC2D9FCCD200B9BCC6 /* PostHog in Frameworks */ = {isa = PBXBuildFile; productRef = F3015DFB2D9FCCD200B9BCC6 /* PostHog */; };
-		F3015DFE2D9FCCDA00B9BCC6 /* PostHog in Frameworks */ = {isa = PBXBuildFile; productRef = F3015DFD2D9FCCDA00B9BCC6 /* PostHog */; };
-		F3015E002D9FCD5500B9BCC6 /* PostHog in Frameworks */ = {isa = PBXBuildFile; productRef = F3015DFF2D9FCD5500B9BCC6 /* PostHog */; };
-		F3015E022D9FCD5A00B9BCC6 /* PostHog in Frameworks */ = {isa = PBXBuildFile; productRef = F3015E012D9FCD5A00B9BCC6 /* PostHog */; };
 		F30207D52D8B2A6000C26008 /* Swifty Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30207D42D8B2A6000C26008 /* Swifty Ping.swift */; };
 		F30207D62D8B2A6000C26008 /* Swifty Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30207D42D8B2A6000C26008 /* Swifty Ping.swift */; };
 		F303214B2B3FEA45002A73B8 /* Panel Settings View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F303214A2B3FEA45002A73B8 /* Panel Settings View.swift */; };
@@ -2433,7 +2427,6 @@
 				F36B145D2DC39F13008C1AF9 /* GaypadKit in Frameworks */,
 				F39D680D2A262C5E00B9BDFC /* Kingfisher in Frameworks */,
 				F3D6777D2DD867A900721DE8 /* Highlightr in Frameworks */,
-				F3015DFC2D9FCCD200B9BCC6 /* PostHog in Frameworks */,
 				F308601E2B002D4A004D776A /* PteroNet in Frameworks */,
 				F39E683F2D2D6A510002BA96 /* AudioVisualizer in Frameworks */,
 			);
@@ -2441,7 +2434,6 @@
 		F3A7CEC02C8B685500413400 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
-				F3015E002D9FCD5500B9BCC6 /* PostHog in Frameworks */,
 				F3F60A762DEB94DA00A15737 /* ScrechKit in Frameworks */,
 				F3A7CF222C8C4E9700413400 /* MailCover in Frameworks */,
 				F3A7CF0C2C8BBCE400413400 /* Kingfisher in Frameworks */,
@@ -2456,7 +2448,6 @@
 			files = (
 				F342FAA82B2C61ED00854270 /* Pow in Frameworks */,
 				F389BB572A05B47000911EBF /* SafariCover in Frameworks */,
-				F3015DFE2D9FCCDA00B9BCC6 /* PostHog in Frameworks */,
 				F308601C2B002D40004D776A /* PteroNet in Frameworks */,
 				F36B739B2C8B073B00E858FE /* AudioVisualizer in Frameworks */,
 				F34745CA2A31F39600EE2FB8 /* MailCover in Frameworks */,
@@ -2480,7 +2471,6 @@
 				F3202D5B2D5759690030B3CC /* Algorithms in Frameworks */,
 				F33C2AC32C691735002FD150 /* QuickLooking in Frameworks */,
 				F32716DB2CF628CB00F2DC31 /* SafariCover in Frameworks */,
-				F3015E022D9FCD5A00B9BCC6 /* PostHog in Frameworks */,
 				F36B145B2DC39F0E008C1AF9 /* GaypadKit in Frameworks */,
 				F32F2D072D908FE5007CF4DE /* MailCover in Frameworks */,
 				F3D315352E003CD30068EFF5 /* ScrechKit in Frameworks */,
@@ -2500,7 +2490,6 @@
 				F37FF8832D87AE3800554B3F /* Algorithms in Frameworks */,
 				F31163E62DCF7DA20093B722 /* QuickLooking in Frameworks */,
 				F3B7BFDE2B38E206005B5003 /* Pow in Frameworks */,
-				F3015DFA2D9FCCCC00B9BCC6 /* PostHog in Frameworks */,
 				F3E08EB22A2CE19900116C1C /* Kingfisher in Frameworks */,
 				F358F02E2D2C1C5500BCC07B /* LaunchAtLogin in Frameworks */,
 				F3F60A6C2DEB94B900A15737 /* ScrechKit in Frameworks */,
@@ -2521,7 +2510,6 @@
 				F36B14572DC39DD8008C1AF9 /* GaypadKit in Frameworks */,
 				F34745CC2A31F3A000EE2FB8 /* MailCover in Frameworks */,
 				F36B73A12C8B07E100E858FE /* AudioVisualizer in Frameworks */,
-				F3015DF82D9FCB8500B9BCC6 /* PostHog in Frameworks */,
 				F3F60A662DEB93C300A15737 /* ScrechKit in Frameworks */,
 				F30860142B002B31004D776A /* PteroNet in Frameworks */,
 				F352AF9B2A4EE707004AD489 /* AlertKit in Frameworks */,
@@ -4292,7 +4280,6 @@
 				F308601D2B002D4A004D776A /* PteroNet */,
 				F342FAB62B2E49B600854270 /* Algorithms */,
 				F39E683E2D2D6A510002BA96 /* AudioVisualizer */,
-				F3015DFB2D9FCCD200B9BCC6 /* PostHog */,
 				F36B145C2DC39F13008C1AF9 /* GaypadKit */,
 				F3D6777C2DD867A900721DE8 /* Highlightr */,
 				F3F60A692DEB944600A15737 /* ScrechKit */,
@@ -4338,7 +4325,6 @@
 				F335CA052C63E86D006C71C6 /* DeviceKit */,
 				F33C2AC02C69168C002FD150 /* QuickLooking */,
 				F36B73A02C8B07E100E858FE /* AudioVisualizer */,
-				F3015DF72D9FCB8500B9BCC6 /* PostHog */,
 				F36B14562DC39DD8008C1AF9 /* GaypadKit */,
 				F3D6776A2DD7EBC100721DE8 /* Highlightr */,
 				F3F60A652DEB93C300A15737 /* ScrechKit */,
@@ -4394,7 +4380,6 @@
 				F33C2AC42C691764002FD150 /* QuickLooking */,
 				F36B739A2C8B073B00E858FE /* AudioVisualizer */,
 				F38F9E192CEA18150033EFE3 /* DeviceKit */,
-				F3015DFD2D9FCCDA00B9BCC6 /* PostHog */,
 				F36B145E2DC39F2C008C1AF9 /* GaypadKit */,
 				F3D6776C2DD7EBD000721DE8 /* Highlightr */,
 				F3F60A732DEB94D100A15737 /* ScrechKit */,
@@ -4495,7 +4480,6 @@
 				F3A7CF032C8BBB7800413400 /* SafariCover */,
 				F3A7CF0B2C8BBCE400413400 /* Kingfisher */,
 				F3A7CF212C8C4E9700413400 /* MailCover */,
-				F3015DFF2D9FCD5500B9BCC6 /* PostHog */,
 				F3F60A752DEB94DA00A15737 /* ScrechKit */,
 			);
 			productName = "iMessage MessagesExtension";
@@ -4523,7 +4507,6 @@
 				F3202C8E2D5590E20030B3CC /* Kingfisher */,
 				F3202D5A2D5759690030B3CC /* Algorithms */,
 				F32F2D062D908FE5007CF4DE /* MailCover */,
-				F3015E012D9FCD5A00B9BCC6 /* PostHog */,
 				F36B145A2DC39F0E008C1AF9 /* GaypadKit */,
 				F3D315342E003CD30068EFF5 /* ScrechKit */,
 			);
@@ -4571,7 +4554,6 @@
 				F3B7BFDD2B38E206005B5003 /* Pow */,
 				F358F02D2D2C1C5500BCC07B /* LaunchAtLogin */,
 				F37FF8822D87AE3800554B3F /* Algorithms */,
-				F3015DF92D9FCCCC00B9BCC6 /* PostHog */,
 				F36B14582DC39F08008C1AF9 /* GaypadKit */,
 				F31163E52DCF7DA20093B722 /* QuickLooking */,
 				F3F60A6B2DEB94B900A15737 /* ScrechKit */,
@@ -4695,7 +4677,6 @@
 				F36B73952C8B055600E858FE /* XCRemoteSwiftPackageReference "Audio-Visualizer" */,
 				F358F02C2D2C1C5500BCC07B /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
 				F3CBC6D32D9A025A0081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */,
-				F3015DF62D9FCB8500B9BCC6 /* XCRemoteSwiftPackageReference "posthog-ios" */,
 				F36B14552DC39DD8008C1AF9 /* XCRemoteSwiftPackageReference "GaypadKit" */,
 				F3D677692DD7EBC100721DE8 /* XCRemoteSwiftPackageReference "Highlightr" */,
 			);
@@ -7771,14 +7752,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F3015DF62D9FCB8500B9BCC6 /* XCRemoteSwiftPackageReference "posthog-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/PostHog/posthog-ios.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.21.0;
-			};
-		};
 		F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "PteroNet" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TopScrech/PteroNet";
@@ -7902,36 +7875,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F3015DF72D9FCB8500B9BCC6 /* PostHog */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3015DF62D9FCB8500B9BCC6 /* XCRemoteSwiftPackageReference "posthog-ios" */;
-			productName = PostHog;
-		};
-		F3015DF92D9FCCCC00B9BCC6 /* PostHog */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3015DF62D9FCB8500B9BCC6 /* XCRemoteSwiftPackageReference "posthog-ios" */;
-			productName = PostHog;
-		};
-		F3015DFB2D9FCCD200B9BCC6 /* PostHog */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3015DF62D9FCB8500B9BCC6 /* XCRemoteSwiftPackageReference "posthog-ios" */;
-			productName = PostHog;
-		};
-		F3015DFD2D9FCCDA00B9BCC6 /* PostHog */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3015DF62D9FCB8500B9BCC6 /* XCRemoteSwiftPackageReference "posthog-ios" */;
-			productName = PostHog;
-		};
-		F3015DFF2D9FCD5500B9BCC6 /* PostHog */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3015DF62D9FCB8500B9BCC6 /* XCRemoteSwiftPackageReference "posthog-ios" */;
-			productName = PostHog;
-		};
-		F3015E012D9FCD5A00B9BCC6 /* PostHog */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3015DF62D9FCB8500B9BCC6 /* XCRemoteSwiftPackageReference "posthog-ios" */;
-			productName = PostHog;
-		};
 		F30860132B002B31004D776A /* PteroNet */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "PteroNet" */;

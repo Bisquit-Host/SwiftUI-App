@@ -1,7 +1,6 @@
 import SwiftUI
 import SafariCover
 import MailCover
-import PostHog
 
 struct Discover: View {
     //    private let links: [DiscoverModel] = [
@@ -44,14 +43,12 @@ struct Discover: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             LazyVGrid(columns: columns, spacing: 16) {
-                if PostHogSDK.shared.isFeatureEnabled("show-available-plans") {
-                    Button {
-                        sheetConfigurations = true
-                    } label: {
-                        DiscoverCardLayout(
-                            .init("Configurations", subtitle: "Available to buy", image: .server)
-                        )
-                    }
+                Button {
+                    sheetConfigurations = true
+                } label: {
+                    DiscoverCardLayout(
+                        .init("Configurations", subtitle: "Available to buy", image: .server)
+                    )
                 }
                 
                 DiscoverCard("https://my.bisquit.host/login") {
