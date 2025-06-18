@@ -19,9 +19,6 @@ struct BrowserCard: View {
         case "€":
             plan.priceEur
             
-        case "$":
-            plan.priceUsd
-            
         default:
             plan.priceRub
         }
@@ -120,7 +117,6 @@ struct BrowserCard: View {
         cpuModel: "M4 Ultra",
         cpu: "4",
         priceRub: 2000,
-        priceEur: 20.4,
-        priceUsd: 20.5
+        priceEur: 20.4
     ))
 }

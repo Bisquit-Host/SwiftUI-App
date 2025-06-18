@@ -18,10 +18,7 @@ struct BrowserCardVds: View {
         switch ValueStore().preferredCurrency {
         case "€":
             plan.priceEur
-            
-        case "$":
-            plan.priceUsd
-            
+                        
         default:
             plan.priceRub
         }

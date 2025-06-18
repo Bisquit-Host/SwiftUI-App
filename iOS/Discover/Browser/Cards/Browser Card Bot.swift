@@ -19,9 +19,6 @@ struct BrowserCardBot: View {
         case "€":
             plan.priceEur
             
-        case "$":
-            plan.priceUsd
-            
         default:
             plan.priceRub
         }
