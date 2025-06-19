@@ -9,28 +9,19 @@ struct ImagePicker: View {
     
     @Environment(\.dismiss) private var dismiss
     
-    var title: String
-    var subTitle: String
-    var systemImage: String
     var root: String
     var tint: Color
     
     init(
-        title: String,
-        subtitle: String,
-        icon: String = "square.and.arrow.up",
         at root: String = "",
         tint: Color = .blue
     ) {
-        self.title = title
-        self.subTitle = subtitle
-        self.systemImage = icon
         self.root = root
         self.tint = tint
     }
     
     @State private var isLoading = false
-    @State private var showImagePicker = false
+    @State private var showLibraryPicker = false
     
     @State private var previewUrls: [URL] = []
     @State private var pickerItems: [PhotosPickerItem] = []
@@ -55,22 +46,6 @@ struct ImagePicker: View {
             .semibold()
             .padding(20)
             .background(.ultraThinMaterial)
-            
-            VStack(spacing: 4) {
-                Image(systemName: systemImage)
-                    .font(.largeTitle)
-                    .imageScale(.large)
-                    .foregroundStyle(tint)
-                
-                Text(title)
-                    .font(.callout)
-                    .padding(.top, 15)
-                
-                Text(subTitle)
-                    .font(.caption)
-                    .foregroundStyle(.gray)
-            }
-            .frame(width: 300, height: 250)
             .overlay {
                 if isLoading {
                     ProgressView()
@@ -81,7 +56,7 @@ struct ImagePicker: View {
             .animation(.spring, value: isLoading)
             .contentShape(.rect)
             .onTapGesture {
-                showImagePicker = true
+                showLibraryPicker = true
             }
             .onChange(of: pickerItems) { _, newItems in
                 extractImageOrVideo(newItems)
@@ -97,17 +72,10 @@ struct ImagePicker: View {
                 }
             }
             .photosPicker(
-                isPresented: $showImagePicker,
+                isPresented: $showLibraryPicker,
                 selection: $pickerItems,
                 selectionBehavior: .ordered
             )
-            .toolbar {
-                if !previewUrls.isEmpty {
-                    Button("Clear") {
-                        previewUrls = []
-                    }
-                }
-            }
             .dropDestination(for: Data.self) { items, location in
                 for item in items {
                     if let url = writeDataToTemporaryURL(item) {
@@ -122,22 +90,6 @@ struct ImagePicker: View {
             
             UploadPreviewList(previewUrls)
                 .transition(.opacity)
-        }
-    }
-    
-    private func writeDataToTemporaryURL(_ data: Data, pathExtension: String = "") -> URL? {
-        let temporaryDirectoryURL = FileManager.default.temporaryDirectory
-        
-        let temporaryFileURL = temporaryDirectoryURL
-            .appendingPathComponent(UUID().uuidString)
-            .appendingPathExtension(pathExtension)
-        
-        do {
-            try data.write(to: temporaryFileURL)
-            return temporaryFileURL
-        } catch {
-            print("Error writing video data to temporary file:", error)
-            return nil
         }
     }
     
@@ -168,37 +120,23 @@ struct ImagePicker: View {
         
         pickerItems = []
     }
-}
-
-extension View {
-    func libraryPicker(
-        _ isPresented: Binding<Bool>,
-        title: String,
-        subtitle: String,
-        icon: String = "square.and.arrow.up",
-        root: String = "",
-        tint: Color = .blue
-    ) -> some View {
-        self.sheet(isPresented) {
-            NavigationView {
-                ImagePicker(
-                    title: title,
-                    subtitle: subtitle,
-                    icon: icon,
-                    at: root,
-                    tint: tint
-                )
-                .padding()
-            }
-        }
-        .ignoresSafeArea()
-    }
-}
-
-#Preview {
-    @Previewable @State var isPresented = true
     
-    Text("Preview")
-        .environmentObject(FileTabVM(""))
-        .libraryPicker($isPresented, title: "1", subtitle: "2")
+    private func writeDataToTemporaryURL(
+        _ data: Data,
+        pathExtension: String = ""
+    ) -> URL? {
+        let temporaryDirectoryUrl = FileManager.default.temporaryDirectory
+        
+        let temporaryFileUrl = temporaryDirectoryUrl
+            .appendingPathComponent(UUID().uuidString)
+            .appendingPathExtension(pathExtension)
+        
+        do {
+            try data.write(to: temporaryFileUrl)
+            return temporaryFileUrl
+        } catch {
+            print("Error writing video data to temporary file:", error)
+            return nil
+        }
+    }
 }

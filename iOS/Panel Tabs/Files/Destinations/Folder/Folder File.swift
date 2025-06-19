@@ -20,10 +20,6 @@ struct FolderFile: View {
                 FileSearch($vm.searchField)
                 
                 UploadMenu($image, at: path)
-                
-                if vm.isUploading {
-                    UploadProgress()
-                }
             }
             .listRowBackground(Color.gray.opacity(0.2))
             

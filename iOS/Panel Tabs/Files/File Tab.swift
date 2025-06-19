@@ -1,4 +1,5 @@
 import ScrechKit
+import PhotosUI
 
 struct FileTab: View {
     @EnvironmentObject private var vm: FileTabVM
@@ -11,8 +12,6 @@ struct FileTab: View {
     }
     
     @State private var image: UIImage?
-    @State private var selectedItem: String?
-    @State private var selectedIndex: Int?
     @State private var trigger = false
     
     var body: some View {
@@ -21,10 +20,6 @@ struct FileTab: View {
                 FileSearch($vm.searchField)
                 
                 UploadMenu($image, at: path)
-                
-                if vm.isUploading {
-                    UploadProgress()
-                }
             }
             .listRowBackground(Color.gray.opacity(0.2))
             

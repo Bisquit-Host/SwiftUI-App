@@ -153,7 +153,7 @@ final class FileTabVM: ObservableObject {
     func handleFileImport(
         _ urls: [URL],
         at root: String,
-        onSuccess: @escaping () -> Void
+        onSuccess: @escaping () -> Void = {}
     ) async {
         for fileUrl in urls {
             let fileName = fileUrl.lastPathComponent
