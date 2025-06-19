@@ -31,7 +31,7 @@ struct DesignSettings: View {
             
             Picker("Color theme", selection: $store.colorTheme) {
                 ForEach(ColorTheme.allCases) { theme in
-                    Text(theme.localized)
+                    Text(theme.loc)
                         .tag(theme)
                 }
             }
