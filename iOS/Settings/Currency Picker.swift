@@ -3,7 +3,7 @@ import SwiftUI
 struct CurrencyPicker: View {
     @EnvironmentObject private var store: ValueStore
     
-    private let currencies = ["₽", "€", "$"]
+    private let currencies = ["₽", "€"]
     
     var body: some View {
         HStack {
