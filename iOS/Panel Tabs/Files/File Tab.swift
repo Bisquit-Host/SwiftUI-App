@@ -6,20 +6,20 @@ struct FileTab: View {
     
     private let id, path: String
     
-    init(_ id: String, at path: String = "") {
+    init(
+        _ id: String,
+        at path: String = ""
+    ) {
         self.id = id
         self.path = path
     }
-    
-    @State private var image: UIImage?
-    @State private var trigger = false
     
     var body: some View {
         List {
             Section {
                 FileSearch($vm.searchField)
                 
-                UploadMenu($image, at: path)
+                UploadMenu(path)
             }
             .listRowBackground(Color.gray.opacity(0.2))
             
@@ -37,7 +37,6 @@ struct FileTab: View {
         .environmentObject(vm)
         .frame(maxWidth: 500)
         .safariCover($vm.showSafari, url: vm.downloadUrl)
-        .sensoryFeedback(.success, trigger: trigger)
         .background(BackgroundImage())
         .scrollContentBackground(.hidden)
         .task {
@@ -45,18 +44,6 @@ struct FileTab: View {
         }
         .refreshableTask {
             await vm.fetchFiles(path)
-        }
-        .onChange(of: vm.isUploading) { _, newValue in
-            if !newValue {
-                trigger.toggle()
-            }
-        }
-        .onChange(of: image) {
-            if let image {
-                Task {
-                    await vm.handleImageImport(image, at: path)
-                }
-            }
         }
     }
     

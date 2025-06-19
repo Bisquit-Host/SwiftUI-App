@@ -4,16 +4,15 @@ import PhotosUI
 struct UploadMenu: View {
     @EnvironmentObject private var vm: FileTabVM
     
-    @Binding private var image: UIImage?
     private let path: String
     
-    init(
-        _ image: Binding<UIImage?>,
-        at path: String
-    ) {
-        _image = image
+    init(_ path: String) {
         self.path = path
     }
+    
+    @State private var trigger = false
+    
+    @State private var image: UIImage?
     
     @State private var showFilePicker = false
     @State private var showCameraPicker = false
@@ -57,6 +56,7 @@ struct UploadMenu: View {
             }
             .foregroundStyle(.foreground)
         }
+        .sensoryFeedback(.success, trigger: trigger)
         .cameraPicker($showCameraPicker, image: $image)
         .photosPicker(
             isPresented: $showLibraryPicker,
@@ -65,6 +65,18 @@ struct UploadMenu: View {
         )
         .onChange(of: pickerItems) { _, newItems in
             extractImageOrVideo(newItems)
+        }
+        .onChange(of: image) {
+            if let image {
+                Task {
+                    await vm.handleImageImport(image, at: path)
+                }
+            }
+        }
+        .onChange(of: vm.isUploading) { _, newValue in
+            if !newValue {
+                trigger.toggle()
+            }
         }
         .sheet($sheetRemoteFile) {
             SheetRemoteFile(path)
