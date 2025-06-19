@@ -634,6 +634,9 @@
 		F35B9F612A2DCF9C0045D014 /* Stats Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B9F602A2DCF9C0045D014 /* Stats Tab.swift */; };
 		F35BB0372C656AC800631DBD /* Guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35BB0362C656AC800631DBD /* Guide.swift */; };
 		F35BB0392C656AD300631DBD /* Carousel Button Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35BB0382C656AD300631DBD /* Carousel Button Style.swift */; };
+		F35C4D602E03999B00720E74 /* Multipart Form Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35C4D5F2E03999B00720E74 /* Multipart Form Data.swift */; };
+		F35C4D612E03999B00720E74 /* Multipart Form Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35C4D5F2E03999B00720E74 /* Multipart Form Data.swift */; };
+		F35C4D622E03999B00720E74 /* Multipart Form Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35C4D5F2E03999B00720E74 /* Multipart Form Data.swift */; };
 		F35DA9592A28F5B100803E7E /* Upload Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35DA9582A28F5B100803E7E /* Upload Progress.swift */; };
 		F35DA95A2A28F80900803E7E /* Upload Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35DA9582A28F5B100803E7E /* Upload Progress.swift */; };
 		F35F65922B1D066E00431EB7 /* Panel VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3429C0C84C00B08696 /* Panel VM.swift */; };
@@ -2056,6 +2059,7 @@
 		F35B9F602A2DCF9C0045D014 /* Stats Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stats Tab.swift"; sourceTree = "<group>"; };
 		F35BB0362C656AC800631DBD /* Guide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guide.swift; sourceTree = "<group>"; };
 		F35BB0382C656AD300631DBD /* Carousel Button Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Carousel Button Style.swift"; sourceTree = "<group>"; };
+		F35C4D5F2E03999B00720E74 /* Multipart Form Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Multipart Form Data.swift"; sourceTree = "<group>"; };
 		F35DA9582A28F5B100803E7E /* Upload Progress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Upload Progress.swift"; sourceTree = "<group>"; };
 		F35FEB062B09F003004DA05D /* API Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API Key.swift"; sourceTree = "<group>"; };
 		F3648ED22DCB9773001609AA /* Allocation Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation Card.swift"; sourceTree = "<group>"; };
@@ -3878,6 +3882,7 @@
 				F30038C92D42387600363CF4 /* Sheet Remote File.swift */,
 				F380B3232BD7B9B6009062E8 /* Image Picker.swift */,
 				F393C7BA2A18437300DE33F9 /* Upload File.swift */,
+				F35C4D5F2E03999B00720E74 /* Multipart Form Data.swift */,
 				F39780242A2B9DB800956474 /* Upload Preview.swift */,
 				F380B3272BD7C4A4009062E8 /* Upload Preview List.swift */,
 				F35DA9582A28F5B100803E7E /* Upload Progress.swift */,
@@ -5278,6 +5283,7 @@
 				F30089232B3BA5300051476C /* File Permissions Parent.swift in Sources */,
 				F3CE5C4B2D53935A0094BD7B /* Subdomain Model.swift in Sources */,
 				F3CCB1CC2CAE75D0000F8207 /* Debug Settings.swift in Sources */,
+				F35C4D602E03999B00720E74 /* Multipart Form Data.swift in Sources */,
 				F30088A92B3A1A500051476C /* Schedule VM.swift in Sources */,
 				F314616A2D5A1F5E00547B6C /* Icon.swift in Sources */,
 				F3E679B32D5A854700A7ADDE /* Server Options Provider.swift in Sources */,
@@ -5482,6 +5488,7 @@
 				F389BB5F2A05B57900911EBF /* Server Card.swift in Sources */,
 				F380B32A2BD7C529009062E8 /* Upload Preview List.swift in Sources */,
 				F389BB652A05B5AF00911EBF /* Formatters.swift in Sources */,
+				F35C4D612E03999B00720E74 /* Multipart Form Data.swift in Sources */,
 				F3A31B062B0B144200F89C51 /* Server List Node Filter.swift in Sources */,
 				F3015DEF2D9F427700B9BCC6 /* Log List Filter.swift in Sources */,
 				F36D53442A05B90D007324C6 /* FileTab Context Menu.swift in Sources */,
@@ -5940,6 +5947,7 @@
 				F3202D472D56DC050030B3CC /* Prefetcher.swift in Sources */,
 				F3D037032CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift in Sources */,
 				F3BC03B52B1FF4830011F98A /* Task Context Menu.swift in Sources */,
+				F35C4D622E03999B00720E74 /* Multipart Form Data.swift in Sources */,
 				F30038CC2D42387600363CF4 /* Sheet Remote File.swift in Sources */,
 				F3D295C22AF3A1C600ED43A0 /* Credentials Button.swift in Sources */,
 				F3D295EB2AF3A40B00ED43A0 /* Gauge Disk.swift in Sources */,
