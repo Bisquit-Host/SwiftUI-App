@@ -13,29 +13,27 @@ struct UploadMenu: View {
     @State private var trigger = false
     
     @State private var image: UIImage?
-    
-    @State private var showFilePicker = false
-    @State private var showCameraPicker = false
-    @State private var sheetRemoteFile = false
     @State private var urls: [URL] = []
-    
-    // Library
-    @State private var showLibraryPicker = false
     @State private var pickerItems: [PhotosPickerItem] = []
     @State private var previewUrls: [URL] = []
+    
+    @State private var pickerFile = false
+    @State private var pickerCamera = false
+    @State private var sheetRemoteFile = false
+    @State private var pickerLibrary = false
     
     var body: some View {
         Menu {
             MenuButton("Choose File", icon: "folder") {
-                showFilePicker = true
+                pickerFile = true
             }
             
             MenuButton("Take Photo", icon: "camera") {
-                showCameraPicker = true
+                pickerCamera = true
             }
             
             MenuButton("Photo Library", icon: "photo.on.rectangle") {
-                showLibraryPicker = true
+                pickerLibrary = true
             }
             
             Divider()
@@ -57,9 +55,9 @@ struct UploadMenu: View {
             .foregroundStyle(.foreground)
         }
         .sensoryFeedback(.success, trigger: trigger)
-        .cameraPicker($showCameraPicker, image: $image)
+        .cameraPicker($pickerCamera, image: $image)
         .photosPicker(
-            isPresented: $showLibraryPicker,
+            isPresented: $pickerLibrary,
             selection: $pickerItems,
             selectionBehavior: .ordered
         )
@@ -82,7 +80,7 @@ struct UploadMenu: View {
             SheetRemoteFile(path)
         }
         .fileImporter(
-            isPresented: $showFilePicker,
+            isPresented: $pickerFile,
             allowedContentTypes: [.item],
             allowsMultipleSelection: true
         ) { result in

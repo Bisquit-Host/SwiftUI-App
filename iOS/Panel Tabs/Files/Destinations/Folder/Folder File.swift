@@ -11,7 +11,6 @@ struct FolderFile: View {
         _vm = StateObject(wrappedValue: FileTabVM(id))
     }
     
-    @State private var image: UIImage?
     @State private var alertNewFolder = false
     
     var body: some View {
@@ -19,7 +18,7 @@ struct FolderFile: View {
             Section {
                 FileSearch($vm.searchField)
                 
-                UploadMenu($image, at: path)
+                UploadMenu(path)
             }
             .listRowBackground(Color.gray.opacity(0.2))
             
@@ -44,13 +43,6 @@ struct FolderFile: View {
         }
         .background(BackgroundImage())
         .scrollContentBackground(.hidden)
-        .onChange(of: image) {
-            if let image {
-                Task {
-                    await vm.handleImageImport(image, at: path)
-                }
-            }
-        }
         .toolbar {
             ToolbarItemGroup(placement: .topBarTrailing) {
                 if #available(iOS 18.1, *) {
