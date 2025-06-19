@@ -10,10 +10,6 @@ struct UploadPreviewList: View {
         self.urls = urls
     }
     
-    init(_ url: URL) {
-        urls = [url]
-    }
-    
     var body: some View {
         ForEach(urls, id: \.self) { url in
             QuickLookView(url)

@@ -20,7 +20,7 @@ struct UploadPreview: View {
         VStack {
             HStack {
                 Button("Cancel", role: .destructive) {
-                    vm.sheetPreview = false
+                    dismiss()
                 }
                 
                 Spacer()
@@ -37,14 +37,7 @@ struct UploadPreview: View {
             .padding(20)
             .background(.ultraThinMaterial)
             
-            if urls.count > 1 {
-                Text("\(urls.count - 1) more files")
-                    .padding()
-            }
-            
-            if let last = urls.last {
-                UploadPreviewList(last)
-            }
+            UploadPreviewList(urls)
         }
         .ignoresSafeArea()
     }

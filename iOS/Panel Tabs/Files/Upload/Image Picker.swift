@@ -120,15 +120,8 @@ struct ImagePicker: View {
                 return false
             }
             
-            if let last = previewUrls.last {
-                UploadPreviewList(last)
-                    .transition(.opacity)
-            }
-            
-            if previewUrls.count > 1 {
-                Text("\(previewUrls.count - 1) more files")
-                    .padding()
-            }
+            UploadPreviewList(previewUrls)
+                .transition(.opacity)
         }
     }
     
