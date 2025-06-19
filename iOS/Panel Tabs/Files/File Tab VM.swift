@@ -21,7 +21,6 @@ final class FileTabVM: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     @Published var uploadProgress: Float = 0
     @Published var isUploading = false
-    @Published var sheetPreview = false
 #endif
     
     // macOS

@@ -66,9 +66,6 @@ struct UploadMenu: View {
         .onChange(of: pickerItems) { _, newItems in
             extractImageOrVideo(newItems)
         }
-        .sheet($vm.sheetPreview) {
-            UploadPreview(urls, at: path)
-        }
         .sheet($sheetRemoteFile) {
             SheetRemoteFile(path)
         }
@@ -82,11 +79,13 @@ struct UploadMenu: View {
             case .success(let model):
                 urls = model
                 
+                Task {
+                    await vm.handleFileImport(urls, at: path)
+                }
+                
             case .failure(let error):
                 print(error.localizedDescription)
             }
-            
-            vm.sheetPreview = true
         }
         
         if vm.isUploading {
@@ -95,11 +94,14 @@ struct UploadMenu: View {
     }
     
     // MARK: Library funcs
-    private func extractImageOrVideo(_ photoItems: [PhotosPickerItem]) {
+    private func extractImageOrVideo(
+        _ photoItems: [PhotosPickerItem]
+    ) {
         Task.detached {
             for item in photoItems {
                 guard
-                    let identifier = item.supportedContentTypes.first?.identifier
+                    let identifier = item.supportedContentTypes.first?
+                        .identifier
                         .replacingOccurrences(of: "public.", with: "")
                         .replacingOccurrences(of: "mpeg-4", with: "mp4")
                 else {
@@ -126,6 +128,7 @@ struct UploadMenu: View {
         }
         
         pickerItems = []
+        previewUrls = []
     }
     
     private func writeDataToTemporaryUrl(
