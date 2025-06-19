@@ -45,7 +45,11 @@ struct CustomDialog: View {
             }
         }
         .padding(15)
+#if os(visionOS)
+        .glassBackgroundEffect()
+#else
         .glassEffect(in: .rect(cornerRadius: 32))
+#endif
         .frame(maxWidth: 310)
         .compositingGroup()
         .task {

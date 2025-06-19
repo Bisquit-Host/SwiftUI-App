@@ -116,6 +116,8 @@
 		F303214C2B3FEDC6002A73B8 /* Panel Settings View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F303214A2B3FEA45002A73B8 /* Panel Settings View.swift */; };
 		F3038B932E04434C0085E438 /* QuickLooking in Frameworks */ = {isa = PBXBuildFile; productRef = F3038B922E04434C0085E438 /* QuickLooking */; };
 		F3038B952E0443560085E438 /* QuickLooking in Frameworks */ = {isa = PBXBuildFile; productRef = F3038B942E0443560085E438 /* QuickLooking */; };
+		F3038B962E04467F0085E438 /* Multipart Form Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35C4D5F2E03999B00720E74 /* Multipart Form Data.swift */; };
+		F3038B972E0446840085E438 /* Multipart Form Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35C4D5F2E03999B00720E74 /* Multipart Form Data.swift */; };
 		F304498A29E990E9006DC0C7 /* Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304498929E990E9006DC0C7 /* Cloud Keys.swift */; };
 		F306B9ED29BBDA770008C2D4 /* Server List Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */; };
 		F30860142B002B31004D776A /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F30860132B002B31004D776A /* PteroNet */; };
@@ -6200,6 +6202,7 @@
 				F389282E2A445E4F00561CDF /* App Settings.swift in Sources */,
 				F37B90782BFEA00300597624 /* Ornament Info Properties.swift in Sources */,
 				F3202D3B2D5636660030B3CC /* Tip Suspended Server.swift in Sources */,
+				F3038B972E0446840085E438 /* Multipart Form Data.swift in Sources */,
 				F31461832D5A82F000547B6C /* Model Asset.swift in Sources */,
 				F31461842D5A82F000547B6C /* Networking.swift in Sources */,
 				F3F2BBAC2A540E6500D44CA6 /* Cloud Keys.swift in Sources */,
@@ -6312,6 +6315,7 @@
 				F3FA30972DD1E26200280133 /* Folder Destination.swift in Sources */,
 				F35BB0392C656AD300631DBD /* Carousel Button Style.swift in Sources */,
 				F3202D4B2D56DC050030B3CC /* Prefetcher.swift in Sources */,
+				F3038B962E04467F0085E438 /* Multipart Form Data.swift in Sources */,
 				F30088962B3A033F0051476C /* Log Meta Parent.swift in Sources */,
 				F33DE4EB2B35C3F000E257D8 /* FileTab Context Menu.swift in Sources */,
 				F3DF50C52B38FCF900206CAE /* User Image.swift in Sources */,
@@ -6520,7 +6524,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 18.0;
+				TVOS_DEPLOYMENT_TARGET = 26.0;
 				WATCHOS_DEPLOYMENT_TARGET = 9.1;
 			};
 			name = Debug;
@@ -6556,7 +6560,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 18.0;
+				TVOS_DEPLOYMENT_TARGET = 26.0;
 				VALIDATE_PRODUCT = YES;
 				WATCHOS_DEPLOYMENT_TARGET = 9.1;
 			};
@@ -7310,7 +7314,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				XROS_DEPLOYMENT_TARGET = 1.0;
+				XROS_DEPLOYMENT_TARGET = 26.0;
 			};
 			name = Debug;
 		};
@@ -7346,7 +7350,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				VALIDATE_PRODUCT = YES;
-				XROS_DEPLOYMENT_TARGET = 1.0;
+				XROS_DEPLOYMENT_TARGET = 26.0;
 			};
 			name = Release;
 		};
@@ -7412,12 +7416,12 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug";
 				PRODUCT_NAME = Bisquit.Host;
 				REGISTER_APP_GROUPS = YES;
@@ -7454,12 +7458,12 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host";
 				PRODUCT_NAME = Bisquit.Host;
 				REGISTER_APP_GROUPS = YES;
