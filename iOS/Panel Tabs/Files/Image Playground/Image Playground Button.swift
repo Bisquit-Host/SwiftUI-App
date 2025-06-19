@@ -2,7 +2,7 @@ import SwiftUI
 
 @available(iOS 18.1, *)
 struct ImagePlaygroundButton: View {
-    @Environment(\.supportsImagePlayground) private var supportsImagePlayground
+    @Environment(\.supportsImagePlayground) private var supportsPlayground
     
     private let root: String
     
@@ -10,31 +10,18 @@ struct ImagePlaygroundButton: View {
         self.root = root
     }
     
-    @State private var sheetImagePlayground = false
+    @State private var sheetPlayground = false
     
     var body: some View {
         Button {
-            sheetImagePlayground = true
+            sheetPlayground = true
         } label: {
-            ZStack {
-                if supportsImagePlayground {
-                    Image(.appleIntelligence)
-                        .resizable()
-                        .frame(35)
-                        .clipShape(.circle)
-                        .blur(radius: 3)
-                }
-                
-                Image(.appleIntelligence)
-                    .resizable()
-                    .frame(32)
-                    .clipShape(.circle)
-                    .opacity(supportsImagePlayground ? 1 : 0.2)
-            }
+            let icon = supportsPlayground ? "apple.intelligence" : "apple.intelligence.badge.xmark"
+            Image(systemName: icon)
         }
         .keyboardShortcut("P")
-        .disabled(!supportsImagePlayground)
-        .sheet($sheetImagePlayground) {
+        .disabled(!supportsPlayground)
+        .sheet($sheetPlayground) {
             NavigationView {
                 ImagePlayground(at: root)
             }

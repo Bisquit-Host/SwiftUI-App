@@ -82,7 +82,9 @@ struct QuickLookFile: View {
     }
     
     private func isImage(_ url: URL) -> Bool {
-        guard let fileType = UTType(filenameExtension: url.pathExtension) else {
+        guard
+            let fileType = UTType(filenameExtension: url.pathExtension)
+        else {
             return false
         }
         

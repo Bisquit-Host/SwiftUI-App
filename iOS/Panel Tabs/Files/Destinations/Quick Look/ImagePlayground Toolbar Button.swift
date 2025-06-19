@@ -2,11 +2,16 @@ import SwiftUI
 
 @available(iOS 18.1, *)
 struct ImagePlaygroundToolbarButton: View {
-    @Environment(\.supportsImagePlayground) private var supportsImagePlayground
+    @Environment(\.supportsImagePlayground) private var supportsPlayground
     
-    private let url: URL, root, name: String
+    private let url: URL
+    private let root, name: String
     
-    init(_ url: URL, _ root: String, _ name: String) {
+    init(
+        _ url: URL,
+        _ root: String,
+        _ name: String
+    ) {
         self.url = url
         self.root = root
         self.name = name
@@ -18,12 +23,10 @@ struct ImagePlaygroundToolbarButton: View {
         Button {
             sheetPlayground = true
         } label: {
-            Image(.appleIntelligence)
-                .resizable()
-                .frame(25)
-                .opacity(supportsImagePlayground ? 1 : 0.3)
+            let icon = supportsPlayground ? "apple.intelligence" : "apple.intelligence.badge.xmark"
+            Image(systemName: icon)
         }
-        .disabled(!supportsImagePlayground)
+        .disabled(!supportsPlayground)
         .sheet($sheetPlayground) {
             NavigationView {
                 ImagePlayground(url, at: root)

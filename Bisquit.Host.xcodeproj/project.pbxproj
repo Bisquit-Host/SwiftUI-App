@@ -155,7 +155,6 @@
 		F310BB392A54E31700843F14 /* Server List VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F352AF962A4EDB1D004AD489 /* Server List VM.swift */; };
 		F310BB3A2A54E31800843F14 /* Server List VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F352AF962A4EDB1D004AD489 /* Server List VM.swift */; };
 		F31163E62DCF7DA20093B722 /* QuickLooking in Frameworks */ = {isa = PBXBuildFile; productRef = F31163E52DCF7DA20093B722 /* QuickLooking */; };
-		F31163E82DCF7DB30093B722 /* Quick Look File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31163E72DCF7DB30093B722 /* Quick Look File.swift */; };
 		F3116F262A33E142001F067C /* Folder File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3116F252A33E142001F067C /* Folder File.swift */; };
 		F3116F272A33E142001F067C /* Folder File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3116F252A33E142001F067C /* Folder File.swift */; };
 		F311CAAE2A646612004E4A4A /* Log Meta View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F311CAAD2A646612004E4A4A /* Log Meta View.swift */; };
@@ -1895,7 +1894,6 @@
 		F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List Footer.swift"; sourceTree = "<group>"; };
 		F30C13112A54609000A7EFF0 /* Server List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List.swift"; sourceTree = "<group>"; };
 		F310A2EF2A56AF86001AF45F /* Network VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network VM.swift"; sourceTree = "<group>"; };
-		F31163E72DCF7DB30093B722 /* Quick Look File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quick Look File.swift"; sourceTree = "<group>"; };
 		F3116F252A33E142001F067C /* Folder File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Folder File.swift"; sourceTree = "<group>"; };
 		F311CAAD2A646612004E4A4A /* Log Meta View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log Meta View.swift"; sourceTree = "<group>"; };
 		F31461692D5A1F5E00547B6C /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
@@ -3022,7 +3020,6 @@
 				F3FA30962DD1E26200280133 /* Folder Destination.swift */,
 				F3A8BE8A2A2FA9B3001B13D8 /* File View.swift */,
 				F3FA30942DD1708A00280133 /* File Card.swift */,
-				F31163E72DCF7DB30093B722 /* Quick Look File.swift */,
 			);
 			path = Files;
 			sourceTree = "<group>";
@@ -6296,7 +6293,6 @@
 				F3648EDB2DCB98BE001609AA /* Subdomain List.swift in Sources */,
 				F30C130F2A54605B00A7EFF0 /* Nav Destinations.swift in Sources */,
 				F30088B62B3A21410051476C /* Schedule List.swift in Sources */,
-				F31163E82DCF7DB30093B722 /* Quick Look File.swift in Sources */,
 				F3DF50CD2B38FDE800206CAE /* Permission Card.swift in Sources */,
 				F30088B12B3A20150051476C /* Backup List.swift in Sources */,
 				F30088972B3A03440051476C /* Log Meta View.swift in Sources */,

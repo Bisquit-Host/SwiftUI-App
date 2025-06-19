@@ -14,13 +14,13 @@ struct UploadMenu: View {
     
     @State private var image: UIImage?
     @State private var urls: [URL] = []
-    @State private var pickerItems: [PhotosPickerItem] = []
     @State private var previewUrls: [URL] = []
+    @State private var pickerItems: [PhotosPickerItem] = []
     
     @State private var pickerFile = false
     @State private var pickerCamera = false
-    @State private var sheetRemoteFile = false
     @State private var pickerLibrary = false
+    @State private var sheetRemoteFile = false
     
     var body: some View {
         Menu {
