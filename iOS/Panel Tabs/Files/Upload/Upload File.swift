@@ -111,17 +111,20 @@ struct MultipartFormData {
             fullData.append(boundaryData)
         }
         
-        if let contentDisposition = "Content-Disposition: form-data; name=\"files\"; filename=\"\(fileName)\"\r\n".data(using: .utf8) {
-            fullData.append(contentDisposition)
+        let contentDisposition = "Content-Disposition: form-data; name=\"files\"; filename=\"\(fileName)\"\r\n"
+        if let contentDispositionData = contentDisposition.data(using: .utf8) {
+            fullData.append(contentDispositionData)
         }
         
-        if let contentType = "Content-Type: \(mimeType)\r\n\r\n".data(using: .utf8) {
-            fullData.append(contentType)
+        let contentType = "Content-Type: \(mimeType)\r\n\r\n"
+        if let contentTypeData = contentType.data(using: .utf8) {
+            fullData.append(contentTypeData)
         }
         
         fullData.append(fileData)
         
-        if let closingData = "\r\n--\(boundary)--\r\n".data(using: .utf8) {
+        let closing = "\r\n--\(boundary)--\r\n"
+        if let closingData = closing.data(using: .utf8) {
             fullData.append(closingData)
         }
         
