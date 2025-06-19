@@ -51,7 +51,11 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func chmod(_ read: Bool, _ write: Bool, _ execute: Bool) -> String {
+    func chmod(
+        _ read: Bool,
+        _ write: Bool,
+        _ execute: Bool
+    ) -> String {
         var permission: UInt8 = 0
         
         if read    { permission |= 4 }
@@ -151,10 +155,10 @@ final class FileTabVM: ObservableObject {
         at root: String,
         onSuccess: @escaping () -> Void
     ) async {
-        for fileURL in urls {
-            let fileName = fileURL.lastPathComponent
+        for fileUrl in urls {
+            let fileName = fileUrl.lastPathComponent
             
-            guard let mimeType = getMimeType(fileURL) else {
+            guard let mimeType = getMimeType(fileUrl) else {
                 print("Unable to determine MIME type for file:", fileName)
                 continue
             }
@@ -167,7 +171,7 @@ final class FileTabVM: ObservableObject {
                     name: fileName,
                     at: root,
                     mimeType: mimeType,
-                    fileUrl: fileURL
+                    fileUrl: fileUrl
                 )
                 
                 await fetchFiles(root)
@@ -243,7 +247,10 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func duplicateFile(_ file: String, at path: String) async {
+    func duplicateFile(
+        _ file: String,
+        at path: String
+    ) async {
         do {
             try await fileDuplicateAPI(id, file: file, at: path)
             await fetchFiles(path)
@@ -271,7 +278,10 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func createFolder(_ file: String, at path: String) async {
+    func createFolder(
+        _ file: String,
+        at path: String
+    ) async {
         do {
             try await fileCreateFolderAPI(id, file: file, at: path)
             
