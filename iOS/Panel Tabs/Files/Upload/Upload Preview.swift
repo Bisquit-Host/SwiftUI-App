@@ -8,7 +8,10 @@ struct UploadPreview: View {
     private let urls: [URL]
     private let path: String
     
-    init(_ urls: [URL], at path: String = "") {
+    init(
+        _ urls: [URL],
+        at path: String = ""
+    ) {
         self.urls = urls
         self.path = path
     }
