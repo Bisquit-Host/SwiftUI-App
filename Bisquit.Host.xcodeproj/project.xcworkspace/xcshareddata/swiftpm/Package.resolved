@@ -42,8 +42,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/raspu/Highlightr",
       "state" : {
-        "revision" : "bcf2d0590f32ac2528feb72d7e34f5b463801a47",
-        "version" : "2.2.1"
+        "revision" : "05e7fcc63b33925cd0c1faaa205cdd5681e7bbef",
+        "version" : "2.3.0"
       }
     },
     {
@@ -97,7 +97,7 @@
       "location" : "https://github.com/TopScrech/QuickLooking",
       "state" : {
         "branch" : "main",
-        "revision" : "cb36fec0734c36fa5962163729ff3295871fa249"
+        "revision" : "20ee3045b1c77607100d970e443656a770300c31"
       }
     },
     {

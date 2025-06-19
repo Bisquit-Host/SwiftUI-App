@@ -17,7 +17,9 @@ struct ImagePlaygroundButton: View {
             sheetPlayground = true
         } label: {
             let icon = supportsPlayground ? "apple.intelligence" : "apple.intelligence.badge.xmark"
+            
             Image(systemName: icon)
+                .symbolRenderingMode(.multicolor)
         }
         .keyboardShortcut("P")
         .disabled(!supportsPlayground)

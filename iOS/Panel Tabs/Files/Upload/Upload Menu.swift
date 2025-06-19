@@ -44,15 +44,7 @@ struct UploadMenu: View {
                 Label("Pull remote file", systemImage: "link")
             }
         } label: {
-            HStack {
-                Text("Upload file")
-                
-                Spacer()
-                
-                Image(systemName: "square.and.arrow.up")
-                    .title3(.semibold)
-            }
-            .foregroundStyle(.foreground)
+            Image(systemName: "square.and.arrow.up")
         }
         .sensoryFeedback(.success, trigger: trigger)
         .cameraPicker($pickerCamera, image: $image)
@@ -96,10 +88,6 @@ struct UploadMenu: View {
             case .failure(let error):
                 print(error.localizedDescription)
             }
-        }
-        
-        if vm.isUploading {
-            UploadProgress(previewUrls.count == 0 ? urls.count : previewUrls.count)
         }
     }
     

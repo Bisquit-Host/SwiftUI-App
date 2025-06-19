@@ -3,7 +3,6 @@ import SwiftUI
 struct CustomDialog: View {
     var title: LocalizedStringKey
     var content: LocalizedStringKey?
-    var image: ImageConfig
     var button1: ButtonConfig
     var button2: ButtonConfig?
     var addsTextField = false
@@ -14,12 +13,6 @@ struct CustomDialog: View {
     
     var body: some View {
         VStack(spacing: 15) {
-            Image(systemName: image.content)
-                .title()
-                .foregroundStyle(image.foreground)
-                .frame(65)
-                .background(.ultraThinMaterial, in: .circle)
-            
             Text(title)
                 .title3(.bold)
             
@@ -51,12 +44,8 @@ struct CustomDialog: View {
                     .padding(.top, -5)
             }
         }
-        .padding([.horizontal, .bottom], 15)
-        .background {
-            RoundedRectangle(cornerRadius: 32)
-                .fill(.ultraThinMaterial)
-                .padding(.top, 30)
-        }
+        .padding(15)
+        .glassEffect(in: .rect(cornerRadius: 32))
         .frame(maxWidth: 310)
         .compositingGroup()
         .task {
@@ -79,12 +68,6 @@ struct CustomDialog: View {
     
     struct ButtonConfig {
         var content: LocalizedStringKey
-        var foreground: Color
-        var action: (String) -> () = { _ in }
-    }
-    
-    struct ImageConfig {
-        var content: String
         var foreground: Color
         var action: (String) -> () = { _ in }
     }

@@ -3722,6 +3722,7 @@
       }
     },
     "Me name folder" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -5844,6 +5845,7 @@
       }
     },
     "Upload file" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {

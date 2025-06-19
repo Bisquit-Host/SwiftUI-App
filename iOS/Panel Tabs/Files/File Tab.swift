@@ -19,7 +19,9 @@ struct FileTab: View {
             Section {
                 FileSearch($vm.searchField)
                 
-                UploadMenu(path)
+                if vm.isUploading {
+                    UploadProgress()
+                }
             }
             .listRowBackground(Color.gray.opacity(0.2))
             
@@ -27,7 +29,7 @@ struct FileTab: View {
                 ForEach(vm.filteredFiles) { file in
                     FileView(id, file: file, at: path + "/")
                 }
-                .onDelete(perform: deleteItem)
+                .onDelete(perform: vm.deleteItem)
             } header: {
                 FileListHeader(path)
             }
@@ -45,17 +47,7 @@ struct FileTab: View {
         .refreshableTask {
             await vm.fetchFiles(path)
         }
-    }
-    
-    private func deleteItem(_ offsets: IndexSet) {
-        for file in offsets {
-            let name = vm.filteredFiles[file].name
-            
-            Task {
-                await vm.deleteFile(name, at: path)
-            }
-        }
-    }
+    }    
 }
 
 #Preview {

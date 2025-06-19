@@ -69,8 +69,6 @@ struct PanelView: View {
         .alert(isPresented: $vm.alertNewFolder) {
             CustomDialog(
                 title: "New Folder",
-                content: "Enter a folder name",
-                image: .init(content: "folder.badge.plus", foreground: .white),
                 button1: .init(content: "Create", foreground: .white) { folder in
                     if !folder.isEmpty {
                         Task {
@@ -84,7 +82,7 @@ struct PanelView: View {
                     vm.alertNewFolder = false
                 },
                 addsTextField: true,
-                textFieldHint: "Me name folder"
+                textFieldHint: "Enter a folder name"
             )
             .transition(.blurReplace.combined(with: .scale(0.8)))
         }

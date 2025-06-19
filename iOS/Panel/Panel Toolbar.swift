@@ -40,6 +40,8 @@ struct PanelToolbarModifier: ViewModifier {
                         } label: {
                             Image(systemName: "folder.badge.plus")
                         }
+                        
+                        UploadMenu("")
                     }
                 }
                 
