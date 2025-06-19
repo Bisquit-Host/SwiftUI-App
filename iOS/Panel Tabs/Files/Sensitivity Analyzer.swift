@@ -17,7 +17,10 @@ final class SensitivityAnalyzer {
         }
     }
     
-    func checkVideo(_ url: URL, completion: @escaping (Bool) -> Void) async {
+    func checkVideo(
+        _ url: URL,
+        completion: @escaping (Bool) -> Void
+    ) async {
         do {
             let handler = analyzer.videoAnalysis(forFileAt: url)
             
