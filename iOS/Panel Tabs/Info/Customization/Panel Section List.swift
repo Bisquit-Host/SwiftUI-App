@@ -14,8 +14,8 @@ struct PanelSectionList: View {
                 .listRowBackground(Color.clear)
                 .listRowSeparator(.hidden)
             }
-            .onMove { from, to in
-                vm.move(from: from, to: to)
+            .onMove { here, there in
+                vm.move(from: here, to: there)
             }
         }
         .navigationTitle("Customize & Reorder")
