@@ -77,9 +77,10 @@ struct ThreeColumnContentView: View {
     private func moveSelectionDown() {
         switch focusedList {
         case .serverList:
-            guard let selectedServer = nav.selectedServers.first,
-                  let index = vm.servers.firstIndex(of: selectedServer),
-                  index + 1 < vm.servers.count
+            guard
+                let selectedServer = nav.selectedServers.first,
+                let index = vm.servers.firstIndex(of: selectedServer),
+                index + 1 < vm.servers.count
             else {
                 return
             }
@@ -89,9 +90,10 @@ struct ThreeColumnContentView: View {
         case .sectionList:
             let tabs = nav.enabledTabs
             
-            guard let selectedTab = nav.selectedTab,
-                  let index = tabs.firstIndex(of: selectedTab),
-                  index + 1 < tabs.count
+            guard
+                let selectedTab = nav.selectedTab,
+                let index = tabs.firstIndex(of: selectedTab),
+                index + 1 < tabs.count
             else {
                 return
             }
