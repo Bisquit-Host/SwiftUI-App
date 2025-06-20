@@ -52,11 +52,10 @@ struct ServerList: View {
         }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
-                Button {
+                SFButton("sparkles") {
                     vm.sheetDiscover = true
-                } label: {
-                    Image(systemName: "sparkles")
                 }
+                .tint(Color.yellow.gradient)
             }
             
             ToolbarItemGroup {

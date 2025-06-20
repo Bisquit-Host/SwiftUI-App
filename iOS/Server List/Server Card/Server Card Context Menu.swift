@@ -80,7 +80,7 @@ struct ServerCardContextMenu: View {
                     
                     ShareLink(item: defaultAllocation)
                 } label: {
-                    Text(defaultAllocation)
+                    Label(defaultAllocation, systemImage: "network")
                 }
             }
         }

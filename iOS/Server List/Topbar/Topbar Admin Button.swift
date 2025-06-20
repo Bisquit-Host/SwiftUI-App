@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct TopbarAdminButton: View {
     @Environment(ServerListVM.self) private var vm
@@ -6,14 +6,12 @@ struct TopbarAdminButton: View {
     
     var body: some View {
         if store.devMode {
-            Button {
+            SFButton("person.badge.shield.checkmark") {
                 store.adminServerList.toggle()
                 
                 Task {
                     await vm.fetchServers(store.adminServerList)
                 }
-            } label: {
-                Image(systemName: "person.badge.shield.checkmark")
             }
             .symbolVariant(store.adminServerList ? .fill : .none)
         }
