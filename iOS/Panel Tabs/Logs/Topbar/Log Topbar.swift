@@ -4,7 +4,7 @@ struct LogTopbar: View {
     @Environment(LogVM.self) private var vm
     
     var body: some View {
-        if !vm.logs.isEmpty {
+        if !vm.searchedLogs.isEmpty {
             Section {
                 HStack {
                     LogTopbarCard(

@@ -26,7 +26,7 @@ struct LogList: View {
             }
         }
         .navigationTitle("Logs")
-        //        .searchToolbarBehavior(.minimize)
+        .searchable(text: $vm.searchPrompt)
         .ornamentDismissButton()
         .animation(.default, value: vm.filteredLogs)
         .refreshableTask {
@@ -49,7 +49,6 @@ struct LogList: View {
                 )
             }
         }
-        //        .searchable(text: $vm.searchPrompt)
         .toolbar {
             ToolbarItem(placement: .bottomBar) {
                 DismissButton {
@@ -57,11 +56,12 @@ struct LogList: View {
                 }
             }
 #if os(iOS) || os(macOS)
-            ToolbarSpacer(.flexible, placement: .bottomBar)
+            ToolbarSpacer(.fixed, placement: .bottomBar)
+            
+            DefaultToolbarItem(kind: .search, placement: .bottomBar)
+            
+            ToolbarSpacer(.fixed, placement: .bottomBar)
 #endif
-            //            DefaultToolbarItem(kind: .search, placement: .bottomBar)
-            //
-            //            ToolbarSpacer(.fixed, placement: .bottomBar)
             
 #if !os(watchOS) && !os(tvOS)
             if !vm.logs.isEmpty {

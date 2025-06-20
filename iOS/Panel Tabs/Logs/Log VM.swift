@@ -10,11 +10,11 @@ final class LogVM {
     }
     
     var logs: [LogAttributes] = []
-    //    var searchPrompt = ""
+    var searchPrompt = ""
     var selectedActor: LogRelationships? = nil
     
     var loggedUserCount: Int {
-        Set(filteredLogs.map(\.relationships.actor)).count
+        Set(searchedLogs.map(\.relationships.actor)).count
     }
     
     var actors: [LogRelationships?] {
@@ -35,19 +35,19 @@ final class LogVM {
         }
     }
     
-    //    var searchedLogs: [LogAttributes] {
-    //        guard !searchPrompt.isEmpty else {
-    //            return filteredLogs
-    //        }
-    //
-    //        return filteredLogs.filter {
-    //            $0.event.localizedStandardContains(searchPrompt)
-    //        }
-    //    }
+    var searchedLogs: [LogAttributes] {
+        guard !searchPrompt.isEmpty else {
+            return filteredLogs
+        }
+        
+        return filteredLogs.filter {
+            $0.event.localizedStandardContains(searchPrompt)
+        }
+    }
     
     var daysLogged: Int? {
         guard
-            let firstDate = filteredLogs.last?.timestamp,
+            let firstDate = searchedLogs.last?.timestamp,
             let firstLoggedDate = dateFormatter.date(from: firstDate)
         else {
             return nil
@@ -70,7 +70,7 @@ final class LogVM {
     }()
     
     var logsByMonth: [Array<LogAttributes>.SubSequence] {
-        filteredLogs.chunked { lhs, rhs in
+        searchedLogs.chunked { lhs, rhs in
             let date1 = dateFormatter.date(from: lhs.timestamp)
             let date2 = dateFormatter.date(from: rhs.timestamp)
             
