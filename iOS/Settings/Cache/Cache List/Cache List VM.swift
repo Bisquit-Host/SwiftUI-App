@@ -9,21 +9,22 @@ struct CachedImage: Identifiable {
 
 @Observable
 final class CacheListVM {
-    var images = [CachedImage]()
+    private(set) var images = [CachedImage]()
     
     func retrieveAllCachedImages() {
         images = []
         
-        let cache = ImageCache.default
-        let cachePath = cache.diskStorage.directoryURL.path
+        let cachePath = ImageCache.default.diskStorage
         
-        retrieveImages(cachePath)
+        retrieveImages(cachePath.directoryURL.path)
     }
     
     private func retrieveImages(_ path: String) {
         let fm = FileManager.default
         
-        guard let files = try? fm.contentsOfDirectory(atPath: path) else {
+        guard
+            let files = try? fm.contentsOfDirectory(atPath: path)
+        else {
             return
         }
         
@@ -35,23 +36,24 @@ final class CacheListVM {
                 return
             }
             
-            if isDir.boolValue {
+            guard !isDir.boolValue else {
                 retrieveImages(filePath)
-            } else {
-                guard
-                    let imageData = try? Data(contentsOf: URL(fileURLWithPath: filePath)),
-                    let image = UIImage(data: imageData)
-                else {
-                    return
-                }
-                
-                let sizeString = formatBytes(imageData.count)
-                
-                images.append(.init(
-                    image: image,
-                    size: sizeString
-                ))
+                return
             }
+            
+            guard
+                let imageData = try? Data(contentsOf: URL(fileURLWithPath: filePath)),
+                let image = UIImage(data: imageData)
+            else {
+                return
+            }
+            
+            let size = formatBytes(imageData.count)
+            
+            images.append(.init(
+                image: image,
+                size: size
+            ))
         }
     }
 }

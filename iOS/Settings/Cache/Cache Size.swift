@@ -6,11 +6,6 @@ struct CacheSize: View {
     
     var body: some View {
         Menu {
-#if DEBUG
-            NavigationLink("View cache") {
-                CacheList()
-            }
-#endif
             Section {
                 Button("Clear entire cache", role: .destructive) {
                     cache.clearAll()
