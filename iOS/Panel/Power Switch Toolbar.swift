@@ -32,14 +32,11 @@ struct PowerSwitchToolbar: View {
             }
         } label: {
             Image(systemName: "power")
-                .footnote(.semibold)
+                .semibold()
                 .symbolEffect(.bounce, value: vm.stateColor)
                 .foregroundStyle(vm.stateColor.gradient)
                 .animation(.default, value: vm.stateColor)
-                .frame(35)
-                .background(.ultraThinMaterial, in: .circle)
         }
-        .hoverEffect(.lift)
         .confirmationDialog("Perform kill action", isPresented: $confirmKill, titleVisibility: .visible) {
             Button("Kill", role: .destructive) {
                 Task {

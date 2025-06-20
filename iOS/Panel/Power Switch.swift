@@ -16,12 +16,11 @@ struct PowerSwitch: View {
 #endif
         } label: {
             Image(systemName: "power")
-                .title(.semibold)
+                .semibold()
                 .symbolEffect(.bounce, value: vm.stateColor)
                 .foregroundStyle(vm.stateColor.gradient)
                 .animation(.default, value: vm.stateColor)
         }
-        .hoverEffect(.lift)
         .confirmationDialog("Perform kill action", isPresented: $confirmKill, titleVisibility: .visible) {
             Button("Kill", role: .destructive) {
                 Task {
