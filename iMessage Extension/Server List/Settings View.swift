@@ -16,7 +16,7 @@ struct SettingsView: View {
 
 #Preview {
     NavigationView {
-        SettingsView()
+        Text("Preview")
             .sheet {
                 SettingsView()
             }
