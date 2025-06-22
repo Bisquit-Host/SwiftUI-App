@@ -205,6 +205,7 @@
       }
     },
     "%lld files" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "variations" : {
@@ -5252,7 +5253,14 @@
       }
     },
     "Step %lld" : {
+      "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Step %lld"
+          }
+        },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",

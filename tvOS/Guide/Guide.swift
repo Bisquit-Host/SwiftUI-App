@@ -32,7 +32,7 @@ struct Guide: View {
                     .title(.semibold)
                 }
                 .tabItem {
-                    Text("Step \(id)")
+                    Text(.step(id))
                 }
             }
         }
