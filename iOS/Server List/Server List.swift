@@ -58,11 +58,15 @@ struct ServerList: View {
                 .tint(Color.yellow.gradient)
             }
             
-            ToolbarItemGroup {
-                TopbarAdminButton()
+            ToolbarItemGroup(placement: .topBarTrailing) {
+                SLToolbarAdminButton()
                 
                 ServerListFilter()
-                
+            }
+            
+            ToolbarSpacer(.fixed, placement: .topBarTrailing)
+            
+            ToolbarItem(placement: .topBarTrailing) {
                 SettingsButton()
             }
         }

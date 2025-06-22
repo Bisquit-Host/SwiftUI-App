@@ -42,13 +42,13 @@ struct ServerList: View {
                 .padding(.leading)
             }
             
-            ToolbarItemGroup(placement: .navigationBarTrailing) {
+            ToolbarItemGroup(placement: .topBarTrailing) {
 #warning("iMessage: Full screen button")
                 //Button("Test") {
                 //    test = true
                 //}
                 
-                TopbarAdminButton()
+                SLToolbarAdminButton()
                 
                 SettingsButton()
                     .padding(.trailing)

@@ -1,6 +1,6 @@
 import ScrechKit
 
-struct TopbarAdminButton: View {
+struct SLToolbarAdminButton: View {
     @Environment(ServerListVM.self) private var vm
     @EnvironmentObject private var store: ValueStore
     
@@ -19,6 +19,6 @@ struct TopbarAdminButton: View {
 }
 
 #Preview {
-    TopbarAdminButton()
+    SLToolbarAdminButton()
         .environmentObject(ValueStore())
 }
