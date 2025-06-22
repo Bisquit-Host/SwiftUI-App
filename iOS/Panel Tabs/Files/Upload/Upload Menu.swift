@@ -44,7 +44,7 @@ struct UploadMenu: View {
                 Label("Pull remote file", systemImage: "link")
             }
         } label: {
-            Image(systemName: "square.and.arrow.up")
+            Image(systemName: "square.and.arrow.down")
         }
         .sensoryFeedback(.success, trigger: trigger)
         .cameraPicker($pickerCamera, image: $image)
