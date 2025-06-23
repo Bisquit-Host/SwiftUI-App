@@ -29,6 +29,7 @@ struct InfoTab: View {
             }
         }
         .navigationTitle("Info")
+        .buttonStyle(.glass)
         .task {
             async let users: () = users.fetchUsers()
             async let logs: () = logs.fetchLogs()

@@ -14,7 +14,6 @@ struct ServerListTopbar: View {
                     await vm.fetchServers(store.adminServerList)
                 }
             }
-            .background(.ultraThinMaterial)
             
             Button {
                 navState.navigate(.toSettings)
@@ -27,9 +26,9 @@ struct ServerListTopbar: View {
                         value: isRotating
                     )
             }
-            .background(.ultraThinMaterial)
         }
         .title2(.bold)
+        .buttonStyle(.glass)
         .task {
             isRotating = true
         }
