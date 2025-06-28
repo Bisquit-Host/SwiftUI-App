@@ -23,8 +23,9 @@ final class FileTabVM: ObservableObject {
     @Published var isUploading = false
 #endif
     
-    // macOS
+#if os(macOS)
     @Published var degrees = 0.0
+#endif
     
     @Published var files: [FileAttributes] = []
     @Published var showTextField = false
