@@ -54,13 +54,14 @@ struct LogCard: View {
             if !log.properties.isEmpty && showInfoButton {
                 Spacer()
                 
-                Image(systemName: "info.circle")
-                    .secondary()
-            }
-        }
-        .onTapGesture {
-            if !log.properties.isEmpty && showInfoButton {
-                sheetDetails = true
+                Button {
+                    if !log.properties.isEmpty && showInfoButton {
+                        sheetDetails = true
+                    }
+                } label: {
+                    Image(systemName: "info.circle")
+                        .secondary()
+                }
             }
         }
         .sheet($sheetDetails) {
