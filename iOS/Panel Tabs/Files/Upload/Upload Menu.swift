@@ -69,7 +69,9 @@ struct UploadMenu: View {
             }
         }
         .sheet($sheetRemoteFile) {
-            SheetRemoteFile(path)
+            NavigationView {
+                SheetRemoteFile(path)
+            }
         }
         .fileImporter(
             isPresented: $pickerFile,

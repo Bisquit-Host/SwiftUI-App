@@ -93,7 +93,7 @@ final class FileTabVM: ObservableObject {
     
     func pullRemoteFile(
         _ file: FilePullRequestBody,
-        dir: String = "",
+        at path: String = "",
         onSuccess: @escaping () -> ()
     ) async {
         do {
@@ -101,7 +101,7 @@ final class FileTabVM: ObservableObject {
             
             onSuccess()
             
-            await fetchFiles(dir)
+            await fetchFiles(path)
         } catch {
             SystemAlert.error(error)
         }
