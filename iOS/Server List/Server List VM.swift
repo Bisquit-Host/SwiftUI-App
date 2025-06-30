@@ -83,16 +83,16 @@ final class ServerListVM {
                 saveServers()
             }
             
-            await self.submitScore()
+            await submitScore()
             
 #if canImport(ContactProvider)
             if ValueStore().contactsProviderEnabled {
-                await self.fetchUniqueUsers()
+                await fetchUniqueUsers()
             }
 #endif
             
 #if canImport(CoreSpotlight) && !os(tvOS)
-            self.indexItems(self.servers)
+            indexItems(servers)
 #endif
         } catch {
             SystemAlert.error(error)
@@ -117,9 +117,9 @@ final class ServerListVM {
         }
         
         withAnimation {
-            self.servers = loadedServers
+            servers = loadedServers
         }
         
-        self.saveServers()
+        saveServers()
     }
 }
