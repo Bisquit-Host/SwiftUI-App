@@ -14,7 +14,7 @@ struct ServerCardContextMenu: View {
         _confirmKill = confirmKill
     }
     
-    private var defaultAllocation: String? {
+    private var defaultAlloc: String? {
         guard let allocation = server.relationships.allocations.data.first(where: {
             $0.attributes.isDefault
         }).map(\.attributes) else {
@@ -53,34 +53,23 @@ struct ServerCardContextMenu: View {
                 }
             }
             
-            if let defaultAllocation {
+            if let defaultAlloc {
                 Menu {
                     Button {
-                        UIPasteboard.general.string = defaultAllocation
+                        UIPasteboard.general.string = defaultAlloc
                     } label: {
                         Label("Copy", systemImage: "doc.on.doc")
                     }
                     
                     Button {
-                        guard
-                            let url = URL(string: "mc-stats://add-server?address=\(defaultAllocation)&name=\(server.name)"),
-                            let fallbackURL = URL(string: "https://apps.apple.com/app/id6740754881")
-                        else {
-                            return
-                        }
-                        
-                        openUrl(url) { success in
-                            if !success {
-                                openUrl(fallbackURL)
-                            }
-                        }
+                        addToGoidacraft()
                     } label: {
                         Label("Add to MC Stats", systemImage: "arrowshape.turn.up.right")
                     }
                     
-                    ShareLink(item: defaultAllocation)
+                    ShareLink(item: defaultAlloc)
                 } label: {
-                    Label(defaultAllocation, systemImage: "network")
+                    Label(defaultAlloc, systemImage: "network")
                 }
             }
         }
@@ -91,6 +80,22 @@ struct ServerCardContextMenu: View {
             }
             
             ShareLink(item: "https://mgr.bisquit.host/server/" + id)
+        }
+    }
+    
+    private func addToGoidacraft() {
+        guard
+            let defaultAlloc,
+            let url = URL(string: "mc-stats://add-server?address=\(defaultAlloc)&name=\(server.name)"),
+            let fallbackURL = URL(string: "https://apps.apple.com/app/id6740754881")
+        else {
+            return
+        }
+        
+        openUrl(url) { success in
+            if !success {
+                openUrl(fallbackURL)
+            }
         }
     }
 }

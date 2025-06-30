@@ -10,9 +10,7 @@ struct ServerListTopbar: View {
     var body: some View {
         HStack {
             SFButton("arrow.triangle.2.circlepath") {
-                Task {
-                    await vm.fetchServers(store.adminServerList)
-                }
+                fetch()
             }
             
             Button {
@@ -31,6 +29,12 @@ struct ServerListTopbar: View {
         .buttonStyle(.glass)
         .task {
             isRotating = true
+        }
+    }
+    
+    private func fetch() {
+        Task {
+            await vm.fetchServers(store.adminServerList)
         }
     }
 }

@@ -20,9 +20,7 @@ struct StartPage: View {
                     .frame(maxWidth: 600)
                 
                 SFButton("doc.on.clipboard") {
-                    if let string = UIPasteboard.general.string {
-                        vm.apiKey = string
-                    }
+                    pasteApiKey()
                 }
                 .foregroundStyle(.white)
             }
@@ -66,6 +64,12 @@ struct StartPage: View {
                 
                 store.authSucced()
             }
+        }
+    }
+    
+    private func pasteApiKey() {
+        if let string = UIPasteboard.general.string {
+            vm.apiKey = string
         }
     }
 }

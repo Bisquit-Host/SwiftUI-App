@@ -548,7 +548,7 @@ final class AudioRecorder {
 				<key>trailing</key>
 				<string>
             SFButton("arrow.triangle.2.circlepath") {
-                Task {
+                fetch()
 </string>
 			</dict>
 			<key>type</key>

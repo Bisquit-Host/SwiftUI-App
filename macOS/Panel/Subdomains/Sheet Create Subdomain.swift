@@ -34,17 +34,21 @@ struct SheetCreateSubdomain: View {
             
             Section {
                 Button {
-                    Task {
-                        await vm.createSubdomain {
-                            dismiss()
-                        }
-                    }
+                    createSubdomain()
                 } label: {
                     Label("Create", systemImage: "plus")
                 }
             }
         }
         .ornamentDismissButton()
+    }
+    
+    private func createSubdomain() {
+        Task {
+            await vm.createSubdomain {
+                dismiss()
+            }
+        }
     }
 }
 

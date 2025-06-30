@@ -7,13 +7,17 @@ struct SLToolbarAdminButton: View {
     var body: some View {
         if store.devMode {
             SFButton("person.badge.shield.checkmark") {
-                store.adminServerList.toggle()
-                
-                Task {
-                    await vm.fetchServers(store.adminServerList)
-                }
+                toggleAndFetch()
             }
             .symbolVariant(store.adminServerList ? .fill : .none)
+        }
+    }
+    
+    private func toggleAndFetch() {
+        store.adminServerList.toggle()
+        
+        Task {
+            await vm.fetchServers(store.adminServerList)
         }
     }
 }

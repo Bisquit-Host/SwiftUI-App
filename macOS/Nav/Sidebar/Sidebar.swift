@@ -21,11 +21,15 @@ struct Sidebar: View {
         }
         .toolbar {
             SFButton("arrow.trianglehead.2.clockwise.rotate.90") {
-                Task {
-                    await vm.fetchServers(store.adminServerList)
-                }
+                fetch()
             }
             .keyboardShortcut("r")
+        }
+    }
+    
+    private func fetch() {
+        Task {
+            await vm.fetchServers(store.adminServerList)
         }
     }
 }
