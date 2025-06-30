@@ -27,9 +27,9 @@ struct ServerList: View {
             await vm.fetchServers(store.adminServerList)
             store.updateServers.toggle()
         }
-        .onChange(of: searchField) { _, search in
+        .onChange(of: searchField) { _, newPrompt in
             withAnimation {
-                vm.searchField = search
+                vm.searchField = newPrompt
             }
         }
         .overlay {
