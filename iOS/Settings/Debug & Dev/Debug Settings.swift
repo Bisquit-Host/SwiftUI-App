@@ -50,18 +50,19 @@ struct DebugSettings: View {
     }
     
     private func enableExtension() {
-        if #available(iOS 18, *) {
-            do {
-                let manager = try ContactProviderManager()
-                
-                Task {
-                    try await manager.enable()
-                }
-            } catch {
-                print(error.localizedDescription)
-            }
-        } else {
+        guard #available(iOS 18, *) else {
             errorAlert = true
+            return
+        }
+        
+        do {
+            let manager = try ContactProviderManager()
+            
+            Task {
+                try await manager.enable()
+            }
+        } catch {
+            print(error.localizedDescription)
         }
     }
 }

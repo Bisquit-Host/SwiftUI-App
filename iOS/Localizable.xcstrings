@@ -416,59 +416,6 @@
         }
       }
     },
-    "%lld more files" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld more file"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "new",
-                  "value" : "%lld more files"
-                }
-              }
-            }
-          }
-        },
-        "ru" : {
-          "variations" : {
-            "plural" : {
-              "few" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "ещё %lld файлов"
-                }
-              },
-              "many" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "ещё %lld файлов"
-                }
-              },
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "ещё %lld файл"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "ещё %lld файла"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "%lld ms" : {
       "localizations" : {
         "ru" : {
@@ -3722,17 +3669,6 @@
         }
       }
     },
-    "Me name folder" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Меня зовут Папка"
-          }
-        }
-      }
-    },
     "Me Potato, me HELP" : {
       "localizations" : {
         "ru" : {
@@ -5848,23 +5784,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Загрузить"
-          }
-        }
-      }
-    },
-    "Upload file" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bestand uploaden"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Загрузить файл"
           }
         }
       }

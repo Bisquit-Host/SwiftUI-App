@@ -15,7 +15,7 @@ struct DevSettings: View {
     }
     
     private var version: String {
-        "\(appVersion) (B\(appBuild))"
+        "v\(appVersion) (B\(appBuild))"
     }
     
     private var deviceAndSystem: String {
@@ -40,7 +40,7 @@ struct DevSettings: View {
     }
 }
 
-public extension UIDevice {
+fileprivate extension UIDevice {
     var modelIdentifier: String {
         var systemInfo = utsname()
         uname(&systemInfo)

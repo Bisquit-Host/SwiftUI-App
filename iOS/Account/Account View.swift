@@ -96,14 +96,17 @@ struct AccountView: View {
         }
     }
     
-    private func param(_ param: LocalizedStringKey, value: String) -> some View {
+    private func param(
+        _ param: LocalizedStringKey,
+        value: String
+    ) -> some View {
         HStack {
             Text(param)
-                .secondary()
             
             Spacer()
             
             Text(value)
+                .secondary()
         }
     }
 }
