@@ -20,8 +20,7 @@ struct GaugeDisk: View {
         if limit != 0 {
             Gauge(value: value / pow(1024, 2), in: 0...limit) {
                 Text("\(currentValue) / \(maximumValue) GB")
-                    .rounded()
-                    .footnote(.semibold)
+                    .footnote(.semibold, design: .rounded)
                     .offset(y: 5)
                     .frame(maxWidth: .infinity, alignment: .center)
             }
