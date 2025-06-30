@@ -62,21 +62,6 @@ struct StartPage: View {
                 print("No keys found")
             }
         }
-#if DEBUG
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                Button("Debug") {
-                    Keychain.save(debugKey, forKey: "selectedApiKey")
-                    
-                    if !keys.contains(where: { $0.key == debugKey }) {
-                        modelContext.insert(APIKey("Debug", key: debugKey))
-                    }
-                    
-                    store.authSucced()
-                }
-            }
-        }
-#endif
     }
 }
 

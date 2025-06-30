@@ -24,17 +24,6 @@ struct StartPage: View {
                     }
                 }
             }
-#if DEBUG
-            Button("Debug") {
-                Keychain.save(debugKey, forKey: "selectedApiKey")
-                
-                if !keys.contains(where: { $0.key == debugKey }) {
-                    modelContext.insert(APIKey("Debug", key: debugKey))
-                }
-                
-                store.authSucced()
-            }
-#endif
         }
         .task {
             try? await Task.sleep(for: .seconds(0.5))

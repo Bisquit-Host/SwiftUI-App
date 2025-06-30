@@ -54,17 +54,6 @@ struct StartPage: View {
         } message: {
             Text(vm.errorDescription)
         }
-        .toolbar {
-            Button("Debug") {
-                Keychain.save(debugKey, forKey: "selectedApiKey")
-                
-                if !keys.contains(where: { $0.key == debugKey }) {
-                    modelContext.insert(APIKey("Debug", key: debugKey))
-                }
-                
-                store.authSucced()
-            }
-        }
     }
     
     private func pasteApiKey() {
