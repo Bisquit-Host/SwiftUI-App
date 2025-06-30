@@ -10,13 +10,11 @@ struct ServerName: View {
     }
     
     var body: some View {
-        HStack {
-            Text(name)
-                .headline()
-                .lineLimit(1)
-                .minimumScaleFactor(0.5)
-                .blur(radius: store.hideServerNames ? 5 : 0)
-        }
+        Text(name)
+            .headline()
+            .lineLimit(1)
+            .minimumScaleFactor(0.5)
+            .blur(radius: store.hideServerNames ? 5 : 0)
     }
 }
 
