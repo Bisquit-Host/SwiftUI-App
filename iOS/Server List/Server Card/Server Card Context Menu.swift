@@ -8,7 +8,11 @@ struct ServerCardContextMenu: View {
     @Binding private var showSafari: Bool
     @Binding private var confirmKill: Bool
     
-    init(_ server: ServerAttributes, _ showSafari: Binding<Bool>, _ confirmKill: Binding<Bool>) {
+    init(
+        _ server: ServerAttributes,
+        _ showSafari: Binding<Bool>,
+        _ confirmKill: Binding<Bool>
+    ) {
         self.server = server
         _showSafari = showSafari
         _confirmKill = confirmKill
