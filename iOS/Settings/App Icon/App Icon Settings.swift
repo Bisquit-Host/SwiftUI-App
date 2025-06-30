@@ -13,23 +13,24 @@ struct AppIconSettings: View {
             LazyVGrid(columns: columns, spacing: 10) {
                 ForEach(Icon.allCases) { icon in
                     AppIconCard(icon, isSelected: store.currentIcon == icon)
-                        .onTapGesture {
-                            store.currentIcon = icon
-                        }
                 }
             }
             .padding(.vertical, 16)
         }
-        .onChange(of: store.currentIcon) { _, icon in
-            guard UIApplication.shared.supportsAlternateIcons else {
-                print("Device doesn't support alternate app icons")
-                return
-            }
-            
-            UIApplication.shared.setAlternateIconName(
-                icon == .def ? nil : icon.rawValue
-            )
+        .onChange(of: store.currentIcon) { _, newIcon in
+            onIconChanged(newIcon)
         }
+    }
+    
+    private func onIconChanged(_ icon: Icon) {
+        guard UIApplication.shared.supportsAlternateIcons else {
+            print("Device doesn't support alternate app icons")
+            return
+        }
+        
+        UIApplication.shared.setAlternateIconName(
+            icon == .def ? nil : icon.rawValue
+        )
     }
 }
 
