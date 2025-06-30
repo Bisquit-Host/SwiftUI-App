@@ -14,15 +14,19 @@ struct GaugeDisk: View {
     
     var body: some View {
         let currentValue = formatBytes(value)
-        
         let maximumValue = limit == 0 ? "∞" : String(Int(limit / 1024))
         
         if limit != 0 {
             Gauge(value: value / pow(1024, 2), in: 0...limit) {
-                Text("\(currentValue) / \(maximumValue) GB")
-                    .footnote(.semibold, design: .rounded)
-                    .offset(y: 5)
-                    .frame(maxWidth: .infinity, alignment: .center)
+                HStack(spacing: 0) {
+                    let separator = Text("/")
+                        .foregroundStyle(.secondary)
+                    
+                    Text("\(currentValue) \(separator) \(maximumValue) GB")
+                }
+                .footnote(.semibold, design: .rounded)
+                .offset(y: 5)
+                .frame(maxWidth: .infinity, alignment: .center)
             }
             .padding(.horizontal, 5)
             // .gaugeStyle(.accessoryLinearCapacity) // CRASH

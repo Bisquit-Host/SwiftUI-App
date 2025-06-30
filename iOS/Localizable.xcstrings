@@ -24,6 +24,9 @@
       },
       "shouldTranslate" : false
     },
+    " / " : {
+
+    },
     "-" : {
       "localizations" : {
         "ru" : {
@@ -37,6 +40,9 @@
     },
     ":" : {
       "shouldTranslate" : false
+    },
+    "/" : {
+
     },
     "/%@" : {
       "localizations" : {
@@ -80,18 +86,28 @@
       },
       "shouldTranslate" : false
     },
-    "%@ / %@ GB" : {
+    "%@ %@ %@ GB" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "%1$@ / %2$@ GB"
+            "value" : "%1$@ %2$@ %3$@ GB"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%1$@ / %2$@ ГБ"
+            "value" : "%1$@ %2$@ %3$@ ГБ"
+          }
+        }
+      }
+    },
+    "%@ GB" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ ГБ"
           }
         }
       }
