@@ -11,7 +11,7 @@ struct ActivityViewState: Sendable {
         case .active, .stale:
             true
             
-        case .ended, .dismissed:
+        case .ended, .pending, .dismissed:
             false
             
         @unknown default:
@@ -26,7 +26,7 @@ struct ActivityViewState: Sendable {
         case .active, .stale:
             true
             
-        case .ended, .dismissed:
+        case .ended, .pending, .dismissed:
             false
             
         @unknown default:

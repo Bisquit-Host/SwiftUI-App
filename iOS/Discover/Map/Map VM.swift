@@ -4,22 +4,27 @@ import MapKit
 @Observable
 final class MapVM: NSObject, CLLocationManagerDelegate {
     var position: MapCameraPosition = .automatic
-    var searchResults: [MKMapItem] = []
     
     private var locationManager: CLLocationManager?
     
     let places = [
-        Place("Biscuits N' porn",
-              latitude: 35.99207,
-              longitude: -75.648501),
+        Place(
+            "Biscuits N' porn",
+            latitude: 35.99207,
+            longitude: -75.648501
+        ),
         
-        Place("Храм святителя Николая\nМирликийского в Пыжах",
-              latitude: 55.810162,
-              longitude: 37.463209),
+        Place(
+            "Храм святителя Николая\nМирликийского в Пыжах",
+            latitude: 55.810162,
+            longitude: 37.463209
+        ),
         
-        Place("Деревня Пыжи\n(Кировская обл.)",
-              latitude: 58.166037,
-              longitude: 47.165959)
+        Place(
+            "Деревня Пыжи\n(Кировская обл.)",
+            latitude: 58.166037,
+            longitude: 47.165959
+        )
     ]
     
     var region = MKCoordinateRegion(
@@ -54,48 +59,7 @@ final class MapVM: NSObject, CLLocationManagerDelegate {
             self.longitude = longitude
         }
     }
-    
-    //#if !os(watchOS)
-    //    func search(_ coordinate: CLLocationCoordinate2D) {
-    //        let request = MKLocalSearch.Request()
-    //
-    //        request.resultTypes = .pointOfInterest
-    //        request.region = MKCoordinateRegion(
-    //            center: coordinate, span: MKCoordinateSpan(
-    //                latitudeDelta: 0.05,
-    //                longitudeDelta: 0.05
-    //            )
-    //        )
-    //
-    //        Task {
-    //            let search = MKLocalSearch(request: request)
-    //            let response = try? await search.start()
-    //
-    //            withAnimation {
-    //                searchResults = response?.mapItems ?? []
-    //            }
-    //        }
-    //    }
-    //    func search(for query: String) {
-    //        let request = MKLocalSearch.Request()
-    //
-    //        request.naturalLanguageQuery = query
-    //        request.resultTypes = .pointOfInterest
-    //        request.region = MKCoordinateRegion(
-    //            center: .cafe, span: .init(latitudeDelta: 35.99207, longitudeDelta: -75.648501)
-    //        )
-    //
-    //        Task {
-    //            let search = MKLocalSearch(request: request)
-    //            let response = try? await search.start()
-    //
-    //            withAnimation {
-    //                searchResults = response?.mapItems ?? []
-    //            }
-    //        }
-    //    }
-    //#endif
-    
+        
     func check() {
         if CLLocationManager.locationServicesEnabled() {
             locationManager = CLLocationManager()
