@@ -11,17 +11,11 @@ struct ServerListFilter: View {
         Menu {
             if vm.hasSuspendedServers {
                 MenuButton("Suspended", icon: vm.filterBySuspended ? "snowflake.circle.fill" : "snowflake") {
-                    withAnimation {
-                        vm.filterBySuspended.toggle()
-                        vm.filterByNotSuspended = false
-                    }
+                    filterBySuspended()
                 }
                 
                 MenuButton("Not suspended", icon: vm.filterByNotSuspended ? "snowflake.circle.fill" : "snowflake") {
-                    withAnimation {
-                        vm.filterByNotSuspended.toggle()
-                        vm.filterBySuspended = false
-                    }
+                    filterByNotSuspended()
                 }
             }
             
@@ -31,6 +25,20 @@ struct ServerListFilter: View {
         } label: {
             Image(systemName: "line.3.horizontal.decrease.circle")
                 .symbolVariant(filterEnabled ? .fill : .none)
+        }
+    }
+    
+    private func filterBySuspended() {
+        withAnimation {
+            vm.filterBySuspended.toggle()
+            vm.filterByNotSuspended = false
+        }
+    }
+    
+    private func filterByNotSuspended() {
+        withAnimation {
+            vm.filterByNotSuspended.toggle()
+            vm.filterBySuspended = false
         }
     }
 }
