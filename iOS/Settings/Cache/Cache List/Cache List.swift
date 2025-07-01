@@ -15,7 +15,8 @@ struct CacheList: View {
                 }
             }
         }
-        .navigationTitle("\(vm.images.count) images")
+        .navigationTitle("Cache")
+        .navigationSubtitle("\(vm.images.count) images")
         .refreshableTask {
             vm.retrieveAllCachedImages()
         }
