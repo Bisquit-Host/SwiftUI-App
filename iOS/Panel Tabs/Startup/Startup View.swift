@@ -1,9 +1,8 @@
-import ScrechKit
+import SwiftUI
 import PteroNet
 
 struct StartupView: View {
     @Environment(StartupVM.self) private var vm
-    @EnvironmentObject private var store: ValueStore
     
     private let server: ServerAttributes
     
@@ -14,36 +13,9 @@ struct StartupView: View {
     
     @State private var currentDockerImage: String
     
-    private var command: String {
-        store.rawStartupCommand ? vm.rawStartupCommand : vm.startupCommand
-    }
-    
     var body: some View {
         List {
-            Section {
-                if vm.rawStartupCommand != vm.startupCommand {
-                    Toggle("Raw", isOn: $store.rawStartupCommand)
-                }
-                
-                Text(command)
-                    .caption2()
-                    .monospaced()
-                    .textSelection(.enabled)
-                    .animation(.default, value: store.rawStartupCommand)
-            } header: {
-                HStack {
-                    Text("Startup Command")
-                    
-                    Spacer()
-                    
-                    SFButton("document.on.document") {
-                        UIPasteboard.general.string = command
-                        SystemAlert.copied()
-                    }
-                    .foregroundStyle(.foreground)
-                }
-            }
-            .listRowBackground(Color.gray.opacity(0.2))
+            StartupCommand()
             
             Picker("Docker Image", selection: $currentDockerImage) {
                 ForEach(vm.sortedDockerImages, id: \.key) { key, value in

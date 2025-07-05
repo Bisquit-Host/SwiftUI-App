@@ -1446,6 +1446,8 @@
 		F3D6777D2DD867A900721DE8 /* Highlightr in Frameworks */ = {isa = PBXBuildFile; productRef = F3D6777C2DD867A900721DE8 /* Highlightr */; };
 		F3D6777E2DD8689700721DE8 /* Text File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5B1295902D50006D126 /* Text File.swift */; };
 		F3D6777F2DD8689700721DE8 /* Text File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5B1295902D50006D126 /* Text File.swift */; };
+		F3D714752E19295E00F77723 /* Startup Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D714742E19295E00F77723 /* Startup Command.swift */; };
+		F3D714762E19295E00F77723 /* Startup Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D714742E19295E00F77723 /* Startup Command.swift */; };
 		F3D7D87B29E83D1800BCAFFE /* Cache Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7D87A29E83D1800BCAFFE /* Cache Settings.swift */; };
 		F3D7D87F29E83DEE00BCAFFE /* Design Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7D87E29E83DEE00BCAFFE /* Design Settings.swift */; };
 		F3D7F84F2C8ED3D100368ECE /* Disable 2FA View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7F84E2C8ED3D100368ECE /* Disable 2FA View.swift */; };
@@ -2280,6 +2282,7 @@
 		F3D558AB2A3360ED00608447 /* File Tab VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Tab VM.swift"; sourceTree = "<group>"; };
 		F3D6775B2DD7478400721DE8 /* Server Card Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Context Menu.swift"; sourceTree = "<group>"; };
 		F3D677742DD8676200721DE8 /* Highlightr Text View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Highlightr Text View.swift"; sourceTree = "<group>"; };
+		F3D714742E19295E00F77723 /* Startup Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Startup Command.swift"; sourceTree = "<group>"; };
 		F3D7D87A29E83D1800BCAFFE /* Cache Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache Settings.swift"; sourceTree = "<group>"; };
 		F3D7D87E29E83DEE00BCAFFE /* Design Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Design Settings.swift"; sourceTree = "<group>"; };
 		F3D7F84E2C8ED3D100368ECE /* Disable 2FA View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Disable 2FA View.swift"; sourceTree = "<group>"; };
@@ -3112,6 +3115,7 @@
 			children = (
 				F337C15F2A8C2CE0006F321C /* Startup View.swift */,
 				F337C1682A8D07E2006F321C /* Startup VM.swift */,
+				F3D714742E19295E00F77723 /* Startup Command.swift */,
 				F337C1612A8CE7C0006F321C /* Startup Card.swift */,
 			);
 			path = Startup;
@@ -5141,6 +5145,7 @@
 				F371468C2B123807001E0296 /* Activity View State.swift in Sources */,
 				F31BA58F295901B60006D126 /* Browser.swift in Sources */,
 				F3553FBF2B4094D700EF0FD2 /* Allocation Card.swift in Sources */,
+				F3D714752E19295E00F77723 /* Startup Command.swift in Sources */,
 				F30089282B3C23A00051476C /* Contact Picker.swift in Sources */,
 				F38282032B0E14B30088C48B /* Live Activity.swift in Sources */,
 				F3BC03B72B1FF8E40011F98A /* Database Context Menu.swift in Sources */,
@@ -5398,6 +5403,7 @@
 				F3FF3E882D93576B00EDFBC6 /* Update Checker.swift in Sources */,
 				F3BC03B42B1FF4830011F98A /* Task Context Menu.swift in Sources */,
 				F32F2D002D908E1D007CF4DE /* Background Image Helper.swift in Sources */,
+				F3D714762E19295E00F77723 /* Startup Command.swift in Sources */,
 				F36D532C2A05B87A007324C6 /* Database List.swift in Sources */,
 				F337C16A2A8D07E2006F321C /* Startup VM.swift in Sources */,
 				F35DA95A2A28F80900803E7E /* Upload Progress.swift in Sources */,
