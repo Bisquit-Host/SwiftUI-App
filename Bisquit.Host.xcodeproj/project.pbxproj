@@ -659,7 +659,6 @@
 		F361F88E2D546BA1007B0565 /* Circular Gauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF6A2A44F6E000331B51 /* Circular Gauge.swift */; };
 		F363C7FD2B7F7938005F6FF2 /* System Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7052A54C4BC00E89EC4 /* System Alerts.swift */; };
 		F3648ED32DCB9773001609AA /* Allocation Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3648ED22DCB9773001609AA /* Allocation Card.swift */; };
-		F3648ED52DCB987C001609AA /* Subdomain Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C482D53935A0094BD7B /* Subdomain Model.swift */; };
 		F3648ED72DCB987C001609AA /* Subdomain Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C4C2D5395300094BD7B /* Subdomain Card.swift */; };
 		F3648ED82DCB987C001609AA /* Subdomain VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C442D53907E0094BD7B /* Subdomain VM.swift */; };
 		F3648EDB2DCB98BE001609AA /* Subdomain List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3648EDA2DCB98BE001609AA /* Subdomain List.swift */; };
@@ -1260,17 +1259,12 @@
 		F3CE5C452D53907E0094BD7B /* Subdomain VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C442D53907E0094BD7B /* Subdomain VM.swift */; };
 		F3CE5C462D53907E0094BD7B /* Subdomain VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C442D53907E0094BD7B /* Subdomain VM.swift */; };
 		F3CE5C472D53907E0094BD7B /* Subdomain VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C442D53907E0094BD7B /* Subdomain VM.swift */; };
-		F3CE5C492D53935A0094BD7B /* Subdomain Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C482D53935A0094BD7B /* Subdomain Model.swift */; };
-		F3CE5C4A2D53935A0094BD7B /* Subdomain Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C482D53935A0094BD7B /* Subdomain Model.swift */; };
-		F3CE5C4B2D53935A0094BD7B /* Subdomain Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C482D53935A0094BD7B /* Subdomain Model.swift */; };
 		F3CE5C4D2D5395300094BD7B /* Subdomain Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C4C2D5395300094BD7B /* Subdomain Card.swift */; };
 		F3CE5C4E2D5395300094BD7B /* Subdomain Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C4C2D5395300094BD7B /* Subdomain Card.swift */; };
 		F3CE5C4F2D5395300094BD7B /* Subdomain Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C4C2D5395300094BD7B /* Subdomain Card.swift */; };
 		F3CE5C502D53A5820094BD7B /* Subdomain VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C442D53907E0094BD7B /* Subdomain VM.swift */; };
 		F3CE5C512D53A5820094BD7B /* Subdomain List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C402D538FE60094BD7B /* Subdomain List.swift */; };
-		F3CE5C522D53A5820094BD7B /* Subdomain Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C482D53935A0094BD7B /* Subdomain Model.swift */; };
 		F3CE5C532D53A5820094BD7B /* Subdomain Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C4C2D5395300094BD7B /* Subdomain Card.swift */; };
-		F3CE5C542D53A77C0094BD7B /* Subdomain Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C482D53935A0094BD7B /* Subdomain Model.swift */; };
 		F3CE5C552D53A77C0094BD7B /* Subdomain Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C4C2D5395300094BD7B /* Subdomain Card.swift */; };
 		F3CE5C562D53A77C0094BD7B /* Subdomain List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C402D538FE60094BD7B /* Subdomain List.swift */; };
 		F3CE5C572D53A77C0094BD7B /* Subdomain VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE5C442D53907E0094BD7B /* Subdomain VM.swift */; };
@@ -2263,7 +2257,6 @@
 		F3CCF5C42B3457AE005FFF2C /* Allocation VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation VM.swift"; sourceTree = "<group>"; };
 		F3CE5C402D538FE60094BD7B /* Subdomain List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subdomain List.swift"; sourceTree = "<group>"; };
 		F3CE5C442D53907E0094BD7B /* Subdomain VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subdomain VM.swift"; sourceTree = "<group>"; };
-		F3CE5C482D53935A0094BD7B /* Subdomain Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subdomain Model.swift"; sourceTree = "<group>"; };
 		F3CE5C4C2D5395300094BD7B /* Subdomain Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subdomain Card.swift"; sourceTree = "<group>"; };
 		F3D037002CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImagePlayground Toolbar Button.swift"; sourceTree = "<group>"; };
 		F3D264332A66A926005C3777 /* Settings Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings Button.swift"; sourceTree = "<group>"; };
@@ -3891,7 +3884,6 @@
 				F3CE5C442D53907E0094BD7B /* Subdomain VM.swift */,
 				F3CE5C4C2D5395300094BD7B /* Subdomain Card.swift */,
 				F374F7BC2D54922F006771DD /* Sheet Create Subdomain.swift */,
-				F3CE5C482D53935A0094BD7B /* Subdomain Model.swift */,
 			);
 			path = Subdomains;
 			sourceTree = "<group>";
@@ -4922,7 +4914,6 @@
 				F3AB4A8C2CF3DAC900A8252F /* Backup Card VM.swift in Sources */,
 				F30088AA2B3A1A510051476C /* Schedule VM.swift in Sources */,
 				F3C9D84A2B302AA200265492 /* File Context Menu.swift in Sources */,
-				F3CE5C542D53A77C0094BD7B /* Subdomain Model.swift in Sources */,
 				F3CE5C552D53A77C0094BD7B /* Subdomain Card.swift in Sources */,
 				F3CE5C562D53A77C0094BD7B /* Subdomain List.swift in Sources */,
 				F3CE5C572D53A77C0094BD7B /* Subdomain VM.swift in Sources */,
@@ -5256,7 +5247,6 @@
 				F37266E929D9EFFE005FD103 /* Cache Size.swift in Sources */,
 				F3A800322A7313E900CAC40B /* Tip Cloud Keys.swift in Sources */,
 				F30089232B3BA5300051476C /* File Permissions Parent.swift in Sources */,
-				F3CE5C4B2D53935A0094BD7B /* Subdomain Model.swift in Sources */,
 				F3CCB1CC2CAE75D0000F8207 /* Debug Settings.swift in Sources */,
 				F35C4D602E03999B00720E74 /* Multipart Form Data.swift in Sources */,
 				F30088A92B3A1A500051476C /* Schedule VM.swift in Sources */,
@@ -5611,7 +5601,6 @@
 				F337C1632A8CE962006F321C /* Startup View.swift in Sources */,
 				F36D534B2A05B974007324C6 /* Nav Destinations.swift in Sources */,
 				F37A36752A35173B00517EFC /* Server Settings VM.swift in Sources */,
-				F3CE5C492D53935A0094BD7B /* Subdomain Model.swift in Sources */,
 				F3202CDC2D5624B10030B3CC /* Plan.swift in Sources */,
 				F389BB6B2A05B5E500911EBF /* Settings VM.swift in Sources */,
 				F3E467532A49903900FABE5F /* Info Stat.swift in Sources */,
@@ -5852,7 +5841,6 @@
 				F3D295A72AF3A0DB00ED43A0 /* Log Card.swift in Sources */,
 				F3D295732AF39F1400ED43A0 /* Account VM.swift in Sources */,
 				F3D295782AF39F2F00ED43A0 /* User List.swift in Sources */,
-				F3CE5C4A2D53935A0094BD7B /* Subdomain Model.swift in Sources */,
 				F3D295BE2AF3A18B00ED43A0 /* Biometry Button.swift in Sources */,
 				F32F3AAD2D8EB8EC00E69B98 /* Background Image.swift in Sources */,
 				F3E2BEE12C1C6BA800B7A6D4 /* Cache List VM.swift in Sources */,
@@ -6099,7 +6087,6 @@
 				F35FEB0E2B09F4D3004DA05D /* Network VM.swift in Sources */,
 				F3CE5C502D53A5820094BD7B /* Subdomain VM.swift in Sources */,
 				F3CE5C512D53A5820094BD7B /* Subdomain List.swift in Sources */,
-				F3CE5C522D53A5820094BD7B /* Subdomain Model.swift in Sources */,
 				F3202CE42D562A620030B3CC /* Browser List MC.swift in Sources */,
 				F3CE5C532D53A5820094BD7B /* Subdomain Card.swift in Sources */,
 				F32716D82CF6257800F2DC31 /* Backup Context Menu.swift in Sources */,
@@ -6331,7 +6318,6 @@
 				F35B9F612A2DCF9C0045D014 /* Stats Tab.swift in Sources */,
 				F36B14A52DC62F8D008C1AF9 /* Sidebar.swift in Sources */,
 				F348C6E92A54483D002D5BD6 /* Intro.swift in Sources */,
-				F3648ED52DCB987C001609AA /* Subdomain Model.swift in Sources */,
 				F3648ED72DCB987C001609AA /* Subdomain Card.swift in Sources */,
 				F3648ED82DCB987C001609AA /* Subdomain VM.swift in Sources */,
 				F31F31FF2D52BD940095DD19 /* System lowPowerMode.swift in Sources */,

@@ -1,4 +1,5 @@
 import ScrechKit
+import PteroNet
 
 struct SubdomainCard: View {
     @Environment(SubdomainVM.self) private var vm
@@ -19,11 +20,13 @@ struct SubdomainCard: View {
         VStack(alignment: .leading) {
             Text(fullDomain)
             
-            Text(timeSinceISO(subdomain.createdAt))
-                .footnote()
-                .secondary()
-                .minimumScaleFactor(0.5)
-                .lineLimit(1)
+            TimelineView(.everyMinute) { _ in
+                Text(timeSinceISO(subdomain.createdAt))
+                    .footnote()
+                    .secondary()
+                    .minimumScaleFactor(0.5)
+                    .lineLimit(1)
+            }
         }
         .foregroundStyle(.foreground)
         .contextMenu {

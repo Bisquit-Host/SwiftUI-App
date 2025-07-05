@@ -27,94 +27,40 @@ final class SubdomainVM {
     }
     
     func deleteSubdomain(_ subdomainId: Int) async {
-        guard
-            let url = URL(string: "https://mgr.bisquit.host/api/client/extensions/subdomainmanager/servers/" + id + "/\(subdomainId)"),
-            let apiKey = Keychain.load(key: "selectedApiKey")
-        else {
-            return
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "DELETE"
-        request.httpShouldHandleCookies = false
-        request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
-        
         do {
-            let _ = try await URLSession.shared.data(for: request)
+            let _ = try await deleteSubdomainAPI(id, subdomainId: subdomainId)
         } catch {
             SystemAlert.error(error)
         }
     }
     
     func syncSubdomain(_ subdomainId: Int) async {
-        guard
-            let url = URL(string: "https://mgr.bisquit.host/api/client/extensions/subdomainmanager/servers/" + id + "/" + String(subdomainId) + "/sync"),
-            let apiKey = Keychain.load(key: "selectedApiKey")
-        else {
-            return
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.httpShouldHandleCookies = false
-        request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
-        
         do {
-            let _ = try await URLSession.shared.data(for: request)
+            let _ = try await syncSubdomainAPI(id, subdomainId: subdomainId)
         } catch {
             SystemAlert.error(error)
         }
     }
     
-    func createSubdomain(onSuccess: @escaping () -> Void) async {
+    func createSubdomain(
+        onSuccess: @escaping () -> Void
+    ) async {
         guard
             limit > subdomains.count,
-            let selectedAllocation,
-            let url = URL(string: "https://mgr.bisquit.host/api/client/extensions/subdomainmanager/servers/" + id),
-            let apiKey = Keychain.load(key: "selectedApiKey")
+            let selectedAllocation
         else {
             return
         }
         
-        print("Creating subdomain \(subdomain) on domain \(selectedDomain) for server \(id)")
-        
-        let boundary = UUID().uuidString
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.httpShouldHandleCookies = false
-        request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
-        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-        
-        var body = Data()
-        let boudary = "--\(boundary)\r\n".data(using: .utf8)!
-        
-        // Append subdomain
-        body.append(boudary)
-        body.append("Content-Disposition: form-data; name=\"subdomain\"\r\n\r\n".data(using: .utf8)!)
-        body.append("\(subdomain)\r\n".data(using: .utf8)!)
-        
-        // Append domain
-        body.append(boudary)
-        body.append("Content-Disposition: form-data; name=\"domain\"\r\n\r\n".data(using: .utf8)!)
-        body.append("\(selectedDomain)\r\n".data(using: .utf8)!)
-        
-        // Append allocation
-        body.append(boudary)
-        body.append("Content-Disposition: form-data; name=\"allocation\"\r\n\r\n".data(using: .utf8)!)
-        body.append("\(selectedAllocation)\r\n".data(using: .utf8)!)
-        
-        // Final boundary
-        body.append("--\(boundary)--\r\n".data(using: .utf8)!)
-        
-        request.httpBody = body
+        print("Creating subdomain", subdomain, "on domain", selectedDomain, "for server", id)
         
         do {
-            let (data, _) = try await URLSession.shared.data(for: request)
-            
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            
-            let _ = try decoder.decode(Subdomain.self, from: data)
+            let _ = try await createSubdomainAPI(
+                id,
+                subdomain: subdomain,
+                selectedDomain: selectedDomain,
+                selectedAllocation: selectedAllocation
+            )
             
             await fetchSubdomains()
             
@@ -123,50 +69,19 @@ final class SubdomainVM {
             
             onSuccess()
         } catch {
-            print("⛔️ Error:", error)
-            
-            if let bodyString = String(data: body, encoding: .utf8) {
-                print("Request Body:\n" + bodyString)
-            }
+            SystemAlert.error(error)
         }
     }
     
     func fetchSubdomains() async {
-        guard
-            let url = URL(string: "https://mgr.bisquit.host/api/client/extensions/subdomainmanager/servers/" + id),
-            let apiKey = Keychain.load(key: "selectedApiKey")
-        else {
-            return
-        }
-        
-        var request = URLRequest(url: url)
-        request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
-        
         do {
-            let (data, _) = try await URLSession.shared.data(for: request)
-            
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            
-            let response = try decoder.decode(SubdomainResponse.self, from: data)
+            let response = try await fetchSubdomainsAPI(id, printResponse: true)
             
             await MainActor.run {
                 self.subdomainResponse = response
             }
         } catch {
-            print("Error:", error)
+            SystemAlert.error(error)
         }
     }
 }
-
-// https://mgr.bisquit.host/api/client/extensions/subdomainmanager/servers/4e400cc0-ef40-4247-a375-676acaaa83a2
-//{ response
-//    "object": "server_subdomain",
-//    "attributes": {
-//        "id": 43,
-//        "subdomain": "test",
-//        "domain": "goida.host",
-//        "created_at": "2025-02-05 16:47:30"
-//    }
-//}
-// body: {"subdomain":"test","domain":1}
