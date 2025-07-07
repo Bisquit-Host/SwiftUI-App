@@ -77,15 +77,7 @@ struct StartPage: View {
             }
             
             Button("Remove this key", role: .destructive) {
-                let key = keys.first {
-                    $0.key == vm.apiKey
-                }
-                
-                if let key {
-                    modelContext.delete(key)
-                }
-                
-                vm.apiKey = ""
+                removeSelectedKey()
             }
         } message: {
             Text(vm.errorDescription)
@@ -99,6 +91,18 @@ struct StartPage: View {
         .sheet($vm.sheetCloudKeys) {
             CloudKeys($vm.apiKey)
         }
+    }
+    
+    private func removeSelectedKey() {
+        let key = keys.first {
+            $0.key == vm.apiKey
+        }
+        
+        if let key {
+            modelContext.delete(key)
+        }
+        
+        vm.apiKey = ""
     }
 }
 

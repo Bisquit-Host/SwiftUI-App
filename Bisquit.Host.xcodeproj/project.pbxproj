@@ -2678,8 +2678,8 @@
 			isa = PBXGroup;
 			children = (
 				F31BA579295901110006D126 /* Start Page.swift */,
-				F31BA57B2959011B0006D126 /* Start Page VM.swift */,
 				F373CD7A2D88D389008B64BE /* Start Page Helper.swift */,
+				F31BA57B2959011B0006D126 /* Start Page VM.swift */,
 				F32DB8A729AE6B800074E045 /* Start Page Footer.swift */,
 				F30D723A29D36D0F0048D7BD /* Guide */,
 			);
