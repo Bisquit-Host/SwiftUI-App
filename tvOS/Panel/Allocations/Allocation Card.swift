@@ -25,12 +25,14 @@ struct AllocationCard: View {
                 }
                 
                 VStack(alignment: .leading) {
-                    Text(ip) +
-                    
-                    Text(":")
-                        .foregroundStyle(.secondary) +
-                    
-                    Text(allocation.port)
+                    HStack(spacing: 0) {
+                        Text(ip)
+                        
+                        Text(":")
+                            .secondary()
+                        
+                        Text(allocation.port)
+                    }
                     
                     if let notes = allocation.notes {
                         Text(notes)
@@ -43,17 +45,25 @@ struct AllocationCard: View {
         .contextMenu {
             if !allocation.isDefault {
                 MenuButton("Set default", icon: "star") {
-                    Task {
-                        await vm.setDefault(allocation.id)
-                    }
+                    setDefault()
                 }
             }
             
             MenuButton("Delete", role: .destructive, icon: "trash") {
-                Task {
-                    await vm.unassignAllocation(allocation.id)
-                }
+                delete()
             }
+        }
+    }
+    
+    private func delete() {
+        Task {
+            await vm.unassignAllocation(allocation.id)
+        }
+    }
+    
+    private func setDefault() {
+        Task {
+            await vm.setDefault(allocation.id)
         }
     }
 }

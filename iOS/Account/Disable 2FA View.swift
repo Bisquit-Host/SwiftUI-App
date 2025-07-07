@@ -18,15 +18,19 @@ struct Disable2FaView: View {
                 .textContentType(.password)
             
             Button("Disable 2FA") {
-                Task {
-                    await vm.disable2Fa(code) {
-                        dismiss()
-                    }
-                }
+                disable2FA()
             }
         }
         .multilineTextAlignment(.center)
         .presentationDetents([.medium])
+    }
+    
+    private func disable2FA() {
+        Task {
+            await vm.disable2Fa(code) {
+                dismiss()
+            }
+        }
     }
 }
 

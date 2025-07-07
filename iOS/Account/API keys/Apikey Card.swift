@@ -41,12 +41,16 @@ struct ApikeyCard: View {
         }
         .contextMenu {
             Button(role: .destructive) {
-                Task {
-                    await vm.delete(key.id)
-                }
+                delete()
             } label: {
                 Label("Delete", systemImage: "trash")
             }
+        }
+    }
+    
+    private func delete() {
+        Task {
+            await vm.delete(key.id)
         }
     }
 }

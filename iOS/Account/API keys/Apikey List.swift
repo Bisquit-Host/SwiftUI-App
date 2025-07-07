@@ -13,12 +13,7 @@ struct ApikeyList: View {
                 ForEach(vm.keys, id: \.attributes.id) { key in
                     ApikeyCard(key)
                 }
-                .onDelete { indexSet in
-                    Task {
-                        await deleteItems(indexSet)
-                    }
-                }
-
+                .onDelete(perform: deleteItems)
             }
         }
         .navigationTitle("My API-keys")
@@ -47,9 +42,13 @@ struct ApikeyList: View {
         }
     }
     
-    private func deleteItems(_ offsets: IndexSet) async {
-        for key in offsets {
-            await vm.delete(vm.keys[key].attributes.id)
+    private func deleteItems(_ offsets: IndexSet) {
+        Task {
+            for key in offsets {
+                let id = vm.keys[key].attributes.id
+                
+                await vm.delete(id)
+            }
         }
     }
 }

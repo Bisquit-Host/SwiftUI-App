@@ -37,13 +37,17 @@ struct SSHCreateView: View {
             }
             
             Button("Create") {
-                Task {
-                    await vm.createKey() {
-                        dismiss()
-                    }
-                }
+                create()
             }
             .disabled(vm.newName.isEmpty || vm.newPublicKey.isEmpty)
+        }
+    }
+    
+    private func create() {
+        Task {
+            await vm.createKey() {
+                dismiss()
+            }
         }
     }
 }
