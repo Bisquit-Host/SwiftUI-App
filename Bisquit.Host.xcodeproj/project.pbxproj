@@ -6472,7 +6472,7 @@
 		F3000E11295A341100ABD30A /* Debug configuration for PBXNativeTarget "tvOS" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "Brand Assets";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = tvOS/tvOS.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -6508,7 +6508,7 @@
 		F3000E12295A341100ABD30A /* Release configuration for PBXNativeTarget "tvOS" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "Brand Assets";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = tvOS/tvOS.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
