@@ -55,13 +55,19 @@ fileprivate struct InfiniteScrollHelper: UIViewRepresentable {
     @Binding var contentSize: CGSize
     @Binding var declarationRate: UIScrollView.DecelerationRate
     
-    init(_ contentSize: Binding<CGSize>, declarationRate: Binding<UIScrollView.DecelerationRate>) {
+    init(
+        _ contentSize: Binding<CGSize>,
+        declarationRate: Binding<UIScrollView.DecelerationRate>
+    ) {
         _contentSize = contentSize
         _declarationRate = declarationRate
     }
     
     func makeCoordinator() -> Coordinator {
-        Coordinator(declarationRate: declarationRate, contentSize: contentSize)
+        Coordinator(
+            declarationRate: declarationRate,
+            contentSize: contentSize
+        )
     }
     
     func makeUIView(context: Context) -> UIView {
