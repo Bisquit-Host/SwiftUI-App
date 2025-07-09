@@ -15,6 +15,8 @@ class PreviewViewController: NSViewController, QLPreviewingController {
         scrollView?.removeFromSuperview()
         
         let textView = NSTextView(frame: .zero)
+        let scroll = NSScrollView()
+        
         textView.string = text
         textView.isEditable = false
         textView.isSelectable = true
@@ -30,7 +32,6 @@ class PreviewViewController: NSViewController, QLPreviewingController {
             height: CGFloat.greatestFiniteMagnitude
         )
         
-        let scroll = NSScrollView()
         scroll.translatesAutoresizingMaskIntoConstraints = false
         scroll.documentView = textView
         scroll.hasVerticalScroller = true
