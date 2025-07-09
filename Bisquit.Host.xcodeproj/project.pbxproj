@@ -3480,10 +3480,10 @@
 			isa = PBXGroup;
 			children = (
 				F386373B2A8641120069F074 /* Widgets Bundle.swift */,
-				F384D8BB2D5BE495000FC41D /* Crypto Price Widget.intentdefinition */,
-				F38637412A8641150069F074 /* Assets.xcassets */,
 				F38637432A8641150069F074 /* Info.plist */,
 				F38637442A8641150069F074 /* Widgets.entitlements */,
+				F38637412A8641150069F074 /* Assets.xcassets */,
+				F384D8BB2D5BE495000FC41D /* Crypto Price Widget.intentdefinition */,
 				F337B4052A89FAC600DD79AA /* Entry.swift */,
 				F318240A2A8777CD0039866C /* Provider.swift */,
 				F36B737C2C8AEA6B00E858FE /* Network Calls */,

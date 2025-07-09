@@ -75,7 +75,7 @@ final class SubdomainVM {
     
     func fetchSubdomains() async {
         do {
-            let response = try await fetchSubdomainsAPI(id, printResponse: true)
+            let response = try await fetchSubdomainsAPI(id)
             
             await MainActor.run {
                 self.subdomainResponse = response
