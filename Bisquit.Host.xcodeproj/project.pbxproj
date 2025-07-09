@@ -155,7 +155,6 @@
 		F310A2F12A56B0BE001AF45F /* Network VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F310A2EF2A56AF86001AF45F /* Network VM.swift */; };
 		F310BB392A54E31700843F14 /* Server List VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F352AF962A4EDB1D004AD489 /* Server List VM.swift */; };
 		F310BB3A2A54E31800843F14 /* Server List VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F352AF962A4EDB1D004AD489 /* Server List VM.swift */; };
-		F31163E62DCF7DA20093B722 /* QuickLooking in Frameworks */ = {isa = PBXBuildFile; productRef = F31163E52DCF7DA20093B722 /* QuickLooking */; };
 		F3116F262A33E142001F067C /* Folder File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3116F252A33E142001F067C /* Folder File.swift */; };
 		F3116F272A33E142001F067C /* Folder File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3116F252A33E142001F067C /* Folder File.swift */; };
 		F311CAAE2A646612004E4A4A /* Log Meta View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F311CAAD2A646612004E4A4A /* Log Meta View.swift */; };
@@ -2481,7 +2480,6 @@
 			isa = PBXFrameworksBuildPhase;
 			files = (
 				F37FF8832D87AE3800554B3F /* Algorithms in Frameworks */,
-				F31163E62DCF7DA20093B722 /* QuickLooking in Frameworks */,
 				F3B7BFDE2B38E206005B5003 /* Pow in Frameworks */,
 				F3E08EB22A2CE19900116C1C /* Kingfisher in Frameworks */,
 				F358F02E2D2C1C5500BCC07B /* LaunchAtLogin in Frameworks */,
@@ -4546,7 +4544,6 @@
 				F358F02D2D2C1C5500BCC07B /* LaunchAtLogin */,
 				F37FF8822D87AE3800554B3F /* Algorithms */,
 				F36B14582DC39F08008C1AF9 /* GaypadKit */,
-				F31163E52DCF7DA20093B722 /* QuickLooking */,
 				F3F60A6B2DEB94B900A15737 /* ScrechKit */,
 			);
 			productName = "Bisquit.Host Mac";
@@ -7917,11 +7914,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F352AF992A4EE707004AD489 /* XCRemoteSwiftPackageReference "AlertKit" */;
 			productName = AlertKit;
-		};
-		F31163E52DCF7DA20093B722 /* QuickLooking */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F33C2ABF2C69168C002FD150 /* XCRemoteSwiftPackageReference "QuickLooking" */;
-			productName = QuickLooking;
 		};
 		F318FE442A15925200DE0A5C /* OrderedCollections */ = {
 			isa = XCSwiftPackageProductDependency;
