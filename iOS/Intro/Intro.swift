@@ -1,6 +1,5 @@
 import SwiftUI
 
-@available(iOS 18, *)
 struct Intro: View {
     @EnvironmentObject private var store: ValueStore
     
@@ -167,7 +166,6 @@ extension View {
     }
 }
 
-@available(iOS 18, *)
 #Preview {
     Intro()
         .environmentObject(ValueStore())

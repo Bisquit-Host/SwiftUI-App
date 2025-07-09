@@ -8,17 +8,13 @@ fileprivate struct ContactAccessPickerModifier: ViewModifier {
     }
     
     func body(content: Content) -> some View {
-        if #available(iOS 18, *) {
-            content
-                .contactAccessPicker(isPresented: $isPresented)
-                .toolbar {
-                    SFButton("person.crop.circle.badge.plus") {
-                        isPresented = true
-                    }
+        content
+            .contactAccessPicker(isPresented: $isPresented)
+            .toolbar {
+                SFButton("person.crop.circle.badge.plus") {
+                    isPresented = true
                 }
-        } else {
-            content
-        }
+            }
     }
 }
 

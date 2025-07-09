@@ -1,6 +1,5 @@
 import SwiftUI
 
-@available(iOS 18.1, *)
 struct ImagePlaygroundButton: View {
     @Environment(\.supportsImagePlayground) private var supportsPlayground
     
@@ -31,7 +30,6 @@ struct ImagePlaygroundButton: View {
     }
 }
 
-@available(iOS 18.1, *)
 #Preview {
     ImagePlaygroundButton()
 }

@@ -7,27 +7,23 @@ import ContactProvider
 
 extension ServerListVM {
     func saveContacts(_ users: [UserAttributes]) async {
-        if #available(iOS 18, *) {
-            do {
-                let manager = try ContactProviderManager()
-                
-                try await addContacts(users)
-                
-                try await manager.signalEnumerator()
-            } catch {
-                print("Failed to add contact:", error.localizedDescription)
-            }
+        do {
+            let manager = try ContactProviderManager()
+            
+            try await addContacts(users)
+            
+            try await manager.signalEnumerator()
+        } catch {
+            print("Failed to add contact:", error.localizedDescription)
         }
     }
     
     func disable() async {
-        if #available(iOS 18, *) {
-            do {
-                let manager = try ContactProviderManager()
-                try await manager.disable()
-            } catch {
-                print("Failed to disable:", error.localizedDescription)
-            }
+        do {
+            let manager = try ContactProviderManager()
+            try await manager.disable()
+        } catch {
+            print("Failed to disable:", error.localizedDescription)
         }
     }
     
@@ -52,19 +48,26 @@ extension ServerListVM {
         
         let existingContacts = try store.unifiedContacts(
             matching: CNContact.predicateForContactsInContainer(withIdentifier: id),
-            keysToFetch: [CNContactEmailAddressesKey as CNKeyDescriptor]
+            keysToFetch: [
+                CNContactEmailAddressesKey as CNKeyDescriptor
+            ]
         )
         
         for user in users {
             let contact = CNMutableContact()
             
             contact.emailAddresses = [
-                CNLabeledValue(label: CNLabelHome, value: user.email as NSString)
+                CNLabeledValue(
+                    label: CNLabelHome,
+                    value: user.email as NSString
+                )
             ]
             
             // Check if a contact with the same email already exists
             if let _ = existingContacts.first(where: {
-                guard let email = $0.emailAddresses.first?.value as String? else {
+                guard
+                    let email = $0.emailAddresses.first?.value as String?
+                else {
                     return false
                 }
                 

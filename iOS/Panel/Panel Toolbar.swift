@@ -31,9 +31,7 @@ struct PanelToolbarModifier: ViewModifier {
                     }
                     
                     if store.lastTabPanel == .files {
-                        if #available(iOS 18.1, *) {
-                            ImagePlaygroundButton(fileVM.path)
-                        }
+                        ImagePlaygroundButton(fileVM.path)
                         
                         Button {
                             vm.alertNewFolder = true

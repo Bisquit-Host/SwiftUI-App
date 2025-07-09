@@ -84,21 +84,12 @@ struct BackgroundImagePicker: View {
             .optionalViewModifier { contentView in
                 // Process Selected Image
                 
-                if #available(iOS 17, *) {
-                    contentView
-                        .onChange(of: photoItem) { oldValue, newValue in
-                            if let newValue {
-                                extractImage(newValue, size)
-                            }
+                contentView
+                    .onChange(of: photoItem) { oldValue, newValue in
+                        if let newValue {
+                            extractImage(newValue, size)
                         }
-                } else {
-                    contentView
-                        .onChange(of: photoItem) { newValue in
-                            if let newValue {
-                                extractImage(newValue, size)
-                            }
-                        }
-                }
+                    }
             }
             .background {
                 ZStack {

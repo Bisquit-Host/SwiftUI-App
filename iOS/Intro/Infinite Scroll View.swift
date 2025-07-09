@@ -1,6 +1,5 @@
 import SwiftUI
 
-@available(iOS 18, *)
 struct InfiniteScrollView<Content: View>: View {
     var spacing = 10.0
     @ViewBuilder var content: Content
@@ -46,7 +45,6 @@ struct InfiniteScrollView<Content: View>: View {
     }
 }
 
-@available(iOS 18, *)
 #Preview {
     Intro()
 }

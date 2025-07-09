@@ -50,11 +50,6 @@ struct DebugSettings: View {
     }
     
     private func enableExtension() {
-        guard #available(iOS 18, *) else {
-            errorAlert = true
-            return
-        }
-        
         do {
             let manager = try ContactProviderManager()
             

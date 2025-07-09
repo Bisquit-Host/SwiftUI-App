@@ -51,7 +51,7 @@ struct QuickLookFile: View {
             }
         }
         .toolbar {
-            if #available(iOS 18.1, *), let url = vm.fileUrl, isImage(url) {
+            if let url = vm.fileUrl, isImage(url) {
                 ImagePlaygroundToolbarButton(url, path, name)
             }
             

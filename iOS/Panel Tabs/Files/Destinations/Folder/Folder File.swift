@@ -40,9 +40,7 @@ struct FolderFile: View {
             ToolbarSpacer(.flexible, placement: .bottomBar)
             
             ToolbarItemGroup(placement: .bottomBar) {
-                if #available(iOS 18.1, *) {
-                    ImagePlaygroundButton(path)
-                }
+                ImagePlaygroundButton(path)
                 
                 SFButton("folder.badge.plus") {
                     alertNewFolder = true

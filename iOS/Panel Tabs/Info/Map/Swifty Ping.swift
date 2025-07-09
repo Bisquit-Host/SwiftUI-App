@@ -80,14 +80,17 @@ public func tcpPing(
 ///   - timeout: Maximum time to wait for the connection (default is 5 seconds)
 /// - Returns: The measured round-trip time in seconds
 /// - Throws: An error if the connection fails or times out
-@available(iOS 15, macOS 12, *)
 public func tcpPing(
     host: String,
     port: UInt16,
     timeout: TimeInterval = 5
 ) async throws -> TimeInterval {
     try await withCheckedThrowingContinuation { continuation in
-        tcpPing(host: host, port: port, timeout: timeout) { result in
+        tcpPing(
+            host: host,
+            port: port,
+            timeout: timeout
+        ) { result in
             continuation.resume(with: result)
         }
     }

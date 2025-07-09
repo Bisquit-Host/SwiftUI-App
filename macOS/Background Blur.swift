@@ -1,6 +1,5 @@
 import SwiftUI
 
-@available(macOS 10.10, *)
 struct BackgroundBlur: NSViewRepresentable {
     func makeNSView(context: Context) -> NSVisualEffectView {
         let view = NSVisualEffectView()
@@ -12,7 +11,6 @@ struct BackgroundBlur: NSViewRepresentable {
     func updateNSView(_ nsView: NSVisualEffectView, context: Context) {}
 }
 
-@available(macOS 10.15, *)
 struct BackgroundBlurModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -23,7 +21,6 @@ struct BackgroundBlurModifier: ViewModifier {
     }
 }
 
-@available(macOS 10.15, *)
 extension View {
     public func backgroundBlur() -> some View {
         modifier(BackgroundBlurModifier())

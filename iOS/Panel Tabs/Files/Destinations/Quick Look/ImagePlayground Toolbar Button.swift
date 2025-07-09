@@ -1,6 +1,5 @@
 import SwiftUI
 
-@available(iOS 18.1, *)
 struct ImagePlaygroundToolbarButton: View {
     @Environment(\.supportsImagePlayground) private var supportsPlayground
     
@@ -35,7 +34,6 @@ struct ImagePlaygroundToolbarButton: View {
     }
 }
 
-//@available(iOS 18.1, *)
 //#Preview {
 //    ImagePlaygroundToolbarButton()
 //}
