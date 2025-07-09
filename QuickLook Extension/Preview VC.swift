@@ -1,4 +1,3 @@
-import Cocoa
 import Quartz
 
 class PreviewViewController: NSViewController, QLPreviewingController {
@@ -25,6 +24,7 @@ class PreviewViewController: NSViewController, QLPreviewingController {
         textView.isHorizontallyResizable = true
         textView.autoresizingMask = [.width]
         textView.textContainer?.widthTracksTextView = true
+        
         textView.textContainer?.containerSize = NSSize(
             width: CGFloat.greatestFiniteMagnitude,
             height: CGFloat.greatestFiniteMagnitude
