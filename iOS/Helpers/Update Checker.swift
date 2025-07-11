@@ -9,7 +9,7 @@ final class UpdateChecker {
         var appStoreVersion = "0"
         
         guard
-            let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
+            let currentVersion = Bundle.version,
             let url = URL(string: "https://itunes.apple.com/lookup?bundleId=host.bisquit.Bisquit-Host")
         else {
             return

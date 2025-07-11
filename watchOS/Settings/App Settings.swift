@@ -5,7 +5,6 @@ struct AppSettings: View {
     @Environment(NavState.self) private var navState
     @EnvironmentObject private var store: ValueStore
     
-    private let bundle = Bundle.main
     private let device = WKInterfaceDevice.current()
     
     private var deviceAndName: String {
@@ -13,11 +12,11 @@ struct AppSettings: View {
     }
     
     private var appVersion: String {
-        bundle.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "N/A"
+        Bundle.version ?? "N/A"
     }
     
     private var appBuild: String {
-        bundle.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "N/A"
+        Bundle.build ?? "N/A"
     }
     
     private var version: String {
