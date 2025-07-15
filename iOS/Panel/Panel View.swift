@@ -138,7 +138,6 @@ struct PanelView: View {
             }
         }
         .tabViewStyle(.sidebarAdaptable)
-        .tabBarMinimizeBehavior(.onScrollDown)
     }
 }
 
