@@ -1219,7 +1219,14 @@
       "shouldTranslate" : false
     },
     "Bot" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Бот"
+          }
+        }
+      }
     },
     "By Bisquit.Host" : {
       "localizations" : {
@@ -1292,7 +1299,14 @@
       }
     },
     "Change E-mail" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сменить почту"
+          }
+        }
+      }
     },
     "Change language" : {
       "localizations" : {
@@ -1311,7 +1325,14 @@
       }
     },
     "Change Password" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сменить пароль"
+          }
+        }
+      }
     },
     "Change Power" : {
       "localizations" : {
