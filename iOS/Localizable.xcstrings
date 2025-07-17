@@ -248,6 +248,24 @@
             }
           }
         },
+        "nl" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld bestand"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld bestanden"
+                }
+              }
+            }
+          }
+        },
         "ru" : {
           "variations" : {
             "plural" : {
@@ -300,6 +318,24 @@
             }
           }
         },
+        "nl" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld uur geleden"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld uur geleden"
+                }
+              }
+            }
+          }
+        },
         "ru" : {
           "variations" : {
             "plural" : {
@@ -334,6 +370,24 @@
     },
     "%lld images" : {
       "localizations" : {
+        "nl" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld afbeelding"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld afbeeldingen"
+                }
+              }
+            }
+          }
+        },
         "ru" : {
           "variations" : {
             "plural" : {
@@ -381,6 +435,24 @@
                 "stringUnit" : {
                   "state" : "new",
                   "value" : "%lld minutes ago"
+                }
+              }
+            }
+          }
+        },
+        "nl" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld minuut geleden"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld minuten ago"
                 }
               }
             }
@@ -472,6 +544,12 @@
     },
     "%lld ms" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld ms"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -570,6 +648,24 @@
             }
           }
         },
+        "nl" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld seconde geleden"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld seconden ago"
+                }
+              }
+            }
+          }
+        },
         "ru" : {
           "variations" : {
             "plural" : {
@@ -655,6 +751,12 @@
     },
     "1 GB" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 GB"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -758,6 +860,12 @@
     },
     "250 MB" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "250 MB"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -801,6 +909,12 @@
     },
     "Accounts" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accounts"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -821,6 +935,12 @@
     },
     "Add to MC Stats" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toevoegen aan MC Stats"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -883,6 +1003,12 @@
     },
     "All allocations %@" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle allocaties %@"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -893,6 +1019,12 @@
     },
     "All subdomains %@" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle subdomeinen %@"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -903,6 +1035,12 @@
     },
     "All users" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle gebruikers"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -913,6 +1051,12 @@
     },
     "Allocation" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allocatie"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -939,6 +1083,12 @@
     },
     "Animated background" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geanimeerde achtergrond"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -968,6 +1118,12 @@
     },
     "API-key Creation" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "API-key creëren"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -994,6 +1150,12 @@
     },
     "App version" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App-versie"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1082,6 +1244,12 @@
     },
     "Authorization" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autorisatie"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1092,6 +1260,12 @@
     },
     "Available to buy" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Te koop beschikbaar"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1102,6 +1276,12 @@
     },
     "Background image" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Achtergrondbeeld"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1264,6 +1444,12 @@
     },
     "Bot" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bot"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1344,6 +1530,12 @@
     },
     "Change E-mail" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E-mail wijzigen"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1370,6 +1562,12 @@
     },
     "Change Password" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wachtwoord wijzigen"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1540,6 +1738,12 @@
     },
     "Clear navigation path" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Navigatiepad wissen"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1760,8 +1964,8 @@
       "localizations" : {
         "nl" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Contact support"
+            "state" : "translated",
+            "value" : "Ondersteuning contacteren"
           }
         },
         "ru" : {
@@ -3033,6 +3237,12 @@
     },
     "Feedback" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feedback"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3127,6 +3337,12 @@
     },
     "Frankfurt, Germany" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frankfurt, Duitsland"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3175,6 +3391,12 @@
     },
     "Generate" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genereren"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4299,6 +4521,12 @@
     },
     "Now" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nu"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4856,6 +5084,12 @@
     },
     "Restart app" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App herstarten"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5032,7 +5266,14 @@
       }
     },
     "Select a section" : {
-
+      "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecteer een sectie"
+          }
+        }
+      }
     },
     "Send Command" : {
       "localizations" : {
@@ -5068,6 +5309,12 @@
     },
     "Send email" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E-mail versturen"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5333,6 +5580,12 @@
     },
     "Show description" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toon beschrijving"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5343,6 +5596,12 @@
     },
     "Show power buttons" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toon aan/uit knoppen"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5554,8 +5813,8 @@
       "localizations" : {
         "nl" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : ""
+            "state" : "translated",
+            "value" : "Stoppen"
           }
         },
         "ru" : {
@@ -5806,6 +6065,12 @@
     },
     "Three columns" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drie kolommen"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5846,6 +6111,12 @@
     },
     "Total Entries" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Totaal aantal items"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5872,6 +6143,12 @@
     },
     "Total file size" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Totale bestandsgrootte"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5882,6 +6159,12 @@
     },
     "Total size" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Totale grootte"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5908,6 +6191,12 @@
     },
     "Two columns" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Twee kolommen"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5918,6 +6207,12 @@
     },
     "Type a command..." : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voer een commando in…"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6424,6 +6719,12 @@
     },
     "Year" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jaar"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
