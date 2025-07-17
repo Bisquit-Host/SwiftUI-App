@@ -9,15 +9,7 @@ enum NavMode: Int, Identifiable, CaseIterable, Codable {
         rawValue
     }
     
-    var imageName: String {
-        switch self {
-        case .stack: "list.bullet.rectangle.portrait"
-        case .twoColumn: "sidebar.left"
-        case .threeColumn: "rectangle.split.3x1"
-        }
-    }
-    
-    var localizedName: LocalizedStringKey {
+    var name: LocalizedStringKey {
         switch self {
         case .stack: "Stack"
         case .twoColumn: "Two columns"
@@ -25,16 +17,11 @@ enum NavMode: Int, Identifiable, CaseIterable, Codable {
         }
     }
     
-    var localizedDescription: LocalizedStringKey {
+    var icon: String {
         switch self {
-        case .stack:
-            "Presents a stack of views over a root view"
-            
-        case .twoColumn:
-            "Presents views in two columns: sidebar and detail"
-            
-        case .threeColumn:
-            "Presents views in three columns: sidebar, content, and detail"
+        case .stack: "list.bullet.rectangle.portrait"
+        case .twoColumn: "sidebar.left"
+        case .threeColumn: "rectangle.split.3x1"
         }
     }
 }

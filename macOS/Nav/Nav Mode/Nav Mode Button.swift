@@ -6,11 +6,11 @@ struct NavModeButton: View {
     @EnvironmentObject private var store: ValueStore
     
     private var icon: String {
-        store.navMode?.imageName ?? "questionmark"
+        store.navMode?.icon ?? "questionmark"
     }
     
     private var name: LocalizedStringKey {
-        store.navMode?.localizedName ?? ""
+        store.navMode?.name ?? ""
     }
     
     var body: some View {
