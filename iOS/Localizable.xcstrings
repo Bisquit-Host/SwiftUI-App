@@ -1753,7 +1753,14 @@
       }
     },
     "Click the button in the top right corner to send an invitation" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нажмите кнопку в правом верхнем углу, чтобы отправить приглашение"
+          }
+        }
+      }
     },
     "Client role" : {
       "localizations" : {
@@ -5038,7 +5045,14 @@
       }
     },
     "Reorder or hide sections to personalize your view" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Измените порядок или скройте разделы, чтобы настроить экран под себя"
+          }
+        }
+      }
     },
     "Reset" : {
       "localizations" : {
@@ -5875,6 +5889,12 @@
     },
     "Stored keys" : {
       "localizations" : {
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opgeslagen sleutels"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
