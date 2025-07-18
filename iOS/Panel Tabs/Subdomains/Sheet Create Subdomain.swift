@@ -15,7 +15,9 @@ struct SheetCreateSubdomain: View {
     private var placeholder: String {
         let subdomain = vm.subdomain.isEmpty ? "<your subdomain>" : vm.subdomain
         
-        return subdomain + "." + (vm.domains?.first(where: { $0.id == vm.selectedDomain })?.domain ?? "<selected domain>")
+        return subdomain + "." + (vm.domains?.first(where: {
+            $0.id == vm.selectedDomain
+        })?.domain ?? "<selected domain>")
     }
     
     var body: some View {
@@ -53,14 +55,8 @@ struct SheetCreateSubdomain: View {
                 || vm.subdomain.isEmpty
                 || vm.limit <= vm.subdomains.count
                 
-                Button {
-                    Task {
-                        await vm.createSubdomain {
-                            dismiss()
-                        }
-                    }
-                } label: {
-                    Label("Create", systemImage: "plus")
+                Button("Create", systemImage: "plus") {
+                    createSubdomain()
                 }
                 .foregroundStyle(disabled ? .secondary : .primary)
                 .disabled(disabled)
@@ -68,6 +64,14 @@ struct SheetCreateSubdomain: View {
         }
         .pickerStyle(.inline)
         .ornamentDismissButton()
+    }
+    
+    private func createSubdomain() {
+        Task {
+            await vm.createSubdomain {
+                dismiss()
+            }
+        }
     }
 }
 

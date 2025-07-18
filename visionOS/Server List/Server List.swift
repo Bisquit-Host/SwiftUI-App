@@ -53,10 +53,8 @@ struct ServerList: View {
         }
         .toolbar {
             ToolbarItemGroup(placement: .topBarTrailing) {
-                Button {
+                Button("Useful links", systemImage: "sparkles") {
                     vm.sheetDiscover = true
-                } label: {
-                    Label("Useful links", systemImage: "sparkles")
                 }
                 
                 Menu {

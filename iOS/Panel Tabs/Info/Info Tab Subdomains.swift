@@ -69,10 +69,8 @@ struct InfoTabSubdomains: View {
             SheetCreateSubdomain(allocations)
         }
         .contextMenu {
-            Button {
+            Button("Create subdomain", systemImage: "plus") {
                 sheetCreate = true
-            } label: {
-                Label("Create subdomain", systemImage: "plus")
             }
         }
     }

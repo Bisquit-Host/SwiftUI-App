@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import PteroNet
 
 struct SubdomainList: View {
@@ -51,10 +51,8 @@ struct SubdomainList: View {
             ToolbarSpacer(.flexible, placement: .bottomBar)
 #endif
             ToolbarItem(placement: .bottomBar) {
-                Button {
+                SFButton("link.badge.plus") {
                     sheetCreate = true
-                } label: {
-                    Image(systemName: "link.badge.plus")
                 }
             }
         }

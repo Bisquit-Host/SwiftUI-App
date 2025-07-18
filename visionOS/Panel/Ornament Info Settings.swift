@@ -19,10 +19,8 @@ struct OrnamentInfoSettings: View {
             VStack {
                 PanelOrnamentInfo(server)
                 
-                Button {
+                Button("Done", systemImage: "checkmark") {
                     dismiss()
-                } label: {
-                    Label("Done", systemImage: "checkmark")
                 }
                 .padding(.top, 50)
             }

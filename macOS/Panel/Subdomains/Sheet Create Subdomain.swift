@@ -33,10 +33,8 @@ struct SheetCreateSubdomain: View {
             }
             
             Section {
-                Button {
+                Button("Create", systemImage: "plus") {
                     createSubdomain()
-                } label: {
-                    Label("Create", systemImage: "plus")
                 }
             }
         }

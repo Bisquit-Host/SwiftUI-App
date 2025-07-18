@@ -15,10 +15,8 @@ struct Settings: View {
     
     var body: some View {
         List {
-            Button {
+            Button("Switch account", systemImage: "arrow.trianglehead.2.clockwise.rotate.90") {
                 sheetKeyStorage = true
-            } label: {
-                Label("Switch account", systemImage: "arrow.trianglehead.2.clockwise.rotate.90")
             }
             
             Button("API-key Creation") {

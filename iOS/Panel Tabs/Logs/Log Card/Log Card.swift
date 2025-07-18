@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import PteroNet
 
 struct LogCard: View {
@@ -54,14 +54,12 @@ struct LogCard: View {
             if !log.properties.isEmpty && showInfoButton {
                 Spacer()
                 
-                Button {
+                SFButton("info.circle") {
                     if !log.properties.isEmpty && showInfoButton {
                         sheetDetails = true
                     }
-                } label: {
-                    Image(systemName: "info.circle")
-                        .secondary()
                 }
+                .secondary()
             }
         }
         .sheet($sheetDetails) {

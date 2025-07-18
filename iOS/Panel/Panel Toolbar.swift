@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct PanelToolbarModifier: ViewModifier {
     @Environment(PanelVM.self) private var vm
@@ -13,10 +13,8 @@ struct PanelToolbarModifier: ViewModifier {
             .toolbar {
                 ToolbarItemGroup {
                     if store.lastTabPanel == .console {
-                        Button {
+                        SFButton("bold.italic.underline") {
                             consoleVM.inspectorPresented = true
-                        } label: {
-                            Image(systemName: "bold.italic.underline")
                         }
                     }
                     
@@ -33,10 +31,8 @@ struct PanelToolbarModifier: ViewModifier {
                     if store.lastTabPanel == .files {
                         ImagePlaygroundButton(fileVM.path)
                         
-                        Button {
+                        SFButton("folder.badge.plus") {
                             vm.alertNewFolder = true
-                        } label: {
-                            Image(systemName: "folder.badge.plus")
                         }
                         
                         UploadMenu("")
@@ -46,13 +42,8 @@ struct PanelToolbarModifier: ViewModifier {
                 ToolbarSpacer()
                 
                 ToolbarItem {
-                    Button {
-                        withAnimation(.easeOut) {
-                            vm.sheetSettings = true
-                        }
-                    } label: {
-                        Image(systemName: "ellipsis")
-                            .offset(x: 4)
+                    SFButton("ellipsis") {
+                        vm.sheetSettings = true
                     }
                     .keyboardShortcut("S")
                 }

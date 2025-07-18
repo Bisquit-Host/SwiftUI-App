@@ -88,10 +88,8 @@ struct MapSection: View {
             Map(position: $cameraPosition, interactionModes: [])
         }
         .contextMenu {
-            Button {
+            Button("Open in Apple Maps", image: .maps) {
                 openSafari(mapUrl)
-            } label: {
-                Label("Open in Apple Maps", image: .maps)
             }
         }
         .foregroundStyle(.foreground)

@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import AVKit
 
 struct VideoFile: View {
@@ -36,10 +36,8 @@ struct VideoFile: View {
         .toolbar {
 #if os(tvOS)
             ToolbarItem(placement: .topBarLeading) {
-                Button {
+                SFButton("arrow.left") {
                     dismiss()
-                } label: {
-                    Image(systemName: "arrow.left")
                 }
             }
             
@@ -47,7 +45,7 @@ struct VideoFile: View {
                 Button(role: .destructive) {
                     dismiss()
                 } label: {
-                    Image(systemName: "trash")
+                    Image(systemName: "")
                 }
             }
 #endif

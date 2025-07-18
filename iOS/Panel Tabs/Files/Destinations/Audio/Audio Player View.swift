@@ -31,10 +31,8 @@ struct AudioPlayerView: View {
         .toolbar {
 #if os(tvOS)
             ToolbarItem(placement: .topBarLeading) {
-                Button {
+                SFButton("arrow.left") {
                     dismiss()
-                } label: {
-                    Image(systemName: "arrow.left")
                 }
             }
             

@@ -14,10 +14,8 @@ struct UserInvitationView: View {
                 TextField("E-mail", text: $email)
                     .textContentType(.emailAddress)
 #if os(iOS)
-                Button {
+                Button("Contacts", systemImage: "person.circle.fill") {
                     sheetContacts = true
-                } label: {
-                    Label("Contacts", systemImage: "person.circle.fill")
                 }
 #endif
                 Button {
@@ -37,14 +35,12 @@ struct UserInvitationView: View {
             }
             
             Section {
-                Button {
+                Button("Invite user") {
                     Task {
                         await vm.createUser(email) {
                             dismiss()
                         }
                     }
-                } label: {
-                    Text("Invite user")
                 }
                 .disabled(vm.newUserPermissions.isEmpty)
             }

@@ -42,9 +42,7 @@ struct TextFile: View {
 #if os(iOS)
             if showSaveButton {
                 Button("Save") {
-                    Task {
-                        await vm.writeFile(vm.text, at: path + name)
-                    }
+                    save()
                 }
                 .animation(.default, value: showSaveButton)
             }
@@ -72,6 +70,12 @@ struct TextFile: View {
                 Image(systemName: "ellipsis")
             }
 #endif
+        }
+    }
+    
+    private func save() {
+        Task {
+            await vm.writeFile(vm.text, at: path + name)
         }
     }
 }

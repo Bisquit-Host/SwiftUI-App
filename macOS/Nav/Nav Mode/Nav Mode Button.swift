@@ -16,10 +16,8 @@ struct NavModeButton: View {
     var body: some View {
         @Bindable var nav = nav
         
-        Button {
+        Button(name, systemImage: icon) {
             nav.showNavModePicker = true
-        } label: {
-            Label(name, systemImage: icon)
         }
         .help("Change your navigation mode")
     }

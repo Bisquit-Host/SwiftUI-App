@@ -147,11 +147,9 @@ struct PanelOrnamentInfo: View {
             
             //            if isHovered {
             if showCustomizeButton {
-                Button {
-                    sheetOrnamentinfo = true
-                } label: {
 #warning("image")
-                    Label("Customize", systemImage: "")
+                Button("Customize", systemImage: "") {
+                    sheetOrnamentinfo = true
                 }
             }
             //            }

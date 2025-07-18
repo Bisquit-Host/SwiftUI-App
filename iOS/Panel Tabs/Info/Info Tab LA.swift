@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import PteroNet
 
 struct InfoTabLA: View {
@@ -15,7 +15,7 @@ struct InfoTabLA: View {
     }
     
     var body: some View {
-        Button {
+        SFButton("clock.badge") {
             if isActive {
                 la.stopAllLiveActivities()
             } else {
@@ -25,8 +25,6 @@ struct InfoTabLA: View {
                     await la.startLiveActivity(server)
                 }
             }
-        } label: {
-            Image(systemName: "clock.badge")
         }
         .symbolVariant(isActive ? .fill : .none)
         .foregroundStyle(isActive ? .red : .primary)

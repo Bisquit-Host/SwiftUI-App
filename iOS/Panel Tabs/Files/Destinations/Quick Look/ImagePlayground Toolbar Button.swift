@@ -23,6 +23,7 @@ struct ImagePlaygroundToolbarButton: View {
             sheetPlayground = true
         } label: {
             let icon = supportsPlayground ? "apple.intelligence" : "apple.intelligence.badge.xmark"
+            
             Image(systemName: icon)
         }
         .disabled(!supportsPlayground)

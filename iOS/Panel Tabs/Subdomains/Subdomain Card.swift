@@ -31,51 +31,47 @@ struct SubdomainCard: View {
         .foregroundStyle(.foreground)
         .contextMenu {
 #if !os(tvOS)
-            Button {
+            Button("Sync", systemImage: "arrow.trianglehead.2.clockwise.rotate.90") {
                 Task {
                     await vm.syncSubdomain(subdomain.id)
                 }
-            } label: {
-                Label("Sync", systemImage: "arrow.trianglehead.2.clockwise.rotate.90")
             }
             
-            Button {
+            Button("Copy", systemImage: "document.on.document") {
 #if os(macOS)
                 NSPasteboard.general.setString(fullDomain, forType: .URL)
 #else
                 UIPasteboard.general.string = fullDomain
 #endif
-            } label: {
-                Label("Copy", systemImage: "document.on.document")
             }
             
-            Button {
-                guard
-                    let url = URL(string: "mc-stats://add-server?address=\(fullDomain)&name=\(subdomain.subdomain)"),
-                    let fallbackUrl = URL(string: "https://apps.apple.com/app/id6740754881")
-                else {
-                    return
-                }
-                
-                openUrl(url) { success in
-                    if !success {
-                        openUrl(fallbackUrl)
-                    }
-                }
-            } label: {
-                Label("Add to MC Stats", systemImage: "arrowshape.turn.up.right")
+            Button("Add to MC Stats", systemImage: "arrowshape.turn.up.right") {
+                addToMCStats()
             }
             
             ShareLink(item: fullDomain)
 #endif
             Section {
-                Button(role: .destructive) {
+                Button("Delete", systemImage: "trash", role: .destructive) {
                     Task {
                         await vm.deleteSubdomain(subdomain.id)
                     }
-                } label: {
-                    Label("Delete", systemImage: "trash")
                 }
+            }
+        }
+    }
+    
+    private func addToMCStats() {
+        guard
+            let url = URL(string: "mc-stats://add-server?address=\(fullDomain)&name=\(subdomain.subdomain)"),
+            let fallbackUrl = URL(string: "https://apps.apple.com/app/id6740754881")
+        else {
+            return
+        }
+        
+        openUrl(url) { success in
+            if !success {
+                openUrl(fallbackUrl)
             }
         }
     }

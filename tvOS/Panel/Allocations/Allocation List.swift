@@ -19,10 +19,8 @@ struct AllocationList: View {
             }
             
             Section {
-                Button {
+                Button("Assign allocation", systemImage: "plus") {
                     sheetCreate = true
-                } label: {
-                    Label("Assign allocation", systemImage: "plus")
                 }
                 .disabled(vm.allocations.count >= server.featureLimits.allocations)
             }

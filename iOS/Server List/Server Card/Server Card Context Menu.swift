@@ -59,16 +59,12 @@ struct ServerCardContextMenu: View {
             
             if let defaultAlloc {
                 Menu {
-                    Button {
+                    Button("Add to MC Stats", systemImage: "arrowshape.turn.up.right") {
                         addToGoidacraft()
-                    } label: {
-                        Label("Add to MC Stats", systemImage: "arrowshape.turn.up.right")
                     }
                     
-                    Button {
+                    Button("Copy", systemImage: "doc.on.doc") {
                         UIPasteboard.general.string = defaultAlloc
-                    } label: {
-                        Label("Copy", systemImage: "doc.on.doc")
                     }
                     
                     ShareLink(item: defaultAlloc)

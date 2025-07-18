@@ -25,11 +25,9 @@ struct AppSettings: View {
             }
             
             Section {
-                Button {
+                Button("Log out", systemImage: "rectangle.portrait.and.arrow.right") {
                     store.isApiKeyValid = false
                     Keychain.delete(key: "selectedApiKey")
-                } label: {
-                    Label("Log out", systemImage: "rectangle.portrait.and.arrow.right")
                 }
             }
 #if DEBUG

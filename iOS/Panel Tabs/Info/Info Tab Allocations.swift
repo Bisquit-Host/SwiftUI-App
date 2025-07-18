@@ -19,30 +19,15 @@ struct InfoTabAllocation: View {
     
     var body: some View {
         Menu {
-            Button {
+            Button("Copy", systemImage: "doc.on.doc") {
                 UIPasteboard.general.string = ip
                 
                 SystemAlert.copied()
                 trigger.toggle()
-            } label: {
-                Label("Copy", systemImage: "doc.on.doc")
             }
             
-            Button {
-                guard
-                    let url = URL(string: "mc-stats://add-server?address=\(ip)&name=\(server.name)"),
-                    let fallbackURL = URL(string: "https://apps.apple.com/app/id6740754881")
-                else {
-                    return
-                }
-                
-                openUrl(url) { success in
-                    if !success {
-                        openUrl(fallbackURL)
-                    }
-                }
-            } label: {
-                Label("Add to MC Stats", systemImage: "arrowshape.turn.up.right")
+            Button("Add to MC Stats", systemImage: "arrowshape.turn.up.right") {
+                addToMCStats()
             }
             
             ShareLink(item: ip)
@@ -84,6 +69,21 @@ struct InfoTabAllocation: View {
         }
         .sheet($sheetAllocations) {
             AllocationListParent(server)
+        }
+    }
+    
+    private func addToMCStats() {
+        guard
+            let url = URL(string: "mc-stats://add-server?address=\(ip)&name=\(server.name)"),
+            let fallbackURL = URL(string: "https://apps.apple.com/app/id6740754881")
+        else {
+            return
+        }
+        
+        openUrl(url) { success in
+            if !success {
+                openUrl(fallbackURL)
+            }
         }
     }
     

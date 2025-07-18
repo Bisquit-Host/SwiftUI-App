@@ -38,10 +38,8 @@ struct UploadMenu: View {
             
             Divider()
             
-            Button {
+            Button("Pull remote file", systemImage: "link") {
                 sheetRemoteFile = true
-            } label: {
-                Label("Pull remote file", systemImage: "link")
             }
         } label: {
             Image(systemName: "square.and.arrow.down")

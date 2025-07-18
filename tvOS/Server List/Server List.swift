@@ -49,16 +49,14 @@ struct ServerList: View {
             }
             
             if store.devMode {
-                Button {
+                Button("Admin") {
                     store.adminServerList.toggle()
                     
                     Task {
                         await vm.fetchServers(store.adminServerList)
                     }
-                } label: {
-                    Text("Admin")
-                        .foregroundStyle(store.adminServerList ? .primary : .secondary)
                 }
+                .foregroundStyle(store.adminServerList ? .primary : .secondary)
 #if DEBUG
                 Button("Overview") {
                     sheetOverview = true

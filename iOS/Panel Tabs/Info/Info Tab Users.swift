@@ -44,11 +44,9 @@ struct InfoTabUsers: View {
                 .environment(vm)
         }
         .contextMenu {
-            Button {
+            Button("New user", systemImage: "person.badge.plus") {
                 sheetUsers = true
                 vm.sheetInvitation = true
-            } label: {
-                Label("New user", systemImage: "person.badge.plus")
             }
         }
     }

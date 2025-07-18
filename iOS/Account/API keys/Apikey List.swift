@@ -33,10 +33,8 @@ struct ApikeyList: View {
             }
             
             ToolbarItem(placement: .topBarTrailing) {
-                Button {
+                SFButton("plus") {
                     sheetCreate = true
-                } label: {
-                    Image(systemName: "plus")
                 }
             }
         }

@@ -1,4 +1,3 @@
-import SwiftUI
 import ScrechKit
 
 struct JsonFormatterButton: View {
@@ -8,11 +7,9 @@ struct JsonFormatterButton: View {
     
     var body: some View {
         if vm.showPrettyButton {
-            Button {
+            Button("ellipsis.curlybraces") {
                 tip.invalidate(reason: .actionPerformed)
                 vm.makePretty()
-            } label: {
-                Image(systemName: "ellipsis.curlybraces")
             }
             .popTip(tip) { action in
                 if action.id == "format-json" {

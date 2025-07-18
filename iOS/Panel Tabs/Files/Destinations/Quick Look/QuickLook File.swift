@@ -56,10 +56,8 @@ struct QuickLookFile: View {
             }
             
             Menu {
-                Button {
+                Button("Metadata", systemImage: "tag") {
                     sheetMetadata = true
-                } label: {
-                    Label("Metadata", systemImage: "tag")
                 }
                 
                 if let url = vm.fileUrl {

@@ -25,10 +25,8 @@ struct StartupCard: View {
                     Spacer()
                     
                     Menu {
-                        Button {
+                        Button("Reset to default", systemImage: "arrow.counterclockwise") {
                             value = variable.defaultValue
-                        } label: {
-                            Label("Reset to default", systemImage: "arrow.counterclockwise")
                         }
                     } label: {
                         Image(systemName: "ellipsis.circle")

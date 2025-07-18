@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct SSHList: View {
     @Environment(SSHVM.self) private var vm
@@ -41,10 +41,8 @@ struct SSHList: View {
             }
             
             ToolbarItem(placement: .topBarTrailing) {
-                Button {
+                SFButton("plus") {
                     sheetCreate = true
-                } label: {
-                    Image(systemName: "plus")
                 }
             }
         }
