@@ -110,6 +110,7 @@ struct PanelView: View {
         }
     }
     
+#warning("Split")
     private var panel: some View {
         TabView(selection: $store.lastTabPanel) {
             if let server = vm.server {
