@@ -1,7 +1,9 @@
-import SwiftUI
+import ScrechKit
 import PteroNet
 
 struct AllocationList: View {
+    @Environment(\.dismiss) private var dismiss
+    
     private var vm: AllocationVM
     
     private let server: ServerAttributes
@@ -19,11 +21,6 @@ struct AllocationList: View {
                 AllocationCard(allocation)
             }
             .onDelete(perform: delete)
-            
-            Button("Assign allocation") {
-                sheetCreate = true
-            }
-            .disabled(vm.allocations.count >= server.featureLimits.allocations)
         }
         .navigationTitle("Allocations")
         .refreshableTask {
@@ -35,6 +32,22 @@ struct AllocationList: View {
             }
         }
         .environment(vm)
+        .toolbar {
+            ToolbarItem(placement: .bottomBar) {
+                DismissButton {
+                    dismiss()
+                }
+            }
+#if os(iOS) || os(macOS)
+            ToolbarSpacer(.flexible, placement: .bottomBar)
+#endif
+            ToolbarItem(placement: .bottomBar) {
+                SFButton("link.badge.plus") {
+                    sheetCreate = true
+                }
+                .disabled(vm.allocations.count >= server.featureLimits.allocations)
+            }
+        }
     }
     
     private func delete(offsets: IndexSet) {

@@ -1,6 +1,5 @@
 import ScrechKit
 
-#warning("Remove?")
 struct DismissButton: View {
     var dismiss: () -> Void
     
@@ -10,5 +9,6 @@ struct DismissButton: View {
         Button(action: dismiss) {
             Image(systemName: "xmark")
         }
+        .foregroundStyle(.red)
     }
 }
