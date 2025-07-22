@@ -4,7 +4,6 @@ import DeviceKit
 struct DesignSettings: View {
     @EnvironmentObject private var store: ValueStore
     
-    @State private var animate = true
     @State private var imagePicker = false
     
     var body: some View {
