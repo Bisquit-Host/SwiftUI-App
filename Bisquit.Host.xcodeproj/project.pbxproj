@@ -2229,6 +2229,7 @@
 		F3ADA60D2D9BFC9D00F2DAA6 /* Power Switch Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Switch Toolbar.swift"; sourceTree = "<group>"; };
 		F3ADA61C2D9C16AC00F2DAA6 /* Loc Logs.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Loc Logs.txt"; sourceTree = "<group>"; };
 		F3AE522229ACF7D600CB3895 /* Server Card VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card VM.swift"; sourceTree = "<group>"; };
+		F3AE99DB2E2F87FC00D70249 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F3AF91C02B423492001D8F80 /* SSH VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SSH VM.swift"; sourceTree = "<group>"; };
 		F3AF91C42B423535001D8F80 /* SSH List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SSH List.swift"; sourceTree = "<group>"; };
 		F3AF91C82B4235BB001D8F80 /* SSH Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SSH Card.swift"; sourceTree = "<group>"; };
@@ -2704,6 +2705,7 @@
 		F31BA51A2958FF7C0006D126 = {
 			isa = PBXGroup;
 			children = (
+				F3AE99DB2E2F87FC00D70249 /* README.md */,
 				F31BA5252958FF7C0006D126 /* iOS */,
 				F31BA5372958FF7D0006D126 /* watchOS */,
 				F3000E06295A341000ABD30A /* tvOS */,
