@@ -6534,7 +6534,14 @@
 
     },
     "Use the button in the top right corner to create one" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Используйте кнопку в правом верхнем углу, чтобы создать новый"
+          }
+        }
+      }
     },
     "Useful links" : {
       "localizations" : {
