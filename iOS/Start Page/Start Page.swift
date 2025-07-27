@@ -38,8 +38,8 @@ struct StartPage: View {
                     Image(systemName: "doc.on.clipboard")
                         .footnote(.bold)
                         .frame(40)
-                        .glassEffect()
                 }
+                .glassEffect()
                 .foregroundStyle(.foreground)
             }
             .padding(.horizontal)

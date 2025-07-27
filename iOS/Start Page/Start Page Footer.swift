@@ -12,21 +12,25 @@ struct StartPageFooter: View {
     var body: some View {
         HStack {
             if showIcloud {
-                SFButton("key.icloud") {
+                Button {
                     vm.sheetCloudKeys = true
+                } label: {
+                    Image(systemName: "key.icloud")
+                        .frame(40)
                 }
-                .padding()
-                .glassEffect()
             }
             
             Spacer()
             
-            SFButton("externaldrive.badge.plus") {
+            Button {
                 vm.sheetBrowsePlans = true
+            } label: {
+                Image(systemName: "externaldrive.badge.plus")
+                    .frame(40)
             }
-            .padding()
-            .glassEffect()
         }
+        .buttonBorderShape(.circle)
+        .buttonStyle(.glass)
         .title3(.bold)
         .foregroundStyle(.white)
         .padding(.vertical, 32)
