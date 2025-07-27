@@ -12,19 +12,18 @@ struct ImagePlaygroundButton: View {
     @State private var sheetPlayground = false
     
     var body: some View {
-        Button {
-            sheetPlayground = true
-        } label: {
-            let icon = supportsPlayground ? "apple.intelligence" : "apple.intelligence.badge.xmark"
-            
-            Image(systemName: icon)
-                .symbolRenderingMode(.multicolor)
-        }
-        .keyboardShortcut("P")
-        .disabled(!supportsPlayground)
-        .sheet($sheetPlayground) {
-            NavigationView {
-                ImagePlayground(at: root)
+        if supportsPlayground {
+            Button {
+                sheetPlayground = true
+            } label: {
+                Image(systemName: "apple.intelligence")
+                    .symbolRenderingMode(.multicolor)
+            }
+            .keyboardShortcut("P")
+            .sheet($sheetPlayground) {
+                NavigationView {
+                    ImagePlayground(at: root)
+                }
             }
         }
     }

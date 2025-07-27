@@ -12,12 +12,14 @@ struct PanelToolbarModifier: ViewModifier {
         content
             .toolbar {
                 ToolbarItemGroup {
+                    // Console
                     if store.lastTabPanel == .console {
                         SFButton("bold.italic.underline") {
                             consoleVM.inspectorPresented = true
                         }
                     }
                     
+                    // Info
                     if store.lastTabPanel == .info {
                         PowerSwitchToolbar()
                         
@@ -28,6 +30,7 @@ struct PanelToolbarModifier: ViewModifier {
                         }
                     }
                     
+                    // Files
                     if store.lastTabPanel == .files {
                         ImagePlaygroundButton(fileVM.path)
                         
