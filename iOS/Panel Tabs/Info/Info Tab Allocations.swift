@@ -20,7 +20,7 @@ struct InfoTabAllocation: View {
     var body: some View {
         Menu {
             Button("Copy", systemImage: "doc.on.doc") {
-                UIPasteboard.general.string = ip
+                Pasteboard.copy(ip)
                 
                 SystemAlert.copied()
                 trigger.toggle()

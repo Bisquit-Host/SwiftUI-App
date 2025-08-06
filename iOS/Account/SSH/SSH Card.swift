@@ -27,7 +27,7 @@ struct SSHCard: View {
         }
         .contextMenu {
             MenuButton("Copy", icon: "doc.on.doc") {
-                UIPasteboard.general.string = key.publicKey
+                Pasteboard.copy(key.publicKey)
             }
             
             ShareLink("Share...", item: key.publicKey)

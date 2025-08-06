@@ -16,7 +16,7 @@ struct CloudKeyContextMenu: View {
         
 #if !os(tvOS)
         MenuButton("Copy", icon: "doc.on.doc") {
-            UIPasteboard.general.string = key.key
+            Pasteboard.copy(key.key)
             SystemAlert.copied()
         }
         

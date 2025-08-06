@@ -48,7 +48,7 @@ struct AccountView: View {
                     
                     //                    Menu {
                     //                        MenuButton("Copy URL", icon: "doc.on.doc") {
-                    //                            UIPasteboard.general.string = vm.qrCodeUrl
+                    //                            Pasteboard.copy(vm.qrCodeUrl)
                     //                            SystemAlert.copied()
                     //                        }
                     //

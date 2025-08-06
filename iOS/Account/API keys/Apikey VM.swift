@@ -24,10 +24,8 @@ final class ApikeyVM {
             let token = model.meta?.token
             
             if let token {
-//                await MainActor.run {
-                    UIPasteboard.general.string = id + token
-                    await SystemAlert.copied()
-//                }
+                Pasteboard.copy(id + token)
+                await SystemAlert.copied()
             }
             
             await fetchKeys()

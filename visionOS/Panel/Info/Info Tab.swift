@@ -24,8 +24,7 @@ struct InfoTab: View {
                 Spacer()
                 
                 Button(server.id) {
-                    UIPasteboard.general.string = server.id
-                    
+                    Pasteboard.copy(server.id)
                     SystemAlert.copied()
                 }
                 .padding(8)

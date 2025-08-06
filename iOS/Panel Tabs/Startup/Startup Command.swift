@@ -26,7 +26,7 @@ struct StartupCommand: View {
                 Spacer()
                 
                 SFButton("document.on.document") {
-                    UIPasteboard.general.string = command
+                    Pasteboard.copy(command)
                     SystemAlert.copied()
                 }
                 .foregroundStyle(.foreground)

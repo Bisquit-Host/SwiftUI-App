@@ -38,11 +38,7 @@ struct SubdomainCard: View {
             }
             
             Button("Copy", systemImage: "document.on.document") {
-#if os(macOS)
-                NSPasteboard.general.setString(fullDomain, forType: .URL)
-#else
-                UIPasteboard.general.string = fullDomain
-#endif
+                Pasteboard.copy(fullDomain)
             }
             
             Button("Add to MC Stats", systemImage: "arrowshape.turn.up.right") {

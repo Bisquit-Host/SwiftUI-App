@@ -64,7 +64,7 @@ struct ServerCardContextMenu: View {
                     }
                     
                     Button("Copy", systemImage: "doc.on.doc") {
-                        UIPasteboard.general.string = defaultAlloc
+                        Pasteboard.copy(defaultAlloc)
                     }
                     
                     ShareLink(item: defaultAlloc)

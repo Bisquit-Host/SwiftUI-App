@@ -57,7 +57,7 @@ struct SftpDetails: View {
     }
     
     private func copy(_ string: String) {
-        UIPasteboard.general.string = string
+        Pasteboard.copy(string)
         SystemAlert.copied()
     }
 }

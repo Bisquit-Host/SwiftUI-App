@@ -58,7 +58,7 @@ struct DatabaseCard: View {
 #if !os(tvOS)
             if let password = db.password {
                 Button("Copy password") {
-                    UIPasteboard.general.string = password
+                    Pasteboard.copy(password)
                 }
             }
 #endif

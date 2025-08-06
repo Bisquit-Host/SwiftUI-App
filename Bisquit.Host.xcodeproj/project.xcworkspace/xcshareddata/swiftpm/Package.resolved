@@ -88,7 +88,7 @@
       "location" : "https://github.com/TopScrech/PteroNet",
       "state" : {
         "branch" : "main",
-        "revision" : "4a9d260f3f50d2dd4d8c503ef1a22d95114a1280"
+        "revision" : "f46b1db10ef15be455576ea2a9dc7835e3036d39"
       }
     },
     {
@@ -106,7 +106,7 @@
       "location" : "https://github.com/TopScrech/SafariCover",
       "state" : {
         "branch" : "main",
-        "revision" : "6846539c6cf560373fa357fc8df82896705d390c"
+        "revision" : "cb3a2f019c90cc85cf6602f051de03e2a2177f2e"
       }
     },
     {
@@ -115,7 +115,7 @@
       "location" : "https://github.com/TopScrech/ScrechKit",
       "state" : {
         "branch" : "main",
-        "revision" : "ab825871ce1732681425385c9288817379c3f824"
+        "revision" : "b4ba3efcc25b9e7ce2b8f9ef6f72ef5d7253d305"
       }
     },
     {
@@ -132,8 +132,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-collections.git",
       "state" : {
-        "revision" : "c1805596154bb3a265fd91b8ac0c4433b4348fb0",
-        "version" : "1.2.0"
+        "revision" : "8c0c0a8b49e080e54e5e328cc552821ff07cd341",
+        "version" : "1.2.1"
       }
     },
     {

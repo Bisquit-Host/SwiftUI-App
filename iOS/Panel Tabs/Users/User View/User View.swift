@@ -75,7 +75,7 @@ struct UserView: View {
 #if os(macOS)
                             NSPasteboard.general.setString(user.email, forType: .string)
 #else
-                            UIPasteboard.general.string = user.email
+                            Pasteboard.copy(user.email)
                             SystemAlert.copied()
 #endif
                         }

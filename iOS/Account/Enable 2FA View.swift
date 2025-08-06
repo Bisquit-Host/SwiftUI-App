@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct Enable2FAView: View {
     @Environment(AccountVM.self) private var vm
@@ -38,7 +38,7 @@ struct Enable2FAView: View {
             HStack {
                 VStack {
                     Button {
-                        UIPasteboard.general.string = vm.qrCodeUrl
+                        Pasteboard.copy(vm.qrCodeUrl)
                         SystemAlert.copied()
                     } label: {
                         Text("Copy the setup url")
