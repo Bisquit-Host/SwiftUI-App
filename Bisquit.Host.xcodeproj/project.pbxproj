@@ -3337,8 +3337,8 @@
 				F3D902DD29DC3E47004E76C9 /* Cache */,
 				F385824429D6261300BEEE1D /* Biometry */,
 				F385824329D6260500BEEE1D /* App Icon */,
-				F3B66DEE2D60223100F1841B /* Debug & Dev */,
 				F300C4692D8C38E700743300 /* Other */,
+				F3B66DEE2D60223100F1841B /* Debug & Dev */,
 			);
 			path = Settings;
 			sourceTree = "<group>";

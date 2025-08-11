@@ -11,32 +11,10 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        if ValueStore().isApiKeyValid {
-            registerForPushNotifications(application)
-        }
+        registerForPushNotifications(application)
         
         return true
     }
-        
-    // MARK: - Contacts
-#if os(iOS)
-    func requestPermission() {
-        switch CNContactStore.authorizationStatus(for: .contacts) {
-        case .authorized:
-            break
-            
-        case .denied, .notDetermined:
-            CNContactStore().requestAccess(for: .contacts) { _, error in
-                if let error {
-                    print("Error requesting permissions:", error)
-                }
-            }
-            
-        default:
-            break
-        }
-    }
-#endif
     
     private func registerForPushNotifications(_ application: UIApplication) {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { [weak self] granted, _ in
@@ -70,7 +48,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let token = tokenParts.joined()
         
-        print("Device Token:", token)
+        print("Push token:", token)
         
         Task {
             await sendToken(token)
@@ -83,6 +61,26 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     ) {
         print("Failed to register for remote notifications:", error)
     }
+    
+    // MARK: - Contacts
+#if os(iOS)
+    func requestPermission() {
+        switch CNContactStore.authorizationStatus(for: .contacts) {
+        case .authorized:
+            break
+            
+        case .denied, .notDetermined:
+            CNContactStore().requestAccess(for: .contacts) { _, error in
+                if let error {
+                    print("Error requesting permissions:", error)
+                }
+            }
+            
+        default:
+            break
+        }
+    }
+#endif
 }
 
 private func sendToken(_ token: String) async {

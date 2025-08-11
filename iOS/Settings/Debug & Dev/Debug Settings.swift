@@ -22,14 +22,6 @@ struct DebugSettings: View {
             
             DebugSettingsTips()
             
-            Section("Contacts provider") {
-                Toggle("Save contacts automatically", isOn: $store.contactsProviderEnabled)
-                
-                Button("Enable Extension") {
-                    enableExtension()
-                }
-            }
-            
             Section {
                 Button("Clear all cookies") {
                     clearAllCookies()
@@ -41,6 +33,14 @@ struct DebugSettings: View {
                     GamepadDebug()
                 } label: {
                     Label("Gamepad test", systemImage: "gamecontroller")
+                }
+            }
+            
+            Section("Contacts provider") {
+                Toggle("Save contacts automatically", isOn: $store.contactsProviderEnabled)
+                
+                Button("Enable Extension") {
+                    enableExtension()
                 }
             }
         }

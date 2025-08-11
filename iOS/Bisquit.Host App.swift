@@ -30,7 +30,7 @@ struct BisquitHostApp: App {
 #endif
     
 #if os(iOS)
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
 #endif
     
     private let container: ModelContainer
