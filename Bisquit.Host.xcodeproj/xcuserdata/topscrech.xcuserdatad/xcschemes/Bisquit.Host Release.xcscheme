@@ -38,6 +38,17 @@
          </BuildableReference>
       </CodeCoverageTargets>
       <Testables>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F3D296062AF3BE5800ED43A0"
+               BuildableName = "UI Tests.xctest"
+               BlueprintName = "UI Tests"
+               ReferencedContainer = "container:Bisquit.Host.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
