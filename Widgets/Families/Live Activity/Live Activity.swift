@@ -24,7 +24,7 @@ final class LiveActivity {
     
     func postRequest(WSUrl: String, WSToken: String, liveActivityToken: String) {
         guard
-            let url = URL(string: "https://api.topscrech.dev/liveactivity/start")
+            let url = URL(string: "https://push-activity.bisquit.host/liveactivity/start")
         else {
             return
         }
