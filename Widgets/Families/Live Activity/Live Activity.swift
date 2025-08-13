@@ -34,7 +34,7 @@ final class LiveActivity {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
 #if DEBUG
-        let environment = "sandbox"
+        let environment = "development"
 #else
         let environment = "production"
 #endif
