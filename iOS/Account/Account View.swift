@@ -15,6 +15,10 @@ struct AccountView: View {
                 if let account = vm.account {
                     let name = "\(account.firstName) \(account.lastName)"
                     
+#if DEBUG
+                    param("ID", value: account.id.description)
+#endif
+                    
                     param("Name", value: name)
                     param("E-mail", value: account.email)
                 }
