@@ -27,6 +27,7 @@ final class LiveActivity {
         WSToken: String,
         liveActivityToken: String
     ) async throws {
+        
         guard
             let url = URL(string: "https://push-activity.bisquit.host/liveactivity/start")
         else {
@@ -41,7 +42,7 @@ final class LiveActivity {
 #else
         let environment = "production"
 #endif
-        let body: [String: Any] = [
+        let body = [
             "WSUrl":             WSUrl,
             "WSToken":           WSToken,
             "liveActivityToken": liveActivityToken,
