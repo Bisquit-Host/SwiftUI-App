@@ -43,7 +43,8 @@ final class LiveActivity {
             "WSUrl":             WSUrl,
             "WSToken":           WSToken,
             "liveActivityToken": liveActivityToken,
-            "environment":       environment
+            "environment":       environment,
+            "appID":             Bundle.main.bundleIdentifier ?? "host.bisquit.Bisquit.Host"
         ]
         
         request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
