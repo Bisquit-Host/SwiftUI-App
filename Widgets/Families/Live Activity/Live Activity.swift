@@ -49,7 +49,7 @@ final class LiveActivity {
         
         request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
         
-        URLSession.shared.dataTask(with: request) { data, response, error in
+        URLSession.shared.dataTask(with: request) { _, _, error in
             guard error == nil else {
                 return
             }
