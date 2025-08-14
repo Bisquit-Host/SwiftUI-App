@@ -22,7 +22,11 @@ final class LiveActivity {
     
     var LAToken = ""
     
-    func postRequest(WSUrl: String, WSToken: String, liveActivityToken: String) {
+    func postRequest(
+        WSUrl: String,
+        WSToken: String,
+        liveActivityToken: String
+    ) {
         guard
             let url = URL(string: "https://push-activity.bisquit.host/liveactivity/start")
         else {
@@ -32,13 +36,11 @@ final class LiveActivity {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
 #if DEBUG
         let environment = "development"
 #else
         let environment = "production"
 #endif
-        
         let body: [String: Any] = [
             "WSUrl":             WSUrl,
             "WSToken":           WSToken,
@@ -140,9 +142,11 @@ final class LiveActivity {
                         //                        do {
                         //                            let frequentUpdateEnabled = ActivityAuthorizationInfo().frequentPushesEnabled
                         //
-                        //                            try await self.sendPushToken(hero: activity.attributes.hero,
-                        //                                                         pushTokenString: pushTokenString,
-                        //                                                         frequentUpdateEnabled: frequentUpdateEnabled)
+                        //                        try await self.sendPushToken(
+                        //                            hero: activity.attributes.hero,
+                        //                            pushTokenString: pushTokenString,
+                        //                            frequentUpdateEnabled: frequentUpdateEnabled
+                        //                        )
                         //                        } catch {
                         //                            self.errorMessage = """
                         //                            Failed to send push token to server
