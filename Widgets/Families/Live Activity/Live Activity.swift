@@ -53,8 +53,6 @@ final class LiveActivity {
             guard error == nil else {
                 return
             }
-            //            guard let data, error == nil else { return }
-            // Handle the response and data here
         }
         .resume()
     }
@@ -108,7 +106,7 @@ final class LiveActivity {
                 group.addTask { @MainActor in
                     for await contentState in activity.contentUpdates {
                         self.activityViewState?.contentState = contentState.state
-                        //
+                        
                         //                        guard let activity = self.currentActivity else {
                         //                            return
                         //                        }
@@ -137,7 +135,7 @@ final class LiveActivity {
                         
                         self.LAToken = pushTokenString
                         
-                        print("New push token: \(pushTokenString)")
+                        print("New push token:", pushTokenString)
                         
                         //                        do {
                         //                            let frequentUpdateEnabled = ActivityAuthorizationInfo().frequentPushesEnabled
