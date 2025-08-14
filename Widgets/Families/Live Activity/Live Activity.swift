@@ -26,13 +26,13 @@ final class LiveActivity {
         WSUrl: String,
         WSToken: String,
         liveActivityToken: String
-    ) {
+    ) async throws {
         guard
             let url = URL(string: "https://push-activity.bisquit.host/liveactivity/start")
         else {
-            return
+            throw URLError(.badURL)
         }
-#warning("migrate to an async network call")
+        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -49,14 +49,16 @@ final class LiveActivity {
             "appID":             Bundle.main.bundleIdentifier ?? "host.bisquit.Bisquit.Host"
         ]
         
-        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
+        request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
         
-        URLSession.shared.dataTask(with: request) { _, _, error in
-            guard error == nil else {
-                return
-            }
+        let (_, response) = try await URLSession.shared.data(for: request)
+        
+        guard
+            let httpResponse = response as? HTTPURLResponse,
+            (200..<300).contains(httpResponse.statusCode)
+        else {
+            throw URLError(.badServerResponse)
         }
-        .resume()
     }
     
     func consoleDetails(_ id: String) async {
@@ -65,7 +67,7 @@ final class LiveActivity {
             let socket = model.socket
             let token = model.token
             
-            postRequest(
+            try await postRequest(
                 WSUrl: socket.description,
                 WSToken: token,
                 liveActivityToken: LAToken
@@ -185,11 +187,9 @@ final class LiveActivity {
             
             setup(activity)
             
-            delay(2) {
-                Task {
-                    await self.consoleDetails(server.id)
-                }
-            }
+            try await Task.sleep(nanoseconds: 2 * 1_000_000_000)
+            
+            await self.consoleDetails(server.id)
         } catch {
             print("Error starting live activity:", error.localizedDescription)
         }
