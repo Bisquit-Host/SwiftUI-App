@@ -86,7 +86,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
 private func sendToken(_ token: String) async {
     if let pterID = await fetchPterID() {
-        postPushToken(pterID: pterID, token: token)
+        await postPushToken(pterID: pterID, token: token)
     }
 }
 
@@ -99,10 +99,8 @@ private func fetchPterID() async -> Int? {
     }
 }
 
-private func postPushToken(pterID: Int, token: String) {
-    guard
-        let url = URL(string: "https://push-activity.bisquit.host/user/push_tokens/add")
-    else {
+private func postPushToken(pterID: Int, token: String) async {
+    guard let url = URL(string: "https://push-activity.bisquit.host/user/push_tokens/add") else {
         return
     }
     
@@ -119,11 +117,10 @@ private func postPushToken(pterID: Int, token: String) {
     
     request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
     
-    URLSession.shared.dataTask(with: request) { _, _, error in
-        if let error {
-            print(error.localizedDescription)
-        }
+    do {
+        let (_, _) = try await URLSession.shared.data(for: request)
+    } catch {
+        print(error.localizedDescription)
     }
-    .resume()
 }
 #endif
