@@ -28,7 +28,7 @@ final class LiveActivity {
         else {
             return
         }
-        
+#warning("migrate to an async network call")
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
