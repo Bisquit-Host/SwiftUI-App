@@ -100,7 +100,9 @@ private func fetchPterID() async -> Int? {
 }
 
 private func postPushToken(pterID: Int, token: String) async {
-    guard let url = URL(string: "https://push-activity.bisquit.host/user/push_tokens/add") else {
+    let link = "https://push-activity.bisquit.host/user/push_tokens/add"
+    
+    guard let url = URL(string: link) else {
         return
     }
     
