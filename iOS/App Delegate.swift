@@ -1,5 +1,6 @@
 import SwiftUI
 import PteroNet
+import DeviceKit
 
 #if canImport(Contacts)
 import Contacts
@@ -84,21 +85,21 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 private func sendToken(_ token: String) async {
-    if let email = await fetchEmail() {
-        postPushToken(email: email, token: token)
+    if let pterID = await fetchPterID() {
+        postPushToken(pterID: pterID, token: token)
     }
 }
 
-private func fetchEmail() async -> String? {
+private func fetchPterID() async -> Int? {
     do {
-        return try await accountDetailsAPI().email
+        return try await accountDetailsAPI().id
     } catch {
         SystemAlert.error(error)
         return nil
     }
 }
 
-private func postPushToken(email: String, token: String) {
+private func postPushToken(pterID: Int, token: String) {
     guard
         let url = URL(string: "https://push-activity.bisquit.host/user/push_tokens/add")
     else {
@@ -109,10 +110,11 @@ private func postPushToken(email: String, token: String) {
     request.httpMethod = "POST"
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
     
-    let body = [
-        "email": email,
-        "type": "Apple",
-        "token": token
+    let body: [String: Any] = [
+        "id": pterID,
+        "type": "apple",
+        "token": token,
+        "device": Device.current.description
     ]
     
     request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
