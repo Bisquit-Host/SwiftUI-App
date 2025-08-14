@@ -40,10 +40,10 @@ final class LiveActivity {
 #endif
         
         let body: [String: Any] = [
-            "WSUrl":                WSUrl,
-            "WSToken":              WSToken,
-            "liveActivityToken":    liveActivityToken,
-            "environment":          environment
+            "WSUrl":             WSUrl,
+            "WSToken":           WSToken,
+            "liveActivityToken": liveActivityToken,
+            "environment":       environment
         ]
         
         request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
