@@ -13,14 +13,11 @@ private extension Data {
 
 @Observable
 final class LiveActivity {
-    var liveActivityId = ""
-    var newEmoji = ""
-    
     private var currentActivity: Activity<WidgetsAttributes>? = nil
+    private var LAToken = ""
+    
     var activityViewState: ActivityViewState? = nil
     var errorMessage: String? = nil
-    
-    var LAToken = ""
     
     func postRequest(
         WSUrl: String,
