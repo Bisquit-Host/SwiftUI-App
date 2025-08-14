@@ -202,11 +202,13 @@ final class LiveActivity {
     //                return
     //            }
     //
-    //            let updatedState = WidgetsAttributes.ContentState(latestMessage: "Пыж")
-    //            await activity.update(ActivityContent(state: updatedState,
-    //                                                  staleDate: nil
-    //                                                  //                                                  staleDate: Date().addingTimeInterval(3600)
-    //                                                 ))
+    //            let updatedState = WidgetsAttributes.ContentState(latestMessage: "Pyzh")
+    //
+    //            await activity.update(ActivityContent(
+    //                state: updatedState,
+    //                staleDate: nil
+    //                //staleDate: Date().addingTimeInterval(3600)
+    //            ))
     //        }
     //    }
     
