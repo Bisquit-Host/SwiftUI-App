@@ -59,22 +59,6 @@ final class LiveActivity {
         }
     }
     
-    func consoleDetails(_ id: String) async {
-        do {
-            let model = try await consoleDetailsAPI(id)
-            let socket = model.socket
-            let token = model.token
-            
-            try await postRequest(
-                WSUrl: socket.description,
-                WSToken: token,
-                liveActivityToken: LAToken
-            )
-        } catch {
-            networkCallError(#function, error)
-        }
-    }
-    
     func setup(_ activity: Activity<WidgetsAttributes>) {
         currentActivity = activity
         
@@ -84,15 +68,15 @@ final class LiveActivity {
             pushToken: activity.pushToken?.hexadecimalString
         )
         
-        observeActivity(activity: activity)
+        observeActivity(activity)
     }
     
-    func cleanUpDismissedActivity() {
+    private func cleanUpDismissedActivity() {
         currentActivity = nil
         activityViewState = nil
     }
     
-    func observeActivity(activity: Activity<WidgetsAttributes>) {
+    private func observeActivity(_ activity: Activity<WidgetsAttributes>) {
         Task {
             await withTaskGroup(of: Void.self) { group in
                 group.addTask { @MainActor in
@@ -209,6 +193,22 @@ final class LiveActivity {
     //            ))
     //        }
     //    }
+    
+    private func consoleDetails(_ id: String) async {
+        do {
+            let model = try await consoleDetailsAPI(id)
+            let socket = model.socket
+            let token = model.token
+            
+            try await postRequest(
+                WSUrl: socket.description,
+                WSToken: token,
+                liveActivityToken: LAToken
+            )
+        } catch {
+            networkCallError(#function, error)
+        }
+    }
     
     func stopAllLiveActivities() {
         Task {
