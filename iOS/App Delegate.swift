@@ -100,7 +100,7 @@ private func fetchEmail() async -> String? {
 
 private func postPushToken(email: String, token: String) {
     guard
-        let url = URL(string: "http://push-activity.bisquit.host/user/push_tokens/add")
+        let url = URL(string: "https://push-activity.bisquit.host/user/push_tokens/add")
     else {
         return
     }
