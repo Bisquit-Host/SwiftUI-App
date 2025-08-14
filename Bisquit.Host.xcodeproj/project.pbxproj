@@ -2860,20 +2860,20 @@
 				F36B73772C8AE93000E858FE /* Resources Widget */,
 				F323BFA02B20DC7A00116B97 /* Power Widget */,
 				F36B737B2C8AEA2D00E858FE /* System Small */,
-				F337B40C2A89FDFB00DD79AA /* New Group */,
+				F337B40C2A89FDFB00DD79AA /* Accessory Circular */,
 				F38282012B0E14980088C48B /* Live Activity */,
 			);
 			path = Families;
 			sourceTree = "<group>";
 		};
-		F337B40C2A89FDFB00DD79AA /* New Group */ = {
+		F337B40C2A89FDFB00DD79AA /* Accessory Circular */ = {
 			isa = PBXGroup;
 			children = (
 				F337B40A2A89FC5100DD79AA /* Accessory Circular View.swift */,
 				F337B40D2A89FE0D00DD79AA /* Static Provider.swift */,
 				F337B40F2A89FE5C00DD79AA /* Static Entry.swift */,
 			);
-			path = "New Group";
+			path = "Accessory Circular";
 			sourceTree = "<group>";
 		};
 		F337C15E2A8C2B19006F321C /* Startup */ = {
