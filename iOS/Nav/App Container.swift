@@ -46,7 +46,7 @@ struct AppContainer: View {
 #if !os(iOS) || !os(visionOS)
         .environment(updater)
 #endif
-        .preferredColorScheme(store.colorTheme.scheme)
+        .preferredColorScheme(store.appearance.scheme)
         .onOpenURL(perform: linking.handleDeepLink)
         .onFirstAppear {
             await updater.checkForUpdates()

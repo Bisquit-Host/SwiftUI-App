@@ -9,7 +9,7 @@ final class ValueStore: ObservableObject {
     @AppStorage("enable_game_center") var enableGameCenter = true
     @AppStorage("hide_status_bar") var hideStatusBar = false
     @AppStorage("hide_server_names") var hideServerNames = false
-    @AppStorage("color_theme") var colorTheme: ColorTheme = .system
+    @AppStorage("color_theme") var appearance: ColorTheme = .system
     @Published var updateServers = false // Triggers server card update
     @Published var updateBackground = false // Triggers background image update
     
