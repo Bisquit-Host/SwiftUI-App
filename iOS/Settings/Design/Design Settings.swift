@@ -28,7 +28,7 @@ struct DesignSettings: View {
                 }
             }
             
-            Picker("Color theme", selection: $store.appearance) {
+            Picker("Appearance", selection: $store.appearance) {
                 ForEach(ColorTheme.allCases) { theme in
                     Text(theme.loc)
                         .tag(theme)
