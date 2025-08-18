@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct ImagePlaygroundToolbarButton: View {
     @Environment(\.supportsImagePlayground) private var supportsPlayground
@@ -19,17 +19,14 @@ struct ImagePlaygroundToolbarButton: View {
     @State private var sheetPlayground = false
     
     var body: some View {
-        Button {
-            sheetPlayground = true
-        } label: {
-            let icon = supportsPlayground ? "apple.intelligence" : "apple.intelligence.badge.xmark"
-            
-            Image(systemName: icon)
-        }
-        .disabled(!supportsPlayground)
-        .sheet($sheetPlayground) {
-            NavigationStack {
-                ImagePlayground(url, at: root)
+        if supportsPlayground {
+            SFButton("apple.intelligence") {
+                sheetPlayground = true
+            }
+            .sheet($sheetPlayground) {
+                NavigationStack {
+                    ImagePlayground(url, at: root)
+                }
             }
         }
     }
@@ -37,4 +34,5 @@ struct ImagePlaygroundToolbarButton: View {
 
 //#Preview {
 //    ImagePlaygroundToolbarButton()
+//        .darkSchemePreferred()
 //}
