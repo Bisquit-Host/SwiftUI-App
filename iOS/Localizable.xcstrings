@@ -3145,7 +3145,14 @@
       }
     },
     "Enter a folder name" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Введите имя папки"
+          }
+        }
+      }
     },
     "Enter or drag-and-drop your public SSH-key" : {
       "localizations" : {

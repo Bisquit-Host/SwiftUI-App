@@ -27,7 +27,6 @@ struct FileView: View {
         NavigationLink {
             if mimeType.contains("directory") {
                 FolderFile(id, path: root + name + "/")
-                
             } else {
                 Group {
                     if mimeType.contains("text") || mimeType.contains("json") {
