@@ -74,7 +74,7 @@ struct ServerList: View {
 }
 
 #Preview {
-    NavigationView {
+    NavigationStack {
         ServerList()
     }
     .environment(ServerListVM())

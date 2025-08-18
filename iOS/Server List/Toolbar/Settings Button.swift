@@ -49,7 +49,7 @@ struct SettingsButton: View {
             AccountParent()
         }
         .sheet($sheetSettings) {
-            NavigationView {
+            NavigationStack {
                 SettingsView()
             }
         }

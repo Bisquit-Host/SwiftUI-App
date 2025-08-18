@@ -41,7 +41,7 @@ struct ServerList: View {
             await vm.fetchServers(store.adminServerList)
         }
         .sheet($sheetSettings) {
-            NavigationView {
+            NavigationStack {
                 AppSettings()
             }
         }
@@ -87,6 +87,7 @@ struct ServerList: View {
     ServerList()
         .padding()
         .glassBackgroundEffect()
+        .darkSchemePreferred()
         .environment(ServerListVM())
         .environmentObject(ValueStore())
 }

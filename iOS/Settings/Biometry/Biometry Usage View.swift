@@ -4,7 +4,7 @@ struct BiometryUsageView: View {
     @EnvironmentObject private var store: ValueStore
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 Text("Biometry usage description")
                     .rounded()
@@ -20,5 +20,6 @@ struct BiometryUsageView: View {
 
 #Preview {
     BiometryUsageView()
+        .darkSchemePreferred()
         .environmentObject(ValueStore())
 }

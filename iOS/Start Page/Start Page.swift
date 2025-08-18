@@ -6,7 +6,6 @@ struct StartPage: View {
     @Environment(NavState.self) private var nav
     @EnvironmentObject var store: ValueStore
     
-    @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) var modelContext
     @Query(animation: .default) var keys: [APIKey]
     
@@ -107,7 +106,7 @@ struct StartPage: View {
 }
 
 #Preview {
-    NavigationView {
+    NavigationStack {
         StartPage()
     }
     .environment(NavState())

@@ -88,7 +88,7 @@ struct Intro: View {
             scrollPosition.scrollTo(x: currentScrollOffset)
         }
         .fullScreenCover($fullScreenCover) {
-            NavigationView {
+            NavigationStack {
                 StartPage()
             }
         }

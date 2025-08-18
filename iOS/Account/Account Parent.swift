@@ -12,21 +12,21 @@ struct AccountParent: View {
     var body: some View {
         TabView(selection: $accountSelectedTab) {
             Tab("Account", systemImage: "person.circle", value: 0) {
-                NavigationView {
+                NavigationStack {
                     AccountView()
                 }
                 .environment(vm)
             }
             
             Tab("API-keys", systemImage: "key.2.on.ring", value: 1) {
-                NavigationView {
+                NavigationStack {
                     ApikeyList()
                 }
                 .environment(apiKeyVM)
             }
             
             Tab("SSH-keys", systemImage: "key.2.on.ring", value: 2) {
-                NavigationView {
+                NavigationStack {
                     SSHList()
                 }
                 .environment(sshVM)

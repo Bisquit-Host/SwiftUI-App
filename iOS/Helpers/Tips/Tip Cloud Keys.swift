@@ -20,6 +20,7 @@ struct Tip_CloudKeys: Tip {
             .tipBackground(.ultraThinMaterial)
             .padding()
     }
+    .darkSchemePreferred()
 #if !os(watchOS)
     .popoverTip(Tip_CloudKeys())
 #endif

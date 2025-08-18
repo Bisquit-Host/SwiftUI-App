@@ -195,8 +195,9 @@ struct PanelView: View {
 }
 
 #Preview {
-    NavigationView {
+    NavigationStack {
         PanelView(PreviewProp.serverAttributes)
     }
+    .darkSchemePreferred()
     .navigationViewStyle(.stack)
 }

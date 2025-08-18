@@ -2,9 +2,6 @@ import ScrechKit
 import PteroNet
 
 struct Guide: View {
-    @Environment(\.dismiss) private var dismiss
-    @Environment(\.colorScheme) private var colorScheme
-    
     private let steps: [LocalizedStringKey] = [
         "Open the link, log in, and navigate to account settings",
         "Scroll down to the \"API/SSH\" section, enter a name for the API key, and tap \"Create\"",

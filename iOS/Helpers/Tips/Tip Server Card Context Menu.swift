@@ -20,6 +20,7 @@ struct Tip_ServerCardContextMenu: Tip {
             .tipBackground(.ultraThinMaterial)
             .padding()
     }
+    .darkSchemePreferred()
     .task {
         Tips.showAllTipsForTesting()
     }

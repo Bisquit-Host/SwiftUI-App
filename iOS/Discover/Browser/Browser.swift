@@ -3,8 +3,6 @@ import ScrechKit
 struct Browser: View {
     @State private var vm = BrowserVM()
     
-    @Environment(\.dismiss) private var dismiss
-    
     var body: some View {
         VStack {
             BrowserTopbar()

@@ -165,7 +165,7 @@ struct Discover: View {
 }
 
 #Preview {
-    NavigationView {
+    NavigationStack {
         Discover()
         //            .background {
         //                Image(.darkBackgroundInfo)
@@ -175,4 +175,5 @@ struct Discover: View {
         //            }
         //            .scrollContentBackground(.hidden)
     }
+    .darkSchemePreferred()
 }

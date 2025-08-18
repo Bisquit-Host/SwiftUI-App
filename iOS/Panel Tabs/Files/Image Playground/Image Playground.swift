@@ -169,7 +169,8 @@ struct ImagePlayground: View {
 }
 
 #Preview {
-    NavigationView {
+    NavigationStack {
         ImagePlayground(at: "")
     }
+    .darkSchemePreferred()
 }

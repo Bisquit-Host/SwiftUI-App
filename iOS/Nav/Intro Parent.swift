@@ -8,4 +8,5 @@ struct IntroParent: View {
 
 #Preview {
     IntroParent()
+        .darkSchemePreferred()
 }

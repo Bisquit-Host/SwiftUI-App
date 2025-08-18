@@ -9,10 +9,10 @@ struct PanelSettingsParent: View {
     }
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             PanelSettingsView(server)
         }
-//        .presentationDetents([.medium, .large])
-//        .presentationDragIndicator(.hidden)
+        //        .presentationDetents([.medium, .large])
+        //        .presentationDragIndicator(.hidden)
     }
 }

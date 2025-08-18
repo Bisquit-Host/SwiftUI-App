@@ -28,7 +28,7 @@ struct ImagePlaygroundToolbarButton: View {
         }
         .disabled(!supportsPlayground)
         .sheet($sheetPlayground) {
-            NavigationView {
+            NavigationStack {
                 ImagePlayground(url, at: root)
             }
         }

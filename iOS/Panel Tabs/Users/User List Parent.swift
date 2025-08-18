@@ -5,7 +5,7 @@ struct UserListParent: View {
 #if os(watchOS)
         UserList()
 #else
-        NavigationView {
+        NavigationStack {
             UserList()
         }
         .presentationDragIndicator(.hidden)
@@ -15,4 +15,5 @@ struct UserListParent: View {
 
 #Preview {
     UserListParent()
+        .darkSchemePreferred()
 }

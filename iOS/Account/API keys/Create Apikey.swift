@@ -9,7 +9,7 @@ struct CreateApikey: View {
     @FocusState private var focus
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 Section {
                     TextField("Description", text: $text)

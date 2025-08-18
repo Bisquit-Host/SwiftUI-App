@@ -3,8 +3,6 @@ import SwiftUI
 struct SubdomainList: View {
     @Environment(SubdomainVM.self) private var vm
     
-    @Environment(\.dismiss) private var dismiss
-    
     @State private var sheetCreate = false
     
     private var disabled: Bool {

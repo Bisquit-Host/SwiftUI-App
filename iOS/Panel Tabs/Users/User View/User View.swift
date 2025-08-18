@@ -21,7 +21,7 @@ struct UserView: View {
     @State private var mailCover = false
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
 #if !os(iOS)
                 Text(user.email)

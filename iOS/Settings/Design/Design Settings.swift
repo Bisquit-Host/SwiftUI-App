@@ -23,7 +23,7 @@ struct DesignSettings: View {
             .disabled(store.enableBisquitFall)
             .foregroundStyle(.foreground)
             .sheet($imagePicker) {
-                NavigationView {
+                NavigationStack {
                     BackgroundImagePickerView()
                 }
             }
@@ -48,5 +48,6 @@ struct DesignSettings: View {
     List {
         DesignSettings()
     }
+    .darkSchemePreferred()
     .environmentObject(ValueStore())
 }

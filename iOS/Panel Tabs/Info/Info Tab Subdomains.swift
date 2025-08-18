@@ -60,7 +60,7 @@ struct InfoTabSubdomains: View {
             }
         }
         .sheet($sheetSubdomains) {
-            NavigationView {
+            NavigationStack {
                 SubdomainList(allocations)
             }
             .environment(vm)

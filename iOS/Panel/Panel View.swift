@@ -11,8 +11,6 @@ struct PanelView: View {
     @State private var scheduleVM: ScheduleVM
     @State private var consoleVM: ConsoleVM
     
-    @Environment(\.dismiss) private var dismiss
-    
     private let id: String
     
     init(_ id: String) {
@@ -26,11 +24,15 @@ struct PanelView: View {
         consoleVM = ConsoleVM(id)
     }
     
+    private var isIpad: Bool {
+        UIDevice.current.userInterfaceIdiom == .pad
+    }
+    
     var body: some View {
         @Bindable var vm = vm
         
         VStack {
-            if UIDevice.current.userInterfaceIdiom == .pad {
+            if isIpad {
                 panel
             } else {
                 NavigationView {

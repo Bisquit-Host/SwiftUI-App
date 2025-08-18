@@ -40,7 +40,7 @@ struct SettingsButton: View {
             AccountParent()
         }
         .sheet($sheetSettings) {
-            NavigationView {
+            NavigationStack {
                 SettingsView()
             }
         }
@@ -49,5 +49,6 @@ struct SettingsButton: View {
 
 #Preview {
     SettingsButton()
+        .darkSchemePreferred()
         .environment(ServerListVM())
 }

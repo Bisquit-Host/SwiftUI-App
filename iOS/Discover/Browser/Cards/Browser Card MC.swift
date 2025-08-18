@@ -2,7 +2,7 @@ import ScrechKit
 import Kingfisher
 
 struct BrowserCardMC: View {
-    @Environment(\.colorScheme) private var scheme
+    @Environment(\.colorScheme) private var appearance
     
     private let plan: MinecraftPlan
     
@@ -37,7 +37,7 @@ struct BrowserCardMC: View {
                             .monospaced()
                     }
                     .resizable()
-                    .brightness(scheme == .dark ? -0.1 : 0)
+                    .brightness(appearance == .dark ? -0.1 : 0)
                 
                 KFImage(getImageUrl("plans/" + plan.name))
                     .resizable()
@@ -50,7 +50,7 @@ struct BrowserCardMC: View {
                             .clipShape(.rect(cornerRadius: 16))
                     }
                     .blur(radius: 4)
-                    .brightness(scheme == .dark ? -0.1 : 0)
+                    .brightness(appearance == .dark ? -0.1 : 0)
                 
                 HStack {
                     VStack(alignment: .leading) {
@@ -97,4 +97,5 @@ struct BrowserCardMC: View {
 
 //#Preview {
 //    BrowserCardMC()
+//        .darkSchemePreferred()
 //}

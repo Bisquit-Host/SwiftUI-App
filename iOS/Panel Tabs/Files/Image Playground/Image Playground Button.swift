@@ -21,7 +21,7 @@ struct ImagePlaygroundButton: View {
             }
             .keyboardShortcut("P")
             .sheet($sheetPlayground) {
-                NavigationView {
+                NavigationStack {
                     ImagePlayground(at: root)
                 }
             }

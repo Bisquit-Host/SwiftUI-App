@@ -5,7 +5,7 @@ struct LogListParent: View {
 #if os(watchOS)
         LogList()
 #else
-        NavigationView {
+        NavigationStack {
             LogList()
         }
 #endif

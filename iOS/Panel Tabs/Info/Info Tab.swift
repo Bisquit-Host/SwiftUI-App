@@ -68,7 +68,7 @@ struct InfoTab: View {
         .background(BackgroundImage())
         .animation(.default, value: sectionsVM.activeSections)
         .sheet($sheetCustomization) {
-            NavigationView {
+            NavigationStack {
                 PanelSectionList()
                     .environment(sectionsVM)
             }

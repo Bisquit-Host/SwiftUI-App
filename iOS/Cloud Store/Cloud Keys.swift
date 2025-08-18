@@ -20,7 +20,7 @@ struct CloudKeys: View {
     }
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 Section {
                     TipView(Tip_CloudKeys())

@@ -75,7 +75,7 @@ struct LogList: View {
 }
 
 #Preview {
-    NavigationView {
+    NavigationStack {
         LogList()
     }
     .environment(LogVM(""))

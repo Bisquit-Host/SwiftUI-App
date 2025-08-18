@@ -67,7 +67,7 @@ struct UploadMenu: View {
             }
         }
         .sheet($sheetRemoteFile) {
-            NavigationView {
+            NavigationStack {
                 SheetRemoteFile(path)
             }
         }

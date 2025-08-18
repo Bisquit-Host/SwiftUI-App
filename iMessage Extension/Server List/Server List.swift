@@ -81,9 +81,10 @@ struct ServerList: View {
 }
 
 #Preview {
-    NavigationView {
+    NavigationStack {
         ServerList()
     }
+    .darkSchemePreferred()
     .environment(ServerListVM())
     .environmentObject(ValueStore())
 }

@@ -3,8 +3,6 @@ import ScrechKit
 struct SettingsView: View {
     @State private var vm = SettingsVM()
     
-    @Environment(\.colorScheme) private var colorScheme
-    
     var body: some View {
         @Bindable var vm = vm
         
@@ -33,11 +31,12 @@ struct SettingsView: View {
 }
 
 #Preview {
-    NavigationView {
+    NavigationStack {
         Text("Preview")
             .sheet {
                 SettingsView()
             }
     }
+    .darkSchemePreferred()
     .environmentObject(ValueStore())
 }

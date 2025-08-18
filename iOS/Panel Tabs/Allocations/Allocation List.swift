@@ -27,7 +27,7 @@ struct AllocationList: View {
             await vm.fetchAllocations()
         }
         .sheet($sheetCreate) {
-            NavigationView {
+            NavigationStack {
                 SheetCreateAllocation()
             }
         }

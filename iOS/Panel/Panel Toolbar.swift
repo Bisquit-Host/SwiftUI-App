@@ -6,7 +6,6 @@ struct PanelToolbarModifier: ViewModifier {
     
     @EnvironmentObject private var fileVM: FileTabVM
     @EnvironmentObject private var store: ValueStore
-    @Environment(\.dismiss) private var dismiss
     
     func body(content: Content) -> some View {
         content

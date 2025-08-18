@@ -9,7 +9,7 @@ struct AllocationListParent: View {
     }
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             AllocationList(server)
         }
         .presentationDragIndicator(.hidden)

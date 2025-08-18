@@ -2,8 +2,7 @@ import ScrechKit
 import PteroNet
 
 struct Guide: View {
-    @Environment(\.dismiss) private var dismiss
-    @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.colorScheme) private var appearance
     
     private let steps: [LocalizedStringKey] = [
         "Open the link, log in, and navigate to account settings",
@@ -25,7 +24,7 @@ struct Guide: View {
     }
     
     private var colors: [Color] {
-        switch colorScheme {
+        switch appearance {
         case .dark:
             [.blue.opacity(0.5), .mint.opacity(0.5), .gray.opacity(0.5)]
             
@@ -117,4 +116,5 @@ struct Guide: View {
 
 #Preview {
     Guide()
+        .darkSchemePreferred()
 }

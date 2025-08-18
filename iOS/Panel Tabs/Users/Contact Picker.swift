@@ -28,7 +28,7 @@ struct ContactsListView: View {
     }
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 ForEach(filteredContacts, id: \.identifier) { contact in
                     Section(contact.fullName) {

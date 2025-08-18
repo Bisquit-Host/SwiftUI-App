@@ -16,7 +16,6 @@ struct AppContainer: View {
     @Environment(NavState.self) private var nav
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.modelContext) private var modelContext
-    @Environment(\.dismiss) private var dismiss
     @Query(animation: .default) private var keys: [APIKey]
     
     @State private var showBadge = false
@@ -24,7 +23,6 @@ struct AppContainer: View {
 #if os(iOS)
     @State private var orientation = UIDevice.current.orientation
 #endif
-    
     var body: some View {
         @Bindable var nav = nav
         

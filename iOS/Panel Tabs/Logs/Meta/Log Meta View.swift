@@ -60,10 +60,11 @@ struct LogMetaView: View {
 }
 
 #Preview {
-    NavigationView {
+    NavigationStack {
         Text("Preview")
             .sheet {
                 LogMetaView(sampleJSON(.logAttributes))
             }
     }
+    .darkSchemePreferred()
 }
