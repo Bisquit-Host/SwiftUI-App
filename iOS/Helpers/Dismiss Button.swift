@@ -1,7 +1,7 @@
 import ScrechKit
 
 struct DismissButton: View {
-    var dismiss: () -> Void
+    let dismiss: () -> Void
     
     var body: some View {
         // Do not use SFButton()
