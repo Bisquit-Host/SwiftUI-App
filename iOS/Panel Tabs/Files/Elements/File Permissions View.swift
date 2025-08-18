@@ -45,6 +45,7 @@ struct FilePermissionsView: View {
         
         List {
             TextField("777", text: $newModeBits)
+                .limitInputLength($newModeBits, length: 3)
             
             Section("System") {
                 Toggle("Read", isOn: $systemRead)
@@ -89,15 +90,15 @@ struct FilePermissionsView: View {
             if newValue.count == 3 {
                 let newValues = parsePermissions(newValue)
                 
-                systemRead = newValues.systemRead
-                systemWrite = newValues.systemWrite
+                systemRead    = newValues.systemRead
+                systemWrite   = newValues.systemWrite
                 systemExecute = newValues.systemExecute
-                adminRead = newValues.adminRead
-                adminWrite = newValues.adminWrite
-                adminExecute = newValues.adminExecute
-                otherRead = newValues.otherRead
-                otherWrite = newValues.otherWrite
-                otherExecute = newValues.otherExecute
+                adminRead     = newValues.adminRead
+                adminWrite    = newValues.adminWrite
+                adminExecute  = newValues.adminExecute
+                otherRead     = newValues.otherRead
+                otherWrite    = newValues.otherWrite
+                otherExecute  = newValues.otherExecute
             }
         }
         .task {
@@ -105,15 +106,15 @@ struct FilePermissionsView: View {
             
             let bits = Array(file.mode)
             
-            systemRead = initBit(bits[1])
-            systemWrite = initBit(bits[2])
+            systemRead    = initBit(bits[1])
+            systemWrite   = initBit(bits[2])
             systemExecute = initBit(bits[3])
-            adminRead = initBit(bits[4])
-            adminWrite = initBit(bits[5])
-            adminExecute = initBit(bits[6])
-            otherRead = initBit(bits[7])
-            otherWrite = initBit(bits[8])
-            otherExecute = initBit(bits[9])
+            adminRead     = initBit(bits[4])
+            adminWrite    = initBit(bits[5])
+            adminExecute  = initBit(bits[6])
+            otherRead     = initBit(bits[7])
+            otherWrite    = initBit(bits[8])
+            otherExecute  = initBit(bits[9])
         }
     }
     
@@ -163,5 +164,6 @@ fileprivate extension Array {
         sampleJSON(.fileListAttributes),
         at: ""
     )
+    .darkSchemePreferred()
     .environmentObject(FileTabVM(""))
 }
