@@ -68,25 +68,22 @@ struct PanelView: View {
                 }
             }
         }
-        .alert(isPresented: $vm.alertNewFolder) {
-            CustomDialog(
-                title: "New Folder",
-                button1: .init(content: "Create", foreground: .white) { folder in
-                    if !folder.isEmpty {
-                        Task {
-                            await fileVM.createFolder(folder, at: fileVM.path)
-                        }
+        .alert("New Folder", isPresented: $vm.alertNewFolder) {
+            TextField("Enter a folder name", text: $fileVM.newFolderName)
+            
+            Button("Create", role: .confirm) {
+                if !fileVM.newFolderName.isEmpty {
+                    Task {
+                        await fileVM.createFolder(fileVM.newFolderName, at: fileVM.path)
                     }
                     
-                    vm.alertNewFolder = false
-                },
-                button2: .init(content: "Cancel", foreground: .red) { _ in
-                    vm.alertNewFolder = false
-                },
-                addsTextField: true,
-                textFieldHint: "Enter a folder name"
-            )
-            .transition(.blurReplace.combined(with: .scale(0.8)))
+                    fileVM.newFolderName = ""
+                }
+            }
+            
+            Button("Cancel", role: .cancel) {
+                fileVM.newFolderName = ""
+            }
         }
     }
     
@@ -98,10 +95,10 @@ struct PanelView: View {
         }
         
         if !System.lowPowerMode {
-            async let files: () =     fileVM.fetchFiles()
-            async let startup: () =   startupVM.fetchStartupVariables()
+            async let files:     () = fileVM.fetchFiles()
+            async let startup:   () = startupVM.fetchStartupVariables()
             async let schedules: () = scheduleVM.fetchSchedules()
-            async let backups: () =   backupVM.fetchBackups()
+            async let backups:   () = backupVM.fetchBackups()
             async let databases: () = databaseVM.fetchDatabases()
             
             _ = await (files, startup, schedules, backups, databases)

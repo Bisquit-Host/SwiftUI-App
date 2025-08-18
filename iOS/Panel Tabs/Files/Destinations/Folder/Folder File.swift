@@ -61,25 +61,22 @@ struct FolderFile: View {
         }
         .background(BackgroundImage())
         .scrollContentBackground(.hidden)
-        .alert(isPresented: $alertNewFolder) {
-            CustomDialog(
-                title: "New Folder",
-                button1: .init(content: "Create", foreground: .white) { folder in
-                    if !folder.isEmpty {
-                        Task {
-                            await vm.createFolder(folder, at: path)
-                        }
+        .alert("New Folder", isPresented: $alertNewFolder) {
+            TextField("Enter a folder name", text: $vm.newFolderName)
+            
+            Button("Create", role: .confirm) {
+                if !vm.newFolderName.isEmpty {
+                    Task {
+                        await vm.createFolder(vm.newFolderName, at: vm.path)
                     }
                     
-                    alertNewFolder = false
-                },
-                button2: .init(content: "Cancel", foreground: .white) { _ in
-                    alertNewFolder = false
-                },
-                addsTextField: true,
-                textFieldHint: "Enter a folder name"
-            )
-            .transition(.blurReplace.combined(with: .scale(0.8)))
+                    vm.newFolderName = ""
+                }
+            }
+            
+            Button("Cancel", role: .cancel) {
+                vm.newFolderName = ""
+            }
         }
     }
 }

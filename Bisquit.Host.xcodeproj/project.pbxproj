@@ -1339,19 +1339,6 @@
 		F3EE9F742D85CAB9000120A7 /* Dismiss Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F6E2D85CAB9000120A7 /* Dismiss Button.swift */; };
 		F3EE9F752D85CAB9000120A7 /* Dismiss Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F6E2D85CAB9000120A7 /* Dismiss Button.swift */; };
 		F3EE9F762D85CAB9000120A7 /* Dismiss Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F6E2D85CAB9000120A7 /* Dismiss Button.swift */; };
-		F3EE9F942D86234A000120A7 /* Custom Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F922D86234A000120A7 /* Custom Dialog.swift */; };
-		F3EE9F952D86234A000120A7 /* Custom Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F932D86234A000120A7 /* Custom Alert.swift */; };
-		F3EE9F962D86234A000120A7 /* Custom Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F922D86234A000120A7 /* Custom Dialog.swift */; };
-		F3EE9F972D86234A000120A7 /* Custom Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F932D86234A000120A7 /* Custom Alert.swift */; };
-		F3EE9F982D86234A000120A7 /* Custom Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F922D86234A000120A7 /* Custom Dialog.swift */; };
-		F3EE9F992D86234A000120A7 /* Custom Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F932D86234A000120A7 /* Custom Alert.swift */; };
-		F3EE9F9C2D86234A000120A7 /* Custom Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F922D86234A000120A7 /* Custom Dialog.swift */; };
-		F3EE9F9D2D86234A000120A7 /* Custom Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F932D86234A000120A7 /* Custom Alert.swift */; };
-		F3EE9F9E2D86234A000120A7 /* Custom Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F922D86234A000120A7 /* Custom Dialog.swift */; };
-		F3EE9F9F2D86234A000120A7 /* Custom Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F932D86234A000120A7 /* Custom Alert.swift */; };
-		F3EE9FA02D86234A000120A7 /* Custom Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F922D86234A000120A7 /* Custom Dialog.swift */; };
-		F3EE9FA12D86234A000120A7 /* Custom Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F932D86234A000120A7 /* Custom Alert.swift */; };
-		F3EE9FA22D86234A000120A7 /* Custom Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F922D86234A000120A7 /* Custom Dialog.swift */; };
 		F3EEC03B2AF2F93800BFED78 /* Start Page VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA57B2959011B0006D126 /* Start Page VM.swift */; };
 		F3F061D12A73C37200470F7E /* Map List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994AD2A17A9B100530615 /* Map List.swift */; };
 		F3F061D22A73C37500470F7E /* Map View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A72A177DA400530615 /* Map View.swift */; };
@@ -2107,8 +2094,6 @@
 		F3EDEE3929C0CB8000B08696 /* Websocket Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Websocket Delegate.swift"; sourceTree = "<group>"; };
 		F3EE6D742D9E8E2000F0A633 /* Bakground Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bakground Task.swift"; sourceTree = "<group>"; };
 		F3EE9F6E2D85CAB9000120A7 /* Dismiss Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dismiss Button.swift"; sourceTree = "<group>"; };
-		F3EE9F922D86234A000120A7 /* Custom Dialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Custom Dialog.swift"; sourceTree = "<group>"; };
-		F3EE9F932D86234A000120A7 /* Custom Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Custom Alert.swift"; sourceTree = "<group>"; };
 		F3F061D92A73CE1200470F7E /* Server Card Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Parent.swift"; sourceTree = "<group>"; };
 		F3F2A5BA29AC296D00AD20A4 /* Server Card Suspended.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Suspended.swift"; sourceTree = "<group>"; };
 		F3F2BBA42A540B8800D44CA6 /* Start Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page.swift"; sourceTree = "<group>"; };
@@ -2402,21 +2387,11 @@
 				F31BA56F295900C20006D126 /* Formatters.swift */,
 				F320DDA42B704E3C00957D92 /* Preview Property.swift */,
 				F3A1D2302A201C570053261E /* Enums.swift */,
-				F300C4602D8C2B0E00743300 /* Alerts */,
+				F325F7052A54C4BC00E89EC4 /* System Alerts.swift */,
 				F35B89BC2A7256F4000B5EEF /* Tips */,
 				F36436EE2A2FE91C00976374 /* SpriteKit */,
 			);
 			path = Helpers;
-			sourceTree = "<group>";
-		};
-		F300C4602D8C2B0E00743300 /* Alerts */ = {
-			isa = PBXGroup;
-			children = (
-				F325F7052A54C4BC00E89EC4 /* System Alerts.swift */,
-				F3EE9F922D86234A000120A7 /* Custom Dialog.swift */,
-				F3EE9F932D86234A000120A7 /* Custom Alert.swift */,
-			);
-			path = Alerts;
 			sourceTree = "<group>";
 		};
 		F300C4692D8C38E700743300 /* Other */ = {
@@ -4711,8 +4686,6 @@
 				F3AB4A9C2CF4031600A8252F /* Json Formatter Button.swift in Sources */,
 				F39D68142A26373F00B9BDFC /* SptiteKit BisquitFall.swift in Sources */,
 				F30C13162A5461BB00A7EFF0 /* Cache VM.swift in Sources */,
-				F3EE9F9E2D86234A000120A7 /* Custom Dialog.swift in Sources */,
-				F3EE9F9F2D86234A000120A7 /* Custom Alert.swift in Sources */,
 				F3796564295C51C80074CA3D /* Progress Bar.swift in Sources */,
 				F31F31FD2D52BD940095DD19 /* System lowPowerMode.swift in Sources */,
 				F30089262B3BAD200051476C /* File Permissions View.swift in Sources */,
@@ -4836,8 +4809,6 @@
 				F353B0412D8A31BF00E4EC07 /* Account Parent.swift in Sources */,
 				F3202D272D562B9A0030B3CC /* Browser Card Bot.swift in Sources */,
 				F3EDEE3129C06E9700B08696 /* Panel Tab.swift in Sources */,
-				F3EE9FA02D86234A000120A7 /* Custom Dialog.swift in Sources */,
-				F3EE9FA12D86234A000120A7 /* Custom Alert.swift in Sources */,
 				F37A36732A3515DC00517EFC /* Server Settings VM.swift in Sources */,
 				F3E0B4942DC30347003C8B27 /* Info Tab Logs.swift in Sources */,
 				F311CAAE2A646612004E4A4A /* Log Meta View.swift in Sources */,
@@ -5049,8 +5020,6 @@
 		F31BA52F2958FF7D0006D126 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			files = (
-				F3EE9F962D86234A000120A7 /* Custom Dialog.swift in Sources */,
-				F3EE9F972D86234A000120A7 /* Custom Alert.swift in Sources */,
 				F30C13152A5461BA00A7EFF0 /* Cache VM.swift in Sources */,
 				F3EE9F6F2D85CAB9000120A7 /* Dismiss Button.swift in Sources */,
 				F3015DE42D9F26C600B9BCC6 /* Log Card Timestamp.swift in Sources */,
@@ -5337,8 +5306,6 @@
 				F36B14672DC39F6A008C1AF9 /* Debug Settings Tips.swift in Sources */,
 				F389BB682A05B5C100911EBF /* Guide.swift in Sources */,
 				F32F2CD02D8F6FCE007CF4DE /* Discover Card Layout.swift in Sources */,
-				F3EE9F942D86234A000120A7 /* Custom Dialog.swift in Sources */,
-				F3EE9F952D86234A000120A7 /* Custom Alert.swift in Sources */,
 				F36D53252A05B85B007324C6 /* Data Tab.swift in Sources */,
 				F367977F2A3A5AB6009F2788 /* Log VM.swift in Sources */,
 				F3EE6D7B2D9E8E2000F0A633 /* Bakground Task.swift in Sources */,
@@ -5526,8 +5493,6 @@
 				F3202CDB2D5624B10030B3CC /* Plan.swift in Sources */,
 				F300C46B2D8C473800743300 /* Background Image Picker.swift in Sources */,
 				F3A7CEDC2C8B95CB00413400 /* Home View.swift in Sources */,
-				F3EE9F982D86234A000120A7 /* Custom Dialog.swift in Sources */,
-				F3EE9F992D86234A000120A7 /* Custom Alert.swift in Sources */,
 				F31461792D5A2B7F00547B6C /* Apikey Card.swift in Sources */,
 				F3A7CEED2C8BB78A00413400 /* Server Card.swift in Sources */,
 				F3A7CF0A2C8BBCD400413400 /* Formatters.swift in Sources */,
@@ -5697,8 +5662,6 @@
 				F39EA2F12D5E146300329468 /* Guide Step Card.swift in Sources */,
 				F37EA7992B70DEDE0029DE00 /* Console VM.swift in Sources */,
 				F35FEB0B2B09F003004DA05D /* API Key.swift in Sources */,
-				F3EE9F9C2D86234A000120A7 /* Custom Dialog.swift in Sources */,
-				F3EE9F9D2D86234A000120A7 /* Custom Alert.swift in Sources */,
 				F31F32012D52DB950095DD19 /* Color Theme.swift in Sources */,
 				F3FD9F9C2C651B3800A69314 /* File Card.swift in Sources */,
 				F3FD9F982C651A4E00A69314 /* File List.swift in Sources */,
@@ -5832,7 +5795,6 @@
 				F3A8BE8B2A2FA9B3001B13D8 /* File View.swift in Sources */,
 				F35BB0372C656AC800631DBD /* Guide.swift in Sources */,
 				F3DF50C92B38FD2000206CAE /* Contact Manager.swift in Sources */,
-				F3EE9FA22D86234A000120A7 /* Custom Dialog.swift in Sources */,
 				F373CD832D88D496008B64BE /* Start Page Helper.swift in Sources */,
 				F3DF50CB2B38FDE300206CAE /* Permission List.swift in Sources */,
 				F3015DE92D9F27E800B9BCC6 /* Log Card Image.swift in Sources */,
