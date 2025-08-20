@@ -23,9 +23,9 @@ final class PanelVM {
     var searchRule = ""
     var fieldSearch = ""
     var showFormatting = false
-    private(set) var cpuUsage = 0.0
-    private(set) var ramUsage = 0.0
-    private(set) var diskUsage = 0.0
+    var cpuUsage = 0.0
+    var ramUsage = 0.0
+    var diskUsage = 0.0
     
     private(set) var server: ServerAttributes? = nil
     private(set) var serverState: ServerState = .unknown

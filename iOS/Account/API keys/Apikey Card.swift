@@ -40,10 +40,8 @@ struct ApikeyCard: View {
             }
         }
         .contextMenu {
-            Button(role: .destructive) {
+            Button("Delete", systemImage: "trash", role: .destructive) {
                 delete()
-            } label: {
-                Label("Delete", systemImage: "trash")
             }
         }
     }

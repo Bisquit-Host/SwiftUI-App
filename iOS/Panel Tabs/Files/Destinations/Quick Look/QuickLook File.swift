@@ -65,14 +65,12 @@ struct QuickLookFile: View {
                 }
                 
                 Section {
-                    Button(role: .destructive) {
+                    Button("Delete", systemImage: "trash", role: .destructive) {
                         Task {
                             await fileVm.deleteFile(name, at: path) {
                                 dismiss()
                             }
                         }
-                    } label: {
-                        Label("Delete", systemImage: "trash")
                     }
                 }
             } label: {

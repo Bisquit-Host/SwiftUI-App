@@ -617,6 +617,8 @@
 		F36113FD2E55E7450052A5A2 /* TextFileToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36113FB2E55E7450052A5A2 /* TextFileToolbar.swift */; };
 		F36113FE2E55E7450052A5A2 /* TextFileToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36113FB2E55E7450052A5A2 /* TextFileToolbar.swift */; };
 		F36113FF2E55E7450052A5A2 /* TextFileToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36113FB2E55E7450052A5A2 /* TextFileToolbar.swift */; };
+		F36114012E55E97D0052A5A2 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = F36114002E55E97D0052A5A2 /* DeviceKit */; };
+		F36114032E55E99A0052A5A2 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = F36114022E55E99A0052A5A2 /* DeviceKit */; };
 		F361F8882D545E4D007B0565 /* Intent Handler.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F3FDFF5F2C89120D009EBB5C /* Intent Handler.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F361F88E2D546BA1007B0565 /* Circular Gauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF6A2A44F6E000331B51 /* Circular Gauge.swift */; };
 		F363C7FD2B7F7938005F6FF2 /* System Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7052A54C4BC00E89EC4 /* System Alerts.swift */; };
@@ -2170,6 +2172,7 @@
 			isa = PBXFrameworksBuildPhase;
 			files = (
 				F342FAB72B2E49B600854270 /* Algorithms in Frameworks */,
+				F36114012E55E97D0052A5A2 /* DeviceKit in Frameworks */,
 				F3F60A6A2DEB944600A15737 /* ScrechKit in Frameworks */,
 				F36B145D2DC39F13008C1AF9 /* GaypadKit in Frameworks */,
 				F39D680D2A262C5E00B9BDFC /* Kingfisher in Frameworks */,
@@ -2241,6 +2244,7 @@
 			isa = PBXFrameworksBuildPhase;
 			files = (
 				F37FF8832D87AE3800554B3F /* Algorithms in Frameworks */,
+				F36114032E55E99A0052A5A2 /* DeviceKit in Frameworks */,
 				F3B7BFDE2B38E206005B5003 /* Pow in Frameworks */,
 				F3E08EB22A2CE19900116C1C /* Kingfisher in Frameworks */,
 				F358F02E2D2C1C5500BCC07B /* LaunchAtLogin in Frameworks */,
@@ -4021,6 +4025,7 @@
 				F36B145C2DC39F13008C1AF9 /* GaypadKit */,
 				F3D6777C2DD867A900721DE8 /* Highlightr */,
 				F3F60A692DEB944600A15737 /* ScrechKit */,
+				F36114002E55E97D0052A5A2 /* DeviceKit */,
 			);
 			productName = "Bisquit.Host tvOSapp";
 			productReference = F3000E05295A341000ABD30A /* tvOS.app */;
@@ -4297,6 +4302,7 @@
 				F37FF8822D87AE3800554B3F /* Algorithms */,
 				F36B14582DC39F08008C1AF9 /* GaypadKit */,
 				F3F60A6B2DEB94B900A15737 /* ScrechKit */,
+				F36114022E55E99A0052A5A2 /* DeviceKit */,
 			);
 			productName = "Bisquit.Host Mac";
 			productReference = F3E08EA02A2CE17800116C1C /* Bisquit.Host.app */;
@@ -7551,6 +7557,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F358F02C2D2C1C5500BCC07B /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;
 			productName = LaunchAtLogin;
+		};
+		F36114002E55E97D0052A5A2 /* DeviceKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F335CA042C63E86D006C71C6 /* XCRemoteSwiftPackageReference "DeviceKit" */;
+			productName = DeviceKit;
+		};
+		F36114022E55E99A0052A5A2 /* DeviceKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F335CA042C63E86D006C71C6 /* XCRemoteSwiftPackageReference "DeviceKit" */;
+			productName = DeviceKit;
 		};
 		F36B14562DC39DD8008C1AF9 /* GaypadKit */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -58,7 +58,7 @@ struct ServerCardContextMenu: View {
             }
             
             if let defaultAlloc {
-                Menu {
+                Menu(defaultAlloc, systemImage: "network") {
                     Button("Add to MC Stats", systemImage: "arrowshape.turn.up.right") {
                         addToGoidacraft()
                     }
@@ -68,8 +68,6 @@ struct ServerCardContextMenu: View {
                     }
                     
                     ShareLink(item: defaultAlloc)
-                } label: {
-                    Label(defaultAlloc, systemImage: "network")
                 }
             }
         }

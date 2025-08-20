@@ -3,6 +3,7 @@ import PteroNet
 
 struct Guide: View {
     @Environment(\.colorScheme) private var appearance
+    @Environment(\.dismiss) private var dismiss
     
     private let steps: [LocalizedStringKey] = [
         "Open the link, log in, and navigate to account settings",
@@ -17,7 +18,7 @@ struct Guide: View {
     ]
     
     private var gradient: AngularGradient {
-        AngularGradient(
+        .init(
             colors: colors,
             center: .init(x: 0.5, y: 1.0),
             angle: .degrees(180 * Double(step) / Double(steps.count - 1)))

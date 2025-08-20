@@ -29,10 +29,8 @@ struct AccountView: View {
             Section("2FA") {
                 if vm.twoFaEnabled {
                     Menu {
-                        Button(role: .destructive) {
+                        Button("Disable 2FA", systemImage: "xmark.circle", role: .destructive) {
                             sheetDisable2Fa = true
-                        } label: {
-                            Label("Disable 2FA", systemImage: "xmark.circle")
                         }
                     } label: {
                         HStack {
