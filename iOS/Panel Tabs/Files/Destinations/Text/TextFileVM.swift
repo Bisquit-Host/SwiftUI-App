@@ -32,11 +32,10 @@ final class TextFileVM {
     func getFileContents(_ path: String) async {
         do {
             let model = try await fileContentsAPI(id, path: path)
-            main {
-                self.text = model
-                self.initialText = model
-                self.checkPrettiness()
-            }
+            
+            self.text = model
+            self.initialText = model
+            self.checkPrettiness()
         } catch {
             SystemAlert.error(error)
         }
