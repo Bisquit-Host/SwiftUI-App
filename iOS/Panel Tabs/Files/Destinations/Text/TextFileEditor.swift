@@ -4,13 +4,13 @@ struct TextFileEditor: View {
     @Environment(TextFileVM.self) private var vm
     
     var body: some View {
-        @Bindable var vm = vm
-        
 #if os(watchOS)
         ScrollView {
             Text(vm.text)
         }
 #else
+        @Bindable var vm = vm
+        
         HighlightrTextView(text: $vm.text)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
 #endif
