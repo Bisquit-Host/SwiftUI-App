@@ -609,6 +609,10 @@
 		F35FEB122B0A2C8D004DA05D /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A1D2302A201C570053261E /* Enums.swift */; };
 		F35FEB132B0A2C8E004DA05D /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A1D2302A201C570053261E /* Enums.swift */; };
 		F35FEB142B0A2C8F004DA05D /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A1D2302A201C570053261E /* Enums.swift */; };
+		F36113F72E55DFD40052A5A2 /* TextFileEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36113F62E55DFD40052A5A2 /* TextFileEditor.swift */; };
+		F36113F82E55DFD40052A5A2 /* TextFileEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36113F62E55DFD40052A5A2 /* TextFileEditor.swift */; };
+		F36113F92E55DFD40052A5A2 /* TextFileEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36113F62E55DFD40052A5A2 /* TextFileEditor.swift */; };
+		F36113FA2E55DFD40052A5A2 /* TextFileEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36113F62E55DFD40052A5A2 /* TextFileEditor.swift */; };
 		F361F8882D545E4D007B0565 /* Intent Handler.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F3FDFF5F2C89120D009EBB5C /* Intent Handler.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F361F88E2D546BA1007B0565 /* Circular Gauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF6A2A44F6E000331B51 /* Circular Gauge.swift */; };
 		F363C7FD2B7F7938005F6FF2 /* System Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7052A54C4BC00E89EC4 /* System Alerts.swift */; };
@@ -1809,6 +1813,7 @@
 		F35C4D5F2E03999B00720E74 /* Multipart Form Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Multipart Form Data.swift"; sourceTree = "<group>"; };
 		F35DA9582A28F5B100803E7E /* Upload Progress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Upload Progress.swift"; sourceTree = "<group>"; };
 		F35FEB062B09F003004DA05D /* API Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API Key.swift"; sourceTree = "<group>"; };
+		F36113F62E55DFD40052A5A2 /* TextFileEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFileEditor.swift; sourceTree = "<group>"; };
 		F3648ED22DCB9773001609AA /* Allocation Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation Card.swift"; sourceTree = "<group>"; };
 		F3648EDA2DCB98BE001609AA /* Subdomain List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subdomain List.swift"; sourceTree = "<group>"; };
 		F3648EDC2DCB9BFD001609AA /* Sheet Create Subdomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sheet Create Subdomain.swift"; sourceTree = "<group>"; };
@@ -3590,6 +3595,7 @@
 			isa = PBXGroup;
 			children = (
 				F31BA5B1295902D50006D126 /* Text File.swift */,
+				F36113F62E55DFD40052A5A2 /* TextFileEditor.swift */,
 				F3D677742DD8676200721DE8 /* Highlightr Text View.swift */,
 				F37266C729D83394005FD103 /* Text File VM.swift */,
 				F3AB4A982CF4031600A8252F /* Json Formatter Button.swift */,
@@ -4659,6 +4665,7 @@
 				F342FAAF2B2E07FF00854270 /* Users VM.swift in Sources */,
 				F3C9D8542B3060E100265492 /* UIVideoPlayer.swift in Sources */,
 				F3CCF5C52B3457AE005FFF2C /* Allocation VM.swift in Sources */,
+				F36113F92E55DFD40052A5A2 /* TextFileEditor.swift in Sources */,
 				F37080522A2A1F6D0046CE70 /* Database List.swift in Sources */,
 				F342FAB42B2E45CB00854270 /* Log Meta View.swift in Sources */,
 				F3000E16295A357800ABD30A /* Server List.swift in Sources */,
@@ -4833,6 +4840,7 @@
 				F32F2CDC2D8F7047007CF4DE /* Discover.swift in Sources */,
 				F3496DC929E00CE70089FC28 /* Create Button.swift in Sources */,
 				F3437CA2297360D30064808F /* Schedule Card.swift in Sources */,
+				F36113FA2E55DFD40052A5A2 /* TextFileEditor.swift in Sources */,
 				F375EC3C29EE88EA002CA969 /* Schedule List.swift in Sources */,
 				F3202CCF2D559B240030B3CC /* Contacts Provider.swift in Sources */,
 				F3D7F8542C8F258B00368ECE /* Enable 2FA View.swift in Sources */,
@@ -5107,6 +5115,7 @@
 				F3FFB7482A57FF0600220FA5 /* Log VM.swift in Sources */,
 				F3A31B0A2B0B161D00F89C51 /* Cloud Key Card.swift in Sources */,
 				F314617D2D5A82F000547B6C /* Networking.swift in Sources */,
+				F36113F82E55DFD40052A5A2 /* TextFileEditor.swift in Sources */,
 				F314617E2D5A82F000547B6C /* Model Asset.swift in Sources */,
 				F3D295152AF396FD00ED43A0 /* Tabs.swift in Sources */,
 				F3AB4A7A2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
@@ -5392,6 +5401,7 @@
 				F367977C2A3A55F4009F2788 /* Log Card.swift in Sources */,
 				F37A36742A35173900517EFC /* Sftp View.swift in Sources */,
 				F33001422A4CEF840063FE0F /* Apikey VM.swift in Sources */,
+				F36113F72E55DFD40052A5A2 /* TextFileEditor.swift in Sources */,
 				F33001452A4CF06D0063FE0F /* Apikey Card.swift in Sources */,
 				F373CD762D88A386008B64BE /* Card.swift in Sources */,
 				F373CD772D88A386008B64BE /* Custom Text Effect.swift in Sources */,

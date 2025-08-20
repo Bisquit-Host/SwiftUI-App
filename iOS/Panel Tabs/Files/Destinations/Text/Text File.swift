@@ -22,17 +22,8 @@ struct TextFile: View {
         @Bindable var vm = vm
         
         VStack {
-#if os(watchOS)
-            ScrollView {
-                Text(vm.text)
-            }
-#else
-            HighlightrTextView(
-                text: $vm.text
-                //                language: "swift"
-            )
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-#endif
+            TextFileEditor()
+                .environment(vm)
         }
         .navigationTitle(name)
         .task {
@@ -56,20 +47,22 @@ struct TextFile: View {
                     .disabled(vm.text.isEmpty)
 #endif
                 Section {
-                    Button(role: .destructive) {
-                        Task {
-                            await fileVm.deleteFile(name, at: path) {
-                                dismiss()
-                            }
-                        }
-                    } label: {
-                        Label("Delete", systemImage: "trash")
+                    Button("Delete", systemImage: "trash", role: .destructive) {
+                        delete()
                     }
                 }
             } label: {
                 Image(systemName: "ellipsis")
             }
 #endif
+        }
+    }
+    
+    private func delete() {
+        Task {
+            await fileVm.deleteFile(name, at: path) {
+                dismiss()
+            }
         }
     }
     
@@ -82,5 +75,6 @@ struct TextFile: View {
 
 #Preview {
     TextFile("", name: "Preview", at: "")
+        .darkSchemePreferred()
         .environmentObject(FileTabVM(""))
 }
