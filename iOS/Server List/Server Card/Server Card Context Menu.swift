@@ -51,7 +51,9 @@ struct ServerCardContextMenu: View {
                         await PteroNet.powerSignal(id, do: .restart)
                     }
                 }
-                
+            }
+            
+            Section {
                 MenuButton("Kill", role: .destructive, icon: "power") {
                     confirmKill = true
                 }
@@ -100,6 +102,7 @@ struct ServerCardContextMenu: View {
 
 #Preview {
     Text("Preview")
+        .darkSchemePreferred()
         .contextMenu {
             ServerCardContextMenu(
                 sampleJSON(.serverListAttributes),
