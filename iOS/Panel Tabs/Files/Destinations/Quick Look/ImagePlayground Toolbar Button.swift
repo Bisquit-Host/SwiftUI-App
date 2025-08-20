@@ -23,6 +23,7 @@ struct ImagePlaygroundToolbarButton: View {
             SFButton("apple.intelligence") {
                 sheetPlayground = true
             }
+            .symbolRenderingMode(.multicolor)
             .sheet($sheetPlayground) {
                 NavigationStack {
                     ImagePlayground(url, at: root)
