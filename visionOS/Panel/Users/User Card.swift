@@ -29,6 +29,5 @@ struct UserCard: View {
 
 //#Preview {
 //    UserCard()
-//        .darkSchemePreferred()
 //        .environment(UsersVM(""))
 //}

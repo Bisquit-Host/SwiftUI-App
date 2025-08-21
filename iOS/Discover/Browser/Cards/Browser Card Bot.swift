@@ -96,5 +96,4 @@ struct BrowserCardBot: View {
 
 //#Preview {
 //    BrowserCardBot()
-//        .darkSchemePreferred()
 //}

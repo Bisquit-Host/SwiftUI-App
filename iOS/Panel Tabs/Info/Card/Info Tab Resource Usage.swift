@@ -32,7 +32,6 @@ struct InfoTabResourceUsage: View {
 
 #Preview {
     InfoTabResourceUsage(sampleJSON(.serverListAttributes))
-        .darkSchemePreferred()
         .environment(PanelVM(""))
         .environmentObject(ValueStore())
 }

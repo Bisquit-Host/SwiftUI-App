@@ -49,6 +49,5 @@ struct SettingsButton: View {
 
 #Preview {
     SettingsButton()
-        .darkSchemePreferred()
         .environment(ServerListVM())
 }

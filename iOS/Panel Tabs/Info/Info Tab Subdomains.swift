@@ -77,6 +77,5 @@ struct InfoTabSubdomains: View {
 
 #Preview {
     InfoTabSubdomains([])
-        .darkSchemePreferred()
         .environment(SubdomainVM(""))
 }

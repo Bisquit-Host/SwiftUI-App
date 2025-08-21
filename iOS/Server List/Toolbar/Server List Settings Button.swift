@@ -62,7 +62,6 @@ struct ServerListSettingsButton: View {
     List {
         ServerListSettingsButton()
     }
-    .darkSchemePreferred()
     .environment(NavState())
     .environment(ServerListVM())
     .environmentObject(ValueStore())

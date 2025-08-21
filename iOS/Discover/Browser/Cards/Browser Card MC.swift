@@ -96,5 +96,4 @@ struct BrowserCardMC: View {
 
 //#Preview {
 //    BrowserCardMC()
-//        .darkSchemePreferred()
 //}

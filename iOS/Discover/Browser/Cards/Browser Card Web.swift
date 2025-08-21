@@ -94,5 +94,4 @@ struct BrowserCardWeb: View {
 
 //#Preview {
 //    BrowserCardWeb()
-//        .darkSchemePreferred()
 //}

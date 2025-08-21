@@ -78,7 +78,6 @@ struct CircularGauge: View {
             isRedacted: false
         )
     }
-    .darkSchemePreferred()
 #if os(visionOS)
     .padding()
     .glassBackgroundEffect()

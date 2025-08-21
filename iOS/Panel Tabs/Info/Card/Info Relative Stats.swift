@@ -58,5 +58,4 @@ struct InfoRelativeStats: View {
 #Preview {
     InfoRelativeStats(sampleJSON(.serverListAttributes))
         .environment(PanelVM(""))
-        .darkSchemePreferred()
 }

@@ -109,7 +109,6 @@ struct FileView: View {
 
 #Preview {
     FileView("", at: "", file: sampleJSON(.fileListAttributes))
-        .darkSchemePreferred()
         .environmentObject(FileTabVM(""))
         .padding()
 }

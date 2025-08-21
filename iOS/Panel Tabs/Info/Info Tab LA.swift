@@ -83,5 +83,4 @@ struct InfoTabLA: View {
 
 #Preview {
     InfoTabLA(sampleJSON(.serverListAttributes))
-        .darkSchemePreferred()
 }

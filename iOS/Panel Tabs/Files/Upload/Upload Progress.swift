@@ -42,6 +42,5 @@ struct UploadProgress: View {
     List {
         UploadProgress()
     }
-    .darkSchemePreferred()
     .environmentObject(FileTabVM(""))
 }

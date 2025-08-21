@@ -17,6 +17,5 @@ struct UserList: View {
 
 #Preview {
     UserList()
-        .darkSchemePreferred()
         .environment(UsersVM(""))
 }

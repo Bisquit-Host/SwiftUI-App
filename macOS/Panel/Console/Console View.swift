@@ -56,6 +56,5 @@ struct ConsoleView: View {
 
 #Preview {
     ConsoleView("")
-        .darkSchemePreferred()
         .environment(PanelVM(""))
 }

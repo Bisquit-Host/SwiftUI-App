@@ -48,5 +48,4 @@ struct ImageFile: View {
 //    NavigationStack {
 //        ImageFile()
 //    }
-//    .darkSchemePreferred()
 //}

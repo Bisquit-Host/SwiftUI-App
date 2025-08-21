@@ -64,5 +64,4 @@ struct ServerCardContextMenu: View {
         .sheet {
             ServerCardContextMenu(sampleJSON(.serverListAttributes))
         }
-        .darkSchemePreferred()
 }

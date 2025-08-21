@@ -38,5 +38,4 @@ struct ScheduleList: View {
     NavigationStack {
         ScheduleList("")
     }
-    .darkSchemePreferred()
 }

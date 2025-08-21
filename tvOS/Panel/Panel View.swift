@@ -160,5 +160,4 @@ struct PanelView: View {
 
 #Preview {
     PanelView(PreviewProp.serverAttributes)
-        .darkSchemePreferred()
 }

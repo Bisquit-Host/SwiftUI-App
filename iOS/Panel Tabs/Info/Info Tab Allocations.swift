@@ -108,5 +108,4 @@ struct InfoTabAllocation: View {
 
 #Preview {
     InfoTabAllocation(sampleJSON(.serverListAttributes))
-        .darkSchemePreferred()
 }

@@ -44,6 +44,5 @@ struct BackgroundImagePickerView: View {
     NavigationStack {
         BackgroundImagePickerView()
     }
-    .darkSchemePreferred()
     .environmentObject(ValueStore())
 }

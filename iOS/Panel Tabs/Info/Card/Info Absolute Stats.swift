@@ -102,5 +102,4 @@ struct InfoAbsoluteStats: View {
 #Preview {
     InfoAbsoluteStats(sampleJSON(.serverListAttributes))
         .environment(PanelVM(""))
-        .darkSchemePreferred()
 }

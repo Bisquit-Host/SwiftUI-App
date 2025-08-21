@@ -102,7 +102,6 @@ struct ServerCardContextMenu: View {
 
 #Preview {
     Text("Preview")
-        .darkSchemePreferred()
         .contextMenu {
             ServerCardContextMenu(
                 sampleJSON(.serverListAttributes),

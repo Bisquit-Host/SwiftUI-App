@@ -30,5 +30,4 @@ struct InfoStat: View {
 
 #Preview {
     InfoStat("Memory", value: "16213123%")
-        .darkSchemePreferred()
 }

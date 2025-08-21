@@ -115,5 +115,4 @@ fileprivate extension CNContact {
     @Previewable @State var selectedEmail = "test@example.com"
     
     ContactsListView($selectedEmail)
-        .darkSchemePreferred()
 }

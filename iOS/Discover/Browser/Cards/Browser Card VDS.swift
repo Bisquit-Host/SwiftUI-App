@@ -98,5 +98,4 @@ struct BrowserCardVds: View {
 
 //#Preview {
 //    BrowserCardVds()
-//        .darkSchemePreferred()
 //}

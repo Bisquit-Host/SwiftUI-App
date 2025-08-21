@@ -65,6 +65,5 @@ struct FolderDestination: View {
     NavigationStack {
         FolderDestination("")
     }
-    .darkSchemePreferred()
     .environment(NavModel())
 }

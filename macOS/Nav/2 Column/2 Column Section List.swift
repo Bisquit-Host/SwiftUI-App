@@ -29,12 +29,10 @@ struct TwoColumnDetailView: View {
 
 //#Preview {
 //    PanelSectionList()
-//        .darkSchemePreferred()
 //        .environment(NavModel(selectedCategory: .dessert))
 //}
 
 #Preview {
     TwoColumnDetailView()
-        .darkSchemePreferred()
         .environment(NavModel(selectedCategory: nil))
 }

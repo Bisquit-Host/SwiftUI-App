@@ -92,6 +92,5 @@ struct DatabaseCard: View {
             sampleJSON(.databaseAttributes)
         )
     }
-    .darkSchemePreferred()
     .environment(DatabaseVM(""))
 }

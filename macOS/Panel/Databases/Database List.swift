@@ -43,5 +43,4 @@ struct DatabaseList: View {
     NavigationStack {
         DatabaseList("")
     }
-    .darkSchemePreferred()
 }

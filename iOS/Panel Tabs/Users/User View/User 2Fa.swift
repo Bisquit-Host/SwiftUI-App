@@ -33,5 +33,4 @@ struct User2Fa: View {
         User2Fa(true)
         User2Fa(false)
     }
-    .darkSchemePreferred()
 }

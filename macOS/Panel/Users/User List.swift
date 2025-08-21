@@ -49,5 +49,4 @@ struct UserList: View {
     NavigationStack {
         UserList("")
     }
-    .darkSchemePreferred()
 }

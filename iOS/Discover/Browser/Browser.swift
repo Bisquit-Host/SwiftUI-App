@@ -56,6 +56,5 @@ struct Browser: View {
     NavigationStack {
         Browser()
     }
-    .darkSchemePreferred()
     .environmentObject(ValueStore())
 }

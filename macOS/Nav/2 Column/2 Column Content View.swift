@@ -41,7 +41,6 @@ struct TwoColumnContentView: View {
 
 #Preview {
     TwoColumnContentView()
-        .darkSchemePreferred()
         .environment(ServerListVM())
         .environment(NavModel())
 }

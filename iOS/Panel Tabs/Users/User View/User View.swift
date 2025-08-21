@@ -114,6 +114,5 @@ struct UserView: View {
         .sheet {
             UserView(sampleJSON(.userAttributes))
         }
-        .darkSchemePreferred()
         .environment(UsersVM(""))
 }

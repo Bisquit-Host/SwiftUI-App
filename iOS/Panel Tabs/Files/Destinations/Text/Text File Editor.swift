@@ -19,6 +19,5 @@ struct TextFileEditor: View {
 
 #Preview {
     TextFileEditor()
-        .darkSchemePreferred()
         .environment(TextFileVM(""))
 }

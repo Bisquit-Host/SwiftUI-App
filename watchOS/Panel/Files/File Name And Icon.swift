@@ -33,5 +33,4 @@ struct FileNameAndIcon: View {
 
 #Preview {
     FileNameAndIcon(sampleJSON(.fileListAttributes))
-        .darkSchemePreferred()
 }

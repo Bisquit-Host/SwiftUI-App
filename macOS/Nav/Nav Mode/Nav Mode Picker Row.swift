@@ -68,8 +68,7 @@ private struct Label: View {
 }
 
 #Preview {
-    @Previewable @State
-    var selection: NavMode?
+    @Previewable @State var selection: NavMode?
     
     ForEach(NavMode.allCases) {
         NavModePickerItem(
@@ -77,5 +76,4 @@ private struct Label: View {
             for: $0
         )
     }
-    .darkSchemePreferred()
 }

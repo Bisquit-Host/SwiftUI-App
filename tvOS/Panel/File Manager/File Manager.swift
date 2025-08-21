@@ -65,7 +65,6 @@ struct FileTab: View {
     NavigationStack {
         FileTab("")
     }
-    .darkSchemePreferred()
     .environment(NavState())
     .environmentObject(FileTabVM(""))
 }

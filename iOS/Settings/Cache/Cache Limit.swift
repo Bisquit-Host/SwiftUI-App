@@ -51,6 +51,5 @@ struct CacheLimit: View {
     List {
         CacheLimit()
     }
-    .darkSchemePreferred()
     .environment(CacheVM())
 }

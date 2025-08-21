@@ -17,6 +17,5 @@ struct ScheduleCard: View {
 
 //#Preview {
 //    ScheduleCard(sampleJSON(.))
-//        .darkSchemePreferred()
 //        .environment(ScheduleVM(""))
 //}

@@ -47,7 +47,6 @@ struct LinearGauge: View {
         LinearGauge(value: 5, limit: 10)
         LinearGauge(value: 15, limit: 10)
     }
-    .darkSchemePreferred()
     .padding()
     .glassBackgroundEffect()
 }

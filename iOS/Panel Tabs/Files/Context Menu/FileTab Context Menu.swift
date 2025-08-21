@@ -132,6 +132,5 @@ extension View {
 
 //#Preview {
 //    QuickLookFile("", name: "", at: "")
-//        .darkSchemePreferred()
 //        .environmentObject(FileTabVM(""))
 //}

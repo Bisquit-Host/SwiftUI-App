@@ -150,5 +150,4 @@ struct PermissionCard: View {
     
     PermissionList($user)
         .environment(UsersVM(""))
-        .darkSchemePreferred()
 }

@@ -63,6 +63,5 @@ struct SSHList: View {
     NavigationStack {
         SSHList()
     }
-    .darkSchemePreferred()
     .environment(SSHVM())
 }

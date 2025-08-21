@@ -15,7 +15,6 @@ struct ServerSettings: View {
     NavigationStack {
         ServerSettings()
     }
-    .darkSchemePreferred()
     .padding()
     .glassBackgroundEffect()
 }

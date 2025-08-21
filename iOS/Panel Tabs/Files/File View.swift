@@ -85,7 +85,6 @@ struct FileView: View {
     List {
         FileView("", file: sampleJSON(.fileListAttributes), at: "")
     }
-    .darkSchemePreferred()
     .environment(NavState())
     .environmentObject(FileTabVM(""))
 }

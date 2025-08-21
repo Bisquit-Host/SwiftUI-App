@@ -40,8 +40,7 @@ struct InfoTab: View {
 }
 
 #Preview {
-    NavigationStack{
+    NavigationStack {
         InfoTab(sampleJSON(.serverListAttributes))
     }
-    .darkSchemePreferred()
 }

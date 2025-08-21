@@ -192,5 +192,4 @@ struct LogCardEvent: View {
 
 //#Preview {
 //    LogCardEvent()
-//        .darkSchemePreferred()
 //}

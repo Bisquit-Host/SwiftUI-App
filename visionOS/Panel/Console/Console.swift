@@ -90,7 +90,6 @@ struct Console: View {
 
 #Preview {
     Console("")
-        .darkSchemePreferred()
         .padding()
         .glassBackgroundEffect()
         .environment(PanelVM(""))

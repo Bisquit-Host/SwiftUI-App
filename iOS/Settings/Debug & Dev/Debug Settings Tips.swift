@@ -22,5 +22,4 @@ struct DebugSettingsTips: View {
     List {
         DebugSettingsTips()
     }
-    .darkSchemePreferred()
 }

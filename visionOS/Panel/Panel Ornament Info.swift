@@ -174,6 +174,5 @@ struct PanelOrnamentInfo: View {
 
 #Preview {
     PanelOrnamentInfo(PreviewProp.serverAttributes)
-        .darkSchemePreferred()
         .environmentObject(OrnamentProperty())
 }

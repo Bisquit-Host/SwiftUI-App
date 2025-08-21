@@ -69,6 +69,5 @@ struct SubdomainList: View {
     NavigationStack {
         SubdomainList()
     }
-    .darkSchemePreferred()
     .environment(SubdomainVM(""))
 }

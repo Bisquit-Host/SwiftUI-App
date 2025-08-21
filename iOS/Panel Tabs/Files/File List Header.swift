@@ -26,6 +26,5 @@ struct FileListHeader: View {
 
 #Preview {
     FileListHeader("/preview")
-        .darkSchemePreferred()
         .environmentObject(FileTabVM(""))
 }

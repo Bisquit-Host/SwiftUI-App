@@ -74,6 +74,5 @@ struct NewTaskSheet: View {
 
 //#Preview {
 //    NewTaskSheet(0)
-//        .darkSchemePreferred()
 //        .environment(ScheduleVM(""))
 //}

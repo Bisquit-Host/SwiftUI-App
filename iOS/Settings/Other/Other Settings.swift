@@ -30,7 +30,6 @@ struct OtherSettings: View {
     List {
         OtherSettings()
     }
-    .darkSchemePreferred()
     .environment(SettingsVM())
     .environmentObject(ValueStore())
 }

@@ -23,6 +23,5 @@ struct StatsTab: View {
 
 #Preview {
     StatsTab(sampleJSON(.serverListAttributes))
-        .darkSchemePreferred()
         .padding()
 }

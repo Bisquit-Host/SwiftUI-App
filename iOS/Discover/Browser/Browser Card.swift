@@ -118,5 +118,4 @@ struct BrowserCard: View {
         priceRub: 2000,
         priceEur: 20.4
     ))
-    .darkSchemePreferred()
 }

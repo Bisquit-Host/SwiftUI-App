@@ -74,5 +74,4 @@ struct ScheduleTask: View {
 //            task: sampleJSON(.)
 //        )
 //    }
-//    .darkSchemePreferred()
 //}

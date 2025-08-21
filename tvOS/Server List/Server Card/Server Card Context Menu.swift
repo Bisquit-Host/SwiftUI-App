@@ -38,5 +38,4 @@ struct ServerCardContextMenu: View {
 
 #Preview {
     ServerCardContextMenu("")
-        .darkSchemePreferred()
 }

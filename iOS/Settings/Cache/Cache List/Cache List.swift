@@ -27,5 +27,4 @@ struct CacheList: View {
     NavigationStack {
         CacheList()
     }
-    .darkSchemePreferred()
 }

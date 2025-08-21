@@ -41,7 +41,6 @@ struct AuthView: View {
 
 #Preview {
     AuthView()
-        .darkSchemePreferred()
         .padding()
         .glassBackgroundEffect()
         .environment(ServerListVM())

@@ -31,5 +31,4 @@ struct ImagePlaygroundButton: View {
 
 #Preview {
     ImagePlaygroundButton()
-        .darkSchemePreferred()
 }

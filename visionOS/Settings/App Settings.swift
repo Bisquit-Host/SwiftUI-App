@@ -17,7 +17,6 @@ struct AppSettings: View {
 
 #Preview {
     AppSettings()
-        .darkSchemePreferred()
         .padding()
         .glassBackgroundEffect()
         .environmentObject(ValueStore())

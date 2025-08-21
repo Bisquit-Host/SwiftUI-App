@@ -116,5 +116,4 @@ struct StatsTab: View {
         .environment(PanelVM(""))
         .environment(BackupVM(""))
         .environment(DatabaseVM(""))
-        .darkSchemePreferred()
 }

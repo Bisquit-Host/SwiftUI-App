@@ -28,5 +28,4 @@ struct CredentialsButton: View {
     List {
         CredentialsButton()
     }
-    .darkSchemePreferred()
 }

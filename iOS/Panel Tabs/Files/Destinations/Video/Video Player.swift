@@ -35,5 +35,4 @@ struct VideoPlayerView: View {
     VideoPlayerView(
         URL(string: "https://d142uv38695ylm.cloudfront.net/videos/promo/allesneu.land-promo-trailer-360p.m3u8")!
     )
-    .darkSchemePreferred()
 }

@@ -35,5 +35,4 @@ struct LogList: View {
     NavigationStack {
         LogList("")
     }
-    .darkSchemePreferred()
 }

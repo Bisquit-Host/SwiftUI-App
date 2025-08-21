@@ -47,6 +47,5 @@ struct DatabaseList: View {
     List {
         DatabaseList(4)
     }
-    .darkSchemePreferred()
     .environment(DatabaseVM(""))
 }

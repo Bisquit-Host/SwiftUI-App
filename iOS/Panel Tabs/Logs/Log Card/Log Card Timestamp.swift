@@ -50,5 +50,4 @@ struct LogCardTimestamp: View {
 
 //#Preview {
 //    LogCardTimestamp()
-//        .darkSchemePreferred()
 //}

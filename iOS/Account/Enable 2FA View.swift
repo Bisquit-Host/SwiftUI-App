@@ -93,6 +93,5 @@ struct Enable2FAView: View {
 
 #Preview {
     Enable2FAView()
-        .darkSchemePreferred()
         .environment(AccountVM())
 }

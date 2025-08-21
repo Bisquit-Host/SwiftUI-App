@@ -41,5 +41,4 @@ struct GaugeDisk: View {
 
 #Preview {
     GaugeDisk(1024, limit: 2048 * 1024)
-        .darkSchemePreferred()
 }

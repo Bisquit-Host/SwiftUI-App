@@ -79,5 +79,4 @@ struct FileCard: View {
     }
     .environment(NavState())
     .environmentObject(FileTabVM(""))
-    .darkSchemePreferred()
 }

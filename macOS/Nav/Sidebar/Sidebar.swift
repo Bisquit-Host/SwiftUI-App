@@ -38,7 +38,6 @@ struct Sidebar: View {
     NavigationStack {
         Sidebar()
     }
-    .darkSchemePreferred()
     .environment(ServerListVM())
     .environment(NavModel())
     .environmentObject(ValueStore())

@@ -40,5 +40,4 @@ struct StartupList: View {
     NavigationStack {
         StartupList(sampleJSON(.serverListAttributes))
     }
-    .darkSchemePreferred()
 }

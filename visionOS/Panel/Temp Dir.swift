@@ -32,5 +32,4 @@ struct TempDir: View {
 }
 #Preview {
     TempDir()
-        .darkSchemePreferred()
 }

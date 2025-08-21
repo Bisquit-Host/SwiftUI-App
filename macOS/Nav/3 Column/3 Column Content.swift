@@ -29,6 +29,5 @@ struct ThreeColumnContent: View {
 
 #Preview {
     ThreeColumnContent()
-        .darkSchemePreferred()
         .environment(NavModel(selectedCategory: nil))
 }

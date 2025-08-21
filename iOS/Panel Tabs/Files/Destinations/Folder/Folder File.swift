@@ -83,5 +83,4 @@ struct FolderFile: View {
 
 #Preview {
     FolderFile("")
-        .darkSchemePreferred()
 }

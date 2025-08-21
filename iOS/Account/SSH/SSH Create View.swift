@@ -54,6 +54,5 @@ struct SSHCreateView: View {
 
 #Preview {
     SSHCreateView()
-        .darkSchemePreferred()
         .environment(SSHVM())
 }

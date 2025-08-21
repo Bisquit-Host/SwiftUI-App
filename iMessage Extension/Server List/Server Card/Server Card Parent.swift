@@ -43,6 +43,5 @@ struct ServerCardParent: View {
 #Preview {
     ServerCardParent(sampleJSON(.serverListAttributes))
     //        .environment(NavState())
-        .darkSchemePreferred()
         .environmentObject(ValueStore())
 }

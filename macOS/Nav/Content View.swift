@@ -78,7 +78,6 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .darkSchemePreferred()
         .environment(NavModel())
         .environmentObject(ValueStore())
 }

@@ -42,6 +42,5 @@ struct BackupList: View {
     List {
         BackupList(sampleJSON(.serverListAttributes))
     }
-    .darkSchemePreferred()
     .environment(BackupVM(""))
 }

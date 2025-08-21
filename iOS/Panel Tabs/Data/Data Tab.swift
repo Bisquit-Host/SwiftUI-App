@@ -104,5 +104,4 @@ fileprivate extension DataTab {
         .environment(BackupVM(""))
         .environment(DatabaseVM(""))
         .environment(ScheduleVM(""))
-        .darkSchemePreferred()
 }

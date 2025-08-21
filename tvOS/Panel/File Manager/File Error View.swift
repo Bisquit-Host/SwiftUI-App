@@ -33,6 +33,5 @@ struct FileErrorView: View {
 
 #Preview {
     FileErrorView("name", at: "path")
-        .darkSchemePreferred()
         .environmentObject(FileTabVM(""))
 }

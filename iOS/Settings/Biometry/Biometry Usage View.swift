@@ -20,6 +20,5 @@ struct BiometryUsageView: View {
 
 #Preview {
     BiometryUsageView()
-        .darkSchemePreferred()
         .environmentObject(ValueStore())
 }

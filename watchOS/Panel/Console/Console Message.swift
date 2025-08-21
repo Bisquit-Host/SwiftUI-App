@@ -17,5 +17,4 @@ struct ConsoleMessage: View {
 
 #Preview {
     ConsoleMessage("Preview")
-        .darkSchemePreferred()
 }

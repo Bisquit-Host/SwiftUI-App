@@ -74,6 +74,5 @@ struct UserCard: View {
     List {
         UserCard(sampleJSON(.userAttributes))
     }
-    .darkSchemePreferred()
     .environment(UsersVM(""))
 }

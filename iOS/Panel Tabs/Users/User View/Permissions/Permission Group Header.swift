@@ -62,6 +62,5 @@ struct PermissionGroupHeader: View {
     List {
         PermissionGroupHeader($showDescription, user: sampleJSON(.userAttributes))
     }
-    .darkSchemePreferred()
     .environment(UsersVM(""))
 }

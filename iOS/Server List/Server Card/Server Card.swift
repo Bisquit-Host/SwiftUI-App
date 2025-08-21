@@ -125,7 +125,6 @@ struct ServerCard: View {
         ServerCard(sampleJSON(.serverListAttributes))
         ServerCard(sampleJSON(.serverListAttributes))
     }
-    .darkSchemePreferred()
     .padding(5)
     .environmentObject(ValueStore())
 }

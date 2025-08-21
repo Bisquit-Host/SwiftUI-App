@@ -166,6 +166,5 @@ fileprivate extension Array {
             at: ""
         )
     }
-    .darkSchemePreferred()
     .environmentObject(FileTabVM(""))
 }

@@ -20,6 +20,5 @@ struct StartupList: View {
     NavigationStack {
         StartupList()
     }
-    .darkSchemePreferred()
     .environment(StartupVM(""))
 }

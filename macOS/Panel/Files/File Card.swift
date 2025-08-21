@@ -44,6 +44,5 @@ struct FileCard: View {
 
 //#Preview {
 //    FileCard()
-//        .darkSchemePreferred()
 //        .environmentObject(ValueStore())
 //}

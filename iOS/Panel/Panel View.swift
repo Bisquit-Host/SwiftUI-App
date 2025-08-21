@@ -149,6 +149,5 @@ struct PanelView: View {
     NavigationStack {
         PanelView("")
     }
-    .darkSchemePreferred()
     .environmentObject(ValueStore())
 }

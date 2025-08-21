@@ -57,6 +57,5 @@ struct ApikeyCard: View {
     List {
         ApikeyCard(sampleJSON(.apiKeyListAttributes))
     }
-    .darkSchemePreferred()
     .environment(ApikeyVM())
 }

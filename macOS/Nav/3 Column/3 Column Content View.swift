@@ -139,7 +139,6 @@ struct ThreeColumnContentView: View {
 
 #Preview {
     ThreeColumnContentView()
-        .darkSchemePreferred()
         .environment(NavModel(columnVisibility: .all))
         .environment(ServerListVM())
 }

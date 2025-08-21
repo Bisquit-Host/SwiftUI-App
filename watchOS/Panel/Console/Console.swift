@@ -20,6 +20,5 @@ struct Console: View {
     NavigationStack {
         Console()
     }
-    .darkSchemePreferred()
     .environment(PanelVM(""))
 }

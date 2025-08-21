@@ -31,6 +31,5 @@ struct TextFile: View {
     NavigationStack {
         TextFile("", name: "Preview", at: "")
     }
-    .darkSchemePreferred()
     .environmentObject(FileTabVM(""))
 }

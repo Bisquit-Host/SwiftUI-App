@@ -80,5 +80,4 @@ struct StartupCard: View {
 //            )
 //        )
 //    }
-//    .darkSchemePreferred()
 //}

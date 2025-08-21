@@ -40,6 +40,5 @@ struct AllocationList: View {
     NavigationStack {
         AllocationList(sampleJSON(.serverListAttributes))
     }
-    .darkSchemePreferred()
     .environment(AllocationVM(""))
 }
