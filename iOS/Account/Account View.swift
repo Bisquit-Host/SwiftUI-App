@@ -13,12 +13,10 @@ struct AccountView: View {
         List {
             Section {
                 if let account = vm.account {
-                    let name = "\(account.firstName) \(account.lastName)"
-                    
+                    let name = account.firstName + " " + account.lastName
 #if DEBUG
                     param("ID", value: account.id.description)
 #endif
-                    
                     param("Name", value: name)
                     param("E-mail", value: account.email)
                 }
@@ -70,6 +68,7 @@ struct AccountView: View {
             }
         }
         .navigationTitle("Account")
+        .scrollContentBackground(.hidden)
         .refreshableTask {
             let fetchTask = Task {
                 await vm.fetch()
@@ -88,7 +87,6 @@ struct AccountView: View {
         .sheet($sheetDisable2Fa) {
             Disable2FaView()
         }
-        .scrollContentBackground(.hidden)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 DismissButton {
