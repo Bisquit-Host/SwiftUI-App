@@ -48,7 +48,7 @@ struct ServerList: View {
                 //    test = true
                 //}
                 
-                SLToolbarAdminButton()
+                ServerListAdminButton()
                 
                 SettingsButton()
                     .padding(.trailing)

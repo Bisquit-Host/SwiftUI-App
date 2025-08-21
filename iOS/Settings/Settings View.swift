@@ -20,22 +20,22 @@ struct SettingsView: View {
         }
         .navigationTitle("Settings")
         .scrollIndicators(.hidden)
-        .dismissWithGamepad()
-        .sheet($vm.sheetBio) {
-            BiometryUsageView()
-        }
         .task {
             vm.defineBiometryType()
+        }
+        .sheet($vm.sheetBio) {
+            BiometryUsageView()
         }
     }
 }
 
 #Preview {
-    NavigationStack {
-        Text("Preview")
-            .sheet {
+    Text("Preview")
+        .sheet {
+            NavigationStack {
                 SettingsView()
             }
-    }
-    .darkSchemePreferred()
+        }
+        .darkSchemePreferred()
+        .environmentObject(ValueStore())
 }

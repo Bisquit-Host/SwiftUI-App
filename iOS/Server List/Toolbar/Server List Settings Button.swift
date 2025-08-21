@@ -33,11 +33,7 @@ struct ServerListSettingsButton: View {
             Divider()
             
             MenuButton("Log out", role: .destructive, icon: "rectangle.portrait.and.arrow.right") {
-                main {
-                    navState.clear()
-                    store.isApiKeyValid = false
-                    Keychain.delete(key: "selectedApiKey")
-                }
+                logout()
             }
         } label: {
             Image(systemName: "gear")
@@ -53,6 +49,12 @@ struct ServerListSettingsButton: View {
                 SettingsView()
             }
         }
+    }
+    
+    private func logout() {
+        navState.clear()
+        store.isApiKeyValid = false
+        Keychain.delete(key: "selectedApiKey")
     }
 }
 
