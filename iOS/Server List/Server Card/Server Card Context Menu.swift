@@ -78,8 +78,6 @@ struct ServerCardContextMenu: View {
             MenuButton("Open in Safari", icon: "safari") {
                 showSafari = true
             }
-            
-            ShareLink(item: "https://mgr.bisquit.host/server/" + id)
         }
     }
     
