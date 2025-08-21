@@ -14,12 +14,12 @@ struct ServerList: View {
         @Bindable var vm = vm
         
         VStack {
-            TipView(Tip_ServerCardContextMenu())
+            TipView(TipServerCardContextMenu())
                 .padding(.horizontal, 25)
                 .tipCornerRadius(14)
             
             if vm.hasFrozenServers {
-                TipView(Tip_SuspendedServer()) { action in
+                TipView(TipSuspendedServer()) { action in
                     if action.id == "open-billing" {
                         vm.showBilling = true
                     }

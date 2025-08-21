@@ -3,7 +3,7 @@ import ScrechKit
 struct JsonFormatterButton: View {
     @Environment(TextFileVM.self) private var vm
     
-    private var tip = Tip_JsonFormatter()
+    private var tip = TipJsonFormatter()
     
     var body: some View {
         if vm.showPrettyButton {

@@ -1,6 +1,6 @@
 import TipKit
 
-struct Tip_ServerCardContextMenu: Tip {
+struct TipServerCardContextMenu: Tip {
     var title: Text {
         Text("Context Menu")
     }
@@ -16,7 +16,7 @@ struct Tip_ServerCardContextMenu: Tip {
 
 #Preview {
     VStack {
-        TipView(Tip_ServerCardContextMenu())
+        TipView(TipServerCardContextMenu())
             .tipBackground(.ultraThinMaterial)
             .padding()
     }
@@ -25,6 +25,6 @@ struct Tip_ServerCardContextMenu: Tip {
         Tips.showAllTipsForTesting()
     }
 #if !os(watchOS)
-    .popoverTip(Tip_ServerCardContextMenu())
+    .popoverTip(TipServerCardContextMenu())
 #endif
 }

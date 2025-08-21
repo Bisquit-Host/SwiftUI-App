@@ -26,7 +26,7 @@ final class UpdateChecker {
         }
         
         if currentVersion.compare(appStoreVersion, options: .numeric) == .orderedAscending {
-            print("Update available: \(currentVersion) -> \(appStoreVersion)")
+            print("Update available:", currentVersion, "->", appStoreVersion)
             self.alertUpdate = true
         } else {
             print("The app is up to date")

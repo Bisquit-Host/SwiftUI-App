@@ -1,6 +1,6 @@
 import TipKit
 
-struct Tip_SuspendedServer: Tip {
+struct TipSuspendedServer: Tip {
     var title: Text {
         Text("Suspended Server")
     }
@@ -20,12 +20,12 @@ struct Tip_SuspendedServer: Tip {
 
 #Preview {
     VStack {
-        TipView(Tip_SuspendedServer())
+        TipView(TipSuspendedServer())
             .tipBackground(.ultraThinMaterial)
             .padding()
     }
     .darkSchemePreferred()
 #if !os(watchOS)
-    .popoverTip(Tip_SuspendedServer())
+    .popoverTip(TipSuspendedServer())
 #endif
 }

@@ -5,11 +5,11 @@ struct ServerListTips: View {
     @Environment(ServerListVM.self) private var vm
     
     var body: some View {
-        TipView(Tip_ServerCardContextMenu())
+        TipView(TipServerCardContextMenu())
             .tipBackground(.ultraThinMaterial)
         
         if vm.hasFrozenServers {
-            TipView(Tip_SuspendedServer()) { action in
+            TipView(TipSuspendedServer()) { action in
                 if action.id == "open-billing" {
                     vm.showBilling = true
                 }

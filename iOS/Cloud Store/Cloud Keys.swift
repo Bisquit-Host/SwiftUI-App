@@ -23,7 +23,7 @@ struct CloudKeys: View {
         NavigationStack {
             List {
                 Section {
-                    TipView(Tip_CloudKeys())
+                    TipView(TipCloudKeys())
                         .tipBackground(.ultraThinMaterial)
                     
                     ForEach(keys) { key in
