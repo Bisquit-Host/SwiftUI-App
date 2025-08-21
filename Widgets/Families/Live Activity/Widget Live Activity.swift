@@ -48,18 +48,15 @@ struct WidgetLiveActivity: Widget {
                 
                 DynamicIslandExpandedRegion(.leading) {
                     Text(context.attributes.name)
-                        .bold()
-                        .caption2()
-                        .rounded()
+                        .caption2(.bold, design: .rounded)
                         .lineLimit(1)
                         .padding(.leading, 5)
                 }
                 
                 DynamicIslandExpandedRegion(.trailing) {
                     Text(context.attributes.id)
-                        .caption2()
-                        .rounded()
                         .secondary()
+                        .caption2(design: .rounded)
                         .padding(.trailing, 5)
                 }
                 

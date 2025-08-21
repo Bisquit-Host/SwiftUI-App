@@ -33,8 +33,7 @@ struct BrowserCard: View {
                     .placeholder {
                         Text("Soon there will be an art here as well")
                             .padding(.horizontal)
-                            .footnote()
-                            .monospaced()
+                            .footnote(design: .monospaced)
                     }
                     .resizable()
                     .brightness(appearance == .dark ? -0.1 : 0)

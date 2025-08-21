@@ -47,15 +47,14 @@ struct DiscoverCardLayout: View {
             Spacer()
             
             Text(link.subtitle)
+                .semibold()
                 .rounded()
+                .secondary()
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
-                .secondary()
-                .semibold()
             
             Text(link.title)
-                .rounded()
-                .title2(.bold)
+                .title2(.bold, design: .rounded)
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
                 .frame(maxWidth: squareSize, alignment: .leading)

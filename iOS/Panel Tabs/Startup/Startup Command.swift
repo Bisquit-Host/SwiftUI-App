@@ -15,8 +15,7 @@ struct StartupCommand: View {
             }
             
             Text(command)
-                .caption2()
-                .monospaced()
+                .caption2(design: .monospaced)
                 .textSelection(.enabled)
                 .animation(.default, value: store.rawStartupCommand)
         } header: {

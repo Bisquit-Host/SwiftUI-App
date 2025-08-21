@@ -27,7 +27,6 @@ final class ConsoleVM {
     
     func sendCommand() async {
         await PteroNet.sendCommand(id, command: command)
-        
         command = ""
     }
 }

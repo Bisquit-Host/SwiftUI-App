@@ -29,9 +29,8 @@ struct InfoTabSubdomains: View {
                 } else {
                     VStack(alignment: .leading) {
                         Text("Subdomains")
-                            .footnote()
+                            .footnote(design: .rounded)
                             .secondary()
-                            .rounded()
                         
                         ForEach(vm.subdomains) { subdomain in
                             Text(subdomain.subdomain + "." + subdomain.domain)

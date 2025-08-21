@@ -41,9 +41,8 @@ struct InfoTabAllocation: View {
             HStack {
                 VStack(alignment: .leading) {
                     Text("IP Address")
-                        .footnote()
+                        .footnote(design: .rounded)
                         .secondary()
-                        .rounded()
                     
                     Text(ip)
                         .monospaced()
