@@ -21,4 +21,5 @@ struct ServerName: View {
 #Preview {
     ServerName("Preview")
         .darkSchemePreferred()
+        .environmentObject(ValueStore())
 }

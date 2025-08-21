@@ -2,7 +2,7 @@ import ScrechKit
 import PteroNet
 import SwiftData
 
-struct SettingsButton: View {
+struct ServerListSettingsButton: View {
     @Environment(ServerListVM.self) private var vm
     @Environment(NavState.self) private var navState
     @EnvironmentObject private var store: ValueStore
@@ -58,7 +58,7 @@ struct SettingsButton: View {
 
 #Preview {
     List {
-        SettingsButton()
+        ServerListSettingsButton()
     }
     .darkSchemePreferred()
     .environment(NavState())

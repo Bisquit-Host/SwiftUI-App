@@ -59,7 +59,7 @@ struct ServerList: View {
             }
             
             ToolbarItemGroup(placement: .topBarTrailing) {
-                SLToolbarAdminButton()
+                ServerListAdminButton()
                 
                 ServerListFilter()
             }
@@ -67,7 +67,7 @@ struct ServerList: View {
             ToolbarSpacer(.fixed, placement: .topBarTrailing)
             
             ToolbarItem(placement: .topBarTrailing) {
-                SettingsButton()
+                ServerListSettingsButton()
             }
         }
     }
