@@ -6,9 +6,10 @@ final class SceneBisquitFall: SKScene {
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
         
         if let particles = SKEmitterNode(fileNamed: "Bisquits") {
-            particles.position = CGPoint(x: frame.midX, y: frame.maxY)
+            let bounds = UIScreen.main.bounds
+            let range = max(bounds.width, bounds.height)
             
-            let range = max(UIScreen.main.bounds.width, UIScreen.main.bounds.height)
+            particles.position = CGPoint(x: frame.midX, y: frame.maxY)
             particles.particlePositionRange = CGVector(dx: range, dy: range)
             
             addChild(particles)
@@ -25,11 +26,10 @@ struct BisquitFall: View {
         let scene = SceneBisquitFall()
         
         scene.scaleMode = .resizeFill
+        scene.physicsWorld.gravity = CGVector(dx: 0, dy: -0.5)
 #if !os(tvOS)
         scene.backgroundColor = .systemBackground
 #endif
-        scene.physicsWorld.gravity = CGVector(dx: 0, dy: -0.5)
-        
         return scene
     }
     
