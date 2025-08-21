@@ -168,6 +168,5 @@ extension View {
 
 #Preview {
     Intro()
-        .darkSchemePreferred()
         .environmentObject(ValueStore())
 }

@@ -62,7 +62,6 @@ struct CloudKeys: View {
     @Previewable @State var apiKey = ""
     
     Text("Preview")
-        .darkSchemePreferred()
         .sheet {
             CloudKeys($apiKey)
         }

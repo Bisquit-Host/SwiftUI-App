@@ -23,5 +23,4 @@ struct DynamicIslandBadge: View {
 
 #Preview {
     DynamicIslandBadge()
-        .darkSchemePreferred()
 }

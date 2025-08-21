@@ -87,5 +87,4 @@ struct CloudKeyCard: View {
                 key: "ptlc_1234567890"
             )) {}
     }
-    .darkSchemePreferred()
 }

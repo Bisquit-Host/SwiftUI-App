@@ -22,3 +22,10 @@ struct CurrencyPicker: View {
         }
     }
 }
+
+#Preview {
+    List {
+        CurrencyPicker()
+    }
+    .environmentObject(ValueStore())
+}
