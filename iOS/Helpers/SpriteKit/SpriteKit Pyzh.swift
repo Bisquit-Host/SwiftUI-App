@@ -1,7 +1,7 @@
 import SpriteKit
 
 final class GameScene: SKScene {
-    private let bisquitTexture = SKTexture(image: .bitquit)
+    private let bisquitTexture = SKTexture(image: .bisquit)
     
     override func didMove(to view: SKView) {
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
