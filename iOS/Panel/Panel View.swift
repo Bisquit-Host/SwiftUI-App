@@ -72,18 +72,22 @@ struct PanelView: View {
             TextField("Enter a folder name", text: $fileVM.newFolderName)
             
             Button("Create", role: .confirm) {
-                if !fileVM.newFolderName.isEmpty {
-                    Task {
-                        await fileVM.createFolder(fileVM.newFolderName, at: fileVM.path)
-                    }
-                    
-                    fileVM.newFolderName = ""
-                }
+                createFolder()
             }
             
             Button("Cancel", role: .cancel) {
                 fileVM.newFolderName = ""
             }
+        }
+    }
+    
+    private func createFolder() {
+        if !fileVM.newFolderName.isEmpty {
+            Task {
+                await fileVM.createFolder(fileVM.newFolderName, at: fileVM.path)
+            }
+            
+            fileVM.newFolderName = ""
         }
     }
     
