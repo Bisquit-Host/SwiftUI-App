@@ -6,12 +6,10 @@ struct ContentView: View {
     
     @Environment(\.scenePhase) private var scenePhase
     @EnvironmentObject private var store: ValueStore
-    
 #if os(macOS)
     @Environment(\.appearsActive) private var appearsActive
     @Environment(\.openSettings) private var openSettings
 #endif
-    
     var body: some View {
         @Bindable var nav = nav
         
@@ -80,5 +78,7 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .darkSchemePreferred()
         .environment(NavModel())
+        .environmentObject(ValueStore())
 }

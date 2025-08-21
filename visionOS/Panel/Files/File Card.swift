@@ -78,4 +78,6 @@ struct FileCard: View {
         FileCard("", file: sampleJSON(.fileListAttributes), at: "")
     }
     .environment(NavState())
+    .environmentObject(FileTabVM(""))
+    .darkSchemePreferred()
 }

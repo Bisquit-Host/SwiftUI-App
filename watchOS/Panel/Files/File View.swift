@@ -45,4 +45,5 @@ struct FileView: View {
 
 #Preview {
     FileView("", file: sampleJSON(.fileListAttributes))
+        .darkSchemePreferred()
 }

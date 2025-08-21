@@ -39,13 +39,13 @@ struct UserView: View {
             PermissionList($user)
                 .environment(vm)
         }
+        .navigationTitle(user.username)
+        .scrollIndicators(.never)
         .formStyle(.grouped)
         .frame(height: 600)
         .refreshable {
             await vm.userDetails($user)
         }
-        .navigationTitle(user.username)
-        .scrollIndicators(.never)
     }
     
     private func removePrefix(_ string: String) -> String {
@@ -64,5 +64,6 @@ struct UserView: View {
         .sheet {
             UserView(sampleJSON(.userAttributes))
         }
+        .darkSchemePreferred()
         .environment(UsersVM(""))
 }

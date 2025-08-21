@@ -42,10 +42,11 @@ struct ServerCard: View {
                 }
                 .matchedEffect("RAM_CPU", in: animation)
             }
+#warning("glassEffect")
         }
         .frame(height: 100)
         .padding(.horizontal)
-//        .glassEffect(in: .rect(cornerRadius: rounding))
+        //        .glassEffect(in: .rect(cornerRadius: rounding))
         .background(
             ZStack {
                 RoundedRectangle(cornerRadius: rounding)
@@ -122,14 +123,11 @@ struct ServerCard: View {
         spacing: 8
     ) {
         ServerCard(sampleJSON(.serverListAttributes))
-        
         ServerCard(sampleJSON(.serverListAttributes))
-        
         ServerCard(sampleJSON(.serverListAttributes))
-        
         ServerCard(sampleJSON(.serverListAttributes))
     }
+    .darkSchemePreferred()
     .padding(5)
     .environmentObject(ValueStore())
-    .darkSchemePreferred()
 }

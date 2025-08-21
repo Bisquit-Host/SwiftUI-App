@@ -28,7 +28,9 @@ struct TextFile: View {
 }
 
 #Preview {
-    TextFile("", name: "Preview", at: "")
-        .darkSchemePreferred()
-        .environmentObject(FileTabVM(""))
+    NavigationStack {
+        TextFile("", name: "Preview", at: "")
+    }
+    .darkSchemePreferred()
+    .environmentObject(FileTabVM(""))
 }

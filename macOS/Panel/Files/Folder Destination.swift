@@ -62,7 +62,9 @@ struct FolderDestination: View {
 }
 
 #Preview {
-    FolderDestination("")
-        .environmentObject(ValueStore())
-        .environmentObject(FileTabVM(""))
+    NavigationStack {
+        FolderDestination("")
+    }
+    .darkSchemePreferred()
+    .environment(NavModel())
 }

@@ -32,5 +32,6 @@ struct ServerListGrid: View {
 
 #Preview {
     ServerListGrid(sampleJSON(.serverListDataArray))
+        .darkSchemePreferred()
         .environmentObject(ValueStore())
 }

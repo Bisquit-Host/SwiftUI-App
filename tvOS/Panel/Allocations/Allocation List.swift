@@ -37,5 +37,9 @@ struct AllocationList: View {
 }
 
 #Preview {
-    AllocationList(sampleJSON(.serverListAttributes))
+    NavigationStack {
+        AllocationList(sampleJSON(.serverListAttributes))
+    }
+    .darkSchemePreferred()
+    .environment(AllocationVM(""))
 }

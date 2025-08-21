@@ -93,15 +93,16 @@ struct DataTab: View {
     }
 }
 
+fileprivate extension DataTab {
+    var databaseLimit: Int {
+        server.featureLimits.databases
+    }
+}
+
 #Preview {
     DataTab(sampleJSON(.serverListAttributes))
         .environment(BackupVM(""))
         .environment(DatabaseVM(""))
         .environment(ScheduleVM(""))
-}
-
-fileprivate extension DataTab {
-    var databaseLimit: Int {
-        server.featureLimits.databases
-    }
+        .darkSchemePreferred()
 }

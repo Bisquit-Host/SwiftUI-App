@@ -24,5 +24,6 @@ struct SLToolbarAdminButton: View {
 
 #Preview {
     SLToolbarAdminButton()
+        .darkSchemePreferred()
         .environmentObject(ValueStore())
 }

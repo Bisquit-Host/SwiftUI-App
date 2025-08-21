@@ -62,4 +62,5 @@ struct PowerSwitch: View {
 #Preview {
     PowerSwitch()
         .environment(PanelVM(""))
+        .darkSchemePreferred()
 }

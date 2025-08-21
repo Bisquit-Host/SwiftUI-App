@@ -20,6 +20,7 @@ struct Guide: View {
 
 #Preview {
     Guide()
+        .darkSchemePreferred()
         .padding()
         .glassBackgroundEffect()
 }

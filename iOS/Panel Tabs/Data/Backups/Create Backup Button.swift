@@ -23,5 +23,6 @@ struct CreateBackupButton: View {
 
 #Preview {
     CreateBackupButton(4)
+        .darkSchemePreferred()
         .environment(BackupVM(""))
 }

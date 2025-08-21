@@ -27,14 +27,14 @@ struct TwoColumnDetailView: View {
     }
 }
 
-//#Preview() {
+//#Preview {
 //    PanelSectionList()
-//        .environment(ServerListVM())
+//        .darkSchemePreferred()
 //        .environment(NavModel(selectedCategory: .dessert))
 //}
 
-#Preview() {
+#Preview {
     TwoColumnDetailView()
-        .environment(ServerListVM())
+        .darkSchemePreferred()
         .environment(NavModel(selectedCategory: nil))
 }

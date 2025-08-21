@@ -12,5 +12,6 @@ struct BrowserListWeb: View {
 
 #Preview {
     BrowserListWeb()
+        .darkSchemePreferred()
         .environment(BrowserVM())
 }

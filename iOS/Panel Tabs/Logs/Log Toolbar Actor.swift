@@ -40,4 +40,5 @@ struct LogToolbarActor: View {
 //#Preview {
 //    LogToolbarActor()
 //        .environment(LogVM())
+//        .darkSchemePreferred()
 //}

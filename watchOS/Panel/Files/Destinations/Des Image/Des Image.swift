@@ -43,3 +43,10 @@ struct ImageFile: View {
         }
     }
 }
+
+//#Preview {
+//    NavigationStack {
+//        ImageFile()
+//    }
+//    .darkSchemePreferred()
+//}

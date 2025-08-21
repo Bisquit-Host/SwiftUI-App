@@ -52,6 +52,7 @@ struct StartPage: View {
 
 #Preview {
     StartPage()
+        .darkSchemePreferred()
         .environment(NavState())
         .environmentObject(ValueStore())
 }

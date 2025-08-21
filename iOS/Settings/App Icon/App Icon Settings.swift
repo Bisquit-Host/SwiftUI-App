@@ -2,6 +2,7 @@ import ScrechKit
 
 struct AppIconSettings: View {
     @EnvironmentObject private var store: ValueStore
+    
     @Namespace private var animation
     
     private let columns = [
@@ -36,5 +37,6 @@ struct AppIconSettings: View {
 
 #Preview {
     AppIconSettings()
+        .darkSchemePreferred()
         .environmentObject(ValueStore())
 }

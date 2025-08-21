@@ -17,6 +17,9 @@ struct Console: View {
 }
 
 #Preview {
-    Console()
-        .environment(PanelVM(""))
+    NavigationStack {
+        Console()
+    }
+    .darkSchemePreferred()
+    .environment(PanelVM(""))
 }

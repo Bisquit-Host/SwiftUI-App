@@ -91,6 +91,9 @@ struct QuickLookFile: View {
 }
 
 #Preview {
-    QuickLookFile("", name: "", at: "")
-        .environmentObject(FileTabVM(""))
+    NavigationStack {
+        QuickLookFile("", name: "", at: "")
+    }
+    .darkSchemePreferred()
+    .environmentObject(FileTabVM(""))
 }

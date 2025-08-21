@@ -58,4 +58,5 @@ struct BackupCard: View {
 #Preview {
     BackupCard(sampleJSON(.backupAttributes))
         .environment(BackupVM(""))
+        .darkSchemePreferred()
 }

@@ -77,4 +77,5 @@ private struct Label: View {
             for: $0
         )
     }
+    .darkSchemePreferred()
 }

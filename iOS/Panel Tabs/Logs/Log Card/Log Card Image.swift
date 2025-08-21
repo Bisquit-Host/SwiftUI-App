@@ -33,4 +33,5 @@ struct LogCardImage: View {
 
 //#Preview {
 //    LogCardImage()
+//        .darkSchemePreferred()
 //}

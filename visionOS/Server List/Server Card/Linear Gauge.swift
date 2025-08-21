@@ -3,9 +3,7 @@ import ScrechKit
 struct LinearGauge: View {
     private let value, limit: Double
     
-    init(value: Double,
-         limit: Double
-    ) {
+    init(value: Double, limit: Double) {
         self.value = value
         self.limit = limit
     }
@@ -49,6 +47,7 @@ struct LinearGauge: View {
         LinearGauge(value: 5, limit: 10)
         LinearGauge(value: 15, limit: 10)
     }
+    .darkSchemePreferred()
     .padding()
     .glassBackgroundEffect()
 }

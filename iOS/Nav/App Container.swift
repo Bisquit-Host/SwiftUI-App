@@ -35,8 +35,13 @@ struct AppContainer: View {
                     .withNavDestinations()
 #endif
             } else {
-                IntroParent()
+#if os(iOS)
+                Intro()
                     .withNavDestinations()
+#else
+                StartPage()
+                    .withNavDestinations()
+#endif
             }
         }
         .animation(.default, value: store.isApiKeyValid)

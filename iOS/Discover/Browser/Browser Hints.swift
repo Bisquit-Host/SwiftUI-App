@@ -24,5 +24,8 @@ struct BrowserHints: View {
 }
 
 #Preview {
-    BrowserHints()
+    List {
+        BrowserHints()
+    }
+    .darkSchemePreferred()
 }

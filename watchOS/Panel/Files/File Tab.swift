@@ -40,5 +40,8 @@ struct FileTab: View {
 }
 
 #Preview {
-    FileTab("Preview")
+    NavigationStack {
+        FileTab("Preview")
+    }
+    .darkSchemePreferred()
 }

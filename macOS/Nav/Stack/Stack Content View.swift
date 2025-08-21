@@ -66,8 +66,9 @@ struct StackContentView: View {
     }
 }
 
-#Preview() {
+#Preview {
     StackContentView()
+        .darkSchemePreferred()
         .environment(ServerListVM())
         .environment(NavModel.shared)
 }

@@ -83,7 +83,8 @@ struct ConsoleTab: View {
 }
 
 #Preview {
-    ConsoleTab("500028e3")
+    ConsoleTab("")
+        .darkSchemePreferred()
         .environment(PanelVM(""))
         .environment(ConsoleVM(""))
         .environmentObject(ValueStore())

@@ -35,4 +35,6 @@ struct SuspendedServerCard: View {
 
 #Preview {
     SuspendedServerCard("Test Server")
+        .darkSchemePreferred()
+        .environmentObject(ValueStore())
 }

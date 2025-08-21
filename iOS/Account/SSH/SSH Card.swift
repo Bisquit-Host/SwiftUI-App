@@ -45,4 +45,6 @@ struct SSHCard: View {
 
 //#Preview {
 //    SSHCard()
+//        .darkSchemePreferred()
+//        .environment(SSHVM())
 //}

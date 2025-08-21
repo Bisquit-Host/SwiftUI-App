@@ -54,5 +54,6 @@ struct InfoTabUsers: View {
 
 #Preview {
     InfoTabUsers()
+        .darkSchemePreferred()
         .environment(UsersVM(""))
 }

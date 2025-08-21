@@ -113,4 +113,8 @@ struct StatsTab: View {
 
 #Preview {
     StatsTab(sampleJSON(.serverListAttributes))
+        .environment(PanelVM(""))
+        .environment(BackupVM(""))
+        .environment(DatabaseVM(""))
+        .darkSchemePreferred()
 }

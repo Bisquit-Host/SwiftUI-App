@@ -57,7 +57,11 @@ struct SettingsButton: View {
 }
 
 #Preview {
-    SettingsButton()
-        .environment(ServerListVM())
-        .environmentObject(ValueStore())
+    List {
+        SettingsButton()
+    }
+    .darkSchemePreferred()
+    .environment(NavState())
+    .environment(ServerListVM())
+    .environmentObject(ValueStore())
 }

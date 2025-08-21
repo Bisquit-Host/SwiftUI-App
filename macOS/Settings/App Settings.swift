@@ -76,5 +76,7 @@ struct AppSettings: View {
 
 #Preview {
     AppSettings()
+        .darkSchemePreferred()
         .environment(NavModel.shared)
+        .environmentObject(ValueStore())
 }

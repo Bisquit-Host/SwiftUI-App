@@ -74,6 +74,7 @@ struct InfoTab: View {
 
 #Preview {
     InfoTab(PreviewProp.serverAttributes)
+        .darkSchemePreferred()
         .padding()
         .glassBackgroundEffect()
         .environment(PanelVM(""))

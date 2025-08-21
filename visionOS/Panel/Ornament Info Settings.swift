@@ -50,4 +50,6 @@ struct OrnamentInfoSettings: View {
 
 #Preview {
     OrnamentInfoSettings(PreviewProp.serverAttributes)
+        .darkSchemePreferred()
+        .environmentObject(OrnamentProperty())
 }

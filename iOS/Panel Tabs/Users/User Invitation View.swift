@@ -60,5 +60,6 @@ struct UserInvitationView: View {
 
 #Preview {
     UserInvitationView()
+        .darkSchemePreferred()
         .environment(UsersVM(""))
 }

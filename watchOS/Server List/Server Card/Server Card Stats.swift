@@ -40,5 +40,6 @@ struct ServerCardStats: View {
 
 #Preview {
     ServerCardStats(sampleJSON(.serverLimits))
+        .darkSchemePreferred()
         .environment(ServerCardVM(""))
 }

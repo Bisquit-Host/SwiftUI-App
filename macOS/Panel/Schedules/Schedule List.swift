@@ -35,5 +35,8 @@ struct ScheduleList: View {
 }
 
 #Preview {
-    ScheduleList("")
+    NavigationStack {
+        ScheduleList("")
+    }
+    .darkSchemePreferred()
 }

@@ -47,4 +47,5 @@ struct AccountParent: View {
 
 #Preview {
     AccountParent()
+        .darkSchemePreferred()
 }

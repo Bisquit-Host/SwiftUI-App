@@ -64,4 +64,5 @@ struct LogCard: View {
     List {
         LogCard(sampleJSON(.logAttributes))
     }
+    .darkSchemePreferred()
 }

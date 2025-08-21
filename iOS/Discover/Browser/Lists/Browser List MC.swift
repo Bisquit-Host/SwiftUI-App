@@ -12,5 +12,6 @@ struct BrowserListMC: View {
 
 #Preview {
     BrowserListMC()
+        .darkSchemePreferred()
         .environment(BrowserVM())
 }

@@ -40,5 +40,6 @@ struct StartPageFooter: View {
 
 #Preview {
     StartPageFooter()
+        .darkSchemePreferred()
         .environment(StartPageVM())
 }

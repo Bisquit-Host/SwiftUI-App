@@ -76,4 +76,6 @@ struct ServerCard: View {
         ServerCard(PreviewProp.serverAttributes)
     }
     .padding()
+    .darkSchemePreferred()
+    .environmentObject(ValueStore())
 }

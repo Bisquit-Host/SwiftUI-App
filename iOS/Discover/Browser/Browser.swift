@@ -53,6 +53,9 @@ struct Browser: View {
 }
 
 #Preview {
-    Browser()
-        .environmentObject(ValueStore())
+    NavigationStack {
+        Browser()
+    }
+    .darkSchemePreferred()
+    .environmentObject(ValueStore())
 }

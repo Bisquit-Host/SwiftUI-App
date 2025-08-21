@@ -82,6 +82,7 @@ struct SubdomainCard: View {
             createdAt: "Yesterday"
         ))
     }
+    .darkSchemePreferred()
     .environment(SubdomainVM(""))
 #if os(visionOS)
     .padding()

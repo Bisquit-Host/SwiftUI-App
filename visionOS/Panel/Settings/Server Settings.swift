@@ -12,7 +12,10 @@ struct ServerSettings: View {
 }
 
 #Preview {
-    ServerSettings()
-        .padding()
-        .glassBackgroundEffect()
+    NavigationStack {
+        ServerSettings()
+    }
+    .darkSchemePreferred()
+    .padding()
+    .glassBackgroundEffect()
 }

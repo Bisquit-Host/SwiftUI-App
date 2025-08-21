@@ -45,5 +45,6 @@ struct ServerListFilter: View {
 
 #Preview {
     ServerListFilter()
+        .darkSchemePreferred()
         .environment(ServerListVM())
 }

@@ -33,4 +33,5 @@ struct SuspendedCard: View {
 
 #Preview {
     SuspendedCard("Preview")
+        .darkSchemePreferred()
 }

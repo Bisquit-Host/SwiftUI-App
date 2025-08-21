@@ -37,5 +37,8 @@ struct StartupList: View {
 }
 
 #Preview {
-    StartupList(sampleJSON(.serverListAttributes))
+    NavigationStack {
+        StartupList(sampleJSON(.serverListAttributes))
+    }
+    .darkSchemePreferred()
 }

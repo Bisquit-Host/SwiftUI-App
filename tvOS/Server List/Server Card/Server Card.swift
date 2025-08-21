@@ -54,4 +54,6 @@ struct ServerCard: View {
 
 #Preview {
     ServerCard(sampleJSON(.serverListAttributes))
+        .darkSchemePreferred()
+        .environmentObject(ValueStore())
 }

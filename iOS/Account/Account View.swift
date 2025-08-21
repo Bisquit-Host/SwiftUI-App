@@ -115,5 +115,6 @@ struct AccountView: View {
 
 #Preview {
     AccountView()
+        .darkSchemePreferred()
         .environment(AccountVM())
 }

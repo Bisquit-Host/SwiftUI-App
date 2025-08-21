@@ -50,6 +50,9 @@ struct PanelSectionList: View {
 }
 
 #Preview {
-    PanelSectionList()
-        .darkSchemePreferred()
+    NavigationStack {
+        PanelSectionList()
+    }
+    .darkSchemePreferred()
+    .environment(PanelSectionVM())
 }

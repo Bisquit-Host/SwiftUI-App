@@ -154,5 +154,6 @@ struct PanelView: View {
 
 #Preview {
     PanelView(sampleJSON(.serverListAttributes))
+        .darkSchemePreferred()
         .environmentObject(ValueStore())
 }

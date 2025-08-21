@@ -58,6 +58,10 @@ struct Settings: View {
 }
 
 #Preview {
-    Settings()
-        .environmentObject(ValueStore())
+    NavigationStack {
+        Settings()
+    }
+    .darkSchemePreferred()
+    .environmentObject(ValueStore())
+    .environment(NavState())
 }

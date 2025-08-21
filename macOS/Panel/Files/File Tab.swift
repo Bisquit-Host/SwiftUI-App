@@ -78,6 +78,7 @@ struct FileTab: View {
 
 #Preview {
     FileTab("")
-        .environmentObject(ValueStore())
+        .darkSchemePreferred()
+        .environment(NavState())
         .environmentObject(FileTabVM(""))
 }

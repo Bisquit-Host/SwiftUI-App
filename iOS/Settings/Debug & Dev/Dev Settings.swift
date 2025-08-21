@@ -63,5 +63,6 @@ fileprivate extension UIDevice {
     List {
         DevSettings()
     }
+    .darkSchemePreferred()
     .environmentObject(ValueStore())
 }

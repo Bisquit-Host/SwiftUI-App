@@ -19,5 +19,6 @@ struct BrowserTopbar: View {
 
 #Preview {
     BrowserTopbar()
+        .darkSchemePreferred()
         .environment(BrowserVM())
 }

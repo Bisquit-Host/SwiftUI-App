@@ -52,6 +52,6 @@ struct SheetCreateSubdomain: View {
 
 #Preview {
     SheetCreateSubdomain()
-        .environment(SubdomainVM(""))
         .darkSchemePreferred()
+        .environment(SubdomainVM(""))
 }

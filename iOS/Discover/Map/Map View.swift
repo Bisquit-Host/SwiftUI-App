@@ -47,4 +47,5 @@ struct MapView: View {
 
 #Preview {
     MapView()
+        .darkSchemePreferred()
 }

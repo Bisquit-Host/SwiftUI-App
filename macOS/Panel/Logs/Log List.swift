@@ -32,6 +32,8 @@ struct LogList: View {
 }
 
 #Preview {
-    LogList("")
-        .environment(LogVM(""))
+    NavigationStack {
+        LogList("")
+    }
+    .darkSchemePreferred()
 }

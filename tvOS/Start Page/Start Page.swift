@@ -66,7 +66,9 @@ struct StartPage: View {
 }
 
 #Preview {
-    StartPage()
-        .environment(NavState())
-        .environmentObject(ValueStore())
+    NavigationStack {
+        StartPage()
+    }
+    .darkSchemePreferred()
+    .environment(NavState())
 }

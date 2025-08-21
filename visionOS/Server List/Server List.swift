@@ -85,9 +85,10 @@ struct ServerList: View {
 
 #Preview {
     ServerList()
+        .darkSchemePreferred()
         .padding()
         .glassBackgroundEffect()
-        .darkSchemePreferred()
         .environment(ServerListVM())
+        .environment(NavState())
         .environmentObject(ValueStore())
 }

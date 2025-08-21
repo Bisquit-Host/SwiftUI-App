@@ -24,5 +24,8 @@ struct CacheList: View {
 }
 
 #Preview {
-    CacheList()
+    NavigationStack {
+        CacheList()
+    }
+    .darkSchemePreferred()
 }

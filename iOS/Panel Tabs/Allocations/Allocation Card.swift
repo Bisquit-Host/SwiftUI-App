@@ -82,6 +82,7 @@ struct AllocationCard: View {
     List {
         AllocationCard(sampleJSON(.allocationAttributes))
     }
+    .darkSchemePreferred()
     .environment(AllocationVM(""))
     .environmentObject(ValueStore())
 }

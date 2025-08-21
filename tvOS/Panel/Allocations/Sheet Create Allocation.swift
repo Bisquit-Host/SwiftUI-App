@@ -28,6 +28,9 @@ struct SheetCreateAllocation: View {
 }
 
 #Preview {
-    SheetCreateAllocation()
-        .environment(AllocationVM(""))
+    NavigationStack {
+        SheetCreateAllocation()
+    }
+    .darkSchemePreferred()
+    .environment(AllocationVM(""))
 }

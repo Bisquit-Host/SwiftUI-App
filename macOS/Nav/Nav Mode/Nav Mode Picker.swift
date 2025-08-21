@@ -50,8 +50,8 @@ struct NavModePicker: View {
 }
 
 #Preview {
-    @Previewable @State
-    var navMode: NavMode? = .stack
+    @Previewable @State var navMode: NavMode? = .stack
     
     NavModePicker($navMode)
+        .darkSchemePreferred()
 }

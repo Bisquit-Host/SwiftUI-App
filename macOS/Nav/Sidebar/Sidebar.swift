@@ -35,7 +35,11 @@ struct Sidebar: View {
 }
 
 #Preview {
-    Sidebar()
-        .environment(ServerListVM())
-        .environment(NavModel())
+    NavigationStack {
+        Sidebar()
+    }
+    .darkSchemePreferred()
+    .environment(ServerListVM())
+    .environment(NavModel())
+    .environmentObject(ValueStore())
 }

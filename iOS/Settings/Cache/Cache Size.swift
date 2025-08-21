@@ -36,4 +36,6 @@ struct CacheSize: View {
     List {
         CacheSize()
     }
+    .darkSchemePreferred()
+    .environment(CacheVM())
 }

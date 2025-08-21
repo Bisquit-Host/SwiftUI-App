@@ -4,6 +4,7 @@ import PteroNet
 struct ServerList: View {
     @Environment(ServerListVM.self) private var vm
     @Environment(UpdateChecker.self) private var updater
+    
     @Environment(\.openURL) private var openUrl
     
     private let gradient = Gradient(colors: [
@@ -61,6 +62,7 @@ struct ServerList: View {
 
 #Preview {
     ServerList()
+        .darkSchemePreferred()
         .padding()
         .environment(ServerListVM())
         .environment(UpdateChecker())

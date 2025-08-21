@@ -56,5 +56,8 @@ struct BackupList: View {
 }
 
 #Preview {
-    BackupList(sampleJSON(.serverListAttributes))
+    NavigationStack {
+        BackupList(sampleJSON(.serverListAttributes))
+    }
+    .darkSchemePreferred()
 }

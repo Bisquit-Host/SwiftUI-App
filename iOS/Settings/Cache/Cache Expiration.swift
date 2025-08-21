@@ -2,11 +2,9 @@ import ScrechKit
 import Kingfisher
 
 struct CacheExpiration: View {
-    @Environment(CacheVM.self)
-    private var cache
+    @Environment(CacheVM.self) private var cache
     
-    @AppStorage("cacheExpiration")
-    private var cacheExpiration: CacheExpiration = .month
+    @AppStorage("cacheExpiration") private var cacheExpiration: CacheExpiration = .month
     
     private let intervals: [CacheExpiration] = [
         .month, .year, .never
@@ -54,4 +52,6 @@ struct CacheExpiration: View {
     List {
         CacheExpiration()
     }
+    .darkSchemePreferred()
+    .environment(CacheVM())
 }

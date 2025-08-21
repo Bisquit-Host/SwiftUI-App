@@ -72,5 +72,6 @@ struct AudioPlayerView: View {
 
 #Preview {
     AudioPlayerView("", name: "Preview", at: "")
+        .darkSchemePreferred()
         .environmentObject(FileTabVM(""))
 }

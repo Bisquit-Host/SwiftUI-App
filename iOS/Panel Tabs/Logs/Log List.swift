@@ -79,4 +79,5 @@ struct LogList: View {
         LogList()
     }
     .environment(LogVM(""))
+    .darkSchemePreferred()
 }

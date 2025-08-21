@@ -34,5 +34,9 @@ struct UserInvitationPermission: View {
 }
 
 #Preview {
-    UserInvitationPermission("Preview")
+    List {
+        UserInvitationPermission("Preview")
+    }
+    .darkSchemePreferred()
+    .environment(UsersVM(""))
 }

@@ -32,6 +32,7 @@ struct ServerCardParent: View {
 
 #Preview {
     ServerCardParent(sampleJSON(.serverListAttributes))
+        .darkSchemePreferred()
         .padding()
         .glassBackgroundEffect()
 }

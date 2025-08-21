@@ -21,7 +21,8 @@
 //        }
 //    }
 //}
-//
+
 //#Preview {
 //    Browser_Sticker("Test")
+//        .darkSchemePreferred()
 //}

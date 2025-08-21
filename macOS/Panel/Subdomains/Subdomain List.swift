@@ -66,6 +66,9 @@ struct SubdomainList: View {
 }
 
 #Preview {
-    SubdomainList()
-        .environment(SubdomainVM(""))
+    NavigationStack {
+        SubdomainList()
+    }
+    .darkSchemePreferred()
+    .environment(SubdomainVM(""))
 }

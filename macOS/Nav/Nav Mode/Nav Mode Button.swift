@@ -2,7 +2,6 @@ import SwiftUI
 
 struct NavModeButton: View {
     @Environment(NavModel.self) private var nav
-    
     @EnvironmentObject private var store: ValueStore
     
     private var icon: String {
@@ -25,5 +24,7 @@ struct NavModeButton: View {
 
 #Preview {
     NavModeButton()
+        .darkSchemePreferred()
         .environment(NavModel.shared)
+        .environmentObject(ValueStore())
 }

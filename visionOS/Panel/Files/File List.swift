@@ -26,4 +26,6 @@ struct FileList: View {
 
 #Preview {
     FileList("")
+        .darkSchemePreferred()
+        .environmentObject(FileTabVM(""))
 }

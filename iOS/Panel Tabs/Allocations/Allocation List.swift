@@ -5,7 +5,6 @@ struct AllocationList: View {
     @Environment(\.dismiss) private var dismiss
     
     private var vm: AllocationVM
-    
     private let server: ServerAttributes
     
     init(_ server: ServerAttributes) {
@@ -62,6 +61,9 @@ struct AllocationList: View {
 }
 
 #Preview {
-    AllocationList(sampleJSON(.serverListAttributes))
-        .environment(AllocationVM(""))
+    NavigationStack {
+        AllocationList(sampleJSON(.serverListAttributes))
+    }
+    .darkSchemePreferred()
+    .environment(AllocationVM(""))
 }

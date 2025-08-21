@@ -36,5 +36,6 @@ struct Disable2FaView: View {
 
 #Preview {
     Disable2FaView()
+        .darkSchemePreferred()
         .environment(AccountVM())
 }

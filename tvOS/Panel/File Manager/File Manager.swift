@@ -62,7 +62,10 @@ struct FileTab: View {
 }
 
 #Preview {
-    FileTab("")
-        .environment(NavState())
-        .environmentObject(FileTabVM(""))
+    NavigationStack {
+        FileTab("")
+    }
+    .darkSchemePreferred()
+    .environment(NavState())
+    .environmentObject(FileTabVM(""))
 }

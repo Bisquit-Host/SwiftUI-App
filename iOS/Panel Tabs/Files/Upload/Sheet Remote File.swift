@@ -56,6 +56,9 @@ struct SheetRemoteFile: View {
 }
 
 #Preview {
-    SheetRemoteFile("preview/preview")
-        .environmentObject(FileTabVM(""))
+    NavigationStack {
+        SheetRemoteFile("preview/preview")
+    }
+    .darkSchemePreferred()
+    .environmentObject(FileTabVM(""))
 }

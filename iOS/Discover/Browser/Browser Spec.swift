@@ -21,4 +21,5 @@ struct BrowserSpec: View {
 
 #Preview {
     BrowserSpec("", icon: "hammer")
+        .darkSchemePreferred()
 }

@@ -42,4 +42,5 @@ struct ServerCardSuspended: View {
 
 #Preview {
     ServerCardSuspended("Test Server")
+        .darkSchemePreferred()
 }

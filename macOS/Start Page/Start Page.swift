@@ -95,6 +95,7 @@ struct StartPage: View {
 
 #Preview {
     StartPage()
+        .darkSchemePreferred()
         .padding()
         .environmentObject(ValueStore())
 }

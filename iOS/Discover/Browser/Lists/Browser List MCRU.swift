@@ -12,5 +12,6 @@ struct BrowserListMCRU: View {
 
 #Preview {
     BrowserListMCRU()
+        .darkSchemePreferred()
         .environment(BrowserVM())
 }

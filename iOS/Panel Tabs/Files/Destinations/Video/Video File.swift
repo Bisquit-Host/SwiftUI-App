@@ -88,6 +88,9 @@ struct VideoFile: View {
 }
 
 #Preview {
-    VideoFile("id", name: "Preview", at: "")
-        .environmentObject(FileTabVM(""))
+    NavigationStack {
+        VideoFile("id", name: "Preview", at: "")
+    }
+    .darkSchemePreferred()
+    .environmentObject(FileTabVM(""))
 }

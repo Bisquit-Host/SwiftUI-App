@@ -96,5 +96,5 @@ struct CredentialsView: View {
 
 #Preview {
     CredentialsView("email")
-        .environmentObject(ValueStore())
+        .darkSchemePreferred()
 }

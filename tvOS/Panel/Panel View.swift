@@ -160,7 +160,5 @@ struct PanelView: View {
 
 #Preview {
     PanelView(PreviewProp.serverAttributes)
-        .environment(BackupVM(""))
-        .environment(DatabaseVM(""))
-        .environment(ScheduleVM(""))
+        .darkSchemePreferred()
 }

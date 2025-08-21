@@ -66,6 +66,7 @@ struct StartPage: View {
 #Preview {
     StartPage()
         .padding()
+        .darkSchemePreferred()
         .glassBackgroundEffect()
         .environment(NavState())
         .environmentObject(ValueStore())

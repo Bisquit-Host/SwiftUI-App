@@ -41,6 +41,7 @@ struct ServerListTopbar: View {
 
 #Preview {
     ServerListTopbar()
+        .darkSchemePreferred()
         .environment(ServerListVM())
         .environment(NavState())
         .environmentObject(ValueStore())

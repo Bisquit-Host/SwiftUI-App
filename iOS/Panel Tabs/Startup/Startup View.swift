@@ -51,6 +51,7 @@ struct StartupView: View {
 
 #Preview {
     StartupView(sampleJSON(.serverListAttributes))
+        .darkSchemePreferred()
         .environment(ServerSettingsVM(""))
         .environmentObject(ValueStore())
 }

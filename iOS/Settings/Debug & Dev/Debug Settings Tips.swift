@@ -19,5 +19,8 @@ struct DebugSettingsTips: View {
 }
 
 #Preview {
-    DebugSettingsTips()
+    List {
+        DebugSettingsTips()
+    }
+    .darkSchemePreferred()
 }

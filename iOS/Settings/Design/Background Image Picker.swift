@@ -155,4 +155,5 @@ extension View {
 
 #Preview {
     BackgroundImagePickerView()
+        .darkSchemePreferred()
 }
