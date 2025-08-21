@@ -13,7 +13,6 @@ struct Enable2FAView: View {
             Spacer()
             
             TextField("Code", text: $code)
-                .padding()
                 .textFieldStyle(.roundedBorder)
                 .textContentType(.oneTimeCode)
                 .keyboardType(.numberPad)
@@ -28,9 +27,9 @@ struct Enable2FAView: View {
                 Text("Verify")
                     .semibold()
                     .foregroundStyle(.white)
-                    .frame(height: 55)
-                    .frame(maxWidth: .infinity)
-                    .background(.blue.gradient, in: .rect(cornerRadius: 16))
+                    .padding(.horizontal)
+                    .padding(.vertical, 8)
+                    .glassEffect(.regular.tint(.green.opacity(0.8)))
             }
             
             Spacer()
@@ -83,8 +82,8 @@ struct Enable2FAView: View {
                     }
                 }
             }
-            .padding(.horizontal)
         }
+        .padding(.horizontal)
         .sheet($sheetQrCode) {
             QRCodeView(vm.qrCodeUrl)
         }
