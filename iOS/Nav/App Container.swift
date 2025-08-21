@@ -19,7 +19,6 @@ struct AppContainer: View {
     @Query(animation: .default) private var keys: [APIKey]
     
     @State private var showBadge = false
-    
 #if os(iOS)
     @State private var orientation = UIDevice.current.orientation
 #endif
@@ -56,7 +55,7 @@ struct AppContainer: View {
             network.observeStatus()
         }
 #if os(iOS) || os(visionOS)
-        .appStoreOverlay($updater.alertUpdate, id: "1639409934")
+        .appStoreOverlay($updater.alertUpdate, id: 1639409934)
 #elseif os(macOS)
         
 #endif
