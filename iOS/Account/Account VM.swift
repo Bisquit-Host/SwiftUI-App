@@ -30,7 +30,10 @@ final class AccountVM {
         }
     }
     
-    func enable2Fa(_ code: String, onSuccess: @escaping () -> ()) async {
+    func enable2Fa(
+        _ code: String,
+        onSuccess: @escaping () -> ()
+    ) async {
         do {
             let tokens = try await twoFaEnableAPI(code)
             print(tokens.tokens)
@@ -41,9 +44,12 @@ final class AccountVM {
         }
     }
     
-    func disable2Fa(_ code: String, onSuccess: @escaping () -> ()) async {
+    func disable2Fa(
+        _ password: String,
+        onSuccess: @escaping () -> ()
+    ) async {
         do {
-            try await twoFaDisableAPI(code)
+            try await twoFaDisableAPI(password)
             onSuccess()
         } catch {
             SystemAlert.error(error)
