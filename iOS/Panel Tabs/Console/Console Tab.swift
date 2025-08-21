@@ -11,8 +11,6 @@ struct ConsoleTab: View {
         self.id = id
     }
     
-    private let width = UIScreen.main.bounds.width
-    
     var body: some View {
         @Bindable var vm = vm
         @Bindable var panelVM = panelVM
@@ -35,11 +33,7 @@ struct ConsoleTab: View {
                     .autocorrectionDisabled()
                     .textInputAutocapitalization(.never)
                     .onSubmit {
-                        if !vm.command.isEmpty {
-                            Task {
-                                await vm.sendCommand()
-                            }
-                        }
+                        sendCommand()
                     }
                 
                 if !vm.command.isEmpty {
@@ -77,6 +71,14 @@ struct ConsoleTab: View {
                 } else {
                     ContentUnavailableView.search(text: panelVM.searchRule)
                 }
+            }
+        }
+    }
+    
+    private func sendCommand() {
+        if !vm.command.isEmpty {
+            Task {
+                await vm.sendCommand()
             }
         }
     }
