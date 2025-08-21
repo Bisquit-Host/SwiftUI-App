@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 
 struct StartPageFooter: View {
     @Environment(StartPageVM.self) private var vm
