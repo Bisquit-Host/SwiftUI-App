@@ -39,7 +39,9 @@ struct InfiniteScrollView<Content: View>: View {
                         }
                     }
                 }
-                .background(InfiniteScrollHelper($contentSize, declarationRate: .constant(.fast)))
+                .background {
+                    InfiniteScrollHelper($contentSize, declarationRate: .constant(.fast))
+                }
             }
         }
     }
