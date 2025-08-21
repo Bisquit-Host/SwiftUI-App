@@ -77,7 +77,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
             
-        default:
+        @unknown default:
             break
         }
     }

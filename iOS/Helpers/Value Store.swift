@@ -57,8 +57,7 @@ final class ValueStore: ObservableObject {
     func switchPreferredCurrency() {
         let currencySwitchMap = [
             "₽": "€",
-            "€": "$",
-            "$": "₽"
+            "€": "₽",
         ]
         
         if let nextCurrency = currencySwitchMap[preferredCurrency] {

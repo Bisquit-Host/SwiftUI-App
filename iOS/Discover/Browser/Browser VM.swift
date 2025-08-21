@@ -14,7 +14,6 @@ final class BrowserVM {
         switch currency {
         case "₽": "rublesign.square"
         case "€": "eurosign.square"
-        case "$": "dollarsign.square"
         default:  "exclamationmark.triangle"
         }
     }
