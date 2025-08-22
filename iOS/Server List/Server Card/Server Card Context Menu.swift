@@ -61,15 +61,15 @@ struct ServerCardContextMenu: View {
             
             if let defaultAlloc {
                 Menu(defaultAlloc, systemImage: "network") {
-                    Button("Add to MC Stats", systemImage: "arrowshape.turn.up.right") {
-                        addToGoidacraft()
-                    }
-                    
                     Button("Copy", systemImage: "doc.on.doc") {
                         Pasteboard.copy(defaultAlloc)
                     }
                     
                     ShareLink(item: defaultAlloc)
+                    
+                    Button("Add to MC Stats", systemImage: "arrowshape.turn.up.right") {
+                        addToGoidacraft()
+                    }
                 }
             }
         }
