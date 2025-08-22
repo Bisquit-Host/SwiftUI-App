@@ -67,9 +67,6 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 #if os(iOS)
     func requestPermission() {
         switch CNContactStore.authorizationStatus(for: .contacts) {
-        case .authorized:
-            break
-            
         case .denied, .notDetermined:
             CNContactStore().requestAccess(for: .contacts) { _, error in
                 if let error {
@@ -77,7 +74,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
             
-        @unknown default:
+        default:
             break
         }
     }

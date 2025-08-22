@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct InfiniteScrollView<Content: View>: View {
     var spacing = 10.0
@@ -74,7 +74,7 @@ fileprivate struct InfiniteScrollHelper: UIViewRepresentable {
         let view = UIView(frame: .zero)
         view.backgroundColor = .clear
         
-        DispatchQueue.main.async {
+        main {
             if let scrollView = view.scrollView {
                 context.coordinator.defaultDelegate = scrollView.delegate
                 scrollView.decelerationRate = declarationRate
