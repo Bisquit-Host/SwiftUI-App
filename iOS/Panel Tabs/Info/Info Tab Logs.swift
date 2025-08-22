@@ -29,7 +29,7 @@ struct InfoTabLogs: View {
                     
                     let count = vm.logs.count
                     
-                    if count > 0 {
+                    if count > 1 {
                         let chevron = Image(systemName: "arrow.right")
                         
                         Text("\(count - 1) more entries \(chevron)")
