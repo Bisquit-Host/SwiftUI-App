@@ -4,6 +4,10 @@ struct PanelSectionList: View {
     @Environment(PanelSectionVM.self) private var vm
     @Environment(\.dismiss) private var dismiss
     
+    private var isDefaultSet: Bool {
+        vm.sections != vm.defaultSections
+    }
+    
     var body: some View {
         List {
             ForEach(vm.sections) { item in
@@ -22,23 +26,32 @@ struct PanelSectionList: View {
         .navigationSubtitle("Reorder or hide sections to personalize your view")
         .environment(\.editMode, .constant(.active))
         .toolbar {
-            ToolbarItem(placement: .bottomBar) {
-                Button("Reset", role: .destructive) {
-                    vm.sections = vm.defaultSections
-                    
-                    vm.save()
+            if isDefaultSet {
+                ToolbarItem(placement: .bottomBar) {
+                    Button(role: .destructive) {
+                        vm.sections = vm.defaultSections
+                        vm.save()
+                    } label: {
+                        Text("Reset")
+                            .semibold()
+                            .foregroundStyle(.white)
+                    }
+                    .buttonStyle(.glassProminent)
+                    .tint(.red)
                 }
-                .foregroundStyle(.red)
             }
             
             ToolbarSpacer(.flexible, placement: .bottomBar)
             
             ToolbarItem(placement: .bottomBar) {
-                Button("Done") {
+                Button {
                     dismiss()
+                } label: {
+                    Text("Done")
+                        .semibold()
+                        .foregroundStyle(.white)
                 }
-                .semibold()
-                .foregroundStyle(.blue)
+                .buttonStyle(.glassProminent)
             }
         }
     }
