@@ -169,7 +169,7 @@ final class LiveActivity {
             
             setup(activity)
             
-            try await Task.sleep(nanoseconds: 2 * 1_000_000_000)
+            try await Task.sleep(for: .seconds(2))
             
             await self.consoleDetails(server.id)
         } catch {
