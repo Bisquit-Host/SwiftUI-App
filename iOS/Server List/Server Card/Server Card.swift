@@ -41,7 +41,6 @@ struct ServerCard: View {
                 }
                 .matchedEffect("RAM_CPU", in: animation)
             }
-#warning("glassEffect")
         }
         .frame(height: 100)
         .padding(.horizontal)
