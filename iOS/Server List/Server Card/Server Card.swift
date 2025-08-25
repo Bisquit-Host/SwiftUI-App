@@ -13,7 +13,6 @@ struct ServerCard: View {
     }
     
     @Namespace private var animation
-    private let bounds = UIScreen.main.bounds
     private let rounding = 16.0
     
     private var backgroundColor: Color {
