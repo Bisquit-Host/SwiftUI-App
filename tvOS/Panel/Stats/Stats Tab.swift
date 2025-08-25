@@ -20,8 +20,6 @@ struct StatsTab: View {
         server.featureLimits
     }
     
-    private let bounds = UIScreen.main.bounds
-    
     var body: some View {
         VStack {
             HStack(spacing: 0) {
@@ -43,7 +41,7 @@ struct StatsTab: View {
                         .lineLimit(2)
                         .multilineTextAlignment(.center)
                 }
-                .frame(width: bounds.width * 0.33)
+                .frame(maxWidth: .infinity)
                 
                 Rectangle()
                     .frame(width: 5, height: 280)
@@ -57,7 +55,7 @@ struct StatsTab: View {
                     let ssdUsage = vm.diskUsage / pow(1024, 2) / limits.disk
                     ProgressBar("ssd", progress: ssdUsage)
                 }
-                .frame(width: bounds.width * 0.33)
+                .frame(maxWidth: .infinity)
                 .onDisappear {
                     vm.cpuUsage = 0
                     vm.ramUsage = 0
@@ -80,11 +78,11 @@ struct StatsTab: View {
                 }
                 .minimumScaleFactor(0.5)
                 .lineLimit(1)
-                .frame(minWidth: bounds.width * 0.33, alignment: .leading)
+                .frame(maxWidth: .infinity)
             }
             
             Rectangle()
-                .frame(width: bounds.width * 0.9, height: 5)
+                .frame(height: 5)
             
             HStack(spacing: 0) {
                 ChartView(
@@ -93,7 +91,7 @@ struct StatsTab: View {
                     max: limits.cpu,
                     values: vm.cpuValues
                 )
-                .frame(width: bounds.width * 0.33)
+                .frame(maxWidth: .infinity)
                 
                 Rectangle()
                     .frame(width: 1)
@@ -105,7 +103,7 @@ struct StatsTab: View {
                     max: limits.memory,
                     values: vm.ramValues
                 )
-                .frame(width: bounds.width * 0.33)
+                .frame(maxWidth: .infinity)
             }
         }
     }
