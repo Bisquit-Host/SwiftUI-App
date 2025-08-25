@@ -66,3 +66,9 @@ struct DiscoverCardLayout: View {
         .background(Color(uiColor: averageColor ?? .gray), in: .rect(cornerRadius: 27))
     }
 }
+
+#Preview {
+    NavigationStack {
+        Discover()
+    }
+}
