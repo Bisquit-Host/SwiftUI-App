@@ -51,8 +51,9 @@ struct Settings: View {
         .sheet($sheetKeyStorage) {
             CloudKeys($apiKey)
         }
-        .sheet($sheetGuide) {
+        .fullScreenCover($sheetGuide) {
             Guide()
+                .background(.ultraThinMaterial)
         }
     }
 }
