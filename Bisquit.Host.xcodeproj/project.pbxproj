@@ -1408,6 +1408,8 @@
 		F3FDFF912C89150D009EBB5C /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF872C8912F1009EBB5C /* Networking.swift */; };
 		F3FEA4422E5C9359003BB975 /* InfoTabCustomizationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FEA4412E5C9359003BB975 /* InfoTabCustomizationButton.swift */; };
 		F3FEA4432E5C9359003BB975 /* InfoTabCustomizationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FEA4412E5C9359003BB975 /* InfoTabCustomizationButton.swift */; };
+		F3FEA4452E5C9E62003BB975 /* PanelViewTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FEA4442E5C9E62003BB975 /* PanelViewTabView.swift */; };
+		F3FEA4462E5C9E62003BB975 /* PanelViewTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FEA4442E5C9E62003BB975 /* PanelViewTabView.swift */; };
 		F3FF3E872D93576B00EDFBC6 /* Update Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF3E862D93576B00EDFBC6 /* Update Checker.swift */; };
 		F3FF3E882D93576B00EDFBC6 /* Update Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF3E862D93576B00EDFBC6 /* Update Checker.swift */; };
 		F3FF3E892D93576B00EDFBC6 /* Update Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF3E862D93576B00EDFBC6 /* Update Checker.swift */; };
@@ -2118,6 +2120,7 @@
 		F3FDFF872C8912F1009EBB5C /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		F3FDFF8A2C89130F009EBB5C /* Resources Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Resources Widget.swift"; sourceTree = "<group>"; };
 		F3FEA4412E5C9359003BB975 /* InfoTabCustomizationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTabCustomizationButton.swift; sourceTree = "<group>"; };
+		F3FEA4442E5C9E62003BB975 /* PanelViewTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelViewTabView.swift; sourceTree = "<group>"; };
 		F3FF3E862D93576B00EDFBC6 /* Update Checker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Update Checker.swift"; sourceTree = "<group>"; };
 		F3FF59FE2A4A3188003A1973 /* User List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User List.swift"; sourceTree = "<group>"; };
 		F3FF5A0B2A4A386F003A1973 /* Users VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Users VM.swift"; sourceTree = "<group>"; };
@@ -2584,6 +2587,7 @@
 			isa = PBXGroup;
 			children = (
 				F31BA595295901F70006D126 /* Panel View.swift */,
+				F3FEA4442E5C9E62003BB975 /* PanelViewTabView.swift */,
 				F3EDEE3429C0C84C00B08696 /* Panel VM.swift */,
 				F353D5032D98427500EC9F3A /* Panel Toolbar.swift */,
 				F3EDEE3029C06E9700B08696 /* Panel Tab.swift */,
@@ -4732,6 +4736,7 @@
 				F3553FB52B40939800EF0FD2 /* Allocation VM.swift in Sources */,
 				F3E2BF102C1EC94300B7A6D4 /* Contacts VM.swift in Sources */,
 				F3D52B252B13FE9C00167DD6 /* App Delegate.swift in Sources */,
+				F3FEA4452E5C9E62003BB975 /* PanelViewTabView.swift in Sources */,
 				F3AF96F929DF277A00D30A8F /* Backup Card.swift in Sources */,
 				F3D2951C2AF3975300ED43A0 /* Cache Model.swift in Sources */,
 				F38F9E0D2CE6CCF90033EFE3 /* Image Playground Button.swift in Sources */,
@@ -5315,6 +5320,7 @@
 				F3EE6D7B2D9E8E2000F0A633 /* Bakground Task.swift in Sources */,
 				F3FF5A0D2A4A386F003A1973 /* Users VM.swift in Sources */,
 				F3D295182AF396FD00ED43A0 /* Tabs.swift in Sources */,
+				F3FEA4462E5C9E62003BB975 /* PanelViewTabView.swift in Sources */,
 				F3E1D3F42B320A6A009B7062 /* Permission Group Header.swift in Sources */,
 				F36D532D2A05B87E007324C6 /* Schedule List.swift in Sources */,
 				F36D531A2A05B7FB007324C6 /* Console Tab.swift in Sources */,

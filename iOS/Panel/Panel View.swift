@@ -33,23 +33,23 @@ struct PanelView: View {
         
         VStack {
             if isIpad {
-                panel
+                PanelViewTabView()
             } else {
                 NavigationView {
-                    panel
+                    PanelViewTabView()
                 }
             }
         }
         .navigationTitle(vm.server?.name ?? "")
         .navigationSubtitle(vm.server?.description ?? "")
         .panelToolbar()
-        .environment(consoleVM)
+        .environment(vm)
         .environmentObject(fileVM)
+        .environment(consoleVM)
         .environment(backupVM)
         .environment(databaseVM)
         .environment(scheduleVM)
         .environment(startupVM)
-        .environment(vm)
         .ignoresSafeArea()
         .task {
             await fetchData()
@@ -111,37 +111,6 @@ struct PanelView: View {
         vm.updateBackups = {
             await backupVM.fetchBackups()
         }
-    }
-    
-#warning("Split")
-    private var panel: some View {
-        TabView(selection: $store.lastTabPanel) {
-            if let server = vm.server {
-                Tab("Info", systemImage: "info.circle", value: .info) {
-                    InfoTab(server)
-                        .sheet($vm.sheetSettings) {
-                            PanelSettingsParent(server)
-                        }
-                }
-                
-                Tab("Console", systemImage: "terminal", value: .console) {
-                    ConsoleTab(server.id)
-                }
-                
-                Tab("Files", systemImage: "folder", value: .files) {
-                    FileTab(server.id)
-                }
-                
-                Tab("Data", systemImage: "externaldrive.badge.icloud", value: .backup) {
-                    DataTab(server)
-                }
-                
-                Tab("Startup", systemImage: "play.circle", value: .startup) {
-                    StartupView(server)
-                }
-            }
-        }
-        .tabViewStyle(.sidebarAdaptable)
     }
 }
 
