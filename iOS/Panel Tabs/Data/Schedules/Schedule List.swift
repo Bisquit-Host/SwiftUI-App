@@ -29,6 +29,7 @@ struct ScheduleList: View {
                 }
 #endif
             }
+            .onDelete(perform: vm.deleteSchedules)
             
             Button("Create Schedule") {
                 vm.sheetCreate = true

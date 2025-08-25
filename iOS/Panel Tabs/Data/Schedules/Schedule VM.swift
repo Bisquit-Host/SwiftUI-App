@@ -53,11 +53,13 @@ final class ScheduleVM {
         }
     }
     
-#warning("Unused")
-    func deleteSchedules(_ offsets: IndexSet) async {
+    func deleteSchedules(_ offsets: IndexSet) {
         for index in offsets {
             let id = schedules[index].id.description
-            await deleteSchedule(id)
+            
+            Task {
+                await deleteSchedule(id)
+            }
         }
     }
     
