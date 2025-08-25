@@ -19,7 +19,6 @@ final class SceneBisquitFall: SKScene {
 
 struct BisquitFall: View {
     @EnvironmentObject private var store: ValueStore
-    
     @Environment(\.colorScheme) private var appearance
     
     private var scene: SKScene {
@@ -33,14 +32,11 @@ struct BisquitFall: View {
         return scene
     }
     
-    private let bounds = UIScreen.main.bounds
-    
     var body: some View {
         if store.enableBisquitFall, !System.lowPowerMode {
             SpriteView(scene: scene)
                 .ignoresSafeArea()
                 .background(appearance == .light ? .white : .black)
-                .frame(width: bounds.width, height: bounds.height)
         }
     }
 }
