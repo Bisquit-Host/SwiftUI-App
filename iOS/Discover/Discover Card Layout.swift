@@ -7,34 +7,18 @@ struct DiscoverCardLayout: View {
         self.link = link
     }
     
-    private var screenWidth: CGFloat {
-#if os(visionOS)
-        500
-#else
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            380
-        } else {
-            UIScreen.main.bounds.width
-        }
-#endif
-    }
-    
-    private var squareSize: CGFloat {
-        screenWidth * 0.45
-    }
-    
-    private var averageColor: UIColor? {
+    private var avgColor: UIColor? {
         UIImage(resource: link.image).findAverageColor(.simple)
     }
     
     private let imageSize = 60.0
     
     var body: some View {
-        VStack(alignment: .leading) {
+        HStack {
             ZStack {
-                if let averageColor {
+                if let avgColor {
                     RoundedRectangle(cornerRadius: 17)
-                        .foregroundStyle(Color(averageColor))
+                        .foregroundStyle(Color(avgColor))
                         .frame(imageSize + 3)
                 }
                 
@@ -44,26 +28,25 @@ struct DiscoverCardLayout: View {
                     .clipShape(.rect(cornerRadius: 16))
             }
             
-            Spacer()
-            
-            Text(link.subtitle)
-                .semibold()
-                .rounded()
-                .secondary()
-                .lineLimit(1)
-                .minimumScaleFactor(0.5)
-            
-            Text(link.title)
-                .title2(.bold, design: .rounded)
-                .lineLimit(1)
-                .minimumScaleFactor(0.5)
-                .frame(maxWidth: squareSize, alignment: .leading)
+            VStack(alignment: .leading) {
+                Text(link.subtitle)
+                    .semibold()
+                    .rounded()
+                    .secondary()
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
+                
+                Text(link.title)
+                    .title2(.bold, design: .rounded)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
+            }
         }
         .padding(10)
-        .frame(squareSize)
+        .frame(maxWidth: .infinity, alignment: .leading)
         .background(.ultraThinMaterial, in: .rect(cornerRadius: 25))
         .padding(2)
-        .background(Color(uiColor: averageColor ?? .gray), in: .rect(cornerRadius: 27))
+        .background(Color(uiColor: avgColor ?? .gray), in: .rect(cornerRadius: 27))
     }
 }
 

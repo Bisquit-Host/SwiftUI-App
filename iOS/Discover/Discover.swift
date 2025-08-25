@@ -19,30 +19,12 @@ struct Discover: View {
     // TestFlight
     //    ]
     
-    private var screenWidth: CGFloat {
-#if os(visionOS)
-        500
-#else
-        switch UIDevice.current.userInterfaceIdiom {
-        case .pad: 380
-        default: UIScreen.main.bounds.width
-        }
-#endif
-    }
-    
-    private var columns: [GridItem] {
-        Array(
-            repeating: GridItem(.fixed(screenWidth * 0.45 + 2), spacing: 16),
-            count: UIDevice.current.userInterfaceIdiom == .pad ? 3 : 2
-        )
-    }
-    
     @State private var sheetConfigurations = false
     @State private var showMailCover = false
     
     var body: some View {
         ScrollView(showsIndicators: false) {
-            LazyVGrid(columns: columns, spacing: 16) {
+            VStack(spacing: 16) {
                 Button {
                     sheetConfigurations = true
                 } label: {
