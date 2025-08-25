@@ -23,7 +23,6 @@ struct InfoTab: View {
     
     @State private var sheetCustomization = false
     @State private var selectedImage: UIImage? = nil
-    private let width = UIScreen.main.bounds.width
     
     private var allocations: [AllocationAttributes] {
         server.relationships.allocations.data.map(\.attributes)
@@ -60,10 +59,9 @@ struct InfoTab: View {
                     }
                 }
                 
-                CustomizeButton()
+                InfoTabCustomizationButton($sheetCustomization)
             }
             .padding(.horizontal, 4)
-            .frame(width: width)
         }
         .background(BackgroundImage())
         .animation(.default, value: sectionsVM.activeSections)
@@ -85,25 +83,13 @@ struct InfoTab: View {
             serverSettingsVM.serverDescription = server.description
             
             if !System.lowPowerMode {
-                async let logs: () = logVM.fetchLogs(true)
-                async let users: () = userVM.fetchUsers(true)
+                async let logs:       () = logVM.fetchLogs(true)
+                async let users:      () = userVM.fetchUsers(true)
                 async let subdomains: () = subdomainVM.fetchSubdomains()
                 
                 _ = await (logs, users, subdomains)
             }
         }
-    }
-    
-    private func CustomizeButton() -> some View {
-        Button {
-            sheetCustomization = true
-        } label: {
-            Text("Customize & Reorder")
-                .semibold()
-                .secondary()
-                .foregroundStyle(.foreground)
-        }
-        .padding(.vertical, 10)
     }
     
     private var ip: String? {

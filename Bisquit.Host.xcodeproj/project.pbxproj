@@ -1406,6 +1406,8 @@
 		F3FDFF8B2C89130F009EBB5C /* Resources Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF8A2C89130F009EBB5C /* Resources Widget.swift */; };
 		F3FDFF8E2C891343009EBB5C /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF872C8912F1009EBB5C /* Networking.swift */; };
 		F3FDFF912C89150D009EBB5C /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FDFF872C8912F1009EBB5C /* Networking.swift */; };
+		F3FEA4422E5C9359003BB975 /* InfoTabCustomizationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FEA4412E5C9359003BB975 /* InfoTabCustomizationButton.swift */; };
+		F3FEA4432E5C9359003BB975 /* InfoTabCustomizationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FEA4412E5C9359003BB975 /* InfoTabCustomizationButton.swift */; };
 		F3FF3E872D93576B00EDFBC6 /* Update Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF3E862D93576B00EDFBC6 /* Update Checker.swift */; };
 		F3FF3E882D93576B00EDFBC6 /* Update Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF3E862D93576B00EDFBC6 /* Update Checker.swift */; };
 		F3FF3E892D93576B00EDFBC6 /* Update Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF3E862D93576B00EDFBC6 /* Update Checker.swift */; };
@@ -2115,6 +2117,7 @@
 		F3FDFF6B2C89120D009EBB5C /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
 		F3FDFF872C8912F1009EBB5C /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		F3FDFF8A2C89130F009EBB5C /* Resources Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Resources Widget.swift"; sourceTree = "<group>"; };
+		F3FEA4412E5C9359003BB975 /* InfoTabCustomizationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTabCustomizationButton.swift; sourceTree = "<group>"; };
 		F3FF3E862D93576B00EDFBC6 /* Update Checker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Update Checker.swift"; sourceTree = "<group>"; };
 		F3FF59FE2A4A3188003A1973 /* User List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User List.swift"; sourceTree = "<group>"; };
 		F3FF5A0B2A4A386F003A1973 /* Users VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Users VM.swift"; sourceTree = "<group>"; };
@@ -2819,6 +2822,7 @@
 		F33712212DC2FD2A0014B427 /* Customization */ = {
 			isa = PBXGroup;
 			children = (
+				F3FEA4412E5C9359003BB975 /* InfoTabCustomizationButton.swift */,
 				F33712182DC2FD240014B427 /* Panel Section List.swift */,
 				F3E0B48C2DC300D6003C8B27 /* Panel Section VM.swift */,
 				F337121A2DC2FD240014B427 /* Panel Section Row.swift */,
@@ -4805,6 +4809,7 @@
 				F3E0B4912DC3033A003C8B27 /* Info Tab Users.swift in Sources */,
 				F3AF91C12B423492001D8F80 /* SSH VM.swift in Sources */,
 				F353B0412D8A31BF00E4EC07 /* Account Parent.swift in Sources */,
+				F3FEA4422E5C9359003BB975 /* InfoTabCustomizationButton.swift in Sources */,
 				F3202D272D562B9A0030B3CC /* Browser Card Bot.swift in Sources */,
 				F3EDEE3129C06E9700B08696 /* Panel Tab.swift in Sources */,
 				F37A36732A3515DC00517EFC /* Server Settings VM.swift in Sources */,
@@ -5362,6 +5367,7 @@
 				F3553FBD2B40945C00EF0FD2 /* Allocation List Parent.swift in Sources */,
 				F399933B2AF2E491006E8A9A /* Other Settings.swift in Sources */,
 				F325F7042A54BF7A00E89EC4 /* Tab Info.swift in Sources */,
+				F3FEA4432E5C9359003BB975 /* InfoTabCustomizationButton.swift in Sources */,
 				F32E88C92AF83E3F00959D49 /* Server List Admin Button.swift in Sources */,
 				F374F7C02D54922F006771DD /* Sheet Create Subdomain.swift in Sources */,
 				F32F3AAC2D8EB8EC00E69B98 /* Background Image.swift in Sources */,
