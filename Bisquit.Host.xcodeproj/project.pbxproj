@@ -330,6 +330,8 @@
 		F3255E222C904A7A008E04DE /* SSH Create View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91CC2B423A26001D8F80 /* SSH Create View.swift */; };
 		F3255E232C904A7A008E04DE /* SSH Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91C82B4235BB001D8F80 /* SSH Card.swift */; };
 		F3255E242C904A7A008E04DE /* SSH List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91C42B423535001D8F80 /* SSH List.swift */; };
+		F325E2CD2E5E6CE50008928E /* Sheet Create Allocation Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325E2CC2E5E6CE50008928E /* Sheet Create Allocation Card.swift */; };
+		F325E2CE2E5E6CE50008928E /* Sheet Create Allocation Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325E2CC2E5E6CE50008928E /* Sheet Create Allocation Card.swift */; };
 		F325F7002A54BBCF00E89EC4 /* Info Tab Allocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F6FF2A54BBCF00E89EC4 /* Info Tab Allocations.swift */; };
 		F325F7012A54BBCF00E89EC4 /* Info Tab Allocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F6FF2A54BBCF00E89EC4 /* Info Tab Allocations.swift */; };
 		F325F7032A54BF7A00E89EC4 /* Tab Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7022A54BF7A00E89EC4 /* Tab Info.swift */; };
@@ -1719,6 +1721,7 @@
 		F323D8D22A2D668D002EDC62 /* File Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Tab.swift"; sourceTree = "<group>"; };
 		F3255E162C9049AF008E04DE /* Settings Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings Button.swift"; sourceTree = "<group>"; };
 		F3255E192C904A03008E04DE /* Settings View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings View.swift"; sourceTree = "<group>"; };
+		F325E2CC2E5E6CE50008928E /* Sheet Create Allocation Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sheet Create Allocation Card.swift"; sourceTree = "<group>"; };
 		F325F6FF2A54BBCF00E89EC4 /* Info Tab Allocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab Allocations.swift"; sourceTree = "<group>"; };
 		F325F7022A54BF7A00E89EC4 /* Tab Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tab Info.swift"; sourceTree = "<group>"; };
 		F325F7052A54C4BC00E89EC4 /* System Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "System Alerts.swift"; sourceTree = "<group>"; };
@@ -2953,6 +2956,7 @@
 				F3CCF5C42B3457AE005FFF2C /* Allocation VM.swift */,
 				F3553FBE2B4094D700EF0FD2 /* Allocation Card.swift */,
 				F38FB0E82DD2B16F00C8A19B /* Sheet Create Allocation.swift */,
+				F325E2CC2E5E6CE50008928E /* Sheet Create Allocation Card.swift */,
 			);
 			path = Allocations;
 			sourceTree = "<group>";
@@ -4889,6 +4893,7 @@
 				F32FD0312CF606960038D62C /* Backup Context Menu Control Group.swift in Sources */,
 				F373CD6E2D88A386008B64BE /* Card.swift in Sources */,
 				F373CD6F2D88A386008B64BE /* Custom Text Effect.swift in Sources */,
+				F325E2CE2E5E6CE50008928E /* Sheet Create Allocation Card.swift in Sources */,
 				F373CD702D88A386008B64BE /* Infinite Scroll View.swift in Sources */,
 				F373CD712D88A386008B64BE /* Intro.swift in Sources */,
 				F32F2D012D908E1D007CF4DE /* Background Image Helper.swift in Sources */,
@@ -5250,6 +5255,7 @@
 				F3CE5C4D2D5395300094BD7B /* Subdomain Card.swift in Sources */,
 				F36D53372A05B8BF007324C6 /* Backup List Footer.swift in Sources */,
 				F30207D52D8B2A6000C26008 /* Swifty Ping.swift in Sources */,
+				F325E2CD2E5E6CE50008928E /* Sheet Create Allocation Card.swift in Sources */,
 				F337D75A2A4DBC840011524E /* Create Apikey.swift in Sources */,
 				F32FD71F2B1E060400723B88 /* Network Calls.swift in Sources */,
 				F36D534D2A05B98E007324C6 /* Nav State.swift in Sources */,
