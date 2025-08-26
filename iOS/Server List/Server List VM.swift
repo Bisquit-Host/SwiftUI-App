@@ -70,7 +70,6 @@ final class ServerListVM {
         _ isAdmin: Bool,
         searchPrompt: String? = nil
     ) async {
-        print(isAdmin)
         do {
             let model = try await serverListAPI(
                 isAdmin,
