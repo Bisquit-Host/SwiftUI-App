@@ -8,37 +8,37 @@
     'token' => 'Пройдена двухфакторная проверка',❌
     'ip-blocked' => 'Заблокированный запрос с неуказанного IP адреса для :identifier',❌
     'sftp' => [
-        'fail' => 'Неудачный вход в SFTP',❌
-    ],
+        'fail' => 'Неудачный вход в SFTP'❌
+    ]
 ],
 'user' => [
     'account' => [
         'email-changed' => 'Изменен email с :old на :new',❌
-        'password-changed' => 'Пароль изменен',❌
+        'password-changed' => 'Пароль изменен'❌
     ],
     'api-key' => [
         'create' => 'Создан новый API ключ :identifier',❌
-        'delete' => 'Удален API ключ :identifier',❌
+        'delete' => 'Удален API ключ :identifier'❌
     ],
     'ssh-key' => [
         'create' => 'Добавлен SSH ключ :fingerprint к аккаунту',❌
-        'delete' => 'Удален SSH ключ :fingerprint из аккаунта',❌
+        'delete' => 'Удален SSH ключ :fingerprint из аккаунта'❌
     ],
     'two-factor' => [
         'create' => 'Включена двухфакторная аутентификация',❌
-        'delete' => 'Отключена двухфакторная аутентификация',❌
-    ],
+        'delete' => 'Отключена двухфакторная аутентификация'❌
+    ]
 ],
 'server' => [
     'console' => [
-        'command' => 'Выполнена команда ":command" на сервере',❌
+        'command' => 'Выполнена команда ":command" на сервере'❌
     ],
     'backup' => [
         'restore' => 'Восстановлен бэкап :name (удаленные файлы: :truncate)',
         'restore-complete' => 'Восстановление бэкапа :name завершено',
         'restore-failed' => 'Не удалось завершить восстановление бэкапа :name',
         'start' => 'Начат новый бэкап :name',
-        'fail' => 'Бэкап :name помечен как неудачный',
+        'fail' => 'Бэкап :name помечен как неудачный'
     ],
     'file' => [
         'compress_one' => 'Сжат :directory:file',
@@ -55,7 +55,7 @@
         'rename_other' => 'Переименовано :count файлов в :directory',
         'write' => 'Записано новое содержимое в :file',
         'upload' => 'Начата загрузка файла',
-        'uploaded' => 'Загружен файл :directory:file',
+        'uploaded' => 'Загружен файл :directory:file'
     ],
     'sftp' => [
         'denied' => 'Доступ к SFTP заблокирован из-за прав доступа',❌
@@ -68,23 +68,23 @@
         'create-directory_one' => 'Создана директория :files.0',❌
         'create-directory_other' => 'Создано :count директорий',❌
         'rename_one' => 'Переименован :files.0.from в :files.0.to',❌
-        'rename_other' => 'Переименовано или перемещено :count файлов',❌
+        'rename_other' => 'Переименовано или перемещено :count файлов'❌
     ],
     'allocation' => [
         'create' => 'Добавлен :allocation к серверу',❌
-        'notes' => 'Обновлены заметки для :allocation с ":old" на ":new"',❌
+        'notes' => 'Обновлены заметки для :allocation с ":old" на ":new"'❌
     ],
     'schedule' => [
-        'execute' => 'Расписание :name выполнено вручную',❌
+        'execute' => 'Расписание :name выполнено вручную'❌
     ],
     'startup' => [
-        'image' => 'Обновлен образ Docker для сервера с :old на :new',❌
+        'image' => 'Обновлен образ Docker для сервера с :old на :new'❌
     ],
     'versions' => [
-        'install' => 'Установлена версия :name',❌
+        'install' => 'Установлена версия :name'❌
     ],
     'plugin' => [
         'install' => 'Установлен плагин :name',❌
-        'uninstall' => 'Удалён плагин :name',❌
-    ],
+        'uninstall' => 'Удалён плагин :name'❌
+    ]
 ]
