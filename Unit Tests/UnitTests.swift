@@ -36,11 +36,9 @@ struct UnitTests {
         let string = """
 Goida
 """
-        
         print(convertAnsiToAttributedString(string))
     }
 }
-
 
 final class LaunchTest: XCTestCase {
     func testLaunchPerformance() {

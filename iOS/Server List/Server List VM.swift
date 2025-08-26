@@ -1,4 +1,4 @@
-import ScrechKit
+import Foundation
 import PteroNet
 
 @Observable
@@ -66,60 +66,36 @@ final class ServerListVM {
         UserDefaults.standard.setServerAttributesArray(servers, forKey: "servers")
     }
     
-    func fetchServers(_ isAdmin: Bool) async {
+    func fetchServers(
+        _ isAdmin: Bool,
+        searchPrompt: String? = nil
+    ) async {
+        print(isAdmin)
         do {
-            let model = try await serverListAPI(isAdmin)
+            let model = try await serverListAPI(
+                isAdmin,
+                searchPrompt: searchPrompt,
+                printResponse: true
+            )
             
-            let loadedServers = model.data.map(\.attributes)
-            let totalPages = model.meta.pagination.totalPages
+            servers = model.data.map(\.attributes)
             
-            if totalPages > 1 {
-                await fetchAllPages(isAdmin, totalPages: totalPages, currentServers: loadedServers)
-            } else {
-                withAnimation {
-                    servers = loadedServers
-                }
-                
+            if searchPrompt == nil {
                 saveServers()
-            }
-            
-            await submitScore()
-            
-#if canImport(ContactProvider)
-            if ValueStore().contactsProviderEnabled {
-                await fetchUniqueUsers()
-            }
-#endif
-            
+                await submitScore()
+                
 #if canImport(CoreSpotlight) && !os(tvOS)
-            indexItems(servers)
+                indexItems(servers)
 #endif
+                
+#if canImport(ContactProvider)
+                if ValueStore().contactsProviderEnabled {
+                    await fetchUniqueUsers()
+                }
+#endif
+            }
         } catch {
             SystemAlert.error(error)
         }
-    }
-    
-    private func fetchAllPages(
-        _ isAdmin: Bool,
-        totalPages: Int,
-        currentServers: [ServerAttributes]
-    ) async {
-        var loadedServers = currentServers
-        
-        for page in 2...totalPages {
-            do {
-                let model = try await serverListAPI(isAdmin, page: page)
-                let servers = model.data.map(\.attributes)
-                loadedServers.append(contentsOf: servers)
-            } catch {
-                SystemAlert.error(error)
-            }
-        }
-        
-        withAnimation {
-            servers = loadedServers
-        }
-        
-        saveServers()
     }
 }

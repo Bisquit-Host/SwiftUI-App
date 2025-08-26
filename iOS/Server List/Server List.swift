@@ -17,6 +17,8 @@ struct ServerList: View {
         }
         .padding(.horizontal, 4)
         .navigationBarBackButtonHidden()
+        .animation(.default, value: vm.servers)
+        .searchable(text: $searchField)
         .safariCover($vm.showBilling, url: "https://my.bisquit.host")
         .background(BisquitFall())
         .background(BackgroundImage())
@@ -27,10 +29,16 @@ struct ServerList: View {
             await vm.fetchServers(store.adminServerList)
             store.updateServers.toggle()
         }
-        .onChange(of: searchField) { _, newPrompt in
-            withAnimation {
-                vm.searchField = newPrompt
+        .onChange(of: searchField) {
+            guard !(1...2).contains(searchField.count) else {
+                return
             }
+            
+            Task {
+                await vm.fetchServers(store.adminServerList, searchPrompt: searchField)
+            }
+            
+            store.updateServers.toggle()
         }
         .overlay {
             if vm.filteredServers.isEmpty, !vm.searchField.isEmpty {
