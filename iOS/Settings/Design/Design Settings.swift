@@ -8,6 +8,13 @@ struct DesignSettings: View {
     
     var body: some View {
         Section("Design") {
+            Picker("Appearance", selection: $store.appearance) {
+                ForEach(ColorTheme.allCases) { theme in
+                    Text(theme.loc)
+                        .tag(theme)
+                }
+            }
+            
             Button {
                 imagePicker = true
             } label: {
@@ -28,18 +35,11 @@ struct DesignSettings: View {
                 }
             }
             
-            Picker("Appearance", selection: $store.appearance) {
-                ForEach(ColorTheme.allCases) { theme in
-                    Text(theme.loc)
-                        .tag(theme)
-                }
-            }
+            Toggle("Animated background", isOn: $store.enableBisquitFall)
             
             if Device.current.hasDynamicIsland {
                 Toggle("Dynamic Island badge", isOn: $store.showDynamicIslandBadge)
             }
-            
-            Toggle("Animated background", isOn: $store.enableBisquitFall)
         }
     }
 }
