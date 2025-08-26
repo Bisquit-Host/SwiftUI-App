@@ -64,7 +64,7 @@ struct BackgroundImagePicker: View {
             .animation(.snappy, value: previewImage)
             .contentShape(.rect)
             // Drop Action and Retreving Dropped Image
-            .dropDestination(for: Data.self) { items, location in
+            .dropDestination(for: Data.self) { items, _ in
                 if let firstItem = items.first, let droppedImage = UIImage(data: firstItem) {
                     // Sending the Image using the callback
                     generateImageThumbnail(droppedImage, size)
@@ -82,11 +82,10 @@ struct BackgroundImagePicker: View {
             }
             .photosPicker(isPresented: $showImagePicker, selection: $photoItem)
             .optionalViewModifier { contentView in
-                // Process Selected Image
-                
                 contentView
-                    .onChange(of: photoItem) { oldValue, newValue in
+                    .onChange(of: photoItem) { _, newValue in
                         if let newValue {
+                            // Process Selected Image
                             extractImage(newValue, size)
                         }
                     }
@@ -146,8 +145,8 @@ struct BackgroundImagePicker: View {
 }
 
 extension View {
-    @ViewBuilder func optionalViewModifier<Content: View> (
-        @ViewBuilder content: @escaping (Self) -> Content
+    func optionalViewModifier<Content: View> (
+        content: @escaping (Self) -> Content
     ) -> some View {
         content(self)
     }
