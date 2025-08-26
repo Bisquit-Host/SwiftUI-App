@@ -2,17 +2,16 @@ import ScrechKit
 
 struct BiometryUsageView: View {
     var body: some View {
-        #warning("Needed here?")
         NavigationStack {
             VStack {
                 Text("Biometry usage description")
+                    .monospaced()
                     .rounded()
             }
-            .padding()
             .navigationTitle("Biometry Usage")
             .toolbarTitleDisplayMode(.inline)
+            .padding()
         }
-        .monospaced()
         .presentationDetents([.medium])
     }
 }
