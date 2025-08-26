@@ -1,8 +1,6 @@
 import ScrechKit
 
 struct DevSettings: View {
-    @EnvironmentObject private var store: ValueStore
-    
     private let device = UIDevice.current
     
     private var appVersion: String {
@@ -63,5 +61,4 @@ fileprivate extension UIDevice {
     List {
         DevSettings()
     }
-    .environmentObject(ValueStore())
 }

@@ -3,8 +3,6 @@ import ScrechKit
 struct AppIconSettings: View {
     @EnvironmentObject private var store: ValueStore
     
-    @Namespace private var animation
-    
     private let columns = [
         GridItem(.adaptive(minimum: 70, maximum: 70), spacing: 10)
     ]

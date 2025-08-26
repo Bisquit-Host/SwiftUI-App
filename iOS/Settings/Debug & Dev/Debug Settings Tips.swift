@@ -22,4 +22,5 @@ struct DebugSettingsTips: View {
     List {
         DebugSettingsTips()
     }
+    .foregroundStyle(.foreground)
 }
