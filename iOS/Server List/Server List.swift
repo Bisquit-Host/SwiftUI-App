@@ -4,8 +4,6 @@ struct ServerList: View {
     @Environment(ServerListVM.self) private var vm
     @EnvironmentObject private var store: ValueStore
     
-    @State private var searchField = ""
-    
     var body: some View {
         @Bindable var vm = vm
         
@@ -18,7 +16,7 @@ struct ServerList: View {
         .padding(.horizontal, 4)
         .navigationBarBackButtonHidden()
         .animation(.default, value: vm.servers)
-        .searchable(text: $searchField)
+        .searchable(text: $vm.searchField)
         .safariCover($vm.showBilling, url: "https://my.bisquit.host")
         .background(BisquitFall())
         .background(BackgroundImage())
@@ -29,13 +27,13 @@ struct ServerList: View {
             await vm.fetchServers(store.adminServerList)
             store.updateServers.toggle()
         }
-        .onChange(of: searchField) {
-            guard !(1...2).contains(searchField.count) else {
+        .onChange(of: vm.searchField) {
+            guard !(1...2).contains(vm.searchField.count) else {
                 return
             }
             
             Task {
-                await vm.fetchServers(store.adminServerList, searchPrompt: searchField)
+                await vm.fetchServers(store.adminServerList, searchPrompt: vm.searchField)
             }
             
             store.updateServers.toggle()
