@@ -6,7 +6,7 @@ struct ServerListTips: View {
     
     var body: some View {
         TipView(TipServerCardContextMenu())
-//            .tipBackground(.ultraThinMaterial)
+            .tipBackground(.ultraThinMaterial.opacity(0.75))
         
         if vm.hasFrozenServers {
             TipView(TipSuspendedServer()) { action in
@@ -14,8 +14,7 @@ struct ServerListTips: View {
                     vm.showBilling = true
                 }
             }
-            .glassEffect()
-//            .tipBackground(.ultraThinMaterial)
+            .tipBackground(.ultraThinMaterial.opacity(0.75))
         }
     }
 }
