@@ -1,7 +1,7 @@
 import ScrechKit
 import PteroNet
 
-struct ServerListGrid: View {    
+struct ServerListGrid: View {
     private let servers: [ServerAttributes]
     
     init(_ servers: [ServerAttributes]) {
@@ -17,9 +17,7 @@ struct ServerListGrid: View {
         }
 #else
         LazyVGrid(
-            columns: [
-                GridItem(.adaptive(minimum: 360))
-            ],
+            columns: [GridItem(.adaptive(minimum: 360))],
             spacing: 8
         ) {
             ForEach(servers) { server in
