@@ -2,7 +2,6 @@ import ScrechKit
 import PteroNet
 
 struct PanelView: View {
-    @EnvironmentObject private var store: ValueStore
     @State private var vm: PanelVM
     @State private var fileVM: FileTabVM
     @State private var startupVM: StartupVM

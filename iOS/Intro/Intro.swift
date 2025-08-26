@@ -1,8 +1,6 @@
 import SwiftUI
 
 struct Intro: View {
-    @EnvironmentObject private var store: ValueStore
-    
     @State private var activeCard = cards.first
     @State private var scrollPosition = ScrollPosition()
     @State private var currentScrollOffset = 0.0
@@ -168,5 +166,4 @@ extension View {
 
 #Preview {
     Intro()
-        .environmentObject(ValueStore())
 }

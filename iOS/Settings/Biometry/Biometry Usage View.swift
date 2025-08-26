@@ -1,9 +1,8 @@
 import ScrechKit
 
 struct BiometryUsageView: View {
-    @EnvironmentObject private var store: ValueStore
-    
     var body: some View {
+        #warning("Needed here?")
         NavigationStack {
             VStack {
                 Text("Biometry usage description")
@@ -20,5 +19,4 @@ struct BiometryUsageView: View {
 
 #Preview {
     BiometryUsageView()
-        .environmentObject(ValueStore())
 }

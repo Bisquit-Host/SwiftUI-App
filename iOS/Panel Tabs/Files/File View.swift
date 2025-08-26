@@ -2,8 +2,8 @@ import ScrechKit
 import PteroNet
 
 struct FileView: View {
-    @EnvironmentObject private var store: ValueStore
     @EnvironmentObject private var vm: FileTabVM
+    @EnvironmentObject private var store: ValueStore
     
     private let id, root: String
     private let file: FileAttributes

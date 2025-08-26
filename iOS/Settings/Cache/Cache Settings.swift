@@ -19,3 +19,9 @@ struct CacheSettings: View {
         .environment(cache)
     }
 }
+
+#Preview {
+    List {
+        CacheSettings()
+    }
+}

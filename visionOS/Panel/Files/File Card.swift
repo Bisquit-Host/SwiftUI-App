@@ -4,7 +4,6 @@ import PteroNet
 struct FileCard: View {
     @EnvironmentObject private var vm: FileTabVM
     @Environment(NavState.self) private var navState
-    // @EnvironmentObject private var store: ValueStore
     
     @Environment(\.openWindow) private var openWindow
     
