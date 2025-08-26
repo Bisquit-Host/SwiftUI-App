@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 import PteroNet
 
 struct AllocationCard: View {
@@ -28,13 +28,6 @@ struct AllocationCard: View {
         Section {
             VStack(alignment: .leading) {
                 HStack {
-                    if allocation.isDefault {
-                        Image(systemName: "star.fill")
-                            .foregroundStyle(.yellow.gradient)
-                    } else {
-                        Image(systemName: "app.connected.to.app.below.fill")
-                    }
-                    
                     VStack(alignment: .leading) {
                         Text(ip)
                             .semibold()
@@ -45,18 +38,27 @@ struct AllocationCard: View {
                                 .footnote()
                         }
                     }
+                    
+                    Spacer()
+                    
+                    if allocation.isDefault {
+                        Image(systemName: "star.fill")
+                            .foregroundStyle(.yellow.gradient)
+                    }
                 }
                 .animation(.default, value: allocation.isDefault)
                 .contextMenu {
                     if !allocation.isDefault {
-                        MenuButton("Set default", icon: "star") {
+                        Button("Set default", systemImage: "star") {
                             Task {
                                 await vm.setDefault(allocation.id)
                             }
                         }
                     }
                     
-                    MenuButton("Delete", role: .destructive, icon: "trash") {
+                    Divider()
+                    
+                    Button("Delete", systemImage: "trash", role: .destructive) {
                         Task {
                             await vm.unassignAllocation(allocation.id)
                         }
