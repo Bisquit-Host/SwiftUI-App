@@ -20,7 +20,7 @@ struct ServerList: View {
                         .id(server.id)
                 }
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .maxFrame(.infinity)
             .padding(.vertical)
             
             if updater.alertUpdate {

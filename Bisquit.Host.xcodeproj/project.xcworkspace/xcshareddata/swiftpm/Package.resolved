@@ -88,7 +88,7 @@
       "location" : "https://github.com/TopScrech/PteroNet",
       "state" : {
         "branch" : "main",
-        "revision" : "7e80ea6dbc0de81b11a7e622218911b1066ee95e"
+        "revision" : "bff03b1cc6f6d9118581c27b22febf685c82e927"
       }
     },
     {
@@ -115,7 +115,7 @@
       "location" : "https://github.com/TopScrech/ScrechKit",
       "state" : {
         "branch" : "main",
-        "revision" : "731132bddb22c13cdbd752bb1ff539554e7de666"
+        "revision" : "ebca8f29757f85adc259ccfa7b22f47f40e74236"
       }
     },
     {

@@ -12,7 +12,7 @@ struct TextFileEditor: View {
         @Bindable var vm = vm
         
         HighlightrTextView(text: $vm.text)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .maxFrame(.infinity)
 #endif
     }
 }
