@@ -13,6 +13,10 @@ struct SheetCreateAllocationCard: View {
         self.category = category
     }
     
+    private var isSelected: Bool {
+        selectedCategory == category.id
+    }
+    
     var body: some View {
         Button {
             selectedCategory = category.id
@@ -21,11 +25,11 @@ struct SheetCreateAllocationCard: View {
                 .padding()
                 .frame(maxWidth: .infinity)
                 .background(
-                    .ultraThinMaterial.opacity(selectedCategory == category.id ? 0 : 1),
+                    .ultraThinMaterial.opacity(isSelected ? 0 : 1),
                     in: .rect(cornerRadius: 16)
                 )
                 .background(
-                    .blue.opacity(selectedCategory == category.id ? 1 : 0),
+                    .blue.opacity(isSelected ? 1 : 0),
                     in: .rect(cornerRadius: 16)
                 )
                 .overlay {
@@ -37,6 +41,9 @@ struct SheetCreateAllocationCard: View {
     }
 }
 
-//#Preview {
-//    SheetCreateAllocationCard()
-//}
+#Preview {
+    NavigationStack {
+        SheetCreateAllocation()
+    }
+    .environment(AllocationVM(""))
+}

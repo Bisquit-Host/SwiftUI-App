@@ -4,12 +4,12 @@ import StoreKit
 struct ServerList: View {
     @Environment(ServerListVM.self) private var vm
     @EnvironmentObject private var store: ValueStore
-    
+
     @State private var fullScreenCover = false
-    
+
     var body: some View {
         @Bindable var vm = vm
-        
+
         ScrollView(showsIndicators: false) {
             ServerListGrid(vm.filteredServers)
                 .padding(4)
@@ -26,11 +26,11 @@ struct ServerList: View {
             guard !(1...2).contains(vm.searchField.count) else {
                 return
             }
-            
+
             Task {
                 await vm.fetchServers(store.adminServerList, searchPrompt: vm.searchField)
             }
-            
+
             store.updateServers.toggle()
         }
         .safeAreaInset(edge: .bottom) {
@@ -69,15 +69,15 @@ struct ServerList: View {
                 }
                 .padding(.leading)
             }
-            
+
             ToolbarItemGroup(placement: .topBarTrailing) {
 #warning("iMessage: Full screen button")
                 //Button("Test") {
                 //    fullScreenCover = true
                 //}
-                
+
                 ServerListAdminButton()
-                
+
                 SettingsButton()
                     .padding(.trailing)
             }
