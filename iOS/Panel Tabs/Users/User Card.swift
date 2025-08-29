@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 import Kingfisher
 import PteroNet
 
@@ -57,15 +57,15 @@ struct UserCard: View {
         }
 #if !os(watchOS)
         .contextMenu {
-            MenuButton("Details", icon: "info.circle") {
+            Button("Details", systemImage: "info.circle") {
                 sheetDetails = true
             }
             
-            Section {
-                MenuButton("Delete", role: .destructive, icon: "trash") {
-                    Task {
-                        await vm.delete(user.uuid)
-                    }
+            Divider()
+            
+            Button("Delete", systemImage: "trash", role: .destructive) {
+                Task {
+                    await vm.delete(user.uuid)
                 }
             }
         }

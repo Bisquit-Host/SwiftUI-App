@@ -10,12 +10,12 @@ struct CloudKeyContextMenu: View {
     }
     
     var body: some View {
-        MenuButton("Rename", icon: "pencil") {
+        Button("Rename", systemImage: "pencil") {
             alertRename = true
         }
         
 #if !os(tvOS)
-        MenuButton("Copy", icon: "doc.on.doc") {
+        Button("Copy", systemImage: "doc.on.doc") {
             Pasteboard.copy(key.key)
             SystemAlert.copied()
         }
@@ -24,7 +24,7 @@ struct CloudKeyContextMenu: View {
 #endif
         
         Section {
-            MenuButton("Delete", role: .destructive, icon: "trash") {
+            Button("Delete", systemImage: "trash", role: .destructive) {
                 key.modelContext?.delete(key)
             }
         }

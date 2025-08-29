@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 import PteroNet
 
 struct ScheduleContextMenu: View {
@@ -12,22 +12,22 @@ struct ScheduleContextMenu: View {
     
     var body: some View {
         ControlGroup {
-            MenuButton("Execute", icon: "play") {
+            Button("Execute", systemImage: "play") {
                 Task {
                     await vm.executeSchedule(schedule.id)
                 }
             }
             
-            MenuButton("New task", icon: "plus") {
+            Button("New task", systemImage: "plus") {
                 vm.sheetCreateTask = true
             }
         }
         
-        Section {
-            MenuButton("Delete", role: .destructive, icon: "trash") {
-                Task {
-                    await vm.deleteSchedule(schedule.id.description)
-                }
+        Divider()
+        
+        Button("Delete", systemImage: "trash", role: .destructive) {
+            Task {
+                await vm.deleteSchedule(schedule.id.description)
             }
         }
     }

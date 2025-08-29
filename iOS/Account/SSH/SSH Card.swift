@@ -26,14 +26,14 @@ struct SSHCard: View {
             .footnote()
         }
         .contextMenu {
-            MenuButton("Copy", icon: "doc.on.doc") {
+            Button("Copy", systemImage: "doc.on.doc") {
                 Pasteboard.copy(key.publicKey)
             }
             
             ShareLink("Share...", item: key.publicKey)
             
             Section {
-                MenuButton("Delete", role: .destructive, icon: "trash") {
+                Button("Delete", systemImage: "trash", role: .destructive) {
                     Task {
                         await vm.deleteKey(key.fingerprint)
                     }

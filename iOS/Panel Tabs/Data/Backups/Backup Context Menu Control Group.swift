@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 import PteroNet
 
 struct BackupContextMenuControlGroup: View {
@@ -14,27 +14,27 @@ struct BackupContextMenuControlGroup: View {
     var body: some View {
         let uuid = backup.uuid
         
-        MenuButton("Download", icon: "square.and.arrow.down") {
+        Button("Download", systemImage: "square.and.arrow.down") {
             Task {
                 await cardVm.downloadBackup(uuid)
             }
         }
         
         if backup.isLocked {
-            MenuButton("Unlock", icon: "lock.open") {
+            Button("Unlock", systemImage: "lock.open") {
                 Task {
                     await vm.lockBackup(uuid)
                 }
             }
         } else {
-            MenuButton("Lock", icon: "lock") {
+            Button("Lock", systemImage: "lock") {
                 Task {
                     await vm.lockBackup(uuid)
                 }
             }
         }
         
-        MenuButton("Restore", icon: "arrow.up.bin") {
+        Button("Restore", systemImage: "arrow.up.bin") {
             Task {
                 await vm.restoreBackup(uuid, truncate: false)
             }

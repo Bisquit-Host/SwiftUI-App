@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 import PteroNet
 
 struct DatabaseCard: View {
@@ -42,7 +42,7 @@ struct DatabaseCard: View {
         }
         .frame(minWidth: 200, maxWidth: 800)
         .contextMenu {
-            MenuButton("Rotate password", icon: "lock.open.rotation") {
+            Button("Rotate password", systemImage: "lock.open.rotation") {
                 Task {
                     await vm.rotatePassword(database.id)
                 }

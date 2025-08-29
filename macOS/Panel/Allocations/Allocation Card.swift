@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 import PteroNet
 
 struct AllocationCard: View {
@@ -47,14 +47,14 @@ struct AllocationCard: View {
         .frame(minWidth: 200, maxWidth: 800)
         .contextMenu {
             if !allocation.isDefault {
-                MenuButton("Set default", icon: "star") {
+                Button("Set default", systemImage: "star") {
                     Task {
                         await vm.setDefault(allocation.id)
                     }
                 }
             }
             
-            MenuButton("Delete", role: .destructive, icon: "trash") {
+            Button("Delete", systemImage: "trash", role: .destructive) {
                 Task {
                     await vm.unassignAllocation(allocation.id)
                 }

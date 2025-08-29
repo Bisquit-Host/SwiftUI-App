@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 import PteroNet
 
 struct Guide: View {
@@ -48,7 +48,7 @@ struct Guide: View {
             Spacer()
             
             HStack {
-                MenuButton("Previous", icon: "chevron.backward") {
+                Button("Previous", systemImage: "chevron.backward") {
                     withAnimation(.easeOut(duration: 0.6)) {
                         step -= 1
                     }
@@ -57,7 +57,7 @@ struct Guide: View {
                 
                 Spacer()
                 
-                MenuButton("Next", icon: "chevron.forward") {
+                Button("Next", systemImage: "chevron.forward") {
                     withAnimation(.easeOut(duration: 0.6)) {
                         step += 1
                     }

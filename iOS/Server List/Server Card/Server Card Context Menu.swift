@@ -34,19 +34,19 @@ struct ServerCardContextMenu: View {
         
         if !server.isSuspended {
             ControlGroup {
-                MenuButton("Start", icon: "play") {
+                Button("Start", systemImage: "play") {
                     Task {
                         await PteroNet.powerSignal(id, do: .start)
                     }
                 }
                 
-                MenuButton("Stop", icon: "pause") {
+                Button("Stop", systemImage: "pause") {
                     Task {
                         await PteroNet.powerSignal(id, do: .stop)
                     }
                 }
                 
-                MenuButton("Restart", icon: "arrow.triangle.2.circlepath") {
+                Button("Restart", systemImage: "arrow.triangle.2.circlepath") {
                     Task {
                         await PteroNet.powerSignal(id, do: .restart)
                     }
@@ -54,7 +54,7 @@ struct ServerCardContextMenu: View {
             }
             
             Section {
-                MenuButton("Kill", role: .destructive, icon: "power") {
+                Button("Kill", systemImage: "power", role: .destructive) {
                     confirmKill = true
                 }
             }
@@ -75,7 +75,7 @@ struct ServerCardContextMenu: View {
         }
         
         Section {
-            MenuButton("Open in Safari", icon: "safari") {
+            Button("Open in Safari", systemImage: "safari") {
                 showSafari = true
             }
         }

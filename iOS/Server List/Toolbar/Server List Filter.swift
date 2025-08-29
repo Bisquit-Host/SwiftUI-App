@@ -10,11 +10,11 @@ struct ServerListFilter: View {
     var body: some View {
         Menu {
             if vm.hasSuspendedServers {
-                MenuButton("Suspended", icon: vm.filterBySuspended ? "snowflake.circle.fill" : "snowflake") {
+                Button("Suspended", systemImage: vm.filterBySuspended ? "snowflake.circle.fill" : "snowflake") {
                     filterBySuspended()
                 }
                 
-                MenuButton("Not suspended", icon: vm.filterByNotSuspended ? "snowflake.circle.fill" : "snowflake") {
+                Button("Not suspended", systemImage: vm.filterByNotSuspended ? "snowflake.circle.fill" : "snowflake") {
                     filterByNotSuspended()
                 }
             }

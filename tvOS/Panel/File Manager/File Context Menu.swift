@@ -21,13 +21,13 @@ struct FileContextMenu: ViewModifier {
         
         content
             .contextMenu {
-                MenuButton("Rename", icon: "pencil") {
+                Button("Rename", systemImage: "pencil") {
                     vm.newFileName = ""
                     alertRename = true
                 }
                 
                 if !mimeType.contains("directory") {
-                    MenuButton("Download with QR", icon: "qrcode") {
+                    Button("Download with QR", systemImage: "qrcode") {
                         // Context menu needs some time to close and allow the sheet to display
                         delay(0.75) {
                             Task {
@@ -36,36 +36,36 @@ struct FileContextMenu: ViewModifier {
                         }
                     }
                     
-                    MenuButton("Duplicate", icon: "doc.on.doc") {
+                    Button("Duplicate", systemImage: "doc.on.doc") {
                         Task {
                             await vm.duplicateFile(name, at: path)
                         }
                     }
                     
-                    MenuButton("Permissions", icon: "lock.doc") {
+                    Button("Permissions", systemImage: "lock.doc") {
                         sheetPermissions = true
                     }
                 }
                 
                 if mimeType.contains("gzip") {
-                    MenuButton("Decompress", icon: "arrow.up.bin") {
+                    Button("Decompress", systemImage: "arrow.up.bin") {
                         Task {
                             await vm.fileCompressor(name, at: path, do: .decompress)
                         }
                     }
                 } else {
-                    MenuButton("Compress", icon: "archivebox") {
+                    Button("Compress", systemImage: "archivebox") {
                         Task {
                             await vm.fileCompressor(name, at: path, do: .compress)
                         }
                     }
                 }
                 
-                Section {
-                    MenuButton("Delete", role: .destructive, icon: "trash") {
-                        Task {
-                            await vm.deleteFile(name, at: path)
-                        }
+                Divider()
+                
+                Button("Delete", systemImage: "trash", role: .destructive) {
+                    Task {
+                        await vm.deleteFile(name, at: path)
                     }
                 }
             }

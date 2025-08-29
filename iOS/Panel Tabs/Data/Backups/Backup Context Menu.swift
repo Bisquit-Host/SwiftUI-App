@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 import PteroNet
 
 struct BackupContextMenu: View {
@@ -12,8 +12,6 @@ struct BackupContextMenu: View {
     }
     
     var body: some View {
-        let uuid = backup.uuid
-        
 #if os(tvOS)
         BackupContextMenuControlGroup(backup)
 #else
@@ -22,15 +20,15 @@ struct BackupContextMenu: View {
         }
 #endif
         Section {
-            MenuButton("Restore with truncate", role: .destructive, icon: "arrow.up.bin") {
+            Button("Restore with truncate", systemImage: "arrow.up.bin", role: .destructive) {
                 Task {
-                    await vm.restoreBackup(uuid, truncate: true)
+                    await vm.restoreBackup(backup.uuid, truncate: true)
                 }
             }
             
-            MenuButton("Delete", role: .destructive, icon: "trash") {
+            Button("Delete", systemImage: "trash", role: .destructive) {
                 Task {
-                    await vm.deleteBackup(uuid)
+                    await vm.deleteBackup(backup.uuid)
                 }
             }
         }

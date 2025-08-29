@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 import PhotosUI
 
 struct UploadMenu: View {
@@ -24,15 +24,15 @@ struct UploadMenu: View {
     
     var body: some View {
         Menu {
-            MenuButton("Choose File", icon: "folder") {
+            Button("Choose File", systemImage: "folder") {
                 pickerFile = true
             }
             
-            MenuButton("Take Photo", icon: "camera") {
+            Button("Take Photo", systemImage: "camera") {
                 pickerCamera = true
             }
             
-            MenuButton("Photo Library", icon: "photo.on.rectangle") {
+            Button("Photo Library", systemImage: "photo.on.rectangle") {
                 pickerLibrary = true
             }
             

@@ -58,17 +58,17 @@ struct ServerList: View {
                 }
                 
                 Menu {
-                    MenuButton("Switch account", icon: "arrow.trianglehead.2.clockwise.rotate.90") {
+                    Button("Switch account", systemImage: "arrow.trianglehead.2.clockwise.rotate.90") {
                         vm.sheetKeyStorage = true
                     }
                     
-                    MenuButton("Settings", icon: "gear") {
+                    Button("Settings", systemImage: "gear") {
                         sheetSettings = true
                     }
                     
                     Divider()
                     
-                    MenuButton("Log out", role: .destructive, icon: "rectangle.portrait.and.arrow.right") {
+                    Button("Log out", systemImage: "rectangle.portrait.and.arrow.right", role: .destructive) {
                         main {
                             navState.clear()
                             store.isApiKeyValid = false

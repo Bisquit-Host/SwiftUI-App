@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 import PteroNet
 import SwiftData
 
@@ -17,22 +17,22 @@ struct ServerListSettingsButton: View {
         
         Menu {
             if keys.count > 0 {
-                MenuButton("Switch account", icon: "chevron.up.chevron.down") {
+                Button("Switch account", systemImage: "chevron.up.chevron.down") {
                     vm.sheetKeyStorage = true
                 }
             }
             
-            MenuButton("Account", icon: "person.crop.circle") {
+            Button("Account", systemImage: "person.crop.circle") {
                 sheetAccount = true
             }
             
-            MenuButton("Settings", icon: "gear") {
+            Button("Settings", systemImage: "gear") {
                 sheetSettings = true
             }
             
             Divider()
             
-            MenuButton("Log out", role: .destructive, icon: "rectangle.portrait.and.arrow.right") {
+            Button("Log out", systemImage: "rectangle.portrait.and.arrow.right", role: .destructive) {
                 logout()
             }
         } label: {

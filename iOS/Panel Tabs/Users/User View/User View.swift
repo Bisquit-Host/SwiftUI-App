@@ -67,11 +67,10 @@ struct UserView: View {
                 ToolbarItem(placement: .topBarLeading) {
                     UserImage(user.image)
                 }
-                
 #if os(iOS)
                 ToolbarItem(placement: .topBarTrailing) {
                     Menu {
-                        MenuButton("Copy", icon: "doc.on.doc") {
+                        Button("Copy", systemImage: "doc.on.doc") {
 #if os(macOS)
                             NSPasteboard.general.setString(user.email, forType: .string)
 #else
@@ -80,11 +79,11 @@ struct UserView: View {
 #endif
                         }
 #if canImport(MailCover)
-                        MenuButton("Send email", icon: "envelope") {
+                        Button("Send email", systemImage: "envelope") {
                             mailCover = true
                         }
 #endif
-                        MenuButton("Save to Contacts", icon: "person.crop.circle.badge.plus") {
+                        Button("Save to Contacts", systemImage: "person.crop.circle.badge.plus") {
                             contacts.saveContact(user.email)
                         }
                         

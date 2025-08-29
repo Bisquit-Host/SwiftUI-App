@@ -47,7 +47,7 @@ struct AccountView: View {
                     }
                     
                     //                    Menu {
-                    //                        MenuButton("Copy URL", icon: "doc.on.doc") {
+                    //                        Button("Copy URL", systemImage: "doc.on.doc") {
                     //                            Pasteboard.copy(vm.qrCodeUrl)
                     //                            SystemAlert.copied()
                     //                        }
@@ -58,7 +58,7 @@ struct AccountView: View {
                     //                            }
                     //                        }
                     //
-                    //                        MenuButton("View QR code", icon: "qrcode") {
+                    //                        Button("View QR code", systemImage: "qrcode") {
                     //                            sheetQrCode = true
                     //                        }
                     //                    } label: {

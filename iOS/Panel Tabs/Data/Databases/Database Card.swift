@@ -62,16 +62,16 @@ struct DatabaseCard: View {
                 }
             }
 #endif
-            MenuButton("Rotate password", icon: "lock.open.rotation") {
+            Button("Rotate password", systemImage: "lock.open.rotation") {
                 Task {
                     await vm.rotatePassword(db.id)
                 }
             }
             
-            Section {
-                MenuButton("Delete", role: .destructive, icon: "trash") {
-                    alertDelete = true
-                }
+            Divider()
+            
+            Button("Delete", systemImage: "trash", role: .destructive) {
+                alertDelete = true
             }
         }
         .alert("Detele Database", isPresented: $alertDelete) {

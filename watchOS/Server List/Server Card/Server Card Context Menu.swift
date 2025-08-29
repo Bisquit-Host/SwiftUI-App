@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 import PteroNet
 
 struct ServerCardContextMenu: View {
@@ -25,25 +25,25 @@ struct ServerCardContextMenu: View {
     
     var body: some View {
         List {
-            MenuButton("Start", icon: "play") {
+            Button("Start", systemImage: "play") {
                 Task {
                     await PteroNet.powerSignal(id, do: .start)
                 }
             }
             
-            MenuButton("Stop", icon: "pause") {
+            Button("Stop", systemImage: "pause") {
                 Task {
                     await PteroNet.powerSignal(id, do: .stop)
                 }
             }
             
-            MenuButton("Restart", icon: "arrow.triangle.2.circlepath") {
+            Button("Restart", systemImage: "arrow.triangle.2.circlepath") {
                 Task {
                     await PteroNet.powerSignal(id, do: .restart)
                 }
             }
             
-            MenuButton("Kill", icon: "power") {
+            Button("Kill", systemImage: "power") {
                 confirmKill = true
             }
             .foregroundStyle(.red)

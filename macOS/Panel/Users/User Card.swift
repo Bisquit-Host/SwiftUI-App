@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 import Kingfisher
 import PteroNet
 
@@ -56,11 +56,9 @@ struct UserCard: View {
         }
         .frame(minWidth: 200, maxWidth: 800)
         .contextMenu {
-            Section {
-                MenuButton("Delete", role: .destructive, icon: "trash") {
-                    Task {
-                        await vm.delete(user.uuid)
-                    }
+            Button("Delete", systemImage: "trash", role: .destructive) {
+                Task {
+                    await vm.delete(user.uuid)
                 }
             }
         }

@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 
 struct PowerSwitchToolbar: View {
     @Environment(PanelVM.self) private var vm
@@ -8,25 +8,25 @@ struct PowerSwitchToolbar: View {
     var body: some View {
         Menu {
             ControlGroup {
-                MenuButton("Start", icon: "play") {
+                Button("Start", systemImage: "play") {
                     Task {
                         await vm.changePower(.start)
                     }
                 }
                 
-                MenuButton("Restart", icon: "arrow.clockwise") {
+                Button("Restart", systemImage: "arrow.clockwise") {
                     Task {
                         await vm.changePower(.restart)
                     }
                 }
                 
-                MenuButton("Stop", icon: "pause") {
+                Button("Stop", systemImage: "pause") {
                     Task {
                         await vm.changePower(.stop)
                     }
                 }
                 
-                MenuButton("Kill", role: .destructive, icon: "power") {
+                Button("Kill", systemImage: "power", role: .destructive) {
                     confirmKill = true
                 }
             }
