@@ -10,7 +10,6 @@ struct ServerListSettingsButton: View {
     @Query(animation: .default) private var keys: [APIKey]
     
     @State private var sheetAccount = false
-    @State private var sheetSettings = false
     
     var body: some View {
         @Bindable var vm = vm
@@ -26,8 +25,8 @@ struct ServerListSettingsButton: View {
                 sheetAccount = true
             }
             
-            Button("Settings", systemImage: "gear") {
-                sheetSettings = true
+            NavigationLink(destination: SettingsView()) {
+                Label("Settings", systemImage: "gear")
             }
             
             Divider()
@@ -38,16 +37,11 @@ struct ServerListSettingsButton: View {
         } label: {
             Image(systemName: "gear")
         }
-        .onGamepadPressed(.menu) {
-            sheetSettings = true
-        }
+        //        .onGamepadPressed(.menu) {
+        //            sheetSettings = true
+        //        }
         .sheet($sheetAccount) {
             AccountParent()
-        }
-        .sheet($sheetSettings) {
-            NavigationStack {
-                SettingsView()
-            }
         }
     }
     

@@ -1242,6 +1242,8 @@
 		F3D807382DCD8F1600598908 /* Contact Access Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D807372DCD8F1600598908 /* Contact Access Picker.swift */; };
 		F3D807392DCD8F1600598908 /* Contact Access Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D807372DCD8F1600598908 /* Contact Access Picker.swift */; };
 		F3D902DF29DC445A004E76C9 /* Cache Limit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D902DE29DC445A004E76C9 /* Cache Limit.swift */; };
+		F3D95B062E625A9000849A94 /* New Server Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D95B052E625A9000849A94 /* New Server Card.swift */; };
+		F3D95B072E625A9000849A94 /* New Server Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D95B052E625A9000849A94 /* New Server Card.swift */; };
 		F3DAD6BE2A4793F8002ED405 /* Circular Gauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF6A2A44F6E000331B51 /* Circular Gauge.swift */; };
 		F3DAD6BF2A4793F8002ED405 /* Circular Gauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF6A2A44F6E000331B51 /* Circular Gauge.swift */; };
 		F3DC4E2229AEAF3E00D27EC5 /* Credentials Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DC4E2129AEAF3E00D27EC5 /* Credentials Button.swift */; };
@@ -2057,6 +2059,7 @@
 		F3D7F8522C8F258B00368ECE /* Enable 2FA View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enable 2FA View.swift"; sourceTree = "<group>"; };
 		F3D807372DCD8F1600598908 /* Contact Access Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact Access Picker.swift"; sourceTree = "<group>"; };
 		F3D902DE29DC445A004E76C9 /* Cache Limit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache Limit.swift"; sourceTree = "<group>"; };
+		F3D95B052E625A9000849A94 /* New Server Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "New Server Card.swift"; sourceTree = "<group>"; };
 		F3DC4E2129AEAF3E00D27EC5 /* Credentials Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Credentials Button.swift"; sourceTree = "<group>"; };
 		F3DC4E2529AEC36300D27EC5 /* Credentials View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Credentials View.swift"; sourceTree = "<group>"; };
 		F3DDD59B2A62AC7C009FDFBF /* Create Backup Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Create Backup Button.swift"; sourceTree = "<group>"; };
@@ -3363,6 +3366,7 @@
 			children = (
 				F394A28329E0A9810012B7D1 /* Server Card Parent.swift */,
 				F31578B4296760710016A600 /* Server Card.swift */,
+				F3D95B052E625A9000849A94 /* New Server Card.swift */,
 				F3AE522229ACF7D600CB3895 /* Server Card VM.swift */,
 				F3B1196E29A155D8003BB68C /* Suspended Server Card.swift */,
 				F3A7CF012C8BBB4700413400 /* Server Card Context Menu.swift */,
@@ -4843,6 +4847,7 @@
 				F353D4FD2D980A5000EC9F3A /* Server List Tips.swift in Sources */,
 				F3D037022CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift in Sources */,
 				F32F2CDC2D8F7047007CF4DE /* Discover.swift in Sources */,
+				F3D95B062E625A9000849A94 /* New Server Card.swift in Sources */,
 				F3496DC929E00CE70089FC28 /* Create Button.swift in Sources */,
 				F3437CA2297360D30064808F /* Schedule Card.swift in Sources */,
 				F36113FA2E55DFD40052A5A2 /* Text File Editor.swift in Sources */,
@@ -5432,6 +5437,7 @@
 				F3A563212D9EEECB009AA363 /* Allow Drag.swift in Sources */,
 				F389BB612A05B58300911EBF /* Gauge Disk.swift in Sources */,
 				F32FD02E2CF606960038D62C /* Backup Context Menu Control Group.swift in Sources */,
+				F3D95B072E625A9000849A94 /* New Server Card.swift in Sources */,
 				F30038CA2D42387600363CF4 /* Sheet Remote File.swift in Sources */,
 				F36D53362A05B8BB007324C6 /* Create Button.swift in Sources */,
 				F3D807392DCD8F1600598908 /* Contact Access Picker.swift in Sources */,
