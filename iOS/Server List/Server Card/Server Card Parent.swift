@@ -37,7 +37,9 @@ struct ServerCardParent: View {
         }
         .confirmationDialog("Perform kill action", isPresented: $confirmKill, titleVisibility: .visible) {
             Button("Kill", role: .destructive) {
-                kill()
+                Task {
+                    await PteroNet.powerSignal(server.id, do: .kill)
+                }
             }
         }
         .onDrag {
@@ -48,12 +50,6 @@ struct ServerCardParent: View {
             }
             
             return NSItemProvider()
-        }
-    }
-    
-    private func kill() {
-        Task {
-            await PteroNet.powerSignal(server.id, do: .kill)
         }
     }
 }

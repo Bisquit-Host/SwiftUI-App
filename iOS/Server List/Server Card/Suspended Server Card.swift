@@ -11,7 +11,12 @@ struct SuspendedServerCard: View {
     
     var body: some View {
         HStack {
-            serverName
+            Text(name)
+                .bold()
+                .minimumScaleFactor(0.5)
+                .lineLimit(1)
+                .scaledToFit()
+                .blur(radius: store.hideServerNames ? 5 : 0)
             
             Image(systemName: "snowflake")
                 .largeTitle()
@@ -21,15 +26,6 @@ struct SuspendedServerCard: View {
         .frame(maxWidth: .infinity)
         .padding(.horizontal, 10)
         .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
-    }
-    
-    private var serverName: some View {
-        Text(name)
-            .bold()
-            .minimumScaleFactor(0.5)
-            .lineLimit(1)
-            .scaledToFit()
-            .blur(radius: store.hideServerNames ? 5 : 0)
     }
 }
 
