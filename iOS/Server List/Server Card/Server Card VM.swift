@@ -39,6 +39,9 @@ final class ServerCardVM {
             case "running":
                 stateColor = .green
                 
+            case "suspended":
+                stateColor = .gray
+                
             default:
                 stateColor = .yellow
             }
