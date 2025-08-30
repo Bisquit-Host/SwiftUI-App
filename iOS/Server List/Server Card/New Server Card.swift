@@ -16,16 +16,16 @@ enum ServerStatus {
     
     var color: Color {
         switch self {
-        case .online: .green
-        case .warning: .orange
-        case .offline: .red
+        case .online:    .green
+        case .warning:   .orange
+        case .offline:   .red
         case .suspended: .white
         }
     }
 }
 
 struct ContentView: View {
-    @State private var isCompactMode = false
+    @State private var isCompactMode = true
     
     private let servers = [
         Server(name: "Web Server 01", description: "Main production server", cpuUsage: 0.45, ramUsage: 0.68, diskUsage: 0.23, status: .online),
@@ -169,35 +169,46 @@ struct CompactServerCard: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack(spacing: 8) {
-                if server.status != .suspended {
-                    Circle()
-                        .fill(server.status.color.gradient)
-                        .frame(6)
-                }
+        VStack(spacing: 5) {
+            if server.status == .suspended {
+                Image(systemName: "snowflake")
+                    .largeTitle()
+                    .secondary()
                 
                 Text(server.name)
                     .fontSize(14)
                     .semibold()
                     .lineLimit(1)
-                
-                Spacer()
-                
-                if server.status == .suspended {
-                    Image(systemName: "snowflake")
-                        .fontSize(16)
-                        .secondary()
-                }
-            }
-            
-            if server.status != .suspended {
-                VStack(spacing: 8) {
-                    if server.status != .offline {
-                        CompactMetricRow(icon: "cpu", value: server.cpuUsage, color: .blue)
-                        CompactMetricRow(icon: "memorychip", value: server.ramUsage, color: .green)
+                    .frame(maxWidth: .infinity)
+            } else {
+                VStack(alignment: .leading, spacing: 12) {
+                    HStack(spacing: 8) {
+                        if server.status != .suspended {
+                            Circle()
+                                .fill(server.status.color.gradient)
+                                .frame(6)
+                        }
+                        
+                        Text(server.name)
+                            .fontSize(14)
+                            .semibold()
+                            .lineLimit(1)
+                        
+                        Spacer()
                     }
-                    CompactMetricRow(icon: "internaldrive", value: server.diskUsage, color: .orange)
+                    
+                    if server.status != .suspended {
+                        VStack(spacing: 8) {
+                            if server.status != .offline {
+                                CompactMetricRow(icon: "cpu", value: server.cpuUsage, color: .blue)
+                                CompactMetricRow(icon: "memorychip", value: server.ramUsage, color: .green)
+                            } else {
+                                Spacer()
+                            }
+                            
+                            CompactMetricRow(icon: "internaldrive", value: server.diskUsage, color: .orange)
+                        }
+                    }
                 }
             }
         }
