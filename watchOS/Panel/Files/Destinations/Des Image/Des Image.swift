@@ -20,7 +20,7 @@ struct ImageFile: View {
                     .resizable()
                     .scaledToFit()
             } else {
-                KFImage(stringToUrl(vm.url))
+                KFImage(URL(string: vm.url))
                     .fade(duration: 0.25)
                     .memoryCacheExpiration(.seconds(300))
                     .diskCacheExpiration(.days(1))

@@ -9,7 +9,7 @@ struct UserImage: View {
     }
     
     var body: some View {
-        KFImage(stringToUrl(image))
+        KFImage(URL(string: image))
             .resizable()
             .frame(32)
             .clipShape(.circle)
