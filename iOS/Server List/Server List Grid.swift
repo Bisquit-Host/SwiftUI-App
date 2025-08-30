@@ -23,21 +23,22 @@ struct ServerListGrid: View {
             }
         }
 #else
-        if store.compactServerList {
-            LazyVGrid(columns: columns, spacing: 12) {
-                ForEach(servers) {
-                    ServerCardParent($0)
+        Group {
+            if store.compactServerList {
+                LazyVGrid(columns: columns, spacing: 12) {
+                    ForEach(servers) {
+                        ServerCardParent($0)
+                    }
+                }
+            } else {
+                LazyVStack(spacing: 16) {
+                    ForEach(servers) {
+                        ServerCardParent($0)
+                    }
                 }
             }
-            .padding()
-        } else {
-            LazyVStack(spacing: 16) {
-                ForEach(servers) {
-                    ServerCardParent($0)
-                }
-            }
-            .padding()
         }
+        .scenePadding()
 #endif
     }
 }

@@ -13,7 +13,6 @@ struct ServerList: View {
             
             ServerListGrid(vm.filteredServers)
         }
-        .padding(.horizontal, 4)
         .navigationBarBackButtonHidden()
         .animation(.default, value: vm.servers)
         .searchable(text: $vm.searchField)

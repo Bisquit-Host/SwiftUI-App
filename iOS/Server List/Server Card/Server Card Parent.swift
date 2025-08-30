@@ -26,7 +26,7 @@ struct ServerCardParent: View {
                 if store.compactServerList {
                     CompactServerCard(server)
                 } else {
-                    NewServerCard(server)
+                    ServerCard(server)
                 }
             }
             .foregroundStyle(.foreground)

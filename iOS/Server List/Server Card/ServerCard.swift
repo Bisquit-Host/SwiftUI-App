@@ -1,7 +1,7 @@
 import SwiftUI
 import PteroNet
 
-struct NewServerCard: View {
+struct ServerCard: View {
     @State private var vm: ServerCardVM
     @EnvironmentObject private var store: ValueStore
     

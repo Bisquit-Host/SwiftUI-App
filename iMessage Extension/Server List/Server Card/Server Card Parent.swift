@@ -3,6 +3,7 @@ import PteroNet
 import SafariCover
 
 struct ServerCardParent: View {
+    @EnvironmentObject private var store: ValueStore
     //    @Environment(NavState.self) private var nav
     
     private let server: ServerAttributes
@@ -22,8 +23,13 @@ struct ServerCardParent: View {
             Button {
                 //                    nav.navigate(.toPanel(server.id))
             } label: {
-                ServerCard(server)
+                if store.compactServerList {
+                    CompactServerCard(server)
+                } else {
+                    ServerCard(server)
+                }
             }
+            .foregroundStyle(.foreground)
             //            }
         }
         .safariCover($showSafari, url: "https://mgr.bisquit.host/server/" + server.id)

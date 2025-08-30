@@ -4,10 +4,7 @@ struct GaugeDisk: View {
     private var value: Double
     private var limit: Double
     
-    init(
-        _ value: Double = 0,
-        limit: Double = 0
-    ) {
+    init(_ value: Double = 0, limit: Double = 0) {
         self.value = value
         self.limit = limit
     }
