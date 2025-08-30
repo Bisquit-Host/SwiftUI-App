@@ -79,6 +79,7 @@ final class MetricKitManager: NSObject, MXMetricManagerSubscriber {
 //    private func formattedDate() -> String {
 //        let formatter = DateFormatter()
 //        formatter.dateFormat = "yyyy-MM-dd_HH-mm-ss"
+//
 //        return formatter.string(from: Date())
 //    }
 //
@@ -88,7 +89,7 @@ final class MetricKitManager: NSObject, MXMetricManagerSubscriber {
 //        subdirectoryName: String = "MetricKit Data"
 //    ) {
 //        guard let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
-//            print("❌ Failed to access documents directory.")
+//            print("❌ Failed to access documents directory")
 //            return
 //        }
 //
@@ -97,14 +98,16 @@ final class MetricKitManager: NSObject, MXMetricManagerSubscriber {
 //        do {
 //            try FileManager.default.createDirectory(at: targetDirectory, withIntermediateDirectories: true, attributes: nil)
 //            let fileURL = targetDirectory.appendingPathComponent(fileName)
+//
 //            if FileManager.default.fileExists(atPath: fileURL.path) {
 //                try FileManager.default.removeItem(at: fileURL)
-//                print("️ Deleted existing file: \(fileName)")
+//                print("️ Deleted existing file:", fileName)
 //            }
+//
 //            try content.write(to: fileURL, atomically: true, encoding: .utf8)
-//            print("✅ File saved at: \(fileURL.path)")
+//            print("✅ File saved at:", fileURL.path)
 //        } catch {
-//            print("❌ Error writing file: \(error)")
+//            print("❌ Error writing file:", error)
 //        }
 //    }
 //}
