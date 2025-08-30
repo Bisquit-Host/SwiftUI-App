@@ -8,8 +8,8 @@ struct SheetCreateAllocation: View {
     
     var body: some View {
         ScrollView {
-            ForEach(vm.categories) { category in
-                SheetCreateAllocationCard($selectedCategory, category: category)
+            ForEach(vm.categories) {
+                SheetCreateAllocationCard($selectedCategory, category: $0)
             }
         }
         .navigationTitle("Create allocation")

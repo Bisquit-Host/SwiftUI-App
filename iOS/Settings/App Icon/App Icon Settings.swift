@@ -10,8 +10,8 @@ struct AppIconSettings: View {
     var body: some View {
         Section("Icon") {
             LazyVGrid(columns: columns, spacing: 10) {
-                ForEach(Icon.allCases) { icon in
-                    AppIconCard(icon, isSelected: store.currentIcon == icon)
+                ForEach(Icon.allCases) {
+                    AppIconCard($0, isSelected: store.currentIcon == $0)
                 }
             }
             .padding(.vertical, 16)

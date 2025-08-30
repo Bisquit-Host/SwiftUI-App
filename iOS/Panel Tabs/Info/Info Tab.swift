@@ -31,8 +31,8 @@ struct InfoTab: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 10) {
-                ForEach(sectionsVM.activeSections) { section in
-                    switch section.name {
+                ForEach(sectionsVM.activeSections) {
+                    switch $0.name {
                     case "Resource Usage":
                         InfoTabResourceUsage(server)
                         

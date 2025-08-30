@@ -25,9 +25,9 @@ struct FileTab: View {
                         .textFieldStyle(.roundedBorder)
                 }
                 
-                ForEach(vm.filteredFiles) { file in
-                    FileView(id, at: root, file: file)
-                        .id(file)
+                ForEach(vm.filteredFiles) {
+                    FileView(id, at: root, file: $0)
+                        .id($0)
                 }
                 .listRowSeparator(.hidden)
                 .animation(.default, value: vm.filteredFiles.indices)

@@ -15,8 +15,8 @@ struct LogList: View {
                 let month = vm.monthName(for: logs.first!.timestamp)
                 
                 Section {
-                    ForEach(logs) { log in
-                        LogCard(log)
+                    ForEach(logs) {
+                        LogCard($0)
                     }
                 } header: {
                     Text(month)

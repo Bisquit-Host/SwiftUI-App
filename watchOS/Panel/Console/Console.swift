@@ -7,8 +7,8 @@ struct Console: View {
         @Bindable var vm = vm
         
         ScrollView {
-            ForEach(vm.messages, id: \.self) { message in
-                ConsoleMessage(message)
+            ForEach(vm.messages, id: \.self) {
+                ConsoleMessage($0)
             }
             .padding(.vertical)
         }

@@ -29,8 +29,8 @@ struct ServerList: View {
             }
             
             List {
-                ForEach(vm.filteredServers) { server in
-                    ServerCardParent(server)
+                ForEach(vm.filteredServers) {
+                    ServerCardParent($0)
                 }
             }
         }

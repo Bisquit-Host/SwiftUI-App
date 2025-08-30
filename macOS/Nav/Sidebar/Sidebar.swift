@@ -9,8 +9,8 @@ struct Sidebar: View {
         @Bindable var nav = nav
         
         List(selection: $nav.selectedServers) {
-            ForEach(vm.servers) { server in
-                SidebarServerCard(server)
+            ForEach(vm.servers) {
+                SidebarServerCard($0)
             }
         }
         .navigationTitle("Servers")

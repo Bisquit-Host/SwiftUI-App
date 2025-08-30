@@ -18,8 +18,8 @@ struct ServerListGrid: View {
     var body: some View {
 #if os(watchOS)
         LazyVStack {
-            ForEach(servers) { server in
-                ServerCardParent(server)
+            ForEach(servers) {
+                ServerCardParent($0)
             }
         }
 #else

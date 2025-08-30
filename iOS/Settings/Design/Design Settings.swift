@@ -9,9 +9,9 @@ struct DesignSettings: View {
     var body: some View {
         Section("Design") {
             Picker("Appearance", selection: $store.appearance) {
-                ForEach(ColorTheme.allCases) { theme in
-                    Text(theme.loc)
-                        .tag(theme)
+                ForEach(ColorTheme.allCases) {
+                    Text($0.loc)
+                        .tag($0)
                 }
             }
             

@@ -5,8 +5,8 @@ struct UserList: View {
     
     var body: some View {
         List {
-            ForEach(vm.users) { user in
-                UserCard(user)
+            ForEach(vm.users) {
+                UserCard($0)
             }
         }
         .refreshableTask {

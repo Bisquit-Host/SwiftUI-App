@@ -4,8 +4,8 @@ struct BrowserListWeb: View {
     @Environment(BrowserVM.self) private var vm
     
     var body: some View {
-        ForEach(vm.webPlans) { plan in
-            BrowserCardWeb(plan)
+        ForEach(vm.webPlans) {
+            BrowserCardWeb($0)
         }
     }
 }

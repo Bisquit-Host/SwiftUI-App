@@ -16,8 +16,8 @@ struct AllocationList: View {
     
     var body: some View {
         List {
-            ForEach(vm.allocations) { allocation in
-                AllocationCard(allocation)
+            ForEach(vm.allocations) {
+                AllocationCard($0)
             }
             .onDelete(perform: delete)
         }

@@ -28,8 +28,8 @@ struct UserInvitationView: View {
             
             ForEach(vm.chunkedPermissions.keys.sorted(), id: \.self) { type in
                 Section(type) {
-                    ForEach(vm.chunkedPermissions[type] ?? [], id: \.self) { permission in
-                        UserInvitationPermission(permission)
+                    ForEach(vm.chunkedPermissions[type] ?? [], id: \.self) {
+                        UserInvitationPermission($0)
                     }
                 }
             }

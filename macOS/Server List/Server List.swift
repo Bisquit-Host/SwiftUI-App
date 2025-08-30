@@ -15,9 +15,9 @@ struct ServerList: View {
     var body: some View {
         VStack(alignment: .leading) {
             ScrollView(showsIndicators: false) {
-                ForEach(vm.filteredServers) { server in
-                    ServerCard(server)
-                        .id(server.id)
+                ForEach(vm.filteredServers) {
+                    ServerCard($0)
+                        .id($0.id)
                 }
             }
             .maxFrame(.infinity)

@@ -26,8 +26,8 @@ struct FileTab: View {
             .listRowBackground(Color.gray.opacity(0.2))
             
             Section {
-                ForEach(vm.filteredFiles) { file in
-                    FileView(id, file: file, at: path + "/")
+                ForEach(vm.filteredFiles) {
+                    FileView(id, file: $0, at: path + "/")
                 }
                 .onDelete(perform: vm.deleteItem)
             } header: {

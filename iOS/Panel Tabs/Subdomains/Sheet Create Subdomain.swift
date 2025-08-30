@@ -34,8 +34,8 @@ struct SheetCreateSubdomain: View {
             
             if let domains = vm.domains {
                 Picker("Domain", selection: $vm.selectedDomain) {
-                    ForEach(domains) { domain in
-                        Text(domain.domain)
+                    ForEach(domains) {
+                        Text($0.domain)
                     }
                 }
             }

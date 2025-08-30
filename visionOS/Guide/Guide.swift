@@ -10,8 +10,8 @@ struct Guide: View {
     var body: some View {
         GeometryReader { geo in
             TabView {
-                ForEach(steps) { step in
-                    GuideStepCard(step, geo: geo)
+                ForEach(steps) {
+                    GuideStepCard($0, geo: geo)
                 }
             }
         }

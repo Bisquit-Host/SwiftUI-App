@@ -11,8 +11,8 @@ struct SubdomainList: View {
     
     var body: some View {
         List {
-            ForEach(vm.subdomains) { subdomain in
-                SubdomainCard(subdomain)
+            ForEach(vm.subdomains) {
+                SubdomainCard($0)
                     .listRowSeparator(.hidden)
             }
             .onDelete(perform: delete)

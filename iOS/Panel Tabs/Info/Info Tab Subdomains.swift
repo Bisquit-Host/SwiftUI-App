@@ -32,8 +32,8 @@ struct InfoTabSubdomains: View {
                             .footnote(design: .rounded)
                             .secondary()
                         
-                        ForEach(vm.subdomains) { subdomain in
-                            Text(subdomain.subdomain + "." + subdomain.domain)
+                        ForEach(vm.subdomains) {
+                            Text($0.subdomain + "." + $0.domain)
                                 .monospaced()
                         }
                     }

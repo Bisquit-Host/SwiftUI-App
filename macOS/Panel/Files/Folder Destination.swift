@@ -32,9 +32,9 @@ struct FolderDestination: View {
             }
             .listRowSeparator(.hidden)
             
-            ForEach(vm.filteredFiles) { file in
-                FileView(id, at: root, file: file)
-                    .id(file)
+            ForEach(vm.filteredFiles) {
+                FileView(id, at: root, file: $0)
+                    .id($0)
             }
             .animation(.default, value: vm.filteredFiles.indices)
             .listRowSeparator(.hidden)

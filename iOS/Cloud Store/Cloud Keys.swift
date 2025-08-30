@@ -26,8 +26,8 @@ struct CloudKeys: View {
                     TipView(TipCloudKeys())
                         .tipBackground(.ultraThinMaterial)
                     
-                    ForEach(keys) { key in
-                        CloudKeyCard($apiKey, key: key) {
+                    ForEach(keys) {
+                        CloudKeyCard($apiKey, key: $0) {
                             dismiss()
                             validate()
                         }

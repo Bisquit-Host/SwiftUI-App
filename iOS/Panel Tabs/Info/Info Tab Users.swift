@@ -24,8 +24,8 @@ struct InfoTabUsers: View {
                         .footnote(.semibold)
                     
                     HStack {
-                        ForEach(vm.users.prefix(7)) { user in
-                            InfoTabButtonsUserImg(user.image)
+                        ForEach(vm.users.prefix(7)) {
+                            InfoTabButtonsUserImg($0.image)
                         }
                     }
                 }

@@ -25,8 +25,8 @@ struct StartupView: View {
             }
             .listRowBackground(Color.gray.opacity(0.2))
             
-            ForEach(vm.startupVariables) { variable in
-                StartupCard(server, variable: variable)
+            ForEach(vm.startupVariables) {
+                StartupCard(server, variable: $0)
                     .listRowBackground(Color.gray.opacity(0.2))
             }
         }

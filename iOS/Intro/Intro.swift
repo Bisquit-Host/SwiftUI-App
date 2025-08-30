@@ -17,8 +17,8 @@ struct Intro: View {
             
             VStack(spacing: 40) {
                 InfiniteScrollView {
-                    ForEach(cards) { card in
-                        CarouselCardView(card)
+                    ForEach(cards) {
+                        CarouselCardView($0)
                     }
                 }
                 .scrollIndicators(.hidden)
@@ -114,15 +114,14 @@ struct Intro: View {
             let size = $0.size
             
             ZStack {
-                ForEach(cards) { card in
-                    /// You can use downsized image for this, but for the video tutorial purpose, I'm going to use the actual Image!
-                    Image(card.image)
+                ForEach(cards) {
+                    Image($0.image)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .ignoresSafeArea()
                         .frame(width: size.width, height: size.height)
-                    /// Only Showing active Card Image
-                        .opacity(activeCard?.id == card.id ? 1 : 0)
+                    /// Only showing the active card's Image
+                        .opacity(activeCard?.id == $0.id ? 1 : 0)
                 }
                 
                 Rectangle()

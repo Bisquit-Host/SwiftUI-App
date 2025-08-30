@@ -5,8 +5,8 @@ struct StartupList: View {
     
     var body: some View {
         List {
-            ForEach(vm.startupVariables) { variable in
-                StartupCard(variable)
+            ForEach(vm.startupVariables) {
+                StartupCard($0)
             }
         }
         .navigationTitle("Startup (view only)")

@@ -9,8 +9,8 @@ struct TempDir: View {
                 Text(.files(fileNames.count))
             }
             
-            ForEach(fileNames, id: \.self) { fileName in
-                Text(fileName)
+            ForEach(fileNames, id: \.self) {
+                Text($0)
             }
             .navigationTitle("Temporary Files")
             .task {

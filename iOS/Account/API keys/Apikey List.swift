@@ -10,8 +10,8 @@ struct ApikeyList: View {
     var body: some View {
         List {
             Section {
-                ForEach(vm.keys, id: \.attributes.id) { key in
-                    ApikeyCard(key)
+                ForEach(vm.keys, id: \.attributes.id) {
+                    ApikeyCard($0)
                 }
                 .onDelete(perform: deleteItems)
             }

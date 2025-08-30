@@ -10,8 +10,8 @@ struct SSHList: View {
     var body: some View {
         List {
             Section {
-                ForEach(vm.keys, id: \.name) { key in
-                    SSHCard(key)
+                ForEach(vm.keys, id: \.name) {
+                    SSHCard($0)
                 }
                 .onDelete(perform: deleteItems)
             }

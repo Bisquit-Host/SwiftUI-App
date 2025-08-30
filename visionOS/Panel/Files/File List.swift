@@ -12,9 +12,9 @@ struct FileList: View {
     
     var body: some View {
         List {
-            ForEach(vm.filteredFiles) { file in
-                FileCard(id, file: file, at: root)
-                    .fileContextMenu(id, file: file, at: root)
+            ForEach(vm.filteredFiles) {
+                FileCard(id, file: $0, at: root)
+                    .fileContextMenu(id, file: $0, at: root)
             }
         }
         .navigationTitle(root)

@@ -19,8 +19,8 @@ struct LogMetaView: View {
             
             ForEach(arrayProperties.sorted { $0.key < $1.key }, id: \.key) { key, values in
                 Section(key) {
-                    ForEach(values, id: \.self) { value in
-                        Text(value)
+                    ForEach(values, id: \.self) {
+                        Text($0)
                     }
                 }
             }

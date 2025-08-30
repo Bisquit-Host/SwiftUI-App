@@ -9,8 +9,8 @@ struct UserList: View {
         @Bindable var vm = vm
         
         List {
-            ForEach(vm.users) { user in
-                UserCard(user)
+            ForEach(vm.users) {
+                UserCard($0)
             }
             .onDelete(perform: delete)
 #if os(iOS)

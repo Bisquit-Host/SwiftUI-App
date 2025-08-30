@@ -30,8 +30,8 @@ struct NavModePicker: View {
                 .padding()
                 
                 LazyVGrid(columns: columns) {
-                    ForEach(NavMode.allCases) { exp in
-                        NavModePickerItem($navMode, for: exp)
+                    ForEach(NavMode.allCases) {
+                        NavModePickerItem($navMode, for: $0)
                     }
                 }
             }

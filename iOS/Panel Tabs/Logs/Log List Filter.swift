@@ -19,8 +19,8 @@ struct LogListFilter: View {
                 }
             }
             
-            ForEach(vm.actors, id: \.self) { actor in
-                LogToolbarActor(actor)
+            ForEach(vm.actors, id: \.self) {
+                LogToolbarActor($0)
             }
         } label: {
             Image(systemName: "line.3.horizontal.decrease.circle")
