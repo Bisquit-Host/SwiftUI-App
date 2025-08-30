@@ -3366,10 +3366,10 @@
 			children = (
 				F394A28329E0A9810012B7D1 /* Server Card Parent.swift */,
 				F31578B4296760710016A600 /* Server Card.swift */,
-				F3D95B052E625A9000849A94 /* New Server Card.swift */,
 				F3AE522229ACF7D600CB3895 /* Server Card VM.swift */,
 				F3B1196E29A155D8003BB68C /* Suspended Server Card.swift */,
 				F3A7CF012C8BBB4700413400 /* Server Card Context Menu.swift */,
+				F3D95B0B2E63444D00849A94 /* New Server Card */,
 				F350638329DC2D2A0010B717 /* Elements */,
 			);
 			path = "Server Card";
@@ -3750,6 +3750,14 @@
 				F3F60A782DED9FE700A15737 /* Cache List */,
 			);
 			path = Cache;
+			sourceTree = "<group>";
+		};
+		F3D95B0B2E63444D00849A94 /* New Server Card */ = {
+			isa = PBXGroup;
+			children = (
+				F3D95B052E625A9000849A94 /* New Server Card.swift */,
+			);
+			path = "New Server Card";
 			sourceTree = "<group>";
 		};
 		F3DDD23D2D92AB52002CB1B9 /* User View */ = {
