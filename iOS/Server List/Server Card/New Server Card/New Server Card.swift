@@ -2,12 +2,14 @@ import SwiftUI
 import PteroNet
 
 struct NewServerCard: View {
-    @Environment(ServerCardVM.self) private var vm
+    @State private var vm: ServerCardVM
+    @EnvironmentObject private var store: ValueStore
     
     private let server: ServerAttributes
     
     init(_ server: ServerAttributes) {
         self.server = server
+        self.vm = .init(server.id)
     }
     
     var body: some View {
@@ -44,14 +46,14 @@ struct NewServerCard: View {
                     if vm.stateColor != .red {
                         MetricGauge(
                             title: "CPU",
-                            value: vm.cpuUsage,
+                            value: vm.cpuUsage / server.limits.cpu,
                             color: .blue,
                             icon: "cpu"
                         )
                         
                         MetricGauge(
                             title: "RAM",
-                            value: vm.ramUsage,
+                            value: vm.ramUsage / (server.limits.memory * pow(1024, 2)),
                             color: .green,
                             icon: "memorychip"
                         )
@@ -59,7 +61,7 @@ struct NewServerCard: View {
                     
                     MetricGauge(
                         title: "Disk",
-                        value: vm.diskUsage,
+                        value: vm.diskUsage / (server.limits.disk * pow(1024, 2)),
                         color: .orange,
                         icon: "internaldrive"
                     )
@@ -75,6 +77,14 @@ struct NewServerCard: View {
         .overlay {
             RoundedRectangle(cornerRadius: 16)
                 .stroke(.white.opacity(0.2), lineWidth: 1)
+        }
+        .task {
+            await vm.fetchServerUsage()
+        }
+        .onChange(of: store.updateServers) {
+            Task {
+                await vm.fetchServerUsage()
+            }
         }
     }
 }

@@ -15,6 +15,8 @@ struct DesignSettings: View {
                 }
             }
             
+            Toggle("Compact server list", isOn: $store.compactServerList)
+            
             Button {
                 imagePicker = true
             } label: {

@@ -2,11 +2,18 @@ import ScrechKit
 import PteroNet
 
 struct ServerListGrid: View {
+    @EnvironmentObject private var store: ValueStore
+    
     private let servers: [ServerAttributes]
     
     init(_ servers: [ServerAttributes]) {
         self.servers = servers
     }
+    
+    private let columns = [
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
     
     var body: some View {
 #if os(watchOS)
@@ -16,13 +23,20 @@ struct ServerListGrid: View {
             }
         }
 #else
-        LazyVGrid(
-            columns: [GridItem(.adaptive(minimum: 360))],
-            spacing: 8
-        ) {
-            ForEach(servers) { server in
-                ServerCardParent(server)
+        if store.compactServerList {
+            LazyVGrid(columns: columns, spacing: 12) {
+                ForEach(servers) {
+                    ServerCardParent($0)
+                }
             }
+            .padding()
+        } else {
+            LazyVStack(spacing: 16) {
+                ForEach(servers) {
+                    ServerCardParent($0)
+                }
+            }
+            .padding()
         }
 #endif
     }

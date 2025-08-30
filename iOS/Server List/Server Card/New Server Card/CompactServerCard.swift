@@ -2,12 +2,14 @@ import SwiftUI
 import PteroNet
 
 struct CompactServerCard: View {
-    @Environment(ServerCardVM.self) private var vm
+    @State private var vm: ServerCardVM
+    @EnvironmentObject private var store: ValueStore
     
     private let server: ServerAttributes
     
     init(_ server: ServerAttributes) {
         self.server = server
+        self.vm = .init(server.id)
     }
     
     var body: some View {
@@ -42,13 +44,13 @@ struct CompactServerCard: View {
                     if vm.stateColor != .gray {
                         VStack(spacing: 8) {
                             if vm.stateColor != .red {
-                                CompactMetricRow(icon: "cpu", value: vm.cpuUsage, color: .blue)
-                                CompactMetricRow(icon: "memorychip", value: vm.ramUsage, color: .green)
+                                CompactMetricRow(icon: "cpu", value: vm.cpuUsage / server.limits.cpu, color: .blue)
+                                CompactMetricRow(icon: "memorychip", value: vm.ramUsage / (server.limits.memory * pow(1024, 2)), color: .green)
                             } else {
                                 Spacer()
                             }
                             
-                            CompactMetricRow(icon: "internaldrive", value: vm.diskUsage, color: .orange)
+                            CompactMetricRow(icon: "internaldrive", value: vm.diskUsage / (server.limits.disk * pow(1024, 2)), color: .orange)
                         }
                     }
                 }
@@ -64,6 +66,14 @@ struct CompactServerCard: View {
         .overlay {
             RoundedRectangle(cornerRadius: 12)
                 .stroke(.white.opacity(0.2), lineWidth: 1)
+        }
+        .task {
+            await vm.fetchServerUsage()
+        }
+        .onChange(of: store.updateServers) {
+            Task {
+                await vm.fetchServerUsage()
+            }
         }
     }
 }

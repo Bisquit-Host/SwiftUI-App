@@ -442,7 +442,6 @@
 		F337121E2DC2FD240014B427 /* Panel Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33712192DC2FD240014B427 /* Panel Section.swift */; };
 		F337121F2DC2FD240014B427 /* Panel Section List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33712182DC2FD240014B427 /* Panel Section List.swift */; };
 		F33712202DC2FD240014B427 /* Panel Section Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337121A2DC2FD240014B427 /* Panel Section Row.swift */; };
-		F337B3A829BC6B5400CC1195 /* Server List Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B3A729BC6B5400CC1195 /* Server List Grid.swift */; };
 		F337B4062A89FAC600DD79AA /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B4052A89FAC600DD79AA /* Entry.swift */; };
 		F337B4092A89FB4300DD79AA /* System Small Widget View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B4082A89FB4300DD79AA /* System Small Widget View.swift */; };
 		F337B40B2A89FC5100DD79AA /* Accessory Circular View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B40A2A89FC5100DD79AA /* Accessory Circular View.swift */; };
@@ -862,7 +861,6 @@
 		F389BB572A05B47000911EBF /* SafariCover in Frameworks */ = {isa = PBXBuildFile; productRef = F389BB562A05B47000911EBF /* SafariCover */; };
 		F389BB582A05B4F600911EBF /* Server List Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B3A729BC6B5400CC1195 /* Server List Grid.swift */; };
 		F389BB5B2A05B53200911EBF /* Server Card Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F394A28329E0A9810012B7D1 /* Server Card Parent.swift */; };
-		F389BB5C2A05B53800911EBF /* Suspended Server Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196E29A155D8003BB68C /* Suspended Server Card.swift */; };
 		F389BB5F2A05B57900911EBF /* Server Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31578B4296760710016A600 /* Server Card.swift */; };
 		F389BB602A05B57D00911EBF /* Gauge Regular.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266D029D99570005FD103 /* Gauge Regular.swift */; };
 		F389BB612A05B58300911EBF /* Gauge Disk.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378EF8229D6C91300BC4849 /* Gauge Disk.swift */; };
@@ -1104,7 +1102,6 @@
 		F3AF96F929DF277A00D30A8F /* Backup Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF96F829DF277A00D30A8F /* Backup Card.swift */; };
 		F3AFCB952A4AF6C10080C257 /* File Name And Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3499EFC2A277E3D006101B7 /* File Name And Icon.swift */; };
 		F3B1196D29A13CA6003BB68C /* Value Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* Value Store.swift */; };
-		F3B1196F29A155D8003BB68C /* Suspended Server Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196E29A155D8003BB68C /* Suspended Server Card.swift */; };
 		F3B138722A2D232B0026EAEE /* Server Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* Server Card VM.swift */; };
 		F3B1388A2A2D4D110026EAEE /* File Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266A929D71A1B005FD103 /* File Icon.swift */; };
 		F3B6372F2A35A82F00CB374C /* Console Inspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B6372E2A35A82F00CB374C /* Console Inspector.swift */; };
@@ -1250,8 +1247,7 @@
 		F3D95B112E63639900849A94 /* CompactMetricRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D95B0F2E63639900849A94 /* CompactMetricRow.swift */; };
 		F3D95B132E6363AA00849A94 /* MetricGauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D95B122E6363AA00849A94 /* MetricGauge.swift */; };
 		F3D95B142E6363AA00849A94 /* MetricGauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D95B122E6363AA00849A94 /* MetricGauge.swift */; };
-		F3D95B162E6363DF00849A94 /* NewServerList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D95B152E6363DF00849A94 /* NewServerList.swift */; };
-		F3D95B172E6363DF00849A94 /* NewServerList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D95B152E6363DF00849A94 /* NewServerList.swift */; };
+		F3D95B1D2E636B5700849A94 /* Server List Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B3A729BC6B5400CC1195 /* Server List Grid.swift */; };
 		F3DAD6BE2A4793F8002ED405 /* Circular Gauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF6A2A44F6E000331B51 /* Circular Gauge.swift */; };
 		F3DAD6BF2A4793F8002ED405 /* Circular Gauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF6A2A44F6E000331B51 /* Circular Gauge.swift */; };
 		F3DC4E2229AEAF3E00D27EC5 /* Credentials Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DC4E2129AEAF3E00D27EC5 /* Credentials Button.swift */; };
@@ -2004,7 +2000,6 @@
 		F3AF91CC2B423A26001D8F80 /* SSH Create View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SSH Create View.swift"; sourceTree = "<group>"; };
 		F3AF96F829DF277A00D30A8F /* Backup Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Backup Card.swift"; sourceTree = "<group>"; };
 		F3B1196C29A13CA6003BB68C /* Value Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Value Store.swift"; sourceTree = "<group>"; };
-		F3B1196E29A155D8003BB68C /* Suspended Server Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Suspended Server Card.swift"; sourceTree = "<group>"; };
 		F3B6372E2A35A82F00CB374C /* Console Inspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Console Inspector.swift"; sourceTree = "<group>"; };
 		F3B66DF32D60B46F00F1841B /* Info Tab LA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab LA.swift"; sourceTree = "<group>"; };
 		F3B81DF02A49C96000633B66 /* Info Absolute Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Absolute Stats.swift"; sourceTree = "<group>"; };
@@ -2071,7 +2066,6 @@
 		F3D95B0C2E63635B00849A94 /* CompactServerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactServerCard.swift; sourceTree = "<group>"; };
 		F3D95B0F2E63639900849A94 /* CompactMetricRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactMetricRow.swift; sourceTree = "<group>"; };
 		F3D95B122E6363AA00849A94 /* MetricGauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricGauge.swift; sourceTree = "<group>"; };
-		F3D95B152E6363DF00849A94 /* NewServerList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewServerList.swift; sourceTree = "<group>"; };
 		F3DC4E2129AEAF3E00D27EC5 /* Credentials Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Credentials Button.swift"; sourceTree = "<group>"; };
 		F3DC4E2529AEC36300D27EC5 /* Credentials View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Credentials View.swift"; sourceTree = "<group>"; };
 		F3DDD59B2A62AC7C009FDFBF /* Create Backup Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Create Backup Button.swift"; sourceTree = "<group>"; };
@@ -2399,8 +2393,8 @@
 		F300C45F2D8C2B0100743300 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				F3EE6D742D9E8E2000F0A633 /* Bakground Task.swift */,
 				F3B1196C29A13CA6003BB68C /* Value Store.swift */,
+				F3EE6D742D9E8E2000F0A633 /* Bakground Task.swift */,
 				F3AB1DF32D79C42B00387164 /* MetricKit Manager.swift */,
 				F3FF3E862D93576B00EDFBC6 /* Update Checker.swift */,
 				F32FD71D2B1E054300723B88 /* Network Calls.swift */,
@@ -3379,7 +3373,6 @@
 				F394A28329E0A9810012B7D1 /* Server Card Parent.swift */,
 				F31578B4296760710016A600 /* Server Card.swift */,
 				F3AE522229ACF7D600CB3895 /* Server Card VM.swift */,
-				F3B1196E29A155D8003BB68C /* Suspended Server Card.swift */,
 				F3A7CF012C8BBB4700413400 /* Server Card Context Menu.swift */,
 				F3D95B0B2E63444D00849A94 /* New Server Card */,
 				F350638329DC2D2A0010B717 /* Elements */,
@@ -3767,7 +3760,6 @@
 		F3D95B0B2E63444D00849A94 /* New Server Card */ = {
 			isa = PBXGroup;
 			children = (
-				F3D95B152E6363DF00849A94 /* NewServerList.swift */,
 				F3D95B052E625A9000849A94 /* New Server Card.swift */,
 				F3D95B0C2E63635B00849A94 /* CompactServerCard.swift */,
 				F3D95B0F2E63639900849A94 /* CompactMetricRow.swift */,
@@ -4879,6 +4871,7 @@
 				F36113FA2E55DFD40052A5A2 /* Text File Editor.swift in Sources */,
 				F375EC3C29EE88EA002CA969 /* Schedule List.swift in Sources */,
 				F3202CCF2D559B240030B3CC /* Contacts Provider.swift in Sources */,
+				F3D95B1D2E636B5700849A94 /* Server List Grid.swift in Sources */,
 				F3D7F8542C8F258B00368ECE /* Enable 2FA View.swift in Sources */,
 				F3BC03BC2B1FFBD50011F98A /* Backup Context Menu.swift in Sources */,
 				F3D7D87F29E83DEE00BCAFFE /* Design Settings.swift in Sources */,
@@ -4921,7 +4914,6 @@
 				F3FA61542A1F8DB500A65AE1 /* Upload Menu.swift in Sources */,
 				F3880A262A92A15E0052A978 /* Contact Manager.swift in Sources */,
 				F3DC4E2229AEAF3E00D27EC5 /* Credentials Button.swift in Sources */,
-				F3D95B162E6363DF00849A94 /* NewServerList.swift in Sources */,
 				F32FD0312CF606960038D62C /* Backup Context Menu Control Group.swift in Sources */,
 				F373CD6E2D88A386008B64BE /* Card.swift in Sources */,
 				F373CD6F2D88A386008B64BE /* Custom Text Effect.swift in Sources */,
@@ -5012,7 +5004,6 @@
 				F3C9D8512B3059E700265492 /* UIVideoPlayer.swift in Sources */,
 				F3202CFC2D562AE10030B3CC /* Browser List Bot.swift in Sources */,
 				F3FA309E2DD1EB4300280133 /* File List Header.swift in Sources */,
-				F3B1196F29A155D8003BB68C /* Suspended Server Card.swift in Sources */,
 				F3B66DF52D60B46F00F1841B /* Info Tab LA.swift in Sources */,
 				F3D264412A66ABBE005C3777 /* Account VM.swift in Sources */,
 				F39CF3582A50C00C0077996D /* User View.swift in Sources */,
@@ -5032,7 +5023,6 @@
 				F31BA5A52959026D0006D126 /* Console VM.swift in Sources */,
 				F3BF97AA29BFC7E9007B9C9C /* Websocket.swift in Sources */,
 				F3D7F8502C8ED3D100368ECE /* Disable 2FA View.swift in Sources */,
-				F337B3A829BC6B5400CC1195 /* Server List Grid.swift in Sources */,
 				F3202D0A2D562AE30030B3CC /* Browser List Web.swift in Sources */,
 				F3AB4A8A2CF3DAC900A8252F /* Backup Card VM.swift in Sources */,
 				F3E2BEDF2C1C6BA800B7A6D4 /* Cache List VM.swift in Sources */,
@@ -5288,7 +5278,6 @@
 				F3D264452A66B3A6005C3777 /* QR Code View.swift in Sources */,
 				F3CE5C4D2D5395300094BD7B /* Subdomain Card.swift in Sources */,
 				F36D53372A05B8BF007324C6 /* Backup List Footer.swift in Sources */,
-				F3D95B172E6363DF00849A94 /* NewServerList.swift in Sources */,
 				F30207D52D8B2A6000C26008 /* Swifty Ping.swift in Sources */,
 				F325E2CD2E5E6CE50008928E /* Sheet Create Allocation Card.swift in Sources */,
 				F337D75A2A4DBC840011524E /* Create Apikey.swift in Sources */,
@@ -5309,7 +5298,6 @@
 				F3A994AF2A17AED500530615 /* Map List.swift in Sources */,
 				F36D53212A05B836007324C6 /* Websocket Delegate.swift in Sources */,
 				F3116F272A33E142001F067C /* Folder File.swift in Sources */,
-				F389BB5C2A05B53800911EBF /* Suspended Server Card.swift in Sources */,
 				F353D5052D98427500EC9F3A /* Panel Toolbar.swift in Sources */,
 				F3E0B4902DC3033A003C8B27 /* Info Tab Users.swift in Sources */,
 				F389BB742A05B61F00911EBF /* Credentials VM.swift in Sources */,

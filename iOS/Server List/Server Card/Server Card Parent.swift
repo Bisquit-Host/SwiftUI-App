@@ -3,6 +3,7 @@ import PteroNet
 
 struct ServerCardParent: View {
     @Environment(NavState.self) private var navState
+    @EnvironmentObject private var store: ValueStore
     
     private let server: ServerAttributes
     
@@ -19,16 +20,16 @@ struct ServerCardParent: View {
     
     var body: some View {
         VStack {
-            if server.isSuspended {
-                SuspendedServerCard(server.name)
-            } else {
-                Button {
-                    navState.navigate(.toPanel(server.id))
-                } label: {
-                    ServerCard(server)
-                        .foregroundStyle(.foreground)
+            Button {
+                navState.navigate(.toPanel(server.id))
+            } label: {
+                if store.compactServerList {
+                    CompactServerCard(server)
+                } else {
+                    NewServerCard(server)
                 }
             }
+            .foregroundStyle(.foreground)
         }
         .hoverEffect()
         .safariCover($showSafari, url: serverUrl)
@@ -57,4 +58,5 @@ struct ServerCardParent: View {
 #Preview {
     ServerCardParent(sampleJSON(.serverListAttributes))
         .environment(NavState())
+        .environmentObject(ValueStore())
 }
