@@ -6,14 +6,24 @@ struct CacheSize: View {
     
     var body: some View {
         Menu {
-            Section {
-                Button("Clear entire cache", role: .destructive) {
-                    cache.clearAll()
-                }
+#if DEBUG
+            NavigationLink("View cache") {
+                CacheList()
+            }
+#endif
+            Divider()
+            
+            Button("Clear entire cache", role: .destructive) {
+                cache.clearAll()
             }
         } label: {
             HStack {
-                Text("Total size")
+                Label {
+                    Text("Total size")
+                } icon: {
+                    Image(systemName: "chart.pie")
+                        .foregroundStyle(.blue)
+                }
                 
                 Spacer()
                 

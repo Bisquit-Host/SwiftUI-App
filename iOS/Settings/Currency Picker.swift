@@ -7,7 +7,7 @@ struct CurrencyPicker: View {
     
     var body: some View {
         HStack {
-            Text("Preferred currency")
+            Label("Preferred currency", systemImage: "cart")
             
             Spacer()
             

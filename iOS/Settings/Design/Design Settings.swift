@@ -8,25 +8,27 @@ struct DesignSettings: View {
     
     var body: some View {
         Section("Design") {
-            Picker("Appearance", selection: $store.appearance) {
+            Picker(selection: $store.appearance) {
                 ForEach(ColorTheme.allCases) {
                     Text($0.loc)
                         .tag($0)
                 }
+            } label: {
+                Label("Appearance", systemImage: "paintbrush")
             }
             
-            Toggle("Compact server list", isOn: $store.compactServerList)
+            Toggle(isOn: $store.compactServerList) {
+                Label("Compact server list", systemImage: "rectangle.compress.vertical")
+            }
             
             Button {
                 imagePicker = true
             } label: {
-                HStack {
+                Label {
                     Text("Background image")
-                    
-                    Spacer()
-                    
+                } icon: {
                     Image(systemName: "photo")
-                        .secondary()
+                        .foregroundStyle(.blue)
                 }
             }
             .disabled(store.enableBisquitFall)
@@ -37,10 +39,14 @@ struct DesignSettings: View {
                 }
             }
             
-            Toggle("Animated background", isOn: $store.enableBisquitFall)
+            Toggle(isOn: $store.enableBisquitFall) {
+                Label("Animated background", systemImage: "sparkles")
+            }
             
             if Device.current.hasDynamicIsland {
-                Toggle("Dynamic Island badge", isOn: $store.showDynamicIslandBadge)
+                Toggle(isOn: $store.showDynamicIslandBadge) {
+                    Label("Dynamic Island badge", systemImage: "iphone")
+                }
             }
         }
     }

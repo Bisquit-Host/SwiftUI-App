@@ -31,7 +31,8 @@ final class SettingsVM {
         case .opticID:
             bioType = "Optic ID"
             
-        @unknown default: break
+        @unknown default:
+            break
         }
     }
 }

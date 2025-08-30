@@ -17,7 +17,12 @@ struct CacheLimit: View {
             }
         } label: {
             HStack {
-                Text("Limit")
+                Label {
+                    Text("Limit")
+                } icon: {
+                    Image(systemName: "externaldrive")
+                        .foregroundStyle(.blue)
+                }
                 
                 Spacer()
                 
@@ -29,7 +34,7 @@ struct CacheLimit: View {
                     .tertiary()
             }
         }
-        .foregroundStyle(.primary)
+        .foregroundStyle(.foreground)
     }
     
     private func updateCacheLimit(_ limit: CacheLimit) {

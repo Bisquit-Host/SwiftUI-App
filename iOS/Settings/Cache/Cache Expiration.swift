@@ -20,7 +20,12 @@ struct CacheExpiration: View {
             }
         } label: {
             HStack {
-                Text("Expiration")
+                Label {
+                    Text("Expiration")
+                } icon: {
+                    Image(systemName: "clock")
+                        .foregroundStyle(.blue)
+                }
                 
                 Spacer()
                 
@@ -32,7 +37,7 @@ struct CacheExpiration: View {
                     .tertiary()
             }
         }
-        .foregroundStyle(.primary)
+        .foregroundStyle(.foreground)
     }
     
     private func updateCacheExpiration(_ expiration: CacheExpiration) {
@@ -40,7 +45,7 @@ struct CacheExpiration: View {
         
         switch expiration {
         case .month: newCacheExpiration = .days(30)
-        case .year: newCacheExpiration = .days(365)
+        case .year:  newCacheExpiration = .days(365)
         case .never: newCacheExpiration = .never
         }
         

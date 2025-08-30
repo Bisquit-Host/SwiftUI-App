@@ -10,11 +10,6 @@ struct CacheSettings: View {
             CacheLimit()
             
             CacheExpiration()
-#if DEBUG
-            NavigationLink("View cache") {
-                CacheList()
-            }
-#endif
         }
         .environment(cache)
     }
