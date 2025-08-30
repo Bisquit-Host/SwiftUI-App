@@ -58,15 +58,7 @@ struct CompactServerCard: View {
         }
         .padding(12)
         .frame(height: 105)
-        .background {
-            RoundedRectangle(cornerRadius: 12)
-                .fill(.ultraThinMaterial)
-                .shadow(color: .black.opacity(0.1), radius: 8, x: 0, y: 4)
-        }
-        .overlay {
-            RoundedRectangle(cornerRadius: 12)
-                .stroke(.white.opacity(0.2), lineWidth: 1)
-        }
+        .glassEffect(in: .rect(cornerRadius: 12))
         .task {
             await vm.fetchServerUsage()
         }

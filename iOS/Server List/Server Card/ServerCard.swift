@@ -69,15 +69,7 @@ struct ServerCard: View {
             }
         }
         .padding(20)
-        .background {
-            RoundedRectangle(cornerRadius: 16)
-                .fill(.ultraThinMaterial)
-                .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
-        }
-        .overlay {
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(.white.opacity(0.2), lineWidth: 1)
-        }
+        .glassEffect(in: .rect(cornerRadius: 16))
         .task {
             await vm.fetchServerUsage()
         }
