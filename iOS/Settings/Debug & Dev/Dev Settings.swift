@@ -32,7 +32,7 @@ struct DevSettings: View {
         } header: {
             Text("Dev")
         } footer: {
-            ServerListFooter()
+            DevSettingsFooter()
         }
     }
 }
