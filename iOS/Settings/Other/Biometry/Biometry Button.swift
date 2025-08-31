@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct BiometryButton: View {
-    @Environment(SettingsVM.self) private var vm
+    @Environment(BiometryVM.self) private var vm
     @EnvironmentObject private var store: ValueStore
     
     private var icon: String {

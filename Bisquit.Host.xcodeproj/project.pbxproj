@@ -151,6 +151,8 @@
 		F311CAAE2A646612004E4A4A /* Log Meta View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F311CAAD2A646612004E4A4A /* Log Meta View.swift */; };
 		F311CAAF2A646612004E4A4A /* Log Meta View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F311CAAD2A646612004E4A4A /* Log Meta View.swift */; };
 		F311CAB02A646612004E4A4A /* Log Meta View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F311CAAD2A646612004E4A4A /* Log Meta View.swift */; };
+		F31406F02E64667D00C1956E /* BackgroundImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31406EE2E64667D00C1956E /* BackgroundImageButton.swift */; };
+		F31406F12E64667D00C1956E /* BackgroundImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31406EE2E64667D00C1956E /* BackgroundImageButton.swift */; };
 		F314616A2D5A1F5E00547B6C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31461692D5A1F5E00547B6C /* Icon.swift */; };
 		F314616B2D5A1F5E00547B6C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31461692D5A1F5E00547B6C /* Icon.swift */; };
 		F31461712D5A1F8100547B6C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31461692D5A1F5E00547B6C /* Icon.swift */; };
@@ -863,7 +865,7 @@
 		F389BB652A05B5AF00911EBF /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA56F295900C20006D126 /* Formatters.swift */; };
 		F389BB682A05B5C100911EBF /* Guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA57E2959012D0006D126 /* Guide.swift */; };
 		F389BB6A2A05B5E100911EBF /* Settings View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA575295900E30006D126 /* Settings View.swift */; };
-		F389BB6B2A05B5E500911EBF /* Settings VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EDE29A2333F00C4CC77 /* Settings VM.swift */; };
+		F389BB6B2A05B5E500911EBF /* Biometry VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EDE29A2333F00C4CC77 /* Biometry VM.swift */; };
 		F389BB6C2A05B5EA00911EBF /* Cache Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7D87A29E83D1800BCAFFE /* Cache Settings.swift */; };
 		F389BB6D2A05B5EE00911EBF /* Cache Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266E829D9EFFE005FD103 /* Cache Size.swift */; };
 		F389BB6E2A05B5F400911EBF /* Cache Limit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D902DE29DC445A004E76C9 /* Cache Limit.swift */; };
@@ -894,7 +896,7 @@
 		F38FB0EA2DD2B16F00C8A19B /* Sheet Create Allocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38FB0E82DD2B16F00C8A19B /* Sheet Create Allocation.swift */; };
 		F39038B02DC815BD006DF071 /* Column Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39038AF2DC815BD006DF071 /* Column Detail.swift */; };
 		F390C74A2DC2AF940069F965 /* Gamepad Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = F390C7472DC2AF940069F965 /* Gamepad Debug.swift */; };
-		F3924EDF29A2333F00C4CC77 /* Settings VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EDE29A2333F00C4CC77 /* Settings VM.swift */; };
+		F3924EDF29A2333F00C4CC77 /* Biometry VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EDE29A2333F00C4CC77 /* Biometry VM.swift */; };
 		F3924EE729A25FBF00C4CC77 /* App Icon Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EE629A25FBF00C4CC77 /* App Icon Settings.swift */; };
 		F3924EE929A28D9D00C4CC77 /* Biometry Usage View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EE829A28D9D00C4CC77 /* Biometry Usage View.swift */; };
 		F393C7BB2A18437400DE33F9 /* File Uploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F393C7BA2A18437300DE33F9 /* File Uploader.swift */; };
@@ -1659,6 +1661,7 @@
 		F310A2EF2A56AF86001AF45F /* Network VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network VM.swift"; sourceTree = "<group>"; };
 		F3116F252A33E142001F067C /* Folder File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Folder File.swift"; sourceTree = "<group>"; };
 		F311CAAD2A646612004E4A4A /* Log Meta View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log Meta View.swift"; sourceTree = "<group>"; };
+		F31406EE2E64667D00C1956E /* BackgroundImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImageButton.swift; sourceTree = "<group>"; };
 		F31461692D5A1F5E00547B6C /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 		F31578B229675F5D0016A600 /* Server List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List.swift"; sourceTree = "<group>"; };
 		F318240A2A8777CD0039866C /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
@@ -1916,7 +1919,7 @@
 		F39038AF2DC815BD006DF071 /* Column Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Column Detail.swift"; sourceTree = "<group>"; };
 		F39052482D63644100341CD2 /* Clip Demo Debug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Clip Demo Debug.entitlements"; sourceTree = "<group>"; };
 		F390C7472DC2AF940069F965 /* Gamepad Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gamepad Debug.swift"; sourceTree = "<group>"; };
-		F3924EDE29A2333F00C4CC77 /* Settings VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings VM.swift"; sourceTree = "<group>"; };
+		F3924EDE29A2333F00C4CC77 /* Biometry VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Biometry VM.swift"; sourceTree = "<group>"; };
 		F3924EE629A25FBF00C4CC77 /* App Icon Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Icon Settings.swift"; sourceTree = "<group>"; };
 		F3924EE829A28D9D00C4CC77 /* Biometry Usage View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Biometry Usage View.swift"; sourceTree = "<group>"; };
 		F392DF362A8593E50049EF7A /* Change Power.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Change Power.swift"; sourceTree = "<group>"; };
@@ -2404,6 +2407,7 @@
 			children = (
 				F39993392AF2E491006E8A9A /* Other Settings.swift */,
 				F306B9EC29BBDA770008C2D4 /* Server List Footer.swift */,
+				F385824429D6261300BEEE1D /* Biometry */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -3163,6 +3167,7 @@
 			isa = PBXGroup;
 			children = (
 				F3D7D87E29E83DEE00BCAFFE /* Design Settings.swift */,
+				F31406EE2E64667D00C1956E /* BackgroundImageButton.swift */,
 				F32F3AAA2D8EB8EC00E69B98 /* Background Image.swift */,
 				F300C4622D8C388400743300 /* Background Image Picker View.swift */,
 				F300C4612D8C388400743300 /* Background Image Picker.swift */,
@@ -3303,13 +3308,12 @@
 			isa = PBXGroup;
 			children = (
 				F31BA575295900E30006D126 /* Settings View.swift */,
-				F3924EDE29A2333F00C4CC77 /* Settings VM.swift */,
+				F3924EDE29A2333F00C4CC77 /* Biometry VM.swift */,
 				F385824529D6268200BEEE1D /* Currency Picker.swift */,
 				F375EC3429EE6E17002CA969 /* Design */,
 				F3D902DD29DC3E47004E76C9 /* Cache */,
-				F385824429D6261300BEEE1D /* Biometry */,
-				F385824329D6260500BEEE1D /* App Icon */,
 				F300C4692D8C38E700743300 /* Other */,
+				F385824329D6260500BEEE1D /* App Icon */,
 				F3B66DEE2D60223100F1841B /* Debug & Dev */,
 			);
 			path = Settings;
@@ -4761,6 +4765,7 @@
 				F3D558AC2A3360ED00608447 /* File Tab VM.swift in Sources */,
 				F3FF3E8D2D93576B00EDFBC6 /* Update Checker.swift in Sources */,
 				F3202D202D562B990030B3CC /* Browser Card Web.swift in Sources */,
+				F31406F12E64667D00C1956E /* BackgroundImageButton.swift in Sources */,
 				F337C1622A8CE7C0006F321C /* Startup Card.swift in Sources */,
 				F3A31B092B0B161D00F89C51 /* Cloud Key Card.swift in Sources */,
 				F38F9E132CE7647D0033EFE3 /* Image Playground.swift in Sources */,
@@ -4774,7 +4779,7 @@
 				F32F3AAB2D8EB8EC00E69B98 /* Background Image.swift in Sources */,
 				F325F7002A54BBCF00E89EC4 /* Info Tab Allocations.swift in Sources */,
 				F3202CE02D562A620030B3CC /* Browser List MC.swift in Sources */,
-				F3924EDF29A2333F00C4CC77 /* Settings VM.swift in Sources */,
+				F3924EDF29A2333F00C4CC77 /* Biometry VM.swift in Sources */,
 				F33001442A4CF06D0063FE0F /* Apikey Card.swift in Sources */,
 				F3202C772D5583680030B3CC /* Browser Parent.swift in Sources */,
 				F31BA59D295902280006D126 /* Info Tab.swift in Sources */,
@@ -5134,6 +5139,7 @@
 			isa = PBXSourcesBuildPhase;
 			files = (
 				F3FF5A102A4A3ABD003A1973 /* User Card.swift in Sources */,
+				F31406F02E64667D00C1956E /* BackgroundImageButton.swift in Sources */,
 				F32F2CDB2D8F7047007CF4DE /* Discover.swift in Sources */,
 				F3CE5C462D53907E0094BD7B /* Subdomain VM.swift in Sources */,
 				F389BB722A05B61300911EBF /* Credentials View.swift in Sources */,
@@ -5352,7 +5358,7 @@
 				F36D534B2A05B974007324C6 /* Nav Destinations.swift in Sources */,
 				F37A36752A35173B00517EFC /* Server Settings VM.swift in Sources */,
 				F3202CDC2D5624B10030B3CC /* Plan.swift in Sources */,
-				F389BB6B2A05B5E500911EBF /* Settings VM.swift in Sources */,
+				F389BB6B2A05B5E500911EBF /* Biometry VM.swift in Sources */,
 				F3E467532A49903900FABE5F /* Info Stat.swift in Sources */,
 				F37A44352A05B0AA004FFDB0 /* Value Store.swift in Sources */,
 				F3AF91C22B423492001D8F80 /* SSH VM.swift in Sources */,

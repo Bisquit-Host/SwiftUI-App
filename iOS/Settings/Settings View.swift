@@ -1,7 +1,7 @@
 import ScrechKit
 
 struct SettingsView: View {
-    @State private var vm = SettingsVM()
+    @State private var vm = BiometryVM()
     
     var body: some View {
         @Bindable var vm = vm

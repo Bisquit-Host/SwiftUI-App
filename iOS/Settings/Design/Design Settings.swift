@@ -4,8 +4,6 @@ import DeviceKit
 struct DesignSettings: View {
     @EnvironmentObject private var store: ValueStore
     
-    @State private var imagePicker = false
-    
     var body: some View {
         Section("Design") {
             Picker(selection: $store.appearance) {
@@ -21,23 +19,7 @@ struct DesignSettings: View {
                 Label("Compact server list", systemImage: "rectangle.compress.vertical")
             }
             
-            Button {
-                imagePicker = true
-            } label: {
-                Label {
-                    Text("Background image")
-                } icon: {
-                    Image(systemName: "photo")
-                        .foregroundStyle(.blue)
-                }
-            }
-            .disabled(store.enableBisquitFall)
-            .foregroundStyle(.foreground)
-            .sheet($imagePicker) {
-                NavigationStack {
-                    BackgroundImagePickerView()
-                }
-            }
+            BackgroundImageButton()
             
             Toggle(isOn: $store.enableBisquitFall) {
                 Label("Animated background", systemImage: "sparkles")

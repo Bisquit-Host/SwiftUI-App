@@ -39,6 +39,6 @@ struct OtherSettings: View {
     List {
         OtherSettings()
     }
-    .environment(SettingsVM())
+    .environment(BiometryVM())
     .environmentObject(ValueStore())
 }
