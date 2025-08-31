@@ -16,15 +16,17 @@ struct BiometryButton: View {
     var body: some View {
         Toggle(isOn: $store.useBiometry) {
             Label(
-                vm.bioType == "Unknown" ? "Biometry unavailable" : vm.bioType,
+                vm.biometryType == .none ? "Biometry unavailable" : vm.bioType,
                 systemImage: icon
             )
             
-            Button("Learn more...") {
-                vm.sheetBio = true
+            if vm.biometryType != .none {
+                Button("Learn more...") {
+                    vm.sheetBio = true
+                }
+                .footnote()
+                .foregroundStyle(.blue.secondary)
             }
-            .footnote()
-            .foregroundStyle(.blue.secondary)
         }
         .disabled(vm.bioType == "Unknown")
         .foregroundColor(vm.bioType == "Unknown" ? .gray : .none)
