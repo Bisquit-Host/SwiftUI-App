@@ -17,7 +17,7 @@ struct CurrencyPicker: View {
                         .tag($0)
                 }
             }
-            .frame(width: 120)
+            .frame(width: 100)
             .pickerStyle(.segmented)
         }
     }
