@@ -3355,12 +3355,12 @@
 		F3A391BD29DB838D00591C84 /* Server Card */ = {
 			isa = PBXGroup;
 			children = (
+				F394A28329E0A9810012B7D1 /* Server Card Parent.swift */,
+				F3AE522229ACF7D600CB3895 /* Server Card VM.swift */,
 				F3D95B052E625A9000849A94 /* ServerCard.swift */,
 				F3D95B122E6363AA00849A94 /* MetricGauge.swift */,
 				F3D95B0C2E63635B00849A94 /* CompactServerCard.swift */,
 				F3D95B0F2E63639900849A94 /* CompactMetricRow.swift */,
-				F394A28329E0A9810012B7D1 /* Server Card Parent.swift */,
-				F3AE522229ACF7D600CB3895 /* Server Card VM.swift */,
 				F3A7CF012C8BBB4700413400 /* Server Card Context Menu.swift */,
 			);
 			path = "Server Card";
