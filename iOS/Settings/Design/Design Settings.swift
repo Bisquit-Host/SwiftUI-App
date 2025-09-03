@@ -6,6 +6,8 @@ struct DesignSettings: View {
     
     var body: some View {
         Section("Design") {
+            BackgroundImageButton()
+            
             Picker(selection: $store.appearance) {
                 ForEach(ColorTheme.allCases) {
                     Text($0.loc)
@@ -18,8 +20,6 @@ struct DesignSettings: View {
             Toggle(isOn: $store.compactServerList) {
                 Label("Compact server list", systemImage: "rectangle.compress.vertical")
             }
-            
-            BackgroundImageButton()
             
             Toggle(isOn: $store.enableBisquitFall) {
                 Label("Animated background", systemImage: "sparkles")

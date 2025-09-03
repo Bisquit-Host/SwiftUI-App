@@ -2478,7 +2478,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Темная"
+            "value" : "Темное"
           }
         }
       }
@@ -4009,7 +4009,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Светлая"
+            "value" : "Светлое"
           }
         }
       }
