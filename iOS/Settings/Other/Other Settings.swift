@@ -12,6 +12,7 @@ struct OtherSettings: View {
                 
                 Text(store.showFullFilePath ? "/home/container/folder/example/" : "/folder/example/")
                     .footnote()
+                    .animation(.default, value: store.showFullFilePath)
             }
             
             Toggle(isOn: $store.enableGameCenter) {
