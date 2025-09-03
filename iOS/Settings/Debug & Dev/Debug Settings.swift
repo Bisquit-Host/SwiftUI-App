@@ -20,6 +20,42 @@ struct DebugSettings: View {
                 Toggle("Hide server names", isOn: $store.hideServerNames)
             }
             
+            Section("System alerts") {
+                Button("Copied") {
+                    SystemAlert.copied()
+                }
+                
+                Button("Network error") {
+                    SystemAlert.networkError()
+                }
+                
+                Button("Restored backup") {
+                    SystemAlert.restored()
+                }
+                
+                Button("Reinstalled server") {
+                    SystemAlert.reinstalled()
+                }
+                
+                Button("Changes saved") {
+                    SystemAlert.changesSaved()
+                }
+                
+                Button("Error (title & subtitle)") {
+                    SystemAlert.error("Title", subtitle: "Subtitle")
+                }
+                
+                Button("Error (Pterodactyl)") {
+                    let error = PterError(
+                        code: "404",
+                        status: "Error",
+                        detail: "Details about the error"
+                    )
+                    
+                    SystemAlert.error(error)
+                }
+            }
+            
             DebugSettingsTips()
             
             Section {
