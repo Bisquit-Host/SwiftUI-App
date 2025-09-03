@@ -10,7 +10,7 @@ struct BackgroundImageButton: View {
             imagePicker = true
         } label: {
             Label {
-                Text("Background image")
+                Text("Background")
             } icon: {
                 Image(systemName: "photo")
                     .foregroundStyle(.blue)
