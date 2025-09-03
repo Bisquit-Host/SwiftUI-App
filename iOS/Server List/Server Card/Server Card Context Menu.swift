@@ -18,15 +18,22 @@ struct ServerCardContextMenu: View {
         _confirmKill = confirmKill
     }
     
-    private var defaultAlloc: String? {
+    private var defaultAlloc: AllocationAttributes? {
         guard let allocation = server.relationships.allocations.data.first(where: {
             $0.attributes.isDefault
         }).map(\.attributes) else {
             return nil
         }
         
-        let ip = allocation.ipAlias ?? allocation.ip
-        return ip + ":" + String(allocation.port)
+        return allocation
+    }
+    
+    private var ip: String? {
+        defaultAlloc?.ipAlias ?? defaultAlloc?.ip
+    }
+    
+    private var port: String? {
+        defaultAlloc?.port.description
     }
     
     var body: some View {
@@ -59,17 +66,20 @@ struct ServerCardContextMenu: View {
                 }
             }
             
-            if let defaultAlloc {
-                Menu(defaultAlloc, systemImage: "network") {
+            if let ip, let port {
+                Menu {
                     Button("Copy", systemImage: "doc.on.doc") {
-                        Pasteboard.copy(defaultAlloc)
+                        Pasteboard.copy(ip + ":" + port)
                     }
                     
-                    ShareLink(item: defaultAlloc)
+                    ShareLink(item: ip + ":" + port)
                     
                     Button("Add to MC Stats", systemImage: "arrowshape.turn.up.right") {
                         addToGoidacraft()
                     }
+                } label: {
+                    Label(ip, systemImage: "network")
+                    Text(port)
                 }
             }
         }
