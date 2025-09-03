@@ -72,13 +72,13 @@ final class SystemAlert {
     @MainActor
     static func changesSaved() {
 #if canImport(AlertKit)
-            AlertKitAPI.present(
-                title: "Changes Saved",
-                subtitle: "The file has been saved",
-                icon: .done,
-                style: .iOS17AppleMusic,
-                haptic: .success
-            )
+        AlertKitAPI.present(
+            title: "Changes Saved",
+            subtitle: "The file has been saved",
+            icon: .done,
+            style: .iOS17AppleMusic,
+            haptic: .success
+        )
 #endif
     }
     
