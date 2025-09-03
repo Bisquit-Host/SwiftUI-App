@@ -75,7 +75,7 @@ struct ServerCardContextMenu: View {
         }
         
         Section {
-            Button("Open in Safari", systemImage: "safari") {
+            Button("Open in browser", systemImage: "safari") {
                 showSafari = true
             }
         }
