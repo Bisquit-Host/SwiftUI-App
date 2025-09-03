@@ -44,16 +44,6 @@ struct DebugSettings: View {
                 Button("Error (title & subtitle)") {
                     SystemAlert.error("Title", subtitle: "Subtitle")
                 }
-                
-                Button("Error (Pterodactyl)") {
-                    let error = PterError(
-                        code: "404",
-                        status: "Error",
-                        detail: "Details about the error"
-                    )
-                    
-                    SystemAlert.error(error)
-                }
             }
             
             DebugSettingsTips()
@@ -81,6 +71,7 @@ struct DebugSettings: View {
             }
         }
         .navigationTitle("Debug")
+        .scrollIndicators(.never)
         .foregroundStyle(.foreground)
         .alert("Couldn't enable the extension", isPresented: $errorAlert) {}
     }

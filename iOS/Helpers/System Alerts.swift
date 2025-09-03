@@ -19,12 +19,10 @@ final class SystemAlert {
     }
     
     static func networkError() {
-        let image = UIImage(systemName: "exclamationmark.triangle")!
-        
         main {
             AlertKitAPI.present(
                 title: NSLocalizedString("Network Error", comment: ""),
-                icon: .custom(image),
+                icon: .error,
                 style: .iOS17AppleMusic,
                 haptic: .error
             )
