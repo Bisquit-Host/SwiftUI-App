@@ -4,7 +4,8 @@ import PhotosUI
 /// iOS 16+
 // MARK: Custom Image Picker with Drag & Drop
 struct BackgroundImagePicker: View {
-    var title, subTitle, systemImage: String
+    var title, subTitle: LocalizedStringKey
+    var systemImage: String
     var tint: Color
     var onImageChange: (UIImage?) -> ()
     

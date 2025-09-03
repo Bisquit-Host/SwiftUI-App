@@ -28,9 +28,11 @@ struct ServerCard: View {
                             .semibold()
                     }
                     
-                    Text(server.description)
-                        .subheadline()
-                        .secondary()
+                    if !server.description.isEmpty {
+                        Text(server.description)
+                            .subheadline()
+                            .secondary()
+                    }
                 }
                 
                 Spacer()
