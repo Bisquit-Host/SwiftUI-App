@@ -30,11 +30,8 @@ struct SettingsView: View {
 }
 
 #Preview {
-    Text("Preview")
-        .sheet {
-            NavigationStack {
-                SettingsView()
-            }
-        }
-        .environmentObject(ValueStore())
+    NavigationStack {
+        SettingsView()
+    }
+    .environmentObject(ValueStore())
 }
