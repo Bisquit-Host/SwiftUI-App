@@ -8,7 +8,6 @@ struct AccountSettings: View {
     @EnvironmentObject private var store: ValueStore
     
     @Query(animation: .default) private var keys: [APIKey]
-    @Environment(\.dismiss) private var dismiss
     
     @State private var sheetKeyStorage = false
     
@@ -40,7 +39,6 @@ struct AccountSettings: View {
         navState.clear()
         store.isApiKeyValid = false
         Keychain.delete(key: "selectedApiKey")
-        dismiss()
     }
 }
 

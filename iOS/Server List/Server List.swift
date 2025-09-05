@@ -2,6 +2,7 @@ import ScrechKit
 
 struct ServerList: View {
     @Environment(ServerListVM.self) private var vm
+    @Environment(NavState.self) private var nav
     @EnvironmentObject private var store: ValueStore
     
     var body: some View {
@@ -55,6 +56,11 @@ struct ServerList: View {
                 }
             }
         }
+        .onGamepadPressed(.menu) {
+            if !vm.sheetDiscover {
+                nav.navigate(.toSettings)
+            }
+        }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 SFButton("sparkles") {
@@ -72,8 +78,8 @@ struct ServerList: View {
             ToolbarSpacer(.fixed, placement: .topBarTrailing)
             
             ToolbarItem(placement: .topBarTrailing) {
-                NavigationLink(destination: SettingsView()) {
-                    Label("Settings", systemImage: "gear")
+                Button("Settings", systemImage: "gear") {
+                    nav.navigate(.toSettings)
                 }
             }
         }
@@ -85,5 +91,6 @@ struct ServerList: View {
         ServerList()
     }
     .environment(ServerListVM())
+    .environment(NavState())
     .environmentObject(ValueStore())
 }
