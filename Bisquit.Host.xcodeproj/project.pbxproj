@@ -2535,7 +2535,6 @@
 				F31A3F4A29EEEB8200BC0DFB /* Start Page */,
 				F300892C2B3D988C0051476C /* Cloud Store */,
 				F31BA594295901DC0006D126 /* Server List */,
-				F3D2643C2A66AB97005C3777 /* Account */,
 				F31BA59B295902140006D126 /* Panel */,
 				F32082442B3E170000CFED80 /* Panel Tabs */,
 				F3924EDD29A2308C00C4CC77 /* Settings */,
@@ -3681,22 +3680,6 @@
 			path = Startup;
 			sourceTree = "<group>";
 		};
-		F3D2643C2A66AB97005C3777 /* Account */ = {
-			isa = PBXGroup;
-			children = (
-				F353B0402D8A31BF00E4EC07 /* Account Parent.swift */,
-				F3D264392A66AB92005C3777 /* Account View.swift */,
-				F3D264402A66ABBE005C3777 /* Account VM.swift */,
-				F3D7F8522C8F258B00368ECE /* Enable 2FA View.swift */,
-				F3D7F84E2C8ED3D100368ECE /* Disable 2FA View.swift */,
-				F3D264432A66B3A6005C3777 /* QR Code View.swift */,
-				F3BBE36229AF96E800323C6B /* Credentials */,
-				F33001392A4CEBFD0063FE0F /* API keys */,
-				F3DF4A0C2B485D50003C6922 /* SSH */,
-			);
-			path = Account;
-			sourceTree = "<group>";
-		};
 		F3D296082AF3BE5800ED43A0 /* UI Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -3888,6 +3871,15 @@
 			isa = PBXGroup;
 			children = (
 				F3E98C1B2E6B2B020019439F /* AccountSettings.swift */,
+				F353B0402D8A31BF00E4EC07 /* Account Parent.swift */,
+				F3D264392A66AB92005C3777 /* Account View.swift */,
+				F3D264402A66ABBE005C3777 /* Account VM.swift */,
+				F3D7F8522C8F258B00368ECE /* Enable 2FA View.swift */,
+				F3D7F84E2C8ED3D100368ECE /* Disable 2FA View.swift */,
+				F3D264432A66B3A6005C3777 /* QR Code View.swift */,
+				F3BBE36229AF96E800323C6B /* Credentials */,
+				F33001392A4CEBFD0063FE0F /* API keys */,
+				F3DF4A0C2B485D50003C6922 /* SSH */,
 			);
 			path = Account;
 			sourceTree = "<group>";
