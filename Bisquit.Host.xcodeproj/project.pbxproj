@@ -2426,6 +2426,7 @@
 			isa = PBXGroup;
 			children = (
 				F39993392AF2E491006E8A9A /* Other Settings.swift */,
+				F385824529D6268200BEEE1D /* Currency Picker.swift */,
 				F385824429D6261300BEEE1D /* Biometry */,
 			);
 			path = Other;
@@ -3245,6 +3246,7 @@
 			children = (
 				F385824729D626FE00BEEE1D /* Biometry Button.swift */,
 				F3924EE829A28D9D00C4CC77 /* Biometry Usage View.swift */,
+				F3924EDE29A2333F00C4CC77 /* Biometry VM.swift */,
 			);
 			path = Biometry;
 			sourceTree = "<group>";
@@ -3331,8 +3333,6 @@
 			isa = PBXGroup;
 			children = (
 				F31BA575295900E30006D126 /* Settings View.swift */,
-				F3924EDE29A2333F00C4CC77 /* Biometry VM.swift */,
-				F385824529D6268200BEEE1D /* Currency Picker.swift */,
 				F375EC3429EE6E17002CA969 /* Design */,
 				F3D902DD29DC3E47004E76C9 /* Cache */,
 				F300C4692D8C38E700743300 /* Other */,
