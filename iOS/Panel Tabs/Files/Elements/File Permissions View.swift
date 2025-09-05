@@ -161,10 +161,7 @@ fileprivate extension Array {
 
 #Preview {
     NavigationStack {
-        FilePermissionsView(
-            sampleJSON(.fileListAttributes),
-            at: ""
-        )
+        FilePermissionsView(sampleJSON(.fileListAttributes), at: "")
     }
     .environmentObject(FileTabVM(""))
 }
