@@ -3189,11 +3189,7 @@
 			children = (
 				F3D7D87E29E83DEE00BCAFFE /* Design Settings.swift */,
 				F3E98C002E6A5F4C0019439F /* ServerCardConfig.swift */,
-				F31406EE2E64667D00C1956E /* BackgroundImageButton.swift */,
-				F32F3AAA2D8EB8EC00E69B98 /* Background Image.swift */,
-				F300C4622D8C388400743300 /* Background Image Picker View.swift */,
-				F300C4612D8C388400743300 /* Background Image Picker.swift */,
-				F32F2CFF2D908E1D007CF4DE /* Background Image Helper.swift */,
+				F3E98C1E2E6B30F80019439F /* Background */,
 			);
 			path = Design;
 			sourceTree = "<group>";
@@ -3882,6 +3878,18 @@
 				F3DF4A0C2B485D50003C6922 /* SSH */,
 			);
 			path = Account;
+			sourceTree = "<group>";
+		};
+		F3E98C1E2E6B30F80019439F /* Background */ = {
+			isa = PBXGroup;
+			children = (
+				F31406EE2E64667D00C1956E /* BackgroundImageButton.swift */,
+				F32F3AAA2D8EB8EC00E69B98 /* Background Image.swift */,
+				F300C4622D8C388400743300 /* Background Image Picker View.swift */,
+				F300C4612D8C388400743300 /* Background Image Picker.swift */,
+				F32F2CFF2D908E1D007CF4DE /* Background Image Helper.swift */,
+			);
+			path = Background;
 			sourceTree = "<group>";
 		};
 		F3EB09CA2A2940AA0073916A /* File Manager */ = {
