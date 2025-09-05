@@ -1,14 +1,9 @@
 import ScrechKit
 
 struct SettingsView: View {
-#warning("Move to the biometry settings")
-    @State private var vm = BiometryVM()
-    
     @State private var sheetAccount = false
     
     var body: some View {
-        @Bindable var vm = vm
-        
         List {
             AccountSettings()
                 .foregroundStyle(.foreground)
@@ -18,7 +13,6 @@ struct SettingsView: View {
             CacheSettings()
             
             OtherSettings()
-                .environment(vm)
             
             AppIconSettings()
             
@@ -26,12 +20,6 @@ struct SettingsView: View {
         }
         .navigationTitle("Settings")
         .scrollIndicators(.hidden)
-        .task {
-            vm.defineBiometryType()
-        }
-        .sheet($vm.sheetBio) {
-            BiometryUsageView()
-        }
         .sheet($sheetAccount) {
             AccountParent()
         }

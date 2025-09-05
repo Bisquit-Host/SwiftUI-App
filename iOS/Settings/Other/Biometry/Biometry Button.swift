@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct BiometryButton: View {
-    @Environment(BiometryVM.self) private var vm
+    @State private var vm = BiometryVM()
     @EnvironmentObject private var store: ValueStore
     
     private var icon: String {
@@ -30,5 +30,16 @@ struct BiometryButton: View {
         }
         .disabled(vm.bioType == "Unknown")
         .foregroundColor(vm.bioType == "Unknown" ? .gray : .none)
+        .task {
+            vm.defineBiometryType()
+        }
+        .sheet($vm.sheetBio) {
+            BiometryUsageView()
+        }
     }
+}
+
+#Preview {
+    BiometryButton()
+        .environmentObject(ValueStore())
 }
