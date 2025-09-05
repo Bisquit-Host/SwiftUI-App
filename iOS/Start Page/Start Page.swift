@@ -44,6 +44,7 @@ struct StartPage: View {
             .padding(.horizontal)
         }
         .navigationTitle("Authorization")
+        .navigationBarTitleDisplayMode(.inline)
         .frame(maxHeight: .infinity)
         .ignoresSafeArea()
         .navigationBarBackButtonHidden()
