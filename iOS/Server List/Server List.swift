@@ -72,7 +72,9 @@ struct ServerList: View {
             ToolbarSpacer(.fixed, placement: .topBarTrailing)
             
             ToolbarItem(placement: .topBarTrailing) {
-                ServerListSettingsButton()
+                NavigationLink(destination: SettingsView()) {
+                    Label("Settings", systemImage: "gear")
+                }
             }
         }
     }
