@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct Card: Identifiable, Hashable {
+struct IntroCard: Identifiable, Hashable {
     var id = UUID()
     let image: ImageResource
     
@@ -8,9 +8,3 @@ struct Card: Identifiable, Hashable {
         self.image = image
     }
 }
-
-let cards = [
-    Card(.intro1),
-    Card(.intro2),
-    Card(.intro3)
-]

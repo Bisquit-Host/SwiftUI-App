@@ -769,11 +769,11 @@
 		F37266E729D9EF25005FD103 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F37266E629D9EF25005FD103 /* Kingfisher */; };
 		F37266E929D9EFFE005FD103 /* Cache Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266E829D9EFFE005FD103 /* Cache Size.swift */; };
 		F37266EB29D9F06C005FD103 /* Cache VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266EA29D9F06C005FD103 /* Cache VM.swift */; };
-		F373CD6E2D88A386008B64BE /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CD6A2D88A386008B64BE /* Card.swift */; };
+		F373CD6E2D88A386008B64BE /* IntroCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CD6A2D88A386008B64BE /* IntroCard.swift */; };
 		F373CD6F2D88A386008B64BE /* Custom Text Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CD6B2D88A386008B64BE /* Custom Text Effect.swift */; };
 		F373CD702D88A386008B64BE /* Infinite Scroll View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CD6C2D88A386008B64BE /* Infinite Scroll View.swift */; };
 		F373CD712D88A386008B64BE /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CD6D2D88A386008B64BE /* Intro.swift */; };
-		F373CD762D88A386008B64BE /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CD6A2D88A386008B64BE /* Card.swift */; };
+		F373CD762D88A386008B64BE /* IntroCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CD6A2D88A386008B64BE /* IntroCard.swift */; };
 		F373CD772D88A386008B64BE /* Custom Text Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CD6B2D88A386008B64BE /* Custom Text Effect.swift */; };
 		F373CD782D88A386008B64BE /* Infinite Scroll View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CD6C2D88A386008B64BE /* Infinite Scroll View.swift */; };
 		F373CD792D88A386008B64BE /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373CD6D2D88A386008B64BE /* Intro.swift */; };
@@ -1325,6 +1325,10 @@
 		F3E98C092E6AE0830019439F /* LogCardEventDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E98C052E6AE0830019439F /* LogCardEventDescription.swift */; };
 		F3E98C0A2E6AE0830019439F /* LogCardEventDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E98C052E6AE0830019439F /* LogCardEventDescription.swift */; };
 		F3E98C0B2E6AE0830019439F /* LogCardEventDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E98C052E6AE0830019439F /* LogCardEventDescription.swift */; };
+		F3E98C0D2E6AE1BD0019439F /* IntroAmbientBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E98C0C2E6AE1BD0019439F /* IntroAmbientBackground.swift */; };
+		F3E98C0E2E6AE1BD0019439F /* IntroAmbientBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E98C0C2E6AE1BD0019439F /* IntroAmbientBackground.swift */; };
+		F3E98C142E6AE32E0019439F /* CarouselCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E98C132E6AE32E0019439F /* CarouselCardView.swift */; };
+		F3E98C152E6AE32E0019439F /* CarouselCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E98C132E6AE32E0019439F /* CarouselCardView.swift */; };
 		F3EAD3DF2DC960DA00D5D28D /* Focused List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EAD3DE2DC960DA00D5D28D /* Focused List.swift */; };
 		F3EB09CE2A29531B0073916A /* Des Image VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37F51C329DAF8D70030C1C4 /* Des Image VM.swift */; };
 		F3EB09CF2A2953200073916A /* Des Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5B6295903100006D126 /* Des Image.swift */; };
@@ -1873,7 +1877,7 @@
 		F37266E329D9A867005FD103 /* Console.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Console.swift; sourceTree = "<group>"; };
 		F37266E829D9EFFE005FD103 /* Cache Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache Size.swift"; sourceTree = "<group>"; };
 		F37266EA29D9F06C005FD103 /* Cache VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache VM.swift"; sourceTree = "<group>"; };
-		F373CD6A2D88A386008B64BE /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		F373CD6A2D88A386008B64BE /* IntroCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroCard.swift; sourceTree = "<group>"; };
 		F373CD6B2D88A386008B64BE /* Custom Text Effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Custom Text Effect.swift"; sourceTree = "<group>"; };
 		F373CD6C2D88A386008B64BE /* Infinite Scroll View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Infinite Scroll View.swift"; sourceTree = "<group>"; };
 		F373CD6D2D88A386008B64BE /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
@@ -2104,6 +2108,8 @@
 		F3E97C7829B4B569008CBDD6 /* Credentials VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Credentials VM.swift"; sourceTree = "<group>"; };
 		F3E98C002E6A5F4C0019439F /* ServerCardConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCardConfig.swift; sourceTree = "<group>"; };
 		F3E98C052E6AE0830019439F /* LogCardEventDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogCardEventDescription.swift; sourceTree = "<group>"; };
+		F3E98C0C2E6AE1BD0019439F /* IntroAmbientBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroAmbientBackground.swift; sourceTree = "<group>"; };
+		F3E98C132E6AE32E0019439F /* CarouselCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCardView.swift; sourceTree = "<group>"; };
 		F3EAD3DE2DC960DA00D5D28D /* Focused List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Focused List.swift"; sourceTree = "<group>"; };
 		F3EB09E12A29805A0073916A /* Des Video Watch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Des Video Watch.swift"; sourceTree = "<group>"; };
 		F3EB09EC2A2987F00073916A /* QuickLook File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuickLook File.swift"; sourceTree = "<group>"; };
@@ -2579,7 +2585,9 @@
 			isa = PBXGroup;
 			children = (
 				F373CD6D2D88A386008B64BE /* Intro.swift */,
-				F373CD6A2D88A386008B64BE /* Card.swift */,
+				F3E98C0C2E6AE1BD0019439F /* IntroAmbientBackground.swift */,
+				F3E98C132E6AE32E0019439F /* CarouselCardView.swift */,
+				F373CD6A2D88A386008B64BE /* IntroCard.swift */,
 				F373CD6B2D88A386008B64BE /* Custom Text Effect.swift */,
 				F373CD6C2D88A386008B64BE /* Infinite Scroll View.swift */,
 			);
@@ -4749,6 +4757,7 @@
 			files = (
 				F3CE5C4E2D5395300094BD7B /* Subdomain Card.swift in Sources */,
 				F3AE522329ACF7D600CB3895 /* Server Card VM.swift in Sources */,
+				F3E98C152E6AE32E0019439F /* CarouselCardView.swift in Sources */,
 				F3553FB52B40939800EF0FD2 /* Allocation VM.swift in Sources */,
 				F3D95B132E6363AA00849A94 /* MetricGauge.swift in Sources */,
 				F3E2BF102C1EC94300B7A6D4 /* Contacts VM.swift in Sources */,
@@ -4906,7 +4915,7 @@
 				F3880A262A92A15E0052A978 /* Contact Manager.swift in Sources */,
 				F3DC4E2229AEAF3E00D27EC5 /* Credentials Button.swift in Sources */,
 				F32FD0312CF606960038D62C /* Backup Context Menu Control Group.swift in Sources */,
-				F373CD6E2D88A386008B64BE /* Card.swift in Sources */,
+				F373CD6E2D88A386008B64BE /* IntroCard.swift in Sources */,
 				F373CD6F2D88A386008B64BE /* Custom Text Effect.swift in Sources */,
 				F325E2CE2E5E6CE50008928E /* Sheet Create Allocation Card.swift in Sources */,
 				F373CD702D88A386008B64BE /* Infinite Scroll View.swift in Sources */,
@@ -4942,6 +4951,7 @@
 				F385824829D626FE00BEEE1D /* Biometry Button.swift in Sources */,
 				F3B1196D29A13CA6003BB68C /* Value Store.swift in Sources */,
 				F3B81DF12A49C96000633B66 /* Info Absolute Stats.swift in Sources */,
+				F3E98C0D2E6AE1BD0019439F /* IntroAmbientBackground.swift in Sources */,
 				F3E8B3502CF485FB005D25F8 /* Console Message.swift in Sources */,
 				F37DDA7629E2AF7600B9680C /* Folder Path VM.swift in Sources */,
 				F3E0B4962DC30351003C8B27 /* Info Tab Subdomains.swift in Sources */,
@@ -5305,6 +5315,7 @@
 				F3287A762B10A0E4001AFE54 /* Live Activity.swift in Sources */,
 				F3015DDE2D9F26C600B9BCC6 /* Log Card Timestamp.swift in Sources */,
 				F36D53402A05B8F6007324C6 /* File Icon.swift in Sources */,
+				F3E98C0E2E6AE1BD0019439F /* IntroAmbientBackground.swift in Sources */,
 				F3C9D8522B3059E700265492 /* UIVideoPlayer.swift in Sources */,
 				F3464D322A863A6600188B0C /* Send Command.swift in Sources */,
 				F3A994AC2A17904F00530615 /* Map VM.swift in Sources */,
@@ -5376,6 +5387,7 @@
 				F3202CE22D562A620030B3CC /* Browser List MC.swift in Sources */,
 				F3A994AB2A178A9E00530615 /* Map View.swift in Sources */,
 				F36D532E2A05B885007324C6 /* Schedule Task.swift in Sources */,
+				F3E98C142E6AE32E0019439F /* CarouselCardView.swift in Sources */,
 				F3A31B0D2B0B161D00F89C51 /* Cloud Key Card.swift in Sources */,
 				F337C1632A8CE962006F321C /* Startup View.swift in Sources */,
 				F36D534B2A05B974007324C6 /* Nav Destinations.swift in Sources */,
@@ -5428,7 +5440,7 @@
 				F3D95B102E63639900849A94 /* CompactMetricRow.swift in Sources */,
 				F36113F72E55DFD40052A5A2 /* Text File Editor.swift in Sources */,
 				F33001452A4CF06D0063FE0F /* Apikey Card.swift in Sources */,
-				F373CD762D88A386008B64BE /* Card.swift in Sources */,
+				F373CD762D88A386008B64BE /* IntroCard.swift in Sources */,
 				F373CD772D88A386008B64BE /* Custom Text Effect.swift in Sources */,
 				F373CD782D88A386008B64BE /* Infinite Scroll View.swift in Sources */,
 				F373CD792D88A386008B64BE /* Intro.swift in Sources */,

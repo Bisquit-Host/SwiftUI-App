@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct Intro: View {
-    @State private var activeCard = cards.first
+    @State private var activeCard: IntroCard?
     @State private var scrollPosition = ScrollPosition()
     @State private var currentScrollOffset = 0.0
     @State private var timer = Timer.publish(every: 0.01, on: .current, in: .default).autoconnect()
@@ -10,9 +10,19 @@ struct Intro: View {
     @State private var scrollPhase: ScrollPhase = .idle
     @State private var fullScreenCover = false
     
+    private let cards = [
+        IntroCard(.intro1),
+        IntroCard(.intro2),
+        IntroCard(.intro3)
+    ]
+    
+    init() {
+        activeCard = cards.first
+    }
+    
     var body: some View {
         ZStack {
-            AmbientBackground()
+            IntroAmbientBackground($activeCard, cards: cards)
                 .animation(.easeInOut(duration: 1), value: activeCard)
             
             VStack(spacing: 40) {
@@ -81,6 +91,9 @@ struct Intro: View {
             }
             .safeAreaPadding(15)
         }
+        .onAppear {
+            activate()
+        }
         .onReceive(timer) { _ in
             currentScrollOffset += 0.35
             scrollPosition.scrollTo(x: currentScrollOffset)
@@ -89,9 +102,6 @@ struct Intro: View {
             NavigationStack {
                 StartPage()
             }
-        }
-        .onAppear {
-            activate()
         }
     }
     
@@ -108,53 +118,9 @@ struct Intro: View {
             }
         }
     }
-    
-    private func AmbientBackground() -> some View {
-        GeometryReader {
-            let size = $0.size
-            
-            ZStack {
-                ForEach(cards) {
-                    Image($0.image)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .ignoresSafeArea()
-                        .frame(width: size.width, height: size.height)
-                    /// Only showing the active card's Image
-                        .opacity(activeCard?.id == $0.id ? 1 : 0)
-                }
-                
-                Rectangle()
-                    .fill(.black.opacity(0.45))
-                    .ignoresSafeArea()
-            }
-            .compositingGroup()
-            .blur(radius: 90, opaque: true)
-            .ignoresSafeArea()
-        }
-    }
-    
-    private func CarouselCardView(_ card: Card) -> some View {
-        GeometryReader {
-            let size = $0.size
-            
-            Image(card.image)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: size.width, height: size.height)
-                .clipShape(.rect(cornerRadius: 20))
-                .shadow(color: .black.opacity(0.4), radius: 10, x: 1, y: 0)
-        }
-        .frame(width: 220)
-        .scrollTransition(.interactive.threshold(.centered), axis: .horizontal) { content, phase in
-            content
-                .offset(y: phase == .identity ? -10 : 0)
-                .rotationEffect(.degrees(phase.value * 5), anchor: .bottom)
-        }
-    }
 }
 
-extension View {
+fileprivate extension View {
     func blurOpacityEffect(_ show: Bool) -> some View {
         self
             .blur(radius: show ? 0 : 2)
