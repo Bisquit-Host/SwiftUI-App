@@ -36,10 +36,6 @@ struct DesignSettings: View {
                 Label("Appearance", systemImage: "paintbrush")
             }
             
-            Toggle(isOn: $store.compactServerList) {
-                Label("Compact server list", systemImage: "rectangle.compress.vertical")
-            }
-            
             Toggle(isOn: $store.enableBisquitFall) {
                 Label("Animated background", systemImage: "sparkles")
             }
