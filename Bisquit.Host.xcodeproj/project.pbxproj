@@ -1313,9 +1313,9 @@
 		F3E8B34F2CF485FB005D25F8 /* Console Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E8B34E2CF485FB005D25F8 /* Console Message.swift */; };
 		F3E8B3502CF485FB005D25F8 /* Console Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E8B34E2CF485FB005D25F8 /* Console Message.swift */; };
 		F3E97C7929B4B569008CBDD6 /* Credentials VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E97C7829B4B569008CBDD6 /* Credentials VM.swift */; };
-		F3E98C012E6A5F4C0019439F /* ServerCardConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E98C002E6A5F4C0019439F /* ServerCardConfig.swift */; };
-		F3E98C022E6A5F4C0019439F /* ServerCardConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E98C002E6A5F4C0019439F /* ServerCardConfig.swift */; };
-		F3E98C032E6A5F4C0019439F /* ServerCardConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E98C002E6A5F4C0019439F /* ServerCardConfig.swift */; };
+		F3E98C012E6A5F4C0019439F /* ServerCardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E98C002E6A5F4C0019439F /* ServerCardLayout.swift */; };
+		F3E98C022E6A5F4C0019439F /* ServerCardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E98C002E6A5F4C0019439F /* ServerCardLayout.swift */; };
+		F3E98C032E6A5F4C0019439F /* ServerCardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E98C002E6A5F4C0019439F /* ServerCardLayout.swift */; };
 		F3E98C042E6A60D70019439F /* Preview Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = F320DDA42B704E3C00957D92 /* Preview Property.swift */; };
 		F3E98C062E6AE0830019439F /* LogCardEventDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E98C052E6AE0830019439F /* LogCardEventDescription.swift */; };
 		F3E98C072E6AE0830019439F /* LogCardEventDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E98C052E6AE0830019439F /* LogCardEventDescription.swift */; };
@@ -2105,7 +2105,7 @@
 		F3E8415529FECB6800609DA3 /* Browser Sticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Browser Sticker.swift"; sourceTree = "<group>"; };
 		F3E8B34E2CF485FB005D25F8 /* Console Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Console Message.swift"; sourceTree = "<group>"; };
 		F3E97C7829B4B569008CBDD6 /* Credentials VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Credentials VM.swift"; sourceTree = "<group>"; };
-		F3E98C002E6A5F4C0019439F /* ServerCardConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCardConfig.swift; sourceTree = "<group>"; };
+		F3E98C002E6A5F4C0019439F /* ServerCardLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCardLayout.swift; sourceTree = "<group>"; };
 		F3E98C052E6AE0830019439F /* LogCardEventDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogCardEventDescription.swift; sourceTree = "<group>"; };
 		F3E98C0C2E6AE1BD0019439F /* IntroAmbientBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroAmbientBackground.swift; sourceTree = "<group>"; };
 		F3E98C132E6AE32E0019439F /* CarouselCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCardView.swift; sourceTree = "<group>"; };
@@ -3188,7 +3188,7 @@
 			isa = PBXGroup;
 			children = (
 				F3D7D87E29E83DEE00BCAFFE /* Design Settings.swift */,
-				F3E98C002E6A5F4C0019439F /* ServerCardConfig.swift */,
+				F3E98C002E6A5F4C0019439F /* ServerCardLayout.swift */,
 				F3E98C1E2E6B30F80019439F /* Background */,
 			);
 			path = Design;
@@ -4950,7 +4950,7 @@
 				F310BB392A54E31700843F14 /* Server List VM.swift in Sources */,
 				F3E1D3F22B320A6A009B7062 /* Permission Group Header.swift in Sources */,
 				F32F2CCE2D8F6FCE007CF4DE /* Discover Card Layout.swift in Sources */,
-				F3E98C012E6A5F4C0019439F /* ServerCardConfig.swift in Sources */,
+				F3E98C012E6A5F4C0019439F /* ServerCardLayout.swift in Sources */,
 				F31BA5B0295902C70006D126 /* Folder Path.swift in Sources */,
 				F3D902DF29DC445A004E76C9 /* Cache Limit.swift in Sources */,
 				F330013B2A4CEC320063FE0F /* Apikey List.swift in Sources */,
@@ -5306,7 +5306,7 @@
 				F3D7F8532C8F258B00368ECE /* Enable 2FA View.swift in Sources */,
 				F3A994AF2A17AED500530615 /* Map List.swift in Sources */,
 				F36D53212A05B836007324C6 /* Websocket Delegate.swift in Sources */,
-				F3E98C032E6A5F4C0019439F /* ServerCardConfig.swift in Sources */,
+				F3E98C032E6A5F4C0019439F /* ServerCardLayout.swift in Sources */,
 				F3116F272A33E142001F067C /* Folder File.swift in Sources */,
 				F353D5052D98427500EC9F3A /* Panel Toolbar.swift in Sources */,
 				F3E0B4902DC3033A003C8B27 /* Info Tab Users.swift in Sources */,
@@ -5629,7 +5629,7 @@
 				F3A7CF1E2C8C4E4A00413400 /* Browser.swift in Sources */,
 				F32F2CC82D8F6FA8007CF4DE /* Discover Model.swift in Sources */,
 				F3202D392D5633270030B3CC /* Browser List MCRU.swift in Sources */,
-				F3E98C022E6A5F4C0019439F /* ServerCardConfig.swift in Sources */,
+				F3E98C022E6A5F4C0019439F /* ServerCardLayout.swift in Sources */,
 				F3A7CF1F2C8C4E4A00413400 /* Plan Models.swift in Sources */,
 				F3A7CF022C8BBB4700413400 /* Server Card Context Menu.swift in Sources */,
 				F3A7CEF22C8BB7BF00413400 /* System Alerts.swift in Sources */,

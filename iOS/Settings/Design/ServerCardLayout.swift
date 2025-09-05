@@ -1,24 +1,22 @@
 import SwiftUI
 
-struct ServerCardConfig: View {
+struct ServerCardLayout: View {
     @EnvironmentObject private var store: ValueStore
-    
-    @State private var serverCardDescription = true
-    @State private var liquidGlassBackground = true
     
     var body: some View {
         List {
-            Section {
+            Section("Tap to select a layout") {
                 Button {
-                    store.compactServerList = true
+                    store.compactServerList = false
                 } label: {
                     ServerCard(PreviewProp.serverAttributes)
                 }
                 .padding(5)
-                .background(store.compactServerList ? .blue : .clear, in: .rect(cornerRadius: 16))
+                .background(store.compactServerList ? .gray : .blue, in: .rect(cornerRadius: 18))
+                .padding(.bottom, -8)
                 
                 Button {
-                    store.compactServerList = false
+                    store.compactServerList = true
                 } label: {
                     HStack {
                         CompactServerCard(PreviewProp.serverAttributes)
@@ -26,25 +24,26 @@ struct ServerCardConfig: View {
                     }
                 }
                 .padding(5)
-                .background(store.compactServerList ? .clear : .blue, in: .rect(cornerRadius: 16))
+                .background(store.compactServerList ? .blue : .gray, in: .rect(cornerRadius: 16))
+                .padding(.top, -8)
             }
             .foregroundStyle(.foreground)
             .listRowSeparator(.hidden)
             
             Section {
-                Toggle("Description", isOn: $serverCardDescription)
+                Toggle("Description", isOn: $store.serverCardDescription)
                     .disabled(store.compactServerList)
                 // .disabled doesn't change label's color
                     .foregroundStyle(store.compactServerList ? .tertiary : .primary)
-                
-                Toggle("Liquid Glass Background", isOn: $liquidGlassBackground)
-                
             }
         }
+        .navigationTitle("Server Card layout")
     }
 }
 
 #Preview {
-    ServerCardConfig()
-        .environmentObject(ValueStore())
+    NavigationStack {
+        ServerCardLayout()
+    }
+    .environmentObject(ValueStore())
 }

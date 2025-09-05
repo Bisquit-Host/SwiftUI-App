@@ -5,13 +5,15 @@ final class ValueStore: ObservableObject {
 #if os(macOS)
     @AppStorage("nav_mode") var navMode: NavMode?
 #endif
-    
+    // MARK: - Server List/Card
     @AppStorage("compact_server_list") var compactServerList = false
+    @AppStorage("server_card_description") var serverCardDescription = true
+    @AppStorage("hide_server_names") var hideServerNames = false
+    @Published var updateServers = false // Triggers server card update
+    
     @AppStorage("enable_game_center") var enableGameCenter = true
     @AppStorage("hide_status_bar") var hideStatusBar = false
-    @AppStorage("hide_server_names") var hideServerNames = false
     @AppStorage("color_theme") var appearance: ColorTheme = .system
-    @Published var updateServers = false // Triggers server card update
     @Published var updateBackground = false // Triggers background image update
     
     // MARK: - Auth

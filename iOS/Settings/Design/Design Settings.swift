@@ -4,9 +4,28 @@ import DeviceKit
 struct DesignSettings: View {
     @EnvironmentObject private var store: ValueStore
     
+    @State private var sheetServerCardLayout = false
+    
     var body: some View {
         Section("Design") {
             BackgroundImageButton()
+            
+            Button {
+                sheetServerCardLayout = true
+            } label: {
+                Label {
+                    Text("Server card layout")
+                } icon: {
+                    Image(systemName: "externaldrive")
+                        .foregroundStyle(.blue)
+                }
+            }
+            .foregroundStyle(.foreground)
+            .sheet($sheetServerCardLayout) {
+                NavigationStack {
+                    ServerCardLayout()
+                }
+            }
             
             Picker(selection: $store.appearance) {
                 ForEach(ColorTheme.allCases) {

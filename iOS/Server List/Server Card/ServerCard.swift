@@ -28,7 +28,7 @@ struct ServerCard: View {
                             .semibold()
                     }
                     
-                    if !server.description.isEmpty {
+                    if !server.description.isEmpty, store.serverCardDescription {
                         Text(server.description)
                             .subheadline()
                             .secondary()
