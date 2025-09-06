@@ -13,13 +13,11 @@ final class MapVM: NSObject, CLLocationManagerDelegate {
             latitude: 35.99207,
             longitude: -75.648501
         ),
-        
         Place(
             "Храм святителя Николая\nМирликийского в Пыжах",
             latitude: 55.810162,
             longitude: 37.463209
         ),
-        
         Place(
             "Деревня Пыжи\n(Кировская обл.)",
             latitude: 58.166037,
@@ -38,28 +36,6 @@ final class MapVM: NSObject, CLLocationManagerDelegate {
         )
     )
     
-    struct Place: Identifiable {
-        let id = UUID()
-        let name: LocalizedStringResource
-        let latitude, longitude: Double
-        
-        var coordinate: CLLocationCoordinate2D {
-            CLLocationCoordinate2D(
-                latitude: latitude,
-                longitude: longitude
-            )
-        }
-        
-        init(_ name: LocalizedStringResource,
-             latitude: Double,
-             longitude: Double
-        ) {
-            self.name = name
-            self.latitude = latitude
-            self.longitude = longitude
-        }
-    }
-        
     func check() {
         if CLLocationManager.locationServicesEnabled() {
             locationManager = CLLocationManager()
