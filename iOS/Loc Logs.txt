@@ -31,7 +31,7 @@
 ],
 'server' => [
     'console' => [
-        'command' => 'Выполнена команда ":command" на сервере'❌
+        'command' => 'Выполнена команда ":command" на сервере'
     ],
     'backup' => [
         'restore' => 'Восстановлен бэкап :name (удаленные файлы: :truncate)',
@@ -78,7 +78,7 @@
         'execute' => 'Расписание :name выполнено вручную'❌
     ],
     'startup' => [
-        'image' => 'Обновлен образ Docker для сервера с :old на :new'❌
+        'image' => 'Обновлен образ Docker для сервера с :old на :new'
     ],
     'versions' => [
         'install' => 'Установлена версия :name'❌
