@@ -3,6 +3,8 @@ import SafariCover
 import MailCover
 
 struct Discover: View {
+    @Environment(\.dismiss) private var dismiss
+    
     //    private let links: [DiscoverModel] = [
     //        .init("Configurations", subtitle: "Available to buy", image: .server),
     //        .init("Support", subtitle: "Me Potato, me HELP", image: .support),
@@ -134,15 +136,24 @@ struct Discover: View {
         .ignoresSafeArea()
         .foregroundStyle(.foreground)
         .ornamentDismissButton()
+        .sheet($sheetConfigurations) {
+            BrowserParent()
+        }
+        .toolbar {
+            ToolbarItem(placement: .bottomBar) {
+                DismissButton {
+                    dismiss()
+                }
+            }
+            
+            ToolbarSpacer(placement: .bottomBar)
+        }
         .mailCover(
             $showMailCover,
             message: "Hello there! \n",
             subject: "Bisquit.Host Feedback",
             recipients: ["topscrech@icloud.com"]
         )
-        .sheet($sheetConfigurations) {
-            BrowserParent()
-        }
     }
 }
 

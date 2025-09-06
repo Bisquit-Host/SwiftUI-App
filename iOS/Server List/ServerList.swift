@@ -47,7 +47,9 @@ struct ServerList: View {
             Guide()
         }
         .sheet($vm.sheetDiscover) {
-            Discover()
+            NavigationStack {
+                Discover()
+            }
         }
         .sheet($vm.sheetKeyStorage) {
             CloudKeys($vm.apiKey) {
