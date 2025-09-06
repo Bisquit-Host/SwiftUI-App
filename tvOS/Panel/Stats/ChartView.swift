@@ -7,21 +7,9 @@ struct Value: Identifiable {
 }
 
 struct ChartView: View {
-    private let caption, unit: String
-    private let max: Double
-    private var values: [Value]
-    
-    init(
-        _ caption: String,
-        unit: String,
-        max: Double,
-        values: [Value]
-    ) {
-        self.caption = caption
-        self.unit = unit
-        self.max = max
-        self.values = values
-    }
+    let caption, unit: String
+    let max: Double
+    var values: [Value]
     
     var body: some View {
         VStack {

@@ -8,7 +8,7 @@ struct ServerCardSuspended: View {
     }
     
     //    @State private var sheetSupport = false
-    
+#warning("Sheet support")
     var body: some View {
         VStack {
             HStack(spacing: 32) {

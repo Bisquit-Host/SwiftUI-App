@@ -86,7 +86,7 @@ struct StatsTab: View {
             
             HStack(spacing: 0) {
                 ChartView(
-                    "CPU",
+                    caption: "CPU",
                     unit: "absolute",
                     max: limits.cpu,
                     values: vm.cpuValues
@@ -98,7 +98,7 @@ struct StatsTab: View {
                     .foregroundStyle(.gray)
                 
                 ChartView(
-                    "RAM",
+                    caption: "RAM",
                     unit: "GB",
                     max: limits.memory,
                     values: vm.ramValues

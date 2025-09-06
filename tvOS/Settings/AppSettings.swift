@@ -3,7 +3,7 @@ import SwiftData
 import Kingfisher
 import PteroNet
 
-struct Settings: View {
+struct AppSettings: View {
     @Environment(NavState.self) private var navState
     @EnvironmentObject private var store: ValueStore
     
@@ -32,15 +32,11 @@ struct Settings: View {
             }
             
             Section {
-                Button(role: .destructive) {
-                    main {
-                        dismiss()
-                        navState.clear()
-                        store.isApiKeyValid = false
-                        Keychain.delete(key: "selectedApiKey")
-                    }
-                } label: {
-                    Text("\(Image(systemName: "rectangle.portrait.and.arrow.right")) Log out")
+                Button("Log out", systemImage: "rectangle.portrait.and.arrow.right", role: .destructive) {
+                    dismiss()
+                    navState.clear()
+                    store.isApiKeyValid = false
+                    Keychain.delete(key: "selectedApiKey")
                 }
             }
             
@@ -60,7 +56,7 @@ struct Settings: View {
 
 #Preview {
     NavigationStack {
-        Settings()
+        AppSettings()
     }
     .environmentObject(ValueStore())
     .environment(NavState())

@@ -45,7 +45,7 @@ struct ServerList: View {
         }
         .toolbar {
             NavigationLink("Settings") {
-                Settings()
+                AppSettings()
             }
             
             if store.devMode {
