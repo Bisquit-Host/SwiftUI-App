@@ -806,8 +806,8 @@
 		F378E3372AF3835D009925DB /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = F378E3322AF38286009925DB /* PrivacyInfo.xcprivacy */; };
 		F378E3382AF3835E009925DB /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = F378E3322AF38286009925DB /* PrivacyInfo.xcprivacy */; };
 		F3796562295C519C0074CA3D /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3796561295C519C0074CA3D /* ChartView.swift */; };
-		F3796564295C51C80074CA3D /* Progress Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3796563295C51C80074CA3D /* Progress Bar.swift */; };
-		F3796566295C51FF0074CA3D /* Gauge TV.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3796565295C51FF0074CA3D /* Gauge TV.swift */; };
+		F3796564295C51C80074CA3D /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3796563295C51C80074CA3D /* ProgressBar.swift */; };
+		F3796566295C51FF0074CA3D /* GaugeTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3796565295C51FF0074CA3D /* GaugeTV.swift */; };
 		F37A366B2A35158A00517EFC /* Console View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A366A2A35158A00517EFC /* Console View.swift */; };
 		F37A366F2A3515A900517EFC /* Sftp View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A366E2A3515A900517EFC /* Sftp View.swift */; };
 		F37A36732A3515DC00517EFC /* Server Settings VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A36722A3515DC00517EFC /* Server Settings VM.swift */; };
@@ -1901,8 +1901,8 @@
 		F378E3322AF38286009925DB /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		F378EF8229D6C91300BC4849 /* Gauge Disk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gauge Disk.swift"; sourceTree = "<group>"; };
 		F3796561295C519C0074CA3D /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
-		F3796563295C51C80074CA3D /* Progress Bar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Progress Bar.swift"; sourceTree = "<group>"; };
-		F3796565295C51FF0074CA3D /* Gauge TV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gauge TV.swift"; sourceTree = "<group>"; };
+		F3796563295C51C80074CA3D /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		F3796565295C51FF0074CA3D /* GaugeTV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeTV.swift; sourceTree = "<group>"; };
 		F37A366A2A35158A00517EFC /* Console View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Console View.swift"; sourceTree = "<group>"; };
 		F37A366E2A3515A900517EFC /* Sftp View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sftp View.swift"; sourceTree = "<group>"; };
 		F37A36722A3515DC00517EFC /* Server Settings VM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server Settings VM.swift"; sourceTree = "<group>"; };
@@ -2319,8 +2319,7 @@
 				F3CCB1D62CAE8C80000F8207 /* tvOS.plist */,
 				F376D0552A02478600B7377A /* tvOS.entitlements */,
 				F3000E0B295A341100ABD30A /* Assets.xcassets */,
-				F3796563295C51C80074CA3D /* Progress Bar.swift */,
-				F3796565295C51FF0074CA3D /* Gauge TV.swift */,
+				F3796563295C51C80074CA3D /* ProgressBar.swift */,
 				F37061C429774846009B4067 /* Navigation */,
 				F3B86000295B196F00CE60C7 /* Start Page */,
 				F3796571295C80740074CA3D /* Guide */,
@@ -3921,6 +3920,7 @@
 			isa = PBXGroup;
 			children = (
 				F31B444F297550CD0036868F /* StatsTab.swift */,
+				F3796565295C51FF0074CA3D /* GaugeTV.swift */,
 				F3796561295C519C0074CA3D /* ChartView.swift */,
 			);
 			path = Stats;
@@ -4739,7 +4739,7 @@
 				F39D68142A26373F00B9BDFC /* SptiteKit BisquitFall.swift in Sources */,
 				F30C13162A5461BB00A7EFF0 /* Cache VM.swift in Sources */,
 				F36114DC2E569EAC0052A5A2 /* StartPageHelper.swift in Sources */,
-				F3796564295C51C80074CA3D /* Progress Bar.swift in Sources */,
+				F3796564295C51C80074CA3D /* ProgressBar.swift in Sources */,
 				F31F31FD2D52BD940095DD19 /* System lowPowerMode.swift in Sources */,
 				F30089262B3BAD200051476C /* File Permissions View.swift in Sources */,
 				F31461812D5A82F000547B6C /* Model Asset.swift in Sources */,
@@ -4770,7 +4770,7 @@
 				F30089312B3DC4B20051476C /* Cloud Key Context Menu.swift in Sources */,
 				F3015DD62D9F24F600B9BCC6 /* Log Card Event.swift in Sources */,
 				F3D558B32A33C6A000608447 /* File Tab VM.swift in Sources */,
-				F3796566295C51FF0074CA3D /* Gauge TV.swift in Sources */,
+				F3796566295C51FF0074CA3D /* GaugeTV.swift in Sources */,
 				F3FFB7462A57F91700220FA5 /* MapList.swift in Sources */,
 				F3BB07BD2A5421B700F5EE2E /* ServerListVM.swift in Sources */,
 			);

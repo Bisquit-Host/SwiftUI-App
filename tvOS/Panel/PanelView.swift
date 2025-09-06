@@ -140,15 +140,9 @@ struct PanelView: View {
             async let subdomains: () = subdomainVM.fetchSubdomains()
             
             _ = await (
-                files,
-                allocations,
-                startup,
-                backups,
-                databases,
-                schedules,
-                users,
-                logs,
-                subdomains
+                files, allocations, startup,
+                backups, databases, schedules,
+                users, logs, subdomains
             )
         }
         
