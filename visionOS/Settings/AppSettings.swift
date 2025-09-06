@@ -9,15 +9,15 @@ struct AppSettings: View {
             
             Toggle("Game Center", isOn: $store.enableGameCenter)
         }
-        .padding()
         .navigationTitle("Settings")
+        .padding()
         .ornamentDismissButton()
     }
 }
 
 #Preview {
-    AppSettings()
-        .padding()
-        .glassBackgroundEffect()
-        .environmentObject(ValueStore())
+    NavigationStack {
+        AppSettings()
+    }
+    .environmentObject(ValueStore())
 }

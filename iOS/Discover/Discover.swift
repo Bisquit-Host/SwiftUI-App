@@ -129,16 +129,17 @@ struct Discover: View {
             }
             .padding(.vertical)
         }
-#if os(visionOS)
-        .buttonBorderShape(.roundedRectangle(radius: 27))
-        .buttonStyle(.plain)
-#endif
         .ignoresSafeArea()
         .foregroundStyle(.foreground)
         .ornamentDismissButton()
         .sheet($sheetConfigurations) {
             BrowserParent()
         }
+#if os(visionOS)
+        .buttonBorderShape(.roundedRectangle(radius: 27))
+        .buttonStyle(.plain)
+        .ornamentDismissButton()
+#else
         .toolbar {
             ToolbarItem(placement: .bottomBar) {
                 DismissButton {
@@ -148,6 +149,7 @@ struct Discover: View {
             
             ToolbarSpacer(placement: .bottomBar)
         }
+#endif
         .mailCover(
             $showMailCover,
             message: "Hello there! \n",

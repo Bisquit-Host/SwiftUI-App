@@ -119,11 +119,7 @@ struct PanelView: View {
                 async let databases: () = dbVM.fetchDatabases()
                 
                 _ = await (
-                    files,
-                    users,
-                    subdomains,
-                    backups,
-                    databases
+                    files, users, subdomains, backups, databases
                 )
             }
             

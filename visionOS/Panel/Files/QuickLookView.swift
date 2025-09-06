@@ -3,8 +3,6 @@ import PteroNet
 import QuickLooking
 
 struct QuickLookFile: View {
-    @Environment(\.dismissWindow) private var dismissWindow
-    
     @Binding var link: FileLink?
     
     init(_ link: Binding<FileLink?>) {

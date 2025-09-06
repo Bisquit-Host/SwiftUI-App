@@ -25,6 +25,14 @@ struct StartPage: View {
                 }
             }
         }
+        .sheet($vm.sheetCloudKeys) {
+            CloudKeys($vm.apiKey)
+        }
+        .alert("Error \(vm.errorCode)", isPresented: $vm.alertInvalid) {
+            Button("Try again") {}
+        } message: {
+            Text(vm.errorDescription)
+        }
         .task {
             try? await Task.sleep(for: .seconds(0.5))
             
@@ -32,20 +40,12 @@ struct StartPage: View {
                 vm.sheetCloudKeys = true
             }
         }
-        .sheet($vm.sheetCloudKeys) {
-            CloudKeys($vm.apiKey)
-        }
         .onChange(of: vm.apiKey) { _, newValue in
             if newValue.count == 48 {
                 Task {
                     await checkApiKey()
                 }
             }
-        }
-        .alert("Error \(vm.errorCode)", isPresented: $vm.alertInvalid) {
-            Button("Try again") {}
-        } message: {
-            Text(vm.errorDescription)
         }
     }
 }

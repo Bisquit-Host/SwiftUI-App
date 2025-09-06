@@ -3,23 +3,11 @@ import ScrechKit
 struct GaugeRegular: View {
     @Environment(\.colorScheme) private var appearance
     
-    private let name: StatsType
-    private var value, limit: Double
-    private var isRedacted: Bool
+    var name: StatsType = .cpu
+    var value, limit: Double
+    var isRedacted = false
     
     private let gradient = Gradient(colors: [.mint, .orange, .red])
-    
-    init(
-        name: StatsType = .cpu,
-        value: Double,
-        limit: Double,
-        isRedacted: Bool = false
-    ) {
-        self.name = name
-        self.value = value
-        self.limit = limit
-        self.isRedacted = isRedacted
-    }
     
     var body: some View {
         Group {

@@ -23,10 +23,11 @@ struct TempDir: View {
         let tempDirectory = FileManager.default.temporaryDirectory
         
         do {
-            let files = try FileManager.default.contentsOfDirectory(atPath: tempDirectory.path)
-            fileNames = files
+            fileNames = try FileManager.default.contentsOfDirectory(
+                atPath: tempDirectory.path
+            )
         } catch {
-            print("Failed to load temporary directory files:", error.localizedDescription)
+            print("Failed to load temp dir files:", error.localizedDescription)
         }
     }
 }

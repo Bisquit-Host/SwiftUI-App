@@ -20,6 +20,7 @@ struct ServerCardContextMenu: View {
         }
         
         let ip = allocation.ipAlias ?? allocation.ip
+        
         return ip + ":" + String(allocation.port)
     }
     

@@ -39,15 +39,15 @@ struct StartPage: View {
             .padding()
             .disabled(vm.apiKey.isEmpty)
         }
+        .sheet($vm.sheetCloudKeys) {
+            CloudKeys($vm.apiKey)
+        }
         .task {
             if !keys.isEmpty {
                 try? await Task.sleep(for: .seconds(0.5))
                 
                 vm.sheetCloudKeys = true
             }
-        }
-        .sheet($vm.sheetCloudKeys) {
-            CloudKeys($vm.apiKey)
         }
         .alert("Error \(vm.errorCode)", isPresented: $vm.alertInvalid) {
             Button("Try again") {}

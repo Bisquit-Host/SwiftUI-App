@@ -1,21 +1,9 @@
 import ScrechKit
 
 struct CircularGauge: View {
-    private let param: LocalizedStringKey
-    private let value, limit: Double
-    private var isRedacted: Bool
-    
-    init(
-        param: LocalizedStringKey,
-        value: Double,
-        limit: Double,
-        isRedacted: Bool
-    ) {
-        self.param = param
-        self.value = value
-        self.limit = limit
-        self.isRedacted = isRedacted
-    }
+    let param: LocalizedStringKey
+    let value, limit: Double
+    var isRedacted: Bool
     
     private var valueLabel: String {
         if value != 0 {
