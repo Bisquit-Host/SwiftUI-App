@@ -12,6 +12,10 @@ struct ServerCard: View {
         self.vm = .init(server.id)
     }
     
+    private var isSuspended: Bool {
+        vm.stateColor == .gray
+    }
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             HStack {
@@ -24,20 +28,23 @@ struct ServerCard: View {
                         }
                         
                         Text(server.name)
+                            .lineLimit(1)
                             .headline()
                             .semibold()
                     }
                     
                     if !server.description.isEmpty, store.serverCardDescription {
                         Text(server.description)
+                            .lineLimit(2)
                             .subheadline()
                             .secondary()
+                            .multilineTextAlignment(.leading)
                     }
                 }
                 
                 Spacer()
                 
-                if vm.stateColor == .gray {
+                if isSuspended {
                     Image(systemName: "snowflake")
                         .largeTitle()
                 }

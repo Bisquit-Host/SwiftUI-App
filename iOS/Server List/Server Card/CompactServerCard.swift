@@ -44,13 +44,26 @@ struct CompactServerCard: View {
                     if vm.stateColor != .gray {
                         VStack(spacing: 8) {
                             if vm.stateColor != .red {
-                                CompactMetricRow(icon: "cpu", value: vm.cpuUsage / server.limits.cpu, color: .blue)
-                                CompactMetricRow(icon: "memorychip", value: vm.ramUsage / (server.limits.memory * pow(1024, 2)), color: .green)
+                                CompactMetricRow(
+                                    icon: "cpu",
+                                    value: vm.cpuUsage / server.limits.cpu,
+                                    color: .blue
+                                )
+                                
+                                CompactMetricRow(
+                                    icon: "memorychip",
+                                    value: vm.ramUsage / (server.limits.memory * pow(1024, 2)),
+                                    color: .green
+                                )
                             } else {
                                 Spacer()
                             }
                             
-                            CompactMetricRow(icon: "internaldrive", value: vm.diskUsage / (server.limits.disk * pow(1024, 2)), color: .orange)
+                            CompactMetricRow(
+                                icon: "internaldrive",
+                                value: vm.diskUsage / (server.limits.disk * pow(1024, 2)),
+                                color: .orange
+                            )
                         }
                     }
                 }
