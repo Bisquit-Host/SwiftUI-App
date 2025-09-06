@@ -62,12 +62,10 @@ struct CloudKeyCard: View {
         }
 #endif
         .alert("Rename", isPresented: $alertRename) {
-            TextField("Unnamed", text: $key.name)
+            TextField("New name", text: $key.name)
                 .autocorrectionDisabled()
             
-            Button("Save") {
-                
-            }
+            Button("Save") {}
         }
     }
     
@@ -82,9 +80,6 @@ struct CloudKeyCard: View {
     List {
         CloudKeyCard(
             $selectedKey,
-            key: .init(
-                "Preview Key",
-                key: "ptlc_1234567890"
-            )) {}
+            key: .init("Preview Key", key: "ptlc_1234567890")) {}
     }
 }
