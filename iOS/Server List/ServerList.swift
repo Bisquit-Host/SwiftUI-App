@@ -51,7 +51,7 @@ struct ServerList: View {
                 }
             }
         }
-        .onGamepadPressed(.menu) {
+        .onGamepadPressed(.menu, cooldown: 1) {
             if !vm.sheetDiscover {
                 nav.navigate(.toSettings)
             }

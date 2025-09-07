@@ -65,7 +65,7 @@ struct ContentView: View {
                 save()
             }
         }
-        .onGamepadPressed(.menu) {
+        .onGamepadPressed(.menu, cooldown: 1) {
             openSettings()
         }
 #endif

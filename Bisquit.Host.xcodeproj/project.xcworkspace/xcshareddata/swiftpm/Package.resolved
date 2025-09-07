@@ -34,7 +34,7 @@
       "location" : "https://github.com/TopScrech/GaypadKit",
       "state" : {
         "branch" : "main",
-        "revision" : "ba199aa6b8ec805a61e417633b10340c477bb52f"
+        "revision" : "e81c0e3aea38d8acbc7b8e42bd4f35bdeca002e2"
       }
     },
     {
@@ -88,7 +88,7 @@
       "location" : "https://github.com/TopScrech/PteroNet",
       "state" : {
         "branch" : "main",
-        "revision" : "e46016ac748624cd5e2a49de70ba47eae775d242"
+        "revision" : "134829ded69d04b930738b29f3a1bc21133ea380"
       }
     },
     {
