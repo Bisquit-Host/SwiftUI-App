@@ -739,6 +739,8 @@
 		F36D534B2A05B974007324C6 /* Nav Destinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5692959007E0006D126 /* Nav Destinations.swift */; };
 		F36D534C2A05B976007324C6 /* Nav Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BAEC8C2959B3FE00111375 /* Nav Extension.swift */; };
 		F36D534D2A05B98E007324C6 /* Nav State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA565295900300006D126 /* Nav State.swift */; };
+		F36E8A982E6E40A400A38229 /* ServerListToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36E8A962E6E40A400A38229 /* ServerListToolbar.swift */; };
+		F36E8A992E6E40A400A38229 /* ServerListToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36E8A962E6E40A400A38229 /* ServerListToolbar.swift */; };
 		F36FDB97295AF4A900D45070 /* BrowserVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA590295901C00006D126 /* BrowserVM.swift */; };
 		F37061C829774869009B4067 /* Nav Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37061C729774869009B4067 /* Nav Extension.swift */; };
 		F37061CA29774886009B4067 /* Nav Destinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37061C929774886009B4067 /* Nav Destinations.swift */; };
@@ -1872,6 +1874,7 @@
 		F36B738D2C8AEC8400E858FE /* Resources Usage Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Resources Usage Entry.swift"; sourceTree = "<group>"; };
 		F36B738F2C8AECB000E858FE /* Resources Widget View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Resources Widget View.swift"; sourceTree = "<group>"; };
 		F36B73A22C8B0B7B00E858FE /* Audio Player View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Audio Player View.swift"; sourceTree = "<group>"; };
+		F36E8A962E6E40A400A38229 /* ServerListToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListToolbar.swift; sourceTree = "<group>"; };
 		F37061C729774869009B4067 /* Nav Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Extension.swift"; sourceTree = "<group>"; };
 		F37061C929774886009B4067 /* Nav Destinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Destinations.swift"; sourceTree = "<group>"; };
 		F371468B2B123807001E0296 /* Activity View State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity View State.swift"; sourceTree = "<group>"; };
@@ -2810,6 +2813,7 @@
 		F32E88CB2AF83FCB00959D49 /* Toolbar */ = {
 			isa = PBXGroup;
 			children = (
+				F36E8A962E6E40A400A38229 /* ServerListToolbar.swift */,
 				F32E88C72AF83E3F00959D49 /* ServerListAdminButton.swift */,
 				F32E88D02AF8494100959D49 /* ServerListFilter.swift */,
 				F3A31B042B0B144200F89C51 /* ServerListNodeFilter.swift */,
@@ -4824,6 +4828,7 @@
 				F325F7002A54BBCF00E89EC4 /* Info Tab Allocations.swift in Sources */,
 				F3202CE02D562A620030B3CC /* BrowserListMC.swift in Sources */,
 				F3924EDF29A2333F00C4CC77 /* Biometry VM.swift in Sources */,
+				F36E8A982E6E40A400A38229 /* ServerListToolbar.swift in Sources */,
 				F33001442A4CF06D0063FE0F /* Apikey Card.swift in Sources */,
 				F3202C772D5583680030B3CC /* BrowserParent.swift in Sources */,
 				F31BA59D295902280006D126 /* Info Tab.swift in Sources */,
@@ -5411,6 +5416,7 @@
 				F337C1632A8CE962006F321C /* Startup View.swift in Sources */,
 				F36D534B2A05B974007324C6 /* Nav Destinations.swift in Sources */,
 				F37A36752A35173B00517EFC /* Server Settings VM.swift in Sources */,
+				F36E8A992E6E40A400A38229 /* ServerListToolbar.swift in Sources */,
 				F3202CDC2D5624B10030B3CC /* Plan.swift in Sources */,
 				F389BB6B2A05B5E500911EBF /* Biometry VM.swift in Sources */,
 				F3E467532A49903900FABE5F /* Info Stat.swift in Sources */,

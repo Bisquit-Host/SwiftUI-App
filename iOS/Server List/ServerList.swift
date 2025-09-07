@@ -20,6 +20,7 @@ struct ServerList: View {
         .safariCover($vm.showBilling, url: "https://my.bisquit.host")
         .background(BisquitFall())
         .background(BackgroundImage())
+        .serverListToolbar()
         .onFirstAppear {
             vm.loadServers()
         }
@@ -61,28 +62,6 @@ struct ServerList: View {
         .onGamepadPressed(.menu) {
             if !vm.sheetDiscover {
                 nav.navigate(.toSettings)
-            }
-        }
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                SFButton("sparkles") {
-                    vm.sheetDiscover = true
-                }
-                .tint(Color.yellow.gradient)
-            }
-            
-            ToolbarItemGroup(placement: .topBarTrailing) {
-                ServerListAdminButton()
-                
-                ServerListFilter()
-            }
-            
-            ToolbarSpacer(.fixed, placement: .topBarTrailing)
-            
-            ToolbarItem(placement: .topBarTrailing) {
-                Button("Settings", systemImage: "gear") {
-                    nav.navigate(.toSettings)
-                }
             }
         }
     }
