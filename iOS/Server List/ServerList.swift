@@ -29,15 +29,7 @@ struct ServerList: View {
             store.updateServers.toggle()
         }
         .onChange(of: vm.searchField) {
-            guard !(1...2).contains(vm.searchField.count) else {
-                return
-            }
-            
-            Task {
-                await vm.fetchServers(store.adminServerList, searchPrompt: vm.searchField)
-            }
-            
-            store.updateServers.toggle()
+            search()
         }
         .overlay {
             if vm.filteredServers.isEmpty, !vm.searchField.isEmpty {
@@ -64,6 +56,18 @@ struct ServerList: View {
                 nav.navigate(.toSettings)
             }
         }
+    }
+    
+    private func search() {
+        guard !(1...2).contains(vm.searchField.count) else {
+            return
+        }
+        
+        Task {
+            await vm.fetchServers(store.adminServerList, searchPrompt: vm.searchField)
+        }
+        
+        store.updateServers.toggle()
     }
 }
 
