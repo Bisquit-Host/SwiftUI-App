@@ -16,13 +16,6 @@ struct ServerListGrid: View {
     ]
     
     var body: some View {
-#if os(watchOS)
-        LazyVStack {
-            ForEach(servers) {
-                ServerCardParent($0)
-            }
-        }
-#else
         Group {
             if store.compactServerList {
                 LazyVGrid(columns: columns, spacing: 12) {
@@ -39,7 +32,6 @@ struct ServerListGrid: View {
             }
         }
         .scenePadding()
-#endif
     }
 }
 

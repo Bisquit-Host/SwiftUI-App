@@ -741,6 +741,8 @@
 		F36D534D2A05B98E007324C6 /* Nav State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA565295900300006D126 /* Nav State.swift */; };
 		F36E8A982E6E40A400A38229 /* ServerListToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36E8A962E6E40A400A38229 /* ServerListToolbar.swift */; };
 		F36E8A992E6E40A400A38229 /* ServerListToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36E8A962E6E40A400A38229 /* ServerListToolbar.swift */; };
+		F36E8A9C2E6E43D800A38229 /* ServerListGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36E8A9A2E6E43D800A38229 /* ServerListGrid.swift */; };
+		F36E8AA02E6E441600A38229 /* ServerListUpdateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36E8A9F2E6E441600A38229 /* ServerListUpdateButton.swift */; };
 		F36FDB97295AF4A900D45070 /* BrowserVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA590295901C00006D126 /* BrowserVM.swift */; };
 		F37061C829774869009B4067 /* Nav Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37061C729774869009B4067 /* Nav Extension.swift */; };
 		F37061CA29774886009B4067 /* Nav Destinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37061C929774886009B4067 /* Nav Destinations.swift */; };
@@ -1378,7 +1380,6 @@
 		F3F061D52A73C9A000470F7E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A72A177DA400530615 /* MapView.swift */; };
 		F3F061D62A73C9A300470F7E /* MapList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994AD2A17A9B100530615 /* MapList.swift */; };
 		F3F061D72A73C9A500470F7E /* MapVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A92A177ED100530615 /* MapVM.swift */; };
-		F3F061D82A73CD4E00470F7E /* ServerListGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B3A729BC6B5400CC1195 /* ServerListGrid.swift */; };
 		F3F061DA2A73CE1200470F7E /* ServerCardParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F061D92A73CE1200470F7E /* ServerCardParent.swift */; };
 		F3F08F9D2DCF7C1D00EFD7DB /* QuickLook File VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E272CEB33510033EFE3 /* QuickLook File VM.swift */; };
 		F3F0A2DB2D6339510084013B /* Bisquit-Host App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* Bisquit-Host App.swift */; };
@@ -1875,6 +1876,8 @@
 		F36B738F2C8AECB000E858FE /* Resources Widget View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Resources Widget View.swift"; sourceTree = "<group>"; };
 		F36B73A22C8B0B7B00E858FE /* Audio Player View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Audio Player View.swift"; sourceTree = "<group>"; };
 		F36E8A962E6E40A400A38229 /* ServerListToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListToolbar.swift; sourceTree = "<group>"; };
+		F36E8A9A2E6E43D800A38229 /* ServerListGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListGrid.swift; sourceTree = "<group>"; };
+		F36E8A9F2E6E441600A38229 /* ServerListUpdateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListUpdateButton.swift; sourceTree = "<group>"; };
 		F37061C729774869009B4067 /* Nav Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Extension.swift"; sourceTree = "<group>"; };
 		F37061C929774886009B4067 /* Nav Destinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Destinations.swift"; sourceTree = "<group>"; };
 		F371468B2B123807001E0296 /* Activity View State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity View State.swift"; sourceTree = "<group>"; };
@@ -3129,6 +3132,8 @@
 			isa = PBXGroup;
 			children = (
 				F3BAEC862959B1DE00111375 /* ServerList.swift */,
+				F36E8A9F2E6E441600A38229 /* ServerListUpdateButton.swift */,
+				F36E8A9A2E6E43D800A38229 /* ServerListGrid.swift */,
 				F37266D729D99BB8005FD103 /* ServerListTopbar.swift */,
 				F37266DF29D9A6DE005FD103 /* Server Card */,
 			);
@@ -5086,6 +5091,7 @@
 				F3015DE42D9F26C600B9BCC6 /* Log Card Timestamp.swift in Sources */,
 				F3AB4A972CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
 				F3499EF52A27553D006101B7 /* Panel VM.swift in Sources */,
+				F36E8A9C2E6E43D800A38229 /* ServerListGrid.swift in Sources */,
 				F3F061D22A73C37500470F7E /* MapView.swift in Sources */,
 				F3E98C072E6AE0830019439F /* LogCardEventDescription.swift in Sources */,
 				F3F061DA2A73CE1200470F7E /* ServerCardParent.swift in Sources */,
@@ -5106,6 +5112,7 @@
 				F3FF3E8C2D93576B00EDFBC6 /* Update Checker.swift in Sources */,
 				F3878EDF2A1C228900AD8657 /* ServerCardStats.swift in Sources */,
 				F3C9D8612B319B9E00265492 /* Permission Card.swift in Sources */,
+				F36E8AA02E6E441600A38229 /* ServerListUpdateButton.swift in Sources */,
 				F30C130A2A545E6F00A7EFF0 /* Linking VM.swift in Sources */,
 				F36B14B62DC6334E008C1AF9 /* GameKit.swift in Sources */,
 				F3EB09D42A29547E0073916A /* FileView.swift in Sources */,
@@ -5160,7 +5167,6 @@
 				F3EB09CE2A29531B0073916A /* DesImageVM.swift in Sources */,
 				F3A1D2332A201C6D0053261E /* ServerState.swift in Sources */,
 				F3202D492D56DC050030B3CC /* Prefetcher.swift in Sources */,
-				F3F061D82A73CD4E00470F7E /* ServerListGrid.swift in Sources */,
 				F3499EFD2A277E3D006101B7 /* FileNameAndIcon.swift in Sources */,
 				F3499EF72A275550006101B7 /* Websocket Delegate.swift in Sources */,
 				F3BAEC882959B21D00111375 /* ServerList.swift in Sources */,
