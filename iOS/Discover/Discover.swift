@@ -117,18 +117,19 @@ struct Discover: View {
                 
                 DiscoverCard("https://bisquit.host/policy.pdf") {
                     DiscoverCardLayout(
-                        .init("Privacy", subtitle: "Policy", image: .docBlue)
+                        .init("Privacy Policy", subtitle: "Document", image: .docBlue)
                     )
                 }
                 
                 DiscoverCard("https://bisquit.host/terms.pdf") {
                     DiscoverCardLayout(
-                        .init("Terms", subtitle: "Document", image: .docYellow)
+                        .init("ToS", subtitle: "Document", image: .docYellow)
                     )
                 }
             }
-            .padding(.vertical)
+            .padding(.vertical, 20)
         }
+        .scenePadding(.horizontal)
         .ignoresSafeArea()
         .foregroundStyle(.foreground)
         .ornamentDismissButton()
