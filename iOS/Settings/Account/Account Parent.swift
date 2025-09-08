@@ -7,8 +7,6 @@ struct AccountParent: View {
     
     @AppStorage("acc_selected_tab") private var accountSelectedTab = 0
     
-    @State private var sheetApiKeys = false
-    
     var body: some View {
         TabView(selection: $accountSelectedTab) {
             Tab("Account", systemImage: "person.circle", value: 0) {
