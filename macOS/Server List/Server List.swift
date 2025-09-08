@@ -12,6 +12,8 @@ struct ServerList: View {
         Color(0x855da6)
     ])
     
+    private let link = "https://apps.apple.com/app/bisquit-host/id1639409934"
+    
     var body: some View {
         VStack(alignment: .leading) {
             ScrollView(showsIndicators: false) {
@@ -24,7 +26,7 @@ struct ServerList: View {
             .padding(.vertical)
             
             if updater.alertUpdate {
-                if let url = URL(string: "https://apps.apple.com/app/bisquit-host/id1639409934") {
+                if let url = URL(string: link) {
                     Link(destination: url) {
                         HStack {
                             Image(systemName: "app.badge")

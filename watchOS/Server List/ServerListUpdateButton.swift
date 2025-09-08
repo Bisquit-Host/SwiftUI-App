@@ -4,10 +4,10 @@ struct ServerListUpdateButton: View {
     @Environment(UpdateChecker.self) private var updater
     @Environment(\.openURL) private var openUrl
     
-    private let url = URL(string: "https://apps.apple.com/app/bisquit-host/id1639409934")!
+    private let link = "https://apps.apple.com/app/bisquit-host/id1639409934"
     
     var body: some View {
-        if updater.alertUpdate {
+        if updater.alertUpdate, let url = URL(string: link) {
             Button {
                 openUrl(url)
             } label: {
