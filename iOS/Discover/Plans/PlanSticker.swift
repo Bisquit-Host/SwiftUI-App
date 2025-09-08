@@ -1,7 +1,7 @@
 //import SwiftUI
 //import ScrechKit
 //
-//struct Browser_Sticker: View {
+//struct PlanSticker: View {
 //    private let image: String
 //    
 //    init(_ image: String = "") {
@@ -23,5 +23,5 @@
 //}
 
 //#Preview {
-//    Browser_Sticker("Test")
+//    PlanSticker("Test")
 //}

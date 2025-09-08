@@ -1,12 +1,12 @@
 import ScrechKit
 import Kingfisher
 
-struct BrowserCardVds: View {
+struct PlanCard: View {
     @Environment(\.colorScheme) private var appearance
     
-    private let plan: VdsPlan
+    private let plan: MinecraftPlan
     
-    init(_ plan: VdsPlan) {
+    init(_ plan: MinecraftPlan) {
         self.plan = plan
     }
     
@@ -18,7 +18,7 @@ struct BrowserCardVds: View {
         switch ValueStore().preferredCurrency {
         case "€":
             plan.priceEur
-                        
+            
         default:
             plan.priceRub
         }
@@ -29,7 +29,7 @@ struct BrowserCardVds: View {
             
         } label: {
             ZStack {
-                KFImage(getImageUrl("plans/" + plan.name))
+                KFImage(getImageUrl("plans/\(plan.name)"))
                     .placeholder {
                         Text("Soon there will be an art here as well")
                             .padding(.horizontal)
@@ -38,7 +38,7 @@ struct BrowserCardVds: View {
                     .resizable()
                     .brightness(appearance == .dark ? -0.1 : 0)
                 
-                KFImage(getImageUrl("plans/" + plan.name))
+                KFImage(getImageUrl("plans/\(plan.name)"))
                     .resizable()
                     .mask(alignment: .topLeading) {
                         Text(plan.name)
@@ -61,22 +61,20 @@ struct BrowserCardVds: View {
                         Spacer()
                         
                         HStack {
-                            BrowserSpec("\(plan.ram) GB", icon: "memorychip")
+                            PlanSpec("\(plan.cpu)x", icon: "macwindow.on.rectangle")
                             
-                            BrowserSpec("\(plan.cpu)x", icon: "cpu")
+                            PlanSpec("\(Int(plan.ram / 1_000_000_000))x", icon: "server.rack")
                             
-                            BrowserSpec("\(plan.disk) GB", icon: "internaldrive")
+                            PlanSpec(formatBytes(plan.disk, countStyle: .decimal), icon: "internaldrive")
                             
-                            BrowserSpec("\(plan.network) Mbit/s", icon: "internaldrive")
+                            Spacer()
                             
-                            //                        Spacer()
-                            //
-                            //                        Text(customRound(price) + ValueStore().preferredCurrency)
-                            //                            .subheadline(.bold)
-                            //                            .padding(.vertical, 4)
-                            //                            .padding(.horizontal, 10)
-                            //                            .foregroundStyle(.white)
-                            //     .background(.blue, in: .capsule)
+                            Text(customRound(price) + ValueStore().preferredCurrency)
+                                .subheadline(.bold)
+                                .padding(.vertical, 4)
+                                .padding(.horizontal, 10)
+                                .foregroundStyle(.white)
+                                .background(.blue, in: .capsule)
                         }
                     }
                     
@@ -94,8 +92,30 @@ struct BrowserCardVds: View {
         }
         .buttonStyle(.plain)
     }
+    
+    private func customRound(_ value: Double) -> String {
+        let roundedValue = round(value)
+        
+        let formatter = NumberFormatter()
+        formatter.minimumFractionDigits = 0
+        formatter.maximumFractionDigits = (roundedValue == value) ? 0 : 1
+        
+        return formatter.string(from: NSNumber(value: value)) ?? "\(value)"
+    }
 }
 
-//#Preview {
-//    BrowserCardVds()
-//}
+#Preview {
+    PlanCard(MinecraftPlan(
+        id: 16,
+        ram: 16,
+        disk: 16,
+        mysql: 16,
+        name: "preview",
+        location: "Netherlands",
+        displayname: "Preview",
+        cpuModel: "M4 Ultra",
+        cpu: "4",
+        priceRub: 2000,
+        priceEur: 20.4
+    ))
+}

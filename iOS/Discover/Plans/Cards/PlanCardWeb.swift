@@ -1,24 +1,24 @@
 import ScrechKit
 import Kingfisher
 
-struct BrowserCardMC: View {
+struct PlanCardWeb: View {
     @Environment(\.colorScheme) private var appearance
     
-    private let plan: MinecraftPlan
+    private let plan: WebPlan
     
-    init(_ plan: MinecraftPlan) {
+    init(_ plan: WebPlan) {
         self.plan = plan
     }
     
     private var url: String {
-        "https://my.bisquit.host/store/" + plan.name
+        "https://my.bisquit.host/store/\(plan.name)"
     }
     
     private var price: Double {
         switch ValueStore().preferredCurrency {
         case "€":
             plan.priceEur
-            
+                        
         default:
             plan.priceRub
         }
@@ -61,11 +61,9 @@ struct BrowserCardMC: View {
                         Spacer()
                         
                         HStack {
-                            BrowserSpec(plan.cpu + "x", icon: "cpu")
-                            
-                            BrowserSpec("\(plan.ram) GB", icon: "memorychip")
-                            
                             BrowserSpec("\(plan.disk) GB", icon: "internaldrive")
+                            
+                            BrowserSpec("\(plan.mysql)", icon: "server.rack")
                             
                             //                        Spacer()
                             //
@@ -95,5 +93,5 @@ struct BrowserCardMC: View {
 }
 
 //#Preview {
-//    BrowserCardMC()
+//    PlanCardWeb()
 //}

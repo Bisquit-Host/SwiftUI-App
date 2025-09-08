@@ -1,43 +1,37 @@
 import ScrechKit
 
-struct Browser: View {
-    @State private var vm = BrowserVM()
+struct PlanView: View {
+    @State private var vm = PlanListVM()
     
     var body: some View {
         VStack {
-            BrowserTopbar()
+            PlanListTopbar()
                 .environment(vm)
             
             ScrollView(showsIndicators: false) {
                 switch vm.selectedCategory {
-                case .mc:
-                    BrowserListMC()
+                case .game:
+                    PlanListGame()
                     
-                case .mcru:
-                    BrowserListMCRU()
-                    
-                case .vds:
-                    BrowserListVds()
+                case .cloud:
+                    PlanListCloud()
                     
                 case .web:
-                    BrowserListWeb()
+                    PlanListWeb()
                     
                 case .bot:
-                    BrowserListBot()
+                    PlanListBot()
                 }
                 
                 HStack {
-                    BrowserSpec("CPU", icon: "cpu")
-                    
-                    BrowserSpec("RAM", icon: "memorychip")
-                    
-                    BrowserSpec("SSD", icon: "internaldrive")
+                    PlanSpec("CPU", icon: "cpu")
+                    PlanSpec("RAM", icon: "memorychip")
+                    PlanSpec("SSD", icon: "internaldrive")
                 }
                 
                 HStack {
-                    BrowserSpec("Websites", icon: "macwindow.on.rectangle")
-                    
-                    BrowserSpec("MySQL Databases", icon: "server.rack")
+                    PlanSpec("Websites", icon: "macwindow.on.rectangle")
+                    PlanSpec("MySQL Databases", icon: "server.rack")
                 }
             }
         }
@@ -54,7 +48,7 @@ struct Browser: View {
 
 #Preview {
     NavigationStack {
-        Browser()
+        PlanView()
     }
     .environmentObject(ValueStore())
 }

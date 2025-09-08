@@ -1,16 +1,16 @@
 import SwiftUI
 
-struct BrowserListMCRU: View {
+struct PlanListGame: View {
     @Environment(BrowserVM.self) private var vm
     
     var body: some View {
         ForEach(vm.mcPlans) {
-            BrowserCardMC($0)
+            PlanCardGame($0)
         }
     }
 }
 
 #Preview {
-    BrowserListMCRU()
+    PlanListGame()
         .environment(BrowserVM())
 }

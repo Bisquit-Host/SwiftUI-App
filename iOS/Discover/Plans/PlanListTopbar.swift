@@ -1,7 +1,7 @@
 import ScrechKit
 
-struct BrowserTopbar: View {
-    @Environment(BrowserVM.self) private var vm
+struct PlanListTopbar: View {
+    @Environment(PlanListVM.self) private var vm
     
     var body: some View {
         @Bindable var vm = vm
@@ -18,6 +18,6 @@ struct BrowserTopbar: View {
 }
 
 #Preview {
-    BrowserTopbar()
-        .environment(BrowserVM())
+    PlanListTopbar()
+        .environment(PlanListVM())
 }

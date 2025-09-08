@@ -1,9 +1,9 @@
 import SwiftUI
 
-struct BrowserParent: View {
+struct PlanViewParent: View {
     var body: some View {
         NavigationStack {
-            Browser()
+            PlanView()
         }
     }
 }

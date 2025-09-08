@@ -86,7 +86,7 @@ struct StartPage: View {
             Guide()
         }
         .sheet($vm.sheetBrowsePlans) {
-            BrowserParent()
+            PlanViewParent()
         }
         .sheet($vm.sheetCloudKeys) {
             CloudKeys($vm.apiKey)

@@ -1,6 +1,6 @@
 import ScrechKit
 
-struct BrowserSpec: View {
+struct PlanSpec: View {
     private let icon, spec: String
     
     init(_ spec: String, icon: String) {
@@ -20,5 +20,5 @@ struct BrowserSpec: View {
 }
 
 #Preview {
-    BrowserSpec("", icon: "hammer")
+    PlanSpec("", icon: "hammer")
 }

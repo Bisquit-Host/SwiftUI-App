@@ -133,7 +133,7 @@ struct Discover: View {
         .foregroundStyle(.foreground)
         .ornamentDismissButton()
         .sheet($sheetConfigurations) {
-            BrowserParent()
+            PlanViewParent()
         }
 #if os(visionOS)
         .buttonBorderShape(.roundedRectangle(radius: 27))

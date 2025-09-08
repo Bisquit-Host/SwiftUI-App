@@ -1,16 +1,16 @@
 import SwiftUI
 
-struct BrowserListVds: View {
+struct PlanListBot: View {
     @Environment(BrowserVM.self) private var vm
     
     var body: some View {
-        ForEach(vm.vdsPlans) {
-            BrowserCardVds($0)
+        ForEach(vm.botPlans) {
+            PlanCardBot($0)
         }
     }
 }
 
 #Preview {
-    BrowserListVds()
+    PlanListBot()
         .environment(BrowserVM())
 }

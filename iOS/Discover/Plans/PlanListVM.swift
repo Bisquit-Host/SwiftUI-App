@@ -1,8 +1,8 @@
 import ScrechKit
 
 @Observable
-final class BrowserVM {
-    var selectedCategory: Plan = .mc
+final class PlanListVM {
+    var selectedCategory: Plan = .game
     
     private(set) var mcPlans: [MinecraftPlan] = []
     private(set) var mcruPlans: [MinecraftPlan] = []
@@ -19,15 +19,15 @@ final class BrowserVM {
     }
     
     func fetchAllPlans() async {
-        mcPlans = await fetchPlans(.mc, as: MinecraftPlan.self).filter {
+        mcPlans = await fetchPlans(.game, as: MinecraftPlan.self).filter {
             $0.location == "GERMANY"
         }
         
-        mcruPlans = await fetchPlans(.mc, as: MinecraftPlan.self).filter {
+        mcruPlans = await fetchPlans(.game, as: MinecraftPlan.self).filter {
             $0.location == "RUSSIA"
         }
         
-        vdsPlans = await fetchPlans(.vds, as: VdsPlan.self)
+        vdsPlans = await fetchPlans(.cloud, as: VdsPlan.self)
         webPlans = await fetchPlans(.web, as: WebPlan.self)
         botPlans = await fetchPlans(.bot, as: BotPlan.self)
     }
@@ -37,7 +37,7 @@ final class BrowserVM {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         
         guard
-            let url = URL(string: "https://plans.bisquit.host/plans/" + category.path)
+            let url = URL(string: "https://api-v1.bisquit.host/public-api/" + category.rawValue)
         else {
             return []
         }

@@ -1,6 +1,6 @@
 import ScrechKit
 
-struct BrowserHints: View {
+struct PlanHints: View {
     private let hints = [
         "Processor Cores (CPU)": "cpu",
         "Memory (RAM)":          "memorychip",
@@ -25,6 +25,6 @@ struct BrowserHints: View {
 
 #Preview {
     List {
-        BrowserHints()
+        PlanHints()
     }
 }

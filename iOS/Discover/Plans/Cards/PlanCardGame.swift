@@ -1,7 +1,7 @@
 import ScrechKit
 import Kingfisher
 
-struct BrowserCard: View {
+struct PlanCardGame: View {
     @Environment(\.colorScheme) private var appearance
     
     private let plan: MinecraftPlan
@@ -11,7 +11,7 @@ struct BrowserCard: View {
     }
     
     private var url: String {
-        "https://my.bisquit.host/store/\(plan.name)"
+        "https://my.bisquit.host/store/" + plan.name
     }
     
     private var price: Double {
@@ -29,7 +29,7 @@ struct BrowserCard: View {
             
         } label: {
             ZStack {
-                KFImage(getImageUrl("plans/\(plan.name)"))
+                KFImage(getImageUrl("plans/" + plan.name))
                     .placeholder {
                         Text("Soon there will be an art here as well")
                             .padding(.horizontal)
@@ -38,7 +38,7 @@ struct BrowserCard: View {
                     .resizable()
                     .brightness(appearance == .dark ? -0.1 : 0)
                 
-                KFImage(getImageUrl("plans/\(plan.name)"))
+                KFImage(getImageUrl("plans/" + plan.name))
                     .resizable()
                     .mask(alignment: .topLeading) {
                         Text(plan.name)
@@ -61,20 +61,20 @@ struct BrowserCard: View {
                         Spacer()
                         
                         HStack {
-                            BrowserSpec("\(plan.cpu)x", icon: "macwindow.on.rectangle")
+                            PlanSpec(plan.cpu + "x", icon: "cpu")
                             
-                            BrowserSpec("\(Int(plan.ram / 1_000_000_000))x", icon: "server.rack")
+                            PlanSpec("\(plan.ram) GB", icon: "memorychip")
                             
-                            BrowserSpec(formatBytes(plan.disk, countStyle: .decimal), icon: "internaldrive")
+                            PlanSpec("\(plan.disk) GB", icon: "internaldrive")
                             
-                            Spacer()
-                            
-                            Text(customRound(price) + ValueStore().preferredCurrency)
-                                .subheadline(.bold)
-                                .padding(.vertical, 4)
-                                .padding(.horizontal, 10)
-                                .foregroundStyle(.white)
-                                .background(.blue, in: .capsule)
+                            //                        Spacer()
+                            //
+                            //                        Text(customRound(price) + ValueStore().preferredCurrency)
+                            //                            .subheadline(.bold)
+                            //                            .padding(.vertical, 4)
+                            //                            .padding(.horizontal, 10)
+                            //                            .foregroundStyle(.white)
+                            //     .background(.blue, in: .capsule)
                         }
                     }
                     
@@ -92,30 +92,8 @@ struct BrowserCard: View {
         }
         .buttonStyle(.plain)
     }
-    
-    private func customRound(_ value: Double) -> String {
-        let roundedValue = round(value)
-        
-        let formatter = NumberFormatter()
-        formatter.minimumFractionDigits = 0
-        formatter.maximumFractionDigits = (roundedValue == value) ? 0 : 1
-        
-        return formatter.string(from: NSNumber(value: value)) ?? "\(value)"
-    }
 }
 
-#Preview {
-    BrowserCard(MinecraftPlan(
-        id: 16,
-        ram: 16,
-        disk: 16,
-        mysql: 16,
-        name: "preview",
-        location: "Netherlands",
-        displayname: "Preview",
-        cpuModel: "M4 Ultra",
-        cpu: "4",
-        priceRub: 2000,
-        priceEur: 20.4
-    ))
-}
+//#Preview {
+//    PlanCardGame()
+//}

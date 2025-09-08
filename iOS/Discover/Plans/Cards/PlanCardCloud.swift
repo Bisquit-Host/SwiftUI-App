@@ -1,12 +1,12 @@
 import ScrechKit
 import Kingfisher
 
-struct BrowserCardBot: View {
+struct PlanCardCloud: View {
     @Environment(\.colorScheme) private var appearance
     
-    private let plan: BotPlan
+    private let plan: VdsPlan
     
-    init(_ plan: BotPlan) {
+    init(_ plan: VdsPlan) {
         self.plan = plan
     }
     
@@ -18,7 +18,7 @@ struct BrowserCardBot: View {
         switch ValueStore().preferredCurrency {
         case "€":
             plan.priceEur
-            
+                        
         default:
             plan.priceRub
         }
@@ -61,11 +61,13 @@ struct BrowserCardBot: View {
                         Spacer()
                         
                         HStack {
-                            BrowserSpec("\(plan.ram) GB", icon: "memorychip")
+                            PlanSpec("\(plan.ram) GB", icon: "memorychip")
                             
-                            BrowserSpec("\(plan.cpu)x", icon: "cpu")
+                            PlanSpec("\(plan.cpu)x", icon: "cpu")
                             
-                            BrowserSpec("\(plan.disk) GB", icon: "internaldrive")
+                            PlanSpec("\(plan.disk) GB", icon: "internaldrive")
+                            
+                            PlanSpec("\(plan.network) Mbit/s", icon: "internaldrive")
                             
                             //                        Spacer()
                             //
@@ -95,5 +97,5 @@ struct BrowserCardBot: View {
 }
 
 //#Preview {
-//    BrowserCardBot()
+//    PlanCardCloud()
 //}
