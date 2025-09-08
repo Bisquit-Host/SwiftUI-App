@@ -33,7 +33,7 @@ final class ValueStore: ObservableObject {
 #endif
     
 #if !os(watchOS)
-    @AppStorage("selected_plan_category") var selectedPlanCategory: Plan = .cloud
+    @AppStorage("selected_plan_category") var selectedPlanCategory: PlanType = .cloud
 #endif
     @AppStorage("showFullFilePath") var showFullFilePath = false
     @AppStorage("preferredCurrency") var preferredCurrency = "₽"

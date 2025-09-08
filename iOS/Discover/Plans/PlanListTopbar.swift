@@ -5,7 +5,7 @@ struct PlanListTopbar: View {
     
     var body: some View {
         Picker("Category", selection: $store.selectedPlanCategory) {
-            ForEach(Plan.allCases) {
+            ForEach(PlanType.allCases) {
                 Text($0.localized)
                     .tag($0)
             }

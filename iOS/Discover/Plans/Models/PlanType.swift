@@ -1,6 +1,6 @@
 import SwiftUI
 
-enum Plan: String, Identifiable, CaseIterable {
+enum PlanType: String, Identifiable, CaseIterable {
     case game, cloud, web, bot
     
     var id: String {

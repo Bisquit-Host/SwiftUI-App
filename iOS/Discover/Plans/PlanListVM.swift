@@ -42,7 +42,7 @@ final class PlanListVM {
         }
     }
     
-    private func fetchPlans(_ category: Plan) async -> PlanResponse? {
+    private func fetchPlans(_ category: PlanType) async -> PlanResponse? {
         guard
             let url = URL(string: "https://api-v1.bisquit.host/public-api/" + category.rawValue)
         else {
