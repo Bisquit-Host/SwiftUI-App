@@ -4,9 +4,9 @@ import Kingfisher
 struct PlanCardCloud: View {
     @Environment(\.colorScheme) private var appearance
     
-    private let plan: VdsPlan
+    private let plan: CloudPlan
     
-    init(_ plan: VdsPlan) {
+    init(_ plan: CloudPlan) {
         self.plan = plan
     }
     
@@ -17,10 +17,14 @@ struct PlanCardCloud: View {
     private var price: Double {
         switch ValueStore().preferredCurrency {
         case "€":
-            plan.priceEur
-                        
+            plan.price.first {
+                $0.currency == "eur"
+            }?.price ?? 0
+            
         default:
-            plan.priceRub
+            plan.price.first {
+                $0.currency == "rub"
+            }?.price ?? 0
         }
     }
     
@@ -53,7 +57,7 @@ struct PlanCardCloud: View {
                 
                 HStack {
                     VStack(alignment: .leading) {
-                        Text(plan.displayname)
+                        Text(plan.name)
                             .title(.semibold)
                             .foregroundStyle(.white)
                             .shadow(color: .black, radius: 5)
@@ -61,7 +65,7 @@ struct PlanCardCloud: View {
                         Spacer()
                         
                         HStack {
-                            PlanSpec("\(plan.ram) GB", icon: "memorychip")
+                            PlanSpec("\(plan.memory) GB", icon: "memorychip")
                             
                             PlanSpec("\(plan.cpu)x", icon: "cpu")
                             

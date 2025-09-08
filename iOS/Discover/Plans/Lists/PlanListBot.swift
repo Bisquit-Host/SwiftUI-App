@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct PlanListBot: View {
-    @Environment(BrowserVM.self) private var vm
+    @Environment(PlanListVM.self) private var vm
     
     var body: some View {
         ForEach(vm.botPlans) {
@@ -12,5 +12,5 @@ struct PlanListBot: View {
 
 #Preview {
     PlanListBot()
-        .environment(BrowserVM())
+        .environment(PlanListVM())
 }

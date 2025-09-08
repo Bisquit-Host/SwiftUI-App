@@ -4,9 +4,9 @@ import ScrechKit
 final class PlanListVM {
     var selectedCategory: Plan = .game
     
-    private(set) var mcPlans: [MinecraftPlan] = []
-    private(set) var mcruPlans: [MinecraftPlan] = []
-    private(set) var vdsPlans: [VdsPlan] = []
+    private(set) var mcPlans: [GamePlan] = []
+    private(set) var mcruPlans: [GamePlan] = []
+    private(set) var vdsPlans: [CloudPlan] = []
     private(set) var webPlans: [WebPlan] = []
     private(set) var botPlans: [BotPlan] = []
     
@@ -19,15 +19,15 @@ final class PlanListVM {
     }
     
     func fetchAllPlans() async {
-        mcPlans = await fetchPlans(.game, as: MinecraftPlan.self).filter {
-            $0.location == "GERMANY"
+        mcPlans = await fetchPlans(.game, as: GamePlan.self).filter {
+            $0.locationId == 1
         }
         
-        mcruPlans = await fetchPlans(.game, as: MinecraftPlan.self).filter {
-            $0.location == "RUSSIA"
+        mcruPlans = await fetchPlans(.game, as: GamePlan.self).filter {
+            $0.locationId == 0
         }
         
-        vdsPlans = await fetchPlans(.cloud, as: VdsPlan.self)
+        vdsPlans = await fetchPlans(.cloud, as: CloudPlan.self)
         webPlans = await fetchPlans(.web, as: WebPlan.self)
         botPlans = await fetchPlans(.bot, as: BotPlan.self)
     }

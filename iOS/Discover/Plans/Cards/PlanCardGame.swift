@@ -4,9 +4,9 @@ import Kingfisher
 struct PlanCardGame: View {
     @Environment(\.colorScheme) private var appearance
     
-    private let plan: MinecraftPlan
+    private let plan: GamePlan
     
-    init(_ plan: MinecraftPlan) {
+    init(_ plan: GamePlan) {
         self.plan = plan
     }
     
@@ -17,10 +17,14 @@ struct PlanCardGame: View {
     private var price: Double {
         switch ValueStore().preferredCurrency {
         case "€":
-            plan.priceEur
+            plan.price.first {
+                $0.currency == "eur"
+            }?.price ?? 0
             
         default:
-            plan.priceRub
+            plan.price.first {
+                $0.currency == "rub"
+            }?.price ?? 0
         }
     }
     
@@ -53,7 +57,7 @@ struct PlanCardGame: View {
                 
                 HStack {
                     VStack(alignment: .leading) {
-                        Text(plan.displayname)
+                        Text(plan.name)
                             .title(.semibold)
                             .foregroundStyle(.white)
                             .shadow(color: .black, radius: 5)
@@ -61,10 +65,8 @@ struct PlanCardGame: View {
                         Spacer()
                         
                         HStack {
-                            PlanSpec(plan.cpu + "x", icon: "cpu")
-                            
-                            PlanSpec("\(plan.ram) GB", icon: "memorychip")
-                            
+                            PlanSpec(plan.cpu.description + "x", icon: "cpu")
+                            PlanSpec("\(plan.memory) GB", icon: "memorychip")
                             PlanSpec("\(plan.disk) GB", icon: "internaldrive")
                             
                             //                        Spacer()

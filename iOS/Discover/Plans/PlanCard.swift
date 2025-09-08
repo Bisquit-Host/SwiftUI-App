@@ -4,9 +4,9 @@ import Kingfisher
 struct PlanCard: View {
     @Environment(\.colorScheme) private var appearance
     
-    private let plan: MinecraftPlan
+    private let plan: GamePlan
     
-    init(_ plan: MinecraftPlan) {
+    init(_ plan: GamePlan) {
         self.plan = plan
     }
     
@@ -17,10 +17,14 @@ struct PlanCard: View {
     private var price: Double {
         switch ValueStore().preferredCurrency {
         case "€":
-            plan.priceEur
+            plan.price.first {
+                $0.currency == "eur"
+            }?.price ?? 0
             
         default:
-            plan.priceRub
+            plan.price.first {
+                $0.currency == "rub"
+            }?.price ?? 0
         }
     }
     
@@ -53,7 +57,7 @@ struct PlanCard: View {
                 
                 HStack {
                     VStack(alignment: .leading) {
-                        Text(plan.displayname)
+                        Text(plan.name)
                             .title(.semibold)
                             .foregroundStyle(.white)
                             .shadow(color: .black, radius: 5)
@@ -63,7 +67,7 @@ struct PlanCard: View {
                         HStack {
                             PlanSpec("\(plan.cpu)x", icon: "macwindow.on.rectangle")
                             
-                            PlanSpec("\(Int(plan.ram / 1_000_000_000))x", icon: "server.rack")
+                            PlanSpec("\(Int(plan.memory / 1_000_000_000))x", icon: "server.rack")
                             
                             PlanSpec(formatBytes(plan.disk, countStyle: .decimal), icon: "internaldrive")
                             
@@ -104,18 +108,18 @@ struct PlanCard: View {
     }
 }
 
-#Preview {
-    PlanCard(MinecraftPlan(
-        id: 16,
-        ram: 16,
-        disk: 16,
-        mysql: 16,
-        name: "preview",
-        location: "Netherlands",
-        displayname: "Preview",
-        cpuModel: "M4 Ultra",
-        cpu: "4",
-        priceRub: 2000,
-        priceEur: 20.4
-    ))
-}
+//#Preview {
+//    PlanCard(GamePlan(
+//        id: 16,
+//        ram: 16,
+//        disk: 16,
+//        mysql: 16,
+//        name: "preview",
+//        location: "Netherlands",
+//        displayname: "Preview",
+//        cpuModel: "M4 Ultra",
+//        cpu: "4",
+//        priceRub: 2000,
+//        priceEur: 20.4
+//    ))
+//}

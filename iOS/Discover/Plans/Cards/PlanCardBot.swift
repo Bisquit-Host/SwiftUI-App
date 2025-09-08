@@ -17,10 +17,14 @@ struct PlanCardBot: View {
     private var price: Double {
         switch ValueStore().preferredCurrency {
         case "€":
-            plan.priceEur
+            plan.price.first {
+                $0.currency == "eur"
+            }?.price ?? 0
             
         default:
-            plan.priceRub
+            plan.price.first {
+                $0.currency == "rub"
+            }?.price ?? 0
         }
     }
     
@@ -53,7 +57,7 @@ struct PlanCardBot: View {
                 
                 HStack {
                     VStack(alignment: .leading) {
-                        Text(plan.displayname)
+                        Text(plan.name)
                             .title(.semibold)
                             .foregroundStyle(.white)
                             .shadow(color: .black, radius: 5)
@@ -61,7 +65,7 @@ struct PlanCardBot: View {
                         Spacer()
                         
                         HStack {
-                            PlanSpec("\(plan.ram) GB", icon: "memorychip")
+                            PlanSpec("\(plan.memory) GB", icon: "memorychip")
                             
                             PlanSpec("\(plan.cpu)x", icon: "cpu")
                             
