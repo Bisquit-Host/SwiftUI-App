@@ -34,12 +34,6 @@ struct PanelView: View {
         //        .admin
     ]
     
-#if os(macOS)
-    private let application = NSApplication.self
-#else
-    private let application = UIApplication.self
-#endif
-    
     private var id: String {
         server.id
     }
@@ -137,11 +131,11 @@ struct PanelView: View {
         .onDisappear {
             vm.disconnectWebSocket()
         }
-        .onReceive(NotificationCenter.default.publisher(for: application.willResignActiveNotification)) { _ in
+        .onReceive(NotificationCenter.default.publisher(for: NSApplication.willResignActiveNotification)) { _ in
             vm.disconnectWebSocket()
             vm.messages.removeAll()
         }
-        .onReceive(NotificationCenter.default.publisher(for: application.didBecomeActiveNotification)) { _ in
+        .onReceive(NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification)) { _ in
             Task {
                 if let data = await vm.consoleDetails() {
                     vm.connectWebSocket(data)
