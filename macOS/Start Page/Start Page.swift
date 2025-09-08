@@ -84,7 +84,7 @@ struct StartPage: View {
         //            Support()
         //        }
         //        .sheet($vm.sheetBrowsePlans) {
-        //            Browser()
+        //            PlanListParent()
         //        }
         //        .sheet($vm.sheetCloudKeys) {
         //            CloudKeys($vm.apiKey)
