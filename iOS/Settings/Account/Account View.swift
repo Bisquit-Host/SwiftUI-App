@@ -100,6 +100,7 @@ struct AccountView: View {
         _ param: LocalizedStringKey,
         value: String
     ) -> some View {
+        
         HStack {
             Text(param)
             
