@@ -1,14 +1,21 @@
 import SwiftUI
 
 struct DiscoverCardLayout: View {
-    private let link: DiscoverModel
+    private let title, subtitle: LocalizedStringKey
+    private let image: ImageResource
     
-    init(_ link: DiscoverModel) {
-        self.link = link
+    init(
+        _ title: LocalizedStringKey,
+        subtitle: LocalizedStringKey,
+        image: ImageResource
+    ) {
+        self.title = title
+        self.subtitle = subtitle
+        self.image = image
     }
     
     private var avgColor: UIColor? {
-        UIImage(resource: link.image).findAverageColor(.simple)
+        UIImage(resource: image).findAverageColor(.simple)
     }
     
     private let imageSize = 60.0
@@ -22,21 +29,21 @@ struct DiscoverCardLayout: View {
                         .frame(imageSize + 3)
                 }
                 
-                Image(link.image)
+                Image(image)
                     .resizable()
                     .frame(imageSize)
                     .clipShape(.rect(cornerRadius: 16))
             }
             
             VStack(alignment: .leading) {
-                Text(link.subtitle)
+                Text(subtitle)
                     .semibold()
                     .rounded()
                     .secondary()
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
                 
-                Text(link.title)
+                Text(title)
                     .title2(.bold, design: .rounded)
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)

@@ -360,10 +360,6 @@
 		F32E88C92AF83E3F00959D49 /* ServerListAdminButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88C72AF83E3F00959D49 /* ServerListAdminButton.swift */; };
 		F32E88D12AF8494100959D49 /* ServerListFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88D02AF8494100959D49 /* ServerListFilter.swift */; };
 		F32E88D22AF8494100959D49 /* ServerListFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88D02AF8494100959D49 /* ServerListFilter.swift */; };
-		F32F2CC82D8F6FA8007CF4DE /* DiscoverModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CC72D8F6FA8007CF4DE /* DiscoverModel.swift */; };
-		F32F2CC92D8F6FA8007CF4DE /* DiscoverModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CC72D8F6FA8007CF4DE /* DiscoverModel.swift */; };
-		F32F2CCB2D8F6FA8007CF4DE /* DiscoverModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CC72D8F6FA8007CF4DE /* DiscoverModel.swift */; };
-		F32F2CCC2D8F6FA8007CF4DE /* DiscoverModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CC72D8F6FA8007CF4DE /* DiscoverModel.swift */; };
 		F32F2CCE2D8F6FCE007CF4DE /* DiscoverCardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CCD2D8F6FCE007CF4DE /* DiscoverCardLayout.swift */; };
 		F32F2CCF2D8F6FCE007CF4DE /* DiscoverCardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CCD2D8F6FCE007CF4DE /* DiscoverCardLayout.swift */; };
 		F32F2CD02D8F6FCE007CF4DE /* DiscoverCardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CCD2D8F6FCE007CF4DE /* DiscoverCardLayout.swift */; };
@@ -1757,7 +1753,6 @@
 		F32DB8A729AE6B800074E045 /* StartPageFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPageFooter.swift; sourceTree = "<group>"; };
 		F32E88C72AF83E3F00959D49 /* ServerListAdminButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListAdminButton.swift; sourceTree = "<group>"; };
 		F32E88D02AF8494100959D49 /* ServerListFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerListFilter.swift; sourceTree = "<group>"; };
-		F32F2CC72D8F6FA8007CF4DE /* DiscoverModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverModel.swift; sourceTree = "<group>"; };
 		F32F2CCD2D8F6FCE007CF4DE /* DiscoverCardLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCardLayout.swift; sourceTree = "<group>"; };
 		F32F2CD32D8F6FDC007CF4DE /* AvgColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvgColor.swift; sourceTree = "<group>"; };
 		F32F2CD92D8F7047007CF4DE /* Discover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Discover.swift; sourceTree = "<group>"; };
@@ -3484,7 +3479,6 @@
 			children = (
 				F32F2CD92D8F7047007CF4DE /* Discover.swift */,
 				F32F2CCD2D8F6FCE007CF4DE /* DiscoverCardLayout.swift */,
-				F32F2CC72D8F6FA8007CF4DE /* DiscoverModel.swift */,
 				F32F2CD32D8F6FDC007CF4DE /* AvgColor.swift */,
 				F39E0A932C1BA06C00C4E906 /* DiscoverCard.swift */,
 				F3565B7C295E5F9E0092874A /* Plans */,
@@ -5073,7 +5067,6 @@
 				F3AF91C52B423535001D8F80 /* SSH List.swift in Sources */,
 				F31BA56A2959007E0006D126 /* Nav Destinations.swift in Sources */,
 				F3D2643A2A66AB92005C3777 /* Account View.swift in Sources */,
-				F32F2CCC2D8F6FA8007CF4DE /* DiscoverModel.swift in Sources */,
 				F3521E2B29F5C13900132CCB /* PlanCard.swift in Sources */,
 				F3202CD92D5624B10030B3CC /* PlanType.swift in Sources */,
 				F37266E929D9EFFE005FD103 /* Cache Size.swift in Sources */,
@@ -5274,7 +5267,6 @@
 				F3EE9F762D85CAB9000120A7 /* Dismiss Button.swift in Sources */,
 				F31F32022D52DB950095DD19 /* Color Theme.swift in Sources */,
 				F30088A02B3A17DF0051476C /* Backup VM.swift in Sources */,
-				F32F2CCB2D8F6FA8007CF4DE /* DiscoverModel.swift in Sources */,
 				F3D677772DD8676200721DE8 /* Highlightr Text View.swift in Sources */,
 				F3E2BF0F2C1EC94300B7A6D4 /* ContactsVM.swift in Sources */,
 				F3553FB62B40939C00EF0FD2 /* Allocation VM.swift in Sources */,
@@ -5669,7 +5661,6 @@
 				F3A7CF1D2C8C4E4A00413400 /* PlanHints.swift in Sources */,
 				F3202CE12D562A620030B3CC /* PlanListGame.swift in Sources */,
 				F3A7CF1E2C8C4E4A00413400 /* PlanView.swift in Sources */,
-				F32F2CC82D8F6FA8007CF4DE /* DiscoverModel.swift in Sources */,
 				F3E98C022E6A5F4C0019439F /* ServerCardLayout.swift in Sources */,
 				F3A7CF1F2C8C4E4A00413400 /* OtherModels.swift in Sources */,
 				F3A7CF022C8BBB4700413400 /* ServerCardContextMenu.swift in Sources */,
@@ -5685,7 +5676,6 @@
 			files = (
 				F3D295172AF396FD00ED43A0 /* Tabs.swift in Sources */,
 				F3FD9F9A2C651AF300A69314 /* File Uploader.swift in Sources */,
-				F32F2CC92D8F6FA8007CF4DE /* DiscoverModel.swift in Sources */,
 				F3EE9F742D85CAB9000120A7 /* Dismiss Button.swift in Sources */,
 				F3202D162D562B250030B3CC /* PlanCardGame.swift in Sources */,
 				F3015DD82D9F24F600B9BCC6 /* Log Card Event.swift in Sources */,
