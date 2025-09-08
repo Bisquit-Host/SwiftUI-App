@@ -4,9 +4,9 @@ import Kingfisher
 struct PlanCard: View {
     @Environment(\.colorScheme) private var appearance
     
-    private let plan: GamePlan
+    private let plan: UniversalPlan
     
-    init(_ plan: GamePlan) {
+    init(_ plan: UniversalPlan) {
         self.plan = plan
     }
     
@@ -65,9 +65,13 @@ struct PlanCard: View {
                         Spacer()
                         
                         HStack {
-                            PlanSpec("\(plan.cpu)x", icon: "macwindow.on.rectangle")
+                            if let cpu = plan.cpu {
+                                PlanSpec("\(cpu)x", icon: "macwindow.on.rectangle")
+                            }
                             
-                            PlanSpec("\(Int(plan.memory / 1_000_000_000))x", icon: "server.rack")
+                            if let ram = plan.memory {
+                                PlanSpec("\(Int(ram / 1_000_000_000))x", icon: "server.rack")
+                            }
                             
                             PlanSpec(formatBytes(plan.disk, countStyle: .decimal), icon: "internaldrive")
                             

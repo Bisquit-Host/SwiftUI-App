@@ -2,6 +2,7 @@ import ScrechKit
 
 struct PlanView: View {
     @State private var vm = PlanListVM()
+    @EnvironmentObject private var store: ValueStore
     
     var body: some View {
         VStack {
@@ -9,7 +10,7 @@ struct PlanView: View {
                 .environment(vm)
             
             ScrollView(showsIndicators: false) {
-                switch vm.selectedCategory {
+                switch store.selectedPlanCategory {
                 case .game:
                     PlanListGame()
                     
@@ -38,7 +39,7 @@ struct PlanView: View {
         .navigationTitle("Configurations")
         .toolbarTitleDisplayMode(.inline)
         .environment(vm)
-        .animation(.default, value: vm.selectedCategory)
+        .animation(.default, value: store.selectedPlanCategory)
         .ornamentDismissButton()
         .task {
             await vm.fetchAllPlans()

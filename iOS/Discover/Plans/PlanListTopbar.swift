@@ -1,12 +1,10 @@
 import ScrechKit
 
 struct PlanListTopbar: View {
-    @Environment(PlanListVM.self) private var vm
+    @EnvironmentObject private var store: ValueStore
     
     var body: some View {
-        @Bindable var vm = vm
-        
-        Picker("Category", selection: $vm.selectedCategory) {
+        Picker("Category", selection: $store.selectedPlanCategory) {
             ForEach(Plan.allCases) {
                 Text($0.localized)
                     .tag($0)
@@ -19,5 +17,5 @@ struct PlanListTopbar: View {
 
 #Preview {
     PlanListTopbar()
-        .environment(PlanListVM())
+        .environmentObject(ValueStore())
 }

@@ -4,9 +4,9 @@ import Kingfisher
 struct PlanCardBot: View {
     @Environment(\.colorScheme) private var appearance
     
-    private let plan: BotPlan
+    private let plan: UniversalPlan
     
-    init(_ plan: BotPlan) {
+    init(_ plan: UniversalPlan) {
         self.plan = plan
     }
     

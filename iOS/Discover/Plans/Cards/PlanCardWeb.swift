@@ -4,9 +4,9 @@ import Kingfisher
 struct PlanCardWeb: View {
     @Environment(\.colorScheme) private var appearance
     
-    private let plan: WebPlan
+    private let plan: UniversalPlan
     
-    init(_ plan: WebPlan) {
+    init(_ plan: UniversalPlan) {
         self.plan = plan
     }
     
