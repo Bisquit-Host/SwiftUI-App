@@ -3,8 +3,6 @@ import ScrechKit
 struct SSHList: View {
     @Environment(SSHVM.self) private var vm
     
-    @Environment(\.dismiss) private var dismiss
-    
     @State private var sheetCreate = false
     
     var body: some View {
@@ -35,9 +33,7 @@ struct SSHList: View {
         }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
-                DismissButton {
-                    dismiss()
-                }
+                DismissButton()
             }
             
             ToolbarItem(placement: .topBarTrailing) {

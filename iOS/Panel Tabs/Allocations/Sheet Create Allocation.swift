@@ -20,9 +20,7 @@ struct SheetCreateAllocation: View {
         }
         .toolbar {
             ToolbarItem(placement: .bottomBar) {
-                DismissButton {
-                    dismiss()
-                }
+                DismissButton()
             }
             
             ToolbarSpacer(.flexible, placement: .bottomBar)

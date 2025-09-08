@@ -2,8 +2,6 @@ import ScrechKit
 import PteroNet
 
 struct AllocationList: View {
-    @Environment(\.dismiss) private var dismiss
-    
     private var vm: AllocationVM
     private let server: ServerAttributes
     
@@ -33,9 +31,7 @@ struct AllocationList: View {
         .environment(vm)
         .toolbar {
             ToolbarItem(placement: .bottomBar) {
-                DismissButton {
-                    dismiss()
-                }
+                DismissButton()
             }
 #if os(iOS) || os(macOS)
             ToolbarSpacer(.flexible, placement: .bottomBar)

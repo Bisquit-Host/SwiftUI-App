@@ -3,8 +3,6 @@ import SafariCover
 import MailCover
 
 struct Discover: View {
-    @Environment(\.dismiss) private var dismiss
-    
     @State private var sheetConfigurations = false
     @State private var showMailCover = false
     
@@ -99,9 +97,7 @@ struct Discover: View {
 #else
         .toolbar {
             ToolbarItem(placement: .bottomBar) {
-                DismissButton {
-                    dismiss()
-                }
+                DismissButton()
             }
             
             ToolbarSpacer(placement: .bottomBar)

@@ -3,7 +3,6 @@ import PteroNet
 
 struct LogList: View {
     @Environment(LogVM.self) private var vm
-    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         @Bindable var vm = vm
@@ -51,9 +50,7 @@ struct LogList: View {
         }
         .toolbar {
             ToolbarItem(placement: .bottomBar) {
-                DismissButton {
-                    dismiss()
-                }
+                DismissButton()
             }
 #if os(iOS) || os(macOS)
             ToolbarSpacer(.fixed, placement: .bottomBar)

@@ -4,8 +4,6 @@ import PteroNet
 struct SubdomainList: View {
     @Environment(SubdomainVM.self) private var vm
     
-    @Environment(\.dismiss) private var dismiss
-    
     private let allocations: [AllocationAttributes]
     
     init(_ allocations: [AllocationAttributes]) {
@@ -43,9 +41,7 @@ struct SubdomainList: View {
         }
         .toolbar {
             ToolbarItem(placement: .bottomBar) {
-                DismissButton {
-                    dismiss()
-                }
+                DismissButton()
             }
 #if os(iOS) || os(macOS)
             ToolbarSpacer(.flexible, placement: .bottomBar)

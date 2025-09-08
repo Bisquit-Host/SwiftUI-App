@@ -3,8 +3,6 @@ import ScrechKit
 struct UserList: View {
     @Environment(UsersVM.self) private var vm
     
-    @Environment(\.dismiss) private var dismiss
-    
     var body: some View {
         @Bindable var vm = vm
         
@@ -45,9 +43,7 @@ struct UserList: View {
         }
         .toolbar {
             ToolbarItem(placement: .bottomBar) {
-                DismissButton {
-                    dismiss()
-                }
+                DismissButton()
             }
 #if !os(watchOS) && !os(tvOS)
             ToolbarSpacer(.flexible, placement: .bottomBar)

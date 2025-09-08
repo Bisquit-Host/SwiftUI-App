@@ -3,8 +3,6 @@ import ScrechKit
 struct AccountView: View {
     @Environment(AccountVM.self) private var vm
     
-    @Environment(\.dismiss) private var dismiss
-    
     @State private var sheetDisable2Fa = false
     @State private var sheetEnable2Fa = false
     @State private var selectedTab = "Account"
@@ -89,9 +87,7 @@ struct AccountView: View {
         }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
-                DismissButton {
-                    dismiss()
-                }
+                DismissButton()
             }
         }
     }

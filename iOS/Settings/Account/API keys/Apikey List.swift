@@ -3,8 +3,6 @@ import ScrechKit
 struct ApikeyList: View {
     @Environment(ApikeyVM.self) private var vm
     
-    @Environment(\.dismiss) private var dismiss
-    
     @State private var sheetCreate = false
     
     var body: some View {
@@ -27,9 +25,7 @@ struct ApikeyList: View {
         .scrollContentBackground(.hidden)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
-                DismissButton {
-                    dismiss()
-                }
+                DismissButton()
             }
             
             ToolbarItem(placement: .topBarTrailing) {
