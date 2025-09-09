@@ -1,6 +1,6 @@
 import ScrechKit
 
-struct PlanListTopbar: View {
+struct PlanViewTopbar: View {
     @EnvironmentObject private var store: ValueStore
     
     var body: some View {
@@ -16,6 +16,6 @@ struct PlanListTopbar: View {
 }
 
 #Preview {
-    PlanListTopbar()
+    PlanViewTopbar()
         .environmentObject(ValueStore())
 }

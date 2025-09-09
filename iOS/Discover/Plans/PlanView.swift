@@ -6,24 +6,9 @@ struct PlanView: View {
     
     var body: some View {
         VStack {
-            PlanListTopbar()
-                .environment(vm)
+            PlanViewTopbar()
             
-            ScrollView(showsIndicators: false) {
-                switch store.selectedPlanCategory {
-                case .game:
-                    PlanListGame()
-                    
-                case .cloud:
-                    PlanListCloud()
-                    
-                case .web:
-                    PlanListWeb()
-                    
-                case .bot:
-                    PlanListBot()
-                }
-            }
+            PlanViewList()
         }
         .navigationTitle("Configurations")
         .toolbarTitleDisplayMode(.inline)
