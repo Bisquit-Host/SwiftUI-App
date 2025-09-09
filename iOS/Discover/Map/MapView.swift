@@ -10,10 +10,10 @@ struct MapView: View {
     var body: some View {
         VStack {
             Map(position: $map.position) {
-                ForEach(map.places, id: \.id) { place in
-                    Marker(place.name.key, coordinate: .init(
-                        latitude: place.latitude,
-                        longitude: place.longitude
+                ForEach(map.places, id: \.id) {
+                    Marker($0.name.key, coordinate: .init(
+                        latitude: $0.latitude,
+                        longitude: $0.longitude
                     ))
                 }
             }
