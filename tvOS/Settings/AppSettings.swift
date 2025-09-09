@@ -28,7 +28,7 @@ struct AppSettings: View {
             }
             
             ListLink("Configurations", icon: "externaldrive.badge.plus") {
-                PlanListParent()
+                PlanViewParent()
             }
             
             Section {

@@ -32,7 +32,7 @@ final class ValueStore: ObservableObject {
     @AppStorage("last_tab_panel") var lastTabPanel: Tabs = .info
 #endif
     
-#if !os(watchOS)
+#if !os(watchOS) && !os(macOS)
     @AppStorage("selected_plan_category") var selectedPlanCategory: PlanType = .cloud
 #endif
     @AppStorage("showFullFilePath") var showFullFilePath = false
