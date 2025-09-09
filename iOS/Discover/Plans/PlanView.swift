@@ -23,17 +23,6 @@ struct PlanView: View {
                 case .bot:
                     PlanListBot()
                 }
-                
-                HStack {
-                    PlanSpec("CPU", icon: "cpu")
-                    PlanSpec("RAM", icon: "memorychip")
-                    PlanSpec("SSD", icon: "internaldrive")
-                }
-                
-                HStack {
-                    PlanSpec("Websites", icon: "macwindow.on.rectangle")
-                    PlanSpec("MySQL Databases", icon: "server.rack")
-                }
             }
         }
         .navigationTitle("Configurations")

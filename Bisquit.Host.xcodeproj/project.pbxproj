@@ -235,7 +235,6 @@
 		F3202C842D5590CC0030B3CC /* DiscoverCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E0A932C1BA06C00C4E906 /* DiscoverCard.swift */; };
 		F3202C852D5590D30030B3CC /* PlanListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA590295901C00006D126 /* PlanListVM.swift */; };
 		F3202C862D5590D30030B3CC /* PlanListTopbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3DBD029B8007B00096115 /* PlanListTopbar.swift */; };
-		F3202C872D5590D30030B3CC /* PlanHints.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A1D2372A2024E10053261E /* PlanHints.swift */; };
 		F3202C882D5590D30030B3CC /* OtherModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B2A0129FFD6AB006E5FD2 /* OtherModels.swift */; };
 		F3202C892D5590D30030B3CC /* PlanSticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E8415529FECB6800609DA3 /* PlanSticker.swift */; };
 		F3202C8A2D5590D30030B3CC /* PlanCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3521E2A29F5C13900132CCB /* PlanCard.swift */; };
@@ -960,8 +959,6 @@
 		F3A1D2332A201C6D0053261E /* ServerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A1D2302A201C570053261E /* ServerState.swift */; };
 		F3A1D2352A201CBB0053261E /* PlanSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A1D2342A201CBB0053261E /* PlanSpec.swift */; };
 		F3A1D2362A201CBB0053261E /* PlanSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A1D2342A201CBB0053261E /* PlanSpec.swift */; };
-		F3A1D2382A2024E10053261E /* PlanHints.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A1D2372A2024E10053261E /* PlanHints.swift */; };
-		F3A1D2392A2024E10053261E /* PlanHints.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A1D2372A2024E10053261E /* PlanHints.swift */; };
 		F3A28ADB2C57B06600010454 /* DevSettingsFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F306B9EC29BBDA770008C2D4 /* DevSettingsFooter.swift */; };
 		F3A31B052B0B144200F89C51 /* ServerListNodeFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A31B042B0B144200F89C51 /* ServerListNodeFilter.swift */; };
 		F3A31B062B0B144200F89C51 /* ServerListNodeFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A31B042B0B144200F89C51 /* ServerListNodeFilter.swift */; };
@@ -1023,7 +1020,6 @@
 		F3A7CF1A2C8C4E4A00413400 /* PlanSticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E8415529FECB6800609DA3 /* PlanSticker.swift */; };
 		F3A7CF1B2C8C4E4A00413400 /* PlanListTopbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3DBD029B8007B00096115 /* PlanListTopbar.swift */; };
 		F3A7CF1C2C8C4E4A00413400 /* PlanCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3521E2A29F5C13900132CCB /* PlanCard.swift */; };
-		F3A7CF1D2C8C4E4A00413400 /* PlanHints.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A1D2372A2024E10053261E /* PlanHints.swift */; };
 		F3A7CF1E2C8C4E4A00413400 /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA58E295901B60006D126 /* PlanView.swift */; };
 		F3A7CF1F2C8C4E4A00413400 /* OtherModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B2A0129FFD6AB006E5FD2 /* OtherModels.swift */; };
 		F3A7CF222C8C4E9700413400 /* MailCover in Frameworks */ = {isa = PBXBuildFile; productRef = F3A7CF212C8C4E9700413400 /* MailCover */; };
@@ -1972,7 +1968,6 @@
 		F3A123552A667804008E3E20 /* LogMetaParent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogMetaParent.swift; sourceTree = "<group>"; };
 		F3A1D2302A201C570053261E /* ServerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerState.swift; sourceTree = "<group>"; };
 		F3A1D2342A201CBB0053261E /* PlanSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanSpec.swift; sourceTree = "<group>"; };
-		F3A1D2372A2024E10053261E /* PlanHints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanHints.swift; sourceTree = "<group>"; };
 		F3A31B042B0B144200F89C51 /* ServerListNodeFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListNodeFilter.swift; sourceTree = "<group>"; };
 		F3A31B082B0B161D00F89C51 /* CloudKeyCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKeyCard.swift; sourceTree = "<group>"; };
 		F3A391B929DB5E6900591C84 /* Cache Expiration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache Expiration.swift"; sourceTree = "<group>"; };
@@ -2993,7 +2988,6 @@
 				F3A1D2342A201CBB0053261E /* PlanSpec.swift */,
 				F3E8415529FECB6800609DA3 /* PlanSticker.swift */,
 				F3D3DBD029B8007B00096115 /* PlanListTopbar.swift */,
-				F3A1D2372A2024E10053261E /* PlanHints.swift */,
 				F36EBAFA2E6EF10700308DC9 /* Models */,
 				F3202CE52D562A650030B3CC /* Lists */,
 				F3202D172D562B290030B3CC /* Cards */,
@@ -4830,7 +4824,6 @@
 				F3A31B092B0B161D00F89C51 /* CloudKeyCard.swift in Sources */,
 				F38F9E132CE7647D0033EFE3 /* Image Playground.swift in Sources */,
 				F37266AA29D71A1B005FD103 /* File Icon.swift in Sources */,
-				F3A1D2382A2024E10053261E /* PlanHints.swift in Sources */,
 				F31BA5A3295902610006D126 /* Console Tab.swift in Sources */,
 				F3C9D8602B319B9E00265492 /* Permission Card.swift in Sources */,
 				F3287A7B2B10A17E001AFE54 /* Widget Live Activity.swift in Sources */,
@@ -5413,7 +5406,6 @@
 				F36D53332A05B8A9007324C6 /* Folder Path.swift in Sources */,
 				F38F9E2A2CEB33510033EFE3 /* QuickLook File VM.swift in Sources */,
 				F3AF91CE2B423A26001D8F80 /* SSH Create View.swift in Sources */,
-				F3A1D2392A2024E10053261E /* PlanHints.swift in Sources */,
 				F3464D242A86397E00188B0C /* Power Signal App Enum.swift in Sources */,
 				F36B73A82C8B0B7B00E858FE /* Audio Player View.swift in Sources */,
 				F36D532B2A05B875007324C6 /* Backup List.swift in Sources */,
@@ -5658,7 +5650,6 @@
 				F3255E172C9049AF008E04DE /* Settings Button.swift in Sources */,
 				F3A7CF632C8CA5B900413400 /* CloudKeyCard.swift in Sources */,
 				F36B14AA2DC632D9008C1AF9 /* UserDefaults.swift in Sources */,
-				F3A7CF1D2C8C4E4A00413400 /* PlanHints.swift in Sources */,
 				F3202CE12D562A620030B3CC /* PlanListGame.swift in Sources */,
 				F3A7CF1E2C8C4E4A00413400 /* PlanView.swift in Sources */,
 				F3E98C022E6A5F4C0019439F /* ServerCardLayout.swift in Sources */,
@@ -5736,7 +5727,6 @@
 				F3202D0C2D562AE30030B3CC /* PlanListWeb.swift in Sources */,
 				F3202C852D5590D30030B3CC /* PlanListVM.swift in Sources */,
 				F3202C862D5590D30030B3CC /* PlanListTopbar.swift in Sources */,
-				F3202C872D5590D30030B3CC /* PlanHints.swift in Sources */,
 				F3202C882D5590D30030B3CC /* OtherModels.swift in Sources */,
 				F3202C892D5590D30030B3CC /* PlanSticker.swift in Sources */,
 				F3202C8A2D5590D30030B3CC /* PlanCard.swift in Sources */,
