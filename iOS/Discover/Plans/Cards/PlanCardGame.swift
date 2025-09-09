@@ -69,8 +69,11 @@ struct PlanCardGame: View {
                                 PlanSpec(cpu + "x", icon: "cpu")
                             }
                             
-                            PlanSpec("\(plan.memory) GB", icon: "memorychip")
-                            PlanSpec("\(plan.disk) GB", icon: "internaldrive")
+                            if let ram = plan.memoryGB {
+                                PlanSpec("\(ram) GB", icon: "memorychip")
+                            }
+                            
+                            PlanSpec("\(plan.diskGB) GB", icon: "internaldrive")
                             
                             //                        Spacer()
                             //

@@ -21,4 +21,16 @@ struct UniversalPlan: Identifiable, Decodable {
     let whmcsLink: String
     let enabled: Bool
     let site: Int?
+    
+    var memoryGB: Double? {
+        if let memory {
+            Double(memory) / 1024
+        } else {
+            nil
+        }
+    }
+    
+    var diskGB: Int {
+        disk / 1024
+    }
 }

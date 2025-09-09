@@ -65,13 +65,19 @@ struct PlanCardCloud: View {
                         Spacer()
                         
                         HStack {
-                            PlanSpec("\(plan.memory) GB", icon: "memorychip")
+                            if let ram = plan.memoryGB {
+                                PlanSpec("\(ram) GB", icon: "memorychip")
+                            }
                             
-                            PlanSpec("\(plan.cpu)x", icon: "cpu")
+                            if let cpu = plan.cpu {
+                                PlanSpec("\(cpu)x", icon: "cpu")
+                            }
                             
-                            PlanSpec("\(plan.disk) GB", icon: "internaldrive")
+                            PlanSpec("\(plan.diskGB) GB", icon: "internaldrive")
                             
-                            PlanSpec("\(plan.network) Mbit/s", icon: "internaldrive")
+                            if let network = plan.network {
+                                PlanSpec("\(network) Mbit/s", icon: "internaldrive")
+                            }
                             
                             //                        Spacer()
                             //

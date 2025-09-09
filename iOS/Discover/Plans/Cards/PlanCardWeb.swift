@@ -65,7 +65,7 @@ struct PlanCardWeb: View {
                         Spacer()
                         
                         HStack {
-                            PlanSpec("\(plan.disk) GB", icon: "internaldrive")
+                            PlanSpec("\(plan.diskGB) GB", icon: "internaldrive")
                             
                             if let databases = plan.databases {
                                 PlanSpec("\(databases)", icon: "server.rack")
