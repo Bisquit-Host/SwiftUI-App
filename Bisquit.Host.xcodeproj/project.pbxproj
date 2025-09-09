@@ -1025,7 +1025,6 @@
 		F3A7CF632C8CA5B900413400 /* CloudKeyCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A31B082B0B161D00F89C51 /* CloudKeyCard.swift */; };
 		F3A7CF642C8CA5CF00413400 /* Tip Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A800312A7313E900CAC40B /* Tip Cloud Keys.swift */; };
 		F3A7CF652C8CA5FE00413400 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35FEB062B09F003004DA05D /* APIKey.swift */; };
-		F3A7CF662A44F44A00331B51 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF652A44F44A00331B51 /* AuthView.swift */; };
 		F3A7CF662C8CA60E00413400 /* CloudKeyContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300892E2B3DC4B20051476C /* CloudKeyContextMenu.swift */; };
 		F3A7CF682C8DF3C900413400 /* Video File VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF672C8DF3C900413400 /* Video File VM.swift */; };
 		F3A7CF692C8DF3C900413400 /* Video File VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF672C8DF3C900413400 /* Video File VM.swift */; };
@@ -1983,7 +1982,6 @@
 		F3A7CEEB2C8BB77500413400 /* Server Card Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Card Parent.swift"; sourceTree = "<group>"; };
 		F3A7CEFD2C8BB97400413400 /* Server List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server List.swift"; sourceTree = "<group>"; };
 		F3A7CF012C8BBB4700413400 /* ServerCardContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCardContextMenu.swift; sourceTree = "<group>"; };
-		F3A7CF652A44F44A00331B51 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		F3A7CF672C8DF3C900413400 /* Video File VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Video File VM.swift"; sourceTree = "<group>"; };
 		F3A7CF6A2A44F6E000331B51 /* CircularGauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularGauge.swift; sourceTree = "<group>"; };
 		F3A7CF6F2A44FD5300331B51 /* ServerCardParent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCardParent.swift; sourceTree = "<group>"; };
@@ -3436,14 +3434,6 @@
 			path = "Server List";
 			sourceTree = "<group>";
 		};
-		F3A7CF6C2A44FCE700331B51 /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				F3A7CF652A44F44A00331B51 /* AuthView.swift */,
-			);
-			path = Auth;
-			sourceTree = "<group>";
-		};
 		F3A7CF6E2A44FD0100331B51 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -3537,7 +3527,6 @@
 				F3BD76FC2A43C892003E7385 /* Assets.xcassets */,
 				F3F2BBA62A540C4D00D44CA6 /* Start Page */,
 				F3317AEB2A45E25500CA104D /* Guide */,
-				F3A7CF6C2A44FCE700331B51 /* Auth */,
 				F3A7CF692A44F6CA00331B51 /* Server List */,
 				F38928212A44182400561CDF /* Panel */,
 				F3A7CF6E2A44FD0100331B51 /* Settings */,
@@ -5742,7 +5731,6 @@
 				F335F6E82DD3568200D743FF /* FileTab Context Menu.swift in Sources */,
 				F32FD71C2B1E044000723B88 /* Ansi.swift in Sources */,
 				F320DDA52B704E3C00957D92 /* Preview Property.swift in Sources */,
-				F3A7CF662A44F44A00331B51 /* AuthView.swift in Sources */,
 				F348C6E42A5438EB002D5BD6 /* App Container.swift in Sources */,
 				F3FC99162C65888900150823 /* TempDir.swift in Sources */,
 				F3F2BBA52A540B8800D44CA6 /* StartPage.swift in Sources */,
