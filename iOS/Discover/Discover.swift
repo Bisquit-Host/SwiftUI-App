@@ -12,73 +12,73 @@ struct Discover: View {
                 Button {
                     sheetConfigurations = true
                 } label: {
-                    DiscoverCardLayout("Configurations", subtitle: "Available to buy", image: .server)
+                    DiscoverCardLabel("Configurations", subtitle: "Available to buy", image: .server)
                 }
                 
                 DiscoverCard("https://my.bisquit.host/login") {
-                    DiscoverCardLayout("Support", subtitle: "Me Potato, me HELP", image: .support)
+                    DiscoverCardLabel("Support", subtitle: "Me Potato, me HELP", image: .support)
                 }
                 
                 DiscoverCard("https://status.bisquit.host/status/bisquithost") {
-                    DiscoverCardLayout("Status", subtitle: "System", image: .status)
+                    DiscoverCardLabel("Status", subtitle: "System", image: .status)
                 }
                 
                 Button {
                     openSafari("https://t.me/bisquit_host_chat")
                 } label: {
-                    DiscoverCardLayout("Telegram", subtitle: "Channel", image: .telegram)
+                    DiscoverCardLabel("Telegram", subtitle: "Channel", image: .telegram)
                 }
                 
                 Button {
                     openSafari("https://discord.com/invite/kerMT2r9rz")
                 } label: {
-                    DiscoverCardLayout("Discord", subtitle: "Guild", image: .discord)
+                    DiscoverCardLabel("Discord", subtitle: "Guild", image: .discord)
                 }
                 
                 Button {
                     openSafari("https://my.bisquit.host/discord.php")
                 } label: {
-                    DiscoverCardLayout("Client role", subtitle: "Guild", image: .discord)
+                    DiscoverCardLabel("Client role", subtitle: "Guild", image: .discord)
                 }
                 
                 Button {
                     openSafari("https://testflight.apple.com/join/mkaX3AO1")
                 } label: {
-                    DiscoverCardLayout("TestFlight", subtitle: "Beta Testing", image: .testFlight)
+                    DiscoverCardLabel("TestFlight", subtitle: "Beta Testing", image: .testFlight)
                 }
                 
                 Button {
                     openSafari("https://apps.apple.com/au/developer/sergei-saliukov/id1639409936")
                 } label: {
-                    DiscoverCardLayout("More apps", subtitle: "By Bisquit.Host", image: .logo)
+                    DiscoverCardLabel("More apps", subtitle: "By Bisquit.Host", image: .logo)
                 }
                 
                 Button {
                     showMailCover = true
                 } label: {
-                    DiscoverCardLayout("Feedback", subtitle: "Feature requests", image: .mail)
+                    DiscoverCardLabel("Feedback", subtitle: "Feature requests", image: .mail)
                 }
                 
                 DiscoverCard("https://wiki.bisquit.host") {
-                    DiscoverCardLayout("Wiki", subtitle: "How to...?", image: .wiki)
+                    DiscoverCardLabel("Wiki", subtitle: "How to...?", image: .wiki)
                 }
                 
                 DiscoverCard("https://mgr.bisquit.host") {
-                    DiscoverCardLayout("Panel", subtitle: "Web", image: .safari)
+                    DiscoverCardLabel("Panel", subtitle: "Web", image: .safari)
                 }
                 
                 NavigationLink {
                     MapView()
                 } label: {
-                    DiscoverCardLayout("Maps", subtitle: "Best places", image: .maps)
+                    DiscoverCardLabel("Maps", subtitle: "Best places", image: .maps)
                 }
                 
                 DiscoverCard("https://bisquit.host/policy.pdf") {
-                    DiscoverCardLayout("Privacy Policy", subtitle: "Document", image: .docBlue)
+                    DiscoverCardLabel("Privacy Policy", subtitle: "Document", image: .docBlue)
                 }
                 
                 DiscoverCard("https://bisquit.host/terms.pdf") {
-                    DiscoverCardLayout("ToS", subtitle: "Document", image: .docYellow)
+                    DiscoverCardLabel("ToS", subtitle: "Document", image: .docYellow)
                 }
             }
             .padding(.vertical, 20)

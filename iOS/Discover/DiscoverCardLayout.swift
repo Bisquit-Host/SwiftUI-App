@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct DiscoverCardLayout: View {
+struct DiscoverCardLabel: View {
     private let title, subtitle: LocalizedStringKey
     private let image: ImageResource
     
