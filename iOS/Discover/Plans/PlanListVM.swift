@@ -3,8 +3,7 @@ import ScrechKit
 @Observable
 final class PlanListVM {
     private(set) var gamePlans: [UniversalPlan] = []
-    private(set) var mcruPlans: [UniversalPlan] = []
-    private(set) var vdsPlans: [UniversalPlan] = []
+    private(set) var cloudPlans: [UniversalPlan] = []
     private(set) var webPlans: [UniversalPlan] = []
     private(set) var botPlans: [UniversalPlan] = []
     
@@ -17,16 +16,8 @@ final class PlanListVM {
     }
     
     func fetchAllPlans() async {
-        //        mcPlans = await fetchPlans(.game).filter {
-        //            $0.locationId == 1
-        //        }
-        //
-        //        mcruPlans = await fetchPlans(.game).filter {
-        //            $0.locationId == 0
-        //        }
-        
-        if let fetchedVdsPlans = await fetchPlans(.cloud)?.result.packages {
-            vdsPlans = fetchedVdsPlans
+        if let fetchedCloudPlans = await fetchPlans(.cloud)?.result.packages {
+            cloudPlans = fetchedCloudPlans
         }
         
         if let fetchedBotPlans = await fetchPlans(.bot)?.result.packages {

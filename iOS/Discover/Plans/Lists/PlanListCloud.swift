@@ -4,7 +4,7 @@ struct PlanListCloud: View {
     @Environment(PlanListVM.self) private var vm
     
     var body: some View {
-        ForEach(vm.vdsPlans) {
+        ForEach(vm.cloudPlans) {
             PlanCardCloud($0)
         }
     }

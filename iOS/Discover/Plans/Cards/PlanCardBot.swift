@@ -74,15 +74,16 @@ struct PlanCardBot: View {
                             }
                             
                             PlanSpec("\(plan.diskGB) GB", icon: "internaldrive")
-                            
-                            //                        Spacer()
-                            //
-                            //                        Text(customRound(price) + ValueStore().preferredCurrency)
-                            //                            .subheadline(.bold)
-                            //                            .padding(.vertical, 4)
-                            //                            .padding(.horizontal, 10)
-                            //                            .foregroundStyle(.white)
-                            //     .background(.blue, in: .capsule)
+//#if DEBUG
+//                            Spacer()
+//                            
+//                            Text(customRound(price) + store.preferredCurrency)
+//                                .subheadline(.bold)
+//                                .padding(.vertical, 4)
+//                                .padding(.horizontal, 10)
+//                                .foregroundStyle(.white)
+//                                .background(.blue, in: .capsule)
+//#endif
                         }
                     }
                     

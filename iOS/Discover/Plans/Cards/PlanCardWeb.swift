@@ -70,15 +70,16 @@ struct PlanCardWeb: View {
                             if let databases = plan.databases {
                                 PlanSpec("\(databases)", icon: "server.rack")
                             }
-                            
-                            //                        Spacer()
-                            //
-                            //                        Text(customRound(price) + ValueStore().preferredCurrency)
-                            //                            .subheadline(.bold)
-                            //                            .padding(.vertical, 4)
-                            //                            .padding(.horizontal, 10)
-                            //                            .foregroundStyle(.white)
-                            //     .background(.blue, in: .capsule)
+//#if DEBUG
+//                            Spacer()
+//                            
+//                            Text(customRound(price) + store.preferredCurrency)
+//                                .subheadline(.bold)
+//                                .padding(.vertical, 4)
+//                                .padding(.horizontal, 10)
+//                                .foregroundStyle(.white)
+//                                .background(.blue, in: .capsule)
+//#endif
                         }
                     }
                     

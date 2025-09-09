@@ -78,15 +78,16 @@ struct PlanCardCloud: View {
                             if let network = plan.network {
                                 PlanSpec("\(network) Mbit/s", icon: "internaldrive")
                             }
-                            
-                            //                        Spacer()
-                            //
-                            //                        Text(customRound(price) + ValueStore().preferredCurrency)
-                            //                            .subheadline(.bold)
-                            //                            .padding(.vertical, 4)
-                            //                            .padding(.horizontal, 10)
-                            //                            .foregroundStyle(.white)
-                            //     .background(.blue, in: .capsule)
+//#if DEBUG
+//                            Spacer()
+//                            
+//                            Text(customRound(price) + store.preferredCurrency)
+//                                .subheadline(.bold)
+//                                .padding(.vertical, 4)
+//                                .padding(.horizontal, 10)
+//                                .foregroundStyle(.white)
+//                                .background(.blue, in: .capsule)
+//#endif
                         }
                     }
                     
