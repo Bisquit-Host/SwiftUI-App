@@ -37,7 +37,7 @@ struct ServerCardLayout: View {
                     .foregroundStyle(store.compactServerList ? .tertiary : .primary)
             }
         }
-        .navigationTitle("Server Card layout")
+        .navigationTitle("Server card layout")
     }
 }
 
