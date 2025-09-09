@@ -17,7 +17,7 @@ extension UIImage {
         // 1) less pixels to deal with means faster calculation and a resized image still has the "gist" of the colors, and
         // 2) the image we're dealing with may come in any of a variety of color formats (CMYK, ARGB, RGBA, etc.) which complicates things, and redrawing it normalizes that into a base color format we can deal with
         // 40x40 is a good size to resize to still preserve quite a bit of detail but not have too many pixels to deal with
-        // Aspect ratio is irrelevant for just finding average color.
+        // Aspect ratio is irrelevant for just finding average color
         let size = CGSize(width: 40, height: 40)
         
         let width = Int(size.width)
@@ -33,7 +33,15 @@ extension UIImage {
         // and has 4 bytes per pixel, the total bytes per row is 4n
         // That gives us 2^8 = 256 color variations for each RGB channel or 256 * 256 * 256 = ~16.7M color options in total
         // That seems like a lot, but lots of HDR movies are in 10 bit, which is (2^10)^3 = 1 billion color options!
-        guard let context = CGContext(data: nil, width: width, height: height, bitsPerComponent: 8, bytesPerRow: width * 4, space: colorSpace, bitmapInfo: bitmapInfo) else {
+        guard let context = CGContext(
+            data: nil,
+            width: width,
+            height: height,
+            bitsPerComponent: 8,
+            bytesPerRow: width * 4,
+            space: colorSpace,
+            bitmapInfo: bitmapInfo
+        ) else {
             return nil
         }
         
