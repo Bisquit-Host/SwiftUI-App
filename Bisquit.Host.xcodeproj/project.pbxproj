@@ -2739,6 +2739,7 @@
 				F3202D182D562B980030B3CC /* PlanCardCloud.swift */,
 				F3202D1F2D562B990030B3CC /* PlanCardWeb.swift */,
 				F3202D262D562B9A0030B3CC /* PlanCardBot.swift */,
+				F3A1D2342A201CBB0053261E /* PlanSpec.swift */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
@@ -2980,7 +2981,6 @@
 				F31BA58E295901B60006D126 /* PlanView.swift */,
 				F31BA590295901C00006D126 /* PlanListVM.swift */,
 				F31C8D842E70E79D00D16B08 /* PlanViewList.swift */,
-				F3A1D2342A201CBB0053261E /* PlanSpec.swift */,
 				F3D3DBD029B8007B00096115 /* PlanViewTopbar.swift */,
 				F36EBAFA2E6EF10700308DC9 /* Models */,
 				F3202CE52D562A650030B3CC /* Lists */,
