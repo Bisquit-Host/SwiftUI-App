@@ -5,7 +5,7 @@ import LocalAuthentication
 final class BiometryVM {
     private let context = LAContext()
     
-    private(set) var bioType = "Unknown"
+    private(set) var bioType: LocalizedStringKey = ""
     private(set) var canEvaluatePolicy = false
     private(set) var biometryType: LABiometryType = .none
     

@@ -14,27 +14,24 @@ struct BiometryButton: View {
     }
     
     var body: some View {
-        Toggle(isOn: $store.useBiometry) {
-            Label(
-                vm.biometryType == .none ? "Biometry unavailable" : vm.bioType,
-                systemImage: icon
-            )
-            
-            if vm.biometryType != .none {
+        if vm.biometryType != .none {
+            Toggle(isOn: $store.useBiometry) {
+                Label(vm.bioType, systemImage: icon)
+                
                 Button("Learn more...") {
                     vm.sheetBio = true
                 }
                 .footnote()
                 .foregroundStyle(.blue.secondary)
             }
-        }
-        .disabled(vm.bioType == "Unknown")
-        .foregroundColor(vm.bioType == "Unknown" ? .gray : .none)
-        .task {
-            vm.defineBiometryType()
-        }
-        .sheet($vm.sheetBio) {
-            BiometryUsageView()
+            .disabled(vm.bioType == "Unknown")
+            .foregroundColor(vm.bioType == "Unknown" ? .gray : .none)
+            .task {
+                vm.defineBiometryType()
+            }
+            .sheet($vm.sheetBio) {
+                BiometryUsageView()
+            }
         }
     }
 }
