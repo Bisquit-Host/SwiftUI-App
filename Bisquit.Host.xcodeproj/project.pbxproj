@@ -361,10 +361,10 @@
 		F32E88C92AF83E3F00959D49 /* ServerListAdminButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88C72AF83E3F00959D49 /* ServerListAdminButton.swift */; };
 		F32E88D12AF8494100959D49 /* ServerListFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88D02AF8494100959D49 /* ServerListFilter.swift */; };
 		F32E88D22AF8494100959D49 /* ServerListFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88D02AF8494100959D49 /* ServerListFilter.swift */; };
-		F32F2CCE2D8F6FCE007CF4DE /* DiscoverCardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CCD2D8F6FCE007CF4DE /* DiscoverCardLayout.swift */; };
-		F32F2CCF2D8F6FCE007CF4DE /* DiscoverCardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CCD2D8F6FCE007CF4DE /* DiscoverCardLayout.swift */; };
-		F32F2CD02D8F6FCE007CF4DE /* DiscoverCardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CCD2D8F6FCE007CF4DE /* DiscoverCardLayout.swift */; };
-		F32F2CD22D8F6FCE007CF4DE /* DiscoverCardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CCD2D8F6FCE007CF4DE /* DiscoverCardLayout.swift */; };
+		F32F2CCE2D8F6FCE007CF4DE /* DiscoverCardLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CCD2D8F6FCE007CF4DE /* DiscoverCardLabel.swift */; };
+		F32F2CCF2D8F6FCE007CF4DE /* DiscoverCardLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CCD2D8F6FCE007CF4DE /* DiscoverCardLabel.swift */; };
+		F32F2CD02D8F6FCE007CF4DE /* DiscoverCardLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CCD2D8F6FCE007CF4DE /* DiscoverCardLabel.swift */; };
+		F32F2CD22D8F6FCE007CF4DE /* DiscoverCardLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CCD2D8F6FCE007CF4DE /* DiscoverCardLabel.swift */; };
 		F32F2CD42D8F6FDC007CF4DE /* AvgColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CD32D8F6FDC007CF4DE /* AvgColor.swift */; };
 		F32F2CD52D8F6FDC007CF4DE /* AvgColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CD32D8F6FDC007CF4DE /* AvgColor.swift */; };
 		F32F2CD62D8F6FDC007CF4DE /* AvgColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32F2CD32D8F6FDC007CF4DE /* AvgColor.swift */; };
@@ -1746,7 +1746,7 @@
 		F32DB8A729AE6B800074E045 /* StartPageFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPageFooter.swift; sourceTree = "<group>"; };
 		F32E88C72AF83E3F00959D49 /* ServerListAdminButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListAdminButton.swift; sourceTree = "<group>"; };
 		F32E88D02AF8494100959D49 /* ServerListFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerListFilter.swift; sourceTree = "<group>"; };
-		F32F2CCD2D8F6FCE007CF4DE /* DiscoverCardLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCardLayout.swift; sourceTree = "<group>"; };
+		F32F2CCD2D8F6FCE007CF4DE /* DiscoverCardLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCardLabel.swift; sourceTree = "<group>"; };
 		F32F2CD32D8F6FDC007CF4DE /* AvgColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvgColor.swift; sourceTree = "<group>"; };
 		F32F2CD92D8F7047007CF4DE /* Discover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Discover.swift; sourceTree = "<group>"; };
 		F32F2CFF2D908E1D007CF4DE /* Background Image Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Background Image Helper.swift"; sourceTree = "<group>"; };
@@ -3466,7 +3466,7 @@
 			isa = PBXGroup;
 			children = (
 				F32F2CD92D8F7047007CF4DE /* Discover.swift */,
-				F32F2CCD2D8F6FCE007CF4DE /* DiscoverCardLayout.swift */,
+				F32F2CCD2D8F6FCE007CF4DE /* DiscoverCardLabel.swift */,
 				F32F2CD32D8F6FDC007CF4DE /* AvgColor.swift */,
 				F39E0A932C1BA06C00C4E906 /* DiscoverCard.swift */,
 				F3565B7C295E5F9E0092874A /* Plans */,
@@ -4962,7 +4962,7 @@
 				F35B89BE2A725710000B5EEF /* Tip Suspended Server.swift in Sources */,
 				F310BB392A54E31700843F14 /* ServerListVM.swift in Sources */,
 				F3E1D3F22B320A6A009B7062 /* Permission Group Header.swift in Sources */,
-				F32F2CCE2D8F6FCE007CF4DE /* DiscoverCardLayout.swift in Sources */,
+				F32F2CCE2D8F6FCE007CF4DE /* DiscoverCardLabel.swift in Sources */,
 				F3E98C012E6A5F4C0019439F /* ServerCardLayout.swift in Sources */,
 				F31BA5B0295902C70006D126 /* Folder Path.swift in Sources */,
 				F3D902DF29DC445A004E76C9 /* Cache Limit.swift in Sources */,
@@ -5367,7 +5367,7 @@
 				F398E0E12CEB562400AA4DD7 /* Audio Player VM.swift in Sources */,
 				F36B14672DC39F6A008C1AF9 /* Debug Settings Tips.swift in Sources */,
 				F389BB682A05B5C100911EBF /* Guide.swift in Sources */,
-				F32F2CD02D8F6FCE007CF4DE /* DiscoverCardLayout.swift in Sources */,
+				F32F2CD02D8F6FCE007CF4DE /* DiscoverCardLabel.swift in Sources */,
 				F36D53252A05B85B007324C6 /* Data Tab.swift in Sources */,
 				F367977F2A3A5AB6009F2788 /* LogVM.swift in Sources */,
 				F3EE6D7B2D9E8E2000F0A633 /* Bakground Task.swift in Sources */,
@@ -5597,7 +5597,7 @@
 				F36B14B02DC63324008C1AF9 /* GameKit.swift in Sources */,
 				F3AB1DF52D79C42B00387164 /* MetricKit Manager.swift in Sources */,
 				F3A7CEEA2C8BB74D00413400 /* ServerListGrid.swift in Sources */,
-				F32F2CCF2D8F6FCE007CF4DE /* DiscoverCardLayout.swift in Sources */,
+				F32F2CCF2D8F6FCE007CF4DE /* DiscoverCardLabel.swift in Sources */,
 				F3E98C292E6BB4E40019439F /* Place.swift in Sources */,
 				F36EBAFE2E6EF11100308DC9 /* UniversalPlan.swift in Sources */,
 				F3202D072D562AE20030B3CC /* PlanListCloud.swift in Sources */,
@@ -5802,7 +5802,7 @@
 				F32F2CDA2D8F7047007CF4DE /* Discover.swift in Sources */,
 				F335F6E72DD3564A00D743FF /* FileLink.swift in Sources */,
 				F32FD7182B1E042500723B88 /* Websocket.swift in Sources */,
-				F32F2CD22D8F6FCE007CF4DE /* DiscoverCardLayout.swift in Sources */,
+				F32F2CD22D8F6FCE007CF4DE /* DiscoverCardLabel.swift in Sources */,
 				F32FD7212B1E065500723B88 /* Network Calls.swift in Sources */,
 				F35FEB142B0A2C8F004DA05D /* ServerState.swift in Sources */,
 				F37B90792BFEA00300597624 /* PanelOrnamentInfo.swift in Sources */,
