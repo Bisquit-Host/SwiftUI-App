@@ -16,7 +16,7 @@ struct LogTopbar: View {
                     
                     Divider()
                         .background(.primary)
-                        .padding(.leading)
+                        .padding(.leading, 20)
                     
                     LogTopbarCard(
                         title: "Users Logged",
@@ -28,7 +28,7 @@ struct LogTopbar: View {
                     if let daysLogged = vm.daysLogged {
                         Divider()
                             .background(.primary)
-                            .padding(.leading)
+                            .padding(.leading, 20)
                         
                         LogTopbarCard(
                             title: "Days Logged",
