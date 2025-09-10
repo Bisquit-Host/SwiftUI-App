@@ -7,7 +7,10 @@ struct ConsoleMessage: View {
     private let message: AttributedString
     private let index: Range<Array<AttributedString>.Index>.Element
     
-    init(_ message: AttributedString, index: Range<Array<AttributedString>.Index>.Element) {
+    init(
+        _ message: AttributedString,
+        index: Range<Array<AttributedString>.Index>.Element
+    ) {
         self.message = message
         self.index = index
     }
@@ -19,7 +22,7 @@ struct ConsoleMessage: View {
             .fontDesign(fontDesign)
             .fontSize(vm.fontSize)
             .multilineTextAlignment(.leading)
-            .task {
+            .onAppear {
                 if index == panelVM.searchedMessages.count - 1 {
                     vm.lastMessageIndex = index
                 }

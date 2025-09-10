@@ -2,11 +2,9 @@ import ScrechKit
 import Kingfisher
 
 struct CacheExpiration: View {
-    @Environment(CacheVM.self)
-    private var cache
+    @Environment(CacheVM.self) private var cache
     
-    @AppStorage("cacheExpiration")
-    private var cacheExpiration: CacheExpiration = .month
+    @AppStorage("cacheExpiration") private var cacheExpiration: CacheExpiration = .month
     
     private let intervals: [CacheExpiration] = [
         .month, .year, .never
@@ -22,7 +20,12 @@ struct CacheExpiration: View {
             }
         } label: {
             HStack {
-                Text("Expiration")
+                Label {
+                    Text("Expiration")
+                } icon: {
+                    Image(systemName: "clock")
+                        .foregroundStyle(.blue)
+                }
                 
                 Spacer()
                 
@@ -34,7 +37,7 @@ struct CacheExpiration: View {
                     .tertiary()
             }
         }
-        .foregroundStyle(.primary)
+        .foregroundStyle(.foreground)
     }
     
     private func updateCacheExpiration(_ expiration: CacheExpiration) {
@@ -42,7 +45,7 @@ struct CacheExpiration: View {
         
         switch expiration {
         case .month: newCacheExpiration = .days(30)
-        case .year: newCacheExpiration = .days(365)
+        case .year:  newCacheExpiration = .days(365)
         case .never: newCacheExpiration = .never
         }
         
@@ -54,4 +57,5 @@ struct CacheExpiration: View {
     List {
         CacheExpiration()
     }
+    .environment(CacheVM())
 }

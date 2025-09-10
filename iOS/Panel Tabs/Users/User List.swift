@@ -1,35 +1,23 @@
-import SwiftUI
+import ScrechKit
 
 struct UserList: View {
     @Environment(UsersVM.self) private var vm
-    
-    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         @Bindable var vm = vm
         
         List {
-            ForEach(vm.users) { user in
-                Section {
-                    UserCard(user)
-                }
-                .transparentSection()
+            ForEach(vm.users) {
+                UserCard($0)
             }
+            .onDelete(perform: delete)
 #if os(iOS)
             .listSectionSpacing(-10)
 #endif
         }
         .navigationTitle("Users")
         .environment(vm)
-#if !os(tvOS)
-        .toolbarTitleDisplayMode(.large)
-#endif
-        .transparentList()
-        .task {
-            // Both funcs will run in parallel
-            // Shouldn't change same props,
-            // Otherwise will cause a data race
-            
+        .refreshableTask {
             let usersTask = Task {
                 await vm.fetchUsers()
             }
@@ -54,21 +42,15 @@ struct UserList: View {
             }
         }
         .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                DismissButton {
-                    dismiss()
-                }
+            ToolbarItem(placement: .bottomBar) {
+                DismissButton()
             }
-            
-            ToolbarItem(placement: .topBarTrailing) {
-                Button {
+#if !os(watchOS) && !os(tvOS)
+            ToolbarSpacer(.flexible, placement: .bottomBar)
+#endif
+            ToolbarItem(placement: .bottomBar) {
+                SFButton("person.crop.circle.badge.plus") {
                     vm.sheetInvitation = true
-                } label: {
-                    Image(systemName: "person.crop.circle.badge.plus")
-                        .foregroundStyle(.foreground)
-                        .footnote(.bold)
-                        .frame(35)
-                        .background(.ultraThinMaterial, in: .circle)
                 }
             }
         }
@@ -90,5 +72,5 @@ struct UserList: View {
         .sheet {
             UserList()
         }
-        .environment(UsersVM("2fb25a50"))
+        .environment(UsersVM(""))
 }

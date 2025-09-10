@@ -3,7 +3,7 @@ import SwiftUI
 struct DynamicIslandBadge: View {
     var body: some View {
         HStack(spacing: 5) {
-            Image(.bitquit)
+            Image(.bisquit)
                 .resizable()
                 .frame(20)
                 .shadow(color: .black.opacity(0.5), radius: 2)
@@ -11,7 +11,7 @@ struct DynamicIslandBadge: View {
             Text("Bisquit.Host")
                 .semibold()
         }
-        .font(.footnote)
+        .footnote()
         .frame(width: 120, height: 32)
         .background(.orange.gradient)
         .foregroundStyle(.white.gradient)

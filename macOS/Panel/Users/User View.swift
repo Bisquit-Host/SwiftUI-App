@@ -39,14 +39,13 @@ struct UserView: View {
             PermissionList($user)
                 .environment(vm)
         }
+        .navigationTitle(user.username)
+        .scrollIndicators(.never)
         .formStyle(.grouped)
         .frame(height: 600)
         .refreshable {
             await vm.userDetails($user)
         }
-        .navigationTitle(user.username)
-        .toolbarTitleDisplayMode(.inline)
-        .scrollIndicators(.never)
     }
     
     private func removePrefix(_ string: String) -> String {

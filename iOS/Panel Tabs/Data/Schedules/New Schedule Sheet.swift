@@ -72,4 +72,5 @@ struct NewScheduleSheet: View {
 
 #Preview {
     NewScheduleSheet()
+        .environment(ScheduleVM(""))
 }

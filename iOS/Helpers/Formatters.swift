@@ -27,7 +27,3 @@ func getImageUrl(_ imageName: String) -> URL {
     
     return url
 }
-
-func stringToUrl(_ string: String) -> URL? {
-    URL(string: string)
-}

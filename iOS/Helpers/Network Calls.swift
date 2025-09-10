@@ -12,10 +12,7 @@ final class PteroNet {
         }
     }
     
-    static func sendCommand(
-        _ id: String,
-        command: String
-    ) async {
+    static func sendCommand(_ id: String, command: String) async {
         do {
             try await serverCommandAPI(id, command: command)
         } catch {

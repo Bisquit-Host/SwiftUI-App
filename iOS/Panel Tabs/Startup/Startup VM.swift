@@ -8,11 +8,10 @@ final class StartupVM {
         self.id = id
     }
     
+    private(set) var startupCommand = ""
+    private(set) var rawStartupCommand = ""
     private(set) var startupVariables: [StartupVariable] = []
-    var startupCommand = ""
-    var rawStartupCommand = ""
-    
-    private var dockerImages: [String: String] = [:]
+    private(set) var dockerImages: [String: String] = [:]
     
     var sortedDockerImages: [(key: String, value: String)] {
         Array(dockerImages)

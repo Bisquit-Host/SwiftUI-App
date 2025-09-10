@@ -19,7 +19,6 @@ struct DataTab: View {
         
         List {
             BackupList(server)
-            //                .transparentSection()
                 .listRowBackground(Color.gray.opacity(0.2))
 #if os(tvOS)
             Divider()
@@ -30,11 +29,9 @@ struct DataTab: View {
             Divider()
 #else
             ScheduleList()
-            //                .transparentSection()
                 .listRowBackground(Color.gray.opacity(0.2))
 #endif
             DatabaseList(databaseLimit)
-            //                .transparentSection()
                 .listRowBackground(Color.gray.opacity(0.2))
         }
         .scrollIndicators(.hidden)
@@ -51,7 +48,6 @@ struct DataTab: View {
         .background(BackgroundImage())
         .scrollContentBackground(.hidden)
 #endif
-        .toolbarBackground(.visible, for: .tabBar)
         .alert("Create Database", isPresented: $databaseVM.alertCreate) {
             TextField("", text: $databaseVM.newDatabaseName)
                 .autocorrectionDisabled()
@@ -97,15 +93,15 @@ struct DataTab: View {
     }
 }
 
+fileprivate extension DataTab {
+    var databaseLimit: Int {
+        server.featureLimits.databases
+    }
+}
+
 #Preview {
     DataTab(sampleJSON(.serverListAttributes))
         .environment(BackupVM(""))
         .environment(DatabaseVM(""))
         .environment(ScheduleVM(""))
-}
-
-fileprivate extension DataTab {
-    var databaseLimit: Int {
-        server.featureLimits.databases
-    }
 }

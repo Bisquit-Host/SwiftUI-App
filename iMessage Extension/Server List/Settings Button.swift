@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 import PteroNet
 
 struct SettingsButton: View {
@@ -12,21 +12,21 @@ struct SettingsButton: View {
         @Bindable var vm = vm
         
         Menu {
-            MenuButton("Account", icon: "person.crop.circle") {
+            Button("Account", systemImage: "person.crop.circle") {
                 sheetAccount = true
             }
 #warning("iMessage: Settings and API-keys")
-            //            MenuButton("API-keys", icon: "key") {
+            //            Button("API-keys", systemImage: "key") {
             //                vm.sheetKeyStorage = true
             //            }
             //
-            //            MenuButton("Settings", icon: "gear") {
+            //            Button("Settings", systemImage: "gear") {
             //                sheetSettings = true
             //            }
             
             Divider()
             
-            //            MenuButton("Log out", role: .destructive, icon: "rectangle.portrait.and.arrow.right") {
+            //            Button("Log out", systemImage: "rectangle.portrait.and.arrow.right", role: .destructive) {
             //                main {
             //                    nav.clear()
             //                    store.isApiKeyValid = false
@@ -40,7 +40,7 @@ struct SettingsButton: View {
             AccountParent()
         }
         .sheet($sheetSettings) {
-            NavigationView {
+            NavigationStack {
                 SettingsView()
             }
         }

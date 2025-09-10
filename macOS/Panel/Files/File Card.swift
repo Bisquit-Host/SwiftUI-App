@@ -44,4 +44,5 @@ struct FileCard: View {
 
 //#Preview {
 //    FileCard()
+//        .environmentObject(ValueStore())
 //}

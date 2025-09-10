@@ -11,17 +11,17 @@ struct DatabaseContextMenu: View {
     }
     
     var body: some View {
-        MenuButton("Rotate password", icon: "lock.open.rotation") {
+        Button("Rotate password", systemImage: "lock.open.rotation") {
             Task {
                 await vm.rotatePassword(db.id)
             }
         }
         
-        Section {
-            MenuButton("Delete", role: .destructive, icon: "trash") {
-                Task {
-                    await vm.deleteDatabase(db.id)
-                }
+        Divider()
+        
+        Button("Delete", systemImage: "trash", role: .destructive) {
+            Task {
+                await vm.deleteDatabase(db.id)
             }
         }
     }

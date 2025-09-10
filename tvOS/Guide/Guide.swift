@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct Guide: View {
-    private let width = UIScreen.main.bounds.width
     private let steps = [
         GuideStep("Open the link, log in, and navigate to account settings", id: 1, image: .step0),
         GuideStep("Scroll down to the \"API/SSH\" section, enter a name for the API key, and tap \"Create\"", id: 2, image: .step1),
@@ -17,7 +16,7 @@ struct Guide: View {
                     Image(step.image)
                         .resizable()
                         .scaledToFit()
-                        .frame(width: width / 2)
+                        .frame(maxWidth: .infinity)
                     
                     VStack {
                         Text(step.text)
@@ -30,9 +29,10 @@ struct Guide: View {
                         }
                     }
                     .title(.semibold)
+                    .frame(maxWidth: .infinity)
                 }
                 .tabItem {
-                    Text("Step \(id)")
+                    Text(.step(id))
                 }
             }
         }

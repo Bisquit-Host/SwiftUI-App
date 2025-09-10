@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct PanelToolbarModifier: ViewModifier {
     @Environment(PanelVM.self) private var vm
@@ -6,48 +6,19 @@ struct PanelToolbarModifier: ViewModifier {
     
     @EnvironmentObject private var fileVM: FileTabVM
     @EnvironmentObject private var store: ValueStore
-    @Environment(\.dismiss) private var dismiss
     
     func body(content: Content) -> some View {
         content
             .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    DismissButton {
-                        dismiss()
-                    }
-                }
-                
-                ToolbarItemGroup(placement: .topBarTrailing) {
+                ToolbarItemGroup {
+                    // Console
                     if store.lastTabPanel == .console {
-                        Button {
-                            withAnimation {
-                                vm.enableConsoleSearch.toggle()
-                            }
-                            
-                            if vm.enableConsoleSearch {
-                                vm.searchRule = consoleVM.command
-                            }
-                        } label: {
-                            Image(systemName: vm.enableConsoleSearch ? "magnifyingglass.circle.fill" : "magnifyingglass")
-                                .fontSize(16)
-                                .frame(35)
-                                .background(.ultraThinMaterial, in: .circle)
-                        }
-                        .foregroundStyle(.primary)
-                        
-                        Button {
+                        SFButton("bold.italic.underline") {
                             consoleVM.inspectorPresented = true
-                        } label: {
-                            Image(systemName: "bold.italic.underline")
-                                .fontSize(10)
-                                .bold()
-                                .frame(35)
-                                .background(.ultraThinMaterial, in: .circle)
                         }
-                        .foregroundStyle(.primary)
-                        .padding(.horizontal, -10)
                     }
                     
+                    // Info
                     if store.lastTabPanel == .info {
                         PowerSwitchToolbar()
                         
@@ -58,34 +29,24 @@ struct PanelToolbarModifier: ViewModifier {
                         }
                     }
                     
+                    // Files
                     if store.lastTabPanel == .files {
-                        if #available(iOS 18.1, *) {
-                            ImagePlaygroundButton(fileVM.path)
+                        ImagePlaygroundButton(fileVM.path)
+                        
+                        SFButton("folder.badge.plus") {
+                            vm.alertNewFolder = true
                         }
                         
-                        Button {
-                            vm.alertNewFolder = true
-                        } label: {
-                            Image(systemName: "folder.badge.plus")
-                                .footnote(.bold)
-                                .frame(35)
-                                .background(.ultraThinMaterial, in: .circle)
-                        }
-                        .foregroundStyle(.primary)
-                        .padding(.horizontal, -10)
+                        UploadMenu("")
                     }
-                    
-                    Button {
-                        withAnimation(.easeOut) {
-                            vm.sheetSettings = true
-                        }
-                    } label: {
-                        Image(systemName: "ellipsis")
-                            .footnote(.bold)
-                            .frame(35)
-                            .background(.ultraThinMaterial, in: .circle)
+                }
+                
+                ToolbarSpacer()
+                
+                ToolbarItem {
+                    SFButton("ellipsis") {
+                        vm.sheetSettings = true
                     }
-                    .foregroundStyle(.primary)
                     .keyboardShortcut("S")
                 }
             }
@@ -94,6 +55,7 @@ struct PanelToolbarModifier: ViewModifier {
 
 extension View {
     func panelToolbar() -> some View {
-        self.modifier(PanelToolbarModifier())
+        self
+            .modifier(PanelToolbarModifier())
     }
 }

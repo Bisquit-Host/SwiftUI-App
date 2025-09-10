@@ -13,8 +13,8 @@ struct DatabaseList: View {
         @Bindable var vm = vm
         
         Section {
-            ForEach(vm.databases) { db in
-                DatabaseCard(db)
+            ForEach(vm.databases) {
+                DatabaseCard($0)
                     .environment(vm)
             }
             //            .onDelete { offsets in

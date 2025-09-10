@@ -2,8 +2,6 @@ import SwiftUI
 
 struct TextFile: View {
     @State private var vm: TextFileVM
-    @EnvironmentObject private var fileVm: FileTabVM
-    @Environment(\.dismiss) private var dismiss
     
     private let id, name, path: String
     
@@ -14,69 +12,24 @@ struct TextFile: View {
         vm = TextFileVM(id)
     }
     
-    private var showSaveButton: Bool {
-        vm.initialText != vm.text
-    }
-    
     var body: some View {
-        @Bindable var vm = vm
-        
         VStack {
-#if os(watchOS)
-            ScrollView {
-                Text(vm.text)
-            }
-#else
-            HighlightrTextView(
-                text: $vm.text
-                //                language: "swift"
-            )
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-#endif
+            TextFileEditor()
         }
         .navigationTitle(name)
         .task {
             await vm.getFileContents(path + name)
         }
         .toolbar {
-#if os(iOS)
-            if showSaveButton {
-                Button("Save") {
-                    Task {
-                        await vm.writeFile(vm.text, at: path + name)
-                    }
-                }
-                .animation(.default, value: showSaveButton)
-            }
-#endif
-            JsonFormatterButton()
-                .environment(vm)
-#if !os(watchOS)
-            Menu {
-#if !os(tvOS)
-                ShareLink(item: vm.text)
-                    .disabled(vm.text.isEmpty)
-#endif
-                Section {
-                    Button(role: .destructive) {
-                        Task {
-                            await fileVm.deleteFile(name, at: path) {
-                                dismiss()
-                            }
-                        }
-                    } label: {
-                        Label("Delete", systemImage: "trash")
-                    }
-                }
-            } label: {
-                Image(systemName: "ellipsis.circle")
-            }
-#endif
+            TextFileToolbar(name, at: path)
         }
+        .environment(vm)
     }
 }
 
 #Preview {
-    TextFile("", name: "Preview", at: "")
-        .environmentObject(FileTabVM(""))
+    NavigationStack {
+        TextFile("", name: "Preview", at: "")
+    }
+    .environmentObject(FileTabVM(""))
 }

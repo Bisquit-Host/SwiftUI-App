@@ -31,10 +31,8 @@ struct AudioPlayerView: View {
         .toolbar {
 #if os(tvOS)
             ToolbarItem(placement: .topBarLeading) {
-                Button {
+                SFButton("arrow.left") {
                     dismiss()
-                } label: {
-                    Image(systemName: "arrow.left")
                 }
             }
             
@@ -56,18 +54,16 @@ struct AudioPlayerView: View {
                 }
                 
                 Section {
-                    Button(role: .destructive) {
+                    Button("Delete", systemImage: "trash", role: .destructive) {
                         Task {
                             await fileVm.deleteFile(name, at: path) {
                                 dismiss()
                             }
                         }
-                    } label: {
-                        Label("Delete", systemImage: "trash")
                     }
                 }
             } label: {
-                Image(systemName: "ellipsis.circle")
+                Image(systemName: "ellipsis")
             }
 #endif
         }

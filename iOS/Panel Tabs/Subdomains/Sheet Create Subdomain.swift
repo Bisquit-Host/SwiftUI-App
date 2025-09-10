@@ -15,7 +15,9 @@ struct SheetCreateSubdomain: View {
     private var placeholder: String {
         let subdomain = vm.subdomain.isEmpty ? "<your subdomain>" : vm.subdomain
         
-        return subdomain + "." + (vm.domains?.first(where: { $0.id == vm.selectedDomain })?.domain ?? "<selected domain>")
+        return subdomain + "." + (vm.domains?.first(where: {
+            $0.id == vm.selectedDomain
+        })?.domain ?? "<selected domain>")
     }
     
     var body: some View {
@@ -29,15 +31,13 @@ struct SheetCreateSubdomain: View {
                     .autocorrectionDisabled()
                     .textInputAutocapitalization(.never)
             }
-            .transparentSection()
             
             if let domains = vm.domains {
                 Picker("Domain", selection: $vm.selectedDomain) {
-                    ForEach(domains) { domain in
-                        Text(domain.domain)
+                    ForEach(domains) {
+                        Text($0.domain)
                     }
                 }
-                .transparentSection()
             }
             
             Picker("Allocation", selection: $vm.selectedAllocation) {
@@ -49,35 +49,33 @@ struct SheetCreateSubdomain: View {
                         .tag(allocation.id)
                 }
             }
-            .transparentSection()
             
             Section {
                 let disabled = vm.selectedAllocation == nil
                 || vm.subdomain.isEmpty
                 || vm.limit <= vm.subdomains.count
                 
-                Button {
-                    Task {
-                        await vm.createSubdomain {
-                            dismiss()
-                        }
-                    }
-                } label: {
-                    Label("Create", systemImage: "plus")
+                Button("Create", systemImage: "plus") {
+                    createSubdomain()
                 }
                 .foregroundStyle(disabled ? .secondary : .primary)
                 .disabled(disabled)
             }
-            .transparentSection()
         }
         .pickerStyle(.inline)
-        .transparentList()
         .ornamentDismissButton()
+    }
+    
+    private func createSubdomain() {
+        Task {
+            await vm.createSubdomain {
+                dismiss()
+            }
+        }
     }
 }
 
 #Preview {
     SheetCreateSubdomain([])
         .environment(SubdomainVM(""))
-        .darkSchemePreferred()
 }

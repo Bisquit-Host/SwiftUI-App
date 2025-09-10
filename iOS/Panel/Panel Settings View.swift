@@ -34,13 +34,11 @@ struct PanelSettingsView: View {
                     .animation(.default, value: vm.serverName + vm.serverDescription)
                 }
             }
-            .transparentSection()
             
             Section("SFTP") {
                 SftpDetails(server.sftp)
                     .environment(vm)
             }
-            .transparentSection()
             
             Section {
                 Button(role: .destructive) {
@@ -55,11 +53,8 @@ struct PanelSettingsView: View {
                     }
                 }
             }
-            .transparentSection()
         }
         .navigationTitle("Server Settings")
-        .toolbarTitleDisplayMode(.inline)
-        .transparentList()
         .task {
             await vm.accountDetails()
             vm.serverName = server.name
@@ -72,19 +67,25 @@ struct PanelSettingsView: View {
         }
         .alert("Reinstall Server", isPresented: $alertReinstall) {
             Button("Reinstall", role: .destructive) {
-                Task {
-                    await PteroNet.reinstallServer(server.id) {
-                        SystemAlert.reinstalled()
-                    }
-                }
+                reinstall()
             }
         } message: {
             Text("Reinstalling your server will stop it, and then re-run the installation script that initially set it. Some files may be deleted or modified during this process, please back up your data before continuing")
         }
     }
+    
+    private func reinstall() {
+        Task {
+            await PteroNet.reinstallServer(server.id) {
+                SystemAlert.reinstalled()
+            }
+        }
+    }
 }
 
 #Preview {
-    PanelSettingsView(sampleJSON(.serverListAttributes))
-        .environment(PanelVM(""))
+    NavigationStack {
+        PanelSettingsView(sampleJSON(.serverListAttributes))
+    }
+    .environment(PanelVM(""))
 }

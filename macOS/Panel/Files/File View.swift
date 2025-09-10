@@ -1,6 +1,6 @@
 import ScrechKit
 import PteroNet
-import QuickLooking
+import QuickLook
 
 struct NavTest {
     private let id, root: String
@@ -81,7 +81,7 @@ struct FileView: View {
                 }
             }
         }
-        .quickLookPreview($showPreview, url: qlVM.fileUrl, blur: qlVM.isSensitive)
+        .quickLookPreview($qlVM.fileUrl)
         .buttonStyle(.plain)
         .padding(5)
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -109,5 +109,6 @@ struct FileView: View {
 
 #Preview {
     FileView("", at: "", file: sampleJSON(.fileListAttributes))
+        .environmentObject(FileTabVM(""))
         .padding()
 }

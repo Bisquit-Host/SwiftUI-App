@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import PteroNet
 
 struct SheetRemoteFile: View {
@@ -23,27 +23,41 @@ struct SheetRemoteFile: View {
             Toggle("Process in foreground", isOn: $remoteFile.foreground)
             
             Toggle("Use header", isOn: $remoteFile.use_header)
-            
-            Section {
-                Button("Cancel") {
-                    dismiss()
-                }
-                .foregroundStyle(.red)
-                
-                Button("Confirm") {
-                    Task {
-                        await vm.pullRemoteFile(remoteFile, dir: path) {
-                            dismiss()
-                        }
-                    }
-                }
-            }
         }
         .autocorrectionDisabled()
+        .navigationTitle("Pull remote file")
+        .toolbarTitleDisplayMode(.inline)
+        .navigationSubtitle(path)
+        .toolbar {
+            ToolbarItem(placement: .bottomBar) {
+                SFButton("xmark") {
+                    dismiss()
+                }
+                .tint(.red)
+            }
+            
+            ToolbarSpacer(.flexible, placement: .bottomBar)
+            
+            ToolbarItem(placement: .bottomBar) {
+                SFButton("checkmark", action: pull)
+                    .tint(.green)
+                    .disabled(remoteFile.url.isEmpty)
+            }
+        }
+    }
+    
+    private func pull() {
+        Task {
+            await vm.pullRemoteFile(remoteFile, at: path) {
+                dismiss()
+            }
+        }
     }
 }
 
 #Preview {
-    SheetRemoteFile("")
-        .environmentObject(FileTabVM(""))
+    NavigationStack {
+        SheetRemoteFile("preview/preview")
+    }
+    .environmentObject(FileTabVM(""))
 }

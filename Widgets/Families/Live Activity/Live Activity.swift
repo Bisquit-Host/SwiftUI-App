@@ -13,64 +13,49 @@ private extension Data {
 
 @Observable
 final class LiveActivity {
-    var liveActivityId = ""
-    var newEmoji = ""
-    
     private var currentActivity: Activity<WidgetsAttributes>? = nil
+    private var LAToken = ""
+    
     var activityViewState: ActivityViewState? = nil
     var errorMessage: String? = nil
     
-    var LAToken = ""
-    
-    func postRequest(WSUrl: String, WSToken: String, liveActivityToken: String) {
+    func postRequest(
+        WSUrl: String,
+        WSToken: String,
+        liveActivityToken: String
+    ) async throws {
+        
         guard
-            let url = URL(string: "https://api.topscrech.dev/liveactivity/start")
+            let url = URL(string: "https://push-activity.bisquit.host/liveactivity/start")
         else {
-            return
+            throw URLError(.badURL)
         }
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
 #if DEBUG
-        let environment = "sandbox"
+        let environment = "development"
 #else
         let environment = "production"
 #endif
-        
-        let body: [String: Any] = [
-            "WSUrl":                WSUrl,
-            "WSToken":              WSToken,
-            "liveActivityToken":    liveActivityToken,
-            "environment":          environment
+        let body = [
+            "WSUrl":             WSUrl,
+            "WSToken":           WSToken,
+            "liveActivityToken": liveActivityToken,
+            "environment":       environment,
+            "appID":             Bundle.main.bundleIdentifier ?? "host.bisquit.Bisquit.Host"
         ]
         
-        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
+        request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
         
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            guard error == nil else {
-                return
-            }
-            //            guard let data, error == nil else { return }
-            // Handle the response and data here
-        }
-        .resume()
-    }
-    
-    func consoleDetails(_ id: String) async {
-        do {
-            let model = try await consoleDetailsAPI(id)
-            let socket = model.socket
-            let token = model.token
-            
-            postRequest(
-                WSUrl: socket.description,
-                WSToken: token,
-                liveActivityToken: LAToken
-            )
-        } catch {
-            networkCallError(#function, error)
+        let (_, response) = try await URLSession.shared.data(for: request)
+        
+        guard
+            let httpResponse = response as? HTTPURLResponse,
+            (200..<300).contains(httpResponse.statusCode)
+        else {
+            throw URLError(.badServerResponse)
         }
     }
     
@@ -83,15 +68,15 @@ final class LiveActivity {
             pushToken: activity.pushToken?.hexadecimalString
         )
         
-        observeActivity(activity: activity)
+        observeActivity(activity)
     }
     
-    func cleanUpDismissedActivity() {
+    private func cleanUpDismissedActivity() {
         currentActivity = nil
         activityViewState = nil
     }
     
-    func observeActivity(activity: Activity<WidgetsAttributes>) {
+    private func observeActivity(_ activity: Activity<WidgetsAttributes>) {
         Task {
             await withTaskGroup(of: Void.self) { group in
                 group.addTask { @MainActor in
@@ -107,7 +92,7 @@ final class LiveActivity {
                 group.addTask { @MainActor in
                     for await contentState in activity.contentUpdates {
                         self.activityViewState?.contentState = contentState.state
-                        //
+                        
                         //                        guard let activity = self.currentActivity else {
                         //                            return
                         //                        }
@@ -136,14 +121,16 @@ final class LiveActivity {
                         
                         self.LAToken = pushTokenString
                         
-                        print("New push token: \(pushTokenString)")
+                        print("New push token:", pushTokenString)
                         
                         //                        do {
                         //                            let frequentUpdateEnabled = ActivityAuthorizationInfo().frequentPushesEnabled
                         //
-                        //                            try await self.sendPushToken(hero: activity.attributes.hero,
-                        //                                                         pushTokenString: pushTokenString,
-                        //                                                         frequentUpdateEnabled: frequentUpdateEnabled)
+                        //                        try await self.sendPushToken(
+                        //                            hero: activity.attributes.hero,
+                        //                            pushTokenString: pushTokenString,
+                        //                            frequentUpdateEnabled: frequentUpdateEnabled
+                        //                        )
                         //                        } catch {
                         //                            self.errorMessage = """
                         //                            Failed to send push token to server
@@ -182,11 +169,9 @@ final class LiveActivity {
             
             setup(activity)
             
-            delay(2) {
-                Task {
-                    await self.consoleDetails(server.id)
-                }
-            }
+            try await Task.sleep(for: .seconds(2))
+            
+            await self.consoleDetails(server.id)
         } catch {
             print("Error starting live activity:", error.localizedDescription)
         }
@@ -199,13 +184,31 @@ final class LiveActivity {
     //                return
     //            }
     //
-    //            let updatedState = WidgetsAttributes.ContentState(latestMessage: "Пыж")
-    //            await activity.update(ActivityContent(state: updatedState,
-    //                                                  staleDate: nil
-    //                                                  //                                                  staleDate: Date().addingTimeInterval(3600)
-    //                                                 ))
+    //            let updatedState = WidgetsAttributes.ContentState(latestMessage: "Pyzh")
+    //
+    //            await activity.update(ActivityContent(
+    //                state: updatedState,
+    //                staleDate: nil
+    //                //staleDate: Date().addingTimeInterval(3600)
+    //            ))
     //        }
     //    }
+    
+    private func consoleDetails(_ id: String) async {
+        do {
+            let model = try await consoleDetailsAPI(id)
+            let socket = model.socket
+            let token = model.token
+            
+            try await postRequest(
+                WSUrl: socket.description,
+                WSToken: token,
+                liveActivityToken: LAToken
+            )
+        } catch {
+            networkCallError(#function, error)
+        }
+    }
     
     func stopAllLiveActivities() {
         Task {

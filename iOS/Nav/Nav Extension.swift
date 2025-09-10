@@ -7,6 +7,10 @@ extension View {
                 //#if os(watchOS)
                 //            case .toServerList(let selectedServer):
                 //                ServerList(selectedServer: selectedServer)
+#if os(iOS)
+            case .toSettings:
+                SettingsView()
+#endif
             case .toServerList:
 #if os(macOS)
                 Home()

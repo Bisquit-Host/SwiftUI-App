@@ -2,7 +2,6 @@ import ScrechKit
 import PteroNet
 
 struct PanelView: View {
-    @EnvironmentObject private var store: ValueStore
     @State private var vm: PanelVM
     @State private var fileVM: FileTabVM
     @State private var startupVM: StartupVM
@@ -10,8 +9,6 @@ struct PanelView: View {
     @State private var databaseVM: DatabaseVM
     @State private var scheduleVM: ScheduleVM
     @State private var consoleVM: ConsoleVM
-    
-    @Environment(\.dismiss) private var dismiss
     
     private let id: String
     
@@ -26,21 +23,33 @@ struct PanelView: View {
         consoleVM = ConsoleVM(id)
     }
     
+    private var isIpad: Bool {
+        UIDevice.current.userInterfaceIdiom == .pad
+    }
+    
     var body: some View {
         @Bindable var vm = vm
         
         VStack {
-            if UIDevice.current.userInterfaceIdiom == .pad {
-                panel
+            if isIpad {
+                PanelViewTabView()
             } else {
                 NavigationView {
-                    panel
+                    PanelViewTabView()
                 }
             }
         }
-        .navigationBarBackButtonHidden()
-        .ignoresSafeArea()
+        .navigationTitle(vm.server?.name ?? "")
+        .navigationSubtitle(vm.server?.description ?? "")
+        .panelToolbar()
         .environment(vm)
+        .environmentObject(fileVM)
+        .environment(consoleVM)
+        .environment(backupVM)
+        .environment(databaseVM)
+        .environment(scheduleVM)
+        .environment(startupVM)
+        .ignoresSafeArea()
         .task {
             await fetchData()
         }
@@ -58,27 +67,26 @@ struct PanelView: View {
                 }
             }
         }
-        .alert(isPresented: $vm.alertNewFolder) {
-            CustomDialog(
-                title: "New Folder",
-                content: "Enter a folder name",
-                image: .init(content: "folder.badge.plus", foreground: .white),
-                button1: .init(content: "Create", foreground: .white) { folder in
-                    if !folder.isEmpty {
-                        Task {
-                            await fileVM.createFolder(folder, at: fileVM.path)
-                        }
-                    }
-                    
-                    vm.alertNewFolder = false
-                },
-                button2: .init(content: "Cancel", foreground: .red) { _ in
-                    vm.alertNewFolder = false
-                },
-                addsTextField: true,
-                textFieldHint: "Me name folder"
-            )
-            .transition(.blurReplace.combined(with: .scale(0.8)))
+        .alert("New Folder", isPresented: $vm.alertNewFolder) {
+            TextField("Enter a folder name", text: $fileVM.newFolderName)
+            
+            Button("Create", role: .confirm) {
+                createFolder()
+            }
+            
+            Button("Cancel", role: .cancel) {
+                fileVM.newFolderName = ""
+            }
+        }
+    }
+    
+    private func createFolder() {
+        if !fileVM.newFolderName.isEmpty {
+            Task {
+                await fileVM.createFolder(fileVM.newFolderName, at: fileVM.path)
+            }
+            
+            fileVM.newFolderName = ""
         }
     }
     
@@ -90,53 +98,24 @@ struct PanelView: View {
         }
         
         if !System.lowPowerMode {
-            async let files: () =     fileVM.fetchFiles()
-            async let startup: () =   startupVM.fetchStartupVariables()
+            async let files:     () = fileVM.fetchFiles()
+            async let startup:   () = startupVM.fetchStartupVariables()
             async let schedules: () = scheduleVM.fetchSchedules()
-            async let backups: () =   backupVM.fetchBackups()
+            async let backups:   () = backupVM.fetchBackups()
             async let databases: () = databaseVM.fetchDatabases()
             
             _ = await (files, startup, schedules, backups, databases)
         }
-                
+        
         vm.updateBackups = {
             await backupVM.fetchBackups()
         }
     }
-    
-    private var panel: some View {
-        TabView(selection: $store.lastTabPanel) {
-            if let server = vm.server {
-                InfoTab(server)
-                    .tab(.info)
-                    .sheet($vm.sheetSettings) {
-                        PanelSettingsParent(server)
-                    }
-                
-                ConsoleTab(id)
-                    .tab(.console)
-                
-                FileTab(id)
-                    .tab(.files)
-                
-                DataTab(server)
-                    .tab(.backup)
-                
-                StartupView(server)
-                    .tab(.startup)
-            }
-        }
-        .panelToolbar()
-        .environment(consoleVM)
-        .environmentObject(fileVM)
-        .environment(backupVM)
-        .environment(databaseVM)
-        .environment(scheduleVM)
-        .environment(startupVM)
-    }
 }
 
 #Preview {
-    PanelView("")
-        .environmentObject(ValueStore())
+    NavigationStack {
+        PanelView("")
+    }
+    .environmentObject(ValueStore())
 }

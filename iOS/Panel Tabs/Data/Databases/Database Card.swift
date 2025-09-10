@@ -48,32 +48,30 @@ struct DatabaseCard: View {
         }
 #if !os(tvOS)
         .swipeActions {
-            Button {
+            SFButton("trash") {
                 alertDelete = true
-            } label: {
-                Image(systemName: "trash")
-                    .tint(.red)
             }
+            .tint(.red)
         }
 #endif
         .contextMenu {
 #if !os(tvOS)
             if let password = db.password {
                 Button("Copy password") {
-                    UIPasteboard.general.string = password
+                    Pasteboard.copy(password)
                 }
             }
 #endif
-            MenuButton("Rotate password", icon: "lock.open.rotation") {
+            Button("Rotate password", systemImage: "lock.open.rotation") {
                 Task {
                     await vm.rotatePassword(db.id)
                 }
             }
             
-            Section {
-                MenuButton("Delete", role: .destructive, icon: "trash") {
-                    alertDelete = true
-                }
+            Divider()
+            
+            Button("Delete", systemImage: "trash", role: .destructive) {
+                alertDelete = true
             }
         }
         .alert("Detele Database", isPresented: $alertDelete) {
@@ -94,4 +92,5 @@ struct DatabaseCard: View {
             sampleJSON(.databaseAttributes)
         )
     }
+    .environment(DatabaseVM(""))
 }

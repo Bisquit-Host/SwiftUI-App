@@ -1,4 +1,5 @@
 import ScrechKit
+import PteroNet
 
 struct SubdomainCard: View {
     @Environment(SubdomainVM.self) private var vm
@@ -16,75 +17,57 @@ struct SubdomainCard: View {
     }
     
     var body: some View {
-        Section {
-            VStack(alignment: .leading) {
-                Text(fullDomain)
-                
+        VStack(alignment: .leading) {
+            Text(fullDomain)
+            
+            TimelineView(.everyMinute) { _ in
                 Text(timeSinceISO(subdomain.createdAt))
                     .footnote()
                     .secondary()
                     .minimumScaleFactor(0.5)
                     .lineLimit(1)
             }
-            .foregroundStyle(.foreground)
-            .frame(maxWidth: .infinity, alignment: .leading)
-#if os(iOS) || os(macOS)
-            .padding()
-            .background(.ultraThinMaterial.opacity(0.3), in: .rect(cornerRadius: 16))
-            .overlay {
-                RoundedRectangle(cornerRadius: 16)
-                    .stroke(.gray.opacity(0.25), lineWidth: 1)
-            }
-#endif
         }
-        .transparentSection()
+        .foregroundStyle(.foreground)
         .contextMenu {
 #if !os(tvOS)
-            Button {
+            Button("Sync", systemImage: "arrow.trianglehead.2.clockwise.rotate.90") {
                 Task {
                     await vm.syncSubdomain(subdomain.id)
                 }
-            } label: {
-                Label("Sync", systemImage: "arrow.trianglehead.2.clockwise.rotate.90")
             }
             
-            Button {
-#if os(macOS)
-                NSPasteboard.general.setString(fullDomain, forType: .URL)
-#else
-                UIPasteboard.general.string = fullDomain
-#endif
-            } label: {
-                Label("Copy", systemImage: "document.on.document")
+            Button("Copy", systemImage: "document.on.document") {
+                Pasteboard.copy(fullDomain)
             }
             
-            Button {
-                guard
-                    let url = URL(string: "mc-stats://add-server?address=\(fullDomain)&name=\(subdomain.subdomain)"),
-                    let fallbackURL = URL(string: "https://apps.apple.com/app/id6740754881")
-                else {
-                    return
-                }
-                
-                openUrl(url) { success in
-                    if !success {
-                        openUrl(fallbackURL)
-                    }
-                }
-            } label: {
-                Label("Add to MC Stats", systemImage: "arrowshape.turn.up.right")
+            Button("Add to MC Stats", systemImage: "arrowshape.turn.up.right") {
+                addToMCStats()
             }
             
             ShareLink(item: fullDomain)
 #endif
             Section {
-                Button(role: .destructive) {
+                Button("Delete", systemImage: "trash", role: .destructive) {
                     Task {
                         await vm.deleteSubdomain(subdomain.id)
                     }
-                } label: {
-                    Label("Delete", systemImage: "trash")
                 }
+            }
+        }
+    }
+    
+    private func addToMCStats() {
+        guard
+            let url = URL(string: "mc-stats://add-server?address=\(fullDomain)&name=\(subdomain.subdomain)"),
+            let fallbackUrl = URL(string: "https://apps.apple.com/app/id6740754881")
+        else {
+            return
+        }
+        
+        openUrl(url) { success in
+            if !success {
+                openUrl(fallbackUrl)
             }
         }
     }

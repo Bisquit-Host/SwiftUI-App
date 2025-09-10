@@ -87,6 +87,7 @@ class ExtensionRootContainerEnumerator: ContactItemEnumerator {
             // TODO: Generate the next `ContactItemSyncAnchor`, using the generationMarker and offset of the last change that was fetched
             let lastChangeGenerationMarker = "<lastChangeGenerationMarker>".data(using: .utf8)!
             let lastChangeOffset = 0
+            
             let nextSyncAnchor = ContactItemSyncAnchor(
                 generationMarker: lastChangeGenerationMarker,
                 offset: lastChangeOffset

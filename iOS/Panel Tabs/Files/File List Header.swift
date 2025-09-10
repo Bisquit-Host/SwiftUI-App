@@ -16,7 +16,7 @@ struct FileListHeader: View {
                 
                 Spacer()
                 
-                Text("\(vm.fileCount) files")
+                Text(.files(vm.fileCount))
                     .monospacedDigit()
             }
             .numericTransition()

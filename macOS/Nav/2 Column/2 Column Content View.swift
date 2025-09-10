@@ -39,8 +39,8 @@ struct TwoColumnContentView: View {
     }
 }
 
-#Preview() {
+#Preview {
     TwoColumnContentView()
         .environment(ServerListVM())
-        .environment(NavModel.shared)
+        .environment(NavModel())
 }

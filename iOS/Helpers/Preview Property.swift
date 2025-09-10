@@ -2,16 +2,16 @@ import PteroNet
 
 final class PreviewProp {
     static let serverAttributes = ServerAttributes(
-        id: "87c8b6a2",
+        id: "a1b2c3d4",
         name: "Preview",
         uuid: "1234567890",
         node: "Vision",
         description: "Preview server description",
         dockerImage: "",
         limits: .init(
-            memory: 10,
-            cpu: 10,
-            disk: 10
+            memory: pow(1024, 2),
+            cpu: 400,
+            disk: 1024
         ),
         featureLimits: .init(
             backups: 5,

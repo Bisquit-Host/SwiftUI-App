@@ -51,15 +51,13 @@ struct QuickLookFile: View {
             }
         }
         .toolbar {
-            if #available(iOS 18.1, *), let url = vm.fileUrl, isImage(url) {
+            if let url = vm.fileUrl, isImage(url) {
                 ImagePlaygroundToolbarButton(url, path, name)
             }
             
             Menu {
-                Button {
+                Button("Metadata", systemImage: "tag") {
                     sheetMetadata = true
-                } label: {
-                    Label("Metadata", systemImage: "tag")
                 }
                 
                 if let url = vm.fileUrl {
@@ -67,7 +65,7 @@ struct QuickLookFile: View {
                 }
                 
                 Section {
-                    Button("Delete", role: .destructive) {
+                    Button("Delete", systemImage: "trash", role: .destructive) {
                         Task {
                             await fileVm.deleteFile(name, at: path) {
                                 dismiss()
@@ -76,13 +74,15 @@ struct QuickLookFile: View {
                     }
                 }
             } label: {
-                Image(systemName: "ellipsis.circle")
+                Image(systemName: "ellipsis")
             }
         }
     }
     
     private func isImage(_ url: URL) -> Bool {
-        guard let fileType = UTType(filenameExtension: url.pathExtension) else {
+        guard
+            let fileType = UTType(filenameExtension: url.pathExtension)
+        else {
             return false
         }
         
@@ -91,6 +91,8 @@ struct QuickLookFile: View {
 }
 
 #Preview {
-    QuickLookFile("", name: "", at: "")
-        .environmentObject(FileTabVM(""))
+    NavigationStack {
+        QuickLookFile("", name: "", at: "")
+    }
+    .environmentObject(FileTabVM(""))
 }

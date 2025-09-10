@@ -1,29 +1,38 @@
 import ScrechKit
 
 struct OtherSettings: View {
-    @Environment(SettingsVM.self) private var vm
     @EnvironmentObject private var store: ValueStore
     
     var body: some View {
         Section("Other") {
             BiometryButton()
-                .environment(vm)
             
             Toggle(isOn: $store.showFullFilePath) {
-                Text("Full file path")
+                Label("Full file path", systemImage: "folder")
                 
                 Text(store.showFullFilePath ? "/home/container/folder/example/" : "/folder/example/")
+                    .footnote()
+                    .animation(.default, value: store.showFullFilePath)
             }
             
-            Toggle("Game Center", isOn: $store.enableGameCenter)
+            Toggle(isOn: $store.enableGameCenter) {
+                Label("Game Center", systemImage: "gamecontroller")
+            }
             
-            ListButton("Change language", actionIcon: "globe") {
+            Button {
                 openSettings()
+            } label: {
+                Label {
+                    Text("Change language")
+                } icon: {
+                    Image(systemName: "globe")
+                        .foregroundStyle(.blue)
+                }
+                .foregroundStyle(.foreground)
             }
             
             CurrencyPicker()
         }
-        .transparentSection()
     }
 }
 
@@ -31,6 +40,6 @@ struct OtherSettings: View {
     List {
         OtherSettings()
     }
-    .environment(SettingsVM())
+    .environment(BiometryVM())
     .environmentObject(ValueStore())
 }

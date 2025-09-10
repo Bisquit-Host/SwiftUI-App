@@ -34,5 +34,8 @@ struct UserInvitationPermission: View {
 }
 
 #Preview {
-    UserInvitationPermission("Preview")
+    List {
+        UserInvitationPermission("Preview")
+    }
+    .environment(UsersVM(""))
 }

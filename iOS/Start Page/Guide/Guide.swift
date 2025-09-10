@@ -1,10 +1,7 @@
-import ScrechKit
+import SwiftUI
 import PteroNet
 
 struct Guide: View {
-    @Environment(\.dismiss) private var dismiss
-    @Environment(\.colorScheme) private var colorScheme
-    
     private let steps: [LocalizedStringKey] = [
         "Open the link, log in, and navigate to account settings",
         "Scroll down to the \"API/SSH\" section, enter a name for the API key, and tap \"Create\"",
@@ -51,7 +48,7 @@ struct Guide: View {
             Spacer()
             
             HStack {
-                MenuButton("Previous", icon: "chevron.backward") {
+                Button("Previous", systemImage: "chevron.backward") {
                     withAnimation(.easeOut(duration: 0.6)) {
                         step -= 1
                     }
@@ -60,7 +57,7 @@ struct Guide: View {
                 
                 Spacer()
                 
-                MenuButton("Next", icon: "chevron.forward") {
+                Button("Next", systemImage: "chevron.forward") {
                     withAnimation(.easeOut(duration: 0.6)) {
                         step += 1
                     }
@@ -70,7 +67,6 @@ struct Guide: View {
             .buttonStyle(CarouselButtonStyle())
             .padding(20)
         }
-        .transparentList()
         .ignoresSafeArea(edges: .bottom)
     }
 }

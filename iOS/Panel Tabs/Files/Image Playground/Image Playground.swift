@@ -2,7 +2,6 @@ import SwiftUI
 import ImagePlayground
 import PhotosUI
 
-@available(iOS 18.1, *)
 struct ImagePlayground: View {
     @EnvironmentObject private var vm: FileTabVM
     
@@ -169,9 +168,8 @@ struct ImagePlayground: View {
     }
 }
 
-@available(iOS 18.1, *)
 #Preview {
-    NavigationView {
+    NavigationStack {
         ImagePlayground(at: "")
     }
 }

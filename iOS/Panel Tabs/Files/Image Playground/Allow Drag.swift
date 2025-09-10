@@ -19,7 +19,6 @@ fileprivate struct AllowDrag: ViewModifier {
     }
 }
 
-@available(iOS 18.1, *)
 extension View {
     func allowDrag(_ url: URL?) -> some View {
         self.modifier(AllowDrag(url))

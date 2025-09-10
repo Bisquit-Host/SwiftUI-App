@@ -3,7 +3,6 @@ import Highlightr
 
 struct HighlightrTextView: UIViewRepresentable {
     @Binding var text: String
-    //    var language = "json"
     var isEditable = true
     
     private let highlightr = Highlightr()!

@@ -19,30 +19,15 @@ struct InfoTabAllocation: View {
     
     var body: some View {
         Menu {
-            Button {
-                UIPasteboard.general.string = ip
+            Button("Copy", systemImage: "doc.on.doc") {
+                Pasteboard.copy(ip)
                 
                 SystemAlert.copied()
                 trigger.toggle()
-            } label: {
-                Label("Copy", systemImage: "doc.on.doc")
             }
             
-            Button {
-                guard
-                    let url = URL(string: "mc-stats://add-server?address=\(ip)&name=\(server.name)"),
-                    let fallbackURL = URL(string: "https://apps.apple.com/app/id6740754881")
-                else {
-                    return
-                }
-                
-                openUrl(url) { success in
-                    if !success {
-                        openUrl(fallbackURL)
-                    }
-                }
-            } label: {
-                Label("Add to MC Stats", systemImage: "arrowshape.turn.up.right")
+            Button("Add to MC Stats", systemImage: "arrowshape.turn.up.right") {
+                addToMCStats()
             }
             
             ShareLink(item: ip)
@@ -56,9 +41,8 @@ struct InfoTabAllocation: View {
             HStack {
                 VStack(alignment: .leading) {
                     Text("IP Address")
-                        .footnote()
+                        .footnote(design: .rounded)
                         .secondary()
-                        .rounded()
                     
                     Text(ip)
                         .monospaced()
@@ -84,6 +68,21 @@ struct InfoTabAllocation: View {
         }
         .sheet($sheetAllocations) {
             AllocationListParent(server)
+        }
+    }
+    
+    private func addToMCStats() {
+        guard
+            let url = URL(string: "mc-stats://add-server?address=\(ip)&name=\(server.name)"),
+            let fallbackURL = URL(string: "https://apps.apple.com/app/id6740754881")
+        else {
+            return
+        }
+        
+        openUrl(url) { success in
+            if !success {
+                openUrl(fallbackURL)
+            }
         }
     }
     

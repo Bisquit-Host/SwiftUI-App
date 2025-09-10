@@ -31,27 +31,26 @@ struct BackupCard: View {
                 }
                 
                 VStack(alignment: .leading) {
-                    HStack(spacing: 2) {
+                    Text(backup.name)
+                        .headline()
+                        .lineLimit(1)
+#if os(iOS)
+                        .minimumScaleFactor(0.75)
+                        .scaledToFit()
+#endif
+                    HStack(spacing: 4) {
                         if backup.isLocked {
                             Image(systemName: "lock")
                                 .foregroundStyle(.orange)
                         }
                         
-                        Text(backup.name)
+                        Text(timeSinceISO(backup.createdAt))
+                            .secondary()
+                            .minimumScaleFactor(0.5)
                             .lineLimit(1)
-#if os(iOS)
-                            .minimumScaleFactor(0.75)
-                            .scaledToFit()
-#endif
                     }
+                    .footnote()
                     .animation(.default, value: backup.isLocked)
-                    .headline()
-                    
-                    Text(timeSinceISO(backup.createdAt))
-                        .footnote()
-                        .secondary()
-                        .minimumScaleFactor(0.5)
-                        .lineLimit(1)
                 }
                 
                 Spacer()

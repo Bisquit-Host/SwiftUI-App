@@ -27,8 +27,7 @@ struct ThreeColumnContent: View {
     }
 }
 
-#Preview() {
+#Preview {
     ThreeColumnContent()
-        .environment(ServerListVM())
         .environment(NavModel(selectedCategory: nil))
 }

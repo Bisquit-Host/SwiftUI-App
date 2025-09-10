@@ -9,8 +9,8 @@ struct Sidebar: View {
         @Bindable var nav = nav
         
         List(selection: $nav.selectedServers) {
-            ForEach(vm.servers) { server in
-                SidebarServerCard(server)
+            ForEach(vm.servers) {
+                SidebarServerCard($0)
             }
         }
         .navigationTitle("Servers")
@@ -21,17 +21,24 @@ struct Sidebar: View {
         }
         .toolbar {
             SFButton("arrow.trianglehead.2.clockwise.rotate.90") {
-                Task {
-                    await vm.fetchServers(store.adminServerList)
-                }
+                fetch()
             }
             .keyboardShortcut("r")
+        }
+    }
+    
+    private func fetch() {
+        Task {
+            await vm.fetchServers(store.adminServerList)
         }
     }
 }
 
 #Preview {
-    Sidebar()
-        .environment(ServerListVM())
-        .environment(NavModel())
+    NavigationStack {
+        Sidebar()
+    }
+    .environment(ServerListVM())
+    .environment(NavModel())
+    .environmentObject(ValueStore())
 }

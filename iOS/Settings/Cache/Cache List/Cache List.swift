@@ -10,12 +10,13 @@ struct CacheList: View {
     var body: some View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 16) {
-                ForEach(vm.images) { cache in
-                    CacheCard(cache)
+                ForEach(vm.images) {
+                    CacheCard($0)
                 }
             }
         }
-        .navigationTitle("\(vm.images.count) images")
+        .navigationTitle("Cache")
+        .navigationSubtitle("\(vm.images.count) images")
         .refreshableTask {
             vm.retrieveAllCachedImages()
         }
@@ -23,5 +24,7 @@ struct CacheList: View {
 }
 
 #Preview {
-    CacheList()
+    NavigationStack {
+        CacheList()
+    }
 }

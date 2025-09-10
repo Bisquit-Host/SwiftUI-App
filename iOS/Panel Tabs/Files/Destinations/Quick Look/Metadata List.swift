@@ -20,7 +20,7 @@ struct MetadataList: View {
                     
                     Spacer()
                     
-                    Text("\(value)")
+                    Text(String(describing: value))
                         .secondary()
                 }
             }

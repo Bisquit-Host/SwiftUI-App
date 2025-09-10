@@ -11,18 +11,21 @@ struct ConsoleTab: View {
         self.id = id
     }
     
-    private let width = UIScreen.main.bounds.width
-    
     var body: some View {
         @Bindable var vm = vm
+        @Bindable var panelVM = panelVM
         
         VStack(spacing: 0) {
             ConsoleView()
             
             HStack {
                 PowerSwitch()
-                    .scaleEffect(0.8)
-                    .frame(35)
+                    .padding(10)
+                    .background(.ultraThinMaterial, in: .circle)
+                    .overlay {
+                        Circle()
+                            .stroke(.gray.opacity(0.25), lineWidth: 1)
+                    }
                     .padding(.trailing, 10)
                 
                 TextField("Type a command...", text: $vm.command)
@@ -30,16 +33,7 @@ struct ConsoleTab: View {
                     .autocorrectionDisabled()
                     .textInputAutocapitalization(.never)
                     .onSubmit {
-                        if !vm.command.isEmpty {
-                            Task {
-                                await vm.sendCommand()
-                            }
-                        }
-                    }
-                    .onChange(of: vm.command) { _, newValue in
-                        if panelVM.enableConsoleSearch {
-                            panelVM.searchRule = newValue
-                        }
+                        sendCommand()
                     }
                 
                 if !vm.command.isEmpty {
@@ -53,8 +47,6 @@ struct ConsoleTab: View {
             .padding()
             .background(.ultraThinMaterial)
         }
-        .toolbarBackground(.visible, for: .tabBar)
-        .toolbarBackground(.visible, for: .navigationBar)
         .task {
             vm.fontSize = store.consoleFontSize
         }
@@ -82,10 +74,18 @@ struct ConsoleTab: View {
             }
         }
     }
+    
+    private func sendCommand() {
+        if !vm.command.isEmpty {
+            Task {
+                await vm.sendCommand()
+            }
+        }
+    }
 }
 
 #Preview {
-    ConsoleTab("500028e3")
+    ConsoleTab("")
         .environment(PanelVM(""))
         .environment(ConsoleVM(""))
         .environmentObject(ValueStore())

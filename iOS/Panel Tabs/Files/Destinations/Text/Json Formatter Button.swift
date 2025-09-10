@@ -1,18 +1,15 @@
-import SwiftUI
 import ScrechKit
 
 struct JsonFormatterButton: View {
     @Environment(TextFileVM.self) private var vm
     
-    private var tip = Tip_JsonFormatter()
+    private var tip = TipJsonFormatter()
     
     var body: some View {
         if vm.showPrettyButton {
-            Button {
+            Button("ellipsis.curlybraces") {
                 tip.invalidate(reason: .actionPerformed)
                 vm.makePretty()
-            } label: {
-                Image(systemName: "ellipsis.curlybraces")
             }
             .popTip(tip) { action in
                 if action.id == "format-json" {

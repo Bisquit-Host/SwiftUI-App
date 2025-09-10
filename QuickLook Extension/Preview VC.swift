@@ -1,4 +1,3 @@
-import Cocoa
 import Quartz
 
 class PreviewViewController: NSViewController, QLPreviewingController {
@@ -16,6 +15,8 @@ class PreviewViewController: NSViewController, QLPreviewingController {
         scrollView?.removeFromSuperview()
         
         let textView = NSTextView(frame: .zero)
+        let scroll = NSScrollView()
+        
         textView.string = text
         textView.isEditable = false
         textView.isSelectable = true
@@ -25,12 +26,12 @@ class PreviewViewController: NSViewController, QLPreviewingController {
         textView.isHorizontallyResizable = true
         textView.autoresizingMask = [.width]
         textView.textContainer?.widthTracksTextView = true
+        
         textView.textContainer?.containerSize = NSSize(
             width: CGFloat.greatestFiniteMagnitude,
             height: CGFloat.greatestFiniteMagnitude
         )
         
-        let scroll = NSScrollView()
         scroll.translatesAutoresizingMaskIntoConstraints = false
         scroll.documentView = textView
         scroll.hasVerticalScroller = true

@@ -1,5 +1,3 @@
-// Nav mode picker
-
 import SwiftUI
 
 struct NavModePicker: View {
@@ -11,17 +9,15 @@ struct NavModePicker: View {
         _navMode = navMode
     }
     
-    private var columns: [GridItem] {[
+    private let columns = [
         GridItem(.adaptive(minimum: 250))
-    ]}
+    ]
     
     var body: some View {
         NavigationStack {
             VStack {
-                Spacer()
-                
                 VStack(spacing: 0) {
-                    Text("Choose your navigation experience")
+                    Text("Choose your navigation mode")
                         .bold()
                         .largeTitle()
                         .lineLimit(2, reservesSpace: true)
@@ -33,15 +29,11 @@ struct NavModePicker: View {
                 }
                 .padding()
                 
-                Spacer()
-                
                 LazyVGrid(columns: columns) {
-                    ForEach(NavMode.allCases) { exp in
-                        NavModePickerItem($navMode, for: exp)
+                    ForEach(NavMode.allCases) {
+                        NavModePickerItem($navMode, for: $0)
                     }
                 }
-                
-                Spacer()
             }
             .scenePadding()
         }
@@ -58,8 +50,7 @@ struct NavModePicker: View {
 }
 
 #Preview {
-    @Previewable @State
-    var navMode: NavMode? = .stack
+    @Previewable @State var navMode: NavMode? = .stack
     
     NavModePicker($navMode)
 }

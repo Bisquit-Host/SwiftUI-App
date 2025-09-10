@@ -5,22 +5,21 @@ final class ValueStore: ObservableObject {
 #if os(macOS)
     @AppStorage("nav_mode") var navMode: NavMode?
 #endif
+    // MARK: - Server List/Card
+    @AppStorage("compact_server_list") var compactServerList = false
+    @AppStorage("server_card_description") var serverCardDescription = true
+    @AppStorage("hide_server_names") var hideServerNames = false
+    @Published var updateServers = false // Triggers server card update
     
     @AppStorage("enable_game_center") var enableGameCenter = true
     @AppStorage("hide_status_bar") var hideStatusBar = false
-    @AppStorage("hide_server_names") var hideServerNames = false
-    @AppStorage("color_theme") var colorTheme: ColorTheme = .system
-    @Published var updateServers = false // Triggers server card update
+    @AppStorage("color_theme") var appearance: ColorTheme = .system
     @Published var updateBackground = false // Triggers background image update
     
     // MARK: - Auth
     @AppStorage("isApiKeyValid") var isApiKeyValid = false
     @AppStorage("useBiometry") var useBiometry = false
     @AppStorage("show_dynamic_island_badge") var showDynamicIslandBadge = true
-    
-    // MARK: - App Style/Design
-    @AppStorage("transparentSheet") var transparentSheet = true
-    @AppStorage("transparentList") var transparentList = true
     
     // MARK: - Console
     @AppStorage("spamEnabled") var spamEnabled = false
@@ -31,6 +30,10 @@ final class ValueStore: ObservableObject {
     // MARK: - Other
 #if !os(macOS)
     @AppStorage("last_tab_panel") var lastTabPanel: Tabs = .info
+#endif
+    
+#if !os(watchOS) && !os(macOS)
+    @AppStorage("selected_plan_category") var selectedPlanCategory: PlanType = .cloud
 #endif
     @AppStorage("showFullFilePath") var showFullFilePath = false
     @AppStorage("preferredCurrency") var preferredCurrency = "₽"
@@ -48,7 +51,6 @@ final class ValueStore: ObservableObject {
     @AppStorage("enable_bisquit_fall") var enableBisquitFall = false
     @AppStorage("widgetCpuUsage") var widgetCpuUsage = 0.0
     @AppStorage("widgetRamUsage") var widgetRamUsage = 0.0
-    //    @AppStorage("browserCategory") var browserCategory = "Minecraft"
     
     func authSucced() {
         delay {
@@ -61,8 +63,7 @@ final class ValueStore: ObservableObject {
     func switchPreferredCurrency() {
         let currencySwitchMap = [
             "₽": "€",
-            "€": "$",
-            "$": "₽"
+            "€": "₽",
         ]
         
         if let nextCurrency = currencySwitchMap[preferredCurrency] {

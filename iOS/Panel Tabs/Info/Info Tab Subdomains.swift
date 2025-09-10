@@ -29,12 +29,11 @@ struct InfoTabSubdomains: View {
                 } else {
                     VStack(alignment: .leading) {
                         Text("Subdomains")
-                            .footnote()
+                            .footnote(design: .rounded)
                             .secondary()
-                            .rounded()
                         
-                        ForEach(vm.subdomains) { subdomain in
-                            Text(subdomain.subdomain + "." + subdomain.domain)
+                        ForEach(vm.subdomains) {
+                            Text($0.subdomain + "." + $0.domain)
                                 .monospaced()
                         }
                     }
@@ -60,7 +59,7 @@ struct InfoTabSubdomains: View {
             }
         }
         .sheet($sheetSubdomains) {
-            NavigationView {
+            NavigationStack {
                 SubdomainList(allocations)
             }
             .environment(vm)
@@ -69,10 +68,8 @@ struct InfoTabSubdomains: View {
             SheetCreateSubdomain(allocations)
         }
         .contextMenu {
-            Button {
+            Button("Create subdomain", systemImage: "plus") {
                 sheetCreate = true
-            } label: {
-                Label("Create subdomain", systemImage: "plus")
             }
         }
     }
@@ -81,5 +78,4 @@ struct InfoTabSubdomains: View {
 #Preview {
     InfoTabSubdomains([])
         .environment(SubdomainVM(""))
-        .darkSchemePreferred()
 }

@@ -53,7 +53,6 @@ struct PermissionGroupHeader: View {
             
             Toggle("Show description", isOn: $showDescription)
         }
-        .transparentSection()
     }
 }
 
@@ -63,4 +62,5 @@ struct PermissionGroupHeader: View {
     List {
         PermissionGroupHeader($showDescription, user: sampleJSON(.userAttributes))
     }
+    .environment(UsersVM(""))
 }

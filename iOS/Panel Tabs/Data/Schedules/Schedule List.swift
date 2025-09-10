@@ -11,8 +11,8 @@ struct ScheduleList: View {
 #if os(tvOS)
                 ScheduleCard(schedule)
                 
-                ForEach(tasks) { task in
-                    ScheduleTask(schedule, task: task)
+                ForEach(tasks) {
+                    ScheduleTask(schedule, task: $0)
                         .padding(.leading, 64)
                 }
 #else
@@ -20,8 +20,8 @@ struct ScheduleList: View {
                     ScheduleCard(schedule)
                 } else {
                     DisclosureGroup {
-                        ForEach(tasks) { task in
-                            ScheduleTask(schedule, task: task)
+                        ForEach(tasks) {
+                            ScheduleTask(schedule, task: $0)
                         }
                     } label: {
                         ScheduleCard(schedule)
@@ -29,6 +29,7 @@ struct ScheduleList: View {
                 }
 #endif
             }
+            .onDelete(perform: vm.deleteSchedules)
             
             Button("Create Schedule") {
                 vm.sheetCreate = true

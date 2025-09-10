@@ -13,8 +13,8 @@ struct DatabaseList: View {
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading) {
-                ForEach(vm.databases) { database in
-                    DatabaseCard(database)
+                ForEach(vm.databases) {
+                    DatabaseCard($0)
                 }
             }
         }
@@ -40,5 +40,7 @@ struct DatabaseList: View {
 }
 
 #Preview {
-    DatabaseList("")
+    NavigationStack {
+        DatabaseList("")
+    }
 }

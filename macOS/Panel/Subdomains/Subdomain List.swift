@@ -3,8 +3,6 @@ import SwiftUI
 struct SubdomainList: View {
     @Environment(SubdomainVM.self) private var vm
     
-    @Environment(\.dismiss) private var dismiss
-    
     @State private var sheetCreate = false
     
     private var disabled: Bool {
@@ -13,8 +11,8 @@ struct SubdomainList: View {
     
     var body: some View {
         List {
-            ForEach(vm.subdomains) { subdomain in
-                SubdomainCard(subdomain)
+            ForEach(vm.subdomains) {
+                SubdomainCard($0)
                     .listRowSeparator(.hidden)
             }
             .onDelete(perform: delete)
@@ -68,6 +66,8 @@ struct SubdomainList: View {
 }
 
 #Preview {
-    SubdomainList()
-        .environment(SubdomainVM(""))
+    NavigationStack {
+        SubdomainList()
+    }
+    .environment(SubdomainVM(""))
 }

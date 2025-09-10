@@ -13,8 +13,8 @@ struct LogList: View {
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 10) {
-                ForEach(vm.logs) { log in
-                    LogCard(log)
+                ForEach(vm.logs) {
+                    LogCard($0)
                 }
             }
             .padding()
@@ -32,6 +32,7 @@ struct LogList: View {
 }
 
 #Preview {
-    LogList("")
-        .environment(LogVM(""))
+    NavigationStack {
+        LogList("")
+    }
 }

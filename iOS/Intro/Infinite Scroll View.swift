@@ -1,6 +1,5 @@
-import SwiftUI
+import ScrechKit
 
-@available(iOS 18, *)
 struct InfiniteScrollView<Content: View>: View {
     var spacing = 10.0
     @ViewBuilder var content: Content
@@ -30,8 +29,8 @@ struct InfiniteScrollView<Content: View>: View {
                         }
                         
                         /// Repeating Content for creating Infinite(Looping) ScrollView
-                        let averageWidth = contentSize.width / CGFloat(collection.count)
-                        let repeatingCount = contentSize.width > 0 ? Int((width / averageWidth).rounded()) + 1 : 1
+                        let avgWidth = contentSize.width / CGFloat(collection.count)
+                        let repeatingCount = contentSize.width > 0 ? Int((width / avgWidth).rounded()) + 1 : 1
                         
                         HStack(spacing: spacing) {
                             ForEach(0..<repeatingCount, id: \.self) { index in
@@ -40,13 +39,14 @@ struct InfiniteScrollView<Content: View>: View {
                         }
                     }
                 }
-                .background(InfiniteScrollHelper($contentSize, declarationRate: .constant(.fast)))
+                .background {
+                    InfiniteScrollHelper($contentSize, declarationRate: .constant(.fast))
+                }
             }
         }
     }
 }
 
-@available(iOS 18, *)
 #Preview {
     Intro()
 }
@@ -55,20 +55,26 @@ fileprivate struct InfiniteScrollHelper: UIViewRepresentable {
     @Binding var contentSize: CGSize
     @Binding var declarationRate: UIScrollView.DecelerationRate
     
-    init(_ contentSize: Binding<CGSize>, declarationRate: Binding<UIScrollView.DecelerationRate>) {
+    init(
+        _ contentSize: Binding<CGSize>,
+        declarationRate: Binding<UIScrollView.DecelerationRate>
+    ) {
         _contentSize = contentSize
         _declarationRate = declarationRate
     }
     
     func makeCoordinator() -> Coordinator {
-        Coordinator(declarationRate: declarationRate, contentSize: contentSize)
+        Coordinator(
+            declarationRate: declarationRate,
+            contentSize: contentSize
+        )
     }
     
     func makeUIView(context: Context) -> UIView {
         let view = UIView(frame: .zero)
         view.backgroundColor = .clear
         
-        DispatchQueue.main.async {
+        main {
             if let scrollView = view.scrollView {
                 context.coordinator.defaultDelegate = scrollView.delegate
                 scrollView.decelerationRate = declarationRate

@@ -14,10 +14,8 @@ struct UserInvitationView: View {
                 TextField("E-mail", text: $email)
                     .textContentType(.emailAddress)
 #if os(iOS)
-                Button {
+                Button("Contacts", systemImage: "person.circle.fill") {
                     sheetContacts = true
-                } label: {
-                    Label("Contacts", systemImage: "person.circle.fill")
                 }
 #endif
                 Button {
@@ -27,35 +25,28 @@ struct UserInvitationView: View {
                         .animation(.default, value: vm.allPermsTrigger)
                 }
             }
-            .transparentSection()
             
             ForEach(vm.chunkedPermissions.keys.sorted(), id: \.self) { type in
                 Section(type) {
-                    ForEach(vm.chunkedPermissions[type] ?? [], id: \.self) { permission in
-                        UserInvitationPermission(permission)
+                    ForEach(vm.chunkedPermissions[type] ?? [], id: \.self) {
+                        UserInvitationPermission($0)
                     }
                 }
-                .transparentSection()
             }
             
             Section {
-                Button {
+                Button("Invite user") {
                     Task {
                         await vm.createUser(email) {
                             dismiss()
                         }
                     }
-                } label: {
-                    Text("Invite user")
                 }
                 .disabled(vm.newUserPermissions.isEmpty)
             }
-            .transparentSection()
         }
         .padding(.horizontal)
         .scrollIndicators(.never)
-        .presentationDetents([.medium])
-        .transparentList()
         .task {
             await vm.fetchPermissions()
         }

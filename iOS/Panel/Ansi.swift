@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 fileprivate let regex = try! NSRegularExpression(pattern: "\\x1b\\[[0-9;]*m")
 fileprivate let regex1 = try! Regex("\\x1b\\[[0-9;]*m")
@@ -51,7 +51,9 @@ public func convertAnsiToAttributedString(_ input: String) -> AttributedString {
             attributeContainer.underlineStyle = .double
         }
         
-        attributedString.append(AttributedString(part, attributes: attributeContainer))
+        attributedString.append(
+            AttributedString(part, attributes: attributeContainer)
+        )
         
         if idx < matches.count {
             let match = matches[idx]
@@ -118,17 +120,16 @@ private func detectAndAddLinks(_ attributedString: inout AttributedString) {
         location: 0,
         length: mutableAttributedString.length
     )
-    
 #if os(macOS)
     let urlColor = NSColor.blue
 #else
     let urlColor = UIColor.blue
 #endif
-    
     detector.enumerateMatches(in: mutableAttributedString.string, options: [], range: fullRange) { match, _, _ in
         guard
             let match,
-            let url = URL(string: (mutableAttributedString.string as NSString).substring(with: match.range))
+            let url = URL(string: (mutableAttributedString.string as NSString)
+                .substring(with: match.range))
         else {
             return
         }

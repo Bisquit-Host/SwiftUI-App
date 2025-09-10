@@ -1,9 +1,8 @@
-import SwiftUI
+import ScrechKit
 import PteroNet
 
 struct AllocationList: View {
     private var vm: AllocationVM
-    
     private let server: ServerAttributes
     
     init(_ server: ServerAttributes) {
@@ -15,33 +14,51 @@ struct AllocationList: View {
     
     var body: some View {
         List {
-            ForEach(vm.allocations) { allocation in
-                AllocationCard(allocation)
-                    .transparentSection()
+            ForEach(vm.allocations) {
+                AllocationCard($0)
             }
-            
-            Button("Assign allocation") {
-                sheetCreate = true
-            }
-            .disabled(vm.allocations.count >= server.featureLimits.allocations)
-            .transparentSection()
+            .onDelete(perform: delete)
         }
         .navigationTitle("Allocations")
-        .toolbarTitleDisplayMode(.inline)
-        .transparentList()
         .refreshableTask {
             await vm.fetchAllocations()
         }
         .sheet($sheetCreate) {
-            NavigationView {
+            NavigationStack {
                 SheetCreateAllocation()
             }
         }
         .environment(vm)
+        .toolbar {
+            ToolbarItem(placement: .bottomBar) {
+                DismissButton()
+            }
+#if os(iOS) || os(macOS)
+            ToolbarSpacer(.flexible, placement: .bottomBar)
+#endif
+            ToolbarItem(placement: .bottomBar) {
+                SFButton("link.badge.plus") {
+                    sheetCreate = true
+                }
+                .disabled(vm.allocations.count >= server.featureLimits.allocations)
+            }
+        }
+    }
+    
+    private func delete(offsets: IndexSet) {
+        for index in offsets {
+            let id = vm.allocations[index].id
+            
+            Task {
+                await vm.unassignAllocation(id)
+            }
+        }
     }
 }
 
 #Preview {
-    AllocationList(sampleJSON(.serverListAttributes))
-        .environment(AllocationVM(""))
+    NavigationStack {
+        AllocationList(sampleJSON(.serverListAttributes))
+    }
+    .environment(AllocationVM(""))
 }

@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 import PteroNet
 
 struct TaskContextMenu: View {
@@ -13,7 +13,7 @@ struct TaskContextMenu: View {
     }
     
     var body: some View {
-        MenuButton("Delete", role: .destructive, icon: "trash") {
+        Button("Delete", systemImage: "trash", role: .destructive) {
             Task {
                 await vm.deleteScheduleTask(schedule.id, taskId: task.id)
             }

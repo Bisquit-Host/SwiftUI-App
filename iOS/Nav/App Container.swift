@@ -16,15 +16,12 @@ struct AppContainer: View {
     @Environment(NavState.self) private var nav
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.modelContext) private var modelContext
-    @Environment(\.dismiss) private var dismiss
     @Query(animation: .default) private var keys: [APIKey]
     
     @State private var showBadge = false
-    
 #if os(iOS)
     @State private var orientation = UIDevice.current.orientation
 #endif
-    
     var body: some View {
         @Bindable var nav = nav
         
@@ -37,8 +34,13 @@ struct AppContainer: View {
                     .withNavDestinations()
 #endif
             } else {
-                IntroParent()
+#if os(iOS)
+                Intro()
                     .withNavDestinations()
+#else
+                StartPage()
+                    .withNavDestinations()
+#endif
             }
         }
         .animation(.default, value: store.isApiKeyValid)
@@ -46,14 +48,14 @@ struct AppContainer: View {
 #if !os(iOS) || !os(visionOS)
         .environment(updater)
 #endif
-        .preferredColorScheme(store.colorTheme.scheme)
+        .preferredColorScheme(store.appearance.scheme)
         .onOpenURL(perform: linking.handleDeepLink)
         .onFirstAppear {
             await updater.checkForUpdates()
-            network.defineStatus()
+            network.observeStatus()
         }
 #if os(iOS) || os(visionOS)
-        .appStoreOverlay($updater.alertUpdate, id: "1639409934")
+        .appStoreOverlay($updater.alertUpdate, id: 1639409934)
 #elseif os(macOS)
         
 #endif

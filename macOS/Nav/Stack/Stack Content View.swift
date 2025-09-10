@@ -66,7 +66,7 @@ struct StackContentView: View {
     }
 }
 
-#Preview() {
+#Preview {
     StackContentView()
         .environment(ServerListVM())
         .environment(NavModel.shared)

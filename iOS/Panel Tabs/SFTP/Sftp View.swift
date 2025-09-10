@@ -2,7 +2,7 @@ import ScrechKit
 import PteroNet
 
 struct SftpDetails: View {
-    @Environment(ServerSettingsVM.self) var vm
+    @Environment(ServerSettingsVM.self) private var vm
     
     private var sftp: ServerSftpDetails
     
@@ -30,7 +30,7 @@ struct SftpDetails: View {
                     Spacer()
                     
                     Image(systemName: "doc.on.doc")
-                        .title3()
+                        .secondary()
                 }
             }
             
@@ -48,7 +48,7 @@ struct SftpDetails: View {
                     Spacer()
                     
                     Image(systemName: "doc.on.doc")
-                        .title3()
+                        .secondary()
                 }
             }
         }
@@ -57,11 +57,14 @@ struct SftpDetails: View {
     }
     
     private func copy(_ string: String) {
-        UIPasteboard.general.string = string
+        Pasteboard.copy(string)
         SystemAlert.copied()
     }
 }
 
-//#Preview {
-//    SftpDetails(sampleJSON(.serverListAttributes))
-//}
+#Preview {
+    List {
+        SftpDetails(PreviewProp.serverAttributes.sftp)
+    }
+    .environment(ServerSettingsVM(""))
+}

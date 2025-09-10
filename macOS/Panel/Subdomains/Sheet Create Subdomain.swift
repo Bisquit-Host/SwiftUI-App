@@ -25,31 +25,32 @@ struct SheetCreateSubdomain: View {
             
             if let domains = vm.domains {
                 Picker("Domain", selection: $vm.selectedDomain) {
-                    ForEach(domains) { domain in
-                        Text(domain.domain)
+                    ForEach(domains) {
+                        Text($0.domain)
                     }
                 }
                 .pickerStyle(.inline)
             }
             
             Section {
-                Button {
-                    Task {
-                        await vm.createSubdomain {
-                            dismiss()
-                        }
-                    }
-                } label: {
-                    Label("Create", systemImage: "plus")
+                Button("Create", systemImage: "plus") {
+                    createSubdomain()
                 }
             }
         }
         .ornamentDismissButton()
+    }
+    
+    private func createSubdomain() {
+        Task {
+            await vm.createSubdomain {
+                dismiss()
+            }
+        }
     }
 }
 
 #Preview {
     SheetCreateSubdomain()
         .environment(SubdomainVM(""))
-        .darkSchemePreferred()
 }

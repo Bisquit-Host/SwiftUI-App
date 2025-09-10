@@ -1,6 +1,6 @@
 import TipKit
 
-struct Tip_JsonFormatter: Tip {
+struct TipJsonFormatter: Tip {
     var title: Text {
         Text("JSON Formatter")
     }
@@ -20,11 +20,11 @@ struct Tip_JsonFormatter: Tip {
 
 #Preview {
     VStack {
-        TipView(Tip_JsonFormatter())
+        TipView(TipJsonFormatter())
             .tipBackground(.ultraThinMaterial)
             .padding()
     }
 #if !os(watchOS)
-    .popoverTip(Tip_JsonFormatter())
+    .popoverTip(TipJsonFormatter())
 #endif
 }

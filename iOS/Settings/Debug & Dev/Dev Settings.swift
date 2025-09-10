@@ -1,21 +1,18 @@
 import ScrechKit
 
 struct DevSettings: View {
-    @EnvironmentObject private var store: ValueStore
-    
     private let device = UIDevice.current
-    private let bundle = Bundle.main
     
     private var appVersion: String {
-        bundle.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "N/A"
+        Bundle.version ?? "N/A"
     }
     
     private var appBuild: String {
-        bundle.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "N/A"
+        Bundle.build ?? "N/A"
     }
     
     private var version: String {
-        "\(appVersion) (B\(appBuild))"
+        "v\(appVersion) (B\(appBuild))"
     }
     
     private var deviceAndSystem: String {
@@ -23,7 +20,7 @@ struct DevSettings: View {
     }
     
     var body: some View {
-        Section("Dev") {
+        Section {
             ListParam("App version", param: version)
             
             ListParam("Device and system", param: deviceAndSystem)
@@ -32,13 +29,15 @@ struct DevSettings: View {
                 DebugSettings()
             }
 #endif
-            ServerListFooter()
+        } header: {
+            Text("Dev")
+        } footer: {
+            DevSettingsFooter()
         }
-        .transparentSection()
     }
 }
 
-public extension UIDevice {
+fileprivate extension UIDevice {
     var modelIdentifier: String {
         var systemInfo = utsname()
         uname(&systemInfo)
@@ -62,5 +61,4 @@ public extension UIDevice {
     List {
         DevSettings()
     }
-    .environmentObject(ValueStore())
 }

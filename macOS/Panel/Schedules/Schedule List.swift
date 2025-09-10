@@ -13,8 +13,8 @@ struct ScheduleList: View {
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading) {
-                ForEach(vm.schedules, id: \.id) { schedule in
-                    ScheduleCard(schedule)
+                ForEach(vm.schedules) {
+                    ScheduleCard($0)
                 }
             }
         }
@@ -35,5 +35,7 @@ struct ScheduleList: View {
 }
 
 #Preview {
-    ScheduleList("")
+    NavigationStack {
+        ScheduleList("")
+    }
 }

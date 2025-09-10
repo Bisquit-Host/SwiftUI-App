@@ -31,24 +31,16 @@ private struct Label: View {
     
     var body: some View {
         HStack(spacing: 20) {
-            Image(systemName: navMode.imageName)
+            Image(systemName: navMode.icon)
                 .title()
                 .foregroundStyle(shapeStyle(Color.accentColor))
             
-            VStack(alignment: .leading) {
-                Text(navMode.localizedName)
-                    .bold()
-                    .foregroundStyle(shapeStyle(Color.primary))
-                
-                Text(navMode.localizedDescription)
-                    .callout()
-                    .lineLimit(3, reservesSpace: true)
-                    .multilineTextAlignment(.leading)
-                    .foregroundStyle(shapeStyle(Color.secondary))
-            }
+            Text(navMode.name)
+                .bold()
+                .foregroundStyle(shapeStyle(Color.primary))
         }
+        .frame(width: 200, height: 50)
         .shadow(radius: selection == navMode ? 4 : 0)
-        .padding()
         .background {
             RoundedRectangle(cornerRadius: 12, style: .continuous)
                 .fill(selection == navMode ?
@@ -76,8 +68,7 @@ private struct Label: View {
 }
 
 #Preview {
-    @Previewable @State
-    var selection: NavMode?
+    @Previewable @State var selection: NavMode?
     
     ForEach(NavMode.allCases) {
         NavModePickerItem(

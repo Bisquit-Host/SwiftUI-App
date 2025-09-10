@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 import PteroNet
 import Kingfisher
 
@@ -37,21 +37,21 @@ struct FileContextMenu: ViewModifier {
                 CompressButton()
                 
                 if !mimeType.contains("directory") {
-                    MenuButton("Duplicate", icon: "plus.square.on.square") {
+                    Button("Duplicate", systemImage: "plus.square.on.square") {
                         Task {
                             await vm.duplicateFile(name, at: path + "/")
                         }
                     }
                 }
                 
-                MenuButton("Permissions", icon: "lock.doc") {
+                Button("Permissions", systemImage: "lock.doc") {
                     sheetPermissions = true
                 }
                 
                 Divider()
                 
                 if !mimeType.contains("directory") {
-                    MenuButton("Download", icon: "square.and.arrow.down") {
+                    Button("Download", systemImage: "square.and.arrow.down") {
                         Task {
                             await vm.downloadFile(path + "/" + name)
                         }
@@ -64,7 +64,7 @@ struct FileContextMenu: ViewModifier {
                 
                 Divider()
                 
-                MenuButton("Delete", role: .destructive, icon: "trash") {
+                Button("Delete", systemImage: "trash", role: .destructive) {
                     Task {
                         await vm.deleteFile(name, at: path)
                     }
@@ -89,7 +89,7 @@ struct FileContextMenu: ViewModifier {
     }
     
     private func RenameButton() -> some View {
-        MenuButton("Rename", icon: "pencil") {
+        Button("Rename", systemImage: "pencil") {
             vm.newFileName = ""
             alertRename = true
         }
@@ -97,13 +97,13 @@ struct FileContextMenu: ViewModifier {
     
     private func CompressButton() -> some View {
         if mimeType.contains("gzip") {
-            MenuButton("Decompress", icon: "arrow.up.bin") {
+            Button("Decompress", systemImage: "arrow.up.bin") {
                 Task {
                     await vm.fileCompressor(name, at: path, do: .decompress)
                 }
             }
         } else {
-            MenuButton("Compress", icon: "archivebox") {
+            Button("Compress", systemImage: "archivebox") {
                 Task {
                     await vm.fileCompressor(name, at: path, do: .compress)
                 }
@@ -131,6 +131,6 @@ extension View {
 }
 
 //#Preview {
-//    QuickLookFile("", path: "", name: "")
+//    QuickLookFile("", name: "", at: "")
 //        .environmentObject(FileTabVM(""))
 //}

@@ -32,16 +32,15 @@ struct FolderDestination: View {
             }
             .listRowSeparator(.hidden)
             
-            ForEach(vm.filteredFiles) { file in
-                FileView(id, at: root, file: file)
-                    .id(file)
+            ForEach(vm.filteredFiles) {
+                FileView(id, at: root, file: $0)
+                    .id($0)
             }
             .animation(.default, value: vm.filteredFiles.indices)
             .listRowSeparator(.hidden)
         }
-        .transparentList()
-        .scrollContentBackground(.hidden)
         .navigationTitle("Files")
+        .scrollContentBackground(.hidden)
         .environmentObject(vm)
         .frame(minWidth: 200, maxWidth: 800)
 #if os(macOS)
@@ -63,7 +62,8 @@ struct FolderDestination: View {
 }
 
 #Preview {
-    FolderDestination("")
-        .environmentObject(ValueStore())
-        .environmentObject(FileTabVM(""))
+    NavigationStack {
+        FolderDestination("")
+    }
+    .environment(NavModel())
 }

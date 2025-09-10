@@ -1,6 +1,6 @@
 import TipKit
 
-struct Tip_CloudKeys: Tip {
+struct TipCloudKeys: Tip {
     var title: Text {
         Text("Stored keys")
     }
@@ -16,11 +16,11 @@ struct Tip_CloudKeys: Tip {
 
 #Preview {
     VStack {
-        TipView(Tip_CloudKeys())
+        TipView(TipCloudKeys())
             .tipBackground(.ultraThinMaterial)
             .padding()
     }
 #if !os(watchOS)
-    .popoverTip(Tip_CloudKeys())
+    .popoverTip(TipCloudKeys())
 #endif
 }

@@ -12,11 +12,9 @@ struct ConsoleInspector: View {
                 
                 Slider(value: $vm.fontSize, in: 6...16)
             }
-            .transparentSection()
             
             // Toggle("coloredTextEnabled", isOn: $store.coloredTextEnabled)
         }
-        .transparentList()
         .presentationDetents([.medium, .large])
         .presentationDragIndicator(.hidden)
     }

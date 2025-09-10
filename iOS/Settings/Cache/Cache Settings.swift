@@ -12,6 +12,11 @@ struct CacheSettings: View {
             CacheExpiration()
         }
         .environment(cache)
-        .transparentSection()
+    }
+}
+
+#Preview {
+    List {
+        CacheSettings()
     }
 }

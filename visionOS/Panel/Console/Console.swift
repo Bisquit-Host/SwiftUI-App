@@ -62,10 +62,8 @@ struct Console: View {
                 }
             }
             .toolbar {
-                Button {
+                Button("Open in a separate window", systemImage: "macwindow.on.rectangle") {
                     openWindow(id: "console")
-                } label: {
-                    Label("Open in a separate window", systemImage: "macwindow.on.rectangle")
                 }
             }
         }

@@ -21,11 +21,11 @@ final class FileTabVM: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     @Published var uploadProgress: Float = 0
     @Published var isUploading = false
-    @Published var sheetPreview = false
 #endif
     
-    // macOS
+#if os(macOS)
     @Published var degrees = 0.0
+#endif
     
     @Published var files: [FileAttributes] = []
     @Published var showTextField = false
@@ -51,7 +51,21 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func chmod(_ read: Bool, _ write: Bool, _ execute: Bool) -> String {
+    func deleteItem(_ offsets: IndexSet) {
+        for file in offsets {
+            let name = filteredFiles[file].name
+            
+            Task {
+                await deleteFile(name, at: path)
+            }
+        }
+    }
+    
+    func chmod(
+        _ read: Bool,
+        _ write: Bool,
+        _ execute: Bool
+    ) -> String {
         var permission: UInt8 = 0
         
         if read    { permission |= 4 }
@@ -79,7 +93,7 @@ final class FileTabVM: ObservableObject {
     
     func pullRemoteFile(
         _ file: FilePullRequestBody,
-        dir: String = "",
+        at path: String = "",
         onSuccess: @escaping () -> ()
     ) async {
         do {
@@ -87,7 +101,7 @@ final class FileTabVM: ObservableObject {
             
             onSuccess()
             
-            await fetchFiles(dir)
+            await fetchFiles(path)
         } catch {
             SystemAlert.error(error)
         }
@@ -149,12 +163,12 @@ final class FileTabVM: ObservableObject {
     func handleFileImport(
         _ urls: [URL],
         at root: String,
-        onSuccess: @escaping () -> Void
+        onSuccess: @escaping () -> Void = {}
     ) async {
-        for fileURL in urls {
-            let fileName = fileURL.lastPathComponent
+        for fileUrl in urls {
+            let fileName = fileUrl.lastPathComponent
             
-            guard let mimeType = getMimeType(fileURL) else {
+            guard let mimeType = getMimeType(fileUrl) else {
                 print("Unable to determine MIME type for file:", fileName)
                 continue
             }
@@ -167,7 +181,7 @@ final class FileTabVM: ObservableObject {
                     name: fileName,
                     at: root,
                     mimeType: mimeType,
-                    fileUrl: fileURL
+                    fileUrl: fileUrl
                 )
                 
                 await fetchFiles(root)
@@ -243,7 +257,10 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func duplicateFile(_ file: String, at path: String) async {
+    func duplicateFile(
+        _ file: String,
+        at path: String
+    ) async {
         do {
             try await fileDuplicateAPI(id, file: file, at: path)
             await fetchFiles(path)
@@ -271,7 +288,10 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func createFolder(_ file: String, at path: String) async {
+    func createFolder(
+        _ file: String,
+        at path: String
+    ) async {
         do {
             try await fileCreateFolderAPI(id, file: file, at: path)
             

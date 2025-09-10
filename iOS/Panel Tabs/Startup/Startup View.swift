@@ -1,9 +1,8 @@
-import ScrechKit
+import SwiftUI
 import PteroNet
 
 struct StartupView: View {
     @Environment(StartupVM.self) private var vm
-    @EnvironmentObject private var store: ValueStore
     
     private let server: ServerAttributes
     
@@ -14,36 +13,9 @@ struct StartupView: View {
     
     @State private var currentDockerImage: String
     
-    private var command: String {
-        store.rawStartupCommand ? vm.rawStartupCommand : vm.startupCommand
-    }
-    
     var body: some View {
         List {
-            Section {
-                Text(command)
-                    .caption2()
-                    .monospaced()
-                    .textSelection(.enabled)
-                    .animation(.default, value: store.rawStartupCommand)
-                
-                if vm.rawStartupCommand != vm.startupCommand {
-                    Toggle("Raw", isOn: $store.rawStartupCommand)
-                }
-            } header: {
-                HStack {
-                    Text("Startup Command")
-                    
-                    Spacer()
-                    
-                    SFButton("document.on.document") {
-                        UIPasteboard.general.string = command
-                        SystemAlert.copied()
-                    }
-                    .foregroundStyle(.foreground)
-                }
-            }
-            .listRowBackground(Color.gray.opacity(0.2))
+            StartupCommand()
             
             Picker("Docker Image", selection: $currentDockerImage) {
                 ForEach(vm.sortedDockerImages, id: \.key) { key, value in
@@ -53,14 +25,13 @@ struct StartupView: View {
             }
             .listRowBackground(Color.gray.opacity(0.2))
             
-            ForEach(vm.startupVariables) { variable in
-                StartupCard(server, variable: variable)
+            ForEach(vm.startupVariables) {
+                StartupCard(server, variable: $0)
                     .listRowBackground(Color.gray.opacity(0.2))
             }
         }
         .scrollIndicators(.never)
         .frame(maxWidth: 500)
-        .toolbarBackground(.visible, for: .tabBar)
         .background(BackgroundImage())
         .scrollContentBackground(.hidden)
         .refreshableTask {

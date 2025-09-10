@@ -20,15 +20,33 @@ struct DebugSettings: View {
                 Toggle("Hide server names", isOn: $store.hideServerNames)
             }
             
-            DebugSettingsTips()
-            
-            Section("Contacts provider") {
-                Toggle("Save contacts automatically", isOn: $store.contactsProviderEnabled)
+            Section("System alerts") {
+                Button("Copied") {
+                    SystemAlert.copied()
+                }
                 
-                Button("Enable Extension") {
-                    enableExtension()
+                Button("Network error") {
+                    SystemAlert.networkError()
+                }
+                
+                Button("Restored backup") {
+                    SystemAlert.restored()
+                }
+                
+                Button("Reinstalled server") {
+                    SystemAlert.reinstalled()
+                }
+                
+                Button("Changes saved") {
+                    SystemAlert.changesSaved()
+                }
+                
+                Button("Error (title & subtitle)") {
+                    SystemAlert.error("Title", subtitle: "Subtitle")
                 }
             }
+            
+            DebugSettingsTips()
             
             Section {
                 Button("Clear all cookies") {
@@ -43,29 +61,37 @@ struct DebugSettings: View {
                     Label("Gamepad test", systemImage: "gamecontroller")
                 }
             }
+            
+            Section("Contacts provider") {
+                Toggle("Save contacts automatically", isOn: $store.contactsProviderEnabled)
+                
+                Button("Enable Extension") {
+                    enableExtension()
+                }
+            }
         }
+        .navigationTitle("Debug")
+        .scrollIndicators(.never)
         .foregroundStyle(.foreground)
         .alert("Couldn't enable the extension", isPresented: $errorAlert) {}
     }
     
     private func enableExtension() {
-        if #available(iOS 18, *) {
-            do {
-                let manager = try ContactProviderManager()
-                
-                Task {
-                    try await manager.enable()
-                }
-            } catch {
-                print(error.localizedDescription)
+        do {
+            let manager = try ContactProviderManager()
+            
+            Task {
+                try await manager.enable()
             }
-        } else {
-            errorAlert = true
+        } catch {
+            print(error.localizedDescription)
         }
     }
 }
 
 #Preview {
-    DebugSettings()
-        .environmentObject(ValueStore())
+    NavigationStack {
+        DebugSettings()
+    }
+    .environmentObject(ValueStore())
 }

@@ -13,8 +13,8 @@ struct AllocationList: View {
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading) {
-                ForEach(vm.allocations) { allocation in
-                    AllocationCard(allocation)
+                ForEach(vm.allocations) {
+                    AllocationCard($0)
                 }
             }
         }
@@ -35,6 +35,8 @@ struct AllocationList: View {
 }
 
 #Preview {
-    UserList("")
-        .environment(UsersVM(""))
+    NavigationStack {
+        UserList("")
+    }
+    .environment(AllocationVM(""))
 }

@@ -5,9 +5,10 @@ struct InfoStat: View {
     private var value: String
     private var alignment: HorizontalAlignment
     
-    init(_ param: LocalizedStringResource,
-         value: String,
-         alignment: HorizontalAlignment = .center
+    init(
+        _ param: LocalizedStringResource,
+        value: String,
+        alignment: HorizontalAlignment = .center
     ) {
         self.param = param
         self.value = value

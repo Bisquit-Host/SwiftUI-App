@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import AVKit
 
 struct VideoFile: View {
@@ -36,10 +36,8 @@ struct VideoFile: View {
         .toolbar {
 #if os(tvOS)
             ToolbarItem(placement: .topBarLeading) {
-                Button {
+                SFButton("arrow.left") {
                     dismiss()
-                } label: {
-                    Image(systemName: "arrow.left")
                 }
             }
             
@@ -47,7 +45,7 @@ struct VideoFile: View {
                 Button(role: .destructive) {
                     dismiss()
                 } label: {
-                    Image(systemName: "trash")
+                    Image(systemName: "")
                 }
             }
 #endif
@@ -73,18 +71,16 @@ struct VideoFile: View {
                 }
                 
                 Section {
-                    Button(role: .destructive) {
+                    Button("Delete", systemImage: "trash", role: .destructive) {
                         Task {
                             await fileVm.deleteFile(name, at: path) {
                                 dismiss()
                             }
                         }
-                    } label: {
-                        Label("Delete", systemImage: "trash")
                     }
                 }
             } label: {
-                Image(systemName: "ellipsis.circle")
+                Image(systemName: "ellipsis")
             }
 #endif
         }
@@ -92,6 +88,8 @@ struct VideoFile: View {
 }
 
 #Preview {
-    VideoFile("id", name: "Preview", at: "")
-        .environmentObject(FileTabVM(""))
+    NavigationStack {
+        VideoFile("id", name: "Preview", at: "")
+    }
+    .environmentObject(FileTabVM(""))
 }

@@ -11,14 +11,19 @@ struct CacheSize: View {
                 CacheList()
             }
 #endif
-            Section {
-                Button("Clear entire cache", role: .destructive) {
-                    cache.clearAll()
-                }
+            Divider()
+            
+            Button("Clear entire cache", role: .destructive) {
+                cache.clearAll()
             }
         } label: {
             HStack {
-                Text("Total size")
+                Label {
+                    Text("Total size")
+                } icon: {
+                    Image(systemName: "chart.pie")
+                        .foregroundStyle(.blue)
+                }
                 
                 Spacer()
                 
@@ -41,4 +46,5 @@ struct CacheSize: View {
     List {
         CacheSize()
     }
+    .environment(CacheVM())
 }

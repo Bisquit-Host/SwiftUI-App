@@ -45,28 +45,25 @@ struct FilePermissionsView: View {
         
         List {
             TextField("777", text: $newModeBits)
-                .transparentSection()
+                .limitInputLength($newModeBits, length: 3)
             
             Section("System") {
                 Toggle("Read", isOn: $systemRead)
                 Toggle("Write", isOn: $systemWrite)
                 Toggle("Execute", isOn: $systemExecute)
             }
-            .transparentSection()
             
             Section("Admin") {
                 Toggle("Read", isOn: $adminRead)
                 Toggle("Write", isOn: $adminWrite)
                 Toggle("Execute", isOn: $adminExecute)
             }
-            .transparentSection()
             
             Section("Other users") {
                 Toggle("Read", isOn: $otherRead)
                 Toggle("Write", isOn: $otherWrite)
                 Toggle("Execute", isOn: $otherExecute)
             }
-            .transparentSection()
             
             Button {
                 if isDifferent {
@@ -84,11 +81,8 @@ struct FilePermissionsView: View {
                     .animation(.default, value: newMode)
                     .foregroundStyle(.foreground)
             }
-            .transparentSection()
         }
         .navigationTitle("Permissions")
-        .transparentList()
-        .toolbarTitleDisplayMode(.inline)
         .onChange(of: newMode) {
             newModeBits = newMode
         }
@@ -96,15 +90,15 @@ struct FilePermissionsView: View {
             if newValue.count == 3 {
                 let newValues = parsePermissions(newValue)
                 
-                systemRead = newValues.systemRead
-                systemWrite = newValues.systemWrite
+                systemRead    = newValues.systemRead
+                systemWrite   = newValues.systemWrite
                 systemExecute = newValues.systemExecute
-                adminRead = newValues.adminRead
-                adminWrite = newValues.adminWrite
-                adminExecute = newValues.adminExecute
-                otherRead = newValues.otherRead
-                otherWrite = newValues.otherWrite
-                otherExecute = newValues.otherExecute
+                adminRead     = newValues.adminRead
+                adminWrite    = newValues.adminWrite
+                adminExecute  = newValues.adminExecute
+                otherRead     = newValues.otherRead
+                otherWrite    = newValues.otherWrite
+                otherExecute  = newValues.otherExecute
             }
         }
         .task {
@@ -112,15 +106,15 @@ struct FilePermissionsView: View {
             
             let bits = Array(file.mode)
             
-            systemRead = initBit(bits[1])
-            systemWrite = initBit(bits[2])
+            systemRead    = initBit(bits[1])
+            systemWrite   = initBit(bits[2])
             systemExecute = initBit(bits[3])
-            adminRead = initBit(bits[4])
-            adminWrite = initBit(bits[5])
-            adminExecute = initBit(bits[6])
-            otherRead = initBit(bits[7])
-            otherWrite = initBit(bits[8])
-            otherExecute = initBit(bits[9])
+            adminRead     = initBit(bits[4])
+            adminWrite    = initBit(bits[5])
+            adminExecute  = initBit(bits[6])
+            otherRead     = initBit(bits[7])
+            otherWrite    = initBit(bits[8])
+            otherExecute  = initBit(bits[9])
         }
     }
     
@@ -166,9 +160,8 @@ fileprivate extension Array {
 }
 
 #Preview {
-    FilePermissionsView(
-        sampleJSON(.fileListAttributes),
-        at: ""
-    )
+    NavigationStack {
+        FilePermissionsView(sampleJSON(.fileListAttributes), at: "")
+    }
     .environmentObject(FileTabVM(""))
 }

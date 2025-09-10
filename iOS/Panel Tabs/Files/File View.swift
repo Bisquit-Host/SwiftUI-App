@@ -2,8 +2,8 @@ import ScrechKit
 import PteroNet
 
 struct FileView: View {
-    @EnvironmentObject private var store: ValueStore
     @EnvironmentObject private var vm: FileTabVM
+    @EnvironmentObject private var store: ValueStore
     
     private let id, root: String
     private let file: FileAttributes
@@ -27,7 +27,6 @@ struct FileView: View {
         NavigationLink {
             if mimeType.contains("directory") {
                 FolderFile(id, path: root + name + "/")
-                
             } else {
                 Group {
                     if mimeType.contains("text") || mimeType.contains("json") {

@@ -1,10 +1,8 @@
-import SwiftUI
+import ScrechKit
 import PteroNet
 
 struct SubdomainList: View {
     @Environment(SubdomainVM.self) private var vm
-    
-    @Environment(\.dismiss) private var dismiss
     
     private let allocations: [AllocationAttributes]
     
@@ -20,16 +18,12 @@ struct SubdomainList: View {
     
     var body: some View {
         List {
-            ForEach(vm.subdomains) { subdomain in
-                SubdomainCard(subdomain)
+            ForEach(vm.subdomains) {
+                SubdomainCard($0)
             }
             .onDelete(perform: delete)
         }
         .navigationTitle("Subdomains")
-#if !os(tvOS)
-        .toolbarTitleDisplayMode(.large)
-#endif
-        .transparentList()
         .refreshableTask {
             await vm.fetchSubdomains()
         }
@@ -46,21 +40,15 @@ struct SubdomainList: View {
             }
         }
         .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                DismissButton {
-                    dismiss()
-                }
+            ToolbarItem(placement: .bottomBar) {
+                DismissButton()
             }
-            
-            ToolbarItem(placement: .topBarTrailing) {
-                Button {
+#if os(iOS) || os(macOS)
+            ToolbarSpacer(.flexible, placement: .bottomBar)
+#endif
+            ToolbarItem(placement: .bottomBar) {
+                SFButton("link.badge.plus") {
                     sheetCreate = true
-                } label: {
-                    Image(systemName: "link.badge.plus")
-                        .foregroundStyle(.foreground)
-                        .footnote(.bold)
-                        .frame(35)
-                        .background(.ultraThinMaterial, in: .circle)
                 }
             }
         }
@@ -78,6 +66,8 @@ struct SubdomainList: View {
 }
 
 #Preview {
-    SubdomainList([])
-        .environment(SubdomainVM(""))
+    NavigationStack {
+        SubdomainList([])
+    }
+    .environment(SubdomainVM(""))
 }

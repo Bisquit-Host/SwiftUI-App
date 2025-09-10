@@ -14,29 +14,33 @@ struct AppIconCard: View {
     @Namespace private var animation
     
     var body: some View {
-        Button {
-            grantAchievement("change_icon")
-            
-            withAnimation(.easeInOut) {
-                store.currentIcon = icon
-            }
-        } label: {
-            ZStack {
-                if isSelected {
-                    Image(icon.img)
-                        .resizable()
-                        .blur(radius: 5)
-                        .frame(70)
-                        .matchedEffect("icon", in: animation)
-                }
-                
+        ZStack {
+            if isSelected {
                 Image(icon.img)
                     .resizable()
-                    .frame(64)
-                    .clipShape(.rect(cornerRadius: 10))
-                    .padding(.horizontal, 4)
+                    .clipShape(.rect(cornerRadius: 16))
+                    .frame(70)
+                    .blur(radius: 5)
+                    .matchedEffect("icon", in: animation)
             }
-            .frame(70)
+            
+            Image(icon.img)
+                .resizable()
+                .frame(64)
+                .clipShape(.rect(cornerRadius: 16))
+                .padding(.horizontal, 4)
+        }
+        .frame(70)
+        .onTapGesture {
+            changeIcon()
+        }
+    }
+    
+    private func changeIcon() {
+        grantAchievement("change_icon")
+        
+        withAnimation(.easeInOut) {
+            store.currentIcon = icon
         }
     }
 }

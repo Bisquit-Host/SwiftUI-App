@@ -49,17 +49,6 @@ struct ScheduleCard: View {
             }
             .foregroundStyle(.foreground)
         }
-#if !os(tvOS)
-        .swipeActions {
-            Button(role: .destructive) {
-                Task {
-                    await vm.deleteSchedule(schedule.id.description)
-                }
-            } label: {
-                Image(systemName: "trash")
-            }
-        }
-#endif
         .contextMenu {
             ScheduleContextMenu(schedule)
                 .environment(vm)

@@ -16,8 +16,8 @@ struct BackupList: View {
         
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 16) {
-                ForEach(vm.backups) { backup in
-                    BackupCard(backup)
+                ForEach(vm.backups) {
+                    BackupCard($0)
                 }
             }
             
@@ -56,5 +56,7 @@ struct BackupList: View {
 }
 
 #Preview {
-    BackupList(sampleJSON(.serverListAttributes))
+    NavigationStack {
+        BackupList(sampleJSON(.serverListAttributes))
+    }
 }
