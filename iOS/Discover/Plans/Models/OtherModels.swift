@@ -4,17 +4,18 @@ struct PlanResponse: Decodable {
 
 struct PlanList: Decodable {
     let packages: [UniversalPlan]
+    let locations: [PlanLocation]
 }
 
-struct PlanPrice: Decodable {
-    let price: Double
-    let currency: String
-}
-
-struct PlanLocation: Decodable {
+struct PlanLocation: Identifiable, Decodable {
     let id: Int
     let name: String
     let flagUrl: String
     let remarks: [String]
     let enabled: Bool
+}
+
+struct PlanPrice: Decodable {
+    let price: Double
+    let currency: String
 }

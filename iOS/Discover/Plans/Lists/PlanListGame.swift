@@ -3,9 +3,27 @@ import SwiftUI
 struct PlanListGame: View {
     @Environment(PlanListVM.self) private var vm
     
+    @State private var selectedLocation = 1
+    
+    private var selectedPlans: [UniversalPlan] {
+        vm.gamePlans.filter {
+            $0.locationId == selectedLocation
+        }
+    }
+    
     var body: some View {
-        ForEach(vm.gamePlans) {
-            PlanCardGame($0)
+        VStack {
+            Picker("Location", selection: $selectedLocation) {
+                ForEach(vm.gameLocations) {
+                    Text($0.name)
+                        .tag($0.id)
+                }
+            }
+            .pickerStyle(.segmented)
+            
+            ForEach(selectedPlans) {
+                PlanCardGame($0)
+            }
         }
     }
 }

@@ -2,10 +2,11 @@ import ScrechKit
 
 @Observable
 final class PlanListVM {
-    private(set) var gamePlans: [UniversalPlan] = []
-    private(set) var cloudPlans: [UniversalPlan] = []
-    private(set) var webPlans: [UniversalPlan] = []
-    private(set) var botPlans: [UniversalPlan] = []
+    private(set) var gamePlans:     [UniversalPlan] = []
+    private(set) var cloudPlans:    [UniversalPlan] = []
+    private(set) var webPlans:      [UniversalPlan] = []
+    private(set) var botPlans:      [UniversalPlan] = []
+    private(set) var gameLocations: [PlanLocation] = []
     
     func currencyImage(_ currency: String) -> String {
         switch currency {
@@ -16,16 +17,17 @@ final class PlanListVM {
     }
     
     func fetchAllPlans() async {
+        if let fetchedGamePlans = await fetchPlans(.game)?.result {
+            gamePlans = fetchedGamePlans.packages
+            gameLocations = fetchedGamePlans.locations
+        }
+        
         if let fetchedCloudPlans = await fetchPlans(.cloud)?.result.packages {
             cloudPlans = fetchedCloudPlans
         }
         
         if let fetchedBotPlans = await fetchPlans(.bot)?.result.packages {
             botPlans = fetchedBotPlans
-        }
-        
-        if let fetchedGamePlans = await fetchPlans(.game)?.result.packages {
-            gamePlans = fetchedGamePlans
         }
         
         if let fetchedWebPlans = await fetchPlans(.web)?.result.packages {

@@ -53,7 +53,6 @@ struct PlanCardCloud: View {
                     .fill(.indigo.gradient.opacity(0.3))
             }
             .clipShape(.rect(cornerRadius: 20))
-            .padding(5)
         }
         .buttonStyle(.plain)
     }
