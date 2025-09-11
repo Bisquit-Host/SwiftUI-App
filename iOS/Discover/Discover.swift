@@ -96,11 +96,11 @@ struct Discover: View {
         .ornamentDismissButton()
 #else
         .toolbar {
+            ToolbarSpacer(placement: .bottomBar)
+            
             ToolbarItem(placement: .bottomBar) {
                 DismissButton()
             }
-            
-            ToolbarSpacer(placement: .bottomBar)
         }
 #endif
         .mailCover(
