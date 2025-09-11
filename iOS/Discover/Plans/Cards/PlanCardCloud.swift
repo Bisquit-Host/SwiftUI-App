@@ -1,6 +1,7 @@
 import ScrechKit
 
 struct PlanCardCloud: View {
+    @Environment(\.openURL) private var openURL
     @Environment(\.colorScheme) private var appearance
     
     private let plan: UniversalPlan
@@ -9,13 +10,15 @@ struct PlanCardCloud: View {
         self.plan = plan
     }
     
-    private var url: String {
-        "https://my.bisquit.host/store/" + plan.name
+    private var url: URL? {
+        URL(string: "https://my.bisquit.host/store/" + plan.name)
     }
     
     var body: some View {
         Button {
-            
+            if let url {
+                openURL(url)
+            }
         } label: {
             VStack(alignment: .leading) {
                 PlanCardName(plan.name)
