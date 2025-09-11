@@ -7328,7 +7328,7 @@
 /* Begin XCRemoteSwiftPackageReference section */
 		F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "PteroNet" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/TopScrech/PteroNet";
+			repositoryURL = "https://github.com/Bisquit-Host/PteroNet";
 			requirement = {
 				branch = main;
 				kind = branch;
