@@ -5,7 +5,7 @@ struct PlanListCloud: View {
     
     var body: some View {
         ForEach(vm.cloudPlans) {
-            PlanCardCloud($0)
+            PlanCard($0)
         }
     }
 }

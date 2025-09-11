@@ -19,7 +19,10 @@ final class PlanListVM {
     func fetchAllPlans() async {
         if let fetchedGamePlans = await fetchPlans(.game)?.result {
             gamePlans = fetchedGamePlans.packages
-            gameLocations = fetchedGamePlans.locations
+            
+            if let locations = fetchedGamePlans.locations {
+                gameLocations = locations
+            }
         }
         
         if let fetchedCloudPlans = await fetchPlans(.cloud)?.result.packages {

@@ -4,7 +4,7 @@ struct PlanResponse: Decodable {
 
 struct PlanList: Decodable {
     let packages: [UniversalPlan]
-    let locations: [PlanLocation]
+    let locations: [PlanLocation]?
 }
 
 struct PlanLocation: Identifiable, Decodable {

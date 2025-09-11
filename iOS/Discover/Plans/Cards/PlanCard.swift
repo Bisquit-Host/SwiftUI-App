@@ -1,6 +1,6 @@
 import ScrechKit
 
-struct PlanCardBot: View {
+struct PlanCard: View {
     @Environment(\.openURL) private var openURL
     
     private let plan: UniversalPlan
@@ -29,16 +29,14 @@ struct PlanCardBot: View {
 #endif
                 }
                 
-                HStack {
-                    if let ram = plan.memoryGB {
-                        PlanSpec("RAM", icon: "memorychip", value: "\(customRound(ram)) GB")
-                    }
-                    
-                    if let cpu = plan.cpu {
-                        PlanSpec("CPU", icon: "cpu", value: "\(customRound(cpu))x")
-                    }
-                    
-                    PlanSpec("Storage", icon: "internaldrive", value: "\(plan.diskGB) GB")
+                if plan.whmcsLink.contains("minecraft") {
+                    PlanCardLabelGame(plan)
+                } else if plan.whmcsLink.contains("vds") {
+                    PlanCardLabelCloud(plan)
+                } else if plan.whmcsLink.contains("bothost") {
+                    PlanCardLabelBot(plan)
+                } else if plan.whmcsLink.contains("web") {
+                    PlanCardLabelWeb(plan)
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -54,6 +52,6 @@ struct PlanCardBot: View {
 }
 
 //#Preview {
-//    PlanCardBot()
+//    PlanCard()
 //        .environmentObject(ValueStore())
 //}

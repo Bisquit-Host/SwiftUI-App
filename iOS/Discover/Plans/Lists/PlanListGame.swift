@@ -22,7 +22,7 @@ struct PlanListGame: View {
             .pickerStyle(.segmented)
             
             ForEach(selectedPlans) {
-                PlanCardGame($0)
+                PlanCard($0)
             }
         }
     }

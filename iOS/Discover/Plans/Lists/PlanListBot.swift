@@ -5,7 +5,7 @@ struct PlanListBot: View {
     
     var body: some View {
         ForEach(vm.botPlans) {
-            PlanCardBot($0)
+            PlanCard($0)
         }
     }
 }

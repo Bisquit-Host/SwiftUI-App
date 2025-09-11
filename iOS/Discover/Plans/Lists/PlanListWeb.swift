@@ -5,7 +5,7 @@ struct PlanListWeb: View {
     
     var body: some View {
         ForEach(vm.webPlans) {
-            PlanCardWeb($0)
+            PlanCard($0)
         }
     }
 }
