@@ -11,7 +11,7 @@ struct PlanCardBot: View {
     }
     
     private var url: URL? {
-        URL(string: "https://my.bisquit.host/store/" + plan.name)
+        URL(string: "https://my.bisquit.host" + plan.whmcsLink)
     }
     
     var body: some View {
