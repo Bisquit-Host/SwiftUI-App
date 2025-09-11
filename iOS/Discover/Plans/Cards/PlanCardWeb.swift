@@ -2,7 +2,6 @@ import ScrechKit
 
 struct PlanCardWeb: View {
     @Environment(\.openURL) private var openURL
-    @Environment(\.colorScheme) private var appearance
     
     private let plan: UniversalPlan
     
