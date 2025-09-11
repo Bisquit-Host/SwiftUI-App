@@ -1,5 +1,4 @@
 import ScrechKit
-import Kingfisher
 
 struct PlanCardGame: View {
     @Environment(\.colorScheme) private var appearance
@@ -29,64 +28,44 @@ struct PlanCardGame: View {
         Button {
             
         } label: {
-            ZStack {
-                KFImage(getImageUrl("plans/" + plan.name))
-                    .placeholder {
-                        Text("Soon there will be an art here as well")
-                            .padding(.horizontal)
-                            .footnote(design: .monospaced)
-                    }
-                    .resizable()
-                    .brightness(appearance == .dark ? -0.1 : 0)
-                
-                KFImage(getImageUrl("plans/" + plan.name))
-                    .resizable()
-                    .mask(alignment: .topLeading) {
-                        Text(plan.name)
-                            .title()
-                            .padding(.horizontal, 14)
-                            .padding(.vertical, 10)
-                            .background()
-                            .clipShape(.rect(cornerRadius: 16))
-                    }
-                    .blur(radius: 4)
-                    .brightness(appearance == .dark ? -0.1 : 0)
-                
-                HStack {
-                    VStack(alignment: .leading) {
-                        Text(plan.name)
-                            .title(.semibold)
-                            .foregroundStyle(.white)
-                            .shadow(color: .black, radius: 5)
-                        
-                        Spacer()
-                        
-                        HStack {
-                            if let cpu = plan.cpu?.description {
-                                PlanSpec(cpu + "x", icon: "cpu")
-                            }
-                            
-                            if let ram = plan.memoryGB {
-                                PlanSpec("\(ram) GB", icon: "memorychip")
-                            }
-                            
-                            PlanSpec("\(plan.diskGB) GB", icon: "internaldrive")
-//#if DEBUG
-//                            Spacer()
-//                            
-//                            Text(customRound(price) + store.preferredCurrency)
-//                                .subheadline(.bold)
-//                                .padding(.vertical, 4)
-//                                .padding(.horizontal, 10)
-//                                .foregroundStyle(.white)
-//                                .background(.blue, in: .capsule)
-//#endif
-                        }
-                    }
+            HStack {
+                VStack(alignment: .leading) {
+                    Text(plan.name)
+                        .title(.semibold)
+                        .foregroundStyle(.white)
+                        .shadow(color: .black, radius: 5)
                     
                     Spacer()
+                    
+                    HStack {
+                        if let cpu = plan.cpu {
+                            PlanSpec("CPU", icon: "cpu", value: "\(customRound(cpu))x")
+                        }
+                        
+                        if let ram = plan.memoryGB {
+                            PlanSpec("RAM", icon: "memorychip", value: "\(customRound(ram)) GB")
+                        }
+                        
+                        PlanSpec("Storage", icon: "internaldrive", value: "\(plan.diskGB) GB")
+                        //#if DEBUG
+                        //                            Spacer()
+                        //
+                        //                            Text(customRound(price) + store.preferredCurrency)
+                        //                                .subheadline(.bold)
+                        //                                .padding(.vertical, 4)
+                        //                                .padding(.horizontal, 10)
+                        //                                .foregroundStyle(.white)
+                        //                                .background(.blue, in: .capsule)
+                        //#endif
+                    }
                 }
-                .padding()
+                
+                Spacer()
+            }
+            .padding()
+            .background {
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(.indigo.gradient.opacity(0.3))
             }
 #if os(tvOS)
             .frame(height: 500)

@@ -31,7 +31,7 @@ struct ServerListGrid: View {
                 }
             }
         }
-        .scenePadding()
+        .scenePadding([.horizontal, .bottom])
     }
 }
 

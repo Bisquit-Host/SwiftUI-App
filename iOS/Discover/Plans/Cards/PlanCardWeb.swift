@@ -1,5 +1,4 @@
 import ScrechKit
-import Kingfisher
 
 struct PlanCardWeb: View {
     @Environment(\.colorScheme) private var appearance
@@ -29,60 +28,40 @@ struct PlanCardWeb: View {
         Button {
             
         } label: {
-            ZStack {
-                KFImage(getImageUrl("plans/" + plan.name))
-                    .placeholder {
-                        Text("Soon there will be an art here as well")
-                            .padding(.horizontal)
-                            .footnote(design: .monospaced)
-                    }
-                    .resizable()
-                    .brightness(appearance == .dark ? -0.1 : 0)
-                
-                KFImage(getImageUrl("plans/" + plan.name))
-                    .resizable()
-                    .mask(alignment: .topLeading) {
-                        Text(plan.name)
-                            .title()
-                            .padding(.horizontal, 14)
-                            .padding(.vertical, 10)
-                            .background()
-                            .clipShape(.rect(cornerRadius: 16))
-                    }
-                    .blur(radius: 4)
-                    .brightness(appearance == .dark ? -0.1 : 0)
-                
-                HStack {
-                    VStack(alignment: .leading) {
-                        Text(plan.name)
-                            .title(.semibold)
-                            .foregroundStyle(.white)
-                            .shadow(color: .black, radius: 5)
-                        
-                        Spacer()
-                        
-                        HStack {
-                            PlanSpec("\(plan.diskGB) GB", icon: "internaldrive")
-                            
-                            if let databases = plan.databases {
-                                PlanSpec("\(databases)", icon: "server.rack")
-                            }
-//#if DEBUG
-//                            Spacer()
-//                            
-//                            Text(customRound(price) + store.preferredCurrency)
-//                                .subheadline(.bold)
-//                                .padding(.vertical, 4)
-//                                .padding(.horizontal, 10)
-//                                .foregroundStyle(.white)
-//                                .background(.blue, in: .capsule)
-//#endif
-                        }
-                    }
+            HStack {
+                VStack(alignment: .leading) {
+                    Text(plan.name)
+                        .title(.semibold)
+                        .foregroundStyle(.white)
+                        .shadow(color: .black, radius: 5)
                     
                     Spacer()
+                    
+                    HStack {
+                        PlanSpec("Storage", icon: "internaldrive", value: "\(plan.diskGB) GB")
+                        
+                        if let databases = plan.databases {
+                            PlanSpec("DB's", icon: "server.rack", value: "\(databases)x")
+                        }
+                        //#if DEBUG
+                        //                            Spacer()
+                        //
+                        //                            Text(customRound(price) + store.preferredCurrency)
+                        //                                .subheadline(.bold)
+                        //                                .padding(.vertical, 4)
+                        //                                .padding(.horizontal, 10)
+                        //                                .foregroundStyle(.white)
+                        //                                .background(.blue, in: .capsule)
+                        //#endif
+                    }
                 }
-                .padding()
+                
+                Spacer()
+            }
+            .padding()
+            .background {
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(.indigo.gradient.opacity(0.3))
             }
 #if os(tvOS)
             .frame(height: 500)

@@ -511,6 +511,13 @@
 		F3464D372A863A6900188B0C /* Send Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3464D0E2A862F9700188B0C /* Send Command.swift */; };
 		F34745CA2A31F39600EE2FB8 /* MailCover in Frameworks */ = {isa = PBXBuildFile; productRef = F34745C92A31F39600EE2FB8 /* MailCover */; };
 		F34745CC2A31F3A000EE2FB8 /* MailCover in Frameworks */ = {isa = PBXBuildFile; productRef = F34745CB2A31F3A000EE2FB8 /* MailCover */; };
+		F348517A2E72D10A0002C72E /* customRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34851792E72D10A0002C72E /* customRound.swift */; };
+		F348517B2E72D10A0002C72E /* customRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34851792E72D10A0002C72E /* customRound.swift */; };
+		F348517C2E72D10A0002C72E /* customRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34851792E72D10A0002C72E /* customRound.swift */; };
+		F348517D2E72D10A0002C72E /* customRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34851792E72D10A0002C72E /* customRound.swift */; };
+		F348517E2E72D10A0002C72E /* customRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34851792E72D10A0002C72E /* customRound.swift */; };
+		F348517F2E72D10A0002C72E /* customRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34851792E72D10A0002C72E /* customRound.swift */; };
+		F34851802E72D10A0002C72E /* customRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34851792E72D10A0002C72E /* customRound.swift */; };
 		F348C6E42A5438EB002D5BD6 /* App Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5672959006F0006D126 /* App Container.swift */; };
 		F348C6EB2A544893002D5BD6 /* App Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5672959006F0006D126 /* App Container.swift */; };
 		F3496DC529E0091A0089FC28 /* Section Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3496DC429E0091A0089FC28 /* Section Header.swift */; };
@@ -1791,6 +1798,7 @@
 		F3464CFE2A862D2D00188B0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3464D0E2A862F9700188B0C /* Send Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Send Command.swift"; sourceTree = "<group>"; };
 		F3464D102A8632F200188B0C /* Create Backup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Create Backup.swift"; sourceTree = "<group>"; };
+		F34851792E72D10A0002C72E /* customRound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customRound.swift; sourceTree = "<group>"; };
 		F3496DC429E0091A0089FC28 /* Section Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Section Header.swift"; sourceTree = "<group>"; };
 		F3496DC829E00CE70089FC28 /* Create Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Create Button.swift"; sourceTree = "<group>"; };
 		F3499EF32A26DE92006101B7 /* Guide Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Guide Model.swift"; sourceTree = "<group>"; };
@@ -2403,6 +2411,7 @@
 		F300C45F2D8C2B0100743300 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				F34851792E72D10A0002C72E /* customRound.swift */,
 				F3B1196C29A13CA6003BB68C /* Value Store.swift */,
 				F3EE6D742D9E8E2000F0A633 /* Bakground Task.swift */,
 				F3AB1DF32D79C42B00387164 /* MetricKit Manager.swift */,
@@ -4755,6 +4764,7 @@
 				F30088E42B3A5B0B0051476C /* StartupList.swift in Sources */,
 				F30089312B3DC4B20051476C /* CloudKeyContextMenu.swift in Sources */,
 				F3015DD62D9F24F600B9BCC6 /* LogCardEvent.swift in Sources */,
+				F34851802E72D10A0002C72E /* customRound.swift in Sources */,
 				F3D558B32A33C6A000608447 /* File Tab VM.swift in Sources */,
 				F3796566295C51FF0074CA3D /* GaugeTV.swift in Sources */,
 				F3FFB7462A57F91700220FA5 /* MapList.swift in Sources */,
@@ -4794,6 +4804,7 @@
 				F3F60A7B2DED9FFB00A15737 /* Cache Card.swift in Sources */,
 				F3FF59FF2A4A3188003A1973 /* User List.swift in Sources */,
 				F3464D2A2A863A6000188B0C /* Create Backup.swift in Sources */,
+				F348517D2E72D10A0002C72E /* customRound.swift in Sources */,
 				F3E97C7929B4B569008CBDD6 /* Credentials VM.swift in Sources */,
 				F36EBB002E6EF11100308DC9 /* UniversalPlan.swift in Sources */,
 				F325F7032A54BF7A00E89EC4 /* Tab Info.swift in Sources */,
@@ -5156,6 +5167,7 @@
 				F3FFB7482A57FF0600220FA5 /* LogVM.swift in Sources */,
 				F3A31B0A2B0B161D00F89C51 /* CloudKeyCard.swift in Sources */,
 				F314617D2D5A82F000547B6C /* Networking.swift in Sources */,
+				F348517B2E72D10A0002C72E /* customRound.swift in Sources */,
 				F36113F82E55DFD40052A5A2 /* Text File Editor.swift in Sources */,
 				F314617E2D5A82F000547B6C /* Model Asset.swift in Sources */,
 				F3D295152AF396FD00ED43A0 /* Tabs.swift in Sources */,
@@ -5248,6 +5260,7 @@
 				F36113FF2E55E7450052A5A2 /* Text File Toolbar.swift in Sources */,
 				F3E024C72B228F4C00FFF686 /* New Task Sheet.swift in Sources */,
 				F3C9D8622B319B9E00265492 /* Permission Card.swift in Sources */,
+				F348517E2E72D10A0002C72E /* customRound.swift in Sources */,
 				F3FA309B2DD1EB4300280133 /* File List Header.swift in Sources */,
 				F3F0A2DC2D63395F0084013B /* App Container.swift in Sources */,
 				F389BB652A05B5AF00911EBF /* Formatters.swift in Sources */,
@@ -5621,6 +5634,7 @@
 				F3202D122D562B250030B3CC /* PlanCardGame.swift in Sources */,
 				F3A7CF162C8C4E4300413400 /* MapView.swift in Sources */,
 				F3A7CF172C8C4E4300413400 /* MapVM.swift in Sources */,
+				F348517A2E72D10A0002C72E /* customRound.swift in Sources */,
 				F3A7CECB2C8B685500413400 /* Messages VC.swift in Sources */,
 				F31F32082D52DB950095DD19 /* Color Theme.swift in Sources */,
 				F3A7CF182C8C4E4A00413400 /* PlanSpec.swift in Sources */,
@@ -5694,6 +5708,7 @@
 				F3202D562D5758DC0030B3CC /* LogVM.swift in Sources */,
 				F3202D572D5758DC0030B3CC /* LogCard.swift in Sources */,
 				F3464D1F2A86396500188B0C /* Change Power.swift in Sources */,
+				F348517C2E72D10A0002C72E /* customRound.swift in Sources */,
 				F30B61CB2B2905F300F447B4 /* Websocket Message.swift in Sources */,
 				F3EE6D762D9E8E2000F0A633 /* Bakground Task.swift in Sources */,
 				F335F6E92DD356BB00D743FF /* File Permissions Parent.swift in Sources */,
@@ -5868,6 +5883,7 @@
 				F380C0B32A4F1D42002D400F /* ServerListVM.swift in Sources */,
 				F30088A82B3A18E40051476C /* Schedule VM.swift in Sources */,
 				F363C7FD2B7F7938005F6FF2 /* System Alerts.swift in Sources */,
+				F348517F2E72D10A0002C72E /* customRound.swift in Sources */,
 				F323D8D52A2D67A3002EDC62 /* File Uploader.swift in Sources */,
 				F3A800332A7313E900CAC40B /* Tip Cloud Keys.swift in Sources */,
 				F3EE9F712D85CAB9000120A7 /* Dismiss Button.swift in Sources */,
