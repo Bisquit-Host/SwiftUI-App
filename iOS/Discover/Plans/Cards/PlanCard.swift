@@ -48,6 +48,7 @@ struct PlanCard: View {
             .clipShape(.rect(cornerRadius: 20))
         }
         .buttonStyle(.plain)
+        .disabled(!plan.enabled)
     }
 }
 
