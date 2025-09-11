@@ -20,10 +20,15 @@ struct PlanCardWeb: View {
                 openURL(url)
             }
         } label: {
-            VStack(alignment: .leading) {
-                PlanCardName(plan.name)
-                
-                Spacer()
+            VStack(alignment: .leading, spacing: 16) {
+                HStack {
+                    PlanCardName(plan.name)
+                    
+                    Spacer()
+#if DEBUG
+                    PlanCardPrice(plan.price)
+#endif
+                }
                 
                 HStack {
                     PlanSpec("Storage", icon: "internaldrive", value: "\(plan.diskGB) GB")
@@ -31,11 +36,6 @@ struct PlanCardWeb: View {
                     if let databases = plan.databases {
                         PlanSpec("DB's", icon: "server.rack", value: "\(databases)x")
                     }
-#if DEBUG
-                    Spacer()
-                    
-                    PlanCardPrice(plan.price)
-#endif
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -44,11 +44,6 @@ struct PlanCardWeb: View {
                 RoundedRectangle(cornerRadius: 16)
                     .fill(.indigo.gradient.opacity(0.3))
             }
-#if os(tvOS)
-            .frame(height: 500)
-#else
-            .frame(height: 160)
-#endif
             .clipShape(.rect(cornerRadius: 20))
             .padding(5)
         }

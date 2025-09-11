@@ -20,10 +20,15 @@ struct PlanCardCloud: View {
                 openURL(url)
             }
         } label: {
-            VStack(alignment: .leading) {
-                PlanCardName(plan.name)
-                
-                Spacer()
+            VStack(alignment: .leading, spacing: 16) {
+                HStack {
+                    PlanCardName(plan.name)
+                    
+                    Spacer()
+#if DEBUG
+                    PlanCardPrice(plan.price)
+#endif
+                }
                 
                 HStack {
                     if let ram = plan.memoryGB {
@@ -39,11 +44,6 @@ struct PlanCardCloud: View {
                     if let network = plan.network {
                         PlanSpec("Network", icon: "globe", value: "\(network) Mbit/s")
                     }
-#if DEBUG
-                    Spacer()
-                    
-                    PlanCardPrice(plan.price)
-#endif
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -52,11 +52,6 @@ struct PlanCardCloud: View {
                 RoundedRectangle(cornerRadius: 16)
                     .fill(.indigo.gradient.opacity(0.3))
             }
-#if os(tvOS)
-            .frame(height: 500)
-#else
-            .frame(height: 160)
-#endif
             .clipShape(.rect(cornerRadius: 20))
             .padding(5)
         }
