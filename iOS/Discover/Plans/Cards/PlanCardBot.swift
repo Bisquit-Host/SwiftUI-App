@@ -15,17 +15,13 @@ struct PlanCardBot: View {
         "https://my.bisquit.host/store/" + plan.name
     }
     
-    private var price: Double {
+    private var price: Double? {
         switch store.preferredCurrency {
         case "€":
-            plan.price.first {
-                $0.currency == "eur"
-            }?.price ?? 0
+            plan.price.first { $0.currency == "eur" }?.price
             
         default:
-            plan.price.first {
-                $0.currency == "rub"
-            }?.price ?? 0
+            plan.price.first { $0.currency == "rub" }?.price
         }
     }
     
