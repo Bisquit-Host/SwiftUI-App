@@ -3,6 +3,7 @@ import Kingfisher
 
 struct PlanCardWeb: View {
     @Environment(\.colorScheme) private var appearance
+    @EnvironmentObject private var store: ValueStore
     
     private let plan: UniversalPlan
     
@@ -15,7 +16,7 @@ struct PlanCardWeb: View {
     }
     
     private var price: Double {
-        switch ValueStore().preferredCurrency {
+        switch store.preferredCurrency {
         case "€":
             plan.price.first {
                 $0.currency == "eur"
@@ -101,4 +102,5 @@ struct PlanCardWeb: View {
 
 //#Preview {
 //    PlanCardWeb()
+//        .environmentObject(ValueStore())
 //}
