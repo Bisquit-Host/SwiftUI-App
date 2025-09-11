@@ -17,7 +17,9 @@ struct ServerListToolbar: ViewModifier {
                 ToolbarItemGroup(placement: .topBarTrailing) {
                     ServerListAdminButton()
                     
-                    ServerListFilter()
+                    if vm.showFilter {
+                        ServerListFilter()
+                    }
                 }
                 
                 ToolbarSpacer(.fixed, placement: .topBarTrailing)

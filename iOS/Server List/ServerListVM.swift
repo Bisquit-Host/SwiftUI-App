@@ -45,17 +45,18 @@ final class ServerListVM {
     }
     
     var filteredServers: [ServerAttributes] {
-        servers.filter { server in
-            let matchesName = searchField.isEmpty           || server.name.localizedStandardContains(searchField)
-            let matchesDescription = searchField.isEmpty    || server.description.localizedStandardContains(searchField)
-            let matchesNode = displayedNode.isEmpty         || server.node == displayedNode
-            let matchesSuspended = !filterBySuspended       || server.isSuspended
-            let matchesNotSuspended = !filterByNotSuspended || !server.isSuspended
+        servers.filter {
+            let matchesName = searchField.isEmpty           || $0.name.localizedStandardContains(searchField)
+            let matchesDescription = searchField.isEmpty    || $0.description.localizedStandardContains(searchField)
+            let matchesNode = displayedNode.isEmpty         || $0.node == displayedNode
+            let matchesSuspended = !filterBySuspended       || $0.isSuspended
+            let matchesNotSuspended = !filterByNotSuspended || !$0.isSuspended
             
             return matchesName && matchesDescription && matchesNode && matchesSuspended && matchesNotSuspended
         }
     }
     
+    // Caching
     func loadServers() {
         if let loadedServers = UserDefaults.standard.serverAttributesArray(forKey: "servers") {
             servers = loadedServers
