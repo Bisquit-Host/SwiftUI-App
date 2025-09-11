@@ -2,7 +2,6 @@ import ScrechKit
 
 struct PlanCardBot: View {
     @Environment(\.colorScheme) private var appearance
-    @EnvironmentObject private var store: ValueStore
     
     private let plan: UniversalPlan
     
@@ -12,16 +11,6 @@ struct PlanCardBot: View {
     
     private var url: String {
         "https://my.bisquit.host/store/" + plan.name
-    }
-    
-    private var price: Double? {
-        switch store.preferredCurrency {
-        case "€":
-            plan.price.first { $0.currency == "eur" }?.price
-            
-        default:
-            plan.price.first { $0.currency == "rub" }?.price
-        }
     }
     
     var body: some View {
@@ -46,16 +35,11 @@ struct PlanCardBot: View {
                     }
                     
                     PlanSpec("Storage", icon: "internaldrive", value: "\(plan.diskGB) GB")
-                    //#if DEBUG
-                    //                            Spacer()
-                    //
-                    //                            Text(customRound(price) + store.preferredCurrency)
-                    //                                .subheadline(.bold)
-                    //                                .padding(.vertical, 4)
-                    //                                .padding(.horizontal, 10)
-                    //                                .foregroundStyle(.white)
-                    //                                .background(.blue, in: .capsule)
-                    //#endif
+#if DEBUG
+                    Spacer()
+                    
+                    PlanCardPrice(plan.price)
+#endif
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)

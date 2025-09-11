@@ -518,6 +518,11 @@
 		F348517E2E72D10A0002C72E /* customRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34851792E72D10A0002C72E /* customRound.swift */; };
 		F348517F2E72D10A0002C72E /* customRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34851792E72D10A0002C72E /* customRound.swift */; };
 		F34851802E72D10A0002C72E /* customRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34851792E72D10A0002C72E /* customRound.swift */; };
+		F34851822E72D3590002C72E /* PlanCardPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34851812E72D3580002C72E /* PlanCardPrice.swift */; };
+		F34851832E72D3590002C72E /* PlanCardPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34851812E72D3580002C72E /* PlanCardPrice.swift */; };
+		F34851842E72D3590002C72E /* PlanCardPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34851812E72D3580002C72E /* PlanCardPrice.swift */; };
+		F34851852E72D3590002C72E /* PlanCardPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34851812E72D3580002C72E /* PlanCardPrice.swift */; };
+		F34851862E72D3590002C72E /* PlanCardPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34851812E72D3580002C72E /* PlanCardPrice.swift */; };
 		F348C6E42A5438EB002D5BD6 /* App Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5672959006F0006D126 /* App Container.swift */; };
 		F348C6EB2A544893002D5BD6 /* App Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5672959006F0006D126 /* App Container.swift */; };
 		F3496DC529E0091A0089FC28 /* Section Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3496DC429E0091A0089FC28 /* Section Header.swift */; };
@@ -1799,6 +1804,7 @@
 		F3464D0E2A862F9700188B0C /* Send Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Send Command.swift"; sourceTree = "<group>"; };
 		F3464D102A8632F200188B0C /* Create Backup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Create Backup.swift"; sourceTree = "<group>"; };
 		F34851792E72D10A0002C72E /* customRound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customRound.swift; sourceTree = "<group>"; };
+		F34851812E72D3580002C72E /* PlanCardPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCardPrice.swift; sourceTree = "<group>"; };
 		F3496DC429E0091A0089FC28 /* Section Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Section Header.swift"; sourceTree = "<group>"; };
 		F3496DC829E00CE70089FC28 /* Create Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Create Button.swift"; sourceTree = "<group>"; };
 		F3499EF32A26DE92006101B7 /* Guide Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Guide Model.swift"; sourceTree = "<group>"; };
@@ -2746,6 +2752,7 @@
 				F3202D182D562B980030B3CC /* PlanCardCloud.swift */,
 				F3202D1F2D562B990030B3CC /* PlanCardWeb.swift */,
 				F3202D262D562B9A0030B3CC /* PlanCardBot.swift */,
+				F34851812E72D3580002C72E /* PlanCardPrice.swift */,
 				F3A1D2342A201CBB0053261E /* PlanSpec.swift */,
 			);
 			path = Cards;
@@ -4616,6 +4623,7 @@
 				F3202D1A2D562B980030B3CC /* PlanCardCloud.swift in Sources */,
 				F3EB09DB2A295C550073916A /* Video File.swift in Sources */,
 				F3EE6D782D9E8E2000F0A633 /* Bakground Task.swift in Sources */,
+				F34851862E72D3590002C72E /* PlanCardPrice.swift in Sources */,
 				F32F2D042D908E53007CF4DE /* Background Image Helper.swift in Sources */,
 				F33CDBFE2A26B8BC008D0214 /* OtherModels.swift in Sources */,
 				F370804B2A2A1CA70046CE70 /* Backup List Footer.swift in Sources */,
@@ -4842,6 +4850,7 @@
 				F35FEB072B09F003004DA05D /* APIKey.swift in Sources */,
 				F3A1D2312A201C570053261E /* ServerState.swift in Sources */,
 				F3E467522A49903900FABE5F /* Info Stat.swift in Sources */,
+				F34851852E72D3590002C72E /* PlanCardPrice.swift in Sources */,
 				F337C1692A8D07E2006F321C /* Startup VM.swift in Sources */,
 				F337121B2DC2FD240014B427 /* PanelSection.swift in Sources */,
 				F337121C2DC2FD240014B427 /* PanelSectionList.swift in Sources */,
@@ -5453,6 +5462,7 @@
 				F3AB4A912CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
 				F3FA61582A1F928500A65AE1 /* File Search.swift in Sources */,
 				F3202CFF2D562AE10030B3CC /* PlanListBot.swift in Sources */,
+				F34851822E72D3590002C72E /* PlanCardPrice.swift in Sources */,
 				F330013C2A4CEC320063FE0F /* Apikey List.swift in Sources */,
 				F36D53352A05B8B6007324C6 /* Backup Card.swift in Sources */,
 				F3AF91C62B423535001D8F80 /* SSH List.swift in Sources */,
@@ -5619,6 +5629,7 @@
 				F3202D242D562B990030B3CC /* PlanCardWeb.swift in Sources */,
 				F3A7CF662C8CA60E00413400 /* CloudKeyContextMenu.swift in Sources */,
 				F37CE9C42D555D9600716D28 /* ServerListVM.swift in Sources */,
+				F34851832E72D3590002C72E /* PlanCardPrice.swift in Sources */,
 				F3A7CF082C8BBC7600413400 /* Guide.swift in Sources */,
 				F3A7CEEC2C8BB77500413400 /* Server Card Parent.swift in Sources */,
 				F3A7CF0E2C8C43BB00413400 /* ServerListAdminButton.swift in Sources */,
@@ -5721,6 +5732,7 @@
 				F3464D2E2A863A6200188B0C /* Create Backup.swift in Sources */,
 				F3317AEE2A45E33300CA104D /* Formatters.swift in Sources */,
 				F3202D0C2D562AE30030B3CC /* PlanListWeb.swift in Sources */,
+				F34851842E72D3590002C72E /* PlanCardPrice.swift in Sources */,
 				F3202C852D5590D30030B3CC /* PlanListVM.swift in Sources */,
 				F3202C862D5590D30030B3CC /* PlanViewTopbar.swift in Sources */,
 				F3202C882D5590D30030B3CC /* OtherModels.swift in Sources */,
