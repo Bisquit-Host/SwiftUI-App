@@ -11,7 +11,7 @@ struct PlanCardBot: View {
     }
     
     private var url: String {
-        "https://my.bisquit.host/store/\(plan.name)"
+        "https://my.bisquit.host/store/" + plan.name
     }
     
     private var price: Double {
