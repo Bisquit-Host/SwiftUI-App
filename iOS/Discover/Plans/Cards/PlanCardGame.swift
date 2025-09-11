@@ -18,10 +18,7 @@ struct PlanCardGame: View {
             
         } label: {
             VStack(alignment: .leading) {
-                Text(plan.name)
-                    .title(.semibold)
-                    .foregroundStyle(.white)
-                    .shadow(color: .black, radius: 5)
+                PlanCardName(plan.name)
                 
                 Spacer()
                 
