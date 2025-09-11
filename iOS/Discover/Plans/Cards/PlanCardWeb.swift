@@ -28,36 +28,33 @@ struct PlanCardWeb: View {
         Button {
             
         } label: {
-            HStack {
-                VStack(alignment: .leading) {
-                    Text(plan.name)
-                        .title(.semibold)
-                        .foregroundStyle(.white)
-                        .shadow(color: .black, radius: 5)
-                    
-                    Spacer()
-                    
-                    HStack {
-                        PlanSpec("Storage", icon: "internaldrive", value: "\(plan.diskGB) GB")
-                        
-                        if let databases = plan.databases {
-                            PlanSpec("DB's", icon: "server.rack", value: "\(databases)x")
-                        }
-                        //#if DEBUG
-                        //                            Spacer()
-                        //
-                        //                            Text(customRound(price) + store.preferredCurrency)
-                        //                                .subheadline(.bold)
-                        //                                .padding(.vertical, 4)
-                        //                                .padding(.horizontal, 10)
-                        //                                .foregroundStyle(.white)
-                        //                                .background(.blue, in: .capsule)
-                        //#endif
-                    }
-                }
+            VStack(alignment: .leading) {
+                Text(plan.name)
+                    .title(.semibold)
+                    .foregroundStyle(.white)
+                    .shadow(color: .black, radius: 5)
                 
                 Spacer()
+                
+                HStack {
+                    PlanSpec("Storage", icon: "internaldrive", value: "\(plan.diskGB) GB")
+                    
+                    if let databases = plan.databases {
+                        PlanSpec("DB's", icon: "server.rack", value: "\(databases)x")
+                    }
+                    //#if DEBUG
+                    //                            Spacer()
+                    //
+                    //                            Text(customRound(price) + store.preferredCurrency)
+                    //                                .subheadline(.bold)
+                    //                                .padding(.vertical, 4)
+                    //                                .padding(.horizontal, 10)
+                    //                                .foregroundStyle(.white)
+                    //                                .background(.blue, in: .capsule)
+                    //#endif
+                }
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
             .padding()
             .background {
                 RoundedRectangle(cornerRadius: 16)

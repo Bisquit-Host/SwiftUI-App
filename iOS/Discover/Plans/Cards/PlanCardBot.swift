@@ -28,40 +28,37 @@ struct PlanCardBot: View {
         Button {
             
         } label: {
-            HStack {
-                VStack(alignment: .leading) {
-                    Text(plan.name)
-                        .title(.semibold)
-                        .foregroundStyle(.white)
-                        .shadow(color: .black, radius: 5)
-                    
-                    Spacer()
-                    
-                    HStack {
-                        if let ram = plan.memoryGB {
-                            PlanSpec("RAM", icon: "memorychip", value: "\(customRound(ram)) GB")
-                        }
-                        
-                        if let cpu = plan.cpu {
-                            PlanSpec("CPU", icon: "cpu", value: "\(customRound(cpu))x")
-                        }
-                        
-                        PlanSpec("Storage", icon: "internaldrive", value: "\(plan.diskGB) GB")
-                        //#if DEBUG
-                        //                            Spacer()
-                        //
-                        //                            Text(customRound(price) + store.preferredCurrency)
-                        //                                .subheadline(.bold)
-                        //                                .padding(.vertical, 4)
-                        //                                .padding(.horizontal, 10)
-                        //                                .foregroundStyle(.white)
-                        //                                .background(.blue, in: .capsule)
-                        //#endif
-                    }
-                }
+            VStack(alignment: .leading) {
+                Text(plan.name)
+                    .title(.semibold)
+                    .foregroundStyle(.white)
+                    .shadow(color: .black, radius: 5)
                 
                 Spacer()
+                
+                HStack {
+                    if let ram = plan.memoryGB {
+                        PlanSpec("RAM", icon: "memorychip", value: "\(customRound(ram)) GB")
+                    }
+                    
+                    if let cpu = plan.cpu {
+                        PlanSpec("CPU", icon: "cpu", value: "\(customRound(cpu))x")
+                    }
+                    
+                    PlanSpec("Storage", icon: "internaldrive", value: "\(plan.diskGB) GB")
+                    //#if DEBUG
+                    //                            Spacer()
+                    //
+                    //                            Text(customRound(price) + store.preferredCurrency)
+                    //                                .subheadline(.bold)
+                    //                                .padding(.vertical, 4)
+                    //                                .padding(.horizontal, 10)
+                    //                                .foregroundStyle(.white)
+                    //                                .background(.blue, in: .capsule)
+                    //#endif
+                }
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
             .padding()
             .background {
                 RoundedRectangle(cornerRadius: 16)
