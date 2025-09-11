@@ -22,7 +22,7 @@ struct QuickLookFile: View {
     private var root: String {
         link?.root ?? ""
     }
-        
+    
     var body: some View {
         VStack {
             if let fileURL {
@@ -67,7 +67,7 @@ struct QuickLookFile: View {
         let tempDirectoryURL = fm.temporaryDirectory
         let destinationURL = tempDirectoryURL.appendingPathComponent(name)
         
-        URLSession.shared.downloadTask(with: url) { location, response, error in
+        URLSession.shared.downloadTask(with: url) { location, _, error in
             guard let location, error == nil else {
                 return
             }
