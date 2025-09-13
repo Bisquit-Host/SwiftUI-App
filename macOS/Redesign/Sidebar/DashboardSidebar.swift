@@ -20,7 +20,21 @@ struct DashboardSidebar: View {
                         .tag(item)
                 }
             }
+            
+//            Spacer()
+//            
+//            Section {
+//                Button("Account", systemImage: "person.crop.circle") {
+//                    
+//                }
+//                
+//                Button("Settings", systemImage: "gear") {
+//                    
+//                }
+//            }
+//            .buttonStyle(.plain)
         }
         .listStyle(.sidebar)
+        .frame(minWidth: 400)
     }
 }

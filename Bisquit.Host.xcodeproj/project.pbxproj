@@ -3298,8 +3298,8 @@
 		F37DBEE42E74EE430039858B /* Sidebar */ = {
 			isa = PBXGroup;
 			children = (
-				F37DBED82E74EDC60039858B /* SidebarItem.swift */,
 				F37DBEE22E74EE400039858B /* DashboardSidebar.swift */,
+				F37DBED82E74EDC60039858B /* SidebarItem.swift */,
 				F37DBEEC2E74EEB30039858B /* Placeholder.swift */,
 			);
 			path = Sidebar;
