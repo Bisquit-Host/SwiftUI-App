@@ -5,7 +5,7 @@ struct TaskCard: View {
     
     var body: some View {
         Card(title: "Files") {
-            VStack(spacing: 12) {
+            VStack(spacing: 32) {
                 HStack {
                     TextField("Search here", text: $search)
                         .textFieldStyle(.roundedBorder)

@@ -856,7 +856,7 @@
 		F37DBEFE2E74F0230039858B /* StatusPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEFD2E74F0230039858B /* StatusPill.swift */; };
 		F37DBF002E74F04B0039858B /* Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEFF2E74F04B0039858B /* Bar.swift */; };
 		F37DBF032E74F1750039858B /* StatRows.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF022E74F1750039858B /* StatRows.swift */; };
-		F37DBF052E74F1B00039858B /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF042E74F1B00039858B /* File.swift */; };
+		F37DBF052E74F1B00039858B /* TaskCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF042E74F1B00039858B /* TaskCard.swift */; };
 		F37DBF072E74F20C0039858B /* DashboardViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF062E74F20C0039858B /* DashboardViewHeader.swift */; };
 		F37DBF092E74F22A0039858B /* PerformanceCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF082E74F22A0039858B /* PerformanceCard.swift */; };
 		F37DBF0B2E74F24A0039858B /* ProjectCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF0A2E74F24A0039858B /* ProjectCard.swift */; };
@@ -1958,7 +1958,7 @@
 		F37DBEFD2E74F0230039858B /* StatusPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusPill.swift; sourceTree = "<group>"; };
 		F37DBEFF2E74F04B0039858B /* Bar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bar.swift; sourceTree = "<group>"; };
 		F37DBF022E74F1750039858B /* StatRows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatRows.swift; sourceTree = "<group>"; };
-		F37DBF042E74F1B00039858B /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		F37DBF042E74F1B00039858B /* TaskCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCard.swift; sourceTree = "<group>"; };
 		F37DBF062E74F20C0039858B /* DashboardViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewHeader.swift; sourceTree = "<group>"; };
 		F37DBF082E74F22A0039858B /* PerformanceCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceCard.swift; sourceTree = "<group>"; };
 		F37DBF0A2E74F24A0039858B /* ProjectCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCard.swift; sourceTree = "<group>"; };
@@ -3278,7 +3278,7 @@
 			isa = PBXGroup;
 			children = (
 				F37DBF022E74F1750039858B /* StatRows.swift */,
-				F37DBF042E74F1B00039858B /* File.swift */,
+				F37DBF042E74F1B00039858B /* TaskCard.swift */,
 				F37DBEDA2E74EDDD0039858B /* StatTile.swift */,
 			);
 			path = "Row 1";
@@ -5996,7 +5996,7 @@
 				F30088972B3A03440051476C /* LogMetaView.swift in Sources */,
 				F37DBEDE2E74EE050039858B /* HeaderCell.swift in Sources */,
 				F30088932B3A02D50051476C /* Log List.swift in Sources */,
-				F37DBF052E74F1B00039858B /* File.swift in Sources */,
+				F37DBF052E74F1B00039858B /* TaskCard.swift in Sources */,
 				F3A8BE8B2A2FA9B3001B13D8 /* File View.swift in Sources */,
 				F35BB0372C656AC800631DBD /* Guide.swift in Sources */,
 				F3DF50C92B38FD2000206CAE /* Contact Manager.swift in Sources */,
