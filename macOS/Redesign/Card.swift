@@ -6,7 +6,7 @@ struct Card<Content: View, Trailing: View>: View {
     private let content: Content
     
     init(
-        title: String,
+        _ title: String,
         @ViewBuilder trailing: () -> Trailing = { EmptyView() },
         @ViewBuilder content: () -> Content
     ) {

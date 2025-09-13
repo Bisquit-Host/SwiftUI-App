@@ -2,7 +2,7 @@ import SwiftUI
 
 struct PerformanceCard: View {
     var body: some View {
-        Card(title: "Performance") {
+        Card("Performance") {
             Text("86%")
                 .largeTitle(.bold)
         } content: {

@@ -24,15 +24,7 @@ struct DashboardView: View {
             ToolbarItem(placement: .primaryAction) {
 //            ToolbarItem(placement: .topBarTrailing) {
                 HStack(spacing: 12) {
-                    Text("Last Updated 12 May 2025")
-                        .secondary()
-                        .footnote()
-                    
                     AvatarStack()
-                    
-                    SFButton("square.and.arrow.up") {
-                        
-                    }
                     
                     SFButton("slider.horizontal.3") {
                         

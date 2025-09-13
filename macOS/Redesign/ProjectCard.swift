@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ProjectCard: View {
     var body: some View {
-        Card(title: "List Projects") {
+        Card("Logs") {
             Grid(alignment: .leading, horizontalSpacing: 16, verticalSpacing: 10) {
                 GridRow {
                     HeaderCell("Project Name")

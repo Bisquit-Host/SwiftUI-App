@@ -2,7 +2,7 @@ import SwiftUI
 
 struct FileSection: View {
     var body: some View {
-        Card(title: "Files") {
+        Card("Files") {
             VStack(spacing: 32) {
                 FileSectionSearchBar()
                 
