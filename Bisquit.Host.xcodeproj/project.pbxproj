@@ -856,10 +856,12 @@
 		F37DBEFE2E74F0230039858B /* StatusPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEFD2E74F0230039858B /* StatusPill.swift */; };
 		F37DBF002E74F04B0039858B /* Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEFF2E74F04B0039858B /* Bar.swift */; };
 		F37DBF032E74F1750039858B /* StatRows.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF022E74F1750039858B /* StatRows.swift */; };
-		F37DBF052E74F1B00039858B /* TaskCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF042E74F1B00039858B /* TaskCard.swift */; };
+		F37DBF052E74F1B00039858B /* FileSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF042E74F1B00039858B /* FileSection.swift */; };
 		F37DBF072E74F20C0039858B /* DashboardViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF062E74F20C0039858B /* DashboardViewHeader.swift */; };
 		F37DBF092E74F22A0039858B /* PerformanceCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF082E74F22A0039858B /* PerformanceCard.swift */; };
 		F37DBF0B2E74F24A0039858B /* ProjectCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF0A2E74F24A0039858B /* ProjectCard.swift */; };
+		F37DBF0D2E74F50C0039858B /* FileListRedesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF0C2E74F50C0039858B /* FileListRedesign.swift */; };
+		F37DBF0F2E74F5320039858B /* FileCardRedesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF0E2E74F5320039858B /* FileCardRedesign.swift */; };
 		F37DDA7629E2AF7600B9680C /* Folder Path VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DDA7529E2AF7600B9680C /* Folder Path VM.swift */; };
 		F37EA7992B70DEDE0029DE00 /* Console VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5A42959026D0006D126 /* Console VM.swift */; };
 		F37EA79C2B722B390029DE00 /* Backup VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300889C2B3A17CC0051476C /* Backup VM.swift */; };
@@ -1958,10 +1960,12 @@
 		F37DBEFD2E74F0230039858B /* StatusPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusPill.swift; sourceTree = "<group>"; };
 		F37DBEFF2E74F04B0039858B /* Bar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bar.swift; sourceTree = "<group>"; };
 		F37DBF022E74F1750039858B /* StatRows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatRows.swift; sourceTree = "<group>"; };
-		F37DBF042E74F1B00039858B /* TaskCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCard.swift; sourceTree = "<group>"; };
+		F37DBF042E74F1B00039858B /* FileSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSection.swift; sourceTree = "<group>"; };
 		F37DBF062E74F20C0039858B /* DashboardViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewHeader.swift; sourceTree = "<group>"; };
 		F37DBF082E74F22A0039858B /* PerformanceCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceCard.swift; sourceTree = "<group>"; };
 		F37DBF0A2E74F24A0039858B /* ProjectCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCard.swift; sourceTree = "<group>"; };
+		F37DBF0C2E74F50C0039858B /* FileListRedesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileListRedesign.swift; sourceTree = "<group>"; };
+		F37DBF0E2E74F5320039858B /* FileCardRedesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCardRedesign.swift; sourceTree = "<group>"; };
 		F37DDA7529E2AF7600B9680C /* Folder Path VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Folder Path VM.swift"; sourceTree = "<group>"; };
 		F37F51C329DAF8D70030C1C4 /* DesImageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesImageVM.swift; sourceTree = "<group>"; };
 		F38282022B0E14B30088C48B /* Live Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Live Activity.swift"; sourceTree = "<group>"; };
@@ -3278,7 +3282,9 @@
 			isa = PBXGroup;
 			children = (
 				F37DBF022E74F1750039858B /* StatRows.swift */,
-				F37DBF042E74F1B00039858B /* TaskCard.swift */,
+				F37DBF042E74F1B00039858B /* FileSection.swift */,
+				F37DBF0C2E74F50C0039858B /* FileListRedesign.swift */,
+				F37DBF0E2E74F5320039858B /* FileCardRedesign.swift */,
 				F37DBEDA2E74EDDD0039858B /* StatTile.swift */,
 			);
 			path = "Row 1";
@@ -5981,6 +5987,7 @@
 				F37DBF002E74F04B0039858B /* Bar.swift in Sources */,
 				F3B138722A2D232B0026EAEE /* ServerCardVM.swift in Sources */,
 				F33DE4E72B35089000E257D8 /* BackgroundBlur.swift in Sources */,
+				F37DBF0D2E74F50C0039858B /* FileListRedesign.swift in Sources */,
 				F3F061D52A73C9A000470F7E /* MapView.swift in Sources */,
 				F33DE4E92B350C8B00E257D8 /* ServerCard.swift in Sources */,
 				F3464D222A86396700188B0C /* Change Power.swift in Sources */,
@@ -5996,7 +6003,7 @@
 				F30088972B3A03440051476C /* LogMetaView.swift in Sources */,
 				F37DBEDE2E74EE050039858B /* HeaderCell.swift in Sources */,
 				F30088932B3A02D50051476C /* Log List.swift in Sources */,
-				F37DBF052E74F1B00039858B /* TaskCard.swift in Sources */,
+				F37DBF052E74F1B00039858B /* FileSection.swift in Sources */,
 				F3A8BE8B2A2FA9B3001B13D8 /* File View.swift in Sources */,
 				F35BB0372C656AC800631DBD /* Guide.swift in Sources */,
 				F3DF50C92B38FD2000206CAE /* Contact Manager.swift in Sources */,
@@ -6006,6 +6013,7 @@
 				F3015DDC2D9F25B000B9BCC6 /* LogCardEvent.swift in Sources */,
 				F3464D2B2A863A6000188B0C /* Create Backup.swift in Sources */,
 				F30088B82B3A218B0051476C /* Schedule Card.swift in Sources */,
+				F37DBF0F2E74F5320039858B /* FileCardRedesign.swift in Sources */,
 				F37DBED72E74931B0039858B /* DashboardShell.swift in Sources */,
 				F37DBF0B2E74F24A0039858B /* ProjectCard.swift in Sources */,
 				F3FA30972DD1E26200280133 /* Folder Destination.swift in Sources */,

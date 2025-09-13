@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct TaskCard: View {
+struct FileSection: View {
     @State private var search = ""
     
     var body: some View {
@@ -23,24 +23,7 @@ struct TaskCard: View {
                         HeaderCell("Date")
                     }
                     
-                    ForEach(TaskItem.sample) { task in
-                        GridRow {
-                            HStack {
-                                Circle()
-                                    .frame(width: 10)
-                                
-                                Text(task.name)
-                            }
-                            
-                            ProjectPill(project: task.project)
-                            
-                            Text(task.dateCreated.formatted(date: .abbreviated, time: .omitted))
-                                .secondary()
-                        }
-                        .padding(.vertical, 6)
-                        
-                        Divider()
-                    }
+                    FileListRedesign()
                 }
             }
         }

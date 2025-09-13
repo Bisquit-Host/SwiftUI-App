@@ -9,7 +9,7 @@ struct DashboardView: View {
                 StatRows()
                 
                 HStack(alignment: .top, spacing: 20) {
-                    TaskCard()
+                    FileSection()
                     
                     PerformanceCard()
                 }
