@@ -1,9 +1,15 @@
 import SwiftUI
 
 struct StatTile: View {
-    var title: String
-    var value: Int
-    var icon: String
+    private let title: LocalizedStringKey
+    private let value: Int
+    private let icon: String
+    
+    init(_ title: LocalizedStringKey, value: Int, icon: String) {
+        self.title = title
+        self.value = value
+        self.icon = icon
+    }
     
     var body: some View {
         Button {

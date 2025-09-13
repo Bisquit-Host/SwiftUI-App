@@ -862,6 +862,7 @@
 		F37DBF0B2E74F24A0039858B /* ProjectCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF0A2E74F24A0039858B /* ProjectCard.swift */; };
 		F37DBF0D2E74F50C0039858B /* FileListRedesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF0C2E74F50C0039858B /* FileListRedesign.swift */; };
 		F37DBF0F2E74F5320039858B /* FileCardRedesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF0E2E74F5320039858B /* FileCardRedesign.swift */; };
+		F37DBF112E74F7570039858B /* FileSectionSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF102E74F7570039858B /* FileSectionSearchBar.swift */; };
 		F37DDA7629E2AF7600B9680C /* Folder Path VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DDA7529E2AF7600B9680C /* Folder Path VM.swift */; };
 		F37EA7992B70DEDE0029DE00 /* Console VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5A42959026D0006D126 /* Console VM.swift */; };
 		F37EA79C2B722B390029DE00 /* Backup VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300889C2B3A17CC0051476C /* Backup VM.swift */; };
@@ -1966,6 +1967,7 @@
 		F37DBF0A2E74F24A0039858B /* ProjectCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCard.swift; sourceTree = "<group>"; };
 		F37DBF0C2E74F50C0039858B /* FileListRedesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileListRedesign.swift; sourceTree = "<group>"; };
 		F37DBF0E2E74F5320039858B /* FileCardRedesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCardRedesign.swift; sourceTree = "<group>"; };
+		F37DBF102E74F7570039858B /* FileSectionSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSectionSearchBar.swift; sourceTree = "<group>"; };
 		F37DDA7529E2AF7600B9680C /* Folder Path VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Folder Path VM.swift"; sourceTree = "<group>"; };
 		F37F51C329DAF8D70030C1C4 /* DesImageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesImageVM.swift; sourceTree = "<group>"; };
 		F38282022B0E14B30088C48B /* Live Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Live Activity.swift"; sourceTree = "<group>"; };
@@ -3282,9 +3284,6 @@
 			isa = PBXGroup;
 			children = (
 				F37DBF022E74F1750039858B /* StatRows.swift */,
-				F37DBF042E74F1B00039858B /* FileSection.swift */,
-				F37DBF0C2E74F50C0039858B /* FileListRedesign.swift */,
-				F37DBF0E2E74F5320039858B /* FileCardRedesign.swift */,
 				F37DBEDA2E74EDDD0039858B /* StatTile.swift */,
 			);
 			path = "Row 1";
@@ -3325,6 +3324,10 @@
 			isa = PBXGroup;
 			children = (
 				F37DBEF62E74EFB90039858B /* TaskItem.swift */,
+				F37DBF042E74F1B00039858B /* FileSection.swift */,
+				F37DBF102E74F7570039858B /* FileSectionSearchBar.swift */,
+				F37DBF0C2E74F50C0039858B /* FileListRedesign.swift */,
+				F37DBF0E2E74F5320039858B /* FileCardRedesign.swift */,
 			);
 			path = "Row 2";
 			sourceTree = "<group>";
@@ -6036,6 +6039,7 @@
 				F37DBEFC2E74F0010039858B /* ProjectTag.swift in Sources */,
 				F37DBF092E74F22A0039858B /* PerformanceCard.swift in Sources */,
 				F348517F2E72D10A0002C72E /* customRound.swift in Sources */,
+				F37DBF112E74F7570039858B /* FileSectionSearchBar.swift in Sources */,
 				F323D8D52A2D67A3002EDC62 /* File Uploader.swift in Sources */,
 				F3A800332A7313E900CAC40B /* Tip Cloud Keys.swift in Sources */,
 				F3EE9F712D85CAB9000120A7 /* Dismiss Button.swift in Sources */,
