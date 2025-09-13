@@ -6,9 +6,9 @@ struct LogSection: View {
             Grid(alignment: .leading, horizontalSpacing: 16, verticalSpacing: 10) {
                 GridRow {
                     HeaderCell("Actor")
-                    HeaderCell("Project Name")
+                    HeaderCell("Description")
                     HeaderCell("Status")
-                    HeaderCell("Due Date")
+                    HeaderCell("Date")
                 }
                 
                 ForEach(Project.sample) { log in
