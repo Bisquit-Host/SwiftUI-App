@@ -14,7 +14,7 @@ struct DashboardView: View {
                     PerformanceCard()
                 }
                 
-                ProjectCard()
+                LogSection()
             }
             .padding(.horizontal, 24)
         }

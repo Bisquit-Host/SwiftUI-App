@@ -8,7 +8,7 @@ struct Project: Identifiable {
     let done: Int
     let total: Int
     let due: Date
-    let owners: [Person]
+    let actors: [Person]
     
     enum Status {
         case inProgress, completed, onHold
@@ -31,8 +31,8 @@ struct Project: Identifiable {
     }
     
     static let sample: [Project] = [
-        .init(name: "Fintech Project", status: .inProgress, progress: 0.7, done: 14, total: 20, due: .now, owners: [.michael]),
-        .init(name: "Brodo Redesign", status: .completed, progress: 1, done: 25, total: 25, due: .now.addingTimeInterval(60 * 60 * 24 * 4), owners: [.john]),
-        .init(name: "HR Setup", status: .onHold, progress: 0.7, done: 8, total: 20, due: .now.addingTimeInterval(60 * 60 * 24 * 66), owners: [.dawne])
+        .init(name: "Fintech Project", status: .inProgress, progress: 0.7, done: 14, total: 20, due: .now, actors: [.michael]),
+        .init(name: "Brodo Redesign", status: .completed, progress: 1, done: 25, total: 25, due: .now.addingTimeInterval(60 * 60 * 24 * 4), actors: [.john]),
+        .init(name: "HR Setup", status: .onHold, progress: 0.7, done: 8, total: 20, due: .now.addingTimeInterval(60 * 60 * 24 * 66), actors: [.dawne])
     ]
 }

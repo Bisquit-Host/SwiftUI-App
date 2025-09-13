@@ -1,7 +1,11 @@
 import SwiftUI
 
 struct StatusPill: View {
-    var status: Project.Status
+    private let status: Project.Status
+    
+    init(_ status: Project.Status) {
+        self.status = status
+    }
     
     var body: some View {
         Text(status.title)
