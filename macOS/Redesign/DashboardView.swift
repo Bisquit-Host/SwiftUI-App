@@ -34,7 +34,7 @@ struct DashboardView: View {
                         
                     }
                     
-                    Button("slider.horizontal.3") {
+                    SFButton("slider.horizontal.3") {
                         
                     }
                 }
