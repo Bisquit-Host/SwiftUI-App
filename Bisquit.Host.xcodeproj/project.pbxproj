@@ -838,6 +838,16 @@
 		F37CE9C42D555D9600716D28 /* ServerListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F352AF962A4EDB1D004AD489 /* ServerListVM.swift */; };
 		F37CE9C52D555DAF00716D28 /* ContactsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BF0A2C1EC94300B7A6D4 /* ContactsVM.swift */; };
 		F37DBED72E74931B0039858B /* DashboardShell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBED62E74931B0039858B /* DashboardShell.swift */; };
+		F37DBED92E74EDC60039858B /* SidebarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBED82E74EDC60039858B /* SidebarItem.swift */; };
+		F37DBEDB2E74EDDD0039858B /* StatTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEDA2E74EDDD0039858B /* StatTile.swift */; };
+		F37DBEDE2E74EE050039858B /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEDD2E74EE050039858B /* HeaderCell.swift */; };
+		F37DBEE02E74EE110039858B /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEDF2E74EE110039858B /* ProgressBar.swift */; };
+		F37DBEE32E74EE400039858B /* DashboardSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEE22E74EE400039858B /* DashboardSidebar.swift */; };
+		F37DBEE62E74EE620039858B /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEE52E74EE620039858B /* DashboardView.swift */; };
+		F37DBEE82E74EE6E0039858B /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEE72E74EE6E0039858B /* Person.swift */; };
+		F37DBEEB2E74EE8B0039858B /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEEA2E74EE8B0039858B /* Project.swift */; };
+		F37DBEED2E74EEB30039858B /* Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEEC2E74EEB30039858B /* Placeholder.swift */; };
+		F37DBEEF2E74EEDB0039858B /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEEE2E74EEDB0039858B /* Card.swift */; };
 		F37DDA7629E2AF7600B9680C /* Folder Path VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DDA7529E2AF7600B9680C /* Folder Path VM.swift */; };
 		F37EA7992B70DEDE0029DE00 /* Console VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5A42959026D0006D126 /* Console VM.swift */; };
 		F37EA79C2B722B390029DE00 /* Backup VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300889C2B3A17CC0051476C /* Backup VM.swift */; };
@@ -1918,6 +1928,16 @@
 		F37B90762BFEA00300597624 /* PanelOrnamentInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelOrnamentInfo.swift; sourceTree = "<group>"; };
 		F37B90772BFEA00300597624 /* OrnamentInfoSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrnamentInfoSettings.swift; sourceTree = "<group>"; };
 		F37DBED62E74931B0039858B /* DashboardShell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardShell.swift; sourceTree = "<group>"; };
+		F37DBED82E74EDC60039858B /* SidebarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItem.swift; sourceTree = "<group>"; };
+		F37DBEDA2E74EDDD0039858B /* StatTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatTile.swift; sourceTree = "<group>"; };
+		F37DBEDD2E74EE050039858B /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
+		F37DBEDF2E74EE110039858B /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		F37DBEE22E74EE400039858B /* DashboardSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardSidebar.swift; sourceTree = "<group>"; };
+		F37DBEE52E74EE620039858B /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		F37DBEE72E74EE6E0039858B /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		F37DBEEA2E74EE8B0039858B /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		F37DBEEC2E74EEB30039858B /* Placeholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Placeholder.swift; sourceTree = "<group>"; };
+		F37DBEEE2E74EEDB0039858B /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		F37DDA7529E2AF7600B9680C /* Folder Path VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Folder Path VM.swift"; sourceTree = "<group>"; };
 		F37F51C329DAF8D70030C1C4 /* DesImageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesImageVM.swift; sourceTree = "<group>"; };
 		F38282022B0E14B30088C48B /* Live Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Live Activity.swift"; sourceTree = "<group>"; };
@@ -3230,6 +3250,41 @@
 			path = Guide;
 			sourceTree = "<group>";
 		};
+		F37DBEDC2E74EDE20039858B /* Row 1 */ = {
+			isa = PBXGroup;
+			children = (
+				F37DBEDA2E74EDDD0039858B /* StatTile.swift */,
+			);
+			path = "Row 1";
+			sourceTree = "<group>";
+		};
+		F37DBEE12E74EE170039858B /* Row 3 */ = {
+			isa = PBXGroup;
+			children = (
+				F37DBEDF2E74EE110039858B /* ProgressBar.swift */,
+				F37DBEEA2E74EE8B0039858B /* Project.swift */,
+			);
+			path = "Row 3";
+			sourceTree = "<group>";
+		};
+		F37DBEE42E74EE430039858B /* Sidebar */ = {
+			isa = PBXGroup;
+			children = (
+				F37DBED82E74EDC60039858B /* SidebarItem.swift */,
+				F37DBEE22E74EE400039858B /* DashboardSidebar.swift */,
+				F37DBEEC2E74EEB30039858B /* Placeholder.swift */,
+			);
+			path = Sidebar;
+			sourceTree = "<group>";
+		};
+		F37DBEE92E74EE720039858B /* Toolbar */ = {
+			isa = PBXGroup;
+			children = (
+				F37DBEE72E74EE6E0039858B /* Person.swift */,
+			);
+			path = Toolbar;
+			sourceTree = "<group>";
+		};
 		F37DDA7429E2AABF00B9680C /* Elements */ = {
 			isa = PBXGroup;
 			children = (
@@ -3805,6 +3860,13 @@
 				F3E08EA62A2CE17A00116C1C /* Assets.xcassets */,
 				F33DE4E62B35089000E257D8 /* BackgroundBlur.swift */,
 				F37DBED62E74931B0039858B /* DashboardShell.swift */,
+				F37DBEE52E74EE620039858B /* DashboardView.swift */,
+				F37DBEEE2E74EEDB0039858B /* Card.swift */,
+				F37DBEE92E74EE720039858B /* Toolbar */,
+				F37DBEE42E74EE430039858B /* Sidebar */,
+				F37DBEDD2E74EE050039858B /* HeaderCell.swift */,
+				F37DBEDC2E74EDE20039858B /* Row 1 */,
+				F37DBEE12E74EE170039858B /* Row 3 */,
 				F36B14682DC3BC3A008C1AF9 /* Nav */,
 				F3E08EC72A2CEA6F00116C1C /* Start Page */,
 				F3E08EB72A2CE6D000116C1C /* Server List */,
@@ -5839,6 +5901,7 @@
 		F3E08E9C2A2CE17800116C1C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			files = (
+				F37DBEE82E74EE6E0039858B /* Person.swift in Sources */,
 				F32FD71B2B1E043F00723B88 /* Ansi.swift in Sources */,
 				F300892B2B3C55DA0051476C /* File Permissions View.swift in Sources */,
 				F36B14A92DC632D9008C1AF9 /* UserDefaults.swift in Sources */,
@@ -5854,6 +5917,7 @@
 				F32FD7232B1E065600723B88 /* Network Calls.swift in Sources */,
 				F3F08F9D2DCF7C1D00EFD7DB /* QuickLook File VM.swift in Sources */,
 				F3202C7A2D558B210030B3CC /* SpotlightIndex.swift in Sources */,
+				F37DBEDB2E74EDDD0039858B /* StatTile.swift in Sources */,
 				F3FD9F9E2C651F4800A69314 /* Sensitivity Analyzer.swift in Sources */,
 				F3DF50CC2B38FDE500206CAE /* Permission Group Header.swift in Sources */,
 				F3E679AD2D5A854700A7ADDE /* Server Options Provider.swift in Sources */,
@@ -5876,6 +5940,7 @@
 				F3DF50CD2B38FDE800206CAE /* Permission Card.swift in Sources */,
 				F30088B12B3A20150051476C /* Backup List.swift in Sources */,
 				F30088972B3A03440051476C /* LogMetaView.swift in Sources */,
+				F37DBEDE2E74EE050039858B /* HeaderCell.swift in Sources */,
 				F30088932B3A02D50051476C /* Log List.swift in Sources */,
 				F3A8BE8B2A2FA9B3001B13D8 /* File View.swift in Sources */,
 				F35BB0372C656AC800631DBD /* Guide.swift in Sources */,
@@ -5891,13 +5956,16 @@
 				F35BB0392C656AD300631DBD /* CarouselButtonStyle.swift in Sources */,
 				F3202D4B2D56DC050030B3CC /* Prefetcher.swift in Sources */,
 				F3038B962E04467F0085E438 /* Multipart Form Data.swift in Sources */,
+				F37DBEED2E74EEB30039858B /* Placeholder.swift in Sources */,
 				F30088962B3A033F0051476C /* LogMetaParent.swift in Sources */,
+				F37DBEE32E74EE400039858B /* DashboardSidebar.swift in Sources */,
 				F33DE4EB2B35C3F000E257D8 /* FileTab Context Menu.swift in Sources */,
 				F3DF50C52B38FCF900206CAE /* User Image.swift in Sources */,
 				F36B14972DC3BC52008C1AF9 /* Bisquit.Host App.swift in Sources */,
 				F300889A2B3A0C740051476C /* User Card.swift in Sources */,
 				F380C0B32A4F1D42002D400F /* ServerListVM.swift in Sources */,
 				F30088A82B3A18E40051476C /* Schedule VM.swift in Sources */,
+				F37DBEEB2E74EE8B0039858B /* Project.swift in Sources */,
 				F363C7FD2B7F7938005F6FF2 /* System Alerts.swift in Sources */,
 				F348517F2E72D10A0002C72E /* customRound.swift in Sources */,
 				F323D8D52A2D67A3002EDC62 /* File Uploader.swift in Sources */,
@@ -5921,8 +5989,10 @@
 				F31F31FF2D52BD940095DD19 /* System lowPowerMode.swift in Sources */,
 				F32FD7162B1E041D00723B88 /* Websocket Message.swift in Sources */,
 				F36B149C2DC3E9BB008C1AF9 /* PanelSection.swift in Sources */,
+				F37DBEE62E74EE620039858B /* DashboardView.swift in Sources */,
 				F36B149E2DC3E9BB008C1AF9 /* PanelSectionVM.swift in Sources */,
 				F36B149F2DC3E9BB008C1AF9 /* PanelSectionRow.swift in Sources */,
+				F37DBEEF2E74EEDB0039858B /* Card.swift in Sources */,
 				F3573BBF2C64E0360051259E /* Log Card.swift in Sources */,
 				F30C13142A5461BA00A7EFF0 /* Cache VM.swift in Sources */,
 				F3D558B12A33C69F00608447 /* File Tab VM.swift in Sources */,
@@ -5956,6 +6026,7 @@
 				F3C1E5972DC741C6007F2054 /* 3 Column Content.swift in Sources */,
 				F36B14A72DC6325F008C1AF9 /* Sidebar Server Card.swift in Sources */,
 				F36B148A2DC3BC3E008C1AF9 /* 3 Column Content View.swift in Sources */,
+				F37DBED92E74EDC60039858B /* SidebarItem.swift in Sources */,
 				F36B148B2DC3BC3E008C1AF9 /* Ingredient.swift in Sources */,
 				F36B148C2DC3BC3E008C1AF9 /* 2 Column Content View.swift in Sources */,
 				F3648ED32DCB9773001609AA /* Allocation Card.swift in Sources */,
@@ -5975,6 +6046,7 @@
 				F3DF50CA2B38FDDE00206CAE /* User 2Fa.swift in Sources */,
 				F36B14C52DC64DF2008C1AF9 /* Nav Mode Button.swift in Sources */,
 				F36B14C62DC64DF2008C1AF9 /* Nav Mode Picker Row.swift in Sources */,
+				F37DBEE02E74EE110039858B /* ProgressBar.swift in Sources */,
 				F36B14C72DC64DF2008C1AF9 /* Nav Mode Picker.swift in Sources */,
 				F36B14C82DC64DF2008C1AF9 /* Nav Mode.swift in Sources */,
 				F373CDB42D895419008B64BE /* LogTopbar.swift in Sources */,
