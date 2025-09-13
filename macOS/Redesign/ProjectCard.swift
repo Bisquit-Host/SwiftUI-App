@@ -13,27 +13,27 @@ struct ProjectCard: View {
                     HeaderCell("Owner")
                 }
                 
-                ForEach(Project.sample) { p in
+                ForEach(Project.sample) { proj in
                     GridRow {
                         HStack {
                             Image(systemName: "folder")
                             
-                            Text(p.name)
+                            Text(proj.name)
                         }
                         
-                        StatusPill(status: p.status)
+                        StatusPill(status: proj.status)
                         
-                        ProgressBar(progress: p.progress)
+                        ProgressBar(progress: proj.progress)
                             .frame(maxWidth: 200)
                         
-                        Text("\(p.done) / \(p.total)")
+                        Text("\(proj.done) / \(proj.total)")
                             .secondary()
                         
-                        Text(p.due.formatted(date: .abbreviated, time: .omitted))
+                        Text(proj.due.formatted(date: .abbreviated, time: .omitted))
                             .secondary()
                         
                         HStack(spacing: -8) {
-                            ForEach(p.owners) {
+                            ForEach(proj.owners) {
                                 AvatarView($0)
                                     .padding(.leading, 8)
                             }
