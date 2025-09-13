@@ -236,30 +236,34 @@ struct DashboardView: View {
     }
     
     var performanceCard: some View {
-        Card(title: "Performance", trailing: Text("86%")
-            .font(.largeTitle.weight(.bold))) {
-                VStack(alignment: .leading, spacing: 16) {
-                    Text("+15% vs last Week")
-                        .secondary()
-                    
-                    HStack(alignment: .bottom, spacing: 12) {
-                        ForEach(Bar.sample) { bar in
-                            VStack {
-                                RoundedRectangle(cornerRadius: 6)
-                                    .frame(width: 30, height: CGFloat(bar.value))
-                                    .overlay(alignment: .bottom) {
-                                        Text("\(bar.value)%").font(.caption2).padding(.bottom, 4)
-                                    }
-                                
-                                Text(bar.label)
-                                    .caption()
-                                    .secondary()
-                            }
+        Card(title: "Performance") {
+            Text("86%")
+                .largeTitle(.bold)
+        } content: {
+            VStack(alignment: .leading, spacing: 16) {
+                Text("+15% vs last Week")
+                    .secondary()
+                
+                HStack(alignment: .bottom, spacing: 12) {
+                    ForEach(Bar.sample) { bar in
+                        VStack {
+                            RoundedRectangle(cornerRadius: 6)
+                                .frame(width: 30, height: CGFloat(bar.value))
+                                .overlay(alignment: .bottom) {
+                                    Text("\(bar.value)%")
+                                        .caption2()
+                                        .padding(.bottom, 4)
+                                }
+                            
+                            Text(bar.label)
+                                .caption()
+                                .secondary()
                         }
                     }
                 }
             }
-            .frame(width: 360)
+        }
+        .frame(width: 360)
     }
     
     var projectsCard: some View {
@@ -309,14 +313,18 @@ struct DashboardView: View {
     }
 }
 
-struct Card<Content: View>: View {
-    var title: String
-    var trailing: AnyView?
-    var content: Content
+struct Card<Content: View, Trailing: View>: View {
+    private let title: String
+    private let trailing: Trailing
+    private let content: Content
     
-    init(title: String, trailing: some View = EmptyView(), @ViewBuilder content: () -> Content) {
+    init(
+        title: String,
+        @ViewBuilder trailing: () -> Trailing = { EmptyView() },
+        @ViewBuilder content: () -> Content
+    ) {
         self.title = title
-        self.trailing = AnyView(trailing)
+        self.trailing = trailing()
         self.content = content()
     }
     
