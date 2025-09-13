@@ -21,7 +21,9 @@ struct ServerCardParent: View {
     var body: some View {
         VStack {
             Button {
+#if !os(macOS)
                 navState.navigate(.toPanel(server.id))
+#endif
             } label: {
                 if store.compactServerList {
                     CompactServerCard(server)
@@ -31,17 +33,20 @@ struct ServerCardParent: View {
             }
             .foregroundStyle(.foreground)
         }
+        .buttonStyle(.plain)
+#if !os(macOS)
         .hoverEffect()
         .safariCover($showSafari, url: serverUrl)
-        .contextMenu {
-            ServerCardContextMenu(server, $showSafari, $confirmKill)
-        }
         .confirmationDialog("Perform kill action", isPresented: $confirmKill, titleVisibility: .visible) {
             Button("Kill", role: .destructive) {
                 Task {
                     await PteroNet.powerSignal(server.id, do: .kill)
                 }
             }
+        }
+#endif
+        .contextMenu {
+            ServerCardContextMenu(server, $showSafari, $confirmKill)
         }
         .onDrag {
             let url = URL(string: serverUrl)
