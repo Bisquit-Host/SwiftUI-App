@@ -1,7 +1,11 @@
 import SwiftUI
 
 struct Placeholder: View {
-    var title: String
+    private let title: String
+    
+    init(_ title: String) {
+        self.title = title
+    }
     
     var body: some View {
         ZStack {

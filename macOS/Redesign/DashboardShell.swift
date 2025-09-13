@@ -30,12 +30,12 @@ struct DashboardShell: View {
         } detail: {
             switch selection {
             case .dashboard, .none: DashboardView()
-            case .inbox:            Placeholder(title: "Inbox")
-            case .project:          Placeholder(title: "Project")
-            case .calendar:         Placeholder(title: "Calendar")
-            case .reports:          Placeholder(title: "Reports")
-            case .help:             Placeholder(title: "Help & Center")
-            case .settings:         Placeholder(title: "Settings")
+            case .inbox:            Placeholder("Inbox")
+            case .project:          Placeholder("Project")
+            case .calendar:         Placeholder("Calendar")
+            case .reports:          Placeholder("Reports")
+            case .help:             Placeholder("Help & Center")
+            case .settings:         Placeholder("Settings")
             }
         }
     }
