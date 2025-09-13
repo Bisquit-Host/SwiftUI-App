@@ -49,12 +49,18 @@ struct MetricGauge: View {
             }
             .frame(height: 8)
             
-            Text("\(Int(value * 100))%")
-                .monospacedDigit()
-                .secondary()
-                .fontSize(12)
-                .fontWeight(.medium)
-                .frame(width: 35, alignment: .trailing)
+            Group {
+                if value.isFinite {
+                    Text("\(Int(value * 100))%")
+                } else {
+                    Text("∞")
+                }
+            }
+            .monospacedDigit()
+            .secondary()
+            .fontSize(12)
+            .fontWeight(.medium)
+            .frame(width: 35, alignment: .trailing)
         }
     }
 }
