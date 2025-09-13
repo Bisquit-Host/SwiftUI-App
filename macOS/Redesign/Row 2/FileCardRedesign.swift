@@ -1,24 +1,24 @@
-import SwiftUI
+import ScrechKit
+import PteroNet
 
 struct FileCardRedesign: View {
-    private let file: TaskItem
+    private let file: FileAttributes
     
-    init(_ file: TaskItem) {
+    init(_ file: FileAttributes) {
         self.file = file
     }
     
     var body: some View {
         GridRow {
             HStack {
-                Circle()
-                    .frame(width: 10)
+                FileIcon(file.mimetype)
                 
                 Text(file.name)
             }
             
-            ProjectPill(project: file.project)
+            Text(formatBytes(file.size))
             
-            Text(file.dateCreated.formatted(date: .abbreviated, time: .omitted))
+            Text(formatISO(file.createdAt))
                 .secondary()
         }
         .padding(.vertical, 6)

@@ -850,8 +850,6 @@
 		F37DBEEF2E74EEDB0039858B /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEEE2E74EEDB0039858B /* Card.swift */; };
 		F37DBEF12E74EF860039858B /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEF02E74EF860039858B /* AvatarView.swift */; };
 		F37DBEF52E74EF9A0039858B /* AvatarStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEF42E74EF9A0039858B /* AvatarStack.swift */; };
-		F37DBEF72E74EFB90039858B /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEF62E74EFB90039858B /* TaskItem.swift */; };
-		F37DBEFA2E74EFEE0039858B /* ProjectPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEF92E74EFEE0039858B /* ProjectPill.swift */; };
 		F37DBEFC2E74F0010039858B /* ProjectTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEFB2E74F0010039858B /* ProjectTag.swift */; };
 		F37DBEFE2E74F0230039858B /* StatusPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEFD2E74F0230039858B /* StatusPill.swift */; };
 		F37DBF002E74F04B0039858B /* Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEFF2E74F04B0039858B /* Bar.swift */; };
@@ -1955,8 +1953,6 @@
 		F37DBEEE2E74EEDB0039858B /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		F37DBEF02E74EF860039858B /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		F37DBEF42E74EF9A0039858B /* AvatarStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarStack.swift; sourceTree = "<group>"; };
-		F37DBEF62E74EFB90039858B /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
-		F37DBEF92E74EFEE0039858B /* ProjectPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectPill.swift; sourceTree = "<group>"; };
 		F37DBEFB2E74F0010039858B /* ProjectTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTag.swift; sourceTree = "<group>"; };
 		F37DBEFD2E74F0230039858B /* StatusPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusPill.swift; sourceTree = "<group>"; };
 		F37DBEFF2E74F04B0039858B /* Bar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bar.swift; sourceTree = "<group>"; };
@@ -3294,7 +3290,6 @@
 			children = (
 				F37DBEDF2E74EE110039858B /* ProgressBar.swift */,
 				F37DBEEA2E74EE8B0039858B /* Project.swift */,
-				F37DBEF92E74EFEE0039858B /* ProjectPill.swift */,
 				F37DBEFB2E74F0010039858B /* ProjectTag.swift */,
 			);
 			path = "Row 3";
@@ -3323,7 +3318,6 @@
 		F37DBEF82E74EFBC0039858B /* Row 2 */ = {
 			isa = PBXGroup;
 			children = (
-				F37DBEF62E74EFB90039858B /* TaskItem.swift */,
 				F37DBF042E74F1B00039858B /* FileSection.swift */,
 				F37DBF102E74F7570039858B /* FileSectionSearchBar.swift */,
 				F37DBF0C2E74F50C0039858B /* FileListRedesign.swift */,
@@ -6022,7 +6016,6 @@
 				F3FA30972DD1E26200280133 /* Folder Destination.swift in Sources */,
 				F35BB0392C656AD300631DBD /* CarouselButtonStyle.swift in Sources */,
 				F3202D4B2D56DC050030B3CC /* Prefetcher.swift in Sources */,
-				F37DBEF72E74EFB90039858B /* TaskItem.swift in Sources */,
 				F3038B962E04467F0085E438 /* Multipart Form Data.swift in Sources */,
 				F37DBEED2E74EEB30039858B /* Placeholder.swift in Sources */,
 				F30088962B3A033F0051476C /* LogMetaParent.swift in Sources */,
@@ -6102,7 +6095,6 @@
 				F36B148A2DC3BC3E008C1AF9 /* 3 Column Content View.swift in Sources */,
 				F37DBED92E74EDC60039858B /* SidebarItem.swift in Sources */,
 				F36B148B2DC3BC3E008C1AF9 /* Ingredient.swift in Sources */,
-				F37DBEFA2E74EFEE0039858B /* ProjectPill.swift in Sources */,
 				F36B148C2DC3BC3E008C1AF9 /* 2 Column Content View.swift in Sources */,
 				F3648ED32DCB9773001609AA /* Allocation Card.swift in Sources */,
 				F36B14902DC3BC3E008C1AF9 /* 2 Column Section List.swift in Sources */,
