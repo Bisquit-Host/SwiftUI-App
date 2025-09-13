@@ -16,10 +16,9 @@ struct DashboardView: View {
                 
                 ProjectCard()
             }
-            .padding(24)
+            .padding(.horizontal, 24)
         }
-        .navigationTitle("Server name")
-        .navigationSubtitle("Server description")
+        .navigationTitle("")
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
 //            ToolbarItem(placement: .topBarTrailing) {

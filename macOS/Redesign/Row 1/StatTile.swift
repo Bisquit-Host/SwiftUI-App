@@ -20,7 +20,7 @@ struct StatTile: View {
                     .fontSize(32)
                     .frame(45)
                 
-                VStack(alignment: .leading, spacing: 0) {
+                VStack(alignment: .leading, spacing: 2) {
                     Text(title)
                         .subheadline()
                         .secondary()
