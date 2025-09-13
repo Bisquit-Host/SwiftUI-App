@@ -45,11 +45,12 @@ final class PlanListVM {
             return nil
         }
         
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
+            
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            
             let fetchedPlans = try decoder.decode(PlanResponse.self, from: data)
             
             return fetchedPlans

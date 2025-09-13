@@ -837,6 +837,7 @@
 		F37CE9C32D555D5A00716D28 /* Tab Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7022A54BF7A00E89EC4 /* Tab Info.swift */; };
 		F37CE9C42D555D9600716D28 /* ServerListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F352AF962A4EDB1D004AD489 /* ServerListVM.swift */; };
 		F37CE9C52D555DAF00716D28 /* ContactsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BF0A2C1EC94300B7A6D4 /* ContactsVM.swift */; };
+		F37DBED72E74931B0039858B /* DashboardShell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBED62E74931B0039858B /* DashboardShell.swift */; };
 		F37DDA7629E2AF7600B9680C /* Folder Path VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DDA7529E2AF7600B9680C /* Folder Path VM.swift */; };
 		F37EA7992B70DEDE0029DE00 /* Console VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5A42959026D0006D126 /* Console VM.swift */; };
 		F37EA79C2B722B390029DE00 /* Backup VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300889C2B3A17CC0051476C /* Backup VM.swift */; };
@@ -1916,6 +1917,7 @@
 		F37B90752BFEA00200597624 /* OrnamentInfoProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrnamentInfoProperties.swift; sourceTree = "<group>"; };
 		F37B90762BFEA00300597624 /* PanelOrnamentInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelOrnamentInfo.swift; sourceTree = "<group>"; };
 		F37B90772BFEA00300597624 /* OrnamentInfoSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrnamentInfoSettings.swift; sourceTree = "<group>"; };
+		F37DBED62E74931B0039858B /* DashboardShell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardShell.swift; sourceTree = "<group>"; };
 		F37DDA7529E2AF7600B9680C /* Folder Path VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Folder Path VM.swift"; sourceTree = "<group>"; };
 		F37F51C329DAF8D70030C1C4 /* DesImageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesImageVM.swift; sourceTree = "<group>"; };
 		F38282022B0E14B30088C48B /* Live Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Live Activity.swift"; sourceTree = "<group>"; };
@@ -3802,6 +3804,7 @@
 				F3E08EAB2A2CE17A00116C1C /* macOS.entitlements */,
 				F3E08EA62A2CE17A00116C1C /* Assets.xcassets */,
 				F33DE4E62B35089000E257D8 /* BackgroundBlur.swift */,
+				F37DBED62E74931B0039858B /* DashboardShell.swift */,
 				F36B14682DC3BC3A008C1AF9 /* Nav */,
 				F3E08EC72A2CEA6F00116C1C /* Start Page */,
 				F3E08EB72A2CE6D000116C1C /* Server List */,
@@ -5883,6 +5886,7 @@
 				F3015DDC2D9F25B000B9BCC6 /* LogCardEvent.swift in Sources */,
 				F3464D2B2A863A6000188B0C /* Create Backup.swift in Sources */,
 				F30088B82B3A218B0051476C /* Schedule Card.swift in Sources */,
+				F37DBED72E74931B0039858B /* DashboardShell.swift in Sources */,
 				F3FA30972DD1E26200280133 /* Folder Destination.swift in Sources */,
 				F35BB0392C656AD300631DBD /* CarouselButtonStyle.swift in Sources */,
 				F3202D4B2D56DC050030B3CC /* Prefetcher.swift in Sources */,
