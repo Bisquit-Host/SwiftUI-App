@@ -1,7 +1,14 @@
 import SwiftUI
+import PteroNet
 
 struct StatRows: View {
-//    @State private var sheetBackups = false
+    private let server: ServerAttributes
+    
+    init(_ server: ServerAttributes) {
+        self.server = server
+    }
+    
+    //    @State private var sheetBackups = false
     
     var body: some View {
         VStack(spacing: 16) {

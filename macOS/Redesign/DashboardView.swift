@@ -13,7 +13,7 @@ struct DashboardView: View {
             VStack(alignment: .leading, spacing: 20) {
                 DashboardViewHeader(server)
                 
-                StatRows()
+                StatRows(server)
                 
                 HStack(alignment: .top, spacing: 20) {
                     FileSection()
