@@ -845,7 +845,6 @@
 		F37DBEE62E74EE620039858B /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEE52E74EE620039858B /* DashboardView.swift */; };
 		F37DBEE82E74EE6E0039858B /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEE72E74EE6E0039858B /* Person.swift */; };
 		F37DBEEB2E74EE8B0039858B /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEEA2E74EE8B0039858B /* Project.swift */; };
-		F37DBEED2E74EEB30039858B /* Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEEC2E74EEB30039858B /* Placeholder.swift */; };
 		F37DBEEF2E74EEDB0039858B /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEEE2E74EEDB0039858B /* Card.swift */; };
 		F37DBEF12E74EF860039858B /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEF02E74EF860039858B /* AvatarView.swift */; };
 		F37DBEF52E74EF9A0039858B /* AvatarStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEF42E74EF9A0039858B /* AvatarStack.swift */; };
@@ -859,7 +858,6 @@
 		F37DBF0D2E74F50C0039858B /* FileListRedesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF0C2E74F50C0039858B /* FileListRedesign.swift */; };
 		F37DBF0F2E74F5320039858B /* FileCardRedesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF0E2E74F5320039858B /* FileCardRedesign.swift */; };
 		F37DBF112E74F7570039858B /* FileSectionSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF102E74F7570039858B /* FileSectionSearchBar.swift */; };
-		F37DBF122E7572280039858B /* ServerCardParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F394A28329E0A9810012B7D1 /* ServerCardParent.swift */; };
 		F37DBF132E7572280039858B /* ServerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D95B052E625A9000849A94 /* ServerCard.swift */; };
 		F37DBF142E7572280039858B /* CompactMetricRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D95B0F2E63639900849A94 /* CompactMetricRow.swift */; };
 		F37DBF152E7572280039858B /* MetricGauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D95B122E6363AA00849A94 /* MetricGauge.swift */; };
@@ -868,6 +866,7 @@
 		F37DBF182E75723B0039858B /* ServerListGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B3A729BC6B5400CC1195 /* ServerListGrid.swift */; };
 		F37DBF1A2E75723B0039858B /* ServerListTips.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353D4FA2D980A5000EC9F3A /* ServerListTips.swift */; };
 		F37DBF1C2E76A5E00039858B /* LogActorAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF1B2E76A5E00039858B /* LogActorAvatar.swift */; };
+		F37DBF1F2E76DBD00039858B /* ServerCardParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF1D2E76DBD00039858B /* ServerCardParent.swift */; };
 		F37DDA7629E2AF7600B9680C /* Folder Path VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DDA7529E2AF7600B9680C /* Folder Path VM.swift */; };
 		F37EA7992B70DEDE0029DE00 /* Console VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5A42959026D0006D126 /* Console VM.swift */; };
 		F37EA79C2B722B390029DE00 /* Backup VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300889C2B3A17CC0051476C /* Backup VM.swift */; };
@@ -1955,7 +1954,6 @@
 		F37DBEE52E74EE620039858B /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		F37DBEE72E74EE6E0039858B /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		F37DBEEA2E74EE8B0039858B /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
-		F37DBEEC2E74EEB30039858B /* Placeholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Placeholder.swift; sourceTree = "<group>"; };
 		F37DBEEE2E74EEDB0039858B /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		F37DBEF02E74EF860039858B /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		F37DBEF42E74EF9A0039858B /* AvatarStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarStack.swift; sourceTree = "<group>"; };
@@ -1970,6 +1968,7 @@
 		F37DBF0E2E74F5320039858B /* FileCardRedesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCardRedesign.swift; sourceTree = "<group>"; };
 		F37DBF102E74F7570039858B /* FileSectionSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSectionSearchBar.swift; sourceTree = "<group>"; };
 		F37DBF1B2E76A5E00039858B /* LogActorAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogActorAvatar.swift; sourceTree = "<group>"; };
+		F37DBF1D2E76DBD00039858B /* ServerCardParent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCardParent.swift; sourceTree = "<group>"; };
 		F37DDA7529E2AF7600B9680C /* Folder Path VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Folder Path VM.swift"; sourceTree = "<group>"; };
 		F37F51C329DAF8D70030C1C4 /* DesImageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesImageVM.swift; sourceTree = "<group>"; };
 		F38282022B0E14B30088C48B /* Live Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Live Activity.swift"; sourceTree = "<group>"; };
@@ -3307,7 +3306,6 @@
 			children = (
 				F37DBEE22E74EE400039858B /* DashboardSidebar.swift */,
 				F37DBED82E74EDC60039858B /* SidebarItem.swift */,
-				F37DBEEC2E74EEB30039858B /* Placeholder.swift */,
 			);
 			path = Sidebar;
 			sourceTree = "<group>";
@@ -3926,6 +3924,7 @@
 				F3E08EAB2A2CE17A00116C1C /* macOS.entitlements */,
 				F3E08EA62A2CE17A00116C1C /* Assets.xcassets */,
 				F33DE4E62B35089000E257D8 /* BackgroundBlur.swift */,
+				F37DBF1D2E76DBD00039858B /* ServerCardParent.swift */,
 				F37DBF012E74F07A0039858B /* Redesign */,
 				F36B14682DC3BC3A008C1AF9 /* Nav */,
 				F3E08EC72A2CEA6F00116C1C /* Start Page */,
@@ -5967,6 +5966,7 @@
 				F36B14A92DC632D9008C1AF9 /* UserDefaults.swift in Sources */,
 				F3FA30952DD1708A00280133 /* File Card.swift in Sources */,
 				F36114DF2E569EC10052A5A2 /* StartPageHelper.swift in Sources */,
+				F37DBF1F2E76DBD00039858B /* ServerCardParent.swift in Sources */,
 				F314617F2D5A82F000547B6C /* Model Asset.swift in Sources */,
 				F3E98C262E6BB4E40019439F /* Place.swift in Sources */,
 				F31461802D5A82F000547B6C /* Networking.swift in Sources */,
@@ -6023,7 +6023,6 @@
 				F35BB0392C656AD300631DBD /* CarouselButtonStyle.swift in Sources */,
 				F3202D4B2D56DC050030B3CC /* Prefetcher.swift in Sources */,
 				F3038B962E04467F0085E438 /* Multipart Form Data.swift in Sources */,
-				F37DBEED2E74EEB30039858B /* Placeholder.swift in Sources */,
 				F30088962B3A033F0051476C /* LogMetaParent.swift in Sources */,
 				F37DBEE32E74EE400039858B /* DashboardSidebar.swift in Sources */,
 				F33DE4EB2B35C3F000E257D8 /* FileTab Context Menu.swift in Sources */,
@@ -6115,7 +6114,6 @@
 				F36B14A32DC4CAF6008C1AF9 /* Route.swift in Sources */,
 				F30088AD2B3A1F500051476C /* User View.swift in Sources */,
 				F30088DA2B3A3BF50051476C /* Console View.swift in Sources */,
-				F37DBF122E7572280039858B /* ServerCardParent.swift in Sources */,
 				F37DBF132E7572280039858B /* ServerCard.swift in Sources */,
 				F37DBF142E7572280039858B /* CompactMetricRow.swift in Sources */,
 				F37DBF152E7572280039858B /* MetricGauge.swift in Sources */,

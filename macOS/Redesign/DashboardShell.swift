@@ -27,15 +27,7 @@ struct DashboardShell: View {
         NavigationSplitView {
             DashboardSidebar($selection)
         } detail: {
-            switch selection {
-            case .dashboard, .none: DashboardView()
-            case .inbox:            Placeholder("Inbox")
-            case .project:          Placeholder("Project")
-            case .calendar:         Placeholder("Calendar")
-            case .reports:          Placeholder("Reports")
-            case .help:             Placeholder("Help & Center")
-            case .settings:         Placeholder("Settings")
-            }
+            Text("Select a server")
         }
     }
 }

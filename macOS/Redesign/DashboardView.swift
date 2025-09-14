@@ -1,10 +1,17 @@
 import ScrechKit
+import PteroNet
 
 struct DashboardView: View {
+    private let server: ServerAttributes
+    
+    init(_ server: ServerAttributes) {
+        self.server = server
+    }
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                DashboardViewHeader()
+                DashboardViewHeader(server)
                 
                 StatRows()
                 

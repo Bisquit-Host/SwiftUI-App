@@ -1,4 +1,5 @@
 import SwiftUI
+import PteroNet
 
 struct DashboardSidebar: View {
     @State private var vm = ServerListVM()
@@ -11,13 +12,15 @@ struct DashboardSidebar: View {
     }
     
     var body: some View {
-        List(selection: $selection) {
-            Section {
-                ServerListGrid(vm.filteredServers)
-            }
+        ScrollView {
+            ServerListGrid(vm.filteredServers)
         }
+        .scrollIndicators(.never)
         .listStyle(.sidebar)
         .frame(minWidth: 400)
+        .navigationDestination(for: ServerAttributes.self) { server in
+            DashboardView(server)
+        }
         .onFirstAppear {
             vm.loadServers()
         }
