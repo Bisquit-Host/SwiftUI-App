@@ -15,12 +15,10 @@ struct DashboardSidebar: View {
         ScrollView {
             ServerListGrid(vm.filteredServers)
         }
+        .padding(.horizontal)
         .scrollIndicators(.never)
         .listStyle(.sidebar)
         .frame(minWidth: 400)
-        .navigationDestination(for: ServerAttributes.self) { server in
-            DashboardView(server)
-        }
         .onFirstAppear {
             vm.loadServers()
         }

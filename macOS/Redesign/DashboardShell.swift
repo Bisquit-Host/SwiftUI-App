@@ -1,4 +1,5 @@
 import SwiftUI
+import PteroNet
 
 // MARK: 1
 // Backups
@@ -26,6 +27,10 @@ struct DashboardShell: View {
     var body: some View {
         NavigationSplitView {
             DashboardSidebar($selection)
+                .navigationDestination(for: ServerAttributes.self) { server in
+                    DashboardView(server)
+                        .id(server.id)
+                }
         } detail: {
             Text("Select a server")
         }
