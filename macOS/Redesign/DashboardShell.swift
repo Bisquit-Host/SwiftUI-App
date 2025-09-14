@@ -25,7 +25,7 @@ struct DashboardShell: View {
     
     var body: some View {
         NavigationSplitView {
-            DashboardSidebar(selection: $selection)
+            DashboardSidebar($selection)
         } detail: {
             switch selection {
             case .dashboard, .none: DashboardView()

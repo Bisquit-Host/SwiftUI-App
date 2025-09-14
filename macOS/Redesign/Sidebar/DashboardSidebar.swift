@@ -2,8 +2,13 @@ import SwiftUI
 
 struct DashboardSidebar: View {
     @State private var vm = ServerListVM()
-    @Binding var selection: SidebarItem?
     @EnvironmentObject private var store: ValueStore
+    
+    @Binding private var selection: SidebarItem?
+    
+    init(_ selection: Binding<SidebarItem?>) {
+        _selection = selection
+    }
     
     var body: some View {
         List(selection: $selection) {
