@@ -1,10 +1,17 @@
 import SwiftUI
 
 struct StatRows: View {
+//    @State private var sheetBackups = false
+    
     var body: some View {
         VStack(spacing: 16) {
             HStack(spacing: 16) {
-                StatTile("Backups", value: 15, icon: "archivebox")
+                Button {
+//                    sheetBackups = true
+                } label: {
+                    StatTile("Backups", value: 15, icon: "archivebox")
+                }
+                
                 StatTile("Users", value: 23, icon: "person.2")
                 StatTile("Databases", value: 10, icon: "tray")
                 StatTile("Shedules", value: 50, icon: "calendar")
@@ -21,5 +28,6 @@ struct StatRows: View {
                     .disabled(true)
             }
         }
+        .buttonStyle(.plain)
     }
 }

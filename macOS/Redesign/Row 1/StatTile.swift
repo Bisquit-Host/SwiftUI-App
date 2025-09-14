@@ -12,32 +12,27 @@ struct StatTile: View {
     }
     
     var body: some View {
-        Button {
+        HStack(spacing: 12) {
+            Image(systemName: icon)
+                .fontSize(32)
+                .frame(45)
             
-        } label: {
-            HStack(spacing: 12) {
-                Image(systemName: icon)
-                    .fontSize(32)
-                    .frame(45)
+            VStack(alignment: .leading, spacing: 2) {
+                Text(title)
+                    .subheadline()
+                    .secondary()
                 
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(title)
-                        .subheadline()
-                        .secondary()
-                    
-                    Text(value)
-                        .title2(.semibold)
-                }
-                
-                Spacer()
+                Text(value)
+                    .title2(.semibold)
             }
-            .padding(16)
-            .background(.thinMaterial, in: .rect(cornerRadius: 16, style: .continuous))
-            .overlay {
-                RoundedRectangle(cornerRadius: 16)
-                    .stroke(.white.opacity(0.05))
-            }
+            
+            Spacer()
         }
-        .buttonStyle(.plain)
+        .padding(16)
+        .background(.thinMaterial, in: .rect(cornerRadius: 16, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(.white.opacity(0.05))
+        }
     }
 }
