@@ -3,34 +3,47 @@ import SwiftUI
 struct LogSection: View {
     var body: some View {
         Card("Logs") {
-            Grid(alignment: .leading, horizontalSpacing: 16, verticalSpacing: 10) {
-                GridRow {
+            VStack(alignment: .leading) {
+                HStack {
                     HeaderCell("Actor")
+                        .frame(width: 32, alignment: .leading)
+                    
                     HeaderCell("Description")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
                     HeaderCell("Status")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
                     HeaderCell("Date")
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
+                .padding(.bottom, 6)
                 
-                ForEach(Project.sample) { log in
-                    GridRow {
-                        HStack(spacing: -8) {
-                            ForEach(log.actors) {
-                                AvatarView($0)
-                            }
+                ForEach(Array(Project.sample.enumerated()), id: \.element.id) { index, log in
+                    VStack(spacing: 6) {
+                        HStack {
+                            AvatarView(log.actor)
+                                .frame(width: 32, alignment: .leading)
+                                .clipped()
+                            
+                            Text(log.name)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            
+                            StatusPill(log.status)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            
+                            Text(log.due.formatted(date: .abbreviated, time: .omitted))
+                                .secondary()
+                                .frame(maxWidth: .infinity, alignment: .leading)
                         }
                         
-                        Text(log.name)
-                        
-                        StatusPill(log.status)
-                        
-                        Text(log.due.formatted(date: .abbreviated, time: .omitted))
-                            .secondary()
+                        if index < Project.sample.count - 1 {
+                            Divider()
+                        }
                     }
-                    .padding(.vertical, 6)
-                    
-                    Divider()
                 }
             }
+            .padding(.vertical, 6)
         }
     }
 }
