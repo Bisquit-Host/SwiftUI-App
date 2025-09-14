@@ -850,7 +850,6 @@
 		F37DBEF12E74EF860039858B /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEF02E74EF860039858B /* AvatarView.swift */; };
 		F37DBEF52E74EF9A0039858B /* AvatarStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEF42E74EF9A0039858B /* AvatarStack.swift */; };
 		F37DBEFC2E74F0010039858B /* ProjectTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEFB2E74F0010039858B /* ProjectTag.swift */; };
-		F37DBEFE2E74F0230039858B /* StatusPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEFD2E74F0230039858B /* StatusPill.swift */; };
 		F37DBF002E74F04B0039858B /* Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEFF2E74F04B0039858B /* Bar.swift */; };
 		F37DBF032E74F1750039858B /* StatRows.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF022E74F1750039858B /* StatRows.swift */; };
 		F37DBF052E74F1B00039858B /* FileSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF042E74F1B00039858B /* FileSection.swift */; };
@@ -868,6 +867,7 @@
 		F37DBF172E7572280039858B /* CompactServerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D95B0C2E63635B00849A94 /* CompactServerCard.swift */; };
 		F37DBF182E75723B0039858B /* ServerListGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B3A729BC6B5400CC1195 /* ServerListGrid.swift */; };
 		F37DBF1A2E75723B0039858B /* ServerListTips.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353D4FA2D980A5000EC9F3A /* ServerListTips.swift */; };
+		F37DBF1C2E76A5E00039858B /* LogActorAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF1B2E76A5E00039858B /* LogActorAvatar.swift */; };
 		F37DDA7629E2AF7600B9680C /* Folder Path VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DDA7529E2AF7600B9680C /* Folder Path VM.swift */; };
 		F37EA7992B70DEDE0029DE00 /* Console VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5A42959026D0006D126 /* Console VM.swift */; };
 		F37EA79C2B722B390029DE00 /* Backup VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300889C2B3A17CC0051476C /* Backup VM.swift */; };
@@ -1960,7 +1960,6 @@
 		F37DBEF02E74EF860039858B /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		F37DBEF42E74EF9A0039858B /* AvatarStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarStack.swift; sourceTree = "<group>"; };
 		F37DBEFB2E74F0010039858B /* ProjectTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTag.swift; sourceTree = "<group>"; };
-		F37DBEFD2E74F0230039858B /* StatusPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusPill.swift; sourceTree = "<group>"; };
 		F37DBEFF2E74F04B0039858B /* Bar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bar.swift; sourceTree = "<group>"; };
 		F37DBF022E74F1750039858B /* StatRows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatRows.swift; sourceTree = "<group>"; };
 		F37DBF042E74F1B00039858B /* FileSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSection.swift; sourceTree = "<group>"; };
@@ -1970,6 +1969,7 @@
 		F37DBF0C2E74F50C0039858B /* FileListRedesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileListRedesign.swift; sourceTree = "<group>"; };
 		F37DBF0E2E74F5320039858B /* FileCardRedesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCardRedesign.swift; sourceTree = "<group>"; };
 		F37DBF102E74F7570039858B /* FileSectionSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSectionSearchBar.swift; sourceTree = "<group>"; };
+		F37DBF1B2E76A5E00039858B /* LogActorAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogActorAvatar.swift; sourceTree = "<group>"; };
 		F37DDA7529E2AF7600B9680C /* Folder Path VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Folder Path VM.swift"; sourceTree = "<group>"; };
 		F37F51C329DAF8D70030C1C4 /* DesImageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesImageVM.swift; sourceTree = "<group>"; };
 		F38282022B0E14B30088C48B /* Live Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Live Activity.swift"; sourceTree = "<group>"; };
@@ -3296,6 +3296,7 @@
 			children = (
 				F37DBF0A2E74F24A0039858B /* LogSection.swift */,
 				F37DBEEA2E74EE8B0039858B /* Project.swift */,
+				F37DBF1B2E76A5E00039858B /* LogActorAvatar.swift */,
 				F37DBEFB2E74F0010039858B /* ProjectTag.swift */,
 			);
 			path = "Row 3";
@@ -3339,7 +3340,6 @@
 				F37DBEE52E74EE620039858B /* DashboardView.swift */,
 				F37DBF082E74F22A0039858B /* PerformanceCard.swift */,
 				F37DBF062E74F20C0039858B /* DashboardViewHeader.swift */,
-				F37DBEFD2E74F0230039858B /* StatusPill.swift */,
 				F37DBEDD2E74EE050039858B /* HeaderCell.swift */,
 				F37DBEEE2E74EEDB0039858B /* Card.swift */,
 				F37DBEFF2E74F04B0039858B /* Bar.swift */,
@@ -6000,6 +6000,7 @@
 				F30C130F2A54605B00A7EFF0 /* Nav Destinations.swift in Sources */,
 				F30088B62B3A21410051476C /* Schedule List.swift in Sources */,
 				F3DF50CD2B38FDE800206CAE /* Permission Card.swift in Sources */,
+				F37DBF1C2E76A5E00039858B /* LogActorAvatar.swift in Sources */,
 				F37DBEF12E74EF860039858B /* AvatarView.swift in Sources */,
 				F30088B12B3A20150051476C /* Backup List.swift in Sources */,
 				F30088972B3A03440051476C /* LogMetaView.swift in Sources */,
@@ -6078,7 +6079,6 @@
 				F300889D2B3A17CC0051476C /* Backup VM.swift in Sources */,
 				F30088DE2B3A3FBB0051476C /* Startup List.swift in Sources */,
 				F3E08EC22A2CE89400116C1C /* Value Store.swift in Sources */,
-				F37DBEFE2E74F0230039858B /* StatusPill.swift in Sources */,
 				F3DF50C32B38FCCC00206CAE /* Users VM.swift in Sources */,
 				F3E08ECE2A2CEDD800116C1C /* PanelView.swift in Sources */,
 				F323D8D32A2D668D002EDC62 /* File Tab.swift in Sources */,
