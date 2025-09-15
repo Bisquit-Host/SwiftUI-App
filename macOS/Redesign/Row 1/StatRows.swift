@@ -21,7 +21,7 @@ struct StatRows: View {
             }
             
             HStack(spacing: 16) {
-                StatTile("Allocations", value: 23, icon: "text.magnifyingglass")
+                StatRowAllocations(server.id)
                 
                 StatRowSubdomains(server.id)
                 

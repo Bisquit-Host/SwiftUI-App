@@ -871,6 +871,7 @@
 		F37DBF242E77F73A0039858B /* StatRowUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF232E77F73A0039858B /* StatRowUsers.swift */; };
 		F37DBF262E780BF90039858B /* StatRowDatabases.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF252E780BF90039858B /* StatRowDatabases.swift */; };
 		F37DBF282E780DB30039858B /* StatRowSubdomains.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF272E780DB30039858B /* StatRowSubdomains.swift */; };
+		F37DBF2A2E780EB80039858B /* StatRowAllocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF292E780EB80039858B /* StatRowAllocations.swift */; };
 		F37DDA7629E2AF7600B9680C /* Folder Path VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DDA7529E2AF7600B9680C /* Folder Path VM.swift */; };
 		F37EA7992B70DEDE0029DE00 /* Console VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5A42959026D0006D126 /* Console VM.swift */; };
 		F37EA79C2B722B390029DE00 /* Backup VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300889C2B3A17CC0051476C /* Backup VM.swift */; };
@@ -1977,6 +1978,7 @@
 		F37DBF232E77F73A0039858B /* StatRowUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatRowUsers.swift; sourceTree = "<group>"; };
 		F37DBF252E780BF90039858B /* StatRowDatabases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatRowDatabases.swift; sourceTree = "<group>"; };
 		F37DBF272E780DB30039858B /* StatRowSubdomains.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatRowSubdomains.swift; sourceTree = "<group>"; };
+		F37DBF292E780EB80039858B /* StatRowAllocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatRowAllocations.swift; sourceTree = "<group>"; };
 		F37DDA7529E2AF7600B9680C /* Folder Path VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Folder Path VM.swift"; sourceTree = "<group>"; };
 		F37F51C329DAF8D70030C1C4 /* DesImageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesImageVM.swift; sourceTree = "<group>"; };
 		F38282022B0E14B30088C48B /* Live Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Live Activity.swift"; sourceTree = "<group>"; };
@@ -3293,6 +3295,7 @@
 			isa = PBXGroup;
 			children = (
 				F37DBF022E74F1750039858B /* StatRows.swift */,
+				F37DBF292E780EB80039858B /* StatRowAllocations.swift */,
 				F37DBF272E780DB30039858B /* StatRowSubdomains.swift */,
 				F37DBF252E780BF90039858B /* StatRowDatabases.swift */,
 				F37DBEDA2E74EDDD0039858B /* StatTile.swift */,
@@ -5996,6 +5999,7 @@
 				F300889B2B3A0E1A0051476C /* Startup VM.swift in Sources */,
 				F33DE5092B364EBC00E257D8 /* Tab Info.swift in Sources */,
 				F3EAD3DF2DC960DA00D5D28D /* Focused List.swift in Sources */,
+				F37DBF2A2E780EB80039858B /* StatRowAllocations.swift in Sources */,
 				F35F65942B1D1A0B00431EB7 /* Panel VM.swift in Sources */,
 				F3ADA1D72DD0E8D40097F86F /* Nav Model.swift in Sources */,
 				F37DBF002E74F04B0039858B /* Bar.swift in Sources */,
