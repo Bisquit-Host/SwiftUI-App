@@ -15,7 +15,7 @@ struct ServerCardParent: View {
     @State private var confirmKill = false
     
     private var serverUrl: String {
-        "https://mgr.bisquit.host/server/\(server.id)"
+        "https://mgr.bisquit.host/server/" + server.id
     }
     
     var body: some View {
