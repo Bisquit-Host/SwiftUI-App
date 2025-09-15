@@ -17,7 +17,7 @@ struct StatRows: View {
                 
                 StatRowDatabases(server.id)
                 
-                StatTile("Shedules", value: 50, icon: "calendar")
+                StatTile("Schedules", value: 50, icon: "calendar")
             }
             
             HStack(spacing: 16) {
