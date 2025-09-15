@@ -17,7 +17,7 @@ struct StatRows: View {
                 
                 StatRowDatabases(server.id)
                 
-                StatTile("Schedules", value: 50, icon: "calendar")
+                StatRowSchedules(server.id)
             }
             
             HStack(spacing: 16) {
@@ -27,9 +27,11 @@ struct StatRows: View {
                 
                 StatTile("Modpacks", value: 10, icon: "hammer")
                     .disabled(true)
+                    .opacity(0.5)
                 
                 StatTile("Versions", value: 50, icon: "hammer")
                     .disabled(true)
+                    .opacity(0.5)
             }
         }
         .buttonStyle(.plain)
