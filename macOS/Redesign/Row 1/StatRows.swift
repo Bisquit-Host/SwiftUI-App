@@ -22,7 +22,8 @@ struct StatRows: View {
             
             HStack(spacing: 16) {
                 StatTile("Allocations", value: 23, icon: "text.magnifyingglass")
-                StatTile("Sudomains", value: 23, icon: "globe")
+                
+                StatRowSubdomains(server.id)
                 
                 StatTile("Modpacks", value: 10, icon: "hammer")
                     .disabled(true)
