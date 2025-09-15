@@ -21,7 +21,7 @@ struct DashboardView: View {
                     PerformanceCard()
                 }
                 
-                LogSection()
+                LogSection(server.id)
             }
             .padding(.horizontal, 24)
         }
