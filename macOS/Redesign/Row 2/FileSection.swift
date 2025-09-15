@@ -9,18 +9,20 @@ struct FileSection: View {
     
     var body: some View {
         Card("Files") {
-            VStack(spacing: 32) {
+            VStack {
                 FileSectionSearchBar()
                 
-                Grid(alignment: .leading, horizontalSpacing: 16, verticalSpacing: 10) {
-                    GridRow {
+                HStack(spacing: 16) {
+                    Group {
                         HeaderCell("Name")
                         HeaderCell("Size")
                         HeaderCell("Date")
                     }
-                    
-                    FileListRedesign(id)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
+                .padding(.vertical, 6)
+                
+                FileListRedesign(id)
             }
         }
         .frame(height: 500)

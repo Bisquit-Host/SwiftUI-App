@@ -15,8 +15,12 @@ struct FileListRedesign: View {
         List {
             ForEach(vm.files) {
                 FileCardRedesign($0)
+                    .listRowSeparatorTint(.white.opacity(0.1))
             }
         }
+        .listStyle(.plain)                 // removes grouped insets
+        .scrollContentBackground(.hidden) // hides default system background
+        .background(Color.clear)         // transparent background
         .task {
             await vm.fetchFiles()
         }

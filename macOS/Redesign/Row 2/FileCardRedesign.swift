@@ -10,16 +10,19 @@ struct FileCardRedesign: View {
     
     var body: some View {
         HStack {
-            HStack {
-                FileIcon(file.mimetype)
+            Group {
+                HStack {
+                    FileIcon(file.mimetype)
+                    
+                    Text(file.name)
+                }
                 
-                Text(file.name)
+                Text(formatBytes(file.size))
+                
+                Text(formatISO(file.createdAt))
+                    .secondary()
             }
-            
-            Text(formatBytes(file.size))
-            
-            Text(formatISO(file.createdAt))
-                .secondary()
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
         .padding(.vertical, 6)
     }
