@@ -26,6 +26,7 @@ struct DashboardView: View {
             .padding(.horizontal, 24)
         }
         .navigationTitle("")
+        .scrollIndicators(.never)
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
 //            ToolbarItem(placement: .topBarTrailing) {
