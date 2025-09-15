@@ -3289,9 +3289,9 @@
 			isa = PBXGroup;
 			children = (
 				F37DBF022E74F1750039858B /* StatRows.swift */,
+				F37DBEDA2E74EDDD0039858B /* StatTile.swift */,
 				F37DBF232E77F73A0039858B /* StatRowUsers.swift */,
 				F37DBF212E77F5450039858B /* StatRowBackups.swift */,
-				F37DBEDA2E74EDDD0039858B /* StatTile.swift */,
 			);
 			path = "Row 1";
 			sourceTree = "<group>";
