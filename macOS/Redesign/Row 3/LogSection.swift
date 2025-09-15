@@ -26,29 +26,7 @@ struct LogSection: View {
                 }
                 .padding(.bottom, 6)
                 
-                List {
-                    ForEach(vm.logs) { log in
-                        VStack(spacing: 6) {
-                            HStack {
-                                LogActorAvatar(log.relationships.actor.attributes)
-                                    .frame(width: 32, alignment: .leading)
-                                    .clipped()
-                                
-                                LogCardEvent(log)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                
-                                Text(log.timestamp)
-                                    .secondary()
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                            }
-                        }
-                        .listRowSeparatorTint(.white.opacity(0.1))
-                    }
-                }
-                .frame(height: 300)
-                .listStyle(.plain)                 // removes grouped insets
-                .scrollContentBackground(.hidden) // hides default system background
-                .background(Color.clear)         // transparent background
+                LogSectionList(vm.logs)
             }
             .padding(.vertical, 6)
         }
