@@ -41,7 +41,7 @@ struct BackupCard: View {
                 systemImage: backup.isLocked ? "lock.open" : "lock"
             ) {
                 Task {
-                    await vm.lockBackup(backup.uuid)
+                    await vm.toggleBackupLock(backup.uuid)
                 }
             }
             
