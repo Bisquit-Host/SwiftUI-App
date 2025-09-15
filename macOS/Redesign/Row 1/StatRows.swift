@@ -25,11 +25,11 @@ struct StatRows: View {
                 
                 StatRowSubdomains(server.id)
                 
-                StatTile("Modpacks", value: 10, icon: "hammer")
+                StatTile("Modpacks", value: "Browse", icon: "hammer")
                     .disabled(true)
                     .opacity(0.5)
                 
-                StatTile("Versions", value: 50, icon: "hammer")
+                StatTile("Versions", value: "Browse", icon: "hammer")
                     .disabled(true)
                     .opacity(0.5)
             }

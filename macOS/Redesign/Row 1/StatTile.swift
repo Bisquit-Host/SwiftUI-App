@@ -2,12 +2,12 @@ import SwiftUI
 
 struct StatTile: View {
     private let title: LocalizedStringKey
-    private let value: Int
+    private let value: String
     private let icon: String
     
-    init(_ title: LocalizedStringKey, value: Int, icon: String) {
+    init(_ title: LocalizedStringKey, value: CustomStringConvertible, icon: String) {
         self.title = title
-        self.value = value
+        self.value = value.description
         self.icon = icon
     }
     

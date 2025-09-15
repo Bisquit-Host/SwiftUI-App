@@ -9,7 +9,7 @@ struct FileCardRedesign: View {
     }
     
     var body: some View {
-        HStack {
+        HStack(spacing: 0) {
             Group {
                 HStack {
                     FileIcon(file.mimetype)
