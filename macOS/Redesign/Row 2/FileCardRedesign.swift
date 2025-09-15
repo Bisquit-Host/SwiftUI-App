@@ -9,7 +9,7 @@ struct FileCardRedesign: View {
     }
     
     var body: some View {
-        GridRow {
+        HStack {
             HStack {
                 FileIcon(file.mimetype)
                 
@@ -22,8 +22,6 @@ struct FileCardRedesign: View {
                 .secondary()
         }
         .padding(.vertical, 6)
-        
-        Divider()
     }
 }
 

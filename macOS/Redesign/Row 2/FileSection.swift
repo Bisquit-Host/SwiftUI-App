@@ -1,6 +1,12 @@
 import SwiftUI
 
 struct FileSection: View {
+    private let id: String
+    
+    init(_ id: String) {
+        self.id = id
+    }
+    
     var body: some View {
         Card("Files") {
             VStack(spacing: 32) {
@@ -13,10 +19,11 @@ struct FileSection: View {
                         HeaderCell("Date")
                     }
                     
-                    FileListRedesign()
+                    FileListRedesign(id)
                 }
             }
         }
+        .frame(height: 500)
         .frame(maxWidth: .infinity)
     }
 }

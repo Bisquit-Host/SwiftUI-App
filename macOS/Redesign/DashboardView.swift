@@ -16,7 +16,7 @@ struct DashboardView: View {
                 StatRows(server)
                 
                 HStack(alignment: .top, spacing: 20) {
-                    FileSection()
+                    FileSection(server.id)
                     
                     PerformanceCard()
                 }
