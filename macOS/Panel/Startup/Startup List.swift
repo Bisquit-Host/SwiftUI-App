@@ -38,6 +38,6 @@ struct StartupList: View {
 
 #Preview {
     NavigationStack {
-        StartupList(sampleJSON(.serverListAttributes))
+        StartupList("")
     }
 }

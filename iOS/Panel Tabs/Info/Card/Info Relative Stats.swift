@@ -56,6 +56,6 @@ struct InfoRelativeStats: View {
 }
 
 #Preview {
-    InfoRelativeStats(sampleJSON(.serverListAttributes))
+    InfoRelativeStats(PreviewProp.serverAttributes.limits)
         .environment(PanelVM(""))
 }

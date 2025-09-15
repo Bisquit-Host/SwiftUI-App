@@ -68,7 +68,7 @@ struct StartupCard: View {
 //#Preview {
 //    List {
 //        StartupCard(
-//            sampleJSON(.serverListAttributes),
+//            PreviewProp.serverAttibutes,
 //            variable: StartupVariable(
 //                name: "Variable Name",
 //                description: "Some variable does something",

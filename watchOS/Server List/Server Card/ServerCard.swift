@@ -33,5 +33,5 @@ struct ServerCard: View {
 }
 
 #Preview {
-    ServerCard(sampleJSON(.serverListAttributes))
+    ServerCard(PreviewProp.serverAttributes)
 }

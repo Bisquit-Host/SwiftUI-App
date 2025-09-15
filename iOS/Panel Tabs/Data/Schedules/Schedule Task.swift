@@ -70,8 +70,8 @@ struct ScheduleTask: View {
 //#Preview {
 //    List {
 //        ScheduleTask(
-//            sampleJSON(.),
-//            task: sampleJSON(.)
+//            PreviewProp.scheduleAttributes,
+//            task: PreviewProp.scheduleTaskAttributes
 //        )
 //    }
 //}

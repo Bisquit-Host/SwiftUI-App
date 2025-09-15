@@ -40,7 +40,7 @@ struct BackupList: View {
 
 #Preview {
     List {
-        BackupList(sampleJSON(.serverListAttributes))
+        BackupList(PreviewProp.serverAttributes)
     }
     .environment(BackupVM(""))
 }

@@ -38,7 +38,7 @@ struct AllocationList: View {
 
 #Preview {
     NavigationStack {
-        AllocationList(sampleJSON(.serverListAttributes))
+        AllocationList(PreviewProp.serverAttributes)
     }
     .environment(AllocationVM(""))
 }

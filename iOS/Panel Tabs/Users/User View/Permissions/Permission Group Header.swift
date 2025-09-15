@@ -60,7 +60,7 @@ struct PermissionGroupHeader: View {
     @Previewable @State var showDescription = false
     
     List {
-        PermissionGroupHeader($showDescription, user: sampleJSON(.userAttributes))
+        PermissionGroupHeader($showDescription, user: PreviewProp.userAttributes)
     }
     .environment(UsersVM(""))
 }

@@ -38,6 +38,6 @@ struct ServerListGrid: View {
 }
 
 #Preview {
-    ServerListGrid(sampleJSON(.serverListDataArray))
+    ServerListGrid([PreviewProp.serverAttributes])
         .environmentObject(ValueStore())
 }

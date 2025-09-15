@@ -56,6 +56,6 @@ struct BackupCard: View {
 }
 
 #Preview {
-    BackupCard(sampleJSON(.backupAttributes))
+    BackupCard(PreviewProp.backupAttributes)
         .environment(BackupVM(""))
 }

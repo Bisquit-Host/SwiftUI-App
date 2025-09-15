@@ -112,7 +112,7 @@ struct ServerCardContextMenu: View {
     Text("Preview")
         .contextMenu {
             ServerCardContextMenu(
-                sampleJSON(.serverListAttributes),
+                PreviewProp.serverAttributes,
                 .constant(false),
                 .constant(false)
             )

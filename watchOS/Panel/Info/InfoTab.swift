@@ -41,6 +41,6 @@ struct InfoTab: View {
 
 #Preview {
     NavigationStack {
-        InfoTab(sampleJSON(.serverListAttributes))
+        InfoTab(PreviewProp.serverAttributes)
     }
 }

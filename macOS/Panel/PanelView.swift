@@ -146,5 +146,5 @@ struct PanelView: View {
 }
 
 #Preview {
-    PanelView(sampleJSON(.serverListAttributes))
+    PanelView(PreviewProp.serverAttributes)
 }

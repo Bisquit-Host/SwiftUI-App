@@ -110,7 +110,7 @@ struct StatsTab: View {
 }
 
 #Preview {
-    StatsTab(sampleJSON(.serverListAttributes))
+    StatsTab(PreviewProp.serverAttributes)
         .environment(PanelVM(""))
         .environment(BackupVM(""))
         .environment(DatabaseVM(""))

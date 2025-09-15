@@ -63,6 +63,6 @@ struct ServerCardContextMenu: View {
 #Preview {
     Text("Preview")
         .sheet {
-            ServerCardContextMenu(sampleJSON(.serverListAttributes))
+            ServerCardContextMenu(PreviewProp.serverAttributes)
         }
 }

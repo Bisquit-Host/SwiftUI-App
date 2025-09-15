@@ -82,7 +82,7 @@ struct AllocationCard: View {
 
 #Preview {
     List {
-        AllocationCard(sampleJSON(.allocationAttributes))
+        AllocationCard(PreviewProp.allocationAttributes)
     }
     .environment(AllocationVM(""))
     .environmentObject(ValueStore())
