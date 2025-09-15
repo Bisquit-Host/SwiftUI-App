@@ -17,8 +17,6 @@ struct DashboardView: View {
                 
                 HStack(alignment: .top, spacing: 20) {
                     FileSection(server.id)
-                    
-                    PerformanceCard()
                 }
                 
                 LogSection(server.id)
