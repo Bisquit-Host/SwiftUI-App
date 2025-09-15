@@ -12,7 +12,7 @@ struct FileSection: View {
             VStack {
                 FileSectionSearchBar()
                 
-                HStack(spacing: 16) {
+                HStack(spacing: 0) {
                     Group {
                         HeaderCell("Name")
                         HeaderCell("Size")
