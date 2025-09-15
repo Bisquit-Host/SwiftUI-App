@@ -15,7 +15,7 @@ struct LogSection: View {
         Card("Logs") {
             VStack(alignment: .leading) {
                 HStack {
-                    HeaderCell("Actor")
+                    HeaderCell("")
                         .frame(width: 32, alignment: .trailing)
                     
                     Group {
