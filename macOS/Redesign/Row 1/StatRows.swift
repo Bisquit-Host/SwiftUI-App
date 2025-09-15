@@ -15,7 +15,8 @@ struct StatRows: View {
                 
                 StatRowUsers(server.id)
                 
-                StatTile("Databases", value: 10, icon: "tray")
+                StatRowDatabases(server.id)
+                
                 StatTile("Shedules", value: 50, icon: "calendar")
             }
             

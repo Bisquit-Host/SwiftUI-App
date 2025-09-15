@@ -1,13 +1,12 @@
 import SwiftUI
 
 struct DatabaseList: View {
-    @State private var vm: DatabaseVM
+    @Environment(DatabaseVM.self) private var vm
     
     private let id: String
     
     init(_ id: String) {
         self.id = id
-        self.vm = DatabaseVM(id)
     }
     
     var body: some View {
@@ -18,7 +17,6 @@ struct DatabaseList: View {
                 }
             }
         }
-        .environment(vm)
         .navigationTitle("Databases")
         .padding()
         .background(.clear)
@@ -43,4 +41,5 @@ struct DatabaseList: View {
     NavigationStack {
         DatabaseList("")
     }
+    .environment(DatabaseVM(""))
 }

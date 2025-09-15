@@ -869,6 +869,7 @@
 		F37DBF1F2E76DBD00039858B /* ServerCardParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF1D2E76DBD00039858B /* ServerCardParent.swift */; };
 		F37DBF222E77F5450039858B /* StatRowBackups.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF212E77F5450039858B /* StatRowBackups.swift */; };
 		F37DBF242E77F73A0039858B /* StatRowUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF232E77F73A0039858B /* StatRowUsers.swift */; };
+		F37DBF262E780BF90039858B /* StatRowDatabases.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF252E780BF90039858B /* StatRowDatabases.swift */; };
 		F37DDA7629E2AF7600B9680C /* Folder Path VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DDA7529E2AF7600B9680C /* Folder Path VM.swift */; };
 		F37EA7992B70DEDE0029DE00 /* Console VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5A42959026D0006D126 /* Console VM.swift */; };
 		F37EA79C2B722B390029DE00 /* Backup VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300889C2B3A17CC0051476C /* Backup VM.swift */; };
@@ -1973,6 +1974,7 @@
 		F37DBF1D2E76DBD00039858B /* ServerCardParent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCardParent.swift; sourceTree = "<group>"; };
 		F37DBF212E77F5450039858B /* StatRowBackups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatRowBackups.swift; sourceTree = "<group>"; };
 		F37DBF232E77F73A0039858B /* StatRowUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatRowUsers.swift; sourceTree = "<group>"; };
+		F37DBF252E780BF90039858B /* StatRowDatabases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatRowDatabases.swift; sourceTree = "<group>"; };
 		F37DDA7529E2AF7600B9680C /* Folder Path VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Folder Path VM.swift"; sourceTree = "<group>"; };
 		F37F51C329DAF8D70030C1C4 /* DesImageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesImageVM.swift; sourceTree = "<group>"; };
 		F38282022B0E14B30088C48B /* Live Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Live Activity.swift"; sourceTree = "<group>"; };
@@ -3289,6 +3291,7 @@
 			isa = PBXGroup;
 			children = (
 				F37DBF022E74F1750039858B /* StatRows.swift */,
+				F37DBF252E780BF90039858B /* StatRowDatabases.swift */,
 				F37DBEDA2E74EDDD0039858B /* StatTile.swift */,
 				F37DBF232E77F73A0039858B /* StatRowUsers.swift */,
 				F37DBF212E77F5450039858B /* StatRowBackups.swift */,
@@ -6138,6 +6141,7 @@
 				F373CDB42D895419008B64BE /* LogTopbar.swift in Sources */,
 				F373CDB52D895419008B64BE /* LogTopbarCard.swift in Sources */,
 				F31F32032D52DB950095DD19 /* Color Theme.swift in Sources */,
+				F37DBF262E780BF90039858B /* StatRowDatabases.swift in Sources */,
 				F35B9F5C2A2DC8D60045D014 /* Nav State.swift in Sources */,
 				F36B14BE2DC64D29008C1AF9 /* AppSettings.swift in Sources */,
 			);
