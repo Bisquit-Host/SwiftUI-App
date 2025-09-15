@@ -13,7 +13,8 @@ struct StatRows: View {
             HStack(spacing: 16) {
                 StatRowBackups(server)
                 
-                StatTile("Users", value: 23, icon: "person.2")
+                StatRowUsers(server.id)
+                
                 StatTile("Databases", value: 10, icon: "tray")
                 StatTile("Shedules", value: 50, icon: "calendar")
             }

@@ -27,7 +27,6 @@ struct BackupList: View {
             }
             .disabled(vm.backups.count >= server.featureLimits.backups)
         }
-        .environment(vm)
         .navigationTitle("Backups")
         .padding()
         .task {
@@ -51,7 +50,7 @@ struct BackupList: View {
 
 #Preview {
     NavigationStack {
-        BackupList(sampleJSON(.serverListAttributes))
+        BackupList(PreviewProp.serverAttributes)
     }
     .environment(BackupVM(""))
 }
