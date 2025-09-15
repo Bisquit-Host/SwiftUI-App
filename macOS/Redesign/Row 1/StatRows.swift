@@ -8,16 +8,10 @@ struct StatRows: View {
         self.server = server
     }
     
-    //    @State private var sheetBackups = false
-    
     var body: some View {
         VStack(spacing: 16) {
             HStack(spacing: 16) {
-                Button {
-//                    sheetBackups = true
-                } label: {
-                    StatTile("Backups", value: 15, icon: "archivebox")
-                }
+                StatRowBackups(server)
                 
                 StatTile("Users", value: 23, icon: "person.2")
                 StatTile("Databases", value: 10, icon: "tray")

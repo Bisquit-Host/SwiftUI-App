@@ -2,13 +2,12 @@ import SwiftUI
 import PteroNet
 
 struct BackupList: View {
-    @State private var vm: BackupVM
+    @Environment(BackupVM.self) private var vm
     
     private let server: ServerAttributes
     
     init(_ server: ServerAttributes) {
         self.server = server
-        self.vm = BackupVM(server.id)
     }
     
     var body: some View {
@@ -34,11 +33,6 @@ struct BackupList: View {
         .task {
             await vm.fetchBackups()
         }
-        .onChange(of: server.id) {
-            Task {
-                await vm.fetchBackups()
-            }
-        }
         .alert("Name Backup", isPresented: $vm.alertCreateBackup) {
             TextField("Backup at \(vm.dateAndTime)", text: $vm.textCreateBackup)
                 .autocorrectionDisabled()
@@ -59,4 +53,5 @@ struct BackupList: View {
     NavigationStack {
         BackupList(sampleJSON(.serverListAttributes))
     }
+    .environment(BackupVM(""))
 }
