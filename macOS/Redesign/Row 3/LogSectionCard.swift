@@ -15,12 +15,11 @@ struct LogSectionCard: View {
                     .frame(width: 32, alignment: .leading)
                     .clipped()
                 
-                LogCardEvent(log)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                
-                Text(log.timestamp)
-                    .secondary()
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                Group {
+                    LogCardEvent(log)
+                    LogCardTimestamp(log.timestamp)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
         }
     }

@@ -18,6 +18,7 @@ struct FileCardRedesign: View {
                 }
                 
                 Text(formatBytes(file.size))
+                    .secondary()
                 
                 Text(formatISO(file.createdAt))
                     .secondary()

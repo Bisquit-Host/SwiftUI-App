@@ -16,13 +16,13 @@ struct LogSection: View {
             VStack(alignment: .leading) {
                 HStack {
                     HeaderCell("Actor")
-                        .frame(width: 32, alignment: .leading)
+                        .frame(width: 32, alignment: .trailing)
                     
-                    HeaderCell("Description")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    
-                    HeaderCell("Date")
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Group {
+                        HeaderCell("Description")
+                        HeaderCell("Date")
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .padding(.bottom, 6)
                 
