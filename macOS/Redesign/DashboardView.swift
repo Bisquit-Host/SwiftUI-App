@@ -15,11 +15,13 @@ struct DashboardView: View {
                 
                 StatRows(server)
                 
-                HStack(alignment: .top, spacing: 20) {
+//                HStack(alignment: .top, spacing: 20) {
                     FileSection(server.id)
-                }
+//                }
                 
-                LogSection(server.id)
+//                HStack(alignment: .top, spacing: 20) {
+                    LogSection(server.id)
+//                }
             }
             .padding(.horizontal, 24)
         }
@@ -27,7 +29,7 @@ struct DashboardView: View {
         .scrollIndicators(.never)
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
-//            ToolbarItem(placement: .topBarTrailing) {
+                //            ToolbarItem(placement: .topBarTrailing) {
                 HStack(spacing: 12) {
                     AvatarStack()
                     
