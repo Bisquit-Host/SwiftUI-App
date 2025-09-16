@@ -8,7 +8,7 @@ struct PanelView: View {
     
     init(_ server: ServerAttributes) {
         self.server = server
-        self.vm = PanelVM(server.id)
+        vm = PanelVM(server.id)
     }
     
     @AppStorage("selected_tab") private var selectedTab: PanelTab = .info

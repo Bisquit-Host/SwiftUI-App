@@ -9,7 +9,7 @@ struct ServerCard: View {
     
     init(_ server: ServerAttributes) {
         self.server = server
-        self.vm = .init(server.id)
+        vm = ServerCardVM(server.id)
     }
     
     private var isSuspended: Bool {

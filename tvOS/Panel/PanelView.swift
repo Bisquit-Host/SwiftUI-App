@@ -20,16 +20,16 @@ struct PanelView: View {
         self.server = server
         self.id = server.id
         
-        self.backupVM = BackupVM(id)
-        self.databaseVM = DatabaseVM(id)
-        self.scheduleVM = ScheduleVM(id)
-        self.vm = PanelVM(id)
-        self.fileVM = FileTabVM(id)
-        self.subdomainVM = SubdomainVM(id)
-        self.usersVM = UsersVM(id)
-        self.logVM = LogVM(id)
-        self.allocationVM = AllocationVM(id)
-        self.startupVM = StartupVM(id)
+        backupVM = BackupVM(id)
+        databaseVM = DatabaseVM(id)
+        scheduleVM = ScheduleVM(id)
+        vm = PanelVM(id)
+        fileVM = FileTabVM(id)
+        subdomainVM = SubdomainVM(id)
+        usersVM = UsersVM(id)
+        logVM = LogVM(id)
+        allocationVM = AllocationVM(id)
+        startupVM = StartupVM(id)
     }
     
     @AppStorage("tab_panel") private var tabPanel: PanelTab = .info

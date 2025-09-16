@@ -7,7 +7,7 @@ struct LogList: View {
     
     init(_ id: String) {
         self.id = id
-        self.vm = LogVM(id)
+        vm = LogVM(id)
     }
     
     var body: some View {

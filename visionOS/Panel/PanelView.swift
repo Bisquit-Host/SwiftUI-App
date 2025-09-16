@@ -18,13 +18,13 @@ struct PanelView: View {
         self.id = server.id
         self.server = server
         
-        self.vm = PanelVM(id)
-        self.fileVM = FileTabVM(id)
-        self.backupVM = BackupVM(id)
-        self.dbVM = DatabaseVM(id)
-        self.scheduleVM = ScheduleVM(id)
-        self.userVM = UsersVM(id)
-        self.subdomainVM = SubdomainVM(id)
+        vm = PanelVM(id)
+        fileVM = FileTabVM(id)
+        backupVM = BackupVM(id)
+        dbVM = DatabaseVM(id)
+        scheduleVM = ScheduleVM(id)
+        userVM = UsersVM(id)
+        subdomainVM = SubdomainVM(id)
     }
     
     @AppStorage("show_info") private var showInfo = true

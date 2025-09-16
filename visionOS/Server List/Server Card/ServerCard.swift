@@ -9,7 +9,7 @@ struct ServerCard: View {
     
     init(_ server: ServerAttributes) {
         self.server = server
-        self.vm = ServerCardVM(server.id)
+        vm = ServerCardVM(server.id)
     }
     
     private let gradient = Gradient(colors: [.mint, .orange, .red])

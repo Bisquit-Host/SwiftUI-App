@@ -9,7 +9,7 @@ struct CompactServerCard: View {
     
     init(_ server: ServerAttributes) {
         self.server = server
-        self.vm = .init(server.id)
+        vm = ServerCardVM(server.id)
     }
     
     var body: some View {

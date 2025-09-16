@@ -8,7 +8,7 @@ struct StartupList: View {
     
     init(_ id: String) {
         self.id = id
-        self.vm = StartupVM(id)
+        vm = StartupVM(id)
     }
     
     var body: some View {
