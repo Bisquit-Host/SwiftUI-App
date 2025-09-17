@@ -327,6 +327,8 @@
 		F32A02722DFEA9BC003CE74D /* default.icon in Resources */ = {isa = PBXBuildFile; fileRef = F338F1682DFCC8D8005B7226 /* default.icon */; };
 		F32A02732DFEAA6A003CE74D /* default.icon in Resources */ = {isa = PBXBuildFile; fileRef = F338F1682DFCC8D8005B7226 /* default.icon */; };
 		F32DB8A829AE6B800074E045 /* StartPageFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32DB8A729AE6B800074E045 /* StartPageFooter.swift */; };
+		F32E749A2E7B78F200F3EB36 /* MetricGauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D95B122E6363AA00849A94 /* MetricGauge.swift */; };
+		F32E749B2E7B78F200F3EB36 /* ServerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D95B052E625A9000849A94 /* ServerCard.swift */; };
 		F32E88C82AF83E3F00959D49 /* ServerListAdminButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88C72AF83E3F00959D49 /* ServerListAdminButton.swift */; };
 		F32E88C92AF83E3F00959D49 /* ServerListAdminButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88C72AF83E3F00959D49 /* ServerListAdminButton.swift */; };
 		F32E88D12AF8494100959D49 /* ServerListFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88D02AF8494100959D49 /* ServerListFilter.swift */; };
@@ -902,7 +904,6 @@
 		F38928252A441B5D00561CDF /* ServerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38928242A441B5D00561CDF /* ServerSettings.swift */; };
 		F389282E2A445E4F00561CDF /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F389282D2A445E4F00561CDF /* AppSettings.swift */; };
 		F38928302A445E9700561CDF /* ServerList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F389282F2A445E9700561CDF /* ServerList.swift */; };
-		F38928322A445EA900561CDF /* ServerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38928312A445EA900561CDF /* ServerCard.swift */; };
 		F38928382A4460CC00561CDF /* ServerCardVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* ServerCardVM.swift */; };
 		F389BB542A05B37500911EBF /* Panel Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3029C06E9700B08696 /* Panel Tab.swift */; };
 		F389BB572A05B47000911EBF /* SafariCover in Frameworks */ = {isa = PBXBuildFile; productRef = F389BB562A05B47000911EBF /* SafariCover */; };
@@ -5890,7 +5891,6 @@
 				F32716DE2CF62CAB00F2DC31 /* Create Backup Button.swift in Sources */,
 				F3F2BB9D2A5403DD00D44CA6 /* ServerListVM.swift in Sources */,
 				F3F2BBAB2A540E4400D44CA6 /* Nav Extension.swift in Sources */,
-				F38928322A445EA900561CDF /* ServerCard.swift in Sources */,
 				F3FD9F992C651A9200A69314 /* File Tab VM.swift in Sources */,
 				F3EEC03B2AF2F93800BFED78 /* StartPageVM.swift in Sources */,
 				F335F6E82DD3568200D743FF /* FileTab Context Menu.swift in Sources */,
@@ -5910,6 +5910,8 @@
 				F3AB1DF42D79C42B00387164 /* MetricKit Manager.swift in Sources */,
 				F34F289F2ACDADA600FD618A /* tab.swift in Sources */,
 				F3A7CF6B2A44F6E000331B51 /* CircularGauge.swift in Sources */,
+				F32E749A2E7B78F200F3EB36 /* MetricGauge.swift in Sources */,
+				F32E749B2E7B78F200F3EB36 /* ServerCard.swift in Sources */,
 				F3E679B22D5A854700A7ADDE /* Server Options Provider.swift in Sources */,
 				F389282E2A445E4F00561CDF /* AppSettings.swift in Sources */,
 				F37B90782BFEA00300597624 /* OrnamentInfoProperties.swift in Sources */,
