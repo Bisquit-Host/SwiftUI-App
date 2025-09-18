@@ -41,65 +41,49 @@ struct PanelView: View {
     var body: some View {
         TabView(selection: $tabPanel) {
             if let server = vm.server {
-                StatsTab(server)
-                    .environment(vm)
-                    .environment(backupVM)
-                    .environment(databaseVM)
-                    .tag(PanelTab.info)
-                    .tabItem {
-                        Label("Stats", systemImage: "gauge.open.with.lines.needle.33percent")
-                    }
+                Tab("Stats", systemImage: "gauge.open.with.lines.needle.33percent", value: PanelTab.info) {
+                    StatsTab(server)
+                        .environment(vm)
+                        .environment(backupVM)
+                        .environment(databaseVM)
+                }
                 
-                FileTab(id)
-                    .environmentObject(fileVM)
-                    .tag(PanelTab.files)
-                    .tabItem {
-                        Label("Files", systemImage: "folder")
-                    }
+                Tab("Files", systemImage: "folder", value: PanelTab.files) {
+                    FileTab(id)
+                        .environmentObject(fileVM)
+                }
                 
-                DataTab(server)
-                    .environment(backupVM)
-                    .environment(databaseVM)
-                    .environment(scheduleVM)
-                    .tag(PanelTab.backups)
-                    .tabItem {
-                        Label("Data", systemImage: "archivebox")
-                    }
+                Tab("Data", systemImage: "archivebox", value: PanelTab.backups) {
+                    DataTab(server)
+                        .environment(backupVM)
+                        .environment(databaseVM)
+                        .environment(scheduleVM)
+                }
                 
-                UserList()
-                    .environment(usersVM)
-                    .tag(PanelTab.users)
-                    .tabItem {
-                        Label("Users", systemImage: "person")
-                    }
+                Tab("Users", systemImage: "person", value: PanelTab.users) {
+                    UserList()
+                        .environment(usersVM)
+                }
                 
-                LogList()
-                    .environment(logVM)
-                    .tag(PanelTab.logs)
-                    .tabItem {
-                        Label("Logs", systemImage: "terminal")
-                    }
+                Tab("Logs", systemImage: "terminal", value: PanelTab.logs) {
+                    LogList()
+                        .environment(logVM)
+                }
                 
-                AllocationList(server)
-                    .environment(allocationVM)
-                    .tag(PanelTab.allocations)
-                    .tabItem {
-                        Label("Allocations", systemImage: "network")
-                    }
+                Tab("Allocations", systemImage: "network", value: PanelTab.allocations) {
+                    AllocationList(server)
+                        .environment(allocationVM)
+                }
                 
-                StartupList()
-                    .environment(startupVM)
-                    .tag(PanelTab.startup)
-                    .tabItem {
-                        Label("Startup", systemImage: "airplane")
-                    }
+                Tab("Startup", systemImage: "airplane", value: PanelTab.startup) {
+                    StartupList()
+                        .environment(startupVM)
+                }
                 
-                SubdomainList(allocations)
-                    .environment(subdomainVM)
-                    .tag(PanelTab.subdomains)
-                    .tabItem {
-                        Label("Subdomains", systemImage: "globe")
-                    }
+                Tab("Subdomains", systemImage: "globe", value: PanelTab.subdomains) {
+                    SubdomainList(allocations)
+                        .environment(subdomainVM)
+                }
             }
         }
         .task {

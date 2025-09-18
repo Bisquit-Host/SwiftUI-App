@@ -41,8 +41,5 @@ struct GuideStepCard: View {
             .semibold()
             .frame(width: size.width / 2)
         }
-        .tabItem {
-            Label("Step", systemImage: "\(step.id).circle")
-        }
     }
 }
