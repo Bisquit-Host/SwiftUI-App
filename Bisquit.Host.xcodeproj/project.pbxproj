@@ -550,10 +550,6 @@
 		F34AEF592DD6413200909562 /* Guide.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F34AEF532DD640F900909562 /* Guide.xcassets */; };
 		F34BF0C52DD07DE00041BE04 /* Preview VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34BF0BD2DD07DE00041BE04 /* Preview VC.swift */; };
 		F34C055A29F11E010031ABE1 /* ServerCardVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* ServerCardVM.swift */; };
-		F34F289A2ACDAD9B00FD618A /* tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34F28992ACDAD9B00FD618A /* tab.swift */; };
-		F34F289B2ACDAD9B00FD618A /* tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34F28992ACDAD9B00FD618A /* tab.swift */; };
-		F34F289F2ACDADA600FD618A /* tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34F28992ACDAD9B00FD618A /* tab.swift */; };
-		F34F28A02ACDADB200FD618A /* tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34F28992ACDAD9B00FD618A /* tab.swift */; };
 		F35081AF2AF30E2B00835CC0 /* Tip Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A800312A7313E900CAC40B /* Tip Cloud Keys.swift */; };
 		F35081B02AF30F4B00835CC0 /* Tip Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A800312A7313E900CAC40B /* Tip Cloud Keys.swift */; };
 		F352AF9B2A4EE707004AD489 /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = F352AF9A2A4EE707004AD489 /* AlertKit */; };
@@ -1851,7 +1847,6 @@
 		F34BF0BD2DD07DE00041BE04 /* Preview VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preview VC.swift"; sourceTree = "<group>"; };
 		F34BF0C02DD07DE00041BE04 /* QuickLook.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QuickLook.entitlements; sourceTree = "<group>"; };
 		F34C055C29F151250031ABE1 /* watchOS.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = watchOS.entitlements; sourceTree = "<group>"; };
-		F34F28992ACDAD9B00FD618A /* tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tab.swift; sourceTree = "<group>"; };
 		F350636629DC24AB0010B717 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		F350636829DC24AB0010B717 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		F352AF962A4EDB1D004AD489 /* ServerListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListVM.swift; sourceTree = "<group>"; };
@@ -2690,7 +2685,6 @@
 				F3EDEE3429C0C84C00B08696 /* Panel VM.swift */,
 				F353D5032D98427500EC9F3A /* Panel Toolbar.swift */,
 				F3EDEE3029C06E9700B08696 /* Panel Tab.swift */,
-				F34F28992ACDAD9B00FD618A /* tab.swift */,
 				F3D295122AF396FD00ED43A0 /* Tabs.swift */,
 				F39626F12A7AD64B0057E356 /* Ansi.swift */,
 				F37A36772A35180100517EFC /* Power Switch.swift */,
@@ -4763,7 +4757,6 @@
 				F370804B2A2A1CA70046CE70 /* Backup List Footer.swift in Sources */,
 				F3BC03C72B20675E0011F98A /* New Schedule Sheet.swift in Sources */,
 				F33DE50C2B36E3C300E257D8 /* AppDelegate.swift in Sources */,
-				F34F28A02ACDADB200FD618A /* tab.swift in Sources */,
 				F370804E2A2A1D180046CE70 /* Data Tab.swift in Sources */,
 				F3FF3E892D93576B00EDFBC6 /* Update Checker.swift in Sources */,
 				F31C8D862E70E79D00D16B08 /* PlanViewList.swift in Sources */,
@@ -5164,7 +5157,6 @@
 				F3EDEE3A29C0CB8000B08696 /* Websocket Delegate.swift in Sources */,
 				F3A391BA29DB5E6900591C84 /* Cache Expiration.swift in Sources */,
 				F393C7BB2A18437400DE33F9 /* File Uploader.swift in Sources */,
-				F34F289A2ACDAD9B00FD618A /* tab.swift in Sources */,
 				F3464D232A86396800188B0C /* Change Power.swift in Sources */,
 				F37266EB29D9F06C005FD103 /* Cache VM.swift in Sources */,
 				F38FB0E92DD2B16F00C8A19B /* Sheet Create Allocation.swift in Sources */,
@@ -5620,7 +5612,6 @@
 				F3202D2A2D562B9A0030B3CC /* PlanCard.swift in Sources */,
 				F3464D2F2A863A6200188B0C /* Create Backup.swift in Sources */,
 				F3D2643B2A66AB92005C3777 /* Account View.swift in Sources */,
-				F34F289B2ACDAD9B00FD618A /* tab.swift in Sources */,
 				F314616B2D5A1F5E00547B6C /* Icon.swift in Sources */,
 				F389BB732A05B61900911EBF /* Credential Field.swift in Sources */,
 				F36797792A3A55E1009F2788 /* LogListParent.swift in Sources */,
@@ -5905,7 +5896,6 @@
 				F36B14B22DC63324008C1AF9 /* GameKit.swift in Sources */,
 				F3F2BBA92A540DF900D44CA6 /* Nav State.swift in Sources */,
 				F3AB1DF42D79C42B00387164 /* MetricKit Manager.swift in Sources */,
-				F34F289F2ACDADA600FD618A /* tab.swift in Sources */,
 				F32E749A2E7B78F200F3EB36 /* MetricGauge.swift in Sources */,
 				F32E749B2E7B78F200F3EB36 /* ServerCard.swift in Sources */,
 				F3E679B22D5A854700A7ADDE /* Server Options Provider.swift in Sources */,
