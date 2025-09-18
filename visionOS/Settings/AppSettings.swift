@@ -5,12 +5,14 @@ struct AppSettings: View {
     
     var body: some View {
         List {
-            Toggle(isOn: $store.devMode) {
-                Label("Developer mode", systemImage: "hammer")
-            }
-            
             Toggle(isOn: $store.enableGameCenter) {
                 Label("Game Center", systemImage: "gamecontroller")
+            }
+            
+            Section("Debug") {
+                Toggle(isOn: $store.devMode) {
+                    Label("Developer mode", systemImage: "hammer")
+                }
             }
         }
         .navigationTitle("Settings")
