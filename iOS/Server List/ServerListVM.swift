@@ -9,7 +9,6 @@ final class ServerListVM {
     
     // MARK: - Sheets / Alerts
     var sheetGuide = false
-    var sheetKeyStorage = false
     var sheetDiscover = false
     var showBilling = false
     

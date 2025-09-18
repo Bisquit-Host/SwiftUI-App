@@ -55,13 +55,6 @@ struct ServerList: View {
         .sheet($vm.sheetDiscover) {
             Discover()
         }
-        .sheet($vm.sheetKeyStorage) {
-            CloudKeys($vm.apiKey) {
-                Task {
-                    await vm.fetchServers(store.adminServerList)
-                }
-            }
-        }
         .toolbar {
             ToolbarItemGroup(placement: .topBarLeading) {
                 SFButton("sparkles") {
