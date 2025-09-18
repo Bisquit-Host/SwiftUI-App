@@ -5,6 +5,8 @@ struct AppSettings: View {
     
     var body: some View {
         List {
+            
+            
             Toggle(isOn: $store.enableGameCenter) {
                 Label("Game Center", systemImage: "gamecontroller")
             }

@@ -1076,7 +1076,6 @@
 		F3A7CF682C8DF3C900413400 /* Video File VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF672C8DF3C900413400 /* Video File VM.swift */; };
 		F3A7CF692C8DF3C900413400 /* Video File VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF672C8DF3C900413400 /* Video File VM.swift */; };
 		F3A7CF6A2C8DF3C900413400 /* Video File VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF672C8DF3C900413400 /* Video File VM.swift */; };
-		F3A7CF6B2A44F6E000331B51 /* CircularGauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF6A2A44F6E000331B51 /* CircularGauge.swift */; };
 		F3A7CF6B2C8DF41300413400 /* Video File VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF672C8DF3C900413400 /* Video File VM.swift */; };
 		F3A7CF702A44FD5300331B51 /* ServerCardParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF6F2A44FD5300331B51 /* ServerCardParent.swift */; };
 		F3A800322A7313E900CAC40B /* Tip Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A800312A7313E900CAC40B /* Tip Cloud Keys.swift */; };
@@ -2004,7 +2003,6 @@
 		F38928242A441B5D00561CDF /* ServerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerSettings.swift; sourceTree = "<group>"; };
 		F389282D2A445E4F00561CDF /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		F389282F2A445E9700561CDF /* ServerList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerList.swift; sourceTree = "<group>"; };
-		F38928312A445EA900561CDF /* ServerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCard.swift; sourceTree = "<group>"; };
 		F38F9E082CE6CCF90033EFE3 /* Image Playground Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image Playground Button.swift"; sourceTree = "<group>"; };
 		F38F9E112CE7647D0033EFE3 /* Image Playground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image Playground.swift"; sourceTree = "<group>"; };
 		F38F9E272CEB33510033EFE3 /* QuickLook File VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuickLook File VM.swift"; sourceTree = "<group>"; };
@@ -3416,6 +3414,7 @@
 				F384D8BB2D5BE495000FC41D /* Crypto Price Widget.intentdefinition */,
 				F337B4052A89FAC600DD79AA /* Entry.swift */,
 				F318240A2A8777CD0039866C /* Provider.swift */,
+				F3A7CF6A2A44F6E000331B51 /* CircularGauge.swift */,
 				F36B737C2C8AEA6B00E858FE /* Network Calls */,
 				F36B73782C8AE9CD00E858FE /* Intents */,
 				F337B4072A89FB0200DD79AA /* Families */,
@@ -3598,8 +3597,6 @@
 			isa = PBXGroup;
 			children = (
 				F3A7CF6F2A44FD5300331B51 /* ServerCardParent.swift */,
-				F38928312A445EA900561CDF /* ServerCard.swift */,
-				F3A7CF6A2A44F6E000331B51 /* CircularGauge.swift */,
 			);
 			path = "Server Card";
 			sourceTree = "<group>";
@@ -5909,7 +5906,6 @@
 				F3F2BBA92A540DF900D44CA6 /* Nav State.swift in Sources */,
 				F3AB1DF42D79C42B00387164 /* MetricKit Manager.swift in Sources */,
 				F34F289F2ACDADA600FD618A /* tab.swift in Sources */,
-				F3A7CF6B2A44F6E000331B51 /* CircularGauge.swift in Sources */,
 				F32E749A2E7B78F200F3EB36 /* MetricGauge.swift in Sources */,
 				F32E749B2E7B78F200F3EB36 /* ServerCard.swift in Sources */,
 				F3E679B22D5A854700A7ADDE /* Server Options Provider.swift in Sources */,
