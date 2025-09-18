@@ -16,9 +16,7 @@ struct BisquitHostApp: App {
     private let container: ModelContainer
     
     init() {
-        let schema = Schema([
-            APIKey.self
-        ])
+        let schema = Schema([APIKey.self])
         
         do {
             container = try ModelContainer(for: schema)
