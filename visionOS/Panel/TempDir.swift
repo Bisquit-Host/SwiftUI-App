@@ -12,10 +12,10 @@ struct TempDir: View {
             ForEach(fileNames, id: \.self) {
                 Text($0)
             }
-            .navigationTitle("Temporary Files")
-            .task {
-                loadFiles()
-            }
+        }
+        .navigationTitle("Temporary Files")
+        .task {
+            loadFiles()
         }
     }
     
