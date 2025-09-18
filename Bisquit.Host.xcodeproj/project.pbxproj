@@ -102,8 +102,8 @@
 		F3015DF12D9F427700B9BCC6 /* LogListFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3015DED2D9F427700B9BCC6 /* LogListFilter.swift */; };
 		F3015DF22D9F427700B9BCC6 /* LogListFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3015DED2D9F427700B9BCC6 /* LogListFilter.swift */; };
 		F3015DF52D9F468200B9BCC6 /* LogToolbarActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A5632E2D9EF323009AA363 /* LogToolbarActor.swift */; };
-		F30207D52D8B2A6000C26008 /* Swifty Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30207D42D8B2A6000C26008 /* Swifty Ping.swift */; };
-		F30207D62D8B2A6000C26008 /* Swifty Ping.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30207D42D8B2A6000C26008 /* Swifty Ping.swift */; };
+		F30207D52D8B2A6000C26008 /* SwiftyPing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30207D42D8B2A6000C26008 /* SwiftyPing.swift */; };
+		F30207D62D8B2A6000C26008 /* SwiftyPing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30207D42D8B2A6000C26008 /* SwiftyPing.swift */; };
 		F303214B2B3FEA45002A73B8 /* Panel Settings View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F303214A2B3FEA45002A73B8 /* Panel Settings View.swift */; };
 		F303214C2B3FEDC6002A73B8 /* Panel Settings View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F303214A2B3FEA45002A73B8 /* Panel Settings View.swift */; };
 		F3038B932E04434C0085E438 /* QuickLooking in Frameworks */ = {isa = PBXBuildFile; productRef = F3038B922E04434C0085E438 /* QuickLooking */; };
@@ -199,7 +199,7 @@
 		F31BA58F295901B60006D126 /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA58E295901B60006D126 /* PlanView.swift */; };
 		F31BA591295901C00006D126 /* PlanListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA590295901C00006D126 /* PlanListVM.swift */; };
 		F31BA596295901F70006D126 /* Panel View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA595295901F70006D126 /* Panel View.swift */; };
-		F31BA59D295902280006D126 /* Info Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA59C295902280006D126 /* Info Tab.swift */; };
+		F31BA59D295902280006D126 /* InfoTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA59C295902280006D126 /* InfoTab.swift */; };
 		F31BA5A3295902610006D126 /* Console Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5A2295902610006D126 /* Console Tab.swift */; };
 		F31BA5A52959026D0006D126 /* Console VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5A42959026D0006D126 /* Console VM.swift */; };
 		F31BA5AC295902B00006D126 /* File Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5AB295902B00006D126 /* File Tab.swift */; };
@@ -300,8 +300,8 @@
 		F3255E242C904A7A008E04DE /* SSH List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF91C42B423535001D8F80 /* SSH List.swift */; };
 		F325E2CD2E5E6CE50008928E /* Sheet Create Allocation Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325E2CC2E5E6CE50008928E /* Sheet Create Allocation Card.swift */; };
 		F325E2CE2E5E6CE50008928E /* Sheet Create Allocation Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325E2CC2E5E6CE50008928E /* Sheet Create Allocation Card.swift */; };
-		F325F7002A54BBCF00E89EC4 /* Info Tab Allocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F6FF2A54BBCF00E89EC4 /* Info Tab Allocations.swift */; };
-		F325F7012A54BBCF00E89EC4 /* Info Tab Allocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F6FF2A54BBCF00E89EC4 /* Info Tab Allocations.swift */; };
+		F325F7002A54BBCF00E89EC4 /* InfoTabAllocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F6FF2A54BBCF00E89EC4 /* InfoTabAllocations.swift */; };
+		F325F7012A54BBCF00E89EC4 /* InfoTabAllocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F6FF2A54BBCF00E89EC4 /* InfoTabAllocations.swift */; };
 		F325F7032A54BF7A00E89EC4 /* Tab Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7022A54BF7A00E89EC4 /* Tab Info.swift */; };
 		F325F7042A54BF7A00E89EC4 /* Tab Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7022A54BF7A00E89EC4 /* Tab Info.swift */; };
 		F325F7062A54C4BC00E89EC4 /* System Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7052A54C4BC00E89EC4 /* System Alerts.swift */; };
@@ -556,8 +556,8 @@
 		F353B0412D8A31BF00E4EC07 /* Account Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B0402D8A31BF00E4EC07 /* Account Parent.swift */; };
 		F353B0422D8A31BF00E4EC07 /* Account Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B0402D8A31BF00E4EC07 /* Account Parent.swift */; };
 		F353B0432D8A31BF00E4EC07 /* Account Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B0402D8A31BF00E4EC07 /* Account Parent.swift */; };
-		F353B0542D8AA73C00E4EC07 /* Map Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B0532D8AA73C00E4EC07 /* Map Section.swift */; };
-		F353B0552D8AA73C00E4EC07 /* Map Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B0532D8AA73C00E4EC07 /* Map Section.swift */; };
+		F353B0542D8AA73C00E4EC07 /* MapSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B0532D8AA73C00E4EC07 /* MapSection.swift */; };
+		F353B0552D8AA73C00E4EC07 /* MapSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B0532D8AA73C00E4EC07 /* MapSection.swift */; };
 		F353D4FD2D980A5000EC9F3A /* ServerListTips.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353D4FA2D980A5000EC9F3A /* ServerListTips.swift */; };
 		F353D4FE2D980A5000EC9F3A /* ServerListTips.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353D4FA2D980A5000EC9F3A /* ServerListTips.swift */; };
 		F353D5052D98427500EC9F3A /* Panel Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353D5032D98427500EC9F3A /* Panel Toolbar.swift */; };
@@ -712,7 +712,7 @@
 		F36D531A2A05B7FB007324C6 /* Console Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5A2295902610006D126 /* Console Tab.swift */; };
 		F36D531B2A05B807007324C6 /* Console VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5A42959026D0006D126 /* Console VM.swift */; };
 		F36D531D2A05B816007324C6 /* Websocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BF97A929BFC7E9007B9C9C /* Websocket.swift */; };
-		F36D531F2A05B82B007324C6 /* Info Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA59C295902280006D126 /* Info Tab.swift */; };
+		F36D531F2A05B82B007324C6 /* InfoTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA59C295902280006D126 /* InfoTab.swift */; };
 		F36D53212A05B836007324C6 /* Websocket Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3929C0CB8000B08696 /* Websocket Delegate.swift */; };
 		F36D53222A05B83B007324C6 /* Websocket Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3729C0CB5A00B08696 /* Websocket Message.swift */; };
 		F36D53252A05B85B007324C6 /* Data Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5C8295904AC0006D126 /* Data Tab.swift */; };
@@ -1306,12 +1306,12 @@
 		F3E08ECE2A2CEDD800116C1C /* PanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E08ECD2A2CEDD800116C1C /* PanelView.swift */; };
 		F3E0B48D2DC300D6003C8B27 /* PanelSectionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0B48C2DC300D6003C8B27 /* PanelSectionVM.swift */; };
 		F3E0B48E2DC300D6003C8B27 /* PanelSectionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0B48C2DC300D6003C8B27 /* PanelSectionVM.swift */; };
-		F3E0B4902DC3033A003C8B27 /* Info Tab Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0B48F2DC3033A003C8B27 /* Info Tab Users.swift */; };
-		F3E0B4912DC3033A003C8B27 /* Info Tab Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0B48F2DC3033A003C8B27 /* Info Tab Users.swift */; };
-		F3E0B4932DC30347003C8B27 /* Info Tab Logs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0B4922DC30347003C8B27 /* Info Tab Logs.swift */; };
-		F3E0B4942DC30347003C8B27 /* Info Tab Logs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0B4922DC30347003C8B27 /* Info Tab Logs.swift */; };
-		F3E0B4962DC30351003C8B27 /* Info Tab Subdomains.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0B4952DC30351003C8B27 /* Info Tab Subdomains.swift */; };
-		F3E0B4972DC30351003C8B27 /* Info Tab Subdomains.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0B4952DC30351003C8B27 /* Info Tab Subdomains.swift */; };
+		F3E0B4902DC3033A003C8B27 /* InfoTabUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0B48F2DC3033A003C8B27 /* InfoTabUsers.swift */; };
+		F3E0B4912DC3033A003C8B27 /* InfoTabUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0B48F2DC3033A003C8B27 /* InfoTabUsers.swift */; };
+		F3E0B4932DC30347003C8B27 /* InfoTabLogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0B4922DC30347003C8B27 /* InfoTabLogs.swift */; };
+		F3E0B4942DC30347003C8B27 /* InfoTabLogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0B4922DC30347003C8B27 /* InfoTabLogs.swift */; };
+		F3E0B4962DC30351003C8B27 /* InfoTabSubdomains.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0B4952DC30351003C8B27 /* InfoTabSubdomains.swift */; };
+		F3E0B4972DC30351003C8B27 /* InfoTabSubdomains.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0B4952DC30351003C8B27 /* InfoTabSubdomains.swift */; };
 		F3E1B2D02C903C9300AED3F1 /* ServerCardContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF012C8BBB4700413400 /* ServerCardContextMenu.swift */; };
 		F3E1D3ED2B3208BE009B7062 /* User 2Fa.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3EC2B3208BE009B7062 /* User 2Fa.swift */; };
 		F3E1D3EE2B3208BE009B7062 /* User 2Fa.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E1D3EC2B3208BE009B7062 /* User 2Fa.swift */; };
@@ -1709,7 +1709,7 @@
 		F3015DDD2D9F26C600B9BCC6 /* LogCardTimestamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogCardTimestamp.swift; sourceTree = "<group>"; };
 		F3015DE52D9F27E800B9BCC6 /* LogCardImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogCardImage.swift; sourceTree = "<group>"; };
 		F3015DED2D9F427700B9BCC6 /* LogListFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogListFilter.swift; sourceTree = "<group>"; };
-		F30207D42D8B2A6000C26008 /* Swifty Ping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swifty Ping.swift"; sourceTree = "<group>"; };
+		F30207D42D8B2A6000C26008 /* SwiftyPing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyPing.swift; sourceTree = "<group>"; };
 		F303214A2B3FEA45002A73B8 /* Panel Settings View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Settings View.swift"; sourceTree = "<group>"; };
 		F304498629E98AE4006DC0C7 /* iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOS.entitlements; sourceTree = "<group>"; };
 		F304498929E990E9006DC0C7 /* CloudKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKeys.swift; sourceTree = "<group>"; };
@@ -1744,7 +1744,7 @@
 		F31BA58E295901B60006D126 /* PlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanView.swift; sourceTree = "<group>"; };
 		F31BA590295901C00006D126 /* PlanListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanListVM.swift; sourceTree = "<group>"; };
 		F31BA595295901F70006D126 /* Panel View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel View.swift"; sourceTree = "<group>"; };
-		F31BA59C295902280006D126 /* Info Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab.swift"; sourceTree = "<group>"; };
+		F31BA59C295902280006D126 /* InfoTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTab.swift; sourceTree = "<group>"; };
 		F31BA5A2295902610006D126 /* Console Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Console Tab.swift"; sourceTree = "<group>"; };
 		F31BA5A42959026D0006D126 /* Console VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Console VM.swift"; sourceTree = "<group>"; };
 		F31BA5AB295902B00006D126 /* File Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "File Tab.swift"; sourceTree = "<group>"; };
@@ -1772,7 +1772,7 @@
 		F3255E162C9049AF008E04DE /* Settings Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings Button.swift"; sourceTree = "<group>"; };
 		F3255E192C904A03008E04DE /* Settings View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings View.swift"; sourceTree = "<group>"; };
 		F325E2CC2E5E6CE50008928E /* Sheet Create Allocation Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sheet Create Allocation Card.swift"; sourceTree = "<group>"; };
-		F325F6FF2A54BBCF00E89EC4 /* Info Tab Allocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab Allocations.swift"; sourceTree = "<group>"; };
+		F325F6FF2A54BBCF00E89EC4 /* InfoTabAllocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTabAllocations.swift; sourceTree = "<group>"; };
 		F325F7022A54BF7A00E89EC4 /* Tab Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tab Info.swift"; sourceTree = "<group>"; };
 		F325F7052A54C4BC00E89EC4 /* System Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "System Alerts.swift"; sourceTree = "<group>"; };
 		F325F7082A54CB6600E89EC4 /* Carousel Button Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Carousel Button Style.swift"; sourceTree = "<group>"; };
@@ -1851,7 +1851,7 @@
 		F350636829DC24AB0010B717 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		F352AF962A4EDB1D004AD489 /* ServerListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListVM.swift; sourceTree = "<group>"; };
 		F353B0402D8A31BF00E4EC07 /* Account Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account Parent.swift"; sourceTree = "<group>"; };
-		F353B0532D8AA73C00E4EC07 /* Map Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Map Section.swift"; sourceTree = "<group>"; };
+		F353B0532D8AA73C00E4EC07 /* MapSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSection.swift; sourceTree = "<group>"; };
 		F353D4FA2D980A5000EC9F3A /* ServerListTips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListTips.swift; sourceTree = "<group>"; };
 		F353D5032D98427500EC9F3A /* Panel Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Toolbar.swift"; sourceTree = "<group>"; };
 		F3553FB22B40653000EF0FD2 /* Panel Settings Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Settings Parent.swift"; sourceTree = "<group>"; };
@@ -2153,9 +2153,9 @@
 		F3E08EBE2A2CE87800116C1C /* StartPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPage.swift; sourceTree = "<group>"; };
 		F3E08ECD2A2CEDD800116C1C /* PanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelView.swift; sourceTree = "<group>"; };
 		F3E0B48C2DC300D6003C8B27 /* PanelSectionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelSectionVM.swift; sourceTree = "<group>"; };
-		F3E0B48F2DC3033A003C8B27 /* Info Tab Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab Users.swift"; sourceTree = "<group>"; };
-		F3E0B4922DC30347003C8B27 /* Info Tab Logs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab Logs.swift"; sourceTree = "<group>"; };
-		F3E0B4952DC30351003C8B27 /* Info Tab Subdomains.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab Subdomains.swift"; sourceTree = "<group>"; };
+		F3E0B48F2DC3033A003C8B27 /* InfoTabUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTabUsers.swift; sourceTree = "<group>"; };
+		F3E0B4922DC30347003C8B27 /* InfoTabLogs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTabLogs.swift; sourceTree = "<group>"; };
+		F3E0B4952DC30351003C8B27 /* InfoTabSubdomains.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTabSubdomains.swift; sourceTree = "<group>"; };
 		F3E1D3EC2B3208BE009B7062 /* User 2Fa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User 2Fa.swift"; sourceTree = "<group>"; };
 		F3E1D3F12B320A6A009B7062 /* Permission Group Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Permission Group Header.swift"; sourceTree = "<group>"; };
 		F3E2BED92C1C6B9500B7A6D4 /* Cache List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache List.swift"; sourceTree = "<group>"; };
@@ -2700,11 +2700,11 @@
 		F31BA5A1295902470006D126 /* Info */ = {
 			isa = PBXGroup;
 			children = (
-				F31BA59C295902280006D126 /* Info Tab.swift */,
-				F3E0B4922DC30347003C8B27 /* Info Tab Logs.swift */,
-				F3E0B4952DC30351003C8B27 /* Info Tab Subdomains.swift */,
-				F325F6FF2A54BBCF00E89EC4 /* Info Tab Allocations.swift */,
-				F3E0B48F2DC3033A003C8B27 /* Info Tab Users.swift */,
+				F31BA59C295902280006D126 /* InfoTab.swift */,
+				F3E0B4922DC30347003C8B27 /* InfoTabLogs.swift */,
+				F3E0B4952DC30351003C8B27 /* InfoTabSubdomains.swift */,
+				F325F6FF2A54BBCF00E89EC4 /* InfoTabAllocations.swift */,
+				F3E0B48F2DC3033A003C8B27 /* InfoTabUsers.swift */,
 				F3B66DEF2D60B2B100F1841B /* Card */,
 				F3A563232D9EF114009AA363 /* Info Tab Buttons User Img.swift */,
 				F3B66DF32D60B46F00F1841B /* Info Tab LA.swift */,
@@ -3023,8 +3023,8 @@
 		F353B04E2D8AA6FB00E4EC07 /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				F353B0532D8AA73C00E4EC07 /* Map Section.swift */,
-				F30207D42D8B2A6000C26008 /* Swifty Ping.swift */,
+				F353B0532D8AA73C00E4EC07 /* MapSection.swift */,
+				F30207D42D8B2A6000C26008 /* SwiftyPing.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -4958,13 +4958,13 @@
 				F31BA5682959006F0006D126 /* App Container.swift in Sources */,
 				F36B73872C8AEAE700E858FE /* Model Asset.swift in Sources */,
 				F32F3AAB2D8EB8EC00E69B98 /* Background Image.swift in Sources */,
-				F325F7002A54BBCF00E89EC4 /* Info Tab Allocations.swift in Sources */,
+				F325F7002A54BBCF00E89EC4 /* InfoTabAllocations.swift in Sources */,
 				F3202CE02D562A620030B3CC /* PlanListGame.swift in Sources */,
 				F3924EDF29A2333F00C4CC77 /* Biometry VM.swift in Sources */,
 				F36E8A982E6E40A400A38229 /* ServerListToolbar.swift in Sources */,
 				F33001442A4CF06D0063FE0F /* Apikey Card.swift in Sources */,
 				F3202C772D5583680030B3CC /* PlanViewParent.swift in Sources */,
-				F31BA59D295902280006D126 /* Info Tab.swift in Sources */,
+				F31BA59D295902280006D126 /* InfoTab.swift in Sources */,
 				F3CE5C432D538FE60094BD7B /* Subdomain List.swift in Sources */,
 				F37A36782A35180100517EFC /* Power Switch.swift in Sources */,
 				F3553FBC2B40945C00EF0FD2 /* Allocation List Parent.swift in Sources */,
@@ -4992,7 +4992,7 @@
 				F36797782A3A55E1009F2788 /* LogListParent.swift in Sources */,
 				F3202D4D2D56DC050030B3CC /* Prefetcher.swift in Sources */,
 				F31F32052D52DB950095DD19 /* Color Theme.swift in Sources */,
-				F3E0B4912DC3033A003C8B27 /* Info Tab Users.swift in Sources */,
+				F3E0B4912DC3033A003C8B27 /* InfoTabUsers.swift in Sources */,
 				F3AF91C12B423492001D8F80 /* SSH VM.swift in Sources */,
 				F353B0412D8A31BF00E4EC07 /* Account Parent.swift in Sources */,
 				F3FEA4422E5C9359003BB975 /* InfoTabCustomizationButton.swift in Sources */,
@@ -5001,7 +5001,7 @@
 				F34851C42E72E4F50002C72E /* UniversalPlanList.swift in Sources */,
 				F37A36732A3515DC00517EFC /* Server Settings VM.swift in Sources */,
 				F36E8AA42E6E451500A38229 /* PanelSectionListToolbar.swift in Sources */,
-				F3E0B4942DC30347003C8B27 /* Info Tab Logs.swift in Sources */,
+				F3E0B4942DC30347003C8B27 /* InfoTabLogs.swift in Sources */,
 				F311CAAE2A646612004E4A4A /* LogMetaView.swift in Sources */,
 				F303214B2B3FEA45002A73B8 /* Panel Settings View.swift in Sources */,
 				F3E98C282E6BB4E40019439F /* Place.swift in Sources */,
@@ -5064,7 +5064,7 @@
 				F3A563242D9EF114009AA363 /* Info Tab Buttons User Img.swift in Sources */,
 				F3D807382DCD8F1600598908 /* Contact Access Picker.swift in Sources */,
 				F3924EE929A28D9D00C4CC77 /* Biometry Usage View.swift in Sources */,
-				F30207D62D8B2A6000C26008 /* Swifty Ping.swift in Sources */,
+				F30207D62D8B2A6000C26008 /* SwiftyPing.swift in Sources */,
 				F3015DF22D9F427700B9BCC6 /* LogListFilter.swift in Sources */,
 				F3553FB92B4093E600EF0FD2 /* Allocation List.swift in Sources */,
 				F3F5BC962BF7668E00EB8FB1 /* Sensitivity Analyzer.swift in Sources */,
@@ -5116,7 +5116,7 @@
 				F3E98C0D2E6AE1BD0019439F /* IntroAmbientBackground.swift in Sources */,
 				F3E8B3502CF485FB005D25F8 /* Console Message.swift in Sources */,
 				F37DDA7629E2AF7600B9680C /* Folder Path VM.swift in Sources */,
-				F3E0B4962DC30351003C8B27 /* Info Tab Subdomains.swift in Sources */,
+				F3E0B4962DC30351003C8B27 /* InfoTabSubdomains.swift in Sources */,
 				F335CA0B2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */,
 				F3A994AA2A177ED100530615 /* MapVM.swift in Sources */,
 				F30088FC2B3B56210051476C /* User List Parent.swift in Sources */,
@@ -5169,7 +5169,7 @@
 				F39CF3582A50C00C0077996D /* User View.swift in Sources */,
 				F37A366B2A35158A00517EFC /* Console View.swift in Sources */,
 				F39872102A1AE3CE0022B00E /* Video Player.swift in Sources */,
-				F353B0542D8AA73C00E4EC07 /* Map Section.swift in Sources */,
+				F353B0542D8AA73C00E4EC07 /* MapSection.swift in Sources */,
 				F31BA566295900300006D126 /* Nav State.swift in Sources */,
 				F3BC03C62B20675E0011F98A /* New Schedule Sheet.swift in Sources */,
 				F3DDD59C2A62AC7C009FDFBF /* Create Backup Button.swift in Sources */,
@@ -5349,7 +5349,7 @@
 				F337121E2DC2FD240014B427 /* PanelSection.swift in Sources */,
 				F337121F2DC2FD240014B427 /* PanelSectionList.swift in Sources */,
 				F33712202DC2FD240014B427 /* PanelSectionRow.swift in Sources */,
-				F3E0B4972DC30351003C8B27 /* Info Tab Subdomains.swift in Sources */,
+				F3E0B4972DC30351003C8B27 /* InfoTabSubdomains.swift in Sources */,
 				F36D53192A05B7F6007324C6 /* Panel VM.swift in Sources */,
 				F389BB6C2A05B5EA00911EBF /* Cache Settings.swift in Sources */,
 				F3A1D2322A201C570053261E /* ServerState.swift in Sources */,
@@ -5378,10 +5378,10 @@
 				F37A36762A35173F00517EFC /* Console View.swift in Sources */,
 				F3AF91CA2B4235BB001D8F80 /* SSH Card.swift in Sources */,
 				F3CCB1CE2CAE75D0000F8207 /* Debug Settings.swift in Sources */,
-				F353B0552D8AA73C00E4EC07 /* Map Section.swift in Sources */,
+				F353B0552D8AA73C00E4EC07 /* MapSection.swift in Sources */,
 				F30089292B3C23A00051476C /* Contact Picker.swift in Sources */,
 				F36D53302A05B896007324C6 /* Section Header.swift in Sources */,
-				F325F7012A54BBCF00E89EC4 /* Info Tab Allocations.swift in Sources */,
+				F325F7012A54BBCF00E89EC4 /* InfoTabAllocations.swift in Sources */,
 				F39626F32A7AD64B0057E356 /* Ansi.swift in Sources */,
 				F3AB4A7E2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
 				F3EE9F762D85CAB9000120A7 /* Dismiss Button.swift in Sources */,
@@ -5430,15 +5430,15 @@
 				F38F9E2D2CEB39D80033EFE3 /* Metadata List.swift in Sources */,
 				F3D037012CECE08600C4E1AC /* ImagePlayground Toolbar Button.swift in Sources */,
 				F3E679B12D5A854700A7ADDE /* Server Options Provider.swift in Sources */,
-				F3E0B4932DC30347003C8B27 /* Info Tab Logs.swift in Sources */,
-				F36D531F2A05B82B007324C6 /* Info Tab.swift in Sources */,
+				F3E0B4932DC30347003C8B27 /* InfoTabLogs.swift in Sources */,
+				F36D531F2A05B82B007324C6 /* InfoTab.swift in Sources */,
 				F36D530E2A05B6CE007324C6 /* PlanView.swift in Sources */,
 				F39872112A1AE3CE0022B00E /* Video Player.swift in Sources */,
 				F36D53182A05B7F3007324C6 /* Panel View.swift in Sources */,
 				F3D264452A66B3A6005C3777 /* QR Code View.swift in Sources */,
 				F3CE5C4D2D5395300094BD7B /* Subdomain Card.swift in Sources */,
 				F36D53372A05B8BF007324C6 /* Backup List Footer.swift in Sources */,
-				F30207D52D8B2A6000C26008 /* Swifty Ping.swift in Sources */,
+				F30207D52D8B2A6000C26008 /* SwiftyPing.swift in Sources */,
 				F325E2CD2E5E6CE50008928E /* Sheet Create Allocation Card.swift in Sources */,
 				F337D75A2A4DBC840011524E /* Create Apikey.swift in Sources */,
 				F32FD71F2B1E060400723B88 /* Network Calls.swift in Sources */,
@@ -5459,7 +5459,7 @@
 				F3E98C032E6A5F4C0019439F /* ServerCardLayout.swift in Sources */,
 				F3116F272A33E142001F067C /* Folder File.swift in Sources */,
 				F353D5052D98427500EC9F3A /* Panel Toolbar.swift in Sources */,
-				F3E0B4902DC3033A003C8B27 /* Info Tab Users.swift in Sources */,
+				F3E0B4902DC3033A003C8B27 /* InfoTabUsers.swift in Sources */,
 				F31C8D852E70E79D00D16B08 /* PlanViewList.swift in Sources */,
 				F389BB742A05B61F00911EBF /* Credentials VM.swift in Sources */,
 				F3015DE62D9F27E800B9BCC6 /* LogCardImage.swift in Sources */,
