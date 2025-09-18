@@ -39,67 +39,51 @@ struct PanelView: View {
         VStack {
             if let server = vm.server {
                 TabView(selection: $tabPanel) {
-                    InfoTab(server)
-                        .environment(vm)
-                        .tag(PanelTab.info)
-                        .tabItem {
-                            Label("Info", systemImage: "info.circle")
+                    Tab("Info", systemImage: "info.circle", value: PanelTab.info) {
+                        InfoTab(server)
+                            .environment(vm)
+                    }
+                    
+                    Tab("Console", systemImage: "apple.terminal", value: PanelTab.console) {
+                        Console(id)
+                            .environment(vm)
+                    }
+                    
+                    Tab("Files", systemImage: "folder", value: PanelTab.files) {
+                        FileList(id)
+                            .environmentObject(fileVM)
+                    }
+                    
+                    Tab("Backups", systemImage: "archivebox", value: PanelTab.backups) {
+                        List {
+                            BackupList(server)
                         }
+                        .environment(backupVM)
+                    }
                     
-                    Console(id)
-                        .environment(vm)
-                        .tag(PanelTab.console)
-                        .tabItem {
-                            Label("Console", systemImage: "apple.terminal")
+                    Tab("Databases", systemImage: "externaldrive.badge.icloud", value: PanelTab.databases) {
+                        List {
+                            DatabaseList(server.featureLimits.databases)
                         }
+                        .environment(dbVM)
+                    }
                     
-                    FileList(id)
-                        .environmentObject(fileVM)
-                        .tag(PanelTab.files)
-                        .tabItem {
-                            Label("Files", systemImage: "folder")
+                    Tab("Schedules", systemImage: "calendar", value: PanelTab.schedules) {
+                        List {
+                            ScheduleList()
                         }
-                    
-                    List {
-                        BackupList(server)
-                    }
-                    .environment(backupVM)
-                    .tag(PanelTab.backups)
-                    .tabItem {
-                        Label("Backups", systemImage: "archivebox")
+                        .environment(scheduleVM)
                     }
                     
-                    List {
-                        DatabaseList(server.featureLimits.databases)
-                    }
-                    .environment(dbVM)
-                    .tag(PanelTab.databases)
-                    .tabItem {
-                        Label("Databases", systemImage: "externaldrive.badge.icloud")
+                    Tab("Users", systemImage: "person.3", value: PanelTab.users) {
+                        UserList()
+                            .environment(userVM)
                     }
                     
-                    List {
-                        ScheduleList()
+                    Tab("Subdomains", systemImage: "globe", value: PanelTab.subdomains) {
+                        SubdomainList(allocations)
+                            .environment(subdomainVM)
                     }
-                    .environment(scheduleVM)
-                    .tag(PanelTab.schedules)
-                    .tabItem {
-                        Label("Schedules", systemImage: "calendar")
-                    }
-                    
-                    UserList()
-                        .environment(userVM)
-                        .tag(PanelTab.users)
-                        .tabItem {
-                            Label("Users", systemImage: "person.3")
-                        }
-                    
-                    SubdomainList(allocations)
-                        .environment(subdomainVM)
-                        .tag(PanelTab.subdomains)
-                        .tabItem {
-                            Label("Subdomains", systemImage: "globe")
-                        }
                 }
             }
         }
