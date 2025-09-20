@@ -1,14 +1,17 @@
 import SwiftUI
+import PteroNet
 import MapKit
 import SafariCover
 
 struct MapSection: View {
     private let address: String?
     private let node: String
+    private let allocations: [AllocationAttributes]
     
-    init(_ address: String?, node: String) {
+    init(_ address: String?, node: String, allocations: [Allocation]) {
         self.address = address
         self.node = node
+        self.allocations = allocations.map(\.attributes)
     }
     
     private let timer = Timer.publish(
@@ -21,18 +24,16 @@ struct MapSection: View {
     
     @State private var cameraPosition: MapCameraPosition = .region(
         .init(
-            center: .init(
-                latitude: 50.11056,
-                longitude: 8.68017
-            ),
+            center: .init(latitude: 50.11056, longitude: 8.68017),
             latitudinalMeters: 12000,
             longitudinalMeters: 12000
         )
     )
     
     private var isMoscow: Bool {
-        ["Fabric", "Forge", "Fusion"]
-            .contains(node)
+        allocations.contains {
+            $0.ipAlias?.contains("5.231.75") == true
+        }
     }
     
     private var mapUrl: String {
@@ -154,6 +155,6 @@ struct MapSection: View {
     }
 }
 
-#Preview {
-    MapSection(nil, node: "Fabric")
-}
+//#Preview {
+//    MapSection(nil, node: "Fabric")
+//}
