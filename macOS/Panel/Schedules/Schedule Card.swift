@@ -16,6 +16,6 @@ struct ScheduleCard: View {
 }
 
 //#Preview {
-//    ScheduleCard(sampleJSON(.))
+//    ScheduleCard(PreviewProp.scheduleAttributes)
 //        .environment(ScheduleVM(""))
 //}

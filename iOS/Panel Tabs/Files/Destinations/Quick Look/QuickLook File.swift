@@ -14,7 +14,7 @@ struct QuickLookFile: View {
         self.id = id
         self.path = path
         self.name = name
-        self.vm = QuickLookFileVM(id)
+        vm = QuickLookFileVM(id)
     }
     
     @State private var sheetMetadata = false

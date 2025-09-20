@@ -10,7 +10,6 @@ struct PlanViewTopbar: View {
                     .tag($0)
             }
         }
-        .padding(.horizontal)
         .pickerStyle(.segmented)
     }
 }

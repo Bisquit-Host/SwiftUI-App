@@ -8,8 +8,8 @@ struct PanelView: View {
     
     init(_ id: String) {
         self.id = id
-        self.vm = PanelVM(id)
-        self.fileVM = FileTabVM(id)
+        vm = PanelVM(id)
+        fileVM = FileTabVM(id)
     }
     
     @AppStorage("panelTab") private var tab: PanelTab = .info

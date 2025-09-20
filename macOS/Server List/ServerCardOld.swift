@@ -1,7 +1,7 @@
 import SwiftUI
 import PteroNet
 
-struct ServerCard: View {
+struct ServerCardOld: View {
     @Environment(ServerListVM.self) private var vm
     
     private let server: ServerAttributes
@@ -46,6 +46,6 @@ struct ServerCard: View {
 }
 
 #Preview {
-    ServerCard(PreviewProp.serverAttributes)
+    ServerCardOld(PreviewProp.serverAttributes)
         .environment(ServerListVM())
 }

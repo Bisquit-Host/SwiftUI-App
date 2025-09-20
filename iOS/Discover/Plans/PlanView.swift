@@ -11,6 +11,7 @@ struct PlanView: View {
             PlanViewList()
         }
         .navigationTitle("Configurations")
+        .scenePadding(.horizontal)
         .toolbarTitleDisplayMode(.inline)
         .environment(vm)
         .animation(.default, value: store.selectedPlanCategory)

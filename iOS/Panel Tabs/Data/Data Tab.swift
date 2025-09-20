@@ -100,7 +100,7 @@ fileprivate extension DataTab {
 }
 
 #Preview {
-    DataTab(sampleJSON(.serverListAttributes))
+    DataTab(PreviewProp.serverAttributes)
         .environment(BackupVM(""))
         .environment(DatabaseVM(""))
         .environment(ScheduleVM(""))

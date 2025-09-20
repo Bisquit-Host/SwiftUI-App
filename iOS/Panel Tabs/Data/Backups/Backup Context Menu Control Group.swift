@@ -23,13 +23,13 @@ struct BackupContextMenuControlGroup: View {
         if backup.isLocked {
             Button("Unlock", systemImage: "lock.open") {
                 Task {
-                    await vm.lockBackup(uuid)
+                    await vm.toggleBackupLock(uuid)
                 }
             }
         } else {
             Button("Lock", systemImage: "lock") {
                 Task {
-                    await vm.lockBackup(uuid)
+                    await vm.toggleBackupLock(uuid)
                 }
             }
         }

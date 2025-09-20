@@ -9,7 +9,7 @@ struct PanelSettingsView: View {
     
     init(_ server: ServerAttributes) {
         self.server = server
-        self.vm = ServerSettingsVM(server.id)
+        vm = ServerSettingsVM(server.id)
     }
     
     @State private var alertReinstall = false
@@ -85,7 +85,7 @@ struct PanelSettingsView: View {
 
 #Preview {
     NavigationStack {
-        PanelSettingsView(sampleJSON(.serverListAttributes))
+        PanelSettingsView(PreviewProp.serverAttributes)
     }
     .environment(PanelVM(""))
 }

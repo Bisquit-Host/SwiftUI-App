@@ -74,7 +74,7 @@ struct FileCard: View {
 
 #Preview {
     List {
-        FileCard("", file: sampleJSON(.fileListAttributes), at: "")
+        FileCard("", file: PreviewProp.fileAttributes, at: "")
     }
     .environment(NavState())
     .environmentObject(FileTabVM(""))

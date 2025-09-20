@@ -13,7 +13,7 @@ struct AudioPlayerView: View {
         self.id = id
         self.path = path
         self.name = name
-        self.vm = AudioPlayerVM(id)
+        vm = AudioPlayerVM(id)
     }
     
     var body: some View {

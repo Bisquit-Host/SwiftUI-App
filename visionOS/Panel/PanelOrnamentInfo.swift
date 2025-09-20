@@ -145,27 +145,17 @@ struct PanelOrnamentInfo: View {
                 }
             }
             
-            //            if isHovered {
             if showCustomizeButton {
 #warning("image")
                 Button("Customize", systemImage: "") {
                     sheetOrnamentinfo = true
                 }
             }
-            //            }
         }
         .sheet($sheetOrnamentinfo) {
             OrnamentInfoSettings(server)
                 .frame(width: 800, height: 600)
         }
-        //        .hoverEffect()
-        //        .onHover { hovering in
-        //            print("onHover", hovering)
-        //
-        //            withAnimation {
-        //                isHovered = hovering
-        //            }
-        //        }
         .frame(width: 250)
         .padding()
         .glassBackgroundEffect(in: .rect(cornerRadius: 32))

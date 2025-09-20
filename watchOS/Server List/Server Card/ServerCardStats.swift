@@ -39,6 +39,6 @@ struct ServerCardStats: View {
 }
 
 #Preview {
-    ServerCardStats(sampleJSON(.serverLimits))
+    ServerCardStats(PreviewProp.serverAttributes.limits)
         .environment(ServerCardVM(""))
 }

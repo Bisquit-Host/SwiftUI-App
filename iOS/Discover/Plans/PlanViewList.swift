@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct PlanViewList: View {
+    @Environment(PlanListVM.self) private var vm: PlanListVM
     @EnvironmentObject private var store: ValueStore
     
     var body: some View {
@@ -10,13 +11,13 @@ struct PlanViewList: View {
                 PlanListGame()
                 
             case .cloud:
-                PlanListCloud()
+                UniversalPlanList(vm.cloudPlans)
                 
             case .web:
-                PlanListWeb()
+                UniversalPlanList(vm.webPlans)
                 
             case .bot:
-                PlanListBot()
+                UniversalPlanList(vm.botPlans)
             }
         }
     }
@@ -24,5 +25,6 @@ struct PlanViewList: View {
 
 #Preview {
     PlanViewList()
+        .environment(PlanListVM())
         .environmentObject(ValueStore())
 }

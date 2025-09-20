@@ -10,7 +10,7 @@ struct StartupCard: View {
     init(_ server: ServerAttributes, variable: StartupVariable) {
         self.server = server
         self.variable = variable
-        self.vm = StartupVM(server.id)
+        vm = StartupVM(server.id)
         value = variable.serverValue ?? ""
     }
     
@@ -68,7 +68,7 @@ struct StartupCard: View {
 //#Preview {
 //    List {
 //        StartupCard(
-//            sampleJSON(.serverListAttributes),
+//            PreviewProp.serverAttibutes,
 //            variable: StartupVariable(
 //                name: "Variable Name",
 //                description: "Some variable does something",

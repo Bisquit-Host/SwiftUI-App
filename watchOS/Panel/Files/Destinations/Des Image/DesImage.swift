@@ -10,7 +10,7 @@ struct ImageFile: View {
         self.id = id
         self.path = path
         self.name = name
-        self.vm = ImageFileVM(id)
+        vm = ImageFileVM(id)
     }
     
     var body: some View {

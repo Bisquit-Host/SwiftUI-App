@@ -8,7 +8,7 @@ struct ServerCard: View {
     
     init(_ server: ServerAttributes) {
         self.server = server
-        self.vm = ServerCardVM(server.id)
+        vm = ServerCardVM(server.id)
     }
     
     var body: some View {
@@ -33,5 +33,5 @@ struct ServerCard: View {
 }
 
 #Preview {
-    ServerCard(sampleJSON(.serverListAttributes))
+    ServerCard(PreviewProp.serverAttributes)
 }

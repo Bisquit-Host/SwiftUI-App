@@ -32,5 +32,5 @@ struct FileNameAndIcon: View {
 }
 
 #Preview {
-    FileNameAndIcon(sampleJSON(.fileListAttributes))
+    FileNameAndIcon(PreviewProp.fileAttributes)
 }

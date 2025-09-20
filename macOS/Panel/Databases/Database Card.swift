@@ -52,6 +52,6 @@ struct DatabaseCard: View {
 }
 
 #Preview {
-    DatabaseCard(sampleJSON(.databaseAttributes))
+    DatabaseCard(PreviewProp.databaseAttributes)
         .environment(DatabaseVM(""))
 }

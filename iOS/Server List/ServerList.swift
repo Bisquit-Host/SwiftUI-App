@@ -44,13 +44,6 @@ struct ServerList: View {
                 Discover()
             }
         }
-        .sheet($vm.sheetKeyStorage) {
-            CloudKeys($vm.apiKey) {
-                Task {
-                    await vm.fetchServers(store.adminServerList)
-                }
-            }
-        }
         .onGamepadPressed(.menu, cooldown: 1) {
             if !vm.sheetDiscover {
                 nav.navigate(.toSettings)

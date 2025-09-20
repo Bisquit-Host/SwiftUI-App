@@ -88,9 +88,7 @@ struct DatabaseCard: View {
 
 #Preview {
     List {
-        DatabaseCard(
-            sampleJSON(.databaseAttributes)
-        )
+        DatabaseCard(PreviewProp.databaseAttributes)
     }
     .environment(DatabaseVM(""))
 }

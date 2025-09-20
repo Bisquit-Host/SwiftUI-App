@@ -1,5 +1,5 @@
 {
-  "originHash" : "7f26f923d2b960ba32e58a1a98565e34a13fc2010b08f4d6c6bcbc07ee16de1b",
+  "originHash" : "f54d3055eaff4c1329f4f9e2198134cf74ecb71fd5e000feae11d089d43b20d0",
   "pins" : [
     {
       "identity" : "alertkit",
@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/devicekit/DeviceKit",
       "state" : {
-        "revision" : "513b9d7e7a1bd46504a1009bbab943b75ce2f195",
-        "version" : "5.6.0"
+        "revision" : "581df61650bc457ec00373a592a84be3e7468eb1",
+        "version" : "5.7.0"
       }
     },
     {
@@ -85,10 +85,10 @@
     {
       "identity" : "pteronet",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/TopScrech/PteroNet",
+      "location" : "https://github.com/Bisquit-Host/PteroNet",
       "state" : {
         "branch" : "main",
-        "revision" : "134829ded69d04b930738b29f3a1bc21133ea380"
+        "revision" : "f046b00740d8cb25a362d9b4bb1e801806c40d0a"
       }
     },
     {

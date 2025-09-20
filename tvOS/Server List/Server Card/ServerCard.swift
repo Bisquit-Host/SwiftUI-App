@@ -10,7 +10,7 @@ struct ServerCard: View {
     
     init(_ server: ServerAttributes) {
         self.server = server
-        self.vm = ServerCardVM(server.id)
+        vm = ServerCardVM(server.id)
     }
     
     private var limits: ServerLimits {
@@ -53,6 +53,6 @@ struct ServerCard: View {
 }
 
 #Preview {
-    ServerCard(sampleJSON(.serverListAttributes))
+    ServerCard(PreviewProp.serverAttributes)
         .environmentObject(ValueStore())
 }

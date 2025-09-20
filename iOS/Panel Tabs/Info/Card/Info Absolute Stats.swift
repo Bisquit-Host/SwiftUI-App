@@ -100,6 +100,6 @@ struct InfoAbsoluteStats: View {
 }
 
 #Preview {
-    InfoAbsoluteStats(sampleJSON(.serverListAttributes))
+    InfoAbsoluteStats(PreviewProp.serverAttributes.limits)
         .environment(PanelVM(""))
 }

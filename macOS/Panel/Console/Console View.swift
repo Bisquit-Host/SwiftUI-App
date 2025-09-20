@@ -8,7 +8,7 @@ struct ConsoleView: View {
     
     init(_ id: String) {
         self.id = id
-        self.vm = ConsoleVM(id)
+        vm = ConsoleVM(id)
     }
     
     @State private var lastMessageIndex = 0

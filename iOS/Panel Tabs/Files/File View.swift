@@ -83,7 +83,7 @@ struct FileView: View {
 
 #Preview {
     List {
-        FileView("", file: sampleJSON(.fileListAttributes), at: "")
+        FileView("", file: PreviewProp.fileAttributes, at: "")
     }
     .environment(NavState())
     .environmentObject(FileTabVM(""))

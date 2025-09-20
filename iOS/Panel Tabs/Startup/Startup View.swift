@@ -50,7 +50,7 @@ struct StartupView: View {
 }
 
 #Preview {
-    StartupView(sampleJSON(.serverListAttributes))
+    StartupView(PreviewProp.serverAttributes)
         .environment(ServerSettingsVM(""))
         .environmentObject(ValueStore())
 }

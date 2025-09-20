@@ -45,9 +45,6 @@ struct ServerList: View {
                 AppSettings()
             }
         }
-        .sheet($vm.sheetKeyStorage) {
-            CloudKeys($vm.apiKey)
-        }
         .sheet($vm.sheetDiscover) {
             Discover()
         }
@@ -57,26 +54,8 @@ struct ServerList: View {
                     vm.sheetDiscover = true
                 }
                 
-                Menu {
-                    Button("Switch account", systemImage: "arrow.trianglehead.2.clockwise.rotate.90") {
-                        vm.sheetKeyStorage = true
-                    }
-                    
-                    Button("Settings", systemImage: "gear") {
-                        sheetSettings = true
-                    }
-                    
-                    Divider()
-                    
-                    Button("Log out", systemImage: "rectangle.portrait.and.arrow.right", role: .destructive) {
-                        main {
-                            navState.clear()
-                            store.isApiKeyValid = false
-                            Keychain.delete(key: "selectedApiKey")
-                        }
-                    }
-                } label: {
-                    Image(systemName: "gear")
+                Button("Settings", systemImage: "gear") {
+                    sheetSettings = true
                 }
             }
         }

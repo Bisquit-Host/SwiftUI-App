@@ -16,9 +16,7 @@ struct BisquitHostApp: App {
     private let container: ModelContainer
     
     init() {
-        let schema = Schema([
-            APIKey.self
-        ])
+        let schema = Schema([APIKey.self])
         
         do {
             container = try ModelContainer(for: schema)
@@ -46,8 +44,8 @@ struct BisquitHostApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
-            // AppContainer()
+            //            ContentView()
+            DashboardShell()
                 .onContinueUserActivity(CSSearchableItemActionType, perform: handleSpotlightActivity)
         }
         .environment(nav)
@@ -55,9 +53,9 @@ struct BisquitHostApp: App {
         .environmentObject(store)
         .modelContainer(container)
         .defaultAppStorage(.init(suiteName: "group.Bisquit-host")!)
-//#if os(macOS)
-//        .windowStyle(.hiddenTitleBar)
-//#endif
+        //#if os(macOS)
+        //        .windowStyle(.hiddenTitleBar)
+        //#endif
         
 #if os(macOS)
         Settings {

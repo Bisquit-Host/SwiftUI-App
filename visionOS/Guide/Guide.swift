@@ -10,8 +10,10 @@ struct Guide: View {
     var body: some View {
         GeometryReader { geo in
             TabView {
-                ForEach(steps) {
-                    GuideStepCard($0, geo: geo)
+                ForEach(steps) { step in
+                    Tab("Step", systemImage: "\(step.id).circle") {
+                        GuideStepCard(step, geo: geo)
+                    }
                 }
             }
         }

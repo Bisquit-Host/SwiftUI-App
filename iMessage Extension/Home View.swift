@@ -11,7 +11,7 @@ struct HomeView: View {
     
     init(_ vc: Binding<MessagesViewController?>) {
         _vc = vc
-        self.vm = .init(vc.wrappedValue)
+        vm = MessagesVM(vc.wrappedValue)
     }
     
     var body: some View {

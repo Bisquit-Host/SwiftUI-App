@@ -13,7 +13,7 @@ struct VideoFile: View {
         self.id = id
         self.name = name
         self.path = path
-        self.vm = VideoFileVM(id, root: path, name: name)
+        vm = VideoFileVM(id, root: path, name: name)
     }
     
     var body: some View {

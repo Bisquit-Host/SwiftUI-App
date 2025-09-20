@@ -17,7 +17,7 @@ struct SettingsButton: View {
             }
 #warning("iMessage: Settings and API-keys")
             //            Button("API-keys", systemImage: "key") {
-            //                vm.sheetKeyStorage = true
+            //                sheetKeyStorage = true
             //            }
             //
             //            Button("Settings", systemImage: "gear") {

@@ -31,17 +31,18 @@ struct ServerCardParent: View {
             }
             .foregroundStyle(.foreground)
         }
+        .buttonStyle(.plain)
         .hoverEffect()
         .safariCover($showSafari, url: serverUrl)
-        .contextMenu {
-            ServerCardContextMenu(server, $showSafari, $confirmKill)
-        }
         .confirmationDialog("Perform kill action", isPresented: $confirmKill, titleVisibility: .visible) {
             Button("Kill", role: .destructive) {
                 Task {
                     await PteroNet.powerSignal(server.id, do: .kill)
                 }
             }
+        }
+        .contextMenu {
+            ServerCardContextMenu(server, $showSafari, $confirmKill)
         }
         .onDrag {
             let url = URL(string: serverUrl)
@@ -56,7 +57,7 @@ struct ServerCardParent: View {
 }
 
 #Preview {
-    ServerCardParent(sampleJSON(.serverListAttributes))
+    ServerCardParent(PreviewProp.serverAttributes)
         .environment(NavState())
         .environmentObject(ValueStore())
 }

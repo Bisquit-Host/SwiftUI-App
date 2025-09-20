@@ -71,6 +71,6 @@ struct LogCard: View {
 
 #Preview {
     List {
-        LogCard(sampleJSON(.logAttributes))
+        LogCard(PreviewProp.logAttributes)
     }
 }

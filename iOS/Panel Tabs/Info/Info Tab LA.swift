@@ -82,5 +82,5 @@ struct InfoTabLA: View {
 }
 
 #Preview {
-    InfoTabLA(sampleJSON(.serverListAttributes))
+    InfoTabLA(PreviewProp.serverAttributes)
 }

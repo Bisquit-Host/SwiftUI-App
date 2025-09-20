@@ -44,5 +44,5 @@ struct FileView: View {
 }
 
 #Preview {
-    FileView("", file: sampleJSON(.fileListAttributes))
+    FileView("", file: PreviewProp.fileAttributes)
 }

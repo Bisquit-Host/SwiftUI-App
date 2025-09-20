@@ -18,7 +18,7 @@ struct ServerList: View {
         VStack(alignment: .leading) {
             ScrollView(showsIndicators: false) {
                 ForEach(vm.filteredServers) {
-                    ServerCard($0)
+                    ServerCardOld($0)
                         .id($0.id)
                 }
             }

@@ -63,7 +63,7 @@ struct LogMetaView: View {
     NavigationStack {
         Text("Preview")
             .sheet {
-                LogMetaView(sampleJSON(.logAttributes))
+                LogMetaView([:])
             }
     }
 }

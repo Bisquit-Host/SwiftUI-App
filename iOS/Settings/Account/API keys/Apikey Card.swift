@@ -55,7 +55,7 @@ struct ApikeyCard: View {
 
 #Preview {
     List {
-        ApikeyCard(sampleJSON(.apiKeyListAttributes))
+        ApikeyCard(PreviewProp.apiKeyListData)
     }
     .environment(ApikeyVM())
 }

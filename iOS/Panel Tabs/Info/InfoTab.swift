@@ -52,7 +52,7 @@ struct InfoTab: View {
                             .environment(subdomainVM)
                         
                     case "Location":
-                        MapSection(ip, node: server.node)
+                        MapSection(ip, node: server.node, allocations: server.relationships.allocations.data)
                         
                     default:
                         EmptyView()

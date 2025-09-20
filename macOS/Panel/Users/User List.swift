@@ -1,13 +1,12 @@
 import SwiftUI
 
 struct UserList: View {
-    @State private var vm: UsersVM
+    @Environment(UsersVM.self) private var vm
     
     private let id: String
     
     init(_ id: String) {
         self.id = id
-        self.vm = UsersVM(id)
     }
     
     var body: some View {
@@ -18,9 +17,8 @@ struct UserList: View {
                 }
             }
         }
-        .animation(.default, value: vm.users.indices)
-        .environment(vm)
         .navigationTitle("Users")
+        .animation(.default, value: vm.users.indices)
         .padding()
         .background(.clear)
         .clipShape(.rect(cornerRadius: 16))
@@ -36,12 +34,6 @@ struct UserList: View {
             await usersTask.value
             await permissionsTask.value
         }
-        .onChange(of: id) {
-            Task {
-                await vm.fetchUsers()
-                await vm.fetchPermissions()
-            }
-        }
     }
 }
 
@@ -49,4 +41,5 @@ struct UserList: View {
     NavigationStack {
         UserList("")
     }
+    .environment(UsersVM(""))
 }

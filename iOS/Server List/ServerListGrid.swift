@@ -31,11 +31,13 @@ struct ServerListGrid: View {
                 }
             }
         }
-        .scenePadding()
+#if !os(macOS)
+        .scenePadding([.horizontal, .bottom])
+#endif
     }
 }
 
 #Preview {
-    ServerListGrid(sampleJSON(.serverListDataArray))
+    ServerListGrid([PreviewProp.serverAttributes])
         .environmentObject(ValueStore())
 }

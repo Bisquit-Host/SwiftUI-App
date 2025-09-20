@@ -108,7 +108,7 @@ struct FileView: View {
 }
 
 #Preview {
-    FileView("", at: "", file: sampleJSON(.fileListAttributes))
+    FileView("", at: "", file: PreviewProp.fileAttributes)
         .environmentObject(FileTabVM(""))
         .padding()
 }

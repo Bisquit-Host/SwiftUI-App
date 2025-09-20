@@ -45,7 +45,7 @@ final class BackupVM {
         }
     }
     
-    func lockBackup(_ uuid: String) async {
+    func toggleBackupLock(_ uuid: String) async {
         do {
             let backup = try await backupLockAPI(id, uuid: uuid)
             

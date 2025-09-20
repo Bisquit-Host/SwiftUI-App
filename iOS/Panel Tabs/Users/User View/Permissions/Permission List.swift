@@ -146,7 +146,7 @@ struct PermissionCard: View {
 }
 
 #Preview {
-    @Previewable @State var user: UserAttributes = sampleJSON(.userAttributes)
+    @Previewable @State var user: UserAttributes = PreviewProp.userAttributes
     
     PermissionList($user)
         .environment(UsersVM(""))

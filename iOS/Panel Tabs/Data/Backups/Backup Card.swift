@@ -78,7 +78,7 @@ struct BackupCard: View {
             
             Button {
                 Task {
-                    await vm.lockBackup(backup.uuid)
+                    await vm.toggleBackupLock(backup.uuid)
                 }
             } label: {
                 Image(systemName: backup.isLocked ? "lock.open" : "lock")
@@ -96,7 +96,7 @@ struct BackupCard: View {
 
 #Preview {
     List {
-        BackupCard("", sampleJSON(.backupAttributes))
+        BackupCard("", PreviewProp.backupAttributes)
     }
     .environment(BackupVM(""))
 }

@@ -9,7 +9,7 @@ struct ServerCard: View {
     
     init(_ server: ServerAttributes) {
         self.server = server
-        self.vm = .init(server.id)
+        vm = ServerCardVM(server.id)
     }
     
     private var isSuspended: Bool {
@@ -78,7 +78,9 @@ struct ServerCard: View {
             }
         }
         .padding(20)
+#if !os(visionOS)
         .glassEffect(in: .rect(cornerRadius: 16))
+#endif
         .task {
             await vm.fetchServerUsage()
         }
