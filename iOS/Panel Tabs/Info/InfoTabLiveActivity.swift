@@ -1,7 +1,7 @@
 import ScrechKit
 import PteroNet
 
-struct InfoTabLA: View {
+struct InfoTabLiveActivity: View {
     @State private var la = LiveActivity()
     
     private let server: ServerAttributes
@@ -82,5 +82,5 @@ struct InfoTabLA: View {
 }
 
 #Preview {
-    InfoTabLA(PreviewProp.serverAttributes)
+    InfoTabLiveActivity(PreviewProp.serverAttributes)
 }
