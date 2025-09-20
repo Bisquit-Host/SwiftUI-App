@@ -1,7 +1,7 @@
 import SwiftUI
 import Kingfisher
 
-struct InfoTabButtonsUserImg: View {
+struct InfoTabUserAvatar: View {
     private let img: String
     
     init(_ img: String) {

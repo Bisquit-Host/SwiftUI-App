@@ -1013,8 +1013,8 @@
 		F3A49CC42D7A500C0067EEA8 /* Guide Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3499EF32A26DE92006101B7 /* Guide Model.swift */; };
 		F3A563212D9EEECB009AA363 /* Allow Drag.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A5631F2D9EEECB009AA363 /* Allow Drag.swift */; };
 		F3A563222D9EEECB009AA363 /* Allow Drag.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A5631F2D9EEECB009AA363 /* Allow Drag.swift */; };
-		F3A563242D9EF114009AA363 /* Info Tab Buttons User Img.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A563232D9EF114009AA363 /* Info Tab Buttons User Img.swift */; };
-		F3A563252D9EF114009AA363 /* Info Tab Buttons User Img.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A563232D9EF114009AA363 /* Info Tab Buttons User Img.swift */; };
+		F3A563242D9EF114009AA363 /* InfoTabUserAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A563232D9EF114009AA363 /* InfoTabUserAvatar.swift */; };
+		F3A563252D9EF114009AA363 /* InfoTabUserAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A563232D9EF114009AA363 /* InfoTabUserAvatar.swift */; };
 		F3A563282D9EF21B009AA363 /* LogMetaCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A563262D9EF21B009AA363 /* LogMetaCard.swift */; };
 		F3A563292D9EF21B009AA363 /* LogMetaCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A563262D9EF21B009AA363 /* LogMetaCard.swift */; };
 		F3A5632A2D9EF21B009AA363 /* LogMetaCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A563262D9EF21B009AA363 /* LogMetaCard.swift */; };
@@ -2036,7 +2036,7 @@
 		F3A31B082B0B161D00F89C51 /* CloudKeyCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKeyCard.swift; sourceTree = "<group>"; };
 		F3A391B929DB5E6900591C84 /* Cache Expiration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache Expiration.swift"; sourceTree = "<group>"; };
 		F3A5631F2D9EEECB009AA363 /* Allow Drag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allow Drag.swift"; sourceTree = "<group>"; };
-		F3A563232D9EF114009AA363 /* Info Tab Buttons User Img.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Info Tab Buttons User Img.swift"; sourceTree = "<group>"; };
+		F3A563232D9EF114009AA363 /* InfoTabUserAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTabUserAvatar.swift; sourceTree = "<group>"; };
 		F3A563262D9EF21B009AA363 /* LogMetaCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogMetaCard.swift; sourceTree = "<group>"; };
 		F3A5632E2D9EF323009AA363 /* LogToolbarActor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogToolbarActor.swift; sourceTree = "<group>"; };
 		F3A7BCC2296B2ABB00E080C1 /* StartPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPage.swift; sourceTree = "<group>"; };
@@ -2704,9 +2704,8 @@
 				F3E0B4922DC30347003C8B27 /* InfoTabLogs.swift */,
 				F3E0B4952DC30351003C8B27 /* InfoTabSubdomains.swift */,
 				F325F6FF2A54BBCF00E89EC4 /* InfoTabAllocations.swift */,
-				F3E0B48F2DC3033A003C8B27 /* InfoTabUsers.swift */,
+				F328BB4E2E7F67C30012F003 /* Users */,
 				F3B66DEF2D60B2B100F1841B /* Card */,
-				F3A563232D9EF114009AA363 /* Info Tab Buttons User Img.swift */,
 				F3B66DF32D60B46F00F1841B /* InfoTabLiveActivity.swift */,
 				F33712212DC2FD2A0014B427 /* Customization */,
 				F353B04E2D8AA6FB00E4EC07 /* Map */,
@@ -2867,6 +2866,15 @@
 				F3FA30942DD1708A00280133 /* File Card.swift */,
 			);
 			path = Files;
+			sourceTree = "<group>";
+		};
+		F328BB4E2E7F67C30012F003 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				F3E0B48F2DC3033A003C8B27 /* InfoTabUsers.swift */,
+				F3A563232D9EF114009AA363 /* InfoTabUserAvatar.swift */,
+			);
+			path = Users;
 			sourceTree = "<group>";
 		};
 		F32E88CB2AF83FCB00959D49 /* Toolbar */ = {
@@ -5061,7 +5069,7 @@
 				F374F7BF2D54922F006771DD /* Sheet Create Subdomain.swift in Sources */,
 				F3FA61572A1F928500A65AE1 /* File Search.swift in Sources */,
 				F3C9D85C2B31146E00265492 /* User Image.swift in Sources */,
-				F3A563242D9EF114009AA363 /* Info Tab Buttons User Img.swift in Sources */,
+				F3A563242D9EF114009AA363 /* InfoTabUserAvatar.swift in Sources */,
 				F3D807382DCD8F1600598908 /* Contact Access Picker.swift in Sources */,
 				F3924EE929A28D9D00C4CC77 /* Biometry Usage View.swift in Sources */,
 				F30207D62D8B2A6000C26008 /* SwiftyPing.swift in Sources */,
@@ -5466,7 +5474,7 @@
 				F333B3BD2B80CF760005B84D /* Preview Property.swift in Sources */,
 				F31F31F92D52BD940095DD19 /* System lowPowerMode.swift in Sources */,
 				F34851C12E72E11E0002C72E /* PlanCardLabelGame.swift in Sources */,
-				F3A563252D9EF114009AA363 /* Info Tab Buttons User Img.swift in Sources */,
+				F3A563252D9EF114009AA363 /* InfoTabUserAvatar.swift in Sources */,
 				F32E88D22AF8494100959D49 /* ServerListFilter.swift in Sources */,
 				F36D53342A05B8AF007324C6 /* File View.swift in Sources */,
 				F38FB0EA2DD2B16F00C8A19B /* Sheet Create Allocation.swift in Sources */,
