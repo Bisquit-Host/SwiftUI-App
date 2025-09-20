@@ -44,9 +44,7 @@ struct InfoRelativeStats: View {
                     .numericTransition()
                 
                 InfoStat("Processor", value: relativeCpu)
-                
                 InfoStat("Memory", value: relativeRam)
-                
                 InfoStat("Storage", value: relativeDisk)
             }
             .frame(maxWidth: .infinity)
