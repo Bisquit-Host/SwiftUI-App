@@ -14,7 +14,7 @@ final class TextFileVM {
     var showPrettyButton = false
     
     func makePretty() {
-        if let pretty = ScrechKit.prettyJSON(text) {
+        if let pretty = prettyJSON(text) {
             text = pretty
             showPrettyButton = false
         }
@@ -42,7 +42,7 @@ final class TextFileVM {
     }
     
     private func checkPrettiness() {
-        if let pretty = ScrechKit.prettyJSON(text), pretty != text {
+        if let pretty = prettyJSON(text), pretty != text {
             showPrettyButton = true
         }
     }
