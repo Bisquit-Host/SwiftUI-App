@@ -321,6 +321,8 @@
 		F3287A7A2B10A120001AFE54 /* Widget Live Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3287A732B109DD0001AFE54 /* Widget Live Activity.swift */; };
 		F3287A7B2B10A17E001AFE54 /* Widget Live Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3287A732B109DD0001AFE54 /* Widget Live Activity.swift */; };
 		F3287A7C2B10A17F001AFE54 /* Widget Live Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3287A732B109DD0001AFE54 /* Widget Live Activity.swift */; };
+		F328BB522E7FE00C0012F003 /* MapSectionNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328BB512E7FE00C0012F003 /* MapSectionNew.swift */; };
+		F328BB532E7FE00C0012F003 /* MapSectionNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328BB512E7FE00C0012F003 /* MapSectionNew.swift */; };
 		F328D8592A82402A0038512F /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = F328D8582A82402A0038512F /* Algorithms */; };
 		F328D85E2A8240930038512F /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = F328D85D2A8240930038512F /* Algorithms */; };
 		F328D8622A8242610038512F /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = F328D8612A8242610038512F /* Algorithms */; };
@@ -556,8 +558,6 @@
 		F353B0412D8A31BF00E4EC07 /* Account Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B0402D8A31BF00E4EC07 /* Account Parent.swift */; };
 		F353B0422D8A31BF00E4EC07 /* Account Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B0402D8A31BF00E4EC07 /* Account Parent.swift */; };
 		F353B0432D8A31BF00E4EC07 /* Account Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B0402D8A31BF00E4EC07 /* Account Parent.swift */; };
-		F353B0542D8AA73C00E4EC07 /* MapSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B0532D8AA73C00E4EC07 /* MapSection.swift */; };
-		F353B0552D8AA73C00E4EC07 /* MapSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B0532D8AA73C00E4EC07 /* MapSection.swift */; };
 		F353D4FD2D980A5000EC9F3A /* ServerListTips.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353D4FA2D980A5000EC9F3A /* ServerListTips.swift */; };
 		F353D4FE2D980A5000EC9F3A /* ServerListTips.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353D4FA2D980A5000EC9F3A /* ServerListTips.swift */; };
 		F353D5052D98427500EC9F3A /* Panel Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353D5032D98427500EC9F3A /* Panel Toolbar.swift */; };
@@ -1777,6 +1777,7 @@
 		F325F7052A54C4BC00E89EC4 /* System Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "System Alerts.swift"; sourceTree = "<group>"; };
 		F325F7082A54CB6600E89EC4 /* Carousel Button Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Carousel Button Style.swift"; sourceTree = "<group>"; };
 		F3287A732B109DD0001AFE54 /* Widget Live Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Widget Live Activity.swift"; sourceTree = "<group>"; };
+		F328BB512E7FE00C0012F003 /* MapSectionNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSectionNew.swift; sourceTree = "<group>"; };
 		F32CAAD82A28C4920019DEE3 /* FileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileView.swift; sourceTree = "<group>"; };
 		F32DB8A729AE6B800074E045 /* StartPageFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPageFooter.swift; sourceTree = "<group>"; };
 		F32E88C72AF83E3F00959D49 /* ServerListAdminButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListAdminButton.swift; sourceTree = "<group>"; };
@@ -1851,7 +1852,6 @@
 		F350636829DC24AB0010B717 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		F352AF962A4EDB1D004AD489 /* ServerListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListVM.swift; sourceTree = "<group>"; };
 		F353B0402D8A31BF00E4EC07 /* Account Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account Parent.swift"; sourceTree = "<group>"; };
-		F353B0532D8AA73C00E4EC07 /* MapSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSection.swift; sourceTree = "<group>"; };
 		F353D4FA2D980A5000EC9F3A /* ServerListTips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListTips.swift; sourceTree = "<group>"; };
 		F353D5032D98427500EC9F3A /* Panel Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Toolbar.swift"; sourceTree = "<group>"; };
 		F3553FB22B40653000EF0FD2 /* Panel Settings Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel Settings Parent.swift"; sourceTree = "<group>"; };
@@ -3031,8 +3031,8 @@
 		F353B04E2D8AA6FB00E4EC07 /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				F353B0532D8AA73C00E4EC07 /* MapSection.swift */,
 				F30207D42D8B2A6000C26008 /* SwiftyPing.swift */,
+				F328BB512E7FE00C0012F003 /* MapSectionNew.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -5175,9 +5175,9 @@
 				F3B66DF52D60B46F00F1841B /* InfoTabLiveActivity.swift in Sources */,
 				F3D264412A66ABBE005C3777 /* Account VM.swift in Sources */,
 				F39CF3582A50C00C0077996D /* User View.swift in Sources */,
+				F328BB522E7FE00C0012F003 /* MapSectionNew.swift in Sources */,
 				F37A366B2A35158A00517EFC /* Console View.swift in Sources */,
 				F39872102A1AE3CE0022B00E /* Video Player.swift in Sources */,
-				F353B0542D8AA73C00E4EC07 /* MapSection.swift in Sources */,
 				F31BA566295900300006D126 /* Nav State.swift in Sources */,
 				F3BC03C62B20675E0011F98A /* New Schedule Sheet.swift in Sources */,
 				F3DDD59C2A62AC7C009FDFBF /* Create Backup Button.swift in Sources */,
@@ -5386,7 +5386,6 @@
 				F37A36762A35173F00517EFC /* Console View.swift in Sources */,
 				F3AF91CA2B4235BB001D8F80 /* SSH Card.swift in Sources */,
 				F3CCB1CE2CAE75D0000F8207 /* Debug Settings.swift in Sources */,
-				F353B0552D8AA73C00E4EC07 /* MapSection.swift in Sources */,
 				F30089292B3C23A00051476C /* Contact Picker.swift in Sources */,
 				F36D53302A05B896007324C6 /* Section Header.swift in Sources */,
 				F325F7012A54BBCF00E89EC4 /* InfoTabAllocations.swift in Sources */,
@@ -5408,6 +5407,7 @@
 				F389BB652A05B5AF00911EBF /* Formatters.swift in Sources */,
 				F34851882E72D4A80002C72E /* PlanCardName.swift in Sources */,
 				F35C4D612E03999B00720E74 /* Multipart Form Data.swift in Sources */,
+				F328BB532E7FE00C0012F003 /* MapSectionNew.swift in Sources */,
 				F3A31B062B0B144200F89C51 /* ServerListNodeFilter.swift in Sources */,
 				F3015DEF2D9F427700B9BCC6 /* LogListFilter.swift in Sources */,
 				F36D53442A05B90D007324C6 /* FileTab Context Menu.swift in Sources */,

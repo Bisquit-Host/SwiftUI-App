@@ -17,6 +17,7 @@ struct MapSection: View {
     private let timer = Timer.publish(every: 1, on: .main, in: .default).autoconnect()
     
     @State private var ping: Int?
+    @State private var pings: [Int] = []
     
     @State private var cameraPosition: MapCameraPosition = .region(
         .init(
@@ -117,8 +118,13 @@ struct MapSection: View {
         tcpPing(host: address, port: 22) { result in
             switch result {
             case .success(let pingDuration):
-                self.ping = Int(round(pingDuration * 1000))
+                let ping = Int(round(pingDuration * 1000))
+                pings.append(ping)
                 
+                if pings.count > 1 {
+                    self.ping = pings.min()
+                    pings = []
+                }
             default:
                 break
             }
