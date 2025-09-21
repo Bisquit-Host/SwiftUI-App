@@ -2704,9 +2704,9 @@
 				F3E0B4922DC30347003C8B27 /* InfoTabLogs.swift */,
 				F3E0B4952DC30351003C8B27 /* InfoTabSubdomains.swift */,
 				F325F6FF2A54BBCF00E89EC4 /* InfoTabAllocations.swift */,
+				F3B66DF32D60B46F00F1841B /* InfoTabLiveActivity.swift */,
 				F328BB4E2E7F67C30012F003 /* Users */,
 				F3B66DEF2D60B2B100F1841B /* Resources */,
-				F3B66DF32D60B46F00F1841B /* InfoTabLiveActivity.swift */,
 				F33712212DC2FD2A0014B427 /* Customization */,
 				F353B04E2D8AA6FB00E4EC07 /* Map */,
 			);
