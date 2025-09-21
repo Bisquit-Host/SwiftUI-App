@@ -23,10 +23,7 @@ final class SensitivityAnalyzer {
     ) async {
         do {
             let handler = analyzer.videoAnalysis(forFileAt: url)
-            
-            completion(
-                try await handler.hasSensitiveContent().isSensitive
-            )
+            completion(try await handler.hasSensitiveContent().isSensitive)
         } catch {
             print(error.localizedDescription)
         }
