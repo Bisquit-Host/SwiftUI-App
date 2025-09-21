@@ -1,12 +1,13 @@
 import SwiftUI
 
 struct DiscoverCardLabel: View {
-    private let title, subtitle: LocalizedStringKey
+    private let title: LocalizedStringKey
+    private let subtitle: LocalizedStringKey?
     private let image: ImageResource
     
     init(
         _ title: LocalizedStringKey,
-        subtitle: LocalizedStringKey,
+        subtitle: LocalizedStringKey? = nil,
         image: ImageResource
     ) {
         self.title = title
@@ -36,12 +37,14 @@ struct DiscoverCardLabel: View {
             }
             
             VStack(alignment: .leading) {
-                Text(subtitle)
-                    .semibold()
-                    .rounded()
-                    .secondary()
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.5)
+                if let subtitle {
+                    Text(subtitle)
+                        .semibold()
+                        .rounded()
+                        .secondary()
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.5)
+                }
                 
                 Text(title)
                     .title2(.bold, design: .rounded)

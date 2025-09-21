@@ -323,6 +323,10 @@
 		F3287A7C2B10A17F001AFE54 /* Widget Live Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3287A732B109DD0001AFE54 /* Widget Live Activity.swift */; };
 		F328BB522E7FE00C0012F003 /* MapSectionNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328BB512E7FE00C0012F003 /* MapSectionNew.swift */; };
 		F328BB532E7FE00C0012F003 /* MapSectionNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328BB512E7FE00C0012F003 /* MapSectionNew.swift */; };
+		F328BB552E8010B20012F003 /* DiscoverDocuments.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328BB542E8010B20012F003 /* DiscoverDocuments.swift */; };
+		F328BB562E8010B20012F003 /* DiscoverDocuments.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328BB542E8010B20012F003 /* DiscoverDocuments.swift */; };
+		F328BB572E8010B20012F003 /* DiscoverDocuments.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328BB542E8010B20012F003 /* DiscoverDocuments.swift */; };
+		F328BB582E8010B20012F003 /* DiscoverDocuments.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328BB542E8010B20012F003 /* DiscoverDocuments.swift */; };
 		F328D8592A82402A0038512F /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = F328D8582A82402A0038512F /* Algorithms */; };
 		F328D85E2A8240930038512F /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = F328D85D2A8240930038512F /* Algorithms */; };
 		F328D8622A8242610038512F /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = F328D8612A8242610038512F /* Algorithms */; };
@@ -1778,6 +1782,7 @@
 		F325F7082A54CB6600E89EC4 /* Carousel Button Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Carousel Button Style.swift"; sourceTree = "<group>"; };
 		F3287A732B109DD0001AFE54 /* Widget Live Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Widget Live Activity.swift"; sourceTree = "<group>"; };
 		F328BB512E7FE00C0012F003 /* MapSectionNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSectionNew.swift; sourceTree = "<group>"; };
+		F328BB542E8010B20012F003 /* DiscoverDocuments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverDocuments.swift; sourceTree = "<group>"; };
 		F32CAAD82A28C4920019DEE3 /* FileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileView.swift; sourceTree = "<group>"; };
 		F32DB8A729AE6B800074E045 /* StartPageFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPageFooter.swift; sourceTree = "<group>"; };
 		F32E88C72AF83E3F00959D49 /* ServerListAdminButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListAdminButton.swift; sourceTree = "<group>"; };
@@ -3607,6 +3612,7 @@
 			isa = PBXGroup;
 			children = (
 				F32F2CD92D8F7047007CF4DE /* Discover.swift */,
+				F328BB542E8010B20012F003 /* DiscoverDocuments.swift */,
 				F32F2CCD2D8F6FCE007CF4DE /* DiscoverCardLabel.swift */,
 				F32F2CD32D8F6FDC007CF4DE /* AvgColor.swift */,
 				F39E0A932C1BA06C00C4E906 /* DiscoverCard.swift */,
@@ -5028,6 +5034,7 @@
 				F367977B2A3A55F4009F2788 /* LogCard.swift in Sources */,
 				F3EE6D7A2D9E8E2000F0A633 /* Bakground Task.swift in Sources */,
 				F398E0E22CEB562400AA4DD7 /* Audio Player VM.swift in Sources */,
+				F328BB552E8010B20012F003 /* DiscoverDocuments.swift in Sources */,
 				F358132B2A1F5D2A002ADFA4 /* Linking VM.swift in Sources */,
 				F3878ECD2A1BCE5000AD8657 /* Dev Settings.swift in Sources */,
 				F353D4FD2D980A5000EC9F3A /* ServerListTips.swift in Sources */,
@@ -5381,6 +5388,7 @@
 				F33944122A49022A00E2F0FC /* InfoTabResources.swift in Sources */,
 				F389BB6E2A05B5F400911EBF /* Cache Limit.swift in Sources */,
 				F3B637302A35A82F00CB374C /* Console Inspector.swift in Sources */,
+				F328BB582E8010B20012F003 /* DiscoverDocuments.swift in Sources */,
 				F30089022B3B62460051476C /* User Invitation Permission.swift in Sources */,
 				F3A7CF6A2C8DF3C900413400 /* Video File VM.swift in Sources */,
 				F37A36762A35173F00517EFC /* Console View.swift in Sources */,
@@ -5724,6 +5732,7 @@
 				F3A7CEF42C8BB7E500413400 /* Network Calls.swift in Sources */,
 				F37CE9C52D555DAF00716D28 /* ContactsVM.swift in Sources */,
 				F3255E222C904A7A008E04DE /* SSH Create View.swift in Sources */,
+				F328BB572E8010B20012F003 /* DiscoverDocuments.swift in Sources */,
 				F300C46A2D8C471A00743300 /* Background Image Picker View.swift in Sources */,
 				F3255E232C904A7A008E04DE /* SSH Card.swift in Sources */,
 				F3255E242C904A7A008E04DE /* SSH List.swift in Sources */,
@@ -5948,6 +5957,7 @@
 				F373CDB32D895419008B64BE /* LogTopbarCard.swift in Sources */,
 				F32F2CDA2D8F7047007CF4DE /* Discover.swift in Sources */,
 				F335F6E72DD3564A00D743FF /* FileLink.swift in Sources */,
+				F328BB562E8010B20012F003 /* DiscoverDocuments.swift in Sources */,
 				F32FD7182B1E042500723B88 /* Websocket.swift in Sources */,
 				F32F2CD22D8F6FCE007CF4DE /* DiscoverCardLabel.swift in Sources */,
 				F32FD7212B1E065500723B88 /* Network Calls.swift in Sources */,
