@@ -14,6 +14,8 @@ struct ServerList: View {
             
             ServerListGrid(vm.filteredServers)
         }
+        .navigationTitle("Bisquit.Host")
+        .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden()
         .animation(.default, value: vm.servers)
         .searchable(text: $vm.searchField)
