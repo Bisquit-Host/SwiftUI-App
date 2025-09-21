@@ -24,7 +24,7 @@ struct PanelToolbarModifier: ViewModifier {
                         
                         if let server = vm.server {
 #if canImport(ActivityKit)
-                            InfoTabLA(server)
+                            InfoTabLiveActivity(server)
 #endif
                         }
                     }

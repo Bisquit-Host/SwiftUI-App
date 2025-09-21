@@ -73,13 +73,7 @@ struct Discover: View {
                     DiscoverCardLabel("Maps", subtitle: "Best places", image: .maps)
                 }
                 
-                DiscoverCard("https://bisquit.host/policy.pdf") {
-                    DiscoverCardLabel("Privacy Policy", subtitle: "Document", image: .docBlue)
-                }
-                
-                DiscoverCard("https://bisquit.host/terms.pdf") {
-                    DiscoverCardLabel("ToS", subtitle: "Document", image: .docYellow)
-                }
+                DiscoverDocuments()
             }
             .padding(.vertical, 20)
         }

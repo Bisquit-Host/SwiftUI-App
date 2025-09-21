@@ -25,7 +25,7 @@ struct InfoTabUsers: View {
                     
                     HStack {
                         ForEach(vm.users.prefix(7)) {
-                            InfoTabButtonsUserImg($0.image)
+                            InfoTabUserAvatar($0.image)
                         }
                     }
                 }

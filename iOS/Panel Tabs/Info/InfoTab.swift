@@ -34,7 +34,7 @@ struct InfoTab: View {
                 ForEach(sectionsVM.activeSections) {
                     switch $0.name {
                     case "Resource Usage":
-                        InfoTabResourceUsage(server)
+                        InfoTabResources(server)
                         
                     case "Allocations":
                         InfoTabAllocation(server)

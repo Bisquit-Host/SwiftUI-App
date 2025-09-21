@@ -86,11 +86,7 @@ public func tcpPing(
     timeout: TimeInterval = 5
 ) async throws -> TimeInterval {
     try await withCheckedThrowingContinuation { continuation in
-        tcpPing(
-            host: host,
-            port: port,
-            timeout: timeout
-        ) { result in
+        tcpPing(host: host, port: port, timeout: timeout) { result in
             continuation.resume(with: result)
         }
     }

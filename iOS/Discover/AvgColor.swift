@@ -9,7 +9,7 @@ extension UIImage {
     }
     
     func findAverageColor(_ algorithm: AverageColorAlgorithm = .simple) -> UIColor? {
-        guard let cgImage = cgImage else {
+        guard let cgImage else {
             return nil
         }
         
