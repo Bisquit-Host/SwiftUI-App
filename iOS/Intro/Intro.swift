@@ -131,4 +131,5 @@ fileprivate extension View {
 
 #Preview {
     Intro()
+        .darkSchemePreferred()
 }

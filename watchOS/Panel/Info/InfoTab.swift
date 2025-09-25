@@ -43,4 +43,5 @@ struct InfoTab: View {
     NavigationStack {
         InfoTab(PreviewProp.serverAttributes)
     }
+    .darkSchemePreferred()
 }

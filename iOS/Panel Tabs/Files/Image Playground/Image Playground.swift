@@ -172,4 +172,5 @@ struct ImagePlayground: View {
     NavigationStack {
         ImagePlayground(at: "")
     }
+    .darkSchemePreferred()
 }

@@ -45,5 +45,6 @@ struct ServerCardLayout: View {
     NavigationStack {
         ServerCardLayout()
     }
+    .darkSchemePreferred()
     .environmentObject(ValueStore())
 }

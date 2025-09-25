@@ -17,5 +17,6 @@ struct ScheduleCard: View {
 
 //#Preview {
 //    ScheduleCard(PreviewProp.scheduleAttributes)
+//    .darkSchemePreferred()
 //        .environment(ScheduleVM(""))
 //}

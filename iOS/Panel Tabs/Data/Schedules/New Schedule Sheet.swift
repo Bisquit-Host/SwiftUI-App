@@ -72,5 +72,6 @@ struct NewScheduleSheet: View {
 
 #Preview {
     NewScheduleSheet()
+        .darkSchemePreferred()
         .environment(ScheduleVM(""))
 }

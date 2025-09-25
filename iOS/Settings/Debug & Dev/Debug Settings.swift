@@ -93,5 +93,6 @@ struct DebugSettings: View {
     NavigationStack {
         DebugSettings()
     }
+    .darkSchemePreferred()
     .environmentObject(ValueStore())
 }

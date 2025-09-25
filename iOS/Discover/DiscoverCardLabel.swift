@@ -64,4 +64,5 @@ struct DiscoverCardLabel: View {
     NavigationStack {
         Discover()
     }
+    .darkSchemePreferred()
 }

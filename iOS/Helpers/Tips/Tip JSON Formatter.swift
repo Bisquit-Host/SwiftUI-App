@@ -24,6 +24,7 @@ struct TipJsonFormatter: Tip {
             .tipBackground(.ultraThinMaterial)
             .padding()
     }
+    .darkSchemePreferred()
 #if !os(watchOS)
     .popoverTip(TipJsonFormatter())
 #endif

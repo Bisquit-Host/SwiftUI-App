@@ -26,5 +26,6 @@ struct PlanView: View {
     NavigationStack {
         PlanView()
     }
+    .darkSchemePreferred()
     .environmentObject(ValueStore())
 }

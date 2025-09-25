@@ -41,6 +41,7 @@ struct Home: View {
 
 #Preview {
     Home()
+        .darkSchemePreferred()
         .environment(ServerListVM())
         .environmentObject(ValueStore())
 }

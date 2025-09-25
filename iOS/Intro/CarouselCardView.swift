@@ -29,4 +29,5 @@ struct CarouselCardView: View {
 
 //#Preview {
 //    CarouselCardView()
+//    .darkSchemePreferred()
 //}

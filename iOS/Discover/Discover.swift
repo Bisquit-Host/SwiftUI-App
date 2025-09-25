@@ -117,4 +117,5 @@ struct Discover: View {
         //            }
         //            .scrollContentBackground(.hidden)
     }
+    .darkSchemePreferred()
 }

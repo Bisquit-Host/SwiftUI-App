@@ -22,5 +22,6 @@ struct ConsoleInspector: View {
 
 #Preview {
     ConsoleInspector()
+        .darkSchemePreferred()
         .environment(ConsoleVM(""))
 }

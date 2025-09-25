@@ -44,6 +44,7 @@ struct AccountSettings: View {
 
 #Preview {
     AccountSettings()
+        .darkSchemePreferred()
         .environment(ServerListVM())
         .environment(NavState())
         .environmentObject(ValueStore())

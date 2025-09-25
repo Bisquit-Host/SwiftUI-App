@@ -87,5 +87,6 @@ struct PanelSettingsView: View {
     NavigationStack {
         PanelSettingsView(PreviewProp.serverAttributes)
     }
+    .darkSchemePreferred()
     .environment(PanelVM(""))
 }

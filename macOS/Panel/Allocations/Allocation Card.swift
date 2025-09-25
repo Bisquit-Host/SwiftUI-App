@@ -67,5 +67,6 @@ struct AllocationCard: View {
 //    List {
 //        AllocationCard()
 //    }
+//    .darkSchemePreferred()
 //    .environment(AllocationVM(""))
 //}

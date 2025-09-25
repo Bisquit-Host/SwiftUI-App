@@ -96,4 +96,5 @@ struct CredentialsView: View {
 
 #Preview {
     CredentialsView("email")
+        .darkSchemePreferred()
 }

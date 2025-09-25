@@ -31,4 +31,5 @@ struct StatRowBackups: View {
 
 #Preview {
     StatRowBackups(PreviewProp.serverAttributes)
+        .darkSchemePreferred()
 }

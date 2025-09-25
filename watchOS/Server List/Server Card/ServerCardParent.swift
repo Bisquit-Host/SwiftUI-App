@@ -37,5 +37,6 @@ struct ServerCardParent: View {
 
 #Preview {
     ServerCardParent(PreviewProp.serverAttributes)
+        .darkSchemePreferred()
         .environment(NavState())
 }

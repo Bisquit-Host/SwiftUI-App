@@ -48,5 +48,6 @@ struct PanelView: View {
 
 #Preview {
     PanelView("")
+        .darkSchemePreferred()
         .environmentObject(ValueStore())
 }

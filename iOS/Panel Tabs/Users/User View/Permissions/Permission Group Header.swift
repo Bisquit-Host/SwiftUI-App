@@ -62,5 +62,6 @@ struct PermissionGroupHeader: View {
     List {
         PermissionGroupHeader($showDescription, user: PreviewProp.userAttributes)
     }
+    .darkSchemePreferred()
     .environment(UsersVM(""))
 }

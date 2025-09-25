@@ -18,4 +18,5 @@ struct FileSectionSearchBar: View {
 
 #Preview {
     FileSectionSearchBar()
+        .darkSchemePreferred()
 }

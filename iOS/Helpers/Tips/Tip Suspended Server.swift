@@ -24,6 +24,7 @@ struct TipSuspendedServer: Tip {
             .tipBackground(.ultraThinMaterial)
             .padding()
     }
+    .darkSchemePreferred()
 #if !os(watchOS)
     .popoverTip(TipSuspendedServer())
 #endif

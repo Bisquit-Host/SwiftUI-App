@@ -66,4 +66,5 @@ struct LogMetaView: View {
                 LogMetaView([:])
             }
     }
+    .darkSchemePreferred()
 }

@@ -65,4 +65,5 @@ struct CloudKeys: View {
         .sheet {
             CloudKeys($apiKey)
         }
+        .darkSchemePreferred()
 }

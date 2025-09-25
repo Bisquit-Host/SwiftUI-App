@@ -36,5 +36,6 @@ struct DesignSettings: View {
     List {
         DesignSettings()
     }
+    .darkSchemePreferred()
     .environmentObject(ValueStore())
 }

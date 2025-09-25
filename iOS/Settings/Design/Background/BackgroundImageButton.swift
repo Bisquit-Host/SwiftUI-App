@@ -30,5 +30,6 @@ struct BackgroundImageButton: View {
     List {
         BackgroundImageButton()
     }
+    .darkSchemePreferred()
     .environmentObject(ValueStore())
 }

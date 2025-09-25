@@ -36,4 +36,5 @@ struct PlanSpec: View {
 
 #Preview {
     PlanSpec("CPU", icon: "hammer", value: "16")
+        .darkSchemePreferred()
 }

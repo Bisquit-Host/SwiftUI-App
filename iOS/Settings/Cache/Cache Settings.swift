@@ -19,4 +19,5 @@ struct CacheSettings: View {
     List {
         CacheSettings()
     }
+    .darkSchemePreferred()
 }

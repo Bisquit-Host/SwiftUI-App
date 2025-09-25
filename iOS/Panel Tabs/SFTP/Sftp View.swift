@@ -66,5 +66,6 @@ struct SftpDetails: View {
     List {
         SftpDetails(PreviewProp.serverAttributes.sftp)
     }
+    .darkSchemePreferred()
     .environment(ServerSettingsVM(""))
 }

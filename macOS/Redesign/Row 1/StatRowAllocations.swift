@@ -30,4 +30,5 @@ struct StatRowAllocations: View {
 
 #Preview {
     StatRowAllocations("")
+        .darkSchemePreferred()
 }

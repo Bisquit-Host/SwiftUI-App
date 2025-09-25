@@ -22,5 +22,6 @@ struct JsonFormatterButton: View {
 
 #Preview {
     JsonFormatterButton()
+        .darkSchemePreferred()
         .environment(TextFileVM(""))
 }

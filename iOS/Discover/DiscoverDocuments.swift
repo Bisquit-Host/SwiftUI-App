@@ -23,4 +23,5 @@ struct DiscoverDocuments: View {
 
 #Preview {
     DiscoverDocuments()
+        .darkSchemePreferred()
 }

@@ -32,5 +32,6 @@ struct AllocationList: View {
     NavigationStack {
         UserList("")
     }
+    .darkSchemePreferred()
     .environment(AllocationVM(""))
 }

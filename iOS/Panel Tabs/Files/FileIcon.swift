@@ -70,4 +70,5 @@ fileprivate func getFileIcon(mimeType: String, filename: String = "") -> (String
         FileIcon("", name: ".usdz")
         FileIcon("lock.doc")
     }
+    .darkSchemePreferred()
 }

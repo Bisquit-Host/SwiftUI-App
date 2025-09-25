@@ -24,4 +24,5 @@ struct StatsTab: View {
 #Preview {
     StatsTab(PreviewProp.serverAttributes)
         .padding()
+        .darkSchemePreferred()
 }

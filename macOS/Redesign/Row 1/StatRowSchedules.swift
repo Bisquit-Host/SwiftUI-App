@@ -30,4 +30,5 @@ struct StatRowSchedules: View {
 
 #Preview {
     StatRowSchedules("")
+        .darkSchemePreferred()
 }

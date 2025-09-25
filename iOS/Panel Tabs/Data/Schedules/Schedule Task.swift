@@ -74,4 +74,5 @@ struct ScheduleTask: View {
 //            task: PreviewProp.scheduleTaskAttributes
 //        )
 //    }
+//    .darkSchemePreferred()
 //}

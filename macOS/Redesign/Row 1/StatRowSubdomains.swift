@@ -30,4 +30,5 @@ struct StatRowSubdomains: View {
 
 #Preview {
     StatRowSubdomains("")
+        .darkSchemePreferred()
 }

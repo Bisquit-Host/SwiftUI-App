@@ -31,5 +31,6 @@ struct SheetCreateAllocation: View {
     NavigationStack {
         SheetCreateAllocation()
     }
+    .darkSchemePreferred()
     .environment(AllocationVM(""))
 }

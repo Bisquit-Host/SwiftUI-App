@@ -70,6 +70,7 @@ struct ServerList: View {
     NavigationStack {
         ServerList()
     }
+    .darkSchemePreferred()
     .environment(ServerListVM())
     .environment(NavState())
     .environmentObject(ValueStore())

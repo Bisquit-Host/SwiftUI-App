@@ -149,5 +149,6 @@ struct PermissionCard: View {
     @Previewable @State var user: UserAttributes = PreviewProp.userAttributes
     
     PermissionList($user)
+        .darkSchemePreferred()
         .environment(UsersVM(""))
 }

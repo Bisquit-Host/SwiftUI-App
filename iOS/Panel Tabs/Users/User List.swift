@@ -72,5 +72,6 @@ struct UserList: View {
         .sheet {
             UserList()
         }
+        .darkSchemePreferred()
         .environment(UsersVM(""))
 }

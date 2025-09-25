@@ -31,4 +31,5 @@ struct FileCardRedesign: View {
 
 //#Preview {
 //    FileCardRedesign()
+//    .darkSchemePreferred()
 //}

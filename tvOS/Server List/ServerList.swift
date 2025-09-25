@@ -75,6 +75,7 @@ struct ServerList: View {
 
 #Preview {
     ServerList()
+        .darkSchemePreferred()
         .environment(ServerListVM())
         .environment(UpdateChecker())
         .environment(NavState())

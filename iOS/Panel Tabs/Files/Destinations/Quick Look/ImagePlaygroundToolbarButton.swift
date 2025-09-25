@@ -35,4 +35,5 @@ struct ImagePlaygroundToolbarButton: View {
 
 //#Preview {
 //    ImagePlaygroundToolbarButton()
+//    .darkSchemePreferred()
 //}

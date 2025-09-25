@@ -38,4 +38,5 @@ struct LogSection: View {
 
 #Preview {
     LogSection("")
+        .darkSchemePreferred()
 }

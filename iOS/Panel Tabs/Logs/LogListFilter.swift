@@ -32,5 +32,6 @@ struct LogListFilter: View {
 
 #Preview {
     LogListFilter()
+        .darkSchemePreferred()
         .environment(LogVM(""))
 }

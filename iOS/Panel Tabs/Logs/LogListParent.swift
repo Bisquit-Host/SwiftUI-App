@@ -17,5 +17,6 @@ struct LogListParent: View {
         .sheet {
             LogListParent()
         }
+        .darkSchemePreferred()
         .environment(LogVM(""))
 }

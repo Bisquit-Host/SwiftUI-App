@@ -47,5 +47,6 @@ struct ServerCardOld: View {
 
 #Preview {
     ServerCardOld(PreviewProp.serverAttributes)
+        .darkSchemePreferred()
         .environment(ServerListVM())
 }

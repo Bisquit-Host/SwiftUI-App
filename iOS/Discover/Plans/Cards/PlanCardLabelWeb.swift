@@ -20,4 +20,5 @@ struct PlanCardLabelWeb: View {
 
 //#Preview {
 //    PlanCardLabelWeb()
+//    .darkSchemePreferred()
 //}

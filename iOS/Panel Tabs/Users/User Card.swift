@@ -77,5 +77,6 @@ struct UserCard: View {
     List {
         UserCard(PreviewProp.userAttributes)
     }
+    .darkSchemePreferred()
     .environment(UsersVM(""))
 }

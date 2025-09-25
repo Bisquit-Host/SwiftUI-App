@@ -30,4 +30,5 @@ struct StatRowDatabases: View {
 
 #Preview {
     StatRowDatabases("")
+        .darkSchemePreferred()
 }

@@ -29,4 +29,5 @@ struct FileListRedesign: View {
 
 #Preview {
     FileListRedesign("")
+        .darkSchemePreferred()
 }

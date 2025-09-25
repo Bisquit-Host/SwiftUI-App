@@ -80,6 +80,8 @@ struct CloudKeyCard: View {
     List {
         CloudKeyCard(
             $selectedKey,
-            key: .init("Preview Key", key: "ptlc_1234567890")) {}
+            key: .init("Preview Key", key: "ptlc_1234567890")
+        ) {}
     }
+    .darkSchemePreferred()
 }

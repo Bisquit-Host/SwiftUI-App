@@ -23,5 +23,6 @@ struct ServerListTips: View {
 
 #Preview {
     ServerListTips()
+        .darkSchemePreferred()
         .environment(ServerListVM())
 }

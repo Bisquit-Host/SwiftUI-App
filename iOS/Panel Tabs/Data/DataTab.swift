@@ -101,6 +101,7 @@ fileprivate extension DataTab {
 
 #Preview {
     DataTab(PreviewProp.serverAttributes)
+        .darkSchemePreferred()
         .environment(BackupVM(""))
         .environment(DatabaseVM(""))
         .environment(ScheduleVM(""))

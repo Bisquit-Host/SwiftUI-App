@@ -24,4 +24,5 @@ struct PlanCardLabelBot: View {
 
 //#Preview {
 //    PlanCardLabelBot()
+//    .darkSchemePreferred()
 //}

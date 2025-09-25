@@ -65,6 +65,7 @@ struct ServerList: View {
 #Preview {
     ServerList()
         .padding()
+        .darkSchemePreferred()
         .environment(ServerListVM())
         .environment(UpdateChecker())
 }

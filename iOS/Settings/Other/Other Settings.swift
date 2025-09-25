@@ -40,6 +40,7 @@ struct OtherSettings: View {
     List {
         OtherSettings()
     }
+    .darkSchemePreferred()
     .environment(BiometryVM())
     .environmentObject(ValueStore())
 }

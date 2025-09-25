@@ -28,4 +28,5 @@ struct StartupCard: View {
 
 //#Preview {
 //    StartupCard()
+//    .darkSchemePreferred()
 //}

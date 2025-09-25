@@ -64,5 +64,6 @@ struct UserView: View {
         .sheet {
             UserView(PreviewProp.userAttributes)
         }
+        .darkSchemePreferred()
         .environment(UsersVM(""))
 }

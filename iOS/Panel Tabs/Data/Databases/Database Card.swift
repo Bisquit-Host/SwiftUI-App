@@ -90,5 +90,6 @@ struct DatabaseCard: View {
     List {
         DatabaseCard(PreviewProp.databaseAttributes)
     }
+    .darkSchemePreferred()
     .environment(DatabaseVM(""))
 }

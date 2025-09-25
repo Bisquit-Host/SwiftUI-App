@@ -33,4 +33,5 @@ struct FileNameAndIcon: View {
 
 #Preview {
     FileNameAndIcon(PreviewProp.fileAttributes)
+        .darkSchemePreferred()
 }

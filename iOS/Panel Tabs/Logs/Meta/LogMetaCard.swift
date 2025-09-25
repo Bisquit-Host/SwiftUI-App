@@ -32,4 +32,5 @@ struct LogMetaCard: View {
 
 //#Preview {
 //    LogMetaCard()
+//    .darkSchemePreferred()
 //}

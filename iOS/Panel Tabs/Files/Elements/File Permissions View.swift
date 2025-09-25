@@ -163,5 +163,6 @@ fileprivate extension Array {
     NavigationStack {
         FilePermissionsView(PreviewProp.fileAttributes, at: "")
     }
+    .darkSchemePreferred()
     .environmentObject(FileTabVM(""))
 }

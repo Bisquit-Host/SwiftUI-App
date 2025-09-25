@@ -43,4 +43,5 @@ struct Disable2FaView: View {
             Disable2FaView()
                 .environment(AccountVM())
         }
+        .darkSchemePreferred()
 }

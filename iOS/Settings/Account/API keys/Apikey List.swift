@@ -52,5 +52,6 @@ struct ApikeyList: View {
         .sheet {
             ApikeyList()
         }
+        .darkSchemePreferred()
         .environment(ApikeyVM())
 }

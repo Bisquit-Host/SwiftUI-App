@@ -52,5 +52,6 @@ struct BackupList: View {
     NavigationStack {
         BackupList(PreviewProp.serverAttributes)
     }
+    .darkSchemePreferred()
     .environment(BackupVM(""))
 }

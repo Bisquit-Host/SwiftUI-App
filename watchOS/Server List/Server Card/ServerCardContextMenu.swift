@@ -65,4 +65,5 @@ struct ServerCardContextMenu: View {
         .sheet {
             ServerCardContextMenu(PreviewProp.serverAttributes)
         }
+        .darkSchemePreferred()
 }

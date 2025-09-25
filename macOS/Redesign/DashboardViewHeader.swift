@@ -23,4 +23,5 @@ struct DashboardViewHeader: View {
 
 #Preview {
     DashboardViewHeader(PreviewProp.serverAttributes)
+        .darkSchemePreferred()
 }

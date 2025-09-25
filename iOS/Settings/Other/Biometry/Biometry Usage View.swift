@@ -18,4 +18,5 @@ struct BiometryUsageView: View {
 
 #Preview {
     BiometryUsageView()
+        .darkSchemePreferred()
 }

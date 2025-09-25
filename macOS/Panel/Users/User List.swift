@@ -41,5 +41,6 @@ struct UserList: View {
     NavigationStack {
         UserList("")
     }
+    .darkSchemePreferred()
     .environment(UsersVM(""))
 }

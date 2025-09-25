@@ -109,6 +109,7 @@ struct FileView: View {
 
 #Preview {
     FileView("", at: "", file: PreviewProp.fileAttributes)
-        .environmentObject(FileTabVM(""))
         .padding()
+        .darkSchemePreferred()
+        .environmentObject(FileTabVM(""))
 }

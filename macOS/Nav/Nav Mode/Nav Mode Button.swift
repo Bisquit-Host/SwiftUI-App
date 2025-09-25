@@ -24,6 +24,7 @@ struct NavModeButton: View {
 
 #Preview {
     NavModeButton()
+        .darkSchemePreferred()
         .environment(NavModel.shared)
         .environmentObject(ValueStore())
 }

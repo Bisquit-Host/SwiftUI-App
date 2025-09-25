@@ -31,4 +31,5 @@ struct StatRowUsers: View {
 
 #Preview {
     StatRowUsers("")
+        .darkSchemePreferred()
 }

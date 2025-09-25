@@ -35,5 +35,6 @@ struct AppIconSettings: View {
 
 #Preview {
     AppIconSettings()
+        .darkSchemePreferred()
         .environmentObject(ValueStore())
 }

@@ -48,5 +48,6 @@
 
 //#Preview {
 //    MapList()
+//.darkSchemePreferred()
 //        .environment(MapModel())
 //}

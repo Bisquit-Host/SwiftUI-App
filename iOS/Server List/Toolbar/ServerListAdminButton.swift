@@ -24,6 +24,7 @@ struct ServerListAdminButton: View {
 
 #Preview {
     ServerListAdminButton()
+        .darkSchemePreferred()
         .environmentObject(ValueStore())
         .environment(ServerListVM())
 }

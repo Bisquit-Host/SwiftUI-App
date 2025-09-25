@@ -49,6 +49,7 @@ struct InfiniteScrollView<Content: View>: View {
 
 #Preview {
     Intro()
+        .darkSchemePreferred()
 }
 
 fileprivate struct InfiniteScrollHelper: UIViewRepresentable {

@@ -46,5 +46,6 @@ struct NewFolder: View {
 //    List {
 //        ButtonNewFolder("")
 //    }
+//    .darkSchemePreferred()
 //    .environmentObject(FileTabVM(""))
 //}

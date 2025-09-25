@@ -86,4 +86,5 @@ struct GamepadDebug: View {
 
 #Preview {
     GamepadDebug()
+        .darkSchemePreferred()
 }

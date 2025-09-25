@@ -108,4 +108,5 @@ struct InfoTabAllocation: View {
 
 #Preview {
     InfoTabAllocation(PreviewProp.serverAttributes)
+        .darkSchemePreferred()
 }

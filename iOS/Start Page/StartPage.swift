@@ -110,6 +110,7 @@ struct StartPage: View {
     NavigationStack {
         StartPage()
     }
+    .darkSchemePreferred()
     .environment(NavState())
     .environmentObject(ValueStore())
 }

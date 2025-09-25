@@ -48,5 +48,6 @@ struct BisquitFall: View {
 
 #Preview {
     BisquitFall()
+        .darkSchemePreferred()
         .environmentObject(ValueStore())
 }

@@ -15,4 +15,5 @@ struct UserListParent: View {
 
 #Preview {
     UserListParent()
+        .darkSchemePreferred()
 }

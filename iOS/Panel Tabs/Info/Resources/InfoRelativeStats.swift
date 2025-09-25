@@ -55,5 +55,6 @@ struct InfoRelativeStats: View {
 
 #Preview {
     InfoRelativeStats(PreviewProp.serverAttributes.limits)
+        .darkSchemePreferred()
         .environment(PanelVM(""))
 }

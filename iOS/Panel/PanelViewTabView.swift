@@ -39,6 +39,7 @@ struct PanelViewTabView: View {
 
 #Preview {
     PanelViewTabView()
+        .darkSchemePreferred()
         .environment(PanelVM(""))
         .environmentObject(ValueStore())
 }

@@ -54,5 +54,6 @@ struct PlanCard: View {
 
 //#Preview {
 //    PlanCard()
+//    .darkSchemePreferred()
 //        .environmentObject(ValueStore())
 //}

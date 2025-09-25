@@ -32,6 +32,7 @@ struct ConsoleMessage: View {
 
 #Preview {
     ConsoleMessage("Preview", index: 0)
+        .darkSchemePreferred()
         .environment(ConsoleVM(""))
         .environment(PanelVM(""))
 }

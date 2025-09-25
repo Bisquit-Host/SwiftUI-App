@@ -49,5 +49,6 @@ struct PowerSwitchToolbar: View {
 
 #Preview {
     PowerSwitchToolbar()
+        .darkSchemePreferred()
         .environment(PanelVM(""))
 }

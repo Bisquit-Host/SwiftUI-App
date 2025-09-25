@@ -33,5 +33,6 @@ struct PlanCardPrice: View {
 
 //#Preview {
 //    PlanCardPrice()
+//    .darkSchemePreferred()
 //        .environmentObject(ValueStore())
 //}

@@ -20,4 +20,5 @@ struct InfoTabCustomizationButton: View {
 
 #Preview {
     InfoTabCustomizationButton(.constant(false))
+        .darkSchemePreferred()
 }

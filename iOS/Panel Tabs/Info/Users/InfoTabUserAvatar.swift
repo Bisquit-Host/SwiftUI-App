@@ -24,4 +24,5 @@ struct InfoTabUserAvatar: View {
 
 //#Preview {
 //    InfoTabButtonsUserImg()
+//    .darkSchemePreferred()
 //}

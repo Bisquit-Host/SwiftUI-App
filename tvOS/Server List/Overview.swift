@@ -42,5 +42,6 @@ struct Overview: View {
 
 #Preview {
     Overview()
+        .darkSchemePreferred()
         .environment(ServerListVM())
 }

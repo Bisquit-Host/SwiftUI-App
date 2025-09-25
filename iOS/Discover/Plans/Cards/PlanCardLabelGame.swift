@@ -24,4 +24,5 @@ struct PlanCardLabelGame: View {
 
 //#Preview {
 //    PlanCardLabelGame()
+//    .darkSchemePreferred()
 //}

@@ -40,4 +40,5 @@ struct StartupList: View {
     NavigationStack {
         StartupList("")
     }
+    .darkSchemePreferred()
 }
