@@ -152,7 +152,7 @@ struct MapSection: View {
     }
 }
 
-//#Preview {
-//    MapSection(nil, node: "Fabric")
-//    .darkSchemePreferred()
-//}
+#Preview {
+    MapSection(nil, node: "Fabric", allocations: [])
+        .darkSchemePreferred()
+}

@@ -27,7 +27,7 @@ struct CarouselCardView: View {
     }
 }
 
-//#Preview {
-//    CarouselCardView()
-//    .darkSchemePreferred()
-//}
+#Preview {
+    CarouselCardView(.init(.bisquit))
+        .darkSchemePreferred()
+}

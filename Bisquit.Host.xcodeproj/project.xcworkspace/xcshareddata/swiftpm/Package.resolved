@@ -88,7 +88,7 @@
       "location" : "https://github.com/Bisquit-Host/PteroNet",
       "state" : {
         "branch" : "main",
-        "revision" : "f046b00740d8cb25a362d9b4bb1e801806c40d0a"
+        "revision" : "7cadaa0019a9ce0381d58ae5cce5aafc6b8e2ce3"
       }
     },
     {
@@ -141,8 +141,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-numerics.git",
       "state" : {
-        "revision" : "bbadd4b853a33fd78c4ae977d17bb2af15eb3f2a",
-        "version" : "1.1.0"
+        "revision" : "0c0290ff6b24942dadb83a929ffaaa1481df04a2",
+        "version" : "1.1.1"
       }
     }
   ],

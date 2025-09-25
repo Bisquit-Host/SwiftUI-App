@@ -22,7 +22,7 @@ struct InfoTabUserAvatar: View {
     }
 }
 
-//#Preview {
-//    InfoTabButtonsUserImg()
-//    .darkSchemePreferred()
-//}
+#Preview {
+    InfoTabUserAvatar("https://bisquit.host/_ipx/s_80x80/logo.webp")
+        .darkSchemePreferred()
+}

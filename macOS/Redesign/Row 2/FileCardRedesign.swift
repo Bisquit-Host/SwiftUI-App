@@ -29,7 +29,7 @@ struct FileCardRedesign: View {
     }
 }
 
-//#Preview {
-//    FileCardRedesign()
-//    .darkSchemePreferred()
-//}
+#Preview {
+    FileCardRedesign(PreviewProp.fileAttributes)
+        .darkSchemePreferred()
+}

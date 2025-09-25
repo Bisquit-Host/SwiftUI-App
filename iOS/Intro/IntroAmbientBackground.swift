@@ -35,7 +35,9 @@ struct IntroAmbientBackground: View {
     }
 }
 
-//#Preview {
-//    IntroAmbientBackground()
-//    .darkSchemePreferred()
-//}
+#Preview {
+    @Previewable @State var activeCard: IntroCard?
+    
+    IntroAmbientBackground($activeCard, cards: [])
+        .darkSchemePreferred()
+}

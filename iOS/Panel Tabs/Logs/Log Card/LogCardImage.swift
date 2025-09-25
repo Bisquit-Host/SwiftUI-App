@@ -31,7 +31,7 @@ struct LogCardImage: View {
     }
 }
 
-//#Preview {
-//    LogCardImage()
-//    .darkSchemePreferred()
-//}
+#Preview {
+    LogCardImage("https://bisquit.host/_ipx/s_80x80/logo.webp")
+        .darkSchemePreferred()
+}

@@ -18,7 +18,7 @@ struct LogCardEvent: View {
     }
 }
 
-//#Preview {
-//    LogCardEvent()
-//    .darkSchemePreferred()
-//}
+#Preview {
+    LogCardEvent(PreviewProp.logAttributes)
+        .darkSchemePreferred()
+}

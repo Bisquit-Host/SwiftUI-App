@@ -140,6 +140,6 @@ struct ColumnDetail: View {
 
 //#Preview {
 //    ColumnDetail(server: PreviewProp.serverAttributes)
-//    .darkSchemePreferred()
+//        .darkSchemePreferred()
 //        .environment(NavState())
 //}
