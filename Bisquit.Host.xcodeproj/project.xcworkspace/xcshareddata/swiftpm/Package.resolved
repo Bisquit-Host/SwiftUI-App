@@ -1,5 +1,5 @@
 {
-  "originHash" : "f54d3055eaff4c1329f4f9e2198134cf74ecb71fd5e000feae11d089d43b20d0",
+  "originHash" : "a3c0a6ce58a9f4b0638832efb53b17bdc789451785fd545e6a2db9e3ca464be2",
   "pins" : [
     {
       "identity" : "alertkit",
@@ -8,6 +8,15 @@
       "state" : {
         "revision" : "3b73be8db5a7e7efaf474c6ed919f5a437d843c9",
         "version" : "5.1.9"
+      }
+    },
+    {
+      "identity" : "appearance",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/TopScrech/Appearance",
+      "state" : {
+        "branch" : "main",
+        "revision" : "737ef13cbcd497a84b4093e2827163c4fe001e9d"
       }
     },
     {

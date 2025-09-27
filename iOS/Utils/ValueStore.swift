@@ -1,6 +1,10 @@
 import ScrechKit
 import PteroNet
 
+#if canImport(Appearance)
+import Appearance
+#endif
+
 final class ValueStore: ObservableObject {
 #if os(macOS)
     @AppStorage("nav_mode") var navMode: NavMode?
@@ -13,8 +17,11 @@ final class ValueStore: ObservableObject {
     
     @AppStorage("enable_game_center") var enableGameCenter = true
     @AppStorage("hide_status_bar") var hideStatusBar = false
-    @AppStorage("color_theme") var appearance: ColorTheme = .system
     @Published var updateBackground = false // Triggers background image update
+    
+#if canImport(Appearance)
+    @AppStorage("color_theme") var appearance: Appearance = .system
+#endif
     
     // MARK: - Auth
     @AppStorage("isApiKeyValid") var isApiKeyValid = false
