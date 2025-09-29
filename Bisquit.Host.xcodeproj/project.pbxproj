@@ -1441,6 +1441,8 @@
 		F3F5AD902E8A667D007AD97D /* ServerListTopbarRefreshButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5AD8F2E8A667D007AD97D /* ServerListTopbarRefreshButton.swift */; };
 		F3F5AD922E8A6A84007AD97D /* SettingsAccountSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5AD912E8A6A84007AD97D /* SettingsAccountSection.swift */; };
 		F3F5AD9A2E8A8E90007AD97D /* ServerCardParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5AD992E8A8E90007AD97D /* ServerCardParent.swift */; };
+		F3F5AD9C2E8A913E007AD97D /* IntroAmbientBackgroundCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5AD9B2E8A913E007AD97D /* IntroAmbientBackgroundCard.swift */; };
+		F3F5AD9D2E8A913E007AD97D /* IntroAmbientBackgroundCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5AD9B2E8A913E007AD97D /* IntroAmbientBackgroundCard.swift */; };
 		F3F5BC962BF7668E00EB8FB1 /* SensitivityAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5BC952BF7668E00EB8FB1 /* SensitivityAnalyzer.swift */; };
 		F3F5BC972BF7668E00EB8FB1 /* SensitivityAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5BC952BF7668E00EB8FB1 /* SensitivityAnalyzer.swift */; };
 		F3F60A662DEB93C300A15737 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3F60A652DEB93C300A15737 /* ScrechKit */; };
@@ -2208,6 +2210,7 @@
 		F3F5AD8F2E8A667D007AD97D /* ServerListTopbarRefreshButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListTopbarRefreshButton.swift; sourceTree = "<group>"; };
 		F3F5AD912E8A6A84007AD97D /* SettingsAccountSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAccountSection.swift; sourceTree = "<group>"; };
 		F3F5AD992E8A8E90007AD97D /* ServerCardParent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCardParent.swift; sourceTree = "<group>"; };
+		F3F5AD9B2E8A913E007AD97D /* IntroAmbientBackgroundCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroAmbientBackgroundCard.swift; sourceTree = "<group>"; };
 		F3F5BC952BF7668E00EB8FB1 /* SensitivityAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensitivityAnalyzer.swift; sourceTree = "<group>"; };
 		F3F60A792DED9FFB00A15737 /* Cache Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache Card.swift"; sourceTree = "<group>"; };
 		F3F716BC29E4D46600838586 /* Backup List Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Backup List Footer.swift"; sourceTree = "<group>"; };
@@ -2679,6 +2682,7 @@
 			children = (
 				F373CD6D2D88A386008B64BE /* Intro.swift */,
 				F3E98C0C2E6AE1BD0019439F /* IntroAmbientBackground.swift */,
+				F3F5AD9B2E8A913E007AD97D /* IntroAmbientBackgroundCard.swift */,
 				F3E98C132E6AE32E0019439F /* CarouselCardView.swift */,
 				F373CD6A2D88A386008B64BE /* IntroCard.swift */,
 				F373CD6B2D88A386008B64BE /* Custom Text Effect.swift */,
@@ -5000,6 +5004,7 @@
 				F3E97C7929B4B569008CBDD6 /* Credentials VM.swift in Sources */,
 				F36EBB002E6EF11100308DC9 /* UniversalPlan.swift in Sources */,
 				F325F7032A54BF7A00E89EC4 /* TabInfo.swift in Sources */,
+				F3F5AD9D2E8A913E007AD97D /* IntroAmbientBackgroundCard.swift in Sources */,
 				F3A7CF052C8BBC3200413400 /* ServerCardContextMenu.swift in Sources */,
 				F31BA57A295901110006D126 /* StartPage.swift in Sources */,
 				F3D558AC2A3360ED00608447 /* FileTabVM.swift in Sources */,
@@ -5675,6 +5680,7 @@
 				F3A563212D9EEECB009AA363 /* Allow Drag.swift in Sources */,
 				F32FD02E2CF606960038D62C /* Backup Context Menu Control Group.swift in Sources */,
 				F3D95B072E625A9000849A94 /* ServerCard.swift in Sources */,
+				F3F5AD9C2E8A913E007AD97D /* IntroAmbientBackgroundCard.swift in Sources */,
 				F30038CA2D42387600363CF4 /* Sheet Remote File.swift in Sources */,
 				F36D53362A05B8BB007324C6 /* Create Button.swift in Sources */,
 				F3D807392DCD8F1600598908 /* Contact Access Picker.swift in Sources */,

@@ -10,18 +10,10 @@ struct IntroAmbientBackground: View {
     }
     
     var body: some View {
-        GeometryReader {
-            let size = $0.size
-            
+        GeometryReader { geo in
             ZStack {
                 ForEach(cards) {
-                    Image($0.image)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .ignoresSafeArea()
-                        .frame(width: size.width, height: size.height)
-                    /// Only showing the active card's Image
-                        .opacity(activeCard?.id == $0.id ? 1 : 0)
+                    IntroAmbientBackgroundCard($activeCard, card: $0, size: geo.size)
                 }
                 
                 Rectangle()
