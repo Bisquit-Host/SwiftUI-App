@@ -125,16 +125,16 @@
 		F30B61CA2B2905E100F447B4 /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = F30B61C92B2905E100F447B4 /* AlertKit */; };
 		F30B61CB2B2905F300F447B4 /* WebsocketMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3729C0CB5A00B08696 /* WebsocketMessage.swift */; };
 		F30C12F82A5451C100A7EFF0 /* ServerListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F352AF962A4EDB1D004AD489 /* ServerListVM.swift */; };
-		F30C12FD2A54546900A7EFF0 /* App Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5672959006F0006D126 /* App Container.swift */; };
-		F30C12FE2A54546900A7EFF0 /* App Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5672959006F0006D126 /* App Container.swift */; };
-		F30C13032A545ADB00A7EFF0 /* Nav State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA565295900300006D126 /* Nav State.swift */; };
-		F30C13042A545ADC00A7EFF0 /* Nav State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA565295900300006D126 /* Nav State.swift */; };
-		F30C13082A545D6E00A7EFF0 /* Linking VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */; };
-		F30C130A2A545E6F00A7EFF0 /* Linking VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */; };
-		F30C130B2A545ED900A7EFF0 /* Linking VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */; };
+		F30C12FD2A54546900A7EFF0 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5672959006F0006D126 /* AppContainer.swift */; };
+		F30C12FE2A54546900A7EFF0 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5672959006F0006D126 /* AppContainer.swift */; };
+		F30C13032A545ADB00A7EFF0 /* NavState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA565295900300006D126 /* NavState.swift */; };
+		F30C13042A545ADC00A7EFF0 /* NavState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA565295900300006D126 /* NavState.swift */; };
+		F30C13082A545D6E00A7EFF0 /* LinkingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* LinkingVM.swift */; };
+		F30C130A2A545E6F00A7EFF0 /* LinkingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* LinkingVM.swift */; };
+		F30C130B2A545ED900A7EFF0 /* LinkingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* LinkingVM.swift */; };
 		F30C130C2A545F4400A7EFF0 /* ValueStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* ValueStore.swift */; };
-		F30C130F2A54605B00A7EFF0 /* Nav Destinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5692959007E0006D126 /* Nav Destinations.swift */; };
-		F30C13102A54606900A7EFF0 /* Nav Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BAEC8C2959B3FE00111375 /* Nav Extension.swift */; };
+		F30C130F2A54605B00A7EFF0 /* NavDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5692959007E0006D126 /* NavDestinations.swift */; };
+		F30C13102A54606900A7EFF0 /* NavExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BAEC8C2959B3FE00111375 /* NavExtension.swift */; };
 		F30C13142A5461BA00A7EFF0 /* Cache VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266EA29D9F06C005FD103 /* Cache VM.swift */; };
 		F30C13152A5461BA00A7EFF0 /* Cache VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266EA29D9F06C005FD103 /* Cache VM.swift */; };
 		F30C13162A5461BB00A7EFF0 /* Cache VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266EA29D9F06C005FD103 /* Cache VM.swift */; };
@@ -185,9 +185,9 @@
 		F31BA52B2958FF7D0006D126 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F31BA52A2958FF7D0006D126 /* Assets.xcassets */; };
 		F31BA53D2958FF7E0006D126 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F31BA53C2958FF7E0006D126 /* Assets.xcassets */; };
 		F31BA55D2958FFB00006D126 /* Clip Demo.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = F31BA54E2958FFAF0006D126 /* Clip Demo.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		F31BA566295900300006D126 /* Nav State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA565295900300006D126 /* Nav State.swift */; };
-		F31BA5682959006F0006D126 /* App Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5672959006F0006D126 /* App Container.swift */; };
-		F31BA56A2959007E0006D126 /* Nav Destinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5692959007E0006D126 /* Nav Destinations.swift */; };
+		F31BA566295900300006D126 /* NavState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA565295900300006D126 /* NavState.swift */; };
+		F31BA5682959006F0006D126 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5672959006F0006D126 /* AppContainer.swift */; };
+		F31BA56A2959007E0006D126 /* NavDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5692959007E0006D126 /* NavDestinations.swift */; };
 		F31BA570295900C20006D126 /* millisecondsToTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA56F295900C20006D126 /* millisecondsToTime.swift */; };
 		F31BA576295900E30006D126 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA575295900E30006D126 /* SettingsView.swift */; };
 		F31BA57A295901110006D126 /* StartPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA579295901110006D126 /* StartPage.swift */; };
@@ -397,8 +397,8 @@
 		F333B3BC2B80CF750005B84D /* PreviewProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = F320DDA42B704E3C00957D92 /* PreviewProperty.swift */; };
 		F333B3BD2B80CF760005B84D /* PreviewProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = F320DDA42B704E3C00957D92 /* PreviewProperty.swift */; };
 		F335CA062C63E86D006C71C6 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = F335CA052C63E86D006C71C6 /* DeviceKit */; };
-		F335CA0B2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */; };
-		F335CA0C2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */; };
+		F335CA0B2C63E8CB006C71C6 /* DynamicIslandBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335CA072C63E8CB006C71C6 /* DynamicIslandBadge.swift */; };
+		F335CA0C2C63E8CB006C71C6 /* DynamicIslandBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335CA072C63E8CB006C71C6 /* DynamicIslandBadge.swift */; };
 		F335CA1B2C63E9A7006C71C6 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = F335CA1A2C63E9A7006C71C6 /* DeviceKit */; };
 		F335F6E52DD324BD00D743FF /* SheetCreateAllocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335F6E42DD324BD00D743FF /* SheetCreateAllocation.swift */; };
 		F335F6E72DD3564A00D743FF /* FileLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335F6E62DD3564A00D743FF /* FileLink.swift */; };
@@ -532,7 +532,7 @@
 		F34851C62E72E4F50002C72E /* UniversalPlanList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34851C32E72E4F50002C72E /* UniversalPlanList.swift */; };
 		F34851C72E72E4F50002C72E /* UniversalPlanList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34851C32E72E4F50002C72E /* UniversalPlanList.swift */; };
 		F34851C82E72E4F50002C72E /* UniversalPlanList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34851C32E72E4F50002C72E /* UniversalPlanList.swift */; };
-		F348C6E42A5438EB002D5BD6 /* App Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5672959006F0006D126 /* App Container.swift */; };
+		F348C6E42A5438EB002D5BD6 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5672959006F0006D126 /* AppContainer.swift */; };
 		F3496DC529E0091A0089FC28 /* Section Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3496DC429E0091A0089FC28 /* Section Header.swift */; };
 		F3496DC929E00CE70089FC28 /* Create Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3496DC829E00CE70089FC28 /* Create Button.swift */; };
 		F3499EF22A26DCA0006101B7 /* PanelTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3029C06E9700B08696 /* PanelTab.swift */; };
@@ -577,8 +577,8 @@
 		F3553FBF2B4094D700EF0FD2 /* Allocation Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3553FBE2B4094D700EF0FD2 /* Allocation Card.swift */; };
 		F3553FC02B4094D700EF0FD2 /* Allocation Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3553FBE2B4094D700EF0FD2 /* Allocation Card.swift */; };
 		F3573BBF2C64E0360051259E /* LogCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3573BBE2C64E0360051259E /* LogCard.swift */; };
-		F358132B2A1F5D2A002ADFA4 /* Linking VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */; };
-		F358132C2A1F5D2A002ADFA4 /* Linking VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */; };
+		F358132B2A1F5D2A002ADFA4 /* LinkingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* LinkingVM.swift */; };
+		F358132C2A1F5D2A002ADFA4 /* LinkingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* LinkingVM.swift */; };
 		F358F02E2D2C1C5500BCC07B /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = F358F02D2D2C1C5500BCC07B /* LaunchAtLogin */; };
 		F35B2A0229FFD6AB006E5FD2 /* OtherModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B2A0129FFD6AB006E5FD2 /* OtherModels.swift */; };
 		F35B2A0329FFF857006E5FD2 /* OtherModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B2A0129FFD6AB006E5FD2 /* OtherModels.swift */; };
@@ -588,7 +588,7 @@
 		F35B89C12A725CFB000B5EEF /* TipSuspendedServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B89BD2A725710000B5EEF /* TipSuspendedServer.swift */; };
 		F35B89C32A725CFC000B5EEF /* TipSuspendedServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B89BD2A725710000B5EEF /* TipSuspendedServer.swift */; };
 		F35B9F552A2D6D380045D014 /* millisecondsToTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA56F295900C20006D126 /* millisecondsToTime.swift */; };
-		F35B9F5C2A2DC8D60045D014 /* Nav State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA565295900300006D126 /* Nav State.swift */; };
+		F35B9F5C2A2DC8D60045D014 /* NavState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA565295900300006D126 /* NavState.swift */; };
 		F35B9F612A2DCF9C0045D014 /* Stats Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B9F602A2DCF9C0045D014 /* Stats Tab.swift */; };
 		F35BB0372C656AC800631DBD /* Guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35BB0362C656AC800631DBD /* Guide.swift */; };
 		F35BB0392C656AD300631DBD /* CarouselButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35BB0382C656AD300631DBD /* CarouselButtonStyle.swift */; };
@@ -739,9 +739,9 @@
 		F36D53442A05B90D007324C6 /* FileTab Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C0F9CF29E204FA0040E277 /* FileTab Context Menu.swift */; };
 		F36D53482A05B939007324C6 /* SpriteKitPyzh.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5852959016D0006D126 /* SpriteKitPyzh.swift */; };
 		F36D534A2A05B961007324C6 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F36D53492A05B961007324C6 /* Kingfisher */; };
-		F36D534B2A05B974007324C6 /* Nav Destinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5692959007E0006D126 /* Nav Destinations.swift */; };
-		F36D534C2A05B976007324C6 /* Nav Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BAEC8C2959B3FE00111375 /* Nav Extension.swift */; };
-		F36D534D2A05B98E007324C6 /* Nav State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA565295900300006D126 /* Nav State.swift */; };
+		F36D534B2A05B974007324C6 /* NavDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5692959007E0006D126 /* NavDestinations.swift */; };
+		F36D534C2A05B976007324C6 /* NavExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BAEC8C2959B3FE00111375 /* NavExtension.swift */; };
+		F36D534D2A05B98E007324C6 /* NavState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA565295900300006D126 /* NavState.swift */; };
 		F36E8A982E6E40A400A38229 /* ServerListToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36E8A962E6E40A400A38229 /* ServerListToolbar.swift */; };
 		F36E8A992E6E40A400A38229 /* ServerListToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36E8A962E6E40A400A38229 /* ServerListToolbar.swift */; };
 		F36E8A9C2E6E43D800A38229 /* ServerListGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36E8A9A2E6E43D800A38229 /* ServerListGrid.swift */; };
@@ -992,7 +992,7 @@
 		F39E683D2D2D6A380002BA96 /* AudioPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36B73A22C8B0B7B00E858FE /* AudioPlayerView.swift */; };
 		F39E683F2D2D6A510002BA96 /* AudioVisualizer in Frameworks */ = {isa = PBXBuildFile; productRef = F39E683E2D2D6A510002BA96 /* AudioVisualizer */; };
 		F39E68412D2D6D2F0002BA96 /* FileErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E68402D2D6D2F0002BA96 /* FileErrorView.swift */; };
-		F39EA2DF2D5CB5E200329468 /* Linking VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */; };
+		F39EA2DF2D5CB5E200329468 /* LinkingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* LinkingVM.swift */; };
 		F39EA2F12D5E146300329468 /* GuideStepCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EA2F02D5E146300329468 /* GuideStepCard.swift */; };
 		F3A123562A667804008E3E20 /* LogMetaParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* LogMetaParent.swift */; };
 		F3A123572A667804008E3E20 /* LogMetaParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* LogMetaParent.swift */; };
@@ -1028,7 +1028,7 @@
 		F3A563342D9EF323009AA363 /* LogToolbarActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A5632E2D9EF323009AA363 /* LogToolbarActor.swift */; };
 		F3A563352D9EF323009AA363 /* LogToolbarActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A5632E2D9EF323009AA363 /* LogToolbarActor.swift */; };
 		F3A7BCC3296B2ABB00E080C1 /* StartPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7BCC2296B2ABB00E080C1 /* StartPage.swift */; };
-		F3A7BCD1296B44FF00E080C1 /* Nav Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BAEC8C2959B3FE00111375 /* Nav Extension.swift */; };
+		F3A7BCD1296B44FF00E080C1 /* NavExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BAEC8C2959B3FE00111375 /* NavExtension.swift */; };
 		F3A7CEC82C8B685500413400 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3A7CEC72C8B685500413400 /* Messages.framework */; };
 		F3A7CECB2C8B685500413400 /* MessagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CECA2C8B685500413400 /* MessagesVC.swift */; };
 		F3A7CED02C8B685600413400 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3A7CECF2C8B685600413400 /* Assets.xcassets */; };
@@ -1158,8 +1158,8 @@
 		F3BC03C82B20675E0011F98A /* New Schedule Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BC03C52B20675E0011F98A /* New Schedule Sheet.swift */; };
 		F3BD76F92A43C890003E7385 /* PanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BD76F82A43C890003E7385 /* PanelView.swift */; };
 		F3BD76FD2A43C892003E7385 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3BD76FC2A43C892003E7385 /* Assets.xcassets */; };
-		F3BE36D52A55E1D0007A0179 /* Nav Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BAEC8C2959B3FE00111375 /* Nav Extension.swift */; };
-		F3BE36D62A55E1D2007A0179 /* Nav Destinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5692959007E0006D126 /* Nav Destinations.swift */; };
+		F3BE36D52A55E1D0007A0179 /* NavExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BAEC8C2959B3FE00111375 /* NavExtension.swift */; };
+		F3BE36D62A55E1D2007A0179 /* NavDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5692959007E0006D126 /* NavDestinations.swift */; };
 		F3BF6F232959D15E0059F39B /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BF6F222959D15E0059F39B /* AppSettings.swift */; };
 		F3BF97AA29BFC7E9007B9C9C /* WebSocketTaskConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BF97A929BFC7E9007B9C9C /* WebSocketTaskConnection.swift */; };
 		F3C0F9D029E204FA0040E277 /* FileTab Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C0F9CF29E204FA0040E277 /* FileTab Context Menu.swift */; };
@@ -1412,7 +1412,7 @@
 		F3F061DA2A73CE1200470F7E /* ServerCardParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F061D92A73CE1200470F7E /* ServerCardParent.swift */; };
 		F3F08F9D2DCF7C1D00EFD7DB /* QuickLookFileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E272CEB33510033EFE3 /* QuickLookFileVM.swift */; };
 		F3F0A2DB2D6339510084013B /* BisquitHostApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* BisquitHostApp.swift */; };
-		F3F0A2DC2D63395F0084013B /* App Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5672959006F0006D126 /* App Container.swift */; };
+		F3F0A2DC2D63395F0084013B /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5672959006F0006D126 /* AppContainer.swift */; };
 		F3F0A2DF2D6339760084013B /* StartPageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA57B2959011B0006D126 /* StartPageVM.swift */; };
 		F3F0A2E02D6339760084013B /* StartPageFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32DB8A729AE6B800074E045 /* StartPageFooter.swift */; };
 		F3F0A2E12D6339760084013B /* StartPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA579295901110006D126 /* StartPage.swift */; };
@@ -1420,9 +1420,9 @@
 		F3F2A5BB29AC296D00AD20A4 /* ServerCardSuspended.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F2A5BA29AC296D00AD20A4 /* ServerCardSuspended.swift */; };
 		F3F2BB9D2A5403DD00D44CA6 /* ServerListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F352AF962A4EDB1D004AD489 /* ServerListVM.swift */; };
 		F3F2BBA52A540B8800D44CA6 /* StartPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F2BBA42A540B8800D44CA6 /* StartPage.swift */; };
-		F3F2BBA92A540DF900D44CA6 /* Nav State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA565295900300006D126 /* Nav State.swift */; };
-		F3F2BBAA2A540E4000D44CA6 /* Nav Destinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5692959007E0006D126 /* Nav Destinations.swift */; };
-		F3F2BBAB2A540E4400D44CA6 /* Nav Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BAEC8C2959B3FE00111375 /* Nav Extension.swift */; };
+		F3F2BBA92A540DF900D44CA6 /* NavState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA565295900300006D126 /* NavState.swift */; };
+		F3F2BBAA2A540E4000D44CA6 /* NavDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5692959007E0006D126 /* NavDestinations.swift */; };
+		F3F2BBAB2A540E4400D44CA6 /* NavExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BAEC8C2959B3FE00111375 /* NavExtension.swift */; };
 		F3F2BBAC2A540E6500D44CA6 /* CloudKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304498929E990E9006DC0C7 /* CloudKeys.swift */; };
 		F3F3FC792B21E332007C635B /* QR Code View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D264432A66B3A6005C3777 /* QR Code View.swift */; };
 		F3F5AD6A2E885E4B007AD97D /* Appearance in Frameworks */ = {isa = PBXBuildFile; productRef = F3F5AD692E885E4B007AD97D /* Appearance */; };
@@ -1758,9 +1758,9 @@
 		F31BA54E2958FFAF0006D126 /* Clip Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Clip Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F31BA5592958FFB00006D126 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F31BA55A2958FFB00006D126 /* Clip Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Clip Demo.entitlements"; sourceTree = "<group>"; };
-		F31BA565295900300006D126 /* Nav State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav State.swift"; sourceTree = "<group>"; };
-		F31BA5672959006F0006D126 /* App Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Container.swift"; sourceTree = "<group>"; };
-		F31BA5692959007E0006D126 /* Nav Destinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Destinations.swift"; sourceTree = "<group>"; };
+		F31BA565295900300006D126 /* NavState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavState.swift; sourceTree = "<group>"; };
+		F31BA5672959006F0006D126 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
+		F31BA5692959007E0006D126 /* NavDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavDestinations.swift; sourceTree = "<group>"; };
 		F31BA56F295900C20006D126 /* millisecondsToTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = millisecondsToTime.swift; sourceTree = "<group>"; };
 		F31BA575295900E30006D126 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		F31BA579295901110006D126 /* StartPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPage.swift; sourceTree = "<group>"; };
@@ -1828,7 +1828,7 @@
 		F3310F2C2DD07CA100FA0AEC /* QuickLook Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "QuickLook Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3310F2D2DD07CA100FA0AEC /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		F3317AE92A45E24F00CA104D /* Guide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guide.swift; sourceTree = "<group>"; };
-		F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dynamic Island Badge.swift"; sourceTree = "<group>"; };
+		F335CA072C63E8CB006C71C6 /* DynamicIslandBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicIslandBadge.swift; sourceTree = "<group>"; };
 		F335F6E42DD324BD00D743FF /* SheetCreateAllocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetCreateAllocation.swift; sourceTree = "<group>"; };
 		F335F6E62DD3564A00D743FF /* FileLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLink.swift; sourceTree = "<group>"; };
 		F33712182DC2FD240014B427 /* PanelSectionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelSectionList.swift; sourceTree = "<group>"; };
@@ -1887,7 +1887,7 @@
 		F3553FBB2B40945C00EF0FD2 /* Allocation List Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation List Parent.swift"; sourceTree = "<group>"; };
 		F3553FBE2B4094D700EF0FD2 /* Allocation Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation Card.swift"; sourceTree = "<group>"; };
 		F3573BBE2C64E0360051259E /* LogCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogCard.swift; sourceTree = "<group>"; };
-		F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Linking VM.swift"; sourceTree = "<group>"; };
+		F358132A2A1F5D2A002ADFA4 /* LinkingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkingVM.swift; sourceTree = "<group>"; };
 		F35B2A0129FFD6AB006E5FD2 /* OtherModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherModels.swift; sourceTree = "<group>"; };
 		F35B89BD2A725710000B5EEF /* TipSuspendedServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipSuspendedServer.swift; sourceTree = "<group>"; };
 		F35B9F602A2DCF9C0045D014 /* Stats Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stats Tab.swift"; sourceTree = "<group>"; };
@@ -2103,7 +2103,7 @@
 		F3B66DF32D60B46F00F1841B /* InfoTabLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTabLiveActivity.swift; sourceTree = "<group>"; };
 		F3B81DF02A49C96000633B66 /* InfoAbsoluteStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoAbsoluteStats.swift; sourceTree = "<group>"; };
 		F3BAEC862959B1DE00111375 /* ServerList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerList.swift; sourceTree = "<group>"; };
-		F3BAEC8C2959B3FE00111375 /* Nav Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Extension.swift"; sourceTree = "<group>"; };
+		F3BAEC8C2959B3FE00111375 /* NavExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavExtension.swift; sourceTree = "<group>"; };
 		F3BBE36329AF97D800323C6B /* Credential Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Credential Field.swift"; sourceTree = "<group>"; };
 		F3BC03AC2B1FF2FC0011F98A /* Schedule Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Schedule Context Menu.swift"; sourceTree = "<group>"; };
 		F3BC03B12B1FF4830011F98A /* Task Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task Context Menu.swift"; sourceTree = "<group>"; };
@@ -2677,12 +2677,12 @@
 		F31BA564295900270006D126 /* Nav */ = {
 			isa = PBXGroup;
 			children = (
-				F31BA5672959006F0006D126 /* App Container.swift */,
-				F335CA072C63E8CB006C71C6 /* Dynamic Island Badge.swift */,
-				F31BA565295900300006D126 /* Nav State.swift */,
-				F31BA5692959007E0006D126 /* Nav Destinations.swift */,
-				F3BAEC8C2959B3FE00111375 /* Nav Extension.swift */,
-				F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */,
+				F31BA5672959006F0006D126 /* AppContainer.swift */,
+				F335CA072C63E8CB006C71C6 /* DynamicIslandBadge.swift */,
+				F31BA565295900300006D126 /* NavState.swift */,
+				F31BA5692959007E0006D126 /* NavDestinations.swift */,
+				F3BAEC8C2959B3FE00111375 /* NavExtension.swift */,
+				F358132A2A1F5D2A002ADFA4 /* LinkingVM.swift */,
 			);
 			path = Nav;
 			sourceTree = "<group>";
@@ -4815,7 +4815,7 @@
 				F373CDB82D895419008B64BE /* LogTopbar.swift in Sources */,
 				F373CDB92D895419008B64BE /* LogTopbarCard.swift in Sources */,
 				F3464D2C2A863A6100188B0C /* CreateBackup.swift in Sources */,
-				F30C13082A545D6E00A7EFF0 /* Linking VM.swift in Sources */,
+				F30C13082A545D6E00A7EFF0 /* LinkingVM.swift in Sources */,
 				F31D0BB52A2573E200119D07 /* AppSettings.swift in Sources */,
 				F3FFB7472A57F91E00220FA5 /* MapView.swift in Sources */,
 				F370804F2A2A1EAC0046CE70 /* Schedule List.swift in Sources */,
@@ -4891,7 +4891,7 @@
 				F30088FF2B3B62050051476C /* User Invitation Permission.swift in Sources */,
 				F3BC03B82B1FF8E40011F98A /* Database Context Menu.swift in Sources */,
 				F3F2A5BB29AC296D00AD20A4 /* ServerCardSuspended.swift in Sources */,
-				F30C13042A545ADC00A7EFF0 /* Nav State.swift in Sources */,
+				F30C13042A545ADC00A7EFF0 /* NavState.swift in Sources */,
 				F37080512A2A1EBA0046CE70 /* Schedule Task.swift in Sources */,
 				F3A5632B2D9EF21B009AA363 /* LogMetaCard.swift in Sources */,
 				F3464D262A86397F00188B0C /* PowerSignalAppEnum.swift in Sources */,
@@ -4931,7 +4931,7 @@
 				F3D49DB52B2336240033B52E /* OverviewVM.swift in Sources */,
 				F3CCF5BA2B345466005FFF2C /* Permission List.swift in Sources */,
 				F3CCF5C12B34576F005FFF2C /* AllocationList.swift in Sources */,
-				F30C12FE2A54546900A7EFF0 /* App Container.swift in Sources */,
+				F30C12FE2A54546900A7EFF0 /* AppContainer.swift in Sources */,
 				F35FEB0F2B09F4D3004DA05D /* NetworkVM.swift in Sources */,
 				F3EB09E02A297F250073916A /* DesImageVM.swift in Sources */,
 				F3E98C062E6AE0830019439F /* LogCardEventDescription.swift in Sources */,
@@ -5028,7 +5028,7 @@
 				F31BA5A3295902610006D126 /* Console Tab.swift in Sources */,
 				F3C9D8602B319B9E00265492 /* Permission Card.swift in Sources */,
 				F3287A7B2B10A17E001AFE54 /* WidgetLiveActivity.swift in Sources */,
-				F31BA5682959006F0006D126 /* App Container.swift in Sources */,
+				F31BA5682959006F0006D126 /* AppContainer.swift in Sources */,
 				F36B73872C8AEAE700E858FE /* Asset.swift in Sources */,
 				F32F3AAB2D8EB8EC00E69B98 /* Background Image.swift in Sources */,
 				F325F7002A54BBCF00E89EC4 /* InfoTabAllocations.swift in Sources */,
@@ -5094,7 +5094,7 @@
 				F3EE6D7A2D9E8E2000F0A633 /* BakgroundTask.swift in Sources */,
 				F398E0E22CEB562400AA4DD7 /* AudioPlayerVM.swift in Sources */,
 				F328BB552E8010B20012F003 /* DiscoverDocuments.swift in Sources */,
-				F358132B2A1F5D2A002ADFA4 /* Linking VM.swift in Sources */,
+				F358132B2A1F5D2A002ADFA4 /* LinkingVM.swift in Sources */,
 				F3878ECD2A1BCE5000AD8657 /* Dev Settings.swift in Sources */,
 				F353D4FD2D980A5000EC9F3A /* ServerListTips.swift in Sources */,
 				F3D037022CECE08600C4E1AC /* ImagePlaygroundToolbarButton.swift in Sources */,
@@ -5191,7 +5191,7 @@
 				F3E8B3502CF485FB005D25F8 /* Console Message.swift in Sources */,
 				F37DDA7629E2AF7600B9680C /* Folder Path VM.swift in Sources */,
 				F3E0B4962DC30351003C8B27 /* InfoTabSubdomains.swift in Sources */,
-				F335CA0B2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */,
+				F335CA0B2C63E8CB006C71C6 /* DynamicIslandBadge.swift in Sources */,
 				F3A994AA2A177ED100530615 /* MapVM.swift in Sources */,
 				F30088FC2B3B56210051476C /* User List Parent.swift in Sources */,
 				F35B2A0229FFD6AB006E5FD2 /* OtherModels.swift in Sources */,
@@ -5246,7 +5246,7 @@
 				F328BB522E7FE00C0012F003 /* MapSectionNew.swift in Sources */,
 				F37A366B2A35158A00517EFC /* Console View.swift in Sources */,
 				F39872102A1AE3CE0022B00E /* VideoPlayer.swift in Sources */,
-				F31BA566295900300006D126 /* Nav State.swift in Sources */,
+				F31BA566295900300006D126 /* NavState.swift in Sources */,
 				F3BC03C62B20675E0011F98A /* New Schedule Sheet.swift in Sources */,
 				F3DDD59C2A62AC7C009FDFBF /* Create Backup Button.swift in Sources */,
 				F37A366F2A3515A900517EFC /* Sftp View.swift in Sources */,
@@ -5263,7 +5263,7 @@
 				F37266BC29D811B7005FD103 /* FileView.swift in Sources */,
 				F31C8D882E70E79D00D16B08 /* PlanViewList.swift in Sources */,
 				F3AF91C52B423535001D8F80 /* SSH List.swift in Sources */,
-				F31BA56A2959007E0006D126 /* Nav Destinations.swift in Sources */,
+				F31BA56A2959007E0006D126 /* NavDestinations.swift in Sources */,
 				F3D2643A2A66AB92005C3777 /* Account View.swift in Sources */,
 				F3202CD92D5624B10030B3CC /* PlanType.swift in Sources */,
 				F37266E929D9EFFE005FD103 /* Cache Size.swift in Sources */,
@@ -5279,7 +5279,7 @@
 				F30089002B3B62450051476C /* User Invitation Permission.swift in Sources */,
 				F3BBE36429AF97D800323C6B /* Credential Field.swift in Sources */,
 				F33944112A49022A00E2F0FC /* InfoTabResources.swift in Sources */,
-				F3A7BCD1296B44FF00E080C1 /* Nav Extension.swift in Sources */,
+				F3A7BCD1296B44FF00E080C1 /* NavExtension.swift in Sources */,
 				F3AB1DF72D79C42B00387164 /* MetricKitManager.swift in Sources */,
 				F3BC03B22B1FF4830011F98A /* Task Context Menu.swift in Sources */,
 				F3AF91C92B4235BB001D8F80 /* SSH Card.swift in Sources */,
@@ -5316,7 +5316,7 @@
 				F3FF3E8C2D93576B00EDFBC6 /* UpdateChecker.swift in Sources */,
 				F3C9D8612B319B9E00265492 /* Permission Card.swift in Sources */,
 				F36E8AA02E6E441600A38229 /* ServerListUpdateButton.swift in Sources */,
-				F30C130A2A545E6F00A7EFF0 /* Linking VM.swift in Sources */,
+				F30C130A2A545E6F00A7EFF0 /* LinkingVM.swift in Sources */,
 				F36B14B62DC6334E008C1AF9 /* GameKit.swift in Sources */,
 				F3F5AD8E2E8A6490007AD97D /* ServerListTopbarSettingsButton.swift in Sources */,
 				F3EB09D42A29547E0073916A /* FileView.swift in Sources */,
@@ -5332,7 +5332,7 @@
 				F3499EFE2A277FDF006101B7 /* FileIcon.swift in Sources */,
 				F3F5ADAB2E8A962D007AD97D /* WebSocketConnection.swift in Sources */,
 				F36114E02E569ED30052A5A2 /* StartPageHelper.swift in Sources */,
-				F3BE36D62A55E1D2007A0179 /* Nav Destinations.swift in Sources */,
+				F3BE36D62A55E1D2007A0179 /* NavDestinations.swift in Sources */,
 				F3BF6F232959D15E0059F39B /* AppSettings.swift in Sources */,
 				F3464D272A86398000188B0C /* PowerSignalAppEnum.swift in Sources */,
 				F3FFB7412A57F0AB00220FA5 /* Users VM.swift in Sources */,
@@ -5356,7 +5356,7 @@
 				F3499EF82A275556006101B7 /* WebsocketMessage.swift in Sources */,
 				F36B14B72DC63369008C1AF9 /* UserDefaults.swift in Sources */,
 				F3E679B02D5A854700A7ADDE /* ServerOptionsProvider.swift in Sources */,
-				F30C12FD2A54546900A7EFF0 /* App Container.swift in Sources */,
+				F30C12FD2A54546900A7EFF0 /* AppContainer.swift in Sources */,
 				F3C9D85D2B31146E00265492 /* User Image.swift in Sources */,
 				F3D558B22A33C6A000608447 /* FileTabVM.swift in Sources */,
 				F373CDB02D895419008B64BE /* LogTopbar.swift in Sources */,
@@ -5365,7 +5365,7 @@
 				F37266E129D9A7BA005FD103 /* PanelView.swift in Sources */,
 				F3015DE72D9F27E800B9BCC6 /* LogCardImage.swift in Sources */,
 				F3464D362A863A6800188B0C /* SendCommand.swift in Sources */,
-				F30C13032A545ADB00A7EFF0 /* Nav State.swift in Sources */,
+				F30C13032A545ADB00A7EFF0 /* NavState.swift in Sources */,
 				F3F061D12A73C37200470F7E /* MapList.swift in Sources */,
 				F3EB09CE2A29531B0073916A /* DesImageVM.swift in Sources */,
 				F3A1D2332A201C6D0053261E /* ServerState.swift in Sources */,
@@ -5376,7 +5376,7 @@
 				F3BAEC882959B21D00111375 /* ServerList.swift in Sources */,
 				F3FFB73F2A57F02C00220FA5 /* InfoTab.swift in Sources */,
 				F3F5AD8B2E8A5EB8007AD97D /* MetricGauge.swift in Sources */,
-				F3BE36D52A55E1D0007A0179 /* Nav Extension.swift in Sources */,
+				F3BE36D52A55E1D0007A0179 /* NavExtension.swift in Sources */,
 				F3FFB7482A57FF0600220FA5 /* LogVM.swift in Sources */,
 				F3A31B0A2B0B161D00F89C51 /* CloudKeyCard.swift in Sources */,
 				F314617D2D5A82F000547B6C /* Networking.swift in Sources */,
@@ -5467,13 +5467,13 @@
 				F3E2BF0F2C1EC94300B7A6D4 /* ContactsVM.swift in Sources */,
 				F3F5ADA22E8A961D007AD97D /* WebSocketConnectionDelegate.swift in Sources */,
 				F3553FB62B40939C00EF0FD2 /* Allocation VM.swift in Sources */,
-				F358132C2A1F5D2A002ADFA4 /* Linking VM.swift in Sources */,
+				F358132C2A1F5D2A002ADFA4 /* LinkingVM.swift in Sources */,
 				F36113FF2E55E7450052A5A2 /* TextFileToolbar.swift in Sources */,
 				F3E024C72B228F4C00FFF686 /* New Task Sheet.swift in Sources */,
 				F3C9D8622B319B9E00265492 /* Permission Card.swift in Sources */,
 				F348517E2E72D10A0002C72E /* customRound.swift in Sources */,
 				F3FA309B2DD1EB4300280133 /* FileListHeader.swift in Sources */,
-				F3F0A2DC2D63395F0084013B /* App Container.swift in Sources */,
+				F3F0A2DC2D63395F0084013B /* AppContainer.swift in Sources */,
 				F389BB652A05B5AF00911EBF /* millisecondsToTime.swift in Sources */,
 				F34851882E72D4A80002C72E /* PlanCardName.swift in Sources */,
 				F35C4D612E03999B00720E74 /* Multipart Form Data.swift in Sources */,
@@ -5486,7 +5486,7 @@
 				F35B2A0329FFF857006E5FD2 /* OtherModels.swift in Sources */,
 				F34851AC2E72E0450002C72E /* PlanCardLabelBot.swift in Sources */,
 				F3FF5A002A4A3188003A1973 /* User List.swift in Sources */,
-				F36D534C2A05B976007324C6 /* Nav Extension.swift in Sources */,
+				F36D534C2A05B976007324C6 /* NavExtension.swift in Sources */,
 				F3A123582A667804008E3E20 /* LogMetaParent.swift in Sources */,
 				F303214C2B3FEDC6002A73B8 /* ServerSettingsView.swift in Sources */,
 				F310BB3A2A54E31800843F14 /* ServerListVM.swift in Sources */,
@@ -5520,7 +5520,7 @@
 				F325E2CD2E5E6CE50008928E /* Sheet Create Allocation Card.swift in Sources */,
 				F337D75A2A4DBC840011524E /* Create Apikey.swift in Sources */,
 				F32FD71F2B1E060400723B88 /* NetworkCalls.swift in Sources */,
-				F36D534D2A05B98E007324C6 /* Nav State.swift in Sources */,
+				F36D534D2A05B98E007324C6 /* NavState.swift in Sources */,
 				F3553FBA2B4093E600EF0FD2 /* Allocation List.swift in Sources */,
 				F3D7F8512C8ED3D100368ECE /* Disable 2FA View.swift in Sources */,
 				F36B14B52DC63324008C1AF9 /* GameKit.swift in Sources */,
@@ -5614,7 +5614,7 @@
 				F3F5BC972BF7668E00EB8FB1 /* SensitivityAnalyzer.swift in Sources */,
 				F389BB6D2A05B5EE00911EBF /* Cache Size.swift in Sources */,
 				F30088AB2B3A1A520051476C /* Schedule VM.swift in Sources */,
-				F335CA0C2C63E8CB006C71C6 /* Dynamic Island Badge.swift in Sources */,
+				F335CA0C2C63E8CB006C71C6 /* DynamicIslandBadge.swift in Sources */,
 				F36D53332A05B8A9007324C6 /* Folder Path.swift in Sources */,
 				F38F9E2A2CEB33510033EFE3 /* QuickLookFileVM.swift in Sources */,
 				F3AF91CE2B423A26001D8F80 /* SSH Create View.swift in Sources */,
@@ -5628,7 +5628,7 @@
 				F3E98C142E6AE32E0019439F /* CarouselCardView.swift in Sources */,
 				F3A31B0D2B0B161D00F89C51 /* CloudKeyCard.swift in Sources */,
 				F337C1632A8CE962006F321C /* Startup View.swift in Sources */,
-				F36D534B2A05B974007324C6 /* Nav Destinations.swift in Sources */,
+				F36D534B2A05B974007324C6 /* NavDestinations.swift in Sources */,
 				F37A36752A35173B00517EFC /* ServerSettingsVM.swift in Sources */,
 				F36E8A992E6E40A400A38229 /* ServerListToolbar.swift in Sources */,
 				F3202CDC2D5624B10030B3CC /* PlanType.swift in Sources */,
@@ -5932,10 +5932,10 @@
 				F3EE6D762D9E8E2000F0A633 /* BakgroundTask.swift in Sources */,
 				F335F6E92DD356BB00D743FF /* File Permissions Parent.swift in Sources */,
 				F335F6EA2DD356BB00D743FF /* File Permissions View.swift in Sources */,
-				F30C130B2A545ED900A7EFF0 /* Linking VM.swift in Sources */,
+				F30C130B2A545ED900A7EFF0 /* LinkingVM.swift in Sources */,
 				F32716DD2CF62C9900F2DC31 /* Backup List.swift in Sources */,
 				F3FF3E8A2D93576B00EDFBC6 /* UpdateChecker.swift in Sources */,
-				F3F2BBAA2A540E4000D44CA6 /* Nav Destinations.swift in Sources */,
+				F3F2BBAA2A540E4000D44CA6 /* NavDestinations.swift in Sources */,
 				F3FD9FA12C65217C00A69314 /* QuickLookView.swift in Sources */,
 				F3464D2E2A863A6200188B0C /* CreateBackup.swift in Sources */,
 				F3317AEE2A45E33300CA104D /* millisecondsToTime.swift in Sources */,
@@ -5960,13 +5960,13 @@
 				F3DF03DB2B74F01C00CF6F5E /* Database VM.swift in Sources */,
 				F32716DE2CF62CAB00F2DC31 /* Create Backup Button.swift in Sources */,
 				F3F2BB9D2A5403DD00D44CA6 /* ServerListVM.swift in Sources */,
-				F3F2BBAB2A540E4400D44CA6 /* Nav Extension.swift in Sources */,
+				F3F2BBAB2A540E4400D44CA6 /* NavExtension.swift in Sources */,
 				F3FD9F992C651A9200A69314 /* FileTabVM.swift in Sources */,
 				F3EEC03B2AF2F93800BFED78 /* StartPageVM.swift in Sources */,
 				F335F6E82DD3568200D743FF /* FileTab Context Menu.swift in Sources */,
 				F32FD71C2B1E044000723B88 /* ANSIConverter.swift in Sources */,
 				F320DDA52B704E3C00957D92 /* PreviewProperty.swift in Sources */,
-				F348C6E42A5438EB002D5BD6 /* App Container.swift in Sources */,
+				F348C6E42A5438EB002D5BD6 /* AppContainer.swift in Sources */,
 				F3FC99162C65888900150823 /* TempDir.swift in Sources */,
 				F3F2BBA52A540B8800D44CA6 /* StartPage.swift in Sources */,
 				F34851BA2E72E0790002C72E /* PlanCardLabelCloud.swift in Sources */,
@@ -5976,7 +5976,7 @@
 				F31DB1952E01B39600FB66B7 /* PowerSwitch.swift in Sources */,
 				F38928232A44182F00561CDF /* Console.swift in Sources */,
 				F36B14B22DC63324008C1AF9 /* GameKit.swift in Sources */,
-				F3F2BBA92A540DF900D44CA6 /* Nav State.swift in Sources */,
+				F3F2BBA92A540DF900D44CA6 /* NavState.swift in Sources */,
 				F3AB1DF42D79C42B00387164 /* MetricKitManager.swift in Sources */,
 				F32E749A2E7B78F200F3EB36 /* MetricGauge.swift in Sources */,
 				F32E749B2E7B78F200F3EB36 /* ServerCard.swift in Sources */,
@@ -6056,7 +6056,7 @@
 				F3E98C262E6BB4E40019439F /* Place.swift in Sources */,
 				F31461802D5A82F000547B6C /* Networking.swift in Sources */,
 				F35B89BF2A725CF7000B5EEF /* TipSuspendedServer.swift in Sources */,
-				F30C13102A54606900A7EFF0 /* Nav Extension.swift in Sources */,
+				F30C13102A54606900A7EFF0 /* NavExtension.swift in Sources */,
 				F300892A2B3C55CD0051476C /* File Permissions Parent.swift in Sources */,
 				F3AB1DF62D79C42B00387164 /* MetricKitManager.swift in Sources */,
 				F32FD7232B1E065600723B88 /* NetworkCalls.swift in Sources */,
@@ -6082,7 +6082,7 @@
 				F3015DE32D9F26C600B9BCC6 /* LogCardTimestamp.swift in Sources */,
 				F3F5ADA92E8A962D007AD97D /* WebSocketConnection.swift in Sources */,
 				F3648EDB2DCB98BE001609AA /* SubdomainList.swift in Sources */,
-				F30C130F2A54605B00A7EFF0 /* Nav Destinations.swift in Sources */,
+				F30C130F2A54605B00A7EFF0 /* NavDestinations.swift in Sources */,
 				F30088B62B3A21410051476C /* ScheduleList.swift in Sources */,
 				F3DF50CD2B38FDE800206CAE /* Permission Card.swift in Sources */,
 				F37DBF1C2E76A5E00039858B /* LogActorAvatar.swift in Sources */,
@@ -6193,7 +6193,7 @@
 				F37DBF242E77F73A0039858B /* StatRowUsers.swift in Sources */,
 				F3AB4A782CF1D97C00A8252F /* TipJSONFormatter.swift in Sources */,
 				F37DBF282E780DB30039858B /* StatRowSubdomains.swift in Sources */,
-				F39EA2DF2D5CB5E200329468 /* Linking VM.swift in Sources */,
+				F39EA2DF2D5CB5E200329468 /* LinkingVM.swift in Sources */,
 				F32FD7172B1E042400723B88 /* WebSocketTaskConnection.swift in Sources */,
 				F36B14A32DC4CAF6008C1AF9 /* Route.swift in Sources */,
 				F30088AD2B3A1F500051476C /* UserView.swift in Sources */,
@@ -6214,7 +6214,7 @@
 				F373CDB42D895419008B64BE /* LogTopbar.swift in Sources */,
 				F373CDB52D895419008B64BE /* LogTopbarCard.swift in Sources */,
 				F37DBF262E780BF90039858B /* StatRowDatabases.swift in Sources */,
-				F35B9F5C2A2DC8D60045D014 /* Nav State.swift in Sources */,
+				F35B9F5C2A2DC8D60045D014 /* NavState.swift in Sources */,
 				F36B14BE2DC64D29008C1AF9 /* AppSettings.swift in Sources */,
 				F37DBF2C2E780F840039858B /* StatRowSchedules.swift in Sources */,
 			);
