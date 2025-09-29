@@ -33,8 +33,8 @@ struct FileTab: View {
                 .animation(.default, value: vm.filteredFiles.indices)
             }
             .scrollContentBackground(.hidden)
-            .navigationDestination(for: String.self) { file in
-                FolderDestination(id, at: file)
+            .navigationDestination(for: String.self) {
+                FolderDestination(id, at: $0)
             }
         }
         .navigationTitle("Files")

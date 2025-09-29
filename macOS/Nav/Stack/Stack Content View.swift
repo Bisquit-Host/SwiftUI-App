@@ -26,8 +26,8 @@ struct StackContentView: View {
                 }
             }
             .navigationTitle("Servers")
-            .navigationDestination(for: Route.self) { route in
-                switch route {
+            .navigationDestination(for: Route.self) {
+                switch $0 {
                 case .server:
                     List(selection: $nav.selectedTab) {
                         ForEach(nav.enabledTabs) { tab in

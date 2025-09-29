@@ -27,9 +27,9 @@ struct DashboardShell: View {
     var body: some View {
         NavigationSplitView {
             DashboardSidebar($selection)
-                .navigationDestination(for: ServerAttributes.self) { server in
-                    DashboardView(server)
-                        .id(server.id)
+                .navigationDestination(for: ServerAttributes.self) {
+                    DashboardView($0)
+                        .id($0.id)
                 }
         } detail: {
             Text("Select a server")

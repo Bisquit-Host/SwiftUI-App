@@ -18,8 +18,8 @@ struct TwoColumnContentView: View {
             NavigationStack(path: $nav.path) {
                 TwoColumnDetailView()
                     .focused($focusedList, equals: .sectionList)
-                    .navigationDestination(for: Route.self) { route in
-                        switch route {
+                    .navigationDestination(for: Route.self) {
+                        switch $0 {
                         case .tab(let tab):
                             if let server = nav.selectedServers.first {
                                 ColumnDetail(tab, server: server, focusedList: $focusedList)
