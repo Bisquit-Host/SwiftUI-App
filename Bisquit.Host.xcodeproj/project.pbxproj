@@ -139,9 +139,9 @@
 		F30C13142A5461BA00A7EFF0 /* Cache VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266EA29D9F06C005FD103 /* Cache VM.swift */; };
 		F30C13152A5461BA00A7EFF0 /* Cache VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266EA29D9F06C005FD103 /* Cache VM.swift */; };
 		F30C13162A5461BB00A7EFF0 /* Cache VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266EA29D9F06C005FD103 /* Cache VM.swift */; };
-		F30C13182A54626C00A7EFF0 /* Bisquit-Host App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* Bisquit-Host App.swift */; };
-		F30C13192A54626D00A7EFF0 /* Bisquit-Host App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* Bisquit-Host App.swift */; };
-		F30C131A2A54626D00A7EFF0 /* Bisquit-Host App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* Bisquit-Host App.swift */; };
+		F30C13182A54626C00A7EFF0 /* BisquitHostApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* BisquitHostApp.swift */; };
+		F30C13192A54626D00A7EFF0 /* BisquitHostApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* BisquitHostApp.swift */; };
+		F30C131A2A54626D00A7EFF0 /* BisquitHostApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* BisquitHostApp.swift */; };
 		F310A2F02A56AF86001AF45F /* Network VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F310A2EF2A56AF86001AF45F /* Network VM.swift */; };
 		F310A2F12A56B0BE001AF45F /* Network VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F310A2EF2A56AF86001AF45F /* Network VM.swift */; };
 		F310BB392A54E31700843F14 /* ServerListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F352AF962A4EDB1D004AD489 /* ServerListVM.swift */; };
@@ -182,7 +182,7 @@
 		F318FE472A1592AB00DE0A5C /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = F318FE462A1592AB00DE0A5C /* OrderedCollections */; };
 		F31B2D982A7AD8C800C08EE6 /* Ansi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39626F12A7AD64B0057E356 /* Ansi.swift */; };
 		F31B4450297550CD0036868F /* StatsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31B444F297550CD0036868F /* StatsTab.swift */; };
-		F31BA5272958FF7C0006D126 /* Bisquit-Host App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* Bisquit-Host App.swift */; };
+		F31BA5272958FF7C0006D126 /* BisquitHostApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* BisquitHostApp.swift */; };
 		F31BA52B2958FF7D0006D126 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F31BA52A2958FF7D0006D126 /* Assets.xcassets */; };
 		F31BA53D2958FF7E0006D126 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F31BA53C2958FF7E0006D126 /* Assets.xcassets */; };
 		F31BA55D2958FFB00006D126 /* Clip Demo.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = F31BA54E2958FFAF0006D126 /* Clip Demo.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -1417,7 +1417,7 @@
 		F3F061D72A73C9A500470F7E /* MapVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A92A177ED100530615 /* MapVM.swift */; };
 		F3F061DA2A73CE1200470F7E /* ServerCardParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F061D92A73CE1200470F7E /* ServerCardParent.swift */; };
 		F3F08F9D2DCF7C1D00EFD7DB /* QuickLookFileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E272CEB33510033EFE3 /* QuickLookFileVM.swift */; };
-		F3F0A2DB2D6339510084013B /* Bisquit-Host App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* Bisquit-Host App.swift */; };
+		F3F0A2DB2D6339510084013B /* BisquitHostApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* BisquitHostApp.swift */; };
 		F3F0A2DC2D63395F0084013B /* App Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5672959006F0006D126 /* App Container.swift */; };
 		F3F0A2DF2D6339760084013B /* StartPageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA57B2959011B0006D126 /* StartPageVM.swift */; };
 		F3F0A2E02D6339760084013B /* StartPageFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32DB8A729AE6B800074E045 /* StartPageFooter.swift */; };
@@ -1740,7 +1740,7 @@
 		F318240A2A8777CD0039866C /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		F31B444F297550CD0036868F /* StatsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsTab.swift; sourceTree = "<group>"; };
 		F31BA5232958FF7C0006D126 /* Bisquit.Host.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bisquit.Host.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F31BA5262958FF7C0006D126 /* Bisquit-Host App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bisquit-Host App.swift"; sourceTree = "<group>"; };
+		F31BA5262958FF7C0006D126 /* BisquitHostApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BisquitHostApp.swift; sourceTree = "<group>"; };
 		F31BA52A2958FF7D0006D126 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F31BA5332958FF7D0006D126 /* watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watchOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F31BA53C2958FF7E0006D126 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -2611,7 +2611,7 @@
 		F31BA5252958FF7C0006D126 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				F31BA5262958FF7C0006D126 /* Bisquit-Host App.swift */,
+				F31BA5262958FF7C0006D126 /* BisquitHostApp.swift */,
 				F3D52B242B13FE9C00167DD6 /* AppDelegate.swift */,
 				F31BA564295900270006D126 /* Nav */,
 				F300C45F2D8C2B0100743300 /* Utils */,
@@ -4841,7 +4841,7 @@
 				F3202C782D5583680030B3CC /* PlanViewParent.swift in Sources */,
 				F3F3FC792B21E332007C635B /* QR Code View.swift in Sources */,
 				F342FAB02B2E08C100854270 /* LogVM.swift in Sources */,
-				F30C13192A54626D00A7EFF0 /* Bisquit-Host App.swift in Sources */,
+				F30C13192A54626D00A7EFF0 /* BisquitHostApp.swift in Sources */,
 				F3EB09DA2A295C460073916A /* VideoPlayer.swift in Sources */,
 				F3202D4A2D56DC050030B3CC /* Prefetcher.swift in Sources */,
 				F342FAB32B2E43D500854270 /* LogCard.swift in Sources */,
@@ -4993,7 +4993,7 @@
 				F36B14632DC39F6A008C1AF9 /* Debug Settings Tips.swift in Sources */,
 				F3015DDB2D9F24F600B9BCC6 /* LogCardEvent.swift in Sources */,
 				F38F9E282CEB33510033EFE3 /* QuickLookFileVM.swift in Sources */,
-				F31BA5272958FF7C0006D126 /* Bisquit-Host App.swift in Sources */,
+				F31BA5272958FF7C0006D126 /* BisquitHostApp.swift in Sources */,
 				F300891F2B3B896C0051476C /* File Permissions View.swift in Sources */,
 				F3C9D8582B31135B00265492 /* Permission List.swift in Sources */,
 				F3EDEE3529C0C84C00B08696 /* Panel VM.swift in Sources */,
@@ -5324,7 +5324,7 @@
 				F30C12F82A5451C100A7EFF0 /* ServerListVM.swift in Sources */,
 				F3FFB7432A57F13D00220FA5 /* User View.swift in Sources */,
 				F311CAAF2A646612004E4A4A /* LogMetaView.swift in Sources */,
-				F30C13182A54626C00A7EFF0 /* Bisquit-Host App.swift in Sources */,
+				F30C13182A54626C00A7EFF0 /* BisquitHostApp.swift in Sources */,
 				F30088F72B3B55CE0051476C /* User Invitation View.swift in Sources */,
 				F3A7CF6B2C8DF41300413400 /* VideoFileVM.swift in Sources */,
 				F376D0562A02487C00B7377A /* CloudKeys.swift in Sources */,
@@ -5560,7 +5560,7 @@
 				F389BB7B2A05B64E00911EBF /* Biometry Usage View.swift in Sources */,
 				F3DE1B992A556CCE007A1624 /* LogList.swift in Sources */,
 				F36D53222A05B83B007324C6 /* Websocket Message.swift in Sources */,
-				F3F0A2DB2D6339510084013B /* Bisquit-Host App.swift in Sources */,
+				F3F0A2DB2D6339510084013B /* BisquitHostApp.swift in Sources */,
 				F36D533E2A05B8EC007324C6 /* TextFileVM.swift in Sources */,
 				F3A563292D9EF21B009AA363 /* LogMetaCard.swift in Sources */,
 				F398E0E12CEB562400AA4DD7 /* AudioPlayerVM.swift in Sources */,
@@ -5895,7 +5895,7 @@
 				F36B14AC2DC632D9008C1AF9 /* UserDefaults.swift in Sources */,
 				F386941A2A4B3AE1002DEF90 /* InfoTab.swift in Sources */,
 				F37EA79C2B722B390029DE00 /* Backup VM.swift in Sources */,
-				F30C131A2A54626D00A7EFF0 /* Bisquit-Host App.swift in Sources */,
+				F30C131A2A54626D00A7EFF0 /* BisquitHostApp.swift in Sources */,
 				F3A49CC42D7A500C0067EEA8 /* GuideStep.swift in Sources */,
 				F3202D582D5758E50030B3CC /* LogMetaParent.swift in Sources */,
 				F3202D592D5758E50030B3CC /* LogMetaView.swift in Sources */,
