@@ -55,7 +55,6 @@ struct PanelToolbarModifier: ViewModifier {
 
 extension View {
     func panelToolbar() -> some View {
-        self
-            .modifier(PanelToolbarModifier())
+        self.modifier(PanelToolbarModifier())
     }
 }
