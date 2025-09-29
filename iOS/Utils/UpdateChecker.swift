@@ -36,11 +36,11 @@ final class UpdateChecker {
         }
     }
     
-    struct ItunesAppInfo: Decodable {
+    private struct ItunesAppInfo: Decodable {
         let results: [ItunesAppInfoResult]
     }
     
-    struct ItunesAppInfoResult: Decodable {
+    private struct ItunesAppInfoResult: Decodable {
         let version: String
     }
 }
