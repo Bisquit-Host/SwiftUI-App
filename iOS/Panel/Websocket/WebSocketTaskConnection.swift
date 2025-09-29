@@ -147,25 +147,3 @@ final class WebSocketTaskConnection: NSObject, WebSocketConnection, URLSessionWe
         }
     }
 }
-
-enum WebSocketConnectionState {
-    case connecting, connected, disconnected
-}
-
-protocol WebSocketConnectionDelegate: AnyObject {
-    func onStateChanged(connection: WebSocketConnection, state: WebSocketConnectionState)
-    func onConnecting(connection: WebSocketConnection)
-    func onDisconnecting(connection: WebSocketConnection)
-    func onError(connection: WebSocketConnection, error: Error)
-    func onTextMessage(connection: WebSocketConnection, message: String)
-    func onDataMessage(connection: WebSocketConnection, message: Data)
-}
-
-protocol WebSocketConnection: AnyObject {
-    var delegate: WebSocketConnectionDelegate? { get set }
-    
-    func connect()
-    func disconnect()
-    func send(_ text: String)
-    func send(_ data: Data)
-}
