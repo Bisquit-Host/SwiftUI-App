@@ -1,8 +1,5 @@
 import ScrechKit
 
-fileprivate let regex = try! NSRegularExpression(pattern: "\\x1b\\[[0-9;]*m")
-fileprivate let regex1 = try! Regex("\\x1b\\[[0-9;]*m")
-
 fileprivate let ansiToSwiftUIColorMap = [
     30: Color(0xFF131a20), // Black
     31: Color(0xFFFE5370), // Red
@@ -23,7 +20,10 @@ fileprivate let ansiToSwiftUIColorMap = [
 ]
 
 public func convertAnsiToAttributedString(_ input: String) -> AttributedString {
-    let parts = input.split(separator: regex1)
+    let regexPattern = "\\x1b\\[[0-9;]*m"
+    
+    let regex = try! NSRegularExpression(pattern: regexPattern)
+    let parts = input.split(separator: try! Regex(regexPattern))
     
     let matches = regex.matches(
         in: input,
