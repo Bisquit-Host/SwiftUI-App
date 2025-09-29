@@ -109,9 +109,11 @@ struct ANSIConverter {
     }
     
     private static func detectAndAddLinks(_ attributedString: inout AttributedString) {
-        let detector = try! NSDataDetector(
+        guard let detector = try? NSDataDetector(
             types: NSTextCheckingResult.CheckingType.link.rawValue
-        )
+        ) else {
+            return
+        }
         
         let mutableAttributedString = NSMutableAttributedString(
             attributedString: .init(attributedString)
