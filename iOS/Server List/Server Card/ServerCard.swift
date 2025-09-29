@@ -25,7 +25,7 @@ struct ServerCard: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: isWatch ? 10 : 16) {
             HStack {
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
@@ -59,7 +59,7 @@ struct ServerCard: View {
             }
             
             if vm.stateColor != .gray {
-                VStack(spacing: 12) {
+                VStack(spacing: isWatch ? 6 : 12) {
                     if vm.stateColor != .red {
                         MetricGauge(
                             title: "CPU",

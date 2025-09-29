@@ -1164,7 +1164,6 @@
 		F3BD76FD2A43C892003E7385 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3BD76FC2A43C892003E7385 /* Assets.xcassets */; };
 		F3BE36D52A55E1D0007A0179 /* Nav Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BAEC8C2959B3FE00111375 /* Nav Extension.swift */; };
 		F3BE36D62A55E1D2007A0179 /* Nav Destinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5692959007E0006D126 /* Nav Destinations.swift */; };
-		F3BE36DB2A55E2EE007A0179 /* ServerListTopbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266D729D99BB8005FD103 /* ServerListTopbar.swift */; };
 		F3BF6F232959D15E0059F39B /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BF6F222959D15E0059F39B /* AppSettings.swift */; };
 		F3BF97AA29BFC7E9007B9C9C /* Websocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BF97A929BFC7E9007B9C9C /* Websocket.swift */; };
 		F3C0F9D029E204FA0040E277 /* FileTab Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C0F9CF29E204FA0040E277 /* FileTab Context Menu.swift */; };
@@ -1438,6 +1437,8 @@
 		F3F5AD7E2E8862B7007AD97D /* Appearance in Frameworks */ = {isa = PBXBuildFile; productRef = F3F5AD7D2E8862B7007AD97D /* Appearance */; };
 		F3F5AD8B2E8A5EB8007AD97D /* MetricGauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D95B122E6363AA00849A94 /* MetricGauge.swift */; };
 		F3F5AD8C2E8A622A007AD97D /* ServerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D95B052E625A9000849A94 /* ServerCard.swift */; };
+		F3F5AD8E2E8A6490007AD97D /* ServerListTopbarSettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5AD8D2E8A6490007AD97D /* ServerListTopbarSettingsButton.swift */; };
+		F3F5AD902E8A667D007AD97D /* ServerListTopbarRefreshButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5AD8F2E8A667D007AD97D /* ServerListTopbarRefreshButton.swift */; };
 		F3F5BC962BF7668E00EB8FB1 /* SensitivityAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5BC952BF7668E00EB8FB1 /* SensitivityAnalyzer.swift */; };
 		F3F5BC972BF7668E00EB8FB1 /* SensitivityAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5BC952BF7668E00EB8FB1 /* SensitivityAnalyzer.swift */; };
 		F3F60A662DEB93C300A15737 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3F60A652DEB93C300A15737 /* ScrechKit */; };
@@ -1929,7 +1930,6 @@
 		F37266A929D71A1B005FD103 /* FileIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileIcon.swift; sourceTree = "<group>"; };
 		F37266BB29D811B7005FD103 /* FileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileView.swift; sourceTree = "<group>"; };
 		F37266C729D83394005FD103 /* TextFileVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFileVM.swift; sourceTree = "<group>"; };
-		F37266D729D99BB8005FD103 /* ServerListTopbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListTopbar.swift; sourceTree = "<group>"; };
 		F37266DA29D9A215005FD103 /* SuspendedServerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuspendedServerCard.swift; sourceTree = "<group>"; };
 		F37266E029D9A7BA005FD103 /* PanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelView.swift; sourceTree = "<group>"; };
 		F37266E329D9A867005FD103 /* Console.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Console.swift; sourceTree = "<group>"; };
@@ -2202,6 +2202,8 @@
 		F3F061D92A73CE1200470F7E /* ServerCardParent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCardParent.swift; sourceTree = "<group>"; };
 		F3F2A5BA29AC296D00AD20A4 /* ServerCardSuspended.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCardSuspended.swift; sourceTree = "<group>"; };
 		F3F2BBA42A540B8800D44CA6 /* StartPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPage.swift; sourceTree = "<group>"; };
+		F3F5AD8D2E8A6490007AD97D /* ServerListTopbarSettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListTopbarSettingsButton.swift; sourceTree = "<group>"; };
+		F3F5AD8F2E8A667D007AD97D /* ServerListTopbarRefreshButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListTopbarRefreshButton.swift; sourceTree = "<group>"; };
 		F3F5BC952BF7668E00EB8FB1 /* SensitivityAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensitivityAnalyzer.swift; sourceTree = "<group>"; };
 		F3F60A792DED9FFB00A15737 /* Cache Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache Card.swift"; sourceTree = "<group>"; };
 		F3F716BC29E4D46600838586 /* Backup List Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Backup List Footer.swift"; sourceTree = "<group>"; };
@@ -3223,7 +3225,8 @@
 				F3BAEC862959B1DE00111375 /* ServerList.swift */,
 				F36E8A9F2E6E441600A38229 /* ServerListUpdateButton.swift */,
 				F36E8A9A2E6E43D800A38229 /* ServerListGrid.swift */,
-				F37266D729D99BB8005FD103 /* ServerListTopbar.swift */,
+				F3F5AD8F2E8A667D007AD97D /* ServerListTopbarRefreshButton.swift */,
+				F3F5AD8D2E8A6490007AD97D /* ServerListTopbarSettingsButton.swift */,
 				F37266DF29D9A6DE005FD103 /* Server Card */,
 			);
 			path = "Server List";
@@ -5252,6 +5255,7 @@
 		F31BA52F2958FF7D0006D126 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			files = (
+				F3F5AD902E8A667D007AD97D /* ServerListTopbarRefreshButton.swift in Sources */,
 				F30C13152A5461BA00A7EFF0 /* Cache VM.swift in Sources */,
 				F3EE9F6F2D85CAB9000120A7 /* Dismiss Button.swift in Sources */,
 				F3015DE42D9F26C600B9BCC6 /* LogCardTimestamp.swift in Sources */,
@@ -5280,6 +5284,7 @@
 				F36E8AA02E6E441600A38229 /* ServerListUpdateButton.swift in Sources */,
 				F30C130A2A545E6F00A7EFF0 /* Linking VM.swift in Sources */,
 				F36B14B62DC6334E008C1AF9 /* GameKit.swift in Sources */,
+				F3F5AD8E2E8A6490007AD97D /* ServerListTopbarSettingsButton.swift in Sources */,
 				F3EB09D42A29547E0073916A /* FileView.swift in Sources */,
 				F3FFB7492A57FF0B00220FA5 /* LogCard.swift in Sources */,
 				F3A563322D9EF323009AA363 /* LogToolbarActor.swift in Sources */,
@@ -5353,7 +5358,6 @@
 				F39CB6282C63D56300B7B15E /* System Alerts.swift in Sources */,
 				F33623302A220277006A6271 /* Panel Tab.swift in Sources */,
 				F3464D212A86396700188B0C /* Change Power.swift in Sources */,
-				F3BE36DB2A55E2EE007A0179 /* ServerListTopbar.swift in Sources */,
 				F336232F2A22021E006A6271 /* ValueStore.swift in Sources */,
 				F36113FC2E55E7450052A5A2 /* TextFileToolbar.swift in Sources */,
 				F32FD7242B1E065700723B88 /* Network Calls.swift in Sources */,
