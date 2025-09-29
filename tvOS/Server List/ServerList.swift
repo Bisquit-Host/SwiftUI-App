@@ -31,12 +31,8 @@ struct ServerList: View {
                 }
             }
             
-            ForEach(vm.filteredServers) { server in
-                Button {
-                    navState.navigate(.toPanel(server))
-                } label: {
-                    ServerCard(server)
-                }
+            ForEach(vm.filteredServers) {
+                ServerCardParent($0)
             }
         }
         .background(BisquitFall())
@@ -44,25 +40,27 @@ struct ServerList: View {
             await vm.fetchServers(store.adminServerList)
         }
         .toolbar {
-            NavigationLink("Settings") {
-                AppSettings()
+            ToolbarItem(placement: .topBarLeading) {
+                NavigationLink("Settings") {
+                    AppSettings()
+                }
             }
             
-            if store.devMode {
-                Button("Admin") {
-                    store.adminServerList.toggle()
-                    
-                    Task {
-                        await vm.fetchServers(store.adminServerList)
-                    }
-                }
-                .foregroundStyle(store.adminServerList ? .primary : .secondary)
-#if DEBUG
-                Button("Overview") {
-                    sheetOverview = true
-                }
-#endif
-            }
+//            if store.devMode {
+//                Button("Admin") {
+//                    store.adminServerList.toggle()
+//                    
+//                    Task {
+//                        await vm.fetchServers(store.adminServerList)
+//                    }
+//                }
+//                .foregroundStyle(store.adminServerList ? .primary : .secondary)
+//#if DEBUG
+//                Button("Overview") {
+//                    sheetOverview = true
+//                }
+//#endif
+//            }
         }
 #if DEBUG
         .sheet($sheetOverview) {

@@ -1440,6 +1440,7 @@
 		F3F5AD8E2E8A6490007AD97D /* ServerListTopbarSettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5AD8D2E8A6490007AD97D /* ServerListTopbarSettingsButton.swift */; };
 		F3F5AD902E8A667D007AD97D /* ServerListTopbarRefreshButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5AD8F2E8A667D007AD97D /* ServerListTopbarRefreshButton.swift */; };
 		F3F5AD922E8A6A84007AD97D /* SettingsAccountSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5AD912E8A6A84007AD97D /* SettingsAccountSection.swift */; };
+		F3F5AD9A2E8A8E90007AD97D /* ServerCardParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5AD992E8A8E90007AD97D /* ServerCardParent.swift */; };
 		F3F5BC962BF7668E00EB8FB1 /* SensitivityAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5BC952BF7668E00EB8FB1 /* SensitivityAnalyzer.swift */; };
 		F3F5BC972BF7668E00EB8FB1 /* SensitivityAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5BC952BF7668E00EB8FB1 /* SensitivityAnalyzer.swift */; };
 		F3F60A662DEB93C300A15737 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3F60A652DEB93C300A15737 /* ScrechKit */; };
@@ -2206,6 +2207,7 @@
 		F3F5AD8D2E8A6490007AD97D /* ServerListTopbarSettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListTopbarSettingsButton.swift; sourceTree = "<group>"; };
 		F3F5AD8F2E8A667D007AD97D /* ServerListTopbarRefreshButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListTopbarRefreshButton.swift; sourceTree = "<group>"; };
 		F3F5AD912E8A6A84007AD97D /* SettingsAccountSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAccountSection.swift; sourceTree = "<group>"; };
+		F3F5AD992E8A8E90007AD97D /* ServerCardParent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCardParent.swift; sourceTree = "<group>"; };
 		F3F5BC952BF7668E00EB8FB1 /* SensitivityAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensitivityAnalyzer.swift; sourceTree = "<group>"; };
 		F3F60A792DED9FFB00A15737 /* Cache Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache Card.swift"; sourceTree = "<group>"; };
 		F3F716BC29E4D46600838586 /* Backup List Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Backup List Footer.swift"; sourceTree = "<group>"; };
@@ -3530,6 +3532,7 @@
 		F39D28522A27EDAF007B12C3 /* Server Card */ = {
 			isa = PBXGroup;
 			children = (
+				F3F5AD992E8A8E90007AD97D /* ServerCardParent.swift */,
 				F33CDBFA2A26A571008D0214 /* ServerCard.swift */,
 				F323BF9E2B20B84100116B97 /* ServerCardContextMenu.swift */,
 				F3F2A5BA29AC296D00AD20A4 /* ServerCardSuspended.swift */,
@@ -4846,6 +4849,7 @@
 				F3EB09DD2A295F7C0073916A /* TextFileVM.swift in Sources */,
 				F3D295162AF396FD00ED43A0 /* Tabs.swift in Sources */,
 				F3CCF5B92B34543B005FFF2C /* User 2Fa.swift in Sources */,
+				F3F5AD9A2E8A8E90007AD97D /* ServerCardParent.swift in Sources */,
 				F37080492A2A1C920046CE70 /* Backup List.swift in Sources */,
 				F33CDBFB2A26A571008D0214 /* ServerCard.swift in Sources */,
 				F3015DEA2D9F27E800B9BCC6 /* LogCardImage.swift in Sources */,
