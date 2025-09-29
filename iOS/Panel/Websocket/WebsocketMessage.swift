@@ -1,6 +1,6 @@
 import Foundation
 
-struct WebSocketMessage: Codable {
+struct WebsocketMessage: Codable {
     let event: String
     let args: [String]?
     
@@ -31,36 +31,20 @@ struct WebSocketMessage: Codable {
         }
     }
     
-    var authSuccess: Bool? {
-        if event == "auth success" {
-            true
-        } else {
-            nil
-        }
+    var authSuccess: Bool {
+        event == "auth success"
     }
     
-    var backupCompleted: Bool? {
-        if event == "backup completed" {
-            true
-        } else {
-            nil
-        }
+    var backupCompleted: Bool {
+        event == "backup completed"
     }
     
-    var tokenExpiring: Bool? {
-        if event == "token expiring" {
-            true
-        } else {
-            nil
-        }
+    var tokenExpiring: Bool {
+        event == "token expiring"
     }
     
-    var tokenExpired: Bool? {
-        if event == "token expired" {
-            true
-        } else {
-            nil
-        }
+    var tokenExpired: Bool {
+        event == "token expired"
     }
 }
 
@@ -74,18 +58,18 @@ struct ServerStats: Codable {
         let rxBytes, txBytes: Int
         
         enum CodingKeys: String, CodingKey {
-            case rxBytes = "rx_bytes"
-            case txBytes = "tx_bytes"
+            case rxBytes = "rx_bytes",
+                 txBytes = "tx_bytes"
         }
     }
     
     enum CodingKeys: String, CodingKey {
-        case state
-        case memoryBytes = "memory_bytes"
-        case memoryLimitBytes = "memory_limit_bytes"
-        case diskBytes = "disk_bytes"
-        case uptime
-        case network
-        case cpuAbsolute = "cpu_absolute"
+        case state,
+             uptime,
+             network,
+             diskBytes = "disk_bytes",
+             cpuAbsolute = "cpu_absolute",
+             memoryBytes = "memory_bytes",
+             memoryLimitBytes = "memory_limit_bytes"
     }
 }

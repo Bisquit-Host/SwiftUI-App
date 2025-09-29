@@ -1,6 +1,6 @@
 import PteroNet
 
-final class MyWebSocketDelegate: WebSocketConnectionDelegate {
+final class WebsocketDelegate: WebSocketConnectionDelegate {
     private let onTextMessage: (String) -> Void
     
     init(onTextMessage: @escaping (String) -> Void) {

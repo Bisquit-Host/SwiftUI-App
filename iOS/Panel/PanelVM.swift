@@ -35,7 +35,7 @@ final class PanelVM {
     var updateBackups: (() async -> Void)? = nil
     
     private var connection: WebSocketTaskConnection?
-    private var delegate: MyWebSocketDelegate?
+    private var delegate: WebsocketDelegate?
     
     var messages: [AttributedString] = []
     
@@ -67,7 +67,7 @@ final class PanelVM {
         }
         
         do {
-            let message = try JSONDecoder().decode(WebSocketMessage.self, from: jsonData)
+            let message = try JSONDecoder().decode(WebsocketMessage.self, from: jsonData)
             
             if let status = message.serverStatus {
                 print("Server status:", status)
@@ -127,19 +127,20 @@ final class PanelVM {
                     print("Error converting dictionary to JSON Data or decoding JSON:", error)
                 }
                 
-            } else if message.backupCompleted != nil {
+            } else if message.backupCompleted {
                 await updateBackups?()
                 
-            } else if message.authSuccess != nil {
+            } else if message.authSuccess {
                 print("WebSocket authentication successful")
                 
-            } else if message.tokenExpiring != nil {
+            } else if message.tokenExpiring {
                 print("WebSocket token expiring soon")
                 
                 if let data = await consoleDetails() {
                     connectWebSocket(data)
                 }
-            } else if message.tokenExpired != nil {
+                
+            } else if message.tokenExpired {
                 if let data = await consoleDetails() {
                     connectWebSocket(data)
                 }
@@ -168,7 +169,7 @@ final class PanelVM {
             token: data.token
         )
         
-        delegate = MyWebSocketDelegate { [weak self] message in
+        delegate = WebsocketDelegate { [weak self] message in
             Task {
                 await self?.appendMessage(message)
             }
