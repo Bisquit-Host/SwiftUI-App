@@ -27,12 +27,8 @@ struct AppContainer: View {
         
         NavigationStack(path: $nav.path) {
             if store.isApiKeyValid {
-#if os(macOS)
-                Home()
-#else
                 ServerList()
                     .withNavDestinations()
-#endif
             } else {
 #if os(iOS)
                 Intro()

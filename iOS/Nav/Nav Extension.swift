@@ -11,10 +11,9 @@ extension View {
             case .toSettings:
                 SettingsView()
 #endif
+                
+#if !os(macOS)
             case .toServerList:
-#if os(macOS)
-                Home()
-#else
                 ServerList()
 #endif
                 

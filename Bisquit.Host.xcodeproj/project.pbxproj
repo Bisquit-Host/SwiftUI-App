@@ -135,7 +135,6 @@
 		F30C130C2A545F4400A7EFF0 /* ValueStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* ValueStore.swift */; };
 		F30C130F2A54605B00A7EFF0 /* Nav Destinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5692959007E0006D126 /* Nav Destinations.swift */; };
 		F30C13102A54606900A7EFF0 /* Nav Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BAEC8C2959B3FE00111375 /* Nav Extension.swift */; };
-		F30C13122A54609000A7EFF0 /* ServerList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30C13112A54609000A7EFF0 /* ServerList.swift */; };
 		F30C13142A5461BA00A7EFF0 /* Cache VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266EA29D9F06C005FD103 /* Cache VM.swift */; };
 		F30C13152A5461BA00A7EFF0 /* Cache VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266EA29D9F06C005FD103 /* Cache VM.swift */; };
 		F30C13162A5461BB00A7EFF0 /* Cache VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266EA29D9F06C005FD103 /* Cache VM.swift */; };
@@ -444,7 +443,6 @@
 		F33CDC012A26B927008D0214 /* PlanViewTopbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3DBD029B8007B00096115 /* PlanViewTopbar.swift */; };
 		F33CDC022A26B930008D0214 /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA58E295901B60006D126 /* PlanView.swift */; };
 		F33DE4E72B35089000E257D8 /* BackgroundBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33DE4E62B35089000E257D8 /* BackgroundBlur.swift */; };
-		F33DE4E92B350C8B00E257D8 /* ServerCardOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33DE4E82B350C8B00E257D8 /* ServerCardOld.swift */; };
 		F33DE4EB2B35C3F000E257D8 /* FileTab Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C0F9CF29E204FA0040E277 /* FileTab Context Menu.swift */; };
 		F33DE5092B364EBC00E257D8 /* TabInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7022A54BF7A00E89EC4 /* TabInfo.swift */; };
 		F33DE50C2B36E3C300E257D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D52B242B13FE9C00167DD6 /* AppDelegate.swift */; };
@@ -535,7 +533,6 @@
 		F34851C72E72E4F50002C72E /* UniversalPlanList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34851C32E72E4F50002C72E /* UniversalPlanList.swift */; };
 		F34851C82E72E4F50002C72E /* UniversalPlanList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34851C32E72E4F50002C72E /* UniversalPlanList.swift */; };
 		F348C6E42A5438EB002D5BD6 /* App Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5672959006F0006D126 /* App Container.swift */; };
-		F348C6EB2A544893002D5BD6 /* App Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5672959006F0006D126 /* App Container.swift */; };
 		F3496DC529E0091A0089FC28 /* Section Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3496DC429E0091A0089FC28 /* Section Header.swift */; };
 		F3496DC929E00CE70089FC28 /* Create Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3496DC829E00CE70089FC28 /* Create Button.swift */; };
 		F3499EF22A26DCA0006101B7 /* PanelTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3029C06E9700B08696 /* PanelTab.swift */; };
@@ -1299,7 +1296,6 @@
 		F3E024C52B228F4C00FFF686 /* New Task Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E024C42B228F4C00FFF686 /* New Task Sheet.swift */; };
 		F3E024C62B228F4C00FFF686 /* New Task Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E024C42B228F4C00FFF686 /* New Task Sheet.swift */; };
 		F3E024C72B228F4C00FFF686 /* New Task Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E024C42B228F4C00FFF686 /* New Task Sheet.swift */; };
-		F3E08EA52A2CE17900116C1C /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E08EA42A2CE17900116C1C /* Home.swift */; };
 		F3E08EA72A2CE17A00116C1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3E08EA62A2CE17A00116C1C /* Assets.xcassets */; };
 		F3E08EB22A2CE19900116C1C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F3E08EB12A2CE19900116C1C /* Kingfisher */; };
 		F3E08EBF2A2CE87800116C1C /* StartPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E08EBE2A2CE87800116C1C /* StartPage.swift */; };
@@ -1747,7 +1743,6 @@
 		F304498629E98AE4006DC0C7 /* iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOS.entitlements; sourceTree = "<group>"; };
 		F304498929E990E9006DC0C7 /* CloudKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKeys.swift; sourceTree = "<group>"; };
 		F306B9EC29BBDA770008C2D4 /* DevSettingsFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevSettingsFooter.swift; sourceTree = "<group>"; };
-		F30C13112A54609000A7EFF0 /* ServerList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerList.swift; sourceTree = "<group>"; };
 		F310A2EF2A56AF86001AF45F /* NetworkVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkVM.swift; sourceTree = "<group>"; };
 		F3116F252A33E142001F067C /* FolderFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderFile.swift; sourceTree = "<group>"; };
 		F311CAAD2A646612004E4A4A /* LogMetaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogMetaView.swift; sourceTree = "<group>"; };
@@ -1855,7 +1850,6 @@
 		F33944102A49022A00E2F0FC /* InfoTabResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTabResources.swift; sourceTree = "<group>"; };
 		F33CDBFA2A26A571008D0214 /* ServerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCard.swift; sourceTree = "<group>"; };
 		F33DE4E62B35089000E257D8 /* BackgroundBlur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundBlur.swift; sourceTree = "<group>"; };
-		F33DE4E82B350C8B00E257D8 /* ServerCardOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCardOld.swift; sourceTree = "<group>"; };
 		F342FAB22B2E43D500854270 /* LogCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogCard.swift; sourceTree = "<group>"; };
 		F3437CA1297360D30064808F /* Schedule Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Schedule Card.swift"; sourceTree = "<group>"; };
 		F3464CF82A862D2C00188B0C /* Intent.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = Intent.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2178,7 +2172,6 @@
 		F3DF50CE2B39636A00206CAE /* UserList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserList.swift; sourceTree = "<group>"; };
 		F3E024C42B228F4C00FFF686 /* New Task Sheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "New Task Sheet.swift"; sourceTree = "<group>"; };
 		F3E08EA02A2CE17800116C1C /* Bisquit.Host.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bisquit.Host.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F3E08EA42A2CE17900116C1C /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		F3E08EA62A2CE17A00116C1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3E08EAB2A2CE17A00116C1C /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		F3E08EBE2A2CE87800116C1C /* StartPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPage.swift; sourceTree = "<group>"; };
@@ -3983,21 +3976,10 @@
 				F37DBF012E74F07A0039858B /* Redesign */,
 				F36B14682DC3BC3A008C1AF9 /* Nav */,
 				F3E08EC72A2CEA6F00116C1C /* Start Page */,
-				F3E08EB72A2CE6D000116C1C /* Server List */,
 				F3E08ECF2A2CEDF200116C1C /* Panel */,
 				F3E08EBA2A2CE6FA00116C1C /* Settings */,
 			);
 			path = macOS;
-			sourceTree = "<group>";
-		};
-		F3E08EB72A2CE6D000116C1C /* Server List */ = {
-			isa = PBXGroup;
-			children = (
-				F3E08EA42A2CE17900116C1C /* Home.swift */,
-				F30C13112A54609000A7EFF0 /* ServerList.swift */,
-				F33DE4E82B350C8B00E257D8 /* ServerCardOld.swift */,
-			);
-			path = "Server List";
 			sourceTree = "<group>";
 		};
 		F3E08EBA2A2CE6FA00116C1C /* Settings */ = {
@@ -6097,7 +6079,6 @@
 				F33DE4E72B35089000E257D8 /* BackgroundBlur.swift in Sources */,
 				F37DBF0D2E74F50C0039858B /* FileListRedesign.swift in Sources */,
 				F3F061D52A73C9A000470F7E /* MapView.swift in Sources */,
-				F33DE4E92B350C8B00E257D8 /* ServerCardOld.swift in Sources */,
 				F3464D222A86396700188B0C /* ChangePower.swift in Sources */,
 				F300888E2B39FAA60051476C /* Allocation VM.swift in Sources */,
 				F39038B02DC815BD006DF071 /* ColumnDetail.swift in Sources */,
@@ -6178,9 +6159,7 @@
 				F3648EDD2DCB9BFD001609AA /* SheetCreateSubdomain.swift in Sources */,
 				F3E08EBF2A2CE87800116C1C /* StartPage.swift in Sources */,
 				F3F5ADB12E8A9639007AD97D /* WebSocketConnectionState.swift in Sources */,
-				F3E08EA52A2CE17900116C1C /* Home.swift in Sources */,
 				F30088BB2B3A21F80051476C /* DatabaseList.swift in Sources */,
-				F348C6EB2A544893002D5BD6 /* App Container.swift in Sources */,
 				F3DF50CF2B39636A00206CAE /* UserList.swift in Sources */,
 				F30088BD2B3A223E0051476C /* DatabaseCard.swift in Sources */,
 				F300889D2B3A17CC0051476C /* Backup VM.swift in Sources */,
@@ -6202,7 +6181,6 @@
 				F30088DB2B3A3C0E0051476C /* Console VM.swift in Sources */,
 				F3458BF02B36EA49000E8324 /* AppDelegate.swift in Sources */,
 				F32FD7192B1E042C00723B88 /* WebsocketDelegate.swift in Sources */,
-				F30C13122A54609000A7EFF0 /* ServerList.swift in Sources */,
 				F36B14812DC3BC3E008C1AF9 /* ContentView.swift in Sources */,
 				F36B14822DC3BC3E008C1AF9 /* StackContentView.swift in Sources */,
 				F3C1E5972DC741C6007F2054 /* ThreeColumnContent.swift in Sources */,
