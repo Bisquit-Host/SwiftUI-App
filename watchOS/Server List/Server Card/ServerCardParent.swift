@@ -15,7 +15,7 @@ struct ServerCardParent: View {
     var body: some View {
         VStack {
             if server.isSuspended {
-                SuspendedCard(server.name)
+                SuspendedServerCard(server.name)
             } else {
                 ServerCard(server)
             }

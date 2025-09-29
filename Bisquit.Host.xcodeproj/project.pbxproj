@@ -153,7 +153,6 @@
 		F311CAB02A646612004E4A4A /* LogMetaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F311CAAD2A646612004E4A4A /* LogMetaView.swift */; };
 		F31406F02E64667D00C1956E /* BackgroundImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31406EE2E64667D00C1956E /* BackgroundImageButton.swift */; };
 		F31406F12E64667D00C1956E /* BackgroundImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31406EE2E64667D00C1956E /* BackgroundImageButton.swift */; };
-		F31406F32E6580F400C1956E /* StatsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31406F22E6580F400C1956E /* StatsType.swift */; };
 		F314616A2D5A1F5E00547B6C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31461692D5A1F5E00547B6C /* Icon.swift */; };
 		F314616B2D5A1F5E00547B6C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31461692D5A1F5E00547B6C /* Icon.swift */; };
 		F31461712D5A1F8100547B6C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31461692D5A1F5E00547B6C /* Icon.swift */; };
@@ -781,7 +780,7 @@
 		F37266CC29D96C93005FD103 /* Websocket Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3729C0CB5A00B08696 /* Websocket Message.swift */; };
 		F37266CD29D96C98005FD103 /* Websocket Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3929C0CB8000B08696 /* Websocket Delegate.swift */; };
 		F37266CF29D96ED9005FD103 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA56F295900C20006D126 /* Formatters.swift */; };
-		F37266DC29D9A27A005FD103 /* SuspendedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266DA29D9A215005FD103 /* SuspendedCard.swift */; };
+		F37266DC29D9A27A005FD103 /* SuspendedServerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266DA29D9A215005FD103 /* SuspendedServerCard.swift */; };
 		F37266E129D9A7BA005FD103 /* PanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266E029D9A7BA005FD103 /* PanelView.swift */; };
 		F37266E429D9A867005FD103 /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266E329D9A867005FD103 /* Console.swift */; };
 		F37266E729D9EF25005FD103 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F37266E629D9EF25005FD103 /* Kingfisher */; };
@@ -1731,7 +1730,6 @@
 		F3116F252A33E142001F067C /* FolderFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderFile.swift; sourceTree = "<group>"; };
 		F311CAAD2A646612004E4A4A /* LogMetaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogMetaView.swift; sourceTree = "<group>"; };
 		F31406EE2E64667D00C1956E /* BackgroundImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImageButton.swift; sourceTree = "<group>"; };
-		F31406F22E6580F400C1956E /* StatsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsType.swift; sourceTree = "<group>"; };
 		F31461692D5A1F5E00547B6C /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 		F31578B229675F5D0016A600 /* ServerList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerList.swift; sourceTree = "<group>"; };
 		F318240A2A8777CD0039866C /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
@@ -1932,7 +1930,7 @@
 		F37266BB29D811B7005FD103 /* FileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileView.swift; sourceTree = "<group>"; };
 		F37266C729D83394005FD103 /* TextFileVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFileVM.swift; sourceTree = "<group>"; };
 		F37266D729D99BB8005FD103 /* ServerListTopbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListTopbar.swift; sourceTree = "<group>"; };
-		F37266DA29D9A215005FD103 /* SuspendedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuspendedCard.swift; sourceTree = "<group>"; };
+		F37266DA29D9A215005FD103 /* SuspendedServerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuspendedServerCard.swift; sourceTree = "<group>"; };
 		F37266E029D9A7BA005FD103 /* PanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelView.swift; sourceTree = "<group>"; };
 		F37266E329D9A867005FD103 /* Console.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Console.swift; sourceTree = "<group>"; };
 		F37266E829D9EFFE005FD103 /* Cache Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache Size.swift"; sourceTree = "<group>"; };
@@ -3262,9 +3260,8 @@
 			children = (
 				F3F061D92A73CE1200470F7E /* ServerCardParent.swift */,
 				F3F5AD842E8A5E97007AD97D /* ServerCard.swift */,
-				F37266DA29D9A215005FD103 /* SuspendedCard.swift */,
+				F37266DA29D9A215005FD103 /* SuspendedServerCard.swift */,
 				F3D6775B2DD7478400721DE8 /* ServerCardContextMenu.swift */,
-				F31406F22E6580F400C1956E /* StatsType.swift */,
 			);
 			path = "Server Card";
 			sourceTree = "<group>";
@@ -5302,7 +5299,6 @@
 				F3FFB7412A57F0AB00220FA5 /* Users VM.swift in Sources */,
 				F30C12F82A5451C100A7EFF0 /* ServerListVM.swift in Sources */,
 				F3FFB7432A57F13D00220FA5 /* User View.swift in Sources */,
-				F31406F32E6580F400C1956E /* StatsType.swift in Sources */,
 				F311CAAF2A646612004E4A4A /* LogMetaView.swift in Sources */,
 				F30C13182A54626C00A7EFF0 /* Bisquit-Host App.swift in Sources */,
 				F30088F72B3B55CE0051476C /* User Invitation View.swift in Sources */,
@@ -5354,7 +5350,7 @@
 				F32FD02B2CF5E8DC0038D62C /* ConsoleMessage.swift in Sources */,
 				F3EB09D82A2958710073916A /* TextFileVM.swift in Sources */,
 				F37266E429D9A867005FD103 /* Console.swift in Sources */,
-				F37266DC29D9A27A005FD103 /* SuspendedCard.swift in Sources */,
+				F37266DC29D9A27A005FD103 /* SuspendedServerCard.swift in Sources */,
 				F3A123572A667804008E3E20 /* LogMetaParent.swift in Sources */,
 				F39CB6282C63D56300B7B15E /* System Alerts.swift in Sources */,
 				F33623302A220277006A6271 /* Panel Tab.swift in Sources */,

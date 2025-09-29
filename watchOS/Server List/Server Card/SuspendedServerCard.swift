@@ -1,6 +1,6 @@
 import ScrechKit
 
-struct SuspendedCard: View {
+struct SuspendedServerCard: View {
     private let name: String
     
     init(_ name: String) {
@@ -32,6 +32,6 @@ struct SuspendedCard: View {
 }
 
 #Preview {
-    SuspendedCard("Preview")
+    SuspendedServerCard("Preview")
         .darkSchemePreferred()
 }
