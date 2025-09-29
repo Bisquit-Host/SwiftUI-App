@@ -24,6 +24,16 @@ struct ScheduleList: View {
         .task {
             await vm.fetchSchedules()
         }
+        .overlay {
+            if vm.schedules.isEmpty {
+                ContentUnavailableView(
+                    "No schedules have been created yet",
+                    systemImage: "calendar.badge.plus",
+                    //                    description: Text("Use the button in the top right corner to create one")
+                )
+#warning("uncomment")
+            }
+        }
     }
 }
 

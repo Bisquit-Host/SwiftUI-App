@@ -8,6 +8,8 @@ struct StatRows: View {
         self.server = server
     }
     
+    static let minHeight = 320.0
+    
     var body: some View {
         VStack(spacing: 16) {
             HStack(spacing: 16) {

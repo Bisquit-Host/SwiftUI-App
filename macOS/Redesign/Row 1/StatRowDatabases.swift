@@ -24,6 +24,7 @@ struct StatRowDatabases: View {
         .sheet($sheetDatabases) {
             DatabaseList(id)
                 .environment(vm)
+                .frame(minHeight: StatRows.minHeight)
         }
     }
 }

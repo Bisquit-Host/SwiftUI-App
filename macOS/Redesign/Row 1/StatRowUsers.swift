@@ -25,6 +25,7 @@ struct StatRowUsers: View {
         .sheet($sheetUserList) {
             UserList(id)
                 .environment(vm)
+                .frame(minHeight: StatRows.minHeight)
         }
     }
 }

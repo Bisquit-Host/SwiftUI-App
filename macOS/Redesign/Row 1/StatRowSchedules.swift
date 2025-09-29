@@ -24,6 +24,7 @@ struct StatRowSchedules: View {
         .sheet($sheetSchedules) {
             ScheduleList(id)
                 .environment(vm)
+                .frame(minHeight: StatRows.minHeight)
         }
     }
 }

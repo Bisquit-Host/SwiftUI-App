@@ -42,6 +42,7 @@ struct SubdomainList: View {
         }
         .sheet($sheetCreate) {
             SheetCreateSubdomain()
+                .frame(minHeight: StatRows.minHeight)
         }
         .overlay {
             if vm.subdomains.isEmpty {

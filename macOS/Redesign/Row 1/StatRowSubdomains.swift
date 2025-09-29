@@ -24,6 +24,7 @@ struct StatRowSubdomains: View {
         .sheet($sheetSubdomains) {
             SubdomainList()
                 .environment(vm)
+                .frame(minHeight: StatRows.minHeight)
         }
     }
 }

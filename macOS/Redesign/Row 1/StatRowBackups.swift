@@ -25,6 +25,7 @@ struct StatRowBackups: View {
         .sheet($sheetBackups) {
             BackupList(server)
                 .environment(vm)
+                .frame(minHeight: StatRows.minHeight)
         }
     }
 }

@@ -24,6 +24,7 @@ struct StatRowAllocations: View {
         .sheet($sheetAllocations) {
             AllocationList(id)
                 .environment(vm)
+                .frame(minHeight: StatRows.minHeight)
         }
     }
 }
