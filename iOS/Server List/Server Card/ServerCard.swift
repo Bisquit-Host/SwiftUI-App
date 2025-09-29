@@ -16,6 +16,14 @@ struct ServerCard: View {
         vm.stateColor == .gray
     }
     
+    private var isWatch: Bool {
+#if os(watchOS)
+        true
+#else
+        false
+#endif
+    }
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             HStack {
@@ -29,15 +37,15 @@ struct ServerCard: View {
                         
                         Text(server.name)
                             .lineLimit(1)
-                            .headline()
                             .semibold()
+                            .headline()
                     }
                     
                     if !server.description.isEmpty, store.serverCardDescription {
                         Text(server.description)
                             .lineLimit(2)
-                            .subheadline()
                             .secondary()
+                            .font(isWatch ? .footnote : .subheadline)
                             .multilineTextAlignment(.leading)
                     }
                 }
@@ -77,7 +85,7 @@ struct ServerCard: View {
                 }
             }
         }
-        .padding(20)
+        .padding(isWatch ? 10 : 20)
 #if !os(visionOS)
         .glassEffect(in: .rect(cornerRadius: 16))
 #endif
@@ -90,4 +98,9 @@ struct ServerCard: View {
             }
         }
     }
+}
+
+#Preview {
+    ServerCard(PreviewProp.serverAttributes)
+        .environmentObject(ValueStore())
 }
