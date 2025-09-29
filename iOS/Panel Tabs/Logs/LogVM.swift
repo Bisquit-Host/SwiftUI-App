@@ -110,6 +110,6 @@ final class LogVM {
             return nil
         }))
         
-        prefetchImages(uniqueImages)
+        Prefetcher.prefetchImages(uniqueImages)
     }
 }
