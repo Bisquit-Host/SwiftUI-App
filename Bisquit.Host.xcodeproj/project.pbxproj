@@ -3673,9 +3673,8 @@
 			isa = PBXGroup;
 			children = (
 				F3000E15295A357800ABD30A /* ServerList.swift */,
-				F3D49DB22B2330C30033B52E /* Overview.swift */,
-				F3D49DB42B2336240033B52E /* OverviewVM.swift */,
 				F39D28522A27EDAF007B12C3 /* Server Card */,
+				F3F5AD982E8A8D8F007AD97D /* Overview */,
 			);
 			path = "Server List";
 			sourceTree = "<group>";
@@ -4136,6 +4135,15 @@
 				F3F2BBA42A540B8800D44CA6 /* StartPage.swift */,
 			);
 			path = "Start Page";
+			sourceTree = "<group>";
+		};
+		F3F5AD982E8A8D8F007AD97D /* Overview */ = {
+			isa = PBXGroup;
+			children = (
+				F3D49DB22B2330C30033B52E /* Overview.swift */,
+				F3D49DB42B2336240033B52E /* OverviewVM.swift */,
+			);
+			path = Overview;
 			sourceTree = "<group>";
 		};
 		F3F60A782DED9FE700A15737 /* Cache List */ = {
