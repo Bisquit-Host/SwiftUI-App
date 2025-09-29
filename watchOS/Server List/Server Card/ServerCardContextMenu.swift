@@ -2,6 +2,8 @@ import SwiftUI
 import PteroNet
 
 struct ServerCardContextMenu: View {
+    @Environment(\.dismiss) private var dismiss
+    
     private let server: ServerAttributes
     private let id: String
     
@@ -30,22 +32,29 @@ struct ServerCardContextMenu: View {
                 Task {
                     await PteroNet.powerSignal(id, do: .start)
                 }
+                
+                dismiss()
             }
             
             Button("Stop", systemImage: "pause") {
                 Task {
                     await PteroNet.powerSignal(id, do: .stop)
                 }
+                
+                dismiss()
             }
             
             Button("Restart", systemImage: "arrow.triangle.2.circlepath") {
                 Task {
                     await PteroNet.powerSignal(id, do: .restart)
                 }
+                
+                dismiss()
             }
             
             Button("Kill", systemImage: "power") {
                 confirmKill = true
+                dismiss()
             }
             .foregroundStyle(.red)
             

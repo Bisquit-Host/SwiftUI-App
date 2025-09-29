@@ -6,8 +6,16 @@ struct MetricGauge: View {
     let color: Color
     let icon: String
     
+    private var spacing: CGFloat {
+#if os(watchOS)
+        4
+#else
+        12
+#endif
+    }
+    
     var body: some View {
-        HStack(spacing: 12) {
+        HStack(spacing: spacing) {
             Image(systemName: icon)
                 .fontSize(16)
                 .fontWeight(.medium)
