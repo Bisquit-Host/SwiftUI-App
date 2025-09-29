@@ -37,8 +37,12 @@ struct ServerList: View {
         .navigationTitle("Server List")
         .safariCover($vm.showBilling, url: "https://my.bisquit.host")
         .navigationBarBackButtonHidden()
-        .refreshableTask {
+        .task {
             await vm.fetchServers(store.adminServerList)
+        }
+        .refreshable {
+            await vm.fetchServers(store.adminServerList)
+            store.adminServerList.toggle()
         }
         .sheet($sheetSettings) {
             NavigationStack {
