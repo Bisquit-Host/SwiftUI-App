@@ -1,7 +1,7 @@
 import SwiftUI
 import PteroNet
 
-struct PanelSettingsParent: View {
+struct ServerSettingsParent: View {
     private let server: ServerAttributes
     
     init(_ server: ServerAttributes) {
@@ -10,7 +10,7 @@ struct PanelSettingsParent: View {
     
     var body: some View {
         NavigationStack {
-            PanelSettingsView(server)
+            ServerSettingsView(server)
         }
     }
 }

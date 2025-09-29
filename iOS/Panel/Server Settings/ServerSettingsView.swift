@@ -1,7 +1,7 @@
 import ScrechKit
 import PteroNet
 
-struct PanelSettingsView: View {
+struct ServerSettingsView: View {
     private var vm: ServerSettingsVM
     @Environment(PanelVM.self) private var panelVM
     
@@ -85,7 +85,7 @@ struct PanelSettingsView: View {
 
 #Preview {
     NavigationStack {
-        PanelSettingsView(PreviewProp.serverAttributes)
+        ServerSettingsView(PreviewProp.serverAttributes)
     }
     .darkSchemePreferred()
     .environment(PanelVM(""))

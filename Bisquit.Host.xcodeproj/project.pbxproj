@@ -104,8 +104,8 @@
 		F3015DF52D9F468200B9BCC6 /* LogToolbarActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A5632E2D9EF323009AA363 /* LogToolbarActor.swift */; };
 		F30207D52D8B2A6000C26008 /* SwiftyPing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30207D42D8B2A6000C26008 /* SwiftyPing.swift */; };
 		F30207D62D8B2A6000C26008 /* SwiftyPing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30207D42D8B2A6000C26008 /* SwiftyPing.swift */; };
-		F303214B2B3FEA45002A73B8 /* PanelSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F303214A2B3FEA45002A73B8 /* PanelSettingsView.swift */; };
-		F303214C2B3FEDC6002A73B8 /* PanelSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F303214A2B3FEA45002A73B8 /* PanelSettingsView.swift */; };
+		F303214B2B3FEA45002A73B8 /* ServerSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F303214A2B3FEA45002A73B8 /* ServerSettingsView.swift */; };
+		F303214C2B3FEDC6002A73B8 /* ServerSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F303214A2B3FEA45002A73B8 /* ServerSettingsView.swift */; };
 		F3038B932E04434C0085E438 /* QuickLooking in Frameworks */ = {isa = PBXBuildFile; productRef = F3038B922E04434C0085E438 /* QuickLooking */; };
 		F3038B952E0443560085E438 /* QuickLooking in Frameworks */ = {isa = PBXBuildFile; productRef = F3038B942E0443560085E438 /* QuickLooking */; };
 		F3038B962E04467F0085E438 /* Multipart Form Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35C4D5F2E03999B00720E74 /* Multipart Form Data.swift */; };
@@ -569,8 +569,8 @@
 		F353D4FE2D980A5000EC9F3A /* ServerListTips.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353D4FA2D980A5000EC9F3A /* ServerListTips.swift */; };
 		F353D5052D98427500EC9F3A /* PanelToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353D5032D98427500EC9F3A /* PanelToolbar.swift */; };
 		F353D5062D98427500EC9F3A /* PanelToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353D5032D98427500EC9F3A /* PanelToolbar.swift */; };
-		F3553FB32B40653000EF0FD2 /* PanelSettingsParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3553FB22B40653000EF0FD2 /* PanelSettingsParent.swift */; };
-		F3553FB42B4065A300EF0FD2 /* PanelSettingsParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3553FB22B40653000EF0FD2 /* PanelSettingsParent.swift */; };
+		F3553FB32B40653000EF0FD2 /* ServerSettingsParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3553FB22B40653000EF0FD2 /* ServerSettingsParent.swift */; };
+		F3553FB42B4065A300EF0FD2 /* ServerSettingsParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3553FB22B40653000EF0FD2 /* ServerSettingsParent.swift */; };
 		F3553FB52B40939800EF0FD2 /* Allocation VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCF5C42B3457AE005FFF2C /* Allocation VM.swift */; };
 		F3553FB62B40939C00EF0FD2 /* Allocation VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CCF5C42B3457AE005FFF2C /* Allocation VM.swift */; };
 		F3553FB92B4093E600EF0FD2 /* Allocation List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3553FB82B4093E600EF0FD2 /* Allocation List.swift */; };
@@ -1744,7 +1744,7 @@
 		F3015DE52D9F27E800B9BCC6 /* LogCardImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogCardImage.swift; sourceTree = "<group>"; };
 		F3015DED2D9F427700B9BCC6 /* LogListFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogListFilter.swift; sourceTree = "<group>"; };
 		F30207D42D8B2A6000C26008 /* SwiftyPing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyPing.swift; sourceTree = "<group>"; };
-		F303214A2B3FEA45002A73B8 /* PanelSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelSettingsView.swift; sourceTree = "<group>"; };
+		F303214A2B3FEA45002A73B8 /* ServerSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerSettingsView.swift; sourceTree = "<group>"; };
 		F304498629E98AE4006DC0C7 /* iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOS.entitlements; sourceTree = "<group>"; };
 		F304498929E990E9006DC0C7 /* CloudKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKeys.swift; sourceTree = "<group>"; };
 		F306B9EC29BBDA770008C2D4 /* DevSettingsFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevSettingsFooter.swift; sourceTree = "<group>"; };
@@ -1890,7 +1890,7 @@
 		F353B0402D8A31BF00E4EC07 /* Account Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account Parent.swift"; sourceTree = "<group>"; };
 		F353D4FA2D980A5000EC9F3A /* ServerListTips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListTips.swift; sourceTree = "<group>"; };
 		F353D5032D98427500EC9F3A /* PanelToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelToolbar.swift; sourceTree = "<group>"; };
-		F3553FB22B40653000EF0FD2 /* PanelSettingsParent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelSettingsParent.swift; sourceTree = "<group>"; };
+		F3553FB22B40653000EF0FD2 /* ServerSettingsParent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerSettingsParent.swift; sourceTree = "<group>"; };
 		F3553FB82B4093E600EF0FD2 /* Allocation List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation List.swift"; sourceTree = "<group>"; };
 		F3553FBB2B40945C00EF0FD2 /* Allocation List Parent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation List Parent.swift"; sourceTree = "<group>"; };
 		F3553FBE2B4094D700EF0FD2 /* Allocation Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation Card.swift"; sourceTree = "<group>"; };
@@ -2528,7 +2528,6 @@
 				F3202D452D56DC050030B3CC /* Prefetcher.swift */,
 				F31BA56F295900C20006D126 /* millisecondsToTime.swift */,
 				F320DDA42B704E3C00957D92 /* PreviewProperty.swift */,
-				F3A1D2302A201C570053261E /* ServerState.swift */,
 				F325F7052A54C4BC00E89EC4 /* SystemAlerts.swift */,
 				F39626F12A7AD64B0057E356 /* ANSIConverter.swift */,
 				F35B89BC2A7256F4000B5EEF /* Tips */,
@@ -2733,14 +2732,13 @@
 				F31BA595295901F70006D126 /* PanelView.swift */,
 				F3FEA4442E5C9E62003BB975 /* PanelViewTabView.swift */,
 				F3EDEE3429C0C84C00B08696 /* PanelVM.swift */,
+				F3A1D2302A201C570053261E /* ServerState.swift */,
 				F353D5032D98427500EC9F3A /* PanelToolbar.swift */,
 				F3EDEE3029C06E9700B08696 /* PanelTab.swift */,
 				F3D295122AF396FD00ED43A0 /* Tabs.swift */,
 				F37A36772A35180100517EFC /* PowerSwitch.swift */,
 				F3ADA60D2D9BFC9D00F2DAA6 /* PowerSwitchToolbar.swift */,
-				F3553FB22B40653000EF0FD2 /* PanelSettingsParent.swift */,
-				F303214A2B3FEA45002A73B8 /* PanelSettingsView.swift */,
-				F37A36722A3515DC00517EFC /* ServerSettingsVM.swift */,
+				F3F5ADB32E8AB29E007AD97D /* Server Settings */,
 				F3EDEE3629C0CB4500B08696 /* Websocket */,
 			);
 			path = Panel;
@@ -4177,6 +4175,16 @@
 			path = Overview;
 			sourceTree = "<group>";
 		};
+		F3F5ADB32E8AB29E007AD97D /* Server Settings */ = {
+			isa = PBXGroup;
+			children = (
+				F3553FB22B40653000EF0FD2 /* ServerSettingsParent.swift */,
+				F303214A2B3FEA45002A73B8 /* ServerSettingsView.swift */,
+				F37A36722A3515DC00517EFC /* ServerSettingsVM.swift */,
+			);
+			path = "Server Settings";
+			sourceTree = "<group>";
+		};
 		F3F60A782DED9FE700A15737 /* Cache List */ = {
 			isa = PBXGroup;
 			children = (
@@ -5092,13 +5100,13 @@
 				F36E8AA42E6E451500A38229 /* PanelSectionListToolbar.swift in Sources */,
 				F3E0B4942DC30347003C8B27 /* InfoTabLogs.swift in Sources */,
 				F311CAAE2A646612004E4A4A /* LogMetaView.swift in Sources */,
-				F303214B2B3FEA45002A73B8 /* PanelSettingsView.swift in Sources */,
+				F303214B2B3FEA45002A73B8 /* ServerSettingsView.swift in Sources */,
 				F3E98C282E6BB4E40019439F /* Place.swift in Sources */,
 				F3D95B0D2E63635B00849A94 /* CompactServerCard.swift in Sources */,
 				F34851AE2E72E0450002C72E /* PlanCardLabelBot.swift in Sources */,
 				F31BA5B2295902D50006D126 /* TextFile.swift in Sources */,
 				F36B14AE2DC632D9008C1AF9 /* UserDefaults.swift in Sources */,
-				F3553FB32B40653000EF0FD2 /* PanelSettingsParent.swift in Sources */,
+				F3553FB32B40653000EF0FD2 /* ServerSettingsParent.swift in Sources */,
 				F31BA57D295901200006D126 /* StartPageVM.swift in Sources */,
 				F39E0A952C1BA06C00C4E906 /* DiscoverCard.swift in Sources */,
 				F306B9ED29BBDA770008C2D4 /* DevSettingsFooter.swift in Sources */,
@@ -5504,7 +5512,7 @@
 				F3FF5A002A4A3188003A1973 /* User List.swift in Sources */,
 				F36D534C2A05B976007324C6 /* Nav Extension.swift in Sources */,
 				F3A123582A667804008E3E20 /* LogMetaParent.swift in Sources */,
-				F303214C2B3FEDC6002A73B8 /* PanelSettingsView.swift in Sources */,
+				F303214C2B3FEDC6002A73B8 /* ServerSettingsView.swift in Sources */,
 				F310BB3A2A54E31800843F14 /* ServerListVM.swift in Sources */,
 				F3E98C202E6BAE4A0019439F /* ServerCardLayoutButton.swift in Sources */,
 				F36D532F2A05B890007324C6 /* Database Card.swift in Sources */,
@@ -5671,7 +5679,7 @@
 				F3202D482D56DC050030B3CC /* Prefetcher.swift in Sources */,
 				F3F60A7D2DED9FFB00A15737 /* Cache Card.swift in Sources */,
 				F3464D1E2A86396500188B0C /* Change Power.swift in Sources */,
-				F3553FB42B4065A300EF0FD2 /* PanelSettingsParent.swift in Sources */,
+				F3553FB42B4065A300EF0FD2 /* ServerSettingsParent.swift in Sources */,
 				F3E98C1C2E6B2B020019439F /* AccountSettings.swift in Sources */,
 				F36114DD2E569EAC0052A5A2 /* StartPageHelper.swift in Sources */,
 				F31461852D5A830E00547B6C /* Model Asset.swift in Sources */,

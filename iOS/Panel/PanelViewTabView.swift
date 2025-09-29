@@ -12,7 +12,7 @@ struct PanelViewTabView: View {
                 Tab("Info", systemImage: "info.circle", value: .info) {
                     InfoTab(server)
                         .sheet($vm.sheetSettings) {
-                            PanelSettingsParent(server)
+                            ServerSettingsParent(server)
                         }
                 }
                 
