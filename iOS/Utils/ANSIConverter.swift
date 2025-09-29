@@ -23,10 +23,14 @@ struct ANSIConverter {
     public static func convertAnsiToAttributedString(_ input: String) -> AttributedString {
         let regexPattern = "\\x1b\\[[0-9;]*m"
         
-        let regex = try! NSRegularExpression(pattern: regexPattern)
-        let parts = input.split(separator: try! Regex(regexPattern))
+        guard
+            let nsRegex = try? NSRegularExpression(pattern: regexPattern),
+            let parts = try? input.split(separator: Regex(regexPattern))
+        else {
+            return AttributedString(input)
+        }
         
-        let matches = regex.matches(
+        let matches = nsRegex.matches(
             in: input,
             options: [],
             range: NSRange(
