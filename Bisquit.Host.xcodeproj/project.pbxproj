@@ -843,7 +843,6 @@
 		F37CE9C42D555D9600716D28 /* ServerListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F352AF962A4EDB1D004AD489 /* ServerListVM.swift */; };
 		F37CE9C52D555DAF00716D28 /* ContactsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E2BF0A2C1EC94300B7A6D4 /* ContactsVM.swift */; };
 		F37DBED72E74931B0039858B /* DashboardShell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBED62E74931B0039858B /* DashboardShell.swift */; };
-		F37DBED92E74EDC60039858B /* SidebarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBED82E74EDC60039858B /* SidebarItem.swift */; };
 		F37DBEDB2E74EDDD0039858B /* StatTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEDA2E74EDDD0039858B /* StatTile.swift */; };
 		F37DBEDE2E74EE050039858B /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEDD2E74EE050039858B /* HeaderCell.swift */; };
 		F37DBEE32E74EE400039858B /* DashboardSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEE22E74EE400039858B /* DashboardSidebar.swift */; };
@@ -1980,7 +1979,6 @@
 		F37B90762BFEA00300597624 /* PanelOrnamentInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelOrnamentInfo.swift; sourceTree = "<group>"; };
 		F37B90772BFEA00300597624 /* OrnamentInfoSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrnamentInfoSettings.swift; sourceTree = "<group>"; };
 		F37DBED62E74931B0039858B /* DashboardShell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardShell.swift; sourceTree = "<group>"; };
-		F37DBED82E74EDC60039858B /* SidebarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItem.swift; sourceTree = "<group>"; };
 		F37DBEDA2E74EDDD0039858B /* StatTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatTile.swift; sourceTree = "<group>"; };
 		F37DBEDD2E74EE050039858B /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
 		F37DBEE22E74EE400039858B /* DashboardSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardSidebar.swift; sourceTree = "<group>"; };
@@ -3364,7 +3362,6 @@
 			isa = PBXGroup;
 			children = (
 				F37DBEE22E74EE400039858B /* DashboardSidebar.swift */,
-				F37DBED82E74EDC60039858B /* SidebarItem.swift */,
 			);
 			path = Sidebar;
 			sourceTree = "<group>";
@@ -6211,7 +6208,6 @@
 				F3C1E5972DC741C6007F2054 /* 3 Column Content.swift in Sources */,
 				F36B14A72DC6325F008C1AF9 /* Sidebar Server Card.swift in Sources */,
 				F36B148A2DC3BC3E008C1AF9 /* 3 Column Content View.swift in Sources */,
-				F37DBED92E74EDC60039858B /* SidebarItem.swift in Sources */,
 				F36B148B2DC3BC3E008C1AF9 /* Ingredient.swift in Sources */,
 				F36B148C2DC3BC3E008C1AF9 /* 2 Column Content View.swift in Sources */,
 				F3648ED32DCB9773001609AA /* Allocation Card.swift in Sources */,

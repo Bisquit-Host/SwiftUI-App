@@ -22,11 +22,9 @@ import PteroNet
 // Settings
 
 struct DashboardShell: View {
-    @State private var selection: SidebarItem? = .dashboard
-    
     var body: some View {
         NavigationSplitView {
-            DashboardSidebar($selection)
+            DashboardSidebar()
                 .navigationDestination(for: ServerAttributes.self) {
                     DashboardView($0)
                         .id($0.id)
