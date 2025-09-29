@@ -97,9 +97,6 @@
         }
       }
     },
-    "%@ will be availible soon..." : {
-
-    },
     "%@.%@" : {
       "localizations" : {
         "en" : {
