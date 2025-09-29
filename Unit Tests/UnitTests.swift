@@ -36,7 +36,7 @@ struct UnitTests {
         let string = """
 Goida
 """
-        print(convertAnsiToAttributedString(string))
+        print(ANSIConverter.convertAnsiToAttributedString(string))
     }
 }
 

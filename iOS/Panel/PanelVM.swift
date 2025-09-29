@@ -100,7 +100,7 @@ final class PanelVM {
                 
             } else if let consoleOutput = message.consoleOutput {
                 messages.append(
-                    convertAnsiToAttributedString(
+                    ANSIConverter.convertAnsiToAttributedString(
                         consoleOutput.replacing(">....", with: "")
                     )
                 )

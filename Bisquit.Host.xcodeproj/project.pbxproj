@@ -180,7 +180,7 @@
 		F318240B2A8777E30039866C /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F318240A2A8777CD0039866C /* Provider.swift */; };
 		F318FE452A15925200DE0A5C /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = F318FE442A15925200DE0A5C /* OrderedCollections */; };
 		F318FE472A1592AB00DE0A5C /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = F318FE462A1592AB00DE0A5C /* OrderedCollections */; };
-		F31B2D982A7AD8C800C08EE6 /* Ansi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39626F12A7AD64B0057E356 /* Ansi.swift */; };
+		F31B2D982A7AD8C800C08EE6 /* ANSIConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39626F12A7AD64B0057E356 /* ANSIConverter.swift */; };
 		F31B4450297550CD0036868F /* StatsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31B444F297550CD0036868F /* StatsTab.swift */; };
 		F31BA5272958FF7C0006D126 /* BisquitHostApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* BisquitHostApp.swift */; };
 		F31BA52B2958FF7D0006D126 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F31BA52A2958FF7D0006D126 /* Assets.xcassets */; };
@@ -375,8 +375,8 @@
 		F32FD7182B1E042500723B88 /* WebSocketTaskConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BF97A929BFC7E9007B9C9C /* WebSocketTaskConnection.swift */; };
 		F32FD7192B1E042C00723B88 /* WebsocketDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3929C0CB8000B08696 /* WebsocketDelegate.swift */; };
 		F32FD71A2B1E042C00723B88 /* WebsocketDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3929C0CB8000B08696 /* WebsocketDelegate.swift */; };
-		F32FD71B2B1E043F00723B88 /* Ansi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39626F12A7AD64B0057E356 /* Ansi.swift */; };
-		F32FD71C2B1E044000723B88 /* Ansi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39626F12A7AD64B0057E356 /* Ansi.swift */; };
+		F32FD71B2B1E043F00723B88 /* ANSIConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39626F12A7AD64B0057E356 /* ANSIConverter.swift */; };
+		F32FD71C2B1E044000723B88 /* ANSIConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39626F12A7AD64B0057E356 /* ANSIConverter.swift */; };
 		F32FD71E2B1E054400723B88 /* NetworkCalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32FD71D2B1E054300723B88 /* NetworkCalls.swift */; };
 		F32FD71F2B1E060400723B88 /* NetworkCalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32FD71D2B1E054300723B88 /* NetworkCalls.swift */; };
 		F32FD7212B1E065500723B88 /* NetworkCalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32FD71D2B1E054300723B88 /* NetworkCalls.swift */; };
@@ -451,7 +451,7 @@
 		F342FAA02B2C5DF300854270 /* Pow in Frameworks */ = {isa = PBXBuildFile; productRef = F342FA9F2B2C5DF300854270 /* Pow */; };
 		F342FAA62B2C615A00854270 /* Pow in Frameworks */ = {isa = PBXBuildFile; productRef = F342FAA52B2C615A00854270 /* Pow */; };
 		F342FAA82B2C61ED00854270 /* Pow in Frameworks */ = {isa = PBXBuildFile; productRef = F342FAA72B2C61ED00854270 /* Pow */; };
-		F342FAAB2B2C67F800854270 /* Ansi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39626F12A7AD64B0057E356 /* Ansi.swift */; };
+		F342FAAB2B2C67F800854270 /* ANSIConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39626F12A7AD64B0057E356 /* ANSIConverter.swift */; };
 		F342FAAF2B2E07FF00854270 /* Users VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A0B2A4A386F003A1973 /* Users VM.swift */; };
 		F342FAB02B2E08C100854270 /* LogVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367977D2A3A5AB6009F2788 /* LogVM.swift */; };
 		F342FAB32B2E43D500854270 /* LogCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F342FAB22B2E43D500854270 /* LogCard.swift */; };
@@ -600,7 +600,7 @@
 		F35DA9592A28F5B100803E7E /* Upload Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35DA9582A28F5B100803E7E /* Upload Progress.swift */; };
 		F35DA95A2A28F80900803E7E /* Upload Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35DA9582A28F5B100803E7E /* Upload Progress.swift */; };
 		F35F65922B1D066E00431EB7 /* PanelVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3429C0C84C00B08696 /* PanelVM.swift */; };
-		F35F65932B1D068200431EB7 /* Ansi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39626F12A7AD64B0057E356 /* Ansi.swift */; };
+		F35F65932B1D068200431EB7 /* ANSIConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39626F12A7AD64B0057E356 /* ANSIConverter.swift */; };
 		F35F65942B1D1A0B00431EB7 /* PanelVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3429C0C84C00B08696 /* PanelVM.swift */; };
 		F35F65952B1D1A0D00431EB7 /* PanelVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3429C0C84C00B08696 /* PanelVM.swift */; };
 		F35FEB072B09F003004DA05D /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35FEB062B09F003004DA05D /* APIKey.swift */; };
@@ -953,8 +953,8 @@
 		F393C7BC2A18442900DE33F9 /* FileTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5AB295902B00006D126 /* FileTab.swift */; };
 		F393C7BD2A18442D00DE33F9 /* File Uploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F393C7BA2A18437300DE33F9 /* File Uploader.swift */; };
 		F394A28429E0A9810012B7D1 /* ServerCardParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F394A28329E0A9810012B7D1 /* ServerCardParent.swift */; };
-		F39626F22A7AD64B0057E356 /* Ansi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39626F12A7AD64B0057E356 /* Ansi.swift */; };
-		F39626F32A7AD64B0057E356 /* Ansi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39626F12A7AD64B0057E356 /* Ansi.swift */; };
+		F39626F22A7AD64B0057E356 /* ANSIConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39626F12A7AD64B0057E356 /* ANSIConverter.swift */; };
+		F39626F32A7AD64B0057E356 /* ANSIConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39626F12A7AD64B0057E356 /* ANSIConverter.swift */; };
 		F397E74B2B208A3B00DDF1CE /* NewFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F397E74A2B208A3B00DDF1CE /* NewFolder.swift */; };
 		F39872102A1AE3CE0022B00E /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F398720F2A1AE3CE0022B00E /* VideoPlayer.swift */; };
 		F39872112A1AE3CE0022B00E /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F398720F2A1AE3CE0022B00E /* VideoPlayer.swift */; };
@@ -970,7 +970,7 @@
 		F39CF3582A50C00C0077996D /* User View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39CF3572A50C00C0077996D /* User View.swift */; };
 		F39CF3592A50C00C0077996D /* User View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39CF3572A50C00C0077996D /* User View.swift */; };
 		F39D19002E45C30600A84A80 /* UnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39D18FE2E45C30600A84A80 /* UnitTests.swift */; };
-		F39D19012E45C34600A84A80 /* Ansi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39626F12A7AD64B0057E356 /* Ansi.swift */; };
+		F39D19012E45C34600A84A80 /* ANSIConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39626F12A7AD64B0057E356 /* ANSIConverter.swift */; };
 		F39D19032E45C3FF00A84A80 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F39D19022E45C3FF00A84A80 /* ScrechKit */; };
 		F39D28552A27EE88007B12C3 /* PanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39D28542A27EE88007B12C3 /* PanelView.swift */; };
 		F39D28572A27F1F5007B12C3 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39D28562A27F1F5007B12C3 /* FileManager.swift */; };
@@ -2046,7 +2046,7 @@
 		F392DF372A8593E50049EF7A /* Power Signal App Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Signal App Enum.swift"; sourceTree = "<group>"; };
 		F393C7BA2A18437300DE33F9 /* File Uploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "File Uploader.swift"; sourceTree = "<group>"; };
 		F394A28329E0A9810012B7D1 /* ServerCardParent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCardParent.swift; sourceTree = "<group>"; };
-		F39626F12A7AD64B0057E356 /* Ansi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ansi.swift; sourceTree = "<group>"; };
+		F39626F12A7AD64B0057E356 /* ANSIConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANSIConverter.swift; sourceTree = "<group>"; };
 		F397E74A2B208A3B00DDF1CE /* NewFolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFolder.swift; sourceTree = "<group>"; };
 		F398720F2A1AE3CE0022B00E /* VideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayer.swift; sourceTree = "<group>"; };
 		F39872152A1B73830022B00E /* VideoFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFile.swift; sourceTree = "<group>"; };
@@ -2735,7 +2735,7 @@
 				F353D5032D98427500EC9F3A /* PanelToolbar.swift */,
 				F3EDEE3029C06E9700B08696 /* PanelTab.swift */,
 				F3D295122AF396FD00ED43A0 /* Tabs.swift */,
-				F39626F12A7AD64B0057E356 /* Ansi.swift */,
+				F39626F12A7AD64B0057E356 /* ANSIConverter.swift */,
 				F37A36772A35180100517EFC /* PowerSwitch.swift */,
 				F3ADA60D2D9BFC9D00F2DAA6 /* PowerSwitchToolbar.swift */,
 				F3553FB22B40653000EF0FD2 /* PanelSettingsParent.swift */,
@@ -4893,7 +4893,7 @@
 				F3000E18295A496C00ABD30A /* StartPage.swift in Sources */,
 				F34851B02E72E0450002C72E /* PlanCardLabelBot.swift in Sources */,
 				F34851C52E72E4F50002C72E /* UniversalPlanList.swift in Sources */,
-				F35F65932B1D068200431EB7 /* Ansi.swift in Sources */,
+				F35F65932B1D068200431EB7 /* ANSIConverter.swift in Sources */,
 				F37061C829774869009B4067 /* NavExtension.swift in Sources */,
 				F3A7CF682C8DF3C900413400 /* VideoFileVM.swift in Sources */,
 				F30088A62B3A18A80051476C /* Database VM.swift in Sources */,
@@ -5059,7 +5059,7 @@
 				F3553FBC2B40945C00EF0FD2 /* Allocation List Parent.swift in Sources */,
 				F32E88C82AF83E3F00959D49 /* ServerListAdminButton.swift in Sources */,
 				F31BA570295900C20006D126 /* millisecondsToTime.swift in Sources */,
-				F39626F22A7AD64B0057E356 /* Ansi.swift in Sources */,
+				F39626F22A7AD64B0057E356 /* ANSIConverter.swift in Sources */,
 				F3ADA6132D9BFC9D00F2DAA6 /* PowerSwitchToolbar.swift in Sources */,
 				F353D5062D98427500EC9F3A /* PanelToolbar.swift in Sources */,
 				F35FEB072B09F003004DA05D /* APIKey.swift in Sources */,
@@ -5344,7 +5344,7 @@
 				F3A800342A7313E900CAC40B /* TipCloudKeys.swift in Sources */,
 				F3464D2D2A863A6100188B0C /* Create Backup.swift in Sources */,
 				F3015DD92D9F24F600B9BCC6 /* LogCardEvent.swift in Sources */,
-				F31B2D982A7AD8C800C08EE6 /* Ansi.swift in Sources */,
+				F31B2D982A7AD8C800C08EE6 /* ANSIConverter.swift in Sources */,
 				F3499EFE2A277FDF006101B7 /* FileIcon.swift in Sources */,
 				F3F5ADAB2E8A962D007AD97D /* WebSocketConnection.swift in Sources */,
 				F36114E02E569ED30052A5A2 /* StartPageHelper.swift in Sources */,
@@ -5475,7 +5475,7 @@
 				F30089292B3C23A00051476C /* Contact Picker.swift in Sources */,
 				F36D53302A05B896007324C6 /* Section Header.swift in Sources */,
 				F325F7012A54BBCF00E89EC4 /* InfoTabAllocations.swift in Sources */,
-				F39626F32A7AD64B0057E356 /* Ansi.swift in Sources */,
+				F39626F32A7AD64B0057E356 /* ANSIConverter.swift in Sources */,
 				F3AB4A7E2CF1D97C00A8252F /* TipJSONFormatter.swift in Sources */,
 				F3EE9F762D85CAB9000120A7 /* DismissButton.swift in Sources */,
 				F30088A02B3A17DF0051476C /* Backup VM.swift in Sources */,
@@ -5754,7 +5754,7 @@
 				F3FDFF882C8912F1009EBB5C /* Networking.swift in Sources */,
 				F337B4092A89FB4300DD79AA /* System Small Widget View.swift in Sources */,
 				F36B738E2C8AEC8400E858FE /* Resources Usage Entry.swift in Sources */,
-				F342FAAB2B2C67F800854270 /* Ansi.swift in Sources */,
+				F342FAAB2B2C67F800854270 /* ANSIConverter.swift in Sources */,
 				F3287A7A2B10A120001AFE54 /* Widget Live Activity.swift in Sources */,
 				F36B73722C8A4CAF00E858FE /* Refresh Button Intent.swift in Sources */,
 				F36B737A2C8AE9D400E858FE /* Power Actions Intents.swift in Sources */,
@@ -5782,7 +5782,7 @@
 		F39D18F12E45C30200A84A80 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			files = (
-				F39D19012E45C34600A84A80 /* Ansi.swift in Sources */,
+				F39D19012E45C34600A84A80 /* ANSIConverter.swift in Sources */,
 				F39D19002E45C30600A84A80 /* UnitTests.swift in Sources */,
 			);
 		};
@@ -5980,7 +5980,7 @@
 				F3FD9F992C651A9200A69314 /* FileTabVM.swift in Sources */,
 				F3EEC03B2AF2F93800BFED78 /* StartPageVM.swift in Sources */,
 				F335F6E82DD3568200D743FF /* FileTab Context Menu.swift in Sources */,
-				F32FD71C2B1E044000723B88 /* Ansi.swift in Sources */,
+				F32FD71C2B1E044000723B88 /* ANSIConverter.swift in Sources */,
 				F320DDA52B704E3C00957D92 /* PreviewProperty.swift in Sources */,
 				F348C6E42A5438EB002D5BD6 /* App Container.swift in Sources */,
 				F3FC99162C65888900150823 /* TempDir.swift in Sources */,
@@ -6062,7 +6062,7 @@
 			isa = PBXSourcesBuildPhase;
 			files = (
 				F37DBEE82E74EE6E0039858B /* Person.swift in Sources */,
-				F32FD71B2B1E043F00723B88 /* Ansi.swift in Sources */,
+				F32FD71B2B1E043F00723B88 /* ANSIConverter.swift in Sources */,
 				F300892B2B3C55DA0051476C /* File Permissions View.swift in Sources */,
 				F36B14A92DC632D9008C1AF9 /* UserDefaults.swift in Sources */,
 				F3FA30952DD1708A00280133 /* File Card.swift in Sources */,

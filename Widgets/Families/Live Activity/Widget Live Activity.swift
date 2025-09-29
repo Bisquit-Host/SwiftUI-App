@@ -18,8 +18,6 @@ struct WidgetsAttributes: ActivityAttributes {
 struct WidgetLiveActivity: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: WidgetsAttributes.self) { context in
-            let message = convertAnsiToAttributedString(context.state.latestMessage)
-            
             // Lock screen/banner UI
             VStack {
                 HStack {
@@ -35,6 +33,8 @@ struct WidgetLiveActivity: Widget {
                 }
                 .padding(.horizontal)
                 
+                let message = ANSIConverter.convertAnsiToAttributedString(context.state.latestMessage)
+                
                 Text(message)
                     .footnote()
                     .padding(.horizontal, 10)
@@ -44,7 +44,7 @@ struct WidgetLiveActivity: Widget {
             
         } dynamicIsland: { context in
             DynamicIsland {
-                let message = convertAnsiToAttributedString(context.state.latestMessage)
+                let message = ANSIConverter.convertAnsiToAttributedString(context.state.latestMessage)
                 
                 DynamicIslandExpandedRegion(.leading) {
                     Text(context.attributes.name)
