@@ -2396,7 +2396,7 @@
 				F376D0552A02478600B7377A /* tvOS.entitlements */,
 				F3000E0B295A341100ABD30A /* Assets.xcassets */,
 				F3796563295C51C80074CA3D /* ProgressBar.swift */,
-				F37061C429774846009B4067 /* Navigation */,
+				F37061C429774846009B4067 /* Nav */,
 				F3B86000295B196F00CE60C7 /* Start Page */,
 				F3796571295C80740074CA3D /* Guide */,
 				F3B86001295B197600CE60C7 /* Server List */,
@@ -3234,13 +3234,13 @@
 			path = "Server List";
 			sourceTree = "<group>";
 		};
-		F37061C429774846009B4067 /* Navigation */ = {
+		F37061C429774846009B4067 /* Nav */ = {
 			isa = PBXGroup;
 			children = (
 				F37061C729774869009B4067 /* NavExtension.swift */,
 				F37061C929774886009B4067 /* NavDestinations.swift */,
 			);
-			path = Navigation;
+			path = Nav;
 			sourceTree = "<group>";
 		};
 		F37266D529D99B4C005FD103 /* Start Page */ = {
