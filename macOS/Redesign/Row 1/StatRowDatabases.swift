@@ -18,12 +18,12 @@ struct StatRowDatabases: View {
         } label: {
             StatTile("Databases", value: vm.databases.count, icon: "tray")
         }
+        .task {
+            await vm.fetchDatabases()
+        }
         .sheet($sheetDatabases) {
             DatabaseList(id)
                 .environment(vm)
-        }
-        .task {
-            await vm.fetchDatabases()
         }
     }
 }
