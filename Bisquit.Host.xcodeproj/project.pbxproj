@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		F3000E0C295A341100ABD30A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3000E0B295A341100ABD30A /* Assets.xcassets */; };
 		F3000E16295A357800ABD30A /* ServerList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3000E15295A357800ABD30A /* ServerList.swift */; };
-		F3000E18295A496C00ABD30A /* Start Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3000E17295A496C00ABD30A /* Start Page.swift */; };
+		F3000E18295A496C00ABD30A /* StartPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3000E17295A496C00ABD30A /* StartPage.swift */; };
 		F3000E1E295AE2B700ABD30A /* Guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3000E1D295AE2B700ABD30A /* Guide.swift */; };
 		F30038CA2D42387600363CF4 /* Sheet Remote File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30038C92D42387600363CF4 /* Sheet Remote File.swift */; };
 		F30038CB2D42387600363CF4 /* Sheet Remote File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30038C92D42387600363CF4 /* Sheet Remote File.swift */; };
@@ -539,7 +539,7 @@
 		F3496DC529E0091A0089FC28 /* Section Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3496DC429E0091A0089FC28 /* Section Header.swift */; };
 		F3496DC929E00CE70089FC28 /* Create Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3496DC829E00CE70089FC28 /* Create Button.swift */; };
 		F3499EF22A26DCA0006101B7 /* Panel Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3029C06E9700B08696 /* Panel Tab.swift */; };
-		F3499EF42A26DE92006101B7 /* Guide Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3499EF32A26DE92006101B7 /* Guide Model.swift */; };
+		F3499EF42A26DE92006101B7 /* GuideStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3499EF32A26DE92006101B7 /* GuideStep.swift */; };
 		F3499EF52A27553D006101B7 /* Panel VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3429C0C84C00B08696 /* Panel VM.swift */; };
 		F3499EF62A275546006101B7 /* Websocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BF97A929BFC7E9007B9C9C /* Websocket.swift */; };
 		F3499EF72A275550006101B7 /* Websocket Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3929C0CB8000B08696 /* Websocket Delegate.swift */; };
@@ -757,8 +757,8 @@
 		F36EBAFF2E6EF11100308DC9 /* UniversalPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36EBAFB2E6EF11100308DC9 /* UniversalPlan.swift */; };
 		F36EBB002E6EF11100308DC9 /* UniversalPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36EBAFB2E6EF11100308DC9 /* UniversalPlan.swift */; };
 		F36FDB97295AF4A900D45070 /* PlanListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA590295901C00006D126 /* PlanListVM.swift */; };
-		F37061C829774869009B4067 /* Nav Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37061C729774869009B4067 /* Nav Extension.swift */; };
-		F37061CA29774886009B4067 /* Nav Destinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37061C929774886009B4067 /* Nav Destinations.swift */; };
+		F37061C829774869009B4067 /* NavExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37061C729774869009B4067 /* NavExtension.swift */; };
+		F37061CA29774886009B4067 /* NavDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37061C929774886009B4067 /* NavDestinations.swift */; };
 		F37080492A2A1C920046CE70 /* Backup List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F375EC3729EE7213002CA969 /* Backup List.swift */; };
 		F370804A2A2A1C9C0046CE70 /* Backup Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF96F829DF277A00D30A8F /* Backup Card.swift */; };
 		F370804B2A2A1CA70046CE70 /* Backup List Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F716BC29E4D46600838586 /* Backup List Footer.swift */; };
@@ -1015,7 +1015,7 @@
 		F3A31B0C2B0B161D00F89C51 /* CloudKeyCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A31B082B0B161D00F89C51 /* CloudKeyCard.swift */; };
 		F3A31B0D2B0B161D00F89C51 /* CloudKeyCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A31B082B0B161D00F89C51 /* CloudKeyCard.swift */; };
 		F3A391BA29DB5E6900591C84 /* Cache Expiration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A391B929DB5E6900591C84 /* Cache Expiration.swift */; };
-		F3A49CC42D7A500C0067EEA8 /* Guide Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3499EF32A26DE92006101B7 /* Guide Model.swift */; };
+		F3A49CC42D7A500C0067EEA8 /* GuideStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3499EF32A26DE92006101B7 /* GuideStep.swift */; };
 		F3A563212D9EEECB009AA363 /* Allow Drag.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A5631F2D9EEECB009AA363 /* Allow Drag.swift */; };
 		F3A563222D9EEECB009AA363 /* Allow Drag.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A5631F2D9EEECB009AA363 /* Allow Drag.swift */; };
 		F3A563242D9EF114009AA363 /* InfoTabUserAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A563232D9EF114009AA363 /* InfoTabUserAvatar.swift */; };
@@ -1689,7 +1689,7 @@
 		F3000E05295A341000ABD30A /* tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tvOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3000E0B295A341100ABD30A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3000E15295A357800ABD30A /* ServerList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerList.swift; sourceTree = "<group>"; };
-		F3000E17295A496C00ABD30A /* Start Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page.swift"; sourceTree = "<group>"; };
+		F3000E17295A496C00ABD30A /* StartPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPage.swift; sourceTree = "<group>"; };
 		F3000E1D295AE2B700ABD30A /* Guide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guide.swift; sourceTree = "<group>"; };
 		F30038C92D42387600363CF4 /* Sheet Remote File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sheet Remote File.swift"; sourceTree = "<group>"; };
 		F300888F2B39FAB80051476C /* Allocation List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Allocation List.swift"; sourceTree = "<group>"; };
@@ -1853,7 +1853,7 @@
 		F34851C32E72E4F50002C72E /* UniversalPlanList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalPlanList.swift; sourceTree = "<group>"; };
 		F3496DC429E0091A0089FC28 /* Section Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Section Header.swift"; sourceTree = "<group>"; };
 		F3496DC829E00CE70089FC28 /* Create Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Create Button.swift"; sourceTree = "<group>"; };
-		F3499EF32A26DE92006101B7 /* Guide Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Guide Model.swift"; sourceTree = "<group>"; };
+		F3499EF32A26DE92006101B7 /* GuideStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideStep.swift; sourceTree = "<group>"; };
 		F3499EF92A277D0F006101B7 /* FileTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTab.swift; sourceTree = "<group>"; };
 		F3499EFC2A277E3D006101B7 /* FileNameAndIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNameAndIcon.swift; sourceTree = "<group>"; };
 		F34AD7C62A5493CC007752A7 /* visionOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = visionOS.entitlements; sourceTree = "<group>"; };
@@ -1925,8 +1925,8 @@
 		F36E8A9F2E6E441600A38229 /* ServerListUpdateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListUpdateButton.swift; sourceTree = "<group>"; };
 		F36E8AA12E6E451500A38229 /* PanelSectionListToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelSectionListToolbar.swift; sourceTree = "<group>"; };
 		F36EBAFB2E6EF11100308DC9 /* UniversalPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalPlan.swift; sourceTree = "<group>"; };
-		F37061C729774869009B4067 /* Nav Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Extension.swift"; sourceTree = "<group>"; };
-		F37061C929774886009B4067 /* Nav Destinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Destinations.swift"; sourceTree = "<group>"; };
+		F37061C729774869009B4067 /* NavExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavExtension.swift; sourceTree = "<group>"; };
+		F37061C929774886009B4067 /* NavDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavDestinations.swift; sourceTree = "<group>"; };
 		F371468B2B123807001E0296 /* Activity View State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity View State.swift"; sourceTree = "<group>"; };
 		F37266A929D71A1B005FD103 /* FileIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileIcon.swift; sourceTree = "<group>"; };
 		F37266BB29D811B7005FD103 /* FileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileView.swift; sourceTree = "<group>"; };
@@ -3237,8 +3237,8 @@
 		F37061C429774846009B4067 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				F37061C729774869009B4067 /* Nav Extension.swift */,
-				F37061C929774886009B4067 /* Nav Destinations.swift */,
+				F37061C729774869009B4067 /* NavExtension.swift */,
+				F37061C929774886009B4067 /* NavDestinations.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -3304,7 +3304,7 @@
 			isa = PBXGroup;
 			children = (
 				F3000E1D295AE2B700ABD30A /* Guide.swift */,
-				F3499EF32A26DE92006101B7 /* Guide Model.swift */,
+				F3499EF32A26DE92006101B7 /* GuideStep.swift */,
 			);
 			path = Guide;
 			sourceTree = "<group>";
@@ -3664,7 +3664,7 @@
 		F3B86000295B196F00CE60C7 /* Start Page */ = {
 			isa = PBXGroup;
 			children = (
-				F3000E17295A496C00ABD30A /* Start Page.swift */,
+				F3000E17295A496C00ABD30A /* StartPage.swift */,
 			);
 			path = "Start Page";
 			sourceTree = "<group>";
@@ -4834,7 +4834,7 @@
 				F333B3BC2B80CF750005B84D /* Preview Property.swift in Sources */,
 				F3AB4A792CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
 				F30088F32B3B475C0051476C /* StartupCard.swift in Sources */,
-				F37061CA29774886009B4067 /* Nav Destinations.swift in Sources */,
+				F37061CA29774886009B4067 /* NavDestinations.swift in Sources */,
 				F3EB09DD2A295F7C0073916A /* TextFileVM.swift in Sources */,
 				F3D295162AF396FD00ED43A0 /* Tabs.swift in Sources */,
 				F3CCF5B92B34543B005FFF2C /* User 2Fa.swift in Sources */,
@@ -4849,11 +4849,11 @@
 				F3A28ADB2C57B06600010454 /* DevSettingsFooter.swift in Sources */,
 				F34851B92E72E0790002C72E /* PlanCardLabelCloud.swift in Sources */,
 				F3E98C242E6BB4E40019439F /* Place.swift in Sources */,
-				F3000E18295A496C00ABD30A /* Start Page.swift in Sources */,
+				F3000E18295A496C00ABD30A /* StartPage.swift in Sources */,
 				F34851B02E72E0450002C72E /* PlanCardLabelBot.swift in Sources */,
 				F34851C52E72E4F50002C72E /* UniversalPlanList.swift in Sources */,
 				F35F65932B1D068200431EB7 /* Ansi.swift in Sources */,
-				F37061C829774869009B4067 /* Nav Extension.swift in Sources */,
+				F37061C829774869009B4067 /* NavExtension.swift in Sources */,
 				F3A7CF682C8DF3C900413400 /* VideoFileVM.swift in Sources */,
 				F30088A62B3A18A80051476C /* Database VM.swift in Sources */,
 				F3AFCB952A4AF6C10080C257 /* FileNameAndIcon.swift in Sources */,
@@ -4921,7 +4921,7 @@
 				F30089262B3BAD200051476C /* File Permissions View.swift in Sources */,
 				F31461812D5A82F000547B6C /* Model Asset.swift in Sources */,
 				F31461822D5A82F000547B6C /* Networking.swift in Sources */,
-				F3499EF42A26DE92006101B7 /* Guide Model.swift in Sources */,
+				F3499EF42A26DE92006101B7 /* GuideStep.swift in Sources */,
 				F3E024C62B228F4C00FFF686 /* New Task Sheet.swift in Sources */,
 				F33CDBFD2A26B7AD008D0214 /* PlanSpec.swift in Sources */,
 				F35FEB132B0A2C8E004DA05D /* ServerState.swift in Sources */,
@@ -5878,7 +5878,7 @@
 				F386941A2A4B3AE1002DEF90 /* InfoTab.swift in Sources */,
 				F37EA79C2B722B390029DE00 /* Backup VM.swift in Sources */,
 				F30C131A2A54626D00A7EFF0 /* Bisquit-Host App.swift in Sources */,
-				F3A49CC42D7A500C0067EEA8 /* Guide Model.swift in Sources */,
+				F3A49CC42D7A500C0067EEA8 /* GuideStep.swift in Sources */,
 				F3202D582D5758E50030B3CC /* LogMetaParent.swift in Sources */,
 				F3202D592D5758E50030B3CC /* LogMetaView.swift in Sources */,
 				F3A31B0C2B0B161D00F89C51 /* CloudKeyCard.swift in Sources */,
