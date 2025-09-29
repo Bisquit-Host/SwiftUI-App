@@ -1,16 +1,19 @@
 import SwiftUI
 
 struct FileSection: View {
+    @StateObject private var vm: FileTabVM
+    
     private let id: String
     
     init(_ id: String) {
         self.id = id
+        _vm = StateObject(wrappedValue: FileTabVM(id))
     }
     
     var body: some View {
         Card("Files") {
             VStack {
-                FileSectionSearchBar()
+                FileSectionSearch()
                 
                 HStack(spacing: 0) {
                     Group {
@@ -25,6 +28,7 @@ struct FileSection: View {
                 FileListRedesign(id)
             }
         }
+        .environmentObject(vm)
         .frame(height: 500)
         .frame(maxWidth: .infinity)
     }

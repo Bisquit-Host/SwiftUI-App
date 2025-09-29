@@ -2,18 +2,17 @@ import SwiftUI
 import PteroNet
 
 struct FileListRedesign: View {
-    @StateObject private var vm: FileTabVM
+    @EnvironmentObject private var vm: FileTabVM
     
     private let id: String
     
     init(_ id: String) {
         self.id = id
-        _vm = StateObject(wrappedValue: FileTabVM(id))
     }
     
     var body: some View {
         List {
-            ForEach(vm.files) {
+            ForEach(vm.filteredFiles) {
                 FileCardRedesign($0)
                     .listRowSeparatorTint(.white.opacity(0.1))
             }
@@ -30,4 +29,5 @@ struct FileListRedesign: View {
 #Preview {
     FileListRedesign("")
         .darkSchemePreferred()
+        .environmentObject(FileTabVM(""))
 }

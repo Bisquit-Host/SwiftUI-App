@@ -1,15 +1,15 @@
 import SwiftUI
 
-struct FileSectionSearchBar: View {
-    @State private var search = ""
+struct FileSectionSearch: View {
+    @EnvironmentObject private var vm: FileTabVM
     
     var body: some View {
         HStack {
-            TextField("Search here", text: $search)
+            TextField("Search here", text: $vm.searchField)
                 .textFieldStyle(.roundedBorder)
             
             Button("Filter", systemImage: "line.3.horizontal.decrease.circle") {
-                
+#warning("Does nothing")
             }
             .buttonStyle(.bordered)
         }
@@ -17,6 +17,7 @@ struct FileSectionSearchBar: View {
 }
 
 #Preview {
-    FileSectionSearchBar()
+    FileSectionSearch()
         .darkSchemePreferred()
+        .environmentObject(FileTabVM(""))
 }

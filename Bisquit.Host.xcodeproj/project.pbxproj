@@ -857,7 +857,7 @@
 		F37DBF0B2E74F24A0039858B /* LogSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF0A2E74F24A0039858B /* LogSection.swift */; };
 		F37DBF0D2E74F50C0039858B /* FileListRedesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF0C2E74F50C0039858B /* FileListRedesign.swift */; };
 		F37DBF0F2E74F5320039858B /* FileCardRedesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF0E2E74F5320039858B /* FileCardRedesign.swift */; };
-		F37DBF112E74F7570039858B /* FileSectionSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF102E74F7570039858B /* FileSectionSearchBar.swift */; };
+		F37DBF112E74F7570039858B /* FileSectionSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF102E74F7570039858B /* FileSectionSearch.swift */; };
 		F37DBF132E7572280039858B /* ServerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D95B052E625A9000849A94 /* ServerCard.swift */; };
 		F37DBF142E7572280039858B /* CompactMetricRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D95B0F2E63639900849A94 /* CompactMetricRow.swift */; };
 		F37DBF152E7572280039858B /* MetricGauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D95B122E6363AA00849A94 /* MetricGauge.swift */; };
@@ -1993,7 +1993,7 @@
 		F37DBF0A2E74F24A0039858B /* LogSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSection.swift; sourceTree = "<group>"; };
 		F37DBF0C2E74F50C0039858B /* FileListRedesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileListRedesign.swift; sourceTree = "<group>"; };
 		F37DBF0E2E74F5320039858B /* FileCardRedesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCardRedesign.swift; sourceTree = "<group>"; };
-		F37DBF102E74F7570039858B /* FileSectionSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSectionSearchBar.swift; sourceTree = "<group>"; };
+		F37DBF102E74F7570039858B /* FileSectionSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSectionSearch.swift; sourceTree = "<group>"; };
 		F37DBF1B2E76A5E00039858B /* LogActorAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogActorAvatar.swift; sourceTree = "<group>"; };
 		F37DBF1D2E76DBD00039858B /* ServerCardParent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCardParent.swift; sourceTree = "<group>"; };
 		F37DBF212E77F5450039858B /* StatRowBackups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatRowBackups.swift; sourceTree = "<group>"; };
@@ -3380,7 +3380,7 @@
 			isa = PBXGroup;
 			children = (
 				F37DBF042E74F1B00039858B /* FileSection.swift */,
-				F37DBF102E74F7570039858B /* FileSectionSearchBar.swift */,
+				F37DBF102E74F7570039858B /* FileSectionSearch.swift */,
 				F37DBF0C2E74F50C0039858B /* FileListRedesign.swift */,
 				F37DBF0E2E74F5320039858B /* FileCardRedesign.swift */,
 			);
@@ -6143,7 +6143,7 @@
 				F363C7FD2B7F7938005F6FF2 /* SystemAlerts.swift in Sources */,
 				F37DBF2E2E78193D0039858B /* LogSectionCard.swift in Sources */,
 				F348517F2E72D10A0002C72E /* customRound.swift in Sources */,
-				F37DBF112E74F7570039858B /* FileSectionSearchBar.swift in Sources */,
+				F37DBF112E74F7570039858B /* FileSectionSearch.swift in Sources */,
 				F323D8D52A2D67A3002EDC62 /* File Uploader.swift in Sources */,
 				F3A800332A7313E900CAC40B /* TipCloudKeys.swift in Sources */,
 				F3EE9F712D85CAB9000120A7 /* DismissButton.swift in Sources */,
