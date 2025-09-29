@@ -6,11 +6,11 @@ struct DiscoverDocuments: View {
     
     var body: some View {
         Menu {
-            Button("ToS", systemImage: "text.document") {
+            Button("Terms of Service", systemImage: "text.document") {
                 showTOS = true
             }
             
-            Button("Privacy Policy", systemImage: "text.document") {
+            Button("Privacy Policy", systemImage: "hand.raised") {
                 showPriacyPolicy = true
             }
         } label: {

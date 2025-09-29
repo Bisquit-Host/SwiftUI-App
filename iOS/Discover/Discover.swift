@@ -75,7 +75,7 @@ struct Discover: View {
                 
                 DiscoverDocuments()
             }
-            .padding(.vertical, 20)
+            .padding([.vertical, .bottom], 20)
         }
         .scenePadding(.horizontal)
         .ignoresSafeArea()
