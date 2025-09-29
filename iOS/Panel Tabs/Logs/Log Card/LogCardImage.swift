@@ -8,13 +8,7 @@ struct LogCardImage: View {
         self.image = image
     }
     
-    private var size: CGFloat {
-#if os(tvOS)
-        64
-#else
-        32
-#endif
-    }
+    private let size = System.isTV ? 64.0 : 32
     
     var body: some View {
         if let image {

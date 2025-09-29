@@ -16,16 +16,8 @@ struct ServerCard: View {
         vm.stateColor == .gray
     }
     
-    private var isWatch: Bool {
-#if os(watchOS)
-        true
-#else
-        false
-#endif
-    }
-    
     var body: some View {
-        VStack(alignment: .leading, spacing: isWatch ? 10 : 16) {
+        VStack(alignment: .leading, spacing: System.isWatch ? 10 : 16) {
             HStack {
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
@@ -45,7 +37,7 @@ struct ServerCard: View {
                         Text(server.description)
                             .lineLimit(2)
                             .secondary()
-                            .font(isWatch ? .footnote : .subheadline)
+                            .font(System.isWatch ? .footnote : .subheadline)
                             .multilineTextAlignment(.leading)
                     }
                 }
@@ -59,7 +51,7 @@ struct ServerCard: View {
             }
             
             if vm.stateColor != .gray {
-                VStack(spacing: isWatch ? 6 : 12) {
+                VStack(spacing: System.isWatch ? 6 : 12) {
                     if vm.stateColor != .red {
                         MetricGauge(
                             title: "CPU",
@@ -85,7 +77,7 @@ struct ServerCard: View {
                 }
             }
         }
-        .padding(isWatch ? 10 : 20)
+        .padding(System.isWatch ? 10 : 20)
 #if !os(visionOS)
         .glassEffect(in: .rect(cornerRadius: 16))
 #endif

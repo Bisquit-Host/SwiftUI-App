@@ -8,11 +8,7 @@ struct FileNameAndIcon: View {
         self.file = file
     }
     
-#if os(tvOS)
-    private let spacing = 16.0
-#elseif os(watchOS)
-    private let spacing = 8.0
-#endif
+    private let spacing = System.isTV ? 16 : 8.0
     
     var body: some View {
         HStack(spacing: spacing) {

@@ -212,13 +212,13 @@
 		F31C8D892E70E79D00D16B08 /* PlanViewList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31C8D842E70E79D00D16B08 /* PlanViewList.swift */; };
 		F31D0BB52A2573E200119D07 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31D0BB42A2573E200119D07 /* AppSettings.swift */; };
 		F31DB1952E01B39600FB66B7 /* Power Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A36772A35180100517EFC /* Power Switch.swift */; };
-		F31F31F82D52BD940095DD19 /* lowPowerMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F31F72D52BD940095DD19 /* lowPowerMode.swift */; };
-		F31F31F92D52BD940095DD19 /* lowPowerMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F31F72D52BD940095DD19 /* lowPowerMode.swift */; };
-		F31F31FA2D52BD940095DD19 /* lowPowerMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F31F72D52BD940095DD19 /* lowPowerMode.swift */; };
-		F31F31FB2D52BD940095DD19 /* lowPowerMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F31F72D52BD940095DD19 /* lowPowerMode.swift */; };
-		F31F31FC2D52BD940095DD19 /* lowPowerMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F31F72D52BD940095DD19 /* lowPowerMode.swift */; };
-		F31F31FD2D52BD940095DD19 /* lowPowerMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F31F72D52BD940095DD19 /* lowPowerMode.swift */; };
-		F31F31FF2D52BD940095DD19 /* lowPowerMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F31F72D52BD940095DD19 /* lowPowerMode.swift */; };
+		F31F31F82D52BD940095DD19 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F31F72D52BD940095DD19 /* System.swift */; };
+		F31F31F92D52BD940095DD19 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F31F72D52BD940095DD19 /* System.swift */; };
+		F31F31FA2D52BD940095DD19 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F31F72D52BD940095DD19 /* System.swift */; };
+		F31F31FB2D52BD940095DD19 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F31F72D52BD940095DD19 /* System.swift */; };
+		F31F31FC2D52BD940095DD19 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F31F72D52BD940095DD19 /* System.swift */; };
+		F31F31FD2D52BD940095DD19 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F31F72D52BD940095DD19 /* System.swift */; };
+		F31F31FF2D52BD940095DD19 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31F31F72D52BD940095DD19 /* System.swift */; };
 		F3202C742D5583680030B3CC /* PlanViewParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202C732D5583680030B3CC /* PlanViewParent.swift */; };
 		F3202C762D5583680030B3CC /* PlanViewParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202C732D5583680030B3CC /* PlanViewParent.swift */; };
 		F3202C772D5583680030B3CC /* PlanViewParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202C732D5583680030B3CC /* PlanViewParent.swift */; };
@@ -1769,7 +1769,7 @@
 		F31BA5C8295904AC0006D126 /* DataTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTab.swift; sourceTree = "<group>"; };
 		F31C8D842E70E79D00D16B08 /* PlanViewList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewList.swift; sourceTree = "<group>"; };
 		F31D0BB42A2573E200119D07 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
-		F31F31F72D52BD940095DD19 /* lowPowerMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lowPowerMode.swift; sourceTree = "<group>"; };
+		F31F31F72D52BD940095DD19 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
 		F3202C732D5583680030B3CC /* PlanViewParent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewParent.swift; sourceTree = "<group>"; };
 		F3202C792D558B210030B3CC /* SpotlightIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotlightIndex.swift; sourceTree = "<group>"; };
 		F3202CC92D559B240030B3CC /* ContactsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsProvider.swift; sourceTree = "<group>"; };
@@ -2502,7 +2502,7 @@
 				F3AB1DF32D79C42B00387164 /* MetricKitManager.swift */,
 				F3FF3E862D93576B00EDFBC6 /* UpdateChecker.swift */,
 				F32FD71D2B1E054300723B88 /* NetworkCalls.swift */,
-				F31F31F72D52BD940095DD19 /* lowPowerMode.swift */,
+				F31F31F72D52BD940095DD19 /* System.swift */,
 				F3EE9F6E2D85CAB9000120A7 /* DismissButton.swift */,
 				F3202D452D56DC050030B3CC /* Prefetcher.swift */,
 				F31BA56F295900C20006D126 /* millisecondsToTime.swift */,
@@ -4933,7 +4933,7 @@
 				F30C13162A5461BB00A7EFF0 /* Cache VM.swift in Sources */,
 				F36114DC2E569EAC0052A5A2 /* StartPageHelper.swift in Sources */,
 				F3796564295C51C80074CA3D /* ProgressBar.swift in Sources */,
-				F31F31FD2D52BD940095DD19 /* lowPowerMode.swift in Sources */,
+				F31F31FD2D52BD940095DD19 /* System.swift in Sources */,
 				F30089262B3BAD200051476C /* File Permissions View.swift in Sources */,
 				F31461812D5A82F000547B6C /* Model Asset.swift in Sources */,
 				F31461822D5A82F000547B6C /* Networking.swift in Sources */,
@@ -5215,7 +5215,7 @@
 				F31BA5AC295902B00006D126 /* FileTab.swift in Sources */,
 				F3A5632C2D9EF21B009AA363 /* LogMetaCard.swift in Sources */,
 				F3B6372F2A35A82F00CB374C /* Console Inspector.swift in Sources */,
-				F31F31FB2D52BD940095DD19 /* lowPowerMode.swift in Sources */,
+				F31F31FB2D52BD940095DD19 /* System.swift in Sources */,
 				F3EDEE3A29C0CB8000B08696 /* Websocket Delegate.swift in Sources */,
 				F3A391BA29DB5E6900591C84 /* Cache Expiration.swift in Sources */,
 				F393C7BB2A18437400DE33F9 /* File Uploader.swift in Sources */,
@@ -5294,7 +5294,7 @@
 				F35B89C02A725CFA000B5EEF /* TipSuspendedServer.swift in Sources */,
 				F3FFB7442A57F43C00220FA5 /* User List.swift in Sources */,
 				F35FEB092B09F003004DA05D /* APIKey.swift in Sources */,
-				F31F31FC2D52BD940095DD19 /* lowPowerMode.swift in Sources */,
+				F31F31FC2D52BD940095DD19 /* System.swift in Sources */,
 				F3A7BCC3296B2ABB00E080C1 /* StartPage.swift in Sources */,
 				F3F5AD8C2E8A622A007AD97D /* ServerCard.swift in Sources */,
 				F3EB09E22A29805A0073916A /* DesVideoWatch.swift in Sources */,
@@ -5524,7 +5524,7 @@
 				F389BB742A05B61F00911EBF /* Credentials VM.swift in Sources */,
 				F3015DE62D9F27E800B9BCC6 /* LogCardImage.swift in Sources */,
 				F333B3BD2B80CF760005B84D /* PreviewProperty.swift in Sources */,
-				F31F31F92D52BD940095DD19 /* lowPowerMode.swift in Sources */,
+				F31F31F92D52BD940095DD19 /* System.swift in Sources */,
 				F34851C12E72E11E0002C72E /* PlanCardLabelGame.swift in Sources */,
 				F3A563252D9EF114009AA363 /* InfoTabUserAvatar.swift in Sources */,
 				F32E88D22AF8494100959D49 /* ServerListFilter.swift in Sources */,
@@ -5823,7 +5823,7 @@
 				F3255E1A2C904A03008E04DE /* Settings View.swift in Sources */,
 				F3202CCD2D559B240030B3CC /* ContactsProvider.swift in Sources */,
 				F314617A2D5A2B8B00547B6C /* Create Apikey.swift in Sources */,
-				F31F31FA2D52BD940095DD19 /* lowPowerMode.swift in Sources */,
+				F31F31FA2D52BD940095DD19 /* System.swift in Sources */,
 				F353B0422D8A31BF00E4EC07 /* Account Parent.swift in Sources */,
 				F3A7CF152C8C4E4300413400 /* MapList.swift in Sources */,
 				F37CE9C32D555D5A00716D28 /* TabInfo.swift in Sources */,
@@ -5879,7 +5879,7 @@
 				F32716D82CF6257800F2DC31 /* Backup Context Menu.swift in Sources */,
 				F30B61C82B2905CA00F447B4 /* SystemAlerts.swift in Sources */,
 				F32F43FF2B75450800C9470B /* UserCard.swift in Sources */,
-				F31F31F82D52BD940095DD19 /* lowPowerMode.swift in Sources */,
+				F31F31F82D52BD940095DD19 /* System.swift in Sources */,
 				F3202C902D5590FE0030B3CC /* MapVM.swift in Sources */,
 				F3202C912D5590FE0030B3CC /* MapList.swift in Sources */,
 				F3202C922D5590FE0030B3CC /* MapView.swift in Sources */,
@@ -6118,7 +6118,7 @@
 				F37DBF1A2E75723B0039858B /* ServerListTips.swift in Sources */,
 				F3648ED72DCB987C001609AA /* Subdomain Card.swift in Sources */,
 				F3648ED82DCB987C001609AA /* Subdomain VM.swift in Sources */,
-				F31F31FF2D52BD940095DD19 /* lowPowerMode.swift in Sources */,
+				F31F31FF2D52BD940095DD19 /* System.swift in Sources */,
 				F32FD7162B1E041D00723B88 /* Websocket Message.swift in Sources */,
 				F36B149C2DC3E9BB008C1AF9 /* PanelSection.swift in Sources */,
 				F37DBEE62E74EE620039858B /* DashboardView.swift in Sources */,

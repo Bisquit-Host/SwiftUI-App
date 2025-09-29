@@ -6,13 +6,7 @@ struct MetricGauge: View {
     let color: Color
     let icon: String
     
-    private var spacing: CGFloat {
-#if os(watchOS)
-        4
-#else
-        12
-#endif
-    }
+    private let spacing = System.isWatch ? 4.0 : 12
     
     var body: some View {
         HStack(spacing: spacing) {
