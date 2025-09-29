@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct IntroAmbientBackground: View {
+struct AmbientBackground: View {
     @Binding private var activeCard: IntroCard?
     private let cards: [IntroCard]
     
@@ -13,7 +13,7 @@ struct IntroAmbientBackground: View {
         GeometryReader { geo in
             ZStack {
                 ForEach(cards) {
-                    IntroAmbientBackgroundCard($activeCard, card: $0, size: geo.size)
+                    AmbientBackgroundCard($activeCard, card: $0, size: geo.size)
                 }
                 
                 Rectangle()
@@ -30,6 +30,6 @@ struct IntroAmbientBackground: View {
 #Preview {
     @Previewable @State var activeCard: IntroCard?
     
-    IntroAmbientBackground($activeCard, cards: [])
+    AmbientBackground($activeCard, cards: [])
         .darkSchemePreferred()
 }

@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct IntroAmbientBackgroundCard: View {
+struct AmbientBackgroundCard: View {
     @Binding private var activeCard: IntroCard?
     private let card: IntroCard
     private let size: CGSize
@@ -23,6 +23,6 @@ struct IntroAmbientBackgroundCard: View {
 }
 
 //#Preview {
-//    IntroAmbientBackgroundCard()
+//    AmbientBackgroundCard()
 //        .darkSchemePreferred()
 //}

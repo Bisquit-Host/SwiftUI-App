@@ -22,7 +22,7 @@ struct Intro: View {
     
     var body: some View {
         ZStack {
-            IntroAmbientBackground($activeCard, cards: cards)
+            AmbientBackground($activeCard, cards: cards)
                 .animation(.easeInOut(duration: 1), value: activeCard)
             
             VStack(spacing: 40) {
@@ -92,7 +92,9 @@ struct Intro: View {
             .safeAreaPadding(15)
         }
         .onAppear {
-            activate()
+            Task {
+                await activate()
+            }
         }
         .onReceive(timer) { _ in
             currentScrollOffset += 0.35
@@ -105,17 +107,15 @@ struct Intro: View {
         }
     }
     
-    private func activate() {
-        Task {
-            try? await Task.sleep(for: .seconds(0.35))
-            
-            withAnimation(.smooth(duration: 0.75, extraBounce: 0)) {
-                initialAnimation = true
-            }
-            
-            withAnimation(.smooth(duration: 2.5, extraBounce: 0).delay(0.3)) {
-                titleProgress = 1
-            }
+    private func activate() async {
+        try? await Task.sleep(for: .seconds(0.35))
+        
+        withAnimation(.smooth(duration: 0.75, extraBounce: 0)) {
+            initialAnimation = true
+        }
+        
+        withAnimation(.smooth(duration: 2.5, extraBounce: 0).delay(0.3)) {
+            titleProgress = 1
         }
     }
 }
