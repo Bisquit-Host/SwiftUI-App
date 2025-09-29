@@ -2,7 +2,6 @@ import ScrechKit
 
 struct ServerList: View {
     @Environment(ServerListVM.self) private var vm
-    @Environment(NavState.self) private var navState
     @Environment(UpdateChecker.self) private var updater
     @EnvironmentObject private var store: ValueStore
     
@@ -40,27 +39,25 @@ struct ServerList: View {
             await vm.fetchServers(store.adminServerList)
         }
         .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                NavigationLink("Settings") {
-                    AppSettings()
-                }
+            NavigationLink("Settings") {
+                AppSettings()
             }
             
-//            if store.devMode {
-//                Button("Admin") {
-//                    store.adminServerList.toggle()
-//                    
-//                    Task {
-//                        await vm.fetchServers(store.adminServerList)
-//                    }
-//                }
-//                .foregroundStyle(store.adminServerList ? .primary : .secondary)
-//#if DEBUG
-//                Button("Overview") {
-//                    sheetOverview = true
-//                }
-//#endif
-//            }
+            if store.devMode {
+                Button("Admin") {
+                    store.adminServerList.toggle()
+                    
+                    Task {
+                        await vm.fetchServers(store.adminServerList)
+                    }
+                }
+                .foregroundStyle(store.adminServerList ? .primary : .secondary)
+#if DEBUG
+                Button("Overview") {
+                    sheetOverview = true
+                }
+#endif
+            }
         }
 #if DEBUG
         .sheet($sheetOverview) {

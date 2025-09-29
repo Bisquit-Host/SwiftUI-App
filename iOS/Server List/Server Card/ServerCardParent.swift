@@ -2,7 +2,7 @@ import ScrechKit
 import PteroNet
 
 struct ServerCardParent: View {
-    @Environment(NavState.self) private var navState
+    @Environment(NavState.self) private var nav
     @EnvironmentObject private var store: ValueStore
     
     private let server: ServerAttributes
@@ -21,7 +21,7 @@ struct ServerCardParent: View {
     var body: some View {
         VStack {
             Button {
-                navState.navigate(.toPanel(server.id))
+                nav.navigate(.toPanel(server.id))
             } label: {
                 if store.compactServerList {
                     CompactServerCard(server)

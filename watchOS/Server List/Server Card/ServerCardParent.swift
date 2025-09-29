@@ -2,7 +2,7 @@ import SwiftUI
 import PteroNet
 
 struct ServerCardParent: View {
-    @Environment(NavState.self) private var navState
+    @Environment(NavState.self) private var nav
     
     private let server: ServerAttributes
     
@@ -22,7 +22,7 @@ struct ServerCardParent: View {
         }
         .buttonStyle(.plain)
         .onTapGesture {
-            navState.navigate(.toPanel(server.id))
+            nav.navigate(.toPanel(server.id))
         }
         .onLongPressGesture {
             if !server.isSuspended {

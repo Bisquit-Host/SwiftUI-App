@@ -2,7 +2,6 @@ import ScrechKit
 import PteroNet
 
 struct ServerCardParent: View {
-    @Environment(NavState.self) private var navState
     @EnvironmentObject private var store: ValueStore
     
     private let server: ServerAttributes

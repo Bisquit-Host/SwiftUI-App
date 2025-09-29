@@ -2,14 +2,14 @@ import ScrechKit
 
 struct ServerListTopbarSettingsButton: View {
     @Environment(ServerListVM.self) private var vm
-    @Environment(NavState.self) private var navState
+    @Environment(NavState.self) private var nav
     @EnvironmentObject private var store: ValueStore
     
     @State private var isRotating = false
     
     var body: some View {
         Button {
-            navState.navigate(.toSettings)
+            nav.navigate(.toSettings)
         } label: {
             Image(systemName: "gear")
                 .secondary()

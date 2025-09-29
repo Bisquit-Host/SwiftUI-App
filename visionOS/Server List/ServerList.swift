@@ -4,8 +4,6 @@ import TipKit
 
 struct ServerList: View {
     @Environment(ServerListVM.self) private var vm
-    @Environment(NavState.self) private var navState
-    
     @EnvironmentObject private var store: ValueStore
     
     @State private var sheetSettings = false

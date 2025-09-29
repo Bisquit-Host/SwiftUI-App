@@ -4,7 +4,7 @@ import PteroNet
 
 struct AccountSettings: View {
     @Environment(ServerListVM.self) private var vm
-    @Environment(NavState.self) private var navState
+    @Environment(NavState.self) private var nav
     @EnvironmentObject private var store: ValueStore
     
     @Query(animation: .default) private var keys: [APIKey]
@@ -36,7 +36,7 @@ struct AccountSettings: View {
     }
     
     private func logout() {
-        navState.clear()
+        nav.clear()
         store.isApiKeyValid = false
         Keychain.delete(key: "selectedApiKey")
     }

@@ -4,7 +4,6 @@ import SwiftData
 
 struct StartPage: View {
     @Bindable var vm = StartPageVM()
-    @Environment(NavState.self) private var navState
     @EnvironmentObject var store: ValueStore
     
     @Environment(\.modelContext) var modelContext
