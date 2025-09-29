@@ -1,13 +1,13 @@
 import SwiftUI
 
 struct DiscoverDocuments: View {
-    @State private var showTOS = false
+    @State private var showTerms = false
     @State private var showPriacyPolicy = false
     
     var body: some View {
         Menu {
             Button("Terms of Service", systemImage: "text.document") {
-                showTOS = true
+                showTerms = true
             }
             
             Button("Privacy Policy", systemImage: "hand.raised") {
@@ -16,7 +16,7 @@ struct DiscoverDocuments: View {
         } label: {
             DiscoverCardLabel("Documents", image: .docBlue)
         }
-        .safariCover($showTOS, url: "https://bisquit.host/terms.pdf")
+        .safariCover($showTerms, url: "https://bisquit.host/terms.pdf")
         .safariCover($showPriacyPolicy, url: "https://bisquit.host/policy.pdf")
     }
 }
