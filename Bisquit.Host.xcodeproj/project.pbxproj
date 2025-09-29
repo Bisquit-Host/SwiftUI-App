@@ -142,8 +142,8 @@
 		F30C13182A54626C00A7EFF0 /* BisquitHostApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* BisquitHostApp.swift */; };
 		F30C13192A54626D00A7EFF0 /* BisquitHostApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* BisquitHostApp.swift */; };
 		F30C131A2A54626D00A7EFF0 /* BisquitHostApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* BisquitHostApp.swift */; };
-		F310A2F02A56AF86001AF45F /* Network VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F310A2EF2A56AF86001AF45F /* Network VM.swift */; };
-		F310A2F12A56B0BE001AF45F /* Network VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F310A2EF2A56AF86001AF45F /* Network VM.swift */; };
+		F310A2F02A56AF86001AF45F /* NetworkVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F310A2EF2A56AF86001AF45F /* NetworkVM.swift */; };
+		F310A2F12A56B0BE001AF45F /* NetworkVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F310A2EF2A56AF86001AF45F /* NetworkVM.swift */; };
 		F310BB392A54E31700843F14 /* ServerListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F352AF962A4EDB1D004AD489 /* ServerListVM.swift */; };
 		F310BB3A2A54E31800843F14 /* ServerListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F352AF962A4EDB1D004AD489 /* ServerListVM.swift */; };
 		F3116F262A33E142001F067C /* FolderFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3116F252A33E142001F067C /* FolderFile.swift */; };
@@ -189,12 +189,12 @@
 		F31BA566295900300006D126 /* Nav State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA565295900300006D126 /* Nav State.swift */; };
 		F31BA5682959006F0006D126 /* App Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5672959006F0006D126 /* App Container.swift */; };
 		F31BA56A2959007E0006D126 /* Nav Destinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5692959007E0006D126 /* Nav Destinations.swift */; };
-		F31BA570295900C20006D126 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA56F295900C20006D126 /* Formatters.swift */; };
+		F31BA570295900C20006D126 /* millisecondsToTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA56F295900C20006D126 /* millisecondsToTime.swift */; };
 		F31BA576295900E30006D126 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA575295900E30006D126 /* SettingsView.swift */; };
 		F31BA57A295901110006D126 /* StartPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA579295901110006D126 /* StartPage.swift */; };
 		F31BA57D295901200006D126 /* StartPageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA57B2959011B0006D126 /* StartPageVM.swift */; };
 		F31BA57F2959012D0006D126 /* Guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA57E2959012D0006D126 /* Guide.swift */; };
-		F31BA5862959016D0006D126 /* SpriteKit Pyzh.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5852959016D0006D126 /* SpriteKit Pyzh.swift */; };
+		F31BA5862959016D0006D126 /* SpriteKitPyzh.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5852959016D0006D126 /* SpriteKitPyzh.swift */; };
 		F31BA58F295901B60006D126 /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA58E295901B60006D126 /* PlanView.swift */; };
 		F31BA591295901C00006D126 /* PlanListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA590295901C00006D126 /* PlanListVM.swift */; };
 		F31BA596295901F70006D126 /* Panel View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA595295901F70006D126 /* Panel View.swift */; };
@@ -257,7 +257,7 @@
 		F3202D292D562B9A0030B3CC /* PlanCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D262D562B9A0030B3CC /* PlanCard.swift */; };
 		F3202D2A2D562B9A0030B3CC /* PlanCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D262D562B9A0030B3CC /* PlanCard.swift */; };
 		F3202D2B2D562B9A0030B3CC /* PlanCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D262D562B9A0030B3CC /* PlanCard.swift */; };
-		F3202D3B2D5636660030B3CC /* Tip Suspended Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B89BD2A725710000B5EEF /* Tip Suspended Server.swift */; };
+		F3202D3B2D5636660030B3CC /* TipSuspendedServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B89BD2A725710000B5EEF /* TipSuspendedServer.swift */; };
 		F3202D462D56DC050030B3CC /* Prefetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D452D56DC050030B3CC /* Prefetcher.swift */; };
 		F3202D482D56DC050030B3CC /* Prefetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D452D56DC050030B3CC /* Prefetcher.swift */; };
 		F3202D492D56DC050030B3CC /* Prefetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202D452D56DC050030B3CC /* Prefetcher.swift */; };
@@ -391,7 +391,7 @@
 		F33001442A4CF06D0063FE0F /* Apikey Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33001432A4CF06D0063FE0F /* Apikey Card.swift */; };
 		F33001452A4CF06D0063FE0F /* Apikey Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33001432A4CF06D0063FE0F /* Apikey Card.swift */; };
 		F3317AEA2A45E24F00CA104D /* Guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3317AE92A45E24F00CA104D /* Guide.swift */; };
-		F3317AEE2A45E33300CA104D /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA56F295900C20006D126 /* Formatters.swift */; };
+		F3317AEE2A45E33300CA104D /* millisecondsToTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA56F295900C20006D126 /* millisecondsToTime.swift */; };
 		F333B3B92B80CF700005B84D /* Preview Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = F320DDA42B704E3C00957D92 /* Preview Property.swift */; };
 		F333B3BA2B80CF750005B84D /* Preview Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = F320DDA42B704E3C00957D92 /* Preview Property.swift */; };
 		F333B3BB2B80CF750005B84D /* Preview Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = F320DDA42B704E3C00957D92 /* Preview Property.swift */; };
@@ -559,8 +559,8 @@
 		F34AEF592DD6413200909562 /* Guide.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F34AEF532DD640F900909562 /* Guide.xcassets */; };
 		F34BF0C52DD07DE00041BE04 /* Preview VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34BF0BD2DD07DE00041BE04 /* Preview VC.swift */; };
 		F34C055A29F11E010031ABE1 /* ServerCardVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* ServerCardVM.swift */; };
-		F35081AF2AF30E2B00835CC0 /* Tip Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A800312A7313E900CAC40B /* Tip Cloud Keys.swift */; };
-		F35081B02AF30F4B00835CC0 /* Tip Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A800312A7313E900CAC40B /* Tip Cloud Keys.swift */; };
+		F35081AF2AF30E2B00835CC0 /* TipCloudKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A800312A7313E900CAC40B /* TipCloudKeys.swift */; };
+		F35081B02AF30F4B00835CC0 /* TipCloudKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A800312A7313E900CAC40B /* TipCloudKeys.swift */; };
 		F352AF9B2A4EE707004AD489 /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = F352AF9A2A4EE707004AD489 /* AlertKit */; };
 		F353B0412D8A31BF00E4EC07 /* Account Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B0402D8A31BF00E4EC07 /* Account Parent.swift */; };
 		F353B0422D8A31BF00E4EC07 /* Account Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F353B0402D8A31BF00E4EC07 /* Account Parent.swift */; };
@@ -585,12 +585,12 @@
 		F358F02E2D2C1C5500BCC07B /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = F358F02D2D2C1C5500BCC07B /* LaunchAtLogin */; };
 		F35B2A0229FFD6AB006E5FD2 /* OtherModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B2A0129FFD6AB006E5FD2 /* OtherModels.swift */; };
 		F35B2A0329FFF857006E5FD2 /* OtherModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B2A0129FFD6AB006E5FD2 /* OtherModels.swift */; };
-		F35B89BE2A725710000B5EEF /* Tip Suspended Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B89BD2A725710000B5EEF /* Tip Suspended Server.swift */; };
-		F35B89BF2A725CF7000B5EEF /* Tip Suspended Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B89BD2A725710000B5EEF /* Tip Suspended Server.swift */; };
-		F35B89C02A725CFA000B5EEF /* Tip Suspended Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B89BD2A725710000B5EEF /* Tip Suspended Server.swift */; };
-		F35B89C12A725CFB000B5EEF /* Tip Suspended Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B89BD2A725710000B5EEF /* Tip Suspended Server.swift */; };
-		F35B89C32A725CFC000B5EEF /* Tip Suspended Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B89BD2A725710000B5EEF /* Tip Suspended Server.swift */; };
-		F35B9F552A2D6D380045D014 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA56F295900C20006D126 /* Formatters.swift */; };
+		F35B89BE2A725710000B5EEF /* TipSuspendedServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B89BD2A725710000B5EEF /* TipSuspendedServer.swift */; };
+		F35B89BF2A725CF7000B5EEF /* TipSuspendedServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B89BD2A725710000B5EEF /* TipSuspendedServer.swift */; };
+		F35B89C02A725CFA000B5EEF /* TipSuspendedServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B89BD2A725710000B5EEF /* TipSuspendedServer.swift */; };
+		F35B89C12A725CFB000B5EEF /* TipSuspendedServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B89BD2A725710000B5EEF /* TipSuspendedServer.swift */; };
+		F35B89C32A725CFC000B5EEF /* TipSuspendedServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B89BD2A725710000B5EEF /* TipSuspendedServer.swift */; };
+		F35B9F552A2D6D380045D014 /* millisecondsToTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA56F295900C20006D126 /* millisecondsToTime.swift */; };
 		F35B9F5C2A2DC8D60045D014 /* Nav State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA565295900300006D126 /* Nav State.swift */; };
 		F35B9F612A2DCF9C0045D014 /* Stats Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B9F602A2DCF9C0045D014 /* Stats Tab.swift */; };
 		F35BB0372C656AC800631DBD /* Guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35BB0362C656AC800631DBD /* Guide.swift */; };
@@ -609,10 +609,10 @@
 		F35FEB0A2B09F003004DA05D /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35FEB062B09F003004DA05D /* APIKey.swift */; };
 		F35FEB0B2B09F003004DA05D /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35FEB062B09F003004DA05D /* APIKey.swift */; };
 		F35FEB0C2B09F003004DA05D /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35FEB062B09F003004DA05D /* APIKey.swift */; };
-		F35FEB0E2B09F4D3004DA05D /* Network VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F310A2EF2A56AF86001AF45F /* Network VM.swift */; };
-		F35FEB0F2B09F4D3004DA05D /* Network VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F310A2EF2A56AF86001AF45F /* Network VM.swift */; };
-		F35FEB102B09F4D3004DA05D /* Network VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F310A2EF2A56AF86001AF45F /* Network VM.swift */; };
-		F35FEB112B09F4D4004DA05D /* Network VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F310A2EF2A56AF86001AF45F /* Network VM.swift */; };
+		F35FEB0E2B09F4D3004DA05D /* NetworkVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F310A2EF2A56AF86001AF45F /* NetworkVM.swift */; };
+		F35FEB0F2B09F4D3004DA05D /* NetworkVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F310A2EF2A56AF86001AF45F /* NetworkVM.swift */; };
+		F35FEB102B09F4D3004DA05D /* NetworkVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F310A2EF2A56AF86001AF45F /* NetworkVM.swift */; };
+		F35FEB112B09F4D4004DA05D /* NetworkVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F310A2EF2A56AF86001AF45F /* NetworkVM.swift */; };
 		F35FEB122B0A2C8D004DA05D /* ServerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A1D2302A201C570053261E /* ServerState.swift */; };
 		F35FEB132B0A2C8E004DA05D /* ServerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A1D2302A201C570053261E /* ServerState.swift */; };
 		F35FEB142B0A2C8F004DA05D /* ServerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A1D2302A201C570053261E /* ServerState.swift */; };
@@ -740,7 +740,7 @@
 		F36D533E2A05B8EC007324C6 /* TextFileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266C729D83394005FD103 /* TextFileVM.swift */; };
 		F36D53402A05B8F6007324C6 /* FileIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266A929D71A1B005FD103 /* FileIcon.swift */; };
 		F36D53442A05B90D007324C6 /* FileTab Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C0F9CF29E204FA0040E277 /* FileTab Context Menu.swift */; };
-		F36D53482A05B939007324C6 /* SpriteKit Pyzh.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5852959016D0006D126 /* SpriteKit Pyzh.swift */; };
+		F36D53482A05B939007324C6 /* SpriteKitPyzh.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5852959016D0006D126 /* SpriteKitPyzh.swift */; };
 		F36D534A2A05B961007324C6 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F36D53492A05B961007324C6 /* Kingfisher */; };
 		F36D534B2A05B974007324C6 /* Nav Destinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5692959007E0006D126 /* Nav Destinations.swift */; };
 		F36D534C2A05B976007324C6 /* Nav Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BAEC8C2959B3FE00111375 /* Nav Extension.swift */; };
@@ -779,7 +779,7 @@
 		F37266CB29D96C80005FD103 /* Websocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BF97A929BFC7E9007B9C9C /* Websocket.swift */; };
 		F37266CC29D96C93005FD103 /* Websocket Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3729C0CB5A00B08696 /* Websocket Message.swift */; };
 		F37266CD29D96C98005FD103 /* Websocket Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3929C0CB8000B08696 /* Websocket Delegate.swift */; };
-		F37266CF29D96ED9005FD103 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA56F295900C20006D126 /* Formatters.swift */; };
+		F37266CF29D96ED9005FD103 /* millisecondsToTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA56F295900C20006D126 /* millisecondsToTime.swift */; };
 		F37266DC29D9A27A005FD103 /* SuspendedServerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266DA29D9A215005FD103 /* SuspendedServerCard.swift */; };
 		F37266E129D9A7BA005FD103 /* PanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266E029D9A7BA005FD103 /* PanelView.swift */; };
 		F37266E429D9A867005FD103 /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266E329D9A867005FD103 /* Console.swift */; };
@@ -912,7 +912,7 @@
 		F389BB582A05B4F600911EBF /* ServerListGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337B3A729BC6B5400CC1195 /* ServerListGrid.swift */; };
 		F389BB5B2A05B53200911EBF /* ServerCardParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F394A28329E0A9810012B7D1 /* ServerCardParent.swift */; };
 		F389BB622A05B58E00911EBF /* ServerCardVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* ServerCardVM.swift */; };
-		F389BB652A05B5AF00911EBF /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA56F295900C20006D126 /* Formatters.swift */; };
+		F389BB652A05B5AF00911EBF /* millisecondsToTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA56F295900C20006D126 /* millisecondsToTime.swift */; };
 		F389BB682A05B5C100911EBF /* Guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA57E2959012D0006D126 /* Guide.swift */; };
 		F389BB6A2A05B5E100911EBF /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA575295900E30006D126 /* SettingsView.swift */; };
 		F389BB6B2A05B5E500911EBF /* Biometry VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3924EDE29A2333F00C4CC77 /* Biometry VM.swift */; };
@@ -978,7 +978,7 @@
 		F39D680D2A262C5E00B9BDFC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F39D680C2A262C5E00B9BDFC /* Kingfisher */; };
 		F39D68112A2634C700B9BDFC /* Dev Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3878ECC2A1BCE5000AD8657 /* Dev Settings.swift */; };
 		F39D68132A26373900B9BDFC /* Bisquits.sks in Resources */ = {isa = PBXBuildFile; fileRef = F3E6FC422A1E677000410C7C /* Bisquits.sks */; };
-		F39D68142A26373F00B9BDFC /* SptiteKit BisquitFall.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6FC452A1E85D600410C7C /* SptiteKit BisquitFall.swift */; };
+		F39D68142A26373F00B9BDFC /* SptiteKitBisquitFall.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6FC452A1E85D600410C7C /* SptiteKitBisquitFall.swift */; };
 		F39E0A952C1BA06C00C4E906 /* DiscoverCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E0A932C1BA06C00C4E906 /* DiscoverCard.swift */; };
 		F39E0A962C1BA06C00C4E906 /* DiscoverCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E0A932C1BA06C00C4E906 /* DiscoverCard.swift */; };
 		F39E682F2D2D61680002BA96 /* Database Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BC03B62B1FF8E40011F98A /* Database Context Menu.swift */; };
@@ -1053,7 +1053,7 @@
 		F3A7CF062C8BBC3200413400 /* ServerCardContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF012C8BBB4700413400 /* ServerCardContextMenu.swift */; };
 		F3A7CF082C8BBC7600413400 /* Guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA57E2959012D0006D126 /* Guide.swift */; };
 		F3A7CF092C8BBC7A00413400 /* Carousel Button Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = F325F7082A54CB6600E89EC4 /* Carousel Button Style.swift */; };
-		F3A7CF0A2C8BBCD400413400 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA56F295900C20006D126 /* Formatters.swift */; };
+		F3A7CF0A2C8BBCD400413400 /* millisecondsToTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA56F295900C20006D126 /* millisecondsToTime.swift */; };
 		F3A7CF0C2C8BBCE400413400 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F3A7CF0B2C8BBCE400413400 /* Kingfisher */; };
 		F3A7CF0E2C8C43BB00413400 /* ServerListAdminButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88C72AF83E3F00959D49 /* ServerListAdminButton.swift */; };
 		F3A7CF102C8C4C2700413400 /* ServerListFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88D02AF8494100959D49 /* ServerListFilter.swift */; };
@@ -1071,7 +1071,7 @@
 		F3A7CF232C8C509C00413400 /* Contact Provider.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = F3E2BEF52C1DA07E00B7A6D4 /* Contact Provider.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F3A7CF622C8CA5A900413400 /* CloudKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304498929E990E9006DC0C7 /* CloudKeys.swift */; };
 		F3A7CF632C8CA5B900413400 /* CloudKeyCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A31B082B0B161D00F89C51 /* CloudKeyCard.swift */; };
-		F3A7CF642C8CA5CF00413400 /* Tip Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A800312A7313E900CAC40B /* Tip Cloud Keys.swift */; };
+		F3A7CF642C8CA5CF00413400 /* TipCloudKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A800312A7313E900CAC40B /* TipCloudKeys.swift */; };
 		F3A7CF652C8CA5FE00413400 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35FEB062B09F003004DA05D /* APIKey.swift */; };
 		F3A7CF662C8CA60E00413400 /* CloudKeyContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300892E2B3DC4B20051476C /* CloudKeyContextMenu.swift */; };
 		F3A7CF682C8DF3C900413400 /* VideoFileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF672C8DF3C900413400 /* VideoFileVM.swift */; };
@@ -1079,10 +1079,10 @@
 		F3A7CF6A2C8DF3C900413400 /* VideoFileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF672C8DF3C900413400 /* VideoFileVM.swift */; };
 		F3A7CF6B2C8DF41300413400 /* VideoFileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF672C8DF3C900413400 /* VideoFileVM.swift */; };
 		F3A7CF702A44FD5300331B51 /* ServerCardParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A7CF6F2A44FD5300331B51 /* ServerCardParent.swift */; };
-		F3A800322A7313E900CAC40B /* Tip Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A800312A7313E900CAC40B /* Tip Cloud Keys.swift */; };
-		F3A800332A7313E900CAC40B /* Tip Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A800312A7313E900CAC40B /* Tip Cloud Keys.swift */; };
-		F3A800342A7313E900CAC40B /* Tip Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A800312A7313E900CAC40B /* Tip Cloud Keys.swift */; };
-		F3A800372A7313E900CAC40B /* Tip Cloud Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A800312A7313E900CAC40B /* Tip Cloud Keys.swift */; };
+		F3A800322A7313E900CAC40B /* TipCloudKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A800312A7313E900CAC40B /* TipCloudKeys.swift */; };
+		F3A800332A7313E900CAC40B /* TipCloudKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A800312A7313E900CAC40B /* TipCloudKeys.swift */; };
+		F3A800342A7313E900CAC40B /* TipCloudKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A800312A7313E900CAC40B /* TipCloudKeys.swift */; };
+		F3A800372A7313E900CAC40B /* TipCloudKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A800312A7313E900CAC40B /* TipCloudKeys.swift */; };
 		F3A8BE8B2A2FA9B3001B13D8 /* File View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A8BE8A2A2FA9B3001B13D8 /* File View.swift */; };
 		F3A994A82A177DA400530615 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A72A177DA400530615 /* MapView.swift */; };
 		F3A994AA2A177ED100530615 /* MapVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A92A177ED100530615 /* MapVM.swift */; };
@@ -1095,24 +1095,24 @@
 		F3AB1DF62D79C42B00387164 /* MetricKit Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB1DF32D79C42B00387164 /* MetricKit Manager.swift */; };
 		F3AB1DF72D79C42B00387164 /* MetricKit Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB1DF32D79C42B00387164 /* MetricKit Manager.swift */; };
 		F3AB1DF92D79C42B00387164 /* MetricKit Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB1DF32D79C42B00387164 /* MetricKit Manager.swift */; };
-		F3AB4A782CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A762CF1D97C00A8252F /* Tip JSON Formatter.swift */; };
-		F3AB4A792CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A762CF1D97C00A8252F /* Tip JSON Formatter.swift */; };
-		F3AB4A7A2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A762CF1D97C00A8252F /* Tip JSON Formatter.swift */; };
-		F3AB4A7B2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A762CF1D97C00A8252F /* Tip JSON Formatter.swift */; };
-		F3AB4A7C2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A762CF1D97C00A8252F /* Tip JSON Formatter.swift */; };
-		F3AB4A7D2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A762CF1D97C00A8252F /* Tip JSON Formatter.swift */; };
-		F3AB4A7E2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A762CF1D97C00A8252F /* Tip JSON Formatter.swift */; };
+		F3AB4A782CF1D97C00A8252F /* TipJSONFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A762CF1D97C00A8252F /* TipJSONFormatter.swift */; };
+		F3AB4A792CF1D97C00A8252F /* TipJSONFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A762CF1D97C00A8252F /* TipJSONFormatter.swift */; };
+		F3AB4A7A2CF1D97C00A8252F /* TipJSONFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A762CF1D97C00A8252F /* TipJSONFormatter.swift */; };
+		F3AB4A7B2CF1D97C00A8252F /* TipJSONFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A762CF1D97C00A8252F /* TipJSONFormatter.swift */; };
+		F3AB4A7C2CF1D97C00A8252F /* TipJSONFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A762CF1D97C00A8252F /* TipJSONFormatter.swift */; };
+		F3AB4A7D2CF1D97C00A8252F /* TipJSONFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A762CF1D97C00A8252F /* TipJSONFormatter.swift */; };
+		F3AB4A7E2CF1D97C00A8252F /* TipJSONFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A762CF1D97C00A8252F /* TipJSONFormatter.swift */; };
 		F3AB4A8A2CF3DAC900A8252F /* Backup Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A892CF3DAC900A8252F /* Backup Card VM.swift */; };
 		F3AB4A8B2CF3DAC900A8252F /* Backup Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A892CF3DAC900A8252F /* Backup Card VM.swift */; };
 		F3AB4A8C2CF3DAC900A8252F /* Backup Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A892CF3DAC900A8252F /* Backup Card VM.swift */; };
 		F3AB4A8E2CF3DAD500A8252F /* Backup Card VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A892CF3DAC900A8252F /* Backup Card VM.swift */; };
-		F3AB4A902CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A8F2CF3EC6700A8252F /* Tip Server Card Context Menu.swift */; };
-		F3AB4A912CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A8F2CF3EC6700A8252F /* Tip Server Card Context Menu.swift */; };
-		F3AB4A922CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A8F2CF3EC6700A8252F /* Tip Server Card Context Menu.swift */; };
-		F3AB4A942CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A8F2CF3EC6700A8252F /* Tip Server Card Context Menu.swift */; };
-		F3AB4A952CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A8F2CF3EC6700A8252F /* Tip Server Card Context Menu.swift */; };
-		F3AB4A962CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A8F2CF3EC6700A8252F /* Tip Server Card Context Menu.swift */; };
-		F3AB4A972CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A8F2CF3EC6700A8252F /* Tip Server Card Context Menu.swift */; };
+		F3AB4A902CF3EC6700A8252F /* Tip ServerCardContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A8F2CF3EC6700A8252F /* Tip ServerCardContextMenu.swift */; };
+		F3AB4A912CF3EC6700A8252F /* Tip ServerCardContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A8F2CF3EC6700A8252F /* Tip ServerCardContextMenu.swift */; };
+		F3AB4A922CF3EC6700A8252F /* Tip ServerCardContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A8F2CF3EC6700A8252F /* Tip ServerCardContextMenu.swift */; };
+		F3AB4A942CF3EC6700A8252F /* Tip ServerCardContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A8F2CF3EC6700A8252F /* Tip ServerCardContextMenu.swift */; };
+		F3AB4A952CF3EC6700A8252F /* Tip ServerCardContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A8F2CF3EC6700A8252F /* Tip ServerCardContextMenu.swift */; };
+		F3AB4A962CF3EC6700A8252F /* Tip ServerCardContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A8F2CF3EC6700A8252F /* Tip ServerCardContextMenu.swift */; };
+		F3AB4A972CF3EC6700A8252F /* Tip ServerCardContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A8F2CF3EC6700A8252F /* Tip ServerCardContextMenu.swift */; };
 		F3AB4A992CF4031600A8252F /* JsonFormatterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A982CF4031600A8252F /* JsonFormatterButton.swift */; };
 		F3AB4A9A2CF4031600A8252F /* JsonFormatterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A982CF4031600A8252F /* JsonFormatterButton.swift */; };
 		F3AB4A9B2CF4031600A8252F /* JsonFormatterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB4A982CF4031600A8252F /* JsonFormatterButton.swift */; };
@@ -1346,8 +1346,8 @@
 		F3E679B42D5AB23A00A7ADDE /* Server Options Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E679AC2D5A854700A7ADDE /* Server Options Provider.swift */; };
 		F3E6FC432A1E677000410C7C /* Bisquits.sks in Resources */ = {isa = PBXBuildFile; fileRef = F3E6FC422A1E677000410C7C /* Bisquits.sks */; };
 		F3E6FC442A1E677000410C7C /* Bisquits.sks in Resources */ = {isa = PBXBuildFile; fileRef = F3E6FC422A1E677000410C7C /* Bisquits.sks */; };
-		F3E6FC462A1E85D600410C7C /* SptiteKit BisquitFall.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6FC452A1E85D600410C7C /* SptiteKit BisquitFall.swift */; };
-		F3E6FC472A1E85D600410C7C /* SptiteKit BisquitFall.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6FC452A1E85D600410C7C /* SptiteKit BisquitFall.swift */; };
+		F3E6FC462A1E85D600410C7C /* SptiteKitBisquitFall.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6FC452A1E85D600410C7C /* SptiteKitBisquitFall.swift */; };
+		F3E6FC472A1E85D600410C7C /* SptiteKitBisquitFall.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6FC452A1E85D600410C7C /* SptiteKitBisquitFall.swift */; };
 		F3E8B34F2CF485FB005D25F8 /* Console Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E8B34E2CF485FB005D25F8 /* Console Message.swift */; };
 		F3E8B3502CF485FB005D25F8 /* Console Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E8B34E2CF485FB005D25F8 /* Console Message.swift */; };
 		F3E97C7929B4B569008CBDD6 /* Credentials VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E97C7829B4B569008CBDD6 /* Credentials VM.swift */; };
@@ -1381,7 +1381,7 @@
 		F3EB09CE2A29531B0073916A /* DesImageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37F51C329DAF8D70030C1C4 /* DesImageVM.swift */; };
 		F3EB09CF2A2953200073916A /* DesImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5B6295903100006D126 /* DesImage.swift */; };
 		F3EB09D12A29532D0073916A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F3EB09D02A29532D0073916A /* Kingfisher */; };
-		F3EB09D22A29533D0073916A /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA56F295900C20006D126 /* Formatters.swift */; };
+		F3EB09D22A29533D0073916A /* millisecondsToTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA56F295900C20006D126 /* millisecondsToTime.swift */; };
 		F3EB09D42A29547E0073916A /* FileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32CAAD82A28C4920019DEE3 /* FileView.swift */; };
 		F3EB09D82A2958710073916A /* TextFileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266C729D83394005FD103 /* TextFileVM.swift */; };
 		F3EB09DA2A295C460073916A /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F398720F2A1AE3CE0022B00E /* VideoPlayer.swift */; };
@@ -1731,7 +1731,7 @@
 		F304498929E990E9006DC0C7 /* CloudKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKeys.swift; sourceTree = "<group>"; };
 		F306B9EC29BBDA770008C2D4 /* DevSettingsFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevSettingsFooter.swift; sourceTree = "<group>"; };
 		F30C13112A54609000A7EFF0 /* ServerList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerList.swift; sourceTree = "<group>"; };
-		F310A2EF2A56AF86001AF45F /* Network VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network VM.swift"; sourceTree = "<group>"; };
+		F310A2EF2A56AF86001AF45F /* NetworkVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkVM.swift; sourceTree = "<group>"; };
 		F3116F252A33E142001F067C /* FolderFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderFile.swift; sourceTree = "<group>"; };
 		F311CAAD2A646612004E4A4A /* LogMetaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogMetaView.swift; sourceTree = "<group>"; };
 		F31406EE2E64667D00C1956E /* BackgroundImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImageButton.swift; sourceTree = "<group>"; };
@@ -1750,12 +1750,12 @@
 		F31BA565295900300006D126 /* Nav State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav State.swift"; sourceTree = "<group>"; };
 		F31BA5672959006F0006D126 /* App Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Container.swift"; sourceTree = "<group>"; };
 		F31BA5692959007E0006D126 /* Nav Destinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Destinations.swift"; sourceTree = "<group>"; };
-		F31BA56F295900C20006D126 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
+		F31BA56F295900C20006D126 /* millisecondsToTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = millisecondsToTime.swift; sourceTree = "<group>"; };
 		F31BA575295900E30006D126 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		F31BA579295901110006D126 /* StartPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPage.swift; sourceTree = "<group>"; };
 		F31BA57B2959011B0006D126 /* StartPageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPageVM.swift; sourceTree = "<group>"; };
 		F31BA57E2959012D0006D126 /* Guide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guide.swift; sourceTree = "<group>"; };
-		F31BA5852959016D0006D126 /* SpriteKit Pyzh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpriteKit Pyzh.swift"; sourceTree = "<group>"; };
+		F31BA5852959016D0006D126 /* SpriteKitPyzh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteKitPyzh.swift; sourceTree = "<group>"; };
 		F31BA58E295901B60006D126 /* PlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanView.swift; sourceTree = "<group>"; };
 		F31BA590295901C00006D126 /* PlanListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanListVM.swift; sourceTree = "<group>"; };
 		F31BA595295901F70006D126 /* Panel View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Panel View.swift"; sourceTree = "<group>"; };
@@ -1879,7 +1879,7 @@
 		F3573BBE2C64E0360051259E /* Log Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log Card.swift"; sourceTree = "<group>"; };
 		F358132A2A1F5D2A002ADFA4 /* Linking VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Linking VM.swift"; sourceTree = "<group>"; };
 		F35B2A0129FFD6AB006E5FD2 /* OtherModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherModels.swift; sourceTree = "<group>"; };
-		F35B89BD2A725710000B5EEF /* Tip Suspended Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tip Suspended Server.swift"; sourceTree = "<group>"; };
+		F35B89BD2A725710000B5EEF /* TipSuspendedServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipSuspendedServer.swift; sourceTree = "<group>"; };
 		F35B9F602A2DCF9C0045D014 /* Stats Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stats Tab.swift"; sourceTree = "<group>"; };
 		F35BB0362C656AC800631DBD /* Guide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guide.swift; sourceTree = "<group>"; };
 		F35BB0382C656AD300631DBD /* CarouselButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselButtonStyle.swift; sourceTree = "<group>"; };
@@ -2069,15 +2069,15 @@
 		F3A7CF672C8DF3C900413400 /* VideoFileVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFileVM.swift; sourceTree = "<group>"; };
 		F3A7CF6A2A44F6E000331B51 /* CircularGauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularGauge.swift; sourceTree = "<group>"; };
 		F3A7CF6F2A44FD5300331B51 /* ServerCardParent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCardParent.swift; sourceTree = "<group>"; };
-		F3A800312A7313E900CAC40B /* Tip Cloud Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tip Cloud Keys.swift"; sourceTree = "<group>"; };
+		F3A800312A7313E900CAC40B /* TipCloudKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipCloudKeys.swift; sourceTree = "<group>"; };
 		F3A8BE8A2A2FA9B3001B13D8 /* File View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "File View.swift"; sourceTree = "<group>"; };
 		F3A994A72A177DA400530615 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		F3A994A92A177ED100530615 /* MapVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVM.swift; sourceTree = "<group>"; };
 		F3A994AD2A17A9B100530615 /* MapList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapList.swift; sourceTree = "<group>"; };
 		F3AB1DF32D79C42B00387164 /* MetricKit Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MetricKit Manager.swift"; sourceTree = "<group>"; };
-		F3AB4A762CF1D97C00A8252F /* Tip JSON Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tip JSON Formatter.swift"; sourceTree = "<group>"; };
+		F3AB4A762CF1D97C00A8252F /* TipJSONFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJSONFormatter.swift; sourceTree = "<group>"; };
 		F3AB4A892CF3DAC900A8252F /* Backup Card VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Backup Card VM.swift"; sourceTree = "<group>"; };
-		F3AB4A8F2CF3EC6700A8252F /* Tip Server Card Context Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tip Server Card Context Menu.swift"; sourceTree = "<group>"; };
+		F3AB4A8F2CF3EC6700A8252F /* Tip ServerCardContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tip ServerCardContextMenu.swift"; sourceTree = "<group>"; };
 		F3AB4A982CF4031600A8252F /* JsonFormatterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonFormatterButton.swift; sourceTree = "<group>"; };
 		F3ADA1D62DD0E8D40097F86F /* Nav Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nav Model.swift"; sourceTree = "<group>"; };
 		F3ADA60D2D9BFC9D00F2DAA6 /* Power Switch Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Power Switch Toolbar.swift"; sourceTree = "<group>"; };
@@ -2184,7 +2184,7 @@
 		F3E467542A49939300FABE5F /* InfoRelativeStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoRelativeStats.swift; sourceTree = "<group>"; };
 		F3E679AC2D5A854700A7ADDE /* Server Options Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server Options Provider.swift"; sourceTree = "<group>"; };
 		F3E6FC422A1E677000410C7C /* Bisquits.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Bisquits.sks; sourceTree = "<group>"; };
-		F3E6FC452A1E85D600410C7C /* SptiteKit BisquitFall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SptiteKit BisquitFall.swift"; sourceTree = "<group>"; };
+		F3E6FC452A1E85D600410C7C /* SptiteKitBisquitFall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SptiteKitBisquitFall.swift; sourceTree = "<group>"; };
 		F3E8B34E2CF485FB005D25F8 /* Console Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Console Message.swift"; sourceTree = "<group>"; };
 		F3E97C7829B4B569008CBDD6 /* Credentials VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Credentials VM.swift"; sourceTree = "<group>"; };
 		F3E98C002E6A5F4C0019439F /* ServerCardLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCardLayout.swift; sourceTree = "<group>"; };
@@ -2505,7 +2505,7 @@
 				F31F31F72D52BD940095DD19 /* System lowPowerMode.swift */,
 				F3EE9F6E2D85CAB9000120A7 /* Dismiss Button.swift */,
 				F3202D452D56DC050030B3CC /* Prefetcher.swift */,
-				F31BA56F295900C20006D126 /* Formatters.swift */,
+				F31BA56F295900C20006D126 /* millisecondsToTime.swift */,
 				F320DDA42B704E3C00957D92 /* Preview Property.swift */,
 				F3A1D2302A201C570053261E /* ServerState.swift */,
 				F325F7052A54C4BC00E89EC4 /* System Alerts.swift */,
@@ -3096,10 +3096,10 @@
 		F35B89BC2A7256F4000B5EEF /* Tips */ = {
 			isa = PBXGroup;
 			children = (
-				F35B89BD2A725710000B5EEF /* Tip Suspended Server.swift */,
-				F3AB4A8F2CF3EC6700A8252F /* Tip Server Card Context Menu.swift */,
-				F3A800312A7313E900CAC40B /* Tip Cloud Keys.swift */,
-				F3AB4A762CF1D97C00A8252F /* Tip JSON Formatter.swift */,
+				F35B89BD2A725710000B5EEF /* TipSuspendedServer.swift */,
+				F3AB4A8F2CF3EC6700A8252F /* Tip ServerCardContextMenu.swift */,
+				F3A800312A7313E900CAC40B /* TipCloudKeys.swift */,
+				F3AB4A762CF1D97C00A8252F /* TipJSONFormatter.swift */,
 			);
 			path = Tips;
 			sourceTree = "<group>";
@@ -3116,9 +3116,9 @@
 			isa = PBXGroup;
 			children = (
 				F3E6FC422A1E677000410C7C /* Bisquits.sks */,
-				F31BA5852959016D0006D126 /* SpriteKit Pyzh.swift */,
-				F3E6FC452A1E85D600410C7C /* SptiteKit BisquitFall.swift */,
-				F310A2EF2A56AF86001AF45F /* Network VM.swift */,
+				F31BA5852959016D0006D126 /* SpriteKitPyzh.swift */,
+				F3E6FC452A1E85D600410C7C /* SptiteKitBisquitFall.swift */,
+				F310A2EF2A56AF86001AF45F /* NetworkVM.swift */,
 			);
 			path = SpriteKit;
 			sourceTree = "<group>";
@@ -4834,10 +4834,10 @@
 				F3796562295C519C0074CA3D /* ChartView.swift in Sources */,
 				F37266CC29D96C93005FD103 /* Websocket Message.swift in Sources */,
 				F35FEB0A2B09F003004DA05D /* APIKey.swift in Sources */,
-				F3AB4A952CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
+				F3AB4A952CF3EC6700A8252F /* Tip ServerCardContextMenu.swift in Sources */,
 				F348518A2E72D4A80002C72E /* PlanCardName.swift in Sources */,
 				F3015DE22D9F26C600B9BCC6 /* LogCardTimestamp.swift in Sources */,
-				F37266CF29D96ED9005FD103 /* Formatters.swift in Sources */,
+				F37266CF29D96ED9005FD103 /* millisecondsToTime.swift in Sources */,
 				F3202C782D5583680030B3CC /* PlanViewParent.swift in Sources */,
 				F3F3FC792B21E332007C635B /* QR Code View.swift in Sources */,
 				F342FAB02B2E08C100854270 /* LogVM.swift in Sources */,
@@ -4847,7 +4847,7 @@
 				F342FAB32B2E43D500854270 /* LogCard.swift in Sources */,
 				F32FD02F2CF606960038D62C /* Backup Context Menu Control Group.swift in Sources */,
 				F333B3BC2B80CF750005B84D /* Preview Property.swift in Sources */,
-				F3AB4A792CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
+				F3AB4A792CF1D97C00A8252F /* TipJSONFormatter.swift in Sources */,
 				F30088F32B3B475C0051476C /* StartupCard.swift in Sources */,
 				F37061CA29774886009B4067 /* NavDestinations.swift in Sources */,
 				F3EB09DD2A295F7C0073916A /* TextFileVM.swift in Sources */,
@@ -4860,7 +4860,7 @@
 				F33CDBFC2A26A60D008D0214 /* ServerCardVM.swift in Sources */,
 				F35F65922B1D066E00431EB7 /* Panel VM.swift in Sources */,
 				F39E683C2D2D6A300002BA96 /* AudioPlayerVM.swift in Sources */,
-				F35B89C12A725CFB000B5EEF /* Tip Suspended Server.swift in Sources */,
+				F35B89C12A725CFB000B5EEF /* TipSuspendedServer.swift in Sources */,
 				F3202CE32D562A620030B3CC /* PlanListGame.swift in Sources */,
 				F3A28ADB2C57B06600010454 /* DevSettingsFooter.swift in Sources */,
 				F34851B92E72E0790002C72E /* PlanCardLabelCloud.swift in Sources */,
@@ -4893,7 +4893,7 @@
 				F3C9D8532B3060D100265492 /* VideoPlayerVM.swift in Sources */,
 				F30088F52B3B55C10051476C /* User Invitation View.swift in Sources */,
 				F37266CD29D96C98005FD103 /* Websocket Delegate.swift in Sources */,
-				F35081B02AF30F4B00835CC0 /* Tip Cloud Keys.swift in Sources */,
+				F35081B02AF30F4B00835CC0 /* TipCloudKeys.swift in Sources */,
 				F3BC03B32B1FF4830011F98A /* Task Context Menu.swift in Sources */,
 				F374F7BE2D54922F006771DD /* Sheet Create Subdomain.swift in Sources */,
 				F33623312A22048C006A6271 /* ValueStore.swift in Sources */,
@@ -4922,14 +4922,14 @@
 				F3CCF5BA2B345466005FFF2C /* Permission List.swift in Sources */,
 				F3CCF5C12B34576F005FFF2C /* AllocationList.swift in Sources */,
 				F30C12FE2A54546900A7EFF0 /* App Container.swift in Sources */,
-				F35FEB0F2B09F4D3004DA05D /* Network VM.swift in Sources */,
+				F35FEB0F2B09F4D3004DA05D /* NetworkVM.swift in Sources */,
 				F3EB09E02A297F250073916A /* DesImageVM.swift in Sources */,
 				F3E98C062E6AE0830019439F /* LogCardEventDescription.swift in Sources */,
 				F3BC03AE2B1FF2FC0011F98A /* Schedule Context Menu.swift in Sources */,
 				F37080532A2A1F730046CE70 /* Database Card.swift in Sources */,
 				F3FFB7452A57F8AD00220FA5 /* MapVM.swift in Sources */,
 				F3AB4A9C2CF4031600A8252F /* JsonFormatterButton.swift in Sources */,
-				F39D68142A26373F00B9BDFC /* SptiteKit BisquitFall.swift in Sources */,
+				F39D68142A26373F00B9BDFC /* SptiteKitBisquitFall.swift in Sources */,
 				F30C13162A5461BB00A7EFF0 /* Cache VM.swift in Sources */,
 				F36114DC2E569EAC0052A5A2 /* StartPageHelper.swift in Sources */,
 				F3796564295C51C80074CA3D /* ProgressBar.swift in Sources */,
@@ -5031,7 +5031,7 @@
 				F37A36782A35180100517EFC /* Power Switch.swift in Sources */,
 				F3553FBC2B40945C00EF0FD2 /* Allocation List Parent.swift in Sources */,
 				F32E88C82AF83E3F00959D49 /* ServerListAdminButton.swift in Sources */,
-				F31BA570295900C20006D126 /* Formatters.swift in Sources */,
+				F31BA570295900C20006D126 /* millisecondsToTime.swift in Sources */,
 				F39626F22A7AD64B0057E356 /* Ansi.swift in Sources */,
 				F3ADA6132D9BFC9D00F2DAA6 /* Power Switch Toolbar.swift in Sources */,
 				F353D5062D98427500EC9F3A /* Panel Toolbar.swift in Sources */,
@@ -5049,7 +5049,7 @@
 				F3A7CF692C8DF3C900413400 /* VideoFileVM.swift in Sources */,
 				F36114DE2E569EAC0052A5A2 /* StartPageHelper.swift in Sources */,
 				F34851B22E72E06F0002C72E /* PlanCardLabelWeb.swift in Sources */,
-				F3AB4A7C2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
+				F3AB4A7C2CF1D97C00A8252F /* TipJSONFormatter.swift in Sources */,
 				F385824229D6215100BEEE1D /* App Icon Card.swift in Sources */,
 				F36797782A3A55E1009F2788 /* LogListParent.swift in Sources */,
 				F3202D4D2D56DC050030B3CC /* Prefetcher.swift in Sources */,
@@ -5145,7 +5145,7 @@
 				F373CD702D88A386008B64BE /* Infinite Scroll View.swift in Sources */,
 				F373CD712D88A386008B64BE /* Intro.swift in Sources */,
 				F32F2D012D908E1D007CF4DE /* Background Image Helper.swift in Sources */,
-				F3AB4A942CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
+				F3AB4A942CF3EC6700A8252F /* Tip ServerCardContextMenu.swift in Sources */,
 				F300892F2B3DC4B20051476C /* CloudKeyContextMenu.swift in Sources */,
 				F371468C2B123807001E0296 /* Activity View State.swift in Sources */,
 				F31BA58F295901B60006D126 /* PlanView.swift in Sources */,
@@ -5156,12 +5156,12 @@
 				F36113FD2E55E7450052A5A2 /* TextFileToolbar.swift in Sources */,
 				F3BC03B72B1FF8E40011F98A /* Database Context Menu.swift in Sources */,
 				F3DE1B982A556CCE007A1624 /* LogList.swift in Sources */,
-				F3E6FC462A1E85D600410C7C /* SptiteKit BisquitFall.swift in Sources */,
+				F3E6FC462A1E85D600410C7C /* SptiteKitBisquitFall.swift in Sources */,
 				F3D95B112E63639900849A94 /* CompactMetricRow.swift in Sources */,
 				F373CDB62D895419008B64BE /* LogTopbar.swift in Sources */,
 				F373CDB72D895419008B64BE /* LogTopbarCard.swift in Sources */,
 				F35DA9592A28F5B100803E7E /* Upload Progress.swift in Sources */,
-				F35B89BE2A725710000B5EEF /* Tip Suspended Server.swift in Sources */,
+				F35B89BE2A725710000B5EEF /* TipSuspendedServer.swift in Sources */,
 				F310BB392A54E31700843F14 /* ServerListVM.swift in Sources */,
 				F3E1D3F22B320A6A009B7062 /* Permission Group Header.swift in Sources */,
 				F32F2CCE2D8F6FCE007CF4DE /* DiscoverCardLabel.swift in Sources */,
@@ -5236,7 +5236,7 @@
 				F3BC03C62B20675E0011F98A /* New Schedule Sheet.swift in Sources */,
 				F3DDD59C2A62AC7C009FDFBF /* Create Backup Button.swift in Sources */,
 				F37A366F2A3515A900517EFC /* Sftp View.swift in Sources */,
-				F310A2F02A56AF86001AF45F /* Network VM.swift in Sources */,
+				F310A2F02A56AF86001AF45F /* NetworkVM.swift in Sources */,
 				F375EC3829EE7213002CA969 /* Backup List.swift in Sources */,
 				F325F7092A54CB6600E89EC4 /* Carousel Button Style.swift in Sources */,
 				F367977E2A3A5AB6009F2788 /* LogVM.swift in Sources */,
@@ -5253,7 +5253,7 @@
 				F3D2643A2A66AB92005C3777 /* Account View.swift in Sources */,
 				F3202CD92D5624B10030B3CC /* PlanType.swift in Sources */,
 				F37266E929D9EFFE005FD103 /* Cache Size.swift in Sources */,
-				F3A800322A7313E900CAC40B /* Tip Cloud Keys.swift in Sources */,
+				F3A800322A7313E900CAC40B /* TipCloudKeys.swift in Sources */,
 				F30089232B3BA5300051476C /* File Permissions Parent.swift in Sources */,
 				F3CCB1CC2CAE75D0000F8207 /* Debug Settings.swift in Sources */,
 				F35C4D602E03999B00720E74 /* Multipart Form Data.swift in Sources */,
@@ -5261,7 +5261,7 @@
 				F314616A2D5A1F5E00547B6C /* Icon.swift in Sources */,
 				F3E679B32D5A854700A7ADDE /* Server Options Provider.swift in Sources */,
 				F3FDFF912C89150D009EBB5C /* Networking.swift in Sources */,
-				F31BA5862959016D0006D126 /* SpriteKit Pyzh.swift in Sources */,
+				F31BA5862959016D0006D126 /* SpriteKitPyzh.swift in Sources */,
 				F30089002B3B62450051476C /* User Invitation Permission.swift in Sources */,
 				F3BBE36429AF97D800323C6B /* Credential Field.swift in Sources */,
 				F33944112A49022A00E2F0FC /* InfoTabResources.swift in Sources */,
@@ -5279,7 +5279,7 @@
 				F30C13152A5461BA00A7EFF0 /* Cache VM.swift in Sources */,
 				F3EE9F6F2D85CAB9000120A7 /* Dismiss Button.swift in Sources */,
 				F3015DE42D9F26C600B9BCC6 /* LogCardTimestamp.swift in Sources */,
-				F3AB4A972CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
+				F3AB4A972CF3EC6700A8252F /* Tip ServerCardContextMenu.swift in Sources */,
 				F3499EF52A27553D006101B7 /* Panel VM.swift in Sources */,
 				F36E8A9C2E6E43D800A38229 /* ServerListGrid.swift in Sources */,
 				F3F061D22A73C37500470F7E /* MapView.swift in Sources */,
@@ -5291,7 +5291,7 @@
 				F3499EF62A275546006101B7 /* Websocket.swift in Sources */,
 				F3E1D3F32B320A6A009B7062 /* Permission Group Header.swift in Sources */,
 				F3F061D32A73C37700470F7E /* MapVM.swift in Sources */,
-				F35B89C02A725CFA000B5EEF /* Tip Suspended Server.swift in Sources */,
+				F35B89C02A725CFA000B5EEF /* TipSuspendedServer.swift in Sources */,
 				F3FFB7442A57F43C00220FA5 /* User List.swift in Sources */,
 				F35FEB092B09F003004DA05D /* APIKey.swift in Sources */,
 				F31F31FC2D52BD940095DD19 /* System lowPowerMode.swift in Sources */,
@@ -5310,8 +5310,8 @@
 				F3A563322D9EF323009AA363 /* LogToolbarActor.swift in Sources */,
 				F3EB09CF2A2953200073916A /* DesImage.swift in Sources */,
 				F34C055A29F11E010031ABE1 /* ServerCardVM.swift in Sources */,
-				F35FEB112B09F4D4004DA05D /* Network VM.swift in Sources */,
-				F3A800342A7313E900CAC40B /* Tip Cloud Keys.swift in Sources */,
+				F35FEB112B09F4D4004DA05D /* NetworkVM.swift in Sources */,
+				F3A800342A7313E900CAC40B /* TipCloudKeys.swift in Sources */,
 				F3464D2D2A863A6100188B0C /* Create Backup.swift in Sources */,
 				F3015DD92D9F24F600B9BCC6 /* LogCardEvent.swift in Sources */,
 				F31B2D982A7AD8C800C08EE6 /* Ansi.swift in Sources */,
@@ -5331,7 +5331,7 @@
 				F3FFB7422A57F12F00220FA5 /* User Card.swift in Sources */,
 				F3E1D3EF2B3208DE009B7062 /* User 2Fa.swift in Sources */,
 				F3E98C252E6BB4E40019439F /* Place.swift in Sources */,
-				F3EB09D22A29533D0073916A /* Formatters.swift in Sources */,
+				F3EB09D22A29533D0073916A /* millisecondsToTime.swift in Sources */,
 				F3499EFA2A277D0F006101B7 /* FileTab.swift in Sources */,
 				F3E2BEE22C1C6BA800B7A6D4 /* Cache List VM.swift in Sources */,
 				F3D6775C2DD7478400721DE8 /* ServerCardContextMenu.swift in Sources */,
@@ -5368,7 +5368,7 @@
 				F36113F82E55DFD40052A5A2 /* TextFileEditor.swift in Sources */,
 				F314617E2D5A82F000547B6C /* Model Asset.swift in Sources */,
 				F3D295152AF396FD00ED43A0 /* Tabs.swift in Sources */,
-				F3AB4A7A2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
+				F3AB4A7A2CF1D97C00A8252F /* TipJSONFormatter.swift in Sources */,
 				F3D6777E2DD8689700721DE8 /* TextFile.swift in Sources */,
 				F32FD02B2CF5E8DC0038D62C /* ConsoleMessage.swift in Sources */,
 				F3EB09D82A2958710073916A /* TextFileVM.swift in Sources */,
@@ -5397,7 +5397,7 @@
 				F337C1642A8CE965006F321C /* Startup Card.swift in Sources */,
 				F38F9E162CE7647D0033EFE3 /* Image Playground.swift in Sources */,
 				F30088A52B3A18A70051476C /* Database VM.swift in Sources */,
-				F3A800372A7313E900CAC40B /* Tip Cloud Keys.swift in Sources */,
+				F3A800372A7313E900CAC40B /* TipCloudKeys.swift in Sources */,
 				F3D3DBD429B889E600096115 /* PlanViewTopbar.swift in Sources */,
 				F3FF3E882D93576B00EDFBC6 /* Update Checker.swift in Sources */,
 				F3BC03B42B1FF4830011F98A /* Task Context Menu.swift in Sources */,
@@ -5422,7 +5422,7 @@
 				F3DDD59E2A62AC7C009FDFBF /* Create Backup Button.swift in Sources */,
 				F3E467562A49939300FABE5F /* InfoRelativeStats.swift in Sources */,
 				F325F70A2A54CB6600E89EC4 /* Carousel Button Style.swift in Sources */,
-				F36D53482A05B939007324C6 /* SpriteKit Pyzh.swift in Sources */,
+				F36D53482A05B939007324C6 /* SpriteKitPyzh.swift in Sources */,
 				F30088F82B3B55D10051476C /* User Invitation View.swift in Sources */,
 				F3BC03C82B20675E0011F98A /* New Schedule Sheet.swift in Sources */,
 				F389BB622A05B58E00911EBF /* ServerCardVM.swift in Sources */,
@@ -5443,7 +5443,7 @@
 				F36D53302A05B896007324C6 /* Section Header.swift in Sources */,
 				F325F7012A54BBCF00E89EC4 /* InfoTabAllocations.swift in Sources */,
 				F39626F32A7AD64B0057E356 /* Ansi.swift in Sources */,
-				F3AB4A7E2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
+				F3AB4A7E2CF1D97C00A8252F /* TipJSONFormatter.swift in Sources */,
 				F3EE9F762D85CAB9000120A7 /* Dismiss Button.swift in Sources */,
 				F30088A02B3A17DF0051476C /* Backup VM.swift in Sources */,
 				F3D677772DD8676200721DE8 /* HighlightrTextView.swift in Sources */,
@@ -5456,7 +5456,7 @@
 				F348517E2E72D10A0002C72E /* customRound.swift in Sources */,
 				F3FA309B2DD1EB4300280133 /* FileListHeader.swift in Sources */,
 				F3F0A2DC2D63395F0084013B /* App Container.swift in Sources */,
-				F389BB652A05B5AF00911EBF /* Formatters.swift in Sources */,
+				F389BB652A05B5AF00911EBF /* millisecondsToTime.swift in Sources */,
 				F34851882E72D4A80002C72E /* PlanCardName.swift in Sources */,
 				F35C4D612E03999B00720E74 /* Multipart Form Data.swift in Sources */,
 				F328BB532E7FE00C0012F003 /* MapSectionNew.swift in Sources */,
@@ -5640,14 +5640,14 @@
 				F36114DD2E569EAC0052A5A2 /* StartPageHelper.swift in Sources */,
 				F31461852D5A830E00547B6C /* Model Asset.swift in Sources */,
 				F31461862D5A830E00547B6C /* Networking.swift in Sources */,
-				F35B89C32A725CFC000B5EEF /* Tip Suspended Server.swift in Sources */,
+				F35B89C32A725CFC000B5EEF /* TipSuspendedServer.swift in Sources */,
 				F35FEB0C2B09F003004DA05D /* APIKey.swift in Sources */,
 				F3202C742D5583680030B3CC /* PlanViewParent.swift in Sources */,
 				F3D264422A66ABBE005C3777 /* Account VM.swift in Sources */,
 				F32F2CD62D8F6FDC007CF4DE /* AvgColor.swift in Sources */,
 				F36D53382A05B8C5007324C6 /* Folder Path VM.swift in Sources */,
 				F3FA61552A1F8DB500A65AE1 /* Upload Menu.swift in Sources */,
-				F3AB4A912CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
+				F3AB4A912CF3EC6700A8252F /* Tip ServerCardContextMenu.swift in Sources */,
 				F3FA61582A1F928500A65AE1 /* File Search.swift in Sources */,
 				F34851822E72D3590002C72E /* PlanCardPrice.swift in Sources */,
 				F330013C2A4CEC320063FE0F /* Apikey List.swift in Sources */,
@@ -5676,7 +5676,7 @@
 				F389BB732A05B61900911EBF /* Credential Field.swift in Sources */,
 				F36797792A3A55E1009F2788 /* LogListParent.swift in Sources */,
 				F389BB6F2A05B5F900911EBF /* Cache Expiration.swift in Sources */,
-				F310A2F12A56B0BE001AF45F /* Network VM.swift in Sources */,
+				F310A2F12A56B0BE001AF45F /* NetworkVM.swift in Sources */,
 				F3A563212D9EEECB009AA363 /* Allow Drag.swift in Sources */,
 				F32FD02E2CF606960038D62C /* Backup Context Menu Control Group.swift in Sources */,
 				F3D95B072E625A9000849A94 /* ServerCard.swift in Sources */,
@@ -5685,7 +5685,7 @@
 				F36D53362A05B8BB007324C6 /* Create Button.swift in Sources */,
 				F3D807392DCD8F1600598908 /* Contact Access Picker.swift in Sources */,
 				F353B0432D8A31BF00E4EC07 /* Account Parent.swift in Sources */,
-				F3E6FC472A1E85D600410C7C /* SptiteKit BisquitFall.swift in Sources */,
+				F3E6FC472A1E85D600410C7C /* SptiteKitBisquitFall.swift in Sources */,
 			);
 		};
 		F3310F282DD07CA100FA0AEC /* Sources */ = {
@@ -5761,7 +5761,7 @@
 				F300C46B2D8C473800743300 /* Background Image Picker.swift in Sources */,
 				F3A7CEDC2C8B95CB00413400 /* Home View.swift in Sources */,
 				F31461792D5A2B7F00547B6C /* Apikey Card.swift in Sources */,
-				F3A7CF0A2C8BBCD400413400 /* Formatters.swift in Sources */,
+				F3A7CF0A2C8BBCD400413400 /* millisecondsToTime.swift in Sources */,
 				F3202C762D5583680030B3CC /* PlanViewParent.swift in Sources */,
 				F31461772D5A2B4200547B6C /* Apikey VM.swift in Sources */,
 				F3E98C042E6A60D70019439F /* Preview Property.swift in Sources */,
@@ -5773,7 +5773,7 @@
 				F3255E1F2C904A71008E04DE /* Enable 2FA View.swift in Sources */,
 				F3255E202C904A71008E04DE /* Disable 2FA View.swift in Sources */,
 				F3255E212C904A71008E04DE /* QR Code View.swift in Sources */,
-				F3AB4A7B2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
+				F3AB4A7B2CF1D97C00A8252F /* TipJSONFormatter.swift in Sources */,
 				F3A7CEF42C8BB7E500413400 /* Network Calls.swift in Sources */,
 				F37CE9C52D555DAF00716D28 /* ContactsVM.swift in Sources */,
 				F3255E222C904A7A008E04DE /* SSH Create View.swift in Sources */,
@@ -5803,7 +5803,7 @@
 				F3255E1E2C904A63008E04DE /* SSH VM.swift in Sources */,
 				F32F2D032D908E1D007CF4DE /* Background Image Helper.swift in Sources */,
 				F3202D462D56DC050030B3CC /* Prefetcher.swift in Sources */,
-				F3AB4A902CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
+				F3AB4A902CF3EC6700A8252F /* Tip ServerCardContextMenu.swift in Sources */,
 				F31461782D5A2B6A00547B6C /* Apikey List.swift in Sources */,
 				F3A7CEE52C8B9E7500413400 /* Messages VM.swift in Sources */,
 				F3202C812D558B210030B3CC /* SpotlightIndex.swift in Sources */,
@@ -5835,7 +5835,7 @@
 				F3A7CECB2C8B685500413400 /* Messages VC.swift in Sources */,
 				F3A7CF182C8C4E4A00413400 /* PlanSpec.swift in Sources */,
 				F3A7CF192C8C4E4A00413400 /* PlanListVM.swift in Sources */,
-				F3A7CF642C8CA5CF00413400 /* Tip Cloud Keys.swift in Sources */,
+				F3A7CF642C8CA5CF00413400 /* TipCloudKeys.swift in Sources */,
 				F3A7CF1B2C8C4E4A00413400 /* PlanViewTopbar.swift in Sources */,
 				F3255E172C9049AF008E04DE /* Settings Button.swift in Sources */,
 				F3A7CF632C8CA5B900413400 /* CloudKeyCard.swift in Sources */,
@@ -5870,7 +5870,7 @@
 				F348518C2E72D4A80002C72E /* PlanCardName.swift in Sources */,
 				F30089322B3DC4B20051476C /* CloudKeyContextMenu.swift in Sources */,
 				F3015DF12D9F427700B9BCC6 /* LogListFilter.swift in Sources */,
-				F35FEB0E2B09F4D3004DA05D /* Network VM.swift in Sources */,
+				F35FEB0E2B09F4D3004DA05D /* NetworkVM.swift in Sources */,
 				F3CE5C502D53A5820094BD7B /* Subdomain VM.swift in Sources */,
 				F3CE5C512D53A5820094BD7B /* Subdomain List.swift in Sources */,
 				F3E98C0A2E6AE0830019439F /* LogCardEventDescription.swift in Sources */,
@@ -5883,9 +5883,9 @@
 				F3202C902D5590FE0030B3CC /* MapVM.swift in Sources */,
 				F3202C912D5590FE0030B3CC /* MapList.swift in Sources */,
 				F3202C922D5590FE0030B3CC /* MapView.swift in Sources */,
-				F3AB4A922CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
+				F3AB4A922CF3EC6700A8252F /* Tip ServerCardContextMenu.swift in Sources */,
 				F3A563342D9EF323009AA363 /* LogToolbarActor.swift in Sources */,
-				F35081AF2AF30E2B00835CC0 /* Tip Cloud Keys.swift in Sources */,
+				F35081AF2AF30E2B00835CC0 /* TipCloudKeys.swift in Sources */,
 				F37B907A2BFEA00300597624 /* OrnamentInfoSettings.swift in Sources */,
 				F32716DF2CF62CC300F2DC31 /* Section Header.swift in Sources */,
 				F32F44002B75450B00C9470B /* UserList.swift in Sources */,
@@ -5918,7 +5918,7 @@
 				F3F2BBAA2A540E4000D44CA6 /* Nav Destinations.swift in Sources */,
 				F3FD9FA12C65217C00A69314 /* QuickLookView.swift in Sources */,
 				F3464D2E2A863A6200188B0C /* Create Backup.swift in Sources */,
-				F3317AEE2A45E33300CA104D /* Formatters.swift in Sources */,
+				F3317AEE2A45E33300CA104D /* millisecondsToTime.swift in Sources */,
 				F34851842E72D3590002C72E /* PlanCardPrice.swift in Sources */,
 				F3F5AD922E8A6A84007AD97D /* SettingsAccountSection.swift in Sources */,
 				F3202C852D5590D30030B3CC /* PlanListVM.swift in Sources */,
@@ -5962,7 +5962,7 @@
 				F3E679B22D5A854700A7ADDE /* Server Options Provider.swift in Sources */,
 				F389282E2A445E4F00561CDF /* AppSettings.swift in Sources */,
 				F37B90782BFEA00300597624 /* OrnamentInfoProperties.swift in Sources */,
-				F3202D3B2D5636660030B3CC /* Tip Suspended Server.swift in Sources */,
+				F3202D3B2D5636660030B3CC /* TipSuspendedServer.swift in Sources */,
 				F3038B972E0446840085E438 /* Multipart Form Data.swift in Sources */,
 				F31461832D5A82F000547B6C /* Model Asset.swift in Sources */,
 				F31461842D5A82F000547B6C /* Networking.swift in Sources */,
@@ -6008,7 +6008,7 @@
 				F35FEB142B0A2C8F004DA05D /* ServerState.swift in Sources */,
 				F37B90792BFEA00300597624 /* PanelOrnamentInfo.swift in Sources */,
 				F3015DDF2D9F26C600B9BCC6 /* LogCardTimestamp.swift in Sources */,
-				F3AB4A7D2CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
+				F3AB4A7D2CF1D97C00A8252F /* TipJSONFormatter.swift in Sources */,
 				F3A7CF702A44FD5300331B51 /* ServerCardParent.swift in Sources */,
 			);
 		};
@@ -6032,7 +6032,7 @@
 				F314617F2D5A82F000547B6C /* Model Asset.swift in Sources */,
 				F3E98C262E6BB4E40019439F /* Place.swift in Sources */,
 				F31461802D5A82F000547B6C /* Networking.swift in Sources */,
-				F35B89BF2A725CF7000B5EEF /* Tip Suspended Server.swift in Sources */,
+				F35B89BF2A725CF7000B5EEF /* TipSuspendedServer.swift in Sources */,
 				F30C13102A54606900A7EFF0 /* Nav Extension.swift in Sources */,
 				F300892A2B3C55CD0051476C /* File Permissions Parent.swift in Sources */,
 				F3AB1DF62D79C42B00387164 /* MetricKit Manager.swift in Sources */,
@@ -6099,11 +6099,11 @@
 				F348517F2E72D10A0002C72E /* customRound.swift in Sources */,
 				F37DBF112E74F7570039858B /* FileSectionSearchBar.swift in Sources */,
 				F323D8D52A2D67A3002EDC62 /* File Uploader.swift in Sources */,
-				F3A800332A7313E900CAC40B /* Tip Cloud Keys.swift in Sources */,
+				F3A800332A7313E900CAC40B /* TipCloudKeys.swift in Sources */,
 				F3EE9F712D85CAB9000120A7 /* Dismiss Button.swift in Sources */,
 				F3E08EC62A2CEA6400116C1C /* StartPageVM.swift in Sources */,
 				F3F061D62A73C9A300470F7E /* MapList.swift in Sources */,
-				F35B9F552A2D6D380045D014 /* Formatters.swift in Sources */,
+				F35B9F552A2D6D380045D014 /* millisecondsToTime.swift in Sources */,
 				F30088B32B3A20620051476C /* Backup Card.swift in Sources */,
 				F35FEB122B0A2C8D004DA05D /* ServerState.swift in Sources */,
 				F3B1388A2A2D4D110026EAEE /* FileIcon.swift in Sources */,
@@ -6145,8 +6145,8 @@
 				F333B3BB2B80CF750005B84D /* Preview Property.swift in Sources */,
 				F3E98C0B2E6AE0830019439F /* LogCardEventDescription.swift in Sources */,
 				F37DBF302E78197C0039858B /* LogSectionList.swift in Sources */,
-				F3AB4A962CF3EC6700A8252F /* Tip Server Card Context Menu.swift in Sources */,
-				F35FEB102B09F4D3004DA05D /* Network VM.swift in Sources */,
+				F3AB4A962CF3EC6700A8252F /* Tip ServerCardContextMenu.swift in Sources */,
+				F35FEB102B09F4D3004DA05D /* NetworkVM.swift in Sources */,
 				F3464D352A863A6800188B0C /* Send Command.swift in Sources */,
 				F3FF3E872D93576B00EDFBC6 /* Update Checker.swift in Sources */,
 				F33711BA2DC2D4010014B427 /* Gamepad Debug.swift in Sources */,
@@ -6171,7 +6171,7 @@
 				F36B14A12DC3EA70008C1AF9 /* PanelSectionList.swift in Sources */,
 				F3A563282D9EF21B009AA363 /* LogMetaCard.swift in Sources */,
 				F37DBF242E77F73A0039858B /* StatRowUsers.swift in Sources */,
-				F3AB4A782CF1D97C00A8252F /* Tip JSON Formatter.swift in Sources */,
+				F3AB4A782CF1D97C00A8252F /* TipJSONFormatter.swift in Sources */,
 				F37DBF282E780DB30039858B /* StatRowSubdomains.swift in Sources */,
 				F39EA2DF2D5CB5E200329468 /* Linking VM.swift in Sources */,
 				F32FD7172B1E042400723B88 /* Websocket.swift in Sources */,
