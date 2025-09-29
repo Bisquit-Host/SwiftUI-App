@@ -2517,8 +2517,8 @@
 		F300C45F2D8C2B0100743300 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				F34851792E72D10A0002C72E /* customRound.swift */,
 				F3B1196C29A13CA6003BB68C /* ValueStore.swift */,
+				F34851792E72D10A0002C72E /* customRound.swift */,
 				F3EE6D742D9E8E2000F0A633 /* BakgroundTask.swift */,
 				F3AB1DF32D79C42B00387164 /* MetricKitManager.swift */,
 				F3FF3E862D93576B00EDFBC6 /* UpdateChecker.swift */,
@@ -2530,6 +2530,7 @@
 				F320DDA42B704E3C00957D92 /* PreviewProperty.swift */,
 				F3A1D2302A201C570053261E /* ServerState.swift */,
 				F325F7052A54C4BC00E89EC4 /* SystemAlerts.swift */,
+				F39626F12A7AD64B0057E356 /* ANSIConverter.swift */,
 				F35B89BC2A7256F4000B5EEF /* Tips */,
 				F36436EE2A2FE91C00976374 /* SpriteKit */,
 			);
@@ -2735,7 +2736,6 @@
 				F353D5032D98427500EC9F3A /* PanelToolbar.swift */,
 				F3EDEE3029C06E9700B08696 /* PanelTab.swift */,
 				F3D295122AF396FD00ED43A0 /* Tabs.swift */,
-				F39626F12A7AD64B0057E356 /* ANSIConverter.swift */,
 				F37A36772A35180100517EFC /* PowerSwitch.swift */,
 				F3ADA60D2D9BFC9D00F2DAA6 /* PowerSwitchToolbar.swift */,
 				F3553FB22B40653000EF0FD2 /* PanelSettingsParent.swift */,
