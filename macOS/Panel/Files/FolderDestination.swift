@@ -43,18 +43,7 @@ struct FolderDestination: View {
         .scrollContentBackground(.hidden)
         .environmentObject(vm)
         .frame(minWidth: 200, maxWidth: 800)
-#if os(macOS)
         .navigationSubtitle(root)
-#endif
-        //        .onChange(of: id) {
-        //            vm.fetchFiles(path)
-        //        }
-        //        .onChange(of: nav.selectedServers) {
-        //            nav.folderPath.removeAll()
-        //        }
-        //        .onChange(of: nav.folderPath) {
-        //            try? nav.save()
-        //        }
         .task {
             await vm.fetchFiles(root)
         }
