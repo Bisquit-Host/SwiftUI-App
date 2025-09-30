@@ -38,7 +38,7 @@ struct InfoTab: View {
             
             Divider()
             
-            ListParam("Uptime", param: millisecondsToTime(vm.uptime))
+            ListParam("Uptime", param: Converter.millisecondsToTime(vm.uptime))
                 .monospacedDigit()
             
             Divider()

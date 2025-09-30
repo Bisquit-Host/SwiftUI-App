@@ -40,7 +40,7 @@ struct InfoRelativeStats: View {
     var body: some View {
         HStack {
             Group {
-                InfoStat("Uptime", value: millisecondsToTime(vm.uptime))
+                InfoStat("Uptime", value: Converter.millisecondsToTime(vm.uptime))
                     .numericTransition()
                 
                 InfoStat("Processor", value: relativeCpu)
