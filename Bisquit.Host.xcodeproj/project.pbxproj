@@ -1756,7 +1756,7 @@
 		F31BA5332958FF7D0006D126 /* watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watchOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F31BA53C2958FF7E0006D126 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F31BA54E2958FFAF0006D126 /* Clip Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Clip Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F31BA5592958FFB00006D126 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F31BA5592958FFB00006D126 /* Clip Demo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Clip Demo.plist"; sourceTree = "<group>"; };
 		F31BA55A2958FFB00006D126 /* Clip Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Clip Demo.entitlements"; sourceTree = "<group>"; };
 		F31BA565295900300006D126 /* NavState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavState.swift; sourceTree = "<group>"; };
 		F31BA5672959006F0006D126 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
@@ -2667,7 +2667,7 @@
 		F31BA54F2958FFAF0006D126 /* Clip Demo */ = {
 			isa = PBXGroup;
 			children = (
-				F31BA5592958FFB00006D126 /* Info.plist */,
+				F31BA5592958FFB00006D126 /* Clip Demo.plist */,
 				F31BA55A2958FFB00006D126 /* Clip Demo.entitlements */,
 				F39052482D63644100341CD2 /* Clip Demo Debug.entitlements */,
 			);
@@ -6714,7 +6714,7 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Clip Demo/Info.plist";
+				INFOPLIST_FILE = "Clip Demo/Clip Demo.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Access to contacts allows you to save new contacts directly from the app.";
@@ -6757,7 +6757,7 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Clip Demo/Info.plist";
+				INFOPLIST_FILE = "Clip Demo/Clip Demo.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Access to contacts allows you to save new contacts directly from the app.";
