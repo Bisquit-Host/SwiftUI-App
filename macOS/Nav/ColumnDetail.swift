@@ -122,14 +122,7 @@ struct ColumnDetail: View {
             async let schedules: () = scheduleVM.fetchSchedules()
             async let subdomains: () = subdomainVM.fetchSubdomains()
             
-            _ = await (
-                files,
-                startup,
-                backups,
-                databases,
-                schedules,
-                subdomains
-            )
+            _ = await (files, startup, backups, databases, schedules, subdomains)
         }
         
         vm.updateBackups = {

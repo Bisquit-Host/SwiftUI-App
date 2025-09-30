@@ -102,9 +102,7 @@ struct PanelView: View {
                 async let backups: () = backupVM.fetchBackups()
                 async let databases: () = dbVM.fetchDatabases()
                 
-                _ = await (
-                    files, users, subdomains, backups, databases
-                )
+                _ = await (files, users, subdomains, backups, databases)
             }
             
             vm.updateBackups = {
