@@ -2013,7 +2013,7 @@
 		F386373D2A8641120069F074 /* SystemSmallWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSmallWidget.swift; sourceTree = "<group>"; };
 		F386373F2A8641120069F074 /* PowerIntentConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerIntentConfig.swift; sourceTree = "<group>"; };
 		F38637412A8641150069F074 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F38637432A8641150069F074 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F38637432A8641150069F074 /* Widgets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Widgets.plist; sourceTree = "<group>"; };
 		F38637442A8641150069F074 /* Widgets.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Widgets.entitlements; sourceTree = "<group>"; };
 		F38694192A4B3AE1002DEF90 /* InfoTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTab.swift; sourceTree = "<group>"; };
 		F3878ECC2A1BCE5000AD8657 /* Dev Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dev Settings.swift"; sourceTree = "<group>"; };
@@ -3442,7 +3442,7 @@
 			isa = PBXGroup;
 			children = (
 				F386373B2A8641120069F074 /* WidgetsBundle.swift */,
-				F38637432A8641150069F074 /* Info.plist */,
+				F38637432A8641150069F074 /* Widgets.plist */,
 				F38637442A8641150069F074 /* Widgets.entitlements */,
 				F38637412A8641150069F074 /* Assets.xcassets */,
 				F384D8BB2D5BE495000FC41D /* Crypto Price Widget.intentdefinition */,
@@ -6928,7 +6928,7 @@
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Widgets/Info.plist;
+				INFOPLIST_FILE = Widgets/Widgets.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
@@ -6970,7 +6970,7 @@
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Widgets/Info.plist;
+				INFOPLIST_FILE = Widgets/Widgets.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;

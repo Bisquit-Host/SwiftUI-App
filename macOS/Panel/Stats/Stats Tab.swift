@@ -11,11 +11,8 @@ struct StatsTab: View {
     var body: some View {
         VStack {
             Text(server.id)
-            
             Text(server.name)
-            
             Text(server.description)
-            
             Text(server.node)
         }
     }
