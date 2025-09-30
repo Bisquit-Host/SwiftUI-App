@@ -4,6 +4,14 @@ import Foundation
 final class UpdateChecker {
     var alertUpdate = false
     
+    private struct ItunesAppInfo: Decodable {
+        let results: [ItunesAppInfoResult]
+    }
+    
+    private struct ItunesAppInfoResult: Decodable {
+        let version: String
+    }
+    
     func checkForUpdates() async {
         let path = "https://itunes.apple.com/lookup?bundleId=host.bisquit.Bisquit-Host"
         
@@ -34,13 +42,5 @@ final class UpdateChecker {
         } else {
             print("The app is up to date")
         }
-    }
-    
-    private struct ItunesAppInfo: Decodable {
-        let results: [ItunesAppInfoResult]
-    }
-    
-    private struct ItunesAppInfoResult: Decodable {
-        let version: String
     }
 }
