@@ -318,15 +318,6 @@
 		F328BB562E8010B20012F003 /* DiscoverDocuments.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328BB542E8010B20012F003 /* DiscoverDocuments.swift */; };
 		F328BB572E8010B20012F003 /* DiscoverDocuments.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328BB542E8010B20012F003 /* DiscoverDocuments.swift */; };
 		F328BB582E8010B20012F003 /* DiscoverDocuments.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328BB542E8010B20012F003 /* DiscoverDocuments.swift */; };
-		F328BB5E2E80567F0012F003 /* cool.icon in Resources */ = {isa = PBXBuildFile; fileRef = F328BB5D2E80567F0012F003 /* cool.icon */; };
-		F328BB5F2E80567F0012F003 /* cool.icon in Resources */ = {isa = PBXBuildFile; fileRef = F328BB5D2E80567F0012F003 /* cool.icon */; };
-		F328BB602E80567F0012F003 /* cool.icon in Resources */ = {isa = PBXBuildFile; fileRef = F328BB5D2E80567F0012F003 /* cool.icon */; };
-		F328BB622E8056CF0012F003 /* love.icon in Resources */ = {isa = PBXBuildFile; fileRef = F328BB612E8056CF0012F003 /* love.icon */; };
-		F328BB632E8056CF0012F003 /* love.icon in Resources */ = {isa = PBXBuildFile; fileRef = F328BB612E8056CF0012F003 /* love.icon */; };
-		F328BB642E8056CF0012F003 /* love.icon in Resources */ = {isa = PBXBuildFile; fileRef = F328BB612E8056CF0012F003 /* love.icon */; };
-		F328BB662E80570C0012F003 /* streamer.icon in Resources */ = {isa = PBXBuildFile; fileRef = F328BB652E80570C0012F003 /* streamer.icon */; };
-		F328BB672E80570C0012F003 /* streamer.icon in Resources */ = {isa = PBXBuildFile; fileRef = F328BB652E80570C0012F003 /* streamer.icon */; };
-		F328BB682E80570C0012F003 /* streamer.icon in Resources */ = {isa = PBXBuildFile; fileRef = F328BB652E80570C0012F003 /* streamer.icon */; };
 		F328BB6A2E8075690012F003 /* coin.icon in Resources */ = {isa = PBXBuildFile; fileRef = F328BB692E8075690012F003 /* coin.icon */; };
 		F328BB6B2E8075690012F003 /* coin.icon in Resources */ = {isa = PBXBuildFile; fileRef = F328BB692E8075690012F003 /* coin.icon */; };
 		F328BB6C2E8075690012F003 /* coin.icon in Resources */ = {isa = PBXBuildFile; fileRef = F328BB692E8075690012F003 /* coin.icon */; };
@@ -994,6 +985,15 @@
 		F39E68412D2D6D2F0002BA96 /* FileErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E68402D2D6D2F0002BA96 /* FileErrorView.swift */; };
 		F39EA2DF2D5CB5E200329468 /* LinkingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F358132A2A1F5D2A002ADFA4 /* LinkingVM.swift */; };
 		F39EA2F12D5E146300329468 /* GuideStepCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39EA2F02D5E146300329468 /* GuideStepCard.swift */; };
+		F39F35382E8C62F800D30939 /* love.icon in Resources */ = {isa = PBXBuildFile; fileRef = F39F35372E8C62F800D30939 /* love.icon */; };
+		F39F35392E8C62F800D30939 /* love.icon in Resources */ = {isa = PBXBuildFile; fileRef = F39F35372E8C62F800D30939 /* love.icon */; };
+		F39F353A2E8C62F800D30939 /* love.icon in Resources */ = {isa = PBXBuildFile; fileRef = F39F35372E8C62F800D30939 /* love.icon */; };
+		F39F353C2E8C630B00D30939 /* streamer.icon in Resources */ = {isa = PBXBuildFile; fileRef = F39F353B2E8C630B00D30939 /* streamer.icon */; };
+		F39F353D2E8C630B00D30939 /* streamer.icon in Resources */ = {isa = PBXBuildFile; fileRef = F39F353B2E8C630B00D30939 /* streamer.icon */; };
+		F39F353E2E8C630B00D30939 /* streamer.icon in Resources */ = {isa = PBXBuildFile; fileRef = F39F353B2E8C630B00D30939 /* streamer.icon */; };
+		F39F35402E8C631800D30939 /* cool.icon in Resources */ = {isa = PBXBuildFile; fileRef = F39F353F2E8C631800D30939 /* cool.icon */; };
+		F39F35412E8C631800D30939 /* cool.icon in Resources */ = {isa = PBXBuildFile; fileRef = F39F353F2E8C631800D30939 /* cool.icon */; };
+		F39F35422E8C631800D30939 /* cool.icon in Resources */ = {isa = PBXBuildFile; fileRef = F39F353F2E8C631800D30939 /* cool.icon */; };
 		F3A123562A667804008E3E20 /* LogMetaParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* LogMetaParent.swift */; };
 		F3A123572A667804008E3E20 /* LogMetaParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* LogMetaParent.swift */; };
 		F3A123582A667804008E3E20 /* LogMetaParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* LogMetaParent.swift */; };
@@ -1804,9 +1804,6 @@
 		F3287A732B109DD0001AFE54 /* WidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetLiveActivity.swift; sourceTree = "<group>"; };
 		F328BB512E7FE00C0012F003 /* MapSectionNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSectionNew.swift; sourceTree = "<group>"; };
 		F328BB542E8010B20012F003 /* DiscoverDocuments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverDocuments.swift; sourceTree = "<group>"; };
-		F328BB5D2E80567F0012F003 /* cool.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = cool.icon; sourceTree = "<group>"; };
-		F328BB612E8056CF0012F003 /* love.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = love.icon; sourceTree = "<group>"; };
-		F328BB652E80570C0012F003 /* streamer.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = streamer.icon; sourceTree = "<group>"; };
 		F328BB692E8075690012F003 /* coin.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = coin.icon; sourceTree = "<group>"; };
 		F32CAAD82A28C4920019DEE3 /* FileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileView.swift; sourceTree = "<group>"; };
 		F32DB8A729AE6B800074E045 /* StartPageFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPageFooter.swift; sourceTree = "<group>"; };
@@ -2053,6 +2050,9 @@
 		F39E68402D2D6D2F0002BA96 /* FileErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileErrorView.swift; sourceTree = "<group>"; };
 		F39EA2E02D5D45E800329468 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/iOSSupport/System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		F39EA2F02D5E146300329468 /* GuideStepCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideStepCard.swift; sourceTree = "<group>"; };
+		F39F35372E8C62F800D30939 /* love.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = love.icon; sourceTree = "<group>"; };
+		F39F353B2E8C630B00D30939 /* streamer.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = streamer.icon; sourceTree = "<group>"; };
+		F39F353F2E8C631800D30939 /* cool.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = cool.icon; sourceTree = "<group>"; };
 		F3A123552A667804008E3E20 /* LogMetaParent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogMetaParent.swift; sourceTree = "<group>"; };
 		F3A1D2302A201C570053261E /* ServerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerState.swift; sourceTree = "<group>"; };
 		F3A1D2342A201CBB0053261E /* PlanSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanSpec.swift; sourceTree = "<group>"; };
@@ -2633,9 +2633,9 @@
 				F34AEF532DD640F900909562 /* Guide.xcassets */,
 				F338F1682DFCC8D8005B7226 /* default.icon */,
 				F328BB692E8075690012F003 /* coin.icon */,
-				F328BB5D2E80567F0012F003 /* cool.icon */,
-				F328BB612E8056CF0012F003 /* love.icon */,
-				F328BB652E80570C0012F003 /* streamer.icon */,
+				F39F35372E8C62F800D30939 /* love.icon */,
+				F39F353F2E8C631800D30939 /* cool.icon */,
+				F39F353B2E8C630B00D30939 /* streamer.icon */,
 				F378E3322AF38286009925DB /* PrivacyInfo.xcprivacy */,
 				F3ADA61C2D9C16AC00F2DAA6 /* Loc Logs.txt */,
 				F31BA580295901400006D126 /* Intro */,
@@ -4684,12 +4684,12 @@
 			isa = PBXResourcesBuildPhase;
 			files = (
 				F328BB6C2E8075690012F003 /* coin.icon in Resources */,
+				F39F35392E8C62F800D30939 /* love.icon in Resources */,
 				F34AEF542DD640F900909562 /* Guide.xcassets in Resources */,
-				F328BB622E8056CF0012F003 /* love.icon in Resources */,
-				F328BB662E80570C0012F003 /* streamer.icon in Resources */,
+				F39F35422E8C631800D30939 /* cool.icon in Resources */,
 				F3E6FC432A1E677000410C7C /* Bisquits.sks in Resources */,
-				F328BB5E2E80567F0012F003 /* cool.icon in Resources */,
 				F34AEF4F2DD603C600909562 /* Discover.xcassets in Resources */,
+				F39F353D2E8C630B00D30939 /* streamer.icon in Resources */,
 				F338F1692DFCC8E9005B7226 /* default.icon in Resources */,
 				F36797732A39C4ED009F2788 /* Localizable.xcstrings in Resources */,
 				F378E3332AF3835A009925DB /* PrivacyInfo.xcprivacy in Resources */,
@@ -4708,12 +4708,12 @@
 			isa = PBXResourcesBuildPhase;
 			files = (
 				F328BB6A2E8075690012F003 /* coin.icon in Resources */,
+				F39F353A2E8C62F800D30939 /* love.icon in Resources */,
 				F34AEF552DD6411300909562 /* Guide.xcassets in Resources */,
-				F328BB642E8056CF0012F003 /* love.icon in Resources */,
-				F328BB682E80570C0012F003 /* streamer.icon in Resources */,
+				F39F35412E8C631800D30939 /* cool.icon in Resources */,
 				F3E6FC442A1E677000410C7C /* Bisquits.sks in Resources */,
-				F328BB602E80567F0012F003 /* cool.icon in Resources */,
 				F32A02732DFEAA6A003CE74D /* default.icon in Resources */,
+				F39F353C2E8C630B00D30939 /* streamer.icon in Resources */,
 				F34AEF502DD603C600909562 /* Discover.xcassets in Resources */,
 				F36797742A39C4ED009F2788 /* Localizable.xcstrings in Resources */,
 				F378E3382AF3835E009925DB /* PrivacyInfo.xcprivacy in Resources */,
@@ -4770,12 +4770,12 @@
 			isa = PBXResourcesBuildPhase;
 			files = (
 				F328BB6B2E8075690012F003 /* coin.icon in Resources */,
+				F39F35382E8C62F800D30939 /* love.icon in Resources */,
 				F34AEF572DD6413200909562 /* Guide.xcassets in Resources */,
-				F328BB632E8056CF0012F003 /* love.icon in Resources */,
-				F328BB5F2E80567F0012F003 /* cool.icon in Resources */,
+				F39F353E2E8C630B00D30939 /* streamer.icon in Resources */,
+				F39F35402E8C631800D30939 /* cool.icon in Resources */,
 				F3E08EA72A2CE17A00116C1C /* Assets.xcassets in Resources */,
 				F32A02722DFEA9BC003CE74D /* default.icon in Resources */,
-				F328BB672E80570C0012F003 /* streamer.icon in Resources */,
 				F378E3342AF3835B009925DB /* PrivacyInfo.xcprivacy in Resources */,
 				F38928202A43CB2600561CDF /* Localizable.xcstrings in Resources */,
 			);

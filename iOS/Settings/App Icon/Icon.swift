@@ -1,7 +1,7 @@
 import SwiftUI
 
 enum Icon: String, Identifiable, CaseIterable {
-    case def, cool, love, streamer, coin, modern
+    case def, cool, love, streamer, coin
     
     var id: String {
         self.rawValue
@@ -14,7 +14,6 @@ enum Icon: String, Identifiable, CaseIterable {
         case .love:     .loveIcon
         case .streamer: .streamerIcon
         case .coin:     .coinIcon
-        case .modern:   .modernIcon
         }
     }
 }
