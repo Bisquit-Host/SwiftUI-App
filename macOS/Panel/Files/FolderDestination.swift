@@ -40,10 +40,10 @@ struct FolderDestination: View {
             .listRowSeparator(.hidden)
         }
         .navigationTitle("Files")
-        .scrollContentBackground(.hidden)
-        .environmentObject(vm)
-        .frame(minWidth: 200, maxWidth: 800)
         .navigationSubtitle(root)
+        .environmentObject(vm)
+        .scrollContentBackground(.hidden)
+        .frame(minWidth: 200, maxWidth: 800)
         .task {
             await vm.fetchFiles(root)
         }

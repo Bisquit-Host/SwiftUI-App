@@ -38,11 +38,9 @@ struct FileTab: View {
             }
         }
         .navigationTitle("Files")
+        .navigationSubtitle(root)
         .environmentObject(vm)
         .frame(minWidth: 200, maxWidth: 800)
-#if os(macOS)
-        .navigationSubtitle(root)
-#endif
         .onChange(of: id) {
             Task {
                 await vm.fetchFiles(root)

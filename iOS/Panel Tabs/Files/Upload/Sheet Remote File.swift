@@ -24,10 +24,10 @@ struct SheetRemoteFile: View {
             
             Toggle("Use header", isOn: $remoteFile.use_header)
         }
-        .autocorrectionDisabled()
         .navigationTitle("Pull remote file")
-        .toolbarTitleDisplayMode(.inline)
         .navigationSubtitle(path)
+        .autocorrectionDisabled()
+        .toolbarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .bottomBar) {
                 SFButton("xmark") {
