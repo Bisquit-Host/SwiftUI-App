@@ -1,6 +1,6 @@
 import BackgroundTasks
 
-extension BisquitHostApp {
+extension BisquitHost {
     struct BackgroundTaskManager {
         static func scheduleAppRefresh() {
             let request = BGAppRefreshTaskRequest(identifier: "host.bisquit.Bisquit-Host.Background-Task")

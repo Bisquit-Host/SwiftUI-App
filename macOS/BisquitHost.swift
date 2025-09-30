@@ -8,7 +8,7 @@ import Pow
 import GaypadKit
 
 @main
-struct BisquitHostApp: App {
+struct BisquitHost: App {
     @StateObject private var store = ValueStore()
     private var nav = NavState()
     private var navModel = NavModel()
