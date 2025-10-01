@@ -21,6 +21,7 @@ struct StatTile: View {
                 Text(title)
                     .subheadline()
                     .secondary()
+                    .lineLimit(1)
                 
                 Text(value)
                     .title2(.semibold)
