@@ -43,7 +43,7 @@ struct AppSettings: View {
         .navigationTitle("Settings")
         .listStyle(.grouped)
         .sheet($sheetKeyStorage) {
-            CloudKeys($apiKey)
+            CloudKeyList($apiKey)
         }
         .fullScreenCover($sheetGuide) {
             Guide()

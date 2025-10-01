@@ -45,7 +45,7 @@ struct StartPage: View {
         .navigationTitle("Bisquit.Host")
         .multilineTextAlignment(.center)
         .sheet($vm.sheetCloudKeys) {
-            CloudKeys($vm.apiKey)
+            CloudKeyList($vm.apiKey)
         }
         .alert("Error \(vm.errorCode)", isPresented: $vm.alertInvalid) {
             Button("Try again") {}

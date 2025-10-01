@@ -3,7 +3,7 @@ import SwiftData
 import PteroNet
 import TipKit
 
-struct CloudKeys: View {
+struct CloudKeyList: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     @Query(animation: .default) private var keys: [APIKey]
@@ -63,7 +63,7 @@ struct CloudKeys: View {
     
     Text("Preview")
         .sheet {
-            CloudKeys($apiKey)
+            CloudKeyList($apiKey)
         }
         .darkSchemePreferred()
 }
