@@ -39,7 +39,7 @@ struct StartPage: View {
             .disabled(vm.apiKey.isEmpty)
         }
         .sheet($vm.sheetCloudKeys) {
-            CloudKeys($vm.apiKey)
+            CloudKeyList($vm.apiKey)
         }
         .task {
             if !keys.isEmpty {

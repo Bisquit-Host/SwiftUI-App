@@ -45,13 +45,11 @@ struct ServerCardParent: View {
             ServerCardContextMenu(server, $showSafari, $confirmKill)
         }
         .onDrag {
-            let url = URL(string: serverUrl)
-            
-            if let itemProvider = NSItemProvider(contentsOf: url) {
-                return itemProvider
+            if let url = URL(string: serverUrl), let itemProvider = NSItemProvider(contentsOf: url) {
+                itemProvider
+            } else {
+                NSItemProvider()
             }
-            
-            return NSItemProvider()
         }
     }
 }
