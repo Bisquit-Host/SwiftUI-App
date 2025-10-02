@@ -53,7 +53,7 @@ final class SSHVM {
             }
             
             if provider.hasItemConformingToTypeIdentifier(type) {
-                provider.loadDataRepresentation(forTypeIdentifier: type) { data, error in
+                provider.loadDataRepresentation(forTypeIdentifier: type) { data, _ in
                     if let data, let fileContent = String(data: data, encoding: .utf8) {
                         self.newPublicKey = fileContent
                     }

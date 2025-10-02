@@ -23,13 +23,9 @@ struct ImagePlayground: View {
     @State private var imageDescriptions: [String] = []
     
     private var imageConcepts: [ImagePlaygroundConcept] {
-        var concepts: [ImagePlaygroundConcept] = []
-        
-        for concept in imageDescriptions {
-            concepts.append(.text(concept))
+        imageDescriptions.compactMap {
+            ImagePlaygroundConcept.text($0)
         }
-        
-        return concepts
     }
     
     var body: some View {

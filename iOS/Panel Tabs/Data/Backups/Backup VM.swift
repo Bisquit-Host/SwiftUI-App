@@ -25,7 +25,6 @@ final class BackupVM {
     func deleteBackups(_ offsets: IndexSet) async {
         for index in offsets {
             let uuid = backups[index].uuid
-            
             await deleteBackup(uuid)
         }
     }
