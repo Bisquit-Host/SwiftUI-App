@@ -21,10 +21,6 @@ struct AppSettings: View {
                 sheetGuide = true
             }
             
-            NavigationLink("Best places") {
-                MapView()
-            }
-            
             ListLink("Configurations", icon: "externaldrive.badge.plus") {
                 PlanViewParent()
             }

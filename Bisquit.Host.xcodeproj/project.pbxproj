@@ -235,9 +235,6 @@
 		F3202C8C2D5590D30030B3CC /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA58E295901B60006D126 /* PlanView.swift */; };
 		F3202C8D2D5590D30030B3CC /* PlanViewParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202C732D5583680030B3CC /* PlanViewParent.swift */; };
 		F3202C8F2D5590E20030B3CC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F3202C8E2D5590E20030B3CC /* Kingfisher */; };
-		F3202C902D5590FE0030B3CC /* MapVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A92A177ED100530615 /* MapVM.swift */; };
-		F3202C912D5590FE0030B3CC /* MapList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994AD2A17A9B100530615 /* MapList.swift */; };
-		F3202C922D5590FE0030B3CC /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A72A177DA400530615 /* MapView.swift */; };
 		F3202CCD2D559B240030B3CC /* ContactsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202CC92D559B240030B3CC /* ContactsProvider.swift */; };
 		F3202CCE2D559B240030B3CC /* ContactsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202CC92D559B240030B3CC /* ContactsProvider.swift */; };
 		F3202CCF2D559B240030B3CC /* ContactsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3202CC92D559B240030B3CC /* ContactsProvider.swift */; };
@@ -1058,9 +1055,6 @@
 		F3A7CF102C8C4C2700413400 /* ServerListFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E88D02AF8494100959D49 /* ServerListFilter.swift */; };
 		F3A7CF112C8C4C3100413400 /* NodeFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A31B042B0B144200F89C51 /* NodeFilter.swift */; };
 		F3A7CF122C8C4E3E00413400 /* DiscoverCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E0A932C1BA06C00C4E906 /* DiscoverCard.swift */; };
-		F3A7CF152C8C4E4300413400 /* MapList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994AD2A17A9B100530615 /* MapList.swift */; };
-		F3A7CF162C8C4E4300413400 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A72A177DA400530615 /* MapView.swift */; };
-		F3A7CF172C8C4E4300413400 /* MapVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A92A177ED100530615 /* MapVM.swift */; };
 		F3A7CF182C8C4E4A00413400 /* PlanSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A1D2342A201CBB0053261E /* PlanSpec.swift */; };
 		F3A7CF192C8C4E4A00413400 /* PlanListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA590295901C00006D126 /* PlanListVM.swift */; };
 		F3A7CF1B2C8C4E4A00413400 /* PlanViewTopbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3DBD029B8007B00096115 /* PlanViewTopbar.swift */; };
@@ -1083,12 +1077,6 @@
 		F3A800342A7313E900CAC40B /* TipCloudKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A800312A7313E900CAC40B /* TipCloudKeys.swift */; };
 		F3A800372A7313E900CAC40B /* TipCloudKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A800312A7313E900CAC40B /* TipCloudKeys.swift */; };
 		F3A8BE8B2A2FA9B3001B13D8 /* FileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A8BE8A2A2FA9B3001B13D8 /* FileView.swift */; };
-		F3A994A82A177DA400530615 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A72A177DA400530615 /* MapView.swift */; };
-		F3A994AA2A177ED100530615 /* MapVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A92A177ED100530615 /* MapVM.swift */; };
-		F3A994AB2A178A9E00530615 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A72A177DA400530615 /* MapView.swift */; };
-		F3A994AC2A17904F00530615 /* MapVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A92A177ED100530615 /* MapVM.swift */; };
-		F3A994AE2A17A9B100530615 /* MapList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994AD2A17A9B100530615 /* MapList.swift */; };
-		F3A994AF2A17AED500530615 /* MapList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994AD2A17A9B100530615 /* MapList.swift */; };
 		F3AB1DF42D79C42B00387164 /* MetricKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB1DF32D79C42B00387164 /* MetricKitManager.swift */; };
 		F3AB1DF52D79C42B00387164 /* MetricKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB1DF32D79C42B00387164 /* MetricKitManager.swift */; };
 		F3AB1DF62D79C42B00387164 /* MetricKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AB1DF32D79C42B00387164 /* MetricKitManager.swift */; };
@@ -1367,13 +1355,6 @@
 		F3E98C202E6BAE4A0019439F /* ServerCardLayoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E98C1F2E6BAE4A0019439F /* ServerCardLayoutButton.swift */; };
 		F3E98C212E6BAE4A0019439F /* ServerCardLayoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E98C1F2E6BAE4A0019439F /* ServerCardLayoutButton.swift */; };
 		F3E98C222E6BAE4A0019439F /* ServerCardLayoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E98C1F2E6BAE4A0019439F /* ServerCardLayoutButton.swift */; };
-		F3E98C242E6BB4E40019439F /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E98C232E6BB4E40019439F /* Place.swift */; };
-		F3E98C252E6BB4E40019439F /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E98C232E6BB4E40019439F /* Place.swift */; };
-		F3E98C262E6BB4E40019439F /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E98C232E6BB4E40019439F /* Place.swift */; };
-		F3E98C272E6BB4E40019439F /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E98C232E6BB4E40019439F /* Place.swift */; };
-		F3E98C282E6BB4E40019439F /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E98C232E6BB4E40019439F /* Place.swift */; };
-		F3E98C292E6BB4E40019439F /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E98C232E6BB4E40019439F /* Place.swift */; };
-		F3E98C2A2E6BB4E40019439F /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E98C232E6BB4E40019439F /* Place.swift */; };
 		F3EAD3DF2DC960DA00D5D28D /* FocusedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EAD3DE2DC960DA00D5D28D /* FocusedList.swift */; };
 		F3EB09CE2A29531B0073916A /* DesImageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37F51C329DAF8D70030C1C4 /* DesImageVM.swift */; };
 		F3EB09CF2A2953200073916A /* DesImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5B6295903100006D126 /* DesImage.swift */; };
@@ -1406,12 +1387,6 @@
 		F3EE9F752D85CAB9000120A7 /* DismissButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F6E2D85CAB9000120A7 /* DismissButton.swift */; };
 		F3EE9F762D85CAB9000120A7 /* DismissButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EE9F6E2D85CAB9000120A7 /* DismissButton.swift */; };
 		F3EEC03B2AF2F93800BFED78 /* StartPageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA57B2959011B0006D126 /* StartPageVM.swift */; };
-		F3F061D12A73C37200470F7E /* MapList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994AD2A17A9B100530615 /* MapList.swift */; };
-		F3F061D22A73C37500470F7E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A72A177DA400530615 /* MapView.swift */; };
-		F3F061D32A73C37700470F7E /* MapVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A92A177ED100530615 /* MapVM.swift */; };
-		F3F061D52A73C9A000470F7E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A72A177DA400530615 /* MapView.swift */; };
-		F3F061D62A73C9A300470F7E /* MapList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994AD2A17A9B100530615 /* MapList.swift */; };
-		F3F061D72A73C9A500470F7E /* MapVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A92A177ED100530615 /* MapVM.swift */; };
 		F3F061DA2A73CE1200470F7E /* ServerCardParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F061D92A73CE1200470F7E /* ServerCardParent.swift */; };
 		F3F08F9D2DCF7C1D00EFD7DB /* QuickLookFileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E272CEB33510033EFE3 /* QuickLookFileVM.swift */; };
 		F3F0A2DB2D6339510084013B /* BisquitHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* BisquitHost.swift */; };
@@ -1516,9 +1491,6 @@
 		F3FFB7422A57F12F00220FA5 /* User Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF5A0E2A4A3ABD003A1973 /* User Card.swift */; };
 		F3FFB7432A57F13D00220FA5 /* User View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39CF3572A50C00C0077996D /* User View.swift */; };
 		F3FFB7442A57F43C00220FA5 /* User List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF59FE2A4A3188003A1973 /* User List.swift */; };
-		F3FFB7452A57F8AD00220FA5 /* MapVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A92A177ED100530615 /* MapVM.swift */; };
-		F3FFB7462A57F91700220FA5 /* MapList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994AD2A17A9B100530615 /* MapList.swift */; };
-		F3FFB7472A57F91E00220FA5 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A994A72A177DA400530615 /* MapView.swift */; };
 		F3FFB7482A57FF0600220FA5 /* LogVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367977D2A3A5AB6009F2788 /* LogVM.swift */; };
 		F3FFB7492A57FF0B00220FA5 /* LogCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367977A2A3A55F4009F2788 /* LogCard.swift */; };
 /* End PBXBuildFile section */
@@ -2084,9 +2056,6 @@
 		F3A7CF6F2A44FD5300331B51 /* ServerCardParent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCardParent.swift; sourceTree = "<group>"; };
 		F3A800312A7313E900CAC40B /* TipCloudKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipCloudKeys.swift; sourceTree = "<group>"; };
 		F3A8BE8A2A2FA9B3001B13D8 /* FileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileView.swift; sourceTree = "<group>"; };
-		F3A994A72A177DA400530615 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		F3A994A92A177ED100530615 /* MapVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVM.swift; sourceTree = "<group>"; };
-		F3A994AD2A17A9B100530615 /* MapList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapList.swift; sourceTree = "<group>"; };
 		F3AB1DF32D79C42B00387164 /* MetricKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricKitManager.swift; sourceTree = "<group>"; };
 		F3AB4A762CF1D97C00A8252F /* TipJSONFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJSONFormatter.swift; sourceTree = "<group>"; };
 		F3AB4A892CF3DAC900A8252F /* Backup Card VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Backup Card VM.swift"; sourceTree = "<group>"; };
@@ -2204,7 +2173,6 @@
 		F3E98C132E6AE32E0019439F /* CarouselCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCardView.swift; sourceTree = "<group>"; };
 		F3E98C1B2E6B2B020019439F /* AccountSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettings.swift; sourceTree = "<group>"; };
 		F3E98C1F2E6BAE4A0019439F /* ServerCardLayoutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCardLayoutButton.swift; sourceTree = "<group>"; };
-		F3E98C232E6BB4E40019439F /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		F3EAD3DE2DC960DA00D5D28D /* FocusedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusedList.swift; sourceTree = "<group>"; };
 		F3EB09E12A29805A0073916A /* DesVideoWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesVideoWatch.swift; sourceTree = "<group>"; };
 		F3EB09EC2A2987F00073916A /* QuickLookFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLookFile.swift; sourceTree = "<group>"; };
@@ -3469,17 +3437,6 @@
 			path = Info;
 			sourceTree = "<group>";
 		};
-		F3878EDB2A1C1E9F00AD8657 /* Map */ = {
-			isa = PBXGroup;
-			children = (
-				F3A994A72A177DA400530615 /* MapView.swift */,
-				F3A994AD2A17A9B100530615 /* MapList.swift */,
-				F3A994A92A177ED100530615 /* MapVM.swift */,
-				F3E98C232E6BB4E40019439F /* Place.swift */,
-			);
-			path = Map;
-			sourceTree = "<group>";
-		};
 		F38928212A44182400561CDF /* Panel */ = {
 			isa = PBXGroup;
 			children = (
@@ -3651,7 +3608,6 @@
 				F32F2CD32D8F6FDC007CF4DE /* AvgColor.swift */,
 				F39E0A932C1BA06C00C4E906 /* DiscoverCard.swift */,
 				F3565B7C295E5F9E0092874A /* Plans */,
-				F3878EDB2A1C1E9F00AD8657 /* Map */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -4822,7 +4778,6 @@
 				F3464D2C2A863A6100188B0C /* CreateBackup.swift in Sources */,
 				F30C13082A545D6E00A7EFF0 /* LinkingVM.swift in Sources */,
 				F31D0BB52A2573E200119D07 /* AppSettings.swift in Sources */,
-				F3FFB7472A57F91E00220FA5 /* MapView.swift in Sources */,
 				F370804F2A2A1EAC0046CE70 /* Schedule List.swift in Sources */,
 				F3EB09DB2A295C550073916A /* VideoFile.swift in Sources */,
 				F3EE6D782D9E8E2000F0A633 /* BakgroundTask.swift in Sources */,
@@ -4878,7 +4833,6 @@
 				F3202CE32D562A620030B3CC /* PlanListGame.swift in Sources */,
 				F3A28ADB2C57B06600010454 /* DevSettingsFooter.swift in Sources */,
 				F34851B92E72E0790002C72E /* PlanCardLabelCloud.swift in Sources */,
-				F3E98C242E6BB4E40019439F /* Place.swift in Sources */,
 				F3000E18295A496C00ABD30A /* StartPage.swift in Sources */,
 				F34851B02E72E0450002C72E /* PlanCardLabelBot.swift in Sources */,
 				F34851C52E72E4F50002C72E /* UniversalPlanList.swift in Sources */,
@@ -4942,7 +4896,6 @@
 				F3E98C062E6AE0830019439F /* LogCardEventDescription.swift in Sources */,
 				F3BC03AE2B1FF2FC0011F98A /* Schedule Context Menu.swift in Sources */,
 				F37080532A2A1F730046CE70 /* Database Card.swift in Sources */,
-				F3FFB7452A57F8AD00220FA5 /* MapVM.swift in Sources */,
 				F3AB4A9C2CF4031600A8252F /* JsonFormatterButton.swift in Sources */,
 				F39D68142A26373F00B9BDFC /* SptiteKitBisquitFall.swift in Sources */,
 				F30C13162A5461BB00A7EFF0 /* Cache VM.swift in Sources */,
@@ -4979,7 +4932,6 @@
 				F34851802E72D10A0002C72E /* customRound.swift in Sources */,
 				F3D558B32A33C6A000608447 /* FileTabVM.swift in Sources */,
 				F3796566295C51FF0074CA3D /* GaugeTV.swift in Sources */,
-				F3FFB7462A57F91700220FA5 /* MapList.swift in Sources */,
 				F3BB07BD2A5421B700F5EE2E /* ServerListVM.swift in Sources */,
 			);
 		};
@@ -5082,7 +5034,6 @@
 				F3E0B4942DC30347003C8B27 /* InfoTabLogs.swift in Sources */,
 				F311CAAE2A646612004E4A4A /* LogMetaView.swift in Sources */,
 				F303214B2B3FEA45002A73B8 /* ServerSettingsView.swift in Sources */,
-				F3E98C282E6BB4E40019439F /* Place.swift in Sources */,
 				F3D95B0D2E63635B00849A94 /* CompactServerCard.swift in Sources */,
 				F34851AE2E72E0450002C72E /* PlanCardLabelBot.swift in Sources */,
 				F31BA5B2295902D50006D126 /* TextFile.swift in Sources */,
@@ -5116,7 +5067,6 @@
 				F3BC03BC2B1FFBD50011F98A /* Backup Context Menu.swift in Sources */,
 				F34851BE2E72E11E0002C72E /* PlanCardLabelGame.swift in Sources */,
 				F3D7D87F29E83DEE00BCAFFE /* DesignSettings.swift in Sources */,
-				F3A994A82A177DA400530615 /* MapView.swift in Sources */,
 				F394A28429E0A9810012B7D1 /* ServerCardParent.swift in Sources */,
 				F3C0F9D029E204FA0040E277 /* FileTab Context Menu.swift in Sources */,
 				F390C74A2DC2AF940069F965 /* Gamepad Debug.swift in Sources */,
@@ -5133,7 +5083,6 @@
 				F3EDEE3829C0CB5A00B08696 /* WebsocketMessage.swift in Sources */,
 				F3AB4A9A2CF4031600A8252F /* JsonFormatterButton.swift in Sources */,
 				F39872162A1B73830022B00E /* VideoFile.swift in Sources */,
-				F3A994AE2A17A9B100530615 /* MapList.swift in Sources */,
 				F3D295132AF396FD00ED43A0 /* Tabs.swift in Sources */,
 				F3C9D84E2B30598000265492 /* VideoPlayerVM.swift in Sources */,
 				F3202C802D558B210030B3CC /* SpotlightIndex.swift in Sources */,
@@ -5198,7 +5147,6 @@
 				F37DDA7629E2AF7600B9680C /* Folder Path VM.swift in Sources */,
 				F3E0B4962DC30351003C8B27 /* InfoTabSubdomains.swift in Sources */,
 				F335CA0B2C63E8CB006C71C6 /* DynamicIslandBadge.swift in Sources */,
-				F3A994AA2A177ED100530615 /* MapVM.swift in Sources */,
 				F30088FC2B3B56210051476C /* User List Parent.swift in Sources */,
 				F35B2A0229FFD6AB006E5FD2 /* OtherModels.swift in Sources */,
 				F3A123562A667804008E3E20 /* LogMetaParent.swift in Sources */,
@@ -5302,7 +5250,6 @@
 				F3AB4A972CF3EC6700A8252F /* Tip ServerCardContextMenu.swift in Sources */,
 				F3499EF52A27553D006101B7 /* PanelVM.swift in Sources */,
 				F36E8A9C2E6E43D800A38229 /* ServerListGrid.swift in Sources */,
-				F3F061D22A73C37500470F7E /* MapView.swift in Sources */,
 				F3E98C072E6AE0830019439F /* LogCardEventDescription.swift in Sources */,
 				F3F061DA2A73CE1200470F7E /* ServerCardParent.swift in Sources */,
 				F30089012B3B62450051476C /* User Invitation Permission.swift in Sources */,
@@ -5310,7 +5257,6 @@
 				F3C9D8592B31135B00265492 /* Permission List.swift in Sources */,
 				F3499EF62A275546006101B7 /* WebSocketTaskConnection.swift in Sources */,
 				F3E1D3F32B320A6A009B7062 /* Permission Group Header.swift in Sources */,
-				F3F061D32A73C37700470F7E /* MapVM.swift in Sources */,
 				F35B89C02A725CFA000B5EEF /* TipSuspendedServer.swift in Sources */,
 				F3FFB7442A57F43C00220FA5 /* User List.swift in Sources */,
 				F35FEB092B09F003004DA05D /* APIKey.swift in Sources */,
@@ -5351,7 +5297,6 @@
 				F376D0562A02487C00B7377A /* CloudKeyList.swift in Sources */,
 				F3FFB7422A57F12F00220FA5 /* User Card.swift in Sources */,
 				F3E1D3EF2B3208DE009B7062 /* User 2Fa.swift in Sources */,
-				F3E98C252E6BB4E40019439F /* Place.swift in Sources */,
 				F3EB09D22A29533D0073916A /* Converter.swift in Sources */,
 				F3499EFA2A277D0F006101B7 /* FileTab.swift in Sources */,
 				F3E2BEE22C1C6BA800B7A6D4 /* Cache List VM.swift in Sources */,
@@ -5372,7 +5317,6 @@
 				F3015DE72D9F27E800B9BCC6 /* LogCardImage.swift in Sources */,
 				F3464D362A863A6800188B0C /* SendCommand.swift in Sources */,
 				F30C13032A545ADB00A7EFF0 /* NavState.swift in Sources */,
-				F3F061D12A73C37200470F7E /* MapList.swift in Sources */,
 				F3EB09CE2A29531B0073916A /* DesImageVM.swift in Sources */,
 				F3A1D2332A201C6D0053261E /* ServerState.swift in Sources */,
 				F3F5ADAF2E8A9639007AD97D /* WebSocketConnectionState.swift in Sources */,
@@ -5539,7 +5483,6 @@
 				F36D531D2A05B816007324C6 /* WebSocketTaskConnection.swift in Sources */,
 				F389BB772A05B63200911EBF /* Biometry Button.swift in Sources */,
 				F3D7F8532C8F258B00368ECE /* Enable 2FA View.swift in Sources */,
-				F3A994AF2A17AED500530615 /* MapList.swift in Sources */,
 				F36D53212A05B836007324C6 /* WebsocketDelegate.swift in Sources */,
 				F3E98C032E6A5F4C0019439F /* ServerCardLayout.swift in Sources */,
 				F3116F272A33E142001F067C /* FolderFile.swift in Sources */,
@@ -5564,7 +5507,6 @@
 				F3E98C0E2E6AE1BD0019439F /* AmbientBackground.swift in Sources */,
 				F3C9D8522B3059E700265492 /* UIVideoPlayer.swift in Sources */,
 				F3464D322A863A6600188B0C /* SendCommand.swift in Sources */,
-				F3A994AC2A17904F00530615 /* MapVM.swift in Sources */,
 				F3ADA6102D9BFC9D00F2DAA6 /* PowerSwitchToolbar.swift in Sources */,
 				F3B81DF22A49C96000633B66 /* InfoAbsoluteStats.swift in Sources */,
 				F3553FC02B4094D700EF0FD2 /* Allocation Card.swift in Sources */,
@@ -5630,7 +5572,6 @@
 				F36D532B2A05B875007324C6 /* Backup List.swift in Sources */,
 				F3015DD72D9F24F600B9BCC6 /* LogCardEvent.swift in Sources */,
 				F3202CE22D562A620030B3CC /* PlanListGame.swift in Sources */,
-				F3A994AB2A178A9E00530615 /* MapView.swift in Sources */,
 				F36D532E2A05B885007324C6 /* Schedule Task.swift in Sources */,
 				F3E98C142E6AE32E0019439F /* CarouselCardView.swift in Sources */,
 				F3A31B0D2B0B161D00F89C51 /* CloudKeyCard.swift in Sources */,
@@ -5656,7 +5597,6 @@
 				F3FEA4432E5C9359003BB975 /* InfoTabCustomizationButton.swift in Sources */,
 				F32E88C92AF83E3F00959D49 /* ServerListAdminButton.swift in Sources */,
 				F374F7C02D54922F006771DD /* Sheet Create Subdomain.swift in Sources */,
-				F3E98C272E6BB4E40019439F /* Place.swift in Sources */,
 				F32F3AAC2D8EB8EC00E69B98 /* Background Image.swift in Sources */,
 				F36EBAFF2E6EF11100308DC9 /* UniversalPlan.swift in Sources */,
 				F3202D482D56DC050030B3CC /* Prefetcher.swift in Sources */,
@@ -5826,7 +5766,6 @@
 				F3AB1DF52D79C42B00387164 /* MetricKitManager.swift in Sources */,
 				F3A7CEEA2C8BB74D00413400 /* ServerListGrid.swift in Sources */,
 				F32F2CCF2D8F6FCE007CF4DE /* DiscoverCardLabel.swift in Sources */,
-				F3E98C292E6BB4E40019439F /* Place.swift in Sources */,
 				F36EBAFE2E6EF11100308DC9 /* UniversalPlan.swift in Sources */,
 				F3255E1E2C904A63008E04DE /* SSH VM.swift in Sources */,
 				F32F2D032D908E1D007CF4DE /* Background Image Helper.swift in Sources */,
@@ -5853,10 +5792,7 @@
 				F314617A2D5A2B8B00547B6C /* Create Apikey.swift in Sources */,
 				F31F31FA2D52BD940095DD19 /* System.swift in Sources */,
 				F353B0422D8A31BF00E4EC07 /* Account Parent.swift in Sources */,
-				F3A7CF152C8C4E4300413400 /* MapList.swift in Sources */,
 				F37CE9C32D555D5A00716D28 /* TabInfo.swift in Sources */,
-				F3A7CF162C8C4E4300413400 /* MapView.swift in Sources */,
-				F3A7CF172C8C4E4300413400 /* MapVM.swift in Sources */,
 				F34851B62E72E06F0002C72E /* PlanCardLabelWeb.swift in Sources */,
 				F34851AF2E72E0450002C72E /* PlanCardLabelBot.swift in Sources */,
 				F348517A2E72D10A0002C72E /* customRound.swift in Sources */,
@@ -5908,9 +5844,6 @@
 				F30B61C82B2905CA00F447B4 /* SystemAlerts.swift in Sources */,
 				F32F43FF2B75450800C9470B /* UserCard.swift in Sources */,
 				F31F31F82D52BD940095DD19 /* System.swift in Sources */,
-				F3202C902D5590FE0030B3CC /* MapVM.swift in Sources */,
-				F3202C912D5590FE0030B3CC /* MapList.swift in Sources */,
-				F3202C922D5590FE0030B3CC /* MapView.swift in Sources */,
 				F3AB4A922CF3EC6700A8252F /* Tip ServerCardContextMenu.swift in Sources */,
 				F3A563342D9EF323009AA363 /* LogToolbarActor.swift in Sources */,
 				F35081AF2AF30E2B00835CC0 /* TipCloudKeys.swift in Sources */,
@@ -6004,7 +5937,6 @@
 				F39E68302D2D61680002BA96 /* Database List.swift in Sources */,
 				F39E68312D2D61680002BA96 /* Database Card.swift in Sources */,
 				F3464D312A863A6600188B0C /* SendCommand.swift in Sources */,
-				F3E98C2A2E6BB4E40019439F /* Place.swift in Sources */,
 				F3202CD82D5624B10030B3CC /* PlanType.swift in Sources */,
 				F38928382A4460CC00561CDF /* ServerCardVM.swift in Sources */,
 				F3A5632D2D9EF21B009AA363 /* LogMetaCard.swift in Sources */,
@@ -6061,7 +5993,6 @@
 				F36114DF2E569EC10052A5A2 /* StartPageHelper.swift in Sources */,
 				F37DBF1F2E76DBD00039858B /* ServerCardParent.swift in Sources */,
 				F314617F2D5A82F000547B6C /* Asset.swift in Sources */,
-				F3E98C262E6BB4E40019439F /* Place.swift in Sources */,
 				F31461802D5A82F000547B6C /* Networking.swift in Sources */,
 				F35B89BF2A725CF7000B5EEF /* TipSuspendedServer.swift in Sources */,
 				F30C13102A54606900A7EFF0 /* NavExtension.swift in Sources */,
@@ -6083,7 +6014,6 @@
 				F3B138722A2D232B0026EAEE /* ServerCardVM.swift in Sources */,
 				F33DE4E72B35089000E257D8 /* BackgroundBlur.swift in Sources */,
 				F37DBF0D2E74F50C0039858B /* FileListRedesign.swift in Sources */,
-				F3F061D52A73C9A000470F7E /* MapView.swift in Sources */,
 				F3464D222A86396700188B0C /* ChangePower.swift in Sources */,
 				F300888E2B39FAA60051476C /* Allocation VM.swift in Sources */,
 				F39038B02DC815BD006DF071 /* ColumnDetail.swift in Sources */,
@@ -6105,7 +6035,6 @@
 				F3DF50C92B38FD2000206CAE /* Contact Manager.swift in Sources */,
 				F3DF50CB2B38FDE300206CAE /* Permission List.swift in Sources */,
 				F3015DE92D9F27E800B9BCC6 /* LogCardImage.swift in Sources */,
-				F3F061D72A73C9A500470F7E /* MapVM.swift in Sources */,
 				F3015DDC2D9F25B000B9BCC6 /* LogCardEvent.swift in Sources */,
 				F3464D2B2A863A6000188B0C /* CreateBackup.swift in Sources */,
 				F30088B82B3A218B0051476C /* ScheduleCard.swift in Sources */,
@@ -6134,7 +6063,6 @@
 				F3A800332A7313E900CAC40B /* TipCloudKeys.swift in Sources */,
 				F3EE9F712D85CAB9000120A7 /* DismissButton.swift in Sources */,
 				F3E08EC62A2CEA6400116C1C /* StartPageVM.swift in Sources */,
-				F3F061D62A73C9A300470F7E /* MapList.swift in Sources */,
 				F35B9F552A2D6D380045D014 /* Converter.swift in Sources */,
 				F30088B32B3A20620051476C /* BackupCard.swift in Sources */,
 				F35FEB122B0A2C8D004DA05D /* ServerState.swift in Sources */,

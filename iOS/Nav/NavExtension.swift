@@ -28,9 +28,6 @@ extension View {
 #if !os(visionOS)
             case .toFileManager(let id, let root):
                 FileTab(id, at: root)
-                
-            case .toMap:
-                MapView()
 #endif
                 
 #if os(watchOS)

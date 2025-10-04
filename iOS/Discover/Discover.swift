@@ -67,12 +67,6 @@ struct Discover: View {
                     DiscoverCardLabel("Panel", subtitle: "Web", image: .safari)
                 }
                 
-                NavigationLink {
-                    MapView()
-                } label: {
-                    DiscoverCardLabel("Maps", subtitle: "Best places", image: .maps)
-                }
-                
                 DiscoverDocuments()
             }
             .padding([.vertical, .bottom], 20)

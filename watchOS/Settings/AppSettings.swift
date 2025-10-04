@@ -34,10 +34,6 @@ struct AppSettings: View {
             }
             
             Section("Dev") {
-                NavigationLink("Map") {
-                    MapView()
-                }
-                
                 ListParam("App version", param: version)
                 
                 VStack(alignment: .leading) {

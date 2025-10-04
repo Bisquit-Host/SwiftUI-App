@@ -1505,16 +1505,6 @@
         }
       }
     },
-    "Best places" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Лучшие места"
-          }
-        }
-      }
-    },
     "Beta Testing" : {
       "localizations" : {
         "ru" : {
@@ -1562,9 +1552,6 @@
           }
         }
       }
-    },
-    "Biscuits N' porn" : {
-      "shouldTranslate" : false
     },
     "Bisquit.Host" : {
       "localizations" : {
@@ -4655,44 +4642,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Логи"
-          }
-        }
-      }
-    },
-    "Map" : {
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kaart"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Карта"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Карт"
-          }
-        }
-      }
-    },
-    "Maps" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Карты"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Карти"
           }
         }
       }
@@ -8032,27 +7981,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Вам може знадобитися перезавантажити додаток"
-          }
-        }
-      }
-    },
-    "Деревня Пыжи\n(Кировская обл.)" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        }
-      },
-      "shouldTranslate" : false
-    },
-    "Храм святителя Николая\nМирликийского в Пыжах" : {
-      "localizations" : {
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Храм святителя Миколи Мирлійского в пижах"
           }
         }
       }
