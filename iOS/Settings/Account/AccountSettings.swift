@@ -20,7 +20,7 @@ struct AccountSettings: View {
                     sheetKeyStorage = true
                 }
                 .sheet($sheetKeyStorage) {
-                    CloudKeyList($vm.apiKey) {
+                    CloudKeysParent($vm.apiKey) {
                         Task {
                             await vm.fetchServers(store.adminServerList)
                         }

@@ -25,7 +25,7 @@ struct StartPage: View {
             }
         }
         .sheet($vm.sheetCloudKeys) {
-            CloudKeyList($vm.apiKey)
+            CloudKeysParent($vm.apiKey)
         }
         .alert("Error \(vm.errorCode)", isPresented: $vm.alertInvalid) {
             Button("Try again") {}

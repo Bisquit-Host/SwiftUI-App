@@ -2,6 +2,8 @@ import ScrechKit
 import PteroNet
 
 struct CloudKeyCard: View {
+    @Environment(\.dismiss) private var dismiss
+    
     @Binding private var selectedKey: String
     @Bindable private var key: APIKey
     private let validate: () -> Void
@@ -27,6 +29,7 @@ struct CloudKeyCard: View {
             clearAllCookies()
             Keychain.save(key.key, forKey: "selectedApiKey")
             selectedKey = key.key
+            dismiss()
             validate()
         } label: {
             HStack {

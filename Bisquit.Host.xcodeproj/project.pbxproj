@@ -994,6 +994,12 @@
 		F39F365F2E91E5C000D30939 /* NodeFilterCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39F365E2E91E5C000D30939 /* NodeFilterCard.swift */; };
 		F39F36602E91E5C000D30939 /* NodeFilterCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39F365E2E91E5C000D30939 /* NodeFilterCard.swift */; };
 		F39F36612E91E5C000D30939 /* NodeFilterCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39F365E2E91E5C000D30939 /* NodeFilterCard.swift */; };
+		F39F36632E91E98200D30939 /* CloudKeysParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39F36622E91E98200D30939 /* CloudKeysParent.swift */; };
+		F39F36642E91E98200D30939 /* CloudKeysParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39F36622E91E98200D30939 /* CloudKeysParent.swift */; };
+		F39F36652E91E98200D30939 /* CloudKeysParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39F36622E91E98200D30939 /* CloudKeysParent.swift */; };
+		F39F36662E91E98200D30939 /* CloudKeysParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39F36622E91E98200D30939 /* CloudKeysParent.swift */; };
+		F39F36672E91E98200D30939 /* CloudKeysParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39F36622E91E98200D30939 /* CloudKeysParent.swift */; };
+		F39F36682E91E98200D30939 /* CloudKeysParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39F36622E91E98200D30939 /* CloudKeysParent.swift */; };
 		F3A123562A667804008E3E20 /* LogMetaParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* LogMetaParent.swift */; };
 		F3A123572A667804008E3E20 /* LogMetaParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* LogMetaParent.swift */; };
 		F3A123582A667804008E3E20 /* LogMetaParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A123552A667804008E3E20 /* LogMetaParent.swift */; };
@@ -2029,6 +2035,7 @@
 		F39F353B2E8C630B00D30939 /* streamer.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = streamer.icon; sourceTree = "<group>"; };
 		F39F353F2E8C631800D30939 /* cool.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = cool.icon; sourceTree = "<group>"; };
 		F39F365E2E91E5C000D30939 /* NodeFilterCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeFilterCard.swift; sourceTree = "<group>"; };
+		F39F36622E91E98200D30939 /* CloudKeysParent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKeysParent.swift; sourceTree = "<group>"; };
 		F3A123552A667804008E3E20 /* LogMetaParent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogMetaParent.swift; sourceTree = "<group>"; };
 		F3A1D2302A201C570053261E /* ServerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerState.swift; sourceTree = "<group>"; };
 		F3A1D2342A201CBB0053261E /* PlanSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanSpec.swift; sourceTree = "<group>"; };
@@ -2467,6 +2474,7 @@
 		F300892C2B3D988C0051476C /* Cloud Keys */ = {
 			isa = PBXGroup;
 			children = (
+				F39F36622E91E98200D30939 /* CloudKeysParent.swift */,
 				F304498929E990E9006DC0C7 /* CloudKeyList.swift */,
 				F3A31B082B0B161D00F89C51 /* CloudKeyCard.swift */,
 				F300892E2B3DC4B20051476C /* CloudKeyContextMenu.swift */,
@@ -4901,6 +4909,7 @@
 				F30C13162A5461BB00A7EFF0 /* Cache VM.swift in Sources */,
 				F36114DC2E569EAC0052A5A2 /* StartPageHelper.swift in Sources */,
 				F3796564295C51C80074CA3D /* ProgressBar.swift in Sources */,
+				F39F36632E91E98200D30939 /* CloudKeysParent.swift in Sources */,
 				F31F31FD2D52BD940095DD19 /* System.swift in Sources */,
 				F30089262B3BAD200051476C /* File Permissions View.swift in Sources */,
 				F31461812D5A82F000547B6C /* Asset.swift in Sources */,
@@ -5011,6 +5020,7 @@
 				F337121B2DC2FD240014B427 /* PanelSection.swift in Sources */,
 				F337121C2DC2FD240014B427 /* PanelSectionList.swift in Sources */,
 				F337121D2DC2FD240014B427 /* PanelSectionRow.swift in Sources */,
+				F39F36672E91E98200D30939 /* CloudKeysParent.swift in Sources */,
 				F3DC4E2629AEC36300D27EC5 /* Credentials View.swift in Sources */,
 				F31BA591295901C00006D126 /* PlanListVM.swift in Sources */,
 				F3AF91CD2B423A26001D8F80 /* SSH Create View.swift in Sources */,
@@ -5276,6 +5286,7 @@
 				F3A563322D9EF323009AA363 /* LogToolbarActor.swift in Sources */,
 				F3EB09CF2A2953200073916A /* DesImage.swift in Sources */,
 				F34C055A29F11E010031ABE1 /* ServerCardVM.swift in Sources */,
+				F39F36662E91E98200D30939 /* CloudKeysParent.swift in Sources */,
 				F35FEB112B09F4D4004DA05D /* NetworkVM.swift in Sources */,
 				F3A800342A7313E900CAC40B /* TipCloudKeys.swift in Sources */,
 				F3464D2D2A863A6100188B0C /* CreateBackup.swift in Sources */,
@@ -5556,6 +5567,7 @@
 				F30089212B3B896E0051476C /* File Permissions View.swift in Sources */,
 				F389BB702A05B5FF00911EBF /* Cache VM.swift in Sources */,
 				F353D4FE2D980A5000EC9F3A /* ServerListTips.swift in Sources */,
+				F39F36652E91E98200D30939 /* CloudKeysParent.swift in Sources */,
 				F39CF3592A50C00C0077996D /* User View.swift in Sources */,
 				F3F0A2E22D63398B0084013B /* AppDelegate.swift in Sources */,
 				F3E8B34F2CF485FB005D25F8 /* Console Message.swift in Sources */,
@@ -5765,6 +5777,7 @@
 				F36B14B02DC63324008C1AF9 /* GameKit.swift in Sources */,
 				F3AB1DF52D79C42B00387164 /* MetricKitManager.swift in Sources */,
 				F3A7CEEA2C8BB74D00413400 /* ServerListGrid.swift in Sources */,
+				F39F36642E91E98200D30939 /* CloudKeysParent.swift in Sources */,
 				F32F2CCF2D8F6FCE007CF4DE /* DiscoverCardLabel.swift in Sources */,
 				F36EBAFE2E6EF11100308DC9 /* UniversalPlan.swift in Sources */,
 				F3255E1E2C904A63008E04DE /* SSH VM.swift in Sources */,
@@ -5935,6 +5948,7 @@
 				F3202C842D5590CC0030B3CC /* DiscoverCard.swift in Sources */,
 				F39E682F2D2D61680002BA96 /* Database Context Menu.swift in Sources */,
 				F39E68302D2D61680002BA96 /* Database List.swift in Sources */,
+				F39F36682E91E98200D30939 /* CloudKeysParent.swift in Sources */,
 				F39E68312D2D61680002BA96 /* Database Card.swift in Sources */,
 				F3464D312A863A6600188B0C /* SendCommand.swift in Sources */,
 				F3202CD82D5624B10030B3CC /* PlanType.swift in Sources */,

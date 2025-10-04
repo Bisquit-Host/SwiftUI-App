@@ -4,7 +4,6 @@ import PteroNet
 import TipKit
 
 struct CloudKeyList: View {
-    @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     @Query(animation: .default) private var keys: [APIKey]
     
@@ -20,35 +19,31 @@ struct CloudKeyList: View {
     }
     
     var body: some View {
-        NavigationStack {
-            List {
-                Section {
-                    TipView(TipCloudKeys())
-                        .tipBackground(.ultraThinMaterial)
-                    
-                    ForEach(keys) {
-                        CloudKeyCard($apiKey, key: $0) {
-                            dismiss()
-                            validate()
-                        }
+        List {
+            Section {
+                TipView(TipCloudKeys())
+                    .tipBackground(.ultraThinMaterial)
+                
+                ForEach(keys) {
+                    CloudKeyCard($apiKey, key: $0) {
+                        validate()
                     }
-                    .onDelete(perform: deleteItems)
                 }
-            }
-            .navigationTitle("Accounts")
-            .ornamentDismissButton()
-            .scrollIndicators(.never)
-            .overlay {
-                if keys.isEmpty {
-                    ContentUnavailableView(
-                        "No accounts found",
-                        systemImage: "exclamationmark.triangle",
-                        description: nil
-                    )
-                }
+                .onDelete(perform: deleteItems)
             }
         }
-        .presentationDetents([.medium])
+        .navigationTitle("Accounts")
+        .ornamentDismissButton()
+        .scrollIndicators(.never)
+        .overlay {
+            if keys.isEmpty {
+                ContentUnavailableView(
+                    "No accounts found",
+                    systemImage: "exclamationmark.triangle",
+                    description: nil
+                )
+            }
+        }
     }
     
     private func deleteItems(offsets: IndexSet) {
