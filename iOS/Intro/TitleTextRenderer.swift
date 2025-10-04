@@ -11,10 +11,7 @@ struct TitleTextRenderer: TextRenderer, Animatable {
         }
     }
     
-    func draw(
-        layout: Text.Layout,
-        in ctx: inout GraphicsContext
-    ) {
+    func draw(layout: Text.Layout, in ctx: inout GraphicsContext) {
         let slices = layout.flatMap {
             $0
         }
