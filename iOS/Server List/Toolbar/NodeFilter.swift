@@ -1,9 +1,11 @@
 import SwiftUI
 
-struct ServerListNodeFilter: View {
+struct NodeFilter: View {
     @Environment(ServerListVM.self) private var vm
     
     var body: some View {
+        @Bindable var vm = vm
+        
         Menu("Node") {
             Button {
                 withAnimation {
@@ -19,27 +21,15 @@ struct ServerListNodeFilter: View {
             
             Divider()
             
-            ForEach(vm.nodes, id: \.self) { node in
-                Button {
-                    withAnimation {
-                        vm.displayedNode = node
-                    }
-                } label: {
-                    let nodeName = node.capitalized
-                    
-                    if vm.displayedNode == node {
-                        Label(nodeName, systemImage: "checkmark")
-                    } else {
-                        Text(nodeName)
-                    }
-                }
+            ForEach(vm.nodes, id: \.self) {
+                NodeFilterCard($vm.displayedNode, node: $0)
             }
         }
     }
 }
 
 #Preview {
-    ServerListNodeFilter()
+    NodeFilter()
         .darkSchemePreferred()
         .environment(ServerListVM())
 }

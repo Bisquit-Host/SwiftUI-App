@@ -20,7 +20,7 @@ struct ServerListFilter: View {
             }
             
             if vm.hasMultipleNodes {
-                ServerListNodeFilter()
+                NodeFilter()
             }
         } label: {
             Image(systemName: "line.3.horizontal.decrease.circle")
