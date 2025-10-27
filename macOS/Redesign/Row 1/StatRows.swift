@@ -16,20 +16,21 @@ struct StatRows: View {
                 StatRowBackups(server)
                 StatRowUsers(server.id)
                 StatRowDatabases(server.id)
-                StatRowSchedules(server.id)
+//                StatRowSchedules(server.id)
             }
             
             HStack(spacing: 16) {
                 StatRowAllocations(server.id)
                 StatRowSubdomains(server.id)
                 
-                StatTile("Modpacks", value: "Browse", icon: "hammer")
-                    .disabled(true)
-                    .opacity(0.5)
-                
-                StatTile("Versions", value: "Browse", icon: "hammer")
-                    .disabled(true)
-                    .opacity(0.5)
+                StatRowSchedules(server.id)
+//                StatTile("Modpacks", value: "Browse", icon: "hammer")
+//                    .disabled(true)
+//                    .opacity(0.5)
+//                
+//                StatTile("Versions", value: "Browse", icon: "hammer")
+//                    .disabled(true)
+//                    .opacity(0.5)
             }
         }
         .buttonStyle(.plain)
