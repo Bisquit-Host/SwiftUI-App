@@ -12,22 +12,32 @@ struct StatTile: View {
     }
     
     var body: some View {
-        HStack(spacing: 12) {
+        ViewThatFits(in: .horizontal) {
+            // Full layout
+            HStack(spacing: 12) {
+                Image(systemName: icon)
+                    .fontSize(32)
+                    .frame(45)
+                
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(title)
+                        .subheadline()
+                        .secondary()
+                        .lineLimit(1)
+                    
+                    Text(value)
+                        .title2(.semibold)
+                }
+                
+                Spacer()
+            }
+            .frame(minWidth: 100)
+            
+            // Compact layout
             Image(systemName: icon)
                 .fontSize(32)
                 .frame(45)
-            
-            VStack(alignment: .leading, spacing: 2) {
-                Text(title)
-                    .subheadline()
-                    .secondary()
-                    .lineLimit(1)
-                
-                Text(value)
-                    .title2(.semibold)
-            }
-            
-            Spacer()
+                .frame(maxWidth: .infinity)
         }
         .padding(16)
         .background(.thinMaterial, in: .rect(cornerRadius: 16, style: .continuous))
