@@ -18,6 +18,7 @@ struct ScheduleList: View {
             }
         }
         .navigationTitle("Schedules")
+        .scrollIndicators(.never)
         .padding()
         .background(.clear)
         .clipShape(.rect(cornerRadius: 16))

@@ -28,6 +28,7 @@ struct BackupList: View {
             .disabled(vm.backups.count >= server.featureLimits.backups)
         }
         .navigationTitle("Backups")
+        .scrollIndicators(.never)
         .padding()
         .task {
             await vm.fetchBackups()

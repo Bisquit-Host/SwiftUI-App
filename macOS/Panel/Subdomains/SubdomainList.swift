@@ -36,6 +36,7 @@ struct SubdomainList: View {
             }
         }
         .navigationTitle("Subdomains")
+        .scrollIndicators(.never)
         .scrollContentBackground(.hidden)
         .refreshableTask {
             await vm.fetchSubdomains()

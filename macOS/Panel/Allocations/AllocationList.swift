@@ -17,8 +17,9 @@ struct AllocationList: View {
                 }
             }
         }
-        .animation(.default, value: vm.allocations.indices)
         .navigationTitle("Allocations")
+        .scrollIndicators(.never)
+        .animation(.default, value: vm.allocations.indices)
         .padding()
         .background(.clear)
         .clipShape(.rect(cornerRadius: 16))

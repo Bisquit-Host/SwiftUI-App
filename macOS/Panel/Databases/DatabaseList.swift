@@ -18,6 +18,7 @@ struct DatabaseList: View {
             }
         }
         .navigationTitle("Databases")
+        .scrollIndicators(.never)
         .padding()
         .background(.clear)
         .clipShape(.rect(cornerRadius: 16))
