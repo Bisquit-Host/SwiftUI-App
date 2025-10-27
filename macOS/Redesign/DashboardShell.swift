@@ -1,25 +1,11 @@
 import SwiftUI
 import PteroNet
 
-// MARK: 1
-// Backups
-// DB's
-// Sudomains
-// Schedules
-// Users
-// Allocations
-
-// MARK: 2
+/// TODO
 // Console
-// Files
-// Location
-
-// MARK: 3
-// Logs
-
-// MARK: Toolbar
 // Setup
 // Settings
+// Location
 
 struct DashboardShell: View {
     var body: some View {
