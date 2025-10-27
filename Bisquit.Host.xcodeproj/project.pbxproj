@@ -832,10 +832,7 @@
 		F37DBEDE2E74EE050039858B /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEDD2E74EE050039858B /* HeaderCell.swift */; };
 		F37DBEE32E74EE400039858B /* DashboardSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEE22E74EE400039858B /* DashboardSidebar.swift */; };
 		F37DBEE62E74EE620039858B /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEE52E74EE620039858B /* DashboardView.swift */; };
-		F37DBEE82E74EE6E0039858B /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEE72E74EE6E0039858B /* Person.swift */; };
 		F37DBEEF2E74EEDB0039858B /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEEE2E74EEDB0039858B /* Card.swift */; };
-		F37DBEF12E74EF860039858B /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEF02E74EF860039858B /* AvatarView.swift */; };
-		F37DBEF52E74EF9A0039858B /* AvatarStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBEF42E74EF9A0039858B /* AvatarStack.swift */; };
 		F37DBF032E74F1750039858B /* StatRows.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF022E74F1750039858B /* StatRows.swift */; };
 		F37DBF052E74F1B00039858B /* FileSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF042E74F1B00039858B /* FileSection.swift */; };
 		F37DBF072E74F20C0039858B /* DashboardViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF062E74F20C0039858B /* DashboardViewHeader.swift */; };
@@ -1953,10 +1950,7 @@
 		F37DBEDD2E74EE050039858B /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
 		F37DBEE22E74EE400039858B /* DashboardSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardSidebar.swift; sourceTree = "<group>"; };
 		F37DBEE52E74EE620039858B /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
-		F37DBEE72E74EE6E0039858B /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		F37DBEEE2E74EEDB0039858B /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		F37DBEF02E74EF860039858B /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
-		F37DBEF42E74EF9A0039858B /* AvatarStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarStack.swift; sourceTree = "<group>"; };
 		F37DBF022E74F1750039858B /* StatRows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatRows.swift; sourceTree = "<group>"; };
 		F37DBF042E74F1B00039858B /* FileSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSection.swift; sourceTree = "<group>"; };
 		F37DBF062E74F20C0039858B /* DashboardViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewHeader.swift; sourceTree = "<group>"; };
@@ -3336,16 +3330,6 @@
 			path = Sidebar;
 			sourceTree = "<group>";
 		};
-		F37DBEE92E74EE720039858B /* Toolbar */ = {
-			isa = PBXGroup;
-			children = (
-				F37DBEE72E74EE6E0039858B /* Person.swift */,
-				F37DBEF02E74EF860039858B /* AvatarView.swift */,
-				F37DBEF42E74EF9A0039858B /* AvatarStack.swift */,
-			);
-			path = Toolbar;
-			sourceTree = "<group>";
-		};
 		F37DBEF82E74EFBC0039858B /* Row 2 */ = {
 			isa = PBXGroup;
 			children = (
@@ -3366,7 +3350,6 @@
 				F37DBEDD2E74EE050039858B /* HeaderCell.swift */,
 				F37DBEEE2E74EEDB0039858B /* Card.swift */,
 				F37DBF1D2E76DBD00039858B /* ServerCardParent.swift */,
-				F37DBEE92E74EE720039858B /* Toolbar */,
 				F37DBEE42E74EE430039858B /* Sidebar */,
 				F37DBEDC2E74EDE20039858B /* Row 1 */,
 				F37DBEF82E74EFBC0039858B /* Row 2 */,
@@ -5987,7 +5970,6 @@
 		F3E08E9C2A2CE17800116C1C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			files = (
-				F37DBEE82E74EE6E0039858B /* Person.swift in Sources */,
 				F32FD71B2B1E043F00723B88 /* ANSIConverter.swift in Sources */,
 				F300892B2B3C55DA0051476C /* File Permissions View.swift in Sources */,
 				F36B14A92DC632D9008C1AF9 /* UserDefaults.swift in Sources */,
@@ -6026,7 +6008,6 @@
 				F30088B62B3A21410051476C /* ScheduleList.swift in Sources */,
 				F3DF50CD2B38FDE800206CAE /* Permission Card.swift in Sources */,
 				F37DBF1C2E76A5E00039858B /* LogActorAvatar.swift in Sources */,
-				F37DBEF12E74EF860039858B /* AvatarView.swift in Sources */,
 				F30088B12B3A20150051476C /* BackupList.swift in Sources */,
 				F30088972B3A03440051476C /* LogMetaView.swift in Sources */,
 				F37DBEDE2E74EE050039858B /* HeaderCell.swift in Sources */,
@@ -6145,7 +6126,6 @@
 				F3464D282A86398000188B0C /* PowerSignalAppEnum.swift in Sources */,
 				F3DF50CA2B38FDDE00206CAE /* User 2Fa.swift in Sources */,
 				F36B14C52DC64DF2008C1AF9 /* NavModeButton.swift in Sources */,
-				F37DBEF52E74EF9A0039858B /* AvatarStack.swift in Sources */,
 				F36B14C62DC64DF2008C1AF9 /* NavModePickerRow.swift in Sources */,
 				F36B14C72DC64DF2008C1AF9 /* NavModePicker.swift in Sources */,
 				F36B14C82DC64DF2008C1AF9 /* NavMode.swift in Sources */,
