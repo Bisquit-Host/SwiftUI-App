@@ -2,7 +2,7 @@ import SwiftUI
 import PteroNet
 
 struct OrnamentInfoSettings: View {
-    @EnvironmentObject private var ornament: OrnamentProperty
+    @EnvironmentObject private var ornament: OrnamentValueStore
     
     @Environment(\.dismiss) private var dismiss
     
@@ -50,5 +50,5 @@ struct OrnamentInfoSettings: View {
 
 #Preview {
     OrnamentInfoSettings(PreviewProp.serverAttributes)
-        .environmentObject(OrnamentProperty())
+        .environmentObject(OrnamentValueStore())
 }

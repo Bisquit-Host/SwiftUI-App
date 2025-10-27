@@ -819,7 +819,7 @@
 		F37A36782A35180100517EFC /* PowerSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A36772A35180100517EFC /* PowerSwitch.swift */; };
 		F37A36792A35180100517EFC /* PowerSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A36772A35180100517EFC /* PowerSwitch.swift */; };
 		F37A44352A05B0AA004FFDB0 /* ValueStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* ValueStore.swift */; };
-		F37B90782BFEA00300597624 /* OrnamentInfoProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37B90752BFEA00200597624 /* OrnamentInfoProperties.swift */; };
+		F37B90782BFEA00300597624 /* OrnamentValueStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37B90752BFEA00200597624 /* OrnamentValueStore.swift */; };
 		F37B90792BFEA00300597624 /* PanelOrnamentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37B90762BFEA00300597624 /* PanelOrnamentInfo.swift */; };
 		F37B907A2BFEA00300597624 /* OrnamentInfoSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37B90772BFEA00300597624 /* OrnamentInfoSettings.swift */; };
 		F37CE9C12D555D4400716D28 /* ValueStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* ValueStore.swift */; };
@@ -1945,7 +1945,7 @@
 		F37A366E2A3515A900517EFC /* Sftp View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sftp View.swift"; sourceTree = "<group>"; };
 		F37A36722A3515DC00517EFC /* ServerSettingsVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerSettingsVM.swift; sourceTree = "<group>"; };
 		F37A36772A35180100517EFC /* PowerSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerSwitch.swift; sourceTree = "<group>"; };
-		F37B90752BFEA00200597624 /* OrnamentInfoProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrnamentInfoProperties.swift; sourceTree = "<group>"; };
+		F37B90752BFEA00200597624 /* OrnamentValueStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrnamentValueStore.swift; sourceTree = "<group>"; };
 		F37B90762BFEA00300597624 /* PanelOrnamentInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelOrnamentInfo.swift; sourceTree = "<group>"; };
 		F37B90772BFEA00300597624 /* OrnamentInfoSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrnamentInfoSettings.swift; sourceTree = "<group>"; };
 		F37DBED62E74931B0039858B /* DashboardShell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardShell.swift; sourceTree = "<group>"; };
@@ -3450,7 +3450,7 @@
 				F3FC99152C65888900150823 /* TempDir.swift */,
 				F37B90762BFEA00300597624 /* PanelOrnamentInfo.swift */,
 				F37B90772BFEA00300597624 /* OrnamentInfoSettings.swift */,
-				F37B90752BFEA00200597624 /* OrnamentInfoProperties.swift */,
+				F37B90752BFEA00200597624 /* OrnamentValueStore.swift */,
 				F386941B2A4B3B1E002DEF90 /* Info */,
 				F3FD9F962C651A2600A69314 /* Files */,
 				F32F43FC2B7544A200C9470B /* Users */,
@@ -5924,7 +5924,7 @@
 				F32E749B2E7B78F200F3EB36 /* ServerCard.swift in Sources */,
 				F3E679B22D5A854700A7ADDE /* ServerOptionsProvider.swift in Sources */,
 				F389282E2A445E4F00561CDF /* AppSettings.swift in Sources */,
-				F37B90782BFEA00300597624 /* OrnamentInfoProperties.swift in Sources */,
+				F37B90782BFEA00300597624 /* OrnamentValueStore.swift in Sources */,
 				F3202D3B2D5636660030B3CC /* TipSuspendedServer.swift in Sources */,
 				F3038B972E0446840085E438 /* Multipart Form Data.swift in Sources */,
 				F31461832D5A82F000547B6C /* Asset.swift in Sources */,

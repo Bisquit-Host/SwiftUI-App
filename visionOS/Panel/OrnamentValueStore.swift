@@ -1,6 +1,6 @@
 import SwiftUI
 
-final class OrnamentProperty: ObservableObject {
+final class OrnamentValueStore: ObservableObject {
     @AppStorage("ornament_name")      var name = false
     @AppStorage("ornament_id")        var serverId = false
     @AppStorage("ornament_status")    var status = false

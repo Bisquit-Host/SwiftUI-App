@@ -2,7 +2,7 @@ import ScrechKit
 import PteroNet
 
 struct PanelView: View {
-    @StateObject private var ornament = OrnamentProperty()
+    @StateObject private var ornament = OrnamentValueStore()
     @EnvironmentObject private var store: ValueStore
     
     private var vm: PanelVM
@@ -28,9 +28,6 @@ struct PanelView: View {
         userVM = UsersVM(id)
         subdomainVM = SubdomainVM(id)
     }
-    
-    @AppStorage("show_info") private var showInfo = true
-    @AppStorage("show_power_buttons") private var showPowerButtons = true
     
     private var allocations: [AllocationAttributes] {
         server.relationships.allocations.data.map(\.attributes)
@@ -128,10 +125,10 @@ struct PanelView: View {
             Menu {
                 Button {
                     withAnimation {
-                        showPowerButtons.toggle()
+                        store.showPowerButtons.toggle()
                     }
                 } label: {
-                    Text(showPowerButtons ? "Hide power buttons" : "Show power buttons")
+                    Text(store.showPowerButtons ? "Hide power buttons" : "Show power buttons")
                 }
 #if DEBUG
                 NavigationLink("Temp dir contents (debug)") {

@@ -6,6 +6,11 @@ import Appearance
 #endif
 
 final class ValueStore: ObservableObject {
+#if os(visionOS)
+//    @AppStorage("show_info") var showInfo = true
+    @AppStorage("show_power_buttons") var showPowerButtons = true
+#endif
+    
 #if os(tvOS) || os(watchOS) || os(visionOS)
     @AppStorage("tab_panel") var panelTab: PanelTab = .info
 #endif
@@ -54,6 +59,7 @@ final class ValueStore: ObservableObject {
     @AppStorage("currentIcon") var currentIcon: Icon = .def
     @AppStorage("lastInfoTab") var lastInfoTab: TabInfo = .relative
     @AppStorage("contactsProviderEnabled") var contactsProviderEnabled = false
+    @AppStorage("selected_account_tab") var selectedAccountTab = 0
 #endif
     
     // MARK: - Beta
