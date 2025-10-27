@@ -19,7 +19,7 @@ struct FileSection: View {
                     Group {
                         HeaderCell("Name")
                         HeaderCell("Size")
-                        HeaderCell("Date")
+                        HeaderCell("Created")
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
