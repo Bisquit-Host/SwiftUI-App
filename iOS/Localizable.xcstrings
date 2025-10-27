@@ -2751,6 +2751,7 @@
       }
     },
     "Data type" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -4531,6 +4532,7 @@
       }
     },
     "Load data" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
@@ -5360,6 +5362,7 @@
       }
     },
     "Overview" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {
