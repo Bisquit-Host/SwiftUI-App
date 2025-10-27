@@ -7,8 +7,6 @@ struct ServerCardSuspended: View {
         self.name = name
     }
     
-    //    @State private var sheetSupport = false
-#warning("Sheet support")
     var body: some View {
         VStack {
             HStack(spacing: 32) {
@@ -28,15 +26,8 @@ struct ServerCardSuspended: View {
                 .frame(width: 500, height: 5)
                 .padding(.bottom)
             
-            //            Button {
-            //                sheetSupport = true
-            //            } label: {
             Text("Contact support")
-            //            }
         }
-        //        .sheet($sheetSupport) {
-        //            Support()
-        //        }
     }
 }
 
