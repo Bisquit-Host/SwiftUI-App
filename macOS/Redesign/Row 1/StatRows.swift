@@ -14,17 +14,13 @@ struct StatRows: View {
         VStack(spacing: 16) {
             HStack(spacing: 16) {
                 StatRowBackups(server)
-                
                 StatRowUsers(server.id)
-                
                 StatRowDatabases(server.id)
-                
                 StatRowSchedules(server.id)
             }
             
             HStack(spacing: 16) {
                 StatRowAllocations(server.id)
-                
                 StatRowSubdomains(server.id)
                 
                 StatTile("Modpacks", value: "Browse", icon: "hammer")
