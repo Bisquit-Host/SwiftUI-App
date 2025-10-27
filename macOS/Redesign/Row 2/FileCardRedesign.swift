@@ -15,6 +15,7 @@ struct FileCardRedesign: View {
                     FileIcon(file.mimetype)
                     
                     Text(file.name)
+                        .lineLimit(2)
                 }
                 
                 Text(formatBytes(file.size))
