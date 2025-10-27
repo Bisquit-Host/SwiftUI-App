@@ -1,6 +1,8 @@
 import ScrechKit
 
 struct PanelView: View {
+    @EnvironmentObject private var store: ValueStore
+    
     private var vm: PanelVM
     private var fileVM: FileTabVM
     
@@ -12,10 +14,8 @@ struct PanelView: View {
         fileVM = FileTabVM(id)
     }
     
-    @AppStorage("panelTab") private var tab: PanelTab = .info
-    
     var body: some View {
-        TabView(selection: $tab) {
+        TabView(selection: $store.panelTab) {
             if let server = vm.server {
                 InfoTab(server)
                     .tag(PanelTab.info)

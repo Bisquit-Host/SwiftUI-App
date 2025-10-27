@@ -3,6 +3,8 @@ import PteroNet
 
 struct PanelView: View {
     @StateObject private var ornament = OrnamentProperty()
+    @EnvironmentObject private var store: ValueStore
+    
     private var vm: PanelVM
     private var fileVM: FileTabVM
     private var backupVM: BackupVM
@@ -28,7 +30,6 @@ struct PanelView: View {
     }
     
     @AppStorage("show_info") private var showInfo = true
-    @AppStorage("tab_panel") private var tabPanel: PanelTab = .info
     @AppStorage("show_power_buttons") private var showPowerButtons = true
     
     private var allocations: [AllocationAttributes] {
@@ -38,7 +39,7 @@ struct PanelView: View {
     var body: some View {
         VStack {
             if let server = vm.server {
-                TabView(selection: $tabPanel) {
+                TabView(selection: $store.panelTab) {
                     Tab("Info", systemImage: "info.circle", value: PanelTab.info) {
                         InfoTab(server)
                             .environment(vm)
@@ -177,4 +178,5 @@ struct PanelView: View {
         PanelView(PreviewProp.serverAttributes)
     }
     .navigationViewStyle(.stack)
+    .environmentObject(ValueStore())
 }

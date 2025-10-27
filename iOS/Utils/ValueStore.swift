@@ -6,6 +6,10 @@ import Appearance
 #endif
 
 final class ValueStore: ObservableObject {
+#if os(tvOS) || os(watchOS) || os(visionOS)
+    @AppStorage("tab_panel") var panelTab: PanelTab = .info
+#endif
+    
 #if os(macOS)
     @AppStorage("nav_mode") var navMode: NavMode?
 #endif

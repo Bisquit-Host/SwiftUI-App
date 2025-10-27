@@ -2,6 +2,8 @@ import ScrechKit
 import PteroNet
 
 struct PanelView: View {
+    @EnvironmentObject private var store: ValueStore
+    
     private var vm: PanelVM
     private var fileVM: FileTabVM
     private var backupVM: BackupVM
@@ -32,14 +34,12 @@ struct PanelView: View {
         startupVM = StartupVM(id)
     }
     
-    @AppStorage("tab_panel") private var tabPanel: PanelTab = .info
-    
     private var allocations: [AllocationAttributes] {
         server.relationships.allocations.data.map(\.attributes)
     }
     
     var body: some View {
-        TabView(selection: $tabPanel) {
+        TabView(selection: $store.panelTab) {
             if let server = vm.server {
                 Tab("Stats", systemImage: "gauge.open.with.lines.needle.33percent", value: PanelTab.info) {
                     StatsTab(server)
@@ -139,4 +139,5 @@ struct PanelView: View {
 #Preview {
     PanelView(PreviewProp.serverAttributes)
         .darkSchemePreferred()
+        .environmentObject(ValueStore())
 }
