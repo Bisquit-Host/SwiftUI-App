@@ -884,6 +884,7 @@
 		F388D46F2EAF6D3300C372FA /* ServerListUpdateAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F388D46E2EAF6D3300C372FA /* ServerListUpdateAlert.swift */; };
 		F388D4712EB0AF9300C372FA /* DebugSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F388D4702EB0AF9300C372FA /* DebugSettings.swift */; };
 		F388D4732EB0B18400C372FA /* SubdomainCreateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F388D4722EB0B18400C372FA /* SubdomainCreateButton.swift */; };
+		F388D4752EB0B3D400C372FA /* GuideControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = F388D4742EB0B3D400C372FA /* GuideControls.swift */; };
 		F389281F2A43CB2600561CDF /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F36797722A39C4ED009F2788 /* Localizable.xcstrings */; };
 		F38928202A43CB2600561CDF /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F36797722A39C4ED009F2788 /* Localizable.xcstrings */; };
 		F38928232A44182F00561CDF /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38928222A44182F00561CDF /* Console.swift */; };
@@ -1994,6 +1995,7 @@
 		F388D46E2EAF6D3300C372FA /* ServerListUpdateAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListUpdateAlert.swift; sourceTree = "<group>"; };
 		F388D4702EB0AF9300C372FA /* DebugSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugSettings.swift; sourceTree = "<group>"; };
 		F388D4722EB0B18400C372FA /* SubdomainCreateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubdomainCreateButton.swift; sourceTree = "<group>"; };
+		F388D4742EB0B3D400C372FA /* GuideControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideControls.swift; sourceTree = "<group>"; };
 		F38928222A44182F00561CDF /* Console.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Console.swift; sourceTree = "<group>"; };
 		F38928242A441B5D00561CDF /* ServerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerSettings.swift; sourceTree = "<group>"; };
 		F389282D2A445E4F00561CDF /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
@@ -3949,6 +3951,7 @@
 			children = (
 				F3E08EBE2A2CE87800116C1C /* StartPage.swift */,
 				F35BB0362C656AC800631DBD /* Guide.swift */,
+				F388D4742EB0B3D400C372FA /* GuideControls.swift */,
 				F35BB0382C656AD300631DBD /* CarouselButtonStyle.swift */,
 			);
 			path = "Start Page";
@@ -6016,6 +6019,7 @@
 				F37DBF1C2E76A5E00039858B /* LogActorAvatar.swift in Sources */,
 				F30088B12B3A20150051476C /* BackupList.swift in Sources */,
 				F30088972B3A03440051476C /* LogMetaView.swift in Sources */,
+				F388D4752EB0B3D400C372FA /* GuideControls.swift in Sources */,
 				F37DBEDE2E74EE050039858B /* HeaderCell.swift in Sources */,
 				F30088932B3A02D50051476C /* LogList.swift in Sources */,
 				F37DBF052E74F1B00039858B /* FileSection.swift in Sources */,
