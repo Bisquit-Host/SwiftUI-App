@@ -882,6 +882,7 @@
 		F3880A262A92A15E0052A978 /* Contact Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3880A252A92A15E0052A978 /* Contact Manager.swift */; };
 		F3880A272A92A15E0052A978 /* Contact Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3880A252A92A15E0052A978 /* Contact Manager.swift */; };
 		F388D46F2EAF6D3300C372FA /* ServerListUpdateAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F388D46E2EAF6D3300C372FA /* ServerListUpdateAlert.swift */; };
+		F388D4712EB0AF9300C372FA /* DebugSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F388D4702EB0AF9300C372FA /* DebugSettings.swift */; };
 		F389281F2A43CB2600561CDF /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F36797722A39C4ED009F2788 /* Localizable.xcstrings */; };
 		F38928202A43CB2600561CDF /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F36797722A39C4ED009F2788 /* Localizable.xcstrings */; };
 		F38928232A44182F00561CDF /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38928222A44182F00561CDF /* Console.swift */; };
@@ -1990,6 +1991,7 @@
 		F3878ECC2A1BCE5000AD8657 /* Dev Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dev Settings.swift"; sourceTree = "<group>"; };
 		F3880A252A92A15E0052A978 /* Contact Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact Manager.swift"; sourceTree = "<group>"; };
 		F388D46E2EAF6D3300C372FA /* ServerListUpdateAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListUpdateAlert.swift; sourceTree = "<group>"; };
+		F388D4702EB0AF9300C372FA /* DebugSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugSettings.swift; sourceTree = "<group>"; };
 		F38928222A44182F00561CDF /* Console.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Console.swift; sourceTree = "<group>"; };
 		F38928242A441B5D00561CDF /* ServerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerSettings.swift; sourceTree = "<group>"; };
 		F389282D2A445E4F00561CDF /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
@@ -3934,6 +3936,7 @@
 			isa = PBXGroup;
 			children = (
 				F36B14BB2DC64D29008C1AF9 /* AppSettings.swift */,
+				F388D4702EB0AF9300C372FA /* DebugSettings.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -6130,6 +6133,7 @@
 				F36B14C72DC64DF2008C1AF9 /* NavModePicker.swift in Sources */,
 				F36B14C82DC64DF2008C1AF9 /* NavMode.swift in Sources */,
 				F373CDB42D895419008B64BE /* LogTopbar.swift in Sources */,
+				F388D4712EB0AF9300C372FA /* DebugSettings.swift in Sources */,
 				F373CDB52D895419008B64BE /* LogTopbarCard.swift in Sources */,
 				F37DBF262E780BF90039858B /* StatRowDatabases.swift in Sources */,
 				F35B9F5C2A2DC8D60045D014 /* NavState.swift in Sources */,
