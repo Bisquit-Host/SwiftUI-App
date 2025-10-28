@@ -8,10 +8,10 @@ struct FileSectionSearch: View {
             TextField("Search here", text: $vm.searchField)
                 .textFieldStyle(.roundedBorder)
             
-            Button("Filter", systemImage: "line.3.horizontal.decrease.circle") {
-#warning("Does nothing")
-            }
-            .buttonStyle(.bordered)
+            //            Button("Filter", systemImage: "line.3.horizontal.decrease.circle") {
+            //
+            //            }
+            //            .buttonStyle(.bordered)
         }
     }
 }
