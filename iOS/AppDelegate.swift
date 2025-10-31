@@ -50,6 +50,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         let token = tokenParts.joined()
         
         print("Push token:", token)
+        ValueStore().pushToken = token
         
         Task {
             await sendToken(token)

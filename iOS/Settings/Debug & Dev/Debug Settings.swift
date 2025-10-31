@@ -1,5 +1,6 @@
 import SwiftUI
 import PteroNet
+import ScrechKit
 
 #if canImport(ContactProvider)
 import ContactProvider
@@ -18,6 +19,16 @@ struct DebugSettings: View {
                 Toggle("Hide status bar", isOn: $store.hideStatusBar)
                 
                 Toggle("Hide server names", isOn: $store.hideServerNames)
+            }
+            
+            if let pushToken = store.pushToken {
+                Section("Push token") {
+                    Text(pushToken)
+                    
+                    Button("Copy") {
+                        Pasteboard.copy(pushToken)
+                    }
+                }
             }
             
             Section("System alerts") {

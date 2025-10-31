@@ -18,6 +18,8 @@ final class ValueStore: ObservableObject {
 #if os(macOS)
     @AppStorage("nav_mode") var navMode: NavMode?
 #endif
+    @AppStorage("push_token") var pushToken: String?
+    
     // MARK: - Server List/Card
     @AppStorage("compact_server_list") var compactServerList = false
     @AppStorage("server_card_description") var serverCardDescription = true
