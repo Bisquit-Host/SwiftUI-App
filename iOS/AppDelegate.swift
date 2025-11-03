@@ -53,7 +53,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         ValueStore().pushToken = token
 #if !DEBUG
         Task {
-            await postPushToken(token)
+            await sendPushToken(token)
         }
 #endif
     }
