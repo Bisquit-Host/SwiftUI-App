@@ -1,6 +1,6 @@
 import SwiftUI
 import PteroNet
-import DeviceKit
+import CryptoKit
 
 #if canImport(Contacts)
 import Contacts
@@ -96,9 +96,15 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             return
         }
         
+        let data = Data(deviceID.utf8)
+        
+        let hashedDeviceID = SHA512.hash(data: data).compactMap {
+            String(format: "%02x", $0)
+        }.joined()
+        
         let body = [
             "token": token,
-            "device_id": deviceID
+            "device_id": hashedDeviceID
         ]
         
         request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
