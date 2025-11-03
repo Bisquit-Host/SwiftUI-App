@@ -51,10 +51,11 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         
         print("Push token:", token)
         ValueStore().pushToken = token
-        
+#if !DEBUG
         Task {
-            await sendToken(token)
+            await postPushToken(token)
         }
+#endif
     }
     
     func application(
@@ -80,47 +81,33 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 #endif
-}
-
-private func sendToken(_ token: String) async {
-    if let pterID = await fetchPterID() {
-        await postPushToken(pterID: pterID, token: token)
-    }
-}
-
-private func fetchPterID() async -> Int? {
-    do {
-        return try await accountDetailsAPI().id
-    } catch {
-        SystemAlert.error(error)
-        return nil
-    }
-}
-
-private func postPushToken(pterID: Int, token: String) async {
-    let link = "https://push-activity.bisquit.host/push-tokens/create"
-    
-    guard let url = URL(string: link) else {
-        return
-    }
-    
-    var request = URLRequest(url: url)
-    request.httpMethod = "POST"
-    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-    
-    let body: [String: Any] = [
-        "id": pterID,
-        "type": "apple",
-        "token": token,
-        "device": Device.current.description
-    ]
-    
-    request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
-    
-    do {
-        let (_, _) = try await URLSession.shared.data(for: request)
-    } catch {
-        print(error.localizedDescription)
+    private func sendPushToken(_ token: String) async {
+        let link = "https://push-activity.bisquit.host/token/save"
+        
+        guard let url = URL(string: link) else {
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        guard let deviceID = UIDevice.current.identifierForVendor?.uuidString else {
+            return
+        }
+        
+        let body = [
+            "token": token,
+            "device_id": deviceID
+        ]
+        
+        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
+        
+        do {
+            let (_, _) = try await URLSession.shared.data(for: request)
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }
 #endif
