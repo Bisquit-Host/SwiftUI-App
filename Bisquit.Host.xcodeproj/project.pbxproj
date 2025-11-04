@@ -309,8 +309,8 @@
 		F3287A7A2B10A120001AFE54 /* WidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3287A732B109DD0001AFE54 /* WidgetLiveActivity.swift */; };
 		F3287A7B2B10A17E001AFE54 /* WidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3287A732B109DD0001AFE54 /* WidgetLiveActivity.swift */; };
 		F3287A7C2B10A17F001AFE54 /* WidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3287A732B109DD0001AFE54 /* WidgetLiveActivity.swift */; };
-		F328BB522E7FE00C0012F003 /* MapSectionNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328BB512E7FE00C0012F003 /* MapSectionNew.swift */; };
-		F328BB532E7FE00C0012F003 /* MapSectionNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328BB512E7FE00C0012F003 /* MapSectionNew.swift */; };
+		F328BB522E7FE00C0012F003 /* MapSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328BB512E7FE00C0012F003 /* MapSection.swift */; };
+		F328BB532E7FE00C0012F003 /* MapSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328BB512E7FE00C0012F003 /* MapSection.swift */; };
 		F328BB552E8010B20012F003 /* DiscoverDocuments.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328BB542E8010B20012F003 /* DiscoverDocuments.swift */; };
 		F328BB562E8010B20012F003 /* DiscoverDocuments.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328BB542E8010B20012F003 /* DiscoverDocuments.swift */; };
 		F328BB572E8010B20012F003 /* DiscoverDocuments.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328BB542E8010B20012F003 /* DiscoverDocuments.swift */; };
@@ -1782,7 +1782,7 @@
 		F325F7052A54C4BC00E89EC4 /* SystemAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemAlerts.swift; sourceTree = "<group>"; };
 		F325F7082A54CB6600E89EC4 /* CarouselButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselButtonStyle.swift; sourceTree = "<group>"; };
 		F3287A732B109DD0001AFE54 /* WidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetLiveActivity.swift; sourceTree = "<group>"; };
-		F328BB512E7FE00C0012F003 /* MapSectionNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSectionNew.swift; sourceTree = "<group>"; };
+		F328BB512E7FE00C0012F003 /* MapSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSection.swift; sourceTree = "<group>"; };
 		F328BB542E8010B20012F003 /* DiscoverDocuments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverDocuments.swift; sourceTree = "<group>"; };
 		F328BB692E8075690012F003 /* coin.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = coin.icon; sourceTree = "<group>"; };
 		F32CAAD82A28C4920019DEE3 /* FileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileView.swift; sourceTree = "<group>"; };
@@ -3046,8 +3046,8 @@
 		F353B04E2D8AA6FB00E4EC07 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				F328BB512E7FE00C0012F003 /* MapSection.swift */,
 				F30207D42D8B2A6000C26008 /* SwiftyPing.swift */,
-				F328BB512E7FE00C0012F003 /* MapSectionNew.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -5187,7 +5187,7 @@
 				F3B66DF52D60B46F00F1841B /* InfoTabLiveActivity.swift in Sources */,
 				F3D264412A66ABBE005C3777 /* AccountVM.swift in Sources */,
 				F39CF3582A50C00C0077996D /* UserView.swift in Sources */,
-				F328BB522E7FE00C0012F003 /* MapSectionNew.swift in Sources */,
+				F328BB522E7FE00C0012F003 /* MapSection.swift in Sources */,
 				F37A366B2A35158A00517EFC /* ConsoleView.swift in Sources */,
 				F39872102A1AE3CE0022B00E /* VideoPlayer.swift in Sources */,
 				F31BA566295900300006D126 /* NavState.swift in Sources */,
@@ -5419,7 +5419,7 @@
 				F389BB652A05B5AF00911EBF /* Converter.swift in Sources */,
 				F34851882E72D4A80002C72E /* PlanCardName.swift in Sources */,
 				F35C4D612E03999B00720E74 /* MultipartFormData.swift in Sources */,
-				F328BB532E7FE00C0012F003 /* MapSectionNew.swift in Sources */,
+				F328BB532E7FE00C0012F003 /* MapSection.swift in Sources */,
 				F3A31B062B0B144200F89C51 /* NodeFilter.swift in Sources */,
 				F3015DEF2D9F427700B9BCC6 /* LogListFilter.swift in Sources */,
 				F36D53442A05B90D007324C6 /* FileContextMenu.swift in Sources */,
