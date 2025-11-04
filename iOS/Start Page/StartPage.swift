@@ -10,7 +10,7 @@ struct StartPage: View {
     @Query(animation: .default) var keys: [APIKey]
     
     var body: some View {
-        VStack {
+        ZStack {
             HStack(alignment: .top) {
                 VStack(spacing: 16) {
                     TextField("API-key", text: $vm.apiKey)
@@ -42,6 +42,11 @@ struct StartPage: View {
                 .foregroundStyle(.foreground)
             }
             .padding(.horizontal)
+            .frame(maxHeight: .infinity)
+            
+            StartPageFooter(keys.count > 0)
+                .environment(vm)
+                .frame(maxHeight: .infinity, alignment: .bottom)
         }
         .navigationTitle("Authorization")
         .navigationBarTitleDisplayMode(.inline)
@@ -50,10 +55,6 @@ struct StartPage: View {
         .navigationBarBackButtonHidden()
         .background {
             BackgroundImage()
-        }
-        .overlay(alignment: .bottom) {
-            StartPageFooter(keys.count > 0)
-                .environment(vm)
         }
         .onChange(of: vm.apiKey) { _, newValue in
             if newValue.count == 48 || newValue.count == 340 {
