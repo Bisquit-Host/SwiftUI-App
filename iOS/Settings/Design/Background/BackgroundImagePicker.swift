@@ -92,10 +92,10 @@ struct BackgroundImagePicker: View {
             }
             .background {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 15, style: .continuous)
+                    ConcentricRectangle(corners: .concentric, isUniform: true)
                         .fill(tint.opacity(0.08).gradient)
                     
-                    RoundedRectangle(cornerRadius: 15, style: .continuous)
+                    ConcentricRectangle(corners: .concentric, isUniform: true)
                         .stroke(tint, style: .init(lineWidth: 1, dash: [12]))
                         .padding(1)
                 }
