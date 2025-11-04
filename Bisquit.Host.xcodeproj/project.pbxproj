@@ -41,7 +41,7 @@
 		F30088BB2B3A21F80051476C /* DatabaseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088BA2B3A21F80051476C /* DatabaseList.swift */; };
 		F30088BD2B3A223E0051476C /* DatabaseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088BC2B3A223E0051476C /* DatabaseCard.swift */; };
 		F30088DA2B3A3BF50051476C /* ConsoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088D92B3A3BF50051476C /* ConsoleView.swift */; };
-		F30088DB2B3A3C0E0051476C /* Console VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5A42959026D0006D126 /* Console VM.swift */; };
+		F30088DB2B3A3C0E0051476C /* ConsoleVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5A42959026D0006D126 /* ConsoleVM.swift */; };
 		F30088DE2B3A3FBB0051476C /* StartupList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088DD2B3A3FBB0051476C /* StartupList.swift */; };
 		F30088E22B3A5A8A0051476C /* Startup VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F337C1682A8D07E2006F321C /* Startup VM.swift */; };
 		F30088E42B3A5B0B0051476C /* StartupList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30088E32B3A5B0B0051476C /* StartupList.swift */; };
@@ -198,8 +198,8 @@
 		F31BA591295901C00006D126 /* PlanListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA590295901C00006D126 /* PlanListVM.swift */; };
 		F31BA596295901F70006D126 /* PanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA595295901F70006D126 /* PanelView.swift */; };
 		F31BA59D295902280006D126 /* InfoTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA59C295902280006D126 /* InfoTab.swift */; };
-		F31BA5A3295902610006D126 /* Console Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5A2295902610006D126 /* Console Tab.swift */; };
-		F31BA5A52959026D0006D126 /* Console VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5A42959026D0006D126 /* Console VM.swift */; };
+		F31BA5A3295902610006D126 /* ConsoleTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5A2295902610006D126 /* ConsoleTab.swift */; };
+		F31BA5A52959026D0006D126 /* ConsoleVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5A42959026D0006D126 /* ConsoleVM.swift */; };
 		F31BA5AC295902B00006D126 /* FileTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5AB295902B00006D126 /* FileTab.swift */; };
 		F31BA5B0295902C70006D126 /* Folder Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5AF295902C70006D126 /* Folder Path.swift */; };
 		F31BA5B2295902D50006D126 /* TextFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5B1295902D50006D126 /* TextFile.swift */; };
@@ -701,8 +701,8 @@
 		F36D53102A05B6E7007324C6 /* CloudKeyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304498929E990E9006DC0C7 /* CloudKeyList.swift */; };
 		F36D53182A05B7F3007324C6 /* PanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA595295901F70006D126 /* PanelView.swift */; };
 		F36D53192A05B7F6007324C6 /* PanelVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3429C0C84C00B08696 /* PanelVM.swift */; };
-		F36D531A2A05B7FB007324C6 /* Console Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5A2295902610006D126 /* Console Tab.swift */; };
-		F36D531B2A05B807007324C6 /* Console VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5A42959026D0006D126 /* Console VM.swift */; };
+		F36D531A2A05B7FB007324C6 /* ConsoleTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5A2295902610006D126 /* ConsoleTab.swift */; };
+		F36D531B2A05B807007324C6 /* ConsoleVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5A42959026D0006D126 /* ConsoleVM.swift */; };
 		F36D531D2A05B816007324C6 /* WebSocketTaskConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BF97A929BFC7E9007B9C9C /* WebSocketTaskConnection.swift */; };
 		F36D531F2A05B82B007324C6 /* InfoTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA59C295902280006D126 /* InfoTab.swift */; };
 		F36D53212A05B836007324C6 /* WebsocketDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDEE3929C0CB8000B08696 /* WebsocketDelegate.swift */; };
@@ -810,12 +810,12 @@
 		F3796562295C519C0074CA3D /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3796561295C519C0074CA3D /* ChartView.swift */; };
 		F3796564295C51C80074CA3D /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3796563295C51C80074CA3D /* ProgressBar.swift */; };
 		F3796566295C51FF0074CA3D /* GaugeTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3796565295C51FF0074CA3D /* GaugeTV.swift */; };
-		F37A366B2A35158A00517EFC /* Console View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A366A2A35158A00517EFC /* Console View.swift */; };
+		F37A366B2A35158A00517EFC /* ConsoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A366A2A35158A00517EFC /* ConsoleView.swift */; };
 		F37A366F2A3515A900517EFC /* Sftp View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A366E2A3515A900517EFC /* Sftp View.swift */; };
 		F37A36732A3515DC00517EFC /* ServerSettingsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A36722A3515DC00517EFC /* ServerSettingsVM.swift */; };
 		F37A36742A35173900517EFC /* Sftp View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A366E2A3515A900517EFC /* Sftp View.swift */; };
 		F37A36752A35173B00517EFC /* ServerSettingsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A36722A3515DC00517EFC /* ServerSettingsVM.swift */; };
-		F37A36762A35173F00517EFC /* Console View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A366A2A35158A00517EFC /* Console View.swift */; };
+		F37A36762A35173F00517EFC /* ConsoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A366A2A35158A00517EFC /* ConsoleView.swift */; };
 		F37A36782A35180100517EFC /* PowerSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A36772A35180100517EFC /* PowerSwitch.swift */; };
 		F37A36792A35180100517EFC /* PowerSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37A36772A35180100517EFC /* PowerSwitch.swift */; };
 		F37A44352A05B0AA004FFDB0 /* ValueStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* ValueStore.swift */; };
@@ -858,7 +858,7 @@
 		F37DBF2E2E78193D0039858B /* LogSectionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF2D2E78193D0039858B /* LogSectionCard.swift */; };
 		F37DBF302E78197C0039858B /* LogSectionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DBF2F2E78197C0039858B /* LogSectionList.swift */; };
 		F37DDA7629E2AF7600B9680C /* Folder Path VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DDA7529E2AF7600B9680C /* Folder Path VM.swift */; };
-		F37EA7992B70DEDE0029DE00 /* Console VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5A42959026D0006D126 /* Console VM.swift */; };
+		F37EA7992B70DEDE0029DE00 /* ConsoleVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5A42959026D0006D126 /* ConsoleVM.swift */; };
 		F37EA79C2B722B390029DE00 /* Backup VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F300889C2B3A17CC0051476C /* Backup VM.swift */; };
 		F37FF8832D87AE3800554B3F /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = F37FF8822D87AE3800554B3F /* Algorithms */; };
 		F380C0B32A4F1D42002D400F /* ServerListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F352AF962A4EDB1D004AD489 /* ServerListVM.swift */; };
@@ -1129,8 +1129,8 @@
 		F3B1196D29A13CA6003BB68C /* ValueStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B1196C29A13CA6003BB68C /* ValueStore.swift */; };
 		F3B138722A2D232B0026EAEE /* ServerCardVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AE522229ACF7D600CB3895 /* ServerCardVM.swift */; };
 		F3B1388A2A2D4D110026EAEE /* FileIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266A929D71A1B005FD103 /* FileIcon.swift */; };
-		F3B6372F2A35A82F00CB374C /* Console Inspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B6372E2A35A82F00CB374C /* Console Inspector.swift */; };
-		F3B637302A35A82F00CB374C /* Console Inspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B6372E2A35A82F00CB374C /* Console Inspector.swift */; };
+		F3B6372F2A35A82F00CB374C /* ConsoleInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B6372E2A35A82F00CB374C /* ConsoleInspector.swift */; };
+		F3B637302A35A82F00CB374C /* ConsoleInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B6372E2A35A82F00CB374C /* ConsoleInspector.swift */; };
 		F3B66DF42D60B46F00F1841B /* InfoTabLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B66DF32D60B46F00F1841B /* InfoTabLiveActivity.swift */; };
 		F3B66DF52D60B46F00F1841B /* InfoTabLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B66DF32D60B46F00F1841B /* InfoTabLiveActivity.swift */; };
 		F3B7BFDE2B38E206005B5003 /* Pow in Frameworks */ = {isa = PBXBuildFile; productRef = F3B7BFDD2B38E206005B5003 /* Pow */; };
@@ -1338,8 +1338,8 @@
 		F3E6FC442A1E677000410C7C /* Bisquits.sks in Resources */ = {isa = PBXBuildFile; fileRef = F3E6FC422A1E677000410C7C /* Bisquits.sks */; };
 		F3E6FC462A1E85D600410C7C /* SptiteKitBisquitFall.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6FC452A1E85D600410C7C /* SptiteKitBisquitFall.swift */; };
 		F3E6FC472A1E85D600410C7C /* SptiteKitBisquitFall.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E6FC452A1E85D600410C7C /* SptiteKitBisquitFall.swift */; };
-		F3E8B34F2CF485FB005D25F8 /* Console Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E8B34E2CF485FB005D25F8 /* Console Message.swift */; };
-		F3E8B3502CF485FB005D25F8 /* Console Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E8B34E2CF485FB005D25F8 /* Console Message.swift */; };
+		F3E8B34F2CF485FB005D25F8 /* ConsoleMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E8B34E2CF485FB005D25F8 /* ConsoleMessage.swift */; };
+		F3E8B3502CF485FB005D25F8 /* ConsoleMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E8B34E2CF485FB005D25F8 /* ConsoleMessage.swift */; };
 		F3E97C7929B4B569008CBDD6 /* Credentials VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E97C7829B4B569008CBDD6 /* Credentials VM.swift */; };
 		F3E98C012E6A5F4C0019439F /* ServerCardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E98C002E6A5F4C0019439F /* ServerCardLayout.swift */; };
 		F3E98C022E6A5F4C0019439F /* ServerCardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E98C002E6A5F4C0019439F /* ServerCardLayout.swift */; };
@@ -1751,8 +1751,8 @@
 		F31BA590295901C00006D126 /* PlanListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanListVM.swift; sourceTree = "<group>"; };
 		F31BA595295901F70006D126 /* PanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelView.swift; sourceTree = "<group>"; };
 		F31BA59C295902280006D126 /* InfoTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTab.swift; sourceTree = "<group>"; };
-		F31BA5A2295902610006D126 /* Console Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Console Tab.swift"; sourceTree = "<group>"; };
-		F31BA5A42959026D0006D126 /* Console VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Console VM.swift"; sourceTree = "<group>"; };
+		F31BA5A2295902610006D126 /* ConsoleTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleTab.swift; sourceTree = "<group>"; };
+		F31BA5A42959026D0006D126 /* ConsoleVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleVM.swift; sourceTree = "<group>"; };
 		F31BA5AB295902B00006D126 /* FileTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTab.swift; sourceTree = "<group>"; };
 		F31BA5AF295902C70006D126 /* Folder Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Folder Path.swift"; sourceTree = "<group>"; };
 		F31BA5B1295902D50006D126 /* TextFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFile.swift; sourceTree = "<group>"; };
@@ -1941,7 +1941,7 @@
 		F3796561295C519C0074CA3D /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		F3796563295C51C80074CA3D /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		F3796565295C51FF0074CA3D /* GaugeTV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeTV.swift; sourceTree = "<group>"; };
-		F37A366A2A35158A00517EFC /* Console View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Console View.swift"; sourceTree = "<group>"; };
+		F37A366A2A35158A00517EFC /* ConsoleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleView.swift; sourceTree = "<group>"; };
 		F37A366E2A3515A900517EFC /* Sftp View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sftp View.swift"; sourceTree = "<group>"; };
 		F37A36722A3515DC00517EFC /* ServerSettingsVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerSettingsVM.swift; sourceTree = "<group>"; };
 		F37A36772A35180100517EFC /* PowerSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerSwitch.swift; sourceTree = "<group>"; };
@@ -2079,7 +2079,7 @@
 		F3AF91CC2B423A26001D8F80 /* SSH Create View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SSH Create View.swift"; sourceTree = "<group>"; };
 		F3AF96F829DF277A00D30A8F /* Backup Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Backup Card.swift"; sourceTree = "<group>"; };
 		F3B1196C29A13CA6003BB68C /* ValueStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueStore.swift; sourceTree = "<group>"; };
-		F3B6372E2A35A82F00CB374C /* Console Inspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Console Inspector.swift"; sourceTree = "<group>"; };
+		F3B6372E2A35A82F00CB374C /* ConsoleInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleInspector.swift; sourceTree = "<group>"; };
 		F3B66DF32D60B46F00F1841B /* InfoTabLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTabLiveActivity.swift; sourceTree = "<group>"; };
 		F3B81DF02A49C96000633B66 /* InfoAbsoluteStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoAbsoluteStats.swift; sourceTree = "<group>"; };
 		F3BAEC862959B1DE00111375 /* ServerList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerList.swift; sourceTree = "<group>"; };
@@ -2170,7 +2170,7 @@
 		F3E679AC2D5A854700A7ADDE /* ServerOptionsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerOptionsProvider.swift; sourceTree = "<group>"; };
 		F3E6FC422A1E677000410C7C /* Bisquits.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Bisquits.sks; sourceTree = "<group>"; };
 		F3E6FC452A1E85D600410C7C /* SptiteKitBisquitFall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SptiteKitBisquitFall.swift; sourceTree = "<group>"; };
-		F3E8B34E2CF485FB005D25F8 /* Console Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Console Message.swift"; sourceTree = "<group>"; };
+		F3E8B34E2CF485FB005D25F8 /* ConsoleMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleMessage.swift; sourceTree = "<group>"; };
 		F3E97C7829B4B569008CBDD6 /* Credentials VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Credentials VM.swift"; sourceTree = "<group>"; };
 		F3E98C002E6A5F4C0019439F /* ServerCardLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCardLayout.swift; sourceTree = "<group>"; };
 		F3E98C052E6AE0830019439F /* LogCardEventDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogCardEventDescription.swift; sourceTree = "<group>"; };
@@ -2730,11 +2730,11 @@
 		F31BA5AA2959028A0006D126 /* Console */ = {
 			isa = PBXGroup;
 			children = (
-				F31BA5A2295902610006D126 /* Console Tab.swift */,
-				F37A366A2A35158A00517EFC /* Console View.swift */,
-				F31BA5A42959026D0006D126 /* Console VM.swift */,
-				F3E8B34E2CF485FB005D25F8 /* Console Message.swift */,
-				F3B6372E2A35A82F00CB374C /* Console Inspector.swift */,
+				F31BA5A2295902610006D126 /* ConsoleTab.swift */,
+				F37A366A2A35158A00517EFC /* ConsoleView.swift */,
+				F31BA5A42959026D0006D126 /* ConsoleVM.swift */,
+				F3E8B34E2CF485FB005D25F8 /* ConsoleMessage.swift */,
+				F3B6372E2A35A82F00CB374C /* ConsoleInspector.swift */,
 			);
 			path = Console;
 			sourceTree = "<group>";
@@ -4971,7 +4971,7 @@
 				F3A31B092B0B161D00F89C51 /* CloudKeyCard.swift in Sources */,
 				F38F9E132CE7647D0033EFE3 /* Image Playground.swift in Sources */,
 				F37266AA29D71A1B005FD103 /* FileIcon.swift in Sources */,
-				F31BA5A3295902610006D126 /* Console Tab.swift in Sources */,
+				F31BA5A3295902610006D126 /* ConsoleTab.swift in Sources */,
 				F3C9D8602B319B9E00265492 /* Permission Card.swift in Sources */,
 				F3287A7B2B10A17E001AFE54 /* WidgetLiveActivity.swift in Sources */,
 				F31BA5682959006F0006D126 /* AppContainer.swift in Sources */,
@@ -5133,7 +5133,7 @@
 				F3B1196D29A13CA6003BB68C /* ValueStore.swift in Sources */,
 				F3B81DF12A49C96000633B66 /* InfoAbsoluteStats.swift in Sources */,
 				F3E98C0D2E6AE1BD0019439F /* AmbientBackground.swift in Sources */,
-				F3E8B3502CF485FB005D25F8 /* Console Message.swift in Sources */,
+				F3E8B3502CF485FB005D25F8 /* ConsoleMessage.swift in Sources */,
 				F37DDA7629E2AF7600B9680C /* Folder Path VM.swift in Sources */,
 				F3E0B4962DC30351003C8B27 /* InfoTabSubdomains.swift in Sources */,
 				F335CA0B2C63E8CB006C71C6 /* DynamicIslandBadge.swift in Sources */,
@@ -5172,7 +5172,7 @@
 				F31BA5AC295902B00006D126 /* FileTab.swift in Sources */,
 				F3F5ADAD2E8A9639007AD97D /* WebSocketConnectionState.swift in Sources */,
 				F3A5632C2D9EF21B009AA363 /* LogMetaCard.swift in Sources */,
-				F3B6372F2A35A82F00CB374C /* Console Inspector.swift in Sources */,
+				F3B6372F2A35A82F00CB374C /* ConsoleInspector.swift in Sources */,
 				F31F31FB2D52BD940095DD19 /* System.swift in Sources */,
 				F3EDEE3A29C0CB8000B08696 /* WebsocketDelegate.swift in Sources */,
 				F3A391BA29DB5E6900591C84 /* Cache Expiration.swift in Sources */,
@@ -5188,7 +5188,7 @@
 				F3D264412A66ABBE005C3777 /* Account VM.swift in Sources */,
 				F39CF3582A50C00C0077996D /* User View.swift in Sources */,
 				F328BB522E7FE00C0012F003 /* MapSectionNew.swift in Sources */,
-				F37A366B2A35158A00517EFC /* Console View.swift in Sources */,
+				F37A366B2A35158A00517EFC /* ConsoleView.swift in Sources */,
 				F39872102A1AE3CE0022B00E /* VideoPlayer.swift in Sources */,
 				F31BA566295900300006D126 /* NavState.swift in Sources */,
 				F3BC03C62B20675E0011F98A /* New Schedule Sheet.swift in Sources */,
@@ -5199,7 +5199,7 @@
 				F325F7092A54CB6600E89EC4 /* CarouselButtonStyle.swift in Sources */,
 				F367977E2A3A5AB6009F2788 /* LogVM.swift in Sources */,
 				F38F9E2E2CEB39D80033EFE3 /* MetadataList.swift in Sources */,
-				F31BA5A52959026D0006D126 /* Console VM.swift in Sources */,
+				F31BA5A52959026D0006D126 /* ConsoleVM.swift in Sources */,
 				F3BF97AA29BFC7E9007B9C9C /* WebSocketTaskConnection.swift in Sources */,
 				F3D7F8502C8ED3D100368ECE /* Disable 2FA View.swift in Sources */,
 				F3AB4A8A2CF3DAC900A8252F /* Backup Card VM.swift in Sources */,
@@ -5391,11 +5391,11 @@
 				F3AB1DF92D79C42B00387164 /* MetricKitManager.swift in Sources */,
 				F33944122A49022A00E2F0FC /* InfoTabResources.swift in Sources */,
 				F389BB6E2A05B5F400911EBF /* Cache Limit.swift in Sources */,
-				F3B637302A35A82F00CB374C /* Console Inspector.swift in Sources */,
+				F3B637302A35A82F00CB374C /* ConsoleInspector.swift in Sources */,
 				F328BB582E8010B20012F003 /* DiscoverDocuments.swift in Sources */,
 				F30089022B3B62460051476C /* User Invitation Permission.swift in Sources */,
 				F3A7CF6A2C8DF3C900413400 /* VideoFileVM.swift in Sources */,
-				F37A36762A35173F00517EFC /* Console View.swift in Sources */,
+				F37A36762A35173F00517EFC /* ConsoleView.swift in Sources */,
 				F3AF91CA2B4235BB001D8F80 /* SSH Card.swift in Sources */,
 				F3CCB1CE2CAE75D0000F8207 /* Debug Settings.swift in Sources */,
 				F30089292B3C23A00051476C /* Contact Picker.swift in Sources */,
@@ -5502,7 +5502,7 @@
 				F3B81DF22A49C96000633B66 /* InfoAbsoluteStats.swift in Sources */,
 				F3553FC02B4094D700EF0FD2 /* Allocation Card.swift in Sources */,
 				F3880A272A92A15E0052A978 /* Contact Manager.swift in Sources */,
-				F36D531B2A05B807007324C6 /* Console VM.swift in Sources */,
+				F36D531B2A05B807007324C6 /* ConsoleVM.swift in Sources */,
 				F37A36792A35180100517EFC /* PowerSwitch.swift in Sources */,
 				F3D558AD2A33640100608447 /* FileTabVM.swift in Sources */,
 				F3287A7C2B10A17F001AFE54 /* WidgetLiveActivity.swift in Sources */,
@@ -5535,7 +5535,7 @@
 				F3FEA4462E5C9E62003BB975 /* PanelViewTabView.swift in Sources */,
 				F3E1D3F42B320A6A009B7062 /* Permission Group Header.swift in Sources */,
 				F36D532D2A05B87E007324C6 /* Schedule List.swift in Sources */,
-				F36D531A2A05B7FB007324C6 /* Console Tab.swift in Sources */,
+				F36D531A2A05B7FB007324C6 /* ConsoleTab.swift in Sources */,
 				F389BB7A2A05B64600911EBF /* App Icon Settings.swift in Sources */,
 				F3F0A2DF2D6339760084013B /* StartPageVM.swift in Sources */,
 				F3F0A2E02D6339760084013B /* StartPageFooter.swift in Sources */,
@@ -5550,7 +5550,7 @@
 				F39F36652E91E98200D30939 /* CloudKeysParent.swift in Sources */,
 				F39CF3592A50C00C0077996D /* User View.swift in Sources */,
 				F3F0A2E22D63398B0084013B /* AppDelegate.swift in Sources */,
-				F3E8B34F2CF485FB005D25F8 /* Console Message.swift in Sources */,
+				F3E8B34F2CF485FB005D25F8 /* ConsoleMessage.swift in Sources */,
 				F389BB582A05B4F600911EBF /* ServerListGrid.swift in Sources */,
 				F3F5BC972BF7668E00EB8FB1 /* SensitivityAnalyzer.swift in Sources */,
 				F389BB6D2A05B5EE00911EBF /* Cache Size.swift in Sources */,
@@ -5886,7 +5886,7 @@
 				F32716D92CF6257F00F2DC31 /* Backup Context Menu Control Group.swift in Sources */,
 				F39EA2F12D5E146300329468 /* GuideStepCard.swift in Sources */,
 				F34851B42E72E06F0002C72E /* PlanCardLabelWeb.swift in Sources */,
-				F37EA7992B70DEDE0029DE00 /* Console VM.swift in Sources */,
+				F37EA7992B70DEDE0029DE00 /* ConsoleVM.swift in Sources */,
 				F35FEB0B2B09F003004DA05D /* APIKey.swift in Sources */,
 				F3FD9F9C2C651B3800A69314 /* FileCard.swift in Sources */,
 				F3FD9F982C651A4E00A69314 /* FileList.swift in Sources */,
@@ -6103,7 +6103,7 @@
 				F33711BA2DC2D4010014B427 /* Gamepad Debug.swift in Sources */,
 				F36B14642DC39F6A008C1AF9 /* Debug Settings Tips.swift in Sources */,
 				F37DBF032E74F1750039858B /* StatRows.swift in Sources */,
-				F30088DB2B3A3C0E0051476C /* Console VM.swift in Sources */,
+				F30088DB2B3A3C0E0051476C /* ConsoleVM.swift in Sources */,
 				F3458BF02B36EA49000E8324 /* AppDelegate.swift in Sources */,
 				F32FD7192B1E042C00723B88 /* WebsocketDelegate.swift in Sources */,
 				F36B14812DC3BC3E008C1AF9 /* ContentView.swift in Sources */,
