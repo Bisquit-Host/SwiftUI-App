@@ -8,6 +8,7 @@ struct StartPage: View {
     
     @Environment(\.modelContext) var modelContext
     @Query(animation: .default) var keys: [APIKey]
+    @FocusState private var isFocused
     
     var body: some View {
         ZStack {
@@ -21,6 +22,7 @@ struct StartPage: View {
                         .minimumScaleFactor(0.5)
                         .glassEffect()
                         .changeEffect(.shake(rate: .fast), value: vm.trigger)
+                        .focused($isFocused)
                     
                     Button("How do I authorize?") {
                         vm.sheetGuide = true
@@ -30,6 +32,8 @@ struct StartPage: View {
                 }
                 
                 Button {
+                    isFocused = false
+                    
                     if let string = UIPasteboard.general.string {
                         vm.apiKey = string
                     }
