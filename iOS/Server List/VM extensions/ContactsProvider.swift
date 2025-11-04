@@ -8,6 +8,7 @@ extension ServerListVM {
         
         for id in ids {
             let users = await fetchUsers(id)
+            
             for user in users {
                 if !allUsers.contains(where: { $0.email == user.email }) {
                     allUsers.append(user)

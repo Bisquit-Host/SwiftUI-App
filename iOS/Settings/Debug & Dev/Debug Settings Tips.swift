@@ -22,5 +22,6 @@ struct DebugSettingsTips: View {
     List {
         DebugSettingsTips()
     }
+    .darkSchemePreferred()
     .foregroundStyle(.foreground)
 }

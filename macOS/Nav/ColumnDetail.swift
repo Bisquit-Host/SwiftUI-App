@@ -122,14 +122,7 @@ struct ColumnDetail: View {
             async let schedules: () = scheduleVM.fetchSchedules()
             async let subdomains: () = subdomainVM.fetchSubdomains()
             
-            _ = await (
-                files,
-                startup,
-                backups,
-                databases,
-                schedules,
-                subdomains
-            )
+            _ = await (files, startup, backups, databases, schedules, subdomains)
         }
         
         vm.updateBackups = {
@@ -140,5 +133,6 @@ struct ColumnDetail: View {
 
 //#Preview {
 //    ColumnDetail(server: PreviewProp.serverAttributes)
+//        .darkSchemePreferred()
 //        .environment(NavState())
 //}

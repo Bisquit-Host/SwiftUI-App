@@ -34,6 +34,7 @@ struct ServerListToolbar: ViewModifier {
                     Button("Settings", systemImage: "gear") {
                         nav.navigate(.toSettings)
                     }
+                    .keyboardShortcut("s")
                 }
             }
     }

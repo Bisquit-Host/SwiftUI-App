@@ -19,4 +19,5 @@ struct ServerListGrid: View {
 
 #Preview {
     ServerListGrid([PreviewProp.serverAttributes])
+        .darkSchemePreferred()
 }

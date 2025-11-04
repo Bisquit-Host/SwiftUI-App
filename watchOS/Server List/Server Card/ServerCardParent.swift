@@ -2,7 +2,7 @@ import SwiftUI
 import PteroNet
 
 struct ServerCardParent: View {
-    @Environment(NavState.self) private var navState
+    @Environment(NavState.self) private var nav
     
     private let server: ServerAttributes
     
@@ -15,14 +15,14 @@ struct ServerCardParent: View {
     var body: some View {
         VStack {
             if server.isSuspended {
-                SuspendedCard(server.name)
+                SuspendedServerCard(server.name)
             } else {
                 ServerCard(server)
             }
         }
         .buttonStyle(.plain)
         .onTapGesture {
-            navState.navigate(.toPanel(server.id))
+            nav.navigate(.toPanel(server.id))
         }
         .onLongPressGesture {
             if !server.isSuspended {
@@ -37,5 +37,6 @@ struct ServerCardParent: View {
 
 #Preview {
     ServerCardParent(PreviewProp.serverAttributes)
+        .darkSchemePreferred()
         .environment(NavState())
 }

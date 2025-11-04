@@ -111,5 +111,6 @@ struct InfoTab: View {
 
 #Preview {
     InfoTab(PreviewProp.serverAttributes)
+        .darkSchemePreferred()
         .environment(PanelVM(""))
 }

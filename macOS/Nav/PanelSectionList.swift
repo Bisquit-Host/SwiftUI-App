@@ -9,7 +9,7 @@ struct PanelSectionList: View {
         List {
             Section {
                 Text("Reorder or hide sections to personalize your view")
-                    .foregroundStyle(.secondary)
+                    .secondary()
             }
             .listRowBackground(Color.clear)
             
@@ -30,7 +30,6 @@ struct PanelSectionList: View {
             ToolbarItem(placement: .destructiveAction) {
                 Button("Reset", role: .destructive) {
                     vm.sections = vm.defaultSections
-                    
                     vm.save()
                 }
                 .foregroundStyle(.red)
@@ -40,7 +39,6 @@ struct PanelSectionList: View {
             ToolbarItem(placement: .confirmationAction) {
                 Button("Done") {
                     dismiss()
-                    
                     vm.save()
                 }
                 .semibold()
@@ -53,5 +51,6 @@ struct PanelSectionList: View {
     NavigationStack {
         PanelSectionList()
     }
+    .darkSchemePreferred()
     .environment(PanelSectionVM())
 }

@@ -27,5 +27,6 @@ struct ServerListUpdateButton: View {
 
 #Preview {
     ServerListUpdateButton()
+        .darkSchemePreferred()
         .environment(UpdateChecker())
 }

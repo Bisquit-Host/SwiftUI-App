@@ -4,7 +4,7 @@ import PteroNet
 
 struct AccountSettings: View {
     @Environment(ServerListVM.self) private var vm
-    @Environment(NavState.self) private var navState
+    @Environment(NavState.self) private var nav
     @EnvironmentObject private var store: ValueStore
     
     @Query(animation: .default) private var keys: [APIKey]
@@ -20,7 +20,7 @@ struct AccountSettings: View {
                     sheetKeyStorage = true
                 }
                 .sheet($sheetKeyStorage) {
-                    CloudKeys($vm.apiKey) {
+                    CloudKeysParent($vm.apiKey) {
                         Task {
                             await vm.fetchServers(store.adminServerList)
                         }
@@ -36,7 +36,7 @@ struct AccountSettings: View {
     }
     
     private func logout() {
-        navState.clear()
+        nav.clear()
         store.isApiKeyValid = false
         Keychain.delete(key: "selectedApiKey")
     }
@@ -44,6 +44,7 @@ struct AccountSettings: View {
 
 #Preview {
     AccountSettings()
+        .darkSchemePreferred()
         .environment(ServerListVM())
         .environment(NavState())
         .environmentObject(ValueStore())

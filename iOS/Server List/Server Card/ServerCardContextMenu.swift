@@ -117,4 +117,5 @@ struct ServerCardContextMenu: View {
                 .constant(false)
             )
         }
+        .darkSchemePreferred()
 }

@@ -84,6 +84,7 @@ struct AllocationCard: View {
     List {
         AllocationCard(PreviewProp.allocationAttributes)
     }
+    .darkSchemePreferred()
     .environment(AllocationVM(""))
     .environmentObject(ValueStore())
 }

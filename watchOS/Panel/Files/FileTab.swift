@@ -15,6 +15,7 @@ struct FileTab: View {
         List {
             TextField("Search", text: $vm.searchField)
                 .autocorrectionDisabled()
+                .listRowBackground(Color.clear)
             
             ForEach(vm.filteredFiles) {
                 FileView(id, file: $0, path: root)
@@ -43,4 +44,5 @@ struct FileTab: View {
     NavigationStack {
         FileTab("Preview")
     }
+    .darkSchemePreferred()
 }

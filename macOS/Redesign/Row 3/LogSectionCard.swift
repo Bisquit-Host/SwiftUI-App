@@ -27,4 +27,5 @@ struct LogSectionCard: View {
 
 #Preview {
     LogSectionCard(PreviewProp.logAttributes)
+        .darkSchemePreferred()
 }

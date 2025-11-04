@@ -25,6 +25,7 @@ struct PlanViewList: View {
 
 #Preview {
     PlanViewList()
+        .darkSchemePreferred()
         .environment(PlanListVM())
         .environmentObject(ValueStore())
 }

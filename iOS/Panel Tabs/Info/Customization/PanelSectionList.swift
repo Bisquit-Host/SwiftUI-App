@@ -28,5 +28,6 @@ struct PanelSectionList: View {
     NavigationStack {
         PanelSectionList()
     }
+    .darkSchemePreferred()
     .environment(PanelSectionVM())
 }

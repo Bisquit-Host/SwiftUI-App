@@ -1,6 +1,10 @@
 import SwiftUI
 import DeviceKit
 
+#if canImport(Appearance)
+import Appearance
+#endif
+
 struct DesignSettings: View {
     @EnvironmentObject private var store: ValueStore
     
@@ -10,15 +14,9 @@ struct DesignSettings: View {
             
             ServerCardLayoutButton()
             
-            Picker(selection: $store.appearance) {
-                ForEach(ColorTheme.allCases) {
-                    Text($0.loc)
-                        .tag($0)
-                }
-            } label: {
-                Label("Appearance", systemImage: "paintbrush")
-            }
-            
+#if canImport(Appearance)
+            AppearancePicker($store.appearance)
+#endif
             Toggle(isOn: $store.enableBisquitFall) {
                 Label("Animated background", systemImage: "sparkles")
             }
@@ -36,5 +34,6 @@ struct DesignSettings: View {
     List {
         DesignSettings()
     }
+    .darkSchemePreferred()
     .environmentObject(ValueStore())
 }

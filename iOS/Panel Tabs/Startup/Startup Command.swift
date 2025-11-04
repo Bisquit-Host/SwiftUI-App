@@ -37,6 +37,7 @@ struct StartupCommand: View {
 
 #Preview {
     StartupCommand()
+        .darkSchemePreferred()
         .environment(StartupVM(""))
         .environmentObject(ValueStore())
 }

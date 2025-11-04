@@ -15,11 +15,7 @@ struct UserCard: View {
     
     @State private var sheetDetails = false
     
-#if os(tvOS)
-    private let imageSize = 64.0
-#else
-    private let imageSize = 40.0
-#endif
+    private let imageSize = System.isTV ? 64.0 : 40
     
     var body: some View {
         Button {
@@ -77,5 +73,6 @@ struct UserCard: View {
     List {
         UserCard(PreviewProp.userAttributes)
     }
+    .darkSchemePreferred()
     .environment(UsersVM(""))
 }

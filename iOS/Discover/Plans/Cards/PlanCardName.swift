@@ -17,4 +17,5 @@ struct PlanCardName: View {
 
 #Preview {
     PlanCardName("Preview")
+        .darkSchemePreferred()
 }

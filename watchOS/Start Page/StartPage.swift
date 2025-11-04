@@ -4,7 +4,6 @@ import PteroNet
 
 struct StartPage: View {
     @Bindable var vm = StartPageVM()
-    @Environment(NavState.self) private var navState
     @EnvironmentObject var store: ValueStore
     
     @Environment(\.modelContext) var modelContext
@@ -26,7 +25,7 @@ struct StartPage: View {
             }
         }
         .sheet($vm.sheetCloudKeys) {
-            CloudKeys($vm.apiKey)
+            CloudKeysParent($vm.apiKey)
         }
         .alert("Error \(vm.errorCode)", isPresented: $vm.alertInvalid) {
             Button("Try again") {}
@@ -52,6 +51,7 @@ struct StartPage: View {
 
 #Preview {
     StartPage()
+        .darkSchemePreferred()
         .environment(NavState())
         .environmentObject(ValueStore())
 }

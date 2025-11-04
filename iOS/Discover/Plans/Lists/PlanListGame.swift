@@ -30,5 +30,6 @@ struct PlanListGame: View {
 
 #Preview {
     PlanListGame()
+        .darkSchemePreferred()
         .environment(PlanListVM())
 }

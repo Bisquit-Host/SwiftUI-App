@@ -45,5 +45,6 @@ struct SheetCreateAllocationCard: View {
     NavigationStack {
         SheetCreateAllocation()
     }
+    .darkSchemePreferred()
     .environment(AllocationVM(""))
 }

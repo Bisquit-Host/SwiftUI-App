@@ -83,4 +83,5 @@ struct InfoTabLiveActivity: View {
 
 #Preview {
     InfoTabLiveActivity(PreviewProp.serverAttributes)
+        .darkSchemePreferred()
 }

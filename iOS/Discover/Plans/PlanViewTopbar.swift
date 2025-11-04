@@ -16,5 +16,6 @@ struct PlanViewTopbar: View {
 
 #Preview {
     PlanViewTopbar()
+        .darkSchemePreferred()
         .environmentObject(ValueStore())
 }

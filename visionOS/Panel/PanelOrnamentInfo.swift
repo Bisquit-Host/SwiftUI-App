@@ -2,7 +2,7 @@ import SwiftUI
 import PteroNet
 
 struct PanelOrnamentInfo: View {
-    @EnvironmentObject private var ornament: OrnamentProperty
+    @EnvironmentObject private var ornament: OrnamentValueStore
     
     private let server: ServerAttributes
     private var showCustomizeButton = false
@@ -164,5 +164,5 @@ struct PanelOrnamentInfo: View {
 
 #Preview {
     PanelOrnamentInfo(PreviewProp.serverAttributes)
-        .environmentObject(OrnamentProperty())
+        .environmentObject(OrnamentValueStore())
 }

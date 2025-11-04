@@ -8,11 +8,7 @@ struct FileContextMenu: ViewModifier {
     private let id, path: String
     private let file: FileAttributes
     
-    init(
-        _ id: String,
-        file: FileAttributes,
-        at path: String
-    ) {
+    init(_ id: String, file: FileAttributes, at path: String) {
         self.id = id
         self.file = file
         self.path = path
@@ -131,6 +127,9 @@ extension View {
 }
 
 //#Preview {
-//    QuickLookFile("", name: "", at: "")
+//    @Previewable @State var link: FileLink? = FileLink("", name: "", at: "")
+//    
+//    QuickLookFile($link)
+//        .darkSchemePreferred()
 //        .environmentObject(FileTabVM(""))
 //}

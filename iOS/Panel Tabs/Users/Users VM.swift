@@ -116,6 +116,6 @@ final class UsersVM {
             return nil
         }))
         
-        prefetchImages(uniqueImages)
+        Prefetcher.prefetchImages(uniqueImages)
     }
 }

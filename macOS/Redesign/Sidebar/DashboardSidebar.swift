@@ -5,12 +5,6 @@ struct DashboardSidebar: View {
     @State private var vm = ServerListVM()
     @EnvironmentObject private var store: ValueStore
     
-    @Binding private var selection: SidebarItem?
-    
-    init(_ selection: Binding<SidebarItem?>) {
-        _selection = selection
-    }
-    
     var body: some View {
         ScrollView {
             ServerListGrid(vm.filteredServers)

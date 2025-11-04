@@ -38,5 +38,6 @@ struct BiometryButton: View {
 
 #Preview {
     BiometryButton()
+        .darkSchemePreferred()
         .environmentObject(ValueStore())
 }

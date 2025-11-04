@@ -66,7 +66,7 @@ struct StatsTab: View {
                     .frame(width: 5, height: 280)
                 
                 VStack(alignment: .leading) {
-                    GaugeTV("uptime", param: millisecondsToTime(vm.uptime))
+                    GaugeTV("uptime", param: Converter.millisecondsToTime(vm.uptime))
                     
                     GaugeTV("backups", param: "\(backupVM.backups.count)/\(featureLimits.backups)")
                     
@@ -111,6 +111,7 @@ struct StatsTab: View {
 
 #Preview {
     StatsTab(PreviewProp.serverAttributes)
+        .darkSchemePreferred()
         .environment(PanelVM(""))
         .environment(BackupVM(""))
         .environment(DatabaseVM(""))

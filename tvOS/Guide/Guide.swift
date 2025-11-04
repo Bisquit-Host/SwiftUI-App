@@ -41,4 +41,5 @@ struct Guide: View {
 
 #Preview {
     Guide()
+        .darkSchemePreferred()
 }

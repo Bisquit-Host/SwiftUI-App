@@ -101,5 +101,6 @@ struct InfoAbsoluteStats: View {
 
 #Preview {
     InfoAbsoluteStats(PreviewProp.serverAttributes.limits)
+        .darkSchemePreferred()
         .environment(PanelVM(""))
 }

@@ -15,13 +15,13 @@ struct DashboardView: View {
                 
                 StatRows(server)
                 
-//                HStack(alignment: .top, spacing: 20) {
-                    FileSection(server.id)
-//                }
+                //                HStack(alignment: .top, spacing: 20) {
+                FileSection(server.id)
+                //                }
                 
-//                HStack(alignment: .top, spacing: 20) {
-                    LogSection(server.id)
-//                }
+                //                HStack(alignment: .top, spacing: 20) {
+                LogSection(server.id)
+                //                }
             }
             .padding(.horizontal, 24)
         }
@@ -29,17 +29,10 @@ struct DashboardView: View {
         .scrollIndicators(.never)
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
-                //            ToolbarItem(placement: .topBarTrailing) {
-                HStack(spacing: 12) {
-                    AvatarStack()
+                SFButton("slider.horizontal.3") {
                     
-                    SFButton("slider.horizontal.3") {
-                        
-                    }
                 }
-                .padding(.horizontal)
             }
         }
-        .background(Color(.controlBackgroundColor))
     }
 }

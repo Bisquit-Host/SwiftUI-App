@@ -61,4 +61,5 @@ fileprivate extension UIDevice {
     List {
         DevSettings()
     }
+    .darkSchemePreferred()
 }

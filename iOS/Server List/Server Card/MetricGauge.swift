@@ -6,8 +6,10 @@ struct MetricGauge: View {
     let color: Color
     let icon: String
     
+    private let spacing = System.isWatch ? 4.0 : 12
+    
     var body: some View {
-        HStack(spacing: 12) {
+        HStack(spacing: spacing) {
             Image(systemName: icon)
                 .fontSize(16)
                 .fontWeight(.medium)

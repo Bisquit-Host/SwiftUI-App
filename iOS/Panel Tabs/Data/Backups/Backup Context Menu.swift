@@ -35,8 +35,9 @@ struct BackupContextMenu: View {
     }
 }
 
-//#Preview {
-//    Menu("Preview") {
-//        BackupContextMenu(BackupAttributes(uuid: "", name: "", createdAt: "", completedAt: "", isLocked: true, bytes: 64))
-//    }
-//}
+#Preview {
+    Menu("Preview") {
+        BackupContextMenu(PreviewProp.backupAttributes)
+    }
+    .darkSchemePreferred()
+}

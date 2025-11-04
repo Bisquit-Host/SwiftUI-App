@@ -72,7 +72,8 @@ struct NewTaskSheet: View {
     }
 }
 
-//#Preview {
-//    NewTaskSheet(0)
-//        .environment(ScheduleVM(""))
-//}
+#Preview {
+    NewTaskSheet(0)
+        .darkSchemePreferred()
+        .environment(ScheduleVM(""))
+}

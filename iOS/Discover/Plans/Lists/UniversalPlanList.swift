@@ -18,5 +18,6 @@ struct UniversalPlanList: View {
 
 #Preview {
     UniversalPlanList([])
+        .darkSchemePreferred()
         .environment(PlanListVM())
 }

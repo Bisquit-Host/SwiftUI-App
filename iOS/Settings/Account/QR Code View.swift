@@ -78,4 +78,5 @@ struct QRCodeView: View {
 
 #Preview {
     QRCodeView("https://bisquit.host")
+        .darkSchemePreferred()
 }

@@ -4,7 +4,6 @@ import SwiftData
 
 struct StartPage: View {
     @Bindable var vm = StartPageVM()
-    @Environment(NavState.self) private var navState
     @EnvironmentObject var store: ValueStore
     
     @Environment(\.modelContext) var modelContext
@@ -40,7 +39,7 @@ struct StartPage: View {
             .disabled(vm.apiKey.isEmpty)
         }
         .sheet($vm.sheetCloudKeys) {
-            CloudKeys($vm.apiKey)
+            CloudKeysParent($vm.apiKey)
         }
         .task {
             if !keys.isEmpty {

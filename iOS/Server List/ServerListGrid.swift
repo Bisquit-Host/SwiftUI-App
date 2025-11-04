@@ -39,5 +39,6 @@ struct ServerListGrid: View {
 
 #Preview {
     ServerListGrid([PreviewProp.serverAttributes])
+        .darkSchemePreferred()
         .environmentObject(ValueStore())
 }

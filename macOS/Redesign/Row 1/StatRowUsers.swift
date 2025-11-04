@@ -18,17 +18,19 @@ struct StatRowUsers: View {
         } label: {
             StatTile("Users", value: vm.users.count, icon: "person.2")
         }
-        .sheet($sheetUserList) {
-            UserList(id)
-                .environment(vm)
-        }
         .task {
             await vm.fetchUsers()
             await vm.fetchPermissions()
+        }
+        .sheet($sheetUserList) {
+            UserList(id)
+                .environment(vm)
+                .frame(minHeight: StatRows.minHeight)
         }
     }
 }
 
 #Preview {
     StatRowUsers("")
+        .darkSchemePreferred()
 }

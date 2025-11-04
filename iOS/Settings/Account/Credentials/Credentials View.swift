@@ -68,6 +68,16 @@ struct CredentialsView: View {
         .multilineTextAlignment(.center)
     }
     
+    private func getImageUrl(_ imageName: String) -> URL {
+        let stringUrl = "https://topscrech.dev/bisquit.host/assets/\(imageName).heic"
+        
+        guard let url = URL(string: stringUrl) else {
+            fatalError("Failed to create URL from string: \(stringUrl)")
+        }
+        
+        return url
+    }
+    
     private func update() {
         Task {
             switch whatToUpdate {
@@ -96,4 +106,5 @@ struct CredentialsView: View {
 
 #Preview {
     CredentialsView("email")
+        .darkSchemePreferred()
 }

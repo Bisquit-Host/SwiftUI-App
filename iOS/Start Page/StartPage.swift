@@ -89,7 +89,7 @@ struct StartPage: View {
             PlanViewParent()
         }
         .sheet($vm.sheetCloudKeys) {
-            CloudKeys($vm.apiKey)
+            CloudKeysParent($vm.apiKey)
         }
     }
     
@@ -110,6 +110,7 @@ struct StartPage: View {
     NavigationStack {
         StartPage()
     }
+    .darkSchemePreferred()
     .environment(NavState())
     .environmentObject(ValueStore())
 }

@@ -2,7 +2,7 @@ import ScrechKit
 import PteroNet
 
 struct AppSettings: View {
-    @Environment(NavState.self) private var navState
+    @Environment(NavState.self) private var nav
     @EnvironmentObject private var store: ValueStore
     
     private let device = WKInterfaceDevice.current()
@@ -27,19 +27,13 @@ struct AppSettings: View {
         List {
             Section("General") {
                 Button("Log out", role: .destructive) {
-                    main {
-                        navState.clear()
-                        store.isApiKeyValid = false
-                        Keychain.delete(key: "selectedApiKey")
-                    }
+                    nav.clear()
+                    store.isApiKeyValid = false
+                    Keychain.delete(key: "selectedApiKey")
                 }
             }
             
             Section("Dev") {
-                NavigationLink("Map") {
-                    MapView()
-                }
-                
                 ListParam("App version", param: version)
                 
                 VStack(alignment: .leading) {
@@ -61,6 +55,7 @@ struct AppSettings: View {
     NavigationStack {
         AppSettings()
     }
+    .darkSchemePreferred()
     .environment(NavState())
     .environmentObject(ValueStore())
 }

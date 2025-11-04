@@ -98,5 +98,6 @@ struct BackupCard: View {
     List {
         BackupCard("", PreviewProp.backupAttributes)
     }
+    .darkSchemePreferred()
     .environment(BackupVM(""))
 }

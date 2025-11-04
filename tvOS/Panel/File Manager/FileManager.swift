@@ -2,7 +2,6 @@ import ScrechKit
 
 struct FileTab: View {
     @EnvironmentObject private var vm: FileTabVM
-    @Environment(NavState.self) private var navState
     
     private let id, root: String
     
@@ -65,6 +64,7 @@ struct FileTab: View {
     NavigationStack {
         FileTab("")
     }
+    .darkSchemePreferred()
     .environment(NavState())
     .environmentObject(FileTabVM(""))
 }

@@ -26,4 +26,5 @@ struct WatchVideoPlayer: View {
     WatchVideoPlayer(
         URL(string: "https://file-examples.com/storage/fea582e6406477bb69e8a67/2017/04/file_example_MP4_480_1_5MG.mp4")!
     )
+    .darkSchemePreferred()
 }

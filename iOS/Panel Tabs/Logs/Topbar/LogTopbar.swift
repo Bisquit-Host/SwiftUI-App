@@ -53,5 +53,6 @@ struct LogTopbar: View {
     List {
         LogTopbar()
     }
+    .darkSchemePreferred()
     .environment(LogVM(""))
 }

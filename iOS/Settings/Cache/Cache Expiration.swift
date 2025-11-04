@@ -57,5 +57,6 @@ struct CacheExpiration: View {
     List {
         CacheExpiration()
     }
+    .darkSchemePreferred()
     .environment(CacheVM())
 }

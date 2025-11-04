@@ -48,5 +48,6 @@ struct CreateApikey: View {
 
 #Preview {
     CreateApikey()
+        .darkSchemePreferred()
         .environment(ApikeyVM())
 }

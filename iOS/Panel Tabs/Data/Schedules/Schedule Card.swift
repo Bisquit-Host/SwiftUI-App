@@ -3,7 +3,6 @@ import PteroNet
 
 struct ScheduleCard: View {
     @Environment(ScheduleVM.self) private var vm
-    @Environment(NavState.self) private var navState
     
     private let schedule: ScheduleAttributes
     

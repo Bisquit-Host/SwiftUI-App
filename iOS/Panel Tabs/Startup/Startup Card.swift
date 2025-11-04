@@ -68,7 +68,7 @@ struct StartupCard: View {
 //#Preview {
 //    List {
 //        StartupCard(
-//            PreviewProp.serverAttibutes,
+//            PreviewProp.serverAttributes,
 //            variable: StartupVariable(
 //                name: "Variable Name",
 //                description: "Some variable does something",
@@ -80,4 +80,5 @@ struct StartupCard: View {
 //            )
 //        )
 //    }
+//    .darkSchemePreferred()
 //}

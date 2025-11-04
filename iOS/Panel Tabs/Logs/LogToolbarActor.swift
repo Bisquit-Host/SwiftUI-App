@@ -37,7 +37,8 @@ struct LogToolbarActor: View {
     }
 }
 
-//#Preview {
-//    LogToolbarActor()
-//        .environment(LogVM())
-//}
+#Preview {
+    LogToolbarActor(PreviewProp.logAttributes.relationships)
+        .darkSchemePreferred()
+        .environment(LogVM(""))
+}

@@ -3,18 +3,12 @@ import PteroNet
 
 struct FileCard: View {
     @EnvironmentObject private var vm: FileTabVM
-    @Environment(NavState.self) private var navState
-    
     @Environment(\.openWindow) private var openWindow
     
     private let id, path: String
     private let file: FileAttributes
     
-    init(
-        _ id: String,
-        file: FileAttributes,
-        at path: String = ""
-    ) {
+    init(_ id: String, file: FileAttributes, at path: String = "") {
         self.id = id
         self.file = file
         self.path = path

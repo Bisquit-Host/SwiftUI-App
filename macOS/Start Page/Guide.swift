@@ -12,9 +12,7 @@ struct Guide: View {
     ]
     
     private let images = [
-        "step0",
-        "step1",
-        "step2"
+        "step0", "step1", "step2"
     ]
     
     private var gradient: AngularGradient {
@@ -88,27 +86,7 @@ struct Guide: View {
             
             Spacer()
             
-            HStack {
-                Button("Previous", systemImage: "chevron.backward") {
-                    withAnimation(.easeOut(duration: 0.6)) {
-                        step -= 1
-                    }
-                }
-                .keyboardShortcut(.leftArrow)
-                .disabled(step - 1 < 0)
-                
-                Spacer()
-                
-                Button("Next", systemImage: "chevron.forward") {
-                    withAnimation(.easeOut(duration: 0.6)) {
-                        step += 1
-                    }
-                }
-                .keyboardShortcut(.rightArrow)
-                .disabled(step + 1 >= steps.count)
-            }
-            .buttonStyle(CarouselButtonStyle())
-            .padding(20)
+            GuideControls($step, stepCount: steps.count)
         }
         .background(gradient)
         .ignoresSafeArea(edges: .bottom)
@@ -117,4 +95,5 @@ struct Guide: View {
 
 #Preview {
     Guide()
+        .darkSchemePreferred()
 }

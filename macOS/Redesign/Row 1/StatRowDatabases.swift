@@ -18,16 +18,18 @@ struct StatRowDatabases: View {
         } label: {
             StatTile("Databases", value: vm.databases.count, icon: "tray")
         }
+        .task {
+            await vm.fetchDatabases()
+        }
         .sheet($sheetDatabases) {
             DatabaseList(id)
                 .environment(vm)
-        }
-        .task {
-            await vm.fetchDatabases()
+                .frame(minHeight: StatRows.minHeight)
         }
     }
 }
 
 #Preview {
     StatRowDatabases("")
+        .darkSchemePreferred()
 }

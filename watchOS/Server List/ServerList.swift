@@ -8,21 +8,29 @@ struct ServerList: View {
         @Bindable var vm = vm
         
         ScrollView {
-            ServerListTopbar()
-            
             ServerListUpdateButton()
-            
             ServerListGrid(vm.filteredServers)
         }
+        .navigationTitle("Servers")
         .navigationBarBackButtonHidden()
         .task {
             await vm.fetchServers(store.adminServerList)
+        }
+        .toolbar {
+            ToolbarItem(placement: .confirmationAction) {
+                ServerListTopbarRefreshButton()
+            }
+            
+            ToolbarItem(placement: .cancellationAction) {
+                ServerListTopbarSettingsButton()
+            }
         }
     }
 }
 
 #Preview {
     ServerList()
+        .darkSchemePreferred()
         .environment(ServerListVM())
         .environment(NavState())
         .environmentObject(ValueStore())

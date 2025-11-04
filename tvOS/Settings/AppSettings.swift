@@ -2,7 +2,7 @@ import ScrechKit
 import PteroNet
 
 struct AppSettings: View {
-    @Environment(NavState.self) private var navState
+    @Environment(NavState.self) private var nav
     @EnvironmentObject private var store: ValueStore
     
     @Environment(\.dismiss) private var dismiss
@@ -21,10 +21,6 @@ struct AppSettings: View {
                 sheetGuide = true
             }
             
-            NavigationLink("Best places") {
-                MapView()
-            }
-            
             ListLink("Configurations", icon: "externaldrive.badge.plus") {
                 PlanViewParent()
             }
@@ -32,7 +28,7 @@ struct AppSettings: View {
             Section {
                 Button("Log out", systemImage: "rectangle.portrait.and.arrow.right", role: .destructive) {
                     dismiss()
-                    navState.clear()
+                    nav.clear()
                     store.isApiKeyValid = false
                     Keychain.delete(key: "selectedApiKey")
                 }
@@ -43,7 +39,7 @@ struct AppSettings: View {
         .navigationTitle("Settings")
         .listStyle(.grouped)
         .sheet($sheetKeyStorage) {
-            CloudKeys($apiKey)
+            CloudKeysParent($apiKey)
         }
         .fullScreenCover($sheetGuide) {
             Guide()
@@ -56,6 +52,7 @@ struct AppSettings: View {
     NavigationStack {
         AppSettings()
     }
+    .darkSchemePreferred()
     .environmentObject(ValueStore())
     .environment(NavState())
 }

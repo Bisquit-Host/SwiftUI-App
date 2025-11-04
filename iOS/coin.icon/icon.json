@@ -1,0 +1,58 @@
+{
+  "fill" : {
+    "linear-gradient" : [
+      "srgb:0.48214,0.67017,0.92566,1.00000",
+      "srgb:0.68185,0.77523,0.92566,1.00000"
+    ]
+  },
+  "groups" : [
+    {
+      "layers" : [
+        {
+          "blend-mode" : "lighten",
+          "fill" : {
+            "solid" : "srgb:0.00000,0.27740,1.00000,1.00000"
+          },
+          "image-name" : "Glasscoin.png",
+          "name" : "Glasscoin",
+          "opacity" : 0.28,
+          "position" : {
+            "scale" : 1.09,
+            "translation-in-points" : [
+              5.859375,
+              -4.5703125
+            ]
+          }
+        },
+        {
+          "blend-mode" : "lighten",
+          "fill" : "automatic",
+          "image-name" : "Glasscoin.png",
+          "name" : "Glasscoin",
+          "opacity" : 0.92,
+          "position" : {
+            "scale" : 1.09,
+            "translation-in-points" : [
+              5.859375,
+              -4.5703125
+            ]
+          }
+        }
+      ],
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.5
+      }
+    }
+  ],
+  "supported-platforms" : {
+    "circles" : [
+      "watchOS"
+    ],
+    "squares" : "shared"
+  }
+}

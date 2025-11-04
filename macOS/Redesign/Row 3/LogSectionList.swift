@@ -24,4 +24,5 @@ struct LogSectionList: View {
 
 #Preview {
     LogSectionList([PreviewProp.logAttributes])
+        .darkSchemePreferred()
 }

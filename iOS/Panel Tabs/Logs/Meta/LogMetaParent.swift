@@ -21,4 +21,5 @@ struct LogMetaParent: View {
 
 #Preview {
     LogMetaParent([:])
+        .darkSchemePreferred()
 }

@@ -14,6 +14,8 @@ struct ServerList: View {
             
             ServerListGrid(vm.filteredServers)
         }
+        .navigationTitle("Servers")
+        .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden()
         .animation(.default, value: vm.servers)
         .searchable(text: $vm.searchField)
@@ -68,6 +70,7 @@ struct ServerList: View {
     NavigationStack {
         ServerList()
     }
+    .darkSchemePreferred()
     .environment(ServerListVM())
     .environment(NavState())
     .environmentObject(ValueStore())

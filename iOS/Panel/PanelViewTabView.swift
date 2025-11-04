@@ -12,7 +12,7 @@ struct PanelViewTabView: View {
                 Tab("Info", systemImage: "info.circle", value: .info) {
                     InfoTab(server)
                         .sheet($vm.sheetSettings) {
-                            PanelSettingsParent(server)
+                            ServerSettingsParent(server)
                         }
                 }
                 
@@ -39,6 +39,7 @@ struct PanelViewTabView: View {
 
 #Preview {
     PanelViewTabView()
+        .darkSchemePreferred()
         .environment(PanelVM(""))
         .environmentObject(ValueStore())
 }

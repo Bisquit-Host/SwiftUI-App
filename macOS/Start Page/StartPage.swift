@@ -87,7 +87,7 @@ struct StartPage: View {
         //            PlanViewParent()
         //        }
         //        .sheet($vm.sheetCloudKeys) {
-        //            CloudKeys($vm.apiKey)
+        //            CloudKeysParent($vm.apiKey)
         //                .frame(width: 400)
         //        }
     }
@@ -96,5 +96,6 @@ struct StartPage: View {
 #Preview {
     StartPage()
         .padding()
+        .darkSchemePreferred()
         .environmentObject(ValueStore())
 }

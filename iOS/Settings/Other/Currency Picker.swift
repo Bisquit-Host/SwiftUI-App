@@ -27,5 +27,6 @@ struct CurrencyPicker: View {
     List {
         CurrencyPicker()
     }
+    .darkSchemePreferred()
     .environmentObject(ValueStore())
 }

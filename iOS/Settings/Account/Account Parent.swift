@@ -5,10 +5,10 @@ struct AccountParent: View {
     @State private var apiKeyVM = ApikeyVM()
     @State private var sshVM = SSHVM()
     
-    @AppStorage("acc_selected_tab") private var accountSelectedTab = 0
+    @EnvironmentObject private var store: ValueStore
     
     var body: some View {
-        TabView(selection: $accountSelectedTab) {
+        TabView(selection: $store.selectedAccountTab) {
             Tab("Account", systemImage: "person.circle", value: 0) {
                 NavigationStack {
                     AccountView()
@@ -45,4 +45,6 @@ struct AccountParent: View {
 
 #Preview {
     AccountParent()
+        .darkSchemePreferred()
+        .environmentObject(ValueStore())
 }
