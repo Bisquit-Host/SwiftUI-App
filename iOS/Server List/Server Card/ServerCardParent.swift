@@ -11,12 +11,12 @@ struct ServerCardParent: View {
         self.server = server
     }
     
-    @State private var showSafari = false
-    @State private var confirmKill = false
-    
-    private var serverUrl: String {
-        "https://mgr.bisquit.host/server/\(server.id)"
-    }
+//    @State private var showSafari = false
+//    @State private var confirmKill = false
+//    
+//    private var serverUrl: String {
+//        "https://mgr.bisquit.host/server/\(server.id)"
+//    }
     
     var body: some View {
         VStack {
@@ -33,24 +33,24 @@ struct ServerCardParent: View {
         }
         .buttonStyle(.plain)
         .hoverEffect()
-        .safariCover($showSafari, url: serverUrl)
-        .confirmationDialog("Perform kill action", isPresented: $confirmKill, titleVisibility: .visible) {
-            Button("Kill", role: .destructive) {
-                Task {
-                    await PteroNet.powerSignal(server.id, do: .kill)
-                }
-            }
-        }
-        .contextMenu {
-            ServerCardContextMenu(server, $showSafari, $confirmKill)
-        }
-        .onDrag {
-            if let url = URL(string: serverUrl), let itemProvider = NSItemProvider(contentsOf: url) {
-                itemProvider
-            } else {
-                NSItemProvider()
-            }
-        }
+//        .safariCover($showSafari, url: serverUrl)
+//        .confirmationDialog("Perform kill action", isPresented: $confirmKill, titleVisibility: .visible) {
+//            Button("Kill", role: .destructive) {
+//                Task {
+//                    await PteroNet.powerSignal(server.id, do: .kill)
+//                }
+//            }
+//        }
+//        .contextMenu {
+//            ServerCardContextMenu(server, $showSafari, $confirmKill)
+//        }
+//        .onDrag {
+//            if let url = URL(string: serverUrl), let itemProvider = NSItemProvider(contentsOf: url) {
+//                itemProvider
+//            } else {
+//                NSItemProvider()
+//            }
+//        }
     }
 }
 

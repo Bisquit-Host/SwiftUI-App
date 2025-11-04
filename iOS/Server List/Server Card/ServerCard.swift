@@ -16,6 +16,13 @@ struct ServerCard: View {
         vm.stateColor == .gray
     }
     
+    private var serverUrl: String {
+        "https://mgr.bisquit.host/server/\(server.id)"
+    }
+    
+    @State private var showSafari = false
+    @State private var confirmKill = false
+    
     var body: some View {
         VStack(alignment: .leading, spacing: System.isWatch ? 10 : 16) {
             HStack {
@@ -78,6 +85,19 @@ struct ServerCard: View {
             }
         }
         .padding(System.isWatch ? 10 : 20)
+        .background(.black.opacity(0.0001)) // workaround for a full hitbox
+#if !os(watchOS)
+        .contextMenu {
+            ServerCardContextMenu(server, $showSafari, $confirmKill)
+        }
+        .onDrag {
+            if let url = URL(string: serverUrl), let itemProvider = NSItemProvider(contentsOf: url) {
+                itemProvider
+            } else {
+                NSItemProvider()
+            }
+        }
+#endif
 #if !os(visionOS) && !os(macOS)
         .glassEffect(in: .rect(cornerRadius: 16))
 #endif
@@ -90,6 +110,16 @@ struct ServerCard: View {
         .onChange(of: store.updateServers) {
             Task {
                 await vm.fetchServerUsage()
+            }
+        }
+#if canImport(SafariCover)
+        .safariCover($showSafari, url: serverUrl)
+#endif
+        .confirmationDialog("Perform kill action", isPresented: $confirmKill, titleVisibility: .visible) {
+            Button("Kill", role: .destructive) {
+                Task {
+                    await PteroNet.powerSignal(server.id, do: .kill)
+                }
             }
         }
     }
