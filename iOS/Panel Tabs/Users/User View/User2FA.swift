@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct User2Fa: View {
+struct User2FA: View {
     private let isEnabled: Bool
     
     init(_ isEnabled: Bool) {
@@ -30,8 +30,8 @@ struct User2Fa: View {
 
 #Preview {
     List {
-        User2Fa(true)
-        User2Fa(false)
+        User2FA(true)
+        User2FA(false)
     }
     .darkSchemePreferred()
 }

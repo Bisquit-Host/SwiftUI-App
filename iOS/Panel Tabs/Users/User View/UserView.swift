@@ -29,7 +29,7 @@ struct UserView: View {
                     .minimumScaleFactor(0.5)
 #endif
                 Section {
-                    User2Fa(user.twoFaEnabled)
+                    User2FA(user.twoFaEnabled)
                     
                     HStack {
                         Text("Member since")
