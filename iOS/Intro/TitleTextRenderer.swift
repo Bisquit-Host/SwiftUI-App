@@ -1,7 +1,11 @@
 import SwiftUI
 
 struct TitleTextRenderer: TextRenderer, Animatable {
-    var progress: CGFloat
+    private var progress: CGFloat
+    
+    init(_ progress: CGFloat) {
+        self.progress = progress
+    }
     
     var animatableData: CGFloat {
         get {
