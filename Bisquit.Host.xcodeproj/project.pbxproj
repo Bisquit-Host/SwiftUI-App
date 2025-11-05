@@ -142,6 +142,8 @@
 		F30C13192A54626D00A7EFF0 /* BisquitHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* BisquitHost.swift */; };
 		F30C131A2A54626D00A7EFF0 /* BisquitHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* BisquitHost.swift */; };
 		F30E42F62EBBA25D0033FBA6 /* DebugSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30E42F52EBBA25D0033FBA6 /* DebugSettings.swift */; };
+		F30E42F82EBBB5660033FBA6 /* InfiniteScrollHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30E42F72EBBB55B0033FBA6 /* InfiniteScrollHelper.swift */; };
+		F30E42F92EBBB5660033FBA6 /* InfiniteScrollHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30E42F72EBBB55B0033FBA6 /* InfiniteScrollHelper.swift */; };
 		F310A2F02A56AF86001AF45F /* NetworkVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F310A2EF2A56AF86001AF45F /* NetworkVM.swift */; };
 		F310A2F12A56B0BE001AF45F /* NetworkVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F310A2EF2A56AF86001AF45F /* NetworkVM.swift */; };
 		F310BB392A54E31700843F14 /* ServerListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F352AF962A4EDB1D004AD489 /* ServerListVM.swift */; };
@@ -1724,6 +1726,7 @@
 		F304498929E990E9006DC0C7 /* CloudKeyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKeyList.swift; sourceTree = "<group>"; };
 		F306B9EC29BBDA770008C2D4 /* DevSettingsFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevSettingsFooter.swift; sourceTree = "<group>"; };
 		F30E42F52EBBA25D0033FBA6 /* DebugSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugSettings.swift; sourceTree = "<group>"; };
+		F30E42F72EBBB55B0033FBA6 /* InfiniteScrollHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteScrollHelper.swift; sourceTree = "<group>"; };
 		F310A2EF2A56AF86001AF45F /* NetworkVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkVM.swift; sourceTree = "<group>"; };
 		F3116F252A33E142001F067C /* FolderFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderFile.swift; sourceTree = "<group>"; };
 		F311CAAD2A646612004E4A4A /* LogMetaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogMetaView.swift; sourceTree = "<group>"; };
@@ -2677,6 +2680,7 @@
 				F373CD6A2D88A386008B64BE /* IntroCard.swift */,
 				F373CD6B2D88A386008B64BE /* TitleTextRenderer.swift */,
 				F373CD6C2D88A386008B64BE /* InfiniteScrollView.swift */,
+				F30E42F72EBBB55B0033FBA6 /* InfiniteScrollHelper.swift */,
 			);
 			path = Intro;
 			sourceTree = "<group>";
@@ -4972,6 +4976,7 @@
 				F31406F12E64667D00C1956E /* BackgroundImageButton.swift in Sources */,
 				F337C1622A8CE7C0006F321C /* StartupCard.swift in Sources */,
 				F3A31B092B0B161D00F89C51 /* CloudKeyCard.swift in Sources */,
+				F30E42F82EBBB5660033FBA6 /* InfiniteScrollHelper.swift in Sources */,
 				F38F9E132CE7647D0033EFE3 /* ImagePlayground.swift in Sources */,
 				F37266AA29D71A1B005FD103 /* FileIcon.swift in Sources */,
 				F31BA5A3295902610006D126 /* ConsoleTab.swift in Sources */,
@@ -5624,6 +5629,7 @@
 				F33001422A4CEF840063FE0F /* ApikeyVM.swift in Sources */,
 				F3D95B102E63639900849A94 /* CompactMetricRow.swift in Sources */,
 				F36113F72E55DFD40052A5A2 /* TextFileEditor.swift in Sources */,
+				F30E42F92EBBB5660033FBA6 /* InfiniteScrollHelper.swift in Sources */,
 				F33001452A4CF06D0063FE0F /* ApikeyCard.swift in Sources */,
 				F373CD762D88A386008B64BE /* IntroCard.swift in Sources */,
 				F373CD772D88A386008B64BE /* TitleTextRenderer.swift in Sources */,
