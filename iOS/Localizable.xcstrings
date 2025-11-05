@@ -3805,22 +3805,6 @@
         }
       }
     },
-    "General" : {
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Algemeen"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Основные"
-          }
-        }
-      }
-    },
     "Generate" : {
       "localizations" : {
         "nl" : {

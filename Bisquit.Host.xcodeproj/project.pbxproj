@@ -141,6 +141,7 @@
 		F30C13182A54626C00A7EFF0 /* BisquitHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* BisquitHost.swift */; };
 		F30C13192A54626D00A7EFF0 /* BisquitHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* BisquitHost.swift */; };
 		F30C131A2A54626D00A7EFF0 /* BisquitHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* BisquitHost.swift */; };
+		F30E42F62EBBA25D0033FBA6 /* DebugSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30E42F52EBBA25D0033FBA6 /* DebugSettings.swift */; };
 		F310A2F02A56AF86001AF45F /* NetworkVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F310A2EF2A56AF86001AF45F /* NetworkVM.swift */; };
 		F310A2F12A56B0BE001AF45F /* NetworkVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F310A2EF2A56AF86001AF45F /* NetworkVM.swift */; };
 		F310BB392A54E31700843F14 /* ServerListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F352AF962A4EDB1D004AD489 /* ServerListVM.swift */; };
@@ -1722,6 +1723,7 @@
 		F304498629E98AE4006DC0C7 /* iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOS.entitlements; sourceTree = "<group>"; };
 		F304498929E990E9006DC0C7 /* CloudKeyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKeyList.swift; sourceTree = "<group>"; };
 		F306B9EC29BBDA770008C2D4 /* DevSettingsFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevSettingsFooter.swift; sourceTree = "<group>"; };
+		F30E42F52EBBA25D0033FBA6 /* DebugSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugSettings.swift; sourceTree = "<group>"; };
 		F310A2EF2A56AF86001AF45F /* NetworkVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkVM.swift; sourceTree = "<group>"; };
 		F3116F252A33E142001F067C /* FolderFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderFile.swift; sourceTree = "<group>"; };
 		F311CAAD2A646612004E4A4A /* LogMetaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogMetaView.swift; sourceTree = "<group>"; };
@@ -3249,6 +3251,7 @@
 			isa = PBXGroup;
 			children = (
 				F3BF6F222959D15E0059F39B /* AppSettings.swift */,
+				F30E42F52EBBA25D0033FBA6 /* DebugSettings.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -5260,6 +5263,7 @@
 				F36E8AA02E6E441600A38229 /* ServerListUpdateButton.swift in Sources */,
 				F30C130A2A545E6F00A7EFF0 /* LinkingVM.swift in Sources */,
 				F36B14B62DC6334E008C1AF9 /* GameKit.swift in Sources */,
+				F30E42F62EBBA25D0033FBA6 /* DebugSettings.swift in Sources */,
 				F3F5AD8E2E8A6490007AD97D /* ServerListTopbarSettingsButton.swift in Sources */,
 				F3EB09D42A29547E0073916A /* FileView.swift in Sources */,
 				F3FFB7492A57FF0B00220FA5 /* LogCard.swift in Sources */,
