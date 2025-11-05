@@ -18,7 +18,7 @@ struct UserView: View {
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
             
-            User2Fa(user.twoFaEnabled)
+            User2FA(user.twoFaEnabled)
             
             HStack {
                 Text("Member since")

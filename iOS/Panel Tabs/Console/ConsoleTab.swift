@@ -77,6 +77,8 @@ struct ConsoleTab: View {
     
     private func sendCommand() {
         if !vm.command.isEmpty {
+            grantAchievement("send_console_message")
+            
             Task {
                 await vm.sendCommand()
             }

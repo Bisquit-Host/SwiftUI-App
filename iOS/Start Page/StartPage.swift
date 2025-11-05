@@ -8,9 +8,10 @@ struct StartPage: View {
     
     @Environment(\.modelContext) var modelContext
     @Query(animation: .default) var keys: [APIKey]
+    @FocusState private var isFocused
     
     var body: some View {
-        VStack {
+        ZStack {
             HStack(alignment: .top) {
                 VStack(spacing: 16) {
                     TextField("API-key", text: $vm.apiKey)
@@ -21,6 +22,7 @@ struct StartPage: View {
                         .minimumScaleFactor(0.5)
                         .glassEffect()
                         .changeEffect(.shake(rate: .fast), value: vm.trigger)
+                        .focused($isFocused)
                     
                     Button("How do I authorize?") {
                         vm.sheetGuide = true
@@ -30,6 +32,8 @@ struct StartPage: View {
                 }
                 
                 Button {
+                    isFocused = false
+                    
                     if let string = UIPasteboard.general.string {
                         vm.apiKey = string
                     }
@@ -42,6 +46,11 @@ struct StartPage: View {
                 .foregroundStyle(.foreground)
             }
             .padding(.horizontal)
+            .frame(maxHeight: .infinity)
+            
+            StartPageFooter(keys.count > 0)
+                .environment(vm)
+                .frame(maxHeight: .infinity, alignment: .bottom)
         }
         .navigationTitle("Authorization")
         .navigationBarTitleDisplayMode(.inline)
@@ -50,10 +59,6 @@ struct StartPage: View {
         .navigationBarBackButtonHidden()
         .background {
             BackgroundImage()
-        }
-        .overlay(alignment: .bottom) {
-            StartPageFooter(keys.count > 0)
-                .environment(vm)
         }
         .onChange(of: vm.apiKey) { _, newValue in
             if newValue.count == 48 || newValue.count == 340 {

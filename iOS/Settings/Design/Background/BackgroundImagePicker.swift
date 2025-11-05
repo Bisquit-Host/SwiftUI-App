@@ -18,7 +18,7 @@ struct BackgroundImagePicker: View {
         GeometryReader {
             let size = $0.size
             
-            VStack(spacing: 4) {
+            VStack(spacing: 10) {
                 Image(systemName: systemImage)
                     .largeTitle()
                     .imageScale(.large)
@@ -26,7 +26,6 @@ struct BackgroundImagePicker: View {
                 
                 Text(title)
                     .callout()
-                    .padding(.top, 15)
                 
                 Text(subTitle)
                     .caption()
@@ -93,10 +92,10 @@ struct BackgroundImagePicker: View {
             }
             .background {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 15, style: .continuous)
+                    ConcentricRectangle(corners: .concentric, isUniform: true)
                         .fill(tint.opacity(0.08).gradient)
                     
-                    RoundedRectangle(cornerRadius: 15, style: .continuous)
+                    ConcentricRectangle(corners: .concentric, isUniform: true)
                         .stroke(tint, style: .init(lineWidth: 1, dash: [12]))
                         .padding(1)
                 }
@@ -105,10 +104,7 @@ struct BackgroundImagePicker: View {
         }
     }
     
-    private func extractImage(
-        _ photoItem: PhotosPickerItem,
-        _ viewSize: CGSize
-    ) {
+    private func extractImage(_ photoItem: PhotosPickerItem, _ viewSize: CGSize) {
         Task.detached {
             guard let imageData = try? await photoItem.loadTransferable(type: Data.self) else {
                 return
@@ -119,6 +115,7 @@ struct BackgroundImagePicker: View {
                 if let selectedImage = UIImage(data: imageData) {
                     /// Creating Preview
                     generateImageThumbnail(selectedImage, viewSize)
+                    
                     /// Send Orignal Image to Callback
                     onImageChange(selectedImage)
                 }
@@ -128,10 +125,7 @@ struct BackgroundImagePicker: View {
         }
     }
     
-    func generateImageThumbnail(
-        _ image: UIImage,
-        _ size: CGSize
-    ) {
+    func generateImageThumbnail(_ image: UIImage, _ size: CGSize) {
         isLoading = true
         
         Task.detached {

@@ -2750,29 +2750,6 @@
         }
       }
     },
-    "Data type" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gegevenstype"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Тип данных"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Тип даних"
-          }
-        }
-      }
-    },
     "Databases" : {
       "localizations" : {
         "nl" : {
@@ -3828,22 +3805,6 @@
         }
       }
     },
-    "General" : {
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Algemeen"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Основные"
-          }
-        }
-      }
-    },
     "Generate" : {
       "localizations" : {
         "nl" : {
@@ -4523,23 +4484,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Кількість посилань"
-          }
-        }
-      }
-    },
-    "Load data" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gegevens laden"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Завантажити дату"
           }
         }
       }
@@ -5349,23 +5293,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Другие пользователи"
-          }
-        }
-      }
-    },
-    "Overview" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Overzicht"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Обзор"
           }
         }
       }

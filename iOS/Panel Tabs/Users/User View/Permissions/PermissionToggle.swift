@@ -70,7 +70,7 @@ struct PermissionToggle: View {
 
 //#Preview {
 //    List {
-//        PermissionCard()
+//        PermissionToggle()
 //    }
 //    .darkSchemePreferred()
 //    .environment(UsersVM(""))

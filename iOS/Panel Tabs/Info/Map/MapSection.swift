@@ -85,6 +85,7 @@ struct MapSection: View {
             
             Map(position: $cameraPosition, interactionModes: [])
         }
+        .background(.black.opacity(0.0001)) // workaround for a full hitbox
         .contextMenu {
             Button("Open in Apple Maps", image: .maps) {
                 openSafari(mapUrl)

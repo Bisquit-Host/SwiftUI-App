@@ -20,8 +20,8 @@ final class LiveActivity {
     var errorMessage: String? = nil
     
     func postRequest(
-        WSUrl: String,
-        WSToken: String,
+        wsUrl: String,
+        wsToken: String,
         liveActivityToken: String
     ) async throws {
         
@@ -40,8 +40,8 @@ final class LiveActivity {
         let environment = "production"
 #endif
         let body = [
-            "WSUrl":             WSUrl,
-            "WSToken":           WSToken,
+            "WSUrl":             wsUrl,
+            "WSToken":           wsToken,
             "liveActivityToken": liveActivityToken,
             "environment":       environment,
             "appID":             Bundle.main.bundleIdentifier ?? "host.bisquit.Bisquit.Host"
@@ -145,6 +145,8 @@ final class LiveActivity {
     }
     
     func startLiveActivity(_ server: ServerAttributes) async {
+        grantAchievement("start_live_activity")
+        
         let attributes = WidgetsAttributes(
             id: server.id,
             name: server.name,
@@ -201,8 +203,8 @@ final class LiveActivity {
             let token = model.token
             
             try await postRequest(
-                WSUrl: socket.description,
-                WSToken: token,
+                wsUrl: socket.description,
+                wsToken: token,
                 liveActivityToken: LAToken
             )
         } catch {
