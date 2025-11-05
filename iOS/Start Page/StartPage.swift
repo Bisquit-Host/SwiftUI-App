@@ -32,11 +32,7 @@ struct StartPage: View {
                 }
                 
                 Button {
-                    isFocused = false
-                    
-                    if let string = UIPasteboard.general.string {
-                        vm.apiKey = string
-                    }
+                    pasteAPIKey()
                 } label: {
                     Image(systemName: "doc.on.clipboard")
                         .footnote(.bold)
@@ -95,6 +91,14 @@ struct StartPage: View {
         }
         .sheet($vm.sheetCloudKeys) {
             CloudKeysParent($vm.apiKey)
+        }
+    }
+    
+    private func pasteAPIKey() {
+        isFocused = false
+        
+        if let string = UIPasteboard.general.string {
+            vm.apiKey = string
         }
     }
     
