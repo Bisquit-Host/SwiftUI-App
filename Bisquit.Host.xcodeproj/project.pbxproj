@@ -144,6 +144,7 @@
 		F30E42F62EBBA25D0033FBA6 /* DebugSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30E42F52EBBA25D0033FBA6 /* DebugSettings.swift */; };
 		F30E42F82EBBB5660033FBA6 /* InfiniteScrollHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30E42F72EBBB55B0033FBA6 /* InfiniteScrollHelper.swift */; };
 		F30E42F92EBBB5660033FBA6 /* InfiniteScrollHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30E42F72EBBB55B0033FBA6 /* InfiniteScrollHelper.swift */; };
+		F30E42FB2EBBC3A10033FBA6 /* QuickLookViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30E42FA2EBBC3A10033FBA6 /* QuickLookViewVM.swift */; };
 		F310A2F02A56AF86001AF45F /* NetworkVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F310A2EF2A56AF86001AF45F /* NetworkVM.swift */; };
 		F310A2F12A56B0BE001AF45F /* NetworkVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F310A2EF2A56AF86001AF45F /* NetworkVM.swift */; };
 		F310BB392A54E31700843F14 /* ServerListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F352AF962A4EDB1D004AD489 /* ServerListVM.swift */; };
@@ -1462,7 +1463,6 @@
 		F3FA61552A1F8DB500A65AE1 /* UploadMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA61532A1F8DB500A65AE1 /* UploadMenu.swift */; };
 		F3FA61572A1F928500A65AE1 /* FileSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA61562A1F928500A65AE1 /* FileSearch.swift */; };
 		F3FA61582A1F928500A65AE1 /* FileSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA61562A1F928500A65AE1 /* FileSearch.swift */; };
-		F3FC99112C65747700150823 /* Archieving.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC99102C65747700150823 /* Archieving.swift */; };
 		F3FC99162C65888900150823 /* TempDir.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC99152C65888900150823 /* TempDir.swift */; };
 		F3FD9F982C651A4E00A69314 /* FileList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FD9F972C651A4E00A69314 /* FileList.swift */; };
 		F3FD9F992C651A9200A69314 /* FileTabVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D558AB2A3360ED00608447 /* FileTabVM.swift */; };
@@ -1727,6 +1727,7 @@
 		F306B9EC29BBDA770008C2D4 /* DevSettingsFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevSettingsFooter.swift; sourceTree = "<group>"; };
 		F30E42F52EBBA25D0033FBA6 /* DebugSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugSettings.swift; sourceTree = "<group>"; };
 		F30E42F72EBBB55B0033FBA6 /* InfiniteScrollHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteScrollHelper.swift; sourceTree = "<group>"; };
+		F30E42FA2EBBC3A10033FBA6 /* QuickLookViewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLookViewVM.swift; sourceTree = "<group>"; };
 		F310A2EF2A56AF86001AF45F /* NetworkVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkVM.swift; sourceTree = "<group>"; };
 		F3116F252A33E142001F067C /* FolderFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderFile.swift; sourceTree = "<group>"; };
 		F311CAAD2A646612004E4A4A /* LogMetaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogMetaView.swift; sourceTree = "<group>"; };
@@ -2211,7 +2212,6 @@
 		F3FA30982DD1EB4300280133 /* FileListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileListHeader.swift; sourceTree = "<group>"; };
 		F3FA61532A1F8DB500A65AE1 /* UploadMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadMenu.swift; sourceTree = "<group>"; };
 		F3FA61562A1F928500A65AE1 /* FileSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSearch.swift; sourceTree = "<group>"; };
-		F3FC99102C65747700150823 /* Archieving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archieving.swift; sourceTree = "<group>"; };
 		F3FC99152C65888900150823 /* TempDir.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempDir.swift; sourceTree = "<group>"; };
 		F3FD9F972C651A4E00A69314 /* FileList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileList.swift; sourceTree = "<group>"; };
 		F3FD9F9B2C651B3800A69314 /* FileCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCard.swift; sourceTree = "<group>"; };
@@ -4134,8 +4134,8 @@
 				F3FD9F972C651A4E00A69314 /* FileList.swift */,
 				F3FD9F9B2C651B3800A69314 /* FileCard.swift */,
 				F335F6E62DD3564A00D743FF /* FileLink.swift */,
-				F3FC99102C65747700150823 /* Archieving.swift */,
 				F3FD9FA02C65217C00A69314 /* QuickLookView.swift */,
+				F30E42FA2EBBC3A10033FBA6 /* QuickLookViewVM.swift */,
 			);
 			path = Files;
 			sourceTree = "<group>";
@@ -5905,6 +5905,7 @@
 				F32716DE2CF62CAB00F2DC31 /* CreateBackupButton.swift in Sources */,
 				F3F2BB9D2A5403DD00D44CA6 /* ServerListVM.swift in Sources */,
 				F3F2BBAB2A540E4400D44CA6 /* NavExtension.swift in Sources */,
+				F30E42FB2EBBC3A10033FBA6 /* QuickLookViewVM.swift in Sources */,
 				F3FD9F992C651A9200A69314 /* FileTabVM.swift in Sources */,
 				F3EEC03B2AF2F93800BFED78 /* StartPageVM.swift in Sources */,
 				F335F6E82DD3568200D743FF /* FileContextMenu.swift in Sources */,
@@ -5948,7 +5949,6 @@
 				F3E1B2D02C903C9300AED3F1 /* ServerCardContextMenu.swift in Sources */,
 				F38928302A445E9700561CDF /* ServerList.swift in Sources */,
 				F3015DE82D9F27E800B9BCC6 /* LogCardImage.swift in Sources */,
-				F3FC99112C65747700150823 /* Archieving.swift in Sources */,
 				F3464D252A86397F00188B0C /* PowerSignalAppEnum.swift in Sources */,
 				F39E68342D2D67A70002BA96 /* TaskContextMenu.swift in Sources */,
 				F39E68352D2D67A70002BA96 /* ScheduleList.swift in Sources */,
