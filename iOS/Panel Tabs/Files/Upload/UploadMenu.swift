@@ -133,9 +133,9 @@ struct UploadMenu: View {
         _ data: Data,
         pathExtension: String = ""
     ) -> URL? {
-        let temporaryDirectoryUrl = FileManager.default.temporaryDirectory
+        let tempDirURL = FileManager.default.temporaryDirectory
         
-        let temporaryFileUrl = temporaryDirectoryUrl
+        let temporaryFileUrl = tempDirURL
             .appendingPathComponent(UUID().uuidString)
             .appendingPathExtension(pathExtension)
         

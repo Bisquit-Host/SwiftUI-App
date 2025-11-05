@@ -28,8 +28,8 @@ final class AudioPlayerVM {
             return
         }
         
-        let tempDirectoryURL = fm.temporaryDirectory
-        let destinationURL = tempDirectoryURL.appendingPathComponent(name)
+        let tempDirURL = fm.temporaryDirectory
+        let destinationURL = tempDirURL.appendingPathComponent(name)
         
         URLSession.shared.downloadTask(with: url) { location, response, error in
             let fm = FileManager.default

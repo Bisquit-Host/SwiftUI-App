@@ -50,8 +50,7 @@ final class FileUploader: NSObject, ObservableObject {
             boundary: boundary
         ).data
         
-        let tempFileUrl = FileManager.default
-            .temporaryDirectory
+        let tempFileUrl = FileManager.default.temporaryDirectory
             .appendingPathComponent(UUID().uuidString)
         
         do {

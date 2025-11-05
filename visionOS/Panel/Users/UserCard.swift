@@ -27,7 +27,7 @@ struct UserCard: View {
     }
 }
 
-//#Preview {
-//    UserCard()
-//        .environment(UsersVM(""))
-//}
+#Preview {
+    UserCard(PreviewProp.userAttributes)
+        .environment(UsersVM(""))
+}

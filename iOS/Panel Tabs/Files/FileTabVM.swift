@@ -203,8 +203,8 @@ final class FileTabVM: ObservableObject {
         }
         
         let mimeType = "image/heic"
-        let temporaryDirectoryURL = FileManager.default.temporaryDirectory
-        let fileURL = temporaryDirectoryURL.appendingPathComponent("Image")
+        let tempDirURL = FileManager.default.temporaryDirectory
+        let fileURL = tempDirURL.appendingPathComponent("Image")
         
         do {
             try imageData.write(to: fileURL, options: .completeFileProtection)

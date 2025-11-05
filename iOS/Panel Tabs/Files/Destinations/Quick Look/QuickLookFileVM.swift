@@ -30,8 +30,8 @@ final class QuickLookFileVM {
             return
         }
         
-        let tempDirectoryURL = fm.temporaryDirectory
-        let destinationUrl = tempDirectoryURL.appendingPathComponent(name)
+        let tempDirURL = fm.temporaryDirectory
+        let destinationUrl = tempDirURL.appendingPathComponent(name)
         
         URLSession.shared.downloadTask(with: url) { location, _, error in
             let fm = FileManager.default

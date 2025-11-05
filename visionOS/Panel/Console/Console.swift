@@ -2,7 +2,6 @@ import ScrechKit
 
 struct Console: View {
     @Environment(PanelVM.self) private var panelVM
-    
     @Environment(\.openWindow) private var openWindow
     
     private var vm: ConsoleVM

@@ -1,7 +1,7 @@
 import SwiftUI
 
 final class BackgroundImageHelper {
-    static func getDocumentsDirectory() -> URL {
+    static func getDocumentsDir() -> URL {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     }
     
@@ -12,7 +12,7 @@ final class BackgroundImageHelper {
         }
         
         let fileName = UUID().uuidString + ".heic"
-        let fileURL = getDocumentsDirectory().appendingPathComponent(fileName)
+        let fileURL = getDocumentsDir().appendingPathComponent(fileName)
         
         do {
             try data.write(to: fileURL)
@@ -27,7 +27,7 @@ final class BackgroundImageHelper {
     }
     
     static func loadImageFromDisk(_ fileName: String) -> UIImage? {
-        let fileURL = getDocumentsDirectory().appendingPathComponent(fileName)
+        let fileURL = getDocumentsDir().appendingPathComponent(fileName)
         
         // Check whether the file exists
         guard FileManager.default.fileExists(atPath: fileURL.path) else {
