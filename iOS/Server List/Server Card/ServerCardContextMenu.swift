@@ -2,7 +2,7 @@ import ScrechKit
 import PteroNet
 
 struct ServerCardContextMenu: View {
-    @Environment(\.openURL) private var openUrl
+    @Environment(\.openURL) private var openURL
     
     private let server: ServerAttributes
     @Binding private var showSafari: Bool
@@ -100,9 +100,9 @@ struct ServerCardContextMenu: View {
             return
         }
         
-        openUrl(url) { success in
+        openURL(url) { success in
             if !success {
-                openUrl(fallbackURL)
+                openURL(fallbackURL)
             }
         }
     }

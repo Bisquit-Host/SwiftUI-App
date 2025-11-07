@@ -15,7 +15,6 @@ struct Guide: View {
     ]
     
     @State private var step = 0
-    @State private var apiKey = ""
     @ScaledMetric private var fontSize = 18
     
     var body: some View {

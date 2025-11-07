@@ -3,7 +3,7 @@ import PteroNet
 
 struct BackupContextMenuControlGroup: View {
     @Environment(BackupVM.self) private var vm
-    @Environment(BackupCardVM.self) private var cardVm
+    @Environment(BackupCardVM.self) private var cardVM
     
     private let backup: BackupAttributes
     
@@ -16,7 +16,7 @@ struct BackupContextMenuControlGroup: View {
         
         Button("Download", systemImage: "square.and.arrow.down") {
             Task {
-                await cardVm.downloadBackup(uuid)
+                await cardVM.downloadBackup(uuid)
             }
         }
         

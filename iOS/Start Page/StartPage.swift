@@ -3,7 +3,6 @@ import SwiftData
 
 struct StartPage: View {
     @State var vm = StartPageVM()
-    @Environment(NavState.self) private var nav
     @EnvironmentObject var store: ValueStore
     
     @Environment(\.modelContext) var modelContext
@@ -120,6 +119,5 @@ struct StartPage: View {
         StartPage()
     }
     .darkSchemePreferred()
-    .environment(NavState())
     .environmentObject(ValueStore())
 }

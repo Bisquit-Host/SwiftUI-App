@@ -8,17 +8,11 @@ struct FileView: View {
     private let id, root: String
     private let file: FileAttributes
     
-    init(
-        _ id: String,
-        file: FileAttributes,
-        at root: String
-    ) {
+    init(_ id: String, file: FileAttributes, at root: String) {
         self.id = id
         self.file = file
         self.root = root
     }
-    
-    @State private var isExtended = false
     
     var body: some View {
         let name = file.name

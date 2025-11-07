@@ -5,7 +5,6 @@ struct AccountView: View {
     
     @State private var sheetDisable2Fa = false
     @State private var sheetEnable2Fa = false
-    @State private var selectedTab = "Account"
     
     var body: some View {
         List {

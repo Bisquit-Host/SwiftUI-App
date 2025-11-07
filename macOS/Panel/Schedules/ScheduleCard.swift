@@ -2,8 +2,6 @@ import SwiftUI
 import PteroNet
 
 struct ScheduleCard: View {
-    @Environment(ScheduleVM.self) private var vm
-    
     private let schedule: ScheduleAttributes
     
     init(_ schedule: ScheduleAttributes) {

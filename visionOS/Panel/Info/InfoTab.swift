@@ -4,7 +4,6 @@ import PteroNet
 struct InfoTab: View {
     private var logVM: LogVM
     @Environment(PanelVM.self) private var vm
-    @Environment(\.openURL) private var openUrl
     
     private let server: ServerAttributes
     

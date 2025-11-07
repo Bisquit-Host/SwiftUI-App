@@ -4,7 +4,7 @@ import PteroNet
 struct SubdomainCard: View {
     @Environment(SubdomainVM.self) private var vm
     
-    @Environment(\.openURL) private var openUrl
+    @Environment(\.openURL) private var openURL
     
     let subdomain: SubdomainAttributes
     
@@ -65,9 +65,9 @@ struct SubdomainCard: View {
             return
         }
         
-        openUrl(url) { success in
+        openURL(url) { success in
             if !success {
-                openUrl(fallbackUrl)
+                openURL(fallbackUrl)
             }
         }
     }

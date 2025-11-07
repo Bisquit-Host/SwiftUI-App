@@ -12,7 +12,6 @@ struct ContactsListView: View {
     
     @State private var contacts: [CNContact] = []
     @State private var searchField = ""
-    @State private var authStatus: CNAuthorizationStatus = .notDetermined
     @State private var showPicker = false
     
     private var filteredContacts: [CNContact] {

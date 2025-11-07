@@ -2,7 +2,7 @@ import ScrechKit
 import PteroNet
 
 struct InfoTabAllocation: View {
-    @Environment(\.openURL) private var openUrl
+    @Environment(\.openURL) private var openURL
     
     private let server: ServerAttributes
     
@@ -79,9 +79,9 @@ struct InfoTabAllocation: View {
             return
         }
         
-        openUrl(url) { success in
+        openURL(url) { success in
             if !success {
-                openUrl(fallbackURL)
+                openURL(fallbackURL)
             }
         }
     }

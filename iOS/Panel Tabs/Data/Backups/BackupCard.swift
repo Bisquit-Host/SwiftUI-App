@@ -3,13 +3,13 @@ import PteroNet
 
 struct BackupCard: View {
     @Environment(BackupVM.self) private var vm
-    @State private var cardVm: BackupCardVM
+    @State private var cardVM: BackupCardVM
     
     private let backup: BackupAttributes
     
     init(_ id: String, _ backup: BackupAttributes) {
         self.backup = backup
-        self.cardVm = BackupCardVM(id)
+        self.cardVM = BackupCardVM(id)
     }
     
     var body: some View {
@@ -62,11 +62,11 @@ struct BackupCard: View {
             .foregroundStyle(.foreground)
         }
 #if os(tvOS)
-        .sheet($cardVm.showSafari) {
-            QRCodeView(cardVm.url)
+        .sheet($cardVM.showSafari) {
+            QRCodeView(cardVM.url)
         }
 #else
-        .safariCover($cardVm.showSafari, url: cardVm.url)
+        .safariCover($cardVM.showSafari, url: cardVM.url)
         .swipeActions {
             Button(role: .destructive) {
                 Task {
@@ -89,7 +89,7 @@ struct BackupCard: View {
         .contextMenu {
             BackupContextMenu(backup)
                 .environment(vm)
-                .environment(cardVm)
+                .environment(cardVM)
         }
     }
 }
