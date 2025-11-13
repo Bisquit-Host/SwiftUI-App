@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 
 struct DiscoverCard<Label: View>: View {
     private let url: String

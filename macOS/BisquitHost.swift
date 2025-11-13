@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 import SwiftData
 import TipKit
 import GameKit

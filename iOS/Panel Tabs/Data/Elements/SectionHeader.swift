@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 
 struct SectionHeader: View {
     private let name: LocalizedStringKey
