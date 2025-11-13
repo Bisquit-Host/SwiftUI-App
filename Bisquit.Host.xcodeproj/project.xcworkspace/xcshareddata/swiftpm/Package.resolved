@@ -1,5 +1,5 @@
 {
-  "originHash" : "f048dff6c6b66ecb53d8dcbd0f628ca7f9e945bb4aed8791fbcae50e99cf1f02",
+  "originHash" : "1e2ca6f28f0e32ac91c587aced4e28c8cb4ebae2cb2974521e12a27ea4a5ae58",
   "pins" : [
     {
       "identity" : "alertkit",
@@ -16,7 +16,7 @@
       "location" : "https://github.com/TopScrech/Appearance",
       "state" : {
         "branch" : "main",
-        "revision" : "ffd455ead37ffdf6809381083b85192a909eb001"
+        "revision" : "1a8f0bc05a667f1079c9f7b3b31840f60abd7db5"
       }
     },
     {
@@ -25,7 +25,7 @@
       "location" : "https://github.com/TopScrech/Audio-Visualizer",
       "state" : {
         "branch" : "main",
-        "revision" : "1043d3050559752e5924c4aec6f60037ddf6764e"
+        "revision" : "6bbf43743cf5c3bc466510edd6fd5660a4cf498f"
       }
     },
     {
@@ -43,7 +43,7 @@
       "location" : "https://github.com/TopScrech/GaypadKit",
       "state" : {
         "branch" : "main",
-        "revision" : "e81c0e3aea38d8acbc7b8e42bd4f35bdeca002e2"
+        "revision" : "4cb8773da83ffc95ed2c06a7a7aeb6cc4fc4bc45"
       }
     },
     {
@@ -60,8 +60,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/onevcat/Kingfisher",
       "state" : {
-        "revision" : "2ef543ee21d63734e1c004ad6c870255e8716c50",
-        "version" : "7.12.0"
+        "revision" : "4d75de347da985a70c63af4d799ed482021f6733",
+        "version" : "8.6.1"
       }
     },
     {
@@ -70,7 +70,7 @@
       "location" : "https://github.com/TopScrech/LaunchAtLogin",
       "state" : {
         "branch" : "main",
-        "revision" : "2bf099bd06f8f8de4989cbb7dfd721edd585bb0b"
+        "revision" : "b6d02bbe76f22ce9c722ec263939edd01ea8f670"
       }
     },
     {
@@ -79,7 +79,7 @@
       "location" : "https://github.com/TopScrech/MailCover",
       "state" : {
         "branch" : "main",
-        "revision" : "c33771592360b836f114ebe32ad660590c7afc28"
+        "revision" : "6be9a338e65877e2ecdb87111afc92e6902daf21"
       }
     },
     {
@@ -97,7 +97,7 @@
       "location" : "https://github.com/Bisquit-Host/PteroNet",
       "state" : {
         "branch" : "main",
-        "revision" : "7cadaa0019a9ce0381d58ae5cce5aafc6b8e2ce3"
+        "revision" : "6a97bb8ad1eaafba1a719b43784cbb465b9ae7a0"
       }
     },
     {
@@ -106,7 +106,7 @@
       "location" : "https://github.com/TopScrech/QuickLooking",
       "state" : {
         "branch" : "main",
-        "revision" : "7d1e23f833513c707eec6ccf536c3ac91024be8c"
+        "revision" : "559bb69febaad7846b78f2fc789dce4e8a36134e"
       }
     },
     {
@@ -115,7 +115,7 @@
       "location" : "https://github.com/TopScrech/SafariCover",
       "state" : {
         "branch" : "main",
-        "revision" : "53823cbe9ca2ab959958ef42b935a988d07dff91"
+        "revision" : "395397e46cb476106fcd8436f955bba3eb0963fa"
       }
     },
     {
@@ -124,7 +124,7 @@
       "location" : "https://github.com/TopScrech/ScrechKit",
       "state" : {
         "branch" : "main",
-        "revision" : "28f4be08c8801f324b0c6e107edf5982291296f6"
+        "revision" : "8ac8f70352b4a4b699ea48412e2692e583bb5354"
       }
     },
     {
@@ -152,6 +152,15 @@
       "state" : {
         "revision" : "0c0290ff6b24942dadb83a929ffaaa1481df04a2",
         "version" : "1.1.1"
+      }
+    },
+    {
+      "identity" : "vortex",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/twostraws/Vortex",
+      "state" : {
+        "revision" : "9d9d9016ceace579455f01f8e0bd59facae7d252",
+        "version" : "1.0.4"
       }
     }
   ],

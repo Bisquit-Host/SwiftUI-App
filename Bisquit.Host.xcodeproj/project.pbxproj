@@ -111,6 +111,7 @@
 		F3038B962E04467F0085E438 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35C4D5F2E03999B00720E74 /* MultipartFormData.swift */; };
 		F3038B972E0446840085E438 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35C4D5F2E03999B00720E74 /* MultipartFormData.swift */; };
 		F304498A29E990E9006DC0C7 /* CloudKeyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304498929E990E9006DC0C7 /* CloudKeyList.swift */; };
+		F304E9072EC6433C0069A73D /* Vortex in Frameworks */ = {isa = PBXBuildFile; productRef = F304E9062EC6433C0069A73D /* Vortex */; };
 		F306B9ED29BBDA770008C2D4 /* DevSettingsFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F306B9EC29BBDA770008C2D4 /* DevSettingsFooter.swift */; };
 		F30860142B002B31004D776A /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F30860132B002B31004D776A /* PteroNet */; };
 		F30860162B002B93004D776A /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F30860152B002B93004D776A /* PteroNet */; };
@@ -2373,6 +2374,7 @@
 				F328D8592A82402A0038512F /* Algorithms in Frameworks */,
 				F3D6776B2DD7EBC100721DE8 /* Highlightr in Frameworks */,
 				F318FE452A15925200DE0A5C /* OrderedCollections in Frameworks */,
+				F304E9072EC6433C0069A73D /* Vortex in Frameworks */,
 				F32675862A01B69600A026DC /* SafariCover in Frameworks */,
 			);
 		};
@@ -4244,6 +4246,7 @@
 				F3F60A652DEB93C300A15737 /* ScrechKit */,
 				F3038B942E0443560085E438 /* QuickLooking */,
 				F3F5AD692E885E4B007AD97D /* Appearance */,
+				F304E9062EC6433C0069A73D /* Vortex */,
 			);
 			productName = Bisquit.Host;
 			productReference = F31BA5232958FF7C0006D126 /* Bisquit.Host.app */;
@@ -4602,6 +4605,7 @@
 				F36B14552DC39DD8008C1AF9 /* XCRemoteSwiftPackageReference "GaypadKit" */,
 				F3D677692DD7EBC100721DE8 /* XCRemoteSwiftPackageReference "Highlightr" */,
 				F3F5AD682E885E4B007AD97D /* XCRemoteSwiftPackageReference "Appearance" */,
+				F304E9052EC6433C0069A73D /* XCRemoteSwiftPackageReference "Vortex" */,
 			);
 			preferredProjectObjectVersion = 90;
 			productRefGroup = F31BA5242958FF7C0006D126 /* Products */;
@@ -7513,6 +7517,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F304E9052EC6433C0069A73D /* XCRemoteSwiftPackageReference "Vortex" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/Vortex";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.4;
+			};
+		};
 		F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "PteroNet" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Bisquit-Host/PteroNet";
@@ -7526,7 +7538,7 @@
 			repositoryURL = "https://github.com/apple/swift-collections.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				minimumVersion = 1.2.1;
 			};
 		};
 		F32675842A01B69600A026DC /* XCRemoteSwiftPackageReference "SafariCover" */ = {
@@ -7542,7 +7554,7 @@
 			repositoryURL = "https://github.com/apple/swift-algorithms.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				minimumVersion = 1.2.1;
 			};
 		};
 		F335CA042C63E86D006C71C6 /* XCRemoteSwiftPackageReference "DeviceKit" */ = {
@@ -7550,7 +7562,7 @@
 			repositoryURL = "https://github.com/devicekit/DeviceKit";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.4.0;
+				minimumVersion = 5.7.0;
 			};
 		};
 		F33C2ABF2C69168C002FD150 /* XCRemoteSwiftPackageReference "QuickLooking" */ = {
@@ -7566,7 +7578,7 @@
 			repositoryURL = "https://github.com/EmergeTools/Pow";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.2;
+				minimumVersion = 1.0.5;
 			};
 		};
 		F352AF992A4EE707004AD489 /* XCRemoteSwiftPackageReference "AlertKit" */ = {
@@ -7574,7 +7586,7 @@
 			repositoryURL = "https://github.com/sparrowcode/AlertKit";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
+				minimumVersion = 5.1.9;
 			};
 		};
 		F358F02C2D2C1C5500BCC07B /* XCRemoteSwiftPackageReference "LaunchAtLogin" */ = {
@@ -7606,7 +7618,7 @@
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 7.6.0;
+				minimumVersion = 8.6.1;
 			};
 		};
 		F3CBC6D32D9A025A0081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */ = {
@@ -7622,7 +7634,7 @@
 			repositoryURL = "https://github.com/raspu/Highlightr";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.2.1;
+				minimumVersion = 2.3.0;
 			};
 		};
 		F3E7BDD82A315C9D00CD03C3 /* XCRemoteSwiftPackageReference "MailCover" */ = {
@@ -7653,6 +7665,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F33C2ABF2C69168C002FD150 /* XCRemoteSwiftPackageReference "QuickLooking" */;
 			productName = QuickLooking;
+		};
+		F304E9062EC6433C0069A73D /* Vortex */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F304E9052EC6433C0069A73D /* XCRemoteSwiftPackageReference "Vortex" */;
+			productName = Vortex;
 		};
 		F30860132B002B31004D776A /* PteroNet */ = {
 			isa = XCSwiftPackageProductDependency;
