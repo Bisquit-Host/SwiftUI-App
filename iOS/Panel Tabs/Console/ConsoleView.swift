@@ -17,7 +17,9 @@ struct ConsoleView: View {
                 .padding(.bottom, 10)
                 .textSelection(.enabled)
                 .task {
-                    delay {
+                    Task {
+                        try await Task.sleep(for: .seconds(1))
+                        
                         if let _ = panelVM.searchedMessages.last {
                             withAnimation {
                                 proxy.scrollTo(panelVM.searchedMessages.count - 1, anchor: .bottom)

@@ -1,10 +1,10 @@
 import AppIntents
 
 struct RefreshIntent: AppIntent {
-    static var title: LocalizedStringResource = "Refresh"
-    static var description = IntentDescription("Refreshes the content")
+    static let title: LocalizedStringResource = "Refresh"
+    static let description = IntentDescription("Refreshes the content")
     
-    static var isDiscoverable = false
+    static let isDiscoverable = false
     
     init() {}
     

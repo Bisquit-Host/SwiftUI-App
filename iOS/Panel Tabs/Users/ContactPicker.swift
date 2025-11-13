@@ -92,7 +92,7 @@ struct ContactsListView: View {
                     }
                 }
                 
-                main {
+                Task { @MainActor in
                     self.contacts = contactsWithEmail
                 }
             } catch {

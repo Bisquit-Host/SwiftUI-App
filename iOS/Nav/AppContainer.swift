@@ -69,7 +69,8 @@ struct AppContainer: View {
             if newPhase == .inactive {
                 showBadge = false
             } else if newPhase == .active {
-                delay(0.5) {
+                Task {
+                    try await Task.sleep(for: .seconds(0.5))
                     showBadge = true
                 }
             }

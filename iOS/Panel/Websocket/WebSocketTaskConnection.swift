@@ -1,7 +1,7 @@
 import ScrechKit
 import PteroNet
 
-final class WebSocketTaskConnection: NSObject, WebSocketConnection, URLSessionWebSocketDelegate {
+final class WebSocketTaskConnection: NSObject, WebSocketConnection, @preconcurrency URLSessionWebSocketDelegate {
     private let url: URL
     private let token: String
     
@@ -10,11 +10,7 @@ final class WebSocketTaskConnection: NSObject, WebSocketConnection, URLSessionWe
         self.token = token
         super.init()
         
-        urlSession = URLSession(
-            configuration: .default,
-            delegate: self,
-            delegateQueue: delegateQueue
-        )
+        urlSession = URLSession(configuration: .default, delegate: self, delegateQueue: delegateQueue)
         
         var request = URLRequest(url: url)
         request.setValue("https://mgr.bisquit.host", forHTTPHeaderField: "Origin")
@@ -29,10 +25,7 @@ final class WebSocketTaskConnection: NSObject, WebSocketConnection, URLSessionWe
     
     private var state: WebSocketConnectionState = .disconnected {
         didSet {
-            delegate?.onStateChanged(
-                connection: self,
-                state: state
-            )
+            delegate?.onStateChanged(connection: self, state: state)
         }
     }
     
@@ -45,20 +38,18 @@ final class WebSocketTaskConnection: NSObject, WebSocketConnection, URLSessionWe
         
         webSocketTask.send(.string("{\"event\":\"auth\",\"args\":[\"\(token)\"]}")) { error in
             if let error {
-                self.delegate?.onError(
-                    connection: self,
-                    error: error
-                )
+                Task { @MainActor in
+                    self.delegate?.onError(connection: self, error: error)
+                }
             }
         }
         
         delay(0.5) {
             webSocketTask.send(.string("{\"event\":\"send logs\",\"args\":[\"null\"]}")) { error in
                 if let error {
-                    self.delegate?.onError(
-                        connection: self,
-                        error: error
-                    )
+                    Task { @MainActor in
+                        self.delegate?.onError(connection: self, error: error)
+                    }
                 }
             }
         }
@@ -93,10 +84,9 @@ final class WebSocketTaskConnection: NSObject, WebSocketConnection, URLSessionWe
         
         webSocketTask.send(.string(text)) { error in
             if let error {
-                self.delegate?.onError(
-                    connection: self,
-                    error: error
-                )
+                Task { @MainActor in
+                    self.delegate?.onError(connection: self, error: error)
+                }
             }
         }
     }
@@ -108,41 +98,36 @@ final class WebSocketTaskConnection: NSObject, WebSocketConnection, URLSessionWe
         
         webSocketTask.send(.data(data)) { error in
             if let error {
-                self.delegate?.onError(connection: self, error: error)
+                Task { @MainActor in
+                    self.delegate?.onError(connection: self, error: error)
+                }
             }
         }
     }
     
     func listen() {
         webSocketTask.receive { [weak self] result in
-            switch result {
-            case .failure(let error):
-                self?.delegate?.onError(
-                    connection: self!,
-                    error: error
-                )
-                
-                self?.disconnect()
-                
-            case .success(let message):
-                switch message {
-                case .string(let text):
-                    self?.delegate?.onTextMessage(
-                        connection: self!,
-                        message: text
-                    )
+            Task { @MainActor in
+                switch result {
+                case .failure(let error):
+                    self?.delegate?.onError(connection: self!, error: error)
                     
-                case .data(let data):
-                    self?.delegate?.onDataMessage(
-                        connection: self!,
-                        message: data
-                    )
+                    self?.disconnect()
                     
-                default:
-                    fatalError("Received unknown message type")
+                case .success(let message):
+                    switch message {
+                    case .string(let text):
+                        self?.delegate?.onTextMessage(connection: self!, message: text)
+                        
+                    case .data(let data):
+                        self?.delegate?.onDataMessage(connection: self!, message: data)
+                        
+                    default:
+                        fatalError("Received unknown message type")
+                    }
+                    
+                    self?.listen()
                 }
-                
-                self?.listen()
             }
         }
     }

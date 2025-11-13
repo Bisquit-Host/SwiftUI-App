@@ -6,9 +6,9 @@ enum PowerSignalAppEnum: String, AppEnum {
          restart,
          kill
     
-    static var typeDisplayRepresentation = TypeDisplayRepresentation(name: "Power Signal")
+    static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Power Signal")
     
-    static var caseDisplayRepresentations: [Self: DisplayRepresentation] = [
+    static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
         .start:   "Start",
         .stop:    "Stop",
         .restart: "Restart",

@@ -39,7 +39,9 @@ final class QuickLookViewVM {
                 
                 try FileManager.default.copyItem(at: location, to: destinationURL)
                 
-                self.fileURL = destinationURL
+                Task { @MainActor in
+                    self.fileURL = destinationURL
+                }
             } catch {
                 print("Error during file copy:", error.localizedDescription)
             }

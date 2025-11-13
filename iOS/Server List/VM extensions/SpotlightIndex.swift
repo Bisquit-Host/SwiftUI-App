@@ -1,5 +1,5 @@
 import PteroNet
-import CoreSpotlight
+@preconcurrency import CoreSpotlight
 
 extension ServerListVM {
 #if canImport(CoreSpotlight)

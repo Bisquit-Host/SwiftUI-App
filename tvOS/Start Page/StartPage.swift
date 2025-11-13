@@ -54,7 +54,9 @@ struct StartPage: View {
         }
         .onFirstAppear {
             if !keys.isEmpty {
-                delay(0.5) {
+                Task {
+                    try await Task.sleep(for: .seconds(0.5))
+                    
                     vm.sheetCloudKeys = true
                 }
             } else {

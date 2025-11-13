@@ -134,29 +134,27 @@ final class FileTabVM: ObservableObject {
         mimeType: String,
         fileUrl: URL
     ) {
-        main {
+        withAnimation {
+            self.isUploading = true
+        }
+        
+        self.fileUploader.uploadFile(
+            urlString + "&directory=\(root.applyPercentEncoding())",
+            name: name,
+            mimeType: mimeType,
+            fileUrl: fileUrl
+        )
+        
+        Task {
+            try await Task.sleep(for: .seconds(2))
+            
             withAnimation {
-                self.isUploading = true
+                self.isUploading = false
             }
             
-            self.fileUploader.uploadFile(
-                urlString + "&directory=\(root.applyPercentEncoding())",
-                name: name,
-                mimeType: mimeType,
-                fileUrl: fileUrl
-            )
+            self.uploadProgress = 0
             
-            delay(2) {
-                withAnimation {
-                    self.isUploading = false
-                }
-                
-                self.uploadProgress = 0
-                
-                Task {
-                    await self.fetchFiles(root)
-                }
-            }
+            await self.fetchFiles(root)
         }
     }
     
@@ -257,10 +255,7 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func duplicateFile(
-        _ file: String,
-        at path: String
-    ) async {
+    func duplicateFile(_ file: String, at path: String) async {
         do {
             try await fileDuplicateAPI(id, file: file, at: path)
             await fetchFiles(path)
@@ -288,10 +283,7 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func createFolder(
-        _ file: String,
-        at path: String
-    ) async {
+    func createFolder(_ file: String, at path: String) async {
         do {
             try await fileCreateFolderAPI(id, file: file, at: path)
             
@@ -311,9 +303,7 @@ final class FileTabVM: ObservableObject {
             
             await fetchFiles(path)
             
-            main {
-                onSuccess()
-            }
+            onSuccess()
         } catch {
             SystemAlert.error(error)
         }

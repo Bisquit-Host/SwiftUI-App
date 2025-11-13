@@ -2,8 +2,8 @@ import AppIntents
 import PteroNet
 
 struct ChangePower: AppIntent, PredictableIntent {
-    static var title: LocalizedStringResource = "Change Power"
-    static var description = IntentDescription("Sends a power signal to the server", searchKeywords: ["Minecraft"])
+    static let title: LocalizedStringResource = "Change Power"
+    static let description = IntentDescription("Sends a power signal to the server", searchKeywords: ["Minecraft"])
     
     @Parameter(title: "Server id", optionsProvider: ServerOptionsProvider())
     var id: String
