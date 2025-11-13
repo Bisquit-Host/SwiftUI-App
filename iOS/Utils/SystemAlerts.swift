@@ -19,14 +19,12 @@ final class SystemAlert {
     }
     
     static func networkError() {
-        main {
-            AlertKitAPI.present(
-                title: NSLocalizedString("Network Error", comment: ""),
-                icon: .error,
-                style: .iOS17AppleMusic,
-                haptic: .error
-            )
-        }
+        AlertKitAPI.present(
+            title: NSLocalizedString("Network Error", comment: ""),
+            icon: .error,
+            style: .iOS17AppleMusic,
+            haptic: .error
+        )
     }
     
     @MainActor
@@ -91,14 +89,12 @@ final class SystemAlert {
             
             print("Error: \(error.status) - \(error.code)")
             
-            main {
-                AlertKitAPI.present(
-                    title: title,
-                    icon: .error,
-                    style: .iOS17AppleMusic,
-                    haptic: .error
-                )
-            }
+            AlertKitAPI.present(
+                title: title,
+                icon: .error,
+                style: .iOS17AppleMusic,
+                haptic: .error
+            )
         }
 #endif
         networkCallError(#function, error)

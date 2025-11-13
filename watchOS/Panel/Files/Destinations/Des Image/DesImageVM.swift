@@ -25,7 +25,9 @@ final class ImageFileVM {
         KingfisherManager.shared.cache.retrieveImage(forKey: path) { result in
             switch result {
             case .success(let imageResult):
-                self.cachedImage = imageResult.image
+                Task { @MainActor in
+                    self.cachedImage = imageResult.image
+                }
                 
             case .failure:
                 break

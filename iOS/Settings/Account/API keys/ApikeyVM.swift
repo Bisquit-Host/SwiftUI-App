@@ -25,7 +25,7 @@ final class ApikeyVM {
             
             if let token {
                 Pasteboard.copy(id + token)
-                await SystemAlert.copied()
+                SystemAlert.copied()
             }
             
             await fetchKeys()

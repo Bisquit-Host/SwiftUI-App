@@ -120,11 +120,14 @@ struct MapSection: View {
             switch result {
             case .success(let pingDuration):
                 let ping = Int(round(pingDuration * 1000))
-                pings.append(ping)
                 
-                if pings.count > 1 {
-                    self.ping = pings.min()
-                    pings = []
+                Task { @MainActor in
+                    pings.append(ping)
+                    
+                    if pings.count > 1 {
+                        self.ping = pings.min()
+                        pings = []
+                    }
                 }
             default:
                 break

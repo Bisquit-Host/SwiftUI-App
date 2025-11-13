@@ -1,8 +1,8 @@
 import AppIntents
 
 struct SendCommand: AppIntent, PredictableIntent {    
-    static var title: LocalizedStringResource = "Send Command"
-    static var description = IntentDescription("Sends a command to the server", searchKeywords: ["Minecraft"])
+    static let title: LocalizedStringResource = "Send Command"
+    static let description = IntentDescription("Sends a command to the server", searchKeywords: ["Minecraft"])
     
     @Parameter(title: "Server id", optionsProvider: ServerOptionsProvider())
     var id: String

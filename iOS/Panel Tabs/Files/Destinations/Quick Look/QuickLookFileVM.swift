@@ -48,12 +48,10 @@ final class QuickLookFileVM {
                 
                 try fm.copyItem(at: location, to: destinationUrl)
                 
-                main {
-                    Task {
-                        await self.loadAndCheckImage(destinationUrl)
-                        await self.fetchMetadata(destinationUrl)
-                        self.fileUrl = destinationUrl
-                    }
+                Task { @MainActor in
+                    await self.loadAndCheckImage(destinationUrl)
+                    await self.fetchMetadata(destinationUrl)
+                    self.fileUrl = destinationUrl
                 }
             } catch {
                 print("Error during file copy:", error.localizedDescription)

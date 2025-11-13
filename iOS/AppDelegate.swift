@@ -1,6 +1,6 @@
 import SwiftUI
 import PteroNet
-import CryptoKit
+@preconcurrency import CryptoKit
 
 #if canImport(Contacts)
 import Contacts
@@ -20,12 +20,14 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     private func registerForPushNotifications(_ application: UIApplication) {
         let options: UNAuthorizationOptions = [.alert, .sound, .badge]
         
-        UNUserNotificationCenter.current().requestAuthorization(options: options) { [weak self] granted, _ in
+        UNUserNotificationCenter.current().requestAuthorization(options: options) { granted, _ in
             guard granted else {
                 return
             }
             
-            self?.getNotificationSettings(application: application)
+            Task { @MainActor in
+                self.getNotificationSettings(application: application)
+            }
         }
     }
     

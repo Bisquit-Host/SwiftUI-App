@@ -76,9 +76,9 @@ struct BisquitHost: App {
             }
         }
         .backgroundTask(.appRefresh("host.bisquit.Bisquit-Host.Background-Task")) {
-            BackgroundTaskManager.scheduleAppRefresh()
+            await BackgroundTaskManager.scheduleAppRefresh()
             
-            ServerListVM().loadServers()
+            await ServerListVM().loadServers()
             
             //Create an operation that performs the main part of the background task
             //let operation = RefreshAppContentsOperation()
@@ -120,7 +120,8 @@ struct BisquitHost: App {
             return
         }
 #if !os(macOS) && !os(visionOS)
-        delay(0.4) {
+        Task {
+            try await Task.sleep(for: .seconds(0.4))
             nav.navigate(.toPanel(id))
         }
 #endif

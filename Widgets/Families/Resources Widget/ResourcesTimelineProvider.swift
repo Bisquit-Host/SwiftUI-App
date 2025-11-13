@@ -28,7 +28,7 @@ struct ResourcesTimelineProvider: IntentTimelineProvider {
     func getTimeline(
         for configuration: CryptoPriceConfigurationIntent,
         in context: Context,
-        completion: @escaping (Timeline<ResourcesUsageEntry>) -> ()
+        completion: @escaping @Sendable (Timeline<ResourcesUsageEntry>) -> ()
     ) {
         // Extract info from config
         
@@ -40,7 +40,7 @@ struct ResourcesTimelineProvider: IntentTimelineProvider {
             return
         }
         
-        Task {
+        Task { @MainActor in
             let usage = await Networking.fetchResourceUsage(id)
             
             // Create Entry using based on user selected config & fetched info

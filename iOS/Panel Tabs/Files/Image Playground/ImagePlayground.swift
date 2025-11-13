@@ -92,8 +92,10 @@ struct ImagePlayground: View {
                 .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
                 .padding(5)
                 
+                let hasSelectedImage = selectedImage != nil
+                
                 PhotosPicker(selection: $selectedPhotoItem, matching: .images) {
-                    Image(systemName: selectedImage == nil ? "photo.badge.plus" : "photo.badge.checkmark")
+                    Image(systemName: hasSelectedImage ? "photo.badge.plus" : "photo.badge.checkmark")
                         .symbolRenderingMode(.multicolor)
                         .title2(.semibold)
                         .padding(.horizontal)

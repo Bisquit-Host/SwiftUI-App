@@ -13,7 +13,7 @@ public func tcpPing(
     host: String,
     port: UInt16,
     timeout: TimeInterval = 5,
-    completion: @escaping (Result<TimeInterval, Error>) -> Void
+    completion: @escaping @Sendable (Result<TimeInterval, Error>) -> Void
 ) {
     let startTime = Date()
     

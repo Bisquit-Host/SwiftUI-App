@@ -6,7 +6,6 @@ final class FolderPathVM {
         let string = "\(withHomeContainer ? "/home/container/" : "")\(path)"
         
         Pasteboard.copy(string)
-        
-        await SystemAlert.copied()
+        SystemAlert.copied()
     }
 }

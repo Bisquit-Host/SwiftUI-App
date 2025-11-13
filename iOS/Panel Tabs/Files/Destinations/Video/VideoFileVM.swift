@@ -49,10 +49,10 @@ final class VideoFileVM {
                 
                 try fm.moveItem(at: location, to: fileURL)
                 
-#if !os(watchOS) && !os(tvOS)
-                let processor = SensitivityAnalyzer()
-                
                 Task { @MainActor in
+#if !os(watchOS) && !os(tvOS)
+                    let processor = SensitivityAnalyzer()
+                    
                     await processor.checkVideo(fileURL) { blur in
                         self.isSensitive = blur
                         
@@ -60,10 +60,10 @@ final class VideoFileVM {
                             self.localVideoUrl = fileURL
                         }
                     }
-                }
 #else
-                self.localVideoUrl = fileURL
+                    self.localVideoUrl = fileURL
 #endif
+                }
             } catch {
                 print("Error during file move:" + error.localizedDescription)
             }
