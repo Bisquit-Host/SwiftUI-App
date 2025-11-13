@@ -23,14 +23,15 @@ struct ServerList: View {
         .safariCover($vm.showBilling, url: "https://my.bisquit.host")
         .overlay {
             if isBoundaryDay() {
-                VortexView(.snow.makeUniqueCopy()) {
+                VortexView(.slowSnow.makeUniqueCopy()) {
                     Circle()
-                        .fill(.white)
+                        .fill(.white.opacity(0.8))
                         .frame(width: 24)
                         .blur(radius: 5)
                         .tag("circle")
                 }
                 .ignoresSafeArea()
+                .allowsHitTesting(false)
             }
         }
         .background {

@@ -114,6 +114,9 @@
 		F304E9072EC6433C0069A73D /* Vortex in Frameworks */ = {isa = PBXBuildFile; productRef = F304E9062EC6433C0069A73D /* Vortex */; };
 		F304E9092EC6440B0069A73D /* Vortex in Frameworks */ = {isa = PBXBuildFile; productRef = F304E9082EC6440B0069A73D /* Vortex */; };
 		F304E90B2EC645220069A73D /* Vortex in Frameworks */ = {isa = PBXBuildFile; productRef = F304E90A2EC645220069A73D /* Vortex */; };
+		F304E91B2EC6A3870069A73D /* slowSnow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304E91A2EC6A3870069A73D /* slowSnow.swift */; };
+		F304E91C2EC6A3870069A73D /* slowSnow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304E91A2EC6A3870069A73D /* slowSnow.swift */; };
+		F304E91D2EC6A3870069A73D /* slowSnow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304E91A2EC6A3870069A73D /* slowSnow.swift */; };
 		F306B9ED29BBDA770008C2D4 /* DevSettingsFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F306B9EC29BBDA770008C2D4 /* DevSettingsFooter.swift */; };
 		F30860142B002B31004D776A /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F30860132B002B31004D776A /* PteroNet */; };
 		F30860162B002B93004D776A /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F30860152B002B93004D776A /* PteroNet */; };
@@ -1726,6 +1729,7 @@
 		F303214A2B3FEA45002A73B8 /* ServerSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerSettingsView.swift; sourceTree = "<group>"; };
 		F304498629E98AE4006DC0C7 /* iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOS.entitlements; sourceTree = "<group>"; };
 		F304498929E990E9006DC0C7 /* CloudKeyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKeyList.swift; sourceTree = "<group>"; };
+		F304E91A2EC6A3870069A73D /* slowSnow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = slowSnow.swift; sourceTree = "<group>"; };
 		F306B9EC29BBDA770008C2D4 /* DevSettingsFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevSettingsFooter.swift; sourceTree = "<group>"; };
 		F30E42F52EBBA25D0033FBA6 /* DebugSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugSettings.swift; sourceTree = "<group>"; };
 		F30E42F72EBBB55B0033FBA6 /* InfiniteScrollHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteScrollHelper.swift; sourceTree = "<group>"; };
@@ -2694,6 +2698,7 @@
 			isa = PBXGroup;
 			children = (
 				F31578B229675F5D0016A600 /* ServerList.swift */,
+				F304E91A2EC6A3870069A73D /* slowSnow.swift */,
 				F352AF962A4EDB1D004AD489 /* ServerListVM.swift */,
 				F337B3A729BC6B5400CC1195 /* ServerListGrid.swift */,
 				F353D4FA2D980A5000EC9F3A /* ServerListTips.swift */,
@@ -5110,6 +5115,7 @@
 				F31BA596295901F70006D126 /* PanelView.swift in Sources */,
 				F3FA61542A1F8DB500A65AE1 /* UploadMenu.swift in Sources */,
 				F3880A262A92A15E0052A978 /* ContactManager.swift in Sources */,
+				F304E91B2EC6A3870069A73D /* slowSnow.swift in Sources */,
 				F3DC4E2229AEAF3E00D27EC5 /* CredentialsButton.swift in Sources */,
 				F32FD0312CF606960038D62C /* BackupContextMenuControlGroup.swift in Sources */,
 				F373CD6E2D88A386008B64BE /* IntroCard.swift in Sources */,
@@ -5400,6 +5406,7 @@
 				F36D53482A05B939007324C6 /* SpriteKitPyzh.swift in Sources */,
 				F30088F82B3B55D10051476C /* UserInvitationView.swift in Sources */,
 				F3BC03C82B20675E0011F98A /* NewScheduleSheet.swift in Sources */,
+				F304E91D2EC6A3870069A73D /* slowSnow.swift in Sources */,
 				F389BB622A05B58E00911EBF /* ServerCardVM.swift in Sources */,
 				F325F7072A54C4BC00E89EC4 /* SystemAlerts.swift in Sources */,
 				F36B14AB2DC632D9008C1AF9 /* UserDefaults.swift in Sources */,
@@ -5814,6 +5821,7 @@
 				F3A7CF1B2C8C4E4A00413400 /* PlanViewTopbar.swift in Sources */,
 				F3255E172C9049AF008E04DE /* SettingsButton.swift in Sources */,
 				F3A7CF632C8CA5B900413400 /* CloudKeyCard.swift in Sources */,
+				F304E91C2EC6A3870069A73D /* slowSnow.swift in Sources */,
 				F34851C82E72E4F50002C72E /* UniversalPlanList.swift in Sources */,
 				F36B14AA2DC632D9008C1AF9 /* UserDefaults.swift in Sources */,
 				F3202CE12D562A620030B3CC /* PlanListGame.swift in Sources */,
