@@ -164,14 +164,11 @@ final class PanelVM {
     }
     
     func connectWebSocket(_ data: ConsoleDetails) {
-        connection = WebSocketTaskConnection(
-            data.socket,
-            token: data.token
-        )
+        connection = WebSocketTaskConnection(data.socket, token: data.token)
         
-        delegate = WebsocketDelegate { [weak self] message in
+        delegate = WebsocketDelegate { message in
             Task {
-                await self?.appendMessage(message)
+                await self.appendMessage(message)
             }
         }
         
