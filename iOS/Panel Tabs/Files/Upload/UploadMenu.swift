@@ -100,8 +100,8 @@ struct UploadMenu: View {
                 guard
                     let identifier = item.supportedContentTypes.first?
                         .identifier
-                        .replacingOccurrences(of: "public.", with: "")
-                        .replacingOccurrences(of: "mpeg-4", with: "mp4")
+                        .replacing("public.", with: "")
+                        .replacing("mpeg-4", with: "mp4")
                 else {
                     print("Extension not determined")
                     return
