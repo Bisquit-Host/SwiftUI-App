@@ -2698,10 +2698,10 @@
 			isa = PBXGroup;
 			children = (
 				F31578B229675F5D0016A600 /* ServerList.swift */,
-				F304E91A2EC6A3870069A73D /* slowSnow.swift */,
 				F352AF962A4EDB1D004AD489 /* ServerListVM.swift */,
 				F337B3A729BC6B5400CC1195 /* ServerListGrid.swift */,
 				F353D4FA2D980A5000EC9F3A /* ServerListTips.swift */,
+				F304E91A2EC6A3870069A73D /* slowSnow.swift */,
 				F3202CD22D559B6C0030B3CC /* VM extensions */,
 				F32E88CB2AF83FCB00959D49 /* Toolbar */,
 				F3A391BD29DB838D00591C84 /* Server Card */,
@@ -3543,8 +3543,8 @@
 			isa = PBXGroup;
 			children = (
 				F394A28329E0A9810012B7D1 /* ServerCardParent.swift */,
-				F3AE522229ACF7D600CB3895 /* ServerCardVM.swift */,
 				F3D95B052E625A9000849A94 /* ServerCard.swift */,
+				F3AE522229ACF7D600CB3895 /* ServerCardVM.swift */,
 				F3D95B122E6363AA00849A94 /* MetricGauge.swift */,
 				F3D95B0C2E63635B00849A94 /* CompactServerCard.swift */,
 				F3D95B0F2E63639900849A94 /* CompactMetricRow.swift */,
