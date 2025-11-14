@@ -35,7 +35,7 @@ final class CacheVM {
             Task { @MainActor in
                 switch result {
                 case .success(let size):
-                    let formattedSize = formatBytes(Double(size))
+                    let formattedSize = formatBytes(size)
                     self.cacheSize = formattedSize
                     
                 case .failure(let error):

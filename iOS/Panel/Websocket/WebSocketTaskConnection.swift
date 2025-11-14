@@ -107,26 +107,29 @@ final class WebSocketTaskConnection: NSObject, WebSocketConnection, @preconcurre
     
     func listen() {
         webSocketTask.receive { [weak self] result in
+            guard let self else {
+                return
+            }
+            
             Task { @MainActor in
                 switch result {
                 case .failure(let error):
-                    self?.delegate?.onError(connection: self!, error: error)
-                    
-                    self?.disconnect()
+                    self.delegate?.onError(connection: self, error: error)
+                    self.disconnect()
                     
                 case .success(let message):
                     switch message {
                     case .string(let text):
-                        self?.delegate?.onTextMessage(connection: self!, message: text)
+                        self.delegate?.onTextMessage(connection: self, message: text)
                         
                     case .data(let data):
-                        self?.delegate?.onDataMessage(connection: self!, message: data)
+                        self.delegate?.onDataMessage(connection: self, message: data)
                         
-                    default:
-                        fatalError("Received unknown message type")
+                    @unknown default:
+                        break
                     }
                     
-                    self?.listen()
+                    self.listen()
                 }
             }
         }
