@@ -89,7 +89,7 @@ final class LogVM {
     
     func fetchLogs(_ prefetch: Bool = false) async {
         do {
-            self.logs = try await logListAPI(id, printResponse: true)
+            self.logs = try await logListAPI(id)
             
             if prefetch {
                 self.prefetchActorImages()

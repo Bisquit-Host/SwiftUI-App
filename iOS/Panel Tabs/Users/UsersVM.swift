@@ -87,7 +87,7 @@ final class UsersVM {
     
     func fetchUsers(_ prefetch: Bool = false) async {
         do {
-            self.users = try await userListAPI(id, printResponse: true)
+            self.users = try await userListAPI(id)
             
             if !prefetch {
                 self.prefetchUserImages()

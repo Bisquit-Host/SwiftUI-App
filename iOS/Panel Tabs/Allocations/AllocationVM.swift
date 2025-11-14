@@ -51,7 +51,7 @@ final class AllocationVM {
         onSuccess: @escaping () -> Void = {}
     ) async {
         do {
-            _ = try await allocationCreateAPI(id, category: category, printResponse: true)
+            _ = try await allocationCreateAPI(id, category: category)
             await fetchAllocations()
             onSuccess()
         } catch {
