@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 import PteroNet
 
 @Observable
@@ -16,9 +16,7 @@ final class StartPageVM {
     var sheetCloudKeys = false
     var sheetBrowsePlans = false
     
-    func fetchAccountDetails(
-        onSuccess: @escaping () -> Void
-    ) async {
+    func fetchAccountDetails(onSuccess: @escaping () -> Void) async {
         Keychain.save(apiKey, forKey: "selectedApiKey")
         
         do {

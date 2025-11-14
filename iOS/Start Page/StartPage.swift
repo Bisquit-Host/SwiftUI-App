@@ -3,7 +3,6 @@ import SwiftData
 
 struct StartPage: View {
     @State var vm = StartPageVM()
-    @Environment(NavState.self) private var nav
     @EnvironmentObject var store: ValueStore
     
     @Environment(\.modelContext) var modelContext
@@ -32,11 +31,7 @@ struct StartPage: View {
                 }
                 
                 Button {
-                    isFocused = false
-                    
-                    if let string = UIPasteboard.general.string {
-                        vm.apiKey = string
-                    }
+                    pasteAPIKey()
                 } label: {
                     Image(systemName: "doc.on.clipboard")
                         .footnote(.bold)
@@ -68,8 +63,10 @@ struct StartPage: View {
             }
         }
         .task {
-            if !keys.isEmpty {
-                delay(0.5) {
+            Task {
+                if !keys.isEmpty {
+                    try await Task.sleep(for: .seconds(0.5))
+                    
                     vm.sheetCloudKeys = true
                 }
             }
@@ -98,6 +95,14 @@ struct StartPage: View {
         }
     }
     
+    private func pasteAPIKey() {
+        isFocused = false
+        
+        if let string = UIPasteboard.general.string {
+            vm.apiKey = string
+        }
+    }
+    
     private func removeSelectedKey() {
         let key = keys.first {
             $0.key == vm.apiKey
@@ -116,6 +121,5 @@ struct StartPage: View {
         StartPage()
     }
     .darkSchemePreferred()
-    .environment(NavState())
     .environmentObject(ValueStore())
 }

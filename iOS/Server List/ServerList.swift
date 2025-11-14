@@ -1,4 +1,5 @@
 import ScrechKit
+import Vortex
 
 struct ServerList: View {
     @Environment(ServerListVM.self) private var vm
@@ -20,7 +21,24 @@ struct ServerList: View {
         .animation(.default, value: vm.servers)
         .searchable(text: $vm.searchField)
         .safariCover($vm.showBilling, url: "https://my.bisquit.host")
-        .background(BisquitFall())
+        .overlay {
+            if isBoundaryDay() {
+                VortexView(.slowSnow.makeUniqueCopy()) {
+                    Circle()
+                        .fill(.white.opacity(0.8))
+                        .frame(width: 24)
+                        .blur(radius: 5)
+                        .tag("circle")
+                }
+                .ignoresSafeArea()
+                .allowsHitTesting(false)
+            }
+        }
+        .background {
+            if !isBoundaryDay() {
+                BisquitFall()
+            }
+        }
         .background(BackgroundImage())
         .serverListToolbar()
         .onFirstAppear {
@@ -51,6 +69,16 @@ struct ServerList: View {
                 nav.navigate(.toSettings)
             }
         }
+    }
+    
+    private func isBoundaryDay() -> Bool {
+        let calendar = Calendar.current.dateComponents([.month, .day], from: Date())
+        
+        guard let month = calendar.month, let day = calendar.day else {
+            return false
+        }
+        
+        return (month == 12 && day == 31) || (month == 1 && day == 1)
     }
     
     private func search() {

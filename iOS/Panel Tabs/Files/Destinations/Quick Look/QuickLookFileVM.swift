@@ -30,8 +30,8 @@ final class QuickLookFileVM {
             return
         }
         
-        let tempDirectoryURL = fm.temporaryDirectory
-        let destinationUrl = tempDirectoryURL.appendingPathComponent(name)
+        let tempDirURL = fm.temporaryDirectory
+        let destinationUrl = tempDirURL.appendingPathComponent(name)
         
         URLSession.shared.downloadTask(with: url) { location, _, error in
             let fm = FileManager.default
@@ -48,12 +48,10 @@ final class QuickLookFileVM {
                 
                 try fm.copyItem(at: location, to: destinationUrl)
                 
-                main {
-                    Task {
-                        await self.loadAndCheckImage(destinationUrl)
-                        await self.fetchMetadata(destinationUrl)
-                        self.fileUrl = destinationUrl
-                    }
+                Task { @MainActor in
+                    await self.loadAndCheckImage(destinationUrl)
+                    await self.fetchMetadata(destinationUrl)
+                    self.fileUrl = destinationUrl
                 }
             } catch {
                 print("Error during file copy:", error.localizedDescription)

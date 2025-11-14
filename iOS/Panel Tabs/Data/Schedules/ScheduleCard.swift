@@ -10,8 +10,6 @@ struct ScheduleCard: View {
         self.schedule = schedule
     }
     
-    @State private var isExtended = false
-    
     private var cron: String {
         let cron = schedule.cron
         let dayOfMonth = cron.dayOfMonth

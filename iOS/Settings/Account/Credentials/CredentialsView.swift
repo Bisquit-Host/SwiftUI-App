@@ -16,7 +16,6 @@ struct CredentialsView: View {
     @State private var password = ""
     @State private var newPassword = ""
     @State private var newPasswordAgain = ""
-    @State private var presentationMode: PresentationDetent = .medium
     
     var body: some View {
         VStack {

@@ -1,9 +1,7 @@
 import ScrechKit
 
 struct ServerListTopbarSettingsButton: View {
-    @Environment(ServerListVM.self) private var vm
     @Environment(NavState.self) private var nav
-    @EnvironmentObject private var store: ValueStore
     
     @State private var isRotating = false
     
@@ -28,7 +26,6 @@ struct ServerListTopbarSettingsButton: View {
 #Preview {
     ServerListTopbarSettingsButton()
         .darkSchemePreferred()
-        .environment(ServerListVM())
         .environment(NavState())
         .environmentObject(ValueStore())
 }

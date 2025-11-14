@@ -10,12 +10,14 @@ final class NetworkVM {
         let queue = DispatchQueue(label: "ConnectionMonitor")
         
         monitor.pathUpdateHandler = { handler in
-            switch handler.status {
-            case .satisfied:
-                self.isNetworkSatisfied = true
-                
-            default:
-                self.isNetworkSatisfied = false
+            Task { @MainActor in
+                switch handler.status {
+                case .satisfied:
+                    self.isNetworkSatisfied = true
+                    
+                default:
+                    self.isNetworkSatisfied = false
+                }
             }
         }
         

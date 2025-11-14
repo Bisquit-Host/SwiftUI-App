@@ -111,6 +111,12 @@
 		F3038B962E04467F0085E438 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35C4D5F2E03999B00720E74 /* MultipartFormData.swift */; };
 		F3038B972E0446840085E438 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35C4D5F2E03999B00720E74 /* MultipartFormData.swift */; };
 		F304498A29E990E9006DC0C7 /* CloudKeyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304498929E990E9006DC0C7 /* CloudKeyList.swift */; };
+		F304E9072EC6433C0069A73D /* Vortex in Frameworks */ = {isa = PBXBuildFile; productRef = F304E9062EC6433C0069A73D /* Vortex */; };
+		F304E9092EC6440B0069A73D /* Vortex in Frameworks */ = {isa = PBXBuildFile; productRef = F304E9082EC6440B0069A73D /* Vortex */; };
+		F304E90B2EC645220069A73D /* Vortex in Frameworks */ = {isa = PBXBuildFile; productRef = F304E90A2EC645220069A73D /* Vortex */; };
+		F304E91B2EC6A3870069A73D /* slowSnow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304E91A2EC6A3870069A73D /* slowSnow.swift */; };
+		F304E91C2EC6A3870069A73D /* slowSnow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304E91A2EC6A3870069A73D /* slowSnow.swift */; };
+		F304E91D2EC6A3870069A73D /* slowSnow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F304E91A2EC6A3870069A73D /* slowSnow.swift */; };
 		F306B9ED29BBDA770008C2D4 /* DevSettingsFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F306B9EC29BBDA770008C2D4 /* DevSettingsFooter.swift */; };
 		F30860142B002B31004D776A /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F30860132B002B31004D776A /* PteroNet */; };
 		F30860162B002B93004D776A /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F30860152B002B93004D776A /* PteroNet */; };
@@ -142,6 +148,9 @@
 		F30C13192A54626D00A7EFF0 /* BisquitHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* BisquitHost.swift */; };
 		F30C131A2A54626D00A7EFF0 /* BisquitHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31BA5262958FF7C0006D126 /* BisquitHost.swift */; };
 		F30E42F62EBBA25D0033FBA6 /* DebugSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30E42F52EBBA25D0033FBA6 /* DebugSettings.swift */; };
+		F30E42F82EBBB5660033FBA6 /* InfiniteScrollHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30E42F72EBBB55B0033FBA6 /* InfiniteScrollHelper.swift */; };
+		F30E42F92EBBB5660033FBA6 /* InfiniteScrollHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30E42F72EBBB55B0033FBA6 /* InfiniteScrollHelper.swift */; };
+		F30E42FB2EBBC3A10033FBA6 /* QuickLookViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30E42FA2EBBC3A10033FBA6 /* QuickLookViewVM.swift */; };
 		F310A2F02A56AF86001AF45F /* NetworkVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F310A2EF2A56AF86001AF45F /* NetworkVM.swift */; };
 		F310A2F12A56B0BE001AF45F /* NetworkVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F310A2EF2A56AF86001AF45F /* NetworkVM.swift */; };
 		F310BB392A54E31700843F14 /* ServerListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F352AF962A4EDB1D004AD489 /* ServerListVM.swift */; };
@@ -864,7 +873,6 @@
 		F37FF8832D87AE3800554B3F /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = F37FF8822D87AE3800554B3F /* Algorithms */; };
 		F380C0B32A4F1D42002D400F /* ServerListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F352AF962A4EDB1D004AD489 /* ServerListVM.swift */; };
 		F38282032B0E14B30088C48B /* LiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38282022B0E14B30088C48B /* LiveActivity.swift */; };
-		F384D8BC2D5BE495000FC41D /* Crypto Price Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F384D8BB2D5BE495000FC41D /* Crypto Price Widget.intentdefinition */; };
 		F384D8BD2D5BE495000FC41D /* Crypto Price Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F384D8BB2D5BE495000FC41D /* Crypto Price Widget.intentdefinition */; };
 		F384D8BE2D5BE495000FC41D /* Crypto Price Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F384D8BB2D5BE495000FC41D /* Crypto Price Widget.intentdefinition */; };
 		F385824229D6215100BEEE1D /* AppIconCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F385824129D6215100BEEE1D /* AppIconCard.swift */; };
@@ -1460,7 +1468,6 @@
 		F3FA61552A1F8DB500A65AE1 /* UploadMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA61532A1F8DB500A65AE1 /* UploadMenu.swift */; };
 		F3FA61572A1F928500A65AE1 /* FileSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA61562A1F928500A65AE1 /* FileSearch.swift */; };
 		F3FA61582A1F928500A65AE1 /* FileSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FA61562A1F928500A65AE1 /* FileSearch.swift */; };
-		F3FC99112C65747700150823 /* Archieving.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC99102C65747700150823 /* Archieving.swift */; };
 		F3FC99162C65888900150823 /* TempDir.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FC99152C65888900150823 /* TempDir.swift */; };
 		F3FD9F982C651A4E00A69314 /* FileList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FD9F972C651A4E00A69314 /* FileList.swift */; };
 		F3FD9F992C651A9200A69314 /* FileTabVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D558AB2A3360ED00608447 /* FileTabVM.swift */; };
@@ -1722,8 +1729,11 @@
 		F303214A2B3FEA45002A73B8 /* ServerSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerSettingsView.swift; sourceTree = "<group>"; };
 		F304498629E98AE4006DC0C7 /* iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOS.entitlements; sourceTree = "<group>"; };
 		F304498929E990E9006DC0C7 /* CloudKeyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKeyList.swift; sourceTree = "<group>"; };
+		F304E91A2EC6A3870069A73D /* slowSnow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = slowSnow.swift; sourceTree = "<group>"; };
 		F306B9EC29BBDA770008C2D4 /* DevSettingsFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevSettingsFooter.swift; sourceTree = "<group>"; };
 		F30E42F52EBBA25D0033FBA6 /* DebugSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugSettings.swift; sourceTree = "<group>"; };
+		F30E42F72EBBB55B0033FBA6 /* InfiniteScrollHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteScrollHelper.swift; sourceTree = "<group>"; };
+		F30E42FA2EBBC3A10033FBA6 /* QuickLookViewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLookViewVM.swift; sourceTree = "<group>"; };
 		F310A2EF2A56AF86001AF45F /* NetworkVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkVM.swift; sourceTree = "<group>"; };
 		F3116F252A33E142001F067C /* FolderFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderFile.swift; sourceTree = "<group>"; };
 		F311CAAD2A646612004E4A4A /* LogMetaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogMetaView.swift; sourceTree = "<group>"; };
@@ -2208,7 +2218,6 @@
 		F3FA30982DD1EB4300280133 /* FileListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileListHeader.swift; sourceTree = "<group>"; };
 		F3FA61532A1F8DB500A65AE1 /* UploadMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadMenu.swift; sourceTree = "<group>"; };
 		F3FA61562A1F928500A65AE1 /* FileSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSearch.swift; sourceTree = "<group>"; };
-		F3FC99102C65747700150823 /* Archieving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archieving.swift; sourceTree = "<group>"; };
 		F3FC99152C65888900150823 /* TempDir.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempDir.swift; sourceTree = "<group>"; };
 		F3FD9F972C651A4E00A69314 /* FileList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileList.swift; sourceTree = "<group>"; };
 		F3FD9F9B2C651B3800A69314 /* FileCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCard.swift; sourceTree = "<group>"; };
@@ -2290,6 +2299,7 @@
 				F3A7CF042C8BBB7800413400 /* SafariCover in Frameworks */,
 				F3A7CEC82C8B685500413400 /* Messages.framework in Frameworks */,
 				F3A7CEDF2C8B981A00413400 /* PteroNet in Frameworks */,
+				F304E90B2EC645220069A73D /* Vortex in Frameworks */,
 			);
 		};
 		F3B761DB29BDE2D500ECE879 /* Frameworks */ = {
@@ -2309,6 +2319,7 @@
 				F318FE472A1592AB00DE0A5C /* OrderedCollections in Frameworks */,
 				F3D6776D2DD7EBD000721DE8 /* Highlightr in Frameworks */,
 				F36D534A2A05B961007324C6 /* Kingfisher in Frameworks */,
+				F304E9092EC6440B0069A73D /* Vortex in Frameworks */,
 				F36B145F2DC39F2C008C1AF9 /* GaypadKit in Frameworks */,
 			);
 		};
@@ -2370,6 +2381,7 @@
 				F328D8592A82402A0038512F /* Algorithms in Frameworks */,
 				F3D6776B2DD7EBC100721DE8 /* Highlightr in Frameworks */,
 				F318FE452A15925200DE0A5C /* OrderedCollections in Frameworks */,
+				F304E9072EC6433C0069A73D /* Vortex in Frameworks */,
 				F32675862A01B69600A026DC /* SafariCover in Frameworks */,
 			);
 		};
@@ -2677,6 +2689,7 @@
 				F373CD6A2D88A386008B64BE /* IntroCard.swift */,
 				F373CD6B2D88A386008B64BE /* TitleTextRenderer.swift */,
 				F373CD6C2D88A386008B64BE /* InfiniteScrollView.swift */,
+				F30E42F72EBBB55B0033FBA6 /* InfiniteScrollHelper.swift */,
 			);
 			path = Intro;
 			sourceTree = "<group>";
@@ -2685,6 +2698,7 @@
 			isa = PBXGroup;
 			children = (
 				F31578B229675F5D0016A600 /* ServerList.swift */,
+				F304E91A2EC6A3870069A73D /* slowSnow.swift */,
 				F352AF962A4EDB1D004AD489 /* ServerListVM.swift */,
 				F337B3A729BC6B5400CC1195 /* ServerListGrid.swift */,
 				F353D4FA2D980A5000EC9F3A /* ServerListTips.swift */,
@@ -4130,8 +4144,8 @@
 				F3FD9F972C651A4E00A69314 /* FileList.swift */,
 				F3FD9F9B2C651B3800A69314 /* FileCard.swift */,
 				F335F6E62DD3564A00D743FF /* FileLink.swift */,
-				F3FC99102C65747700150823 /* Archieving.swift */,
 				F3FD9FA02C65217C00A69314 /* QuickLookView.swift */,
+				F30E42FA2EBBC3A10033FBA6 /* QuickLookViewVM.swift */,
 			);
 			path = Files;
 			sourceTree = "<group>";
@@ -4240,6 +4254,7 @@
 				F3F60A652DEB93C300A15737 /* ScrechKit */,
 				F3038B942E0443560085E438 /* QuickLooking */,
 				F3F5AD692E885E4B007AD97D /* Appearance */,
+				F304E9062EC6433C0069A73D /* Vortex */,
 			);
 			productName = Bisquit.Host;
 			productReference = F31BA5232958FF7C0006D126 /* Bisquit.Host.app */;
@@ -4296,6 +4311,7 @@
 				F3F60A732DEB94D100A15737 /* ScrechKit */,
 				F3038B922E04434C0085E438 /* QuickLooking */,
 				F3F5AD7D2E8862B7007AD97D /* Appearance */,
+				F304E9082EC6440B0069A73D /* Vortex */,
 			);
 			productName = "Clip Demo";
 			productReference = F31BA54E2958FFAF0006D126 /* Clip Demo.app */;
@@ -4394,6 +4410,7 @@
 				F3A7CF212C8C4E9700413400 /* MailCover */,
 				F3F60A752DEB94DA00A15737 /* ScrechKit */,
 				F3F5AD7B2E8862A4007AD97D /* Appearance */,
+				F304E90A2EC645220069A73D /* Vortex */,
 			);
 			productName = "iMessage MessagesExtension";
 			productReference = F3A7CEC32C8B685500413400 /* iMessage.appex */;
@@ -4598,6 +4615,7 @@
 				F36B14552DC39DD8008C1AF9 /* XCRemoteSwiftPackageReference "GaypadKit" */,
 				F3D677692DD7EBC100721DE8 /* XCRemoteSwiftPackageReference "Highlightr" */,
 				F3F5AD682E885E4B007AD97D /* XCRemoteSwiftPackageReference "Appearance" */,
+				F304E9052EC6433C0069A73D /* XCRemoteSwiftPackageReference "Vortex" */,
 			);
 			preferredProjectObjectVersion = 90;
 			productRefGroup = F31BA5242958FF7C0006D126 /* Products */;
@@ -4972,6 +4990,7 @@
 				F31406F12E64667D00C1956E /* BackgroundImageButton.swift in Sources */,
 				F337C1622A8CE7C0006F321C /* StartupCard.swift in Sources */,
 				F3A31B092B0B161D00F89C51 /* CloudKeyCard.swift in Sources */,
+				F30E42F82EBBB5660033FBA6 /* InfiniteScrollHelper.swift in Sources */,
 				F38F9E132CE7647D0033EFE3 /* ImagePlayground.swift in Sources */,
 				F37266AA29D71A1B005FD103 /* FileIcon.swift in Sources */,
 				F31BA5A3295902610006D126 /* ConsoleTab.swift in Sources */,
@@ -5096,6 +5115,7 @@
 				F31BA596295901F70006D126 /* PanelView.swift in Sources */,
 				F3FA61542A1F8DB500A65AE1 /* UploadMenu.swift in Sources */,
 				F3880A262A92A15E0052A978 /* ContactManager.swift in Sources */,
+				F304E91B2EC6A3870069A73D /* slowSnow.swift in Sources */,
 				F3DC4E2229AEAF3E00D27EC5 /* CredentialsButton.swift in Sources */,
 				F32FD0312CF606960038D62C /* BackupContextMenuControlGroup.swift in Sources */,
 				F373CD6E2D88A386008B64BE /* IntroCard.swift in Sources */,
@@ -5230,7 +5250,6 @@
 				F3AB1DF72D79C42B00387164 /* MetricKitManager.swift in Sources */,
 				F3BC03B22B1FF4830011F98A /* TaskContextMenu.swift in Sources */,
 				F3AF91C92B4235BB001D8F80 /* SSHCard.swift in Sources */,
-				F384D8BC2D5BE495000FC41D /* Crypto Price Widget.intentdefinition in Sources */,
 			);
 		};
 		F31BA52F2958FF7D0006D126 /* Sources */ = {
@@ -5387,6 +5406,7 @@
 				F36D53482A05B939007324C6 /* SpriteKitPyzh.swift in Sources */,
 				F30088F82B3B55D10051476C /* UserInvitationView.swift in Sources */,
 				F3BC03C82B20675E0011F98A /* NewScheduleSheet.swift in Sources */,
+				F304E91D2EC6A3870069A73D /* slowSnow.swift in Sources */,
 				F389BB622A05B58E00911EBF /* ServerCardVM.swift in Sources */,
 				F325F7072A54C4BC00E89EC4 /* SystemAlerts.swift in Sources */,
 				F36B14AB2DC632D9008C1AF9 /* UserDefaults.swift in Sources */,
@@ -5624,6 +5644,7 @@
 				F33001422A4CEF840063FE0F /* ApikeyVM.swift in Sources */,
 				F3D95B102E63639900849A94 /* CompactMetricRow.swift in Sources */,
 				F36113F72E55DFD40052A5A2 /* TextFileEditor.swift in Sources */,
+				F30E42F92EBBB5660033FBA6 /* InfiniteScrollHelper.swift in Sources */,
 				F33001452A4CF06D0063FE0F /* ApikeyCard.swift in Sources */,
 				F373CD762D88A386008B64BE /* IntroCard.swift in Sources */,
 				F373CD772D88A386008B64BE /* TitleTextRenderer.swift in Sources */,
@@ -5800,6 +5821,7 @@
 				F3A7CF1B2C8C4E4A00413400 /* PlanViewTopbar.swift in Sources */,
 				F3255E172C9049AF008E04DE /* SettingsButton.swift in Sources */,
 				F3A7CF632C8CA5B900413400 /* CloudKeyCard.swift in Sources */,
+				F304E91C2EC6A3870069A73D /* slowSnow.swift in Sources */,
 				F34851C82E72E4F50002C72E /* UniversalPlanList.swift in Sources */,
 				F36B14AA2DC632D9008C1AF9 /* UserDefaults.swift in Sources */,
 				F3202CE12D562A620030B3CC /* PlanListGame.swift in Sources */,
@@ -5899,6 +5921,7 @@
 				F32716DE2CF62CAB00F2DC31 /* CreateBackupButton.swift in Sources */,
 				F3F2BB9D2A5403DD00D44CA6 /* ServerListVM.swift in Sources */,
 				F3F2BBAB2A540E4400D44CA6 /* NavExtension.swift in Sources */,
+				F30E42FB2EBBC3A10033FBA6 /* QuickLookViewVM.swift in Sources */,
 				F3FD9F992C651A9200A69314 /* FileTabVM.swift in Sources */,
 				F3EEC03B2AF2F93800BFED78 /* StartPageVM.swift in Sources */,
 				F335F6E82DD3568200D743FF /* FileContextMenu.swift in Sources */,
@@ -5942,7 +5965,6 @@
 				F3E1B2D02C903C9300AED3F1 /* ServerCardContextMenu.swift in Sources */,
 				F38928302A445E9700561CDF /* ServerList.swift in Sources */,
 				F3015DE82D9F27E800B9BCC6 /* LogCardImage.swift in Sources */,
-				F3FC99112C65747700150823 /* Archieving.swift in Sources */,
 				F3464D252A86397F00188B0C /* PowerSignalAppEnum.swift in Sources */,
 				F39E68342D2D67A70002BA96 /* TaskContextMenu.swift in Sources */,
 				F39E68352D2D67A70002BA96 /* ScheduleList.swift in Sources */,
@@ -6270,8 +6292,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = appletvos;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 26.0;
 				WATCHOS_DEPLOYMENT_TARGET = 9.1;
@@ -6306,8 +6329,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = appletvos;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 26.0;
 				VALIDATE_PRODUCT = YES;
@@ -6375,7 +6399,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 26.1.1;
+				MARKETING_VERSION = 26.1.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -6443,7 +6467,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 26.1.1;
+				MARKETING_VERSION = 26.1.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "";
@@ -6484,8 +6508,9 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 26.0;
 			};
@@ -6518,8 +6543,9 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
 				WATCHOS_DEPLOYMENT_TARGET = 26.0;
@@ -6573,8 +6599,9 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
@@ -6626,8 +6653,9 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WATCHOS_DEPLOYMENT_TARGET = 10.0;
@@ -6670,8 +6698,9 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WATCHOS_DEPLOYMENT_TARGET = 9.1;
 			};
@@ -6713,8 +6742,9 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WATCHOS_DEPLOYMENT_TARGET = 9.1;
@@ -6745,8 +6775,9 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 			};
 			name = Debug;
 		};
@@ -6773,8 +6804,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 			};
 			name = Release;
 		};
@@ -6806,8 +6838,9 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				XROS_DEPLOYMENT_TARGET = 26.0;
 			};
@@ -6840,8 +6873,9 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				VALIDATE_PRODUCT = YES;
 				XROS_DEPLOYMENT_TARGET = 26.0;
@@ -6884,8 +6918,9 @@
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_DEFAULT_ACTOR_ISOLATION = nonisolated;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -6925,8 +6960,9 @@
 				SDKROOT = auto;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_DEFAULT_ACTOR_ISOLATION = nonisolated;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -6957,9 +6993,10 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bisquit.Host.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Bisquit.Host";
 				XROS_DEPLOYMENT_TARGET = 26.0;
@@ -6991,9 +7028,10 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bisquit.Host.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Bisquit.Host";
 				VALIDATE_PRODUCT = YES;
@@ -7024,8 +7062,9 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -7052,8 +7091,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -7088,8 +7128,9 @@
 				SDKROOT = xros;
 				SUPPORTED_PLATFORMS = "xros xrsimulator";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				XROS_DEPLOYMENT_TARGET = 26.0;
 			};
@@ -7123,8 +7164,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = xros;
 				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				VALIDATE_PRODUCT = YES;
 				XROS_DEPLOYMENT_TARGET = 26.0;
@@ -7144,8 +7186,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Bisquit.Host;
 			};
@@ -7163,8 +7206,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.UI-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Bisquit.Host;
 				VALIDATE_PRODUCT = YES;
@@ -7207,8 +7251,9 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
@@ -7249,8 +7294,9 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
@@ -7277,8 +7323,9 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -7304,8 +7351,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -7340,8 +7388,9 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_DEFAULT_ACTOR_ISOLATION = nonisolated;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -7374,8 +7423,9 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = nonisolated;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -7507,6 +7557,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F304E9052EC6433C0069A73D /* XCRemoteSwiftPackageReference "Vortex" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/Vortex";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.4;
+			};
+		};
 		F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "PteroNet" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Bisquit-Host/PteroNet";
@@ -7520,7 +7578,7 @@
 			repositoryURL = "https://github.com/apple/swift-collections.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				minimumVersion = 1.2.1;
 			};
 		};
 		F32675842A01B69600A026DC /* XCRemoteSwiftPackageReference "SafariCover" */ = {
@@ -7536,7 +7594,7 @@
 			repositoryURL = "https://github.com/apple/swift-algorithms.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				minimumVersion = 1.2.1;
 			};
 		};
 		F335CA042C63E86D006C71C6 /* XCRemoteSwiftPackageReference "DeviceKit" */ = {
@@ -7544,7 +7602,7 @@
 			repositoryURL = "https://github.com/devicekit/DeviceKit";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.4.0;
+				minimumVersion = 5.7.0;
 			};
 		};
 		F33C2ABF2C69168C002FD150 /* XCRemoteSwiftPackageReference "QuickLooking" */ = {
@@ -7560,7 +7618,7 @@
 			repositoryURL = "https://github.com/EmergeTools/Pow";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.2;
+				minimumVersion = 1.0.5;
 			};
 		};
 		F352AF992A4EE707004AD489 /* XCRemoteSwiftPackageReference "AlertKit" */ = {
@@ -7568,7 +7626,7 @@
 			repositoryURL = "https://github.com/sparrowcode/AlertKit";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
+				minimumVersion = 5.1.9;
 			};
 		};
 		F358F02C2D2C1C5500BCC07B /* XCRemoteSwiftPackageReference "LaunchAtLogin" */ = {
@@ -7600,7 +7658,7 @@
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 7.6.0;
+				minimumVersion = 8.6.1;
 			};
 		};
 		F3CBC6D32D9A025A0081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */ = {
@@ -7616,7 +7674,7 @@
 			repositoryURL = "https://github.com/raspu/Highlightr";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.2.1;
+				minimumVersion = 2.3.0;
 			};
 		};
 		F3E7BDD82A315C9D00CD03C3 /* XCRemoteSwiftPackageReference "MailCover" */ = {
@@ -7647,6 +7705,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F33C2ABF2C69168C002FD150 /* XCRemoteSwiftPackageReference "QuickLooking" */;
 			productName = QuickLooking;
+		};
+		F304E9062EC6433C0069A73D /* Vortex */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F304E9052EC6433C0069A73D /* XCRemoteSwiftPackageReference "Vortex" */;
+			productName = Vortex;
+		};
+		F304E9082EC6440B0069A73D /* Vortex */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F304E9052EC6433C0069A73D /* XCRemoteSwiftPackageReference "Vortex" */;
+			productName = Vortex;
+		};
+		F304E90A2EC645220069A73D /* Vortex */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F304E9052EC6433C0069A73D /* XCRemoteSwiftPackageReference "Vortex" */;
+			productName = Vortex;
 		};
 		F30860132B002B31004D776A /* PteroNet */ = {
 			isa = XCSwiftPackageProductDependency;

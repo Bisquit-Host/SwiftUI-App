@@ -1,13 +1,13 @@
 import SwiftUI
 
 struct ServerListUpdateAlert: View {
-    @Environment(\.openURL) private var openUrl
+    @Environment(\.openURL) private var openURL
     
     var body: some View {
         Section {
             if let url = URL(string: "https://apps.apple.com/app/bisquit-host/id1639409934") {
                 Button {
-                    openUrl(url)
+                    openURL(url)
                 } label: {
                     HStack(spacing: 16) {
                         Image(systemName: "link")

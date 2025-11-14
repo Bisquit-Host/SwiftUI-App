@@ -12,7 +12,6 @@ struct PanelOrnamentInfo: View {
         self.server = server
     }
     
-    @State private var isHovered = false
     @State private var sheetOrnamentinfo = false
     
     var body: some View {
@@ -138,9 +137,9 @@ struct PanelOrnamentInfo: View {
             if ornament.users {
                 HStack {
                     Text("Users")
-                    
+
                     Spacer()
-                    
+
                     Text("10")
                 }
             }

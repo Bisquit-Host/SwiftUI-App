@@ -59,6 +59,7 @@ final class LiveActivity {
         }
     }
     
+    @MainActor
     func setup(_ activity: Activity<WidgetsAttributes>) {
         currentActivity = activity
         
@@ -76,74 +77,102 @@ final class LiveActivity {
         activityViewState = nil
     }
     
+    @MainActor
     private func observeActivity(_ activity: Activity<WidgetsAttributes>) {
         Task {
-            await withTaskGroup(of: Void.self) { group in
-                group.addTask { @MainActor in
-                    for await activityState in activity.activityStateUpdates {
-                        if activityState == .dismissed {
-                            self.cleanUpDismissedActivity()
-                        } else {
-                            self.activityViewState?.activityState = activityState
-                        }
-                    }
+            for await activityState in activity.activityStateUpdates {
+                if activityState == .dismissed {
+                    self.cleanUpDismissedActivity()
+                } else {
+                    self.activityViewState?.activityState = activityState
                 }
-                
-                group.addTask { @MainActor in
-                    for await contentState in activity.contentUpdates {
-                        self.activityViewState?.contentState = contentState.state
-                        
-                        //                        guard let activity = self.currentActivity else {
-                        //                            return
-                        //                        }
-                        //
-                        //                        let state: WidgetsAttributes.ContentState
-                        //
-                        //                        state = WidgetsAttributes.ContentState(
-                        //                            latestMessage: contentState.state.latestMessage
-                        //                        )
-                        //
-                        //                        await activity.update(ActivityContent<WidgetsAttributes.ContentState>(
-                        //                            state: state,
-                        //                            staleDate: Date.now + 15,
-                        //                            relevanceScore: 100
-                        //                            //                                relevanceScore: alert ? 100 : 50
-                        //                        )//,
-                        //                                              //                                                  alertConfiguration: <#T##AlertConfiguration?#>
-                        //
-                        //                        )
-                    }
-                }
-                
-                group.addTask { @MainActor in
-                    for await pushToken in activity.pushTokenUpdates {
-                        let pushTokenString = pushToken.hexadecimalString
-                        
-                        self.LAToken = pushTokenString
-                        
-                        print("New push token:", pushTokenString)
-                        
-                        //                        do {
-                        //                            let frequentUpdateEnabled = ActivityAuthorizationInfo().frequentPushesEnabled
-                        //
-                        //                        try await self.sendPushToken(
-                        //                            hero: activity.attributes.hero,
-                        //                            pushTokenString: pushTokenString,
-                        //                            frequentUpdateEnabled: frequentUpdateEnabled
-                        //                        )
-                        //                        } catch {
-                        //                            self.errorMessage = """
-                        //                            Failed to send push token to server
-                        //                            ------------------------
-                        //                            \(String(describing: error))
-                        //                            """
-                        //                        }
-                    }
-                }
+            }
+        }
+        
+        Task {
+            for await contentState in activity.contentUpdates {
+                self.activityViewState?.contentState = contentState.state
+            }
+        }
+        
+        Task {
+            for await pushToken in activity.pushTokenUpdates {
+                let pushTokenString = pushToken.hexadecimalString
+                self.LAToken = pushTokenString
+                print("New push token:", pushTokenString)
             }
         }
     }
     
+    //    private func observeActivity(_ activity: Activity<WidgetsAttributes>) {
+    //        Task {
+    //            await withTaskGroup(of: Void.self) { group in
+    //                group.addTask { @MainActor in
+    //                    for await activityState in activity.activityStateUpdates {
+    //                        if activityState == .dismissed {
+    //                            self.cleanUpDismissedActivity()
+    //                        } else {
+    //                            self.activityViewState?.activityState = activityState
+    //                        }
+    //                    }
+    //                }
+    //
+    //                group.addTask { @MainActor in
+    //                    for await contentState in activity.contentUpdates {
+    //                        self.activityViewState?.contentState = contentState.state
+    //
+    //                        //                        guard let activity = self.currentActivity else {
+    //                        //                            return
+    //                        //                        }
+    //                        //
+    //                        //                        let state: WidgetsAttributes.ContentState
+    //                        //
+    //                        //                        state = WidgetsAttributes.ContentState(
+    //                        //                            latestMessage: contentState.state.latestMessage
+    //                        //                        )
+    //                        //
+    //                        //                        await activity.update(ActivityContent<WidgetsAttributes.ContentState>(
+    //                        //                            state: state,
+    //                        //                            staleDate: Date.now + 15,
+    //                        //                            relevanceScore: 100
+    //                        //                            //                                relevanceScore: alert ? 100 : 50
+    //                        //                        )//,
+    //                        //                                              //                                                  alertConfiguration: <#T##AlertConfiguration?#>
+    //                        //
+    //                        //                        )
+    //                    }
+    //                }
+    //
+    //                group.addTask { @MainActor in
+    //                    for await pushToken in activity.pushTokenUpdates {
+    //                        let pushTokenString = pushToken.hexadecimalString
+    //
+    //                        self.LAToken = pushTokenString
+    //
+    //                        print("New push token:", pushTokenString)
+    //
+    //                        //                        do {
+    //                        //                            let frequentUpdateEnabled = ActivityAuthorizationInfo().frequentPushesEnabled
+    //                        //
+    //                        //                        try await self.sendPushToken(
+    //                        //                            hero: activity.attributes.hero,
+    //                        //                            pushTokenString: pushTokenString,
+    //                        //                            frequentUpdateEnabled: frequentUpdateEnabled
+    //                        //                        )
+    //                        //                        } catch {
+    //                        //                            self.errorMessage = """
+    //                        //                            Failed to send push token to server
+    //                        //                            ------------------------
+    //                        //                            \(String(describing: error))
+    //                        //                            """
+    //                        //                        }
+    //                    }
+    //                }
+    //            }
+    //        }
+    //    }
+    
+    @MainActor
     func startLiveActivity(_ server: ServerAttributes) async {
         grantAchievement("start_live_activity")
         
@@ -173,7 +202,9 @@ final class LiveActivity {
             
             try await Task.sleep(for: .seconds(2))
             
-            await self.consoleDetails(server.id)
+            Task { @MainActor in
+                await self.consoleDetails(server.id)
+            }
         } catch {
             print("Error starting live activity:", error.localizedDescription)
         }

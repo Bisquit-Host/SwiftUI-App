@@ -13,7 +13,9 @@ struct JsonFormatterButton: View {
             }
             .popTip(tip) { action in
                 if action.id == "format-json" {
-                    vm.makePretty()
+                    Task { @MainActor in
+                        vm.makePretty()
+                    }
                 }
             }
         }

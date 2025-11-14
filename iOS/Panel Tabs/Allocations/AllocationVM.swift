@@ -46,7 +46,10 @@ final class AllocationVM {
         }
     }
     
-    func assignAllocation(_ category: Int, onSuccess: @escaping () -> Void = {}) async {
+    func assignAllocation(
+        _ category: Int,
+        onSuccess: @escaping () -> Void = {}
+    ) async {
         do {
             _ = try await allocationCreateAPI(id, category: category, printResponse: true)
             await fetchAllocations()

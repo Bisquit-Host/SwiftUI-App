@@ -23,7 +23,7 @@ final class TextFileVM {
     func writeFile(_ write: String, at path: String) async {
         do {
             try await fileWriteAPI(id, write: write, path: path)
-            await SystemAlert.changesSaved()
+            SystemAlert.changesSaved()
         } catch {
             SystemAlert.error(error)
         }

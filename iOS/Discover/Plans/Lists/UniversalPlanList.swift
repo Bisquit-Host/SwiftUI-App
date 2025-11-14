@@ -1,8 +1,6 @@
 import SwiftUI
 
 struct UniversalPlanList: View {
-    @Environment(PlanListVM.self) private var vm
-    
     private let plans: [UniversalPlan]
     
     init(_ plans: [UniversalPlan]) {

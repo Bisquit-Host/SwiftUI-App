@@ -8,8 +8,6 @@ struct LogCard: View {
         self.log = log
     }
     
-    @State private var sheetDetails = false
-    
     private var actor: LogActorAttributes? {
         log.relationships.actor.attributes
     }
@@ -41,11 +39,6 @@ struct LogCard: View {
             }
             
             Spacer()
-            
-            //            if !log.properties.isEmpty {
-            //                Image(systemName: "info.circle")
-            //                    .secondary()
-            //            }
         }
         .padding()
         .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
@@ -54,18 +47,6 @@ struct LogCard: View {
                 .stroke(.gray.opacity(0.25), lineWidth: 1)
         }
         .frame(minWidth: 200, maxWidth: 800)
-        //        .onTapGesture {
-        //            if !log.properties.isEmpty {
-        //                sheetDetails = true
-        //            }
-        //        }
-        //        .sheet($sheetDetails) {
-        //            LogViewParent(log.properties)
-        //                .presentationDragIndicator(.hidden)
-        //                .presentationDetents([.medium, .large],
-        //                                     selection: .constant(.medium)
-        //                )
-        //        }
     }
 }
 

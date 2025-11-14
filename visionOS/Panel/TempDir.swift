@@ -20,11 +20,11 @@ struct TempDir: View {
     }
     
     private func loadFiles() {
-        let tempDirectory = FileManager.default.temporaryDirectory
+        let tempDir = FileManager.default.temporaryDirectory
         
         do {
             fileNames = try FileManager.default.contentsOfDirectory(
-                atPath: tempDirectory.path
+                atPath: tempDir.path
             )
         } catch {
             print("Failed to load temp dir files:", error.localizedDescription)

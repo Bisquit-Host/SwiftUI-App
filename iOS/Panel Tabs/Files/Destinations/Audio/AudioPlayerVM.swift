@@ -28,10 +28,10 @@ final class AudioPlayerVM {
             return
         }
         
-        let tempDirectoryURL = fm.temporaryDirectory
-        let destinationURL = tempDirectoryURL.appendingPathComponent(name)
+        let tempDirURL = fm.temporaryDirectory
+        let destinationURL = tempDirURL.appendingPathComponent(name)
         
-        URLSession.shared.downloadTask(with: url) { location, response, error in
+        URLSession.shared.downloadTask(with: url) { location, _, error in
             let fm = FileManager.default
             
             guard let location, error == nil else {
@@ -46,7 +46,7 @@ final class AudioPlayerVM {
                 
                 try fm.copyItem(at: location, to: destinationURL)
                 
-                main {
+                Task { @MainActor in
                     withAnimation {
                         self.audioUrl = destinationURL
                     }

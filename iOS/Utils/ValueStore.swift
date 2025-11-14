@@ -72,7 +72,9 @@ final class ValueStore: ObservableObject {
     @AppStorage("widgetRamUsage") var widgetRamUsage = 0.0
     
     func authSucced() {
-        delay {
+        Task {
+            try await Task.sleep(for: .seconds(1))
+            
             withAnimation {
                 self.isApiKeyValid = true
             }

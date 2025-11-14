@@ -50,8 +50,7 @@ final class FileUploader: NSObject, ObservableObject {
             boundary: boundary
         ).data
         
-        let tempFileUrl = FileManager.default
-            .temporaryDirectory
+        let tempFileUrl = FileManager.default.temporaryDirectory
             .appendingPathComponent(UUID().uuidString)
         
         do {
@@ -64,10 +63,12 @@ final class FileUploader: NSObject, ObservableObject {
         let task = session.uploadTask(
             with: request,
             fromFile: tempFileUrl
-        ) { [weak self] data, response, error in
-            
+        ) { _, _, _ in
             try? FileManager.default.removeItem(at: tempFileUrl)
-            self?.currentUploadTask = nil
+            
+            Task { @MainActor in
+                self.currentUploadTask = nil
+            }
         }
         
         currentUploadTask = task
@@ -80,7 +81,7 @@ final class FileUploader: NSObject, ObservableObject {
     }
 }
 
-extension FileUploader: URLSessionDataDelegate {
+extension FileUploader: @preconcurrency URLSessionDataDelegate {
     func urlSession(
         _ session: URLSession,
         task: URLSessionTask,
@@ -88,10 +89,8 @@ extension FileUploader: URLSessionDataDelegate {
         totalBytesSent: Int64,
         totalBytesExpectedToSend: Int64
     ) {
-        main { [self] in
-            withAnimation {
-                uploadProgress = Float(totalBytesSent) / Float(totalBytesExpectedToSend)
-            }
+        withAnimation {
+            uploadProgress = Float(totalBytesSent) / Float(totalBytesExpectedToSend)
         }
     }
 }

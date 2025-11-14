@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 import PteroNet
 
 @Observable
@@ -82,7 +82,7 @@ final class BackupVM {
     func restoreBackup(_ uuid: String, truncate: Bool) async {
         do {
             try await backupRestoreAPI(id, uuid: uuid, truncate: truncate)
-            await SystemAlert.restored()
+            SystemAlert.restored()
         } catch {
             SystemAlert.error(error)
         }

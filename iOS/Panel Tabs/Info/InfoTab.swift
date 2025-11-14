@@ -7,7 +7,6 @@ struct InfoTab: View {
     @State private var logVM: LogVM
     @State private var userVM: UsersVM
     @State private var subdomainVM: SubdomainVM
-    @Environment(PanelVM.self) private var vm
     
     private let server: ServerAttributes
     

@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 
 @Observable
 final class PlanListVM {

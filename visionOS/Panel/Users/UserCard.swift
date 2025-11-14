@@ -2,8 +2,6 @@ import SwiftUI
 import PteroNet
 
 struct UserCard: View {
-    @Environment(UsersVM.self) private var vm
-    
     private let user: UserAttributes
     
     init(_ user: UserAttributes) {
@@ -27,7 +25,6 @@ struct UserCard: View {
     }
 }
 
-//#Preview {
-//    UserCard()
-//        .environment(UsersVM(""))
-//}
+#Preview {
+    UserCard(PreviewProp.userAttributes)
+}

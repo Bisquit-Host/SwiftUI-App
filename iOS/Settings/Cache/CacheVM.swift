@@ -11,7 +11,9 @@ final class CacheVM {
         cache.clearMemoryCache()
         
         cache.clearDiskCache {
-            self.calculateCacheSize()
+            Task { @MainActor in
+                self.calculateCacheSize()
+            }
         }
     }
     
@@ -29,16 +31,18 @@ final class CacheVM {
     }
     
     func calculateCacheSize() {
-        cache.calculateDiskStorageSize { [weak self] result in
-            switch result {
-            case .success(let size):
-                let formattedSize = formatBytes(Double(size))
-                self?.cacheSize = formattedSize
-                
-            case .failure(let error):
-                print(error.localizedDescription)
-                
-                self?.cacheSize = "Empty"
+        cache.calculateDiskStorageSize { result in
+            Task { @MainActor in
+                switch result {
+                case .success(let size):
+                    let formattedSize = formatBytes(Double(size))
+                    self.cacheSize = formattedSize
+                    
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    
+                    self.cacheSize = "Empty"
+                }
             }
         }
     }

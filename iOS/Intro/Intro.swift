@@ -64,7 +64,7 @@ struct Intro: View {
                     Text("Bisquit.Host")
                         .largeTitle(.bold)
                         .foregroundStyle(.white)
-                        .textRenderer(TitleTextRenderer(progress: titleProgress))
+                        .textRenderer(TitleTextRenderer(titleProgress))
                         .padding(.bottom, 12)
                     
                     Text("Comprehensive hosting solutions for VDS, game servers, websites, and bots — customized to fit your projects")
