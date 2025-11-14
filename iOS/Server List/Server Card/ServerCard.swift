@@ -85,7 +85,7 @@ struct ServerCard: View {
             }
         }
         .padding(System.isWatch ? 10 : 20)
-        .background(.black.opacity(0.0001)) // workaround for a full hitbox
+        .contentShape(.rect(cornerRadius: 16))
 #if !os(watchOS)
         .contextMenu {
             ServerCardContextMenu(server, $showSafari, $confirmKill)
