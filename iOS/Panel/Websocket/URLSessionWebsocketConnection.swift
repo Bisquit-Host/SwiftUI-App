@@ -1,35 +1,6 @@
 import Foundation
 
-protocol NewWebSocketConnection<IncomingMessage, OutgoingMessage>: AnyObject {
-    associatedtype IncomingMessage
-    associatedtype OutgoingMessage
-    
-    func receive() -> AsyncThrowingStream<IncomingMessage, Error>
-    func send(_ message: OutgoingMessage) async throws
-    func close(with code: URLSessionWebSocketTask.CloseCode)
-}
-
-private enum WebSocketDefaults {
-    static let origin = URL(string: "https://mgr.bisquit.host")!
-    static let logStreamPayload = "{\"event\":\"send logs\",\"args\":[\"null\"]}"
-}
-
-private extension URLSessionWebSocketTask.Message {
-    var textValue: String? {
-        switch self {
-        case .string(let string):
-            string
-            
-        case .data(let data):
-            String(data: data, encoding: .utf8)
-            
-        @unknown default:
-            nil
-        }
-    }
-}
-
-final class URLSessionWebSocketConnection: NewWebSocketConnection {
+final class URLSessionWebsocketConnection: WebsocketConnection {
     typealias IncomingMessage = String
     typealias OutgoingMessage = String
     
@@ -42,7 +13,7 @@ final class URLSessionWebSocketConnection: NewWebSocketConnection {
     init(
         url: URL,
         token: String,
-        origin: URL = WebSocketDefaults.origin,
+        origin: URL = WebsocketDefaults.origin,
         session: URLSession = .shared
     ) {
         var continuation: AsyncThrowingStream<String, Error>.Continuation!
@@ -107,7 +78,7 @@ final class URLSessionWebSocketConnection: NewWebSocketConnection {
         do {
             try await task.send(.string("{\"event\":\"auth\",\"args\":[\"\(token)\"]}"))
             try await Task.sleep(nanoseconds: 500_000_000)
-            try await task.send(.string(WebSocketDefaults.logStreamPayload))
+            try await task.send(.string(WebsocketDefaults.logStreamPayload))
         } catch {
             close(with: .abnormalClosure)
             continuation.finish(throwing: error)
@@ -138,53 +109,17 @@ final class URLSessionWebSocketConnection: NewWebSocketConnection {
     }
 }
 
-final class NewWebsocket {
-    private var connection: URLSessionWebSocketConnection?
-    private var consumptionTask: Task<Void, Never>?
-    
-    func connect(
-        to url: URL,
-        token: String,
-        origin: URL = WebSocketDefaults.origin,
-        onTextMessage: @escaping @Sendable (String) async -> Void,
-        onError: (@Sendable (Error) -> Void)? = nil
-    ) {
-        disconnect()
-        
-        let connection = URLSessionWebSocketConnection(
-            url: url,
-            token: token,
-            origin: origin
-        )
-        
-        self.connection = connection
-        
-        let stream = connection.receive()
-        
-        consumptionTask = Task {
-            do {
-                for try await message in stream {
-                    try Task.checkCancellation()
-                    await onTextMessage(message)
-                }
-            } catch {
-                guard !Task.isCancelled else {
-                    return
-                }
-                
-                onError?(error)
-            }
+private extension URLSessionWebSocketTask.Message {
+    var textValue: String? {
+        switch self {
+        case .string(let string):
+            string
+            
+        case .data(let data):
+            String(data: data, encoding: .utf8)
+            
+        @unknown default:
+            nil
         }
-    }
-    
-    func disconnect() {
-        consumptionTask?.cancel()
-        consumptionTask = nil
-        connection?.close()
-        connection = nil
-    }
-    
-    func send(_ message: String) async throws {
-        try await connection?.send(message)
     }
 }
