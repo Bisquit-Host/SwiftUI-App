@@ -35,13 +35,13 @@ struct CloudKeyCard: View {
             HStack {
                 VStack(alignment: .leading) {
                     if key.name.isEmpty {
-                        Text(firstEightLetters(key.key))
+                        Text(firstEightSymbols(key.key))
                             .headline(.semibold)
                     } else {
                         Text(key.name)
                             .headline(.semibold)
                         
-                        Text(firstEightLetters(key.key))
+                        Text(firstEightSymbols(key.key))
                             .footnote()
                             .secondary()
                     }
@@ -72,7 +72,7 @@ struct CloudKeyCard: View {
         }
     }
     
-    private func firstEightLetters(_ string: String) -> String {
+    private func firstEightSymbols(_ string: String) -> String {
         String(string.prefix(8)) + "..."
     }
 }
