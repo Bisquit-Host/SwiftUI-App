@@ -34,8 +34,7 @@ final class PanelVM {
     
     var updateBackups: (() async -> Void)? = nil
     
-    private var connection: WebSocketTaskConnection?
-    private var delegate: WebsocketDelegate?
+    private let websocket = Websocket()
     
     var messages: [AttributedString] = []
     
@@ -58,7 +57,6 @@ final class PanelVM {
         }
     }
     
-    @MainActor
     func appendMessage(_ message: String) async {
         guard
             let jsonData = message.data(using: .utf8)
@@ -164,24 +162,23 @@ final class PanelVM {
     }
     
     func connectWebSocket(_ data: ConsoleDetails) {
-        connection = WebSocketTaskConnection(
-            data.socket,
+        websocket.connect(
+            to: data.socket,
             token: data.token
-        )
-        
-        delegate = WebsocketDelegate { [weak self] message in
-            Task {
-                await self?.appendMessage(message)
+        ) { [weak self] message in
+            guard let self else {
+                return
+            }
+            
+            await self.appendMessage(message)
+        } onError: { error in
+            Task { @MainActor in
+                SystemAlert.error(error)
             }
         }
-        
-        connection?.delegate = delegate
-        connection?.connect()
     }
     
     func disconnectWebSocket() {
-        connection?.disconnect()
-        connection = nil
-        delegate = nil
+        websocket.disconnect()
     }
 }

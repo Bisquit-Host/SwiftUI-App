@@ -17,7 +17,7 @@ final class SSHVM {
     
     func createKey(onSuccess: @escaping () -> ()) async {
         do {
-            let model = try await sshCreateAPI(newName, publicKey: newPublicKey, printResponse: true)
+            let model = try await sshCreateAPI(newName, publicKey: newPublicKey)
             
             withAnimation {
                 self.keys.append(model)

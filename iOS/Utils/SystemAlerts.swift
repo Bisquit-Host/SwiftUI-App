@@ -7,8 +7,6 @@ import AlertKit
 
 final class SystemAlert {
 #if canImport(AlertKit)
-    
-    @MainActor
     static func copied() {
         AlertKitAPI.present(
             title: NSLocalizedString("Copied", comment: ""),
@@ -27,7 +25,6 @@ final class SystemAlert {
         )
     }
     
-    @MainActor
     static func error(_ title: String, subtitle: String?) {
         AlertKitAPI.present(
             title: title,
@@ -39,7 +36,6 @@ final class SystemAlert {
     }
 #endif
     
-    @MainActor
     static func restored() {
 #if canImport(AlertKit)
         AlertKitAPI.present(
@@ -52,7 +48,6 @@ final class SystemAlert {
 #endif
     }
     
-    @MainActor
     static func reinstalled() {
 #if canImport(AlertKit)
         AlertKitAPI.present(
@@ -65,7 +60,6 @@ final class SystemAlert {
 #endif
     }
     
-    @MainActor
     static func changesSaved() {
 #if canImport(AlertKit)
         AlertKitAPI.present(
