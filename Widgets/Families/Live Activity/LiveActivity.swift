@@ -59,7 +59,6 @@ final class LiveActivity {
         }
     }
     
-    @MainActor
     func setup(_ activity: Activity<WidgetsAttributes>) {
         currentActivity = activity
         
@@ -77,7 +76,6 @@ final class LiveActivity {
         activityViewState = nil
     }
     
-    @MainActor
     private func observeActivity(_ activity: Activity<WidgetsAttributes>) {
         Task {
             for await activityState in activity.activityStateUpdates {

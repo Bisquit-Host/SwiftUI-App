@@ -58,7 +58,6 @@ final class PanelVM {
         }
     }
     
-    @MainActor
     func appendMessage(_ message: String) async {
         guard
             let jsonData = message.data(using: .utf8)
