@@ -969,12 +969,12 @@
 		F39D28552A27EE88007B12C3 /* PanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39D28542A27EE88007B12C3 /* PanelView.swift */; };
 		F39D28572A27F1F5007B12C3 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39D28562A27F1F5007B12C3 /* FileManager.swift */; };
 		F39D285C2A27F474007B12C3 /* FileIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37266A929D71A1B005FD103 /* FileIcon.swift */; };
-		F39D430B2EC8A2D3001287C1 /* goida.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39D430A2EC8A2D3001287C1 /* goida.swift */; };
-		F39D430C2EC8A2D3001287C1 /* goida.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39D430A2EC8A2D3001287C1 /* goida.swift */; };
-		F39D430D2EC8A2D3001287C1 /* goida.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39D430A2EC8A2D3001287C1 /* goida.swift */; };
-		F39D430E2EC8A2D3001287C1 /* goida.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39D430A2EC8A2D3001287C1 /* goida.swift */; };
-		F39D430F2EC8A2D3001287C1 /* goida.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39D430A2EC8A2D3001287C1 /* goida.swift */; };
-		F39D43102EC8A2D3001287C1 /* goida.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39D430A2EC8A2D3001287C1 /* goida.swift */; };
+		F39D430B2EC8A2D3001287C1 /* NewWebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39D430A2EC8A2D3001287C1 /* NewWebSocket.swift */; };
+		F39D430C2EC8A2D3001287C1 /* NewWebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39D430A2EC8A2D3001287C1 /* NewWebSocket.swift */; };
+		F39D430D2EC8A2D3001287C1 /* NewWebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39D430A2EC8A2D3001287C1 /* NewWebSocket.swift */; };
+		F39D430E2EC8A2D3001287C1 /* NewWebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39D430A2EC8A2D3001287C1 /* NewWebSocket.swift */; };
+		F39D430F2EC8A2D3001287C1 /* NewWebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39D430A2EC8A2D3001287C1 /* NewWebSocket.swift */; };
+		F39D43102EC8A2D3001287C1 /* NewWebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39D430A2EC8A2D3001287C1 /* NewWebSocket.swift */; };
 		F39D680D2A262C5E00B9BDFC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F39D680C2A262C5E00B9BDFC /* Kingfisher */; };
 		F39D68112A2634C700B9BDFC /* DevSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3878ECC2A1BCE5000AD8657 /* DevSettings.swift */; };
 		F39D68132A26373900B9BDFC /* Bisquits.sks in Resources */ = {isa = PBXBuildFile; fileRef = F3E6FC422A1E677000410C7C /* Bisquits.sks */; };
@@ -2045,7 +2045,7 @@
 		F39D18FE2E45C30600A84A80 /* UnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTests.swift; sourceTree = "<group>"; };
 		F39D28542A27EE88007B12C3 /* PanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelView.swift; sourceTree = "<group>"; };
 		F39D28562A27F1F5007B12C3 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
-		F39D430A2EC8A2D3001287C1 /* goida.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = goida.swift; sourceTree = "<group>"; };
+		F39D430A2EC8A2D3001287C1 /* NewWebSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWebSocket.swift; sourceTree = "<group>"; };
 		F39E0A932C1BA06C00C4E906 /* DiscoverCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCard.swift; sourceTree = "<group>"; };
 		F39E68402D2D6D2F0002BA96 /* FileErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileErrorView.swift; sourceTree = "<group>"; };
 		F39EA2E02D5D45E800329468 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/iOSSupport/System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
@@ -4107,7 +4107,7 @@
 		F3EDEE3629C0CB4500B08696 /* Websocket */ = {
 			isa = PBXGroup;
 			children = (
-				F39D430A2EC8A2D3001287C1 /* goida.swift */,
+				F39D430A2EC8A2D3001287C1 /* NewWebSocket.swift */,
 				F3BF97A929BFC7E9007B9C9C /* WebSocketTaskConnection.swift */,
 				F3EDEE3729C0CB5A00B08696 /* WebsocketMessage.swift */,
 				F3EDEE3929C0CB8000B08696 /* WebsocketDelegate.swift */,
@@ -4823,7 +4823,7 @@
 				F35FEB0A2B09F003004DA05D /* APIKey.swift in Sources */,
 				F3AB4A952CF3EC6700A8252F /* TipServerCardContextMenu.swift in Sources */,
 				F348518A2E72D4A80002C72E /* PlanCardName.swift in Sources */,
-				F39D430D2EC8A2D3001287C1 /* goida.swift in Sources */,
+				F39D430D2EC8A2D3001287C1 /* NewWebSocket.swift in Sources */,
 				F3015DE22D9F26C600B9BCC6 /* LogCardTimestamp.swift in Sources */,
 				F37266CF29D96ED9005FD103 /* Converter.swift in Sources */,
 				F3202C782D5583680030B3CC /* PlanViewParent.swift in Sources */,
@@ -5203,7 +5203,7 @@
 				F3464D372A863A6900188B0C /* SendCommand.swift in Sources */,
 				F31BA5AC295902B00006D126 /* FileTab.swift in Sources */,
 				F3F5ADAD2E8A9639007AD97D /* WebSocketConnectionState.swift in Sources */,
-				F39D430C2EC8A2D3001287C1 /* goida.swift in Sources */,
+				F39D430C2EC8A2D3001287C1 /* NewWebSocket.swift in Sources */,
 				F3A5632C2D9EF21B009AA363 /* LogMetaCard.swift in Sources */,
 				F3B6372F2A35A82F00CB374C /* ConsoleInspector.swift in Sources */,
 				F31F31FB2D52BD940095DD19 /* System.swift in Sources */,
@@ -5311,7 +5311,7 @@
 				F3BE36D62A55E1D2007A0179 /* NavDestinations.swift in Sources */,
 				F3BF6F232959D15E0059F39B /* AppSettings.swift in Sources */,
 				F3464D272A86398000188B0C /* PowerSignalAppEnum.swift in Sources */,
-				F39D430F2EC8A2D3001287C1 /* goida.swift in Sources */,
+				F39D430F2EC8A2D3001287C1 /* NewWebSocket.swift in Sources */,
 				F3FFB7412A57F0AB00220FA5 /* UsersVM.swift in Sources */,
 				F30C12F82A5451C100A7EFF0 /* ServerListVM.swift in Sources */,
 				F3FFB7432A57F13D00220FA5 /* UserView.swift in Sources */,
@@ -5392,7 +5392,7 @@
 				F3A800372A7313E900CAC40B /* TipCloudKeys.swift in Sources */,
 				F3D3DBD429B889E600096115 /* PlanViewTopbar.swift in Sources */,
 				F3FF3E882D93576B00EDFBC6 /* UpdateChecker.swift in Sources */,
-				F39D430B2EC8A2D3001287C1 /* goida.swift in Sources */,
+				F39D430B2EC8A2D3001287C1 /* NewWebSocket.swift in Sources */,
 				F3BC03B42B1FF4830011F98A /* TaskContextMenu.swift in Sources */,
 				F32F2D002D908E1D007CF4DE /* BackgroundImageHelper.swift in Sources */,
 				F3D714762E19295E00F77723 /* StartupCommand.swift in Sources */,
@@ -5922,7 +5922,7 @@
 				F3202C8D2D5590D30030B3CC /* PlanViewParent.swift in Sources */,
 				F32716DC2CF62C0D00F2DC31 /* BackupCard.swift in Sources */,
 				F32716D92CF6257F00F2DC31 /* BackupContextMenuControlGroup.swift in Sources */,
-				F39D43102EC8A2D3001287C1 /* goida.swift in Sources */,
+				F39D43102EC8A2D3001287C1 /* NewWebSocket.swift in Sources */,
 				F39EA2F12D5E146300329468 /* GuideStepCard.swift in Sources */,
 				F34851B42E72E06F0002C72E /* PlanCardLabelWeb.swift in Sources */,
 				F37EA7992B70DEDE0029DE00 /* ConsoleVM.swift in Sources */,
@@ -6070,7 +6070,7 @@
 				F3015DDC2D9F25B000B9BCC6 /* LogCardEvent.swift in Sources */,
 				F3464D2B2A863A6000188B0C /* CreateBackup.swift in Sources */,
 				F30088B82B3A218B0051476C /* ScheduleCard.swift in Sources */,
-				F39D430E2EC8A2D3001287C1 /* goida.swift in Sources */,
+				F39D430E2EC8A2D3001287C1 /* NewWebSocket.swift in Sources */,
 				F37DBF0F2E74F5320039858B /* FileCardRedesign.swift in Sources */,
 				F37DBED72E74931B0039858B /* DashboardShell.swift in Sources */,
 				F3F5ADA12E8A961D007AD97D /* WebSocketConnectionDelegate.swift in Sources */,
