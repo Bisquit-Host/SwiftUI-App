@@ -35,7 +35,7 @@ final class PanelVM {
     var updateBackups: (() async -> Void)? = nil
     
     private let websocket = NewWebsocket()
-
+    
     var messages: [AttributedString] = []
     
     var searchedMessages: [AttributedString] {
