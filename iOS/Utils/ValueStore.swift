@@ -7,7 +7,7 @@ import Appearance
 
 final class ValueStore: ObservableObject {
 #if os(visionOS)
-//    @AppStorage("show_info") var showInfo = true
+    //    @AppStorage("show_info") var showInfo = true
     @AppStorage("show_power_buttons") var showPowerButtons = true
 #endif
     
@@ -27,7 +27,9 @@ final class ValueStore: ObservableObject {
     @Published var updateServers = false // Triggers server card update
     
     @AppStorage("enable_game_center") var enableGameCenter = true
+#if os(iOS)
     @AppStorage("hide_status_bar") var hideStatusBar = false
+#endif
     @Published var updateBackground = false // Triggers background image update
     
 #if canImport(Appearance)
