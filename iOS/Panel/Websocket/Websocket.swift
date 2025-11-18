@@ -13,12 +13,7 @@ final class Websocket {
     ) {
         disconnect()
         
-        let connection = URLSessionWebsocketConnection(
-            url: url,
-            token: token,
-            origin: origin
-        )
-        
+        let connection = URLSessionWebsocketConnection(url: url, token: token, origin: origin)
         self.connection = connection
         
         let stream = connection.receive()
