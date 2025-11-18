@@ -39,7 +39,6 @@ final class ValueStore: ObservableObject {
     // MARK: - Auth
     @AppStorage("isApiKeyValid") var isApiKeyValid = false
     @AppStorage("useBiometry") var useBiometry = false
-    @AppStorage("show_dynamic_island_badge") var showDynamicIslandBadge = true
     
     // MARK: - Console
     @AppStorage("spamEnabled") var spamEnabled = false

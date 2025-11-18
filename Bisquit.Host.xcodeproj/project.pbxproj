@@ -390,10 +390,6 @@
 		F333B3BB2B80CF750005B84D /* PreviewProp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F320DDA42B704E3C00957D92 /* PreviewProp.swift */; };
 		F333B3BC2B80CF750005B84D /* PreviewProp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F320DDA42B704E3C00957D92 /* PreviewProp.swift */; };
 		F333B3BD2B80CF760005B84D /* PreviewProp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F320DDA42B704E3C00957D92 /* PreviewProp.swift */; };
-		F335CA062C63E86D006C71C6 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = F335CA052C63E86D006C71C6 /* DeviceKit */; };
-		F335CA0B2C63E8CB006C71C6 /* DynamicIslandBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335CA072C63E8CB006C71C6 /* DynamicIslandBadge.swift */; };
-		F335CA0C2C63E8CB006C71C6 /* DynamicIslandBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335CA072C63E8CB006C71C6 /* DynamicIslandBadge.swift */; };
-		F335CA1B2C63E9A7006C71C6 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = F335CA1A2C63E9A7006C71C6 /* DeviceKit */; };
 		F335F6E52DD324BD00D743FF /* SheetCreateAllocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335F6E42DD324BD00D743FF /* SheetCreateAllocation.swift */; };
 		F335F6E72DD3564A00D743FF /* FileLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = F335F6E62DD3564A00D743FF /* FileLink.swift */; };
 		F335F6E82DD3568200D743FF /* FileContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C0F9CF29E204FA0040E277 /* FileContextMenu.swift */; };
@@ -613,8 +609,6 @@
 		F36113FD2E55E7450052A5A2 /* TextFileToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36113FB2E55E7450052A5A2 /* TextFileToolbar.swift */; };
 		F36113FE2E55E7450052A5A2 /* TextFileToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36113FB2E55E7450052A5A2 /* TextFileToolbar.swift */; };
 		F36113FF2E55E7450052A5A2 /* TextFileToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36113FB2E55E7450052A5A2 /* TextFileToolbar.swift */; };
-		F36114012E55E97D0052A5A2 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = F36114002E55E97D0052A5A2 /* DeviceKit */; };
-		F36114032E55E99A0052A5A2 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = F36114022E55E99A0052A5A2 /* DeviceKit */; };
 		F36114DC2E569EAC0052A5A2 /* StartPageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36114DB2E569EAC0052A5A2 /* StartPageHelper.swift */; };
 		F36114DD2E569EAC0052A5A2 /* StartPageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36114DB2E569EAC0052A5A2 /* StartPageHelper.swift */; };
 		F36114DE2E569EAC0052A5A2 /* StartPageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36114DB2E569EAC0052A5A2 /* StartPageHelper.swift */; };
@@ -921,7 +915,6 @@
 		F38F9E0D2CE6CCF90033EFE3 /* ImagePlaygroundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E082CE6CCF90033EFE3 /* ImagePlaygroundButton.swift */; };
 		F38F9E132CE7647D0033EFE3 /* ImagePlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E112CE7647D0033EFE3 /* ImagePlayground.swift */; };
 		F38F9E162CE7647D0033EFE3 /* ImagePlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E112CE7647D0033EFE3 /* ImagePlayground.swift */; };
-		F38F9E1A2CEA18150033EFE3 /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = F38F9E192CEA18150033EFE3 /* DeviceKit */; };
 		F38F9E282CEB33510033EFE3 /* QuickLookFileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E272CEB33510033EFE3 /* QuickLookFileVM.swift */; };
 		F38F9E2A2CEB33510033EFE3 /* QuickLookFileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E272CEB33510033EFE3 /* QuickLookFileVM.swift */; };
 		F38F9E2D2CEB39D80033EFE3 /* MetadataList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38F9E2B2CEB39D80033EFE3 /* MetadataList.swift */; };
@@ -1811,7 +1804,6 @@
 		F3310F2C2DD07CA100FA0AEC /* QuickLook Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "QuickLook Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3310F2D2DD07CA100FA0AEC /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		F3317AE92A45E24F00CA104D /* Guide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guide.swift; sourceTree = "<group>"; };
-		F335CA072C63E8CB006C71C6 /* DynamicIslandBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicIslandBadge.swift; sourceTree = "<group>"; };
 		F335F6E42DD324BD00D743FF /* SheetCreateAllocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetCreateAllocation.swift; sourceTree = "<group>"; };
 		F335F6E62DD3564A00D743FF /* FileLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLink.swift; sourceTree = "<group>"; };
 		F33712182DC2FD240014B427 /* PanelSectionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelSectionList.swift; sourceTree = "<group>"; };
@@ -2257,7 +2249,6 @@
 			files = (
 				F328D85E2A8240930038512F /* Algorithms in Frameworks */,
 				F3F60A682DEB93C900A15737 /* ScrechKit in Frameworks */,
-				F335CA1B2C63E9A7006C71C6 /* DeviceKit in Frameworks */,
 				F30860182B002C18004D776A /* PteroNet in Frameworks */,
 				F3EB09D12A29532D0073916A /* Kingfisher in Frameworks */,
 			);
@@ -2266,7 +2257,6 @@
 			isa = PBXFrameworksBuildPhase;
 			files = (
 				F342FAB72B2E49B600854270 /* Algorithms in Frameworks */,
-				F36114012E55E97D0052A5A2 /* DeviceKit in Frameworks */,
 				F3F60A6A2DEB944600A15737 /* ScrechKit in Frameworks */,
 				F36B145D2DC39F13008C1AF9 /* GaypadKit in Frameworks */,
 				F39D680D2A262C5E00B9BDFC /* Kingfisher in Frameworks */,
@@ -2304,7 +2294,6 @@
 				F36B739B2C8B073B00E858FE /* AudioVisualizer in Frameworks */,
 				F34745CA2A31F39600EE2FB8 /* MailCover in Frameworks */,
 				F3F60A742DEB94D100A15737 /* ScrechKit in Frameworks */,
-				F38F9E1A2CEA18150033EFE3 /* DeviceKit in Frameworks */,
 				F3F5AD7E2E8862B7007AD97D /* Appearance in Frameworks */,
 				F3F6ACAF2A51E48700EE417F /* AlertKit in Frameworks */,
 				F3038B932E04434C0085E438 /* QuickLooking in Frameworks */,
@@ -2342,7 +2331,6 @@
 			isa = PBXFrameworksBuildPhase;
 			files = (
 				F37FF8832D87AE3800554B3F /* Algorithms in Frameworks */,
-				F36114032E55E99A0052A5A2 /* DeviceKit in Frameworks */,
 				F3B7BFDE2B38E206005B5003 /* Pow in Frameworks */,
 				F3E08EB22A2CE19900116C1C /* Kingfisher in Frameworks */,
 				F358F02E2D2C1C5500BCC07B /* LaunchAtLogin in Frameworks */,
@@ -2361,7 +2349,6 @@
 			isa = PBXFrameworksBuildPhase;
 			files = (
 				F342FAA02B2C5DF300854270 /* Pow in Frameworks */,
-				F335CA062C63E86D006C71C6 /* DeviceKit in Frameworks */,
 				F36B14572DC39DD8008C1AF9 /* GaypadKit in Frameworks */,
 				F34745CC2A31F3A000EE2FB8 /* MailCover in Frameworks */,
 				F36B73A12C8B07E100E858FE /* AudioVisualizer in Frameworks */,
@@ -2663,7 +2650,6 @@
 			isa = PBXGroup;
 			children = (
 				F31BA5672959006F0006D126 /* AppContainer.swift */,
-				F335CA072C63E8CB006C71C6 /* DynamicIslandBadge.swift */,
 				F31BA565295900300006D126 /* NavState.swift */,
 				F31BA5692959007E0006D126 /* NavDestinations.swift */,
 				F3BAEC8C2959B3FE00111375 /* NavExtension.swift */,
@@ -4199,7 +4185,6 @@
 				F36B145C2DC39F13008C1AF9 /* GaypadKit */,
 				F3D6777C2DD867A900721DE8 /* Highlightr */,
 				F3F60A692DEB944600A15737 /* ScrechKit */,
-				F36114002E55E97D0052A5A2 /* DeviceKit */,
 			);
 			productName = "Bisquit.Host tvOSapp";
 			productReference = F3000E05295A341000ABD30A /* tvOS.app */;
@@ -4239,7 +4224,6 @@
 				F328D8582A82402A0038512F /* Algorithms */,
 				F30860132B002B31004D776A /* PteroNet */,
 				F342FA9F2B2C5DF300854270 /* Pow */,
-				F335CA052C63E86D006C71C6 /* DeviceKit */,
 				F36B73A02C8B07E100E858FE /* AudioVisualizer */,
 				F36B14562DC39DD8008C1AF9 /* GaypadKit */,
 				F3D6776A2DD7EBC100721DE8 /* Highlightr */,
@@ -4268,7 +4252,6 @@
 				F3EB09D02A29532D0073916A /* Kingfisher */,
 				F328D85D2A8240930038512F /* Algorithms */,
 				F30860172B002C18004D776A /* PteroNet */,
-				F335CA1A2C63E9A7006C71C6 /* DeviceKit */,
 				F3F60A672DEB93C900A15737 /* ScrechKit */,
 			);
 			productName = "Bisquit.Host Watch App";
@@ -4297,7 +4280,6 @@
 				F308601B2B002D40004D776A /* PteroNet */,
 				F342FAA72B2C61ED00854270 /* Pow */,
 				F36B739A2C8B073B00E858FE /* AudioVisualizer */,
-				F38F9E192CEA18150033EFE3 /* DeviceKit */,
 				F36B145E2DC39F2C008C1AF9 /* GaypadKit */,
 				F3D6776C2DD7EBD000721DE8 /* Highlightr */,
 				F3F60A732DEB94D100A15737 /* ScrechKit */,
@@ -4482,7 +4464,6 @@
 				F37FF8822D87AE3800554B3F /* Algorithms */,
 				F36B14582DC39F08008C1AF9 /* GaypadKit */,
 				F3F60A6B2DEB94B900A15737 /* ScrechKit */,
-				F36114022E55E99A0052A5A2 /* DeviceKit */,
 				F3F5AD792E88629E007AD97D /* Appearance */,
 			);
 			productName = "Bisquit.Host Mac";
@@ -4599,7 +4580,6 @@
 				F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms" */,
 				F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "PteroNet" */,
 				F342FA9E2B2C5DF200854270 /* XCRemoteSwiftPackageReference "Pow" */,
-				F335CA042C63E86D006C71C6 /* XCRemoteSwiftPackageReference "DeviceKit" */,
 				F33C2ABF2C69168C002FD150 /* XCRemoteSwiftPackageReference "QuickLooking" */,
 				F36B73952C8B055600E858FE /* XCRemoteSwiftPackageReference "Audio-Visualizer" */,
 				F358F02C2D2C1C5500BCC07B /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
@@ -5152,7 +5132,6 @@
 				F3E8B3502CF485FB005D25F8 /* ConsoleMessage.swift in Sources */,
 				F37DDA7629E2AF7600B9680C /* FolderPathVM.swift in Sources */,
 				F3E0B4962DC30351003C8B27 /* InfoTabSubdomains.swift in Sources */,
-				F335CA0B2C63E8CB006C71C6 /* DynamicIslandBadge.swift in Sources */,
 				F30088FC2B3B56210051476C /* UserListParent.swift in Sources */,
 				F35B2A0229FFD6AB006E5FD2 /* OtherModels.swift in Sources */,
 				F3A123562A667804008E3E20 /* LogMetaParent.swift in Sources */,
@@ -5565,7 +5544,6 @@
 				F3F5BC972BF7668E00EB8FB1 /* SensitivityAnalyzer.swift in Sources */,
 				F389BB6D2A05B5EE00911EBF /* CacheSize.swift in Sources */,
 				F30088AB2B3A1A520051476C /* ScheduleVM.swift in Sources */,
-				F335CA0C2C63E8CB006C71C6 /* DynamicIslandBadge.swift in Sources */,
 				F36D53332A05B8A9007324C6 /* FolderPath.swift in Sources */,
 				F38F9E2A2CEB33510033EFE3 /* QuickLookFileVM.swift in Sources */,
 				F3AF91CE2B423A26001D8F80 /* SSHCreateView.swift in Sources */,
@@ -7583,14 +7561,6 @@
 				minimumVersion = 1.2.1;
 			};
 		};
-		F335CA042C63E86D006C71C6 /* XCRemoteSwiftPackageReference "DeviceKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/devicekit/DeviceKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.7.0;
-			};
-		};
 		F33C2ABF2C69168C002FD150 /* XCRemoteSwiftPackageReference "QuickLooking" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TopScrech/QuickLooking";
@@ -7807,16 +7777,6 @@
 			package = F3E7BDD82A315C9D00CD03C3 /* XCRemoteSwiftPackageReference "MailCover" */;
 			productName = MailCover;
 		};
-		F335CA052C63E86D006C71C6 /* DeviceKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F335CA042C63E86D006C71C6 /* XCRemoteSwiftPackageReference "DeviceKit" */;
-			productName = DeviceKit;
-		};
-		F335CA1A2C63E9A7006C71C6 /* DeviceKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F335CA042C63E86D006C71C6 /* XCRemoteSwiftPackageReference "DeviceKit" */;
-			productName = DeviceKit;
-		};
 		F33C2AC22C691735002FD150 /* QuickLooking */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F33C2ABF2C69168C002FD150 /* XCRemoteSwiftPackageReference "QuickLooking" */;
@@ -7861,16 +7821,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F358F02C2D2C1C5500BCC07B /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;
 			productName = LaunchAtLogin;
-		};
-		F36114002E55E97D0052A5A2 /* DeviceKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F335CA042C63E86D006C71C6 /* XCRemoteSwiftPackageReference "DeviceKit" */;
-			productName = DeviceKit;
-		};
-		F36114022E55E99A0052A5A2 /* DeviceKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F335CA042C63E86D006C71C6 /* XCRemoteSwiftPackageReference "DeviceKit" */;
-			productName = DeviceKit;
 		};
 		F36B14562DC39DD8008C1AF9 /* GaypadKit */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -7936,11 +7886,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F32675842A01B69600A026DC /* XCRemoteSwiftPackageReference "SafariCover" */;
 			productName = SafariCover;
-		};
-		F38F9E192CEA18150033EFE3 /* DeviceKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F335CA042C63E86D006C71C6 /* XCRemoteSwiftPackageReference "DeviceKit" */;
-			productName = DeviceKit;
 		};
 		F39D19022E45C3FF00A84A80 /* ScrechKit */ = {
 			isa = XCSwiftPackageProductDependency;

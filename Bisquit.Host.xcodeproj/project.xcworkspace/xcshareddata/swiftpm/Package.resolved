@@ -1,5 +1,5 @@
 {
-  "originHash" : "1e2ca6f28f0e32ac91c587aced4e28c8cb4ebae2cb2974521e12a27ea4a5ae58",
+  "originHash" : "62f7a276b6ec8f2ece342a0438ff5f1ef853b0f48cd835b660ece1d4a90c48d1",
   "pins" : [
     {
       "identity" : "alertkit",
@@ -29,15 +29,6 @@
       }
     },
     {
-      "identity" : "devicekit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/devicekit/DeviceKit",
-      "state" : {
-        "revision" : "581df61650bc457ec00373a592a84be3e7468eb1",
-        "version" : "5.7.0"
-      }
-    },
-    {
       "identity" : "gaypadkit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/TopScrech/GaypadKit",
@@ -60,8 +51,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/onevcat/Kingfisher",
       "state" : {
-        "revision" : "4d75de347da985a70c63af4d799ed482021f6733",
-        "version" : "8.6.1"
+        "revision" : "d30a5fad881137e2267f96a8e3fc35c58999bb94",
+        "version" : "8.6.2"
       }
     },
     {
@@ -79,7 +70,7 @@
       "location" : "https://github.com/TopScrech/MailCover",
       "state" : {
         "branch" : "main",
-        "revision" : "6be9a338e65877e2ecdb87111afc92e6902daf21"
+        "revision" : "1a3afc2b001ddf2118d340f046ac42fba41d05cd"
       }
     },
     {
@@ -124,7 +115,7 @@
       "location" : "https://github.com/TopScrech/ScrechKit",
       "state" : {
         "branch" : "main",
-        "revision" : "d4e6479bfe3f17dadb6d5ae55ad2e6cc1cbfc5a1"
+        "revision" : "ff19ed3d7ea511c344961fac08827687c0a7acc6"
       }
     },
     {

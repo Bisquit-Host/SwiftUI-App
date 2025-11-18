@@ -1,5 +1,4 @@
 import SwiftUI
-import DeviceKit
 
 #if canImport(Appearance)
 import Appearance
@@ -19,12 +18,6 @@ struct DesignSettings: View {
 #endif
             Toggle(isOn: $store.enableBisquitFall) {
                 Label("Animated background", systemImage: "sparkles")
-            }
-            
-            if Device.current.hasDynamicIsland {
-                Toggle(isOn: $store.showDynamicIslandBadge) {
-                    Label("Dynamic Island badge", systemImage: "iphone")
-                }
             }
         }
     }
