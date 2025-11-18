@@ -11,13 +11,7 @@ final class NetworkVM {
         
         monitor.pathUpdateHandler = { handler in
             Task { @MainActor in
-                switch handler.status {
-                case .satisfied:
-                    self.isNetworkSatisfied = true
-                    
-                default:
-                    self.isNetworkSatisfied = false
-                }
+                self.isNetworkSatisfied = handler.status == .satisfied
             }
         }
         

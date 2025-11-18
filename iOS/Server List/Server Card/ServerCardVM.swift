@@ -33,17 +33,10 @@ final class ServerCardVM {
         
         withAnimation {
             switch model.state {
-            case "offline":
-                stateColor = .red
-                
-            case "running":
-                stateColor = .green
-                
-            case "suspended":
-                stateColor = .gray
-                
-            default:
-                stateColor = .yellow
+            case .offline:        stateColor = .red
+            case .running:        stateColor = .green
+            case .suspended:      stateColor = .gray
+            default: stateColor = .yellow
             }
             
             isLoading = false

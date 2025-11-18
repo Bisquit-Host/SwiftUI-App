@@ -21,11 +21,7 @@ struct Networking {
     static func fetchResourceUsage(_ id: String) async -> AssetDetails {
         do {
             let model = try await serverUsageAPI(id)
-            
-            return AssetDetails(
-                state: model.state,
-                test: model
-            )
+            return AssetDetails(state: model.state.rawValue, test: model)
         } catch {
             return AssetDetails(state: error.localizedDescription)
         }

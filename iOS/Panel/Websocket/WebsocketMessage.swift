@@ -13,14 +13,15 @@ struct WebsocketMessage: Codable {
     }
     
     var serverStats: [String: Any]? {
-        if event == "stats", let args, args.count > 0 {
-            if let data = args[0].data(using: .utf8),
-               let stats = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                return stats
-            }
+        guard
+            event == "stats", let args, args.count > 0,
+            let data = args[0].data(using: .utf8),
+            let stats = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+        else {
+            return nil
         }
         
-        return nil
+        return stats
     }
     
     var serverStatus: String? {
@@ -51,7 +52,7 @@ struct WebsocketMessage: Codable {
 struct ServerStats: Codable {
     let network: Network
     let state: String
-    let cpuAbsolute, memoryBytes, diskBytes: Double
+    let cpu, memory, disk: Double
     let memoryLimitBytes, uptime: Int
     
     struct Network: Codable {
@@ -64,12 +65,10 @@ struct ServerStats: Codable {
     }
     
     enum CodingKeys: String, CodingKey {
-        case state,
-             uptime,
-             network,
-             diskBytes = "disk_bytes",
-             cpuAbsolute = "cpu_absolute",
-             memoryBytes = "memory_bytes",
+        case state, uptime, network,
+             disk = "disk_bytes",
+             cpu = "cpu_absolute",
+             memory = "memory_bytes",
              memoryLimitBytes = "memory_limit_bytes"
     }
 }
