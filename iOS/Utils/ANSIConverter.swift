@@ -33,10 +33,7 @@ struct ANSIConverter {
         let matches = nsRegex.matches(
             in: input,
             options: [],
-            range: NSRange(
-                location: 0,
-                length: input.utf16.count
-            )
+            range: .init(location: 0, length: input.utf16.count)
         )
         
         var attributedString = AttributedString()
@@ -76,11 +73,7 @@ struct ANSIConverter {
                             Double($0)! / 255
                         }
                     
-                    lastColor = Color(
-                        red: rgb[0],
-                        green: rgb[1],
-                        blue: rgb[2]
-                    )
+                    lastColor = Color(red: rgb[0], green: rgb[1], blue: rgb[2])
                 } else {
                     let colorCodes = colorCode.split(separator: ";")
                     

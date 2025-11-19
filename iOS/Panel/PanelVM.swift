@@ -37,7 +37,9 @@ final class PanelVM {
     private let websocket = Websocket()
     
     var messages: [AttributedString] = []
-    
+//#if DEBUG
+//    var rawMessages: [String] = []
+//#endif
     var searchedMessages: [AttributedString] {
         if searchRule.isEmpty {
             messages
@@ -49,6 +51,17 @@ final class PanelVM {
         }
     }
     
+//    func measure() {
+//        let start = Date()
+//        
+//        for message in rawMessages {
+//            let _ = ANSIConverter.convertAnsiToAttributedString(message)
+//        }
+//        
+//        let diff = Date().timeIntervalSince(start)
+//        print("Seconds to process:", diff)
+//    }
+    
     func fetchServerDetails() async {
         do {
             server = try await serverDetailsAPI(id)
@@ -58,9 +71,7 @@ final class PanelVM {
     }
     
     func appendMessage(_ message: String) async {
-        guard
-            let jsonData = message.data(using: .utf8)
-        else {
+        guard let jsonData = message.data(using: .utf8) else {
             return
         }
         
@@ -98,6 +109,9 @@ final class PanelVM {
                 
             } else if let consoleOutput = message.consoleOutput {
                 print("Console output:", consoleOutput)
+//#if DEBUG
+//                rawMessages.append(consoleOutput)
+//#endif
                 
                 let clearOutput = consoleOutput.replacing(">....", with: "")
                 let attributedString = ANSIConverter.convertAnsiToAttributedString(clearOutput)
