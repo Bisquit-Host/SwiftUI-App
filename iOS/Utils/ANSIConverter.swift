@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct ANSIConverter {
     // MARK: - Cache
@@ -25,6 +25,7 @@ struct ANSIConverter {
         currentContainer.font = .monospacedSystemFont(ofSize: 14, weight: .regular)
 #endif
         currentContainer.foregroundColor = .primary
+        currentContainer.inlinePresentationIntent = [] // Ensure emphasis attributes can be mutated
         
         let nsString = input as NSString
         let length = nsString.length
@@ -193,7 +194,6 @@ struct ANSIConverter {
     }
     
     // MARK: - Color Helpers
-    
     private static func getXtermColor(_ index: Int) -> Color {
         // 0-15: Standard Colors
         if let standard = standardColors[index] ?? standardColors[index + (index < 8 ? 30 : 82)] {
