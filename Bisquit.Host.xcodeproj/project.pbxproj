@@ -858,6 +858,7 @@
 		F380C0B32A4F1D42002D400F /* ServerListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F352AF962A4EDB1D004AD489 /* ServerListVM.swift */; };
 		F38282032B0E14B30088C48B /* LiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38282022B0E14B30088C48B /* LiveActivity.swift */; };
 		F383536E2ECE762100535F26 /* ANSIConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39626F12A7AD64B0057E356 /* ANSIConverter.swift */; };
+		F38353702ECE895000535F26 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F383536F2ECE895000535F26 /* ScrechKit */; };
 		F384D8BD2D5BE495000FC41D /* Crypto Price Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F384D8BB2D5BE495000FC41D /* Crypto Price Widget.intentdefinition */; };
 		F384D8BE2D5BE495000FC41D /* Crypto Price Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F384D8BB2D5BE495000FC41D /* Crypto Price Widget.intentdefinition */; };
 		F385824229D6215100BEEE1D /* AppIconCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F385824129D6215100BEEE1D /* AppIconCard.swift */; };
@@ -2254,6 +2255,7 @@
 		F383535B2ECE744500535F26 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
+				F38353702ECE895000535F26 /* ScrechKit in Frameworks */,
 			);
 		};
 		F38637342A8641120069F074 /* Frameworks */ = {
@@ -4364,6 +4366,9 @@
 				F383535F2ECE744500535F26 /* Unit Tests macOS */,
 			);
 			name = "Unit Tests macOS";
+			packageProductDependencies = (
+				F383536F2ECE895000535F26 /* ScrechKit */,
+			);
 			productName = "Unit Tests macOS";
 			productReference = F383535E2ECE744500535F26 /* Unit Tests macOS.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -8000,6 +8005,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms" */;
 			productName = Algorithms;
+		};
+		F383536F2ECE895000535F26 /* ScrechKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3CBC6D32D9A025A0081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */;
+			productName = ScrechKit;
 		};
 		F389BB562A05B47000911EBF /* SafariCover */ = {
 			isa = XCSwiftPackageProductDependency;

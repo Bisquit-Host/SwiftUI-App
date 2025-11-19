@@ -2,20 +2,17 @@ import SwiftUI
 
 struct ANSIConverter {
     // MARK: - Cache
-    
     private static let ansiRegex = try! NSRegularExpression(pattern: "\\x1b\\[([0-9;]*)m")
     private static let linkDetector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
     
     private static let standardColors = [
-        30: Color(hex: 0x131a20), 31: Color(hex: 0xFE5370), 32: Color(hex: 0xC2E78C),
-        33: Color(hex: 0xFECA6B), 34: Color(hex: 0x396FE2), 35: Color(hex: 0xBB80B3),
-        36: Color(hex: 0x88DCFE), 37: Color(hex: 0xD0D0D0),
-        90: Color(hex: 0x333333), 91: Color(hex: 0xFF5370), 92: Color(hex: 0xC3E88D),
-        93: Color(hex: 0xFFCB6B), 94: Color(hex: 0x82AAFF), 95: Color(hex: 0xC792EA),
-        96: Color(hex: 0x89DDFF), 97: .white
+        30: Color(0x131a20), 31: Color(0xFE5370), 32: Color(0xC2E78C),
+        33: Color(0xFECA6B), 34: Color(0x396FE2), 35: Color(0xBB80B3),
+        36: Color(0x88DCFE), 37: Color(0xD0D0D0),
+        90: Color(0x333333), 91: Color(0xFF5370), 92: Color(0xC3E88D),
+        93: Color(0xFFCB6B), 94: Color(0x82AAFF), 95: Color(0xC792EA),
+        96: Color(0x89DDFF), 97: .white
     ]
-    
-    // MARK: - Public API
     
     public static func convertAnsiToAttributedString(_ input: String) -> AttributedString {
         var attributedString = AttributedString()
@@ -224,17 +221,5 @@ struct ANSIConverter {
         }
         
         return .primary
-    }
-}
-
-// MARK: - Extensions
-
-extension Color {
-    init(hex: UInt) {
-        self.init(
-            red: Double((hex >> 16) & 0xFF) / 255,
-            green: Double((hex >> 8) & 0xFF) / 255,
-            blue: Double(hex & 0xFF) / 255
-        )
     }
 }
