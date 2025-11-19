@@ -97,6 +97,8 @@ final class PanelVM {
                 serverState = state
                 
             } else if let consoleOutput = message.consoleOutput {
+                print("Console output:", consoleOutput)
+                
                 let clearOutput = consoleOutput.replacing(">....", with: "")
                 let attributedString = ANSIConverter.convertAnsiToAttributedString(clearOutput)
                 

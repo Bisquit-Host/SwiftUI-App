@@ -857,6 +857,8 @@
 		F37FF8832D87AE3800554B3F /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = F37FF8822D87AE3800554B3F /* Algorithms */; };
 		F380C0B32A4F1D42002D400F /* ServerListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F352AF962A4EDB1D004AD489 /* ServerListVM.swift */; };
 		F38282032B0E14B30088C48B /* LiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38282022B0E14B30088C48B /* LiveActivity.swift */; };
+		F38353572ECE723E00535F26 /* ANSITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38353562ECE723E00535F26 /* ANSITests.swift */; };
+		F38353592ECE729400535F26 /* Output.txt in Resources */ = {isa = PBXBuildFile; fileRef = F38353582ECE729400535F26 /* Output.txt */; };
 		F384D8BD2D5BE495000FC41D /* Crypto Price Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F384D8BB2D5BE495000FC41D /* Crypto Price Widget.intentdefinition */; };
 		F384D8BE2D5BE495000FC41D /* Crypto Price Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F384D8BB2D5BE495000FC41D /* Crypto Price Widget.intentdefinition */; };
 		F385824229D6215100BEEE1D /* AppIconCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F385824129D6215100BEEE1D /* AppIconCard.swift */; };
@@ -1972,6 +1974,8 @@
 		F37DDA7529E2AF7600B9680C /* FolderPathVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderPathVM.swift; sourceTree = "<group>"; };
 		F37F51C329DAF8D70030C1C4 /* DesImageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesImageVM.swift; sourceTree = "<group>"; };
 		F38282022B0E14B30088C48B /* LiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivity.swift; sourceTree = "<group>"; };
+		F38353562ECE723E00535F26 /* ANSITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANSITests.swift; sourceTree = "<group>"; };
+		F38353582ECE729400535F26 /* Output.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Output.txt; sourceTree = "<group>"; };
 		F384D8BA2D5BE495000FC41D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = Base; path = "Base.lproj/Crypto Price Widget.intentdefinition"; sourceTree = "<group>"; };
 		F384D8C02D5BE4A5000FC41D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "en.lproj/Crypto Price Widget.strings"; sourceTree = "<group>"; };
 		F384D8C22D5BE4A6000FC41D /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = "nl.lproj/Crypto Price Widget.strings"; sourceTree = "<group>"; };
@@ -3490,6 +3494,8 @@
 			isa = PBXGroup;
 			children = (
 				F39D18FE2E45C30600A84A80 /* UnitTests.swift */,
+				F38353562ECE723E00535F26 /* ANSITests.swift */,
+				F38353582ECE729400535F26 /* Output.txt */,
 			);
 			path = "Unit Tests";
 			sourceTree = "<group>";
@@ -4683,6 +4689,7 @@
 		F39D18F32E45C30200A84A80 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
+				F38353592ECE729400535F26 /* Output.txt in Resources */,
 			);
 		};
 		F3A7CEC12C8B685500413400 /* Resources */ = {
@@ -5698,6 +5705,7 @@
 			files = (
 				F39D19012E45C34600A84A80 /* ANSIConverter.swift in Sources */,
 				F39D19002E45C30600A84A80 /* UnitTests.swift in Sources */,
+				F38353572ECE723E00535F26 /* ANSITests.swift in Sources */,
 			);
 		};
 		F3A7CEBF2C8B685500413400 /* Sources */ = {

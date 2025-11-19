@@ -1,0 +1,150 @@
+[23:22:52 INFO]: [TAB] [37mLoaded NMS hook in 68ms[0m
+[23:22:53 INFO]: [PlaceholderAPI] Successfully registered internal expansion: tab [4.1.7]
+[23:22:53 INFO]: [TAB] [92mEnabled in 360ms[0m
+[23:22:53 INFO]: [CMI] Enabling CMI v9.7.5.3
+[23:22:53 INFO]: [37m_______________________________________________________[0m
+[23:22:53 INFO]: [37m┏━━━┓ [97m┏━┓┏━┓ [37m┏━━┓[0m
+[23:22:53 INFO]: [37m┃┏━┓┃ [97m┃ ┗┛ ┃ [37m┗┫┣┛[0m
+[23:22:53 INFO]: [37m┃┃ ┗┛ [97m┃┏┓┏┓┃ [37m ┃┃ [0m
+[23:22:53 INFO]: [37m┃┃ ┏┓ [97m┃┃┃┃┃┃ [37m ┃┃ [0m
+[23:22:53 INFO]: [37m┃┗━┛┃ [97m┃┃┃┃┃┃ [37m┏┫┣┓[0m
+[23:22:53 INFO]: [37m┗━━━┛ [97m┗┛┗┛┗┛ [37m┗━━┛[0m
+[23:22:53 INFO]: [37m_______________________________________________________[0m
+[23:22:53 INFO]: [36mIntegrating [35mPaperSpigot [36masync methods[0m
+[23:22:53 INFO]: [97m65 [32mEnabled [36mand [97m1 [93mDisabled [36mmodules[0m
+[23:22:53 INFO]: [97mProtocolLib[36m found. (Loaded: true)[0m
+[23:22:53 INFO]: [36mPermission plugin: [35mLuckPerms5.4.139[0m
+[23:22:54 INFO]: [36mInitialized Cipher256 AES[0m
+[23:22:54 INFO]: [36mLoaded ([97m61[36m) [37mregular alias [36minto memory. [33mTook [93m38[33mms[0m
+[23:22:54 INFO]: [36mLoaded ([97m1[36m) [37mcustom text’s [36minto memory. [33mTook [93m6[33mms[0m
+[23:22:54 INFO]: [93m(RandomTeleportation) Can’t find world with (world) name[0m
+[23:22:54 INFO]: [93m(RandomTeleportation) Can’t find world with (world_nether) name[0m
+[23:22:54 INFO]: [93m(RandomTeleportation) Can’t find world with (world_the_end) name[0m
+[23:22:54 INFO]: [36m3.46.0 data base type detected[0m
+[23:22:55 INFO]: [36mStarted [37mSqLite [36mdata base. Took [33m63ms[0m
+[23:22:55 INFO]: [33mVault was not found, you will have limited economy support[0m
+[23:22:55 INFO]: [36mLoaded ([97m5[36m) [37mwarning categories [36minto memory. [33mTook [93m0[33mms[0m
+[23:22:55 INFO]: [36mLoaded ([97m3[36m) [37mwarning commands [36minto memory. [33mTook [93m0[33mms[0m
+[23:22:55 INFO]: [36mLoaded ([97m0[36m) [37mcooldowns [36minto memory. [33mTook [93m0[33mms[0m
+[23:22:55 INFO]: [36mLoaded ([97m147[36m) [37mcustom mob heads [36minto memory. [33mTook [93m7[33mms[0m
+[31;1m[23:22:55 ERROR]: Error occurred while enabling CMI v9.7.5.3 (Is it up to date?)
+java.lang.NoClassDefFoundError: net/Zrips/CMILib/Sounds/CMISoundPreset
+at CMI-9.7.5.3.jar/com.Zrips.CMI.Config.load(Config.java:1731) ~[CMI-9.7.5.3.jar:?]
+at CMI-9.7.5.3.jar/com.Zrips.CMI.CMI.onEnable(CMI.java:1528) ~[CMI-9.7.5.3.jar:?]
+at org.bukkit.plugin.java.JavaPlugin.setEnabled(JavaPlugin.java:288) ~[paper-mojangapi-1.21-R0.1-SNAPSHOT.jar:?]
+at io.papermc.paper.plugin.manager.PaperPluginInstanceManager.enablePlugin(PaperPluginInstanceManager.java:202) ~[purpur-1.21.jar:1.21-2284-4e55e26]
+at io.papermc.paper.plugin.manager.PaperPluginManagerImpl.enablePlugin(PaperPluginManagerImpl.java:109) ~[purpur-1.21.jar:1.21-2284-4e55e26]
+at org.bukkit.plugin.SimplePluginManager.enablePlugin(SimplePluginManager.java:520) ~[paper-mojangapi-1.21-R0.1-SNAPSHOT.jar:?]
+at org.bukkit.craftbukkit.CraftServer.enablePlugin(CraftServer.java:654) ~[purpur-1.21.jar:1.21-2284-4e55e26]
+at org.bukkit.craftbukkit.CraftServer.enablePlugins(CraftServer.java:603) ~[purpur-1.21.jar:1.21-2284-4e55e26]
+at net.minecraft.server.MinecraftServer.loadWorld0(MinecraftServer.java:757) ~[purpur-1.21.jar:1.21-2284-4e55e26]
+at net.minecraft.server.MinecraftServer.loadLevel(MinecraftServer.java:519) ~[purpur-1.21.jar:1.21-2284-4e55e26]
+at net.minecraft.server.dedicated.DedicatedServer.initServer(DedicatedServer.java:363) ~[purpur-1.21.jar:1.21-2284-4e55e26]
+at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:1230) ~[purpur-1.21.jar:1.21-2284-4e55e26]
+at net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:333) ~[purpur-1.21.jar:1.21-2284-4e55e26]
+at java.base/java.lang.Thread.run(Thread.java:1583) ~[?:?]
+Caused by: java.lang.ClassNotFoundException: net.Zrips.CMILib.Sounds.CMISoundPreset
+at org.bukkit.plugin.java.PluginClassLoader.loadClass0(PluginClassLoader.java:197) ~[paper-mojangapi-1.21-R0.1-SNAPSHOT.jar:?]
+at org.bukkit.plugin.java.PluginClassLoader.loadClass(PluginClassLoader.java:164) ~[paper-mojangapi-1.21-R0.1-SNAPSHOT.jar:?]
+at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[?:?]
+… 14 more
+[m[23:22:55 INFO]: [CMI] Disabling CMI v9.7.5.3
+[23:22:55 INFO]: [36mClosed db connections[0m
+[23:22:55 INFO]: [Skulls] Enabling Skulls v3.17.0
+[23:22:55 INFO]:
+[23:22:55 INFO]: [36m=============================[0m
+[23:22:55 INFO]: [36mSkulls [97mv[93m3.17.0 [37mby [36mTweetzy[0m
+[23:22:55 INFO]: [36mDeveloper[37m: [93mKiran Hart[0m
+[31;1m[23:22:55 ERROR]: [Skulls] An error occurred executing an SQLite query: [SQLITE_ERROR] SQL error or missing database (table skulls_players already exists)
+[m[33;1m[23:22:55 WARN]: org.sqlite.SQLiteException: [SQLITE_ERROR] SQL error or missing database (table skulls_players already exists)
+[m[33;1m[23:22:55 WARN]: at org.sqlite.core.DB.newSQLException(DB.java:1179)
+[m[33;1m[23:22:55 WARN]: at org.sqlite.core.DB.newSQLException(DB.java:1190)
+[m[33;1m[23:22:55 WARN]: at org.sqlite.core.DB.throwex(DB.java:1150)
+[m[33;1m[23:22:55 WARN]: at org.sqlite.core.NativeDB.prepare_utf8(Native Method)
+[m[33;1m[23:22:55 WARN]: at org.sqlite.core.NativeDB.prepare(NativeDB.java:132)
+[m[33;1m[23:22:55 WARN]: at org.sqlite.core.DB.prepare(DB.java:264)
+[m[33;1m[23:22:55 WARN]: at org.sqlite.jdbc3.JDBC3Statement.lambda$execute$0(JDBC3Statement.java:54)
+[m[33;1m[23:22:55 WARN]: at org.sqlite.jdbc3.JDBC3Statement.withConnectionTimeout(JDBC3Statement.java:454)
+[m[33;1m[23:22:55 WARN]: at org.sqlite.jdbc3.JDBC3Statement.execute(JDBC3Statement.java:43)
+[m[33;1m[23:22:55 WARN]: at Skulls-3.17.0.jar//ca.tweetzy.skulls.database.migrations._1_InitialMigration.migrate(_1_InitialMigration.java:45)
+[m[33;1m[23:22:55 WARN]: at Skulls-3.17.0.jar//ca.tweetzy.skulls.flight.database.DataMigrationManager.lambda$runMigrations$1(DataMigrationManager.java:97)
+[m[33;1m[23:22:55 WARN]: at Skulls-3.17.0.jar//ca.tweetzy.skulls.flight.database.SQLiteConnector.connect(SQLiteConnector.java:76)
+[m[33;1m[23:22:55 WARN]: at Skulls-3.17.0.jar//ca.tweetzy.skulls.flight.database.DataMigrationManager.runMigrations(DataMigrationManager.java:44)
+[m[33;1m[23:22:55 WARN]: at Skulls-3.17.0.jar//ca.tweetzy.skulls.Skulls.onFlight(Skulls.java:86)
+[m[33;1m[23:22:55 WARN]: at Skulls-3.17.0.jar//ca.tweetzy.skulls.flight.FlightPlugin.onEnable(FlightPlugin.java:91)
+[m[33;1m[23:22:55 WARN]: at org.bukkit.plugin.java.JavaPlugin.setEnabled(JavaPlugin.java:288)
+[m[33;1m[23:22:55 WARN]: at io.papermc.paper.plugin.manager.PaperPluginInstanceManager.enablePlugin(PaperPluginInstanceManager.java:202)
+[m[33;1m[23:22:55 WARN]: at io.papermc.paper.plugin.manager.PaperPluginManagerImpl.enablePlugin(PaperPluginManagerImpl.java:109)
+[m[33;1m[23:22:55 WARN]: at org.bukkit.plugin.SimplePluginManager.enablePlugin(SimplePluginManager.java:520)
+[m[33;1m[23:22:55 WARN]: at org.bukkit.craftbukkit.CraftServer.enablePlugin(CraftServer.java:654)
+[m[33;1m[23:22:55 WARN]: at org.bukkit.craftbukkit.CraftServer.enablePlugins(CraftServer.java:603)
+[m[33;1m[23:22:55 WARN]: at net.minecraft.server.MinecraftServer.loadWorld0(MinecraftServer.java:757)
+[m[33;1m[23:22:55 WARN]: at net.minecraft.server.MinecraftServer.loadLevel(MinecraftServer.java:519)
+[m[33;1m[23:22:55 WARN]: at net.minecraft.server.dedicated.DedicatedServer.initServer(DedicatedServer.java:363)
+[m[33;1m[23:22:55 WARN]: at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:1230)
+[m[33;1m[23:22:55 WARN]: at net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:333)
+[m[33;1m[23:22:55 WARN]: at java.base/java.lang.Thread.run(Thread.java:1583)
+[m[23:22:55 INFO]: [1m[91mS[91mk[91mu[91ml[97ml[97ms[0m [90m» [92mSetting up item economy provider[0m
+[23:22:55 INFO]: [90m[[36mFlightCore[90m][37m Enabling metrics for [36mSkulls[0m
+[23:22:55 INFO]: [36m=============================[0m
+[23:22:55 INFO]:
+[23:22:55 INFO]: [DecentHolograms] Enabling DecentHolograms v2.8.11
+[23:22:56 INFO]: [NBTAPI] [NBTAPI] Found Minecraft: 1.21! Trying to find NMS support
+[23:22:56 INFO]: [NBTAPI] [NBTAPI] NMS support ‘MC1_21_R1’ loaded!
+[23:22:56 INFO]: [NBTAPI] [NBTAPI] Using the plugin ‘DecentHolograms’ to create a bStats instance!
+[23:22:56 INFO]: [Vulcan] Enabling Vulcan v2.9.0
+[23:22:56 INFO]: [Vulcan] Server Version: 1.21 detected!
+[23:22:57 INFO]: [PlaceholderAPI] Successfully registered internal expansion: Vulcan [2.9.0]
+[23:22:57 INFO]: [Vulcan] PlaceholderAPI found. Enabling hook!
+[23:22:57 INFO]: [ViaBackwards] Enabling ViaBackwards v5.0.4-SNAPSHOT
+[23:22:57 INFO]: [spark] Starting background profiler…
+[23:22:57 INFO]: [PlaceholderAPI] Placeholder expansion registration initializing…
+[23:22:57 INFO]: Done preparing level “Final” (6.588s)
+[23:22:57 INFO]: Running delayed init tasks
+[23:22:57 INFO]: [ViaVersion] Finished mapping loading, shutting down loader executor!
+[23:22:57 INFO]: [DecentHolograms] Loading holograms…
+[23:22:57 INFO]: [com.fastasyncworldedit.bukkit.regions.WorldGuardFeature] Plugin ‘WorldGuard’ found. Using it now.
+[23:22:57 INFO]: [com.fastasyncworldedit.bukkit.FaweBukkit] Attempting to use plugin ‘WorldGuard’
+[23:22:57 INFO]: [com.fastasyncworldedit.bukkit.regions.plotsquared.PlotSquaredFeature] Optimizing PlotSquared
+[23:22:57 INFO]: [com.fastasyncworldedit.bukkit.FaweBukkit] Plugin ‘PlotSquared’ v7 found. Using it now.
+[23:22:57 INFO]: [DecentHolograms] Loaded 1 holograms!
+[33;1m[23:22:57 WARN]: [CMILib] Task #36 for CMILib v1.5.6.6 generated an exception
+java.lang.IllegalStateException: zip file closed
+at java.base/java.util.zip.ZipFile.ensureOpen(ZipFile.java:846) ~[?:?]
+at java.base/java.util.zip.ZipFile.getEntry(ZipFile.java:338) ~[?:?]
+at java.base/java.util.jar.JarFile.getEntry(JarFile.java:517) ~[?:?]
+at java.base/java.util.jar.JarFile.getJarEntry(JarFile.java:472) ~[?:?]
+at org.bukkit.plugin.java.PluginClassLoader.findClass(PluginClassLoader.java:209) ~[paper-mojangapi-1.21-R0.1-SNAPSHOT.jar:?]
+at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:593) ~[?:?]
+at org.bukkit.plugin.java.PluginClassLoader.loadClass0(PluginClassLoader.java:169) ~[paper-mojangapi-1.21-R0.1-SNAPSHOT.jar:?]
+at org.bukkit.plugin.java.PluginClassLoader.loadClass(PluginClassLoader.java:164) ~[paper-mojangapi-1.21-R0.1-SNAPSHOT.jar:?]
+at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[?:?]
+at CMI-9.7.5.3.jar/com.Zrips.CMI.Modules.Hooks.CMIHookType$9.lambda$0(CMIHookType.java:167) ~[CMI-9.7.5.3.jar:?]
+at CMILib1.5.6.6.jar/net.Zrips.CMILib.Version.Schedulers.CMIBukkitImpl.lambda$runTask$0(CMIBukkitImpl.java:33) ~[CMILib1.5.6.6.jar:?]
+at org.bukkit.craftbukkit.scheduler.CraftTask.run(CraftTask.java:86) ~[purpur-1.21.jar:1.21-2284-4e55e26]
+at org.bukkit.craftbukkit.scheduler.CraftScheduler.mainThreadHeartbeat(CraftScheduler.java:475) ~[purpur-1.21.jar:1.21-2284-4e55e26]
+at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:1241) ~[purpur-1.21.jar:1.21-2284-4e55e26]
+at net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:333) ~[purpur-1.21.jar:1.21-2284-4e55e26]
+at java.base/java.lang.Thread.run(Thread.java:1583) ~[?:?]
+[m[23:22:57 INFO]: [1m[91mS[91mk[91mu[91ml[97ml[97ms[0m [90m» [92mLoaded [93m103307 [92mskulls in [97m1,472.773[92mms[0m
+[23:22:57 INFO]: [PlaceholderAPI] Successfully registered external expansion: luckperms [5.1-R2]
+[23:22:57 INFO]: [PlaceholderAPI] Successfully registered external expansion: bungee [1.0.1]
+[23:22:57 INFO]: [92m2 placeholder hook(s) registered! [33m2 placeholder hook(s) have an update available[0m
+[23:22:57 INFO]:
+[23:22:57 INFO]: [97mA newer version of [36mDecentHolograms [97mis available. Download it from:[0m
+[23:22:57 INFO]: [97m- [37mhttps://www.spigotmc.org/resources/96927/[0m
+[23:22:57 INFO]: [97m- [37mhttps://modrinth.com/plugin/decentholograms[0m
+[23:22:57 INFO]: [90m[[33mP2[90m] [37mLoading flags for area: [36mFinal[0m
+[23:22:57 INFO]: [90m[[33mP2[90m] [37mArea flags: [36m[][0m
+[23:22:57 INFO]: [90m[[33mP2[90m] [37mRoad flags: [36m[][0m
+[23:22:57 INFO]: [PlaceholderAPI] An update for PlaceholderAPI (v2.11.7) is available at:
+[23:22:57 INFO]: [PlaceholderAPI] https://www.spigotmc.org/resources/placeholderapi.6245/
+[23:22:57 INFO]: Done (19.654s)! For help, type “help”
+[33;1m[23:22:57 WARN]: [ViaVersion] There is a newer plugin version available: 5.5.1, you’re on: 5.0.4-SNAPSHOT
+[m[23:22:57 INFO]: [1m[91mS[91mk[91mu[91ml[97ml[97ms[0m [90m» [92mRunning database check :)[0m
+[23:22:58 INFO]: [32mDownloaded CMILib1.5.7.2 file[0m
+[23:22:58 INFO]: [32mPlease restart server for this to take full effect[0m
+[23:22:58 INFO]: [93m[ProtocolLib] The updater found an update: 5.4.0 (Running 5.3.0-SNAPSHOT-726). Download at https://www.spigotmc.org/resources/protocollib.1997/[0m
+[23:23:00 INFO]: [PlotSquared/BukkitPlatform] (UUID) PlotSquared will fetch UUIDs in groups of 200
+[23:23:00 INFO]: [PlotSquared/BukkitPlatform] (UUID) PlotSquared has cached 100.0% of UUIDs
+[23:23:00 INFO]: [PlotSquared/BukkitPlatform] (UUID) PlotSquared has cached all UUIDs
