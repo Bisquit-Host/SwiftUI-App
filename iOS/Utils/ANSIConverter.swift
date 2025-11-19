@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 
 struct ANSIConverter {
     private static let ansiToSwiftUIColorMap = [
