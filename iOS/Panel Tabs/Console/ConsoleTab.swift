@@ -50,11 +50,11 @@ struct ConsoleTab: View {
         .task {
             vm.fontSize = store.consoleFontSize
             
-            Task {
-                try await Task.sleep(for: .seconds(4))
-                
-                panelVM.measure()
-            }
+//            Task {
+//                try await Task.sleep(for: .seconds(4))
+//                
+//                panelVM.measure()
+//            }
         }
         .onDisappear {
             store.consoleFontSize = vm.fontSize

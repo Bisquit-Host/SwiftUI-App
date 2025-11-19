@@ -24,8 +24,7 @@ struct ANSIConverter {
         let regexPattern = "\\x1b\\[[0-9;]*m"
         
         guard
-            let nsRegex = try? NSRegularExpression(pattern: regexPattern),
-            let parts = try? input.split(separator: Regex(regexPattern))
+            let nsRegex = try? NSRegularExpression(pattern: regexPattern)
         else {
             return AttributedString(input)
         }
@@ -40,8 +39,10 @@ struct ANSIConverter {
         var lastColor: Color = .primary
         var isBold = false
         var isUnderlined = false
+        var cursor = input.startIndex
         
-        for (idx, part) in parts.enumerated() {
+        func appendSegment(_ segment: Substring) {
+            guard !segment.isEmpty else { return }
             var attributeContainer = AttributeContainer()
             attributeContainer.foregroundColor = lastColor
             
@@ -54,52 +55,58 @@ struct ANSIConverter {
             }
             
             attributedString.append(
-                AttributedString(part, attributes: attributeContainer)
+                AttributedString(String(segment), attributes: attributeContainer)
             )
+        }
+        
+        func applyAnsiSequence(_ sequence: Substring) {
+            let code = sequence.dropFirst(2).dropLast()
             
-            if idx < matches.count {
-                let match = matches[idx]
+            if code.hasPrefix("38;2;") {
+                let rgb = code
+                    .dropFirst(5)
+                    .split(separator: ";")
+                    .compactMap { Double($0) }
                 
-                let colorCode = (input as NSString)
-                    .substring(with: match.range)
-                    .dropFirst(2)
-                    .dropLast()
-                
-                if colorCode.hasPrefix("38;2;") {
-                    let rgb = colorCode
-                        .dropFirst(5)
-                        .split(separator: ";")
-                        .map {
-                            Double($0)! / 255
-                        }
+                guard rgb.count == 3 else { return }
+                lastColor = Color(red: rgb[0] / 255, green: rgb[1] / 255, blue: rgb[2] / 255)
+                return
+            }
+            
+            let colorCodes = code.isEmpty ? ["0"] : code.split(separator: ";").map(String.init)
+            
+            for ansiCode in colorCodes {
+                switch ansiCode {
+                case "0":
+                    isBold = false
+                    isUnderlined = false
+                    lastColor = .white
                     
-                    lastColor = Color(red: rgb[0], green: rgb[1], blue: rgb[2])
-                } else {
-                    let colorCodes = colorCode.split(separator: ";")
+                case "21":
+                    isUnderlined = true
                     
-                    for code in colorCodes {
-                        switch code {
-                        case "0":
-                            isBold = false
-                            isUnderlined = false
-                            lastColor = .white
-                            
-                        case "21":
-                            isUnderlined = true
-                            
-                        case "1":
-                            isBold = true
-                            
-                        default:
-                            if let codeInt = Int(code) {
-                                lastColor = ANSIConverter.ansiToSwiftUIColorMap[codeInt] ?? lastColor
-                            }
-                        }
+                case "1":
+                    isBold = true
+                    
+                default:
+                    if let codeInt = Int(ansiCode) {
+                        lastColor = ANSIConverter.ansiToSwiftUIColorMap[codeInt] ?? lastColor
                     }
                 }
             }
         }
         
+        for match in matches {
+            guard let range = Range(match.range, in: input) else { continue }
+            appendSegment(input[cursor..<range.lowerBound])
+            applyAnsiSequence(input[range])
+            cursor = range.upperBound
+        }
+        
+        if cursor < input.endIndex {
+            appendSegment(input[cursor...])
+        }
+
         ANSIConverter.detectAndAddLinks(&attributedString)
         
         return attributedString
