@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 
 struct DevSettings: View {
     private let device = UIDevice.current
@@ -21,9 +21,9 @@ struct DevSettings: View {
     
     var body: some View {
         Section {
-            ListParam("App version", param: version)
+            LabeledContent("App version", value: version)
             
-            ListParam("Device and system", param: deviceAndSystem)
+            LabeledContent("Device and system", value: deviceAndSystem)
 #if !os(tvOS)
             NavigationLink("Debug") {
                 DebugSettings()

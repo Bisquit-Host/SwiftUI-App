@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 
 struct DebugSettings: View {
     @EnvironmentObject private var store: ValueStore
@@ -23,7 +23,7 @@ struct DebugSettings: View {
     
     var body: some View {
         Section("Dev") {
-            ListParam("App version", param: version)
+            LabeledContent("App version", value: version)
             
             VStack(alignment: .leading) {
                 Text("Device and system")

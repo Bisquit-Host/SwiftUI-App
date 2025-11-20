@@ -37,12 +37,12 @@ struct InfoTab: View {
             
             Divider()
             
-            ListParam("Uptime", param: Converter.millisecondsToTime(vm.uptime))
+            LabeledContent("Uptime", value: Converter.millisecondsToTime(vm.uptime))
                 .monospacedDigit()
             
             Divider()
             
-            ListParam("Node", param: server.node)
+            LabeledContent("Node", value: server.node)
             
             Divider()
             
