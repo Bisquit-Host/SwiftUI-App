@@ -15,21 +15,24 @@ struct ANSIConverter {
     ]
     
     public static func convertAnsiToAttributedString(_ input: String) -> AttributedString {
-        var attributedString = AttributedString()
-        var currentContainer = AttributeContainer()
+#if os(macOS)
+        let font = NSFont.systemFont(ofSize: 12, weight: .regular)
+#else
+        let font = UIFont.systemFont(ofSize: 14, weight: .regular)
+#endif
+        var currentContainer = AttributeContainer([.font: font])
         
         // Set default font to ensure monospaced alignment usually desired with ANSI
-#if os(macOS)
-        currentContainer.font = .monospacedSystemFont(ofSize: 12, weight: .regular)
-#else
-        currentContainer.font = .monospacedSystemFont(ofSize: 14, weight: .regular)
-#endif
         currentContainer.foregroundColor = .primary
-        currentContainer.inlinePresentationIntent = [] // Ensure emphasis attributes can be mutated
+        
+        // Ensure emphasis attributes can be mutated (bold fix)
+        currentContainer.inlinePresentationIntent = []
         
         let nsString = input as NSString
         let length = nsString.length
         var searchRange = NSRange(location: 0, length: length)
+        
+        var attributedString = AttributedString()
         
         while searchRange.location < length {
             // Find the next ANSI escape code
@@ -71,7 +74,6 @@ struct ANSIConverter {
     }
     
     // MARK: - Attribute Logic
-    
     private static func updateAttributes(_ attributes: inout AttributeContainer, codeString: String) {
         let codes = codeString.split(separator: ";").compactMap {
             Int($0)
@@ -150,6 +152,7 @@ struct ANSIConverter {
             guard let index = iterator.next() else {
                 return nil
             }
+            
             return getXtermColor(index)
             
         } else if type == 2 { // TrueColor: 38;2;r;g;b
@@ -170,7 +173,7 @@ struct ANSIConverter {
     // MARK: - Link Detection
     
     private static func detectAndStyleLinks(_ attributedString: inout AttributedString) {
-        guard let detector = linkDetector else {
+        guard let linkDetector else {
             return
         }
         
@@ -179,7 +182,7 @@ struct ANSIConverter {
         let plainText = nsAttrString.string
         let range = NSRange(location: 0, length: plainText.utf16.count)
         
-        detector.enumerateMatches(in: plainText, options: [], range: range) { match, _, _ in
+        linkDetector.enumerateMatches(in: plainText, options: [], range: range) { match, _, _ in
             guard let match, let url = match.url else {
                 return
             }
