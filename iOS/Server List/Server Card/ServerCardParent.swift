@@ -14,7 +14,9 @@ struct ServerCardParent: View {
     var body: some View {
         VStack {
             Button {
-                nav.navigate(.toPanel(server.id))
+                if !server.isSuspended {
+                    nav.navigate(.toPanel(server.id))
+                }
             } label: {
                 if store.compactServerList {
                     CompactServerCard(server)
