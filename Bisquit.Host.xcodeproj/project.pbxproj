@@ -42,7 +42,6 @@
 		F34745CA2A31F39600EE2FB8 /* MailCover in Frameworks */ = {isa = PBXBuildFile; productRef = F34745C92A31F39600EE2FB8 /* MailCover */; };
 		F34745CC2A31F3A000EE2FB8 /* MailCover in Frameworks */ = {isa = PBXBuildFile; productRef = F34745CB2A31F3A000EE2FB8 /* MailCover */; };
 		F352AF9B2A4EE707004AD489 /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = F352AF9A2A4EE707004AD489 /* AlertKit */; };
-		F3577F0B2ED24E76007E847E /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3577F0A2ED24E76007E847E /* ScrechKit */; };
 		F358F02E2D2C1C5500BCC07B /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = F358F02D2D2C1C5500BCC07B /* LaunchAtLogin */; };
 		F361F8882D545E4D007B0565 /* Intent Handler.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F3FDFF5F2C89120D009EBB5C /* Intent Handler.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F36710342C99C3A100A8901A /* iMessage.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F3A7CEC32C8B685500413400 /* iMessage.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -58,6 +57,7 @@
 		F36D534A2A05B961007324C6 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F36D53492A05B961007324C6 /* Kingfisher */; };
 		F37266E729D9EF25005FD103 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F37266E629D9EF25005FD103 /* Kingfisher */; };
 		F37FF8832D87AE3800554B3F /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = F37FF8822D87AE3800554B3F /* Algorithms */; };
+		F3818F002ED25E8600DA3855 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3818EFF2ED25E8600DA3855 /* ScrechKit */; };
 		F38353702ECE895000535F26 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F383536F2ECE895000535F26 /* ScrechKit */; };
 		F38637382A8641120069F074 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F350636629DC24AB0010B717 /* WidgetKit.framework */; };
 		F38637392A8641120069F074 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F350636829DC24AB0010B717 /* SwiftUI.framework */; };
@@ -1311,7 +1311,7 @@
 			isa = PBXFrameworksBuildPhase;
 			files = (
 				F30860162B002B93004D776A /* PteroNet in Frameworks */,
-				F3577F0B2ED24E76007E847E /* ScrechKit in Frameworks */,
+				F3818F002ED25E8600DA3855 /* ScrechKit in Frameworks */,
 			);
 		};
 		F383535B2ECE744500535F26 /* Frameworks */ = {
@@ -1697,7 +1697,7 @@
 			name = Intent;
 			packageProductDependencies = (
 				F30860152B002B93004D776A /* PteroNet */,
-				F3577F0A2ED24E76007E847E /* ScrechKit */,
+				F3818EFF2ED25E8600DA3855 /* ScrechKit */,
 			);
 			productName = Intent;
 			productReference = F3464CF82A862D2C00188B0C /* Intent.appex */;
@@ -3903,11 +3903,6 @@
 			package = F352AF992A4EE707004AD489 /* XCRemoteSwiftPackageReference "AlertKit" */;
 			productName = AlertKit;
 		};
-		F3577F0A2ED24E76007E847E /* ScrechKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3CBC6D32D9A025A0081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */;
-			productName = ScrechKit;
-		};
 		F358F02D2D2C1C5500BCC07B /* LaunchAtLogin */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F358F02C2D2C1C5500BCC07B /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;
@@ -3972,6 +3967,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F328D8572A82402A0038512F /* XCRemoteSwiftPackageReference "swift-algorithms" */;
 			productName = Algorithms;
+		};
+		F3818EFF2ED25E8600DA3855 /* ScrechKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3CBC6D32D9A025A0081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */;
+			productName = ScrechKit;
 		};
 		F383536F2ECE895000535F26 /* ScrechKit */ = {
 			isa = XCSwiftPackageProductDependency;
