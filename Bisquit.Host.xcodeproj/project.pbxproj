@@ -511,7 +511,6 @@
 		F383B4E12ECF35DD00350A0F /* Exceptions for "Widgets" folder in "Widgets" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				"/Localized: Crypto Price Widget.intentdefinition",
 				Widgets.plist,
 			);
 			target = F38637362A8641120069F074 /* Widgets */;
@@ -527,6 +526,7 @@
 		F383B4E42ECF35DD00350A0F /* Exceptions for "Widgets" folder in "Intent Handler" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				"Crypto Price Widget.intentdefinition",
 				Intents/RefreshButtonIntent.swift,
 				"Network Calls/Asset.swift",
 				"Network Calls/Networking.swift",
@@ -1144,23 +1144,6 @@
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
-/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		F35797962ED2548D007E847E /* Exceptions for "Widgets" folder in "Compile Sources" phase from "Widgets" target */ = {
-			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = F38637332A8641120069F074 /* Sources */;
-			membershipExceptions = (
-				"Base.lproj/Crypto Price Widget.intentdefinition",
-			);
-		};
-		F383B4E52ECF35DD00350A0F /* Exceptions for "Widgets" folder in "Compile Sources" phase from "Intent Handler" target */ = {
-			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = F3FDFF5B2C89120D009EBB5C /* Sources */;
-			membershipExceptions = (
-				"/Localized: Crypto Price Widget.intentdefinition",
-			);
-		};
-/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		F383535F2ECE744500535F26 /* Unit Tests macOS */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
@@ -1274,10 +1257,8 @@
 				F383B4DF2ECF35DD00350A0F /* Exceptions for "Widgets" folder in "visionOS" target */,
 				F383B4E02ECF35DD00350A0F /* Exceptions for "Widgets" folder in "Clip Demo" target */,
 				F383B4E12ECF35DD00350A0F /* Exceptions for "Widgets" folder in "Widgets" target */,
-				F35797962ED2548D007E847E /* Exceptions for "Widgets" folder in "Compile Sources" phase from "Widgets" target */,
 				F383B4E32ECF35DD00350A0F /* Exceptions for "Widgets" folder in "Intent" target */,
 				F383B4E42ECF35DD00350A0F /* Exceptions for "Widgets" folder in "Intent Handler" target */,
-				F383B4E52ECF35DD00350A0F /* Exceptions for "Widgets" folder in "Compile Sources" phase from "Intent Handler" target */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
