@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct Intro: View {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    
     @State private var activeCard: IntroCard?
     @State private var scrollPosition = ScrollPosition()
     @State private var currentScrollOffset = 0.0
@@ -44,6 +46,8 @@ struct Intro: View {
                     $0.contentOffset.x + $0.contentInsets.leading
                 } action: { _, newValue in
                     currentScrollOffset = newValue
+                    
+                    guard reduceMotion == false else { return }
                     
                     if scrollPhase != .decelerating || scrollPhase != .animating {
                         let activeIndex = Int((currentScrollOffset / 220).rounded()) % cards.count
@@ -97,6 +101,8 @@ struct Intro: View {
             }
         }
         .onReceive(timer) { _ in
+            guard reduceMotion == false else { return }
+            
             currentScrollOffset += 0.35
             scrollPosition.scrollTo(x: currentScrollOffset)
         }
