@@ -9,7 +9,7 @@ struct StartupCommand: View {
     }
     
     var body: some View {
-        Section {
+        Section("Startup Command") {
             if vm.rawStartupCommand != vm.startupCommand {
                 Toggle("Raw", isOn: $store.rawStartupCommand)
             }
@@ -18,18 +18,6 @@ struct StartupCommand: View {
                 .caption2(design: .monospaced)
                 .textSelection(.enabled)
                 .animation(.default, value: store.rawStartupCommand)
-        } header: {
-            HStack {
-                Text("Startup Command")
-                
-                Spacer()
-                
-                SFButton("document.on.document") {
-                    Pasteboard.copy(command)
-                    SystemAlert.copied()
-                }
-                .foregroundStyle(.foreground)
-            }
         }
         .listRowBackground(Color.gray.opacity(0.2))
     }
