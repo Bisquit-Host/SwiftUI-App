@@ -13,22 +13,17 @@ struct InfiniteScrollHelper: UIViewRepresentable {
     }
     
     func makeCoordinator() -> Coordinator {
-        Coordinator(
-            declarationRate: declarationRate,
-            contentSize: contentSize
-        )
+        Coordinator(declarationRate: declarationRate, contentSize: contentSize)
     }
     
     func makeUIView(context: Context) -> UIView {
         let view = UIView(frame: .zero)
         view.backgroundColor = .clear
         
-        main {
-            if let scrollView = view.scrollView {
-                context.coordinator.defaultDelegate = scrollView.delegate
-                scrollView.decelerationRate = declarationRate
-                scrollView.delegate = context.coordinator
-            }
+        if let scrollView = view.scrollView {
+            context.coordinator.defaultDelegate = scrollView.delegate
+            scrollView.decelerationRate = declarationRate
+            scrollView.delegate = context.coordinator
         }
         
         return view

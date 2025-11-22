@@ -3,8 +3,7 @@ import Foundation
 import XCTest
 
 struct ANSITests {
-    @Test("ANSI speed test")
-    func ansiSpeedTest() throws {
+    @Test func `Test ANSI speed`() throws {
         let bundle = Bundle(for: _BundleLocator.self)
         
         guard let url = bundle.url(forResource: "Output", withExtension: "txt") else {

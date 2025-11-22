@@ -3,7 +3,7 @@ import ScrechKit
 import ActivityKit
 import PteroNet
 
-private extension Data {
+fileprivate extension Data {
     var hexadecimalString: String {
         self.reduce("") {
             $0 + String(format: "%02x", $1)
