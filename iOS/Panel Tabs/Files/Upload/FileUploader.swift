@@ -32,23 +32,13 @@ final class FileUploader: NSObject, ObservableObject {
         
         let boundary = "----Boundary\(UUID().uuidString)"
         let config = URLSessionConfiguration.default
+        self.session = URLSession(configuration: config, delegate: self, delegateQueue: nil)
         
-        self.session = URLSession(
-            configuration: config,
-            delegate: self,
-            delegateQueue: nil
-        )
+        var req = URLRequest(url: url)
+        req.httpMethod = "POST"
+        req.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
         
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-        
-        let multipartData = MultipartFormData(
-            fileData,
-            fileName: name,
-            mimeType: mimeType,
-            boundary: boundary
-        ).data
+        let multipartData = MultipartFormData(fileData, fileName: name, mimeType: mimeType, boundary: boundary).data
         
         let tempFileUrl = FileManager.default.temporaryDirectory
             .appendingPathComponent(UUID().uuidString)
@@ -60,10 +50,7 @@ final class FileUploader: NSObject, ObservableObject {
             return
         }
         
-        let task = session.uploadTask(
-            with: request,
-            fromFile: tempFileUrl
-        ) { _, _, _ in
+        let task = session.uploadTask(with: req, fromFile: tempFileUrl) { _, _, _ in
             try? FileManager.default.removeItem(at: tempFileUrl)
             
             Task { @MainActor in

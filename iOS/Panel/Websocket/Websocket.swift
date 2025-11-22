@@ -25,9 +25,7 @@ final class Websocket {
                     await onTextMessage(message)
                 }
             } catch {
-                guard !Task.isCancelled else {
-                    return
-                }
+                guard !Task.isCancelled else { return }
                 
                 onError?(error)
             }

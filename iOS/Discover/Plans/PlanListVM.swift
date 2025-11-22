@@ -41,9 +41,7 @@ final class PlanListVM {
     private func fetchPlans(_ category: PlanType) async -> PlanResponse? {
         let link = "https://api-v1.bisquit.host/public-api/" + category.rawValue
         
-        guard let url = URL(string: link) else {
-            return nil
-        }
+        guard let url = URL(string: link) else { return nil }
         
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
@@ -52,7 +50,6 @@ final class PlanListVM {
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             
             let fetchedPlans = try decoder.decode(PlanResponse.self, from: data)
-            
             return fetchedPlans
         } catch {
             print("Error:", error)

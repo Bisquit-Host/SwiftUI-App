@@ -88,13 +88,11 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     private func sendPushToken(_ token: String) async {
         let link = "https://push-activity.bisquit.host/token/save"
         
-        guard let url = URL(string: link) else {
-            return
-        }
+        guard let url = URL(string: link) else { return }
         
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        var req = URLRequest(url: url)
+        req.httpMethod = "POST"
+        req.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         guard let deviceID = UIDevice.current.identifierForVendor?.uuidString else {
             return
@@ -111,10 +109,10 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             "device_id": hashedDeviceID
         ]
         
-        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
+        req.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
         
         do {
-            let (_, _) = try await URLSession.shared.data(for: request)
+            let (_, _) = try await URLSession.shared.data(for: req)
         } catch {
             print(error.localizedDescription)
         }

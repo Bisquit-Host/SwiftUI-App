@@ -101,7 +101,7 @@ struct Intro: View {
             }
         }
         .onReceive(timer) { _ in
-            guard reduceMotion == false else { return }
+            guard !reduceMotion else { return }
             
             currentScrollOffset += 0.35
             scrollPosition.scrollTo(x: currentScrollOffset)

@@ -19,21 +19,16 @@ final class LiveActivity {
     var activityViewState: ActivityViewState? = nil
     var errorMessage: String? = nil
     
-    func postRequest(
-        wsUrl: String,
-        wsToken: String,
-        liveActivityToken: String
-    ) async throws {
+    func postRequest(wsUrl: String, wsToken: String, liveActivityToken: String) async throws {
+        let path = "https://push-activity.bisquit.host/liveactivity/start"
         
-        guard
-            let url = URL(string: "https://push-activity.bisquit.host/liveactivity/start")
-        else {
+        guard let url = URL(string: path) else {
             throw URLError(.badURL)
         }
         
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        var req = URLRequest(url: url)
+        req.httpMethod = "POST"
+        req.addValue("application/json", forHTTPHeaderField: "Content-Type")
 #if DEBUG
         let environment = "development"
 #else
@@ -47,9 +42,9 @@ final class LiveActivity {
             "appID":             Bundle.main.bundleIdentifier ?? "host.bisquit.Bisquit.Host"
         ]
         
-        request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
+        req.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
         
-        let (_, response) = try await URLSession.shared.data(for: request)
+        let (_, response) = try await URLSession.shared.data(for: req)
         
         guard
             let httpResponse = response as? HTTPURLResponse,

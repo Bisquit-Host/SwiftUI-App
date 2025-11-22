@@ -9,9 +9,7 @@ extension UIImage {
     }
     
     func findAverageColor(_ algorithm: AverageColorAlgorithm = .simple) -> UIColor? {
-        guard let cgImage else {
-            return nil
-        }
+        guard let cgImage else { return nil }
         
         // First, resize the image. We do this for two reasons:
         // 1) less pixels to deal with means faster calculation and a resized image still has the "gist" of the colors, and
@@ -48,9 +46,7 @@ extension UIImage {
         // Draw our resized image
         context.draw(cgImage, in: CGRect(origin: .zero, size: size))
         
-        guard let pixelBuffer = context.data else {
-            return nil
-        }
+        guard let pixelBuffer = context.data else { return nil }
         
         // Bind the pixel buffer's memory location to a pointer we can use/access
         let pointer = pixelBuffer.bindMemory(to: UInt32.self, capacity: width * height)

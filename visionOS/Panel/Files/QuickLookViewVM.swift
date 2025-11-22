@@ -6,9 +6,7 @@ final class QuickLookViewVM {
     var fileURL: URL? = nil
     
     func fetchDownloadUrl(_ id: String?, file: String, at root: String?) async {
-        guard let id, let root else {
-            return
-        }
+        guard let id, let root else { return }
         
         do {
             let url = try await fileDownloadAPI(id, path: root + "/" + file)
@@ -28,9 +26,7 @@ final class QuickLookViewVM {
         let destinationURL = tempDirURL.appendingPathComponent(name)
         
         URLSession.shared.downloadTask(with: url) { location, _, error in
-            guard let location, error == nil else {
-                return
-            }
+            guard let location, error == nil else { return }
             
             do {
                 if FileManager.default.fileExists(atPath: destinationURL.path) {
