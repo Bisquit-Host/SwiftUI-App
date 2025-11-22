@@ -1145,11 +1145,11 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		F383B4E22ECF35DD00350A0F /* Exceptions for "Widgets" folder in "Compile Sources" phase from "Widgets" target */ = {
+		F35797962ED2548D007E847E /* Exceptions for "Widgets" folder in "Compile Sources" phase from "Widgets" target */ = {
 			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
 			buildPhase = F38637332A8641120069F074 /* Sources */;
 			membershipExceptions = (
-				"/Localized: Crypto Price Widget.intentdefinition",
+				"Base.lproj/Crypto Price Widget.intentdefinition",
 			);
 		};
 		F383B4E52ECF35DD00350A0F /* Exceptions for "Widgets" folder in "Compile Sources" phase from "Intent Handler" target */ = {
@@ -1274,7 +1274,7 @@
 				F383B4DF2ECF35DD00350A0F /* Exceptions for "Widgets" folder in "visionOS" target */,
 				F383B4E02ECF35DD00350A0F /* Exceptions for "Widgets" folder in "Clip Demo" target */,
 				F383B4E12ECF35DD00350A0F /* Exceptions for "Widgets" folder in "Widgets" target */,
-				F383B4E22ECF35DD00350A0F /* Exceptions for "Widgets" folder in "Compile Sources" phase from "Widgets" target */,
+				F35797962ED2548D007E847E /* Exceptions for "Widgets" folder in "Compile Sources" phase from "Widgets" target */,
 				F383B4E32ECF35DD00350A0F /* Exceptions for "Widgets" folder in "Intent" target */,
 				F383B4E42ECF35DD00350A0F /* Exceptions for "Widgets" folder in "Intent Handler" target */,
 				F383B4E52ECF35DD00350A0F /* Exceptions for "Widgets" folder in "Compile Sources" phase from "Intent Handler" target */,
