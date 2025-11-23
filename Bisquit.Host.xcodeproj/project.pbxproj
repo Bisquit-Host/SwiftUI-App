@@ -622,8 +622,10 @@
 				Utils/Converter.swift,
 				Utils/customRound.swift,
 				Utils/DismissButton.swift,
-				Utils/NetworkCalls.swift,
-				Utils/Prefetcher.swift,
+				Utils/Networking/Endpoint.swift,
+				Utils/Networking/NetworkCalls.swift,
+				Utils/Networking/Prefetcher.swift,
+				Utils/Networking/UpdateChecker.swift,
 				Utils/PreviewProp.swift,
 				Utils/SpriteKit/NetworkVM.swift,
 				Utils/System.swift,
@@ -632,7 +634,6 @@
 				Utils/Tips/TipJSONFormatter.swift,
 				Utils/Tips/TipServerCardContextMenu.swift,
 				Utils/Tips/TipSuspendedServer.swift,
-				Utils/UpdateChecker.swift,
 				Utils/ValueStore.swift,
 			);
 			target = F31BA5322958FF7D0006D126 /* watchOS */;
@@ -724,8 +725,10 @@
 				Utils/customRound.swift,
 				Utils/DismissButton.swift,
 				Utils/MetricKitManager.swift,
-				Utils/NetworkCalls.swift,
-				Utils/Prefetcher.swift,
+				Utils/Networking/Endpoint.swift,
+				Utils/Networking/NetworkCalls.swift,
+				Utils/Networking/Prefetcher.swift,
+				Utils/Networking/UpdateChecker.swift,
 				Utils/PreviewProp.swift,
 				Utils/SpriteKit/NetworkVM.swift,
 				Utils/System.swift,
@@ -734,7 +737,6 @@
 				Utils/Tips/TipJSONFormatter.swift,
 				Utils/Tips/TipServerCardContextMenu.swift,
 				Utils/Tips/TipSuspendedServer.swift,
-				Utils/UpdateChecker.swift,
 				Utils/ValueStore.swift,
 			);
 			target = F3E08E9F2A2CE17800116C1C /* macOS */;
@@ -866,12 +868,14 @@
 				"Start Page/StartPageHelper.swift",
 				"Start Page/StartPageVM.swift",
 				Utils/ANSIConverter.swift,
-				Utils/BakgroundTask.swift,
 				Utils/Converter.swift,
 				Utils/customRound.swift,
 				Utils/DismissButton.swift,
-				Utils/NetworkCalls.swift,
-				Utils/Prefetcher.swift,
+				Utils/Networking/BakgroundTask.swift,
+				Utils/Networking/Endpoint.swift,
+				Utils/Networking/NetworkCalls.swift,
+				Utils/Networking/Prefetcher.swift,
+				Utils/Networking/UpdateChecker.swift,
 				Utils/PreviewProp.swift,
 				Utils/SpriteKit/Bisquits.sks,
 				Utils/SpriteKit/NetworkVM.swift,
@@ -882,7 +886,6 @@
 				Utils/Tips/TipJSONFormatter.swift,
 				Utils/Tips/TipServerCardContextMenu.swift,
 				Utils/Tips/TipSuspendedServer.swift,
-				Utils/UpdateChecker.swift,
 				Utils/ValueStore.swift,
 			);
 			target = F3000E04295A341000ABD30A /* tvOS */;
@@ -1000,13 +1003,15 @@
 				"Start Page/StartPageHelper.swift",
 				"Start Page/StartPageVM.swift",
 				Utils/ANSIConverter.swift,
-				Utils/BakgroundTask.swift,
 				Utils/Converter.swift,
 				Utils/customRound.swift,
 				Utils/DismissButton.swift,
 				Utils/MetricKitManager.swift,
-				Utils/NetworkCalls.swift,
-				Utils/Prefetcher.swift,
+				Utils/Networking/BakgroundTask.swift,
+				Utils/Networking/Endpoint.swift,
+				Utils/Networking/NetworkCalls.swift,
+				Utils/Networking/Prefetcher.swift,
+				Utils/Networking/UpdateChecker.swift,
 				Utils/PreviewProp.swift,
 				Utils/SpriteKit/NetworkVM.swift,
 				Utils/System.swift,
@@ -1015,7 +1020,6 @@
 				Utils/Tips/TipJSONFormatter.swift,
 				Utils/Tips/TipServerCardContextMenu.swift,
 				Utils/Tips/TipSuspendedServer.swift,
-				Utils/UpdateChecker.swift,
 				Utils/ValueStore.swift,
 			);
 			target = F3BD76F12A43C890003E7385 /* visionOS */;
@@ -1033,7 +1037,7 @@
 			membershipExceptions = (
 				Localizable.xcstrings,
 				Utils/ANSIConverter.swift,
-				Utils/NetworkCalls.swift,
+				Utils/Networking/NetworkCalls.swift,
 			);
 			target = F38637362A8641120069F074 /* Widgets */;
 		};
@@ -1123,15 +1127,16 @@
 				Utils/customRound.swift,
 				Utils/DismissButton.swift,
 				Utils/MetricKitManager.swift,
-				Utils/NetworkCalls.swift,
-				Utils/Prefetcher.swift,
+				Utils/Networking/Endpoint.swift,
+				Utils/Networking/NetworkCalls.swift,
+				Utils/Networking/Prefetcher.swift,
+				Utils/Networking/UpdateChecker.swift,
 				Utils/PreviewProp.swift,
 				Utils/System.swift,
 				Utils/SystemAlerts.swift,
 				Utils/Tips/TipCloudKeys.swift,
 				Utils/Tips/TipJSONFormatter.swift,
 				Utils/Tips/TipServerCardContextMenu.swift,
-				Utils/UpdateChecker.swift,
 				Utils/ValueStore.swift,
 			);
 			target = F3A7CEC22C8B685500413400 /* iMessage */;
@@ -1139,7 +1144,7 @@
 		F383BADF2ECF35E500350A0F /* Exceptions for "iOS" folder in "Intent" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Utils/NetworkCalls.swift,
+				Utils/Networking/NetworkCalls.swift,
 			);
 			target = F3464CF72A862D2C00188B0C /* Intent */;
 		};

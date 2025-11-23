@@ -9,8 +9,6 @@ struct GuideStepCard: View {
         self.geo = geo
     }
     
-    private let link = "https://mgr.bisquit.host"
-    
     var body: some View {
         let size = geo.size
         
@@ -28,7 +26,7 @@ struct GuideStepCard: View {
                     .padding(20)
                     .multilineTextAlignment(.center)
                 
-                if step.id == 1, let url = URL(string: link) {
+                if step.id == 1, let url = URL(string: Endpoint.bisquitPter) {
                     Link(destination: url) {
                         Image(systemName: "link")
                             .title2(.semibold)

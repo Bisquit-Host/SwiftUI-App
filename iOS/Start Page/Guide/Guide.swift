@@ -34,7 +34,7 @@ struct Guide: View {
                 .tightening(true)
                 .lineLimit(1...5)
             
-            if step == 0, let url = URL(string: "https://mgr.bisquit.host") {
+            if step == 0, let url = URL(string: Endpoint.bisquitPter) {
                 Link(destination: url) {
                     Image(systemName: "link")
                         .title2(.semibold)

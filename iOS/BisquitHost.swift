@@ -22,8 +22,8 @@ import GaypadKit
 
 @main
 struct BisquitHost: App {
-    @StateObject private var store = ValueStore()
     private var nav = NavState()
+    @StateObject private var store = ValueStore()
     
 #if !os(watchOS)
     @Environment(\.scenePhase) private var phase
@@ -36,10 +36,8 @@ struct BisquitHost: App {
     private let container: ModelContainer
     
     init() {
-        let schema = Schema([APIKey.self])
-        
         do {
-            container = try ModelContainer(for: schema)
+            container = try ModelContainer(for: APIKey.self)
         } catch {
             fatalError("Failed to create model container")
         }

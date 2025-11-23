@@ -42,13 +42,13 @@ struct Discover: View {
                 }
                 
                 Button {
-                    openSafari("https://testflight.apple.com/join/mkaX3AO1")
+                    openSafari(Endpoint.testflight)
                 } label: {
                     DiscoverCardLabel("TestFlight", subtitle: "Beta Testing", image: .testFlight)
                 }
                 
                 Button {
-                    openSafari("https://apps.apple.com/au/developer/sergei-saliukov/id1639409936")
+                    openSafari(Endpoint.moreAppsTopScrech)
                 } label: {
                     DiscoverCardLabel("More apps", subtitle: "By Bisquit.Host", image: .logo)
                 }
@@ -59,11 +59,11 @@ struct Discover: View {
                     DiscoverCardLabel("Feedback", subtitle: "Feature requests", image: .mail)
                 }
                 
-                DiscoverCard("https://wiki.bisquit.host") {
+                DiscoverCard(Endpoint.bisquitWiki) {
                     DiscoverCardLabel("Wiki", subtitle: "How to...?", image: .wiki)
                 }
                 
-                DiscoverCard("https://mgr.bisquit.host") {
+                DiscoverCard(Endpoint.bisquitPter) {
                     DiscoverCardLabel("Panel", subtitle: "Web", image: .safari)
                 }
                 
