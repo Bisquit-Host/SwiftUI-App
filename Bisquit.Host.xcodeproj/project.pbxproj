@@ -461,6 +461,7 @@
 				"Families/Live Activity/WidgetLiveActivity.swift",
 				Intents/RefreshButtonIntent.swift,
 				"Network Calls/Asset.swift",
+				"Network Calls/AssetDetails.swift",
 				"Network Calls/Networking.swift",
 			);
 			target = F31BA5222958FF7C0006D126 /* Bisquit.Host */;
@@ -469,6 +470,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				"Network Calls/Asset.swift",
+				"Network Calls/AssetDetails.swift",
 				"Network Calls/Networking.swift",
 			);
 			target = F31BA5322958FF7D0006D126 /* watchOS */;
@@ -477,6 +479,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				"Network Calls/Asset.swift",
+				"Network Calls/AssetDetails.swift",
 				"Network Calls/Networking.swift",
 			);
 			target = F3E08E9F2A2CE17800116C1C /* macOS */;
@@ -485,6 +488,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				"Network Calls/Asset.swift",
+				"Network Calls/AssetDetails.swift",
 				"Network Calls/Networking.swift",
 			);
 			target = F3000E04295A341000ABD30A /* tvOS */;
@@ -493,6 +497,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				"Network Calls/Asset.swift",
+				"Network Calls/AssetDetails.swift",
 				"Network Calls/Networking.swift",
 			);
 			target = F3BD76F12A43C890003E7385 /* visionOS */;
@@ -504,6 +509,7 @@
 				"Families/Live Activity/LiveActivity.swift",
 				"Families/Live Activity/WidgetLiveActivity.swift",
 				"Network Calls/Asset.swift",
+				"Network Calls/AssetDetails.swift",
 				"Network Calls/Networking.swift",
 			);
 			target = F31BA54D2958FFAF0006D126 /* Clip Demo */;
@@ -519,6 +525,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				"Network Calls/Asset.swift",
+				"Network Calls/AssetDetails.swift",
 				"Network Calls/Networking.swift",
 			);
 			target = F3464CF72A862D2C00188B0C /* Intent */;
@@ -529,6 +536,7 @@
 				"Crypto Price Widget.intentdefinition",
 				Intents/RefreshButtonIntent.swift,
 				"Network Calls/Asset.swift",
+				"Network Calls/AssetDetails.swift",
 				"Network Calls/Networking.swift",
 			);
 			target = F3FDFF5E2C89120D009EBB5C /* Intent Handler */;

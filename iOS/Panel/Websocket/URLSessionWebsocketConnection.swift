@@ -99,8 +99,7 @@ final class URLSessionWebsocketConnection: WebsocketConnection {
         task.cancel(with: code, reason: nil)
     }
     
-    @MainActor
-    deinit {
+    @MainActor deinit {
         close()
     }
 }

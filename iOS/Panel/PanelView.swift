@@ -107,9 +107,7 @@ struct PanelView: View {
             _ = await (files, startup, schedules, backups, databases)
         }
         
-        vm.updateBackups = {
-            await backupVM.fetchBackups()
-        }
+        vm.updateBackups = { await backupVM.fetchBackups() }
     }
 }
 

@@ -21,9 +21,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         let options: UNAuthorizationOptions = [.alert, .sound, .badge]
         
         UNUserNotificationCenter.current().requestAuthorization(options: options) { granted, _ in
-            guard granted else {
-                return
-            }
+            guard granted else { return }
             
             Task { @MainActor in
                 self.getNotificationSettings(application: application)

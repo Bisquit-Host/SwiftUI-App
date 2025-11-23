@@ -6,15 +6,11 @@ struct Networking {
             let model = try await serverListAPI().data
             
             return model.map {
-                Asset(
-                    id: $0.attributes.id,
-                    name: $0.attributes.name
-                )
+                let server = $0.attributes
+                return Asset(id: server.id, name: server.name)
             }
         } catch {
-            return [
-                Asset(id: "69.2", name: error.localizedDescription)
-            ]
+            return [Asset(id: "69.2", name: error.localizedDescription)]
         }
     }
     

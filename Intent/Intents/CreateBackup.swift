@@ -28,16 +28,12 @@ struct CreateBackup: AppIntent, PredictableIntent {
     
     static var predictionConfiguration: some IntentPredictionConfiguration {
         IntentPrediction(parameters: (\.$id, \.$backupName)) { id, name in
-            DisplayRepresentation(
-                title: "Create Backup",
-                subtitle: "Creates a new backup"
-            )
+            DisplayRepresentation(title: "Create Backup", subtitle: "Creates a new backup")
         }
     }
     
     func perform() async throws -> some IntentResult {
         await createBackup(backupName)
-        
         return .result()
     }
 }

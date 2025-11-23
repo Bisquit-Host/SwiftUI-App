@@ -125,9 +125,7 @@ struct ColumnDetail: View {
             _ = await (files, startup, backups, databases, schedules, subdomains)
         }
         
-        vm.updateBackups = {
-            await backupVM.fetchBackups()
-        }
+        vm.updateBackups = { await backupVM.fetchBackups() }
     }
 }
 

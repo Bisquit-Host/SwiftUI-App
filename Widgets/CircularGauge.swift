@@ -52,19 +52,8 @@ struct CircularGauge: View {
 
 #Preview {
     VStack {
-        CircularGauge(
-            param: "CPU",
-            value: 5,
-            limit: 10,
-            isRedacted: false
-        )
-        
-        CircularGauge(
-            param: "CPU",
-            value: 15,
-            limit: 10,
-            isRedacted: false
-        )
+        CircularGauge(param: "CPU", value: 5, limit: 10, isRedacted: false)
+        CircularGauge(param: "CPU", value: 15, limit: 10, isRedacted: false)
     }
 #if os(visionOS)
     .padding()

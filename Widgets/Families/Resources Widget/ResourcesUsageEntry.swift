@@ -6,7 +6,6 @@ struct ResourcesUsageEntry: TimelineEntry {
     let name: String
     let id: String
     let state: String
-    
     let test: ResourceUsageAttributes?
     
     init(date: Date, name: String, id: String, state: String, test: ResourceUsageAttributes? = nil) {

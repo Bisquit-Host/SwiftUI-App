@@ -130,9 +130,7 @@ struct PanelView: View {
             )
         }
         
-        vm.updateBackups = {
-            await backupVM.fetchBackups()
-        }
+        vm.updateBackups = { await backupVM.fetchBackups() }
     }
 }
 

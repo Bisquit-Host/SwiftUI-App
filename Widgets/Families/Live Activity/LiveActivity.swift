@@ -22,9 +22,7 @@ final class LiveActivity {
     func postRequest(wsUrl: String, wsToken: String, liveActivityToken: String) async throws {
         let path = "https://push-activity.bisquit.host/liveactivity/start"
         
-        guard let url = URL(string: path) else {
-            throw URLError(.badURL)
-        }
+        guard let url = URL(string: path) else { throw URLError(.badURL) }
         
         var req = URLRequest(url: url)
         req.httpMethod = "POST"
@@ -171,11 +169,7 @@ final class LiveActivity {
     func startLiveActivity(_ server: ServerAttributes) async {
         grantAchievement("start_live_activity")
         
-        let attributes = WidgetsAttributes(
-            id: server.id,
-            name: server.name,
-            node: server.node
-        )
+        let attributes = WidgetsAttributes(id: server.id, name: server.name, node: server.node)
         
         let contentState = WidgetsAttributes.ContentState(
             latestMessage: "Latest console output will display here"

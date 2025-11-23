@@ -10,7 +10,7 @@ struct WidgetsBundle: WidgetBundle {
         //        SystemSmallWidget()
         
         // MARK: Lock Screen Widgets
-        //        AccessoryCircularWindget()
+        //        AccessoryCircularWidget()
         
 #if canImport(ActivityKit)
         WidgetLiveActivity()

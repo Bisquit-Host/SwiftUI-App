@@ -5,24 +5,13 @@ struct StaticProvider: TimelineProvider {
         StaticEntry(date: Date())
     }
     
-    func getSnapshot(
-        in context: Context,
-        completion: @escaping (StaticEntry) -> ()
-    ) {
-        let entry = StaticEntry(date: Date())
-        completion(entry)
+    func getSnapshot(in context: Context, completion: @escaping (StaticEntry) -> ()) {
+        completion(StaticEntry(date: Date()))
     }
     
-    func getTimeline(
-        in context: Context,
-        completion: @escaping (Timeline<StaticEntry>) -> ()
-    ) {
+    func getTimeline(in context: Context, completion: @escaping (Timeline<StaticEntry>) -> ()) {
         let entry = StaticEntry(date: Date())
-        
-        let timeline = Timeline(
-            entries: [entry],
-            policy: .never
-        )
+        let timeline = Timeline(entries: [entry], policy: .never)
         
         completion(timeline)
     }

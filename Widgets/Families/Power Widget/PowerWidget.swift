@@ -5,12 +5,8 @@ struct PowerWidget: Widget {
     private let kind = "Widgets"
     
     var body: some WidgetConfiguration {
-        IntentConfiguration(
-            kind: kind,
-            intent: CryptoPriceConfigurationIntent.self,
-            provider: ResourcesTimelineProvider()
-        ) { entry in
-            PowerWidgetView(entry)
+        IntentConfiguration(kind: kind, intent: CryptoPriceConfigurationIntent.self, provider: ResourcesTimelineProvider()) {
+            PowerWidgetView($0)
                 .containerBackground(.ultraThinMaterial, for: .widget)
         }
         .configurationDisplayName("Change Power")

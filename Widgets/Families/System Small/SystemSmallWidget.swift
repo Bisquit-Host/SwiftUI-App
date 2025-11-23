@@ -5,12 +5,8 @@ struct SystemSmallWidget: Widget {
     private let kind = "Widgets"
     
     var body: some WidgetConfiguration {
-        AppIntentConfiguration(
-            kind: kind,
-            intent: ConfigurationAppIntent.self,
-            provider: Provider()
-        ) { entry in
-            SystemSmallWidgetView(entry)
+        AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: Provider()) {
+            SystemSmallWidgetView($0)
                 .containerBackground(.fill.tertiary, for: .widget)
         }
         .supportedFamilies([
@@ -25,15 +21,6 @@ struct SystemSmallWidget: Widget {
 #Preview(as: .systemSmall) {
     SystemSmallWidget()
 } timeline: {
-    SystemSmallEntry(
-        date: .now,
-        cpuUsage: 0,
-        ramUsage: 0
-    )
-    
-    SystemSmallEntry(
-        date: .now,
-        cpuUsage: 0,
-        ramUsage: 0
-    )
+    SystemSmallEntry(date: .now, cpuUsage: 0, ramUsage: 0)
+    SystemSmallEntry(date: .now, cpuUsage: 0, ramUsage: 0)
 }
