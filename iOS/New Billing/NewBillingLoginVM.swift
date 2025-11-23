@@ -2,7 +2,7 @@ import Foundation
 
 @Observable
 final class NewBillingLoginVM {
-    func login(login: String, password: String, captchaToken: String) async {
+    func login(_ login: String, _ password: String, _ captchaToken: String) async {
         let path = "https://test-api.bisquit.host/auth/signin"
         
         guard let url = URL(string: path) else {
@@ -34,7 +34,6 @@ final class NewBillingLoginVM {
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             
             let response = try decoder.decode(BillingLoginResponse.self, from: data)
-            print(response)
         } catch {
             print(error.localizedDescription)
         }

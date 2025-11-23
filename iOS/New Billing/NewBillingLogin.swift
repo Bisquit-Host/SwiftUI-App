@@ -39,7 +39,7 @@ struct NewBillingLogin: View {
     
     private func auth() {
         Task {
-            await vm.login(login: login, password: password, captchaToken: captchaToken)
+            await vm.login(login, password, captchaToken)
         }
     }
 }
