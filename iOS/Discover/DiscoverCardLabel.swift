@@ -5,11 +5,7 @@ struct DiscoverCardLabel: View {
     private let subtitle: LocalizedStringKey?
     private let image: ImageResource
     
-    init(
-        _ title: LocalizedStringKey,
-        subtitle: LocalizedStringKey? = nil,
-        image: ImageResource
-    ) {
+    init(_ title: LocalizedStringKey, subtitle: LocalizedStringKey? = nil, image: ImageResource) {
         self.title = title
         self.subtitle = subtitle
         self.image = image

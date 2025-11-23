@@ -28,7 +28,7 @@ final class MetricKitManager: NSObject, MXMetricManagerSubscriber {
     }
 }
 
-#warning("Commented")
+#warning("MetricKit")
 //extension AppDelegate: MXMetricManagerSubscriber {
 //    func didReceive(_ payloads: [MXMetricPayload]) {
 //        var output = """
