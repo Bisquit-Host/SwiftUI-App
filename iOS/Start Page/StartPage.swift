@@ -3,6 +3,7 @@ import SwiftData
 
 struct StartPage: View {
     @State var vm = StartPageVM()
+    @EnvironmentObject var store: ValueStore
     
     @Environment(\.modelContext) var modelContext
     @Query(animation: .default) var keys: [APIKey]

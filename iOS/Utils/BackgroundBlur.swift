@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct BackgroundBlur: NSViewRepresentable {
+fileprivate struct BackgroundBlur: NSViewRepresentable {
     func makeNSView(context: Context) -> NSVisualEffectView {
         let view = NSVisualEffectView()
         view.blendingMode = .behindWindow
@@ -13,10 +13,9 @@ struct BackgroundBlur: NSViewRepresentable {
 
 extension View {
     public func backgroundBlur() -> some View {
-        self
-            .background {
-                BackgroundBlur()
-                    .ignoresSafeArea()
-            }
+        self.background {
+            BackgroundBlur()
+                .ignoresSafeArea()
+        }
     }
 }

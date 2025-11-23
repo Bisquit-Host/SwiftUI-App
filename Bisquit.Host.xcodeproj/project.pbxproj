@@ -546,6 +546,8 @@
 			membershipExceptions = (
 				iOS.plist,
 				"Loc Logs.txt",
+				Utils/BackgroundBlur.swift,
+				Utils/ProgressBar.swift,
 			);
 			target = F31BA5222958FF7C0006D126 /* Bisquit.Host */;
 		};
@@ -721,6 +723,7 @@
 				"Start Page/StartPageVM.swift",
 				streamer.icon,
 				Utils/ANSIConverter.swift,
+				Utils/BackgroundBlur.swift,
 				Utils/Converter.swift,
 				Utils/customRound.swift,
 				Utils/DismissButton.swift,
@@ -877,6 +880,7 @@
 				Utils/Networking/Prefetcher.swift,
 				Utils/Networking/UpdateChecker.swift,
 				Utils/PreviewProp.swift,
+				Utils/ProgressBar.swift,
 				Utils/SpriteKit/Bisquits.sks,
 				Utils/SpriteKit/NetworkVM.swift,
 				Utils/SpriteKit/SptiteKitBisquitFall.swift,
@@ -1029,6 +1033,8 @@
 			membershipExceptions = (
 				iOS.plist,
 				"Loc Logs.txt",
+				Utils/BackgroundBlur.swift,
+				Utils/ProgressBar.swift,
 			);
 			target = F31BA54D2958FFAF0006D126 /* Clip Demo */;
 		};

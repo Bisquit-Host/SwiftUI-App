@@ -9,16 +9,11 @@ struct DebugSettings: View {
         "\(device.name) (\(device.systemName)\(device.systemVersion))"
     }
     
-    private var appVersion: String {
-        Bundle.version ?? "N/A"
-    }
-    
-    private var appBuild: String {
-        Bundle.build ?? "N/A"
-    }
-    
     private var version: String {
-        "\(appVersion) (B\(appBuild))"
+        let version = Bundle.version ?? "N/A"
+        let build = Bundle.build ?? "N/A"
+        
+        return "\(version) (B\(build))"
     }
     
     var body: some View {

@@ -9,24 +9,20 @@ import GaypadKit
 
 @main
 struct BisquitHost: App {
-    @StateObject private var store = ValueStore()
     private var nav = NavState()
     private var navModel = NavModel()
+    @StateObject private var store = ValueStore()
     
     private let container: ModelContainer
     
     init() {
-        let schema = Schema([APIKey.self])
-        
         do {
-            container = try ModelContainer(for: schema)
+            container = try ModelContainer(for: APIKey.self)
         } catch {
             fatalError("Failed to create model container")
         }
         
-        try? Tips.configure([
-            .displayFrequency(.immediate)
-        ])
+        try? Tips.configure([.displayFrequency(.immediate)])
         
         _ = MetricKitManager.shared
         
@@ -44,7 +40,6 @@ struct BisquitHost: App {
     
     var body: some Scene {
         WindowGroup {
-            //            ContentView()
             DashboardShell()
                 .onContinueUserActivity(CSSearchableItemActionType, perform: handleSpotlightActivity)
         }
@@ -57,7 +52,6 @@ struct BisquitHost: App {
         //        .windowStyle(.hiddenTitleBar)
         //#endif
         
-#if os(macOS)
         Settings {
             NavigationStack {
                 AppSettings()
@@ -65,13 +59,10 @@ struct BisquitHost: App {
             .environmentObject(store)
             .environment(navModel)
         }
-#endif
     }
     
     private func handleSpotlightActivity(_ activity: NSUserActivity) {
-        guard
-            let _ = activity.userInfo?[CSSearchableItemActivityIdentifier] as? String
-        else {
+        guard let _ = activity.userInfo?[CSSearchableItemActivityIdentifier] as? String else {
             return
         }
     }
