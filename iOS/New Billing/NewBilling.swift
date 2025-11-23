@@ -1,9 +1,13 @@
 import SwiftUI
 import HCaptcha
 
+final class CaptchaHost: ObservableObject {
+    let view = UIView()
+}
+
 struct NewBilling: View {
     @StateObject private var captchaVM = HCaptchaVM()
-    private let placeholder = UIViewWrapperView()
+    @StateObject private var captchaHost = CaptchaHost()
     
     @AppStorage("test_login") private var login = ""
     @AppStorage("test_password") private var password = ""
@@ -18,28 +22,28 @@ struct NewBilling: View {
             SecureField("Password", text: $password)
             
             VStack {
-                placeholder
+                UIViewWrapperView(host: captchaHost)
                     .frame(width: 640, height: 640, alignment: .center)
                 
                 Button("validate") {
-                    captchaVM.validate(placeholder)
+                    captchaVM.validate(captchaHost.view)
                 }
                 .padding()
             }
         }
-        .onAppear {
-            captchaVM.configure(placeholder)
+        .task {
+            captchaVM.configure(captchaHost.view)
         }
     }
 }
 
 // Wrapper-view to provide UIView instance
 struct UIViewWrapperView: UIViewRepresentable {
-    var uiView = UIView()
+    @ObservedObject var host: CaptchaHost
     
     func makeUIView(context: Context) -> UIView {
-        uiView.backgroundColor = .gray
-        return uiView
+        host.view.backgroundColor = .gray
+        return host.view
     }
     
     func updateUIView(_ view: UIView, context: Context) {}
@@ -52,15 +56,14 @@ class HCaptchaVM: ObservableObject {
         self.hcaptcha = try? HCaptcha(
             apiKey: "35f8534a-b950-4dea-b304-9b00f1a0f300",
             baseURL: URL(string: "http://localhost")!,
-            //            baseURL: URL(string: "https://api.hcaptcha.com/siteverify")!
             size: .normal,
             host: "test-my.bisquit.host"
         )
     }
     
-    func configure(_ hostView: UIViewWrapperView) {
+    func configure(_ hostView: UIView) {
         hcaptcha.configureWebView { webview in
-            webview.frame = hostView.uiView.bounds
+            webview.frame = hostView.bounds
         }
         
         hcaptcha.onEvent { event, _ in
@@ -68,8 +71,8 @@ class HCaptchaVM: ObservableObject {
         }
     }
     
-    func validate(_ hostView: UIViewWrapperView) {
-        hcaptcha.validate(on: hostView.uiView) { result in
+    func validate(_ hostView: UIView) {
+        hcaptcha.validate(on: hostView) { result in
             print("HCaptcha result:", String(describing: try? result.dematerialize()))
         }
     }
