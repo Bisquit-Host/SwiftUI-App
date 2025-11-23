@@ -18,10 +18,7 @@ final class PreviewProp {
             databases: 5,
             allocations: 5
         ),
-        sftp: .init(
-            ip: "1.23.456.78",
-            port: 1889
-        ),
+        sftp: .init(ip: "1.23.456.78", port: 1889),
         isSuspended: false,
         serverOwner: true,
         relationships: .init(
@@ -93,10 +90,7 @@ final class PreviewProp {
         name: "preview_db",
         username: "preview_user",
         password: "preview_password",
-        host: DatabaseHost(
-            address: "127.0.0.1",
-            port: 3306
-        )
+        host: DatabaseHost(address: "127.0.0.1", port: 3306)
     )
     
     static let allocationAttributes = AllocationAttributes(

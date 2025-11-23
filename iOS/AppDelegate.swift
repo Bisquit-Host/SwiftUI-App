@@ -8,10 +8,7 @@ import Contacts
 
 #if !os(macOS)
 final class AppDelegate: UIResponder, UIApplicationDelegate {
-    func application(
-        _ application: UIApplication,
-        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
-    ) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         registerForPushNotifications(application)
         
         return true
@@ -41,10 +38,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func application(
-        _ application: UIApplication,
-        didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
-    ) {
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let tokenParts = deviceToken.map {
             String(format: "%02.2hhx", $0)
         }
@@ -60,10 +54,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 #endif
     }
     
-    func application(
-        _ application: UIApplication,
-        didFailToRegisterForRemoteNotificationsWithError error: Error
-    ) {
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("Failed to register for remote notifications:", error)
     }
     
@@ -73,9 +64,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         switch CNContactStore.authorizationStatus(for: .contacts) {
         case .denied, .notDetermined:
             CNContactStore().requestAccess(for: .contacts) { _, error in
-                if let error {
-                    print("Error requesting permissions:", error)
-                }
+                print("Error requesting permissions:", error ?? "Unknown")
             }
             
         default:
