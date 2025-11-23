@@ -23,7 +23,8 @@ struct AppContainer: View {
                     .withNavDestinations()
             } else {
 #if os(iOS)
-                Intro()
+//                Intro()
+                NewBilling()
                     .withNavDestinations()
 #else
                 StartPage()
