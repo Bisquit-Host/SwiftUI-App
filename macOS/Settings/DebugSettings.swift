@@ -25,10 +25,7 @@ struct DebugSettings: View {
     
     private func restartApp() {
         let bundlePath = Bundle.main.bundlePath
-        
-        let command = """
-        sleep 0.1; open "\(bundlePath)"
-        """
+        let command = #"sleep 0.1; open "\(bundlePath)""#
         
         let task = Process()
         task.executableURL = URL(fileURLWithPath: "/bin/bash")

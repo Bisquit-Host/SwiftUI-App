@@ -8,10 +8,7 @@ import Contacts
 
 #if !os(macOS)
 final class AppDelegate: UIResponder, UIApplicationDelegate {
-    func application(
-        _ application: UIApplication,
-        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
-    ) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         registerForPushNotifications(application)
         
         return true
@@ -21,9 +18,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         let options: UNAuthorizationOptions = [.alert, .sound, .badge]
         
         UNUserNotificationCenter.current().requestAuthorization(options: options) { granted, _ in
-            guard granted else {
-                return
-            }
+            guard granted else { return }
             
             Task { @MainActor in
                 self.getNotificationSettings(application: application)
@@ -43,10 +38,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func application(
-        _ application: UIApplication,
-        didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
-    ) {
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let tokenParts = deviceToken.map {
             String(format: "%02.2hhx", $0)
         }
@@ -62,10 +54,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 #endif
     }
     
-    func application(
-        _ application: UIApplication,
-        didFailToRegisterForRemoteNotificationsWithError error: Error
-    ) {
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("Failed to register for remote notifications:", error)
     }
     
@@ -75,9 +64,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         switch CNContactStore.authorizationStatus(for: .contacts) {
         case .denied, .notDetermined:
             CNContactStore().requestAccess(for: .contacts) { _, error in
-                if let error {
-                    print("Error requesting permissions:", error)
-                }
+                print("Error requesting permissions:", error ?? "Unknown")
             }
             
         default:
@@ -88,13 +75,11 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     private func sendPushToken(_ token: String) async {
         let link = "https://push-activity.bisquit.host/token/save"
         
-        guard let url = URL(string: link) else {
-            return
-        }
+        guard let url = URL(string: link) else { return }
         
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        var req = URLRequest(url: url)
+        req.httpMethod = "POST"
+        req.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         guard let deviceID = UIDevice.current.identifierForVendor?.uuidString else {
             return
@@ -111,10 +96,10 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             "device_id": hashedDeviceID
         ]
         
-        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
+        req.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
         
         do {
-            let (_, _) = try await URLSession.shared.data(for: request)
+            let (_, _) = try await URLSession.shared.data(for: req)
         } catch {
             print(error.localizedDescription)
         }

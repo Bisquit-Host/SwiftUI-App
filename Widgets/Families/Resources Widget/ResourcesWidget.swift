@@ -5,12 +5,8 @@ struct ResourcesWidget: Widget {
     private let kind = "Widgets test"
     
     var body: some WidgetConfiguration {
-        IntentConfiguration(
-            kind: kind,
-            intent: CryptoPriceConfigurationIntent.self,
-            provider: ResourcesTimelineProvider()
-        ) { entry in
-            ResourcesWidgetView(entry)
+        IntentConfiguration(kind: kind, intent: CryptoPriceConfigurationIntent.self, provider: ResourcesTimelineProvider()) {
+            ResourcesWidgetView($0)
         }
         .configurationDisplayName("Server Info")
         .description("View resource usage of your servers")
@@ -23,10 +19,5 @@ struct ResourcesWidget: Widget {
 #Preview(as: .systemSmall) {
     ResourcesWidget()
 } timeline: {
-    ResourcesUsageEntry(
-        date: Date(),
-        name: "Preview Server",
-        id: "previewid",
-        state: "running"
-    )
+    ResourcesUsageEntry(date: Date(), name: "Preview Server", id: "previewid", state: "running")
 }

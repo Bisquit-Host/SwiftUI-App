@@ -3368,6 +3368,7 @@
       }
     },
     "Dynamic Island badge" : {
+      "extractionState" : "stale",
       "localizations" : {
         "nl" : {
           "stringUnit" : {

@@ -96,9 +96,7 @@ struct InfoTab: View {
             $0.isDefault
         }.first
         
-        guard let allocation else {
-            return nil
-        }
+        guard let allocation else { return nil }
         
         if let ipAlias = allocation.ipAlias {
             return ipAlias

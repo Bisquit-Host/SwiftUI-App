@@ -7,11 +7,9 @@ struct PowerWidgetView: View {
         self.entry = entry
     }
     
-    private var id: String {
-        entry.id
-    }
-    
     var body: some View {
+        let id = entry.id
+        
         if id.isEmpty || id.count != 8 {
             ConfigureWidgetView("Bisquit.Host", image: Image(.defaultIcon), lastStep: "3. **Choose a server** from the list")
         } else {

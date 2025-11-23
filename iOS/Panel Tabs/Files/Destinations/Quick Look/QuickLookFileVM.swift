@@ -61,16 +61,12 @@ final class QuickLookFileVM {
     }
     
     private func loadAndCheckImage(_ url: URL?) async {
-        guard let url else {
-            return
-        }
+        guard let url else { return }
         
-        let processor = SensitivityAnalyzer()
-        
-        await processor.checkImage(url) { blur in
-            print(blur ? "🍆 Sensetive content found" : "Content is safe")
-            
+        await SensitivityAnalyzer().checkImage(url) { blur in
             self.isSensitive = blur
+            
+            print(blur ? "🍆 Sensetive content found" : "Content is safe")
         }
     }
     

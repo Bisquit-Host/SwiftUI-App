@@ -19,11 +19,8 @@ struct ChangePower: AppIntent, PredictableIntent {
     }
     
     static var predictionConfiguration: some IntentPredictionConfiguration {
-        IntentPrediction(parameters: (\.$id, \.$signal)) { id, signal in
-            DisplayRepresentation(
-                title: "Change Power",
-                subtitle: "Start, Stop, Restart or Kill a server"
-            )
+        IntentPrediction(parameters: (\.$id, \.$signal)) { _, _ in
+            DisplayRepresentation(title: "Change Power", subtitle: "Start, Stop, Restart or Kill a server")
         }
     }
     
@@ -36,7 +33,6 @@ struct ChangePower: AppIntent, PredictableIntent {
         }
         
         await PteroNet.powerSignal(id, do: powerSignal)
-        
         return .result()
     }
 }

@@ -26,6 +26,7 @@ struct AppSettings: View {
                     store.isApiKeyValid = false
                     Keychain.delete(key: "selectedApiKey")
                 }
+                .foregroundStyle(.red)
             }
 #if DEBUG
             DebugSettings()

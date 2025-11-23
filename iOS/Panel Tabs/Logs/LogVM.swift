@@ -26,22 +26,22 @@ final class LogVM {
     }
     
     var filteredLogs: [LogAttributes] {
-        guard let selectedActor else {
-            return logs
-        }
-        
-        return logs.filter {
-            $0.relationships == selectedActor
+        if let selectedActor {
+            logs.filter {
+                $0.relationships == selectedActor
+            }
+        } else {
+            logs
         }
     }
     
     var searchedLogs: [LogAttributes] {
-        guard !searchPrompt.isEmpty else {
-            return filteredLogs
-        }
-        
-        return filteredLogs.filter {
-            $0.event.localizedStandardContains(searchPrompt)
+        if searchPrompt.isEmpty {
+            filteredLogs
+        } else {
+            filteredLogs.filter {
+                $0.event.localizedStandardContains(searchPrompt)
+            }
         }
     }
     

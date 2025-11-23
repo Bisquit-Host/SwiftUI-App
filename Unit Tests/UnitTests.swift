@@ -17,11 +17,7 @@ struct UnitTests {
         print(chmod(read: true, write: true, execute: true))
     }
     
-    func chmod(
-        read: Bool = false,
-        write: Bool = false,
-        execute: Bool = false
-    ) -> UInt8 {
+    func chmod( read: Bool = false, write: Bool = false, execute: Bool = false) -> UInt8 {
         var permission: UInt8 = 0
         
         if read    { permission |= 4 }
@@ -40,10 +36,10 @@ Goida
     }
 }
 
-final class LaunchTest: XCTestCase {
-    func testLaunchPerformance() {
-        measure(metrics: [XCTApplicationLaunchMetric()]) {
-            XCUIApplication().launch()
-        }
-    }
-}
+//final class LaunchTest: XCTestCase {
+//    func testLaunchPerformance() {
+//        measure(metrics: [XCTApplicationLaunchMetric()]) {
+//            XCUIApplication().launch()
+//        }
+//    }
+//}

@@ -72,12 +72,8 @@ struct ResourcesWidgetView: View {
         id: "bf7903cc",
         state: "Running",
         test: .init(
-            state: "Running",
-            usage: .init(
-                memory: 1024,
-                cpu: 200,
-                disk: 1024
-            )
+            state: .running,
+            usage: .init(memory: 1024, cpu: 200, disk: 1024)
         )
     )
 }

@@ -13,12 +13,7 @@ final class Websocket {
     ) {
         disconnect()
         
-        let connection = URLSessionWebsocketConnection(
-            url: url,
-            token: token,
-            origin: origin
-        )
-        
+        let connection = URLSessionWebsocketConnection(url: url, token: token, origin: origin)
         self.connection = connection
         
         let stream = connection.receive()
@@ -30,9 +25,7 @@ final class Websocket {
                     await onTextMessage(message)
                 }
             } catch {
-                guard !Task.isCancelled else {
-                    return
-                }
+                guard !Task.isCancelled else { return }
                 
                 onError?(error)
             }

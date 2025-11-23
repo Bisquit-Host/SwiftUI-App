@@ -24,10 +24,10 @@ final class URLSessionWebsocketConnection: WebsocketConnection {
         
         self.continuation = continuation
         
-        var request = URLRequest(url: url)
-        request.setValue(origin.absoluteString, forHTTPHeaderField: "Origin")
+        var req = URLRequest(url: url)
+        req.setValue(origin.absoluteString, forHTTPHeaderField: "Origin")
         
-        task = session.webSocketTask(with: request)
+        task = session.webSocketTask(with: req)
         task.resume()
         
         startReceiveLoop()
@@ -46,9 +46,7 @@ final class URLSessionWebsocketConnection: WebsocketConnection {
                 while !Task.isCancelled {
                     let message = try await task.receive()
                     
-                    guard !Task.isCancelled else {
-                        break
-                    }
+                    guard !Task.isCancelled else { break }
                     
                     if let text = message.textValue {
                         continuation.yield(text)
@@ -94,17 +92,14 @@ final class URLSessionWebsocketConnection: WebsocketConnection {
     }
     
     func close(with code: URLSessionWebSocketTask.CloseCode = .goingAway) {
-        guard !isClosed else {
-            return
-        }
+        guard !isClosed else { return }
         
         isClosed = true
         receiveTask?.cancel()
         task.cancel(with: code, reason: nil)
     }
     
-    @MainActor
-    deinit {
+    @MainActor deinit {
         close()
     }
 }

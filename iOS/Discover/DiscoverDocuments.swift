@@ -16,8 +16,8 @@ struct DiscoverDocuments: View {
         } label: {
             DiscoverCardLabel("Documents", image: .docBlue)
         }
-        .safariCover($showTerms, url: "https://bisquit.host/terms.pdf")
-        .safariCover($showPriacyPolicy, url: "https://bisquit.host/policy.pdf")
+        .safariCover($showTerms, url: Endpoint.bisquitTerms)
+        .safariCover($showPriacyPolicy, url: Endpoint.bisquitPrivacy)
     }
 }
 

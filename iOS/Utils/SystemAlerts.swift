@@ -81,14 +81,9 @@ final class SystemAlert {
                 title.removeLast()
             }
             
-            print("Error: \(error.status) - \(error.code)")
+            print("Error:", error.status, "-", error.code)
             
-            AlertKitAPI.present(
-                title: title,
-                icon: .error,
-                style: .iOS17AppleMusic,
-                haptic: .error
-            )
+            AlertKitAPI.present(title: title, icon: .error, style: .iOS17AppleMusic, haptic: .error)
         }
 #endif
         networkCallError(#function, error)

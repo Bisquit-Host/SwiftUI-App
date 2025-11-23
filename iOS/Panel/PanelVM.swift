@@ -37,7 +37,9 @@ final class PanelVM {
     private let websocket = Websocket()
     
     var messages: [AttributedString] = []
-    
+//#if DEBUG
+//    var rawMessages: [String] = []
+//#endif
     var searchedMessages: [AttributedString] {
         if searchRule.isEmpty {
             messages
@@ -49,6 +51,17 @@ final class PanelVM {
         }
     }
     
+//    func measure() {
+//        let start = Date()
+//        
+//        for message in rawMessages {
+//            let _ = ANSIConverter.convertAnsiToAttributedString(message)
+//        }
+//        
+//        let diff = Date().timeIntervalSince(start)
+//        print("Seconds to process:", diff)
+//    }
+    
     func fetchServerDetails() async {
         do {
             server = try await serverDetailsAPI(id)
@@ -58,9 +71,7 @@ final class PanelVM {
     }
     
     func appendMessage(_ message: String) async {
-        guard
-            let jsonData = message.data(using: .utf8)
-        else {
+        guard let jsonData = message.data(using: .utf8) else {
             return
         }
         
@@ -97,25 +108,27 @@ final class PanelVM {
                 serverState = state
                 
             } else if let consoleOutput = message.consoleOutput {
-                messages.append(
-                    ANSIConverter.convertAnsiToAttributedString(
-                        consoleOutput.replacing(">....", with: "")
-                    )
-                )
+                print("Console output:", consoleOutput)
+//#if DEBUG
+//                rawMessages.append(consoleOutput)
+//#endif
+                
+                let clearOutput = consoleOutput.replacing(">....", with: "")
+                let attributedString = ANSIConverter.convertAnsiToAttributedString(clearOutput)
+                
+                messages.append(attributedString)
                 
             } else if let stats = message.serverStats {
                 do {
                     let jsonData = try JSONSerialization.data(withJSONObject: stats, options: [])
-                    
-                    let decoder = JSONDecoder()
-                    let stats = try decoder.decode(ServerStats.self, from: jsonData)
+                    let stats = try JSONDecoder().decode(ServerStats.self, from: jsonData)
                     
                     uptime = stats.uptime
                     
                     withAnimation {
-                        cpuUsage = stats.cpuAbsolute
-                        ramUsage = stats.memoryBytes
-                        diskUsage = stats.diskBytes / pow(1024, 2)
+                        cpuUsage = stats.cpu
+                        ramUsage = stats.memory
+                        diskUsage = stats.disk / pow(1024, 2)
 #if os(tvOS)
                         cpuValues.append(Value(id: cpuValues.count, value: cpuUsage))
                         ramValues.append(Value(id: ramValues.count, value: ramUsage))
@@ -162,15 +175,8 @@ final class PanelVM {
     }
     
     func connectWebSocket(_ data: ConsoleDetails) {
-        websocket.connect(
-            to: data.socket,
-            token: data.token
-        ) { [weak self] message in
-            guard let self else {
-                return
-            }
-            
-            await self.appendMessage(message)
+        websocket.connect(to: data.socket, token: data.token) {
+            await self.appendMessage($0)
         } onError: { error in
             Task { @MainActor in
                 SystemAlert.error(error)

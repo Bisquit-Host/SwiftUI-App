@@ -1,29 +1,24 @@
-import ScrechKit
+import SwiftUI
 
 struct DevSettings: View {
     private let device = UIDevice.current
     
-    private var appVersion: String {
-        Bundle.version ?? "N/A"
-    }
-    
-    private var appBuild: String {
-        Bundle.build ?? "N/A"
-    }
-    
     private var version: String {
-        "v\(appVersion) (B\(appBuild))"
+        let version = Bundle.version ?? "N/A"
+        let build = Bundle.build ?? "N/A"
+        
+        return "v\(version) (B\(build))"
     }
     
     private var deviceAndSystem: String {
-        "\(device.modelIdentifier) (\(device.systemName) \(device.systemVersion))"
+        "\(modelIdentifier) (\(device.systemName) \(device.systemVersion))"
     }
     
     var body: some View {
         Section {
-            ListParam("App version", param: version)
+            LabeledContent("App version", value: version)
             
-            ListParam("Device and system", param: deviceAndSystem)
+            LabeledContent("Device and system", value: deviceAndSystem)
 #if !os(tvOS)
             NavigationLink("Debug") {
                 DebugSettings()
@@ -35,20 +30,15 @@ struct DevSettings: View {
             DevSettingsFooter()
         }
     }
-}
-
-fileprivate extension UIDevice {
-    var modelIdentifier: String {
+    
+    private var modelIdentifier: String {
         var systemInfo = utsname()
         uname(&systemInfo)
         
         let machineMirror = Mirror(reflecting: systemInfo.machine)
         
         return machineMirror.children.reduce("") { identifier, element in
-            guard
-                let value = element.value as? Int8,
-                value != 0
-            else {
+            guard let value = element.value as? Int8, value != 0 else {
                 return identifier
             }
             

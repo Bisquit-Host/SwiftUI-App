@@ -5,10 +5,7 @@ struct Provider: AppIntentTimelineProvider {
     typealias Entry = SystemSmallEntry
     typealias Intent = ConfigurationAppIntent
     
-    func timeline(
-        for configuration: ConfigurationAppIntent,
-        in context: Context
-    ) async -> Timeline<SystemSmallEntry> {
+    func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SystemSmallEntry> {
         var cpu = 0.0
         
         if let id = configuration.id {
@@ -20,44 +17,21 @@ struct Provider: AppIntentTimelineProvider {
             }
         }
         
-        let entryDate = Calendar.current.date(
-            byAdding: DateComponents(minute: 1),
-            to: Date()
-        )!
+        let entryDate = Calendar.current.date(byAdding: DateComponents(minute: 1), to: Date())!
         
         let entries = [
-            SystemSmallEntry(
-                date: entryDate,
-                cpuUsage: cpu,
-                ramUsage: getRam()
-            )
+            SystemSmallEntry(date: entryDate, cpuUsage: cpu, ramUsage: getRam())
         ]
         
-        return Timeline(
-            entries: entries,
-            policy: .atEnd
-        )
+        return Timeline(entries: entries, policy: .atEnd)
     }
     
-    func snapshot(
-        for configuration: ConfigurationAppIntent,
-        in context: Context
-    ) -> SystemSmallEntry {
-        SystemSmallEntry(
-            date: Date(),
-            cpuUsage: getCpu(),
-            ramUsage: getRam()
-        )
+    func snapshot(for configuration: ConfigurationAppIntent, in context: Context) -> SystemSmallEntry {
+        SystemSmallEntry(date: Date(), cpuUsage: getCpu(), ramUsage: getRam())
     }
     
-    func placeholder(
-        in context: Context
-    ) -> SystemSmallEntry {
-        SystemSmallEntry(
-            date: Date(),
-            cpuUsage: getCpu(),
-            ramUsage: getRam()
-        )
+    func placeholder(in context: Context) -> SystemSmallEntry {
+        SystemSmallEntry(date: Date(), cpuUsage: getCpu(), ramUsage: getRam())
     }
     
     private func getCpu() -> Double {

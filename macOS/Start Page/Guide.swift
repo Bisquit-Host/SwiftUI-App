@@ -11,16 +11,9 @@ struct Guide: View {
         "Tap \"Authorize App\" or copy the API key"
     ]
     
-    private let images = [
-        "step0", "step1", "step2"
+    private let images: [ImageResource] = [
+        .step0, .step1, .step2
     ]
-    
-    private var gradient: AngularGradient {
-        .init(
-            colors: colors,
-            center: .init(x: 0.5, y: 1.0),
-            angle: .degrees(180 * Double(step) / Double(steps.count - 1)))
-    }
     
     private var colors: [Color] {
         switch appearance {
@@ -30,6 +23,14 @@ struct Guide: View {
         default:
             [.blue, .mint, .gray]
         }
+    }
+    
+    private var gradient: AngularGradient {
+        .init(
+            colors: colors,
+            center: .init(x: 0.5, y: 1.0),
+            angle: .degrees(180 * Double(step) / Double(steps.count - 1))
+        )
     }
     
     @State private var step = 0
@@ -60,7 +61,7 @@ struct Guide: View {
                 .tightening(true)
                 .lineLimit(1...5)
             
-            if step == 0, let url = URL(string: "https://mgr.bisquit.host") {
+            if step == 0, let url = URL(string: Endpoint.bisquitPter) {
                 Link(destination: url) {
                     Image(systemName: "link")
                         .title2(.semibold)

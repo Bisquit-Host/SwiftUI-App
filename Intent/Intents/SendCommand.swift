@@ -1,6 +1,6 @@
 import AppIntents
 
-struct SendCommand: AppIntent, PredictableIntent {    
+struct SendCommand: AppIntent, PredictableIntent {
     static let title: LocalizedStringResource = "Send Command"
     static let description = IntentDescription("Sends a command to the server", searchKeywords: ["Minecraft"])
     
@@ -23,16 +23,12 @@ struct SendCommand: AppIntent, PredictableIntent {
     
     static var predictionConfiguration: some IntentPredictionConfiguration {
         IntentPrediction(parameters: (\.$id, \.$command)) { id, command in
-            DisplayRepresentation(
-                title: "Send Command",
-                subtitle: "Send command to a server"
-            )
+            DisplayRepresentation(title: "Send Command", subtitle: "Send command to a server")
         }
     }
     
     func perform() async throws -> some IntentResult {
         await sendCommand(command)
-        
         return .result()
     }
 }

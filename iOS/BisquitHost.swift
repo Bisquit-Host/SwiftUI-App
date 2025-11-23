@@ -22,8 +22,8 @@ import GaypadKit
 
 @main
 struct BisquitHost: App {
-    @StateObject private var store = ValueStore()
     private var nav = NavState()
+    @StateObject private var store = ValueStore()
     
 #if !os(watchOS)
     @Environment(\.scenePhase) private var phase
@@ -36,17 +36,13 @@ struct BisquitHost: App {
     private let container: ModelContainer
     
     init() {
-        let schema = Schema([APIKey.self])
-        
         do {
-            container = try ModelContainer(for: schema)
+            container = try ModelContainer(for: APIKey.self)
         } catch {
             fatalError("Failed to create model container")
         }
         
-        try? Tips.configure([
-            .displayFrequency(.immediate)
-        ])
+        try? Tips.configure([.displayFrequency(.immediate)])
         
 #if canImport(MetricKit) && !os(tvOS)
         _ = MetricKitManager.shared
@@ -114,9 +110,7 @@ struct BisquitHost: App {
     
 #if canImport(CoreSpotlight) && !os(tvOS)
     private func handleSpotlightActivity(_ activity: NSUserActivity) {
-        guard
-            let id = activity.userInfo?[CSSearchableItemActivityIdentifier] as? String
-        else {
+        guard let id = activity.userInfo?[CSSearchableItemActivityIdentifier] as? String else {
             return
         }
 #if !os(macOS) && !os(visionOS)

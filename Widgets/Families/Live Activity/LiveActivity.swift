@@ -3,7 +3,7 @@ import ScrechKit
 import ActivityKit
 import PteroNet
 
-private extension Data {
+fileprivate extension Data {
     var hexadecimalString: String {
         self.reduce("") {
             $0 + String(format: "%02x", $1)
@@ -19,21 +19,14 @@ final class LiveActivity {
     var activityViewState: ActivityViewState? = nil
     var errorMessage: String? = nil
     
-    func postRequest(
-        wsUrl: String,
-        wsToken: String,
-        liveActivityToken: String
-    ) async throws {
+    func postRequest(wsUrl: String, wsToken: String, liveActivityToken: String) async throws {
+        let path = "https://push-activity.bisquit.host/liveactivity/start"
         
-        guard
-            let url = URL(string: "https://push-activity.bisquit.host/liveactivity/start")
-        else {
-            throw URLError(.badURL)
-        }
+        guard let url = URL(string: path) else { throw URLError(.badURL) }
         
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        var req = URLRequest(url: url)
+        req.httpMethod = "POST"
+        req.addValue("application/json", forHTTPHeaderField: "Content-Type")
 #if DEBUG
         let environment = "development"
 #else
@@ -47,9 +40,9 @@ final class LiveActivity {
             "appID":             Bundle.main.bundleIdentifier ?? "host.bisquit.Bisquit.Host"
         ]
         
-        request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
+        req.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
         
-        let (_, response) = try await URLSession.shared.data(for: request)
+        let (_, response) = try await URLSession.shared.data(for: req)
         
         guard
             let httpResponse = response as? HTTPURLResponse,
@@ -176,11 +169,7 @@ final class LiveActivity {
     func startLiveActivity(_ server: ServerAttributes) async {
         grantAchievement("start_live_activity")
         
-        let attributes = WidgetsAttributes(
-            id: server.id,
-            name: server.name,
-            node: server.node
-        )
+        let attributes = WidgetsAttributes(id: server.id, name: server.name, node: server.node)
         
         let contentState = WidgetsAttributes.ContentState(
             latestMessage: "Latest console output will display here"

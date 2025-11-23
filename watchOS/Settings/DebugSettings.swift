@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 
 struct DebugSettings: View {
     @EnvironmentObject private var store: ValueStore
@@ -9,21 +9,16 @@ struct DebugSettings: View {
         "\(device.name) (\(device.systemName)\(device.systemVersion))"
     }
     
-    private var appVersion: String {
-        Bundle.version ?? "N/A"
-    }
-    
-    private var appBuild: String {
-        Bundle.build ?? "N/A"
-    }
-    
     private var version: String {
-        "\(appVersion) (B\(appBuild))"
+        let version = Bundle.version ?? "N/A"
+        let build = Bundle.build ?? "N/A"
+        
+        return "\(version) (B\(build))"
     }
     
     var body: some View {
         Section("Dev") {
-            ListParam("App version", param: version)
+            LabeledContent("App version", value: version)
             
             VStack(alignment: .leading) {
                 Text("Device and system")

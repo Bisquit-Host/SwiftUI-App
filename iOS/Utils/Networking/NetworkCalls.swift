@@ -1,10 +1,10 @@
+import ScrechKit
 import PteroNet
 
 final class PteroNet {
-    static func powerSignal(
-        _ id: String,
-        do signal: ServerSignal
-    ) async {
+    static func powerSignal(_ id: String, do signal: ServerSignal) async {
+        grantAchievement("restart_server")
+        
         do {
             try await serverPowerAPI(id, signal: signal)
         } catch {
@@ -20,10 +20,7 @@ final class PteroNet {
         }
     }
     
-    static func reinstallServer(
-        _ id: String,
-        onSuccess: @escaping () -> Void = {}
-    ) async {
+    static func reinstallServer(_ id: String, onSuccess: @escaping () -> Void = {}) async {
         do {
             try await serverReinstallAPI(id)
             onSuccess()

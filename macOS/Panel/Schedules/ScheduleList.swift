@@ -32,7 +32,7 @@ struct ScheduleList: View {
                     systemImage: "calendar.badge.plus",
                     //                    description: Text("Use the button in the top right corner to create one")
                 )
-#warning("uncomment")
+#warning("Create schedule button")
             }
         }
     }

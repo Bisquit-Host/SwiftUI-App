@@ -103,9 +103,7 @@ struct PanelView: View {
                 _ = await (files, users, subdomains, backups, databases)
             }
             
-            vm.updateBackups = {
-                await backupVM.fetchBackups()
-            }
+            vm.updateBackups = { await backupVM.fetchBackups() }
         }
         .onDisappear {
             vm.disconnectWebSocket()

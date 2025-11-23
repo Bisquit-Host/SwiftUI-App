@@ -85,9 +85,7 @@ struct FileView: View {
             }
         }
         .onChange(of: qlVM.fileUrl) { _, url in
-            guard let url else {
-                return
-            }
+            guard let url else { return }
             
             print(url.description)
             showPreview = true

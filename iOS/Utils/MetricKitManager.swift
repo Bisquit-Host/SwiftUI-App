@@ -11,8 +11,7 @@ final class MetricKitManager: NSObject, MXMetricManagerSubscriber {
         MXMetricManager.shared.add(self)
     }
     
-    @MainActor
-    deinit {
+    @MainActor deinit {
         MXMetricManager.shared.remove(self)
     }
     
@@ -29,7 +28,7 @@ final class MetricKitManager: NSObject, MXMetricManagerSubscriber {
     }
 }
 
-#warning("Commented")
+#warning("MetricKit")
 //extension AppDelegate: MXMetricManagerSubscriber {
 //    func didReceive(_ payloads: [MXMetricPayload]) {
 //        var output = """
@@ -85,11 +84,7 @@ final class MetricKitManager: NSObject, MXMetricManagerSubscriber {
 //        return formatter.string(from: Date())
 //    }
 //
-//    func writeUserAccessibleFile(
-//        content: String,
-//        fileName: String,
-//        subdirectoryName: String = "MetricKit Data"
-//    ) {
+//    func writeUserAccessibleFile(content: String, fileName: String, subdirectoryName: String = "MetricKit Data") {
 //        guard let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
 //            print("❌ Failed to access documents directory")
 //            return

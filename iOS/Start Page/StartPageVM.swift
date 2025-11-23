@@ -29,12 +29,8 @@ final class StartPageVM {
             
             trigger.toggle()
             SystemAlert.error(error)
-            askToDeleteKey()
-        }
-    }
-    
-    func askToDeleteKey() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            
+            try? await Task.sleep(for: .seconds(0.5))
             self.alertInvalid = true
         }
     }

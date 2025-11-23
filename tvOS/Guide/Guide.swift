@@ -22,7 +22,7 @@ struct Guide: View {
                         Text(step.text)
                         
                         if id == 1 {
-                            Text("https://mgr.bisquit.host")
+                            Text(Endpoint.bisquitPter)
                                 .title2()
                                 .padding(20)
                                 .background(.blue, in: .capsule)

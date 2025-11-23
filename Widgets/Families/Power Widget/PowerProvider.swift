@@ -5,18 +5,11 @@ struct PowerProvider: AppIntentTimelineProvider {
         PowerEntry(date: Date(), configuration: .init())
     }
     
-    func snapshot(
-        for configuration: ConfigurationAppIntent,
-        in context: Context
-    ) async -> PowerEntry {
+    func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> PowerEntry {
         PowerEntry(date: Date(), configuration: configuration)
     }
     
-    func timeline(
-        for configuration: ConfigurationAppIntent,
-        in context: Context
-    ) async -> Timeline<PowerEntry> {
-        
+    func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<PowerEntry> {
         var entries: [PowerEntry] = []
         
         let entry = PowerEntry(date: .now, configuration: configuration)

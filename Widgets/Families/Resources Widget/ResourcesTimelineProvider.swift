@@ -57,35 +57,18 @@ struct ResourcesTimelineProvider: IntentTimelineProvider {
         }
     }
     
-    private func showEmptyState(
-        _ completion: @escaping (Timeline<ResourcesUsageEntry>) -> (),
-        error: String
-    ) {
-        let entry = ResourcesUsageEntry(
-            date: Date(),
-            name: "",
-            id: "",
-            state: error
-        )
+    private func showEmptyState(_ completion: @escaping (Timeline<ResourcesUsageEntry>) -> (), error: String) {
+        let entry = ResourcesUsageEntry(date: Date(), name: "", id: "", state: error)
         
         // Trigger completion & next fetch in 15 mins
         executeTimelineCompletion(completion, timelineEntry: entry)
     }
     
-    func executeTimelineCompletion(
-        _ completion: @escaping (Timeline<ResourcesUsageEntry>) -> (),
-        timelineEntry: ResourcesUsageEntry
-    ) {
+    func executeTimelineCompletion(_ completion: @escaping (Timeline<ResourcesUsageEntry>) -> (), timelineEntry: ResourcesUsageEntry) {
         // Next fetch in 15 mins
-        let nextUpdate = Calendar.current.date(
-            byAdding: DateComponents(minute: 15),
-            to: Date()
-        )!
+        let nextUpdate = Calendar.current.date(byAdding: DateComponents(minute: 15), to: Date())!
         
-        let timeline = Timeline(
-            entries: [timelineEntry],
-            policy: .after(nextUpdate)
-        )
+        let timeline = Timeline(entries: [timelineEntry], policy: .after(nextUpdate))
         
         completion(timeline)
     }
