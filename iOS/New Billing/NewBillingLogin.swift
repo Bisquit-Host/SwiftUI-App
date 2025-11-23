@@ -20,6 +20,7 @@ struct NewBillingLogin: View {
                 .autocorrectionDisabled()
                 .keyboardType(.emailAddress)
                 .textContentType(.emailAddress)
+                .autocorrectionDisabled()
             
             SecureField("Password", text: $password)
             
