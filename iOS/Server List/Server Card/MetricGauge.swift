@@ -34,10 +34,7 @@ struct MetricGauge: View {
                     RoundedRectangle(cornerRadius: 6)
                         .fill(
                             LinearGradient(
-                                gradient: Gradient(colors: [
-                                    color.opacity(0.8),
-                                    color
-                                ]),
+                                gradient: Gradient(colors: [color.opacity(0.8), color]),
                                 startPoint: .leading,
                                 endPoint: .trailing
                             )

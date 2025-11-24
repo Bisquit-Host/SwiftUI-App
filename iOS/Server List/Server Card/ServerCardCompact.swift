@@ -1,9 +1,10 @@
 import SwiftUI
 import PteroNet
 
-struct CompactServerCard: View {
+struct ServerCardCompact: View {
     @State private var vm: ServerCardVM
     @EnvironmentObject private var store: ValueStore
+    @Environment(\.accessibilityDifferentiateWithoutColor) private var differentiateWithoutColor
     
     private let server: ServerAttributes
     
@@ -12,9 +13,17 @@ struct CompactServerCard: View {
         vm = ServerCardVM(server.id)
     }
     
+    @State private var showSafari = false
+    @State private var confirmKill = false
+    
     var body: some View {
         VStack(spacing: 5) {
-            if vm.stateColor == .gray {
+            if differentiateWithoutColor {
+                Text(vm.state.rawValue)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            
+            if vm.state == .suspended {
                 Image(systemName: "snowflake")
                     .largeTitle()
                     .secondary()
@@ -27,11 +36,9 @@ struct CompactServerCard: View {
             } else {
                 VStack(alignment: .leading, spacing: 12) {
                     HStack(spacing: 8) {
-                        if vm.stateColor != .gray {
-                            Circle()
-                                .fill(vm.stateColor.gradient)
-                                .frame(6)
-                        }
+                        Circle()
+                            .fill(vm.stateColor.gradient)
+                            .frame(6)
                         
                         Text(server.name)
                             .fontSize(14)
@@ -71,6 +78,7 @@ struct CompactServerCard: View {
         }
         .padding(12)
         .frame(height: 105)
+        .contentShape(.rect(cornerRadius: 12))
         .glassEffect(in: .rect(cornerRadius: 12))
         .task {
             await vm.fetchServerUsage()
@@ -78,6 +86,28 @@ struct CompactServerCard: View {
         .onChange(of: store.updateServers) {
             Task {
                 await vm.fetchServerUsage()
+            }
+        }
+#if !os(watchOS)
+        .contextMenu {
+            ServerCardContextMenu(server, $showSafari, $confirmKill)
+        }
+        .onDrag {
+            if let url = URL(string: vm.serverURL), let itemProvider = NSItemProvider(contentsOf: url) {
+                itemProvider
+            } else {
+                NSItemProvider()
+            }
+        }
+#endif
+#if canImport(SafariCover)
+        .safariCover($showSafari, url: vm.serverURL)
+#endif
+        .confirmationDialog("Perform kill action", isPresented: $confirmKill, titleVisibility: .visible) {
+            Button("Kill", role: .destructive) {
+                Task {
+                    await PteroNet.powerSignal(server.id, do: .kill)
+                }
             }
         }
     }

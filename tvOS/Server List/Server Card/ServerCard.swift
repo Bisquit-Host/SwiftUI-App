@@ -3,6 +3,7 @@ import PteroNet
 
 struct ServerCard: View {
     @EnvironmentObject private var store: ValueStore
+    @Environment(\.accessibilityDifferentiateWithoutColor) private var differentiateWithoutColor
     
     @State private var vm: ServerCardVM
     
@@ -13,13 +14,15 @@ struct ServerCard: View {
         vm = ServerCardVM(server.id)
     }
     
-    private var limits: ServerLimits {
-        server.limits
-    }
-    
     var body: some View {
+        let limits = server.limits
+        
         HStack {
             VStack(alignment: .leading, spacing: 16) {
+                if differentiateWithoutColor {
+                    Text(vm.state.rawValue)
+                }
+                
                 Text(server.name)
                     .fontSize(70)
                     .fontWeight(.medium)
@@ -31,7 +34,7 @@ struct ServerCard: View {
             
             Spacer()
             
-            if vm.stateColor != .red {
+            if vm.state != .offline {
                 let cpuUsage = vm.cpuUsage / limits.cpu
                 ProgressBar("cpu", progress: cpuUsage)
                 

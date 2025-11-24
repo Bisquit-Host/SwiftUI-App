@@ -20,18 +20,18 @@ enum PanelTab: String, CaseIterable, Identifiable, Codable {
     
     var name: LocalizedStringKey {
         switch self {
-        case .info: "Info"
-        case .console: "Console"
-        case .files: "Files"
-        case .backups: "Backups"
-        case .settings: "Settings"
-        case .startup: "Startup"
-        case .users: "Users"
-        case .schedules: "Schedules"
-        case .databases: "Databases"
+        case .info:        "Info"
+        case .console:     "Console"
+        case .files:       "Files"
+        case .backups:     "Backups"
+        case .settings:    "Settings"
+        case .startup:     "Startup"
+        case .users:       "Users"
+        case .schedules:   "Schedules"
+        case .databases:   "Databases"
         case .allocations: "Allocations"
-        case .logs: "Logs"
-        case .subdomains: "Subdomains"
+        case .logs:        "Logs"
+        case .subdomains:  "Subdomains"
         }
     }
 }

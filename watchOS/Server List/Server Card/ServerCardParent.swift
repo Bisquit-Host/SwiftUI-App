@@ -17,7 +17,7 @@ struct ServerCardParent: View {
             if server.isSuspended {
                 SuspendedServerCard(server.name)
             } else {
-                ServerCard(server)
+                ServerCardWide(server)
             }
         }
         .buttonStyle(.plain)

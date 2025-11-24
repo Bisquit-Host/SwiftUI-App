@@ -7,6 +7,6 @@ public struct BillingLoginResponse: Decodable {
     /// Also gets updated
     let refreshToken: String
     
-    /// seconds
+    /// milliseconds
     let expiresIn: Int
 }

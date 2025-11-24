@@ -613,8 +613,8 @@
 				Panel/Websocket/WebsocketMessage.swift,
 				PrivacyInfo.xcprivacy,
 				"Server List/Server Card/MetricGauge.swift",
-				"Server List/Server Card/ServerCard.swift",
 				"Server List/Server Card/ServerCardVM.swift",
+				"Server List/Server Card/ServerCardWide.swift",
 				"Server List/ServerListVM.swift",
 				"Server List/VM extensions/GameKit.swift",
 				"Server List/VM extensions/UserDefaults.swift",
@@ -647,12 +647,13 @@
 			membershipExceptions = (
 				AppDelegate.swift,
 				"Cloud Keys/APIKey.swift",
-				coin.icon,
-				cool.icon,
-				default.icon,
 				Guide.xcassets,
+				Icons/coin.icon,
+				Icons/cool.icon,
+				Icons/default.icon,
+				Icons/love.icon,
+				Icons/streamer.icon,
 				Localizable.xcstrings,
-				love.icon,
 				Nav/LinkingVM.swift,
 				Nav/NavDestinations.swift,
 				Nav/NavExtension.swift,
@@ -707,11 +708,11 @@
 				Panel/Websocket/WebsocketMessage.swift,
 				PrivacyInfo.xcprivacy,
 				"Server List/Server Card/CompactMetricRow.swift",
-				"Server List/Server Card/CompactServerCard.swift",
 				"Server List/Server Card/MetricGauge.swift",
-				"Server List/Server Card/ServerCard.swift",
+				"Server List/Server Card/ServerCardCompact.swift",
 				"Server List/Server Card/ServerCardContextMenu.swift",
 				"Server List/Server Card/ServerCardVM.swift",
+				"Server List/Server Card/ServerCardWide.swift",
 				"Server List/ServerListGrid.swift",
 				"Server List/ServerListTips.swift",
 				"Server List/ServerListVM.swift",
@@ -723,7 +724,6 @@
 				"Settings/Debug & Dev/GamepadDebug.swift",
 				"Start Page/StartPageHelper.swift",
 				"Start Page/StartPageVM.swift",
-				streamer.icon,
 				Utils/ANSIConverter.swift,
 				Utils/BackgroundBlur.swift,
 				Utils/Converter.swift,
@@ -996,9 +996,9 @@
 				Panel/Websocket/WebsocketMessage.swift,
 				PrivacyInfo.xcprivacy,
 				"Server List/Server Card/MetricGauge.swift",
-				"Server List/Server Card/ServerCard.swift",
 				"Server List/Server Card/ServerCardContextMenu.swift",
 				"Server List/Server Card/ServerCardVM.swift",
+				"Server List/Server Card/ServerCardWide.swift",
 				"Server List/ServerListVM.swift",
 				"Server List/VM extensions/GameKit.swift",
 				"Server List/VM extensions/SpotlightIndex.swift",
@@ -1087,11 +1087,11 @@
 				Panel/ServerState.swift,
 				Panel/Tabs.swift,
 				"Server List/Server Card/CompactMetricRow.swift",
-				"Server List/Server Card/CompactServerCard.swift",
 				"Server List/Server Card/MetricGauge.swift",
-				"Server List/Server Card/ServerCard.swift",
+				"Server List/Server Card/ServerCardCompact.swift",
 				"Server List/Server Card/ServerCardContextMenu.swift",
 				"Server List/Server Card/ServerCardVM.swift",
+				"Server List/Server Card/ServerCardWide.swift",
 				"Server List/ServerListGrid.swift",
 				"Server List/ServerListVM.swift",
 				"Server List/slowSnow.swift",
@@ -2401,7 +2401,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 26.2.1;
+				MARKETING_VERSION = 26.2.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2469,7 +2469,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 26.2.1;
+				MARKETING_VERSION = 26.2.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "";

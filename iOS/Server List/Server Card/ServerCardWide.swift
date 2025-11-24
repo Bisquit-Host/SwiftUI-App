@@ -1,23 +1,16 @@
 import SwiftUI
 import PteroNet
 
-struct ServerCard: View {
+struct ServerCardWide: View {
     @State private var vm: ServerCardVM
     @EnvironmentObject private var store: ValueStore
+    @Environment(\.accessibilityDifferentiateWithoutColor) private var differentiateWithoutColor
     
     private let server: ServerAttributes
     
     init(_ server: ServerAttributes) {
         self.server = server
         vm = ServerCardVM(server.id)
-    }
-    
-    private var isSuspended: Bool {
-        vm.stateColor == .gray
-    }
-    
-    private var serverUrl: String {
-        "https://mgr.bisquit.host/server/\(server.id)"
     }
     
     @State private var showSafari = false
@@ -28,7 +21,7 @@ struct ServerCard: View {
             HStack {
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
-                        if vm.stateColor != .gray {
+                        if vm.state != .suspended {
                             Circle()
                                 .fill(vm.stateColor.gradient)
                                 .frame(10)
@@ -38,6 +31,12 @@ struct ServerCard: View {
                             .lineLimit(1)
                             .semibold()
                             .headline()
+                        
+                        Spacer()
+                        
+                        if differentiateWithoutColor {
+                            Text(vm.state.rawValue)
+                        }
                     }
                     
                     if !server.description.isEmpty, store.serverCardDescription {
@@ -51,7 +50,7 @@ struct ServerCard: View {
                 
                 Spacer()
                 
-                if isSuspended {
+                if vm.state == .suspended {
                     Image(systemName: "snowflake")
                         .largeTitle()
                 }
@@ -91,7 +90,7 @@ struct ServerCard: View {
             ServerCardContextMenu(server, $showSafari, $confirmKill)
         }
         .onDrag {
-            if let url = URL(string: serverUrl), let itemProvider = NSItemProvider(contentsOf: url) {
+            if let url = URL(string: vm.serverURL), let itemProvider = NSItemProvider(contentsOf: url) {
                 itemProvider
             } else {
                 NSItemProvider()
@@ -113,7 +112,7 @@ struct ServerCard: View {
             }
         }
 #if canImport(SafariCover)
-        .safariCover($showSafari, url: serverUrl)
+        .safariCover($showSafari, url: vm.serverURL)
 #endif
         .confirmationDialog("Perform kill action", isPresented: $confirmKill, titleVisibility: .visible) {
             Button("Kill", role: .destructive) {
@@ -126,6 +125,6 @@ struct ServerCard: View {
 }
 
 #Preview {
-    ServerCard(PreviewProp.serverAttributes)
+    ServerCardWide(PreviewProp.serverAttributes)
         .environmentObject(ValueStore())
 }

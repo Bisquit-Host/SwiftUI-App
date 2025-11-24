@@ -128,22 +128,21 @@ struct BisquitHost: App {
         }
 #if os(watchOS)
         GKLocalPlayer.local.authenticateHandler = { error in
-            guard error == nil else {
-                print(error?.localizedDescription ?? "Game Center authentication failed")
-                return
-            }
-            
-            print("Game Center authenticated")
+            authenticateGameCenter(error)
         }
 #else
         GKLocalPlayer.local.authenticateHandler = { _, error in
-            guard error == nil else {
-                print(error?.localizedDescription ?? "Game Center authentication failed")
-                return
-            }
-            
-            print("Game Center authenticated")
+            authenticateGameCenter(error)
         }
 #endif
+    }
+    
+    private func authenticateGameCenter(_ error: Error?) {
+        guard error == nil else {
+            print(error?.localizedDescription ?? "Game Center authentication failed")
+            return
+        }
+        
+        print("Game Center authenticated")
     }
 }
