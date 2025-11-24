@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct LogList: View {
     @State private var vm: LogVM
@@ -22,6 +22,7 @@ struct LogList: View {
         .navigationTitle("Logs")
         .task {
             await vm.fetchLogs()
+            grantAchievement("open_server_logs")
         }
         .onChange(of: id) {
             Task {
