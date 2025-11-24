@@ -22,45 +22,28 @@ struct AccountView: View {
             CredentialsButton()
             
             Section("2FA") {
-                if vm.twoFaEnabled {
-                    Menu {
-                        Button("Disable 2FA", systemImage: "xmark.circle", role: .destructive) {
-                            sheetDisable2Fa = true
+                if let twoFaEnabled = vm.twoFaEnabled {
+                    if twoFaEnabled {
+                        Menu {
+                            Button("Disable 2FA", systemImage: "xmark.circle", role: .destructive) {
+                                sheetDisable2Fa = true
+                            }
+                        } label: {
+                            HStack {
+                                Text("2FA enabled")
+                                
+                                Spacer()
+                                
+                                Image(systemName: "checkmark.circle")
+                                    .foregroundStyle(.green)
+                            }
                         }
-                    } label: {
-                        HStack {
-                            Text("2FA enabled")
-                            
-                            Spacer()
-                            
-                            Image(systemName: "checkmark.circle")
-                                .foregroundStyle(.green)
+                        .foregroundStyle(.foreground)
+                    } else {
+                        ListButton("Setup 2FA", actionIcon: "key.viewfinder") {
+                            sheetEnable2Fa = true
                         }
                     }
-                    .foregroundStyle(.foreground)
-                } else {
-                    ListButton("Setup 2FA", actionIcon: "key.viewfinder") {
-                        sheetEnable2Fa = true
-                    }
-                    
-                    //                    Menu {
-                    //                        Button("Copy URL", systemImage: "doc.on.doc") {
-                    //                            Pasteboard.copy(vm.qrCodeUrl)
-                    //                            SystemAlert.copied()
-                    //                        }
-                    //
-                    //                        if let url = URL(string: vm.qrCodeUrl) {
-                    //                            Link(destination: url) {
-                    //                                Label("Open URL", systemImage: "link")
-                    //                            }
-                    //                        }
-                    //
-                    //                        Button("View QR code", systemImage: "qrcode") {
-                    //                            sheetQrCode = true
-                    //                        }
-                    //                    } label: {
-                    //                        ListButton("Setup 2FA", actionIcon: "key.viewfinder")
-                    //                    }
                 }
             }
         }
@@ -79,7 +62,9 @@ struct AccountView: View {
             await twoFaTask.value
         }
         .sheet($sheetEnable2Fa) {
-            Enable2FAView()
+            NavigationStack {
+                Enable2FAView()
+            }
         }
         .sheet($sheetDisable2Fa) {
             Disable2FaView()
@@ -91,11 +76,7 @@ struct AccountView: View {
         }
     }
     
-    private func param(
-        _ param: LocalizedStringKey,
-        value: String
-    ) -> some View {
-        
+    private func param(_ param: LocalizedStringKey, value: String) -> some View {
         HStack {
             Text(param)
             

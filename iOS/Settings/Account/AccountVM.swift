@@ -6,7 +6,7 @@ import PteroNet
 final class AccountVM {
     private(set) var account: AccountAttributes? = nil
     private(set) var qrCodeUrl = ""
-    private(set) var twoFaEnabled = false
+    private(set) var twoFaEnabled: Bool?
     
     func fetch() async {
         do {
@@ -37,6 +37,7 @@ final class AccountVM {
 #warning("Finish")
             onSuccess()
         } catch {
+            print("Error enabling 2FA", error.localizedDescription)
             SystemAlert.error(error)
         }
     }
@@ -46,6 +47,7 @@ final class AccountVM {
             try await twoFaDisableAPI(password)
             onSuccess()
         } catch {
+            print("Error disabling 2FA", error.localizedDescription)
             SystemAlert.error(error)
         }
     }
