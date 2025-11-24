@@ -5,6 +5,7 @@ struct ServerList: View {
     @Environment(ServerListVM.self) private var vm
     @Environment(NavState.self) private var nav
     @EnvironmentObject private var store: ValueStore
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     
     var body: some View {
         @Bindable var vm = vm
@@ -22,7 +23,7 @@ struct ServerList: View {
         .searchable(text: $vm.searchField)
         .safariCover($vm.showBilling, url: "https://my.bisquit.host")
         .overlay {
-            if isBoundaryDay() {
+            if isBoundaryDay && !reduceMotion {
                 VortexView(.slowSnow.makeUniqueCopy()) {
                     Circle()
                         .fill(.white.opacity(0.8))
@@ -35,7 +36,7 @@ struct ServerList: View {
             }
         }
         .background {
-            if !isBoundaryDay() {
+            if !isBoundaryDay && !reduceMotion {
                 BisquitFall()
             }
         }
@@ -71,7 +72,7 @@ struct ServerList: View {
         }
     }
     
-    private func isBoundaryDay() -> Bool {
+    private var isBoundaryDay: Bool {
         let calendar = Calendar.current.dateComponents([.month, .day], from: Date())
         
         guard let month = calendar.month, let day = calendar.day else {
