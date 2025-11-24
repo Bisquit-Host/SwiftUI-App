@@ -1,4 +1,4 @@
-import Foundation
+import SwiftUI
 
 final class System {
     static let lowPowerMode = ProcessInfo.processInfo.isLowPowerModeEnabled
@@ -17,5 +17,9 @@ final class System {
 #else
         false
 #endif
+    }
+    
+    static var isIpad: Bool {
+        UIDevice.current.userInterfaceIdiom == .pad
     }
 }
