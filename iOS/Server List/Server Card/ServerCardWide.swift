@@ -25,7 +25,7 @@ struct ServerCardWide: View {
             HStack {
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
-                        if vm.state == .suspended, !differentiateWithoutColor {
+                        if vm.state != .suspended {
                             Circle()
                                 .fill(vm.stateColor.gradient)
                                 .frame(10)

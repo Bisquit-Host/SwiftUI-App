@@ -33,11 +33,9 @@ struct ServerCardCompact: View {
             } else {
                 VStack(alignment: .leading, spacing: 12) {
                     HStack(spacing: 8) {
-                        if !differentiateWithoutColor {
-                            Circle()
-                                .fill(vm.stateColor.gradient)
-                                .frame(6)
-                        }
+                        Circle()
+                            .fill(vm.stateColor.gradient)
+                            .frame(6)
                         
                         Text(server.name)
                             .fontSize(14)
