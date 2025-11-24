@@ -1,6 +1,8 @@
 import ScrechKit
 
 struct BillingDashboard: View {
+    @State private var vm = BillingDashboardVM()
+    
     @State private var sheetSettings = false
     
     var body: some View {
@@ -11,6 +13,9 @@ struct BillingDashboard: View {
         }
         .navigationTitle("Dashboard")
         .navigationBarBackButtonHidden()
+        .refreshableTask {
+            await vm.fetchUserInfo()
+        }
         .sheet($sheetSettings) {
             NavigationStack {
                 BillingSettings()
@@ -18,8 +23,12 @@ struct BillingDashboard: View {
         }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
+                if let user = vm.user {
+                    BillingDashboardBalance(balance: Double(user.balance), currency: user.currency)
+                }
+                
                 // BillingDashboardBalance(balance: 0, currency: "EUR")
-                BillingDashboardBalance(balance: 200, currency: "EUR")
+                // BillingDashboardBalance(balance: 200, currency: "EUR")
             }
             
             ToolbarItem(placement: .topBarTrailing) {

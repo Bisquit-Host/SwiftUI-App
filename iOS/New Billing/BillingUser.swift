@@ -1,6 +1,6 @@
 import Foundation
 
-public struct User: Decodable {
+public struct BillingUser: Decodable {
     public let id: Int
     public let login: String
     public let email: String

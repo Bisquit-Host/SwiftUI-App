@@ -24,6 +24,8 @@ struct BillingDashboardBalance: View {
         isPositive ? .yellow : .red
     }
     
+    @State private var sheetTopup = false
+    
     var body: some View {
         Button {
             
@@ -42,6 +44,9 @@ struct BillingDashboardBalance: View {
         .rounded()
         .semibold()
         .monospacedDigit()
+        .sheet($sheetTopup) {
+            SheetTopup()
+        }
     }
 }
 
