@@ -24,9 +24,9 @@ struct ServerCardParent: View {
                 //                    nav.navigate(.toPanel(server.id))
             } label: {
                 if store.compactServerList {
-                    CompactServerCard(server)
+                    ServerCardCompact(server)
                 } else {
-                    ServerCard(server)
+                    ServerCardWide(server)
                 }
             }
             .foregroundStyle(.foreground)

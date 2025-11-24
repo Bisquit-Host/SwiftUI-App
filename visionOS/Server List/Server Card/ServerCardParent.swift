@@ -15,7 +15,7 @@ struct ServerCardParent: View {
         NavigationLink {
             PanelView(server)
         } label: {
-            ServerCard(server)
+            ServerCardWide(server)
         }
         .contextMenu {
             ServerCardContextMenu(server, $showSafari, $confirmKill)

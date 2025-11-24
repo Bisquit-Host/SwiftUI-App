@@ -1,7 +1,7 @@
 import SwiftUI
 import PteroNet
 
-struct ServerCard: View {
+struct ServerCardWide: View {
     @State private var vm: ServerCardVM
     @EnvironmentObject private var store: ValueStore
     @Environment(\.accessibilityDifferentiateWithoutColor) private var differentiateWithoutColor
@@ -129,6 +129,6 @@ struct ServerCard: View {
 }
 
 #Preview {
-    ServerCard(PreviewProp.serverAttributes)
+    ServerCardWide(PreviewProp.serverAttributes)
         .environmentObject(ValueStore())
 }

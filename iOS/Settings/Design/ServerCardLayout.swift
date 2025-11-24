@@ -9,7 +9,7 @@ struct ServerCardLayout: View {
                 Button {
                     store.compactServerList = false
                 } label: {
-                    ServerCard(PreviewProp.serverAttributes)
+                    ServerCardWide(PreviewProp.serverAttributes)
                 }
                 .padding(5)
                 .background(store.compactServerList ? .gray : .blue, in: .rect(cornerRadius: 18))
@@ -19,8 +19,8 @@ struct ServerCardLayout: View {
                     store.compactServerList = true
                 } label: {
                     HStack {
-                        CompactServerCard(PreviewProp.serverAttributes)
-                        CompactServerCard(PreviewProp.serverAttributes)
+                        ServerCardCompact(PreviewProp.serverAttributes)
+                        ServerCardCompact(PreviewProp.serverAttributes)
                     }
                 }
                 .padding(5)

@@ -1,7 +1,7 @@
 import SwiftUI
 import PteroNet
 
-struct CompactServerCard: View {
+struct ServerCardCompact: View {
     @State private var vm: ServerCardVM
     @EnvironmentObject private var store: ValueStore
     @Environment(\.accessibilityDifferentiateWithoutColor) private var differentiateWithoutColor

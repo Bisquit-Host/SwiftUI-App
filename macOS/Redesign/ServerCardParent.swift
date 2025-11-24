@@ -21,9 +21,9 @@ struct ServerCardParent: View {
         VStack {
             NavigationLink(value: server) {
                 if store.compactServerList {
-                    CompactServerCard(server)
+                    ServerCardCompact(server)
                 } else {
-                    ServerCard(server)
+                    ServerCardWide(server)
                 }
             }
             .foregroundStyle(.foreground)
