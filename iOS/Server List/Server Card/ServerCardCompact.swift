@@ -78,6 +78,7 @@ struct ServerCardCompact: View {
         }
         .padding(12)
         .frame(height: 105)
+        .contentShape(.rect(cornerRadius: 12))
         .glassEffect(in: .rect(cornerRadius: 12))
         .task {
             await vm.fetchServerUsage()
