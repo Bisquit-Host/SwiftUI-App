@@ -14,7 +14,7 @@ struct ServerCardParent: View {
         Button {
             nav.navigate(.toPanel(server))
         } label: {
-            ServerCardWide(server)
+            ServerCard(server)
         }
     }
 }
