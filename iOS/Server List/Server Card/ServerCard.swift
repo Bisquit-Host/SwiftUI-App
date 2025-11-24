@@ -4,16 +4,13 @@ import PteroNet
 struct ServerCard: View {
     @State private var vm: ServerCardVM
     @EnvironmentObject private var store: ValueStore
+    @Environment(\.accessibilityDifferentiateWithoutColor) private var differentiateWithoutColor
     
     private let server: ServerAttributes
     
     init(_ server: ServerAttributes) {
         self.server = server
         vm = ServerCardVM(server.id)
-    }
-    
-    private var isSuspended: Bool {
-        vm.stateColor == .gray
     }
     
     private var serverUrl: String {
@@ -28,7 +25,7 @@ struct ServerCard: View {
             HStack {
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
-                        if vm.stateColor != .gray {
+                        if vm.state == .suspended, !differentiateWithoutColor {
                             Circle()
                                 .fill(vm.stateColor.gradient)
                                 .frame(10)
@@ -38,6 +35,12 @@ struct ServerCard: View {
                             .lineLimit(1)
                             .semibold()
                             .headline()
+                        
+                        Spacer()
+                        
+                        if differentiateWithoutColor {
+                            Text(vm.state.rawValue)
+                        }
                     }
                     
                     if !server.description.isEmpty, store.serverCardDescription {
@@ -51,7 +54,7 @@ struct ServerCard: View {
                 
                 Spacer()
                 
-                if isSuspended {
+                if vm.state == .suspended {
                     Image(systemName: "snowflake")
                         .largeTitle()
                 }

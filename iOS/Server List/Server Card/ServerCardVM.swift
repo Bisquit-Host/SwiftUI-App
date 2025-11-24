@@ -13,7 +13,16 @@ final class ServerCardVM {
     private(set) var cpuUsage = 0.0
     private(set) var diskUsage = 0.0
     private(set) var isLoading = true
-    private(set) var stateColor: Color = .red
+    private(set) var state: ResourceUsageState = .offline
+    
+    var stateColor: Color {
+        switch state {
+        case .offline:   .red
+        case .running:   .green
+        case .suspended: .gray
+        default:         .yellow
+        }
+    }
     
     func fetchServerUsage() async {
         do {
@@ -32,13 +41,7 @@ final class ServerCardVM {
         diskUsage = usage.disk
         
         withAnimation {
-            switch model.state {
-            case .offline:   stateColor = .red
-            case .running:   stateColor = .green
-            case .suspended: stateColor = .gray
-            default:         stateColor = .yellow
-            }
-            
+            state = model.state
             isLoading = false
         }
     }
