@@ -5,7 +5,13 @@ struct BillingSettings: View {
     
     var body: some View {
         List {
-            Toggle("Test billing", isOn: $store.testBilling)
+            Section("Debug") {
+                Toggle("Test billing", isOn: $store.testBilling)
+                
+                Button("Log out") {
+                    store.testAccessToken = ""
+                }
+            }
         }
     }
 }

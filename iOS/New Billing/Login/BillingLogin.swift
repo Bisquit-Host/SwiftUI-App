@@ -14,7 +14,7 @@ struct BillingLogin: View {
     }
     
     var body: some View {
-        VStack {
+        List {
             TextField("Login", text: $store.login)
                 .autocorrectionDisabled()
                 .keyboardType(.emailAddress)
@@ -23,10 +23,12 @@ struct BillingLogin: View {
             
             SecureField("Password", text: $store.password)
             
-            Button("Continue") {
-                sheetHcaptcha = true
+            Section {
+                Button("Continue") {
+                    sheetHcaptcha = true
+                }
+                .disabled(captchaButtonDisabled)
             }
-            .disabled(captchaButtonDisabled)
         }
         .sheet($sheetHcaptcha) {
             HCaptchaSheet($captchaToken)
