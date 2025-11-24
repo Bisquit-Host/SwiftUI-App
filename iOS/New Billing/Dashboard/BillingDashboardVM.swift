@@ -4,6 +4,29 @@ import Foundation
 final class BillingDashboardVM {
     var user: BillingUser? = nil
     
+    func refreshAuth() async -> BillingLoginResponse? {
+        let path = "https://test-api.bisquit.host/auth/refresh"
+        
+        guard let url = URL(string: path) else { return nil }
+        
+        let store = ValueStore()
+        
+        var req = URLRequest(url: url)
+        req.setValue("Bearer \(store.testRefreshToken)", forHTTPHeaderField: "Authorization")
+        
+        do {
+            let (data, _) = try await URLSession.shared.data(for: req)
+            
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            
+            return try decoder.decode(BillingLoginResponse.self, from: data)
+        } catch {
+            print("Error refreshing access_token:", error.localizedDescription)
+            return nil
+        }
+    }
+    
     func fetchUserInfo() async {
         let path = "https://test-api.bisquit.host/user"
         
