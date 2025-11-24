@@ -15,7 +15,6 @@ extension UserDefaults {
         }
         
         let decoder = JSONDecoder()
-        
         return try? decoder.decode([ServerAttributes].self, from: data)
     }
 }
