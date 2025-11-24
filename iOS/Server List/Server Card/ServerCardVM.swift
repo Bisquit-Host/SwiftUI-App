@@ -15,6 +15,10 @@ final class ServerCardVM {
     private(set) var isLoading = true
     private(set) var state: ResourceUsageState = .offline
     
+    var serverURL: String {
+        "https://mgr.bisquit.host/server/" + id
+    }
+    
     var stateColor: Color {
         switch state {
         case .offline:   .red

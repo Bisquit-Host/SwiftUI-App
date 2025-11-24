@@ -13,6 +13,9 @@ struct ServerCardCompact: View {
         vm = ServerCardVM(server.id)
     }
     
+    @State private var showSafari = false
+    @State private var confirmKill = false
+    
     var body: some View {
         VStack(spacing: 5) {
             if differentiateWithoutColor {
@@ -82,6 +85,28 @@ struct ServerCardCompact: View {
         .onChange(of: store.updateServers) {
             Task {
                 await vm.fetchServerUsage()
+            }
+        }
+#if !os(watchOS)
+        .contextMenu {
+            ServerCardContextMenu(server, $showSafari, $confirmKill)
+        }
+        .onDrag {
+            if let url = URL(string: vm.serverURL), let itemProvider = NSItemProvider(contentsOf: url) {
+                itemProvider
+            } else {
+                NSItemProvider()
+            }
+        }
+#endif
+#if canImport(SafariCover)
+        .safariCover($showSafari, url: vm.serverURL)
+#endif
+        .confirmationDialog("Perform kill action", isPresented: $confirmKill, titleVisibility: .visible) {
+            Button("Kill", role: .destructive) {
+                Task {
+                    await PteroNet.powerSignal(server.id, do: .kill)
+                }
             }
         }
     }

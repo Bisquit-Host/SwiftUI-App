@@ -13,10 +13,6 @@ struct ServerCardWide: View {
         vm = ServerCardVM(server.id)
     }
     
-    private var serverUrl: String {
-        "https://mgr.bisquit.host/server/\(server.id)"
-    }
-    
     @State private var showSafari = false
     @State private var confirmKill = false
     
@@ -94,7 +90,7 @@ struct ServerCardWide: View {
             ServerCardContextMenu(server, $showSafari, $confirmKill)
         }
         .onDrag {
-            if let url = URL(string: serverUrl), let itemProvider = NSItemProvider(contentsOf: url) {
+            if let url = URL(string: vm.serverURL), let itemProvider = NSItemProvider(contentsOf: url) {
                 itemProvider
             } else {
                 NSItemProvider()
@@ -116,7 +112,7 @@ struct ServerCardWide: View {
             }
         }
 #if canImport(SafariCover)
-        .safariCover($showSafari, url: serverUrl)
+        .safariCover($showSafari, url: vm.serverURL)
 #endif
         .confirmationDialog("Perform kill action", isPresented: $confirmKill, titleVisibility: .visible) {
             Button("Kill", role: .destructive) {
