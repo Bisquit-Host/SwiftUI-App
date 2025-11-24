@@ -20,6 +20,10 @@ final class System {
     }
     
     static var isIpad: Bool {
+#if os(macOS)
+        false
+#else
         UIDevice.current.userInterfaceIdiom == .pad
+#endif
     }
 }
