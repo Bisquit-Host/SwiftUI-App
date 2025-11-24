@@ -15,6 +15,13 @@ extension UserDefaults {
         }
         
         let decoder = JSONDecoder()
-        return try? decoder.decode([ServerAttributes].self, from: data)
+        
+        do {
+            return try decoder.decode([ServerAttributes].self, from: data)
+        } catch {
+            print("Error loading cached servers:", error.localizedDescription)
+            removeObject(forKey: key) // clear corrupted cache so future loads start clean
+            return nil
+        }
     }
 }
