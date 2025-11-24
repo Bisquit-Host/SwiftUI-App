@@ -33,6 +33,7 @@ final class ServerCardVM {
             let usage = try await serverUsageAPI(id)
             updateUsage(usage)
         } catch {
+            state = .suspended
             SystemAlert.error(error)
         }
     }
