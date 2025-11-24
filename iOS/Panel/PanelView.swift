@@ -23,15 +23,11 @@ struct PanelView: View {
         consoleVM = ConsoleVM(id)
     }
     
-    private var isIpad: Bool {
-        UIDevice.current.userInterfaceIdiom == .pad
-    }
-    
     var body: some View {
         @Bindable var vm = vm
         
         VStack {
-            if isIpad {
+            if System.isIpad {
                 PanelViewTabView()
             } else {
                 NavigationView {

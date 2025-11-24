@@ -80,6 +80,8 @@ struct DebugSettings: View {
                     enableExtension()
                 }
             }
+            
+            Toggle("Test billing", isOn: $store.testBilling)
         }
         .navigationTitle("Debug")
         .scrollIndicators(.never)

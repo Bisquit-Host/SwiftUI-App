@@ -6,6 +6,14 @@ import Appearance
 #endif
 
 final class ValueStore: ObservableObject {
+    // Billing
+    @AppStorage("test_login") var login = ""
+    @AppStorage("test_password") var password = ""
+    @AppStorage("test_access_token") var testAccessToken = ""
+    @AppStorage("test_refresh_token") var testRefreshToken = ""
+    @AppStorage("test_expires_in") var testExpiresIn = 0
+    @AppStorage("test_billing") var testBilling = false
+    
 #if os(visionOS)
     //    @AppStorage("show_info") var showInfo = true
     @AppStorage("show_power_buttons") var showPowerButtons = true

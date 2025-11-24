@@ -4,8 +4,10 @@ enum NavDestinations: Hashable {
 #if !os(macOS)
     case toServerList
 #endif
+    
 #if os(iOS)
     case toSettings
+    case toBillingDashboard
 #endif
     
 #if os(visionOS)
