@@ -10,6 +10,9 @@ extension View {
 #if os(iOS)
             case .toSettings:
                 SettingsView()
+                
+            case .toBillingDashboard:
+                BillingDashboard()
 #endif
                 
 #if !os(macOS)

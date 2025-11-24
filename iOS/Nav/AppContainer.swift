@@ -18,19 +18,33 @@ struct AppContainer: View {
         @Bindable var nav = nav
         
         NavigationStack(path: $nav.path) {
+#if os(iOS)
+            if store.testBilling {
+                if store.testAccessToken.isEmpty {
+                    BillingLogin()
+                        .withNavDestinations()
+                } else {
+                    BillingDashboard()
+                        .withNavDestinations()
+                }
+            } else {
+                if store.isApiKeyValid {
+                    ServerList()
+                        .withNavDestinations()
+                } else {
+                    StartPage()
+                        .withNavDestinations()
+                }
+            }
+#else
             if store.isApiKeyValid {
                 ServerList()
                     .withNavDestinations()
             } else {
-#if os(iOS)
-//                Intro()
-                NewBillingLogin()
-                    .withNavDestinations()
-#else
                 StartPage()
                     .withNavDestinations()
-#endif
             }
+#endif
         }
         .animation(.default, value: store.isApiKeyValid)
         .environment(vm)

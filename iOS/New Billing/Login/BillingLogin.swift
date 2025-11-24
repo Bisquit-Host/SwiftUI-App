@@ -1,28 +1,27 @@
 import SwiftUI
 import HCaptcha
 
-struct NewBillingLogin: View {
-    @State private var vm = NewBillingLoginVM()
-    
-    @AppStorage("test_login") private var login = ""
-    @AppStorage("test_password") private var password = ""
+struct BillingLogin: View {
+    @State private var vm = BillingLoginVM()
+    @Environment(NavState.self) private var nav
+    @EnvironmentObject private var store: ValueStore
     
     @State private var sheetHcaptcha = false
     @State private var captchaToken = ""
     
     private var captchaButtonDisabled: Bool {
-        login.isEmpty || password.isEmpty
+        store.login.isEmpty || store.password.isEmpty
     }
     
     var body: some View {
         VStack {
-            TextField("Login", text: $login)
+            TextField("Login", text: $store.login)
                 .autocorrectionDisabled()
                 .keyboardType(.emailAddress)
                 .textContentType(.emailAddress)
                 .autocorrectionDisabled()
             
-            SecureField("Password", text: $password)
+            SecureField("Password", text: $store.password)
             
             Button("Continue") {
                 sheetHcaptcha = true
@@ -39,12 +38,19 @@ struct NewBillingLogin: View {
     
     private func auth() {
         Task {
-            await vm.login(login, password, captchaToken)
+            if let response = await vm.login(store.login, store.password, captchaToken) {
+                store.testExpiresIn = response.expiresIn
+                store.testAccessToken = response.accessToken
+                store.testRefreshToken = response.refreshToken
+                
+                nav.navigate(.toBillingDashboard)
+            }
         }
     }
 }
 
 #Preview {
-    NewBillingLogin()
+    BillingLogin()
         .darkSchemePreferred()
+        .environmentObject(ValueStore())
 }

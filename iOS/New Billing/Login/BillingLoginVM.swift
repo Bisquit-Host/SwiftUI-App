@@ -1,13 +1,13 @@
 import Foundation
 
 @Observable
-final class NewBillingLoginVM {
-    func login(_ login: String, _ password: String, _ captchaToken: String) async {
+final class BillingLoginVM {
+    func login(_ login: String, _ password: String, _ captchaToken: String) async -> BillingLoginResponse? {
         let path = "https://test-api.bisquit.host/auth/signin"
         
         guard let url = URL(string: path) else {
             print("Invalid URL")
-            return
+            return nil
         }
         
         let body = [
@@ -33,9 +33,10 @@ final class NewBillingLoginVM {
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             
-            let response = try decoder.decode(BillingLoginResponse.self, from: data)
+            return try decoder.decode(BillingLoginResponse.self, from: data)
         } catch {
             print(error.localizedDescription)
+            return nil
         }
     }
 }
