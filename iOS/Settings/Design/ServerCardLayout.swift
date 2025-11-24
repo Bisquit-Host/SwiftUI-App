@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ServerCardLayout: View {
     @EnvironmentObject private var store: ValueStore
+    @Environment(\.accessibilityDifferentiateWithoutColor) private var differentiateWithoutColor
     
     var body: some View {
         List {
@@ -9,6 +10,11 @@ struct ServerCardLayout: View {
                 Button {
                     store.compactServerList = false
                 } label: {
+                    if differentiateWithoutColor, !store.compactServerList {
+                        Text("Selected")
+                            .semibold()
+                    }
+                    
                     ServerCardWide(PreviewProp.serverAttributes)
                 }
                 .padding(5)
@@ -18,6 +24,11 @@ struct ServerCardLayout: View {
                 Button {
                     store.compactServerList = true
                 } label: {
+                    if differentiateWithoutColor, store.compactServerList {
+                        Text("Selected")
+                            .semibold()
+                    }
+                    
                     HStack {
                         ServerCardCompact(PreviewProp.serverAttributes)
                         ServerCardCompact(PreviewProp.serverAttributes)
@@ -33,8 +44,7 @@ struct ServerCardLayout: View {
             Section {
                 Toggle("Description", isOn: $store.serverCardDescription)
                     .disabled(store.compactServerList)
-                // .disabled doesn't change label's color
-                    .foregroundStyle(store.compactServerList ? .tertiary : .primary)
+                    .foregroundStyle(store.compactServerList ? .tertiary : .primary) // .disabled doesn't change label's color
             }
         }
         .navigationTitle("Server card layout")
