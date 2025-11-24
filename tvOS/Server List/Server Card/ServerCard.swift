@@ -13,11 +13,9 @@ struct ServerCard: View {
         vm = ServerCardVM(server.id)
     }
     
-    private var limits: ServerLimits {
-        server.limits
-    }
-    
     var body: some View {
+        let limits = server.limits
+        
         HStack {
             VStack(alignment: .leading, spacing: 16) {
                 Text(server.name)
