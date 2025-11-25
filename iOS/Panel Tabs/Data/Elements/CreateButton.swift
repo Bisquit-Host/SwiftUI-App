@@ -1,14 +1,11 @@
 import SwiftUI
 
 struct CreateButton: View {
-    let name: LocalizedStringResource
-    let disabled: Bool
-    let action: () -> Void
+    private let name: LocalizedStringResource
+    private let disabled: Bool
+    private let action: () -> Void
     
-    init(_ name: LocalizedStringResource,
-         disabled: Bool,
-         action: @escaping () -> Void
-    ) {
+    init(_ name: LocalizedStringResource, disabled: Bool, action: @escaping () -> Void) {
         self.name = name
         self.disabled = disabled
         self.action = action

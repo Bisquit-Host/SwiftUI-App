@@ -8,11 +8,7 @@ struct CloudKeyCard: View {
     @Bindable private var key: APIKey
     private let validate: () -> Void
     
-    init(
-        _ selectedKey: Binding<String>,
-        key: APIKey,
-        validate: @escaping () -> Void
-    ) {
+    init(_ selectedKey: Binding<String>, key: APIKey, validate: @escaping () -> Void) {
         _selectedKey = selectedKey
         self.key = key
         self.validate = validate
@@ -20,11 +16,9 @@ struct CloudKeyCard: View {
     
     @State private var alertRename = false
     
-    private var isSelected: Bool {
-        key.key == selectedKey
-    }
-    
     var body: some View {
+        let isSelected = key.key == selectedKey
+        
         Button {
             clearAllCookies()
             Keychain.save(key.key, forKey: "selectedApiKey")

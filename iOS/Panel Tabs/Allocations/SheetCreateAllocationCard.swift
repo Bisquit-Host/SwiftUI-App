@@ -5,19 +5,14 @@ struct SheetCreateAllocationCard: View {
     @Binding private var selectedCategory: Int
     private let category: AllocationCategory
     
-    init(
-        _ selectedCategory: Binding<Int>,
-        category: AllocationCategory
-    ) {
+    init(_ selectedCategory: Binding<Int>, category: AllocationCategory) {
         _selectedCategory = selectedCategory
         self.category = category
     }
     
-    private var isSelected: Bool {
-        selectedCategory == category.id
-    }
-    
     var body: some View {
+        let isSelected = selectedCategory == category.id
+        
         Button {
             selectedCategory = category.id
         } label: {

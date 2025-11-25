@@ -29,11 +29,9 @@ struct PanelView: View {
         subdomainVM = SubdomainVM(id)
     }
     
-    private var allocations: [AllocationAttributes] {
-        server.relationships.allocations.data.map(\.attributes)
-    }
-    
     var body: some View {
+        let allocations = server.relationships.allocations.data.map(\.attributes)
+        
         VStack {
             if let server = vm.server {
                 TabView(selection: $store.panelTab) {

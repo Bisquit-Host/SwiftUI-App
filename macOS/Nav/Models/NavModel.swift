@@ -68,10 +68,7 @@ final class NavModel: Codable {
     }
     
     /// Initialize a `NavModel` with the contents of a `URL`
-    private convenience init(
-        contentsOf url: URL,
-        options: Data.ReadingOptions = .mappedIfSafe
-    ) throws {
+    private convenience init(contentsOf url: URL, options: Data.ReadingOptions = .mappedIfSafe) throws {
         let data = try Data(contentsOf: url, options: options)
         let model = try Self.decoder.decode(NavModel.self, from: data)
         

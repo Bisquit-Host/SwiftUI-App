@@ -47,10 +47,7 @@ final class UsersVM {
         return dict
     }
     
-    func createUser(
-        _ email: String,
-        onSuccess: @escaping () -> ()
-    ) async {
+    func createUser(_ email: String, onSuccess: @escaping () -> ()) async {
         do {
             let user = try await userCreateAPI(id, email: email, permissions: newUserPermissions)
             users.append(user)
@@ -61,10 +58,7 @@ final class UsersVM {
         }
     }
     
-    func updateUser(
-        _ userId: String,
-        permissions: [String]
-    ) async throws {
+    func updateUser(_ userId: String, permissions: [String]) async throws {
         try await userUpdateAPI(id, userId: userId, permissions: permissions)
     }
     

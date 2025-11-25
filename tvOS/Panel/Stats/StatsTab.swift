@@ -12,15 +12,10 @@ struct StatsTab: View {
         self.server = server
     }
     
-    private var limits: ServerLimits {
-        server.limits
-    }
-    
-    private var featureLimits: ServerFeatureLimits {
-        server.featureLimits
-    }
-    
     var body: some View {
+        let limits = server.limits
+        let featureLimits = server.featureLimits
+        
         VStack {
             HStack(spacing: 0) {
                 VStack(spacing: 0) {
@@ -85,25 +80,15 @@ struct StatsTab: View {
                 .frame(height: 5)
             
             HStack(spacing: 0) {
-                ChartView(
-                    caption: "CPU",
-                    unit: "absolute",
-                    max: limits.cpu,
-                    values: vm.cpuValues
-                )
-                .frame(maxWidth: .infinity)
+                ChartView(caption: "CPU", unit: "absolute", max: limits.cpu, values: vm.cpuValues)
+                    .frame(maxWidth: .infinity)
                 
                 Rectangle()
                     .frame(width: 1)
                     .foregroundStyle(.gray)
                 
-                ChartView(
-                    caption: "RAM",
-                    unit: "GB",
-                    max: limits.memory,
-                    values: vm.ramValues
-                )
-                .frame(maxWidth: .infinity)
+                ChartView(caption: "RAM", unit: "GB", max: limits.memory, values: vm.ramValues)
+                    .frame(maxWidth: .infinity)
             }
         }
     }

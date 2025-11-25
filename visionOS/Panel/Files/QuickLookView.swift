@@ -10,11 +10,9 @@ struct QuickLookFile: View {
         _link = link
     }
     
-    private var name: String {
-        link?.name ?? ""
-    }
-    
     var body: some View {
+        let name = link?.name ?? ""
+        
         VStack {
             if let fileURL = vm.fileURL {
                 QuickLookView(fileURL)

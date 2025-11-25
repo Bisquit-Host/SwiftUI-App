@@ -17,11 +17,7 @@ struct ColumnDetail: View {
     private let server: ServerAttributes
     private var focusedList: FocusState<FocusedList?>.Binding
     
-    init(
-        _ tab: PanelTab? = nil,
-        server: ServerAttributes,
-        focusedList: FocusState<FocusedList?>.Binding
-    ) {
+    init(_ tab: PanelTab? = nil, server: ServerAttributes, focusedList: FocusState<FocusedList?>.Binding) {
         self.tab = tab
         self.server = server
         self.focusedList = focusedList

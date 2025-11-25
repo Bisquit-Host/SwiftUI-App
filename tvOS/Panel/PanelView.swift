@@ -34,11 +34,9 @@ struct PanelView: View {
         startupVM = StartupVM(id)
     }
     
-    private var allocations: [AllocationAttributes] {
-        server.relationships.allocations.data.map(\.attributes)
-    }
-    
     var body: some View {
+        let allocations = server.relationships.allocations.data.map(\.attributes)
+        
         TabView(selection: $store.panelTab) {
             if let server = vm.server {
                 Tab("Stats", systemImage: "gauge.open.with.lines.needle.33percent", value: PanelTab.info) {

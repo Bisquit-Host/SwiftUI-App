@@ -3,7 +3,6 @@ import PteroNet
 
 struct OrnamentInfoSettings: View {
     @EnvironmentObject private var ornament: OrnamentValueStore
-    
     @Environment(\.dismiss) private var dismiss
     
     private let server: ServerAttributes

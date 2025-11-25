@@ -4,10 +4,7 @@ struct InfiniteScrollHelper: UIViewRepresentable {
     @Binding private var contentSize: CGSize
     @Binding private var declarationRate: UIScrollView.DecelerationRate
     
-    init(
-        _ contentSize: Binding<CGSize>,
-        declarationRate: Binding<UIScrollView.DecelerationRate>
-    ) {
+    init(_ contentSize: Binding<CGSize>, declarationRate: Binding<UIScrollView.DecelerationRate>) {
         _contentSize = contentSize
         _declarationRate = declarationRate
     }

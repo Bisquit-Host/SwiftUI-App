@@ -10,11 +10,9 @@ struct AllocationCard: View {
         self.allocation = allocation
     }
     
-    private var ip: String {
-        allocation.ipAlias ?? allocation.ip
-    }
-    
     var body: some View {
+        let ip = allocation.ipAlias ?? allocation.ip
+        
         Button {
             
         } label: {
