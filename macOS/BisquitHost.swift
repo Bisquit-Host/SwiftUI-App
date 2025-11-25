@@ -10,7 +10,6 @@ import GaypadKit
 @main
 struct BisquitHost: App {
     private var nav = NavState()
-    private var navModel = NavModel()
     @StateObject private var store = ValueStore()
     
     private let container: ModelContainer
@@ -44,7 +43,6 @@ struct BisquitHost: App {
                 .onContinueUserActivity(CSSearchableItemActionType, perform: handleSpotlightActivity)
         }
         .environment(nav)
-        .environment(navModel)
         .environmentObject(store)
         .modelContainer(container)
         .defaultAppStorage(.init(suiteName: "group.Bisquit-host")!)
@@ -57,7 +55,6 @@ struct BisquitHost: App {
                 AppSettings()
             }
             .environmentObject(store)
-            .environment(navModel)
         }
     }
     

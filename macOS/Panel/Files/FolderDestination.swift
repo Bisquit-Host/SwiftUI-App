@@ -2,7 +2,6 @@ import ScrechKit
 import PteroNet
 
 struct FolderDestination: View {
-    @Environment(NavModel.self) private var nav
     @StateObject private var vm: FileTabVM
     
     private let id, root: String
@@ -14,13 +13,11 @@ struct FolderDestination: View {
     }
     
     var body: some View {
-        @Bindable var nav = nav
-        
         List {
             Section {
                 HStack(spacing: 0) {
                     Button("root") {
-                        nav.folderPath.removeAll()
+                        
                     }
                     .buttonStyle(.plain)
                     
@@ -55,5 +52,4 @@ struct FolderDestination: View {
         FolderDestination("")
     }
     .darkSchemePreferred()
-    .environment(NavModel())
 }
