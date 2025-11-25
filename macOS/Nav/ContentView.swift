@@ -1,15 +1,13 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Environment(NavModel.self) private var nav
     private var vm = ServerListVM()
-    
-    @Environment(\.scenePhase) private var scenePhase
+    @Environment(NavModel.self) private var nav
     @EnvironmentObject private var store: ValueStore
-#if os(macOS)
+    @Environment(\.scenePhase) private var scenePhase
     @Environment(\.appearsActive) private var appearsActive
     @Environment(\.openSettings) private var openSettings
-#endif
+    
     var body: some View {
         @Bindable var nav = nav
         
@@ -59,7 +57,6 @@ struct ContentView: View {
         .onChange(of: nav.selectedServers) {
             save()
         }
-#if os(macOS)
         .onChange(of: appearsActive) { _, appearsActive in
             if !appearsActive {
                 save()
@@ -68,7 +65,6 @@ struct ContentView: View {
         .onGamepadPressed(.menu, cooldown: 1) {
             openSettings()
         }
-#endif
     }
     
     private func save() {
