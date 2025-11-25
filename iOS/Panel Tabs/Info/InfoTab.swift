@@ -92,9 +92,9 @@ struct InfoTab: View {
     }
     
     private var ip: String? {
-        let allocation = server.relationships.allocations.data.map(\.attributes).filter {
+        let allocation = server.relationships.allocations.data.map(\.attributes).first {
             $0.isDefault
-        }.first
+        }
         
         guard let allocation else { return nil }
         
