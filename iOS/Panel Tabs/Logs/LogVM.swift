@@ -79,12 +79,12 @@ final class LogVM {
     }
     
     func monthName(for isoTimestamp: String) -> String {
-        guard let date = dateFormatter.date(from: isoTimestamp) else {
-            return "Unknown Month"
+        if let date = dateFormatter.date(from: isoTimestamp) {
+            DateFormatter()
+                .monthSymbols[Calendar.current.component(.month, from: date) - 1]
+        } else {
+            "Unknown Month"
         }
-        
-        return DateFormatter()
-            .monthSymbols[Calendar.current.component(.month, from: date) - 1]
     }
     
     func fetchLogs(_ prefetch: Bool = false) async {
@@ -92,7 +92,7 @@ final class LogVM {
             self.logs = try await logListAPI(id)
             
             if prefetch {
-                self.prefetchActorImages()
+                prefetchActorImages()
             }
         } catch {
             SystemAlert.error(error)
