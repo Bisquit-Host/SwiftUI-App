@@ -863,7 +863,7 @@
 				"Server List/ServerListVM.swift",
 				"Server List/VM extensions/GameKit.swift",
 				"Server List/VM extensions/UserDefaults.swift",
-				Settings/Account/QRCodeView.swift,
+				Settings/Account/2FA/QRCodeView.swift,
 				Settings/Cache/CacheVM.swift,
 				"Settings/Debug & Dev/DebugSettingsTips.swift",
 				"Settings/Debug & Dev/DevSettings.swift",
@@ -1094,7 +1094,6 @@
 				"Server List/Server Card/ServerCardWide.swift",
 				"Server List/ServerListGrid.swift",
 				"Server List/ServerListVM.swift",
-				"Server List/slowSnow.swift",
 				"Server List/Toolbar/NodeFilter.swift",
 				"Server List/Toolbar/NodeFilterCard.swift",
 				"Server List/Toolbar/ServerListAdminButton.swift",
@@ -1104,6 +1103,19 @@
 				"Server List/VM extensions/GameKit.swift",
 				"Server List/VM extensions/SpotlightIndex.swift",
 				"Server List/VM extensions/UserDefaults.swift",
+				Settings/Account/2FA/Disable/Disable2FAView.swift,
+				Settings/Account/2FA/Disable/DisableInstructionRow.swift,
+				Settings/Account/2FA/Disable/DisableIntroCard.swift,
+				Settings/Account/2FA/Disable/DisablePasswordCard.swift,
+				Settings/Account/2FA/Enable/Enable2FAView.swift,
+				Settings/Account/2FA/Enable/EnableCodeInputCard.swift,
+				Settings/Account/2FA/Enable/EnableInstructionRow.swift,
+				Settings/Account/2FA/Enable/EnableInstructionsCard.swift,
+				Settings/Account/2FA/Enable/EnableIntroCard.swift,
+				Settings/Account/2FA/QRCodeView.swift,
+				Settings/Account/2FA/TwoFAActionGrid.swift,
+				Settings/Account/2FA/TwoFAActionTile.swift,
+				Settings/Account/2FA/TwoFAActionTileContent.swift,
 				Settings/Account/AccountParent.swift,
 				Settings/Account/AccountView.swift,
 				Settings/Account/AccountVM.swift,
@@ -1115,9 +1127,6 @@
 				Settings/Account/Credentials/CredentialsButton.swift,
 				Settings/Account/Credentials/CredentialsView.swift,
 				Settings/Account/Credentials/CredentialsVM.swift,
-				Settings/Account/Disable2FAView.swift,
-				Settings/Account/Enable2FAView.swift,
-				Settings/Account/QRCodeView.swift,
 				Settings/Account/SSH/SSHCard.swift,
 				Settings/Account/SSH/SSHCreateView.swift,
 				Settings/Account/SSH/SSHList.swift,
@@ -1140,6 +1149,7 @@
 				Utils/Networking/Prefetcher.swift,
 				Utils/Networking/UpdateChecker.swift,
 				Utils/PreviewProp.swift,
+				Utils/slowSnow.swift,
 				Utils/System.swift,
 				Utils/SystemAlerts.swift,
 				Utils/Tips/TipCloudKeys.swift,
@@ -2401,7 +2411,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 26.2.2;
+				MARKETING_VERSION = 26.2.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2469,7 +2479,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 26.2.2;
+				MARKETING_VERSION = 26.2.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "";

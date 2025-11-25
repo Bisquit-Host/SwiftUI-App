@@ -1,5 +1,4 @@
 import SwiftUI
-import CoreGraphics
 
 struct QRCodeView: View {
     private let url: String?
@@ -16,22 +15,21 @@ struct QRCodeView: View {
                 Image(uiImage: image)
                     .resizable()
                     .scaledToFit()
-                    .clipShape(.rect(cornerRadius: 16))
+                    .clipShape(.rect(cornerRadius: 5))
                     .padding()
-                //                    .contextMenu {
-                //
-                //                    }
             }
         }
+        .presentationDetents([.medium])
         .task {
             if let url {
                 image = generateQRCode(url)
             }
         }
-        .presentationDetents([.medium])
     }
     
     private func generateQRCode(_ url: String) -> UIImage? {
+        print("Generating code for", url)
+        
         let data = url.data(using: .utf8)
         
         guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else {

@@ -12,11 +12,6 @@ struct SubdomainList: View {
     
     @State private var sheetCreate = false
     
-#warning("Needed?")
-    private var disabled: Bool {
-        vm.subdomains.count >= vm.limit
-    }
-    
     var body: some View {
         List {
             ForEach(vm.subdomains) {
@@ -51,6 +46,7 @@ struct SubdomainList: View {
                 SFButton("link.badge.plus") {
                     sheetCreate = true
                 }
+                .disabled(vm.disabled)
             }
         }
     }

@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import CoreImage.CIFilterBuiltins
 import PteroNet
 
@@ -6,7 +6,7 @@ import PteroNet
 final class AccountVM {
     private(set) var account: AccountAttributes? = nil
     private(set) var qrCodeUrl = ""
-    private(set) var twoFaEnabled = false
+    private(set) var twoFaEnabled: Bool?
     
     func fetch() async {
         do {
@@ -17,26 +17,31 @@ final class AccountVM {
     }
     
     func twoFaDetails() async {
-        twoFaEnabled = false
-        
         do {
-            qrCodeUrl = try await twoFaDetailtsAPI()
+            qrCodeUrl = try await twoFaDetailtsAPI(printResponse: true)
+            twoFaEnabled = false
+            
+        } catch TwoFAError.alreadyEnabled {
+            twoFaEnabled = true
+            
         } catch {
-            if let error = error as? PterError, error.status == "400" {
-                twoFaEnabled = true
-            } else {
-                SystemAlert.error(error)
-            }
+            SystemAlert.error(error)
+            print("2FA details error:", error.localizedDescription)
         }
     }
     
-    func enable2Fa(_ code: String, onSuccess: @escaping () -> ()) async {
+    func enable2Fa(_ code: String, password: String, onSuccess: @escaping () -> ()) async {
         do {
-            let tokens = try await twoFaEnableAPI(code)
-            print(tokens.tokens)
-#warning("Finish")
+            let tokens = try await twoFaEnableAPI(code, password: password, printResponse: true)
+            
+            Pasteboard.copy(tokens.tokens.description)
+            
             onSuccess()
+            SystemAlert.copied("Recovery codes copied")
+            
+            await twoFaDetails()
         } catch {
+            print("Error enabling 2FA", error.localizedDescription)
             SystemAlert.error(error)
         }
     }
@@ -44,8 +49,12 @@ final class AccountVM {
     func disable2Fa(_ password: String, onSuccess: @escaping () -> ()) async {
         do {
             try await twoFaDisableAPI(password)
+            
             onSuccess()
+            
+            await twoFaDetails()
         } catch {
+            print("Error disabling 2FA", error.localizedDescription)
             SystemAlert.error(error)
         }
     }

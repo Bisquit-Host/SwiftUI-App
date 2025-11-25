@@ -173,9 +173,7 @@ struct ANSIConverter {
     // MARK: - Link Detection
     
     private static func detectAndStyleLinks(_ attributedString: inout AttributedString) {
-        guard let linkDetector else {
-            return
-        }
+        guard let linkDetector else { return }
         
         // We convert to NSAttributedString temporarily for detection because NSDataDetector requires NSString ranges
         let nsAttrString = NSAttributedString(attributedString)

@@ -4,28 +4,16 @@ import PteroNet
 struct InfoTab: View {
     @State private var sectionsVM = PanelSectionVM()
     @State private var serverSettingsVM: ServerSettingsVM
-    @State private var logVM: LogVM
-    @State private var userVM: UsersVM
-    @State private var subdomainVM: SubdomainVM
     
     private let server: ServerAttributes
     
     init(_ server: ServerAttributes) {
         self.server = server
-        let id = server.id
-        
-        serverSettingsVM = ServerSettingsVM(id)
-        logVM = LogVM(id)
-        userVM = UsersVM(id)
-        subdomainVM = SubdomainVM(id)
+        serverSettingsVM = ServerSettingsVM(server.id)
     }
     
     @State private var sheetCustomization = false
     @State private var selectedImage: UIImage? = nil
-    
-    private var allocations: [AllocationAttributes] {
-        server.relationships.allocations.data.map(\.attributes)
-    }
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -39,19 +27,16 @@ struct InfoTab: View {
                         InfoTabAllocation(server)
                         
                     case "Users":
-                        InfoTabUsers()
-                            .environment(userVM)
+                        InfoTabUsers(server.id)
                         
                     case "Logs":
-                        InfoTabLogs()
-                            .environment(logVM)
+                        InfoTabLogs(server.id)
                         
                     case "Subdomains":
-                        InfoTabSubdomains(allocations)
-                            .environment(subdomainVM)
+                        InfoTabSubdomains(server)
                         
                     case "Location":
-                        MapSection(ip, node: server.node, allocations: server.relationships.allocations.data)
+                        MapSection(server)
                         
                     default:
                         EmptyView()
@@ -64,45 +49,27 @@ struct InfoTab: View {
         }
         .background(BackgroundImage())
         .animation(.default, value: sectionsVM.activeSections)
+        .task {
+            await fetchData()
+        }
         .sheet($sheetCustomization) {
             NavigationStack {
                 PanelSectionList()
                     .environment(sectionsVM)
             }
         }
-        .task {
-            let key = "background_image_fileName"
-            
-            if let fileName = UserDefaults.standard.string(forKey: key),
-               let image = BackgroundImageHelper.loadImageFromDisk(fileName) {
-                selectedImage = image
-            }
-            
-            serverSettingsVM.serverName = server.name
-            serverSettingsVM.serverDescription = server.description
-            
-            if !System.lowPowerMode {
-                async let logs:       () = logVM.fetchLogs(true)
-                async let users:      () = userVM.fetchUsers(true)
-                async let subdomains: () = subdomainVM.fetchSubdomains()
-                
-                _ = await (logs, users, subdomains)
-            }
-        }
     }
     
-    private var ip: String? {
-        let allocation = server.relationships.allocations.data.map(\.attributes).filter {
-            $0.isDefault
-        }.first
+    private func fetchData() async {
+        let key = "background_image_fileName"
         
-        guard let allocation else { return nil }
-        
-        if let ipAlias = allocation.ipAlias {
-            return ipAlias
-        } else {
-            return allocation.ip
+        if let fileName = UserDefaults.standard.string(forKey: key),
+           let image = BackgroundImageHelper.loadImageFromDisk(fileName) {
+            selectedImage = image
         }
+        
+        serverSettingsVM.serverName = server.name
+        serverSettingsVM.serverDescription = server.description
     }
 }
 

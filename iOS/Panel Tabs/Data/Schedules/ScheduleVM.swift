@@ -72,11 +72,7 @@ final class ScheduleVM {
         }
     }
     
-    func createScheduleTask(
-        _ scheduleId: Int,
-        newTask: NewScheduleTask,
-        onSuccess: @escaping () -> Void
-    ) async {
+    func createScheduleTask(_ scheduleId: Int, newTask: NewScheduleTask, onSuccess: @escaping () -> Void) async {
         do {
             let model = try await scheduleTaskCreateAPI(id, scheduleId: scheduleId, newTask: newTask)
             

@@ -14,6 +14,10 @@ final class SubdomainVM {
     
     private var subdomainResponse: SubdomainResponse?
     
+    var disabled: Bool {
+        subdomains.count >= limit
+    }
+    
     var limit: Int {
         subdomainResponse?.limit ?? 0
     }

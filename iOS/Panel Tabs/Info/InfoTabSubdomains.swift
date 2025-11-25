@@ -2,16 +2,21 @@ import SwiftUI
 import PteroNet
 
 struct InfoTabSubdomains: View {
-    @Environment(SubdomainVM.self) private var vm
+    @State private var vm: SubdomainVM
     
-    private let allocations: [AllocationAttributes]
+    private let server: ServerAttributes
     
-    init(_ allocations: [AllocationAttributes]) {
-        self.allocations = allocations
+    init(_ server: ServerAttributes) {
+        self.server = server
+        vm = SubdomainVM(server.id)
     }
     
     @State private var sheetSubdomains = false
     @State private var sheetCreate = false
+    
+    private var allocations: [AllocationAttributes] {
+        server.relationships.allocations.data.map(\.attributes)
+    }
     
     var body: some View {
         Button {
@@ -58,14 +63,17 @@ struct InfoTabSubdomains: View {
                     .stroke(.gray.opacity(0.25), lineWidth: 1)
             }
         }
+        .task {
+            await vm.fetchSubdomains()
+        }
+        .sheet($sheetCreate) {
+            SheetCreateSubdomain(allocations)
+        }
         .sheet($sheetSubdomains) {
             NavigationStack {
                 SubdomainList(allocations)
             }
             .environment(vm)
-        }
-        .sheet($sheetCreate) {
-            SheetCreateSubdomain(allocations)
         }
         .contextMenu {
             Button("Create subdomain", systemImage: "plus") {
@@ -76,7 +84,7 @@ struct InfoTabSubdomains: View {
 }
 
 #Preview {
-    InfoTabSubdomains([])
+    InfoTabSubdomains(PreviewProp.serverAttributes)
         .darkSchemePreferred()
         .environment(SubdomainVM(""))
 }
