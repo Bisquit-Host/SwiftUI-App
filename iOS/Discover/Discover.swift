@@ -15,10 +15,6 @@ struct Discover: View {
                     DiscoverCardLabel("Configurations", subtitle: "Available to buy", image: .server)
                 }
                 
-                DiscoverCard("https://my.bisquit.host/login") {
-                    DiscoverCardLabel("Support", subtitle: "Me Potato, me HELP", image: .support)
-                }
-                
                 DiscoverCard("https://status.bisquit.host/status/bisquithost") {
                     DiscoverCardLabel("Status", subtitle: "System", image: .status)
                 }
