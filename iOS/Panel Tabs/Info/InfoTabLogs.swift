@@ -1,7 +1,14 @@
 import SwiftUI
 
 struct InfoTabLogs: View {
-    @Environment(LogVM.self) private var vm
+    @State private var vm: LogVM
+    
+    private let id: String
+    
+    init(_ id: String) {
+        self.id = id
+        vm = LogVM(id)
+    }
     
     @State private var sheetLogs = false
     
@@ -49,6 +56,9 @@ struct InfoTabLogs: View {
                     .stroke(.gray.opacity(0.25), lineWidth: 1)
             }
         }
+        .task {
+            await vm.fetchLogs(true)
+        }
         .sheet($sheetLogs) {
             LogListParent()
                 .environment(vm)
@@ -57,7 +67,7 @@ struct InfoTabLogs: View {
 }
 
 #Preview {
-    InfoTabLogs()
+    InfoTabLogs("")
         .darkSchemePreferred()
         .environment(LogVM(""))
 }

@@ -4,7 +4,6 @@ import PteroNet
 struct InfoTab: View {
     @State private var sectionsVM = PanelSectionVM()
     @State private var serverSettingsVM: ServerSettingsVM
-    @State private var logVM: LogVM
     @State private var userVM: UsersVM
     @State private var subdomainVM: SubdomainVM
     
@@ -15,7 +14,6 @@ struct InfoTab: View {
         let id = server.id
         
         serverSettingsVM = ServerSettingsVM(id)
-        logVM = LogVM(id)
         userVM = UsersVM(id)
         subdomainVM = SubdomainVM(id)
     }
@@ -43,8 +41,7 @@ struct InfoTab: View {
                             .environment(userVM)
                         
                     case "Logs":
-                        InfoTabLogs()
-                            .environment(logVM)
+                        InfoTabLogs(server.id)
                         
                     case "Subdomains":
                         InfoTabSubdomains(allocations)
@@ -64,30 +61,33 @@ struct InfoTab: View {
         }
         .background(BackgroundImage())
         .animation(.default, value: sectionsVM.activeSections)
+        .task {
+            await fetchData()
+        }
         .sheet($sheetCustomization) {
             NavigationStack {
                 PanelSectionList()
                     .environment(sectionsVM)
             }
         }
-        .task {
-            let key = "background_image_fileName"
+    }
+    
+    private func fetchData() async {
+        let key = "background_image_fileName"
+        
+        if let fileName = UserDefaults.standard.string(forKey: key),
+           let image = BackgroundImageHelper.loadImageFromDisk(fileName) {
+            selectedImage = image
+        }
+        
+        serverSettingsVM.serverName = server.name
+        serverSettingsVM.serverDescription = server.description
+        
+        if !System.lowPowerMode {
+            async let users:      () = userVM.fetchUsers(true)
+            async let subdomains: () = subdomainVM.fetchSubdomains()
             
-            if let fileName = UserDefaults.standard.string(forKey: key),
-               let image = BackgroundImageHelper.loadImageFromDisk(fileName) {
-                selectedImage = image
-            }
-            
-            serverSettingsVM.serverName = server.name
-            serverSettingsVM.serverDescription = server.description
-            
-            if !System.lowPowerMode {
-                async let logs:       () = logVM.fetchLogs(true)
-                async let users:      () = userVM.fetchUsers(true)
-                async let subdomains: () = subdomainVM.fetchSubdomains()
-                
-                _ = await (logs, users, subdomains)
-            }
+            _ = await (users, subdomains)
         }
     }
     
