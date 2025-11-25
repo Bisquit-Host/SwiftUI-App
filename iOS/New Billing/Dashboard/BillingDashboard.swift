@@ -18,7 +18,7 @@ struct BillingDashboard: View {
         }
         .sheet($sheetSettings) {
             NavigationStack {
-                BillingSettings()
+                BillingSettings($vm.user)
             }
         }
         .toolbar {
@@ -26,9 +26,6 @@ struct BillingDashboard: View {
                 if let user = vm.user {
                     BillingDashboardBalance(balance: Double(user.balance), currency: user.currency)
                 }
-                
-                // BillingDashboardBalance(balance: 0, currency: "EUR")
-                // BillingDashboardBalance(balance: 200, currency: "EUR")
             }
             
             ToolbarItem(placement: .topBarTrailing) {
@@ -37,6 +34,7 @@ struct BillingDashboard: View {
                 }
             }
         }
+        .animation(.default, value: vm.user)
     }
 }
 
