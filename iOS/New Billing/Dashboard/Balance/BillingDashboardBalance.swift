@@ -12,21 +12,13 @@ struct BillingDashboardBalance: View {
         }
     }
     
-    private var formattedBalance: String {
-        String(format: "%.2f", balance)
-    }
-    
-    private var isPositive: Bool {
-        balance.isNormal && balance >= 0
-    }
-    
-    private var iconColor: Color {
-        isPositive ? .yellow : .red
-    }
-    
     @State private var sheetTopup = false
     
     var body: some View {
+        let formattedBalance = String(format: "%.2f", balance)
+        let isPositive = balance.isNormal && balance >= 0
+        let iconColor: Color = isPositive ? .yellow : .red
+        
         Button {
             
         } label: {
