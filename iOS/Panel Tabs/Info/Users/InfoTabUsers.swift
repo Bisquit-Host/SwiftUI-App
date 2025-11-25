@@ -1,7 +1,14 @@
 import SwiftUI
 
 struct InfoTabUsers: View {
-    @Environment(UsersVM.self) private var vm
+    @State private var vm: UsersVM
+    
+    private let id: String
+    
+    init(_ id: String) {
+        self.id = id
+        vm = UsersVM(id)
+    }
     
     @State private var sheetUsers = false
     
@@ -39,6 +46,9 @@ struct InfoTabUsers: View {
                     .stroke(.gray.opacity(0.25), lineWidth: 1)
             }
         }
+        .task {
+            await vm.fetchUsers(true)
+        }
         .sheet($sheetUsers) {
             UserListParent()
                 .environment(vm)
@@ -53,7 +63,7 @@ struct InfoTabUsers: View {
 }
 
 #Preview {
-    InfoTabUsers()
+    InfoTabUsers("")
         .darkSchemePreferred()
         .environment(UsersVM(""))
 }

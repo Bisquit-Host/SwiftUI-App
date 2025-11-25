@@ -4,26 +4,16 @@ import PteroNet
 struct InfoTab: View {
     @State private var sectionsVM = PanelSectionVM()
     @State private var serverSettingsVM: ServerSettingsVM
-    @State private var userVM: UsersVM
-    @State private var subdomainVM: SubdomainVM
     
     private let server: ServerAttributes
     
     init(_ server: ServerAttributes) {
         self.server = server
-        let id = server.id
-        
-        serverSettingsVM = ServerSettingsVM(id)
-        userVM = UsersVM(id)
-        subdomainVM = SubdomainVM(id)
+        serverSettingsVM = ServerSettingsVM(server.id)
     }
     
     @State private var sheetCustomization = false
     @State private var selectedImage: UIImage? = nil
-    
-    private var allocations: [AllocationAttributes] {
-        server.relationships.allocations.data.map(\.attributes)
-    }
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -37,18 +27,16 @@ struct InfoTab: View {
                         InfoTabAllocation(server)
                         
                     case "Users":
-                        InfoTabUsers()
-                            .environment(userVM)
+                        InfoTabUsers(server.id)
                         
                     case "Logs":
                         InfoTabLogs(server.id)
                         
                     case "Subdomains":
-                        InfoTabSubdomains(allocations)
-                            .environment(subdomainVM)
+                        InfoTabSubdomains(server)
                         
                     case "Location":
-                        MapSection(ip, node: server.node, allocations: server.relationships.allocations.data)
+                        MapSection(server)
                         
                     default:
                         EmptyView()
@@ -82,27 +70,6 @@ struct InfoTab: View {
         
         serverSettingsVM.serverName = server.name
         serverSettingsVM.serverDescription = server.description
-        
-        if !System.lowPowerMode {
-            async let users:      () = userVM.fetchUsers(true)
-            async let subdomains: () = subdomainVM.fetchSubdomains()
-            
-            _ = await (users, subdomains)
-        }
-    }
-    
-    private var ip: String? {
-        let allocation = server.relationships.allocations.data.map(\.attributes).first {
-            $0.isDefault
-        }
-        
-        guard let allocation else { return nil }
-        
-        if let ipAlias = allocation.ipAlias {
-            return ipAlias
-        } else {
-            return allocation.ip
-        }
     }
 }
 

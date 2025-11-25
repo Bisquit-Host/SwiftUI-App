@@ -4,14 +4,14 @@ import MapKit
 import SafariCover
 
 struct MapSection: View {
-    private let address: String?
+    private let server: ServerAttributes
     private let node: String
     private let allocations: [AllocationAttributes]
     
-    init(_ address: String?, node: String, allocations: [Allocation]) {
-        self.address = address
-        self.node = node
-        self.allocations = allocations.map(\.attributes)
+    init(_ server: ServerAttributes) {
+        self.server = server
+        node = server.node
+        allocations = server.relationships.allocations.data.map(\.attributes)
     }
     
     private let timer = Timer.publish(every: 1, on: .main, in: .default).autoconnect()
@@ -26,6 +26,20 @@ struct MapSection: View {
             longitudinalMeters: 12000
         )
     )
+    
+    private var address: String? {
+        let allocation = server.relationships.allocations.data.map(\.attributes).first {
+            $0.isDefault
+        }
+        
+        guard let allocation else { return nil }
+        
+        if let ipAlias = allocation.ipAlias {
+            return ipAlias
+        } else {
+            return allocation.ip
+        }
+    }
     
     private var isMoscow: Bool {
         allocations.contains {
@@ -157,6 +171,6 @@ struct MapSection: View {
 }
 
 #Preview {
-    MapSection(nil, node: "Fabric", allocations: [])
+    MapSection(PreviewProp.serverAttributes)
         .darkSchemePreferred()
 }
