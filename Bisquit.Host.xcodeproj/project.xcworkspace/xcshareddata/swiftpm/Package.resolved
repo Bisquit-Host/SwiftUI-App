@@ -1,5 +1,5 @@
 {
-  "originHash" : "81deb5c989e6616d018e8f85e70c22e29172532da14bb4d18be64073d4642445",
+  "originHash" : "63164bd1d95217fac16965e79e0a9b83a9ef2a1d7b9f6ef23fa9632f2e474192",
   "pins" : [
     {
       "identity" : "alertkit",
@@ -97,7 +97,7 @@
       "location" : "https://github.com/Bisquit-Host/PteroNet",
       "state" : {
         "branch" : "main",
-        "revision" : "d35164b22f83337c7a22841dabd204d0977e5cad"
+        "revision" : "1fe79c6f5ba2da70464df5f663dfa7dc39040a36"
       }
     },
     {

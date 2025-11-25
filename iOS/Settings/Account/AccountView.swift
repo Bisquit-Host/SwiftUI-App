@@ -21,8 +21,8 @@ struct AccountView: View {
             
             CredentialsButton()
             
-            Section("2FA") {
-                if let twoFaEnabled = vm.twoFaEnabled {
+            if let twoFaEnabled = vm.twoFaEnabled {
+                Section("2FA") {
                     if twoFaEnabled {
                         Menu {
                             Button("Disable 2FA", systemImage: "xmark.circle", role: .destructive) {

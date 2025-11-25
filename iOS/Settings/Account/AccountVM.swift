@@ -17,16 +17,16 @@ final class AccountVM {
     }
     
     func twoFaDetails() async {
-        twoFaEnabled = false
-        
         do {
-            qrCodeUrl = try await twoFaDetailtsAPI()
+            qrCodeUrl = try await twoFaDetailtsAPI(printResponse: true)
+            twoFaEnabled = false
+            
+        } catch TwoFAError.alreadyEnabled {
+            twoFaEnabled = true
+            
         } catch {
-            if let error = error as? PterError, error.status == "400" {
-                twoFaEnabled = true
-            } else {
-                SystemAlert.error(error)
-            }
+            SystemAlert.error(error)
+            print("2FA details error:", error.localizedDescription)
         }
     }
     
