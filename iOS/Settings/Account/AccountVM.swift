@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import CoreImage.CIFilterBuiltins
 import PteroNet
 
@@ -30,12 +30,16 @@ final class AccountVM {
         }
     }
     
-    func enable2Fa(_ code: String, onSuccess: @escaping () -> ()) async {
+    func enable2Fa(_ code: String, password: String, onSuccess: @escaping () -> ()) async {
         do {
-            let tokens = try await twoFaEnableAPI(code)
-            print(tokens.tokens)
-#warning("Finish")
+            let tokens = try await twoFaEnableAPI(code, password: password, printResponse: true)
+            
+            Pasteboard.copy(tokens.tokens.description)
+            
             onSuccess()
+            SystemAlert.copied("Recovery codes copied")
+            
+            await twoFaDetails()
         } catch {
             print("Error enabling 2FA", error.localizedDescription)
             SystemAlert.error(error)
@@ -45,7 +49,10 @@ final class AccountVM {
     func disable2Fa(_ password: String, onSuccess: @escaping () -> ()) async {
         do {
             try await twoFaDisableAPI(password)
+            
             onSuccess()
+            
+            await twoFaDetails()
         } catch {
             print("Error disabling 2FA", error.localizedDescription)
             SystemAlert.error(error)

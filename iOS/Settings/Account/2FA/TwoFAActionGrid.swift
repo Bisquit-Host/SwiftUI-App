@@ -1,45 +1,23 @@
 import ScrechKit
 
 struct TwoFAActionGrid: View {
-    let qrCodeUrl: String
+    let qrCodeURL: String
     var onShowQr: () -> Void
     
     private var setupUrl: URL? {
-        URL(string: qrCodeUrl)
+        URL(string: qrCodeURL)
     }
     
     var body: some View {
         VStack(spacing: 12) {
-            TwoFAActionTile("Copy setup URL", subtitle: "Paste into another device", icon: "doc.on.doc") {
-                Pasteboard.copy(qrCodeUrl)
-                SystemAlert.copied()
-            }
-            
-            if let url = setupUrl {
-                Link(destination: url) {
-                    TwoFAActionTileContent(
-                        "Open setup URL",
-                        subtitle: "Opens in browser",
-                        icon: "globe"
-                    )
+            if let setupUrl {
+                Link(destination: setupUrl) {
+                    TwoFAActionTileContent("Open in authenticator", subtitle: "Launches your 2FA app", icon: "link.badge.plus")
                 }
                 .buttonStyle(.plain)
                 
-                Link(destination: url) {
-                    TwoFAActionTileContent(
-                        "Open in authenticator",
-                        subtitle: "Launches your 2FA app",
-                        icon: "link.badge.plus"
-                    )
-                }
-                .buttonStyle(.plain)
-                
-                ShareLink(item: url) {
-                    TwoFAActionTileContent(
-                        "Share setup",
-                        subtitle: "Send via AirDrop or chat",
-                        icon: "square.and.arrow.up"
-                    )
+                ShareLink(item: setupUrl) {
+                    TwoFAActionTileContent("Share setup URL", subtitle: "Send via AirDrop or chat", icon: "square.and.arrow.up")
                 }
                 .buttonStyle(.plain)
             }

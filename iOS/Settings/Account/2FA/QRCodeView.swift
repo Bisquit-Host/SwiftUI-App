@@ -15,7 +15,7 @@ struct QRCodeView: View {
                 Image(uiImage: image)
                     .resizable()
                     .scaledToFit()
-                    .clipShape(.containerRelative)
+                    .clipShape(.rect(cornerRadius: 5))
                     .padding()
             }
         }
@@ -28,6 +28,8 @@ struct QRCodeView: View {
     }
     
     private func generateQRCode(_ url: String) -> UIImage? {
+        print("Generating code for", url)
+        
         let data = url.data(using: .utf8)
         
         guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else {

@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct Disable2FaView: View {
     @Environment(AccountVM.self) private var vm
@@ -7,23 +7,25 @@ struct Disable2FaView: View {
     @State private var password = ""
     
     var body: some View {
-        VStack(spacing: 25) {
-            Text("Enter your password")
-                .headline()
-            
-            TextField("Password", text: $password)
-                .textFieldStyle(.roundedBorder)
-                .textContentType(.password)
-            
-            Button("Disable 2FA", role: .destructive) {
-                disable2FA()
+        ScrollView {
+            VStack(spacing: 24) {
+                DisableIntroCard()
+                
+                DisablePasswordCard(password: $password) {
+                    disable2FA()
+                }
             }
-            .semibold()
-            .buttonStyle(.glassProminent)
-            .tint(.red)
+            .padding()
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .padding(.horizontal)
-        .multilineTextAlignment(.center)
+        .scrollIndicators(.hidden)
+        .toolbar {
+            ToolbarSpacer(.flexible, placement: .bottomBar)
+            
+            ToolbarItem(placement: .bottomBar) {
+                DismissButton()
+            }
+        }
         .presentationDetents([.medium])
     }
     

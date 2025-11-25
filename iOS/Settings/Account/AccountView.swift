@@ -40,7 +40,7 @@ struct AccountView: View {
                         }
                         .foregroundStyle(.foreground)
                     } else {
-                        ListButton("Setup 2FA", actionIcon: "key.viewfinder") {
+                        ListButton("Setup 2FA", actionIcon: "exclamationmark.triangle.fill") {
                             sheetEnable2Fa = true
                         }
                     }
