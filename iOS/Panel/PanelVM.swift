@@ -118,6 +118,7 @@ final class PanelVM {
             } else if let stats = message.serverStats {
                 do {
                     let jsonData = try JSONSerialization.data(withJSONObject: stats, options: [])
+#warning("decode snake_case")
                     let stats = try JSONDecoder().decode(ServerStats.self, from: jsonData)
                     
                     uptime = stats.uptime
