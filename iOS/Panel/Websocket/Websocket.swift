@@ -9,7 +9,7 @@ final class Websocket {
         token: String,
         origin: URL = WebsocketDefaults.origin,
         onTextMessage: @escaping @Sendable (String) async -> Void,
-        onError: (@Sendable (Error) -> Void)? = nil
+        onError: (@MainActor @Sendable (Error) -> Void)? = nil
     ) {
         disconnect()
         

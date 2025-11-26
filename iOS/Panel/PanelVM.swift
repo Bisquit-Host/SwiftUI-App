@@ -175,9 +175,7 @@ final class PanelVM {
         websocket.connect(to: data.socket, token: data.token) {
             await self.appendMessage($0)
         } onError: { error in
-            Task { @MainActor in
-                SystemAlert.error(error)
-            }
+            SystemAlert.error(error)
         }
     }
     

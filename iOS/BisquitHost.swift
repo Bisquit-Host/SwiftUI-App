@@ -73,9 +73,7 @@ struct BisquitHost: App {
         }
         .backgroundTask(.appRefresh("host.bisquit.Bisquit-Host.Background-Task")) {
             await BackgroundTaskManager.scheduleAppRefresh()
-            
-            await ServerListVM().loadServers()
-            
+#warning("Implement background tasks")
             //Create an operation that performs the main part of the background task
             //let operation = RefreshAppContentsOperation()
             
