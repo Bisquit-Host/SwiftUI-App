@@ -174,8 +174,8 @@ final class PanelVM {
     func connectWebSocket(_ data: ConsoleDetails) {
         websocket.connect(to: data.socket, token: data.token) {
             await self.appendMessage($0)
-        } onError: { error in
-            SystemAlert.error(error)
+        } onError: {
+            SystemAlert.error($0)
         }
     }
     
