@@ -8,11 +8,9 @@ struct LogCard: View {
         self.log = log
     }
     
-    private var actor: LogActorAttributes? {
-        log.relationships.actor.attributes
-    }
-    
     var body: some View {
+        let actor = log.relationships.actor.attributes
+        
         HStack {
             LogCardImage(actor?.image)
             

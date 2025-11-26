@@ -34,11 +34,9 @@ struct PanelView: View {
         startupVM = StartupVM(id)
     }
     
-    private var allocations: [AllocationAttributes] {
-        server.relationships.allocations.data.map(\.attributes)
-    }
-    
     var body: some View {
+        let allocations = server.relationships.allocations.data.map(\.attributes)
+        
         TabView(selection: $store.panelTab) {
             if let server = vm.server {
                 Tab("Stats", systemImage: "gauge.open.with.lines.needle.33percent", value: PanelTab.info) {
@@ -99,7 +97,9 @@ struct PanelView: View {
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
             Task {
                 if let data = await vm.consoleDetails() {
-                    vm.connectWebSocket(data)
+                    await MainActor.run {
+                        vm.connectWebSocket(data)
+                    }
                 }
             }
         }
@@ -109,7 +109,9 @@ struct PanelView: View {
         await vm.fetchServerDetails()
         
         if let data = await vm.consoleDetails() {
-            vm.connectWebSocket(data)
+            await MainActor.run {
+                vm.connectWebSocket(data)
+            }
         }
         
         if !System.lowPowerMode {

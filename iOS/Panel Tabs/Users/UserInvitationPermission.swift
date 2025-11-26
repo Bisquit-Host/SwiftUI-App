@@ -11,11 +11,9 @@ struct UserInvitationPermission: View {
     
     @State private var isGranted = false
     
-    private var subkey: String {
-        permission.split(separator: ".").last?.description ?? permission
-    }
-    
     var body: some View {
+        let subkey = permission.split(separator: ".").last?.description ?? permission
+        
         Toggle(subkey, isOn: $isGranted)
             .onChange(of: vm.allPermsTrigger) { _, newValue in
                 isGranted = newValue

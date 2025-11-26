@@ -3,12 +3,7 @@ import Foundation
 struct MultipartFormData {
     var data: Data
     
-    init(
-        _ fileData: Data,
-        fileName: String,
-        mimeType: String,
-        boundary: String
-    ) {
+    init(_ fileData: Data, fileName: String, mimeType: String, boundary: String) {
         var fullData = Data()
         
         if let boundaryData = "--\(boundary)\r\n".data(using: .utf8) {

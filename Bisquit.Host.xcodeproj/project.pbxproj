@@ -673,7 +673,6 @@
 				"Panel Tabs/Files/Upload/FileUploader.swift",
 				"Panel Tabs/Files/Upload/MultipartFormData.swift",
 				"Panel Tabs/Info/Customization/PanelSection.swift",
-				"Panel Tabs/Info/Customization/PanelSectionRow.swift",
 				"Panel Tabs/Info/Customization/PanelSectionVM.swift",
 				"Panel Tabs/Info/Resources/TabInfo.swift",
 				"Panel Tabs/Logs/Log Card/LogCardEvent.swift",
@@ -2411,7 +2410,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 26.2.3;
+				MARKETING_VERSION = 26.2.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2479,7 +2478,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 26.2.3;
+				MARKETING_VERSION = 26.2.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "";

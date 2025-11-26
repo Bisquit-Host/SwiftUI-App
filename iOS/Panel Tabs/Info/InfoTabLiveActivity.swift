@@ -10,11 +10,9 @@ struct InfoTabLiveActivity: View {
         self.server = server
     }
     
-    private var isActive: Bool {
-        la.activityViewState?.activityState == .active
-    }
-    
     var body: some View {
+        let isActive = la.activityViewState?.activityState == .active
+        
         SFButton("clock.badge") {
             if isActive {
                 la.stopAllLiveActivities()

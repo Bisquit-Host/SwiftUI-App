@@ -29,11 +29,9 @@ struct PanelView: View {
         subdomainVM = SubdomainVM(id)
     }
     
-    private var allocations: [AllocationAttributes] {
-        server.relationships.allocations.data.map(\.attributes)
-    }
-    
     var body: some View {
+        let allocations = server.relationships.allocations.data.map(\.attributes)
+        
         VStack {
             if let server = vm.server {
                 TabView(selection: $store.panelTab) {
@@ -90,7 +88,9 @@ struct PanelView: View {
             await vm.fetchServerDetails()
             
             if let data = await vm.consoleDetails() {
-                vm.connectWebSocket(data)
+                await MainActor.run {
+                    vm.connectWebSocket(data)
+                }
             }
             
             if !System.lowPowerMode {
@@ -115,7 +115,9 @@ struct PanelView: View {
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
             Task {
                 if let data = await vm.consoleDetails() {
-                    vm.connectWebSocket(data)
+                    await MainActor.run {
+                        vm.connectWebSocket(data)
+                    }
                 }
             }
         }

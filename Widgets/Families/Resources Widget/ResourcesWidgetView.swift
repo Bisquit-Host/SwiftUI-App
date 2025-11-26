@@ -9,11 +9,9 @@ struct ResourcesWidgetView: View {
         self.entry = entry
     }
     
-    private var description: String {
-        entry.test?.usage.cpu.description ?? "Error"
-    }
-    
     var body: some View {
+        let description = entry.test?.usage.cpu.description ?? "Error"
+        
         if entry.id.isEmpty {
             ConfigureWidgetView("Bisquit.Host", image: Image(.defaultIcon), lastStep: "3. **Choose a server** from the list")
         } else {

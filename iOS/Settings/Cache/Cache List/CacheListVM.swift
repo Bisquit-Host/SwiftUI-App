@@ -50,10 +50,7 @@ final class CacheListVM {
             
             let size = formatBytes(imageData.count)
             
-            images.append(.init(
-                image: image,
-                size: size
-            ))
+            images.append(CachedImage(image: image, size: size))
         }
     }
 }

@@ -1,16 +1,11 @@
 import SwiftUI
 
 struct DebugSettings: View {
-    @Environment(NavModel.self) private var nav
     @EnvironmentObject private var store: ValueStore
     
     var body: some View {
         Section("Debug") {
             Toggle("Dev mode", systemImage: "hammer", isOn: $store.devMode)
-            
-            Button("Clear navigation path") {
-                nav.clearNavCache()
-            }
             
             Button("Restart app") {
                 restartApp()
@@ -24,7 +19,6 @@ struct DebugSettings: View {
     }
     
     private func restartApp() {
-        let bundlePath = Bundle.main.bundlePath
         let command = #"sleep 0.1; open "\(bundlePath)""#
         
         let task = Process()
@@ -44,6 +38,5 @@ struct DebugSettings: View {
 #Preview {
     DebugSettings()
         .darkSchemePreferred()
-        .environment(NavModel.shared)
         .environmentObject(ValueStore())
 }

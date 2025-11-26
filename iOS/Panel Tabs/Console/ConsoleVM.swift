@@ -1,6 +1,7 @@
 import SwiftUI
 import PteroNet
 
+@MainActor
 @Observable
 final class ConsoleVM {
     private let id: String

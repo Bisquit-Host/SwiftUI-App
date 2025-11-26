@@ -10,27 +10,29 @@ struct InfoRelativeStats: View {
         self.limits = limits
     }
     
+    private func percent(_ usage: Double, _ limit: Double) -> String {
+        guard vm.serverState != .offline,
+              limit > 0,
+              usage.isFinite
+        else { return "-" }
+        
+        let ratio = usage / limit * 100
+        guard ratio.isFinite else { return "-" }
+        
+        let clamped = max(-1000.0, min(1000.0, ratio))
+        return "\(Int(clamped.rounded()))%"
+    }
+    
     private var relativeRam: String {
-        guard vm.serverState != .offline else { return "-" }
-        
-        let limit = limits.memory * pow(1024, 2)
-        let usage = Int(vm.ramUsage / limit * 100)
-        
-        return "\(usage)%"
+        percent(vm.ramUsage, limits.memory * pow(1024, 2))
     }
     
     private var relativeCpu: String {
-        guard vm.serverState != .offline else { return "-" }
-        
-        let usage = Int(vm.cpuUsage / limits.cpu * 100)
-        
-        return "\(usage)%"
+        percent(vm.cpuUsage, limits.cpu)
     }
     
     private var relativeDisk: String {
-        let usage = Int(vm.diskUsage / limits.disk * 100)
-        
-        return "\(usage)%"
+        percent(vm.diskUsage, limits.disk)
     }
     
     var body: some View {

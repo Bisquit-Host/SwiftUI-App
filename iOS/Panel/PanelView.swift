@@ -59,7 +59,9 @@ struct PanelView: View {
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
             Task {
                 if let data = await vm.consoleDetails() {
-                    vm.connectWebSocket(data)
+                    await MainActor.run {
+                        vm.connectWebSocket(data)
+                    }
                 }
             }
         }
@@ -90,7 +92,9 @@ struct PanelView: View {
         await vm.fetchServerDetails()
         
         if let data = await vm.consoleDetails() {
-            vm.connectWebSocket(data)
+            await MainActor.run {
+                vm.connectWebSocket(data)
+            }
         }
         
         if !System.lowPowerMode {

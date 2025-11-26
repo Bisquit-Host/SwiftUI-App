@@ -6,10 +6,7 @@ struct FileTab: View {
     
     private let id, path: String
     
-    init(
-        _ id: String,
-        at path: String = ""
-    ) {
+    init(_ id: String, at path: String = "") {
         self.id = id
         self.path = path
     }

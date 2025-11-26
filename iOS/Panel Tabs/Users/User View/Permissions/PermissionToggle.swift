@@ -10,12 +10,7 @@ struct PermissionToggle: View {
     private let subKey: String
     private let perm: Bool?
     
-    init(userPermissions: [String],
-         user: Binding<UserAttributes>,
-         key: String,
-         subKey: String,
-         perm: Bool?
-    ) {
+    init(userPermissions: [String], user: Binding<UserAttributes>, key: String, subKey: String, perm: Bool?) {
         self.userPermissions = userPermissions
         _user = user
         self.key = key

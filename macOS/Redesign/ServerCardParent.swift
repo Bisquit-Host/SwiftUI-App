@@ -13,11 +13,9 @@ struct ServerCardParent: View {
     @State private var showSafari = false
     @State private var confirmKill = false
     
-    private var serverUrl: String {
-        "https://mgr.bisquit.host/server/" + server.id
-    }
-    
     var body: some View {
+        let serverURL = "https://mgr.bisquit.host/server/" + server.id
+        
         VStack {
             NavigationLink(value: server) {
                 if store.compactServerList {
@@ -33,7 +31,7 @@ struct ServerCardParent: View {
             ServerCardContextMenu(server, $showSafari, $confirmKill)
         }
         .onDrag {
-            let url = URL(string: serverUrl)
+            let url = URL(string: serverURL)
             
             if let itemProvider = NSItemProvider(contentsOf: url) {
                 return itemProvider

@@ -1,6 +1,7 @@
 import SwiftUI
 import PteroNet
 
+@MainActor
 @Observable
 final class PanelVM {
     private let id: String
@@ -118,6 +119,7 @@ final class PanelVM {
             } else if let stats = message.serverStats {
                 do {
                     let jsonData = try JSONSerialization.data(withJSONObject: stats, options: [])
+#warning("decode snake_case")
                     let stats = try JSONDecoder().decode(ServerStats.self, from: jsonData)
                     
                     uptime = stats.uptime
@@ -174,10 +176,8 @@ final class PanelVM {
     func connectWebSocket(_ data: ConsoleDetails) {
         websocket.connect(to: data.socket, token: data.token) {
             await self.appendMessage($0)
-        } onError: { error in
-            Task { @MainActor in
-                SystemAlert.error(error)
-            }
+        } onError: {
+            SystemAlert.error($0)
         }
     }
     

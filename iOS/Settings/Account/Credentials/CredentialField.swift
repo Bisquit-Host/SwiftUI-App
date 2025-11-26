@@ -7,13 +7,7 @@ struct CredentialField: View {
     private let textType: UITextContentType
     private let keyboardType: UIKeyboardType
     
-    init(
-        text: String,
-        hint: String,
-        isSecure: Bool,
-        textType: UITextContentType,
-        keyboardType: UIKeyboardType = .default
-    ) {
+    init(text: String, hint: String, isSecure: Bool, textType: UITextContentType, keyboardType: UIKeyboardType = .default) {
         self.text = text
         self.hint = hint
         self.isSecure = isSecure

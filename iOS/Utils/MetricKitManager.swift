@@ -11,17 +11,19 @@ final class MetricKitManager: NSObject, MXMetricManagerSubscriber {
         MXMetricManager.shared.add(self)
     }
     
-    @MainActor deinit {
+    deinit {
         MXMetricManager.shared.remove(self)
     }
     
-    func didReceive(_ payloads: [MXMetricPayload]) {
+    // MetricKit delivers on a background queue; hop to main manually to avoid
+    // Swift 6 main-actor precondition crashes.
+    nonisolated func didReceive(_ payloads: [MXMetricPayload]) {
         payloads.forEach {
             print("Received metrics:", $0)
         }
     }
     
-    func didReceive(_ diagnosticPayloads: [MXDiagnosticPayload]) {
+    nonisolated func didReceive(_ diagnosticPayloads: [MXDiagnosticPayload]) {
         diagnosticPayloads.forEach {
             print("Received diagnostics:", $0)
         }

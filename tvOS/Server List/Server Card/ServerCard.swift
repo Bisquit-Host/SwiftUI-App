@@ -2,10 +2,9 @@ import ScrechKit
 import PteroNet
 
 struct ServerCard: View {
+    @State private var vm: ServerCardVM
     @EnvironmentObject private var store: ValueStore
     @Environment(\.accessibilityDifferentiateWithoutColor) private var differentiateWithoutColor
-    
-    @State private var vm: ServerCardVM
     
     private let server: ServerAttributes
     

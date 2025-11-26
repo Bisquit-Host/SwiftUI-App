@@ -10,11 +10,9 @@ struct LogCard: View {
     
     @State private var sheetDetails = false
     
-    private var actor: LogActorAttributes? {
-        log.relationships.actor.attributes
-    }
-    
     var body: some View {
+        let actor = log.relationships.actor.attributes
+        
         Button {
             if !log.properties.isEmpty {
                 sheetDetails = true

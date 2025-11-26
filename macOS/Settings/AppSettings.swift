@@ -8,14 +8,6 @@ struct AppSettings: View {
     var body: some View {
         Form {
             Section {
-                HStack {
-                    Label("Navigation mode", systemImage: "safari")
-                    
-                    Spacer()
-                    
-                    NavModeButton()
-                }
-                
                 Toggle("Game Center", systemImage: "gamecontroller", isOn: $store.enableGameCenter)
                 
                 LaunchAtLogin.Toggle()
@@ -42,6 +34,5 @@ struct AppSettings: View {
 #Preview {
     AppSettings()
         .darkSchemePreferred()
-        .environment(NavModel.shared)
         .environmentObject(ValueStore())
 }

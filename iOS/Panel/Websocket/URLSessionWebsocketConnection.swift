@@ -10,12 +10,7 @@ final class URLSessionWebsocketConnection: WebsocketConnection {
     private var receiveTask: Task<Void, Never>?
     private var isClosed = false
     
-    init(
-        url: URL,
-        token: String,
-        origin: URL = WebsocketDefaults.origin,
-        session: URLSession = .shared
-    ) {
+    init(url: URL, token: String, origin: URL = WebsocketDefaults.origin, session: URLSession = .shared) {
         var continuation: AsyncThrowingStream<String, Error>.Continuation!
         
         self.stream = AsyncThrowingStream {

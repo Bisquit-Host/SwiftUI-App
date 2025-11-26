@@ -8,11 +8,7 @@ struct ServerCardContextMenu: View {
     @Binding private var showSafari: Bool
     @Binding private var confirmKill: Bool
     
-    init(
-        _ server: ServerAttributes,
-        _ showSafari: Binding<Bool>,
-        _ confirmKill: Binding<Bool>
-    ) {
+    init(_ server: ServerAttributes, _ showSafari: Binding<Bool>, _ confirmKill: Binding<Bool>) {
         self.server = server
         _showSafari = showSafari
         _confirmKill = confirmKill
@@ -28,16 +24,10 @@ struct ServerCardContextMenu: View {
         return allocation
     }
     
-    private var ip: String? {
-        defaultAlloc?.ipAlias ?? defaultAlloc?.ip
-    }
-    
-    private var port: String? {
-        defaultAlloc?.port.description
-    }
-    
     var body: some View {
         let id = server.id
+        let ip = defaultAlloc?.ipAlias ?? defaultAlloc?.ip
+        let port = defaultAlloc?.port.description
         
         if !server.isSuspended {
             ControlGroup {

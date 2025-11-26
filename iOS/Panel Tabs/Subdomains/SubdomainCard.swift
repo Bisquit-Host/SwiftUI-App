@@ -3,7 +3,6 @@ import PteroNet
 
 struct SubdomainCard: View {
     @Environment(SubdomainVM.self) private var vm
-    
     @Environment(\.openURL) private var openURL
     
     let subdomain: SubdomainAttributes
