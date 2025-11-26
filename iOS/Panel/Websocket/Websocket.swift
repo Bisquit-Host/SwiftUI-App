@@ -1,5 +1,6 @@
 import Foundation
 
+@MainActor
 final class Websocket {
     private var connection: URLSessionWebsocketConnection?
     private var consumptionTask: Task<Void, Never>?
@@ -18,7 +19,7 @@ final class Websocket {
         
         let stream = connection.receive()
         
-        consumptionTask = Task {
+        consumptionTask = Task { @MainActor in
             do {
                 for try await message in stream {
                     try Task.checkCancellation()
@@ -27,7 +28,11 @@ final class Websocket {
             } catch {
                 guard !Task.isCancelled else { return }
                 
-                onError?(error)
+                if let onError {
+                    await MainActor.run {
+                        onError(error)
+                    }
+                }
             }
         }
     }
