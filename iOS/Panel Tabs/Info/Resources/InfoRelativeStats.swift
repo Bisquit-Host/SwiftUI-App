@@ -11,7 +11,13 @@ struct InfoRelativeStats: View {
     }
     
     private var relativeRam: String {
-        guard vm.serverState != .offline, limits.memory > 0 else { return "-" }
+        guard
+            vm.serverState != .offline,
+            limits.memory > 0,
+            vm.ramUsage.isFinite
+        else {
+            return "-"
+        }
         
         let limit = limits.memory * pow(1024, 2)
         let usage = Int(vm.ramUsage / limit * 100)
@@ -20,7 +26,13 @@ struct InfoRelativeStats: View {
     }
     
     private var relativeCpu: String {
-        guard vm.serverState != .offline, limits.cpu > 0 else { return "-" }
+        guard
+            vm.serverState != .offline,
+            limits.cpu > 0,
+            vm.cpuUsage.isFinite
+        else {
+            return "-"
+        }
         
         let usage = Int(vm.cpuUsage / limits.cpu * 100)
         
@@ -28,7 +40,12 @@ struct InfoRelativeStats: View {
     }
     
     private var relativeDisk: String {
-        guard limits.disk > 0 else { return "-" }
+        guard
+            limits.disk > 0,
+            vm.diskUsage.isFinite
+        else {
+            return "-"
+        }
         
         let usage = Int(vm.diskUsage / limits.disk * 100)
         
