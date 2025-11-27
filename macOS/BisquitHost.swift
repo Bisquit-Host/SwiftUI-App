@@ -42,6 +42,7 @@ struct BisquitHost: App {
         WindowGroup {
             DashboardShell()
                 .onContinueUserActivity(CSSearchableItemActionType, perform: handleSpotlightActivity)
+                .environment(securityTasks)
                 .onFirstAppear {
                     await securityTasks.startCheck()
                 }

@@ -17,7 +17,6 @@ struct ServerListTips: View {
             if TipUnusedAPIKeys().status == .available {
                 Button {
                     sheetAPIKeyList = true
-                    TipUnusedAPIKeys().invalidate(reason: .actionPerformed)
                 } label: {
                     unusedAPIKeysTip($securityTasks.alertUnusedAPIKeys)
                 }
@@ -54,10 +53,10 @@ struct ServerListTips: View {
         }
         .tipBackground(.ultraThinMaterial.opacity(0.75))
         .tipCornerRadius(store.compactServerList ? 12 : 16)
-#if os(visionOS) || os(tvOS)
-        .padding(.horizontal, 25)
-#else
+#if os(iOS)
         .scenePadding()
+#elseif !os(macOS)
+        .padding(.horizontal, 25)
 #endif
     }
     
@@ -65,7 +64,6 @@ struct ServerListTips: View {
         TipView(TipUnusedAPIKeys(), isPresented: isPresented) {
             if $0.id == "view" {
                 sheetAPIKeyList = true
-                TipUnusedAPIKeys().invalidate(reason: .actionPerformed)
             }
         }
     }

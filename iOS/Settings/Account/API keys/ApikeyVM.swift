@@ -22,7 +22,9 @@ final class ApikeyVM {
 #if !os(tvOS)
             if let token {
                 Pasteboard.copy(id + token)
+#if !os(macOS)
                 SystemAlert.copied()
+#endif
             }
 #endif
             await fetchKeys()

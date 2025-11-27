@@ -11,6 +11,8 @@ struct DebugSettings: View {
                 restartApp()
             }
             
+            DebugSettingsTips()
+            
             NavigationLink("Gamepad test") {
                 GamepadDebug()
                     .frame(width: 500, height: 600)

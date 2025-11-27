@@ -25,6 +25,7 @@ struct ApikeyList: View {
 #if !os(tvOS)
         .scrollContentBackground(.hidden)
 #endif
+#if !os(macOS)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 DismissButton()
@@ -36,6 +37,7 @@ struct ApikeyList: View {
                 }
             }
         }
+#endif
     }
     
     private func deleteItems(_ offsets: IndexSet) {
