@@ -16,8 +16,6 @@ struct MapSection: View {
         allocations = server.relationships.allocations.data.map(\.attributes)
     }
     
-    @State private var ping: Int?
-    @State private var pings: [Int] = []
     @State private var snapshot: UIImage?
     @State private var mapWidth: CGFloat?
     
@@ -28,21 +26,6 @@ struct MapSection: View {
     )
     
     private let mapHeight: CGFloat = 160
-    private let timer = Timer.publish(every: 1, on: .main, in: .default).autoconnect()
-    
-    private var address: String? {
-        let allocation = server.relationships.allocations.data.map(\.attributes).first {
-            $0.isDefault
-        }
-        
-        guard let allocation else { return nil }
-        
-        if let ipAlias = allocation.ipAlias {
-            return ipAlias
-        } else {
-            return allocation.ip
-        }
-    }
     
     private var isMoscow: Bool {
         allocations.contains {
@@ -50,7 +33,7 @@ struct MapSection: View {
         }
     }
     
-    private var mapUrl: String {
+    private var mapURL: String {
         if isMoscow {
             "https://maps.apple.com/place?address=Moscow,%20Russia&auid=12646685065745334150&coordinate=55.758664,37.619292&lsp=6489&name=Moscow&map=explore"
         } else {
@@ -76,19 +59,7 @@ struct MapSection: View {
                 
                 Spacer()
                 
-                if let ping {
-                    Text("\(ping) ms")
-                        .animation(.default, value: ping)
-                        .numericTransition()
-                        .monospacedDigit()
-                        .padding(.vertical, 5)
-                        .padding(.horizontal, 10)
-                        .background(.ultraThinMaterial, in: .rect(cornerRadius: 8))
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 8)
-                                .stroke(.gray.opacity(0.25), lineWidth: 1)
-                        }
-                }
+                MapSectionPing(allocations)
             }
             .frame(height: 80)
             .padding(.horizontal)
@@ -99,7 +70,7 @@ struct MapSection: View {
         .contentShape(.rect(cornerRadius: 16))
         .contextMenu {
             Button("Open in Apple Maps", image: .maps) {
-                openSafari(mapUrl)
+                openSafari(mapURL)
             }
         }
         .foregroundStyle(.foreground)
@@ -109,12 +80,6 @@ struct MapSection: View {
         .overlay {
             RoundedRectangle(cornerRadius: 16)
                 .stroke(.gray.opacity(0.25), lineWidth: 1)
-        }
-        .onReceive(timer) { _ in
-            checkPing()
-        }
-        .onDisappear {
-            timer.upstream.connect().cancel()
         }
         .task {
             location(node)
@@ -158,31 +123,6 @@ struct MapSection: View {
         }
         .frame(maxWidth: .infinity, minHeight: mapHeight, maxHeight: mapHeight)
         .clipShape(.rect(cornerRadius: 12))
-    }
-    
-    private func checkPing() {
-        guard let address else {
-            print("Ping error: Invalid Address")
-            return
-        }
-        
-        tcpPing(host: address, port: 22) {
-            switch $0 {
-            case .success(let pingDuration):
-                let ping = Int(round(pingDuration * 1000))
-                
-                Task { @MainActor in
-                    pings.append(ping)
-                    
-                    if pings.count > 1 {
-                        self.ping = pings.min()
-                        pings = []
-                    }
-                }
-            default:
-                break
-            }
-        }
     }
     
     private func location(_ node: String) {
