@@ -12,19 +12,7 @@ struct ServerList: View {
         @Bindable var vm = vm
         
         VStack {
-            TipView(TipServerCardContextMenu())
-                .padding(.horizontal, 25)
-                .tipCornerRadius(14)
-            
-            if vm.hasFrozenServers {
-                TipView(TipSuspendedServer()) { action in
-                    if action.id == "open-billing" {
-                        vm.showBilling = true
-                    }
-                }
-                .padding(.horizontal, 25)
-                .tipCornerRadius(14)
-            }
+            ServerListTips()
             
             List {
                 ForEach(vm.filteredServers) {

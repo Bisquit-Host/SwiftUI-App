@@ -48,27 +48,3 @@ struct WebsocketMessage: Codable {
         event == "token expired"
     }
 }
-
-struct ServerStats: Codable {
-    let network: Network
-    let state: String
-    let cpu, memory, disk: Double
-    let memoryLimitBytes, uptime: Int
-    
-    struct Network: Codable {
-        let rxBytes, txBytes: Int
-        
-        enum CodingKeys: String, CodingKey {
-            case rxBytes = "rx_bytes",
-                 txBytes = "tx_bytes"
-        }
-    }
-    
-    enum CodingKeys: String, CodingKey {
-        case state, uptime, network,
-             disk = "disk_bytes",
-             cpu = "cpu_absolute",
-             memory = "memory_bytes",
-             memoryLimitBytes = "memory_limit_bytes"
-    }
-}

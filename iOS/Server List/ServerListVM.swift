@@ -69,7 +69,6 @@ final class ServerListVM {
     func fetchServers(_ isAdmin: Bool, searchPrompt: String? = nil) async {
         do {
             let model = try await serverListAPI(isAdmin, searchPrompt: searchPrompt)
-            
             servers = model.data.map(\.attributes)
             
             if searchPrompt == nil {

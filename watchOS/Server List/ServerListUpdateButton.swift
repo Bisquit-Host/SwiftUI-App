@@ -1,13 +1,11 @@
 import SwiftUI
 
 struct ServerListUpdateButton: View {
-    @Environment(UpdateChecker.self) private var updater
+    @Environment(SecurityTasks.self) private var securityTasks
     @Environment(\.openURL) private var openURL
     
-    private let link = "https://apps.apple.com/app/bisquit-host/id1639409934"
-    
     var body: some View {
-        if updater.alertUpdate, let url = URL(string: link) {
+        if securityTasks.alertUpdate, let url = URL(string: Endpoint.updateApp) {
             Button {
                 openURL(url)
             } label: {
@@ -28,5 +26,5 @@ struct ServerListUpdateButton: View {
 #Preview {
     ServerListUpdateButton()
         .darkSchemePreferred()
-        .environment(UpdateChecker())
+        .environment(SecurityTasks())
 }

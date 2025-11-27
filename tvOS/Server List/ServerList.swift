@@ -2,14 +2,16 @@ import ScrechKit
 
 struct ServerList: View {
     @Environment(ServerListVM.self) private var vm
-    @Environment(UpdateChecker.self) private var updater
+    @Environment(SecurityTasks.self) private var securityTasks
     @EnvironmentObject private var store: ValueStore
     
     var body: some View {
         @Bindable var vm = vm
         
         List {
-            if updater.alertUpdate {
+            ServerListTips()
+            
+            if securityTasks.alertUpdate {
                 ServerListUpdateAlert()
             }
             
@@ -17,6 +19,7 @@ struct ServerList: View {
                 ServerCardParent($0)
             }
         }
+        .navigationTitle("Servers")
         .background(BisquitFall())
         .task {
             await vm.fetchServers(store.adminServerList)
@@ -44,7 +47,7 @@ struct ServerList: View {
     ServerList()
         .darkSchemePreferred()
         .environment(ServerListVM())
-        .environment(UpdateChecker())
+        .environment(SecurityTasks())
         .environment(NavState())
         .environmentObject(ValueStore())
 }

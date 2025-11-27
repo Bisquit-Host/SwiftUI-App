@@ -7,6 +7,9 @@ struct DashboardSidebar: View {
     
     var body: some View {
         ScrollView {
+            ServerListTips()
+                .environment(vm)
+            
             ServerListGrid(vm.filteredServers)
         }
         .padding(.horizontal)

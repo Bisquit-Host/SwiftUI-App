@@ -142,7 +142,7 @@ final class FileTabVM: ObservableObject {
             urlString + "&directory=\(root.applyPercentEncoding())",
             name: name,
             mimeType: mimeType,
-            fileUrl: fileUrl
+            fileURL: fileUrl
         )
         
         Task {

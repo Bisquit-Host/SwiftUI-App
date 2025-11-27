@@ -606,6 +606,7 @@
 				Panel/PanelVM.swift,
 				Panel/ServerState.swift,
 				Panel/Tabs.swift,
+				Panel/Websocket/ServerStats.swift,
 				Panel/Websocket/URLSessionWebsocketConnection.swift,
 				Panel/Websocket/Websocket.swift,
 				Panel/Websocket/WebsocketConnection.swift,
@@ -629,7 +630,7 @@
 				Utils/Networking/Endpoint.swift,
 				Utils/Networking/NetworkCalls.swift,
 				Utils/Networking/Prefetcher.swift,
-				Utils/Networking/UpdateChecker.swift,
+				Utils/Networking/SecurityTasks.swift,
 				Utils/PreviewProp.swift,
 				Utils/SpriteKit/NetworkVM.swift,
 				Utils/System.swift,
@@ -638,6 +639,7 @@
 				Utils/Tips/TipJSONFormatter.swift,
 				Utils/Tips/TipServerCardContextMenu.swift,
 				Utils/Tips/TipSuspendedServer.swift,
+				Utils/Tips/TipUnusedAPIKeys.swift,
 				Utils/ValueStore.swift,
 			);
 			target = F31BA5322958FF7D0006D126 /* watchOS */;
@@ -700,6 +702,7 @@
 				Panel/PanelTab.swift,
 				Panel/PanelVM.swift,
 				Panel/ServerState.swift,
+				Panel/Websocket/ServerStats.swift,
 				Panel/Websocket/URLSessionWebsocketConnection.swift,
 				Panel/Websocket/Websocket.swift,
 				Panel/Websocket/WebsocketConnection.swift,
@@ -718,6 +721,10 @@
 				"Server List/VM extensions/GameKit.swift",
 				"Server List/VM extensions/SpotlightIndex.swift",
 				"Server List/VM extensions/UserDefaults.swift",
+				"Settings/Account/API keys/ApikeyCard.swift",
+				"Settings/Account/API keys/ApikeyList.swift",
+				"Settings/Account/API keys/ApikeyVM.swift",
+				"Settings/Account/API keys/CreateApikey.swift",
 				Settings/Cache/CacheVM.swift,
 				"Settings/Debug & Dev/DebugSettingsTips.swift",
 				"Settings/Debug & Dev/GamepadDebug.swift",
@@ -732,7 +739,7 @@
 				Utils/Networking/Endpoint.swift,
 				Utils/Networking/NetworkCalls.swift,
 				Utils/Networking/Prefetcher.swift,
-				Utils/Networking/UpdateChecker.swift,
+				Utils/Networking/SecurityTasks.swift,
 				Utils/PreviewProp.swift,
 				Utils/SpriteKit/NetworkVM.swift,
 				Utils/System.swift,
@@ -741,6 +748,7 @@
 				Utils/Tips/TipJSONFormatter.swift,
 				Utils/Tips/TipServerCardContextMenu.swift,
 				Utils/Tips/TipSuspendedServer.swift,
+				Utils/Tips/TipUnusedAPIKeys.swift,
 				Utils/ValueStore.swift,
 			);
 			target = F3E08E9F2A2CE17800116C1C /* macOS */;
@@ -852,6 +860,7 @@
 				Panel/PanelVM.swift,
 				Panel/ServerState.swift,
 				Panel/Tabs.swift,
+				Panel/Websocket/ServerStats.swift,
 				Panel/Websocket/URLSessionWebsocketConnection.swift,
 				Panel/Websocket/Websocket.swift,
 				Panel/Websocket/WebsocketConnection.swift,
@@ -859,10 +868,15 @@
 				Panel/Websocket/WebsocketMessage.swift,
 				PrivacyInfo.xcprivacy,
 				"Server List/Server Card/ServerCardVM.swift",
+				"Server List/ServerListTips.swift",
 				"Server List/ServerListVM.swift",
 				"Server List/VM extensions/GameKit.swift",
 				"Server List/VM extensions/UserDefaults.swift",
 				Settings/Account/2FA/QRCodeView.swift,
+				"Settings/Account/API keys/ApikeyCard.swift",
+				"Settings/Account/API keys/ApikeyList.swift",
+				"Settings/Account/API keys/ApikeyVM.swift",
+				"Settings/Account/API keys/CreateApikey.swift",
 				Settings/Cache/CacheVM.swift,
 				"Settings/Debug & Dev/DebugSettingsTips.swift",
 				"Settings/Debug & Dev/DevSettings.swift",
@@ -879,7 +893,7 @@
 				Utils/Networking/Endpoint.swift,
 				Utils/Networking/NetworkCalls.swift,
 				Utils/Networking/Prefetcher.swift,
-				Utils/Networking/UpdateChecker.swift,
+				Utils/Networking/SecurityTasks.swift,
 				Utils/PreviewProp.swift,
 				Utils/ProgressBar.swift,
 				Utils/SpriteKit/Bisquits.sks,
@@ -891,6 +905,7 @@
 				Utils/Tips/TipJSONFormatter.swift,
 				Utils/Tips/TipServerCardContextMenu.swift,
 				Utils/Tips/TipSuspendedServer.swift,
+				Utils/Tips/TipUnusedAPIKeys.swift,
 				Utils/ValueStore.swift,
 			);
 			target = F3000E04295A341000ABD30A /* tvOS */;
@@ -986,8 +1001,10 @@
 				Panel/PanelTab.swift,
 				Panel/PanelVM.swift,
 				Panel/PowerSwitch.swift,
+				Panel/PowerSwitchButtons.swift,
 				Panel/ServerState.swift,
 				Panel/Tabs.swift,
+				Panel/Websocket/ServerStats.swift,
 				Panel/Websocket/URLSessionWebsocketConnection.swift,
 				Panel/Websocket/Websocket.swift,
 				Panel/Websocket/WebsocketConnection.swift,
@@ -998,10 +1015,15 @@
 				"Server List/Server Card/ServerCardContextMenu.swift",
 				"Server List/Server Card/ServerCardVM.swift",
 				"Server List/Server Card/ServerCardWide.swift",
+				"Server List/ServerListTips.swift",
 				"Server List/ServerListVM.swift",
 				"Server List/VM extensions/GameKit.swift",
 				"Server List/VM extensions/SpotlightIndex.swift",
 				"Server List/VM extensions/UserDefaults.swift",
+				"Settings/Account/API keys/ApikeyCard.swift",
+				"Settings/Account/API keys/ApikeyList.swift",
+				"Settings/Account/API keys/ApikeyVM.swift",
+				"Settings/Account/API keys/CreateApikey.swift",
 				"Settings/Debug & Dev/DebugSettingsTips.swift",
 				"Settings/Debug & Dev/GamepadDebug.swift",
 				Settings/Design/Background/BackgroundImageHelper.swift,
@@ -1016,7 +1038,7 @@
 				Utils/Networking/Endpoint.swift,
 				Utils/Networking/NetworkCalls.swift,
 				Utils/Networking/Prefetcher.swift,
-				Utils/Networking/UpdateChecker.swift,
+				Utils/Networking/SecurityTasks.swift,
 				Utils/PreviewProp.swift,
 				Utils/SpriteKit/NetworkVM.swift,
 				Utils/System.swift,
@@ -1025,6 +1047,7 @@
 				Utils/Tips/TipJSONFormatter.swift,
 				Utils/Tips/TipServerCardContextMenu.swift,
 				Utils/Tips/TipSuspendedServer.swift,
+				Utils/Tips/TipUnusedAPIKeys.swift,
 				Utils/ValueStore.swift,
 			);
 			target = F3BD76F12A43C890003E7385 /* visionOS */;
@@ -1146,7 +1169,7 @@
 				Utils/Networking/Endpoint.swift,
 				Utils/Networking/NetworkCalls.swift,
 				Utils/Networking/Prefetcher.swift,
-				Utils/Networking/UpdateChecker.swift,
+				Utils/Networking/SecurityTasks.swift,
 				Utils/PreviewProp.swift,
 				Utils/slowSnow.swift,
 				Utils/System.swift,
@@ -2410,7 +2433,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 26.2.4;
+				MARKETING_VERSION = 26.2.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2478,7 +2501,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 26.2.4;
+				MARKETING_VERSION = 26.2.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "";
@@ -2543,7 +2566,7 @@
 				INFOPLIST_FILE = watchOS/watchOS.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "host.bisquit.Bisquit-host";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "host.bisquit.Bisquit-host.debug";
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3292,6 +3315,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = macOS/macOS.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -3335,6 +3359,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = macOS/macOS.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";

@@ -28,7 +28,7 @@ final class URLSessionWebsocketConnection: WebsocketConnection {
         startReceiveLoop()
         
         Task {
-            await authenticate(using: token)
+            await authenticate(token)
         }
     }
     
@@ -67,7 +67,7 @@ final class URLSessionWebsocketConnection: WebsocketConnection {
         }
     }
     
-    private func authenticate(using token: String) async {
+    private func authenticate(_ token: String) async {
         do {
             try await task.send(.string("{\"event\":\"auth\",\"args\":[\"\(token)\"]}"))
             try await Task.sleep(nanoseconds: 500_000_000)

@@ -1,7 +1,3 @@
 enum ServerState: String {
-    case unknown,
-         starting,
-         running,
-         stopping,
-         offline
+    case unknown, starting, running, stopping, offline
 }
