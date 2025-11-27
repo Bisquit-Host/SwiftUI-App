@@ -1,4 +1,4 @@
-import ScrechKit
+import Foundation
 import PteroNet
 
 @Observable
@@ -11,16 +11,16 @@ final class AudioPlayerVM {
     
     var audioURL: URL? = nil
     
-    func downloadFile(_ file: String, at path: String) async {
+    func fetchDownloadURL(_ file: String, at path: String) async {
         do {
             let url = try await fileDownloadAPI(id, path: path + "/" + file)
-            downloadVideo(url, name: file)
+            await downloadFile(url, name: file)
         } catch {
             SystemAlert.error(error)
         }
     }
     
-    private func downloadVideo(_ urlString: String, name: String) {
+    private func downloadFile(_ urlString: String, name: String) async {
         guard let url = URL(string: urlString) else {
             print("Invalid URL")
             return
@@ -29,30 +29,18 @@ final class AudioPlayerVM {
         let tempDirURL = FileManager.default.temporaryDirectory
         let destinationURL = tempDirURL.appendingPathComponent(name)
         
-        URLSession.shared.downloadTask(with: url) { location, _, error in
-            let fm = FileManager.default
+        do {
+            let (location, _) = try await URLSession.shared.download(from: url)
             
-            guard let location, error == nil else {
-                print("Download error:", error?.localizedDescription ?? "Unknown error")
-                return
+            if FileManager.default.fileExists(atPath: destinationURL.path) {
+                try FileManager.default.removeItem(at: destinationURL)
             }
             
-            do {
-                if fm.fileExists(atPath: destinationURL.path) {
-                    try fm.removeItem(at: destinationURL)
-                }
-                
-                try fm.copyItem(at: location, to: destinationURL)
-                
-                Task { @MainActor in
-                    withAnimation {
-                        self.audioURL = destinationURL
-                    }
-                }
-            } catch {
-                print("Error during file copy:", error.localizedDescription)
-            }
+            try FileManager.default.copyItem(at: location, to: destinationURL)
+            
+            audioURL = destinationURL
+        } catch {
+            print("Error during file copy:", error.localizedDescription)
         }
-        .resume()
     }
 }

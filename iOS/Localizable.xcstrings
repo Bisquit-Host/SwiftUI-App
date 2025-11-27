@@ -42,6 +42,7 @@
       "shouldTranslate" : false
     },
     "/%@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
