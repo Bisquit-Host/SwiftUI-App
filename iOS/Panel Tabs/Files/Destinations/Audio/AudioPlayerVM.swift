@@ -13,22 +13,20 @@ final class AudioPlayerVM {
     
     func downloadFile(_ file: String, at path: String) async {
         do {
-            let url = try await fileDownloadAPI(id, path: path + "/\(file)")
-            self.downloadVideo(url, name: file)
+            let url = try await fileDownloadAPI(id, path: path + "/" + file)
+            downloadVideo(url, name: file)
         } catch {
             SystemAlert.error(error)
         }
     }
     
     private func downloadVideo(_ urlString: String, name: String) {
-        let fm = FileManager.default
-        
         guard let url = URL(string: urlString) else {
             print("Invalid URL")
             return
         }
         
-        let tempDirURL = fm.temporaryDirectory
+        let tempDirURL = FileManager.default.temporaryDirectory
         let destinationURL = tempDirURL.appendingPathComponent(name)
         
         URLSession.shared.downloadTask(with: url) { location, _, error in
