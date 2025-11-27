@@ -66,9 +66,8 @@ struct BisquitHost: App {
         .defaultAppStorage(.init(suiteName: "group.Bisquit-host")!)
 #if !os(watchOS)
         .onChange(of: phase) { _, newPhase in
-            switch newPhase {
-            case .background: BackgroundTaskManager.scheduleAppRefresh()
-            default: break
+            if newPhase == .background {
+                BackgroundTaskManager.scheduleAppRefresh()
             }
         }
         .backgroundTask(.appRefresh("host.bisquit.Bisquit-Host.Background-Task")) {
