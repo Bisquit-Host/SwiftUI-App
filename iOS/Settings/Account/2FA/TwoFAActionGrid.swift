@@ -4,6 +4,11 @@ struct TwoFAActionGrid: View {
     let qrCodeURL: String
     var onShowQr: () -> Void
     
+    init(_ qrCodeURL: String, onShowQr: @escaping () -> Void) {
+        self.qrCodeURL = qrCodeURL
+        self.onShowQr = onShowQr
+    }
+    
     private var setupUrl: URL? {
         URL(string: qrCodeURL)
     }

@@ -18,7 +18,7 @@ struct Enable2FAView: View {
                         .footnote(.semibold)
                         .secondary()
                     
-                    TwoFAActionGrid(qrCodeURL: vm.qrCodeUrl) {
+                    TwoFAActionGrid(vm.qrCodeURL) {
                         sheetQrCode = true
                     }
                 }
@@ -32,7 +32,7 @@ struct Enable2FAView: View {
         }
         .scrollIndicators(.hidden)
         .sheet($sheetQrCode) {
-            QRCodeView(vm.qrCodeUrl)
+            QRCodeView(vm.qrCodeURL)
                 .presentationDetents([.medium])
         }
         .toolbar {
