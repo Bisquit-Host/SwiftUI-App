@@ -31,10 +31,13 @@ struct PlanCard: View {
                 
                 if plan.whmcsLink.contains("minecraft") {
                     PlanCardLabelGame(plan)
+                    
                 } else if plan.whmcsLink.contains("vds") {
                     PlanCardLabelCloud(plan)
+                    
                 } else if plan.whmcsLink.contains("bothost") {
                     PlanCardLabelBot(plan)
+                    
                 } else if plan.whmcsLink.contains("web") {
                     PlanCardLabelWeb(plan)
                 }

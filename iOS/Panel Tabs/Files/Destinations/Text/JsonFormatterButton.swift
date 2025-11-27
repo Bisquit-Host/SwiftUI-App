@@ -8,17 +8,21 @@ struct JsonFormatterButton: View {
     var body: some View {
         if vm.showPrettyButton {
             Button("ellipsis.curlybraces") {
-                tip.invalidate(reason: .actionPerformed)
-                vm.makePretty()
+                prettify()
             }
-            .popTip(tip) { action in
-                if action.id == "format-json" {
+            .popTip(tip) {
+                if $0.id == "format-json" {
                     Task { @MainActor in
                         vm.makePretty()
                     }
                 }
             }
         }
+    }
+    
+    private func prettify() {
+        tip.invalidate(reason: .actionPerformed)
+        vm.makePretty()
     }
 }
 

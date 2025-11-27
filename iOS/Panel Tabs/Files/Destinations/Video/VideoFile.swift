@@ -52,11 +52,7 @@ struct VideoFile: View {
             
 #if os(iOS)
             if vm.isSensitive {
-                Button {
-                    withAnimation {
-                        vm.isSensitive = false
-                    }
-                } label: {
+                Button(action: unhide) {
                     Image(systemName: "eye.slash")
                 }
             }
@@ -83,6 +79,12 @@ struct VideoFile: View {
                 Image(systemName: "ellipsis")
             }
 #endif
+        }
+    }
+    
+    private func unhide() {
+        withAnimation {
+            vm.isSensitive = false
         }
     }
 }
