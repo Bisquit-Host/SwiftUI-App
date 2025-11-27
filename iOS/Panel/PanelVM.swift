@@ -120,8 +120,6 @@ final class PanelVM {
                 messages.append(attributedString)
                 
             } else if let stats = message.serverStats {
-                print(stats)
-                
                 do {
                     let jsonData = try JSONSerialization.data(withJSONObject: stats, options: [])
                     
