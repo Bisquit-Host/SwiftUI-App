@@ -58,15 +58,11 @@ struct FileContextMenu: ViewModifier {
                 Divider()
                 
                 if !mimeType.contains("directory") {
-                    Button("Download", systemImage: "square.and.arrow.down") {
+                    Button("Download and share", systemImage: "square.and.arrow.up") {
                         Task {
                             await vm.downloadFile(path + "/" + name)
                         }
                     }
-                }
-                
-                if !mimeType.contains("directory") {
-                    ShareLink(item: vm.downloadURL)
                 }
                 
                 Divider()

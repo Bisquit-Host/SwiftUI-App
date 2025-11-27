@@ -51,11 +51,11 @@ struct FileTab: View {
         }
         .navigationTitle(root)
         .animation(.default, value: vm.files)
-        .sheet($vm.showSafari) {
-            QRCodeView(vm.downloadURL)
-        }
         .task {
             await vm.fetchFiles(root)
+        }
+        .sheet($vm.showSafari) {
+            QRCodeView(vm.downloadURL)
         }
     }
 }
