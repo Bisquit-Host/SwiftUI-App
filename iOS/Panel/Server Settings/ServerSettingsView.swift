@@ -27,9 +27,7 @@ struct ServerSettingsView: View {
                 
                 if vm.serverName != server.name || vm.serverDescription != server.description {
                     Button("Save") {
-                        Task {
-                            await vm.serverRename()
-                        }
+                        save()
                     }
                     .animation(.default, value: vm.serverName + vm.serverDescription)
                 }
@@ -71,6 +69,12 @@ struct ServerSettingsView: View {
             }
         } message: {
             Text("Reinstalling your server will stop it, and then re-run the installation script that initially set it. Some files may be deleted or modified during this process, please back up your data before continuing")
+        }
+    }
+    
+    private func save() {
+        Task {
+            await vm.serverRename()
         }
     }
     

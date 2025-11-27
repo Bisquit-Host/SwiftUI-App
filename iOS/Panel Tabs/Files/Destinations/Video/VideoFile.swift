@@ -18,7 +18,7 @@ struct VideoFile: View {
     
     var body: some View {
         VStack {
-            if let url = vm.localVideoUrl {
+            if let url = vm.localVideoURL {
 #if os(watchOS)
                 WatchVideoPlayer(url)
 #else
@@ -31,7 +31,7 @@ struct VideoFile: View {
         }
         .navigationTitle(name)
         .task {
-            await vm.fetchVideoUrl(name, root: path)
+            await vm.fetchVideoURL(name, root: path)
         }
         .toolbar {
 #if os(tvOS)
@@ -58,12 +58,12 @@ struct VideoFile: View {
             }
             
             Menu {
-                if let url = vm.localVideoUrl {
+                if let url = vm.localVideoURL {
                     ShareLink(item: url)
                         .transition(.identity)
                 } else {
                     ShareLink(item: name)
-                        .disabled(vm.localVideoUrl == nil)
+                        .disabled(vm.localVideoURL == nil)
                 }
                 
                 Section {

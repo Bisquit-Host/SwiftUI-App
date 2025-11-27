@@ -12,9 +12,9 @@ final class VideoFileVM {
     }
     
     var isSensitive = false
-    var localVideoUrl: URL?
+    var localVideoURL: URL?
     
-    func fetchVideoUrl(_ name: String, root: String) async {
+    func fetchVideoURL(_ name: String, root: String) async {
         do {
             let url = try await fileDownloadAPI(id, path: root + "/" + name)
             self.saveVideo(url)
@@ -57,11 +57,11 @@ final class VideoFileVM {
                         self.isSensitive = blur
                         
                         withAnimation {
-                            self.localVideoUrl = fileURL
+                            self.localVideoURL = fileURL
                         }
                     }
 #else
-                    self.localVideoUrl = fileURL
+                    self.localVideoURL = fileURL
 #endif
                 }
             } catch {

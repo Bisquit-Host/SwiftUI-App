@@ -10,13 +10,12 @@ struct UploadMenu: View {
         self.path = path
     }
     
-    @State private var trigger = false
-    
     @State private var image: UIImage?
     @State private var urls: [URL] = []
-    @State private var previewUrls: [URL] = []
+    @State private var previewURLs: [URL] = []
     @State private var pickerItems: [PhotosPickerItem] = []
     
+    @State private var trigger = false
     @State private var pickerFile = false
     @State private var pickerCamera = false
     @State private var pickerLibrary = false
@@ -46,11 +45,7 @@ struct UploadMenu: View {
         }
         .sensoryFeedback(.success, trigger: trigger)
         .cameraPicker($pickerCamera, image: $image)
-        .photosPicker(
-            isPresented: $pickerLibrary,
-            selection: $pickerItems,
-            selectionBehavior: .ordered
-        )
+        .photosPicker(isPresented: $pickerLibrary, selection: $pickerItems, selectionBehavior: .ordered)
         .onChange(of: pickerItems) { _, newItems in
             extractImageOrVideo(newItems)
         }
@@ -71,13 +66,8 @@ struct UploadMenu: View {
                 SheetRemoteFile(path)
             }
         }
-        .fileImporter(
-            isPresented: $pickerFile,
-            allowedContentTypes: [.item],
-            allowsMultipleSelection: true
-        ) { result in
-            
-            switch result {
+        .fileImporter(isPresented: $pickerFile, allowedContentTypes: [.item], allowsMultipleSelection: true) {
+            switch $0 {
             case .success(let model):
                 urls = model
                 
@@ -92,9 +82,7 @@ struct UploadMenu: View {
     }
     
     // MARK: Library funcs
-    private func extractImageOrVideo(
-        _ photoItems: [PhotosPickerItem]
-    ) {
+    private func extractImageOrVideo(_ photoItems: [PhotosPickerItem]) {
         Task.detached {
             for item in photoItems {
                 guard
@@ -114,34 +102,31 @@ struct UploadMenu: View {
                 }
                 
                 await MainActor.run {
-                    if let url = writeDataToTemporaryUrl(data, pathExtension: identifier) {
+                    if let url = writeDataToTemporaryURL(data, pathExtension: identifier) {
                         withAnimation {
-                            previewUrls.append(url)
+                            previewURLs.append(url)
                         }
                     }
                 }
             }
             
-            await vm.handleFileImport(previewUrls, at: path)
+            await vm.handleFileImport(previewURLs, at: path)
         }
         
         pickerItems = []
-        previewUrls = []
+        previewURLs = []
     }
     
-    private func writeDataToTemporaryUrl(
-        _ data: Data,
-        pathExtension: String = ""
-    ) -> URL? {
+    private func writeDataToTemporaryURL(_ data: Data, pathExtension: String = "") -> URL? {
         let tempDirURL = FileManager.default.temporaryDirectory
         
-        let temporaryFileUrl = tempDirURL
+        let tempFileURL = tempDirURL
             .appendingPathComponent(UUID().uuidString)
             .appendingPathExtension(pathExtension)
         
         do {
-            try data.write(to: temporaryFileUrl)
-            return temporaryFileUrl
+            try data.write(to: tempFileURL)
+            return tempFileURL
         } catch {
             print("Error writing video data to temporary file:", error)
             return nil

@@ -59,14 +59,14 @@ struct SubdomainCard: View {
     private func addToMCStats() {
         guard
             let url = URL(string: "mc-stats://add-server?address=\(fullDomain)&name=\(subdomain.subdomain)"),
-            let fallbackUrl = URL(string: "https://apps.apple.com/app/id6740754881")
+            let fallbackURL = URL(string: "https://apps.apple.com/app/id6740754881")
         else {
             return
         }
         
         openURL(url) { success in
             if !success {
-                openURL(fallbackUrl)
+                openURL(fallbackURL)
             }
         }
     }

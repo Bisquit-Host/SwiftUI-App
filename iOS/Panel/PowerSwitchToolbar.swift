@@ -9,21 +9,15 @@ struct PowerSwitchToolbar: View {
         Menu {
             ControlGroup {
                 Button("Start", systemImage: "play") {
-                    Task {
-                        await vm.changePower(.start)
-                    }
+                    start()
                 }
                 
                 Button("Restart", systemImage: "arrow.clockwise") {
-                    Task {
-                        await vm.changePower(.restart)
-                    }
+                    restart()
                 }
                 
                 Button("Stop", systemImage: "pause") {
-                    Task {
-                        await vm.changePower(.stop)
-                    }
+                    stop()
                 }
                 
                 Button("Kill", systemImage: "power", role: .destructive) {
@@ -43,6 +37,24 @@ struct PowerSwitchToolbar: View {
                     await vm.changePower(.kill)
                 }
             }
+        }
+    }
+    
+    private func start() {
+        Task {
+            await vm.changePower(.start)
+        }
+    }
+    
+    private func restart() {
+        Task {
+            await vm.changePower(.restart)
+        }
+    }
+    
+    private func stop() {
+        Task {
+            await vm.changePower(.stop)
         }
     }
 }

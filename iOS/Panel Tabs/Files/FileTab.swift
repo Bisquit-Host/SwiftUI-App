@@ -35,7 +35,7 @@ struct FileTab: View {
         .animation(.easeOut, value: vm.filteredFiles)
         .environmentObject(vm)
         .frame(maxWidth: 500)
-        .safariCover($vm.showSafari, url: vm.downloadUrl)
+        .safariCover($vm.showSafari, url: vm.downloadURL)
         .background(BackgroundImage())
         .scrollContentBackground(.hidden)
         .task {

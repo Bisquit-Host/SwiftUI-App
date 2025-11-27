@@ -9,19 +9,15 @@ struct TwoFAActionGrid: View {
         self.onShowQr = onShowQr
     }
     
-    private var setupUrl: URL? {
-        URL(string: qrCodeURL)
-    }
-    
     var body: some View {
         VStack(spacing: 12) {
-            if let setupUrl {
-                Link(destination: setupUrl) {
+            if let url = URL(string: qrCodeURL) {
+                Link(destination: url) {
                     TwoFAActionTileContent("Open in authenticator", subtitle: "Launches your 2FA app", icon: "link.badge.plus")
                 }
                 .buttonStyle(.plain)
                 
-                ShareLink(item: setupUrl) {
+                ShareLink(item: url) {
                     TwoFAActionTileContent("Share setup URL", subtitle: "Send via AirDrop or chat", icon: "square.and.arrow.up")
                 }
                 .buttonStyle(.plain)

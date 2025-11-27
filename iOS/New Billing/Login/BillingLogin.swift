@@ -40,13 +40,15 @@ struct BillingLogin: View {
     
     private func auth() {
         Task {
-            if let response = await vm.login(store.login, store.password, captchaToken) {
-                store.testExpiresIn = response.expiresIn
-                store.testAccessToken = response.accessToken
-                store.testRefreshToken = response.refreshToken
-                
-                nav.navigate(.toBillingDashboard)
+            guard let response = await vm.login(store.login, store.password, captchaToken) else {
+                return
             }
+            
+            store.testExpiresIn = response.expiresIn
+            store.testAccessToken = response.accessToken
+            store.testRefreshToken = response.refreshToken
+            
+            nav.navigate(.toBillingDashboard)
         }
     }
 }

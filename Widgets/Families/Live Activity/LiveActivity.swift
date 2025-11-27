@@ -19,7 +19,7 @@ final class LiveActivity {
     var activityViewState: ActivityViewState? = nil
     var errorMessage: String? = nil
     
-    func postRequest(wsUrl: String, wsToken: String, liveActivityToken: String) async throws {
+    func postRequest(wsURL: String, wsToken: String, liveActivityToken: String) async throws {
         let path = "https://push-activity.bisquit.host/liveactivity/start"
         
         guard let url = URL(string: path) else { throw URLError(.badURL) }
@@ -33,7 +33,7 @@ final class LiveActivity {
         let environment = "production"
 #endif
         let body = [
-            "WSUrl":             wsUrl,
+            "WSUrl":             wsURL,
             "WSToken":           wsToken,
             "liveActivityToken": liveActivityToken,
             "environment":       environment,
@@ -92,6 +92,7 @@ final class LiveActivity {
             for await pushToken in activity.pushTokenUpdates {
                 let pushTokenString = pushToken.hexadecimalString
                 self.LAToken = pushTokenString
+                
                 print("New push token:", pushTokenString)
             }
         }
@@ -222,11 +223,7 @@ final class LiveActivity {
             let socket = model.socket
             let token = model.token
             
-            try await postRequest(
-                wsUrl: socket.description,
-                wsToken: token,
-                liveActivityToken: LAToken
-            )
+            try await postRequest(wsURL: socket.description, wsToken: token, liveActivityToken: LAToken)
         } catch {
             networkCallError(#function, error)
         }

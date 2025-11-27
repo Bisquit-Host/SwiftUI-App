@@ -34,7 +34,7 @@ struct FileView: View {
             } else {
                 Button {
                     Task {
-                        await qlVM.getFileUrl(name, at: root)
+                        await qlVM.getFileURL(name, at: root)
                     }
                     
                     //        NavigationLink {
@@ -69,7 +69,7 @@ struct FileView: View {
                 }
             }
         }
-        .quickLookPreview($qlVM.fileUrl)
+        .quickLookPreview($qlVM.fileURL)
         .buttonStyle(.plain)
         .padding(5)
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -81,10 +81,10 @@ struct FileView: View {
         }
         .onChange(of: showPreview) { _, isPresented in
             if !isPresented {
-                qlVM.fileUrl = nil
+                qlVM.fileURL = nil
             }
         }
-        .onChange(of: qlVM.fileUrl) { _, url in
+        .onChange(of: qlVM.fileURL) { _, url in
             guard let url else { return }
             
             print(url.description)

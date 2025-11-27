@@ -2,34 +2,16 @@ import WidgetKit
 
 struct ResourcesTimelineProvider: IntentTimelineProvider {
     func placeholder(in context: Context) -> ResourcesUsageEntry {
-        ResourcesUsageEntry(
-            date: Date(),
-            name: "Preview",
-            id: "12345678",
-            state: "running"
+        ResourcesUsageEntry(date: Date(), name: "Preview", id: "12345678", state: "running")
+    }
+    
+    func getSnapshot(for configuration: CryptoPriceConfigurationIntent, in context: Context, completion: @escaping (ResourcesUsageEntry) -> ()) {
+        completion(
+            ResourcesUsageEntry(date: Date(), name: "Preview", id: "12345678", state: "running")
         )
     }
     
-    func getSnapshot(
-        for configuration: CryptoPriceConfigurationIntent,
-        in context: Context,
-        completion: @escaping (ResourcesUsageEntry) -> ()
-    ) {
-        let entry = ResourcesUsageEntry(
-            date: Date(),
-            name: "Preview",
-            id: "12345678",
-            state: "running"
-        )
-        
-        completion(entry)
-    }
-    
-    func getTimeline(
-        for configuration: CryptoPriceConfigurationIntent,
-        in context: Context,
-        completion: @escaping @Sendable (Timeline<ResourcesUsageEntry>) -> ()
-    ) {
+    func getTimeline(for configuration: CryptoPriceConfigurationIntent, in context: Context, completion: @escaping @Sendable (Timeline<ResourcesUsageEntry>) -> ()) {
         // Extract info from config
         
         guard
@@ -44,13 +26,7 @@ struct ResourcesTimelineProvider: IntentTimelineProvider {
             let usage = await Networking.fetchResourceUsage(id)
             
             // Create Entry using based on user selected config & fetched info
-            let entry = ResourcesUsageEntry(
-                date: Date(),
-                name: name,
-                id: id,
-                state: usage.state,
-                test: usage.test
-            )
+            let entry = ResourcesUsageEntry(date: Date(), name: name, id: id, state: usage.state, test: usage.test)
             
             // Trigger completion & next fetch in 15 mins
             executeTimelineCompletion(completion, timelineEntry: entry)
@@ -68,8 +44,8 @@ struct ResourcesTimelineProvider: IntentTimelineProvider {
         // Next fetch in 15 mins
         let nextUpdate = Calendar.current.date(byAdding: DateComponents(minute: 15), to: Date())!
         
-        let timeline = Timeline(entries: [timelineEntry], policy: .after(nextUpdate))
-        
-        completion(timeline)
+        completion(
+            Timeline(entries: [timelineEntry], policy: .after(nextUpdate))
+        )
     }
 }

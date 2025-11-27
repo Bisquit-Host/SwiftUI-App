@@ -50,11 +50,11 @@ struct ConsoleTab: View {
         .task {
             vm.fontSize = store.consoleFontSize
             
-//            Task {
-//                try await Task.sleep(for: .seconds(4))
-//                
-//                panelVM.measure()
-//            }
+            //            Task {
+            //                try await Task.sleep(for: .seconds(4))
+            //
+            //                panelVM.measure()
+            //            }
         }
         .onDisappear {
             store.consoleFontSize = vm.fontSize
@@ -65,9 +65,7 @@ struct ConsoleTab: View {
         .background(BackgroundImage())
         .alert("Are you sure you want to perform the Kill action?", isPresented: $vm.alertKill) {
             Button("Kill", role: .destructive) {
-                Task {
-                    await panelVM.changePower(.kill)
-                }
+                kill()
             }
         }
         .overlay {
@@ -78,6 +76,12 @@ struct ConsoleTab: View {
                     ContentUnavailableView.search(text: panelVM.searchRule)
                 }
             }
+        }
+    }
+    
+    private func kill() {
+        Task {
+            await panelVM.changePower(.kill)
         }
     }
     

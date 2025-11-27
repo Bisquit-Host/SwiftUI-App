@@ -9,7 +9,7 @@ final class AudioPlayerVM {
         self.id = id
     }
     
-    var audioUrl: URL? = nil
+    var audioURL: URL? = nil
     
     func downloadFile(_ file: String, at path: String) async {
         do {
@@ -48,7 +48,7 @@ final class AudioPlayerVM {
                 
                 Task { @MainActor in
                     withAnimation {
-                        self.audioUrl = destinationURL
+                        self.audioURL = destinationURL
                     }
                 }
             } catch {

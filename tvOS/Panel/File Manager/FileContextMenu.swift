@@ -15,6 +15,10 @@ struct FileContextMenu: ViewModifier {
     @State private var alertRename = false
     @State private var sheetPermissions = false
     
+    private var isArchive: Bool {
+        file.mimetype.contains("gzip")
+    }
+    
     func body(content: Content) -> some View {
         let name = file.name
         let mimeType = file.mimetype
@@ -28,11 +32,11 @@ struct FileContextMenu: ViewModifier {
                 
                 if !mimeType.contains("directory") {
                     Button("Download with QR", systemImage: "qrcode") {
-                        // Context menu needs some time to close and allow the sheet to display
-                        delay(0.75) {
-                            Task {
-                                await vm.downloadFile(path + name)
-                            }
+                        Task {
+                            // Context menu needs some time to close and allow the sheet to display
+                            try await Task.sleep(for: .seconds(0.75))
+                            
+                            await vm.downloadFile(path + name)
                         }
                     }
                     
@@ -47,17 +51,9 @@ struct FileContextMenu: ViewModifier {
                     }
                 }
                 
-                if mimeType.contains("gzip") {
-                    Button("Decompress", systemImage: "arrow.up.bin") {
-                        Task {
-                            await vm.fileCompressor(name, at: path, do: .decompress)
-                        }
-                    }
-                } else {
-                    Button("Compress", systemImage: "archivebox") {
-                        Task {
-                            await vm.fileCompressor(name, at: path, do: .compress)
-                        }
+                Button(isArchive ? "Decompress" : "Compress", systemImage: isArchive ? "arrow.up.bin" : "archivebox") {
+                    Task {
+                        await vm.fileCompressor(name, at: path, do: isArchive ? .decompress : .compress)
                     }
                 }
                 

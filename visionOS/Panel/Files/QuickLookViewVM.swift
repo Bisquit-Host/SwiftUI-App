@@ -5,7 +5,7 @@ import PteroNet
 final class QuickLookViewVM {
     var fileURL: URL? = nil
     
-    func fetchDownloadUrl(_ id: String?, file: String, at root: String?) async {
+    func fetchDownloadURL(_ id: String?, file: String, at root: String?) async {
         guard let id, let root else { return }
         
         do {

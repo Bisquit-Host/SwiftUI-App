@@ -25,12 +25,23 @@ struct FileContextMenu: ViewModifier {
         file.mimetype
     }
     
+    private var isArchive: Bool {
+        mimeType.contains("gzip")
+    }
+    
     func body(content: Content) -> some View {
         content
             .contextMenu {
-                RenameButton()
+                Button("Rename", systemImage: "pencil") {
+                    vm.newFileName = ""
+                    alertRename = true
+                }
                 
-                CompressButton()
+                Button(isArchive ? "Decompress" : "Compress", systemImage: isArchive ? "arrow.up.bin" : "archivebox") {
+                    Task {
+                        await vm.fileCompressor(name, at: path, do: isArchive ? .decompress : .compress)
+                    }
+                }
                 
                 if !mimeType.contains("directory") {
                     Button("Duplicate", systemImage: "plus.square.on.square") {
@@ -55,7 +66,7 @@ struct FileContextMenu: ViewModifier {
                 }
                 
                 if !mimeType.contains("directory") {
-                    ShareButton()
+                    ShareLink(item: vm.downloadURL)
                 }
                 
                 Divider()
@@ -83,52 +94,17 @@ struct FileContextMenu: ViewModifier {
                 }
             }
     }
-    
-    private func RenameButton() -> some View {
-        Button("Rename", systemImage: "pencil") {
-            vm.newFileName = ""
-            alertRename = true
-        }
-    }
-    
-    private func CompressButton() -> some View {
-        if mimeType.contains("gzip") {
-            Button("Decompress", systemImage: "arrow.up.bin") {
-                Task {
-                    await vm.fileCompressor(name, at: path, do: .decompress)
-                }
-            }
-        } else {
-            Button("Compress", systemImage: "archivebox") {
-                Task {
-                    await vm.fileCompressor(name, at: path, do: .compress)
-                }
-            }
-        }
-    }
-    
-    private func ShareButton() -> some View {
-        ShareLink(item: vm.downloadUrl)
-    }
 }
 
 extension View {
-    func fileContextMenu(
-        _ id: String,
-        file: FileAttributes,
-        at root: String
-    ) -> some View {
-        self.modifier(FileContextMenu(
-            id,
-            file: file,
-            at: root
-        ))
+    func fileContextMenu(_ id: String, file: FileAttributes, at root: String) -> some View {
+        self.modifier(FileContextMenu(id, file: file, at: root))
     }
 }
 
 //#Preview {
 //    @Previewable @State var link: FileLink? = FileLink("", name: "", at: "")
-//    
+//
 //    QuickLookFile($link)
 //        .darkSchemePreferred()
 //        .environmentObject(FileTabVM(""))

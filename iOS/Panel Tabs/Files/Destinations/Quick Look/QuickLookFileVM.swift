@@ -9,11 +9,11 @@ final class QuickLookFileVM {
         self.id = id
     }
     
-    var fileUrl: URL? = nil
+    var fileURL: URL? = nil
     var isSensitive = false
     var metadata: [URLResourceKey: Any]? = nil
     
-    func getFileUrl(_ file: String, at root: String) async {
+    func getFileURL(_ file: String, at root: String) async {
         do {
             let url = try await fileDownloadAPI(id, path: root + "/" + file)
             self.downloadFile(url, name: file)
@@ -31,7 +31,7 @@ final class QuickLookFileVM {
         }
         
         let tempDirURL = fm.temporaryDirectory
-        let destinationUrl = tempDirURL.appendingPathComponent(name)
+        let destinationURL = tempDirURL.appendingPathComponent(name)
         
         URLSession.shared.downloadTask(with: url) { location, _, error in
             let fm = FileManager.default
@@ -42,16 +42,16 @@ final class QuickLookFileVM {
             }
             
             do {
-                if fm.fileExists(atPath: destinationUrl.path) {
-                    try fm.removeItem(at: destinationUrl)
+                if fm.fileExists(atPath: destinationURL.path) {
+                    try fm.removeItem(at: destinationURL)
                 }
                 
-                try fm.copyItem(at: location, to: destinationUrl)
+                try fm.copyItem(at: location, to: destinationURL)
                 
                 Task { @MainActor in
-                    await self.loadAndCheckImage(destinationUrl)
-                    await self.fetchMetadata(destinationUrl)
-                    self.fileUrl = destinationUrl
+                    await self.loadAndCheckImage(destinationURL)
+                    await self.fetchMetadata(destinationURL)
+                    self.fileURL = destinationURL
                 }
             } catch {
                 print("Error during file copy:", error.localizedDescription)

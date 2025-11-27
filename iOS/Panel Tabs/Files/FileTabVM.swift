@@ -29,7 +29,7 @@ final class FileTabVM: ObservableObject {
     
     @Published var files: [FileAttributes] = []
     @Published var showTextField = false
-    @Published var downloadUrl = ""
+    @Published var downloadURL = ""
     @Published var path = ""
     @Published var showSafari = false
     @Published var newFolderName = ""
@@ -60,11 +60,7 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func chmod(
-        _ read: Bool,
-        _ write: Bool,
-        _ execute: Bool
-    ) -> String {
+    func chmod(_ read: Bool, _ write: Bool, _ execute: Bool) -> String {
         var permission: UInt8 = 0
         
         if read    { permission |= 4 }
@@ -74,12 +70,7 @@ final class FileTabVM: ObservableObject {
         return String(permission)
     }
     
-    func changeChmod(
-        _ file: String,
-        at root: String,
-        mode: String,
-        onSuccess: @escaping () -> ()
-    ) async {
+    func changeChmod(_ file: String, at root: String, mode: String, onSuccess: @escaping () -> ()) async {
         do {
             try await fileChmodAPI(id, file: file, at: root, mode: mode)
             onSuccess()
@@ -90,11 +81,7 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func pullRemoteFile(
-        _ file: FilePullRequestBody,
-        at path: String = "",
-        onSuccess: @escaping () -> ()
-    ) async {
+    func pullRemoteFile(_ file: FilePullRequestBody, at path: String = "", onSuccess: @escaping () -> ()) async {
         do {
             try await pullRemoteFileAPI(id, file: file)
             
@@ -126,46 +113,33 @@ final class FileTabVM: ObservableObject {
         fileUploader.cancelUpload()
     }
     
-    func uploadFile(
-        _ urlString: String,
-        name: String,
-        at root: String,
-        mimeType: String,
-        fileUrl: URL
-    ) {
+    func uploadFile(_ urlString: String, name: String, at root: String, mimeType: String, fileURL: URL) {
         withAnimation {
-            self.isUploading = true
+            isUploading = true
         }
         
-        self.fileUploader.uploadFile(
-            urlString + "&directory=\(root.applyPercentEncoding())",
-            name: name,
-            mimeType: mimeType,
-            fileURL: fileUrl
-        )
+        let url = urlString + "&directory=\(root.applyPercentEncoding())"
+        
+        fileUploader.uploadFile(url, name: name, mimeType: mimeType, fileURL: fileURL)
         
         Task {
             try await Task.sleep(for: .seconds(2))
             
             withAnimation {
-                self.isUploading = false
+                isUploading = false
             }
             
-            self.uploadProgress = 0
+            uploadProgress = 0
             
-            await self.fetchFiles(root)
+            await fetchFiles(root)
         }
     }
     
-    func handleFileImport(
-        _ urls: [URL],
-        at root: String,
-        onSuccess: @escaping () -> Void = {}
-    ) async {
-        for fileUrl in urls {
-            let fileName = fileUrl.lastPathComponent
+    func handleFileImport(_ urls: [URL], at root: String, onSuccess: @escaping () -> Void = {}) async {
+        for fileURL in urls {
+            let fileName = fileURL.lastPathComponent
             
-            guard let mimeType = getMimeType(fileUrl) else {
+            guard let mimeType = getMimeType(fileURL) else {
                 print("Unable to determine MIME type for file:", fileName)
                 continue
             }
@@ -173,13 +147,7 @@ final class FileTabVM: ObservableObject {
             do {
                 let url = try await fileUploadAPI(id)
                 
-                self.uploadFile(
-                    url,
-                    name: fileName,
-                    at: root,
-                    mimeType: mimeType,
-                    fileUrl: fileUrl
-                )
+                self.uploadFile(url, name: fileName, at: root, mimeType: mimeType, fileURL: fileURL)
                 
                 await fetchFiles(root)
                 
@@ -190,10 +158,7 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func handleImageImport(
-        _ image: UIImage,
-        at root: String
-    ) async {
+    func handleImageImport(_ image: UIImage, at root: String) async {
         guard let imageData = image.heicData() else {
             print("Unable to convert image to data")
             return
@@ -213,13 +178,7 @@ final class FileTabVM: ObservableObject {
         do {
             let url = try await fileUploadAPI(id)
             
-            self.uploadFile(
-                url,
-                name: "Image\(UUID().uuidString).heic",
-                at: root,
-                mimeType: mimeType,
-                fileUrl: fileURL
-            )
+            self.uploadFile(url, name: "Image\(UUID().uuidString).heic", at: root, mimeType: mimeType, fileURL: fileURL)
             
             await fetchFiles(root)
             
@@ -231,18 +190,14 @@ final class FileTabVM: ObservableObject {
     
     func downloadFile(_ path: String) async {
         do {
-            downloadUrl = try await fileDownloadAPI(id, path: path)
+            downloadURL = try await fileDownloadAPI(id, path: path)
             self.showSafari = true
         } catch {
             SystemAlert.error(error)
         }
     }
     
-    func renameFile(
-        _ path: String,
-        from oldName: String,
-        to newName: String
-    ) async {
+    func renameFile(_ path: String, from oldName: String, to newName: String) async {
         do {
             try await fileRenameAPI(id, at: path, from: oldName, to: newName)
             await fetchFiles(path)
@@ -263,11 +218,7 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func fileCompressor(
-        _ file: String,
-        at path: String,
-        do action: CompressorActions
-    ) async {
+    func fileCompressor(_ file: String, at path: String, do action: CompressorActions) async {
         do {
             try await fileCompressorAPI(
                 id,
@@ -292,11 +243,7 @@ final class FileTabVM: ObservableObject {
         }
     }
     
-    func deleteFile(
-        _ files: String,
-        at path: String,
-        onSuccess: @escaping (() -> Void) = {}
-    ) async {
+    func deleteFile(_ files: String, at path: String, onSuccess: @escaping (() -> Void) = {}) async {
         do {
             try await fileDeleteAPI(id, files: [files], at: path)
             

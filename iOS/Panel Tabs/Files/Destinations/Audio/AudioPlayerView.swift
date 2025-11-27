@@ -4,7 +4,6 @@ import AudioVisualizer
 struct AudioPlayerView: View {
     @State private var vm: AudioPlayerVM
     @EnvironmentObject private var fileVm: FileTabVM
-    
     @Environment(\.dismiss) private var dismiss
     
     private let id, name, path: String
@@ -18,7 +17,7 @@ struct AudioPlayerView: View {
     
     var body: some View {
         VStack {
-            if let url = vm.audioUrl {
+            if let url = vm.audioURL {
                 AudioVisualizerView(url, fileName: name, image: Image(.artwork))
             } else {
                 ProgressView()
@@ -45,12 +44,12 @@ struct AudioPlayerView: View {
             }
 #else
             Menu {
-                if let url = vm.audioUrl {
+                if let url = vm.audioURL {
                     ShareLink(item: url)
                         .transition(.identity)
                 } else {
                     ShareLink(item: name)
-                        .disabled(vm.audioUrl == nil)
+                        .disabled(vm.audioURL == nil)
                 }
                 
                 Section {

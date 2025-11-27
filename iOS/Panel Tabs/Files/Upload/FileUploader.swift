@@ -40,18 +40,18 @@ final class FileUploader: NSObject, ObservableObject {
         
         let multipartData = MultipartFormData(fileData, fileName: name, mimeType: mimeType, boundary: boundary).data
         
-        let tempFileUrl = FileManager.default.temporaryDirectory
+        let tempFileURL = FileManager.default.temporaryDirectory
             .appendingPathComponent(UUID().uuidString)
         
         do {
-            try multipartData.write(to: tempFileUrl)
+            try multipartData.write(to: tempFileURL)
         } catch {
             print("Could not write multipart data to file:", error)
             return
         }
         
-        let task = session.uploadTask(with: req, fromFile: tempFileUrl) { _, _, _ in
-            try? FileManager.default.removeItem(at: tempFileUrl)
+        let task = session.uploadTask(with: req, fromFile: tempFileURL) { _, _, _ in
+            try? FileManager.default.removeItem(at: tempFileURL)
             
             Task { @MainActor in
                 self.currentUploadTask = nil
