@@ -19,13 +19,15 @@ struct MapSection: View {
     @State private var ping: Int?
     @State private var pings: [Int] = []
     
-    @State private var cameraPosition: MapCameraPosition = .region(
-        .init(
-            center: .init(latitude: 50.11056, longitude: 8.68017),
-            latitudinalMeters: 12000,
-            longitudinalMeters: 12000
-        )
+    @State private var region = MKCoordinateRegion(
+        center: .init(latitude: 50.11056, longitude: 8.68017),
+        latitudinalMeters: 12000,
+        longitudinalMeters: 12000
     )
+    
+    @State private var snapshot: UIImage?
+    
+    private let mapHeight = 160.0
     
     private var address: String? {
         let allocation = server.relationships.allocations.data.map(\.attributes).first {
@@ -97,7 +99,7 @@ struct MapSection: View {
             .padding(.horizontal)
             .offset(y: 5)
             
-            Map(position: $cameraPosition, interactionModes: [])
+            mapSnapshotView
         }
         .contentShape(.rect(cornerRadius: 16))
         .contextMenu {
@@ -124,14 +126,42 @@ struct MapSection: View {
         }
     }
     
+    private var mapSnapshotView: some View {
+        ZStack {
+            if let snapshot {
+                Image(uiImage: snapshot)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .clipped()
+                    .transition(.opacity.combined(with: .scale(scale: 0.98)))
+            } else {
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(.ultraThinMaterial)
+                    .overlay {
+                        VStack(spacing: 6) {
+                            ProgressView()
+                                .secondary()
+                            
+                            Text("Loading map...")
+                                .footnote()
+                                .secondary()
+                        }
+                    }
+            }
+        }
+        .frame(maxWidth: .infinity, minHeight: mapHeight, maxHeight: mapHeight)
+        .clipShape(.rect(cornerRadius: 12))
+    }
+    
     private func checkPing() {
         guard let address else {
             print("Ping error: Invalid Address")
             return
         }
         
-        tcpPing(host: address, port: 22) { result in
-            switch result {
+        tcpPing(host: address, port: 22) {
+            switch $0 {
             case .success(let pingDuration):
                 let ping = Int(round(pingDuration * 1000))
                 
@@ -161,12 +191,42 @@ struct MapSection: View {
         }
         
         let scaleMeters = isMoscow ? 25000.0 : 12000
+        let newRegion = MKCoordinateRegion(center: center, latitudinalMeters: scaleMeters, longitudinalMeters: scaleMeters)
         
-        cameraPosition = .region(.init(
-            center: center,
-            latitudinalMeters: scaleMeters,
-            longitudinalMeters: scaleMeters
-        ))
+        region = newRegion
+        makeSnapshot(for: newRegion)
+    }
+    
+    private func makeSnapshot(for region: MKCoordinateRegion) {
+        let options = MKMapSnapshotter.Options()
+        options.region = region
+        options.scale = UIScreen.main.scale
+        options.size = snapshotSize()
+        options.showsBuildings = true
+        options.pointOfInterestFilter = .excludingAll
+        
+        let snapshotter = MKMapSnapshotter(options: options)
+        
+        snapshotter.start { snapshot, error in
+            guard let snapshot else {
+                if let error {
+                    print("Map snapshot error:", error.localizedDescription)
+                }
+                
+                return
+            }
+            
+            Task { @MainActor in
+                withAnimation(.easeInOut(duration: 0.2)) {
+                    self.snapshot = snapshot.image
+                }
+            }
+        }
+    }
+    
+    private func snapshotSize() -> CGSize {
+        let width = UIScreen.main.bounds.width - 32
+        return CGSize(width: max(width, 280), height: mapHeight)
     }
 }
 
