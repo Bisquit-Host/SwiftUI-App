@@ -6,18 +6,14 @@ extension ServerListVM {
             return
         }
         
-        let score = self.servers.filter {
-            $0.serverOwner
-        }.count
+        let score = self.servers.filter(\.serverOwner).count
         
         do {
             try await GKLeaderboard.submitScore(
-                score, context: 0,
-                player: GKLocalPlayer.local,
-                leaderboardIDs: ["owned_servers"]
+                score, context: 0, player: GKLocalPlayer.local, leaderboardIDs: ["owned_servers"]
             )
             
-            print("Score submitted")
+            print("Score submitted", score)
         } catch {
             print("Failed to submit score:", error.localizedDescription)
         }
