@@ -55,14 +55,15 @@ final class ServerListVM {
         }
     }
     
-    // Caching
-    func loadServers() {
+    /// Loads server list array from UserDefaults
+    func loadCachedServers() {
         if let loadedServers = UserDefaults.standard.serverAttributesArray(forKey: "servers") {
             servers = loadedServers
         }
     }
     
-    private func saveServers() {
+    /// Saves server list array to UserDefaults
+    private func cacheServers() {
         UserDefaults.standard.setServerAttributesArray(servers, forKey: "servers")
     }
     
@@ -72,7 +73,7 @@ final class ServerListVM {
             servers = model.data.map(\.attributes)
             
             if searchPrompt == nil {
-                saveServers()
+                cacheServers()
                 await submitScore()
                 
 #if canImport(CoreSpotlight) && !os(tvOS)
