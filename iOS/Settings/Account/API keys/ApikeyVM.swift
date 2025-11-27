@@ -14,20 +14,17 @@ final class ApikeyVM {
         }
     }
     
-    func create(
-        _ identifier: String,
-        onSuccess: @escaping () -> Void
-    ) async {
+    func create(_ identifier: String, onSuccess: @escaping () -> Void) async {
         do {
             let model = try await apiKeyCreateAPI(identifier)
             let id = model.attributes.id
             let token = model.meta?.token
-            
+#if !os(tvOS)
             if let token {
                 Pasteboard.copy(id + token)
                 SystemAlert.copied()
             }
-            
+#endif
             await fetchKeys()
             onSuccess()
         } catch {

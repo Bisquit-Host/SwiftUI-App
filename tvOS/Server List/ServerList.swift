@@ -9,6 +9,8 @@ struct ServerList: View {
         @Bindable var vm = vm
         
         List {
+            ServerListTips()
+            
             if securityTasks.alertUpdate {
                 ServerListUpdateAlert()
             }
@@ -17,6 +19,7 @@ struct ServerList: View {
                 ServerCardParent($0)
             }
         }
+        .navigationTitle("Servers")
         .background(BisquitFall())
         .task {
             await vm.fetchServers(store.adminServerList)

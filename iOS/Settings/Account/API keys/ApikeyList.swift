@@ -22,7 +22,9 @@ struct ApikeyList: View {
         .sheet($sheetCreate) {
             CreateApikey()
         }
+#if !os(tvOS)
         .scrollContentBackground(.hidden)
+#endif
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 DismissButton()
