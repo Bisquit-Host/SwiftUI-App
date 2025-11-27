@@ -24,9 +24,7 @@ struct EnableCodeInputCard: View {
                 .padding(.horizontal)
                 .background(.ultraThinMaterial, in: .rect(cornerRadius: 14))
             
-            Button {
-                onVerify()
-            } label: {
+            Button(action: onVerify) {
                 Text("Verify & Enable")
                     .semibold()
                     .frame(maxWidth: .infinity)

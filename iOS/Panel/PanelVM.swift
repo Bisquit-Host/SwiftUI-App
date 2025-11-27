@@ -123,17 +123,14 @@ final class PanelVM {
                 do {
                     let jsonData = try JSONSerialization.data(withJSONObject: stats, options: [])
                     
-                    let decoder = JSONDecoder()
-                    decoder.keyDecodingStrategy = .convertFromSnakeCase
-                    
-                    let stats = try decoder.decode(ServerStats.self, from: jsonData)
+                    let stats = try JSONDecoder().decode(ServerStats.self, from: jsonData)
                     
                     uptime = stats.uptime
                     
                     withAnimation {
                         cpuUsage = stats.cpu
-                        ramUsage = stats.memory
-                        diskUsage = stats.disk / pow(1024, 2)
+                        ramUsage = Double(stats.memory)
+                        diskUsage = Double(stats.disk) / pow(1024, 2)
 #if os(tvOS)
                         cpuValues.append(Value(id: cpuValues.count, value: cpuUsage))
                         ramValues.append(Value(id: ramValues.count, value: ramUsage))

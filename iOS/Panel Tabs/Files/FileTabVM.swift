@@ -45,8 +45,7 @@ final class FileTabVM: ObservableObject {
             files
         } else {
             files.filter {
-                $0.name
-                    .localizedStandardContains(searchField)
+                $0.name.localizedStandardContains(searchField)
             }
         }
     }

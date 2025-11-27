@@ -43,7 +43,7 @@ struct ServerList: View {
         .background(BackgroundImage())
         .serverListToolbar()
         .onFirstAppear {
-            vm.loadServers()
+            vm.loadCachedServers()
         }
         .refreshableTask {
             await vm.fetchServers(store.adminServerList)

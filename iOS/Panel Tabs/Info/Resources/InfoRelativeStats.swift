@@ -11,10 +11,7 @@ struct InfoRelativeStats: View {
     }
     
     private func percent(_ usage: Double, _ limit: Double) -> String {
-        guard vm.serverState != .offline,
-              limit > 0,
-              usage.isFinite
-        else { return "-" }
+        guard vm.serverState != .offline, limit > 0, usage.isFinite else { return "-" }
         
         let ratio = usage / limit * 100
         guard ratio.isFinite else { return "-" }
@@ -39,7 +36,8 @@ struct InfoRelativeStats: View {
         HStack {
             Group {
                 InfoStat("Uptime", value: Converter.millisecondsToTime(vm.uptime))
-                    .numericTransition()
+                    .numericTransition(vm.uptime)
+                    .animation(.default, value: vm.uptime)
                 
                 InfoStat("Processor", value: relativeCpu)
                 InfoStat("Memory", value: relativeRam)

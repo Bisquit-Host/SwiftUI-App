@@ -17,7 +17,7 @@ struct DashboardSidebar: View {
         .listStyle(.sidebar)
         .frame(minWidth: 400)
         .onFirstAppear {
-            vm.loadServers()
+            vm.loadCachedServers()
         }
         .refreshableTask {
             await vm.fetchServers(store.adminServerList)

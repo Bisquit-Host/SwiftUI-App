@@ -50,18 +50,14 @@ struct AllocationCard: View {
                 .contextMenu {
                     if !allocation.isDefault {
                         Button("Set default", systemImage: "star") {
-                            Task {
-                                await vm.setDefault(allocation.id)
-                            }
+                            setDefault()
                         }
                     }
                     
                     Divider()
                     
                     Button("Delete", systemImage: "trash", role: .destructive) {
-                        Task {
-                            await vm.unassignAllocation(allocation.id)
-                        }
+                        delete()
                     }
                 }
                 
@@ -70,12 +66,28 @@ struct AllocationCard: View {
                 
                 if showSaveButton {
                     Button("Save") {
-                        Task {
-                            await vm.updateNotes(allocation.id, notes: notes)
-                        }
+                        save()
                     }
                 }
             }
+        }
+    }
+    
+    private func setDefault() {
+        Task {
+            await vm.setDefault(allocation.id)
+        }
+    }
+    
+    private func delete() {
+        Task {
+            await vm.unassignAllocation(allocation.id)
+        }
+    }
+    
+    private func save() {
+        Task {
+            await vm.updateNotes(allocation.id, notes: notes)
         }
     }
 }

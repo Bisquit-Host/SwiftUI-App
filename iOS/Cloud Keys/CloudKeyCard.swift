@@ -19,13 +19,7 @@ struct CloudKeyCard: View {
     var body: some View {
         let isSelected = key.key == selectedKey
         
-        Button {
-            clearAllCookies()
-            Keychain.save(key.key, forKey: "selectedApiKey")
-            selectedKey = key.key
-            dismiss()
-            validate()
-        } label: {
+        Button(action: select) {
             HStack {
                 VStack(alignment: .leading) {
                     if key.name.isEmpty {
@@ -68,6 +62,14 @@ struct CloudKeyCard: View {
     
     private func firstEightSymbols(_ string: String) -> String {
         String(string.prefix(8)) + "..."
+    }
+    
+    private func select() {
+        clearAllCookies()
+        Keychain.save(key.key, forKey: "selectedApiKey")
+        selectedKey = key.key
+        dismiss()
+        validate()
     }
 }
 

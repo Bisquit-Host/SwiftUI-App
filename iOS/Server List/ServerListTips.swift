@@ -54,7 +54,8 @@ struct ServerListTips: View {
         .tipBackground(.ultraThinMaterial.opacity(0.75))
         .tipCornerRadius(store.compactServerList ? 12 : 16)
 #if os(iOS)
-        .scenePadding()
+        .scenePadding(.horizontal)
+        .padding(.vertical, 5)
 #elseif !os(macOS)
         .padding(.horizontal, 25)
 #endif

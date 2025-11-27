@@ -65,17 +65,7 @@ struct FilePermissionsView: View {
                 Toggle("Execute", isOn: $otherExecute)
             }
             
-            Button {
-                if isDifferent {
-                    Task {
-                        await vm.changeChmod(file.name, at: root, mode: newMode) {
-                            dismiss()
-                        }
-                    }
-                } else {
-                    dismiss()
-                }
-            } label: {
+            Button(action: updateChmod) {
                 Text(isDifferent ? "Update \(oldBits) to \(newBits)" : "Cancel")
                     .numericTransition()
                     .animation(.default, value: newMode)
@@ -120,6 +110,18 @@ struct FilePermissionsView: View {
     
     private func initBit(_ letter: Character) -> Bool {
         letter != "-"
+    }
+    
+    private func updateChmod() {
+        if isDifferent {
+            Task {
+                await vm.changeChmod(file.name, at: root, mode: newMode) {
+                    dismiss()
+                }
+            }
+        } else {
+            dismiss()
+        }
     }
     
     private func parsePermissions(_ modeBits: String) -> (
