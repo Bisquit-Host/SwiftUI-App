@@ -46,8 +46,7 @@ final class PanelVM {
             messages
         } else {
             messages.filter {
-                $0.description
-                    .localizedStandardContains(searchRule)
+                $0.description.localizedStandardContains(searchRule)
             }
         }
     }
@@ -62,6 +61,10 @@ final class PanelVM {
     //        let diff = Date().timeIntervalSince(start)
     //        print("Seconds to process:", diff)
     //    }
+    
+    func changePower(_ signal: ServerSignal) async {
+        await PteroNet.powerSignal(id, do: signal)
+    }
     
     func fetchServerDetails() async {
         do {
@@ -161,10 +164,6 @@ final class PanelVM {
         } catch {
             networkCallError(#function, error)
         }
-    }
-    
-    func changePower(_ signal: ServerSignal) async {
-        await PteroNet.powerSignal(id, do: signal)
     }
     
     func consoleDetails() async -> ConsoleDetails? {

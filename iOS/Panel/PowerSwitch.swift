@@ -8,10 +8,10 @@ struct PowerSwitch: View {
     var body: some View {
         Menu {
 #if os(visionOS)
-            powerMenuButtons()
+            PowerSwitchButtons($confirmKill)
 #else
             ControlGroup {
-                powerMenuButtons()
+                PowerSwitchButtons($confirmKill)
             }
 #endif
         } label: {
@@ -25,34 +25,6 @@ struct PowerSwitch: View {
             Button("Kill", role: .destructive) {
                 Task {
                     await vm.changePower(.kill)
-                }
-            }
-        }
-    }
-    
-    private func powerMenuButtons() -> some View {
-        Group {
-            Button("Start", systemImage: "play") {
-                Task {
-                    await vm.changePower(.start)
-                }
-            }
-            
-            Button("Restart", systemImage: "arrow.clockwise") {
-                Task {
-                    await vm.changePower(.restart)
-                }
-            }
-            
-            Button("Stop", systemImage: "pause") {
-                Task {
-                    await vm.changePower(.stop)
-                }
-            }
-            
-            Section {
-                Button("Kill", systemImage: "power", role: .destructive) {
-                    confirmKill = true
                 }
             }
         }

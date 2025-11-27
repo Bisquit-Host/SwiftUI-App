@@ -989,6 +989,7 @@
 				Panel/PanelTab.swift,
 				Panel/PanelVM.swift,
 				Panel/PowerSwitch.swift,
+				Panel/PowerSwitchButtons.swift,
 				Panel/ServerState.swift,
 				Panel/Tabs.swift,
 				Panel/Websocket/ServerStats.swift,
