@@ -68,15 +68,9 @@ struct MapSection: View {
                     Text(node)
                         .title3(.bold, design: .rounded)
                     
-                    if isMoscow {
-                        Text("Moscow, Russia")
-                            .semibold()
-                            .rounded()
-                    } else {
-                        Text("Frankfurt, Germany")
-                            .semibold()
-                            .rounded()
-                    }
+                    Text(isMoscow ? "Moscow, Russia" : "Frankfurt, Germany")
+                        .semibold()
+                        .rounded()
                 }
                 
                 Spacer()
