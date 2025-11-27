@@ -37,7 +37,11 @@ struct ServerListTips: View {
         }
         .tipBackground(.ultraThinMaterial.opacity(0.75))
         .tipCornerRadius(store.compactServerList ? 12 : 16)
+#if os(visionOS)
+        .padding(.horizontal, 25)
+#else
         .scenePadding()
+#endif
     }
 }
 

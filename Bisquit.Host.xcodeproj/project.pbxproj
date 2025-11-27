@@ -1006,10 +1006,15 @@
 				"Server List/Server Card/ServerCardContextMenu.swift",
 				"Server List/Server Card/ServerCardVM.swift",
 				"Server List/Server Card/ServerCardWide.swift",
+				"Server List/ServerListTips.swift",
 				"Server List/ServerListVM.swift",
 				"Server List/VM extensions/GameKit.swift",
 				"Server List/VM extensions/SpotlightIndex.swift",
 				"Server List/VM extensions/UserDefaults.swift",
+				"Settings/Account/API keys/ApikeyCard.swift",
+				"Settings/Account/API keys/ApikeyList.swift",
+				"Settings/Account/API keys/ApikeyVM.swift",
+				"Settings/Account/API keys/CreateApikey.swift",
 				"Settings/Debug & Dev/DebugSettingsTips.swift",
 				"Settings/Debug & Dev/GamepadDebug.swift",
 				Settings/Design/Background/BackgroundImageHelper.swift,
@@ -2552,7 +2557,7 @@
 				INFOPLIST_FILE = watchOS/watchOS.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "host.bisquit.Bisquit-host";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "host.bisquit.Bisquit-host.debug";
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3301,6 +3306,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = macOS/macOS.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -3344,6 +3350,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = macOS/macOS.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
