@@ -86,13 +86,17 @@ struct FileContextMenu: ViewModifier {
                     .limitInputLength($vm.newFileName, length: 255)
                 
                 Button("Rename", role: .destructive) {
-                    Task {
-                        await vm.renameFile(path, from: name, to: vm.newFileName)
-                    }
-                    
-                    vm.newFileName = ""
+                    rename()
                 }
             }
+    }
+    
+    private func rename() {
+        Task {
+            await vm.renameFile(path, from: name, to: vm.newFileName)
+        }
+        
+        vm.newFileName = ""
     }
 }
 
