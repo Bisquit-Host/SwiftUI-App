@@ -4,6 +4,8 @@ import MapKit
 import SafariCover
 
 struct MapSection: View {
+    @Environment(\.displayScale) private var displayScale
+    
     private let server: ServerAttributes
     private let node: String
     private let allocations: [AllocationAttributes]
@@ -14,10 +16,10 @@ struct MapSection: View {
         allocations = server.relationships.allocations.data.map(\.attributes)
     }
     
-    private let timer = Timer.publish(every: 1, on: .main, in: .default).autoconnect()
-    
     @State private var ping: Int?
     @State private var pings: [Int] = []
+    @State private var snapshot: UIImage?
+    @State private var mapWidth: CGFloat?
     
     @State private var region = MKCoordinateRegion(
         center: .init(latitude: 50.11056, longitude: 8.68017),
@@ -25,9 +27,8 @@ struct MapSection: View {
         longitudinalMeters: 12000
     )
     
-    @State private var snapshot: UIImage?
-    
-    private let mapHeight = 160.0
+    private let mapHeight: CGFloat = 160
+    private let timer = Timer.publish(every: 1, on: .main, in: .default).autoconnect()
     
     private var address: String? {
         let allocation = server.relationships.allocations.data.map(\.attributes).first {
@@ -121,27 +122,38 @@ struct MapSection: View {
     }
     
     private var mapSnapshotView: some View {
-        ZStack {
-            if let snapshot {
-                Image(uiImage: snapshot)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .clipped()
-                    .transition(.opacity.combined(with: .scale(scale: 0.98)))
-            } else {
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(.ultraThinMaterial)
-                    .overlay {
-                        VStack(spacing: 6) {
-                            ProgressView()
-                                .secondary()
-                            
-                            Text("Loading map...")
-                                .footnote()
-                                .secondary()
+        GeometryReader { proxy in
+            let width = proxy.size.width
+            let height = proxy.size.height
+            
+            ZStack {
+                if let snapshot {
+                    Image(uiImage: snapshot)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .clipped()
+                        .transition(.opacity.combined(with: .scale(scale: 0.98)))
+                } else {
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(.ultraThinMaterial)
+                        .overlay {
+                            VStack(spacing: 6) {
+                                ProgressView()
+                                
+                                Text("Loading map...")
+                                    .footnote()
+                            }
+                            .secondary()
                         }
-                    }
+                }
+            }
+            .frame(width: width, height: height)
+            .onAppear {
+                updateSnapshotWidth(width)
+            }
+            .onChange(of: width) { _, newWidth in
+                updateSnapshotWidth(newWidth)
             }
         }
         .frame(maxWidth: .infinity, minHeight: mapHeight, maxHeight: mapHeight)
@@ -188,14 +200,14 @@ struct MapSection: View {
         let newRegion = MKCoordinateRegion(center: center, latitudinalMeters: scaleMeters, longitudinalMeters: scaleMeters)
         
         region = newRegion
-        makeSnapshot(for: newRegion)
+        makeSnapshot(for: newRegion, mapWidth: mapWidth)
     }
     
-    private func makeSnapshot(for region: MKCoordinateRegion) {
+    private func makeSnapshot(for region: MKCoordinateRegion, mapWidth: CGFloat?) {
         let options = MKMapSnapshotter.Options()
         options.region = region
-        options.scale = UIScreen.main.scale
-        options.size = snapshotSize()
+        options.scale = displayScale
+        options.size = snapshotSize(for: mapWidth)
         options.showsBuildings = true
         options.pointOfInterestFilter = .excludingAll
         
@@ -218,9 +230,20 @@ struct MapSection: View {
         }
     }
     
-    private func snapshotSize() -> CGSize {
-        let width = UIScreen.main.bounds.width - 32
-        return CGSize(width: max(width, 280), height: mapHeight)
+    private func snapshotSize(for width: CGFloat?) -> CGSize {
+        let baseWidth = width ?? 320
+        return CGSize(width: max(baseWidth, 280), height: mapHeight)
+    }
+    
+    private func updateSnapshotWidth(_ width: CGFloat) {
+        guard width > 0 else { return }
+        
+        let adjustedWidth = max(width, 280)
+        
+        if mapWidth != adjustedWidth {
+            mapWidth = adjustedWidth
+            makeSnapshot(for: region, mapWidth: adjustedWidth)
+        }
     }
 }
 
