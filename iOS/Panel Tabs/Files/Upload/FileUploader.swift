@@ -6,22 +6,22 @@ final class FileUploader: NSObject, ObservableObject {
     private var session: URLSession!
     private var currentUploadTask: URLSessionUploadTask?
     
-    func uploadFile(
-        _ urlString: String,
-        name: String,
-        mimeType: String,
-        fileUrl: URL
-    ) {
-        let accessFiles = fileUrl.startAccessingSecurityScopedResource()
+    func cancelUpload() {
+        currentUploadTask?.cancel()
+        currentUploadTask = nil
+    }
+    
+    func uploadFile(_ urlString: String, name: String, mimeType: String, fileURL: URL) {
+        let accessFiles = fileURL.startAccessingSecurityScopedResource()
         
         defer {
             if accessFiles {
-                fileUrl.stopAccessingSecurityScopedResource()
+                fileURL.stopAccessingSecurityScopedResource()
             }
         }
         
-        guard let fileData = try? Data(contentsOf: fileUrl) else {
-            print("Could not retrieve data from file at URL:", fileUrl)
+        guard let fileData = try? Data(contentsOf: fileURL) else {
+            print("Could not retrieve data from file at URL:", fileURL)
             return
         }
         
@@ -61,21 +61,10 @@ final class FileUploader: NSObject, ObservableObject {
         currentUploadTask = task
         task.resume()
     }
-    
-    func cancelUpload() {
-        currentUploadTask?.cancel()
-        currentUploadTask = nil
-    }
 }
 
 extension FileUploader: @preconcurrency URLSessionDataDelegate {
-    func urlSession(
-        _ session: URLSession,
-        task: URLSessionTask,
-        didSendBodyData bytesSent: Int64,
-        totalBytesSent: Int64,
-        totalBytesExpectedToSend: Int64
-    ) {
+    func urlSession(_ session: URLSession, task: URLSessionTask, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) {
         withAnimation {
             uploadProgress = Float(totalBytesSent) / Float(totalBytesExpectedToSend)
         }

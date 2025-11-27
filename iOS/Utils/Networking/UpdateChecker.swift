@@ -15,10 +15,7 @@ final class UpdateChecker {
     func checkForUpdates() async {
         let path = "https://itunes.apple.com/lookup?bundleId=host.bisquit.Bisquit-Host"
         
-        guard
-            let currentVersion = Bundle.version,
-            let url = URL(string: path)
-        else {
+        guard let currentVersion = Bundle.version, let url = URL(string: path) else {
             return
         }
         
