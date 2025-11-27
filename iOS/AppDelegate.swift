@@ -32,7 +32,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
                 return
             }
             
-            DispatchQueue.main.async {
+            Task { @MainActor in
                 application.registerForRemoteNotifications()
             }
         }
