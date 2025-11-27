@@ -38,16 +38,12 @@ struct FileContextMenu: ViewModifier {
                 }
                 
                 Button(isArchive ? "Decompress" : "Compress", systemImage: isArchive ? "arrow.up.bin" : "archivebox") {
-                    Task {
-                        await vm.fileCompressor(name, at: path, do: isArchive ? .decompress : .compress)
-                    }
+                    archive()
                 }
                 
                 if !mimeType.contains("directory") {
                     Button("Duplicate", systemImage: "plus.square.on.square") {
-                        Task {
-                            await vm.duplicateFile(name, at: path + "/")
-                        }
+                        duplicate()
                     }
                 }
                 
@@ -59,18 +55,14 @@ struct FileContextMenu: ViewModifier {
                 
                 if !mimeType.contains("directory") {
                     Button("Download and share", systemImage: "square.and.arrow.up") {
-                        Task {
-                            await vm.downloadFile(path + "/" + name)
-                        }
+                        downloadAndShare()
                     }
                 }
                 
                 Divider()
                 
                 Button("Delete", systemImage: "trash", role: .destructive) {
-                    Task {
-                        await vm.deleteFile(name, at: path)
-                    }
+                    delete()
                 }
             }
             .sheet($sheetPermissions) {
@@ -87,12 +79,36 @@ struct FileContextMenu: ViewModifier {
             }
     }
     
+    private func archive() {
+        Task {
+            await vm.fileCompressor(name, at: path, do: isArchive ? .decompress : .compress)
+        }
+    }
+    
     private func rename() {
         Task {
             await vm.renameFile(path, from: name, to: vm.newFileName)
         }
         
         vm.newFileName = ""
+    }
+    
+    private func delete() {
+        Task {
+            await vm.deleteFile(name, at: path)
+        }
+    }
+    
+    private func downloadAndShare() {
+        Task {
+            await vm.downloadFile(path + "/" + name)
+        }
+    }
+    
+    private func duplicate() {
+        Task {
+            await vm.duplicateFile(name, at: path + "/")
+        }
     }
 }
 
