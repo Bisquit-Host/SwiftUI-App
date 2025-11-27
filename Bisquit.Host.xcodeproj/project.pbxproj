@@ -352,6 +352,7 @@
 		F38353F52ECE954600535F26 /* Exceptions for "watchOS" folder in "watchOS" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				"watchOS-debug.plist",
 				watchOS.plist,
 			);
 			target = F31BA5322958FF7D0006D126 /* watchOS */;
