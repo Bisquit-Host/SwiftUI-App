@@ -10,13 +10,13 @@ final class QuickLookViewVM {
         
         do {
             let url = try await fileDownloadAPI(id, path: root + "/" + file)
-            downloadFile(url, name: file)
+            await downloadFile(url, name: file)
         } catch {
             SystemAlert.error(error)
         }
     }
     
-    private func downloadFile(_ urlString: String, name: String) {
+    private func downloadFile(_ urlString: String, name: String) async {
         guard let url = URL(string: urlString) else {
             print("Invalid URL")
             return
@@ -25,23 +25,17 @@ final class QuickLookViewVM {
         let tempDirURL = FileManager.default.temporaryDirectory
         let destinationURL = tempDirURL.appendingPathComponent(name)
         
-        URLSession.shared.downloadTask(with: url) { location, _, error in
-            guard let location, error == nil else { return }
+        do {
+            let (location, _) = try await URLSession.shared.download(from: url)
             
-            do {
-                if FileManager.default.fileExists(atPath: destinationURL.path) {
-                    try FileManager.default.removeItem(at: destinationURL)
-                }
-                
-                try FileManager.default.copyItem(at: location, to: destinationURL)
-                
-                Task { @MainActor in
-                    self.fileURL = destinationURL
-                }
-            } catch {
-                print("Error during file copy:", error.localizedDescription)
+            if FileManager.default.fileExists(atPath: destinationURL.path) {
+                try FileManager.default.removeItem(at: destinationURL)
             }
+            
+            try FileManager.default.copyItem(at: location, to: destinationURL)
+            fileURL = destinationURL
+        } catch {
+            print("Error during file copy:", error.localizedDescription)
         }
-        .resume()
     }
 }
