@@ -5,7 +5,7 @@ struct ServerListUpdateAlert: View {
     
     var body: some View {
         Section {
-            if let url = URL(string: "https://apps.apple.com/app/bisquit-host/id1639409934") {
+            if let url = URL(string: Endpoint.updateApp) {
                 Button {
                     openURL(url)
                 } label: {

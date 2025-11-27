@@ -11,6 +11,7 @@ import GaypadKit
 struct BisquitHost: App {
     private var nav = NavState()
     @StateObject private var store = ValueStore()
+    @State private var securityTasks = SecurityTasks()
     
     private let container: ModelContainer
     
@@ -41,6 +42,9 @@ struct BisquitHost: App {
         WindowGroup {
             DashboardShell()
                 .onContinueUserActivity(CSSearchableItemActionType, perform: handleSpotlightActivity)
+                .onFirstAppear {
+                    await securityTasks.startCheck()
+                }
         }
         .environment(nav)
         .environmentObject(store)

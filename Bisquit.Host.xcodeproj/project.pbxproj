@@ -630,7 +630,7 @@
 				Utils/Networking/Endpoint.swift,
 				Utils/Networking/NetworkCalls.swift,
 				Utils/Networking/Prefetcher.swift,
-				Utils/Networking/UpdateChecker.swift,
+				Utils/Networking/SecurityTasks.swift,
 				Utils/PreviewProp.swift,
 				Utils/SpriteKit/NetworkVM.swift,
 				Utils/System.swift,
@@ -639,6 +639,7 @@
 				Utils/Tips/TipJSONFormatter.swift,
 				Utils/Tips/TipServerCardContextMenu.swift,
 				Utils/Tips/TipSuspendedServer.swift,
+				Utils/Tips/TipUnusedAPIKeys.swift,
 				Utils/ValueStore.swift,
 			);
 			target = F31BA5322958FF7D0006D126 /* watchOS */;
@@ -734,7 +735,7 @@
 				Utils/Networking/Endpoint.swift,
 				Utils/Networking/NetworkCalls.swift,
 				Utils/Networking/Prefetcher.swift,
-				Utils/Networking/UpdateChecker.swift,
+				Utils/Networking/SecurityTasks.swift,
 				Utils/PreviewProp.swift,
 				Utils/SpriteKit/NetworkVM.swift,
 				Utils/System.swift,
@@ -743,6 +744,7 @@
 				Utils/Tips/TipJSONFormatter.swift,
 				Utils/Tips/TipServerCardContextMenu.swift,
 				Utils/Tips/TipSuspendedServer.swift,
+				Utils/Tips/TipUnusedAPIKeys.swift,
 				Utils/ValueStore.swift,
 			);
 			target = F3E08E9F2A2CE17800116C1C /* macOS */;
@@ -882,7 +884,7 @@
 				Utils/Networking/Endpoint.swift,
 				Utils/Networking/NetworkCalls.swift,
 				Utils/Networking/Prefetcher.swift,
-				Utils/Networking/UpdateChecker.swift,
+				Utils/Networking/SecurityTasks.swift,
 				Utils/PreviewProp.swift,
 				Utils/ProgressBar.swift,
 				Utils/SpriteKit/Bisquits.sks,
@@ -894,6 +896,7 @@
 				Utils/Tips/TipJSONFormatter.swift,
 				Utils/Tips/TipServerCardContextMenu.swift,
 				Utils/Tips/TipSuspendedServer.swift,
+				Utils/Tips/TipUnusedAPIKeys.swift,
 				Utils/ValueStore.swift,
 			);
 			target = F3000E04295A341000ABD30A /* tvOS */;
@@ -1021,7 +1024,7 @@
 				Utils/Networking/Endpoint.swift,
 				Utils/Networking/NetworkCalls.swift,
 				Utils/Networking/Prefetcher.swift,
-				Utils/Networking/UpdateChecker.swift,
+				Utils/Networking/SecurityTasks.swift,
 				Utils/PreviewProp.swift,
 				Utils/SpriteKit/NetworkVM.swift,
 				Utils/System.swift,
@@ -1030,6 +1033,7 @@
 				Utils/Tips/TipJSONFormatter.swift,
 				Utils/Tips/TipServerCardContextMenu.swift,
 				Utils/Tips/TipSuspendedServer.swift,
+				Utils/Tips/TipUnusedAPIKeys.swift,
 				Utils/ValueStore.swift,
 			);
 			target = F3BD76F12A43C890003E7385 /* visionOS */;
@@ -1151,7 +1155,7 @@
 				Utils/Networking/Endpoint.swift,
 				Utils/Networking/NetworkCalls.swift,
 				Utils/Networking/Prefetcher.swift,
-				Utils/Networking/UpdateChecker.swift,
+				Utils/Networking/SecurityTasks.swift,
 				Utils/PreviewProp.swift,
 				Utils/slowSnow.swift,
 				Utils/System.swift,
