@@ -40,7 +40,7 @@ struct ServerListTips: View {
                 }
             }
 #else
-            unusedAPIKeysTip(isPresented: $securityTasks.alertUnusedAPIKeys)
+            unusedAPIKeysTip($securityTasks.alertUnusedAPIKeys)
                 .sheet($sheetAPIKeyList) {
                     NavigationStack {
                         ApikeyList()
