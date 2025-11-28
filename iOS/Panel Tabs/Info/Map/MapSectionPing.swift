@@ -43,36 +43,33 @@ struct MapSectionPing: View {
                     }
             }
         }
+        .animation(.default, value: ping)
         .onReceive(timer) { _ in
-            checkPing()
+            Task {
+                await checkPing()
+            }
         }
         .onDisappear {
             timer.upstream.connect().cancel()
         }
     }
     
-    private func checkPing() {
+    private func checkPing() async {
         guard let address else {
             print("Ping error: Invalid Address")
             return
         }
         
-        tcpPing(host: address, port: 22) {
-            switch $0 {
-            case .success(let pingDuration):
-                let ping = Int(round(pingDuration * 1000))
-                
-                Task { @MainActor in
-                    pings.append(ping)
-                    
-                    if pings.count > 1 {
-                        self.ping = pings.min()
-                        pings = []
-                    }
-                }
-            default:
-                break
-            }
+        guard let measuredPing = try? await tcpPing(host: address, port: 22) else {
+            return
+        }
+        
+        let ping = Int(round(measuredPing * 1000))
+        pings.append(ping)
+        
+        if pings.count > 2 {
+            self.ping = pings.min()
+            pings = []
         }
     }
 }
