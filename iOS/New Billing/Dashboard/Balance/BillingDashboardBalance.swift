@@ -1,8 +1,15 @@
 import SwiftUI
 
 struct BillingDashboardBalance: View {
-    let balance: Double
-    let currency: String
+    private let user: BillingUser
+    private let balance: Double
+    private let currency: String
+    
+    init(_ user: BillingUser) {
+        self.user = user
+        self.balance = user.totalBalance
+        self.currency = user.currency
+    }
     
     private var currencySymbol: String {
         switch currency {
@@ -37,12 +44,12 @@ struct BillingDashboardBalance: View {
         .semibold()
         .monospacedDigit()
         .sheet($sheetTopup) {
-            SheetTopup()
+            SheetTopup(user)
         }
     }
 }
 
 #Preview {
-    BillingDashboardBalance(balance: 200, currency: "EUR")
+    BillingDashboardBalance(.preview)
         .darkSchemePreferred()
 }

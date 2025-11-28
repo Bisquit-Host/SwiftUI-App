@@ -36,7 +36,7 @@ struct BillingDashboard: View {
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 if let user = vm.user {
-                    BillingDashboardBalance(balance: Double(user.balance), currency: user.currency)
+                    BillingDashboardBalance(user)
                 }
             }
             
