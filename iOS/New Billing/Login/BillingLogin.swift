@@ -3,7 +3,6 @@ import HCaptcha
 
 struct BillingLogin: View {
     @State private var vm = BillingLoginVM()
-    @Environment(NavState.self) private var nav
     @EnvironmentObject private var store: ValueStore
     
     @State private var sheetHcaptcha = false
@@ -46,10 +45,13 @@ struct BillingLogin: View {
             }
             
             store.testExpiresIn = response.expiresIn
-            store.testAccessToken = response.accessToken
             store.testRefreshToken = response.refreshToken
             
-            nav.navigate(.toBillingDashboard)
+            try await Task.sleep(for: .seconds(0.5))
+            
+            withAnimation {
+                store.testAccessToken = response.accessToken
+            }
         }
     }
 }

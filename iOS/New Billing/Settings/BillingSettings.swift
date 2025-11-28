@@ -3,6 +3,7 @@ import SwiftUI
 struct BillingSettings: View {
     @State private var vm = BillingSettingsVM()
     @EnvironmentObject private var store: ValueStore
+    @Environment(\.dismiss) private var dismiss
     
     @Binding private var user: BillingUser?
     
@@ -32,17 +33,29 @@ struct BillingSettings: View {
                     .animation(.easeInOut, value: user)
                 }
                 
-                GroupBox("Debug") {
-                    Toggle("Test billing", isOn: $store.testBilling)
+                BillingSectionCard("Debug") {
+                    BillingToggleRow("Test billing", icon: "testtube.2", tint: .purple, isOn: $store.testBilling)
                     
-                    Button("Log out", role: .destructive) {
-                        store.testAccessToken = ""
+                    BillingActionRow("Log out", icon: "rectangle.portrait.and.arrow.right", tint: .red, role: .destructive) {
+                        logout()
                     }
                 }
             }
         }
         .padding()
         .environment(vm)
+    }
+    
+    private func logout() {
+        dismiss()
+        
+        Task {
+            try await Task.sleep(for: .seconds(0.5))
+            
+            withAnimation {
+                store.testAccessToken = ""
+            }
+        }
     }
 }
 
