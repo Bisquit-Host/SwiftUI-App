@@ -2,7 +2,7 @@ import SwiftUI
 
 struct SheetTopup: View {
     var body: some View {
-        VStack {
+        List {
             Text("Top up")
         }
     }
