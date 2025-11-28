@@ -15,6 +15,7 @@ struct MetricList: View {
             }
         }
         .navigationTitle("Metrics")
+        .environment(vm)
         .refreshableTask {
             vm.loadFiles()
         }

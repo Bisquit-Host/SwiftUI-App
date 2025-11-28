@@ -8,9 +8,18 @@ struct BillingDashboard: View {
     var body: some View {
         VStack(alignment: .leading) {
             ScrollView {
-                Text("Dashboard")
-                
-                Text("Support")
+                VStack(alignment: .leading, spacing: 16) {
+                    NavigationLink {
+                        SupportTicketsList()
+                    } label: {
+                        Label("Support", systemImage: "lifepreserver.fill")
+                            .headline()
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding()
+                            .background(.ultraThinMaterial, in: .rect(cornerRadius: 12))
+                    }
+                }
+                .padding()
             }
         }
         .navigationTitle("Dashboard")
@@ -41,6 +50,9 @@ struct BillingDashboard: View {
 }
 
 #Preview {
-    BillingDashboard()
-        .darkSchemePreferred()
+    NavigationStack {
+        BillingDashboard()
+    }
+    .environmentObject(ValueStore())
+    .darkSchemePreferred()
 }
