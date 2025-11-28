@@ -40,7 +40,7 @@ struct SupportMediaViewer: View {
     }
     
     private func loadMedia() async {
-        guard let url = buildURL(from: mediaPath) else {
+        guard let url = buildURL(mediaPath) else {
             print("Invalid media URL")
             isLoading = false
             
@@ -56,7 +56,7 @@ struct SupportMediaViewer: View {
             if let http = response as? HTTPURLResponse, http.statusCode >= 400 {
                 let detail = String(data: data, encoding: .utf8) ?? ""
                 
-                print("Failed to load media (\(http.statusCode)) \(detail)")
+                print(http.statusCode, "Failed to load media;", detail)
                 isLoading = false
                 
                 return
@@ -77,7 +77,7 @@ struct SupportMediaViewer: View {
         }
     }
     
-    private func buildURL(from path: String) -> URL? {
+    private func buildURL(_ path: String) -> URL? {
         if let url = URL(string: path), url.scheme != nil {
             return url
         }
