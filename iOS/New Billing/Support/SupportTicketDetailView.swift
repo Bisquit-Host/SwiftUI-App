@@ -1,11 +1,11 @@
 import SwiftUI
 
 struct SupportTicketDetailView: View {
-    @EnvironmentObject private var store: ValueStore
     @State private var vm: SupportTicketDetailVM
+    @EnvironmentObject private var store: ValueStore
     
-    init(ticket: SupportTicketDTO) {
-        _vm = State(initialValue: SupportTicketDetailVM(ticket: ticket))
+    init(_ ticket: SupportTicketDTO) {
+        _vm = State(initialValue: SupportTicketDetailVM(ticket))
     }
     
     var body: some View {
@@ -133,7 +133,7 @@ private struct SupportMessageRow: View {
 
 #Preview {
     NavigationStack {
-        SupportTicketDetailView(ticket: .init(id: 1, title: "Example issue", status: "open", userId: 1, createdAt: "2024-01-01T10:00:00Z", updatedAt: "2024-01-01T10:00:00Z"))
+        SupportTicketDetailView(.init(id: 1, title: "Example issue", status: "open", userId: 1, createdAt: "2024-01-01T10:00:00Z", updatedAt: "2024-01-01T10:00:00Z"))
     }
     .environmentObject(ValueStore())
     .darkSchemePreferred()

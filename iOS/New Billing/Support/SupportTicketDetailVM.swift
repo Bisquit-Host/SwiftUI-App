@@ -3,6 +3,11 @@ import Foundation
 @Observable
 final class SupportTicketDetailVM {
     var ticket: SupportTicketDTO
+    
+    init(_ ticket: SupportTicketDTO) {
+        self.ticket = ticket
+    }
+    
     var messages: [SupportMessageDTO] = []
     var isStreaming = false
     var isSending = false
