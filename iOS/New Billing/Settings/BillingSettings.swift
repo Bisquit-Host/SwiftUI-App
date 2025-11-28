@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct BillingSettings: View {
+    @State private var vm = BillingSettingsVM()
     @EnvironmentObject private var store: ValueStore
     
     @Binding private var user: BillingUser?
@@ -41,6 +42,7 @@ struct BillingSettings: View {
             }
         }
         .padding()
+        .environment(vm)
     }
 }
 

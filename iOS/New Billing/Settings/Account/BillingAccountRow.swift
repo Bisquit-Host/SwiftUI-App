@@ -29,6 +29,7 @@ struct BillingAccountRow: View {
                 Text(value)
                     .secondary()
                     .footnote()
+                    .numericTransition()
             }
             
             Spacer()

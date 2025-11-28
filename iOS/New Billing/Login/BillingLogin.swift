@@ -19,9 +19,10 @@ struct BillingLogin: View {
                 .autocorrectionDisabled()
                 .keyboardType(.emailAddress)
                 .textContentType(.emailAddress)
-                .autocorrectionDisabled()
+                .textInputAutocapitalization(.never)
             
             SecureField("Password", text: $store.password)
+                .textContentType(.password)
             
             Section {
                 Button("Continue") {
