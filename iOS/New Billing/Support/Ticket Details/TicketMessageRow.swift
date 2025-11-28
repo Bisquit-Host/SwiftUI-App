@@ -22,30 +22,34 @@ struct TicketMessageRow: View {
     private var bubble: some View {
         VStack(alignment: isCurrentUser ? .trailing : .leading, spacing: 6) {
             let text = message.message ?? ""
+            let media = message.media ?? []
+            let hasContent = !text.isEmpty || !media.isEmpty
             
-            if !text.isEmpty {
-                Text(text)
-                    .padding(10)
-                    .background(bubbleBackground, in: .rect(cornerRadius: 12))
-            }
-            
-            if let media = message.media, !media.isEmpty {
-                VStack(alignment: .leading, spacing: 4) {
-                    ForEach(media, id: \.self) { item in
-                        Button {
-                            onMediaTap(item)
-                        } label: {
-                            Label(item, systemImage: "paperclip")
+            if hasContent {
+                VStack(alignment: .leading, spacing: 8) {
+                    if !text.isEmpty {
+                        Text(text)
+                    }
+                    
+                    if !media.isEmpty {
+                        VStack(alignment: .leading, spacing: 6) {
+                            ForEach(media, id: \.self) { item in
+                                Button {
+                                    onMediaTap(item)
+                                } label: {
+                                    Label(item, systemImage: "paperclip")
+                                        .caption()
+                                        .lineLimit(2)
+                                        .labelIconToTitleSpacing(5)
+                                }
+                                .buttonStyle(.plain)
                                 .caption()
-                                .lineLimit(2)
-                                .padding(8)
-                                .background(bubbleBackground, in: .rect(cornerRadius: 12))
-                                .labelIconToTitleSpacing(5)
+                            }
                         }
-                        .buttonStyle(.plain)
-                        .caption()
                     }
                 }
+                .padding(10)
+                .background(bubbleBackground, in: .rect(cornerRadius: 12))
             }
             
             HStack {
