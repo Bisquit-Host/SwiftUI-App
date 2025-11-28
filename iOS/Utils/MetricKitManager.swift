@@ -37,7 +37,6 @@ final class MetricKitManager: NSObject, MXMetricManagerSubscriber {
 //            Date: \(formattedDate())
 //            """
 //        for payload in payloads {
-//
 //            let fileName = "MXMetricPayload_\(formattedDate()).txt"
 //
 //            if let memoryMetrics = payload.memoryMetrics {
