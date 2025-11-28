@@ -27,8 +27,7 @@ struct UnitTests {
         return permission
     }
     
-    @Test("AttributedString")
-    func attributedString() {
+    @Test func `AttributedString`() {
         let string = """
 Goida
 """

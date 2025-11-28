@@ -314,6 +314,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		F32450862ED9414F00B098D3 /* Exceptions for "iOS" folder in "Unit Tests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Utils/ANSIConverter.swift,
+			);
+			target = F39D18F42E45C30200A84A80 /* Unit Tests */;
+		};
 		F383537E2ECE94EA00535F26 /* Exceptions for "QuickLook Extension" folder in "QuickLook Extension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -1329,6 +1336,7 @@
 				F383BADD2ECF35E500350A0F /* Exceptions for "iOS" folder in "Widgets" target */,
 				F383BADE2ECF35E500350A0F /* Exceptions for "iOS" folder in "iMessage" target */,
 				F383BADF2ECF35E500350A0F /* Exceptions for "iOS" folder in "Intent" target */,
+				F32450862ED9414F00B098D3 /* Exceptions for "iOS" folder in "Unit Tests" target */,
 				F383BAE02ECF35E500350A0F /* Exceptions for "iOS" folder in "Unit Tests macOS" target */,
 			);
 			path = iOS;
