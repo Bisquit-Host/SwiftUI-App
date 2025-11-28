@@ -58,6 +58,7 @@ struct SupportMessageDTO: Codable, Identifiable, Hashable {
     private static let iso8601WithFractional: ISO8601DateFormatter = {
         let formatter = ISO8601DateFormatter()
         formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        
         return formatter
     }()
 }
