@@ -92,6 +92,7 @@ final class MetricKitManager: NSObject, MXMetricManagerSubscriber {
     nonisolated func formattedDate() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd_HH-mm-ss"
+        
         return formatter.string(from: Date())
     }
     
