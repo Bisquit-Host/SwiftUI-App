@@ -44,27 +44,11 @@ struct SupportTicketDetailView: View {
             .listStyle(.insetGrouped)
             
             Divider()
-            
-            HStack(alignment: .bottom, spacing: 12) {
-                TextEditor(text: $vm.composerText)
-                    .frame(minHeight: 46, maxHeight: 120)
-                    .padding(8)
-                    .background(.ultraThinMaterial, in: .rect(cornerRadius: 12))
-                
-                Button {
-                    Task {
-                        await vm.sendMessage(accessToken: store.testAccessToken)
-                    }
-                } label: {
-                    Image(systemName: vm.isSending ? "paperplane.fill" : "paperplane")
-                        .font(.title3)
-                        .padding(10)
+            SupportMessageComposer(text: $vm.composerText, isSending: vm.isSending) {
+                Task {
+                    await vm.sendMessage(accessToken: store.testAccessToken)
                 }
-                .disabled(vm.composerText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || vm.isSending)
-                .buttonStyle(.borderedProminent)
             }
-            .padding()
-            .background(.thinMaterial)
         }
         .navigationTitle("Ticket #\(vm.ticket.id)")
         .navigationBarTitleDisplayMode(.inline)
