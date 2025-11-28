@@ -1,7 +1,7 @@
 import SwiftUI
 
 @Observable
-final class SupportMediaViewerVM {
+final class TicketMediaVM {
     var image: Image?
     var isLoading = true
     

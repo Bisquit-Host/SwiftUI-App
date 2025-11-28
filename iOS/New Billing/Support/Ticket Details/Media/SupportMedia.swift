@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct SupportMediaViewer: View {
-    @State private var vm = SupportMediaViewerVM()
+struct SupportMedia: View {
+    @State private var vm = TicketMediaVM()
     
     let mediaPath: String
     let accessToken: String
@@ -38,6 +38,6 @@ struct SupportMediaViewer: View {
 }
 
 #Preview {
-    SupportMediaViewer(mediaPath: "media/example.png", accessToken: "") {}
+    SupportMedia(mediaPath: "media/example.png", accessToken: "") {}
         .darkSchemePreferred()
 }

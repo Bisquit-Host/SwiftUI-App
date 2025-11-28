@@ -60,7 +60,7 @@ struct SupportTicketDetails: View {
         .fullScreenCover(isPresented: Binding(get: { selectedMedia != nil }, set: { if !$0 { selectedMedia = nil } })) {
             NavigationStack {
                 if let media = selectedMedia {
-                    SupportMediaViewer(mediaPath: media, accessToken: store.testAccessToken) {
+                    SupportMedia(mediaPath: media, accessToken: store.testAccessToken) {
                         selectedMedia = nil
                     }
                 }
