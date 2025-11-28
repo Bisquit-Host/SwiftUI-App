@@ -33,12 +33,10 @@ struct SupportTicketDetailView: View {
                         ContentUnavailableView("No messages yet", systemImage: "ellipsis.bubble")
                     } else {
                         ForEach(vm.messages) { message in
-                            TicketMessageRow(
-                                message: message,
-                                isCurrentUser: message.userId == vm.ticket.userId,
-                                onMediaTap: { path in selectedMedia = path }
-                            )
-                                .listRowSeparator(.hidden)
+                            TicketMessageRow(message: message, isCurrentUser: message.userId == vm.ticket.userId) { path in
+                                selectedMedia = path
+                            }
+                            .listRowSeparator(.hidden)
                         }
                     }
                 }
