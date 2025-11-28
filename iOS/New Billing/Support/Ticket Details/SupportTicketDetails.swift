@@ -44,10 +44,9 @@ struct SupportTicketDetails: View {
             .listStyle(.insetGrouped)
             
             Divider()
+            
             SupportMessageComposer(text: $vm.composerText, isSending: vm.isSending) {
-                Task {
-                    await vm.sendMessage(accessToken: store.testAccessToken)
-                }
+                await vm.sendMessage(accessToken: store.testAccessToken)
             }
         }
         .navigationTitle("Ticket #\(vm.ticket.id)")

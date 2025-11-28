@@ -3,7 +3,7 @@ import SwiftUI
 struct SupportMessageComposer: View {
     @Binding var text: String
     var isSending: Bool
-    var onSend: () -> Void
+    var onSend: () async -> Void
     
     var body: some View {
         HStack(spacing: 12) {
@@ -12,7 +12,9 @@ struct SupportMessageComposer: View {
                 .background(.ultraThinMaterial, in: .rect(cornerRadius: 12))
             
             Button {
-                onSend()
+                Task {
+                    await onSend()
+                }
             } label: {
                 Image(systemName: isSending ? "paperplane.fill" : "paperplane")
                     .font(.title3)

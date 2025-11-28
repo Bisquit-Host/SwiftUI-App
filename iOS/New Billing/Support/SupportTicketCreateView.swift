@@ -29,15 +29,19 @@ struct SupportTicketCreateView: View {
             
             ToolbarItem(placement: .confirmationAction) {
                 Button("Submit") {
-                    Task {
-                        if let id = await vm.createTicket(accessToken: store.testAccessToken, title: title, message: message) {
-                            showSheet = false
-                            await vm.loadTickets(accessToken: store.testAccessToken)
-                        }
-                    }
+                    createTicket()
                 }
                 .disabled(title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ||
                           message.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+            }
+        }
+    }
+    
+    private func createTicket() {
+        Task {
+            if let _ = await vm.createTicket(accessToken: store.testAccessToken, title: title, message: message) {
+                showSheet = false
+                await vm.loadTickets(accessToken: store.testAccessToken)
             }
         }
     }
