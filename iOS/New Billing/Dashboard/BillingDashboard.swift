@@ -9,6 +9,8 @@ struct BillingDashboard: View {
         VStack(alignment: .leading) {
             ScrollView {
                 Text("Dashboard")
+                
+                Text("Support")
             }
         }
         .navigationTitle("Dashboard")
