@@ -6,7 +6,6 @@ struct AccountSettings: View {
     @Environment(ServerListVM.self) private var vm
     @Environment(NavState.self) private var nav
     @EnvironmentObject private var store: ValueStore
-    
     @Query(animation: .default) private var keys: [APIKey]
     
     @State private var sheetKeyStorage = false

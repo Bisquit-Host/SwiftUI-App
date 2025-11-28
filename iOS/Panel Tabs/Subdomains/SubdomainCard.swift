@@ -6,13 +6,11 @@ struct SubdomainCard: View {
     @Environment(\.openURL) private var openURL
     
     let subdomain: SubdomainAttributes
+    let fullDomain: String
     
     init(_ subdomain: SubdomainAttributes) {
         self.subdomain = subdomain
-    }
-    
-    private var fullDomain: String {
-        "\(subdomain.subdomain).\(subdomain.domain)"
+        fullDomain = subdomain.subdomain + "." + subdomain.domain
     }
     
     var body: some View {

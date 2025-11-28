@@ -5,19 +5,19 @@ struct FileCard: View {
     @EnvironmentObject private var vm: FileTabVM
     @Environment(\.openWindow) private var openWindow
     
-    private let id, path: String
+    private let id, path, mimeType, name: String
     private let file: FileAttributes
     
     init(_ id: String, file: FileAttributes, at path: String = "") {
         self.id = id
         self.file = file
         self.path = path
+        
+        mimeType = file.mimetype
+        name = file.name
     }
     
     var body: some View {
-        let mimeType = file.mimetype
-        let name = file.name
-        
         if mimeType.contains("directory") {
             NavigationLink {
                 FileList(id, at: path + name + "/")

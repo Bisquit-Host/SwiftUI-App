@@ -6,18 +6,16 @@ struct FileContextMenu: ViewModifier {
     
     private let file: FileAttributes
     private let path: String
+    private let isArchive: Bool
     
     init(_ file: FileAttributes, at path: String) {
         self.file = file
         self.path = path
+        isArchive = file.mimetype.contains("gzip")
     }
     
     @State private var alertRename = false
     @State private var sheetPermissions = false
-    
-    private var isArchive: Bool {
-        file.mimetype.contains("gzip")
-    }
     
     func body(content: Content) -> some View {
         let name = file.name
