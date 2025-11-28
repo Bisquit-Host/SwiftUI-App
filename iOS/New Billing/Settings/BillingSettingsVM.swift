@@ -62,6 +62,7 @@ final class BillingSettingsVM {
                 case 200:
                     newEmail = ""
                     print("Successfully changed email")
+                    SystemAlert.copied("Chck your email")
                     
                 default:
                     print(code)
