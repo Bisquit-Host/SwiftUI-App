@@ -11,13 +11,15 @@ struct BillingAccountSection: View {
     }
     
     @State private var alertRename = false
+    @State private var alertEmail = false
     
     var body: some View {
         @Bindable var vm = vm
         
         BillingSectionCard("Account") {
             BillingAccountRow("Email", icon: "envelope.fill", tint: .blue, value: user.email) {
-                
+                vm.newEmail = user.email
+                alertEmail = true
             }
             
             BillingAccountRow("Name", icon: "person.fill", tint: .cyan, value: user.name) {
@@ -30,6 +32,18 @@ struct BillingAccountSection: View {
             }
             
             BillingAccountRow("Currency", icon: "dollarsign", tint: .yellow, value: user.currency)
+        }
+        .alert("Change email", isPresented: $alertEmail) {
+            TextField("New email", text: $vm.newEmail)
+                .keyboardType(.emailAddress)
+                .textContentType(.emailAddress)
+                .textInputAutocapitalization(.never)
+                .autocorrectionDisabled()
+                .limitInputLength($vm.newEmail, length: 100)
+            
+            Button("Change", role: .destructive) {
+                changeEmail()
+            }
         }
         .alert("Change name", isPresented: $alertRename) {
             TextField("New name", text: $vm.newName)
@@ -47,6 +61,12 @@ struct BillingAccountSection: View {
             await vm.changeName {
                 await dashboardVM.fetchUserInfo()
             }
+        }
+    }
+    
+    private func changeEmail() {
+        Task {
+            await vm.changeEmail()
         }
     }
 }
