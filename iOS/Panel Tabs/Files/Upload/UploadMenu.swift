@@ -12,7 +12,6 @@ struct UploadMenu: View {
     
     @State private var image: UIImage?
     @State private var pickerItems: [PhotosPickerItem] = []
-    
     @State private var trigger = false
     @State private var pickerFile = false
     @State private var pickerCamera = false
