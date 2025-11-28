@@ -1,6 +1,6 @@
 import SwiftUI
 
-private struct TicketMessageRow: View {
+struct TicketMessageRow: View {
     let message: SupportMessageDTO
     let isCurrentUser: Bool
     
