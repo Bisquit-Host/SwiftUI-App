@@ -24,30 +24,26 @@ final class VideoFileVM {
     }
     
     private func saveVideo(_ urlString: String) {
-        let fm = FileManager.default
-        
         guard let url = URL(string: urlString) else {
             print("Invalid URL")
             return
         }
         
-        let tempDirURL = fm.temporaryDirectory
+        let tempDirURL = FileManager.default.temporaryDirectory
         let fileURL = tempDirURL.appendingPathComponent(name)
         
-        URLSession.shared.downloadTask(with: url) { location, response, error in
-            let fm = FileManager.default
-            
+        URLSession.shared.downloadTask(with: url) { location, _, error in
             guard let location, error == nil else {
                 print("Download error:", error?.localizedDescription ?? "Unknown error")
                 return
             }
             
             do {
-                if fm.fileExists(atPath: fileURL.path) {
-                    try fm.removeItem(at: fileURL)
+                if FileManager.default.fileExists(atPath: fileURL.path) {
+                    try FileManager.default.removeItem(at: fileURL)
                 }
                 
-                try fm.moveItem(at: location, to: fileURL)
+                try FileManager.default.moveItem(at: location, to: fileURL)
                 
                 Task { @MainActor in
 #if !os(watchOS) && !os(tvOS)

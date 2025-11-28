@@ -23,30 +23,26 @@ final class QuickLookFileVM {
     }
     
     private func downloadFile(_ urlString: String, name: String) {
-        let fm = FileManager.default
-        
         guard let url = URL(string: urlString) else {
             print("Invalid URL:", urlString)
             return
         }
         
-        let tempDirURL = fm.temporaryDirectory
+        let tempDirURL = FileManager.default.temporaryDirectory
         let destinationURL = tempDirURL.appendingPathComponent(name)
         
         URLSession.shared.downloadTask(with: url) { location, _, error in
-            let fm = FileManager.default
-            
             guard let location, error == nil else {
                 print("Download error:", error?.localizedDescription ?? "Unknown error")
                 return
             }
             
             do {
-                if fm.fileExists(atPath: destinationURL.path) {
-                    try fm.removeItem(at: destinationURL)
+                if FileManager.default.fileExists(atPath: destinationURL.path) {
+                    try FileManager.default.removeItem(at: destinationURL)
                 }
                 
-                try fm.copyItem(at: location, to: destinationURL)
+                try FileManager.default.copyItem(at: location, to: destinationURL)
                 
                 Task { @MainActor in
                     await self.loadAndCheckImage(destinationURL)

@@ -81,6 +81,16 @@ struct DebugSettings: View {
                 }
             }
             
+            Section("Metrics") {
+                Toggle("Save metrics", isOn: $store.saveMetrics)
+                
+                NavigationLink {
+                    MetricList()
+                } label: {
+                    Label("Saved metrics", systemImage: "doc.text.magnifyingglass")
+                }
+            }
+            
             Toggle("Test billing", isOn: $store.testBilling)
         }
         .navigationTitle("Debug")
@@ -90,14 +100,12 @@ struct DebugSettings: View {
     }
     
     private func enableExtension() {
-        do {
-            let manager = try ContactProviderManager()
-            
-            Task {
-                try await manager.enable()
+        Task {
+            do {
+                try await ContactProviderManager().enable()
+            } catch {
+                print(error.localizedDescription)
             }
-        } catch {
-            print(error.localizedDescription)
         }
     }
 }

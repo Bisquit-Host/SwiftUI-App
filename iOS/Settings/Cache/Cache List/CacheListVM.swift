@@ -20,11 +20,7 @@ final class CacheListVM {
     }
     
     private func retrieveImages(_ path: String) {
-        let fm = FileManager.default
-        
-        guard
-            let files = try? fm.contentsOfDirectory(atPath: path)
-        else {
+        guard let files = try? FileManager.default.contentsOfDirectory(atPath: path) else {
             return
         }
         
@@ -32,7 +28,7 @@ final class CacheListVM {
             let filePath = path + "/" + file
             var isDir: ObjCBool = false
             
-            guard fm.fileExists(atPath: filePath, isDirectory: &isDir) else {
+            guard FileManager.default.fileExists(atPath: filePath, isDirectory: &isDir) else {
                 return
             }
             
