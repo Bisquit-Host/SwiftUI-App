@@ -75,7 +75,7 @@ final class SupportTicketsVM {
         }
     }
     
-    func createTicket(accessToken: String, title: String, message: String) async -> Int? {
+    func createTicket(accessToken: String, title: String, message: String, attachments: [PendingAttachment]) async -> Int? {
         guard !accessToken.isEmpty else { return nil }
         
         let trimmedTitle = title.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -83,6 +83,11 @@ final class SupportTicketsVM {
         
         guard !trimmedTitle.isEmpty, !trimmedMessage.isEmpty else {
             SystemAlert.error("Title and message required", subtitle: nil)
+            return nil
+        }
+        
+        if attachments.count > 5 {
+            SystemAlert.error("Max 5 files", subtitle: "Please remove extra attachments.")
             return nil
         }
         
@@ -104,6 +109,14 @@ final class SupportTicketsVM {
         
         appendField("title", value: trimmedTitle)
         appendField("message", value: trimmedMessage)
+        
+        for file in attachments {
+            body.append(Data("--\(boundary)\r\n".utf8))
+            body.append(Data("Content-Disposition: form-data; name=\"file\"; filename=\"\(file.filename)\"\r\n".utf8))
+            body.append(Data("Content-Type: \(file.contentType)\r\n\r\n".utf8))
+            body.append(file.data)
+            body.append(Data("\r\n".utf8))
+        }
         
         if let closingData = "--\(boundary)--\r\n".data(using: .utf8) {
             body.append(closingData)

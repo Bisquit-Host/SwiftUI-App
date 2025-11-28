@@ -4,6 +4,7 @@ struct SupportTicketDetails: View {
     @State private var vm: SupportTicketDetailsVM
     @EnvironmentObject private var store: ValueStore
     @State private var selectedMedia: String? = nil
+    @State private var attachments: [PendingAttachment] = []
     
     init(_ ticket: SupportTicketDTO) {
         _vm = State(initialValue: SupportTicketDetailsVM(ticket))
@@ -45,8 +46,13 @@ struct SupportTicketDetails: View {
             
             Divider()
             
-            SupportMessageComposer(text: $vm.composerText, isSending: vm.isSending) {
-                await vm.sendMessage(accessToken: store.testAccessToken)
+            SupportMessageComposer(text: $vm.composerText,
+                                   attachments: $attachments,
+                                   isSending: vm.isSending) {
+                let success = await vm.sendMessage(accessToken: store.testAccessToken, attachments: attachments)
+                if success {
+                    attachments = []
+                }
             }
         }
         .navigationTitle("Ticket #\(vm.ticket.id)")

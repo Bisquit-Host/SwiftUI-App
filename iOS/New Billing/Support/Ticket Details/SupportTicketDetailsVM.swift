@@ -31,38 +31,56 @@ final class SupportTicketDetailsVM {
         streamTask = nil
     }
     
-    func sendMessage(accessToken: String) async {
+    func sendMessage(accessToken: String, attachments: [PendingAttachment]) async -> Bool {
         let trimmed = composerText.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmed.isEmpty else { return }
-        guard !accessToken.isEmpty else { return }
+        guard !trimmed.isEmpty || !attachments.isEmpty else { return false }
+        guard !accessToken.isEmpty else { return false }
+        
+        if attachments.count > 5 {
+            errorMessage = "Max 5 files per message."
+            return false
+        }
         
         isSending = true
         defer { isSending = false }
         
-        guard let url = URL(string: "\(baseURL)/support/tickets/\(ticket.id)/reply") else { return }
+        var mediaPaths: [String]? = nil
+        
+        if !attachments.isEmpty {
+            mediaPaths = await uploadMedia(accessToken: accessToken, attachments: attachments)
+            
+            if mediaPaths == nil {
+                return false
+            }
+        }
+        
+        guard let url = URL(string: "\(baseURL)/support/tickets/\(ticket.id)/reply") else { return false }
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         
-        let payload = CreateSupportMessageRequest(message: trimmed, media: nil)
+        let payload = CreateSupportMessageRequest(message: trimmed.isEmpty ? nil : trimmed, media: mediaPaths)
         request.httpBody = try? JSONEncoder().encode(payload)
         
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
             
             if let http = response as? HTTPURLResponse, http.statusCode >= 400 {
-                errorMessage = "Failed to send message (\(http.statusCode))"
-                return
+                let detail = String(data: data, encoding: .utf8) ?? ""
+                errorMessage = "Failed to send (\(http.statusCode)) \(detail)"
+                return false
             }
             
             let message = try JSONDecoder().decode(SupportMessageDTO.self, from: data)
             appendMessageIfNeeded(message)
             composerText = ""
             errorMessage = nil
+            return true
         } catch {
             errorMessage = error.localizedDescription
+            return false
         }
     }
     
@@ -173,5 +191,46 @@ final class SupportTicketDetailsVM {
     private func appendMessageIfNeeded(_ message: SupportMessageDTO) {
         guard messages.contains(where: { $0.id == message.id }) == false else { return }
         messages.append(message)
+    }
+    
+    private func uploadMedia(accessToken: String, attachments: [PendingAttachment]) async -> [String]? {
+        guard !attachments.isEmpty else { return [] }
+        guard let url = URL(string: "\(baseURL)/support/tickets/\(ticket.id)/media") else { return nil }
+        
+        let boundary = UUID().uuidString
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        
+        var body = Data()
+        
+        for file in attachments {
+            body.append(Data("--\(boundary)\r\n".utf8))
+            body.append(Data("Content-Disposition: form-data; name=\"file\"; filename=\"\(file.filename)\"\r\n".utf8))
+            body.append(Data("Content-Type: \(file.contentType)\r\n\r\n".utf8))
+            body.append(file.data)
+            body.append(Data("\r\n".utf8))
+        }
+        
+        body.append(Data("--\(boundary)--\r\n".utf8))
+        request.httpBody = body
+        
+        do {
+            let (data, response) = try await URLSession.shared.data(for: request)
+            
+            if let http = response as? HTTPURLResponse, http.statusCode >= 400 {
+                let raw = String(data: data, encoding: .utf8) ?? ""
+                errorMessage = "Upload failed (\(http.statusCode)) \(raw)"
+                return nil
+            }
+            
+            return try JSONDecoder().decode([String].self, from: data)
+        } catch {
+            errorMessage = error.localizedDescription
+            return nil
+        }
     }
 }
