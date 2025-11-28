@@ -1,5 +1,6 @@
 import SwiftUI
 import MapKit
+import Kingfisher
 
 struct MapView: View {
     @Environment(\.displayScale) private var displayScale
@@ -58,10 +59,8 @@ struct MapView: View {
         }
         .frame(maxWidth: .infinity, minHeight: mapHeight, maxHeight: mapHeight)
         .clipShape(.rect(cornerRadius: 12))
-        .task {
-            updateRegion()
-        }
-        .onChange(of: isMoscow) { _, _ in
+        .onFirstAppear(updateRegion)
+        .onChange(of: isMoscow) {
             updateRegion()
         }
     }
@@ -83,6 +82,24 @@ struct MapView: View {
     }
     
     private func makeSnapshot(for region: MKCoordinateRegion, mapWidth: CGFloat?) {
+        let cacheKey = snapshotCacheKey(for: region, mapWidth: mapWidth)
+        
+        KingfisherManager.shared.cache.retrieveImage(forKey: cacheKey) { result in
+            Task { @MainActor in
+                if case let .success(value) = result, let image = value.image {
+                    withAnimation(.easeInOut(duration: 0.2)) {
+                        snapshot = image
+                    }
+                    
+                    return
+                }
+                
+                createSnapshot(for: region, mapWidth: mapWidth, cacheKey: cacheKey)
+            }
+        }
+    }
+    
+    private func createSnapshot(for region: MKCoordinateRegion, mapWidth: CGFloat?, cacheKey: String) {
         let options = MKMapSnapshotter.Options()
         options.region = region
         options.scale = displayScale
@@ -93,18 +110,34 @@ struct MapView: View {
         let snapshotter = MKMapSnapshotter(options: options)
         
         snapshotter.start { snapshot, error in
-            guard let snapshot else {
-                if let error {
-                    print("Map snapshot error:", error.localizedDescription)
+            Task { @MainActor in
+                guard let snapshot else {
+                    if let error {
+                        print("Map snapshot error:", error.localizedDescription)
+                    }
+                    
+                    return
                 }
                 
-                return
-            }
-            
-            withAnimation(.easeInOut(duration: 0.2)) {
-                self.snapshot = snapshot.image
+                withAnimation(.easeInOut(duration: 0.2)) {
+                    self.snapshot = snapshot.image
+                }
+                
+                let kfOptions: KingfisherParsedOptionsInfo = .init([
+                    .cacheSerializer(FormatIndicatedCacheSerializer.png)
+                ])
+                
+                KingfisherManager.shared.cache.store(snapshot.image, forKey: cacheKey, options: kfOptions)
             }
         }
+    }
+    
+    private func snapshotCacheKey(for region: MKCoordinateRegion, mapWidth: CGFloat?) -> String {
+        let center = region.center
+        let span = region.span
+        let width = snapshotSize(for: mapWidth).width
+        
+        return "map:\(center.latitude):\(center.longitude):\(span.latitudeDelta):\(span.longitudeDelta):w=\(Int(width)):scale=\(displayScale)"
     }
     
     private func snapshotSize(for width: CGFloat?) -> CGSize {

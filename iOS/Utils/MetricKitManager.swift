@@ -10,6 +10,8 @@ final class MetricKitManager: NSObject, MXMetricManagerSubscriber {
     override init() {
         super.init()
         MXMetricManager.shared.add(self)
+        
+        print("MetricKit manager initialized")
     }
     
     deinit {
