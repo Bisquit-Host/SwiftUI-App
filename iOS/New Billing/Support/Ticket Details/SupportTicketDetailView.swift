@@ -3,6 +3,7 @@ import SwiftUI
 struct SupportTicketDetailView: View {
     @State private var vm: SupportTicketDetailVM
     @EnvironmentObject private var store: ValueStore
+    @State private var selectedMedia: String? = nil
     
     init(_ ticket: SupportTicketDTO) {
         _vm = State(initialValue: SupportTicketDetailVM(ticket))
@@ -32,7 +33,11 @@ struct SupportTicketDetailView: View {
                         ContentUnavailableView("No messages yet", systemImage: "ellipsis.bubble")
                     } else {
                         ForEach(vm.messages) { message in
-                            TicketMessageRow(message: message, isCurrentUser: message.userId == vm.ticket.userId)
+                            TicketMessageRow(
+                                message: message,
+                                isCurrentUser: message.userId == vm.ticket.userId,
+                                onMediaTap: { path in selectedMedia = path }
+                            )
                                 .listRowSeparator(.hidden)
                         }
                     }
@@ -70,6 +75,13 @@ struct SupportTicketDetailView: View {
         }
         .onDisappear {
             vm.stop()
+        }
+        .fullScreenCover(isPresented: Binding(get: { selectedMedia != nil }, set: { if !$0 { selectedMedia = nil } })) {
+            if let media = selectedMedia {
+                SupportMediaViewer(mediaPath: media, accessToken: store.testAccessToken) {
+                    selectedMedia = nil
+                }
+            }
         }
     }
     

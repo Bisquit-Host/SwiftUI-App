@@ -79,7 +79,7 @@ final class SupportTicketDetailVM {
         
         do {
             isStreaming = true
-            print("🔌 Opening SSE for ticket \(ticket.id)")
+            print("🔌 Opening SSE for ticket", ticket.id)
             let (bytes, _) = try await URLSession.shared.bytes(for: request)
             
             var currentEvent: String?
@@ -98,10 +98,12 @@ final class SupportTicketDetailVM {
                     
                     currentEvent = line.replacingOccurrences(of: "event:", with: "").trimmingCharacters(in: .whitespaces)
                     print("📡 Event:", currentEvent ?? "nil")
+                    
                 } else if line.hasPrefix("data:") {
                     let dataLine = line.replacingOccurrences(of: "data:", with: "").trimmingCharacters(in: .whitespaces)
                     currentData.append(dataLine)
                     currentData.append("\n")
+                    
                 } else if line.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                     await handleEvent(name: currentEvent, dataString: currentData)
                     currentEvent = nil
@@ -113,7 +115,8 @@ final class SupportTicketDetailVM {
             if let currentEvent, !currentData.isEmpty {
                 await handleEvent(name: currentEvent, dataString: currentData)
             }
-            print("🔌 SSE closed for ticket \(ticket.id)")
+            
+            print("🔌 SSE closed for ticket", ticket.id)
         } catch {
             errorMessage = error.localizedDescription
             print("❌ SSE error:", error.localizedDescription)
