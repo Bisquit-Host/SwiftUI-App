@@ -21,24 +21,12 @@ struct TicketMessageRow: View {
     
     private var bubble: some View {
         VStack(alignment: isCurrentUser ? .trailing : .leading, spacing: 6) {
-            HStack {
-                Text(message.user.name)
-                    .caption(.semibold)
-                    .secondary()
-                
-                Spacer()
-                
-                Text(message.createdAt)
-                    .caption2()
-                    .secondary()
-            }
-            
             let text = message.message ?? ""
             
             if !text.isEmpty {
                 Text(text)
                     .padding(10)
-                    .background(isCurrentUser ? Color.accentColor.opacity(0.15) : Color.secondary.opacity(0.08), in: .rect(cornerRadius: 12))
+                    .background(bubbleBackground, in: .rect(cornerRadius: 12))
             }
             
             if let media = message.media, !media.isEmpty {
@@ -51,14 +39,30 @@ struct TicketMessageRow: View {
                                 .caption()
                                 .lineLimit(2)
                                 .padding(8)
-                                .background(.secondary.opacity(0.08), in: .rect(cornerRadius: 10))
+                                .background(bubbleBackground, in: .rect(cornerRadius: 12))
                         }
                         .buttonStyle(.plain)
-                            .caption()
+                        .caption()
                     }
                 }
             }
+            
+            HStack {
+                if !isCurrentUser {
+                    Text(message.user.name)
+                        .caption(.semibold)
+                        .secondary()
+                }
+                
+                Text(message.createdAtRelative)
+                    .caption2()
+                    .secondary()
+            }
         }
         .frame(maxWidth: .infinity, alignment: isCurrentUser ? .trailing : .leading)
+    }
+    
+    private var bubbleBackground: Color {
+        isCurrentUser ? Color.accentColor.opacity(0.15) : Color.secondary.opacity(0.08)
     }
 }
