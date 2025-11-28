@@ -7,14 +7,20 @@ struct TicketMessageRow: View {
     
     var body: some View {
         HStack {
-            if isCurrentUser { Spacer(minLength: 40) }
+            if isCurrentUser {
+                Spacer(minLength: 40)
+            }
+            
             bubble
-            if !isCurrentUser { Spacer(minLength: 40) }
+            
+            if !isCurrentUser {
+                Spacer(minLength: 40)
+            }
         }
     }
     
     private var bubble: some View {
-        VStack(alignment: .leading, spacing: 6) {
+        VStack(alignment: isCurrentUser ? .trailing : .leading, spacing: 6) {
             HStack {
                 Text(message.user.name)
                     .caption(.semibold)
