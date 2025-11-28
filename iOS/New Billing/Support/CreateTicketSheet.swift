@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct SupportTicketCreateView: View {
+struct CreateTicketSheet: View {
     @Bindable var vm: SupportTicketsVM
     @Binding var showSheet: Bool
     @EnvironmentObject private var store: ValueStore

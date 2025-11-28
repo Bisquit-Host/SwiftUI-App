@@ -42,7 +42,7 @@ struct SupportTicketsList: View {
         }
         .sheet($showCreateSheet) {
             NavigationStack {
-                SupportTicketCreateView(vm: vm, showSheet: $showCreateSheet)
+                CreateTicketSheet(vm: vm, showSheet: $showCreateSheet)
             }
         }
         .refreshableTask {
