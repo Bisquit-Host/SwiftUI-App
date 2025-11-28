@@ -86,7 +86,8 @@ private struct SupportTicketRow: View {
                         .caption(.semibold)
                         .secondary()
                     
-                    Text(last.message.isEmpty ? "Attachment" : last.message)
+                    let text = last.message ?? ""
+                    Text(text.isEmpty ? "Attachment" : text)
                         .subheadline()
                         .lineLimit(1)
                         .foregroundStyle(.primary)

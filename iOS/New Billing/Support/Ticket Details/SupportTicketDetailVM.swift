@@ -79,6 +79,7 @@ final class SupportTicketDetailVM {
         
         do {
             isStreaming = true
+            print("🔌 Opening SSE for ticket \(ticket.id)")
             let (bytes, _) = try await URLSession.shared.bytes(for: request)
             
             var currentEvent: String?
@@ -86,52 +87,87 @@ final class SupportTicketDetailVM {
             
             for try await line in bytes.lines {
                 if Task.isCancelled { break }
+                print("📄 SSE line:", line)
                 
                 if line.hasPrefix("event:") {
-                    currentEvent = line.replacingOccurrences(of: "event:", with: "").trimmingCharacters(in: .whitespaces)
+                    // Flush previous event if it wasn't terminated by an empty line
+                    if let currentEvent, !currentData.isEmpty {
+                        await handleEvent(name: currentEvent, dataString: currentData)
+                        currentData = ""
+                    }
                     
+                    currentEvent = line.replacingOccurrences(of: "event:", with: "").trimmingCharacters(in: .whitespaces)
+                    print("📡 Event:", currentEvent ?? "nil")
                 } else if line.hasPrefix("data:") {
                     let dataLine = line.replacingOccurrences(of: "data:", with: "").trimmingCharacters(in: .whitespaces)
                     currentData.append(dataLine)
-                    
+                    currentData.append("\n")
                 } else if line.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                     await handleEvent(name: currentEvent, dataString: currentData)
                     currentEvent = nil
                     currentData = ""
                 }
             }
+            
+            // Flush if stream ended without a trailing newline
+            if let currentEvent, !currentData.isEmpty {
+                await handleEvent(name: currentEvent, dataString: currentData)
+            }
+            print("🔌 SSE closed for ticket \(ticket.id)")
         } catch {
             errorMessage = error.localizedDescription
+            print("❌ SSE error:", error.localizedDescription)
         }
         
         isStreaming = false
     }
     
     private func handleEvent(name: String?, dataString: String) async {
-        guard let name, !dataString.isEmpty else { return }
+        guard let name else {
+            print("⚠️ Empty event name")
+            return
+        }
+        
+        let trimmed = dataString.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else {
+            print("⚠️ Empty event data for", name)
+            return
+        }
+        
         let decoder = JSONDecoder()
+        print("🔍 Handling event:", name, "payload:\n", trimmed)
         
         switch name {
         case "history":
-            if let data = dataString.data(using: .utf8),
-               let history = try? decoder.decode([SupportMessageDTO].self, from: data) {
-                messages = history
+            if let data = trimmed.data(using: .utf8) {
+                do {
+                    let history = try decoder.decode([SupportMessageDTO].self, from: data)
+                    messages = history
+                } catch {
+                    print("History decode error:", error)
+                    print("History payload:", trimmed)
+                }
             }
             
         case "message":
-            if let data = dataString.data(using: .utf8),
-               let message = try? decoder.decode(SupportMessageDTO.self, from: data) {
-                appendMessageIfNeeded(message)
+            if let data = trimmed.data(using: .utf8) {
+                do {
+                    let message = try decoder.decode(SupportMessageDTO.self, from: data)
+                    appendMessageIfNeeded(message)
+                } catch {
+                    print("Message decode error:", error)
+                    print("Message payload:", trimmed)
+                }
             }
             
         case "ticketData":
-            if let data = dataString.data(using: .utf8),
+            if let data = trimmed.data(using: .utf8),
                let newTicket = try? decoder.decode(SupportTicketDTO.self, from: data) {
                 ticket = newTicket
             }
             
         default:
-            break
+            print("ℹ️ Unknown event", name, "payload:", trimmed)
         }
     }
     

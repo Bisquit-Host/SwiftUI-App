@@ -17,7 +17,7 @@ struct SupportMessageUserDTO: Codable, Hashable {
 
 struct SupportMessageDTO: Codable, Identifiable, Hashable {
     let id: Int
-    let message: String
+    let message: String?
     let ticketId: Int
     let userId: Int
     let media: [String]?

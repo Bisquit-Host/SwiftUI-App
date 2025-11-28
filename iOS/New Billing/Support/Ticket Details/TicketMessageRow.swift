@@ -22,9 +22,9 @@ struct TicketMessageRow: View {
                         .caption2()
                         .secondary()
                 }
-                
-                if !message.message.isEmpty {
-                    Text(message.message)
+                let text = message.message ?? ""
+                if !text.isEmpty {
+                    Text(text)
                         .padding(10)
                         .background(isCurrentUser ? Color.accentColor.opacity(0.15) : Color.secondary.opacity(0.08), in: .rect(cornerRadius: 12))
                 }
