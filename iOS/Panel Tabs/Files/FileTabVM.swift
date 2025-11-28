@@ -1,5 +1,6 @@
 import ScrechKit
 import Combine
+import Foundation
 import PteroNet
 
 final class FileTabVM: ObservableObject {
@@ -113,25 +114,51 @@ final class FileTabVM: ObservableObject {
         fileUploader.cancelUpload()
     }
     
-    func uploadFile(_ urlString: String, name: String, at root: String, mimeType: String, fileURL: URL) {
-        withAnimation {
-            isUploading = true
+    func uploadFile(_ urlString: String, name: String, at root: String, mimeType: String, fileURL: URL) async {
+        await MainActor.run {
+            withAnimation {
+                isUploading = true
+            }
         }
         
-        let url = urlString + "&directory=\(root.applyPercentEncoding())"
+        guard var components = URLComponents(string: urlString) else {
+            print("Invalid upload URL:", urlString)
+            await MainActor.run {
+                withAnimation {
+                    isUploading = false
+                }
+                uploadProgress = 0
+            }
+            return
+        }
         
-        fileUploader.uploadFile(url, name: name, mimeType: mimeType, fileURL: fileURL)
+        var queryItems = components.queryItems ?? []
+        queryItems.append(URLQueryItem(name: "directory", value: root))
+        components.queryItems = queryItems
         
-        Task {
-            try await Task.sleep(for: .seconds(2))
-            
+        guard let uploadURL = components.url else {
+            print("Failed to build upload URL with directory:", root)
+            await MainActor.run {
+                withAnimation {
+                    isUploading = false
+                }
+                uploadProgress = 0
+            }
+            return
+        }
+        
+        do {
+            try await fileUploader.uploadFile(uploadURL, name: name, mimeType: mimeType, fileURL: fileURL)
+            await fetchFiles(root)
+        } catch {
+            print("Upload failed:", error)
+        }
+        
+        await MainActor.run {
             withAnimation {
                 isUploading = false
             }
-            
             uploadProgress = 0
-            
-            await fetchFiles(root)
         }
     }
     
@@ -147,10 +174,7 @@ final class FileTabVM: ObservableObject {
             do {
                 let url = try await fileUploadAPI(id)
                 
-                self.uploadFile(url, name: fileName, at: root, mimeType: mimeType, fileURL: fileURL)
-                
-                await fetchFiles(root)
-                
+                await self.uploadFile(url, name: fileName, at: root, mimeType: mimeType, fileURL: fileURL)
                 onSuccess()
             } catch {
                 print("Error in file API:", error)
@@ -178,9 +202,7 @@ final class FileTabVM: ObservableObject {
         do {
             let url = try await fileUploadAPI(id)
             
-            self.uploadFile(url, name: "Image\(UUID().uuidString).heic", at: root, mimeType: mimeType, fileURL: fileURL)
-            
-            await fetchFiles(root)
+            await self.uploadFile(url, name: "Image\(UUID().uuidString).heic", at: root, mimeType: mimeType, fileURL: fileURL)
             
         } catch {
             SystemAlert.error(error)

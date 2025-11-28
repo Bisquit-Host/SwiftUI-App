@@ -4,7 +4,6 @@ import PhotosUI
 
 struct ImagePlayground: View {
     @EnvironmentObject private var vm: FileTabVM
-    
     @Environment(\.dismiss) private var dismiss
     
     private let url: URL?

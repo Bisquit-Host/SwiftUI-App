@@ -3,7 +3,6 @@ import PteroNet
 
 struct SheetCreateSubdomain: View {
     @Environment(SubdomainVM.self) private var vm
-    
     @Environment(\.dismiss) private var dismiss
     
     private var placeholder: String {

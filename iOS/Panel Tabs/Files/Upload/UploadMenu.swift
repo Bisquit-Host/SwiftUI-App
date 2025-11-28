@@ -11,8 +11,6 @@ struct UploadMenu: View {
     }
     
     @State private var image: UIImage?
-    @State private var urls: [URL] = []
-    @State private var previewURLs: [URL] = []
     @State private var pickerItems: [PhotosPickerItem] = []
     
     @State private var trigger = false
@@ -69,10 +67,8 @@ struct UploadMenu: View {
         .fileImporter(isPresented: $pickerFile, allowedContentTypes: [.item], allowsMultipleSelection: true) {
             switch $0 {
             case .success(let model):
-                urls = model
-                
                 Task {
-                    await vm.handleFileImport(urls, at: path)
+                    await vm.handleFileImport(model, at: path)
                 }
                 
             case .failure(let error):
@@ -83,7 +79,11 @@ struct UploadMenu: View {
     
     // MARK: Library funcs
     private func extractImageOrVideo(_ photoItems: [PhotosPickerItem]) {
-        Task.detached {
+        guard !photoItems.isEmpty else { return }
+        
+        Task {
+            var tempURLs: [URL] = []
+            
             for item in photoItems {
                 guard
                     let identifier = item.supportedContentTypes.first?
@@ -92,29 +92,26 @@ struct UploadMenu: View {
                         .replacing("mpeg-4", with: "mp4")
                 else {
                     print("Extension not determined")
-                    return
+                    continue
                 }
                 
                 print("Item:", identifier)
                 
                 guard let data = try? await item.loadTransferable(type: Data.self) else {
-                    return
+                    continue
                 }
                 
-                await MainActor.run {
-                    if let url = writeDataToTemporaryURL(data, pathExtension: identifier) {
-                        withAnimation {
-                            previewURLs.append(url)
-                        }
-                    }
+                if let url = writeDataToTemporaryURL(data, pathExtension: identifier) {
+                    tempURLs.append(url)
                 }
             }
             
-            await vm.handleFileImport(previewURLs, at: path)
+            guard !tempURLs.isEmpty else { return }
+            
+            await vm.handleFileImport(tempURLs, at: path)
         }
         
         pickerItems = []
-        previewURLs = []
     }
     
     private func writeDataToTemporaryURL(_ data: Data, pathExtension: String = "") -> URL? {

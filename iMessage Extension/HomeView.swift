@@ -4,7 +4,7 @@ import PteroNet
 
 struct HomeView: View {
     @StateObject private var store = ValueStore()
-    @State private var serverVm = ServerListVM()
+    @State private var serverVM = ServerListVM()
     @State private var vm: MessagesVM
     
     @Binding private var vc: MessagesViewController?
@@ -20,7 +20,7 @@ struct HomeView: View {
                 ServerList()
             }
             .environmentObject(store)
-            .environment(serverVm)
+            .environment(serverVM)
             //            .toolbarBackgroundVisibility(.visible)
         }
     }

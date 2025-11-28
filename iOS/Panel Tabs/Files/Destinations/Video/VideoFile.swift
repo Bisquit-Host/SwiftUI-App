@@ -3,8 +3,7 @@ import AVKit
 
 struct VideoFile: View {
     @State private var vm: VideoFileVM
-    @EnvironmentObject private var fileVm: FileTabVM
-    
+    @EnvironmentObject private var fileVM: FileTabVM
     @Environment(\.dismiss) private var dismiss
     
     private let id, name, path: String
@@ -69,7 +68,7 @@ struct VideoFile: View {
                 Section {
                     Button("Delete", systemImage: "trash", role: .destructive) {
                         Task {
-                            await fileVm.deleteFile(name, at: path) {
+                            await fileVM.deleteFile(name, at: path) {
                                 dismiss()
                             }
                         }

@@ -3,7 +3,6 @@ import PteroNet
 
 struct NewTaskSheet: View {
     @Environment(ScheduleVM.self) private var vm
-    
     @Environment(\.dismiss) private var dismiss
     
     private let scheudleId: Int

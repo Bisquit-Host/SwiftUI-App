@@ -3,7 +3,6 @@ import PteroNet
 
 struct FilePermissionsView: View {
     @EnvironmentObject private var vm: FileTabVM
-    
     @Environment(\.dismiss) private var dismiss
     
     private let file: FileAttributes
