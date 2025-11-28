@@ -92,18 +92,14 @@ final class SupportTicketsVM {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         
         var body = Data()
         func appendField(_ name: String, value: String) {
-            let field = """
-            --\(boundary)\r\n
-            Content-Disposition: form-data; name="\(name)"\r\n
-            \r\n
-            \(value)\r\n
-            """
-            
-            body.append(Data(field.utf8))
+            body.append(Data("--\(boundary)\r\n".utf8))
+            body.append(Data("Content-Disposition: form-data; name=\"\(name)\"\r\n\r\n".utf8))
+            body.append(Data("\(value)\r\n".utf8))
         }
         
         appendField("title", value: trimmedTitle)
@@ -118,9 +114,16 @@ final class SupportTicketsVM {
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
             
-            if let http = response as? HTTPURLResponse, http.statusCode >= 400 {
-                SystemAlert.error("Failed to create ticket", subtitle: http.statusCode.description)
-                return nil
+            if let http = response as? HTTPURLResponse {
+                if http.statusCode >= 400 {
+                    if let raw = String(data: data, encoding: .utf8) {
+                        print("Create ticket failed \(http.statusCode): \(raw)")
+                    }
+                    SystemAlert.error("Failed to create ticket", subtitle: http.statusCode.description)
+                    return nil
+                }
+                
+                print("Create ticket status", http.statusCode)
             }
             
             let created = try JSONDecoder().decode(CreateSupportTicketResponse.self, from: data)

@@ -1,12 +1,12 @@
 import SwiftUI
 
-struct SupportTicketDetailView: View {
-    @State private var vm: SupportTicketDetailVM
+struct SupportTicketDetails: View {
+    @State private var vm: SupportTicketDetailsVM
     @EnvironmentObject private var store: ValueStore
     @State private var selectedMedia: String? = nil
     
     init(_ ticket: SupportTicketDTO) {
-        _vm = State(initialValue: SupportTicketDetailVM(ticket))
+        _vm = State(initialValue: SupportTicketDetailsVM(ticket))
     }
     
     var body: some View {
@@ -59,9 +59,11 @@ struct SupportTicketDetailView: View {
             vm.stop()
         }
         .fullScreenCover(isPresented: Binding(get: { selectedMedia != nil }, set: { if !$0 { selectedMedia = nil } })) {
-            if let media = selectedMedia {
-                SupportMediaViewer(mediaPath: media, accessToken: store.testAccessToken) {
-                    selectedMedia = nil
+            NavigationStack {
+                if let media = selectedMedia {
+                    SupportMediaViewer(mediaPath: media, accessToken: store.testAccessToken) {
+                        selectedMedia = nil
+                    }
                 }
             }
         }
@@ -78,7 +80,7 @@ struct SupportTicketDetailView: View {
 
 #Preview {
     NavigationStack {
-        SupportTicketDetailView(.init(id: 1, title: "Example issue", status: "open", userId: 1, createdAt: "2024-01-01T10:00:00Z", updatedAt: "2024-01-01T10:00:00Z"))
+        SupportTicketDetails(.init(id: 1, title: "Example issue", status: "open", userId: 1, createdAt: "2024-01-01T10:00:00Z", updatedAt: "2024-01-01T10:00:00Z"))
     }
     .environmentObject(ValueStore())
     .darkSchemePreferred()

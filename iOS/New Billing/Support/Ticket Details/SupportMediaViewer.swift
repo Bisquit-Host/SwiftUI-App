@@ -7,7 +7,6 @@ struct SupportMediaViewer: View {
     
     @State private var image: Image?
     @State private var isLoading = true
-    @State private var errorText: String?
     
     private let baseURL = "https://test-api.bisquit.host"
     
@@ -21,57 +20,30 @@ struct SupportMediaViewer: View {
                     .scaledToFit()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(.black)
-                
             } else if isLoading {
                 ProgressView()
                     .tint(.white)
-                
-            } else if let errorText {
-                VStack(spacing: 12) {
-                    Image(systemName: "exclamationmark.triangle.fill")
-                        .largeTitle()
-                        .foregroundStyle(.yellow)
-                    
-                    Text(errorText)
-                        .foregroundStyle(.white)
-                        .multilineTextAlignment(.center)
-                }
-                .padding()
-            }
-            
-            VStack {
-                HStack {
-                    Button {
-                        onClose()
-                    } label: {
-                        Image(systemName: "xmark.circle.fill")
-                            .title()
-                            .foregroundStyle(.white.opacity(0.9))
-                            .padding(10)
-                    }
-                    
-                    Spacer()
-                    
-                    Text(mediaPath)
-                        .caption()
-                        .foregroundStyle(.white.opacity(0.8))
-                        .lineLimit(1)
-                        .truncationMode(.middle)
-                }
-                .padding(.horizontal)
-                .padding(.top, 12)
-                
-                Spacer()
             }
         }
+        .navigationTitle(mediaPath)
+        .toolbarTitleDisplayMode(.inline)
         .task {
             await loadMedia()
+        }
+        .toolbar {
+            Button(role: .destructive) {
+                onClose()
+            } label: {
+                Image(systemName: "xmark")
+            }
         }
     }
     
     private func loadMedia() async {
         guard let url = buildURL(from: mediaPath) else {
-            await MainActor.run { errorText = "Invalid media URL"; isLoading = false }
+            print("Invalid media URL")
+            isLoading = false
+            
             return
         }
         
@@ -84,10 +56,8 @@ struct SupportMediaViewer: View {
             if let http = response as? HTTPURLResponse, http.statusCode >= 400 {
                 let detail = String(data: data, encoding: .utf8) ?? ""
                 
-                await MainActor.run {
-                    errorText = "Failed to load media (\(http.statusCode)) \(detail)"
-                    isLoading = false
-                }
+                print("Failed to load media (\(http.statusCode)) \(detail)")
+                isLoading = false
                 
                 return
             }
@@ -95,21 +65,15 @@ struct SupportMediaViewer: View {
             if let uiImage = UIImage(data: data) {
                 let swiftUIImage = Image(uiImage: uiImage)
                 
-                await MainActor.run {
-                    self.image = swiftUIImage
-                    self.isLoading = false
-                }
+                image = swiftUIImage
+                isLoading = false
             } else {
-                await MainActor.run {
-                    errorText = "Unsupported media"
-                    isLoading = false
-                }
-            }
-        } catch {
-            await MainActor.run {
-                errorText = error.localizedDescription
+                print("Unsupported media")
                 isLoading = false
             }
+        } catch {
+            print(error.localizedDescription)
+            isLoading = false
         }
     }
     
@@ -119,8 +83,6 @@ struct SupportMediaViewer: View {
         }
         
         let cleaned = path.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
-        
-        // API expects /media/tickets/{filename}
         let filename = URL(fileURLWithPath: cleaned).lastPathComponent
         
         if cleaned.hasPrefix("media/tickets/") || cleaned.hasPrefix("/media/tickets/") {
@@ -132,6 +94,6 @@ struct SupportMediaViewer: View {
 }
 
 #Preview {
-    SupportMediaViewer(mediaPath: "media/example.png", accessToken: "", onClose: {})
+    SupportMediaViewer(mediaPath: "media/example.png", accessToken: "") {}
         .darkSchemePreferred()
 }

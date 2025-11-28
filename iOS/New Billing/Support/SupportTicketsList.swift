@@ -24,7 +24,7 @@ struct SupportTicketsList: View {
                 } else {
                     ForEach(vm.tickets) { item in
                         NavigationLink {
-                            SupportTicketDetailView(item.ticket)
+                            SupportTicketDetails(item.ticket)
                         } label: {
                             SupportTicketRow(item)
                         }

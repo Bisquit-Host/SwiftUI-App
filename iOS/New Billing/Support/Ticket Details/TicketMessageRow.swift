@@ -40,6 +40,7 @@ struct TicketMessageRow: View {
                                 .lineLimit(2)
                                 .padding(8)
                                 .background(bubbleBackground, in: .rect(cornerRadius: 12))
+                                .labelIconToTitleSpacing(5)
                         }
                         .buttonStyle(.plain)
                         .caption()

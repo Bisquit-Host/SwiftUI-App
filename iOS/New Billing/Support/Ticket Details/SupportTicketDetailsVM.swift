@@ -1,7 +1,7 @@
 import Foundation
 
 @Observable
-final class SupportTicketDetailVM {
+final class SupportTicketDetailsVM {
     var ticket: SupportTicketDTO
     
     init(_ ticket: SupportTicketDTO) {
@@ -16,10 +16,6 @@ final class SupportTicketDetailVM {
     
     private let baseURL = "https://test-api.bisquit.host"
     private var streamTask: Task<Void, Never>?
-    
-    init(ticket: SupportTicketDTO) {
-        self.ticket = ticket
-    }
     
     func start(accessToken: String) {
         guard streamTask == nil else { return }
