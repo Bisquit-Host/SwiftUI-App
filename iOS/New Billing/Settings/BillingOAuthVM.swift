@@ -22,14 +22,13 @@ final class BillingOAuthVM: NSObject {
     var errorMessage: String?
     
     func disconnectGithub() async {
-        let store = ValueStore()
         let path = "https://test-api.bisquit.host/user/settings/social/github"
         
         guard let url = URL(string: path) else { return }
         
         var req = URLRequest(url: url)
         req.httpMethod = "DELETE"
-        req.setValue("Bearer \(store.testAccessToken)", forHTTPHeaderField: "Authorization")
+        req.setValue("Bearer \(ValueStore().testAccessToken)", forHTTPHeaderField: "Authorization")
         
         do {
             let (_, response) = try await URLSession.shared.data(for: req)
