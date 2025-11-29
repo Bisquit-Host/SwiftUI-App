@@ -33,7 +33,9 @@ struct BillingSettings: View {
                                     }
                                 }
                             } onDisconnect: {
-                                await oauthVM.disconnectGithub()
+                                await oauthVM.disconnectGithub {
+                                    await dashboardVM.fetchUserInfo()
+                                }
                             }
                             
                             BillingAuthAppRow("Google", icon: "globe", enabled: false)
@@ -55,6 +57,9 @@ struct BillingSettings: View {
         }
         .padding()
         .environment(vm)
+        .refreshable {
+            await dashboardVM.fetchUserInfo()
+        }
     }
     
     private func logout() {

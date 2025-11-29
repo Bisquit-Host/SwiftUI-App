@@ -21,7 +21,7 @@ final class BillingOAuthVM: NSObject {
     var isLinkingGitHub = false
     var errorMessage: String?
     
-    func disconnectGithub() async {
+    func disconnectGithub(onSuccess: () async -> Void) async {
         let path = "https://test-api.bisquit.host/user/settings/social/github"
         
         guard let url = URL(string: path) else { return }
