@@ -93,14 +93,10 @@ final class FileTabVM: ObservableObject {
     
     func fetchFiles(_ path: String = "") async {
         do {
-            let files = try await fileListAPI(id, path: path)
-            
-            await MainActor.run {
-                self.files = files.reversed()
+            files = try await fileListAPI(id, path: path).reversed()
 #if os(macOS)
-                degrees += 360
+            degrees += 360
 #endif
-            }
         } catch {
             SystemAlert.error(error)
         }
@@ -109,30 +105,27 @@ final class FileTabVM: ObservableObject {
 #if os(iOS)
     func cancelUpload() {
         fileUploader.cancelUpload()
-        Task { @MainActor in
-            uploadingCount = 0
-            uploadProgress = 0
-            withAnimation {
-                isUploading = false
-            }
+        uploadingCount = 0
+        uploadProgress = 0
+        
+        withAnimation {
+            isUploading = false
         }
     }
     
     func uploadFile(_ urlString: String, name: String, at root: String, mimeType: String, fileURL: URL) async {
-        await MainActor.run {
-            withAnimation {
-                isUploading = true
-            }
+        withAnimation {
+            isUploading = true
         }
         
         guard var components = URLComponents(string: urlString) else {
             print("Invalid upload URL:", urlString)
-            await MainActor.run {
-                withAnimation {
-                    isUploading = false
-                }
-                uploadProgress = 0
+            
+            withAnimation {
+                isUploading = false
             }
+            
+            uploadProgress = 0
             return
         }
         
@@ -142,13 +135,12 @@ final class FileTabVM: ObservableObject {
         
         guard let uploadURL = components.url else {
             print("Failed to build upload URL with directory:", root)
-            await MainActor.run {
-                withAnimation {
-                    isUploading = false
-                }
-                
-                uploadProgress = 0
+            
+            withAnimation {
+                isUploading = false
             }
+            
+            uploadProgress = 0
             return
         }
         
@@ -159,22 +151,17 @@ final class FileTabVM: ObservableObject {
             print("Upload failed:", error)
         }
         
-        await MainActor.run {
-            uploadingCount = max(0, uploadingCount - 1)
+        uploadingCount = max(0, uploadingCount - 1)
+        
+        withAnimation {
+            isUploading = false
         }
         
-        await MainActor.run {
-            withAnimation {
-                isUploading = false
-            }
-            uploadProgress = 0
-        }
+        uploadProgress = 0
     }
     
     func handleFileImport(_ urls: [URL], at root: String, onSuccess: @escaping () -> Void = {}) async {
-        await MainActor.run {
-            uploadingCount = urls.count
-        }
+        uploadingCount = urls.count
         
         for fileURL in urls {
             let fileName = fileURL.lastPathComponent
@@ -194,15 +181,11 @@ final class FileTabVM: ObservableObject {
             }
         }
         
-        await MainActor.run {
-            uploadingCount = 0
-        }
+        uploadingCount = 0
     }
     
     func handleImageImport(_ image: UIImage, at root: String) async {
-        await MainActor.run {
-            uploadingCount = 1
-        }
+        uploadingCount = 1
         
         guard let imageData = image.heicData() else {
             print("Unable to convert image to data")
@@ -223,22 +206,19 @@ final class FileTabVM: ObservableObject {
         do {
             let url = try await fileUploadAPI(id)
             
-            await self.uploadFile(url, name: "Image\(UUID().uuidString).heic", at: root, mimeType: mimeType, fileURL: fileURL)
-            
+            await uploadFile(url, name: "Image\(UUID().uuidString).heic", at: root, mimeType: mimeType, fileURL: fileURL)
         } catch {
             SystemAlert.error(error)
         }
         
-        await MainActor.run {
-            uploadingCount = 0
-        }
+        uploadingCount = 0
     }
 #endif
     
     func downloadFile(_ path: String) async {
         do {
             downloadURL = try await fileDownloadAPI(id, path: path)
-            self.showSafari = true
+            showSafari = true
         } catch {
             SystemAlert.error(error)
         }
@@ -249,7 +229,7 @@ final class FileTabVM: ObservableObject {
             try await fileRenameAPI(id, at: path, from: oldName, to: newName)
             await fetchFiles(path)
             
-            self.newFileName = ""
+            newFileName = ""
         } catch {
             SystemAlert.error(error)
             
@@ -267,12 +247,7 @@ final class FileTabVM: ObservableObject {
     
     func fileCompressor(_ file: String, at path: String, do action: CompressorActions) async {
         do {
-            try await fileCompressorAPI(
-                id,
-                file: file,
-                at: path,
-                do: action
-            )
+            try await fileCompressorAPI(id, file: file, at: path, do: action)
             
             await fetchFiles(path)
         } catch {
@@ -295,7 +270,6 @@ final class FileTabVM: ObservableObject {
             try await fileDeleteAPI(id, files: [files], at: path)
             
             await fetchFiles(path)
-            
             onSuccess()
         } catch {
             SystemAlert.error(error)

@@ -4,8 +4,11 @@ import Foundation
 @MainActor
 final class FileUploader: NSObject {
     private var progressHandler: ((Float) -> Void)?
+    
     private(set) var uploadProgress: Float = 0 {
-        didSet { progressHandler?(uploadProgress) }
+        didSet {
+            progressHandler?(uploadProgress)
+        }
     }
     
     private var session: URLSession!
