@@ -59,29 +59,3 @@ public struct BillingUser: Decodable, Equatable {
         updatedAt: "2025-01-01T00:00:00Z"
     )
 }
-
-//{
-//    "id": 3,
-//    "login": "gh-ezh9H8yM",
-//    "email": "sergei_saliukov@icloud.com",
-//    "emailVerified": true,
-//    "name": "Sergei Saliukov",
-//    "avatar": "https://avatars.githubusercontent.com/u/89252798?v=4",
-//    "currency": "RUB",
-//    "balance": 0,
-//    "bonusBalance": 0,
-//    "totalBalance": 0,
-//    "lang": "RU",
-//    "twoFa": false,
-//    "githubId": "89252798",
-//    "isBanned": false,
-//    "hasPassword": true,
-//    "isSupportAgent": true,
-//    "isAdmin": true,
-//    "isGod": true,
-//    "rawIsSupport": false,
-//    "rawIsAdmin": false,
-//    "rawIsGod": true,
-//    "createdAt": "2025-10-07T01:18:16.169036Z",
-//    "updatedAt": "2025-11-23T21:49:26.043350Z"
-//}
