@@ -23,7 +23,7 @@ final class BillingDashboardVM {
             if let httpResponse = response as? HTTPURLResponse {
                 let status = httpResponse.statusCode
                 
-                print("Status code:", status)
+                print("Refresh token status code:", status)
             }
             
             if let bodyString = String(data: data, encoding: .utf8) {
@@ -62,7 +62,7 @@ final class BillingDashboardVM {
             if let httpResponse = response as? HTTPURLResponse {
                 let status = httpResponse.statusCode
                 
-                print("Status code:", status)
+                print("User info status code:", status)
                 
                 if status == 401 {
                     let _ = await refreshAuth {

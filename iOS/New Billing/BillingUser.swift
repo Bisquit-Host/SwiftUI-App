@@ -21,7 +21,7 @@ public struct BillingUser: Decodable, Equatable {
     public let totalBalance: Double
     public let lang: String
     public let twoFa: Bool
-    public let githubId: String
+    public let githubId: String?
     public let isBanned: Bool
     public let hasPassword: Bool
     public let isSupportAgent: Bool

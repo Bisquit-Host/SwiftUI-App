@@ -4,6 +4,8 @@ struct BillingSettings: View {
     @State private var vm = BillingSettingsVM()
     @EnvironmentObject private var store: ValueStore
     @Environment(\.dismiss) private var dismiss
+    @Environment(BillingDashboardVM.self) private var dashboardVM
+    @Environment(BillingOAuthVM.self) private var oauthVM
     
     @Binding private var user: BillingUser?
     
@@ -24,9 +26,16 @@ struct BillingSettings: View {
                         }
                         
                         BillingSectionCard("Auth apps") {
-                            BillingAuthAppRow("GitHub", icon: "app.connected.to.app.below.fill", enabled: user.twoFa)
-                            BillingAuthAppRow("Google", icon: "globe", enabled: user.hasPassword)
-                            BillingAuthAppRow("Yandex", icon: "globe", enabled: user.isBanned)
+                            BillingAuthAppRow("GitHub", icon: "app.connected.to.app.below.fill", enabled: (user.githubId ?? "").isEmpty, isLoading: oauthVM.isLinkingGitHub) {
+                                oauthVM.startGitHubLinking {
+                                    Task {
+                                        await dashboardVM.fetchUserInfo()
+                                    }
+                                }
+                            }
+                            
+                            BillingAuthAppRow("Google", icon: "globe", enabled: false)
+                            BillingAuthAppRow("Yandex", icon: "globe", enabled: false)
                         }
                     }
                     .transition(.opacity.combined(with: .move(edge: .top)))

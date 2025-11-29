@@ -7,7 +7,9 @@ struct AppContainer: View {
     @State private var linking = DeepLinkVM()
     @State private var network = NetworkVM()
     @State private var securityTasks = SecurityTasks()
-    
+#if os(iOS)
+    @State private var billingOAuth = BillingOAuthVM()
+#endif
     @EnvironmentObject private var store: ValueStore
     @Environment(NavState.self) private var nav
     @Environment(\.scenePhase) private var scenePhase
@@ -49,7 +51,9 @@ struct AppContainer: View {
         .animation(.default, value: store.isApiKeyValid)
         .environment(vm)
         .environment(securityTasks)
-        .onOpenURL(perform: linking.handleDeepLink)
+#if os(iOS)
+        .environment(billingOAuth)
+#endif
 #if canImport(Appearance)
         .preferredColorScheme(store.appearance.scheme)
 #endif
@@ -68,6 +72,12 @@ struct AppContainer: View {
                 SystemAlert.networkError()
                 return
             }
+        }
+#endif
+#if os(iOS)
+        .onOpenURL {
+            linking.handleDeepLink($0)
+            billingOAuth.handleCallback($0)
         }
 #endif
         .alert("Authentication with session", isPresented: $linking.alertAuth) {
