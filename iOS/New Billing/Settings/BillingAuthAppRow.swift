@@ -8,7 +8,7 @@ struct BillingAuthAppRow: View {
     private let enabled: Bool
     private let isLoading: Bool
     private let onConnect: (() -> Void)?
-    private let onDisconnect: (() -> Void)?
+    private let onDisconnect: (() async -> Void)?
     
     init(
         _ title: String,
@@ -16,7 +16,7 @@ struct BillingAuthAppRow: View {
         enabled: Bool,
         isLoading: Bool = false,
         onConnect: (() -> Void)? = nil,
-        onDisconnect: (() -> Void)? = nil
+        onDisconnect: (() async -> Void)? = nil
     ) {
         self.title = title
         self.icon = icon
@@ -54,7 +54,9 @@ struct BillingAuthAppRow: View {
                         .padding(.horizontal, 8)
                 } else if enabled {
                     Button("Disconnect") {
-                        onDisconnect?()
+                        Task {
+                            await onDisconnect?()
+                        }
                     }
                     .disabled(onDisconnect == nil)
                 } else {

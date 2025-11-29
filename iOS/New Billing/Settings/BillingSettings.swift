@@ -26,12 +26,14 @@ struct BillingSettings: View {
                         }
                         
                         BillingSectionCard("Auth apps") {
-                            BillingAuthAppRow("GitHub", icon: "app.connected.to.app.below.fill", enabled: (user.githubId ?? "").isEmpty, isLoading: oauthVM.isLinkingGitHub) {
+                            BillingAuthAppRow("GitHub", icon: "app.connected.to.app.below.fill", enabled: !(user.githubId ?? "").isEmpty, isLoading: oauthVM.isLinkingGitHub) {
                                 oauthVM.startGitHubLinking {
                                     Task {
                                         await dashboardVM.fetchUserInfo()
                                     }
                                 }
+                            } onDisconnect: {
+                                await oauthVM.disconnectGithub()
                             }
                             
                             BillingAuthAppRow("Google", icon: "globe", enabled: false)

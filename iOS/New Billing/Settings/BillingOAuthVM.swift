@@ -21,6 +21,27 @@ final class BillingOAuthVM: NSObject {
     var isLinkingGitHub = false
     var errorMessage: String?
     
+    func disconnectGithub() async {
+        let store = ValueStore()
+        let path = "https://test-api.bisquit.host/user/settings/social/github"
+        
+        guard let url = URL(string: path) else { return }
+        
+        var req = URLRequest(url: url)
+        req.httpMethod = "DELETE"
+        req.setValue("Bearer \(store.testAccessToken)", forHTTPHeaderField: "Authorization")
+        
+        do {
+            let (_, response) = try await URLSession.shared.data(for: req)
+            
+            if let code = (response as? HTTPURLResponse)?.statusCode, code == 200 {
+                print("Disconnected GitHub")
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
     func startGitHubLinking(onLinked: (() -> Void)? = nil) {
         guard !isLinkingGitHub else { return }
         
