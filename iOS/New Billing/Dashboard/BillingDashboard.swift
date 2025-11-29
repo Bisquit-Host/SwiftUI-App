@@ -27,6 +27,11 @@ struct BillingDashboard: View {
         .refreshableTask {
             await vm.fetchUserInfo()
         }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+            Task {
+                await vm.fetchUserInfo()
+            }
+        }
         .sheet($sheetSettings) {
             NavigationStack {
                 BillingSettings($vm.user)
