@@ -45,6 +45,13 @@ struct BillingSettings: View {
         .refreshable {
             await dashboardVM.fetchUserInfo()
         }
+        .toolbar {
+            ToolbarItem(placement: .bottomBar) {
+                DismissButton()
+            }
+            
+            ToolbarSpacer(.flexible, placement: .bottomBar)
+        }
     }
     
     private func logout() {
