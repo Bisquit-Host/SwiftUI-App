@@ -1,27 +1,17 @@
+import SwiftUI
 import AuthenticationServices
-import Foundation
-import UIKit
-
-private enum Provider {
-    case github, google, yandex
-}
-
-private struct AuthURLResponse: Decodable {
-    let url: String
-}
 
 @Observable
 final class BillingOAuthVM: NSObject {
-    private let backendBase = "https://test-api.bisquit.host"
+    private let basePath = "https://test-api.bisquit.host"
     
     private var session: ASWebAuthenticationSession?
-    private var pendingProvider: Provider?
+    private var pendingProvider: BillingAuthProvider?
     private var onLinked: (() -> Void)?
     
     var isLinkingGitHub = false
     var isLinkingGoogle = false
     var isLinkingYandex = false
-    var errorMessage: String?
     
     func disconnectGithub(onSuccess: () async -> Void) async {
         let path = "https://test-api.bisquit.host/user/settings/social/github"
@@ -74,10 +64,9 @@ final class BillingOAuthVM: NSObject {
         startLinking(provider: .yandex, onLinked: onLinked)
     }
     
-    private func startLinking(provider: Provider, onLinked: (() -> Void)?) {
+    private func startLinking(provider: BillingAuthProvider, onLinked: (() -> Void)?) {
         pendingProvider = provider
         self.onLinked = onLinked
-        errorMessage = nil
         
         switch provider {
         case .github:
@@ -97,7 +86,7 @@ final class BillingOAuthVM: NSObject {
     
     func handleCallback(_ url: URL) {
         guard let pendingProvider else { return }
-        guard url.path.lowercased() == "/auth/providers/\(pendingProvider.pathComponent)" else { return }
+        guard url.path.lowercased() == "/auth/providers/\(pendingProvider.rawValue)" else { return }
         
         guard
             let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
@@ -112,8 +101,8 @@ final class BillingOAuthVM: NSObject {
         }
     }
     
-    private func fetchAuthURL(for provider: Provider) async {
-        guard let url = URL(string: "\(backendBase)/auth/providers/\(provider.pathComponent)") else {
+    private func fetchAuthURL(for provider: BillingAuthProvider) async {
+        guard let url = URL(string: "\(basePath)/auth/providers/\(provider.rawValue)") else {
             finish(success: false, message: "Invalid backend URL")
             return
         }
@@ -159,8 +148,8 @@ final class BillingOAuthVM: NSObject {
         session?.start()
     }
     
-    private func exchangeCode(_ code: String, for provider: Provider) async {
-        guard let url = URL(string: "\(backendBase)/auth/providers/\(provider.pathComponent)") else {
+    private func exchangeCode(_ code: String, for provider: BillingAuthProvider) async {
+        guard let url = URL(string: "\(basePath)/auth/providers/\(provider.rawValue)") else {
             finish(success: false, message: "Invalid backend URL")
             return
         }
@@ -225,7 +214,10 @@ final class BillingOAuthVM: NSObject {
         
         pendingProvider = nil
         session = nil
-        errorMessage = message
+        
+        if let message {
+            print(message)
+        }
         
         onLinked?()
         onLinked = nil
@@ -237,25 +229,20 @@ final class BillingOAuthVM: NSObject {
     }
 }
 
-private extension Provider {
-    var pathComponent: String {
-        switch self {
-        case .github: "github"
-        case .google: "google"
-        case .yandex: "yandex"
-        }
-    }
-}
-
 extension BillingOAuthVM: ASWebAuthenticationPresentationContextProviding {
     func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
-        guard
-            let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-            let window = scene.windows.first
+        guard let scene = UIApplication.shared.connectedScenes
+            .compactMap({ $0 as? UIWindowScene })
+            .first(where: { $0.activationState == .foregroundActive })
+                ?? UIApplication.shared.connectedScenes.compactMap({ $0 as? UIWindowScene }).first
         else {
-            return ASPresentationAnchor()
+            fatalError("ASWebAuthenticationSession requires an active UIWindowScene")
         }
         
-        return window
+        if let window = scene.windows.first {
+            return window
+        }
+        
+        return UIWindow(windowScene: scene)
     }
 }
