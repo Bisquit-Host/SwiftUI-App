@@ -1,0 +1,40 @@
+import SwiftUI
+
+struct BillingActionRow: View {
+    private let title: String
+    private let icon: String
+    private let tint: Color
+    private let role: ButtonRole?
+    private let action: () -> Void
+    
+    init(_ title: String, icon: String, tint: Color, role: ButtonRole? = nil, action: @escaping () -> Void) {
+        self.title = title
+        self.icon = icon
+        self.tint = tint
+        self.role = role
+        self.action = action
+    }
+    
+    var body: some View {
+        Button(role: role) {
+            action()
+        } label: {
+            HStack(spacing: 12) {
+                Image(systemName: icon)
+                    .frame(32)
+                    .glassEffect(.regular.tint(tint.opacity(0.15)), in: .rect(cornerRadius: 10))
+                    .foregroundStyle(tint)
+                
+                Text(title)
+                    .subheadline(.semibold)
+                
+                Spacer()
+                
+                Image(systemName: "chevron.right")
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+            }
+        }
+        .buttonStyle(.plain)
+    }
+}
