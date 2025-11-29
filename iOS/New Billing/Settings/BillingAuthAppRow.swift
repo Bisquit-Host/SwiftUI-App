@@ -54,9 +54,7 @@ struct BillingAuthAppRow: View {
                         .padding(.horizontal, 8)
                 } else if enabled {
                     Button("Disconnect") {
-                        Task {
-                            await onDisconnect?()
-                        }
+                        disconnect()
                     }
                     .disabled(onDisconnect == nil)
                 } else {
@@ -68,6 +66,12 @@ struct BillingAuthAppRow: View {
             }
             .secondary()
             .footnote()
+        }
+    }
+    
+    private func disconnect() {
+        Task {
+            await onDisconnect?()
         }
     }
 }
