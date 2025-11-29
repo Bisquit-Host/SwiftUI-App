@@ -12,15 +12,10 @@ struct UploadProgress: View {
     var body: some View {
         VStack {
             Gauge(value: vm.uploadProgress) {
-                HStack {
-                    Spacer()
-                    
-                    Text("\(quantity) objects")
-                        .subheadline(.bold)
-                    
-                    Spacer()
-                }
-                .padding(.bottom, 5)
+                Text("\(quantity) objects")
+                    .subheadline(.bold)
+                    .padding(.bottom, 5)
+                    .frame(maxWidth: .infinity, alignment: .center)
             }
             .tint(vm.uploadProgress != 1 ? .blue : .green)
             .multilineTextAlignment(.center)

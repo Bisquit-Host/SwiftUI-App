@@ -1,6 +1,4 @@
 import ScrechKit
-import Combine
-import Foundation
 import PteroNet
 
 final class FileTabVM: ObservableObject {
@@ -10,16 +8,14 @@ final class FileTabVM: ObservableObject {
         self.id = id
         
 #if !os(watchOS) && !os(tvOS)
-        fileUploader.$uploadProgress
-            .receive(on: DispatchQueue.main)
-            .assign(to: \.uploadProgress, on: self)
-            .store(in: &cancellables)
+        fileUploader.setProgressHandler { [weak self] progress in
+            self?.uploadProgress = progress
+        }
 #endif
     }
     
 #if !os(watchOS) && !os(tvOS)
     private var fileUploader = FileUploader()
-    private var cancellables = Set<AnyCancellable>()
     @Published var uploadProgress: Float = 0
     @Published var isUploading = false
 #endif
@@ -142,6 +138,7 @@ final class FileTabVM: ObservableObject {
                 withAnimation {
                     isUploading = false
                 }
+                
                 uploadProgress = 0
             }
             return

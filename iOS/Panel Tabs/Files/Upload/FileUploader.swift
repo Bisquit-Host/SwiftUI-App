@@ -2,8 +2,11 @@ import ScrechKit
 import Foundation
 
 @MainActor
-final class FileUploader: NSObject, ObservableObject {
-    @Published var uploadProgress: Float = 0
+final class FileUploader: NSObject {
+    private var progressHandler: ((Float) -> Void)?
+    private(set) var uploadProgress: Float = 0 {
+        didSet { progressHandler?(uploadProgress) }
+    }
     
     private var session: URLSession!
     private var currentUploadTask: URLSessionUploadTask?
@@ -15,6 +18,10 @@ final class FileUploader: NSObject, ObservableObject {
     func cancelUpload() {
         currentUploadTask?.cancel()
         currentUploadTask = nil
+    }
+    
+    func setProgressHandler(_ handler: @escaping (Float) -> Void) {
+        progressHandler = handler
     }
     
     func uploadFile(_ url: URL, name: String, mimeType: String, fileURL: URL) async throws {
