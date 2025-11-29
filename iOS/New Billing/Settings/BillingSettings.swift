@@ -25,22 +25,7 @@ struct BillingSettings: View {
                             BillingSecurityRow("Password", icon: "key.fill", enabled: user.hasPassword, enabledText: "Change", disabledText: "Set")
                         }
                         
-                        BillingSectionCard("Auth apps") {
-                            BillingAuthAppRow("GitHub", icon: "app.connected.to.app.below.fill", enabled: !(user.githubId ?? "").isEmpty, isLoading: oauthVM.isLinkingGitHub) {
-                                oauthVM.startGitHubLinking {
-                                    Task {
-                                        await dashboardVM.fetchUserInfo()
-                                    }
-                                }
-                            } onDisconnect: {
-                                await oauthVM.disconnectGithub {
-                                    await dashboardVM.fetchUserInfo()
-                                }
-                            }
-                            
-                            BillingAuthAppRow("Google", icon: "globe", enabled: false)
-                            BillingAuthAppRow("Yandex", icon: "globe", enabled: false)
-                        }
+                        BillingAuthAppsSection(user: $user)
                     }
                     .transition(.opacity.combined(with: .move(edge: .top)))
                     .animation(.easeInOut, value: user)

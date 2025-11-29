@@ -21,8 +21,8 @@ struct BillingSecurityRow: View {
         HStack(spacing: 12) {
             Image(systemName: icon)
                 .frame(32)
-                .glassEffect(.regular.tint(Color(enabled ? .green : .orange).opacity(0.15)), in: .rect(cornerRadius: 10))
-                .foregroundStyle(enabled ? .green : .orange)
+                .glassEffect(.regular.tint(Color(enabled ? .green : .red).opacity(0.15)), in: .rect(cornerRadius: 10))
+                .foregroundStyle(enabled ? .green : .red)
             
             VStack(alignment: .leading, spacing: 12) {
                 Text(title)
