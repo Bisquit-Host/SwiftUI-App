@@ -11,10 +11,10 @@ struct SheetTopup: View {
     
     var body: some View {
         ScrollView {
-            Section {
-                Text("Balance \(user.balance, specifier: "%.2f")")
-                Text("Bonus balance \(user.bonusBalance, specifier: "%.2f")")
-                Text("Total balance \(user.totalBalance, specifier: "%.2f")")
+            BillingSectionCard("Balance") {
+                BillingAccountRow("Main", icon: "creditcard.fill", tint: .blue, value: formatted(user.balance))
+                BillingAccountRow("Bonus", icon: "sparkles", tint: .mint, value: formatted(user.bonusBalance))
+                BillingAccountRow("Total", icon: "wallet.pass.fill", tint: .indigo, value: formatted(user.totalBalance))
             }
             
             if vm.isLoading && vm.operations.isEmpty {
@@ -51,6 +51,17 @@ struct SheetTopup: View {
             
             ToolbarSpacer(.flexible, placement: .bottomBar)
         }
+    }
+}
+
+private extension SheetTopup {
+    func formatted(_ amount: Double) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencyCode = user.currency
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 2
+        return formatter.string(from: amount as NSNumber) ?? "\(amount)"
     }
 }
 
