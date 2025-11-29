@@ -10,8 +10,10 @@ final class SecurityTasks {
         Task {
             try await Task.sleep(for: .seconds(1))
             
-            await checkForUpdates()
-            await checkForUnusedAPIKeys()
+            async let updates: () = await checkForUpdates()
+            async let keys: () = await checkForUnusedAPIKeys()
+            
+            let _ = await (updates, keys)
         }
     }
     
