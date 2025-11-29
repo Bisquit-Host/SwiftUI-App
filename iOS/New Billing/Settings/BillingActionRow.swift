@@ -31,8 +31,8 @@ struct BillingActionRow: View {
                 Spacer()
                 
                 Image(systemName: "chevron.right")
-                    .font(.footnote)
-                    .foregroundStyle(.secondary)
+                    .footnote()
+                    .secondary()
             }
         }
         .buttonStyle(.plain)
