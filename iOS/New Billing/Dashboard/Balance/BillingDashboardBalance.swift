@@ -44,7 +44,9 @@ struct BillingDashboardBalance: View {
         .semibold()
         .monospacedDigit()
         .sheet($sheetTopup) {
-            SheetTopup(user)
+            NavigationStack {
+                SheetTopup(user)
+            }
         }
     }
 }

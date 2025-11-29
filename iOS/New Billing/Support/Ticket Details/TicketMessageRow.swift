@@ -59,7 +59,7 @@ struct TicketMessageRow: View {
                         .secondary()
                 }
                 
-                Text(message.createdAtRelative)
+                Text(iso8601RelativeDate(message.createdAt))
                     .caption2()
                     .secondary()
             }
