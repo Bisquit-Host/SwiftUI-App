@@ -5,6 +5,7 @@ import PteroNet
 final class SecurityTasks {
     var alertUpdate = false
     var alertUnusedAPIKeys = false
+    var alertTwoFA = false
     
     func startCheck() async {
         Task {
@@ -12,8 +13,24 @@ final class SecurityTasks {
             
             async let updates: () = await checkForUpdates()
             async let keys: () = await checkForUnusedAPIKeys()
+            async let twoFA: () = await checkForTwoFA()
             
-            let _ = await (updates, keys)
+            let _ = await (updates, keys, twoFA)
+        }
+    }
+
+    private func checkForTwoFA() async {
+        do {
+            // If details are returned, 2FA is currently disabled and should be enabled
+            let _ = try await twoFaDetailtsAPI(printResponse: false)
+            alertTwoFA = true
+            print("🛡️ 2FA is disabled")
+        } catch TwoFAError.alreadyEnabled {
+            alertTwoFA = false
+            print("🛡️ 2FA already enabled")
+        } catch {
+            print("Error checking 2FA status:", error.localizedDescription)
+            alertTwoFA = false
         }
     }
     

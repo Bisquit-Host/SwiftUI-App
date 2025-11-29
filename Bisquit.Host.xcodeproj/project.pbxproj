@@ -648,6 +648,7 @@
 				Utils/Tips/TipServerCardContextMenu.swift,
 				Utils/Tips/TipSuspendedServer.swift,
 				Utils/Tips/TipUnusedAPIKeys.swift,
+				Utils/Tips/TipEnable2FA.swift,
 				Utils/ValueStore.swift,
 			);
 			target = F31BA5322958FF7D0006D126 /* watchOS */;
@@ -757,6 +758,7 @@
 				Utils/Tips/TipServerCardContextMenu.swift,
 				Utils/Tips/TipSuspendedServer.swift,
 				Utils/Tips/TipUnusedAPIKeys.swift,
+				Utils/Tips/TipEnable2FA.swift,
 				Utils/ValueStore.swift,
 			);
 			target = F3E08E9F2A2CE17800116C1C /* macOS */;
@@ -914,6 +916,7 @@
 				Utils/Tips/TipServerCardContextMenu.swift,
 				Utils/Tips/TipSuspendedServer.swift,
 				Utils/Tips/TipUnusedAPIKeys.swift,
+				Utils/Tips/TipEnable2FA.swift,
 				Utils/ValueStore.swift,
 			);
 			target = F3000E04295A341000ABD30A /* tvOS */;
@@ -1056,6 +1059,7 @@
 				Utils/Tips/TipServerCardContextMenu.swift,
 				Utils/Tips/TipSuspendedServer.swift,
 				Utils/Tips/TipUnusedAPIKeys.swift,
+				Utils/Tips/TipEnable2FA.swift,
 				Utils/ValueStore.swift,
 			);
 			target = F3BD76F12A43C890003E7385 /* visionOS */;

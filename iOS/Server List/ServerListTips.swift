@@ -22,6 +22,14 @@ struct ServerListTips: View {
                 }
             }
             
+            if TipEnable2FA().status == .available {
+                Button {
+                    TipEnable2FA().invalidate(reason: .actionPerformed)
+                } label: {
+                    enableTwoFaTip($securityTasks.alertTwoFA)
+                }
+            }
+            
             if TipServerCardContextMenu().status == .available {
                 Button {
                     TipServerCardContextMenu().invalidate(reason: .tipClosed)
@@ -46,6 +54,7 @@ struct ServerListTips: View {
                     }
                     .environment(apiKeyListVM)
                 }
+            twoFaTip($securityTasks.alertTwoFA)
             
             serverCardContextMenuTip()
             suspendedServerTip()
@@ -67,6 +76,10 @@ struct ServerListTips: View {
                 sheetAPIKeyList = true
             }
         }
+    }
+    
+    private func twoFaTip(_ isPresented: Binding<Bool>) -> some View {
+        TipView(TipEnable2FA(), isPresented: isPresented)
     }
     
     private func serverCardContextMenuTip() -> some View {
