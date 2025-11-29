@@ -20,8 +20,29 @@ struct BillingAuthAppsSection: View {
                     }
                 }
                 
-                BillingAuthAppRow("Google", icon: "globe", enabled: false)
-                BillingAuthAppRow("Yandex", icon: "globe", enabled: false)
+                BillingAuthAppRow("Google", icon: "globe", enabled: !(user.googleId ?? "").isEmpty, isLoading: oauthVM.isLinkingGoogle) {
+                    oauthVM.startGoogleLinking {
+                        Task {
+                            await dashboardVM.fetchUserInfo()
+                        }
+                    }
+                } onDisconnect: {
+                    await oauthVM.disconnectGoogle {
+                        await dashboardVM.fetchUserInfo()
+                    }
+                }
+                
+                BillingAuthAppRow("Yandex", icon: "globe", enabled: !(user.yandexId ?? "").isEmpty, isLoading: oauthVM.isLinkingYandex) {
+                    oauthVM.startYandexLinking {
+                        Task {
+                            await dashboardVM.fetchUserInfo()
+                        }
+                    }
+                } onDisconnect: {
+                    await oauthVM.disconnectYandex {
+                        await dashboardVM.fetchUserInfo()
+                    }
+                }
             }
         }
     }

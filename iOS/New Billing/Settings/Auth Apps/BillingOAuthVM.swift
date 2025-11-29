@@ -3,7 +3,7 @@ import Foundation
 import UIKit
 
 private enum Provider {
-    case github
+    case github, google, yandex
 }
 
 private struct AuthURLResponse: Decodable {
@@ -19,11 +19,26 @@ final class BillingOAuthVM: NSObject {
     private var onLinked: (() -> Void)?
     
     var isLinkingGitHub = false
+    var isLinkingGoogle = false
+    var isLinkingYandex = false
     var errorMessage: String?
     
     func disconnectGithub(onSuccess: () async -> Void) async {
         let path = "https://test-api.bisquit.host/user/settings/social/github"
-        
+        await disconnect(path: path, onSuccess: onSuccess)
+    }
+    
+    func disconnectGoogle(onSuccess: () async -> Void) async {
+        let path = "https://test-api.bisquit.host/user/settings/social/google"
+        await disconnect(path: path, onSuccess: onSuccess)
+    }
+    
+    func disconnectYandex(onSuccess: () async -> Void) async {
+        let path = "https://test-api.bisquit.host/user/settings/social/yandex"
+        await disconnect(path: path, onSuccess: onSuccess)
+    }
+    
+    private func disconnect(path: String, onSuccess: () async -> Void) async {
         guard let url = URL(string: path) else { return }
         
         var req = URLRequest(url: url)
@@ -33,13 +48,8 @@ final class BillingOAuthVM: NSObject {
         do {
             let (_, response) = try await URLSession.shared.data(for: req)
             
-            if let code = (response as? HTTPURLResponse)?.statusCode {
-                print("Code:", code)
-                
-                if code == 204 {
-                    print("Disconnected GitHub")
-                    await onSuccess()
-                }
+            if let code = (response as? HTTPURLResponse)?.statusCode, code == 204 {
+                await onSuccess()
             }
         } catch {
             print(error)
@@ -49,19 +59,45 @@ final class BillingOAuthVM: NSObject {
     func startGitHubLinking(onLinked: (() -> Void)? = nil) {
         guard !isLinkingGitHub else { return }
         
-        pendingProvider = .github
+        startLinking(provider: .github, onLinked: onLinked)
+    }
+    
+    func startGoogleLinking(onLinked: (() -> Void)? = nil) {
+        guard !isLinkingGoogle else { return }
+        
+        startLinking(provider: .google, onLinked: onLinked)
+    }
+    
+    func startYandexLinking(onLinked: (() -> Void)? = nil) {
+        guard !isLinkingYandex else { return }
+        
+        startLinking(provider: .yandex, onLinked: onLinked)
+    }
+    
+    private func startLinking(provider: Provider, onLinked: (() -> Void)?) {
+        pendingProvider = provider
         self.onLinked = onLinked
-        isLinkingGitHub = true
         errorMessage = nil
         
+        switch provider {
+        case .github:
+            isLinkingGitHub = true
+            
+        case .google:
+            isLinkingGoogle = true
+            
+        case .yandex:
+            isLinkingYandex = true
+        }
+        
         Task {
-            await fetchGitHubAuthURL()
+            await fetchAuthURL(for: provider)
         }
     }
     
     func handleCallback(_ url: URL) {
-        guard pendingProvider == .github else { return }
-        guard url.path.lowercased() == "/auth/providers/github" else { return }
+        guard let pendingProvider else { return }
+        guard url.path.lowercased() == "/auth/providers/\(pendingProvider.pathComponent)" else { return }
         
         guard
             let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
@@ -72,12 +108,12 @@ final class BillingOAuthVM: NSObject {
         }
         
         Task {
-            await exchangeGitHubCode(code)
+            await exchangeCode(code, for: pendingProvider)
         }
     }
     
-    private func fetchGitHubAuthURL() async {
-        guard let url = URL(string: "\(backendBase)/auth/providers/github") else {
+    private func fetchAuthURL(for provider: Provider) async {
+        guard let url = URL(string: "\(backendBase)/auth/providers/\(provider.pathComponent)") else {
             finish(success: false, message: "Invalid backend URL")
             return
         }
@@ -123,8 +159,8 @@ final class BillingOAuthVM: NSObject {
         session?.start()
     }
     
-    private func exchangeGitHubCode(_ code: String) async {
-        guard let url = URL(string: "\(backendBase)/auth/providers/github") else {
+    private func exchangeCode(_ code: String, for provider: Provider) async {
+        guard let url = URL(string: "\(backendBase)/auth/providers/\(provider.pathComponent)") else {
             finish(success: false, message: "Invalid backend URL")
             return
         }
@@ -149,6 +185,7 @@ final class BillingOAuthVM: NSObject {
             switch http.statusCode {
             case 204:
                 finish(success: true, message: nil)
+                
             case 200:
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -172,7 +209,20 @@ final class BillingOAuthVM: NSObject {
     }
     
     private func finish(success: Bool, message: String?) {
-        isLinkingGitHub = false
+        switch pendingProvider {
+        case .github:
+            isLinkingGitHub = false
+            
+        case .google:
+            isLinkingGoogle = false
+            
+        case .yandex:
+            isLinkingYandex = false
+            
+        case .none:
+            break
+        }
+        
         pendingProvider = nil
         session = nil
         errorMessage = message
@@ -184,6 +234,16 @@ final class BillingOAuthVM: NSObject {
     private var bearerToken: String? {
         let token = ValueStore().testAccessToken
         return token.isEmpty ? nil : token
+    }
+}
+
+private extension Provider {
+    var pathComponent: String {
+        switch self {
+        case .github: "github"
+        case .google: "google"
+        case .yandex: "yandex"
+        }
     }
 }
 

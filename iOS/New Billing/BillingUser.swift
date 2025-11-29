@@ -22,6 +22,8 @@ public struct BillingUser: Decodable, Equatable {
     public let lang: String
     public let twoFa: Bool
     public let githubId: String?
+    public let googleId: String?
+    public let yandexId: String?
     public let isBanned: Bool
     public let hasPassword: Bool
     public let isSupportAgent: Bool
@@ -32,7 +34,7 @@ public struct BillingUser: Decodable, Equatable {
     public let updatedAt: String
     
     enum CodingKeys: String, CodingKey {
-        case id, login, email, emailVerified, name, avatar, currency, balance, bonusBalance, totalBalance, lang, twoFa, githubId, isBanned, hasPassword, isSupportAgent, isSupport = "rawIsSupport", isAdmin = "rawIsAdmin", isGod = "rawIsGod", createdAt, updatedAt
+        case id, login, email, emailVerified, name, avatar, currency, balance, bonusBalance, totalBalance, lang, twoFa, githubId, googleId, yandexId, isBanned, hasPassword, isSupportAgent, isSupport = "rawIsSupport", isAdmin = "rawIsAdmin", isGod = "rawIsGod", createdAt, updatedAt
     }
     
     public static let preview = BillingUser(
@@ -49,6 +51,8 @@ public struct BillingUser: Decodable, Equatable {
         lang: "en",
         twoFa: true,
         githubId: "123456",
+        googleId: "google-abc",
+        yandexId: "yandex-xyz",
         isBanned: false,
         hasPassword: true,
         isSupportAgent: false,
