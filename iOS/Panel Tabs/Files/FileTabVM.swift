@@ -18,6 +18,7 @@ final class FileTabVM: ObservableObject {
     private var fileUploader = FileUploader()
     @Published var uploadProgress: Float = 0
     @Published var isUploading = false
+    @Published var uploadingCount: Int = 0
 #endif
     
 #if os(macOS)
@@ -108,6 +109,13 @@ final class FileTabVM: ObservableObject {
 #if os(iOS)
     func cancelUpload() {
         fileUploader.cancelUpload()
+        Task { @MainActor in
+            uploadingCount = 0
+            uploadProgress = 0
+            withAnimation {
+                isUploading = false
+            }
+        }
     }
     
     func uploadFile(_ urlString: String, name: String, at root: String, mimeType: String, fileURL: URL) async {
@@ -152,6 +160,10 @@ final class FileTabVM: ObservableObject {
         }
         
         await MainActor.run {
+            uploadingCount = max(0, uploadingCount - 1)
+        }
+        
+        await MainActor.run {
             withAnimation {
                 isUploading = false
             }
@@ -160,6 +172,10 @@ final class FileTabVM: ObservableObject {
     }
     
     func handleFileImport(_ urls: [URL], at root: String, onSuccess: @escaping () -> Void = {}) async {
+        await MainActor.run {
+            uploadingCount = urls.count
+        }
+        
         for fileURL in urls {
             let fileName = fileURL.lastPathComponent
             
@@ -177,9 +193,17 @@ final class FileTabVM: ObservableObject {
                 print("Error in file API:", error)
             }
         }
+        
+        await MainActor.run {
+            uploadingCount = 0
+        }
     }
     
     func handleImageImport(_ image: UIImage, at root: String) async {
+        await MainActor.run {
+            uploadingCount = 1
+        }
+        
         guard let imageData = image.heicData() else {
             print("Unable to convert image to data")
             return
@@ -203,6 +227,10 @@ final class FileTabVM: ObservableObject {
             
         } catch {
             SystemAlert.error(error)
+        }
+        
+        await MainActor.run {
+            uploadingCount = 0
         }
     }
 #endif
