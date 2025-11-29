@@ -13,7 +13,7 @@ extension ServerListVM {
                 score, context: 0, player: GKLocalPlayer.local, leaderboardIDs: ["owned_servers"]
             )
             
-            print("Score submitted", score)
+            print("Score submitted:", score)
         } catch {
             print("Failed to submit score:", error.localizedDescription)
         }

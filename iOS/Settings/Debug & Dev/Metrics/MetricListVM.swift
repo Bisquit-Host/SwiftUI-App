@@ -25,4 +25,22 @@ final class MetricListVM {
             return lhsDate > rhsDate
         }
     }
+
+    /// Returns files grouped by day (most recent day first, files newest-first inside each day)
+    func filesByDay() -> [(day: Date, files: [URL])] {
+        let calendar = Calendar.current
+        let grouped = Dictionary(grouping: files) { url in
+            calendar.startOfDay(for: modificationDate(url) ?? .distantPast)
+        }
+
+        let sortedDays = grouped.keys.sorted(by: >)
+        return sortedDays.map { day in
+            let urls = (grouped[day] ?? []).sorted { lhs, rhs in
+                let lhsDate = modificationDate(lhs) ?? .distantPast
+                let rhsDate = modificationDate(rhs) ?? .distantPast
+                return lhsDate > rhsDate
+            }
+            return (day: day, files: urls)
+        }
+    }
 }
