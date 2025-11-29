@@ -33,8 +33,13 @@ final class BillingOAuthVM: NSObject {
         do {
             let (_, response) = try await URLSession.shared.data(for: req)
             
-            if let code = (response as? HTTPURLResponse)?.statusCode, code == 200 {
-                print("Disconnected GitHub")
+            if let code = (response as? HTTPURLResponse)?.statusCode {
+                print("Code:", code)
+                
+                if code == 204 {
+                    print("Disconnected GitHub")
+                    await onSuccess()
+                }
             }
         } catch {
             print(error)
@@ -167,18 +172,13 @@ final class BillingOAuthVM: NSObject {
     }
     
     private func finish(success: Bool, message: String?) {
-        DispatchQueue.main.async {
-            self.isLinkingGitHub = false
-            self.pendingProvider = nil
-            self.session = nil
-            self.errorMessage = message
-            
-            if success {
-                self.onLinked?()
-            }
-            
-            self.onLinked = nil
-        }
+        isLinkingGitHub = false
+        pendingProvider = nil
+        session = nil
+        errorMessage = message
+        
+        onLinked?()
+        onLinked = nil
     }
     
     private var bearerToken: String? {
