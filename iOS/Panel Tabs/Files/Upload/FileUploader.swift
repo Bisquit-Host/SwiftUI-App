@@ -87,10 +87,6 @@ final class FileUploader: NSObject, ObservableObject {
 
 extension FileUploader: @preconcurrency URLSessionDataDelegate {
     func urlSession(_ session: URLSession, task: URLSessionTask, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) {
-        Task { @MainActor in
-            withAnimation {
-                uploadProgress = Float(totalBytesSent) / Float(totalBytesExpectedToSend)
-            }
-        }
+        uploadProgress = Float(totalBytesSent) / Float(totalBytesExpectedToSend)
     }
 }
