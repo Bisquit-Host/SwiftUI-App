@@ -5,7 +5,7 @@ struct ResourcesWidget: Widget {
     private let kind = "Widgets test"
     
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: CryptoPriceConfigurationIntent.self, provider: ResourcesTimelineProvider()) {
+        AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: ResourcesTimelineProvider()) {
             ResourcesWidgetView($0)
         }
         .configurationDisplayName("Server Info")

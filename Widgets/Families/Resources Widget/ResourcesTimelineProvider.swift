@@ -1,51 +1,34 @@
 import WidgetKit
 
-struct ResourcesTimelineProvider: IntentTimelineProvider {
+struct ResourcesTimelineProvider: AppIntentTimelineProvider {
     func placeholder(in context: Context) -> ResourcesUsageEntry {
         ResourcesUsageEntry(date: Date(), name: "Preview", id: "12345678", state: "running")
     }
     
-    func getSnapshot(for configuration: CryptoPriceConfigurationIntent, in context: Context, completion: @escaping (ResourcesUsageEntry) -> ()) {
-        completion(
-            ResourcesUsageEntry(date: Date(), name: "Preview", id: "12345678", state: "running")
-        )
+    func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> ResourcesUsageEntry {
+        await entry(for: configuration) ?? ResourcesUsageEntry(date: Date(), name: "", id: "", state: "Select a server")
     }
     
-    func getTimeline(for configuration: CryptoPriceConfigurationIntent, in context: Context, completion: @escaping @Sendable (Timeline<ResourcesUsageEntry>) -> ()) {
-        // Extract info from config
-        
-        guard
-            let name = configuration.selectedServer?.name,
-            let id = configuration.selectedServer?.id
-        else {
-            showEmptyState(completion, error: "1")
-            return
-        }
-        
-        Task { @MainActor in
-            let usage = await Networking.fetchResourceUsage(id)
-            
-            // Create Entry using based on user selected config & fetched info
-            let entry = ResourcesUsageEntry(date: Date(), name: name, id: id, state: usage.state, test: usage.test)
-            
-            // Trigger completion & next fetch in 15 mins
-            executeTimelineCompletion(completion, timelineEntry: entry)
-        }
-    }
-    
-    private func showEmptyState(_ completion: @escaping (Timeline<ResourcesUsageEntry>) -> (), error: String) {
-        let entry = ResourcesUsageEntry(date: Date(), name: "", id: "", state: error)
-        
-        // Trigger completion & next fetch in 15 mins
-        executeTimelineCompletion(completion, timelineEntry: entry)
-    }
-    
-    func executeTimelineCompletion(_ completion: @escaping (Timeline<ResourcesUsageEntry>) -> (), timelineEntry: ResourcesUsageEntry) {
-        // Next fetch in 15 mins
+    func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<ResourcesUsageEntry> {
+        let entry = await entry(for: configuration) ?? ResourcesUsageEntry(date: Date(), name: "", id: "", state: "Select a server")
         let nextUpdate = Calendar.current.date(byAdding: DateComponents(minute: 15), to: Date())!
         
-        completion(
-            Timeline(entries: [timelineEntry], policy: .after(nextUpdate))
+        return Timeline(entries: [entry], policy: .after(nextUpdate))
+    }
+    
+    private func entry(for configuration: ConfigurationAppIntent) async -> ResourcesUsageEntry? {
+        guard let server = configuration.selectedServer else {
+            return nil
+        }
+        
+        let usage = await Networking.fetchResourceUsage(server.id)
+        
+        return ResourcesUsageEntry(
+            date: Date(),
+            name: server.displayString,
+            id: server.id,
+            state: usage.state,
+            test: usage.test
         )
     }
 }

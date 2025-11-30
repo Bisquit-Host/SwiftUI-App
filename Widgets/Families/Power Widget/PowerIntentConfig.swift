@@ -1,9 +1,17 @@
 import AppIntents
 
-struct ConfigurationAppIntent: WidgetConfigurationIntent {
+struct ConfigurationAppIntent: AppIntent, WidgetConfigurationIntent, CustomIntentMigratedAppIntent {
+    static let intentClassName = "CryptoPriceConfigurationIntent"
     static let title: LocalizedStringResource = "Configuration"
-    static let description = IntentDescription("This is an example widget")
+    static let description = IntentDescription("Widget configuration")
+    static let isDiscoverable = false
     
-    @Parameter(title: "Server id", optionsProvider: ServerOptionsProvider())
-    var id: String?
+    @Parameter(title: "Server")
+    var selectedServer: ServerIntentTypeAppEntity?
+    
+    static var parameterSummary: some ParameterSummary {
+        Summary {
+            \.$selectedServer
+        }
+    }
 }
