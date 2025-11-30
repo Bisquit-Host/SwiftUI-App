@@ -644,11 +644,11 @@
 				Utils/System.swift,
 				Utils/SystemAlerts.swift,
 				Utils/Tips/TipCloudKeys.swift,
+				Utils/Tips/TipEnable2FA.swift,
 				Utils/Tips/TipJSONFormatter.swift,
 				Utils/Tips/TipServerCardContextMenu.swift,
 				Utils/Tips/TipSuspendedServer.swift,
 				Utils/Tips/TipUnusedAPIKeys.swift,
-				Utils/Tips/TipEnable2FA.swift,
 				Utils/ValueStore.swift,
 			);
 			target = F31BA5322958FF7D0006D126 /* watchOS */;
@@ -754,11 +754,11 @@
 				Utils/System.swift,
 				Utils/SystemAlerts.swift,
 				Utils/Tips/TipCloudKeys.swift,
+				Utils/Tips/TipEnable2FA.swift,
 				Utils/Tips/TipJSONFormatter.swift,
 				Utils/Tips/TipServerCardContextMenu.swift,
 				Utils/Tips/TipSuspendedServer.swift,
 				Utils/Tips/TipUnusedAPIKeys.swift,
-				Utils/Tips/TipEnable2FA.swift,
 				Utils/ValueStore.swift,
 			);
 			target = F3E08E9F2A2CE17800116C1C /* macOS */;
@@ -912,11 +912,11 @@
 				Utils/System.swift,
 				Utils/SystemAlerts.swift,
 				Utils/Tips/TipCloudKeys.swift,
+				Utils/Tips/TipEnable2FA.swift,
 				Utils/Tips/TipJSONFormatter.swift,
 				Utils/Tips/TipServerCardContextMenu.swift,
 				Utils/Tips/TipSuspendedServer.swift,
 				Utils/Tips/TipUnusedAPIKeys.swift,
-				Utils/Tips/TipEnable2FA.swift,
 				Utils/ValueStore.swift,
 			);
 			target = F3000E04295A341000ABD30A /* tvOS */;
@@ -1055,11 +1055,11 @@
 				Utils/System.swift,
 				Utils/SystemAlerts.swift,
 				Utils/Tips/TipCloudKeys.swift,
+				Utils/Tips/TipEnable2FA.swift,
 				Utils/Tips/TipJSONFormatter.swift,
 				Utils/Tips/TipServerCardContextMenu.swift,
 				Utils/Tips/TipSuspendedServer.swift,
 				Utils/Tips/TipUnusedAPIKeys.swift,
-				Utils/Tips/TipEnable2FA.swift,
 				Utils/ValueStore.swift,
 			);
 			target = F3BD76F12A43C890003E7385 /* visionOS */;
@@ -1128,8 +1128,6 @@
 				"Server List/Server Card/ServerCardWide.swift",
 				"Server List/ServerListGrid.swift",
 				"Server List/ServerListVM.swift",
-				"Server List/Toolbar/NodeFilter.swift",
-				"Server List/Toolbar/NodeFilterCard.swift",
 				"Server List/Toolbar/ServerListAdminButton.swift",
 				"Server List/Toolbar/ServerListFilter.swift",
 				"Server List/VM extensions/ContactsProvider.swift",

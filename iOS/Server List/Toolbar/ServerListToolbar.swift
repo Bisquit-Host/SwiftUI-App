@@ -21,7 +21,7 @@ struct ServerListToolbar: ViewModifier {
                 }
                 
                 // Filter
-                if vm.showFilter {
+                if vm.hasSuspendedServers {
                     ToolbarItem(placement: .topBarTrailing) {
                         ServerListFilter()
                     }

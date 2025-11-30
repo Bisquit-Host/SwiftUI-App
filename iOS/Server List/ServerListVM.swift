@@ -15,26 +15,12 @@ final class ServerListVM {
     // MARK: - Filter/Search
     var searchField = ""
     var displayedNode = ""
-    var filterBySuspended = false
     var filterByNotSuspended = false
     
     var selectedServer: ServerAttributes?
     
-    var nodes: [String] {
-        Array(Set(servers.map(\.node)))
-            .sorted()
-    }
-    
     var hasSuspendedServers: Bool {
         servers.filter(\.isSuspended).count > 0
-    }
-    
-    var hasMultipleNodes: Bool {
-        nodes.count > 1
-    }
-    
-    var showFilter: Bool {
-        hasSuspendedServers || hasMultipleNodes
     }
     
     var hasFrozenServers: Bool {
@@ -48,10 +34,9 @@ final class ServerListVM {
             let matchesName = searchField.isEmpty           || $0.name.localizedStandardContains(searchField)
             let matchesDescription = searchField.isEmpty    || $0.description.localizedStandardContains(searchField)
             let matchesNode = displayedNode.isEmpty         || $0.node == displayedNode
-            let matchesSuspended = !filterBySuspended       || $0.isSuspended
             let matchesNotSuspended = !filterByNotSuspended || !$0.isSuspended
             
-            return matchesName && matchesDescription && matchesNode && matchesSuspended && matchesNotSuspended
+            return matchesName && matchesDescription && matchesNode && matchesNotSuspended
         }
     }
     

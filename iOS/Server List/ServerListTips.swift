@@ -26,7 +26,7 @@ struct ServerListTips: View {
                 Button {
                     TipEnable2FA().invalidate(reason: .actionPerformed)
                 } label: {
-                    enableTwoFaTip($securityTasks.alertTwoFA)
+                    twoFaTip($securityTasks.alertTwoFA)
                 }
             }
             
@@ -54,6 +54,7 @@ struct ServerListTips: View {
                     }
                     .environment(apiKeyListVM)
                 }
+            
             twoFaTip($securityTasks.alertTwoFA)
             
             serverCardContextMenuTip()
