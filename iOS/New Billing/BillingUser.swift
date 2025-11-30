@@ -16,12 +16,14 @@ public struct BillingUser: Decodable, Equatable {
     
     public let avatar: String
     public let currency: String
-    public let balance: Int
-    public let bonusBalance: Int
-    public let totalBalance: Int
+    public let balance: Double
+    public let bonusBalance: Double
+    public let totalBalance: Double
     public let lang: String
     public let twoFa: Bool
-    public let githubId: String
+    public let githubId: String?
+    public let googleId: String?
+    public let yandexId: String?
     public let isBanned: Bool
     public let hasPassword: Bool
     public let isSupportAgent: Bool
@@ -32,7 +34,7 @@ public struct BillingUser: Decodable, Equatable {
     public let updatedAt: String
     
     enum CodingKeys: String, CodingKey {
-        case id, login, email, emailVerified, name, avatar, currency, balance, bonusBalance, totalBalance, lang, twoFa, githubId, isBanned, hasPassword, isSupportAgent, isSupport = "rawIsSupport", isAdmin = "rawIsAdmin", isGod = "rawIsGod", createdAt, updatedAt
+        case id, login, email, emailVerified, name, avatar, currency, balance, bonusBalance, totalBalance, lang, twoFa, githubId, googleId, yandexId, isBanned, hasPassword, isSupportAgent, isSupport = "rawIsSupport", isAdmin = "rawIsAdmin", isGod = "rawIsGod", createdAt, updatedAt
     }
     
     public static let preview = BillingUser(
@@ -49,6 +51,8 @@ public struct BillingUser: Decodable, Equatable {
         lang: "en",
         twoFa: true,
         githubId: "123456",
+        googleId: "google-abc",
+        yandexId: "yandex-xyz",
         isBanned: false,
         hasPassword: true,
         isSupportAgent: false,
@@ -59,29 +63,3 @@ public struct BillingUser: Decodable, Equatable {
         updatedAt: "2025-01-01T00:00:00Z"
     )
 }
-
-//{
-//    "id": 3,
-//    "login": "gh-ezh9H8yM",
-//    "email": "sergei_saliukov@icloud.com",
-//    "emailVerified": true,
-//    "name": "Sergei Saliukov",
-//    "avatar": "https://avatars.githubusercontent.com/u/89252798?v=4",
-//    "currency": "RUB",
-//    "balance": 0,
-//    "bonusBalance": 0,
-//    "totalBalance": 0,
-//    "lang": "RU",
-//    "twoFa": false,
-//    "githubId": "89252798",
-//    "isBanned": false,
-//    "hasPassword": true,
-//    "isSupportAgent": true,
-//    "isAdmin": true,
-//    "isGod": true,
-//    "rawIsSupport": false,
-//    "rawIsAdmin": false,
-//    "rawIsGod": true,
-//    "createdAt": "2025-10-07T01:18:16.169036Z",
-//    "updatedAt": "2025-11-23T21:49:26.043350Z"
-//}

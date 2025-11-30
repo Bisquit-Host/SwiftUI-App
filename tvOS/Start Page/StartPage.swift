@@ -5,7 +5,6 @@ import PteroNet
 struct StartPage: View {
     @Bindable var vm = StartPageVM()
     @EnvironmentObject var store: ValueStore
-    
     @Environment(\.modelContext) var modelContext
     @Query(animation: .default) var keys: [APIKey]
     

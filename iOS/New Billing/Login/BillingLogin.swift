@@ -3,7 +3,6 @@ import HCaptcha
 
 struct BillingLogin: View {
     @State private var vm = BillingLoginVM()
-    @Environment(NavState.self) private var nav
     @EnvironmentObject private var store: ValueStore
     
     @State private var sheetHcaptcha = false
@@ -19,9 +18,10 @@ struct BillingLogin: View {
                 .autocorrectionDisabled()
                 .keyboardType(.emailAddress)
                 .textContentType(.emailAddress)
-                .autocorrectionDisabled()
+                .textInputAutocapitalization(.never)
             
             SecureField("Password", text: $store.password)
+                .textContentType(.password)
             
             Section {
                 Button("Continue") {
@@ -40,12 +40,17 @@ struct BillingLogin: View {
     
     private func auth() {
         Task {
-            if let response = await vm.login(store.login, store.password, captchaToken) {
-                store.testExpiresIn = response.expiresIn
+            guard let response = await vm.login(store.login, store.password, captchaToken) else {
+                return
+            }
+            
+            store.testExpiresIn = response.expiresIn
+            store.testRefreshToken = response.refreshToken
+            
+            try await Task.sleep(for: .seconds(0.5))
+            
+            withAnimation {
                 store.testAccessToken = response.accessToken
-                store.testRefreshToken = response.refreshToken
-                
-                nav.navigate(.toBillingDashboard)
             }
         }
     }

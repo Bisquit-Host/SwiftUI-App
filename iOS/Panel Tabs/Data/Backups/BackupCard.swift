@@ -69,17 +69,13 @@ struct BackupCard: View {
         .safariCover($cardVM.showSafari, url: cardVM.url)
         .swipeActions {
             Button(role: .destructive) {
-                Task {
-                    await vm.deleteBackup(backup.uuid)
-                }
+                delete()
             } label: {
                 Image(systemName: "trash")
             }
             
             Button {
-                Task {
-                    await vm.toggleBackupLock(backup.uuid)
-                }
+                toggleLock()
             } label: {
                 Image(systemName: backup.isLocked ? "lock.open" : "lock")
                     .tint(backup.isLocked ? .orange : .green)
@@ -90,6 +86,18 @@ struct BackupCard: View {
             BackupContextMenu(backup)
                 .environment(vm)
                 .environment(cardVM)
+        }
+    }
+    
+    private func delete() {
+        Task {
+            await vm.deleteBackup(backup.uuid)
+        }
+    }
+    
+    private func toggleLock() {
+        Task {
+            await vm.toggleBackupLock(backup.uuid)
         }
     }
 }

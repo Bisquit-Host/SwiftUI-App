@@ -54,7 +54,7 @@ struct CredentialsView: View {
             
             Spacer()
             
-            KFImage(getImageUrl("streamer"))
+            KFImage(getImageURL("streamer"))
                 .resizable()
                 .fade(duration: 0.25)
                 .aspectRatio(3/2, contentMode: .fit)
@@ -66,11 +66,11 @@ struct CredentialsView: View {
         .multilineTextAlignment(.center)
     }
     
-    private func getImageUrl(_ imageName: String) -> URL {
-        let stringUrl = "https://topscrech.dev/bisquit.host/assets/\(imageName).heic"
+    private func getImageURL(_ imageName: String) -> URL {
+        let stringURL = "https://topscrech.dev/bisquit.host/assets/\(imageName).heic"
         
-        guard let url = URL(string: stringUrl) else {
-            fatalError("Failed to create URL from string: \(stringUrl)")
+        guard let url = URL(string: stringURL) else {
+            fatalError("Failed to create URL from string: \(stringURL)")
         }
         
         return url

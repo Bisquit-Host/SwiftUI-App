@@ -1,0 +1,57 @@
+import SwiftUI
+
+@Observable
+final class TicketMediaVM {
+    var image: Image?
+    var isLoading = true
+    
+    func loadMedia(mediaPath: String, accessToken: String) async {
+        guard let url = buildURL(mediaPath) else {
+            print("Invalid media URL")
+            isLoading = false
+            
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        
+        do {
+            let (data, response) = try await URLSession.shared.data(for: request)
+            
+            if let http = response as? HTTPURLResponse, http.statusCode >= 400 {
+                let detail = String(data: data, encoding: .utf8) ?? ""
+                
+                print(http.statusCode, "Failed to load media;", detail)
+                isLoading = false
+                
+                return
+            }
+            
+            if let uiImage = UIImage(data: data) {
+                let swiftUIImage = Image(uiImage: uiImage)
+                
+                image = swiftUIImage
+                isLoading = false
+            } else {
+                print("Unsupported media")
+                isLoading = false
+            }
+        } catch {
+            print(error.localizedDescription)
+            isLoading = false
+        }
+    }
+    
+    func buildURL(_ path: String) -> URL? {
+        if let url = URL(string: path), url.scheme != nil {
+            return url
+        }
+        
+        let cleaned = path.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
+        let filename = URL(fileURLWithPath: cleaned).lastPathComponent
+        
+        let baseURL = "https://test-api.bisquit.host"
+        return URL(string: "\(baseURL)/media/tickets/\(filename)")
+    }
+}

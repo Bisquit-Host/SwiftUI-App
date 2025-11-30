@@ -1,7 +1,11 @@
 import SwiftUI
 
 struct BillingSettings: View {
+    @State private var vm = BillingSettingsVM()
     @EnvironmentObject private var store: ValueStore
+    @Environment(\.dismiss) private var dismiss
+    @Environment(BillingDashboardVM.self) private var dashboardVM
+    @Environment(BillingOAuthVM.self) private var oauthVM
     
     @Binding private var user: BillingUser?
     
@@ -21,26 +25,45 @@ struct BillingSettings: View {
                             BillingSecurityRow("Password", icon: "key.fill", enabled: user.hasPassword, enabledText: "Change", disabledText: "Set")
                         }
                         
-                        BillingSectionCard("Auth apps") {
-                            BillingAuthAppRow("GitHub", icon: "app.connected.to.app.below.fill", enabled: user.twoFa)
-                            BillingAuthAppRow("Google", icon: "globe", enabled: user.hasPassword)
-                            BillingAuthAppRow("Yandex", icon: "globe", enabled: user.isBanned)
-                        }
+                        BillingAuthAppsSection(user: $user)
                     }
                     .transition(.opacity.combined(with: .move(edge: .top)))
                     .animation(.easeInOut, value: user)
                 }
                 
-                GroupBox("Debug") {
-                    Toggle("Test billing", isOn: $store.testBilling)
+                BillingSectionCard("Debug") {
+                    BillingToggleRow("Test billing", icon: "testtube.2", tint: .purple, isOn: $store.testBilling)
                     
-                    Button("Log out", role: .destructive) {
-                        store.testAccessToken = ""
+                    BillingActionRow("Log out", icon: "rectangle.portrait.and.arrow.right", tint: .red, role: .destructive) {
+                        logout()
                     }
                 }
             }
         }
         .padding()
+        .environment(vm)
+        .refreshable {
+            await dashboardVM.fetchUserInfo()
+        }
+        .toolbar {
+            ToolbarItem(placement: .bottomBar) {
+                DismissButton()
+            }
+            
+            ToolbarSpacer(.flexible, placement: .bottomBar)
+        }
+    }
+    
+    private func logout() {
+        dismiss()
+        
+        Task {
+            try await Task.sleep(for: .seconds(0.5))
+            
+            withAnimation {
+                store.testAccessToken = ""
+            }
+        }
     }
 }
 

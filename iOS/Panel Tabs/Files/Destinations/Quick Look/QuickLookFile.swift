@@ -4,8 +4,7 @@ import UniformTypeIdentifiers
 
 struct QuickLookFile: View {
     @State private var vm: QuickLookFileVM
-    @EnvironmentObject private var fileVm: FileTabVM
-    
+    @EnvironmentObject private var fileVM: FileTabVM
     @Environment(\.dismiss) private var dismiss
     
     private let id, name, path: String
@@ -21,7 +20,7 @@ struct QuickLookFile: View {
     
     var body: some View {
         VStack {
-            if let url = vm.fileUrl {
+            if let url = vm.fileURL {
                 QuickLookView(url)
                     .transition(.opacity)
             } else {
@@ -29,14 +28,14 @@ struct QuickLookFile: View {
             }
         }
         .navigationTitle(name)
-        .animation(.default, value: vm.fileUrl)
+        .animation(.default, value: vm.fileURL)
         .blur(radius: vm.isSensitive ? 10 : 0)
         .ignoresSafeArea(edges: .bottom)
         .sheet($sheetMetadata) {
             MetadataList(vm.metadata)
         }
         .task {
-            await vm.getFileUrl(name, at: path)
+            await vm.getFileURL(name, at: path)
         }
         .overlay {
             if vm.isSensitive {
@@ -51,7 +50,7 @@ struct QuickLookFile: View {
             }
         }
         .toolbar {
-            if let url = vm.fileUrl, isImage(url) {
+            if let url = vm.fileURL, isImage(url) {
                 ImagePlaygroundToolbarButton(url, path, name)
             }
             
@@ -60,14 +59,14 @@ struct QuickLookFile: View {
                     sheetMetadata = true
                 }
                 
-                if let url = vm.fileUrl {
+                if let url = vm.fileURL {
                     ShareLink(item: url)
                 }
                 
                 Section {
                     Button("Delete", systemImage: "trash", role: .destructive) {
                         Task {
-                            await fileVm.deleteFile(name, at: path) {
+                            await fileVM.deleteFile(name, at: path) {
                                 dismiss()
                             }
                         }

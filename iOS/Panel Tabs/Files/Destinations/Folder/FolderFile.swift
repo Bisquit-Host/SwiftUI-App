@@ -49,7 +49,7 @@ struct FolderFile: View {
         .searchable(text: $vm.searchField)
         .environmentObject(vm)
         .frame(maxWidth: 500)
-        .safariCover($vm.showSafari, url: vm.downloadUrl)
+        .safariCover($vm.showSafari, url: vm.downloadURL)
         .task {
             vm.path = path
         }

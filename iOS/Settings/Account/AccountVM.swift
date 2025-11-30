@@ -5,7 +5,7 @@ import PteroNet
 @Observable
 final class AccountVM {
     private(set) var account: AccountAttributes? = nil
-    private(set) var qrCodeUrl = ""
+    private(set) var qrCodeURL = ""
     private(set) var twoFaEnabled: Bool?
     
     func fetch() async {
@@ -18,7 +18,7 @@ final class AccountVM {
     
     func twoFaDetails() async {
         do {
-            qrCodeUrl = try await twoFaDetailtsAPI(printResponse: true)
+            qrCodeURL = try await twoFaDetailtsAPI(printResponse: true)
             twoFaEnabled = false
             
         } catch TwoFAError.alreadyEnabled {

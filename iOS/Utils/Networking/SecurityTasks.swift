@@ -5,13 +5,32 @@ import PteroNet
 final class SecurityTasks {
     var alertUpdate = false
     var alertUnusedAPIKeys = false
+    var alertTwoFA = false
     
     func startCheck() async {
         Task {
             try await Task.sleep(for: .seconds(1))
             
-            await checkForUpdates()
-            await checkForUnusedAPIKeys()
+            async let updates: () = await checkForUpdates()
+            async let keys: () = await checkForUnusedAPIKeys()
+            async let twoFA: () = await checkForTwoFA()
+            
+            let _ = await (updates, keys, twoFA)
+        }
+    }
+
+    private func checkForTwoFA() async {
+        do {
+            // If details are returned, 2FA is currently disabled and should be enabled
+            let _ = try await twoFaDetailtsAPI(printResponse: false)
+            alertTwoFA = true
+            print("🛡️ 2FA is disabled")
+        } catch TwoFAError.alreadyEnabled {
+            alertTwoFA = false
+            print("🛡️ 2FA enabled")
+        } catch {
+            print("Error checking 2FA status:", error.localizedDescription)
+            alertTwoFA = false
         }
     }
     
@@ -36,7 +55,7 @@ final class SecurityTasks {
                 return date < after2Months
             }
             
-            print(alertUnusedAPIKeys ? "🛡️ Detected unused API keys" : "🛡️ No unused API keys found")
+            print(alertUnusedAPIKeys ? "🛡️ Found unused API keys" : "🛡️ No unused API keys found")
         } catch {
             print("Error fetching API keys:", error.localizedDescription)
             alertUnusedAPIKeys = false

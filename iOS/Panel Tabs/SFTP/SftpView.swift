@@ -4,14 +4,12 @@ import PteroNet
 struct SftpDetails: View {
     @Environment(ServerSettingsVM.self) private var vm
     
-    private var sftp: ServerSftpDetails
+    private let sftp: ServerSftpDetails
+    private let sftpAddress: String
     
     init(_ sftp: ServerSftpDetails) {
         self.sftp = sftp
-    }
-    
-    private var sftpAddress: String {
-        "\(sftp.ip):\(sftp.port)"
+        sftpAddress = "\(sftp.ip):\(sftp.port)"
     }
     
     var body: some View {

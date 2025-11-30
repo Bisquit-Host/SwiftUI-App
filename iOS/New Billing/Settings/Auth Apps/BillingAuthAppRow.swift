@@ -6,11 +6,24 @@ struct BillingAuthAppRow: View {
     private let title: String
     private let icon: String
     private let enabled: Bool
+    private let isLoading: Bool
+    private let onConnect: (() -> Void)?
+    private let onDisconnect: (() async -> Void)?
     
-    init(_ title: String, icon: String, enabled: Bool) {
+    init(
+        _ title: String,
+        icon: String,
+        enabled: Bool,
+        isLoading: Bool = false,
+        onConnect: (() -> Void)? = nil,
+        onDisconnect: (() async -> Void)? = nil
+    ) {
         self.title = title
         self.icon = icon
         self.enabled = enabled
+        self.isLoading = isLoading
+        self.onConnect = onConnect
+        self.onDisconnect = onDisconnect
     }
     
     var body: some View {
@@ -34,18 +47,31 @@ struct BillingAuthAppRow: View {
             Spacer()
             
             Group {
-                if enabled {
+                if isLoading {
+                    ProgressView()
+                        .controlSize(.small)
+                        .tint(.secondary)
+                        .padding(.horizontal, 8)
+                } else if enabled {
                     Button("Disconnect") {
-                        
+                        disconnect()
                     }
+                    .disabled(onDisconnect == nil)
                 } else {
                     Button("Connect") {
-                        
+                        onConnect?()
                     }
+                    .disabled(onConnect == nil)
                 }
             }
             .secondary()
             .footnote()
+        }
+    }
+    
+    private func disconnect() {
+        Task {
+            await onDisconnect?()
         }
     }
 }

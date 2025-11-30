@@ -9,7 +9,7 @@ import Network
 ///   - timeout: Maximum time to wait for the connection, in seconds (default is 5)
 ///   - completion: A closure called with a Result containing either the elapsed
 ///     time (in seconds) on success or an Error on failure
-public func tcpPing(host: String, port: UInt16, timeout: TimeInterval = 5, completion: @escaping @Sendable (Result<TimeInterval, Error>) -> Void) {
+fileprivate func tcpPing(host: String, port: UInt16, timeout: TimeInterval = 5, completion: @escaping @Sendable (Result<TimeInterval, Error>) -> Void) {
     let startTime = Date()
     
     actor FinishState {

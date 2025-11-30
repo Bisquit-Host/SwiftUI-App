@@ -51,13 +51,13 @@ struct ServerCardCompact: View {
                     if vm.stateColor != .gray {
                         VStack(spacing: 8) {
                             if vm.stateColor != .red {
-                                CompactMetricRow(
+                                MetricGaugeCompact(
                                     icon: "cpu",
                                     value: vm.cpuUsage / server.limits.cpu,
                                     color: .blue
                                 )
                                 
-                                CompactMetricRow(
+                                MetricGaugeCompact(
                                     icon: "memorychip",
                                     value: vm.ramUsage / (server.limits.memory * pow(1024, 2)),
                                     color: .green
@@ -66,7 +66,7 @@ struct ServerCardCompact: View {
                                 Spacer()
                             }
                             
-                            CompactMetricRow(
+                            MetricGaugeCompact(
                                 icon: "internaldrive",
                                 value: vm.diskUsage / (server.limits.disk * pow(1024, 2)),
                                 color: .orange

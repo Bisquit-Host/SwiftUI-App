@@ -10,8 +10,6 @@ struct ResourcesWidgetView: View {
     }
     
     var body: some View {
-        let description = entry.test?.usage.cpu.description ?? "Error"
-        
         if entry.id.isEmpty {
             ConfigureWidgetView("Bisquit.Host", image: Image(.defaultIcon), lastStep: "3. **Choose a server** from the list")
         } else {
@@ -28,7 +26,7 @@ struct ResourcesWidgetView: View {
                     .caption2()
                     .padding(.bottom, 8)
                 
-                Text(description)
+                Text(entry.test?.usage.cpu.description ?? "")
                 
                 Text(entry.date, format: .dateTime.minute().second())
                     .footnote()

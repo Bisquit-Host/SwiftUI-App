@@ -10,13 +10,9 @@ struct UploadMenu: View {
         self.path = path
     }
     
-    @State private var trigger = false
-    
     @State private var image: UIImage?
-    @State private var urls: [URL] = []
-    @State private var previewUrls: [URL] = []
     @State private var pickerItems: [PhotosPickerItem] = []
-    
+    @State private var trigger = false
     @State private var pickerFile = false
     @State private var pickerCamera = false
     @State private var pickerLibrary = false
@@ -46,11 +42,7 @@ struct UploadMenu: View {
         }
         .sensoryFeedback(.success, trigger: trigger)
         .cameraPicker($pickerCamera, image: $image)
-        .photosPicker(
-            isPresented: $pickerLibrary,
-            selection: $pickerItems,
-            selectionBehavior: .ordered
-        )
+        .photosPicker(isPresented: $pickerLibrary, selection: $pickerItems, selectionBehavior: .ordered)
         .onChange(of: pickerItems) { _, newItems in
             extractImageOrVideo(newItems)
         }
@@ -71,18 +63,11 @@ struct UploadMenu: View {
                 SheetRemoteFile(path)
             }
         }
-        .fileImporter(
-            isPresented: $pickerFile,
-            allowedContentTypes: [.item],
-            allowsMultipleSelection: true
-        ) { result in
-            
-            switch result {
+        .fileImporter(isPresented: $pickerFile, allowedContentTypes: [.item], allowsMultipleSelection: true) {
+            switch $0 {
             case .success(let model):
-                urls = model
-                
                 Task {
-                    await vm.handleFileImport(urls, at: path)
+                    await vm.handleFileImport(model, at: path)
                 }
                 
             case .failure(let error):
@@ -92,10 +77,12 @@ struct UploadMenu: View {
     }
     
     // MARK: Library funcs
-    private func extractImageOrVideo(
-        _ photoItems: [PhotosPickerItem]
-    ) {
-        Task.detached {
+    private func extractImageOrVideo(_ photoItems: [PhotosPickerItem]) {
+        guard !photoItems.isEmpty else { return }
+        
+        Task {
+            var tempURLs: [URL] = []
+            
             for item in photoItems {
                 guard
                     let identifier = item.supportedContentTypes.first?
@@ -104,44 +91,38 @@ struct UploadMenu: View {
                         .replacing("mpeg-4", with: "mp4")
                 else {
                     print("Extension not determined")
-                    return
+                    continue
                 }
                 
                 print("Item:", identifier)
                 
                 guard let data = try? await item.loadTransferable(type: Data.self) else {
-                    return
+                    continue
                 }
                 
-                await MainActor.run {
-                    if let url = writeDataToTemporaryUrl(data, pathExtension: identifier) {
-                        withAnimation {
-                            previewUrls.append(url)
-                        }
-                    }
+                if let url = writeDataToTemporaryURL(data, pathExtension: identifier) {
+                    tempURLs.append(url)
                 }
             }
             
-            await vm.handleFileImport(previewUrls, at: path)
+            guard !tempURLs.isEmpty else { return }
+            
+            await vm.handleFileImport(tempURLs, at: path)
         }
         
         pickerItems = []
-        previewUrls = []
     }
     
-    private func writeDataToTemporaryUrl(
-        _ data: Data,
-        pathExtension: String = ""
-    ) -> URL? {
+    private func writeDataToTemporaryURL(_ data: Data, pathExtension: String = "") -> URL? {
         let tempDirURL = FileManager.default.temporaryDirectory
         
-        let temporaryFileUrl = tempDirURL
+        let tempFileURL = tempDirURL
             .appendingPathComponent(UUID().uuidString)
             .appendingPathExtension(pathExtension)
         
         do {
-            try data.write(to: temporaryFileUrl)
-            return temporaryFileUrl
+            try data.write(to: tempFileURL)
+            return tempFileURL
         } catch {
             print("Error writing video data to temporary file:", error)
             return nil

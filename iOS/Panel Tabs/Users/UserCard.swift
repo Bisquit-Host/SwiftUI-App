@@ -6,11 +6,11 @@ struct UserCard: View {
     @Environment(UsersVM.self) private var vm
     
     private let user: UserAttributes
-    private let imageUrl: URL?
+    private let imageURL: URL?
     
     init(_ user: UserAttributes) {
         self.user = user
-        self.imageUrl = URL(string: user.image)
+        self.imageURL = URL(string: user.image)
     }
     
     @State private var sheetDetails = false
@@ -22,7 +22,7 @@ struct UserCard: View {
             sheetDetails = true
         } label: {
             HStack(spacing: 16) {
-                KFImage(imageUrl)
+                KFImage(imageURL)
                     .resizable()
                     .frame(imageSize)
                     .clipShape(.circle)

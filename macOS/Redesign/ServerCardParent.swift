@@ -5,17 +5,17 @@ struct ServerCardParent: View {
     @EnvironmentObject private var store: ValueStore
     
     private let server: ServerAttributes
+    private let serverURL: String
     
     init(_ server: ServerAttributes) {
         self.server = server
+        serverURL = "https://mgr.bisquit.host/server/" + server.id
     }
     
     @State private var showSafari = false
     @State private var confirmKill = false
     
     var body: some View {
-        let serverURL = "https://mgr.bisquit.host/server/" + server.id
-        
         VStack {
             NavigationLink(value: server) {
                 if store.compactServerList {

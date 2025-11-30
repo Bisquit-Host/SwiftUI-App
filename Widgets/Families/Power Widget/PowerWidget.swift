@@ -5,7 +5,7 @@ struct PowerWidget: Widget {
     private let kind = "Widgets"
     
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: CryptoPriceConfigurationIntent.self, provider: ResourcesTimelineProvider()) {
+        AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: ResourcesTimelineProvider()) {
             PowerWidgetView($0)
                 .containerBackground(.ultraThinMaterial, for: .widget)
         }
@@ -21,10 +21,5 @@ struct PowerWidget: Widget {
 #Preview(as: .systemSmall) {
     PowerWidget()
 } timeline: {
-    PowerEntry(
-        date: .now,
-        configuration: .init(
-            id: .init(title: "", description: "", default: "1123")
-        )
-    )
+    ResourcesUsageEntry(date: .now, name: "Preview Server", id: "bf7903cc", state: "running")
 }

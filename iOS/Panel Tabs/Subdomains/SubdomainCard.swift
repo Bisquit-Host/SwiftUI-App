@@ -6,13 +6,11 @@ struct SubdomainCard: View {
     @Environment(\.openURL) private var openURL
     
     let subdomain: SubdomainAttributes
+    let fullDomain: String
     
     init(_ subdomain: SubdomainAttributes) {
         self.subdomain = subdomain
-    }
-    
-    private var fullDomain: String {
-        "\(subdomain.subdomain).\(subdomain.domain)"
+        fullDomain = subdomain.subdomain + "." + subdomain.domain
     }
     
     var body: some View {
@@ -59,14 +57,14 @@ struct SubdomainCard: View {
     private func addToMCStats() {
         guard
             let url = URL(string: "mc-stats://add-server?address=\(fullDomain)&name=\(subdomain.subdomain)"),
-            let fallbackUrl = URL(string: "https://apps.apple.com/app/id6740754881")
+            let fallbackURL = URL(string: "https://apps.apple.com/app/id6740754881")
         else {
             return
         }
         
         openURL(url) { success in
             if !success {
-                openURL(fallbackUrl)
+                openURL(fallbackURL)
             }
         }
     }

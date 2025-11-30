@@ -2,7 +2,6 @@ import ScrechKit
 
 struct PanelView: View {
     @EnvironmentObject private var store: ValueStore
-    
     private var vm: PanelVM
     private var fileVM: FileTabVM
     

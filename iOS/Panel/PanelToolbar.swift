@@ -3,7 +3,6 @@ import ScrechKit
 struct PanelToolbarModifier: ViewModifier {
     @Environment(PanelVM.self) private var vm
     @Environment(ConsoleVM.self) private var consoleVM
-    
     @EnvironmentObject private var fileVM: FileTabVM
     @EnvironmentObject private var store: ValueStore
     

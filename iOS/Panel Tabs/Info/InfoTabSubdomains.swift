@@ -5,18 +5,16 @@ struct InfoTabSubdomains: View {
     @State private var vm: SubdomainVM
     
     private let server: ServerAttributes
+    private let allocations: [AllocationAttributes]
     
     init(_ server: ServerAttributes) {
         self.server = server
         vm = SubdomainVM(server.id)
+        allocations = server.relationships.allocations.data.map(\.attributes)
     }
     
     @State private var sheetSubdomains = false
     @State private var sheetCreate = false
-    
-    private var allocations: [AllocationAttributes] {
-        server.relationships.allocations.data.map(\.attributes)
-    }
     
     var body: some View {
         Button {

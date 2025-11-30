@@ -4,7 +4,6 @@ import PhotosUI
 
 struct ImagePlayground: View {
     @EnvironmentObject private var vm: FileTabVM
-    
     @Environment(\.dismiss) private var dismiss
     
     private let url: URL?
@@ -128,26 +127,26 @@ struct ImagePlayground: View {
         }
         .toolbar {
             Button("Upload") {
-                if let genImageURL {
-                    Task {
-                        await vm.handleFileImport([genImageURL], at: root) {
-                            dismiss()
-                        }
-                    }
-                }
+                upload()
             }
             .disabled(genImageURL == nil)
         }
-        .imagePlaygroundSheet(
-            isPresented: $showImagePlayground,
-            concepts: imageConcepts,
-            sourceImage: selectedImage
-        ) { url in
+        .imagePlaygroundSheet(isPresented: $showImagePlayground, concepts: imageConcepts, sourceImage: selectedImage) { url in
             genImageURL = url
-            
             selectedPhotoItem = nil
-            
             changeSelectedImage(url)
+        }
+    }
+    
+    private func upload() {
+        guard let genImageURL else {
+            return
+        }
+        
+        Task {
+            await vm.handleFileImport([genImageURL], at: root) {
+                dismiss()
+            }
         }
     }
     

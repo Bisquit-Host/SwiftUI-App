@@ -6,10 +6,12 @@ struct FileContextMenu: ViewModifier {
     
     private let file: FileAttributes
     private let path: String
+    private let isArchive: Bool
     
     init(_ file: FileAttributes, at path: String) {
         self.file = file
         self.path = path
+        isArchive = file.mimetype.contains("gzip")
     }
     
     @State private var alertRename = false
@@ -28,11 +30,11 @@ struct FileContextMenu: ViewModifier {
                 
                 if !mimeType.contains("directory") {
                     Button("Download with QR", systemImage: "qrcode") {
-                        // Context menu needs some time to close and allow the sheet to display
-                        delay(0.75) {
-                            Task {
-                                await vm.downloadFile(path + name)
-                            }
+                        Task {
+                            // Context menu needs some time to close and allow the sheet to display
+                            try await Task.sleep(for: .seconds(0.75))
+                            
+                            await vm.downloadFile(path + name)
                         }
                     }
                     
@@ -47,17 +49,9 @@ struct FileContextMenu: ViewModifier {
                     }
                 }
                 
-                if mimeType.contains("gzip") {
-                    Button("Decompress", systemImage: "arrow.up.bin") {
-                        Task {
-                            await vm.fileCompressor(name, at: path, do: .decompress)
-                        }
-                    }
-                } else {
-                    Button("Compress", systemImage: "archivebox") {
-                        Task {
-                            await vm.fileCompressor(name, at: path, do: .compress)
-                        }
+                Button(isArchive ? "Decompress" : "Compress", systemImage: isArchive ? "arrow.up.bin" : "archivebox") {
+                    Task {
+                        await vm.fileCompressor(name, at: path, do: isArchive ? .decompress : .compress)
                     }
                 }
                 

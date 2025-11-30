@@ -1,5 +1,7 @@
 import SwiftUI
 import MapKit
+import Kingfisher
+import Observation
 
 struct MapView: View {
     @Environment(\.displayScale) private var displayScale
@@ -10,16 +12,7 @@ struct MapView: View {
         self.isMoscow = isMoscow
     }
     
-    @State private var snapshot: UIImage?
-    @State private var mapWidth: CGFloat?
-    
-    @State private var region = MKCoordinateRegion(
-        center: .init(latitude: 50.11056, longitude: 8.68017),
-        latitudinalMeters: 12000,
-        longitudinalMeters: 12000
-    )
-    
-    private let mapHeight: CGFloat = 160
+    @State private var vm = MapViewVM()
     
     var body: some View {
         GeometryReader { proxy in
@@ -27,7 +20,7 @@ struct MapView: View {
             let height = proxy.size.height
             
             ZStack {
-                if let snapshot {
+                if let snapshot = vm.snapshot {
                     Image(uiImage: snapshot)
                         .resizable()
                         .scaledToFill()
@@ -50,76 +43,19 @@ struct MapView: View {
             }
             .frame(width: width, height: height)
             .onAppear {
-                updateSnapshotWidth(width)
+                vm.updateSnapshotWidth(width, displayScale: displayScale)
             }
             .onChange(of: width) { _, newWidth in
-                updateSnapshotWidth(newWidth)
+                vm.updateSnapshotWidth(newWidth, displayScale: displayScale)
             }
         }
-        .frame(maxWidth: .infinity, minHeight: mapHeight, maxHeight: mapHeight)
+        .frame(maxWidth: .infinity, minHeight: vm.mapHeight, maxHeight: vm.mapHeight)
         .clipShape(.rect(cornerRadius: 12))
-        .task {
-            updateRegion()
+        .onFirstAppear {
+            vm.updateRegion(isMoscow: isMoscow, displayScale: displayScale)
         }
-        .onChange(of: isMoscow) { _, _ in
-            updateRegion()
-        }
-    }
-    
-    private func updateRegion() {
-        let center: CLLocationCoordinate2D
-        
-        if isMoscow {
-            center = .init(latitude: 55.75866, longitude: 37.61929)
-        } else {
-            center = .init(latitude: 50.11056, longitude: 8.68017)
-        }
-        
-        let scaleMeters = isMoscow ? 25000.0 : 12000
-        let newRegion = MKCoordinateRegion(center: center, latitudinalMeters: scaleMeters, longitudinalMeters: scaleMeters)
-        
-        region = newRegion
-        makeSnapshot(for: newRegion, mapWidth: mapWidth)
-    }
-    
-    private func makeSnapshot(for region: MKCoordinateRegion, mapWidth: CGFloat?) {
-        let options = MKMapSnapshotter.Options()
-        options.region = region
-        options.scale = displayScale
-        options.size = snapshotSize(for: mapWidth)
-        options.showsBuildings = true
-        options.pointOfInterestFilter = .excludingAll
-        
-        let snapshotter = MKMapSnapshotter(options: options)
-        
-        snapshotter.start { snapshot, error in
-            guard let snapshot else {
-                if let error {
-                    print("Map snapshot error:", error.localizedDescription)
-                }
-                
-                return
-            }
-            
-            withAnimation(.easeInOut(duration: 0.2)) {
-                self.snapshot = snapshot.image
-            }
-        }
-    }
-    
-    private func snapshotSize(for width: CGFloat?) -> CGSize {
-        let baseWidth = width ?? 320
-        return CGSize(width: max(baseWidth, 280), height: mapHeight)
-    }
-    
-    private func updateSnapshotWidth(_ width: CGFloat) {
-        guard width > 0 else { return }
-        
-        let adjustedWidth = max(width, 280)
-        
-        if mapWidth != adjustedWidth {
-            mapWidth = adjustedWidth
-            makeSnapshot(for: region, mapWidth: adjustedWidth)
+        .onChange(of: isMoscow) {
+            vm.updateRegion(isMoscow: isMoscow, displayScale: displayScale)
         }
     }
 }

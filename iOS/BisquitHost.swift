@@ -66,30 +66,12 @@ struct BisquitHost: App {
         .defaultAppStorage(.init(suiteName: "group.Bisquit-host")!)
 #if !os(watchOS)
         .onChange(of: phase) { _, newPhase in
-            switch newPhase {
-            case .background: BackgroundTaskManager.scheduleAppRefresh()
-            default: break
+            if newPhase == .background {
+                BackgroundTaskManager.scheduleAppRefresh()
             }
         }
         .backgroundTask(.appRefresh("host.bisquit.Bisquit-Host.Background-Task")) {
-            await BackgroundTaskManager.scheduleAppRefresh()
-#warning("Implement background tasks")
-            //Create an operation that performs the main part of the background task
-            //let operation = RefreshAppContentsOperation()
-            
-            //Provide the background task with an expiration handler that cancels the operation
-            //task.expirationHandler = {
-            //    operation.cancel()
-            //}
-            
-            // Inform the system that the background task is complete
-            // when the operation completes
-            //operation.completionBlock = {
-            //    task.setTaskCompleted(success: !operation.isCancelled)
-            //}
-            
-            //Start the operation
-            //operationQueue.addOperation(operation)
+            await BackgroundTaskManager.handleAppRefresh()
         }
 #endif
         

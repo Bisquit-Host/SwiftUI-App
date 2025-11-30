@@ -4,7 +4,6 @@ import PteroNet
 struct AppSettings: View {
     @Environment(NavState.self) private var nav
     @EnvironmentObject private var store: ValueStore
-    
     @Environment(\.dismiss) private var dismiss
     
     @State private var sheetKeyStorage = false

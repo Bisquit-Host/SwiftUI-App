@@ -38,10 +38,14 @@ struct ServerCardParent: View {
         }
         .confirmationDialog("Perform kill action", isPresented: $confirmKill, titleVisibility: .visible) {
             Button("Kill", role: .destructive) {
-                Task {
-                    await PteroNet.powerSignal(server.id, do: .kill)
-                }
+                kill()
             }
+        }
+    }
+    
+    private func kill() {
+        Task {
+            await PteroNet.powerSignal(server.id, do: .kill)
         }
     }
 }

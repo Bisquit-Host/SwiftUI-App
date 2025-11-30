@@ -3,10 +3,10 @@ import SwiftUI
 struct DebugSettings: View {
     @EnvironmentObject private var store: ValueStore
     
-    private let device = WKInterfaceDevice.current()
-    
     private var deviceAndName: String {
-        "\(device.name) (\(device.systemName)\(device.systemVersion))"
+        let device = WKInterfaceDevice.current()
+        
+        return"\(device.name) (\(device.systemName)\(device.systemVersion))"
     }
     
     private var version: String {

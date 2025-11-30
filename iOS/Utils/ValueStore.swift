@@ -75,6 +75,7 @@ final class ValueStore: ObservableObject {
     @AppStorage("enable_bisquit_fall") var enableBisquitFall = false
     @AppStorage("widgetCpuUsage") var widgetCpuUsage = 0.0
     @AppStorage("widgetRamUsage") var widgetRamUsage = 0.0
+    @AppStorage("saveMetrics") var saveMetrics = false
     
     func authSucced() {
         Task {

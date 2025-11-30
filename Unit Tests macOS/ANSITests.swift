@@ -6,7 +6,7 @@ struct ANSITests {
     @Test func `Test ANSI speed`() throws {
         let bundle = Bundle(for: _BundleLocator.self)
         
-        guard let url = bundle.url(forResource: "Output", withExtension: "txt") else {
+        guard let url = bundle.url(forResource: "Console Output", withExtension: "txt") else {
             throw NSError(domain: "ANSITests", code: 1, userInfo: [NSLocalizedDescriptionKey: "Output.txt not found"])
         }
         

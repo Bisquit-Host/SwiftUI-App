@@ -2,7 +2,7 @@ import SwiftUI
 
 struct TextFileToolbar: View {
     @Environment(TextFileVM.self) private var vm
-    @EnvironmentObject private var fileVm: FileTabVM
+    @EnvironmentObject private var fileVM: FileTabVM
     @Environment(\.dismiss) private var dismiss
     
     private let name, path: String
@@ -46,7 +46,7 @@ struct TextFileToolbar: View {
     
     private func delete() {
         Task {
-            await fileVm.deleteFile(name, at: path) {
+            await fileVM.deleteFile(name, at: path) {
                 dismiss()
             }
         }

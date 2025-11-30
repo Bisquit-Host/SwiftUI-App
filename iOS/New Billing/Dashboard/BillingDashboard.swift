@@ -8,7 +8,18 @@ struct BillingDashboard: View {
     var body: some View {
         VStack(alignment: .leading) {
             ScrollView {
-                Text("Dashboard")
+                VStack(alignment: .leading, spacing: 16) {
+                    NavigationLink {
+                        SupportTicketsList()
+                    } label: {
+                        Label("Support", systemImage: "lifepreserver.fill")
+                            .headline()
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding()
+                            .background(.ultraThinMaterial, in: .rect(cornerRadius: 12))
+                    }
+                }
+                .padding()
             }
         }
         .navigationTitle("Dashboard")
@@ -16,15 +27,21 @@ struct BillingDashboard: View {
         .refreshableTask {
             await vm.fetchUserInfo()
         }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+            Task {
+                await vm.fetchUserInfo()
+            }
+        }
         .sheet($sheetSettings) {
             NavigationStack {
                 BillingSettings($vm.user)
+                    .environment(vm)
             }
         }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 if let user = vm.user {
-                    BillingDashboardBalance(balance: Double(user.balance), currency: user.currency)
+                    BillingDashboardBalance(user)
                 }
             }
             
@@ -39,6 +56,9 @@ struct BillingDashboard: View {
 }
 
 #Preview {
-    BillingDashboard()
-        .darkSchemePreferred()
+    NavigationStack {
+        BillingDashboard()
+    }
+    .environmentObject(ValueStore())
+    .darkSchemePreferred()
 }

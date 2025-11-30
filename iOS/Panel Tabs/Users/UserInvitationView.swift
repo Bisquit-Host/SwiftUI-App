@@ -2,7 +2,6 @@ import SwiftUI
 
 struct UserInvitationView: View {
     @Environment(UsersVM.self) private var vm
-    
     @Environment(\.dismiss) private var dismiss
     
     @State private var email = ""

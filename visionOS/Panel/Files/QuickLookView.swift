@@ -26,7 +26,7 @@ struct QuickLookFile: View {
         .animation(.default, value: vm.fileURL)
         .ignoresSafeArea(edges: .bottom)
         .task {
-            await vm.fetchDownloadUrl(link?.id, file: name, at: link?.root)
+            await vm.fetchDownloadURL(link?.id, file: name, at: link?.root)
         }
         .toolbar {
             if let fileURL = vm.fileURL {
