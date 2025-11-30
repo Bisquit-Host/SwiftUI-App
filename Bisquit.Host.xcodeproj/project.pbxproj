@@ -43,14 +43,12 @@
 		F34745CC2A31F3A000EE2FB8 /* MailCover in Frameworks */ = {isa = PBXBuildFile; productRef = F34745CB2A31F3A000EE2FB8 /* MailCover */; };
 		F352AF9B2A4EE707004AD489 /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = F352AF9A2A4EE707004AD489 /* AlertKit */; };
 		F358F02E2D2C1C5500BCC07B /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = F358F02D2D2C1C5500BCC07B /* LaunchAtLogin */; };
-		F361F8882D545E4D007B0565 /* Intent Handler.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F3FDFF5F2C89120D009EBB5C /* Intent Handler.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F36710342C99C3A100A8901A /* iMessage.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F3A7CEC32C8B685500413400 /* iMessage.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F36B14572DC39DD8008C1AF9 /* GaypadKit in Frameworks */ = {isa = PBXBuildFile; productRef = F36B14562DC39DD8008C1AF9 /* GaypadKit */; };
 		F36B14592DC39F08008C1AF9 /* GaypadKit in Frameworks */ = {isa = PBXBuildFile; productRef = F36B14582DC39F08008C1AF9 /* GaypadKit */; };
 		F36B145B2DC39F0E008C1AF9 /* GaypadKit in Frameworks */ = {isa = PBXBuildFile; productRef = F36B145A2DC39F0E008C1AF9 /* GaypadKit */; };
 		F36B145D2DC39F13008C1AF9 /* GaypadKit in Frameworks */ = {isa = PBXBuildFile; productRef = F36B145C2DC39F13008C1AF9 /* GaypadKit */; };
 		F36B145F2DC39F2C008C1AF9 /* GaypadKit in Frameworks */ = {isa = PBXBuildFile; productRef = F36B145E2DC39F2C008C1AF9 /* GaypadKit */; };
-		F36B736D2C89B6BE00E858FE /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F36B736C2C89B6BE00E858FE /* PteroNet */; };
 		F36B739B2C8B073B00E858FE /* AudioVisualizer in Frameworks */ = {isa = PBXBuildFile; productRef = F36B739A2C8B073B00E858FE /* AudioVisualizer */; };
 		F36B739D2C8B074300E858FE /* AudioVisualizer in Frameworks */ = {isa = PBXBuildFile; productRef = F36B739C2C8B074300E858FE /* AudioVisualizer */; };
 		F36B73A12C8B07E100E858FE /* AudioVisualizer in Frameworks */ = {isa = PBXBuildFile; productRef = F36B73A02C8B07E100E858FE /* AudioVisualizer */; };
@@ -96,17 +94,9 @@
 		F3F60A742DEB94D100A15737 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3F60A732DEB94D100A15737 /* ScrechKit */; };
 		F3F60A762DEB94DA00A15737 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3F60A752DEB94DA00A15737 /* ScrechKit */; };
 		F3F6ACAF2A51E48700EE417F /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3F6ACAE2A51E48700EE417F /* AlertKit */; };
-		F3FDFF612C89120D009EBB5C /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3FDFF602C89120D009EBB5C /* Intents.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F361F8892D545E4D007B0565 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F31BA51B2958FF7C0006D126 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F3FDFF5E2C89120D009EBB5C;
-			remoteInfo = "Intent Handler";
-		};
 		F36710352C99C3A100A8901A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F31BA51B2958FF7C0006D126 /* Project object */;
@@ -213,7 +203,6 @@
 			dstPath = "";
 			dstSubfolder = PlugIns;
 			files = (
-				F361F8882D545E4D007B0565 /* Intent Handler.appex in Embed Foundation Extensions */,
 				F36710342C99C3A100A8901A /* iMessage.appex in Embed Foundation Extensions */,
 				F3D1E7332C9A38EF000C81FF /* Widgets.appex in Embed Foundation Extensions */,
 			);
@@ -308,7 +297,6 @@
 		F3D296072AF3BE5800ED43A0 /* UI Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UI Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3E08EA02A2CE17800116C1C /* Bisquit.Host.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bisquit.Host.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3E2BEF52C1DA07E00B7A6D4 /* Contact Provider.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = "Contact Provider.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F3FDFF5F2C89120D009EBB5C /* Intent Handler.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Intent Handler.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3FDFF602C89120D009EBB5C /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		F3FDFF6B2C89120D009EBB5C /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -334,20 +322,6 @@
 				iMessage.plist,
 			);
 			target = F3A7CEC22C8B685500413400 /* iMessage */;
-		};
-		F38353A92ECE952300535F26 /* Exceptions for "Intent Handler" folder in "Widgets" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				IntentHandler.swift,
-			);
-			target = F38637362A8641120069F074 /* Widgets */;
-		};
-		F38353AA2ECE952300535F26 /* Exceptions for "Intent Handler" folder in "Intent Handler" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				IntentHandler.swift,
-			);
-			target = F3FDFF5E2C89120D009EBB5C /* Intent Handler */;
 		};
 		F38353B62ECE953200535F26 /* Exceptions for "Contact Provider Extension" folder in "Contact Provider" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -539,17 +513,6 @@
 				"Network Calls/Networking.swift",
 			);
 			target = F3464CF72A862D2C00188B0C /* Intent */;
-		};
-		F383B4E42ECF35DD00350A0F /* Exceptions for "Widgets" folder in "Intent Handler" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				"Crypto Price Widget.intentdefinition",
-				Intents/RefreshButtonIntent.swift,
-				"Network Calls/Asset.swift",
-				"Network Calls/AssetDetails.swift",
-				"Network Calls/Networking.swift",
-			);
-			target = F3FDFF5E2C89120D009EBB5C /* Intent Handler */;
 		};
 		F383BAD72ECF35E500350A0F /* Exceptions for "iOS" folder in "Bisquit.Host" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -1239,15 +1202,6 @@
 			path = "iMessage Extension";
 			sourceTree = "<group>";
 		};
-		F38353A62ECE952200535F26 /* Intent Handler */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				F38353A92ECE952300535F26 /* Exceptions for "Intent Handler" folder in "Widgets" target */,
-				F38353AA2ECE952300535F26 /* Exceptions for "Intent Handler" folder in "Intent Handler" target */,
-			);
-			path = "Intent Handler";
-			sourceTree = "<group>";
-		};
 		F38353AE2ECE952A00535F26 /* Clip Demo */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "Clip Demo";
@@ -1321,7 +1275,6 @@
 				F383B4E02ECF35DD00350A0F /* Exceptions for "Widgets" folder in "Clip Demo" target */,
 				F383B4E12ECF35DD00350A0F /* Exceptions for "Widgets" folder in "Widgets" target */,
 				F383B4E32ECF35DD00350A0F /* Exceptions for "Widgets" folder in "Intent" target */,
-				F383B4E42ECF35DD00350A0F /* Exceptions for "Widgets" folder in "Intent Handler" target */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -1497,13 +1450,6 @@
 				F32675862A01B69600A026DC /* SafariCover in Frameworks */,
 			);
 		};
-		F3FDFF5C2C89120D009EBB5C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			files = (
-				F3FDFF612C89120D009EBB5C /* Intents.framework in Frameworks */,
-				F36B736D2C89B6BE00E858FE /* PteroNet in Frameworks */,
-			);
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -1519,7 +1465,6 @@
 				F38353AE2ECE952A00535F26 /* Clip Demo */,
 				F383B4A42ECF35DD00350A0F /* Widgets */,
 				F38355DA2ECE96D000535F26 /* Intent */,
-				F38353A62ECE952200535F26 /* Intent Handler */,
 				F38353982ECE951C00535F26 /* iMessage Extension */,
 				F38353B22ECE953200535F26 /* Contact Provider Extension */,
 				F38353762ECE94D000535F26 /* UI Tests */,
@@ -1544,7 +1489,6 @@
 				F38637372A8641120069F074 /* Widgets.appex */,
 				F3D296072AF3BE5800ED43A0 /* UI Tests.xctest */,
 				F3E2BEF52C1DA07E00B7A6D4 /* Contact Provider.appex */,
-				F3FDFF5F2C89120D009EBB5C /* Intent Handler.appex */,
 				F3A7CEC32C8B685500413400 /* iMessage.appex */,
 				F3310F2C2DD07CA100FA0AEC /* QuickLook Extension.appex */,
 				F39D18F52E45C30200A84A80 /* Unit Tests.xctest */,
@@ -1622,7 +1566,6 @@
 				F3A7CF252C8C509C00413400 /* PBXTargetDependency */,
 				F36710362C99C3A100A8901A /* PBXTargetDependency */,
 				F3D1E7352C9A38EF000C81FF /* PBXTargetDependency */,
-				F361F88A2D545E4D007B0565 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				F38355DA2ECE96D000535F26 /* Intent */,
@@ -1960,24 +1903,6 @@
 			productReference = F3E2BEF52C1DA07E00B7A6D4 /* Contact Provider.appex */;
 			productType = "com.apple.product-type.extensionkit-extension";
 		};
-		F3FDFF5E2C89120D009EBB5C /* Intent Handler */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F3FDFF7F2C89120D009EBB5C /* Build configuration list for PBXNativeTarget "Intent Handler" */;
-			buildPhases = (
-				F3FDFF5B2C89120D009EBB5C /* Sources */,
-				F3FDFF5C2C89120D009EBB5C /* Frameworks */,
-				F3FDFF5D2C89120D009EBB5C /* Resources */,
-			);
-			buildRules = (
-			);
-			name = "Intent Handler";
-			packageProductDependencies = (
-				F36B736C2C89B6BE00E858FE /* PteroNet */,
-			);
-			productName = "Intent Handler";
-			productReference = F3FDFF5F2C89120D009EBB5C /* Intent Handler.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -2034,9 +1959,6 @@
 					F3E2BEF42C1DA07E00B7A6D4 = {
 						CreatedOnToolsVersion = 16.0;
 					};
-					F3FDFF5E2C89120D009EBB5C = {
-						CreatedOnToolsVersion = 16.1;
-					};
 				};
 			};
 			buildConfigurationList = F31BA51E2958FF7C0006D126 /* Build configuration list for PBXProject "Bisquit.Host" */;
@@ -2085,7 +2007,6 @@
 				F3E2BEF42C1DA07E00B7A6D4 /* Contact Provider */,
 				F3310F2B2DD07CA100FA0AEC /* QuickLook Extension */,
 				F3464CF72A862D2C00188B0C /* Intent */,
-				F3FDFF5E2C89120D009EBB5C /* Intent Handler */,
 				F39D18F42E45C30200A84A80 /* Unit Tests */,
 				F3D296062AF3BE5800ED43A0 /* UI Tests */,
 				F383535D2ECE744500535F26 /* Unit Tests macOS */,
@@ -2164,11 +2085,6 @@
 			files = (
 			);
 		};
-		F3FDFF5D2C89120D009EBB5C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			files = (
-			);
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -2242,19 +2158,9 @@
 			files = (
 			);
 		};
-		F3FDFF5B2C89120D009EBB5C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			files = (
-			);
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		F361F88A2D545E4D007B0565 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F3FDFF5E2C89120D009EBB5C /* Intent Handler */;
-			targetProxy = F361F8892D545E4D007B0565 /* PBXContainerItemProxy */;
-		};
 		F36710362C99C3A100A8901A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F3A7CEC22C8B685500413400 /* iMessage */;
@@ -3451,78 +3357,6 @@
 			};
 			name = Release;
 		};
-		F3FDFF7A2C89120D009EBB5C /* Debug configuration for PBXNativeTarget "Intent Handler" */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "Intent Handler/Intent Handler.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Intent Handler/Intent Handler.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Bisquit.Host. All rights reserved.";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug.Intent-Handler";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				REGISTER_APP_GROUPS = YES;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
-				SWIFT_DEFAULT_ACTOR_ISOLATION = nonisolated;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 6.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		F3FDFF7B2C89120D009EBB5C /* Release configuration for PBXNativeTarget "Intent Handler" */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "Intent Handler/Intent Handler.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Intent Handler/Intent Handler.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Bisquit.Host. All rights reserved.";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.Intent-Handler";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				REGISTER_APP_GROUPS = YES;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = nonisolated;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 6.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -3643,14 +3477,6 @@
 			buildConfigurations = (
 				F3E2BF002C1DA07E00B7A6D4 /* Debug configuration for PBXNativeTarget "Contact Provider" */,
 				F3E2BF012C1DA07E00B7A6D4 /* Release configuration for PBXNativeTarget "Contact Provider" */,
-			);
-			defaultConfigurationName = Release;
-		};
-		F3FDFF7F2C89120D009EBB5C /* Build configuration list for PBXNativeTarget "Intent Handler" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F3FDFF7A2C89120D009EBB5C /* Debug configuration for PBXNativeTarget "Intent Handler" */,
-				F3FDFF7B2C89120D009EBB5C /* Release configuration for PBXNativeTarget "Intent Handler" */,
 			);
 			defaultConfigurationName = Release;
 		};
@@ -3990,11 +3816,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F36B14552DC39DD8008C1AF9 /* XCRemoteSwiftPackageReference "GaypadKit" */;
 			productName = GaypadKit;
-		};
-		F36B736C2C89B6BE00E858FE /* PteroNet */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "PteroNet" */;
-			productName = PteroNet;
 		};
 		F36B739A2C8B073B00E858FE /* AudioVisualizer */ = {
 			isa = XCSwiftPackageProductDependency;
