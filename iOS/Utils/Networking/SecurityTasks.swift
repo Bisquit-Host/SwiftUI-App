@@ -27,7 +27,7 @@ final class SecurityTasks {
             print("🛡️ 2FA is disabled")
         } catch TwoFAError.alreadyEnabled {
             alertTwoFA = false
-            print("🛡️ 2FA already enabled")
+            print("🛡️ 2FA enabled")
         } catch {
             print("Error checking 2FA status:", error.localizedDescription)
             alertTwoFA = false
@@ -55,7 +55,7 @@ final class SecurityTasks {
                 return date < after2Months
             }
             
-            print(alertUnusedAPIKeys ? "🛡️ Detected unused API keys" : "🛡️ No unused API keys found")
+            print(alertUnusedAPIKeys ? "🛡️ Found unused API keys" : "🛡️ No unused API keys found")
         } catch {
             print("Error fetching API keys:", error.localizedDescription)
             alertUnusedAPIKeys = false
