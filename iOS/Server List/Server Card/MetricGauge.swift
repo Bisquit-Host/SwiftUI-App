@@ -35,7 +35,6 @@ struct MetricGauge: View {
             ProgressView(value: progressValue, total: 100)
                 .progressViewStyle(.linear)
                 .tint(color)
-                .frame(height: 8)
                 .scaleEffect(y: 1.5)
             
             Group {

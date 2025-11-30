@@ -28,7 +28,6 @@ struct MetricGaugeCompact: View {
             ProgressView(value: progressValue, total: 100)
                 .progressViewStyle(.linear)
                 .tint(color)
-                .frame(height: 6)
             
             Text("\(Int(percentValue))%")
                 .monospacedDigit()
