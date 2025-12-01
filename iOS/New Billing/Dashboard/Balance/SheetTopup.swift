@@ -10,8 +10,10 @@ struct SheetTopup: View {
     }
     
     @State private var vm = SheetTopupVM()
-    @State private var amount = ""
+    @State private var amount = "50"
     @State private var selectedProvider: PaymentProvider?
+    
+    private let amountFieldSide: CGFloat = 48
     
     private let providers = [
         PaymentProvider(id: "tbank", name: "Tbank", image: .tbank, tint: .yellow),
@@ -28,16 +30,39 @@ struct SheetTopup: View {
             
             BillingSectionCard("Top up") {
                 VStack(alignment: .leading, spacing: 12) {
-                    TextField("Amount, \(user.currency.uppercased())", text: $amount)
-                        .keyboardType(.decimalPad)
-                        .textInputAutocapitalization(.never)
-                        .padding(12)
-                        .background(.primary.opacity(0.04), in: .rect(cornerRadius: 12))
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 12)
-                                .stroke(.primary.opacity(0.05), lineWidth: 1)
+                    HStack(spacing: 10) {
+                        TextField("Amount, \(user.currency.uppercased())", text: $amount)
+                            .keyboardType(.decimalPad)
+                            .textInputAutocapitalization(.never)
+                            .padding(12)
+                            .background(.primary.opacity(0.04), in: .rect(cornerRadius: 12))
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 12)
+                                    .stroke(.primary.opacity(0.05), lineWidth: 1)
+                            }
+                            .frame(height: amountFieldSide)
+                        
+                        HStack(spacing: 8) {
+                            Button {
+                                adjustAmount(by: -stepAmount)
+                            } label: {
+                                Image(systemName: "minus")
+                                    .frame(amountFieldSide)
+                            }
+                            .background(.primary.opacity(0.04), in: .rect(cornerRadius: 12))
+                            
+                            Button {
+                                adjustAmount(by: stepAmount)
+                            } label: {
+                                Image(systemName: "plus")
+                                    .frame(amountFieldSide)
+                            }
+                            .background(.primary.opacity(0.04), in: .rect(cornerRadius: 12))
                         }
-
+                        .foregroundStyle(.foreground)
+                        .frame(width: amountFieldSide * 2 + 8)
+                    }
+                    
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 10) {
                             ForEach(providers) {
@@ -100,6 +125,17 @@ struct SheetTopup: View {
     
     private func topUp() {
         
+    }
+    
+    private func adjustAmount(by delta: Double) {
+        let normalized = amount.replacingOccurrences(of: ",", with: ".")
+        let current = Double(normalized) ?? 0
+        let updated = max(0, current + delta)
+        amount = String(format: "%.2f", updated)
+    }
+    
+    private var stepAmount: Double {
+        user.currency.uppercased() == "RUB" ? 50 : 5
     }
     
     private func formatted(_ amount: Double) -> String {
