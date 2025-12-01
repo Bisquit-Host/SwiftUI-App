@@ -42,7 +42,15 @@ extension PasskeyAuthorizationController: ASAuthorizationControllerPresentationC
         let window = activeScene?.keyWindow
             ?? scenes.flatMap(\.windows).first(where: \.isKeyWindow)
 
-        return window ?? ASPresentationAnchor()
+        if let window {
+            return window
+        }
+
+        guard let scene = activeScene ?? scenes.first else {
+            fatalError("ASAuthorizationController requires an active UIWindowScene")
+        }
+
+        return UIWindow(windowScene: scene)
 #elseif canImport(AppKit) && !targetEnvironment(macCatalyst)
         return NSApplication.shared.windows.first ?? ASPresentationAnchor()
 #else

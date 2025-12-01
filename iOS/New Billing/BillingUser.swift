@@ -14,7 +14,7 @@ public struct BillingUser: Decodable, Equatable {
     /// 2-100 symbols
     public let name: String
     
-    public let avatar: String
+    public let avatar: String?
     public let currency: String
     public let balance: Double
     public let bonusBalance: Double
