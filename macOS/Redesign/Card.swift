@@ -29,7 +29,7 @@ struct Card<Content: View, Trailing: View>: View {
             content
         }
         .padding(16)
-        .background(.thinMaterial, in: .rect(cornerRadius: 16, style: .continuous))
+        .background(.thinMaterial, in: .rect(cornerRadius: 16))
         .overlay {
             RoundedRectangle(cornerRadius: 16)
                 .stroke(.white.opacity(0.05))

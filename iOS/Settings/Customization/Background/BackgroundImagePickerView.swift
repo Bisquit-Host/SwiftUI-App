@@ -7,12 +7,7 @@ struct BackgroundImagePickerView: View {
     
     var body: some View {
         VStack {
-            BackgroundImagePicker(
-                title: "Drag & Drop",
-                subTitle: "Tap to add an Image",
-                systemImage: "square.and.arrow.up",
-                tint: .blue
-            ) { image in
+            BackgroundImagePicker(title: "Drag & Drop", subTitle: "Tap to add an Image", systemImage: "square.and.arrow.up", tint: .blue) { image in
                 selectedImage = image
                 
                 if let image, let fileName = BackgroundImageHelper.saveImageToDisk(image) {

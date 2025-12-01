@@ -140,9 +140,7 @@ struct BackgroundImagePicker: View {
 }
 
 extension View {
-    func optionalViewModifier<Content: View> (
-        content: @escaping (Self) -> Content
-    ) -> some View {
+    func optionalViewModifier<Content: View> (content: @escaping (Self) -> Content) -> some View {
         content(self)
     }
 }

@@ -2,12 +2,19 @@ import SwiftUI
 
 struct SheetTopup: View {
     @EnvironmentObject private var store: ValueStore
-    @State private var vm = SheetTopupVM()
     private let user: BillingUser
     
     init(_ user: BillingUser) {
         self.user = user
     }
+    
+    @State private var vm = SheetTopupVM()
+    @State private var amount = ""
+    @State private var selectedProvider: PaymentProvider?
+    
+    private let providers = [
+        PaymentProvider(id: "tbank", name: "Tbank", image: .tbank, tint: .yellow)
+    ]
     
     var body: some View {
         ScrollView {
@@ -15,6 +22,46 @@ struct SheetTopup: View {
                 BillingAccountRow("Main", icon: "creditcard.fill", tint: .blue, value: formatted(user.balance))
                 BillingAccountRow("Bonus", icon: "sparkles", tint: .mint, value: formatted(user.bonusBalance))
                 BillingAccountRow("Total", icon: "wallet.pass.fill", tint: .indigo, value: formatted(user.totalBalance))
+            }
+            
+            BillingSectionCard("Top up") {
+                VStack(alignment: .leading, spacing: 12) {
+                    TextField("Amount, \(user.currency.uppercased())", text: $amount)
+                        .keyboardType(.decimalPad)
+                        .textInputAutocapitalization(.never)
+                        .padding(12)
+                        .background(.primary.opacity(0.04), in: .rect(cornerRadius: 12))
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 12)
+                                .stroke(.primary.opacity(0.05), lineWidth: 1)
+                        }
+                    
+                    Text("Payment providers")
+                        .footnote(.semibold)
+                        .secondary()
+                    
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 10) {
+                            ForEach(providers) {
+                                TopupProviderCard($0, selectedProvider: $selectedProvider)
+                            }
+                        }
+                    }
+                    
+                    Button {
+                        topUp()
+                    } label: {
+                        Text("Top up")
+                            .foregroundStyle(.white)
+                            .rounded()
+                            .semibold()
+                            .frame(maxWidth: .infinity)
+                    }
+                    .padding(.top, 6)
+                    .buttonStyle(.glassProminent)
+                    .tint(.green)
+                    .disabled(amount.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || selectedProvider == nil)
+                }
             }
             
             if vm.isLoading && vm.operations.isEmpty {
@@ -52,15 +99,19 @@ struct SheetTopup: View {
             ToolbarSpacer(.flexible, placement: .bottomBar)
         }
     }
-}
-
-private extension SheetTopup {
-    func formatted(_ amount: Double) -> String {
+    
+    private func topUp() {
+        
+    }
+    
+    private func formatted(_ amount: Double) -> String {
         let formatter = NumberFormatter()
+        
         formatter.numberStyle = .currency
         formatter.currencyCode = user.currency
         formatter.minimumFractionDigits = 2
         formatter.maximumFractionDigits = 2
+        
         return formatter.string(from: amount as NSNumber) ?? "\(amount)"
     }
 }
