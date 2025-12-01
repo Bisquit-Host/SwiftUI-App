@@ -24,22 +24,22 @@ struct BillingOperationRow: View {
                     .symbolRenderingMode(.palette)
                     .foregroundStyle(amountColor, .primary.opacity(0.25))
                 
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(operation.primaryMessage ?? "Operation")
-                        .headline()
-                        .lineLimit(2)
+                Text(operation.primaryMessage ?? "Operation")
+                    .headline()
+                    .lineLimit(2)
+                
+                Spacer()
+                
+                VStack(alignment: .trailing, spacing: 0) {
+                    Text(amountText)
+                        .monospacedDigit()
+                        .subheadline(.semibold)
+                        .foregroundStyle(amountColor)
                     
                     Text(iso8601RelativeDate(operation.date))
                         .caption()
                         .secondary()
                 }
-                
-                Spacer()
-                
-                Text(amountText)
-                    .monospacedDigit()
-                    .subheadline(.semibold)
-                    .foregroundStyle(amountColor)
             }
         }
         .padding(.vertical, 6)

@@ -50,6 +50,7 @@ struct SheetTopup: View {
                                     .frame(amountFieldSide)
                             }
                             .background(.primary.opacity(0.04), in: .rect(cornerRadius: 12))
+                            .disabled(Double(amount) ?? 0 <= stepAmount)
                             
                             Button {
                                 adjustAmount(by: stepAmount)
