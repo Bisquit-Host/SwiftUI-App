@@ -2,6 +2,7 @@ import SwiftUI
 
 struct SheetTopup: View {
     @EnvironmentObject private var store: ValueStore
+    
     private let user: BillingUser
     private let providers: [PaymentProvider]
     
