@@ -4,11 +4,11 @@ import SwiftUI
 import Appearance
 #endif
 
-struct DesignSettings: View {
+struct CustomizationSettings: View {
     @EnvironmentObject private var store: ValueStore
     
     var body: some View {
-        Section("Design") {
+        Section("Customization") {
             BackgroundImageButton()
             
             ServerCardLayoutButton()
@@ -25,7 +25,7 @@ struct DesignSettings: View {
 
 #Preview {
     List {
-        DesignSettings()
+        CustomizationSettings()
     }
     .darkSchemePreferred()
     .environmentObject(ValueStore())

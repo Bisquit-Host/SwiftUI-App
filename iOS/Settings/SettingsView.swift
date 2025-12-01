@@ -8,7 +8,7 @@ struct SettingsView: View {
             AccountSettings()
                 .foregroundStyle(.foreground)
             
-            DesignSettings()
+            CustomizationSettings()
             
             CacheSettings()
             
