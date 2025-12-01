@@ -11,11 +11,11 @@ struct BillingSettingsPasskeys: View {
                     .glassEffect(.regular.tint(.blue.opacity(0.15)), in: .rect(cornerRadius: 10))
                     .foregroundStyle(.blue)
                 
-                VStack(alignment: .leading, spacing: 6) {
+                VStack(alignment: .leading, spacing: 0) {
                     Text("Passkeys")
                         .subheadline(.semibold)
                     
-                    Text("Use passkeys to sign in without a password")
+                    Text("Sign in without a password!")
                         .footnote()
                         .secondary()
                 }
@@ -28,9 +28,11 @@ struct BillingSettingsPasskeys: View {
             }
             .contentShape(.rect)
         }
+        .foregroundStyle(.foreground)
     }
 }
 
-//#Preview {
-//    BillingSettingsPasskeys()
-//}
+#Preview {
+    BillingSettingsPasskeys()
+        .darkSchemePreferred()
+}
