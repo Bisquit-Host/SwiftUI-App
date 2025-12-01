@@ -51,11 +51,7 @@ struct PasskeyRequestFactory {
         }
         
         let provider = ASAuthorizationPlatformPublicKeyCredentialProvider(relyingPartyIdentifier: options.rp.id)
-        let request = provider.createCredentialRegistrationRequest(
-            challenge: challenge,
-            name: options.user.name,
-            userID: userId
-        )
+        let request = provider.createCredentialRegistrationRequest(challenge: challenge, name: options.user.name, userID: userId)
         
         if let userVerification = options.authenticatorSelection?.userVerification?.userVerificationPreference {
             request.userVerificationPreference = userVerification
@@ -80,7 +76,7 @@ struct PasskeyCredentialFormatter {
         }
         
         return [
-            "id": credentialId,
+            "id":       credentialId,
             "rawId":    credentialId,
             "type":     "public-key",
             "response": response
