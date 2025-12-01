@@ -75,7 +75,9 @@ struct SheetTopup: View {
                     }
                     
                     Button {
-                        topUp()
+                        Task {
+                            await topUp()
+                        }
                     } label: {
                         if vm.isTopupLoading {
                             ProgressView()
@@ -132,8 +134,9 @@ struct SheetTopup: View {
         }
     }
     
-    private func topUp() {
+    private func topUp() async {
         let normalizedAmount = amount.replacingOccurrences(of: ",", with: ".")
+        
         guard let value = Double(normalizedAmount) else {
             SystemAlert.error("Invalid amount", subtitle: "Please enter a valid number.")
             return
@@ -152,11 +155,9 @@ struct SheetTopup: View {
         
         let token = store.testAccessToken
         
-        Task {
-            if let url = await vm.createTopup(accessToken: token, amount: value, method: provider.method, currency: user.currency) {
-                paymentLink = url.absoluteString
-                safariCover = true
-            }
+        if let url = await vm.createTopup(accessToken: token, amount: value, method: provider.method, currency: user.currency) {
+            paymentLink = url.absoluteString
+            safariCover = true
         }
     }
     
