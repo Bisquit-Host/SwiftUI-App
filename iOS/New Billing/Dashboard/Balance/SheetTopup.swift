@@ -3,22 +3,23 @@ import SwiftUI
 struct SheetTopup: View {
     @EnvironmentObject private var store: ValueStore
     private let user: BillingUser
+    private let providers: [PaymentProvider]
     
     init(_ user: BillingUser) {
         self.user = user
-        _selectedProvider = State(initialValue: providers.first)
+        let availableProviders = PaymentProvider.providers(for: user.currency)
+        self.providers = availableProviders
+        _selectedProvider = State(initialValue: availableProviders.first)
+        _amount = State(initialValue: String(format: "%.0f", SheetTopup.minimumAmount(for: user.currency)))
     }
     
     @State private var vm = SheetTopupVM()
-    @State private var amount = "50"
+    @State private var amount = ""
     @State private var selectedProvider: PaymentProvider?
+    @State private var safariCover = false
+    @State private var paymentLink = ""
     
     private let amountFieldSide: CGFloat = 48
-    
-    private let providers = [
-        PaymentProvider(id: "tbank", name: "Tbank", image: .tbank, tint: .yellow),
-        PaymentProvider(id: "tbank2", name: "Tbank", image: .tbank, tint: .yellow)
-    ]
     
     var body: some View {
         ScrollView {
@@ -50,7 +51,7 @@ struct SheetTopup: View {
                                     .frame(amountFieldSide)
                             }
                             .background(.primary.opacity(0.04), in: .rect(cornerRadius: 12))
-                            .disabled(Double(amount) ?? 0 <= stepAmount)
+                            .disabled((Double(amount.replacingOccurrences(of: ",", with: ".")) ?? 0) <= minimumTopupAmount)
                             
                             Button {
                                 adjustAmount(by: stepAmount)
@@ -75,16 +76,21 @@ struct SheetTopup: View {
                     Button {
                         topUp()
                     } label: {
-                        Text("Top up")
-                            .foregroundStyle(.white)
-                            .rounded()
-                            .semibold()
-                            .frame(maxWidth: .infinity)
+                        if vm.isTopupLoading {
+                            ProgressView()
+                                .tint(.white)
+                        } else {
+                            Text("Top up")
+                                .foregroundStyle(.white)
+                                .rounded()
+                                .semibold()
+                                .frame(maxWidth: .infinity)
+                        }
                     }
                     .padding(.top, 6)
                     .buttonStyle(.glassProminent)
                     .tint(.green)
-                    .disabled(amount.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || selectedProvider == nil)
+                    .disabled(amount.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || selectedProvider == nil || vm.isTopupLoading)
                 }
             }
             
@@ -112,6 +118,7 @@ struct SheetTopup: View {
             }
         }
         .scenePadding()
+        .safariCover($safariCover, url: paymentLink)
         .task {
             await vm.fetchOperations(accessToken: store.testAccessToken)
         }
@@ -125,18 +132,51 @@ struct SheetTopup: View {
     }
     
     private func topUp() {
+        let normalizedAmount = amount.replacingOccurrences(of: ",", with: ".")
+        guard let value = Double(normalizedAmount) else {
+            SystemAlert.error("Invalid amount", subtitle: "Please enter a valid number.")
+            return
+        }
         
+        guard value >= minimumTopupAmount else {
+            let minString = String(format: "%.0f", minimumTopupAmount)
+            SystemAlert.error("Amount too small", subtitle: "Minimum top up is \(minString) \(user.currency.uppercased()).")
+            return
+        }
+        
+        guard let provider = selectedProvider else {
+            SystemAlert.error("Select a provider", subtitle: "Choose a payment method to continue.")
+            return
+        }
+        
+        let token = store.testAccessToken
+        
+        Task {
+            if let url = await vm.createTopup(accessToken: token, amount: value, method: provider.method, currency: user.currency) {
+                paymentLink = url.absoluteString
+                safariCover = true
+            }
+        }
     }
     
     private func adjustAmount(by delta: Double) {
         let normalized = amount.replacingOccurrences(of: ",", with: ".")
         let current = Double(normalized) ?? 0
-        let updated = max(0, current + delta)
+        let updated = max(minimumTopupAmount, current + delta)
+        
         amount = String(format: "%.2f", updated)
     }
     
     private var stepAmount: Double {
         user.currency.uppercased() == "RUB" ? 50 : 5
+    }
+    
+    private var minimumTopupAmount: Double {
+        SheetTopup.minimumAmount(for: user.currency)
+    }
+    
+    private static func minimumAmount(for currency: String) -> Double {
+        currency.uppercased() == "RUB" ? 50 : 1
     }
     
     private func formatted(_ amount: Double) -> String {
