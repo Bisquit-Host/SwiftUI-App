@@ -6,6 +6,7 @@ struct SheetTopup: View {
     
     init(_ user: BillingUser) {
         self.user = user
+        _selectedProvider = State(initialValue: providers.first)
     }
     
     @State private var vm = SheetTopupVM()
@@ -13,7 +14,8 @@ struct SheetTopup: View {
     @State private var selectedProvider: PaymentProvider?
     
     private let providers = [
-        PaymentProvider(id: "tbank", name: "Tbank", image: .tbank, tint: .yellow)
+        PaymentProvider(id: "tbank", name: "Tbank", image: .tbank, tint: .yellow),
+        PaymentProvider(id: "tbank2", name: "Tbank", image: .tbank, tint: .yellow)
     ]
     
     var body: some View {
@@ -35,11 +37,7 @@ struct SheetTopup: View {
                             RoundedRectangle(cornerRadius: 12)
                                 .stroke(.primary.opacity(0.05), lineWidth: 1)
                         }
-                    
-                    Text("Payment providers")
-                        .footnote(.semibold)
-                        .secondary()
-                    
+
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 10) {
                             ForEach(providers) {
