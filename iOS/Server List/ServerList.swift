@@ -20,7 +20,7 @@ struct ServerList: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden()
         .animation(.default, value: vm.servers)
-        .searchable(text: $vm.searchField)
+        .serverListSearch($vm.searchField, isActive: vm.showSearch)
         .safariCover($vm.showBilling, url: "https://my.bisquit.host")
         .overlay {
             if isBoundaryDay && !reduceMotion {

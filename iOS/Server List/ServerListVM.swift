@@ -19,6 +19,10 @@ final class ServerListVM {
     
     var selectedServer: ServerAttributes?
     
+    var showSearch: Bool {
+        filteredServers.count > 6
+    }
+    
     var hasSuspendedServers: Bool {
         servers.filter(\.isSuspended).count > 0
     }
