@@ -42,6 +42,8 @@ struct BillingSettings: View {
             }
             .padding()
         }
+        .navigationTitle("Settings")
+        .navigationBarTitleDisplayMode(.inline)
         .environment(vm)
         .refreshableTask {
             await dashboardVM.fetchUserInfo()

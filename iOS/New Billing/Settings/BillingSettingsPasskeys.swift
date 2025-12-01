@@ -6,7 +6,7 @@ struct BillingSettingsPasskeys: View {
             BillingPasskeysView()
         } label: {
             HStack(spacing: 12) {
-                Image(systemName: "key.fill")
+                Image(systemName: "person.badge.key.fill")
                     .frame(32)
                     .glassEffect(.regular.tint(.blue.opacity(0.15)), in: .rect(cornerRadius: 10))
                     .foregroundStyle(.blue)
