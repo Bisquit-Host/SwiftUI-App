@@ -35,7 +35,9 @@ struct BillingPasskeysView: View {
                     BillingPasskeyRow(passkey)
                         .swipeActions {
                             Button("Delete", systemImage: "trash", role: .destructive) {
-                                Task { await vm.deletePasskey(passkey) }
+                                Task {
+                                    await vm.deletePasskey(passkey)
+                                }
                             }
                         }
                 }
@@ -43,10 +45,7 @@ struct BillingPasskeysView: View {
         }
         .navigationTitle("Passkeys")
         .navigationBarTitleDisplayMode(.inline)
-        .refreshable {
-            await vm.fetchPasskeys()
-        }
-        .task {
+        .refreshableTask {
             await vm.fetchPasskeys()
         }
         .overlay {
