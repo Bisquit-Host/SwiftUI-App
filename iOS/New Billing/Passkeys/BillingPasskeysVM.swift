@@ -7,170 +7,156 @@ final class BillingPasskeysVM {
     var isLoading = false
     var isRegistering = false
     var error: String?
-    var label: String = ""
-
+    var label = ""
+    
     private let baseURL = URL(string: "https://test-api.bisquit.host")!
     private let authController = PasskeyAuthorizationController()
-
+    
     func fetchPasskeys() async {
-        await MainActor.run {
-            isLoading = true
-            error = nil
-        }
-
+        isLoading = true
+        error = nil
+        
         defer {
-            Task { @MainActor in
-                isLoading = false
-            }
+            isLoading = false
         }
-
+        
         guard let token = ValueStore().testAccessToken.nonEmpty else {
-            await MainActor.run {
-                error = "Missing access token"
-            }
+            error = "Missing access token"
             return
         }
-
+        
         let url = baseURL.appendingPathComponent("user/passkeys")
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-
+        
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
-            guard let status = (response as? HTTPURLResponse)?.statusCode, status == 200 else {
-                throw URLError(.badServerResponse)
-            }
-
+            try validateResponse(response, data: data)
+            
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             let items = try decoder.decode([PasskeyListItem].self, from: data)
-
-            await MainActor.run {
-                passkeys = items
-            }
+            
+            passkeys = items
         } catch {
-            await MainActor.run {
-                self.error = error.localizedDescription
-            }
+            self.error = error.localizedDescription
         }
     }
-
+    
     func deletePasskey(_ passkey: PasskeyListItem) async {
         guard let token = ValueStore().testAccessToken.nonEmpty else {
-            await MainActor.run {
-                error = "Missing access token"
-            }
+            error = "Missing access token"
             return
         }
-
+        
         let url = baseURL.appendingPathComponent("user/passkeys/\(passkey.id)")
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-
+        
         do {
-            let (_, response) = try await URLSession.shared.data(for: request)
-            guard let status = (response as? HTTPURLResponse)?.statusCode, status == 204 else {
-                throw URLError(.cannotRemoveFile)
-            }
-
-            await MainActor.run {
-                passkeys.removeAll { $0.id == passkey.id }
+            let (data, response) = try await URLSession.shared.data(for: request)
+            try validateResponse(response, data: data)
+            
+            passkeys.removeAll {
+                $0.id == passkey.id
             }
         } catch {
-            await MainActor.run {
-                self.error = error.localizedDescription
-            }
+            self.error = error.localizedDescription
         }
     }
-
+    
     func registerPasskey() async {
         guard let token = ValueStore().testAccessToken.nonEmpty else {
-            await MainActor.run {
-                error = "Missing access token"
-            }
+            error = "Missing access token"
             return
         }
-
-        await MainActor.run {
-            isRegistering = true
-            error = nil
-        }
-
+        
+        isRegistering = true
+        error = nil
+        
         defer {
-            Task { @MainActor in
-                isRegistering = false
-            }
+            isRegistering = false
         }
-
+        
         do {
             let session = try await startRegistration(token: token)
             let request = try PasskeyRequestFactory.registrationRequest(from: session.options)
             let credential = try await authController.perform(request)
-
+            
             guard let registration = credential as? ASAuthorizationPlatformPublicKeyCredentialRegistration else {
                 throw PasskeyError.invalidCredential
             }
-
+            
             let payload = try PasskeyCredentialFormatter.attestationPayload(registration)
-
+            
             try await verifyRegistration(sessionId: session.sessionId, credential: payload, token: token)
-
-            await MainActor.run {
-                label = ""
-            }
-
+            
+            label = ""
+            
             await fetchPasskeys()
         } catch {
-            await MainActor.run {
-                self.error = error.localizedDescription
-            }
+            self.error = error.localizedDescription
             print("Passkey registration failed:", error.localizedDescription)
         }
     }
-
+    
     private func startRegistration(token: String) async throws -> PasskeyOptionsResponse<PasskeyRegistrationOptions> {
         let url = baseURL.appendingPathComponent("user/passkeys/register/options")
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-
+        
         if let label = label.trimmingCharacters(in: .whitespacesAndNewlines).nonEmpty {
             request.httpBody = try JSONSerialization.data(withJSONObject: ["label": label])
         } else {
             request.httpBody = "{}".data(using: .utf8)
         }
-
+        
         let (data, response) = try await URLSession.shared.data(for: request)
-        guard let status = (response as? HTTPURLResponse)?.statusCode, status == 200 else {
-            throw URLError(.badServerResponse)
-        }
-
+        try validateResponse(response, data: data)
+        
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         return try decoder.decode(PasskeyOptionsResponse<PasskeyRegistrationOptions>.self, from: data)
     }
-
+    
     private func verifyRegistration(sessionId: String, credential: [String: Any], token: String) async throws {
         let url = baseURL.appendingPathComponent("user/passkeys/register/verify")
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-
+        
         let body: [String: Any] = [
             "sessionId": sessionId,
             "credential": credential
         ]
-
+        
         request.httpBody = try JSONSerialization.data(withJSONObject: body)
+        
+        let (data, response) = try await URLSession.shared.data(for: request)
+        try validateResponse(response, data: data)
+    }
+}
 
-        let (_, response) = try await URLSession.shared.data(for: request)
-        guard let status = (response as? HTTPURLResponse)?.statusCode, status == 201 else {
-            throw URLError(.badServerResponse)
-        }
+private func validateResponse(_ response: URLResponse?, data: Data, allowedStatusCodes: Range<Int> = 200..<300) throws {
+    guard let http = response as? HTTPURLResponse else {
+        throw URLError(.badServerResponse)
+    }
+    
+    guard allowedStatusCodes.contains(http.statusCode) else {
+        let body = String(data: data, encoding: .utf8).flatMap { $0.isEmpty ? nil : $0 }
+        let message = body.map { "Unexpected status code \(http.statusCode): \($0)" }
+        ?? "Unexpected status code \(http.statusCode)."
+        
+        throw NSError(
+            domain: NSURLErrorDomain,
+            code: URLError.badServerResponse.rawValue,
+            userInfo: [NSLocalizedDescriptionKey: message]
+        )
     }
 }
 
