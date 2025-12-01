@@ -2,21 +2,14 @@ import AuthenticationServices
 import Foundation
 
 enum PasskeyError: LocalizedError {
-    case invalidChallenge
-    case invalidUserId
-    case invalidCredential
-    case missingRelyingParty
+    case invalidChallenge, invalidUserId, invalidCredential, missingRelyingParty
     
     var errorDescription: String? {
         switch self {
-        case .invalidChallenge:
-            return "Unable to decode the passkey challenge."
-        case .invalidUserId:
-            return "Unable to decode the user identifier."
-        case .invalidCredential:
-            return "Passkey response is invalid."
-        case .missingRelyingParty:
-            return "Relying party identifier is missing."
+        case .invalidChallenge:    "Unable to decode the passkey challenge."
+        case .invalidUserId:       "Unable to decode the user identifier."
+        case .invalidCredential:   "Passkey response is invalid."
+        case .missingRelyingParty: "Relying party identifier is missing."
         }
     }
 }
