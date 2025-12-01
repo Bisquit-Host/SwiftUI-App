@@ -30,7 +30,7 @@ struct BillingOperationRow: View {
                 
                 Spacer()
                 
-                VStack(alignment: .trailing, spacing: 0) {
+                VStack(alignment: .trailing, spacing: 2) {
                     Text(amountText)
                         .monospacedDigit()
                         .subheadline(.semibold)
