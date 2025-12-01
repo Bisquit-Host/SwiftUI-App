@@ -5,7 +5,6 @@ struct BillingSettings: View {
     @EnvironmentObject private var store: ValueStore
     @Environment(\.dismiss) private var dismiss
     @Environment(BillingDashboardVM.self) private var dashboardVM
-    @Environment(BillingOAuthVM.self) private var oauthVM
     
     @Binding private var user: BillingUser?
     
@@ -24,32 +23,7 @@ struct BillingSettings: View {
                             BillingSecurityRow("2FA", icon: "shield.fill", enabled: user.twoFa, enabledText: "Disable", disabledText: "Connect")
                             BillingSecurityRow("Password", icon: "key.fill", enabled: user.hasPassword, enabledText: "Change", disabledText: "Set")
                             
-                            NavigationLink {
-                                BillingPasskeysView()
-                            } label: {
-                                HStack(spacing: 12) {
-                                    Image(systemName: "key.fill")
-                                        .frame(32)
-                                        .glassEffect(.regular.tint(.blue.opacity(0.15)), in: .rect(cornerRadius: 10))
-                                        .foregroundStyle(.blue)
-                                    
-                                    VStack(alignment: .leading, spacing: 6) {
-                                        Text("Passkeys")
-                                            .subheadline(.semibold)
-                                        
-                                        Text("Use passkeys to sign in without a password")
-                                            .footnote()
-                                            .secondary()
-                                    }
-                                    
-                                    Spacer()
-                                    
-                                    Image(systemName: "chevron.right")
-                                        .footnote()
-                                        .secondary()
-                                }
-                                .contentShape(.rect)
-                            }
+                            BillingSettingsPasskeys()
                         }
                         
                         BillingAuthAppsSection(user: $user)
@@ -66,10 +40,10 @@ struct BillingSettings: View {
                     }
                 }
             }
+            .padding()
         }
-        .padding()
         .environment(vm)
-        .refreshable {
+        .refreshableTask {
             await dashboardVM.fetchUserInfo()
         }
         .toolbar {
