@@ -1,9 +1,10 @@
 import SwiftUI
 
 struct BillingAuthAppsSection: View {
-    @Binding var user: BillingUser?
     @Environment(BillingDashboardVM.self) private var dashboardVM
     @Environment(BillingOAuthVM.self) private var oauthVM
+    
+    @Binding var user: BillingUser?
     
     var body: some View {
         if let user {
