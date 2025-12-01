@@ -23,6 +23,32 @@ struct BillingSettings: View {
                         BillingSectionCard("Security") {
                             BillingSecurityRow("2FA", icon: "shield.fill", enabled: user.twoFa, enabledText: "Disable", disabledText: "Connect")
                             BillingSecurityRow("Password", icon: "key.fill", enabled: user.hasPassword, enabledText: "Change", disabledText: "Set")
+
+                            NavigationLink {
+                                BillingPasskeysView()
+                            } label: {
+                                HStack(spacing: 12) {
+                                    Image(systemName: "key.fill")
+                                        .frame(32)
+                                        .glassEffect(.regular.tint(Color.blue.opacity(0.15)), in: .rect(cornerRadius: 10))
+                                        .foregroundStyle(.blue)
+                                    
+                                    VStack(alignment: .leading, spacing: 6) {
+                                        Text("Passkeys")
+                                            .subheadline(.semibold)
+                                        Text("Use passkeys to sign in without a password")
+                                            .footnote()
+                                            .foregroundStyle(.secondary)
+                                    }
+                                    
+                                    Spacer()
+                                    
+                                    Image(systemName: "chevron.right")
+                                        .footnote()
+                                        .secondary()
+                                }
+                                .contentShape(.rect)
+                            }
                         }
                         
                         BillingAuthAppsSection(user: $user)

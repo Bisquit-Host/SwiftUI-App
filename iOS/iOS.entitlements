@@ -7,6 +7,9 @@
 	<key>com.apple.developer.associated-domains</key>
 	<array>
 		<string>applinks:mgr.bisquit.host</string>
+		<string>webcredentials:test-my.bisquit.host?mode=developer</string>
+		<string>webcredentials:my.bisquit.host?mode=developer</string>
+		<string>webcredentials:test-api.bisquit.host?mode=developer</string>
 	</array>
 	<key>com.apple.developer.game-center</key>
 	<true/>

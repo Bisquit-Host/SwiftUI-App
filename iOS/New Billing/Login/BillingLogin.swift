@@ -28,6 +28,20 @@ struct BillingLogin: View {
                     sheetHcaptcha = true
                 }
                 .disabled(captchaButtonDisabled)
+
+                Button {
+                    passkeyLogin()
+                } label: {
+                    if vm.isPasskeyLoading {
+                        HStack {
+                            ProgressView()
+                            Text("Signing in with passkey...")
+                        }
+                    } else {
+                        Text("Sign in with passkey")
+                    }
+                }
+                .disabled(vm.isPasskeyLoading)
             }
         }
         .sheet($sheetHcaptcha) {
@@ -35,6 +49,21 @@ struct BillingLogin: View {
         }
         .onChange(of: captchaToken) { _, newValue in
             auth()
+        }
+        .alert("Passkey error", isPresented: Binding(get: {
+            vm.passkeyError != nil
+        }, set: { newValue in
+            if !newValue {
+                vm.passkeyError = nil
+            }
+        })) {
+            Button("OK", role: .cancel) {
+                vm.passkeyError = nil
+            }
+        } message: {
+            if let passkeyError = vm.passkeyError {
+                Text(passkeyError)
+            }
         }
     }
     
@@ -50,6 +79,20 @@ struct BillingLogin: View {
             try await Task.sleep(for: .seconds(0.5))
             
             withAnimation {
+                store.testAccessToken = response.accessToken
+            }
+        }
+    }
+
+    private func passkeyLogin() {
+        Task {
+            guard let response = await vm.loginWithPasskey(login: store.login) else {
+                return
+            }
+
+            await MainActor.run {
+                store.testExpiresIn = response.expiresIn
+                store.testRefreshToken = response.refreshToken
                 store.testAccessToken = response.accessToken
             }
         }
