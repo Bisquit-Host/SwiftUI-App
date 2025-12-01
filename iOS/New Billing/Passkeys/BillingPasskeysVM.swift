@@ -129,6 +129,7 @@ final class BillingPasskeysVM {
 
     private func verifyRegistration(sessionId: String, credential: [String: Any], token: String) async throws {
         let url = baseURL.appendingPathComponent("\(passkeysPath)/register/verify")
+        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
