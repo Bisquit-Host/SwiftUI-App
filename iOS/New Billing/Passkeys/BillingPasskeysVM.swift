@@ -8,9 +8,10 @@ final class BillingPasskeysVM {
     var isRegistering = false
     var error: String?
     var label = ""
-    
+
     private let baseURL = URL(string: "https://test-api.bisquit.host")!
     private let authController = PasskeyAuthorizationController()
+    private let passkeysPath = "user/settings/passkeys"
     
     func fetchPasskeys() async {
         isLoading = true
@@ -24,8 +25,9 @@ final class BillingPasskeysVM {
             error = "Missing access token"
             return
         }
+
+        let url = baseURL.appendingPathComponent(passkeysPath)
         
-        let url = baseURL.appendingPathComponent("user/passkeys")
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
@@ -49,8 +51,9 @@ final class BillingPasskeysVM {
             error = "Missing access token"
             return
         }
+
+        let url = baseURL.appendingPathComponent("\(passkeysPath)/\(passkey.id)")
         
-        let url = baseURL.appendingPathComponent("user/passkeys/\(passkey.id)")
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
@@ -101,9 +104,10 @@ final class BillingPasskeysVM {
             print("Passkey registration failed:", error.localizedDescription)
         }
     }
-    
+
     private func startRegistration(token: String) async throws -> PasskeyOptionsResponse<PasskeyRegistrationOptions> {
-        let url = baseURL.appendingPathComponent("user/passkeys/register/options")
+        let url = baseURL.appendingPathComponent("\(passkeysPath)/register/options")
+        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -122,9 +126,9 @@ final class BillingPasskeysVM {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         return try decoder.decode(PasskeyOptionsResponse<PasskeyRegistrationOptions>.self, from: data)
     }
-    
+
     private func verifyRegistration(sessionId: String, credential: [String: Any], token: String) async throws {
-        let url = baseURL.appendingPathComponent("user/passkeys/register/verify")
+        let url = baseURL.appendingPathComponent("\(passkeysPath)/register/verify")
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")

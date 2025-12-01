@@ -5,10 +5,11 @@ import Foundation
 final class BillingLoginVM {
     var isPasskeyLoading = false
     var passkeyError: String?
-
+    
     private let passkeyAuth = PasskeyAuthorizationController()
     private let baseURL = URL(string: "https://test-api.bisquit.host")!
-
+    private let passkeyLoginPath = "auth/passkeys"
+    
     func login(_ login: String, _ password: String, _ captchaToken: String) async -> BillingLoginResponse? {
         let path = "https://test-api.bisquit.host/auth/signin"
         
@@ -46,81 +47,83 @@ final class BillingLoginVM {
             return nil
         }
     }
-
+    
     func loginWithPasskey(login: String?) async -> BillingLoginResponse? {
-        await MainActor.run {
-            isPasskeyLoading = true
-            passkeyError = nil
-        }
-
+        isPasskeyLoading = true
+        passkeyError = nil
+        
         defer {
-            Task { @MainActor in
-                isPasskeyLoading = false
-            }
+            isPasskeyLoading = false
         }
-
+        
         do {
             let session = try await startPasskeyLogin(login: login)
             let request = try PasskeyRequestFactory.assertionRequest(from: session.options)
             let credential = try await passkeyAuth.perform(request)
-
+            
             guard let assertion = credential as? ASAuthorizationPlatformPublicKeyCredentialAssertion else {
                 throw PasskeyError.invalidCredential
             }
-
+            
             let payload = try PasskeyCredentialFormatter.assertionPayload(assertion)
+            
             return try await verifyPasskeyLogin(sessionId: session.sessionId, credential: payload)
         } catch {
-            await MainActor.run {
-                passkeyError = error.localizedDescription
-            }
+            passkeyError = error.localizedDescription
+            
             print("Passkey login failed:", error.localizedDescription)
             return nil
         }
     }
-
+    
     private func startPasskeyLogin(login: String?) async throws -> PasskeyOptionsResponse<PasskeyAssertionOptions> {
-        let url = baseURL.appendingPathComponent("passkeys/options")
+        let url = baseURL.appendingPathComponent("\(passkeyLoginPath)/options")
+        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
+        
         if let login, !login.trimmingCharacters(in: .whitespaces).isEmpty {
             request.httpBody = try JSONSerialization.data(withJSONObject: ["login": login])
         } else {
             request.httpBody = "{}".data(using: .utf8)
         }
-
+        
         let (data, response) = try await URLSession.shared.data(for: request)
+        
         guard let status = (response as? HTTPURLResponse)?.statusCode, status == 200 else {
             throw URLError(.badServerResponse)
         }
-
+        
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
+        
         return try decoder.decode(PasskeyOptionsResponse<PasskeyAssertionOptions>.self, from: data)
     }
-
+    
     private func verifyPasskeyLogin(sessionId: String, credential: [String: Any]) async throws -> BillingLoginResponse {
-        let url = baseURL.appendingPathComponent("passkeys/verify")
+        let url = baseURL.appendingPathComponent("\(passkeyLoginPath)/verify")
+        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
+        
         let body: [String: Any] = [
             "sessionId": sessionId,
             "credential": credential
         ]
-
+        
         request.httpBody = try JSONSerialization.data(withJSONObject: body)
-
+        
         let (data, response) = try await URLSession.shared.data(for: request)
+        
         guard let status = (response as? HTTPURLResponse)?.statusCode, status == 200 else {
             throw URLError(.badServerResponse)
         }
-
+        
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
+        
         return try decoder.decode(BillingLoginResponse.self, from: data)
     }
 }
