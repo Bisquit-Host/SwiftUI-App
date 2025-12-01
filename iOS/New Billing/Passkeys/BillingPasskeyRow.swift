@@ -7,15 +7,6 @@ struct BillingPasskeyRow: View {
         self.passkey = passkey
     }
     
-    private let isoFormatter = ISO8601DateFormatter()
-    
-    private let relativeFormatter: RelativeDateTimeFormatter = {
-        let formatter = RelativeDateTimeFormatter()
-        formatter.unitsStyle = .full
-        
-        return formatter
-    }()
-    
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
             HStack {
@@ -61,10 +52,15 @@ struct BillingPasskeyRow: View {
     }
     
     private func formattedDate(_ value: String?) -> String? {
+        let isoFormatter = ISO8601DateFormatter()
+        
         guard let value, let date = isoFormatter.date(from: value) else {
             return nil
         }
         
-        return relativeFormatter.localizedString(for: date, relativeTo: .init())
+        let formatter = RelativeDateTimeFormatter()
+        formatter.unitsStyle = .full
+        
+        return formatter.localizedString(for: date, relativeTo: Date())
     }
 }
