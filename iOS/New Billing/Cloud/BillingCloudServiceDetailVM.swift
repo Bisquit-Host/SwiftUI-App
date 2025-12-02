@@ -166,7 +166,13 @@ final class BillingCloudServiceDetailVM {
         guard ["start", "stop", "restart"].contains(action) else { return }
         
         await performAction {
-            guard await self.request(path: "/cloud/\(serviceId)/panel/state/\(action)", method: "POST") != nil else { return }
+            guard let data = await self.request(path: "/cloud/\(serviceId)/panel/state/\(action)", method: "POST") else {
+                print("Power action \(action) failed:", self.lastError ?? "unknown error")
+                return
+            }
+            if let raw = String(data: data, encoding: .utf8), !raw.isEmpty {
+                print("Power action response:", raw)
+            }
             self.actionMessage = "Action sent: \(action.capitalized)"
         }
     }
