@@ -42,7 +42,8 @@ struct SupportTicketsList: View {
         }
         .sheet($showCreateSheet) {
             NavigationStack {
-                CreateTicketSheet(vm: vm, showSheet: $showCreateSheet)
+                CreateTicketSheet(showSheet: $showCreateSheet)
+                    .environment(vm)
             }
         }
         .refreshableTask {
@@ -60,6 +61,7 @@ struct SupportTicketsList: View {
     NavigationStack {
         SupportTicketsList()
     }
+    .environment(SupportTicketsVM())
     .environmentObject(ValueStore())
     .darkSchemePreferred()
 }

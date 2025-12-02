@@ -1,4 +1,5 @@
 import ScrechKit
+import SwiftUI
 
 struct BillingDashboard: View {
     @State private var vm = BillingDashboardVM()
@@ -9,6 +10,8 @@ struct BillingDashboard: View {
         VStack(alignment: .leading) {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
+                    BillingDashboardHostingLinks()
+                    
                     NavigationLink {
                         SupportTicketsList()
                     } label: {
@@ -64,6 +67,7 @@ struct BillingDashboard: View {
             }
         }
         .animation(.default, value: vm.user)
+        .environment(vm)
     }
 }
 

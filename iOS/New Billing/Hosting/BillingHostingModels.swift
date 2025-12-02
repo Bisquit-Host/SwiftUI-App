@@ -1,0 +1,103 @@
+import Foundation
+
+enum BillingHostingCategory: String, CaseIterable, Identifiable {
+    case bot
+    case game
+    case cloud
+    
+    var id: Self { self }
+    
+    var title: String {
+        switch self {
+        case .bot: "Bot hosting"
+        case .game: "Game hosting"
+        case .cloud: "Cloud (VDS)"
+        }
+    }
+    
+    var description: String {
+        switch self {
+        case .bot: "Discord, Telegram and other bots"
+        case .game: "Game servers on Pterodactyl"
+        case .cloud: "Virtual dedicated servers"
+        }
+    }
+    
+    var icon: String {
+        switch self {
+        case .bot: "bolt.horizontal.circle.fill"
+        case .game: "gamecontroller.fill"
+        case .cloud: "server.rack"
+        }
+    }
+    
+    var path: String { rawValue }
+}
+
+struct BillingHostingPlanPrice: Decodable, Equatable {
+    let price: Double
+    let currency: String
+}
+
+struct BillingHostingPlan: Identifiable, Decodable, Equatable {
+    let id: Int
+    let name: String
+    let locationId: Int
+    let price: [BillingHostingPlanPrice]
+    let cpu: Double
+    let cpuName: String?
+    let memory: Double
+    let memoryType: String?
+    let disk: Double
+    let diskType: String?
+    let network: Double?
+    let networkType: String?
+    let nests: [Int]?
+    let allocations: Int?
+    let databases: Int?
+    let backups: Int?
+    let bonusBalanceAllowed: Bool?
+    let windowsAllowed: Bool?
+    let antiSpoofing: Bool?
+    let whmcsLink: String?
+}
+
+struct BillingHostingLocation: Identifiable, Decodable, Equatable {
+    let id: Int
+    let name: String
+    let flagUrl: String?
+    let remarks: [String]?
+    let locations: [Int]?
+    let portRange: [String]?
+}
+
+struct BillingHostingPlansResponse: Decodable, Equatable {
+    let packages: [BillingHostingPlan]
+    let locations: [BillingHostingLocation]?
+}
+
+extension BillingHostingPlan {
+    var memoryGB: Double {
+        memory / 1024
+    }
+    
+    var diskGB: Double {
+        disk / 1024
+    }
+    
+    var networkDescription: String? {
+        guard let network else { return nil }
+        if let networkType {
+            return "\(network.clean) \(networkType)"
+        }
+        
+        return "\(network.clean)"
+    }
+}
+
+extension Double {
+    var clean: String {
+        let isInt = rounded() == self
+        return isInt ? String(Int(self)) : String(format: "%.1f", self)
+    }
+}
