@@ -24,105 +24,107 @@ struct SheetTopup: View {
     
     var body: some View {
         ScrollView {
-            BillingSectionCard("Balance") {
-                BillingAccountRow("Main", icon: "creditcard.fill", tint: .blue, value: formatted(user.balance))
-                BillingAccountRow("Bonus", icon: "sparkles", tint: .mint, value: formatted(user.bonusBalance))
-                BillingAccountRow("Total", icon: "wallet.pass.fill", tint: .indigo, value: formatted(user.totalBalance))
-            }
-            
-            BillingSectionCard("Top up") {
-                VStack(alignment: .leading, spacing: 12) {
-                    HStack(spacing: 10) {
-                        TextField("Amount, \(user.currency.uppercased())", text: $amount)
-                            .keyboardType(.decimalPad)
-                            .textInputAutocapitalization(.never)
-                            .padding(12)
-                            .background(.primary.opacity(0.04), in: .rect(cornerRadius: 12))
-                            .overlay {
-                                RoundedRectangle(cornerRadius: 12)
-                                    .stroke(.primary.opacity(0.05), lineWidth: 1)
-                            }
-                            .frame(height: amountFieldSide)
-                        
-                        HStack(spacing: 8) {
-                            Button {
-                                adjustAmount(by: -stepAmount)
-                            } label: {
-                                Image(systemName: "minus")
-                                    .frame(amountFieldSide)
-                            }
-                            .background(.primary.opacity(0.04), in: .rect(cornerRadius: 12))
-                            .disabled((Double(amount.replacingOccurrences(of: ",", with: ".")) ?? 0) <= minimumTopupAmount)
-                            
-                            Button {
-                                adjustAmount(by: stepAmount)
-                            } label: {
-                                Image(systemName: "plus")
-                                    .frame(amountFieldSide)
-                            }
-                            .background(.primary.opacity(0.04), in: .rect(cornerRadius: 12))
-                        }
-                        .foregroundStyle(.foreground)
-                        .frame(width: amountFieldSide * 2 + 8)
-                    }
-                    
-                    ScrollView(.horizontal, showsIndicators: false) {
+            VStack {
+                BillingSectionCard("Balance") {
+                    BillingAccountRow("Main", icon: "creditcard.fill", tint: .blue, value: formatted(user.balance))
+                    BillingAccountRow("Bonus", icon: "sparkles", tint: .mint, value: formatted(user.bonusBalance))
+                    BillingAccountRow("Total", icon: "wallet.pass.fill", tint: .indigo, value: formatted(user.totalBalance))
+                }
+                
+                BillingSectionCard("Top up") {
+                    VStack(alignment: .leading, spacing: 12) {
                         HStack(spacing: 10) {
-                            ForEach(providers) {
-                                TopupProviderCard($0, selectedProvider: $selectedProvider)
+                            TextField("Amount, \(user.currency.uppercased())", text: $amount)
+                                .keyboardType(.decimalPad)
+                                .textInputAutocapitalization(.never)
+                                .padding(12)
+                                .background(.primary.opacity(0.04), in: .rect(cornerRadius: 12))
+                                .overlay {
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .stroke(.primary.opacity(0.05), lineWidth: 1)
+                                }
+                                .frame(height: amountFieldSide)
+                            
+                            HStack(spacing: 8) {
+                                Button {
+                                    adjustAmount(by: -stepAmount)
+                                } label: {
+                                    Image(systemName: "minus")
+                                        .frame(amountFieldSide)
+                                }
+                                .background(.primary.opacity(0.04), in: .rect(cornerRadius: 12))
+                                .disabled((Double(amount.replacingOccurrences(of: ",", with: ".")) ?? 0) <= minimumTopupAmount)
+                                
+                                Button {
+                                    adjustAmount(by: stepAmount)
+                                } label: {
+                                    Image(systemName: "plus")
+                                        .frame(amountFieldSide)
+                                }
+                                .background(.primary.opacity(0.04), in: .rect(cornerRadius: 12))
+                            }
+                            .foregroundStyle(.foreground)
+                            .frame(width: amountFieldSide * 2 + 8)
+                        }
+                        
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 10) {
+                                ForEach(providers) {
+                                    TopupProviderCard($0, selectedProvider: $selectedProvider)
+                                }
+                            }
+                        }
+                        
+                        Button {
+                            Task {
+                                await topUp()
+                            }
+                        } label: {
+                            if vm.isTopupLoading {
+                                ProgressView()
+                                    .tint(.white)
+                            } else {
+                                Text("Top up")
+                                    .foregroundStyle(.white)
+                                    .rounded()
+                                    .semibold()
+                                    .frame(maxWidth: .infinity)
+                            }
+                        }
+                        .padding(.top, 6)
+                        .buttonStyle(.glassProminent)
+                        .tint(.green)
+                        .disabled(amount.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || selectedProvider == nil || vm.isTopupLoading)
+                    }
+                }
+                
+                if vm.isLoading && vm.operations.isEmpty {
+                    ProgressView()
+                        .frame(maxWidth: .infinity)
+                        .listRowBackground(Color.clear)
+                    
+                } else if vm.operations.isEmpty {
+                    ContentUnavailableView("No operations yet", systemImage: "creditcard")
+                        .listRowBackground(Color.clear)
+                    
+                } else {
+                    BillingSectionCard("Operations") {
+                        ForEach(Array(vm.operations.enumerated()), id: \.element.id) { index, operation in
+                            BillingOperationRow(operation)
+                            
+                            if index < vm.operations.count - 1 {
+                                Divider()
                             }
                         }
                     }
-                    
-                    Button {
-                        Task {
-                            await topUp()
-                        }
-                    } label: {
-                        if vm.isTopupLoading {
-                            ProgressView()
-                                .tint(.white)
-                        } else {
-                            Text("Top up")
-                                .foregroundStyle(.white)
-                                .rounded()
-                                .semibold()
-                                .frame(maxWidth: .infinity)
-                        }
-                    }
-                    .padding(.top, 6)
-                    .buttonStyle(.glassProminent)
-                    .tint(.green)
-                    .disabled(amount.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || selectedProvider == nil || vm.isTopupLoading)
+                    .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+                    .listRowBackground(Color.clear)
                 }
             }
-            
-            if vm.isLoading && vm.operations.isEmpty {
-                ProgressView()
-                    .frame(maxWidth: .infinity)
-                    .listRowBackground(Color.clear)
-                
-            } else if vm.operations.isEmpty {
-                ContentUnavailableView("No operations yet", systemImage: "creditcard")
-                    .listRowBackground(Color.clear)
-                
-            } else {
-                BillingSectionCard("Operations") {
-                    ForEach(Array(vm.operations.enumerated()), id: \.element.id) { index, operation in
-                        BillingOperationRow(operation)
-                        
-                        if index < vm.operations.count - 1 {
-                            Divider()
-                        }
-                    }
-                }
-                .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-                .listRowBackground(Color.clear)
-            }
+            .scenePadding()
         }
-        .scenePadding()
         .safariCover($safariCover, url: paymentLink)
-        .task {
+        .refreshableTask {
             await vm.fetchOperations(accessToken: store.testAccessToken)
         }
         .toolbar {

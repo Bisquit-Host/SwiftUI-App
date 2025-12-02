@@ -14,35 +14,29 @@ struct BillingDashboard: View {
                 VStack(alignment: .leading, spacing: 16) {
                     BillingDashboardHostingLinks()
                     
-                    BillingSectionCard("My services") {
-                        NavigationLink {
-                            BillingMyServicesView()
-                                .environment(vm)
-                        } label: {
-                            HStack(spacing: 12) {
-                                Image(systemName: "server.rack")
-                                    .foregroundStyle(.indigo)
-                                    .frame(32)
-                                    .background(.indigo.opacity(0.12), in: .rect(cornerRadius: 8))
+                    NavigationLink {
+                        BillingMyServicesView()
+                            .environment(vm)
+                    } label: {
+                        HStack(spacing: 12) {
+                            Image(systemName: "externaldrive.connected.to.line.below")
+                                .largeTitle()
+                                .foregroundStyle(.blue.gradient)
+                            
+                            VStack(alignment: .leading) {
+                                Text("My services")
+                                    .semibold()
                                 
-                                VStack(alignment: .leading, spacing: 4) {
-                                    Text("VDS & cloud")
-                                        .subheadline(.semibold)
-                                    
-                                    Text("Manage purchased servers")
-                                        .footnote()
-                                        .secondary()
-                                }
-                                
-                                Spacer()
-                                
-                                Image(systemName: "chevron.right")
+                                Text("VDS, game & bots")
+                                    .footnote()
                                     .secondary()
                             }
-                            .padding(.vertical, 4)
                         }
-                        .foregroundStyle(.primary)
+                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(.ultraThinMaterial, in: .rect(cornerRadius: 12))
                     }
+                    .foregroundStyle(.foreground)
                     
                     NavigationLink {
                         SupportTicketsList()
@@ -50,10 +44,11 @@ struct BillingDashboard: View {
                         HStack(spacing: 12) {
                             Image(systemName: "lifepreserver")
                                 .largeTitle()
-                                .foregroundStyle(.red)
+                                .foregroundStyle(.red.gradient)
                             
                             VStack(alignment: .leading) {
                                 Text("Support")
+                                    .semibold()
                                 
                                 Text("Tickets & wiki")
                                     .footnote()
