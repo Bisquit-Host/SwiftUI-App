@@ -13,6 +13,7 @@ struct BillingAccountSection: View {
     
     @State private var alertRename = false
     @State private var alertEmail = false
+    @State private var alertLogin = false
     @State private var avatarPickerItem: PhotosPickerItem?
     @State private var avatarPreview: UIImage?
     @State private var isUploadingAvatar = false
@@ -32,6 +33,11 @@ struct BillingAccountSection: View {
             BillingAccountRow("Name", icon: "person.fill", tint: .cyan, value: user.name) {
                 vm.newName = user.name
                 alertRename = true
+            }
+
+            BillingAccountRow("Login", icon: "at", tint: .indigo, value: user.login) {
+                vm.newLogin = user.login
+                alertLogin = true
             }
             
             BillingAccountRow("Language", icon: "character.cursor.ibeam", tint: .mint, value: user.lang.uppercased()) {
@@ -53,6 +59,16 @@ struct BillingAccountSection: View {
             }
         } message: {
             Text("You will receive a confirmation email to complete the change")
+        }
+        .alert("Change login", isPresented: $alertLogin) {
+            TextField("New login", text: $vm.newLogin)
+                .autocorrectionDisabled()
+                .textInputAutocapitalization(.never)
+                .limitInputLength($vm.newLogin, length: 100)
+
+            Button("Change", role: .destructive) {
+                changeLogin()
+            }
         }
         .alert("Change name", isPresented: $alertRename) {
             TextField("New name", text: $vm.newName)
@@ -81,6 +97,14 @@ struct BillingAccountSection: View {
     private func changeEmail() {
         Task {
             await vm.changeEmail()
+        }
+    }
+
+    private func changeLogin() {
+        Task {
+            await vm.changeLogin {
+                await dashboardVM.fetchUserInfo()
+            }
         }
     }
     
