@@ -17,7 +17,6 @@ struct BillingAccountSection: View {
     @State private var avatarPickerItem: PhotosPickerItem?
     @State private var avatarPreview: UIImage?
     @State private var isUploadingAvatar = false
-    @State private var avatarStatus: String?
     
     var body: some View {
         @Bindable var vm = vm
@@ -121,8 +120,8 @@ struct BillingAccountSection: View {
                     .footnote()
                     .secondary()
                 
-                if let avatarStatus {
-                    Text(avatarStatus)
+                if let status = vm.avatarError {
+                    Text(status)
                         .footnote()
                         .foregroundStyle(.red)
                 }
@@ -166,17 +165,21 @@ struct BillingAccountSection: View {
                 Image(uiImage: avatarPreview)
                     .resizable()
                     .scaledToFill()
+                
             } else if let avatar = user.avatar, let url = URL(string: avatar) {
                 AsyncImage(url: url) { phase in
                     switch phase {
                     case .empty:
                         ProgressView()
+                        
                     case .success(let image):
                         image
                             .resizable()
                             .scaledToFill()
+                        
                     case .failure:
                         placeholderInitial(for: user)
+                        
                     @unknown default:
                         placeholderInitial(for: user)
                     }
@@ -209,7 +212,7 @@ struct BillingAccountSection: View {
     private func handleAvatarChange(_ item: PhotosPickerItem) {
         Task {
             guard let data = try? await item.loadTransferable(type: Data.self) else {
-                avatarStatus = "Could not read image"
+                vm.avatarError = "Could not read image"
                 return
             }
             
@@ -219,12 +222,11 @@ struct BillingAccountSection: View {
             
             avatarPreview = UIImage(data: data)
             isUploadingAvatar = true
-            avatarStatus = nil
+            vm.avatarError = nil
             
             let uploaded = await vm.updateAvatar(with: data, filename: filename, mimeType: mime)
             
             isUploadingAvatar = false
-            avatarStatus = vm.avatarError
             avatarPickerItem = nil
             
             if uploaded != nil {
