@@ -16,7 +16,7 @@ struct TopupProviderCard: View {
             selectedProvider = provider
         } label: {
             HStack(spacing: 8) {
-                providerIcon
+                TopupProviderIcon(provider)
                 
                 Text(provider.name)
                     .subheadline(.semibold)
@@ -35,24 +35,6 @@ struct TopupProviderCard: View {
             }
         }
         .buttonStyle(.plain)
-    }
-    
-    @ViewBuilder
-    private var providerIcon: some View {
-        switch provider.icon {
-        case .asset(let image):
-            Image(image)
-                .resizable()
-                .frame(32)
-                .clipShape(.rect(cornerRadius: 8))
-            
-        case .system(let name):
-            Image(systemName: name)
-                .title3(.semibold)
-                .frame(32)
-                .padding(6)
-                .background(.primary.opacity(0.06), in: .rect(cornerRadius: 8))
-        }
     }
 }
 
