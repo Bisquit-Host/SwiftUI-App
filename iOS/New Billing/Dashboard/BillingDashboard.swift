@@ -12,6 +12,36 @@ struct BillingDashboard: View {
                 VStack(alignment: .leading, spacing: 16) {
                     BillingDashboardHostingLinks()
                     
+                    BillingSectionCard("My services") {
+                        NavigationLink {
+                            BillingCloudServicesList()
+                                .environment(vm)
+                        } label: {
+                            HStack(spacing: 12) {
+                                Image(systemName: "server.rack")
+                                    .foregroundStyle(.indigo)
+                                    .frame(width: 32, height: 32)
+                                    .background(.indigo.opacity(0.12), in: .rect(cornerRadius: 8))
+                                
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text("VDS & cloud")
+                                        .subheadline(.semibold)
+                                    
+                                    Text("Manage purchased servers")
+                                        .footnote()
+                                        .secondary()
+                                }
+                                
+                                Spacer()
+                                
+                                Image(systemName: "chevron.right")
+                                    .foregroundStyle(.secondary)
+                            }
+                            .padding(.vertical, 4)
+                        }
+                        .foregroundStyle(.primary)
+                    }
+                    
                     NavigationLink {
                         SupportTicketsList()
                     } label: {
