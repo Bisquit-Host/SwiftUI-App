@@ -21,7 +21,7 @@ struct BillingHostingPlansView: View {
                     }
                 }
                 .pickerStyle(.segmented)
-                .padding()
+                .padding([.bottom, .horizontal])
                 
                 let locations = vm.locations(for: category)
                 let selectedLocationId = selectedLocationId(for: category, available: locations)

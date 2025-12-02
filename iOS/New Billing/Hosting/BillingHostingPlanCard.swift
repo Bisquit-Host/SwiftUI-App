@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct BillingHostingPlanCard: View {
     let plan: BillingHostingPlan
@@ -22,7 +22,7 @@ struct BillingHostingPlanCard: View {
                 
                 Spacer()
                 
-                VStack(alignment: .trailing, spacing: 2) {
+                HStack(alignment: .firstTextBaseline, spacing: 0) {
                     Text(priceText)
                         .semibold()
                     
@@ -47,13 +47,10 @@ struct BillingHostingPlanCard: View {
             HStack {
                 Spacer()
                 
-                Button {
+                SFButton("cart.badge.plus") {
                     onPurchase?()
-                } label: {
-                    Label("Purchase", systemImage: "cart")
-                        .frame(minWidth: 0)
                 }
-                .buttonStyle(.borderedProminent)
+                .buttonStyle(.glassProminent)
             }
         }
         .padding(16)
