@@ -53,7 +53,7 @@ final class BillingLoginVM {
             return nil
         }
     }
-
+    
     func signup(name: String, email: String, password: String, captchaToken: String) async -> BillingLoginResponse? {
         let url = baseURL.appendingPathComponent("auth/signup")
         
@@ -75,8 +75,8 @@ final class BillingLoginVM {
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
             
-            guard let http = response as? HTTPURLResponse, (200...299).contains(http.statusCode) else {
-                return nil
+            if let http = response as? HTTPURLResponse {
+                print("Login http code:", http.statusCode)
             }
             
             let decoder = JSONDecoder()
@@ -84,16 +84,18 @@ final class BillingLoginVM {
             
             return try decoder.decode(BillingLoginResponse.self, from: data)
         } catch {
+            SystemAlert.error(error.localizedDescription)
             return nil
         }
     }
-
+    
     func verifyTwoFA(code: String, token: String) async -> BillingLoginResponse? {
         let url = baseURL.appendingPathComponent("auth/two-fa")
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
         request.httpBody = try? JSONSerialization.data(withJSONObject: [
             "code": code,
             "token": token

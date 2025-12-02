@@ -5,6 +5,8 @@ struct BillingDashboard: View {
     @State private var vm = BillingDashboardVM()
     
     @State private var sheetSettings = false
+    @State private var refreshTimerTask: Task<Void, Never>?
+    @Environment(\.scenePhase) private var scenePhase
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -20,7 +22,7 @@ struct BillingDashboard: View {
                             HStack(spacing: 12) {
                                 Image(systemName: "server.rack")
                                     .foregroundStyle(.indigo)
-                                    .frame(width: 32, height: 32)
+                                    .frame(32)
                                     .background(.indigo.opacity(0.12), in: .rect(cornerRadius: 8))
                                 
                                 VStack(alignment: .leading, spacing: 4) {
@@ -85,6 +87,17 @@ struct BillingDashboard: View {
                 await vm.fetchUserInfo()
             }
         }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { _ in
+            stopAuthRefreshTimer()
+        }
+        .onAppear(perform: startAuthRefreshTimer)
+        .onChange(of: scenePhase) { _, newPhase in
+            if newPhase == .active {
+                startAuthRefreshTimer()
+            } else {
+                stopAuthRefreshTimer()
+            }
+        }
         .sheet($sheetSettings) {
             NavigationStack {
                 BillingSettings($vm.user)
@@ -106,6 +119,48 @@ struct BillingDashboard: View {
         }
         .animation(.default, value: vm.user)
         .environment(vm)
+    }
+    
+    private func startAuthRefreshTimer() {
+        guard refreshTimerTask == nil else { return }
+        
+        refreshTimerTask = Task {
+            while !Task.isCancelled {
+                await refreshAuthTokenIfNeeded()
+                
+                do {
+                    try await Task.sleep(for: .seconds(60))
+                } catch {
+                    break
+                }
+            }
+        }
+    }
+    
+    private func stopAuthRefreshTimer() {
+        refreshTimerTask?.cancel()
+        refreshTimerTask = nil
+    }
+    
+    private func refreshAuthTokenIfNeeded() async {
+        let store = ValueStore()
+        
+        guard let lastRefresh = store.lastBillingTokenRefresh else {
+            await vm.refreshAuthToken {
+                print("Refreshed auth token")
+            }
+            
+            return
+        }
+        
+        let expiresInSeconds = TimeInterval(store.testExpiresIn) / 1000
+        let expiryDate = lastRefresh.addingTimeInterval(expiresInSeconds)
+        
+        guard Date() >= expiryDate else { return }
+        
+        await vm.refreshAuthToken {
+            print("Refreshed auth token")
+        }
     }
 }
 
