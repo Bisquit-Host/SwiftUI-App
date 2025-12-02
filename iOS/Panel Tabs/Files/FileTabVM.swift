@@ -148,7 +148,7 @@ final class FileTabVM: ObservableObject {
             try await fileUploader.uploadFile(uploadURL, name: name, mimeType: mimeType, fileURL: fileURL)
             await fetchFiles(root)
         } catch {
-            print("Upload failed:", error)
+            SystemAlert.error(error)
         }
         
         uploadingCount = max(0, uploadingCount - 1)

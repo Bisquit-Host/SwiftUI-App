@@ -208,6 +208,21 @@ struct BillingAccountSection: View {
                 return
             }
             
+            let maxBytes = 5 * 1024 * 1024
+            
+            if data.count > maxBytes {
+                let formatter = ByteCountFormatter()
+                formatter.allowedUnits = [.useMB]
+                formatter.countStyle = .file
+                
+                let sizeString = formatter.string(fromByteCount: Int64(data.count))
+                let limitString = formatter.string(fromByteCount: Int64(maxBytes))
+                
+                SystemAlert.error("Avatar too large", subtitle: "Max \(limitString). Selected file is \(sizeString).")
+                avatarPickerItem = nil
+                return
+            }
+            
             let ext = item.supportedContentTypes.first?.preferredFilenameExtension ?? "jpg"
             let mime = item.supportedContentTypes.first?.preferredMIMEType
             let filename = "avatar.\(ext)"
