@@ -14,12 +14,13 @@ struct BillingMyServicesView: View {
             }
             
             section("Game servers", services: gameVM.services.map { .game($0) }, isLoading: gameVM.isLoading, error: gameVM.lastError) { id in
-                // Placeholder detail; re-use same row to show info
-                Text("Game service #\(id)")
+                BillingGameServiceDetailView(serviceId: id)
+                    .environment(dashboardVM)
             }
             
             section("Bot hosting", services: botVM.services.map { .bot($0) }, isLoading: botVM.isLoading, error: botVM.lastError) { id in
-                Text("Bot service #\(id)")
+                BillingBotServiceDetailView(serviceId: id)
+                    .environment(dashboardVM)
             }
         }
         .listStyle(.insetGrouped)

@@ -133,7 +133,9 @@ final class BillingHostingPlansVM {
         switch category {
         case .cloud:
             guard let data = await request(path: "/cloud/os") else { break }
+            
             let decoder = JSONDecoder()
+            
             do {
                 result.osCategories = try decoder.decode([BillingCloudOsCategory].self, from: data)
             } catch {
@@ -143,7 +145,9 @@ final class BillingHostingPlansVM {
             
         case .game:
             guard let data = await request(path: "/game/packages/\(planId)/nests") else { break }
+            
             let decoder = JSONDecoder()
+            
             do {
                 result.nests = try decoder.decode([BillingHostingNest].self, from: data)
             } catch {
@@ -153,7 +157,9 @@ final class BillingHostingPlansVM {
             
         case .bot:
             guard let data = await request(path: "/bot/packages/\(planId)/nests") else { break }
+            
             let decoder = JSONDecoder()
+            
             do {
                 result.nests = try decoder.decode([BillingHostingNest].self, from: data)
             } catch {
@@ -167,11 +173,14 @@ final class BillingHostingPlansVM {
     
     func order(plan: BillingHostingPlan, category: BillingHostingCategory, name: String, months: Int, osId: Int?, nestId: Int?, eggId: Int?) async -> BillingHostingOrderResponse? {
         guard !isOrdering else { return nil }
+        
         isOrdering = true
         defer { isOrdering = false }
+        
         lastError = nil
         
         let trimmed = name.trimmingCharacters(in: .whitespacesAndNewlines)
+        
         guard !trimmed.isEmpty else {
             lastError = "Enter a name"
             return nil
@@ -203,6 +212,7 @@ final class BillingHostingPlansVM {
                 lastError = "Choose template"
                 return nil
             }
+            
             path = "/game/order"
             body["nest"] = nestId
             body["egg"] = eggId
@@ -212,6 +222,7 @@ final class BillingHostingPlansVM {
                 lastError = "Choose template"
                 return nil
             }
+            
             path = "/bot/order"
             body["nest"] = nestId
             body["egg"] = eggId

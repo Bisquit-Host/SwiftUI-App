@@ -82,32 +82,32 @@ final class BillingSettingsVM {
             print(error.localizedDescription)
         }
     }
-
+    
     func changeLogin(onSuccess: @escaping () async -> Void) async {
         let store = ValueStore()
         let path = "https://test-api.bisquit.host/user/settings/login"
-
+        
         guard let url = URL(string: path) else {
             print("Invalid URL")
             return
         }
-
+        
         var request = URLRequest(url: url)
         request.httpMethod = "PATCH"
         request.setValue("Bearer \(store.testAccessToken)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try? JSONEncoder().encode(["login": newLogin])
-
+        
         do {
             let (_, response) = try await URLSession.shared.data(for: request)
-
+            
             if let code = (response as? HTTPURLResponse)?.statusCode {
                 switch code {
                 case 200:
                     newLogin = ""
                     print("Successfully changed login")
                     await onSuccess()
-
+                    
                 default:
                     print(code)
                 }
@@ -116,56 +116,56 @@ final class BillingSettingsVM {
             print(error.localizedDescription)
         }
     }
-
+    
     func changePassword(hasExistingPassword: Bool, onSuccess: @escaping () async -> Void) async {
         let trimmedNewPassword = newPassword.trimmingCharacters(in: .whitespacesAndNewlines)
         let trimmedCurrentPassword = currentPassword.trimmingCharacters(in: .whitespacesAndNewlines)
         let trimmedConfirmation = confirmPassword.trimmingCharacters(in: .whitespacesAndNewlines)
-
+        
         if hasExistingPassword && trimmedCurrentPassword.isEmpty {
             SystemAlert.error("Enter current password", subtitle: nil)
             return
         }
-
+        
         if trimmedNewPassword.isEmpty {
             SystemAlert.error("Enter new password", subtitle: nil)
             return
         }
-
+        
         if trimmedNewPassword.count < 8 {
             SystemAlert.error("Password too short", subtitle: "Use at least 8 characters.")
             return
         }
-
+        
         if trimmedNewPassword.count > 70 {
             SystemAlert.error("Password too long", subtitle: "70 characters max.")
             return
         }
-
+        
         if trimmedNewPassword != trimmedConfirmation {
             SystemAlert.error("Passwords do not match", subtitle: nil)
             return
         }
-
+        
         guard let url = URL(string: "https://test-api.bisquit.host/user/settings/password") else {
             SystemAlert.error("Invalid URL", subtitle: nil)
             return
         }
-
+        
         let token = ValueStore().testAccessToken
         if token.isEmpty {
             SystemAlert.error("Missing session", subtitle: "Sign in again.")
             return
         }
-
+        
         isUpdatingPassword = true
         defer { isUpdatingPassword = false }
-
+        
         var request = URLRequest(url: url)
         request.httpMethod = hasExistingPassword ? "PATCH" : "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-
+        
         if hasExistingPassword {
             request.httpBody = try? JSONEncoder().encode([
                 "oldPassword": trimmedCurrentPassword,
@@ -176,21 +176,21 @@ final class BillingSettingsVM {
                 "password": trimmedNewPassword
             ])
         }
-
+        
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
-
+            
             guard let http = response as? HTTPURLResponse else {
                 SystemAlert.error("No response", subtitle: nil)
                 return
             }
-
+            
             switch http.statusCode {
             case 200, 201, 204:
                 resetPasswordFields()
                 await onSuccess()
                 SystemAlert.copied("Password updated")
-
+                
             default:
                 if let raw = String(data: data, encoding: .utf8), !raw.isEmpty {
                     SystemAlert.error("Failed to update", subtitle: raw)
@@ -202,48 +202,51 @@ final class BillingSettingsVM {
             SystemAlert.error("Error", subtitle: error.localizedDescription)
         }
     }
-
+    
     func resetPasswordFields() {
         currentPassword = ""
         newPassword = ""
         confirmPassword = ""
     }
-
+    
     func updateAvatar(with data: Data, filename: String, mimeType: String?) async -> String? {
         avatarError = nil
-
+        
         guard let url = URL(string: "https://test-api.bisquit.host/user/settings/avatar") else {
             avatarError = "Invalid URL"
             return nil
         }
-
+        
         let token = ValueStore().testAccessToken
+        
         if token.isEmpty {
             avatarError = "Missing session"
             return nil
         }
-
+        
         let boundary = "Boundary-\(UUID().uuidString)"
         var request = URLRequest(url: url)
         request.httpMethod = "PATCH"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-
+        
         let body = makeMultipartBody(
             data: data,
             filename: filename,
             mimeType: mimeType ?? "image/jpeg",
             boundary: boundary
         )
-
+        
         do {
             let (responseData, response) = try await URLSession.shared.upload(for: request, from: body)
-
+            
             guard let http = response as? HTTPURLResponse else {
                 avatarError = "No response"
                 return nil
             }
-
+            
+            print("Status code for", #function, http.statusCode)
+            
             switch http.statusCode {
             case 200:
                 if let result = try? JSONDecoder().decode(AvatarUpdateResponse.self, from: responseData) {
@@ -251,7 +254,7 @@ final class BillingSettingsVM {
                 } else {
                     avatarError = "Bad response"
                 }
-
+                
             default:
                 if let raw = String(data: responseData, encoding: .utf8), !raw.isEmpty {
                     avatarError = raw
@@ -262,21 +265,21 @@ final class BillingSettingsVM {
         } catch {
             avatarError = error.localizedDescription
         }
-
+        
         return nil
     }
-
+    
     private func makeMultipartBody(data: Data, filename: String, mimeType: String, boundary: String) -> Data {
         var body = Data()
         let disposition = "Content-Disposition: form-data; name=\"avatar\"; filename=\"\(filename)\"\r\n"
-
+        
         body.append("--\(boundary)\r\n")
         body.append(disposition)
         body.append("Content-Type: \(mimeType)\r\n\r\n")
         body.append(data)
         body.append("\r\n")
         body.append("--\(boundary)--\r\n")
-
+        
         return body
     }
 }
