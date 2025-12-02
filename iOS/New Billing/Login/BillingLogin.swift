@@ -5,6 +5,8 @@ struct BillingLogin: View {
     @State private var vm = BillingLoginVM()
     @EnvironmentObject private var store: ValueStore
     
+    @State private var isSignUp = false
+    @State private var name = ""
     @State private var sheetHcaptcha = false
     @State private var captchaToken = ""
     @State private var pendingTwoFAToken: String?
@@ -12,11 +14,32 @@ struct BillingLogin: View {
     @State private var sheetTwoFA = false
     
     private var captchaButtonDisabled: Bool {
-        store.login.isEmpty || store.password.isEmpty
+        let loginEmpty = store.login.trimmingCharacters(in: .whitespaces).isEmpty
+        let passwordEmpty = store.password.trimmingCharacters(in: .whitespaces).isEmpty
+        let nameEmpty = isSignUp && name.trimmingCharacters(in: .whitespaces).isEmpty
+        
+        return loginEmpty || passwordEmpty || nameEmpty || vm.isSubmitting
+    }
+    
+    private var primaryButtonTitle: String {
+        isSignUp ? "Create account" : "Continue"
     }
     
     var body: some View {
         List {
+            Section {
+                Picker("Mode", selection: $isSignUp) {
+                    Text("Sign in").tag(false)
+                    Text("Sign up").tag(true)
+                }
+                .pickerStyle(.segmented)
+            }
+            
+            if isSignUp {
+                TextField("Name", text: $name)
+                    .textContentType(.name)
+            }
+            
             TextField("Login", text: $store.login)
                 .autocorrectionDisabled()
                 .keyboardType(.emailAddress)
@@ -27,24 +50,35 @@ struct BillingLogin: View {
                 .textContentType(.password)
             
             Section {
-                Button("Continue") {
+                Button {
                     sheetHcaptcha = true
+                } label: {
+                    if vm.isSubmitting {
+                        HStack {
+                            ProgressView()
+                            Text("Please wait...")
+                        }
+                    } else {
+                        Text(primaryButtonTitle)
+                    }
                 }
                 .disabled(captchaButtonDisabled)
                 
-                Button {
-                    passkeyLogin()
-                } label: {
-                    if vm.isPasskeyLoading {
-                        HStack {
-                            ProgressView()
-                            Text("Signing in with passkey...")
+                if !isSignUp {
+                    Button {
+                        passkeyLogin()
+                    } label: {
+                        if vm.isPasskeyLoading {
+                            HStack {
+                                ProgressView()
+                                Text("Signing in with passkey...")
+                            }
+                        } else {
+                            Text("Sign in with passkey")
                         }
-                    } else {
-                        Text("Sign in with passkey")
                     }
+                    .disabled(vm.isPasskeyLoading)
                 }
-                .disabled(vm.isPasskeyLoading)
             }
         }
         .sheet($sheetHcaptcha) {
@@ -59,6 +93,7 @@ struct BillingLogin: View {
             }
         }
         .onChange(of: captchaToken) { _, newValue in
+            guard !newValue.isEmpty else { return }
             auth()
         }
         .alert("Passkey error", isPresented: Binding(get: {
@@ -79,10 +114,25 @@ struct BillingLogin: View {
     }
     
     private func auth() {
+        sheetHcaptcha = false
+        
         Task {
-            guard let response = await vm.login(store.login, store.password, captchaToken) else {
-                return
+            let response: BillingLoginResponse?
+            
+            if isSignUp {
+                response = await vm.signup(
+                    name: name.trimmingCharacters(in: .whitespaces),
+                    email: store.login,
+                    password: store.password,
+                    captchaToken: captchaToken
+                )
+            } else {
+                response = await vm.login(store.login, store.password, captchaToken)
             }
+            
+            captchaToken = ""
+            
+            guard let response else { return }
             
             handleAuthResponse(response)
         }
@@ -122,6 +172,9 @@ struct BillingLogin: View {
         
         sheetTwoFA = false
         pendingTwoFAToken = nil
+        if isSignUp {
+            name = ""
+        }
         
         store.testExpiresIn = response.expiresIn
         store.testRefreshToken = response.refreshToken

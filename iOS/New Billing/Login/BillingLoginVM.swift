@@ -7,6 +7,7 @@ final class BillingLoginVM {
     var passkeyError: String?
     var isVerifyingTwoFA = false
     var twoFAError: String?
+    var isSubmitting = false
     
     private let passkeyAuth = PasskeyAuthorizationController()
     private let baseURL = URL(string: "https://test-api.bisquit.host")!
@@ -31,6 +32,9 @@ final class BillingLoginVM {
         req.setValue("application/json", forHTTPHeaderField: "Content-Type")
         req.httpBody = try? JSONSerialization.data(withJSONObject: body)
         
+        isSubmitting = true
+        defer { isSubmitting = false }
+        
         do {
             let (data, _) = try await URLSession.shared.data(for: req)
             
@@ -46,6 +50,40 @@ final class BillingLoginVM {
             return try decoder.decode(BillingLoginResponse.self, from: data)
         } catch {
             print(error.localizedDescription)
+            return nil
+        }
+    }
+
+    func signup(name: String, email: String, password: String, captchaToken: String) async -> BillingLoginResponse? {
+        let url = baseURL.appendingPathComponent("auth/signup")
+        
+        let body: [String: Any] = [
+            "email": email.lowercased(),
+            "password": password,
+            "name": name,
+            "captchaResponse": captchaToken
+        ]
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try? JSONSerialization.data(withJSONObject: body)
+        
+        isSubmitting = true
+        defer { isSubmitting = false }
+        
+        do {
+            let (data, response) = try await URLSession.shared.data(for: request)
+            
+            guard let http = response as? HTTPURLResponse, (200...299).contains(http.statusCode) else {
+                return nil
+            }
+            
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            
+            return try decoder.decode(BillingLoginResponse.self, from: data)
+        } catch {
             return nil
         }
     }
