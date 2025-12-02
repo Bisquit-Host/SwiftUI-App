@@ -5,6 +5,8 @@ import Foundation
 final class BillingLoginVM {
     var isPasskeyLoading = false
     var passkeyError: String?
+    var isVerifyingTwoFA = false
+    var twoFAError: String?
     
     private let passkeyAuth = PasskeyAuthorizationController()
     private let baseURL = URL(string: "https://test-api.bisquit.host")!
@@ -44,6 +46,41 @@ final class BillingLoginVM {
             return try decoder.decode(BillingLoginResponse.self, from: data)
         } catch {
             print(error.localizedDescription)
+            return nil
+        }
+    }
+
+    func verifyTwoFA(code: String, token: String) async -> BillingLoginResponse? {
+        let url = baseURL.appendingPathComponent("auth/two-fa")
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try? JSONSerialization.data(withJSONObject: [
+            "code": code,
+            "token": token
+        ])
+        
+        isVerifyingTwoFA = true
+        twoFAError = nil
+        
+        defer { isVerifyingTwoFA = false }
+        
+        do {
+            let (data, response) = try await URLSession.shared.data(for: request)
+            
+            guard let http = response as? HTTPURLResponse, http.statusCode == 200 else {
+                let message = String(data: data, encoding: .utf8) ?? "Invalid response"
+                twoFAError = message
+                return nil
+            }
+            
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            
+            return try decoder.decode(BillingLoginResponse.self, from: data)
+        } catch {
+            twoFAError = error.localizedDescription
             return nil
         }
     }

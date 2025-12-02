@@ -9,4 +9,10 @@ public struct BillingLoginResponse: Decodable {
     
     /// milliseconds
     let expiresIn: Int
+    
+    /// Indicates that a two-factor code is required to finish sign-in
+    let twoFa: Bool?
+    
+    /// Temporary token returned when twoFa is true; pass to /auth/two-fa
+    let token: String?
 }

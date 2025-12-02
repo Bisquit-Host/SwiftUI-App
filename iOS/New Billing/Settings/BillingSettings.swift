@@ -13,6 +13,11 @@ struct BillingSettings: View {
     }
     
     @State private var showPasswordSheet = false
+    @State private var showTwoFASheet = false
+    @State private var confirmDisableTwoFA = false
+    @State private var twoFAVM = BillingTwoFAVM()
+    @State private var isDisablingTwoFA = false
+    @State private var disableError: String?
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -22,7 +27,11 @@ struct BillingSettings: View {
                         BillingAccountSection(user)
                         
                         BillingSectionCard("Security") {
-                            BillingSecurityRow("2FA", icon: "shield.fill", enabled: user.twoFa, enabledText: "Disable", disabledText: "Connect")
+                            BillingSecurityRow("2FA", icon: "shield.fill", enabled: user.twoFa, enabledText: "Disable", disabledText: "Connect") {
+                                confirmDisableTwoFA = true
+                            } onDisabledTap: {
+                                showTwoFASheet = true
+                            }
                             
                             BillingSecurityRow("Password", icon: "key.fill", enabled: user.hasPassword, enabledText: "Change", disabledText: "Set") {
                                 showPasswordSheet = true
@@ -63,6 +72,14 @@ struct BillingSettings: View {
                 }
             }
         }
+        .sheet($showTwoFASheet) {
+            NavigationStack {
+                BillingTwoFASetupSheet {
+                    await dashboardVM.fetchUserInfo()
+                }
+                .environment(twoFAVM)
+            }
+        }
         .environment(vm)
         .toolbar {
             ToolbarItem(placement: .bottomBar) {
@@ -70,6 +87,19 @@ struct BillingSettings: View {
             }
             
             ToolbarSpacer(.flexible, placement: .bottomBar)
+        }
+        .alert("Disable 2FA?", isPresented: $confirmDisableTwoFA) {
+            Button("Cancel", role: .cancel) {}
+            Button("Disable", role: .destructive) {
+                disableTwoFA()
+            }
+            .disabled(isDisablingTwoFA)
+        } message: {
+            if let disableError {
+                Text(disableError)
+            } else {
+                Text("You will remove extra protection for your account.")
+            }
         }
     }
     
@@ -81,6 +111,25 @@ struct BillingSettings: View {
             
             withAnimation {
                 store.testAccessToken = ""
+            }
+        }
+    }
+    
+    private func disableTwoFA() {
+        guard !isDisablingTwoFA else { return }
+        
+        isDisablingTwoFA = true
+        disableError = nil
+        
+        Task {
+            let success = await twoFAVM.disable()
+            isDisablingTwoFA = false
+            
+            if success {
+                await dashboardVM.fetchUserInfo()
+            } else {
+                disableError = twoFAVM.error
+                confirmDisableTwoFA = true
             }
         }
     }

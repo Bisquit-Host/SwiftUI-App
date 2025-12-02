@@ -7,6 +7,9 @@ struct BillingLogin: View {
     
     @State private var sheetHcaptcha = false
     @State private var captchaToken = ""
+    @State private var pendingTwoFAToken: String?
+    @State private var twoFACode = ""
+    @State private var sheetTwoFA = false
     
     private var captchaButtonDisabled: Bool {
         store.login.isEmpty || store.password.isEmpty
@@ -47,6 +50,14 @@ struct BillingLogin: View {
         .sheet($sheetHcaptcha) {
             HCaptchaSheet($captchaToken)
         }
+        .sheet($sheetTwoFA) {
+            NavigationStack {
+                twoFASheet
+                    .padding()
+                    .navigationTitle("Enter 2FA code")
+                    .navigationBarTitleDisplayMode(.inline)
+            }
+        }
         .onChange(of: captchaToken) { _, newValue in
             auth()
         }
@@ -73,14 +84,7 @@ struct BillingLogin: View {
                 return
             }
             
-            store.testExpiresIn = response.expiresIn
-            store.testRefreshToken = response.refreshToken
-            
-            try await Task.sleep(for: .seconds(0.5))
-            
-            withAnimation {
-                store.testAccessToken = response.accessToken
-            }
+            handleAuthResponse(response)
         }
     }
     
@@ -90,9 +94,82 @@ struct BillingLogin: View {
                 return
             }
             
-            store.testExpiresIn = response.expiresIn
-            store.testRefreshToken = response.refreshToken
-            store.testAccessToken = response.accessToken
+            handleAuthResponse(response)
+        }
+    }
+
+    private func verifyTwoFA() {
+        guard let token = pendingTwoFAToken else {
+            return
+        }
+        
+        Task {
+            guard let response = await vm.verifyTwoFA(code: twoFACode, token: token) else {
+                return
+            }
+            
+            handleAuthResponse(response)
+        }
+    }
+    
+    private func handleAuthResponse(_ response: BillingLoginResponse) {
+        if response.twoFa == true {
+            pendingTwoFAToken = response.token
+            twoFACode = ""
+            sheetTwoFA = true
+            return
+        }
+        
+        sheetTwoFA = false
+        pendingTwoFAToken = nil
+        
+        store.testExpiresIn = response.expiresIn
+        store.testRefreshToken = response.refreshToken
+        
+        Task {
+            try await Task.sleep(for: .seconds(0.5))
+            
+            await MainActor.run {
+                withAnimation {
+                    store.testAccessToken = response.accessToken
+                }
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private var twoFASheet: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            Text("Enter the 6-digit code from your authenticator app to finish signing in.")
+                .secondary()
+                .footnote()
+            
+            TextField("123456", text: $twoFACode)
+                .keyboardType(.numberPad)
+                .textContentType(.oneTimeCode)
+                .onSubmit {
+                    verifyTwoFA()
+                }
+            
+            if let twoFAError = vm.twoFAError {
+                Text(twoFAError)
+                    .foregroundStyle(.red)
+                    .footnote()
+            }
+            
+            Button {
+                verifyTwoFA()
+            } label: {
+                if vm.isVerifyingTwoFA {
+                    ProgressView()
+                        .frame(maxWidth: .infinity)
+                } else {
+                    Text("Verify and continue")
+                        .frame(maxWidth: .infinity)
+                }
+            }
+            .buttonStyle(.borderedProminent)
+            .disabled(twoFACode.trimmingCharacters(in: .whitespaces).count < 6 || vm.isVerifyingTwoFA)
         }
     }
 }
