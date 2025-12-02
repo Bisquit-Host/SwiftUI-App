@@ -10,6 +10,7 @@ struct BillingCloudServiceDetailView: View {
     @State private var pendingName = ""
     @State private var rootPassword = ""
     @State private var selectedOsId: Int?
+    @State private var showVnc = false
     
     var body: some View {
         ScrollView {
@@ -66,6 +67,7 @@ struct BillingCloudServiceDetailView: View {
                 selectedOsId = flatOsOptions().first?.0
             }
         }
+        .safariCover($showVnc, url: "https://test-my.bisquit.host/cloud/\(serviceId)?tab=console")
     }
     
     // MARK: - Sections
@@ -98,6 +100,14 @@ struct BillingCloudServiceDetailView: View {
                     Text("• \(system)")
                         .footnote()
                         .secondary()
+                }
+
+                Button {
+                    showVnc = true
+                } label: {
+                    Label("Console", systemImage: "display")
+                        .footnote()
+                        .foregroundStyle(.blue)
                 }
             }
             
