@@ -42,7 +42,9 @@ final class BillingHostingPlansVM {
         let filtered: [BillingHostingPlan]
         
         if let locationId {
-            filtered = plans.filter { $0.locationId == locationId }
+            filtered = plans.filter {
+                $0.locationId == locationId
+            }
         } else {
             filtered = plans
         }
