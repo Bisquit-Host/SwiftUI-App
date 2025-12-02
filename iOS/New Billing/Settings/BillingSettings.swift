@@ -90,6 +90,7 @@ struct BillingSettings: View {
         }
         .alert("Disable 2FA?", isPresented: $confirmDisableTwoFA) {
             Button("Cancel", role: .cancel) {}
+            
             Button("Disable", role: .destructive) {
                 disableTwoFA()
             }

@@ -73,7 +73,9 @@ struct BillingAccountSection: View {
                 .limitInputLength($vm.newName, length: 100)
             
             Button("Change", role: .destructive) {
-                change()
+                if vm.newName != user.name {
+                    change()
+                }
             }
         }
         .onChange(of: avatarPickerItem) { _, newValue in
