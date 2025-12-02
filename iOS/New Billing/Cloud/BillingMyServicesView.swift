@@ -96,7 +96,7 @@ private struct BillingServiceRow: View {
                 
                 Label(state.title, systemImage: "circle.fill")
                     .labelStyle(.titleAndIcon)
-                    .font(.caption.weight(.semibold))
+                    .caption(.semibold)
                     .foregroundStyle(state.color)
             }
             

@@ -87,7 +87,7 @@ final class SupportTicketsVM {
         }
         
         if attachments.count > 5 {
-            SystemAlert.error("Max 5 files", subtitle: "Please remove extra attachments.")
+            SystemAlert.error("Max 5 files", subtitle: "Please remove extra attachments")
             return nil
         }
         
@@ -101,6 +101,7 @@ final class SupportTicketsVM {
         request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         
         var body = Data()
+        
         func appendField(_ name: String, value: String) {
             body.append(Data("--\(boundary)\r\n".utf8))
             body.append(Data("Content-Disposition: form-data; name=\"\(name)\"\r\n\r\n".utf8))

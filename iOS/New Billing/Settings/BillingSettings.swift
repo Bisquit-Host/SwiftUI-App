@@ -98,7 +98,7 @@ struct BillingSettings: View {
             if let disableError {
                 Text(disableError)
             } else {
-                Text("You will remove extra protection for your account.")
+                Text("You will remove extra protection for your account")
             }
         }
     }

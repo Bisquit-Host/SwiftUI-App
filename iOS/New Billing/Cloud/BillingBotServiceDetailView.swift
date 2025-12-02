@@ -200,7 +200,7 @@ struct BillingBotServiceDetailView: View {
     private func upgradeSection(_ service: BillingBotServiceDetails) -> some View {
         BillingSectionCard("Upgrade") {
             if vm.changeablePackages.isEmpty {
-                Text("No higher packages available right now.")
+                Text("No higher packages available right now")
                     .footnote()
                     .secondary()
             } else {
@@ -213,9 +213,11 @@ struct BillingBotServiceDetailView: View {
                                 VStack(alignment: .leading, spacing: 4) {
                                     Text(pkg.name)
                                         .subheadline(.semibold)
+                                    
                                     Text("\(pkg.cpu.clean) vCPU • \(pkg.memory.clean) GB • \(pkg.disk.clean) GB")
                                         .footnote()
                                         .secondary()
+                                    
                                     Text("Pay now \(formatCurrency(max(pkg.price - pkg.toMinus, 0))) / \(formatCurrency(pkg.price))/mo")
                                         .footnote()
                                         .foregroundStyle(.primary)

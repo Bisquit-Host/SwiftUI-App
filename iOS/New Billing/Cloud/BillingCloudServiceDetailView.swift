@@ -214,7 +214,7 @@ struct BillingCloudServiceDetailView: View {
     private func upgradeSection(_ service: BillingCloudServiceDetails) -> some View {
         BillingSectionCard("Upgrade") {
             if vm.changeablePackages.isEmpty {
-                Text("No higher packages available right now.")
+                Text("No higher packages available right now")
                     .footnote()
                     .secondary()
             } else {

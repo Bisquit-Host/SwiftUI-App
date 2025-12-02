@@ -35,7 +35,7 @@ struct BillingDashboard: View {
                                 Spacer()
                                 
                                 Image(systemName: "chevron.right")
-                                    .foregroundStyle(.secondary)
+                                    .secondary()
                             }
                             .padding(.vertical, 4)
                         }

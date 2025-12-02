@@ -138,18 +138,18 @@ struct SheetTopup: View {
         let normalizedAmount = amount.replacingOccurrences(of: ",", with: ".")
         
         guard let value = Double(normalizedAmount) else {
-            SystemAlert.error("Invalid amount", subtitle: "Please enter a valid number.")
+            SystemAlert.error("Invalid amount", subtitle: "Please enter a valid number")
             return
         }
         
         guard value >= minimumTopupAmount else {
             let minString = String(format: "%.0f", minimumTopupAmount)
-            SystemAlert.error("Amount too small", subtitle: "Minimum top up is \(minString) \(user.currency.uppercased()).")
+            SystemAlert.error("Amount too small", subtitle: "Minimum top up is \(minString) \(user.currency.uppercased())")
             return
         }
         
         guard let provider = selectedProvider else {
-            SystemAlert.error("Select a provider", subtitle: "Choose a payment method to continue.")
+            SystemAlert.error("Select a provider", subtitle: "Choose a payment method to continue")
             return
         }
         

@@ -193,7 +193,7 @@ struct BillingLogin: View {
     @ViewBuilder
     private var twoFASheet: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Enter the 6-digit code from your authenticator app to finish signing in.")
+            Text("Enter the 6-digit code from your authenticator app to finish signing in")
                 .secondary()
                 .footnote()
             

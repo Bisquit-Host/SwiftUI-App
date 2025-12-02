@@ -77,7 +77,7 @@ final class SheetTopupVM {
     
     func createTopup(accessToken: String, amount: Double, method: String?, currency: String) async -> URL? {
         guard !accessToken.isEmpty else {
-            SystemAlert.error("Missing token", subtitle: "Please sign in again.")
+            SystemAlert.error("Missing token", subtitle: "Please sign in again")
             return nil
         }
         

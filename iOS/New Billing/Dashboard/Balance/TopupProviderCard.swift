@@ -48,7 +48,7 @@ struct TopupProviderCard: View {
             
         case .system(let name):
             Image(systemName: name)
-                .font(.title3.weight(.semibold))
+                .title3(.semibold)
                 .frame(32)
                 .padding(6)
                 .background(.primary.opacity(0.06), in: .rect(cornerRadius: 8))

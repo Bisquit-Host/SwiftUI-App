@@ -14,7 +14,7 @@ struct DisableIntroCard: View {
                     Text("Disable 2FA")
                         .title2(.semibold)
                     
-                    Text("Removing two-factor reduces account protection. Confirm with your password to proceed.")
+                    Text("Removing two-factor reduces account protection. Confirm with your password to proceed")
                         .secondary()
                         .fixedSize(horizontal: false, vertical: true)
                 }

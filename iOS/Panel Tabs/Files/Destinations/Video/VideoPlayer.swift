@@ -26,7 +26,7 @@ struct VideoPlayerView: View {
         do {
             try audioSession.setCategory(value)
         } catch {
-            print("Setting category to AVAudioSessionCategoryPlayback failed.")
+            print("Setting category to AVAudioSessionCategoryPlayback failed")
         }
     }
 }

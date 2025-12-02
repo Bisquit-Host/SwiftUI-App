@@ -133,12 +133,12 @@ final class BillingSettingsVM {
         }
         
         if trimmedNewPassword.count < 8 {
-            SystemAlert.error("Password too short", subtitle: "Use at least 8 characters.")
+            SystemAlert.error("Password too short", subtitle: "Use at least 8 characters")
             return
         }
         
         if trimmedNewPassword.count > 70 {
-            SystemAlert.error("Password too long", subtitle: "70 characters max.")
+            SystemAlert.error("Password too long", subtitle: "70 characters max")
             return
         }
         
@@ -154,7 +154,7 @@ final class BillingSettingsVM {
         
         let token = ValueStore().testAccessToken
         if token.isEmpty {
-            SystemAlert.error("Missing session", subtitle: "Sign in again.")
+            SystemAlert.error("Missing session", subtitle: "Sign in again")
             return
         }
         

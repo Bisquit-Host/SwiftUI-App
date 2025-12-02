@@ -27,7 +27,7 @@ struct BillingPasskeysView: View {
             
             Section("Your passkeys") {
                 if vm.passkeys.isEmpty && !vm.isLoading {
-                    ContentUnavailableView("No passkeys yet", systemImage: "key.fill", description: Text("Register a passkey to sign in without a password."))
+                    ContentUnavailableView("No passkeys yet", systemImage: "key.fill", description: Text("Register a passkey to sign in without a password"))
                         .listRowBackground(Color.clear)
                 }
                 

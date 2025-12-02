@@ -39,9 +39,7 @@ struct BillingAccountSection: View {
                 alertLogin = true
             }
             
-            BillingAccountRow("Language", icon: "character.cursor.ibeam", tint: .mint, value: user.lang.uppercased()) {
-                
-            }
+            BillingAccountRow("Language", icon: "character.cursor.ibeam", tint: .mint, value: user.lang.uppercased())
             
             BillingAccountRow("Currency", icon: "dollarsign", tint: .yellow, value: user.currency)
         }
@@ -188,7 +186,7 @@ struct BillingAccountSection: View {
                 placeholderInitial(for: user)
             }
         }
-        .frame(width: size, height: size)
+        .frame(size)
         .clipShape(.circle)
         .overlay {
             Circle()
@@ -204,7 +202,7 @@ struct BillingAccountSection: View {
             .fill(.blue.opacity(0.12))
             .overlay {
                 Text(initial.uppercased())
-                    .font(.title3.weight(.semibold))
+                    .title3(.semibold)
                     .foregroundStyle(.blue)
             }
     }
