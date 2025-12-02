@@ -64,7 +64,6 @@ struct BillingHostingPlanCard: View {
         }
     }
     
-    @ViewBuilder
     private var additional: some View {
         HStack(spacing: 12) {
             if let databases = plan.databases {
@@ -77,16 +76,6 @@ struct BillingHostingPlanCard: View {
             
             if let allocations = plan.allocations {
                 spec("number", "\(allocations) ports")
-            }
-        }
-        
-        HStack(spacing: 8) {
-            if category == .cloud, plan.windowsAllowed == true {
-                tag("Windows available")
-            }
-            
-            if category == .cloud, plan.antiSpoofing == true {
-                tag("Anti-spoofing")
             }
         }
     }
