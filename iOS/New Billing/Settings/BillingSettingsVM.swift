@@ -225,17 +225,15 @@ final class BillingSettingsVM {
         }
         
         let boundary = "Boundary-\(UUID().uuidString)"
+        
         var request = URLRequest(url: url)
         request.httpMethod = "PATCH"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
         
-        let body = makeMultipartBody(
-            data: data,
-            filename: filename,
-            mimeType: mimeType ?? "image/jpeg",
-            boundary: boundary
-        )
+        let body = makeMultipartBody(data: data, filename: filename, mimeType: mimeType ?? "image/jpeg", boundary: boundary)
+        
+        print("Uploading file", filename, "of type", mimeType ?? "Unknown")
         
         do {
             let (responseData, response) = try await URLSession.shared.upload(for: request, from: body)
@@ -284,7 +282,7 @@ final class BillingSettingsVM {
     }
 }
 
-private extension Data {
+fileprivate extension Data {
     mutating func append(_ string: String) {
         if let data = string.data(using: .utf8) {
             append(data)
