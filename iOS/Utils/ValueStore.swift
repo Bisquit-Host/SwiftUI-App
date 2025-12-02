@@ -6,13 +6,17 @@ import Appearance
 #endif
 
 final class ValueStore: ObservableObject {
-    // Billing
+    // MARK: - Billing
     @AppStorage("test_login") var login = ""
     @AppStorage("test_password") var password = ""
     @AppStorage("test_access_token") var testAccessToken = ""
     @AppStorage("test_refresh_token") var testRefreshToken = ""
+    
+    /// milliseconds
     @AppStorage("test_expires_in") var testExpiresIn = 0
+    
     @AppStorage("test_billing") var testBilling = false
+    @AppStorage("test_last_billing_token_refresh") var lastBillingTokenRefresh: Date?
     
 #if os(visionOS)
     //    @AppStorage("show_info") var showInfo = true

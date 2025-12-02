@@ -70,7 +70,7 @@ struct BillingDashboard: View {
         .navigationTitle("Dashboard")
         .navigationBarBackButtonHidden()
         .refreshableTask {
-            await vm.refreshAuth {
+            await vm.refreshAuthToken {
                 print("Refreshed auth token")
             }
             
@@ -78,7 +78,7 @@ struct BillingDashboard: View {
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
             Task {
-                await vm.refreshAuth {
+                await vm.refreshAuthToken {
                     print("Refreshed auth token")
                 }
                 
