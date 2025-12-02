@@ -4,7 +4,7 @@ import Foundation
 final class BillingDashboardVM {
     var user: BillingUser? = nil
     
-    func refreshAuth(onSuccess: @escaping () async -> Void) async {
+    func refreshAuth(onSuccess: @escaping () async -> Void = {}) async {
         let path = "https://test-api.bisquit.host/auth/refresh"
         
         guard let url = URL(string: path) else { return }
@@ -65,9 +65,7 @@ final class BillingDashboardVM {
                 print("User info status code:", status)
                 
                 if status == 401 {
-                    let _ = await refreshAuth {
-                        await self.fetchUserInfo()
-                    }
+                    let _ = await refreshAuth()
                 }
             }
             
