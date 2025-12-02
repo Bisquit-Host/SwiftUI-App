@@ -3,9 +3,7 @@ import SwiftUI
 enum Icon: String, Identifiable, CaseIterable {
     case def, cool, love, streamer, coin
     
-    var id: String {
-        self.rawValue
-    }
+    var id: String { rawValue }
     
     var img: ImageResource {
         switch self {

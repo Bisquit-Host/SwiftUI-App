@@ -8,9 +8,7 @@ enum Tabs: String, CaseIterable, Identifiable, Codable {
          startup = "play.circle",
          subdomain = "globe"
     
-    var id: String {
-        rawValue
-    }
+    var id: String { rawValue }
     
     var title: LocalizedStringKey {
         switch self {

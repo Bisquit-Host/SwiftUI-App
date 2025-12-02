@@ -9,9 +9,7 @@ struct PanelSection: Identifiable, Codable, Equatable {
         self.isChecked = isChecked
     }
     
-    var id: String {
-        name
-    }
+    var id: String { name }
     
     var loc: LocalizedStringKey {
         LocalizedStringKey(name)

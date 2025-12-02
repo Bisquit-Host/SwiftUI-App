@@ -3,9 +3,7 @@ import SwiftUI
 enum PlanType: String, Identifiable, CaseIterable {
     case game, cloud, web, bot
     
-    var id: String {
-        self.rawValue
-    }
+    var id: String { rawValue }
     
     var localized: LocalizedStringKey {
         switch self {

@@ -30,9 +30,7 @@ struct SupportTicketWithLastMessageDTO: Codable, Identifiable, Hashable {
     let ticket: SupportTicketDTO
     let lastMessage: SupportMessageDTO?
     
-    var id: Int {
-        ticket.id
-    }
+    var id: Int { ticket.id }
 }
 
 struct SupportTicketDataDTO: Codable, Hashable {

@@ -1,11 +1,10 @@
 import Foundation
 
 enum BillingHostingCategory: String, CaseIterable, Identifiable {
-    case bot
-    case game
-    case cloud
+    case bot, game, cloud
     
     var id: Self { self }
+    var path: String { rawValue }
     
     var title: String {
         switch self {
@@ -30,8 +29,6 @@ enum BillingHostingCategory: String, CaseIterable, Identifiable {
         case .cloud: "server.rack"
         }
     }
-    
-    var path: String { rawValue }
 }
 
 struct BillingHostingPlanPrice: Decodable, Equatable {
@@ -87,8 +84,9 @@ extension BillingHostingPlan {
     
     var networkDescription: String? {
         guard let network else { return nil }
+        
         if let networkType {
-            return "\(network.clean) \(networkType)"
+            return network.clean + " " + networkType
         }
         
         return "\(network.clean)"

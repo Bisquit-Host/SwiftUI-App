@@ -5,9 +5,7 @@ extension CacheLimit {
         case MB250 = "250 MB",
              GB1 = "1 GB"
         
-        var id: String {
-            self.rawValue
-        }
+        var id: String { rawValue }
         
         var loc: LocalizedStringKey {
             switch self {
