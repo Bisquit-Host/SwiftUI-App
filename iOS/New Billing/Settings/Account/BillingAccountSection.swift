@@ -44,6 +44,8 @@ struct BillingAccountSection: View {
             Button("Change", role: .destructive) {
                 changeEmail()
             }
+        } message: {
+            Text("You will receive a confirmation email to complete the change")
         }
         .alert("Change name", isPresented: $alertRename) {
             TextField("New name", text: $vm.newName)
