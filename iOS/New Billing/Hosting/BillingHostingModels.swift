@@ -114,6 +114,27 @@ struct BillingHostingPlansResponse: Decodable, Equatable {
     let locations: [BillingHostingLocation]?
 }
 
+struct BillingHostingOrderOptions: Equatable {
+    var osCategories: [BillingCloudOsCategory] = []
+    var nests: [BillingHostingNest] = []
+}
+
+struct BillingHostingOrderResponse: Decodable {
+    let serviceId: Int
+    let amount: Double
+}
+
+struct BillingHostingNest: Decodable, Identifiable, Equatable {
+    let id: Int
+    let name: String
+    let eggs: [BillingHostingEgg]
+}
+
+struct BillingHostingEgg: Decodable, Identifiable, Equatable {
+    let id: Int
+    let name: String
+}
+
 extension Double {
     var clean: String {
         let isInt = rounded() == self

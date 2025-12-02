@@ -4,6 +4,7 @@ struct BillingHostingPlanCard: View {
     let plan: BillingHostingPlan
     let priceText: String
     let category: BillingHostingCategory
+    var onPurchase: (() -> Void)?
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -42,6 +43,18 @@ struct BillingHostingPlanCard: View {
             }
             
             additional
+            
+            HStack {
+                Spacer()
+                
+                Button {
+                    onPurchase?()
+                } label: {
+                    Label("Purchase", systemImage: "cart")
+                        .frame(minWidth: 0)
+                }
+                .buttonStyle(.borderedProminent)
+            }
         }
         .padding(16)
         .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
