@@ -1,5 +1,9 @@
 import Foundation
 
+private struct AvatarUpdateResponse: Decodable {
+    let avatar: String
+}
+
 @Observable
 final class BillingSettingsVM {
     var newName = ""
@@ -8,6 +12,7 @@ final class BillingSettingsVM {
     var newPassword = ""
     var confirmPassword = ""
     var isUpdatingPassword = false
+    var avatarError: String?
     
     func changeName(onSuccess: @escaping () async -> Void) async {
         let store = ValueStore()
@@ -167,5 +172,84 @@ final class BillingSettingsVM {
         currentPassword = ""
         newPassword = ""
         confirmPassword = ""
+    }
+
+    func updateAvatar(with data: Data, filename: String, mimeType: String?) async -> String? {
+        avatarError = nil
+
+        guard let url = URL(string: "https://test-api.bisquit.host/user/settings/avatar") else {
+            avatarError = "Invalid URL"
+            return nil
+        }
+
+        let token = ValueStore().testAccessToken
+        if token.isEmpty {
+            avatarError = "Missing session"
+            return nil
+        }
+
+        let boundary = "Boundary-\(UUID().uuidString)"
+        var request = URLRequest(url: url)
+        request.httpMethod = "PATCH"
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+
+        let body = makeMultipartBody(
+            data: data,
+            filename: filename,
+            mimeType: mimeType ?? "image/jpeg",
+            boundary: boundary
+        )
+
+        do {
+            let (responseData, response) = try await URLSession.shared.upload(for: request, from: body)
+
+            guard let http = response as? HTTPURLResponse else {
+                avatarError = "No response"
+                return nil
+            }
+
+            switch http.statusCode {
+            case 200:
+                if let result = try? JSONDecoder().decode(AvatarUpdateResponse.self, from: responseData) {
+                    return result.avatar
+                } else {
+                    avatarError = "Bad response"
+                }
+
+            default:
+                if let raw = String(data: responseData, encoding: .utf8), !raw.isEmpty {
+                    avatarError = raw
+                } else {
+                    avatarError = "Status \(http.statusCode)"
+                }
+            }
+        } catch {
+            avatarError = error.localizedDescription
+        }
+
+        return nil
+    }
+
+    private func makeMultipartBody(data: Data, filename: String, mimeType: String, boundary: String) -> Data {
+        var body = Data()
+        let disposition = "Content-Disposition: form-data; name=\"avatar\"; filename=\"\(filename)\"\r\n"
+
+        body.append("--\(boundary)\r\n")
+        body.append(disposition)
+        body.append("Content-Type: \(mimeType)\r\n\r\n")
+        body.append(data)
+        body.append("\r\n")
+        body.append("--\(boundary)--\r\n")
+
+        return body
+    }
+}
+
+private extension Data {
+    mutating func append(_ string: String) {
+        if let data = string.data(using: .utf8) {
+            append(data)
+        }
     }
 }
