@@ -59,7 +59,6 @@ final class ValueStore: ObservableObject {
     @AppStorage("last_tab_panel") var lastTabPanel: Tabs = .info
 #endif
     @AppStorage("showFullFilePath") var showFullFilePath = false
-    @AppStorage("preferredCurrency") var preferredCurrency = "₽"
     @AppStorage("tabViewBouncesDown") var tabViewBouncesDown = true
     @AppStorage("rawStartupCommand") var rawStartupCommand = false
 #if os(iOS)
@@ -84,17 +83,6 @@ final class ValueStore: ObservableObject {
             withAnimation {
                 self.isApiKeyValid = true
             }
-        }
-    }
-    
-    func switchPreferredCurrency() {
-        let currencySwitchMap = [
-            "₽": "€",
-            "€": "₽",
-        ]
-        
-        if let nextCurrency = currencySwitchMap[preferredCurrency] {
-            preferredCurrency = nextCurrency
         }
     }
 }

@@ -30,8 +30,6 @@ struct OtherSettings: View {
                 }
                 .foregroundStyle(.foreground)
             }
-            
-            CurrencyPicker()
         }
     }
 }
