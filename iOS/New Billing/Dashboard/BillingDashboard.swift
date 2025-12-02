@@ -12,12 +12,24 @@ struct BillingDashboard: View {
                     NavigationLink {
                         SupportTicketsList()
                     } label: {
-                        Label("Support", systemImage: "lifepreserver.fill")
-                            .headline()
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding()
-                            .background(.ultraThinMaterial, in: .rect(cornerRadius: 12))
+                        HStack {
+                            Image(systemName: "lifepreserver")
+                                .largeTitle()
+                                .foregroundStyle(.red)
+                            
+                            VStack(alignment: .leading) {
+                                Text("Support")
+                                
+                                Text("Tickets & wiki")
+                                    .footnote()
+                                    .secondary()
+                            }
+                        }
+                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(.ultraThinMaterial, in: .rect(cornerRadius: 12))
                     }
+                    .foregroundStyle(.foreground)
                 }
                 .padding()
             }

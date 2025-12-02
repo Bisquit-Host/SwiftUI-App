@@ -8,13 +8,17 @@ struct BillingSecurityRow: View {
     private let enabled: Bool
     private let enabledText: String
     private let disabledText: String
+    private let onEnabledTap: (() -> Void)?
+    private let onDisabledTap: (() -> Void)?
     
-    init(_ title: String, icon: String, enabled: Bool, enabledText: String, disabledText: String) {
+    init(_ title: String, icon: String, enabled: Bool, enabledText: String, disabledText: String, onEnabledTap: (() -> Void)? = nil, onDisabledTap: (() -> Void)? = nil) {
         self.title = title
         self.icon = icon
         self.enabled = enabled
         self.enabledText = enabledText
         self.disabledText = disabledText
+        self.onEnabledTap = onEnabledTap
+        self.onDisabledTap = onDisabledTap
     }
     
     var body: some View {
@@ -38,11 +42,11 @@ struct BillingSecurityRow: View {
             Group {
                 if enabled {
                     Button(enabledText) {
-                        
+                        onEnabledTap?()
                     }
                 } else {
                     Button(disabledText) {
-                        
+                        onDisabledTap?()
                     }
                 }
             }

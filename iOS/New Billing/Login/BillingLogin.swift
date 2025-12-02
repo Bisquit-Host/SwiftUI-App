@@ -28,7 +28,7 @@ struct BillingLogin: View {
                     sheetHcaptcha = true
                 }
                 .disabled(captchaButtonDisabled)
-
+                
                 Button {
                     passkeyLogin()
                 } label: {
@@ -83,18 +83,16 @@ struct BillingLogin: View {
             }
         }
     }
-
+    
     private func passkeyLogin() {
         Task {
             guard let response = await vm.loginWithPasskey(login: store.login) else {
                 return
             }
-
-            await MainActor.run {
-                store.testExpiresIn = response.expiresIn
-                store.testRefreshToken = response.refreshToken
-                store.testAccessToken = response.accessToken
-            }
+            
+            store.testExpiresIn = response.expiresIn
+            store.testRefreshToken = response.refreshToken
+            store.testAccessToken = response.accessToken
         }
     }
 }

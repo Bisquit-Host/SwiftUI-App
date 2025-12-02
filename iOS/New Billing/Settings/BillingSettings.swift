@@ -12,6 +12,8 @@ struct BillingSettings: View {
         _user = user
     }
     
+    @State private var showPasswordSheet = false
+    
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(alignment: .leading, spacing: 24) {
@@ -21,7 +23,12 @@ struct BillingSettings: View {
                         
                         BillingSectionCard("Security") {
                             BillingSecurityRow("2FA", icon: "shield.fill", enabled: user.twoFa, enabledText: "Disable", disabledText: "Connect")
-                            BillingSecurityRow("Password", icon: "key.fill", enabled: user.hasPassword, enabledText: "Change", disabledText: "Set")
+                            
+                            BillingSecurityRow("Password", icon: "key.fill", enabled: user.hasPassword, enabledText: "Change", disabledText: "Set") {
+                                showPasswordSheet = true
+                            } onDisabledTap: {
+                                showPasswordSheet = true
+                            }
                             
                             BillingSettingsPasskeys()
                         }
@@ -44,10 +51,19 @@ struct BillingSettings: View {
         }
         .navigationTitle("Settings")
         .navigationBarTitleDisplayMode(.inline)
-        .environment(vm)
         .refreshableTask {
             await dashboardVM.fetchUserInfo()
         }
+        .sheet($showPasswordSheet) {
+            NavigationStack {
+                if let user {
+                    BillingPasswordSheet(hasPassword: user.hasPassword) {
+                        await dashboardVM.fetchUserInfo()
+                    }
+                }
+            }
+        }
+        .environment(vm)
         .toolbar {
             ToolbarItem(placement: .bottomBar) {
                 DismissButton()

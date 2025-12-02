@@ -32,7 +32,7 @@ struct ConsoleView: View {
                 .padding(.bottom, 10)
                 .textSelection(.enabled)
                 .task {
-                    Task { @MainActor in
+                    Task {
                         try await Task.sleep(for: .seconds(1))
                         
                         if let _ = panelVM.searchedMessages.last {
