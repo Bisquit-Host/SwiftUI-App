@@ -33,7 +33,7 @@ struct BillingAccountSection: View {
                 vm.newName = user.name
                 alertRename = true
             }
-
+            
             BillingAccountRow("Login", icon: "at", tint: .indigo, value: user.login) {
                 vm.newLogin = user.login
                 alertLogin = true
@@ -62,7 +62,7 @@ struct BillingAccountSection: View {
                 .autocorrectionDisabled()
                 .textInputAutocapitalization(.never)
                 .limitInputLength($vm.newLogin, length: 100)
-
+            
             Button("Change", role: .destructive) {
                 changeLogin()
             }
@@ -98,7 +98,7 @@ struct BillingAccountSection: View {
             await vm.changeEmail()
         }
     }
-
+    
     private func changeLogin() {
         Task {
             await vm.changeLogin {
