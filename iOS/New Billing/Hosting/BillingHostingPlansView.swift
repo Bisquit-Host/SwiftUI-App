@@ -2,8 +2,6 @@ import SwiftUI
 
 struct BillingHostingPlansView: View {
     @State private var vm = BillingHostingPlansVM()
-    @Environment(BillingDashboardVM.self) private var dashboardVM
-    @EnvironmentObject private var store: ValueStore
     
     @State private var category: BillingHostingCategory
     @State private var selectedLocations: [BillingHostingCategory: Int] = [:]
@@ -27,7 +25,7 @@ struct BillingHostingPlansView: View {
                 
                 let locations = vm.locations(for: category)
                 let selectedLocationId = selectedLocationId(for: category, available: locations)
-                let plans = vm.plans(for: category, currency: preferredCurrencyCode, locationId: selectedLocationId)
+                let plans = vm.plans(for: category, currency: nil, locationId: selectedLocationId)
                 
                 if !locations.isEmpty {
                     locationSelector(for: category, locations: locations, selectedLocationId: selectedLocationId)
@@ -48,7 +46,7 @@ struct BillingHostingPlansView: View {
                         ForEach(plans) { plan in
                             BillingHostingPlanCard(
                                 plan: plan,
-                                priceText: vm.formattedPrice(for: plan, currency: preferredCurrencyCode),
+                                priceText: vm.formattedPrice(for: plan, currency: nil),
                                 category: category
                             ) {
                                 orderContext = BillingPlanOrderContext(plan: plan, category: category)
@@ -77,22 +75,9 @@ struct BillingHostingPlansView: View {
         .sheet(item: $orderContext) { context in
             BillingHostingOrderSheet(
                 context: context,
-                priceText: vm.formattedPrice(for: context.plan, currency: preferredCurrencyCode),
-                vm: vm,
-                preferredCurrency: preferredCurrencyCode
+                priceText: vm.formattedPrice(for: context.plan, currency: nil),
+                vm: vm
             )
-        }
-    }
-    
-    private var preferredCurrencyCode: String? {
-        if let userCurrency = dashboardVM.user?.currency, !userCurrency.isEmpty {
-            return userCurrency.uppercased()
-        }
-        
-        switch store.preferredCurrency {
-        case "₽": return "RUB"
-        case "€": return "EUR"
-        default: return nil
         }
     }
     

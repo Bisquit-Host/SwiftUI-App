@@ -11,7 +11,7 @@ struct BillingHostingOrderSheet: View {
     let context: BillingPlanOrderContext
     let priceText: String
     let vm: BillingHostingPlansVM
-    let preferredCurrency: String?
+    private let currencyCode: String?
     
     @Environment(\.dismiss) private var dismiss
     
@@ -27,11 +27,11 @@ struct BillingHostingOrderSheet: View {
     @State private var message: String?
     @State private var error: String?
     
-    init(context: BillingPlanOrderContext, priceText: String, vm: BillingHostingPlansVM, preferredCurrency: String?) {
+    init(context: BillingPlanOrderContext, priceText: String, vm: BillingHostingPlansVM) {
         self.context = context
         self.priceText = priceText
         self.vm = vm
-        self.preferredCurrency = preferredCurrency
+        self.currencyCode = context.plan.price.first?.currency
         _name = State(initialValue: context.plan.name)
     }
     
@@ -42,6 +42,7 @@ struct BillingHostingOrderSheet: View {
                     VStack(alignment: .leading, spacing: 4) {
                         Text(context.plan.name)
                             .headline()
+                        
                         Text(priceText + " / mo")
                             .secondary()
                             .footnote()
@@ -53,9 +54,9 @@ struct BillingHostingOrderSheet: View {
                         .textContentType(.nickname)
                     
                     Picker("Billing period", selection: $months) {
-                        ForEach([1, 3, 6, 12], id: \.self) { value in
-                            Text(monthLabel(value))
-                                .tag(value)
+                        ForEach([1, 3, 6, 12], id: \.self) {
+                            Text(monthLabel($0))
+                                .tag($0)
                         }
                     }
                 }
@@ -67,9 +68,9 @@ struct BillingHostingOrderSheet: View {
                         }
                         
                         Picker("OS", selection: $selectedOsId) {
-                            ForEach(osItems, id: \.id) { item in
-                                Text(item.title)
-                                    .tag(item.id)
+                            ForEach(osItems, id: \.id) { // requires id for some reason
+                                Text($0.title)
+                                    .tag($0.id)
                             }
                         }
                     }
@@ -80,16 +81,16 @@ struct BillingHostingOrderSheet: View {
                         }
                         
                         Picker("Nest", selection: $selectedNestId) {
-                            ForEach(nests) { nest in
-                                Text(nest.name)
-                                    .tag(nest.id)
+                            ForEach(nests) {
+                                Text($0.name)
+                                    .tag($0.id)
                             }
                         }
                         
                         Picker("Egg", selection: $selectedEggId) {
-                            ForEach(eggsForSelection) { egg in
-                                Text(egg.name)
-                                    .tag(egg.id)
+                            ForEach(eggsForSelection) {
+                                Text($0.name)
+                                    .tag($0.id)
                             }
                         }
                     }
@@ -112,7 +113,9 @@ struct BillingHostingOrderSheet: View {
                 
                 Section {
                     Button {
-                        Task { await order() }
+                        Task {
+                            await order()
+                        }
                     } label: {
                         if isOrdering {
                             ProgressView()
@@ -136,6 +139,7 @@ struct BillingHostingOrderSheet: View {
             }
             .onChange(of: selectedNestId) { _, newValue in
                 guard let nest = nests.first(where: { $0.id == newValue }) else { return }
+                
                 if let firstEgg = nest.eggs.first {
                     selectedEggId = firstEgg.id
                 } else {
@@ -149,7 +153,10 @@ struct BillingHostingOrderSheet: View {
         guard !isLoadingOptions else { return }
         isLoadingOptions = true
         error = nil
-        defer { isLoadingOptions = false }
+        
+        defer {
+            isLoadingOptions = false
+        }
         
         let options = await vm.loadOrderOptions(for: context.category, planId: context.plan.id)
         osCategories = options.osCategories
@@ -176,10 +183,14 @@ struct BillingHostingOrderSheet: View {
     
     private func order() async {
         guard !isOrdering else { return }
+        
         isOrdering = true
         error = nil
         message = nil
-        defer { isOrdering = false }
+        
+        defer {
+            isOrdering = false
+        }
         
         let response = await vm.order(
             plan: context.plan,
@@ -192,7 +203,7 @@ struct BillingHostingOrderSheet: View {
         )
         
         if let response {
-            let formattedAmount = formatAmount(response.amount, code: preferredCurrency)
+            let formattedAmount = formatAmount(response.amount, code: currencyCode)
             message = "Purchased #\(response.serviceId). Charged \(formattedAmount)"
             
             Task {
@@ -226,6 +237,7 @@ struct BillingHostingOrderSheet: View {
         formatter.minimumFractionDigits = 0
         formatter.maximumFractionDigits = 2
         formatter.locale = Locale.current
+        
         let value = formatter.string(from: NSNumber(value: amount)) ?? String(format: "%.2f", amount)
         
         guard let code else { return value }
