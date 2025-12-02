@@ -15,7 +15,7 @@ struct BillingDashboard: View {
                     NavigationLink {
                         SupportTicketsList()
                     } label: {
-                        HStack {
+                        HStack(spacing: 12) {
                             Image(systemName: "lifepreserver")
                                 .largeTitle()
                                 .foregroundStyle(.red)
