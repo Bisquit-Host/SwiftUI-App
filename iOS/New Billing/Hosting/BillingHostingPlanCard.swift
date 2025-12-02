@@ -31,7 +31,7 @@ struct BillingHostingPlanCard: View {
                 
                 VStack(alignment: .trailing, spacing: 2) {
                     Text(priceText)
-                        .fontWeight(.semibold)
+                        .semibold()
                     
                     Text("/mo")
                         .footnote()
