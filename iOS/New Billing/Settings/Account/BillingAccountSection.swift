@@ -130,16 +130,17 @@ struct BillingAccountSection: View {
             
             Spacer()
             
+            let uploading = isUploadingAvatar
+            
             PhotosPicker(selection: $avatarPickerItem, matching: .images, photoLibrary: .shared()) {
                 HStack(spacing: 6) {
-                    if isUploadingAvatar {
+                    if uploading {
                         ProgressView()
-                            .progressViewStyle(.circular)
                     } else {
                         Image(systemName: "photo.on.rectangle.angled")
                     }
                     
-                    Text(isUploadingAvatar ? "Updating..." : "Change")
+                    Text(uploading ? "Updating..." : "Change")
                         .subheadline(.semibold)
                 }
                 .padding(.horizontal, 14)
