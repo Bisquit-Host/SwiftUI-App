@@ -14,7 +14,7 @@ struct BillingDashboard: View {
                     
                     BillingSectionCard("My services") {
                         NavigationLink {
-                            BillingCloudServicesList()
+                            BillingMyServicesView()
                                 .environment(vm)
                         } label: {
                             HStack(spacing: 12) {
