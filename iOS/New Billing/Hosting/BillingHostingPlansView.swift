@@ -46,7 +46,7 @@ struct BillingHostingPlansView: View {
                     VStack(spacing: 12) {
                         ForEach(plans) {
                             BillingHostingPlanCard(
-                                $0,
+                                plan: $0,
                                 priceText: vm.formattedPrice(for: $0, currency: preferredCurrencyCode),
                                 category: category
                             )

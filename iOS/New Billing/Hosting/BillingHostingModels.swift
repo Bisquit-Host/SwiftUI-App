@@ -75,6 +75,29 @@ struct BillingHostingPlan: Identifiable, Decodable, Equatable {
         
         return "\(network.clean)"
     }
+    
+    static let preview = BillingHostingPlan(
+        id: 1,
+        name: "Game-S",
+        locationId: 1,
+        price: [.init(price: 399, currency: "RUB")],
+        cpu: 2,
+        cpuName: "Ryzen",
+        memory: 4096,
+        memoryType: "DDR4",
+        disk: 20480,
+        diskType: "NVMe",
+        network: 250,
+        networkType: "MBit/s",
+        nests: [1, 2],
+        allocations: 5,
+        databases: 2,
+        backups: 1,
+        bonusBalanceAllowed: true,
+        windowsAllowed: nil,
+        antiSpoofing: nil,
+        whmcsLink: nil
+    )
 }
 
 struct BillingHostingLocation: Identifiable, Decodable, Equatable {
