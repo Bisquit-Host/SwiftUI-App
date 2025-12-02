@@ -209,6 +209,11 @@ final class BillingSettingsVM {
     }
     
     func updateAvatar(with data: Data, filename: String, mimeType: String?) async -> String? {
+        guard let mimeType else {
+            SystemAlert.error("Invalid mimetype")
+            return nil
+        }
+        
         guard let url = URL(string: "https://test-api.bisquit.host/user/settings/avatar") else {
             SystemAlert.error("Invalid URL")
             return nil
@@ -228,9 +233,9 @@ final class BillingSettingsVM {
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
         
-        let body = makeMultipartBody(data: data, filename: filename, mimeType: mimeType ?? "image/jpeg", boundary: boundary)
+        let body = makeMultipartBody(data: data, filename: filename, mimeType: mimeType, boundary: boundary)
         
-        print("Uploading file", filename, "of type", mimeType ?? "Unknown")
+        print("Uploading file", filename, "of type", mimeType)
         
         do {
             let (responseData, response) = try await URLSession.shared.upload(for: request, from: body)
