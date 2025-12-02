@@ -3,18 +3,11 @@ import SafariCover
 import MailCover
 
 struct Discover: View {
-    @State private var sheetConfigurations = false
     @State private var showMailCover = false
     
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 16) {
-                Button {
-                    sheetConfigurations = true
-                } label: {
-                    DiscoverCardLabel("Configurations", subtitle: "Available to buy", image: .server)
-                }
-                
                 DiscoverCard("https://status.bisquit.host/status/bisquithost") {
                     DiscoverCardLabel("Status", subtitle: "System", image: .status)
                 }
@@ -71,13 +64,9 @@ struct Discover: View {
         .ignoresSafeArea()
         .foregroundStyle(.foreground)
         .ornamentDismissButton()
-        .sheet($sheetConfigurations) {
-            PlanViewParent()
-        }
 #if os(visionOS)
         .buttonBorderShape(.roundedRectangle(radius: 27))
         .buttonStyle(.plain)
-        .ornamentDismissButton()
 #else
         .toolbar {
             ToolbarSpacer(placement: .bottomBar)

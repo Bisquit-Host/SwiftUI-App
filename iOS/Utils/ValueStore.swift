@@ -54,10 +54,6 @@ final class ValueStore: ObservableObject {
 #if !os(macOS)
     @AppStorage("last_tab_panel") var lastTabPanel: Tabs = .info
 #endif
-    
-#if !os(watchOS) && !os(macOS)
-    @AppStorage("selected_plan_category") var selectedPlanCategory: PlanType = .cloud
-#endif
     @AppStorage("showFullFilePath") var showFullFilePath = false
     @AppStorage("preferredCurrency") var preferredCurrency = "₽"
     @AppStorage("tabViewBouncesDown") var tabViewBouncesDown = true
