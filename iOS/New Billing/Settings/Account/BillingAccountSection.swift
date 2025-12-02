@@ -117,12 +117,6 @@ struct BillingAccountSection: View {
                 Text("Visible in tickets and chats")
                     .footnote()
                     .secondary()
-                
-                if let status = vm.avatarError {
-                    Text(status)
-                        .footnote()
-                        .foregroundStyle(.red)
-                }
             }
             
             Spacer()
@@ -210,7 +204,7 @@ struct BillingAccountSection: View {
     private func handleAvatarChange(_ item: PhotosPickerItem) {
         Task {
             guard let data = try? await item.loadTransferable(type: Data.self) else {
-                vm.avatarError = "Could not read image"
+                SystemAlert.error("Could not read image")
                 return
             }
             
@@ -220,7 +214,6 @@ struct BillingAccountSection: View {
             
             avatarPreview = UIImage(data: data)
             isUploadingAvatar = true
-            vm.avatarError = nil
             
             let uploaded = await vm.updateAvatar(with: data, filename: filename, mimeType: mime)
             

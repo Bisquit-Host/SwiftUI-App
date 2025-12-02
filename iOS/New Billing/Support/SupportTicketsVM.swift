@@ -82,7 +82,7 @@ final class SupportTicketsVM {
         let trimmedMessage = message.trimmingCharacters(in: .whitespacesAndNewlines)
         
         guard !trimmedTitle.isEmpty, !trimmedMessage.isEmpty else {
-            SystemAlert.error("Title and message required", subtitle: nil)
+            SystemAlert.error("Title and message required")
             return nil
         }
         

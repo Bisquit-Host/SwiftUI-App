@@ -13,7 +13,6 @@ final class BillingSettingsVM {
     var newPassword = ""
     var confirmPassword = ""
     var isUpdatingPassword = false
-    var avatarError: String?
     
     func changeName(onSuccess: @escaping () async -> Void) async {
         let store = ValueStore()
@@ -123,12 +122,12 @@ final class BillingSettingsVM {
         let trimmedConfirmation = confirmPassword.trimmingCharacters(in: .whitespacesAndNewlines)
         
         if hasExistingPassword && trimmedCurrentPassword.isEmpty {
-            SystemAlert.error("Enter current password", subtitle: nil)
+            SystemAlert.error("Enter current password")
             return
         }
         
         if trimmedNewPassword.isEmpty {
-            SystemAlert.error("Enter new password", subtitle: nil)
+            SystemAlert.error("Enter new password")
             return
         }
         
@@ -143,12 +142,12 @@ final class BillingSettingsVM {
         }
         
         if trimmedNewPassword != trimmedConfirmation {
-            SystemAlert.error("Passwords do not match", subtitle: nil)
+            SystemAlert.error("Passwords do not match")
             return
         }
         
         guard let url = URL(string: "https://test-api.bisquit.host/user/settings/password") else {
-            SystemAlert.error("Invalid URL", subtitle: nil)
+            SystemAlert.error("Invalid URL")
             return
         }
         
@@ -181,7 +180,7 @@ final class BillingSettingsVM {
             let (data, response) = try await URLSession.shared.data(for: request)
             
             guard let http = response as? HTTPURLResponse else {
-                SystemAlert.error("No response", subtitle: nil)
+                SystemAlert.error("No response")
                 return
             }
             
@@ -210,17 +209,15 @@ final class BillingSettingsVM {
     }
     
     func updateAvatar(with data: Data, filename: String, mimeType: String?) async -> String? {
-        avatarError = nil
-        
         guard let url = URL(string: "https://test-api.bisquit.host/user/settings/avatar") else {
-            avatarError = "Invalid URL"
+            SystemAlert.error("Invalid URL")
             return nil
         }
         
         let token = ValueStore().testAccessToken
         
         if token.isEmpty {
-            avatarError = "Missing session"
+            SystemAlert.error("Missing session")
             return nil
         }
         
@@ -239,7 +236,7 @@ final class BillingSettingsVM {
             let (responseData, response) = try await URLSession.shared.upload(for: request, from: body)
             
             guard let http = response as? HTTPURLResponse else {
-                avatarError = "No response"
+                SystemAlert.error("No response")
                 return nil
             }
             
@@ -250,18 +247,18 @@ final class BillingSettingsVM {
                 if let result = try? JSONDecoder().decode(AvatarUpdateResponse.self, from: responseData) {
                     return result.avatar
                 } else {
-                    avatarError = "Bad response"
+                    SystemAlert.error("Bad response")
                 }
                 
             default:
                 if let raw = String(data: responseData, encoding: .utf8), !raw.isEmpty {
-                    avatarError = raw
+                    SystemAlert.error(raw)
                 } else {
-                    avatarError = "Status \(http.statusCode)"
+                    SystemAlert.error("Status \(http.statusCode)")
                 }
             }
         } catch {
-            avatarError = error.localizedDescription
+            SystemAlert.error(error.localizedDescription)
         }
         
         return nil

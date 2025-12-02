@@ -82,12 +82,12 @@ final class SheetTopupVM {
         }
         
         guard let url = URL(string: "\(baseURL)/finances/topup") else {
-            SystemAlert.error("Invalid URL", subtitle: nil)
+            SystemAlert.error("Invalid URL")
             return nil
         }
         
         if amount < minimumAmount(for: currency) {
-            SystemAlert.error("Amount too small", subtitle: nil)
+            SystemAlert.error("Amount too small")
             return nil
         }
         
@@ -124,7 +124,7 @@ final class SheetTopupVM {
             
             let topup = try JSONDecoder().decode(TopupResponse.self, from: data)
             guard let paymentURL = URL(string: topup.url) else {
-                SystemAlert.error("Invalid payment URL", subtitle: nil)
+                SystemAlert.error("Invalid payment URL")
                 return nil
             }
             
