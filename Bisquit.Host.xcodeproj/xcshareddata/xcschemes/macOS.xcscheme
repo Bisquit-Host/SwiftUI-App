@@ -35,8 +35,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F383535D2ECE744500535F26"
-               BuildableName = "Unit Tests macOS.xctest"
-               BlueprintName = "Unit Tests macOS"
+               BuildableName = "Unit Tests.xctest"
+               BlueprintName = "Unit Tests"
                ReferencedContainer = "container:Bisquit.Host.xcodeproj">
             </BuildableReference>
          </TestableReference>

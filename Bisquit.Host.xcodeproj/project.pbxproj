@@ -61,7 +61,6 @@
 		F38637392A8641120069F074 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F350636829DC24AB0010B717 /* SwiftUI.framework */; };
 		F389BB572A05B47000911EBF /* SafariCover in Frameworks */ = {isa = PBXBuildFile; productRef = F389BB562A05B47000911EBF /* SafariCover */; };
 		F38D1DE22E1EC193005CBBEA /* QuickLook Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F3310F2C2DD07CA100FA0AEC /* QuickLook Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		F39D19032E45C3FF00A84A80 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F39D19022E45C3FF00A84A80 /* ScrechKit */; };
 		F39D680D2A262C5E00B9BDFC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F39D680C2A262C5E00B9BDFC /* Kingfisher */; };
 		F39E683F2D2D6A510002BA96 /* AudioVisualizer in Frameworks */ = {isa = PBXBuildFile; productRef = F39E683E2D2D6A510002BA96 /* AudioVisualizer */; };
 		F3A7CEC82C8B685500413400 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3A7CEC72C8B685500413400 /* Messages.framework */; };
@@ -110,13 +109,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = F3E08E9F2A2CE17800116C1C;
 			remoteInfo = macOS;
-		};
-		F383536C2ECE749C00535F26 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F31BA51B2958FF7C0006D126 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F31BA5222958FF7C0006D126;
-			remoteInfo = Bisquit.Host;
 		};
 		F38D1DE32E1EC193005CBBEA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -285,9 +277,8 @@
 		F3464CF82A862D2C00188B0C /* Intent.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = Intent.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F350636629DC24AB0010B717 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		F350636829DC24AB0010B717 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		F383535E2ECE744500535F26 /* Unit Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unit Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F383535E2ECE744500535F26 /* Unit Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unit Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F38637372A8641120069F074 /* Widgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Widgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		F39D18F52E45C30200A84A80 /* Unit Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unit Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F39EA2E02D5D45E800329468 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/iOSSupport/System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		F3A7CEC32C8B685500413400 /* iMessage.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iMessage.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A7CEC72C8B685500413400 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = Library/Frameworks/Messages.framework; sourceTree = DEVELOPER_DIR; };
@@ -302,13 +293,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		F32450862ED9414F00B098D3 /* Exceptions for "iOS" folder in "Unit Tests" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Utils/ANSIConverter.swift,
-			);
-			target = F39D18F42E45C30200A84A80 /* Unit Tests */;
-		};
 		F383537E2ECE94EA00535F26 /* Exceptions for "QuickLook Extension" folder in "QuickLook Extension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -1161,22 +1145,17 @@
 			);
 			target = F3464CF72A862D2C00188B0C /* Intent */;
 		};
-		F383BAE02ECF35E500350A0F /* Exceptions for "iOS" folder in "Unit Tests macOS" target */ = {
+		F383BAE02ECF35E500350A0F /* Exceptions for "iOS" folder in "Unit Tests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Utils/ANSIConverter.swift,
 			);
-			target = F383535D2ECE744500535F26 /* Unit Tests macOS */;
+			target = F383535D2ECE744500535F26 /* Unit Tests */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		F383535F2ECE744500535F26 /* Unit Tests macOS */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Unit Tests macOS";
-			sourceTree = "<group>";
-		};
-		F38353722ECE94CD00535F26 /* Unit Tests */ = {
+		F383535F2ECE744500535F26 /* Unit Tests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "Unit Tests";
 			sourceTree = "<group>";
@@ -1291,8 +1270,7 @@
 				F383BADD2ECF35E500350A0F /* Exceptions for "iOS" folder in "Widgets" target */,
 				F383BADE2ECF35E500350A0F /* Exceptions for "iOS" folder in "iMessage" target */,
 				F383BADF2ECF35E500350A0F /* Exceptions for "iOS" folder in "Intent" target */,
-				F32450862ED9414F00B098D3 /* Exceptions for "iOS" folder in "Unit Tests" target */,
-				F383BAE02ECF35E500350A0F /* Exceptions for "iOS" folder in "Unit Tests macOS" target */,
+				F383BAE02ECF35E500350A0F /* Exceptions for "iOS" folder in "Unit Tests" target */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -1346,12 +1324,6 @@
 				F3D6777D2DD867A900721DE8 /* Highlightr in Frameworks */,
 				F308601E2B002D4A004D776A /* PteroNet in Frameworks */,
 				F39E683F2D2D6A510002BA96 /* AudioVisualizer in Frameworks */,
-			);
-		};
-		F39D18F22E45C30200A84A80 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			files = (
-				F39D19032E45C3FF00A84A80 /* ScrechKit in Frameworks */,
 			);
 		};
 		F3A7CEC02C8B685500413400 /* Frameworks */ = {
@@ -1469,8 +1441,7 @@
 				F38353B22ECE953200535F26 /* Contact Provider Extension */,
 				F38353762ECE94D000535F26 /* UI Tests */,
 				F383537C2ECE94EA00535F26 /* QuickLook Extension */,
-				F38353722ECE94CD00535F26 /* Unit Tests */,
-				F383535F2ECE744500535F26 /* Unit Tests macOS */,
+				F383535F2ECE744500535F26 /* Unit Tests */,
 				F31BA5242958FF7C0006D126 /* Products */,
 				F3D3437429BFE5A2007C0D58 /* Frameworks */,
 			);
@@ -1491,8 +1462,7 @@
 				F3E2BEF52C1DA07E00B7A6D4 /* Contact Provider.appex */,
 				F3A7CEC32C8B685500413400 /* iMessage.appex */,
 				F3310F2C2DD07CA100FA0AEC /* QuickLook Extension.appex */,
-				F39D18F52E45C30200A84A80 /* Unit Tests.xctest */,
-				F383535E2ECE744500535F26 /* Unit Tests macOS.xctest */,
+				F383535E2ECE744500535F26 /* Unit Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1695,9 +1665,9 @@
 			productReference = F3464CF82A862D2C00188B0C /* Intent.appex */;
 			productType = "com.apple.product-type.extensionkit-extension";
 		};
-		F383535D2ECE744500535F26 /* Unit Tests macOS */ = {
+		F383535D2ECE744500535F26 /* Unit Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F38353642ECE744500535F26 /* Build configuration list for PBXNativeTarget "Unit Tests macOS" */;
+			buildConfigurationList = F38353642ECE744500535F26 /* Build configuration list for PBXNativeTarget "Unit Tests" */;
 			buildPhases = (
 				F383535A2ECE744500535F26 /* Sources */,
 				F383535B2ECE744500535F26 /* Frameworks */,
@@ -1709,14 +1679,14 @@
 				F38353632ECE744500535F26 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				F383535F2ECE744500535F26 /* Unit Tests macOS */,
+				F383535F2ECE744500535F26 /* Unit Tests */,
 			);
-			name = "Unit Tests macOS";
+			name = "Unit Tests";
 			packageProductDependencies = (
 				F383536F2ECE895000535F26 /* ScrechKit */,
 			);
 			productName = "Unit Tests macOS";
-			productReference = F383535E2ECE744500535F26 /* Unit Tests macOS.xctest */;
+			productReference = F383535E2ECE744500535F26 /* Unit Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		F38637362A8641120069F074 /* Widgets */ = {
@@ -1740,30 +1710,6 @@
 			productName = WidgetsExtension;
 			productReference = F38637372A8641120069F074 /* Widgets.appex */;
 			productType = "com.apple.product-type.app-extension";
-		};
-		F39D18F42E45C30200A84A80 /* Unit Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F39D18FB2E45C30200A84A80 /* Build configuration list for PBXNativeTarget "Unit Tests" */;
-			buildPhases = (
-				F39D18F12E45C30200A84A80 /* Sources */,
-				F39D18F22E45C30200A84A80 /* Frameworks */,
-				F39D18F32E45C30200A84A80 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F383536D2ECE749C00535F26 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				F38353722ECE94CD00535F26 /* Unit Tests */,
-			);
-			name = "Unit Tests";
-			packageProductDependencies = (
-				F39D19022E45C3FF00A84A80 /* ScrechKit */,
-			);
-			productName = "Unit Tests";
-			productReference = F39D18F52E45C30200A84A80 /* Unit Tests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		F3A7CEC22C8B685500413400 /* iMessage */ = {
 			isa = PBXNativeTarget;
@@ -1939,10 +1885,6 @@
 					F38637362A8641120069F074 = {
 						CreatedOnToolsVersion = 15.0;
 					};
-					F39D18F42E45C30200A84A80 = {
-						CreatedOnToolsVersion = 26.0;
-						TestTargetID = F31BA5222958FF7C0006D126;
-					};
 					F3A7CEC22C8B685500413400 = {
 						CreatedOnToolsVersion = 16.1;
 					};
@@ -2007,9 +1949,8 @@
 				F3E2BEF42C1DA07E00B7A6D4 /* Contact Provider */,
 				F3310F2B2DD07CA100FA0AEC /* QuickLook Extension */,
 				F3464CF72A862D2C00188B0C /* Intent */,
-				F39D18F42E45C30200A84A80 /* Unit Tests */,
 				F3D296062AF3BE5800ED43A0 /* UI Tests */,
-				F383535D2ECE744500535F26 /* Unit Tests macOS */,
+				F383535D2ECE744500535F26 /* Unit Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -2051,11 +1992,6 @@
 			);
 		};
 		F38637352A8641120069F074 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			files = (
-			);
-		};
-		F39D18F32E45C30200A84A80 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
 			);
@@ -2128,11 +2064,6 @@
 			files = (
 			);
 		};
-		F39D18F12E45C30200A84A80 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			files = (
-			);
-		};
 		F3A7CEBF2C8B685500413400 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			files = (
@@ -2170,11 +2101,6 @@
 			isa = PBXTargetDependency;
 			target = F3E08E9F2A2CE17800116C1C /* macOS */;
 			targetProxy = F38353622ECE744500535F26 /* PBXContainerItemProxy */;
-		};
-		F383536D2ECE749C00535F26 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F31BA5222958FF7C0006D126 /* Bisquit.Host */;
-			targetProxy = F383536C2ECE749C00535F26 /* PBXContainerItemProxy */;
 		};
 		F38D1DE42E1EC193005CBBEA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2831,7 +2757,7 @@
 			};
 			name = Release;
 		};
-		F38353652ECE744500535F26 /* Debug configuration for PBXNativeTarget "Unit Tests macOS" */ = {
+		F38353652ECE744500535F26 /* Debug configuration for PBXNativeTarget "Unit Tests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -2855,7 +2781,7 @@
 			};
 			name = Debug;
 		};
-		F38353662ECE744500535F26 /* Release configuration for PBXNativeTarget "Unit Tests macOS" */ = {
+		F38353662ECE744500535F26 /* Release configuration for PBXNativeTarget "Unit Tests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -2960,78 +2886,6 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		F39D18FC2E45C30200A84A80 /* Debug configuration for PBXNativeTarget "Unit Tests" */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8FQUA2F388;
-				ENABLE_APP_SANDBOX = YES;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
-				MARKETING_VERSION = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "dev.topscrech.Bisquit-host.Unit-Tests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				REGISTER_APP_GROUPS = YES;
-				SDKROOT = iphoneos;
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 6.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bisquit.Host.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Bisquit.Host";
-				XROS_DEPLOYMENT_TARGET = 26.0;
-			};
-			name = Debug;
-		};
-		F39D18FD2E45C30200A84A80 /* Release configuration for PBXNativeTarget "Unit Tests" */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8FQUA2F388;
-				ENABLE_APP_SANDBOX = YES;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
-				MACOSX_DEPLOYMENT_TARGET = 26.0;
-				MARKETING_VERSION = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "dev.topscrech.Bisquit-host.Unit-Tests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				REGISTER_APP_GROUPS = YES;
-				SDKROOT = iphoneos;
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 6.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bisquit.Host.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Bisquit.Host";
-				VALIDATE_PRODUCT = YES;
-				XROS_DEPLOYMENT_TARGET = 26.0;
 			};
 			name = Release;
 		};
@@ -3416,11 +3270,11 @@
 			);
 			defaultConfigurationName = Release;
 		};
-		F38353642ECE744500535F26 /* Build configuration list for PBXNativeTarget "Unit Tests macOS" */ = {
+		F38353642ECE744500535F26 /* Build configuration list for PBXNativeTarget "Unit Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F38353652ECE744500535F26 /* Debug configuration for PBXNativeTarget "Unit Tests macOS" */,
-				F38353662ECE744500535F26 /* Release configuration for PBXNativeTarget "Unit Tests macOS" */,
+				F38353652ECE744500535F26 /* Debug configuration for PBXNativeTarget "Unit Tests" */,
+				F38353662ECE744500535F26 /* Release configuration for PBXNativeTarget "Unit Tests" */,
 			);
 			defaultConfigurationName = Release;
 		};
@@ -3429,14 +3283,6 @@
 			buildConfigurations = (
 				F38637492A8641150069F074 /* Debug configuration for PBXNativeTarget "Widgets" */,
 				F386374A2A8641150069F074 /* Release configuration for PBXNativeTarget "Widgets" */,
-			);
-			defaultConfigurationName = Release;
-		};
-		F39D18FB2E45C30200A84A80 /* Build configuration list for PBXNativeTarget "Unit Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F39D18FC2E45C30200A84A80 /* Debug configuration for PBXNativeTarget "Unit Tests" */,
-				F39D18FD2E45C30200A84A80 /* Release configuration for PBXNativeTarget "Unit Tests" */,
 			);
 			defaultConfigurationName = Release;
 		};
@@ -3861,11 +3707,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F32675842A01B69600A026DC /* XCRemoteSwiftPackageReference "SafariCover" */;
 			productName = SafariCover;
-		};
-		F39D19022E45C3FF00A84A80 /* ScrechKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3CBC6D32D9A025A0081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */;
-			productName = ScrechKit;
 		};
 		F39D680C2A262C5E00B9BDFC /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
