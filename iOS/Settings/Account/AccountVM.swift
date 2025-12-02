@@ -41,7 +41,7 @@ final class AccountVM {
             
             await twoFaDetails()
         } catch {
-            print("Error enabling 2FA", error.localizedDescription)
+            print("Error enabling 2FA")
             SystemAlert.error(error)
         }
     }
@@ -54,7 +54,7 @@ final class AccountVM {
             
             await twoFaDetails()
         } catch {
-            print("Error disabling 2FA", error.localizedDescription)
+            print("Error disabling 2FA")
             SystemAlert.error(error)
         }
     }

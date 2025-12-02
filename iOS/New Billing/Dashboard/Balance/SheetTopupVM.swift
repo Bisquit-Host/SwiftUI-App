@@ -70,7 +70,7 @@ final class SheetTopupVM {
             
             operations = try decoder.decode(BillingOperationsResponse.self, from: data).operations
         } catch {
-            print("❌ Failed to fetch operations:", error.localizedDescription)
+            print("❌ Error fetching operations")
             SystemAlert.error("Error", subtitle: error.localizedDescription)
         }
     }
@@ -123,6 +123,7 @@ final class SheetTopupVM {
             }
             
             let topup = try JSONDecoder().decode(TopupResponse.self, from: data)
+            
             guard let paymentURL = URL(string: topup.url) else {
                 SystemAlert.error("Invalid payment URL")
                 return nil
@@ -130,7 +131,7 @@ final class SheetTopupVM {
             
             return paymentURL
         } catch {
-            print("❌ Topup failed:", error.localizedDescription)
+            print("❌ Topup failed")
             SystemAlert.error("Error", subtitle: error.localizedDescription)
             return nil
         }

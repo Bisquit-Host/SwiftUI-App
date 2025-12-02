@@ -112,7 +112,7 @@ final class BillingSettingsVM {
                 }
             }
         } catch {
-            print(error.localizedDescription)
+            SystemAlert.error(error.localizedDescription)
         }
     }
     

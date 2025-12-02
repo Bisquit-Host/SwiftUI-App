@@ -26,6 +26,12 @@ final class SystemAlert {
     }
     
     static func error(_ title: String, subtitle: String? = nil) {
+        print(title)
+        
+        if let subtitle {
+            print(subtitle)
+        }
+        
         AlertKitAPI.present(
             title: title,
             subtitle: subtitle,
