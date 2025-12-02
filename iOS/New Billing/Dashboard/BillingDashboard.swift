@@ -70,10 +70,18 @@ struct BillingDashboard: View {
         .navigationTitle("Dashboard")
         .navigationBarBackButtonHidden()
         .refreshableTask {
+            await vm.refreshAuth {
+                print("Refreshed auth token")
+            }
+            
             await vm.fetchUserInfo()
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
             Task {
+                await vm.refreshAuth {
+                    print("Refreshed auth token")
+                }
+                
                 await vm.fetchUserInfo()
             }
         }
