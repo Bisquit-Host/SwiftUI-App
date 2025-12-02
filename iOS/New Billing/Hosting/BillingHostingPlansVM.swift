@@ -30,7 +30,7 @@ final class BillingHostingPlansVM {
         _ = await (bot, game, cloud)
     }
     
-    func plans(for category: BillingHostingCategory, currency: String?) -> [BillingHostingPlan] {
+    func plans(for category: BillingHostingCategory, currency: String?, locationId: Int? = nil) -> [BillingHostingPlan] {
         let plans: [BillingHostingPlan]
         
         switch category {
@@ -39,8 +39,24 @@ final class BillingHostingPlansVM {
         case .cloud: plans = cloudPlans
         }
         
-        return plans.sorted { lhs, rhs in
+        let filtered: [BillingHostingPlan]
+        
+        if let locationId {
+            filtered = plans.filter { $0.locationId == locationId }
+        } else {
+            filtered = plans
+        }
+        
+        return filtered.sorted { lhs, rhs in
             priceValue(for: lhs, currency: currency) < priceValue(for: rhs, currency: currency)
+        }
+    }
+    
+    func locations(for category: BillingHostingCategory) -> [BillingHostingLocation] {
+        switch category {
+        case .bot: botLocations
+        case .game: gameLocations
+        case .cloud: cloudLocations
         }
     }
     

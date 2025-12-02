@@ -2,10 +2,11 @@ import SwiftUI
 
 struct BillingHostingPlansView: View {
     @State private var vm = BillingHostingPlansVM()
-    @EnvironmentObject private var store: ValueStore
     @Environment(BillingDashboardVM.self) private var dashboardVM
+    @EnvironmentObject private var store: ValueStore
     
     @State private var category: BillingHostingCategory
+    @State private var selectedLocations: [BillingHostingCategory: Int] = [:]
     
     init(defaultCategory: BillingHostingCategory = .game) {
         _category = State(initialValue: defaultCategory)
@@ -21,14 +22,15 @@ struct BillingHostingPlansView: View {
                     }
                 }
                 .pickerStyle(.segmented)
-                .padding(16)
-                .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
-                .overlay {
-                    RoundedRectangle(cornerRadius: 16)
-                        .stroke(.primary.opacity(0.04), lineWidth: 1)
-                }
+                .padding()
                 
-                let plans = vm.plans(for: category, currency: preferredCurrencyCode)
+                let locations = vm.locations(for: category)
+                let selectedLocationId = selectedLocationId(for: category, available: locations)
+                let plans = vm.plans(for: category, currency: preferredCurrencyCode, locationId: selectedLocationId)
+                
+                if !locations.isEmpty {
+                    locationSelector(for: category, locations: locations, selectedLocationId: selectedLocationId)
+                }
                 
                 if vm.isLoading && plans.isEmpty {
                     ProgressView()
@@ -45,7 +47,6 @@ struct BillingHostingPlansView: View {
                         ForEach(plans) {
                             BillingHostingPlanCard(
                                 $0,
-                                location: vm.location(for: $0, in: category),
                                 priceText: vm.formattedPrice(for: $0, currency: preferredCurrencyCode),
                                 category: category
                             )
@@ -81,6 +82,86 @@ struct BillingHostingPlansView: View {
         case "₽": return "RUB"
         case "€": return "EUR"
         default: return nil
+        }
+    }
+    
+    private func selectedLocationId(for category: BillingHostingCategory, available locations: [BillingHostingLocation]) -> Int? {
+        if let id = selectedLocations[category], locations.contains(where: { $0.id == id }) {
+            return id
+        }
+        
+        return locations.first?.id
+    }
+    
+    @ViewBuilder
+    private func locationSelector(for category: BillingHostingCategory, locations: [BillingHostingLocation], selectedLocationId: Int?) -> some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text("Location")
+                .footnote()
+                .secondary()
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 8) {
+                    ForEach(locations) { location in
+                        locationChip(location, isSelected: selectedLocationId == location.id) {
+                            selectLocation(location.id, for: category)
+                        }
+                    }
+                }
+                .padding(.vertical, 4)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(16)
+        .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
+        .overlay {
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(.primary.opacity(0.04), lineWidth: 1)
+        }
+    }
+    
+    private func locationChip(_ location: BillingHostingLocation, isSelected: Bool, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            HStack(spacing: 8) {
+                if let flag = location.flagUrl, let url = URL(string: flag) {
+                    AsyncImage(url: url) { image in
+                        image
+                            .resizable()
+                            .scaledToFill()
+                    } placeholder: {
+                        Color.gray.opacity(0.15)
+                    }
+                    .frame(width: 28, height: 18)
+                    .clipShape(.rect(cornerRadius: 5))
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 5)
+                            .stroke(.primary.opacity(0.08), lineWidth: 1)
+                    }
+                }
+                
+                Text(location.name)
+                    .footnote()
+                    .foregroundStyle(isSelected ? .primary : .secondary)
+            }
+            .padding(.vertical, 8)
+            .padding(.horizontal, 12)
+            .background(
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(isSelected ? Color.accentColor.opacity(0.12) : Color(.systemBackground).opacity(0.6))
+            )
+            .overlay {
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(isSelected ? Color.accentColor.opacity(0.4) : Color.primary.opacity(0.05), lineWidth: 1)
+            }
+        }
+        .buttonStyle(.plain)
+    }
+    
+    private func selectLocation(_ id: Int?, for category: BillingHostingCategory) {
+        if let id {
+            selectedLocations[category] = id
+        } else {
+            selectedLocations.removeValue(forKey: category)
         }
     }
 }

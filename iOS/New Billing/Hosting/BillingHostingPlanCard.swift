@@ -2,13 +2,11 @@ import SwiftUI
 
 struct BillingHostingPlanCard: View {
     private let plan: BillingHostingPlan
-    private let location: BillingHostingLocation?
     private let priceText: String
     private let category: BillingHostingCategory
     
-    init(_ plan: BillingHostingPlan, location: BillingHostingLocation?, priceText: String, category: BillingHostingCategory) {
+    init(_ plan: BillingHostingPlan, priceText: String, category: BillingHostingCategory) {
         self.plan = plan
-        self.location = location
         self.priceText = priceText
         self.category = category
     }
@@ -36,38 +34,6 @@ struct BillingHostingPlanCard: View {
                     Text("/mo")
                         .footnote()
                         .secondary()
-                }
-            }
-            
-            if let location {
-                HStack(spacing: 8) {
-                    if let flag = location.flagUrl, let url = URL(string: flag) {
-                        AsyncImage(url: url) { image in
-                            image
-                                .resizable()
-                                .scaledToFill()
-                        } placeholder: {
-                            Color.gray.opacity(0.15)
-                        }
-                        .frame(width: 28, height: 20)
-                        .clipShape(.rect(cornerRadius: 5))
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 5)
-                                .stroke(.primary.opacity(0.08), lineWidth: 1)
-                        }
-                    }
-                    
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text(location.name)
-                            .subheadline(.semibold)
-                        
-                        if let remarks = location.remarks, !remarks.isEmpty {
-                            Text(remarks.joined(separator: " · "))
-                                .footnote()
-                                .secondary()
-                                .lineLimit(1)
-                        }
-                    }
                 }
             }
             
@@ -166,7 +132,6 @@ struct BillingHostingPlanCard: View {
             antiSpoofing: nil,
             whmcsLink: nil
         ),
-        location: .init(id: 1, name: "Germany", flagUrl: nil, remarks: ["low latency"], locations: nil, portRange: nil),
         priceText: "₽399",
         category: .game
     )

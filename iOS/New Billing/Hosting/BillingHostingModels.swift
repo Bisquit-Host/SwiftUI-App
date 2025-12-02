@@ -1,15 +1,15 @@
 import Foundation
 
-enum BillingHostingCategory: String, CaseIterable, Identifiable {
-    case bot, game, cloud
+enum BillingHostingCategory: String, CaseIterable, Identifiable, Hashable {
+    case cloud, game, bot
     
     var id: Self { self }
     var path: String { rawValue }
     
     var title: String {
         switch self {
-        case .bot: "Bot hosting"
         case .game: "Game hosting"
+        case .bot: "Bot hosting"
         case .cloud: "Cloud (VDS)"
         }
     }
@@ -57,23 +57,7 @@ struct BillingHostingPlan: Identifiable, Decodable, Equatable {
     let windowsAllowed: Bool?
     let antiSpoofing: Bool?
     let whmcsLink: String?
-}
-
-struct BillingHostingLocation: Identifiable, Decodable, Equatable {
-    let id: Int
-    let name: String
-    let flagUrl: String?
-    let remarks: [String]?
-    let locations: [Int]?
-    let portRange: [String]?
-}
-
-struct BillingHostingPlansResponse: Decodable, Equatable {
-    let packages: [BillingHostingPlan]
-    let locations: [BillingHostingLocation]?
-}
-
-extension BillingHostingPlan {
+    
     var memoryGB: Double {
         memory / 1024
     }
@@ -91,6 +75,20 @@ extension BillingHostingPlan {
         
         return "\(network.clean)"
     }
+}
+
+struct BillingHostingLocation: Identifiable, Decodable, Equatable {
+    let id: Int
+    let name: String
+    let flagUrl: String?
+    let remarks: [String]?
+    let locations: [Int]?
+    let portRange: [String]?
+}
+
+struct BillingHostingPlansResponse: Decodable, Equatable {
+    let packages: [BillingHostingPlan]
+    let locations: [BillingHostingLocation]?
 }
 
 extension Double {
