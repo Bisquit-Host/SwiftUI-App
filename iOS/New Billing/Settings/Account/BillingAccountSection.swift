@@ -24,6 +24,8 @@ struct BillingAccountSection: View {
         BillingSectionCard("Account") {
             avatarHeader(user)
             
+            Divider()
+            
             BillingAccountRow("Email", icon: "envelope.fill", tint: .blue, value: user.email) {
                 vm.newEmail = user.email
                 alertEmail = true
@@ -40,7 +42,6 @@ struct BillingAccountSection: View {
             }
             
             BillingAccountRow("Language", icon: "character.cursor.ibeam", tint: .mint, value: user.lang.uppercased())
-            
             BillingAccountRow("Currency", icon: "dollarsign", tint: .yellow, value: user.currency)
         }
         .alert("Change email", isPresented: $alertEmail) {
