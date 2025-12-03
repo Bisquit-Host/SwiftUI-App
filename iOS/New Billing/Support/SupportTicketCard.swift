@@ -16,12 +16,12 @@ struct SupportTicketCard: View {
                 
                 Spacer()
                 
-                Text(ticket.ticket.status.capitalized)
+                Text(ticket.ticket.status.rawValue.capitalized)
                     .caption(.semibold)
                     .padding(.horizontal, 10)
                     .padding(.vertical, 4)
-                    .background(statusColor.opacity(0.12), in: Capsule())
-                    .foregroundStyle(statusColor)
+                    .background(ticket.ticket.status.color.opacity(0.12), in: Capsule())
+                    .foregroundStyle(ticket.ticket.status.color)
             }
             
             if let last = ticket.lastMessage {
@@ -44,13 +44,5 @@ struct SupportTicketCard: View {
             }
         }
         .padding(.vertical, 4)
-    }
-    
-    private var statusColor: Color {
-        switch ticket.ticket.status.lowercased() {
-        case "open": .green
-        case "pending": .orange
-        default: .gray
-        }
     }
 }

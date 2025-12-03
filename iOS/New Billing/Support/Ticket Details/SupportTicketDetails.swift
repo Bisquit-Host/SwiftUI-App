@@ -3,6 +3,7 @@ import SwiftUI
 struct SupportTicketDetails: View {
     @State private var vm: SupportTicketDetailsVM
     @EnvironmentObject private var store: ValueStore
+    
     init(_ ticket: SupportTicketDTO) {
         _vm = State(initialValue: SupportTicketDetailsVM(ticket))
     }
@@ -20,12 +21,12 @@ struct SupportTicketDetails: View {
                         
                         Spacer()
                         
-                        Text(vm.ticket.status.capitalized)
+                        Text(vm.ticket.status.rawValue.capitalized)
                             .caption(.semibold)
                             .padding(.horizontal, 10)
                             .padding(.vertical, 4)
-                            .background(statusColor.opacity(0.12), in: Capsule())
-                            .foregroundStyle(statusColor)
+                            .background(vm.ticket.status.color.opacity(0.12), in: .capsule)
+                            .foregroundStyle(vm.ticket.status.color)
                     }
                 }
                 
@@ -46,10 +47,9 @@ struct SupportTicketDetails: View {
             
             Divider()
             
-            SupportMessageComposer(text: $vm.composerText,
-                                   attachments: $attachments,
-                                   isSending: vm.isSending) {
+            SupportMessageComposer(text: $vm.composerText, attachments: $attachments, isSending: vm.isSending) {
                 let success = await vm.sendMessage(accessToken: store.testAccessToken, attachments: attachments)
+                
                 if success {
                     attachments = []
                 }
@@ -73,19 +73,11 @@ struct SupportTicketDetails: View {
             }
         }
     }
-    
-    private var statusColor: Color {
-        switch vm.ticket.status.lowercased() {
-        case "open": .green
-        case "pending": .orange
-        default: .gray
-        }
-    }
 }
 
 #Preview {
     NavigationStack {
-        SupportTicketDetails(.init(id: 1, title: "Example issue", status: "open", userId: 1, createdAt: "2024-01-01T10:00:00Z", updatedAt: "2024-01-01T10:00:00Z"))
+        SupportTicketDetails(.init(id: 1, title: "Example issue", status: .open, userId: 1, createdAt: "2024-01-01T10:00:00Z", updatedAt: "2024-01-01T10:00:00Z"))
     }
     .environmentObject(ValueStore())
     .darkSchemePreferred()

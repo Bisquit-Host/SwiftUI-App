@@ -1,12 +1,24 @@
-import Foundation
+import SwiftUI
 
 struct SupportTicketDTO: Codable, Identifiable, Hashable {
     let id: Int
     let title: String
-    let status: String
+    let status: SupportTicketStatus
     let userId: Int
     let createdAt: String
     let updatedAt: String
+}
+
+enum SupportTicketStatus: String, Codable, CaseIterable {
+    case open, closed, pending
+    
+    var color: Color {
+        switch self {
+        case .open: .green
+        case .pending: .orange
+        case .closed: .gray
+        }
+    }
 }
 
 struct SupportMessageUserDTO: Codable, Hashable {
