@@ -30,6 +30,7 @@ struct BillingAccountRow: View {
                     .secondary()
                     .footnote()
                     .numericTransition()
+                    .lineLimit(2)
             }
             
             Spacer()

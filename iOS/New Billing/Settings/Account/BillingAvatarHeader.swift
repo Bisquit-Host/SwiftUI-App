@@ -16,12 +16,32 @@ struct BillingAvatarHeader: View {
     @State private var isUploadingAvatar = false
     
     var body: some View {
-        HStack(spacing: 14) {
+        let uploading = isUploadingAvatar
+        
+        HStack(spacing: 20) {
             avatarImage(for: user)
+                .overlay(alignment: .topTrailing) {
+                    PhotosPicker(selection: $avatarPickerItem, matching: .images, photoLibrary: .shared()) {
+                        VStack {
+                            if uploading {
+                                ProgressView()
+                            } else {
+                                Image(systemName: "photo.on.rectangle.angled")
+                            }
+                        }
+                        .frame(40)
+                        .glassEffect(in: .circle)
+                    }
+                    .animation(.default, value: uploading)
+                    .disabled(isUploadingAvatar)
+                    .foregroundStyle(.foreground)
+                    .offset(x: 12, y: -12)
+                }
             
             VStack(alignment: .leading, spacing: 6) {
                 Text(user.name)
                     .subheadline(.semibold)
+                    .lineLimit(2)
                 
                 Text("Visible in tickets and chats")
                     .footnote()
@@ -29,29 +49,6 @@ struct BillingAvatarHeader: View {
             }
             
             Spacer()
-            
-            let uploading = isUploadingAvatar
-            
-            PhotosPicker(selection: $avatarPickerItem, matching: .images, photoLibrary: .shared()) {
-                HStack(spacing: 6) {
-                    if uploading {
-                        ProgressView()
-                    } else {
-                        Image(systemName: "photo.on.rectangle.angled")
-                    }
-                    
-                    Text(uploading ? "Updating..." : "Change")
-                        .subheadline(.semibold)
-                }
-                .padding(.horizontal, 14)
-                .padding(.vertical, 10)
-                .background(.ultraThinMaterial, in: .rect(cornerRadius: 12))
-                .overlay {
-                    RoundedRectangle(cornerRadius: 12)
-                        .stroke(.primary.opacity(0.08), lineWidth: 1)
-                }
-            }
-            .disabled(isUploadingAvatar)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.vertical, 4)
@@ -94,6 +91,7 @@ struct BillingAvatarHeader: View {
                 placeholderInitial(for: user)
             }
         }
+        .animation(.default, value: avatarPreview)
         .frame(size)
         .clipShape(.circle)
         .overlay {
