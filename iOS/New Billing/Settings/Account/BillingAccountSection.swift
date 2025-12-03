@@ -37,8 +37,8 @@ struct BillingAccountSection: View {
                 alertLogin = true
             }
             
-            BillingAccountRow("Language", icon: "character.cursor.ibeam", tint: .mint, value: user.lang.uppercased())
             BillingAccountRow("Currency", icon: "dollarsign", tint: .yellow, value: user.currency.rawValue)
+            BillingAccountRow("Language", icon: "character.cursor.ibeam", tint: .mint, value: user.lang.uppercased())
         }
         .alert("Change email", isPresented: $alertEmail) {
             TextField("New email", text: $vm.newEmail)
