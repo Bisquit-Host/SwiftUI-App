@@ -29,7 +29,7 @@ struct BillingHostingPlansView: View {
                 let plans = vm.plans(for: category, currency: nil, locationId: selectedLocationId)
                 
                 if !locations.isEmpty {
-                    locationSelector(for: category, locations: locations, selectedLocationId: selectedLocationId)
+                    locationSelector(for: category, at: locations, selectedLocationId: selectedLocationId)
                 }
                 
                 if vm.isLoading && plans.isEmpty {
@@ -45,11 +45,7 @@ struct BillingHostingPlansView: View {
                 } else {
                     VStack(spacing: 12) {
                         ForEach(plans) { plan in
-                            BillingHostingPlanCard(
-                                plan: plan,
-                                priceText: vm.formattedPrice(for: plan, currency: nil),
-                                category: category
-                            ) {
+                            BillingHostingPlanCard(plan: plan, priceText: vm.formattedPrice(for: plan, currency: nil), category: category) {
                                 orderContext = BillingPlanOrderContext(plan: plan, category: category)
                             }
                         }
@@ -91,7 +87,7 @@ struct BillingHostingPlansView: View {
     }
     
     @ViewBuilder
-    private func locationSelector(for category: BillingHostingCategory, locations: [BillingHostingLocation], selectedLocationId: Int?) -> some View {
+    private func locationSelector(for category: BillingHostingCategory, at locations: [BillingHostingLocation], selectedLocationId: Int?) -> some View {
         VStack(alignment: .leading, spacing: 10) {
             Text("Location")
                 .footnote()
@@ -148,7 +144,7 @@ struct BillingHostingPlansView: View {
             )
             .overlay {
                 RoundedRectangle(cornerRadius: 12)
-                    .stroke(isSelected ? Color.accentColor.opacity(0.4) : Color.primary.opacity(0.05), lineWidth: 1)
+                    .stroke(isSelected ? Color.accentColor.opacity(0.4) : .primary.opacity(0.05), lineWidth: 1)
             }
         }
         .buttonStyle(.plain)
