@@ -4,8 +4,8 @@ struct BillingDashboardHostingLinks: View {
     var body: some View {
         BillingSectionCard("Hosting") {
             VStack(spacing: 12) {
-                BillingHostingNavRow(.game, tint: .indigo)
                 BillingHostingNavRow(.cloud, tint: .orange)
+                BillingHostingNavRow(.game, tint: .indigo)
                 BillingHostingNavRow(.bot, tint: .green)
             }
         }
