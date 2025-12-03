@@ -63,7 +63,7 @@ struct SupportTicketDetails: View {
         .onDisappear {
             vm.stop()
         }
-        .fullScreenCover(isPresented: Binding(get: { selectedMedia != nil }, set: { if !$0 { selectedMedia = nil } })) {
+        .fullScreenCover(Binding(get: { selectedMedia != nil }, set: { if !$0 { selectedMedia = nil } })) {
             NavigationStack {
                 if let media = selectedMedia {
                     SupportMedia(mediaPath: media, accessToken: store.testAccessToken) {

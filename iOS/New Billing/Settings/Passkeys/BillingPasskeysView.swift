@@ -11,7 +11,9 @@ struct BillingPasskeysView: View {
                     .disableAutocorrection(true)
                 
                 Button {
-                    Task { await vm.registerPasskey() }
+                    Task {
+                        await vm.registerPasskey()
+                    }
                 } label: {
                     if vm.isRegistering {
                         HStack {
