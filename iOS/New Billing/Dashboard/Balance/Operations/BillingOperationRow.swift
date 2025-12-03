@@ -7,17 +7,17 @@ struct BillingOperationRow: View {
         self.operation = operation
     }
     
+    private var positiveOperation: Bool {
+        operation.type == .plus
+    }
+    
     private var amountColor: Color {
-        operation.type.lowercased() == "plus" ? .green : .red
+        positiveOperation ? .green : .red
     }
     
     private var amountText: String {
-        let sign = operation.type.lowercased() == "plus" ? "+" : "−"
-        return "\(sign)\(operation.amount) \(operation.currency.uppercased())"
-    }
-    
-    private var positiveOperation: Bool {
-        operation.type.lowercased() == "plus"
+        let type = positiveOperation ? "+" : "−"
+        return "\(type)\(operation.amount) \(operation.currency.symbol)"
     }
     
     var body: some View {

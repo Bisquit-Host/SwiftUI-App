@@ -6,9 +6,9 @@ struct BillingOperationsResponse: Decodable, Equatable {
 struct BillingOperation: Identifiable, Decodable, Equatable {
     let id: Int
     let amount: Double
-    let type: String
+    let type: BillingOperationType
     let date: String
-    let currency: String
+    let currency: BillingCurrency
     let messages: [BillingOperationMessage]
     
     var primaryMessage: String? {
@@ -18,9 +18,9 @@ struct BillingOperation: Identifiable, Decodable, Equatable {
     static let preview = BillingOperation(
         id: 1,
         amount: 16,
-        type: "subscription",
+        type: .plus,
         date: "2025-11-29T17:02:32.935387Z",
-        currency: "USD",
+        currency: .EUR,
         messages: []
     )
 }
@@ -28,4 +28,8 @@ struct BillingOperation: Identifiable, Decodable, Equatable {
 struct BillingOperationMessage: Decodable, Equatable {
     let lang: String
     let text: String
+}
+
+enum BillingOperationType: String, Decodable, Equatable {
+    case plus, minus
 }

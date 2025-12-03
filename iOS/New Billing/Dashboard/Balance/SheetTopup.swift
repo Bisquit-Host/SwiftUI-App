@@ -110,6 +110,8 @@ struct SheetTopup: View {
             }
             .scenePadding()
         }
+        .navigationTitle("Finance stuff")
+        .navigationBarTitleDisplayMode(.inline)
         .safariCover($safariCover, url: paymentLink)
         .refreshableTask {
             await vm.fetchOperations(accessToken: store.testAccessToken)
