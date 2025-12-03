@@ -74,7 +74,7 @@ final class SheetTopupVM {
         }
     }
     
-    func createTopup(accessToken: String, amount: Double, method: String?, currency: String) async -> URL? {
+    func createTopup(accessToken: String, amount: Double, method: String?, currency: BillingCurrency) async -> URL? {
         guard !accessToken.isEmpty else {
             SystemAlert.error("Missing token", subtitle: "Please sign in again")
             return nil
@@ -136,7 +136,7 @@ final class SheetTopupVM {
         }
     }
     
-    private func minimumAmount(for currency: String) -> Double {
-        currency.uppercased() == "RUB" ? 50 : 1
+    private func minimumAmount(for currency: BillingCurrency) -> Double {
+        currency == .RUB ? 50 : 1
     }
 }

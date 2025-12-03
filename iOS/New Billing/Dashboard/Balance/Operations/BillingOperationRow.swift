@@ -16,13 +16,20 @@ struct BillingOperationRow: View {
         return "\(sign)\(operation.amount) \(operation.currency.uppercased())"
     }
     
+    private var positiveOperation: Bool {
+        operation.type.lowercased() == "plus"
+    }
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack(alignment: .center, spacing: 5) {
-                Image(systemName: operation.type.lowercased() == "plus" ? "arrow.down.circle.fill" : "arrow.up.circle.fill")
-                    .largeTitle()
-                    .symbolRenderingMode(.palette)
-                    .foregroundStyle(amountColor, .primary.opacity(0.25))
+                Image(systemName: positiveOperation ? "arrow.down" : "arrow.up")
+                    .fontSize(18)
+                    .semibold()
+                    .padding(6)
+                    .glassEffect(.regular.tint(positiveOperation ? Color.green.opacity(0.5) : Color.red.opacity(0.5)), in: .circle)
+                    .foregroundStyle(positiveOperation ? Color.green.gradient : Color.red.gradient)
+                    .padding(5)
                 
                 Text(operation.primaryMessage ?? "Operation")
                     .headline()
@@ -44,4 +51,10 @@ struct BillingOperationRow: View {
         }
         .padding(.vertical, 6)
     }
+}
+
+#Preview {
+    BillingOperationRow(.preview)
+        .darkSchemePreferred()
+        .scenePadding()
 }

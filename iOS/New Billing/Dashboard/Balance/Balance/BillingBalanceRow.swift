@@ -5,12 +5,14 @@ struct BillingBalanceRow: View {
     private let icon: String
     private let tint: Color
     private let value: String
+    private let isTotal: Bool
     
     init(_ title: String, icon: String, tint: Color, value: String) {
         self.title = title
         self.icon = icon
         self.tint = tint
         self.value = value
+        isTotal = title == "Total"
     }
     
     var body: some View {
@@ -22,15 +24,16 @@ struct BillingBalanceRow: View {
                 .foregroundStyle(tint)
             
             Text(title)
-                .subheadline(.semibold)
+                .semibold()
             
             Spacer()
             
             Text(value)
                 .rounded()
                 .numericTransition()
-                .foregroundStyle(title == "Total" ? .primary : .secondary)
-                .fontWeight(title == "Total" ? .semibold : .regular)
+                .foregroundStyle(isTotal ? .primary : .secondary)
+                .fontWeight(isTotal ? .semibold : .regular)
+                .font(isTotal ? .body : .subheadline)
         }
     }
 }

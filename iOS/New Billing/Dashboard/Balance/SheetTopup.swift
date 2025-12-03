@@ -22,8 +22,12 @@ struct SheetTopup: View {
     
     private let amountFieldSide: CGFloat = 48
     
+    private var minusDisabled: Bool {
+        (Double(amount.replacingOccurrences(of: ",", with: ".")) ?? 0) <= minimumTopupAmount
+    }
+    
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             VStack {
                 BillingSectionCard("Balance") {
                     BillingBalanceRow("Main", icon: "creditcard.fill", tint: .blue, value: formatted(user.balance))
@@ -37,7 +41,7 @@ struct SheetTopup: View {
                 BillingSectionCard("Top up") {
                     VStack(alignment: .leading, spacing: 12) {
                         HStack(spacing: 10) {
-                            TextField("Amount, \(user.currency.uppercased())", text: $amount)
+                            TextField("Amount, \(user.currency.rawValue)", text: $amount)
                                 .keyboardType(.decimalPad)
                                 .textInputAutocapitalization(.never)
                                 .padding(12)
@@ -50,16 +54,17 @@ struct SheetTopup: View {
                             
                             HStack(spacing: 8) {
                                 Button {
-                                    adjustAmount(by: -stepAmount)
+                                    adjustAmount(by: -user.currency.stepAmount)
                                 } label: {
                                     Image(systemName: "minus")
                                         .frame(amountFieldSide)
                                 }
                                 .background(.primary.opacity(0.04), in: .rect(cornerRadius: 12))
-                                .disabled((Double(amount.replacingOccurrences(of: ",", with: ".")) ?? 0) <= minimumTopupAmount)
+                                .disabled(minusDisabled)
+                                .opacity(minusDisabled ? 0.5 : 1)
                                 
                                 Button {
-                                    adjustAmount(by: stepAmount)
+                                    adjustAmount(by: user.currency.stepAmount)
                                 } label: {
                                     Image(systemName: "plus")
                                         .frame(amountFieldSide)
@@ -128,7 +133,7 @@ struct SheetTopup: View {
         
         guard value >= minimumTopupAmount else {
             let minString = String(format: "%.0f", minimumTopupAmount)
-            SystemAlert.error("Amount too small", subtitle: "Minimum top up is \(minString) \(user.currency.uppercased())")
+            SystemAlert.error("Amount too small", subtitle: "Minimum top up is \(minString) \(user.currency.rawValue)")
             return
         }
         
@@ -153,23 +158,19 @@ struct SheetTopup: View {
         amount = String(format: "%.2f", updated)
     }
     
-    private var stepAmount: Double {
-        user.currency.uppercased() == "RUB" ? 50 : 5
-    }
-    
     private var minimumTopupAmount: Double {
         SheetTopup.minimumAmount(for: user.currency)
     }
     
-    private static func minimumAmount(for currency: String) -> Double {
-        currency.uppercased() == "RUB" ? 50 : 1
+    private static func minimumAmount(for currency: BillingCurrency) -> Double {
+        currency == .RUB ? 50 : 1
     }
     
     private func formatted(_ amount: Double) -> String {
         let formatter = NumberFormatter()
         
         formatter.numberStyle = .currency
-        formatter.currencyCode = user.currency
+        formatter.currencyCode = user.currency.rawValue
         formatter.minimumFractionDigits = 2
         formatter.maximumFractionDigits = 2
         

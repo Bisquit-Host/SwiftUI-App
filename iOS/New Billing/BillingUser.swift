@@ -15,7 +15,7 @@ public struct BillingUser: Decodable, Equatable {
     public let name: String
     
     public let avatar: String?
-    public let currency: String
+    public let currency: BillingCurrency
     public let balance: Double
     public let bonusBalance: Double
     public let totalBalance: Double
@@ -44,7 +44,7 @@ public struct BillingUser: Decodable, Equatable {
         emailVerified: true,
         name: "Test User",
         avatar: "https://example.com/avatar.png",
-        currency: "USD",
+        currency: .EUR,
         balance: 1000,
         bonusBalance: 200,
         totalBalance: 1200,

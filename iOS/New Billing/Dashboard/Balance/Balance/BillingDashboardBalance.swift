@@ -3,20 +3,12 @@ import SwiftUI
 struct BillingDashboardBalance: View {
     private let user: BillingUser
     private let balance: Double
-    private let currency: String
+    private let currency: BillingCurrency
     
     init(_ user: BillingUser) {
         self.user = user
         self.balance = user.totalBalance
         self.currency = user.currency
-    }
-    
-    private var currencySymbol: String {
-        switch currency {
-        case "EUR": "€"
-        case "RUB": "₽"
-        default: ""
-        }
     }
     
     @State private var sheetTopup = false
@@ -34,7 +26,7 @@ struct BillingDashboardBalance: View {
                     .foregroundStyle(iconColor.gradient)
                 
                 if isPositive {
-                    Text(formattedBalance + currencySymbol)
+                    Text(formattedBalance + currency.symbol)
                 } else {
                     Text("Top up")
                 }

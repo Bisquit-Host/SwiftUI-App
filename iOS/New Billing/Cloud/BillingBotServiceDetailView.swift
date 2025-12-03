@@ -278,11 +278,10 @@ struct BillingBotServiceDetailView: View {
         formatter.maximumFractionDigits = 2
         let value = formatter.string(from: NSNumber(value: amount)) ?? String(format: "%.2f", amount)
         
-        switch dashboardVM.user?.currency.uppercased() {
-        case "EUR": return "€" + value
-        case "USD": return "$" + value
-        case .some(let code) where code.uppercased() == "RUB": return "₽" + value
-        default: return value
+        if let user = dashboardVM.user {
+            return user.currency.symbol + " \(value)"
+        } else {
+            return value
         }
     }
 }

@@ -2,8 +2,8 @@ import SwiftUI
 
 struct PaymentProvider: Identifiable, Equatable {
     enum Icon: Equatable {
-        case asset(ImageResource)
-        case system(String)
+        case asset(ImageResource),
+             system(String)
     }
     
     let id: String
@@ -12,9 +12,9 @@ struct PaymentProvider: Identifiable, Equatable {
     let tint: Color
     let method: String?
     
-    static func providers(for currency: String) -> [PaymentProvider] {
-        switch currency.uppercased() {
-        case "RUB":
+    static func providers(for currency: BillingCurrency) -> [PaymentProvider] {
+        switch currency {
+        case .RUB:
             [
                 PaymentProvider(id: "card", name: "T-Bank", icon: .asset(.tbank), tint: .yellow, method: "card")
             ]
