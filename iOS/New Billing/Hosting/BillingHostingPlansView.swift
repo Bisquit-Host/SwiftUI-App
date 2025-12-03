@@ -4,12 +4,13 @@ struct BillingHostingPlansView: View {
     @State private var vm = BillingHostingPlansVM()
     
     @State private var category: BillingHostingCategory
-    @State private var selectedLocations: [BillingHostingCategory: Int] = [:]
-    @State private var orderContext: BillingPlanOrderContext?
     
     init(defaultCategory: BillingHostingCategory = .game) {
         _category = State(initialValue: defaultCategory)
     }
+    
+    @State private var selectedLocations: [BillingHostingCategory: Int] = [:]
+    @State private var orderContext: BillingPlanOrderContext?
     
     var body: some View {
         ScrollView(showsIndicators: false) {
