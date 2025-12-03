@@ -70,8 +70,8 @@ struct BillingAvatarHeader: View {
                     .scaledToFill()
                 
             } else if let avatar = user.avatar, let url = URL(string: avatar) {
-                AsyncImage(url: url) { phase in
-                    switch phase {
+                AsyncImage(url: url) {
+                    switch $0 {
                     case .empty:
                         ProgressView()
                         
