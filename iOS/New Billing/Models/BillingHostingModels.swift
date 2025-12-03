@@ -33,7 +33,7 @@ enum BillingHostingCategory: String, CaseIterable, Identifiable, Hashable {
 
 struct BillingHostingPlanPrice: Decodable, Equatable {
     let price: Double
-    let currency: String
+    let currency: BillingCurrency
 }
 
 struct BillingHostingPlan: Identifiable, Decodable, Equatable {
@@ -80,7 +80,7 @@ struct BillingHostingPlan: Identifiable, Decodable, Equatable {
         id: 1,
         name: "Game-S",
         locationId: 1,
-        price: [.init(price: 399, currency: "RUB")],
+        price: [.init(price: 399, currency: .RUB)],
         cpu: 2,
         cpuName: "Ryzen",
         memory: 4096,

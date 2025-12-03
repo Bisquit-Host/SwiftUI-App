@@ -80,15 +80,14 @@ final class BillingHostingPlansVM {
     
     func formattedPrice(for plan: BillingHostingPlan, currency: String?) -> String {
         let code = currency?.uppercased()
-        let entry = plan.price.first { $0.currency.uppercased() == code } ?? plan.price.first
+        let entry = plan.price.first { $0.currency.rawValue == code } ?? plan.price.first
         
         guard let entry else { return "N/A" }
         
-        let symbol = symbol(for: entry.currency)
         let value = entry.price
         let formatted = value.rounded() == value ? String(Int(value)) : String(format: "%.2f", value)
         
-        return "\(symbol)\(formatted)"
+        return "\(entry.currency.symbol)\(formatted)"
     }
     
     private func fetch(_ category: BillingHostingCategory) async {
@@ -256,16 +255,7 @@ final class BillingHostingPlansVM {
     
     private func priceValue(for plan: BillingHostingPlan, currency: String?) -> Double {
         let code = currency?.uppercased()
-        return plan.price.first { $0.currency.uppercased() == code }?.price ?? plan.price.first?.price ?? 0
-    }
-    
-    private func symbol(for currency: String) -> String {
-        switch currency.uppercased() {
-        case "RUB": "₽"
-        case "EUR": "€"
-        case "USD": "$"
-        default: currency.uppercased()
-        }
+        return plan.price.first { $0.currency.rawValue == code }?.price ?? plan.price.first?.price ?? 0
     }
     
     private func request(path: String, method: String = "GET", body: Data? = nil) async -> Data? {

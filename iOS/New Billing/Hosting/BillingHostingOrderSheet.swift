@@ -1,12 +1,5 @@
 import SwiftUI
 
-struct BillingPlanOrderContext: Identifiable, Equatable {
-    let plan: BillingHostingPlan
-    let category: BillingHostingCategory
-    
-    var id: String { "\(category.rawValue)-\(plan.id)" }
-}
-
 struct BillingHostingOrderSheet: View {
     let context: BillingPlanOrderContext
     let priceText: String
@@ -31,7 +24,7 @@ struct BillingHostingOrderSheet: View {
         self.context = context
         self.priceText = priceText
         self.vm = vm
-        self.currencyCode = context.plan.price.first?.currency
+        self.currencyCode = context.plan.price.first?.currency.symbol
         _name = State(initialValue: context.plan.name)
     }
     
@@ -241,11 +234,7 @@ struct BillingHostingOrderSheet: View {
         let value = formatter.string(from: NSNumber(value: amount)) ?? String(format: "%.2f", amount)
         
         guard let code else { return value }
-        switch code.uppercased() {
-        case "RUB": return "₽" + value
-        case "EUR": return "€" + value
-        case "USD": return "$" + value
-        default: return value + " " + code.uppercased()
-        }
+        
+        return code + value
     }
 }
