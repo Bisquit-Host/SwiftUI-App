@@ -3,12 +3,12 @@ import SwiftUI
 struct SupportTicketDetails: View {
     @State private var vm: SupportTicketDetailsVM
     @EnvironmentObject private var store: ValueStore
-    @State private var selectedMedia: String? = nil
-    @State private var attachments: [PendingAttachment] = []
-    
     init(_ ticket: SupportTicketDTO) {
         _vm = State(initialValue: SupportTicketDetailsVM(ticket))
     }
+    
+    @State private var selectedMedia: String? = nil
+    @State private var attachments: [PendingAttachment] = []
     
     var body: some View {
         VStack(spacing: 0) {

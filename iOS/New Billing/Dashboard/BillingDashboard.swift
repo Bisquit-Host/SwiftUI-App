@@ -3,10 +3,10 @@ import SwiftUI
 
 struct BillingDashboard: View {
     @State private var vm = BillingDashboardVM()
+    @Environment(\.scenePhase) private var scenePhase
     
     @State private var sheetSettings = false
     @State private var refreshTimerTask: Task<Void, Never>?
-    @Environment(\.scenePhase) private var scenePhase
     
     var body: some View {
         VStack(alignment: .leading) {

@@ -27,7 +27,6 @@ struct BillingBalanceRow: View {
             Spacer()
             
             Text(value)
-//                .secondary()
                 .rounded()
                 .numericTransition()
                 .foregroundStyle(title == "Total" ? .primary : .secondary)

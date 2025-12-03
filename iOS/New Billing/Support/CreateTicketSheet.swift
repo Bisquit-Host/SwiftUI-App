@@ -3,8 +3,9 @@ import PhotosUI
 
 struct CreateTicketSheet: View {
     @Environment(SupportTicketsVM.self) private var vm
-    @Binding var showSheet: Bool
     @EnvironmentObject private var store: ValueStore
+    
+    @Binding var showSheet: Bool
     
     @State private var title = ""
     @State private var message = ""

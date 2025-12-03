@@ -1,10 +1,12 @@
 import SwiftUI
 
 struct SheetTopup: View {
+    @State private var vm = SheetTopupVM()
     @EnvironmentObject private var store: ValueStore
     
     private let user: BillingUser
     private let providers: [PaymentProvider]
+    @State private var selectedProvider: PaymentProvider?
     
     init(_ user: BillingUser) {
         self.user = user
@@ -14,9 +16,7 @@ struct SheetTopup: View {
         _amount = State(initialValue: String(format: "%.0f", SheetTopup.minimumAmount(for: user.currency)))
     }
     
-    @State private var vm = SheetTopupVM()
     @State private var amount = ""
-    @State private var selectedProvider: PaymentProvider?
     @State private var safariCover = false
     @State private var paymentLink = ""
     

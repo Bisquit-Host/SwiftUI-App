@@ -2,6 +2,7 @@ import SwiftUI
 
 struct BillingSettings: View {
     @State private var vm = BillingSettingsVM()
+    @State private var twoFAVM = BillingTwoFAVM()
     @EnvironmentObject private var store: ValueStore
     @Environment(\.dismiss) private var dismiss
     @Environment(BillingDashboardVM.self) private var dashboardVM
@@ -15,7 +16,6 @@ struct BillingSettings: View {
     @State private var showPasswordSheet = false
     @State private var showTwoFASheet = false
     @State private var confirmDisableTwoFA = false
-    @State private var twoFAVM = BillingTwoFAVM()
     @State private var isDisablingTwoFA = false
     @State private var disableError: String?
     
