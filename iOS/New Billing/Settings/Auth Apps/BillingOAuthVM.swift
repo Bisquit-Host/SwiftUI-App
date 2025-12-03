@@ -168,6 +168,7 @@ final class BillingOAuthVM: NSObject {
         
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
+            
             guard let http = response as? HTTPURLResponse else {
                 finish(success: false, message: "No HTTP response")
                 return
