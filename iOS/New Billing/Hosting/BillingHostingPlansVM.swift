@@ -175,7 +175,10 @@ final class BillingHostingPlansVM {
         guard !isOrdering else { return nil }
         
         isOrdering = true
-        defer { isOrdering = false }
+        
+        defer {
+            isOrdering = false
+        }
         
         lastError = nil
         
@@ -192,6 +195,7 @@ final class BillingHostingPlansVM {
         }
         
         let path: String
+        
         var body: [String: Any] = [
             "name": trimmed,
             "package": plan.id,
@@ -204,6 +208,7 @@ final class BillingHostingPlansVM {
                 lastError = "Choose OS"
                 return nil
             }
+            
             path = "/cloud/order"
             body["os"] = osId
             
@@ -240,9 +245,11 @@ final class BillingHostingPlansVM {
         } catch {
             lastError = error.localizedDescription
             print("Order decode error:", error)
+            
             if let raw = String(data: data, encoding: .utf8) {
                 print("Order raw:", raw)
             }
+            
             return nil
         }
     }
@@ -263,6 +270,7 @@ final class BillingHostingPlansVM {
     
     private func request(path: String, method: String = "GET", body: Data? = nil) async -> Data? {
         let token = ValueStore().testAccessToken
+        
         if token.isEmpty {
             lastError = "Please sign in"
             print("Order request missing token")

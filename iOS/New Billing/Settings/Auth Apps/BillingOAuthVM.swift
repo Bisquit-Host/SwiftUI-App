@@ -1,4 +1,5 @@
 import SwiftUI
+import SafariCover
 import AuthenticationServices
 
 @Observable
@@ -102,13 +103,12 @@ final class BillingOAuthVM: NSObject {
     }
     
     private func fetchAuthURL(for provider: BillingAuthProvider) async {
-        guard let url = URL(string: "\(basePath)/auth/providers/\(provider.rawValue)") else {
+        guard let url = URL(string: "\(basePath)/auth/providers/\(provider.rawValue)?mobile=true") else {
             finish(success: false, message: "Invalid backend URL")
             return
         }
         
         var request = URLRequest(url: url)
-        request.httpMethod = "GET"
         
         if let token = bearerToken {
             request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
@@ -124,12 +124,14 @@ final class BillingOAuthVM: NSObject {
             
             let authURL = try JSONDecoder().decode(AuthURLResponse.self, from: data).url
             
+            print("Auth URL:", authURL)
+            
             guard let url = URL(string: authURL) else {
                 finish(success: false, message: "Invalid auth URL returned")
                 return
             }
             
-            startSession(url)
+            openSafari(url)
         } catch {
             finish(success: false, message: error.localizedDescription)
         }
@@ -184,6 +186,7 @@ final class BillingOAuthVM: NSObject {
                     store.testAccessToken = login.accessToken
                     store.testRefreshToken = login.refreshToken
                     store.testExpiresIn = login.expiresIn
+                    
                     finish(success: true, message: nil)
                 } else {
                     finish(success: false, message: "Failed to parse tokens")

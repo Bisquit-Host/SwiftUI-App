@@ -309,6 +309,7 @@ final class BillingCloudServiceDetailVM {
     
     private func request(path: String, method: String = "GET", body: Data? = nil) async -> Data? {
         let token = ValueStore().testAccessToken
+        
         if token.isEmpty {
             lastError = "Missing session"
             print("Cloud request missing token")

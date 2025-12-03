@@ -25,7 +25,6 @@ final class BillingTwoFAVM {
         let url = baseURL.appendingPathComponent(setupPath)
         
         var request = URLRequest(url: url)
-        request.httpMethod = "GET"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         
         do {

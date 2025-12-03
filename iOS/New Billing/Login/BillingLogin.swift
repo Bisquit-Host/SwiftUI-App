@@ -4,6 +4,7 @@ import HCaptcha
 struct BillingLogin: View {
     @State private var vm = BillingLoginVM()
     @EnvironmentObject private var store: ValueStore
+    @Environment(BillingOAuthVM.self) private var oauthVM
     
     @State private var isSignUp = false
     @State private var name = ""
@@ -78,6 +79,20 @@ struct BillingLogin: View {
                         }
                     }
                     .disabled(vm.isPasskeyLoading)
+                }
+            }
+            
+            Section("Social") {
+                socialButton("GitHub", isLoading: oauthVM.isLinkingGitHub) {
+                    oauthVM.startGitHubLinking()
+                }
+                
+                socialButton("Google", isLoading: oauthVM.isLinkingGoogle) {
+                    oauthVM.startGoogleLinking()
+                }
+                
+                socialButton("Yandex", isLoading: oauthVM.isLinkingYandex) {
+                    oauthVM.startYandexLinking()
                 }
             }
         }
@@ -172,6 +187,7 @@ struct BillingLogin: View {
         
         sheetTwoFA = false
         pendingTwoFAToken = nil
+        
         if isSignUp {
             name = ""
         }
@@ -224,6 +240,26 @@ struct BillingLogin: View {
             .buttonStyle(.borderedProminent)
             .disabled(twoFACode.trimmingCharacters(in: .whitespaces).count < 6 || vm.isVerifyingTwoFA)
         }
+    }
+    
+    private func socialButton(_ provider: String, isLoading: Bool, action: @escaping () -> Void) -> some View {
+        Button {
+            action()
+        } label: {
+            if isLoading {
+                HStack {
+                    ProgressView()
+                    Text("\(socialTitle(for: provider))...")
+                }
+            } else {
+                Text(socialTitle(for: provider))
+            }
+        }
+        .disabled(isLoading)
+    }
+    
+    private func socialTitle(for provider: String) -> String {
+        isSignUp ? "Sign up with \(provider)" : "Sign in with \(provider)"
     }
 }
 

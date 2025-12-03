@@ -74,12 +74,13 @@ struct AppContainer: View {
             }
         }
 #endif
-#if os(iOS)
         .onOpenURL {
+            print("🔗 Received URL:", $0)
+#if os(iOS)
             linking.handleDeepLink($0)
             billingOAuth.handleCallback($0)
-        }
 #endif
+        }
         .alert("Authentication with session", isPresented: $linking.alertAuth) {
             Button("Confirm") {
                 auth()

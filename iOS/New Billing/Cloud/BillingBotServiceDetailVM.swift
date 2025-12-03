@@ -192,6 +192,7 @@ final class BillingBotServiceDetailVM {
     
     private func request(path: String, method: String = "GET", body: Data? = nil) async -> Data? {
         let token = ValueStore().testAccessToken
+        
         if token.isEmpty {
             lastError = "Missing session"
             print("Bot request missing token")

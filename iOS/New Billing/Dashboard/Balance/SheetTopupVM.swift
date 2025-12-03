@@ -35,7 +35,6 @@ final class SheetTopupVM {
         }
         
         var request = URLRequest(url: url)
-        request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         

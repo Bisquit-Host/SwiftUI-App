@@ -11,6 +11,8 @@
 		<string>webcredentials:my.bisquit.host?mode=developer</string>
 		<string>webcredentials:test-api.bisquit.host?mode=developer</string>
 		<string>webcredentials:bisquit.host?mode=developer</string>
+		<string>applinks:test-my.bisquit.host?mode=developer</string>
+		<string>applinks:my.bisquit.host?mode=developer</string>
 	</array>
 	<key>com.apple.developer.game-center</key>
 	<true/>

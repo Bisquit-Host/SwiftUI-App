@@ -209,14 +209,6 @@
 			);
 			name = "Embed Foundation Extensions";
 		};
-		F3D807072DCD774F00598908 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			dstPath = "";
-			dstSubfolder = Frameworks;
-			files = (
-			);
-			name = "Embed Frameworks";
-		};
 		F3D8070B2DCD77C400598908 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			dstPath = "";
@@ -1471,7 +1463,6 @@
 				F3F304BC29BDDF7D00F004B9 /* Frameworks */,
 				F3464D012A862D2D00188B0C /* Embed ExtensionKit Extensions */,
 				F36710372C99C3A200A8901A /* Embed Foundation Extensions */,
-				F3D807072DCD774F00598908 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
