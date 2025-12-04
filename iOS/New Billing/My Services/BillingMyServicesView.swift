@@ -23,8 +23,8 @@ struct BillingMyServicesView: View {
                     .environment(dashboardVM)
             }
         }
-        .listStyle(.insetGrouped)
         .navigationTitle("My services")
+        .listStyle(.insetGrouped)
         .refreshableTask {
             async let cloud: () = cloudVM.loadServices()
             async let game: () = gameVM.loadServices()
