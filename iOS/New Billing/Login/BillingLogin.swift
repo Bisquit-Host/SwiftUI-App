@@ -27,13 +27,13 @@ struct BillingLogin: View {
             if isSignUp {
                 TextField("Name", text: $name)
                     .textContentType(.name)
-                    .padding(12)
+                    .padding(.horizontal)
+                    .frame(height: 50)
                     .background(.primary.opacity(0.04), in: .capsule)
                     .overlay {
                         Capsule()
                             .stroke(.primary.opacity(0.05), lineWidth: 1)
                     }
-                    .frame(height: 50)
             }
             
             TextField("Login", text: $store.login)
@@ -41,23 +41,23 @@ struct BillingLogin: View {
                 .keyboardType(.emailAddress)
                 .textContentType(.emailAddress)
                 .textInputAutocapitalization(.never)
-                .padding(12)
+                .padding(.horizontal)
+                .frame(height: 50)
                 .background(.primary.opacity(0.04), in: .capsule)
                 .overlay {
                     Capsule()
                         .stroke(.primary.opacity(0.05), lineWidth: 1)
                 }
-                .frame(height: 50)
             
             SecureField("Password", text: $store.password)
                 .textContentType(.password)
-                .padding(12)
+                .padding(.horizontal)
+                .frame(height: 50)
                 .background(.primary.opacity(0.04), in: .capsule)
                 .overlay {
                     Capsule()
                         .stroke(.primary.opacity(0.05), lineWidth: 1)
                 }
-                .frame(height: 50)
             
             Button {
                 sheetHcaptcha = true
@@ -79,21 +79,21 @@ struct BillingLogin: View {
             .frame(maxWidth: .infinity)
             .glassEffect()
             
-            if !isSignUp {
-                HStack {
-                    VStack {
-                        Divider()
-                    }
-                    
-                    Text("or")
-                        .secondary()
-                    
-                    VStack {
-                        Divider()
-                    }
+            HStack {
+                VStack {
+                    Divider()
                 }
-                .padding()
                 
+                Text("or")
+                    .secondary()
+                
+                VStack {
+                    Divider()
+                }
+            }
+            .padding()
+            
+            if !isSignUp {
                 Button {
                     passkeyLogin()
                 } label: {
@@ -110,25 +110,11 @@ struct BillingLogin: View {
                     }
                 }
                 .disabled(vm.isPasskeyLoading)
+                .foregroundStyle(.foreground)
                 .frame(height: 50)
                 .frame(maxWidth: .infinity)
                 .glassEffect()
-                .foregroundStyle(.foreground)
             }
-            
-            HStack {
-                VStack {
-                    Divider()
-                }
-                
-                Text("or")
-                    .secondary()
-                
-                VStack {
-                    Divider()
-                }
-            }
-            .padding()
             
             HStack {
                 socialButton("GitHub", img: .gitHub, isLoading: oauthVM.isLinkingGitHub) {
