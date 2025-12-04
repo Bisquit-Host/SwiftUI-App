@@ -25,6 +25,23 @@ struct TicketMessageRow: View {
             let media = message.media ?? []
             let hasContent = !text.isEmpty || !media.isEmpty
             
+            HStack(spacing: 5) {
+                Group {
+                    if isCurrentUser {
+                        Text("You")
+                    } else {
+                        Text(message.user.name)
+                    }
+                }
+                .caption(.semibold)
+                
+                Text("•")
+                
+                Text(iso8601RelativeDate(message.createdAt))
+                    .caption2()
+            }
+            .secondary()
+            
             if hasContent {
                 VStack(alignment: .leading, spacing: 8) {
                     if !text.isEmpty {
@@ -50,18 +67,6 @@ struct TicketMessageRow: View {
                 }
                 .padding(10)
                 .background(bubbleBackground, in: .rect(cornerRadius: 12))
-            }
-            
-            HStack {
-                if !isCurrentUser {
-                    Text(message.user.name)
-                        .caption(.semibold)
-                        .secondary()
-                }
-                
-                Text(iso8601RelativeDate(message.createdAt))
-                    .caption2()
-                    .secondary()
             }
         }
         .frame(maxWidth: .infinity, alignment: isCurrentUser ? .trailing : .leading)
