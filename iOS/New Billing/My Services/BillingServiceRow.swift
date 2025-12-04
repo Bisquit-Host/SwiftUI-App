@@ -1,23 +1,9 @@
 import SwiftUI
 
-enum BillingAnyService: Identifiable {
-    case cloud(BillingCloudServiceSummary),
-         game(BillingGameServiceSummary),
-         bot(BillingBotServiceSummary)
-    
-    var id: Int {
-        switch self {
-        case .cloud(let service): service.id
-        case .game(let service): service.id
-        case .bot(let service): service.id
-        }
-    }
-}
-
 struct BillingServiceRow: View {
-    private let service: BillingAnyService
+    private let service: BillingMyService
     
-    init(_ service: BillingAnyService) {
+    init(_ service: BillingMyService) {
         self.service = service
     }
     
@@ -37,13 +23,14 @@ struct BillingServiceRow: View {
             
             HStack(spacing: 6) {
                 if let flag = flagUrl, let url = URL(string: flag) {
-                    AsyncImage(url: url) { phase in
-                        switch phase {
+                    AsyncImage(url: url) {
+                        switch $0 {
                         case .success(let image):
                             image
                                 .resizable()
                                 .frame(width: 20, height: 14)
                                 .clipShape(.rect(cornerRadius: 2))
+                            
                         default:
                             RoundedRectangle(cornerRadius: 3)
                                 .fill(.gray.opacity(0.2))
@@ -128,11 +115,13 @@ struct BillingServiceRow: View {
     
     private var priceText: String {
         let price: Double
+        
         switch service {
         case .cloud(let service): price = service.price
         case .game(let service): price = service.price
         case .bot(let service): price = service.price
         }
+        
         return "\(Int(price))₽/mo"
     }
 }

@@ -37,7 +37,7 @@ struct BillingMyServicesView: View {
     // MARK: - Sections
     
     @ViewBuilder
-    private func section(_ title: String, services: [BillingAnyService], isLoading: Bool, error: String?, detail: @escaping (Int) -> some View) -> some View {
+    private func section(_ title: String, services: [BillingMyService], isLoading: Bool, error: String?, detail: @escaping (Int) -> some View) -> some View {
         Section(title) {
             if isLoading && services.isEmpty {
                 ProgressView()
