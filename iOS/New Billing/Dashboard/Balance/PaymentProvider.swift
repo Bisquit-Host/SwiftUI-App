@@ -1,14 +1,9 @@
 import SwiftUI
 
 struct PaymentProvider: Identifiable, Equatable {
-    enum Icon: Equatable {
-        case asset(ImageResource),
-             system(String)
-    }
-    
     let id: String
     let name: String
-    let icon: Icon
+    let icon: PaymentProviderIcon
     let tint: Color
     let method: String?
     
@@ -21,8 +16,13 @@ struct PaymentProvider: Identifiable, Equatable {
             
         default:
             [
-                PaymentProvider(id: "stripe", name: "Stripe", icon: .system("creditcard.fill"), tint: .indigo, method: "stripe")
+                PaymentProvider(id: "stripe", name: "Stripe", icon: .asset(.stripe), tint: .indigo, method: "stripe")
             ]
         }
     }
+}
+
+enum PaymentProviderIcon: Equatable {
+    case asset(ImageResource),
+         system(String)
 }
