@@ -70,11 +70,7 @@ struct BillingHostingPlansView: View {
             }
         }
         .sheet(item: $orderContext) { context in
-            BillingHostingOrderSheet(
-                context: context,
-                priceText: vm.formattedPrice(for: context.plan, currency: nil),
-                vm: vm
-            )
+            BillingHostingOrderSheet(context: context, priceText: vm.formattedPrice(for: context.plan, currency: nil), vm: vm)
         }
     }
     
@@ -138,10 +134,10 @@ struct BillingHostingPlansView: View {
             }
             .padding(.vertical, 8)
             .padding(.horizontal, 12)
-            .background(
+            .background {
                 RoundedRectangle(cornerRadius: 12)
                     .fill(isSelected ? Color.accentColor.opacity(0.12) : Color(.systemBackground).opacity(0.6))
-            )
+            }
             .overlay {
                 RoundedRectangle(cornerRadius: 12)
                     .stroke(isSelected ? Color.accentColor.opacity(0.4) : .primary.opacity(0.05), lineWidth: 1)
