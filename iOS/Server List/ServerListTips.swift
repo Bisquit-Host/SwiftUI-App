@@ -30,14 +30,6 @@ struct ServerListTips: View {
                 }
             }
             
-            if TipServerCardContextMenu().status == .available {
-                Button {
-                    TipServerCardContextMenu().invalidate(reason: .tipClosed)
-                } label: {
-                    serverCardContextMenuTip()
-                }
-            }
-            
             if TipSuspendedServer().status == .available {
                 Button {
                     vm.showBilling = true
@@ -57,7 +49,6 @@ struct ServerListTips: View {
             
             twoFaTip($securityTasks.alertTwoFA)
             
-            serverCardContextMenuTip()
             suspendedServerTip()
 #endif
         }
@@ -81,10 +72,6 @@ struct ServerListTips: View {
     
     private func twoFaTip(_ isPresented: Binding<Bool>) -> some View {
         TipView(TipEnable2FA(), isPresented: isPresented)
-    }
-    
-    private func serverCardContextMenuTip() -> some View {
-        TipView(TipServerCardContextMenu())
     }
     
     private func suspendedServerTip() -> some View {
