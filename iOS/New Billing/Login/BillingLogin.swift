@@ -22,10 +22,6 @@ struct BillingLogin: View {
         return loginEmpty || passwordEmpty || nameEmpty || vm.isSubmitting
     }
     
-    private var primaryButtonTitle: String {
-        isSignUp ? "Create account" : "Continue"
-    }
-    
     var body: some View {
         List {
             Section {
@@ -60,7 +56,7 @@ struct BillingLogin: View {
                             Text("Please wait...")
                         }
                     } else {
-                        Text(primaryButtonTitle)
+                        Text(isSignUp ? "Create account" : "Continue")
                     }
                 }
                 .disabled(captchaButtonDisabled)
@@ -266,5 +262,6 @@ struct BillingLogin: View {
 #Preview {
     BillingLogin()
         .darkSchemePreferred()
+        .environment(OAuthVM())
         .environmentObject(ValueStore())
 }
