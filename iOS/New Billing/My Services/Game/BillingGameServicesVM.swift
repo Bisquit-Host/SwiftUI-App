@@ -14,7 +14,10 @@ final class BillingGameServicesVM {
         guard !isLoading else { return }
         isLoading = true
         lastError = nil
-        defer { isLoading = false }
+        
+        defer {
+            isLoading = false
+        }
         
         guard let url = URL(string: path) else {
             lastError = "Invalid URL"
@@ -22,6 +25,7 @@ final class BillingGameServicesVM {
         }
         
         let token = ValueStore().testAccessToken
+        
         if token.isEmpty {
             lastError = "Missing session"
             return

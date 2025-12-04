@@ -11,7 +11,9 @@ final class BillingCloudServicesVM {
         isLoading = true
         lastError = nil
         
-        defer { isLoading = false }
+        defer {
+            isLoading = false
+        }
         
         guard let url = URL(string: "https://test-api.bisquit.host/cloud") else {
             lastError = "Invalid URL"
