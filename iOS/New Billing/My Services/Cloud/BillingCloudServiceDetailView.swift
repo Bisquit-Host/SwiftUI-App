@@ -14,6 +14,7 @@ struct BillingCloudServiceDetailView: View {
     @State private var renewMonths = 1
     @State private var lastRenewAmount: Double?
     @State private var selectedUpgradeId: Int?
+    @State private var showRenameAlert = false
     
     var body: some View {
         ScrollView {
@@ -52,8 +53,16 @@ struct BillingCloudServiceDetailView: View {
         .navigationTitle("Service #\(serviceId)")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            if vm.isPerformingAction {
-                ProgressView()
+            ToolbarItem(placement: .topBarTrailing) {
+                if vm.isPerformingAction {
+                    ProgressView()
+                } else {
+                    Button {
+                        showRenameAlert = true
+                    } label: {
+                        Image(systemName: "ellipsis")
+                    }
+                }
             }
         }
         .refreshableTask {
@@ -77,6 +86,19 @@ struct BillingCloudServiceDetailView: View {
             if selectedUpgradeId == nil {
                 selectedUpgradeId = vm.changeablePackages.first?.id
             }
+        }
+        .alert("Rename service", isPresented: $showRenameAlert, presenting: vm.service) { service in
+            TextField("New name", text: $pendingName)
+                .textInputAutocapitalization(.never)
+                .autocorrectionDisabled()
+            
+            Button("Save") {
+                Task {
+                    await vm.rename(pendingName.isEmpty ? service.name : pendingName, serviceId: service.id)
+                }
+            }
+            
+            Button("Cancel", role: .cancel) { }
         }
         .safariCover($showVnc, url: "https://test-my.bisquit.host/cloud/\(serviceId)?tab=console")
     }
@@ -113,35 +135,16 @@ struct BillingCloudServiceDetailView: View {
                         .secondary()
                 }
                 
-                Button {
-                    showVnc = true
-                } label: {
-                    Label("Console", systemImage: "display")
-                        .footnote()
-                        .foregroundStyle(.blue)
-                }
+            Button {
+                showVnc = true
+            } label: {
+                Label("Console", systemImage: "display")
+                    .footnote()
+                    .foregroundStyle(.blue)
             }
-            
-            VStack(alignment: .leading, spacing: 8) {
-                TextField("New name", text: $pendingName)
-                    .textInputAutocapitalization(.never)
-                    .autocorrectionDisabled()
-                
-                Button {
-                    Task {
-                        await vm.rename(pendingName.isEmpty ? service.name : pendingName, serviceId: service.id)
-                    }
-                } label: {
-                    Text("Change name")
-                        .frame(maxWidth: .infinity)
-                }
-                .buttonStyle(.borderedProminent)
-                .disabled(vm.isPerformingAction)
-            }
-            .padding()
-            .background(.ultraThinMaterial, in: .rect(cornerRadius: 14))
         }
     }
+}
     
     private func infoSection(_ service: BillingCloudServiceDetails) -> some View {
         BillingSectionCard("Details") {

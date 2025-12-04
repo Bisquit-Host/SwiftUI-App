@@ -72,6 +72,7 @@ final class BillingGameServiceDetailVM {
         
         await performAction {
             guard await self.request(path: "/game/\(serviceId)/name", method: "PATCH", body: payload) != nil else { return }
+            
             if let current = self.service {
                 self.service = BillingGameServiceDetails(
                     id: current.id,
@@ -87,7 +88,6 @@ final class BillingGameServiceDetailVM {
                     location: current.location
                 )
             }
-            self.actionMessage = "Name updated"
         }
     }
     

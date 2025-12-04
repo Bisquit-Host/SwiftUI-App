@@ -62,6 +62,7 @@ final class BillingBotServiceDetailVM {
     
     func rename(_ newName: String, serviceId: Int) async {
         let trimmed = newName.trimmingCharacters(in: .whitespacesAndNewlines)
+        
         guard !trimmed.isEmpty else {
             lastError = "Enter a name"
             return
@@ -72,6 +73,7 @@ final class BillingBotServiceDetailVM {
         
         await performAction {
             guard await self.request(path: "/bot/\(serviceId)/name", method: "PATCH", body: payload) != nil else { return }
+            
             if let current = self.service {
                 self.service = BillingBotServiceDetails(
                     id: current.id,
@@ -87,7 +89,6 @@ final class BillingBotServiceDetailVM {
                     location: current.location
                 )
             }
-            self.actionMessage = "Name updated"
         }
     }
     

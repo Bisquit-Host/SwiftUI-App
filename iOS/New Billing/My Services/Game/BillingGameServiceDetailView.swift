@@ -10,6 +10,7 @@ struct BillingGameServiceDetailView: View {
     @State private var renewMonths = 1
     @State private var lastRenewAmount: Double?
     @State private var selectedUpgradeId: Int?
+    @State private var showRenameAlert = false
     
     var body: some View {
         ScrollView {
@@ -42,8 +43,16 @@ struct BillingGameServiceDetailView: View {
         .navigationTitle("Game service #\(serviceId)")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            if vm.isPerformingAction {
-                ProgressView()
+            ToolbarItem(placement: .topBarTrailing) {
+                if vm.isPerformingAction {
+                    ProgressView()
+                } else {
+                    Button {
+                        showRenameAlert = true
+                    } label: {
+                        Image(systemName: "ellipsis")
+                    }
+                }
             }
         }
         .task {
@@ -63,6 +72,17 @@ struct BillingGameServiceDetailView: View {
             if selectedUpgradeId == nil {
                 selectedUpgradeId = vm.changeablePackages.first?.id
             }
+        }
+        .alert("Rename service", isPresented: $showRenameAlert, presenting: vm.service) { service in
+            TextField("New name", text: $pendingName)
+                .textInputAutocapitalization(.never)
+                .autocorrectionDisabled()
+            
+            Button("Save") {
+                Task { await vm.rename(pendingName.isEmpty ? service.name : pendingName, serviceId: service.id) }
+            }
+            
+            Button("Cancel", role: .cancel) { }
         }
     }
     
@@ -109,23 +129,6 @@ struct BillingGameServiceDetailView: View {
                     .footnote()
                     .secondary()
             }
-            
-            VStack(alignment: .leading, spacing: 8) {
-                TextField("New name", text: $pendingName)
-                    .textInputAutocapitalization(.never)
-                    .autocorrectionDisabled()
-                
-                Button {
-                    Task { await vm.rename(pendingName.isEmpty ? service.name : pendingName, serviceId: service.id) }
-                } label: {
-                    Text("Rename")
-                        .frame(maxWidth: .infinity)
-                }
-                .buttonStyle(.borderedProminent)
-                .disabled(vm.isPerformingAction)
-            }
-            .padding()
-            .background(.ultraThinMaterial, in: .rect(cornerRadius: 14))
         }
     }
     

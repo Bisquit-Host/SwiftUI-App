@@ -22,7 +22,9 @@ final class BillingCloudServiceDetailVM {
         lastError = nil
         actionMessage = nil
         
-        defer { isLoading = false }
+        defer {
+            isLoading = false
+        }
         
         await withTaskGroup(of: Void.self) { group in
             group.addTask { await self.fetchDetails(serviceId) }
@@ -44,12 +46,13 @@ final class BillingCloudServiceDetailVM {
         } catch {
             lastError = error.localizedDescription
             print("Cloud detail decode error:", error)
+            
             if let raw = String(data: data, encoding: .utf8) {
                 print("Raw detail:", raw)
             }
         }
     }
-
+    
     func fetchChangeablePackages(_ serviceId: Int) async {
         guard let data = await request(path: "/cloud/\(serviceId)/change-package/packages") else { return }
         
@@ -61,6 +64,7 @@ final class BillingCloudServiceDetailVM {
         } catch {
             lastError = error.localizedDescription
             print("Cloud changeable packages decode error:", error)
+            
             if let raw = String(data: data, encoding: .utf8) {
                 print("Raw packages:", raw)
             }
@@ -78,6 +82,7 @@ final class BillingCloudServiceDetailVM {
         } catch {
             lastError = error.localizedDescription
             print("Cloud history decode error:", error)
+            
             if let raw = String(data: data, encoding: .utf8) {
                 print("Raw history:", raw)
             }
@@ -95,6 +100,7 @@ final class BillingCloudServiceDetailVM {
         } catch {
             lastError = error.localizedDescription
             print("Cloud charts decode error:", error)
+            
             if let raw = String(data: data, encoding: .utf8) {
                 print("Raw charts:", raw)
             }
@@ -112,6 +118,7 @@ final class BillingCloudServiceDetailVM {
         } catch {
             lastError = error.localizedDescription
             print("Cloud OS list decode error:", error)
+            
             if let raw = String(data: data, encoding: .utf8) {
                 print("Raw OS list:", raw)
             }
@@ -120,6 +127,7 @@ final class BillingCloudServiceDetailVM {
     
     func rename(_ newName: String, serviceId: Int) async {
         let trimmed = newName.trimmingCharacters(in: .whitespacesAndNewlines)
+        
         guard !trimmed.isEmpty else {
             lastError = "Enter a name"
             return
@@ -130,6 +138,7 @@ final class BillingCloudServiceDetailVM {
         
         await performAction {
             guard await self.request(path: "/cloud/\(serviceId)/name", method: "PATCH", body: payload) != nil else { return }
+            
             if let current = self.service {
                 self.service = BillingCloudServiceDetails(
                     id: current.id,
@@ -150,6 +159,7 @@ final class BillingCloudServiceDetailVM {
                     location: current.location
                 )
             }
+            
             self.actionMessage = "Name updated"
         }
     }
@@ -180,7 +190,7 @@ final class BillingCloudServiceDetailVM {
             self.actionMessage = "Reinstall started"
         }
     }
-
+    
     func changeAutorenew(_ enabled: Bool, serviceId: Int) async {
         let body = ["autorenew": enabled]
         guard let payload = try? JSONSerialization.data(withJSONObject: body) else { return }
@@ -207,10 +217,11 @@ final class BillingCloudServiceDetailVM {
                     location: current.location
                 )
             }
+            
             self.actionMessage = enabled ? "Auto-extend enabled" : "Auto-extend disabled"
         }
     }
-
+    
     func renew(months: Int, serviceId: Int) async -> BillingServiceRenewResponse? {
         guard [1, 3, 6, 12].contains(months) else {
             lastError = "Unsupported period"
@@ -253,6 +264,7 @@ final class BillingCloudServiceDetailVM {
                                 location: current.location
                             )
                         }
+                        
                         self.actionMessage = "Extended for \(months) mo."
                         continuation.resume(returning: response)
                     } catch {
@@ -264,13 +276,14 @@ final class BillingCloudServiceDetailVM {
             }
         }
     }
-
+    
     func changePackage(to packageId: Int, serviceId: Int) async {
         let body = ["package": packageId]
         guard let payload = try? JSONSerialization.data(withJSONObject: body) else { return }
         
         await performAction {
             guard await self.request(path: "/cloud/\(serviceId)/change-package", method: "POST", body: payload) != nil else { return }
+            
             self.actionMessage = "Upgrade requested"
             await self.fetchDetails(serviceId)
         }
@@ -284,15 +297,16 @@ final class BillingCloudServiceDetailVM {
                 print("Power action \(action) failed:", self.lastError ?? "unknown error")
                 return
             }
+            
             if let raw = String(data: data, encoding: .utf8), !raw.isEmpty {
                 print("Power action response:", raw)
             }
+            
             self.actionMessage = "Action sent: \(action.capitalized)"
         }
     }
     
     // MARK: - Networking
-    
     private func performAction(_ work: @escaping () async -> Void) async {
         guard !isPerformingAction else { return }
         
