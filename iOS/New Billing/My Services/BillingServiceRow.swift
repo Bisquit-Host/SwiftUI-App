@@ -8,56 +8,54 @@ struct BillingServiceRow: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack {
+        HStack {
+            VStack(alignment: .leading) {
                 Text(name)
                     .subheadline(.semibold)
                 
-                Spacer()
-                
-                Label(state.title, systemImage: "circle.fill")
-                    .labelStyle(.titleAndIcon)
-                    .caption(.semibold)
-                    .foregroundStyle(state.color)
-            }
-            
-            HStack(spacing: 6) {
-                if let flag = flagUrl, let url = URL(string: flag) {
-                    AsyncImage(url: url) {
-                        switch $0 {
-                        case .success(let image):
-                            image
-                                .resizable()
-                                .frame(width: 20, height: 14)
-                                .clipShape(.rect(cornerRadius: 2))
-                            
-                        default:
-                            RoundedRectangle(cornerRadius: 3)
-                                .fill(.gray.opacity(0.2))
-                                .frame(width: 20, height: 14)
+                HStack(spacing: 6) {
+                    if let flag = flagUrl, let url = URL(string: flag) {
+                        AsyncImage(url: url) {
+                            switch $0 {
+                            case .success(let image):
+                                image
+                                    .resizable()
+                                    .frame(width: 20, height: 14)
+                                    .clipShape(.rect(cornerRadius: 2))
+                                
+                            default:
+                                RoundedRectangle(cornerRadius: 3)
+                                    .fill(.gray.opacity(0.2))
+                                    .frame(width: 20, height: 14)
+                            }
                         }
+                    }
+                    
+                    Text(location)
+                        .footnote()
+                        .secondary()
+                    
+                    if let system {
+                        Text("• \(system)")
+                            .footnote()
+                            .secondary()
                     }
                 }
                 
-                Text(location)
-                    .footnote()
-                    .secondary()
-                
-                if let system {
-                    Text("• \(system)")
-                        .footnote()
-                        .secondary()
-                }
-            }
-            
-            HStack {
                 if let ip {
                     Label(ip, systemImage: "network")
                         .footnote()
                         .secondary()
                 }
-                
-                Spacer()
+            }
+            
+            Spacer()
+            
+            VStack(alignment: .trailing) {
+                Label(state.title, systemImage: "circle.fill")
+                    .labelIconToTitleSpacing(5)
+                    .caption(.semibold)
+                    .foregroundStyle(state.color)
                 
                 Text(priceText)
                     .footnote()
