@@ -91,6 +91,14 @@ final class SupportTicketsVM {
             return nil
         }
         
+        if let oversized = attachments.first(where: { $0.isTooLarge }) {
+            let sizeString = AttachmentLimits.readableSize(for: oversized.data.count)
+            let limitString = AttachmentLimits.readableSize(for: AttachmentLimits.maxBytes)
+            
+            SystemAlert.error("File too large", subtitle: "\(oversized.filename) is \(sizeString). Max \(limitString) per file.")
+            return nil
+        }
+        
         let boundary = UUID().uuidString
         guard let url = URL(string: "\(baseURL)/support/tickets") else { return nil }
         

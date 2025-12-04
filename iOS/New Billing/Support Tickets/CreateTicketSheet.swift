@@ -62,7 +62,7 @@ struct CreateTicketSheet: View {
                 .buttonStyle(.bordered)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
-                Text("Up to 5 files. Allowed: png, jpg, jpeg, gif, svg, webp, txt, js, php, py, json, md")
+                Text("Up to 5 files, max 5 MB each. Allowed: png, jpg, jpeg, gif, svg, webp, txt, js, php, py, json, md")
                     .caption()
                     .secondary()
             }

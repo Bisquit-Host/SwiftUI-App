@@ -41,6 +41,16 @@ final class SupportTicketDetailsVM {
             return false
         }
         
+        if let oversized = attachments.first(where: { $0.isTooLarge }) {
+            let sizeString = AttachmentLimits.readableSize(for: oversized.data.count)
+            let limitString = AttachmentLimits.readableSize(for: AttachmentLimits.maxBytes)
+            
+            let message = "\(oversized.filename) is \(sizeString). Max \(limitString) per file."
+            errorMessage = "File too large. " + message
+            SystemAlert.error("File too large", subtitle: message)
+            return false
+        }
+        
         isSending = true
         defer { isSending = false }
         

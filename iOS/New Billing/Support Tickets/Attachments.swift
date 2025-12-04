@@ -2,6 +2,18 @@ import SwiftUI
 import PhotosUI
 import UniformTypeIdentifiers
 
+enum AttachmentLimits {
+    static let maxBytes = 5 * 1024 * 1024
+    
+    static func readableSize(for bytes: Int) -> String {
+        let formatter = ByteCountFormatter()
+        formatter.allowedUnits = [.useMB]
+        formatter.countStyle = .file
+        
+        return formatter.string(fromByteCount: Int64(bytes))
+    }
+}
+
 struct PendingAttachment: Identifiable, Hashable {
     let id = UUID()
     let filename: String
@@ -14,11 +26,16 @@ struct PendingAttachment: Identifiable, Hashable {
         
         return formatter.string(fromByteCount: Int64(data.count))
     }
+    
+    var isTooLarge: Bool {
+        data.count > AttachmentLimits.maxBytes
+    }
 }
 
 enum AttachmentFactory {
     static func from(url: URL) -> PendingAttachment? {
         guard let data = try? Data(contentsOf: url) else { return nil }
+        guard validateSize(data, filename: url.lastPathComponent) else { return nil }
         
         let ext = url.pathExtension.lowercased()
         let mime = mimeType(for: ext)
@@ -33,7 +50,21 @@ enum AttachmentFactory {
         let suggested = photoItem.itemIdentifier?.suggestedFilename ?? "photo-\(UUID().uuidString).jpg"
         let filename = suggested.contains(".") ? suggested : suggested + ".jpg"
         
+        guard validateSize(data, filename: filename) else { return nil }
+        
         return PendingAttachment(filename: filename, contentType: mime, data: data)
+    }
+    
+    private static func validateSize(_ data: Data, filename: String) -> Bool {
+        guard data.count <= AttachmentLimits.maxBytes else {
+            let sizeString = AttachmentLimits.readableSize(for: data.count)
+            let limitString = AttachmentLimits.readableSize(for: AttachmentLimits.maxBytes)
+            
+            SystemAlert.error("File too large", subtitle: "\(filename) is \(sizeString). Max \(limitString) per file.")
+            return false
+        }
+        
+        return true
     }
     
     static func mimeType(for ext: String) -> String {
