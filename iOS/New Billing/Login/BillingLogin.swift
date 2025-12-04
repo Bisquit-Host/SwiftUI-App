@@ -24,17 +24,16 @@ struct BillingLogin: View {
     
     var body: some View {
         ScrollView {
-            Section {
-                Picker("Mode", selection: $isSignUp) {
-                    Text("Sign in").tag(false)
-                    Text("Sign up").tag(true)
-                }
-                .pickerStyle(.segmented)
-            }
-            
             if isSignUp {
                 TextField("Name", text: $name)
                     .textContentType(.name)
+                    .padding(12)
+                    .background(.primary.opacity(0.04), in: .capsule)
+                    .overlay {
+                        Capsule()
+                            .stroke(.primary.opacity(0.05), lineWidth: 1)
+                    }
+                    .frame(height: 50)
             }
             
             TextField("Login", text: $store.login)
@@ -60,63 +59,61 @@ struct BillingLogin: View {
                 }
                 .frame(height: 50)
             
-            Section {
+            Button {
+                sheetHcaptcha = true
+            } label: {
+                if vm.isSubmitting {
+                    HStack {
+                        ProgressView()
+                        Text("Please wait...")
+                    }
+                } else {
+                    Text(isSignUp ? "Create account" : "Continue")
+                }
+            }
+            .semibold()
+            .rounded()
+            .disabled(captchaButtonDisabled)
+            .foregroundStyle(.foreground)
+            .frame(minHeight: 50)
+            .frame(maxWidth: .infinity)
+            .glassEffect()
+            
+            if !isSignUp {
+                HStack {
+                    VStack {
+                        Divider()
+                    }
+                    
+                    Text("or")
+                        .secondary()
+                    
+                    VStack {
+                        Divider()
+                    }
+                }
+                .padding()
+                
                 Button {
-                    sheetHcaptcha = true
+                    passkeyLogin()
                 } label: {
-                    if vm.isSubmitting {
+                    if vm.isPasskeyLoading {
                         HStack {
                             ProgressView()
-                            Text("Please wait...")
+                            Text("Signing in with passkey...")
                         }
                     } else {
-                        Text(isSignUp ? "Create account" : "Continue")
+                        Label("Sign in with passkey", systemImage: "person.badge.key.fill")
+                            .labelIconToTitleSpacing(10)
+                            .semibold()
+                            .rounded()
                     }
                 }
-                .semibold()
-                .rounded()
-                .disabled(captchaButtonDisabled)
-                .foregroundStyle(.foreground)
-                .frame(minHeight: 50)
+                .disabled(vm.isPasskeyLoading)
+                .frame(height: 50)
                 .frame(maxWidth: .infinity)
                 .glassEffect()
-                
-                if !isSignUp {
-                    HStack {
-                        VStack {
-                            Divider()
-                        }
-                        
-                        Text("or")
-                            .secondary()
-                        
-                        VStack {
-                            Divider()
-                        }
-                    }
-                    .padding()
-                    
-                    Button {
-                        passkeyLogin()
-                    } label: {
-                        if vm.isPasskeyLoading {
-                            HStack {
-                                ProgressView()
-                                Text("Signing in with passkey...")
-                            }
-                        } else {
-                            Label("Sign in with passkey", systemImage: "person.badge.key.fill")
-                                .labelIconToTitleSpacing(10)
-                                .semibold()
-                                .rounded()
-                        }
-                    }
-                    .disabled(vm.isPasskeyLoading)
-                    .frame(height: 50)
-                    .frame(maxWidth: .infinity)
-                    .glassEffect()
-                    .foregroundStyle(.foreground)
-                }
+                .foregroundStyle(.foreground)
             }
             
             HStack {
@@ -146,6 +143,15 @@ struct BillingLogin: View {
                     oauthVM.startYandexLinking()
                 }
             }
+        }
+        .scenePadding(.horizontal)
+        .overlay(alignment: .bottom) {
+            Button(isSignUp ? "Sign in" : "Register an account") {
+                withAnimation {
+                    isSignUp.toggle()
+                }
+            }
+            .secondary()
         }
         .sheet($sheetHcaptcha) {
             HCaptchaSheet($captchaToken)
