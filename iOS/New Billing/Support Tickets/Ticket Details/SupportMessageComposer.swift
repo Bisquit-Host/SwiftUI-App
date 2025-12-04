@@ -29,7 +29,21 @@ struct SupportMessageComposer: View {
                     .padding(10)
                     .background(.ultraThinMaterial, in: .rect(cornerRadius: 12))
                 
-                menuButtons
+                VStack {
+                    PhotosPicker(selection: $photoItem, matching: .images, photoLibrary: .shared()) {
+                        Image(systemName: "photo.on.rectangle")
+                            .title3()
+                    }
+                    .buttonStyle(.bordered)
+                    
+                    Button {
+                        showFileImporter = true
+                    } label: {
+                        Image(systemName: "paperclip")
+                            .title3()
+                    }
+                    .buttonStyle(.bordered)
+                }
                 
                 Button {
                     Task {
@@ -67,24 +81,6 @@ struct SupportMessageComposer: View {
                     appendAttachments([attachment])
                 }
             }
-        }
-    }
-    
-    private var menuButtons: some View {
-        VStack {
-            PhotosPicker(selection: $photoItem, matching: .images, photoLibrary: .shared()) {
-                Image(systemName: "photo.on.rectangle")
-                    .title3()
-            }
-            .buttonStyle(.bordered)
-            
-            Button {
-                showFileImporter = true
-            } label: {
-                Image(systemName: "paperclip")
-                    .title3()
-            }
-            .buttonStyle(.bordered)
         }
     }
     
