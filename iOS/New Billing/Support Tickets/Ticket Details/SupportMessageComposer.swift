@@ -15,29 +15,8 @@ struct SupportMessageComposer: View {
             if !attachments.isEmpty {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 8) {
-                        ForEach(attachments) { file in
-                            HStack(spacing: 6) {
-                                Image(systemName: "paperclip")
-                                
-                                VStack(alignment: .leading, spacing: 2) {
-                                    Text(file.filename)
-                                        .lineLimit(1)
-                                    
-                                    Text(file.readableSize)
-                                        .caption()
-                                        .secondary()
-                                }
-                                
-                                Button {
-                                    attachments.removeAll {
-                                        $0.id == file.id
-                                    }
-                                } label: {
-                                    Image(systemName: "xmark.circle.fill")
-                                }
-                            }
-                            .padding(10)
-                            .background(.ultraThinMaterial, in: .rect(cornerRadius: 12))
+                        ForEach(attachments) {
+                            SuportMediaAttachment(for: $0, in: $attachments)
                         }
                     }
                     .padding(.horizontal, 12)
