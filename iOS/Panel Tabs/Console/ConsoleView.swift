@@ -5,7 +5,7 @@ struct ConsoleView: View {
     @Environment(PanelVM.self) private var panelVM
     
     var body: some View {
-        ScrollView(showsIndicators: false) {
+        ScrollView {
             ScrollViewReader { proxy in
                 VStack(alignment: .leading) {
                     ForEach(panelVM.searchedMessages.indices, id: \.self) { index in
@@ -38,6 +38,7 @@ struct ConsoleView: View {
         }
         .environment(vm)
         .environment(panelVM)
+        .scrollIndicators(.never)
         .ignoresSafeArea(.keyboard)
     }
 }

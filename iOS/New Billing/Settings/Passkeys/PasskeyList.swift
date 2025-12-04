@@ -4,7 +4,7 @@ struct PasskeyList: View {
     @State private var vm = PasskeyListVM()
     
     var body: some View {
-        ScrollView(showsIndicators: false) {
+        ScrollView {
             VStack(spacing: 16) {
                 BillingSectionCard("Register new passkey") {
                     VStack(alignment: .leading, spacing: 12) {
@@ -77,10 +77,11 @@ struct PasskeyList: View {
         }
         .navigationTitle("Passkeys")
         .navigationBarTitleDisplayMode(.inline)
-        .background(
+        .scrollIndicators(.never)
+        .background {
             LinearGradient(colors: [.blue.opacity(0.08), Color(.systemBackground)], startPoint: .topLeading, endPoint: .bottomTrailing)
                 .ignoresSafeArea()
-        )
+        }
         .refreshableTask {
             await vm.fetchPasskeys()
         }

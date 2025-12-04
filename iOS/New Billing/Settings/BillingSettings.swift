@@ -20,7 +20,7 @@ struct BillingSettings: View {
     @State private var disableError: String?
     
     var body: some View {
-        ScrollView(showsIndicators: false) {
+        ScrollView {
             VStack(alignment: .leading, spacing: 24) {
                 if let user {
                     VStack(alignment: .leading, spacing: 16) {
@@ -60,6 +60,7 @@ struct BillingSettings: View {
         }
         .navigationTitle("Settings")
         .navigationBarTitleDisplayMode(.inline)
+        .scrollIndicators(.never)
         .refreshableTask {
             await dashboardVM.fetchUserInfo()
         }

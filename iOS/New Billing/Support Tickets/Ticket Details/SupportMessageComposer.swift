@@ -13,7 +13,7 @@ struct SupportMessageComposer: View {
     var body: some View {
         VStack(spacing: 8) {
             if !attachments.isEmpty {
-                ScrollView(.horizontal, showsIndicators: false) {
+                ScrollView(.horizontal) {
                     HStack(spacing: 8) {
                         ForEach(attachments) {
                             SuportMediaAttachment(for: $0, in: $attachments)
@@ -21,6 +21,7 @@ struct SupportMessageComposer: View {
                     }
                     .padding(.horizontal, 12)
                 }
+                .scrollIndicators(.never)
             }
             
             HStack(spacing: 12) {

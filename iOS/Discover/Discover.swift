@@ -6,7 +6,7 @@ struct Discover: View {
     @State private var showMailCover = false
     
     var body: some View {
-        ScrollView(showsIndicators: false) {
+        ScrollView {
             VStack(spacing: 16) {
                 DiscoverCard("https://status.bisquit.host/status/bisquithost") {
                     DiscoverCardLabel("Status", subtitle: "System", image: .status)
@@ -60,6 +60,7 @@ struct Discover: View {
             }
             .padding([.vertical, .bottom], 20)
         }
+        .scrollIndicators(.never)
         .scenePadding(.horizontal)
         .ignoresSafeArea()
         .foregroundStyle(.foreground)

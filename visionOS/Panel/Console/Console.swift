@@ -25,7 +25,7 @@ struct Console: View {
     
     var body: some View {
         VStack {
-            ScrollView(showsIndicators: false) {
+            ScrollView {
                 ScrollViewReader { proxy in
                     VStack(alignment: .leading) {
                         ForEach(panelVM.searchedMessages.indices, id: \.self) { index in
@@ -62,6 +62,7 @@ struct Console: View {
                     }
                 }
             }
+            .scrollIndicators(.never)
             .toolbar {
                 Button("Open in a separate window", systemImage: "macwindow.on.rectangle") {
                     openWindow(id: "console")

@@ -10,13 +10,14 @@ struct ServerList: View {
     var body: some View {
         @Bindable var vm = vm
         
-        ScrollView(showsIndicators: false) {
+        ScrollView {
             ServerListTips()
                 .frame(maxWidth: 440)
             
             ServerListGrid(vm.filteredServers)
         }
         .navigationTitle("Servers")
+        .scrollIndicators(.never)
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden()
         .animation(.default, value: vm.servers)

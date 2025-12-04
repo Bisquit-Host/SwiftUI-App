@@ -13,7 +13,7 @@ struct BillingHostingPlansView: View {
     @State private var orderContext: BillingPlanOrderContext?
     
     var body: some View {
-        ScrollView(showsIndicators: false) {
+        ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 Picker("Service", selection: $category) {
                     ForEach(BillingHostingCategory.allCases) {
@@ -56,6 +56,7 @@ struct BillingHostingPlansView: View {
         }
         .navigationTitle(category.title)
         .navigationSubtitle(category.description)
+        .scrollIndicators(.never)
         .background(.background.opacity(0.9))
         .refreshableTask {
             await vm.loadAll()
@@ -89,7 +90,7 @@ struct BillingHostingPlansView: View {
                 .footnote()
                 .secondary()
             
-            ScrollView(.horizontal, showsIndicators: false) {
+            ScrollView(.horizontal) {
                 HStack(spacing: 8) {
                     ForEach(locations) { location in
                         locationChip(location, isSelected: selectedLocationId == location.id) {
@@ -99,6 +100,7 @@ struct BillingHostingPlansView: View {
                 }
                 .padding(.vertical, 4)
             }
+            .scrollIndicators(.never)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(16)

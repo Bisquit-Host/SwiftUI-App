@@ -27,7 +27,7 @@ struct SheetTopup: View {
     }
     
     var body: some View {
-        ScrollView(showsIndicators: false) {
+        ScrollView {
             VStack {
                 BillingSectionCard("Balance") {
                     BillingBalanceRow("Main", icon: "creditcard.fill", tint: .blue, value: formatted(user.balance))
@@ -75,13 +75,14 @@ struct SheetTopup: View {
                             .frame(width: amountFieldSide * 2 + 8)
                         }
                         
-                        ScrollView(.horizontal, showsIndicators: false) {
+                        ScrollView(.horizontal) {
                             HStack(spacing: 10) {
                                 ForEach(providers) {
                                     TopupProviderCard($0, selectedProvider: $selectedProvider)
                                 }
                             }
                         }
+                        .scrollIndicators(.never)
                         
                         Button {
                             Task {
@@ -112,6 +113,7 @@ struct SheetTopup: View {
         }
         .navigationTitle("Finance stuff")
         .navigationBarTitleDisplayMode(.inline)
+        .scrollIndicators(.never)
         .safariCover($safariCover, url: paymentLink)
         .refreshableTask {
             await vm.fetchOperations(accessToken: store.testAccessToken)

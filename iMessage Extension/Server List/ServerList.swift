@@ -10,12 +10,13 @@ struct ServerList: View {
     var body: some View {
         @Bindable var vm = vm
 
-        ScrollView(showsIndicators: false) {
+        ScrollView {
             ServerListGrid(vm.filteredServers)
                 .padding(4)
                 .padding(.top, 60)
         }
         .navigationBarBackButtonHidden()
+        .scrollIndicators(.never)
         .searchable(text: $vm.searchField)
         //        .background(BisquitFall())
         .refreshableTask {

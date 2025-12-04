@@ -14,7 +14,7 @@ struct ConsoleView: View {
     @State private var lastMessageIndex = 0
     
     var body: some View {
-        ScrollView(showsIndicators: false) {
+        ScrollView {
             ScrollViewReader { proxy in
                 VStack(alignment: .leading) {
                     ForEach(panelVM.searchedMessages.indices, id: \.self) { index in
@@ -52,6 +52,7 @@ struct ConsoleView: View {
             }
         }
         .padding(2)
+        .scrollIndicators(.never)
         .ignoresSafeArea(.keyboard)
     }
 }

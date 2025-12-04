@@ -13,37 +13,34 @@ struct SupportTicketDetails: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            List {
-                Section {
-                    HStack {
-                        Text(vm.ticket.title)
-                            .headline()
-                        
-                        Spacer()
-                        
-                        Text(vm.ticket.status.rawValue.capitalized)
-                            .caption(.semibold)
-                            .padding(.horizontal, 10)
-                            .padding(.vertical, 4)
-                            .background(vm.ticket.status.color.opacity(0.12), in: .capsule)
-                            .foregroundStyle(vm.ticket.status.color)
-                    }
+            ScrollView {
+                HStack {
+                    Text(vm.ticket.title)
+                        .headline()
+                    
+                    Spacer()
+                    
+                    Text(vm.ticket.status.rawValue.capitalized)
+                        .caption(.semibold)
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 4)
+                        .background(vm.ticket.status.color.opacity(0.12), in: .capsule)
+                        .foregroundStyle(vm.ticket.status.color)
                 }
                 
-                Section("Conversation") {
-                    if vm.messages.isEmpty {
-                        ContentUnavailableView("No messages yet", systemImage: "ellipsis.bubble")
-                    } else {
-                        ForEach(vm.messages) {
-                            TicketMessageRow(message: $0, isCurrentUser: $0.userId == vm.ticket.userId) {
-                                selectedMedia = $0
-                            }
-                            .listRowSeparator(.hidden)
+                if vm.messages.isEmpty {
+                    ContentUnavailableView("No messages yet", systemImage: "ellipsis.bubble")
+                } else {
+                    ForEach(vm.messages) {
+                        TicketMessageRow(message: $0, isCurrentUser: $0.userId == vm.ticket.userId) {
+                            selectedMedia = $0
                         }
+                        .listRowSeparator(.hidden)
+                        .scenePadding(.horizontal)
                     }
                 }
             }
-            .listStyle(.insetGrouped)
+            .scrollIndicators(.never)
             
             Divider()
             
