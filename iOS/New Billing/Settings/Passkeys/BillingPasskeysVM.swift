@@ -37,6 +37,7 @@ final class BillingPasskeysVM {
             
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
+            
             let items = try decoder.decode([PasskeyListItem].self, from: data)
             
             passkeys = items
@@ -123,6 +124,7 @@ final class BillingPasskeysVM {
         
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
+        
         return try decoder.decode(PasskeyOptionsResponse<PasskeyRegistrationOptions>.self, from: data)
     }
     
@@ -152,8 +154,14 @@ private func validateResponse(_ response: URLResponse?, data: Data, allowedStatu
     }
     
     guard allowedStatusCodes.contains(http.statusCode) else {
-        let body = String(data: data, encoding: .utf8).flatMap { $0.isEmpty ? nil : $0 }
-        let message = body.map { "Unexpected status code \(http.statusCode): \($0)" }
+        let body = String(data: data, encoding: .utf8).flatMap {
+            $0.isEmpty ? nil : $0
+        }
+        
+        let message = body.map {
+            "Unexpected status code \(http.statusCode): \($0)"
+        }
+        
         ?? "Unexpected status code \(http.statusCode)."
         
         throw NSError(
@@ -161,11 +169,5 @@ private func validateResponse(_ response: URLResponse?, data: Data, allowedStatu
             code: URLError.badServerResponse.rawValue,
             userInfo: [NSLocalizedDescriptionKey: message]
         )
-    }
-}
-
-private extension String {
-    var nonEmpty: String? {
-        isEmpty ? nil : self
     }
 }

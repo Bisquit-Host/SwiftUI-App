@@ -109,8 +109,9 @@ private func validateResponse(_ response: URLResponse?, data: Data, allowedStatu
     
     guard allowedStatusCodes.contains(http.statusCode) else {
         let body = String(data: data, encoding: .utf8).flatMap { $0.isEmpty ? nil : $0 }
+        
         let message = body.map { "Unexpected status code \(http.statusCode): \($0)" }
-        ?? "Unexpected status code \(http.statusCode)."
+        ?? "Unexpected status code \(http.statusCode)"
         
         throw NSError(
             domain: NSURLErrorDomain,
@@ -120,7 +121,7 @@ private func validateResponse(_ response: URLResponse?, data: Data, allowedStatu
     }
 }
 
-private extension String {
+extension String {
     var nonEmpty: String? {
         isEmpty ? nil : self
     }
