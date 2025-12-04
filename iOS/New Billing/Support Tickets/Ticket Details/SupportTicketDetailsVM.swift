@@ -216,21 +216,59 @@ final class SupportTicketDetailsVM {
         }
         
         body.append(Data("--\(boundary)--\r\n".utf8))
-        request.httpBody = body
         
-        do {
-            let (data, response) = try await URLSession.shared.data(for: request)
+        func performUpload(using session: URLSession, request: URLRequest) async throws -> [String] {
+            let (data, response) = try await session.upload(for: request, from: body)
             
             if let http = response as? HTTPURLResponse, http.statusCode >= 400 {
                 let raw = String(data: data, encoding: .utf8) ?? ""
-                errorMessage = "Upload failed (\(http.statusCode)) \(raw)"
-                return nil
+                throw UploadError.server(http.statusCode, detail: raw)
             }
             
             return try JSONDecoder().decode([String].self, from: data)
+        }
+        
+        do {
+            return try await performUpload(using: .shared, request: request)
+        } catch let urlError as URLError where urlError.code == .cannotParseResponse {
+            // Some networks/servers advertise HTTP/3 but respond with malformed frames.
+            // Retry with a fresh session that clears Alt-Svc and disables HTTP/3 racing.
+            var http2Request = request
+            
+            http2Request.assumesHTTP3Capable = false
+            
+            let config = URLSessionConfiguration.ephemeral
+            var headers = config.httpAdditionalHeaders ?? [:]
+            headers["Alt-Svc"] = "clear"
+            config.httpAdditionalHeaders = headers
+            
+            let session = URLSession(configuration: config)
+            
+            do {
+                return try await performUpload(using: session, request: http2Request)
+            } catch {
+                errorMessage = error.localizedDescription
+                return nil
+            }
         } catch {
             errorMessage = error.localizedDescription
             return nil
+        }
+    }
+    
+    private enum UploadError: LocalizedError {
+        case server(Int, detail: String)
+        
+        var errorDescription: String? {
+            switch self {
+            case .server(let code, let detail):
+                let trimmed = detail.trimmingCharacters(in: .whitespacesAndNewlines)
+                if trimmed.isEmpty {
+                    return "Upload failed (\(code))"
+                }
+                
+                return "Upload failed (\(code)) \(trimmed)"
+            }
         }
     }
 }
