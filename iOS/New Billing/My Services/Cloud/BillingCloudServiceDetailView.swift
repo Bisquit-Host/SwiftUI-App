@@ -14,7 +14,7 @@ struct BillingCloudServiceDetailView: View {
     @State private var renewMonths = 1
     @State private var lastRenewAmount: Double?
     @State private var selectedUpgradeId: Int?
-    @State private var showRenameAlert = false
+    @State private var alertRename = false
     
     var body: some View {
         ScrollView {
@@ -60,8 +60,10 @@ struct BillingCloudServiceDetailView: View {
                 if vm.isPerformingAction {
                     ProgressView()
                 } else {
-                    Button {
-                        showRenameAlert = true
+                    Menu {
+                        Button("Rename", systemImage: "pencil") {
+                            alertRename = true
+                        }
                     } label: {
                         Image(systemName: "ellipsis")
                     }
@@ -87,7 +89,7 @@ struct BillingCloudServiceDetailView: View {
                 selectedUpgradeId = vm.changeablePackages.first?.id
             }
         }
-        .alert("Rename service", isPresented: $showRenameAlert, presenting: vm.service) { service in
+        .alert("Rename service", isPresented: $alertRename, presenting: vm.service) { service in
             TextField("New name", text: $pendingName)
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()

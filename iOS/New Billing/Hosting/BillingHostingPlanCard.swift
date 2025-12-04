@@ -103,7 +103,7 @@ struct BillingHostingPlanCard: View {
         }
         
         if let databases = plan.databases {
-            items.append(("externaldrive.fill", "\(databases) DBs"))
+            items.append(("externaldrive.fill", "\(databases) DB's"))
         }
         
         if let backups = plan.backups {

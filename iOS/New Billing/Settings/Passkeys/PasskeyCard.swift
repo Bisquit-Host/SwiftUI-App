@@ -18,20 +18,18 @@ struct PasskeyCard: View {
             HStack(spacing: 12) {
                 ZStack {
                     Circle()
-                        .fill(tint.opacity(0.18))
-                        .frame(width: 38, height: 38)
+                        .frame(38)
+                        .glassEffect(.regular.tint(tint.opacity(0.25)))
                     
                     Image(systemName: "key.fill")
                         .foregroundStyle(tint)
                 }
                 
                 VStack(alignment: .leading, spacing: 6) {
-                    HStack(alignment: .firstTextBaseline, spacing: 6) {
-                        Text(passkey.nickname.flatMap { $0.isEmpty ? nil : $0 } ?? "Passkey #\(passkey.id)")
-                            .subheadline(.semibold)
-                        
-                        badge
-                    }
+                    Text(passkey.nickname.flatMap { $0.isEmpty ? nil : $0 } ?? "Passkey #\(passkey.id)")
+                        .subheadline(.semibold)
+                    
+                    badge
                     
                     Group {
                         if let lastUsed = formattedDate(passkey.lastUsedAt) {
