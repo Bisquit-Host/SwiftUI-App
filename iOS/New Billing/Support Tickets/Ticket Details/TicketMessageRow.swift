@@ -19,21 +19,19 @@ struct TicketMessageRow: View {
         }
     }
     
+    private var bubbleBackground: Color {
+        isCurrentUser ? Color.accentColor.opacity(0.5) : Color.secondary.opacity(0.08)
+    }
+    
     private var bubble: some View {
-        VStack(alignment: isCurrentUser ? .trailing : .leading, spacing: 6) {
+        VStack(alignment: isCurrentUser ? .trailing : .leading, spacing: 0) {
             let text = message.message ?? ""
             let media = message.media ?? []
             let hasContent = !text.isEmpty || !media.isEmpty
             
             HStack(spacing: 5) {
-                Group {
-                    if isCurrentUser {
-                        Text("You")
-                    } else {
-                        Text(message.user.name)
-                    }
-                }
-                .caption(.semibold)
+                Text(isCurrentUser ? "You" : message.user.name)
+                    .caption(.semibold)
                 
                 Text("•")
                 
@@ -66,13 +64,9 @@ struct TicketMessageRow: View {
                     }
                 }
                 .padding(10)
-                .background(bubbleBackground, in: .rect(cornerRadius: 12))
+                .glassEffect(.regular.tint(bubbleBackground), in: .rect(cornerRadius: 12))
             }
         }
         .frame(maxWidth: .infinity, alignment: isCurrentUser ? .trailing : .leading)
-    }
-    
-    private var bubbleBackground: Color {
-        isCurrentUser ? Color.accentColor.opacity(0.15) : Color.secondary.opacity(0.08)
     }
 }
