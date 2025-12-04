@@ -23,7 +23,7 @@ struct BillingLogin: View {
     }
     
     var body: some View {
-        ScrollView {
+        VStack {
             if isSignUp {
                 TextField("Name", text: $name)
                     .textContentType(.name)
@@ -130,6 +130,7 @@ struct BillingLogin: View {
                 }
             }
         }
+        .frame(maxHeight: .infinity)
         .scenePadding(.horizontal)
         .overlay(alignment: .bottom) {
             Button(isSignUp ? "Sign in" : "Register an account") {
