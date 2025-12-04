@@ -233,12 +233,22 @@ final class BillingSettingsVM {
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
         
+        if #available(iOS 14.5, *) {
+            request.assumesHTTP3Capable = false
+        }
+        
+        let config = URLSessionConfiguration.ephemeral
+        var headers = config.httpAdditionalHeaders ?? [:]
+        headers["Alt-Svc"] = "clear"
+        config.httpAdditionalHeaders = headers
+        let session = URLSession(configuration: config)
+        
         let body = makeMultipartBody(data: data, filename: filename, mimeType: mimeType, boundary: boundary)
         
         print("Uploading file", filename, "of type", mimeType)
         
         do {
-            let (data, response) = try await URLSession.shared.upload(for: request, from: body)
+            let (data, response) = try await session.upload(for: request, from: body)
             
             guard let http = response as? HTTPURLResponse else {
                 SystemAlert.error("No response")

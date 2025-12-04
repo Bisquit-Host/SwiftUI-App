@@ -228,28 +228,22 @@ final class SupportTicketDetailsVM {
             return try JSONDecoder().decode([String].self, from: data)
         }
         
-        do {
-            return try await performUpload(using: .shared, request: request)
-        } catch let urlError as URLError where urlError.code == .cannotParseResponse {
-            // Some networks/servers advertise HTTP/3 but respond with malformed frames.
-            // Retry with a fresh session that clears Alt-Svc and disables HTTP/3 racing.
-            var http2Request = request
-            
+        var http2Request = request
+        
+        // Backend does not support HTTP/3; force HTTP/2 to avoid parse errors.
+        if #available(iOS 14.5, *) {
             http2Request.assumesHTTP3Capable = false
-            
-            let config = URLSessionConfiguration.ephemeral
-            var headers = config.httpAdditionalHeaders ?? [:]
-            headers["Alt-Svc"] = "clear"
-            config.httpAdditionalHeaders = headers
-            
-            let session = URLSession(configuration: config)
-            
-            do {
-                return try await performUpload(using: session, request: http2Request)
-            } catch {
-                errorMessage = error.localizedDescription
-                return nil
-            }
+        }
+        
+        let config = URLSessionConfiguration.ephemeral
+        var headers = config.httpAdditionalHeaders ?? [:]
+        headers["Alt-Svc"] = "clear"
+        config.httpAdditionalHeaders = headers
+        
+        let session = URLSession(configuration: config)
+        
+        do {
+            return try await performUpload(using: session, request: http2Request)
         } catch {
             errorMessage = error.localizedDescription
             return nil
