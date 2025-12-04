@@ -4,56 +4,85 @@ struct BillingPasskeysView: View {
     @State private var vm = BillingPasskeysVM()
     
     var body: some View {
-        List {
-            Section("Register new passkey") {
-                TextField("Label (optional)", text: $vm.label)
-                    .textInputAutocapitalization(.never)
-                    .disableAutocorrection(true)
-                
-                Button {
-                    Task {
-                        await vm.registerPasskey()
-                    }
-                } label: {
-                    if vm.isRegistering {
-                        HStack {
-                            ProgressView()
-                            Text("Creating passkey...")
+        ScrollView(showsIndicators: false) {
+            VStack(spacing: 16) {
+                BillingSectionCard("Register new passkey") {
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("Add a nickname to keep devices organized")
+                            .footnote()
+                            .secondary()
+                        
+                        TextField("Label (optional)", text: $vm.label)
+                            .textInputAutocapitalization(.never)
+                            .disableAutocorrection(true)
+                            .padding(12)
+                            .background(.primary.opacity(0.04), in: .rect(cornerRadius: 12))
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 12)
+                                    .stroke(.primary.opacity(0.06), lineWidth: 1)
+                            }
+                        
+                        Button {
+                            Task {
+                                await vm.registerPasskey()
+                            }
+                        } label: {
+                            if vm.isRegistering {
+                                HStack(spacing: 8) {
+                                    ProgressView()
+                                        .tint(.white)
+                                    
+                                    Text("Creating passkey...")
+                                }
+                                .frame(maxWidth: .infinity)
+                            } else {
+                                Text("Create passkey")
+                                    .rounded()
+                                    .semibold()
+                                    .frame(maxWidth: .infinity)
+                            }
                         }
-                    } else {
-                        Text("Create passkey")
+                        .buttonStyle(.glassProminent)
+                        .tint(.blue)
+                        .disabled(vm.isRegistering)
                     }
                 }
-                .disabled(vm.isRegistering)
-            }
-            
-            Section("Your passkeys") {
-                if vm.passkeys.isEmpty && !vm.isLoading {
-                    ContentUnavailableView("No passkeys yet", systemImage: "key.fill", description: Text("Register a passkey to sign in without a password"))
-                        .listRowBackground(Color.clear)
-                }
                 
-                ForEach(vm.passkeys) { passkey in
-                    BillingPasskeyRow(passkey)
-                        .swipeActions {
-                            Button("Delete", systemImage: "trash", role: .destructive) {
-                                Task {
-                                    await vm.deletePasskey(passkey)
+                BillingSectionCard("Your passkeys") {
+                    if vm.passkeys.isEmpty && !vm.isLoading {
+                        ContentUnavailableView("No passkeys yet", systemImage: "key.fill", description: Text("Register a passkey to sign in without a password"))
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 12)
+                    } else {
+                        VStack(spacing: 10) {
+                            ForEach(vm.passkeys) { passkey in
+                                BillingPasskeyRow(passkey) {
+                                    Task {
+                                        await vm.deletePasskey(passkey)
+                                    }
                                 }
                             }
                         }
+                    }
+                }
+                .overlay {
+                    if vm.isLoading {
+                        ProgressView("Loading passkeys...")
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .background(.background.opacity(0.9))
+                    }
                 }
             }
+            .scenePadding()
         }
         .navigationTitle("Passkeys")
         .navigationBarTitleDisplayMode(.inline)
+        .background(
+            LinearGradient(colors: [.blue.opacity(0.08), Color(.systemBackground)], startPoint: .topLeading, endPoint: .bottomTrailing)
+                .ignoresSafeArea()
+        )
         .refreshableTask {
             await vm.fetchPasskeys()
-        }
-        .overlay {
-            if vm.isLoading {
-                ProgressView("Loading passkeys...")
-            }
         }
         .alert("Passkey error", isPresented: Binding(get: {
             vm.error != nil
