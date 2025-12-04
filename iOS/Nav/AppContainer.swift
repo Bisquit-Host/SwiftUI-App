@@ -75,7 +75,7 @@ struct AppContainer: View {
         }
 #endif
         .onOpenURL {
-            print("🔗 Received URL:", $0)
+            print("🔗 Depplink:", $0)
 #if os(iOS)
             linking.handleDeepLink($0)
             billingOAuth.handleCallback($0)

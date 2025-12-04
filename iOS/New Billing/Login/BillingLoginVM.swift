@@ -52,7 +52,7 @@ final class BillingLoginVM {
             
             return try decoder.decode(BillingLoginResponse.self, from: data)
         } catch {
-            print(error.localizedDescription)
+            SystemAlert.error(error.localizedDescription)
             return nil
         }
     }
