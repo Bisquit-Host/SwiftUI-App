@@ -23,7 +23,7 @@ struct BillingLogin: View {
     }
     
     var body: some View {
-        List {
+        ScrollView {
             Section {
                 Picker("Mode", selection: $isSignUp) {
                     Text("Sign in").tag(false)
@@ -42,9 +42,23 @@ struct BillingLogin: View {
                 .keyboardType(.emailAddress)
                 .textContentType(.emailAddress)
                 .textInputAutocapitalization(.never)
+                .padding(12)
+                .background(.primary.opacity(0.04), in: .capsule)
+                .overlay {
+                    Capsule()
+                        .stroke(.primary.opacity(0.05), lineWidth: 1)
+                }
+                .frame(height: 50)
             
             SecureField("Password", text: $store.password)
                 .textContentType(.password)
+                .padding(12)
+                .background(.primary.opacity(0.04), in: .capsule)
+                .overlay {
+                    Capsule()
+                        .stroke(.primary.opacity(0.05), lineWidth: 1)
+                }
+                .frame(height: 50)
             
             Section {
                 Button {
@@ -60,6 +74,23 @@ struct BillingLogin: View {
                     }
                 }
                 .disabled(captchaButtonDisabled)
+                .frame(minHeight: 50)
+                .frame(maxWidth: .infinity)
+                .glassEffect()
+                
+                HStack {
+                    VStack {
+                        Divider()
+                    }
+                    
+                    Text("or")
+                        .secondary()
+                    
+                    VStack {
+                        Divider()
+                    }
+                }
+                .padding()
                 
                 if !isSignUp {
                     Button {
@@ -71,23 +102,44 @@ struct BillingLogin: View {
                                 Text("Signing in with passkey...")
                             }
                         } else {
-                            Text("Sign in with passkey")
+                            Label("Sign in with passkey", systemImage: "person.badge.key.fill")
+                                .labelIconToTitleSpacing(10)
+                                .semibold()
+                                .rounded()
                         }
                     }
                     .disabled(vm.isPasskeyLoading)
+                    .frame(height: 50)
+                    .frame(maxWidth: .infinity)
+                    .glassEffect()
+                    .foregroundStyle(.foreground)
                 }
             }
             
-            Section("Social") {
-                socialButton("GitHub", isLoading: oauthVM.isLinkingGitHub) {
+            HStack {
+                VStack {
+                    Divider()
+                }
+                
+                Text("or")
+                    .secondary()
+                
+                VStack {
+                    Divider()
+                }
+            }
+            .padding()
+            
+            HStack {
+                socialButton("GitHub", img: .gitHub, isLoading: oauthVM.isLinkingGitHub) {
                     oauthVM.startGitHubLinking()
                 }
                 
-                socialButton("Google", isLoading: oauthVM.isLinkingGoogle) {
+                socialButton("Google", img: .google, isLoading: oauthVM.isLinkingGoogle) {
                     oauthVM.startGoogleLinking()
                 }
                 
-                socialButton("Yandex", isLoading: oauthVM.isLinkingYandex) {
+                socialButton("Yandex", img: .yandex, isLoading: oauthVM.isLinkingYandex) {
                     oauthVM.startYandexLinking()
                 }
             }
@@ -158,7 +210,7 @@ struct BillingLogin: View {
             handleAuthResponse(response)
         }
     }
-
+    
     private func verifyTwoFA() {
         guard let token = pendingTwoFAToken else {
             return
@@ -194,10 +246,8 @@ struct BillingLogin: View {
         Task {
             try await Task.sleep(for: .seconds(0.5))
             
-            await MainActor.run {
-                withAnimation {
-                    store.testAccessToken = response.accessToken
-                }
+            withAnimation {
+                store.testAccessToken = response.accessToken
             }
         }
     }
@@ -238,24 +288,15 @@ struct BillingLogin: View {
         }
     }
     
-    private func socialButton(_ provider: String, isLoading: Bool, action: @escaping () -> Void) -> some View {
-        Button {
-            action()
-        } label: {
+    private func socialButton(_ provider: String, img: ImageResource, isLoading: Bool, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
             if isLoading {
-                HStack {
-                    ProgressView()
-                    Text("\(socialTitle(for: provider))...")
-                }
+                ProgressView()
             } else {
-                Text(socialTitle(for: provider))
+                AuthSocialButtonImage(img)
             }
         }
         .disabled(isLoading)
-    }
-    
-    private func socialTitle(for provider: String) -> String {
-        isSignUp ? "Sign up with \(provider)" : "Sign in with \(provider)"
     }
 }
 
