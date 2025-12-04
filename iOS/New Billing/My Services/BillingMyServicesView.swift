@@ -13,22 +13,24 @@ struct BillingMyServicesView: View {
                     .environment(dashboardVM)
             }
             
-            section("Game servers", services: gameVM.services.map { .game($0) }, isLoading: gameVM.isLoading, error: gameVM.lastError) { id in
-                BillingGameServiceDetailView(serviceId: id)
+            section("Game servers", services: gameVM.services.map { .game($0) }, isLoading: gameVM.isLoading, error: gameVM.lastError) {
+                BillingGameServiceDetailView(serviceId: $0)
                     .environment(dashboardVM)
             }
             
-            section("Bot hosting", services: botVM.services.map { .bot($0) }, isLoading: botVM.isLoading, error: botVM.lastError) { id in
-                BillingBotServiceDetailView(serviceId: id)
+            section("Bot hosting", services: botVM.services.map { .bot($0) }, isLoading: botVM.isLoading, error: botVM.lastError) {
+                BillingBotServiceDetailView(serviceId: $0)
                     .environment(dashboardVM)
             }
         }
         .listStyle(.insetGrouped)
         .navigationTitle("My services")
         .refreshableTask {
-            await cloudVM.loadServices()
-            await gameVM.loadServices()
-            await botVM.loadServices()
+            async let cloud: () = cloudVM.loadServices()
+            async let game: () = gameVM.loadServices()
+            async let bot: () = botVM.loadServices()
+            
+            let _ = await (cloud, game, bot)
         }
     }
     
