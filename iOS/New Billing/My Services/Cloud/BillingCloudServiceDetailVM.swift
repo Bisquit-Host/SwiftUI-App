@@ -197,6 +197,7 @@ final class BillingCloudServiceDetailVM {
         
         await performAction {
             guard await self.request(path: "/cloud/\(serviceId)/autorenew", method: "PATCH", body: payload) != nil else { return }
+            
             if let current = self.service {
                 self.service = BillingCloudServiceDetails(
                     id: current.id,
