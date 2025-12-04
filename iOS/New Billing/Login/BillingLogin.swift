@@ -81,21 +81,21 @@ struct BillingLogin: View {
                 .frame(maxWidth: .infinity)
                 .glassEffect()
                 
-                HStack {
-                    VStack {
-                        Divider()
-                    }
-                    
-                    Text("or")
-                        .secondary()
-                    
-                    VStack {
-                        Divider()
-                    }
-                }
-                .padding()
-                
                 if !isSignUp {
+                    HStack {
+                        VStack {
+                            Divider()
+                        }
+                        
+                        Text("or")
+                            .secondary()
+                        
+                        VStack {
+                            Divider()
+                        }
+                    }
+                    .padding()
+                    
                     Button {
                         passkeyLogin()
                     } label: {
@@ -152,10 +152,12 @@ struct BillingLogin: View {
         }
         .sheet($sheetTwoFA) {
             NavigationStack {
-                twoFASheet
-                    .padding()
-                    .navigationTitle("Enter 2FA code")
-                    .navigationBarTitleDisplayMode(.inline)
+                BillingTwoFASheet(vm: vm, twoFACode: $twoFACode) {
+                    verifyTwoFA()
+                }
+                .padding()
+                .navigationTitle("Enter 2FA code")
+                .navigationBarTitleDisplayMode(.inline)
             }
         }
         .onChange(of: captchaToken) { _, newValue in
@@ -252,42 +254,6 @@ struct BillingLogin: View {
             withAnimation {
                 store.testAccessToken = response.accessToken
             }
-        }
-    }
-    
-    @ViewBuilder
-    private var twoFASheet: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text("Enter the 6-digit code from your authenticator app to finish signing in")
-                .secondary()
-                .footnote()
-            
-            TextField("123456", text: $twoFACode)
-                .keyboardType(.numberPad)
-                .textContentType(.oneTimeCode)
-                .onSubmit {
-                    verifyTwoFA()
-                }
-            
-            if let twoFAError = vm.twoFAError {
-                Text(twoFAError)
-                    .foregroundStyle(.red)
-                    .footnote()
-            }
-            
-            Button {
-                verifyTwoFA()
-            } label: {
-                if vm.isVerifyingTwoFA {
-                    ProgressView()
-                        .frame(maxWidth: .infinity)
-                } else {
-                    Text("Verify and continue")
-                        .frame(maxWidth: .infinity)
-                }
-            }
-            .buttonStyle(.borderedProminent)
-            .disabled(twoFACode.trimmingCharacters(in: .whitespaces).count < 6 || vm.isVerifyingTwoFA)
         }
     }
     
