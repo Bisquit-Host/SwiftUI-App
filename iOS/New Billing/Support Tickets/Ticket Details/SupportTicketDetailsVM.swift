@@ -229,11 +229,7 @@ final class SupportTicketDetailsVM {
         }
         
         var http2Request = request
-        
-        // Backend does not support HTTP/3; force HTTP/2 to avoid parse errors.
-        if #available(iOS 14.5, *) {
-            http2Request.assumesHTTP3Capable = false
-        }
+        http2Request.assumesHTTP3Capable = false
         
         let config = URLSessionConfiguration.ephemeral
         var headers = config.httpAdditionalHeaders ?? [:]

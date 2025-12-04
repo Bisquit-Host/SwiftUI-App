@@ -1,9 +1,5 @@
 import Foundation
 
-private struct AvatarUpdateResponse: Decodable {
-    let avatar: String
-}
-
 @Observable
 final class BillingSettingsVM {
     var newLogin = ""
@@ -232,17 +228,16 @@ final class BillingSettingsVM {
         request.httpMethod = "PATCH"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-        
-        if #available(iOS 14.5, *) {
-            request.assumesHTTP3Capable = false
-        }
+        request.assumesHTTP3Capable = false
         
         let config = URLSessionConfiguration.ephemeral
+        
         var headers = config.httpAdditionalHeaders ?? [:]
         headers["Alt-Svc"] = "clear"
-        config.httpAdditionalHeaders = headers
-        let session = URLSession(configuration: config)
         
+        config.httpAdditionalHeaders = headers
+        
+        let session = URLSession(configuration: config)
         let body = makeMultipartBody(data: data, filename: filename, mimeType: mimeType, boundary: boundary)
         
         print("Uploading file", filename, "of type", mimeType)
