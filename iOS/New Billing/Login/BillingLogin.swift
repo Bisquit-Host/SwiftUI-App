@@ -73,7 +73,10 @@ struct BillingLogin: View {
                         Text(isSignUp ? "Create account" : "Continue")
                     }
                 }
+                .semibold()
+                .rounded()
                 .disabled(captchaButtonDisabled)
+                .foregroundStyle(.foreground)
                 .frame(minHeight: 50)
                 .frame(maxWidth: .infinity)
                 .glassEffect()
