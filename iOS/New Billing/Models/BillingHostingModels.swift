@@ -1,4 +1,4 @@
-import Foundation
+import SwiftUI
 
 enum BillingHostingCategory: String, CaseIterable, Identifiable, Hashable {
     case cloud, game, bot
@@ -19,6 +19,14 @@ enum BillingHostingCategory: String, CaseIterable, Identifiable, Hashable {
         case .bot: "Discord, Telegram and other bots"
         case .game: "Game servers on Pterodactyl"
         case .cloud: "Virtual dedicated servers"
+        }
+    }
+    
+    var tint: Color {
+        switch self {
+        case .cloud: .orange
+        case .game: .indigo
+        case .bot: .green
         }
     }
     

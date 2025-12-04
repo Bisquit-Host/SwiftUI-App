@@ -12,8 +12,8 @@ struct BillingHostingPlanCard: View {
                 Image(systemName: category.icon)
                     .fontSize(18)
                     .padding(10)
-                    .glassEffect(.regular.tint(tint.opacity(0.25)), in: .circle)
-                    .foregroundStyle(tint)
+                    .glassEffect(.regular.tint(category.tint.opacity(0.25)), in: .circle)
+                    .foregroundStyle(category.tint)
                 
                 Text(plan.name)
                     .headline()
@@ -26,10 +26,10 @@ struct BillingHostingPlanCard: View {
                         .subheadline(.semibold)
                         .padding(.vertical, 6)
                         .padding(.horizontal, 12)
-                        .background(tint.opacity(0.1), in: .capsule)
+                        .background(category.tint.opacity(0.1), in: .capsule)
                         .overlay {
                             Capsule()
-                                .stroke(tint.opacity(0.25), lineWidth: 1)
+                                .stroke(category.tint.opacity(0.25), lineWidth: 1)
                         }
                     
                     Text("per month")
@@ -39,7 +39,7 @@ struct BillingHostingPlanCard: View {
             }
             
             Divider()
-                .overlay(tint.opacity(0.15))
+                .overlay(category.tint.opacity(0.15))
             
             FlowLayout(horizontalSpacing: 8, verticalSpacing: 8) {
                 ForEach(Array(specs.enumerated()), id: \.offset) { _, item in
@@ -52,7 +52,7 @@ struct BillingHostingPlanCard: View {
                 onPurchase?()
             }
             .buttonStyle(.glassProminent)
-            .tint(tint)
+            .tint(category.tint)
             .frame(maxWidth: .infinity, alignment: .trailing)
         }
         .padding(16)
@@ -61,7 +61,7 @@ struct BillingHostingPlanCard: View {
             RoundedRectangle(cornerRadius: 18)
                 .stroke(.primary.opacity(0.08), lineWidth: 1)
         }
-        .shadow(color: tint.opacity(0.05), radius: 12, y: 6)
+        .shadow(color: category.tint.opacity(0.05), radius: 12, y: 6)
     }
     
     private func spec(_ icon: String, _ text: String) -> some View {
@@ -75,10 +75,10 @@ struct BillingHostingPlanCard: View {
         }
         .padding(.vertical, 6)
         .padding(.horizontal, 10)
-        .background(tint.opacity(0.14), in: .capsule)
+        .background(category.tint.opacity(0.14), in: .capsule)
         .overlay {
             Capsule()
-                .stroke(tint.opacity(0.35), lineWidth: 1)
+                .stroke(category.tint.opacity(0.35), lineWidth: 1)
         }
     }
     
@@ -115,14 +115,6 @@ struct BillingHostingPlanCard: View {
         }
         
         return items
-    }
-    
-    private var tint: Color {
-        switch category {
-        case .cloud: .orange
-        case .game: .indigo
-        case .bot: .green
-        }
     }
 }
 
