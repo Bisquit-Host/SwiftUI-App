@@ -34,9 +34,9 @@ struct SupportTicketDetails: View {
                     if vm.messages.isEmpty {
                         ContentUnavailableView("No messages yet", systemImage: "ellipsis.bubble")
                     } else {
-                        ForEach(vm.messages) { message in
-                            TicketMessageRow(message: message, isCurrentUser: message.userId == vm.ticket.userId) { path in
-                                selectedMedia = path
+                        ForEach(vm.messages) {
+                            TicketMessageRow(message: $0, isCurrentUser: $0.userId == vm.ticket.userId) {
+                                selectedMedia = $0
                             }
                             .listRowSeparator(.hidden)
                         }
