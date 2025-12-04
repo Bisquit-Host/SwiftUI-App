@@ -60,7 +60,7 @@ struct SupportMessageComposer: View {
         }
         .padding(.top, 8)
         .background(.thinMaterial)
-        .photosPicker(isPresented: $showPhotoPicker, selection: $photoItem, selectionBehavior: .ordered)
+        .photosPicker(isPresented: $showPhotoPicker, selection: $photoItem, maxSelectionCount: 5, selectionBehavior: .ordered)
         .fileImporter(isPresented: $showFileImporter, allowedContentTypes: AttachmentPicker.allowedTypes, allowsMultipleSelection: true) {
             switch $0 {
             case .success(let urls):
