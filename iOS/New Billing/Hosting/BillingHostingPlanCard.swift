@@ -7,42 +7,45 @@ struct BillingHostingPlanCard: View {
     var onPurchase: (() -> Void)?
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack(alignment: .firstTextBaseline) {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(plan.name)
-                        .headline()
-                    
-                    if let cpuName = plan.cpuName {
-                        Text(cpuName)
-                            .footnote()
-                            .secondary()
-                    }
-                }
+        VStack(alignment: .leading, spacing: 14) {
+            HStack(spacing: 12) {
+                Image(systemName: category.icon)
+                    .fontSize(18)
+                    .padding(10)
+                    .glassEffect(.regular.tint(tint.opacity(0.25)), in: .circle)
+                    .foregroundStyle(tint)
+                
+                Text(plan.name)
+                    .headline()
                 
                 Spacer()
                 
-                HStack(alignment: .firstTextBaseline, spacing: 0) {
+                VStack(alignment: .trailing, spacing: 6) {
                     Text(priceText)
-                        .semibold()
+                        .monospacedDigit()
+                        .subheadline(.semibold)
+                        .padding(.vertical, 6)
+                        .padding(.horizontal, 12)
+                        .background(tint.opacity(0.1), in: .capsule)
+                        .overlay {
+                            Capsule()
+                                .stroke(tint.opacity(0.25), lineWidth: 1)
+                        }
                     
-                    Text("/mo")
-                        .footnote()
+                    Text("per month")
+                        .caption()
                         .secondary()
                 }
             }
             
-            HStack(spacing: 12) {
-                spec("cpu", "\(plan.cpu.clean) vCPU")
-                spec("memorychip", "\(plan.memoryGB.clean) GB RAM")
-                spec("internaldrive", "\(plan.diskGB.clean) GB \(plan.diskType ?? "")".trimmingCharacters(in: .whitespaces))
-            }
+            Divider()
+                .overlay(tint.opacity(0.15))
             
-            if let network = plan.networkDescription {
-                spec("network", network)
+            VStack(alignment: .leading, spacing: 8) {
+                ForEach(Array(specs.enumerated()), id: \.offset) { _, item in
+                    spec(item.icon, item.text)
+                }
             }
-            
-            additional
             
             HStack {
                 Spacer()
@@ -51,30 +54,16 @@ struct BillingHostingPlanCard: View {
                     onPurchase?()
                 }
                 .buttonStyle(.glassProminent)
+                .tint(tint)
             }
         }
         .padding(16)
-        .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
+        .background(.ultraThinMaterial, in: .rect(cornerRadius: 18))
         .overlay {
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(.primary.opacity(0.04), lineWidth: 1)
+            RoundedRectangle(cornerRadius: 18)
+                .stroke(.primary.opacity(0.08), lineWidth: 1)
         }
-    }
-    
-    private var additional: some View {
-        HStack(spacing: 12) {
-            if let databases = plan.databases {
-                spec("externaldrive.fill", "\(databases) DBs")
-            }
-            
-            if let backups = plan.backups {
-                spec("clock.arrow.circlepath", "\(backups) backups")
-            }
-            
-            if let allocations = plan.allocations {
-                spec("number", "\(allocations) ports")
-            }
-        }
+        .shadow(color: tint.opacity(0.05), radius: 12, y: 6)
     }
     
     private func spec(_ icon: String, _ text: String) -> some View {
@@ -88,7 +77,11 @@ struct BillingHostingPlanCard: View {
         }
         .padding(.vertical, 6)
         .padding(.horizontal, 10)
-        .background(.background.opacity(0.6), in: .rect(cornerRadius: 10))
+        .background(tint.opacity(0.14), in: .capsule)
+        .overlay {
+            Capsule()
+                .stroke(tint.opacity(0.35), lineWidth: 1)
+        }
     }
     
     private func tag(_ text: String) -> some View {
@@ -98,6 +91,40 @@ struct BillingHostingPlanCard: View {
             .padding(.vertical, 6)
             .padding(.horizontal, 10)
             .background(.background.opacity(0.6), in: .rect(cornerRadius: 10))
+    }
+    
+    private var specs: [(icon: String, text: String)] {
+        var items: [(String, String)] = [
+            ("cpu", "\(plan.cpu.clean) vCPU"),
+            ("memorychip", "\(plan.memoryGB.clean) GB RAM"),
+            ("internaldrive", "\(plan.diskGB.clean) GB \(plan.diskType ?? "")".trimmingCharacters(in: .whitespaces))
+        ]
+        
+        if let network = plan.networkDescription {
+            items.append(("network", network))
+        }
+        
+        if let databases = plan.databases {
+            items.append(("externaldrive.fill", "\(databases) DBs"))
+        }
+        
+        if let backups = plan.backups {
+            items.append(("clock.arrow.circlepath", "\(backups) backups"))
+        }
+        
+        if let allocations = plan.allocations {
+            items.append(("number", "\(allocations) ports"))
+        }
+        
+        return items
+    }
+    
+    private var tint: Color {
+        switch category {
+        case .cloud: .orange
+        case .game: .indigo
+        case .bot: .green
+        }
     }
 }
 
