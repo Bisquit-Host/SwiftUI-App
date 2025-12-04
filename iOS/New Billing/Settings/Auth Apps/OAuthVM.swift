@@ -3,7 +3,7 @@ import SafariCover
 import AuthenticationServices
 
 @Observable
-final class BillingOAuthVM: NSObject {
+final class OAuthVM: NSObject {
     private let basePath = "https://test-api.bisquit.host"
     
     private var session: ASWebAuthenticationSession?
@@ -233,7 +233,7 @@ final class BillingOAuthVM: NSObject {
     }
 }
 
-extension BillingOAuthVM: ASWebAuthenticationPresentationContextProviding {
+extension OAuthVM: ASWebAuthenticationPresentationContextProviding {
     func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
         guard let scene = UIApplication.shared.connectedScenes
             .compactMap({ $0 as? UIWindowScene })

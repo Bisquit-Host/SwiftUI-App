@@ -110,7 +110,7 @@ struct PasskeyCredentialFormatter {
     }
 }
 
-private extension String {
+fileprivate extension String {
     var userVerificationPreference: ASAuthorizationPublicKeyCredentialUserVerificationPreference? {
         switch lowercased() {
         case "required":    .required

@@ -1,9 +1,9 @@
 import SwiftUI
 
-struct BillingSettingsPasskeys: View {
+struct PasskeyListNavLink: View {
     var body: some View {
         NavigationLink {
-            BillingPasskeysView()
+            PasskeyList()
         } label: {
             HStack(spacing: 12) {
                 Image(systemName: "person.badge.key.fill")
@@ -33,6 +33,6 @@ struct BillingSettingsPasskeys: View {
 }
 
 #Preview {
-    BillingSettingsPasskeys()
+    PasskeyListNavLink()
         .darkSchemePreferred()
 }

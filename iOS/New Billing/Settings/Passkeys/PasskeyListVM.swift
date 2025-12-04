@@ -2,7 +2,7 @@ import AuthenticationServices
 import Foundation
 
 @Observable
-final class BillingPasskeysVM {
+final class PasskeyListVM {
     var passkeys: [PasskeyListItem] = []
     var isLoading = false
     var isRegistering = false

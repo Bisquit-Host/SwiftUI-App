@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct BillingAuthAppRow: View {
+struct AuthSettingsAppRow: View {
     @Environment(\.accessibilityDifferentiateWithoutColor) private var differentiateWithoutColor
     
     private let title: String
@@ -78,8 +78,8 @@ struct BillingAuthAppRow: View {
 
 #Preview {
     VStack(spacing: 12) {
-        BillingAuthAppRow("2FA", icon: "lock.shield.fill", enabled: true)
-        BillingAuthAppRow("Password", icon: "key.fill", enabled: false)
+        AuthSettingsAppRow("2FA", icon: "lock.shield.fill", enabled: true)
+        AuthSettingsAppRow("Password", icon: "key.fill", enabled: false)
     }
     .padding()
     .darkSchemePreferred()

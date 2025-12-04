@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct BillingPasskeysView: View {
-    @State private var vm = BillingPasskeysVM()
+struct PasskeyList: View {
+    @State private var vm = PasskeyListVM()
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -56,7 +56,7 @@ struct BillingPasskeysView: View {
                     } else {
                         VStack(spacing: 10) {
                             ForEach(vm.passkeys) { passkey in
-                                BillingPasskeyRow(passkey) {
+                                PasskeyCard(passkey) {
                                     Task {
                                         await vm.deletePasskey(passkey)
                                     }
@@ -104,7 +104,7 @@ struct BillingPasskeysView: View {
 
 #Preview {
     NavigationStack {
-        BillingPasskeysView()
+        PasskeyList()
     }
     .environmentObject(ValueStore())
     .darkSchemePreferred()

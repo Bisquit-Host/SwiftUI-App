@@ -39,10 +39,10 @@ struct BillingSettings: View {
                                 showPasswordSheet = true
                             }
                             
-                            BillingSettingsPasskeys()
+                            PasskeyListNavLink()
                         }
                         
-                        BillingAuthAppsSection(user: $user)
+                        AuthAppsSection(user: $user)
                     }
                     .transition(.opacity.combined(with: .move(edge: .top)))
                     .animation(.easeInOut, value: user)

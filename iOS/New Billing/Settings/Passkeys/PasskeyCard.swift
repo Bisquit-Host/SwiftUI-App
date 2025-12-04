@@ -1,6 +1,6 @@
 import ScrechKit
 
-struct BillingPasskeyRow: View {
+struct PasskeyCard: View {
     private let passkey: PasskeyListItem
     private let onDelete: (() -> Void)?
     

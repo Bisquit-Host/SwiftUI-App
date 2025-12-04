@@ -4,7 +4,7 @@ import HCaptcha
 struct BillingLogin: View {
     @State private var vm = BillingLoginVM()
     @EnvironmentObject private var store: ValueStore
-    @Environment(BillingOAuthVM.self) private var oauthVM
+    @Environment(OAuthVM.self) private var oauthVM
     
     @State private var isSignUp = false
     @State private var name = ""

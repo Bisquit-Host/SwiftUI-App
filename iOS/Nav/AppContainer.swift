@@ -8,7 +8,7 @@ struct AppContainer: View {
     @State private var network = NetworkVM()
     @State private var securityTasks = SecurityTasks()
 #if os(iOS)
-    @State private var billingOAuth = BillingOAuthVM()
+    @State private var billingOAuth = OAuthVM()
 #endif
     @EnvironmentObject private var store: ValueStore
     @Environment(NavState.self) private var nav
