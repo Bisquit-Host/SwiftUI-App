@@ -165,7 +165,7 @@ struct SheetTopup: View {
     }
     
     private static func minimumAmount(for currency: BillingCurrency) -> Double {
-        currency == .RUB ? 50 : 1
+        currency == .RUB ? 50 : 5
     }
     
     private func formatted(_ amount: Double) -> String {

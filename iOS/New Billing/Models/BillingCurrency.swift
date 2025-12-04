@@ -12,7 +12,7 @@ public enum BillingCurrency: String, Decodable, CaseIterable {
     
     var stepAmount: Double {
         switch self {
-        case .EUR: 4
+        case .EUR: 5
         case .RUB: 50
         }
     }
