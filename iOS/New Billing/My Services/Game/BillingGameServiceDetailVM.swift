@@ -35,8 +35,8 @@ final class BillingGameServiceDetailVM {
         do {
             service = try decoder.decode(BillingGameServiceDetails.self, from: data)
         } catch {
-            lastError = error.localizedDescription
-            print("Game detail decode error:", error)
+            SystemAlert.error("Game detail decode error: \(error)")
+            
             if let raw = String(data: data, encoding: .utf8) {
                 print("Game raw detail:", raw)
             }
@@ -52,8 +52,8 @@ final class BillingGameServiceDetailVM {
         do {
             changeablePackages = try decoder.decode([BillingChangeableGamePackage].self, from: data)
         } catch {
-            lastError = error.localizedDescription
-            print("Game changeable packages decode error:", error)
+            SystemAlert.error("Game changeable packages decode error: \(error)")
+            
             if let raw = String(data: data, encoding: .utf8) {
                 print("Game raw packages:", raw)
             }
@@ -62,6 +62,7 @@ final class BillingGameServiceDetailVM {
     
     func rename(_ newName: String, serviceId: Int) async {
         let trimmed = newName.trimmingCharacters(in: .whitespacesAndNewlines)
+        
         guard !trimmed.isEmpty else {
             lastError = "Enter a name"
             return
@@ -112,6 +113,7 @@ final class BillingGameServiceDetailVM {
                     location: current.location
                 )
             }
+            
             self.actionMessage = enabled ? "Auto-extend enabled" : "Auto-extend disabled"
         }
     }
@@ -138,6 +140,7 @@ final class BillingGameServiceDetailVM {
                     
                     do {
                         let response = try decoder.decode(BillingServiceRenewResponse.self, from: data)
+                        
                         if let current = self.service {
                             self.service = BillingGameServiceDetails(
                                 id: current.id,
@@ -153,6 +156,7 @@ final class BillingGameServiceDetailVM {
                                 location: current.location
                             )
                         }
+                        
                         self.actionMessage = "Extended for \(months) mo."
                         continuation.resume(returning: response)
                     } catch {
@@ -185,7 +189,9 @@ final class BillingGameServiceDetailVM {
         lastError = nil
         actionMessage = nil
         
-        defer { isPerformingAction = false }
+        defer {
+            isPerformingAction = false
+        }
         
         await work()
     }

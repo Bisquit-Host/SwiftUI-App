@@ -44,8 +44,7 @@ final class BillingCloudServiceDetailVM {
         do {
             service = try decoder.decode(BillingCloudServiceDetails.self, from: data)
         } catch {
-            lastError = error.localizedDescription
-            print("Cloud detail decode error:", error)
+            SystemAlert.error("Cloud detail decode error: \(error)")
             
             if let raw = String(data: data, encoding: .utf8) {
                 print("Raw detail:", raw)
@@ -62,8 +61,7 @@ final class BillingCloudServiceDetailVM {
         do {
             changeablePackages = try decoder.decode([BillingChangeableCloudPackage].self, from: data)
         } catch {
-            lastError = error.localizedDescription
-            print("Cloud changeable packages decode error:", error)
+            SystemAlert.error("Cloud changeable packages decode error: \(error)")
             
             if let raw = String(data: data, encoding: .utf8) {
                 print("Raw packages:", raw)
@@ -80,8 +78,7 @@ final class BillingCloudServiceDetailVM {
         do {
             history = try decoder.decode([BillingCloudHistoryItem].self, from: data)
         } catch {
-            lastError = error.localizedDescription
-            print("Cloud history decode error:", error)
+            SystemAlert.error("Cloud history decode error: \(error)")
             
             if let raw = String(data: data, encoding: .utf8) {
                 print("Raw history:", raw)
@@ -98,8 +95,7 @@ final class BillingCloudServiceDetailVM {
         do {
             charts = try decoder.decode(BillingCloudCharts.self, from: data)
         } catch {
-            lastError = error.localizedDescription
-            print("Cloud charts decode error:", error)
+            SystemAlert.error("Cloud charts decode error: \(error)")
             
             if let raw = String(data: data, encoding: .utf8) {
                 print("Raw charts:", raw)
@@ -116,8 +112,7 @@ final class BillingCloudServiceDetailVM {
         do {
             osOptions = try decoder.decode([BillingCloudOsCategory].self, from: data)
         } catch {
-            lastError = error.localizedDescription
-            print("Cloud OS list decode error:", error)
+            SystemAlert.error("Cloud OS list decode error: \(error)")
             
             if let raw = String(data: data, encoding: .utf8) {
                 print("Raw OS list:", raw)

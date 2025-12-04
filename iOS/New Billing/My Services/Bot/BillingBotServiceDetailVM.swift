@@ -35,8 +35,8 @@ final class BillingBotServiceDetailVM {
         do {
             service = try decoder.decode(BillingBotServiceDetails.self, from: data)
         } catch {
-            lastError = error.localizedDescription
-            print("Bot detail decode error:", error)
+            SystemAlert.error("Bot detail decode error: \(error)")
+            
             if let raw = String(data: data, encoding: .utf8) {
                 print("Bot raw detail:", raw)
             }
@@ -52,8 +52,8 @@ final class BillingBotServiceDetailVM {
         do {
             changeablePackages = try decoder.decode([BillingChangeableBotPackage].self, from: data)
         } catch {
-            lastError = error.localizedDescription
-            print("Bot changeable packages decode error:", error)
+            SystemAlert.error("Bot changeable packages decode error: \(error)")
+            
             if let raw = String(data: data, encoding: .utf8) {
                 print("Bot raw packages:", raw)
             }
@@ -113,6 +113,7 @@ final class BillingBotServiceDetailVM {
                     location: current.location
                 )
             }
+            
             self.actionMessage = enabled ? "Auto-extend enabled" : "Auto-extend disabled"
         }
     }
@@ -154,6 +155,7 @@ final class BillingBotServiceDetailVM {
                                 location: current.location
                             )
                         }
+                        
                         self.actionMessage = "Extended for \(months) mo."
                         continuation.resume(returning: response)
                     } catch {
