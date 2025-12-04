@@ -238,7 +238,7 @@ final class BillingSettingsVM {
         print("Uploading file", filename, "of type", mimeType)
         
         do {
-            let (responseData, response) = try await URLSession.shared.upload(for: request, from: body)
+            let (data, response) = try await URLSession.shared.upload(for: request, from: body)
             
             guard let http = response as? HTTPURLResponse else {
                 SystemAlert.error("No response")
@@ -249,14 +249,14 @@ final class BillingSettingsVM {
             
             switch http.statusCode {
             case 200:
-                if let result = try? JSONDecoder().decode(AvatarUpdateResponse.self, from: responseData) {
+                if let result = try? JSONDecoder().decode(AvatarUpdateResponse.self, from: data) {
                     return result.avatar
                 } else {
                     SystemAlert.error("Bad response")
                 }
                 
             default:
-                if let raw = String(data: responseData, encoding: .utf8), !raw.isEmpty {
+                if let raw = String(data: data, encoding: .utf8), !raw.isEmpty {
                     SystemAlert.error(raw)
                 } else {
                     SystemAlert.error("Status \(http.statusCode)")
