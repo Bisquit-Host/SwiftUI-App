@@ -20,6 +20,7 @@ struct BillingGameServiceDetailView: View {
                     detailsSection(service)
                     billingSection(service)
                     upgradeSection(service)
+                    
                 } else if vm.isLoading {
                     ProgressView()
                         .frame(maxWidth: .infinity, alignment: .center)
@@ -40,8 +41,11 @@ struct BillingGameServiceDetailView: View {
             }
             .padding()
         }
-        .navigationTitle("Game service #\(serviceId)")
+        .navigationTitle(vm.service?.name ?? "")
         .navigationBarTitleDisplayMode(.inline)
+        .refreshableTask {
+            await vm.load(serviceId: serviceId)
+        }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 if vm.isPerformingAction {
@@ -54,12 +58,6 @@ struct BillingGameServiceDetailView: View {
                     }
                 }
             }
-        }
-        .task {
-            await vm.load(serviceId: serviceId)
-        }
-        .refreshable {
-            await vm.load(serviceId: serviceId)
         }
         .onChange(of: vm.service?.id) { _, _ in
             if let service = vm.service {
@@ -266,13 +264,14 @@ struct BillingGameServiceDetailView: View {
     }
     
     // MARK: - Helpers
-    
     private func row(title: String, value: String) -> some View {
         HStack {
             Text(title)
                 .footnote()
                 .secondary()
+            
             Spacer()
+            
             Text(value)
                 .footnote()
         }

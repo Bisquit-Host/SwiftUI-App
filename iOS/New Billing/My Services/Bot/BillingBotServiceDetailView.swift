@@ -40,8 +40,11 @@ struct BillingBotServiceDetailView: View {
             }
             .padding()
         }
-        .navigationTitle("Bot service #\(serviceId)")
+        .navigationTitle(vm.service?.name ?? "")
         .navigationBarTitleDisplayMode(.inline)
+        .refreshableTask {
+            await vm.load(serviceId: serviceId)
+        }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 if vm.isPerformingAction {
@@ -54,12 +57,6 @@ struct BillingBotServiceDetailView: View {
                     }
                 }
             }
-        }
-        .task {
-            await vm.load(serviceId: serviceId)
-        }
-        .refreshable {
-            await vm.load(serviceId: serviceId)
         }
         .onChange(of: vm.service?.id) { _, _ in
             if let service = vm.service {
@@ -269,7 +266,9 @@ struct BillingBotServiceDetailView: View {
             Text(title)
                 .footnote()
                 .secondary()
+            
             Spacer()
+            
             Text(value)
                 .footnote()
         }
@@ -279,6 +278,7 @@ struct BillingBotServiceDetailView: View {
         let formatter = NumberFormatter()
         formatter.minimumFractionDigits = 0
         formatter.maximumFractionDigits = 2
+        
         let value = formatter.string(from: NSNumber(value: amount)) ?? String(format: "%.2f", amount)
         
         if let user = dashboardVM.user {

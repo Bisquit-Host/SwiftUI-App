@@ -50,8 +50,11 @@ struct BillingCloudServiceDetailView: View {
             }
             .padding()
         }
-        .navigationTitle("Service #\(serviceId)")
+        .navigationTitle(vm.service?.name ?? "")
         .navigationBarTitleDisplayMode(.inline)
+        .refreshableTask {
+            await vm.load(serviceId: serviceId)
+        }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 if vm.isPerformingAction {
@@ -64,9 +67,6 @@ struct BillingCloudServiceDetailView: View {
                     }
                 }
             }
-        }
-        .refreshableTask {
-            await vm.load(serviceId: serviceId)
         }
         .onChange(of: vm.service?.id) { _, _ in
             if let service = vm.service {
@@ -135,16 +135,16 @@ struct BillingCloudServiceDetailView: View {
                         .secondary()
                 }
                 
-            Button {
-                showVnc = true
-            } label: {
-                Label("Console", systemImage: "display")
-                    .footnote()
-                    .foregroundStyle(.blue)
+                Button {
+                    showVnc = true
+                } label: {
+                    Label("Console", systemImage: "display")
+                        .footnote()
+                        .foregroundStyle(.blue)
+                }
             }
         }
     }
-}
     
     private func infoSection(_ service: BillingCloudServiceDetails) -> some View {
         BillingSectionCard("Details") {
@@ -376,6 +376,7 @@ struct BillingCloudServiceDetailView: View {
                             LineMark(x: .value("Time", $0.timestamp), y: .value("In", $0.value))
                                 .foregroundStyle(.blue)
                         }
+                        
                         ForEach(charts.networkOutput) {
                             LineMark(x: .value("Time", $0.timestamp), y: .value("Out", $0.value))
                                 .foregroundStyle(.orange)
@@ -441,7 +442,9 @@ struct BillingCloudServiceDetailView: View {
             Text(title)
                 .footnote()
                 .secondary()
+            
             Spacer()
+            
             Text(value)
                 .footnote()
         }
