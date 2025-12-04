@@ -14,6 +14,12 @@ final class BillingLoginVM {
     private let passkeyLoginPath = "auth/passkeys"
     
     func login(_ login: String, _ password: String, _ captchaToken: String) async -> BillingLoginResponse? {
+        isSubmitting = true
+        
+        defer {
+            isSubmitting = false
+        }
+        
         let path = "https://test-api.bisquit.host/auth/signin"
         
         guard let url = URL(string: path) else {
@@ -31,9 +37,6 @@ final class BillingLoginVM {
         req.httpMethod = "POST"
         req.setValue("application/json", forHTTPHeaderField: "Content-Type")
         req.httpBody = try? JSONSerialization.data(withJSONObject: body)
-        
-        isSubmitting = true
-        defer { isSubmitting = false }
         
         do {
             let (data, _) = try await URLSession.shared.data(for: req)
