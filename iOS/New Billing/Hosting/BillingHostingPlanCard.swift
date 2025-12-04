@@ -48,15 +48,12 @@ struct BillingHostingPlanCard: View {
                 }
             }
             
-            HStack {
-                Spacer()
-                
-                SFButton("cart.badge.plus") {
-                    onPurchase?()
-                }
-                .buttonStyle(.glassProminent)
-                .tint(tint)
+            SFButton("cart.badge.plus") {
+                onPurchase?()
             }
+            .buttonStyle(.glassProminent)
+            .tint(tint)
+            .frame(maxWidth: .infinity, alignment: .trailing)
         }
         .padding(16)
         .background(.ultraThinMaterial, in: .rect(cornerRadius: 18))
@@ -103,6 +100,7 @@ struct BillingHostingPlanCard: View {
             var sizes: [CGSize] = []
             var positions: [CGPoint] = []
             var size: CGSize = .zero
+            var proposalWidth: CGFloat?
         }
         
         func makeCache(subviews: Subviews) -> Cache { Cache() }
@@ -115,7 +113,9 @@ struct BillingHostingPlanCard: View {
         }
         
         func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout Cache) {
-            let result = cache.positions.isEmpty && !subviews.isEmpty ? compute(proposal: proposal, subviews: subviews) : cache
+            let proposalWidth = proposal.width ?? bounds.width
+            let needsRecompute = cache.positions.isEmpty || cache.proposalWidth != proposalWidth
+            let result = needsRecompute ? compute(proposal: proposal, subviews: subviews) : cache
             
             for (index, subview) in subviews.enumerated() {
                 let position = result.positions[index]
@@ -158,6 +158,7 @@ struct BillingHostingPlanCard: View {
             
             let height = currentY + rowHeight
             cache.size = CGSize(width: maxWidth.isFinite ? maxWidth : maxLineWidth, height: height)
+            cache.proposalWidth = proposal.width ?? cache.size.width
             
             return cache
         }
