@@ -17,6 +17,7 @@ struct ImagePlayground: View {
     @State private var showImagePlayground = false
     @State private var genImageURL: URL?
     @State private var selectedImage: Image?
+    @State private var showPhotoPicker = false
     @State private var selectedPhotoItem: PhotosPickerItem?
     @State private var imageDescription = ""
     @State private var imageDescriptions: [String] = []
@@ -93,7 +94,9 @@ struct ImagePlayground: View {
                 
                 let hasSelectedImage = selectedImage != nil
                 
-                PhotosPicker(selection: $selectedPhotoItem, matching: .images) {
+                Button {
+                    showPhotoPicker = true
+                } label: {
                     Image(systemName: hasSelectedImage ? "photo.badge.plus" : "photo.badge.checkmark")
                         .symbolRenderingMode(.multicolor)
                         .title2(.semibold)
@@ -102,6 +105,7 @@ struct ImagePlayground: View {
                         .background(.ultraThinMaterial, in: .rect(cornerRadius: 16))
                         .padding(5)
                 }
+                .photosPicker(isPresented: $showPhotoPicker, selection: $selectedPhotoItem, matching: .images)
                 .onChange(of: selectedPhotoItem) { _, newItem in
                     Task {
 #if os(macOS)

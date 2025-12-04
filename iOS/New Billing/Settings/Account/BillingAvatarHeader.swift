@@ -11,6 +11,7 @@ struct BillingAvatarHeader: View {
         self.user = user
     }
     
+    @State private var showAvatarPicker = false
     @State private var avatarPickerItem: PhotosPickerItem?
     @State private var avatarPreview: UIImage?
     @State private var isUploadingAvatar = false
@@ -21,7 +22,9 @@ struct BillingAvatarHeader: View {
         HStack(spacing: 20) {
             avatarImage(for: user)
                 .overlay(alignment: .topTrailing) {
-                    PhotosPicker(selection: $avatarPickerItem, matching: .images, photoLibrary: .shared()) {
+                    Button {
+                        showAvatarPicker = true
+                    } label: {
                         VStack {
                             if uploading {
                                 ProgressView()
@@ -32,6 +35,7 @@ struct BillingAvatarHeader: View {
                         .frame(40)
                         .glassEffect(in: .circle)
                     }
+                    .photosPicker(isPresented: $showAvatarPicker, selection: $avatarPickerItem, matching: .images, photoLibrary: .shared())
                     .animation(.default, value: uploading)
                     .disabled(isUploadingAvatar)
                     .foregroundStyle(.foreground)

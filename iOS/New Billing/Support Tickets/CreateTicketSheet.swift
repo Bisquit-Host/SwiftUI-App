@@ -11,6 +11,7 @@ struct CreateTicketSheet: View {
     @State private var message = ""
     @State private var attachments: [PendingAttachment] = []
     @State private var showFileImporter = false
+    @State private var showPhotoPicker = false
     @State private var photoPickerItem: PhotosPickerItem?
     
     var body: some View {
@@ -51,9 +52,10 @@ struct CreateTicketSheet: View {
             
             Section("Add Files") {
                 HStack {
-                    PhotosPicker(selection: $photoPickerItem, matching: .images, photoLibrary: .shared()) {
-                        Label("Add Photo", systemImage: "photo")
+                    Button("Add Photo", systemImage: "photo") {
+                        showPhotoPicker = true
                     }
+                    .photosPicker(isPresented: $showPhotoPicker, selection: $photoPickerItem, matching: .images, photoLibrary: .shared())
                     
                     Button("Browse", systemImage: "paperclip") {
                         showFileImporter = true
