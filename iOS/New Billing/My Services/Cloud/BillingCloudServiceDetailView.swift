@@ -28,6 +28,7 @@ struct BillingCloudServiceDetailView: View {
                     reinstallSection(service)
                     chartsSection()
                     historySection()
+                    
                 } else if vm.isLoading {
                     ProgressView()
                         .frame(maxWidth: .infinity, alignment: .center)
@@ -55,10 +56,7 @@ struct BillingCloudServiceDetailView: View {
                 ProgressView()
             }
         }
-        .task {
-            await vm.load(serviceId: serviceId)
-        }
-        .refreshable {
+        .refreshableTask {
             await vm.load(serviceId: serviceId)
         }
         .onChange(of: vm.service?.id) { _, _ in
@@ -67,6 +65,7 @@ struct BillingCloudServiceDetailView: View {
                 renewMonths = 1
                 selectedUpgradeId = vm.changeablePackages.first?.id
             }
+            
             rootPassword = ""
         }
         .onChange(of: vm.osOptions.count) { _, _ in
@@ -129,7 +128,9 @@ struct BillingCloudServiceDetailView: View {
                     .autocorrectionDisabled()
                 
                 Button {
-                    Task { await vm.rename(pendingName.isEmpty ? service.name : pendingName, serviceId: service.id) }
+                    Task {
+                        await vm.rename(pendingName.isEmpty ? service.name : pendingName, serviceId: service.id)
+                    }
                 } label: {
                     Text("Change name")
                         .frame(maxWidth: .infinity)
@@ -280,15 +281,21 @@ struct BillingCloudServiceDetailView: View {
             
             HStack(spacing: 12) {
                 powerButton("Start", symbol: "play.fill", tint: .green) {
-                    Task { await vm.power("start", serviceId: service.id) }
+                    Task {
+                        await vm.power("start", serviceId: service.id)
+                    }
                 }
                 
                 powerButton("Restart", symbol: "gobackward", tint: .orange) {
-                    Task { await vm.power("restart", serviceId: service.id) }
+                    Task {
+                        await vm.power("restart", serviceId: service.id)
+                    }
                 }
                 
                 powerButton("Stop", symbol: "stop.fill", tint: .red) {
-                    Task { await vm.power("stop", serviceId: service.id) }
+                    Task {
+                        await vm.power("stop", serviceId: service.id)
+                    }
                 }
             }
         }
@@ -300,12 +307,12 @@ struct BillingCloudServiceDetailView: View {
             VStack(alignment: .leading, spacing: 8) {
                 SecureField("New password", text: $rootPassword)
                 
-                Button {
-                    Task { await vm.changePassword(rootPassword, serviceId: service.id) }
-                } label: {
-                    Text("Update password")
-                        .frame(maxWidth: .infinity)
+                Button("Update password") {
+                    Task {
+                        await vm.changePassword(rootPassword, serviceId: service.id)
+                    }
                 }
+                .frame(maxWidth: .infinity)
                 .buttonStyle(.borderedProminent)
                 .disabled(vm.isPerformingAction || rootPassword.count < 8)
             }
@@ -344,11 +351,8 @@ struct BillingCloudServiceDetailView: View {
             if let charts = vm.charts {
                 VStack(alignment: .leading, spacing: 12) {
                     Chart(charts.cpu) {
-                        LineMark(
-                            x: .value("Time", $0.timestamp),
-                            y: .value("CPU", $0.cpuLoad)
-                        )
-                        .foregroundStyle(.blue)
+                        LineMark(x: .value("Time", $0.timestamp), y: .value("CPU", $0.cpuLoad))
+                            .foregroundStyle(.blue)
                     }
                     .frame(height: 180)
                     .chartYScale(domain: 0...100)
@@ -358,29 +362,20 @@ struct BillingCloudServiceDetailView: View {
                     }
                     
                     Chart(charts.memory) {
-                        LineMark(
-                            x: .value("Time", $0.timestamp),
-                            y: .value("RAM", $0.memoryUsage)
-                        )
-                        .foregroundStyle(.green)
+                        LineMark(x: .value("Time", $0.timestamp), y: .value("RAM", $0.memoryUsage))
+                            .foregroundStyle(.green)
                     }
                     .frame(height: 180)
                     .chartXAxis(.hidden)
                     
                     Chart {
                         ForEach(charts.networkInput) {
-                            LineMark(
-                                x: .value("Time", $0.timestamp),
-                                y: .value("In", $0.value)
-                            )
-                            .foregroundStyle(.blue)
+                            LineMark(x: .value("Time", $0.timestamp), y: .value("In", $0.value))
+                                .foregroundStyle(.blue)
                         }
                         ForEach(charts.networkOutput) {
-                            LineMark(
-                                x: .value("Time", $0.timestamp),
-                                y: .value("Out", $0.value)
-                            )
-                            .foregroundStyle(.orange)
+                            LineMark(x: .value("Time", $0.timestamp), y: .value("Out", $0.value))
+                                .foregroundStyle(.orange)
                         }
                     }
                     .frame(height: 180)
