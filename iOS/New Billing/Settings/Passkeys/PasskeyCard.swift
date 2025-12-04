@@ -67,7 +67,7 @@ struct PasskeyCard: View {
         }
         .overlay {
             RoundedRectangle(cornerRadius: 14)
-                .stroke(.tertiary, lineWidth: 1)
+                .stroke(.primary.opacity(0.04), lineWidth: 1)
         }
     }
     

@@ -15,7 +15,7 @@ struct PasskeyListNavLink: View {
                     Text("Passkeys")
                         .subheadline(.semibold)
                     
-                    Text("Sign in without a password!")
+                    Text("Passwordless sign in")
                         .footnote()
                         .secondary()
                 }
