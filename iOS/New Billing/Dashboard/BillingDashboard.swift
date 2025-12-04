@@ -15,7 +15,7 @@ struct BillingDashboard: View {
                     BillingDashboardHostingLinks()
                     
                     NavigationLink {
-                        BillingMyServicesView()
+                        BillingMyServicesList()
                             .environment(vm)
                     } label: {
                         HStack(spacing: 12) {
