@@ -10,7 +10,7 @@ struct SheetTopup: View {
     
     init(_ user: BillingUser) {
         self.user = user
-        let availableProviders = PaymentProvider.providers(for: user.currency)
+        let availableProviders = PaymentProvider.allCases
         self.providers = availableProviders
         _selectedProvider = State(initialValue: availableProviders.first)
         _amount = State(initialValue: String(format: "%.0f", SheetTopup.minimumAmount(for: user.currency)))
