@@ -61,7 +61,7 @@ struct BillingSettings: View {
         .navigationTitle("Settings")
         .navigationBarTitleDisplayMode(.inline)
         .scrollIndicators(.never)
-        .refreshableTask {
+        .task {
             await dashboardVM.fetchUserInfo()
         }
         .sheet($showPasswordSheet) {
