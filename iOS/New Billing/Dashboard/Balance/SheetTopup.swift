@@ -20,7 +20,7 @@ struct SheetTopup: View {
     @State private var safariCover = false
     @State private var paymentLink = ""
     
-    private let amountFieldSide: CGFloat = 48
+    private let amountFieldSide = 48.0
     
     private var minusDisabled: Bool {
         (Double(amount.replacingOccurrences(of: ",", with: ".")) ?? 0) <= minimumTopupAmount
