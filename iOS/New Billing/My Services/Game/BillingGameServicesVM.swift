@@ -7,10 +7,10 @@ final class BillingGameServicesVM {
     var lastError: String?
     
     func loadServices() async {
-        await fetch(path: "https://test-api.bisquit.host/game")
+        await fetch()
     }
     
-    private func fetch(path: String) async {
+    private func fetch() async {
         guard !isLoading else { return }
         isLoading = true
         lastError = nil
@@ -19,7 +19,7 @@ final class BillingGameServicesVM {
             isLoading = false
         }
         
-        guard let url = URL(string: path) else {
+        guard let url = URL(string: "https://test-api.bisquit.host/game") else {
             lastError = "Invalid URL"
             return
         }
