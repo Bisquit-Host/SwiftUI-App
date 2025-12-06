@@ -134,27 +134,7 @@ final class BillingCloudServiceDetailVM {
         await performAction {
             guard await self.request(path: "/cloud/\(serviceId)/name", method: "PATCH", body: payload) != nil else { return }
             
-            if let current = self.service {
-                self.service = BillingCloudServiceDetails(
-                    id: current.id,
-                    name: trimmed,
-                    price: current.price,
-                    autorenew: current.autorenew,
-                    state: current.state,
-                    allowSuspend: current.allowSuspend,
-                    allowDelete: current.allowDelete,
-                    createdAt: current.createdAt,
-                    expiresAt: current.expiresAt,
-                    ip: current.ip,
-                    vmId: current.vmId,
-                    password: current.password,
-                    system: current.system,
-                    ptrRecord: current.ptrRecord,
-                    packageInfo: current.packageInfo,
-                    location: current.location
-                )
-            }
-            
+            self.service?.name = trimmed
             self.actionMessage = "Name updated"
         }
     }
@@ -193,27 +173,7 @@ final class BillingCloudServiceDetailVM {
         await performAction {
             guard await self.request(path: "/cloud/\(serviceId)/autorenew", method: "PATCH", body: payload) != nil else { return }
             
-            if let current = self.service {
-                self.service = BillingCloudServiceDetails(
-                    id: current.id,
-                    name: current.name,
-                    price: current.price,
-                    autorenew: enabled,
-                    state: current.state,
-                    allowSuspend: current.allowSuspend,
-                    allowDelete: current.allowDelete,
-                    createdAt: current.createdAt,
-                    expiresAt: current.expiresAt,
-                    ip: current.ip,
-                    vmId: current.vmId,
-                    password: current.password,
-                    system: current.system,
-                    ptrRecord: current.ptrRecord,
-                    packageInfo: current.packageInfo,
-                    location: current.location
-                )
-            }
-            
+            self.service?.autorenew = enabled
             self.actionMessage = enabled ? "Auto-extend enabled" : "Auto-extend disabled"
         }
     }
@@ -240,26 +200,8 @@ final class BillingCloudServiceDetailVM {
                     
                     do {
                         let response = try decoder.decode(BillingServiceRenewResponse.self, from: data)
-                        if let current = self.service {
-                            self.service = BillingCloudServiceDetails(
-                                id: current.id,
-                                name: current.name,
-                                price: current.price,
-                                autorenew: current.autorenew,
-                                state: current.state,
-                                allowSuspend: current.allowSuspend,
-                                allowDelete: current.allowDelete,
-                                createdAt: current.createdAt,
-                                expiresAt: response.newExpiresAt,
-                                ip: current.ip,
-                                vmId: current.vmId,
-                                password: current.password,
-                                system: current.system,
-                                ptrRecord: current.ptrRecord,
-                                packageInfo: current.packageInfo,
-                                location: current.location
-                            )
-                        }
+                        
+                        self.service?.expiresAt = response.newExpiresAt
                         
                         self.actionMessage = "Extended for \(months) mo"
                         continuation.resume(returning: response)

@@ -150,7 +150,9 @@ final class BillingBotServiceDetailVM {
         lastError = nil
         actionMessage = nil
         
-        defer { isPerformingAction = false }
+        defer {
+            isPerformingAction = false
+        }
         
         await work()
     }
