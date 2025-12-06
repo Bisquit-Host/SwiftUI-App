@@ -11,6 +11,16 @@ struct TopupProviderCard: View {
         _selectedProvider = selectedProvider
     }
     
+    private var avgColor: Color {
+        switch provider.icon {
+            
+        case .asset(let resource):
+            Color(uiColor: UIImage(resource: resource).findAverageColor() ?? .blue)
+            
+        default: .blue
+        }
+    }
+    
     var body: some View {
         Button {
             selectedProvider = provider
@@ -25,7 +35,7 @@ struct TopupProviderCard: View {
             .padding(.horizontal, 12)
             .background {
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(selectedProvider == provider ? provider.tint.opacity(0.12) : .primary.opacity(0.04))
+                    .fill(selectedProvider == provider ? avgColor.opacity(0.12) : .primary.opacity(0.04))
             }
             .overlay {
                 if differentiateWithoutColor && selectedProvider == provider {

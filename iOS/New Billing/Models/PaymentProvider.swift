@@ -4,11 +4,10 @@ struct PaymentProvider: Identifiable, Equatable, CaseIterable {
     let id: String
     let name: String
     let icon: PaymentProviderIcon
-    let tint: Color
     let method: String?
     
-    private static let tBank = PaymentProvider(id: "card", name: "T-Bank", icon: .asset(.tbank), tint: .yellow, method: "card")
-    private static let stripe = PaymentProvider(id: "stripe", name: "Stripe", icon: .asset(.stripe), tint: .indigo, method: "stripe")
+    private static let tBank = PaymentProvider(id: "card", name: "T-Bank", icon: .asset(.tbank), method: "card")
+    private static let stripe = PaymentProvider(id: "stripe", name: "Stripe", icon: .asset(.stripe), method: "stripe")
     
     static let allCases: [PaymentProvider] = [
         tBank, stripe
