@@ -261,7 +261,7 @@ final class BillingCloudServiceDetailVM {
                             )
                         }
                         
-                        self.actionMessage = "Extended for \(months) mo."
+                        self.actionMessage = "Extended for \(months) mo"
                         continuation.resume(returning: response)
                     } catch {
                         self.lastError = error.localizedDescription

@@ -86,14 +86,14 @@ struct BillingGameServiceDetails: Decodable, Equatable {
 
 struct BillingBotServiceDetails: Decodable, Equatable {
     let id: Int
-    let name: String
+    var name: String
     let price: Double
     var autorenew: Bool
     let state: BillingServiceState
     let allowSuspend: Bool
     let allowDelete: Bool
     let createdAt: Date?
-    let expiresAt: Date?
+    var expiresAt: Date?
     let packageInfo: BillingBotPackage
     let location: BillingBotLocation
     

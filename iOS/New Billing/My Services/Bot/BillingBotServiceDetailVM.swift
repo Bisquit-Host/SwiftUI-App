@@ -18,7 +18,9 @@ final class BillingBotServiceDetailVM {
         lastError = nil
         actionMessage = nil
         
-        defer { isLoading = false }
+        defer {
+            isLoading = false
+        }
         
         await withTaskGroup(of: Void.self) { group in
             group.addTask { await self.fetchDetails(serviceId) }
@@ -74,21 +76,7 @@ final class BillingBotServiceDetailVM {
         await performAction {
             guard await self.request(path: "/bot/\(serviceId)/name", method: "PATCH", body: payload) != nil else { return }
             
-            if let current = self.service {
-                self.service = BillingBotServiceDetails(
-                    id: current.id,
-                    name: trimmed,
-                    price: current.price,
-                    autorenew: current.autorenew,
-                    state: current.state,
-                    allowSuspend: current.allowSuspend,
-                    allowDelete: current.allowDelete,
-                    createdAt: current.createdAt,
-                    expiresAt: current.expiresAt,
-                    packageInfo: current.packageInfo,
-                    location: current.location
-                )
-            }
+            self.service?.name = trimmed
         }
     }
     
@@ -127,23 +115,10 @@ final class BillingBotServiceDetailVM {
                     
                     do {
                         let response = try decoder.decode(BillingServiceRenewResponse.self, from: data)
-                        if let current = self.service {
-                            self.service = BillingBotServiceDetails(
-                                id: current.id,
-                                name: current.name,
-                                price: current.price,
-                                autorenew: current.autorenew,
-                                state: current.state,
-                                allowSuspend: current.allowSuspend,
-                                allowDelete: current.allowDelete,
-                                createdAt: current.createdAt,
-                                expiresAt: response.newExpiresAt,
-                                packageInfo: current.packageInfo,
-                                location: current.location
-                            )
-                        }
                         
-                        self.actionMessage = "Extended for \(months) mo."
+                        self.service?.expiresAt = response.newExpiresAt
+                        
+                        self.actionMessage = "Extended for \(months) mo"
                         continuation.resume(returning: response)
                     } catch {
                         self.lastError = error.localizedDescription
