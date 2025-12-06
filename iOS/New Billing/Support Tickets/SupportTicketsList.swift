@@ -3,7 +3,9 @@ import SwiftUI
 struct SupportTicketsList: View {
     @EnvironmentObject private var store: ValueStore
     @State private var vm = SupportTicketsVM()
+    
     @State private var showCreateSheet = false
+    @State private var alertTooManyTickets = false
     
     var body: some View {
         List {
@@ -36,7 +38,7 @@ struct SupportTicketsList: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button("New", systemImage: "plus") {
-                    showCreateSheet = true
+                    createNewTicket()
                 }
             }
         }
@@ -53,6 +55,29 @@ struct SupportTicketsList: View {
             Task {
                 await vm.loadTickets(accessToken: store.testAccessToken)
             }
+        }
+        .alert("Too many open tickets", isPresented: $alertTooManyTickets) {
+            Button("Okay") {}
+        } message: {
+            Text("Ypou already have 2 open tickets")
+        }
+    }
+    
+    private func createNewTicket() {
+        let openTickets = vm.tickets.filter {
+            $0.ticket.status == .open
+        }
+        
+        let pendingTickets = vm.tickets.filter {
+            $0.ticket.status == .pending
+        }
+        
+        let totalCount = pendingTickets.count + openTickets.count
+        
+        if totalCount >= 2 {
+            alertTooManyTickets = true
+        } else {
+            showCreateSheet = true
         }
     }
 }
