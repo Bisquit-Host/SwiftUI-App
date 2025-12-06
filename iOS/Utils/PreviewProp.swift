@@ -4,7 +4,7 @@ final class PreviewProp {
     static let serverAttributes = ServerAttributes(
         id: "a1b2c3d4",
         name: "Preview",
-        uuid: "1234567890",
+        uuid: UUID().uuidString,
         node: "Vision",
         description: "Preview server description",
         dockerImage: "",
@@ -27,21 +27,19 @@ final class PreviewProp {
     )
     
     static let userAttributes = UserAttributes(
-        uuid: "user-uuid-1234",
+        uuid: UUID().uuidString,
         email: "preview@example.com",
         username: "topscrech",
         image: "https://example.com/avatar.png",
-        createdAt: "2024-01-01T12:00:00Z",
+        createdAt: Date(),
         twoFaEnabled: false,
         permissions: [
-            "server.read",
-            "server.write",
-            "user.read"
+            "server.read", "server.write", "user.read"
         ]
     )
     
     static let backupAttributes = BackupAttributes(
-        uuid: "backup-uuid-0001",
+        uuid: UUID().uuidString,
         name: "Initial Backup",
         createdAt: Date(),
         completedAt: Date(),
@@ -57,8 +55,8 @@ final class PreviewProp {
         mimetype: "text/markdown",
         mode: "0644",
         modeBits: "rw-r--r--",
-        createdAt: "2024-01-20T09:00:00Z",
-        modifiedAt: "2024-01-20T09:30:00Z"
+        createdAt: Date(),
+        modifiedAt: Date()
     )
     
     static let logAttributes = LogAttributes(
@@ -109,8 +107,5 @@ final class PreviewProp {
         created: "2024-01-10T14:22:00Z"
     )
     
-    static let apiKeyListData = ApiKeyListData(
-        attributes: PreviewProp.apiKeyAttributes,
-        meta: nil
-    )
+    static let apiKeyListData = ApiKeyListData(attributes: PreviewProp.apiKeyAttributes, meta: nil)
 }
