@@ -97,7 +97,7 @@
       "location" : "https://github.com/Bisquit-Host/PteroNet",
       "state" : {
         "branch" : "main",
-        "revision" : "f8c5eda23204a50a0f35f4b35a9f3e2af70d20d5"
+        "revision" : "dab76e7091bf9e6ceb3f2838b8d945783c3e5a87"
       }
     },
     {
@@ -133,7 +133,7 @@
       "location" : "https://github.com/TopScrech/ScrechKit",
       "state" : {
         "branch" : "main",
-        "revision" : "ccd0683149a0470ca5ca61e4d5aec1bd66e055f6"
+        "revision" : "68dc17cb9990705573864bc039b88f27ad317c25"
       }
     },
     {

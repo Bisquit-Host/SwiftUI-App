@@ -43,8 +43,8 @@ final class PreviewProp {
     static let backupAttributes = BackupAttributes(
         uuid: "backup-uuid-0001",
         name: "Initial Backup",
-        createdAt: "2024-01-15T10:00:00Z",
-        completedAt: "2024-01-15T10:05:00Z",
+        createdAt: Date(),
+        completedAt: Date(),
         isLocked: false,
         bytes: 1_048_576
     )
@@ -64,7 +64,7 @@ final class PreviewProp {
     static let logAttributes = LogAttributes(
         id: "log-0001",
         event: "server.install",
-        timestamp: "2024-01-25T12:34:56Z",
+        timestamp: Date(),
         properties: [
             "status": .string("completed"),
             "code": .int(200),
