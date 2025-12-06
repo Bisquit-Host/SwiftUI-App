@@ -5,6 +5,7 @@ import HCaptcha
 final class HCaptchaVM {
     let hcaptcha: HCaptcha!
     var token: String? = nil
+    var isLoading = true
     
     init() {
         self.hcaptcha = try? HCaptcha(
@@ -22,6 +23,7 @@ final class HCaptchaVM {
         
         hcaptcha.onEvent { event, _ in
             print("HCaptcha event:", event.rawValue)
+            self.isLoading = false
         }
     }
     
@@ -32,8 +34,10 @@ final class HCaptchaVM {
                 print("HCaptcha result:", token)
                 
                 self.token = token
+                self.isLoading = false
             } catch {
                 print("Error validating hcaptcha", error.localizedDescription)
+                self.isLoading = false
             }
         }
     }

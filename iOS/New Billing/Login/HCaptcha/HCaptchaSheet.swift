@@ -12,19 +12,36 @@ struct HCaptchaSheet: View {
     }
     
     var body: some View {
-        UIViewWrapperView(host: captchaHost)
-            .ignoresSafeArea()
-            .task {
-                vm.configure(captchaHost.view)
-                vm.validate(captchaHost.view)
-            }
-            .onChange(of: vm.token) { _, newToken in
-                if let newToken {
-                    hcaptchaToken = newToken
-                    dismiss()
-                } else {
-                    print("Invalid token")
+        ZStack {
+            UIViewWrapperView(host: captchaHost)
+            
+            if vm.isLoading {
+                ZStack {
+                    Color.black.opacity(0.35)
+                        .ignoresSafeArea()
+                    
+                    ProgressView("Loading captcha...")
+                        .padding(16)
+                        .background(.ultraThinMaterial)
+                        .cornerRadius(12)
                 }
+                .allowsHitTesting(false)
+                .transition(.opacity)
             }
+        }
+        .ignoresSafeArea()
+        .animation(.easeInOut, value: vm.isLoading)
+        .task {
+            vm.configure(captchaHost.view)
+            vm.validate(captchaHost.view)
+        }
+        .onChange(of: vm.token) { _, newToken in
+            if let newToken {
+                hcaptchaToken = newToken
+                dismiss()
+            } else {
+                print("Invalid token")
+            }
+        }
     }
 }
