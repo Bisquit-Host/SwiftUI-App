@@ -177,6 +177,7 @@ final class BillingLoginVM {
         
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.dateDecodingStrategy = .iso8601
         
         return try decoder.decode(PasskeyOptionsResponse<PasskeyAssertionOptions>.self, from: data)
     }

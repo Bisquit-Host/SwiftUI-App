@@ -74,7 +74,7 @@ struct SupportTicketDetails: View {
 
 #Preview {
     NavigationStack {
-        SupportTicketDetails(.init(id: 1, title: "Example issue", status: .open, userId: 1, createdAt: "2024-01-01T10:00:00Z", updatedAt: "2024-01-01T10:00:00Z"))
+        SupportTicketDetails(.init(id: 1, title: "Example issue", status: .open, userId: 1, createdAt: Date(), updatedAt: Date()))
     }
     .environmentObject(ValueStore())
     .darkSchemePreferred()

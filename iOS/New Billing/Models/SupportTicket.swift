@@ -5,8 +5,8 @@ struct SupportTicketDTO: Codable, Identifiable, Hashable {
     let title: String
     let status: SupportTicketStatus
     let userId: Int
-    let createdAt: String
-    let updatedAt: String
+    let createdAt: Date
+    let updatedAt: Date
 }
 
 enum SupportTicketStatus: String, Codable, CaseIterable {

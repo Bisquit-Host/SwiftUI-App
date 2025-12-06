@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct BillingOperationRow: View {
     private let operation: BillingOperation
@@ -43,7 +43,7 @@ struct BillingOperationRow: View {
                         .subheadline(.semibold)
                         .foregroundStyle(amountColor)
                     
-                    Text(iso8601RelativeDate(operation.date))
+                    Text(timeSinceISO(operation.date))
                         .caption()
                         .secondary()
                 }

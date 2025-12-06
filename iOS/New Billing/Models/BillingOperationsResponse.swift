@@ -1,3 +1,5 @@
+import Foundation
+
 struct BillingOperationsResponse: Decodable, Equatable {
     let operations: [BillingOperation]
     let total: Int
@@ -7,7 +9,7 @@ struct BillingOperation: Identifiable, Decodable, Equatable {
     let id: Int
     let amount: Double
     let type: BillingOperationType
-    let date: String
+    let date: Date
     let currency: BillingTransactionCurrency
     let messages: [BillingOperationMessage]
     
@@ -19,7 +21,7 @@ struct BillingOperation: Identifiable, Decodable, Equatable {
         id: 1,
         amount: 16,
         type: .plus,
-        date: "2025-11-29T17:02:32.935387Z",
+        date: Date(),
         currency: .eur,
         messages: []
     )

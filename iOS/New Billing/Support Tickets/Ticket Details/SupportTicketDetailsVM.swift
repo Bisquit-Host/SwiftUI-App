@@ -162,6 +162,7 @@ final class SupportTicketDetailsVM {
         }
         
         let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
         print("🔍 Handling event:", name, "payload:\n", trimmed)
         
         switch name {

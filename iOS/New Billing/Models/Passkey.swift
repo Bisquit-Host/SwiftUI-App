@@ -48,8 +48,8 @@ struct PasskeyRegistrationOptions: Decodable {
 struct PasskeyListItem: Decodable, Identifiable, Equatable {
     let id: Int
     let nickname: String?
-    let createdAt: String
-    let lastUsedAt: String?
+    let createdAt: Date
+    let lastUsedAt: Date?
     let transports: [String]
     let backedUp: Bool
     let userVerified: Bool

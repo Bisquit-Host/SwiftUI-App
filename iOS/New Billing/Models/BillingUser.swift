@@ -30,8 +30,8 @@ public struct BillingUser: Decodable, Equatable {
     public let isSupport: Bool
     public let isAdmin: Bool
     public let isGod: Bool
-    public let createdAt: String
-    public let updatedAt: String
+    public let createdAt: Date
+    public let updatedAt: Date
     
     enum CodingKeys: String, CodingKey {
         case id, login, email, emailVerified, name, avatar, currency, balance, bonusBalance, totalBalance, lang, twoFa, githubId, googleId, yandexId, isBanned, hasPassword, isSupportAgent, isSupport = "rawIsSupport", isAdmin = "rawIsAdmin", isGod = "rawIsGod", createdAt, updatedAt
@@ -59,7 +59,7 @@ public struct BillingUser: Decodable, Equatable {
         isSupport: false,
         isAdmin: false,
         isGod: false,
-        createdAt: "2025-01-01T00:00:00Z",
-        updatedAt: "2025-01-01T00:00:00Z"
+        createdAt: Date(),
+        updatedAt: Date()
     )
 }

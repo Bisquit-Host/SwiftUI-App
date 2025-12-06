@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct TicketMessageRow: View {
     let message: SupportMessageDTO
@@ -35,7 +35,7 @@ struct TicketMessageRow: View {
                 
                 Text("•")
                 
-                Text(iso8601RelativeDate(message.createdAt))
+                Text(timeSinceISO(message.createdAt))
                     .caption2()
             }
             .secondary()

@@ -69,12 +69,8 @@ struct PasskeyCard: View {
         }
     }
     
-    private func formattedDate(_ value: String?) -> String? {
-        let isoFormatter = ISO8601DateFormatter()
-        
-        guard let value, let date = isoFormatter.date(from: value) else {
-            return nil
-        }
+    private func formattedDate(_ date: Date?) -> String? {
+        guard let date else { return nil }
         
         let formatter = RelativeDateTimeFormatter()
         formatter.unitsStyle = .full
