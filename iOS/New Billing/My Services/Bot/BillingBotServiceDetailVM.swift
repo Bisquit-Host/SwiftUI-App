@@ -98,6 +98,7 @@ final class BillingBotServiceDetailVM {
         
         await performAction {
             guard await self.request(path: "/bot/\(serviceId)/autorenew", method: "PATCH", body: payload) != nil else { return }
+            
             if let current = self.service {
                 self.service = BillingBotServiceDetails(
                     id: current.id,
