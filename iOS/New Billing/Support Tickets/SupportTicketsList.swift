@@ -59,20 +59,14 @@ struct SupportTicketsList: View {
         .alert("Too many open tickets", isPresented: $alertTooManyTickets) {
             Button("Okay") {}
         } message: {
-            Text("Ypou already have 2 open tickets")
+            Text("You already have 2 open tickets")
         }
     }
     
     private func createNewTicket() {
-        let openTickets = vm.tickets.filter {
-            $0.ticket.status == .open
-        }
-        
-        let pendingTickets = vm.tickets.filter {
-            $0.ticket.status == .pending
-        }
-        
-        let totalCount = pendingTickets.count + openTickets.count
+        let totalCount = vm.tickets.filter {
+            $0.ticket.status == .open || $0.ticket.status == .pending
+        }.count
         
         if totalCount >= 2 {
             alertTooManyTickets = true
