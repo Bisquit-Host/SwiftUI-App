@@ -94,27 +94,13 @@ final class BillingBotServiceDetailVM {
     
     func changeAutorenew(_ enabled: Bool, serviceId: Int) async {
         let body = ["autorenew": enabled]
+        
         guard let payload = try? JSONSerialization.data(withJSONObject: body) else { return }
         
         await performAction {
             guard await self.request(path: "/bot/\(serviceId)/autorenew", method: "PATCH", body: payload) != nil else { return }
             
-            if let current = self.service {
-                self.service = BillingBotServiceDetails(
-                    id: current.id,
-                    name: current.name,
-                    price: current.price,
-                    autorenew: enabled,
-                    state: current.state,
-                    allowSuspend: current.allowSuspend,
-                    allowDelete: current.allowDelete,
-                    createdAt: current.createdAt,
-                    expiresAt: current.expiresAt,
-                    packageInfo: current.packageInfo,
-                    location: current.location
-                )
-            }
-            
+            self.service?.autorenew = enabled
             self.actionMessage = enabled ? "Auto-extend enabled" : "Auto-extend disabled"
         }
     }

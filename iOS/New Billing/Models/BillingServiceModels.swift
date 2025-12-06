@@ -88,7 +88,7 @@ struct BillingBotServiceDetails: Decodable, Equatable {
     let id: Int
     let name: String
     let price: Double
-    let autorenew: Bool
+    var autorenew: Bool
     let state: BillingServiceState
     let allowSuspend: Bool
     let allowDelete: Bool
