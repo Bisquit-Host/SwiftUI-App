@@ -11,14 +11,16 @@ final class BillingGameServiceDetailVM {
     
     private let base = URL(string: "https://test-api.bisquit.host")!
     
-    func load(serviceId: Int) async {
+    func load(_ serviceId: Int) async {
         guard !isLoading else { return }
         
         isLoading = true
         lastError = nil
         actionMessage = nil
         
-        defer { isLoading = false }
+        defer {
+            isLoading = false
+        }
         
         await withTaskGroup(of: Void.self) { group in
             group.addTask { await self.fetchDetails(serviceId) }
@@ -94,10 +96,12 @@ final class BillingGameServiceDetailVM {
     
     func changeAutorenew(_ enabled: Bool, serviceId: Int) async {
         let body = ["autorenew": enabled]
+        
         guard let payload = try? JSONSerialization.data(withJSONObject: body) else { return }
         
         await performAction {
             guard await self.request(path: "/game/\(serviceId)/autorenew", method: "PATCH", body: payload) != nil else { return }
+            
             if let current = self.service {
                 self.service = BillingGameServiceDetails(
                     id: current.id,
@@ -157,7 +161,7 @@ final class BillingGameServiceDetailVM {
                             )
                         }
                         
-                        self.actionMessage = "Extended for \(months) mo."
+                        self.actionMessage = "Extended for \(months) mo"
                         continuation.resume(returning: response)
                     } catch {
                         self.lastError = error.localizedDescription
@@ -171,10 +175,12 @@ final class BillingGameServiceDetailVM {
     
     func changePackage(to packageId: Int, serviceId: Int) async {
         let body = ["package": packageId]
+        
         guard let payload = try? JSONSerialization.data(withJSONObject: body) else { return }
         
         await performAction {
             guard await self.request(path: "/game/\(serviceId)/change-package", method: "POST", body: payload) != nil else { return }
+            
             self.actionMessage = "Upgrade requested"
             await self.fetchDetails(serviceId)
         }

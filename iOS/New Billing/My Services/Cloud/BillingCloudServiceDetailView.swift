@@ -15,6 +15,8 @@ struct BillingCloudServiceDetailView: View {
     @State private var lastRenewAmount: Double?
     @State private var selectedUpgradeId: Int?
     @State private var alertRename = false
+    @State private var alertRenew = false
+    @State private var alertUpgrade = false
     
     var body: some View {
         ScrollView {
@@ -53,7 +55,7 @@ struct BillingCloudServiceDetailView: View {
         .navigationTitle(vm.service?.name ?? "")
         .navigationBarTitleDisplayMode(.inline)
         .refreshableTask {
-            await vm.load(serviceId: serviceId)
+            await vm.load(serviceId)
         }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
@@ -101,6 +103,38 @@ struct BillingCloudServiceDetailView: View {
             }
             
             Button("Cancel", role: .cancel) { }
+        }
+        .alert("Extend service", isPresented: $alertRenew) {
+            Button("Confirm payment") {
+                guard let service = vm.service else { return }
+                
+                Task {
+                    if let response = await vm.renew(months: renewMonths, serviceId: service.id) {
+                        lastRenewAmount = response.amount
+                    }
+                }
+            }
+            
+            Button("Cancel", role: .cancel) { }
+        } message: {
+            Text("Extend \(vm.service?.name ?? "this service") for \(renewMonths) \(renewMonths == 1 ? "month" : "months")?")
+        }
+        .alert("Confirm upgrade", isPresented: $alertUpgrade) {
+            Button("Upgrade") {
+                guard let pkg = selectedUpgradePackage else { return }
+                
+                Task {
+                    await vm.changePackage(to: pkg.id, serviceId: serviceId)
+                }
+            }
+            
+            Button("Cancel", role: .cancel) { }
+        } message: {
+            if let pkg = selectedUpgradePackage {
+                Text("Upgrade to \(pkg.name) and pay \(formatCurrency(max(pkg.price - pkg.toMinus, 0))) now?")
+            } else {
+                Text("Upgrade service?")
+            }
         }
         .safariCover($showVnc, url: "https://test-my.bisquit.host/cloud/\(serviceId)?tab=console")
     }
@@ -185,11 +219,7 @@ struct BillingCloudServiceDetailView: View {
                 .pickerStyle(.menu)
                 
                 Button {
-                    Task {
-                        if let response = await vm.renew(months: renewMonths, serviceId: service.id) {
-                            lastRenewAmount = response.amount
-                        }
-                    }
+                    alertRenew = true
                 } label: {
                     if vm.isPerformingAction {
                         ProgressView()
@@ -260,8 +290,8 @@ struct BillingCloudServiceDetailView: View {
                     }
                     
                     Button {
-                        if let packageId = selectedUpgradeId {
-                            Task { await vm.changePackage(to: packageId, serviceId: service.id) }
+                        if selectedUpgradeId != nil {
+                            alertUpgrade = true
                         }
                     } label: {
                         if vm.isPerformingAction {
@@ -486,6 +516,12 @@ struct BillingCloudServiceDetailView: View {
             return user.currency.symbol + value
         } else {
             return value
+        }
+    }
+    
+    private var selectedUpgradePackage: BillingChangeableCloudPackage? {
+        vm.changeablePackages.first {
+            $0.id == selectedUpgradeId
         }
     }
 }

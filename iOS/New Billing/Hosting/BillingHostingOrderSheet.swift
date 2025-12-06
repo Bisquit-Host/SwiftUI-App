@@ -19,6 +19,7 @@ struct BillingHostingOrderSheet: View {
     @State private var isOrdering = false
     @State private var message: String?
     @State private var error: String?
+    @State private var alertPurchase = false
     
     init(context: BillingPlanOrderContext, priceText: String, vm: BillingHostingPlansVM) {
         self.context = context
@@ -106,9 +107,7 @@ struct BillingHostingOrderSheet: View {
                 
                 Section {
                     Button {
-                        Task {
-                            await order()
-                        }
+                        alertPurchase = true
                     } label: {
                         if isOrdering {
                             ProgressView()
@@ -138,6 +137,17 @@ struct BillingHostingOrderSheet: View {
                 } else {
                     selectedEggId = 0
                 }
+            }
+            .alert("Confirm purchase", isPresented: $alertPurchase) {
+                Button("Confirm") {
+                    Task {
+                        await order()
+                    }
+                }
+                
+                Button("Cancel", role: .cancel) { }
+            } message: {
+                Text("Purchase \(context.plan.name) for \(monthLabel(months)) billing?")
             }
         }
     }

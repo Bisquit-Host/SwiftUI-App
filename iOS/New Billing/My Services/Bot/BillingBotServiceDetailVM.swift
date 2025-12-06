@@ -11,7 +11,7 @@ final class BillingBotServiceDetailVM {
     
     private let base = URL(string: "https://test-api.bisquit.host")!
     
-    func load(serviceId: Int) async {
+    func load(_ serviceId: Int) async {
         guard !isLoading else { return }
         
         isLoading = true
