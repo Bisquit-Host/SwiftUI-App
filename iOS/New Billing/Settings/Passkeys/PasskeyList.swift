@@ -54,6 +54,7 @@ struct PasskeyList: View {
                             ForEach(vm.passkeys) {
                                 PasskeyCard($0)
                             }
+                            .animation(.default, value: vm.passkeys)
                         }
                     }
                 }
