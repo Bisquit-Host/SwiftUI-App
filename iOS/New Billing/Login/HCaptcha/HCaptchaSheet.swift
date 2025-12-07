@@ -22,8 +22,7 @@ struct HCaptchaSheet: View {
                     
                     ProgressView("Loading captcha...")
                         .padding(16)
-                        .background(.ultraThinMaterial)
-                        .cornerRadius(12)
+                        .glassEffect(in: .rect(cornerRadius: 12))
                 }
                 .allowsHitTesting(false)
                 .transition(.opacity)
