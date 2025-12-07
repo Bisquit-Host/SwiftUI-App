@@ -8,10 +8,6 @@ struct PasskeyList: View {
             VStack(spacing: 16) {
                 BillingSectionCard("Register new passkey") {
                     VStack(alignment: .leading, spacing: 12) {
-                        Text("Add a nickname to keep devices organized")
-                            .footnote()
-                            .secondary()
-                        
                         TextField("Label (optional)", text: $vm.label)
                             .textInputAutocapitalization(.never)
                             .disableAutocorrection(true)
