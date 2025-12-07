@@ -1,8 +1,8 @@
 import Charts
 import SwiftUI
 
-struct BillingCloudServiceDetailView: View {
-    @State private var vm = BillingCloudServiceDetailVM()
+struct VDSServiceDetails: View {
+    @State private var vm = VDSServiceDetailsVM()
     @Environment(BillingDashboardVM.self) private var dashboardVM
     
     let serviceId: Int
@@ -528,7 +528,7 @@ struct BillingCloudServiceDetailView: View {
 
 #Preview {
     NavigationStack {
-        BillingCloudServiceDetailView(serviceId: 1)
+        VDSServiceDetails(serviceId: 1)
             .environment(BillingDashboardVM())
     }
     .environmentObject(ValueStore())

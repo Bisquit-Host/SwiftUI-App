@@ -1,7 +1,7 @@
 import Foundation
 
 @Observable
-final class BillingCloudServiceDetailVM {
+final class VDSServiceDetailsVM {
     var service: BillingCloudServiceDetails?
     var history: [BillingCloudHistoryItem] = []
     var charts: BillingCloudCharts?
