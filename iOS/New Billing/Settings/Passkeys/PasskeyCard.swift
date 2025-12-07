@@ -1,17 +1,19 @@
 import ScrechKit
 
 struct PasskeyCard: View {
-    private let passkey: PasskeyListItem
-    private let onDelete: (() -> Void)?
+    @Environment(PasskeyListVM.self) private var vm
     
-    init(_ passkey: PasskeyListItem, onDelete: (() -> Void)? = nil) {
+    private let passkey: PasskeyListItem
+    
+    init(_ passkey: PasskeyListItem) {
         self.passkey = passkey
-        self.onDelete = onDelete
     }
     
     private var tint: Color {
         passkey.userVerified ? .blue : .yellow
     }
+    
+    @State private var alertDelete = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -49,13 +51,11 @@ struct PasskeyCard: View {
                 
                 Spacer()
                 
-                if let onDelete {
-                    SFButton("trash") {
-                        onDelete()
-                    }
-                    .tint(.red)
-                    .buttonStyle(.borderless)
+                SFButton("trash") {
+                    alertDelete = true
                 }
+                .tint(.red)
+                .buttonStyle(.borderless)
             }
         }
         .padding(14)
@@ -66,6 +66,13 @@ struct PasskeyCard: View {
         .overlay {
             RoundedRectangle(cornerRadius: 14)
                 .stroke(.primary.opacity(0.04), lineWidth: 1)
+        }
+        .alert("Delete Passkey", isPresented: $alertDelete) {
+            Button("Delete", role: .destructive) {
+                Task {
+                    await vm.deletePasskey(passkey)
+                }
+            }
         }
     }
     

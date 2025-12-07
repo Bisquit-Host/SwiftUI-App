@@ -55,12 +55,8 @@ struct PasskeyList: View {
                             .padding(.vertical, 12)
                     } else {
                         VStack(spacing: 10) {
-                            ForEach(vm.passkeys) { passkey in
-                                PasskeyCard(passkey) {
-                                    Task {
-                                        await vm.deletePasskey(passkey)
-                                    }
-                                }
+                            ForEach(vm.passkeys) {
+                                PasskeyCard($0)
                             }
                         }
                     }
@@ -77,6 +73,7 @@ struct PasskeyList: View {
         }
         .navigationTitle("Passkeys")
         .navigationBarTitleDisplayMode(.inline)
+        .environment(vm)
         .scrollIndicators(.never)
         .background {
             LinearGradient(colors: [.blue.opacity(0.08), Color(.systemBackground)], startPoint: .topLeading, endPoint: .bottomTrailing)
