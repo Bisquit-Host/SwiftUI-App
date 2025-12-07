@@ -36,6 +36,7 @@ final class PasskeyListVM {
             try validateResponse(response, data: data)
             
             let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             
             let items = try decoder.decode([PasskeyListItem].self, from: data)

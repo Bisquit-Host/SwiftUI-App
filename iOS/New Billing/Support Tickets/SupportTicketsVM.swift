@@ -68,7 +68,10 @@ final class SupportTicketsVM {
                 print("Support tickets raw response:\\n\(raw)")
             }
             
-            tickets = try JSONDecoder().decode([SupportTicketWithLastMessageDTO].self, from: data)
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+            
+            tickets = try decoder.decode([SupportTicketWithLastMessageDTO].self, from: data)
         } catch {
             print("❌", error.localizedDescription)
             SystemAlert.error("Error", subtitle: error.localizedDescription)

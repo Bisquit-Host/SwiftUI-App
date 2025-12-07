@@ -21,10 +21,6 @@ struct ANSITests {
 private final class _BundleLocator: NSObject {}
 
 //struct UnitTests {
-//    //    @Test func example() async throws {
-//    //        // Write your test here and use APIs like `#expect(...)` to check expected conditions.
-//    //    }
-//    
 //    @Test("Chmod")
 //    func testChmod() {
 //        print(chmod(execute: true))
