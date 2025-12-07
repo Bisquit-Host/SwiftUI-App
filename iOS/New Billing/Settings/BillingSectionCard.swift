@@ -1,18 +1,20 @@
 import SwiftUI
 
 struct BillingSectionCard<Content: View>: View {
-    private let title: LocalizedStringKey
+    private let title: LocalizedStringKey?
     private let content: Content
     
-    init(_ title: LocalizedStringKey, @ViewBuilder content: () -> Content) {
+    init(_ title: LocalizedStringKey? = nil, @ViewBuilder content: () -> Content) {
         self.title = title
         self.content = content()
     }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text(title)
-                .headline()
+            if let title {
+                Text(title)
+                    .headline()
+            }
             
             content
         }

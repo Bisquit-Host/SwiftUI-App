@@ -6,7 +6,7 @@ struct PasskeyList: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
-                BillingSectionCard("Register new passkey") {
+                BillingSectionCard("Register new Passkey") {
                     VStack(alignment: .leading, spacing: 12) {
                         TextField("Label (optional)", text: $vm.label)
                             .textInputAutocapitalization(.never)
@@ -32,7 +32,7 @@ struct PasskeyList: View {
                                 }
                                 .frame(maxWidth: .infinity)
                             } else {
-                                Text("Create passkey")
+                                Text("Create")
                                     .rounded()
                                     .semibold()
                                     .frame(maxWidth: .infinity)
@@ -44,9 +44,9 @@ struct PasskeyList: View {
                     }
                 }
                 
-                BillingSectionCard("Your passkeys") {
+                BillingSectionCard {
                     if vm.passkeys.isEmpty && !vm.isLoading {
-                        ContentUnavailableView("No passkeys yet", systemImage: "key.fill", description: Text("Register a passkey to sign in without a password"))
+                        ContentUnavailableView("No Passkeys yet", systemImage: "key.fill", description: Text("Register a Passkey to sign in without a password"))
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 12)
                     } else {
@@ -55,13 +55,6 @@ struct PasskeyList: View {
                                 PasskeyCard($0)
                             }
                         }
-                    }
-                }
-                .overlay {
-                    if vm.isLoading {
-                        ProgressView("Loading passkeys...")
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .background(.background.opacity(0.9))
                     }
                 }
             }

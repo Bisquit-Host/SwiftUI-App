@@ -14,7 +14,7 @@ struct PasskeyCard: View {
     @State private var alertDelete = false
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: 8) {
             HStack(spacing: 12) {
                 ZStack {
                     Circle()
@@ -25,22 +25,12 @@ struct PasskeyCard: View {
                         .foregroundStyle(tint)
                 }
                 
-                VStack(alignment: .leading, spacing: 6) {
+                VStack(alignment: .leading, spacing: 4) {
                     Text(passkey.nickname.flatMap { $0.isEmpty ? nil : $0 } ?? "Passkey #\(passkey.id)")
+                        .lineLimit(1)
                         .subheadline(.semibold)
                     
                     verifiedBadge
-                    
-                    Group {
-                        if let lastUsed = formattedDate(passkey.lastUsedAt) {
-                            Text("Last used: \(lastUsed)")
-                            
-                        } else if let createdText = formattedDate(passkey.createdAt) {
-                            Text("Created: \(createdText)")
-                        }
-                    }
-                    .footnote()
-                    .secondary()
                     
                     if !passkey.transports.isEmpty {
                         transportTag(passkey.transports.joined(separator: " • "))
@@ -48,13 +38,18 @@ struct PasskeyCard: View {
                 }
                 
                 Spacer()
-                
-                SFButton("trash") {
-                    alertDelete = true
-                }
-                .tint(.red)
-                .buttonStyle(.borderless)
             }
+            
+            Group {
+                if let lastUsed = formattedDate(passkey.lastUsedAt) {
+                    Text("Last used: \(lastUsed)")
+                    
+                } else if let createdText = formattedDate(passkey.createdAt) {
+                    Text("Created: \(createdText)")
+                }
+            }
+            .footnote()
+            .secondary()
         }
         .padding(14)
         .background {
@@ -64,6 +59,11 @@ struct PasskeyCard: View {
         .overlay {
             RoundedRectangle(cornerRadius: 14)
                 .stroke(.primary.opacity(0.04), lineWidth: 1)
+        }
+        .contextMenu {
+            Button("Delete", systemImage: "trash", role: .destructive) {
+                alertDelete = true
+            }
         }
         .alert("Delete Passkey", isPresented: $alertDelete) {
             Button("Delete", role: .destructive) {

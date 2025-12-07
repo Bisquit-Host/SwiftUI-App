@@ -103,7 +103,7 @@ struct BillingLogin: View {
                             Text("Signing in with passkey...")
                         }
                     } else {
-                        Label("Sign in with passkey", systemImage: "person.badge.key.fill")
+                        Label("Sign in with Passkey", systemImage: "person.badge.key.fill")
                             .labelIconToTitleSpacing(10)
                             .semibold()
                             .rounded()
