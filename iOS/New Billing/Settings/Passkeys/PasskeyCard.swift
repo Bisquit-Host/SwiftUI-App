@@ -4,13 +4,11 @@ struct PasskeyCard: View {
     @Environment(PasskeyListVM.self) private var vm
     
     private let passkey: PasskeyListItem
+    private let tint: Color
     
     init(_ passkey: PasskeyListItem) {
         self.passkey = passkey
-    }
-    
-    private var tint: Color {
-        passkey.userVerified ? .blue : .yellow
+        tint = passkey.userVerified ? .blue : .yellow
     }
     
     @State private var alertDelete = false
@@ -31,7 +29,7 @@ struct PasskeyCard: View {
                     Text(passkey.nickname.flatMap { $0.isEmpty ? nil : $0 } ?? "Passkey #\(passkey.id)")
                         .subheadline(.semibold)
                     
-                    badge
+                    verifiedBadge
                     
                     Group {
                         if let lastUsed = formattedDate(passkey.lastUsedAt) {
@@ -85,7 +83,7 @@ struct PasskeyCard: View {
         return formatter.localizedString(for: date, relativeTo: Date())
     }
     
-    private var badge: some View {
+    private var verifiedBadge: some View {
         HStack(spacing: 6) {
             Image(systemName: passkey.userVerified ? "checkmark.shield.fill" : "exclamationmark.triangle.fill")
                 .footnote()
