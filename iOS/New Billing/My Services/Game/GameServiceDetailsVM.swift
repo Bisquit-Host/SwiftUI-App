@@ -1,7 +1,7 @@
 import Foundation
 
 @Observable
-final class BillingGameServiceDetailVM {
+final class GameServiceDetailsVM {
     var service: BillingGameServiceDetails?
     var changeablePackages: [BillingChangeableGamePackage] = []
     var isLoading = false

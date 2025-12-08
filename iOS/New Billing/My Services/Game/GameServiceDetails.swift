@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct BillingBotServiceDetailView: View {
-    @State private var vm = BillingBotServiceDetailVM()
+struct GameServiceDetails: View {
+    @State private var vm = GameServiceDetailsVM()
     @Environment(BillingDashboardVM.self) private var dashboardVM
     
     let serviceId: Int
@@ -22,6 +22,7 @@ struct BillingBotServiceDetailView: View {
                     detailsSection(service)
                     billingSection(service)
                     upgradeSection(service)
+                    
                 } else if vm.isLoading {
                     ProgressView()
                         .frame(maxWidth: .infinity, alignment: .center)
@@ -80,7 +81,9 @@ struct BillingBotServiceDetailView: View {
                 .autocorrectionDisabled()
             
             Button("Save") {
-                Task { await vm.rename(pendingName.isEmpty ? service.name : pendingName, serviceId: service.id) }
+                Task {
+                    await vm.rename(pendingName.isEmpty ? service.name : pendingName, serviceId: service.id)
+                }
             }
             
             Button("Cancel", role: .cancel) { }
@@ -121,7 +124,7 @@ struct BillingBotServiceDetailView: View {
     
     // MARK: - Sections
     
-    private func header(_ service: BillingBotServiceDetails) -> some View {
+    private func header(_ service: BillingGameServiceDetails) -> some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack(alignment: .center, spacing: 8) {
                 Text(service.name)
@@ -165,13 +168,14 @@ struct BillingBotServiceDetailView: View {
         }
     }
     
-    private func detailsSection(_ service: BillingBotServiceDetails) -> some View {
+    private func detailsSection(_ service: BillingGameServiceDetails) -> some View {
         BillingSectionCard("Details") {
             VStack(alignment: .leading, spacing: 10) {
                 row(title: "Package", value: service.packageInfo.name)
                 row(title: "CPU", value: "\(service.packageInfo.cpu.clean) vCPU \(service.packageInfo.cpuName ?? "")")
                 row(title: "RAM", value: "\(service.packageInfo.memory.clean) GB")
                 row(title: "Disk", value: "\(service.packageInfo.disk.clean) GB \(service.packageInfo.diskType ?? "")")
+                row(title: "Network", value: "\(service.packageInfo.network.clean) \(service.packageInfo.networkType ?? "")")
                 
                 if let expires = service.expiresAt {
                     row(title: "Expires", value: expires.formatted(date: .numeric, time: .shortened))
@@ -180,7 +184,7 @@ struct BillingBotServiceDetailView: View {
         }
     }
     
-    private func billingSection(_ service: BillingBotServiceDetails) -> some View {
+    private func billingSection(_ service: BillingGameServiceDetails) -> some View {
         BillingSectionCard("Billing") {
             Toggle(isOn: Binding(
                 get: { vm.service?.autorenew ?? service.autorenew },
@@ -229,7 +233,7 @@ struct BillingBotServiceDetailView: View {
         }
     }
     
-    private func upgradeSection(_ service: BillingBotServiceDetails) -> some View {
+    private func upgradeSection(_ service: BillingGameServiceDetails) -> some View {
         BillingSectionCard("Upgrade") {
             if vm.changeablePackages.isEmpty {
                 Text("No higher packages available right now")
@@ -292,7 +296,6 @@ struct BillingBotServiceDetailView: View {
     }
     
     // MARK: - Helpers
-    
     private func row(title: String, value: String) -> some View {
         HStack {
             Text(title)
@@ -314,20 +317,20 @@ struct BillingBotServiceDetailView: View {
         let value = formatter.string(from: NSNumber(value: amount)) ?? String(format: "%.2f", amount)
         
         if let user = dashboardVM.user {
-            return user.currency.symbol + " \(value)"
+            return user.currency.symbol + value
         } else {
             return value
         }
     }
     
-    private var selectedUpgradePackage: BillingChangeableBotPackage? {
+    private var selectedUpgradePackage: BillingChangeableGamePackage? {
         vm.changeablePackages.first { $0.id == selectedUpgradeId }
     }
 }
 
 #Preview {
     NavigationStack {
-        BillingBotServiceDetailView(serviceId: 1)
+        GameServiceDetails(serviceId: 1)
             .environment(BillingDashboardVM())
     }
     .environmentObject(ValueStore())

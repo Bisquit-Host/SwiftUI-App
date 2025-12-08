@@ -1,7 +1,7 @@
 import Foundation
 
 @Observable
-final class BillingGameServicesVM {
+final class GameServiceListVM {
     var services: [BillingGameServiceSummary] = []
     var isLoading = false
     var lastError: String?

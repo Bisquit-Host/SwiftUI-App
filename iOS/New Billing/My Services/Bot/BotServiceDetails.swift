@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct BillingGameServiceDetailView: View {
-    @State private var vm = BillingGameServiceDetailVM()
+struct BotServiceDetails: View {
+    @State private var vm = BotServiceDetailVM()
     @Environment(BillingDashboardVM.self) private var dashboardVM
     
     let serviceId: Int
@@ -81,9 +81,7 @@ struct BillingGameServiceDetailView: View {
                 .autocorrectionDisabled()
             
             Button("Save") {
-                Task {
-                    await vm.rename(pendingName.isEmpty ? service.name : pendingName, serviceId: service.id)
-                }
+                Task { await vm.rename(pendingName.isEmpty ? service.name : pendingName, serviceId: service.id) }
             }
             
             Button("Cancel", role: .cancel) { }
@@ -124,7 +122,7 @@ struct BillingGameServiceDetailView: View {
     
     // MARK: - Sections
     
-    private func header(_ service: BillingGameServiceDetails) -> some View {
+    private func header(_ service: BillingBotServiceDetails) -> some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack(alignment: .center, spacing: 8) {
                 Text(service.name)
@@ -168,14 +166,13 @@ struct BillingGameServiceDetailView: View {
         }
     }
     
-    private func detailsSection(_ service: BillingGameServiceDetails) -> some View {
+    private func detailsSection(_ service: BillingBotServiceDetails) -> some View {
         BillingSectionCard("Details") {
             VStack(alignment: .leading, spacing: 10) {
                 row(title: "Package", value: service.packageInfo.name)
                 row(title: "CPU", value: "\(service.packageInfo.cpu.clean) vCPU \(service.packageInfo.cpuName ?? "")")
                 row(title: "RAM", value: "\(service.packageInfo.memory.clean) GB")
                 row(title: "Disk", value: "\(service.packageInfo.disk.clean) GB \(service.packageInfo.diskType ?? "")")
-                row(title: "Network", value: "\(service.packageInfo.network.clean) \(service.packageInfo.networkType ?? "")")
                 
                 if let expires = service.expiresAt {
                     row(title: "Expires", value: expires.formatted(date: .numeric, time: .shortened))
@@ -184,7 +181,7 @@ struct BillingGameServiceDetailView: View {
         }
     }
     
-    private func billingSection(_ service: BillingGameServiceDetails) -> some View {
+    private func billingSection(_ service: BillingBotServiceDetails) -> some View {
         BillingSectionCard("Billing") {
             Toggle(isOn: Binding(
                 get: { vm.service?.autorenew ?? service.autorenew },
@@ -233,7 +230,7 @@ struct BillingGameServiceDetailView: View {
         }
     }
     
-    private func upgradeSection(_ service: BillingGameServiceDetails) -> some View {
+    private func upgradeSection(_ service: BillingBotServiceDetails) -> some View {
         BillingSectionCard("Upgrade") {
             if vm.changeablePackages.isEmpty {
                 Text("No higher packages available right now")
@@ -296,6 +293,7 @@ struct BillingGameServiceDetailView: View {
     }
     
     // MARK: - Helpers
+    
     private func row(title: String, value: String) -> some View {
         HStack {
             Text(title)
@@ -317,20 +315,20 @@ struct BillingGameServiceDetailView: View {
         let value = formatter.string(from: NSNumber(value: amount)) ?? String(format: "%.2f", amount)
         
         if let user = dashboardVM.user {
-            return user.currency.symbol + value
+            return user.currency.symbol + " \(value)"
         } else {
             return value
         }
     }
     
-    private var selectedUpgradePackage: BillingChangeableGamePackage? {
+    private var selectedUpgradePackage: BillingChangeableBotPackage? {
         vm.changeablePackages.first { $0.id == selectedUpgradeId }
     }
 }
 
 #Preview {
     NavigationStack {
-        BillingGameServiceDetailView(serviceId: 1)
+        BotServiceDetails(serviceId: 1)
             .environment(BillingDashboardVM())
     }
     .environmentObject(ValueStore())

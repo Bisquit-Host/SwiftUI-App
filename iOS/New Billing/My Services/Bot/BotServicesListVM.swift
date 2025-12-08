@@ -1,7 +1,7 @@
 import Foundation
 
 @Observable
-final class BillingBotServicesVM {
+final class BotServicesListVM {
     var services: [BillingBotServiceSummary] = []
     var isLoading = false
     var lastError: String?

@@ -1,7 +1,7 @@
 import Foundation
 
 @Observable
-final class BillingBotServiceDetailVM {
+final class BotServiceDetailVM {
     var service: BillingBotServiceDetails?
     var changeablePackages: [BillingChangeableBotPackage] = []
     var isLoading = false
