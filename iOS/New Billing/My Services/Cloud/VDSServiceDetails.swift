@@ -1,4 +1,3 @@
-import Charts
 import SwiftUI
 
 struct VDSServiceDetails: View {
@@ -10,27 +9,42 @@ struct VDSServiceDetails: View {
     @State private var pendingName = ""
     @State private var rootPassword = ""
     @State private var selectedOsId: Int?
-    @State private var showVnc = false
     @State private var renewMonths = 1
-    @State private var lastRenewAmount: Double?
     @State private var selectedUpgradeId: Int?
     @State private var alertRename = false
-    @State private var alertRenew = false
     @State private var alertUpgrade = false
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 if let service = vm.service {
-                    header(service)
+                    VDSServiceDetailsHeader(service)
+                    
                     infoSection(service)
-                    billingSection(service)
-                    upgradeSection(service)
-                    powerSection(service)
+                    
+                    VDSBillingSection(
+                        serviceId: service.id,
+                        autorenew: vm.service?.autorenew ?? service.autorenew,
+                        renewMonths: $renewMonths,
+                        expiresAt: vm.service?.expiresAt ?? service.expiresAt,
+                        formatCurrency: formatCurrency
+                    )
+                    
+                    VDSUpgradeSection(packages: vm.changeablePackages, selectedUpgradeId: $selectedUpgradeId, formatCurrency: formatCurrency) {
+                        if selectedUpgradeId != nil {
+                            alertUpgrade = true
+                        }
+                    }
+                    
+                    VDSPowerSection(serviceId: service.id)
+                    
                     passwordSection(service)
-                    reinstallSection(service)
-                    chartsSection()
-                    historySection()
+                    
+                    VDSReinstallSection(serviceId: service.id, osOptions: flatOsOptions(), selectedOsId: $selectedOsId)
+                    
+                    VDSChartsSection()
+                    
+                    VDSHistorySection()
                     
                 } else if vm.isLoading {
                     ProgressView()
@@ -104,21 +118,6 @@ struct VDSServiceDetails: View {
             
             Button("Cancel", role: .cancel) { }
         }
-        .alert("Extend service", isPresented: $alertRenew) {
-            Button("Confirm payment") {
-                guard let service = vm.service else { return }
-                
-                Task {
-                    if let response = await vm.renew(months: renewMonths, serviceId: service.id) {
-                        lastRenewAmount = response.amount
-                    }
-                }
-            }
-            
-            Button("Cancel", role: .cancel) { }
-        } message: {
-            Text("Extend \(vm.service?.name ?? "this service") for \(renewMonths) \(renewMonths == 1 ? "month" : "months")?")
-        }
         .alert("Confirm upgrade", isPresented: $alertUpgrade) {
             Button("Upgrade") {
                 guard let pkg = selectedUpgradePackage else { return }
@@ -136,48 +135,7 @@ struct VDSServiceDetails: View {
                 Text("Upgrade service?")
             }
         }
-        .safariCover($showVnc, url: "https://test-my.bisquit.host/cloud/\(serviceId)?tab=console")
-    }
-    
-    // MARK: - Sections
-    
-    private func header(_ service: BillingCloudServiceDetails) -> some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack(alignment: .center, spacing: 8) {
-                Text(service.name)
-                    .title3(.bold)
-                
-                Spacer()
-                
-                Capsule()
-                    .fill(service.state.color.opacity(0.15))
-                    .overlay {
-                        Text(service.state.title)
-                            .footnote(.semibold)
-                            .foregroundStyle(service.state.color)
-                            .padding(.horizontal, 10)
-                    }
-                    .frame(height: 30)
-            }
-            
-            HStack(spacing: 10) {
-                Text("IP: \(service.ip ?? "n/a")")
-                    .footnote()
-                    .secondary()
-                
-                if let system = service.system {
-                    Text("• \(system)")
-                        .footnote()
-                        .secondary()
-                }
-                
-                Button("Console", systemImage: "display") {
-                    showVnc = true
-                }
-                .footnote()
-                .foregroundStyle(.blue)
-            }
-        }
+        .environment(vm)
     }
     
     private func infoSection(_ service: BillingCloudServiceDetails) -> some View {
@@ -194,145 +152,6 @@ struct VDSServiceDetails: View {
                 }
             }
         }
-    }
-    
-    private func billingSection(_ service: BillingCloudServiceDetails) -> some View {
-        BillingSectionCard("Billing") {
-            Toggle(isOn: Binding(
-                get: { vm.service?.autorenew ?? service.autorenew },
-                set: { newValue in Task { await vm.changeAutorenew(newValue, serviceId: service.id) } }
-            )) {
-                Text("Auto-extend monthly")
-            }
-            .toggleStyle(.switch)
-            .disabled(vm.isPerformingAction)
-            
-            VStack(alignment: .leading, spacing: 8) {
-                Picker("Extend for", selection: $renewMonths) {
-                    ForEach([1, 3, 6, 12], id: \.self) { value in
-                        Text(value == 1 ? "1 month" : "\(value) months")
-                            .tag(value)
-                    }
-                }
-                .pickerStyle(.menu)
-                
-                Button {
-                    alertRenew = true
-                } label: {
-                    if vm.isPerformingAction {
-                        ProgressView()
-                            .frame(maxWidth: .infinity)
-                    } else {
-                        Text("Pay and extend")
-                            .frame(maxWidth: .infinity)
-                    }
-                }
-                .buttonStyle(.borderedProminent)
-                .disabled(vm.isPerformingAction)
-                
-                if let expires = vm.service?.expiresAt ?? service.expiresAt {
-                    Text("Expires \(expires.formatted(date: .numeric, time: .shortened))")
-                        .footnote()
-                        .secondary()
-                }
-                
-                if let lastRenewAmount {
-                    Text("Charged \(formatCurrency(lastRenewAmount))")
-                        .footnote()
-                        .foregroundStyle(.green)
-                }
-            }
-        }
-    }
-    
-    private func upgradeSection(_ service: BillingCloudServiceDetails) -> some View {
-        BillingSectionCard("Upgrade") {
-            if vm.changeablePackages.isEmpty {
-                Text("No higher packages available right now")
-                    .footnote()
-                    .secondary()
-            } else {
-                VStack(alignment: .leading, spacing: 12) {
-                    ForEach(vm.changeablePackages) { pkg in
-                        Button {
-                            selectedUpgradeId = pkg.id
-                        } label: {
-                            HStack(alignment: .firstTextBaseline, spacing: 8) {
-                                VStack(alignment: .leading, spacing: 4) {
-                                    Text(pkg.name)
-                                        .subheadline(.semibold)
-                                    
-                                    Text("\(pkg.cpu.clean) vCPU • \(pkg.memory.clean) GB • \(Int(pkg.disk)) GB")
-                                        .footnote()
-                                        .secondary()
-                                    
-                                    Text("Pay now \(formatCurrency(max(pkg.price - pkg.toMinus, 0))) / \(formatCurrency(pkg.price))/mo")
-                                        .footnote()
-                                        .foregroundStyle(.primary)
-                                }
-                                
-                                Spacer()
-                                
-                                if selectedUpgradeId == pkg.id {
-                                    Image(systemName: "checkmark.circle.fill")
-                                }
-                            }
-                            .padding(10)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .background(
-                                RoundedRectangle(cornerRadius: 12)
-                                    .fill(selectedUpgradeId == pkg.id ? Color.accentColor.opacity(0.12) : Color.clear)
-                            )
-                        }
-                        .buttonStyle(.plain)
-                    }
-                    
-                    Button {
-                        if selectedUpgradeId != nil {
-                            alertUpgrade = true
-                        }
-                    } label: {
-                        if vm.isPerformingAction {
-                            ProgressView()
-                                .frame(maxWidth: .infinity)
-                        } else {
-                            Text("Upgrade")
-                                .frame(maxWidth: .infinity)
-                        }
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .disabled(selectedUpgradeId == nil || vm.isPerformingAction)
-                }
-            }
-        }
-    }
-    
-    private func powerSection(_ service: BillingCloudServiceDetails) -> some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("Power")
-                .subheadline(.semibold)
-            
-            HStack(spacing: 12) {
-                powerButton("Start", symbol: "play.fill", tint: .green) {
-                    Task {
-                        await vm.power("start", serviceId: service.id)
-                    }
-                }
-                
-                powerButton("Restart", symbol: "gobackward", tint: .orange) {
-                    Task {
-                        await vm.power("restart", serviceId: service.id)
-                    }
-                }
-                
-                powerButton("Stop", symbol: "stop.fill", tint: .red) {
-                    Task {
-                        await vm.power("stop", serviceId: service.id)
-                    }
-                }
-            }
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
     }
     
     private func passwordSection(_ service: BillingCloudServiceDetails) -> some View {
@@ -352,119 +171,6 @@ struct VDSServiceDetails: View {
         }
     }
     
-    private func reinstallSection(_ service: BillingCloudServiceDetails) -> some View {
-        BillingSectionCard("Reinstall OS") {
-            VStack(alignment: .leading, spacing: 8) {
-                Picker("OS", selection: $selectedOsId) {
-                    ForEach(flatOsOptions(), id: \.0) { os in
-                        Text(os.1)
-                            .tag(Optional(os.0))
-                    }
-                }
-                .pickerStyle(.navigationLink)
-                
-                Button(role: .destructive) {
-                    if let osId = selectedOsId {
-                        Task { await vm.reinstall(osId: osId, serviceId: service.id) }
-                    }
-                } label: {
-                    Text("Reinstall")
-                        .frame(maxWidth: .infinity)
-                }
-                .disabled(selectedOsId == nil || vm.isPerformingAction)
-            }
-        }
-    }
-    
-    private func chartsSection() -> some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("Monitoring")
-                .subheadline(.semibold)
-            
-            if let charts = vm.charts {
-                VStack(alignment: .leading, spacing: 12) {
-                    Chart(charts.cpu) {
-                        LineMark(x: .value("Time", $0.timestamp), y: .value("CPU", $0.cpuLoad))
-                            .foregroundStyle(.blue)
-                    }
-                    .frame(height: 180)
-                    .chartYScale(domain: 0...100)
-                    .chartXAxis(.hidden)
-                    .chartYAxis {
-                        AxisMarks(position: .leading)
-                    }
-                    
-                    Chart(charts.memory) {
-                        LineMark(x: .value("Time", $0.timestamp), y: .value("RAM", $0.memoryUsage))
-                            .foregroundStyle(.green)
-                    }
-                    .frame(height: 180)
-                    .chartXAxis(.hidden)
-                    
-                    Chart {
-                        ForEach(charts.networkInput) {
-                            LineMark(x: .value("Time", $0.timestamp), y: .value("In", $0.value))
-                                .foregroundStyle(.blue)
-                        }
-                        
-                        ForEach(charts.networkOutput) {
-                            LineMark(x: .value("Time", $0.timestamp), y: .value("Out", $0.value))
-                                .foregroundStyle(.orange)
-                        }
-                    }
-                    .frame(height: 180)
-                    .chartXAxis(.hidden)
-                }
-                .padding()
-                .background(.ultraThinMaterial, in: .rect(cornerRadius: 14))
-            } else {
-                Text("No metrics yet")
-                    .secondary()
-                    .footnote()
-            }
-        }
-    }
-    
-    private func historySection() -> some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("Action history")
-                .subheadline(.semibold)
-            
-            if vm.history.isEmpty {
-                Text("No actions yet")
-                    .secondary()
-                    .footnote()
-            } else {
-                ForEach(vm.history) { item in
-                    HStack {
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text(item.type)
-                                .subheadline(.semibold)
-                            
-                            Text(item.state)
-                                .footnote()
-                                .secondary()
-                        }
-                        
-                        Spacer()
-                        
-                        if let date = item.date {
-                            Text(date.formatted(date: .numeric, time: .shortened))
-                                .footnote()
-                                .secondary()
-                        }
-                    }
-                    .padding(.vertical, 6)
-                    .overlay {
-                        Divider()
-                            .offset(y: 14)
-                            .opacity(item.id == vm.history.last?.id ? 0 : 1)
-                    }
-                }
-            }
-        }
-    }
-    
     // MARK: - Helpers
     
     private func row(title: String, value: String) -> some View {
@@ -478,20 +184,6 @@ struct VDSServiceDetails: View {
             Text(value)
                 .footnote()
         }
-    }
-    
-    private func powerButton(_ title: String, symbol: String, tint: Color, action: @escaping () -> Void) -> some View {
-        Button(action: action) {
-            HStack {
-                Image(systemName: symbol)
-                Text(title)
-            }
-            .padding(.vertical, 8)
-            .padding(.horizontal, 12)
-            .background(tint.opacity(0.12), in: .capsule)
-        }
-        .buttonStyle(.plain)
-        .disabled(vm.isPerformingAction)
     }
     
     private func flatOsOptions() -> [(Int, String)] {
