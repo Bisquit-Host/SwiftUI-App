@@ -171,13 +171,11 @@ struct VDSServiceDetails: View {
                         .secondary()
                 }
                 
-                Button {
+                Button("Console", systemImage: "display") {
                     showVnc = true
-                } label: {
-                    Label("Console", systemImage: "display")
-                        .footnote()
-                        .foregroundStyle(.blue)
                 }
+                .footnote()
+                .foregroundStyle(.blue)
             }
         }
     }
