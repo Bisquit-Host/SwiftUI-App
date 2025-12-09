@@ -8,20 +8,13 @@ struct TopupProviderCard: View {
     
     private var avgColor: Color {
         switch provider.icon {
-            
-        case .asset(let resource):
-            Color(uiColor: UIImage(resource: resource).findAverageColor() ?? .blue)
-            
+        case .asset(let resource): Color(uiColor: UIImage(resource: resource).findAverageColor() ?? .blue)
         default: .blue
         }
     }
     
     var body: some View {
-        Button {
-            withAnimation {
-                selectedProvider = provider
-            }
-        } label: {
+        Button(action: select) {
             HStack(spacing: 8) {
                 TopupProviderIcon(provider)
                 
@@ -42,6 +35,12 @@ struct TopupProviderCard: View {
             }
         }
         .buttonStyle(.plain)
+    }
+    
+    private func select() {
+        withAnimation {
+            selectedProvider = provider
+        }
     }
 }
 
