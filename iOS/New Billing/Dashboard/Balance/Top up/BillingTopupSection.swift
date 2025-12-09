@@ -19,6 +19,7 @@ struct BillingTopupSection: View {
     
     @State private var safariCover = false
     @State private var paymentLink = ""
+    @State private var lastProviderCurrency: BillingCurrency?
     
     var body: some View {
         BillingSectionCard("Top up") {
@@ -106,6 +107,14 @@ struct BillingTopupSection: View {
             }
         }
         .safariCover($safariCover, url: paymentLink)
+        .onAppear {
+            lastProviderCurrency = selectedProvider?.currency
+        }
+        .onChange(of: selectedProvider?.currency) { _, newCurrency in
+            guard let newCurrency else { return }
+            
+            handleProviderCurrencyChange(newCurrency)
+        }
     }
     
     private func adjustAmount(_ delta: Double) {
@@ -141,5 +150,30 @@ struct BillingTopupSection: View {
             paymentLink = url.absoluteString
             safariCover = true
         }
+    }
+    
+    private func handleProviderCurrencyChange(_ newCurrency: BillingCurrency) {
+        guard newCurrency != lastProviderCurrency else { return }
+        
+        let normalized = amount.replacingOccurrences(of: ",", with: ".")
+        var current = Double(normalized) ?? 0
+        let minimum = minimumAmount(for: newCurrency)
+        
+        switch newCurrency {
+        case .EUR:
+            current /= 100
+            if current < minimum { current = minimum }
+            
+        case .RUB:
+            current *= 100
+            if current < minimum { current = minimum }
+        }
+        
+        amount = String(format: "%.2f", current)
+        lastProviderCurrency = newCurrency
+    }
+    
+    private func minimumAmount(for currency: BillingCurrency) -> Double {
+        currency == .RUB ? 50 : 5
     }
 }
