@@ -42,7 +42,6 @@ struct BillingTopupSection: View {
                                     .frame(maxWidth: .infinity, alignment: .trailing)
                                     .padding(.trailing)
                                     .numericTransition()
-                                    .animation(.default, value: selectedProvider)
                             }
                         }
                     

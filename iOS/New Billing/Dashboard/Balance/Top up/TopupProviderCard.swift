@@ -18,7 +18,9 @@ struct TopupProviderCard: View {
     
     var body: some View {
         Button {
-            selectedProvider = provider
+            withAnimation {
+                selectedProvider = provider
+            }
         } label: {
             HStack(spacing: 8) {
                 TopupProviderIcon(provider)
