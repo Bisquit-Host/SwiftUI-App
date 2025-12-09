@@ -1,25 +1,24 @@
 import SwiftUI
 
 struct BillingOperationList: View {
-    let isLoading: Bool
-    let operations: [BillingOperation]
+    @Environment(SheetTopupVM.self) private var vm
     
     var body: some View {
-        if isLoading && operations.isEmpty {
+        if vm.isLoading && vm.operations.isEmpty {
             ProgressView()
                 .frame(maxWidth: .infinity)
                 .listRowBackground(Color.clear)
             
-        } else if operations.isEmpty {
+        } else if vm.operations.isEmpty {
             ContentUnavailableView("No operations yet", systemImage: "creditcard")
                 .listRowBackground(Color.clear)
             
         } else {
             BillingSectionCard("Operations") {
-                ForEach(Array(operations.enumerated()), id: \.element.id) { index, operation in
+                ForEach(Array(vm.operations.enumerated()), id: \.element.id) { index, operation in
                     BillingOperationRow(operation)
                     
-                    if index < operations.count - 1 {
+                    if index < vm.operations.count - 1 {
                         Divider()
                     }
                 }

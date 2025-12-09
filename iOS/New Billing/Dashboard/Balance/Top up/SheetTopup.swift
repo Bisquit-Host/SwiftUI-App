@@ -38,7 +38,7 @@ struct SheetTopup: View {
                     minimumTopupAmount: minimumTopupAmount
                 )
                 
-                BillingOperationList(isLoading: vm.isLoading, operations: vm.operations)
+                BillingOperationList()
             }
             .scenePadding()
         }
