@@ -24,6 +24,7 @@ struct BillingTopupSection: View {
             VStack(alignment: .leading, spacing: 12) {
                 HStack(spacing: 10) {
                     TextField("Amount, \(currency.rawValue)", text: $amount)
+                        .limitInputLength($amount, length: 10)
                         .keyboardType(.decimalPad)
                         .textInputAutocapitalization(.never)
                         .padding(12)
@@ -33,6 +34,16 @@ struct BillingTopupSection: View {
                                 .stroke(.primary.opacity(0.05), lineWidth: 1)
                         }
                         .frame(height: amountFieldSide)
+                        .overlay {
+                            if let selectedProvider {
+                                Text(selectedProvider.currency.symbol)
+                                    .secondary()
+                                    .frame(maxWidth: .infinity, alignment: .trailing)
+                                    .padding(.trailing)
+                                    .numericTransition()
+                                    .animation(.default, value: selectedProvider)
+                            }
+                        }
                     
                     HStack(spacing: 8) {
                         Button {
