@@ -196,8 +196,7 @@ struct BillingHostingOrderSheet: View {
         }
         
         let response = await vm.order(
-            plan: context.plan,
-            category: context.category,
+            context: context,
             name: name,
             months: months,
             osId: selectedOsId == 0 ? nil : selectedOsId,

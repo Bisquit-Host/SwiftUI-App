@@ -170,7 +170,7 @@ final class BillingHostingPlansVM {
         return result
     }
     
-    func order(plan: BillingHostingPlan, category: BillingHostingCategory, name: String, months: Int, osId: Int?, nestId: Int?, eggId: Int?) async -> BillingHostingOrderResponse? {
+    func order(context: BillingPlanOrderContext, name: String, months: Int, osId: Int?, nestId: Int?, eggId: Int?) async -> BillingHostingOrderResponse? {
         guard !isOrdering else { return nil }
         
         isOrdering = true
@@ -197,11 +197,11 @@ final class BillingHostingPlansVM {
         
         var body: [String: Any] = [
             "name": trimmed,
-            "package": plan.id,
+            "package": context.plan.id,
             "months": months
         ]
         
-        switch category {
+        switch context.category {
         case .cloud:
             guard let osId else {
                 lastError = "Choose OS"
