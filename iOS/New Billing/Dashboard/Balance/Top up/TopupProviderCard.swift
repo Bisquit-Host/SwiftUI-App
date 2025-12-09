@@ -18,8 +18,13 @@ struct TopupProviderCard: View {
             HStack(spacing: 8) {
                 TopupProviderIcon(provider)
                 
-                Text(provider.name)
-                    .subheadline(.semibold)
+                VStack(alignment: .leading, spacing: 0) {
+                    Text(provider.name)
+                        .subheadline(.semibold)
+                    
+                    Text(provider.currency.rawValue)
+                        .secondary()
+                }
             }
             .padding(.vertical, 10)
             .padding(.horizontal, 12)

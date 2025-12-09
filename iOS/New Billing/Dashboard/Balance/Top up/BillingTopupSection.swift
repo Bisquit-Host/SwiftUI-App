@@ -150,19 +150,32 @@ struct BillingTopupSection: View {
     
     @ViewBuilder
     private var invoiceRow: some View {
-        VStack(alignment: .leading) {
-            if let selectedProvider, let amountDouble = Double(amount.replacingOccurrences(of: ",", with: ".")) {
+        VStack(alignment: .leading, spacing: 6) {
+            let amountDouble = Double(amount.replacingOccurrences(of: ",", with: "."))
+            
+            if let selectedProvider, let amountDouble {
+                let differentCurrency = selectedProvider.currency != currency
                 
-                Text("You will add \(currency.symbol)\(String(format: "%.2f", amountDouble)) to your balance")
-                
-                if selectedProvider.currency != currency, let invoice = invoiceValue() {
+                if differentCurrency, let invoice = invoiceValue() {
                     Text("\(selectedProvider.currency.symbol)\(String(format: "%.2f", invoice)) will be charged")
+                } else {
+                    Text("\(currency.symbol)\(String(format: "%.2f", amountDouble)) will be charged")
                 }
+            } else {
+                Text("Enter amount to preview invoice")
             }
             
             Text("Additional fees may apply")
+                .secondary()
+                .frame(maxWidth: .infinity, alignment: .leading)
         }
         .footnote()
-        .secondary()
+        .padding(12)
+        .background(.primary.opacity(0.04), in: .rect(cornerRadius: 14))
+        .overlay {
+            RoundedRectangle(cornerRadius: 14)
+                .stroke(.primary.opacity(0.05), lineWidth: 1)
+        }
+        .foregroundStyle(.primary.opacity(0.85))
     }
 }
