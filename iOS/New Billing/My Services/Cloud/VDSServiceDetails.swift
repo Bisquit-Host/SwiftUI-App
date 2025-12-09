@@ -8,7 +8,7 @@ struct VDSServiceDetails: View {
     
     @State private var pendingName = ""
     @State private var rootPassword = ""
-    @State private var selectedOsId: Int?
+    @State private var selectedOS: Int?
     @State private var renewMonths = 1
     @State private var selectedUpgradeId: Int?
     @State private var alertRename = false
@@ -40,7 +40,7 @@ struct VDSServiceDetails: View {
                     
                     passwordSection(service)
                     
-                    VDSReinstallSection(serviceId: service.id, osOptions: flatOsOptions(), selectedOsId: $selectedOsId)
+                    VDSReinstallSection(serviceId: service.id, osOptions: flatOSOptions(), selectedOS: $selectedOS)
                     
                     VDSChartsSection()
                     
@@ -96,8 +96,8 @@ struct VDSServiceDetails: View {
             rootPassword = ""
         }
         .onChange(of: vm.osOptions.count) { _, _ in
-            if selectedOsId == nil {
-                selectedOsId = flatOsOptions().first?.0
+            if selectedOS == nil {
+                selectedOS = flatOSOptions().first?.0
             }
         }
         .onChange(of: vm.changeablePackages.count) { _, _ in
@@ -186,7 +186,7 @@ struct VDSServiceDetails: View {
         }
     }
     
-    private func flatOsOptions() -> [(Int, String)] {
+    private func flatOSOptions() -> [(Int, String)] {
         vm.osOptions
             .flatMap { category in
                 category.os.map {
