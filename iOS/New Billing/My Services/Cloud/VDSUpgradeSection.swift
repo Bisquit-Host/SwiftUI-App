@@ -1,22 +1,21 @@
 import SwiftUI
 
 struct VDSUpgradeSection: View {
-    let packages: [BillingChangeableCloudPackage]
+    @Environment(VDSServiceDetailsVM.self) private var vm
+    
     @Binding var selectedUpgradeId: Int?
     let formatCurrency: (Double) -> String
     let onUpgradeTap: () -> Void
     
-    @Environment(VDSServiceDetailsVM.self) private var vm
-    
     var body: some View {
         BillingSectionCard("Upgrade") {
-            if packages.isEmpty {
+            if vm.changeablePackages.isEmpty {
                 Text("No higher packages available right now")
                     .footnote()
                     .secondary()
             } else {
                 VStack(alignment: .leading, spacing: 12) {
-                    ForEach(packages) { pkg in
+                    ForEach(vm.changeablePackages) { pkg in
                         Button {
                             selectedUpgradeId = pkg.id
                         } label: {
@@ -42,10 +41,10 @@ struct VDSUpgradeSection: View {
                             }
                             .padding(10)
                             .frame(maxWidth: .infinity, alignment: .leading)
-                            .background(
+                            .background {
                                 RoundedRectangle(cornerRadius: 12)
                                     .fill(selectedUpgradeId == pkg.id ? Color.accentColor.opacity(0.12) : Color.clear)
-                            )
+                            }
                         }
                         .buttonStyle(.plain)
                     }

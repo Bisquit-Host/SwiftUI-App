@@ -30,7 +30,7 @@ struct VDSServiceDetails: View {
                         formatCurrency: formatCurrency
                     )
                     
-                    VDSUpgradeSection(packages: vm.changeablePackages, selectedUpgradeId: $selectedUpgradeId, formatCurrency: formatCurrency) {
+                    VDSUpgradeSection(selectedUpgradeId: $selectedUpgradeId, formatCurrency: formatCurrency) {
                         if selectedUpgradeId != nil {
                             alertUpgrade = true
                         }
