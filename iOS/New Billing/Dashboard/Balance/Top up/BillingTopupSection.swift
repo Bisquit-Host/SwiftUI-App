@@ -79,6 +79,8 @@ struct BillingTopupSection: View {
                 
                 if let selectedProvider, dashboardVM.user?.currency != selectedProvider.currency {
                     Text("Top-ups in other currencies are charged at 1.5× the converted amount in your default currency")
+                        .footnote()
+                        .secondary()
                 }
                 
                 Button {
