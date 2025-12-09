@@ -19,8 +19,6 @@ struct BillingTopupSection: View {
     
     @State private var safariCover = false
     @State private var paymentLink = ""
-    @State private var lastProviderCurrency: BillingCurrency?
-    
     var body: some View {
         BillingSectionCard("Top up") {
             VStack(alignment: .leading, spacing: 12) {
@@ -37,13 +35,11 @@ struct BillingTopupSection: View {
                         }
                         .frame(height: amountFieldSide)
                         .overlay {
-                            if let selectedProvider {
-                                Text(selectedProvider.currency.symbol)
-                                    .secondary()
-                                    .frame(maxWidth: .infinity, alignment: .trailing)
-                                    .padding(.trailing)
-                                    .numericTransition()
-                            }
+                            Text(currency.symbol)
+                                .secondary()
+                                .frame(maxWidth: .infinity, alignment: .trailing)
+                                .padding(.trailing)
+                                .numericTransition()
                         }
                     
                     HStack(spacing: 8) {
@@ -78,11 +74,8 @@ struct BillingTopupSection: View {
                 }
                 .scrollIndicators(.never)
                 
-                if let selectedProvider, dashboardVM.user?.currency != selectedProvider.currency {
-                    Text("Top-ups in other currencies are charged at 1.5× the converted amount in your default currency")
-                        .footnote()
-                        .secondary()
-                }
+                // Top-ups in other currencies are charged at 1.5× the converted amount in your default currency
+                invoiceRow
                 
                 Button {
                     Task {
@@ -107,14 +100,6 @@ struct BillingTopupSection: View {
             }
         }
         .safariCover($safariCover, url: paymentLink)
-        .onAppear {
-            lastProviderCurrency = selectedProvider?.currency
-        }
-        .onChange(of: selectedProvider?.currency) { _, newCurrency in
-            guard let newCurrency else { return }
-            
-            handleProviderCurrencyChange(newCurrency)
-        }
     }
     
     private func adjustAmount(_ delta: Double) {
@@ -152,28 +137,32 @@ struct BillingTopupSection: View {
         }
     }
     
-    private func handleProviderCurrencyChange(_ newCurrency: BillingCurrency) {
-        guard newCurrency != lastProviderCurrency else { return }
-        
-        let normalized = amount.replacingOccurrences(of: ",", with: ".")
-        var current = Double(normalized) ?? 0
-        let minimum = minimumAmount(for: newCurrency)
-        
-        switch newCurrency {
-        case .EUR:
-            current /= 100
-            if current < minimum { current = minimum }
-            
-        case .RUB:
-            current *= 100
-            if current < minimum { current = minimum }
+    private func invoiceValue() -> Double? {
+        guard let amountDouble = Double(amount.replacingOccurrences(of: ",", with: ".")) else {
+            return nil
         }
         
-        amount = String(format: "%.2f", current)
-        lastProviderCurrency = newCurrency
+        switch currency {
+        case .RUB: return amountDouble / 100 * 1.5
+        case .EUR: return amountDouble * 100 / 1.5
+        }
     }
     
-    private func minimumAmount(for currency: BillingCurrency) -> Double {
-        currency == .RUB ? 50 : 5
+    @ViewBuilder
+    private var invoiceRow: some View {
+        VStack(alignment: .leading) {
+            if let selectedProvider, let amountDouble = Double(amount.replacingOccurrences(of: ",", with: ".")) {
+                
+                Text("You will add \(currency.symbol)\(String(format: "%.2f", amountDouble)) to your balance")
+                
+                if selectedProvider.currency != currency, let invoice = invoiceValue() {
+                    Text("\(selectedProvider.currency.symbol)\(String(format: "%.2f", invoice)) will be charged")
+                }
+            }
+            
+            Text("Additional fees may apply")
+        }
+        .footnote()
+        .secondary()
     }
 }
