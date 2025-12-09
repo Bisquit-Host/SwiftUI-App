@@ -40,7 +40,7 @@ struct VDSServiceDetails: View {
                     
                     passwordSection(service)
                     
-                    VDSReinstallSection(serviceId: service.id, osOptions: flatOSOptions(), selectedOS: $selectedOS)
+                    VDSReinstallSection(serviceId: service.id, selectedOS: $selectedOS)
                     
                     VDSChartsSection()
                     
@@ -95,11 +95,6 @@ struct VDSServiceDetails: View {
             
             rootPassword = ""
         }
-        .onChange(of: vm.osOptions.count) { _, _ in
-            if selectedOS == nil {
-                selectedOS = flatOSOptions().first?.0
-            }
-        }
         .onChange(of: vm.changeablePackages.count) { _, _ in
             if selectedUpgradeId == nil {
                 selectedUpgradeId = vm.changeablePackages.first?.id
@@ -141,14 +136,14 @@ struct VDSServiceDetails: View {
     private func infoSection(_ service: BillingCloudServiceDetails) -> some View {
         BillingSectionCard("Details") {
             VStack(alignment: .leading, spacing: 10) {
-                row(title: "Package", value: service.packageInfo.name)
-                row(title: "CPU", value: "\(String(format: "%.1f", service.packageInfo.cpu)) vCPU \(service.packageInfo.cpuName ?? "")")
-                row(title: "RAM", value: "\(String(format: "%.1f", service.packageInfo.memory)) GB")
-                row(title: "Disk", value: "\(String(format: "%.0f", service.packageInfo.disk)) GB \(service.packageInfo.diskType ?? "")")
-                row(title: "Location", value: service.location.name)
+                row("Package", value: service.packageInfo.name)
+                row("CPU", value: "\(String(format: "%.1f", service.packageInfo.cpu)) vCPU \(service.packageInfo.cpuName ?? "")")
+                row("RAM", value: "\(String(format: "%.1f", service.packageInfo.memory)) GB")
+                row("Disk", value: "\(String(format: "%.0f", service.packageInfo.disk)) GB \(service.packageInfo.diskType ?? "")")
+                row("Location", value: service.location.name)
                 
                 if let expires = service.expiresAt {
-                    row(title: "Expires", value: expires.formatted(date: .numeric, time: .shortened))
+                    row("Expires", value: expires.formatted(date: .numeric, time: .shortened))
                 }
             }
         }
@@ -173,7 +168,7 @@ struct VDSServiceDetails: View {
     
     // MARK: - Helpers
     
-    private func row(title: String, value: String) -> some View {
+    private func row(_ title: String, value: String) -> some View {
         HStack {
             Text(title)
                 .footnote()
@@ -184,15 +179,6 @@ struct VDSServiceDetails: View {
             Text(value)
                 .footnote()
         }
-    }
-    
-    private func flatOSOptions() -> [(Int, String)] {
-        vm.osOptions
-            .flatMap { category in
-                category.os.map {
-                    ($0.id, "\(category.name) \($0.version ?? "")")
-                }
-            }
     }
     
     private func formatCurrency(_ amount: Double) -> String {

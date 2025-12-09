@@ -7,7 +7,7 @@ struct VDSServiceDetailsHeader: View {
         self.service = service
     }
     
-    @State private var showVnc = false
+    @State private var showVNC = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -40,12 +40,12 @@ struct VDSServiceDetailsHeader: View {
                 }
                 
                 Button("Console", systemImage: "display") {
-                    showVnc = true
+                    showVNC = true
                 }
                 .footnote()
                 .foregroundStyle(.blue)
             }
         }
-        .safariCover($showVnc, url: "https://test-my.bisquit.host/cloud/\(service.id)?tab=console")
+        .safariCover($showVNC, url: "https://test-my.bisquit.host/cloud/\(service.id)?tab=console")
     }
 }
