@@ -111,7 +111,7 @@ struct VDSServiceDetails: View {
                 }
             }
             
-            Button("Cancel", role: .cancel) { }
+            Button("Cancel", role: .cancel) {}
         }
         .alert("Confirm upgrade", isPresented: $alertUpgrade) {
             Button("Upgrade") {
@@ -122,7 +122,7 @@ struct VDSServiceDetails: View {
                 }
             }
             
-            Button("Cancel", role: .cancel) { }
+            Button("Cancel", role: .cancel) {}
         } message: {
             if let pkg = selectedUpgradePackage {
                 Text("Upgrade to \(pkg.name) and pay \(formatCurrency(max(pkg.price - pkg.toMinus, 0))) now?")
@@ -136,14 +136,14 @@ struct VDSServiceDetails: View {
     private func infoSection(_ service: BillingCloudServiceDetails) -> some View {
         BillingSectionCard("Details") {
             VStack(alignment: .leading, spacing: 10) {
-                row("Package", value: service.packageInfo.name)
-                row("CPU", value: "\(String(format: "%.1f", service.packageInfo.cpu)) vCPU \(service.packageInfo.cpuName ?? "")")
-                row("RAM", value: "\(String(format: "%.1f", service.packageInfo.memory)) GB")
-                row("Disk", value: "\(String(format: "%.0f", service.packageInfo.disk)) GB \(service.packageInfo.diskType ?? "")")
-                row("Location", value: service.location.name)
+                LabeledContent("Package", value: service.packageInfo.name)
+                LabeledContent("CPU", value: "\(String(format: "%.1f", service.packageInfo.cpu)) vCPU \(service.packageInfo.cpuName ?? "")")
+                LabeledContent("RAM", value: "\(String(format: "%.1f", service.packageInfo.memory)) GB")
+                LabeledContent("Disk", value: "\(String(format: "%.0f", service.packageInfo.disk)) GB \(service.packageInfo.diskType ?? "")")
+                LabeledContent("Location", value: service.location.name)
                 
                 if let expires = service.expiresAt {
-                    row("Expires", value: expires.formatted(date: .numeric, time: .shortened))
+                    LabeledContent("Expires", value: expires.formatted(date: .numeric, time: .shortened))
                 }
             }
         }
@@ -167,19 +167,6 @@ struct VDSServiceDetails: View {
     }
     
     // MARK: - Helpers
-    
-    private func row(_ title: String, value: String) -> some View {
-        HStack {
-            Text(title)
-                .footnote()
-                .secondary()
-            
-            Spacer()
-            
-            Text(value)
-                .footnote()
-        }
-    }
     
     private func formatCurrency(_ amount: Double) -> String {
         let formatter = NumberFormatter()

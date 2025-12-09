@@ -55,10 +55,7 @@ struct StartupCard: View {
     
     private func save() {
         Task {
-            await vm.updateVariable(
-                key: variable.envVariable,
-                value: value
-            ) {
+            await vm.updateVariable(key: variable.envVariable, value: value) {
                 value = variable.serverValue ?? ""
             }
         }

@@ -74,11 +74,7 @@ struct InfiniteScrollHelper: UIViewRepresentable {
             defaultDelegate?.scrollViewWillBeginDragging?(scrollView)
         }
         
-        func scrollViewWillEndDragging(
-            _ scrollView: UIScrollView,
-            withVelocity velocity: CGPoint,
-            targetContentOffset: UnsafeMutablePointer<CGPoint>
-        ) {
+        func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
             defaultDelegate?.scrollViewWillEndDragging?(
                 scrollView,
                 withVelocity: velocity,

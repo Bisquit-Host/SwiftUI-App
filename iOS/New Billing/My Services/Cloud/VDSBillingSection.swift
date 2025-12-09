@@ -40,6 +40,7 @@ struct VDSBillingSection: View {
                             .frame(maxWidth: .infinity)
                     } else {
                         Text("Pay and extend")
+                            .semibold()
                             .frame(maxWidth: .infinity)
                     }
                 }
@@ -70,7 +71,7 @@ struct VDSBillingSection: View {
                 }
             }
             
-            Button("Cancel", role: .cancel) { }
+            Button("Cancel", role: .cancel) {}
         } message: {
             Text("Extend \(vm.service?.name ?? "this service") for \(renewMonths) \(renewMonths == 1 ? "month" : "months")?")
         }

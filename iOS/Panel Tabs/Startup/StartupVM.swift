@@ -44,11 +44,7 @@ final class StartupVM {
         }
     }
     
-    func updateVariable(
-        key: String,
-        value: String,
-        onFailure: @escaping () -> ()
-    ) async {
+    func updateVariable(key: String, value: String, onFailure: @escaping () -> ()) async {
         do {
             let model = try await startupUpdateAPI(id, key: key, value: value)
             

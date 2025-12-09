@@ -145,7 +145,7 @@ struct BillingHostingOrderSheet: View {
                     }
                 }
                 
-                Button("Cancel", role: .cancel) { }
+                Button("Cancel", role: .cancel) {}
             } message: {
                 Text("Purchase \(context.plan.name) for \(monthLabel(months)) billing?")
             }

@@ -77,10 +77,7 @@ struct CloudKeyCard: View {
     @Previewable @State var selectedKey = ""
     
     List {
-        CloudKeyCard(
-            $selectedKey,
-            key: .init("Preview Key", key: "ptlc_1234567890")
-        ) {}
+        CloudKeyCard($selectedKey, key: .init("Preview Key", key: "ptlc_1234567890")) {}
     }
     .darkSchemePreferred()
 }

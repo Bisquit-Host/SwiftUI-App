@@ -46,9 +46,7 @@ final class SubdomainVM {
         }
     }
     
-    func createSubdomain(
-        onSuccess: @escaping () -> Void
-    ) async {
+    func createSubdomain(onSuccess: @escaping () -> Void) async {
         guard
             limit > subdomains.count,
             let selectedAllocation

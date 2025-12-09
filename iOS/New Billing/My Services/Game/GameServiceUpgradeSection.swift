@@ -1,11 +1,11 @@
 import SwiftUI
 
-struct VDSUpgradeSection: View {
-    @Environment(VDSServiceDetailsVM.self) private var vm
+struct GameServiceUpgradeSection: View {
+    @Environment(GameServiceDetailsVM.self) private var vm
+    @Environment(BillingDashboardVM.self) private var dashboardVM
     
-    @Binding var selectedUpgradeId: Int?
-    let formatCurrency: (Double) -> String
-    let onUpgradeTap: () -> Void
+    @State private var selectedUpgradeId: Int?
+    @State private var alertUpgrade = false
     
     var body: some View {
         BillingSectionCard("Upgrade") {
@@ -24,7 +24,7 @@ struct VDSUpgradeSection: View {
                                     Text(pkg.name)
                                         .subheadline(.semibold)
                                     
-                                    Text("\(pkg.cpu.clean) vCPU • \(pkg.memory.clean) GB • \(Int(pkg.disk)) GB")
+                                    Text("\(pkg.cpu.clean) vCPU • \(pkg.memory.clean) GB • \(pkg.disk.clean) GB")
                                         .footnote()
                                         .secondary()
                                     
@@ -49,7 +49,11 @@ struct VDSUpgradeSection: View {
                         .buttonStyle(.plain)
                     }
                     
-                    Button(action: onUpgradeTap) {
+                    Button {
+                        if selectedUpgradeId != nil {
+                            alertUpgrade = true
+                        }
+                    } label: {
                         if vm.isPerformingAction {
                             ProgressView()
                                 .frame(maxWidth: .infinity)
@@ -63,6 +67,47 @@ struct VDSUpgradeSection: View {
                     .disabled(selectedUpgradeId == nil || vm.isPerformingAction)
                 }
             }
+        }
+        .onAppear { selectedUpgradeId = selectedUpgradeId ?? vm.changeablePackages.first?.id }
+        .onChange(of: vm.changeablePackages.count) { _, _ in
+            if selectedUpgradeId == nil {
+                selectedUpgradeId = vm.changeablePackages.first?.id
+            }
+        }
+        .alert("Confirm upgrade", isPresented: $alertUpgrade) {
+            Button("Upgrade") {
+                guard let pkg = selectedUpgradePackage, let serviceId = vm.service?.id else { return }
+                
+                Task {
+                    await vm.changePackage(to: pkg.id, serviceId: serviceId)
+                }
+            }
+            
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            if let pkg = selectedUpgradePackage {
+                Text("Upgrade to \(pkg.name) and pay \(formatCurrency(max(pkg.price - pkg.toMinus, 0))) now?")
+            } else {
+                Text("Upgrade service?")
+            }
+        }
+    }
+    
+    private var selectedUpgradePackage: BillingChangeableGamePackage? {
+        vm.changeablePackages.first { $0.id == selectedUpgradeId }
+    }
+    
+    private func formatCurrency(_ amount: Double) -> String {
+        let formatter = NumberFormatter()
+        formatter.minimumFractionDigits = 0
+        formatter.maximumFractionDigits = 2
+        
+        let value = formatter.string(from: NSNumber(value: amount)) ?? String(format: "%.2f", amount)
+        
+        if let user = dashboardVM.user {
+            return user.currency.symbol + " " + value
+        } else {
+            return value
         }
     }
 }
