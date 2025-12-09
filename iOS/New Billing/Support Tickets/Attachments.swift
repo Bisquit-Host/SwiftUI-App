@@ -60,7 +60,7 @@ enum AttachmentFactory {
             let sizeString = AttachmentLimits.readableSize(for: data.count)
             let limitString = AttachmentLimits.readableSize(for: AttachmentLimits.maxBytes)
             
-            SystemAlert.error("File too large", subtitle: "\(filename) is \(sizeString). Max \(limitString) per file.")
+            SystemAlert.error("File too large", subtitle: "\(filename) is \(sizeString). Max \(limitString) per file")
             return false
         }
         

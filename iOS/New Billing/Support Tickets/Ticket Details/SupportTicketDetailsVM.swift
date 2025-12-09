@@ -37,7 +37,7 @@ final class SupportTicketDetailsVM {
         guard !accessToken.isEmpty else { return false }
         
         if attachments.count > 5 {
-            errorMessage = "Max 5 files per message."
+            errorMessage = "Max 5 files per message"
             return false
         }
         
@@ -45,9 +45,10 @@ final class SupportTicketDetailsVM {
             let sizeString = AttachmentLimits.readableSize(for: oversized.data.count)
             let limitString = AttachmentLimits.readableSize(for: AttachmentLimits.maxBytes)
             
-            let message = "\(oversized.filename) is \(sizeString). Max \(limitString) per file."
+            let message = "\(oversized.filename) is \(sizeString). Max \(limitString) per file"
             errorMessage = "File too large. " + message
             SystemAlert.error("File too large", subtitle: message)
+            
             return false
         }
         

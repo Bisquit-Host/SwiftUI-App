@@ -164,7 +164,7 @@ private func validateResponse(_ response: URLResponse?, data: Data, allowedStatu
             "Unexpected status code \(http.statusCode): \($0)"
         }
         
-        ?? "Unexpected status code \(http.statusCode)."
+        ?? "Unexpected status code \(http.statusCode)"
         
         throw NSError(
             domain: NSURLErrorDomain,
