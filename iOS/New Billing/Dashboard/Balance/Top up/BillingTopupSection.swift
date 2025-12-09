@@ -2,6 +2,7 @@ import SwiftUI
 
 struct BillingTopupSection: View {
     @Environment(SheetTopupVM.self) private var vm
+    @Environment(BillingDashboardVM.self) private var dashboardVM
     @EnvironmentObject private var store: ValueStore
     
     @Binding var amount: String
@@ -71,11 +72,15 @@ struct BillingTopupSection: View {
                 ScrollView(.horizontal) {
                     HStack(spacing: 10) {
                         ForEach(providers) {
-                            TopupProviderCard($0, selectedProvider: $selectedProvider)
+                            TopupProviderCard(provider: $0, selectedProvider: $selectedProvider)
                         }
                     }
                 }
                 .scrollIndicators(.never)
+                
+                if let selectedProvider, dashboardVM.user?.currency != selectedProvider.currency {
+                    Text("Top-ups in other currencies are charged at 1.5× the converted amount in your default currency")
+                }
                 
                 Button {
                     Task {
