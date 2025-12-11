@@ -146,6 +146,6 @@ struct BillingHostingEgg: Decodable, Identifiable, Equatable {
 extension Double {
     var clean: String {
         let isInt = rounded() == self
-        return isInt ? String(Int(self)) : String(format: "%.1f", self)
+        return isInt ? String(Int(self)) : self.formatted(.fractionDigits(1))
     }
 }

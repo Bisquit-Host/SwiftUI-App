@@ -107,7 +107,7 @@ struct BillingTopupSection: View {
         let current = Double(normalized) ?? 0
         let updated = max(minimumTopupAmount, current + delta)
         
-        amount = String(format: "%.2f", updated)
+        amount = updated.formatted(.fractionDigits(2))
     }
     
     private func topUp() async {
@@ -119,7 +119,7 @@ struct BillingTopupSection: View {
         }
         
         guard value >= minimumTopupAmount else {
-            let minString = String(format: "%.0f", minimumTopupAmount)
+            let minString = minimumTopupAmount.formatted(.fractionDigits(0))
             SystemAlert.error("Amount too small", subtitle: "Minimum top up is \(minString) \(currency.rawValue)")
             return
         }
@@ -156,9 +156,9 @@ struct BillingTopupSection: View {
                 let differentCurrency = selectedProvider.currency != currency
                 
                 if differentCurrency, let invoice = invoiceValue() {
-                    Text("\(selectedProvider.currency.symbol)\(String(format: "%.2f", invoice)) will be charged")
+                    Text("\(selectedProvider.currency.symbol)\(invoice.formatted(.fractionDigits(2))) will be charged")
                 } else {
-                    Text("\(currency.symbol)\(String(format: "%.2f", amountDouble)) will be charged")
+                    Text("\(currency.symbol)\(amountDouble.formatted(.fractionDigits(2))) will be charged")
                 }
             } else {
                 Text("Enter amount to preview invoice")

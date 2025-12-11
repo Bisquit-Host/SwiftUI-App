@@ -167,7 +167,7 @@ struct VDSServiceDetails: View {
         formatter.minimumFractionDigits = 0
         formatter.maximumFractionDigits = 2
         
-        let value = formatter.string(from: NSNumber(value: amount)) ?? String(format: "%.2f", amount)
+        let value = formatter.string(from: NSNumber(value: amount)) ?? amount.formatted(.fractionDigits(2))
         
         if let user = dashboardVM.user {
             return user.currency.symbol + value

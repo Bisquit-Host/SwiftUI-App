@@ -12,7 +12,7 @@ struct SheetTopup: View {
         let availableProviders = PaymentProvider.allCases
         self.providers = availableProviders
         _selectedProvider = State(initialValue: availableProviders.first)
-        _amount = State(initialValue: String(format: "%.0f", SheetTopup.minimumAmount(for: user.currency)))
+        _amount = State(initialValue: SheetTopup.minimumAmount(for: user.currency).formatted(.fractionDigits(2)))
     }
     
     @State private var amount = ""

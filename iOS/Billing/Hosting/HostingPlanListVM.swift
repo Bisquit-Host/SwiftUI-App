@@ -81,7 +81,7 @@ final class HostingPlanListVM {
         guard let entry else { return "N/A" }
         
         let value = entry.price
-        let formatted = value.rounded() == value ? String(Int(value)) : String(format: "%.2f", value)
+        let formatted = value.rounded() == value ? String(Int(value)) : value.formatted(.fractionDigits(2))
         
         return "\(entry.currency.symbol)\(formatted)"
     }

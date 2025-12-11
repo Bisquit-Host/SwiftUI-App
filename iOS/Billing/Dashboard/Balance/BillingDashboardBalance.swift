@@ -14,7 +14,7 @@ struct BillingDashboardBalance: View {
     @State private var sheetTopup = false
     
     var body: some View {
-        let formattedBalance = String(format: "%.2f", balance)
+        let formattedBalance = balance.formatted(.fractionDigits(2))
         let isPositive = balance.isNormal && balance >= 0
         let iconColor: Color = isPositive ? .yellow : .red
         

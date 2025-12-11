@@ -229,7 +229,7 @@ struct HostingOrderSheet: View {
         formatter.maximumFractionDigits = 2
         formatter.locale = Locale.current
         
-        let value = formatter.string(from: NSNumber(value: amount)) ?? String(format: "%.2f", amount)
+        let value = formatter.string(from: NSNumber(value: amount)) ?? amount.formatted(.fractionDigits(2))
         guard let code else { return value }
         
         return code + value
