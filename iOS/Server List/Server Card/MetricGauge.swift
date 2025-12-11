@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct MetricGauge: View {
-    let title: String
+    let title: LocalizedStringKey
     let value: Double
     let color: Color
     let icon: String

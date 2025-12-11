@@ -3,7 +3,7 @@ import SwiftUI
 struct AuthSettingsAppRow: View {
     @Environment(\.accessibilityDifferentiateWithoutColor) private var differentiateWithoutColor
     
-    private let title: String
+    private let title: LocalizedStringKey
     private let icon: String
     private let enabled: Bool
     private let isLoading: Bool
@@ -11,7 +11,7 @@ struct AuthSettingsAppRow: View {
     private let onDisconnect: (() async -> Void)?
     
     init(
-        _ title: String,
+        _ title: LocalizedStringKey,
         icon: String,
         enabled: Bool,
         isLoading: Bool = false,

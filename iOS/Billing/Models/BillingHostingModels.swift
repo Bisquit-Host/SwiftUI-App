@@ -6,7 +6,7 @@ enum BillingHostingCategory: String, CaseIterable, Identifiable, Hashable {
     var id: Self { self }
     var path: String { rawValue }
     
-    var title: String {
+    var title: LocalizedStringKey {
         switch self {
         case .game: "Game hosting"
         case .bot: "Bot hosting"
@@ -14,7 +14,7 @@ enum BillingHostingCategory: String, CaseIterable, Identifiable, Hashable {
         }
     }
     
-    var description: String {
+    var description: LocalizedStringKey {
         switch self {
         case .bot: "Discord, Telegram and other bots"
         case .game: "Game servers on Pterodactyl"

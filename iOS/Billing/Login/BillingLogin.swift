@@ -161,21 +161,6 @@ struct BillingLogin: View {
             guard !newValue.isEmpty else { return }
             auth()
         }
-        .alert("Passkey error", isPresented: Binding(get: {
-            vm.passkeyError != nil
-        }, set: { newValue in
-            if !newValue {
-                vm.passkeyError = nil
-            }
-        })) {
-            Button("OK", role: .cancel) {
-                vm.passkeyError = nil
-            }
-        } message: {
-            if let passkeyError = vm.passkeyError {
-                Text(passkeyError)
-            }
-        }
     }
     
     private func auth() {

@@ -1,12 +1,12 @@
 import SwiftUI
 
 struct BillingToggleRow: View {
-    private let title: String
+    private let title: LocalizedStringKey
     private let icon: String
     private let tint: Color
     @Binding private var isOn: Bool
     
-    init(_ title: String, icon: String, tint: Color, isOn: Binding<Bool>) {
+    init(_ title: LocalizedStringKey, icon: String, tint: Color, isOn: Binding<Bool>) {
         self.title = title
         self.icon = icon
         self.tint = tint

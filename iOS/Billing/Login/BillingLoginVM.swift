@@ -4,7 +4,6 @@ import Foundation
 @Observable
 final class BillingLoginVM {
     var isPasskeyLoading = false
-    var passkeyError: String?
     var isVerifyingTwoFA = false
     var twoFAError: String?
     var isSubmitting = false
@@ -130,11 +129,7 @@ final class BillingLoginVM {
     
     func loginWithPasskey(login: String?) async -> BillingLoginResponse? {
         isPasskeyLoading = true
-        passkeyError = nil
-        
-        defer {
-            isPasskeyLoading = false
-        }
+        defer { isPasskeyLoading = false }
         
         do {
             let session = try await startPasskeyLogin(login: login)
@@ -149,9 +144,7 @@ final class BillingLoginVM {
             
             return try await verifyPasskeyLogin(sessionId: session.sessionId, credential: payload)
         } catch {
-            passkeyError = error.localizedDescription
-            
-            print("Passkey login failed:", error.localizedDescription)
+            SystemAlert.error(error.localizedDescription)
             return nil
         }
     }

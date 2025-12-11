@@ -47,7 +47,7 @@ struct BillingHostingPlansView: View {
                 } else {
                     VStack(spacing: 12) {
                         ForEach(plans) { plan in
-                            BillingHostingPlanCard(plan: plan, priceText: vm.formattedPrice(for: plan, currency: nil), category: category) {
+                            BillingHostingPlanCard(plan: plan, category: category) {
                                 orderContext = BillingPlanOrderContext(plan: plan, category: category)
                             }
                         }
@@ -58,10 +58,14 @@ struct BillingHostingPlansView: View {
         }
         .navigationTitle(category.title)
         .navigationSubtitle(category.description)
+        .environment(vm)
         .scrollIndicators(.never)
         .background(.background.opacity(0.9))
         .refreshableTask {
             await vm.loadAll()
+        }
+        .sheet(item: $orderContext) { context in
+            BillingHostingOrderSheet(context: context, priceText: vm.formattedPrice(for: context.plan, currency: nil), vm: vm)
         }
         .toolbar {
             if vm.isLoading {
@@ -71,9 +75,6 @@ struct BillingHostingPlansView: View {
                     .footnote()
                     .secondary()
             }
-        }
-        .sheet(item: $orderContext) { context in
-            BillingHostingOrderSheet(context: context, priceText: vm.formattedPrice(for: context.plan, currency: nil), vm: vm)
         }
     }
     

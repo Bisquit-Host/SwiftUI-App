@@ -1,13 +1,13 @@
 import SwiftUI
 
 struct BillingBalanceRow: View {
-    private let title: String
+    private let title: LocalizedStringKey
     private let icon: String
     private let tint: Color
     private let value: String
     private let isTotal: Bool
     
-    init(_ title: String, icon: String, tint: Color, value: String) {
+    init(_ title: LocalizedStringKey, icon: String, tint: Color, value: String) {
         self.title = title
         self.icon = icon
         self.tint = tint

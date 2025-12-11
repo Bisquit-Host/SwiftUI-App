@@ -3,15 +3,15 @@ import SwiftUI
 struct BillingSecurityRow: View {
     @Environment(\.accessibilityDifferentiateWithoutColor) private var differentiateWithoutColor
     
-    private let title: String
+    private let title: LocalizedStringKey
     private let icon: String
     private let enabled: Bool
-    private let enabledText: String
-    private let disabledText: String
+    private let enabledText: LocalizedStringKey
+    private let disabledText: LocalizedStringKey
     private let onEnabledTap: (() -> Void)?
     private let onDisabledTap: (() -> Void)?
     
-    init(_ title: String, icon: String, enabled: Bool, enabledText: String, disabledText: String, onEnabledTap: (() -> Void)? = nil, onDisabledTap: (() -> Void)? = nil) {
+    init(_ title: LocalizedStringKey, icon: String, enabled: Bool, enabledText: LocalizedStringKey, disabledText: LocalizedStringKey, onEnabledTap: (() -> Void)? = nil, onDisabledTap: (() -> Void)? = nil) {
         self.title = title
         self.icon = icon
         self.enabled = enabled

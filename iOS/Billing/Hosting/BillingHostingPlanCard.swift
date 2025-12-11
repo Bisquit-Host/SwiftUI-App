@@ -1,8 +1,9 @@
 import ScrechKit
 
 struct BillingHostingPlanCard: View {
+    @Environment(BillingHostingPlansVM.self) private var vm
+    
     let plan: BillingHostingPlan
-    let priceText: String
     let category: BillingHostingCategory
     var onPurchase: (() -> Void)?
     
@@ -21,7 +22,7 @@ struct BillingHostingPlanCard: View {
                 Spacer()
                 
                 VStack(alignment: .trailing, spacing: 6) {
-                    Text(priceText)
+                    Text(vm.formattedPrice(for: plan, currency: nil))
                         .monospacedDigit()
                         .subheadline(.semibold)
                         .padding(.vertical, 6)
@@ -82,15 +83,6 @@ struct BillingHostingPlanCard: View {
         }
     }
     
-    private func tag(_ text: String) -> some View {
-        Text(text)
-            .footnote()
-            .secondary()
-            .padding(.vertical, 6)
-            .padding(.horizontal, 10)
-            .background(.background.opacity(0.6), in: .rect(cornerRadius: 10))
-    }
-    
     private var specs: [(icon: String, text: String)] {
         var items: [(String, String)] = [
             ("cpu", "\(plan.cpu.clean) vCPU"),
@@ -119,7 +111,8 @@ struct BillingHostingPlanCard: View {
 }
 
 #Preview {
-    BillingHostingPlanCard(plan: .preview, priceText: "₽399", category: .game)
+    BillingHostingPlanCard(plan: .preview, category: .game)
         .padding()
         .darkSchemePreferred()
+        .environment(BillingHostingPlansVM())
 }
