@@ -117,7 +117,7 @@ struct BillingSettings: View {
             }
             
             store.accessToken = nil
-            store.testRefreshToken = ""
+            Keychain.delete(key: "refresh_token")
             store.testExpiresIn = 0
             store.lastBillingTokenRefresh = nil
             

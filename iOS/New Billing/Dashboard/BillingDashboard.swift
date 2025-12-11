@@ -1,5 +1,5 @@
 import ScrechKit
-import SwiftUI
+import PteroNet
 
 struct BillingDashboard: View {
     @State private var vm = BillingDashboardVM()
@@ -138,11 +138,7 @@ struct BillingDashboard: View {
     }
     
     private func refreshAuthTokenIfNeeded() async {
-        let store = ValueStore()
-        
-        guard !store.testRefreshToken.isEmpty else { return }
-        
-        guard let lastRefresh = store.lastBillingTokenRefresh else {
+        guard let lastRefresh = ValueStore().lastBillingTokenRefresh else {
             await vm.refreshAuthToken {
                 print("Refreshed auth token")
             }
@@ -150,7 +146,7 @@ struct BillingDashboard: View {
             return
         }
         
-        let expiresInSeconds = TimeInterval(store.testExpiresIn) / 1000
+        let expiresInSeconds = TimeInterval(ValueStore().testExpiresIn) / 1000
         let expiryDate = lastRefresh.addingTimeInterval(expiresInSeconds)
         
         guard Date() >= expiryDate else { return }

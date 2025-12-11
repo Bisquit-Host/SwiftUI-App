@@ -6,12 +6,12 @@ final class BillingDashboardVM {
     var user: BillingUser? = nil
     
     func refreshAuthToken(onSuccess: @escaping () async -> Void = {}) async {
-        let path = "https://test-api.bisquit.host/auth/refresh"
+        guard let url = URL(string: "https://test-api.bisquit.host/auth/refresh") else { return }
         
-        guard let url = URL(string: path) else { return }
-        
-        let store = ValueStore()
-        let refreshToken = store.testRefreshToken
+        guard let refreshToken = Keychain.load(key: "refresh_token") else {
+            print("Rrror: refresh token not found", #function)
+            return
+        }
         
         guard !refreshToken.isEmpty else { return }
         
@@ -40,9 +40,9 @@ final class BillingDashboardVM {
             
             let refreshedCreds = try decoder.decode(BillingLoginResponse.self, from: data)
             
-            ValueStore().lastBillingTokenRefresh = Date()
             Keychain.save(refreshedCreds.accessToken, forKey: "access_token")
-            ValueStore().testRefreshToken = refreshedCreds.refreshToken
+            Keychain.save(refreshedCreds.refreshToken, forKey: "refresh_token")
+            ValueStore().lastBillingTokenRefresh = Date()
             ValueStore().testExpiresIn = refreshedCreds.expiresIn
             
             await onSuccess()

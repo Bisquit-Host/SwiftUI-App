@@ -61,6 +61,9 @@ struct BillingLogin: View {
                     Capsule()
                         .stroke(.primary.opacity(0.05), lineWidth: 1)
                 }
+                .onSubmit {
+                    sheetHcaptcha = true
+                }
             
             Button {
                 sheetHcaptcha = true
@@ -242,9 +245,9 @@ struct BillingLogin: View {
         }
         
         store.testExpiresIn = response.expiresIn
-        store.testRefreshToken = response.refreshToken
         store.accessToken = response.accessToken
         store.lastBillingTokenRefresh = Date()
+        Keychain.save(response.refreshToken, forKey: "refresh_token")
         
         Task {
             try await Task.sleep(for: .seconds(0.5))

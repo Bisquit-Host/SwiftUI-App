@@ -193,10 +193,9 @@ final class OAuthVM: NSObject {
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 
                 if let login = try? decoder.decode(BillingLoginResponse.self, from: data) {
-                    let store = ValueStore()
                     Keychain.save(login.accessToken, forKey: "access_token")
-                    store.testRefreshToken = login.refreshToken
-                    store.testExpiresIn = login.expiresIn
+                    Keychain.save(login.refreshToken, forKey: "refresh_token")
+                    ValueStore().testExpiresIn = login.expiresIn
                     
                     finish(success: true, message: nil)
                 } else {

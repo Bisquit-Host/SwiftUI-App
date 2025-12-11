@@ -7,11 +7,9 @@ import Appearance
 
 final class ValueStore: ObservableObject {
     // MARK: - Billing
-    @AppStorage("test_refresh_token") var testRefreshToken = ""
     
     /// milliseconds
     @AppStorage("test_expires_in") var testExpiresIn = 0
-    
     @AppStorage("test_billing") var testBilling = false
     @AppStorage("test_last_billing_token_refresh") var lastBillingTokenRefresh: Date?
     
