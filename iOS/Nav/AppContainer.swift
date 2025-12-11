@@ -22,7 +22,7 @@ struct AppContainer: View {
         NavigationStack(path: $nav.path) {
 #if os(iOS)
             if store.testBilling {
-                if let accessToken = store.accessToken, accessToken.isEmpty {
+                if (store.accessToken?.isEmpty ?? true) {
                     BillingLogin()
                         .withNavDestinations()
                 } else {

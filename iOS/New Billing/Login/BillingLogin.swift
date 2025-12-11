@@ -241,6 +241,8 @@ struct BillingLogin: View {
         
         store.testExpiresIn = response.expiresIn
         store.testRefreshToken = response.refreshToken
+        store.accessToken = response.accessToken
+        store.lastBillingTokenRefresh = Date()
         
         Task {
             try await Task.sleep(for: .seconds(0.5))

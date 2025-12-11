@@ -140,6 +140,8 @@ struct BillingDashboard: View {
     private func refreshAuthTokenIfNeeded() async {
         let store = ValueStore()
         
+        guard !store.testRefreshToken.isEmpty else { return }
+        
         guard let lastRefresh = store.lastBillingTokenRefresh else {
             await vm.refreshAuthToken {
                 print("Refreshed auth token")

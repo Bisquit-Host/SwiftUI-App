@@ -116,6 +116,11 @@ struct BillingSettings: View {
                 print("Error logging out")
             }
             
+            store.accessToken = nil
+            store.testRefreshToken = ""
+            store.testExpiresIn = 0
+            store.lastBillingTokenRefresh = nil
+            
             withAnimation {
                 store.updateAccessToken()
             }

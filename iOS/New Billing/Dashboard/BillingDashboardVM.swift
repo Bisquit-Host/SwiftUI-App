@@ -11,7 +11,11 @@ final class BillingDashboardVM {
         guard let url = URL(string: path) else { return }
         
         let store = ValueStore()
-        let body = ["refreshToken": store.testRefreshToken]
+        let refreshToken = store.testRefreshToken
+        
+        guard !refreshToken.isEmpty else { return }
+        
+        let body = ["refreshToken": refreshToken]
         
         var req = URLRequest(url: url)
         req.httpMethod = "POST"
