@@ -43,7 +43,7 @@ struct TicketDetails: View {
             
             Divider()
             
-            SupportMessageComposer(text: $vm.composerText, attachments: $attachments, isSending: vm.isSending) {
+            TicketMessageComposer(text: $vm.composerText, attachments: $attachments, isSending: vm.isSending) {
                 let success = await vm.sendMessage(attachments: attachments)
                 
                 if success {

@@ -1,6 +1,6 @@
-import SwiftUI
+import ScrechKit
 
-struct SuportMediaAttachment: View {
+struct TicketMediaAttachment: View {
     private let attachment: PendingAttachment
     @Binding var attachments: [PendingAttachment]
     
@@ -22,12 +22,10 @@ struct SuportMediaAttachment: View {
                     .secondary()
             }
             
-            Button {
+            SFButton("xmark.circle.fill") {
                 attachments.removeAll {
                     $0.id == attachment.id
                 }
-            } label: {
-                Image(systemName: "xmark.circle.fill")
             }
         }
         .padding(10)
@@ -36,6 +34,6 @@ struct SuportMediaAttachment: View {
 }
 
 //#Preview {
-//    SuportMediaAttachment()
+//    TicketMediaAttachment()
 //        .darkSchemePreferred()
 //}

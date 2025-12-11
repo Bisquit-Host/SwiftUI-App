@@ -1,7 +1,7 @@
 import SwiftUI
 import PhotosUI
 
-struct SupportMessageComposer: View {
+struct TicketMessageComposer: View {
     @Binding var text: String
     @Binding var attachments: [PendingAttachment]
     var isSending: Bool
@@ -17,7 +17,7 @@ struct SupportMessageComposer: View {
                 ScrollView(.horizontal) {
                     HStack(spacing: 8) {
                         ForEach(attachments) {
-                            SuportMediaAttachment(for: $0, in: $attachments)
+                            TicketMediaAttachment(for: $0, in: $attachments)
                         }
                     }
                     .padding(.horizontal, 12)
@@ -110,6 +110,6 @@ struct SupportMessageComposer: View {
     @Previewable @State var message = "Preview message"
     @Previewable @State var files: [PendingAttachment] = []
     
-    SupportMessageComposer(text: $message, attachments: $files, isSending: false) {}
+    TicketMessageComposer(text: $message, attachments: $files, isSending: false) {}
         .darkSchemePreferred()
 }
