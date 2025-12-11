@@ -9,7 +9,6 @@ final class ValueStore: ObservableObject {
     // MARK: - Billing
     @AppStorage("test_login") var login = ""
     @AppStorage("test_password") var password = ""
-    @AppStorage("test_access_token") var testAccessToken = ""
     @AppStorage("test_refresh_token") var testRefreshToken = ""
     
     /// milliseconds
@@ -75,6 +74,12 @@ final class ValueStore: ObservableObject {
     @AppStorage("widgetCpuUsage") var widgetCpuUsage = 0.0
     @AppStorage("widgetRamUsage") var widgetRamUsage = 0.0
     @AppStorage("saveMetrics") var saveMetrics = false
+    
+    @Published var accessToken = Keychain.load(key: "access_token")
+    
+    func updateAccessToken() {
+        accessToken = Keychain.load(key: "access_token")
+    }
     
     func authSucced() {
         Task {

@@ -2,7 +2,6 @@ import SwiftUI
 
 struct SupportTicketDetails: View {
     @State private var vm: SupportTicketDetailsVM
-    @EnvironmentObject private var store: ValueStore
     
     init(_ ticket: SupportTicketDTO) {
         _vm = State(initialValue: SupportTicketDetailsVM(ticket))
@@ -45,7 +44,7 @@ struct SupportTicketDetails: View {
             Divider()
             
             SupportMessageComposer(text: $vm.composerText, attachments: $attachments, isSending: vm.isSending) {
-                let success = await vm.sendMessage(accessToken: store.testAccessToken, attachments: attachments)
+                let success = await vm.sendMessage(attachments: attachments)
                 
                 if success {
                     attachments = []
@@ -55,7 +54,7 @@ struct SupportTicketDetails: View {
         .navigationTitle("Ticket #\(vm.ticket.id)")
         .navigationBarTitleDisplayMode(.inline)
         .task {
-            vm.start(accessToken: store.testAccessToken)
+            vm.start()
         }
         .onDisappear {
             vm.stop()
@@ -63,7 +62,7 @@ struct SupportTicketDetails: View {
         .fullScreenCover(Binding(get: { selectedMedia != nil }, set: { if !$0 { selectedMedia = nil } })) {
             NavigationStack {
                 if let media = selectedMedia {
-                    SupportMedia(mediaPath: media, accessToken: store.testAccessToken) {
+                    SupportMedia(mediaPath: media) {
                         selectedMedia = nil
                     }
                 }

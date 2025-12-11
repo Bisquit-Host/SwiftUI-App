@@ -1,4 +1,5 @@
 import Foundation
+import PteroNet
 
 @Observable
 final class VDSServiceDetailsVM {
@@ -260,11 +261,8 @@ final class VDSServiceDetailsVM {
     }
     
     private func request(path: String, method: String = "GET", body: Data? = nil) async -> Data? {
-        let token = ValueStore().testAccessToken
-        
-        if token.isEmpty {
-            lastError = "Missing session"
-            print("Cloud request missing token")
+        guard let accessToken = Keychain.load(key: "access_token") else {
+            print("Access token not found", #function)
             return nil
         }
         
@@ -276,7 +274,7 @@ final class VDSServiceDetailsVM {
         
         var request = URLRequest(url: url)
         request.httpMethod = method
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         
         if let body {
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")

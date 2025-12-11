@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct SupportTicketsList: View {
-    @EnvironmentObject private var store: ValueStore
     @State private var vm = SupportTicketsVM()
     
     @State private var showCreateSheet = false
@@ -49,11 +48,11 @@ struct SupportTicketsList: View {
             }
         }
         .refreshableTask {
-            await vm.loadTickets(accessToken: store.testAccessToken)
+            await vm.loadTickets()
         }
         .onChange(of: vm.showClosed) { _, _ in
             Task {
-                await vm.loadTickets(accessToken: store.testAccessToken)
+                await vm.loadTickets()
             }
         }
         .alert("Too many open tickets", isPresented: $alertTooManyTickets) {

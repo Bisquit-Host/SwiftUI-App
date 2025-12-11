@@ -128,10 +128,9 @@ struct BillingTopupSection: View {
             SystemAlert.error("Select a provider", subtitle: "Choose a payment method to continue")
             return
         }
+
         
-        let token = store.testAccessToken
-        
-        if let url = await vm.createTopup(accessToken: token, amount: value, method: provider.method, currency: currency) {
+        if let url = await vm.createTopup(amount: value, method: provider.method, currency: currency) {
             paymentLink = url.absoluteString
             safariCover = true
         }

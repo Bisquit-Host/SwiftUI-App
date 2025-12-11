@@ -1,4 +1,5 @@
 import Foundation
+import PteroNet
 import AuthenticationServices
 
 @Observable
@@ -21,15 +22,15 @@ final class PasskeyListVM {
             isLoading = false
         }
         
-        guard let token = ValueStore().testAccessToken.nonEmpty else {
-            error = "Missing access token"
+        guard let accessToken = Keychain.load(key: "access_token") else {
+            print("Access token not found", #function)
             return
         }
         
         let url = baseURL.appendingPathComponent(passkeysPath)
         
         var request = URLRequest(url: url)
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
@@ -48,8 +49,8 @@ final class PasskeyListVM {
     }
     
     func deletePasskey(_ passkey: PasskeyListItem) async {
-        guard let token = ValueStore().testAccessToken.nonEmpty else {
-            error = "Missing access token"
+        guard let accessToken = Keychain.load(key: "access_token") else {
+            print("Access token not found", #function)
             return
         }
         
@@ -57,7 +58,7 @@ final class PasskeyListVM {
         
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
@@ -72,11 +73,6 @@ final class PasskeyListVM {
     }
     
     func registerPasskey() async {
-        guard let token = ValueStore().testAccessToken.nonEmpty else {
-            error = "Missing access token"
-            return
-        }
-        
         isRegistering = true
         error = nil
         
@@ -85,7 +81,7 @@ final class PasskeyListVM {
         }
         
         do {
-            let session = try await startRegistration(token: token)
+            let session = try await startRegistration()
             let request = try PasskeyRequestFactory.registrationRequest(from: session.options)
             let credential = try await authController.perform(request)
             
@@ -95,7 +91,7 @@ final class PasskeyListVM {
             
             let payload = try PasskeyCredentialFormatter.attestationPayload(registration)
             
-            try await verifyRegistration(sessionId: session.sessionId, credential: payload, token: token)
+            try await verifyRegistration(sessionId: session.sessionId, credential: payload)
             
             label = ""
             
@@ -106,13 +102,18 @@ final class PasskeyListVM {
         }
     }
     
-    private func startRegistration(token: String) async throws -> PasskeyOptionsResponse<PasskeyRegistrationOptions> {
+    private func startRegistration() async throws -> PasskeyOptionsResponse<PasskeyRegistrationOptions> {
+        guard let accessToken = Keychain.load(key: "access_token") else {
+            print("Access token not found", #function)
+            throw PasskeyError.invalidCredential
+        }
+        
         let url = baseURL.appendingPathComponent("\(passkeysPath)/register/options")
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         
         if let label = label.trimmingCharacters(in: .whitespacesAndNewlines).nonEmpty {
             request.httpBody = try JSONSerialization.data(withJSONObject: ["label": label])
@@ -130,13 +131,18 @@ final class PasskeyListVM {
         return try decoder.decode(PasskeyOptionsResponse<PasskeyRegistrationOptions>.self, from: data)
     }
     
-    private func verifyRegistration(sessionId: String, credential: [String: Any], token: String) async throws {
+    private func verifyRegistration(sessionId: String, credential: [String: Any]) async throws {
+        guard let accessToken = Keychain.load(key: "access_token") else {
+            print("Access token not found", #function)
+            throw PasskeyError.invalidCredential
+        }
+        
         let url = baseURL.appendingPathComponent("\(passkeysPath)/register/verify")
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         
         let body: [String: Any] = [
             "sessionId": sessionId,

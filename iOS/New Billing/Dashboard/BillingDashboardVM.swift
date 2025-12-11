@@ -1,4 +1,5 @@
 import Foundation
+import PteroNet
 
 @Observable
 final class BillingDashboardVM {
@@ -36,7 +37,7 @@ final class BillingDashboardVM {
             let refreshedCreds = try decoder.decode(BillingLoginResponse.self, from: data)
             
             ValueStore().lastBillingTokenRefresh = Date()
-            ValueStore().testAccessToken = refreshedCreds.accessToken
+            Keychain.save(refreshedCreds.accessToken, forKey: "access_token")
             ValueStore().testRefreshToken = refreshedCreds.refreshToken
             ValueStore().testExpiresIn = refreshedCreds.expiresIn
             
@@ -48,14 +49,18 @@ final class BillingDashboardVM {
     }
     
     func fetchUserInfo() async {
+        guard let accessToken = Keychain.load(key: "access_token") else {
+            print("Access token not found", #function)
+            return
+        }
+        
         let path = "https://test-api.bisquit.host/user"
-        let store = ValueStore()
         
         guard let url = URL(string: path) else { return }
         
         var req = URLRequest(url: url)
         req.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        req.setValue("Bearer \(store.testAccessToken)", forHTTPHeaderField: "Authorization")
+        req.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         
         do {
             let (data, response) = try await URLSession.shared.data(for: req)

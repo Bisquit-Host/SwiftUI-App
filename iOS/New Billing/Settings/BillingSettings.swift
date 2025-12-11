@@ -1,4 +1,5 @@
 import SwiftUI
+import PteroNet
 
 struct BillingSettings: View {
     @State private var vm = BillingSettingsVM()
@@ -111,8 +112,12 @@ struct BillingSettings: View {
         Task {
             try await Task.sleep(for: .seconds(0.5))
             
+            if !Keychain.delete(key: "access_token") {
+                print("Error logging out")
+            }
+            
             withAnimation {
-                store.testAccessToken = ""
+                store.updateAccessToken()
             }
         }
     }

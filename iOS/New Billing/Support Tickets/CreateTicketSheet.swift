@@ -3,7 +3,6 @@ import PhotosUI
 
 struct CreateTicketSheet: View {
     @Environment(SupportTicketsVM.self) private var vm
-    @EnvironmentObject private var store: ValueStore
     
     @Binding var showSheet: Bool
     
@@ -109,9 +108,9 @@ struct CreateTicketSheet: View {
     
     private func createTicket() {
         Task {
-            if let _ = await vm.createTicket(accessToken: store.testAccessToken, title: title, message: message, attachments: attachments) {
+            if let _ = await vm.createTicket(title: title, message: message, attachments: attachments) {
                 showSheet = false
-                await vm.loadTickets(accessToken: store.testAccessToken)
+                await vm.loadTickets()
             }
         }
     }

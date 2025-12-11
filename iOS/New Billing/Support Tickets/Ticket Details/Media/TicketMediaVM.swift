@@ -1,11 +1,17 @@
 import SwiftUI
+import PteroNet
 
 @Observable
 final class TicketMediaVM {
     var image: Image?
     var isLoading = true
     
-    func loadMedia(mediaPath: String, accessToken: String) async {
+    func loadMedia(mediaPath: String) async {
+        guard let accessToken = Keychain.load(key: "access_token") else {
+            print("Access token not found", #function)
+            return
+        }
+        
         guard let url = buildURL(mediaPath) else {
             print("Invalid media URL")
             isLoading = false

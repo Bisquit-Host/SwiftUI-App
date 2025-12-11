@@ -1,4 +1,5 @@
 import Foundation
+import PteroNet
 
 @Observable
 final class SheetTopupVM {
@@ -17,9 +18,9 @@ final class SheetTopupVM {
         let method: String?
     }
     
-    func fetchOperations(accessToken: String) async {
-        guard !accessToken.isEmpty else {
-            print("Missing access token")
+    func fetchOperations() async {
+        guard let accessToken = Keychain.load(key: "access_token") else {
+            print("Access token not found", #function)
             return
         }
         
@@ -75,9 +76,9 @@ final class SheetTopupVM {
         }
     }
     
-    func createTopup(accessToken: String, amount: Double, method: String?, currency: BillingCurrency) async -> URL? {
-        guard !accessToken.isEmpty else {
-            SystemAlert.error("Missing token", subtitle: "Please sign in again")
+    func createTopup(amount: Double, method: String?, currency: BillingCurrency) async -> URL? {
+        guard let accessToken = Keychain.load(key: "access_token") else {
+            print("Access token not found", #function)
             return nil
         }
         

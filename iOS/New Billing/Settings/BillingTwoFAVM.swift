@@ -1,4 +1,5 @@
 import Foundation
+import PteroNet
 
 @Observable
 final class BillingTwoFAVM {
@@ -12,8 +13,8 @@ final class BillingTwoFAVM {
     private let setupPath = "user/settings/two-fa"
     
     func fetchSetup() async {
-        guard let token = ValueStore().testAccessToken.nonEmpty else {
-            error = "Missing access token"
+        guard let accessToken = Keychain.load(key: "access_token") else {
+            print("Access token not found", #function)
             return
         }
         
@@ -25,7 +26,7 @@ final class BillingTwoFAVM {
         let url = baseURL.appendingPathComponent(setupPath)
         
         var request = URLRequest(url: url)
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
@@ -40,8 +41,8 @@ final class BillingTwoFAVM {
     }
     
     func enable(code: String) async -> Bool {
-        guard let token = ValueStore().testAccessToken.nonEmpty else {
-            error = "Missing access token"
+        guard let accessToken = Keychain.load(key: "access_token") else {
+            print("Access token not found", #function)
             return false
         }
         
@@ -55,7 +56,7 @@ final class BillingTwoFAVM {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         request.httpBody = try? JSONSerialization.data(withJSONObject: ["code": code])
         
         do {
@@ -69,8 +70,8 @@ final class BillingTwoFAVM {
     }
     
     func disable() async -> Bool {
-        guard let token = ValueStore().testAccessToken.nonEmpty else {
-            error = "Missing access token"
+        guard let accessToken = Keychain.load(key: "access_token") else {
+            print("Access token not found", #function)
             return false
         }
         
@@ -83,7 +84,7 @@ final class BillingTwoFAVM {
         
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         
         do {
             let (data, response) = try await URLSession.shared.data(for: request)

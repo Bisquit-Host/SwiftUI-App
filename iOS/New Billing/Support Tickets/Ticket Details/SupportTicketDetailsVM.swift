@@ -1,4 +1,5 @@
 import Foundation
+import PteroNet
 
 @Observable
 final class SupportTicketDetailsVM {
@@ -17,12 +18,11 @@ final class SupportTicketDetailsVM {
     private let baseURL = "https://test-api.bisquit.host"
     private var streamTask: Task<Void, Never>?
     
-    func start(accessToken: String) {
+    func start() {
         guard streamTask == nil else { return }
-        guard !accessToken.isEmpty else { return }
         
         streamTask = Task { [weak self] in
-            await self?.listenToStream(accessToken: accessToken)
+            await self?.listenToStream()
         }
     }
     
@@ -31,10 +31,14 @@ final class SupportTicketDetailsVM {
         streamTask = nil
     }
     
-    func sendMessage(accessToken: String, attachments: [PendingAttachment]) async -> Bool {
+    func sendMessage(attachments: [PendingAttachment]) async -> Bool {
+        guard let accessToken = Keychain.load(key: "access_token") else {
+            print("Access token not found", #function)
+            return false
+        }
+        
         let trimmed = composerText.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty || !attachments.isEmpty else { return false }
-        guard !accessToken.isEmpty else { return false }
         
         if attachments.count > 5 {
             errorMessage = "Max 5 files per message"
@@ -58,7 +62,7 @@ final class SupportTicketDetailsVM {
         var mediaPaths: [String]? = nil
         
         if !attachments.isEmpty {
-            mediaPaths = await uploadMedia(accessToken: accessToken, attachments: attachments)
+            mediaPaths = await uploadMedia(attachments: attachments)
             
             if mediaPaths == nil {
                 return false
@@ -95,7 +99,12 @@ final class SupportTicketDetailsVM {
         }
     }
     
-    private func listenToStream(accessToken: String) async {
+    private func listenToStream() async {
+        guard let accessToken = Keychain.load(key: "access_token") else {
+            print("Access token not found", #function)
+            return
+        }
+        
         guard let url = URL(string: "\(baseURL)/support/tickets/\(ticket.id)/sse") else { return }
         
         var request = URLRequest(url: url)
@@ -205,7 +214,12 @@ final class SupportTicketDetailsVM {
         messages.append(message)
     }
     
-    private func uploadMedia(accessToken: String, attachments: [PendingAttachment]) async -> [String]? {
+    private func uploadMedia(attachments: [PendingAttachment]) async -> [String]? {
+        guard let accessToken = Keychain.load(key: "access_token") else {
+            print("Access token not found", #function)
+            return nil
+        }
+        
         guard !attachments.isEmpty else { return [] }
         guard let url = URL(string: "\(baseURL)/support/tickets/\(ticket.id)/media") else { return nil }
         
@@ -265,6 +279,7 @@ final class SupportTicketDetailsVM {
             switch self {
             case .server(let code, let detail):
                 let trimmed = detail.trimmingCharacters(in: .whitespacesAndNewlines)
+                
                 if trimmed.isEmpty {
                     return "Upload failed (\(code))"
                 }

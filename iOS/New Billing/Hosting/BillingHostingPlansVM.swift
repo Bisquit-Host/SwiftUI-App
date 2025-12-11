@@ -1,4 +1,5 @@
 import Foundation
+import PteroNet
 
 @Observable
 final class BillingHostingPlansVM {
@@ -259,11 +260,8 @@ final class BillingHostingPlansVM {
     }
     
     private func request(path: String, method: String = "GET", body: Data? = nil) async -> Data? {
-        let token = ValueStore().testAccessToken
-        
-        if token.isEmpty {
-            lastError = "Please sign in"
-            print("Order request missing token")
+        guard let accessToken = Keychain.load(key: "access_token") else {
+            print("Access token not found", #function)
             return nil
         }
         
@@ -275,7 +273,7 @@ final class BillingHostingPlansVM {
         
         var request = URLRequest(url: url)
         request.httpMethod = method
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         
         if let body {
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")

@@ -1,4 +1,5 @@
 import SwiftUI
+import PteroNet
 import SafariCover
 import AuthenticationServices
 
@@ -30,11 +31,16 @@ final class OAuthVM: NSObject {
     }
     
     private func disconnect(path: String, onSuccess: () async -> Void) async {
+        guard let accessToken = Keychain.load(key: "access_token") else {
+            print("Access token not found", #function)
+            return
+        }
+        
         guard let url = URL(string: path) else { return }
         
         var req = URLRequest(url: url)
         req.httpMethod = "DELETE"
-        req.setValue("Bearer \(ValueStore().testAccessToken)", forHTTPHeaderField: "Authorization")
+        req.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         
         do {
             let (_, response) = try await URLSession.shared.data(for: req)
@@ -103,16 +109,18 @@ final class OAuthVM: NSObject {
     }
     
     private func fetchAuthURL(for provider: BillingAuthProvider) async {
+        guard let accessToken = Keychain.load(key: "access_token") else {
+            print("Access token not found", #function)
+            return
+        }
+        
         guard let url = URL(string: "\(basePath)/auth/providers/\(provider.rawValue)?mobile=true") else {
             finish(success: false, message: "Invalid backend URL")
             return
         }
         
         var request = URLRequest(url: url)
-        
-        if let token = bearerToken {
-            request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        }
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
@@ -151,6 +159,11 @@ final class OAuthVM: NSObject {
     }
     
     private func exchangeCode(_ code: String, for provider: BillingAuthProvider) async {
+        guard let accessToken = Keychain.load(key: "access_token") else {
+            print("Access token not found", #function)
+            return
+        }
+        
         guard let url = URL(string: "\(basePath)/auth/providers/\(provider.rawValue)") else {
             finish(success: false, message: "Invalid backend URL")
             return
@@ -159,10 +172,7 @@ final class OAuthVM: NSObject {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        if let token = bearerToken {
-            request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        }
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         
         request.httpBody = try? JSONEncoder().encode(["code": code])
         
@@ -184,7 +194,7 @@ final class OAuthVM: NSObject {
                 
                 if let login = try? decoder.decode(BillingLoginResponse.self, from: data) {
                     let store = ValueStore()
-                    store.testAccessToken = login.accessToken
+                    Keychain.save(login.accessToken, forKey: "access_token")
                     store.testRefreshToken = login.refreshToken
                     store.testExpiresIn = login.expiresIn
                     
@@ -225,11 +235,6 @@ final class OAuthVM: NSObject {
         
         onLinked?()
         onLinked = nil
-    }
-    
-    private var bearerToken: String? {
-        let token = ValueStore().testAccessToken
-        return token.isEmpty ? nil : token
     }
 }
 

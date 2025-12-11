@@ -1,4 +1,5 @@
 import Foundation
+import PteroNet
 
 @Observable
 final class SupportTicketsVM {
@@ -8,9 +9,9 @@ final class SupportTicketsVM {
     
     private let baseURL = "https://test-api.bisquit.host"
     
-    func loadTickets(accessToken: String) async {
-        guard !accessToken.isEmpty else {
-            print("No access token")
+    func loadTickets() async {
+        guard let accessToken = Keychain.load(key: "access_token") else {
+            print("Access token not found", #function)
             return
         }
         
@@ -78,8 +79,11 @@ final class SupportTicketsVM {
         }
     }
     
-    func createTicket(accessToken: String, title: String, message: String, attachments: [PendingAttachment]) async -> Int? {
-        guard !accessToken.isEmpty else { return nil }
+    func createTicket(title: String, message: String, attachments: [PendingAttachment]) async -> Int? {
+        guard let accessToken = Keychain.load(key: "access_token") else {
+            print("Access token not found", #function)
+            return nil
+        }
         
         let trimmedTitle = title.trimmingCharacters(in: .whitespacesAndNewlines)
         let trimmedMessage = message.trimmingCharacters(in: .whitespacesAndNewlines)

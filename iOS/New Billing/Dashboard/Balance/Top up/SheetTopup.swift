@@ -2,7 +2,6 @@ import SwiftUI
 
 struct SheetTopup: View {
     @State private var vm = SheetTopupVM()
-    @EnvironmentObject private var store: ValueStore
     
     private let user: BillingUser
     private let providers: [PaymentProvider]
@@ -47,7 +46,7 @@ struct SheetTopup: View {
         .scrollIndicators(.never)
         .environment(vm)
         .refreshableTask {
-            await vm.fetchOperations(accessToken: store.testAccessToken)
+            await vm.fetchOperations()
         }
         .toolbar {
             ToolbarItem(placement: .bottomBar) {

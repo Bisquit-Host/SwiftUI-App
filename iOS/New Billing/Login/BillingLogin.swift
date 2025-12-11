@@ -1,5 +1,6 @@
 import SwiftUI
 import HCaptcha
+import PteroNet
 
 struct BillingLogin: View {
     @State private var vm = BillingLoginVM()
@@ -245,7 +246,7 @@ struct BillingLogin: View {
             try await Task.sleep(for: .seconds(0.5))
             
             withAnimation {
-                store.testAccessToken = response.accessToken
+                let _ = Keychain.save(response.accessToken, forKey: "access_token")
             }
         }
     }

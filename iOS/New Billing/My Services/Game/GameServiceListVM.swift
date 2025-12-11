@@ -1,4 +1,5 @@
 import Foundation
+import PteroNet
 
 @Observable
 final class GameServiceListVM {
@@ -24,15 +25,13 @@ final class GameServiceListVM {
             return
         }
         
-        let token = ValueStore().testAccessToken
-        
-        if token.isEmpty {
-            lastError = "Missing session"
+        guard let accessToken = Keychain.load(key: "access_token") else {
+            print("Access token not found", #function)
             return
         }
         
         var request = URLRequest(url: url)
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         
         do {
             let (data, response) = try await URLSession.shared.data(for: request)

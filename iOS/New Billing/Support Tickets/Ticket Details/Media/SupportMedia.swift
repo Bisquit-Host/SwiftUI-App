@@ -4,7 +4,6 @@ struct SupportMedia: View {
     @State private var vm = TicketMediaVM()
     
     let mediaPath: String
-    let accessToken: String
     var onClose: () -> Void
     
     var body: some View {
@@ -25,7 +24,7 @@ struct SupportMedia: View {
         .navigationTitle(mediaPath)
         .toolbarTitleDisplayMode(.inline)
         .task {
-            await vm.loadMedia(mediaPath: mediaPath, accessToken: accessToken)
+            await vm.loadMedia(mediaPath: mediaPath)
         }
         .toolbar {
             Button(role: .destructive) {
@@ -38,6 +37,6 @@ struct SupportMedia: View {
 }
 
 #Preview {
-    SupportMedia(mediaPath: "media/example.png", accessToken: "") {}
+    SupportMedia(mediaPath: "media/example.png") {}
         .darkSchemePreferred()
 }

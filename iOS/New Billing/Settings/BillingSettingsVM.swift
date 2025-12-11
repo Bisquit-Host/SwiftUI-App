@@ -1,4 +1,5 @@
 import Foundation
+import PteroNet
 
 @Observable
 final class BillingSettingsVM {
@@ -11,7 +12,11 @@ final class BillingSettingsVM {
     var isUpdatingPassword = false
     
     func changeName(onSuccess: @escaping () async -> Void) async {
-        let store = ValueStore()
+        guard let accessToken = Keychain.load(key: "access_token") else {
+            print("Access token not found", #function)
+            return
+        }
+        
         let path = "https://test-api.bisquit.host/user/settings/name"
         
         guard let url = URL(string: path) else {
@@ -21,7 +26,7 @@ final class BillingSettingsVM {
         
         var request = URLRequest(url: url)
         request.httpMethod = "PATCH"
-        request.setValue("Bearer \(store.testAccessToken)", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try? JSONEncoder().encode(["name": newName])
         
@@ -45,7 +50,11 @@ final class BillingSettingsVM {
     }
     
     func changeEmail() async {
-        let store = ValueStore()
+        guard let accessToken = Keychain.load(key: "access_token") else {
+            print("Access token not found", #function)
+            return
+        }
+        
         let path = "https://test-api.bisquit.host/user/settings/email"
         
         guard let url = URL(string: path) else {
@@ -55,7 +64,7 @@ final class BillingSettingsVM {
         
         var request = URLRequest(url: url)
         request.httpMethod = "PATCH"
-        request.setValue("Bearer \(store.testAccessToken)", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try? JSONEncoder().encode(["email": newEmail])
         
@@ -79,7 +88,11 @@ final class BillingSettingsVM {
     }
     
     func changeLogin(onSuccess: @escaping () async -> Void) async {
-        let store = ValueStore()
+        guard let accessToken = Keychain.load(key: "access_token") else {
+            print("Access token not found", #function)
+            return
+        }
+        
         let path = "https://test-api.bisquit.host/user/settings/login"
         
         guard let url = URL(string: path) else {
@@ -89,7 +102,7 @@ final class BillingSettingsVM {
         
         var request = URLRequest(url: url)
         request.httpMethod = "PATCH"
-        request.setValue("Bearer \(store.testAccessToken)", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try? JSONEncoder().encode(["login": newLogin])
         
@@ -147,9 +160,8 @@ final class BillingSettingsVM {
             return
         }
         
-        let token = ValueStore().testAccessToken
-        if token.isEmpty {
-            SystemAlert.error("Missing session", subtitle: "Sign in again")
+        guard let accessToken = Keychain.load(key: "access_token") else {
+            print("Access token not found", #function)
             return
         }
         
@@ -159,7 +171,7 @@ final class BillingSettingsVM {
         var request = URLRequest(url: url)
         request.httpMethod = hasExistingPassword ? "PATCH" : "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         
         if hasExistingPassword {
             request.httpBody = try? JSONEncoder().encode([
@@ -215,10 +227,8 @@ final class BillingSettingsVM {
             return nil
         }
         
-        let token = ValueStore().testAccessToken
-        
-        if token.isEmpty {
-            SystemAlert.error("Missing session")
+        guard let accessToken = Keychain.load(key: "access_token") else {
+            print("Access token not found", #function)
             return nil
         }
         
@@ -226,7 +236,7 @@ final class BillingSettingsVM {
         
         var request = URLRequest(url: url)
         request.httpMethod = "PATCH"
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
         request.assumesHTTP3Capable = false
         
