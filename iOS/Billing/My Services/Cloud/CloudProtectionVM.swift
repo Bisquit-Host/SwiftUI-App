@@ -51,11 +51,8 @@ final class CloudProtectionVM {
     func fetchPresets(_ serviceId: Int) async {
         guard let data = await request(path: "/cloud/\(serviceId)/protection/presets") else { return }
         
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
-        
         do {
-            presets = try decoder.decode([CloudProtectionPreset].self, from: data)
+            presets = try JSONDecoder().decode([CloudProtectionPreset].self, from: data)
         } catch {
             SystemAlert.error("Protection presets decode error: \(error)")
         }
@@ -64,11 +61,8 @@ final class CloudProtectionVM {
     func fetchProfiles(_ serviceId: Int) async {
         guard let data = await request(path: "/cloud/\(serviceId)/protection/profiles") else { return }
         
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
-        
         do {
-            profiles = try decoder.decode([CloudProtectionProfile].self, from: data)
+            profiles = try JSONDecoder().decode([CloudProtectionProfile].self, from: data)
         } catch {
             SystemAlert.error("Protection profiles decode error: \(error)")
         }
@@ -76,6 +70,7 @@ final class CloudProtectionVM {
     
     func fetchAttacks(_ serviceId: Int, page: Int, reset: Bool) async {
         guard !isLoadingAttacks else { return }
+        
         isLoadingAttacks = true
         defer { isLoadingAttacks = false }
         

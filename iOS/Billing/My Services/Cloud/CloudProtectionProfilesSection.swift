@@ -2,7 +2,7 @@ import SwiftUI
 
 struct CloudProtectionProfilesSection: View {
     @Environment(CloudProtectionVM.self) private var vm
-    @State private var showCreateSheet = false
+    
     @State private var editingProfile: CloudProtectionProfile?
     @State private var deleteCandidate: CloudProtectionProfile?
     @State private var showDeleteDialog = false
@@ -11,8 +11,11 @@ struct CloudProtectionProfilesSection: View {
         BillingSectionCard("Profiles") {
             VStack(alignment: .leading, spacing: 12) {
                 HStack {
-                    Button("Add profile", systemImage: "plus") {
-                        showCreateSheet = true
+                    NavigationLink {
+                        CloudProtectionProfileEditorSheet(mode: .create)
+                            .environment(vm)
+                    } label: {
+                        Label("Add profile", systemImage: "plus")
                     }
                     .buttonStyle(.bordered)
                     .disabled(vm.isPerformingAction)
@@ -24,6 +27,7 @@ struct CloudProtectionProfilesSection: View {
                     ProgressView()
                         .frame(maxWidth: .infinity, alignment: .center)
                         .padding(.vertical, 6)
+                    
                 } else if vm.profiles.isEmpty {
                     Text("No profiles yet")
                         .footnote()
@@ -46,10 +50,6 @@ struct CloudProtectionProfilesSection: View {
                     }
                 }
             }
-        }
-        .sheet($showCreateSheet) {
-            CloudProtectionProfileEditorSheet(mode: .create)
-                .environment(vm)
         }
         .sheet(item: $editingProfile) { profile in
             CloudProtectionProfileEditorSheet(mode: .edit(profile))

@@ -18,9 +18,6 @@ struct CloudProtectionSheet: View {
             .navigationBarTitleDisplayMode(.inline)
             .scrollIndicators(.never)
             .environment(vm)
-            .task {
-                await vm.load(serviceId)
-            }
             .refreshableTask {
                 await vm.load(serviceId)
             }
