@@ -1,9 +1,9 @@
 import Foundation
 
 enum CloudProtectionDefaultAction: String, Codable, CaseIterable, Identifiable {
-    case accept = "ACCEPT"
-    case filter = "FILTER"
-    case drop = "DROP"
+    case accept = "ACCEPT",
+         filter = "FILTER",
+         drop = "DROP"
     
     var id: String { rawValue }
     
@@ -21,10 +21,10 @@ enum CloudProtectionDefaultAction: String, Codable, CaseIterable, Identifiable {
 }
 
 enum CloudProtectionProtocol: String, Codable, CaseIterable, Identifiable {
-    case icmp = "ICMP"
-    case tcp = "TCP"
-    case udp = "UDP"
-    case gre = "GRE"
+    case icmp = "ICMP",
+         tcp = "TCP",
+         udp = "UDP",
+         gre = "GRE"
     
     var id: String { rawValue }
 }
@@ -41,7 +41,7 @@ struct CloudProtectionPreset: Decodable, Identifiable, Equatable {
     let `protocol`: CloudProtectionProtocol
 }
 
-struct CloudProtectionProfile: Decodable, Identifiable, Equatable {
+struct CloudProtectionProfile: Decodable, Identifiable, Equatable, Hashable {
     let id: Int
     let presetId: Int
     let presetName: String?

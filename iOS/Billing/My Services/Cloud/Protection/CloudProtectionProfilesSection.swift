@@ -51,8 +51,8 @@ struct CloudProtectionProfilesSection: View {
                 }
             }
         }
-        .sheet(item: $editingProfile) { profile in
-            CloudProtectionProfileEditorSheet(mode: .edit(profile))
+        .navigationDestination(item: $editingProfile) {
+            CloudProtectionProfileEditorSheet(mode: .edit($0))
                 .environment(vm)
         }
         .confirmationDialog("Delete profile?", isPresented: $showDeleteDialog, titleVisibility: .visible) {
