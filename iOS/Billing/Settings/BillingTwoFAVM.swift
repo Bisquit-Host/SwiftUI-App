@@ -13,15 +13,15 @@ final class BillingTwoFAVM {
     private let setupPath = "user/settings/two-fa"
     
     func fetchSetup() async {
+        isLoading = true
+        defer { isLoading = false }
+        
         guard let accessToken = Keychain.load(key: "access_token") else {
             print("Access token not found", #function)
             return
         }
         
-        isLoading = true
         error = nil
-        
-        defer { isLoading = false }
         
         let url = baseURL.appendingPathComponent(setupPath)
         
