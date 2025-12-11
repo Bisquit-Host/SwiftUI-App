@@ -27,11 +27,9 @@ struct SettingsButton: View {
             Divider()
             
             //            Button("Log out", systemImage: "rectangle.portrait.and.arrow.right", role: .destructive) {
-            //                main {
-            //                    nav.clear()
-            //                    store.isApiKeyValid = false
-            //                    Keychain.delete(key: "selectedApiKey")
-            //                }
+            //                nav.clear()
+            //                store.isApiKeyValid = false
+            //                Keychain.delete(key: "selectedApiKey")
             //            }
         } label: {
             Image(systemName: "person.crop.circle")
