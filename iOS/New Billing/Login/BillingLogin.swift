@@ -9,6 +9,8 @@ struct BillingLogin: View {
     
     @State private var isSignUp = false
     @State private var name = ""
+    @State private var login = ""
+    @State private var password = ""
     @State private var sheetHcaptcha = false
     @State private var captchaToken = ""
     @State private var pendingTwoFAToken: String?
@@ -16,8 +18,8 @@ struct BillingLogin: View {
     @State private var sheetTwoFA = false
     
     private var captchaButtonDisabled: Bool {
-        let loginEmpty = store.login.trimmingCharacters(in: .whitespaces).isEmpty
-        let passwordEmpty = store.password.trimmingCharacters(in: .whitespaces).isEmpty
+        let loginEmpty = login.trimmingCharacters(in: .whitespaces).isEmpty
+        let passwordEmpty = password.trimmingCharacters(in: .whitespaces).isEmpty
         let nameEmpty = isSignUp && name.trimmingCharacters(in: .whitespaces).isEmpty
         
         return loginEmpty || passwordEmpty || nameEmpty || vm.isSubmitting
@@ -37,7 +39,7 @@ struct BillingLogin: View {
                     }
             }
             
-            TextField("Login", text: $store.login)
+            TextField("Login", text: $login)
                 .autocorrectionDisabled()
                 .keyboardType(.emailAddress)
                 .textContentType(.emailAddress)
@@ -50,7 +52,7 @@ struct BillingLogin: View {
                         .stroke(.primary.opacity(0.05), lineWidth: 1)
                 }
             
-            SecureField("Password", text: $store.password)
+            SecureField("Password", text: $password)
                 .textContentType(.password)
                 .padding(.horizontal)
                 .frame(height: 50)
@@ -184,12 +186,12 @@ struct BillingLogin: View {
             if isSignUp {
                 response = await vm.signup(
                     name: name.trimmingCharacters(in: .whitespaces),
-                    email: store.login,
-                    password: store.password,
+                    email: login,
+                    password: password,
                     captchaToken: captchaToken
                 )
             } else {
-                response = await vm.login(store.login, store.password, captchaToken)
+                response = await vm.login(login, password, captchaToken)
             }
             
             captchaToken = ""
@@ -202,7 +204,7 @@ struct BillingLogin: View {
     
     private func passkeyLogin() {
         Task {
-            guard let response = await vm.loginWithPasskey(login: store.login) else {
+            guard let response = await vm.loginWithPasskey(login: login) else {
                 return
             }
             

@@ -7,8 +7,6 @@ import Appearance
 
 final class ValueStore: ObservableObject {
     // MARK: - Billing
-    @AppStorage("test_login") var login = ""
-    @AppStorage("test_password") var password = ""
     @AppStorage("test_refresh_token") var testRefreshToken = ""
     
     /// milliseconds
