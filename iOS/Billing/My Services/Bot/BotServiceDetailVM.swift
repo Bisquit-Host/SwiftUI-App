@@ -14,12 +14,9 @@ final class BotServiceDetailVM {
     func load(_ serviceId: Int) async {
         guard !isLoading else { return }
         
-        isLoading = true
         actionMessage = nil
-        
-        defer {
-            isLoading = false
-        }
+        isLoading = true
+        defer { isLoading = false }
         
         await withTaskGroup(of: Void.self) { group in
             group.addTask { await self.fetchDetails(serviceId) }
@@ -146,12 +143,9 @@ final class BotServiceDetailVM {
     private func performAction(_ work: @escaping () async -> Void) async {
         guard !isPerformingAction else { return }
         
-        isPerformingAction = true
         actionMessage = nil
-        
-        defer {
-            isPerformingAction = false
-        }
+        isPerformingAction = true
+        defer { isPerformingAction = false }
         
         await work()
     }

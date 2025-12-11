@@ -14,12 +14,9 @@ final class GameServiceDetailsVM {
     func load(_ serviceId: Int) async {
         guard !isLoading else { return }
         
-        isLoading = true
         actionMessage = nil
-        
-        defer {
-            isLoading = false
-        }
+        isLoading = true
+        defer { isLoading = false }
         
         await withTaskGroup(of: Void.self) { group in
             group.addTask { await self.fetchDetails(serviceId) }
@@ -148,13 +145,11 @@ final class GameServiceDetailsVM {
     
     private func performAction(_ work: @escaping () async -> Void) async {
         guard !isPerformingAction else { return }
+        
         isPerformingAction = true
+        defer { isPerformingAction = false }
         
         actionMessage = nil
-        
-        defer {
-            isPerformingAction = false
-        }
         
         await work()
     }

@@ -25,10 +25,7 @@ final class SheetTopupVM {
         }
         
         isLoading = true
-        
-        defer {
-            isLoading = false
-        }
+        defer { isLoading = false }
         
         guard let url = URL(string: "\(baseURL)/finances/operations") else {
             print("Invalid URL")

@@ -145,11 +145,9 @@ struct BillingHostingOrderSheet: View {
     
     private func loadOptions() async {
         guard !isLoadingOptions else { return }
-        isLoadingOptions = true
         
-        defer {
-            isLoadingOptions = false
-        }
+        isLoadingOptions = true
+        defer { isLoadingOptions = false }
         
         let options = await vm.loadOrderOptions(for: context.category, planId: context.plan.id)
         osCategories = options.osCategories
@@ -178,13 +176,11 @@ struct BillingHostingOrderSheet: View {
     
     private func order() async {
         guard !isOrdering else { return }
+        
         isOrdering = true
+        defer { isOrdering = false }
         
         message = nil
-        
-        defer {
-            isOrdering = false
-        }
         
         let response = await vm.order(
             context: context,

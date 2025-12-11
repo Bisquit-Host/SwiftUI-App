@@ -19,10 +19,7 @@ final class BillingHostingPlansVM {
     
     func loadAll() async {
         isLoading = true
-        
-        defer {
-            isLoading = false
-        }
+        defer { isLoading = false }
         
         async let bot: () = fetch(.bot)
         async let game: () = fetch(.game)

@@ -18,12 +18,9 @@ final class VDSServiceDetailsVM {
     func load(_ serviceId: Int) async {
         guard !isLoading else { return }
         isLoading = true
+        defer { isLoading = false }
         
         actionMessage = nil
-        
-        defer {
-            isLoading = false
-        }
         
         await withTaskGroup(of: Void.self) { group in
             group.addTask { await self.fetchDetails(serviceId) }

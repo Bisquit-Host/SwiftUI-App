@@ -13,10 +13,7 @@ final class BillingLoginVM {
     
     func login(_ login: String, _ password: String, _ captchaToken: String) async -> BillingLoginResponse? {
         isSubmitting = true
-        
-        defer {
-            isSubmitting = false
-        }
+        defer { isSubmitting = false }
         
         let path = "https://test-api.bisquit.host/auth/signin"
         

@@ -30,10 +30,7 @@ final class TicketListVM {
         }
         
         isLoading = true
-        
-        defer {
-            isLoading = false
-        }
+        defer { isLoading = false }
         
         var components = URLComponents(string: "\(baseURL)/support/tickets")
         
