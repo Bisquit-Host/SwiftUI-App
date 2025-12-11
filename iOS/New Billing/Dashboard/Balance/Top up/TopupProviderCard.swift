@@ -23,6 +23,7 @@ struct TopupProviderCard: View {
                         .subheadline(.semibold)
                     
                     Text(provider.currency.rawValue)
+                        .footnote()
                         .secondary()
                 }
             }
