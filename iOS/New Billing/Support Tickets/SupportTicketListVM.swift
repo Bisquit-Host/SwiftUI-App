@@ -2,7 +2,7 @@ import Foundation
 import PteroNet
 
 @Observable
-final class SupportTicketsVM {
+final class SupportTicketListVM {
     var tickets: [SupportTicketWithLastMessageDTO] = []
     var isLoading = false
     var showClosed = false

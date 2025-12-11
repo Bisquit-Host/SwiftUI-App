@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct SupportTicketsList: View {
-    @State private var vm = SupportTicketsVM()
+struct SupportTicketList: View {
+    @State private var vm = SupportTicketListVM()
     
     @State private var showCreateSheet = false
     @State private var alertTooManyTickets = false
@@ -77,9 +77,9 @@ struct SupportTicketsList: View {
 
 #Preview {
     NavigationStack {
-        SupportTicketsList()
+        SupportTicketList()
     }
-    .environment(SupportTicketsVM())
+    .environment(SupportTicketListVM())
     .environmentObject(ValueStore())
     .darkSchemePreferred()
 }

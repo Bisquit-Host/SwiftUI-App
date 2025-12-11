@@ -2,7 +2,7 @@ import SwiftUI
 import PhotosUI
 
 struct CreateTicketSheet: View {
-    @Environment(SupportTicketsVM.self) private var vm
+    @Environment(SupportTicketListVM.self) private var vm
     
     @Binding var showSheet: Bool
     
