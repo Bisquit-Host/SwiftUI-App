@@ -20,12 +20,12 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             guard granted else { return }
             
             Task { @MainActor in
-                self.getNotificationSettings(application: application)
+                self.getNotificationSettings(application)
             }
         }
     }
     
-    private func getNotificationSettings(application: UIApplication) {
+    private func getNotificationSettings(_ application: UIApplication) {
         UNUserNotificationCenter.current().getNotificationSettings { settings in
             guard settings.authorizationStatus == .authorized else {
                 return
