@@ -50,7 +50,7 @@ struct UserInvitationView: View {
             await vm.fetchPermissions()
         }
 #if os(iOS)
-        .sheet(isPresented: $sheetContacts) {
+        .sheet($sheetContacts) {
             ContactsListView($email)
         }
 #endif

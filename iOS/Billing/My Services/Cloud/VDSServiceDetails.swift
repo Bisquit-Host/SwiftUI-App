@@ -13,6 +13,7 @@ struct VDSServiceDetails: View {
     @State private var selectedUpgradeId: Int?
     @State private var alertRename = false
     @State private var alertUpgrade = false
+    @State private var sheetCloudProtection = false
     
     var body: some View {
         ScrollView {
@@ -37,6 +38,15 @@ struct VDSServiceDetails: View {
                     }
                     
                     VDSPowerSection(serviceId: service.id)
+                    
+                    BillingSectionCard("Cloud Protection") {
+                        Button("Manage protection") {
+                            sheetCloudProtection = true
+                        }
+                        .frame(maxWidth: .infinity)
+                        .buttonStyle(.borderedProminent)
+                        .disabled(vm.isPerformingAction)
+                    }
                     
                     passwordSection(service)
                     
@@ -123,6 +133,9 @@ struct VDSServiceDetails: View {
             } else {
                 Text("Upgrade service?")
             }
+        }
+        .sheet($sheetCloudProtection) {
+            CloudProtectionSheet(serviceId: serviceId)
         }
         .environment(vm)
     }
