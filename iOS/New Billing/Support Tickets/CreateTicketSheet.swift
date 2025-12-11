@@ -27,23 +27,8 @@ struct CreateTicketSheet: View {
             if !attachments.isEmpty {
                 Section("Attachments (\(attachments.count)/5)") {
                     ForEach(attachments) { file in
-                        HStack {
-                            VStack(alignment: .leading, spacing: 4) {
-                                Text(file.filename)
-                                    .lineLimit(1)
-                                
-                                Text(file.readableSize)
-                                    .caption()
-                                    .secondary()
-                            }
-                            
-                            Spacer()
-                            
-                            Button(role: .destructive) {
-                                attachments.removeAll { $0.id == file.id }
-                            } label: {
-                                Image(systemName: "trash")
-                            }
+                        CreateTicketSheetAttachment(file) {
+                            attachments.removeAll { $0.id == file.id }
                         }
                     }
                 }
