@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct VDSHistorySectionItem: View {
+struct VDSHistoryItem: View {
     @Environment(VDSServiceDetailsVM.self) private var vm
     
     private let item: BillingCloudHistoryItem

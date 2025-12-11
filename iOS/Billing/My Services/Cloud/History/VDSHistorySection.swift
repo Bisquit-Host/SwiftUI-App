@@ -14,7 +14,7 @@ struct VDSHistorySection: View {
                     .footnote()
             } else {
                 ForEach(vm.history) {
-                    VDSHistorySectionItem($0)
+                    VDSHistoryItem($0)
                 }
             }
         }

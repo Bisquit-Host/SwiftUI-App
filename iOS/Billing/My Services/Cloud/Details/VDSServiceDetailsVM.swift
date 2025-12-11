@@ -26,7 +26,7 @@ final class VDSServiceDetailsVM {
             group.addTask { await self.fetchDetails(serviceId) }
             group.addTask { await self.fetchHistory(serviceId) }
             group.addTask { await self.fetchCharts(serviceId) }
-            group.addTask { await self.fetchOsOptions(serviceId) }
+            group.addTask { await self.fetchOSOptions(serviceId) }
             group.addTask { await self.fetchChangeablePackages(serviceId) }
         }
     }
@@ -51,11 +51,8 @@ final class VDSServiceDetailsVM {
     func fetchChangeablePackages(_ serviceId: Int) async {
         guard let data = await request(path: "/cloud/\(serviceId)/change-package/packages") else { return }
         
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
-        
         do {
-            changeablePackages = try decoder.decode([BillingChangeableCloudPackage].self, from: data)
+            changeablePackages = try JSONDecoder().decode([BillingChangeableCloudPackage].self, from: data)
         } catch {
             SystemAlert.error("Cloud changeable packages decode error: \(error)")
             
@@ -99,14 +96,11 @@ final class VDSServiceDetailsVM {
         }
     }
     
-    func fetchOsOptions(_ serviceId: Int) async {
+    func fetchOSOptions(_ serviceId: Int) async {
         guard let data = await request(path: "/cloud/\(serviceId)/panel/reinstall/os") else { return }
         
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
-        
         do {
-            osOptions = try decoder.decode([BillingCloudOsCategory].self, from: data)
+            osOptions = try JSONDecoder().decode([BillingCloudOsCategory].self, from: data)
         } catch {
             SystemAlert.error("Cloud OS list decode error: \(error)")
             
