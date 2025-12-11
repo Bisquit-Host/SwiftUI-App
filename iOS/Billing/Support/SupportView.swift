@@ -5,7 +5,7 @@ struct SupportView: View {
     
     var body: some View {
         TabView {
-            Tab("Tickets", systemImage: "ticket") {
+            Tab("Tickets", systemImage: "lifepreserver") {
                 TicketList()
             }
         }
