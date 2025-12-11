@@ -21,20 +21,10 @@ struct BillingDashboard: View {
         .navigationTitle("Dashboard")
         .navigationBarBackButtonHidden()
         .refreshableTask {
-            await vm.refreshAuthToken {
-                print("Refreshed auth token")
-            }
-            
-            await vm.fetchUserInfo()
+            refresh()
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
-            Task {
-                await vm.refreshAuthToken {
-                    print("Refreshed auth token")
-                }
-                
-                await vm.fetchUserInfo()
-            }
+            refresh()
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { _ in
             stopAuthRefreshTimer()
@@ -89,6 +79,16 @@ struct BillingDashboard: View {
     private func stopAuthRefreshTimer() {
         refreshTimerTask?.cancel()
         refreshTimerTask = nil
+    }
+    
+    private func refresh() {
+        Task {
+            await vm.refreshAuthToken {
+                print("Refreshed auth token")
+            }
+            
+            await vm.fetchUserInfo()
+        }
     }
     
     private func refreshAuthTokenIfNeeded() async {
