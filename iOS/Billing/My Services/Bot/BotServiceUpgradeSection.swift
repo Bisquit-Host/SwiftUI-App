@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct BotServiceUpgradeSection: View {
-    @Environment(BotServiceDetailVM.self) private var vm
+    @Environment(BotServiceDetailsVM.self) private var vm
     @Environment(BillingDashboardVM.self) private var dashboardVM
     
     @State private var selectedUpgradeId: Int?

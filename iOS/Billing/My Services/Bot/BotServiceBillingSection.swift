@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct BotServiceBillingSection: View {
-    @Environment(BotServiceDetailVM.self) private var vm
+    @Environment(BotServiceDetailsVM.self) private var vm
     @Environment(BillingDashboardVM.self) private var dashboardVM
     
     @State private var renewMonths = 1

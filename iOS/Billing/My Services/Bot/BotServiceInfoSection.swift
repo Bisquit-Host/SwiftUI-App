@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct BotServiceInfoSection: View {
-    @Environment(BotServiceDetailVM.self) private var vm
+    @Environment(BotServiceDetailsVM.self) private var vm
     
     var body: some View {
         if let service = vm.service {

@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct BotServiceDetails: View {
-    @State private var vm = BotServiceDetailVM()
+    @State private var vm = BotServiceDetailsVM()
     @Environment(BillingDashboardVM.self) private var dashboardVM
     
     let serviceId: Int

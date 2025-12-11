@@ -2,7 +2,7 @@ import Foundation
 import PteroNet
 
 @Observable
-final class BotServicesListVM {
+final class BotServiceListVM {
     var services: [BillingBotServiceSummary] = []
     var isLoading = false
     
