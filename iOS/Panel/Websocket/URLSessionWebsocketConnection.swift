@@ -70,7 +70,7 @@ final class URLSessionWebsocketConnection: WebsocketConnection {
     private func authenticate(_ token: String) async {
         do {
             try await task.send(.string("{\"event\":\"auth\",\"args\":[\"\(token)\"]}"))
-            try await Task.sleep(nanoseconds: 500_000_000)
+            try await Task.sleep(for: .seconds(0.5))
             try await task.send(.string(WebsocketDefaults.logStreamPayload))
         } catch {
             close(with: .abnormalClosure)
