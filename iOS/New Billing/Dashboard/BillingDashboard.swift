@@ -13,53 +13,7 @@ struct BillingDashboard: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
                     BillingDashboardHostingLinks()
-                    
-                    NavigationLink {
-                        BillingMyServicesList()
-                            .environment(vm)
-                    } label: {
-                        HStack(spacing: 12) {
-                            Image(systemName: "externaldrive.connected.to.line.below")
-                                .largeTitle()
-                                .foregroundStyle(.blue.gradient)
-                            
-                            VStack(alignment: .leading) {
-                                Text("My services")
-                                    .semibold()
-                                
-                                Text("VDS, game & bots")
-                                    .footnote()
-                                    .secondary()
-                            }
-                        }
-                        .padding()
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .background(.ultraThinMaterial, in: .rect(cornerRadius: 12))
-                    }
-                    .foregroundStyle(.foreground)
-                    
-                    NavigationLink {
-                        SupportTicketsList()
-                    } label: {
-                        HStack(spacing: 12) {
-                            Image(systemName: "lifepreserver")
-                                .largeTitle()
-                                .foregroundStyle(.red.gradient)
-                            
-                            VStack(alignment: .leading) {
-                                Text("Support")
-                                    .semibold()
-                                
-                                Text("Tickets & wiki")
-                                    .footnote()
-                                    .secondary()
-                            }
-                        }
-                        .padding()
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .background(.ultraThinMaterial, in: .rect(cornerRadius: 12))
-                    }
-                    .foregroundStyle(.foreground)
+                    BillingDashboardNavLinks()
                 }
                 .padding()
             }
