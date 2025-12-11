@@ -12,7 +12,7 @@ struct BillingDashboardNavLinks: View {
             }
             
             BillingDashboardNavLink("Support", subtitle: "Tickets & wiki", systemImage: "lifepreserver", tint: .red) {
-                SupportTicketList()
+                SupportView()
             }
         }
     }

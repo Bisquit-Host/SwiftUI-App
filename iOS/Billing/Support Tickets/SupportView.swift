@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct SupportTicketList: View {
+struct SupportView: View {
     @State private var vm = SupportTicketListVM()
     
     @State private var showCreateSheet = false
@@ -77,7 +77,7 @@ struct SupportTicketList: View {
 
 #Preview {
     NavigationStack {
-        SupportTicketList()
+        SupportView()
     }
     .environment(SupportTicketListVM())
     .environmentObject(ValueStore())
