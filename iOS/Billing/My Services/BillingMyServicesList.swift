@@ -10,14 +10,17 @@ struct BillingMyServicesList: View {
         List {
             BillingMyServicesSection("VDS", services: cloudVM.services.map { .cloud($0) }, isLoading: cloudVM.isLoading) {
                 VDSServiceDetails(serviceId: $0)
+                    .environment(vm)
             }
             
             BillingMyServicesSection("Game servers", services: gameVM.services.map { .game($0) }, isLoading: gameVM.isLoading) {
                 GameServiceDetails(serviceId: $0)
+                    .environment(vm)
             }
             
             BillingMyServicesSection("Bot hosting", services: botVM.services.map { .bot($0) }, isLoading: botVM.isLoading) {
                 BotServiceDetails(serviceId: $0)
+                    .environment(vm)
             }
         }
         .navigationTitle("My services")

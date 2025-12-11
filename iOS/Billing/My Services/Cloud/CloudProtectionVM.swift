@@ -133,8 +133,7 @@ final class CloudProtectionVM {
         
         var body: [String: Any] = [
             "presetId": input.presetId,
-            "protocol": input.`protocol`.rawValue,
-            "listId": input.listId ?? NSNull()
+            "protocol": input.`protocol`.rawValue
         ]
         
         if let minPort = input.minPort { body["minDstPort"] = minPort }
@@ -165,8 +164,7 @@ final class CloudProtectionVM {
         
         var body: [String: Any] = [
             "presetId": input.presetId,
-            "protocol": input.`protocol`.rawValue,
-            "listId": input.listId ?? NSNull()
+            "protocol": input.`protocol`.rawValue
         ]
         
         if let minPort = input.minPort { body["minDstPort"] = minPort }

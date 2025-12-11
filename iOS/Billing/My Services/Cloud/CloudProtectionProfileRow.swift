@@ -55,11 +55,11 @@ struct CloudProtectionProfileRow: View {
     
     private var detailsText: String {
         let proto = profile.`protocol`.rawValue
-        let minPort = profile.minDstPort ?? 0
+        let minPort = profile.minDstPort ?? 1
         let maxPort = profile.maxDstPort ?? 65535
         
         let portText: String
-        if minPort == 0 && maxPort == 65535 {
+        if minPort == 1 && maxPort == 65535 {
             portText = "All ports"
         } else if minPort == maxPort {
             portText = "Port \(minPort)"

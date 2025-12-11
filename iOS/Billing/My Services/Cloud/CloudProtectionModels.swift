@@ -66,7 +66,5 @@ struct CloudProtectionProfileInput {
     var `protocol`: CloudProtectionProtocol
     var minPort: Int?
     var maxPort: Int?
-    var listId: Int?
     var notes: String?
 }
-
