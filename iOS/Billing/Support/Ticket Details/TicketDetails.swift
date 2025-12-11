@@ -1,10 +1,10 @@
 import SwiftUI
 
-struct SupportTicketDetails: View {
-    @State private var vm: SupportTicketDetailsVM
+struct TicketDetails: View {
+    @State private var vm: TicketDetailsVM
     
     init(_ ticket: SupportTicketDTO) {
-        _vm = State(initialValue: SupportTicketDetailsVM(ticket))
+        _vm = State(initialValue: TicketDetailsVM(ticket))
     }
     
     @State private var selectedMedia: String? = nil
@@ -73,7 +73,7 @@ struct SupportTicketDetails: View {
 
 #Preview {
     NavigationStack {
-        SupportTicketDetails(.init(id: 1, title: "Example issue", status: .open, userId: 1, createdAt: Date(), updatedAt: Date()))
+        TicketDetails(.init(id: 1, title: "Example issue", status: .open, userId: 1, createdAt: Date(), updatedAt: Date()))
     }
     .environmentObject(ValueStore())
     .darkSchemePreferred()

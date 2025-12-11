@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct SupportTicketCard: View {
+struct TicketCard: View {
     let ticket: SupportTicketWithLastMessageDTO
     
     init(_ ticket: SupportTicketWithLastMessageDTO) {

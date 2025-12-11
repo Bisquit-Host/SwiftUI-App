@@ -2,14 +2,28 @@ import Foundation
 import PteroNet
 
 @Observable
-final class SupportTicketListVM {
+final class TicketListVM {
     var tickets: [SupportTicketWithLastMessageDTO] = []
     var isLoading = false
     var showClosed = false
+    var showCreateSheet = false
+    var alertTooManyTickets = false
     
     private let baseURL = "https://test-api.bisquit.host"
     
-    func loadTickets() async {
+    func createNewTicket() {
+        let totalCount = tickets.filter {
+            $0.ticket.status == .open || $0.ticket.status == .pending
+        }.count
+        
+        if totalCount >= 2 {
+            alertTooManyTickets = true
+        } else {
+            showCreateSheet = true
+        }
+    }
+    
+    func fetchTickets() async {
         guard let accessToken = Keychain.load(key: "access_token") else {
             print("Access token not found", #function)
             return

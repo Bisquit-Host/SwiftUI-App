@@ -2,7 +2,7 @@ import Foundation
 import PteroNet
 
 @Observable
-final class SupportTicketDetailsVM {
+final class TicketDetailsVM {
     var ticket: SupportTicketDTO
     
     init(_ ticket: SupportTicketDTO) {

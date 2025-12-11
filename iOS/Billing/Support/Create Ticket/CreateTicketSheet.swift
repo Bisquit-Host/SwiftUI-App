@@ -1,9 +1,8 @@
 import SwiftUI
 
 struct CreateTicketSheet: View {
-    @Environment(SupportTicketListVM.self) private var vm
-    
-    @Binding var showSheet: Bool
+    @Environment(TicketListVM.self) private var vm
+    @Environment(\.dismiss) private var dismiss
     
     @State private var title = ""
     @State private var message = ""
@@ -36,7 +35,7 @@ struct CreateTicketSheet: View {
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
                 Button("Close") {
-                    showSheet = false
+                    dismiss()
                 }
             }
             
@@ -53,8 +52,8 @@ struct CreateTicketSheet: View {
     private func createTicket() {
         Task {
             if let _ = await vm.createTicket(title: title, message: message, attachments: attachments) {
-                showSheet = false
-                await vm.loadTickets()
+                dismiss()
+                await vm.fetchTickets()
             }
         }
     }
