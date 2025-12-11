@@ -17,11 +17,7 @@ struct SettingsAccountSection: View {
                 }
             }
             
-            Button {
-                nav.clear()
-                store.isApiKeyValid = false
-                Keychain.delete(key: "selectedApiKey")
-            } label: {
+            Button(action: logout) {
                 Label {
                     Text("Log out")
                 } icon: {
@@ -30,6 +26,12 @@ struct SettingsAccountSection: View {
                 }
             }
         }
+    }
+    
+    private func logout() {
+        nav.clear()
+        store.isApiKeyValid = false
+        Keychain.delete(key: "selectedApiKey")
     }
 }
 

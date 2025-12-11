@@ -78,9 +78,7 @@ struct BillingTwoFASetupSheet: View {
             
             Spacer()
             
-            Button {
-                enableTwoFA()
-            } label: {
+            Button(action: enableTwoFA) {
                 if vm.isEnabling || isLoading {
                     ProgressView()
                 } else {

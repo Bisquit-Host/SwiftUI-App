@@ -100,9 +100,7 @@ struct BillingLogin: View {
             .padding()
             
             if !isSignUp {
-                Button {
-                    passkeyLogin()
-                } label: {
+                Button(action: passkeyLogin) {
                     if vm.isPasskeyLoading {
                         HStack {
                             ProgressView()

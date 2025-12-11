@@ -30,9 +30,7 @@ struct StartPage: View {
                     .foregroundStyle(.white.secondary)
                 }
                 
-                Button {
-                    pasteAPIKey()
-                } label: {
+                Button(action: pasteAPIKey) {
                     Image(systemName: "doc.on.clipboard")
                         .footnote(.bold)
                         .frame(40)

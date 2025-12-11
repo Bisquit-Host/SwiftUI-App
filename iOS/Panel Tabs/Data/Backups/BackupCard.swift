@@ -74,9 +74,7 @@ struct BackupCard: View {
                 Image(systemName: "trash")
             }
             
-            Button {
-                toggleLock()
-            } label: {
+            Button(action: toggleLock) {
                 Image(systemName: backup.isLocked ? "lock.open" : "lock")
                     .tint(backup.isLocked ? .orange : .green)
             }

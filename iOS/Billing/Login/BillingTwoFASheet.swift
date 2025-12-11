@@ -24,9 +24,7 @@ struct BillingTwoFASheet: View {
                     .footnote()
             }
             
-            Button {
-                verifyAction()
-            } label: {
+            Button(action: verifyAction) {
                 if vm.isVerifyingTwoFA {
                     ProgressView()
                         .frame(maxWidth: .infinity)

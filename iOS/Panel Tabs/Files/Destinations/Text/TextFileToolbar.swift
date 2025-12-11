@@ -19,10 +19,8 @@ struct TextFileToolbar: View {
     var body: some View {
 #if os(iOS)
         if showSaveButton {
-            Button("Save") {
-                save()
-            }
-            .animation(.default, value: showSaveButton)
+            Button("Save", action: save)
+                .animation(.default, value: showSaveButton)
         }
 #endif
         JsonFormatterButton()

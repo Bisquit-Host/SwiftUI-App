@@ -65,9 +65,7 @@ struct AllocationCard: View {
                     .limitInputLength($notes, length: 256)
                 
                 if showSaveButton {
-                    Button("Save") {
-                        save()
-                    }
+                    Button("Save", action: save)
                 }
             }
         }
