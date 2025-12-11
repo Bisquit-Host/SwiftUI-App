@@ -36,7 +36,7 @@ struct CreateTicketSheetFilePicker: View {
                     switch $0 {
                     case .success(let urls):
                         Task {
-                            await appendAttachments(from: urls)
+                            await appendAttachments(urls)
                         }
                         
                     case .failure(let error):
@@ -53,14 +53,18 @@ struct CreateTicketSheetFilePicker: View {
         }
     }
     
-    private func appendAttachments(from urls: [URL]) async {
-        let mapped = urls.compactMap { AttachmentFactory.from(url: $0) }
+    private func appendAttachments(_ urls: [URL]) async {
+        let mapped = urls.compactMap {
+            AttachmentFactory.from(url: $0)
+        }
+        
         appendAttachments(mapped)
     }
     
     private func appendAttachments(_ new: [PendingAttachment]) {
         var combined = attachments
         combined.append(contentsOf: new)
+        
         attachments = Array(combined.prefix(5))
     }
 }
