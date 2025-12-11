@@ -171,25 +171,14 @@ final class LiveActivity {
         grantAchievement("start_live_activity")
         
         let attributes = WidgetsAttributes(id: server.id, name: server.name, node: server.node)
+        let contentState = WidgetsAttributes.ContentState(latestMessage: "Latest console output will display here")
         
-        let contentState = WidgetsAttributes.ContentState(
-            latestMessage: "Latest console output will display here"
-        )
-        
-        let activityContent = ActivityContent(
-            state: contentState,
-            staleDate: nil
-        )
+        let activityContent = ActivityContent(state: contentState, staleDate: nil)
         
         do {
-            let activity = try Activity<WidgetsAttributes>.request(
-                attributes: attributes,
-                content: activityContent,
-                pushType: .token
-            )
+            let activity = try Activity<WidgetsAttributes>.request(attributes: attributes, content: activityContent, pushType: .token)
             
             setup(activity)
-            
             try await Task.sleep(for: .seconds(2))
             
             Task { @MainActor in
