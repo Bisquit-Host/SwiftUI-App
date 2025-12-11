@@ -8,7 +8,8 @@ struct AuthSocialButtonImage: View {
     }
     
     private var avgColor: UIColor? {
-        UIImage(resource: img).findAverageColor()
+        UIImage(resource: img)
+            .findAverageColor()
     }
     
     var body: some View {
