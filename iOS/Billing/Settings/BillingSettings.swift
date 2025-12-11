@@ -18,7 +18,6 @@ struct BillingSettings: View {
     @State private var showTwoFASheet = false
     @State private var confirmDisableTwoFA = false
     @State private var isDisablingTwoFA = false
-    @State private var disableError: String?
     
     var body: some View {
         ScrollView {
@@ -98,11 +97,7 @@ struct BillingSettings: View {
             }
             .disabled(isDisablingTwoFA)
         } message: {
-            if let disableError {
-                Text(disableError)
-            } else {
-                Text("You will remove extra protection for your account")
-            }
+            Text("You will remove extra protection for your account")
         }
     }
     
@@ -116,10 +111,10 @@ struct BillingSettings: View {
                 print("Error logging out")
             }
             
-            store.accessToken = nil
-            Keychain.delete(key: "refresh_token")
             store.testExpiresIn = 0
+            store.accessToken = nil
             store.lastBillingTokenRefresh = nil
+            Keychain.delete(key: "refresh_token")
             
             withAnimation {
                 store.updateAccessToken()
@@ -129,9 +124,7 @@ struct BillingSettings: View {
     
     private func disableTwoFA() {
         guard !isDisablingTwoFA else { return }
-        
         isDisablingTwoFA = true
-        disableError = nil
         
         Task {
             let success = await twoFAVM.disable()
@@ -140,7 +133,6 @@ struct BillingSettings: View {
             if success {
                 await dashboardVM.fetchUserInfo()
             } else {
-                disableError = twoFAVM.error
                 confirmDisableTwoFA = true
             }
         }

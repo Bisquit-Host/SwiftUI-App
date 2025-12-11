@@ -72,21 +72,6 @@ struct PasskeyList: View {
         .refreshableTask {
             await vm.fetchPasskeys()
         }
-        .alert("Passkey error", isPresented: Binding(get: {
-            vm.error != nil
-        }, set: { newValue in
-            if !newValue {
-                vm.error = nil
-            }
-        })) {
-            Button("OK", role: .cancel) {
-                vm.error = nil
-            }
-        } message: {
-            if let error = vm.error {
-                Text(error)
-            }
-        }
     }
 }
 

@@ -18,7 +18,6 @@ struct BillingHostingOrderSheet: View {
     @State private var isLoadingOptions = false
     @State private var isOrdering = false
     @State private var message: String?
-    @State private var error: String?
     @State private var alertPurchase = false
     
     init(context: BillingPlanOrderContext, priceText: String, vm: BillingHostingPlansVM) {
@@ -97,14 +96,6 @@ struct BillingHostingOrderSheet: View {
                     }
                 }
                 
-                if let error {
-                    Section {
-                        Label(error, systemImage: "exclamationmark.triangle")
-                            .foregroundStyle(.orange)
-                            .textSelection(.enabled)
-                    }
-                }
-                
                 Section {
                     Button {
                         alertPurchase = true
@@ -155,7 +146,6 @@ struct BillingHostingOrderSheet: View {
     private func loadOptions() async {
         guard !isLoadingOptions else { return }
         isLoadingOptions = true
-        error = nil
         
         defer {
             isLoadingOptions = false
@@ -168,27 +158,28 @@ struct BillingHostingOrderSheet: View {
         if selectedOsId == 0, let first = options.osCategories.first?.os.first {
             selectedOsId = first.id
         }
+        
         if selectedNestId == 0, let first = options.nests.first {
             selectedNestId = first.id
         }
+        
         if selectedEggId == 0, let first = options.nests.first?.eggs.first {
             selectedEggId = first.id
         }
         
         if context.category == .cloud && osCategories.isEmpty {
-            error = vm.lastError ?? "Unable to load OS list"
+            SystemAlert.error("Unable to load OS list")
         }
         
         if (context.category == .game || context.category == .bot), nests.isEmpty {
-            error = vm.lastError ?? "No templates available"
+            SystemAlert.error("No templates available")
         }
     }
     
     private func order() async {
         guard !isOrdering else { return }
-        
         isOrdering = true
-        error = nil
+        
         message = nil
         
         defer {
@@ -213,7 +204,7 @@ struct BillingHostingOrderSheet: View {
                 dismiss()
             }
         } else {
-            error = vm.lastError ?? "Unable to complete order"
+            SystemAlert.error("Unable to complete order")
         }
     }
     
@@ -227,7 +218,9 @@ struct BillingHostingOrderSheet: View {
     }
     
     private var eggsForSelection: [BillingHostingEgg] {
-        nests.first { $0.id == selectedNestId }?.eggs ?? []
+        nests.first {
+            $0.id == selectedNestId
+        }?.eggs ?? []
     }
     
     private func monthLabel(_ value: Int) -> String {
@@ -241,7 +234,6 @@ struct BillingHostingOrderSheet: View {
         formatter.locale = Locale.current
         
         let value = formatter.string(from: NSNumber(value: amount)) ?? String(format: "%.2f", amount)
-        
         guard let code else { return value }
         
         return code + value

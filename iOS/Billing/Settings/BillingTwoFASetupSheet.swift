@@ -76,12 +76,6 @@ struct BillingTwoFASetupSheet: View {
                     .textContentType(.oneTimeCode)
             }
             
-            if let error = vm.error {
-                Text(error)
-                    .foregroundStyle(.red)
-                    .footnote()
-            }
-            
             Spacer()
             
             Button {

@@ -7,21 +7,18 @@ final class BillingTwoFAVM {
     var isLoading = false
     var isEnabling = false
     var isDisabling = false
-    var error: String?
     
     private let baseURL = URL(string: "https://test-api.bisquit.host")!
     private let setupPath = "user/settings/two-fa"
     
     func fetchSetup() async {
-        isLoading = true
-        defer { isLoading = false }
-        
         guard let accessToken = Keychain.load(key: "access_token") else {
             print("Access token not found", #function)
             return
         }
         
-        error = nil
+        isLoading = true
+        defer { isLoading = false }
         
         let url = baseURL.appendingPathComponent(setupPath)
         
@@ -34,9 +31,10 @@ final class BillingTwoFAVM {
             
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
+            
             setup = try decoder.decode(BillingTwoFASetupResponse.self, from: data)
         } catch {
-            self.error = error.localizedDescription
+            SystemAlert.error(error.localizedDescription)
         }
     }
     
@@ -47,8 +45,6 @@ final class BillingTwoFAVM {
         }
         
         isEnabling = true
-        error = nil
-        
         defer { isEnabling = false }
         
         let url = baseURL.appendingPathComponent(setupPath)
@@ -64,7 +60,7 @@ final class BillingTwoFAVM {
             try validateResponse(response, data: data)
             return true
         } catch {
-            self.error = error.localizedDescription
+            SystemAlert.error(error.localizedDescription)
             return false
         }
     }
@@ -76,12 +72,9 @@ final class BillingTwoFAVM {
         }
         
         isDisabling = true
-        error = nil
-        
         defer { isDisabling = false }
         
         let url = baseURL.appendingPathComponent(setupPath)
-        
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
         request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
@@ -91,16 +84,10 @@ final class BillingTwoFAVM {
             try validateResponse(response, data: data)
             return true
         } catch {
-            self.error = error.localizedDescription
+            SystemAlert.error(error.localizedDescription)
             return false
         }
     }
-}
-
-struct BillingTwoFASetupResponse: Decodable, Equatable {
-    let url: String
-    let accountName: String
-    let secret: String
 }
 
 private func validateResponse(_ response: URLResponse?, data: Data, allowedStatusCodes: Range<Int> = 200..<300) throws {

@@ -7,7 +7,6 @@ final class PasskeyListVM {
     var passkeys: [PasskeyListItem] = []
     var isLoading = false
     var isRegistering = false
-    var error: String?
     var label = ""
     
     private let baseURL = URL(string: "https://test-api.bisquit.host")!
@@ -15,17 +14,13 @@ final class PasskeyListVM {
     private let passkeysPath = "user/settings/passkeys"
     
     func fetchPasskeys() async {
-        isLoading = true
-        error = nil
-        
-        defer {
-            isLoading = false
-        }
-        
         guard let accessToken = Keychain.load(key: "access_token") else {
             print("Access token not found", #function)
             return
         }
+        
+        isLoading = true
+        defer { isLoading = false }
         
         let url = baseURL.appendingPathComponent(passkeysPath)
         
@@ -44,7 +39,7 @@ final class PasskeyListVM {
             
             passkeys = items
         } catch {
-            self.error = error.localizedDescription
+            SystemAlert.error(error.localizedDescription)
         }
     }
     
@@ -68,17 +63,13 @@ final class PasskeyListVM {
                 $0.id == passkey.id
             }
         } catch {
-            self.error = error.localizedDescription
+            SystemAlert.error(error.localizedDescription)
         }
     }
     
     func registerPasskey() async {
         isRegistering = true
-        error = nil
-        
-        defer {
-            isRegistering = false
-        }
+        defer { isRegistering = false }
         
         do {
             let session = try await startRegistration()
@@ -97,7 +88,7 @@ final class PasskeyListVM {
             
             await fetchPasskeys()
         } catch {
-            self.error = error.localizedDescription
+            SystemAlert.error(error.localizedDescription)
             print("Passkey registration failed:", error.localizedDescription)
         }
     }
