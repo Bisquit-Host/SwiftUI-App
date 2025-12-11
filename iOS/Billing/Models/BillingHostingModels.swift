@@ -108,7 +108,7 @@ struct BillingHostingPlan: Identifiable, Decodable, Equatable {
     )
 }
 
-struct BillingHostingLocation: Identifiable, Decodable, Equatable {
+struct HostingLocation: Identifiable, Decodable, Equatable {
     let id: Int
     let name: String
     let flagUrl: String?
@@ -119,7 +119,7 @@ struct BillingHostingLocation: Identifiable, Decodable, Equatable {
 
 struct BillingHostingPlansResponse: Decodable, Equatable {
     let packages: [BillingHostingPlan]
-    let locations: [BillingHostingLocation]?
+    let locations: [HostingLocation]?
 }
 
 struct BillingHostingOrderOptions: Equatable {

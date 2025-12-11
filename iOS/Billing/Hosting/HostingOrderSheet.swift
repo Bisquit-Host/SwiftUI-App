@@ -1,9 +1,9 @@
 import SwiftUI
 
-struct BillingHostingOrderSheet: View {
+struct HostingOrderSheet: View {
     let context: BillingPlanOrderContext
     let priceText: String
-    let vm: BillingHostingPlansVM
+    let vm: HostingPlanListVM
     private let currencyCode: String?
     
     @Environment(\.dismiss) private var dismiss
@@ -20,7 +20,7 @@ struct BillingHostingOrderSheet: View {
     @State private var message: String?
     @State private var alertPurchase = false
     
-    init(context: BillingPlanOrderContext, priceText: String, vm: BillingHostingPlansVM) {
+    init(context: BillingPlanOrderContext, priceText: String, vm: HostingPlanListVM) {
         self.context = context
         self.priceText = priceText
         self.vm = vm

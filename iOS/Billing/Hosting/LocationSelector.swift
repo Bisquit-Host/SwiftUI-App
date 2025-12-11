@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct LocationSelector: View {
-    let locations: [BillingHostingLocation]
+    let locations: [HostingLocation]
     let selectedLocationId: Int?
     let onSelect: (Int?) -> Void
     

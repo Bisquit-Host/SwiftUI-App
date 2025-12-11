@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Wrapper-view to provide UIView instance
+/// Wrapper-view to provide UIView instance
 struct UIViewWrapperView: UIViewRepresentable {
     @ObservedObject var host: CaptchaHost
     

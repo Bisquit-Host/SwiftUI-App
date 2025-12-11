@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct LocationChip: View {
-    let location: BillingHostingLocation
+    let location: HostingLocation
     let isSelected: Bool
     let action: () -> Void
     

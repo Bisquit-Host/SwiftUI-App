@@ -2,14 +2,14 @@ import Foundation
 import PteroNet
 
 @Observable
-final class BillingHostingPlansVM {
+final class HostingPlanListVM {
     var botPlans: [BillingHostingPlan] = []
     var gamePlans: [BillingHostingPlan] = []
     var cloudPlans: [BillingHostingPlan] = []
     
-    var botLocations: [BillingHostingLocation] = []
-    var gameLocations: [BillingHostingLocation] = []
-    var cloudLocations: [BillingHostingLocation] = []
+    var botLocations: [HostingLocation] = []
+    var gameLocations: [HostingLocation] = []
+    var cloudLocations: [HostingLocation] = []
     
     var isLoading = false
     var isOrdering = false
@@ -52,7 +52,7 @@ final class BillingHostingPlansVM {
         }
     }
     
-    func locations(for category: BillingHostingCategory) -> [BillingHostingLocation] {
+    func locations(for category: BillingHostingCategory) -> [HostingLocation] {
         switch category {
         case .bot: botLocations
         case .game: gameLocations
@@ -60,8 +60,8 @@ final class BillingHostingPlansVM {
         }
     }
     
-    func location(for plan: BillingHostingPlan, in category: BillingHostingCategory) -> BillingHostingLocation? {
-        let pool: [BillingHostingLocation]
+    func location(for plan: BillingHostingPlan, in category: BillingHostingCategory) -> HostingLocation? {
+        let pool: [HostingLocation]
         
         switch category {
         case .bot: pool = botLocations

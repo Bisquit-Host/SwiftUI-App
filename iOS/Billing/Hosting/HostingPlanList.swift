@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct BillingHostingPlansView: View {
-    @State private var vm = BillingHostingPlansVM()
+struct HostingPlanList: View {
+    @State private var vm = HostingPlanListVM()
     
     @State private var category: BillingHostingCategory
     
@@ -47,7 +47,7 @@ struct BillingHostingPlansView: View {
                 } else {
                     VStack(spacing: 12) {
                         ForEach(plans) { plan in
-                            BillingHostingPlanCard(plan: plan, category: category) {
+                            HostingPlanCard(plan: plan, category: category) {
                                 orderContext = BillingPlanOrderContext(plan: plan, category: category)
                             }
                         }
@@ -65,7 +65,7 @@ struct BillingHostingPlansView: View {
             await vm.loadAll()
         }
         .sheet(item: $orderContext) { context in
-            BillingHostingOrderSheet(context: context, priceText: vm.formattedPrice(for: context.plan, currency: nil), vm: vm)
+            HostingOrderSheet(context: context, priceText: vm.formattedPrice(for: context.plan, currency: nil), vm: vm)
         }
         .toolbar {
             if vm.isLoading {
@@ -74,7 +74,7 @@ struct BillingHostingPlansView: View {
         }
     }
     
-    private func selectedLocationId(for category: BillingHostingCategory, available locations: [BillingHostingLocation]) -> Int? {
+    private func selectedLocationId(for category: BillingHostingCategory, available locations: [HostingLocation]) -> Int? {
         if let id = selectedLocations[category], locations.contains(where: { $0.id == id }) {
             return id
         }
@@ -93,7 +93,7 @@ struct BillingHostingPlansView: View {
 
 #Preview {
     NavigationStack {
-        BillingHostingPlansView()
+        HostingPlanList()
     }
     .environment(BillingDashboardVM())
     .environmentObject(ValueStore())

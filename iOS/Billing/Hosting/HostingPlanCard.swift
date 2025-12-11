@@ -1,7 +1,7 @@
 import ScrechKit
 
-struct BillingHostingPlanCard: View {
-    @Environment(BillingHostingPlansVM.self) private var vm
+struct HostingPlanCard: View {
+    @Environment(HostingPlanListVM.self) private var vm
     
     let plan: BillingHostingPlan
     let category: BillingHostingCategory
@@ -111,8 +111,8 @@ struct BillingHostingPlanCard: View {
 }
 
 #Preview {
-    BillingHostingPlanCard(plan: .preview, category: .game)
+    HostingPlanCard(plan: .preview, category: .game)
         .padding()
         .darkSchemePreferred()
-        .environment(BillingHostingPlansVM())
+        .environment(HostingPlanListVM())
 }
