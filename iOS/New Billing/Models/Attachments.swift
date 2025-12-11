@@ -37,8 +37,8 @@ enum AttachmentFactory {
         guard let data = try? Data(contentsOf: url) else { return nil }
         guard validateSize(data, filename: url.lastPathComponent) else { return nil }
         
-        let ext = url.pathExtension.lowercased()
-        let mime = mimeType(for: ext)
+        let fileExtension = url.pathExtension.lowercased()
+        let mime = mimeType(for: fileExtension)
         
         return PendingAttachment(filename: url.lastPathComponent, contentType: mime, data: data)
     }
@@ -69,18 +69,18 @@ enum AttachmentFactory {
     
     static func mimeType(for ext: String) -> String {
         switch ext.lowercased() {
-        case "png": "image/png"
-        case "jpg", "jpeg": "image/jpeg"
-        case "gif": "image/gif"
-        case "svg": "image/svg+xml"
+        case "png":  "image/png"
+        case "jpg",  "jpeg": "image/jpeg"
+        case "gif":  "image/gif"
+        case "svg":  "image/svg+xml"
         case "webp": "image/webp"
-        case "txt": "text/plain"
-        case "js": "text/javascript"
-        case "php": "application/x-httpd-php"
-        case "py": "text/x-python"
+        case "txt":  "text/plain"
+        case "js":   "text/javascript"
+        case "php":  "application/x-httpd-php"
+        case "py":   "text/x-python"
         case "json": "application/json"
-        case "md": "text/markdown"
-        default: "application/octet-stream"
+        case "md":   "text/markdown"
+        default:     "application/octet-stream"
         }
     }
 }
