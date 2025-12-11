@@ -149,7 +149,7 @@ struct BillingLogin: View {
         }
         .sheet($sheetTwoFA) {
             NavigationStack {
-                BillingTwoFASheet(vm: vm, twoFACode: $twoFACode) {
+                BillingTwoFASheet(twoFACode: $twoFACode) {
                     verifyTwoFA()
                 }
                 .padding()
@@ -157,6 +157,7 @@ struct BillingLogin: View {
                 .navigationBarTitleDisplayMode(.inline)
             }
         }
+        .environment(vm)
         .onChange(of: captchaToken) { _, newValue in
             guard !newValue.isEmpty else { return }
             auth()

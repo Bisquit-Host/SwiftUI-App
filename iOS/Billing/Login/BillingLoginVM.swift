@@ -5,7 +5,6 @@ import Foundation
 final class BillingLoginVM {
     var isPasskeyLoading = false
     var isVerifyingTwoFA = false
-    var twoFAError: String?
     var isSubmitting = false
     
     private let passkeyAuth = PasskeyAuthorizationController()
@@ -104,8 +103,6 @@ final class BillingLoginVM {
         ])
         
         isVerifyingTwoFA = true
-        twoFAError = nil
-        
         defer { isVerifyingTwoFA = false }
         
         do {
@@ -113,7 +110,7 @@ final class BillingLoginVM {
             
             guard let http = response as? HTTPURLResponse, http.statusCode == 200 else {
                 let message = String(data: data, encoding: .utf8) ?? "Invalid response"
-                twoFAError = message
+                SystemAlert.error(message)
                 return nil
             }
             
@@ -122,7 +119,7 @@ final class BillingLoginVM {
             
             return try decoder.decode(BillingLoginResponse.self, from: data)
         } catch {
-            twoFAError = error.localizedDescription
+            SystemAlert.error(error.localizedDescription)
             return nil
         }
     }

@@ -5,7 +5,6 @@ import PteroNet
 final class BotServicesListVM {
     var services: [BillingBotServiceSummary] = []
     var isLoading = false
-    var lastError: String?
     
     func loadServices() async {
         await fetch(path: "https://test-api.bisquit.host/bot")
@@ -13,15 +12,12 @@ final class BotServicesListVM {
     
     private func fetch(path: String) async {
         guard !isLoading else { return }
-        isLoading = true
-        lastError = nil
         
-        defer {
-            isLoading = false
-        }
+        isLoading = true
+        defer { isLoading = false }
         
         guard let url = URL(string: path) else {
-            lastError = "Invalid URL"
+            SystemAlert.error("Invalid URL")
             return
         }
         
@@ -37,21 +33,24 @@ final class BotServicesListVM {
             let (data, response) = try await URLSession.shared.data(for: request)
             
             guard let http = response as? HTTPURLResponse else {
-                lastError = "No response"
+                SystemAlert.error("No response")
                 return
             }
             
             guard http.statusCode == 200 else {
-                lastError = String(data: data, encoding: .utf8) ?? "Status \(http.statusCode)"
-                print("Bot services error \(http.statusCode):", lastError ?? "")
+                let error = String(data: data, encoding: .utf8) ?? "Status \(http.statusCode)"
+                
+                SystemAlert.error(error)
+                print("Bot services error \(http.statusCode):", error)
                 return
             }
             
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
+            
             services = try decoder.decode([BillingBotServiceSummary].self, from: data)
         } catch {
-            lastError = error.localizedDescription
+            SystemAlert.error(error.localizedDescription)
             print("Bot services load failed:", error)
         }
     }

@@ -8,17 +8,17 @@ struct BillingMyServicesList: View {
     
     var body: some View {
         List {
-            BillingMyServicesSection("VDS", services: cloudVM.services.map { .cloud($0) }, isLoading: cloudVM.isLoading, error: cloudVM.lastError) {
+            BillingMyServicesSection("VDS", services: cloudVM.services.map { .cloud($0) }, isLoading: cloudVM.isLoading) {
                 VDSServiceDetails(serviceId: $0)
                     .environment(vm)
             }
             
-            BillingMyServicesSection("Game servers", services: gameVM.services.map { .game($0) }, isLoading: gameVM.isLoading, error: gameVM.lastError) {
+            BillingMyServicesSection("Game servers", services: gameVM.services.map { .game($0) }, isLoading: gameVM.isLoading) {
                 GameServiceDetails(serviceId: $0)
                     .environment(vm)
             }
             
-            BillingMyServicesSection("Bot hosting", services: botVM.services.map { .bot($0) }, isLoading: botVM.isLoading, error: botVM.lastError) {
+            BillingMyServicesSection("Bot hosting", services: botVM.services.map { .bot($0) }, isLoading: botVM.isLoading) {
                 BotServiceDetails(serviceId: $0)
                     .environment(vm)
             }

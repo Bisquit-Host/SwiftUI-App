@@ -70,10 +70,6 @@ struct BillingHostingPlansView: View {
         .toolbar {
             if vm.isLoading {
                 ProgressView()
-            } else if let error = vm.lastError {
-                Text(error)
-                    .footnote()
-                    .secondary()
             }
         }
     }

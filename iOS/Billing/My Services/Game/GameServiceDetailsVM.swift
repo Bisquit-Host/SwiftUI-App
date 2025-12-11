@@ -7,7 +7,6 @@ final class GameServiceDetailsVM {
     var changeablePackages: [BillingChangeableGamePackage] = []
     var isLoading = false
     var isPerformingAction = false
-    var lastError: String?
     var actionMessage: String?
     
     private let base = URL(string: "https://test-api.bisquit.host")!
@@ -16,7 +15,6 @@ final class GameServiceDetailsVM {
         guard !isLoading else { return }
         
         isLoading = true
-        lastError = nil
         actionMessage = nil
         
         defer {
@@ -67,7 +65,7 @@ final class GameServiceDetailsVM {
         let trimmed = newName.trimmingCharacters(in: .whitespacesAndNewlines)
         
         guard !trimmed.isEmpty else {
-            lastError = "Enter a name"
+            SystemAlert.error("Enter a name")
             return
         }
         
@@ -97,7 +95,7 @@ final class GameServiceDetailsVM {
     
     func renew(months: Int, serviceId: Int) async -> BillingServiceRenewResponse? {
         guard [1, 3, 6, 12].contains(months) else {
-            lastError = "Unsupported period"
+            SystemAlert.error("Unsupported period")
             return nil
         }
         
@@ -123,8 +121,9 @@ final class GameServiceDetailsVM {
                         self.actionMessage = "Extended for \(months) mo"
                         continuation.resume(returning: response)
                     } catch {
-                        self.lastError = error.localizedDescription
+                        SystemAlert.error(error.localizedDescription)
                         print("Game renew decode error:", error)
+                        
                         continuation.resume(returning: nil)
                     }
                 }
@@ -149,9 +148,8 @@ final class GameServiceDetailsVM {
     
     private func performAction(_ work: @escaping () async -> Void) async {
         guard !isPerformingAction else { return }
-        
         isPerformingAction = true
-        lastError = nil
+        
         actionMessage = nil
         
         defer {
@@ -168,7 +166,7 @@ final class GameServiceDetailsVM {
         }
         
         guard let url = URL(string: path, relativeTo: base) else {
-            lastError = "Invalid URL"
+            SystemAlert.error("Invalid URL")
             print("Game request invalid URL:", path)
             return nil
         }
@@ -186,7 +184,7 @@ final class GameServiceDetailsVM {
             let (data, response) = try await URLSession.shared.data(for: request)
             
             guard let http = response as? HTTPURLResponse else {
-                lastError = "No response"
+                SystemAlert.error("No response")
                 print("Game request no HTTP response")
                 return nil
             }
@@ -196,15 +194,18 @@ final class GameServiceDetailsVM {
             }
             
             guard (200...299).contains(http.statusCode) else {
-                lastError = String(data: data, encoding: .utf8) ?? "Status \(http.statusCode)"
-                print("Game request error \(http.statusCode):", lastError ?? "")
+                let error = String(data: data, encoding: .utf8) ?? "Status \(http.statusCode)"
+                
+                SystemAlert.error(error)
+                print("Game request error \(http.statusCode):", error)
                 return nil
             }
             
             return data
         } catch {
-            lastError = error.localizedDescription
+            SystemAlert.error(error.localizedDescription)
             print("Game request failed:", error)
+            
             return nil
         }
     }

@@ -1,7 +1,8 @@
 import SwiftUI
 
 struct BillingTwoFASheet: View {
-    @Bindable var vm: BillingLoginVM
+    @Environment(BillingLoginVM.self) private var vm
+    
     @Binding var twoFACode: String
     var verifyAction: () -> Void
     
@@ -17,12 +18,6 @@ struct BillingTwoFASheet: View {
                 .onSubmit {
                     verifyAction()
                 }
-            
-            if let twoFAError = vm.twoFAError {
-                Text(twoFAError)
-                    .foregroundStyle(.red)
-                    .footnote()
-            }
             
             Button(action: verifyAction) {
                 if vm.isVerifyingTwoFA {
@@ -40,6 +35,7 @@ struct BillingTwoFASheet: View {
 }
 
 #Preview {
-    BillingTwoFASheet(vm: BillingLoginVM(), twoFACode: .constant("123456")) {}
+    BillingTwoFASheet(twoFACode: .constant("123456")) {}
         .padding()
+        .environment(BillingLoginVM())
 }

@@ -11,16 +11,14 @@ final class VDSServiceDetailsVM {
     
     var isLoading = false
     var isPerformingAction = false
-    var lastError: String?
     var actionMessage: String?
     
     private let base = URL(string: "https://test-api.bisquit.host")!
     
     func load(_ serviceId: Int) async {
         guard !isLoading else { return }
-        
         isLoading = true
-        lastError = nil
+        
         actionMessage = nil
         
         defer {
@@ -125,7 +123,7 @@ final class VDSServiceDetailsVM {
         let trimmed = newName.trimmingCharacters(in: .whitespacesAndNewlines)
         
         guard !trimmed.isEmpty else {
-            lastError = "Enter a name"
+            SystemAlert.error("Enter a name")
             return
         }
         
@@ -144,7 +142,7 @@ final class VDSServiceDetailsVM {
         let trimmed = password.trimmingCharacters(in: .whitespacesAndNewlines)
         
         guard trimmed.count >= 8, trimmed.count <= 32 else {
-            lastError = "Password must be 8-32 characters"
+            SystemAlert.error("Password must be 8-32 characters")
             return
         }
         
@@ -181,7 +179,7 @@ final class VDSServiceDetailsVM {
     
     func renew(months: Int, serviceId: Int) async -> BillingServiceRenewResponse? {
         guard [1, 3, 6, 12].contains(months) else {
-            lastError = "Unsupported period"
+            SystemAlert.error("Unsupported period")
             return nil
         }
         
@@ -207,7 +205,7 @@ final class VDSServiceDetailsVM {
                         self.actionMessage = "Extended for \(months) mo"
                         continuation.resume(returning: response)
                     } catch {
-                        self.lastError = error.localizedDescription
+                        SystemAlert.error(error.localizedDescription)
                         print("Cloud renew decode error:", error)
                         continuation.resume(returning: nil)
                     }
@@ -233,7 +231,7 @@ final class VDSServiceDetailsVM {
         
         await performAction {
             guard let data = await self.request(path: "/cloud/\(serviceId)/panel/state/\(action)", method: "POST") else {
-                print("Power action \(action) failed:", self.lastError ?? "unknown error")
+                print("Power action \(action) failed")
                 return
             }
             
@@ -250,12 +248,9 @@ final class VDSServiceDetailsVM {
         guard !isPerformingAction else { return }
         
         isPerformingAction = true
-        lastError = nil
-        actionMessage = nil
+        defer { isPerformingAction = false }
         
-        defer {
-            isPerformingAction = false
-        }
+        actionMessage = nil
         
         await work()
     }
@@ -267,7 +262,7 @@ final class VDSServiceDetailsVM {
         }
         
         guard let url = URL(string: path, relativeTo: base) else {
-            lastError = "Invalid URL"
+            SystemAlert.error("Invalid URL")
             print("Cloud request invalid URL:", path)
             return nil
         }
@@ -285,7 +280,7 @@ final class VDSServiceDetailsVM {
             let (data, response) = try await URLSession.shared.data(for: request)
             
             guard let http = response as? HTTPURLResponse else {
-                lastError = "No response"
+                SystemAlert.error("No response")
                 print("Cloud request no HTTP response")
                 return nil
             }
@@ -295,15 +290,18 @@ final class VDSServiceDetailsVM {
             }
             
             guard (200...299).contains(http.statusCode) else {
-                lastError = String(data: data, encoding: .utf8) ?? "Status \(http.statusCode)"
-                print("Cloud request error \(http.statusCode):", lastError ?? "")
+                let error = String(data: data, encoding: .utf8) ?? "Status \(http.statusCode)"
+                
+                SystemAlert.error(error)
+                print("Cloud request error \(http.statusCode):", error)
                 return nil
             }
             
             return data
         } catch {
-            lastError = error.localizedDescription
+            SystemAlert.error(error.localizedDescription)
             print("Cloud request failed:", error)
+            
             return nil
         }
     }

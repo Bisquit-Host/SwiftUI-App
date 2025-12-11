@@ -12,7 +12,6 @@ final class BillingHostingPlansVM {
     var cloudLocations: [BillingHostingLocation] = []
     
     var isLoading = false
-    var lastError: String?
     var isOrdering = false
     
     private let baseURL = "https://test-api.bisquit.host/public-api"
@@ -20,7 +19,6 @@ final class BillingHostingPlansVM {
     
     func loadAll() async {
         isLoading = true
-        lastError = nil
         
         defer {
             isLoading = false
@@ -93,7 +91,7 @@ final class BillingHostingPlansVM {
     
     private func fetch(_ category: BillingHostingCategory) async {
         guard let url = URL(string: "\(baseURL)/\(category.path)") else {
-            lastError = "Invalid URL"
+            SystemAlert.error("Invalid URL")
             return
         }
         
@@ -101,7 +99,7 @@ final class BillingHostingPlansVM {
             let (data, response) = try await URLSession.shared.data(from: url)
             
             if let http = response as? HTTPURLResponse, http.statusCode >= 400 {
-                lastError = "Request failed: \(http.statusCode)"
+                SystemAlert.error("Request failed: \(http.statusCode)")
                 print("Hosting plans", category.rawValue, "failed", http.statusCode)
                 return
             }
@@ -122,7 +120,7 @@ final class BillingHostingPlansVM {
                 cloudLocations = decoded.locations ?? []
             }
         } catch {
-            lastError = error.localizedDescription
+            SystemAlert.error(error.localizedDescription)
             print("Hosting plans", category.rawValue, "decode error:", error)
         }
     }
@@ -139,7 +137,7 @@ final class BillingHostingPlansVM {
             do {
                 result.osCategories = try decoder.decode([BillingCloudOsCategory].self, from: data)
             } catch {
-                lastError = error.localizedDescription
+                SystemAlert.error(error.localizedDescription)
                 print("Order OS decode error:", error)
             }
             
@@ -151,7 +149,7 @@ final class BillingHostingPlansVM {
             do {
                 result.nests = try decoder.decode([BillingHostingNest].self, from: data)
             } catch {
-                lastError = error.localizedDescription
+                SystemAlert.error(error.localizedDescription)
                 print("Order nests decode error (game):", error)
             }
             
@@ -163,7 +161,7 @@ final class BillingHostingPlansVM {
             do {
                 result.nests = try decoder.decode([BillingHostingNest].self, from: data)
             } catch {
-                lastError = error.localizedDescription
+                SystemAlert.error(error.localizedDescription)
                 print("Order nests decode error (bot):", error)
             }
         }
@@ -175,22 +173,17 @@ final class BillingHostingPlansVM {
         guard !isOrdering else { return nil }
         
         isOrdering = true
-        
-        defer {
-            isOrdering = false
-        }
-        
-        lastError = nil
+        defer { isOrdering = false }
         
         let trimmed = name.trimmingCharacters(in: .whitespacesAndNewlines)
         
         guard !trimmed.isEmpty else {
-            lastError = "Enter a name"
+            SystemAlert.error("Enter a name")
             return nil
         }
         
         guard [1, 3, 6, 12].contains(months) else {
-            lastError = "Unsupported period"
+            SystemAlert.error("Unsupported period")
             return nil
         }
         
@@ -205,7 +198,7 @@ final class BillingHostingPlansVM {
         switch context.category {
         case .cloud:
             guard let osId else {
-                lastError = "Choose OS"
+                SystemAlert.error("Choose OS")
                 return nil
             }
             
@@ -214,7 +207,7 @@ final class BillingHostingPlansVM {
             
         case .game:
             guard let nestId, let eggId else {
-                lastError = "Choose template"
+                SystemAlert.error("Choose template")
                 return nil
             }
             
@@ -224,7 +217,7 @@ final class BillingHostingPlansVM {
             
         case .bot:
             guard let nestId, let eggId else {
-                lastError = "Choose template"
+                SystemAlert.error("Choose template")
                 return nil
             }
             
@@ -234,7 +227,7 @@ final class BillingHostingPlansVM {
         }
         
         guard let payload = try? JSONSerialization.data(withJSONObject: body) else {
-            lastError = "Failed to encode order"
+            SystemAlert.error("Failed to encode order")
             return nil
         }
         
@@ -243,7 +236,7 @@ final class BillingHostingPlansVM {
         do {
             return try JSONDecoder().decode(BillingHostingOrderResponse.self, from: data)
         } catch {
-            lastError = error.localizedDescription
+            SystemAlert.error(error.localizedDescription)
             print("Order decode error:", error)
             
             if let raw = String(data: data, encoding: .utf8) {
@@ -266,7 +259,7 @@ final class BillingHostingPlansVM {
         }
         
         guard let url = URL(string: path, relativeTo: authedBase) else {
-            lastError = "Invalid URL"
+            SystemAlert.error("Invalid URL")
             print("Order request invalid URL:", path)
             return nil
         }
@@ -284,20 +277,21 @@ final class BillingHostingPlansVM {
             let (data, response) = try await URLSession.shared.data(for: request)
             
             guard let http = response as? HTTPURLResponse else {
-                lastError = "No response"
+                SystemAlert.error("No response")
                 print("Order request missing HTTP response")
                 return nil
             }
             
             guard (200...299).contains(http.statusCode) else {
-                lastError = String(data: data, encoding: .utf8) ?? "Status \(http.statusCode)"
-                print("Order request failed \(http.statusCode):", lastError ?? "")
+                let error = String(data: data, encoding: .utf8) ?? "Status \(http.statusCode)"
+                SystemAlert.error(error)
+                print("Order request failed \(http.statusCode):", error)
                 return nil
             }
             
             return data
         } catch {
-            lastError = error.localizedDescription
+            SystemAlert.error(error.localizedDescription)
             print("Order request failed:", error)
             return nil
         }

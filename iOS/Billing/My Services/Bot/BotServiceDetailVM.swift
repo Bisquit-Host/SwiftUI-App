@@ -7,7 +7,6 @@ final class BotServiceDetailVM {
     var changeablePackages: [BillingChangeableBotPackage] = []
     var isLoading = false
     var isPerformingAction = false
-    var lastError: String?
     var actionMessage: String?
     
     private let base = URL(string: "https://test-api.bisquit.host")!
@@ -16,7 +15,6 @@ final class BotServiceDetailVM {
         guard !isLoading else { return }
         
         isLoading = true
-        lastError = nil
         actionMessage = nil
         
         defer {
@@ -67,7 +65,7 @@ final class BotServiceDetailVM {
         let trimmed = newName.trimmingCharacters(in: .whitespacesAndNewlines)
         
         guard !trimmed.isEmpty else {
-            lastError = "Enter a name"
+            SystemAlert.error("Enter a name")
             return
         }
         
@@ -96,7 +94,7 @@ final class BotServiceDetailVM {
     
     func renew(months: Int, serviceId: Int) async -> BillingServiceRenewResponse? {
         guard [1, 3, 6, 12].contains(months) else {
-            lastError = "Unsupported period"
+            SystemAlert.error("Unsupported period")
             return nil
         }
         
@@ -122,8 +120,9 @@ final class BotServiceDetailVM {
                         self.actionMessage = "Extended for \(months) mo"
                         continuation.resume(returning: response)
                     } catch {
-                        self.lastError = error.localizedDescription
+                        SystemAlert.error(error.localizedDescription)
                         print("Bot renew decode error:", error)
+                        
                         continuation.resume(returning: nil)
                     }
                 }
@@ -148,7 +147,6 @@ final class BotServiceDetailVM {
         guard !isPerformingAction else { return }
         
         isPerformingAction = true
-        lastError = nil
         actionMessage = nil
         
         defer {
@@ -165,7 +163,7 @@ final class BotServiceDetailVM {
         }
         
         guard let url = URL(string: path, relativeTo: base) else {
-            lastError = "Invalid URL"
+            SystemAlert.error("Invalid URL")
             print("Bot request invalid URL:", path)
             return nil
         }
@@ -183,7 +181,7 @@ final class BotServiceDetailVM {
             let (data, response) = try await URLSession.shared.data(for: request)
             
             guard let http = response as? HTTPURLResponse else {
-                lastError = "No response"
+                SystemAlert.error("No response")
                 print("Bot request no HTTP response")
                 return nil
             }
@@ -193,14 +191,16 @@ final class BotServiceDetailVM {
             }
             
             guard (200...299).contains(http.statusCode) else {
-                lastError = String(data: data, encoding: .utf8) ?? "Status \(http.statusCode)"
-                print("Bot request error \(http.statusCode):", lastError ?? "")
+                let error = String(data: data, encoding: .utf8) ?? "Status \(http.statusCode)"
+                
+                SystemAlert.error(error)
+                print("Bot request error \(http.statusCode):", error)
                 return nil
             }
             
             return data
         } catch {
-            lastError = error.localizedDescription
+            SystemAlert.error(error.localizedDescription)
             print("Bot request failed:", error)
             return nil
         }

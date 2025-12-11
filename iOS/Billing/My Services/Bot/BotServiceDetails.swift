@@ -31,12 +31,6 @@ struct BotServiceDetails: View {
                         .footnote()
                         .foregroundStyle(.green)
                 }
-                
-                if let error = vm.lastError {
-                    Text(error)
-                        .footnote()
-                        .foregroundStyle(.red)
-                }
             }
             .padding()
             .environment(vm)
