@@ -20,10 +20,6 @@ struct AppSettings: View {
                 sheetGuide = true
             }
             
-            ListLink("Configurations", icon: "externaldrive.badge.plus") {
-                PlanViewParent()
-            }
-            
             Section {
                 Button("Log out", systemImage: "rectangle.portrait.and.arrow.right", role: .destructive) {
                     dismiss()
