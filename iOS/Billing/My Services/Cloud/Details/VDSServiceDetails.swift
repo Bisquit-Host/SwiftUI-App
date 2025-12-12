@@ -17,11 +17,11 @@ struct VDSServiceDetails: View {
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
-                if let service = vm.service {
-                    VDSServiceDetailsHeader(service)
-                    
-                    infoSection(service)
+	            VStack(alignment: .leading, spacing: 16) {
+	                if let service = vm.service {
+	                    VDSServiceDetailsHeader(service)
+	                    
+	                    VDSServiceDetailsInfoSection(service)
                     
                     VDSBillingSection(
                         serviceId: service.id,
@@ -48,7 +48,7 @@ struct VDSServiceDetails: View {
                         .disabled(vm.isPerformingAction)
                     }
                     
-                    passwordSection(service)
+	                    VDSServiceDetailsPasswordSection(service, rootPassword: $rootPassword)
                     
                     VDSReinstallSection(serviceId: service.id, selectedOS: $selectedOS)
                     
@@ -140,44 +140,7 @@ struct VDSServiceDetails: View {
         .environment(vm)
     }
     
-    private func infoSection(_ service: CloudServiceDetails) -> some View {
-        BillingSectionCard("Details") {
-            let disk = (service.packageInfo.disk / 1024).formatted(.fractionDigits(0))
-            let memory = (service.packageInfo.memory / 1024).formatted(.fractionDigits(1))
-            let cpu = (service.packageInfo.cpu / 1024).formatted(.fractionDigits(1))
-            
-            VStack(alignment: .leading, spacing: 10) {
-                LabeledContent("Package", value: service.packageInfo.name)
-                LabeledContent("CPU", value: "\(cpu) vCPU \(service.packageInfo.cpuName ?? "")")
-                LabeledContent("RAM", value: "\(memory) GB")
-                LabeledContent("Disk", value: "\(disk) GB \(service.packageInfo.diskType ?? "")")
-                LabeledContent("Location", value: service.location.name)
-                
-                if let expires = service.expiresAt {
-                    LabeledContent("Expires", value: expires.formatted(date: .numeric, time: .shortened))
-                }
-            }
-        }
-    }
-    
-    private func passwordSection(_ service: CloudServiceDetails) -> some View {
-        BillingSectionCard("Root password") {
-            VStack(alignment: .leading, spacing: 8) {
-                SecureField("New password", text: $rootPassword)
-                
-                Button("Update password") {
-                    Task {
-                        await vm.changePassword(rootPassword, serviceId: service.id)
-                    }
-                }
-                .frame(maxWidth: .infinity)
-                .buttonStyle(.borderedProminent)
-                .disabled(vm.isPerformingAction || rootPassword.count < 8)
-            }
-        }
-    }
-    
-    // MARK: - Helpers
+	    // MARK: - Helpers
     
     private func formatCurrency(_ amount: Double) -> String {
         let formatter = NumberFormatter()
