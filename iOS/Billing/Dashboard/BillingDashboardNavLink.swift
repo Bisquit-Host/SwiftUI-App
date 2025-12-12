@@ -2,12 +2,12 @@ import ScrechKit
 
 struct BillingDashboardNavLink<Destination: View>: View {
     let title: LocalizedStringKey
-    let subtitle: String
+    let subtitle: LocalizedStringKey
     let systemImage: String
     let tint: Color
     @ViewBuilder var destination: () -> Destination
     
-    init(_ title: LocalizedStringKey, subtitle: String, systemImage: String, tint: Color, destination: @escaping () -> Destination) {
+    init(_ title: LocalizedStringKey, subtitle: LocalizedStringKey, systemImage: String, tint: Color, destination: @escaping () -> Destination) {
         self.title = title
         self.subtitle = subtitle
         self.systemImage = systemImage

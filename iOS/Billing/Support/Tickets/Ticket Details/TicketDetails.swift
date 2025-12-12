@@ -13,20 +13,6 @@ struct TicketDetails: View {
     var body: some View {
         VStack(spacing: 0) {
             ScrollView {
-                HStack {
-                    Text(vm.ticket.title)
-                        .headline()
-                    
-                    Spacer()
-                    
-                    Text(vm.ticket.status.rawValue.capitalized)
-                        .caption(.semibold)
-                        .padding(.horizontal, 10)
-                        .padding(.vertical, 4)
-                        .background(vm.ticket.status.color.opacity(0.12), in: .capsule)
-                        .foregroundStyle(vm.ticket.status.color)
-                }
-                
                 if vm.messages.isEmpty {
                     ContentUnavailableView("No messages yet", systemImage: "ellipsis.bubble")
                 } else {
@@ -51,13 +37,26 @@ struct TicketDetails: View {
                 }
             }
         }
-        .navigationTitle("Ticket #\(vm.ticket.id)")
+        .navigationTitle(vm.ticket.title)
+        .navigationSubtitle("Ticket #\(vm.ticket.id)")
         .navigationBarTitleDisplayMode(.inline)
         .task {
             vm.start()
         }
         .onDisappear {
             vm.stop()
+        }
+        .toolbar {
+            ToolbarItem {
+                Button {
+                    
+                } label: {
+                    Text(vm.ticket.status.rawValue.capitalized)
+                        .foregroundStyle(vm.ticket.status.color)
+                }
+                .buttonStyle(.glassProminent)
+                .tint(vm.ticket.status.color.opacity(0.3))
+            }
         }
         .fullScreenCover(Binding(get: { selectedMedia != nil }, set: { if !$0 { selectedMedia = nil } })) {
             NavigationStack {
