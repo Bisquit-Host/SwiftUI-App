@@ -21,7 +21,7 @@ struct HostingPlanCard: View {
                 
                 Spacer()
                 
-                VStack(alignment: .trailing, spacing: 6) {
+                VStack(spacing: 2) {
                     Text(vm.formattedPrice(for: plan, currency: nil))
                         .monospacedDigit()
                         .subheadline(.semibold)
