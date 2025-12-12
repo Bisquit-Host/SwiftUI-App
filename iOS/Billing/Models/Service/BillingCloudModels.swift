@@ -114,8 +114,13 @@ struct CloudServicePackage: Decodable, Equatable {
     let price: [BillingHostingPlanPrice]?
     let cpu: Double
     let cpuName: String?
+    
+    /// MB
     let memory: Double
+    
+    /// MB
     let disk: Double
+    
     let diskType: String?
     let network: Double
     let networkType: String?

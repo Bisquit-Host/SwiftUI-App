@@ -142,11 +142,15 @@ struct VDSServiceDetails: View {
     
     private func infoSection(_ service: CloudServiceDetails) -> some View {
         BillingSectionCard("Details") {
+            let disk = (service.packageInfo.disk / 1024).formatted(.fractionDigits(0))
+            let memory = (service.packageInfo.memory / 1024).formatted(.fractionDigits(1))
+            let cpu = (service.packageInfo.cpu / 1024).formatted(.fractionDigits(1))
+            
             VStack(alignment: .leading, spacing: 10) {
                 LabeledContent("Package", value: service.packageInfo.name)
-                LabeledContent("CPU", value: "\(String(format: "%.1f", service.packageInfo.cpu)) vCPU \(service.packageInfo.cpuName ?? "")")
-                LabeledContent("RAM", value: "\(String(format: "%.1f", service.packageInfo.memory)) GB")
-                LabeledContent("Disk", value: "\(String(format: "%.0f", service.packageInfo.disk)) GB \(service.packageInfo.diskType ?? "")")
+                LabeledContent("CPU", value: "\(cpu) vCPU \(service.packageInfo.cpuName ?? "")")
+                LabeledContent("RAM", value: "\(memory) GB")
+                LabeledContent("Disk", value: "\(disk) GB \(service.packageInfo.diskType ?? "")")
                 LabeledContent("Location", value: service.location.name)
                 
                 if let expires = service.expiresAt {
