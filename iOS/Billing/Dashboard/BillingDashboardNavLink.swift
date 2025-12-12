@@ -1,3 +1,4 @@
+import SwiftUI
 import ScrechKit
 
 struct BillingDashboardNavLink<Destination: View>: View {
@@ -7,7 +8,7 @@ struct BillingDashboardNavLink<Destination: View>: View {
     let tint: Color
     @ViewBuilder var destination: () -> Destination
     
-    init(_ title: LocalizedStringKey, subtitle: LocalizedStringKey, systemImage: String, tint: Color, destination: @escaping () -> Destination) {
+    init(_ title: LocalizedStringKey, subtitle: LocalizedStringKey, systemImage: String, tint: Color, @ViewBuilder destination: @escaping () -> Destination) {
         self.title = title
         self.subtitle = subtitle
         self.systemImage = systemImage

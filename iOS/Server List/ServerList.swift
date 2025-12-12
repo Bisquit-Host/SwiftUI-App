@@ -19,7 +19,6 @@ struct ServerList: View {
         .navigationTitle("Servers")
         .scrollIndicators(.never)
         .navigationBarTitleDisplayMode(.inline)
-        .navigationBarBackButtonHidden()
         .animation(.default, value: vm.servers)
         .serverListSearch($vm.searchField, isActive: vm.showSearch)
         .safariCover($vm.showBilling, url: "https://my.bisquit.host")
