@@ -47,7 +47,7 @@ struct BillingAvatarHeader: View {
                     .subheadline(.semibold)
                     .lineLimit(2)
                 
-                Text("Visible in tickets and chats")
+                Text(user.email)
                     .footnote()
                     .secondary()
             }

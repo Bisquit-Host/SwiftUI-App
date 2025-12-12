@@ -8,7 +8,7 @@ struct TicketList: View {
         
         List {
             Section {
-                Toggle("Show closed", isOn: $vm.showClosed)
+                Toggle("Show closed tickets", isOn: $vm.showClosed)
             }
             
             Section("Tickets") {
