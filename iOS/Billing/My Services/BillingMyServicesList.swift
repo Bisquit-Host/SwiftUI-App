@@ -9,7 +9,7 @@ struct BillingMyServicesList: View {
     var body: some View {
         List {
             BillingMyServicesSection("VDS", services: cloudVM.services.map { .cloud($0) }, isLoading: cloudVM.isLoading) {
-                VDSServiceDetails(serviceId: $0)
+                VDSServiceDetailsTabView(serviceId: $0)
                     .environment(vm)
             }
             

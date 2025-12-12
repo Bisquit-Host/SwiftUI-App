@@ -13,14 +13,12 @@ struct VDSServiceDetails: View {
     @State private var selectedUpgradeId: Int?
     @State private var alertRename = false
     @State private var alertUpgrade = false
-    @State private var sheetCloudProtection = false
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 if let service = vm.service {
                     VDSServiceDetailsHeader(service)
-                    
                     VDSServiceDetailsInfoSection(service)
                     
                     VDSBillingSection(
@@ -39,21 +37,11 @@ struct VDSServiceDetails: View {
                     
                     VDSPowerSection(serviceId: service.id)
                     
-                    BillingSectionCard("Cloud Protection") {
-                        Button("Manage protection") {
-                            sheetCloudProtection = true
-                        }
-                        .frame(maxWidth: .infinity)
-                        .buttonStyle(.borderedProminent)
-                        .disabled(vm.isPerformingAction)
-                    }
-                    
                     VDSServiceDetailsPasswordSection(service, rootPassword: $rootPassword)
                     
                     VDSReinstallSection(serviceId: service.id, selectedOS: $selectedOS)
                     
                     VDSChartSection()
-                    
                     VDSHistorySection()
                     
                 } else if vm.isLoading {
@@ -126,9 +114,6 @@ struct VDSServiceDetails: View {
             } else {
                 Text("Upgrade service?")
             }
-        }
-        .sheet($sheetCloudProtection) {
-            CloudProtectionSheet(serviceId: serviceId)
         }
         .environment(vm)
     }

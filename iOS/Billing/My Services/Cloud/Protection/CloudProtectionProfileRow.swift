@@ -31,20 +31,18 @@ struct CloudProtectionProfileRow: View {
             Spacer()
             
             if !profile.autoCreated {
-                VStack(spacing: 8) {
-                    Button {
-                        onEdit()
-                    } label: {
-                        Image(systemName: "pencil")
-                    }
-                    
-                    Button(role: .destructive) {
-                        onDelete()
-                    } label: {
-                        Image(systemName: "trash")
-                    }
+                Button {
+                    onEdit()
+                } label: {
+                    Image(systemName: "pencil")
                 }
-                .buttonStyle(.plain)
+                .secondary()
+                
+                Button(role: .destructive) {
+                    onDelete()
+                } label: {
+                    Image(systemName: "trash")
+                }
                 .secondary()
             }
         }
@@ -54,11 +52,10 @@ struct CloudProtectionProfileRow: View {
     }
     
     private var detailsText: String {
-        let proto = profile.`protocol`.rawValue
         let minPort = profile.minDstPort ?? 1
         let maxPort = profile.maxDstPort ?? 65535
-        
         let portText: String
+        
         if minPort == 1 && maxPort == 65535 {
             portText = "All ports"
         } else if minPort == maxPort {
@@ -66,6 +63,8 @@ struct CloudProtectionProfileRow: View {
         } else {
             portText = "\(minPort)–\(maxPort)"
         }
+        
+        let proto = profile.`protocol`.rawValue
         
         if profile.minDstPort != nil || profile.maxDstPort != nil {
             return "\(proto) • \(portText)"
