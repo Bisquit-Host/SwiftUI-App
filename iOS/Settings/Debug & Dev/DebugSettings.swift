@@ -90,8 +90,6 @@ struct DebugSettings: View {
                     Label("Saved metrics", systemImage: "doc.text.magnifyingglass")
                 }
             }
-            
-            Toggle("Test billing", isOn: $store.testBilling)
         }
         .navigationTitle("Debug")
         .scrollIndicators(.never)

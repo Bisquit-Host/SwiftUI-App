@@ -503,6 +503,8 @@
 		F383BAD82ECF35E500350A0F /* Exceptions for "iOS" folder in "watchOS" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Billing/HomeTabView.swift,
+				Billing/RequireUpdateView.swift,
 				BisquitHost.swift,
 				"Cloud Keys/APIKey.swift",
 				"Cloud Keys/CloudKeyCard.swift",
@@ -595,6 +597,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				AppDelegate.swift,
+				Billing/RequireUpdateView.swift,
 				"Cloud Keys/APIKey.swift",
 				Guide.xcassets,
 				Icons/coin.icon,
@@ -704,6 +707,8 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				AppDelegate.swift,
+				Billing/HomeTabView.swift,
+				Billing/RequireUpdateView.swift,
 				BisquitHost.swift,
 				"Cloud Keys/APIKey.swift",
 				"Cloud Keys/CloudKeyCard.swift",
@@ -842,6 +847,8 @@
 		F383BADB2ECF35E500350A0F /* Exceptions for "iOS" folder in "visionOS" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Billing/HomeTabView.swift,
+				Billing/RequireUpdateView.swift,
 				BisquitHost.swift,
 				"Cloud Keys/APIKey.swift",
 				"Cloud Keys/CloudKeyCard.swift",
@@ -986,6 +993,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Assets.xcassets,
+				Billing/RequireUpdateView.swift,
 				"Cloud Keys/APIKey.swift",
 				"Cloud Keys/CloudKeyCard.swift",
 				"Cloud Keys/CloudKeyContextMenu.swift",

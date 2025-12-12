@@ -10,7 +10,6 @@ final class ValueStore: ObservableObject {
     
     /// milliseconds
     @AppStorage("test_expires_in") var testExpiresIn = 0
-    @AppStorage("test_billing") var testBilling = false
     @AppStorage("test_last_billing_token_refresh") var lastBillingTokenRefresh: Date?
     
 #if os(visionOS)

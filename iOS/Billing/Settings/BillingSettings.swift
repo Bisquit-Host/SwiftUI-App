@@ -49,8 +49,6 @@ struct BillingSettings: View {
                 }
                 
                 BillingSectionCard("Debug") {
-                    BillingToggleRow("Test billing", icon: "testtube.2", tint: .purple, isOn: $store.testBilling)
-                    
                     BillingActionRow("Log out", icon: "rectangle.portrait.and.arrow.right", tint: .red, role: .destructive) {
                         logout()
                     }
