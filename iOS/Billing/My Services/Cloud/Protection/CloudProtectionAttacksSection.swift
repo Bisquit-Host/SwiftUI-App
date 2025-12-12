@@ -25,7 +25,9 @@ struct CloudProtectionAttacksSection: View {
                 
                 if vm.canLoadMoreAttacks {
                     Button(vm.isLoadingAttacks ? "Loading..." : "Load more") {
-                        Task { await vm.loadMoreAttacks() }
+                        Task {
+                            await vm.loadMoreAttacks()
+                        }
                     }
                     .frame(maxWidth: .infinity)
                     .buttonStyle(.bordered)

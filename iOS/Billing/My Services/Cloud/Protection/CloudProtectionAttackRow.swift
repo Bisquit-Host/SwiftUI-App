@@ -8,27 +8,26 @@ struct CloudProtectionAttackRow: View {
             Text(attack.dstAddress ?? "Attack")
                 .subheadline(.semibold)
             
-            if let started = attack.startedAt ?? attack.createdAt {
-                Text("Started \(formatted(started))")
-                    .footnote()
-                    .secondary()
+            Group {
+                if let started = attack.startedAt ?? attack.createdAt {
+                    Text("Started \(formatted(started))")
+                        .footnote()
+                }
+                
+                if let ended = attack.endedAt {
+                    Text("Ended \(formatted(ended))")
+                        .footnote()
+                } else {
+                    Text("Ongoing")
+                        .footnote()
+                }
+                
+                if let rate = attack.sampleRate {
+                    Text("Sample rate \(rate)")
+                        .caption()
+                }
             }
-            
-            if let ended = attack.endedAt {
-                Text("Ended \(formatted(ended))")
-                    .footnote()
-                    .secondary()
-            } else {
-                Text("Ongoing")
-                    .footnote()
-                    .secondary()
-            }
-            
-            if let rate = attack.sampleRate {
-                Text("Sample rate \(rate)")
-                    .caption()
-                    .secondary()
-            }
+            .secondary()
             
             Text(attack.id)
                 .caption()

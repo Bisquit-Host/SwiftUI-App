@@ -1,34 +1,10 @@
 import SwiftUI
 
 struct CloudProtectionProfileEditorSheet: View {
-    enum Mode {
-        case create
-        case edit(CloudProtectionProfile)
-        
-        var title: String {
-            switch self {
-            case .create: "New Profile"
-            case .edit: "Edit Profile"
-            }
-        }
-        
-        var actionTitle: String {
-            switch self {
-            case .create: "Create profile"
-            case .edit: "Save changes"
-            }
-        }
-        
-        var existingProfile: CloudProtectionProfile? {
-            if case .edit(let profile) = self { return profile }
-            return nil
-        }
-    }
-    
     @Environment(CloudProtectionVM.self) private var vm
     @Environment(\.dismiss) private var dismiss
     
-    let mode: Mode
+    let mode: CloudProtectionProfileEditorMode
     
     @State private var presetId = 0
     @State private var protocolSelection: CloudProtectionProtocol
@@ -36,7 +12,7 @@ struct CloudProtectionProfileEditorSheet: View {
     @State private var maxPortText: String
     @State private var notesText: String
     
-    init(mode: Mode) {
+    init(mode: CloudProtectionProfileEditorMode) {
         self.mode = mode
         let existing = mode.existingProfile
         
@@ -47,7 +23,9 @@ struct CloudProtectionProfileEditorSheet: View {
     }
     
     private var selectedProtocolPresets: [CloudProtectionPreset] {
-        vm.presets.filter { $0.`protocol` == protocolSelection }
+        vm.presets.filter {
+            $0.`protocol` == protocolSelection
+        }
     }
     
     var body: some View {
@@ -222,6 +200,7 @@ struct CloudProtectionProfileEditorSheet: View {
         }
         
         let trimmedNotes = notesText.trimmingCharacters(in: .whitespacesAndNewlines)
+        
         if !trimmedNotes.isEmpty {
             input.notes = trimmedNotes
         }
@@ -232,6 +211,7 @@ struct CloudProtectionProfileEditorSheet: View {
     private func parsePort(_ text: String) -> Int? {
         let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty, let value = Int(trimmed), (1...65535).contains(value) else { return nil }
+        
         return value
     }
     
