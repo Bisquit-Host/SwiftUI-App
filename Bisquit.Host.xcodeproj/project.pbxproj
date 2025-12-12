@@ -503,8 +503,6 @@
 		F383BAD82ECF35E500350A0F /* Exceptions for "iOS" folder in "watchOS" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Billing/HomeTabView.swift,
-				Billing/RequireUpdateView.swift,
 				BisquitHost.swift,
 				"Cloud Keys/APIKey.swift",
 				"Cloud Keys/CloudKeyCard.swift",
@@ -512,6 +510,9 @@
 				"Cloud Keys/CloudKeysParent.swift",
 				Localizable.xcstrings,
 				Nav/AppContainer.swift,
+				Nav/Home/HomeTabView.swift,
+				Nav/Home/RequireUpdateView.swift,
+				Nav/Home/SecurityTasks.swift,
 				Nav/LinkingVM.swift,
 				Nav/NavDestinations.swift,
 				Nav/NavExtension.swift,
@@ -579,7 +580,6 @@
 				Utils/Networking/Endpoint.swift,
 				Utils/Networking/NetworkCalls.swift,
 				Utils/Networking/Prefetcher.swift,
-				Utils/Networking/SecurityTasks.swift,
 				Utils/PreviewProp.swift,
 				Utils/SpriteKit/NetworkVM.swift,
 				Utils/System.swift,
@@ -597,7 +597,6 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				AppDelegate.swift,
-				Billing/RequireUpdateView.swift,
 				"Cloud Keys/APIKey.swift",
 				Guide.xcassets,
 				Icons/coin.icon,
@@ -606,6 +605,8 @@
 				Icons/love.icon,
 				Icons/streamer.icon,
 				Localizable.xcstrings,
+				Nav/Home/RequireUpdateView.swift,
+				Nav/Home/SecurityTasks.swift,
 				Nav/LinkingVM.swift,
 				Nav/NavDestinations.swift,
 				Nav/NavExtension.swift,
@@ -689,7 +690,6 @@
 				Utils/Networking/Endpoint.swift,
 				Utils/Networking/NetworkCalls.swift,
 				Utils/Networking/Prefetcher.swift,
-				Utils/Networking/SecurityTasks.swift,
 				Utils/PreviewProp.swift,
 				Utils/SpriteKit/NetworkVM.swift,
 				Utils/System.swift,
@@ -707,8 +707,6 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				AppDelegate.swift,
-				Billing/HomeTabView.swift,
-				Billing/RequireUpdateView.swift,
 				BisquitHost.swift,
 				"Cloud Keys/APIKey.swift",
 				"Cloud Keys/CloudKeyCard.swift",
@@ -718,6 +716,9 @@
 				Guide.xcassets,
 				Localizable.xcstrings,
 				Nav/AppContainer.swift,
+				Nav/Home/HomeTabView.swift,
+				Nav/Home/RequireUpdateView.swift,
+				Nav/Home/SecurityTasks.swift,
 				Nav/LinkingVM.swift,
 				Nav/NavState.swift,
 				"Panel Tabs/Allocations/AllocationVM.swift",
@@ -827,7 +828,6 @@
 				Utils/Networking/Endpoint.swift,
 				Utils/Networking/NetworkCalls.swift,
 				Utils/Networking/Prefetcher.swift,
-				Utils/Networking/SecurityTasks.swift,
 				Utils/PreviewProp.swift,
 				Utils/ProgressBar.swift,
 				Utils/SpriteKit/Bisquits.sks,
@@ -847,8 +847,6 @@
 		F383BADB2ECF35E500350A0F /* Exceptions for "iOS" folder in "visionOS" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Billing/HomeTabView.swift,
-				Billing/RequireUpdateView.swift,
 				BisquitHost.swift,
 				"Cloud Keys/APIKey.swift",
 				"Cloud Keys/CloudKeyCard.swift",
@@ -863,6 +861,9 @@
 				Guide.xcassets,
 				Localizable.xcstrings,
 				Nav/AppContainer.swift,
+				Nav/Home/HomeTabView.swift,
+				Nav/Home/RequireUpdateView.swift,
+				Nav/Home/SecurityTasks.swift,
 				Nav/LinkingVM.swift,
 				Nav/NavDestinations.swift,
 				Nav/NavExtension.swift,
@@ -956,7 +957,6 @@
 				Utils/Networking/Endpoint.swift,
 				Utils/Networking/NetworkCalls.swift,
 				Utils/Networking/Prefetcher.swift,
-				Utils/Networking/SecurityTasks.swift,
 				Utils/PreviewProp.swift,
 				Utils/SpriteKit/NetworkVM.swift,
 				Utils/System.swift,
@@ -993,7 +993,6 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Assets.xcassets,
-				Billing/RequireUpdateView.swift,
 				"Cloud Keys/APIKey.swift",
 				"Cloud Keys/CloudKeyCard.swift",
 				"Cloud Keys/CloudKeyContextMenu.swift",
@@ -1005,6 +1004,8 @@
 				Discover/DiscoverCardLabel.swift,
 				Discover/DiscoverDocuments.swift,
 				Guide.xcassets,
+				Nav/Home/RequireUpdateView.swift,
+				Nav/Home/SecurityTasks.swift,
 				"Panel Tabs/Info/Resources/TabInfo.swift",
 				Panel/ServerState.swift,
 				Panel/Tabs.swift,
@@ -1068,7 +1069,6 @@
 				Utils/Networking/Endpoint.swift,
 				Utils/Networking/NetworkCalls.swift,
 				Utils/Networking/Prefetcher.swift,
-				Utils/Networking/SecurityTasks.swift,
 				Utils/PreviewProp.swift,
 				Utils/slowSnow.swift,
 				Utils/System.swift,
