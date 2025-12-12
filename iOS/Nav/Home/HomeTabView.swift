@@ -5,19 +5,18 @@ struct HomeTabView: View {
     @State private var securityTasks = SecurityTasks()
     @Environment(NavState.self) private var nav
     @EnvironmentObject private var store: ValueStore
-        
+    
     var body: some View {
         @Bindable var nav = nav
         
         NavigationStack(path: $nav.path) {
-            Group {
-                if (store.accessToken?.isEmpty ?? true) {
-                    BillingLogin()
-                } else {
-                    BillingDashboard()
-                }
+            if (store.accessToken?.isEmpty ?? true) {
+                BillingLogin()
+                    .withNavDestinations()
+            } else {
+                BillingDashboard()
+                    .withNavDestinations()
             }
-            .withNavDestinations()
         }
         .environment(securityTasks)
         .onFirstAppear {

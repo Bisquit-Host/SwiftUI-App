@@ -20,24 +20,7 @@ struct BillingDashboardNavLink<Destination: View>: View {
         NavigationLink {
             destination()
         } label: {
-            HStack(spacing: 12) {
-                Image(systemName: systemImage)
-                    .largeTitle()
-                    .foregroundStyle(tint.gradient)
-                
-                VStack(alignment: .leading) {
-                    Text(title)
-                        .semibold()
-                    
-                    Text(subtitle)
-                        .footnote()
-                        .secondary()
-                }
-            }
-            .padding()
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(.ultraThinMaterial, in: .rect(cornerRadius: 12))
+            BillingDashboardNavLinkLabel(title, subtitle: subtitle, systemImage: systemImage, tint: tint)
         }
-        .foregroundStyle(.foreground)
     }
 }

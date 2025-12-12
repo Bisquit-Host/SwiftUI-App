@@ -3,6 +3,7 @@ import ScrechKit
 
 struct BillingDashboardNavLinks: View {
     @Environment(BillingDashboardVM.self) private var vm
+    @Environment(NavState.self) private var nav
     @EnvironmentObject private var store: ValueStore
     
     var body: some View {
@@ -16,12 +17,10 @@ struct BillingDashboardNavLinks: View {
                 SupportView()
             }
             
-            BillingDashboardNavLink("Pterodactyl", subtitle: "Servers", systemImage: "externaldrive", tint: .purple) {
-                if store.isApiKeyValid {
-                    ServerList()
-                } else {
-                    StartPage()
-                }
+            Button {
+                nav.navigate(.toServerListParent)
+            } label: {
+                BillingDashboardNavLinkLabel("Pterodactyl", subtitle: "Servers", systemImage: "externaldrive", tint: .purple)
             }
         }
     }

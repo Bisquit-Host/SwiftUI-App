@@ -18,6 +18,9 @@ extension View {
 #if !os(macOS)
             case .toServerList:
                 ServerList()
+                
+            case .toServerListParent:
+                ServerListParent()
 #endif
                 
 #if os(visionOS)

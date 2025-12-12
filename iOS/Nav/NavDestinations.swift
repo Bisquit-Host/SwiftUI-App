@@ -3,6 +3,7 @@ import PteroNet
 enum NavDestinations: Hashable {
 #if !os(macOS)
     case toServerList
+    case toServerListParent
 #endif
     
 #if os(iOS)

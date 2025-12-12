@@ -15,39 +15,39 @@ struct AppContainer: View {
     
     var body: some View {
         HomeTabView()
-        .animation(.default, value: store.isApiKeyValid)
-        .environment(vm)
+            .animation(.default, value: store.isApiKeyValid)
+            .environment(vm)
 #if os(iOS)
-        .environment(billingOAuth)
-        .statusBarHidden(store.hideStatusBar)
+            .environment(billingOAuth)
+            .statusBarHidden(store.hideStatusBar)
 #endif
 #if canImport(Appearance)
-        .preferredColorScheme(store.appearance.scheme)
+            .preferredColorScheme(store.appearance.scheme)
 #endif
 #if canImport(AlertKit)
-        .onChange(of: network.isNetworkSatisfied) { _, status in
-            guard let status, status else {
-                SystemAlert.networkError()
-                return
+            .onChange(of: network.isNetworkSatisfied) { _, status in
+                guard let status, status else {
+                    SystemAlert.networkError()
+                    return
+                }
             }
-        }
 #endif
-        .onOpenURL {
-            print("🔗 Depplink:", $0)
+            .onOpenURL {
+                print("🔗 Depplink:", $0)
 #if os(iOS)
-            linking.handleDeepLink($0)
-            billingOAuth.handleCallback($0)
+                linking.handleDeepLink($0)
+                billingOAuth.handleCallback($0)
 #endif
-        }
-        .alert("Authentication with session", isPresented: $linking.alertAuth) {
-            Button("Confirm") {
-                auth()
             }
-            
-            Button("Cancel", role: .cancel) {}
-        } message: {
-            Text("Are you sure you want to continue?")
-        }
+            .alert("Authentication with session", isPresented: $linking.alertAuth) {
+                Button("Confirm") {
+                    auth()
+                }
+                
+                Button("Cancel", role: .cancel) {}
+            } message: {
+                Text("Are you sure you want to continue?")
+            }
     }
     
     private func auth() {
