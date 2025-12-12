@@ -1,7 +1,7 @@
 import Charts
 import SwiftUI
 
-struct VDSChartsSection: View {
+struct VDSChartSection: View {
     @Environment(VDSServiceDetailsVM.self) private var vm
     
     var body: some View {

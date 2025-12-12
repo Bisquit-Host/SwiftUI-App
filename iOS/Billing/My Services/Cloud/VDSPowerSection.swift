@@ -11,21 +11,25 @@ struct VDSPowerSection: View {
             
             HStack(spacing: 12) {
                 powerButton("Start", symbol: "play.fill", tint: .green) {
-                    Task { await vm.power("start", serviceId: serviceId) }
+                    await vm.power("start", serviceId: serviceId)
                 }
+                
                 powerButton("Restart", symbol: "gobackward", tint: .orange) {
-                    Task { await vm.power("restart", serviceId: serviceId) }
+                    await vm.power("restart", serviceId: serviceId)
                 }
+                
                 powerButton("Stop", symbol: "stop.fill", tint: .red) {
-                    Task { await vm.power("stop", serviceId: serviceId) }
+                    await vm.power("stop", serviceId: serviceId)
                 }
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
     
-    private func powerButton(_ title: String, symbol: String, tint: Color, action: @escaping () -> Void) -> some View {
-        Button(action: action) {
+    private func powerButton(_ title: String, symbol: String, tint: Color, action: @escaping () async -> Void) -> some View {
+        Button {
+            Task { await action() }
+        } label: {
             HStack {
                 Image(systemName: symbol)
                 Text(title)
