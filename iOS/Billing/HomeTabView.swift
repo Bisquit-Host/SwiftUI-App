@@ -1,31 +1,40 @@
 import SwiftUI
 
+#if os(iOS)
 struct HomeTabView: View {
     @State private var securityTasks = SecurityTasks()
+    @Environment(NavState.self) private var nav
     @EnvironmentObject private var store: ValueStore
     
     @State private var showUpdatePrompt = true
     
     var body: some View {
-        TabView {
-#if os(iOS)
-            Tab("Billing", systemImage: "person.crop.circle") {
-                if (store.accessToken?.isEmpty ?? true) {
-                    BillingLogin()
-                        .withNavDestinations()
-                } else {
-                    BillingDashboard()
-                        .withNavDestinations()
+        @Bindable var nav = nav
+        
+        TabView(selection: $nav.selectedTab) {
+            Tab("Billing", systemImage: "person.crop.circle", value: NavState.RootTab.billing) {
+                NavigationStack(path: $nav.billingPath) {
+                    Group {
+                        if (store.accessToken?.isEmpty ?? true) {
+                            BillingLogin()
+                        } else {
+                            BillingDashboard()
+                        }
+                    }
+                    .withNavDestinations()
                 }
             }
-#endif
-            Tab("Pterodactyl", systemImage: "externaldrive") {
-                if store.isApiKeyValid {
-                    ServerList()
-                        .withNavDestinations()
-                } else {
-                    StartPage()
-                        .withNavDestinations()
+            
+            Tab("Pterodactyl", systemImage: "externaldrive", value: NavState.RootTab.pterodactyl) {
+                NavigationStack(path: $nav.pterodactylPath) {
+                    Group {
+                        if store.isApiKeyValid {
+                            ServerList()
+                        } else {
+                            StartPage()
+                        }
+                    }
+                    .withNavDestinations()
                 }
             }
         }
@@ -38,6 +47,13 @@ struct HomeTabView: View {
         }
     }
 }
+#else
+struct HomeTabView: View {
+    var body: some View {
+        EmptyView()
+    }
+}
+#endif
 
 #Preview {
     HomeTabView()

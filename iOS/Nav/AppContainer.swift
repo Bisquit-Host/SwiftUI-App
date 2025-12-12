@@ -10,16 +10,11 @@ struct AppContainer: View {
     @State private var billingOAuth = OAuthVM()
 #endif
     @EnvironmentObject private var store: ValueStore
-    @Environment(NavState.self) private var nav
     @Environment(\.modelContext) private var modelContext
     @Query(animation: .default) private var keys: [APIKey]
     
     var body: some View {
-        @Bindable var nav = nav
-        
-        NavigationStack(path: $nav.path) {
-            HomeTabView()
-        }
+        HomeTabView()
         .animation(.default, value: store.isApiKeyValid)
         .environment(vm)
 #if os(iOS)
