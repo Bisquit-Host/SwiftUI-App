@@ -17,11 +17,11 @@ struct VDSServiceDetails: View {
     
     var body: some View {
         ScrollView {
-	            VStack(alignment: .leading, spacing: 16) {
-	                if let service = vm.service {
-	                    VDSServiceDetailsHeader(service)
-	                    
-	                    VDSServiceDetailsInfoSection(service)
+            VStack(alignment: .leading, spacing: 16) {
+                if let service = vm.service {
+                    VDSServiceDetailsHeader(service)
+                    
+                    VDSServiceDetailsInfoSection(service)
                     
                     VDSBillingSection(
                         serviceId: service.id,
@@ -48,7 +48,7 @@ struct VDSServiceDetails: View {
                         .disabled(vm.isPerformingAction)
                     }
                     
-	                    VDSServiceDetailsPasswordSection(service, rootPassword: $rootPassword)
+                    VDSServiceDetailsPasswordSection(service, rootPassword: $rootPassword)
                     
                     VDSReinstallSection(serviceId: service.id, selectedOS: $selectedOS)
                     
@@ -118,14 +118,7 @@ struct VDSServiceDetails: View {
             Button("Cancel", role: .cancel) {}
         }
         .alert("Confirm upgrade", isPresented: $alertUpgrade) {
-            Button("Upgrade") {
-                guard let pkg = selectedUpgradePackage else { return }
-                
-                Task {
-                    await vm.changePackage(to: pkg.id, serviceId: serviceId)
-                }
-            }
-            
+            Button("Upgrade", action: upgrade)
             Button("Cancel", role: .cancel) {}
         } message: {
             if let pkg = selectedUpgradePackage {
@@ -140,7 +133,13 @@ struct VDSServiceDetails: View {
         .environment(vm)
     }
     
-	    // MARK: - Helpers
+    private func upgrade() {
+        guard let pkg = selectedUpgradePackage else { return }
+        
+        Task {
+            await vm.changePackage(to: pkg.id, serviceId: serviceId)
+        }
+    }
     
     private func formatCurrency(_ amount: Double) -> String {
         let formatter = NumberFormatter()
