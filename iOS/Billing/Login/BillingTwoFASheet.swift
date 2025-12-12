@@ -4,7 +4,7 @@ struct BillingTwoFASheet: View {
     @Environment(BillingLoginVM.self) private var vm
     
     @Binding var twoFACode: String
-    var verifyAction: () -> Void
+    var verifyAction: () async -> Void
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -16,10 +16,16 @@ struct BillingTwoFASheet: View {
                 .keyboardType(.numberPad)
                 .textContentType(.oneTimeCode)
                 .onSubmit {
-                    verifyAction()
+                    Task {
+                        await verifyAction()
+                    }
                 }
             
-            Button(action: verifyAction) {
+            Button {
+                Task {
+                    await verifyAction()
+                }
+            } label: {
                 if vm.isVerifyingTwoFA {
                     ProgressView()
                         .frame(maxWidth: .infinity)

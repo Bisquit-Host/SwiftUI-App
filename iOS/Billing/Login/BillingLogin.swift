@@ -5,7 +5,6 @@ import PteroNet
 struct BillingLogin: View {
     @State private var vm = BillingLoginVM()
     @EnvironmentObject private var store: ValueStore
-    @Environment(OAuthVM.self) private var oauthVM
     
     @State private var isSignUp = false
     @State private var name = ""
@@ -120,19 +119,7 @@ struct BillingLogin: View {
                 .glassEffect()
             }
             
-            HStack {
-                socialButton("GitHub", img: .gitHub, isLoading: oauthVM.isLinkingGitHub) {
-                    oauthVM.startGitHubLinking()
-                }
-                
-                socialButton("Google", img: .google, isLoading: oauthVM.isLinkingGoogle) {
-                    oauthVM.startGoogleLinking()
-                }
-                
-                socialButton("Yandex", img: .yandex, isLoading: oauthVM.isLinkingYandex) {
-                    oauthVM.startYandexLinking()
-                }
-            }
+            
         }
         .frame(maxHeight: .infinity)
         .scenePadding(.horizontal)
@@ -150,7 +137,7 @@ struct BillingLogin: View {
         .sheet($sheetTwoFA) {
             NavigationStack {
                 BillingTwoFASheet(twoFACode: $twoFACode) {
-                    verifyTwoFA()
+                    await verifyTwoFA()
                 }
                 .padding()
                 .navigationTitle("Enter 2FA code")
@@ -199,18 +186,15 @@ struct BillingLogin: View {
         }
     }
     
-    private func verifyTwoFA() {
-        guard let token = pendingTwoFAToken else {
+    private func verifyTwoFA() async {
+        guard
+            let pendingTwoFAToken,
+            let response = await vm.verifyTwoFA(code: twoFACode, token: pendingTwoFAToken)
+        else {
             return
         }
         
-        Task {
-            guard let response = await vm.verifyTwoFA(code: twoFACode, token: token) else {
-                return
-            }
-            
-            handleAuthResponse(response)
-        }
+        handleAuthResponse(response)
     }
     
     private func handleAuthResponse(_ response: BillingLoginResponse) {
@@ -240,17 +224,6 @@ struct BillingLogin: View {
                 let _ = Keychain.save(response.accessToken, forKey: "access_token")
             }
         }
-    }
-    
-    private func socialButton(_ provider: String, img: ImageResource, isLoading: Bool, action: @escaping () -> Void) -> some View {
-        Button(action: action) {
-            if isLoading {
-                ProgressView()
-            } else {
-                AuthSocialButtonImage(img)
-            }
-        }
-        .disabled(isLoading)
     }
 }
 
