@@ -43,6 +43,7 @@ final class BillingCloudServicesVM {
             
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
+            
             services = try decoder.decode([BillingCloudServiceSummary].self, from: data)
         } catch {
             SystemAlert.error(error.localizedDescription)

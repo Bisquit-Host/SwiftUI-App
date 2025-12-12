@@ -1,13 +1,9 @@
 import SwiftUI
 
-struct GameServiceUpgradePackage: View {
-    let pkg: BillingChangeableGamePackage
+struct BotUpgradePackage: View {
+    let pkg: BillingChangeableBotPackage
     @Binding var selectedUpgradeId: Int?
     let formatCurrency: (Double) -> String
-    
-    private var isSelected: Bool {
-        selectedUpgradeId == pkg.id
-    }
     
     var body: some View {
         Button {
@@ -29,7 +25,7 @@ struct GameServiceUpgradePackage: View {
                 
                 Spacer()
                 
-                if isSelected {
+                if selectedUpgradeId == pkg.id {
                     Image(systemName: "checkmark.circle.fill")
                 }
             }
@@ -37,7 +33,7 @@ struct GameServiceUpgradePackage: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .background {
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(isSelected ? Color.accentColor.opacity(0.12) : Color.clear)
+                    .fill(selectedUpgradeId == pkg.id ? Color.accentColor.opacity(0.12) : Color.clear)
             }
         }
         .buttonStyle(.plain)

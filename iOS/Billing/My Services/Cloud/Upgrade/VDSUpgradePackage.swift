@@ -1,13 +1,9 @@
 import SwiftUI
 
-struct GameServiceUpgradePackage: View {
-    let pkg: BillingChangeableGamePackage
+struct VDSUpgradePackage: View {
+    let pkg: BillingChangeableCloudPackage
     @Binding var selectedUpgradeId: Int?
     let formatCurrency: (Double) -> String
-    
-    private var isSelected: Bool {
-        selectedUpgradeId == pkg.id
-    }
     
     var body: some View {
         Button {
@@ -18,7 +14,7 @@ struct GameServiceUpgradePackage: View {
                     Text(pkg.name)
                         .subheadline(.semibold)
                     
-                    Text("\(pkg.cpu.clean) vCPU • \(pkg.memory.clean) GB • \(pkg.disk.clean) GB")
+                    Text("\(pkg.cpu.clean) vCPU • \(pkg.memory.clean) GB • \(Int(pkg.disk)) GB")
                         .footnote()
                         .secondary()
                     
@@ -29,7 +25,7 @@ struct GameServiceUpgradePackage: View {
                 
                 Spacer()
                 
-                if isSelected {
+                if selectedUpgradeId == pkg.id {
                     Image(systemName: "checkmark.circle.fill")
                 }
             }
@@ -37,7 +33,7 @@ struct GameServiceUpgradePackage: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .background {
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(isSelected ? Color.accentColor.opacity(0.12) : Color.clear)
+                    .fill(selectedUpgradeId == pkg.id ? Color.accentColor.opacity(0.12) : Color.clear)
             }
         }
         .buttonStyle(.plain)

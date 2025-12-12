@@ -16,7 +16,7 @@ struct GameServiceUpgradeSection: View {
             } else {
                 VStack(alignment: .leading, spacing: 12) {
                     ForEach(vm.changeablePackages) {
-                        GameServiceUpgradePackage(package: $0, selectedUpgradeId: $selectedUpgradeId, formatCurrency: formatCurrency)
+                        GameServiceUpgradePackage(pkg: $0, selectedUpgradeId: $selectedUpgradeId, formatCurrency: formatCurrency)
                     }
                     
                     Button {
@@ -64,7 +64,9 @@ struct GameServiceUpgradeSection: View {
     }
     
     private var selectedUpgradePackage: BillingChangeableGamePackage? {
-        vm.changeablePackages.first { $0.id == selectedUpgradeId }
+        vm.changeablePackages.first {
+            $0.id == selectedUpgradeId
+        }
     }
     
     private func formatCurrency(_ amount: Double) -> String {

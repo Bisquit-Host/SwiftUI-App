@@ -15,9 +15,7 @@ struct BotServiceDetails: View {
                 if let _ = vm.service {
                     BotServiceHeader()
                     BotServiceInfoSection()
-                    
                     BotServiceBillingSection()
-                    
                     BotServiceUpgradeSection()
                     
                 } else if vm.isLoading {
