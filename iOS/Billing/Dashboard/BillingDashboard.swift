@@ -18,7 +18,6 @@ struct BillingDashboard: View {
                 .padding()
             }
         }
-        .navigationTitle("Dashboard")
         .navigationBarBackButtonHidden()
         .refreshableTask {
             refresh()
