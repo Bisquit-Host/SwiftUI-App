@@ -6,7 +6,7 @@ struct CredentialsButton: View {
     
     var body: some View {
         Section {
-            Button("Change E-mail") {
+            Button("Change email") {
                 sheetUpdateEmail = true
             }
             .sheet($sheetUpdateEmail) {

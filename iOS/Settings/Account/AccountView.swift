@@ -15,7 +15,7 @@ struct AccountView: View {
                     param("ID", value: account.id.description)
 #endif
                     param("Name", value: name)
-                    param("E-mail", value: account.email)
+                    param("Email", value: account.email)
                 }
             }
             
