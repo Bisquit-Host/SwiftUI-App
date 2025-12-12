@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct BotUpgradePackage: View {
-    let pkg: BillingChangeableBotPackage
+    let pkg: ChangeableBotPackage
     @Binding var selectedUpgradeId: Int?
     let formatCurrency: (Double) -> String
     

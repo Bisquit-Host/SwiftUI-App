@@ -3,11 +3,11 @@ import PteroNet
 
 @Observable
 final class VDSServiceDetailsVM {
-    var service: BillingCloudServiceDetails?
-    var history: [BillingCloudHistoryItem] = []
-    var charts: BillingCloudCharts?
-    var osOptions: [BillingCloudOsCategory] = []
-    var changeablePackages: [BillingChangeableCloudPackage] = []
+    var service: CloudServiceDetails?
+    var history: [CloudServiceHistoryItem] = []
+    var charts: CloudServiceCharts?
+    var osOptions: [CloudServiceOSCategory] = []
+    var changeablePackages: [ChangeableCloudPackage] = []
     
     var isLoading = false
     var isPerformingAction = false
@@ -38,7 +38,7 @@ final class VDSServiceDetailsVM {
         decoder.dateDecodingStrategy = .iso8601
         
         do {
-            service = try decoder.decode(BillingCloudServiceDetails.self, from: data)
+            service = try decoder.decode(CloudServiceDetails.self, from: data)
         } catch {
             SystemAlert.error("Cloud detail decode error: \(error)")
             
@@ -52,7 +52,7 @@ final class VDSServiceDetailsVM {
         guard let data = await request(path: "/cloud/\(serviceId)/change-package/packages") else { return }
         
         do {
-            changeablePackages = try JSONDecoder().decode([BillingChangeableCloudPackage].self, from: data)
+            changeablePackages = try JSONDecoder().decode([ChangeableCloudPackage].self, from: data)
         } catch {
             SystemAlert.error("Cloud changeable packages decode error: \(error)")
             
@@ -69,7 +69,7 @@ final class VDSServiceDetailsVM {
         decoder.dateDecodingStrategy = .iso8601
         
         do {
-            history = try decoder.decode([BillingCloudHistoryItem].self, from: data)
+            history = try decoder.decode([CloudServiceHistoryItem].self, from: data)
         } catch {
             SystemAlert.error("Cloud history decode error: \(error)")
             
@@ -86,7 +86,7 @@ final class VDSServiceDetailsVM {
         decoder.dateDecodingStrategy = .iso8601
         
         do {
-            charts = try decoder.decode(BillingCloudCharts.self, from: data)
+            charts = try decoder.decode(CloudServiceCharts.self, from: data)
         } catch {
             SystemAlert.error("Cloud charts decode error: \(error)")
             
@@ -100,7 +100,7 @@ final class VDSServiceDetailsVM {
         guard let data = await request(path: "/cloud/\(serviceId)/panel/reinstall/os") else { return }
         
         do {
-            osOptions = try JSONDecoder().decode([BillingCloudOsCategory].self, from: data)
+            osOptions = try JSONDecoder().decode([CloudServiceOSCategory].self, from: data)
         } catch {
             SystemAlert.error("Cloud OS list decode error: \(error)")
             
@@ -168,7 +168,7 @@ final class VDSServiceDetailsVM {
         }
     }
     
-    func renew(months: Int, serviceId: Int) async -> BillingServiceRenewResponse? {
+    func renew(months: Int, serviceId: Int) async -> ServiceRenewalResponse? {
         guard [1, 3, 6, 12].contains(months) else {
             SystemAlert.error("Unsupported period")
             return nil
@@ -189,7 +189,7 @@ final class VDSServiceDetailsVM {
                     decoder.dateDecodingStrategy = .iso8601
                     
                     do {
-                        let response = try decoder.decode(BillingServiceRenewResponse.self, from: data)
+                        let response = try decoder.decode(ServiceRenewalResponse.self, from: data)
                         
                         self.service?.expiresAt = response.newExpiresAt
                         

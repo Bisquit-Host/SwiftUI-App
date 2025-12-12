@@ -29,7 +29,7 @@ struct BillingMyServicesSection<Detail: View>: View {
                     NavigationLink {
                         detail(item.id)
                     } label: {
-                        BillingServiceRow(item)
+                        BillingMyServiceRow(item)
                     }
                 }
             }

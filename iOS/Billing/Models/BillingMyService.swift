@@ -1,5 +1,5 @@
 enum BillingMyService: Identifiable {
-    case cloud(BillingCloudServiceSummary),
+    case cloud(CloudServiceSummary),
          game(BillingGameServiceSummary),
          bot(BillingBotServiceSummary)
     

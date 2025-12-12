@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct VDSUpgradePackage: View {
-    let pkg: BillingChangeableCloudPackage
+    let pkg: ChangeableCloudPackage
     @Binding var selectedUpgradeId: Int?
     let formatCurrency: (Double) -> String
     

@@ -63,7 +63,7 @@ struct GameServiceUpgradeSection: View {
         }
     }
     
-    private var selectedUpgradePackage: BillingChangeableGamePackage? {
+    private var selectedUpgradePackage: ChangeableGamePackage? {
         vm.changeablePackages.first {
             $0.id == selectedUpgradeId
         }

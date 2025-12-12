@@ -132,7 +132,7 @@ final class HostingPlanListVM {
             let decoder = JSONDecoder()
             
             do {
-                result.osCategories = try decoder.decode([BillingCloudOsCategory].self, from: data)
+                result.osCategories = try decoder.decode([CloudServiceOSCategory].self, from: data)
             } catch {
                 SystemAlert.error(error.localizedDescription)
                 print("Order OS decode error:", error)

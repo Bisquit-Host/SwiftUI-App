@@ -4,7 +4,7 @@ import PteroNet
 @Observable
 final class BotServiceDetailsVM {
     var service: BillingBotServiceDetails?
-    var changeablePackages: [BillingChangeableBotPackage] = []
+    var changeablePackages: [ChangeableBotPackage] = []
     var isLoading = false
     var isPerformingAction = false
     var actionMessage: String?
@@ -48,7 +48,7 @@ final class BotServiceDetailsVM {
         decoder.dateDecodingStrategy = .iso8601
         
         do {
-            changeablePackages = try decoder.decode([BillingChangeableBotPackage].self, from: data)
+            changeablePackages = try decoder.decode([ChangeableBotPackage].self, from: data)
         } catch {
             SystemAlert.error("Bot changeable packages decode error: \(error)")
             
@@ -89,7 +89,7 @@ final class BotServiceDetailsVM {
         }
     }
     
-    func renew(months: Int, serviceId: Int) async -> BillingServiceRenewResponse? {
+    func renew(months: Int, serviceId: Int) async -> ServiceRenewalResponse? {
         guard [1, 3, 6, 12].contains(months) else {
             SystemAlert.error("Unsupported period")
             return nil
@@ -110,7 +110,7 @@ final class BotServiceDetailsVM {
                     decoder.dateDecodingStrategy = .iso8601
                     
                     do {
-                        let response = try decoder.decode(BillingServiceRenewResponse.self, from: data)
+                        let response = try decoder.decode(ServiceRenewalResponse.self, from: data)
                         
                         self.service?.expiresAt = response.newExpiresAt
                         

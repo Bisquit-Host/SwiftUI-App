@@ -3,9 +3,9 @@ import SwiftUI
 struct VDSHistoryItem: View {
     @Environment(VDSServiceDetailsVM.self) private var vm
     
-    private let item: BillingCloudHistoryItem
+    private let item: CloudServiceHistoryItem
     
-    init(_ item: BillingCloudHistoryItem) {
+    init(_ item: CloudServiceHistoryItem) {
         self.item = item
     }
     

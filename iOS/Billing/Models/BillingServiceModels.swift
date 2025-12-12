@@ -1,6 +1,6 @@
 import Foundation
 
-struct BillingGamePackage: Decodable, Equatable {
+struct GameServicePackage: Decodable, Equatable {
     let id: Int
     let name: String
     let locationId: Int
@@ -23,7 +23,7 @@ struct BillingGamePackage: Decodable, Equatable {
     let inStock: Bool?
 }
 
-struct BillingBotPackage: Decodable, Equatable {
+struct BotServicePackage: Decodable, Equatable {
     let id: Int
     let name: String
     let locationId: Int
@@ -44,18 +44,7 @@ struct BillingBotPackage: Decodable, Equatable {
     let inStock: Bool?
 }
 
-struct BillingGameLocation: Decodable, Equatable {
-    let id: Int
-    let name: String
-    let locations: [Int]?
-    let portRange: [String]?
-    let remarks: [String]?
-    let flagUrl: String?
-    let enabled: Bool?
-    let inStock: Bool?
-}
-
-struct BillingBotLocation: Decodable, Equatable {
+struct ServiceLocation: Decodable, Equatable {
     let id: Int
     let name: String
     let locations: [Int]?
@@ -76,8 +65,8 @@ struct BillingGameServiceDetails: Decodable, Equatable {
     let allowDelete: Bool
     let createdAt: Date?
     var expiresAt: Date?
-    let packageInfo: BillingGamePackage
-    let location: BillingGameLocation
+    let packageInfo: GameServicePackage
+    let location: ServiceLocation
     
     private enum CodingKeys: String, CodingKey {
         case id, name, price, autorenew, state, allowSuspend, allowDelete, createdAt, expiresAt, packageInfo = "package", location
@@ -94,15 +83,15 @@ struct BillingBotServiceDetails: Decodable, Equatable {
     let allowDelete: Bool
     let createdAt: Date?
     var expiresAt: Date?
-    let packageInfo: BillingBotPackage
-    let location: BillingBotLocation
+    let packageInfo: BotServicePackage
+    let location: ServiceLocation
     
     private enum CodingKeys: String, CodingKey {
         case id, name, price, autorenew, state, allowSuspend, allowDelete, createdAt, expiresAt, packageInfo = "package", location
     }
 }
 
-struct BillingChangeableGamePackage: Decodable, Identifiable, Equatable {
+struct ChangeableGamePackage: Decodable, Identifiable, Equatable {
     let id: Int
     let name: String
     let locationId: Int
@@ -125,7 +114,7 @@ struct BillingChangeableGamePackage: Decodable, Identifiable, Equatable {
     let toMinus: Double
 }
 
-struct BillingChangeableBotPackage: Decodable, Identifiable, Equatable {
+struct ChangeableBotPackage: Decodable, Identifiable, Equatable {
     let id: Int
     let name: String
     let locationId: Int
@@ -146,7 +135,7 @@ struct BillingChangeableBotPackage: Decodable, Identifiable, Equatable {
     let toMinus: Double
 }
 
-struct BillingChangeableCloudPackage: Decodable, Identifiable, Equatable {
+struct ChangeableCloudPackage: Decodable, Identifiable, Equatable {
     let id: Int
     let name: String
     let locationId: Int
@@ -166,7 +155,7 @@ struct BillingChangeableCloudPackage: Decodable, Identifiable, Equatable {
     let toMinus: Double
 }
 
-struct BillingServiceRenewResponse: Decodable, Equatable {
+struct ServiceRenewalResponse: Decodable, Equatable {
     let amount: Double
     let newExpiresAt: Date?
 }

@@ -2,12 +2,12 @@ import Foundation
 import SwiftUI
 
 enum BillingServiceState: String, Decodable {
-    case installing = "INSTALLING"
-    case active = "ACTIVE"
-    case suspended = "SUSPENDED"
-    case unsuspending = "UNSUSPENDING"
-    case reinstalling = "REINSTALLING"
-    case deleted = "DELETED"
+    case installing = "INSTALLING",
+         active = "ACTIVE",
+         suspended = "SUSPENDED",
+         unsuspending = "UNSUSPENDING",
+         reinstalling = "REINSTALLING",
+         deleted = "DELETED"
     
     var title: String {
         rawValue.lowercased().capitalized
@@ -23,18 +23,18 @@ enum BillingServiceState: String, Decodable {
     }
 }
 
-struct BillingCloudSummaryLocation: Decodable, Equatable {
+struct ServiceLocationSummary: Decodable, Equatable {
     let name: String
     let flagUrl: String?
 }
 
-struct BillingCloudSummaryPackage: Decodable, Equatable {
+struct ServiceSummaryPackage: Decodable, Equatable {
     let name: String
     let bonusBalanceAllowed: Bool?
     let windowsAllowed: Bool?
 }
 
-struct BillingCloudServiceSummary: Decodable, Identifiable, Equatable {
+struct CloudServiceSummary: Decodable, Identifiable, Equatable {
     let id: Int
     let name: String
     let price: Double
@@ -51,8 +51,8 @@ struct BillingCloudServiceSummary: Decodable, Identifiable, Equatable {
     let locationFlagUrl: String?
     let system: String?
     let ip: String?
-    let locationInfo: BillingCloudSummaryLocation
-    let packageInfo: BillingCloudSummaryPackage
+    let locationInfo: ServiceLocationSummary
+    let packageInfo: ServiceSummaryPackage
     
     private enum CodingKeys: String, CodingKey {
         case id, name, price, autorenew, state, allowSuspend, allowDelete, createdAt, expiresAt, packageId, packageName, locationId, locationName, locationFlagUrl, system, ip, locationInfo = "location", packageInfo = "package"
@@ -76,8 +76,8 @@ struct BillingGameServiceSummary: Decodable, Identifiable, Equatable {
     let locationId: Int
     let locationName: String
     let locationFlagUrl: String?
-    let locationInfo: BillingCloudSummaryLocation
-    let packageInfo: BillingCloudSummaryPackage
+    let locationInfo: ServiceLocationSummary
+    let packageInfo: ServiceSummaryPackage
     
     private enum CodingKeys: String, CodingKey {
         case id, name, price, autorenew, state, allowSuspend, allowDelete, createdAt, expiresAt, packageId, packageName, locationId, locationName, locationFlagUrl, locationInfo = "location", packageInfo = "package"
@@ -99,15 +99,15 @@ struct BillingBotServiceSummary: Decodable, Identifiable, Equatable {
     let locationId: Int
     let locationName: String
     let locationFlagUrl: String?
-    let locationInfo: BillingCloudSummaryLocation
-    let packageInfo: BillingCloudSummaryPackage
+    let locationInfo: ServiceLocationSummary
+    let packageInfo: ServiceSummaryPackage
     
     private enum CodingKeys: String, CodingKey {
         case id, name, price, autorenew, state, allowSuspend, allowDelete, createdAt, expiresAt, packageId, packageName, locationId, locationName, locationFlagUrl, locationInfo = "location", packageInfo = "package"
     }
 }
 
-struct BillingCloudPackage: Decodable, Equatable {
+struct CloudServicePackage: Decodable, Equatable {
     let id: Int
     let name: String
     let locationId: Int
@@ -127,7 +127,7 @@ struct BillingCloudPackage: Decodable, Equatable {
     let inStock: Bool?
 }
 
-struct BillingCloudLocation: Decodable, Equatable {
+struct CloudServiceLocation: Decodable, Equatable {
     let id: Int
     let name: String
     let flagUrl: String?
@@ -172,7 +172,7 @@ struct BillingCloudLocation: Decodable, Equatable {
     }
 }
 
-struct BillingCloudServiceDetails: Decodable, Equatable {
+struct CloudServiceDetails: Decodable, Equatable {
     let id: Int
     var name: String
     let price: Double
@@ -187,15 +187,15 @@ struct BillingCloudServiceDetails: Decodable, Equatable {
     let password: String?
     let system: String?
     let ptrRecord: String?
-    let packageInfo: BillingCloudPackage
-    let location: BillingCloudLocation
+    let packageInfo: CloudServicePackage
+    let location: CloudServiceLocation
     
     private enum CodingKeys: String, CodingKey {
         case id, name, price, autorenew, state, allowSuspend, allowDelete, createdAt, expiresAt, ip, vmId, password, system, ptrRecord, packageInfo = "package", location
     }
 }
 
-struct BillingCloudHistoryItem: Decodable, Identifiable, Equatable {
+struct CloudServiceHistoryItem: Decodable, Identifiable, Equatable {
     let id: Int
     let type: String
     let state: String
@@ -235,7 +235,7 @@ struct BillingCloudHistoryItem: Decodable, Identifiable, Equatable {
     }
 }
 
-struct BillingCloudOsItem: Decodable, Identifiable, Equatable {
+struct CloudServiceOSItem: Decodable, Identifiable, Equatable {
     let id: Int
     let categoryId: Int
     let version: String?
@@ -243,25 +243,25 @@ struct BillingCloudOsItem: Decodable, Identifiable, Equatable {
     let enabled: Bool
 }
 
-struct BillingCloudOsCategory: Decodable, Identifiable, Equatable {
+struct CloudServiceOSCategory: Decodable, Identifiable, Equatable {
     let id: Int
     let sortId: Int?
     let name: String
     let logoUrl: String?
     let enabled: Bool
-    let os: [BillingCloudOsItem]
+    let os: [CloudServiceOSItem]
 }
 
-struct BillingCloudCharts: Decodable, Equatable {
-    let cpu: [BillingCloudCpuPoint]
-    let memory: [BillingCloudMemoryPoint]
-    let memoryUsage: BillingCloudMemoryUsage
-    let diskUsage: BillingCloudDiskUsage
-    let networkInput: [BillingCloudNetworkPoint]
-    let networkOutput: [BillingCloudNetworkPoint]
+struct CloudServiceCharts: Decodable, Equatable {
+    let cpu: [CloudServiceCPUPoint]
+    let memory: [CloudServiceMemoryPoint]
+    let memoryUsage: CloudServiceMemoryUsage
+    let diskUsage: CloudServiceDiskUsage
+    let networkInput: [CloudServiceNetworkPoint]
+    let networkOutput: [CloudServiceNetworkPoint]
 }
 
-struct BillingCloudCpuPoint: Decodable, Identifiable, Equatable {
+struct CloudServiceCPUPoint: Decodable, Identifiable, Equatable {
     let id = UUID()
     let timestamp: Date
     let cpuLoad: Double
@@ -271,7 +271,7 @@ struct BillingCloudCpuPoint: Decodable, Identifiable, Equatable {
     }
 }
 
-struct BillingCloudMemoryPoint: Decodable, Identifiable, Equatable {
+struct CloudServiceMemoryPoint: Decodable, Identifiable, Equatable {
     let id = UUID()
     let timestamp: Date
     let memoryUsage: Double
@@ -281,7 +281,7 @@ struct BillingCloudMemoryPoint: Decodable, Identifiable, Equatable {
     }
 }
 
-struct BillingCloudNetworkPoint: Decodable, Identifiable, Equatable {
+struct CloudServiceNetworkPoint: Decodable, Identifiable, Equatable {
     let id = UUID()
     let timestamp: Date
     let value: Double
@@ -291,12 +291,12 @@ struct BillingCloudNetworkPoint: Decodable, Identifiable, Equatable {
     }
 }
 
-struct BillingCloudMemoryUsage: Decodable, Equatable {
+struct CloudServiceMemoryUsage: Decodable, Equatable {
     let usage: Double
     let free: Double
 }
 
-struct BillingCloudDiskUsage: Decodable, Equatable {
+struct CloudServiceDiskUsage: Decodable, Equatable {
     let usage: Double
     let free: Double
 }
@@ -305,6 +305,7 @@ private extension DateFormatter {
     static let utc: DateFormatter = {
         let f = DateFormatter()
         f.timeZone = TimeZone(secondsFromGMT: 0)
+        
         return f
     }()
 }

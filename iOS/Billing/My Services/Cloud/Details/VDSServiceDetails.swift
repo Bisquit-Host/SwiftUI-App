@@ -140,7 +140,7 @@ struct VDSServiceDetails: View {
         .environment(vm)
     }
     
-    private func infoSection(_ service: BillingCloudServiceDetails) -> some View {
+    private func infoSection(_ service: CloudServiceDetails) -> some View {
         BillingSectionCard("Details") {
             VStack(alignment: .leading, spacing: 10) {
                 LabeledContent("Package", value: service.packageInfo.name)
@@ -156,7 +156,7 @@ struct VDSServiceDetails: View {
         }
     }
     
-    private func passwordSection(_ service: BillingCloudServiceDetails) -> some View {
+    private func passwordSection(_ service: CloudServiceDetails) -> some View {
         BillingSectionCard("Root password") {
             VStack(alignment: .leading, spacing: 8) {
                 SecureField("New password", text: $rootPassword)
@@ -189,7 +189,7 @@ struct VDSServiceDetails: View {
         }
     }
     
-    private var selectedUpgradePackage: BillingChangeableCloudPackage? {
+    private var selectedUpgradePackage: ChangeableCloudPackage? {
         vm.changeablePackages.first {
             $0.id == selectedUpgradeId
         }

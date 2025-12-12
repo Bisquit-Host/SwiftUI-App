@@ -123,7 +123,7 @@ struct BillingHostingPlansResponse: Decodable, Equatable {
 }
 
 struct BillingHostingOrderOptions: Equatable {
-    var osCategories: [BillingCloudOsCategory] = []
+    var osCategories: [CloudServiceOSCategory] = []
     var nests: [BillingHostingNest] = []
 }
 

@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct GameServiceUpgradePackage: View {
-    let pkg: BillingChangeableGamePackage
+    let pkg: ChangeableGamePackage
     @Binding var selectedUpgradeId: Int?
     let formatCurrency: (Double) -> String
     

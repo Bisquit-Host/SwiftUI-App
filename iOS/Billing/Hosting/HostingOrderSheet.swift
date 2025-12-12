@@ -10,7 +10,7 @@ struct HostingOrderSheet: View {
     
     @State private var name: String
     @State private var months = 1
-    @State private var osCategories: [BillingCloudOsCategory] = []
+    @State private var osCategories: [CloudServiceOSCategory] = []
     @State private var nests: [BillingHostingNest] = []
     @State private var selectedOsId = 0
     @State private var selectedNestId = 0

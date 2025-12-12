@@ -1,9 +1,9 @@
 import SwiftUI
 
 struct VDSServiceDetailsHeader: View {
-    private let service: BillingCloudServiceDetails
+    private let service: CloudServiceDetails
     
-    init(_ service: BillingCloudServiceDetails) {
+    init(_ service: CloudServiceDetails) {
         self.service = service
     }
     

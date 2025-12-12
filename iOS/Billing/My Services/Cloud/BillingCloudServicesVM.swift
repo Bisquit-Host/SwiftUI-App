@@ -3,7 +3,7 @@ import PteroNet
 
 @Observable
 final class BillingCloudServicesVM {
-    var services: [BillingCloudServiceSummary] = []
+    var services: [CloudServiceSummary] = []
     var isLoading = false
     
     func loadServices() async {
@@ -44,7 +44,7 @@ final class BillingCloudServicesVM {
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
             
-            services = try decoder.decode([BillingCloudServiceSummary].self, from: data)
+            services = try decoder.decode([CloudServiceSummary].self, from: data)
         } catch {
             SystemAlert.error(error.localizedDescription)
             print("Cloud services load failed:", error)

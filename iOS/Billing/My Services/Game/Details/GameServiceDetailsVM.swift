@@ -4,7 +4,7 @@ import PteroNet
 @Observable
 final class GameServiceDetailsVM {
     var service: BillingGameServiceDetails?
-    var changeablePackages: [BillingChangeableGamePackage] = []
+    var changeablePackages: [ChangeableGamePackage] = []
     var isLoading = false
     var isPerformingAction = false
     var actionMessage: String?
@@ -48,7 +48,7 @@ final class GameServiceDetailsVM {
         decoder.dateDecodingStrategy = .iso8601
         
         do {
-            changeablePackages = try decoder.decode([BillingChangeableGamePackage].self, from: data)
+            changeablePackages = try decoder.decode([ChangeableGamePackage].self, from: data)
         } catch {
             SystemAlert.error("Game changeable packages decode error: \(error)")
             
@@ -90,7 +90,7 @@ final class GameServiceDetailsVM {
         }
     }
     
-    func renew(months: Int, serviceId: Int) async -> BillingServiceRenewResponse? {
+    func renew(months: Int, serviceId: Int) async -> ServiceRenewalResponse? {
         guard [1, 3, 6, 12].contains(months) else {
             SystemAlert.error("Unsupported period")
             return nil
@@ -111,7 +111,7 @@ final class GameServiceDetailsVM {
                     decoder.dateDecodingStrategy = .iso8601
                     
                     do {
-                        let response = try decoder.decode(BillingServiceRenewResponse.self, from: data)
+                        let response = try decoder.decode(ServiceRenewalResponse.self, from: data)
                         
                         self.service?.expiresAt = response.newExpiresAt
                         
