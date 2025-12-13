@@ -30,16 +30,16 @@ struct CloudProtectionProfileRow: View {
             
             Spacer()
             
-            if !profile.autoCreated {
-                SFButton("pencil") {
+            Menu {
+                Button("Edit", systemImage: "pencil") {
                     onEdit()
                 }
-                .secondary()
                 
-                Button(role: .destructive, action: onDelete) {
-                    Image(systemName: "trash")
+                Button("", systemImage: "trash", role: .destructive) {
+                    onDelete()
                 }
-                .secondary()
+            } label: {
+                Image(systemName: "ellipsis")
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
