@@ -216,28 +216,6 @@ struct CloudServiceHistoryItem: Decodable, Identifiable, Equatable {
         self.state = state
         self.date = date
     }
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        let rawDate = try container.decode(String.self, forKey: .date)
-        
-        let parsedDate: Date? = {
-            if let iso = ISO8601DateFormatter().date(from: rawDate) {
-                return iso
-            }
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-            formatter.timeZone = TimeZone(secondsFromGMT: 0)
-            return formatter.date(from: rawDate)
-        }()
-        
-        self.init(
-            id: try container.decode(Int.self, forKey: .id),
-            type: try container.decode(String.self, forKey: .type),
-            state: try container.decode(String.self, forKey: .state),
-            date: parsedDate
-        )
-    }
 }
 
 struct CloudServiceOSItem: Decodable, Identifiable, Equatable {

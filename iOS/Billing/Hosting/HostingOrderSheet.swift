@@ -12,7 +12,7 @@ struct HostingOrderSheet: View {
     @State private var months = 1
     @State private var osCategories: [CloudServiceOSCategory] = []
     @State private var nests: [BillingHostingNest] = []
-    @State private var selectedOsId = 0
+    @State private var selectedOSId = 0
     @State private var selectedNestId = 0
     @State private var selectedEggId = 0
     @State private var isLoadingOptions = false
@@ -60,7 +60,7 @@ struct HostingOrderSheet: View {
                             ProgressView()
                         }
                         
-                        Picker("OS", selection: $selectedOsId) {
+                        Picker("OS", selection: $selectedOSId) {
                             ForEach(osItems, id: \.id) { // requires id for some reason
                                 Text($0.title)
                                     .tag($0.id)
@@ -153,8 +153,8 @@ struct HostingOrderSheet: View {
         osCategories = options.osCategories
         nests = options.nests
         
-        if selectedOsId == 0, let first = options.osCategories.first?.os.first {
-            selectedOsId = first.id
+        if selectedOSId == 0, let first = options.osCategories.first?.os.first {
+            selectedOSId = first.id
         }
         
         if selectedNestId == 0, let first = options.nests.first {
@@ -186,7 +186,7 @@ struct HostingOrderSheet: View {
             context: context,
             name: name,
             months: months,
-            osId: selectedOsId == 0 ? nil : selectedOsId,
+            osId: selectedOSId == 0 ? nil : selectedOSId,
             nestId: selectedNestId == 0 ? nil : selectedNestId,
             eggId: selectedEggId == 0 ? nil : selectedEggId
         )
