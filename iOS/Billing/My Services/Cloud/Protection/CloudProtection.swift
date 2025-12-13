@@ -13,7 +13,6 @@ struct CloudProtection: View {
             }
             .scenePadding()
         }
-        .navigationTitle("Cloud Protection")
         .navigationBarTitleDisplayMode(.inline)
         .scrollIndicators(.never)
         .environment(vm)

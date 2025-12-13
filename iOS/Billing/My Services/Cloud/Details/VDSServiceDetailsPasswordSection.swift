@@ -8,7 +8,7 @@ struct VDSServiceDetailsPasswordSection: View {
     
     init(_ service: CloudServiceDetails, rootPassword: Binding<String>) {
         self.service = service
-        self._rootPassword = rootPassword
+        _rootPassword = rootPassword
     }
     
     var body: some View {

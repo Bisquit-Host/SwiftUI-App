@@ -57,8 +57,6 @@ struct VDSServiceDetails: View {
             }
             .padding()
         }
-        .navigationTitle(vm.service?.name ?? "")
-        .navigationBarTitleDisplayMode(.inline)
         .refreshableTask {
             await vm.load(serviceId)
         }

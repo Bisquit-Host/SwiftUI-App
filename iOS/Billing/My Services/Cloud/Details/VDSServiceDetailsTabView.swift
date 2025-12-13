@@ -5,21 +5,33 @@ struct VDSServiceDetailsTabView: View {
     
     let serviceId: Int
     
+    @State private var selectedTab = 0
+    
+    private var navTitle: LocalizedStringKey? {
+        switch selectedTab {
+        case 1: "Protection"
+        case 2: "History"
+        default: nil
+        }
+    }
+    
     var body: some View {
-        TabView {
-            Tab("General", systemImage: "gear") {
+        TabView(selection: $selectedTab) {
+            Tab("General", systemImage: "gear", value: 0) {
                 VDSServiceDetails(serviceId: serviceId)
             }
             
-            Tab("Protection", systemImage: "shield.pattern.checkered") {
+            Tab("Protection", systemImage: "shield.pattern.checkered", value: 1) {
                 CloudProtection(serviceId: serviceId)
             }
             
-            Tab("History", systemImage: "clock") {
+            Tab("History", systemImage: "clock", value: 2) {
                 VDSServiceHistoryTab(serviceId: serviceId)
             }
         }
         .environment(vm)
+        .navigationTitle(navTitle ?? "\(vm.service?.name ?? "")")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
