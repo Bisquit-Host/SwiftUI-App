@@ -13,9 +13,7 @@ struct SupportView: View {
             }
             
             Tab("Wiki", systemImage: "books.vertical", value: 1) {
-                if let url = URL(string: "https://wiki.bisquit.host") {
-                    WebView(url: url)
-                }
+                WebView(url: URL(string: Endpoint.bisquitWiki)!)
             }
         }
         .navigationTitle("Support")
