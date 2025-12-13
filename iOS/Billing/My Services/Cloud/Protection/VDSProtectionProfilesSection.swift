@@ -22,7 +22,7 @@ struct VDSProtectionProfilesSection: View {
                 } else {
                     VStack(alignment: .leading, spacing: 10) {
                         ForEach(vm.profiles) { profile in
-                            VDSProtectionProfileRow(profile: profile, presetName: presetName(for: profile)) {
+                            VDSProtectionProfileCard(profile: profile, presetName: presetName(for: profile)) {
                                 editingProfile = profile
                             } onDelete: {
                                 deleteCandidate = profile

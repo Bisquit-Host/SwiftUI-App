@@ -30,6 +30,5 @@ struct VDSHistoryItem: View {
                     .secondary()
             }
         }
-        .padding(.vertical, 6)
     }
 }

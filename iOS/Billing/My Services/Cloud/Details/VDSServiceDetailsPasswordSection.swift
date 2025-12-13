@@ -12,7 +12,7 @@ struct VDSServiceDetailsPasswordSection: View {
     }
     
     var body: some View {
-        BillingSectionCard("Root password") {
+        VDSSectionCard("Root password") {
             VStack(alignment: .leading, spacing: 8) {
                 SecureField("New password", text: $rootPassword)
                 

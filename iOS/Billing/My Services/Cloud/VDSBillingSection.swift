@@ -13,7 +13,7 @@ struct VDSBillingSection: View {
     @State private var lastRenewAmount: Double?
     
     var body: some View {
-        BillingSectionCard("Billing") {
+        VDSSectionCard("Billing") {
             Toggle(isOn: Binding(
                 get: { autorenew },
                 set: { newValue in Task { await vm.changeAutorenew(newValue, serviceId: serviceId) } }

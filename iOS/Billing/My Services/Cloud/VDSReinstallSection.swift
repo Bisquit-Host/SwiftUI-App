@@ -7,7 +7,7 @@ struct VDSReinstallSection: View {
     @Binding var selectedOS: Int?
     
     var body: some View {
-        BillingSectionCard("Reinstall OS") {
+        VDSSectionCard("Reinstall OS") {
             VStack(alignment: .leading, spacing: 8) {
                 Picker("OS", selection: $selectedOS) {
                     ForEach(flatOSOptions(), id: \.0) {

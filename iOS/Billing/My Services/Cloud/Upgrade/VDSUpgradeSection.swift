@@ -8,7 +8,7 @@ struct VDSUpgradeSection: View {
     let onUpgradeTap: () -> Void
     
     var body: some View {
-        BillingSectionCard("Upgrade") {
+        VDSSectionCard("Upgrade") {
             if vm.changeablePackages.isEmpty {
                 Text("No higher packages available right now")
                     .footnote()

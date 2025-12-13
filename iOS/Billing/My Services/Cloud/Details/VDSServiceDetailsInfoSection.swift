@@ -8,7 +8,7 @@ struct VDSServiceDetailsInfoSection: View {
     }
     
     var body: some View {
-        BillingSectionCard("Details") {
+        VDSSectionCard("Details") {
             let disk = (service.packageInfo.disk / 1024).formatted(.fractionDigits(0))
             let memory = (service.packageInfo.memory / 1024).formatted(.fractionDigits(1))
             let cpu = (service.packageInfo.cpu / 1024).formatted(.fractionDigits(1))
@@ -24,6 +24,7 @@ struct VDSServiceDetailsInfoSection: View {
                     LabeledContent("Expires", value: expires.formatted(date: .numeric, time: .shortened))
                 }
             }
+            .footnote()
         }
     }
 }

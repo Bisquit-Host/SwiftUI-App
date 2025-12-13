@@ -41,7 +41,7 @@ struct VDSServiceDetails: View {
                     
                     VDSReinstallSection(serviceId: service.id, selectedOS: $selectedOS)
                     
-                    VDSChartSection()
+                    VDSMonitoringSection()
                     
                 } else if vm.isLoading {
                     ProgressView()

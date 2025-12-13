@@ -1,6 +1,6 @@
 import ScrechKit
 
-struct VDSProtectionProfileRow: View {
+struct VDSProtectionProfileCard: View {
     let profile: CloudProtectionProfile
     let presetName: String
     let onEdit: () -> Void
@@ -47,7 +47,7 @@ struct VDSProtectionProfileRow: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(10)
-        .background(.background.opacity(0.4), in: .rect(cornerRadius: 10))
+        .background(.ultraThinMaterial, in: .rect(cornerRadius: 10))
     }
     
     private var detailsText: String {
@@ -76,7 +76,7 @@ struct VDSProtectionProfileRow: View {
 }
 
 #Preview {
-    VDSProtectionProfileRow(
+    VDSProtectionProfileCard(
         profile: .init(
             id: 1,
             presetId: 10,
