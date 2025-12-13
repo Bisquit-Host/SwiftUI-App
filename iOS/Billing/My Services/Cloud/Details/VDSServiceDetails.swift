@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct VDSServiceDetails: View {
-    @State private var vm = VDSServiceDetailsVM()
+    @Environment(VDSServiceDetailsVM.self) private var vm
     @Environment(BillingDashboardVM.self) private var dashboardVM
     
     let serviceId: Int
@@ -42,7 +42,6 @@ struct VDSServiceDetails: View {
                     VDSReinstallSection(serviceId: service.id, selectedOS: $selectedOS)
                     
                     VDSChartSection()
-                    VDSHistorySection()
                     
                 } else if vm.isLoading {
                     ProgressView()
@@ -115,7 +114,6 @@ struct VDSServiceDetails: View {
                 Text("Upgrade service?")
             }
         }
-        .environment(vm)
     }
     
     private func upgrade() {
@@ -151,6 +149,7 @@ struct VDSServiceDetails: View {
     NavigationStack {
         VDSServiceDetails(serviceId: 1)
             .environment(BillingDashboardVM())
+            .environment(VDSServiceDetailsVM())
     }
     .environmentObject(ValueStore())
     .darkSchemePreferred()
