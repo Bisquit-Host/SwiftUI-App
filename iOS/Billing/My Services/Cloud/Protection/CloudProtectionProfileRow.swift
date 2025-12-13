@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct CloudProtectionProfileRow: View {
     let profile: CloudProtectionProfile
@@ -31,16 +31,12 @@ struct CloudProtectionProfileRow: View {
             Spacer()
             
             if !profile.autoCreated {
-                Button {
+                SFButton("pencil") {
                     onEdit()
-                } label: {
-                    Image(systemName: "pencil")
                 }
                 .secondary()
                 
-                Button(role: .destructive) {
-                    onDelete()
-                } label: {
+                Button(role: .destructive, action: onDelete) {
                     Image(systemName: "trash")
                 }
                 .secondary()
@@ -58,8 +54,10 @@ struct CloudProtectionProfileRow: View {
         
         if minPort == 1 && maxPort == 65535 {
             portText = "All ports"
+            
         } else if minPort == maxPort {
             portText = "Port \(minPort)"
+            
         } else {
             portText = "\(minPort)–\(maxPort)"
         }
