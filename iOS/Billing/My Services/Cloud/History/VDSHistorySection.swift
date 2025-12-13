@@ -12,6 +12,10 @@ struct VDSHistorySection: View {
             } else {
                 ForEach(vm.history) {
                     VDSHistoryItem($0)
+                    
+                    if $0.id != vm.history.last?.id {
+                        Divider()
+                    }
                 }
             }
         }

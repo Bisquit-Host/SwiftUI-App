@@ -29,10 +29,5 @@ struct VDSHistoryItem: View {
             }
         }
         .padding(.vertical, 6)
-        .overlay {
-            Divider()
-                .offset(y: 14)
-                .opacity(item.id == vm.history.last?.id ? 0 : 1)
-        }
     }
 }
