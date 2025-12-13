@@ -9,7 +9,7 @@ struct VDSProtection: View {
             VStack(alignment: .leading, spacing: 16) {
                 VDSProtectionIPSection()
                 VDSProtectionProfilesSection()
-                CloudProtectionAttacksSection()
+                VDSProtectionAttacksSection()
             }
             .scenePadding()
         }

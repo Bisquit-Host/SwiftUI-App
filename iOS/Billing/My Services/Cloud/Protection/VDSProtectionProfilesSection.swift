@@ -22,17 +22,12 @@ struct VDSProtectionProfilesSection: View {
                 } else {
                     VStack(alignment: .leading, spacing: 10) {
                         ForEach(vm.profiles) { profile in
-                            VDSProtectionProfileRow(
-                                profile: profile,
-                                presetName: presetName(for: profile),
-                                onEdit: {
-                                    editingProfile = profile
-                                },
-                                onDelete: {
-                                    deleteCandidate = profile
-                                    showDeleteDialog = true
-                                }
-                            )
+                            VDSProtectionProfileRow(profile: profile, presetName: presetName(for: profile)) {
+                                editingProfile = profile
+                            } onDelete: {
+                                deleteCandidate = profile
+                                showDeleteDialog = true
+                            }
                         }
                     }
                 }
@@ -44,6 +39,7 @@ struct VDSProtectionProfilesSection: View {
             } label: {
                 Image(systemName: "plus")
             }
+            .tint(.green)
             .buttonStyle(.bordered)
             .disabled(vm.isPerformingAction)
         }

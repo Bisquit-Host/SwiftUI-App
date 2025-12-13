@@ -21,7 +21,7 @@ struct VDSServiceDetailsTabView: View {
                 VDSServiceDetails(serviceId: serviceId)
             }
             
-            Tab("Protection", systemImage: "shield.pattern.checkered", value: 1) {
+            Tab("Protection", systemImage: "shield.lefthalf.filled", value: 1) {
                 VDSProtection(serviceId: serviceId)
             }
             

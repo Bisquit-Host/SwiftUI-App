@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct CloudProtectionAttackRow: View {
+struct VDSProtectionAttackCard: View {
     let attack: CloudProtectionAttack
     
     var body: some View {
@@ -46,7 +46,7 @@ struct CloudProtectionAttackRow: View {
 }
 
 #Preview {
-    CloudProtectionAttackRow(
+    VDSProtectionAttackCard(
         attack: .init(
             id: "abc-123-def",
             createdAt: .now,

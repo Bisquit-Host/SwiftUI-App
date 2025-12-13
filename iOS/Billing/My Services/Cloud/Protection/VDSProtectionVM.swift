@@ -1,4 +1,4 @@
-import Foundation
+import SwiftUI
 import PteroNet
 
 @Observable
@@ -22,7 +22,12 @@ final class VDSProtectionVM {
         self.serviceId = serviceId
         
         isLoading = true
-        defer { isLoading = false }
+        
+        defer {
+            withAnimation {
+                isLoading = false
+            }
+        }
         
         attacksPage = 1
         canLoadMoreAttacks = true

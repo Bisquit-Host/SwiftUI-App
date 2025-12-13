@@ -5,7 +5,7 @@ struct VDSProtectionIPSection: View {
     @State private var selectedAction: CloudProtectionDefaultAction = .filter
     
     var body: some View {
-        BillingSectionCard("Protection IP") {
+        VDSSectionCard("Protection IP") {
             if let ip = vm.ipInfo {
                 VStack(alignment: .leading, spacing: 10) {
                     LabeledContent("IPv4", value: ip.ipv4)
@@ -24,7 +24,9 @@ struct VDSProtectionIPSection: View {
                     }
                     
                     Button("Save default action") {
-                        Task { await vm.updateDefaultAction(selectedAction) }
+                        Task {
+                            await vm.updateDefaultAction(selectedAction)
+                        }
                     }
                     .frame(maxWidth: .infinity)
                     .buttonStyle(.bordered)
