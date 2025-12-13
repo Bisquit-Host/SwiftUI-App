@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct CloudProtectionIPSection: View {
-    @Environment(CloudProtectionVM.self) private var vm
+struct VDSProtectionIPSection: View {
+    @Environment(VDSProtectionVM.self) private var vm
     @State private var selectedAction: CloudProtectionDefaultAction = .filter
     
     var body: some View {
@@ -15,8 +15,9 @@ struct CloudProtectionIPSection: View {
                             .subheadline(.semibold)
                         
                         Picker("Default action", selection: $selectedAction) {
-                            ForEach(CloudProtectionDefaultAction.allCases) { action in
-                                Text(action.title).tag(action)
+                            ForEach(CloudProtectionDefaultAction.allCases) {
+                                Text($0.title)
+                                    .tag($0)
                             }
                         }
                         .pickerStyle(.segmented)
@@ -53,8 +54,8 @@ struct CloudProtectionIPSection: View {
 }
 
 #Preview {
-    CloudProtectionIPSection()
-        .environment(CloudProtectionVM())
+    VDSProtectionIPSection()
+        .environment(VDSProtectionVM())
         .padding()
         .darkSchemePreferred()
 }

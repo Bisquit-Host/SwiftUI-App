@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct CloudProtectionProfileEditorSheet: View {
-    @Environment(CloudProtectionVM.self) private var vm
+struct VDSProtectionProfileEditorSheet: View {
+    @Environment(VDSProtectionVM.self) private var vm
     @Environment(\.dismiss) private var dismiss
     
     let mode: CloudProtectionProfileEditorMode
@@ -237,8 +237,8 @@ struct CloudProtectionProfileEditorSheet: View {
 }
 
 #Preview {
-    CloudProtectionProfileEditorSheet(mode: .create)
-        .environment(CloudProtectionVM())
+    VDSProtectionProfileEditorSheet(mode: .create)
+        .environment(VDSProtectionVM())
         .environmentObject(ValueStore())
         .darkSchemePreferred()
 }

@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct CloudProtectionAttacksSection: View {
-    @Environment(CloudProtectionVM.self) private var vm
+    @Environment(VDSProtectionVM.self) private var vm
     
     var body: some View {
         BillingSectionCard("Recent attacks") {
@@ -40,7 +40,7 @@ struct CloudProtectionAttacksSection: View {
 
 #Preview {
     CloudProtectionAttacksSection()
-        .environment(CloudProtectionVM())
+        .environment(VDSProtectionVM())
         .padding()
         .darkSchemePreferred()
 }

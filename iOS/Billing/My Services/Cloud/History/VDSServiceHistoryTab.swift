@@ -15,9 +15,6 @@ struct VDSServiceHistoryTab: View {
                 VDSHistorySection()
             }
         }
-        .navigationTitle("History")
-        .navigationBarTitleDisplayMode(.inline)
-        .scrollIndicators(.never)
         .refreshableTask {
             await vm.load(serviceId)
         }

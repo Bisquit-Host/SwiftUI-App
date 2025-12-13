@@ -22,7 +22,7 @@ struct VDSServiceDetailsTabView: View {
             }
             
             Tab("Protection", systemImage: "shield.pattern.checkered", value: 1) {
-                CloudProtection(serviceId: serviceId)
+                VDSProtection(serviceId: serviceId)
             }
             
             Tab("History", systemImage: "clock", value: 2) {
@@ -32,6 +32,7 @@ struct VDSServiceDetailsTabView: View {
         .environment(vm)
         .navigationTitle(navTitle ?? "\(vm.service?.name ?? "")")
         .navigationBarTitleDisplayMode(.inline)
+        .scrollIndicators(.never)
     }
 }
 

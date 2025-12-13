@@ -2,7 +2,7 @@ import Foundation
 import PteroNet
 
 @Observable
-final class CloudProtectionVM {
+final class VDSProtectionVM {
     var ipInfo: CloudProtectionIPInfo?
     var presets: [CloudProtectionPreset] = []
     var profiles: [CloudProtectionProfile] = []
@@ -20,6 +20,7 @@ final class CloudProtectionVM {
     func load(_ serviceId: Int) async {
         guard !isLoading else { return }
         self.serviceId = serviceId
+        
         isLoading = true
         defer { isLoading = false }
         

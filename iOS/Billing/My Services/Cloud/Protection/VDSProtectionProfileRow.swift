@@ -1,13 +1,13 @@
 import ScrechKit
 
-struct CloudProtectionProfileRow: View {
+struct VDSProtectionProfileRow: View {
     let profile: CloudProtectionProfile
     let presetName: String
     let onEdit: () -> Void
     let onDelete: () -> Void
     
     var body: some View {
-        HStack(alignment: .top, spacing: 10) {
+        HStack(spacing: 10) {
             VStack(alignment: .leading, spacing: 4) {
                 Text(presetName)
                     .subheadline(.semibold)
@@ -35,12 +35,15 @@ struct CloudProtectionProfileRow: View {
                     onEdit()
                 }
                 
-                Button("", systemImage: "trash", role: .destructive) {
+                Button("Delete", systemImage: "trash", role: .destructive) {
                     onDelete()
                 }
             } label: {
                 Image(systemName: "ellipsis")
+                    .padding(5)
             }
+            .buttonStyle(.glass)
+            .buttonBorderShape(.circle)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(10)
@@ -73,7 +76,7 @@ struct CloudProtectionProfileRow: View {
 }
 
 #Preview {
-    CloudProtectionProfileRow(
+    VDSProtectionProfileRow(
         profile: .init(
             id: 1,
             presetId: 10,

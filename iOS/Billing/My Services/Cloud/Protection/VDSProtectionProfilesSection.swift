@@ -1,28 +1,15 @@
-import SwiftUI
+import ScrechKit
 
-struct CloudProtectionProfilesSection: View {
-    @Environment(CloudProtectionVM.self) private var vm
+struct VDSProtectionProfilesSection: View {
+    @Environment(VDSProtectionVM.self) private var vm
     
     @State private var editingProfile: CloudProtectionProfile?
     @State private var deleteCandidate: CloudProtectionProfile?
     @State private var showDeleteDialog = false
     
     var body: some View {
-        BillingSectionCard("Profiles") {
+        VDSSectionCard("Profiles") {
             VStack(alignment: .leading, spacing: 12) {
-                HStack {
-                    NavigationLink {
-                        CloudProtectionProfileEditorSheet(mode: .create)
-                            .environment(vm)
-                    } label: {
-                        Label("Add profile", systemImage: "plus")
-                    }
-                    .buttonStyle(.bordered)
-                    .disabled(vm.isPerformingAction)
-                    
-                    Spacer()
-                }
-                
                 if vm.isLoading && vm.profiles.isEmpty {
                     ProgressView()
                         .frame(maxWidth: .infinity, alignment: .center)
@@ -35,7 +22,7 @@ struct CloudProtectionProfilesSection: View {
                 } else {
                     VStack(alignment: .leading, spacing: 10) {
                         ForEach(vm.profiles) { profile in
-                            CloudProtectionProfileRow(
+                            VDSProtectionProfileRow(
                                 profile: profile,
                                 presetName: presetName(for: profile),
                                 onEdit: {
@@ -50,9 +37,18 @@ struct CloudProtectionProfilesSection: View {
                     }
                 }
             }
+        } primaryButton: {
+            NavigationLink {
+                VDSProtectionProfileEditorSheet(mode: .create)
+                    .environment(vm)
+            } label: {
+                Image(systemName: "plus")
+            }
+            .buttonStyle(.bordered)
+            .disabled(vm.isPerformingAction)
         }
         .navigationDestination(item: $editingProfile) {
-            CloudProtectionProfileEditorSheet(mode: .edit($0))
+            VDSProtectionProfileEditorSheet(mode: .edit($0))
                 .environment(vm)
         }
         .confirmationDialog("Delete profile?", isPresented: $showDeleteDialog, titleVisibility: .visible) {
@@ -89,8 +85,8 @@ struct CloudProtectionProfilesSection: View {
 }
 
 #Preview {
-    CloudProtectionProfilesSection()
-        .environment(CloudProtectionVM())
+    VDSProtectionProfilesSection()
+        .environment(VDSProtectionVM())
         .padding()
         .darkSchemePreferred()
 }
