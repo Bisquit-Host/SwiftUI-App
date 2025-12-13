@@ -200,17 +200,39 @@ struct CloudServiceDetails: Decodable, Equatable {
     }
 }
 
+enum CloudServiceHistoryItemState: String, Decodable {
+    case complete, failed, deferred, running
+    
+    var color: Color {
+        switch self {
+        case .complete: .green
+        case .failed: .red
+        case .deferred: .yellow
+        case .running: .blue
+        }
+    }
+    
+    var localized: LocalizedStringKey {
+        switch self {
+        case .complete: "Complete"
+        case .failed: "Failed"
+        case .deferred: "Deferred"
+        case .running: "Running"
+        }
+    }
+}
+
 struct CloudServiceHistoryItem: Decodable, Identifiable, Equatable {
     let id: Int
     let type: String
-    let state: String
+    let state: CloudServiceHistoryItemState
     let date: Date?
     
     private enum CodingKeys: String, CodingKey {
         case id, type, state, date
     }
     
-    init(id: Int, type: String, state: String, date: Date?) {
+    init(id: Int, type: String, state: CloudServiceHistoryItemState, date: Date?) {
         self.id = id
         self.type = type
         self.state = state

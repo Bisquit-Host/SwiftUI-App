@@ -10,14 +10,14 @@ struct VDSHistoryItem: View {
     var body: some View {
         HStack {
             Capsule()
-                .frame(width: 4, height: 32)
-//                .foregroundStyle(item.state.color)
+                .frame(width: 4, height: 40)
+                .foregroundStyle(item.state.color)
             
             VStack(alignment: .leading, spacing: 4) {
                 Text(item.type)
                     .subheadline(.semibold)
                 
-                Text(item.state)
+                Text(item.state.localized)
                     .footnote()
                     .secondary()
             }
