@@ -1,9 +1,10 @@
 import SwiftUI
 
 struct VDSUpgradePackage: View {
+    @Environment(BillingDashboardVM.self) private var dashboardVM
+    
     let pkg: ChangeableCloudPackage
     @Binding var selectedUpgradeId: Int?
-    let formatCurrency: (Double) -> String
     
     var body: some View {
         Button {
@@ -18,7 +19,7 @@ struct VDSUpgradePackage: View {
                         .footnote()
                         .secondary()
                     
-                    Text("Pay now \(formatCurrency(max(pkg.price - pkg.toMinus, 0))) / \(formatCurrency(pkg.price))/mo")
+                    Text("Pay now \(formatCurrency(max(pkg.price - pkg.toMinus, 0), user: dashboardVM.user)) / \(formatCurrency(pkg.price, user: dashboardVM.user))/mo")
                         .footnote()
                         .foregroundStyle(.primary)
                 }

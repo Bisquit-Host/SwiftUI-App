@@ -23,8 +23,7 @@ struct VDSServiceDetails: View {
                         serviceId: service.id,
                         autorenew: vm.service?.autorenew ?? service.autorenew,
                         renewMonths: $renewMonths,
-                        expiresAt: vm.service?.expiresAt ?? service.expiresAt,
-                        formatCurrency: formatCurrency
+                        expiresAt: vm.service?.expiresAt ?? service.expiresAt
                     )
                     
                     VDSPowerSection(serviceId: service.id)
@@ -87,20 +86,6 @@ struct VDSServiceDetails: View {
             }
             
             Button("Cancel", role: .cancel) {}
-        }
-    }
-    
-    private func formatCurrency(_ amount: Double) -> String {
-        let formatter = NumberFormatter()
-        formatter.minimumFractionDigits = 0
-        formatter.maximumFractionDigits = 2
-        
-        let value = formatter.string(from: NSNumber(value: amount)) ?? amount.formatted(.fractionDigits(2))
-        
-        if let user = dashboardVM.user {
-            return user.currency.symbol + value
-        } else {
-            return value
         }
     }
 }

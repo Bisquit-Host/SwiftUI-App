@@ -24,7 +24,7 @@ struct VDSUpgradeSection: View {
             } else {
                 VStack(alignment: .leading, spacing: 12) {
                     ForEach(vm.changeablePackages) {
-                        VDSUpgradePackage(pkg: $0, selectedUpgradeId: $selectedUpgradeId, formatCurrency: formatCurrency)
+                        VDSUpgradePackage(pkg: $0, selectedUpgradeId: $selectedUpgradeId)
                     }
                     
                     Button {
@@ -49,7 +49,7 @@ struct VDSUpgradeSection: View {
             Button("Cancel", role: .cancel) {}
         } message: {
             if let pkg = selectedUpgradePackage {
-                Text("Upgrade to \(pkg.name) and pay \(formatCurrency(max(pkg.price - pkg.toMinus, 0))) now?")
+                Text("Upgrade to \(pkg.name) and pay \(formatCurrency(max(pkg.price - pkg.toMinus, 0), user: dashboardVM.user)) now?")
             } else {
                 Text("Upgrade service?")
             }
@@ -61,20 +61,6 @@ struct VDSUpgradeSection: View {
         
         Task {
             await vm.changePackage(to: pkg.id, serviceId: serviceId)
-        }
-    }
-    
-    private func formatCurrency(_ amount: Double) -> String {
-        let formatter = NumberFormatter()
-        formatter.minimumFractionDigits = 0
-        formatter.maximumFractionDigits = 2
-        
-        let value = formatter.string(from: NSNumber(value: amount)) ?? amount.formatted(.fractionDigits(2))
-        
-        if let user = dashboardVM.user {
-            return user.currency.symbol + value
-        } else {
-            return value
         }
     }
 }

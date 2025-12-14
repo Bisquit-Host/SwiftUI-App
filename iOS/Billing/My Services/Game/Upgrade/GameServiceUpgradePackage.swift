@@ -1,9 +1,10 @@
 import SwiftUI
 
 struct GameServiceUpgradePackage: View {
+    @Environment(BillingDashboardVM.self) private var dashboardVM
+    
     let pkg: ChangeableGamePackage
     @Binding var selectedUpgradeId: Int?
-    let formatCurrency: (Double) -> String
     
     private var isSelected: Bool {
         selectedUpgradeId == pkg.id
@@ -22,7 +23,7 @@ struct GameServiceUpgradePackage: View {
                         .footnote()
                         .secondary()
                     
-                    Text("Pay now \(formatCurrency(max(pkg.price - pkg.toMinus, 0))) / \(formatCurrency(pkg.price))/mo")
+                    Text("Pay now \(formatCurrency(max(pkg.price - pkg.toMinus, 0), user: dashboardVM.user)) / \(formatCurrency(pkg.price, user: dashboardVM.user))/mo")
                         .footnote()
                         .foregroundStyle(.primary)
                 }

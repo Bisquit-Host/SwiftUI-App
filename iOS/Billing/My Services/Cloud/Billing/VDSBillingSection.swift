@@ -2,12 +2,12 @@ import SwiftUI
 
 struct VDSBillingSection: View {
     @Environment(VDSServiceDetailsVM.self) private var vm
+    @Environment(BillingDashboardVM.self) private var dashboardVM
     
     let serviceId: Int
     let autorenew: Bool
     @Binding var renewMonths: Int
     let expiresAt: Date?
-    let formatCurrency: (Double) -> String
     
     @State private var alertRenew = false
     @State private var sheetUpgrade = false
@@ -77,7 +77,7 @@ struct VDSBillingSection: View {
             .background(.ultraThinMaterial, in: .capsule)
             
             if let lastRenewAmount {
-                Text("Charged \(formatCurrency(lastRenewAmount))")
+                Text("Charged \(formatCurrency(lastRenewAmount, user: dashboardVM.user))")
                     .footnote()
                     .foregroundStyle(.green)
             }
