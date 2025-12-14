@@ -134,7 +134,7 @@ final class VDSServiceDetailsVM {
         let trimmed = password.trimmingCharacters(in: .whitespacesAndNewlines)
         
         guard trimmed.count >= 8, trimmed.count <= 32 else {
-            SystemAlert.error("Password must be 8-32 characters")
+            SystemAlert.error("Password must be 8-32 characters, \"\(password)\" doesn't fit")
             return
         }
         

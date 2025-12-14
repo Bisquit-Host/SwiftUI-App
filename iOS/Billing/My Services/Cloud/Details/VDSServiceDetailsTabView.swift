@@ -6,8 +6,10 @@ struct VDSServiceDetailsTabView: View {
     let serviceId: Int
     
     @State private var selectedTab = 0
-    @State private var alertRename = false
     @State private var pendingName = ""
+    @State private var newPassword = ""
+    @State private var alertRename = false
+    @State private var alertChangePassword = false
     
     private var title: LocalizedStringKey? {
         switch selectedTab {
@@ -56,10 +58,21 @@ struct VDSServiceDetailsTabView: View {
             Button("Save") {
                 Task {
                     await vm.rename(pendingName.isEmpty ? service.name : pendingName, serviceId: service.id)
+                    pendingName = ""
                 }
             }
             
             Button("Cancel", role: .cancel) {}
+        }
+        .alert("Change password", isPresented: $alertChangePassword) {
+            SecureField("New password", text: $newPassword)
+            
+            Button("Save", role: .cancel) {
+                Task {
+                    await vm.changePassword(newPassword, serviceId: serviceId)
+                    newPassword = ""
+                }
+            }
         }
         .toolbar {
             if selectedTab == 0 {
@@ -79,6 +92,10 @@ struct VDSServiceDetailsTabView: View {
                                 Pasteboard.copy(password)
                                 SystemAlert.copied()
                             }
+                        }
+                        
+                        Button("Change password", systemImage: "lock") {
+                            alertChangePassword = true
                         }
                     } label: {
                         Image(systemName: "ellipsis")
