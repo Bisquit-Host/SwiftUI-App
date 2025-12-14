@@ -74,7 +74,6 @@ struct VDSBillingSection: View {
             .buttonStyle(.glassProminent)
             .disabled(vm.isPerformingAction)
             .padding(8)
-            .background(.ultraThinMaterial, in: .capsule)
             
             if let lastRenewAmount {
                 Text("Charged \(formatCurrency(lastRenewAmount, user: dashboardVM.user))")
