@@ -17,6 +17,7 @@ final class VDSServiceDetailsVM {
     
     func load(_ serviceId: Int) async {
         guard !isLoading else { return }
+        
         isLoading = true
         defer { isLoading = false }
         
