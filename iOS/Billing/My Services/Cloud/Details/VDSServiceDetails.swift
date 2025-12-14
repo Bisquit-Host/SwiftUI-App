@@ -6,7 +6,6 @@ struct VDSServiceDetails: View {
     
     let serviceId: Int
     
-    @State private var rootPassword = ""
     @State private var renewMonths = 1
     
     var body: some View {
@@ -24,9 +23,6 @@ struct VDSServiceDetails: View {
                     )
                     
                     VDSPowerSection(serviceId: service.id)
-                    
-                    VDSServiceDetailsPasswordSection(service, rootPassword: $rootPassword)
-                    
                     VDSMonitoringSection()
                     
                 } else if vm.isLoading {
