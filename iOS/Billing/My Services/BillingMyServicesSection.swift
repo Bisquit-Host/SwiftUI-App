@@ -6,13 +6,6 @@ struct BillingMyServicesSection<Detail: View>: View {
     let isLoading: Bool
     let detail: (Int) -> Detail
     
-    init(_ title: LocalizedStringKey, services: [BillingMyService], isLoading: Bool, detail: @escaping (Int) -> Detail) {
-        self.title = title
-        self.services = services
-        self.isLoading = isLoading
-        self.detail = detail
-    }
-    
     var body: some View {
         Section(title) {
             if isLoading && services.isEmpty {
