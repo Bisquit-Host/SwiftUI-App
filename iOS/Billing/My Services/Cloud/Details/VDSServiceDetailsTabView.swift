@@ -7,12 +7,24 @@ struct VDSServiceDetailsTabView: View {
     
     @State private var selectedTab = 0
     
-    private var navTitle: LocalizedStringKey? {
+    private var title: LocalizedStringKey? {
         switch selectedTab {
         case 1: "Protection"
         case 2: "History"
         default: nil
         }
+    }
+    
+    private var subtitle: String {
+        guard
+            selectedTab == 0,
+            let name = vm.service?.packageInfo.name,
+            let location = vm.service?.location.name
+        else {
+            return ""
+        }
+        
+        return "\(name) • \(location)"
     }
     
     var body: some View {
@@ -30,7 +42,8 @@ struct VDSServiceDetailsTabView: View {
             }
         }
         .environment(vm)
-        .navigationTitle(navTitle ?? "\(vm.service?.name ?? "")")
+        .navigationTitle(title ?? "\(vm.service?.name ?? "")")
+        .navigationSubtitle(subtitle)
         .navigationBarTitleDisplayMode(.inline)
         .scrollIndicators(.never)
     }

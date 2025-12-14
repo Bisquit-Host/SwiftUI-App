@@ -10,9 +10,7 @@ struct VDSServiceDetails: View {
     @State private var rootPassword = ""
     @State private var selectedOS: Int?
     @State private var renewMonths = 1
-    @State private var selectedUpgradeId: Int?
     @State private var alertRename = false
-    @State private var alertUpgrade = false
     
     var body: some View {
         ScrollView {
@@ -28,12 +26,6 @@ struct VDSServiceDetails: View {
                         expiresAt: vm.service?.expiresAt ?? service.expiresAt,
                         formatCurrency: formatCurrency
                     )
-                    
-                    VDSUpgradeSection(selectedUpgradeId: $selectedUpgradeId, formatCurrency: formatCurrency) {
-                        if selectedUpgradeId != nil {
-                            alertUpgrade = true
-                        }
-                    }
                     
                     VDSPowerSection(serviceId: service.id)
                     
@@ -79,15 +71,9 @@ struct VDSServiceDetails: View {
             if let service = vm.service {
                 pendingName = service.name
                 renewMonths = 1
-                selectedUpgradeId = vm.changeablePackages.first?.id
             }
             
             rootPassword = ""
-        }
-        .onChange(of: vm.changeablePackages.count) { _, _ in
-            if selectedUpgradeId == nil {
-                selectedUpgradeId = vm.changeablePackages.first?.id
-            }
         }
         .alert("Rename service", isPresented: $alertRename, presenting: vm.service) { service in
             TextField("New name", text: $pendingName)
@@ -102,24 +88,6 @@ struct VDSServiceDetails: View {
             
             Button("Cancel", role: .cancel) {}
         }
-        .alert("Confirm upgrade", isPresented: $alertUpgrade) {
-            Button("Upgrade", action: upgrade)
-            Button("Cancel", role: .cancel) {}
-        } message: {
-            if let pkg = selectedUpgradePackage {
-                Text("Upgrade to \(pkg.name) and pay \(formatCurrency(max(pkg.price - pkg.toMinus, 0))) now?")
-            } else {
-                Text("Upgrade service?")
-            }
-        }
-    }
-    
-    private func upgrade() {
-        guard let pkg = selectedUpgradePackage else { return }
-        
-        Task {
-            await vm.changePackage(to: pkg.id, serviceId: serviceId)
-        }
     }
     
     private func formatCurrency(_ amount: Double) -> String {
@@ -133,12 +101,6 @@ struct VDSServiceDetails: View {
             return user.currency.symbol + value
         } else {
             return value
-        }
-    }
-    
-    private var selectedUpgradePackage: ChangeableCloudPackage? {
-        vm.changeablePackages.first {
-            $0.id == selectedUpgradeId
         }
     }
 }

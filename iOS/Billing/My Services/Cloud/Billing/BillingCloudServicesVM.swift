@@ -2,7 +2,7 @@ import Foundation
 import PteroNet
 
 @Observable
-final class BillingCloudServicesVM {
+final class VDSBillingVM {
     var services: [CloudServiceSummary] = []
     var isLoading = false
     

@@ -10,28 +10,28 @@ struct VDSBillingSection: View {
     let formatCurrency: (Double) -> String
     
     @State private var alertRenew = false
+    @State private var sheetUpgrade = false
     @State private var lastRenewAmount: Double?
     
     var body: some View {
         VDSSectionCard("Billing") {
+            if let expiresAt {
+                LabeledContent("Expires", value: expiresAt.formatted(date: .numeric, time: .shortened))
+            }
+            
             Toggle(isOn: Binding(
                 get: { autorenew },
                 set: { newValue in Task { await vm.changeAutorenew(newValue, serviceId: serviceId) } }
             )) {
-                Text("Auto-extend monthly")
+                Text("Auto-renew")
+                
+                Text("Will charge the one-month amount from your billing balance, not from your bank account")
+                    .footnote()
             }
             .toggleStyle(.switch)
             .disabled(vm.isPerformingAction)
             
-            VStack(alignment: .leading, spacing: 8) {
-                Picker("Extend for", selection: $renewMonths) {
-                    ForEach([1, 3, 6, 12], id: \.self) { value in
-                        Text(value == 1 ? "1 month" : "\(value) months")
-                            .tag(value)
-                    }
-                }
-                .pickerStyle(.menu)
-                
+            HStack {
                 Button {
                     alertRenew = true
                 } label: {
@@ -39,25 +39,52 @@ struct VDSBillingSection: View {
                         ProgressView()
                             .frame(maxWidth: .infinity)
                     } else {
-                        Text("Pay and extend")
+                        Text("Renew for")
                             .semibold()
                             .frame(maxWidth: .infinity)
                     }
                 }
-                .buttonStyle(.borderedProminent)
+                .buttonStyle(.glassProminent)
                 .disabled(vm.isPerformingAction)
                 
-                if let expiresAt {
-                    Text("Expires \(expiresAt.formatted(date: .numeric, time: .shortened))")
-                        .footnote()
-                        .secondary()
+                Picker("Renew for", selection: $renewMonths) {
+                    ForEach([1, 3, 6, 12], id: \.self) {
+                        Text($0 == 1 ? "1 month" : "\($0) months")
+                            .tag($0)
+                    }
                 }
-                
-                if let lastRenewAmount {
-                    Text("Charged \(formatCurrency(lastRenewAmount))")
-                        .footnote()
-                        .foregroundStyle(.green)
+                .pickerStyle(.menu)
+                .tint(.primary)
+            }
+            .padding(8)
+            .background(.ultraThinMaterial, in: .capsule)
+            
+            Button {
+                sheetUpgrade = true
+            } label: {
+                if vm.isPerformingAction {
+                    ProgressView()
+                        .frame(maxWidth: .infinity)
+                } else {
+                    Text("Upgrade")
+                        .semibold()
+                        .frame(maxWidth: .infinity)
                 }
+            }
+            .buttonStyle(.glassProminent)
+            .disabled(vm.isPerformingAction)
+            .padding(8)
+            .background(.ultraThinMaterial, in: .capsule)
+            
+            if let lastRenewAmount {
+                Text("Charged \(formatCurrency(lastRenewAmount))")
+                    .footnote()
+                    .foregroundStyle(.green)
+            }
+        }
+        .sheet($sheetUpgrade) {
+            NavigationStack {
+                VDSUpgradeSection(serviceId: serviceId)
             }
         }
         .alert("Extend service", isPresented: $alertRenew) {

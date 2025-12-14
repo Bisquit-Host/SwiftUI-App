@@ -14,7 +14,7 @@ struct VDSUpgradePackage: View {
                     Text(pkg.name)
                         .subheadline(.semibold)
                     
-                    Text("\(pkg.cpu.clean) vCPU • \(pkg.memory.clean) GB • \(Int(pkg.disk)) GB")
+                    Text("\(pkg.cpu.clean) vCPU • \(pkg.memory / 1024) GB • \(Int(pkg.disk / 1024)) GB")
                         .footnote()
                         .secondary()
                     

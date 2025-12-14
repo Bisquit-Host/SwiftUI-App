@@ -14,15 +14,9 @@ struct VDSServiceDetailsInfoSection: View {
             let cpu = (service.packageInfo.cpu / 1024).formatted(.fractionDigits(1))
             
             VStack(alignment: .leading, spacing: 10) {
-                LabeledContent("Package", value: service.packageInfo.name)
                 LabeledContent("CPU", value: "\(cpu) vCPU \(service.packageInfo.cpuName ?? "")")
                 LabeledContent("RAM", value: "\(memory) GB")
                 LabeledContent("Disk", value: "\(disk) GB \(service.packageInfo.diskType ?? "")")
-                LabeledContent("Location", value: service.location.name)
-                
-                if let expires = service.expiresAt {
-                    LabeledContent("Expires", value: expires.formatted(date: .numeric, time: .shortened))
-                }
             }
             .footnote()
         }

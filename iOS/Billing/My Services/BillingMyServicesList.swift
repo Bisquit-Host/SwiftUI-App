@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct BillingMyServicesList: View {
-    @State private var cloudVM = BillingCloudServicesVM()
+    @State private var cloudVM = VDSBillingVM()
     @State private var gameVM = GameServiceListVM()
     @State private var botVM = BotServiceListVM()
     @Environment(BillingDashboardVM.self) private var vm
