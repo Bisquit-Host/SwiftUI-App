@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct VDSServiceDetailsTabView: View {
     @State private var vm = VDSServiceDetailsVM()
@@ -70,6 +70,15 @@ struct VDSServiceDetailsTabView: View {
                         Button("Rename", systemImage: "pencil") {
                             pendingName = vm.service?.name ?? ""
                             alertRename = true
+                        }
+                        
+                        Divider()
+                        
+                        if let password = vm.service?.password {
+                            Button("Copy password", systemImage: "document.on.document") {
+                                Pasteboard.copy(password)
+                                SystemAlert.copied()
+                            }
                         }
                     } label: {
                         Image(systemName: "ellipsis")
