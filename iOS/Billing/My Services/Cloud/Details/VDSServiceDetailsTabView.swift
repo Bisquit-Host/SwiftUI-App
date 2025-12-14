@@ -6,6 +6,8 @@ struct VDSServiceDetailsTabView: View {
     let serviceId: Int
     
     @State private var selectedTab = 0
+    @State private var alertRename = false
+    @State private var pendingName = ""
     
     private var title: LocalizedStringKey? {
         switch selectedTab {
@@ -46,6 +48,35 @@ struct VDSServiceDetailsTabView: View {
         .navigationSubtitle(subtitle)
         .navigationBarTitleDisplayMode(.inline)
         .scrollIndicators(.never)
+        .alert("Rename service", isPresented: $alertRename, presenting: vm.service) { service in
+            TextField("New name", text: $pendingName)
+                .textInputAutocapitalization(.never)
+                .autocorrectionDisabled()
+            
+            Button("Save") {
+                Task {
+                    await vm.rename(pendingName.isEmpty ? service.name : pendingName, serviceId: service.id)
+                }
+            }
+            
+            Button("Cancel", role: .cancel) {}
+        }
+        .toolbar {
+            if selectedTab == 0 {
+                if vm.isPerformingAction {
+                    ProgressView()
+                } else {
+                    Menu {
+                        Button("Rename", systemImage: "pencil") {
+                            pendingName = vm.service?.name ?? ""
+                            alertRename = true
+                        }
+                    } label: {
+                        Image(systemName: "ellipsis")
+                    }
+                }
+            }
+        }
     }
 }
 

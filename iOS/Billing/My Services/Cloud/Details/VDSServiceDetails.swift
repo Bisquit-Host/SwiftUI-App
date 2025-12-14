@@ -6,11 +6,9 @@ struct VDSServiceDetails: View {
     
     let serviceId: Int
     
-    @State private var pendingName = ""
     @State private var rootPassword = ""
     @State private var selectedOS: Int?
     @State private var renewMonths = 1
-    @State private var alertRename = false
     
     var body: some View {
         ScrollView {
@@ -50,42 +48,6 @@ struct VDSServiceDetails: View {
         }
         .refreshableTask {
             await vm.load(serviceId)
-        }
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                if vm.isPerformingAction {
-                    ProgressView()
-                } else {
-                    Menu {
-                        Button("Rename", systemImage: "pencil") {
-                            alertRename = true
-                        }
-                    } label: {
-                        Image(systemName: "ellipsis")
-                    }
-                }
-            }
-        }
-        .onChange(of: vm.service?.id) { _, _ in
-            if let service = vm.service {
-                pendingName = service.name
-                renewMonths = 1
-            }
-            
-            rootPassword = ""
-        }
-        .alert("Rename service", isPresented: $alertRename, presenting: vm.service) { service in
-            TextField("New name", text: $pendingName)
-                .textInputAutocapitalization(.never)
-                .autocorrectionDisabled()
-            
-            Button("Save") {
-                Task {
-                    await vm.rename(pendingName.isEmpty ? service.name : pendingName, serviceId: service.id)
-                }
-            }
-            
-            Button("Cancel", role: .cancel) {}
         }
     }
 }
