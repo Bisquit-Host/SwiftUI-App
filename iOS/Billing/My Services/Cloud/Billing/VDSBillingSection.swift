@@ -32,7 +32,6 @@ struct VDSBillingSection: View {
                     }
                 } label: {
                     Text("Expires")
-                        .frame(maxHeight: .infinity, alignment: .top)
                 }
                 .subheadline()
             }
@@ -48,7 +47,7 @@ struct VDSBillingSection: View {
                         alertRenewInfo = true
                     }
                     .footnote()
-                    .tint(.secondary)
+                    .secondary()
                 }
             }
             .toggleStyle(.switch)
