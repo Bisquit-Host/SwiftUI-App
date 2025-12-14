@@ -22,26 +22,24 @@ struct VDSUpgradeSection: View {
                     .footnote()
                     .secondary()
             } else {
-                VStack(alignment: .leading, spacing: 12) {
-                    ForEach(vm.changeablePackages) {
-                        VDSUpgradePackage(pkg: $0, selectedUpgradeId: $selectedUpgradeId)
-                    }
-                    
-                    Button {
-                        alertUpgrade = true
-                    } label: {
-                        if vm.isPerformingAction {
-                            ProgressView()
-                                .frame(maxWidth: .infinity)
-                        } else {
-                            Text("Upgrade")
-                                .semibold()
-                                .frame(maxWidth: .infinity)
-                        }
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .disabled(selectedUpgradeId == nil || vm.isPerformingAction)
+                ForEach(vm.changeablePackages) {
+                    VDSUpgradePackage(pkg: $0, selectedUpgradeId: $selectedUpgradeId)
                 }
+                
+                Button {
+                    alertUpgrade = true
+                } label: {
+                    if vm.isPerformingAction {
+                        ProgressView()
+                            .frame(maxWidth: .infinity)
+                    } else {
+                        Text("Upgrade")
+                            .semibold()
+                            .frame(maxWidth: .infinity)
+                    }
+                }
+                .buttonStyle(.borderedProminent)
+                .disabled(selectedUpgradeId == nil || vm.isPerformingAction)
             }
         }
         .alert("Confirm upgrade", isPresented: $alertUpgrade) {

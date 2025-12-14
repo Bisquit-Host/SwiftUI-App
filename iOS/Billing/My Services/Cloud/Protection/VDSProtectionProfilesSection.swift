@@ -9,25 +9,23 @@ struct VDSProtectionProfilesSection: View {
     
     var body: some View {
         VDSSectionCard("Profiles") {
-            VStack(alignment: .leading, spacing: 12) {
-                if vm.isLoading && vm.profiles.isEmpty {
-                    ProgressView()
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .padding(.vertical, 6)
-                    
-                } else if vm.profiles.isEmpty {
-                    Text("No profiles yet")
-                        .footnote()
-                        .secondary()
-                } else {
-                    VStack(alignment: .leading, spacing: 10) {
-                        ForEach(vm.profiles) { profile in
-                            VDSProtectionProfileCard(profile: profile, presetName: presetName(for: profile)) {
-                                editingProfile = profile
-                            } onDelete: {
-                                deleteCandidate = profile
-                                showDeleteDialog = true
-                            }
+            if vm.isLoading && vm.profiles.isEmpty {
+                ProgressView()
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .padding(.vertical, 6)
+                
+            } else if vm.profiles.isEmpty {
+                Text("No profiles yet")
+                    .footnote()
+                    .secondary()
+            } else {
+                VStack(alignment: .leading, spacing: 10) {
+                    ForEach(vm.profiles) { profile in
+                        VDSProtectionProfileCard(profile: profile, presetName: presetName(for: profile)) {
+                            editingProfile = profile
+                        } onDelete: {
+                            deleteCandidate = profile
+                            showDeleteDialog = true
                         }
                     }
                 }

@@ -13,18 +13,16 @@ struct VDSServiceDetailsPasswordSection: View {
     
     var body: some View {
         VDSSectionCard("Root password") {
-            VStack(alignment: .leading, spacing: 8) {
-                SecureField("New password", text: $rootPassword)
-                
-                Button("Update password") {
-                    Task {
-                        await vm.changePassword(rootPassword, serviceId: service.id)
-                    }
+            SecureField("New password", text: $rootPassword)
+            
+            Button("Update password") {
+                Task {
+                    await vm.changePassword(rootPassword, serviceId: service.id)
                 }
-                .frame(maxWidth: .infinity)
-                .buttonStyle(.borderedProminent)
-                .disabled(vm.isPerformingAction || rootPassword.count < 8)
             }
+            .frame(maxWidth: .infinity)
+            .buttonStyle(.borderedProminent)
+            .disabled(vm.isPerformingAction || rootPassword.count < 8)
         }
     }
 }

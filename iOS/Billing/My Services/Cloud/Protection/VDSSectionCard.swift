@@ -2,11 +2,18 @@ import SwiftUI
 
 struct VDSSectionCard<Content: View>: View {
     private let title: LocalizedStringKey?
+    private let spacing: CGFloat
     private let content: Content
     private let primaryButton: AnyView?
     
-    init(_ title: LocalizedStringKey? = nil, @ViewBuilder content: () -> Content, @ViewBuilder primaryButton: () -> some View = { EmptyView() }) {
+    init(
+        _ title: LocalizedStringKey? = nil,
+        spacing: CGFloat = 12,
+        @ViewBuilder content: () -> Content,
+        @ViewBuilder primaryButton: () -> some View = { EmptyView() }
+    ) {
         self.title = title
+        self.spacing = spacing
         self.content = content()
         
         let button = primaryButton()
@@ -14,7 +21,7 @@ struct VDSSectionCard<Content: View>: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: spacing) {
             if let title {
                 HStack {
                     Text(title)

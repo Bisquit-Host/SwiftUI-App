@@ -7,35 +7,33 @@ struct VDSProtectionIPSection: View {
     var body: some View {
         VDSSectionCard("Protection IP") {
             if let ip = vm.ipInfo {
-                VStack(alignment: .leading, spacing: 10) {
-                    LabeledContent("IPv4", value: ip.ipv4)
+                LabeledContent("IPv4", value: ip.ipv4)
+                
+                VStack(alignment: .leading, spacing: 6) {
+                    Text("Default action")
+                        .subheadline(.semibold)
                     
-                    VStack(alignment: .leading, spacing: 6) {
-                        Text("Default action")
-                            .subheadline(.semibold)
-                        
-                        Picker("Default action", selection: $selectedAction) {
-                            ForEach(CloudProtectionDefaultAction.allCases) {
-                                Text($0.title)
-                                    .tag($0)
-                            }
-                        }
-                        .pickerStyle(.segmented)
-                    }
-                    
-                    Button("Save default action") {
-                        Task {
-                            await vm.updateDefaultAction(selectedAction)
+                    Picker("Default action", selection: $selectedAction) {
+                        ForEach(CloudProtectionDefaultAction.allCases) {
+                            Text($0.title)
+                                .tag($0)
                         }
                     }
-                    .frame(maxWidth: .infinity)
-                    .buttonStyle(.bordered)
-                    .disabled(
-                        vm.isPerformingAction ||
-                        !selectedAction.isUpdatable ||
-                        selectedAction == (ip.defaultAction ?? .filter)
-                    )
+                    .pickerStyle(.segmented)
                 }
+                
+                Button("Save default action") {
+                    Task {
+                        await vm.updateDefaultAction(selectedAction)
+                    }
+                }
+                .frame(maxWidth: .infinity)
+                .buttonStyle(.bordered)
+                .disabled(
+                    vm.isPerformingAction ||
+                    !selectedAction.isUpdatable ||
+                    selectedAction == (ip.defaultAction ?? .filter)
+                )
             } else if vm.isLoading {
                 ProgressView()
                     .frame(maxWidth: .infinity)
