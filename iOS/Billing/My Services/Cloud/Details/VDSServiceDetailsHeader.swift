@@ -32,13 +32,7 @@ struct VDSServiceDetailsHeader: View {
                 Text("IP: \(service.ip ?? "n/a")")
                     .footnote()
                     .secondary()
-                
-                if let system = service.system {
-                    Text("• \(system)")
-                        .footnote()
-                        .secondary()
-                }
-                
+                                
                 Button("Console", systemImage: "display") {
                     showVNC = true
                 }

@@ -4,7 +4,8 @@ struct VDSReinstallSection: View {
     @Environment(VDSServiceDetailsVM.self) private var vm
     
     let serviceId: Int
-    @Binding var selectedOS: Int?
+    
+    @State private var selectedOS: Int?
     
     var body: some View {
         VDSSectionCard("Reinstall OS") {

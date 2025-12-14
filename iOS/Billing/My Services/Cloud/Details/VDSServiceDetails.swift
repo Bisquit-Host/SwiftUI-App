@@ -7,7 +7,6 @@ struct VDSServiceDetails: View {
     let serviceId: Int
     
     @State private var rootPassword = ""
-    @State private var selectedOS: Int?
     @State private var renewMonths = 1
     
     var body: some View {
@@ -27,8 +26,6 @@ struct VDSServiceDetails: View {
                     VDSPowerSection(serviceId: service.id)
                     
                     VDSServiceDetailsPasswordSection(service, rootPassword: $rootPassword)
-                    
-                    VDSReinstallSection(serviceId: service.id, selectedOS: $selectedOS)
                     
                     VDSMonitoringSection()
                     

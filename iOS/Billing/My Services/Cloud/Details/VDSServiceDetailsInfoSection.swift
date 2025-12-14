@@ -7,6 +7,8 @@ struct VDSServiceDetailsInfoSection: View {
         self.service = service
     }
     
+    @State private var sheetReinstall = false
+    
     var body: some View {
         VDSSectionCard("Details") {
             let disk = (service.packageInfo.disk / 1024).formatted(.fractionDigits(0))
@@ -17,8 +19,29 @@ struct VDSServiceDetailsInfoSection: View {
                 LabeledContent("CPU", value: "\(cpu) vCPU \(service.packageInfo.cpuName ?? "")")
                 LabeledContent("RAM", value: "\(memory) GB")
                 LabeledContent("Disk", value: "\(disk) GB \(service.packageInfo.diskType ?? "")")
+                
+                Divider()
+                
+                if let system = service.system {
+                    LabeledContent {
+                        VStack(alignment: .trailing) {
+                            Text(system)
+                            
+                            Button("Reinstall") {
+                                sheetReinstall = true
+                            }
+                            .caption2()
+                        }
+                    } label: {
+                        Text("System")
+                            .frame(maxHeight: .infinity, alignment: .top)
+                    }
+                }
             }
             .footnote()
+        }
+        .sheet($sheetReinstall) {
+            VDSReinstallSection(serviceId: service.id)
         }
     }
 }

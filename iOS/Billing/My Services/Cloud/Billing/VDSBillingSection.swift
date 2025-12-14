@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct VDSBillingSection: View {
     @Environment(VDSServiceDetailsVM.self) private var vm
@@ -10,28 +10,52 @@ struct VDSBillingSection: View {
     let expiresAt: Date?
     
     @State private var alertRenew = false
+    @State private var alertRenewInfo = false
     @State private var sheetUpgrade = false
     @State private var lastRenewAmount: Double?
     
     var body: some View {
         VDSSectionCard("Billing") {
             if let expiresAt {
-                LabeledContent("Expires", value: expiresAt.formatted(date: .numeric, time: .shortened))
+                LabeledContent {
+                    VStack(alignment: .trailing) {
+                        let expireDate = expiresAt.formatted(date: .numeric, time: .shortened)
+                        let daysLeft = Calendar.current.dateComponents([.day], from: Date(), to: expiresAt).day ?? 0
+                        
+                        Text(expireDate)
+                        
+                        if daysLeft > 0 {
+                            Text("in \(daysLeft) days")
+                                .footnote()
+                                .tertiary()
+                        }
+                    }
+                } label: {
+                    Text("Expires")
+                        .frame(maxHeight: .infinity, alignment: .top)
+                }
+                .subheadline()
             }
             
             Toggle(isOn: Binding(
                 get: { autorenew },
                 set: { newValue in Task { await vm.changeAutorenew(newValue, serviceId: serviceId) } }
             )) {
-                Text("Auto-renew")
-                
-                Text("Will charge the one-month amount from your billing balance, not from your bank account")
+                HStack(spacing: 5) {
+                    Text("Auto-renew")
+                    
+                    SFButton("questionmark.circle.fill") {
+                        alertRenewInfo = true
+                    }
                     .footnote()
+                    .tint(.secondary)
+                }
             }
             .toggleStyle(.switch)
             .disabled(vm.isPerformingAction)
+            .subheadline()
             
-            HStack {
+            HStack(spacing: 5) {
                 Button {
                     alertRenew = true
                 } label: {
@@ -73,7 +97,7 @@ struct VDSBillingSection: View {
             }
             .buttonStyle(.glassProminent)
             .disabled(vm.isPerformingAction)
-            .padding(8)
+            .padding(.horizontal, 8)
             
             if let lastRenewAmount {
                 Text("Charged \(formatCurrency(lastRenewAmount, user: dashboardVM.user))")
@@ -85,6 +109,11 @@ struct VDSBillingSection: View {
             NavigationStack {
                 VDSUpgradeSection(serviceId: serviceId)
             }
+        }
+        .alert("Auto-renew", isPresented: $alertRenewInfo) {
+            
+        } message: {
+            Text("Automatically charges the one-month amount from your billing balance, not from your bank account")
         }
         .alert("Extend service", isPresented: $alertRenew) {
             Button("Confirm payment") {
