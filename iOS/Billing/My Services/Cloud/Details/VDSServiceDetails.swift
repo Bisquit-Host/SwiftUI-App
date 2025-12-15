@@ -22,7 +22,6 @@ struct VDSServiceDetails: View {
                         expiresAt: vm.service?.expiresAt ?? service.expiresAt
                     )
                     
-                    VDSPowerSection(serviceId: service.id)
                     VDSMonitoringSection()
                     
                 } else if vm.isLoading {

@@ -80,6 +80,29 @@ struct VDSServiceDetailsTabView: View {
                     ProgressView()
                 } else {
                     Menu {
+                        Button("Start", systemImage: "play") {
+                            Task {
+                                await vm.power("start", serviceId: serviceId)
+                            }
+                        }
+                        
+                        Button("Stop", systemImage: "stop") {
+                            Task {
+                                await vm.power("stop", serviceId: serviceId)
+                            }
+                        }
+                        
+                        Button("Restart", systemImage: "arrow.trianglehead.2.clockwise.rotate.90") {
+                            Task {
+                                await vm.power("restart", serviceId: serviceId)
+                            }
+                        }
+                    } label: {
+                        Image(systemName: "power")
+                            .foregroundStyle(vm.service?.state.color ?? .gray)
+                    }
+                    
+                    Menu {
                         Button("Rename", systemImage: "pencil") {
                             pendingName = vm.service?.name ?? ""
                             alertRename = true
