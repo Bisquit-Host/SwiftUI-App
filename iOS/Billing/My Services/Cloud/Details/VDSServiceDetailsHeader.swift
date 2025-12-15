@@ -11,10 +11,6 @@ struct VDSServiceDetailsHeader: View {
     
     var body: some View {
         HStack(spacing: 10) {
-            Text("IP: \(service.ip ?? "n/a")")
-                .footnote()
-                .secondary()
-            
             Button("Console", systemImage: "display") {
                 showVNC = true
             }
