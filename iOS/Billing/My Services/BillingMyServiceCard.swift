@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct BillingMyServiceCard: View {
     private let service: BillingMyService
@@ -10,8 +10,12 @@ struct BillingMyServiceCard: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text(name)
-                    .subheadline(.semibold)
+                HStack {
+                    PulseCircle(state.color)
+                    
+                    Text(name)
+                        .subheadline(.semibold)
+                }
                 
                 HStack(spacing: 6) {
                     if let flag = flagUrl, let url = URL(string: flag) {
@@ -51,15 +55,14 @@ struct BillingMyServiceCard: View {
             
             Spacer()
             
-            VStack(alignment: .trailing) {
-                Label(state.title, systemImage: "circle.fill")
-                    .labelIconToTitleSpacing(5)
-                    .caption(.semibold)
-                    .foregroundStyle(state.color)
-                
+            HStack(alignment: .firstTextBaseline, spacing: 0) {
                 Text(priceText)
                     .footnote()
                     .foregroundStyle(.primary)
+                
+                Text("/mo")
+                    .secondary()
+                    .caption2()
             }
         }
         .padding(.vertical, 6)
@@ -111,15 +114,11 @@ struct BillingMyServiceCard: View {
         }
     }
     
-    private var priceText: String {
-        let price: Double
-        
+    private var priceText: Double {
         switch service {
-        case .cloud(let service): price = service.price
-        case .game(let service): price = service.price
-        case .bot(let service): price = service.price
+        case .cloud(let service): service.price
+        case .game(let service): service.price
+        case .bot(let service): service.price
         }
-        
-        return "\(Int(price))₽/mo"
     }
 }
