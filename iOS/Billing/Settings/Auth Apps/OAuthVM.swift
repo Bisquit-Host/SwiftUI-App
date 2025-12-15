@@ -109,10 +109,7 @@ final class OAuthVM: NSObject {
     }
     
     private func fetchAuthURL(for provider: BillingAuthProvider) async {
-        guard let accessToken = Keychain.load(key: "access_token") else {
-            print("Access token not found", #function)
-            return
-        }
+        let accessToken = Keychain.load(key: "access_token")
         
         guard let url = URL(string: "\(basePath)/auth/providers/\(provider.rawValue)?mobile=true") else {
             finish(success: false, message: "Invalid backend URL")
@@ -120,7 +117,10 @@ final class OAuthVM: NSObject {
         }
         
         var request = URLRequest(url: url)
-        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        
+        if let accessToken {
+            request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        }
         
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
