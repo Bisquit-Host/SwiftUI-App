@@ -45,7 +45,9 @@ struct VDSServiceDetailsInfoSection: View {
             .footnote()
         }
         .sheet($sheetReinstall) {
-            VDSReinstallSection(serviceId: service.id)
+            NavigationStack {
+                VDSReinstallSection(serviceId: service.id)
+            }
         }
     }
 }
