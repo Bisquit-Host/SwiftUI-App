@@ -9,7 +9,7 @@ struct BillingDashboardNavLinks: View {
     var body: some View {
         VStack(spacing: 16) {
             BillingDashboardNavLink("My services", subtitle: "VDS, game & bots", systemImage: "externaldrive.connected.to.line.below", tint: .blue) {
-                BillingMyServicesList()
+                MyServicesList()
                     .environment(vm)
             }
             

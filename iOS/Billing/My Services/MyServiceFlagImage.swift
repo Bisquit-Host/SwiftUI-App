@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct BillingMyServiceFlagImage: View {
+struct MyServiceFlagImage: View {
     private let urlString: String?
     
     init(_ urlString: String?) {
@@ -26,4 +26,3 @@ struct BillingMyServiceFlagImage: View {
         }
     }
 }
-

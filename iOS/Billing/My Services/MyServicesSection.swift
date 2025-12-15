@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct BillingMyServicesSection<Detail: View>: View {
+struct MyServicesSection<Detail: View>: View {
     let title: LocalizedStringKey
     let services: [BillingMyService]
     let isLoading: Bool
@@ -22,7 +22,7 @@ struct BillingMyServicesSection<Detail: View>: View {
                     NavigationLink {
                         detail(item.id)
                     } label: {
-                        BillingMyServiceCard(item)
+                        MyServiceCard(item)
                     }
                 }
             }

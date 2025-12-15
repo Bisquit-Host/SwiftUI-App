@@ -1,7 +1,7 @@
 import ScrechKit
 import PteroNet
 
-struct BillingMyServiceCard: View {
+struct MyServiceCard: View {
     private let service: BillingMyService
     
     init(_ service: BillingMyService) {
@@ -23,7 +23,7 @@ struct BillingMyServiceCard: View {
                 }
                 
                 HStack(spacing: 6) {
-                    BillingMyServiceFlagImage(flagUrl)
+                    MyServiceFlagImage(flagUrl)
                     
                     Text(location)
                         .footnote()

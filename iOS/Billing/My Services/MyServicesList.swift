@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct BillingMyServicesList: View {
+struct MyServicesList: View {
     @State private var cloudVM = VDSBillingVM()
     @State private var gameVM = GameServiceListVM()
     @State private var botVM = BotServiceListVM()
@@ -8,17 +8,17 @@ struct BillingMyServicesList: View {
     
     var body: some View {
         List {
-            BillingMyServicesSection(title: "VDS", services: cloudVM.services.map { .cloud($0) }, isLoading: cloudVM.isLoading) {
+            MyServicesSection(title: "VDS", services: cloudVM.services.map { .cloud($0) }, isLoading: cloudVM.isLoading) {
                 VDSServiceDetailsTabView(serviceId: $0)
                     .environment(vm)
             }
             
-            BillingMyServicesSection(title: "Game servers", services: gameVM.services.map { .game($0) }, isLoading: gameVM.isLoading) {
+            MyServicesSection(title: "Game servers", services: gameVM.services.map { .game($0) }, isLoading: gameVM.isLoading) {
                 GameServiceDetails(serviceId: $0)
                     .environment(vm)
             }
             
-            BillingMyServicesSection(title: "Bot hosting", services: botVM.services.map { .bot($0) }, isLoading: botVM.isLoading) {
+            MyServicesSection(title: "Bot hosting", services: botVM.services.map { .bot($0) }, isLoading: botVM.isLoading) {
                 BotServiceDetails(serviceId: $0)
                     .environment(vm)
             }
@@ -45,7 +45,7 @@ struct BillingMyServicesList: View {
 
 #Preview {
     NavigationStack {
-        BillingMyServicesList()
+        MyServicesList()
             .environment(BillingDashboardVM())
     }
     .environmentObject(ValueStore())
