@@ -15,6 +15,7 @@ struct VDSServiceDetailsTabView: View {
         switch selectedTab {
         case 1: "Protection"
         case 2: "History"
+        case 3: "SSH"
         default: nil
         }
     }
@@ -44,6 +45,12 @@ struct VDSServiceDetailsTabView: View {
             Tab("History", systemImage: "clock", value: 2) {
                 VDSServiceHistoryTab(serviceId: serviceId)
             }
+
+#if canImport(SwiftTerm) && canImport(NIOSSH)
+            Tab("SSH", systemImage: "terminal", value: 3) {
+                VDSSSHTabView()
+            }
+#endif
         }
         .environment(vm)
         .navigationTitle(title ?? "\(vm.service?.name ?? "")")
