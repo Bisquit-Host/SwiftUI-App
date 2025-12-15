@@ -96,7 +96,7 @@ struct BillingLogin: View {
                     Divider()
                 }
             }
-            .padding()
+            .padding(8)
             
             if !isSignUp {
                 Button(action: passkeyLogin) {
@@ -125,9 +125,7 @@ struct BillingLogin: View {
         .scenePadding(.horizontal)
         .overlay(alignment: .bottom) {
             Button(isSignUp ? "Sign in" : "Register an account") {
-                withAnimation {
-                    isSignUp.toggle()
-                }
+                isSignUp.toggle()
             }
             .secondary()
         }
