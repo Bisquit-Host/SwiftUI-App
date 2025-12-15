@@ -14,14 +14,14 @@ struct BillingLoginSocialButton: View {
     }
     
     var body: some View {
-            Button(action: action) {
-                if isLoading {
-                    ProgressView()
-                } else {
-                    AuthSocialButtonImage(img)
-                }
+        Button(action: action) {
+            if isLoading {
+                ProgressView()
+            } else {
+                AuthSocialButtonImage(img)
             }
-            .disabled(isLoading)
+        }
+        .disabled(isLoading)
     }
 }
 

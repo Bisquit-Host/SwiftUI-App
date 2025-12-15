@@ -119,7 +119,7 @@ struct BillingLogin: View {
                 .glassEffect()
             }
             
-            
+            BillingLoginSocialButtons()
         }
         .frame(maxHeight: .infinity)
         .scenePadding(.horizontal)
