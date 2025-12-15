@@ -12,7 +12,7 @@ struct VDSServiceDetails: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 if let service = vm.service {
-                    VDSServiceDetailsHeader(service)
+                    VDSServiceDetailsHeader(service: service)
                     VDSServiceDetailsInfoSection(service)
                     
                     VDSBillingSection(

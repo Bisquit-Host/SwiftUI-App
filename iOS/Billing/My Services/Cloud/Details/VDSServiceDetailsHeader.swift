@@ -1,11 +1,7 @@
 import SwiftUI
 
 struct VDSServiceDetailsHeader: View {
-    private let service: CloudServiceDetails
-    
-    init(_ service: CloudServiceDetails) {
-        self.service = service
-    }
+    let service: CloudServiceDetails
     
     @State private var showVNC = false
     
