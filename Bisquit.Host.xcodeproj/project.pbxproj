@@ -279,6 +279,7 @@
 		F3BED0D32D8CDAC600CD6E3B /* LockedCameraCapture.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LockedCameraCapture.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.4.sdk/System/Library/Frameworks/LockedCameraCapture.framework; sourceTree = DEVELOPER_DIR; };
 		F3D296072AF3BE5800ED43A0 /* UI Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UI Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3E08EA02A2CE17800116C1C /* Bisquit.Host.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bisquit.Host.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3E15C922EF042D9008A1068 /* AGENTS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AGENTS.md; sourceTree = "<group>"; };
 		F3E2BEF52C1DA07E00B7A6D4 /* Contact Provider.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = "Contact Provider.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3FDFF602C89120D009EBB5C /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		F3FDFF6B2C89120D009EBB5C /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
@@ -1371,6 +1372,7 @@
 		F31BA51A2958FF7C0006D126 = {
 			isa = PBXGroup;
 			children = (
+				F3E15C922EF042D9008A1068 /* AGENTS.md */,
 				F3AE99DB2E2F87FC00D70249 /* README.md */,
 				F383B6592ECF35E500350A0F /* iOS */,
 				F38353DA2ECE954600535F26 /* watchOS */,
