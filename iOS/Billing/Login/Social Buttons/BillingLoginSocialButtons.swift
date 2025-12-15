@@ -5,15 +5,15 @@ struct BillingLoginSocialButtons: View {
     
     var body: some View {
         HStack {
-            BillingLoginSocialButton("GitHub", img: .gitHub, isLoading: vm.isLinkingGitHub) {
+            BillingLoginSocialButton(provider: "GitHub", img: .gitHub) {
                 vm.startGitHubLinking()
             }
             
-            BillingLoginSocialButton("Google", img: .google, isLoading: vm.isLinkingGoogle) {
+            BillingLoginSocialButton(provider: "Google", img: .google) {
                 vm.startGoogleLinking()
             }
             
-            BillingLoginSocialButton("Yandex", img: .yandex, isLoading: vm.isLinkingYandex) {
+            BillingLoginSocialButton(provider: "Yandex", img: .yandex) {
                 vm.startYandexLinking()
             }
         }
