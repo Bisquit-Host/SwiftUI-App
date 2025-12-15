@@ -7,9 +7,12 @@ struct VDSProtectionAttacksSection: View {
         VDSSectionCard(vm.attacks.isEmpty ? nil : "Recent attacks") {
             if vm.isLoading && vm.attacks.isEmpty {
                 ProgressView()
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 160)
                 
             } else if vm.attacks.isEmpty {
                 ContentUnavailableView("No attacks recorded", systemImage: "shield.lefthalf.filled.badge.checkmark")
+                    .frame(height: 160)
                 
             } else {
                 ForEach(vm.attacks) {
