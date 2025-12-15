@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct BillingMyServiceRow: View {
+struct BillingMyServiceCard: View {
     private let service: BillingMyService
     
     init(_ service: BillingMyService) {
