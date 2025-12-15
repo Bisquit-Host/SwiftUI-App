@@ -25,7 +25,6 @@ final class SSHClient {
 
     private var group: EventLoopGroup?
     private var parentChannel: Channel?
-    private var sshHandler: NIOSSHHandler?
     private var sessionChannel: Channel?
 
     var onLog: (@Sendable (String) -> Void)?
@@ -79,13 +78,18 @@ final class SSHClient {
                         inboundChildChannelInitializer: nil
                     )
 
-                    return channel.pipeline.addHandlers([
-                        ParentChannelLifecycleHandler(
-                            log: log,
-                            onError: errorHandler
-                        ),
-                        sshHandler,
-                    ])
+                    do {
+                        try channel.pipeline.syncOperations.addHandlers(
+                            ParentChannelLifecycleHandler(
+                                log: log,
+                                onError: errorHandler
+                            ),
+                            sshHandler
+                        )
+                        return channel.eventLoop.makeSucceededVoidFuture()
+                    } catch {
+                        return channel.eventLoop.makeFailedFuture(error)
+                    }
                 }
 
             log("connect: dialing \(info.host):\(info.port)")
@@ -99,14 +103,10 @@ final class SSHClient {
                 self.parentChannel = parentChannel
             }
 
-            let sshHandler = try await parentChannel.pipeline.handler(type: NIOSSHHandler.self).get()
-            self.lock.withLock {
-                self.sshHandler = sshHandler
-            }
-
             log("ssh: creating session channel")
-            let sessionChannel = try await parentChannel.eventLoop
-                .submit { () -> EventLoopFuture<Channel> in
+            let sessionChannel = try await parentChannel.pipeline
+                .handler(type: NIOSSHHandler.self)
+                .flatMap { sshHandler in
                     let promise = parentChannel.eventLoop.makePromise(of: Channel.self)
                     sshHandler.createChannel(promise, channelType: .session) { childChannel, _ in
                         childChannel.setOption(ChannelOptions.allowRemoteHalfClosure, value: true).flatMap {
@@ -122,7 +122,6 @@ final class SSHClient {
                     }
                     return promise.futureResult
                 }
-                .flatMap { $0 }
                 .get()
 
             self.lock.withLock {
@@ -154,7 +153,6 @@ final class SSHClient {
 
         self.lock.withLock {
             self.parentChannel = nil
-            self.sshHandler = nil
             self.sessionChannel = nil
             self.group = nil
         }
@@ -249,7 +247,7 @@ private enum SSHClientError: Error, LocalizedError {
 private final class AcceptAllHostKeysDelegate: NIOSSHClientServerAuthenticationDelegate {
     nonisolated private let log: @Sendable (String) -> Void
 
-    init(log: @escaping @Sendable (String) -> Void) {
+    nonisolated init(log: @escaping @Sendable (String) -> Void) {
         self.log = log
     }
 
@@ -266,7 +264,7 @@ private final class LoggingPasswordAuthDelegate: NIOSSHClientUserAuthenticationD
     nonisolated private let attemptLock = NIOLock()
     nonisolated(unsafe) private var hasAttempted = false
 
-    init(username: String, password: String, log: @escaping @Sendable (String) -> Void) {
+    nonisolated init(username: String, password: String, log: @escaping @Sendable (String) -> Void) {
         self.username = username
         self.password = password
         self.log = log
@@ -314,7 +312,7 @@ private final class ParentChannelLifecycleHandler: ChannelInboundHandler {
     nonisolated private let log: @Sendable (String) -> Void
     nonisolated private let onError: @Sendable (Error) -> Void
 
-    init(log: @escaping @Sendable (String) -> Void, onError: @escaping @Sendable (Error) -> Void) {
+    nonisolated init(log: @escaping @Sendable (String) -> Void, onError: @escaping @Sendable (Error) -> Void) {
         self.log = log
         self.onError = onError
     }
@@ -344,7 +342,7 @@ private final class SSHSessionChannelHandler: ChannelInboundHandler {
     nonisolated private let onError: @Sendable (Error) -> Void
     nonisolated private let onInactive: @Sendable () -> Void
 
-    init(
+    nonisolated init(
         log: @escaping @Sendable (String) -> Void,
         onOutput: @escaping @Sendable (ArraySlice<UInt8>) -> Void,
         onError: @escaping @Sendable (Error) -> Void,

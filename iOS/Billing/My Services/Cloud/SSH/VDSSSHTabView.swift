@@ -35,7 +35,7 @@ struct VDSSSHTabView: View {
                         .autocorrectionDisabled()
                         .textFieldStyle(.roundedBorder)
 
-                    TextField("Password", text: $password)
+                    SecureField("Password", text: $password)
                         .textInputAutocapitalization(.never)
                         .autocorrectionDisabled()
                         .textFieldStyle(.roundedBorder)
@@ -106,4 +106,3 @@ struct VDSSSHTabView: View {
     }
 }
 #endif
-
