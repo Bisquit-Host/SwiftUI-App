@@ -27,12 +27,19 @@ struct BillingMyServicesList: View {
         .environment(vm)
         .listStyle(.insetGrouped)
         .refreshableTask {
-            async let cloud: () = cloudVM.loadServices()
-            async let game: () = gameVM.loadServices()
-            async let bot: () = botVM.loadServices()
-            
-            let _ = await (cloud, game, bot)
+            await reload()
         }
+        .onReceive(NotificationCenter.default.publisher(for: .billingMyServicesShouldRefresh)) { _ in
+            Task { await reload() }
+        }
+    }
+    
+    private func reload() async {
+        async let cloud: () = cloudVM.loadServices()
+        async let game: () = gameVM.loadServices()
+        async let bot: () = botVM.loadServices()
+        
+        let _ = await (cloud, game, bot)
     }
 }
 

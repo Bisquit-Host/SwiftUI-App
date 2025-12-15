@@ -1,4 +1,5 @@
 import ScrechKit
+import PteroNet
 
 struct BillingMyServiceCard: View {
     private let service: BillingMyService
@@ -6,6 +7,10 @@ struct BillingMyServiceCard: View {
     init(_ service: BillingMyService) {
         self.service = service
     }
+    
+    @State private var alertRename = false
+    @State private var newName = ""
+    @State private var isRenaming = false
     
     var body: some View {
         HStack {
@@ -18,22 +23,7 @@ struct BillingMyServiceCard: View {
                 }
                 
                 HStack(spacing: 6) {
-                    if let flag = flagUrl, let url = URL(string: flag) {
-                        AsyncImage(url: url) {
-                            switch $0 {
-                            case .success(let image):
-                                image
-                                    .resizable()
-                                    .frame(width: 20, height: 14)
-                                    .clipShape(.rect(cornerRadius: 2))
-                                
-                            default:
-                                RoundedRectangle(cornerRadius: 3)
-                                    .fill(.gray.opacity(0.2))
-                                    .frame(width: 20, height: 14)
-                            }
-                        }
-                    }
+                    BillingMyServiceFlagImage(flagUrl)
                     
                     Text(location)
                         .footnote()
@@ -66,6 +56,27 @@ struct BillingMyServiceCard: View {
             }
         }
         .padding(.vertical, 6)
+        .contextMenu {
+            Button("Rename", systemImage: "pencil") {
+                newName = name
+                alertRename = true
+            }
+        }
+        .alert("Rename service", isPresented: $alertRename) {
+            TextField("New name", text: $newName)
+                .textInputAutocapitalization(.never)
+                .autocorrectionDisabled()
+            
+            Button("Save") {
+                let pending = newName
+                Task {
+                    await rename(to: pending)
+                }
+            }
+            .disabled(isRenaming)
+            
+            Button("Cancel", role: .cancel) {}
+        }
     }
     
     private var name: String {
@@ -121,4 +132,79 @@ struct BillingMyServiceCard: View {
         case .bot(let service): service.price
         }
     }
+    
+    private func rename(to pendingName: String) async {
+        let trimmed = pendingName.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        guard !trimmed.isEmpty else {
+            SystemAlert.error("Enter a name")
+            return
+        }
+        
+        guard trimmed != name else { return }
+        guard !isRenaming else { return }
+        
+        isRenaming = true
+        defer { isRenaming = false }
+        
+        let renamePath: String = switch service {
+        case .cloud: "/cloud/\(service.id)/name"
+        case .game: "/game/\(service.id)/name"
+        case .bot: "/bot/\(service.id)/name"
+        }
+        
+        let body = ["name": trimmed]
+        guard let payload = try? JSONSerialization.data(withJSONObject: body) else { return }
+        guard await request(path: renamePath, method: "PATCH", body: payload) != nil else { return }
+        
+        SystemAlert.copied("Name updated")
+        NotificationCenter.default.post(name: .billingMyServicesShouldRefresh, object: nil)
+    }
+    
+    private func request(path: String, method: String, body: Data) async -> Data? {
+        guard let accessToken = Keychain.load(key: "access_token") else {
+            print("Access token not found", #function)
+            return nil
+        }
+        
+        guard let base = URL(string: "https://test-api.bisquit.host") else { return nil }
+        guard let url = URL(string: path, relativeTo: base) else {
+            SystemAlert.error("Invalid URL")
+            return nil
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = method
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = body
+        
+        do {
+            let (data, response) = try await URLSession.shared.data(for: request)
+            
+            guard let http = response as? HTTPURLResponse else {
+                SystemAlert.error("No response")
+                return nil
+            }
+            
+            if http.statusCode == 204 {
+                return Data()
+            }
+            
+            guard (200...299).contains(http.statusCode) else {
+                let error = String(data: data, encoding: .utf8) ?? "Status \(http.statusCode)"
+                SystemAlert.error(error)
+                return nil
+            }
+            
+            return data
+        } catch {
+            SystemAlert.error(error.localizedDescription)
+            return nil
+        }
+    }
+}
+
+extension Notification.Name {
+    static let billingMyServicesShouldRefresh = Notification.Name("billingMyServicesShouldRefresh")
 }
