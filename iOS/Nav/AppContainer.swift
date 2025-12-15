@@ -33,7 +33,7 @@ struct AppContainer: View {
             }
 #endif
             .onOpenURL {
-                print("🔗 Depplink:", $0)
+                print("🔗 Deeplink:", $0)
 #if os(iOS)
                 linking.handleDeepLink($0)
                 billingOAuth.handleCallback($0)
