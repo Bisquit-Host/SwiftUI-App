@@ -1,8 +1,11 @@
 import SwiftUI
+import PteroNet
 
 struct BillingAccountSection: View {
     @Environment(BillingSettingsVM.self) private var vm
     @Environment(BillingDashboardVM.self) private var dashboardVM
+    @EnvironmentObject private var store: ValueStore
+    @Environment(\.dismiss) private var dismiss
     
     private let user: BillingUser
     
@@ -39,6 +42,10 @@ struct BillingAccountSection: View {
             
             BillingAccountRow("Currency", icon: "dollarsign", tint: .yellow, value: user.currency.rawValue)
             BillingAccountRow("Language", icon: "character.cursor.ibeam", tint: .mint, value: user.lang.uppercased())
+            
+            BillingActionRow("Log out", icon: "rectangle.portrait.and.arrow.right", tint: .red, role: .destructive) {
+                logout()
+            }
         }
         .alert("Change email", isPresented: $alertEmail) {
             TextField("New email", text: $vm.newEmail)
@@ -99,6 +106,26 @@ struct BillingAccountSection: View {
         }
     }
     
+    private func logout() {
+        dismiss()
+        
+        Task {
+            try await Task.sleep(for: .seconds(0.5))
+            
+            if !Keychain.delete(key: "access_token") {
+                print("Error logging out")
+            }
+            
+            store.accessTokenExpiresIn = 0
+            store.accessToken = nil
+            store.lastBillingTokenRefresh = nil
+            Keychain.delete(key: "refresh_token")
+            
+            withAnimation {
+                store.updateAccessToken()
+            }
+        }
+    }
 }
 
 #Preview {
