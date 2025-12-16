@@ -121,7 +121,7 @@ final class BillingLoginVM {
         }
     }
     
-    func loginWithPasskey(login: String?) async -> BillingLoginResponse? {
+    func loginWithPasskey(_ login: String?) async -> BillingLoginResponse? {
         isPasskeyLoading = true
         defer { isPasskeyLoading = false }
         

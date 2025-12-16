@@ -99,24 +99,7 @@ struct BillingLogin: View {
             .padding(8)
             
             if !isSignUp {
-                Button(action: passkeyLogin) {
-                    if vm.isPasskeyLoading {
-                        HStack {
-                            ProgressView()
-                            Text("Signing in with passkey...")
-                        }
-                    } else {
-                        Label("Sign in with Passkey", systemImage: "person.badge.key.fill")
-                            .labelIconToTitleSpacing(10)
-                            .semibold()
-                            .rounded()
-                    }
-                }
-                .disabled(vm.isPasskeyLoading)
-                .foregroundStyle(.foreground)
-                .frame(height: 50)
-                .frame(maxWidth: .infinity)
-                .glassEffect()
+                LoginPasskeyButton(login: login, handleAuthResponse: handleAuthResponse)
             }
             
             BillingLoginSocialButtons()
@@ -174,16 +157,6 @@ struct BillingLogin: View {
         }
     }
     
-    private func passkeyLogin() {
-        Task {
-            guard let response = await vm.loginWithPasskey(login: login) else {
-                return
-            }
-            
-            handleAuthResponse(response)
-        }
-    }
-    
     private func verifyTwoFA() async {
         guard
             let pendingTwoFAToken,
@@ -213,14 +186,13 @@ struct BillingLogin: View {
         store.testExpiresIn = response.expiresIn
         store.accessToken = response.accessToken
         store.lastBillingTokenRefresh = Date()
+        
         Keychain.save(response.refreshToken, forKey: "refresh_token")
         
         Task {
             try await Task.sleep(for: .seconds(0.5))
             
-            withAnimation {
-                let _ = Keychain.save(response.accessToken, forKey: "access_token")
-            }
+            let _ = Keychain.save(response.accessToken, forKey: "access_token")
         }
     }
 }
