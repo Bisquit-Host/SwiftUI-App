@@ -45,7 +45,6 @@ struct VDSServiceDetailsTabView: View {
             Tab("History", systemImage: "clock", value: 2) {
                 VDSServiceHistoryTab(serviceId: serviceId)
             }
-
 #if canImport(SwiftTerm) && canImport(NIOSSH)
             Tab("SSH", systemImage: "terminal", value: 3) {
                 VDSSSHTabView()
@@ -83,53 +82,49 @@ struct VDSServiceDetailsTabView: View {
         }
         .toolbar {
             if selectedTab == 0 {
-                if vm.isPerformingAction {
-                    ProgressView()
-                } else {
-                    Menu {
-                        Button("Start", systemImage: "play") {
-                            Task {
-                                await vm.power("start", serviceId: serviceId)
-                            }
+                Menu {
+                    Button("Start", systemImage: "play") {
+                        Task {
+                            await vm.power("start", serviceId: serviceId)
                         }
-                        
-                        Button("Stop", systemImage: "stop") {
-                            Task {
-                                await vm.power("stop", serviceId: serviceId)
-                            }
-                        }
-                        
-                        Button("Restart", systemImage: "arrow.trianglehead.2.clockwise.rotate.90") {
-                            Task {
-                                await vm.power("restart", serviceId: serviceId)
-                            }
-                        }
-                    } label: {
-                        Image(systemName: "power")
-                            .foregroundStyle(vm.service?.state.color ?? .gray)
                     }
                     
-                    Menu {
-                        Button("Rename", systemImage: "pencil") {
-                            pendingName = vm.service?.name ?? ""
-                            alertRename = true
+                    Button("Stop", systemImage: "stop") {
+                        Task {
+                            await vm.power("stop", serviceId: serviceId)
                         }
-                        
-                        Divider()
-                        
-                        if let password = vm.service?.password {
-                            Button("Copy password", systemImage: "document.on.document") {
-                                Pasteboard.copy(password)
-                                SystemAlert.copied()
-                            }
-                        }
-                        
-                        Button("Change password", systemImage: "lock") {
-                            alertChangePassword = true
-                        }
-                    } label: {
-                        Image(systemName: "ellipsis")
                     }
+                    
+                    Button("Restart", systemImage: "arrow.trianglehead.2.clockwise.rotate.90") {
+                        Task {
+                            await vm.power("restart", serviceId: serviceId)
+                        }
+                    }
+                } label: {
+                    Image(systemName: "power")
+                        .foregroundStyle(vm.service?.state.color ?? .gray)
+                }
+                
+                Menu {
+                    Button("Rename", systemImage: "pencil") {
+                        pendingName = vm.service?.name ?? ""
+                        alertRename = true
+                    }
+                    
+                    Divider()
+                    
+                    if let password = vm.service?.password {
+                        Button("Copy password", systemImage: "document.on.document") {
+                            Pasteboard.copy(password)
+                            SystemAlert.copied()
+                        }
+                    }
+                    
+                    Button("Change password", systemImage: "lock") {
+                        alertChangePassword = true
+                    }
+                } label: {
+                    Image(systemName: "ellipsis")
                 }
             }
         }

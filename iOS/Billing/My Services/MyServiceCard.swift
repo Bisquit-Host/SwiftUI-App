@@ -68,9 +68,9 @@ struct MyServiceCard: View {
                 .autocorrectionDisabled()
             
             Button("Save") {
-                let pending = newName
                 Task {
-                    await rename(to: pending)
+                    await rename(to: newName)
+                    newName = ""
                 }
             }
             .disabled(isRenaming)
