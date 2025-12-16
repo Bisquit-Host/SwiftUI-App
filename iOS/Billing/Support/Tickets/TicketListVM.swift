@@ -159,6 +159,7 @@ final class TicketListVM {
                     if let raw = String(data: data, encoding: .utf8) {
                         print("Create ticket failed \(http.statusCode): \(raw)")
                     }
+                    
                     SystemAlert.error("Failed to create ticket", subtitle: http.statusCode.description)
                     return nil
                 }
