@@ -16,7 +16,7 @@ struct BillingOperationList: View {
         } else {
             BillingSectionCard("Operations") {
                 ForEach(Array(vm.operations.enumerated()), id: \.element.id) { index, operation in
-                    BillingOperationRow(operation)
+                    BillingOperationCard(operation)
                     
                     if index < vm.operations.count - 1 {
                         Divider()

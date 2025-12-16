@@ -1,6 +1,6 @@
 import ScrechKit
 
-struct BillingOperationRow: View {
+struct BillingOperationCard: View {
     private let operation: BillingOperation
     
     init(_ operation: BillingOperation) {
@@ -54,7 +54,7 @@ struct BillingOperationRow: View {
 }
 
 #Preview {
-    BillingOperationRow(.preview)
+    BillingOperationCard(.preview)
         .darkSchemePreferred()
         .scenePadding()
 }

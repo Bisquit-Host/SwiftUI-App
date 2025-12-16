@@ -13,7 +13,7 @@ struct BillingHostingNavRow: View {
     
     var body: some View {
         NavigationLink {
-            HostingPlanList(defaultCategory: category)
+            HostingPlanList(category)
                 .environment(vm)
         } label: {
             HStack(spacing: 12) {

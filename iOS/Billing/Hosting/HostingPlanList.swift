@@ -5,7 +5,7 @@ struct HostingPlanList: View {
     
     @State private var category: BillingHostingCategory
     
-    init(defaultCategory: BillingHostingCategory = .game) {
+    init(_ defaultCategory: BillingHostingCategory = .game) {
         _category = State(initialValue: defaultCategory)
     }
     

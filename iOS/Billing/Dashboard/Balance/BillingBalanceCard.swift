@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct BillingBalanceRow: View {
+struct BillingBalanceCard: View {
     private let title: LocalizedStringKey
     private let icon: String
     private let tint: Color

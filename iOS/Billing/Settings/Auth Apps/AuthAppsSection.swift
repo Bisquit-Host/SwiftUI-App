@@ -13,7 +13,7 @@ struct AuthAppsSection: View {
     var body: some View {
         if let user {
             BillingSectionCard("Auth apps") {
-                AuthSettingsAppRow("GitHub", icon: "app.connected.to.app.below.fill", enabled: !(user.githubId ?? "").isEmpty, isLoading: vm.isLinkingGitHub) {
+                AuthSettingsAppCard("GitHub", icon: "app.connected.to.app.below.fill", enabled: !(user.githubId ?? "").isEmpty, isLoading: vm.isLinkingGitHub) {
                     vm.startGitHubLinking {
                         Task {
                             await fetchUserInfo()
@@ -25,7 +25,7 @@ struct AuthAppsSection: View {
                     }
                 }
                 
-                AuthSettingsAppRow("Google", icon: "globe", enabled: !(user.googleId ?? "").isEmpty, isLoading: vm.isLinkingGoogle) {
+                AuthSettingsAppCard("Google", icon: "globe", enabled: !(user.googleId ?? "").isEmpty, isLoading: vm.isLinkingGoogle) {
                     vm.startGoogleLinking {
                         Task {
                             await fetchUserInfo()
@@ -37,7 +37,7 @@ struct AuthAppsSection: View {
                     }
                 }
                 
-                AuthSettingsAppRow("Yandex", icon: "globe", enabled: !(user.yandexId ?? "").isEmpty, isLoading: vm.isLinkingYandex) {
+                AuthSettingsAppCard("Yandex", icon: "globe", enabled: !(user.yandexId ?? "").isEmpty, isLoading: vm.isLinkingYandex) {
                     vm.startYandexLinking {
                         Task {
                             await fetchUserInfo()

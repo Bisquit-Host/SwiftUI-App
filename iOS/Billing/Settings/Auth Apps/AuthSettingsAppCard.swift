@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct AuthSettingsAppRow: View {
+struct AuthSettingsAppCard: View {
     @Environment(\.accessibilityDifferentiateWithoutColor) private var differentiateWithoutColor
     
     private let title: LocalizedStringKey
@@ -78,8 +78,8 @@ struct AuthSettingsAppRow: View {
 
 #Preview {
     VStack(spacing: 12) {
-        AuthSettingsAppRow("2FA", icon: "lock.shield.fill", enabled: true)
-        AuthSettingsAppRow("Password", icon: "key.fill", enabled: false)
+        AuthSettingsAppCard("2FA", icon: "lock.shield.fill", enabled: true)
+        AuthSettingsAppCard("Password", icon: "key.fill", enabled: false)
     }
     .padding()
     .darkSchemePreferred()
