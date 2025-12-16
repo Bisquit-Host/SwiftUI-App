@@ -2,7 +2,7 @@ import SwiftUI
 
 struct VDSProtectionIPSection: View {
     @Environment(VDSProtectionVM.self) private var vm
-    @State private var selectedAction: CloudProtectionDefaultAction = .filter
+    @State private var selectedAction: VDSProtectionDefaultAction = .filter
     
     var body: some View {
         VDSSectionCard("Protection IP") {
@@ -14,7 +14,7 @@ struct VDSProtectionIPSection: View {
                         .subheadline(.semibold)
                     
                     Picker("Default action", selection: $selectedAction) {
-                        ForEach(CloudProtectionDefaultAction.allCases) {
+                        ForEach(VDSProtectionDefaultAction.allCases) {
                             Text($0.title)
                                 .tag($0)
                         }

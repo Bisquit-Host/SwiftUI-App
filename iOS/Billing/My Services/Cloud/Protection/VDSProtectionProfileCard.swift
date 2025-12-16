@@ -1,10 +1,17 @@
 import ScrechKit
 
 struct VDSProtectionProfileCard: View {
-    let profile: CloudProtectionProfile
-    let presetName: String
-    let onEdit: () -> Void
-    let onDelete: () -> Void
+    private let profile: VDSProtectionProfile
+    private let presetName: String
+    private let onEdit: () -> Void
+    private let onDelete: () -> Void
+    
+    init(_ profile: VDSProtectionProfile, presetName: String, onEdit: @escaping () -> Void, onDelete: @escaping () -> Void) {
+        self.profile = profile
+        self.presetName = presetName
+        self.onEdit = onEdit
+        self.onDelete = onDelete
+    }
     
     var body: some View {
         HStack(spacing: 10) {
@@ -77,7 +84,7 @@ struct VDSProtectionProfileCard: View {
 
 #Preview {
     VDSProtectionProfileCard(
-        profile: .init(
+        VDSProtectionProfile(
             id: 1,
             presetId: 10,
             presetName: "FiveM TCP",

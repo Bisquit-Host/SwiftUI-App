@@ -3,8 +3,8 @@ import ScrechKit
 struct VDSProtectionProfilesSection: View {
     @Environment(VDSProtectionVM.self) private var vm
     
-    @State private var editingProfile: CloudProtectionProfile?
-    @State private var deleteCandidate: CloudProtectionProfile?
+    @State private var editingProfile: VDSProtectionProfile?
+    @State private var deleteCandidate: VDSProtectionProfile?
     @State private var showDeleteDialog = false
     
     var body: some View {
@@ -21,7 +21,7 @@ struct VDSProtectionProfilesSection: View {
             } else {
                 VStack(alignment: .leading, spacing: 10) {
                     ForEach(vm.profiles) { profile in
-                        VDSProtectionProfileCard(profile: profile, presetName: presetName(for: profile)) {
+                        VDSProtectionProfileCard(profile, presetName: presetName(for: profile)) {
                             editingProfile = profile
                         } onDelete: {
                             deleteCandidate = profile
@@ -65,7 +65,7 @@ struct VDSProtectionProfilesSection: View {
         }
     }
     
-    private func presetName(for profile: CloudProtectionProfile) -> String {
+    private func presetName(for profile: VDSProtectionProfile) -> String {
         if let name = profile.presetName, !name.isEmpty {
             return name
         }

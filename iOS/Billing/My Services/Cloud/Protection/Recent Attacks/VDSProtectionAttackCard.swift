@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct VDSProtectionAttackCard: View {
-    let attack: CloudProtectionAttack
+    let attack: VDSProtectionAttack
     
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {

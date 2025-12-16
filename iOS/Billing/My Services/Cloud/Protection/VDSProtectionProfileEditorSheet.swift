@@ -7,7 +7,7 @@ struct VDSProtectionProfileEditorSheet: View {
     let mode: CloudProtectionProfileEditorMode
     
     @State private var presetId = 0
-    @State private var protocolSelection: CloudProtectionProtocol
+    @State private var protocolSelection: VDSProtectionProtocol
     @State private var minPortText: String
     @State private var maxPortText: String
     @State private var notesText: String
@@ -22,7 +22,7 @@ struct VDSProtectionProfileEditorSheet: View {
         _notesText = State(initialValue: existing?.notes ?? "")
     }
     
-    private var selectedProtocolPresets: [CloudProtectionPreset] {
+    private var selectedProtocolPresets: [VDSProtectionPreset] {
         vm.presets.filter {
             $0.`protocol` == protocolSelection
         }
@@ -71,7 +71,7 @@ struct VDSProtectionProfileEditorSheet: View {
                             .subheadline(.semibold)
                         
                         Picker("Protocol", selection: $protocolSelection) {
-                            ForEach(CloudProtectionProtocol.allCases) {
+                            ForEach(VDSProtectionProtocol.allCases) {
                                 Text($0.rawValue)
                                     .tag($0)
                             }
@@ -167,8 +167,8 @@ struct VDSProtectionProfileEditorSheet: View {
         dismiss()
     }
     
-    private func makeInput() -> CloudProtectionProfileInput? {
-        var input = CloudProtectionProfileInput(presetId: presetId, protocol: protocolSelection, minPort: nil, maxPort: nil, notes: nil)
+    private func makeInput() -> VDSProtectionProfileInput? {
+        var input = VDSProtectionProfileInput(presetId: presetId, protocol: protocolSelection, minPort: nil, maxPort: nil, notes: nil)
         
         if protocolSelection == .tcp || protocolSelection == .udp {
             if let minPort = parsePort(minPortText) {
@@ -223,7 +223,7 @@ struct VDSProtectionProfileEditorSheet: View {
         }
     }
     
-    private func applyDefaultPortsIfNeeded(for proto: CloudProtectionProtocol) {
+    private func applyDefaultPortsIfNeeded(for proto: VDSProtectionProtocol) {
         guard proto == .tcp || proto == .udp else { return }
         
         if minPortText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {

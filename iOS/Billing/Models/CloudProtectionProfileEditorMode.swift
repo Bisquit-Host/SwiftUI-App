@@ -1,5 +1,5 @@
 enum CloudProtectionProfileEditorMode {
-    case create, edit(CloudProtectionProfile)
+    case create, edit(VDSProtectionProfile)
     
     var title: String {
         switch self {
@@ -15,7 +15,7 @@ enum CloudProtectionProfileEditorMode {
         }
     }
     
-    var existingProfile: CloudProtectionProfile? {
+    var existingProfile: VDSProtectionProfile? {
         if case .edit(let profile) = self { return profile }
         return nil
     }

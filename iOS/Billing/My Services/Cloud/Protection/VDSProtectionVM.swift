@@ -3,10 +3,10 @@ import PteroNet
 
 @Observable
 final class VDSProtectionVM {
-    var ipInfo: CloudProtectionIPInfo?
-    var presets: [CloudProtectionPreset] = []
-    var profiles: [CloudProtectionProfile] = []
-    var attacks: [CloudProtectionAttack] = []
+    var ipInfo: VDSProtectionIPInfo?
+    var presets: [VDSProtectionPreset] = []
+    var profiles: [VDSProtectionProfile] = []
+    var attacks: [VDSProtectionAttack] = []
     
     var isLoading = false
     var isLoadingAttacks = false
@@ -48,7 +48,7 @@ final class VDSProtectionVM {
         decoder.dateDecodingStrategy = .iso8601
         
         do {
-            ipInfo = try decoder.decode(CloudProtectionIPInfo.self, from: data)
+            ipInfo = try decoder.decode(VDSProtectionIPInfo.self, from: data)
         } catch {
             SystemAlert.error("Protection IP decode error: \(error)")
         }
@@ -58,7 +58,7 @@ final class VDSProtectionVM {
         guard let data = await request(path: "/cloud/\(serviceId)/protection/presets") else { return }
         
         do {
-            presets = try JSONDecoder().decode([CloudProtectionPreset].self, from: data)
+            presets = try JSONDecoder().decode([VDSProtectionPreset].self, from: data)
         } catch {
             SystemAlert.error("Protection presets decode error: \(error)")
         }
@@ -68,7 +68,7 @@ final class VDSProtectionVM {
         guard let data = await request(path: "/cloud/\(serviceId)/protection/profiles") else { return }
         
         do {
-            profiles = try JSONDecoder().decode([CloudProtectionProfile].self, from: data)
+            profiles = try JSONDecoder().decode([VDSProtectionProfile].self, from: data)
         } catch {
             SystemAlert.error("Protection profiles decode error: \(error)")
         }
@@ -86,7 +86,7 @@ final class VDSProtectionVM {
         decoder.dateDecodingStrategy = .iso8601
         
         do {
-            let decoded = try decoder.decode([CloudProtectionAttack].self, from: data)
+            let decoded = try decoder.decode([VDSProtectionAttack].self, from: data)
             
             if reset {
                 attacks = decoded
@@ -110,7 +110,7 @@ final class VDSProtectionVM {
         await fetchAttacks(serviceId, page: next, reset: false)
     }
     
-    func updateDefaultAction(_ action: CloudProtectionDefaultAction) async {
+    func updateDefaultAction(_ action: VDSProtectionDefaultAction) async {
         guard action.isUpdatable, let serviceId else { return }
         let body = ["defaultAction": action.rawValue]
         guard let payload = try? JSONSerialization.data(withJSONObject: body) else { return }
@@ -121,7 +121,7 @@ final class VDSProtectionVM {
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
             
-            if let updated = try? decoder.decode(CloudProtectionIPInfo.self, from: data) {
+            if let updated = try? decoder.decode(VDSProtectionIPInfo.self, from: data) {
                 self.ipInfo = updated
             } else {
                 self.ipInfo?.defaultAction = action
@@ -129,7 +129,7 @@ final class VDSProtectionVM {
         }
     }
     
-    func createProfile(_ input: CloudProtectionProfileInput) async {
+    func createProfile(_ input: VDSProtectionProfileInput) async {
         guard let serviceId else { return }
         
         var body: [String: Any] = [
@@ -152,7 +152,7 @@ final class VDSProtectionVM {
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
             
-            if let created = try? decoder.decode(CloudProtectionProfile.self, from: data) {
+            if let created = try? decoder.decode(VDSProtectionProfile.self, from: data) {
                 self.profiles.insert(created, at: 0)
             } else {
                 await self.fetchProfiles(serviceId)
@@ -160,7 +160,7 @@ final class VDSProtectionVM {
         }
     }
     
-    func updateProfile(_ profileId: Int, input: CloudProtectionProfileInput) async {
+    func updateProfile(_ profileId: Int, input: VDSProtectionProfileInput) async {
         guard let serviceId else { return }
         
         var body: [String: Any] = [
@@ -183,7 +183,7 @@ final class VDSProtectionVM {
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
             
-            if let updated = try? decoder.decode(CloudProtectionProfile.self, from: data) {
+            if let updated = try? decoder.decode(VDSProtectionProfile.self, from: data) {
                 if let index = self.profiles.firstIndex(where: { $0.id == profileId }) {
                     self.profiles[index] = updated
                 } else {

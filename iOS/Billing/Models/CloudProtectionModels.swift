@@ -1,6 +1,6 @@
 import Foundation
 
-enum CloudProtectionDefaultAction: String, Codable, CaseIterable, Identifiable {
+enum VDSProtectionDefaultAction: String, Codable, CaseIterable, Identifiable {
     case accept = "ACCEPT",
          filter = "FILTER",
          drop = "DROP"
@@ -20,7 +20,7 @@ enum CloudProtectionDefaultAction: String, Codable, CaseIterable, Identifiable {
     }
 }
 
-enum CloudProtectionProtocol: String, Codable, CaseIterable, Identifiable {
+enum VDSProtectionProtocol: String, Codable, CaseIterable, Identifiable {
     case icmp = "ICMP",
          tcp = "TCP",
          udp = "UDP",
@@ -29,30 +29,30 @@ enum CloudProtectionProtocol: String, Codable, CaseIterable, Identifiable {
     var id: String { rawValue }
 }
 
-struct CloudProtectionIPInfo: Decodable, Identifiable, Equatable {
+struct VDSProtectionIPInfo: Decodable, Identifiable, Equatable {
     let id: Int
     let ipv4: String
-    var defaultAction: CloudProtectionDefaultAction?
+    var defaultAction: VDSProtectionDefaultAction?
 }
 
-struct CloudProtectionPreset: Decodable, Identifiable, Equatable {
+struct VDSProtectionPreset: Decodable, Identifiable, Equatable {
     let id: Int
     let name: String
-    let `protocol`: CloudProtectionProtocol
+    let `protocol`: VDSProtectionProtocol
 }
 
-struct CloudProtectionProfile: Decodable, Identifiable, Equatable, Hashable {
+struct VDSProtectionProfile: Decodable, Identifiable, Equatable, Hashable {
     let id: Int
     let presetId: Int
     let presetName: String?
-    let `protocol`: CloudProtectionProtocol
+    let `protocol`: VDSProtectionProtocol
     let minDstPort: Int?
     let maxDstPort: Int?
     let autoCreated: Bool
     let notes: String?
 }
 
-struct CloudProtectionAttack: Decodable, Identifiable, Equatable {
+struct VDSProtectionAttack: Decodable, Identifiable, Equatable {
     let id: String
     let createdAt: Date?
     let startedAt: Date?
@@ -61,9 +61,9 @@ struct CloudProtectionAttack: Decodable, Identifiable, Equatable {
     let sampleRate: Int?
 }
 
-struct CloudProtectionProfileInput {
+struct VDSProtectionProfileInput {
     var presetId: Int
-    var `protocol`: CloudProtectionProtocol
+    var `protocol`: VDSProtectionProtocol
     var minPort: Int?
     var maxPort: Int?
     var notes: String?
