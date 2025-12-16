@@ -85,14 +85,14 @@ struct BillingAvatarHeader: View {
                             .scaledToFill()
                         
                     case .failure:
-                        placeholderInitial(for: user)
+                        SettingsAvatarPlaceholderInitial(user)
                         
                     @unknown default:
-                        placeholderInitial(for: user)
+                        SettingsAvatarPlaceholderInitial(user)
                     }
                 }
             } else {
-                placeholderInitial(for: user)
+                SettingsAvatarPlaceholderInitial(user)
             }
         }
         .animation(.default, value: avatarPreview)
@@ -102,19 +102,6 @@ struct BillingAvatarHeader: View {
             Circle()
                 .stroke(.primary.opacity(0.08), lineWidth: 1)
         }
-    }
-    
-    @ViewBuilder
-    private func placeholderInitial(for user: BillingUser) -> some View {
-        let initial = user.name.first.map { String($0) } ?? "?"
-        
-        Circle()
-            .fill(.blue.opacity(0.12))
-            .overlay {
-                Text(initial.uppercased())
-                    .title3(.semibold)
-                    .foregroundStyle(.blue)
-            }
     }
     
     private func handleAvatarChange(_ item: PhotosPickerItem) {
