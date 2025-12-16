@@ -92,6 +92,10 @@ final class OAuthVM: NSObject {
     }
     
     func handleCallback(_ url: URL) {
+        isLinkingGitHub = false
+        isLinkingGoogle = false
+        isLinkingYandex = false
+        
         guard let pendingProvider else { return }
         guard url.path.lowercased() == "/auth/providers/\(pendingProvider.rawValue)" else { return }
         
