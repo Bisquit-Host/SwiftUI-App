@@ -2,9 +2,9 @@ import SwiftUI
 
 struct LoginSignupDocumentList: View {
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.openURL) private var openURL
     
     @Binding private var hasAcceptedDocuments: Bool
+    @State private var acceptedDocumentTitles = Set<String>()
     
     init(_ hasAcceptedDocuments: Binding<Bool>) {
         _hasAcceptedDocuments = hasAcceptedDocuments
@@ -16,31 +16,15 @@ struct LoginSignupDocumentList: View {
         ("Data Processing Consent", Endpoint.bisquitConsent)
     ]
     
+    private var allAccepted: Bool {
+        acceptedDocumentTitles.count == documents.count
+    }
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Please review and accept the documents below to create an account")
-                .secondary()
-                .footnote()
-            
             VStack(spacing: 10) {
-                ForEach(documents, id: \.title) { doc in
-                    Button {
-                        if let url = URL(string: doc.url) {
-                            openURL(url)
-                        }
-                    } label: {
-                        HStack {
-                            Text(doc.title)
-                            
-                            Spacer()
-                            
-                            Image(systemName: "arrow.up.right.square")
-                                .secondary()
-                        }
-                    }
-                    .secondary()
-                    .frame(maxWidth: .infinity)
-                    .loginTextField()
+                ForEach(documents, id: \.title) {
+                    LoginSignupDocumentCard(title: $0.title, url: $0.url, acceptedDocumentTitles: $acceptedDocumentTitles)
                 }
             }
             
@@ -57,9 +41,19 @@ struct LoginSignupDocumentList: View {
             .frame(minHeight: 50)
             .frame(maxWidth: .infinity)
             .glassEffect()
+            .disabled(!allAccepted)
         }
         .navigationTitle("Documents")
+        .navigationSubtitle("Please review and accept the documents below to create an account")
         .navigationBarTitleDisplayMode(.inline)
         .padding()
+        .onAppear {
+            if hasAcceptedDocuments {
+                acceptedDocumentTitles = Set(documents.map(\.title))
+            }
+        }
+        .onChange(of: acceptedDocumentTitles) { _, _ in
+            hasAcceptedDocuments = allAccepted
+        }
     }
 }
