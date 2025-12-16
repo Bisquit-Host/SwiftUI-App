@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 import HCaptcha
 import PteroNet
@@ -19,13 +20,29 @@ struct BillingLogin: View {
     @State private var `2FACode` = ""
     @State private var sheet2FA = false
     
+    private static let emailRegex = try! NSRegularExpression(
+        pattern: #"^[A-Z0-9a-z._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$"#,
+        options: []
+    )
+    
+    private var trimmedLogin: String {
+        login.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+    
+    private var emailValidationError: String? {
+        guard isSignUp else { return nil }
+        guard !trimmedLogin.isEmpty else { return nil }
+        return Self.isValidEmail(trimmedLogin) ? nil : "Enter a valid email address"
+    }
+    
     private var continueButtonDisabled: Bool {
-        let loginEmpty = login.trimmingCharacters(in: .whitespaces).isEmpty
+        let loginEmpty = trimmedLogin.isEmpty
         let passwordEmpty = password.trimmingCharacters(in: .whitespaces).isEmpty
         let nameEmpty = name.trimmingCharacters(in: .whitespaces).isEmpty
-        let documentsNotAccepted = !hasAcceptedDocuments
+        let documentsNotAccepted = isSignUp && !hasAcceptedDocuments
+        let invalidEmail = isSignUp && !Self.isValidEmail(trimmedLogin)
         
-        return loginEmpty || passwordEmpty || nameEmpty || documentsNotAccepted || vm.isSubmitting
+        return loginEmpty || passwordEmpty || (isSignUp && nameEmpty) || documentsNotAccepted || invalidEmail || vm.isSubmitting
     }
     
     var body: some View {
@@ -36,18 +53,25 @@ struct BillingLogin: View {
                     .loginButtonStyle()
             }
             
-            TextField("Login", text: $login)
+            TextField(isSignUp ? "Email" : "Login", text: $login)
                 .autocorrectionDisabled()
                 .keyboardType(.emailAddress)
                 .textContentType(.emailAddress)
                 .textInputAutocapitalization(.never)
                 .loginButtonStyle()
             
+            if let emailValidationError {
+                Text(emailValidationError)
+                    .font(.footnote)
+                    .foregroundStyle(.red)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            
             SecureField("Password", text: $password)
                 .textContentType(.password)
                 .loginButtonStyle()
                 .onSubmit {
-                    sheetHcaptcha = true
+                    startCaptcha()
                 }
             
             if isSignUp {
@@ -56,7 +80,7 @@ struct BillingLogin: View {
             }
             
             Button {
-                sheetHcaptcha = true
+                startCaptcha()
             } label: {
                 if vm.isSubmitting {
                     HStack {
@@ -118,8 +142,24 @@ struct BillingLogin: View {
         }
     }
     
+    private static func isValidEmail(_ value: String) -> Bool {
+        let value = value.trimmingCharacters(in: .whitespacesAndNewlines)
+        let range = NSRange(value.startIndex..., in: value)
+        return emailRegex.firstMatch(in: value, options: [], range: range) != nil
+    }
+    
+    private func startCaptcha() {
+        guard !continueButtonDisabled else { return }
+        sheetHcaptcha = true
+    }
+    
     private func auth() {
         sheetHcaptcha = false
+        
+        guard !continueButtonDisabled else {
+            captchaToken = ""
+            return
+        }
         
         Task {
             let response: BillingLoginResponse?
@@ -127,13 +167,13 @@ struct BillingLogin: View {
             if isSignUp {
                 response = await vm.signup(
                     name: name.trimmingCharacters(in: .whitespaces),
-                    email: login,
+                    email: trimmedLogin,
                     password: password,
                     captchaToken: captchaToken,
                     currency: selectedCurrency.rawValue
                 )
             } else {
-                response = await vm.login(login, password, captchaToken)
+                response = await vm.login(trimmedLogin, password, captchaToken)
             }
             
             captchaToken = ""
