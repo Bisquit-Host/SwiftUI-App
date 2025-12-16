@@ -2,6 +2,7 @@ import SwiftUI
 
 struct VDSProtection: View {
     @State private var vm = VDSProtectionVM()
+    
     let serviceId: Int
     
     var body: some View {
