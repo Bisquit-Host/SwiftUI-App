@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct LoginTextFieldModifier: ViewModifier {
+struct LoginStyleModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .padding(.horizontal)
@@ -14,7 +14,7 @@ struct LoginTextFieldModifier: ViewModifier {
 }
 
 extension View {
-    func loginTextField() -> some View {
-        modifier(LoginTextFieldModifier())
+    func loginButtonStyle() -> some View {
+        modifier(LoginStyleModifier())
     }
 }

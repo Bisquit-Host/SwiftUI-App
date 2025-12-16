@@ -12,7 +12,6 @@ struct BillingLogin: View {
     @State private var password = ""
     @State private var selectedCurrency: BillingCurrency = .RUB
     @State private var hasAcceptedDocuments = false
-    @State private var sheetDocuments = false
     @State private var sheetHcaptcha = false
     @State private var captchaToken = ""
     @State private var pending2FAToken: String?
@@ -33,7 +32,7 @@ struct BillingLogin: View {
             if isSignUp {
                 TextField("Name", text: $name)
                     .textContentType(.name)
-                    .loginTextField()
+                    .loginButtonStyle()
             }
             
             TextField("Login", text: $login)
@@ -41,56 +40,18 @@ struct BillingLogin: View {
                 .keyboardType(.emailAddress)
                 .textContentType(.emailAddress)
                 .textInputAutocapitalization(.never)
-                .loginTextField()
+                .loginButtonStyle()
             
             SecureField("Password", text: $password)
                 .textContentType(.password)
-                .loginTextField()
+                .loginButtonStyle()
                 .onSubmit {
                     sheetHcaptcha = true
                 }
             
             if isSignUp {
-                HStack {
-                    Text("Currency")
-                        .secondary()
-                    
-                    Spacer(minLength: 100)
-                    
-                    Picker(selection: $selectedCurrency) {
-                        ForEach(BillingCurrency.allCases, id: \.self) {
-                            Text("\($0.symbol) \($0.rawValue)")
-                                .tag($0)
-                        }
-                    } label: {
-                        HStack(spacing: 6) {
-                            Text("\(selectedCurrency.symbol) \(selectedCurrency.rawValue)")
-                            
-                            Image(systemName: "chevron.up.chevron.down")
-                                .footnote()
-                                .secondary()
-                        }
-                    }
-                    .pickerStyle(.segmented)
-                    .tint(.primary)
-                }
-                .loginTextField()
-                
-                Button {
-                    sheetDocuments = true
-                } label: {
-                    HStack {
-                        Text(hasAcceptedDocuments ? "Documents accepted" : "Review & accept documents")
-                        
-                        Spacer()
-                        
-                        Image(systemName: hasAcceptedDocuments ? "checkmark.circle.fill" : "doc.text")
-                            .secondary()
-                    }
-                }
-                .secondary()
-                .frame(maxWidth: .infinity)
-                .loginTextField()
+                LoginCurrencyPicker($selectedCurrency)
+                RegistrationDocumentsButton($hasAcceptedDocuments)
             }
             
             Button {
@@ -131,11 +92,6 @@ struct BillingLogin: View {
         }
         .sheet($sheetHcaptcha) {
             HCaptchaSheet($captchaToken)
-        }
-        .sheet($sheetDocuments) {
-            NavigationStack {
-                LoginSignupDocumentList($hasAcceptedDocuments)
-            }
         }
         .sheet($sheet2FA) {
             NavigationStack {
