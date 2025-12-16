@@ -51,7 +51,7 @@ struct CreateTicketSheet: View {
     
     private func createTicket() {
         Task {
-            if let _ = await vm.createTicket(title: title, message: message, attachments: attachments) {
+            if let _ = await vm.createTicket(title, message: message, attachments: attachments) {
                 dismiss()
                 await vm.fetchTickets()
             }

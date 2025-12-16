@@ -1,10 +1,10 @@
 import SwiftUI
 
 struct BillingDashboardNavLinkLabel: View {
-    let title: LocalizedStringKey
-    let subtitle: LocalizedStringKey
-    let systemImage: String
-    let tint: Color
+    private let title: LocalizedStringKey
+    private let subtitle: LocalizedStringKey
+    private let systemImage: String
+    private let tint: Color
     
     init(_ title: LocalizedStringKey, subtitle: LocalizedStringKey, systemImage: String, tint: Color) {
         self.title = title

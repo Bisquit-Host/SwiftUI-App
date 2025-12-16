@@ -90,7 +90,7 @@ final class TicketListVM {
         }
     }
     
-    func createTicket(title: String, message: String, attachments: [PendingAttachment]) async -> Int? {
+    func createTicket(_ title: String, message: String, attachments: [PendingAttachment]) async -> Int? {
         guard let accessToken = Keychain.load(key: "access_token") else {
             print("Access token not found", #function)
             return nil
