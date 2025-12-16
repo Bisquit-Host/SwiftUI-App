@@ -16,7 +16,7 @@ struct VDSProtectionAttacksSection: View {
                 
             } else {
                 ForEach(vm.attacks) {
-                    VDSProtectionAttackCard(attack: $0)
+                    VDSProtectionAttackCard($0)
                 }
                 
                 if vm.canLoadMoreAttacks {

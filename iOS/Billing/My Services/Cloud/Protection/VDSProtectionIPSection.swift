@@ -2,6 +2,7 @@ import SwiftUI
 
 struct VDSProtectionIPSection: View {
     @Environment(VDSProtectionVM.self) private var vm
+    
     @State private var selectedAction: VDSProtectionDefaultAction = .filter
     
     var body: some View {

@@ -32,7 +32,7 @@ struct VDSProtectionProfilesSection: View {
             }
         } primaryButton: {
             NavigationLink {
-                VDSProtectionProfileEditorSheet(mode: .create)
+                VDSProtectionProfileEditorSheet(.create)
                     .environment(vm)
             } label: {
                 Image(systemName: "plus")
@@ -42,7 +42,7 @@ struct VDSProtectionProfilesSection: View {
             .disabled(vm.isPerformingAction)
         }
         .navigationDestination(item: $editingProfile) {
-            VDSProtectionProfileEditorSheet(mode: .edit($0))
+            VDSProtectionProfileEditorSheet(.edit($0))
                 .environment(vm)
         }
         .confirmationDialog("Delete profile?", isPresented: $showDeleteDialog, titleVisibility: .visible) {

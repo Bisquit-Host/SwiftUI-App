@@ -4,7 +4,7 @@ struct VDSProtectionProfileEditorSheet: View {
     @Environment(VDSProtectionVM.self) private var vm
     @Environment(\.dismiss) private var dismiss
     
-    let mode: CloudProtectionProfileEditorMode
+    private let mode: CloudProtectionProfileEditorMode
     
     @State private var presetId = 0
     @State private var protocolSelection: VDSProtectionProtocol
@@ -12,7 +12,7 @@ struct VDSProtectionProfileEditorSheet: View {
     @State private var maxPortText: String
     @State private var notesText: String
     
-    init(mode: CloudProtectionProfileEditorMode) {
+    init(_ mode: CloudProtectionProfileEditorMode) {
         self.mode = mode
         let existing = mode.existingProfile
         
@@ -237,7 +237,7 @@ struct VDSProtectionProfileEditorSheet: View {
 }
 
 #Preview {
-    VDSProtectionProfileEditorSheet(mode: .create)
+    VDSProtectionProfileEditorSheet(.create)
         .environment(VDSProtectionVM())
         .environmentObject(ValueStore())
         .darkSchemePreferred()

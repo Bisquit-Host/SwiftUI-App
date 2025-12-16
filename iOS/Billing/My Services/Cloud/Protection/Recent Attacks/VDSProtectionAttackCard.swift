@@ -1,7 +1,11 @@
 import SwiftUI
 
 struct VDSProtectionAttackCard: View {
-    let attack: VDSProtectionAttack
+    private let attack: VDSProtectionAttack
+    
+    init(_ attack: VDSProtectionAttack) {
+        self.attack = attack
+    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
@@ -47,7 +51,7 @@ struct VDSProtectionAttackCard: View {
 
 #Preview {
     VDSProtectionAttackCard(
-        attack: .init(
+        .init(
             id: "abc-123-def",
             createdAt: .now,
             startedAt: .now,
