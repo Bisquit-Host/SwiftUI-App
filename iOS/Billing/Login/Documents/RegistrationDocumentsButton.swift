@@ -1,17 +1,18 @@
 import SwiftUI
 
 struct RegistrationDocumentsButton: View {
-    @State private var sheetDocuments = false
+    @Binding private var isDocumentsSheetPresented: Bool
     
     @Binding private var hasAcceptedDocuments: Bool
     
-    init(_ hasAcceptedDocuments: Binding<Bool>) {
+    init(_ hasAcceptedDocuments: Binding<Bool>, isPresented: Binding<Bool>) {
         _hasAcceptedDocuments = hasAcceptedDocuments
+        _isDocumentsSheetPresented = isPresented
     }
     
     var body: some View {
         Button {
-            sheetDocuments = true
+            isDocumentsSheetPresented = true
         } label: {
             HStack {
                 Text(hasAcceptedDocuments ? "Documents accepted" : "Review & accept documents")
@@ -25,7 +26,7 @@ struct RegistrationDocumentsButton: View {
         .foregroundStyle(.foreground)
         .frame(maxWidth: .infinity)
         .loginButtonStyle()
-        .sheet($sheetDocuments) {
+        .sheet($isDocumentsSheetPresented) {
             NavigationStack {
                 LoginSignupDocumentList($hasAcceptedDocuments)
             }

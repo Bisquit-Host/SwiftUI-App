@@ -12,6 +12,7 @@ struct BillingLogin: View {
     @State private var password = ""
     @State private var selectedCurrency: BillingCurrency = .RUB
     @State private var hasAcceptedDocuments = false
+    @State private var sheetDocuments = false
     @State private var sheetHcaptcha = false
     @State private var captchaToken = ""
     @State private var pending2FAToken: String?
@@ -50,7 +51,7 @@ struct BillingLogin: View {
                 }
             
             if isSignUp {
-                RegistrationDocumentsButton($hasAcceptedDocuments)
+                RegistrationDocumentsButton($hasAcceptedDocuments, isPresented: $sheetDocuments)
                 LoginCurrencyPicker($selectedCurrency)
             }
             
@@ -83,6 +84,7 @@ struct BillingLogin: View {
             
             BillingLoginSocialButtons()
         }
+        .allowsHitTesting(!sheetDocuments)
         .frame(maxHeight: .infinity)
         .scenePadding(.horizontal)
         .overlay(alignment: .bottom) {

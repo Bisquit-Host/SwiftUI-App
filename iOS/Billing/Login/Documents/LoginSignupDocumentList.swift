@@ -43,6 +43,7 @@ struct LoginSignupDocumentList: View {
         .navigationSubtitle("Please review and accept the documents below to create an account")
         .navigationBarTitleDisplayMode(.inline)
         .presentationDetents([.medium])
+        .presentationBackgroundInteraction(.enabled(upThrough: .medium))
         .scenePadding()
     }
 }
