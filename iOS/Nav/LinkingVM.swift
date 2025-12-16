@@ -18,7 +18,7 @@ final class DeepLinkVM {
         }
         
         if let error = components.queryItems?.first(where: { $0.name == "error" })?.value {
-            print("🔗 Deepling error:", error.replacing("+", with: " "))
+            print("🔗 Deeplink error:", error.replacing("+", with: " "))
             return
         }
         

@@ -36,7 +36,7 @@ struct AppContainer: View {
                 print("🔗 Deeplink:", $0)
 #if os(iOS)
                 linking.handleDeepLink($0)
-                billingOAuth.handleCallback($0)
+//                billingOAuth.handleCallback($0)
 #endif
             }
             .alert("Authentication with session", isPresented: $linking.alertAuth) {

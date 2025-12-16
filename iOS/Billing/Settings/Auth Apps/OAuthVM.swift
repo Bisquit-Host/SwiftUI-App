@@ -97,15 +97,18 @@ final class OAuthVM: NSObject {
         
         guard
             let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
-            let code = components.queryItems?.first(where: { $0.name == "code" })?.value
+            let accessToken = components.queryItems?.first(where: { $0.name == "accessToken" })?.value,
+            let refreshToken = components.queryItems?.first(where: { $0.name == "refreshToken" })?.value,
+            let expiresInString = components.queryItems?.first(where: { $0.name == "expiresIn" })?.value,
+            let expiresIn = Int(expiresInString)
         else {
-            finish(success: false, message: "Missing code in callback")
+            finish(success: false, message: "Duck me")
             return
         }
         
-        Task {
-            await exchangeCode(code, for: pendingProvider)
-        }
+        Keychain.save(accessToken, forKey: "access_token")
+        Keychain.save(refreshToken, forKey: "refresh_token")
+        ValueStore().testExpiresIn = expiresIn
     }
     
     private func fetchAuthURL(for provider: BillingAuthProvider) async {
@@ -116,10 +119,15 @@ final class OAuthVM: NSObject {
             return
         }
         
+        print("Fetching auth URL from:", url)
+        
         var request = URLRequest(url: url)
         
         if let accessToken {
+            print("fetching authURL with access token")
             request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        } else {
+            print("fetching authURL without access token")
         }
         
         do {
@@ -140,71 +148,6 @@ final class OAuthVM: NSObject {
             }
             
             openSafari(url)
-        } catch {
-            finish(success: false, message: error.localizedDescription)
-        }
-    }
-    
-    private func startSession(_ url: URL) {
-        session = ASWebAuthenticationSession(url: url, callbackURLScheme: "https") { callbackURL, error in
-            if let callbackURL {
-                self.handleCallback(callbackURL)
-            } else {
-                self.finish(success: false, message: error?.localizedDescription)
-            }
-        }
-        
-        session?.presentationContextProvider = self
-        session?.start()
-    }
-    
-    private func exchangeCode(_ code: String, for provider: BillingAuthProvider) async {
-        guard let accessToken = Keychain.load(key: "access_token") else {
-            print("Access token not found", #function)
-            return
-        }
-        
-        guard let url = URL(string: "\(basePath)/auth/providers/\(provider.rawValue)") else {
-            finish(success: false, message: "Invalid backend URL")
-            return
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        
-        request.httpBody = try? JSONEncoder().encode(["code": code])
-        
-        do {
-            let (data, response) = try await URLSession.shared.data(for: request)
-            
-            guard let http = response as? HTTPURLResponse else {
-                finish(success: false, message: "No HTTP response")
-                return
-            }
-            
-            switch http.statusCode {
-            case 204:
-                finish(success: true, message: nil)
-                
-            case 200:
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                
-                if let login = try? decoder.decode(BillingLoginResponse.self, from: data) {
-                    Keychain.save(login.accessToken, forKey: "access_token")
-                    Keychain.save(login.refreshToken, forKey: "refresh_token")
-                    ValueStore().testExpiresIn = login.expiresIn
-                    
-                    finish(success: true, message: nil)
-                } else {
-                    finish(success: false, message: "Failed to parse tokens")
-                }
-                
-            default:
-                finish(success: false, message: "Unexpected status: \(http.statusCode)")
-            }
         } catch {
             finish(success: false, message: error.localizedDescription)
         }

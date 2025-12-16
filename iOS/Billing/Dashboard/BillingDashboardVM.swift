@@ -28,7 +28,7 @@ final class BillingDashboardVM {
             if let httpResponse = response as? HTTPURLResponse {
                 let status = httpResponse.statusCode
                 
-                print("Refresh token status code:", status)
+                print(status, "Refresh token")
             }
             
             if let bodyString = String(data: data, encoding: .utf8) {
@@ -42,6 +42,7 @@ final class BillingDashboardVM {
             
             Keychain.save(refreshedCreds.accessToken, forKey: "access_token")
             Keychain.save(refreshedCreds.refreshToken, forKey: "refresh_token")
+            
             ValueStore().lastBillingTokenRefresh = Date()
             ValueStore().testExpiresIn = refreshedCreds.expiresIn
             
