@@ -4,7 +4,7 @@ import SwiftUI
 struct VDSSSHTabView: View {
     @Environment(VDSServiceDetailsVM.self) private var vm
 
-    @StateObject private var viewModel = SSHTerminalViewModel()
+    @StateObject private var viewModel = SSHTerminalVM()
 
     @State private var host: String = ""
     @State private var port: String = "22"

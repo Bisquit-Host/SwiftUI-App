@@ -6,7 +6,7 @@ import SwiftUI
 import UIKit
 
 struct SSHTerminalView: UIViewRepresentable {
-    @ObservedObject var viewModel: SSHTerminalViewModel
+    @ObservedObject var viewModel: SSHTerminalVM
 
     func makeUIView(context: Context) -> TerminalView {
         let view = TerminalView(frame: .zero)

@@ -21,12 +21,12 @@ struct SheetTopup: View {
         ScrollView {
             VStack {
                 BillingSectionCard("Balance") {
-                    BillingBalanceCard("Main", icon: "creditcard.fill", tint: .blue, value: formatted(user.balance))
-                    BillingBalanceCard("Bonus", icon: "gift", tint: .mint, value: formatted(user.bonusBalance))
+                    BillingBalanceCard("Main", value: formatted(user.balance))
+                    BillingBalanceCard("Bonus", value: formatted(user.bonusBalance))
                     
                     Divider()
                     
-                    BillingBalanceCard("Total", icon: "wallet.pass.fill", tint: .indigo, value: formatted(user.totalBalance))
+                    BillingBalanceCard("Total", value: formatted(user.totalBalance))
                 }
                 
                 TopupSection(
