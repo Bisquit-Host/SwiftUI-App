@@ -22,12 +22,8 @@ struct TicketList: View {
                         .listRowBackground(Color.clear)
                     
                 } else {
-                    ForEach(vm.tickets) { item in
-                        NavigationLink {
-                            TicketDetails(item.ticket)
-                        } label: {
-                            TicketCard(item)
-                        }
+                    ForEach(vm.tickets) {
+                        TicketCard($0)
                     }
                 }
             }

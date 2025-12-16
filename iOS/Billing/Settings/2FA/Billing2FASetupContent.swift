@@ -16,13 +16,7 @@ struct Billing2FASetupContent: View {
         @Bindable var vm = vm
         
         VStack(alignment: .leading, spacing: 16) {
-            if let qr = generateQRCode(setup.url) {
-                Image(uiImage: qr)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxWidth: 240)
-                    .clipShape(.rect(cornerRadius: 12))
-            }
+            Billing2FASetupContentQRCode(setup)
             
             VStack(alignment: .leading, spacing: 8) {
                 Text("Secret")
@@ -66,31 +60,6 @@ struct Billing2FASetupContent: View {
                 dismiss()
             }
         }
-    }
-    
-    private func generateQRCode(_ text: String) -> UIImage? {
-        guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else {
-            return nil
-        }
-        
-        let data = text.data(using: .utf8)
-        qrFilter.setValue(data, forKey: "inputMessage")
-        qrFilter.setValue("M", forKey: "inputCorrectionLevel")
-        
-        guard let qrImage = qrFilter.outputImage else {
-            return nil
-        }
-        
-        let transform = CGAffineTransform(scaleX: 8, y: 8)
-        let scaledQRImage = qrImage.transformed(by: transform)
-        
-        let context = CIContext()
-        
-        guard let cgImage = context.createCGImage(scaledQRImage, from: scaledQRImage.extent) else {
-            return nil
-        }
-        
-        return UIImage(cgImage: cgImage)
     }
 }
 
