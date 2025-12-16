@@ -4,7 +4,6 @@ struct LoginSignupDocumentList: View {
     @Environment(\.dismiss) private var dismiss
     
     @Binding private var hasAcceptedDocuments: Bool
-    @State private var acceptedDocumentTitles = Set<String>()
     
     init(_ hasAcceptedDocuments: Binding<Bool>) {
         _hasAcceptedDocuments = hasAcceptedDocuments
@@ -16,23 +15,17 @@ struct LoginSignupDocumentList: View {
         ("Data Processing Consent", Endpoint.bisquitConsent)
     ]
     
-    private var allAccepted: Bool {
-        acceptedDocumentTitles.count == documents.count
-    }
-    
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            VStack(spacing: 10) {
-                ForEach(documents, id: \.title) {
-                    LoginSignupDocumentCard(title: $0.title, url: $0.url, acceptedDocumentTitles: $acceptedDocumentTitles)
-                }
+        VStack(alignment: .leading) {
+            ForEach(documents, id: \.title) {
+                LoginSignupDocumentCard(title: $0.title, url: $0.url)
             }
             
             Button {
                 hasAcceptedDocuments = true
                 dismiss()
             } label: {
-                Text("Accept documents")
+                Text("Accept all documents")
                     .frame(maxWidth: .infinity)
             }
             .semibold()
@@ -40,20 +33,16 @@ struct LoginSignupDocumentList: View {
             .foregroundStyle(.foreground)
             .frame(minHeight: 50)
             .frame(maxWidth: .infinity)
-            .glassEffect()
-            .disabled(!allAccepted)
+            .glassEffect(.regular.tint(.green.opacity(0.3)))
+            .overlay {
+                Capsule()
+                    .stroke(.green, lineWidth: 0.1)
+            }
         }
         .navigationTitle("Documents")
         .navigationSubtitle("Please review and accept the documents below to create an account")
         .navigationBarTitleDisplayMode(.inline)
-        .padding()
-        .onAppear {
-            if hasAcceptedDocuments {
-                acceptedDocumentTitles = Set(documents.map(\.title))
-            }
-        }
-        .onChange(of: acceptedDocumentTitles) { _, _ in
-            hasAcceptedDocuments = allAccepted
-        }
+        .presentationDetents([.medium])
+        .scenePadding()
     }
 }

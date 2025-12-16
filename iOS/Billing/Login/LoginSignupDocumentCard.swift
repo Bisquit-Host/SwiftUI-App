@@ -5,25 +5,9 @@ struct LoginSignupDocumentCard: View {
     
     let title: String
     let url: String
-    @Binding var acceptedDocumentTitles: Set<String>
-    
-    private var isAccepted: Bool {
-        acceptedDocumentTitles.contains(title)
-    }
     
     var body: some View {
         HStack(spacing: 10) {
-            Button {
-                if isAccepted {
-                    acceptedDocumentTitles.remove(title)
-                } else {
-                    acceptedDocumentTitles.insert(title)
-                }
-            } label: {
-                Image(systemName: isAccepted ? "checkmark.circle.fill" : "circle")
-                    .title3()
-            }
-            
             Button {
                 guard let url = URL(string: url) else { return }
                 openURL(url)
@@ -33,22 +17,23 @@ struct LoginSignupDocumentCard: View {
                     
                     Spacer()
                     
-                    Image(systemName: "arrow.up.right.square")
+                    Image(systemName: "text.document")
+                        .secondary()
                 }
             }
         }
         .foregroundStyle(.foreground)
         .padding(.horizontal)
         .frame(height: 50)
-        .background(.primary.opacity(0.04), in: .capsule)
+        .background(.ultraThinMaterial, in: .capsule)
         .overlay {
             Capsule()
-                .stroke(.primary.opacity(0.05), lineWidth: 1)
+                .stroke(.primary, lineWidth: 0.1)
         }
     }
 }
 
 #Preview {
-    LoginSignupDocumentCard(title: "Terms of Service", url: Endpoint.bisquitTerms, acceptedDocumentTitles: .constant([]))
+    LoginSignupDocumentCard(title: "Terms of Service", url: Endpoint.bisquitTerms)
         .darkSchemePreferred()
 }
