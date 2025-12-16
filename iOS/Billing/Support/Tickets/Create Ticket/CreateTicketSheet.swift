@@ -19,16 +19,7 @@ struct CreateTicketSheet: View {
                     .frame(minHeight: 160)
             }
             
-            if !attachments.isEmpty {
-                Section("Attachments (\(attachments.count)/5)") {
-                    ForEach(attachments) { file in
-                        CreateTicketSheetAttachment(file) {
-                            attachments.removeAll { $0.id == file.id }
-                        }
-                    }
-                }
-            }
-            
+            CreateTicketSheetAttachments($attachments)
             CreateTicketSheetFilePicker($attachments)
         }
         .navigationTitle("New Ticket")
