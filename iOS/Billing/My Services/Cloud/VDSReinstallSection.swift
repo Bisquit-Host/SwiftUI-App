@@ -1,6 +1,6 @@
 import SwiftUI
 import Kingfisher
-
+#warning("Subviews")
 struct VDSReinstallSection: View {
     @Environment(VDSServiceDetailsVM.self) private var vm
     
@@ -101,14 +101,14 @@ struct VDSReinstallSection: View {
                 .resizable()
                 .placeholder { ProgressView() }
                 .scaledToFit()
-                .frame(width: 24, height: 24)
+                .frame(24)
                 .clipShape(.rect(cornerRadius: 6))
         } else {
             Image(systemName: "questionmark.square.dashed")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 24, height: 24)
-                .foregroundStyle(.secondary)
+                .frame(24)
+                .secondary()
         }
     }
 }

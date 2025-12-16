@@ -52,21 +52,22 @@ struct VDSSSHTabView: View {
                     }
 
                     Text(viewModel.status)
-                        .font(.callout)
-                        .foregroundStyle(.secondary)
+                        .callout()
+                        .secondary()
 
                     Spacer()
                 }
 
                 if let lastError = viewModel.lastError {
                     Text(lastError)
-                        .font(.footnote)
+                        .footnote()
                         .foregroundStyle(.red)
                 }
 
                 DisclosureGroup("Logs", isExpanded: $showLogs) {
                     TextEditor(text: $viewModel.logs)
-                        .font(.system(.footnote, design: .monospaced))
+                        .footnote()
+                        .monospaced()
                         .frame(height: 160)
                         .disabled(true)
                 }
