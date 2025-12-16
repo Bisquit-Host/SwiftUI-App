@@ -11,10 +11,7 @@ struct AccountSettingsHeader: View {
     
     var body: some View {
         HStack(spacing: 20) {
-            avatarImage(for: user)
-                .overlay(alignment: .topTrailing) {
-                    AccountSettingsAvatarPicker($avatarPreview)
-                }
+            AccountSettingsAvatarImage($avatarPreview, for: user)
             
             VStack(alignment: .leading, spacing: 6) {
                 Text(user.name)
@@ -30,46 +27,5 @@ struct AccountSettingsHeader: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.vertical, 4)
-    }
-    
-    @ViewBuilder
-    private func avatarImage(for user: BillingUser) -> some View {
-        let size = 72.0
-        
-        ZStack {
-            if let avatarPreview {
-                Image(uiImage: avatarPreview)
-                    .resizable()
-                    .scaledToFill()
-                
-            } else if let avatar = user.avatar, let url = URL(string: avatar) {
-                AsyncImage(url: url) {
-                    switch $0 {
-                    case .empty:
-                        ProgressView()
-                        
-                    case .success(let image):
-                        image
-                            .resizable()
-                            .scaledToFill()
-                        
-                    case .failure:
-                        AccountSettingsAvatarPlaceholderInitial(user)
-                        
-                    @unknown default:
-                        AccountSettingsAvatarPlaceholderInitial(user)
-                    }
-                }
-            } else {
-                AccountSettingsAvatarPlaceholderInitial(user)
-            }
-        }
-        .animation(.default, value: avatarPreview)
-        .frame(size)
-        .clipShape(.circle)
-        .overlay {
-            Circle()
-                .stroke(.primary.opacity(0.08), lineWidth: 1)
-        }
     }
 }
