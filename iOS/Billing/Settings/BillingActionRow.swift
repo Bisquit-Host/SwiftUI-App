@@ -16,9 +16,7 @@ struct BillingActionRow: View {
     }
     
     var body: some View {
-        Button(role: role) {
-            action()
-        } label: {
+        Button(role: role, action: action) {
             HStack(spacing: 12) {
                 Image(systemName: icon)
                     .frame(32)
