@@ -12,20 +12,7 @@ struct TicketDetails: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            ScrollView {
-                if vm.messages.isEmpty {
-                    ContentUnavailableView("No messages yet", systemImage: "ellipsis.bubble")
-                } else {
-                    ForEach(vm.messages) {
-                        TicketMessageRow(message: $0, isCurrentUser: $0.userId == vm.ticket.userId) {
-                            selectedMedia = $0
-                        }
-                        .listRowSeparator(.hidden)
-                        .scenePadding(.horizontal)
-                    }
-                }
-            }
-            .scrollIndicators(.never)
+            TicketMessageList($selectedMedia)
             
             Divider()
             
@@ -49,7 +36,7 @@ struct TicketDetails: View {
         .toolbar {
             ToolbarItem {
                 Button {
-                    
+#warning("Does nothing")
                 } label: {
                     Text(vm.ticket.status.rawValue.capitalized)
                         .foregroundStyle(vm.ticket.status.color)

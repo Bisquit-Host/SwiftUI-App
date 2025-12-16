@@ -1,6 +1,6 @@
 import ScrechKit
 
-struct TicketMessageRow: View {
+struct TicketMessage: View {
     let message: SupportMessageDTO
     let isCurrentUser: Bool
     var onMediaTap: (String) -> Void = { _ in }
