@@ -3,8 +3,13 @@ import SwiftUI
 struct TopupProviderCard: View {
     @Environment(\.accessibilityDifferentiateWithoutColor) private var differentiateWithoutColor
     
-    let provider: PaymentProvider
-    @Binding var selectedProvider: PaymentProvider?
+    @Binding private var selectedProvider: PaymentProvider?
+    private let provider: PaymentProvider
+    
+    init(_ selectedProvider: Binding<PaymentProvider?>, provider: PaymentProvider) {
+        _selectedProvider = selectedProvider
+        self.provider = provider
+    }
     
     private var avgColor: Color {
         switch provider.icon {

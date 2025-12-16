@@ -13,7 +13,7 @@ struct TopupProviderList: View {
         ScrollView(.horizontal) {
             HStack(spacing: 10) {
                 ForEach(providers) {
-                    TopupProviderCard(provider: $0, selectedProvider: $selectedProvider)
+                    TopupProviderCard($selectedProvider, provider: $0)
                 }
             }
         }
