@@ -1,5 +1,4 @@
 import SwiftUI
-import UIKit
 
 struct CopyableLabel: View {
     private let value: String

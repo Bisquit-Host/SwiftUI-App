@@ -4,7 +4,11 @@ struct VDSServiceDetails: View {
     @Environment(VDSServiceDetailsVM.self) private var vm
     @Environment(BillingDashboardVM.self) private var dashboardVM
     
-    let serviceId: Int
+    private let serviceId: Int
+    
+    init(_ serviceId: Int) {
+        self.serviceId = serviceId
+    }
     
     @State private var renewMonths = 1
     
@@ -12,7 +16,7 @@ struct VDSServiceDetails: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 if let service = vm.service {
-                    VDSServiceDetailsHeader(service: service)
+                    VDSServiceDetailsHeader(service)
                     VDSServiceDetailsInfoSection(service)
                     
                     VDSBillingSection(
@@ -46,7 +50,7 @@ struct VDSServiceDetails: View {
 
 #Preview {
     NavigationStack {
-        VDSServiceDetails(serviceId: 1)
+        VDSServiceDetails(1)
             .environment(BillingDashboardVM())
             .environment(VDSServiceDetailsVM())
     }

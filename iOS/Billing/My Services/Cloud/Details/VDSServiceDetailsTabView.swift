@@ -35,15 +35,15 @@ struct VDSServiceDetailsTabView: View {
     var body: some View {
         TabView(selection: $selectedTab) {
             Tab("General", systemImage: "gear", value: 0) {
-                VDSServiceDetails(serviceId: serviceId)
+                VDSServiceDetails(serviceId)
             }
             
             Tab("Protection", systemImage: "shield.lefthalf.filled", value: 1) {
-                VDSProtection(serviceId: serviceId)
+                VDSProtection(serviceId)
             }
             
             Tab("History", systemImage: "clock", value: 2) {
-                VDSServiceHistoryTab(serviceId: serviceId)
+                VDSServiceHistoryTab(serviceId)
             }
 #if canImport(SwiftTerm) && canImport(NIOSSH)
             Tab("SSH", systemImage: "terminal", value: 3) {

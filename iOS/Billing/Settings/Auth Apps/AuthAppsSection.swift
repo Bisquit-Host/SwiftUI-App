@@ -1,56 +1,66 @@
 import SwiftUI
 
 struct AuthAppsSection: View {
+    @Environment(OAuthVM.self) private var vm
     @Environment(BillingDashboardVM.self) private var dashboardVM
-    @Environment(OAuthVM.self) private var oauthVM
     
-    @Binding var user: BillingUser?
+    @Binding private var user: BillingUser?
+    
+    init(_ user: Binding<BillingUser?>) {
+        _user = user
+    }
     
     var body: some View {
         if let user {
             BillingSectionCard("Auth apps") {
-                AuthSettingsAppRow("GitHub", icon: "app.connected.to.app.below.fill", enabled: !(user.githubId ?? "").isEmpty, isLoading: oauthVM.isLinkingGitHub) {
-                    oauthVM.startGitHubLinking {
+                AuthSettingsAppRow("GitHub", icon: "app.connected.to.app.below.fill", enabled: !(user.githubId ?? "").isEmpty, isLoading: vm.isLinkingGitHub) {
+                    vm.startGitHubLinking {
                         Task {
-                            await dashboardVM.fetchUserInfo()
+                            await fetchUserInfo()
                         }
                     }
                 } onDisconnect: {
-                    await oauthVM.disconnectGithub {
-                        await dashboardVM.fetchUserInfo()
+                    await vm.disconnectGithub {
+                        await fetchUserInfo()
                     }
                 }
                 
-                AuthSettingsAppRow("Google", icon: "globe", enabled: !(user.googleId ?? "").isEmpty, isLoading: oauthVM.isLinkingGoogle) {
-                    oauthVM.startGoogleLinking {
+                AuthSettingsAppRow("Google", icon: "globe", enabled: !(user.googleId ?? "").isEmpty, isLoading: vm.isLinkingGoogle) {
+                    vm.startGoogleLinking {
                         Task {
-                            await dashboardVM.fetchUserInfo()
+                            await fetchUserInfo()
                         }
                     }
                 } onDisconnect: {
-                    await oauthVM.disconnectGoogle {
-                        await dashboardVM.fetchUserInfo()
+                    await vm.disconnectGoogle {
+                        await fetchUserInfo()
                     }
                 }
                 
-                AuthSettingsAppRow("Yandex", icon: "globe", enabled: !(user.yandexId ?? "").isEmpty, isLoading: oauthVM.isLinkingYandex) {
-                    oauthVM.startYandexLinking {
+                AuthSettingsAppRow("Yandex", icon: "globe", enabled: !(user.yandexId ?? "").isEmpty, isLoading: vm.isLinkingYandex) {
+                    vm.startYandexLinking {
                         Task {
-                            await dashboardVM.fetchUserInfo()
+                            await fetchUserInfo()
                         }
                     }
                 } onDisconnect: {
-                    await oauthVM.disconnectYandex {
-                        await dashboardVM.fetchUserInfo()
+                    await vm.disconnectYandex {
+                        await fetchUserInfo()
                     }
                 }
             }
         }
     }
+    
+    private func fetchUserInfo() async  {
+        await dashboardVM.fetchUserInfo()
+    }
 }
 
 #Preview {
-    AuthAppsSection(user: .constant(.preview))
+    @Previewable @State var user: BillingUser? = .preview
+    
+    AuthAppsSection($user)
         .darkSchemePreferred()
         .environment(BillingDashboardVM())
         .environment(OAuthVM())

@@ -2,9 +2,9 @@ import AuthenticationServices
 import Foundation
 
 @Observable
-final class BillingLoginVM {
+final class LoginVM {
     var isPasskeyLoading = false
-    var isVerifyingTwoFA = false
+    var isVerifying2FA = false
     var isSubmitting = false
     
     private let passkeyAuth = PasskeyAuthorizationController()
@@ -87,7 +87,7 @@ final class BillingLoginVM {
         }
     }
     
-    func verifyTwoFA(code: String, token: String) async -> BillingLoginResponse? {
+    func verify2FA(code: String, token: String) async -> BillingLoginResponse? {
         let url = baseURL.appendingPathComponent("auth/two-fa")
         
         var request = URLRequest(url: url)
@@ -99,8 +99,8 @@ final class BillingLoginVM {
             "token": token
         ])
         
-        isVerifyingTwoFA = true
-        defer { isVerifyingTwoFA = false }
+        isVerifying2FA = true
+        defer { isVerifying2FA = false }
         
         do {
             let (data, response) = try await URLSession.shared.data(for: request)

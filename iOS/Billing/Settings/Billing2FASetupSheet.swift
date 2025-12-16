@@ -1,8 +1,8 @@
 import SwiftUI
-import UIKit
 
-struct BillingTwoFASetupSheet: View {
-    @Environment(BillingTwoFAVM.self) private var vm
+#warning("split subviews")
+struct Billing2FASetupSheet: View {
+    @Environment(Billing2FAVM.self) private var vm
     @Environment(\.dismiss) private var dismiss
     
     let onEnabled: () async -> Void
@@ -50,7 +50,7 @@ struct BillingTwoFASetupSheet: View {
         }
     }
     
-    private func setupContent(_ setup: BillingTwoFASetupResponse) -> some View {
+    private func setupContent(_ setup: Billing2FASetupResponse) -> some View {
         VStack(alignment: .leading, spacing: 16) {
             if let qr = generateQRCode(setup.url) {
                 Image(uiImage: qr)

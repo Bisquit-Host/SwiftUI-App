@@ -3,7 +3,7 @@ import PteroNet
 
 struct BillingSettings: View {
     @State private var vm = BillingSettingsVM()
-    @State private var twoFAVM = BillingTwoFAVM()
+    @State private var `2FAVM` = Billing2FAVM()
     @EnvironmentObject private var store: ValueStore
     @Environment(\.dismiss) private var dismiss
     @Environment(BillingDashboardVM.self) private var dashboardVM
@@ -42,7 +42,7 @@ struct BillingSettings: View {
                             PasskeyListNavLink()
                         }
                         
-                        AuthAppsSection(user: $user)
+                        AuthAppsSection($user)
                     }
                     .transition(.opacity.combined(with: .move(edge: .top)))
                     .animation(.easeInOut, value: user)
@@ -73,10 +73,10 @@ struct BillingSettings: View {
         }
         .sheet($showTwoFASheet) {
             NavigationStack {
-                BillingTwoFASetupSheet {
+                Billing2FASetupSheet {
                     await dashboardVM.fetchUserInfo()
                 }
-                .environment(twoFAVM)
+                .environment(`2FAVM`)
             }
         }
         .environment(vm)
@@ -125,7 +125,7 @@ struct BillingSettings: View {
         isDisablingTwoFA = true
         
         Task {
-            let success = await twoFAVM.disable()
+            let success = await `2FAVM`.disable()
             isDisablingTwoFA = false
             
             if success {

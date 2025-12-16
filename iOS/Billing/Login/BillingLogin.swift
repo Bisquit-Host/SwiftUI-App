@@ -3,7 +3,7 @@ import HCaptcha
 import PteroNet
 
 struct BillingLogin: View {
-    @State private var vm = BillingLoginVM()
+    @State private var vm = LoginVM()
     @EnvironmentObject private var store: ValueStore
     
     @State private var isSignUp = false
@@ -12,9 +12,9 @@ struct BillingLogin: View {
     @State private var password = ""
     @State private var sheetHcaptcha = false
     @State private var captchaToken = ""
-    @State private var pendingTwoFAToken: String?
-    @State private var twoFACode = ""
-    @State private var sheetTwoFA = false
+    @State private var pending2FAToken: String?
+    @State private var `2FACode` = ""
+    @State private var sheet2FA = false
     
     private var captchaButtonDisabled: Bool {
         let loginEmpty = login.trimmingCharacters(in: .whitespaces).isEmpty
@@ -29,13 +29,7 @@ struct BillingLogin: View {
             if isSignUp {
                 TextField("Name", text: $name)
                     .textContentType(.name)
-                    .padding(.horizontal)
-                    .frame(height: 50)
-                    .background(.primary.opacity(0.04), in: .capsule)
-                    .overlay {
-                        Capsule()
-                            .stroke(.primary.opacity(0.05), lineWidth: 1)
-                    }
+                    .loginTextField()
             }
             
             TextField("Login", text: $login)
@@ -43,23 +37,11 @@ struct BillingLogin: View {
                 .keyboardType(.emailAddress)
                 .textContentType(.emailAddress)
                 .textInputAutocapitalization(.never)
-                .padding(.horizontal)
-                .frame(height: 50)
-                .background(.primary.opacity(0.04), in: .capsule)
-                .overlay {
-                    Capsule()
-                        .stroke(.primary.opacity(0.05), lineWidth: 1)
-                }
+                .loginTextField()
             
             SecureField("Password", text: $password)
                 .textContentType(.password)
-                .padding(.horizontal)
-                .frame(height: 50)
-                .background(.primary.opacity(0.04), in: .capsule)
-                .overlay {
-                    Capsule()
-                        .stroke(.primary.opacity(0.05), lineWidth: 1)
-                }
+                .loginTextField()
                 .onSubmit {
                     sheetHcaptcha = true
                 }
@@ -84,19 +66,7 @@ struct BillingLogin: View {
             .frame(maxWidth: .infinity)
             .glassEffect()
             
-            HStack {
-                VStack {
-                    Divider()
-                }
-                
-                Text("or")
-                    .secondary()
-                
-                VStack {
-                    Divider()
-                }
-            }
-            .padding(8)
+            LoginDivider()
             
             if !isSignUp {
                 LoginPasskeyButton(login: login, handleAuthResponse: handleAuthResponse)
@@ -115,9 +85,9 @@ struct BillingLogin: View {
         .sheet($sheetHcaptcha) {
             HCaptchaSheet($captchaToken)
         }
-        .sheet($sheetTwoFA) {
+        .sheet($sheet2FA) {
             NavigationStack {
-                BillingTwoFASheet(twoFACode: $twoFACode) {
+                Login2FASheet($2FACode) {
                     await verifyTwoFA()
                 }
                 .padding()
@@ -159,8 +129,8 @@ struct BillingLogin: View {
     
     private func verifyTwoFA() async {
         guard
-            let pendingTwoFAToken,
-            let response = await vm.verifyTwoFA(code: twoFACode, token: pendingTwoFAToken)
+            let pending2FAToken,
+            let response = await vm.verify2FA(code: `2FACode`, token: pending2FAToken)
         else {
             return
         }
@@ -170,14 +140,14 @@ struct BillingLogin: View {
     
     private func handleAuthResponse(_ response: BillingLoginResponse) {
         if response.twoFa == true {
-            pendingTwoFAToken = response.token
-            twoFACode = ""
-            sheetTwoFA = true
+            pending2FAToken = response.token
+            `2FACode` = ""
+            sheet2FA = true
             return
         }
         
-        sheetTwoFA = false
-        pendingTwoFAToken = nil
+        sheet2FA = false
+        pending2FAToken = nil
         
         if isSignUp {
             name = ""

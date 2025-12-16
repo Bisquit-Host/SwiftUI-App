@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct LoginPasskeyButton: View {
-    @Environment(BillingLoginVM.self) private var vm
+    @Environment(LoginVM.self) private var vm
     
     let login: String
     let handleAuthResponse: (BillingLoginResponse) -> Void
@@ -40,6 +40,6 @@ struct LoginPasskeyButton: View {
 
 #Preview {
     LoginPasskeyButton(login: "example@bisquit.host") { _ in }
-        .environment(BillingLoginVM())
+        .environment(LoginVM())
         .padding()
 }

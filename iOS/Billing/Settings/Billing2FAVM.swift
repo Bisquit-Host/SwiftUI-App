@@ -2,8 +2,8 @@ import Foundation
 import PteroNet
 
 @Observable
-final class BillingTwoFAVM {
-    var setup: BillingTwoFASetupResponse?
+final class Billing2FAVM {
+    var setup: Billing2FASetupResponse?
     var isLoading = false
     var isEnabling = false
     var isDisabling = false
@@ -32,7 +32,7 @@ final class BillingTwoFAVM {
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             
-            setup = try decoder.decode(BillingTwoFASetupResponse.self, from: data)
+            setup = try decoder.decode(Billing2FASetupResponse.self, from: data)
         } catch {
             SystemAlert.error(error.localizedDescription)
         }

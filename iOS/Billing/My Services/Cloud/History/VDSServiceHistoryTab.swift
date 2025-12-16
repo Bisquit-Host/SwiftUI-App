@@ -3,7 +3,11 @@ import SwiftUI
 struct VDSServiceHistoryTab: View {
     @Environment(VDSServiceDetailsVM.self) private var vm
     
-    let serviceId: Int
+    private let serviceId: Int
+    
+    init(_ serviceId: Int) {
+        self.serviceId = serviceId
+    }
     
     var body: some View {
         List {
@@ -23,7 +27,7 @@ struct VDSServiceHistoryTab: View {
 
 #Preview("History Tab") {
     NavigationStack {
-        VDSServiceHistoryTab(serviceId: 1)
+        VDSServiceHistoryTab(1)
             .environment(VDSServiceDetailsVM())
     }
     .environmentObject(ValueStore())

@@ -3,7 +3,11 @@ import SwiftUI
 struct VDSProtection: View {
     @State private var vm = VDSProtectionVM()
     
-    let serviceId: Int
+    private let serviceId: Int
+    
+    init(_ serviceId: Int) {
+        self.serviceId = serviceId
+    }
     
     var body: some View {
         ScrollView {
@@ -22,7 +26,7 @@ struct VDSProtection: View {
 }
 
 #Preview {
-    VDSProtection(serviceId: 1)
+    VDSProtection(1)
         .environmentObject(ValueStore())
         .darkSchemePreferred()
 }

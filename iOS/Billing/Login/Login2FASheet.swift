@@ -1,10 +1,15 @@
 import SwiftUI
 
-struct BillingTwoFASheet: View {
-    @Environment(BillingLoginVM.self) private var vm
+struct Login2FASheet: View {
+    @Environment(LoginVM.self) private var vm
     
-    @Binding var twoFACode: String
-    var verifyAction: () async -> Void
+    @Binding private var `2FACode`: String
+    private var verifyAction: () async -> Void
+    
+    init(_ `2FACode`: Binding<String>, verifyAction: @escaping () async -> Void) {
+        _2FACode = `2FACode`
+        self.verifyAction = verifyAction
+    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -12,7 +17,7 @@ struct BillingTwoFASheet: View {
                 .secondary()
                 .footnote()
             
-            TextField("123456", text: $twoFACode)
+            TextField("123456", text: $2FACode)
                 .keyboardType(.numberPad)
                 .textContentType(.oneTimeCode)
                 .onSubmit {
@@ -26,7 +31,7 @@ struct BillingTwoFASheet: View {
                     await verifyAction()
                 }
             } label: {
-                if vm.isVerifyingTwoFA {
+                if vm.isVerifying2FA {
                     ProgressView()
                         .frame(maxWidth: .infinity)
                 } else {
@@ -35,13 +40,13 @@ struct BillingTwoFASheet: View {
                 }
             }
             .buttonStyle(.borderedProminent)
-            .disabled(twoFACode.trimmingCharacters(in: .whitespaces).count < 6 || vm.isVerifyingTwoFA)
+            .disabled(`2FACode`.trimmingCharacters(in: .whitespaces).count < 6 || vm.isVerifying2FA)
         }
     }
 }
 
 #Preview {
-    BillingTwoFASheet(twoFACode: .constant("123456")) {}
+    Login2FASheet(.constant("123456")) {}
         .padding()
-        .environment(BillingLoginVM())
+        .environment(LoginVM())
 }
