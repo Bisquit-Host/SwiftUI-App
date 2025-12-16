@@ -8,6 +8,7 @@ struct TicketDetails: View {
     }
     
     @State private var selectedMedia: String? = nil
+    @State private var isMediaPresented = false
     @State private var attachments: [PendingAttachment] = []
     
     var body: some View {
@@ -27,11 +28,15 @@ struct TicketDetails: View {
         .navigationTitle(vm.ticket.title)
         .navigationSubtitle("Ticket #\(vm.ticket.id)")
         .navigationBarTitleDisplayMode(.inline)
+        .environment(vm)
         .task {
             vm.start()
         }
         .onDisappear {
             vm.stop()
+        }
+        .onChange(of: selectedMedia) { _, newValue in
+            isMediaPresented = newValue != nil
         }
         .toolbar {
             ToolbarItem {
@@ -45,12 +50,12 @@ struct TicketDetails: View {
                 .tint(vm.ticket.status.color.opacity(0.3))
             }
         }
-        .fullScreenCover(Binding(get: { selectedMedia != nil }, set: { if !$0 { selectedMedia = nil } })) {
+        .fullScreenCover(isPresented: $isMediaPresented, onDismiss: { selectedMedia = nil }) {
             NavigationStack {
                 if let media = selectedMedia {
-                    SupportMedia(mediaPath: media) {
-                        selectedMedia = nil
-                    }
+                    SupportMedia(mediaPath: media) { selectedMedia = nil }
+                } else {
+                    Color.clear
                 }
             }
         }
