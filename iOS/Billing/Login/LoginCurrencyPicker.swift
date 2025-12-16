@@ -10,7 +10,6 @@ struct LoginCurrencyPicker: View {
     var body: some View {
         HStack {
             Text("Currency")
-                .secondary()
             
             Spacer(minLength: 100)
             

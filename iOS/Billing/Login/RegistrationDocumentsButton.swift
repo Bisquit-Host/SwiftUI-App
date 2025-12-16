@@ -22,7 +22,7 @@ struct RegistrationDocumentsButton: View {
                     .secondary()
             }
         }
-        .secondary()
+        .foregroundStyle(.foreground)
         .frame(maxWidth: .infinity)
         .loginButtonStyle()
         .sheet($sheetDocuments) {

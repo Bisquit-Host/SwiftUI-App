@@ -50,8 +50,8 @@ struct BillingLogin: View {
                 }
             
             if isSignUp {
-                LoginCurrencyPicker($selectedCurrency)
                 RegistrationDocumentsButton($hasAcceptedDocuments)
+                LoginCurrencyPicker($selectedCurrency)
             }
             
             Button {
