@@ -26,10 +26,6 @@ struct TicketMessageComposer: View {
             }
             
             HStack(spacing: 12) {
-                TextField("Type here...", text: $text, axis: .vertical)
-                    .padding(10)
-                    .background(.ultraThinMaterial, in: .rect(cornerRadius: 12))
-                
                 Menu {
                     Button("Photo Library", systemImage: "photo.on.rectangle") {
                         showPhotoPicker = true
@@ -41,7 +37,12 @@ struct TicketMessageComposer: View {
                 } label: {
                     Image(systemName: "paperclip")
                         .title3()
+                        .foregroundStyle(.foreground)
                 }
+                
+                TextField("Type here...", text: $text, axis: .vertical)
+                    .padding(10)
+                    .background(.ultraThinMaterial, in: .rect(cornerRadius: 12))
                 
                 Button {
                     Task {
