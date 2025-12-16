@@ -1,13 +1,13 @@
 import SwiftUI
 
-struct BillingTopupSection: View {
+struct TopupSection: View {
     @Environment(SheetTopupVM.self) private var vm
     @Environment(BillingDashboardVM.self) private var dashboardVM
     @EnvironmentObject private var store: ValueStore
     
     @Binding var amount: String
-    let providers: [PaymentProvider]
     @Binding var selectedProvider: PaymentProvider?
+    let providers: [PaymentProvider]
     let currency: BillingCurrency
     let minimumTopupAmount: Double
     
@@ -19,6 +19,7 @@ struct BillingTopupSection: View {
     
     @State private var safariCover = false
     @State private var paymentLink = ""
+    
     var body: some View {
         BillingSectionCard("Top up") {
             VStack(alignment: .leading, spacing: 12) {
@@ -65,17 +66,9 @@ struct BillingTopupSection: View {
                     .frame(width: amountFieldSide * 2 + 8)
                 }
                 
-                ScrollView(.horizontal) {
-                    HStack(spacing: 10) {
-                        ForEach(providers) {
-                            TopupProviderCard(provider: $0, selectedProvider: $selectedProvider)
-                        }
-                    }
-                }
-                .scrollIndicators(.never)
+                TopupProviderList($selectedProvider, providers: providers)
                 
-                // Top-ups in other currencies are charged at 1.5× the converted amount in your default currency
-                invoiceRow
+                TopupSectionInvoiceRow(amount: amount, currency: currency, selectedProvider: $selectedProvider)
                 
                 Button {
                     Task {
@@ -134,47 +127,5 @@ struct BillingTopupSection: View {
             paymentLink = url.absoluteString
             safariCover = true
         }
-    }
-    
-    private func invoiceValue() -> Double? {
-        guard let amountDouble = Double(amount.replacingOccurrences(of: ",", with: ".")) else {
-            return nil
-        }
-        
-        switch currency {
-        case .RUB: return amountDouble / 100 * 1.5
-        case .EUR: return amountDouble * 100 / 1.5
-        }
-    }
-    
-    @ViewBuilder
-    private var invoiceRow: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            let amountDouble = Double(amount.replacingOccurrences(of: ",", with: "."))
-            
-            if let selectedProvider, let amountDouble {
-                let differentCurrency = selectedProvider.currency != currency
-                
-                if differentCurrency, let invoice = invoiceValue() {
-                    Text("\(selectedProvider.currency.symbol)\(invoice.formatted(.fractionDigits(2))) will be charged")
-                } else {
-                    Text("\(currency.symbol)\(amountDouble.formatted(.fractionDigits(2))) will be charged")
-                }
-            } else {
-                Text("Enter amount to preview invoice")
-            }
-            
-            Text("Additional fees may apply")
-                .secondary()
-                .frame(maxWidth: .infinity, alignment: .leading)
-        }
-        .footnote()
-        .padding(12)
-        .background(.primary.opacity(0.04), in: .rect(cornerRadius: 14))
-        .overlay {
-            RoundedRectangle(cornerRadius: 14)
-                .stroke(.primary.opacity(0.05), lineWidth: 1)
-        }
-        .foregroundStyle(.primary.opacity(0.85))
     }
 }

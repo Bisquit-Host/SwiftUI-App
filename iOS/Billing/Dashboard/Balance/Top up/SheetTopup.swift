@@ -29,10 +29,10 @@ struct SheetTopup: View {
                     BillingBalanceRow("Total", icon: "wallet.pass.fill", tint: .indigo, value: formatted(user.totalBalance))
                 }
                 
-                BillingTopupSection(
+                TopupSection(
                     amount: $amount,
-                    providers: providers,
                     selectedProvider: $selectedProvider,
+                    providers: providers,
                     currency: user.currency,
                     minimumTopupAmount: minimumTopupAmount
                 )
