@@ -50,14 +50,15 @@ final class LoginVM {
         }
     }
     
-    func signup(name: String, email: String, password: String, captchaToken: String) async -> BillingLoginResponse? {
+    func signup(name: String, email: String, password: String, captchaToken: String, currency: String) async -> BillingLoginResponse? {
         let url = baseURL.appendingPathComponent("auth/signup")
         
         let body: [String: Any] = [
             "email": email.lowercased(),
             "password": password,
             "name": name,
-            "captchaResponse": captchaToken
+            "captchaResponse": captchaToken,
+            "currency": currency
         ]
         
         var request = URLRequest(url: url)
@@ -72,7 +73,7 @@ final class LoginVM {
             let (data, response) = try await URLSession.shared.data(for: request)
             
             if let http = response as? HTTPURLResponse {
-                print("Login http code:", http.statusCode)
+                print(http.statusCode, "Sign up")
             }
             
             let decoder = JSONDecoder()

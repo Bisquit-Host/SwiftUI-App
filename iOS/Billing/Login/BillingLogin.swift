@@ -129,7 +129,8 @@ struct BillingLogin: View {
                     name: name.trimmingCharacters(in: .whitespaces),
                     email: login,
                     password: password,
-                    captchaToken: captchaToken
+                    captchaToken: captchaToken,
+                    currency: selectedCurrency.rawValue
                 )
             } else {
                 response = await vm.login(login, password, captchaToken)
