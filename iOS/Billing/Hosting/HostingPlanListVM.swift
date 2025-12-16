@@ -14,7 +14,7 @@ final class HostingPlanListVM {
     var isLoading = false
     var isOrdering = false
     
-    private let baseURL = "https://test-api.bisquit.host/public-api"
+    private let baseURL = "\(Endpoint.basePath)public-api"
     private let authedBase = URL(string: "https://test-api.bisquit.host")!
     
     func loadAll() async {

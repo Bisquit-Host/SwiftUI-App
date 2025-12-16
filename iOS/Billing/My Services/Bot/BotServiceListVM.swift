@@ -7,7 +7,7 @@ final class BotServiceListVM {
     var isLoading = false
     
     func loadServices() async {
-        await fetch(path: "https://test-api.bisquit.host/bot")
+        await fetch(path: "\(Endpoint.basePath)bot")
     }
     
     private func fetch(path: String) async {

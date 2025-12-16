@@ -17,9 +17,7 @@ final class BillingSettingsVM {
             return
         }
         
-        let path = "https://test-api.bisquit.host/user/settings/name"
-        
-        guard let url = URL(string: path) else {
+        guard let url = URL(string: "\(Endpoint.basePath)user/settings/name") else {
             print("Invalid URL")
             return
         }
@@ -55,9 +53,7 @@ final class BillingSettingsVM {
             return
         }
         
-        let path = "https://test-api.bisquit.host/user/settings/email"
-        
-        guard let url = URL(string: path) else {
+        guard let url = URL(string: "\(Endpoint.basePath)user/settings/email") else {
             print("Invalid URL")
             return
         }
@@ -93,9 +89,7 @@ final class BillingSettingsVM {
             return
         }
         
-        let path = "https://test-api.bisquit.host/user/settings/login"
-        
-        guard let url = URL(string: path) else {
+        guard let url = URL(string: "\(Endpoint.basePath)user/settings/login") else {
             print("Invalid URL")
             return
         }
@@ -155,7 +149,7 @@ final class BillingSettingsVM {
             return
         }
         
-        guard let url = URL(string: "https://test-api.bisquit.host/user/settings/password") else {
+        guard let url = URL(string: "\(Endpoint.basePath)user/settings/password") else {
             SystemAlert.error("Invalid URL")
             return
         }
@@ -222,7 +216,7 @@ final class BillingSettingsVM {
             return nil
         }
         
-        guard let url = URL(string: "https://test-api.bisquit.host/user/settings/avatar") else {
+        guard let url = URL(string: "\(Endpoint.basePath)user/settings/avatar") else {
             SystemAlert.error("Invalid URL")
             return nil
         }

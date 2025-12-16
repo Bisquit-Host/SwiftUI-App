@@ -15,18 +15,8 @@ final class OAuthVM: NSObject {
     var isLinkingGoogle = false
     var isLinkingYandex = false
     
-    func disconnectGithub(onSuccess: () async -> Void) async {
-        let path = "https://test-api.bisquit.host/user/settings/social/github"
-        await disconnect(path: path, onSuccess: onSuccess)
-    }
-    
-    func disconnectGoogle(onSuccess: () async -> Void) async {
-        let path = "https://test-api.bisquit.host/user/settings/social/google"
-        await disconnect(path: path, onSuccess: onSuccess)
-    }
-    
-    func disconnectYandex(onSuccess: () async -> Void) async {
-        let path = "https://test-api.bisquit.host/user/settings/social/yandex"
+    func disconnectAuthService(_ authService: String, onSuccess: () async -> Void) async {
+        let path = "\(Endpoint.basePath)user/settings/social/\(authService)"
         await disconnect(path: path, onSuccess: onSuccess)
     }
     
@@ -112,7 +102,7 @@ final class OAuthVM: NSObject {
         
         Keychain.save(accessToken, forKey: "access_token")
         Keychain.save(refreshToken, forKey: "refresh_token")
-        ValueStore().testExpiresIn = expiresIn
+        ValueStore().accessTokenExpiresIn = expiresIn
     }
     
     private func fetchAuthURL(for provider: BillingAuthProvider) async {

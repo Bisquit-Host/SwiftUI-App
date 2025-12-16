@@ -12,7 +12,7 @@ final class VDSBillingVM {
         isLoading = true
         defer { isLoading = false }
         
-        guard let url = URL(string: "https://test-api.bisquit.host/cloud") else {
+        guard let url = URL(string: "\(Endpoint.basePath)cloud") else {
             SystemAlert.error("Invalid URL")
             return
         }

@@ -20,7 +20,7 @@ struct AuthAppsSection: View {
                         }
                     }
                 } onDisconnect: {
-                    await vm.disconnectGithub {
+                    await vm.disconnectAuthService("github") {
                         await fetchUserInfo()
                     }
                 }
@@ -32,7 +32,7 @@ struct AuthAppsSection: View {
                         }
                     }
                 } onDisconnect: {
-                    await vm.disconnectGoogle {
+                    await vm.disconnectAuthService("google") {
                         await fetchUserInfo()
                     }
                 }
@@ -44,7 +44,7 @@ struct AuthAppsSection: View {
                         }
                     }
                 } onDisconnect: {
-                    await vm.disconnectYandex {
+                    await vm.disconnectAuthService("yandex") {
                         await fetchUserInfo()
                     }
                 }
@@ -52,7 +52,7 @@ struct AuthAppsSection: View {
         }
     }
     
-    private func fetchUserInfo() async  {
+    private func fetchUserInfo() async {
         await dashboardVM.fetchUserInfo()
     }
 }

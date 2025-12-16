@@ -16,7 +16,7 @@ final class GameServiceListVM {
         isLoading = true
         defer { isLoading = false }
         
-        guard let url = URL(string: "https://test-api.bisquit.host/game") else {
+        guard let url = URL(string: "\(Endpoint.basePath)game") else {
             SystemAlert.error("Invalid URL")
             return
         }

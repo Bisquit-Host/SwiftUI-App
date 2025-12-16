@@ -15,9 +15,7 @@ final class LoginVM {
         isSubmitting = true
         defer { isSubmitting = false }
         
-        let path = "https://test-api.bisquit.host/auth/signin"
-        
-        guard let url = URL(string: path) else {
+        guard let url = URL(string: "\(Endpoint.basePath)auth/signin") else {
             print("Invalid URL")
             return nil
         }

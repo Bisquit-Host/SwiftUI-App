@@ -62,7 +62,7 @@ struct BillingSettings: View {
                 print("Error logging out")
             }
             
-            store.testExpiresIn = 0
+            store.accessTokenExpiresIn = 0
             store.accessToken = nil
             store.lastBillingTokenRefresh = nil
             Keychain.delete(key: "refresh_token")

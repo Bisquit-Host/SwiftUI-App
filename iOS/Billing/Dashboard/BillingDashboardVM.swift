@@ -6,7 +6,7 @@ final class BillingDashboardVM {
     var user: BillingUser? = nil
     
     func refreshAuthToken(onSuccess: @escaping () async -> Void = {}) async {
-        guard let url = URL(string: "https://test-api.bisquit.host/auth/refresh") else { return }
+        guard let url = URL(string: "\(Endpoint.basePath)auth/refresh") else { return }
         
         guard let refreshToken = Keychain.load(key: "refresh_token") else {
             print("Rrror: refresh token not found", #function)
@@ -44,7 +44,7 @@ final class BillingDashboardVM {
             Keychain.save(refreshedCreds.refreshToken, forKey: "refresh_token")
             
             ValueStore().lastBillingTokenRefresh = Date()
-            ValueStore().testExpiresIn = refreshedCreds.expiresIn
+            ValueStore().accessTokenExpiresIn = refreshedCreds.expiresIn
             
             await onSuccess()
         } catch {
@@ -59,9 +59,7 @@ final class BillingDashboardVM {
             return
         }
         
-        let path = "https://test-api.bisquit.host/user"
-        
-        guard let url = URL(string: path) else { return }
+        guard let url = URL(string: "\(Endpoint.basePath)user") else { return }
         
         var req = URLRequest(url: url)
         req.setValue("application/json", forHTTPHeaderField: "Content-Type")

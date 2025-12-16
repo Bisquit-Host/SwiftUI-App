@@ -99,7 +99,7 @@ struct BillingDashboard: View {
             return
         }
         
-        let expiresInSeconds = TimeInterval(ValueStore().testExpiresIn) / 1000
+        let expiresInSeconds = TimeInterval(ValueStore().accessTokenExpiresIn) / 1000
         let expiryDate = lastRefresh.addingTimeInterval(expiresInSeconds)
         
         guard Date() >= expiryDate else { return }

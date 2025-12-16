@@ -153,7 +153,7 @@ struct BillingLogin: View {
             name = ""
         }
         
-        store.testExpiresIn = response.expiresIn
+        store.accessTokenExpiresIn = response.expiresIn
         store.accessToken = response.accessToken
         store.lastBillingTokenRefresh = Date()
         
