@@ -1,7 +1,7 @@
 import SwiftUI
 import PteroNet
 
-struct BillingAccountSection: View {
+struct AccountSettingsSection: View {
     @Environment(BillingSettingsVM.self) private var vm
     @Environment(BillingDashboardVM.self) private var dashboardVM
     @EnvironmentObject private var store: ValueStore
@@ -21,27 +21,27 @@ struct BillingAccountSection: View {
         @Bindable var vm = vm
         
         BillingSectionCard("Account") {
-            BillingAvatarHeader(user)
+            AccountSettingsHeader(user)
             
             Divider()
             
-            BillingAccountRow("Email", icon: "envelope.fill", tint: .blue, value: user.email) {
+            AccountSettingsRow("Email", icon: "envelope.fill", tint: .blue, value: user.email) {
                 vm.newEmail = user.email
                 alertEmail = true
             }
             
-            BillingAccountRow("Name", icon: "person.fill", tint: .cyan, value: user.name) {
+            AccountSettingsRow("Name", icon: "person.fill", tint: .cyan, value: user.name) {
                 vm.newName = user.name
                 alertRename = true
             }
             
-            BillingAccountRow("Login", icon: "at", tint: .indigo, value: user.login) {
+            AccountSettingsRow("Login", icon: "at", tint: .indigo, value: user.login) {
                 vm.newLogin = user.login
                 alertLogin = true
             }
             
-            BillingAccountRow("Currency", icon: "dollarsign", tint: .yellow, value: user.currency.rawValue)
-            BillingAccountRow("Language", icon: "character.cursor.ibeam", tint: .mint, value: user.lang.uppercased())
+            AccountSettingsRow("Currency", icon: "dollarsign", tint: .yellow, value: user.currency.rawValue)
+            AccountSettingsRow("Language", icon: "character.cursor.ibeam", tint: .mint, value: user.lang.uppercased())
             
             BillingActionRow("Log out", icon: "rectangle.portrait.and.arrow.right", tint: .red, role: .destructive) {
                 logout()
@@ -129,7 +129,7 @@ struct BillingAccountSection: View {
 }
 
 #Preview {
-    BillingAccountSection(.preview)
+    AccountSettingsSection(.preview)
         .darkSchemePreferred()
         .environment(BillingSettingsVM())
         .environment(BillingDashboardVM())

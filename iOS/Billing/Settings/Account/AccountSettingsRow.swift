@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct BillingAccountRow: View {
+struct AccountSettingsRow: View {
     private let title: LocalizedStringKey
     private let icon: String
     private let tint: Color
@@ -47,7 +47,7 @@ struct BillingAccountRow: View {
 }
 
 #Preview {
-    BillingAccountRow("Email", icon: "envelope.fill", tint: .blue, value: "test@example.com")
+    AccountSettingsRow("Email", icon: "envelope.fill", tint: .blue, value: "test@example.com")
         .padding()
         .darkSchemePreferred()
 }

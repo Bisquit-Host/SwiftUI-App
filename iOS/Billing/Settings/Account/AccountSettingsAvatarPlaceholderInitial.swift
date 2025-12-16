@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct SettingsAvatarPlaceholderInitial: View {
+struct AccountSettingsAvatarPlaceholderInitial: View {
     private let initial: String
     
     init(_ user: BillingUser) {
@@ -19,6 +19,6 @@ struct SettingsAvatarPlaceholderInitial: View {
 }
 
 #Preview {
-    SettingsAvatarPlaceholderInitial(.preview)
+    AccountSettingsAvatarPlaceholderInitial(.preview)
         .darkSchemePreferred()
 }

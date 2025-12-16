@@ -39,7 +39,7 @@ struct BillingBalanceCard: View {
 }
 
 #Preview {
-    BillingAccountRow("Email", icon: "envelope.fill", tint: .blue, value: "test@example.com")
+    AccountSettingsRow("Email", icon: "envelope.fill", tint: .blue, value: "test@example.com")
         .padding()
         .darkSchemePreferred()
 }

@@ -14,7 +14,7 @@ struct BillingSettings: View {
         ScrollView {
             if let user {
                 VStack(alignment: .leading, spacing: 16) {
-                    BillingAccountSection(user)
+                    AccountSettingsSection(user)
                     BillingSettingsSecurity(user)
                     AuthAppsSection($user)
                 }
