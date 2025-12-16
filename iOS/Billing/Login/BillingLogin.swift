@@ -18,11 +18,11 @@ struct BillingLogin: View {
     @State private var `2FACode` = ""
     @State private var sheet2FA = false
     
-    private var captchaButtonDisabled: Bool {
+    private var continueButtonDisabled: Bool {
         let loginEmpty = login.trimmingCharacters(in: .whitespaces).isEmpty
         let passwordEmpty = password.trimmingCharacters(in: .whitespaces).isEmpty
-        let nameEmpty = isSignUp && name.trimmingCharacters(in: .whitespaces).isEmpty
-        let documentsNotAccepted = isSignUp && !hasAcceptedDocuments
+        let nameEmpty = name.trimmingCharacters(in: .whitespaces).isEmpty
+        let documentsNotAccepted = !hasAcceptedDocuments
         
         return loginEmpty || passwordEmpty || nameEmpty || documentsNotAccepted || vm.isSubmitting
     }
@@ -68,7 +68,8 @@ struct BillingLogin: View {
             }
             .semibold()
             .rounded()
-            .disabled(captchaButtonDisabled)
+            .disabled(continueButtonDisabled)
+            .opacity(continueButtonDisabled ? 0.3 : 1)
             .foregroundStyle(.foreground)
             .frame(minHeight: 50)
             .frame(maxWidth: .infinity)
