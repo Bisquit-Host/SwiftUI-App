@@ -16,6 +16,7 @@ struct SupportMedia: View {
                     .scaledToFit()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(.black)
+                
             } else if vm.isLoading {
                 ProgressView()
                     .tint(.white)
@@ -27,9 +28,7 @@ struct SupportMedia: View {
             await vm.loadMedia(mediaPath: mediaPath)
         }
         .toolbar {
-            Button(role: .destructive) {
-                onClose()
-            } label: {
+            Button(role: .destructive, action: onClose) {
                 Image(systemName: "xmark")
             }
         }
