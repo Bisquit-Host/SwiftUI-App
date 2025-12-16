@@ -7,6 +7,7 @@ final class Billing2FAVM {
     var isLoading = false
     var isEnabling = false
     var isDisabling = false
+    var code = ""
     
     private let baseURL = URL(string: "https://test-api.bisquit.host")!
     private let setupPath = "user/settings/two-fa"

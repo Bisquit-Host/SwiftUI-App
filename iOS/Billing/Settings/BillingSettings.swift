@@ -73,7 +73,7 @@ struct BillingSettings: View {
         }
         .sheet($showTwoFASheet) {
             NavigationStack {
-                Billing2FASetupSheet {
+                Billing2FASetup {
                     await dashboardVM.fetchUserInfo()
                 }
                 .environment(`2FAVM`)
