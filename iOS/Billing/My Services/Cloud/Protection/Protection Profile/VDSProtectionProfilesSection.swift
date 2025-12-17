@@ -81,6 +81,5 @@ struct VDSProtectionProfilesSection: View {
 #Preview {
     VDSProtectionProfilesSection()
         .environment(VDSProtectionVM())
-        .padding()
         .darkSchemePreferred()
 }
