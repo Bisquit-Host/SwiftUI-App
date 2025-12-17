@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct HostingPlanCardSpecList: View {
     private let plan: BillingHostingPlan
@@ -18,10 +18,13 @@ struct HostingPlanCardSpecList: View {
     }
     
     private var specs: [(icon: String, text: String)] {
+        let ram = formatMegaBytes(plan.memory)
+        let disk = formatMegaBytes(plan.disk)
+        
         var items: [(String, String)] = [
             ("cpu", "\(plan.cpu.clean) vCPU"),
-            ("memorychip", "\(plan.memoryGB.clean) GB RAM"),
-            ("internaldrive", "\(plan.diskGB.clean) GB \(plan.diskType ?? "")".trimmingCharacters(in: .whitespaces))
+            ("memorychip", "\(ram) RAM"),
+            ("internaldrive", "\(disk) \(plan.diskType ?? "")".trimmingCharacters(in: .whitespaces))
         ]
         
         if let network = plan.networkDescription {

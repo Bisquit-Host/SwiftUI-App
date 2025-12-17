@@ -1,5 +1,5 @@
 {
-  "originHash" : "2ef8e1a1e3a03cae8ee43f84e0c27cc7caf23836e2f61261251c72e11df0e44a",
+  "originHash" : "1d04f1b7e9beedccba5965e22cec6b2be59d78bbf590305665f3c429391aa261",
   "pins" : [
     {
       "identity" : "alertkit",
@@ -133,7 +133,7 @@
       "location" : "https://github.com/TopScrech/ScrechKit",
       "state" : {
         "branch" : "main",
-        "revision" : "c8a077e054c3cb966d8096695e5cedc30d807862"
+        "revision" : "f8a1e817efa16153a487734568e968d4245b91e4"
       }
     },
     {
@@ -195,8 +195,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-nio.git",
       "state" : {
-        "revision" : "663ddc80f2081c8f22e417cbac5f80270a93795e",
-        "version" : "2.91.0"
+        "revision" : "a1605a3303a28e14d822dec8aaa53da8a9490461",
+        "version" : "2.92.0"
       }
     },
     {

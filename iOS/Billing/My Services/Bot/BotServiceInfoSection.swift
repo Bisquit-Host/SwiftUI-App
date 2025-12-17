@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct BotServiceInfoSection: View {
     @Environment(BotServiceDetailsVM.self) private var vm
@@ -7,10 +7,16 @@ struct BotServiceInfoSection: View {
         if let service = vm.service {
             BillingSectionCard("Details") {
                 VStack(alignment: .leading, spacing: 10) {
+                    let ram = formatMegaBytes(service.packageInfo.memory)
+                    let disk = formatMegaBytes(service.packageInfo.disk)
+                    let diskType = service.packageInfo.diskType ?? ""
+                    let cpuName = service.packageInfo.cpuName ?? ""
+                    let cpuCores = service.packageInfo.cpu.clean
+                    
                     LabeledContent("Package", value: service.packageInfo.name)
-                    LabeledContent("CPU", value: "\(service.packageInfo.cpu.clean) vCPU \(service.packageInfo.cpuName ?? "")")
-                    LabeledContent("RAM", value: "\(service.packageInfo.memory.clean) GB")
-                    LabeledContent("Disk", value: "\(service.packageInfo.disk.clean) GB \(service.packageInfo.diskType ?? "")")
+                    LabeledContent("CPU", value: "\(cpuCores) vCPU \(cpuName)")
+                    LabeledContent("RAM", value: ram)
+                    LabeledContent("Disk", value: "\(disk) \(diskType)")
                     
                     if let expires = service.expiresAt {
                         LabeledContent("Expires", value: expires.formatted(date: .numeric, time: .shortened))

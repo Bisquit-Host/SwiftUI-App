@@ -66,14 +66,6 @@ struct BillingHostingPlan: Identifiable, Decodable, Equatable {
     let antiSpoofing: Bool?
     let whmcsLink: String?
     
-    var memoryGB: Double {
-        memory / 1024
-    }
-    
-    var diskGB: Double {
-        disk / 1024
-    }
-    
     var networkDescription: String? {
         guard let network else { return nil }
         

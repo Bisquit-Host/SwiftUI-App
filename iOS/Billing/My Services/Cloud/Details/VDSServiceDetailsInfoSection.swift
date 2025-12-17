@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct VDSServiceDetailsInfoSection: View {
     private let service: CloudServiceDetails
@@ -10,19 +10,21 @@ struct VDSServiceDetailsInfoSection: View {
     @State private var sheetReinstall = false
     
     var body: some View {
+        let cpu = (service.packageInfo.cpu).formatted(.fractionDigits(1))
+        let ram = formatMegaBytes(service.packageInfo.memory)
+        let disk = formatMegaBytes(service.packageInfo.disk)
+        let cpuName = service.packageInfo.cpuName ?? ""
+        let diskType = service.packageInfo.diskType ?? ""
+        
         VDSSectionCard("Details") {
-            let disk = (service.packageInfo.disk / 1024).formatted(.fractionDigits(0))
-            let memory = (service.packageInfo.memory / 1024).formatted(.fractionDigits(1))
-            let cpu = (service.packageInfo.cpu).formatted(.fractionDigits(1))
-            
             VStack(alignment: .leading, spacing: 10) {
                 if let ip = service.ip {
                     LabeledContent("IP", value: ip)
                 }
                 
-                LabeledContent("CPU", value: "\(cpu) vCPU \(service.packageInfo.cpuName ?? "")")
-                LabeledContent("RAM", value: "\(memory) GB")
-                LabeledContent("Disk", value: "\(disk) GB \(service.packageInfo.diskType ?? "")")
+                LabeledContent("CPU", value: "\(cpu) vCPU \(cpuName)")
+                LabeledContent("RAM", value: ram)
+                LabeledContent("Disk", value: "\(disk) \(diskType)")
                 
                 Divider()
                 

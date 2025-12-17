@@ -56,7 +56,9 @@ struct GameServiceUpgradeSection: View {
             Button("Cancel", role: .cancel) {}
         } message: {
             if let pkg = selectedUpgradePackage {
-                Text("Upgrade to \(pkg.name) and pay \(formatCurrency(max(pkg.price - pkg.toMinus, 0), user: dashboardVM.user)) now?")
+                let priceNow = formatCurrency(max(pkg.price - pkg.toMinus, 0), user: dashboardVM.user)
+                
+                Text("Upgrade to \(pkg.name) and pay \(priceNow) now?")
             } else {
                 Text("Upgrade service?")
             }

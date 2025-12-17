@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct GameServiceUpgradePackage: View {
     @Environment(BillingDashboardVM.self) private var dashboardVM
@@ -11,6 +11,11 @@ struct GameServiceUpgradePackage: View {
     }
     
     var body: some View {
+        let ram = formatMegaBytes(pkg.memory)
+        let disk = formatMegaBytes(pkg.disk)
+        let priceNow = formatCurrency(max(pkg.price - pkg.toMinus, 0), user: dashboardVM.user)
+        let monthlyPrice = formatCurrency(pkg.price, user: dashboardVM.user)
+        
         Button {
             selectedUpgradeId = pkg.id
         } label: {
@@ -19,11 +24,11 @@ struct GameServiceUpgradePackage: View {
                     Text(pkg.name)
                         .subheadline(.semibold)
                     
-                    Text("\(pkg.cpu.clean) vCPU • \(pkg.memory.clean) GB • \(pkg.disk.clean) GB")
+                    Text("\(pkg.cpu.clean) vCPU • \(ram) • \(disk)")
                         .footnote()
                         .secondary()
                     
-                    Text("Pay now \(formatCurrency(max(pkg.price - pkg.toMinus, 0), user: dashboardVM.user)) / \(formatCurrency(pkg.price, user: dashboardVM.user))/mo")
+                    Text("Pay now \(priceNow) / \(monthlyPrice)/mo")
                         .footnote()
                         .foregroundStyle(.primary)
                 }
