@@ -1,7 +1,7 @@
 import SwiftUI
 import PteroNet
 
-struct AppSettings: View {
+struct PterodactylSettings: View {
     @Environment(NavState.self) private var nav
     @EnvironmentObject private var store: ValueStore
     
@@ -23,7 +23,7 @@ struct AppSettings: View {
 
 #Preview {
     NavigationStack {
-        AppSettings()
+        PterodactylSettings()
     }
     .darkSchemePreferred()
     .environment(NavState())

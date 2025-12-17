@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 
 struct OtherSettings: View {
     @EnvironmentObject private var store: ValueStore
@@ -17,18 +17,6 @@ struct OtherSettings: View {
             
             Toggle(isOn: $store.enableGameCenter) {
                 Label("Game Center", systemImage: "gamecontroller")
-            }
-            
-            Button {
-                openSettings()
-            } label: {
-                Label {
-                    Text("Change language")
-                } icon: {
-                    Image(systemName: "globe")
-                        .foregroundStyle(.blue)
-                }
-                .foregroundStyle(.foreground)
             }
         }
     }

@@ -25,25 +25,25 @@ struct AccountSettingsSection: View {
             
             Divider()
             
-            AccountSettingsRow("Email", icon: "envelope.fill", tint: .blue, value: user.email) {
+            GlassyButton("Email", subtitle: user.email, icon: "envelope.fill", tint: .blue) {
                 vm.newEmail = user.email
                 alertEmail = true
             }
             
-            AccountSettingsRow("Name", icon: "person.fill", tint: .cyan, value: user.name) {
+            GlassyButton("Name", subtitle: user.name, icon: "person.fill", tint: .cyan) {
                 vm.newName = user.name
                 alertRename = true
             }
             
-            AccountSettingsRow("Login", icon: "at", tint: .indigo, value: user.login) {
+            GlassyButton("Login", subtitle: user.login, icon: "at", tint: .indigo) {
                 vm.newLogin = user.login
                 alertLogin = true
             }
             
-            AccountSettingsRow("Currency", icon: "dollarsign", tint: .yellow, value: user.currency.rawValue)
-            AccountSettingsRow("Language", icon: "character.cursor.ibeam", tint: .mint, value: user.lang.uppercased())
+            GlassyButton("Currency", subtitle: user.currency.rawValue, icon: "dollarsign", tint: .yellow)
+            GlassyButton("Language", subtitle: user.lang.uppercased(), icon: "character.cursor.ibeam", tint: .mint)
             
-            BillingActionRow("Log out", icon: "rectangle.portrait.and.arrow.right", tint: .red, role: .destructive) {
+            GlassyActionCard("Log out", icon: "rectangle.portrait.and.arrow.right", tint: .red, role: .destructive) {
                 logout()
             }
         }

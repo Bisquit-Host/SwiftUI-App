@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct GlassyToggleRow: View {
+struct GlassyToggle: View {
     private let title: LocalizedStringKey
     private let icon: String
     private let tint: Color

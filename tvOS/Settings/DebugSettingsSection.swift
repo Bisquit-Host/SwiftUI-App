@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct DevSettings: View {
+struct DebugSettingsSection: View {
     private let device = UIDevice.current
     
     private var version: String {
@@ -17,17 +17,11 @@ struct DevSettings: View {
     var body: some View {
         Section {
             LabeledContent("App version", value: version)
-            
             LabeledContent("Device and system", value: deviceAndSystem)
-#if !os(tvOS)
-            NavigationLink("Debug") {
-                DebugSettings()
-            }
-#endif
         } header: {
             Text("Dev")
         } footer: {
-            DevSettingsFooter()
+            DebugSettingsFooter()
         }
     }
     
@@ -49,7 +43,7 @@ struct DevSettings: View {
 
 #Preview {
     List {
-        DevSettings()
+        DebugSettingsSection()
     }
     .darkSchemePreferred()
 }

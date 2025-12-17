@@ -57,7 +57,7 @@ struct BisquitHost: App {
         
         Settings {
             NavigationStack {
-                AppSettings()
+                SettingsView()
             }
             .environmentObject(store)
         }

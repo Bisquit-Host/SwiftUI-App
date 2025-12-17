@@ -8,7 +8,7 @@ struct AppIconSettings: View {
     ]
     
     var body: some View {
-        Section("Icon") {
+        BillingSectionCard("Icon") {
             LazyVGrid(columns: columns, spacing: 10) {
                 ForEach(Icon.allCases) {
                     AppIconCard($0, isSelected: store.currentIcon == $0)
@@ -27,9 +27,8 @@ struct AppIconSettings: View {
             return
         }
         
-        UIApplication.shared.setAlternateIconName(
-            icon == .def ? nil : icon.rawValue
-        )
+        let newIcon = icon == .def ? nil : icon.rawValue
+        UIApplication.shared.setAlternateIconName(newIcon)
     }
 }
 

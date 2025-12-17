@@ -1,17 +1,17 @@
 import SwiftUI
 
-struct AccountSettingsRow: View {
+struct GlassyButton: View {
     private let title: LocalizedStringKey
+    private let subtitle: String?
     private let icon: String
     private let tint: Color
-    private let value: String
     private let action: (() -> Void)?
     
-    init(_ title: LocalizedStringKey, icon: String, tint: Color, value: String, action: (() -> Void)? = nil) {
+    init(_ title: LocalizedStringKey, subtitle: String?, icon: String, tint: Color, action: (() -> Void)? = nil) {
         self.title = title
+        self.subtitle = subtitle
         self.icon = icon
         self.tint = tint
-        self.value = value
         self.action = action
     }
     
@@ -26,11 +26,13 @@ struct AccountSettingsRow: View {
                 Text(title)
                     .subheadline(.semibold)
                 
-                Text(value)
-                    .secondary()
-                    .footnote()
-                    .numericTransition()
-                    .lineLimit(2)
+                if let subtitle {
+                    Text(subtitle)
+                        .secondary()
+                        .footnote()
+                        .numericTransition()
+                        .lineLimit(2)
+                }
             }
             
             Spacer()
@@ -47,7 +49,7 @@ struct AccountSettingsRow: View {
 }
 
 #Preview {
-    AccountSettingsRow("Email", icon: "envelope.fill", tint: .blue, value: "test@example.com")
+    GlassyButton("Email", subtitle: "test@example.com", icon: "envelope.fill", tint: .blue)
         .padding()
         .darkSchemePreferred()
 }

@@ -83,6 +83,8 @@ struct DebugSettings: View {
                     Label("Saved metrics", systemImage: "doc.text.magnifyingglass")
                 }
             }
+            
+            DebugSettingsFooter()
         }
         .navigationTitle("Debug")
         .scrollIndicators(.never)

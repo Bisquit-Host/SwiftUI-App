@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct DevSettingsFooter: View {
+struct DebugSettingsFooter: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text("Designed by Bisquit.Host in Amsterdam")

@@ -32,7 +32,7 @@ struct ServerList: View {
         }
         .sheet($sheetSettings) {
             NavigationStack {
-                AppSettings()
+                PterodactylSettings()
             }
         }
         .sheet($vm.sheetDiscover) {

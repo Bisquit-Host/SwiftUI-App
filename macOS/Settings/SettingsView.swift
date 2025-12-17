@@ -2,7 +2,7 @@ import ScrechKit
 import LaunchAtLogin
 import PteroNet
 
-struct AppSettings: View {
+struct SettingsView: View {
     @EnvironmentObject private var store: ValueStore
     
     var body: some View {
@@ -32,7 +32,7 @@ struct AppSettings: View {
 }
 
 #Preview {
-    AppSettings()
+    SettingsView()
         .darkSchemePreferred()
         .environmentObject(ValueStore())
 }

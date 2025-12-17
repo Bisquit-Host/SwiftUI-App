@@ -1,7 +1,7 @@
 import ScrechKit
 
 #warning("Finish")
-struct SettingsView: View {
+struct PterodactylSettings: View {
     //    private var vm = SettingsVM()
     
     var body: some View {
@@ -16,7 +16,7 @@ struct SettingsView: View {
     NavigationStack {
         Text("Preview")
             .sheet {
-                SettingsView()
+                PterodactylSettings()
             }
     }
     .darkSchemePreferred()

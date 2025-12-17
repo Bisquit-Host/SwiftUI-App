@@ -4,11 +4,9 @@ struct CacheSettings: View {
     @State private var cache = CacheVM()
     
     var body: some View {
-        Section("Cache") {
+        BillingSectionCard("Cache") {
             CacheSize()
-            
             CacheLimit()
-            
             CacheExpiration()
         }
         .environment(cache)

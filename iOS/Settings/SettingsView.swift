@@ -1,40 +1,37 @@
-import ScrechKit
+import SwiftUI
 
 struct SettingsView: View {
-    @State private var sheetAccount = false
+    @EnvironmentObject private var store: ValueStore
+    
+    @Binding private var user: BillingUser?
+    
+    init(_ user: Binding<BillingUser?>) {
+        _user = user
+    }
     
     var body: some View {
-        List {
-            AccountSettings()
-                .foregroundStyle(.foreground)
+        TabView(selection: $store.settingsSelectedTab) {
+            Tab("Account", systemImage: "person.crop.circle", value: .account) {
+                BillingSettings($user)
+            }
             
-            CustomizationSettings()
+            Tab("Pterodactyl", systemImage: "externaldrive", value: .pterodactyl) {
+                PterodactylSettings()
+            }
             
-            CacheSettings()
-            
-            OtherSettings()
-            
-            AppIconSettings()
-            
-            DevSettings()
-        }
-        .navigationTitle("Settings")
-        .scrollIndicators(.hidden)
-        .sheet($sheetAccount) {
-            AccountParent()
-        }
-        .toolbar {
-            Button("Account", systemImage: "person.crop.circle") {
-                sheetAccount = true
+            Tab("App", systemImage: "appclip", value: .app) {
+                AppSettings()
             }
         }
+        .navigationTitle("Settings")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 #Preview {
-    NavigationStack {
-        SettingsView()
-    }
-    .darkSchemePreferred()
-    .environmentObject(ValueStore())
+    @Previewable @State var user: BillingUser? = .preview
+    
+    SettingsView($user)
+        .darkSchemePreferred()
+        .environmentObject(ValueStore())
 }

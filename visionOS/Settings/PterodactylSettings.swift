@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct AppSettings: View {
+struct PterodactylSettings: View {
     @EnvironmentObject private var store: ValueStore
     
     var body: some View {
@@ -25,7 +25,7 @@ struct AppSettings: View {
 
 #Preview {
     NavigationStack {
-        AppSettings()
+        PterodactylSettings()
     }
     .environmentObject(ValueStore())
 }

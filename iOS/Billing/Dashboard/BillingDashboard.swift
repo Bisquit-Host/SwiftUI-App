@@ -38,7 +38,7 @@ struct BillingDashboard: View {
         }
         .sheet($sheetSettings) {
             NavigationStack {
-                AppSettings($vm.user)
+                SettingsView($vm.user)
                     .environment(vm)
             }
         }

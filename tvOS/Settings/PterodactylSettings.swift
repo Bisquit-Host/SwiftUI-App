@@ -1,7 +1,7 @@
 import ScrechKit
 import PteroNet
 
-struct AppSettings: View {
+struct PterodactylSettings: View {
     @Environment(NavState.self) private var nav
     @EnvironmentObject private var store: ValueStore
     @Environment(\.dismiss) private var dismiss
@@ -29,7 +29,7 @@ struct AppSettings: View {
                 }
             }
             
-            DevSettings()
+            DebugSettingsSection()
         }
         .navigationTitle("Settings")
         .listStyle(.grouped)
@@ -45,7 +45,7 @@ struct AppSettings: View {
 
 #Preview {
     NavigationStack {
-        AppSettings()
+        PterodactylSettings()
     }
     .darkSchemePreferred()
     .environmentObject(ValueStore())

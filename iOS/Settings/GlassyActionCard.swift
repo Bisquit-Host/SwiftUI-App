@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct BillingActionRow: View {
+struct GlassyActionCard: View {
     private let title: LocalizedStringKey
     private let icon: String
     private let tint: Color

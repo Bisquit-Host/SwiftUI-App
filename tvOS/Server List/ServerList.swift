@@ -26,7 +26,7 @@ struct ServerList: View {
         }
         .toolbar {
             NavigationLink("Settings") {
-                AppSettings()
+                PterodactylSettings()
             }
             
             if store.devMode {

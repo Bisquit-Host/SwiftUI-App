@@ -39,7 +39,7 @@ struct SettingsButton: View {
         }
         .sheet($sheetSettings) {
             NavigationStack {
-                SettingsView()
+                PterodactylSettings()
             }
         }
     }
