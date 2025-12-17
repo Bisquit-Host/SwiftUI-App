@@ -71,8 +71,6 @@ final class BillingDashboardVM {
             if let httpResponse = response as? HTTPURLResponse {
                 let status = httpResponse.statusCode
                 
-                print("User info status code:", status)
-                
                 if status == 401 {
                     let _ = await refreshAuthToken()
                 }
@@ -88,7 +86,7 @@ final class BillingDashboardVM {
             
             user = try decoder.decode(BillingUser.self, from: data)
         } catch {
-            print("Error fetching user data:", error)
+            Logger().error("Error fetching user data: \(error)")
         }
     }
 }
