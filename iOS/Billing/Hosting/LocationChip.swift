@@ -1,9 +1,15 @@
 import SwiftUI
 
 struct LocationChip: View {
-    let location: HostingLocation
-    let isSelected: Bool
-    let action: () -> Void
+    private let location: HostingLocation
+    private let isSelected: Bool
+    private let action: () -> Void
+    
+    init(_ location: HostingLocation, isSelected: Bool, action: @escaping () -> Void) {
+        self.location = location
+        self.isSelected = isSelected
+        self.action = action
+    }
     
     var body: some View {
         Button(action: action) {

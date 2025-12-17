@@ -14,7 +14,7 @@ struct LocationSelector: View {
             ScrollView(.horizontal) {
                 HStack(spacing: 8) {
                     ForEach(locations) { location in
-                        LocationChip(location: location, isSelected: selectedLocationId == location.id) {
+                        LocationChip(location, isSelected: selectedLocationId == location.id) {
                             onSelect(location.id)
                         }
                     }
