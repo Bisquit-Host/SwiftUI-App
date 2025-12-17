@@ -10,37 +10,7 @@ struct VDSProtectionIPSection: View {
             if let ip = vm.ipInfo {
                 LabeledContent("IPv4", value: ip.ipv4)
                 
-                VStack(alignment: .leading, spacing: 6) {
-                    Text("Default action")
-                        .subheadline(.semibold)
-                    
-                    Menu {
-                        ForEach(VDSProtectionDefaultAction.menuCases) { action in
-                            Button {
-                                selectedAction = action
-                            } label: {
-                                if selectedAction == action {
-                                    Label(action.title, systemImage: "checkmark")
-                                } else {
-                                    Text(action.title)
-                                }
-                            }
-                            .disabled(!action.canBeSetFromApp)
-                        }
-                    } label: {
-                        HStack(spacing: 8) {
-                            Text(selectedAction.title)
-                            
-                            Image(systemName: "chevron.up.chevron.down")
-                                .footnote(.semibold)
-                                .secondary()
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    .foregroundStyle(.foreground)
-                    .buttonStyle(.bordered)
-                    .disabled(vm.isPerformingAction)
-                }
+                VDSProtectionDefaultActionPicker($selectedAction)
                 
                 if selectedAction != vm.ipInfo?.defaultAction {
                     Button("Save default action") {

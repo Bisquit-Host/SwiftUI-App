@@ -21,9 +21,6 @@ struct ProtectionPresetPicker: View {
     
     var body: some View {
         Picker(selection: $presetId) {
-            Text("None")
-                .tag(0)
-            
             ForEach(selectedProtocolPresets) {
                 Text($0.name)
                     .tag($0.id)
@@ -39,6 +36,7 @@ struct ProtectionPresetPicker: View {
                     .secondary()
             }
         }
+        .tint(.primary)
         .pickerStyle(.menu)
     }
 }

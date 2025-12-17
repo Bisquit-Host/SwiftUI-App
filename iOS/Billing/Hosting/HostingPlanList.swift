@@ -29,7 +29,7 @@ struct HostingPlanList: View {
                 let plans = vm.plans(for: category, currency: nil, locationId: selectedLocationId)
                 
                 if !locations.isEmpty {
-                    LocationSelector(locations: locations, selectedLocationId: selectedLocationId) {
+                    LocationSelector(locations, selectedLocationId: selectedLocationId) {
                         selectLocation($0, for: category)
                     }
                 }

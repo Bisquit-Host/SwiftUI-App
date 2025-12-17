@@ -30,54 +30,47 @@ struct ProtectionProfileEditor: View {
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
-                ProtectionProfileEditorPresetSection($presetId, selectedProtocolPresets: selectedProtocolPresets)
-                
-                VDSSectionCard("Settings") {
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text("Protocol")
-                            .subheadline(.semibold)
-                        
-                        Picker("Protocol", selection: $protocolSelection) {
-                            ForEach(VDSProtectionProtocol.allCases) {
-                                Text($0.rawValue)
-                                    .tag($0)
-                            }
-                        }
-                        .pickerStyle(.segmented)
-                        
-                        if protocolSelection == .tcp || protocolSelection == .udp {
-                            HStack(spacing: 10) {
-                                TextField("Min port (1–65535)", text: $minPortText)
-                                    .keyboardType(.numberPad)
-                                    .textInputAutocapitalization(.never)
-                                    .limitInputLength($minPortText, length: 5)
-                                
-                                TextField("Max port (1–65535)", text: $maxPortText)
-                                    .keyboardType(.numberPad)
-                                    .textInputAutocapitalization(.never)
-                                    .limitInputLength($maxPortText, length: 5)
-                            }
-                        } else {
-                            Text("Ports not applicable for \(protocolSelection.rawValue)")
-                                .footnote()
-                                .secondary()
-                        }
-                        
-                        TextField("Notes (optional)", text: $notesText, axis: .vertical)
-                            .textInputAutocapitalization(.sentences)
+            ProtectionProfileEditorPresetSection($presetId, selectedProtocolPresets: selectedProtocolPresets)
+            
+            VDSSectionCard("Protocol") {
+                Picker("Protocol", selection: $protocolSelection) {
+                    ForEach(VDSProtectionProtocol.allCases) {
+                        Text($0.rawValue)
+                            .tag($0)
                     }
                 }
+                .pickerStyle(.segmented)
                 
-                Button(mode.actionTitle, action: save)
-                    .frame(maxWidth: .infinity)
-                    .buttonStyle(.borderedProminent)
-                    .disabled(vm.isPerformingAction || presetId == 0)
+                if protocolSelection == .tcp || protocolSelection == .udp {
+                    HStack(spacing: 10) {
+                        TextField("Min port (1–65535)", text: $minPortText)
+                            .keyboardType(.numberPad)
+                            .textInputAutocapitalization(.never)
+                            .limitInputLength($minPortText, length: 5)
+                        
+                        TextField("Max port (1–65535)", text: $maxPortText)
+                            .keyboardType(.numberPad)
+                            .textInputAutocapitalization(.never)
+                            .limitInputLength($maxPortText, length: 5)
+                    }
+                } else {
+                    Text("Ports not applicable for \(protocolSelection.rawValue)")
+                        .footnote()
+                        .secondary()
+                }
+                
+                TextField("Notes (optional)", text: $notesText, axis: .vertical)
+                    .textInputAutocapitalization(.sentences)
             }
-            .scenePadding()
+            
+            Button(mode.actionTitle, action: save)
+                .frame(maxWidth: .infinity)
+                .buttonStyle(.borderedProminent)
+                .disabled(vm.isPerformingAction || presetId == 0)
         }
         .navigationTitle(mode.title)
         .navigationBarTitleDisplayMode(.inline)
+        .scenePadding(.horizontal)
         .scrollIndicators(.never)
         .onAppear {
             if vm.presets.contains(where: { $0.id == presetId }) {

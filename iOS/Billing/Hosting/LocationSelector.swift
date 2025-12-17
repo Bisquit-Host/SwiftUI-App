@@ -1,9 +1,15 @@
 import SwiftUI
 
 struct LocationSelector: View {
-    let locations: [HostingLocation]
-    let selectedLocationId: Int?
-    let onSelect: (Int?) -> Void
+    private let locations: [HostingLocation]
+    private let selectedLocationId: Int?
+    private let onSelect: (Int?) -> Void
+    
+    init(_ locations: [HostingLocation], selectedLocationId: Int?, onSelect: @escaping (Int?) -> Void) {
+        self.locations = locations
+        self.selectedLocationId = selectedLocationId
+        self.onSelect = onSelect
+    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
