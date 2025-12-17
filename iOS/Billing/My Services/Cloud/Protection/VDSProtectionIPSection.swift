@@ -14,27 +14,44 @@ struct VDSProtectionIPSection: View {
                     Text("Default action")
                         .subheadline(.semibold)
                     
-                    Picker("Default action", selection: $selectedAction) {
-                        ForEach(VDSProtectionDefaultAction.allCases) {
-                            Text($0.title)
-                                .tag($0)
+                    Menu {
+                        ForEach(VDSProtectionDefaultAction.menuCases) { action in
+                            Button {
+                                selectedAction = action
+                            } label: {
+                                if selectedAction == action {
+                                    Label(action.title, systemImage: "checkmark")
+                                } else {
+                                    Text(action.title)
+                                }
+                            }
+                            .disabled(!action.canBeSetFromApp)
                         }
+                    } label: {
+                        HStack(spacing: 8) {
+                            Text(selectedAction.title)
+                            
+                            Image(systemName: "chevron.up.chevron.down")
+                                .footnote(.semibold)
+                                .secondary()
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    .pickerStyle(.segmented)
+                    .foregroundStyle(.foreground)
+                    .buttonStyle(.bordered)
+                    .disabled(vm.isPerformingAction)
                 }
                 
-                Button("Save default action") {
-                    Task {
-                        await vm.updateDefaultAction(selectedAction)
+                if selectedAction != vm.ipInfo?.defaultAction {
+                    Button("Save default action") {
+                        Task {
+                            await vm.updateDefaultAction(selectedAction)
+                        }
                     }
+                    .foregroundStyle(.foreground)
+                    .frame(maxWidth: .infinity)
+                    .buttonStyle(.bordered)
                 }
-                .frame(maxWidth: .infinity)
-                .buttonStyle(.bordered)
-                .disabled(
-                    vm.isPerformingAction ||
-                    !selectedAction.isUpdatable ||
-                    selectedAction == (ip.defaultAction ?? .filter)
-                )
             } else if vm.isLoading {
                 ProgressView()
                     .frame(maxWidth: .infinity)
@@ -60,4 +77,3 @@ struct VDSProtectionIPSection: View {
         .padding()
         .darkSchemePreferred()
 }
-

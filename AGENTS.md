@@ -28,7 +28,7 @@ Tip: choose the scheme that matches the target you’re changing (for example `W
 - Keep platform-specific code inside its platform folder; avoid cross-target imports unless shared intentionally
 
 ## Testing Guidelines
-
+- Do not create tests unless I ask to do so
 - Unit tests use `XCTest` and Swift’s `Testing` (`@Test`); add new unit tests under `Unit Tests/` (for example `FeatureTests.swift`)
 - UI tests live under `UI Tests/` and use `XCUIApplication`; keep tests deterministic and avoid relying on network state
 

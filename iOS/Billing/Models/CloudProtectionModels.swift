@@ -5,6 +5,8 @@ enum VDSProtectionDefaultAction: String, Codable, CaseIterable, Identifiable {
          filter = "FILTER",
          drop = "DROP"
     
+    static var menuCases: [VDSProtectionDefaultAction] { [.accept, .filter, .drop] }
+    
     var id: String { rawValue }
     
     var title: String {
@@ -17,6 +19,10 @@ enum VDSProtectionDefaultAction: String, Codable, CaseIterable, Identifiable {
     
     var isUpdatable: Bool {
         self == .filter || self == .drop
+    }
+    
+    var canBeSetFromApp: Bool {
+        isUpdatable
     }
 }
 

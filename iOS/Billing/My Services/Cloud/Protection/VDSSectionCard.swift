@@ -8,7 +8,7 @@ struct VDSSectionCard<Content: View>: View {
     
     init(
         _ title: LocalizedStringKey? = nil,
-        spacing: CGFloat = 12,
+        spacing: CGFloat = 16,
         @ViewBuilder content: () -> Content,
         @ViewBuilder primaryButton: () -> some View = { EmptyView() }
     ) {
