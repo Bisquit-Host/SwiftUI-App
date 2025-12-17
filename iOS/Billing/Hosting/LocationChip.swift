@@ -14,21 +14,7 @@ struct LocationChip: View {
     var body: some View {
         Button(action: action) {
             HStack(spacing: 8) {
-                if let flag = location.flagUrl, let url = URL(string: flag) {
-                    AsyncImage(url: url) { image in
-                        image
-                            .resizable()
-                            .scaledToFill()
-                    } placeholder: {
-                        Color.gray.opacity(0.15)
-                    }
-                    .frame(width: 28, height: 18)
-                    .clipShape(.rect(cornerRadius: 5))
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 5)
-                            .stroke(.primary.opacity(0.08), lineWidth: 1)
-                    }
-                }
+                LocationChipIcon(location.flagUrl)
                 
                 Text(location.name)
                     .footnote()
