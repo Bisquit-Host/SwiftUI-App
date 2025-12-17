@@ -7,6 +7,16 @@ import AlertKit
 
 final class SystemAlert {
 #if canImport(AlertKit)
+    static func done(_ title: String, subtitle: String? = nil) {
+        AlertKitAPI.present(
+            title: title,
+            subtitle: subtitle,
+            icon: .done,
+            style: .iOS17AppleMusic,
+            haptic: .success
+        )
+    }
+    
     static func copied(_ title: String = "Copied") {
         AlertKitAPI.present(
             title: NSLocalizedString(title, comment: ""),

@@ -27,7 +27,7 @@ final class CacheVM {
         cache.diskStorage.config.sizeLimit = limit
         cache.memoryStorage.config.totalCostLimit = Int(limit)
         
-        print(cache.diskStorage.config.sizeLimit)
+        SystemAlert.done("Cache life time updated")
     }
     
     func calculateCacheSize() {
