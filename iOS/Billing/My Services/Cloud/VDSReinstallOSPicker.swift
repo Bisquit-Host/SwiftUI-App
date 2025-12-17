@@ -22,19 +22,25 @@ struct VDSReinstallOSPicker: View {
     }
     
     var body: some View {
-        Picker("OS", selection: $selectedOSId) {
-            if availableOSItemsForSelectedFamily.isEmpty {
-                Text(selectedFamilyId == nil ? "Select OS Family" : "No OS Options")
-                    .tag(nil as Int?)
-            } else {
-                ForEach(availableOSItemsForSelectedFamily) {
-                    Text($0.version ?? "Unknown")
-                        .tag($0.id)
+        HStack {
+            Text("OS")
+            
+            Spacer()
+            
+            Picker("OS", selection: $selectedOSId) {
+                if availableOSItemsForSelectedFamily.isEmpty {
+                    Text(selectedFamilyId == nil ? "Select OS Family" : "No OS Options")
+                        .tag(nil as Int?)
+                } else {
+                    ForEach(availableOSItemsForSelectedFamily) {
+                        Text($0.version ?? "Unknown")
+                            .tag($0.id)
+                    }
                 }
             }
+            .tint(.primary)
+            .disabled(selectedFamilyId == nil || availableOSItemsForSelectedFamily.isEmpty)
         }
-        .pickerStyle(.navigationLink)
-        .disabled(selectedFamilyId == nil || availableOSItemsForSelectedFamily.isEmpty)
     }
 }
 

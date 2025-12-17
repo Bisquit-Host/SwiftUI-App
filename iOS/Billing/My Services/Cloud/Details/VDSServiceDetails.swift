@@ -26,6 +26,7 @@ struct VDSServiceDetails: View {
                         expiresAt: vm.service?.expiresAt ?? service.expiresAt
                     )
                     
+                    VDSReinstallSection(service.id)
                     VDSMonitoringSection()
                     
                 } else if vm.isLoading {

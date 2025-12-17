@@ -10,17 +10,23 @@ struct VDSReinstallOSFamilyPicker: View {
     }
     
     var body: some View {
-        Picker("OS Family", selection: $selectedFamilyId) {
-            ForEach(availableOSCategories) { category in
-                HStack(spacing: 12) {
-                    VDSReinstallSectionOSLogo(category)
-                    
-                    Text(category.name)
+        HStack {
+            Text("OS Family")
+            
+            Spacer()
+            
+            Picker("OS Family", selection: $selectedFamilyId) {
+                ForEach(availableOSCategories) { category in
+                    HStack(spacing: 12) {
+                        VDSReinstallSectionOSLogo(category)
+                        
+                        Text(category.name)
+                    }
+                    .tag(category.id)
                 }
-                .tag(category.id)
             }
+            .tint(.primary)
         }
-        .pickerStyle(.navigationLink)
     }
 }
 
