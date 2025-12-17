@@ -9,15 +9,11 @@ import ContactProvider
 struct DebugSettings: View {
     @EnvironmentObject private var store: ValueStore
     
-    @State private var errorAlert = false
-    
     var body: some View {
         List {
             Section {
                 Toggle("Developer mode", isOn: $store.devMode)
-                
                 Toggle("Hide status bar", isOn: $store.hideStatusBar)
-                
                 Toggle("Hide server names", isOn: $store.hideServerNames)
             }
             
@@ -75,10 +71,7 @@ struct DebugSettings: View {
             
             Section("Contacts provider") {
                 Toggle("Save contacts automatically", isOn: $store.contactsProviderEnabled)
-                
-                Button("Enable Extension") {
-                    enableExtension()
-                }
+                Button("Enable Extension", action: enableExtension)
             }
             
             Section("Metrics") {
@@ -94,7 +87,6 @@ struct DebugSettings: View {
         .navigationTitle("Debug")
         .scrollIndicators(.never)
         .foregroundStyle(.foreground)
-        .alert("Couldn't enable the extension", isPresented: $errorAlert) {}
     }
     
     private func enableExtension() {
