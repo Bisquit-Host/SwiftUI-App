@@ -18,9 +18,9 @@ struct VDSReinstallSection: View {
             VDSReinstallOSPicker($selectedOSId, selectedFamilyId: $selectedFamilyId, from: availableOSCategories)
             
             Button(role: .destructive) {
-                if let osId = selectedOSId {
+                if let selectedOSId {
                     Task {
-                        await vm.reinstall(osId: osId, serviceId: serviceId)
+                        await vm.reinstall(osId: selectedOSId, serviceId: serviceId)
                     }
                 }
             } label: {
