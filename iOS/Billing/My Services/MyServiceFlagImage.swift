@@ -1,14 +1,14 @@
 import SwiftUI
 
 struct MyServiceFlagImage: View {
-    private let urlString: String?
+    private let flagURL: String?
     
-    init(_ urlString: String?) {
-        self.urlString = urlString
+    init(_ flagURL: String?) {
+        self.flagURL = flagURL
     }
     
     var body: some View {
-        if let urlString, let url = URL(string: urlString) {
+        if let flagURL, let url = URL(string: flagURL) {
             AsyncImage(url: url) { phase in
                 switch phase {
                 case .success(let image):
