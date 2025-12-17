@@ -12,6 +12,7 @@ struct AppContainer: View {
     @EnvironmentObject private var store: ValueStore
     @Environment(\.modelContext) private var modelContext
     @Query(animation: .default) private var keys: [APIKey]
+    @State private var trigger = false
     
     var body: some View {
         HomeTabView()
@@ -36,14 +37,14 @@ struct AppContainer: View {
                 print("🔗 Deeplink:", $0)
 #if os(iOS)
                 linking.handleDeepLink($0)
-//                billingOAuth.handleCallback($0)
+                
+                billingOAuth.handleCallback($0) {
+                    store.updateAccessToken()
+                }
 #endif
             }
             .alert("Authentication with session", isPresented: $linking.alertAuth) {
-                Button("Confirm") {
-                    auth()
-                }
-                
+                Button("Confirm", action: auth)
                 Button("Cancel", role: .cancel) {}
             } message: {
                 Text("Are you sure you want to continue?")

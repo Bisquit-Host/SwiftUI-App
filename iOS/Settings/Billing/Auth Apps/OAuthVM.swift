@@ -81,13 +81,10 @@ final class OAuthVM: NSObject {
         }
     }
     
-    func handleCallback(_ url: URL) {
+    func handleCallback(_ url: URL, onComplete: @escaping () -> Void) {
         isLinkingGitHub = false
         isLinkingGoogle = false
         isLinkingYandex = false
-        
-        guard let pendingProvider else { return }
-        guard url.path.lowercased() == "/auth/providers/\(pendingProvider.rawValue)" else { return }
         
         guard
             let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
@@ -96,6 +93,7 @@ final class OAuthVM: NSObject {
             let expiresInString = components.queryItems?.first(where: { $0.name == "expiresIn" })?.value,
             let expiresIn = Int(expiresInString)
         else {
+            Logger().critical("Error parsing auth URL")
             finish(success: false, message: "Duck me")
             return
         }
@@ -103,6 +101,8 @@ final class OAuthVM: NSObject {
         Keychain.save(accessToken, forKey: "access_token")
         Keychain.save(refreshToken, forKey: "refresh_token")
         ValueStore().accessTokenExpiresIn = expiresIn
+        
+        onComplete()
     }
     
     private func fetchAuthURL(for provider: BillingAuthProvider) async {
@@ -149,17 +149,10 @@ final class OAuthVM: NSObject {
     
     private func finish(success: Bool, message: String?) {
         switch pendingProvider {
-        case .github:
-            isLinkingGitHub = false
-            
-        case .google:
-            isLinkingGoogle = false
-            
-        case .yandex:
-            isLinkingYandex = false
-            
-        case .none:
-            break
+        case .github: isLinkingGitHub = false
+        case .google: isLinkingGoogle = false
+        case .yandex: isLinkingYandex = false
+        case .none: break
         }
         
         pendingProvider = nil

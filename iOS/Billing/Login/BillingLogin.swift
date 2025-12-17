@@ -145,6 +145,7 @@ struct BillingLogin: View {
     private static func isValidEmail(_ value: String) -> Bool {
         let value = value.trimmingCharacters(in: .whitespacesAndNewlines)
         let range = NSRange(value.startIndex..., in: value)
+        
         return emailRegex.firstMatch(in: value, options: [], range: range) != nil
     }
     
