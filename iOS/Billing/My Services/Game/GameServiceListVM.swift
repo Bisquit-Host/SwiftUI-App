@@ -47,6 +47,7 @@ final class GameServiceListVM {
             
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
+            
             services = try decoder.decode([BillingGameServiceSummary].self, from: data)
         } catch {
             SystemAlert.error(error.localizedDescription)

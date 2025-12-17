@@ -142,8 +142,8 @@ final class BotServiceDetailsVM {
     
     private func performAction(_ work: @escaping () async -> Void) async {
         guard !isPerformingAction else { return }
-        
         actionMessage = nil
+        
         isPerformingAction = true
         defer { isPerformingAction = false }
         
@@ -196,6 +196,7 @@ final class BotServiceDetailsVM {
         } catch {
             SystemAlert.error(error.localizedDescription)
             print("Bot request failed:", error)
+            
             return nil
         }
     }

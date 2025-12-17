@@ -12,10 +12,10 @@ struct GameServiceDetails: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                if let _ = vm.service {
-                    GameServiceHeader()
-                    GameServiceInfoSection()
-                    GameServiceBillingSection()
+                if let service = vm.service {
+                    GameServiceHeader(service)
+                    GameServiceInfoSection(service)
+                    GameServiceBillingSection(service)
                     GameServiceUpgradeSection()
                     
                 } else if vm.isLoading {

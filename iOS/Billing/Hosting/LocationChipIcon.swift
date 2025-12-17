@@ -1,14 +1,14 @@
 import SwiftUI
 
 struct LocationChipIcon: View {
-    private let flagURL: String?
+    private let url: URL?
     
     init(_ flagURL: String?) {
-        self.flagURL = flagURL
+        self.url = URL(string: flagURL ?? "")
     }
     
     var body: some View {
-        if let flagURL, let url = URL(string: flagURL) {
+        if let url {
             AsyncImage(url: url) { image in
                 image
                     .resizable()

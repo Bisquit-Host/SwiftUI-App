@@ -12,10 +12,10 @@ struct BotServiceDetails: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                if let _ = vm.service {
-                    BotServiceHeader()
-                    BotServiceInfoSection()
-                    BotServiceBillingSection()
+                if let service = vm.service {
+                    BotServiceHeader(service)
+                    BotServiceInfoSection(service)
+                    BotServiceBillingSection(service)
                     BotServiceUpgradeSection()
                     
                 } else if vm.isLoading {
