@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct VDSProtectionProfileEditorSheet: View {
+struct VDSProtectionProfileEditor: View {
     @Environment(VDSProtectionVM.self) private var vm
     @Environment(\.dismiss) private var dismiss
     
@@ -31,7 +31,7 @@ struct VDSProtectionProfileEditorSheet: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                BillingSectionCard("Preset") {
+                VDSSectionCard("Preset") {
                     if vm.presets.isEmpty {
                         if vm.isLoading {
                             ProgressView()
@@ -65,7 +65,7 @@ struct VDSProtectionProfileEditorSheet: View {
                     }
                 }
                 
-                BillingSectionCard("Settings") {
+                VDSSectionCard("Settings") {
                     VStack(alignment: .leading, spacing: 10) {
                         Text("Protocol")
                             .subheadline(.semibold)
@@ -101,12 +101,10 @@ struct VDSProtectionProfileEditorSheet: View {
                     }
                 }
                 
-                Button(mode.actionTitle) {
-                    Task { await save() }
-                }
-                .frame(maxWidth: .infinity)
-                .buttonStyle(.borderedProminent)
-                .disabled(vm.isPerformingAction || presetId == 0)
+                Button(mode.actionTitle, action: save)
+                    .frame(maxWidth: .infinity)
+                    .buttonStyle(.borderedProminent)
+                    .disabled(vm.isPerformingAction || presetId == 0)
             }
             .scenePadding()
         }
@@ -153,18 +151,20 @@ struct VDSProtectionProfileEditorSheet: View {
         }
     }
     
-    private func save() async {
-        guard let input = makeInput() else { return }
-        
-        switch mode {
-        case .create:
-            await vm.createProfile(input)
+    private func save() {
+        Task {
+            guard let input = makeInput() else { return }
             
-        case .edit(let profile):
-            await vm.updateProfile(profile.id, input: input)
+            switch mode {
+            case .create:
+                await vm.createProfile(input)
+                
+            case .edit(let profile):
+                await vm.updateProfile(profile.id, input: input)
+            }
+            
+            dismiss()
         }
-        
-        dismiss()
     }
     
     private func makeInput() -> VDSProtectionProfileInput? {
@@ -237,7 +237,7 @@ struct VDSProtectionProfileEditorSheet: View {
 }
 
 #Preview {
-    VDSProtectionProfileEditorSheet(.create)
+    VDSProtectionProfileEditor(.create)
         .environment(VDSProtectionVM())
         .environmentObject(ValueStore())
         .darkSchemePreferred()
