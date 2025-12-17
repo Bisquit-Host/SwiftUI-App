@@ -31,39 +31,7 @@ struct VDSProtectionProfileEditor: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                VDSSectionCard("Preset") {
-                    if vm.presets.isEmpty {
-                        if vm.isLoading {
-                            ProgressView()
-                                .frame(maxWidth: .infinity)
-                        } else {
-                            Text("No presets available")
-                                .footnote()
-                                .secondary()
-                        }
-                    } else {
-                        Picker(selection: $presetId) {
-                            Text("None")
-                                .tag(0)
-                            
-                            ForEach(selectedProtocolPresets) {
-                                Text($0.name)
-                                    .tag($0.id)
-                            }
-                        } label: {
-                            HStack {
-                                Text(selectedPresetTitle)
-                                    .subheadline(.semibold)
-                                
-                                Spacer()
-                                
-                                Image(systemName: "chevron.up.chevron.down")
-                                    .secondary()
-                            }
-                        }
-                        .pickerStyle(.menu)
-                    }
-                }
+                VDSProtectionProfileEditorPresetSection($presetId, selectedProtocolPresets: selectedProtocolPresets)
                 
                 VDSSectionCard("Settings") {
                     VStack(alignment: .leading, spacing: 10) {
@@ -213,14 +181,6 @@ struct VDSProtectionProfileEditor: View {
         guard !trimmed.isEmpty, let value = Int(trimmed), (1...65535).contains(value) else { return nil }
         
         return value
-    }
-    
-    private var selectedPresetTitle: String {
-        if let preset = vm.presets.first(where: { $0.id == presetId }) {
-            "\(preset.name) • \(preset.`protocol`.rawValue)"
-        } else {
-            "Select preset"
-        }
     }
     
     private func applyDefaultPortsIfNeeded(for proto: VDSProtectionProtocol) {
