@@ -2,6 +2,8 @@ import ScrechKit
 import PteroNet
 
 struct MyServiceCard: View {
+    @Environment(\.accessibilityDifferentiateWithoutColor) private var differentiateWithoutColor
+    
     private let service: BillingMyService
     
     init(_ service: BillingMyService) {
@@ -15,8 +17,14 @@ struct MyServiceCard: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
+                if differentiateWithoutColor {
+                    Text(state.title.lowercased().capitalized)
+                }
+                
                 HStack {
-                    PulseCircle(state.color)
+                    if !differentiateWithoutColor {
+                        PulseCircle(state.color)
+                    }
                     
                     Text(name)
                         .subheadline(.semibold)
