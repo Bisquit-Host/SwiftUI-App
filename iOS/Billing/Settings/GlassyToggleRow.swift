@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct BillingToggleRow: View {
+struct GlassyToggleRow: View {
     private let title: LocalizedStringKey
     private let icon: String
     private let tint: Color

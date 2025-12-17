@@ -6,6 +6,10 @@ import Appearance
 #endif
 
 final class ValueStore: ObservableObject {
+    // MARK: - Settings
+#if os(iOS)
+    @AppStorage("settings_selexted_tab") var settingsSelectedTab: AppSettingsTab = .account
+#endif
     // MARK: - Billing
     
     /// milliseconds

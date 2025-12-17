@@ -23,19 +23,10 @@ struct BillingSettings: View {
                 .padding()
             }
         }
-        .navigationTitle("Settings")
-        .navigationBarTitleDisplayMode(.inline)
+        .environment(vm)
         .scrollIndicators(.never)
         .task {
             await dashboardVM.fetchUserInfo()
-        }
-        .environment(vm)
-        .toolbar {
-            ToolbarItem(placement: .bottomBar) {
-                DismissButton()
-            }
-            
-            ToolbarSpacer(.flexible, placement: .bottomBar)
         }
     }
 }
