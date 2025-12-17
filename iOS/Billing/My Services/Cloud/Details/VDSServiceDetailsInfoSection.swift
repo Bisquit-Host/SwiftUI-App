@@ -13,7 +13,7 @@ struct VDSServiceDetailsInfoSection: View {
         VDSSectionCard("Details") {
             let disk = (service.packageInfo.disk / 1024).formatted(.fractionDigits(0))
             let memory = (service.packageInfo.memory / 1024).formatted(.fractionDigits(1))
-            let cpu = (service.packageInfo.cpu / 1024).formatted(.fractionDigits(1))
+            let cpu = (service.packageInfo.cpu).formatted(.fractionDigits(1))
             
             VStack(alignment: .leading, spacing: 10) {
                 if let ip = service.ip {
@@ -46,9 +46,8 @@ struct VDSServiceDetailsInfoSection: View {
         }
         .sheet($sheetReinstall) {
             NavigationStack {
-                VDSReinstallSection(serviceId: service.id)
+                VDSReinstallSection(service.id)
             }
         }
     }
 }
-

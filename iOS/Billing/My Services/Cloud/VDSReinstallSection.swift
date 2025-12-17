@@ -1,37 +1,21 @@
 import SwiftUI
-import Kingfisher
-#warning("Subviews")
+
 struct VDSReinstallSection: View {
     @Environment(VDSServiceDetailsVM.self) private var vm
     
-    let serviceId: Int
+    private let serviceId: Int
+    
+    init(_ serviceId: Int) {
+        self.serviceId = serviceId
+    }
     
     @State private var selectedFamilyId: Int?
     @State private var selectedOSId: Int?
     
     var body: some View {
         VDSSectionCard("Reinstall OS") {
-            Picker("OS Family", selection: $selectedFamilyId) {
-                ForEach(availableOSCategories) { category in
-                    HStack(spacing: 12) {
-                        osFamilyLogo(category)
-                        
-                        Text(category.name)
-                    }
-                    .tag(category.id as Int?)
-                }
-            }
-            .pickerStyle(.navigationLink)
-            
-            Picker("OS", selection: $selectedOSId) {
-                if let selectedFamilyId, let family = availableOSCategories.first(where: { $0.id == selectedFamilyId }) {
-                    ForEach(availableOSItems(in: family)) {
-                        Text($0.version ?? "Unknown")
-                            .tag($0.id as Int?)
-                    }
-                }
-            }
-            .pickerStyle(.navigationLink)
+            VDSReinstallOSFamilyPicker($selectedFamilyId, from: availableOSCategories)
+            VDSReinstallOSPicker($selectedOSId, selectedFamilyId: $selectedFamilyId, from: availableOSCategories)
             
             Button(role: .destructive) {
                 if let osId = selectedOSId {
@@ -91,24 +75,6 @@ struct VDSReinstallSection: View {
         guard let selectedOSId, osItems.contains(where: { $0.id == selectedOSId }) else {
             self.selectedOSId = osItems.first?.id
             return
-        }
-    }
-    
-    @ViewBuilder
-    private func osFamilyLogo(_ category: CloudServiceOSCategory) -> some View {
-        if let urlString = category.logoUrl, let url = URL(string: urlString) {
-            KFImage(url)
-                .resizable()
-                .placeholder { ProgressView() }
-                .scaledToFit()
-                .frame(24)
-                .clipShape(.rect(cornerRadius: 6))
-        } else {
-            Image(systemName: "questionmark.square.dashed")
-                .resizable()
-                .scaledToFit()
-                .frame(24)
-                .secondary()
         }
     }
 }
