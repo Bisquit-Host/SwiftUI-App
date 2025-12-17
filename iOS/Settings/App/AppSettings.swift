@@ -12,7 +12,7 @@ struct AppSettings: View {
                 }
             }
             
-            DebugSettingsSection()
+            DebugSettings()
         }
         .scrollIndicators(.never)
         .scenePadding(.horizontal)

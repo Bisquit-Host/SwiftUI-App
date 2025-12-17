@@ -14,7 +14,7 @@ struct DebugSettings: View {
             DebugSettingsTips()
             
             NavigationLink("Gamepad test") {
-                GamepadDebug()
+                DebugSettingsGamepad()
                     .frame(width: 500, height: 600)
             }
         }

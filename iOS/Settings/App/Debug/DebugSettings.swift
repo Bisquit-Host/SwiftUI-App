@@ -1,6 +1,5 @@
 import SwiftUI
 import PteroNet
-import ScrechKit
 
 #if canImport(ContactProvider)
 import ContactProvider
@@ -11,59 +10,26 @@ struct DebugSettings: View {
     
     var body: some View {
         List {
+            DebugSettingsAppVersion()
+            DebugSettingsDeviceAndSystem()
+            
             Section {
                 Toggle("Developer mode", isOn: $store.devMode)
                 Toggle("Hide status bar", isOn: $store.hideStatusBar)
                 Toggle("Hide server names", isOn: $store.hideServerNames)
             }
             
-            if let pushToken = store.pushToken {
-                Section("Push token") {
-                    Text(pushToken)
-                    
-                    Button("Copy") {
-                        Pasteboard.copy(pushToken)
-                    }
-                }
-            }
-            
-            Section("System alerts") {
-                Button("Copied") {
-                    SystemAlert.copied()
-                }
-                
-                Button("Network error") {
-                    SystemAlert.networkError()
-                }
-                
-                Button("Restored backup") {
-                    SystemAlert.restored()
-                }
-                
-                Button("Reinstalled server") {
-                    SystemAlert.reinstalled()
-                }
-                
-                Button("Changes saved") {
-                    SystemAlert.changesSaved()
-                }
-                
-                Button("Error (title & subtitle)") {
-                    SystemAlert.error("Title", subtitle: "Subtitle")
-                }
-            }
-            
+            DebugSettingsPushNotifications()
+            DebugSettingsSystemAlerts()
             DebugSettingsTips()
             
             Section {
-                Button("Clear all cookies") {
-                    clearAllCookies()
-                }
+                Button("Clear all cookies", action: clearAllCookies)
             }
             
             Section {
                 NavigationLink {
-                    GamepadDebug()
+                    DebugSettingsGamepad()
                 } label: {
                     Label("Gamepad test", systemImage: "gamecontroller")
                 }

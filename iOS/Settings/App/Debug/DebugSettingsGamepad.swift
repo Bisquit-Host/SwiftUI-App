@@ -1,35 +1,23 @@
 import SwiftUI
 import GaypadKit
 
-struct GamepadDebug: View {
+struct DebugSettingsGamepad: View {
     @State private var gamepad = GamepadManager.shared
     
     private var dpadIcon: String {
-        if gamepad.dpadUpPressed {
-            "dpad.up.filled"
-        } else if gamepad.dpadDownPressed {
-            "dpad.down.filled"
-        } else if gamepad.dpadLeftPressed {
-            "dpad.left.filled"
-        } else if gamepad.dpadRightPressed {
-            "dpad.right.filled"
-        } else {
-            "dpad"
-        }
+        if gamepad.dpadUpPressed { "dpad.up.filled" }
+        else if gamepad.dpadDownPressed { "dpad.down.filled" }
+        else if gamepad.dpadLeftPressed { "dpad.left.filled" }
+        else if gamepad.dpadRightPressed { "dpad.right.filled" }
+        else { "dpad" }
     }
     
     private var actionIcon: String {
-        if gamepad.xPressed {
-            "circle.grid.cross.left.filled"
-        } else if gamepad.yPressed {
-            "circle.grid.cross.up.filled"
-        } else if gamepad.aPressed {
-            "circle.grid.cross.down.filled"
-        } else if gamepad.bPressed {
-            "circle.grid.cross.right.filled"
-        } else {
-            "circle.grid.cross"
-        }
+        if gamepad.xPressed { "circle.grid.cross.left.filled" }
+        else if gamepad.yPressed { "circle.grid.cross.up.filled" }
+        else if gamepad.aPressed { "circle.grid.cross.down.filled" }
+        else if gamepad.bPressed { "circle.grid.cross.right.filled" }
+        else { "circle.grid.cross" }
     }
     
     // XBox A    // PS X        // Primary Action
@@ -85,6 +73,6 @@ struct GamepadDebug: View {
 }
 
 #Preview {
-    GamepadDebug()
+    DebugSettingsGamepad()
         .darkSchemePreferred()
 }
