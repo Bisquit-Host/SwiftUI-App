@@ -18,7 +18,7 @@ struct ProtectionProfilesSection: View {
                     .footnote()
                     .secondary()
             } else {
-                
+                ProtectionProfileList($editingProfile)
             }
         } primaryButton: {
             NavigationLink {
