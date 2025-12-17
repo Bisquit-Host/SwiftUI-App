@@ -53,9 +53,7 @@ struct DataTab: View {
                 .autocorrectionDisabled()
                 .limitInputLength($databaseVM.newDatabaseName, length: 48)
             
-            Button("Create") {
-                createDatabase()
-            }
+            Button("Create", role: .confirm, action: createDatabase)
             
             Button("Cancel", role: .cancel) {
                 databaseVM.newDatabaseName = ""
@@ -66,11 +64,8 @@ struct DataTab: View {
                 .autocorrectionDisabled()
                 .limitInputLength($backupVM.textCreateBackup, length: 191)
             
+            Button("Create", role: .confirm, action: createBackup)
             Button("Cancel", role: .cancel) {}
-            
-            Button("Create") {
-                createBackup()
-            }
         }
     }
     

@@ -130,7 +130,7 @@ struct HostingOrderSheet: View {
                 }
             }
             .alert("Confirm purchase", isPresented: $alertPurchase) {
-                Button("Confirm") {
+                Button("Confirm", role: .confirm) {
                     Task {
                         await order()
                     }

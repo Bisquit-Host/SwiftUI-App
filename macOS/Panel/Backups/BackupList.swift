@@ -38,13 +38,13 @@ struct BackupList: View {
                 .autocorrectionDisabled()
                 .limitInputLength($vm.textCreateBackup, length: 191)
             
-            Button("Cancel", role: .cancel) {}
-            
-            Button("Create") {
+            Button("Create", role: .confirm) {
                 Task {
                     await vm.createBackup()
                 }
             }
+            
+            Button("Cancel", role: .cancel) {}
         }
     }
 }

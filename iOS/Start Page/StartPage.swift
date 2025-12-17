@@ -70,15 +70,13 @@ struct StartPage: View {
             }
         }
         .alert("Error \(vm.errorCode)", isPresented: $vm.alertInvalid) {
-            Button("Try again") {
+            Button("Try again", role: .confirm) {
                 Task {
                     await checkApiKey()
                 }
             }
             
-            Button("Remove this key", role: .destructive) {
-                removeSelectedKey()
-            }
+            Button("Remove this key", role: .destructive, action: removeSelectedKey)
         } message: {
             Text(vm.errorDescription)
         }

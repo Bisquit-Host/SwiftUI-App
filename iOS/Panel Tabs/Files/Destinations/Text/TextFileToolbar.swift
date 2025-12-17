@@ -32,9 +32,7 @@ struct TextFileToolbar: View {
                 .disabled(vm.text.isEmpty)
 #endif
             Section {
-                Button("Delete", systemImage: "trash", role: .destructive) {
-                    delete()
-                }
+                Button("Delete", systemImage: "trash", role: .destructive, action: delete)
             }
         } label: {
             Image(systemName: "ellipsis")

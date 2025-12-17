@@ -55,9 +55,8 @@ struct AccountSettingsSection: View {
                 .autocorrectionDisabled()
                 .limitInputLength($vm.newEmail, length: 100)
             
-            Button("Change", role: .destructive) {
-                changeEmail()
-            }
+            Button("Change", role: .confirm, action: changeEmail)
+            Button("Cancel", role: .cancel) {}
         } message: {
             Text("You will receive a confirmation email to complete the change")
         }
@@ -67,20 +66,21 @@ struct AccountSettingsSection: View {
                 .textInputAutocapitalization(.never)
                 .limitInputLength($vm.newLogin, length: 100)
             
-            Button("Change", role: .destructive) {
-                changeLogin()
-            }
+            Button("Change", role: .confirm, action: changeLogin)
+            Button("Cancel", role: .cancel) {}
         }
         .alert("Change name", isPresented: $alertRename) {
             TextField("New name", text: $vm.newName)
                 .autocorrectionDisabled()
                 .limitInputLength($vm.newName, length: 100)
             
-            Button("Change", role: .destructive) {
+            Button("Change", role: .confirm) {
                 if vm.newName != user.name {
                     change()
                 }
             }
+            
+            Button("Cancel", role: .cancel) {}
         }
     }
     

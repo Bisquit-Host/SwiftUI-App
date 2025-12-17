@@ -37,9 +37,7 @@ struct ServerCardParent: View {
             ServerCardContextMenu(server, $showSafari, $confirmKill)
         }
         .confirmationDialog("Perform kill action", isPresented: $confirmKill, titleVisibility: .visible) {
-            Button("Kill", role: .destructive) {
-                kill()
-            }
+            Button("Kill", role: .destructive, action: kill)
         }
     }
     

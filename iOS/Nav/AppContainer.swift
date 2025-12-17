@@ -44,7 +44,7 @@ struct AppContainer: View {
 #endif
             }
             .alert("Authentication with session", isPresented: $linking.alertAuth) {
-                Button("Confirm", action: auth)
+                Button("Confirm", role: .confirm, action: auth)
                 Button("Cancel", role: .cancel) {}
             } message: {
                 Text("Are you sure you want to continue?")

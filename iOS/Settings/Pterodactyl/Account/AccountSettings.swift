@@ -27,10 +27,8 @@ struct AccountSettings: View {
                 }
             }
             
-            Button("Log out", systemImage: "rectangle.portrait.and.arrow.right", role: .destructive) {
-                logout()
-            }
-            .foregroundStyle(.red)
+            Button("Log out", systemImage: "rectangle.portrait.and.arrow.right", role: .destructive, action: logout)
+                .foregroundStyle(.red)
         }
     }
     

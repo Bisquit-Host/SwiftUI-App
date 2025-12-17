@@ -15,9 +15,7 @@ struct DisablePasswordCard: View {
                 .padding(.horizontal)
                 .background(.ultraThinMaterial, in: .rect(cornerRadius: 14))
             
-            Button(role: .destructive) {
-                onDisable()
-            } label: {
+            Button(role: .destructive, action: onDisable) {
                 Text("Disable 2FA")
                     .semibold()
                     .frame(maxWidth: .infinity)

@@ -115,19 +115,20 @@ struct VDSBillingSection: View {
             Text("Automatically charges the one-month amount from your billing balance, not from your bank account")
         }
         .alert("Extend service", isPresented: $alertRenew) {
-            Button("Confirm payment") {
-                guard let service = vm.service else { return }
-                
-                Task {
-                    if let response = await vm.renew(months: renewMonths, serviceId: service.id) {
-                        lastRenewAmount = response.amount
-                    }
-                }
-            }
-            
+            Button("Confirm payment", role: .confirm, action: confirmPayment)
             Button("Cancel", role: .cancel) {}
         } message: {
             Text("Extend \(vm.service?.name ?? "this service") for \(renewMonths) \(renewMonths == 1 ? "month" : "months")?")
+        }
+    }
+    
+    private func confirmPayment() {
+        guard let service = vm.service else { return }
+        
+        Task {
+            if let response = await vm.renew(months: renewMonths, serviceId: service.id) {
+                lastRenewAmount = response.amount
+            }
         }
     }
 }

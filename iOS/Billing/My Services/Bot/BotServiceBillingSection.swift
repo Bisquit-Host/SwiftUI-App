@@ -57,7 +57,7 @@ struct BotServiceBillingSection: View {
             }
         }
         .alert("Extend service", isPresented: $alertRenew) {
-            Button("Confirm payment", action: confirmPayment)
+            Button("Confirm payment", role: .confirm, action: confirmPayment)
             Button("Cancel", role: .cancel) {}
         } message: {
             Text("Extend \(vm.service?.name ?? "this service") for \(renewMonths) \(renewMonths == 1 ? "month" : "months")?")

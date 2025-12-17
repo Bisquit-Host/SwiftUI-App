@@ -32,12 +32,10 @@ struct BillingSettingsSecurity: View {
             PasskeyListNavLink()
         }
         .alert("Disable 2FA?", isPresented: $confirmDisable2FA) {
-            Button("Cancel", role: .cancel) {}
+            Button("Disable", role: .destructive, action: disable2FA)
+                .disabled(isDisabling2FA)
             
-            Button("Disable", role: .destructive) {
-                disable2FA()
-            }
-            .disabled(isDisabling2FA)
+            Button("Cancel", role: .cancel) {}
         } message: {
             Text("You will remove extra protection for your account")
         }

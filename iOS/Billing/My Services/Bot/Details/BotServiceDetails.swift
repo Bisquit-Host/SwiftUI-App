@@ -63,7 +63,7 @@ struct BotServiceDetails: View {
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
             
-            Button("Save") {
+            Button("Save", role: .confirm) {
                 Task {
                     await vm.rename(pendingName.isEmpty ? service.name : pendingName, serviceId: service.id)
                 }

@@ -43,7 +43,7 @@ struct VDSUpgradeSection: View {
             }
         }
         .alert("Confirm upgrade", isPresented: $alertUpgrade) {
-            Button("Upgrade", action: upgrade)
+            Button("Upgrade", role: .confirm, action: upgrade)
             Button("Cancel", role: .cancel) {}
         } message: {
             if let pkg = selectedUpgradePackage {

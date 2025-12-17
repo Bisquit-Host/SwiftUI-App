@@ -75,7 +75,7 @@ struct MyServiceCard: View {
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
             
-            Button("Save") {
+            Button("Save", role: .confirm) {
                 Task {
                     await rename(to: newName)
                     newName = ""

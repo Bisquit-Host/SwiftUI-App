@@ -61,9 +61,7 @@ struct FileContextMenu: ViewModifier {
                 
                 Divider()
                 
-                Button("Delete", systemImage: "trash", role: .destructive) {
-                    delete()
-                }
+                Button("Delete", systemImage: "trash", role: .destructive, action: delete)
             }
             .sheet($sheetPermissions) {
                 FilePermissionsParent(file, at: path)

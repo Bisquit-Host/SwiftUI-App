@@ -13,9 +13,7 @@ struct CacheSize: View {
 #endif
             Divider()
             
-            Button("Clear entire cache", role: .destructive) {
-                cache.clearAll()
-            }
+            Button("Clear entire cache", role: .destructive, action: cache.clearAll)
         } label: {
             HStack {
                 Label {

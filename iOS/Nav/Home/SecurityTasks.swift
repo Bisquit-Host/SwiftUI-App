@@ -87,7 +87,7 @@ final class SecurityTasks {
         
         if currentVersion.compare(appStoreVersion, options: .numeric) == .orderedAscending {
             print("🛡️ Update available:", currentVersion, "->", appStoreVersion)
-            self.alertUpdate = true
+            alertUpdate = true
         } else {
             print("🛡️ The app is up to date")
         }

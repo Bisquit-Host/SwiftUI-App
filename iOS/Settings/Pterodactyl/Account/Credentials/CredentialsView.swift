@@ -44,9 +44,7 @@ struct CredentialsView: View {
                 
                 Spacer()
                 
-                Button("Update", role: .destructive) {
-                    update()
-                }
+                Button("Update", role: .destructive, action: update)
                 
                 Spacer()
             }

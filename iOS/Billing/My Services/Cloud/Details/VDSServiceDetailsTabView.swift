@@ -73,12 +73,14 @@ struct VDSServiceDetailsTabView: View {
         .alert("Change password", isPresented: $alertChangePassword) {
             SecureField("New password", text: $newPassword)
             
-            Button("Save", role: .cancel) {
+            Button("Save", role: .confirm) {
                 Task {
                     await vm.changePassword(newPassword, serviceId: serviceId)
                     newPassword = ""
                 }
             }
+            
+            Button("Cancel", role: .cancel) {}
         }
         .toolbar {
             if selectedTab == 0 {

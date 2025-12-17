@@ -45,14 +45,7 @@ struct BotServiceUpgradeSection: View {
             }
         }
         .alert("Confirm upgrade", isPresented: $alertUpgrade) {
-            Button("Upgrade") {
-                guard let pkg = selectedUpgradePackage, let serviceId = vm.service?.id else { return }
-                
-                Task {
-                    await vm.changePackage(to: pkg.id, serviceId: serviceId)
-                }
-            }
-            
+            Button("Upgrade", role: .confirm, action: upgrade)
             Button("Cancel", role: .cancel) {}
         } message: {
             if let pkg = selectedUpgradePackage {
@@ -62,6 +55,14 @@ struct BotServiceUpgradeSection: View {
             } else {
                 Text("Upgrade service?")
             }
+        }
+    }
+    
+    private func upgrade() {
+        guard let pkg = selectedUpgradePackage, let serviceId = vm.service?.id else { return }
+        
+        Task {
+            await vm.changePackage(to: pkg.id, serviceId: serviceId)
         }
     }
     
