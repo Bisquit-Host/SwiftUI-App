@@ -1,16 +1,20 @@
 import SwiftUI
 
-struct VDSProtectionProfileCard: View {
-    private let profile: VDSProtectionProfile
-    private let presetName: String
-    private let onEdit: () -> Void
-    private let onDelete: () -> Void
+struct ProtectionProfileCard: View {
+    @Environment(VDSProtectionVM.self) private var vm
     
-    init(_ profile: VDSProtectionProfile, presetName: String, onEdit: @escaping () -> Void, onDelete: @escaping () -> Void) {
+    private let profile: VDSProtectionProfile
+    private let onEdit: () -> Void
+    
+    init(_ profile: VDSProtectionProfile, onEdit: @escaping () -> Void) {
         self.profile = profile
-        self.presetName = presetName
         self.onEdit = onEdit
-        self.onDelete = onDelete
+    }
+    
+    @State private var showDeleteDialog = false
+    
+    private var presetName: String {
+        presetName(for: profile)
     }
     
     var body: some View {
@@ -38,12 +42,10 @@ struct VDSProtectionProfileCard: View {
             Spacer()
             
             Menu {
-                Button("Edit", systemImage: "pencil") {
-                    onEdit()
-                }
+                Button("Edit", systemImage: "pencil", action: onEdit)
                 
                 Button("Delete", systemImage: "trash", role: .destructive) {
-                    onDelete()
+                    showDeleteDialog = true
                 }
             } label: {
                 Image(systemName: "ellipsis")
@@ -55,6 +57,29 @@ struct VDSProtectionProfileCard: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(10)
         .background(.ultraThinMaterial, in: .rect(cornerRadius: 10))
+        .confirmationDialog("Delete profile?", isPresented: $showDeleteDialog, titleVisibility: .visible) {
+            Button("Delete", role: .destructive) {
+                Task {
+                    await vm.deleteProfile(profile.id)
+                }
+            }
+            
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text(presetName(for: profile))
+        }
+    }
+    
+    private func presetName(for profile: VDSProtectionProfile) -> String {
+        if let name = profile.presetName, !name.isEmpty {
+            return name
+        }
+        
+        if let preset = vm.presets.first(where: { $0.id == profile.presetId }) {
+            return preset.name
+        }
+        
+        return "Preset #\(profile.presetId)"
     }
     
     private var detailsText: String {
@@ -83,7 +108,7 @@ struct VDSProtectionProfileCard: View {
 }
 
 #Preview {
-    VDSProtectionProfileCard(
+    ProtectionProfileCard(
         VDSProtectionProfile(
             id: 1,
             presetId: 10,
@@ -93,11 +118,9 @@ struct VDSProtectionProfileCard: View {
             maxDstPort: 30150,
             autoCreated: false,
             notes: "Game ports"
-        ),
-        presetName: "FiveM TCP",
-        onEdit: {},
-        onDelete: {}
-    )
-    .padding()
+        )
+    ) {
+        
+    }
     .darkSchemePreferred()
 }

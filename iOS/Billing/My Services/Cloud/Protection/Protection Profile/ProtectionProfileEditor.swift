@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct VDSProtectionProfileEditor: View {
+struct ProtectionProfileEditor: View {
     @Environment(VDSProtectionVM.self) private var vm
     @Environment(\.dismiss) private var dismiss
     
@@ -31,7 +31,7 @@ struct VDSProtectionProfileEditor: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                VDSProtectionProfileEditorPresetSection($presetId, selectedProtocolPresets: selectedProtocolPresets)
+                ProtectionProfileEditorPresetSection($presetId, selectedProtocolPresets: selectedProtocolPresets)
                 
                 VDSSectionCard("Settings") {
                     VStack(alignment: .leading, spacing: 10) {
@@ -197,7 +197,7 @@ struct VDSProtectionProfileEditor: View {
 }
 
 #Preview {
-    VDSProtectionProfileEditor(.create)
+    ProtectionProfileEditor(.create)
         .environment(VDSProtectionVM())
         .environmentObject(ValueStore())
         .darkSchemePreferred()

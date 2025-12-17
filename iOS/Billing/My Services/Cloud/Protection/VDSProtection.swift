@@ -13,7 +13,7 @@ struct VDSProtection: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 VDSProtectionIPSection()
-                VDSProtectionProfilesSection()
+                ProtectionProfilesSection()
                 VDSProtectionAttacksSection()
             }
             .scenePadding()
