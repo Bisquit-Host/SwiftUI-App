@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 
 struct VDSProtectionProfileCard: View {
     private let profile: VDSProtectionProfile
