@@ -11,21 +11,22 @@ struct CacheExpiration: View {
     ]
     
     var body: some View {
-        Menu {
-            ForEach(intervals, id: \.self) { interval in
-                Button(interval.loc) {
-                    cacheExpiration = interval
-                    updateCacheExpiration(interval)
+        HStack(spacing: 12) {
+            GlassyIcon("clock", tint: .orange)
+            
+            Text("Expiration")
+                .subheadline(.semibold)
+            
+            Spacer()
+            
+            Menu {
+                ForEach(intervals, id: \.self) { interval in
+                    Button(interval.loc) {
+                        cacheExpiration = interval
+                        updateCacheExpiration(interval)
+                    }
                 }
-            }
-        } label: {
-            HStack(spacing: 12) {
-                GlassyIcon("clock", tint: .orange)
-                
-                Text("Expiration")
-                    .subheadline(.semibold)
-                
-                Spacer()
+            } label: {
                 
                 Text(cacheExpiration.loc)
                     .secondary()
@@ -34,8 +35,8 @@ struct CacheExpiration: View {
                     .caption2(.bold)
                     .tertiary()
             }
+            .foregroundStyle(.foreground)
         }
-        .foregroundStyle(.foreground)
     }
     
     private func updateCacheExpiration(_ expiration: CacheExpiration) {

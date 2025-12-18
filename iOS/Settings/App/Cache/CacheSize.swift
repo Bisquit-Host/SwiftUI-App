@@ -5,23 +5,24 @@ struct CacheSize: View {
     @Environment(CacheVM.self) private var cache
     
     var body: some View {
-        Menu {
-#if DEBUG
-            NavigationLink("View cache") {
-                CacheList()
-            }
-#endif
-            Divider()
+        HStack(spacing: 12) {
+            GlassyIcon("chart.pie", tint: .orange)
             
-            Button("Clear entire cache", role: .destructive, action: cache.clearAll)
-        } label: {
-            HStack(spacing: 12) {
-                GlassyIcon("chart.pie", tint: .orange)
+            Text("Total size")
+                .subheadline(.semibold)
+            
+            Spacer()
+            
+            Menu {
+#if DEBUG
+                NavigationLink("View cache") {
+                    CacheList()
+                }
+#endif
+                Divider()
                 
-                Text("Total size")
-                    .subheadline(.semibold)
-                
-                Spacer()
+                Button("Clear entire cache", role: .destructive, action: cache.clearAll)
+            } label: {
                 
                 Text(cache.cacheSize)
                     .secondary()

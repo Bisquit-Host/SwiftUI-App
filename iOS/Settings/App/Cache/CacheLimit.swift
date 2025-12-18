@@ -8,22 +8,22 @@ struct CacheLimit: View {
     private let limits: [CacheLimit] = [.MB250, .GB1]
     
     var body: some View {
-        Menu {
-            ForEach(limits) { limit in
-                Button(limit.loc) {
-                    cacheLimit = limit
-                    updateCacheLimit(limit)
+        HStack(spacing: 12) {
+            GlassyIcon("externaldrive", tint: .orange)
+            
+            Text("Limit")
+                .subheadline(.semibold)
+            
+            Spacer()
+            
+            Menu {
+                ForEach(limits) { limit in
+                    Button(limit.loc) {
+                        cacheLimit = limit
+                        updateCacheLimit(limit)
+                    }
                 }
-            }
-        } label: {
-            HStack(spacing: 12) {
-                GlassyIcon("externaldrive", tint: .orange)
-                
-                Text("Limit")
-                    .subheadline(.semibold)
-                
-                Spacer()
-                
+            } label: {
                 Text(cacheLimit.loc)
                     .secondary()
                 
@@ -31,8 +31,8 @@ struct CacheLimit: View {
                     .caption2(.bold)
                     .tertiary()
             }
+            .foregroundStyle(.foreground)
         }
-        .foregroundStyle(.foreground)
     }
     
     private func updateCacheLimit(_ limit: CacheLimit) {
