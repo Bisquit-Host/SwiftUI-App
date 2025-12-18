@@ -4,7 +4,7 @@ import NIOCore
 import NIOPosix
 import NIOConcurrencyHelpers
 
-final class SSHClient {        
+final class SSHClient {
     private let lock = NIOLock()
     private var state: SSHState = .idle
     
