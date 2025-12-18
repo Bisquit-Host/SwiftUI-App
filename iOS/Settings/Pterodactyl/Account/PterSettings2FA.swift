@@ -1,26 +1,13 @@
 import ScrechKit
 
-struct AccountView: View {
+struct PterSettings2FA: View {
     @Environment(AccountVM.self) private var vm
     
     @State private var sheetDisable2Fa = false
     @State private var sheetEnable2Fa = false
     
     var body: some View {
-        List {
-            Section {
-                if let account = vm.account {
-                    let name = account.firstName + " " + account.lastName
-#if DEBUG
-                    param("ID", value: account.id.description)
-#endif
-                    param("Name", value: name)
-                    param("Email", value: account.email)
-                }
-            }
-            
-            CredentialsButton()
-            
+        List {            
             if let twoFaEnabled = vm.twoFaEnabled {
                 Section("2FA") {
                     if twoFaEnabled {
@@ -69,27 +56,11 @@ struct AccountView: View {
         .sheet($sheetDisable2Fa) {
             Disable2FaView()
         }
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                DismissButton()
-            }
-        }
-    }
-    
-    private func param(_ param: LocalizedStringKey, value: String) -> some View {
-        HStack {
-            Text(param)
-            
-            Spacer()
-            
-            Text(value)
-                .secondary()
-        }
-    }
+    }    
 }
 
 #Preview {
-    AccountView()
+    PterSettings2FA()
         .darkSchemePreferred()
         .environment(AccountVM())
 }

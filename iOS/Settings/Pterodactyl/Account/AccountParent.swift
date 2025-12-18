@@ -10,7 +10,7 @@ struct AccountParent: View {
         TabView(selection: $store.selectedAccountTab) {
             Tab("Account", systemImage: "person.circle", value: 0) {
                 NavigationStack {
-                    AccountView()
+                    PterSettings2FA()
                 }
                 .environment(vm)
             }

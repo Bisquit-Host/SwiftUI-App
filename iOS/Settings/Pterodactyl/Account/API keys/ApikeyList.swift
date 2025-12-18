@@ -27,10 +27,6 @@ struct ApikeyList: View {
 #endif
 #if !os(macOS)
         .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                DismissButton()
-            }
-            
             ToolbarItem(placement: .topBarTrailing) {
                 SFButton("plus") {
                     sheetCreate = true

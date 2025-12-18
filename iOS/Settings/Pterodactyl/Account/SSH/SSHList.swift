@@ -32,10 +32,6 @@ struct SSHList: View {
             }
         }
         .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                DismissButton()
-            }
-            
             ToolbarItem(placement: .topBarTrailing) {
                 SFButton("plus") {
                     sheetCreate = true
