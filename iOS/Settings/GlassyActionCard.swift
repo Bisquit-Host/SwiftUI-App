@@ -3,13 +3,15 @@ import SwiftUI
 struct GlassyActionCard: View {
     private let title: LocalizedStringKey
     private let icon: String
+    private let actionIcon: String
     private let tint: Color
     private let role: ButtonRole?
     private let action: () -> Void
     
-    init(_ title: LocalizedStringKey, icon: String, tint: Color, role: ButtonRole? = nil, action: @escaping () -> Void) {
+    init(_ title: LocalizedStringKey, icon: String, actionIcon: String = "chevron.right", tint: Color, role: ButtonRole? = nil, action: @escaping () -> Void) {
         self.title = title
         self.icon = icon
+        self.actionIcon = actionIcon
         self.tint = tint
         self.role = role
         self.action = action
@@ -25,7 +27,7 @@ struct GlassyActionCard: View {
                 
                 Spacer()
                 
-                Image(systemName: "chevron.right")
+                Image(systemName: actionIcon)
                     .footnote()
                     .secondary()
             }

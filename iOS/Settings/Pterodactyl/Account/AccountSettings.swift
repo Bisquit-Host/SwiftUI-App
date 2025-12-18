@@ -15,7 +15,7 @@ struct AccountSettings: View {
         
         BillingSectionCard("Account") {
             if keys.count > 0 {
-                Button("Switch account", systemImage: "chevron.up.chevron.down") {
+                GlassyActionCard("Switch account", icon: "person.crop.circle", actionIcon: "chevron.up.chevron.down", tint: .purple) {
                     sheetKeyStorage = true
                 }
                 .sheet($sheetKeyStorage) {
