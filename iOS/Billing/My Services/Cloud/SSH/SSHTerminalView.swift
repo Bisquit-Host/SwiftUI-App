@@ -10,15 +10,16 @@ struct SSHTerminalView: UIViewRepresentable {
 
     func makeUIView(context: Context) -> TerminalView {
         let view = TerminalView(frame: .zero)
+        
         view.backgroundColor = .black
         view.nativeBackgroundColor = .black
         view.nativeForegroundColor = .white
+        
         viewModel.attach(terminalView: view)
         return view
     }
 
-    func updateUIView(_ uiView: TerminalView, context: Context) {
-    }
+    func updateUIView(_ uiView: TerminalView, context: Context) {}
 
     static func dismantleUIView(_ uiView: TerminalView, coordinator: ()) {
         uiView.terminalDelegate = nil
@@ -40,8 +41,7 @@ struct SSHTerminalView: NSViewRepresentable {
         return view
     }
 
-    func updateNSView(_ nsView: TerminalView, context: Context) {
-    }
+    func updateNSView(_ nsView: TerminalView, context: Context) {}
 
     static func dismantleNSView(_ nsView: TerminalView, coordinator: ()) {
         nsView.terminalDelegate = nil
