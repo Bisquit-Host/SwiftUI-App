@@ -7,13 +7,7 @@ struct OtherSettings: View {
         BillingSectionCard("Other") {
             BiometryButton()
             
-            Toggle(isOn: $store.showFullFilePath) {
-                Label("Full file path", systemImage: "folder")
-                
-                Text(store.showFullFilePath ? "/home/container/folder/example/" : "/folder/example/")
-                    .footnote()
-                    .animation(.default, value: store.showFullFilePath)
-            }
+            GlassyToggle("Full file path", subtitle: store.showFullFilePath ? "/home/container/folder/example/" : "/folder/example/", icon: "folder", tint: .pink, isOn: $store.showFullFilePath)
             
             GlassyToggle("Game Center", icon: "gamecontroller", tint: .pink, isOn: $store.enableGameCenter)
         }
