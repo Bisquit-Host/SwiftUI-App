@@ -1,4 +1,3 @@
-#if canImport(SwiftUI) && canImport(SwiftTerm) && canImport(NIOSSH)
 import SwiftUI
 
 struct VDSSSHTabView: View {
@@ -17,28 +16,21 @@ struct VDSSSHTabView: View {
             VStack(alignment: .leading, spacing: 10) {
                 HStack(spacing: 8) {
                     TextField("Host", text: $host)
-                        .textInputAutocapitalization(.never)
-                        .autocorrectionDisabled()
-                        .textFieldStyle(.roundedBorder)
+                        .sshTextFielgStyle()
                     
                     TextField("Port", text: $port)
-                        .textFieldStyle(.roundedBorder)
+                        .sshTextFielgStyle()
+                        .limitInputLength($port, length: 5)
                         .frame(width: 90)
-#if canImport(UIKit)
                         .keyboardType(.numberPad)
-#endif
                 }
                 
                 HStack(spacing: 8) {
                     TextField("Username", text: $username)
-                        .textInputAutocapitalization(.never)
-                        .autocorrectionDisabled()
-                        .textFieldStyle(.roundedBorder)
+                        .sshTextFielgStyle()
                     
                     SecureField("Password", text: $password)
-                        .textInputAutocapitalization(.never)
-                        .autocorrectionDisabled()
-                        .textFieldStyle(.roundedBorder)
+                        .sshTextFielgStyle()
                 }
                 
                 HStack(spacing: 12) {
@@ -58,12 +50,6 @@ struct VDSSSHTabView: View {
                     Spacer()
                 }
                 
-                if let lastError = viewModel.lastError {
-                    Text(lastError)
-                        .footnote()
-                        .foregroundStyle(.red)
-                }
-                
                 DisclosureGroup("Logs", isExpanded: $showLogs) {
                     TextEditor(text: $viewModel.logs)
                         .footnote()
@@ -76,9 +62,7 @@ struct VDSSSHTabView: View {
             .background(.ultraThinMaterial)
             
             SSHTerminalView(viewModel: viewModel)
-#if canImport(UIKit)
                 .ignoresSafeArea(.keyboard)
-#endif
         }
         .task {
             hydrateFromServiceIfNeeded()
@@ -106,4 +90,3 @@ struct VDSSSHTabView: View {
         }
     }
 }
-#endif

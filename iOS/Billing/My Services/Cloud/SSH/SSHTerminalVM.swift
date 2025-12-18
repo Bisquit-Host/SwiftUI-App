@@ -6,7 +6,6 @@ import SwiftTerm
 final class SSHTerminalVM: ObservableObject {
     @Published var status = "Disconnected"
     @Published var isConnected = false
-    @Published var lastError: String?
     @Published var logs = ""
     
     private let client = SSHClient()
@@ -34,7 +33,8 @@ final class SSHTerminalVM: ObservableObject {
         client.onError = { [weak self] error in
             Task { @MainActor in
                 let formatted = Self.formatError(error)
-                self?.lastError = formatted
+                
+                SystemAlert.error(formatted)
                 self?.appendLog("error: \(formatted)")
             }
         }
@@ -46,22 +46,20 @@ final class SSHTerminalVM: ObservableObject {
     }
     
     func connectTapped(host: String, port: String, username: String, password: String) {
-        lastError = nil
-        
         guard let portValue = Int(port), portValue > 0 else {
-            lastError = "Invalid port"
+            SystemAlert.error("Invalid port")
             return
         }
         
         let trimmedHost = host.trimmingCharacters(in: .whitespacesAndNewlines)
         
         guard !trimmedHost.isEmpty else {
-            lastError = "Host is required"
+            SystemAlert.error("Host is required")
             return
         }
         
         guard !username.isEmpty else {
-            lastError = "Username is required"
+            SystemAlert.error("Username is required")
             return
         }
         
@@ -74,7 +72,7 @@ final class SSHTerminalVM: ObservableObject {
                 try await client.connect(info, initialCols: cols, initialRows: rows)
             } catch {
                 let formatted = Self.formatError(error)
-                lastError = formatted
+                SystemAlert.error(formatted)
                 
                 appendLog("connect failed: \(formatted)")
             }
@@ -88,7 +86,7 @@ final class SSHTerminalVM: ObservableObject {
                 try await client.disconnect()
             } catch {
                 let formatted = Self.formatError(error)
-                lastError = formatted
+                SystemAlert.error(formatted)
                 
                 appendLog("disconnect failed: \(formatted)")
             }
