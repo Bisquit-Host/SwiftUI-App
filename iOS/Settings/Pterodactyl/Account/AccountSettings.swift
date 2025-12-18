@@ -29,6 +29,7 @@ struct AccountSettings: View {
             
             GlassyActionCard("Log out", icon: "rectangle.portrait.and.arrow.right", tint: .red, role: .destructive, action: logout)
         }
+        
     }
     
     private func logout() {

@@ -6,8 +6,6 @@ struct PterodactylSettings: View {
     var body: some View {
         ScrollView {
             AccountSettings()
-                .foregroundStyle(.foreground)
-            
             CustomizationSettings()
             OtherSettings()
         }
