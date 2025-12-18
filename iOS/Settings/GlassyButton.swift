@@ -7,7 +7,7 @@ struct GlassyButton: View {
     private let tint: Color
     private let action: (() -> Void)?
     
-    init(_ title: LocalizedStringKey, subtitle: String?, icon: String, tint: Color, action: (() -> Void)? = nil) {
+    init(_ title: LocalizedStringKey, subtitle: String? = nil, icon: String, tint: Color, action: (() -> Void)? = nil) {
         self.title = title
         self.subtitle = subtitle
         self.icon = icon

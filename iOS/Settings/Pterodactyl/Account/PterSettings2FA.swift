@@ -36,18 +36,6 @@ struct PterSettings2FA: View {
         }
         .navigationTitle("Account")
         .scrollContentBackground(.hidden)
-        .refreshableTask {
-            let fetchTask = Task {
-                await vm.fetch()
-            }
-            
-            let twoFaTask = Task {
-                await vm.twoFaDetails()
-            }
-            
-            await fetchTask.value
-            await twoFaTask.value
-        }
         .sheet($sheetEnable2Fa) {
             NavigationStack {
                 Enable2FAView()

@@ -10,14 +10,14 @@ struct AccountSettings: View {
     
     var body: some View {
         BillingSectionCard("Account") {
-            // "Account", systemImage: "person.circle"
-            NavigationStack {
-                PterSettings2FA()
+            if let twoFaEnabled = vm.twoFaEnabled {
+                GlassyNavLink("2FA", icon: "lock.fill", tint: twoFaEnabled ? .green : .red) {
+                    PterSettings2FA()
+                        .environment(vm)
+                }
             }
-            .environment(vm)
             
             CredentialsButton()
-            AccountSettingsCredentials()
             
             GlassyNavLink("API-keys", icon: "key.2.on.ring.fill", tint: .blue) {
                 ApikeyList()
@@ -42,6 +42,17 @@ struct AccountSettings: View {
                 
                 _ = await (fetch, twoFa, ssh, api)
             }
+            
+            let fetchTask = Task {
+                await vm.fetch()
+            }
+            
+            let twoFaTask = Task {
+                await vm.twoFaDetails()
+            }
+            
+            await fetchTask.value
+            await twoFaTask.value
         }
     }
     
