@@ -15,13 +15,11 @@ struct CacheSize: View {
             
             Button("Clear entire cache", role: .destructive, action: cache.clearAll)
         } label: {
-            HStack {
-                Label {
-                    Text("Total size")
-                } icon: {
-                    Image(systemName: "chart.pie")
-                        .foregroundStyle(.blue)
-                }
+            HStack(spacing: 12) {
+                GlassyIcon("chart.pie", tint: .orange)
+                
+                Text("Total size")
+                    .subheadline(.semibold)
                 
                 Spacer()
                 

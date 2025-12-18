@@ -9,8 +9,6 @@ final class BiometryVM {
     private(set) var canEvaluatePolicy = false
     private(set) var biometryType: LABiometryType = .none
     
-    var sheetBio = false
-    
     func defineBiometryType() {
         guard context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) else {
             return

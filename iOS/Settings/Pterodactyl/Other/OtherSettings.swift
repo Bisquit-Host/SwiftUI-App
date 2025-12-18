@@ -8,8 +8,6 @@ struct OtherSettings: View {
             BiometryButton()
             
             GlassyToggle("Full file path", subtitle: store.showFullFilePath ? "/home/container/folder/example/" : "/folder/example/", icon: "folder", tint: .blue, isOn: $store.showFullFilePath)
-            
-            GlassyToggle("Game Center", icon: "gamecontroller", tint: .pink, isOn: $store.enableGameCenter)
         }
     }
 }

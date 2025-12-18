@@ -19,13 +19,11 @@ struct CacheExpiration: View {
                 }
             }
         } label: {
-            HStack {
-                Label {
-                    Text("Expiration")
-                } icon: {
-                    Image(systemName: "clock")
-                        .foregroundStyle(.blue)
-                }
+            HStack(spacing: 12) {
+                GlassyIcon("clock", tint: .orange)
+                
+                Text("Expiration")
+                    .subheadline(.semibold)
                 
                 Spacer()
                 

@@ -13,26 +13,18 @@ struct BiometryButton: View {
         }
     }
     
+    private var isAvailable: Bool {
+        vm.biometryType != .none
+    }
+    
     var body: some View {
-        if vm.biometryType != .none {
-            Toggle(isOn: $store.useBiometry) {
-                Label(vm.bioType, systemImage: icon)
-                
-                Button("Learn more...") {
-                    vm.sheetBio = true
-                }
-                .footnote()
-                .foregroundStyle(.blue.secondary)
-            }
-            .disabled(vm.bioType == "Unknown")
-            .foregroundColor(vm.bioType == "Unknown" ? .gray : .none)
+        GlassyToggle(vm.bioType, subtitle: "Confirm purchases & destructive actions", icon: icon, tint: isAvailable ? .blue : .red, isOn: $store.useBiometry)
+            .disabled(!isAvailable)
+            .opacity(isAvailable ? 1 : 0.3)
+            .foregroundColor(isAvailable ? .gray : .none)
             .task {
                 vm.defineBiometryType()
             }
-            .sheet($vm.sheetBio) {
-                BiometryUsageView()
-            }
-        }
     }
 }
 

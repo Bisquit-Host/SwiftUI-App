@@ -16,13 +16,11 @@ struct CacheLimit: View {
                 }
             }
         } label: {
-            HStack {
-                Label {
-                    Text("Limit")
-                } icon: {
-                    Image(systemName: "externaldrive")
-                        .foregroundStyle(.blue)
-                }
+            HStack(spacing: 12) {
+                GlassyIcon("externaldrive", tint: .orange)
+                
+                Text("Limit")
+                    .subheadline(.semibold)
                 
                 Spacer()
                 
