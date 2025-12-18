@@ -10,15 +10,11 @@ struct CustomizationSettings: View {
     var body: some View {
         BillingSectionCard("Customization") {
             BackgroundImageButton()
-            
             ServerCardLayoutButton()
-            
 #if canImport(Appearance)
             AppearancePicker($store.appearance)
 #endif
-            Toggle(isOn: $store.enableBisquitFall) {
-                Label("Animated background", systemImage: "sparkles")
-            }
+            GlassyToggle("Animated background", subtitle: "Performance aggressive" icon: "sparkles", tint: .yellow, isOn: $store.enableBisquitFall)
         }
     }
 }
