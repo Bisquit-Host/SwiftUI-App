@@ -6,15 +6,8 @@ struct BackgroundImageButton: View {
     @State private var imagePicker = false
     
     var body: some View {
-        Button {
+        GlassyActionCard("Background", icon: "photo", tint: .blue) {
             imagePicker = true
-        } label: {
-            Label {
-                Text("Background")
-            } icon: {
-                Image(systemName: "photo")
-                    .foregroundStyle(.blue)
-            }
         }
         .disabled(store.enableBisquitFall)
         .foregroundStyle(.foreground)
