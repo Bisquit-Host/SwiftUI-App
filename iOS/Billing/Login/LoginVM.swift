@@ -1,5 +1,7 @@
-import AuthenticationServices
 import Foundation
+import OSLog
+import AuthenticationServices
+@preconcurrency import DeviceCheck
 
 @Observable
 final class LoginVM {
@@ -10,6 +12,34 @@ final class LoginVM {
     private let passkeyAuth = PasskeyAuthorizationController()
     private let baseURL = URL(string: "https://test-api.bisquit.host")!
     private let passkeyLoginPath = "auth/passkeys"
+    
+    func generateAppAttestKey(hash: Data) {
+        // Recieved hash for attesting from the backend
+        
+        let appAttestService = DCAppAttestService.shared
+        
+        guard appAttestService.isSupported else {
+            Logger().notice("App Attest isn't supported")
+            return
+        }
+        
+        appAttestService.generateKey { id, error in
+            guard error == nil, let id else {
+                Logger().error("Error generating App Attest key: \(error?.localizedDescription ?? "-")")
+                return
+            }
+            
+            appAttestService.attestKey(id, clientDataHash: hash) { attestationObject, error in
+                guard error == nil else {
+                    Logger().error("Error attesting an App Attest key: \(error?.localizedDescription ?? "-")")
+                    return
+                }
+                
+                // Key is asserted by Apple
+                // Send to the backend for verification
+            }
+        }
+    }
     
     func login(_ login: String, _ password: String, _ captchaToken: String) async -> BillingLoginResponse? {
         isSubmitting = true
