@@ -61,12 +61,10 @@ final class SSHClient {
                     
                     do {
                         try channel.pipeline.syncOperations.addHandlers(
-                            ParentChannelLifecycleHandler(
-                                log: log,
-                                onError: errorHandler
-                            ),
+                            ParentChannelLifecycleHandler(log: log, onError: errorHandler),
                             sshHandler
                         )
+                        
                         return channel.eventLoop.makeSucceededVoidFuture()
                     } catch {
                         return channel.eventLoop.makeFailedFuture(error)
@@ -93,18 +91,13 @@ final class SSHClient {
                 .handler(type: NIOSSHHandler.self)
                 .flatMap { sshHandler in
                     let promise = parentChannel.eventLoop.makePromise(of: Channel.self)
+                    
                     sshHandler.createChannel(promise, channelType: .session) { childChannel, _ in
                         childChannel.setOption(ChannelOptions.allowRemoteHalfClosure, value: true).flatMap {
-                            childChannel.pipeline.addHandler(
-                                SSHSessionChannelHandler(
-                                    log: log,
-                                    onOutput: output,
-                                    onError: errorHandler,
-                                    onInactive: onInactive
-                                )
-                            )
+                            childChannel.pipeline.addHandler(SSHSessionChannelHandler(log: log, onOutput: output, onError: errorHandler, onInactive: onInactive))
                         }
                     }
+                    
                     return promise.futureResult
                 }
                 .get()
