@@ -34,7 +34,7 @@ struct DataTab: View {
             DatabaseList(databaseLimit)
                 .listRowBackground(Color.gray.opacity(0.2))
         }
-        .scrollIndicators(.hidden)
+        .scrollIndicators(.never)
 #if !os(tvOS)
         .frame(maxWidth: 500)
 #endif

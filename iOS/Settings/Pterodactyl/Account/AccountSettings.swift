@@ -13,7 +13,7 @@ struct AccountSettings: View {
     var body: some View {
         @Bindable var vm = vm
         
-        Section {
+        BillingSectionCard("Account") {
             if keys.count > 0 {
                 Button("Switch account", systemImage: "chevron.up.chevron.down") {
                     sheetKeyStorage = true
@@ -27,8 +27,7 @@ struct AccountSettings: View {
                 }
             }
             
-            Button("Log out", systemImage: "rectangle.portrait.and.arrow.right", role: .destructive, action: logout)
-                .foregroundStyle(.red)
+            GlassyActionCard("Log out", icon: "rectangle.portrait.and.arrow.right", tint: .red, role: .destructive, action: logout)
         }
     }
     

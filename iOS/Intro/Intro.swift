@@ -33,7 +33,7 @@ struct Intro: View {
                         CarouselCardView($0)
                     }
                 }
-                .scrollIndicators(.hidden)
+                .scrollIndicators(.never)
                 .scrollPosition($scrollPosition)
                 .scrollClipDisabled()
                 .containerRelativeFrame(.vertical) { value, _ in

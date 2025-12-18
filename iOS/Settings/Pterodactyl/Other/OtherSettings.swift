@@ -4,7 +4,7 @@ struct OtherSettings: View {
     @EnvironmentObject private var store: ValueStore
     
     var body: some View {
-        Section("Other") {
+        BillingSectionCard("Other") {
             BiometryButton()
             
             Toggle(isOn: $store.showFullFilePath) {
@@ -15,9 +15,7 @@ struct OtherSettings: View {
                     .animation(.default, value: store.showFullFilePath)
             }
             
-            Toggle(isOn: $store.enableGameCenter) {
-                Label("Game Center", systemImage: "gamecontroller")
-            }
+            GlassyToggle("Game Center", icon: "gamecontroller", tint: .pink, isOn: $store.enableGameCenter)
         }
     }
 }

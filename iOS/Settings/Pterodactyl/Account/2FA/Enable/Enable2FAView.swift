@@ -30,7 +30,7 @@ struct Enable2FAView: View {
             .padding()
             .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .scrollIndicators(.hidden)
+        .scrollIndicators(.never)
         .sheet($sheetQrCode) {
             QRCodeView(vm.qrCodeURL)
                 .presentationDetents([.medium])

@@ -4,15 +4,14 @@ struct PterodactylSettings: View {
     @State private var sheetAccount = false
     
     var body: some View {
-        List {
+        ScrollView {
             AccountSettings()
                 .foregroundStyle(.foreground)
             
             CustomizationSettings()
             OtherSettings()
         }
-        .navigationTitle("Settings")
-        .scrollIndicators(.hidden)
+        .scrollIndicators(.never)
         .scenePadding(.horizontal)
         .sheet($sheetAccount) {
             AccountParent()

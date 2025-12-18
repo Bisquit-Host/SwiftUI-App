@@ -18,7 +18,7 @@ struct Disable2FaView: View {
             .padding()
             .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .scrollIndicators(.hidden)
+        .scrollIndicators(.never)
         .toolbar {
             ToolbarSpacer(.flexible, placement: .bottomBar)
             

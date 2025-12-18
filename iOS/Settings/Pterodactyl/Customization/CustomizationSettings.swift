@@ -8,7 +8,7 @@ struct CustomizationSettings: View {
     @EnvironmentObject private var store: ValueStore
     
     var body: some View {
-        Section("Customization") {
+        BillingSectionCard("Customization") {
             BackgroundImageButton()
             
             ServerCardLayoutButton()
