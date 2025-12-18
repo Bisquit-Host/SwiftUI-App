@@ -59,7 +59,7 @@ struct BillingLogin: View {
             
             if let emailValidationError {
                 Text(emailValidationError)
-                    .font(.footnote)
+                    .footnote()
                     .foregroundStyle(.red)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
