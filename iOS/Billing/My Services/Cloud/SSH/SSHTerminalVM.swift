@@ -1,6 +1,4 @@
-#if canImport(NIOSSH) && canImport(SwiftTerm)
 import SwiftUI
-import Combine
 import SwiftTerm
 
 final class SSHTerminalVM: ObservableObject {
@@ -186,5 +184,3 @@ extension SSHTerminalVM: TerminalViewDelegate {
     
     func rangeChanged(source: TerminalView, startY: Int, endY: Int) {}
 }
-#endif
-
