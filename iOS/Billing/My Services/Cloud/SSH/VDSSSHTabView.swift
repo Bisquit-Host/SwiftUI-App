@@ -43,7 +43,7 @@ struct VDSSSHTabView: View {
                 
                 HStack(spacing: 12) {
                     if viewModel.isConnected {
-                        Button("Disconnect") { viewModel.disconnectTapped() }
+                        Button("Disconnect", action: viewModel.disconnectTapped)
                     } else {
                         Button("Connect") {
                             viewModel.connectTapped(host: host, port: port, username: username, password: password)
