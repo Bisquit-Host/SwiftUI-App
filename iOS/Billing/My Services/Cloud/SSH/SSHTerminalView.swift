@@ -33,10 +33,12 @@ struct SSHTerminalView: NSViewRepresentable {
     
     func makeNSView(context: Context) -> TerminalView {
         let view = TerminalView(frame: .zero)
+        
         view.wantsLayer = true
         view.layer?.backgroundColor = NSColor.black.cgColor
         view.nativeBackgroundColor = .black
         view.nativeForegroundColor = .white
+        
         viewModel.attach(terminalView: view)
         return view
     }
