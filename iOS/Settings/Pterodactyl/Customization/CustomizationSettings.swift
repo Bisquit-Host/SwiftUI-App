@@ -14,7 +14,7 @@ struct CustomizationSettings: View {
 #if canImport(Appearance)
             AppearancePicker($store.appearance)
 #endif
-            GlassyToggle("Animated background", subtitle: "Performance aggressive" icon: "sparkles", tint: .yellow, isOn: $store.enableBisquitFall)
+            GlassyToggle("Animated background", subtitle: "Performance aggressive", icon: "sparkles", tint: .yellow, isOn: $store.enableBisquitFall)
         }
     }
 }
