@@ -20,10 +20,7 @@ struct BillingLogin: View {
     @State private var `2FACode` = ""
     @State private var sheet2FA = false
     
-    private static let emailRegex = try! NSRegularExpression(
-        pattern: #"^[A-Z0-9a-z._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$"#,
-        options: []
-    )
+    private static let emailRegex = try! NSRegularExpression(pattern: #"^[A-Z0-9a-z._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$"#)
     
     private var trimmedLogin: String {
         login.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -180,7 +177,6 @@ struct BillingLogin: View {
             captchaToken = ""
             
             guard let response else { return }
-            
             handleAuthResponse(response)
         }
     }
