@@ -17,10 +17,7 @@ struct GlassyToggle: View {
     
     var body: some View {
         HStack(spacing: 12) {
-            Image(systemName: icon)
-                .frame(32)
-                .glassEffect(.regular.tint(tint.opacity(0.15)), in: .rect(cornerRadius: 10))
-                .foregroundStyle(tint)
+            GlassyIcon(icon, tint: tint)
             
             VStack(alignment: .leading) {
                 Text(title)

@@ -12,7 +12,16 @@ struct CustomizationSettings: View {
             BackgroundImageButton()
             ServerCardLayoutButton()
 #if canImport(Appearance)
-            AppearancePicker($store.appearance)
+            HStack(spacing: 12) {
+                GlassyIcon("paintbrush", tint: .blue)
+                
+                Text("Appearance")
+                
+                Spacer()
+                
+                AppearancePicker($store.appearance)
+                    .tint(.primary)
+            }
 #endif
             GlassyToggle("Animated background", subtitle: "Performance aggressive", icon: "sparkles", tint: .yellow, isOn: $store.enableBisquitFall)
         }
