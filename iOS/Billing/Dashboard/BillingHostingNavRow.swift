@@ -17,10 +17,7 @@ struct BillingHostingNavRow: View {
                 .environment(vm)
         } label: {
             HStack(spacing: 12) {
-                Image(systemName: category.icon)
-                    .frame(32)
-                    .glassEffect(.regular.tint(tint.opacity(0.2)), in: .rect(cornerRadius: 10))
-                    .foregroundStyle(tint)
+                GlassyIcon(category.icon, tint: tint)
                 
                 VStack(alignment: .leading, spacing: 2) {
                     Text(category.title)

@@ -9,6 +9,7 @@ struct AppSettingsAppearancePicker: View {
             GlassyIcon("paintbrush", tint: .blue)
             
             Text("Appearance")
+                .subheadline(.semibold)
             
             Spacer()
             

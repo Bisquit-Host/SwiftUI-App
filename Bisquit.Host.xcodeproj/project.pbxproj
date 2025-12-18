@@ -958,6 +958,7 @@
 				"Server List/VM extensions/UserDefaults.swift",
 				"Settings/App/App Icon/Icon.swift",
 				Settings/AppSettingsTab.swift,
+				Settings/GlassyActionCard.swift,
 				Settings/GlassyIcon.swift,
 				Settings/Pterodactyl/Account/2FA/Disable/Disable2FAView.swift,
 				Settings/Pterodactyl/Account/2FA/Disable/DisableInstructionRow.swift,

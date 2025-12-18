@@ -29,7 +29,9 @@ struct BillingSettingsSecurity: View {
                 showPasswordSheet = true
             }
             
-            PasskeyListNavLink()
+            GlassyNavLink("Passkeys", subtitle: "Passwordless sign in", icon: "person.badge.key.fill", tint: .blue) {
+                PasskeyList()
+            }
         }
         .alert("Disable 2FA?", isPresented: $confirmDisable2FA) {
             Button("Disable", role: .destructive, action: disable2FA)
