@@ -4,15 +4,8 @@ struct ServerCardLayoutButton: View {
     @State private var sheetServerCardLayout = false
     
     var body: some View {
-        Button {
+        GlassyActionCard("Server card layout", icon: "externaldrive", tint: .blue) {
             sheetServerCardLayout = true
-        } label: {
-            Label {
-                Text("Server card layout")
-            } icon: {
-                Image(systemName: "externaldrive")
-                    .foregroundStyle(.blue)
-            }
         }
         .foregroundStyle(.foreground)
         .sheet($sheetServerCardLayout) {
