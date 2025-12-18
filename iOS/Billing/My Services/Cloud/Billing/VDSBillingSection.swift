@@ -1,4 +1,5 @@
 import ScrechKit
+import SwiftUI
 
 struct VDSBillingSection: View {
     @Environment(VDSServiceDetailsVM.self) private var vm
@@ -9,10 +10,22 @@ struct VDSBillingSection: View {
     @Binding var renewMonths: Int
     let expiresAt: Date?
     
+    @State private var autorenewToggle = false
+    @State private var syncedAutorenew = false
     @State private var alertRenew = false
     @State private var alertRenewInfo = false
     @State private var sheetUpgrade = false
     @State private var lastRenewAmount: Double?
+    
+    init(serviceId: Int, autorenew: Bool, renewMonths: Binding<Int>, expiresAt: Date?) {
+        self.serviceId = serviceId
+        self.autorenew = autorenew
+        _renewMonths = renewMonths
+        self.expiresAt = expiresAt
+        
+        _autorenewToggle = State(initialValue: autorenew)
+        _syncedAutorenew = State(initialValue: autorenew)
+    }
     
     var body: some View {
         VDSSectionCard("Billing") {
@@ -36,10 +49,7 @@ struct VDSBillingSection: View {
                 .subheadline()
             }
             
-            Toggle(isOn: Binding(
-                get: { autorenew },
-                set: { newValue in Task { await vm.changeAutorenew(newValue, serviceId: serviceId) } }
-            )) {
+            Toggle(isOn: $autorenewToggle) {
                 HStack(spacing: 5) {
                     Text("Auto-renew")
                     
@@ -53,6 +63,21 @@ struct VDSBillingSection: View {
             .toggleStyle(.switch)
             .disabled(vm.isPerformingAction)
             .subheadline()
+            .task(id: autorenew) {
+                syncedAutorenew = autorenew
+                autorenewToggle = autorenew
+            }
+            .onChange(of: autorenewToggle) { _, newValue in
+                guard newValue != syncedAutorenew else { return }
+                
+                Task {
+                    await vm.changeAutorenew(newValue, serviceId: serviceId)
+                    
+                    let actualValue = vm.service?.autorenew ?? autorenew
+                    syncedAutorenew = actualValue
+                    autorenewToggle = actualValue
+                }
+            }
             
             HStack(spacing: 5) {
                 Button {

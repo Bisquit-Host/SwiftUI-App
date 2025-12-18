@@ -8,22 +8,40 @@ struct BotServiceBillingSection: View {
     
     init(_ service: BillingBotServiceDetails) {
         self.service = service
+        _autorenew = State(initialValue: service.autorenew)
+        _syncedAutorenew = State(initialValue: service.autorenew)
     }
     
     @State private var renewMonths = 1
+    @State private var autorenew = false
+    @State private var syncedAutorenew = false
     @State private var lastRenewAmount: Double?
     @State private var alertRenew = false
     
     var body: some View {
         BillingSectionCard("Billing") {
-            Toggle(isOn: Binding(
-                get: { vm.service?.autorenew ?? service.autorenew },
-                set: { newValue in Task { await vm.changeAutorenew(newValue, serviceId: service.id) } }
-            )) {
+            Toggle(isOn: $autorenew) {
                 Text("Auto-extend monthly")
             }
             .toggleStyle(.switch)
             .disabled(vm.isPerformingAction)
+            .task(id: service.autorenew) {
+                syncedAutorenew = service.autorenew
+                autorenew = service.autorenew
+            }
+            .onChange(of: autorenew) { _, newValue in
+                guard newValue != syncedAutorenew else { return }
+                
+                Task {
+                    await vm.changeAutorenew(newValue, serviceId: service.id)
+                    
+                    let actualValue = vm.service?.autorenew ?? service.autorenew
+                    await MainActor.run {
+                        syncedAutorenew = actualValue
+                        autorenew = actualValue
+                    }
+                }
+            }
             
             VStack(alignment: .leading, spacing: 8) {
                 ExtendMonthsAmountPicker($renewMonths)
