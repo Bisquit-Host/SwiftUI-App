@@ -6,9 +6,9 @@ struct CloudKeyCard: View {
     
     @Binding private var selectedKey: String
     @Bindable private var key: APIKey
-    private let validate: () -> Void
+    private let validate: () async -> Void
     
-    init(_ selectedKey: Binding<String>, key: APIKey, validate: @escaping () -> Void) {
+    init(_ selectedKey: Binding<String>, key: APIKey, validate: @escaping () async -> Void) {
         _selectedKey = selectedKey
         self.key = key
         self.validate = validate
@@ -69,7 +69,10 @@ struct CloudKeyCard: View {
         Keychain.save(key.key, forKey: "selectedApiKey")
         selectedKey = key.key
         dismiss()
-        validate()
+        
+        Task {
+            await validate()
+        }
     }
 }
 

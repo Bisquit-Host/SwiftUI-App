@@ -20,9 +20,7 @@ struct AccountSettings: View {
                 }
                 .sheet($sheetKeyStorage) {
                     CloudKeysParent($vm.apiKey) {
-                        Task {
-                            await vm.fetchServers(store.adminServerList)
-                        }
+                        await vm.fetchServers(store.adminServerList)
                     }
                 }
             }
