@@ -18,9 +18,11 @@ struct AppSettings: View {
                 GlassyActionCard("Change language", icon: "globe", tint: .white) {
                     openSettings()
                 }
+                
+                GlassyNavLink("Debug", icon: "hammer", tint: .blue) {
+                    DebugSettings()
+                }
             }
-            
-            DebugSettings()
         }
         .scrollIndicators(.never)
         .scenePadding(.horizontal)
