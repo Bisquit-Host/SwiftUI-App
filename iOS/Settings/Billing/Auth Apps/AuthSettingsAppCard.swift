@@ -53,10 +53,8 @@ struct AuthSettingsAppCard: View {
                         .tint(.secondary)
                         .padding(.horizontal, 8)
                 } else if enabled {
-                    Button("Disconnect") {
-                        disconnect()
-                    }
-                    .disabled(onDisconnect == nil)
+                    Button("Disconnect", action: disconnect)
+                        .disabled(onDisconnect == nil)
                 } else {
                     Button("Connect") {
                         onConnect?()
