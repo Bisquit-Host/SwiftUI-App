@@ -25,12 +25,12 @@ struct AccountSettingsSection: View {
             
             Divider()
             
-            GlassyButton("Email", subtitle: user.email, icon: "envelope.fill", tint: .blue) {
+            GlassyButton("Email", subtitle: user.email, icon: "envelope.fill", tint: .indigo) {
                 vm.newEmail = user.email
                 alertEmail = true
             }
             
-            GlassyButton("Name", subtitle: user.name, icon: "person.fill", tint: .cyan) {
+            GlassyButton("Name", subtitle: user.name, icon: "person.fill", tint: .indigo) {
                 vm.newName = user.name
                 alertRename = true
             }
@@ -40,8 +40,8 @@ struct AccountSettingsSection: View {
                 alertLogin = true
             }
             
-            GlassyButton("Currency", subtitle: user.currency.rawValue, icon: "dollarsign", tint: .yellow)
-            GlassyButton("Language", subtitle: user.lang.uppercased(), icon: "character.cursor.ibeam", tint: .mint)
+            GlassyButton("Language", subtitle: user.lang.uppercased(), icon: "character.cursor.ibeam", tint: .indigo)
+            GlassyButton("Currency", subtitle: user.currency.rawValue, icon: user.currency.sfSymbol, tint: .yellow)
             
             GlassyActionCard("Log out", icon: "rectangle.portrait.and.arrow.right", tint: .red, role: .destructive) {
                 logout()

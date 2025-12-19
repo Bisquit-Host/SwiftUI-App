@@ -12,7 +12,7 @@ struct AccountSettingsSwitchAccountButton: View {
         @Bindable var vm = vm
         
         if keys.count > 0 {
-            GlassyActionCard("Switch account", icon: "person.crop.circle", actionIcon: "chevron.up.chevron.down", tint: .purple) {
+            GlassyActionCard("Switch account", icon: "person.crop.circle", actionIcon: "chevron.up.chevron.down", tint: .indigo) {
                 sheetKeyStorage = true
             }
             .sheet($sheetKeyStorage) {

@@ -10,6 +10,14 @@ public enum BillingCurrency: String, Decodable, CaseIterable {
         }
     }
     
+    var sfSymbol: String {
+        switch self {
+        case .EUR: "eurosign"
+        case .RUB: "rublesign"
+        @unknown default: "dollarsign"
+        }
+    }
+    
     var stepAmount: Double {
         switch self {
         case .EUR: 5

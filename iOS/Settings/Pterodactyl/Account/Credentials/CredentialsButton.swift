@@ -8,14 +8,14 @@ struct CredentialsButton: View {
     
     var body: some View {
         if let account = vm.account {
-            GlassyButton("Email", subtitle: account.email, icon: "envelope.fill", tint: .blue) {
+            GlassyButton("Email", subtitle: account.email, icon: "envelope.fill", tint: .indigo) {
                 sheetUpdateEmail = true
             }
             .sheet($sheetUpdateEmail) {
                 CredentialsView("email")
             }
             
-            GlassyButton("Password", icon: "person.fill", tint: .cyan) {
+            GlassyButton("Password", icon: "person.fill", tint: .indigo) {
                 sheetUpdatePassword = true
             }
             .sheet($sheetUpdatePassword) {
