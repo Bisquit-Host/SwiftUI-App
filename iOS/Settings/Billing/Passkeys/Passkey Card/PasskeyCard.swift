@@ -43,8 +43,9 @@ struct PasskeyCard: View {
             Group {
                 if let lastUsed = formattedDate(passkey.lastUsedAt) {
                     Text("Last used: \(lastUsed)")
-                    
-                } else if let createdText = formattedDate(passkey.createdAt) {
+                }
+                
+                if let createdText = formattedDate(passkey.createdAt) {
                     Text("Created: \(createdText)")
                 }
             }
