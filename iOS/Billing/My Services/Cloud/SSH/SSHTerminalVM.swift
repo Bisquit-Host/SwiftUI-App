@@ -4,7 +4,7 @@ import SwiftTerm
 final class SSHTerminalVM: ObservableObject {
     @Published var status = "Disconnected"
     @Published var isConnected = false
-    @Published var logs = ""
+    @Published var logs: [String] = []
     
     private let client = SSHClient()
     private weak var terminalView: TerminalView?
@@ -116,12 +116,7 @@ final class SSHTerminalVM: ObservableObject {
     
     private func appendLog(_ message: String) {
         let line = "[\(Self.timestamp())] \(message)"
-        
-        if logs.isEmpty {
-            logs = line
-        } else {
-            logs += "\n" + line
-        }
+        logs.append(line)
     }
     
     private static func timestamp() -> String {

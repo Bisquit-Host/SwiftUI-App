@@ -51,11 +51,14 @@ struct VDSSSHTabView: View {
                 }
                 
                 DisclosureGroup("Logs", isExpanded: $showLogs) {
-                    TextEditor(text: $viewModel.logs)
-                        .footnote()
-                        .monospaced()
-                        .frame(height: 160)
-                        .disabled(true)
+                    ScrollView {
+                        ForEach(viewModel.logs, id: \.self) {
+                            Text($0)
+                                .footnote()
+                                .monospaced()
+                        }
+                    }
+                    .frame(height: 160)
                 }
             }
             .padding()
