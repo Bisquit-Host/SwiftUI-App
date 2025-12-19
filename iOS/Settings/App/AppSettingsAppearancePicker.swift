@@ -14,7 +14,7 @@ struct AppSettingsAppearancePicker: View {
             Spacer()
             
             AppearancePicker($store.appearance)
-                .tint(.primary)
+                .tint(.secondary)
         }
     }
 }
