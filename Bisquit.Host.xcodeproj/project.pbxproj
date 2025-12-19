@@ -974,7 +974,6 @@
 				Settings/Pterodactyl/Account/2FA/TwoFAActionGrid.swift,
 				Settings/Pterodactyl/Account/2FA/TwoFAActionTile.swift,
 				Settings/Pterodactyl/Account/2FA/TwoFAActionTileContent.swift,
-				Settings/Pterodactyl/Account/AccountParent.swift,
 				Settings/Pterodactyl/Account/AccountSettingsSwitchAccountButton.swift,
 				Settings/Pterodactyl/Account/AccountVM.swift,
 				"Settings/Pterodactyl/Account/API keys/ApikeyCard.swift",
