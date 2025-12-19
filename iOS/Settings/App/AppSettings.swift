@@ -15,7 +15,7 @@ struct AppSettings: View {
             }
             
             BillingSectionCard("Other") {
-                GlassyActionCard("Change language", icon: "globe", tint: .white) {
+                GlassyActionCard("Change language", icon: "globe", tint: .blue) {
                     openSettings()
                 }
                 
