@@ -8,6 +8,7 @@ import ContactProvider
 struct DebugSettings: View {
     @EnvironmentObject private var store: ValueStore
     
+    /// <#Description#>
     var body: some View {
         List {
             DebugSettingsAppVersion()
@@ -54,7 +55,6 @@ struct DebugSettings: View {
         }
         .navigationTitle("Debug")
         .scrollIndicators(.never)
-        .foregroundStyle(.foreground)
     }
     
     private func enableExtension() {
