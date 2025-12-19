@@ -101,12 +101,11 @@ struct PasskeyCard: View {
         HStack(spacing: 6) {
             Image(systemName: "bolt.horizontal.fill")
                 .caption2()
-                .secondary()
             
             Text(text)
                 .caption()
-                .secondary()
         }
+        .secondary()
         .padding(.vertical, 6)
         .padding(.horizontal, 10)
         .background(.primary.opacity(0.04), in: .capsule)
