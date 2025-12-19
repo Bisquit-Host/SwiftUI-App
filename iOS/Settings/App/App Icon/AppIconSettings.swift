@@ -14,7 +14,6 @@ struct AppIconSettings: View {
                     AppIconCard($0, isSelected: store.currentIcon == $0)
                 }
             }
-            .padding(.vertical, 16)
         }
         .onChange(of: store.currentIcon) { _, newIcon in
             onIconChanged(newIcon)
