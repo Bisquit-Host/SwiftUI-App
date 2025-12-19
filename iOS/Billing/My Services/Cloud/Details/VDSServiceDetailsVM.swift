@@ -130,7 +130,7 @@ final class VDSServiceDetailsVM {
         }
     }
     
-    func changePassword(_ password: String, serviceId: Int) async {
+    func changePassword(_ password: String, for serviceId: Int) async {
         let trimmed = password.trimmingCharacters(in: .whitespacesAndNewlines)
         
         guard trimmed.count >= 8, trimmed.count <= 32 else {

@@ -75,7 +75,7 @@ struct VDSServiceDetailsTabView: View {
             
             Button("Save", role: .confirm) {
                 Task {
-                    await vm.changePassword(newPassword, serviceId: serviceId)
+                    await vm.changePassword(newPassword, for: serviceId)
                     newPassword = ""
                 }
             }
