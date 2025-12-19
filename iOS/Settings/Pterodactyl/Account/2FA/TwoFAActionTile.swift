@@ -1,10 +1,10 @@
 import ScrechKit
 
 struct TwoFAActionTile: View {
-    let title: LocalizedStringKey
-    let subtitle: LocalizedStringKey
-    let icon: String
-    var action: () -> Void
+    private let title: LocalizedStringKey
+    private let subtitle: LocalizedStringKey
+    private let icon: String
+    private let action: () -> Void
     
     init(_ title: LocalizedStringKey, subtitle: LocalizedStringKey, icon: String, action: @escaping () -> Void) {
         self.title = title

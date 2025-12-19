@@ -1,9 +1,9 @@
 import ScrechKit
 
 struct TwoFAActionTileContent: View {
-    let title: LocalizedStringKey
-    let subtitle: LocalizedStringKey
-    let icon: String
+    private let title: LocalizedStringKey
+    private let subtitle: LocalizedStringKey
+    private let icon: String
     
     init(_ title: LocalizedStringKey, subtitle: LocalizedStringKey, icon: String) {
         self.title = title

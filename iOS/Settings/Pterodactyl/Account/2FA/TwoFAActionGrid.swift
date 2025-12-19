@@ -1,8 +1,8 @@
 import ScrechKit
 
 struct TwoFAActionGrid: View {
-    let qrCodeURL: String
-    var onShowQr: () -> Void
+    private let qrCodeURL: String
+    private let onShowQr: () -> Void
     
     init(_ qrCodeURL: String, onShowQr: @escaping () -> Void) {
         self.qrCodeURL = qrCodeURL
