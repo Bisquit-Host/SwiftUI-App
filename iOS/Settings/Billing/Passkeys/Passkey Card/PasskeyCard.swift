@@ -30,10 +30,10 @@ struct PasskeyCard: View {
                         .lineLimit(1)
                         .subheadline(.semibold)
                     
-                    verifiedBadge
+                    PasskeyCardVerifiedBadge(passkey)
                     
                     if !passkey.transports.isEmpty {
-                        transportTag(passkey.transports.joined(separator: " • "))
+                        PasskeyCardTransportTag(passkey.transports.joined(separator: " • "))
                     }
                 }
                 
@@ -66,11 +66,13 @@ struct PasskeyCard: View {
             }
         }
         .alert("Delete Passkey", isPresented: $alertDelete) {
-            Button("Delete", role: .destructive) {
-                Task {
-                    await vm.deletePasskey(passkey)
-                }
-            }
+            Button("Delete", role: .destructive, action: delete)
+        }
+    }
+    
+    private func delete() {
+        Task {
+            await vm.deletePasskey(passkey)
         }
     }
     
@@ -81,37 +83,5 @@ struct PasskeyCard: View {
         formatter.unitsStyle = .full
         
         return formatter.localizedString(for: date, relativeTo: Date())
-    }
-    
-    private var verifiedBadge: some View {
-        HStack(spacing: 6) {
-            Image(systemName: passkey.userVerified ? "checkmark.shield.fill" : "exclamationmark.triangle.fill")
-                .footnote()
-            
-            Text(passkey.userVerified ? "Verified" : "Not verified")
-                .caption()
-        }
-        .foregroundStyle(passkey.userVerified ? .green : .yellow)
-        .padding(.vertical, 4)
-        .padding(.horizontal, 8)
-        .background((passkey.userVerified ? Color.green : .yellow).opacity(0.12), in: .capsule)
-    }
-    
-    private func transportTag(_ text: String) -> some View {
-        HStack(spacing: 6) {
-            Image(systemName: "bolt.horizontal.fill")
-                .caption2()
-            
-            Text(text)
-                .caption()
-        }
-        .secondary()
-        .padding(.vertical, 6)
-        .padding(.horizontal, 10)
-        .background(.primary.opacity(0.04), in: .capsule)
-        .overlay {
-            Capsule()
-                .stroke(.primary.opacity(0.04), lineWidth: 1)
-        }
     }
 }

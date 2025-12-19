@@ -67,7 +67,7 @@ struct PasskeyCredentialFormatter {
             "rawId":    credentialId,
             "type":     "public-key",
             "response": response,
-            // Server expects clientExtensionResults to always be present, even when empty.
+            // Server expects clientExtensionResults to always be present, even when empty
             "clientExtensionResults": [:]
         ]
     }
@@ -91,7 +91,7 @@ struct PasskeyCredentialFormatter {
             "rawId": credentialId,
             "type": "public-key",
             "response": response,
-            // Server expects clientExtensionResults to always be present, even when empty.
+            // Server expects clientExtensionResults to always be present, even when empty
             "clientExtensionResults": [:]
         ]
     }
