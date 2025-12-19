@@ -45,7 +45,7 @@ struct QRCodeView: View {
             return nil
         }
         
-        // Scaling the QR code image
+        // Scaling QR code image
         let transform = CGAffineTransform(scaleX: 10, y: 10)
         let scaledQRImage = qrImage.transformed(by: transform)
         
