@@ -7,44 +7,22 @@ struct PterSettings2FA: View {
     @State private var sheetEnable2Fa = false
     
     var body: some View {
-        List {            
-            if let twoFaEnabled = vm.twoFaEnabled {
-                Section("2FA") {
-                    if twoFaEnabled {
-                        Menu {
-                            Button("Disable 2FA", systemImage: "xmark.circle", role: .destructive) {
-                                sheetDisable2Fa = true
-                            }
-                        } label: {
-                            HStack {
-                                Text("2FA enabled")
-                                
-                                Spacer()
-                                
-                                Image(systemName: "checkmark.circle")
-                                    .foregroundStyle(.green)
-                            }
-                        }
-                        .foregroundStyle(.foreground)
-                    } else {
-                        ListButton("Setup 2FA", actionIcon: "exclamationmark.triangle.fill") {
-                            sheetEnable2Fa = true
-                        }
-                    }
+        if let twoFaEnabled = vm.twoFaEnabled {
+            AuthSettingsAppCard("2FA", icon: "shield.fill", enabled: twoFaEnabled) {
+                sheetEnable2Fa = true
+            } onDisconnect: {
+                sheetDisable2Fa = true
+            }
+            .sheet($sheetDisable2Fa) {
+                Disable2FaView()
+            }
+            .sheet($sheetEnable2Fa) {
+                NavigationStack {
+                    Enable2FAView()
                 }
             }
         }
-        .navigationTitle("Account")
-        .scrollContentBackground(.hidden)
-        .sheet($sheetEnable2Fa) {
-            NavigationStack {
-                Enable2FAView()
-            }
-        }
-        .sheet($sheetDisable2Fa) {
-            Disable2FaView()
-        }
-    }    
+    }
 }
 
 #Preview {

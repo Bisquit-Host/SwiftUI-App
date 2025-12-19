@@ -10,13 +10,7 @@ struct AccountSettings: View {
     
     var body: some View {
         BillingSectionCard("Account") {
-            if let twoFaEnabled = vm.twoFaEnabled {
-                GlassyNavLink("2FA", icon: "lock.fill", tint: twoFaEnabled ? .green : .red) {
-                    PterSettings2FA()
-                        .environment(vm)
-                }
-            }
-            
+            PterSettings2FA()
             CredentialsButton()
             
             GlassyNavLink("API-keys", icon: "key.2.on.ring.fill", tint: .blue) {

@@ -970,7 +970,6 @@
 				Settings/Pterodactyl/Account/2FA/Enable/EnableInstructionRow.swift,
 				Settings/Pterodactyl/Account/2FA/Enable/EnableInstructionsCard.swift,
 				Settings/Pterodactyl/Account/2FA/Enable/EnableIntroCard.swift,
-				Settings/Pterodactyl/Account/2FA/PterSettings2FA.swift,
 				Settings/Pterodactyl/Account/2FA/QRCodeView.swift,
 				Settings/Pterodactyl/Account/2FA/TwoFAActionGrid.swift,
 				Settings/Pterodactyl/Account/2FA/TwoFAActionTile.swift,
