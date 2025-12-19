@@ -5,7 +5,13 @@ struct HostingPlanCard: View {
     
     let plan: BillingHostingPlan
     let category: BillingHostingCategory
-    var onPurchase: (() -> Void)?
+    let onPurchase: (() -> Void)?
+    
+    init(_ plan: BillingHostingPlan, in category: BillingHostingCategory, onPurchase: (() -> Void)? = {}) {
+        self.plan = plan
+        self.category = category
+        self.onPurchase = onPurchase
+    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
@@ -39,11 +45,11 @@ struct HostingPlanCard: View {
                 .stroke(.primary.opacity(0.08), lineWidth: 1)
         }
         .shadow(color: category.tint.opacity(0.05), radius: 12, y: 6)
-    }    
+    }
 }
 
 #Preview {
-    HostingPlanCard(plan: .preview, category: .game)
+    HostingPlanCard(.preview, in: .game)
         .padding()
         .darkSchemePreferred()
         .environment(HostingPlanListVM())

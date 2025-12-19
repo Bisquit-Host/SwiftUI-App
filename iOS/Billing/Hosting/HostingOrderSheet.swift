@@ -1,9 +1,9 @@
 import SwiftUI
 
 struct HostingOrderSheet: View {
-    let context: BillingPlanOrderContext
-    let priceText: String
-    let vm: HostingPlanListVM
+    private let context: BillingPlanOrderContext
+    private let priceText: String
+    private let vm: HostingPlanListVM
     private let currencyCode: String?
     
     @Environment(\.dismiss) private var dismiss
@@ -61,7 +61,7 @@ struct HostingOrderSheet: View {
                         }
                         
                         Picker("OS", selection: $selectedOSId) {
-                            ForEach(osItems, id: \.id) { // requires id for some reason
+                            ForEach(osItems, id: \.id) { // requires id
                                 Text($0.title)
                                     .tag($0.id)
                             }

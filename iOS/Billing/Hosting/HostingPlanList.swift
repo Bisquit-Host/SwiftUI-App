@@ -15,14 +15,7 @@ struct HostingPlanList: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                Picker("Service", selection: $category) {
-                    ForEach(BillingHostingCategory.allCases) {
-                        Text($0.title)
-                            .tag($0)
-                    }
-                }
-                .pickerStyle(.segmented)
-                .padding([.bottom, .horizontal])
+                HostingPlanListServicePicker($category)
                 
                 let locations = vm.locations(for: category)
                 let selectedLocationId = selectedLocationId(for: category, available: locations)
@@ -47,7 +40,7 @@ struct HostingPlanList: View {
                 } else {
                     VStack(spacing: 12) {
                         ForEach(plans) { plan in
-                            HostingPlanCard(plan: plan, category: category) {
+                            HostingPlanCard(plan, in: category) {
                                 orderContext = BillingPlanOrderContext(plan: plan, category: category)
                             }
                         }
