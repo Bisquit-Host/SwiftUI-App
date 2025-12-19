@@ -8,8 +8,6 @@ struct SettingsView: View {
     var body: some View {
         Form {
             Section {
-                Toggle("Game Center", systemImage: "gamecontroller", isOn: $store.enableGameCenter)
-                
                 LaunchAtLogin.Toggle()
             }
             

@@ -7,10 +7,6 @@ struct PterodactylSettings: View {
         List {
             SettingsAccountSection()
             
-            Toggle(isOn: $store.enableGameCenter) {
-                Label("Game Center", systemImage: "gamecontroller")
-            }
-            
             Section("Debug") {
                 Toggle(isOn: $store.devMode) {
                     Label("Developer mode", systemImage: "hammer")

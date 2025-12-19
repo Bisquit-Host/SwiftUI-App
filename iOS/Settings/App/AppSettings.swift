@@ -18,8 +18,6 @@ struct AppSettings: View {
                 GlassyActionCard("Change language", icon: "globe", tint: .purple) {
                     openSettings()
                 }
-                
-                GlassyToggle("Game Center", icon: "gamecontroller", tint: .pink, isOn: $store.enableGameCenter)
             }
             
             DebugSettings()
