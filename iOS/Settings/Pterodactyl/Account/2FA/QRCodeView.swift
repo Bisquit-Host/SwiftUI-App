@@ -1,4 +1,5 @@
 import SwiftUI
+import OSLog
 
 struct QRCodeView: View {
     private let url: String?
@@ -28,18 +29,19 @@ struct QRCodeView: View {
     }
     
     private func generateQRCode(_ url: String) -> UIImage? {
-        print("Generating code for", url)
-        
-        let data = url.data(using: .utf8)
+        Logger().info("Generating QR code for: \(url)")
         
         guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else {
             return nil
         }
         
+        let data = url.data(using: .utf8)
+        
         qrFilter.setValue(data, forKey: "inputMessage")
         qrFilter.setValue("H", forKey: "inputCorrectionLevel") // High correction level
         
         guard let qrImage = qrFilter.outputImage else {
+            Logger().error("qrImage couldn't be created")
             return nil
         }
         
@@ -50,6 +52,7 @@ struct QRCodeView: View {
         let context = CIContext()
         
         guard let cgImage = context.createCGImage(scaledQRImage, from: scaledQRImage.extent) else {
+            Logger().error("QR code couldn't be converted to cgImage")
             return nil
         }
         
@@ -64,7 +67,9 @@ struct QRCodeView: View {
     //        filter.setValue(data, forKey: "inputMessage")
     //
     //        if let outputImage = filter.outputImage {
-    //            let transformedImage = outputImage.transformed(by: CGAffineTransform(scaleX: 10, y: 10)) // Scales the image by 10 times in both directions
+    //            // Scales the image by 10 times in both directions
+    //            let transformedImage = outputImage.transformed(by: CGAffineTransform(scaleX: 10, y: 10))
+    //
     //            if let cgImage = context.createCGImage(transformedImage, from: transformedImage.extent) {
     //                return UIImage(cgImage: cgImage)
     //            }
