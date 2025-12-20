@@ -17,6 +17,7 @@ struct VDSServiceDetailsTabView: View {
     @State private var port = "22"
     @State private var username = "root"
     @State private var password = ""
+    @State private var logs: [String] = []
     
     private var title: LocalizedStringKey? {
         switch selectedTab {
@@ -54,7 +55,7 @@ struct VDSServiceDetailsTabView: View {
             }
 #if canImport(SwiftTerm) && canImport(NIOSSH)
             Tab("SSH", systemImage: "terminal", value: 3) {
-                VDSSSHTab(host: $host, port: $port, username: $username, password: $password)
+                VDSSSHTab(host: $host, port: $port, username: $username, password: $password, logs: $logs)
             }
 #endif
         }

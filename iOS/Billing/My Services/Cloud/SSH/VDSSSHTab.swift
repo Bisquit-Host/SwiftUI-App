@@ -2,18 +2,21 @@ import SwiftUI
 
 struct VDSSSHTab: View {
     @Environment(VDSServiceDetailsVM.self) private var vm
-    @StateObject private var viewModel = SSHTerminalVM()
+    @StateObject private var viewModel: SSHTerminalVM
     
     @Binding private var host: String
     @Binding private var port: String
     @Binding private var username: String
     @Binding private var password: String
+    @Binding private var logs: [String]
     
-    init(host: Binding<String>, port: Binding<String>, username: Binding<String>, password: Binding<String>) {
+    init(host: Binding<String>, port: Binding<String>, username: Binding<String>, password: Binding<String>, logs: Binding<[String]>) {
         _host = host
         _port = port
         _username = username
         _password = password
+        _logs = logs
+        self.viewModel = StateObject(wrappedValue: SSHTerminalVM(appendLog: appendLog))
     }
     
     @State private var showLogs = false
@@ -69,6 +72,16 @@ struct VDSSSHTab: View {
                 viewModel.disconnectTapped()
             }
         }
+    }
+    
+    private func writeLogs(_ message: String) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm:ss.SSS"
+        
+        let timestamp = formatter.string(from: Date())
+        
+        let line = "[\(timestamp())] \(message)"
+        logs.append(line)
     }
     
     private func hydrateFromServiceIfNeeded() {
