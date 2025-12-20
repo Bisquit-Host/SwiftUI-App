@@ -1,5 +1,5 @@
-import SwiftTerm
 import SwiftUI
+import SwiftTerm
 
 #if os(macOS)
 struct SSHTerminalView: NSViewRepresentable {

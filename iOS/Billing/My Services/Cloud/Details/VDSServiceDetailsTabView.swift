@@ -11,6 +11,13 @@ struct VDSServiceDetailsTabView: View {
     @State private var alertRename = false
     @State private var alertChangePassword = false
     
+    // SSH
+    @State private var sheetSSHCredentials = false
+    @State private var host = ""
+    @State private var port = "22"
+    @State private var username = "root"
+    @State private var password = ""
+    
     private var title: LocalizedStringKey? {
         switch selectedTab {
         case 1: "Protection"
@@ -47,7 +54,7 @@ struct VDSServiceDetailsTabView: View {
             }
 #if canImport(SwiftTerm) && canImport(NIOSSH)
             Tab("SSH", systemImage: "terminal", value: 3) {
-                VDSSSHTabView()
+                VDSSSHTab(host: $host, port: $port, username: $username, password: $password)
             }
 #endif
         }
@@ -56,6 +63,11 @@ struct VDSServiceDetailsTabView: View {
         .navigationSubtitle(subtitle)
         .navigationBarTitleDisplayMode(.inline)
         .scrollIndicators(.never)
+        .sheet($sheetSSHCredentials) {
+            NavigationStack {
+                VDSSheetSSHCredentials(host: $host, port: $port, username: $username, password: $password)
+            }
+        }
         .alert("Rename service", isPresented: $alertRename, presenting: vm.service) { service in
             TextField("New name", text: $pendingName)
                 .textInputAutocapitalization(.never)
@@ -124,6 +136,14 @@ struct VDSServiceDetailsTabView: View {
                     
                     Button("Change password", systemImage: "lock") {
                         alertChangePassword = true
+                    }
+                } label: {
+                    Image(systemName: "ellipsis")
+                }
+            } else if selectedTab == 3 {
+                Menu {
+                    Button("Change credentials", systemImage: "key") {
+                        sheetSSHCredentials = true
                     }
                 } label: {
                     Image(systemName: "ellipsis")

@@ -5,6 +5,5 @@ extension View {
         self
             .autocorrectionDisabled()
             .textInputAutocapitalization(.never)
-            .textFieldStyle(.roundedBorder)
     }
 }

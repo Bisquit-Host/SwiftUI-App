@@ -1,38 +1,26 @@
 import SwiftUI
 
-struct VDSSSHTabView: View {
+struct VDSSSHTab: View {
     @Environment(VDSServiceDetailsVM.self) private var vm
-    
     @StateObject private var viewModel = SSHTerminalVM()
     
-    @State private var host = ""
-    @State private var port = "22"
-    @State private var username = "root"
-    @State private var password = ""
+    @Binding private var host: String
+    @Binding private var port: String
+    @Binding private var username: String
+    @Binding private var password: String
+    
+    init(host: Binding<String>, port: Binding<String>, username: Binding<String>, password: Binding<String>) {
+        _host = host
+        _port = port
+        _username = username
+        _password = password
+    }
+    
     @State private var showLogs = false
     
     var body: some View {
         VStack(spacing: 0) {
             VStack(alignment: .leading, spacing: 10) {
-                HStack(spacing: 8) {
-                    TextField("Host", text: $host)
-                        .sshTextFielgStyle()
-                    
-                    TextField("Port", text: $port)
-                        .sshTextFielgStyle()
-                        .limitInputLength($port, length: 5)
-                        .frame(width: 90)
-                        .keyboardType(.numberPad)
-                }
-                
-                HStack(spacing: 8) {
-                    TextField("Username", text: $username)
-                        .sshTextFielgStyle()
-                    
-                    SecureField("Password", text: $password)
-                        .sshTextFielgStyle()
-                }
-                
                 HStack(spacing: 12) {
                     if viewModel.isConnected {
                         Button("Disconnect", action: viewModel.disconnectTapped)
