@@ -35,6 +35,8 @@ struct VDSSheetSSHCredentials: View {
                     .sshTextFielgStyle()
             }
         }
+        .navigationTitle("SSH Credentials")
+        .toolbarTitleDisplayMode(.inline)
         .presentationDetents([.medium])
     }
 }

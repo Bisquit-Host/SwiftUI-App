@@ -16,10 +16,10 @@ struct VDSSSHTab: View {
         _username = username
         _password = password
         _logs = logs
-        self.viewModel = StateObject(wrappedValue: SSHTerminalVM(appendLog: appendLog))
+        
+        let logWriter = Self.makeLogWriter(logs: logs)
+        _viewModel = StateObject(wrappedValue: SSHTerminalVM(appendLog: logWriter))
     }
-    
-    @State private var showLogs = false
     
     var body: some View {
         VStack(spacing: 0) {
@@ -34,22 +34,11 @@ struct VDSSSHTab: View {
                         .buttonStyle(.borderedProminent)
                     }
                     
+                    Spacer()
+                    
                     Text(viewModel.status)
                         .callout()
                         .secondary()
-                    
-                    Spacer()
-                }
-                
-                DisclosureGroup("Logs", isExpanded: $showLogs) {
-                    ScrollView {
-                        ForEach(viewModel.logs, id: \.self) {
-                            Text($0)
-                                .footnote()
-                                .monospaced()
-                        }
-                    }
-                    .frame(height: 160)
                 }
             }
             .padding()
@@ -74,14 +63,20 @@ struct VDSSSHTab: View {
         }
     }
     
-    private func writeLogs(_ message: String) {
+    private static let logFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm:ss.SSS"
         
-        let timestamp = formatter.string(from: Date())
-        
-        let line = "[\(timestamp())] \(message)"
-        logs.append(line)
+        return formatter
+    }()
+    
+    private static func makeLogWriter(logs: Binding<[String]>) -> (String) -> Void {
+        { message in
+            let timestamp = logFormatter.string(from: Date())
+            
+            let line = "[\(timestamp)] \(message)"
+            logs.wrappedValue.append(line)
+        }
     }
     
     private func hydrateFromServiceIfNeeded() {

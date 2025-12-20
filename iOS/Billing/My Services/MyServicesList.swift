@@ -9,17 +9,17 @@ struct MyServicesList: View {
     var body: some View {
         List {
             MyServicesSection(title: "VDS", services: cloudVM.services.map { .cloud($0) }, isLoading: cloudVM.isLoading) {
-                VDSServiceDetailsTabView(serviceId: $0)
+                VDSServiceDetailsTabView($0)
                     .environment(vm)
             }
             
             MyServicesSection(title: "Game servers", services: gameVM.services.map { .game($0) }, isLoading: gameVM.isLoading) {
-                GameServiceDetails(serviceId: $0)
+                GameServiceDetails($0)
                     .environment(vm)
             }
             
             MyServicesSection(title: "Bot hosting", services: botVM.services.map { .bot($0) }, isLoading: botVM.isLoading) {
-                BotServiceDetails(serviceId: $0)
+                BotServiceDetails($0)
                     .environment(vm)
             }
         }

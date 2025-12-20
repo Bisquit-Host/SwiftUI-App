@@ -4,7 +4,11 @@ struct BotServiceDetails: View {
     @State private var vm = BotServiceDetailsVM()
     @Environment(BillingDashboardVM.self) private var dashboardVM
     
-    let serviceId: Int
+    private let serviceId: Int
+    
+    init(_ serviceId: Int) {
+        self.serviceId = serviceId
+    }
     
     @State private var pendingName = ""
     @State private var alertRename = false
@@ -76,7 +80,7 @@ struct BotServiceDetails: View {
 
 #Preview {
     NavigationStack {
-        BotServiceDetails(serviceId: 1)
+        BotServiceDetails(1)
             .environment(BillingDashboardVM())
     }
     .environmentObject(ValueStore())

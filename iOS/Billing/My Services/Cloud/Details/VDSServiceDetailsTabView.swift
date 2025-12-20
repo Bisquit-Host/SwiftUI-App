@@ -3,7 +3,11 @@ import ScrechKit
 struct VDSServiceDetailsTabView: View {
     @State private var vm = VDSServiceDetailsVM()
     
-    let serviceId: Int
+    private let serviceId: Int
+    
+    init(_ serviceId: Int) {
+        self.serviceId = serviceId
+    }
     
     @State private var selectedTab = 0
     @State private var pendingName = ""
@@ -13,6 +17,7 @@ struct VDSServiceDetailsTabView: View {
     
     // SSH
     @State private var sheetSSHCredentials = false
+    @State private var sheetSSHLogs = false
     @State private var host = ""
     @State private var port = "22"
     @State private var username = "root"
@@ -67,6 +72,11 @@ struct VDSServiceDetailsTabView: View {
         .sheet($sheetSSHCredentials) {
             NavigationStack {
                 VDSSheetSSHCredentials(host: $host, port: $port, username: $username, password: $password)
+            }
+        }
+        .sheet($sheetSSHLogs) {
+            NavigationStack {
+                VDSSheetSSHLogs($logs)
             }
         }
         .alert("Rename service", isPresented: $alertRename, presenting: vm.service) { service in
@@ -146,6 +156,10 @@ struct VDSServiceDetailsTabView: View {
                     Button("Change credentials", systemImage: "key") {
                         sheetSSHCredentials = true
                     }
+                    
+                    Button("Logs", systemImage: "list.bullet.rectangle") {
+                        sheetSSHLogs = true
+                    }
                 } label: {
                     Image(systemName: "ellipsis")
                 }
@@ -156,7 +170,7 @@ struct VDSServiceDetailsTabView: View {
 
 #Preview {
     NavigationStack {
-        VDSServiceDetailsTabView(serviceId: 1)
+        VDSServiceDetailsTabView(1)
             .environment(BillingDashboardVM())
     }
     .environmentObject(ValueStore())

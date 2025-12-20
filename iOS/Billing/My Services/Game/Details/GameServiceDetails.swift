@@ -4,7 +4,11 @@ struct GameServiceDetails: View {
     @State private var vm = GameServiceDetailsVM()
     @Environment(BillingDashboardVM.self) private var dashboardVM
     
-    let serviceId: Int
+    private let serviceId: Int
+    
+    init(_ serviceId: Int) {
+        self.serviceId = serviceId
+    }
     
     @State private var pendingName = ""
     @State private var alertRename = false
@@ -76,7 +80,7 @@ struct GameServiceDetails: View {
 
 #Preview {
     NavigationStack {
-        GameServiceDetails(serviceId: 1)
+        GameServiceDetails(1)
             .environment(BillingDashboardVM())
     }
     .environmentObject(ValueStore())
