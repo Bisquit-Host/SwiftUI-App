@@ -2,7 +2,6 @@ import SwiftUI
 
 struct TopupSection: View {
     @Environment(SheetTopupVM.self) private var vm
-    @Environment(BillingDashboardVM.self) private var dashboardVM
     @EnvironmentObject private var store: ValueStore
     
     @Binding var amount: String
@@ -90,6 +89,10 @@ struct TopupSection: View {
                 .buttonStyle(.glassProminent)
                 .tint(.green)
                 .disabled(amount.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || selectedProvider == nil || vm.isTopupLoading)
+                
+                LoginDivider()
+                
+                TopupSectionRedeem()
             }
         }
         .safariCover($safariCover, url: paymentLink)
@@ -121,7 +124,6 @@ struct TopupSection: View {
             SystemAlert.error("Select a provider", subtitle: "Choose a payment method to continue")
             return
         }
-
         
         if let url = await vm.createTopup(amount: value, method: provider.method, currency: currency) {
             paymentLink = url.absoluteString
