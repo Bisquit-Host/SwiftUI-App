@@ -24,6 +24,7 @@ struct TopupSection: View {
                         .limitInputLength($amount, length: 10)
                         .keyboardType(.decimalPad)
                         .textInputAutocapitalization(.never)
+                        .monospacedDigit()
                         .padding(12)
                         .background(.primary.opacity(0.04), in: .rect(cornerRadius: 12))
                         .overlay {
