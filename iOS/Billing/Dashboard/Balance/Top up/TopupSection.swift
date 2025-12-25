@@ -18,6 +18,7 @@ struct TopupSection: View {
     
     @State private var safariCover = false
     @State private var paymentLink = ""
+    @State private var alertBeforePayment = false
     
     var body: some View {
         BillingSectionCard("Top up") {
@@ -67,12 +68,8 @@ struct TopupSection: View {
                 
                 TopupProviderList($selectedProvider, providers: providers)
                 
-                TopupSectionInvoiceRow(amount: amount, currency: currency, selectedProvider: $selectedProvider)
-                
                 Button {
-                    Task {
-                        await topUp()
-                    }
+                    alertBeforePayment = true
                 } label: {
                     if vm.isTopupLoading {
                         ProgressView()
@@ -96,6 +93,44 @@ struct TopupSection: View {
             }
         }
         .safariCover($safariCover, url: paymentLink)
+        .alert(topupAlertTitle(), isPresented: $alertBeforePayment) {
+            Button("Top up", role: .confirm) {
+                Task {
+                    await topUp()
+                }
+            }
+            
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("Additional fees may apply")
+        }
+    }
+    
+    private func topupAlertTitle() -> LocalizedStringKey {
+        let amountDouble = Double(amount.replacingOccurrences(of: ",", with: "."))
+        
+        if let selectedProvider, let amountDouble {
+            let differentCurrency = selectedProvider.currency != currency
+            
+            if differentCurrency, let invoice = invoiceValue() {
+                return "\(selectedProvider.currency.symbol)\(invoice.formatted(.fractionDigits(2))) will be charged"
+            } else {
+                return "\(currency.symbol)\(amountDouble.formatted(.fractionDigits(2))) will be charged"
+            }
+        } else {
+            return "Continue to payment"
+        }
+    }
+    
+    private func invoiceValue() -> Double? {
+        guard let amountDouble = Double(amount.replacingOccurrences(of: ",", with: ".")) else {
+            return nil
+        }
+        
+        switch currency {
+        case .RUB: return amountDouble / 100 * 1.5
+        case .EUR: return amountDouble * 100 / 1.5
+        }
     }
     
     private func adjustAmount(_ delta: Double) {
