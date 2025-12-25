@@ -19,7 +19,7 @@ struct SheetTopup: View {
     
     var body: some View {
         ScrollView {
-            VStack {
+            VStack(spacing: 16) {
                 BillingSectionCard("Balance") {
                     BillingBalanceCard("Main", value: formatted(user.balance))
                     BillingBalanceCard("Bonus", value: formatted(user.bonusBalance))
@@ -39,8 +39,8 @@ struct SheetTopup: View {
                 
                 BillingOperationList()
             }
-            .scenePadding()
         }
+        .scenePadding()
         .navigationTitle("Finance stuff")
         .navigationBarTitleDisplayMode(.inline)
         .scrollIndicators(.never)
