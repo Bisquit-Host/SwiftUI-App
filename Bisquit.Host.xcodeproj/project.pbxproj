@@ -449,7 +449,6 @@
 				"Cloud Keys/CloudKeyCard.swift",
 				"Cloud Keys/CloudKeyList.swift",
 				"Cloud Keys/CloudKeysParent.swift",
-				Localizable.xcstrings,
 				Nav/AppContainer.swift,
 				Nav/Home/HomeTabView.swift,
 				Nav/Home/RequireUpdateView.swift,
@@ -546,7 +545,6 @@
 				Icons/default.icon,
 				Icons/love.icon,
 				Icons/streamer.icon,
-				Localizable.xcstrings,
 				Nav/Home/RequireUpdateView.swift,
 				Nav/Home/SecurityTasks.swift,
 				Nav/LinkingVM.swift,
@@ -656,7 +654,6 @@
 				"Cloud Keys/CloudKeyList.swift",
 				"Cloud Keys/CloudKeysParent.swift",
 				Guide.xcassets,
-				Localizable.xcstrings,
 				Nav/AppContainer.swift,
 				Nav/Home/HomeTabView.swift,
 				Nav/Home/RequireUpdateView.swift,
@@ -800,7 +797,6 @@
 				Discover/DiscoverCardLabel.swift,
 				Discover/DiscoverDocuments.swift,
 				Guide.xcassets,
-				Localizable.xcstrings,
 				Nav/AppContainer.swift,
 				Nav/Home/HomeTabView.swift,
 				Nav/Home/RequireUpdateView.swift,
@@ -915,7 +911,6 @@
 		F383BADD2ECF35E500350A0F /* Exceptions for "iOS" folder in "Widgets" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Localizable.xcstrings,
 				Utils/ANSIConverter.swift,
 				Utils/Networking/NetworkCalls.swift,
 			);
