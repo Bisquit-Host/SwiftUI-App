@@ -26,7 +26,7 @@ struct BillingOperationCard: View {
                 BillingOperationCardIcon(positiveOperation)
                 
                 Text(operation.primaryMessage ?? "Operation")
-                    .headline()
+                    .subheadline(.semibold)
                     .lineLimit(2)
                 
                 Spacer()
@@ -43,7 +43,7 @@ struct BillingOperationCard: View {
                 }
             }
         }
-        .padding(.vertical, 6)
+        //        .padding(.vertical, 6)
     }
 }
 
