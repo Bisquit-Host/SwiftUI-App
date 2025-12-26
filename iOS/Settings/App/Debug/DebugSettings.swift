@@ -113,8 +113,8 @@ struct DebugSettings: View {
     
     private func makeFireworkSystem() -> VortexSystem {
         let x = Double.random(in: 0.1...0.9)
-        let y = Double.random(in: 0.1...0.9)
-        
+        let y = 1.0
+
         let system = VortexSystem.fireworks.makeUniqueCopy()
         system.position = [x, y]
         system.emissionLimit = 1
