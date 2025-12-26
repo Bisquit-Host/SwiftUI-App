@@ -66,17 +66,7 @@ struct DebugSettings: View {
         .navigationTitle("Debug")
         .scrollIndicators(.never)
         .overlay {
-            if !fireworkBursts.isEmpty || isConfettiVisible {
-                ZStack {
-                    if !fireworkBursts.isEmpty {
-                        fireworksOverlay
-                    }
-                    
-                    if isConfettiVisible {
-                        confettiOverlay
-                    }
-                }
-            }
+            confettiOverlay
         }
     }
     
