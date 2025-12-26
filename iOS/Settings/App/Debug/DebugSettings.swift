@@ -8,8 +8,6 @@ import ContactProvider
 
 struct DebugSettings: View {
     @EnvironmentObject private var store: ValueStore
-    @State private var fireworkBursts: [FireworkBurst] = []
-    @State private var fireworkTask: Task<Void, Never>?
     @State private var confettiTrigger = 0
     @State private var isConfettiVisible = false
     @State private var confettiTask: Task<Void, Never>?
@@ -34,7 +32,6 @@ struct DebugSettings: View {
             }
             
             Section("Effects") {
-                Button("Launch fireworks", action: launchFireworks)
                 Button("Spawn confetti", action: launchConfetti)
             }
             
@@ -80,50 +77,6 @@ struct DebugSettings: View {
         }
     }
     
-    private var fireworksOverlay: some View {
-        ZStack {
-            ForEach(fireworkBursts) { burst in
-                VortexView(burst.system) {
-                    Circle()
-                        .fill(.white)
-                        .frame(width: 32)
-                        .blur(radius: 5)
-                        .blendMode(.plusLighter)
-                        .tag("circle")
-                }
-            }
-        }
-        .ignoresSafeArea()
-        .allowsHitTesting(false)
-    }
-    
-    private func launchFireworks() {
-        fireworkTask?.cancel()
-        fireworkBursts = (0..<5).map { _ in
-            FireworkBurst(system: makeFireworkSystem())
-        }
-        
-        fireworkTask = Task {
-            try? await Task.sleep(for: .seconds(2.0))
-            await MainActor.run {
-                withAnimation(.easeOut(duration: 0.25)) {
-                    fireworkBursts.removeAll()
-                }
-            }
-        }
-    }
-    
-    private func makeFireworkSystem() -> VortexSystem {
-        let x = Double.random(in: 0.1...0.9)
-        let y = 1.0
-        
-        let system = VortexSystem.fireworks.makeUniqueCopy()
-        system.position = [x, y]
-        system.emissionLimit = 1
-        system.birthRate = 20
-        return system
-    }
-    
     private var confettiOverlay: some View {
         VortexViewReader { proxy in
             VortexView(makeConfettiSystem()) {
@@ -166,8 +119,8 @@ struct DebugSettings: View {
     
     private func spawnConfetti(using proxy: VortexProxy) {
         for _ in 0..<5 {
-            let x = Double.random(in: 0.05...0.95)
-            let y = Double.random(in: 0.05...0.95)
+            let x = Double.random(in: 0.2...0.8)
+            let y = Double.random(in: 0.2...0.8)
             proxy.particleSystem?.position = [x, y]
             proxy.burst()
         }
@@ -179,11 +132,6 @@ struct DebugSettings: View {
         
         return system
     }
-}
-
-private struct FireworkBurst: Identifiable {
-    let id = UUID()
-    let system: VortexSystem
 }
 
 #Preview {
