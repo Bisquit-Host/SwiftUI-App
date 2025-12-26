@@ -8,9 +8,7 @@ import ContactProvider
 
 struct DebugSettings: View {
     @EnvironmentObject private var store: ValueStore
-    @State private var confettiTrigger = 0
-    @State private var isConfettiVisible = false
-    @State private var confettiTask: Task<Void, Never>?
+    @State private var confetti = ConfettiVM()
     
     var body: some View {
         List {
@@ -32,7 +30,7 @@ struct DebugSettings: View {
             }
             
             Section("Effects") {
-                Button("Spawn confetti", action: launchConfetti)
+                Button("Spawn confetti", action: confetti.launchConfetti)
             }
             
             Section {
@@ -63,7 +61,8 @@ struct DebugSettings: View {
         .navigationTitle("Debug")
         .scrollIndicators(.never)
         .overlay {
-            confettiOverlay
+            ConfettiOverlay()
+                .environment(confetti)
         }
     }
     
@@ -75,62 +74,6 @@ struct DebugSettings: View {
                 print(error.localizedDescription)
             }
         }
-    }
-    
-    private var confettiOverlay: some View {
-        VortexViewReader { proxy in
-            VortexView(makeConfettiSystem()) {
-                Rectangle()
-                    .fill(.white)
-                    .frame(width: 16, height: 16)
-                    .tag("square")
-                
-                Circle()
-                    .fill(.white)
-                    .frame(width: 16)
-                    .tag("circle")
-            }
-            .onChange(of: confettiTrigger) {
-                spawnConfetti(using: proxy)
-            }
-        }
-        .ignoresSafeArea()
-        .allowsHitTesting(false)
-    }
-    
-    private func launchConfetti() {
-        confettiTask?.cancel()
-        
-        if !isConfettiVisible {
-            isConfettiVisible = true
-            confettiTrigger += 1
-        } else {
-            confettiTrigger += 1
-        }
-        
-        confettiTask = Task {
-            try? await Task.sleep(for: .seconds(4.5))
-            
-            await MainActor.run {
-                isConfettiVisible = false
-            }
-        }
-    }
-    
-    private func spawnConfetti(using proxy: VortexProxy) {
-        for _ in 0..<5 {
-            let x = Double.random(in: 0.2...0.8)
-            let y = Double.random(in: 0.2...0.8)
-            proxy.particleSystem?.position = [x, y]
-            proxy.burst()
-        }
-    }
-    
-    private func makeConfettiSystem() -> VortexSystem {
-        let system = VortexSystem.confetti.makeUniqueCopy()
-        system.burstCount = 50
-        
-        return system
     }
 }
 
