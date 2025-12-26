@@ -9,6 +9,7 @@ struct DebugSettingsPushNotifications: View {
                 Text(pushToken)
                 
                 Button("Copy") {
+                    SystemAlert.copied()
                     Pasteboard.copy(pushToken)
                 }
             }
