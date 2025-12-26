@@ -3,6 +3,7 @@ import SwiftUI
 struct GameServiceUpgradeSection: View {
     @Environment(GameServiceDetailsVM.self) private var vm
     @Environment(BillingDashboardVM.self) private var dashboardVM
+    @Environment(ConfettiVM.self) private var confetti
     
     @State private var selectedUpgradeId: Int?
     @State private var alertUpgrade = false
@@ -64,7 +65,9 @@ struct GameServiceUpgradeSection: View {
         guard let pkg = selectedUpgradePackage, let serviceId = vm.service?.id else { return }
         
         Task {
-            await vm.changePackage(to: pkg.id, serviceId: serviceId)
+            await vm.changePackage(to: pkg.id, serviceId: serviceId) {
+                confetti.launchConfetti()
+            }
         }
     }
     

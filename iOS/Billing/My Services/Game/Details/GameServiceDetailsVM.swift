@@ -14,7 +14,6 @@ final class GameServiceDetailsVM {
     func load(_ serviceId: Int) async {
         guard !isLoading else { return }
         
-        actionMessage = nil
         isLoading = true
         defer { isLoading = false }
         
@@ -128,15 +127,15 @@ final class GameServiceDetailsVM {
         }
     }
     
-    func changePackage(to packageId: Int, serviceId: Int) async {
+    func changePackage(to packageId: Int, serviceId: Int, onSuccess: @escaping () -> Void) async {
         let body = ["package": packageId]
         
         guard let payload = try? JSONSerialization.data(withJSONObject: body) else { return }
         
         await performAction {
             guard await self.request(path: "/game/\(serviceId)/change-package", method: "POST", body: payload) != nil else { return }
+            onSuccess()
             
-            self.actionMessage = "Upgrade requested"
             await self.fetchDetails(serviceId)
         }
     }
@@ -148,8 +147,6 @@ final class GameServiceDetailsVM {
         
         isPerformingAction = true
         defer { isPerformingAction = false }
-        
-        actionMessage = nil
         
         await work()
     }

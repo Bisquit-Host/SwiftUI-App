@@ -3,6 +3,7 @@ import Vortex
 
 struct ConfettiOverlay: View {
     @Environment(ConfettiVM.self) private var vm
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     
     var body: some View {
         VortexViewReader { proxy in
@@ -18,7 +19,9 @@ struct ConfettiOverlay: View {
                     .tag("circle")
             }
             .onChange(of: vm.confettiTrigger) {
-                vm.spawnConfetti(using: proxy)
+                if !reduceMotion {
+                    vm.spawnConfetti(using: proxy)
+                }
             }
         }
         .ignoresSafeArea()

@@ -1,6 +1,5 @@
 import SwiftUI
 import PteroNet
-import Vortex
 
 #if canImport(ContactProvider)
 import ContactProvider

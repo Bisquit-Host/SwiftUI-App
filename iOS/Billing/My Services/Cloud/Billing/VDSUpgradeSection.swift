@@ -3,6 +3,7 @@ import SwiftUI
 struct VDSUpgradeSection: View {
     @Environment(VDSServiceDetailsVM.self) private var vm
     @Environment(BillingDashboardVM.self) private var dashboardVM
+    @Environment(ConfettiVM.self) private var confetti
     
     let serviceId: Int
     
@@ -60,7 +61,9 @@ struct VDSUpgradeSection: View {
         guard let pkg = selectedUpgradePackage else { return }
         
         Task {
-            await vm.changePackage(to: pkg.id, serviceId: serviceId)
+            await vm.changePackage(to: pkg.id, serviceId: serviceId) {
+                confetti.launchConfetti()
+            }
         }
     }
 }

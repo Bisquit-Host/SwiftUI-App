@@ -14,7 +14,6 @@ final class BotServiceDetailsVM {
     func load(_ serviceId: Int) async {
         guard !isLoading else { return }
         
-        actionMessage = nil
         isLoading = true
         defer { isLoading = false }
         
@@ -127,12 +126,14 @@ final class BotServiceDetailsVM {
         }
     }
     
-    func changePackage(to packageId: Int, serviceId: Int) async {
+    func changePackage(to packageId: Int, serviceId: Int, onSuccess: @escaping () -> Void) async {
         let body = ["package": packageId]
         guard let payload = try? JSONSerialization.data(withJSONObject: body) else { return }
         
         await performAction {
             guard await self.request(path: "/bot/\(serviceId)/change-package", method: "POST", body: payload) != nil else { return }
+            onSuccess()
+            
             self.actionMessage = "Upgrade requested"
             await self.fetchDetails(serviceId)
         }
@@ -142,7 +143,6 @@ final class BotServiceDetailsVM {
     
     private func performAction(_ work: @escaping () async -> Void) async {
         guard !isPerformingAction else { return }
-        actionMessage = nil
         
         isPerformingAction = true
         defer { isPerformingAction = false }

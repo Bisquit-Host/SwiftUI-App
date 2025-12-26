@@ -21,8 +21,6 @@ final class VDSServiceDetailsVM {
         isLoading = true
         defer { isLoading = false }
         
-        actionMessage = nil
-        
         await withTaskGroup(of: Void.self) { group in
             group.addTask { await self.fetchDetails(serviceId) }
             group.addTask { await self.fetchHistory(serviceId) }
@@ -206,12 +204,13 @@ final class VDSServiceDetailsVM {
         }
     }
     
-    func changePackage(to packageId: Int, serviceId: Int) async {
+    func changePackage(to packageId: Int, serviceId: Int, onSuccess: @escaping () -> Void) async {
         let body = ["package": packageId]
         guard let payload = try? JSONSerialization.data(withJSONObject: body) else { return }
         
         await performAction {
             guard await self.request(path: "/cloud/\(serviceId)/change-package", method: "POST", body: payload) != nil else { return }
+            onSuccess()
             
             self.actionMessage = "Upgrade requested"
             await self.fetchDetails(serviceId)
@@ -241,8 +240,6 @@ final class VDSServiceDetailsVM {
         
         isPerformingAction = true
         defer { isPerformingAction = false }
-        
-        actionMessage = nil
         
         await work()
     }
