@@ -8,7 +8,7 @@ import ContactProvider
 
 struct DebugSettings: View {
     @EnvironmentObject private var store: ValueStore
-    @Environment(ConfettiVM.self) private var confetti
+    @State private var confetti = ConfettiVM()
     
     var body: some View {
         List {
@@ -60,6 +60,10 @@ struct DebugSettings: View {
         }
         .navigationTitle("Debug")
         .scrollIndicators(.never)
+        .overlay {
+            ConfettiOverlay()
+                .environment(confetti)
+        }
     }
     
     private func enableExtension() {
