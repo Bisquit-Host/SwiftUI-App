@@ -38,7 +38,9 @@ struct GameServiceUpgradeSection: View {
                 }
             }
         }
-        .onAppear { selectedUpgradeId = selectedUpgradeId ?? vm.changeablePackages.first?.id }
+        .onAppear {
+            selectedUpgradeId = selectedUpgradeId ?? vm.changeablePackages.first?.id
+        }
         .onChange(of: vm.changeablePackages.count) { _, _ in
             if selectedUpgradeId == nil {
                 selectedUpgradeId = vm.changeablePackages.first?.id
