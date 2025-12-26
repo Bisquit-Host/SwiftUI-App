@@ -1,5 +1,6 @@
 import SwiftUI
 import PteroNet
+import Vortex
 
 #if canImport(ContactProvider)
 import ContactProvider
@@ -7,8 +8,9 @@ import ContactProvider
 
 struct DebugSettings: View {
     @EnvironmentObject private var store: ValueStore
+    @State private var fireworkBursts: [FireworkBurst] = []
+    @State private var fireworkTask: Task<Void, Never>?
     
-    /// <#Description#>
     var body: some View {
         List {
             DebugSettingsAppVersion()
@@ -26,6 +28,10 @@ struct DebugSettings: View {
             
             Section {
                 Button("Clear all cookies", action: clearAllCookies)
+            }
+            
+            Section("Effects") {
+                Button("Launch fireworks", action: launchFireworks)
             }
             
             Section {
@@ -55,6 +61,11 @@ struct DebugSettings: View {
         }
         .navigationTitle("Debug")
         .scrollIndicators(.never)
+        .overlay {
+            if !fireworkBursts.isEmpty {
+                fireworksOverlay
+            }
+        }
     }
     
     private func enableExtension() {
@@ -66,6 +77,55 @@ struct DebugSettings: View {
             }
         }
     }
+    
+    private var fireworksOverlay: some View {
+        ZStack {
+            ForEach(fireworkBursts) { burst in
+                VortexView(burst.system) {
+                    Circle()
+                        .fill(.white)
+                        .frame(width: 32)
+                        .blur(radius: 5)
+                        .blendMode(.plusLighter)
+                        .tag("circle")
+                }
+            }
+        }
+        .ignoresSafeArea()
+        .allowsHitTesting(false)
+    }
+    
+    private func launchFireworks() {
+        fireworkTask?.cancel()
+        fireworkBursts = (0..<5).map { _ in
+            FireworkBurst(system: makeFireworkSystem())
+        }
+        
+        fireworkTask = Task {
+            try? await Task.sleep(for: .seconds(2.0))
+            await MainActor.run {
+                withAnimation(.easeOut(duration: 0.25)) {
+                    fireworkBursts.removeAll()
+                }
+            }
+        }
+    }
+    
+    private func makeFireworkSystem() -> VortexSystem {
+        let x = Double.random(in: 0.1...0.9)
+        let y = Double.random(in: 0.1...0.9)
+        
+        let system = VortexSystem.fireworks.makeUniqueCopy()
+        system.position = [x, y]
+        system.emissionLimit = 1
+        system.birthRate = 20
+        return system
+    }
+}
+
+private struct FireworkBurst: Identifiable {
+    let id = UUID()
+    let system: VortexSystem
 }
 
 #Preview {
