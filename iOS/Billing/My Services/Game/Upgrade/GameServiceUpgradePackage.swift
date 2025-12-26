@@ -53,6 +53,9 @@ struct GameServiceUpgradePackage: View {
 #Preview {
     @Previewable @State var selectedUpgradeId: Int? = nil
     
-    GameServiceUpgradePackage(pkg: .preview, selectedUpgradeId: $selectedUpgradeId)
-        .environment(BillingDashboardVM())
+    BillingSectionCard("Upgrade") {
+        GameServiceUpgradePackage(pkg: .preview, selectedUpgradeId: $selectedUpgradeId)
+    }
+    .environment(BillingDashboardVM())
+    .darkSchemePreferred()
 }
