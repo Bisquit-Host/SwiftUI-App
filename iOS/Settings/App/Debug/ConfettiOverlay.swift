@@ -25,3 +25,11 @@ struct ConfettiOverlay: View {
         .allowsHitTesting(false)
     }
 }
+
+extension View {
+    func confettiOverlay() -> some View {
+        self.overlay {
+            ConfettiOverlay()
+        }
+    }
+}

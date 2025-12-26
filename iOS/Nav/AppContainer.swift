@@ -8,17 +8,19 @@ struct AppContainer: View {
     @State private var network = NetworkVM()
 #if os(iOS)
     @State private var billingOAuth = OAuthVM()
+    @State private var confetti = ConfettiVM()
 #endif
     @EnvironmentObject private var store: ValueStore
     @Environment(\.modelContext) private var modelContext
     @Query(animation: .default) private var keys: [APIKey]
-    @State private var trigger = false
     
     var body: some View {
         HomeTabView()
             .animation(.default, value: store.isApiKeyValid)
             .environment(vm)
 #if os(iOS)
+            .confettiOverlay()
+            .environment(confetti)
             .environment(billingOAuth)
             .statusBarHidden(store.hideStatusBar)
 #endif
