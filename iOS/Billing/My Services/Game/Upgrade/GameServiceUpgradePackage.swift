@@ -49,3 +49,10 @@ struct GameServiceUpgradePackage: View {
         .buttonStyle(.plain)
     }
 }
+
+#Preview {
+    @Previewable @State var selectedUpgradeId: Int? = nil
+    
+    GameServiceUpgradePackage(pkg: .preview, selectedUpgradeId: $selectedUpgradeId)
+        .environment(BillingDashboardVM())
+}

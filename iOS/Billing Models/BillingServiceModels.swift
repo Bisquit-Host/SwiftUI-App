@@ -112,6 +112,29 @@ struct ChangeableGamePackage: Decodable, Identifiable, Equatable {
     let whmcsLink: String?
     let enabled: Bool
     let toMinus: Double
+    
+    static let preview = ChangeableGamePackage(
+        id: 101,
+        name: "Starter Game Server",
+        locationId: 1,
+        price: 9.99,
+        cpu: 2.0,
+        cpuName: "vCPU",
+        memory: 4096,
+        memoryType: "DDR4",
+        disk: 50,
+        diskType: "NVMe",
+        network: 1.0,
+        networkType: "Gbps",
+        nests: [1, 2, 3],
+        allocations: 2,
+        databases: 1,
+        backups: 3,
+        bonusBalanceAllowed: true,
+        whmcsLink: nil,
+        enabled: true,
+        toMinus: 0.0
+    )
 }
 
 struct ChangeableBotPackage: Decodable, Identifiable, Equatable {
