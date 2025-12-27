@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ExtendMonthsAmountPicker: View {
+struct RenewMonthsAmountPicker: View {
     @Binding private var renewMonths: Int
     
     init(_ renewMonths: Binding<Int>) {

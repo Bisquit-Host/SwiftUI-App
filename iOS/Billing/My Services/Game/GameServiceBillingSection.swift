@@ -45,7 +45,7 @@ struct GameServiceBillingSection: View {
                 .buttonStyle(.glassProminent)
                 .disabled(vm.isPerformingAction)
                 
-                ExtendMonthsAmountPicker($renewMonths)
+                RenewMonthsAmountPicker($renewMonths)
             }
             .padding(8)
             .background(.ultraThinMaterial, in: .capsule)
