@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 
 struct GameServiceBillingSection: View {
     @Environment(GameServiceDetailsVM.self) private var vm
@@ -20,7 +20,6 @@ struct GameServiceBillingSection: View {
     @State private var syncedAutorenew = false
     @State private var lastRenewAmount: Double?
     @State private var alertRenew = false
-    @State private var alertRenewInfo = false
     
     var body: some View {
         BillingSectionCard("Billing") {
@@ -44,34 +43,8 @@ struct GameServiceBillingSection: View {
                 .subheadline()
             }
             
-            Toggle(isOn: $autorenewToggle) {
-                HStack(spacing: 5) {
-                    Text("Auto-renew")
-                    
-                    SFButton("questionmark.circle.fill") {
-                        alertRenewInfo = true
-                    }
-                    .footnote()
-                    .secondary()
-                }
-            }
-            .toggleStyle(.switch)
-            .disabled(vm.isPerformingAction)
-            .subheadline()
-            .task(id: autorenew) {
-                syncedAutorenew = autorenew
-                autorenewToggle = autorenew
-            }
-            .onChange(of: autorenewToggle) { _, newValue in
-                guard newValue != syncedAutorenew else { return }
-                
-                Task {
-                    await vm.changeAutorenew(newValue, serviceId: service.id)
-                    
-                    let actualValue = vm.service?.autorenew ?? autorenew
-                    syncedAutorenew = actualValue
-                    autorenewToggle = actualValue
-                }
+            AutoRenewToggle(autorenewToggle: $autorenewToggle, syncedAutorenew: $syncedAutorenew, autorenew: autorenew, isPerformingAction: vm.isPerformingAction) { newValue in
+                await vm.changeAutorenew(newValue, serviceId: service.id)
             }
             
             HStack(spacing: 5) {
@@ -100,11 +73,6 @@ struct GameServiceBillingSection: View {
                     .footnote()
                     .foregroundStyle(.green)
             }
-        }
-        .alert("Auto-renew", isPresented: $alertRenewInfo) {
-            
-        } message: {
-            Text("Automatically charges the one-month amount from your billing balance, not from your bank account")
         }
         .alert("Renew service", isPresented: $alertRenew) {
             Button("Confirm payment", role: .confirm, action: confirmPayment)

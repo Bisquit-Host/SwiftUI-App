@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 
 struct VDSBillingSection: View {
     @Environment(VDSServiceDetailsVM.self) private var vm
@@ -13,7 +13,6 @@ struct VDSBillingSection: View {
     @State private var autorenewToggle = false
     @State private var syncedAutorenew = false
     @State private var alertRenew = false
-    @State private var alertRenewInfo = false
     @State private var sheetUpgrade = false
     @State private var lastRenewAmount: Double?
     
@@ -49,34 +48,8 @@ struct VDSBillingSection: View {
                 .subheadline()
             }
             
-            Toggle(isOn: $autorenewToggle) {
-                HStack(spacing: 5) {
-                    Text("Auto-renew")
-                    
-                    SFButton("questionmark.circle.fill") {
-                        alertRenewInfo = true
-                    }
-                    .footnote()
-                    .secondary()
-                }
-            }
-            .toggleStyle(.switch)
-            .disabled(vm.isPerformingAction)
-            .subheadline()
-            .task(id: autorenew) {
-                syncedAutorenew = autorenew
-                autorenewToggle = autorenew
-            }
-            .onChange(of: autorenewToggle) { _, newValue in
-                guard newValue != syncedAutorenew else { return }
-                
-                Task {
-                    await vm.changeAutorenew(newValue, serviceId: serviceId)
-                    
-                    let actualValue = vm.service?.autorenew ?? autorenew
-                    syncedAutorenew = actualValue
-                    autorenewToggle = actualValue
-                }
+            AutoRenewToggle(autorenewToggle: $autorenewToggle, syncedAutorenew: $syncedAutorenew, autorenew: autorenew, isPerformingAction: vm.isPerformingAction) { newValue in
+                await vm.changeAutorenew(newValue, serviceId: serviceId)
             }
             
             HStack(spacing: 5) {
@@ -126,11 +99,6 @@ struct VDSBillingSection: View {
             NavigationStack {
                 VDSUpgradeSection(serviceId: serviceId)
             }
-        }
-        .alert("Auto-renew", isPresented: $alertRenewInfo) {
-            
-        } message: {
-            Text("Automatically charges the one-month amount from your billing balance, not from your bank account")
         }
         .alert("Renew service", isPresented: $alertRenew) {
             Button("Confirm payment", role: .confirm, action: confirmPayment)
