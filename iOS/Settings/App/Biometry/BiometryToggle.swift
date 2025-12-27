@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct BiometryToggle: View {
-    @State private var vm = BiometryVM()
+    @Environment(BiometryVM.self) private var vm
     @EnvironmentObject private var store: ValueStore
     
     private var isAvailable: Bool {

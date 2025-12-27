@@ -7,6 +7,7 @@ struct AppContainer: View {
     @State private var linking = DeepLinkVM()
     @State private var network = NetworkVM()
 #if os(iOS)
+    @State private var biometry = BiometryVM()
     @State private var billingOAuth = OAuthVM()
     @State private var confetti = ConfettiVM()
 #endif
@@ -20,6 +21,7 @@ struct AppContainer: View {
             .environment(vm)
 #if os(iOS)
             .confettiOverlay()
+            .environment(biometry)
             .environment(confetti)
             .environment(billingOAuth)
             .statusBarHidden(store.hideStatusBar)
