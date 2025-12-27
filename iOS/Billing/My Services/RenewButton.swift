@@ -25,7 +25,7 @@ struct RenewButton: View {
             .buttonStyle(.glassProminent)
             .disabled(isPerformingAction)
             
-            RenewMonthsAmountPicker($renewMonths)
+            MonthAmountPicker($renewMonths)
         }
         .padding(8)
         .background(.ultraThinMaterial, in: .capsule)

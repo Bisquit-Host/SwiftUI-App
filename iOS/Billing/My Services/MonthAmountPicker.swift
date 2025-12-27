@@ -1,18 +1,18 @@
 import SwiftUI
 
-struct RenewMonthsAmountPicker: View {
-    @Binding private var renewMonths: Int
+struct MonthAmountPicker: View {
+    @Binding private var months: Int
     
-    init(_ renewMonths: Binding<Int>) {
-        _renewMonths = renewMonths
+    init(_ months: Binding<Int>) {
+        _months = months
     }
     
     private let availableOptions = [1, 3, 6, 12]
     
     var body: some View {
-        Picker("Renew for", selection: $renewMonths) {
+        Picker("Renew for", selection: $months) {
             ForEach(availableOptions, id: \.self) {
-                Text($0 == 1 ? "1 month" : "\($0) months")
+                Text("\($0) months")
                     .tag($0)
             }
         }

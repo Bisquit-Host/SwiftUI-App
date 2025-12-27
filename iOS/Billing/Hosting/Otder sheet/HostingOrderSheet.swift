@@ -45,12 +45,7 @@ struct HostingOrderSheet: View {
                     TextField("Name", text: $name)
                         .textContentType(.nickname)
                     
-                    Picker("Billing period", selection: $months) {
-                        ForEach([1, 3, 6, 12], id: \.self) {
-                            Text(monthLabel($0))
-                                .tag($0)
-                        }
-                    }
+                    MonthAmountPicker($months)
                 }
                 
                 if context.category == .cloud {
@@ -131,7 +126,7 @@ struct HostingOrderSheet: View {
                 Button("Confirm", role: .confirm, action: confirmPurchase)
                 Button("Cancel", role: .cancel) {}
             } message: {
-                Text("Purchase \(context.plan.name) for \(monthLabel(months)) billing?")
+                Text("Purchase \(context.plan.name) for \(months) billing?")
             }
         }
     }
@@ -217,10 +212,6 @@ struct HostingOrderSheet: View {
         nests.first {
             $0.id == selectedNestId
         }?.eggs ?? []
-    }
-    
-    private func monthLabel(_ value: Int) -> String {
-        value == 1 ? "1 month" : "\(value) months"
     }
     
     private func formatAmount(_ amount: Double, code: String?) -> String {
