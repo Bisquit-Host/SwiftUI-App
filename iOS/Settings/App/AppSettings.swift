@@ -15,6 +15,8 @@ struct AppSettings: View {
             }
             
             BillingSectionCard("Other") {
+                BiometryToggle()
+                
                 GlassyActionCard("Change language", icon: "globe", tint: .blue) {
                     openSettings()
                 }

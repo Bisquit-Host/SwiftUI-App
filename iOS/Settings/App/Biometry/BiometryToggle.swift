@@ -1,0 +1,23 @@
+import SwiftUI
+
+struct BiometryToggle: View {
+    @State private var vm = BiometryVM()
+    @EnvironmentObject private var store: ValueStore
+    
+    private var isAvailable: Bool {
+        vm.biometryType != .none
+    }
+    
+    var body: some View {
+        GlassyToggle(vm.bioType ?? "Bioemtry unsavailable", subtitle: "Confirm purchases & destructive actions", icon: vm.icon, tint: store.useBiometry ? .blue : .red, isOn: $store.useBiometry)
+            .disabled(!isAvailable)
+            .opacity(isAvailable ? 1 : 0.3)
+            .foregroundColor(isAvailable ? .gray : .none)
+    }
+}
+
+#Preview {
+    BiometryToggle()
+        .darkSchemePreferred()
+        .environmentObject(ValueStore())
+}
