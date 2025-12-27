@@ -4,16 +4,14 @@ import LocalAuthentication
 @Observable
 final class BiometryVM {
     private(set) var canEvaluatePolicy = false
-    private(set) var biometryType: LABiometryType = .none
+    let biometryType: LABiometryType = LAContext().biometryType
     
     var bioType: LocalizedStringKey? {
         guard LAContext().canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) else {
             return nil
         }
         
-        biometryType = LAContext().biometryType
-        
-        switch LAContext().biometryType {
+        switch biometryType {
         case .faceID:  return "Face ID"
         case .touchID: return "Touch ID"
         case .opticID: return "Optic ID"
@@ -36,14 +34,17 @@ final class BiometryVM {
         let canEvaluate = context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error)
         
         canEvaluatePolicy = canEvaluate
-        biometryType = context.biometryType
         
         guard canEvaluate else {
             return false
         }
         
         return await withCheckedContinuation { continuation in
-            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, _ in
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, error in
+                if let error {
+                    print(error)
+                }
+                
                 continuation.resume(returning: success)
             }
         }

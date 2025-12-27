@@ -3,7 +3,10 @@ import PteroNet
 
 struct DatabaseCard: View {
     @Environment(DatabaseVM.self) private var vm
-    
+#if os(iOS)
+    @Environment(BiometryVM.self) private var biometry
+    @EnvironmentObject private var store: ValueStore
+#endif
     private let db: DatabaseAttributes
     
     init(_ db: DatabaseAttributes) {
@@ -75,13 +78,21 @@ struct DatabaseCard: View {
             }
         }
         .alert("Detele Database", isPresented: $alertDelete) {
-            Button("Delete", role: .destructive) {
-                Task {
-                    await vm.deleteDatabase(db.id)
-                }
-            }
+            Button("Delete", role: .destructive, action: delete)
         } message: {
             Text("Are you sure you want to delete \"\(db.name)\"? This database will be deleted immediately. You can't undo this action")
+        }
+    }
+    
+    private func delete() {
+        Task {
+#if os(iOS)
+            if store.useBiometry, await !biometry.authenticate() {
+                SystemAlert.error("Biometry authentication failed")
+                return
+            }
+#endif
+            await vm.deleteDatabase(db.id)
         }
     }
 }
