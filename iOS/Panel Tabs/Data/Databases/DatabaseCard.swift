@@ -61,6 +61,7 @@ struct DatabaseCard: View {
 #if !os(tvOS)
             if let password = db.password {
                 Button("Copy password") {
+                    SystemAlert.copied()
                     Pasteboard.copy(password)
                 }
             }
