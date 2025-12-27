@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct GameServiceBillingSection: View {
     @Environment(GameServiceDetailsVM.self) private var vm
@@ -6,18 +6,21 @@ struct GameServiceBillingSection: View {
     @Environment(ConfettiVM.self) private var confetti
     
     private let service: BillingGameServiceDetails
+    private let autorenew: Bool
     
     init(_ service: BillingGameServiceDetails) {
         self.service = service
-        _autorenew = State(initialValue: service.autorenew)
+        self.autorenew = service.autorenew
+        _autorenewToggle = State(initialValue: service.autorenew)
         _syncedAutorenew = State(initialValue: service.autorenew)
     }
     
     @State private var renewMonths = 1
-    @State private var autorenew = false
+    @State private var autorenewToggle = false
     @State private var syncedAutorenew = false
     @State private var lastRenewAmount: Double?
     @State private var alertRenew = false
+    @State private var alertRenewInfo = false
     
     var body: some View {
         BillingSectionCard("Billing") {
@@ -41,24 +44,33 @@ struct GameServiceBillingSection: View {
                 .subheadline()
             }
             
-            Toggle(isOn: $autorenew) {
-                Text("Auto-extend monthly")
+            Toggle(isOn: $autorenewToggle) {
+                HStack(spacing: 5) {
+                    Text("Auto-renew")
+                    
+                    SFButton("questionmark.circle.fill") {
+                        alertRenewInfo = true
+                    }
+                    .footnote()
+                    .secondary()
+                }
             }
             .toggleStyle(.switch)
             .disabled(vm.isPerformingAction)
-            .task(id: service.autorenew) {
-                syncedAutorenew = service.autorenew
-                autorenew = service.autorenew
+            .subheadline()
+            .task(id: autorenew) {
+                syncedAutorenew = autorenew
+                autorenewToggle = autorenew
             }
-            .onChange(of: autorenew) { _, newValue in
+            .onChange(of: autorenewToggle) { _, newValue in
                 guard newValue != syncedAutorenew else { return }
                 
                 Task {
                     await vm.changeAutorenew(newValue, serviceId: service.id)
                     
-                    let actualValue = vm.service?.autorenew ?? service.autorenew
+                    let actualValue = vm.service?.autorenew ?? autorenew
                     syncedAutorenew = actualValue
-                    autorenew = actualValue
+                    autorenewToggle = actualValue
                 }
             }
             
@@ -89,11 +101,16 @@ struct GameServiceBillingSection: View {
                     .foregroundStyle(.green)
             }
         }
-        .alert("Extend service", isPresented: $alertRenew) {
+        .alert("Auto-renew", isPresented: $alertRenewInfo) {
+            
+        } message: {
+            Text("Automatically charges the one-month amount from your billing balance, not from your bank account")
+        }
+        .alert("Renew service", isPresented: $alertRenew) {
             Button("Confirm payment", role: .confirm, action: confirmPayment)
             Button("Cancel", role: .cancel) {}
         } message: {
-            Text("Extend \(vm.service?.name ?? "this service") for \(renewMonths) \(renewMonths == 1 ? "month" : "months")?")
+            Text("Renew \(vm.service?.name ?? "this service") for \(renewMonths) \(renewMonths == 1 ? "month" : "months")?")
         }
     }
     

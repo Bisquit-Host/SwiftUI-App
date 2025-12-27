@@ -1,5 +1,4 @@
 import ScrechKit
-import SwiftUI
 
 struct VDSBillingSection: View {
     @Environment(VDSServiceDetailsVM.self) private var vm
@@ -133,11 +132,11 @@ struct VDSBillingSection: View {
         } message: {
             Text("Automatically charges the one-month amount from your billing balance, not from your bank account")
         }
-        .alert("Extend service", isPresented: $alertRenew) {
+        .alert("Renew service", isPresented: $alertRenew) {
             Button("Confirm payment", role: .confirm, action: confirmPayment)
             Button("Cancel", role: .cancel) {}
         } message: {
-            Text("Extend \(vm.service?.name ?? "this service") for \(renewMonths) \(renewMonths == 1 ? "month" : "months")?")
+            Text("Renew \(vm.service?.name ?? "this service") for \(renewMonths) \(renewMonths == 1 ? "month" : "months")?")
         }
     }
     
