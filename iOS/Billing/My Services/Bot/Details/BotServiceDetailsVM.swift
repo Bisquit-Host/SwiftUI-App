@@ -83,7 +83,7 @@ final class BotServiceDetailsVM {
             guard await self.request(path: "/bot/\(serviceId)/autorenew", method: "PATCH", body: payload) != nil else { return }
             
             self.service?.autorenew = enabled
-            SystemAlert.done(enabled ? "Auto-extend enabled" : "Auto-extend disabled")
+            SystemAlert.done(enabled ? "Auto-renew enabled" : "Auto-renew disabled")
         }
     }
     
@@ -112,11 +112,11 @@ final class BotServiceDetailsVM {
                         
                         self.service?.expiresAt = response.newExpiresAt
                         
-                        SystemAlert.done("Extended for \(months) mo")
+                        SystemAlert.done("Renewed for \(months) mo")
                         continuation.resume(returning: response)
                     } catch {
                         SystemAlert.error(error.localizedDescription)
-                        print("Bot renew decode error:", error)
+                        print("Bot renewal decode error:", error)
                         
                         continuation.resume(returning: nil)
                     }

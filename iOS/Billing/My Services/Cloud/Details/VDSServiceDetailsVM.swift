@@ -162,7 +162,7 @@ final class VDSServiceDetailsVM {
             guard await self.request(path: "/cloud/\(serviceId)/autorenew", method: "PATCH", body: payload) != nil else { return }
             
             self.service?.autorenew = enabled
-            SystemAlert.done(enabled ? "Auto-extend enabled" : "Auto-extend disabled")
+            SystemAlert.done(enabled ? "Auto-renew enabled" : "Auto-renew disabled")
         }
     }
     
@@ -191,11 +191,11 @@ final class VDSServiceDetailsVM {
                         
                         self.service?.expiresAt = response.newExpiresAt
                         
-                        SystemAlert.done("Extended for \(months) mo")
+                        SystemAlert.done("Renewed for \(months) mo")
                         continuation.resume(returning: response)
                     } catch {
                         SystemAlert.error(error.localizedDescription)
-                        print("Cloud renew decode error:", error)
+                        print("Cloud renewal decode error:", error)
                         continuation.resume(returning: nil)
                     }
                 }
