@@ -16,12 +16,7 @@ struct VDSServiceDetails: View {
                 if let service = vm.service {
                     VDSServiceDetailsHeader(service)
                     VDSServiceDetailsInfoSection(service)
-                    
-                    VDSBillingSection(
-                        serviceId: service.id,
-                        autorenew: vm.service?.autorenew ?? service.autorenew,
-                        expiresAt: vm.service?.expiresAt ?? service.expiresAt
-                    )
+                    VDSBillingSection(service)
                     
                     VDSReinstallSection(service.id)
                     VDSMonitoringSection()

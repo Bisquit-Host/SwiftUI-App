@@ -5,17 +5,12 @@ struct VDSBillingSection: View {
     @Environment(BillingDashboardVM.self) private var dashboardVM
     @Environment(ConfettiVM.self) private var confetti
     
-    private let serviceId: Int
-    private let autorenew: Bool
-    private let expiresAt: Date?
+    private let service: CloudServiceDetails
     
-    init(serviceId: Int, autorenew: Bool, expiresAt: Date?) {
-        self.serviceId = serviceId
-        self.autorenew = autorenew
-        self.expiresAt = expiresAt
-        
-        _autorenewToggle = State(initialValue: autorenew)
-        _syncedAutorenew = State(initialValue: autorenew)
+    init(_ service: CloudServiceDetails) {
+        self.service = service
+        _autorenewToggle = State(initialValue: service.autorenew)
+        _syncedAutorenew = State(initialValue: service.autorenew)
     }
     
     @State private var autorenewToggle = false
@@ -27,10 +22,10 @@ struct VDSBillingSection: View {
         @Bindable var vm = vm
         
         VDSSectionCard("Billing") {
-            ServiceExpiresIn(expiresAt)
+            ServiceExpiresIn(service.expiresAt)
             
-            AutoRenewToggle(autorenewToggle: $autorenewToggle, syncedAutorenew: $syncedAutorenew, autorenew: autorenew, isPerformingAction: vm.isPerformingAction) { newValue in
-                await vm.changeAutorenew(newValue, serviceId: serviceId)
+            AutoRenewToggle(autorenewToggle: $autorenewToggle, syncedAutorenew: $syncedAutorenew, autorenew: service.autorenew, isPerformingAction: vm.isPerformingAction) { newValue in
+                await vm.changeAutorenew(newValue, serviceId: service.id)
             }
             
             RenewButton(isPerformingAction: $vm.isPerformingAction, renewMonths: $renewMonths, name: vm.service?.name, confirmPayment: confirmPayment)
@@ -53,7 +48,7 @@ struct VDSBillingSection: View {
         }
         .sheet($sheetUpgrade) {
             NavigationStack {
-                VDSUpgradeSection(serviceId: serviceId)
+                VDSUpgradeSection(serviceId: service.id)
             }
         }
     }
