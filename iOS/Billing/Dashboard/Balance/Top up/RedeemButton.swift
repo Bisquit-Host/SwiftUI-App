@@ -27,19 +27,23 @@ struct RedeemButton: View {
                 .autocorrectionDisabled()
             
             Button("Redeem", role: .confirm) {
-                Task {
-                    if let _ = await vm.redeemGiftCode(giftCode) {
-                        await dashboardVM.fetchUserInfo()
-                        await vm.fetchOperations()
-                        giftCode = ""
-                    }
-                }
+                redeem(giftCode)
             }
             .disabled(giftCode.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || vm.isGiftCodeLoading)
             
             Button("Cancel", role: .cancel) {}
         } message: {
             Text("Enter a gift code to add bonus balance")
+        }
+    }
+    
+    private func redeem(_ code: String) {
+        Task {
+            if let _ = await vm.redeemGiftCode(code) {
+                await dashboardVM.fetchUserInfo()
+                await vm.fetchOperations()
+                giftCode = ""
+            }
         }
     }
 }
