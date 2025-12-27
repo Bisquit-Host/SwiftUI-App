@@ -23,25 +23,7 @@ struct BotServiceBillingSection: View {
     
     var body: some View {
         BillingSectionCard("Billing") {
-            if let expiresAt = service.expiresAt {
-                LabeledContent {
-                    VStack(alignment: .trailing) {
-                        let expireDate = expiresAt.formatted(date: .numeric, time: .shortened)
-                        let daysLeft = Calendar.current.dateComponents([.day], from: Date(), to: expiresAt).day ?? 0
-                        
-                        Text(expireDate)
-                        
-                        if daysLeft > 0 {
-                            Text("in \(daysLeft) days")
-                                .footnote()
-                                .tertiary()
-                        }
-                    }
-                } label: {
-                    Text("Expires")
-                }
-                .subheadline()
-            }
+            ServiceExpiresIn(service.expiresAt)
             
             AutoRenewToggle(autorenewToggle: $autorenewToggle, syncedAutorenew: $syncedAutorenew, autorenew: autorenew, isPerformingAction: vm.isPerformingAction) { newValue in
                 await vm.changeAutorenew(newValue, serviceId: service.id)

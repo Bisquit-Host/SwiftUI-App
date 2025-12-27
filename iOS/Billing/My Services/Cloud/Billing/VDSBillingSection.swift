@@ -28,25 +28,7 @@ struct VDSBillingSection: View {
     
     var body: some View {
         VDSSectionCard("Billing") {
-            if let expiresAt {
-                LabeledContent {
-                    VStack(alignment: .trailing) {
-                        let expireDate = expiresAt.formatted(date: .numeric, time: .shortened)
-                        let daysLeft = Calendar.current.dateComponents([.day], from: Date(), to: expiresAt).day ?? 0
-                        
-                        Text(expireDate)
-                        
-                        if daysLeft > 0 {
-                            Text("in \(daysLeft) days")
-                                .footnote()
-                                .tertiary()
-                        }
-                    }
-                } label: {
-                    Text("Expires")
-                }
-                .subheadline()
-            }
+            ServiceExpiresIn(expiresAt)
             
             AutoRenewToggle(autorenewToggle: $autorenewToggle, syncedAutorenew: $syncedAutorenew, autorenew: autorenew, isPerformingAction: vm.isPerformingAction) { newValue in
                 await vm.changeAutorenew(newValue, serviceId: serviceId)
