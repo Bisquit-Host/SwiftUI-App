@@ -26,7 +26,7 @@ struct ConfettiOverlay: View {
         }
         .ignoresSafeArea()
         .allowsHitTesting(false)
-        .sensoryFeedback(.success, trigger: vm.confettiTrigger)
+        .hapticOn(vm.confettiTrigger, as: .success, disabled: reduceMotion || System.lowPowerMode)
     }
 }
 
