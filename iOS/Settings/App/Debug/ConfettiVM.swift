@@ -3,7 +3,7 @@ import Vortex
 
 @Observable
 final class ConfettiVM {
-    var confettiTrigger = true
+    private(set) var confettiTrigger = true
     private var isConfettiVisible = false
     private var confettiTask: Task<Void, Never>?
     
