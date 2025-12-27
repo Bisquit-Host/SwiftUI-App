@@ -18,7 +18,6 @@ struct GameServiceBillingSection: View {
     @State private var renewMonths = 1
     @State private var autorenewToggle = false
     @State private var syncedAutorenew = false
-    @State private var lastRenewAmount: Double?
     
     var body: some View {
         @Bindable var vm = vm
@@ -31,12 +30,6 @@ struct GameServiceBillingSection: View {
             }
             
             RenewButton(isPerformingAction: $vm.isPerformingAction, renewMonths: $renewMonths, name: vm.service?.name, confirmPayment: confirmPayment)
-            
-            if let lastRenewAmount {
-                Text("Charged \(formatCurrency(lastRenewAmount, user: dashboardVM.user))")
-                    .footnote()
-                    .foregroundStyle(.green)
-            }
         }
     }
     
@@ -46,7 +39,6 @@ struct GameServiceBillingSection: View {
         Task {
             if let response = await vm.renew(months: renewMonths, serviceId: service.id) {
                 confetti.launchConfetti()
-                lastRenewAmount = response.amount
             }
         }
     }

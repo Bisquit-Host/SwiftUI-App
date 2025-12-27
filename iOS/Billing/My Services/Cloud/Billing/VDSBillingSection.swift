@@ -21,7 +21,6 @@ struct VDSBillingSection: View {
     @State private var autorenewToggle = false
     @State private var syncedAutorenew = false
     @State private var sheetUpgrade = false
-    @State private var lastRenewAmount: Double?
     @State private var renewMonths = 1
     
     var body: some View {
@@ -51,12 +50,6 @@ struct VDSBillingSection: View {
             .buttonStyle(.glassProminent)
             .disabled(vm.isPerformingAction)
             .padding(.horizontal, 8)
-            
-            if let lastRenewAmount {
-                Text("Charged \(formatCurrency(lastRenewAmount, user: dashboardVM.user))")
-                    .footnote()
-                    .foregroundStyle(.green)
-            }
         }
         .sheet($sheetUpgrade) {
             NavigationStack {
@@ -71,7 +64,6 @@ struct VDSBillingSection: View {
         Task {
             if let response = await vm.renew(months: renewMonths, serviceId: service.id) {
                 confetti.launchConfetti()
-                lastRenewAmount = response.amount
             }
         }
     }
