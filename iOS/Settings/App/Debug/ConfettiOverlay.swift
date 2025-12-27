@@ -19,7 +19,7 @@ struct ConfettiOverlay: View {
                     .tag("circle")
             }
             .onChange(of: vm.confettiTrigger) {
-                if !reduceMotion {
+                if !reduceMotion && !System.lowPowerMode {
                     vm.spawnConfetti(using: proxy)
                 }
             }
