@@ -5,8 +5,8 @@ struct HostingPlanList: View {
     
     @State private var category: BillingHostingCategory
     
-    init(_ defaultCategory: BillingHostingCategory = .game) {
-        _category = State(initialValue: defaultCategory)
+    init(_ сategory: BillingHostingCategory = .game) {
+        _category = State(initialValue: сategory)
     }
     
     @State private var selectedLocations: [BillingHostingCategory: Int] = [:]
