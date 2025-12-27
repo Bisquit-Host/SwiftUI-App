@@ -10,8 +10,6 @@ struct VDSServiceDetails: View {
         self.serviceId = serviceId
     }
     
-    @State private var renewMonths = 1
-    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
@@ -22,7 +20,6 @@ struct VDSServiceDetails: View {
                     VDSBillingSection(
                         serviceId: service.id,
                         autorenew: vm.service?.autorenew ?? service.autorenew,
-                        renewMonths: $renewMonths,
                         expiresAt: vm.service?.expiresAt ?? service.expiresAt
                     )
                     
