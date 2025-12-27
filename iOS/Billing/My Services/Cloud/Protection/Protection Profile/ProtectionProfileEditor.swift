@@ -6,21 +6,15 @@ struct ProtectionProfileEditor: View {
     
     private let mode: CloudProtectionProfileEditorMode
     
-    @State private var presetId = 0
-    @State private var protocolSelection: VDSProtectionProtocol
-    @State private var minPortText: String
-    @State private var maxPortText: String
-    @State private var notesText: String
-    
     init(_ mode: CloudProtectionProfileEditorMode) {
         self.mode = mode
-        let existing = mode.existingProfile
-        
-        _protocolSelection = State(initialValue: existing?.`protocol` ?? .tcp)
-        _minPortText = State(initialValue: existing?.minDstPort.map(String.init) ?? "")
-        _maxPortText = State(initialValue: existing?.maxDstPort.map(String.init) ?? "")
-        _notesText = State(initialValue: existing?.notes ?? "")
     }
+    
+    @State private var presetId = 0
+    @State private var protocolSelection: VDSProtectionProtocol = .tcp
+    @State private var notesText = ""
+    @State private var minPortText = ""
+    @State private var maxPortText = ""
     
     private var selectedProtocolPresets: [VDSProtectionPreset] {
         vm.presets.filter {

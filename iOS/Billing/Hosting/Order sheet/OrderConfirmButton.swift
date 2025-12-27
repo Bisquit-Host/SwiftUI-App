@@ -3,6 +3,8 @@ import SwiftUI
 struct OrderConfirmButton: View {
     @Environment(HostingPlanListVM.self) private var vm
     @Environment(NewOrderVM.self) private var orderVM
+    @Environment(BiometryVM.self) private var biometry
+    @EnvironmentObject private var store: ValueStore
     @Environment(\.dismiss) private var dismiss
     
     let context: BillingPlanOrderContext
@@ -39,6 +41,11 @@ struct OrderConfirmButton: View {
     
     private func confirmPurchase() {
         Task {
+            if store.useBiometry, await !biometry.authenticate() {
+                SystemAlert.error("Biometry authentication failed")
+                return
+            }
+            
             await order {
                 onSuccess()
             }

@@ -8,16 +8,16 @@ struct DatabaseCard: View {
     @EnvironmentObject private var store: ValueStore
 #endif
     private let db: DatabaseAttributes
+    private let host: DatabaseHost
     
     init(_ db: DatabaseAttributes) {
         self.db = db
+        self.host = db.host
     }
     
     @State private var alertDelete = false
     
     var body: some View {
-        let host = db.host
-        
         Button {
             
         } label: {

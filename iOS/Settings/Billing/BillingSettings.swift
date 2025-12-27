@@ -12,16 +12,17 @@ struct BillingSettings: View {
     
     var body: some View {
         ScrollView {
-            if let user {
-                VStack(alignment: .leading, spacing: 16) {
-                    AccountSettingsSection(user)
+            VStack(alignment: .leading, spacing: 16) {
+                AccountSettingsSection(user)
+                
+                if let user {
                     BillingSettingsSecurity(user)
                     AuthAppsSection($user)
                 }
-                .transition(.opacity.combined(with: .move(edge: .top)))
-                .animation(.easeInOut, value: user)
-                .padding()
             }
+            .transition(.opacity.combined(with: .move(edge: .top)))
+            .animation(.easeInOut, value: user)
+            .padding()
         }
         .environment(vm)
         .scrollIndicators(.never)
