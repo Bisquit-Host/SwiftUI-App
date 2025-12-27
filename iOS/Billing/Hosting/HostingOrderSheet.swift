@@ -129,17 +129,18 @@ struct HostingOrderSheet: View {
                 }
             }
             .alert("Confirm purchase", isPresented: $alertPurchase) {
-                Button("Confirm", role: .confirm) {
-                    Task {
-                        await order {
-                            confetti.launchConfetti()
-                        }
-                    }
-                }
-                
+                Button("Confirm", role: .confirm, action: confirmPurchase)
                 Button("Cancel", role: .cancel) {}
             } message: {
                 Text("Purchase \(context.plan.name) for \(monthLabel(months)) billing?")
+            }
+        }
+    }
+    
+    private func confirmPurchase() {
+        Task {
+            await order {
+                confetti.launchConfetti()
             }
         }
     }
@@ -190,16 +191,17 @@ struct HostingOrderSheet: View {
             eggId: selectedEggId == 0 ? nil : selectedEggId
         )
         
-        if let response {
-            let formattedAmount = formatAmount(response.amount, code: currencyCode)
-            onSuccess()
-            
-            Task {
-                try? await Task.sleep(for: .seconds(1.2))
-                dismiss()
-            }
-        } else {
+        guard let response else {
             SystemAlert.error("Unable to complete order")
+            return
+        }
+        
+        print(response)
+        onSuccess()
+        
+        Task {
+            try? await Task.sleep(for: .seconds(1.2))
+            dismiss()
         }
     }
     
