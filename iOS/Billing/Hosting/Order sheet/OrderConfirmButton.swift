@@ -7,9 +7,9 @@ struct OrderConfirmButton: View {
     @EnvironmentObject private var store: ValueStore
     @Environment(\.dismiss) private var dismiss
     
-    let context: BillingPlanOrderContext
-    let name: String
-    let onSuccess: () -> Void
+    private let context: BillingPlanOrderContext
+    private let name: String
+    private let onSuccess: () -> Void
     
     init(_ context: BillingPlanOrderContext, onSuccess: @escaping () -> Void) {
         self.context = context
