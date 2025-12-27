@@ -8,8 +8,16 @@ struct RedeemButton: View {
     @State private var giftCode = ""
     
     var body: some View {
-        Button {
-            showGiftCodeAlert = true
+        Menu {
+            Button("Paste from clipboard", systemImage: "document.on.clipboard") {
+                if let paste = UIPasteboard.general.string {
+                    redeem(paste)
+                }
+            }
+            
+            Button("Enter manually", systemImage: "keyboard") {
+                showGiftCodeAlert = true
+            }
         } label: {
             Label("Redeem gift code", systemImage: "gift.fill")
                 .labelIconToTitleSpacing(8)
