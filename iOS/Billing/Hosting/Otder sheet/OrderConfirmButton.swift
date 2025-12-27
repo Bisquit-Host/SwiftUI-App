@@ -1,0 +1,83 @@
+import SwiftUI
+
+struct OrderConfirmButton: View {
+    @Environment(HostingPlanListVM.self) private var vm
+    @Environment(NewOrderVM.self) private var orderVM
+    @Environment(\.dismiss) private var dismiss
+    
+    let context: BillingPlanOrderContext
+    let name: String
+    let onSuccess: () -> Void
+    
+    init(_ context: BillingPlanOrderContext, onSuccess: @escaping () -> Void) {
+        self.context = context
+        self.name = context.plan.name
+        self.onSuccess = onSuccess
+    }
+    
+    @State private var alertPurchase = false
+    
+    var body: some View {
+        Button {
+            alertPurchase = true
+        } label: {
+            if orderVM.isOrdering {
+                ProgressView()
+            } else {
+                Text("Confirm purchase")
+                    .frame(maxWidth: .infinity)
+            }
+        }
+        .disabled(orderVM.isOrdering || orderVM.isLoadingOptions)
+        .alert("Confirm purchase", isPresented: $alertPurchase) {
+            Button("Confirm", role: .confirm, action: confirmPurchase)
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("Purchase \(name) for \(orderVM.months) billing?")
+        }
+    }
+    
+    private func confirmPurchase() {
+        Task {
+            await order {
+                onSuccess()
+            }
+        }
+    }
+    
+    private func order(onSuccess: @escaping () -> Void) async {
+        guard !orderVM.isOrdering else { return }
+        
+        orderVM.isOrdering = true
+        defer { orderVM.isOrdering = false }
+        
+        let response = await vm.order(
+            context: context,
+            name: name,
+            months: orderVM.months,
+            osId: orderVM.selectedOSId == 0 ? nil : orderVM.selectedOSId,
+            nestId: orderVM.selectedNestId == 0 ? nil : orderVM.selectedNestId,
+            eggId: orderVM.selectedEggId == 0 ? nil : orderVM.selectedEggId
+        )
+        
+        guard let response else {
+            SystemAlert.error("Unable to complete order")
+            return
+        }
+        
+        print(response)
+        onSuccess()
+        
+        Task {
+            try? await Task.sleep(for: .seconds(1.2))
+            dismiss()
+        }
+    }
+}
+
+//#Preview {
+//    OrderConfirmButton {}
+//        .darkSchemePreferred()
+//        .environment(NewOrderVM())
+//        .environment(HostingPlanListVM())
+//}

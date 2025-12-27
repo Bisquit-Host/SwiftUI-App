@@ -2,12 +2,14 @@ import SwiftUI
 
 struct HostingOrderSheet: View {
     @State private var confetti = ConfettiVM()
+    @State private var orderVM = NewOrderVM()
     @Environment(HostingPlanListVM.self) private var vm
     @Environment(\.dismiss) private var dismiss
     
     private let context: BillingPlanOrderContext
     private let priceText: String
     private let currencyCode: String?
+    @State private var name: String
     
     init(context: BillingPlanOrderContext, priceText: String) {
         self.context = context
@@ -16,16 +18,20 @@ struct HostingOrderSheet: View {
         _name = State(initialValue: context.plan.name)
     }
     
-    @State private var name: String
-    @State private var months = 1
-    @State private var osCategories: [CloudServiceOSCategory] = []
-    @State private var nests: [BillingHostingNest] = []
-    @State private var selectedOSId = 0
-    @State private var selectedNestId = 0
-    @State private var selectedEggId = 0
-    @State private var isLoadingOptions = false
-    @State private var isOrdering = false
-    @State private var alertPurchase = false
+    private var osItems: [(id: Int, title: String)] {
+        orderVM.osCategories.flatMap { category in
+            category.os.map { item in
+                let version = item.version.map { " \($0)" } ?? ""
+                return (id: item.id, title: category.name + version)
+            }
+        }
+    }
+    
+    private var eggsForSelection: [BillingHostingEgg] {
+        orderVM.nests.first {
+            $0.id == orderVM.selectedNestId
+        }?.eggs ?? []
+    }
     
     var body: some View {
         NavigationStack {
@@ -45,16 +51,16 @@ struct HostingOrderSheet: View {
                     TextField("Name", text: $name)
                         .textContentType(.nickname)
                     
-                    MonthAmountPicker($months)
+                    MonthAmountPicker($orderVM.months)
                 }
                 
                 if context.category == .cloud {
                     Section("Operating system") {
-                        if isLoadingOptions && osItems.isEmpty {
+                        if orderVM.isLoadingOptions && osItems.isEmpty {
                             ProgressView()
                         }
                         
-                        Picker("OS", selection: $selectedOSId) {
+                        Picker("OS", selection: $orderVM.selectedOSId) {
                             ForEach(osItems, id: \.id) { // requires id
                                 Text($0.title)
                                     .tag($0.id)
@@ -63,18 +69,18 @@ struct HostingOrderSheet: View {
                     }
                 } else {
                     Section("Template") {
-                        if isLoadingOptions && nests.isEmpty {
+                        if orderVM.isLoadingOptions && orderVM.nests.isEmpty {
                             ProgressView()
                         }
                         
-                        Picker("Nest", selection: $selectedNestId) {
-                            ForEach(nests) {
+                        Picker("Nest", selection: $orderVM.selectedNestId) {
+                            ForEach(orderVM.nests) {
                                 Text($0.name)
                                     .tag($0.id)
                             }
                         }
                         
-                        Picker("Egg", selection: $selectedEggId) {
+                        Picker("Egg", selection: $orderVM.selectedEggId) {
                             ForEach(eggsForSelection) {
                                 Text($0.name)
                                     .tag($0.id)
@@ -84,21 +90,14 @@ struct HostingOrderSheet: View {
                 }
                 
                 Section {
-                    Button {
-                        alertPurchase = true
-                    } label: {
-                        if isOrdering {
-                            ProgressView()
-                        } else {
-                            Text("Confirm purchase")
-                                .frame(maxWidth: .infinity)
-                        }
+                    OrderConfirmButton(context) {
+                        confetti.launchConfetti()
                     }
-                    .disabled(isOrdering || isLoadingOptions)
                 }
             }
             .navigationTitle("Purchase")
             .navigationBarTitleDisplayMode(.inline)
+            .environment(orderVM)
             .overlay {
                 ConfettiOverlay()
                     .environment(confetti)
@@ -113,105 +112,47 @@ struct HostingOrderSheet: View {
             .task {
                 await loadOptions()
             }
-            .onChange(of: selectedNestId) { _, newValue in
-                guard let nest = nests.first(where: { $0.id == newValue }) else { return }
+            .onChange(of: orderVM.selectedNestId) { _, newValue in
+                guard let nest = orderVM.nests.first(where: { $0.id == newValue }) else { return }
                 
                 if let firstEgg = nest.eggs.first {
-                    selectedEggId = firstEgg.id
+                    orderVM.selectedEggId = firstEgg.id
                 } else {
-                    selectedEggId = 0
+                    orderVM.selectedEggId = 0
                 }
-            }
-            .alert("Confirm purchase", isPresented: $alertPurchase) {
-                Button("Confirm", role: .confirm, action: confirmPurchase)
-                Button("Cancel", role: .cancel) {}
-            } message: {
-                Text("Purchase \(context.plan.name) for \(months) billing?")
-            }
-        }
-    }
-    
-    private func confirmPurchase() {
-        Task {
-            await order {
-                confetti.launchConfetti()
             }
         }
     }
     
     private func loadOptions() async {
-        guard !isLoadingOptions else { return }
+        guard !orderVM.isLoadingOptions else { return }
         
-        isLoadingOptions = true
-        defer { isLoadingOptions = false }
+        orderVM.isLoadingOptions = true
+        defer { orderVM.isLoadingOptions = false }
         
         let options = await vm.loadOrderOptions(for: context.category, planId: context.plan.id)
-        osCategories = options.osCategories
-        nests = options.nests
+        orderVM.osCategories = options.osCategories
+        orderVM.nests = options.nests
         
-        if selectedOSId == 0, let first = options.osCategories.first?.os.first {
-            selectedOSId = first.id
+        if orderVM.selectedOSId == 0, let first = options.osCategories.first?.os.first {
+            orderVM.selectedOSId = first.id
         }
         
-        if selectedNestId == 0, let first = options.nests.first {
-            selectedNestId = first.id
+        if orderVM.selectedNestId == 0, let first = options.nests.first {
+            orderVM.selectedNestId = first.id
         }
         
-        if selectedEggId == 0, let first = options.nests.first?.eggs.first {
-            selectedEggId = first.id
+        if orderVM.selectedEggId == 0, let first = options.nests.first?.eggs.first {
+            orderVM.selectedEggId = first.id
         }
         
-        if context.category == .cloud && osCategories.isEmpty {
+        if context.category == .cloud && orderVM.osCategories.isEmpty {
             SystemAlert.error("Unable to load OS list")
         }
         
-        if (context.category == .game || context.category == .bot), nests.isEmpty {
+        if (context.category == .game || context.category == .bot), orderVM.nests.isEmpty {
             SystemAlert.error("No templates available")
         }
-    }
-    
-    private func order(onSuccess: @escaping () -> Void) async {
-        guard !isOrdering else { return }
-        
-        isOrdering = true
-        defer { isOrdering = false }
-        
-        let response = await vm.order(
-            context: context,
-            name: name,
-            months: months,
-            osId: selectedOSId == 0 ? nil : selectedOSId,
-            nestId: selectedNestId == 0 ? nil : selectedNestId,
-            eggId: selectedEggId == 0 ? nil : selectedEggId
-        )
-        
-        guard let response else {
-            SystemAlert.error("Unable to complete order")
-            return
-        }
-        
-        print(response)
-        onSuccess()
-        
-        Task {
-            try? await Task.sleep(for: .seconds(1.2))
-            dismiss()
-        }
-    }
-    
-    private var osItems: [(id: Int, title: String)] {
-        osCategories.flatMap { category in
-            category.os.map { item in
-                let version = item.version.map { " \($0)" } ?? ""
-                return (id: item.id, title: category.name + version)
-            }
-        }
-    }
-    
-    private var eggsForSelection: [BillingHostingEgg] {
-        nests.first {
-            $0.id == selectedNestId
-        }?.eggs ?? []
     }
     
     private func formatAmount(_ amount: Double, code: String?) -> String {
