@@ -51,15 +51,15 @@ struct HostingPlanList: View {
         }
         .navigationTitle(category.title)
         .navigationSubtitle(category.description)
-        .environment(vm)
         .scrollIndicators(.never)
         .background(.background.opacity(0.9))
         .refreshableTask {
             await vm.loadAll()
         }
         .sheet(item: $orderContext) { context in
-            HostingOrderSheet(context: context, priceText: vm.formattedPrice(for: context.plan, currency: nil), vm: vm)
+            HostingOrderSheet(context: context, priceText: vm.formattedPrice(for: context.plan, currency: nil))
         }
+        .environment(vm)
         .toolbar {
             if vm.isLoading {
                 ProgressView()

@@ -2,17 +2,16 @@ import SwiftUI
 
 struct HostingOrderSheet: View {
     @State private var confetti = ConfettiVM()
+    @Environment(HostingPlanListVM.self) private var vm
     @Environment(\.dismiss) private var dismiss
     
     private let context: BillingPlanOrderContext
     private let priceText: String
-    private let vm: HostingPlanListVM
     private let currencyCode: String?
     
-    init(context: BillingPlanOrderContext, priceText: String, vm: HostingPlanListVM) {
+    init(context: BillingPlanOrderContext, priceText: String) {
         self.context = context
         self.priceText = priceText
-        self.vm = vm
         self.currencyCode = context.plan.price.first?.currency.symbol
         _name = State(initialValue: context.plan.name)
     }
