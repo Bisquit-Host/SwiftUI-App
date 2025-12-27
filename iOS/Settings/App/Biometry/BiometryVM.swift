@@ -29,4 +29,23 @@ final class BiometryVM {
         default: "exclamationmark.triangle"
         }
     }
+    
+    func authenticate(_ reason: String = "Authenticate to continue") async -> Bool {
+        let context = LAContext()
+        var error: NSError?
+        let canEvaluate = context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error)
+        
+        canEvaluatePolicy = canEvaluate
+        biometryType = context.biometryType
+        
+        guard canEvaluate else {
+            return false
+        }
+        
+        return await withCheckedContinuation { continuation in
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, _ in
+                continuation.resume(returning: success)
+            }
+        }
+    }
 }
