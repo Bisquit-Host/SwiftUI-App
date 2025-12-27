@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct TopupSectionRedeem: View {
+struct RedeemButton: View {
     @Environment(SheetTopupVM.self) private var vm
     @Environment(BillingDashboardVM.self) private var dashboardVM
     
@@ -45,6 +45,6 @@ struct TopupSectionRedeem: View {
 }
 
 #Preview {
-    TopupSectionRedeem()
+    RedeemButton()
         .darkSchemePreferred()
 }

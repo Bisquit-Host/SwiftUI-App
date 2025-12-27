@@ -68,7 +68,7 @@ struct TopupSection: View {
             
             LoginDivider()
             
-            TopupSectionRedeem()
+            RedeemButton()
         }
     }
     
