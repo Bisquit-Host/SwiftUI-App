@@ -7,7 +7,6 @@ final class BotServiceDetailsVM {
     var changeablePackages: [ChangeableBotPackage] = []
     var isLoading = false
     var isPerformingAction = false
-    var actionMessage: String?
     
     private let base = URL(string: "https://test-api.bisquit.host")!
     
@@ -84,7 +83,7 @@ final class BotServiceDetailsVM {
             guard await self.request(path: "/bot/\(serviceId)/autorenew", method: "PATCH", body: payload) != nil else { return }
             
             self.service?.autorenew = enabled
-            self.actionMessage = enabled ? "Auto-extend enabled" : "Auto-extend disabled"
+            SystemAlert.done(enabled ? "Auto-extend enabled" : "Auto-extend disabled")
         }
     }
     
@@ -113,7 +112,7 @@ final class BotServiceDetailsVM {
                         
                         self.service?.expiresAt = response.newExpiresAt
                         
-                        self.actionMessage = "Extended for \(months) mo"
+                        SystemAlert.done("Extended for \(months) mo")
                         continuation.resume(returning: response)
                     } catch {
                         SystemAlert.error(error.localizedDescription)
@@ -134,7 +133,7 @@ final class BotServiceDetailsVM {
             guard await self.request(path: "/bot/\(serviceId)/change-package", method: "POST", body: payload) != nil else { return }
             onSuccess()
             
-            self.actionMessage = "Upgrade requested"
+            print("Upgrade requested")
             await self.fetchDetails(serviceId)
         }
     }

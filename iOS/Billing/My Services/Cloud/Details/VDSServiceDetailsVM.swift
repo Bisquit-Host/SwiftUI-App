@@ -11,7 +11,6 @@ final class VDSServiceDetailsVM {
     
     var isLoading = false
     var isPerformingAction = false
-    var actionMessage: String?
     
     private let base = URL(string: "https://test-api.bisquit.host")!
     
@@ -124,7 +123,7 @@ final class VDSServiceDetailsVM {
             guard await self.request(path: "/cloud/\(serviceId)/name", method: "PATCH", body: payload) != nil else { return }
             
             self.service?.name = trimmed
-            self.actionMessage = "Name updated"
+            SystemAlert.done("Name updated")
         }
     }
     
@@ -141,7 +140,7 @@ final class VDSServiceDetailsVM {
         
         await performAction {
             guard await self.request(path: "/cloud/\(serviceId)/panel/password", method: "PATCH", body: payload) != nil else { return }
-            self.actionMessage = "Root password updated"
+            SystemAlert.done("Root password updated")
         }
     }
     
@@ -151,7 +150,7 @@ final class VDSServiceDetailsVM {
         
         await performAction {
             guard await self.request(path: "/cloud/\(serviceId)/panel/reinstall", method: "POST", body: payload) != nil else { return }
-            self.actionMessage = "Reinstall started"
+            print("Reinstall started")
         }
     }
     
@@ -163,7 +162,7 @@ final class VDSServiceDetailsVM {
             guard await self.request(path: "/cloud/\(serviceId)/autorenew", method: "PATCH", body: payload) != nil else { return }
             
             self.service?.autorenew = enabled
-            self.actionMessage = enabled ? "Auto-extend enabled" : "Auto-extend disabled"
+            SystemAlert.done(enabled ? "Auto-extend enabled" : "Auto-extend disabled")
         }
     }
     
@@ -192,7 +191,7 @@ final class VDSServiceDetailsVM {
                         
                         self.service?.expiresAt = response.newExpiresAt
                         
-                        self.actionMessage = "Extended for \(months) mo"
+                        SystemAlert.done("Extended for \(months) mo")
                         continuation.resume(returning: response)
                     } catch {
                         SystemAlert.error(error.localizedDescription)
@@ -212,7 +211,7 @@ final class VDSServiceDetailsVM {
             guard await self.request(path: "/cloud/\(serviceId)/change-package", method: "POST", body: payload) != nil else { return }
             onSuccess()
             
-            self.actionMessage = "Upgrade requested"
+            print("Upgrade requested")
             await self.fetchDetails(serviceId)
         }
     }
@@ -230,7 +229,7 @@ final class VDSServiceDetailsVM {
                 print("Power action response:", raw)
             }
             
-            self.actionMessage = "Action sent: \(action.capitalized)"
+            print("Action sent: \(action.capitalized)")
         }
     }
     

@@ -34,12 +34,6 @@ struct VDSServiceDetails: View {
                         .frame(maxWidth: .infinity, alignment: .center)
                         .padding(.vertical, 24)
                 }
-                
-                if let message = vm.actionMessage {
-                    Text(message)
-                        .footnote()
-                        .foregroundStyle(.green)
-                }
             }
             .padding()
         }
