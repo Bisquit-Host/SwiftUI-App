@@ -26,6 +26,7 @@ struct ConfettiOverlay: View {
         }
         .ignoresSafeArea()
         .allowsHitTesting(false)
+        .sensoryFeedback(.success, trigger: vm.confettiTrigger)
     }
 }
 

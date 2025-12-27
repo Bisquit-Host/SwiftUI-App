@@ -3,7 +3,7 @@ import Vortex
 
 @Observable
 final class ConfettiVM {
-    var confettiTrigger = 0
+    var confettiTrigger = true
     private var isConfettiVisible = false
     private var confettiTask: Task<Void, Never>?
     
@@ -12,9 +12,9 @@ final class ConfettiVM {
         
         if !isConfettiVisible {
             isConfettiVisible = true
-            confettiTrigger += 1
+            confettiTrigger.toggle()
         } else {
-            confettiTrigger += 1
+            confettiTrigger.toggle()
         }
         
         confettiTask = Task {
