@@ -1,12 +1,21 @@
 import SwiftUI
 
 struct HostingOrderSheet: View {
+    @State private var confetti = ConfettiVM()
+    @Environment(\.dismiss) private var dismiss
+    
     private let context: BillingPlanOrderContext
     private let priceText: String
     private let vm: HostingPlanListVM
     private let currencyCode: String?
     
-    @Environment(\.dismiss) private var dismiss
+    init(context: BillingPlanOrderContext, priceText: String, vm: HostingPlanListVM) {
+        self.context = context
+        self.priceText = priceText
+        self.vm = vm
+        self.currencyCode = context.plan.price.first?.currency.symbol
+        _name = State(initialValue: context.plan.name)
+    }
     
     @State private var name: String
     @State private var months = 1
@@ -17,16 +26,7 @@ struct HostingOrderSheet: View {
     @State private var selectedEggId = 0
     @State private var isLoadingOptions = false
     @State private var isOrdering = false
-    @State private var message: String?
     @State private var alertPurchase = false
-    
-    init(context: BillingPlanOrderContext, priceText: String, vm: HostingPlanListVM) {
-        self.context = context
-        self.priceText = priceText
-        self.vm = vm
-        self.currencyCode = context.plan.price.first?.currency.symbol
-        _name = State(initialValue: context.plan.name)
-    }
     
     var body: some View {
         NavigationStack {
@@ -89,13 +89,6 @@ struct HostingOrderSheet: View {
                     }
                 }
                 
-                if let message {
-                    Section {
-                        Label(message, systemImage: "checkmark.circle.fill")
-                            .foregroundStyle(.green)
-                    }
-                }
-                
                 Section {
                     Button {
                         alertPurchase = true
@@ -112,6 +105,10 @@ struct HostingOrderSheet: View {
             }
             .navigationTitle("Purchase")
             .navigationBarTitleDisplayMode(.inline)
+            .overlay {
+                ConfettiOverlay()
+                    .environment(confetti)
+            }
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Close") {
@@ -134,7 +131,9 @@ struct HostingOrderSheet: View {
             .alert("Confirm purchase", isPresented: $alertPurchase) {
                 Button("Confirm", role: .confirm) {
                     Task {
-                        await order()
+                        await order {
+                            confetti.launchConfetti()
+                        }
                     }
                 }
                 
@@ -176,13 +175,11 @@ struct HostingOrderSheet: View {
         }
     }
     
-    private func order() async {
+    private func order(onSuccess: @escaping () -> Void) async {
         guard !isOrdering else { return }
         
         isOrdering = true
         defer { isOrdering = false }
-        
-        message = nil
         
         let response = await vm.order(
             context: context,
@@ -195,7 +192,7 @@ struct HostingOrderSheet: View {
         
         if let response {
             let formattedAmount = formatAmount(response.amount, code: currencyCode)
-            message = "Purchased #\(response.serviceId). Charged \(formattedAmount)"
+            onSuccess()
             
             Task {
                 try? await Task.sleep(for: .seconds(1.2))
