@@ -4,6 +4,7 @@ import SwiftUI
 struct VDSBillingSection: View {
     @Environment(VDSServiceDetailsVM.self) private var vm
     @Environment(BillingDashboardVM.self) private var dashboardVM
+    @Environment(ConfettiVM.self) private var confetti
     
     let serviceId: Int
     let autorenew: Bool
@@ -95,14 +96,7 @@ struct VDSBillingSection: View {
                 .buttonStyle(.glassProminent)
                 .disabled(vm.isPerformingAction)
                 
-                Picker("Renew for", selection: $renewMonths) {
-                    ForEach([1, 3, 6, 12], id: \.self) {
-                        Text($0 == 1 ? "1 month" : "\($0) months")
-                            .tag($0)
-                    }
-                }
-                .pickerStyle(.menu)
-                .tint(.primary)
+                ExtendMonthsAmountPicker($renewMonths)
             }
             .padding(8)
             .background(.ultraThinMaterial, in: .capsule)
@@ -152,6 +146,7 @@ struct VDSBillingSection: View {
         
         Task {
             if let response = await vm.renew(months: renewMonths, serviceId: service.id) {
+                confetti.launchConfetti()
                 lastRenewAmount = response.amount
             }
         }

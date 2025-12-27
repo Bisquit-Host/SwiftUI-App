@@ -3,6 +3,7 @@ import SwiftUI
 struct BotServiceBillingSection: View {
     @Environment(BotServiceDetailsVM.self) private var vm
     @Environment(BillingDashboardVM.self) private var dashboardVM
+    @Environment(ConfettiVM.self) private var confetti
     
     private let service: BillingBotServiceDetails
     
@@ -20,6 +21,26 @@ struct BotServiceBillingSection: View {
     
     var body: some View {
         BillingSectionCard("Billing") {
+            if let expiresAt = service.expiresAt {
+                LabeledContent {
+                    VStack(alignment: .trailing) {
+                        let expireDate = expiresAt.formatted(date: .numeric, time: .shortened)
+                        let daysLeft = Calendar.current.dateComponents([.day], from: Date(), to: expiresAt).day ?? 0
+                        
+                        Text(expireDate)
+                        
+                        if daysLeft > 0 {
+                            Text("in \(daysLeft) days")
+                                .footnote()
+                                .tertiary()
+                        }
+                    }
+                } label: {
+                    Text("Expires")
+                }
+                .subheadline()
+            }
+            
             Toggle(isOn: $autorenew) {
                 Text("Auto-extend monthly")
             }
@@ -34,8 +55,8 @@ struct BotServiceBillingSection: View {
                 
                 Task {
                     await vm.changeAutorenew(newValue, serviceId: service.id)
-                    
                     let actualValue = vm.service?.autorenew ?? service.autorenew
+                    
                     await MainActor.run {
                         syncedAutorenew = actualValue
                         autorenew = actualValue
@@ -43,9 +64,7 @@ struct BotServiceBillingSection: View {
                 }
             }
             
-            VStack(alignment: .leading, spacing: 8) {
-                ExtendMonthsAmountPicker($renewMonths)
-                
+            HStack(spacing: 5) {
                 Button {
                     alertRenew = true
                 } label: {
@@ -53,25 +72,23 @@ struct BotServiceBillingSection: View {
                         ProgressView()
                             .frame(maxWidth: .infinity)
                     } else {
-                        Text("Pay and extend")
+                        Text("Renew for")
                             .semibold()
                             .frame(maxWidth: .infinity)
                     }
                 }
-                .buttonStyle(.borderedProminent)
+                .buttonStyle(.glassProminent)
                 .disabled(vm.isPerformingAction)
                 
-                if let expires = service.expiresAt {
-                    Text("Expires \(expires.formatted(date: .numeric, time: .shortened))")
-                        .footnote()
-                        .secondary()
-                }
-                
-                if let lastRenewAmount {
-                    Text("Charged \(formatCurrency(lastRenewAmount, user: dashboardVM.user))")
-                        .footnote()
-                        .foregroundStyle(.green)
-                }
+                ExtendMonthsAmountPicker($renewMonths)
+            }
+            .padding(8)
+            .background(.ultraThinMaterial, in: .capsule)
+            
+            if let lastRenewAmount {
+                Text("Charged \(formatCurrency(lastRenewAmount, user: dashboardVM.user))")
+                    .footnote()
+                    .foregroundStyle(.green)
             }
         }
         .alert("Extend service", isPresented: $alertRenew) {
@@ -87,6 +104,7 @@ struct BotServiceBillingSection: View {
         
         Task {
             if let response = await vm.renew(months: renewMonths, serviceId: service.id) {
+                confetti.launchConfetti()
                 lastRenewAmount = response.amount
             }
         }
