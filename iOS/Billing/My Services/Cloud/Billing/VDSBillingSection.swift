@@ -48,7 +48,7 @@ struct VDSBillingSection: View {
         }
         .sheet($sheetUpgrade) {
             NavigationStack {
-                VDSUpgradeSection(serviceId: service.id)
+                VDSUpgradeSection(service.id)
             }
         }
     }
@@ -58,6 +58,7 @@ struct VDSBillingSection: View {
         
         Task {
             if let response = await vm.renew(months: renewMonths, serviceId: service.id) {
+                print(response)
                 confetti.launchConfetti()
             }
         }

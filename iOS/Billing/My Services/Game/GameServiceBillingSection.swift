@@ -38,6 +38,7 @@ struct GameServiceBillingSection: View {
         
         Task {
             if let response = await vm.renew(months: renewMonths, serviceId: service.id) {
+                print(response)
                 confetti.launchConfetti()
             }
         }

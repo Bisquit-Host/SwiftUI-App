@@ -5,7 +5,11 @@ struct VDSUpgradeSection: View {
     @Environment(BillingDashboardVM.self) private var dashboardVM
     @Environment(ConfettiVM.self) private var confetti
     
-    let serviceId: Int
+    private let serviceId: Int
+    
+    init(_ serviceId: Int) {
+        self.serviceId = serviceId
+    }
     
     @State private var alertUpgrade = false
     @State private var selectedUpgradeId: Int?
