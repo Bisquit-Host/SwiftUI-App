@@ -6,6 +6,10 @@ struct VDSUpgradePackage: View {
     let pkg: ChangeableCloudPackage
     @Binding var selectedUpgradeId: Int?
     
+    private var isSelected: Bool {
+        selectedUpgradeId == pkg.id
+    }
+    
     var body: some View {
         let ram = formatMegaBytes(pkg.memory)
         let disk = formatMegaBytes(pkg.disk)
@@ -31,7 +35,7 @@ struct VDSUpgradePackage: View {
                 
                 Spacer()
                 
-                if selectedUpgradeId == pkg.id {
+                if isSelected {
                     Image(systemName: "checkmark.circle.fill")
                 }
             }
@@ -39,7 +43,7 @@ struct VDSUpgradePackage: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .background {
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(selectedUpgradeId == pkg.id ? Color.accentColor.opacity(0.12) : Color.clear)
+                    .fill(isSelected ? Color.accentColor.opacity(0.12) : Color.clear)
             }
         }
         .buttonStyle(.plain)
