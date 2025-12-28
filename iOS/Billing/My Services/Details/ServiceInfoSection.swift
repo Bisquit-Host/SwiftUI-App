@@ -16,7 +16,7 @@ struct ServiceInfoSection: View {
         let network = service.packageInfo.network?.clean
         let networkType = service.packageInfo.networkType
         
-        BillingSectionCard("Details") {
+        ServiceSectionCard("Details") {
             VStack(alignment: .leading, spacing: 10) {
                 LabeledContent("Package", value: service.packageInfo.name)
                 LabeledContent("CPU", value: "\(cpuCores) vCPU \(cpuName)")

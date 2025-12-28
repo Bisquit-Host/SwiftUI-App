@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct VDSSectionCard<Content: View>: View {
+struct ServiceSectionCard<Content: View>: View {
     private let title: LocalizedStringKey?
     private let spacing: CGFloat
     private let content: Content
@@ -47,7 +47,7 @@ struct VDSSectionCard<Content: View>: View {
 }
 
 #Preview {
-    VDSSectionCard("Preview") {
+    ServiceSectionCard("Preview") {
         Text("Content")
     }
     .padding()

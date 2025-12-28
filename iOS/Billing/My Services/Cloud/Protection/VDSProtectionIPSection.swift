@@ -6,7 +6,7 @@ struct VDSProtectionIPSection: View {
     @State private var selectedAction: VDSProtectionDefaultAction = .filter
     
     var body: some View {
-        VDSSectionCard("Protection IP") {
+        ServiceSectionCard("Protection IP") {
             if let ip = vm.ipInfo {
                 LabeledContent("IPv4", value: ip.ipv4)
                 

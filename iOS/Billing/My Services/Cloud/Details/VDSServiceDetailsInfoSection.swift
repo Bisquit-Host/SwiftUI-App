@@ -14,7 +14,7 @@ struct VDSServiceDetailsInfoSection: View {
         let cpuName = service.packageInfo.cpuName ?? ""
         let diskType = service.packageInfo.diskType ?? ""
         
-        VDSSectionCard("Details") {
+        ServiceSectionCard("Details") {
             VStack(alignment: .leading, spacing: 10) {
                 if let ip = service.ip {
                     LabeledContent("IP", value: ip)

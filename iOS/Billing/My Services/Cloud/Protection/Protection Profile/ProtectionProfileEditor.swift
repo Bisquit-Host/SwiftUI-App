@@ -26,7 +26,7 @@ struct ProtectionProfileEditor: View {
         ScrollView {
             ProtectionProfileEditorPresetSection($presetId, selectedProtocolPresets: selectedProtocolPresets)
             
-            VDSSectionCard("Protocol") {
+            ServiceSectionCard("Protocol") {
                 Picker("Protocol", selection: $protocolSelection) {
                     ForEach(VDSProtectionProtocol.allCases) {
                         Text($0.rawValue)

@@ -23,7 +23,7 @@ struct ServiceBillingSection<VM: ServiceBillingVMProtocol>: View {
     var body: some View {
         @Bindable var vm = vm
         
-        BillingSectionCard("Billing") {
+        ServiceSectionCard("Billing") {
             ServiceExpiresIn(service.expiresAt)
             
             AutoRenewToggle(autorenewToggle: $autorenewToggle, syncedAutorenew: $syncedAutorenew, autorenew: autorenew, isPerformingAction: vm.isPerformingAction) { newValue in

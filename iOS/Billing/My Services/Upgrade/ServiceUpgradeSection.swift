@@ -11,7 +11,7 @@ struct ServiceUpgradeSection<VM: ServiceDetailsVMProtocol>: View {
     @State private var alertUpgrade = false
     
     var body: some View {
-        BillingSectionCard("Upgrade") {
+        ServiceSectionCard("Upgrade") {
             if vm.changeablePackages.isEmpty {
                 Text("No higher packages available right now")
                     .footnote()

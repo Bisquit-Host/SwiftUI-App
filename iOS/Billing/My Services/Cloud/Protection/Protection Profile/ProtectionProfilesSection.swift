@@ -7,7 +7,7 @@ struct ProtectionProfilesSection: View {
     @State private var deleteCandidate: VDSProtectionProfile?
     
     var body: some View {
-        VDSSectionCard("Profiles") {
+        ServiceSectionCard("Profiles") {
             if vm.isLoading && vm.profiles.isEmpty {
                 ProgressView()
                     .frame(maxWidth: .infinity, alignment: .center)

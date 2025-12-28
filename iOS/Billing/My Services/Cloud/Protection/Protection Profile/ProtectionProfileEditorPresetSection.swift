@@ -12,7 +12,7 @@ struct ProtectionProfileEditorPresetSection: View {
     }
     
     var body: some View {
-        VDSSectionCard("Preset") {
+        ServiceSectionCard("Preset") {
             if vm.presets.isEmpty {
                 if vm.isLoading {
                     ProgressView()

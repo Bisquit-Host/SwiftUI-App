@@ -4,7 +4,7 @@ struct VDSProtectionAttacksSection: View {
     @Environment(VDSProtectionVM.self) private var vm
     
     var body: some View {
-        VDSSectionCard(vm.attacks.isEmpty ? nil : "Recent attacks") {
+        ServiceSectionCard(vm.attacks.isEmpty ? nil : "Recent attacks") {
             if vm.isLoading && vm.attacks.isEmpty {
                 ProgressView()
                     .frame(maxWidth: .infinity)

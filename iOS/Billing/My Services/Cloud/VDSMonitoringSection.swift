@@ -5,7 +5,7 @@ struct VDSMonitoringSection: View {
     @Environment(VDSServiceDetailsVM.self) private var vm
     
     var body: some View {
-        VDSSectionCard("Monitoring") {
+        ServiceSectionCard("Monitoring") {
             if let charts = vm.charts {
                 Group {
                     Chart(charts.cpu) {

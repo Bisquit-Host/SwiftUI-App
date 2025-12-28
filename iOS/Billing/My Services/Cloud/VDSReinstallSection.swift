@@ -13,7 +13,7 @@ struct VDSReinstallSection: View {
     @State private var selectedOSId: Int?
     
     var body: some View {
-        VDSSectionCard("Reinstall OS") {
+        ServiceSectionCard("Reinstall OS") {
             VDSReinstallOSFamilyPicker($selectedFamilyId, from: availableOSCategories)
             VDSReinstallOSPicker($selectedOSId, selectedFamilyId: $selectedFamilyId, from: availableOSCategories)
             
