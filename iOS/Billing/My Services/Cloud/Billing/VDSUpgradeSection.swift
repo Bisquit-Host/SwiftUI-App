@@ -4,6 +4,8 @@ struct VDSUpgradeSection: View {
     @Environment(VDSServiceDetailsVM.self) private var vm
     @Environment(BillingDashboardVM.self) private var dashboardVM
     @Environment(ConfettiVM.self) private var confetti
+    @Environment(BiometryVM.self) private var biometry
+    @EnvironmentObject private var store: ValueStore
     
     private let serviceId: Int
     
@@ -62,9 +64,14 @@ struct VDSUpgradeSection: View {
     }
     
     private func upgrade() {
-        guard let pkg = selectedUpgradePackage else { return }
-        
         Task {
+            guard let pkg = selectedUpgradePackage else { return }
+            
+            if store.useBiometry, await !biometry.authenticate() {
+                SystemAlert.error("Biometry authentication failed")
+                return
+            }
+            
             await vm.changePackage(to: pkg.id, serviceId: serviceId, onSuccess: confetti.launchConfetti)
         }
     }

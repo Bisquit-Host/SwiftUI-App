@@ -4,6 +4,8 @@ struct GameServiceUpgradeSection: View {
     @Environment(GameServiceDetailsVM.self) private var vm
     @Environment(BillingDashboardVM.self) private var dashboardVM
     @Environment(ConfettiVM.self) private var confetti
+    @Environment(BiometryVM.self) private var biometry
+    @EnvironmentObject private var store: ValueStore
     
     @State private var selectedUpgradeId: Int?
     @State private var alertUpgrade = false
@@ -62,9 +64,14 @@ struct GameServiceUpgradeSection: View {
     }
     
     private func upgrade() {
-        guard let pkg = selectedUpgradePackage, let serviceId = vm.service?.id else { return }
-        
         Task {
+            guard let pkg = selectedUpgradePackage, let serviceId = vm.service?.id else { return }
+            
+            if store.useBiometry, await !biometry.authenticate() {
+                SystemAlert.error("Biometry authentication failed")
+                return
+            }
+            
             await vm.changePackage(to: pkg.id, serviceId: serviceId, onSuccess: confetti.launchConfetti)
         }
     }
