@@ -2,14 +2,13 @@ import SwiftUI
 
 struct Billing2FASetupContent: View {
     @Environment(Billing2FAVM.self) private var vm
+    @Environment(BillingDashboardVM.self) private var dashboardVM
     @Environment(\.dismiss) private var dismiss
     
     private let setup: Billing2FASetupResponse
-    private let onEnabled: () async -> Void
     
-    init(_ setup: Billing2FASetupResponse, onEnabled: @escaping () async -> Void) {
+    init(_ setup: Billing2FASetupResponse) {
         self.setup = setup
-        self.onEnabled = onEnabled
     }
     
     var body: some View {
@@ -56,7 +55,7 @@ struct Billing2FASetupContent: View {
             vm.isLoading = false
             
             if success {
-                await onEnabled()
+                await dashboardVM.fetchUserInfo()
                 dismiss()
             }
         }

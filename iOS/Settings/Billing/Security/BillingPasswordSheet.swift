@@ -2,10 +2,14 @@ import SwiftUI
 
 struct BillingPasswordSheet: View {
     @Environment(BillingSettingsVM.self) private var vm
+    @Environment(BillingDashboardVM.self) private var dashboardVM
     @Environment(\.dismiss) private var dismiss
     
-    let hasPassword: Bool
-    let onSuccess: () async -> Void
+    private let hasPassword: Bool
+    
+    init(_ hasPassword: Bool) {
+        self.hasPassword = hasPassword
+    }
     
     var body: some View {
         @Bindable var vm = vm
@@ -42,7 +46,7 @@ struct BillingPasswordSheet: View {
                 Button {
                     Task {
                         await vm.changePassword(hasExistingPassword: hasPassword) {
-                            await onSuccess()
+                            await dashboardVM.fetchUserInfo()
                             dismiss()
                         }
                     }

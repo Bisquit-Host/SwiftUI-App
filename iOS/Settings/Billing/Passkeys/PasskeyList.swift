@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct PasskeyList: View {
-    @State private var vm = PasskeyListVM()
+    @Environment(PasskeyListVM.self) private var vm
     
     var body: some View {
         ScrollView {
@@ -27,7 +27,6 @@ struct PasskeyList: View {
         }
         .navigationTitle("Passkeys")
         .navigationBarTitleDisplayMode(.inline)
-        .environment(vm)
         .scrollIndicators(.never)
         .background {
             LinearGradient(colors: [.blue.opacity(0.08), Color(.systemBackground)], startPoint: .topLeading, endPoint: .bottomTrailing)
@@ -44,5 +43,6 @@ struct PasskeyList: View {
         PasskeyList()
     }
     .environmentObject(ValueStore())
+    .environment(PasskeyListVM())
     .darkSchemePreferred()
 }
