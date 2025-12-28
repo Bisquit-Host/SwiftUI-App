@@ -1,6 +1,6 @@
 import Foundation
 
-struct GameServicePackage: Decodable, Equatable {
+struct ServicePackage: Decodable, Equatable {
     let id: Int
     let name: String
     let locationId: Int
@@ -11,29 +11,8 @@ struct GameServicePackage: Decodable, Equatable {
     let memoryType: String?
     let disk: Double
     let diskType: String?
-    let network: Double
+    let network: Double?
     let networkType: String?
-    let nests: [Int]
-    let allocations: Int
-    let databases: Int
-    let backups: Int
-    let bonusBalanceAllowed: Bool
-    let whmcsLink: String?
-    let enabled: Bool
-    let inStock: Bool?
-}
-
-struct BotServicePackage: Decodable, Equatable {
-    let id: Int
-    let name: String
-    let locationId: Int
-    let price: [BillingHostingPlanPrice]
-    let cpu: Double
-    let cpuName: String?
-    let memory: Double
-    let memoryType: String?
-    let disk: Double
-    let diskType: String?
     let nests: [Int]
     let allocations: Int
     let databases: Int
@@ -65,7 +44,7 @@ struct BillingGameServiceDetails: Decodable, Equatable {
     let allowDelete: Bool
     let createdAt: Date?
     var expiresAt: Date?
-    let packageInfo: GameServicePackage
+    let packageInfo: ServicePackage
     let location: ServiceLocation
     
     private enum CodingKeys: String, CodingKey {
@@ -83,7 +62,7 @@ struct BillingBotServiceDetails: Decodable, Equatable {
     let allowDelete: Bool
     let createdAt: Date?
     var expiresAt: Date?
-    let packageInfo: BotServicePackage
+    let packageInfo: ServicePackage
     let location: ServiceLocation
     
     private enum CodingKeys: String, CodingKey {
