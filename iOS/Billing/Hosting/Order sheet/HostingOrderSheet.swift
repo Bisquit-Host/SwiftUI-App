@@ -26,12 +26,6 @@ struct HostingOrderSheet: View {
         }
     }
     
-    private var eggsForSelection: [BillingHostingEgg] {
-        orderVM.nests.first {
-            $0.id == orderVM.selectedNestId
-        }?.eggs ?? []
-    }
-    
     var body: some View {
         NavigationStack {
             Form {
@@ -79,12 +73,7 @@ struct HostingOrderSheet: View {
                             }
                         }
                         
-                        Picker("Egg", selection: $orderVM.selectedEggId) {
-                            ForEach(eggsForSelection) {
-                                Text($0.name)
-                                    .tag($0.id)
-                            }
-                        }
+                        HostingOrderSheetEggPicker()
                     }
                 }
                 
