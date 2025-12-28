@@ -4,7 +4,6 @@ struct HostingOrderSheet: View {
     @State private var confetti = ConfettiVM()
     @State private var orderVM = NewOrderVM()
     @Environment(HostingPlanListVM.self) private var vm
-    @Environment(\.dismiss) private var dismiss
     
     private let context: BillingPlanOrderContext
     private let priceText: String
@@ -106,11 +105,11 @@ struct HostingOrderSheet: View {
                     .environment(confetti)
             }
             .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Close") {
-                        dismiss()
-                    }
+                ToolbarItem(placement: .bottomBar) {
+                    DismissButton()
                 }
+                
+                ToolbarSpacer(.flexible, placement: .bottomBar)
             }
             .onChange(of: orderVM.selectedNestId) { _, newValue in
                 guard let nest = orderVM.nests.first(where: { $0.id == newValue }) else { return }

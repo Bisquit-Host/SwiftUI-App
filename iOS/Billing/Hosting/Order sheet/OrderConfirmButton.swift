@@ -30,6 +30,7 @@ struct OrderConfirmButton: View {
                     .frame(maxWidth: .infinity)
             }
         }
+        .foregroundStyle(.foreground)
         .disabled(orderVM.isOrdering || orderVM.isLoadingOptions)
         .alert("Confirm purchase", isPresented: $alertPurchase) {
             Button("Confirm", role: .confirm, action: confirmPurchase)
