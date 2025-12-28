@@ -98,6 +98,9 @@ struct HostingOrderSheet: View {
             .navigationTitle("Purchase")
             .navigationBarTitleDisplayMode(.inline)
             .environment(orderVM)
+            .task {
+                await loadOptions()
+            }
             .overlay {
                 ConfettiOverlay()
                     .environment(confetti)
@@ -108,9 +111,6 @@ struct HostingOrderSheet: View {
                         dismiss()
                     }
                 }
-            }
-            .task {
-                await loadOptions()
             }
             .onChange(of: orderVM.selectedNestId) { _, newValue in
                 guard let nest = orderVM.nests.first(where: { $0.id == newValue }) else { return }
@@ -153,17 +153,5 @@ struct HostingOrderSheet: View {
         if (context.category == .game || context.category == .bot), orderVM.nests.isEmpty {
             SystemAlert.error("No templates available")
         }
-    }
-    
-    private func formatAmount(_ amount: Double, code: String?) -> String {
-        let formatter = NumberFormatter()
-        formatter.minimumFractionDigits = 0
-        formatter.maximumFractionDigits = 2
-        formatter.locale = Locale.current
-        
-        let value = formatter.string(from: NSNumber(value: amount)) ?? amount.formatted(.fractionDigits(2))
-        guard let code else { return value }
-        
-        return code + value
     }
 }
