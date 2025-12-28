@@ -24,6 +24,8 @@ struct VDSUpgradeSection: View {
     
     var body: some View {
         VDSSectionCard("Upgrade") {
+            Text("VDS services can't be downgraded for technical reasons")
+            
             if vm.changeablePackages.isEmpty {
                 Text("No higher packages available right now")
                     .footnote()
