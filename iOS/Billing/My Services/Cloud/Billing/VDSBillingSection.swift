@@ -15,7 +15,6 @@ struct VDSBillingSection: View {
     
     @State private var autorenewToggle = false
     @State private var syncedAutorenew = false
-    @State private var sheetUpgrade = false
     @State private var renewMonths = 1
     
     var body: some View {
@@ -30,26 +29,7 @@ struct VDSBillingSection: View {
             
             RenewButton(isPerformingAction: $vm.isPerformingAction, renewMonths: $renewMonths, name: vm.service?.name, confirmPayment: confirmPayment)
             
-            Button {
-                sheetUpgrade = true
-            } label: {
-                if vm.isPerformingAction {
-                    ProgressView()
-                        .frame(maxWidth: .infinity)
-                } else {
-                    Text("Upgrade")
-                        .semibold()
-                        .frame(maxWidth: .infinity)
-                }
-            }
-            .buttonStyle(.glassProminent)
-            .disabled(vm.isPerformingAction)
-            .padding(.horizontal, 8)
-        }
-        .sheet($sheetUpgrade) {
-            NavigationStack {
-                VDSUpgradeSection(service.id)
-            }
+            VDSBillingSectionUpgradeButton(service.id)
         }
     }
     
