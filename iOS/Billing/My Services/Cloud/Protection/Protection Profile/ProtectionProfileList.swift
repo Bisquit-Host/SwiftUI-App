@@ -10,10 +10,8 @@ struct ProtectionProfileList: View {
     }
     
     var body: some View {
-        ForEach(vm.profiles) { profile in
-            ProtectionProfileCard(profile) {
-                editingProfile = profile
-            }
+        ForEach(vm.profiles) {
+            ProtectionProfileCard($0, editingProfile: $editingProfile)
         }
     }
 }

@@ -520,6 +520,12 @@
                   "state" : "new",
                   "value" : "%lld months"
                 }
+              },
+              "zero" : {
+                "stringUnit" : {
+                  "state" : "needs_review",
+                  "value" : "%lld months"
+                }
               }
             }
           }

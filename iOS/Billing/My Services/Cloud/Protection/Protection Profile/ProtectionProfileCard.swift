@@ -4,11 +4,11 @@ struct ProtectionProfileCard: View {
     @Environment(VDSProtectionVM.self) private var vm
     
     private let profile: VDSProtectionProfile
-    private let onEdit: () -> Void
+    @Binding private var editingProfile: VDSProtectionProfile?
     
-    init(_ profile: VDSProtectionProfile, onEdit: @escaping () -> Void) {
+    init(_ profile: VDSProtectionProfile, editingProfile: Binding<VDSProtectionProfile?>) {
         self.profile = profile
-        self.onEdit = onEdit
+        _editingProfile = editingProfile
     }
     
     @State private var showDeleteDialog = false
@@ -42,7 +42,9 @@ struct ProtectionProfileCard: View {
             Spacer()
             
             Menu {
-                Button("Edit", systemImage: "pencil", action: onEdit)
+                Button("Edit", systemImage: "pencil") {
+                    editingProfile = profile
+                }
                 
                 Button("Delete", systemImage: "trash", role: .destructive) {
                     showDeleteDialog = true
@@ -58,15 +60,16 @@ struct ProtectionProfileCard: View {
         .padding(10)
         .background(.ultraThinMaterial, in: .rect(cornerRadius: 10))
         .confirmationDialog("Delete profile?", isPresented: $showDeleteDialog, titleVisibility: .visible) {
-            Button("Delete", role: .destructive) {
-                Task {
-                    await vm.deleteProfile(profile.id)
-                }
-            }
-            
+            Button("Delete", role: .destructive, action: deleteProfile)
             Button("Cancel", role: .cancel) {}
         } message: {
             Text(presetName(for: profile))
+        }
+    }
+    
+    private func deleteProfile() {
+        Task {
+            await vm.deleteProfile(profile.id)
         }
     }
     
@@ -107,20 +110,18 @@ struct ProtectionProfileCard: View {
     }
 }
 
-#Preview {
-    ProtectionProfileCard(
-        VDSProtectionProfile(
-            id: 1,
-            presetId: 10,
-            presetName: "FiveM TCP",
-            protocol: .tcp,
-            minDstPort: 30120,
-            maxDstPort: 30150,
-            autoCreated: false,
-            notes: "Game ports"
-        )
-    ) {
-        
-    }
-    .darkSchemePreferred()
-}
+//#Preview {
+//    ProtectionProfileCard(
+//        VDSProtectionProfile(
+//            id: 1,
+//            presetId: 10,
+//            presetName: "FiveM TCP",
+//            protocol: .tcp,
+//            minDstPort: 30120,
+//            maxDstPort: 30150,
+//            autoCreated: false,
+//            notes: "Game ports"
+//        )
+//    )
+//    .darkSchemePreferred()
+//}
