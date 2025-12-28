@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct GameServiceHeader: View {
+struct ServiceHeader: View {
     private let service: BillingServiceDetails
     
     init(_ service: BillingServiceDetails) {

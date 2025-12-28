@@ -17,7 +17,7 @@ struct GameServiceDetails: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 if let service = vm.service {
-                    GameServiceHeader(service)
+                    ServiceHeader(service)
                     GameServiceInfoSection(service)
                     GameServiceBillingSection(service)
                     ServiceUpgradeSection<GameServiceDetailsVM>()

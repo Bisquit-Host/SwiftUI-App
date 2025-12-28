@@ -17,7 +17,7 @@ struct BotServiceDetails: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 if let service = vm.service {
-                    BotServiceHeader(service)
+                    ServiceHeader(service)
                     BotServiceInfoSection(service)
                     BotServiceBillingSection(service)
                     ServiceUpgradeSection<BotServiceDetailsVM>()
