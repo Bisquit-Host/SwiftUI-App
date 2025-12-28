@@ -30,7 +30,9 @@ struct MyServicesList: View {
             await reload()
         }
         .onReceive(NotificationCenter.default.publisher(for: .billingMyServicesShouldRefresh)) { _ in
-            Task { await reload() }
+            Task {
+                await reload()
+            }
         }
     }
     
