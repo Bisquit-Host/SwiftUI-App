@@ -13,6 +13,7 @@ struct ProtectionProfileEditor: View {
     @State private var presetId = 0
     @State private var protocolSelection: VDSProtectionProtocol = .tcp
     @State private var notesText = ""
+    @State private var singlePort = false
     @State private var minPortText = ""
     @State private var maxPortText = ""
     
@@ -20,6 +21,10 @@ struct ProtectionProfileEditor: View {
         vm.presets.filter {
             $0.`protocol` == protocolSelection
         }
+    }
+    
+    private var showPortFields: Bool {
+        protocolSelection == .tcp || protocolSelection == .udp
     }
     
     var body: some View {
@@ -35,17 +40,29 @@ struct ProtectionProfileEditor: View {
                 }
                 .pickerStyle(.segmented)
                 
-                if protocolSelection == .tcp || protocolSelection == .udp {
-                    HStack(spacing: 10) {
-                        TextField("Min port (1–65535)", text: $minPortText)
+                Toggle("Single port", isOn: $singlePort)
+                
+                if showPortFields {
+                    if singlePort {
+                        TextField("Port (1–65535)", text: $minPortText)
                             .keyboardType(.numberPad)
                             .textInputAutocapitalization(.never)
                             .limitInputLength($minPortText, length: 5)
-                        
-                        TextField("Max port (1–65535)", text: $maxPortText)
-                            .keyboardType(.numberPad)
-                            .textInputAutocapitalization(.never)
-                            .limitInputLength($maxPortText, length: 5)
+                            .onChange(of: minPortText) { _, newValue in
+                                maxPortText = newValue
+                            }
+                    } else {
+                        HStack(spacing: 10) {
+                            TextField("Min port (1–65535)", text: $minPortText)
+                                .keyboardType(.numberPad)
+                                .textInputAutocapitalization(.never)
+                                .limitInputLength($minPortText, length: 5)
+                            
+                            TextField("Max port (1–65535)", text: $maxPortText)
+                                .keyboardType(.numberPad)
+                                .textInputAutocapitalization(.never)
+                                .limitInputLength($maxPortText, length: 5)
+                        }
                     }
                 } else {
                     Text("Ports not applicable for \(protocolSelection.rawValue)")
