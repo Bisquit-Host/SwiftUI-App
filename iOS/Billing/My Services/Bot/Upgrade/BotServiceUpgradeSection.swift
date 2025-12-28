@@ -19,7 +19,7 @@ struct BotServiceUpgradeSection: View {
             } else {
                 VStack(alignment: .leading, spacing: 12) {
                     ForEach(vm.changeablePackages) {
-                        BotUpgradePackage(pkg: $0, selectedUpgradeId: $selectedUpgradeId)
+                        UpgradePackage(pkg: $0, selectedUpgradeId: $selectedUpgradeId)
                     }
                     
                     Button {

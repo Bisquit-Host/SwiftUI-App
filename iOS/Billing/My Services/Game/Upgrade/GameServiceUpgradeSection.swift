@@ -19,7 +19,7 @@ struct GameServiceUpgradeSection: View {
             } else {
                 VStack(alignment: .leading, spacing: 12) {
                     ForEach(vm.changeablePackages) {
-                        GameServiceUpgradePackage(pkg: $0, selectedUpgradeId: $selectedUpgradeId)
+                        UpgradePackage(pkg: $0, selectedUpgradeId: $selectedUpgradeId)
                     }
                     
                     Button {

@@ -32,7 +32,7 @@ struct VDSUpgradeSection: View {
                     .secondary()
             } else {
                 ForEach(vm.changeablePackages) {
-                    VDSUpgradePackage(pkg: $0, selectedUpgradeId: $selectedUpgradeId)
+                    UpgradePackage(pkg: $0, selectedUpgradeId: $selectedUpgradeId)
                 }
                 
                 Button {

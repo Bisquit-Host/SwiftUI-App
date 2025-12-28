@@ -1,6 +1,6 @@
 import ScrechKit
 
-struct VDSUpgradePackage: View {
+struct UpgradePackage: View {
     @Environment(BillingDashboardVM.self) private var dashboardVM
     
     let pkg: ChangeablePackage
@@ -48,4 +48,14 @@ struct VDSUpgradePackage: View {
         }
         .buttonStyle(.plain)
     }
+}
+
+#Preview {
+    @Previewable @State var selectedUpgradeId: Int? = nil
+    
+    BillingSectionCard("Upgrade") {
+        UpgradePackage(pkg: .preview, selectedUpgradeId: $selectedUpgradeId)
+    }
+    .environment(BillingDashboardVM())
+    .darkSchemePreferred()
 }
