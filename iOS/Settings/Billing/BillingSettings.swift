@@ -16,7 +16,7 @@ struct BillingSettings: View {
                 AccountSettingsSection(user)
                 
                 if let user {
-                    BillingSettingsSecurity(user)
+                    BillingSecuritySettings(user)
                     AuthAppsSection($user)
                 }
             }

@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct BillingSettingsSecurity: View {
+struct BillingSecuritySettings: View {
     @State private var `2FAVM` = Billing2FAVM()
     @Environment(BillingDashboardVM.self) private var dashboardVM
     
@@ -76,6 +76,6 @@ struct BillingSettingsSecurity: View {
 }
 
 #Preview {
-    BillingSettingsSecurity(.preview)
+    BillingSecuritySettings(.preview)
         .darkSchemePreferred()
 }
