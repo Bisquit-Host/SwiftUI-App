@@ -43,7 +43,9 @@ struct RequireUpdateView: View {
                         .frame(maxWidth: .infinity)
                         .frame(height: 55)
                 }
+#if !os(visionOS)
                 .buttonStyle(.glassProminent)
+#endif
                 .tint(.orange.opacity(0.5))
             }
             .padding(.horizontal, 40)

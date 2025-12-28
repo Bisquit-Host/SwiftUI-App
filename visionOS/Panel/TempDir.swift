@@ -6,7 +6,7 @@ struct TempDir: View {
     var body: some View {
         List {
             Section {
-                Text(.files(fileNames.count))
+                Text("Files \(fileNames.count)")
             }
             
             ForEach(fileNames, id: \.self) {
@@ -31,6 +31,7 @@ struct TempDir: View {
         }
     }
 }
+
 #Preview {
     TempDir()
 }

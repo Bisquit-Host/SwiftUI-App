@@ -42,7 +42,7 @@ struct Guide: View {
                 .headline()
                 .padding(.top)
             
-            Text(steps[step + 1])
+            Text("Step \(step + 1)")
                 .subheadline()
             
             Spacer()
