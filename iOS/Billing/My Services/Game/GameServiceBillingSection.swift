@@ -4,6 +4,8 @@ struct GameServiceBillingSection: View {
     @Environment(GameServiceDetailsVM.self) private var vm
     @Environment(BillingDashboardVM.self) private var dashboardVM
     @Environment(ConfettiVM.self) private var confetti
+    @Environment(BiometryVM.self) private var biometry
+    @EnvironmentObject private var store: ValueStore
     
     private let service: BillingGameServiceDetails
     private let autorenew: Bool
@@ -29,13 +31,18 @@ struct GameServiceBillingSection: View {
                 await vm.changeAutorenew(newValue, serviceId: service.id)
             }
             
-            RenewButton(isPerformingAction: $vm.isPerformingAction, renewMonths: $renewMonths, name: vm.service?.name, confirmPayment: confirmPayment)
+            RenewButton(isPerformingAction: $vm.isPerformingAction, renewMonths: $renewMonths, name: vm.service?.name, confirmPayment: confirmRenewal)
         }
     }
     
-    private func confirmPayment() {
+    private func confirmRenewal() {
         Task {
             guard let service = vm.service else { return }
+            
+            if store.useBiometry, await !biometry.authenticate() {
+                SystemAlert.error("Biometry authentication failed")
+                return
+            }
             
             if let response = await vm.renew(months: renewMonths, serviceId: service.id) {
                 print(response)

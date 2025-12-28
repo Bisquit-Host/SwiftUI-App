@@ -4,6 +4,8 @@ struct VDSBillingSection: View {
     @Environment(VDSServiceDetailsVM.self) private var vm
     @Environment(BillingDashboardVM.self) private var dashboardVM
     @Environment(ConfettiVM.self) private var confetti
+    @Environment(BiometryVM.self) private var biometry
+    @EnvironmentObject private var store: ValueStore
     
     private let service: CloudServiceDetails
     
@@ -27,15 +29,20 @@ struct VDSBillingSection: View {
                 await vm.changeAutorenew(newValue, serviceId: service.id)
             }
             
-            RenewButton(isPerformingAction: $vm.isPerformingAction, renewMonths: $renewMonths, name: vm.service?.name, confirmPayment: confirmPayment)
+            RenewButton(isPerformingAction: $vm.isPerformingAction, renewMonths: $renewMonths, name: vm.service?.name, confirmPayment: confirmRenewal)
             
             VDSBillingSectionUpgradeButton(service.id)
         }
     }
     
-    private func confirmPayment() {
+    private func confirmRenewal() {
         Task {
             guard let service = vm.service else { return }
+            
+            if store.useBiometry, await !biometry.authenticate() {
+                SystemAlert.error("Biometry authentication failed")
+                return
+            }
             
             if let response = await vm.renew(months: renewMonths, serviceId: service.id) {
                 print(response)
