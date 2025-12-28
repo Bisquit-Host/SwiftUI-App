@@ -3,7 +3,7 @@ import ScrechKit
 struct BotUpgradePackage: View {
     @Environment(BillingDashboardVM.self) private var dashboardVM
     
-    let pkg: ChangeableBotPackage
+    let pkg: ChangeablePackage
     @Binding var selectedUpgradeId: Int?
     
     private var isSelected: Bool {

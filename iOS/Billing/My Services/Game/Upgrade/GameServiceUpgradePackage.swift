@@ -3,7 +3,7 @@ import ScrechKit
 struct GameServiceUpgradePackage: View {
     @Environment(BillingDashboardVM.self) private var dashboardVM
     
-    let pkg: ChangeableGamePackage
+    let pkg: ChangeablePackage
     @Binding var selectedUpgradeId: Int?
     
     private var isSelected: Bool {

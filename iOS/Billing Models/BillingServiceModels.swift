@@ -91,7 +91,7 @@ struct BillingBotServiceDetails: Decodable, Equatable {
     }
 }
 
-struct ChangeableGamePackage: Decodable, Identifiable, Equatable {
+struct ChangeablePackage: Decodable, Identifiable, Equatable {
     let id: Int
     let name: String
     let locationId: Int
@@ -102,7 +102,7 @@ struct ChangeableGamePackage: Decodable, Identifiable, Equatable {
     let memoryType: String?
     let disk: Double
     let diskType: String?
-    let network: Double
+    let network: Double?
     let networkType: String?
     let nests: [Int]
     let allocations: Int
@@ -113,7 +113,7 @@ struct ChangeableGamePackage: Decodable, Identifiable, Equatable {
     let enabled: Bool
     let toMinus: Double
     
-    static let preview = ChangeableGamePackage(
+    static let preview = ChangeablePackage(
         id: 101,
         name: "Starter Game Server",
         locationId: 1,
@@ -135,27 +135,6 @@ struct ChangeableGamePackage: Decodable, Identifiable, Equatable {
         enabled: true,
         toMinus: 0.0
     )
-}
-
-struct ChangeableBotPackage: Decodable, Identifiable, Equatable {
-    let id: Int
-    let name: String
-    let locationId: Int
-    let price: Double
-    let cpu: Double
-    let cpuName: String?
-    let memory: Double
-    let memoryType: String?
-    let disk: Double
-    let diskType: String?
-    let nests: [Int]
-    let allocations: Int
-    let databases: Int
-    let backups: Int
-    let bonusBalanceAllowed: Bool
-    let whmcsLink: String?
-    let enabled: Bool
-    let toMinus: Double
 }
 
 struct ChangeableCloudPackage: Decodable, Identifiable, Equatable {

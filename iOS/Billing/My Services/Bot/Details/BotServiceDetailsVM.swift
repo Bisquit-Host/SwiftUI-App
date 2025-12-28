@@ -4,7 +4,7 @@ import PteroNet
 @Observable
 final class BotServiceDetailsVM {
     var service: BillingBotServiceDetails?
-    var changeablePackages: [ChangeableBotPackage] = []
+    var changeablePackages: [ChangeablePackage] = []
     var isLoading = false
     var isPerformingAction = false
     
@@ -46,7 +46,7 @@ final class BotServiceDetailsVM {
         decoder.dateDecodingStrategy = .iso8601
         
         do {
-            changeablePackages = try decoder.decode([ChangeableBotPackage].self, from: data)
+            changeablePackages = try decoder.decode([ChangeablePackage].self, from: data)
         } catch {
             SystemAlert.error("Bot changeable packages decode error: \(error)")
             

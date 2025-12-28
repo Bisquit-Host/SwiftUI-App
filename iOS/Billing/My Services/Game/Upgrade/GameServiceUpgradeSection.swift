@@ -76,7 +76,7 @@ struct GameServiceUpgradeSection: View {
         }
     }
     
-    private var selectedUpgradePackage: ChangeableGamePackage? {
+    private var selectedUpgradePackage: ChangeablePackage? {
         vm.changeablePackages.first {
             $0.id == selectedUpgradeId
         }

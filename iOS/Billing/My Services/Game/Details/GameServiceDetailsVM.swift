@@ -4,7 +4,7 @@ import PteroNet
 @Observable
 final class GameServiceDetailsVM {
     var service: BillingGameServiceDetails?
-    var changeablePackages: [ChangeableGamePackage] = []
+    var changeablePackages: [ChangeablePackage] = []
     var isLoading = false
     var isPerformingAction = false
     
@@ -46,7 +46,7 @@ final class GameServiceDetailsVM {
         decoder.dateDecodingStrategy = .iso8601
         
         do {
-            changeablePackages = try decoder.decode([ChangeableGamePackage].self, from: data)
+            changeablePackages = try decoder.decode([ChangeablePackage].self, from: data)
         } catch {
             SystemAlert.error("Game changeable packages decode error: \(error)")
             

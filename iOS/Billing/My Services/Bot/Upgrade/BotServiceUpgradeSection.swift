@@ -76,7 +76,7 @@ struct BotServiceUpgradeSection: View {
         }
     }
     
-    private var selectedUpgradePackage: ChangeableBotPackage? {
+    private var selectedUpgradePackage: ChangeablePackage? {
         vm.changeablePackages.first {
             $0.id == selectedUpgradeId
         }
