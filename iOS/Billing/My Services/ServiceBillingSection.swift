@@ -1,7 +1,8 @@
 import SwiftUI
 
-struct ServiceBillingSection<VM: ServiceBillingVMProtocol>: View {
+struct ServiceBillingSection<VM: ServiceBillingVMProtocol, ServiceDetailsVM: ServiceDetailsVMProtocol>: View {
     @Environment(VM.self) private var vm
+    @Environment(ServiceDetailsVM.self) private var serviceDetailsVM
     @Environment(ConfettiVM.self) private var confetti
     @Environment(BiometryVM.self) private var biometry
     @EnvironmentObject private var store: ValueStore
@@ -31,6 +32,8 @@ struct ServiceBillingSection<VM: ServiceBillingVMProtocol>: View {
             }
             
             RenewButton(isPerformingAction: $vm.isPerformingAction, renewMonths: $renewMonths, name: vm.service?.name, confirmPayment: confirmRenewal)
+            
+            ServiceUpgradeButton<ServiceDetailsVM>()
         }
     }
     

@@ -19,8 +19,7 @@ struct ServiceDetailsView<VM: ServiceDetailsVM & ServiceDetailsVMProtocol>: View
                 if let service = vm.service {
                     ServiceHeader(service)
                     ServiceInfoSection(service)
-                    ServiceBillingSection<VM>(service)
-                    ServiceUpgradeSection<VM>()
+                    ServiceBillingSection<VM, VM>(service)
                     
                 } else if vm.isLoading {
                     ProgressView()
