@@ -36,6 +36,11 @@ struct BotServiceDetails: View {
         .refreshableTask {
             await vm.load(serviceId)
         }
+        .onChange(of: vm.service?.id) { _, _ in
+            if let service = vm.service {
+                pendingName = service.name
+            }
+        }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 if vm.isPerformingAction {
@@ -49,11 +54,6 @@ struct BotServiceDetails: View {
                         Image(systemName: "ellipsis")
                     }
                 }
-            }
-        }
-        .onChange(of: vm.service?.id) { _, _ in
-            if let service = vm.service {
-                pendingName = service.name
             }
         }
         .alert("Rename service", isPresented: $alertRename, presenting: vm.service) { service in
