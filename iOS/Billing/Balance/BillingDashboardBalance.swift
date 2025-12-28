@@ -26,7 +26,7 @@ struct BillingDashboardBalance: View {
                     .foregroundStyle(iconColor.gradient)
                 
                 if isPositive {
-                    Text(formattedBalance + currency.symbol)
+                    Text(formattedBalance + " " + currency.symbol)
                 } else {
                     Text("Top up")
                 }
