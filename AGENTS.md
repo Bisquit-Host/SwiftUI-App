@@ -39,4 +39,4 @@ Tip: choose the scheme that matches the target you’re changing (for example `W
 
 ## Security & Configuration Tips
 
-- Don’t commit secrets or environment-specific files. `iOS/Config.plist` is intentionally gitignored; prefer checked-in `*.example` files when new local config is required
+- Don’t commit secrets or environment-specific files
