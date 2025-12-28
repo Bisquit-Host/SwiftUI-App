@@ -13,7 +13,7 @@ final class VDSBillingVM {
         defer { isLoading = false }
         
         guard let url = URL(string: "\(Endpoint.basePath)cloud") else {
-            SystemAlert.error("Invalid URL")
+            print("Invalid URL")
             return
         }
         
