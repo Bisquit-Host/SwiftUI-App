@@ -1,13 +1,13 @@
 import SwiftUI
 
-struct GameServiceDetails: View {
-    @State private var vm = GameServiceDetailsVM()
-    @Environment(BillingDashboardVM.self) private var dashboardVM
+struct ServiceDetailsView<VM: ServiceDetailsVM & ServiceDetailsVMProtocol>: View {
+    @State private var vm: VM
     
     private let serviceId: Int
     
     init(_ serviceId: Int) {
         self.serviceId = serviceId
+        _vm = State(initialValue: VM())
     }
     
     @State private var pendingName = ""
@@ -19,8 +19,8 @@ struct GameServiceDetails: View {
                 if let service = vm.service {
                     ServiceHeader(service)
                     ServiceInfoSection(service)
-                    ServiceBillingSection<GameServiceDetailsVM>(service)
-                    ServiceUpgradeSection<GameServiceDetailsVM>()
+                    ServiceBillingSection<VM>(service)
+                    ServiceUpgradeSection<VM>()
                     
                 } else if vm.isLoading {
                     ProgressView()
@@ -56,27 +56,23 @@ struct GameServiceDetails: View {
                 }
             }
         }
-        .alert("Rename service", isPresented: $alertRename, presenting: vm.service) { service in
+        .alert("Rename service", isPresented: $alertRename) {
             TextField("New name", text: $pendingName)
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
             
-            Button("Save", role: .confirm) {
-                Task {
-                    await vm.rename(pendingName.isEmpty ? service.name : pendingName, serviceId: service.id)
-                }
-            }
-            
+            Button("Save", role: .confirm, action: rename)
             Button("Cancel", role: .cancel) {}
+        }
+    }
+    
+    private func rename() {
+        Task {
+            guard let service = vm.service else { return }
+            await vm.rename(pendingName.isEmpty ? service.name : pendingName, serviceId: service.id)
         }
     }
 }
 
-#Preview {
-    NavigationStack {
-        GameServiceDetails(1)
-            .environment(BillingDashboardVM())
-    }
-    .environmentObject(ValueStore())
-    .darkSchemePreferred()
-}
+extension GameServiceDetailsVM: ServiceDetailsVMProtocol {}
+extension BotServiceDetailsVM: ServiceDetailsVMProtocol {}

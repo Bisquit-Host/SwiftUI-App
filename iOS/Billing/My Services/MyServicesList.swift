@@ -14,12 +14,12 @@ struct MyServicesList: View {
             }
             
             MyServicesSection(title: "Game servers", services: gameVM.services.map { .game($0) }, isLoading: gameVM.isLoading) {
-                GameServiceDetails($0)
+                ServiceDetailsView<GameServiceDetailsVM>($0)
                     .environment(vm)
             }
             
             MyServicesSection(title: "Bot hosting", services: botVM.services.map { .bot($0) }, isLoading: botVM.isLoading) {
-                BotServiceDetails($0)
+                ServiceDetailsView<BotServiceDetailsVM>($0)
                     .environment(vm)
             }
         }

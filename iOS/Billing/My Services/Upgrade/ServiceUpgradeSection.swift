@@ -83,10 +83,10 @@ struct ServiceUpgradeSection<VM: ServiceDetailsVMProtocol>: View {
     }
 }
 
-extension GameServiceDetailsVM: ServiceDetailsVMProtocol {
+extension GameServiceDetailsVM: ServiceDetailsVM {
     var serviceId: Int? { service?.id }
 }
 
-extension BotServiceDetailsVM: ServiceDetailsVMProtocol {
+extension BotServiceDetailsVM: ServiceDetailsVM {
     var serviceId: Int? { service?.id }
 }
