@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct Card<Content: View, Trailing: View>: View {
-    private let title: String
+    private let title: LocalizedStringKey
     private let trailing: Trailing
     private let content: Content
     

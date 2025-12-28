@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 import PteroNet
 
 struct Guide: View {
@@ -42,7 +42,7 @@ struct Guide: View {
                 .headline()
                 .padding(.top)
             
-            Text(.step(step + 1))
+            Text(steps[step + 1])
                 .subheadline()
             
             Spacer()
