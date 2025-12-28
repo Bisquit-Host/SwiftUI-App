@@ -31,7 +31,6 @@
 		F342FAA02B2C5DF300854270 /* Pow in Frameworks */ = {isa = PBXBuildFile; productRef = F342FA9F2B2C5DF300854270 /* Pow */; };
 		F342FAA62B2C615A00854270 /* Pow in Frameworks */ = {isa = PBXBuildFile; productRef = F342FAA52B2C615A00854270 /* Pow */; };
 		F342FAB72B2E49B600854270 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = F342FAB62B2E49B600854270 /* Algorithms */; };
-		F343B1232F0120BD00AD0818 /* HostingOrderSheetOSPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F343B1222F0120BD00AD0818 /* HostingOrderSheetOSPicker.swift */; };
 		F3464D022A862D2D00188B0C /* Intent.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = F3464CF82A862D2C00188B0C /* Intent.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F34745CC2A31F3A000EE2FB8 /* MailCover in Frameworks */ = {isa = PBXBuildFile; productRef = F34745CB2A31F3A000EE2FB8 /* MailCover */; };
 		F352AF9B2A4EE707004AD489 /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = F352AF9A2A4EE707004AD489 /* AlertKit */; };
@@ -227,7 +226,6 @@
 		F31BA5332958FF7D0006D126 /* watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watchOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3310F2C2DD07CA100FA0AEC /* QuickLook Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "QuickLook Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3310F2D2DD07CA100FA0AEC /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
-		F343B1222F0120BD00AD0818 /* HostingOrderSheetOSPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingOrderSheetOSPicker.swift; sourceTree = "<group>"; };
 		F3464CF82A862D2C00188B0C /* Intent.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = Intent.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F350636629DC24AB0010B717 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		F350636829DC24AB0010B717 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -1273,7 +1271,6 @@
 		F31BA51A2958FF7C0006D126 = {
 			isa = PBXGroup;
 			children = (
-				F343B1222F0120BD00AD0818 /* HostingOrderSheetOSPicker.swift */,
 				F3E15C922EF042D9008A1068 /* AGENTS.md */,
 				F3AE99DB2E2F87FC00D70249 /* README.md */,
 				F383B6592ECF35E500350A0F /* iOS */,
@@ -1831,7 +1828,6 @@
 		F31BA51F2958FF7C0006D126 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			files = (
-				F343B1232F0120BD00AD0818 /* HostingOrderSheetOSPicker.swift in Sources */,
 			);
 		};
 		F31BA52F2958FF7D0006D126 /* Sources */ = {
