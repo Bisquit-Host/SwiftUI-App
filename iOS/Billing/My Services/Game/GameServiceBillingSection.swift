@@ -34,9 +34,9 @@ struct GameServiceBillingSection: View {
     }
     
     private func confirmPayment() {
-        guard let service = vm.service else { return }
-        
         Task {
+            guard let service = vm.service else { return }
+            
             if let response = await vm.renew(months: renewMonths, serviceId: service.id) {
                 print(response)
                 confetti.launchConfetti()
