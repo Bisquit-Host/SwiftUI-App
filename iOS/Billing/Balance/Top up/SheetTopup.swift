@@ -39,8 +39,8 @@ struct SheetTopup: View {
                 
                 BillingOperationList()
             }
+            .scenePadding()
         }
-        .scenePadding()
         .navigationTitle("Finance stuff")
         .navigationBarTitleDisplayMode(.inline)
         .scrollIndicators(.never)
