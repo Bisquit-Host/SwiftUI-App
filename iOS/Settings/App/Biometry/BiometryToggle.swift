@@ -9,7 +9,7 @@ struct BiometryToggle: View {
     }
     
     var body: some View {
-        GlassyToggle(vm.bioType ?? "Biometry unsavailable", subtitle: "Confirm purchases & destructive actions", icon: vm.icon, tint: store.useBiometry ? .blue : .red, isOn: $store.useBiometry)
+        GlassyToggle(vm.bioType ?? "Biometry unavailable", subtitle: "Confirm purchases & destructive actions", icon: vm.icon, tint: store.useBiometry ? .blue : .red, isOn: $store.useBiometry)
             .disabled(!isAvailable)
             .opacity(isAvailable ? 1 : 0.3)
             .foregroundColor(isAvailable ? .gray : .none)
