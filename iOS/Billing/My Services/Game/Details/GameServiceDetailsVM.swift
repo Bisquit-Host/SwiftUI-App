@@ -83,7 +83,6 @@ final class GameServiceDetailsVM {
             guard await self.request(path: "/game/\(serviceId)/autorenew", method: "PATCH", body: payload) != nil else { return }
             
             self.service?.autorenew = enabled
-            
             SystemAlert.done(enabled ? "Auto-renew enabled" : "Auto-renew disabled")
         }
     }
