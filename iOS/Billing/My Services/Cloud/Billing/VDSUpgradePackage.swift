@@ -3,7 +3,7 @@ import ScrechKit
 struct VDSUpgradePackage: View {
     @Environment(BillingDashboardVM.self) private var dashboardVM
     
-    let pkg: ChangeableCloudPackage
+    let pkg: ChangeablePackage
     @Binding var selectedUpgradeId: Int?
     
     private var isSelected: Bool {

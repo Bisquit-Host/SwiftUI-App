@@ -104,10 +104,12 @@ struct ChangeablePackage: Decodable, Identifiable, Equatable {
     let diskType: String?
     let network: Double?
     let networkType: String?
-    let nests: [Int]
-    let allocations: Int
-    let databases: Int
-    let backups: Int
+    let nests: [Int]?
+    let allocations: Int?
+    let databases: Int?
+    let backups: Int?
+    let windowsAllowed: Bool?
+    let antiSpoofing: Bool?
     let bonusBalanceAllowed: Bool
     let whmcsLink: String?
     let enabled: Bool
@@ -130,31 +132,13 @@ struct ChangeablePackage: Decodable, Identifiable, Equatable {
         allocations: 2,
         databases: 1,
         backups: 3,
+        windowsAllowed: nil,
+        antiSpoofing: nil,
         bonusBalanceAllowed: true,
         whmcsLink: nil,
         enabled: true,
         toMinus: 0.0
     )
-}
-
-struct ChangeableCloudPackage: Decodable, Identifiable, Equatable {
-    let id: Int
-    let name: String
-    let locationId: Int
-    let price: Double
-    let cpu: Double
-    let cpuName: String?
-    let memory: Double
-    let disk: Double
-    let diskType: String?
-    let network: Double
-    let networkType: String?
-    let bonusBalanceAllowed: Bool
-    let windowsAllowed: Bool
-    let antiSpoofing: Bool
-    let whmcsLink: String?
-    let enabled: Bool
-    let toMinus: Double
 }
 
 struct ServiceRenewalResponse: Decodable, Equatable {

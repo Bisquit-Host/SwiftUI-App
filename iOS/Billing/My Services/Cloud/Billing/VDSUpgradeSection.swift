@@ -16,7 +16,7 @@ struct VDSUpgradeSection: View {
     @State private var alertUpgrade = false
     @State private var selectedUpgradeId: Int?
     
-    private var selectedUpgradePackage: ChangeableCloudPackage? {
+    private var selectedUpgradePackage: ChangeablePackage? {
         vm.changeablePackages.first {
             $0.id == selectedUpgradeId
         }

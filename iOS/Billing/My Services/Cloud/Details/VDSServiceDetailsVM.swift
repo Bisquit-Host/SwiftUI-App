@@ -7,7 +7,7 @@ final class VDSServiceDetailsVM {
     var history: [CloudServiceHistoryItem] = []
     var charts: CloudServiceCharts?
     var osOptions: [CloudServiceOSCategory] = []
-    var changeablePackages: [ChangeableCloudPackage] = []
+    var changeablePackages: [ChangeablePackage] = []
     
     var isLoading = false
     var isPerformingAction = false
@@ -50,7 +50,7 @@ final class VDSServiceDetailsVM {
         guard let data = await request(path: "/cloud/\(serviceId)/change-package/packages") else { return }
         
         do {
-            changeablePackages = try JSONDecoder().decode([ChangeableCloudPackage].self, from: data)
+            changeablePackages = try JSONDecoder().decode([ChangeablePackage].self, from: data)
         } catch {
             SystemAlert.error("Cloud changeable packages decode error: \(error)")
             
