@@ -17,15 +17,6 @@ struct HostingOrderSheet: View {
         _name = State(initialValue: context.plan.name)
     }
     
-    private var osItems: [(id: Int, title: String)] {
-        orderVM.osCategories.flatMap { category in
-            category.os.map { item in
-                let version = item.version.map { " \($0)" } ?? ""
-                return (id: item.id, title: category.name + version)
-            }
-        }
-    }
-    
     var body: some View {
         NavigationStack {
             Form {
@@ -49,16 +40,7 @@ struct HostingOrderSheet: View {
                 
                 if context.category == .cloud {
                     Section("Operating system") {
-                        if orderVM.isLoadingOptions && osItems.isEmpty {
-                            ProgressView()
-                        }
-                        
-                        Picker("OS", selection: $orderVM.selectedOSId) {
-                            ForEach(osItems, id: \.id) { // requires id
-                                Text($0.title)
-                                    .tag($0.id)
-                            }
-                        }
+                        HostingOrderSheetOSPicker()
                     }
                 } else {
                     Section("Template") {
@@ -66,21 +48,13 @@ struct HostingOrderSheet: View {
                             ProgressView()
                         }
                         
-                        Picker("Nest", selection: $orderVM.selectedNestId) {
-                            ForEach(orderVM.nests) {
-                                Text($0.name)
-                                    .tag($0.id)
-                            }
-                        }
-                        
+                        HostingOrderSheetNestPicker()
                         HostingOrderSheetEggPicker()
                     }
                 }
                 
                 Section {
-                    OrderConfirmButton(context) {
-                        confetti.launchConfetti()
-                    }
+                    OrderConfirmButton(context, onSuccess: confetti.launchConfetti)
                 }
             }
             .navigationTitle("Purchase")

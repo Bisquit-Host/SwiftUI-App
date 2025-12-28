@@ -65,9 +65,7 @@ struct VDSUpgradeSection: View {
         guard let pkg = selectedUpgradePackage else { return }
         
         Task {
-            await vm.changePackage(to: pkg.id, serviceId: serviceId) {
-                confetti.launchConfetti()
-            }
+            await vm.changePackage(to: pkg.id, serviceId: serviceId, onSuccess: confetti.launchConfetti)
         }
     }
 }
