@@ -29,8 +29,8 @@ struct BotServiceDetails: View {
                 }
             }
             .padding()
-            .environment(vm)
         }
+        .environment(vm)
         .navigationTitle(vm.service?.name ?? "")
         .navigationBarTitleDisplayMode(.inline)
         .refreshableTask {
