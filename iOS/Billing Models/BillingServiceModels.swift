@@ -34,25 +34,7 @@ struct ServiceLocation: Decodable, Equatable {
     let inStock: Bool?
 }
 
-struct BillingGameServiceDetails: Decodable, Equatable {
-    let id: Int
-    var name: String
-    let price: Double
-    var autorenew: Bool
-    let state: BillingServiceState
-    let allowSuspend: Bool
-    let allowDelete: Bool
-    let createdAt: Date?
-    var expiresAt: Date?
-    let packageInfo: ServicePackage
-    let location: ServiceLocation
-    
-    private enum CodingKeys: String, CodingKey {
-        case id, name, price, autorenew, state, allowSuspend, allowDelete, createdAt, expiresAt, packageInfo = "package", location
-    }
-}
-
-struct BillingBotServiceDetails: Decodable, Equatable {
+struct BillingServiceDetails: Decodable, Equatable {
     let id: Int
     var name: String
     let price: Double

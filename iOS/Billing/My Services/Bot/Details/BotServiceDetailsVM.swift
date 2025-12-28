@@ -3,7 +3,7 @@ import PteroNet
 
 @Observable
 final class BotServiceDetailsVM {
-    var service: BillingBotServiceDetails?
+    var service: BillingServiceDetails?
     var changeablePackages: [ChangeablePackage] = []
     var isLoading = false
     var isPerformingAction = false
@@ -29,7 +29,7 @@ final class BotServiceDetailsVM {
         decoder.dateDecodingStrategy = .iso8601
         
         do {
-            service = try decoder.decode(BillingBotServiceDetails.self, from: data)
+            service = try decoder.decode(BillingServiceDetails.self, from: data)
         } catch {
             SystemAlert.error("Bot detail decode error: \(error)")
             

@@ -7,10 +7,10 @@ struct GameServiceBillingSection: View {
     @Environment(BiometryVM.self) private var biometry
     @EnvironmentObject private var store: ValueStore
     
-    private let service: BillingGameServiceDetails
+    private let service: BillingServiceDetails
     private let autorenew: Bool
     
-    init(_ service: BillingGameServiceDetails) {
+    init(_ service: BillingServiceDetails) {
         self.service = service
         self.autorenew = service.autorenew
         _autorenewToggle = State(initialValue: service.autorenew)
