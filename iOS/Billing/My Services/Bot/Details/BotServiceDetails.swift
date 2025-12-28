@@ -20,7 +20,7 @@ struct BotServiceDetails: View {
                     BotServiceHeader(service)
                     BotServiceInfoSection(service)
                     BotServiceBillingSection(service)
-                    BotServiceUpgradeSection()
+                    ServiceUpgradeSection<BotServiceDetailsVM>()
                     
                 } else if vm.isLoading {
                     ProgressView()

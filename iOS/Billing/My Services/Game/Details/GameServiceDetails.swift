@@ -20,7 +20,7 @@ struct GameServiceDetails: View {
                     GameServiceHeader(service)
                     GameServiceInfoSection(service)
                     GameServiceBillingSection(service)
-                    GameServiceUpgradeSection()
+                    ServiceUpgradeSection<GameServiceDetailsVM>()
                     
                 } else if vm.isLoading {
                     ProgressView()
@@ -29,8 +29,8 @@ struct GameServiceDetails: View {
                 }
             }
             .padding()
-            .environment(vm)
         }
+        .environment(vm)
         .navigationTitle(vm.service?.name ?? "")
         .navigationBarTitleDisplayMode(.inline)
         .refreshableTask {
