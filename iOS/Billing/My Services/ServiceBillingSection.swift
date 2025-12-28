@@ -50,6 +50,3 @@ struct ServiceBillingSection<VM: ServiceBillingVMProtocol>: View {
         }
     }
 }
-
-extension GameServiceDetailsVM: ServiceBillingVMProtocol {}
-extension BotServiceDetailsVM: ServiceBillingVMProtocol {}
