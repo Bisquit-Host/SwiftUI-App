@@ -1,8 +1,15 @@
 import SwiftUI
 
-struct GameServiceBillingSection: View {
-    @Environment(GameServiceDetailsVM.self) private var vm
-    @Environment(BillingDashboardVM.self) private var dashboardVM
+protocol ServiceBillingVM: AnyObject, Observable {
+    var service: BillingServiceDetails? { get }
+    var isPerformingAction: Bool { get set }
+    
+    func changeAutorenew(_ enabled: Bool, serviceId: Int) async
+    func renew(months: Int, serviceId: Int) async -> ServiceRenewalResponse?
+}
+
+struct ServiceBillingSection<VM: ServiceBillingVM>: View {
+    @Environment(VM.self) private var vm
     @Environment(ConfettiVM.self) private var confetti
     @Environment(BiometryVM.self) private var biometry
     @EnvironmentObject private var store: ValueStore
@@ -51,3 +58,6 @@ struct GameServiceBillingSection: View {
         }
     }
 }
+
+extension GameServiceDetailsVM: ServiceBillingVM {}
+extension BotServiceDetailsVM: ServiceBillingVM {}

@@ -19,7 +19,7 @@ struct GameServiceDetails: View {
                 if let service = vm.service {
                     ServiceHeader(service)
                     ServiceInfoSection(service)
-                    GameServiceBillingSection(service)
+                    ServiceBillingSection<GameServiceDetailsVM>(service)
                     ServiceUpgradeSection<GameServiceDetailsVM>()
                     
                 } else if vm.isLoading {
