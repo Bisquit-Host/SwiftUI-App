@@ -1,6 +1,6 @@
 import ScrechKit
 
-struct GameServiceInfoSection: View {
+struct ServiceInfoSection: View {
     private let service: BillingServiceDetails
     
     init(_ service: BillingServiceDetails) {
@@ -14,7 +14,7 @@ struct GameServiceInfoSection: View {
         let cpuName = service.packageInfo.cpuName ?? ""
         let cpuCores = service.packageInfo.cpu.clean
         let network = service.packageInfo.network?.clean
-        let networkType = service.packageInfo.networkType ?? ""
+        let networkType = service.packageInfo.networkType
         
         BillingSectionCard("Details") {
             VStack(alignment: .leading, spacing: 10) {
@@ -23,7 +23,7 @@ struct GameServiceInfoSection: View {
                 LabeledContent("RAM", value: ram)
                 LabeledContent("Disk", value: "\(disk) \(diskType)")
                 
-                if let network {
+                if let network, let networkType {
                     LabeledContent("Network", value: "\(network) \(networkType)")
                 }
                 

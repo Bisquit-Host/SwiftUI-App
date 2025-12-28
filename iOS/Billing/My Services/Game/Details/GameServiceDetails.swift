@@ -18,7 +18,7 @@ struct GameServiceDetails: View {
             VStack(alignment: .leading, spacing: 16) {
                 if let service = vm.service {
                     ServiceHeader(service)
-                    GameServiceInfoSection(service)
+                    ServiceInfoSection(service)
                     GameServiceBillingSection(service)
                     ServiceUpgradeSection<GameServiceDetailsVM>()
                     

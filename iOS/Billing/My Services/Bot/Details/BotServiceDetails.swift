@@ -18,7 +18,7 @@ struct BotServiceDetails: View {
             VStack(alignment: .leading, spacing: 16) {
                 if let service = vm.service {
                     ServiceHeader(service)
-                    BotServiceInfoSection(service)
+                    ServiceInfoSection(service)
                     BotServiceBillingSection(service)
                     ServiceUpgradeSection<BotServiceDetailsVM>()
                     
