@@ -1,14 +1,6 @@
 import SwiftUI
 
-protocol ServiceBillingVM: AnyObject, Observable {
-    var service: BillingServiceDetails? { get }
-    var isPerformingAction: Bool { get set }
-    
-    func changeAutorenew(_ enabled: Bool, serviceId: Int) async
-    func renew(months: Int, serviceId: Int) async -> ServiceRenewalResponse?
-}
-
-struct ServiceBillingSection<VM: ServiceBillingVM>: View {
+struct ServiceBillingSection<VM: ServiceBillingVMProtocol>: View {
     @Environment(VM.self) private var vm
     @Environment(ConfettiVM.self) private var confetti
     @Environment(BiometryVM.self) private var biometry
@@ -59,5 +51,5 @@ struct ServiceBillingSection<VM: ServiceBillingVM>: View {
     }
 }
 
-extension GameServiceDetailsVM: ServiceBillingVM {}
-extension BotServiceDetailsVM: ServiceBillingVM {}
+extension GameServiceDetailsVM: ServiceBillingVMProtocol {}
+extension BotServiceDetailsVM: ServiceBillingVMProtocol {}
