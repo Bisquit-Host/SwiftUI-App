@@ -281,8 +281,14 @@ final class HostingPlanListVM {
             
             guard (200...299).contains(http.statusCode) else {
                 let error = String(data: data, encoding: .utf8) ?? "Status \(http.statusCode)"
-                SystemAlert.error(error)
                 print("Order request failed \(http.statusCode):", error)
+                
+                if let decodedError = try? JSONDecoder().decode(PurchaseErrorResponse.self, from: data) {
+                    SystemAlert.error(decodedError.title, subtitle: "Status code: \(decodedError.status)")
+                } else {
+                    SystemAlert.error(error, subtitle: "Status code: \(http.statusCode)")
+                }
+                
                 return nil
             }
             

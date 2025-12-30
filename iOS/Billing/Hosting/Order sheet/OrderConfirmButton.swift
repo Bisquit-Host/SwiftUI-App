@@ -68,10 +68,7 @@ struct OrderConfirmButton: View {
             eggId: orderVM.selectedEggId == 0 ? nil : orderVM.selectedEggId
         )
         
-        guard let response else {
-            SystemAlert.error("Unable to complete order")
-            return
-        }
+        guard let response else { return }
         
         print(response)
         onSuccess()
