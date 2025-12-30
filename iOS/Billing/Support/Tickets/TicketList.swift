@@ -36,7 +36,7 @@ struct TicketList: View {
                 await vm.fetchTickets()
             }
         }
-        .onChange(of: vm.showClosed) { _, _ in
+        .onChange(of: vm.showClosed) {
             Task {
                 await vm.fetchTickets()
             }

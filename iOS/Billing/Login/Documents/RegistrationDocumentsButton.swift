@@ -2,7 +2,6 @@ import SwiftUI
 
 struct RegistrationDocumentsButton: View {
     @Binding private var isDocumentsSheetPresented: Bool
-    
     @Binding private var hasAcceptedDocuments: Bool
     
     init(_ hasAcceptedDocuments: Binding<Bool>, isPresented: Binding<Bool>) {

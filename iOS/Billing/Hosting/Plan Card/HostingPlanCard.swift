@@ -3,9 +3,9 @@ import ScrechKit
 struct HostingPlanCard: View {
     @Environment(HostingPlanListVM.self) private var vm
     
-    let plan: BillingHostingPlan
-    let category: BillingHostingCategory
-    let onPurchase: (() -> Void)?
+    private let plan: BillingHostingPlan
+    private let category: BillingHostingCategory
+    private let onPurchase: (() -> Void)?
     
     init(_ plan: BillingHostingPlan, in category: BillingHostingCategory, onPurchase: (() -> Void)? = {}) {
         self.plan = plan

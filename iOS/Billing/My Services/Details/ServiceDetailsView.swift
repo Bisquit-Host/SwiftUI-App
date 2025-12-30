@@ -35,7 +35,7 @@ struct ServiceDetailsView<VM: ServiceDetailsVM & ServiceDetailsVMProtocol>: View
         .refreshableTask {
             await vm.load(serviceId)
         }
-        .onChange(of: vm.service?.id) { _, _ in
+        .onChange(of: vm.service?.id) {
             if let service = vm.service {
                 pendingName = service.name
             }

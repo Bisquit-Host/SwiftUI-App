@@ -18,7 +18,9 @@ struct VDSReinstallOSPicker: View {
         
         return family.os
             .filter(\.enabled)
-            .sorted { ($0.version ?? "") < ($1.version ?? "") }
+            .sorted {
+                ($0.version ?? "") < ($1.version ?? "")
+            }
     }
     
     var body: some View {

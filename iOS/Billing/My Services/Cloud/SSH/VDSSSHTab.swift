@@ -50,10 +50,10 @@ struct VDSSSHTab: View {
         .task {
             hydrateFromServiceIfNeeded()
         }
-        .onChange(of: vm.service?.ip) { _, _ in
+        .onChange(of: vm.service?.ip) {
             hydrateFromServiceIfNeeded()
         }
-        .onChange(of: vm.service?.password) { _, _ in
+        .onChange(of: vm.service?.password) {
             hydrateFromServiceIfNeeded()
         }
         .onDisappear {

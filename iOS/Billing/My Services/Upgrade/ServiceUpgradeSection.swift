@@ -44,7 +44,7 @@ struct ServiceUpgradeSection<VM: ServiceDetailsVMProtocol>: View {
         .onAppear {
             selectedUpgradeId = selectedUpgradeId ?? vm.changeablePackages.first?.id
         }
-        .onChange(of: vm.changeablePackages.count) { _, _ in
+        .onChange(of: vm.changeablePackages.count) {
             if selectedUpgradeId == nil {
                 selectedUpgradeId = vm.changeablePackages.first?.id
             }

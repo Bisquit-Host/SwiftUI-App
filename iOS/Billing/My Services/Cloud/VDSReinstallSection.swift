@@ -32,10 +32,10 @@ struct VDSReinstallSection: View {
         .task {
             setDefaultSelectionsIfNeeded()
         }
-        .onChange(of: vm.osOptions) { _, _ in
+        .onChange(of: vm.osOptions) {
             setDefaultSelectionsIfNeeded()
         }
-        .onChange(of: selectedFamilyId) { _, _ in
+        .onChange(of: selectedFamilyId) {
             setOSDefaultForSelectedFamily()
         }
     }

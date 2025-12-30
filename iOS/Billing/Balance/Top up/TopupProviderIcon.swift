@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct TopupProviderIcon: View {
-    let provider: PaymentProvider
+    private let provider: PaymentProvider
     
     init(_ provider: PaymentProvider) {
         self.provider = provider
