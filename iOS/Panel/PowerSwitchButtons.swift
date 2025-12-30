@@ -3,7 +3,7 @@ import SwiftUI
 struct PowerSwitchButtons: View {
     @Environment(PanelVM.self) private var vm
     
-    @Binding var confirmKill: Bool
+    @Binding private var confirmKill: Bool
     
     init(_ confirmKill: Binding<Bool>) {
         _confirmKill = confirmKill

@@ -2,7 +2,7 @@ import ScrechKit
 
 struct TicketMediaAttachment: View {
     private let attachment: PendingAttachment
-    @Binding var attachments: [PendingAttachment]
+    @Binding private var attachments: [PendingAttachment]
     
     init(for attachment: PendingAttachment, in attachments: Binding<[PendingAttachment]>) {
         self.attachment = attachment
