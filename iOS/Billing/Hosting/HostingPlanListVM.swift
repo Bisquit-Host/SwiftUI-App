@@ -180,7 +180,7 @@ final class HostingPlanListVM {
         }
         
         guard [1, 3, 6, 12].contains(months) else {
-            SystemAlert.error("Unsupported period")
+            SystemAlert.error("Invalid period")
             return nil
         }
         
