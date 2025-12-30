@@ -14,10 +14,8 @@ extension UserDefaults {
             return nil
         }
         
-        let decoder = JSONDecoder()
-        
         do {
-            return try decoder.decode([ServerAttributes].self, from: data)
+            return try JSONDecoder().decode([ServerAttributes].self, from: data)
         } catch {
             print("Error loading cached servers:", error.localizedDescription)
             removeObject(forKey: key) // clear corrupted cache so future loads start clean

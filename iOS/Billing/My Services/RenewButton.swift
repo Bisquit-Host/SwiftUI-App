@@ -6,7 +6,7 @@ struct RenewButton: View {
     let name: String?
     let confirmPayment: () -> Void
     
-    @State var alertRenew = false
+    @State private var alertRenew = false
     
     var body: some View {
         HStack(spacing: 5) {

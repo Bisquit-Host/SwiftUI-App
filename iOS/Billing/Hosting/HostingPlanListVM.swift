@@ -129,10 +129,8 @@ final class HostingPlanListVM {
         case .cloud:
             guard let data = await request(path: "/cloud/os") else { break }
             
-            let decoder = JSONDecoder()
-            
             do {
-                result.osCategories = try decoder.decode([CloudServiceOSCategory].self, from: data)
+                result.osCategories = try JSONDecoder().decode([CloudServiceOSCategory].self, from: data)
             } catch {
                 SystemAlert.error(error.localizedDescription)
                 print("Order OS decode error:", error)
@@ -141,10 +139,8 @@ final class HostingPlanListVM {
         case .game:
             guard let data = await request(path: "/game/packages/\(planId)/nests") else { break }
             
-            let decoder = JSONDecoder()
-            
             do {
-                result.nests = try decoder.decode([BillingHostingNest].self, from: data)
+                result.nests = try JSONDecoder().decode([BillingHostingNest].self, from: data)
             } catch {
                 SystemAlert.error(error.localizedDescription)
                 print("Order nests decode error (game):", error)
@@ -153,10 +149,8 @@ final class HostingPlanListVM {
         case .bot:
             guard let data = await request(path: "/bot/packages/\(planId)/nests") else { break }
             
-            let decoder = JSONDecoder()
-            
             do {
-                result.nests = try decoder.decode([BillingHostingNest].self, from: data)
+                result.nests = try JSONDecoder().decode([BillingHostingNest].self, from: data)
             } catch {
                 SystemAlert.error(error.localizedDescription)
                 print("Order nests decode error (bot):", error)

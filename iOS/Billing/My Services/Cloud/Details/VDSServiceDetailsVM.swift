@@ -196,6 +196,7 @@ final class VDSServiceDetailsVM {
                     } catch {
                         SystemAlert.error(error.localizedDescription)
                         print("Cloud renewal decode error:", error)
+                        
                         continuation.resume(returning: nil)
                     }
                 }
@@ -280,8 +281,12 @@ final class VDSServiceDetailsVM {
             guard (200...299).contains(http.statusCode) else {
                 let error = String(data: data, encoding: .utf8) ?? "Status \(http.statusCode)"
                 
-                SystemAlert.error(error)
-                print("Cloud request error \(http.statusCode):", error)
+                if let decodedError = try? JSONDecoder().decode(PurchaseErrorResponse.self, from: data) {
+                    SystemAlert.error(decodedError.title, subtitle: "Status code: \(decodedError.status)")
+                } else {
+                    SystemAlert.error(error, subtitle: "Status code: \(http.statusCode)")
+                }
+                
                 return nil
             }
             
