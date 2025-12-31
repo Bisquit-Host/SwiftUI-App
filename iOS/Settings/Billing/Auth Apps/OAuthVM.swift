@@ -93,8 +93,7 @@ final class OAuthVM: NSObject {
             let expiresInString = components.queryItems?.first(where: { $0.name == "expiresIn" })?.value,
             let expiresIn = Int(expiresInString)
         else {
-            Logger().critical("Error parsing auth URL")
-            finish(success: false, message: "Duck me")
+            finish(success: false, message: "Error parsing auth URL")
             return
         }
         
@@ -159,7 +158,7 @@ final class OAuthVM: NSObject {
         session = nil
         
         if let message {
-            print(message)
+            Logger().critical("\(message)")
         }
         
         onLinked?()

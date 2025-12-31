@@ -33,14 +33,18 @@ struct LoginSignupDocumentList: View {
             .foregroundStyle(.foreground)
             .frame(minHeight: 50)
             .frame(maxWidth: .infinity)
+#if !os(visionOS)
             .glassEffect(.regular.tint(.green.opacity(0.3)))
+#endif
             .overlay {
                 Capsule()
                     .stroke(.green, lineWidth: 0.1)
             }
         }
         .navigationTitle("Documents")
+#if !os(visionOS)
         .navigationSubtitle("Please review and accept the documents below to create an account")
+#endif
         .navigationBarTitleDisplayMode(.inline)
         .presentationDetents([.medium])
         .presentationBackgroundInteraction(.enabled(upThrough: .medium))

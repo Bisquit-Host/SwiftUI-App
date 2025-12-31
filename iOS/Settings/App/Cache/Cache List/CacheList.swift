@@ -16,7 +16,9 @@ struct CacheList: View {
             }
         }
         .navigationTitle("Cache")
+#if !os(visionOS)
         .navigationSubtitle("\(vm.images.count) images")
+#endif
         .refreshableTask {
             vm.retrieveAllCachedImages()
         }

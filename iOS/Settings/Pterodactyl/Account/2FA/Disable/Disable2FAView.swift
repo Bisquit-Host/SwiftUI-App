@@ -20,8 +20,9 @@ struct Disable2FaView: View {
         }
         .scrollIndicators(.never)
         .toolbar {
+#if !os(visionOS)
             ToolbarSpacer(.flexible, placement: .bottomBar)
-            
+#endif
             ToolbarItem(placement: .bottomBar) {
                 DismissButton()
             }

@@ -20,7 +20,9 @@ struct AuthSocialButtonImage: View {
                 .clipShape(.circle)
                 .frame(height: 50)
                 .frame(maxWidth: .infinity)
+#if !os(visionOS)
                 .glassEffect(.regular.tint(Color(avgColor)), in: .capsule)
+#endif
         } else {
             Image(img)
                 .resizable()
@@ -28,7 +30,9 @@ struct AuthSocialButtonImage: View {
                 .clipShape(.circle)
                 .frame(height: 50)
                 .frame(maxWidth: .infinity)
+#if !os(visionOS)
                 .glassEffect(in: .capsule)
+#endif
         }
     }
 }

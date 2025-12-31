@@ -64,7 +64,9 @@ struct TicketMessage: View {
                     }
                 }
                 .padding(10)
+#if !os(visionOS)
                 .glassEffect(.regular.tint(bubbleBackground), in: .rect(cornerRadius: 12))
+#endif
             }
         }
         .frame(maxWidth: .infinity, alignment: isCurrentUser ? .trailing : .leading)

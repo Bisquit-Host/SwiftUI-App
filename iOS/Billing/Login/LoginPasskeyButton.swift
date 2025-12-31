@@ -24,7 +24,9 @@ struct LoginPasskeyButton: View {
         .foregroundStyle(.foreground)
         .frame(height: 50)
         .frame(maxWidth: .infinity)
+#if !os(visionOS)
         .glassEffect()
+#endif
     }
     
     private func loginWithPasskeys() {

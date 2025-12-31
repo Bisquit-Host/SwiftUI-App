@@ -22,7 +22,9 @@ struct RenewButton: View {
                         .frame(maxWidth: .infinity)
                 }
             }
+#if !os(visionOS)
             .buttonStyle(.glassProminent)
+#endif
             .disabled(isPerformingAction)
             
             MonthAmountPicker($renewMonths)

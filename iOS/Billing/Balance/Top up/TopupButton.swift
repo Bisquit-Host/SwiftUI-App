@@ -24,7 +24,9 @@ struct TopupButton: View {
                 .frame(maxWidth: .infinity)
         }
         .padding(.top, 6)
+#if !os(visionOS)
         .buttonStyle(.glassProminent)
+#endif
         .tint(.green)
         .disabled(amount.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || selectedProvider == nil || vm.isTopupLoading)
         .safariCover($safariCover, url: paymentLink)

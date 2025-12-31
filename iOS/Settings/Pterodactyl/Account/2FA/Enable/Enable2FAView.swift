@@ -36,8 +36,9 @@ struct Enable2FAView: View {
                 .presentationDetents([.medium])
         }
         .toolbar {
+#if !os(visionOS)
             ToolbarSpacer(.flexible, placement: .bottomBar)
-            
+#endif
             ToolbarItem(placement: .bottomBar) {
                 DismissButton()
             }

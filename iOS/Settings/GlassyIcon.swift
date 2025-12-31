@@ -12,8 +12,10 @@ struct GlassyIcon: View {
     var body: some View {
         Image(systemName: icon)
             .frame(32)
-            .glassEffect(.regular.tint(tint.opacity(0.15)), in: .rect(cornerRadius: 10))
             .foregroundStyle(tint)
+#if !os(visionOS)
+            .glassEffect(.regular.tint(tint.opacity(0.15)), in: .rect(cornerRadius: 10))
+#endif
     }
 }
 

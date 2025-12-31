@@ -19,8 +19,9 @@ struct PasskeyCard: View {
                 ZStack {
                     Circle()
                         .frame(38)
+#if !os(visionOS)
                         .glassEffect(.regular.tint(tint.opacity(0.25)))
-                    
+#endif
                     Image(systemName: "key.fill")
                         .foregroundStyle(tint)
                 }

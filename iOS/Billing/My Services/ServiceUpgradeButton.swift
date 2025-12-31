@@ -18,7 +18,9 @@ struct ServiceUpgradeButton<VM: ServiceDetailsVMProtocol>: View {
                     .frame(maxWidth: .infinity)
             }
         }
+#if !os(visionOS)
         .buttonStyle(.glassProminent)
+#endif
         .disabled(vm.isPerformingAction)
         .padding(.horizontal, 8)
         .sheet($sheetUpgrade) {

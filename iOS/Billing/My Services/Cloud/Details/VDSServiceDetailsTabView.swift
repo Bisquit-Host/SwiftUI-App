@@ -66,9 +66,12 @@ struct VDSServiceDetailsTabView: View {
         }
         .environment(vm)
         .navigationTitle(title ?? "\(vm.service?.name ?? "")")
+#if !os(visionOS)
         .navigationSubtitle(subtitle)
+#endif
         .navigationBarTitleDisplayMode(.inline)
         .scrollIndicators(.never)
+#if !os(visionOS)
         .sheet($sheetSSHCredentials) {
             NavigationStack {
                 VDSSheetSSHCredentials(host: $host, port: $port, username: $username, password: $password)
@@ -79,6 +82,7 @@ struct VDSServiceDetailsTabView: View {
                 VDSSheetSSHLogs($logs)
             }
         }
+#endif
         .alert("Rename service", isPresented: $alertRename, presenting: vm.service) { service in
             TextField("New name", text: $pendingName)
                 .textInputAutocapitalization(.never)

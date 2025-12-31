@@ -52,8 +52,9 @@ struct SheetTopup: View {
             ToolbarItem(placement: .bottomBar) {
                 DismissButton()
             }
-            
+#if !os(visionOS)
             ToolbarSpacer(.flexible, placement: .bottomBar)
+#endif
         }
     }
     

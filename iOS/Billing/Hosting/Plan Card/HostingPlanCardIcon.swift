@@ -11,7 +11,9 @@ struct HostingPlanCardIcon: View {
         Image(systemName: category.icon)
             .fontSize(18)
             .padding(10)
+#if !os(visionOS)
             .glassEffect(.regular.tint(category.tint.opacity(0.25)), in: .circle)
+#endif
             .foregroundStyle(category.tint)
     }
 }

@@ -27,7 +27,9 @@ struct AccountSettingsAvatarPicker: View {
                 }
             }
             .frame(40)
+#if !os(visionOS)
             .glassEffect(in: .circle)
+#endif
         }
         .photosPicker(isPresented: $showAvatarPicker, selection: $avatarPickerItem, matching: .images, photoLibrary: .shared())
         .animation(.default, value: isUploadingAvatar)

@@ -6,9 +6,9 @@ struct AppContainer: View {
     @State private var vm = ServerListVM()
     @State private var linking = DeepLinkVM()
     @State private var network = NetworkVM()
-#if os(iOS)
-    @State private var biometry = BiometryVM()
+#if os(iOS) || os(visionOS)
     @State private var billingOAuth = OAuthVM()
+    @State private var biometry = BiometryVM()
     @State private var confetti = ConfettiVM()
 #endif
     @EnvironmentObject private var store: ValueStore
@@ -19,11 +19,13 @@ struct AppContainer: View {
         HomeTabView()
             .animation(.default, value: store.isApiKeyValid)
             .environment(vm)
-#if os(iOS)
-            .confettiOverlay()
-            .environment(biometry)
-            .environment(confetti)
+#if os(iOS) || os(visionOS)
             .environment(billingOAuth)
+            .environment(biometry)
+            .confettiOverlay()
+            .environment(confetti)
+#endif
+#if os(iOS)
             .statusBarHidden(store.hideStatusBar)
 #endif
 #if canImport(Appearance)
@@ -39,9 +41,8 @@ struct AppContainer: View {
 #endif
             .onOpenURL {
                 print("🔗 Deeplink:", $0)
-#if os(iOS)
                 linking.handleDeepLink($0)
-                
+#if os(iOS) || os(visionOS)
                 billingOAuth.handleCallback($0) {
                     store.updateAccessToken()
                 }

@@ -21,8 +21,10 @@ struct DisablePasswordCard: View {
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 10)
             }
-            .buttonStyle(.glassProminent)
             .tint(.red)
+#if !os(visionOS)
+            .buttonStyle(.glassProminent)
+#endif
         }
         .padding()
         .background(.ultraThinMaterial, in: .rect(cornerRadius: 18))

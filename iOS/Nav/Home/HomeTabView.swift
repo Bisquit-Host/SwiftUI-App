@@ -1,6 +1,6 @@
 import SwiftUI
 
-#if os(iOS)
+#if os(iOS) || os(visionOS)
 struct HomeTabView: View {
     @State private var securityTasks = SecurityTasks()
     @Environment(NavState.self) private var nav

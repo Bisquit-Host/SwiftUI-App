@@ -30,7 +30,9 @@ struct EnableCodeInputCard: View {
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 10)
             }
+#if !os(visionOS)
             .buttonStyle(.glassProminent)
+#endif
             .tint(.green)
         }
         .padding()

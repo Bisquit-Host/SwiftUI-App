@@ -32,7 +32,9 @@ struct AuthSettingsAppCard: View {
         HStack(spacing: 12) {
             Image(systemName: icon)
                 .frame(32)
+#if !os(visionOS)
                 .glassEffect(.regular.tint(tint), in: .rect(cornerRadius: 10))
+#endif
                 .foregroundStyle(enabled ? .green : .red)
             
             VStack(alignment: .leading, spacing: 12) {

@@ -5,7 +5,9 @@ struct AppSettings: View {
     
     var body: some View {
         ScrollView {
+#if !os(visionOS)
             AppIconSettings()
+#endif
             CacheSettings()
             
             BillingSectionCard("Customization") {

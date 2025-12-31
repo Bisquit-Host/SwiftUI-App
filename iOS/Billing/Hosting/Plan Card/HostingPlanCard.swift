@@ -34,7 +34,9 @@ struct HostingPlanCard: View {
             SFButton("cart.badge.plus") {
                 onPurchase?()
             }
+#if !os(visionOS)
             .buttonStyle(.glassProminent)
+#endif
             .tint(category.tint)
             .frame(maxWidth: .infinity, alignment: .trailing)
         }

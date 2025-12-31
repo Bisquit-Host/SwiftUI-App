@@ -25,7 +25,9 @@ struct RedeemButton: View {
                 .semibold()
                 .frame(maxWidth: .infinity)
         }
+#if !os(visionOS)
         .buttonStyle(.glass)
+#endif
         .tint(Color.yellow.gradient)
         .disabled(vm.isGiftCodeLoading)
         .alert("Redeem gift code", isPresented: $showGiftCodeAlert) {

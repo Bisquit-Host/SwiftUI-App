@@ -95,8 +95,9 @@ struct BillingLogin: View {
             .foregroundStyle(.foreground)
             .frame(minHeight: 50)
             .frame(maxWidth: .infinity)
+#if !os(visionOS)
             .glassEffect()
-            
+#endif
             LoginDivider()
             
             if !isSignUp {
@@ -115,7 +116,9 @@ struct BillingLogin: View {
             .secondary()
         }
         .sheet($sheetHcaptcha) {
+#if !os(visionOS)
             HCaptchaSheet($captchaToken)
+#endif
         }
         .sheet($sheet2FA) {
             NavigationStack {

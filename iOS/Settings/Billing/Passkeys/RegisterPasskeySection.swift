@@ -38,7 +38,9 @@ struct RegisterPasskeySection: View {
                             .frame(maxWidth: .infinity)
                     }
                 }
+#if !os(visionOS)
                 .buttonStyle(.glassProminent)
+#endif
                 .tint(.blue)
                 .disabled(vm.isRegistering)
             }

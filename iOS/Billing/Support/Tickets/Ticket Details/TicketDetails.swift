@@ -26,7 +26,9 @@ struct TicketDetails: View {
             }
         }
         .navigationTitle(vm.ticket.title)
+#if !os(visionOS)
         .navigationSubtitle("Ticket #\(vm.ticket.id)")
+#endif
         .navigationBarTitleDisplayMode(.inline)
         .environment(vm)
         .task {
@@ -46,7 +48,9 @@ struct TicketDetails: View {
                     Text(vm.ticket.status.rawValue.capitalized)
                         .foregroundStyle(vm.ticket.status.color)
                 }
+#if !os(visionOS)
                 .buttonStyle(.glassProminent)
+#endif
                 .tint(vm.ticket.status.color.opacity(0.3))
             }
         }

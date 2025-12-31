@@ -16,7 +16,9 @@ struct DebugSettings: View {
             
             Section {
                 Toggle("Developer mode", isOn: $store.devMode)
+#if os(iOS)
                 Toggle("Hide status bar", isOn: $store.hideStatusBar)
+#endif
                 Toggle("Hide server names", isOn: $store.hideServerNames)
             }
             
@@ -39,12 +41,12 @@ struct DebugSettings: View {
                     Label("Gamepad test", systemImage: "gamecontroller")
                 }
             }
-            
+#if canImport(ContactProvider)
             Section("Contacts provider") {
                 Toggle("Save contacts automatically", isOn: $store.contactsProviderEnabled)
                 Button("Enable Extension", action: enableExtension)
             }
-            
+#endif
             Section("Metrics") {
                 Toggle("Save metrics", isOn: $store.saveMetrics)
                 
@@ -64,7 +66,7 @@ struct DebugSettings: View {
                 .environment(confetti)
         }
     }
-    
+#if canImport(ContactProvider)
     private func enableExtension() {
         Task {
             do {
@@ -74,6 +76,7 @@ struct DebugSettings: View {
             }
         }
     }
+#endif
 }
 
 #Preview {
