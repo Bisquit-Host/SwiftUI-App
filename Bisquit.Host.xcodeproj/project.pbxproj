@@ -45,6 +45,9 @@
 		F36B739D2C8B074300E858FE /* AudioVisualizer in Frameworks */ = {isa = PBXBuildFile; productRef = F36B739C2C8B074300E858FE /* AudioVisualizer */; };
 		F36B73A12C8B07E100E858FE /* AudioVisualizer in Frameworks */ = {isa = PBXBuildFile; productRef = F36B73A02C8B07E100E858FE /* AudioVisualizer */; };
 		F36F410F2F055ED400C3EC6B /* Vortex in Frameworks */ = {isa = PBXBuildFile; productRef = F36F410E2F055ED400C3EC6B /* Vortex */; };
+		F36F41842F05C04000C3EC6B /* SwiftTerm in Frameworks */ = {isa = PBXBuildFile; productRef = F36F41832F05C04000C3EC6B /* SwiftTerm */; };
+		F36F41862F05C04600C3EC6B /* NIOSSH in Frameworks */ = {isa = PBXBuildFile; productRef = F36F41852F05C04600C3EC6B /* NIOSSH */; };
+		F36F41882F05C06900C3EC6B /* HCaptcha in Frameworks */ = {isa = PBXBuildFile; productRef = F36F41872F05C06900C3EC6B /* HCaptcha */; };
 		F37266E729D9EF25005FD103 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F37266E629D9EF25005FD103 /* Kingfisher */; };
 		F37FF8832D87AE3800554B3F /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = F37FF8822D87AE3800554B3F /* Algorithms */; };
 		F3818F002ED25E8600DA3855 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3818EFF2ED25E8600DA3855 /* ScrechKit */; };
@@ -513,6 +516,7 @@
 				"Server List/VM extensions/UserDefaults.swift",
 				"Settings/App/Cache/Cache List/CacheListVM.swift",
 				Settings/App/Cache/CacheVM.swift,
+				Settings/AppSettingsTab.swift,
 				"Start Page/StartPageHelper.swift",
 				"Start Page/StartPageVM.swift",
 				Utils/ANSIConverter.swift,
@@ -616,6 +620,7 @@
 				Settings/App/Cache/CacheVM.swift,
 				Settings/App/Debug/DebugSettingsGamepad.swift,
 				Settings/App/Debug/DebugSettingsTips.swift,
+				Settings/AppSettingsTab.swift,
 				"Settings/Pterodactyl/Account/API keys/ApikeyCard.swift",
 				"Settings/Pterodactyl/Account/API keys/ApikeyList.swift",
 				"Settings/Pterodactyl/Account/API keys/ApikeyVM.swift",
@@ -751,6 +756,7 @@
 				Settings/App/Debug/DebugSettingsFooter.swift,
 				Settings/App/Debug/DebugSettingsGamepad.swift,
 				Settings/App/Debug/DebugSettingsTips.swift,
+				Settings/AppSettingsTab.swift,
 				Settings/Pterodactyl/Account/2FA/QRCodeView.swift,
 				"Settings/Pterodactyl/Account/API keys/ApikeyCard.swift",
 				"Settings/Pterodactyl/Account/API keys/ApikeyList.swift",
@@ -857,6 +863,7 @@
 				Billing/Login/LoginPasskeyButton.swift,
 				Billing/Login/LoginStyleModifier.swift,
 				Billing/Login/LoginVM.swift,
+				Billing/Login/OAuth2FASheet.swift,
 				"Billing/Login/Social Buttons/AuthSocialButtonImage.swift",
 				"Billing/Login/Social Buttons/BillingLoginSocialButton.swift",
 				"Billing/Login/Social Buttons/BillingLoginSocialButtons.swift",
@@ -1164,6 +1171,30 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Assets.xcassets,
+				"Billing Models/Attachments.swift",
+				"Billing Models/AvatarUpdateResponse.swift",
+				"Billing Models/Billing2FASetupResponse.swift",
+				"Billing Models/BillingAuthProvider.swift",
+				"Billing Models/BillingCurrency.swift",
+				"Billing Models/BillingError.swift",
+				"Billing Models/BillingHostingModels.swift",
+				"Billing Models/BillingLoginResponse.swift",
+				"Billing Models/BillingMyService.swift",
+				"Billing Models/BillingOperationsResponse.swift",
+				"Billing Models/BillingPlanOrderContext.swift",
+				"Billing Models/BillingServiceModels.swift",
+				"Billing Models/BillingUser.swift",
+				"Billing Models/CloudProtectionModels.swift",
+				"Billing Models/CloudProtectionProfileEditorMode.swift",
+				"Billing Models/Passkey.swift",
+				"Billing Models/PaymentProvider.swift",
+				"Billing Models/PurchaseErrorResponse.swift",
+				"Billing Models/Service/BillingBotServiceSummary.swift",
+				"Billing Models/Service/BillingCloudModels.swift",
+				"Billing Models/Service/BillingGameServiceSummary.swift",
+				"Billing Models/SupportTicket.swift",
+				"Billing Models/TopUp.swift",
+				Billing/Login/OAuth2FASheet.swift,
 				"Cloud Keys/APIKey.swift",
 				"Cloud Keys/CloudKeyCard.swift",
 				"Cloud Keys/CloudKeyContextMenu.swift",
@@ -1196,6 +1227,8 @@
 				"Server List/VM extensions/UserDefaults.swift",
 				"Settings/App/App Icon/Icon.swift",
 				Settings/AppSettingsTab.swift,
+				Settings/Billing/2FA/Billing2FAVM.swift,
+				"Settings/Billing/Auth Apps/OAuthVM.swift",
 				Settings/GlassyActionCard.swift,
 				Settings/GlassyButton.swift,
 				Settings/GlassyIcon.swift,
@@ -1441,6 +1474,9 @@
 				F3A7CF0C2C8BBCE400413400 /* Kingfisher in Frameworks */,
 				F3A7CEFB2C8BB8A300413400 /* AlertKit in Frameworks */,
 				F3A7CF042C8BBB7800413400 /* SafariCover in Frameworks */,
+				F36F41842F05C04000C3EC6B /* SwiftTerm in Frameworks */,
+				F36F41862F05C04600C3EC6B /* NIOSSH in Frameworks */,
+				F36F41882F05C06900C3EC6B /* HCaptcha in Frameworks */,
 				F3A7CEC82C8B685500413400 /* Messages.framework in Frameworks */,
 				F3A7CEDF2C8B981A00413400 /* PteroNet in Frameworks */,
 				F304E90B2EC645220069A73D /* Vortex in Frameworks */,
@@ -1783,6 +1819,9 @@
 				F3F60A752DEB94DA00A15737 /* ScrechKit */,
 				F3F5AD7B2E8862A4007AD97D /* Appearance */,
 				F304E90A2EC645220069A73D /* Vortex */,
+				F36F41832F05C04000C3EC6B /* SwiftTerm */,
+				F36F41852F05C04600C3EC6B /* NIOSSH */,
+				F36F41872F05C06900C3EC6B /* HCaptcha */,
 			);
 			productName = "iMessage MessagesExtension";
 			productReference = F3A7CEC32C8B685500413400 /* iMessage.appex */;
@@ -2854,7 +2893,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited) iMessage";
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
@@ -2884,6 +2923,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = iMessage;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
@@ -3598,6 +3638,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F304E9052EC6433C0069A73D /* XCRemoteSwiftPackageReference "Vortex" */;
 			productName = Vortex;
+		};
+		F36F41832F05C04000C3EC6B /* SwiftTerm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F366DE222EF0B88800C2A958 /* XCRemoteSwiftPackageReference "SwiftTerm" */;
+			productName = SwiftTerm;
+		};
+		F36F41852F05C04600C3EC6B /* NIOSSH */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F366DE132EF0B87000C2A958 /* XCRemoteSwiftPackageReference "swift-nio-ssh" */;
+			productName = NIOSSH;
+		};
+		F36F41872F05C06900C3EC6B /* HCaptcha */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3DA6CFC2ED3BD8E001AABD6 /* XCRemoteSwiftPackageReference "HCaptcha-ios-sdk" */;
+			productName = HCaptcha;
 		};
 		F37266E629D9EF25005FD103 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
