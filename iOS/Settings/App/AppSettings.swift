@@ -1,4 +1,4 @@
-import ScrechKit
+import SwiftUI
 
 struct AppSettings: View {
     @EnvironmentObject private var store: ValueStore
@@ -9,24 +9,7 @@ struct AppSettings: View {
             AppIconSettings()
 #endif
             CacheSettings()
-            
-            BillingSectionCard("Customization") {
-#if canImport(Appearance)
-                AppSettingsAppearancePicker()
-#endif
-            }
-            
-            BillingSectionCard("Other") {
-                BiometryToggle()
-                
-                GlassyActionCard("Change language", icon: "globe", tint: .blue) {
-                    openSettings()
-                }
-                
-                GlassyNavLink("Debug", icon: "hammer", tint: .blue) {
-                    DebugSettings()
-                }
-            }
+            OtherAppSettings()
         }
         .scrollIndicators(.never)
         .scenePadding(.horizontal)
