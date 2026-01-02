@@ -1115,6 +1115,7 @@
 				Settings/Pterodactyl/Account/AccountSettings.swift,
 				Settings/Pterodactyl/Account/AccountSettingsSwitchAccountButton.swift,
 				Settings/Pterodactyl/Account/AccountVM.swift,
+				Settings/Pterodactyl/Account/AccoutSettingsLogoutButton.swift,
 				"Settings/Pterodactyl/Account/API keys/ApikeyCard.swift",
 				"Settings/Pterodactyl/Account/API keys/ApikeyList.swift",
 				"Settings/Pterodactyl/Account/API keys/ApikeyVM.swift",

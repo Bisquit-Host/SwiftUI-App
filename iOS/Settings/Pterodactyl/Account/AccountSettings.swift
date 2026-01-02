@@ -1,17 +1,14 @@
 import SwiftUI
-import PteroNet
 
 struct AccountSettings: View {
     @State private var vm = AccountVM()
     @State private var apiKeyVM = ApikeyVM()
     @State private var sshVM = SSHVM()
-    @Environment(NavState.self) private var nav
-    @EnvironmentObject private var store: ValueStore
     
     var body: some View {
         BillingSectionCard("Account") {
-            PterSettings2FA()
             CredentialsButton()
+            AccountSettingsSwitchAccountButton()
             
             GlassyNavLink("API-keys", icon: "key.2.on.ring.fill", tint: .blue) {
                 ApikeyList()
@@ -23,8 +20,8 @@ struct AccountSettings: View {
                     .environment(sshVM)
             }
             
-            AccountSettingsSwitchAccountButton()
-            GlassyActionCard("Log out", icon: "rectangle.portrait.and.arrow.right", tint: .red, role: .destructive, action: logout)
+            PterSettings2FA()
+            AccoutSettingsLogoutButton()
         }
         .environment(vm)
         .task {
@@ -36,24 +33,7 @@ struct AccountSettings: View {
                 
                 _ = await (fetch, twoFa, ssh, api)
             }
-            
-            let fetchTask = Task {
-                await vm.fetch()
-            }
-            
-            let twoFaTask = Task {
-                await vm.twoFaDetails()
-            }
-            
-            await fetchTask.value
-            await twoFaTask.value
         }
-    }
-    
-    private func logout() {
-        nav.clear()
-        store.isApiKeyValid = false
-        Keychain.delete(key: "selectedApiKey")
     }
 }
 
