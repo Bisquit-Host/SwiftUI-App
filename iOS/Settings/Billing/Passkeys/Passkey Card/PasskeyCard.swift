@@ -1,4 +1,5 @@
 import ScrechKit
+import BisquitoNet
 
 struct PasskeyCard: View {
     @Environment(PasskeyListVM.self) private var vm

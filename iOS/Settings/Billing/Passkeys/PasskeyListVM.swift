@@ -1,5 +1,6 @@
 import Foundation
 import PteroNet
+import BisquitoNet
 import AuthenticationServices
 
 @Observable

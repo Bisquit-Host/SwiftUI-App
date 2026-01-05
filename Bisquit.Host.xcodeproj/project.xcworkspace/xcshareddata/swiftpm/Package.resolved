@@ -1,5 +1,5 @@
 {
-  "originHash" : "d9d50cc0f9d7955f4bc1671021c05c55d8705884d90225a3bcca77356f78c658",
+  "originHash" : "5f3643e7874f7404e781c7db45d254e5acd12ec2daec20ab31feb31195e7ea4e",
   "pins" : [
     {
       "identity" : "alertkit",
@@ -34,7 +34,7 @@
       "location" : "https://github.com/Bisquit-Host/BisquitoNet",
       "state" : {
         "branch" : "main",
-        "revision" : "e03e28b3b638c02369c30803a4478a4a1889b920"
+        "revision" : "d50cda594bddcc048669504b82e81bd9e3ddaa77"
       }
     },
     {

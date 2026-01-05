@@ -1,4 +1,5 @@
 import SwiftUI
+import BisquitoNet
 
 struct PasskeyCardVerifiedBadge: View {
     private let passkey: PasskeyListItem

@@ -1,5 +1,6 @@
 import Foundation
 import AuthenticationServices
+import BisquitoNet
 
 struct PasskeyRequestFactory {
     static func assertionRequest(from options: PasskeyAssertionOptions) throws -> ASAuthorizationPlatformPublicKeyCredentialAssertionRequest {
