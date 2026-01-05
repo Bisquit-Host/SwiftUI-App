@@ -44,12 +44,8 @@ final class VDSProtectionVM {
     func fetchIP(_ serviceId: Int) async {
         guard let data = await request(path: "/cloud/\(serviceId)/protection/ip") else { return }
         
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        decoder.dateDecodingStrategy = .iso8601
-        
         do {
-            ipInfo = try decoder.decode(VDSProtectionIPInfo.self, from: data)
+            ipInfo = try BigAssDecoder.decode(VDSProtectionIPInfo.self, from: data)
         } catch {
             SystemAlert.error("Protection IP decode error: \(error)")
         }
@@ -59,7 +55,7 @@ final class VDSProtectionVM {
         guard let data = await request(path: "/cloud/\(serviceId)/protection/presets") else { return }
         
         do {
-            presets = try JSONDecoder().decode([VDSProtectionPreset].self, from: data)
+            presets = try BigAssDecoder.decode([VDSProtectionPreset].self, from: data)
         } catch {
             SystemAlert.error("Protection presets decode error: \(error)")
         }
@@ -69,7 +65,7 @@ final class VDSProtectionVM {
         guard let data = await request(path: "/cloud/\(serviceId)/protection/profiles") else { return }
         
         do {
-            profiles = try JSONDecoder().decode([VDSProtectionProfile].self, from: data)
+            profiles = try BigAssDecoder.decode([VDSProtectionProfile].self, from: data)
         } catch {
             SystemAlert.error("Protection profiles decode error: \(error)")
         }
@@ -83,12 +79,8 @@ final class VDSProtectionVM {
         
         guard let data = await request(path: "/cloud/\(serviceId)/protection/attacks?page=\(page)") else { return }
         
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        decoder.dateDecodingStrategy = .iso8601
-        
         do {
-            let decoded = try decoder.decode([VDSProtectionAttack].self, from: data)
+            let decoded = try BigAssDecoder.decode([VDSProtectionAttack].self, from: data)
             
             if reset {
                 attacks = decoded
@@ -120,11 +112,7 @@ final class VDSProtectionVM {
         await performAction {
             guard let data = await self.request(path: "/cloud/\(serviceId)/protection/ip", method: "PATCH", body: payload) else { return }
             
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            decoder.dateDecodingStrategy = .iso8601
-            
-            if let updated = try? decoder.decode(VDSProtectionIPInfo.self, from: data) {
+            if let updated = try? BigAssDecoder.decode(VDSProtectionIPInfo.self, from: data) {
                 self.ipInfo = updated
             } else {
                 self.ipInfo?.defaultAction = action
@@ -152,11 +140,7 @@ final class VDSProtectionVM {
         await performAction {
             guard let data = await self.request(path: "/cloud/\(serviceId)/protection/profiles", method: "POST", body: payload) else { return }
             
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            decoder.dateDecodingStrategy = .iso8601
-            
-            if let created = try? decoder.decode(VDSProtectionProfile.self, from: data) {
+            if let created = try? BigAssDecoder.decode(VDSProtectionProfile.self, from: data) {
                 self.profiles.insert(created, at: 0)
             } else {
                 await self.fetchProfiles(serviceId)
@@ -184,11 +168,7 @@ final class VDSProtectionVM {
         await performAction {
             guard let data = await self.request(path: "/cloud/\(serviceId)/protection/profiles/\(profileId)", method: "PUT", body: payload) else { return }
             
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            decoder.dateDecodingStrategy = .iso8601
-            
-            if let updated = try? decoder.decode(VDSProtectionProfile.self, from: data) {
+            if let updated = try? BigAssDecoder.decode(VDSProtectionProfile.self, from: data) {
                 if let index = self.profiles.firstIndex(where: { $0.id == profileId }) {
                     self.profiles[index] = updated
                 } else {

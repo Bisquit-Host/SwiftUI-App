@@ -88,7 +88,7 @@ final class TicketDetailsVM {
                 return false
             }
             
-            let message = try JSONDecoder().decode(SupportMessageDTO.self, from: data)
+            let message = try BigAssDecoder.decode(SupportMessageDTO.self, from: data)
             appendMessageIfNeeded(message)
             composerText = ""
             errorMessage = nil
@@ -171,17 +171,13 @@ final class TicketDetailsVM {
             return
         }
         
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        decoder.dateDecodingStrategy = .iso8601
-        
         print("🔍 Handling event:", name, "payload:\n", trimmed)
         
         switch name {
         case "history":
             if let data = trimmed.data(using: .utf8) {
                 do {
-                    let history = try decoder.decode([SupportMessageDTO].self, from: data)
+                    let history = try BigAssDecoder.decode([SupportMessageDTO].self, from: data)
                     messages = history
                 } catch {
                     print("History decode error:", error)
@@ -192,7 +188,7 @@ final class TicketDetailsVM {
         case "message":
             if let data = trimmed.data(using: .utf8) {
                 do {
-                    let message = try decoder.decode(SupportMessageDTO.self, from: data)
+                    let message = try BigAssDecoder.decode(SupportMessageDTO.self, from: data)
                     appendMessageIfNeeded(message)
                 } catch {
                     print("Message decode error:", error)
@@ -202,7 +198,7 @@ final class TicketDetailsVM {
             
         case "ticketData":
             if let data = trimmed.data(using: .utf8),
-               let newTicket = try? decoder.decode(SupportTicketDTO.self, from: data) {
+               let newTicket = try? BigAssDecoder.decode(SupportTicketDTO.self, from: data) {
                 ticket = newTicket
             }
             
@@ -253,7 +249,7 @@ final class TicketDetailsVM {
                 throw UploadError.server(http.statusCode, detail: raw)
             }
             
-            return try JSONDecoder().decode([String].self, from: data)
+            return try BigAssDecoder.decode([String].self, from: data)
         }
         
         var http2Request = request

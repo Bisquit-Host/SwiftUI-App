@@ -77,8 +77,7 @@ final class SecurityTasks {
         do {
             let (data, _) = try await URLSession.shared.data(for: request)
             
-            let decoder = JSONDecoder()
-            let decoded = try decoder.decode(ItunesAppInfo.self, from: data)
+            let decoded = try BigAssDecoder.decode(ItunesAppInfo.self, from: data)
             
             appStoreVersion = decoded.results.first?.version ?? "0"
         } catch {

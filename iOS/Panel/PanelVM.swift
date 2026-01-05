@@ -77,7 +77,7 @@ final class PanelVM {
         guard let jsonData = message.data(using: .utf8) else { return }
         
         do {
-            let message = try JSONDecoder().decode(WebsocketMessage.self, from: jsonData)
+            let message = try BigAssDecoder.decode(WebsocketMessage.self, from: jsonData)
             
             if let status = message.serverStatus {
                 print("Server status:", status)
@@ -122,7 +122,7 @@ final class PanelVM {
                 do {
                     let jsonData = try JSONSerialization.data(withJSONObject: stats, options: [])
                     
-                    let stats = try JSONDecoder().decode(ServerStats.self, from: jsonData)
+                    let stats = try BigAssDecoder.decode(ServerStats.self, from: jsonData)
                     
                     uptime = stats.uptime
                     

@@ -258,7 +258,7 @@ final class BillingSettingsVM {
             
             switch http.statusCode {
             case 200:
-                if let result = try? JSONDecoder().decode(AvatarUpdateResponse.self, from: data) {
+                if let result = try? BigAssDecoder.decode(AvatarUpdateResponse.self, from: data) {
                     return result.avatar
                 } else {
                     SystemAlert.error("Bad response")

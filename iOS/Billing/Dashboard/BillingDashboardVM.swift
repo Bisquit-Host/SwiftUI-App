@@ -35,10 +35,7 @@ final class BillingDashboardVM {
                 print("Body:", bodyString)
             }
             
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            
-            let refreshedCreds = try decoder.decode(BillingLoginResponse.self, from: data)
+            let refreshedCreds = try BigAssDecoder.decode(BillingLoginResponse.self, from: data)
             
             Keychain.save(refreshedCreds.accessToken, forKey: "access_token")
             Keychain.save(refreshedCreds.refreshToken, forKey: "refresh_token")

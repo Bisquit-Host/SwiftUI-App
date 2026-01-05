@@ -166,7 +166,7 @@ final class OAuthVM: NSObject {
                 return
             }
             
-            let authURL = try JSONDecoder().decode(AuthURLResponse.self, from: data).url
+            let authURL = try BigAssDecoder.decode(AuthURLResponse.self, from: data).url
             
             print("Auth URL:", authURL)
             
@@ -232,10 +232,7 @@ final class OAuthVM: NSObject {
                 return
             }
             
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            
-            let decodedResponse = try decoder.decode(BillingLoginResponse.self, from: data)
+            let decodedResponse = try BigAssDecoder.decode(BillingLoginResponse.self, from: data)
             storeTokens(accessToken: decodedResponse.accessToken, refreshToken: decodedResponse.refreshToken, expiresIn: decodedResponse.expiresIn)
             
             showTwoFASheet = false

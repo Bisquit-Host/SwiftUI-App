@@ -80,11 +80,7 @@ final class TicketListVM {
                 print("Support tickets raw response:\\n\(raw)")
             }
             
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            decoder.dateDecodingStrategy = .iso8601
-            
-            tickets = try decoder.decode([SupportTicketWithLastMessageDTO].self, from: data)
+            tickets = try BigAssDecoder.decode([SupportTicketWithLastMessageDTO].self, from: data)
         } catch {
             print("❌", error.localizedDescription)
             SystemAlert.error("Error", subtitle: error.localizedDescription)
@@ -168,7 +164,7 @@ final class TicketListVM {
                 print("Create ticket status", http.statusCode)
             }
             
-            let created = try JSONDecoder().decode(CreateSupportTicketResponse.self, from: data)
+            let created = try BigAssDecoder.decode(CreateSupportTicketResponse.self, from: data)
             return created.id
         } catch {
             SystemAlert.error("Error", subtitle: error.localizedDescription)

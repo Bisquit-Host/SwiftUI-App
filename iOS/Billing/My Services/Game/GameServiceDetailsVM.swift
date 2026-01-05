@@ -28,12 +28,8 @@ final class GameServiceDetailsVM {
     func fetchDetails(_ serviceId: Int) async {
         guard let data = await request(path: "/game/\(serviceId)") else { return }
         
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        decoder.dateDecodingStrategy = .iso8601
-        
         do {
-            service = try decoder.decode(BillingServiceDetails.self, from: data)
+            service = try BigAssDecoder.decode(BillingServiceDetails.self, from: data)
         } catch {
             SystemAlert.error("Game detail decode error: \(error)")
             
@@ -46,12 +42,8 @@ final class GameServiceDetailsVM {
     func fetchChangeablePackages(_ serviceId: Int) async {
         guard let data = await request(path: "/game/\(serviceId)/change-package/packages") else { return }
         
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        decoder.dateDecodingStrategy = .iso8601
-        
         do {
-            changeablePackages = try decoder.decode([ChangeablePackage].self, from: data)
+            changeablePackages = try BigAssDecoder.decode([ChangeablePackage].self, from: data)
         } catch {
             SystemAlert.error("Game changeable packages decode error: \(error)")
             
@@ -109,12 +101,8 @@ final class GameServiceDetailsVM {
                         return
                     }
                     
-                    let decoder = JSONDecoder()
-                    decoder.keyDecodingStrategy = .convertFromSnakeCase
-                    decoder.dateDecodingStrategy = .iso8601
-                    
                     do {
-                        let response = try decoder.decode(ServiceRenewalResponse.self, from: data)
+                        let response = try BigAssDecoder.decode(ServiceRenewalResponse.self, from: data)
                         
                         self.service?.expiresAt = response.newExpiresAt
                         
@@ -192,7 +180,7 @@ final class GameServiceDetailsVM {
             guard (200...299).contains(http.statusCode) else {
                 let error = String(data: data, encoding: .utf8) ?? "Status \(http.statusCode)"
                 
-                if let decodedError = try? JSONDecoder().decode(PurchaseErrorResponse.self, from: data) {
+                if let decodedError = try? BigAssDecoder.decode(PurchaseErrorResponse.self, from: data) {
                     SystemAlert.error(decodedError.title, subtitle: "Status code: \(decodedError.status)")
                 } else {
                     SystemAlert.error(error, subtitle: "Status code: \(http.statusCode)")

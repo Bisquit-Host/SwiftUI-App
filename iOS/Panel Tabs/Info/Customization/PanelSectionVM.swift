@@ -51,7 +51,7 @@ class PanelSectionVM {
     private func load() {
         guard
             let data = UserDefaults.standard.data(forKey: storageKey),
-            let decoded = try? JSONDecoder().decode([PanelSection].self, from: data)
+            let decoded = try? BigAssDecoder.decode([PanelSection].self, from: data)
         else {
             sections = defaultSections
             

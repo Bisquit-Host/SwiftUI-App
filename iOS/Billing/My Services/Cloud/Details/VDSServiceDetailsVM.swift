@@ -35,12 +35,8 @@ final class VDSServiceDetailsVM {
     func fetchDetails(_ serviceId: Int) async {
         guard let data = await request(path: "/cloud/\(serviceId)") else { return }
         
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        decoder.dateDecodingStrategy = .iso8601
-        
         do {
-            service = try decoder.decode(CloudServiceDetails.self, from: data)
+            service = try BigAssDecoder.decode(CloudServiceDetails.self, from: data)
         } catch {
             SystemAlert.error("Cloud detail decode error: \(error)")
             
@@ -54,7 +50,7 @@ final class VDSServiceDetailsVM {
         guard let data = await request(path: "/cloud/\(serviceId)/change-package/packages") else { return }
         
         do {
-            changeablePackages = try JSONDecoder().decode([ChangeablePackage].self, from: data)
+            changeablePackages = try BigAssDecoder.decode([ChangeablePackage].self, from: data)
         } catch {
             SystemAlert.error("Cloud changeable packages decode error: \(error)")
             
@@ -67,12 +63,8 @@ final class VDSServiceDetailsVM {
     func fetchHistory(_ serviceId: Int) async {
         guard let data = await request(path: "/cloud/\(serviceId)/panel/history") else { return }
         
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        decoder.dateDecodingStrategy = .iso8601
-        
         do {
-            history = try decoder.decode([CloudServiceHistoryItem].self, from: data)
+            history = try BigAssDecoder.decode([CloudServiceHistoryItem].self, from: data)
         } catch {
             SystemAlert.error("Cloud history decode error: \(error)")
             
@@ -85,12 +77,8 @@ final class VDSServiceDetailsVM {
     func fetchCharts(_ serviceId: Int) async {
         guard let data = await request(path: "/cloud/\(serviceId)/panel/charts") else { return }
         
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        decoder.dateDecodingStrategy = .iso8601
-        
         do {
-            charts = try decoder.decode(CloudServiceCharts.self, from: data)
+            charts = try BigAssDecoder.decode(CloudServiceCharts.self, from: data)
         } catch {
             SystemAlert.error("Cloud charts decode error: \(error)")
             
@@ -104,7 +92,7 @@ final class VDSServiceDetailsVM {
         guard let data = await request(path: "/cloud/\(serviceId)/panel/reinstall/os") else { return }
         
         do {
-            osOptions = try JSONDecoder().decode([CloudServiceOSCategory].self, from: data)
+            osOptions = try BigAssDecoder.decode([CloudServiceOSCategory].self, from: data)
         } catch {
             SystemAlert.error("Cloud OS list decode error: \(error)")
             
@@ -189,12 +177,8 @@ final class VDSServiceDetailsVM {
                         return
                     }
                     
-                    let decoder = JSONDecoder()
-                    decoder.keyDecodingStrategy = .convertFromSnakeCase
-                    decoder.dateDecodingStrategy = .iso8601
-                    
                     do {
-                        let response = try decoder.decode(ServiceRenewalResponse.self, from: data)
+                        let response = try BigAssDecoder.decode(ServiceRenewalResponse.self, from: data)
                         
                         self.service?.expiresAt = response.newExpiresAt
                         
@@ -288,7 +272,7 @@ final class VDSServiceDetailsVM {
             guard (200...299).contains(http.statusCode) else {
                 let error = String(data: data, encoding: .utf8) ?? "Status \(http.statusCode)"
                 
-                if let decodedError = try? JSONDecoder().decode(PurchaseErrorResponse.self, from: data) {
+                if let decodedError = try? BigAssDecoder.decode(PurchaseErrorResponse.self, from: data) {
                     SystemAlert.error(decodedError.title, subtitle: "Status code: \(decodedError.status)")
                 } else {
                     SystemAlert.error(error, subtitle: "Status code: \(http.statusCode)")

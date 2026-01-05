@@ -31,13 +31,7 @@ final class PasskeyListVM {
             let (data, response) = try await URLSession.shared.data(for: request)
             try validateResponse(response, data: data)
             
-            let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = .iso8601
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            
-            let items = try decoder.decode([PasskeyListItem].self, from: data)
-            
-            passkeys = items
+            passkeys = try BigAssDecoder.decode([PasskeyListItem].self, from: data)
         } catch {
             SystemAlert.error(error.localizedDescription)
         }
@@ -115,11 +109,7 @@ final class PasskeyListVM {
         let (data, response) = try await URLSession.shared.data(for: request)
         try validateResponse(response, data: data)
         
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        decoder.dateDecodingStrategy = .iso8601
-        
-        return try decoder.decode(PasskeyOptionsResponse<PasskeyRegistrationOptions>.self, from: data)
+        return try BigAssDecoder.decode(PasskeyOptionsResponse<PasskeyRegistrationOptions>.self, from: data)
     }
     
     private func verifyRegistration(sessionId: String, credential: [String: Any]) async throws {

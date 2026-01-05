@@ -30,10 +30,7 @@ final class Billing2FAVM {
             let (data, response) = try await URLSession.shared.data(for: request)
             try validateResponse(response, data: data)
             
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            
-            setup = try decoder.decode(Billing2FASetupResponse.self, from: data)
+            setup = try BigAssDecoder.decode(Billing2FASetupResponse.self, from: data)
         } catch {
             SystemAlert.error(error.localizedDescription)
         }

@@ -15,7 +15,7 @@ extension UserDefaults {
         }
         
         do {
-            return try JSONDecoder().decode([ServerAttributes].self, from: data)
+            return try BigAssDecoder.decode([ServerAttributes].self, from: data)
         } catch {
             print("Error loading cached servers:", error.localizedDescription)
             removeObject(forKey: key) // clear corrupted cache so future loads start clean

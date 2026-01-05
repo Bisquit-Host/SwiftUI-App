@@ -45,11 +45,7 @@ final class BotServiceListVM {
                 return
             }
             
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            decoder.dateDecodingStrategy = .iso8601
-            
-            services = try decoder.decode([BillingBotServiceSummary].self, from: data)
+            services = try BigAssDecoder.decode([BillingBotServiceSummary].self, from: data)
         } catch {
             SystemAlert.error(error.localizedDescription)
             print("Bot services load failed:", error)

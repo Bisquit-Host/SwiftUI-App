@@ -101,7 +101,7 @@ final class HostingPlanListVM {
                 return
             }
             
-            let decoded = try JSONDecoder().decode(BillingHostingPlansResponse.self, from: data)
+            let decoded = try BigAssDecoder.decode(BillingHostingPlansResponse.self, from: data)
             
             switch category {
             case .bot:
@@ -130,7 +130,7 @@ final class HostingPlanListVM {
             guard let data = await request(path: "/cloud/os") else { break }
             
             do {
-                result.osCategories = try JSONDecoder().decode([CloudServiceOSCategory].self, from: data)
+                result.osCategories = try BigAssDecoder.decode([CloudServiceOSCategory].self, from: data)
             } catch {
                 SystemAlert.error(error.localizedDescription)
                 print("Order OS decode error:", error)
@@ -140,7 +140,7 @@ final class HostingPlanListVM {
             guard let data = await request(path: "/game/packages/\(planId)/nests") else { break }
             
             do {
-                result.nests = try JSONDecoder().decode([BillingHostingNest].self, from: data)
+                result.nests = try BigAssDecoder.decode([BillingHostingNest].self, from: data)
             } catch {
                 SystemAlert.error(error.localizedDescription)
                 print("Order nests decode error (game):", error)
@@ -150,7 +150,7 @@ final class HostingPlanListVM {
             guard let data = await request(path: "/bot/packages/\(planId)/nests") else { break }
             
             do {
-                result.nests = try JSONDecoder().decode([BillingHostingNest].self, from: data)
+                result.nests = try BigAssDecoder.decode([BillingHostingNest].self, from: data)
             } catch {
                 SystemAlert.error(error.localizedDescription)
                 print("Order nests decode error (bot):", error)
@@ -225,7 +225,7 @@ final class HostingPlanListVM {
         guard let data = await request(path: path, method: "POST", body: payload) else { return nil }
         
         do {
-            return try JSONDecoder().decode(BillingHostingOrderResponse.self, from: data)
+            return try BigAssDecoder.decode(BillingHostingOrderResponse.self, from: data)
         } catch {
             SystemAlert.error(error.localizedDescription)
             print("Order decode error:", error)
@@ -277,7 +277,7 @@ final class HostingPlanListVM {
                 let error = String(data: data, encoding: .utf8) ?? "Status \(http.statusCode)"
                 print("Order request failed \(http.statusCode):", error)
                 
-                if let decodedError = try? JSONDecoder().decode(PurchaseErrorResponse.self, from: data) {
+                if let decodedError = try? BigAssDecoder.decode(PurchaseErrorResponse.self, from: data) {
                     SystemAlert.error(decodedError.title, subtitle: "Status code: \(decodedError.status)")
                 } else {
                     SystemAlert.error(error, subtitle: "Status code: \(http.statusCode)")

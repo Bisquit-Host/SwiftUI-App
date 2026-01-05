@@ -41,11 +41,7 @@ final class VDSBillingVM {
                 return
             }
             
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            decoder.dateDecodingStrategy = .iso8601
-            
-            services = try decoder.decode([CloudServiceSummary].self, from: data)
+            services = try BigAssDecoder.decode([CloudServiceSummary].self, from: data)
         } catch {
             SystemAlert.error(error.localizedDescription)
             print("Cloud services load failed:", error)

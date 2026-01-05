@@ -104,11 +104,12 @@ final class SheetTopupVM {
                     } else {
                         SystemAlert.error("Top up failed", subtitle: http.statusCode.description)
                     }
+                    
                     return nil
                 }
             }
             
-            let topup = try JSONDecoder().decode(TopupResponse.self, from: data)
+            let topup = try BigAssDecoder.decode(TopupResponse.self, from: data)
             
             guard let paymentURL = URL(string: topup.url) else {
                 SystemAlert.error("Invalid payment URL")
@@ -172,10 +173,7 @@ final class SheetTopupVM {
                 }
             }
             
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            
-            let giftCode = try decoder.decode(GiftCodeResponse.self, from: data)
+            let giftCode = try BigAssDecoder.decode(GiftCodeResponse.self, from: data)
             return giftCode.bonusBalance
         } catch {
             print("❌ Gift code failed")

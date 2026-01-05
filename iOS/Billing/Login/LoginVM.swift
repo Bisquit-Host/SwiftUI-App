@@ -70,10 +70,7 @@ final class LoginVM {
                 print(prettyString)
             }
             
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            
-            return try decoder.decode(BillingLoginResponse.self, from: data)
+            return try BigAssDecoder.decode(BillingLoginResponse.self, from: data)
         } catch {
             SystemAlert.error(error.localizedDescription)
             return nil
@@ -106,10 +103,7 @@ final class LoginVM {
                 print(http.statusCode, "Sign up")
             }
             
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            
-            return try decoder.decode(BillingLoginResponse.self, from: data)
+            return try BigAssDecoder.decode(BillingLoginResponse.self, from: data)
         } catch {
             SystemAlert.error(error.localizedDescription)
             return nil
@@ -140,10 +134,7 @@ final class LoginVM {
                 return nil
             }
             
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            
-            return try decoder.decode(BillingLoginResponse.self, from: data)
+            return try BigAssDecoder.decode(BillingLoginResponse.self, from: data)
         } catch {
             SystemAlert.error(error.localizedDescription)
             return nil
@@ -214,9 +205,6 @@ final class LoginVM {
             throw URLError(.badServerResponse)
         }
         
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        
-        return try decoder.decode(BillingLoginResponse.self, from: data)
+        return try BigAssDecoder.decode(BillingLoginResponse.self, from: data)
     }
 }
