@@ -8,13 +8,13 @@ struct BillingBalanceCard: View {
     init(_ title: LocalizedStringKey, value: String) {
         self.title = title
         self.value = value
-        isTotal = title == "Total"
+        isTotal = title == "Total balance"
     }
     
     var body: some View {
         HStack(spacing: 12) {
             Text(title)
-                .semibold()
+                .fontWeight(isTotal ? .semibold : .regular)
             
             Spacer()
             

@@ -20,13 +20,13 @@ struct SheetTopup: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
-                BillingSectionCard("Balance") {
-                    BillingBalanceCard("Main", value: formatted(user.balance))
-                    BillingBalanceCard("Bonus", value: formatted(user.bonusBalance))
+                BillingSectionCard {
+                    BillingBalanceCard("Total balance", value: formatted(user.totalBalance))
                     
                     Divider()
                     
-                    BillingBalanceCard("Total", value: formatted(user.totalBalance))
+                    BillingBalanceCard("Main", value: formatted(user.balance))
+                    BillingBalanceCard("Bonus", value: formatted(user.bonusBalance))
                 }
                 
                 TopupSection(
