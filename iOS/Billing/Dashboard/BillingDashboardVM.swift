@@ -80,11 +80,7 @@ final class BillingDashboardVM {
                 print("Body:", bodyString)
             }
             
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            decoder.dateDecodingStrategy = .iso8601
-            
-            user = try decoder.decode(BillingUser.self, from: data)
+            user = try BigAssDecoder.decode(BillingUser.self, from: data)
         } catch {
             Logger().error("Error fetching user data: \(error)")
         }

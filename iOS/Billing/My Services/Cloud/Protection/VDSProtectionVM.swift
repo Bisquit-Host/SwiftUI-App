@@ -45,6 +45,7 @@ final class VDSProtectionVM {
         guard let data = await request(path: "/cloud/\(serviceId)/protection/ip") else { return }
         
         let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
         decoder.dateDecodingStrategy = .iso8601
         
         do {
@@ -83,6 +84,7 @@ final class VDSProtectionVM {
         guard let data = await request(path: "/cloud/\(serviceId)/protection/attacks?page=\(page)") else { return }
         
         let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
         decoder.dateDecodingStrategy = .iso8601
         
         do {
@@ -119,6 +121,7 @@ final class VDSProtectionVM {
             guard let data = await self.request(path: "/cloud/\(serviceId)/protection/ip", method: "PATCH", body: payload) else { return }
             
             let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
             decoder.dateDecodingStrategy = .iso8601
             
             if let updated = try? decoder.decode(VDSProtectionIPInfo.self, from: data) {
@@ -150,6 +153,7 @@ final class VDSProtectionVM {
             guard let data = await self.request(path: "/cloud/\(serviceId)/protection/profiles", method: "POST", body: payload) else { return }
             
             let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
             decoder.dateDecodingStrategy = .iso8601
             
             if let created = try? decoder.decode(VDSProtectionProfile.self, from: data) {
@@ -181,6 +185,7 @@ final class VDSProtectionVM {
             guard let data = await self.request(path: "/cloud/\(serviceId)/protection/profiles/\(profileId)", method: "PUT", body: payload) else { return }
             
             let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
             decoder.dateDecodingStrategy = .iso8601
             
             if let updated = try? decoder.decode(VDSProtectionProfile.self, from: data) {

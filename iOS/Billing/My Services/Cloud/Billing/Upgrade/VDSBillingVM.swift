@@ -42,6 +42,7 @@ final class VDSBillingVM {
             }
             
             let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
             decoder.dateDecodingStrategy = .iso8601
             
             services = try decoder.decode([CloudServiceSummary].self, from: data)

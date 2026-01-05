@@ -36,6 +36,7 @@ final class VDSServiceDetailsVM {
         guard let data = await request(path: "/cloud/\(serviceId)") else { return }
         
         let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
         decoder.dateDecodingStrategy = .iso8601
         
         do {
@@ -67,6 +68,7 @@ final class VDSServiceDetailsVM {
         guard let data = await request(path: "/cloud/\(serviceId)/panel/history") else { return }
         
         let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
         decoder.dateDecodingStrategy = .iso8601
         
         do {
@@ -84,6 +86,7 @@ final class VDSServiceDetailsVM {
         guard let data = await request(path: "/cloud/\(serviceId)/panel/charts") else { return }
         
         let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
         decoder.dateDecodingStrategy = .iso8601
         
         do {
@@ -187,6 +190,7 @@ final class VDSServiceDetailsVM {
                     }
                     
                     let decoder = JSONDecoder()
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
                     decoder.dateDecodingStrategy = .iso8601
                     
                     do {

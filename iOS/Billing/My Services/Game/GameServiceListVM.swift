@@ -46,6 +46,7 @@ final class GameServiceListVM {
             }
             
             let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
             decoder.dateDecodingStrategy = .iso8601
             
             services = try decoder.decode([BillingGameServiceSummary].self, from: data)

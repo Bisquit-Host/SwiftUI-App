@@ -54,11 +54,7 @@ final class SheetTopupVM {
                 print("Operations raw response:\\n\(raw)")
             }
             
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            decoder.dateDecodingStrategy = .iso8601
-            
-            operations = try decoder.decode(BillingOperationsResponse.self, from: data).operations
+            operations = try BigAssDecoder.decode(BillingOperationsResponse.self, from: data).operations
         } catch {
             print("❌ Error fetching operations")
             SystemAlert.error("Error", subtitle: error.localizedDescription)

@@ -81,6 +81,7 @@ final class TicketListVM {
             }
             
             let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
             decoder.dateDecodingStrategy = .iso8601
             
             tickets = try decoder.decode([SupportTicketWithLastMessageDTO].self, from: data)

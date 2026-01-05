@@ -191,11 +191,7 @@ final class LoginVM {
             throw URLError(.badServerResponse)
         }
         
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        decoder.dateDecodingStrategy = .iso8601
-        
-        return try decoder.decode(PasskeyOptionsResponse<PasskeyAssertionOptions>.self, from: data)
+        return try BigAssDecoder.decode(PasskeyOptionsResponse<PasskeyAssertionOptions>.self, from: data)
     }
     
     private func verifyPasskeyLogin(sessionId: String, credential: [String: Any]) async throws -> BillingLoginResponse {

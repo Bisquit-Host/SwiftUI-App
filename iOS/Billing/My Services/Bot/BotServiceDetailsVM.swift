@@ -29,6 +29,7 @@ final class BotServiceDetailsVM {
         guard let data = await request(path: "/bot/\(serviceId)") else { return }
         
         let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
         decoder.dateDecodingStrategy = .iso8601
         
         do {
@@ -46,6 +47,7 @@ final class BotServiceDetailsVM {
         guard let data = await request(path: "/bot/\(serviceId)/change-package/packages") else { return }
         
         let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
         decoder.dateDecodingStrategy = .iso8601
         
         do {
@@ -108,6 +110,7 @@ final class BotServiceDetailsVM {
                     }
                     
                     let decoder = JSONDecoder()
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
                     decoder.dateDecodingStrategy = .iso8601
                     
                     do {

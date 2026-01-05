@@ -172,6 +172,7 @@ final class TicketDetailsVM {
         }
         
         let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
         decoder.dateDecodingStrategy = .iso8601
         
         print("🔍 Handling event:", name, "payload:\n", trimmed)
