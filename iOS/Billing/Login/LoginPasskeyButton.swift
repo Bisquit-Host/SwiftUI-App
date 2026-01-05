@@ -1,4 +1,5 @@
 import SwiftUI
+import BisquitoNet
 
 struct LoginPasskeyButton: View {
     @Environment(LoginVM.self) private var vm

@@ -1,5 +1,6 @@
 import Foundation
 import PteroNet
+import BisquitoNet
 
 @Observable
 final class Billing2FAVM {

@@ -1,4 +1,5 @@
 import SwiftUI
+import BisquitoNet
 
 struct Billing2FASetupContentQRCode: View {
     private let setup: Billing2FASetupResponse

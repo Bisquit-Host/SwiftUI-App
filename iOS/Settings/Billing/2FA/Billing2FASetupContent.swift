@@ -1,4 +1,5 @@
 import SwiftUI
+import BisquitoNet
 
 struct Billing2FASetupContent: View {
     @Environment(Billing2FAVM.self) private var vm
