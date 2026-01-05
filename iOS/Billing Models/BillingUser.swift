@@ -1,4 +1,5 @@
 import Foundation
+import BisquitoNet
 
 public struct BillingUser: Decodable, Equatable {
     public let id: Int

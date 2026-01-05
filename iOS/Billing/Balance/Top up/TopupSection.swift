@@ -1,4 +1,5 @@
 import SwiftUI
+import BisquitoNet
 
 struct TopupSection: View {
     @Environment(SheetTopupVM.self) private var vm

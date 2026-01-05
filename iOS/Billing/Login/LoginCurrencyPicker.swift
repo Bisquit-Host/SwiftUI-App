@@ -1,4 +1,5 @@
 import SwiftUI
+import BisquitoNet
 
 struct LoginCurrencyPicker: View {
     @Binding private var selectedCurrency: BillingCurrency

@@ -1,4 +1,5 @@
 import SwiftUI
+import BisquitoNet
 
 struct BillingDashboardBalance: View {
     private let user: BillingUser

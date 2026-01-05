@@ -1,4 +1,5 @@
 import SwiftUI
+import BisquitoNet
 
 enum BillingHostingCategory: String, CaseIterable, Identifiable, Hashable {
     case cloud, game, bot

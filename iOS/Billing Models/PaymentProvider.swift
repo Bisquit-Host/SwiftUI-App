@@ -1,4 +1,5 @@
 import SwiftUI
+import BisquitoNet
 
 struct PaymentProvider: Identifiable, Equatable, CaseIterable {
     let id: String
