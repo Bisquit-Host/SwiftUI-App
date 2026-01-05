@@ -22,7 +22,7 @@ struct BillingOperation: Identifiable, Decodable, Equatable {
         amount: 16,
         type: .plus,
         date: Date(),
-        currency: .eur,
+        currency: .EUR,
         messages: []
     )
 }
