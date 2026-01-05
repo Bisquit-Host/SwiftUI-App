@@ -22,7 +22,7 @@ final class SecurityTasks {
     private func checkForTwoFA() async {
         do {
             // If details are returned, 2FA is currently disabled and should be enabled
-            let _ = try await twoFaDetailtsAPI(printResponse: false)
+            let _ = try await twoFaDetailtsAPI()
             alertTwoFA = true
             print("🛡️ 2FA is disabled")
             

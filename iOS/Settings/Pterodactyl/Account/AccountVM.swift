@@ -18,7 +18,7 @@ final class AccountVM {
     
     func twoFaDetails() async {
         do {
-            qrCodeURL = try await twoFaDetailtsAPI(printResponse: true)
+            qrCodeURL = try await twoFaDetailtsAPI()
             twoFaEnabled = false
             
         } catch TwoFAError.alreadyEnabled {
@@ -32,7 +32,7 @@ final class AccountVM {
     
     func enable2Fa(_ code: String, password: String, onSuccess: @escaping () -> ()) async {
         do {
-            let tokens = try await twoFaEnableAPI(code, password: password, printResponse: true)
+            let tokens = try await twoFaEnableAPI(code, password: password)
             
             Pasteboard.copy(tokens.tokens.description)
             
