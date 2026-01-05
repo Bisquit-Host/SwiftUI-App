@@ -1,5 +1,5 @@
 {
-  "originHash" : "1d04f1b7e9beedccba5965e22cec6b2be59d78bbf590305665f3c429391aa261",
+  "originHash" : "d9d50cc0f9d7955f4bc1671021c05c55d8705884d90225a3bcca77356f78c658",
   "pins" : [
     {
       "identity" : "alertkit",
@@ -26,6 +26,15 @@
       "state" : {
         "branch" : "main",
         "revision" : "6bbf43743cf5c3bc466510edd6fd5660a4cf498f"
+      }
+    },
+    {
+      "identity" : "bisquitonet",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Bisquit-Host/BisquitoNet",
+      "state" : {
+        "branch" : "main",
+        "revision" : "e03e28b3b638c02369c30803a4478a4a1889b920"
       }
     },
     {

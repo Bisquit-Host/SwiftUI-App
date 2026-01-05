@@ -72,6 +72,12 @@
 		F3D6777D2DD867A900721DE8 /* Highlightr in Frameworks */ = {isa = PBXBuildFile; productRef = F3D6777C2DD867A900721DE8 /* Highlightr */; };
 		F3DA6CFE2ED3BD8E001AABD6 /* HCaptcha in Frameworks */ = {isa = PBXBuildFile; productRef = F3DA6CFD2ED3BD8E001AABD6 /* HCaptcha */; };
 		F3E08EB22A2CE19900116C1C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F3E08EB12A2CE19900116C1C /* Kingfisher */; };
+		F3EAACD32F0C0C780073C45D /* BisquitoNet in Frameworks */ = {isa = PBXBuildFile; productRef = F3EAACD22F0C0C780073C45D /* BisquitoNet */; };
+		F3EAACD52F0C0C870073C45D /* BisquitoNet in Frameworks */ = {isa = PBXBuildFile; productRef = F3EAACD42F0C0C870073C45D /* BisquitoNet */; };
+		F3EAACD72F0C0C8C0073C45D /* BisquitoNet in Frameworks */ = {isa = PBXBuildFile; productRef = F3EAACD62F0C0C8C0073C45D /* BisquitoNet */; };
+		F3EAACD92F0C0C900073C45D /* BisquitoNet in Frameworks */ = {isa = PBXBuildFile; productRef = F3EAACD82F0C0C900073C45D /* BisquitoNet */; };
+		F3EAACDB2F0C0C950073C45D /* BisquitoNet in Frameworks */ = {isa = PBXBuildFile; productRef = F3EAACDA2F0C0C950073C45D /* BisquitoNet */; };
+		F3EAACDD2F0C0C990073C45D /* BisquitoNet in Frameworks */ = {isa = PBXBuildFile; productRef = F3EAACDC2F0C0C990073C45D /* BisquitoNet */; };
 		F3EB09D12A29532D0073916A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F3EB09D02A29532D0073916A /* Kingfisher */; };
 		F3F5AD6A2E885E4B007AD97D /* Appearance in Frameworks */ = {isa = PBXBuildFile; productRef = F3F5AD692E885E4B007AD97D /* Appearance */; };
 		F3F5AD7A2E88629E007AD97D /* Appearance in Frameworks */ = {isa = PBXBuildFile; productRef = F3F5AD792E88629E007AD97D /* Appearance */; };
@@ -1451,6 +1457,7 @@
 				F328D85E2A8240930038512F /* Algorithms in Frameworks */,
 				F3F60A682DEB93C900A15737 /* ScrechKit in Frameworks */,
 				F30860182B002C18004D776A /* PteroNet in Frameworks */,
+				F3EAACD52F0C0C870073C45D /* BisquitoNet in Frameworks */,
 				F3EB09D12A29532D0073916A /* Kingfisher in Frameworks */,
 			);
 		};
@@ -1459,6 +1466,7 @@
 			files = (
 				F342FAB72B2E49B600854270 /* Algorithms in Frameworks */,
 				F3F60A6A2DEB944600A15737 /* ScrechKit in Frameworks */,
+				F3EAACD92F0C0C900073C45D /* BisquitoNet in Frameworks */,
 				F36B145D2DC39F13008C1AF9 /* GaypadKit in Frameworks */,
 				F39D680D2A262C5E00B9BDFC /* Kingfisher in Frameworks */,
 				F3D6777D2DD867A900721DE8 /* Highlightr in Frameworks */,
@@ -1474,6 +1482,7 @@
 				F3F5AD7C2E8862A4007AD97D /* Appearance in Frameworks */,
 				F3A7CF0C2C8BBCE400413400 /* Kingfisher in Frameworks */,
 				F3A7CEFB2C8BB8A300413400 /* AlertKit in Frameworks */,
+				F3EAACDD2F0C0C990073C45D /* BisquitoNet in Frameworks */,
 				F3A7CF042C8BBB7800413400 /* SafariCover in Frameworks */,
 				F36F41842F05C04000C3EC6B /* SwiftTerm in Frameworks */,
 				F36F41862F05C04600C3EC6B /* NIOSSH in Frameworks */,
@@ -1492,6 +1501,7 @@
 				F3202C8F2D5590E20030B3CC /* Kingfisher in Frameworks */,
 				F3202D5B2D5759690030B3CC /* Algorithms in Frameworks */,
 				F33C2AC32C691735002FD150 /* QuickLooking in Frameworks */,
+				F3EAACDB2F0C0C950073C45D /* BisquitoNet in Frameworks */,
 				F32716DB2CF628CB00F2DC31 /* SafariCover in Frameworks */,
 				F36B145B2DC39F0E008C1AF9 /* GaypadKit in Frameworks */,
 				F32F2D072D908FE5007CF4DE /* MailCover in Frameworks */,
@@ -1509,6 +1519,7 @@
 		F3E08E9D2A2CE17800116C1C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
+				F3EAACD72F0C0C8C0073C45D /* BisquitoNet in Frameworks */,
 				F37FF8832D87AE3800554B3F /* Algorithms in Frameworks */,
 				F3B7BFDE2B38E206005B5003 /* Pow in Frameworks */,
 				F3E08EB22A2CE19900116C1C /* Kingfisher in Frameworks */,
@@ -1532,6 +1543,7 @@
 				F34745CC2A31F3A000EE2FB8 /* MailCover in Frameworks */,
 				F36B73A12C8B07E100E858FE /* AudioVisualizer in Frameworks */,
 				F3DA6CFE2ED3BD8E001AABD6 /* HCaptcha in Frameworks */,
+				F3EAACD32F0C0C780073C45D /* BisquitoNet in Frameworks */,
 				F3F60A662DEB93C300A15737 /* ScrechKit in Frameworks */,
 				F30860142B002B31004D776A /* PteroNet in Frameworks */,
 				F3F5AD6A2E885E4B007AD97D /* Appearance in Frameworks */,
@@ -1633,6 +1645,7 @@
 				F36B145C2DC39F13008C1AF9 /* GaypadKit */,
 				F3D6777C2DD867A900721DE8 /* Highlightr */,
 				F3F60A692DEB944600A15737 /* ScrechKit */,
+				F3EAACD82F0C0C900073C45D /* BisquitoNet */,
 			);
 			productName = "Bisquit.Host tvOSapp";
 			productReference = F3000E05295A341000ABD30A /* tvOS.app */;
@@ -1682,6 +1695,7 @@
 				F3DA6CFD2ED3BD8E001AABD6 /* HCaptcha */,
 				F366DE142EF0B87000C2A958 /* NIOSSH */,
 				F366DE232EF0B88800C2A958 /* SwiftTerm */,
+				F3EAACD22F0C0C780073C45D /* BisquitoNet */,
 			);
 			productName = Bisquit.Host;
 			productReference = F31BA5232958FF7C0006D126 /* Bisquit.Host.app */;
@@ -1708,6 +1722,7 @@
 				F328D85D2A8240930038512F /* Algorithms */,
 				F30860172B002C18004D776A /* PteroNet */,
 				F3F60A672DEB93C900A15737 /* ScrechKit */,
+				F3EAACD42F0C0C870073C45D /* BisquitoNet */,
 			);
 			productName = "Bisquit.Host Watch App";
 			productReference = F31BA5332958FF7D0006D126 /* watchOS.app */;
@@ -1823,6 +1838,7 @@
 				F36F41832F05C04000C3EC6B /* SwiftTerm */,
 				F36F41852F05C04600C3EC6B /* NIOSSH */,
 				F36F41872F05C06900C3EC6B /* HCaptcha */,
+				F3EAACDC2F0C0C990073C45D /* BisquitoNet */,
 			);
 			productName = "iMessage MessagesExtension";
 			productReference = F3A7CEC32C8B685500413400 /* iMessage.appex */;
@@ -1856,6 +1872,7 @@
 				F36B145A2DC39F0E008C1AF9 /* GaypadKit */,
 				F3D315342E003CD30068EFF5 /* ScrechKit */,
 				F36F410E2F055ED400C3EC6B /* Vortex */,
+				F3EAACDA2F0C0C950073C45D /* BisquitoNet */,
 			);
 			productName = "Bisquit.Host visionOS";
 			productReference = F3BD76F22A43C890003E7385 /* visionOS.app */;
@@ -1915,6 +1932,7 @@
 				F36B14582DC39F08008C1AF9 /* GaypadKit */,
 				F3F60A6B2DEB94B900A15737 /* ScrechKit */,
 				F3F5AD792E88629E007AD97D /* Appearance */,
+				F3EAACD62F0C0C8C0073C45D /* BisquitoNet */,
 			);
 			productName = "Bisquit.Host Mac";
 			productReference = F3E08EA02A2CE17800116C1C /* Bisquit.Host.app */;
@@ -2020,6 +2038,7 @@
 				F3DA6CFC2ED3BD8E001AABD6 /* XCRemoteSwiftPackageReference "HCaptcha-ios-sdk" */,
 				F366DE132EF0B87000C2A958 /* XCRemoteSwiftPackageReference "swift-nio-ssh" */,
 				F366DE222EF0B88800C2A958 /* XCRemoteSwiftPackageReference "SwiftTerm" */,
+				F3EAACD12F0C0C780073C45D /* XCRemoteSwiftPackageReference "BisquitoNet" */,
 			);
 			preferredProjectObjectVersion = 90;
 			productRefGroup = F31BA5242958FF7C0006D126 /* Products */;
@@ -3449,6 +3468,14 @@
 				kind = branch;
 			};
 		};
+		F3EAACD12F0C0C780073C45D /* XCRemoteSwiftPackageReference "BisquitoNet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Bisquit-Host/BisquitoNet";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		F3F5AD682E885E4B007AD97D /* XCRemoteSwiftPackageReference "Appearance" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TopScrech/Appearance";
@@ -3739,6 +3766,36 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F37266E529D9EF25005FD103 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		F3EAACD22F0C0C780073C45D /* BisquitoNet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3EAACD12F0C0C780073C45D /* XCRemoteSwiftPackageReference "BisquitoNet" */;
+			productName = BisquitoNet;
+		};
+		F3EAACD42F0C0C870073C45D /* BisquitoNet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3EAACD12F0C0C780073C45D /* XCRemoteSwiftPackageReference "BisquitoNet" */;
+			productName = BisquitoNet;
+		};
+		F3EAACD62F0C0C8C0073C45D /* BisquitoNet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3EAACD12F0C0C780073C45D /* XCRemoteSwiftPackageReference "BisquitoNet" */;
+			productName = BisquitoNet;
+		};
+		F3EAACD82F0C0C900073C45D /* BisquitoNet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3EAACD12F0C0C780073C45D /* XCRemoteSwiftPackageReference "BisquitoNet" */;
+			productName = BisquitoNet;
+		};
+		F3EAACDA2F0C0C950073C45D /* BisquitoNet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3EAACD12F0C0C780073C45D /* XCRemoteSwiftPackageReference "BisquitoNet" */;
+			productName = BisquitoNet;
+		};
+		F3EAACDC2F0C0C990073C45D /* BisquitoNet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3EAACD12F0C0C780073C45D /* XCRemoteSwiftPackageReference "BisquitoNet" */;
+			productName = BisquitoNet;
 		};
 		F3EB09D02A29532D0073916A /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
