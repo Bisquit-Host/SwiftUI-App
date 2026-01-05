@@ -10,7 +10,7 @@ struct BillingOperation: Identifiable, Decodable, Equatable {
     let amount: Double
     let type: BillingOperationType
     let date: Date
-    let currency: BillingTransactionCurrency
+    let currency: BillingCurrency
     let messages: [BillingOperationMessage]
     
     var primaryMessage: String? {
