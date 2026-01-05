@@ -1,39 +1,49 @@
-import SwiftUI
+import ScrechKit
 
 struct PasskeyList: View {
     @Environment(PasskeyListVM.self) private var vm
     
+    @State private var alertCreate = false
+    
     var body: some View {
+        @Bindable var vm = vm
+        
         ScrollView {
-            VStack(spacing: 16) {
-                RegisterPasskeySection()
-                
-                BillingSectionCard {
-                    if vm.passkeys.isEmpty && !vm.isLoading {
-                        ContentUnavailableView("No Passkeys yet", systemImage: "key.fill", description: Text("Register a Passkey to sign in without a password"))
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 12)
-                    } else {
-                        VStack(spacing: 10) {
-                            ForEach(vm.passkeys) {
-                                PasskeyCard($0)
-                            }
-                            .animation(.default, value: vm.passkeys)
-                        }
-                    }
+            VStack(spacing: 10) {
+                ForEach(vm.passkeys) {
+                    PasskeyCard($0)
                 }
+                .animation(.default, value: vm.passkeys)
             }
             .scenePadding()
         }
         .navigationTitle("Passkeys")
         .navigationBarTitleDisplayMode(.inline)
         .scrollIndicators(.never)
+        .refreshableTask {
+            await vm.fetchPasskeys()
+        }
         .background {
             LinearGradient(colors: [.blue.opacity(0.08), Color(.systemBackground)], startPoint: .topLeading, endPoint: .bottomTrailing)
                 .ignoresSafeArea()
         }
-        .refreshableTask {
-            await vm.fetchPasskeys()
+        .toolbar {
+            SFButton("plus") {
+                alertCreate = true
+            }
+        }
+        .alert("Create Passkey", isPresented: $alertCreate) {
+            TextField("Label (optional)", text: $vm.label)
+                .textInputAutocapitalization(.never)
+                .disableAutocorrection(true)
+            
+            Button("Create", role: .confirm) {
+                Task {
+                    await vm.registerPasskey()
+                }
+            }
+            
+            Button("Cancel", role: .cancel) {}
         }
     }
 }
