@@ -26,7 +26,7 @@ public enum BillingCurrency: String, Decodable, CaseIterable {
     }
 }
 
-#warning("Remove after api update")
+#warning("Remove after API update")
 public enum BillingTransactionCurrency: String, Decodable, CaseIterable {
     case eur, rub
     
