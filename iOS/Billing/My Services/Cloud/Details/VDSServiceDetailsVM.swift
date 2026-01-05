@@ -25,7 +25,10 @@ final class VDSServiceDetailsVM {
             group.addTask { await self.fetchHistory(serviceId) }
             group.addTask { await self.fetchCharts(serviceId) }
             group.addTask { await self.fetchOSOptions(serviceId) }
-            group.addTask { await self.fetchChangeablePackages(serviceId) }
+            
+            if service?.state != .suspended && service?.state != .deleted {
+                group.addTask { await self.fetchChangeablePackages(serviceId) }
+            }
         }
     }
     
