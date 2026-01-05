@@ -523,7 +523,6 @@
 				Utils/Converter.swift,
 				Utils/customRound.swift,
 				Utils/DismissButton.swift,
-				Utils/Networking/BigAssDecoder.swift,
 				Utils/Networking/Endpoint.swift,
 				Utils/Networking/NetworkCalls.swift,
 				Utils/Networking/Prefetcher.swift,
@@ -634,7 +633,6 @@
 				Utils/customRound.swift,
 				Utils/DismissButton.swift,
 				Utils/MetricKitManager.swift,
-				Utils/Networking/BigAssDecoder.swift,
 				Utils/Networking/Endpoint.swift,
 				Utils/Networking/NetworkCalls.swift,
 				Utils/Networking/Prefetcher.swift,
@@ -772,7 +770,6 @@
 				Utils/customRound.swift,
 				Utils/DismissButton.swift,
 				Utils/Networking/BakgroundTask.swift,
-				Utils/Networking/BigAssDecoder.swift,
 				Utils/Networking/Endpoint.swift,
 				Utils/Networking/NetworkCalls.swift,
 				Utils/Networking/Prefetcher.swift,
@@ -1147,7 +1144,6 @@
 				Utils/formatCurrency.swift,
 				Utils/MetricKitManager.swift,
 				Utils/Networking/BakgroundTask.swift,
-				Utils/Networking/BigAssDecoder.swift,
 				Utils/Networking/Endpoint.swift,
 				Utils/Networking/NetworkCalls.swift,
 				Utils/Networking/Prefetcher.swift,
@@ -1168,7 +1164,6 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Utils/ANSIConverter.swift,
-				Utils/Networking/BigAssDecoder.swift,
 				Utils/Networking/NetworkCalls.swift,
 			);
 			target = F38637362A8641120069F074 /* Widgets */;
@@ -1278,7 +1273,6 @@
 				Utils/customRound.swift,
 				Utils/DismissButton.swift,
 				Utils/MetricKitManager.swift,
-				Utils/Networking/BigAssDecoder.swift,
 				Utils/Networking/Endpoint.swift,
 				Utils/Networking/NetworkCalls.swift,
 				Utils/Networking/Prefetcher.swift,

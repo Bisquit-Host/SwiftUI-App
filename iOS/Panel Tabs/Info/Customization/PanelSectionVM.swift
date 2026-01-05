@@ -1,4 +1,5 @@
 import Foundation
+import PteroNet
 
 @Observable
 class PanelSectionVM {
