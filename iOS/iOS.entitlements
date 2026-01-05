@@ -19,6 +19,7 @@
 	<key>com.apple.developer.icloud-container-identifiers</key>
 	<array>
 		<string>iCloud.host.bisquit.Bisquit-host</string>
+		<string>iCloud.host.bisquit.Bisquit-host.tips</string>
 	</array>
 	<key>com.apple.developer.icloud-services</key>
 	<array>
@@ -34,6 +35,7 @@
 	<key>com.apple.developer.ubiquity-container-identifiers</key>
 	<array>
 		<string>iCloud.host.bisquit.Bisquit-host</string>
+		<string>iCloud.host.bisquit.Bisquit-host.tips</string>
 	</array>
 	<key>com.apple.developer.ubiquity-kvstore-identifier</key>
 	<string>$(TeamIdentifierPrefix)host.bisquit.Bisquit-host.KeyValueStorage</string>

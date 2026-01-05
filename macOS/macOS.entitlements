@@ -9,6 +9,7 @@
 	<key>com.apple.developer.icloud-container-identifiers</key>
 	<array>
 		<string>iCloud.host.bisquit.Bisquit-host</string>
+		<string>iCloud.host.bisquit.Bisquit-host.tips</string>
 	</array>
 	<key>com.apple.developer.icloud-services</key>
 	<array>

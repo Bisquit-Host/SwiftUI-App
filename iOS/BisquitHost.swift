@@ -3,6 +3,7 @@ import SwiftData
 import TipKit
 import GameKit
 import Algorithms
+import OSLog
 
 #if canImport(CoreSpotlight)
 import CoreSpotlight
@@ -42,8 +43,11 @@ struct BisquitHost: App {
             fatalError("Failed to create model container")
         }
         
-        try? Tips.configure([.displayFrequency(.immediate)])
-        
+        do {
+            try Tips.configure([.displayFrequency(.immediate), .datastoreLocation(.groupContainer(identifier: "group.Bisquit-host")), .cloudKitContainer(.automatic)])
+        } catch {
+            Logger().error("Error initializing TipKit \(error.localizedDescription)")
+        }
 #if canImport(MetricKit) && !os(tvOS)
         _ = MetricKitManager.shared
 #endif

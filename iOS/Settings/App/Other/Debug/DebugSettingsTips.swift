@@ -2,11 +2,11 @@ import SwiftUI
 import TipKit
 
 struct DebugSettingsTips: View {
+    @State private var trigger = false
+    
     var body: some View {
         Section {
-            Button {
-                Tips.showAllTipsForTesting()
-            } label: {
+            Button(action: shpwAllTips) {
                 Label {
                     Text("Show all tips")
                 } icon: {
@@ -14,7 +14,13 @@ struct DebugSettingsTips: View {
                         .foregroundStyle(.yellow)
                 }
             }
+            .hapticOn(trigger, as: .success)
         }
+    }
+    
+    private func shpwAllTips() {
+        Tips.showAllTipsForTesting()
+        trigger.toggle()
     }
 }
 
