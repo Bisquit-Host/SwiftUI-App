@@ -34,7 +34,7 @@
       "location" : "https://github.com/Bisquit-Host/BisquitoNet",
       "state" : {
         "branch" : "main",
-        "revision" : "5d45b578ac389917cea1041f199132977a127b6c"
+        "revision" : "a8a6acbd173b2da48599ea9642cfad9f6687f076"
       }
     },
     {
@@ -106,7 +106,7 @@
       "location" : "https://github.com/Bisquit-Host/PteroNet",
       "state" : {
         "branch" : "main",
-        "revision" : "4adf427b87fa73d466a3eeead2eb5b49cde9dde9"
+        "revision" : "efb5bf5b84b49534822a26b11ae2748451cde30f"
       }
     },
     {
@@ -204,8 +204,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-nio.git",
       "state" : {
-        "revision" : "a1605a3303a28e14d822dec8aaa53da8a9490461",
-        "version" : "2.92.0"
+        "revision" : "e3d5c560e0a6bfa391a00e857aa28ad52a41fe8d",
+        "version" : "2.92.1"
       }
     },
     {

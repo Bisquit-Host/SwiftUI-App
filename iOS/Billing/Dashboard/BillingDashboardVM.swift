@@ -7,45 +7,23 @@ final class BillingDashboardVM {
     var user: BillingUser? = nil
     
     func refreshAuthToken(onSuccess: @escaping () async -> Void = {}) async {
-        guard let url = URL(string: "\(Endpoint.basePath)auth/refresh") else { return }
-        
-        guard let refreshToken = Keychain.load(key: "refresh_token") else {
-            SystemAlert.error("Error: refresh token not found", subtitle: #function)
+        guard let refreshToken = Keychain.load(key: "refresh_token"), !refreshToken.isEmpty else {
+            SystemAlert.error("Refresh token not found", subtitle: #function)
             return
         }
         
-        guard !refreshToken.isEmpty else { return }
-        
-        let body = ["refreshToken": refreshToken]
-        
-        var req = URLRequest(url: url)
-        req.httpMethod = "POST"
-        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        req.httpBody = try? JSONSerialization.data(withJSONObject: body)
-        
-        do {
-            let (data, response) = try await URLSession.shared.data(for: req)
-            
-            if let httpResponse = response as? HTTPURLResponse {
-                let status = httpResponse.statusCode
-                Logger().info("\(status) Refresh token")
-            }
-            
-            prettyJSON(data)
-            
-            let refreshedCreds = try BigAssDecoder.decode(BillingLoginResponse.self, from: data)
-            
-            Keychain.save(refreshedCreds.accessToken, forKey: "access_token")
-            Keychain.save(refreshedCreds.refreshToken, forKey: "refresh_token")
-            
-            ValueStore().lastBillingTokenRefresh = Date()
-            ValueStore().accessTokenExpiresIn = refreshedCreds.expiresIn
-            
-            await onSuccess()
-        } catch {
-            SystemAlert.error("Error refreshing access token", subtitle: error.localizedDescription)
+        guard let credentials = await refreshAuthTokenAPI(refreshToken: refreshToken) else {
+            SystemAlert.error("Error refreshing access token")
             return
         }
+        
+        Keychain.save(credentials.accessToken, forKey: "access_token")
+        Keychain.save(credentials.refreshToken, forKey: "refresh_token")
+        
+        ValueStore().lastBillingTokenRefresh = Date()
+        ValueStore().accessTokenExpiresIn = credentials.expiresIn
+        
+        await onSuccess()
     }
     
     func fetchUserInfo() async {
