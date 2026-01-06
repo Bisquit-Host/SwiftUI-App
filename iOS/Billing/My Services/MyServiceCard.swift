@@ -75,15 +75,17 @@ struct MyServiceCard: View {
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
             
-            Button("Save", role: .confirm) {
-                Task {
-                    await rename(to: newName)
-                    newName = ""
-                }
-            }
-            .disabled(isRenaming)
+            Button("Save", role: .confirm, action: save)
+                .disabled(isRenaming)
             
             Button("Cancel", role: .cancel) {}
+        }
+    }
+    
+    private func save() {
+        Task {
+            await rename(to: newName)
+            newName = ""
         }
     }
     

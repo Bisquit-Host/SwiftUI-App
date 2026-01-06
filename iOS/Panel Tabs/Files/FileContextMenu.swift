@@ -71,9 +71,7 @@ struct FileContextMenu: ViewModifier {
                     .autocorrectionDisabled()
                     .limitInputLength($vm.newFileName, length: 255)
                 
-                Button("Rename", role: .destructive) {
-                    rename()
-                }
+                Button("Rename", role: .destructive, action: rename)
             }
     }
     

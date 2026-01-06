@@ -70,12 +70,7 @@ struct StartPage: View {
             }
         }
         .alert("Error \(vm.errorCode)", isPresented: $vm.alertInvalid) {
-            Button("Try again", role: .confirm) {
-                Task {
-                    await checkApiKey()
-                }
-            }
-            
+            Button("Try again", role: .confirm, action: retry)
             Button("Remove this key", role: .destructive, action: removeSelectedKey)
         } message: {
             Text(vm.errorDescription)
@@ -85,6 +80,12 @@ struct StartPage: View {
         }
         .sheet($vm.sheetCloudKeys) {
             CloudKeysParent($vm.apiKey)
+        }
+    }
+    
+    private func retry() {
+        Task {
+            await checkApiKey()
         }
     }
     

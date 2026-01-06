@@ -26,19 +26,20 @@ struct NewFolder: View {
         }
         .alert("New Folder", isPresented: $alertCreate) {
             TextField("", text: $newFolderName)
-            
-            Button("Create") {
-                Task {
-                    await vm.createFolder(newFolderName, at: root)
-                }
-                
-                newFolderName = ""
-            }
+            Button("Create", action: create)
             
             Button("Cancel") {
                 newFolderName = ""
             }
         }
+    }
+    
+    private func create() {
+        Task {
+            await vm.createFolder(newFolderName, at: root)
+        }
+        
+        newFolderName = ""
     }
 }
 

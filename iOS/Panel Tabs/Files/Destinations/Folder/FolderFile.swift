@@ -60,20 +60,21 @@ struct FolderFile: View {
         .scrollContentBackground(.hidden)
         .alert("New Folder", isPresented: $alertNewFolder) {
             TextField("Enter a folder name", text: $vm.newFolderName)
-            
-            Button("Create", role: .confirm) {
-                if !vm.newFolderName.isEmpty {
-                    Task {
-                        await vm.createFolder(vm.newFolderName, at: vm.path)
-                    }
-                    
-                    vm.newFolderName = ""
-                }
-            }
+            Button("Create", role: .confirm, action: create)
             
             Button("Cancel", role: .cancel) {
                 vm.newFolderName = ""
             }
+        }
+    }
+    
+    private func create() {
+        if !vm.newFolderName.isEmpty {
+            Task {
+                await vm.createFolder(vm.newFolderName, at: vm.path)
+            }
+            
+            vm.newFolderName = ""
         }
     }
 }
