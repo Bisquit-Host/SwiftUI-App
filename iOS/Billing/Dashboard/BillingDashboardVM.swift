@@ -10,7 +10,7 @@ final class BillingDashboardVM {
         guard let url = URL(string: "\(Endpoint.basePath)auth/refresh") else { return }
         
         guard let refreshToken = Keychain.load(key: "refresh_token") else {
-            print("Rrror: refresh token not found", #function)
+            SystemAlert.error("Error: refresh token not found", subtitle: #function)
             return
         }
         
@@ -28,13 +28,10 @@ final class BillingDashboardVM {
             
             if let httpResponse = response as? HTTPURLResponse {
                 let status = httpResponse.statusCode
-                
-                print(status, "Refresh token")
+                Logger().info("\(status) Refresh token")
             }
             
-            if let bodyString = String(data: data, encoding: .utf8) {
-                print("Body:", bodyString)
-            }
+            prettyJSON(data)
             
             let refreshedCreds = try BigAssDecoder.decode(BillingLoginResponse.self, from: data)
             
@@ -46,14 +43,14 @@ final class BillingDashboardVM {
             
             await onSuccess()
         } catch {
-            print("Error refreshing access_token:", error.localizedDescription)
+            SystemAlert.error("Error refreshing access token", subtitle: error.localizedDescription)
             return
         }
     }
     
     func fetchUserInfo() async {
         guard let accessToken = Keychain.load(key: "access_token") else {
-            print("Access token not found", #function)
+            SystemAlert.error("Access token not found", subtitle: #function)
             return
         }
         
@@ -65,17 +62,12 @@ final class BillingDashboardVM {
         
         do {
             let (data, response) = try await URLSession.shared.data(for: req)
+            prettyJSON(data)
             
             if let httpResponse = response as? HTTPURLResponse {
-                let status = httpResponse.statusCode
-                
-                if status == 401 {
+                if httpResponse.statusCode == 401 {
                     let _ = await refreshAuthToken()
                 }
-            }
-            
-            if let bodyString = String(data: data, encoding: .utf8) {
-                print("Body:", bodyString)
             }
             
             user = try BigAssDecoder.decode(BillingUser.self, from: data)
