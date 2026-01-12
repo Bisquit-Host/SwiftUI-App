@@ -9,8 +9,6 @@ final class SheetTopupVM {
     var isTopupLoading = false
     var isGiftCodeLoading = false
     
-    private let baseURL = "https://test-api.bisquit.host"
-    
     func fetchOperations() async {
         guard let accessToken = Keychain.load(key: "access_token") else {
             print("Access token not found", #function)
@@ -20,7 +18,7 @@ final class SheetTopupVM {
         isLoading = true
         defer { isLoading = false }
         
-        guard let url = URL(string: "\(baseURL)/finances/operations?take=50") else {
+        guard let url = URL(string: "\(Endpoint.basePath)finances/operations?take=50") else {
             print("Invalid URL")
             return
         }
@@ -68,7 +66,7 @@ final class SheetTopupVM {
             return nil
         }
         
-        guard let url = URL(string: "\(baseURL)/finances/topup") else {
+        guard let url = URL(string: "\(Endpoint.basePath)finances/topup") else {
             SystemAlert.error("Invalid URL")
             return nil
         }
@@ -138,7 +136,7 @@ final class SheetTopupVM {
             return nil
         }
         
-        guard let url = URL(string: "\(baseURL)/finances/gift-code") else {
+        guard let url = URL(string: "\(Endpoint.basePath)finances/gift-code") else {
             SystemAlert.error("Invalid URL")
             return nil
         }

@@ -14,7 +14,7 @@ final class LoginVM {
     var attestationResult: AttestationResult?
     
     private let passkeyAuth = PasskeyAuthorizationController()
-    private let baseURL = URL(string: "https://test-api.bisquit.host")!
+    private let baseURL = URL(string: Endpoint.basePath)!
     private let passkeyLoginPath = "auth/passkeys"
     
     var isAppAttestSupported: Bool {
@@ -28,6 +28,7 @@ final class LoginVM {
         do {
             let result = try await AppAttestService.shared.attestDevice(userID: userID)
             attestationResult = result
+            
             return result
         } catch {
             SystemAlert.error(error.localizedDescription)
@@ -66,7 +67,6 @@ final class LoginVM {
         
         do {
             let (data, _) = try await URLSession.shared.data(for: req)
-            
             prettyJSON(data)
             
             return try BigAssDecoder.decode(BillingLoginResponse.self, from: data)
