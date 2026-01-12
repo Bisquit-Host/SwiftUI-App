@@ -35,7 +35,7 @@ final class LoginVM {
         }
     }
     
-    func login(_ login: String, _ password: String, _ captchaToken: String) async -> BillingLoginResponse? {
+    func login(_ login: String, _ password: String, _ captchaToken: String, attestRequest: AttestRequest? = nil) async -> BillingLoginResponse? {
         isSubmitting = true
         defer { isSubmitting = false }
         
@@ -44,10 +44,11 @@ final class LoginVM {
             return nil
         }
         
-        let body = [
+        let body: [String: Any?] = [
             "login": login.lowercased(),
             "password": password,
-            "captchaResponse": captchaToken
+            "captchaResponse": captchaToken,
+            "attestRequest": attestRequest
         ]
         
         var req = URLRequest(url: url)

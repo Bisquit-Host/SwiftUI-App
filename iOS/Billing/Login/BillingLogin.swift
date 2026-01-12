@@ -14,7 +14,6 @@ struct BillingLogin: View {
     @State private var selectedCurrency: BillingCurrency = .RUB
     @State private var hasAcceptedDocuments = false
     @State private var sheetDocuments = false
-    @State private var sheetVerification = false
     @State private var sheetHcaptcha = false
     @State private var captchaToken = ""
     @State private var pending2FAToken: String?
@@ -40,7 +39,7 @@ struct BillingLogin: View {
         let documentsNotAccepted = isSignUp && !hasAcceptedDocuments
         let invalidEmail = isSignUp && !Self.isValidEmail(trimmedLogin)
         
-        return loginEmpty || passwordEmpty || (isSignUp && nameEmpty) || documentsNotAccepted || invalidEmail || vm.isSubmitting
+        return loginEmpty || passwordEmpty || (isSignUp && nameEmpty) || documentsNotAccepted || invalidEmail || vm.isSubmitting || vm.isAttesting
     }
     
     var body: some View {
@@ -69,7 +68,7 @@ struct BillingLogin: View {
                 .textContentType(.password)
                 .loginButtonStyle()
                 .onSubmit {
-                    showVerification()
+                    performVerification()
                 }
             
             if isSignUp {
@@ -78,9 +77,14 @@ struct BillingLogin: View {
             }
             
             Button {
-                showVerification()
+                performVerification()
             } label: {
-                if vm.isSubmitting {
+                if vm.isAttesting {
+                    HStack {
+                        ProgressView()
+                        Text("Verifying...")
+                    }
+                } else if vm.isSubmitting {
                     HStack {
                         ProgressView()
                         Text("Please wait...")
@@ -116,17 +120,6 @@ struct BillingLogin: View {
             }
             .secondary()
         }
-        .sheet($sheetVerification) {
-            VerificationSheet(
-                userID: trimmedLogin.isEmpty ? nil : trimmedLogin,
-                onHCaptcha: {
-                    sheetHcaptcha = true
-                },
-                onAppAttestSuccess: {
-                    // TODO: Handle AppAttest success for login
-                }
-            )
-        }
         .sheet($sheetHcaptcha) {
 #if !os(visionOS)
             HCaptchaSheet($captchaToken)
@@ -161,14 +154,22 @@ struct BillingLogin: View {
         return emailRegex.firstMatch(in: value, options: [], range: range) != nil
     }
     
-    private func showVerification() {
+    private func performVerification() {
         guard !continueButtonDisabled else { return }
-        sheetVerification = true
+        
+        Task {
+            let userID = trimmedLogin.isEmpty ? nil : trimmedLogin
+            
+            if vm.isAppAttestSupported, let _ = await vm.performAppAttest(userID: userID) {
+                auth()
+            } else {
+                sheetHcaptcha = true
+            }
+        }
     }
     
     private func auth() {
         sheetHcaptcha = false
-        sheetVerification = false
         
         guard !continueButtonDisabled else {
             captchaToken = ""

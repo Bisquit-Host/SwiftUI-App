@@ -129,7 +129,7 @@ actor AppAttestService {
     // MARK: - Private Methods
     
     private func fetchChallenge(userID: String?) async throws -> Data {
-        let url = baseURL.appendingPathComponent("challenge")
+        let url = await URL(string: Endpoint.attestChallenge)!
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -138,6 +138,7 @@ actor AppAttestService {
         struct ChallengeRequest: Encodable {
             let userID: String?
         }
+        
         request.httpBody = try JSONEncoder().encode(ChallengeRequest(userID: userID))
         
         let (data, response) = try await URLSession.shared.data(for: request)
@@ -151,13 +152,9 @@ actor AppAttestService {
             throw AppAttestError.serverError("Challenge request failed: \(message)")
         }
         
-        struct ChallengeResponse: Decodable {
-            let challenge: String
-        }
+        let challenge = try JSONDecoder().decode(String.self, from: data)
         
-        let decoded = try JSONDecoder().decode(ChallengeResponse.self, from: data)
-        
-        guard let challengeData = Data(base64Encoded: decoded.challenge) else {
+        guard let challengeData = Data(base64Encoded: challenge) else {
             throw AppAttestError.invalidResponse
         }
         
@@ -208,12 +205,6 @@ actor AppAttestService {
     
     private func verifyAttestation(challenge: Data, attestation: Data, keyID: String) async throws -> AttestationResult {
         let url = baseURL.appendingPathComponent("attest")
-        
-        struct AttestRequest: Encodable {
-            let challenge: String
-            let attestation: String
-            let keyID: String
-        }
         
         // keyID from Apple is already base64-encoded, send as-is
         let body = AttestRequest(

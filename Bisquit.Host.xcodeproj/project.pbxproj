@@ -799,6 +799,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				"Billing Models/Attachments.swift",
+				"Billing Models/AttestRequest.swift",
 				"Billing Models/AvatarUpdateResponse.swift",
 				"Billing Models/BillingError.swift",
 				"Billing Models/BillingHostingModels.swift",
@@ -1170,6 +1171,7 @@
 			membershipExceptions = (
 				Assets.xcassets,
 				"Billing Models/Attachments.swift",
+				"Billing Models/AttestRequest.swift",
 				"Billing Models/AvatarUpdateResponse.swift",
 				"Billing Models/BillingError.swift",
 				"Billing Models/BillingHostingModels.swift",
