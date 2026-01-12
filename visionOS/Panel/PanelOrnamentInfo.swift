@@ -145,7 +145,7 @@ struct PanelOrnamentInfo: View {
             }
             
             if showCustomizeButton {
-#warning("image")
+#warning("Add an SFSymbol")
                 Button("Customize", systemImage: "") {
                     sheetOrnamentinfo = true
                 }
