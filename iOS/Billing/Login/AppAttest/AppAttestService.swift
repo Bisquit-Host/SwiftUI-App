@@ -158,6 +158,8 @@ actor AppAttestService {
             throw AppAttestError.invalidResponse
         }
         
+        logger.info("Featched challenge: \(challenge)")
+        
         return challengeData
     }
     
