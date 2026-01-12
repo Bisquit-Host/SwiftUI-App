@@ -43,7 +43,7 @@ struct TicketDetails: View {
         .toolbar {
             ToolbarItem {
                 Button {
-#warning("Does nothing")
+#warning("Awaiting close ticket implementation")
                 } label: {
                     Text(vm.ticket.status.rawValue.capitalized)
                         .foregroundStyle(vm.ticket.status.color)
