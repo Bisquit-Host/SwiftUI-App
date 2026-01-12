@@ -229,12 +229,6 @@ actor AppAttestService {
             throw AppAttestError.serverError("Attestation verification failed: \(message)")
         }
         
-        struct AttestResponse: Decodable {
-            let success: Bool
-            let userID: String?
-            let publicKey: String
-        }
-        
         let decoded = try JSONDecoder().decode(AttestResponse.self, from: data)
         
         return AttestationResult(
@@ -246,13 +240,6 @@ actor AppAttestService {
     
     private func verifyAssertion(challenge: Data, assertion: Data, publicKey: String, clientData: Data) async throws -> AssertionResult {
         let url = baseURL.appendingPathComponent("assert")
-        
-        struct AssertRequest: Encodable {
-            let challenge: String
-            let assertion: String
-            let publicKey: String
-            let clientData: String
-        }
         
         let body = AssertRequest(
             challenge: challenge.base64EncodedString(),
@@ -277,17 +264,27 @@ actor AppAttestService {
             throw AppAttestError.serverError("Assertion verification failed: \(message)")
         }
         
-        struct AssertResponse: Decodable {
-            let success: Bool
-            let userID: String?
-            let counter: Int
-        }
-        
         let decoded = try JSONDecoder().decode(AssertResponse.self, from: data)
         
-        return AssertionResult(
-            userID: decoded.userID,
-            counter: decoded.counter
-        )
+        return AssertionResult(userID: decoded.userID, counter: decoded.counter)
     }
+}
+
+nonisolated struct AssertRequest: Encodable {
+    let challenge: String
+    let assertion: String
+    let publicKey: String
+    let clientData: String
+}
+
+nonisolated struct AssertResponse: Decodable {
+    let success: Bool
+    let userID: String?
+    let counter: Int
+}
+
+nonisolated struct AttestResponse: Decodable {
+    let success: Bool
+    let userID: String?
+    let publicKey: String
 }
