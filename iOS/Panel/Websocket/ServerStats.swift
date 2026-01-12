@@ -17,7 +17,6 @@ struct ServerStatsNetwork: Codable {
     let rxBytes, txBytes: Int
     
     enum CodingKeys: String, CodingKey {
-        case rxBytes = "rx_bytes",
-             txBytes = "tx_bytes"
+        case rxBytes = "rx_bytes", txBytes = "tx_bytes"
     }
 }

@@ -10,36 +10,28 @@ final class LoginVM {
     var isPasskeyLoading = false
     var isVerifying2FA = false
     var isSubmitting = false
+    var isAttesting = false
+    var attestationResult: AttestationResult?
     
     private let passkeyAuth = PasskeyAuthorizationController()
     private let baseURL = URL(string: "https://test-api.bisquit.host")!
     private let passkeyLoginPath = "auth/passkeys"
     
-    func generateAppAttestKey(hash: Data) {
-        // Recieved hash for attesting from the backend
+    var isAppAttestSupported: Bool {
+        DCAppAttestService.shared.isSupported
+    }
+    
+    func performAppAttest(userID: String? = nil) async -> AttestationResult? {
+        isAttesting = true
+        defer { isAttesting = false }
         
-        let appAttestService = DCAppAttestService.shared
-        
-        guard appAttestService.isSupported else {
-            Logger().notice("App Attest isn't supported")
-            return
-        }
-        
-        appAttestService.generateKey { id, error in
-            guard error == nil, let id else {
-                Logger().error("Error generating App Attest key: \(error?.localizedDescription ?? "-")")
-                return
-            }
-            
-            appAttestService.attestKey(id, clientDataHash: hash) { attestationObject, error in
-                guard error == nil else {
-                    Logger().error("Error attesting an App Attest key: \(error?.localizedDescription ?? "-")")
-                    return
-                }
-                
-                // Key is asserted by Apple
-                // Send to the backend for verification
-            }
+        do {
+            let result = try await AppAttestService.shared.attestDevice(userID: userID)
+            attestationResult = result
+            return result
+        } catch {
+            SystemAlert.error(error.localizedDescription)
+            return nil
         }
     }
     
@@ -66,11 +58,7 @@ final class LoginVM {
         do {
             let (data, _) = try await URLSession.shared.data(for: req)
             
-            if let jsonObject = try? JSONSerialization.jsonObject(with: data),
-               let prettyData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted),
-               let prettyString = String(data: prettyData, encoding: .utf8) {
-                print(prettyString)
-            }
+            prettyJSON(data)
             
             return try BigAssDecoder.decode(BillingLoginResponse.self, from: data)
         } catch {

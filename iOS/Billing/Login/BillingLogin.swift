@@ -14,6 +14,7 @@ struct BillingLogin: View {
     @State private var selectedCurrency: BillingCurrency = .RUB
     @State private var hasAcceptedDocuments = false
     @State private var sheetDocuments = false
+    @State private var sheetVerification = false
     @State private var sheetHcaptcha = false
     @State private var captchaToken = ""
     @State private var pending2FAToken: String?
@@ -68,7 +69,7 @@ struct BillingLogin: View {
                 .textContentType(.password)
                 .loginButtonStyle()
                 .onSubmit {
-                    startCaptcha()
+                    showVerification()
                 }
             
             if isSignUp {
@@ -77,7 +78,7 @@ struct BillingLogin: View {
             }
             
             Button {
-                startCaptcha()
+                showVerification()
             } label: {
                 if vm.isSubmitting {
                     HStack {
@@ -115,6 +116,17 @@ struct BillingLogin: View {
             }
             .secondary()
         }
+        .sheet($sheetVerification) {
+            VerificationSheet(
+                userID: trimmedLogin.isEmpty ? nil : trimmedLogin,
+                onHCaptcha: {
+                    sheetHcaptcha = true
+                },
+                onAppAttestSuccess: {
+                    // TODO: Handle AppAttest success for login
+                }
+            )
+        }
         .sheet($sheetHcaptcha) {
 #if !os(visionOS)
             HCaptchaSheet($captchaToken)
@@ -149,13 +161,14 @@ struct BillingLogin: View {
         return emailRegex.firstMatch(in: value, options: [], range: range) != nil
     }
     
-    private func startCaptcha() {
+    private func showVerification() {
         guard !continueButtonDisabled else { return }
-        sheetHcaptcha = true
+        sheetVerification = true
     }
     
     private func auth() {
         sheetHcaptcha = false
+        sheetVerification = false
         
         guard !continueButtonDisabled else {
             captchaToken = ""
@@ -218,7 +231,6 @@ struct BillingLogin: View {
         
         Task {
             try await Task.sleep(for: .seconds(0.5))
-            
             let _ = Keychain.save(response.accessToken, forKey: "access_token")
         }
     }

@@ -110,7 +110,7 @@ final class TicketListVM {
             let sizeString = AttachmentLimits.readableSize(for: oversized.data.count)
             let limitString = AttachmentLimits.readableSize(for: AttachmentLimits.maxBytes)
             
-            SystemAlert.error("File too large", subtitle: "\(oversized.filename) is \(sizeString). Max \(limitString) per file.")
+            SystemAlert.error("File too large", subtitle: "\(oversized.filename) is \(sizeString). Max \(limitString) per file")
             return nil
         }
         
