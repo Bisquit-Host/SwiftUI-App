@@ -1199,6 +1199,7 @@
 				Nav/Home/RequireUpdateView.swift,
 				Nav/Home/SecurityTasks.swift,
 				"Panel Tabs/Info/Resources/TabInfo.swift",
+				Panel/PanelVM.swift,
 				Panel/ServerState.swift,
 				Panel/Tabs.swift,
 				"Server List/Server Card/MetricGauge.swift",
