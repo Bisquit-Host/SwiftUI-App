@@ -1,6 +1,6 @@
 import SwiftUI
 
-#warning("Empty")
+#warning("Finish visionOS settings")
 struct ServerSettings: View {
     var body: some View {
         List {

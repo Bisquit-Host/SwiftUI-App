@@ -1,6 +1,6 @@
 import ScrechKit
 
-#warning("Finish")
+#warning("Finish iMessage Settings")
 struct PterodactylSettings: View {
     //    private var vm = SettingsVM()
     
