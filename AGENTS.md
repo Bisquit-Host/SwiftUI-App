@@ -21,7 +21,7 @@ Preferred workflow is Xcode (it will resolve Swift Package Manager dependencies 
 Tip: choose the scheme that matches the target you’re changing (for example `Widgets`, `iMessage`, `watchOS`)
 
 ## Coding Style & Naming Conventions
-
+- Write code with re-indents, so empty lines should hae the right amount of tabs
 - Language: Swift (mostly SwiftUI); follow Swift API Design Guidelines
 - Indentation: 4 spaces; keep braces on the same line; prefer early `guard` returns
 - Naming: `UpperCamelCase` for types, `lowerCamelCase` for values/functions; SwiftUI views typically end in `View` (for example `DashboardView.swift`)

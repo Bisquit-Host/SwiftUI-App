@@ -35,7 +35,7 @@ final class LoginVM {
         }
     }
     
-    func login(_ login: String, _ password: String, _ captchaToken: String, attestRequest: AttestRequest? = nil) async -> BillingLoginResponse? {
+    func login(_ login: String, _ password: String, captchaToken: String? = nil, attestResponse: AttestationResult? = nil) async -> BillingLoginResponse? {
         isSubmitting = true
         defer { isSubmitting = false }
         
@@ -44,12 +44,20 @@ final class LoginVM {
             return nil
         }
         
-        let body: [String: Any?] = [
+        var body: [String: Any] = [
             "login": login.lowercased(),
-            "password": password,
-            "captchaResponse": captchaToken,
-            "attestRequest": attestRequest
+            "password": password
         ]
+        
+        if let attestResponse {
+            body["attestResponse"] = [
+                "challenge": attestResponse.challenge,
+                "attestation": attestResponse.attestation,
+                "keyID": attestResponse.keyID
+            ]
+        } else if let captchaToken {
+            body["captchaResponse"] = captchaToken
+        }
         
         var req = URLRequest(url: url)
         req.httpMethod = "POST"
@@ -68,16 +76,25 @@ final class LoginVM {
         }
     }
     
-    func signup(name: String, email: String, password: String, captchaToken: String, currency: String) async -> BillingLoginResponse? {
+    func signup(name: String, email: String, password: String, captchaToken: String? = nil, currency: String, attestResponse: AttestationResult? = nil) async -> BillingLoginResponse? {
         let url = baseURL.appendingPathComponent("auth/signup")
         
-        let body: [String: Any] = [
+        var body: [String: Any] = [
             "email": email.lowercased(),
             "password": password,
             "name": name,
-            "captchaResponse": captchaToken,
             "currency": currency
         ]
+        
+        if let attestResponse {
+            body["attestResponse"] = [
+                "challenge": attestResponse.challenge,
+                "attestation": attestResponse.attestation,
+                "keyID": attestResponse.keyID
+            ]
+        } else if let captchaToken {
+            body["captchaResponse"] = captchaToken
+        }
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"

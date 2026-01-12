@@ -171,11 +171,6 @@ struct BillingLogin: View {
     private func auth() {
         sheetHcaptcha = false
         
-        guard !continueButtonDisabled else {
-            captchaToken = ""
-            return
-        }
-        
         Task {
             let response: BillingLoginResponse?
             
@@ -184,14 +179,21 @@ struct BillingLogin: View {
                     name: name.trimmingCharacters(in: .whitespaces),
                     email: trimmedLogin,
                     password: password,
-                    captchaToken: captchaToken,
-                    currency: selectedCurrency.rawValue
+                    captchaToken: captchaToken.isEmpty ? nil : captchaToken,
+                    currency: selectedCurrency.rawValue,
+                    attestResponse: vm.attestationResult
                 )
             } else {
-                response = await vm.login(trimmedLogin, password, captchaToken)
+                response = await vm.login(
+                    trimmedLogin,
+                    password,
+                    captchaToken: captchaToken.isEmpty ? nil : captchaToken,
+                    attestResponse: vm.attestationResult
+                )
             }
             
             captchaToken = ""
+            vm.attestationResult = nil
             
             guard let response else { return }
             handleAuthResponse(response)
