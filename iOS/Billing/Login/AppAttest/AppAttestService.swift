@@ -178,5 +178,4 @@ actor AppAttestService {
             }
         }
     }
-    
 }
