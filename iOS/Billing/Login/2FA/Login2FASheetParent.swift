@@ -30,3 +30,11 @@ struct Login2FASheetParent: View {
         await handleAuthResponse(response)
     }
 }
+
+#Preview {
+    @Previewable @State var `2FACode` = ""
+    @Previewable @State var pending2FAToken: String? = ""
+    
+    Login2FASheetParent(`2FACode`: `$2FACode`, pending2FAToken: $pending2FAToken) { _ in }
+        .environment(LoginVM())
+}
