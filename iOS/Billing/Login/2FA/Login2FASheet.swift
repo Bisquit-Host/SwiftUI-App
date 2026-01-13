@@ -5,36 +5,41 @@ struct TwoFASheetView: View {
     @Binding var isVerifying: Bool
     var onVerify: () async -> Void
     
+    private let totpCodeLength = 6
+    
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text("Enter the 6-digit code from your authenticator app to finish signing in")
-                .secondary()
-                .footnote()
+        VStack(spacing: 32) {
+            Spacer()
             
-            TextField("123456", text: $code)
-                .keyboardType(.numberPad)
-                .textContentType(.oneTimeCode)
-                .onSubmit {
-                    Task {
-                        await onVerify()
-                    }
-                }
-            
-            Button {
-                Task {
-                    await onVerify()
-                }
-            } label: {
-                if isVerifying {
-                    ProgressView()
-                        .frame(maxWidth: .infinity)
-                } else {
-                    Text("Verify and continue")
-                        .frame(maxWidth: .infinity)
-                }
+            VStack(spacing: 10) {
+                Text("Enter 2FA code")
+                    .headline()
+                    .frame(maxWidth: .infinity)
+                
+                Text("Enter the 6-digit code from your authenticator app to finish signing in")
+                    .secondary()
+                    .footnote()
+                    .frame(maxWidth: .infinity)
+                    .multilineTextAlignment(.center)
             }
-            .buttonStyle(.borderedProminent)
-            .disabled(code.trimmingCharacters(in: .whitespaces).count < 6 || isVerifying)
+            
+            TwoFACodeInputView(code: $code, codeLength: totpCodeLength)
+            
+            Spacer()
+        }
+        .onChange(of: code) { oldValue, newValue in
+            let filtered = newValue.filter(\.isNumber)
+            let clamped = String(filtered.prefix(totpCodeLength))
+            
+            if clamped != newValue {
+                code = clamped
+            }
+            
+            guard oldValue.count < totpCodeLength, clamped.count == totpCodeLength, !isVerifying else { return }
+            
+            Task {
+                await onVerify()
+            }
         }
     }
 }
@@ -45,4 +50,5 @@ struct TwoFASheetView: View {
     
     Login2FASheetParent(`2FACode`: `$2FACode`, pending2FAToken: $pending2FAToken) { _ in }
         .environment(LoginVM())
+        .darkSchemePreferred()
 }

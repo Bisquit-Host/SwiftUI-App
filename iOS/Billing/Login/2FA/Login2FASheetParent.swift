@@ -13,9 +13,7 @@ struct Login2FASheetParent: View {
         
         NavigationStack {
             TwoFASheetView(code: `$2FACode`, isVerifying: $vm.isVerifying2FA, onVerify: verifyTwoFA)
-                .padding()
-                .navigationTitle("Enter 2FA code")
-                .navigationBarTitleDisplayMode(.inline)
+                .scenePadding()
         }
     }
     
@@ -27,6 +25,7 @@ struct Login2FASheetParent: View {
             return
         }
         
+        try? await Task.sleep(for: .seconds(0.5))
         await handleAuthResponse(response)
     }
 }
