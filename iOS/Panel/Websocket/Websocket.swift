@@ -29,9 +29,7 @@ final class Websocket {
                 guard !Task.isCancelled else { return }
                 
                 if let onError {
-                    await MainActor.run {
-                        onError(error)
-                    }
+                    onError(error)
                 }
             }
         }

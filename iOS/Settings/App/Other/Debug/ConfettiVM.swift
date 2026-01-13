@@ -19,10 +19,7 @@ final class ConfettiVM {
         
         confettiTask = Task {
             try? await Task.sleep(for: .seconds(4.5))
-            
-            await MainActor.run {
-                isConfettiVisible = false
-            }
+            isConfettiVisible = false
         }
     }
     

@@ -7,6 +7,7 @@ struct Login2FASheetParent: View {
     @Binding var `2FACode`: String
     @Binding var pending2FAToken: String?
     var handleAuthResponse: @MainActor (BillingLoginResponse) async -> Void
+    @State private var successHapticTrigger = false
     
     var body: some View {
         @Bindable var vm = vm
@@ -15,6 +16,7 @@ struct Login2FASheetParent: View {
             TwoFASheetView(code: `$2FACode`, isVerifying: $vm.isVerifying2FA, onVerify: verifyTwoFA)
                 .scenePadding()
         }
+        .hapticOn(successHapticTrigger, as: .success)
     }
     
     private func verifyTwoFA() async {
@@ -24,6 +26,8 @@ struct Login2FASheetParent: View {
         else {
             return
         }
+        
+        successHapticTrigger.toggle()
         
         try? await Task.sleep(for: .seconds(0.5))
         await handleAuthResponse(response)

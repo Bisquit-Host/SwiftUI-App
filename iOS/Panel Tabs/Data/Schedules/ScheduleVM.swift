@@ -34,9 +34,7 @@ final class ScheduleVM {
             
             schedules.append(model)
         } catch {
-            await MainActor.run {
-                SystemAlert.error(error)
-            }
+            SystemAlert.error(error)
         }
     }
     
@@ -44,9 +42,7 @@ final class ScheduleVM {
         do {
             try await scheduleExecuteAPI(id, scheduleId: scheduleId)
         } catch {
-            await MainActor.run {
-                SystemAlert.error(error)
-            }
+            SystemAlert.error(error)
         }
     }
     
