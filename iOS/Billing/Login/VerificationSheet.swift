@@ -3,21 +3,21 @@ import SwiftUI
 struct VerificationSheet: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(LoginVM.self) private var vm
-
+    
     let userID: String?
     let onHCaptcha: () -> Void
     let onAppAttestSuccess: () -> Void
-
+    
     var body: some View {
         NavigationStack {
             VStack(spacing: 20) {
                 Text("Verifying...")
                     .headline()
                     .padding(.top)
-
+                
                 ProgressView()
                     .padding()
-
+                
                 Spacer()
             }
             .navigationTitle("Verify")
@@ -35,7 +35,7 @@ struct VerificationSheet: View {
             await performAppAttest()
         }
     }
-
+    
     private func performAppAttest() async {
         if vm.isAppAttestSupported, let _ = await vm.performAppAttest(userID: userID) {
             dismiss()

@@ -1,7 +1,7 @@
 import SwiftUI
 import BisquitoNet
 
-struct LoginPasskeyButton: View {
+struct PasskeyLoginButton: View {
     @Environment(LoginVM.self) private var vm
     
     let login: String
@@ -42,7 +42,7 @@ struct LoginPasskeyButton: View {
 }
 
 #Preview {
-    LoginPasskeyButton(login: "example@bisquit.host") { _ in }
+    PasskeyLoginButton(login: "example@bisquit.host") { _ in }
         .environment(LoginVM())
         .padding()
 }

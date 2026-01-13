@@ -67,7 +67,7 @@ struct TopupSection: View {
             
             TopupButton(amount: amount, currency: currency, minimumTopupAmount: minimumTopupAmount, selectedProvider: $selectedProvider)
             
-            LoginDivider()
+            ORDivider()
             
             RedeemButton()
         }

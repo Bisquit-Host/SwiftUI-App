@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct LoginDivider: View {
+struct ORDivider: View {
     var body: some View {
         HStack {
             VStack {
@@ -19,6 +19,6 @@ struct LoginDivider: View {
 }
 
 #Preview {
-    LoginDivider()
+    ORDivider()
         .darkSchemePreferred()
 }

@@ -77,10 +77,10 @@ struct BillingLogin: View {
             
             BillingLoginContinueButton(continueButtonDisabled: continueButtonDisabled, isSignUp: isSignUp, performVerification: performVerification)
             
-            LoginDivider()
+            ORDivider()
             
             if !isSignUp {
-                LoginPasskeyButton(login: login, handleAuthResponse: handleAuthResponse)
+                PasskeyLoginButton(login: login, handleAuthResponse: handleAuthResponse)
             }
             
             BillingLoginSocialButtons()
