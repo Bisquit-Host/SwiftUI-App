@@ -29,6 +29,7 @@ struct BillingLogin: View {
     private var emailValidationError: String? {
         guard isSignUp else { return nil }
         guard !trimmedLogin.isEmpty else { return nil }
+        
         return Self.isValidEmail(trimmedLogin) ? nil : "Enter a valid email address"
     }
     
@@ -127,12 +128,10 @@ struct BillingLogin: View {
         }
         .sheet($sheet2FA) {
             NavigationStack {
-                Login2FASheet($2FACode) {
-                    await verifyTwoFA()
-                }
-                .padding()
-                .navigationTitle("Enter 2FA code")
-                .navigationBarTitleDisplayMode(.inline)
+                Login2FASheet(`2FACode`: $2FACode, pending2FAToken: $pending2FAToken, handleAuthResponse: handleAuthResponse)
+                    .padding()
+                    .navigationTitle("Enter 2FA code")
+                    .navigationBarTitleDisplayMode(.inline)
             }
         }
         .environment(vm)
@@ -198,17 +197,6 @@ struct BillingLogin: View {
             guard let response else { return }
             handleAuthResponse(response)
         }
-    }
-    
-    private func verifyTwoFA() async {
-        guard
-            let pending2FAToken,
-            let response = await vm.verify2FA(code: `2FACode`, token: pending2FAToken)
-        else {
-            return
-        }
-        
-        handleAuthResponse(response)
     }
     
     private func handleAuthResponse(_ response: BillingLoginResponse) {

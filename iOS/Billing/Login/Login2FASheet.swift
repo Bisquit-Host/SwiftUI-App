@@ -1,15 +1,12 @@
 import SwiftUI
+import BisquitoNet
 
 struct Login2FASheet: View {
     @Environment(LoginVM.self) private var vm
     
-    @Binding private var `2FACode`: String
-    private var verifyAction: () async -> Void
-    
-    init(_ `2FACode`: Binding<String>, verifyAction: @escaping () async -> Void) {
-        _2FACode = `2FACode`
-        self.verifyAction = verifyAction
-    }
+    @Binding var `2FACode`: String
+    @Binding var pending2FAToken: String?
+    var handleAuthResponse: @MainActor (BillingLoginResponse) async -> Void
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -22,13 +19,13 @@ struct Login2FASheet: View {
                 .textContentType(.oneTimeCode)
                 .onSubmit {
                     Task {
-                        await verifyAction()
+                        await verifyTwoFA()
                     }
                 }
             
             Button {
                 Task {
-                    await verifyAction()
+                    await verifyTwoFA()
                 }
             } label: {
                 if vm.isVerifying2FA {
@@ -43,10 +40,21 @@ struct Login2FASheet: View {
             .disabled(`2FACode`.trimmingCharacters(in: .whitespaces).count < 6 || vm.isVerifying2FA)
         }
     }
+    
+    private func verifyTwoFA() async {
+        guard
+            let pending2FAToken,
+            let response = await vm.verify2FA(code: `2FACode`, token: pending2FAToken)
+        else {
+            return
+        }
+        
+        await handleAuthResponse(response)
+    }
 }
 
-#Preview {
-    Login2FASheet(.constant("123456")) {}
-        .padding()
-        .environment(LoginVM())
-}
+//#Preview {
+//    Login2FASheet(.constant("123456")) {}
+//        .padding()
+//        .environment(LoginVM())
+//}
