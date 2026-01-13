@@ -5,7 +5,6 @@ struct TOTPInputField: View {
     
     var codeLength = 6
     var boxSpacing = 10.0
-    var boxCornerRadius = 12.0
     var inputHeight = 64.0
     
     @FocusState private var isCodeFocused: Bool
@@ -28,7 +27,12 @@ struct TOTPInputField: View {
                 
                 HStack(spacing: boxSpacing) {
                     ForEach(0..<codeLength, id: \.self) { index in
-                        codeBox(at: index, width: width, height: height)
+                        TOTPInputFieldCell(
+                            digit: digit(at: index),
+                            isActive: isActiveIndex(index),
+                            width: width,
+                            height: height
+                        )
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -46,21 +50,6 @@ struct TOTPInputField: View {
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("2FA code")
         .accessibilityValue(accessibilityValue)
-    }
-    
-    private func codeBox(at index: Int, width: CGFloat, height: CGFloat) -> some View {
-        let digit = digit(at: index)
-        let isActive = isActiveIndex(index)
-        
-        return Text(digit)
-            .title2()
-            .monospacedDigit()
-            .frame(width: width, height: height)
-            .background(.primary.opacity(0.04), in: .rect(cornerRadius: boxCornerRadius))
-            .overlay {
-                RoundedRectangle(cornerRadius: boxCornerRadius)
-                    .stroke(isActive ? Color.primary.opacity(0.35) : .primary.opacity(0.08), lineWidth: isActive ? 1.5 : 1)
-            }
     }
     
     private func digit(at index: Int) -> String {
