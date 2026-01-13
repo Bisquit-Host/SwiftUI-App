@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		F3038B952E0443560085E438 /* QuickLooking in Frameworks */ = {isa = PBXBuildFile; productRef = F3038B942E0443560085E438 /* QuickLooking */; };
 		F304E9072EC6433C0069A73D /* Vortex in Frameworks */ = {isa = PBXBuildFile; productRef = F304E9062EC6433C0069A73D /* Vortex */; };
-		F304E90B2EC645220069A73D /* Vortex in Frameworks */ = {isa = PBXBuildFile; productRef = F304E90A2EC645220069A73D /* Vortex */; };
 		F30860142B002B31004D776A /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F30860132B002B31004D776A /* PteroNet */; };
 		F30860162B002B93004D776A /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F30860152B002B93004D776A /* PteroNet */; };
 		F30860182B002C18004D776A /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F30860172B002C18004D776A /* PteroNet */; };
@@ -37,7 +36,6 @@
 		F358F02E2D2C1C5500BCC07B /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = F358F02D2D2C1C5500BCC07B /* LaunchAtLogin */; };
 		F366DE152EF0B87000C2A958 /* NIOSSH in Frameworks */ = {isa = PBXBuildFile; productRef = F366DE142EF0B87000C2A958 /* NIOSSH */; };
 		F366DE242EF0B88800C2A958 /* SwiftTerm in Frameworks */ = {isa = PBXBuildFile; productRef = F366DE232EF0B88800C2A958 /* SwiftTerm */; };
-		F36710342C99C3A100A8901A /* iMessage.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F3A7CEC32C8B685500413400 /* iMessage.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F36B14572DC39DD8008C1AF9 /* GaypadKit in Frameworks */ = {isa = PBXBuildFile; productRef = F36B14562DC39DD8008C1AF9 /* GaypadKit */; };
 		F36B14592DC39F08008C1AF9 /* GaypadKit in Frameworks */ = {isa = PBXBuildFile; productRef = F36B14582DC39F08008C1AF9 /* GaypadKit */; };
 		F36B145B2DC39F0E008C1AF9 /* GaypadKit in Frameworks */ = {isa = PBXBuildFile; productRef = F36B145A2DC39F0E008C1AF9 /* GaypadKit */; };
@@ -45,9 +43,6 @@
 		F36B739D2C8B074300E858FE /* AudioVisualizer in Frameworks */ = {isa = PBXBuildFile; productRef = F36B739C2C8B074300E858FE /* AudioVisualizer */; };
 		F36B73A12C8B07E100E858FE /* AudioVisualizer in Frameworks */ = {isa = PBXBuildFile; productRef = F36B73A02C8B07E100E858FE /* AudioVisualizer */; };
 		F36F410F2F055ED400C3EC6B /* Vortex in Frameworks */ = {isa = PBXBuildFile; productRef = F36F410E2F055ED400C3EC6B /* Vortex */; };
-		F36F41842F05C04000C3EC6B /* SwiftTerm in Frameworks */ = {isa = PBXBuildFile; productRef = F36F41832F05C04000C3EC6B /* SwiftTerm */; };
-		F36F41862F05C04600C3EC6B /* NIOSSH in Frameworks */ = {isa = PBXBuildFile; productRef = F36F41852F05C04600C3EC6B /* NIOSSH */; };
-		F36F41882F05C06900C3EC6B /* HCaptcha in Frameworks */ = {isa = PBXBuildFile; productRef = F36F41872F05C06900C3EC6B /* HCaptcha */; };
 		F37266E729D9EF25005FD103 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F37266E629D9EF25005FD103 /* Kingfisher */; };
 		F37FF8832D87AE3800554B3F /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = F37FF8822D87AE3800554B3F /* Algorithms */; };
 		F3818F002ED25E8600DA3855 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3818EFF2ED25E8600DA3855 /* ScrechKit */; };
@@ -57,12 +52,6 @@
 		F38D1DE22E1EC193005CBBEA /* QuickLook Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F3310F2C2DD07CA100FA0AEC /* QuickLook Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F39D680D2A262C5E00B9BDFC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F39D680C2A262C5E00B9BDFC /* Kingfisher */; };
 		F39E683F2D2D6A510002BA96 /* AudioVisualizer in Frameworks */ = {isa = PBXBuildFile; productRef = F39E683E2D2D6A510002BA96 /* AudioVisualizer */; };
-		F3A7CEC82C8B685500413400 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3A7CEC72C8B685500413400 /* Messages.framework */; };
-		F3A7CEDF2C8B981A00413400 /* PteroNet in Frameworks */ = {isa = PBXBuildFile; productRef = F3A7CEDE2C8B981A00413400 /* PteroNet */; };
-		F3A7CEFB2C8BB8A300413400 /* AlertKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3A7CEFA2C8BB8A300413400 /* AlertKit */; };
-		F3A7CF042C8BBB7800413400 /* SafariCover in Frameworks */ = {isa = PBXBuildFile; productRef = F3A7CF032C8BBB7800413400 /* SafariCover */; };
-		F3A7CF0C2C8BBCE400413400 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F3A7CF0B2C8BBCE400413400 /* Kingfisher */; };
-		F3A7CF222C8C4E9700413400 /* MailCover in Frameworks */ = {isa = PBXBuildFile; productRef = F3A7CF212C8C4E9700413400 /* MailCover */; };
 		F3A7CF232C8C509C00413400 /* Contact Provider.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = F3E2BEF52C1DA07E00B7A6D4 /* Contact Provider.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F3B7BFDE2B38E206005B5003 /* Pow in Frameworks */ = {isa = PBXBuildFile; productRef = F3B7BFDD2B38E206005B5003 /* Pow */; };
 		F3C53A5F29DBF5B900A08578 /* watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F31BA5332958FF7D0006D126 /* watchOS.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -77,27 +66,17 @@
 		F3EAACD72F0C0C8C0073C45D /* BisquitoNet in Frameworks */ = {isa = PBXBuildFile; productRef = F3EAACD62F0C0C8C0073C45D /* BisquitoNet */; };
 		F3EAACD92F0C0C900073C45D /* BisquitoNet in Frameworks */ = {isa = PBXBuildFile; productRef = F3EAACD82F0C0C900073C45D /* BisquitoNet */; };
 		F3EAACDB2F0C0C950073C45D /* BisquitoNet in Frameworks */ = {isa = PBXBuildFile; productRef = F3EAACDA2F0C0C950073C45D /* BisquitoNet */; };
-		F3EAACDD2F0C0C990073C45D /* BisquitoNet in Frameworks */ = {isa = PBXBuildFile; productRef = F3EAACDC2F0C0C990073C45D /* BisquitoNet */; };
 		F3EB09D12A29532D0073916A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F3EB09D02A29532D0073916A /* Kingfisher */; };
 		F3F5AD6A2E885E4B007AD97D /* Appearance in Frameworks */ = {isa = PBXBuildFile; productRef = F3F5AD692E885E4B007AD97D /* Appearance */; };
 		F3F5AD7A2E88629E007AD97D /* Appearance in Frameworks */ = {isa = PBXBuildFile; productRef = F3F5AD792E88629E007AD97D /* Appearance */; };
-		F3F5AD7C2E8862A4007AD97D /* Appearance in Frameworks */ = {isa = PBXBuildFile; productRef = F3F5AD7B2E8862A4007AD97D /* Appearance */; };
 		F3F60A662DEB93C300A15737 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3F60A652DEB93C300A15737 /* ScrechKit */; };
 		F3F60A682DEB93C900A15737 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3F60A672DEB93C900A15737 /* ScrechKit */; };
 		F3F60A6A2DEB944600A15737 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3F60A692DEB944600A15737 /* ScrechKit */; };
 		F3F60A6C2DEB94B900A15737 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3F60A6B2DEB94B900A15737 /* ScrechKit */; };
 		F3F60A722DEB94CA00A15737 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3F60A712DEB94CA00A15737 /* ScrechKit */; };
-		F3F60A762DEB94DA00A15737 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3F60A752DEB94DA00A15737 /* ScrechKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F36710352C99C3A100A8901A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F31BA51B2958FF7C0006D126 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F3A7CEC22C8B685500413400;
-			remoteInfo = "iMessage Extension";
-		};
 		F38353622ECE744500535F26 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F31BA51B2958FF7C0006D126 /* Project object */;
@@ -174,7 +153,6 @@
 			dstPath = "";
 			dstSubfolder = PlugIns;
 			files = (
-				F36710342C99C3A100A8901A /* iMessage.appex in Embed Foundation Extensions */,
 				F3D1E7332C9A38EF000C81FF /* Widgets.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
@@ -220,14 +198,6 @@
 			);
 			name = "Embed Frameworks";
 		};
-		F3D807232DCD796B00598908 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			dstPath = "";
-			dstSubfolder = Frameworks;
-			files = (
-			);
-			name = "Embed Frameworks";
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -242,7 +212,6 @@
 		F383535E2ECE744500535F26 /* Unit Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unit Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F38637372A8641120069F074 /* Widgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Widgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F39EA2E02D5D45E800329468 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/iOSSupport/System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
-		F3A7CEC32C8B685500413400 /* iMessage.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iMessage.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A7CEC72C8B685500413400 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = Library/Frameworks/Messages.framework; sourceTree = DEVELOPER_DIR; };
 		F3AE99DB2E2F87FC00D70249 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F3BD76F22A43C890003E7385 /* visionOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = visionOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -262,13 +231,6 @@
 				PreviewVC.swift,
 			);
 			target = F3310F2B2DD07CA100FA0AEC /* QuickLook Extension */;
-		};
-		F38353A22ECE951C00535F26 /* Exceptions for "iMessage Extension" folder in "iMessage" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				iMessage.plist,
-			);
-			target = F3A7CEC22C8B685500413400 /* iMessage */;
 		};
 		F38353B62ECE953200535F26 /* Exceptions for "Contact Provider Extension" folder in "Contact Provider" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -1166,126 +1128,6 @@
 			);
 			target = F38637362A8641120069F074 /* Widgets */;
 		};
-		F383BADE2ECF35E500350A0F /* Exceptions for "iOS" folder in "iMessage" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Assets.xcassets,
-				"Billing Models/Attachments.swift",
-				"Billing Models/AttestRequest.swift",
-				"Billing Models/AvatarUpdateResponse.swift",
-				"Billing Models/BillingError.swift",
-				"Billing Models/BillingHostingModels.swift",
-				"Billing Models/BillingMyService.swift",
-				"Billing Models/BillingPlanOrderContext.swift",
-				"Billing Models/BillingServiceModels.swift",
-				"Billing Models/BillingUser.swift",
-				"Billing Models/PaymentProvider.swift",
-				"Billing Models/PurchaseErrorResponse.swift",
-				"Billing Models/Service/BillingBotServiceSummary.swift",
-				"Billing Models/Service/BillingCloudModels.swift",
-				"Billing Models/Service/BillingGameServiceSummary.swift",
-				"Billing Models/Support/SupportTicket.swift",
-				"Billing Models/VDS Protection/CloudProtectionModels.swift",
-				"Billing Models/VDS Protection/CloudProtectionProfileEditorMode.swift",
-				Billing/Login/OAuth2FASheet.swift,
-				"Cloud Keys/APIKey.swift",
-				"Cloud Keys/CloudKeyCard.swift",
-				"Cloud Keys/CloudKeyContextMenu.swift",
-				"Cloud Keys/CloudKeyList.swift",
-				"Cloud Keys/CloudKeysParent.swift",
-				Discover/Discover.swift,
-				Discover/DiscoverCard.swift,
-				Discover/DiscoverCardLabel.swift,
-				Discover/DiscoverDocuments.swift,
-				Guide.xcassets,
-				Nav/Home/RequireUpdateView.swift,
-				Nav/Home/SecurityTasks.swift,
-				"Panel Tabs/Info/Resources/TabInfo.swift",
-				Panel/PanelVM.swift,
-				Panel/ServerState.swift,
-				Panel/Tabs.swift,
-				Panel/Websocket/ServerStats.swift,
-				Panel/Websocket/URLSessionWebsocketConnection.swift,
-				Panel/Websocket/Websocket.swift,
-				Panel/Websocket/WebsocketConnection.swift,
-				Panel/Websocket/WebsocketDefaults.swift,
-				Panel/Websocket/WebsocketMessage.swift,
-				"Server List/Server Card/MetricGauge.swift",
-				"Server List/Server Card/MetricGaugeCompact.swift",
-				"Server List/Server Card/ServerCardCompact.swift",
-				"Server List/Server Card/ServerCardContextMenu.swift",
-				"Server List/Server Card/ServerCardVM.swift",
-				"Server List/Server Card/ServerCardWide.swift",
-				"Server List/ServerListGrid.swift",
-				"Server List/ServerListVM.swift",
-				"Server List/Toolbar/ServerListAdminButton.swift",
-				"Server List/Toolbar/ServerListFilter.swift",
-				"Server List/VM extensions/ContactsProvider.swift",
-				"Server List/VM extensions/ContactsVM.swift",
-				"Server List/VM extensions/GameKit.swift",
-				"Server List/VM extensions/SpotlightIndex.swift",
-				"Server List/VM extensions/UserDefaults.swift",
-				"Settings/App/App Icon/Icon.swift",
-				Settings/AppSettingsTab.swift,
-				Settings/Billing/2FA/Billing2FAVM.swift,
-				"Settings/Billing/Auth Apps/OAuthVM.swift",
-				Settings/GlassyActionCard.swift,
-				Settings/GlassyButton.swift,
-				Settings/GlassyIcon.swift,
-				Settings/Pterodactyl/Account/2FA/Disable/Disable2FAView.swift,
-				Settings/Pterodactyl/Account/2FA/Disable/DisableInstructionRow.swift,
-				Settings/Pterodactyl/Account/2FA/Disable/DisableIntroCard.swift,
-				Settings/Pterodactyl/Account/2FA/Disable/DisablePasswordCard.swift,
-				Settings/Pterodactyl/Account/2FA/Enable/Enable2FAView.swift,
-				Settings/Pterodactyl/Account/2FA/Enable/EnableCodeInputCard.swift,
-				Settings/Pterodactyl/Account/2FA/Enable/EnableInstructionRow.swift,
-				Settings/Pterodactyl/Account/2FA/Enable/EnableInstructionsCard.swift,
-				Settings/Pterodactyl/Account/2FA/Enable/EnableIntroCard.swift,
-				Settings/Pterodactyl/Account/2FA/QRCodeView.swift,
-				Settings/Pterodactyl/Account/2FA/TwoFAActionGrid.swift,
-				Settings/Pterodactyl/Account/2FA/TwoFAActionTile.swift,
-				Settings/Pterodactyl/Account/2FA/TwoFAActionTileContent.swift,
-				Settings/Pterodactyl/Account/AccountSettingsSwitchAccountButton.swift,
-				Settings/Pterodactyl/Account/AccountVM.swift,
-				"Settings/Pterodactyl/Account/API keys/ApikeyCard.swift",
-				"Settings/Pterodactyl/Account/API keys/ApikeyList.swift",
-				"Settings/Pterodactyl/Account/API keys/ApikeyVM.swift",
-				"Settings/Pterodactyl/Account/API keys/CreateApikey.swift",
-				Settings/Pterodactyl/Account/Credentials/CredentialField.swift,
-				Settings/Pterodactyl/Account/Credentials/CredentialsButton.swift,
-				Settings/Pterodactyl/Account/Credentials/CredentialsView.swift,
-				Settings/Pterodactyl/Account/Credentials/CredentialsVM.swift,
-				Settings/Pterodactyl/Account/SSH/SSHCard.swift,
-				Settings/Pterodactyl/Account/SSH/SSHCreateView.swift,
-				Settings/Pterodactyl/Account/SSH/SSHList.swift,
-				Settings/Pterodactyl/Account/SSH/SSHVM.swift,
-				Settings/Pterodactyl/Customization/Background/BackgroundImage.swift,
-				Settings/Pterodactyl/Customization/Background/BackgroundImageHelper.swift,
-				Settings/Pterodactyl/Customization/Background/BackgroundImagePicker.swift,
-				Settings/Pterodactyl/Customization/Background/BackgroundImagePickerView.swift,
-				Settings/Pterodactyl/Customization/ServerCardLayout.swift,
-				"Shared Assets.xcassets",
-				"Start Page/Guide/CarouselButtonStyle.swift",
-				"Start Page/Guide/Guide.swift",
-				Utils/ANSIConverter.swift,
-				Utils/AvgColor.swift,
-				Utils/Converter.swift,
-				Utils/customRound.swift,
-				Utils/DismissButton.swift,
-				Utils/MetricKitManager.swift,
-				Utils/Networking/Endpoint.swift,
-				Utils/Networking/NetworkCalls.swift,
-				Utils/Networking/Prefetcher.swift,
-				Utils/PreviewProp.swift,
-				Utils/slowSnow.swift,
-				Utils/System.swift,
-				Utils/SystemAlerts.swift,
-				Utils/Tips/TipCloudKeys.swift,
-				Utils/Tips/TipJSONFormatter.swift,
-				Utils/ValueStore.swift,
-			);
-			target = F3A7CEC22C8B685500413400 /* iMessage */;
-		};
 		F383BADF2ECF35E500350A0F /* Exceptions for "iOS" folder in "Intent" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -1319,14 +1161,6 @@
 				F383537E2ECE94EA00535F26 /* Exceptions for "QuickLook Extension" folder in "QuickLook Extension" target */,
 			);
 			path = "QuickLook Extension";
-			sourceTree = "<group>";
-		};
-		F38353982ECE951C00535F26 /* iMessage Extension */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				F38353A22ECE951C00535F26 /* Exceptions for "iMessage Extension" folder in "iMessage" target */,
-			);
-			path = "iMessage Extension";
 			sourceTree = "<group>";
 		};
 		F38353B22ECE953200535F26 /* Contact Provider Extension */ = {
@@ -1408,7 +1242,6 @@
 				F383BADA2ECF35E500350A0F /* Exceptions for "iOS" folder in "tvOS" target */,
 				F383BADB2ECF35E500350A0F /* Exceptions for "iOS" folder in "visionOS" target */,
 				F383BADD2ECF35E500350A0F /* Exceptions for "iOS" folder in "Widgets" target */,
-				F383BADE2ECF35E500350A0F /* Exceptions for "iOS" folder in "iMessage" target */,
 				F383BADF2ECF35E500350A0F /* Exceptions for "iOS" folder in "Intent" target */,
 				F383BAE02ECF35E500350A0F /* Exceptions for "iOS" folder in "Unit Tests" target */,
 			);
@@ -1466,24 +1299,6 @@
 				F3D6777D2DD867A900721DE8 /* Highlightr in Frameworks */,
 				F308601E2B002D4A004D776A /* PteroNet in Frameworks */,
 				F39E683F2D2D6A510002BA96 /* AudioVisualizer in Frameworks */,
-			);
-		};
-		F3A7CEC02C8B685500413400 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			files = (
-				F3F60A762DEB94DA00A15737 /* ScrechKit in Frameworks */,
-				F3A7CF222C8C4E9700413400 /* MailCover in Frameworks */,
-				F3F5AD7C2E8862A4007AD97D /* Appearance in Frameworks */,
-				F3A7CF0C2C8BBCE400413400 /* Kingfisher in Frameworks */,
-				F3A7CEFB2C8BB8A300413400 /* AlertKit in Frameworks */,
-				F3EAACDD2F0C0C990073C45D /* BisquitoNet in Frameworks */,
-				F3A7CF042C8BBB7800413400 /* SafariCover in Frameworks */,
-				F36F41842F05C04000C3EC6B /* SwiftTerm in Frameworks */,
-				F36F41862F05C04600C3EC6B /* NIOSSH in Frameworks */,
-				F36F41882F05C06900C3EC6B /* HCaptcha in Frameworks */,
-				F3A7CEC82C8B685500413400 /* Messages.framework in Frameworks */,
-				F3A7CEDF2C8B981A00413400 /* PteroNet in Frameworks */,
-				F304E90B2EC645220069A73D /* Vortex in Frameworks */,
 			);
 		};
 		F3BD76EF2A43C890003E7385 /* Frameworks */ = {
@@ -1568,7 +1383,6 @@
 				F383B3642ECF358D00350A0F /* visionOS */,
 				F383B4A42ECF35DD00350A0F /* Widgets */,
 				F38355DA2ECE96D000535F26 /* Intent */,
-				F38353982ECE951C00535F26 /* iMessage Extension */,
 				F38353B22ECE953200535F26 /* Contact Provider Extension */,
 				F38353762ECE94D000535F26 /* UI Tests */,
 				F383537C2ECE94EA00535F26 /* QuickLook Extension */,
@@ -1590,7 +1404,6 @@
 				F38637372A8641120069F074 /* Widgets.appex */,
 				F3D296072AF3BE5800ED43A0 /* UI Tests.xctest */,
 				F3E2BEF52C1DA07E00B7A6D4 /* Contact Provider.appex */,
-				F3A7CEC32C8B685500413400 /* iMessage.appex */,
 				F3310F2C2DD07CA100FA0AEC /* QuickLook Extension.appex */,
 				F383535E2ECE744500535F26 /* Unit Tests.xctest */,
 			);
@@ -1662,7 +1475,6 @@
 				F3A31B3D2B0B790800F89C51 /* PBXTargetDependency */,
 				F3A31B392B0B78D100F89C51 /* PBXTargetDependency */,
 				F3A7CF252C8C509C00413400 /* PBXTargetDependency */,
-				F36710362C99C3A100A8901A /* PBXTargetDependency */,
 				F3D1E7352C9A38EF000C81FF /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
@@ -1804,39 +1616,6 @@
 			productName = WidgetsExtension;
 			productReference = F38637372A8641120069F074 /* Widgets.appex */;
 			productType = "com.apple.product-type.app-extension";
-		};
-		F3A7CEC22C8B685500413400 /* iMessage */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F3A7CED32C8B685600413400 /* Build configuration list for PBXNativeTarget "iMessage" */;
-			buildPhases = (
-				F3A7CEBF2C8B685500413400 /* Sources */,
-				F3A7CEC02C8B685500413400 /* Frameworks */,
-				F3A7CEC12C8B685500413400 /* Resources */,
-				F3D807232DCD796B00598908 /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			fileSystemSynchronizedGroups = (
-				F38353982ECE951C00535F26 /* iMessage Extension */,
-			);
-			name = iMessage;
-			packageProductDependencies = (
-				F3A7CEDE2C8B981A00413400 /* PteroNet */,
-				F3A7CEFA2C8BB8A300413400 /* AlertKit */,
-				F3A7CF032C8BBB7800413400 /* SafariCover */,
-				F3A7CF0B2C8BBCE400413400 /* Kingfisher */,
-				F3A7CF212C8C4E9700413400 /* MailCover */,
-				F3F60A752DEB94DA00A15737 /* ScrechKit */,
-				F3F5AD7B2E8862A4007AD97D /* Appearance */,
-				F304E90A2EC645220069A73D /* Vortex */,
-				F36F41832F05C04000C3EC6B /* SwiftTerm */,
-				F36F41852F05C04600C3EC6B /* NIOSSH */,
-				F36F41872F05C06900C3EC6B /* HCaptcha */,
-				F3EAACDC2F0C0C990073C45D /* BisquitoNet */,
-			);
-			productName = "iMessage MessagesExtension";
-			productReference = F3A7CEC32C8B685500413400 /* iMessage.appex */;
-			productType = "com.apple.product-type.app-extension.messages";
 		};
 		F3BD76F12A43C890003E7385 /* visionOS */ = {
 			isa = PBXNativeTarget;
@@ -1983,9 +1762,6 @@
 					F38637362A8641120069F074 = {
 						CreatedOnToolsVersion = 15.0;
 					};
-					F3A7CEC22C8B685500413400 = {
-						CreatedOnToolsVersion = 16.1;
-					};
 					F3BD76F12A43C890003E7385 = {
 						CreatedOnToolsVersion = 15.0;
 					};
@@ -2045,7 +1821,6 @@
 				F3000E04295A341000ABD30A /* tvOS */,
 				F3BD76F12A43C890003E7385 /* visionOS */,
 				F38637362A8641120069F074 /* Widgets */,
-				F3A7CEC22C8B685500413400 /* iMessage */,
 				F3E2BEF42C1DA07E00B7A6D4 /* Contact Provider */,
 				F3310F2B2DD07CA100FA0AEC /* QuickLook Extension */,
 				F3464CF72A862D2C00188B0C /* Intent */,
@@ -2087,11 +1862,6 @@
 			);
 		};
 		F38637352A8641120069F074 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			files = (
-			);
-		};
-		F3A7CEC12C8B685500413400 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
 			);
@@ -2154,11 +1924,6 @@
 			files = (
 			);
 		};
-		F3A7CEBF2C8B685500413400 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			files = (
-			);
-		};
 		F3BD76EE2A43C890003E7385 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			files = (
@@ -2182,11 +1947,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		F36710362C99C3A100A8901A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F3A7CEC22C8B685500413400 /* iMessage */;
-			targetProxy = F36710352C99C3A100A8901A /* PBXContainerItemProxy */;
-		};
 		F38353632ECE744500535F26 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F3E08E9F2A2CE17800116C1C /* macOS */;
@@ -2885,67 +2645,6 @@
 			};
 			name = Release;
 		};
-		F3A7CED42C8B685600413400 /* Debug configuration for PBXNativeTarget "iMessage" */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
-				CODE_SIGN_ENTITLEMENTS = "iMessage Extension/iMessage.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "iMessage Extension/iMessage.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Bisquit.Host. All rights reserved.";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.debug.iMessageExtension";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited) iMessage";
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 6.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		F3A7CED52C8B685600413400 /* Release configuration for PBXNativeTarget "iMessage" */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
-				CODE_SIGN_ENTITLEMENTS = "iMessage Extension/iMessage.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "iMessage Extension/iMessage.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Bisquit.Host;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Bisquit.Host. All rights reserved.";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "host.bisquit.Bisquit-host.iMessageExtension";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = iMessage;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 6.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 		F3BD77022A43C892003E7385 /* Debug configuration for PBXNativeTarget "visionOS" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -3275,14 +2974,6 @@
 			);
 			defaultConfigurationName = Release;
 		};
-		F3A7CED32C8B685600413400 /* Build configuration list for PBXNativeTarget "iMessage" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F3A7CED42C8B685600413400 /* Debug configuration for PBXNativeTarget "iMessage" */,
-				F3A7CED52C8B685600413400 /* Release configuration for PBXNativeTarget "iMessage" */,
-			);
-			defaultConfigurationName = Release;
-		};
 		F3BD77012A43C892003E7385 /* Build configuration list for PBXNativeTarget "visionOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -3491,11 +3182,6 @@
 			package = F304E9052EC6433C0069A73D /* XCRemoteSwiftPackageReference "Vortex" */;
 			productName = Vortex;
 		};
-		F304E90A2EC645220069A73D /* Vortex */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F304E9052EC6433C0069A73D /* XCRemoteSwiftPackageReference "Vortex" */;
-			productName = Vortex;
-		};
 		F30860132B002B31004D776A /* PteroNet */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "PteroNet" */;
@@ -3661,21 +3347,6 @@
 			package = F304E9052EC6433C0069A73D /* XCRemoteSwiftPackageReference "Vortex" */;
 			productName = Vortex;
 		};
-		F36F41832F05C04000C3EC6B /* SwiftTerm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F366DE222EF0B88800C2A958 /* XCRemoteSwiftPackageReference "SwiftTerm" */;
-			productName = SwiftTerm;
-		};
-		F36F41852F05C04600C3EC6B /* NIOSSH */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F366DE132EF0B87000C2A958 /* XCRemoteSwiftPackageReference "swift-nio-ssh" */;
-			productName = NIOSSH;
-		};
-		F36F41872F05C06900C3EC6B /* HCaptcha */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3DA6CFC2ED3BD8E001AABD6 /* XCRemoteSwiftPackageReference "HCaptcha-ios-sdk" */;
-			productName = HCaptcha;
-		};
 		F37266E629D9EF25005FD103 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F37266E529D9EF25005FD103 /* XCRemoteSwiftPackageReference "Kingfisher" */;
@@ -3705,31 +3376,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F36B73952C8B055600E858FE /* XCRemoteSwiftPackageReference "Audio-Visualizer" */;
 			productName = AudioVisualizer;
-		};
-		F3A7CEDE2C8B981A00413400 /* PteroNet */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F30860122B002B31004D776A /* XCRemoteSwiftPackageReference "PteroNet" */;
-			productName = PteroNet;
-		};
-		F3A7CEFA2C8BB8A300413400 /* AlertKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F352AF992A4EE707004AD489 /* XCRemoteSwiftPackageReference "AlertKit" */;
-			productName = AlertKit;
-		};
-		F3A7CF032C8BBB7800413400 /* SafariCover */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F32675842A01B69600A026DC /* XCRemoteSwiftPackageReference "SafariCover" */;
-			productName = SafariCover;
-		};
-		F3A7CF0B2C8BBCE400413400 /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F37266E529D9EF25005FD103 /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
-		};
-		F3A7CF212C8C4E9700413400 /* MailCover */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3E7BDD82A315C9D00CD03C3 /* XCRemoteSwiftPackageReference "MailCover" */;
-			productName = MailCover;
 		};
 		F3B7BFDD2B38E206005B5003 /* Pow */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -3786,11 +3432,6 @@
 			package = F3EAACD12F0C0C780073C45D /* XCRemoteSwiftPackageReference "BisquitoNet" */;
 			productName = BisquitoNet;
 		};
-		F3EAACDC2F0C0C990073C45D /* BisquitoNet */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3EAACD12F0C0C780073C45D /* XCRemoteSwiftPackageReference "BisquitoNet" */;
-			productName = BisquitoNet;
-		};
 		F3EB09D02A29532D0073916A /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F37266E529D9EF25005FD103 /* XCRemoteSwiftPackageReference "Kingfisher" */;
@@ -3802,11 +3443,6 @@
 			productName = Appearance;
 		};
 		F3F5AD792E88629E007AD97D /* Appearance */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3F5AD682E885E4B007AD97D /* XCRemoteSwiftPackageReference "Appearance" */;
-			productName = Appearance;
-		};
-		F3F5AD7B2E8862A4007AD97D /* Appearance */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F3F5AD682E885E4B007AD97D /* XCRemoteSwiftPackageReference "Appearance" */;
 			productName = Appearance;
@@ -3832,11 +3468,6 @@
 			productName = ScrechKit;
 		};
 		F3F60A712DEB94CA00A15737 /* ScrechKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3CBC6D32D9A025A0081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */;
-			productName = ScrechKit;
-		};
-		F3F60A752DEB94DA00A15737 /* ScrechKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F3CBC6D32D9A025A0081C302 /* XCRemoteSwiftPackageReference "ScrechKit" */;
 			productName = ScrechKit;
