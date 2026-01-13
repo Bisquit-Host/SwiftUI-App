@@ -1,5 +1,4 @@
 import SwiftUI
-import BisquitoNet
 
 struct TwoFASheetView: View {
     @Binding var code: String
@@ -39,39 +38,3 @@ struct TwoFASheetView: View {
         }
     }
 }
-
-struct Login2FASheet: View {
-    @Environment(LoginVM.self) private var vm
-    
-    @Binding var `2FACode`: String
-    @Binding var pending2FAToken: String?
-    var handleAuthResponse: @MainActor (BillingLoginResponse) async -> Void
-    
-    var body: some View {
-        TwoFASheetView(
-            code: `$2FACode`,
-            isVerifying: Binding(
-                get: { vm.isVerifying2FA },
-                set: { _ in }
-            ),
-            onVerify: verifyTwoFA
-        )
-    }
-    
-    private func verifyTwoFA() async {
-        guard
-            let pending2FAToken,
-            let response = await vm.verify2FA(code: `2FACode`, token: pending2FAToken)
-        else {
-            return
-        }
-        
-        await handleAuthResponse(response)
-    }
-}
-
-//#Preview {
-//    Login2FASheet(.constant("123456")) {}
-//        .padding()
-//        .environment(LoginVM())
-//}
