@@ -100,12 +100,7 @@ struct BillingLogin: View {
 #endif
         }
         .sheet($sheet2FA) {
-            NavigationStack {
-                Login2FASheet(`2FACode`: $2FACode, pending2FAToken: $pending2FAToken, handleAuthResponse: handleAuthResponse)
-                    .padding()
-                    .navigationTitle("Enter 2FA code")
-                    .navigationBarTitleDisplayMode(.inline)
-            }
+            Login2FASheetParent(`2FACode`: $2FACode, pending2FAToken: $pending2FAToken, handleAuthResponse: handleAuthResponse)
         }
         .environment(vm)
         .onChange(of: captchaToken) { _, newValue in
