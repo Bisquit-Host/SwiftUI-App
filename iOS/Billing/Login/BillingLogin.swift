@@ -30,7 +30,7 @@ struct BillingLogin: View {
         guard isSignUp else { return nil }
         guard !trimmedLogin.isEmpty else { return nil }
         
-        return Self.isValidEmail(trimmedLogin) ? nil : "Enter a valid email address"
+        return isValidEmail(trimmedLogin) ? nil : "Enter a valid email address"
     }
     
     private var continueButtonDisabled: Bool {
@@ -38,7 +38,7 @@ struct BillingLogin: View {
         let passwordEmpty = password.trimmingCharacters(in: .whitespaces).isEmpty
         let nameEmpty = name.trimmingCharacters(in: .whitespaces).isEmpty
         let documentsNotAccepted = isSignUp && !hasAcceptedDocuments
-        let invalidEmail = isSignUp && !Self.isValidEmail(trimmedLogin)
+        let invalidEmail = isSignUp && !isValidEmail(trimmedLogin)
         
         return loginEmpty || passwordEmpty || (isSignUp && nameEmpty) || documentsNotAccepted || invalidEmail || vm.isSubmitting || vm.isAttesting
     }
@@ -146,7 +146,7 @@ struct BillingLogin: View {
         }
     }
     
-    private static func isValidEmail(_ value: String) -> Bool {
+    private func isValidEmail(_ value: String) -> Bool {
         let value = value.trimmingCharacters(in: .whitespacesAndNewlines)
         let range = NSRange(value.startIndex..., in: value)
         
