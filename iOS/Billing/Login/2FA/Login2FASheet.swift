@@ -1,12 +1,10 @@
 import SwiftUI
 import BisquitoNet
 
-struct Login2FASheet: View {
-    @Environment(LoginVM.self) private var vm
-    
-    @Binding var `2FACode`: String
-    @Binding var pending2FAToken: String?
-    var handleAuthResponse: @MainActor (BillingLoginResponse) async -> Void
+struct TwoFASheetView: View {
+    @Binding var code: String
+    @Binding var isVerifying: Bool
+    var onVerify: () async -> Void
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -14,21 +12,21 @@ struct Login2FASheet: View {
                 .secondary()
                 .footnote()
             
-            TextField("123456", text: $2FACode)
+            TextField("123456", text: $code)
                 .keyboardType(.numberPad)
                 .textContentType(.oneTimeCode)
                 .onSubmit {
                     Task {
-                        await verifyTwoFA()
+                        await onVerify()
                     }
                 }
             
             Button {
                 Task {
-                    await verifyTwoFA()
+                    await onVerify()
                 }
             } label: {
-                if vm.isVerifying2FA {
+                if isVerifying {
                     ProgressView()
                         .frame(maxWidth: .infinity)
                 } else {
@@ -37,8 +35,27 @@ struct Login2FASheet: View {
                 }
             }
             .buttonStyle(.borderedProminent)
-            .disabled(`2FACode`.trimmingCharacters(in: .whitespaces).count < 6 || vm.isVerifying2FA)
+            .disabled(code.trimmingCharacters(in: .whitespaces).count < 6 || isVerifying)
         }
+    }
+}
+
+struct Login2FASheet: View {
+    @Environment(LoginVM.self) private var vm
+    
+    @Binding var `2FACode`: String
+    @Binding var pending2FAToken: String?
+    var handleAuthResponse: @MainActor (BillingLoginResponse) async -> Void
+    
+    var body: some View {
+        TwoFASheetView(
+            code: `$2FACode`,
+            isVerifying: Binding(
+                get: { vm.isVerifying2FA },
+                set: { _ in }
+            ),
+            onVerify: verifyTwoFA
+        )
     }
     
     private func verifyTwoFA() async {

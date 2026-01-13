@@ -817,7 +817,6 @@
 				"Billing/Hosting/Plan Card/HostingPlanCardSpecList.swift",
 				Billing/Login/2FA/Login2FASheet.swift,
 				Billing/Login/2FA/Login2FASheetParent.swift,
-				Billing/Login/2FA/OAuth2FASheet.swift,
 				Billing/Login/AppAttest/AppAttestService.swift,
 				Billing/Login/BillingLogin.swift,
 				Billing/Login/BillingLoginContinueButton.swift,

@@ -32,12 +32,17 @@ struct AppContainer: View {
             .environment(biometry)
             .confettiOverlay()
             .environment(confetti)
-            .sheet(isPresented: showOAuth2FASheet) {
+            .sheet(showOAuth2FASheet) {
                 NavigationStack {
-                    OAuth2FASheet()
-                        .padding()
-                        .navigationTitle("Enter 2FA code")
-                        .navigationBarTitleDisplayMode(.inline)
+                    TwoFASheetView(
+                        code: $billingOAuth.twoFACode,
+                        isVerifying: $billingOAuth.isVerifyingTwoFA
+                    ) {
+                        await billingOAuth.verifyTwoFA()
+                    }
+                    .padding()
+                    .navigationTitle("Enter 2FA code")
+                    .navigationBarTitleDisplayMode(.inline)
                 }
             }
 #endif
