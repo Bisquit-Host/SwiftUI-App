@@ -77,31 +77,8 @@ struct BillingLogin: View {
                 LoginCurrencyPicker($selectedCurrency)
             }
             
-            Button(action: performVerification) {
-                if vm.isAttesting {
-                    HStack {
-                        ProgressView()
-                        Text("Verifying...")
-                    }
-                } else if vm.isSubmitting {
-                    HStack {
-                        ProgressView()
-                        Text("Please wait...")
-                    }
-                } else {
-                    Text(isSignUp ? "Create account" : "Continue")
-                }
-            }
-            .semibold()
-            .rounded()
-            .disabled(continueButtonDisabled)
-            .opacity(continueButtonDisabled ? 0.3 : 1)
-            .foregroundStyle(.foreground)
-            .frame(minHeight: 50)
-            .frame(maxWidth: .infinity)
-#if !os(visionOS)
-            .glassEffect()
-#endif
+            BillingLoginContinueButton(continueButtonDisabled: continueButtonDisabled, isSignUp: isSignUp, performVerification: performVerification)
+            
             LoginDivider()
             
             if !isSignUp {
