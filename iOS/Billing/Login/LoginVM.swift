@@ -139,7 +139,13 @@ final class LoginVM {
             
             guard let http = response as? HTTPURLResponse, http.statusCode == 200 else {
                 let message = String(data: data, encoding: .utf8) ?? "Invalid response"
-                SystemAlert.error(message)
+                
+                if message.contains("Invalid code or token") {
+                    SystemAlert.error("Invalid code or token")
+                } else {
+                    SystemAlert.error(message)
+                }
+                
                 return nil
             }
             
