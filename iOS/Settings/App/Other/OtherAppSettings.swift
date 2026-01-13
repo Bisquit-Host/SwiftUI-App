@@ -4,7 +4,6 @@ struct OtherAppSettings: View {
     var body: some View {
         BillingSectionCard("Other") {
             BiometryToggle()
-            
 #if canImport(Appearance)
             AppSettingsAppearancePicker()
 #endif
