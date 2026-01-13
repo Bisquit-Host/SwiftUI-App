@@ -13,7 +13,7 @@ struct TwoFASheetView: View {
             
             VStack(spacing: 10) {
                 Text("Enter 2FA code")
-                    .headline()
+                    .title3()
                     .frame(maxWidth: .infinity)
                 
                 Text("Enter the 6-digit code from your authenticator app to finish signing in")
