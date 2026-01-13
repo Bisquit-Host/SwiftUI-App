@@ -77,9 +77,7 @@ struct BillingLogin: View {
                 LoginCurrencyPicker($selectedCurrency)
             }
             
-            Button {
-                performVerification()
-            } label: {
+            Button(action: performVerification) {
                 if vm.isAttesting {
                     HStack {
                         ProgressView()
