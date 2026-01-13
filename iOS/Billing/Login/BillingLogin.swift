@@ -1,5 +1,4 @@
 import SwiftUI
-//import HCaptcha
 import PteroNet
 import BisquitoNet
 
@@ -11,7 +10,6 @@ struct BillingLogin: View {
     @State private var name = ""
     @State private var login = ""
     @State private var password = ""
-    @State private var selectedCurrency: BillingCurrency = .RUB
     @State private var hasAcceptedDocuments = false
     @State private var sheetDocuments = false
     @State private var sheetHcaptcha = false
@@ -74,7 +72,7 @@ struct BillingLogin: View {
             
             if isSignUp {
                 RegistrationDocumentsButton($hasAcceptedDocuments, isPresented: $sheetDocuments)
-                LoginCurrencyPicker($selectedCurrency)
+                SignupCurrencyPicker()
             }
             
             BillingLoginContinueButton(continueButtonDisabled: continueButtonDisabled, isSignUp: isSignUp, performVerification: performVerification)
@@ -154,7 +152,6 @@ struct BillingLogin: View {
                     email: trimmedLogin,
                     password: password,
                     captchaToken: captchaToken.isEmpty ? nil : captchaToken,
-                    currency: selectedCurrency.rawValue,
                     attestResponse: vm.attestationResult
                 )
             } else {

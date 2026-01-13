@@ -12,6 +12,7 @@ final class LoginVM {
     var isSubmitting = false
     var isAttesting = false
     var attestationResult: AttestationResult?
+    var selectedCurrency: BillingCurrency = .RUB
     
     private let passkeyAuth = PasskeyAuthorizationController()
     private let baseURL = URL(string: Endpoint.basePath)!
@@ -76,14 +77,14 @@ final class LoginVM {
         }
     }
     
-    func signup(name: String, email: String, password: String, captchaToken: String? = nil, currency: String, attestResponse: AttestationResult? = nil) async -> BillingLoginResponse? {
+    func signup(name: String, email: String, password: String, captchaToken: String? = nil, attestResponse: AttestationResult? = nil) async -> BillingLoginResponse? {
         let url = baseURL.appendingPathComponent("auth/signup")
         
         var body: [String: Any] = [
             "email": email.lowercased(),
             "password": password,
             "name": name,
-            "currency": currency
+            "currency": selectedCurrency.rawValue
         ]
         
         if let attestResponse {
