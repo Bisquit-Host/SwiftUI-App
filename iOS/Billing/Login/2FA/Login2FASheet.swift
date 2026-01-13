@@ -23,7 +23,7 @@ struct TwoFASheetView: View {
                     .multilineTextAlignment(.center)
             }
             
-            TwoFACodeInputView(code: $code, codeLength: totpCodeLength)
+            TOTPInputField(code: $code, codeLength: totpCodeLength)
             
             Spacer()
         }

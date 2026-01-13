@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct TwoFACodeInputView: View {
+struct TOTPInputField: View {
     @Binding var code: String
     
     var codeLength = 6
