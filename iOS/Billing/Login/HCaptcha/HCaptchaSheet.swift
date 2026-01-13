@@ -2,7 +2,7 @@ import SwiftUI
 
 struct HCaptchaSheet: View {
     @State private var vm = HCaptchaVM()
-    @StateObject private var captchaHost = CaptchaHost()
+    @StateObject private var captchaHost = HCaptchaHost()
     @Environment(\.dismiss) private var dismiss
     
     @Binding private var hcaptchaToken: String

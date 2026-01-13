@@ -2,7 +2,7 @@ import SwiftUI
 
 /// Wrapper-view to provide UIView instance
 struct UIViewWrapperView: UIViewRepresentable {
-    @ObservedObject var host: CaptchaHost
+    @ObservedObject var host: HCaptchaHost
     
     func makeUIView(context: Context) -> UIView {
         host.view.backgroundColor = .systemBackground
