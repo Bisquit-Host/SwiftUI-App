@@ -239,8 +239,7 @@ final class VDSProtectionVM {
             
             return data
         } catch {
-            SystemAlert.error(error)
-            print("Protection request failed:", error)
+            SystemAlert.error("Protection request failed", subtitle: error.localizedDescription)
             return nil
         }
     }

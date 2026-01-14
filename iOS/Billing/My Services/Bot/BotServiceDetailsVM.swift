@@ -110,8 +110,7 @@ final class BotServiceDetailsVM {
                         SystemAlert.done("Renewed for \(months) mo")
                         continuation.resume(returning: response)
                     } catch {
-                        SystemAlert.error(error)
-                        print("Bot renewal decode error:", error)
+                        SystemAlert.error("Bot renewal failed", subtitle: error.localizedDescription)
                         
                         continuation.resume(returning: nil)
                     }
@@ -182,9 +181,7 @@ final class BotServiceDetailsVM {
             
             return data
         } catch {
-            SystemAlert.error(error)
-            print("Bot request failed:", error)
-            
+            SystemAlert.error("Bot request failed", subtitle: error.localizedDescription)
             return nil
         }
     }

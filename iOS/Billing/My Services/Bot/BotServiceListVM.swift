@@ -39,8 +39,7 @@ final class BotServiceListVM {
             
             services = try BigAssDecoder.decode([BillingBotServiceSummary].self, from: data)
         } catch {
-            SystemAlert.error(error)
-            Logger().error("Error loading bot services: \(error)")
+            SystemAlert.error("Error loading bot services", subtitle: error.localizedDescription)
         }
     }
 }

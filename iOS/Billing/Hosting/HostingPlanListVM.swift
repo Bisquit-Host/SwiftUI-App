@@ -97,8 +97,7 @@ final class HostingPlanListVM {
             let (data, res) = try await URLSession.shared.data(from: url)
             
             if let http = res as? HTTPURLResponse, http.statusCode >= 400 {
-                SystemAlert.error("Request failed: \(http.statusCode)")
-                print("Hosting plans", category.rawValue, "failed", http.statusCode)
+                SystemAlert.error("Hosting plans request failed", subtitle: "\(http.statusCode) • \(category.rawValue)")
                 return
             }
             
@@ -118,8 +117,7 @@ final class HostingPlanListVM {
                 cloudLocations = decoded.locations ?? []
             }
         } catch {
-            SystemAlert.error(error)
-            print("Hosting plans", category.rawValue, "decode error:", error)
+            SystemAlert.error("Hosting plans request failed", subtitle: "\(category.rawValue) • \(error)")
         }
     }
     
@@ -133,8 +131,7 @@ final class HostingPlanListVM {
             do {
                 result.osCategories = try BigAssDecoder.decode([CloudServiceOSCategory].self, from: data)
             } catch {
-                SystemAlert.error(error)
-                print("Order OS decode error:", error)
+                SystemAlert.error("Error decoding order OS", subtitle: error.localizedDescription)
             }
             
         case .game:
@@ -143,8 +140,7 @@ final class HostingPlanListVM {
             do {
                 result.nests = try BigAssDecoder.decode([BillingHostingNest].self, from: data)
             } catch {
-                SystemAlert.error(error)
-                print("Order nests decode error (game):", error)
+                SystemAlert.error("Error decoding game nests", subtitle: error.localizedDescription)
             }
             
         case .bot:
@@ -153,8 +149,7 @@ final class HostingPlanListVM {
             do {
                 result.nests = try BigAssDecoder.decode([BillingHostingNest].self, from: data)
             } catch {
-                SystemAlert.error(error)
-                Logger().error("Order nests decode error (bot): \(error)")
+                SystemAlert.error("Error decoding order nests (bot)", subtitle: error.localizedDescription)
             }
         }
         
@@ -175,7 +170,7 @@ final class HostingPlanListVM {
         }
         
         guard [1, 3, 6, 12].contains(months) else {
-            SystemAlert.error("Invalid period")
+            SystemAlert.error("Invalid billing period")
             return nil
         }
         
@@ -228,11 +223,10 @@ final class HostingPlanListVM {
         do {
             return try BigAssDecoder.decode(BillingHostingOrderResponse.self, from: data)
         } catch {
-            SystemAlert.error(error)
-            Logger().error("Order decoding error: \(error)")
+            SystemAlert.error("Order error", subtitle: error.localizedDescription)
             
             if let raw = String(data: data, encoding: .utf8) {
-                print("Order raw:", raw)
+                Logger().info("Order raw: \(raw)")
             }
             
             return nil
@@ -251,8 +245,7 @@ final class HostingPlanListVM {
         }
         
         guard let url = URL(string: path, relativeTo: authedBase) else {
-            SystemAlert.error("Invalid URL")
-            Logger().error("Order request invalid URL: \(path)")
+            SystemAlert.error("Order failed", subtitle: "Invalid URL: \(path)")
             return nil
         }
         

@@ -72,17 +72,10 @@ final class TicketListVM {
                 return
             }
             
-            if let json = try? JSONSerialization.jsonObject(with: data),
-               let pretty = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted),
-               let prettyString = String(data: pretty, encoding: .utf8) {
-                print("Support tickets response:\\n\(prettyString)")
-            } else if let raw = String(data: data, encoding: .utf8) {
-                print("Support tickets raw response:\\n\(raw)")
-            }
+            prettyJSON(data)
             
             tickets = try BigAssDecoder.decode([SupportTicketWithLastMessageDTO].self, from: data)
         } catch {
-            print("❌", error)
             SystemAlert.error("Error", subtitle: error.localizedDescription)
         }
     }

@@ -35,8 +35,7 @@ final class VDSBillingVM {
             
             services = try BigAssDecoder.decode([CloudServiceSummary].self, from: data)
         } catch {
-            SystemAlert.error(error)
-            Logger().error("Error loading cloud services: \(error)")
+            SystemAlert.error("Error loading cloud services", subtitle: error.localizedDescription)
         }
     }
 }

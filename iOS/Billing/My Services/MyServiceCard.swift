@@ -178,8 +178,10 @@ struct MyServiceCard: View {
             return nil
         }
         
-        guard let base = URL(string: "https://test-api.bisquit.host") else { return nil }
-        guard let url = URL(string: path, relativeTo: base) else {
+        guard
+            let base = URL(string: "https://test-api.bisquit.host"),
+            let url = URL(string: path, relativeTo: base)
+        else {
             SystemAlert.error("Invalid URL")
             return nil
         }

@@ -186,9 +186,7 @@ final class VDSServiceDetailsVM {
                         SystemAlert.done("Renewed for \(months) mo")
                         continuation.resume(returning: response)
                     } catch {
-                        SystemAlert.error(error)
-                        print("Cloud renewal decode error:", error)
-                        
+                        SystemAlert.error("Cloud renewal failed", subtitle: error.localizedDescription)
                         continuation.resume(returning: nil)
                     }
                 }
@@ -243,8 +241,7 @@ final class VDSServiceDetailsVM {
         }
         
         guard let url = URL(string: path, relativeTo: base) else {
-            SystemAlert.error("Invalid URL")
-            Logger().error("Cloud request invalid URL: \(path)")
+            SystemAlert.error("Cloud request failed", subtitle: "Invalid URL: \(path)")
             return nil
         }
         
@@ -261,8 +258,7 @@ final class VDSServiceDetailsVM {
             let (data, res) = try await URLSession.shared.data(for: request)
             
             guard let http = res as? HTTPURLResponse else {
-                SystemAlert.error("No response")
-                print("Cloud request no HTTP response")
+                SystemAlert.error("Cloud request failed", subtitle: "No HTTP response")
                 return nil
             }
             
@@ -276,9 +272,7 @@ final class VDSServiceDetailsVM {
             
             return data
         } catch {
-            SystemAlert.error(error)
-            print("Cloud request failed:", error)
-            
+            SystemAlert.error("Cloud request failed", subtitle: error.localizedDescription)
             return nil
         }
     }

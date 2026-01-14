@@ -39,8 +39,7 @@ final class GameServiceListVM {
             
             services = try BigAssDecoder.decode([BillingGameServiceSummary].self, from: data)
         } catch {
-            SystemAlert.error(error)
-            Logger().error("Game services load failed: \(error)")
+            SystemAlert.error("Error loading game services", subtitle: error.localizedDescription)
         }
     }
 }

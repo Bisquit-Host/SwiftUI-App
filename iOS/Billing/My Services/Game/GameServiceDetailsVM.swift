@@ -110,9 +110,7 @@ final class GameServiceDetailsVM {
                         SystemAlert.done("Renewed for \(months) mo")
                         continuation.resume(returning: response)
                     } catch {
-                        SystemAlert.error(error)
-                        print("Game renew decode error:", error)
-                        
+                        SystemAlert.error("Game renewal failed", subtitle: error.localizedDescription)
                         continuation.resume(returning: nil)
                     }
                 }
@@ -151,8 +149,7 @@ final class GameServiceDetailsVM {
         }
         
         guard let url = URL(string: path, relativeTo: base) else {
-            SystemAlert.error("Invalid URL")
-            print("Game request invalid URL:", path)
+            SystemAlert.error("Game request failed", subtitle: "Invalid URL: \(path)")
             return nil
         }
         
@@ -183,9 +180,7 @@ final class GameServiceDetailsVM {
             
             return data
         } catch {
-            SystemAlert.error(error)
-            print("Game request failed:", error)
-            
+            SystemAlert.error("Game request failed", subtitle: error.localizedDescription)
             return nil
         }
     }
