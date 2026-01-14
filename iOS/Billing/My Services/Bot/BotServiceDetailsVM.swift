@@ -1,4 +1,5 @@
 import Foundation
+import BisquitoNet
 import PteroNet
 
 @Observable
@@ -176,15 +177,7 @@ final class BotServiceDetailsVM {
                 return Data()
             }
             
-            guard (200...299).contains(http.statusCode) else {
-                let error = String(data: data, encoding: .utf8) ?? "Status \(http.statusCode)"
-                
-                if let decodedError = try? BigAssDecoder.decode(PurchaseErrorResponse.self, from: data) {
-                    SystemAlert.error(decodedError.title, subtitle: "Status code: \(decodedError.status)")
-                } else {
-                    SystemAlert.error(error, subtitle: "Status code: \(http.statusCode)")
-                }
-                
+            if decodeBillingError(data, with: res, onDecode: SystemAlert.error) {
                 return nil
             }
             

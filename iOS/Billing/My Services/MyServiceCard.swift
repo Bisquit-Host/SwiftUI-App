@@ -1,4 +1,5 @@
 import ScrechKit
+import BisquitoNet
 import PteroNet
 
 struct MyServiceCard: View {
@@ -201,9 +202,7 @@ struct MyServiceCard: View {
                 return Data()
             }
             
-            guard (200...299).contains(http.statusCode) else {
-                let error = String(data: data, encoding: .utf8) ?? "Status \(http.statusCode)"
-                SystemAlert.error(error)
+            if decodeBillingError(data, with: res, onDecode: SystemAlert.error) {
                 return nil
             }
             

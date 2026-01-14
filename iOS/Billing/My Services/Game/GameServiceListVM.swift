@@ -1,4 +1,5 @@
 import Foundation
+import BisquitoNet
 import PteroNet
 
 @Observable
@@ -32,16 +33,7 @@ final class GameServiceListVM {
         do {
             let (data, res) = try await URLSession.shared.data(for: request)
             
-            guard let http = res as? HTTPURLResponse else {
-                SystemAlert.error("No response")
-                return
-            }
-            
-            guard http.statusCode == 200 else {
-                let error = String(data: data, encoding: .utf8) ?? "Status \(http.statusCode)"
-                
-                SystemAlert.error(error)
-                print("Game services error \(http.statusCode):", error)
+            if decodeBillingError(data, with: res, onDecode: SystemAlert.error) {
                 return
             }
             

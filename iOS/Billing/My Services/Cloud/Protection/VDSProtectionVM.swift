@@ -1,4 +1,5 @@
 import SwiftUI
+import BisquitoNet
 import PteroNet
 
 @Observable
@@ -234,11 +235,7 @@ final class VDSProtectionVM {
                 return Data()
             }
             
-            guard (200...299).contains(http.statusCode) else {
-                let error = String(data: data, encoding: .utf8) ?? "Status \(http.statusCode)"
-                
-                SystemAlert.error(error)
-                print("Protection request error \(http.statusCode):", error)
+            if decodeBillingError(data, with: res, onDecode: SystemAlert.error) {
                 return nil
             }
             
