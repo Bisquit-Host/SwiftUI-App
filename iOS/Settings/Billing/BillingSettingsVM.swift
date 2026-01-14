@@ -1,6 +1,7 @@
 import Foundation
 import BisquitoNet
 import PteroNet
+import os
 
 @Observable
 final class BillingSettingsVM {
@@ -113,87 +114,17 @@ final class BillingSettingsVM {
             return nil
         }
         
-        guard let url = URL(string: "\(Endpoint.basePath)user/settings/avatar") else {
-            SystemAlert.error("Invalid URL")
-            return nil
-        }
-        
         guard let accessToken = Keychain.load(key: "access_token") else {
             Logger().error("Access token not found in \(#function)")
             return nil
         }
         
-        let boundary = "Boundary-\(UUID().uuidString)"
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "PATCH"
-        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-        request.assumesHTTP3Capable = false
-        
-        let config = URLSessionConfiguration.ephemeral
-        
-        var headers = config.httpAdditionalHeaders ?? [:]
-        headers["Alt-Svc"] = "clear"
-        
-        config.httpAdditionalHeaders = headers
-        
-        let session = URLSession(configuration: config)
-        let body = makeMultipartBody(data: data, filename: filename, mimeType: mimeType, boundary: boundary)
-        
-        print("Uploading file", filename, "of type", mimeType)
-        
-        do {
-            let (data, res) = try await session.upload(for: request, from: body)
-            
-            guard let http = res as? HTTPURLResponse else {
-                SystemAlert.error("No response")
-                return nil
-            }
-            
-            print("Status code for", #function, http.statusCode)
-            
-            switch http.statusCode {
-            case 200:
-                if let result = try? BigAssDecoder.decode(AvatarUpdateResponse.self, from: data) {
-                    return result.avatar
-                } else {
-                    SystemAlert.error("Bad response")
-                }
-                
-            default:
-                if let raw = String(data: data, encoding: .utf8), !raw.isEmpty {
-                    SystemAlert.error(raw)
-                } else {
-                    SystemAlert.error("Status \(http.statusCode)")
-                }
-            }
-        } catch {
-            SystemAlert.error(error)
-        }
-        
-        return nil
-    }
-    
-    private func makeMultipartBody(data: Data, filename: String, mimeType: String, boundary: String) -> Data {
-        var body = Data()
-        let disposition = "Content-Disposition: form-data; name=\"avatar\"; filename=\"\(filename)\"\r\n"
-        
-        body.append("--\(boundary)\r\n")
-        body.append(disposition)
-        body.append("Content-Type: \(mimeType)\r\n\r\n")
-        body.append(data)
-        body.append("\r\n")
-        body.append("--\(boundary)--\r\n")
-        
-        return body
-    }
-}
-
-fileprivate extension Data {
-    mutating func append(_ string: String) {
-        if let data = string.data(using: .utf8) {
-            append(data)
-        }
+        return await updateAvatarAPI(
+            data: data,
+            filename: filename,
+            mimeType: mimeType,
+            accessToken: accessToken,
+            onBillingError: SystemAlert.error
+        )
     }
 }

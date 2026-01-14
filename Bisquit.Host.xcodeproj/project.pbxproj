@@ -762,7 +762,6 @@
 			membershipExceptions = (
 				"Billing Models/Attachments.swift",
 				"Billing Models/AttestRequest.swift",
-				"Billing Models/AvatarUpdateResponse.swift",
 				"Billing Models/BillingError.swift",
 				"Billing Models/BillingHostingModels.swift",
 				"Billing Models/BillingMyService.swift",
