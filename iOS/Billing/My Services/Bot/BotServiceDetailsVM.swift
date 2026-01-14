@@ -26,6 +26,7 @@ final class BotServiceDetailsVM {
     
     func fetchDetails(_ serviceId: Int) async {
         guard let accessToken = accessToken() else { return }
+        
         guard let data = await botServiceDetailsAPI(
             serviceId: serviceId,
             accessToken: accessToken,
