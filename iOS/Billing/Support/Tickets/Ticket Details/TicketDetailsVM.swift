@@ -1,4 +1,5 @@
 import Foundation
+import BisquitoNet
 import PteroNet
 
 @Observable
@@ -80,11 +81,9 @@ final class TicketDetailsVM {
         request.httpBody = try? JSONEncoder().encode(payload)
         
         do {
-            let (data, response) = try await URLSession.shared.data(for: request)
+            let (data, res) = try await URLSession.shared.data(for: request)
             
-            if let http = response as? HTTPURLResponse, http.statusCode >= 400 {
-                let detail = String(data: data, encoding: .utf8) ?? ""
-                errorMessage = "Failed to send (\(http.statusCode)) \(detail)"
+            if decodeBillingError(data, with: res, onDecode: SystemAlert.error) {
                 return false
             }
             
@@ -242,11 +241,10 @@ final class TicketDetailsVM {
         body.append(Data("--\(boundary)--\r\n".utf8))
         
         func performUpload(using session: URLSession, request: URLRequest) async throws -> [String] {
-            let (data, response) = try await session.upload(for: request, from: body)
+            let (data, res) = try await session.upload(for: request, from: body)
             
-            if let http = response as? HTTPURLResponse, http.statusCode >= 400 {
-                let raw = String(data: data, encoding: .utf8) ?? ""
-                throw UploadError.server(http.statusCode, detail: raw)
+            if decodeBillingError(data, with: res, onDecode: SystemAlert.error) {
+                throw UploadError.failed
             }
             
             return try BigAssDecoder.decode([String].self, from: data)
@@ -270,20 +268,7 @@ final class TicketDetailsVM {
         }
     }
     
-    private enum UploadError: LocalizedError {
-        case server(Int, detail: String)
-        
-        var errorDescription: String? {
-            switch self {
-            case .server(let code, let detail):
-                let trimmed = detail.trimmingCharacters(in: .whitespacesAndNewlines)
-                
-                if trimmed.isEmpty {
-                    return "Upload failed (\(code))"
-                }
-                
-                return "Upload failed (\(code)) \(trimmed)"
-            }
-        }
+    private enum UploadError: Error {
+        case failed
     }
 }

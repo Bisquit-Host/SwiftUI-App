@@ -222,9 +222,9 @@ final class VDSProtectionVM {
         }
         
         do {
-            let (data, response) = try await URLSession.shared.data(for: request)
+            let (data, res) = try await URLSession.shared.data(for: request)
             
-            guard let http = response as? HTTPURLResponse else {
+            guard let http = res as? HTTPURLResponse else {
                 SystemAlert.error("No response")
                 print("Protection request no HTTP response")
                 return nil

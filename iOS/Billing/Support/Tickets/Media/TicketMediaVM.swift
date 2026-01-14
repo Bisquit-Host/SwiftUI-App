@@ -1,4 +1,5 @@
 import SwiftUI
+import BisquitoNet
 import PteroNet
 
 @Observable
@@ -23,14 +24,10 @@ final class TicketMediaVM {
         request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         
         do {
-            let (data, response) = try await URLSession.shared.data(for: request)
+            let (data, res) = try await URLSession.shared.data(for: request)
             
-            if let http = response as? HTTPURLResponse, http.statusCode >= 400 {
-                let detail = String(data: data, encoding: .utf8) ?? ""
-                
-                print(http.statusCode, "Failed to load media;", detail)
+            if decodeBillingError(data, with: res, onDecode: SystemAlert.error) {
                 isLoading = false
-                
                 return
             }
             

@@ -111,9 +111,9 @@ actor AppAttestService {
         request.httpBody = try JSONEncoder().encode(ChallengeRequest(userID: userID))
         logger.debug("Challenge request userID: \(userID ?? "nil")")
         
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let (data, res) = try await URLSession.shared.data(for: request)
         
-        guard let http = response as? HTTPURLResponse else {
+        guard let http = res as? HTTPURLResponse else {
             logger.error("Challenge request: invalid response type")
             throw AppAttestError.invalidResponse
         }

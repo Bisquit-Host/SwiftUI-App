@@ -160,9 +160,9 @@ final class OAuthVM: NSObject {
         }
         
         do {
-            let (data, response) = try await URLSession.shared.data(for: request)
+            let (data, res) = try await URLSession.shared.data(for: request)
             
-            if let code = (response as? HTTPURLResponse)?.statusCode, code != 200 {
+            if let code = (res as? HTTPURLResponse)?.statusCode, code != 200 {
                 finish(success: false, message: "Unexpected status: \(code)")
                 return
             }
@@ -201,7 +201,7 @@ final class OAuthVM: NSObject {
         onLinked = nil
     }
     
-    func verifyTwoFA() async {
+    func verify2FA() async {
         let code = twoFACode.trimmingCharacters(in: .whitespacesAndNewlines)
         
         guard code.count >= 6, let token = pendingTwoFAToken?.nonEmpty else {
@@ -219,17 +219,16 @@ final class OAuthVM: NSObject {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
         request.httpBody = try? JSONSerialization.data(withJSONObject: [
             "code": code,
             "token": token
         ])
         
         do {
-            let (data, response) = try await URLSession.shared.data(for: request)
+            let (data, res) = try await URLSession.shared.data(for: request)
             
-            guard let http = response as? HTTPURLResponse, http.statusCode == 200 else {
-                let message = String(data: data, encoding: .utf8) ?? "Invalid response"
-                SystemAlert.error(message)
+            if decodeBillingError(data, with: res, onDecode: SystemAlert.error) {
                 return
             }
             

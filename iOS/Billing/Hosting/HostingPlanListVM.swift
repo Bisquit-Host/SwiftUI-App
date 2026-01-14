@@ -93,9 +93,9 @@ final class HostingPlanListVM {
         }
         
         do {
-            let (data, response) = try await URLSession.shared.data(from: url)
+            let (data, res) = try await URLSession.shared.data(from: url)
             
-            if let http = response as? HTTPURLResponse, http.statusCode >= 400 {
+            if let http = res as? HTTPURLResponse, http.statusCode >= 400 {
                 SystemAlert.error("Request failed: \(http.statusCode)")
                 print("Hosting plans", category.rawValue, "failed", http.statusCode)
                 return
@@ -265,9 +265,9 @@ final class HostingPlanListVM {
         }
         
         do {
-            let (data, response) = try await URLSession.shared.data(for: request)
+            let (data, res) = try await URLSession.shared.data(for: request)
             
-            guard let http = response as? HTTPURLResponse else {
+            guard let http = res as? HTTPURLResponse else {
                 SystemAlert.error("No response")
                 print("Order request missing HTTP response")
                 return nil

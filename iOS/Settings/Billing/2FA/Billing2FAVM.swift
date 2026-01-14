@@ -28,8 +28,8 @@ final class Billing2FAVM {
         request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         
         do {
-            let (data, response) = try await URLSession.shared.data(for: request)
-            try validateResponse(response, data: data)
+            let (data, res) = try await URLSession.shared.data(for: request)
+            try validateResponse(res, data: data)
             
             setup = try BigAssDecoder.decode(Billing2FASetupResponse.self, from: data)
         } catch {
@@ -55,8 +55,8 @@ final class Billing2FAVM {
         request.httpBody = try? JSONSerialization.data(withJSONObject: ["code": code])
         
         do {
-            let (data, response) = try await URLSession.shared.data(for: request)
-            try validateResponse(response, data: data)
+            let (data, res) = try await URLSession.shared.data(for: request)
+            try validateResponse(res, data: data)
             return true
         } catch {
             SystemAlert.error(error.localizedDescription)
@@ -79,8 +79,8 @@ final class Billing2FAVM {
         request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         
         do {
-            let (data, response) = try await URLSession.shared.data(for: request)
-            try validateResponse(response, data: data)
+            let (data, res) = try await URLSession.shared.data(for: request)
+            try validateResponse(res, data: data)
             return true
         } catch {
             SystemAlert.error(error.localizedDescription)

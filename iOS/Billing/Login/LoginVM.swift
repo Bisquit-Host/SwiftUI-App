@@ -67,15 +67,11 @@ final class LoginVM {
         req.httpBody = try? JSONSerialization.data(withJSONObject: body)
         
         do {
-            let (data, _) = try await URLSession.shared.data(for: req)
+            let (data, res) = try await URLSession.shared.data(for: req)
             prettyJSON(data)
             
-            let message = String(data: data, encoding: .utf8) ?? "Invalid response"
-            
-            if message.contains("Invalid code or token") {
-                SystemAlert.error("Invalid credentials or email not verified")
-            } else {
-                SystemAlert.error(message)
+            if decodeBillingError(data, with: res, onDecode: SystemAlert.error) {
+                return nil
             }
             
             return try BigAssDecoder.decode(BillingLoginResponse.self, from: data)
@@ -114,9 +110,9 @@ final class LoginVM {
         defer { isSubmitting = false }
         
         do {
-            let (data, response) = try await URLSession.shared.data(for: request)
+            let (data, res) = try await URLSession.shared.data(for: request)
             
-            if let http = response as? HTTPURLResponse {
+            if let http = res as? HTTPURLResponse {
                 print(http.statusCode, "Sign up")
             }
             
@@ -143,17 +139,9 @@ final class LoginVM {
         defer { isVerifying2FA = false }
         
         do {
-            let (data, response) = try await URLSession.shared.data(for: request)
+            let (data, res) = try await URLSession.shared.data(for: request)
             
-            guard let http = response as? HTTPURLResponse, http.statusCode == 200 else {
-                let message = String(data: data, encoding: .utf8) ?? "Invalid response"
-                
-                if message.contains("Invalid code or token") {
-                    SystemAlert.error("Invalid code or token")
-                } else {
-                    SystemAlert.error(message)
-                }
-                
+            if decodeBillingError(data, with: res, onDecode: SystemAlert.error) {
                 return nil
             }
             
@@ -199,9 +187,9 @@ final class LoginVM {
             request.httpBody = "{}".data(using: .utf8)
         }
         
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let (data, res) = try await URLSession.shared.data(for: request)
         
-        guard let status = (response as? HTTPURLResponse)?.statusCode, status == 200 else {
+        guard let status = (res as? HTTPURLResponse)?.statusCode, status == 200 else {
             throw URLError(.badServerResponse)
         }
         
@@ -222,9 +210,9 @@ final class LoginVM {
         
         request.httpBody = try JSONSerialization.data(withJSONObject: body)
         
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let (data, res) = try await URLSession.shared.data(for: request)
         
-        guard let status = (response as? HTTPURLResponse)?.statusCode, status == 200 else {
+        guard let status = (res as? HTTPURLResponse)?.statusCode, status == 200 else {
             throw URLError(.badServerResponse)
         }
         

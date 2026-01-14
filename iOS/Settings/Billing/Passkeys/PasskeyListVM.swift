@@ -29,8 +29,8 @@ final class PasskeyListVM {
         request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         
         do {
-            let (data, response) = try await URLSession.shared.data(for: request)
-            try validateResponse(response, data: data)
+            let (data, res) = try await URLSession.shared.data(for: request)
+            try validateResponse(res, data: data)
             
             passkeys = try BigAssDecoder.decode([PasskeyListItem].self, from: data)
         } catch {
@@ -51,8 +51,8 @@ final class PasskeyListVM {
         request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         
         do {
-            let (data, response) = try await URLSession.shared.data(for: request)
-            try validateResponse(response, data: data)
+            let (data, res) = try await URLSession.shared.data(for: request)
+            try validateResponse(res, data: data)
             
             passkeys.removeAll {
                 $0.id == passkey.id
@@ -107,8 +107,8 @@ final class PasskeyListVM {
             request.httpBody = "{}".data(using: .utf8)
         }
         
-        let (data, response) = try await URLSession.shared.data(for: request)
-        try validateResponse(response, data: data)
+        let (data, res) = try await URLSession.shared.data(for: request)
+        try validateResponse(res, data: data)
         
         return try BigAssDecoder.decode(PasskeyOptionsResponse<PasskeyRegistrationOptions>.self, from: data)
     }
@@ -133,8 +133,8 @@ final class PasskeyListVM {
         
         request.httpBody = try JSONSerialization.data(withJSONObject: body)
         
-        let (data, response) = try await URLSession.shared.data(for: request)
-        try validateResponse(response, data: data)
+        let (data, res) = try await URLSession.shared.data(for: request)
+        try validateResponse(res, data: data)
     }
 }
 

@@ -48,9 +48,9 @@ final class TicketListVM {
         request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         
         do {
-            let (data, response) = try await URLSession.shared.data(for: request)
+            let (data, res) = try await URLSession.shared.data(for: request)
             
-            if let http = response as? HTTPURLResponse {
+            if let http = res as? HTTPURLResponse {
                 print("Response code", http.statusCode)
                 
                 if http.statusCode == 401 {
@@ -149,9 +149,9 @@ final class TicketListVM {
         request.httpBody = body
         
         do {
-            let (data, response) = try await URLSession.shared.data(for: request)
+            let (data, res) = try await URLSession.shared.data(for: request)
             
-            if let http = response as? HTTPURLResponse {
+            if let http = res as? HTTPURLResponse {
                 if http.statusCode >= 400 {
                     if let raw = String(data: data, encoding: .utf8) {
                         print("Create ticket failed \(http.statusCode): \(raw)")

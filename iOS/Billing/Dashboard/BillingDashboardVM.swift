@@ -39,10 +39,10 @@ final class BillingDashboardVM {
         req.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         
         do {
-            let (data, response) = try await URLSession.shared.data(for: req)
+            let (data, res) = try await URLSession.shared.data(for: req)
             prettyJSON(data)
             
-            if let httpResponse = response as? HTTPURLResponse {
+            if let httpResponse = res as? HTTPURLResponse {
                 if httpResponse.statusCode == 401 {
                     let _ = await refreshAuthToken()
                 }

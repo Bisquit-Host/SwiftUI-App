@@ -38,7 +38,7 @@ struct AppContainer: View {
                         code: $billingOAuth.twoFACode,
                         isVerifying: $billingOAuth.isVerifyingTwoFA
                     ) {
-                        await billingOAuth.verifyTwoFA()
+                        await billingOAuth.verify2FA()
                     }
                     .padding()
                     .navigationTitle("Enter 2FA code")

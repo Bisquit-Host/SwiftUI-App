@@ -165,11 +165,10 @@ final class BotServiceDetailsVM {
         }
         
         do {
-            let (data, response) = try await URLSession.shared.data(for: request)
+            let (data, res) = try await URLSession.shared.data(for: request)
             
-            guard let http = response as? HTTPURLResponse else {
-                SystemAlert.error("No response")
-                print("Bot request no HTTP response")
+            guard let http = res as? HTTPURLResponse else {
+                SystemAlert.error("Invalid HTTP response")
                 return nil
             }
             

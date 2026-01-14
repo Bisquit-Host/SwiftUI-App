@@ -179,9 +179,9 @@ final class BillingSettingsVM {
         }
         
         do {
-            let (data, response) = try await URLSession.shared.data(for: request)
+            let (data, res) = try await URLSession.shared.data(for: request)
             
-            guard let http = response as? HTTPURLResponse else {
+            guard let http = res as? HTTPURLResponse else {
                 SystemAlert.error("No response")
                 return
             }
@@ -247,9 +247,9 @@ final class BillingSettingsVM {
         print("Uploading file", filename, "of type", mimeType)
         
         do {
-            let (data, response) = try await session.upload(for: request, from: body)
+            let (data, res) = try await session.upload(for: request, from: body)
             
-            guard let http = response as? HTTPURLResponse else {
+            guard let http = res as? HTTPURLResponse else {
                 SystemAlert.error("No response")
                 return nil
             }
