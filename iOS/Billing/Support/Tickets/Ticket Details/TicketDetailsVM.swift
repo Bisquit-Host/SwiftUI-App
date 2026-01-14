@@ -60,9 +60,19 @@ final class TicketDetailsVM {
         var mediaPaths: [String]? = nil
         
         if !attachments.isEmpty {
-            mediaPaths = await uploadMedia(attachments: attachments)
+            let mediaAttachments = attachments.map {
+                TicketMediaUpload(filename: $0.filename, contentType: $0.contentType, data: $0.data)
+            }
+            
+            mediaPaths = await uploadTicketMediaAPI(
+                ticketId: ticket.id,
+                attachments: mediaAttachments,
+                accessToken: accessToken,
+                onBillingError: SystemAlert.error
+            )
             
             if mediaPaths == nil {
+                errorMessage = "Failed to upload attachments"
                 return false
             }
         }
@@ -159,6 +169,7 @@ final class TicketDetailsVM {
         }
         
         let trimmed = dataString.trimmingCharacters(in: .whitespacesAndNewlines)
+        
         guard !trimmed.isEmpty else {
             print("⚠️ Empty event data for", name)
             return
@@ -203,63 +214,5 @@ final class TicketDetailsVM {
     private func appendMessageIfNeeded(_ message: SupportMessageDTO) {
         guard messages.contains(where: { $0.id == message.id }) == false else { return }
         messages.append(message)
-    }
-    
-    private func uploadMedia(attachments: [PendingAttachment]) async -> [String]? {
-        guard let accessToken = accessToken() else { return nil }
-        
-        guard !attachments.isEmpty else { return [] }
-        guard let url = URL(string: "\(baseURL)/support/tickets/\(ticket.id)/media") else { return nil }
-        
-        let boundary = UUID().uuidString
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        
-        var body = Data()
-        
-        for file in attachments {
-            body.append(Data("--\(boundary)\r\n".utf8))
-            body.append(Data("Content-Disposition: form-data; name=\"file\"; filename=\"\(file.filename)\"\r\n".utf8))
-            body.append(Data("Content-Type: \(file.contentType)\r\n\r\n".utf8))
-            body.append(file.data)
-            body.append(Data("\r\n".utf8))
-        }
-        
-        body.append(Data("--\(boundary)--\r\n".utf8))
-        
-        func performUpload(using session: URLSession, request: URLRequest) async throws -> [String] {
-            let (data, res) = try await session.upload(for: request, from: body)
-            
-            if decodeBillingError(data, with: res, onDecode: SystemAlert.error) {
-                throw UploadError.failed
-            }
-            
-            return try BigAssDecoder.decode([String].self, from: data)
-        }
-        
-        var http2Request = request
-        http2Request.assumesHTTP3Capable = false
-        
-        let config = URLSessionConfiguration.ephemeral
-        var headers = config.httpAdditionalHeaders ?? [:]
-        headers["Alt-Svc"] = "clear"
-        config.httpAdditionalHeaders = headers
-        
-        let session = URLSession(configuration: config)
-        
-        do {
-            return try await performUpload(using: session, request: http2Request)
-        } catch {
-            errorMessage = error.localizedDescription
-            return nil
-        }
-    }
-    
-    private enum UploadError: Error {
-        case failed
     }
 }
