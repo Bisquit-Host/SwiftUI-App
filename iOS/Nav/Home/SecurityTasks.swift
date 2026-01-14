@@ -24,14 +24,14 @@ final class SecurityTasks {
             // If details are returned, 2FA is currently disabled and should be enabled
             let _ = try await twoFaDetailtsAPI()
             alertTwoFA = true
-            print("🛡️ 2FA is disabled")
+            Logger().info("🛡️ 2FA disabled")
             
         } catch TwoFAError.alreadyEnabled {
             alertTwoFA = false
-            print("🛡️ 2FA enabled")
+            Logger().info("🛡️ 2FA enabled")
             
         } catch {
-            print("Error checking 2FA status:", error)
+            Logger().error("Error checking 2FA status: \(error)")
             alertTwoFA = false
         }
     }
@@ -59,7 +59,7 @@ final class SecurityTasks {
             
             print(alertUnusedAPIKeys ? "🛡️ Found unused API keys" : "🛡️ No unused API keys found")
         } catch {
-            print("Error fetching API keys:", error)
+            Logger().error("Error fetching API keys: \(error)")
             alertUnusedAPIKeys = false
         }
     }
@@ -76,7 +76,6 @@ final class SecurityTasks {
         
         do {
             let (data, _) = try await URLSession.shared.data(for: request)
-            
             let decoded = try BigAssDecoder.decode(ItunesAppInfo.self, from: data)
             
             appStoreVersion = decoded.results.first?.version ?? "0"
@@ -88,7 +87,7 @@ final class SecurityTasks {
             print("🛡️ Update available:", currentVersion, "->", appStoreVersion)
             alertUpdate = true
         } else {
-            print("🛡️ The app is up to date")
+            Logger().info("🛡️ The app is up to date")
         }
     }
 }

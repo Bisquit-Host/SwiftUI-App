@@ -61,8 +61,9 @@ struct AppContainer: View {
             }
 #endif
             .onOpenURL {
-                print("🔗 Deeplink:", $0)
+                Logger().info("🔗 Deeplink: \($0)")
                 linking.handleDeepLink($0)
+                
 #if os(iOS) || os(visionOS)
                 billingOAuth.handleCallback($0) {
                     store.updateAccessToken()

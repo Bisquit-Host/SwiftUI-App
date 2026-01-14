@@ -8,22 +8,22 @@ final class DeepLinkVM {
     
     func handleDeepLink(_ url: URL) {
         guard url.scheme == "bisq", let components = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
-            print("🔗 Invalid deeplink URL")
+            Logger().error("🔗 Invalid deeplink URL")
             return
         }
         
         guard let action = components.host, action == "auth" else {
-            print("🔗 Unknown deeplink URL")
+            Logger().error("🔗 Unknown deeplink URL")
             return
         }
         
         if let error = components.queryItems?.first(where: { $0.name == "error" })?.value {
-            print("🔗 Deeplink error:", error.replacing("+", with: " "))
+            Logger().error("🔗 Deeplink error: \(error.replacing("+", with: " "))")
             return
         }
         
         guard let session = components.queryItems?.first(where: { $0.name == "session" || $0.name == "apikey" })?.value else {
-            print("🔗 API-key missing")
+            Logger().error("🔗 API-key missing")
             return
         }
         

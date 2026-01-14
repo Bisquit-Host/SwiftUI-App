@@ -58,7 +58,7 @@ final class PanelVM {
     //        }
     //
     //        let diff = Date().timeIntervalSince(start)
-    //        print("Seconds to process:", diff)
+    //        Logger().info("Seconds to process: \(diff)")
     //    }
     
     func changePower(_ signal: ServerSignal) async {

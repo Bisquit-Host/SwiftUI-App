@@ -72,7 +72,7 @@ struct UploadMenu: View {
                 }
                 
             case .failure(let error):
-                print(error)
+                Logger().error("\(error)")
             }
         }
     }
@@ -124,7 +124,7 @@ struct UploadMenu: View {
             try data.write(to: tempFileURL)
             return tempFileURL
         } catch {
-            print("Error writing video data to temporary file:", error)
+            Logger().error("Error writing video data to temporary file: \(error)")
             return nil
         }
     }
