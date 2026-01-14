@@ -11,49 +11,21 @@ struct ServiceUpgradeSection<VM: ServiceDetailsVMProtocol>: View {
     @State private var alertUpgrade = false
     
     var body: some View {
-        ServiceSectionCard("Upgrade") {
-            if vm.changeablePackages.isEmpty {
-                Text("No higher packages available right now")
-                    .footnote()
-                    .secondary()
-            } else {
-                VStack(alignment: .leading, spacing: 12) {
-                    ForEach(vm.changeablePackages) {
-                        UpgradePackage(pkg: $0, selectedUpgradeId: $selectedUpgradeId)
-                    }
-                    
-                    if let pkg = selectedUpgradePackage {
-                        UpgradeSelectionSummary(name: pkg.name, priceNow: selectedPriceNow, monthlyPrice: selectedMonthlyPrice)
-                    }
-                    
-                    Button {
-                        if selectedUpgradeId != nil {
-                            alertUpgrade = true
-                        }
-                    } label: {
-                        if vm.isPerformingAction {
-                            ProgressView()
-                                .frame(maxWidth: .infinity)
-                        } else {
-                            VStack(spacing: 2) {
-                                Text(upgradeButtonTitle)
-                                    .semibold()
-                                
-                                if let subtitle = upgradeButtonSubtitle {
-                                    Text(subtitle)
-                                        .footnote()
-                                        .secondary()
-                                        .monospacedDigit()
-                                }
-                            }
-                            .frame(maxWidth: .infinity)
-                        }
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .disabled(selectedUpgradeId == nil || vm.isPerformingAction)
+        UpgradeFullScreenView(
+            packages: vm.changeablePackages,
+            selectedUpgradeId: $selectedUpgradeId,
+            isPerformingAction: vm.isPerformingAction,
+            buttonTitle: upgradeButtonTitle,
+            buttonSubtitle: upgradeButtonSubtitle,
+            onUpgrade: handleUpgradeTap,
+            summary: {
+                if let pkg = selectedUpgradePackage {
+                    UpgradeSelectionSummary(name: pkg.name, priceNow: selectedPriceNow, monthlyPrice: selectedMonthlyPrice)
                 }
             }
-        }
+        )
+        .navigationTitle("Upgrade")
+        .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             if selectedUpgradePackage == nil {
                 selectedUpgradeId = vm.changeablePackages.first?.id
@@ -75,6 +47,12 @@ struct ServiceUpgradeSection<VM: ServiceDetailsVMProtocol>: View {
             } else {
                 Text("Upgrade service?")
             }
+        }
+    }
+    
+    private func handleUpgradeTap() {
+        if selectedUpgradeId != nil {
+            alertUpgrade = true
         }
     }
     

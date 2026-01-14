@@ -23,51 +23,22 @@ struct VDSUpgradeSection: View {
     }
     
     var body: some View {
-        ServiceSectionCard("Upgrade") {
-            vdsUpgradeNotice
-            
-            if vm.changeablePackages.isEmpty {
-                Text("No higher packages available right now")
-                    .footnote()
-                    .secondary()
-            } else {
-                VStack(alignment: .leading, spacing: 12) {
-                    ForEach(vm.changeablePackages) {
-                        UpgradePackage(pkg: $0, selectedUpgradeId: $selectedUpgradeId)
-                    }
-                    
-                    if let pkg = selectedUpgradePackage {
-                        UpgradeSelectionSummary(name: pkg.name, priceNow: selectedPriceNow, monthlyPrice: selectedMonthlyPrice)
-                    }
-                    
-                    Button {
-                        if selectedUpgradeId != nil {
-                            alertUpgrade = true
-                        }
-                    } label: {
-                        if vm.isPerformingAction {
-                            ProgressView()
-                                .frame(maxWidth: .infinity)
-                        } else {
-                            VStack(spacing: 2) {
-                                Text(upgradeButtonTitle)
-                                    .semibold()
-                                
-                                if let subtitle = upgradeButtonSubtitle {
-                                    Text(subtitle)
-                                        .footnote()
-                                        .secondary()
-                                        .monospacedDigit()
-                                }
-                            }
-                            .frame(maxWidth: .infinity)
-                        }
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .disabled(selectedUpgradeId == nil || vm.isPerformingAction)
-                }
+        UpgradeFullScreenView(
+            packages: vm.changeablePackages,
+            selectedUpgradeId: $selectedUpgradeId,
+            isPerformingAction: vm.isPerformingAction,
+            buttonTitle: upgradeButtonTitle,
+            buttonSubtitle: upgradeButtonSubtitle,
+            onUpgrade: handleUpgradeTap
+        ) {
+            UpgradeNoticeView("VDS services can't be downgraded for technical reasons")
+        } summary: {
+            if let pkg = selectedUpgradePackage {
+                UpgradeSelectionSummary(name: pkg.name, priceNow: selectedPriceNow, monthlyPrice: selectedMonthlyPrice)
             }
         }
+        .navigationTitle("Upgrade")
+        .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             if selectedUpgradePackage == nil {
                 selectedUpgradeId = vm.changeablePackages.first?.id
@@ -89,6 +60,12 @@ struct VDSUpgradeSection: View {
             } else {
                 Text("Upgrade service?")
             }
+        }
+    }
+    
+    private func handleUpgradeTap() {
+        if selectedUpgradeId != nil {
+            alertUpgrade = true
         }
     }
     
@@ -127,23 +104,5 @@ struct VDSUpgradeSection: View {
         guard selectedUpgradePackage != nil else { return nil }
         
         return "Pay \(selectedPriceNow) now"
-    }
-    
-    private var vdsUpgradeNotice: some View {
-        HStack(spacing: 8) {
-            Image(systemName: "info.circle.fill")
-                .foregroundStyle(.orange)
-            
-            Text("VDS services can't be downgraded for technical reasons")
-                .footnote()
-                .secondary()
-        }
-        .padding(10)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(.orange.opacity(0.1), in: .rect(cornerRadius: 12))
-        .overlay {
-            RoundedRectangle(cornerRadius: 12)
-                .stroke(.orange.opacity(0.25), lineWidth: 1)
-        }
     }
 }
