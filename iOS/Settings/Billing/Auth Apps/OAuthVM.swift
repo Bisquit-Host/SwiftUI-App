@@ -23,10 +23,10 @@ final class OAuthVM: NSObject {
     
     func disconnectAuthService(_ authService: String, onSuccess: () async -> Void) async {
         let path = "\(Endpoint.basePath)user/settings/social/\(authService)"
-        await disconnect(path: path, onSuccess: onSuccess)
+        await disconnectOAuthApp(path: path, onSuccess: onSuccess)
     }
     
-    private func disconnect(path: String, onSuccess: () async -> Void) async {
+    private func disconnectOAuthApp(path: String, onSuccess: () async -> Void) async {
         guard let accessToken = Keychain.load(key: "access_token") else {
             Logger().error("Access token not found in \(#function)")
             return
