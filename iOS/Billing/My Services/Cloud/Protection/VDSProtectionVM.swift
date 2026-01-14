@@ -208,8 +208,7 @@ final class VDSProtectionVM {
         }
         
         guard let url = URL(string: path, relativeTo: base) else {
-            SystemAlert.error("Invalid URL")
-            print("Protection request invalid URL:", path)
+            SystemAlert.error("Protection request failed", subtitle: "Invalid URL")
             return nil
         }
         

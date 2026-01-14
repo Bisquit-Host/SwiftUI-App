@@ -154,7 +154,7 @@ final class HostingPlanListVM {
                 result.nests = try BigAssDecoder.decode([BillingHostingNest].self, from: data)
             } catch {
                 SystemAlert.error(error)
-                print("Order nests decode error (bot):", error)
+                Logger().error("Order nests decode error (bot): \(error)")
             }
         }
         
@@ -252,7 +252,7 @@ final class HostingPlanListVM {
         
         guard let url = URL(string: path, relativeTo: authedBase) else {
             SystemAlert.error("Invalid URL")
-            print("Order request invalid URL:", path)
+            Logger().error("Order request invalid URL: \(path)")
             return nil
         }
         

@@ -49,7 +49,7 @@ final class BotServiceDetailsVM {
             SystemAlert.error("Bot changeable packages decode error: \(error)")
             
             if let raw = String(data: data, encoding: .utf8) {
-                print("Bot raw packages:", raw)
+                Logger().info("Bot raw packages: \(raw)")
             }
         }
     }
@@ -151,8 +151,7 @@ final class BotServiceDetailsVM {
         }
         
         guard let url = URL(string: path, relativeTo: base) else {
-            SystemAlert.error("Invalid URL")
-            print("Bot request invalid URL:", path)
+            SystemAlert.error("Invalid URL", subtitle: "Bot request")
             return nil
         }
         

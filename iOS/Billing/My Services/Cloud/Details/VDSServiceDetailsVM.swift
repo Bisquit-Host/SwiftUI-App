@@ -98,7 +98,7 @@ final class VDSServiceDetailsVM {
             SystemAlert.error("Cloud OS list decode error: \(error)")
             
             if let raw = String(data: data, encoding: .utf8) {
-                print("Raw OS list:", raw)
+                Logger().info("Raw OS list: \(raw)")
             }
         }
     }
@@ -214,12 +214,12 @@ final class VDSServiceDetailsVM {
         
         await performAction {
             guard let data = await self.request(path: "/cloud/\(serviceId)/panel/state/\(action)", method: "POST") else {
-                print("Power action \(action) failed")
+                Logger().error("Power action \(action) failed")
                 return
             }
             
             if let raw = String(data: data, encoding: .utf8), !raw.isEmpty {
-                print("Power action response:", raw)
+                Logger().info("Power action response: \(raw)")
             }
             
             Logger().info("Action sent: \(action.capitalized)")
@@ -244,7 +244,7 @@ final class VDSServiceDetailsVM {
         
         guard let url = URL(string: path, relativeTo: base) else {
             SystemAlert.error("Invalid URL")
-            print("Cloud request invalid URL:", path)
+            Logger().error("Cloud request invalid URL: \(path)")
             return nil
         }
         
