@@ -70,6 +70,7 @@ final class BotServiceDetailsVM {
             SystemAlert.error("Enter a name")
             return
         }
+        
         guard let accessToken = accessToken() else { return }
         
         await performAction {
@@ -105,6 +106,7 @@ final class BotServiceDetailsVM {
             SystemAlert.error("Unsupported period")
             return nil
         }
+        
         guard let accessToken = accessToken() else { return nil }
         
         return await withCheckedContinuation { continuation in
@@ -122,14 +124,12 @@ final class BotServiceDetailsVM {
                     
                     do {
                         let response = try BigAssDecoder.decode(ServiceRenewalResponse.self, from: data)
-                        
                         self.service?.expiresAt = response.newExpiresAt
                         
                         SystemAlert.done("Renewed for \(months) mo")
                         continuation.resume(returning: response)
                     } catch {
                         SystemAlert.error("Bot renewal failed", subtitle: error.localizedDescription)
-                        
                         continuation.resume(returning: nil)
                     }
                 }
@@ -147,14 +147,13 @@ final class BotServiceDetailsVM {
                 accessToken: accessToken,
                 onBillingError: SystemAlert.error
             ) else { return }
+            
             onSuccess()
             
             Logger().info("Upgrade requested")
             await self.fetchDetails(serviceId)
         }
     }
-    
-    // MARK: - Networking
     
     private func performAction(_ work: @escaping () async -> Void) async {
         guard !isPerformingAction else { return }

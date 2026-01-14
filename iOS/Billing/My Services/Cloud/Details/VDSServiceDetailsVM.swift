@@ -27,7 +27,9 @@ final class VDSServiceDetailsVM {
             group.addTask { await self.fetchOSOptions(serviceId) }
             
             if service?.state != .suspended && service?.state != .deleted {
-                group.addTask { await self.fetchChangeablePackages(serviceId) }
+                group.addTask {
+                    await self.fetchChangeablePackages(serviceId)
+                }
             }
         }
     }
@@ -138,6 +140,7 @@ final class VDSServiceDetailsVM {
             SystemAlert.error("Enter a name")
             return
         }
+        
         guard let accessToken = accessToken() else { return }
         
         await performAction {
@@ -160,6 +163,7 @@ final class VDSServiceDetailsVM {
             SystemAlert.error("Password must be 8-32 characters, \"\(password)\" doesn't fit")
             return
         }
+        
         guard let accessToken = accessToken() else { return }
         
         await performAction {
@@ -169,6 +173,7 @@ final class VDSServiceDetailsVM {
                 accessToken: accessToken,
                 onBillingError: SystemAlert.error
             ) else { return }
+            
             SystemAlert.done("Root password updated")
         }
     }
@@ -183,6 +188,7 @@ final class VDSServiceDetailsVM {
                 accessToken: accessToken,
                 onBillingError: SystemAlert.error
             ) else { return }
+            
             Logger().info("Reinstall started")
         }
     }
@@ -225,7 +231,6 @@ final class VDSServiceDetailsVM {
                     
                     do {
                         let response = try BigAssDecoder.decode(ServiceRenewalResponse.self, from: data)
-                        
                         self.service?.expiresAt = response.newExpiresAt
                         
                         SystemAlert.done("Renewed for \(months) mo")
@@ -249,6 +254,7 @@ final class VDSServiceDetailsVM {
                 accessToken: accessToken,
                 onBillingError: SystemAlert.error
             ) else { return }
+            
             onSuccess()
             
             Logger().info("Upgrade requested")

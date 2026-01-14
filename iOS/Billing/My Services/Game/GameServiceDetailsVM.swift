@@ -27,6 +27,7 @@ final class GameServiceDetailsVM {
     
     func fetchDetails(_ serviceId: Int) async {
         guard let accessToken = accessToken() else { return }
+        
         guard let data = await gameServiceDetailsAPI(
             serviceId: serviceId,
             accessToken: accessToken,
@@ -71,6 +72,7 @@ final class GameServiceDetailsVM {
             SystemAlert.error("Enter a name")
             return
         }
+        
         guard let accessToken = accessToken() else { return }
         
         await performAction {
@@ -106,6 +108,7 @@ final class GameServiceDetailsVM {
             SystemAlert.error("Unsupported period")
             return nil
         }
+        
         guard let accessToken = accessToken() else { return nil }
         
         return await withCheckedContinuation { continuation in
@@ -147,6 +150,7 @@ final class GameServiceDetailsVM {
                 accessToken: accessToken,
                 onBillingError: SystemAlert.error
             ) else { return }
+            
             onSuccess()
             
             await self.fetchDetails(serviceId)
