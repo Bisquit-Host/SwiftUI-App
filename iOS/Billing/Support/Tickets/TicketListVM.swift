@@ -10,8 +10,6 @@ final class TicketListVM {
     var showCreateSheet = false
     var alertTooManyTickets = false
     
-    private let baseURL = "https://test-api.bisquit.host"
-    
     func createNewTicket() {
         let totalCount = tickets.filter {
             $0.ticket.status == .open || $0.ticket.status == .pending
@@ -85,61 +83,16 @@ final class TicketListVM {
             return nil
         }
         
-        let boundary = UUID().uuidString
-        guard let url = URL(string: "\(baseURL)/support/tickets") else { return nil }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        
-        var body = Data()
-        
-        func appendField(_ name: String, value: String) {
-            body.append(Data("--\(boundary)\r\n".utf8))
-            body.append(Data("Content-Disposition: form-data; name=\"\(name)\"\r\n\r\n".utf8))
-            body.append(Data("\(value)\r\n".utf8))
+        let mediaAttachments = attachments.map {
+            TicketMediaUpload(filename: $0.filename, contentType: $0.contentType, data: $0.data)
         }
         
-        appendField("title", value: trimmedTitle)
-        appendField("message", value: trimmedMessage)
-        
-        for file in attachments {
-            body.append(Data("--\(boundary)\r\n".utf8))
-            body.append(Data("Content-Disposition: form-data; name=\"file\"; filename=\"\(file.filename)\"\r\n".utf8))
-            body.append(Data("Content-Type: \(file.contentType)\r\n\r\n".utf8))
-            body.append(file.data)
-            body.append(Data("\r\n".utf8))
-        }
-        
-        if let closingData = "--\(boundary)--\r\n".data(using: .utf8) {
-            body.append(closingData)
-        }
-        
-        request.httpBody = body
-        
-        do {
-            let (data, res) = try await URLSession.shared.data(for: request)
-            
-            if let http = res as? HTTPURLResponse {
-                if http.statusCode >= 400 {
-                    if let raw = String(data: data, encoding: .utf8) {
-                        print("Create ticket failed \(http.statusCode): \(raw)")
-                    }
-                    
-                    SystemAlert.error("Failed to create ticket", subtitle: http.statusCode.description)
-                    return nil
-                }
-                
-                print("Create ticket status", http.statusCode)
-            }
-            
-            let created = try BigAssDecoder.decode(CreateSupportTicketResponse.self, from: data)
-            return created.id
-        } catch {
-            SystemAlert.error("Error", subtitle: error.localizedDescription)
-            return nil
-        }
+        return await createTicketAPI(
+            title: trimmedTitle,
+            message: trimmedMessage,
+            attachments: mediaAttachments,
+            accessToken: accessToken,
+            onBillingError: SystemAlert.error
+        )
     }
 }
