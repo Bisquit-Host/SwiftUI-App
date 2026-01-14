@@ -30,33 +30,9 @@ final class BillingSettingsVM {
             return
         }
         
-        guard let url = URL(string: "\(Endpoint.basePath)user/settings/email") else {
-            Logger().error("Invalid URL")
-            return
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "PATCH"
-        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = try? JSONEncoder().encode(["email": newEmail])
-        
-        do {
-            let (_, response) = try await URLSession.shared.data(for: request)
-            
-            if let code = (response as? HTTPURLResponse)?.statusCode {
-                switch code {
-                case 200:
-                    newEmail = ""
-                    print("Successfully changed email")
-                    SystemAlert.copied("Chck your email")
-                    
-                default:
-                    print(code)
-                }
-            }
-        } catch {
-            print(error)
+        if await changeNameAPI(newName: newName, accessToken: accessToken) {
+            newEmail = ""
+            SystemAlert.copied("Check your inbox")
         }
     }
     
