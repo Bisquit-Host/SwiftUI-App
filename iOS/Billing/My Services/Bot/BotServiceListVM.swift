@@ -7,17 +7,13 @@ final class BotServiceListVM {
     var services: [BillingBotServiceSummary] = []
     var isLoading = false
     
-    func loadServices() async {
-        await fetch(path: "\(Endpoint.basePath)bot")
-    }
-    
-    private func fetch(path: String) async {
+    func fetchMyBotServices() async {
         guard !isLoading else { return }
         
         isLoading = true
         defer { isLoading = false }
         
-        guard let url = URL(string: path) else {
+        guard let url = URL(string: "\(Endpoint.basePath)bot") else {
             SystemAlert.error("Invalid URL")
             return
         }

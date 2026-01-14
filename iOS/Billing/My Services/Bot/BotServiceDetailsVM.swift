@@ -16,10 +16,14 @@ final class BotServiceDetailsVM {
         defer { isLoading = false }
         
         await withTaskGroup(of: Void.self) { group in
-            group.addTask { await self.fetchDetails(serviceId) }
+            group.addTask {
+                await self.fetchDetails(serviceId)
+            }
             
             if service?.state != .suspended && service?.state != .deleted {
-                group.addTask { await self.fetchChangeablePackages(serviceId) }
+                group.addTask {
+                    await self.fetchChangeablePackages(serviceId)
+                }
             }
         }
     }

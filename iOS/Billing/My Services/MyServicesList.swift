@@ -37,9 +37,9 @@ struct MyServicesList: View {
     }
     
     private func reload() async {
-        async let cloud: () = cloudVM.loadServices()
-        async let game: () = gameVM.loadServices()
-        async let bot: () = botVM.loadServices()
+        async let cloud: () = cloudVM.loadMyCloudServices()
+        async let game: () = gameVM.fetchMyGameServices()
+        async let bot: () = botVM.fetchMyBotServices()
         
         let _ = await (cloud, game, bot)
     }

@@ -7,7 +7,7 @@ final class VDSBillingVM {
     var services: [CloudServiceSummary] = []
     var isLoading = false
     
-    func loadServices() async {
+    func loadMyCloudServices() async {
         guard !isLoading else { return }
         
         isLoading = true

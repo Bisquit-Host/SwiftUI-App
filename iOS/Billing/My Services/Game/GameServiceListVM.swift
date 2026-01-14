@@ -7,11 +7,7 @@ final class GameServiceListVM {
     var services: [BillingGameServiceSummary] = []
     var isLoading = false
     
-    func loadServices() async {
-        await fetch()
-    }
-    
-    private func fetch() async {
+    func fetchMyGameServices() async {
         guard !isLoading else { return }
         
         isLoading = true
