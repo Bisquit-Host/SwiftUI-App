@@ -1,24 +1,23 @@
 import SwiftUI
 
 struct MyServicesList: View {
-    @State private var cloudVM = VDSBillingVM()
-    @State private var gameVM = GameServiceListVM()
-    @State private var botVM = BotServiceListVM()
+    @State private var servicesVM = MyServiceListVM()
+    
     @Environment(BillingDashboardVM.self) private var vm
     
     var body: some View {
         List {
-            MyServicesSection(title: "VDS", services: cloudVM.services.map { .cloud($0) }, isLoading: cloudVM.isLoading) {
+            MyServicesSection(title: "VDS", services: servicesVM.cloudServices.map { .cloud($0) }, isLoading: servicesVM.isCloudLoading) {
                 VDSServiceDetailsTabView($0)
                     .environment(vm)
             }
             
-            MyServicesSection(title: "Game servers", services: gameVM.services.map { .game($0) }, isLoading: gameVM.isLoading) {
+            MyServicesSection(title: "Game servers", services: servicesVM.gameServices.map { .game($0) }, isLoading: servicesVM.isGameLoading) {
                 ServiceDetailsView<GameServiceDetailsVM>($0)
                     .environment(vm)
             }
             
-            MyServicesSection(title: "Bot hosting", services: botVM.services.map { .bot($0) }, isLoading: botVM.isLoading) {
+            MyServicesSection(title: "Bot hosting", services: servicesVM.botServices.map { .bot($0) }, isLoading: servicesVM.isBotLoading) {
                 ServiceDetailsView<BotServiceDetailsVM>($0)
                     .environment(vm)
             }
@@ -37,11 +36,7 @@ struct MyServicesList: View {
     }
     
     private func reload() async {
-        async let cloud: () = cloudVM.loadMyCloudServices()
-        async let game: () = gameVM.fetchMyGameServices()
-        async let bot: () = botVM.fetchMyBotServices()
-        
-        let _ = await (cloud, game, bot)
+        await servicesVM.loadMyServices()
     }
 }
 
