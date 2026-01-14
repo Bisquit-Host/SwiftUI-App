@@ -70,6 +70,14 @@ final class LoginVM {
             let (data, _) = try await URLSession.shared.data(for: req)
             prettyJSON(data)
             
+            let message = String(data: data, encoding: .utf8) ?? "Invalid response"
+            
+            if message.contains("Invalid code or token") {
+                SystemAlert.error("Invalid credentials or email not verified")
+            } else {
+                SystemAlert.error(message)
+            }
+            
             return try BigAssDecoder.decode(BillingLoginResponse.self, from: data)
         } catch {
             SystemAlert.error(error.localizedDescription)
