@@ -1,6 +1,8 @@
+import SwiftUI
 import ScrechKit
 
 struct UpgradePackage: View {
+    @Environment(\.accessibilityDifferentiateWithoutColor) private var differentiateWithoutColor
     @Environment(BillingDashboardVM.self) private var dashboardVM
     
     let pkg: ChangeablePackage
@@ -11,42 +13,140 @@ struct UpgradePackage: View {
     }
     
     var body: some View {
-        let ram = formatMegaBytes(pkg.memory)
-        let disk = formatMegaBytes(pkg.disk)
-        let priceNow = formatCurrency(max(pkg.price - pkg.toMinus, 0), user: dashboardVM.user)
-        let monthlyPrice = formatCurrency(pkg.price, user: dashboardVM.user)
-        
-        Button {
-            selectedUpgradeId = pkg.id
-        } label: {
-            HStack(alignment: .firstTextBaseline, spacing: 8) {
-                VStack(alignment: .leading, spacing: 4) {
+        Button(action: select) {
+            VStack(alignment: .leading, spacing: 10) {
+                HStack(alignment: .firstTextBaseline, spacing: 10) {
                     Text(pkg.name)
                         .subheadline(.semibold)
                     
-                    Text("\(pkg.cpu.clean) vCPU • \(ram) • \(disk)")
-                        .footnote()
+                    Spacer()
+                    
+                    Text("\(monthlyPrice)/mo")
+                        .subheadline(.semibold)
+                        .monospacedDigit()
+                        .padding(.vertical, 4)
+                        .padding(.horizontal, 10)
+                        .background(priceBadgeBackground, in: .capsule)
+                        .overlay {
+                            Capsule()
+                                .stroke(priceBadgeBorder, lineWidth: 1)
+                        }
+                }
+                
+                FlowLayout(horizontalSpacing: 8, verticalSpacing: 8) {
+                    ForEach(specs, id: \.text) { spec in
+                        UpgradeSpecChip(spec: spec, isSelected: isSelected)
+                    }
+                }
+                
+                HStack(spacing: 6) {
+                    Text("Pay now")
+                        .caption()
                         .secondary()
                     
-                    Text("Pay now \(priceNow) / \(monthlyPrice)/mo")
-                        .footnote()
+                    Text(priceNow)
+                        .caption()
+                        .monospacedDigit()
                         .foregroundStyle(.primary)
-                }
-                
-                Spacer()
-                
-                if isSelected {
-                    Image(systemName: "checkmark.circle.fill")
+                        .padding(.vertical, 4)
+                        .padding(.horizontal, 8)
+                        .background(priceBadgeBackground.opacity(0.6), in: .capsule)
                 }
             }
-            .padding(10)
+            .padding(12)
             .frame(maxWidth: .infinity, alignment: .leading)
+            .overlay(alignment: .topTrailing) {
+                if isSelected {
+                    Image(systemName: "checkmark.circle.fill")
+                        .foregroundStyle(Color.accentColor)
+                }
+            }
             .background {
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(isSelected ? Color.accentColor.opacity(0.12) : Color.clear)
+                RoundedRectangle(cornerRadius: 14)
+                    .fill(isSelected ? Color.accentColor.opacity(0.12) : .primary.opacity(0.03))
+            }
+            .overlay {
+                RoundedRectangle(cornerRadius: 14)
+                    .stroke(isSelected ? Color.accentColor.opacity(0.4) : .primary.opacity(0.08), lineWidth: differentiateWithoutColor && isSelected ? 2 : 1)
             }
         }
         .buttonStyle(.plain)
+    }
+    
+    private func select() {
+        withAnimation(.easeInOut(duration: 0.2)) {
+            selectedUpgradeId = pkg.id
+        }
+    }
+    
+    private var priceNow: String {
+        formatCurrency(max(pkg.price - pkg.toMinus, 0), user: dashboardVM.user)
+    }
+    
+    private var monthlyPrice: String {
+        formatCurrency(pkg.price, user: dashboardVM.user)
+    }
+    
+    private var priceBadgeBackground: Color {
+        isSelected ? Color.accentColor.opacity(0.12) : .primary.opacity(0.06)
+    }
+    
+    private var priceBadgeBorder: Color {
+        isSelected ? Color.accentColor.opacity(0.35) : .primary.opacity(0.12)
+    }
+    
+    private var specs: [(icon: String, text: String)] {
+        let ram = "\(formatMegaBytes(pkg.memory)) \(pkg.memoryType ?? "")".trimmingCharacters(in: .whitespaces)
+        let disk = "\(formatMegaBytes(pkg.disk)) \(pkg.diskType ?? "")".trimmingCharacters(in: .whitespaces)
+        
+        var items: [(String, String)] = [
+            ("cpu", "\(pkg.cpu.clean) vCPU"),
+            ("memorychip", "\(ram) RAM"),
+            ("internaldrive", disk)
+        ]
+        
+        if let network = pkg.network {
+            let text = pkg.networkType == nil ? "\(network.clean)" : "\(network.clean) \(pkg.networkType ?? "")"
+            items.append(("network", text))
+        }
+        
+        if let databases = pkg.databases {
+            items.append(("externaldrive.fill", "\(databases) DB's"))
+        }
+        
+        if let backups = pkg.backups {
+            items.append(("clock.arrow.circlepath", "\(backups) backups"))
+        }
+        
+        if let allocations = pkg.allocations {
+            items.append(("number", "\(allocations) ports"))
+        }
+        
+        return items
+    }
+}
+
+private struct UpgradeSpecChip: View {
+    let spec: (icon: String, text: String)
+    let isSelected: Bool
+    
+    var body: some View {
+        HStack(spacing: 6) {
+            Image(systemName: spec.icon)
+                .footnote()
+                .secondary()
+            
+            Text(spec.text)
+                .footnote()
+                .monospacedDigit()
+        }
+        .padding(.vertical, 6)
+        .padding(.horizontal, 10)
+        .background(isSelected ? Color.accentColor.opacity(0.12) : .primary.opacity(0.04), in: .capsule)
+        .overlay {
+            Capsule()
+                .stroke(isSelected ? Color.accentColor.opacity(0.35) : .primary.opacity(0.1), lineWidth: 1)
+        }
     }
 }
 

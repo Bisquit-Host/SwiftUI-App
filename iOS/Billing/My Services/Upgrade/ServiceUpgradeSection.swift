@@ -22,6 +22,10 @@ struct ServiceUpgradeSection<VM: ServiceDetailsVMProtocol>: View {
                         UpgradePackage(pkg: $0, selectedUpgradeId: $selectedUpgradeId)
                     }
                     
+                    if let pkg = selectedUpgradePackage {
+                        UpgradeSelectionSummary(name: pkg.name, priceNow: selectedPriceNow, monthlyPrice: selectedMonthlyPrice)
+                    }
+                    
                     Button {
                         if selectedUpgradeId != nil {
                             alertUpgrade = true
@@ -31,9 +35,18 @@ struct ServiceUpgradeSection<VM: ServiceDetailsVMProtocol>: View {
                             ProgressView()
                                 .frame(maxWidth: .infinity)
                         } else {
-                            Text("Upgrade")
-                                .semibold()
-                                .frame(maxWidth: .infinity)
+                            VStack(spacing: 2) {
+                                Text(upgradeButtonTitle)
+                                    .semibold()
+                                
+                                if let subtitle = upgradeButtonSubtitle {
+                                    Text(subtitle)
+                                        .footnote()
+                                        .secondary()
+                                        .monospacedDigit()
+                                }
+                            }
+                            .frame(maxWidth: .infinity)
                         }
                     }
                     .buttonStyle(.borderedProminent)
@@ -42,10 +55,12 @@ struct ServiceUpgradeSection<VM: ServiceDetailsVMProtocol>: View {
             }
         }
         .onAppear {
-            selectedUpgradeId = selectedUpgradeId ?? vm.changeablePackages.first?.id
+            if selectedUpgradePackage == nil {
+                selectedUpgradeId = vm.changeablePackages.first?.id
+            }
         }
         .onChange(of: vm.changeablePackages.count) {
-            if selectedUpgradeId == nil {
+            if selectedUpgradePackage == nil {
                 selectedUpgradeId = vm.changeablePackages.first?.id
             }
         }
@@ -80,6 +95,30 @@ struct ServiceUpgradeSection<VM: ServiceDetailsVMProtocol>: View {
         vm.changeablePackages.first {
             $0.id == selectedUpgradeId
         }
+    }
+    
+    private var selectedPriceNow: String {
+        guard let pkg = selectedUpgradePackage else { return "" }
+        
+        return formatCurrency(max(pkg.price - pkg.toMinus, 0), user: dashboardVM.user)
+    }
+    
+    private var selectedMonthlyPrice: String {
+        guard let pkg = selectedUpgradePackage else { return "" }
+        
+        return formatCurrency(pkg.price, user: dashboardVM.user)
+    }
+    
+    private var upgradeButtonTitle: String {
+        guard let pkg = selectedUpgradePackage else { return "Upgrade" }
+        
+        return "Upgrade to \(pkg.name)"
+    }
+    
+    private var upgradeButtonSubtitle: String? {
+        guard selectedUpgradePackage != nil else { return nil }
+        
+        return "Pay \(selectedPriceNow) now"
     }
 }
 
