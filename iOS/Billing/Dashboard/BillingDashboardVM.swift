@@ -12,7 +12,7 @@ final class BillingDashboardVM {
             return
         }
         
-        guard let credentials = await refreshAuthTokenAPI(refreshToken: refreshToken) else {
+        guard let credentials = await refreshAuthTokenAPI(refreshToken: refreshToken, onBillingError: SystemAlert.error) else {
             SystemAlert.error("Error refreshing access token")
             return
         }
