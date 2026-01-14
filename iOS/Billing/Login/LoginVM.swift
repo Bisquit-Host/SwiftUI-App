@@ -124,32 +124,12 @@ final class LoginVM {
     }
     
     func verify2FA(code: String, token: String) async -> BillingLoginResponse? {
-        let url = baseURL.appendingPathComponent("auth/two-fa")
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        request.httpBody = try? JSONSerialization.data(withJSONObject: [
-            "code": code,
-            "token": token
-        ])
-        
         isVerifying2FA = true
         defer { isVerifying2FA = false }
         
-        do {
-            let (data, res) = try await URLSession.shared.data(for: request)
-            
-            if decodeBillingError(data, with: res, onDecode: SystemAlert.error) {
-                return nil
-            }
-            
-            return try BigAssDecoder.decode(BillingLoginResponse.self, from: data)
-        } catch {
-            SystemAlert.error(error)
-            return nil
-        }
+        return await verify2FAAPI(code: code, token: token, onBillingError: { @MainActor title, subtitle in
+            SystemAlert.error(title, subtitle: subtitle)
+        })
     }
     
     func loginWithPasskey(_ login: String?) async -> BillingLoginResponse? {

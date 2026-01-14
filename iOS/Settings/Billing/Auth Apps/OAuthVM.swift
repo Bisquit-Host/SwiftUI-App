@@ -22,30 +22,13 @@ final class OAuthVM: NSObject {
     var isVerifyingTwoFA = false
     
     func disconnectAuthService(_ authService: String, onSuccess: () async -> Void) async {
-        let path = "\(Endpoint.basePath)user/settings/social/\(authService)"
-        await disconnectOAuthApp(path: path, onSuccess: onSuccess)
-    }
-    
-    private func disconnectOAuthApp(path: String, onSuccess: () async -> Void) async {
         guard let accessToken = Keychain.load(key: "access_token") else {
             Logger().error("Access token not found in \(#function)")
             return
         }
         
-        guard let url = URL(string: path) else { return }
-        
-        var req = URLRequest(url: url)
-        req.httpMethod = "DELETE"
-        req.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        
-        do {
-            let (_, response) = try await URLSession.shared.data(for: req)
-            
-            if let code = (response as? HTTPURLResponse)?.statusCode, code == 204 {
-                await onSuccess()
-            }
-        } catch {
-            print(error)
+        if await disconnectOAuthAppAPI(authService: authService, accessToken: accessToken) {
+            await onSuccess()
         }
     }
     
@@ -208,42 +191,23 @@ final class OAuthVM: NSObject {
             return
         }
         
-        guard let url = URL(string: "\(Endpoint.basePath)auth/two-fa") else {
-            SystemAlert.error("Invalid backend URL")
-            return
-        }
-        
         isVerifyingTwoFA = true
         defer { isVerifyingTwoFA = false }
         
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        request.httpBody = try? JSONSerialization.data(withJSONObject: [
-            "code": code,
-            "token": token
-        ])
-        
-        do {
-            let (data, res) = try await URLSession.shared.data(for: request)
-            
-            if decodeBillingError(data, with: res, onDecode: SystemAlert.error) {
-                return
-            }
-            
-            let decodedResponse = try BigAssDecoder.decode(BillingLoginResponse.self, from: data)
-            storeTokens(accessToken: decodedResponse.accessToken, refreshToken: decodedResponse.refreshToken, expiresIn: decodedResponse.expiresIn)
-            
-            showTwoFASheet = false
-            pendingTwoFAToken = nil
-            twoFACode = ""
-            
-            onAuthComplete?()
-            onAuthComplete = nil
-        } catch {
-            SystemAlert.error(error)
+        guard let decodedResponse = await verify2FAAPI(code: code, token: token, onBillingError: { @MainActor title, subtitle in
+            SystemAlert.error(title, subtitle: subtitle)
+        }) else {
+            return
         }
+        
+        storeTokens(accessToken: decodedResponse.accessToken, refreshToken: decodedResponse.refreshToken, expiresIn: decodedResponse.expiresIn)
+        
+        showTwoFASheet = false
+        pendingTwoFAToken = nil
+        twoFACode = ""
+        
+        onAuthComplete?()
+        onAuthComplete = nil
     }
     
     private func storeTokens(accessToken: String, refreshToken: String, expiresIn: Int) {
