@@ -1,4 +1,5 @@
 import Foundation
+import BisquitoNet
 import PteroNet
 
 @Observable
@@ -267,29 +268,13 @@ final class HostingPlanListVM {
         do {
             let (data, res) = try await URLSession.shared.data(for: request)
             
-            guard let http = res as? HTTPURLResponse else {
-                SystemAlert.error("No response")
-                print("Order request missing HTTP response")
-                return nil
-            }
-            
-            guard (200...299).contains(http.statusCode) else {
-                let error = String(data: data, encoding: .utf8) ?? "Status \(http.statusCode)"
-                print("Order request failed \(http.statusCode):", error)
-                
-                if let decodedError = try? BigAssDecoder.decode(PurchaseErrorResponse.self, from: data) {
-                    SystemAlert.error(decodedError.title, subtitle: "Status code: \(decodedError.status)")
-                } else {
-                    SystemAlert.error(error, subtitle: "Status code: \(http.statusCode)")
-                }
-                
+            if decodeBillingError(data, with: res, onDecode: SystemAlert.error) {
                 return nil
             }
             
             return data
         } catch {
-            SystemAlert.error(error.localizedDescription)
-            print("Order request failed:", error)
+            SystemAlert.error("Order request failed", subtitle: error.localizedDescription)
             return nil
         }
     }
