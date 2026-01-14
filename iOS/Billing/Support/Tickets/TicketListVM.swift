@@ -1,4 +1,5 @@
 import Foundation
+import BisquitoNet
 import PteroNet
 
 @Observable
@@ -29,48 +30,31 @@ final class TicketListVM {
         isLoading = true
         defer { isLoading = false }
         
-        var components = URLComponents(string: "\(baseURL)/support/tickets")
+        let result = await fetchTicketsAPI(showClosed: showClosed, accessToken: accessToken)
         
-        if showClosed {
-            components?.queryItems = [URLQueryItem(name: "showClosed", value: "1")]
-        }
-        
-        guard let url = components?.url else {
-            Logger().error("Invalid URL")
+        if result.statusCode == 401 {
+            SystemAlert.error("Unauthorized", subtitle: "401")
             return
         }
         
-        var request = URLRequest(url: url)
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        if result.statusCode == 204 {
+            tickets = []
+            return
+        }
+        
+        guard let data = result.data else {
+            return
+        }
+        
+        let trimmedString = String(data: data, encoding: .utf8)?
+            .trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        
+        if data.isEmpty || trimmedString.isEmpty {
+            tickets = []
+            return
+        }
         
         do {
-            let (data, res) = try await URLSession.shared.data(for: request)
-            
-            if let http = res as? HTTPURLResponse {
-                print("Response code", http.statusCode)
-                
-                if http.statusCode == 401 {
-                    SystemAlert.error("Unauthorized", subtitle: "401")
-                    return
-                }
-                
-                if http.statusCode == 204 {
-                    tickets = []
-                    return
-                }
-            }
-            
-            let trimmedString = String(data: data, encoding: .utf8)?
-                .trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-            
-            if data.isEmpty || trimmedString.isEmpty {
-                tickets = []
-                return
-            }
-            
-            prettyJSON(data)
-            
             tickets = try BigAssDecoder.decode([SupportTicketWithLastMessageDTO].self, from: data)
         } catch {
             SystemAlert.error("Error", subtitle: error.localizedDescription)
