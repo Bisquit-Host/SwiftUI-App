@@ -49,14 +49,14 @@ final class BillingSettingsVM {
     }
     
     func changePassword(hasExistingPassword: Bool, onSuccess: @escaping () async -> Void) async {
-        let trimmedNewPassword = newPassword.trimmingCharacters(in: .whitespacesAndNewlines)
         let trimmedCurrentPassword = currentPassword.trimmingCharacters(in: .whitespacesAndNewlines)
-        let trimmedConfirmation = confirmPassword.trimmingCharacters(in: .whitespacesAndNewlines)
         
         if hasExistingPassword && trimmedCurrentPassword.isEmpty {
             SystemAlert.error("Enter current password")
             return
         }
+        
+        let trimmedNewPassword = newPassword.trimmingCharacters(in: .whitespacesAndNewlines)
         
         if trimmedNewPassword.isEmpty {
             SystemAlert.error("Enter new password")
@@ -72,6 +72,8 @@ final class BillingSettingsVM {
             SystemAlert.error("Password too long", subtitle: "70 characters max")
             return
         }
+        
+        let trimmedConfirmation = confirmPassword.trimmingCharacters(in: .whitespacesAndNewlines)
         
         if trimmedNewPassword != trimmedConfirmation {
             SystemAlert.error("Passwords do not match")
