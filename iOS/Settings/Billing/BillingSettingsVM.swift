@@ -1,4 +1,5 @@
 import Foundation
+import BisquitoNet
 import PteroNet
 
 @Observable
@@ -17,33 +18,9 @@ final class BillingSettingsVM {
             return
         }
         
-        guard let url = URL(string: "\(Endpoint.basePath)user/settings/name") else {
-            print("Invalid URL")
-            return
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "PATCH"
-        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = try? JSONEncoder().encode(["name": newName])
-        
-        do {
-            let (_, response) = try await URLSession.shared.data(for: request)
-            
-            if let code = (response as? HTTPURLResponse)?.statusCode {
-                switch code {
-                case 200:
-                    newName = ""
-                    print("Successfully changed name")
-                    await onSuccess()
-                    
-                default:
-                    print(code)
-                }
-            }
-        } catch {
-            print(error.localizedDescription)
+        if await changeNameAPI(newName: newName, accessToken: accessToken) {
+            newName = ""
+            await onSuccess()
         }
     }
     
