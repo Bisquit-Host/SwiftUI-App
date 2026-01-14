@@ -42,33 +42,9 @@ final class BillingSettingsVM {
             return
         }
         
-        guard let url = URL(string: "\(Endpoint.basePath)user/settings/login") else {
-            Logger().error("Invalid URL")
-            return
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "PATCH"
-        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = try? JSONEncoder().encode(["login": newLogin])
-        
-        do {
-            let (_, response) = try await URLSession.shared.data(for: request)
-            
-            if let code = (response as? HTTPURLResponse)?.statusCode {
-                switch code {
-                case 200:
-                    newLogin = ""
-                    print("Successfully changed login")
-                    await onSuccess()
-                    
-                default:
-                    print(code)
-                }
-            }
-        } catch {
-            SystemAlert.error(error)
+        if await changeLoginAPI(newLogin: newLogin, accessToken: accessToken) {
+            newLogin = ""
+            await onSuccess()
         }
     }
     
