@@ -28,22 +28,15 @@ final class BillingDashboardVM {
     
     func fetchUserInfo() async {
         guard let accessToken = accessToken() else { return }
-        guard let url = URL(string: "\(Endpoint.basePath)user") else { return }
+        let result = await fetchUserInfoAPI(accessToken: accessToken)
         
-        var req = URLRequest(url: url)
-        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        req.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        if result.statusCode == 401 {
+            let _ = await refreshAuthToken()
+        }
+        
+        guard let data = result.data else { return }
         
         do {
-            let (data, res) = try await URLSession.shared.data(for: req)
-            prettyJSON(data)
-            
-            if let httpResponse = res as? HTTPURLResponse {
-                if httpResponse.statusCode == 401 {
-                    let _ = await refreshAuthToken()
-                }
-            }
-            
             user = try BigAssDecoder.decode(BillingUser.self, from: data)
         } catch {
             Logger().error("Error fetching user data: \(error)")
