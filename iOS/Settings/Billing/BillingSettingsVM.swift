@@ -78,11 +78,6 @@ final class BillingSettingsVM {
             return
         }
         
-        guard let url = URL(string: "\(Endpoint.basePath)user/settings/password") else {
-            SystemAlert.error("Invalid URL")
-            return
-        }
-        
         guard let accessToken = Keychain.load(key: "access_token") else {
             Logger().error("Access token not found in \(#function)")
             return
@@ -91,45 +86,16 @@ final class BillingSettingsVM {
         isUpdatingPassword = true
         defer { isUpdatingPassword = false }
         
-        var request = URLRequest(url: url)
-        request.httpMethod = hasExistingPassword ? "PATCH" : "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        
-        if hasExistingPassword {
-            request.httpBody = try? JSONEncoder().encode([
-                "oldPassword": trimmedCurrentPassword,
-                "newPassword": trimmedNewPassword
-            ])
-        } else {
-            request.httpBody = try? JSONEncoder().encode([
-                "password": trimmedNewPassword
-            ])
-        }
-        
-        do {
-            let (data, res) = try await URLSession.shared.data(for: request)
-            
-            guard let http = res as? HTTPURLResponse else {
-                SystemAlert.error("No response")
-                return
-            }
-            
-            switch http.statusCode {
-            case 200, 201, 204:
-                resetPasswordFields()
-                await onSuccess()
-                SystemAlert.copied("Password updated")
-                
-            default:
-                if let raw = String(data: data, encoding: .utf8), !raw.isEmpty {
-                    SystemAlert.error("Failed to update", subtitle: raw)
-                } else {
-                    SystemAlert.error("Failed to update", subtitle: "Status \(http.statusCode)")
-                }
-            }
-        } catch {
-            SystemAlert.error("Error", subtitle: error.localizedDescription)
+        if await changePasswordAPI(
+            hasExistingPassword: hasExistingPassword,
+            currentPassword: trimmedCurrentPassword,
+            newPassword: trimmedNewPassword,
+            accessToken: accessToken,
+            onBillingError: SystemAlert.error
+        ) {
+            resetPasswordFields()
+            await onSuccess()
+            SystemAlert.copied("Password updated")
         }
     }
     
