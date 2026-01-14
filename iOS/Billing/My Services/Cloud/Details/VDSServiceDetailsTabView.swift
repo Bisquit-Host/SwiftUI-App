@@ -100,13 +100,7 @@ struct VDSServiceDetailsTabView: View {
         .alert("Change password", isPresented: $alertChangePassword) {
             SecureField("New password", text: $newPassword)
             
-            Button("Save", role: .confirm) {
-                Task {
-                    await vm.changePassword(newPassword, for: serviceId)
-                    newPassword = ""
-                }
-            }
-            
+            Button("Save", role: .confirm, action: changePassword)
             Button("Cancel", role: .cancel) {}
         }
         .toolbar {
@@ -168,6 +162,13 @@ struct VDSServiceDetailsTabView: View {
                     Image(systemName: "ellipsis")
                 }
             }
+        }
+    }
+    
+    private func changePassword() {
+        Task {
+            await vm.changePassword(newPassword, for: serviceId)
+            newPassword = ""
         }
     }
 }
