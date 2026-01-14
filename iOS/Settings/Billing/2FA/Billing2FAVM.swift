@@ -15,7 +15,7 @@ final class Billing2FAVM {
     
     func fetchSetup() async {
         guard let accessToken = Keychain.load(key: "access_token") else {
-            print("Access token not found", #function)
+            Logger().error("Access token not found in \(#function)")
             return
         }
         
@@ -33,13 +33,13 @@ final class Billing2FAVM {
             
             setup = try BigAssDecoder.decode(Billing2FASetupResponse.self, from: data)
         } catch {
-            SystemAlert.error(error.localizedDescription)
+            SystemAlert.error(error)
         }
     }
     
     func enable(code: String) async -> Bool {
         guard let accessToken = Keychain.load(key: "access_token") else {
-            print("Access token not found", #function)
+            Logger().error("Access token not found in \(#function)")
             return false
         }
         
@@ -59,14 +59,14 @@ final class Billing2FAVM {
             try validateResponse(res, data: data)
             return true
         } catch {
-            SystemAlert.error(error.localizedDescription)
+            SystemAlert.error(error)
             return false
         }
     }
     
     func disable() async -> Bool {
         guard let accessToken = Keychain.load(key: "access_token") else {
-            print("Access token not found", #function)
+            Logger().error("Access token not found in \(#function)")
             return false
         }
         
@@ -83,7 +83,7 @@ final class Billing2FAVM {
             try validateResponse(res, data: data)
             return true
         } catch {
-            SystemAlert.error(error.localizedDescription)
+            SystemAlert.error(error)
             return false
         }
     }

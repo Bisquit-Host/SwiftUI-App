@@ -145,7 +145,7 @@ final class VDSServiceDetailsVM {
         
         await performAction {
             guard await self.request(path: "/cloud/\(serviceId)/panel/reinstall", method: "POST", body: payload) != nil else { return }
-            print("Reinstall started")
+            Logger().info("Reinstall started")
         }
     }
     
@@ -186,7 +186,7 @@ final class VDSServiceDetailsVM {
                         SystemAlert.done("Renewed for \(months) mo")
                         continuation.resume(returning: response)
                     } catch {
-                        SystemAlert.error(error.localizedDescription)
+                        SystemAlert.error(error)
                         print("Cloud renewal decode error:", error)
                         
                         continuation.resume(returning: nil)
@@ -204,7 +204,7 @@ final class VDSServiceDetailsVM {
             guard await self.request(path: "/cloud/\(serviceId)/change-package", method: "POST", body: payload) != nil else { return }
             onSuccess()
             
-            print("Upgrade requested")
+            Logger().info("Upgrade requested")
             await self.fetchDetails(serviceId)
         }
     }
@@ -222,7 +222,7 @@ final class VDSServiceDetailsVM {
                 print("Power action response:", raw)
             }
             
-            print("Action sent: \(action.capitalized)")
+            Logger().info("Action sent: \(action.capitalized)")
         }
     }
     
@@ -238,7 +238,7 @@ final class VDSServiceDetailsVM {
     
     private func request(path: String, method: String = "GET", body: Data? = nil) async -> Data? {
         guard let accessToken = Keychain.load(key: "access_token") else {
-            print("Access token not found", #function)
+            Logger().error("Access token not found in \(#function)")
             return nil
         }
         
@@ -276,7 +276,7 @@ final class VDSServiceDetailsVM {
             
             return data
         } catch {
-            SystemAlert.error(error.localizedDescription)
+            SystemAlert.error(error)
             print("Cloud request failed:", error)
             
             return nil

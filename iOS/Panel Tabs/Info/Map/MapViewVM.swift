@@ -75,7 +75,7 @@ final class MapViewVM {
             Task { @MainActor in
                 guard let snapshot else {
                     if let error {
-                        print("Map snapshot error:", error.localizedDescription)
+                        print("Map snapshot error:", error)
                     }
                     
                     return

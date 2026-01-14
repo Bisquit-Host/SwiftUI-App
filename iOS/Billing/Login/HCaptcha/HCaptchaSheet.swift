@@ -1,4 +1,5 @@
 import SwiftUI
+import os
 
 struct HCaptchaSheet: View {
     @State private var vm = HCaptchaVM()
@@ -39,7 +40,7 @@ struct HCaptchaSheet: View {
                 hcaptchaToken = newToken
                 dismiss()
             } else {
-                print("Invalid token")
+                Logger().error("Invalid token")
             }
         }
     }

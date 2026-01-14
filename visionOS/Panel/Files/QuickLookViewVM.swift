@@ -18,7 +18,7 @@ final class QuickLookViewVM {
     
     private func downloadFile(_ urlString: String, name: String) async {
         guard let url = URL(string: urlString) else {
-            print("Invalid URL")
+            Logger().error("Invalid URL")
             return
         }
         
@@ -35,7 +35,7 @@ final class QuickLookViewVM {
             try FileManager.default.copyItem(at: location, to: destinationURL)
             fileURL = destinationURL
         } catch {
-            print("Error during file copy:", error.localizedDescription)
+            print("Error during file copy:", error)
         }
     }
 }

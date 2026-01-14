@@ -22,7 +22,7 @@ struct AppIconSettings: View {
     
     private func onIconChanged(_ icon: Icon) {
         guard UIApplication.shared.supportsAlternateIcons else {
-            print("Device doesn't support alternate app icons")
+            SystemAlert.error("Device doesn't support alternate app icons")
             return
         }
         

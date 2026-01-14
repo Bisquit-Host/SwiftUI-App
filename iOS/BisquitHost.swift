@@ -46,7 +46,7 @@ struct BisquitHost: App {
         do {
             try Tips.configure([.displayFrequency(.immediate), .datastoreLocation(.groupContainer(identifier: "group.Bisquit-host")), .cloudKitContainer(.automatic)])
         } catch {
-            Logger().error("Error initializing TipKit \(error.localizedDescription)")
+            Logger().error("Error initializing TipKit \(error)")
         }
 #if canImport(MetricKit) && !os(tvOS)
         _ = MetricKitManager.shared

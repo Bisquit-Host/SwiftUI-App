@@ -40,13 +40,13 @@ class PanelSectionVM {
     
     func save() {
         guard let data = try? JSONEncoder().encode(sections) else {
-            print("❌ Save error")
+            Logger().error("❌ Save error")
             return
         }
         
         UserDefaults.standard.set(data, forKey: storageKey)
         
-        print("✅ Saved")
+        Logger().info("✅ Saved")
     }
     
     private func load() {

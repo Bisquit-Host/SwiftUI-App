@@ -28,7 +28,7 @@ final class OAuthVM: NSObject {
     
     private func disconnect(path: String, onSuccess: () async -> Void) async {
         guard let accessToken = Keychain.load(key: "access_token") else {
-            print("Access token not found", #function)
+            Logger().error("Access token not found in \(#function)")
             return
         }
         
@@ -242,7 +242,7 @@ final class OAuthVM: NSObject {
             onAuthComplete?()
             onAuthComplete = nil
         } catch {
-            SystemAlert.error(error.localizedDescription)
+            SystemAlert.error(error)
         }
     }
     

@@ -203,7 +203,7 @@ final class VDSProtectionVM {
     
     private func request(path: String, method: String = "GET", body: Data? = nil) async -> Data? {
         guard let accessToken = Keychain.load(key: "access_token") else {
-            print("Access token not found", #function)
+            Logger().error("Access token not found in \(#function)")
             return nil
         }
         
@@ -227,7 +227,6 @@ final class VDSProtectionVM {
             
             guard let http = res as? HTTPURLResponse else {
                 SystemAlert.error("No response")
-                print("Protection request no HTTP response")
                 return nil
             }
             
@@ -241,7 +240,7 @@ final class VDSProtectionVM {
             
             return data
         } catch {
-            SystemAlert.error(error.localizedDescription)
+            SystemAlert.error(error)
             print("Protection request failed:", error)
             return nil
         }

@@ -22,7 +22,7 @@ final class AudioPlayerVM {
     
     private func downloadFile(_ urlString: String, name: String) async {
         guard let url = URL(string: urlString) else {
-            print("Invalid URL")
+            Logger().error("Invalid URL")
             return
         }
         
@@ -40,7 +40,7 @@ final class AudioPlayerVM {
             
             audioURL = destinationURL
         } catch {
-            print("Error during file copy:", error.localizedDescription)
+            Logger().error("Error during file copy: \(error)")
         }
     }
 }

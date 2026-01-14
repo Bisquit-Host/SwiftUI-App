@@ -32,7 +32,7 @@ final class LoginVM {
             
             return result
         } catch {
-            SystemAlert.error(error.localizedDescription)
+            SystemAlert.error(error)
             return nil
         }
     }
@@ -42,7 +42,7 @@ final class LoginVM {
         defer { isSubmitting = false }
         
         guard let url = URL(string: "\(Endpoint.basePath)auth/signin") else {
-            print("Invalid URL")
+            Logger().error("Invalid URL")
             return nil
         }
         
@@ -76,7 +76,7 @@ final class LoginVM {
             
             return try BigAssDecoder.decode(BillingLoginResponse.self, from: data)
         } catch {
-            SystemAlert.error(error.localizedDescription)
+            SystemAlert.error(error)
             return nil
         }
     }
@@ -118,7 +118,7 @@ final class LoginVM {
             
             return try BigAssDecoder.decode(BillingLoginResponse.self, from: data)
         } catch {
-            SystemAlert.error(error.localizedDescription)
+            SystemAlert.error(error)
             return nil
         }
     }
@@ -147,7 +147,7 @@ final class LoginVM {
             
             return try BigAssDecoder.decode(BillingLoginResponse.self, from: data)
         } catch {
-            SystemAlert.error(error.localizedDescription)
+            SystemAlert.error(error)
             return nil
         }
     }
@@ -169,7 +169,7 @@ final class LoginVM {
             
             return try await verifyPasskeyLogin(sessionId: session.sessionId, credential: payload)
         } catch {
-            SystemAlert.error(error.localizedDescription)
+            SystemAlert.error(error)
             return nil
         }
     }

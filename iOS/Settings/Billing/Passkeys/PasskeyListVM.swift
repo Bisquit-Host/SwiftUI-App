@@ -16,7 +16,7 @@ final class PasskeyListVM {
     
     func fetchPasskeys() async {
         guard let accessToken = Keychain.load(key: "access_token") else {
-            print("Access token not found", #function)
+            Logger().error("Access token not found in \(#function)")
             return
         }
         
@@ -34,13 +34,13 @@ final class PasskeyListVM {
             
             passkeys = try BigAssDecoder.decode([PasskeyListItem].self, from: data)
         } catch {
-            SystemAlert.error(error.localizedDescription)
+            SystemAlert.error(error)
         }
     }
     
     func deletePasskey(_ passkey: PasskeyListItem) async {
         guard let accessToken = Keychain.load(key: "access_token") else {
-            print("Access token not found", #function)
+            Logger().error("Access token not found in \(#function)")
             return
         }
         
@@ -58,7 +58,7 @@ final class PasskeyListVM {
                 $0.id == passkey.id
             }
         } catch {
-            SystemAlert.error(error.localizedDescription)
+            SystemAlert.error(error)
         }
     }
     
@@ -83,14 +83,14 @@ final class PasskeyListVM {
             
             await fetchPasskeys()
         } catch {
-            SystemAlert.error(error.localizedDescription)
-            print("Passkey registration failed:", error.localizedDescription)
+            SystemAlert.error(error)
+            print("Passkey registration failed:", error)
         }
     }
     
     private func startRegistration() async throws -> PasskeyOptionsResponse<PasskeyRegistrationOptions> {
         guard let accessToken = Keychain.load(key: "access_token") else {
-            print("Access token not found", #function)
+            Logger().error("Access token not found in \(#function)")
             throw PasskeyError.invalidCredential
         }
         
@@ -115,7 +115,7 @@ final class PasskeyListVM {
     
     private func verifyRegistration(sessionId: String, credential: [String: Any]) async throws {
         guard let accessToken = Keychain.load(key: "access_token") else {
-            print("Access token not found", #function)
+            Logger().error("Access token not found in \(#function)")
             throw PasskeyError.invalidCredential
         }
         

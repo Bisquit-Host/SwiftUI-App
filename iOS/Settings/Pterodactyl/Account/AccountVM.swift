@@ -26,7 +26,7 @@ final class AccountVM {
             
         } catch {
             SystemAlert.error(error)
-            print("2FA details error:", error.localizedDescription)
+            print("2FA details error:", error)
         }
     }
     

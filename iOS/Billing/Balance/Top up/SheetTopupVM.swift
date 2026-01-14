@@ -11,7 +11,7 @@ final class SheetTopupVM {
     
     func fetchOperations() async {
         guard let accessToken = Keychain.load(key: "access_token") else {
-            print("Access token not found", #function)
+            Logger().error("Access token not found in \(#function)")
             return
         }
         
@@ -27,7 +27,7 @@ final class SheetTopupVM {
     
     func createTopup(amount: Double, method: String?, currency: BillingCurrency) async -> URL? {
         guard let accessToken = Keychain.load(key: "access_token") else {
-            print("Access token not found", #function)
+            Logger().error("Access token not found in \(#function)")
             return nil
         }
         
@@ -61,7 +61,7 @@ final class SheetTopupVM {
         }
         
         guard let accessToken = Keychain.load(key: "access_token") else {
-            print("Access token not found", #function)
+            Logger().error("Access token not found in \(#function)")
             return nil
         }
         

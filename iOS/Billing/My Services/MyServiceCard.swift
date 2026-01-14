@@ -174,7 +174,7 @@ struct MyServiceCard: View {
     
     private func request(path: String, method: String, body: Data) async -> Data? {
         guard let accessToken = Keychain.load(key: "access_token") else {
-            print("Access token not found", #function)
+            Logger().error("Access token not found in \(#function)")
             return nil
         }
         
@@ -208,7 +208,7 @@ struct MyServiceCard: View {
             
             return data
         } catch {
-            SystemAlert.error(error.localizedDescription)
+            SystemAlert.error(error)
             return nil
         }
     }

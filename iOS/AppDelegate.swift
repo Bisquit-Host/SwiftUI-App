@@ -100,7 +100,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         do {
             let (_, _) = try await URLSession.shared.data(for: req)
         } catch {
-            print(error.localizedDescription)
+            print(error)
         }
     }
 }

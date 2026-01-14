@@ -118,7 +118,7 @@ final class HostingPlanListVM {
                 cloudLocations = decoded.locations ?? []
             }
         } catch {
-            SystemAlert.error(error.localizedDescription)
+            SystemAlert.error(error)
             print("Hosting plans", category.rawValue, "decode error:", error)
         }
     }
@@ -133,7 +133,7 @@ final class HostingPlanListVM {
             do {
                 result.osCategories = try BigAssDecoder.decode([CloudServiceOSCategory].self, from: data)
             } catch {
-                SystemAlert.error(error.localizedDescription)
+                SystemAlert.error(error)
                 print("Order OS decode error:", error)
             }
             
@@ -143,7 +143,7 @@ final class HostingPlanListVM {
             do {
                 result.nests = try BigAssDecoder.decode([BillingHostingNest].self, from: data)
             } catch {
-                SystemAlert.error(error.localizedDescription)
+                SystemAlert.error(error)
                 print("Order nests decode error (game):", error)
             }
             
@@ -153,7 +153,7 @@ final class HostingPlanListVM {
             do {
                 result.nests = try BigAssDecoder.decode([BillingHostingNest].self, from: data)
             } catch {
-                SystemAlert.error(error.localizedDescription)
+                SystemAlert.error(error)
                 print("Order nests decode error (bot):", error)
             }
         }
@@ -228,8 +228,8 @@ final class HostingPlanListVM {
         do {
             return try BigAssDecoder.decode(BillingHostingOrderResponse.self, from: data)
         } catch {
-            SystemAlert.error(error.localizedDescription)
-            print("Order decode error:", error)
+            SystemAlert.error(error)
+            Logger().error("Order decoding error: \(error)")
             
             if let raw = String(data: data, encoding: .utf8) {
                 print("Order raw:", raw)
@@ -246,7 +246,7 @@ final class HostingPlanListVM {
     
     private func request(path: String, method: String = "GET", body: Data? = nil) async -> Data? {
         guard let accessToken = Keychain.load(key: "access_token") else {
-            print("Access token not found", #function)
+            Logger().error("Access token not found in \(#function)")
             return nil
         }
         

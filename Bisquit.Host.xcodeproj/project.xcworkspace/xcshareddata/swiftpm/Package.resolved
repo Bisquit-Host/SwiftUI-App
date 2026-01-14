@@ -34,7 +34,7 @@
       "location" : "https://github.com/Bisquit-Host/BisquitoNet",
       "state" : {
         "branch" : "main",
-        "revision" : "922b8662cc8fa58540cbd4f3283037d4ce665b63"
+        "revision" : "1fbdfdfe38c6529667e88a5eac10ef58845d6c2f"
       }
     },
     {
@@ -106,7 +106,7 @@
       "location" : "https://github.com/Bisquit-Host/PteroNet",
       "state" : {
         "branch" : "main",
-        "revision" : "efb5bf5b84b49534822a26b11ae2748451cde30f"
+        "revision" : "67d19c75bbd04615f8f62d966ae27f8913b6f741"
       }
     },
     {

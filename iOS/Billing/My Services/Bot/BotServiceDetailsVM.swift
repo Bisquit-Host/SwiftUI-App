@@ -110,7 +110,7 @@ final class BotServiceDetailsVM {
                         SystemAlert.done("Renewed for \(months) mo")
                         continuation.resume(returning: response)
                     } catch {
-                        SystemAlert.error(error.localizedDescription)
+                        SystemAlert.error(error)
                         print("Bot renewal decode error:", error)
                         
                         continuation.resume(returning: nil)
@@ -128,7 +128,7 @@ final class BotServiceDetailsVM {
             guard await self.request(path: "/bot/\(serviceId)/change-package", method: "POST", body: payload) != nil else { return }
             onSuccess()
             
-            print("Upgrade requested")
+            Logger().info("Upgrade requested")
             await self.fetchDetails(serviceId)
         }
     }
@@ -146,7 +146,7 @@ final class BotServiceDetailsVM {
     
     private func request(path: String, method: String = "GET", body: Data? = nil) async -> Data? {
         guard let accessToken = Keychain.load(key: "access_token") else {
-            print("Access token not found", #function)
+            Logger().error("Access token not found in \(#function)")
             return nil
         }
         
@@ -183,7 +183,7 @@ final class BotServiceDetailsVM {
             
             return data
         } catch {
-            SystemAlert.error(error.localizedDescription)
+            SystemAlert.error(error)
             print("Bot request failed:", error)
             
             return nil

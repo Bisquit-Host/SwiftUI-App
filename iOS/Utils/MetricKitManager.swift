@@ -85,7 +85,7 @@ final class MetricKitManager: NSObject, MXMetricManagerSubscriber {
         let saveMetrics = UserDefaults.standard.bool(forKey: "saveMetrics")
         
         if saveMetrics {
-            print("Metrics are enabled")
+            Logger().info("Metrics are enabled")
         }
         
         return saveMetrics
@@ -100,7 +100,7 @@ final class MetricKitManager: NSObject, MXMetricManagerSubscriber {
     
     nonisolated func writeMetricsFile(content: String, fileName: String, subdirectoryName: String = "Metrics") {
         guard let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
-            print("❌ Failed to access documents directory")
+            Logger().error("❌ Failed to access documents directory")
             return
         }
         
@@ -118,7 +118,7 @@ final class MetricKitManager: NSObject, MXMetricManagerSubscriber {
             try content.write(to: fileURL, atomically: true, encoding: .utf8)
             print("✅ Metrics file saved at:", fileURL.path)
         } catch {
-            print("❌ Error writing metrics file:", error)
+            Logger().error("❌ Error writing metrics file: \(error)")
         }
     }
 }

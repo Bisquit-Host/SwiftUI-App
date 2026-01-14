@@ -25,7 +25,7 @@ final class TicketListVM {
     
     func fetchTickets() async {
         guard let accessToken = Keychain.load(key: "access_token") else {
-            print("Access token not found", #function)
+            Logger().error("Access token not found in \(#function)")
             return
         }
         
@@ -39,7 +39,7 @@ final class TicketListVM {
         }
         
         guard let url = components?.url else {
-            print("Invalid URL")
+            Logger().error("Invalid URL")
             return
         }
         
@@ -82,14 +82,14 @@ final class TicketListVM {
             
             tickets = try BigAssDecoder.decode([SupportTicketWithLastMessageDTO].self, from: data)
         } catch {
-            print("❌", error.localizedDescription)
+            print("❌", error)
             SystemAlert.error("Error", subtitle: error.localizedDescription)
         }
     }
     
     func createTicket(_ title: String, message: String, attachments: [PendingAttachment]) async -> Int? {
         guard let accessToken = Keychain.load(key: "access_token") else {
-            print("Access token not found", #function)
+            Logger().error("Access token not found in \(#function)")
             return nil
         }
         

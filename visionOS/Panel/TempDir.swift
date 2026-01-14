@@ -27,7 +27,7 @@ struct TempDir: View {
                 atPath: tempDir.path
             )
         } catch {
-            print("Failed to load temp dir files:", error.localizedDescription)
+            print("Failed to load temp dir files:", error)
         }
     }
 }

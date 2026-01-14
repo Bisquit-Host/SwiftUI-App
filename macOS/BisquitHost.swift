@@ -6,6 +6,7 @@ import Algorithms
 import CoreSpotlight
 import Pow
 import GaypadKit
+import os
 
 @main
 struct BisquitHost: App {
@@ -32,7 +33,7 @@ struct BisquitHost: App {
                 return
             }
             
-            print("✅ Game Center authenticated")
+            Logger().info("Game Center authenticated")
         }
     }
     

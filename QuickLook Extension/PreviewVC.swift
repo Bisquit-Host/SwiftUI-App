@@ -56,7 +56,7 @@ class PreviewViewController: NSViewController, QLPreviewingController {
         do {
             text = try String(contentsOf: url, encoding: .utf8)
         } catch {
-            text = "Could not read file: \(error.localizedDescription)"
+            text = "Could not read file: \(error)"
         }
         
         addLabel(text)

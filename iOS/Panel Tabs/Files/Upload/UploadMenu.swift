@@ -1,5 +1,6 @@
 import SwiftUI
 import PhotosUI
+import os
 
 struct UploadMenu: View {
     @EnvironmentObject private var vm: FileTabVM
@@ -71,7 +72,7 @@ struct UploadMenu: View {
                 }
                 
             case .failure(let error):
-                print(error.localizedDescription)
+                print(error)
             }
         }
     }
@@ -84,13 +85,12 @@ struct UploadMenu: View {
             var tempURLs: [URL] = []
             
             for item in photoItems {
-                guard
-                    let identifier = item.supportedContentTypes.first?
-                        .identifier
-                        .replacing("public.", with: "")
-                        .replacing("mpeg-4", with: "mp4")
+                guard let identifier = item.supportedContentTypes.first?
+                    .identifier
+                    .replacing("public.", with: "")
+                    .replacing("mpeg-4", with: "mp4")
                 else {
-                    print("Extension not determined")
+                    Logger().error("Extension not determined")
                     continue
                 }
                 

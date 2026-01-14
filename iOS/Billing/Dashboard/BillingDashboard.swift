@@ -83,7 +83,7 @@ struct BillingDashboard: View {
     private func refresh() {
         Task {
             await vm.refreshAuthToken {
-                print("Refreshed auth token")
+                Logger().info("Refreshed auth token")
             }
             
             await vm.fetchUserInfo()
@@ -93,7 +93,7 @@ struct BillingDashboard: View {
     private func refreshAuthTokenIfNeeded() async {
         guard let lastRefresh = ValueStore().lastBillingTokenRefresh else {
             await vm.refreshAuthToken {
-                print("Refreshed auth token")
+                Logger().info("Refreshed auth token")
             }
             
             return
@@ -105,7 +105,7 @@ struct BillingDashboard: View {
         guard Date() >= expiryDate else { return }
         
         await vm.refreshAuthToken {
-            print("Refreshed auth token")
+            Logger().info("Refreshed auth token")
         }
     }
 }

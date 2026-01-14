@@ -1,5 +1,6 @@
 import SwiftUI
 import HCaptcha
+import os
 
 @Observable
 final class HCaptchaVM {
@@ -22,7 +23,7 @@ final class HCaptchaVM {
         }
         
         hcaptcha.onEvent { event, _ in
-            print("HCaptcha event:", event.rawValue)
+            Logger().info("HCaptcha event: \(event.rawValue)")
             self.isLoading = false
         }
     }
@@ -31,12 +32,12 @@ final class HCaptchaVM {
         hcaptcha.validate(on: hostView) { result in
             do {
                 let token = try result.dematerialize()
-                print("HCaptcha result:", token)
+                Logger().info("HCaptcha result: \(token)")
                 
                 self.token = token
                 self.isLoading = false
             } catch {
-                print("Error validating hcaptcha", error.localizedDescription)
+                Logger().error("Error validating hcaptcha: \(error)")
                 self.isLoading = false
             }
         }

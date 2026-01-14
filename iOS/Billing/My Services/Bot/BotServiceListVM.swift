@@ -23,7 +23,7 @@ final class BotServiceListVM {
         }
         
         guard let accessToken = Keychain.load(key: "access_token") else {
-            print("Access token not found", #function)
+            Logger().error("Access token not found in \(#function)")
             return
         }
         
@@ -39,7 +39,7 @@ final class BotServiceListVM {
             
             services = try BigAssDecoder.decode([BillingBotServiceSummary].self, from: data)
         } catch {
-            SystemAlert.error(error.localizedDescription)
+            SystemAlert.error(error)
             print("Bot services load failed:", error)
         }
     }

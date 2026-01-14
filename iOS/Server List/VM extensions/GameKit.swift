@@ -15,7 +15,7 @@ extension ServerListVM {
             
             print("Score submitted:", score)
         } catch {
-            print("Failed to submit score:", error.localizedDescription)
+            print("Failed to submit score:", error)
         }
     }
 }

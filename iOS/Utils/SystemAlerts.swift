@@ -38,10 +38,11 @@ final class SystemAlert {
     }
     
     static func error(_ title: String, subtitle: String? = nil) {
-        print(title)
-        
         if let subtitle {
+            Logger().error("\(title) • \(subtitle)")
             print(subtitle)
+        } else {
+            Logger().error("\(title)")
         }
         
         AlertKitAPI.present(

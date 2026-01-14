@@ -31,7 +31,7 @@ final class SecurityTasks {
             print("🛡️ 2FA enabled")
             
         } catch {
-            print("Error checking 2FA status:", error.localizedDescription)
+            print("Error checking 2FA status:", error)
             alertTwoFA = false
         }
     }
@@ -59,7 +59,7 @@ final class SecurityTasks {
             
             print(alertUnusedAPIKeys ? "🛡️ Found unused API keys" : "🛡️ No unused API keys found")
         } catch {
-            print("Error fetching API keys:", error.localizedDescription)
+            print("Error fetching API keys:", error)
             alertUnusedAPIKeys = false
         }
     }

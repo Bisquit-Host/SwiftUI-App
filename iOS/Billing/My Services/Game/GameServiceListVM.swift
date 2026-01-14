@@ -23,7 +23,7 @@ final class GameServiceListVM {
         }
         
         guard let accessToken = Keychain.load(key: "access_token") else {
-            print("Access token not found", #function)
+            Logger().error("Access token not found in \(#function)")
             return
         }
         
@@ -39,8 +39,8 @@ final class GameServiceListVM {
             
             services = try BigAssDecoder.decode([BillingGameServiceSummary].self, from: data)
         } catch {
-            SystemAlert.error(error.localizedDescription)
-            print("Game services load failed:", error)
+            SystemAlert.error(error)
+            Logger().error("Game services load failed: \(error)")
         }
     }
 }

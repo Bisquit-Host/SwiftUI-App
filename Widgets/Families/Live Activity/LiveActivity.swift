@@ -185,7 +185,7 @@ final class LiveActivity {
                 await self.consoleDetails(server.id)
             }
         } catch {
-            print("Error starting live activity:", error.localizedDescription)
+            print("Error starting live activity:", error)
         }
     }
     

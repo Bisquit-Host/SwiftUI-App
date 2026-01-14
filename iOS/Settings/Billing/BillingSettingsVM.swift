@@ -14,7 +14,7 @@ final class BillingSettingsVM {
     
     func changeName(onSuccess: @escaping () async -> Void) async {
         guard let accessToken = Keychain.load(key: "access_token") else {
-            print("Access token not found", #function)
+            Logger().error("Access token not found in \(#function)")
             return
         }
         
@@ -26,12 +26,12 @@ final class BillingSettingsVM {
     
     func changeEmail() async {
         guard let accessToken = Keychain.load(key: "access_token") else {
-            print("Access token not found", #function)
+            Logger().error("Access token not found in \(#function)")
             return
         }
         
         guard let url = URL(string: "\(Endpoint.basePath)user/settings/email") else {
-            print("Invalid URL")
+            Logger().error("Invalid URL")
             return
         }
         
@@ -56,18 +56,18 @@ final class BillingSettingsVM {
                 }
             }
         } catch {
-            print(error.localizedDescription)
+            print(error)
         }
     }
     
     func changeLogin(onSuccess: @escaping () async -> Void) async {
         guard let accessToken = Keychain.load(key: "access_token") else {
-            print("Access token not found", #function)
+            Logger().error("Access token not found in \(#function)")
             return
         }
         
         guard let url = URL(string: "\(Endpoint.basePath)user/settings/login") else {
-            print("Invalid URL")
+            Logger().error("Invalid URL")
             return
         }
         
@@ -92,7 +92,7 @@ final class BillingSettingsVM {
                 }
             }
         } catch {
-            SystemAlert.error(error.localizedDescription)
+            SystemAlert.error(error)
         }
     }
     
@@ -132,7 +132,7 @@ final class BillingSettingsVM {
         }
         
         guard let accessToken = Keychain.load(key: "access_token") else {
-            print("Access token not found", #function)
+            Logger().error("Access token not found in \(#function)")
             return
         }
         
@@ -199,7 +199,7 @@ final class BillingSettingsVM {
         }
         
         guard let accessToken = Keychain.load(key: "access_token") else {
-            print("Access token not found", #function)
+            Logger().error("Access token not found in \(#function)")
             return nil
         }
         
@@ -249,7 +249,7 @@ final class BillingSettingsVM {
                 }
             }
         } catch {
-            SystemAlert.error(error.localizedDescription)
+            SystemAlert.error(error)
         }
         
         return nil

@@ -8,7 +8,7 @@ final class SensitivityAnalyzer {
             let handler = try await analyzer.analyzeImage(at: url)
             completion(handler.isSensitive)
         } catch {
-            print(error.localizedDescription)
+            print(error)
             onFailure()
         }
     }
@@ -18,7 +18,7 @@ final class SensitivityAnalyzer {
             let handler = analyzer.videoAnalysis(forFileAt: url)
             completion(try await handler.hasSensitiveContent().isSensitive)
         } catch {
-            print(error.localizedDescription)
+            print(error)
         }
     }
     

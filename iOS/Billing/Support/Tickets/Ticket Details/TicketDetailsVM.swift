@@ -34,7 +34,7 @@ final class TicketDetailsVM {
     
     func sendMessage(attachments: [PendingAttachment]) async -> Bool {
         guard let accessToken = Keychain.load(key: "access_token") else {
-            print("Access token not found", #function)
+            Logger().error("Access token not found in \(#function)")
             return false
         }
         
@@ -100,7 +100,7 @@ final class TicketDetailsVM {
     
     private func listenToStream() async {
         guard let accessToken = Keychain.load(key: "access_token") else {
-            print("Access token not found", #function)
+            Logger().error("Access token not found in \(#function)")
             return
         }
         
@@ -152,7 +152,7 @@ final class TicketDetailsVM {
             print("🔌 SSE closed for ticket", ticket.id)
         } catch {
             errorMessage = error.localizedDescription
-            print("❌ SSE error:", error.localizedDescription)
+            Logger().error("❌ SSE error: \(error)")
         }
         
         isStreaming = false
@@ -213,7 +213,7 @@ final class TicketDetailsVM {
     
     private func uploadMedia(attachments: [PendingAttachment]) async -> [String]? {
         guard let accessToken = Keychain.load(key: "access_token") else {
-            print("Access token not found", #function)
+            Logger().error("Access token not found in \(#function)")
             return nil
         }
         

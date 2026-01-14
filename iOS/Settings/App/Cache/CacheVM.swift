@@ -39,7 +39,7 @@ final class CacheVM {
                     self.cacheSize = formattedSize
                     
                 case .failure(let error):
-                    print(error.localizedDescription)
+                    print(error)
                     
                     self.cacheSize = "Empty"
                 }

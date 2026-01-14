@@ -9,12 +9,12 @@ final class TicketMediaVM {
     
     func loadMedia(mediaPath: String) async {
         guard let accessToken = Keychain.load(key: "access_token") else {
-            print("Access token not found", #function)
+            Logger().error("Access token not found in \(#function)")
             return
         }
         
         guard let url = buildURL(mediaPath) else {
-            print("Invalid media URL")
+            Logger().error("Invalid media URL")
             isLoading = false
             
             return
@@ -37,11 +37,11 @@ final class TicketMediaVM {
                 image = swiftUIImage
                 isLoading = false
             } else {
-                print("Unsupported media")
+                Logger().error("Unsupported media")
                 isLoading = false
             }
         } catch {
-            print(error.localizedDescription)
+            Logger().error("\(error)")
             isLoading = false
         }
     }

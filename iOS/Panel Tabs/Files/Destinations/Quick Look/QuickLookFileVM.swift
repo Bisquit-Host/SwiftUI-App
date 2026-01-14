@@ -50,7 +50,7 @@ final class QuickLookFileVM {
                     self.fileURL = destinationURL
                 }
             } catch {
-                print("Error during file copy:", error.localizedDescription)
+                print("Error during file copy:", error)
             }
         }
         .resume()

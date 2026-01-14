@@ -110,7 +110,7 @@ final class GameServiceDetailsVM {
                         SystemAlert.done("Renewed for \(months) mo")
                         continuation.resume(returning: response)
                     } catch {
-                        SystemAlert.error(error.localizedDescription)
+                        SystemAlert.error(error)
                         print("Game renew decode error:", error)
                         
                         continuation.resume(returning: nil)
@@ -146,7 +146,7 @@ final class GameServiceDetailsVM {
     
     private func request(path: String, method: String = "GET", body: Data? = nil) async -> Data? {
         guard let accessToken = Keychain.load(key: "access_token") else {
-            print("Access token not found", #function)
+            Logger().error("Access token not found in \(#function)")
             return nil
         }
         
@@ -183,7 +183,7 @@ final class GameServiceDetailsVM {
             
             return data
         } catch {
-            SystemAlert.error(error.localizedDescription)
+            SystemAlert.error(error)
             print("Game request failed:", error)
             
             return nil

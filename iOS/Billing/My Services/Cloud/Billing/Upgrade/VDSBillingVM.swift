@@ -14,12 +14,12 @@ final class VDSBillingVM {
         defer { isLoading = false }
         
         guard let url = URL(string: "\(Endpoint.basePath)cloud") else {
-            print("Invalid URL")
+            Logger().error("Invalid URL")
             return
         }
         
         guard let accessToken = Keychain.load(key: "access_token") else {
-            print("Access token not found", #function)
+            Logger().error("Access token not found in \(#function)")
             return
         }
         
@@ -35,7 +35,7 @@ final class VDSBillingVM {
             
             services = try BigAssDecoder.decode([CloudServiceSummary].self, from: data)
         } catch {
-            SystemAlert.error(error.localizedDescription)
+            SystemAlert.error(error)
             print("Cloud services load failed:", error)
         }
     }
