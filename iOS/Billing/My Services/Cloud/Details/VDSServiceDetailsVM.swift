@@ -1,6 +1,7 @@
 import Foundation
 import BisquitoNet
 import PteroNet
+import os
 
 @Observable
 final class VDSServiceDetailsVM {
@@ -65,7 +66,7 @@ final class VDSServiceDetailsVM {
             SystemAlert.error("Cloud changeable packages decode error: \(error)")
             
             if let raw = String(data: data, encoding: .utf8) {
-                print("Raw packages:", raw)
+                Logger().info("Raw packages: \(raw)")
             }
         }
     }

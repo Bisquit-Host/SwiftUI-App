@@ -1,6 +1,7 @@
 import Foundation
 import BisquitoNet
 import PteroNet
+import os
 
 @Observable
 final class GameServiceDetailsVM {
@@ -45,6 +46,7 @@ final class GameServiceDetailsVM {
     
     func fetchChangeablePackages(_ serviceId: Int) async {
         guard let accessToken = accessToken() else { return }
+        
         guard let data = await gameServiceChangeablePackagesAPI(
             serviceId: serviceId,
             accessToken: accessToken,
@@ -57,7 +59,7 @@ final class GameServiceDetailsVM {
             SystemAlert.error("Game changeable packages decode error: \(error)")
             
             if let raw = String(data: data, encoding: .utf8) {
-                print("Game raw packages:", raw)
+                Logger().info("Game raw packages: \(raw)")
             }
         }
     }
