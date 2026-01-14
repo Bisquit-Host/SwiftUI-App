@@ -10,10 +10,7 @@ final class SheetTopupVM {
     var isGiftCodeLoading = false
     
     func fetchOperations() async {
-        guard let accessToken = Keychain.load(key: "access_token") else {
-            Logger().error("Access token not found in \(#function)")
-            return
-        }
+        guard let accessToken = accessToken() else { return }
         
         isLoading = true
         defer { isLoading = false }
@@ -26,10 +23,7 @@ final class SheetTopupVM {
     }
     
     func createTopup(amount: Double, method: String?, currency: BillingCurrency) async -> URL? {
-        guard let accessToken = Keychain.load(key: "access_token") else {
-            Logger().error("Access token not found in \(#function)")
-            return nil
-        }
+        guard let accessToken = accessToken() else { return nil }
         
         if amount < minimumAmount(for: currency) {
             SystemAlert.error("Amount too small")
@@ -60,10 +54,7 @@ final class SheetTopupVM {
             return nil
         }
         
-        guard let accessToken = Keychain.load(key: "access_token") else {
-            Logger().error("Access token not found in \(#function)")
-            return nil
-        }
+        guard let accessToken = accessToken() else { return nil }
         
         isGiftCodeLoading = true
         defer { isGiftCodeLoading = false }

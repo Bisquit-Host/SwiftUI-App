@@ -22,10 +22,7 @@ final class OAuthVM: NSObject {
     var isVerifyingTwoFA = false
     
     func disconnectAuthService(_ authService: String, onSuccess: () async -> Void) async {
-        guard let accessToken = Keychain.load(key: "access_token") else {
-            Logger().error("Access token not found in \(#function)")
-            return
-        }
+        guard let accessToken = accessToken() else { return }
         
         if await disconnectOAuthAppAPI(authService: authService, accessToken: accessToken) {
             await onSuccess()
@@ -131,15 +128,15 @@ final class OAuthVM: NSObject {
             return
         }
         
-        print("Fetching auth URL from:", url)
+        Logger().info("Fetching auth URL from: \(url)")
         
         var request = URLRequest(url: url)
         
         if let accessToken {
-            print("fetching authURL with access token")
+            Logger().info("fetching authURL with access token")
             request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         } else {
-            print("fetching authURL without access token")
+            Logger().info("fetching authURL without access token")
         }
         
         do {
@@ -152,7 +149,7 @@ final class OAuthVM: NSObject {
             
             let authURL = try BigAssDecoder.decode(AuthURLResponse.self, from: data).url
             
-            print("Auth URL:", authURL)
+            Logger().info("Auth URL: \(authURL)")
             
             guard let url = URL(string: authURL) else {
                 finish(success: false, message: "Invalid auth URL returned")
@@ -222,6 +219,7 @@ final class OAuthVM: NSObject {
                 return value
             }
         }
+        
         return nil
     }
 }

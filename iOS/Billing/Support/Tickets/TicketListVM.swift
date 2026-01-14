@@ -24,10 +24,7 @@ final class TicketListVM {
     }
     
     func fetchTickets() async {
-        guard let accessToken = Keychain.load(key: "access_token") else {
-            Logger().error("Access token not found in \(#function)")
-            return
-        }
+        guard let accessToken = accessToken() else { return }
         
         isLoading = true
         defer { isLoading = false }
@@ -81,10 +78,7 @@ final class TicketListVM {
     }
     
     func createTicket(_ title: String, message: String, attachments: [PendingAttachment]) async -> Int? {
-        guard let accessToken = Keychain.load(key: "access_token") else {
-            Logger().error("Access token not found in \(#function)")
-            return nil
-        }
+        guard let accessToken = accessToken() else { return nil }
         
         let trimmedTitle = title.trimmingCharacters(in: .whitespacesAndNewlines)
         let trimmedMessage = message.trimmingCharacters(in: .whitespacesAndNewlines)

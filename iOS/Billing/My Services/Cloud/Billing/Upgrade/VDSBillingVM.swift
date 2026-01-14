@@ -18,10 +18,7 @@ final class VDSBillingVM {
             return
         }
         
-        guard let accessToken = Keychain.load(key: "access_token") else {
-            Logger().error("Access token not found in \(#function)")
-            return
-        }
+        guard let accessToken = accessToken() else { return }
         
         var request = URLRequest(url: url)
         request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")

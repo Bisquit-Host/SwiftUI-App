@@ -27,11 +27,7 @@ final class BillingDashboardVM {
     }
     
     func fetchUserInfo() async {
-        guard let accessToken = Keychain.load(key: "access_token") else {
-            SystemAlert.error("Access token not found", subtitle: #function)
-            return
-        }
-        
+        guard let accessToken = accessToken() else { return }
         guard let url = URL(string: "\(Endpoint.basePath)user") else { return }
         
         var req = URLRequest(url: url)

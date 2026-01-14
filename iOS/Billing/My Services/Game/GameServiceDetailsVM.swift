@@ -9,8 +9,6 @@ final class GameServiceDetailsVM {
     var isLoading = false
     var isPerformingAction = false
     
-    private let base = URL(string: "https://test-api.bisquit.host")!
-    
     func load(_ serviceId: Int) async {
         guard !isLoading else { return }
         
@@ -27,7 +25,12 @@ final class GameServiceDetailsVM {
     }
     
     func fetchDetails(_ serviceId: Int) async {
-        guard let data = await request(path: "/game/\(serviceId)") else { return }
+        guard let accessToken = accessToken() else { return }
+        guard let data = await gameServiceDetailsAPI(
+            serviceId: serviceId,
+            accessToken: accessToken,
+            onBillingError: SystemAlert.error
+        ) else { return }
         
         do {
             service = try BigAssDecoder.decode(BillingServiceDetails.self, from: data)
@@ -41,7 +44,12 @@ final class GameServiceDetailsVM {
     }
     
     func fetchChangeablePackages(_ serviceId: Int) async {
-        guard let data = await request(path: "/game/\(serviceId)/change-package/packages") else { return }
+        guard let accessToken = accessToken() else { return }
+        guard let data = await gameServiceChangeablePackagesAPI(
+            serviceId: serviceId,
+            accessToken: accessToken,
+            onBillingError: SystemAlert.error
+        ) else { return }
         
         do {
             changeablePackages = try BigAssDecoder.decode([ChangeablePackage].self, from: data)
@@ -61,24 +69,30 @@ final class GameServiceDetailsVM {
             SystemAlert.error("Enter a name")
             return
         }
-        
-        let body = ["name": trimmed]
-        guard let payload = try? JSONSerialization.data(withJSONObject: body) else { return }
+        guard let accessToken = accessToken() else { return }
         
         await performAction {
-            guard await self.request(path: "/game/\(serviceId)/name", method: "PATCH", body: payload) != nil else { return }
+            guard await gameServiceRenameAPI(
+                newName: trimmed,
+                serviceId: serviceId,
+                accessToken: accessToken,
+                onBillingError: SystemAlert.error
+            ) else { return }
             
             self.service?.name = trimmed
         }
     }
     
     func changeAutorenew(_ enabled: Bool, serviceId: Int) async {
-        let body = ["autorenew": enabled]
-        
-        guard let payload = try? JSONSerialization.data(withJSONObject: body) else { return }
+        guard let accessToken = accessToken() else { return }
         
         await performAction {
-            guard await self.request(path: "/game/\(serviceId)/autorenew", method: "PATCH", body: payload) != nil else { return }
+            guard await gameServiceAutorenewAPI(
+                enabled: enabled,
+                serviceId: serviceId,
+                accessToken: accessToken,
+                onBillingError: SystemAlert.error
+            ) else { return }
             
             self.service?.autorenew = enabled
             SystemAlert.done(enabled ? "Auto-renew enabled" : "Auto-renew disabled")
@@ -90,14 +104,17 @@ final class GameServiceDetailsVM {
             SystemAlert.error("Unsupported period")
             return nil
         }
-        
-        let body = ["months": months]
-        guard let payload = try? JSONSerialization.data(withJSONObject: body) else { return nil }
+        guard let accessToken = accessToken() else { return nil }
         
         return await withCheckedContinuation { continuation in
             Task {
                 await self.performAction {
-                    guard let data = await self.request(path: "/game/\(serviceId)/renew", method: "POST", body: payload) else {
+                    guard let data = await gameServiceRenewAPI(
+                        months: months,
+                        serviceId: serviceId,
+                        accessToken: accessToken,
+                        onBillingError: SystemAlert.error
+                    ) else {
                         continuation.resume(returning: nil)
                         return
                     }
@@ -119,12 +136,15 @@ final class GameServiceDetailsVM {
     }
     
     func changePackage(to packageId: Int, serviceId: Int, onSuccess: @escaping () -> Void) async {
-        let body = ["package": packageId]
-        
-        guard let payload = try? JSONSerialization.data(withJSONObject: body) else { return }
+        guard let accessToken = accessToken() else { return }
         
         await performAction {
-            guard await self.request(path: "/game/\(serviceId)/change-package", method: "POST", body: payload) != nil else { return }
+            guard await gameServiceChangePackageAPI(
+                packageId: packageId,
+                serviceId: serviceId,
+                accessToken: accessToken,
+                onBillingError: SystemAlert.error
+            ) else { return }
             onSuccess()
             
             await self.fetchDetails(serviceId)
@@ -140,48 +160,5 @@ final class GameServiceDetailsVM {
         defer { isPerformingAction = false }
         
         await work()
-    }
-    
-    private func request(path: String, method: String = "GET", body: Data? = nil) async -> Data? {
-        guard let accessToken = Keychain.load(key: "access_token") else {
-            Logger().error("Access token not found in \(#function)")
-            return nil
-        }
-        
-        guard let url = URL(string: path, relativeTo: base) else {
-            SystemAlert.error("Game request failed", subtitle: "Invalid URL: \(path)")
-            return nil
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = method
-        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        
-        if let body {
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.httpBody = body
-        }
-        
-        do {
-            let (data, res) = try await URLSession.shared.data(for: request)
-            
-            guard let http = res as? HTTPURLResponse else {
-                SystemAlert.error("Invalid HTTP response")
-                return nil
-            }
-            
-            if http.statusCode == 204 {
-                return Data()
-            }
-            
-            if decodeBillingError(data, with: res, onDecode: SystemAlert.error) {
-                return nil
-            }
-            
-            return data
-        } catch {
-            SystemAlert.error("Game request failed", subtitle: error.localizedDescription)
-            return nil
-        }
     }
 }

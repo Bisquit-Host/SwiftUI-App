@@ -33,10 +33,7 @@ final class TicketDetailsVM {
     }
     
     func sendMessage(attachments: [PendingAttachment]) async -> Bool {
-        guard let accessToken = Keychain.load(key: "access_token") else {
-            Logger().error("Access token not found in \(#function)")
-            return false
-        }
+        guard let accessToken = accessToken() else { return false }
         
         let trimmed = composerText.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty || !attachments.isEmpty else { return false }
@@ -99,10 +96,7 @@ final class TicketDetailsVM {
     }
     
     private func listenToStream() async {
-        guard let accessToken = Keychain.load(key: "access_token") else {
-            Logger().error("Access token not found in \(#function)")
-            return
-        }
+        guard let accessToken = accessToken() else { return }
         
         guard let url = URL(string: "\(baseURL)/support/tickets/\(ticket.id)/sse") else { return }
         
@@ -212,10 +206,7 @@ final class TicketDetailsVM {
     }
     
     private func uploadMedia(attachments: [PendingAttachment]) async -> [String]? {
-        guard let accessToken = Keychain.load(key: "access_token") else {
-            Logger().error("Access token not found in \(#function)")
-            return nil
-        }
+        guard let accessToken = accessToken() else { return nil }
         
         guard !attachments.isEmpty else { return [] }
         guard let url = URL(string: "\(baseURL)/support/tickets/\(ticket.id)/media") else { return nil }

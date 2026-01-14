@@ -9,8 +9,6 @@ final class BotServiceDetailsVM {
     var isLoading = false
     var isPerformingAction = false
     
-    private let base = URL(string: "https://test-api.bisquit.host")!
-    
     func load(_ serviceId: Int) async {
         guard !isLoading else { return }
         
@@ -27,7 +25,12 @@ final class BotServiceDetailsVM {
     }
     
     func fetchDetails(_ serviceId: Int) async {
-        guard let data = await request(path: "/bot/\(serviceId)") else { return }
+        guard let accessToken = accessToken() else { return }
+        guard let data = await botServiceDetailsAPI(
+            serviceId: serviceId,
+            accessToken: accessToken,
+            onBillingError: SystemAlert.error
+        ) else { return }
         
         do {
             service = try BigAssDecoder.decode(BillingServiceDetails.self, from: data)
@@ -41,7 +44,13 @@ final class BotServiceDetailsVM {
     }
     
     func fetchChangeablePackages(_ serviceId: Int) async {
-        guard let data = await request(path: "/bot/\(serviceId)/change-package/packages") else { return }
+        guard let accessToken = accessToken() else { return }
+        
+        guard let data = await botServiceChangeablePackagesAPI(
+            serviceId: serviceId,
+            accessToken: accessToken,
+            onBillingError: SystemAlert.error
+        ) else { return }
         
         do {
             changeablePackages = try BigAssDecoder.decode([ChangeablePackage].self, from: data)
@@ -61,24 +70,30 @@ final class BotServiceDetailsVM {
             SystemAlert.error("Enter a name")
             return
         }
-        
-        let body = ["name": trimmed]
-        guard let payload = try? JSONSerialization.data(withJSONObject: body) else { return }
+        guard let accessToken = accessToken() else { return }
         
         await performAction {
-            guard await self.request(path: "/bot/\(serviceId)/name", method: "PATCH", body: payload) != nil else { return }
+            guard await botServiceRenameAPI(
+                newName: trimmed,
+                serviceId: serviceId,
+                accessToken: accessToken,
+                onBillingError: SystemAlert.error
+            ) else { return }
             
             self.service?.name = trimmed
         }
     }
     
     func changeAutorenew(_ enabled: Bool, serviceId: Int) async {
-        let body = ["autorenew": enabled]
-        
-        guard let payload = try? JSONSerialization.data(withJSONObject: body) else { return }
+        guard let accessToken = accessToken() else { return }
         
         await performAction {
-            guard await self.request(path: "/bot/\(serviceId)/autorenew", method: "PATCH", body: payload) != nil else { return }
+            guard await botServiceAutorenewAPI(
+                enabled: enabled,
+                serviceId: serviceId,
+                accessToken: accessToken,
+                onBillingError: SystemAlert.error
+            ) else { return }
             
             self.service?.autorenew = enabled
             SystemAlert.done(enabled ? "Auto-renew enabled" : "Auto-renew disabled")
@@ -90,14 +105,17 @@ final class BotServiceDetailsVM {
             SystemAlert.error("Unsupported period")
             return nil
         }
-        
-        let body = ["months": months]
-        guard let payload = try? JSONSerialization.data(withJSONObject: body) else { return nil }
+        guard let accessToken = accessToken() else { return nil }
         
         return await withCheckedContinuation { continuation in
             Task {
                 await self.performAction {
-                    guard let data = await self.request(path: "/bot/\(serviceId)/renew", method: "POST", body: payload) else {
+                    guard let data = await botServiceRenewAPI(
+                        months: months,
+                        serviceId: serviceId,
+                        accessToken: accessToken,
+                        onBillingError: SystemAlert.error
+                    ) else {
                         continuation.resume(returning: nil)
                         return
                     }
@@ -120,11 +138,15 @@ final class BotServiceDetailsVM {
     }
     
     func changePackage(to packageId: Int, serviceId: Int, onSuccess: @escaping () -> Void) async {
-        let body = ["package": packageId]
-        guard let payload = try? JSONSerialization.data(withJSONObject: body) else { return }
+        guard let accessToken = accessToken() else { return }
         
         await performAction {
-            guard await self.request(path: "/bot/\(serviceId)/change-package", method: "POST", body: payload) != nil else { return }
+            guard await botServiceChangePackageAPI(
+                packageId: packageId,
+                serviceId: serviceId,
+                accessToken: accessToken,
+                onBillingError: SystemAlert.error
+            ) else { return }
             onSuccess()
             
             Logger().info("Upgrade requested")
@@ -141,48 +163,5 @@ final class BotServiceDetailsVM {
         defer { isPerformingAction = false }
         
         await work()
-    }
-    
-    private func request(path: String, method: String = "GET", body: Data? = nil) async -> Data? {
-        guard let accessToken = Keychain.load(key: "access_token") else {
-            Logger().error("Access token not found in \(#function)")
-            return nil
-        }
-        
-        guard let url = URL(string: path, relativeTo: base) else {
-            SystemAlert.error("Invalid URL", subtitle: "Bot request")
-            return nil
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = method
-        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        
-        if let body {
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.httpBody = body
-        }
-        
-        do {
-            let (data, res) = try await URLSession.shared.data(for: request)
-            
-            guard let http = res as? HTTPURLResponse else {
-                SystemAlert.error("Invalid HTTP response")
-                return nil
-            }
-            
-            if http.statusCode == 204 {
-                return Data()
-            }
-            
-            if decodeBillingError(data, with: res, onDecode: SystemAlert.error) {
-                return nil
-            }
-            
-            return data
-        } catch {
-            SystemAlert.error("Bot request failed", subtitle: error.localizedDescription)
-            return nil
-        }
     }
 }

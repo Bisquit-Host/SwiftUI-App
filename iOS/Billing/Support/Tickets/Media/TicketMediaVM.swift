@@ -8,10 +8,7 @@ final class TicketMediaVM {
     var isLoading = true
     
     func loadMedia(mediaPath: String) async {
-        guard let accessToken = Keychain.load(key: "access_token") else {
-            Logger().error("Access token not found in \(#function)")
-            return
-        }
+        guard let accessToken = accessToken() else { return }
         
         guard let url = buildURL(mediaPath) else {
             Logger().error("Invalid media URL")

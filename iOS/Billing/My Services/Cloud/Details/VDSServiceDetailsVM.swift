@@ -13,8 +13,6 @@ final class VDSServiceDetailsVM {
     var isLoading = false
     var isPerformingAction = false
     
-    private let base = URL(string: "https://test-api.bisquit.host")!
-    
     func load(_ serviceId: Int) async {
         guard !isLoading else { return }
         
@@ -34,7 +32,12 @@ final class VDSServiceDetailsVM {
     }
     
     func fetchDetails(_ serviceId: Int) async {
-        guard let data = await request(path: "/cloud/\(serviceId)") else { return }
+        guard let accessToken = accessToken() else { return }
+        guard let data = await cloudServiceDetailsAPI(
+            serviceId: serviceId,
+            accessToken: accessToken,
+            onBillingError: SystemAlert.error
+        ) else { return }
         
         do {
             service = try BigAssDecoder.decode(CloudServiceDetails.self, from: data)
@@ -48,7 +51,13 @@ final class VDSServiceDetailsVM {
     }
     
     func fetchChangeablePackages(_ serviceId: Int) async {
-        guard let data = await request(path: "/cloud/\(serviceId)/change-package/packages") else { return }
+        guard let accessToken = accessToken() else { return }
+        
+        guard let data = await cloudServiceChangeablePackagesAPI(
+            serviceId: serviceId,
+            accessToken: accessToken,
+            onBillingError: SystemAlert.error
+        ) else { return }
         
         do {
             changeablePackages = try BigAssDecoder.decode([ChangeablePackage].self, from: data)
@@ -62,7 +71,13 @@ final class VDSServiceDetailsVM {
     }
     
     func fetchHistory(_ serviceId: Int) async {
-        guard let data = await request(path: "/cloud/\(serviceId)/panel/history") else { return }
+        guard let accessToken = accessToken() else { return }
+        
+        guard let data = await cloudServiceHistoryAPI(
+            serviceId: serviceId,
+            accessToken: accessToken,
+            onBillingError: SystemAlert.error
+        ) else { return }
         
         do {
             history = try BigAssDecoder.decode([CloudServiceHistoryItem].self, from: data)
@@ -76,7 +91,13 @@ final class VDSServiceDetailsVM {
     }
     
     func fetchCharts(_ serviceId: Int) async {
-        guard let data = await request(path: "/cloud/\(serviceId)/panel/charts") else { return }
+        guard let accessToken = accessToken() else { return }
+        
+        guard let data = await cloudServiceChartsAPI(
+            serviceId: serviceId,
+            accessToken: accessToken,
+            onBillingError: SystemAlert.error
+        ) else { return }
         
         do {
             charts = try BigAssDecoder.decode(CloudServiceCharts.self, from: data)
@@ -90,7 +111,13 @@ final class VDSServiceDetailsVM {
     }
     
     func fetchOSOptions(_ serviceId: Int) async {
-        guard let data = await request(path: "/cloud/\(serviceId)/panel/reinstall/os") else { return }
+        guard let accessToken = accessToken() else { return }
+        
+        guard let data = await cloudServiceOSOptionsAPI(
+            serviceId: serviceId,
+            accessToken: accessToken,
+            onBillingError: SystemAlert.error
+        ) else { return }
         
         do {
             osOptions = try BigAssDecoder.decode([CloudServiceOSCategory].self, from: data)
@@ -110,12 +137,15 @@ final class VDSServiceDetailsVM {
             SystemAlert.error("Enter a name")
             return
         }
-        
-        let body = ["name": trimmed]
-        guard let payload = try? JSONSerialization.data(withJSONObject: body) else { return }
+        guard let accessToken = accessToken() else { return }
         
         await performAction {
-            guard await self.request(path: "/cloud/\(serviceId)/name", method: "PATCH", body: payload) != nil else { return }
+            guard await cloudServiceRenameAPI(
+                newName: trimmed,
+                serviceId: serviceId,
+                accessToken: accessToken,
+                onBillingError: SystemAlert.error
+            ) else { return }
             
             self.service?.name = trimmed
             SystemAlert.done("Name updated")
@@ -129,32 +159,43 @@ final class VDSServiceDetailsVM {
             SystemAlert.error("Password must be 8-32 characters, \"\(password)\" doesn't fit")
             return
         }
-        
-        let body = ["password": trimmed]
-        guard let payload = try? JSONSerialization.data(withJSONObject: body) else { return }
+        guard let accessToken = accessToken() else { return }
         
         await performAction {
-            guard await self.request(path: "/cloud/\(serviceId)/panel/password", method: "PATCH", body: payload) != nil else { return }
+            guard await cloudServiceChangePasswordAPI(
+                password: trimmed,
+                serviceId: serviceId,
+                accessToken: accessToken,
+                onBillingError: SystemAlert.error
+            ) else { return }
             SystemAlert.done("Root password updated")
         }
     }
     
     func reinstall(osId: Int, serviceId: Int) async {
-        let body = ["os": osId]
-        guard let payload = try? JSONSerialization.data(withJSONObject: body) else { return }
+        guard let accessToken = accessToken() else { return }
         
         await performAction {
-            guard await self.request(path: "/cloud/\(serviceId)/panel/reinstall", method: "POST", body: payload) != nil else { return }
+            guard await cloudServiceReinstallAPI(
+                osId: osId,
+                serviceId: serviceId,
+                accessToken: accessToken,
+                onBillingError: SystemAlert.error
+            ) else { return }
             Logger().info("Reinstall started")
         }
     }
     
     func changeAutorenew(_ enabled: Bool, serviceId: Int) async {
-        let body = ["autorenew": enabled]
-        guard let payload = try? JSONSerialization.data(withJSONObject: body) else { return }
+        guard let accessToken = accessToken() else { return }
         
         await performAction {
-            guard await self.request(path: "/cloud/\(serviceId)/autorenew", method: "PATCH", body: payload) != nil else { return }
+            guard await cloudServiceAutorenewAPI(
+                enabled: enabled,
+                serviceId: serviceId,
+                accessToken: accessToken,
+                onBillingError: SystemAlert.error
+            ) else { return }
             
             self.service?.autorenew = enabled
             SystemAlert.done(enabled ? "Auto-renew enabled" : "Auto-renew disabled")
@@ -166,14 +207,17 @@ final class VDSServiceDetailsVM {
             SystemAlert.error("Unsupported period")
             return nil
         }
-        
-        let body = ["months": months]
-        guard let payload = try? JSONSerialization.data(withJSONObject: body) else { return nil }
+        guard let accessToken = accessToken() else { return nil }
         
         return await withCheckedContinuation { continuation in
             Task {
                 await self.performAction {
-                    guard let data = await self.request(path: "/cloud/\(serviceId)/renew", method: "POST", body: payload) else {
+                    guard let data = await cloudServiceRenewAPI(
+                        months: months,
+                        serviceId: serviceId,
+                        accessToken: accessToken,
+                        onBillingError: SystemAlert.error
+                    ) else {
                         continuation.resume(returning: nil)
                         return
                     }
@@ -195,11 +239,15 @@ final class VDSServiceDetailsVM {
     }
     
     func changePackage(to packageId: Int, serviceId: Int, onSuccess: @escaping () -> Void) async {
-        let body = ["package": packageId]
-        guard let payload = try? JSONSerialization.data(withJSONObject: body) else { return }
+        guard let accessToken = accessToken() else { return }
         
         await performAction {
-            guard await self.request(path: "/cloud/\(serviceId)/change-package", method: "POST", body: payload) != nil else { return }
+            guard await cloudServiceChangePackageAPI(
+                packageId: packageId,
+                serviceId: serviceId,
+                accessToken: accessToken,
+                onBillingError: SystemAlert.error
+            ) else { return }
             onSuccess()
             
             Logger().info("Upgrade requested")
@@ -209,9 +257,15 @@ final class VDSServiceDetailsVM {
     
     func power(_ action: String, serviceId: Int) async {
         guard ["start", "stop", "restart"].contains(action) else { return }
+        guard let accessToken = accessToken() else { return }
         
         await performAction {
-            guard let data = await self.request(path: "/cloud/\(serviceId)/panel/state/\(action)", method: "POST") else {
+            guard let data = await cloudServicePowerAPI(
+                action: action,
+                serviceId: serviceId,
+                accessToken: accessToken,
+                onBillingError: SystemAlert.error
+            ) else {
                 Logger().error("Power action \(action) failed")
                 return
             }
@@ -232,48 +286,5 @@ final class VDSServiceDetailsVM {
         defer { isPerformingAction = false }
         
         await work()
-    }
-    
-    private func request(path: String, method: String = "GET", body: Data? = nil) async -> Data? {
-        guard let accessToken = Keychain.load(key: "access_token") else {
-            Logger().error("Access token not found in \(#function)")
-            return nil
-        }
-        
-        guard let url = URL(string: path, relativeTo: base) else {
-            SystemAlert.error("Cloud request failed", subtitle: "Invalid URL: \(path)")
-            return nil
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = method
-        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        
-        if let body {
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.httpBody = body
-        }
-        
-        do {
-            let (data, res) = try await URLSession.shared.data(for: request)
-            
-            guard let http = res as? HTTPURLResponse else {
-                SystemAlert.error("Cloud request failed", subtitle: "No HTTP response")
-                return nil
-            }
-            
-            if http.statusCode == 204 {
-                return Data()
-            }
-            
-            if decodeBillingError(data, with: res, onDecode: SystemAlert.error) {
-                return nil
-            }
-            
-            return data
-        } catch {
-            SystemAlert.error("Cloud request failed", subtitle: error.localizedDescription)
-            return nil
-        }
     }
 }

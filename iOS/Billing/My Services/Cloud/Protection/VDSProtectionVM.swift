@@ -202,10 +202,7 @@ final class VDSProtectionVM {
     }
     
     private func request(path: String, method: String = "GET", body: Data? = nil) async -> Data? {
-        guard let accessToken = Keychain.load(key: "access_token") else {
-            Logger().error("Access token not found in \(#function)")
-            return nil
-        }
+        guard let accessToken = accessToken() else { return nil }
         
         guard let url = URL(string: path, relativeTo: base) else {
             SystemAlert.error("Protection request failed", subtitle: "Invalid URL")

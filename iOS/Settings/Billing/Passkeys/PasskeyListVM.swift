@@ -15,10 +15,7 @@ final class PasskeyListVM {
     private let passkeysPath = "user/settings/passkeys"
     
     func fetchPasskeys() async {
-        guard let accessToken = Keychain.load(key: "access_token") else {
-            Logger().error("Access token not found in \(#function)")
-            return
-        }
+        guard let accessToken = accessToken() else { return }
         
         isLoading = true
         defer { isLoading = false }
@@ -39,10 +36,7 @@ final class PasskeyListVM {
     }
     
     func deletePasskey(_ passkey: PasskeyListItem) async {
-        guard let accessToken = Keychain.load(key: "access_token") else {
-            Logger().error("Access token not found in \(#function)")
-            return
-        }
+        guard let accessToken = accessToken() else { return }
         
         let url = baseURL.appendingPathComponent("\(passkeysPath)/\(passkey.id)")
         
@@ -89,10 +83,7 @@ final class PasskeyListVM {
     }
     
     private func startRegistration() async throws -> PasskeyOptionsResponse<PasskeyRegistrationOptions> {
-        guard let accessToken = Keychain.load(key: "access_token") else {
-            Logger().error("Access token not found in \(#function)")
-            throw PasskeyError.invalidCredential
-        }
+        guard let accessToken = accessToken() else { throw PasskeyError.invalidCredential }
         
         let url = baseURL.appendingPathComponent("\(passkeysPath)/register/options")
         
@@ -114,10 +105,7 @@ final class PasskeyListVM {
     }
     
     private func verifyRegistration(sessionId: String, credential: [String: Any]) async throws {
-        guard let accessToken = Keychain.load(key: "access_token") else {
-            Logger().error("Access token not found in \(#function)")
-            throw PasskeyError.invalidCredential
-        }
+        guard let accessToken = accessToken() else { throw PasskeyError.invalidCredential }
         
         let url = baseURL.appendingPathComponent("\(passkeysPath)/register/verify")
         

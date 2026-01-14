@@ -14,10 +14,7 @@ final class Billing2FAVM {
     private let setupPath = "user/settings/two-fa"
     
     func fetchSetup() async {
-        guard let accessToken = Keychain.load(key: "access_token") else {
-            Logger().error("Access token not found in \(#function)")
-            return
-        }
+        guard let accessToken = accessToken() else { return }
         
         isLoading = true
         defer { isLoading = false }
@@ -38,10 +35,7 @@ final class Billing2FAVM {
     }
     
     func enable(code: String) async -> Bool {
-        guard let accessToken = Keychain.load(key: "access_token") else {
-            Logger().error("Access token not found in \(#function)")
-            return false
-        }
+        guard let accessToken = accessToken() else { return false }
         
         isEnabling = true
         defer { isEnabling = false }
@@ -65,10 +59,7 @@ final class Billing2FAVM {
     }
     
     func disable() async -> Bool {
-        guard let accessToken = Keychain.load(key: "access_token") else {
-            Logger().error("Access token not found in \(#function)")
-            return false
-        }
+        guard let accessToken = accessToken() else { return false }
         
         isDisabling = true
         defer { isDisabling = false }

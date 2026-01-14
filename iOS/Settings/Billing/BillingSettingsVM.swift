@@ -14,10 +14,7 @@ final class BillingSettingsVM {
     var isUpdatingPassword = false
     
     func changeName(onSuccess: @escaping () async -> Void) async {
-        guard let accessToken = Keychain.load(key: "access_token") else {
-            Logger().error("Access token not found in \(#function)")
-            return
-        }
+        guard let accessToken = accessToken() else { return }
         
         if await changeNameAPI(newName: newName, accessToken: accessToken) {
             newName = ""
@@ -26,10 +23,7 @@ final class BillingSettingsVM {
     }
     
     func changeEmail() async {
-        guard let accessToken = Keychain.load(key: "access_token") else {
-            Logger().error("Access token not found in \(#function)")
-            return
-        }
+        guard let accessToken = accessToken() else { return }
         
         if await changeNameAPI(newName: newName, accessToken: accessToken) {
             newEmail = ""
@@ -38,10 +32,7 @@ final class BillingSettingsVM {
     }
     
     func changeLogin(onSuccess: @escaping () async -> Void) async {
-        guard let accessToken = Keychain.load(key: "access_token") else {
-            Logger().error("Access token not found in \(#function)")
-            return
-        }
+        guard let accessToken = accessToken() else { return }
         
         if await changeLoginAPI(newLogin: newLogin, accessToken: accessToken) {
             newLogin = ""
@@ -81,10 +72,7 @@ final class BillingSettingsVM {
             return
         }
         
-        guard let accessToken = Keychain.load(key: "access_token") else {
-            Logger().error("Access token not found in \(#function)")
-            return
-        }
+        guard let accessToken = accessToken() else { return }
         
         isUpdatingPassword = true
         defer { isUpdatingPassword = false }
@@ -114,10 +102,7 @@ final class BillingSettingsVM {
             return nil
         }
         
-        guard let accessToken = Keychain.load(key: "access_token") else {
-            Logger().error("Access token not found in \(#function)")
-            return nil
-        }
+        guard let accessToken = accessToken() else { return nil }
         
         return await updateAvatarAPI(
             data: data,

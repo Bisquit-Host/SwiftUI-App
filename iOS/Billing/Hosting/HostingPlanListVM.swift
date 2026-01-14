@@ -239,10 +239,7 @@ final class HostingPlanListVM {
     }
     
     private func request(path: String, method: String = "GET", body: Data? = nil) async -> Data? {
-        guard let accessToken = Keychain.load(key: "access_token") else {
-            Logger().error("Access token not found in \(#function)")
-            return nil
-        }
+        guard let accessToken = accessToken() else { return nil }
         
         guard let url = URL(string: path, relativeTo: authedBase) else {
             SystemAlert.error("Order failed", subtitle: "Invalid URL: \(path)")

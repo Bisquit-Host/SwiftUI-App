@@ -173,10 +173,7 @@ struct MyServiceCard: View {
     }
     
     private func request(path: String, method: String, body: Data) async -> Data? {
-        guard let accessToken = Keychain.load(key: "access_token") else {
-            Logger().error("Access token not found in \(#function)")
-            return nil
-        }
+        guard let accessToken = accessToken() else { return nil }
         
         guard
             let base = URL(string: "https://test-api.bisquit.host"),
