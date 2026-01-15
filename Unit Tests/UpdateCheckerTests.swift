@@ -10,7 +10,7 @@ struct UpdateCheckerTests {
             (current: "2.0", appStore: "2.0.0", expectsUpdate: false),
             (current: "0.9.9", appStore: "1.0", expectsUpdate: true)
         ]
-
+        
         for testCase in cases {
             #expect(
                 SecurityTasks.isUpdateAvailable(
