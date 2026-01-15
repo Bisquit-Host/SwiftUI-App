@@ -1,4 +1,5 @@
 import SwiftUI
+import Pow
 
 struct TOTPInputField: View {
     @Binding var code: String
@@ -6,11 +7,28 @@ struct TOTPInputField: View {
     var codeLength = 6
     var boxSpacing = 10.0
     var inputHeight = 64.0
+    var loginAttempts = 0
     
     @FocusState private var isCodeFocused: Bool
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     
     var body: some View {
-        ZStack {
+        field
+        .contentShape(.rect)
+        .onTapGesture {
+            isCodeFocused = true
+        }
+        .onAppear {
+            isCodeFocused = true
+        }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("2FA code")
+        .accessibilityValue(accessibilityValue)
+    }
+
+    @ViewBuilder
+    private var field: some View {
+        let base = ZStack {
             TextField("", text: $code)
                 .keyboardType(.numberPad)
                 .textContentType(.oneTimeCode)
@@ -40,21 +58,18 @@ struct TOTPInputField: View {
             .frame(height: inputHeight)
         }
         .frame(height: inputHeight)
-        .contentShape(.rect)
-        .onTapGesture {
-            isCodeFocused = true
+        
+        if reduceMotion {
+            base
+        } else {
+            base.changeEffect(.shake(rate: .fast), value: loginAttempts)
         }
-        .onAppear {
-            isCodeFocused = true
-        }
-        .accessibilityElement(children: .ignore)
-        .accessibilityLabel("2FA code")
-        .accessibilityValue(accessibilityValue)
     }
     
     private func digit(at index: Int) -> String {
         guard index < code.count else { return "" }
         let stringIndex = code.index(code.startIndex, offsetBy: index)
+        
         return String(code[stringIndex])
     }
     

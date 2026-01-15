@@ -4,6 +4,7 @@ struct TwoFASheetView: View {
     @Binding var code: String
     @Binding var isVerifying: Bool
     var onVerify: () async -> Void
+    var loginAttempts = 0
     
     private let totpCodeLength = 6
     
@@ -23,7 +24,7 @@ struct TwoFASheetView: View {
                     .multilineTextAlignment(.center)
             }
             
-            TOTPInputField(code: $code, codeLength: totpCodeLength)
+            TOTPInputField(code: $code, codeLength: totpCodeLength, loginAttempts: loginAttempts)
             
             Spacer()
         }
