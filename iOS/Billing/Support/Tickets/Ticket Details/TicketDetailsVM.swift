@@ -116,7 +116,7 @@ final class TicketDetailsVM {
         
         do {
             isStreaming = true
-            print("🔌 Opening SSE for ticket", ticket.id)
+            Logger().info("🔌 Opening SSE for ticket \(self.ticket.id)")
             let (bytes, _) = try await URLSession.shared.bytes(for: request)
             
             var currentEvent: String?
@@ -124,7 +124,7 @@ final class TicketDetailsVM {
             
             for try await line in bytes.lines {
                 if Task.isCancelled { break }
-                print("📄 SSE line:", line)
+                Logger().info("📄 SSE line: \(line)")
                 
                 if line.hasPrefix("event:") {
                     // Flush previous event if it wasn't terminated by an empty line
@@ -134,7 +134,7 @@ final class TicketDetailsVM {
                     }
                     
                     currentEvent = line.replacingOccurrences(of: "event:", with: "").trimmingCharacters(in: .whitespaces)
-                    print("📡 Event:", currentEvent ?? "nil")
+                    Logger().info("📡 Event: \(currentEvent ?? "nil")")
                     
                 } else if line.hasPrefix("data:") {
                     let dataLine = line.replacingOccurrences(of: "data:", with: "").trimmingCharacters(in: .whitespaces)
@@ -153,7 +153,7 @@ final class TicketDetailsVM {
                 await handleEvent(name: currentEvent, dataString: currentData)
             }
             
-            print("🔌 SSE closed for ticket", ticket.id)
+            Logger().info("🔌 SSE closed for ticket \(self.ticket.id)")
         } catch {
             errorMessage = error.localizedDescription
             Logger().error("❌ SSE error: \(error)")
@@ -164,18 +164,18 @@ final class TicketDetailsVM {
     
     private func handleEvent(name: String?, dataString: String) async {
         guard let name else {
-            print("⚠️ Empty event name")
+            Logger().warning("⚠️ Empty event name")
             return
         }
         
         let trimmed = dataString.trimmingCharacters(in: .whitespacesAndNewlines)
         
         guard !trimmed.isEmpty else {
-            print("⚠️ Empty event data for", name)
+            Logger().warning("⚠️ Empty event data for \(name)")
             return
         }
         
-        print("🔍 Handling event:", name, "payload:\n", trimmed)
+        Logger().info("🔍 Handling event: \(name), payload:\n\(trimmed)")
         
         switch name {
         case "history":
@@ -184,8 +184,8 @@ final class TicketDetailsVM {
                     let history = try BigAssDecoder.decode([SupportMessageDTO].self, from: data)
                     messages = history
                 } catch {
-                    print("History decode error:", error)
-                    print("History payload:", trimmed)
+                    Logger().error("History decode error: \(error)")
+                    Logger().info("History payload: \(trimmed)")
                 }
             }
             
@@ -195,8 +195,8 @@ final class TicketDetailsVM {
                     let message = try BigAssDecoder.decode(SupportMessageDTO.self, from: data)
                     appendMessageIfNeeded(message)
                 } catch {
-                    print("Message decode error:", error)
-                    print("Message payload:", trimmed)
+                    Logger().error("Message decode error: \(error)")
+                    Logger().info("Message payload: \(trimmed)")
                 }
             }
             
@@ -207,7 +207,7 @@ final class TicketDetailsVM {
             }
             
         default:
-            print("ℹ️ Unknown event", name, "payload:", trimmed)
+            Logger().warning("ℹ️ Unknown event \(name) payload: \(trimmed)")
         }
     }
     

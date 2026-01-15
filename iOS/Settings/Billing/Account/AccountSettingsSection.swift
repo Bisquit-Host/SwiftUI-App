@@ -39,7 +39,7 @@ struct AccountSettingsSection: View {
             try await Task.sleep(for: .seconds(0.5))
             
             if !Keychain.delete(key: "access_token") {
-                print("Error logging out")
+                Logger().error("Error logging out")
             }
             
             store.accessTokenExpiresIn = 0

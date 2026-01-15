@@ -1,5 +1,6 @@
 import ScrechKit
 import ContactsUI
+import os
 
 struct ContactsListView: View {
     @Environment(\.dismiss) private var dismiss
@@ -71,7 +72,7 @@ struct ContactsListView: View {
                 contacts.append(contact)
             }
         } catch {
-            print("Failed to fetch contacts:", error)
+            Logger().error("Failed to fetch contacts: \(error)")
         }
         
         return contacts
@@ -96,7 +97,7 @@ struct ContactsListView: View {
                     self.contacts = contactsWithEmail
                 }
             } catch {
-                print("Failed to fetch contacts:", error)
+                Logger().error("Failed to fetch contacts: \(error)")
             }
         }
     }

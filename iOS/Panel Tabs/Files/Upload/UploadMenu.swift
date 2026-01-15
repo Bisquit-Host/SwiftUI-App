@@ -94,7 +94,7 @@ struct UploadMenu: View {
                     continue
                 }
                 
-                print("Item:", identifier)
+                Logger().info("Item: \(identifier)")
                 
                 guard let data = try? await item.loadTransferable(type: Data.self) else {
                     continue

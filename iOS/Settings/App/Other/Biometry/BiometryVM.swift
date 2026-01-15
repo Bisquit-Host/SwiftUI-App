@@ -1,5 +1,6 @@
 import SwiftUI
 import LocalAuthentication
+import os
 
 @Observable
 final class BiometryVM {
@@ -42,7 +43,7 @@ final class BiometryVM {
         return await withCheckedContinuation { continuation in
             context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, error in
                 if let error {
-                    print(error)
+                    Logger().error("\(error)")
                 }
                 
                 continuation.resume(returning: success)

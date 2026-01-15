@@ -1,5 +1,6 @@
 import SwiftUI
 import PteroNet
+import os
 @preconcurrency import CryptoKit
 
 #if canImport(Contacts)
@@ -44,7 +45,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let token = tokenParts.joined()
         
-        print("Push token:", token)
+        Logger().info("Push token: \(token)")
         ValueStore().pushToken = token
 #if !DEBUG
         Task {
@@ -54,7 +55,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        print("Failed to register for remote notifications:", error)
+        Logger().error("Failed to register for remote notifications: \(error)")
     }
     
     // MARK: - Contacts
@@ -63,7 +64,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         switch CNContactStore.authorizationStatus(for: .contacts) {
         case .denied, .notDetermined:
             CNContactStore().requestAccess(for: .contacts) { _, error in
-                print("Error requesting permissions:", error ?? "Unknown")
+                Logger().error("Error requesting permissions: \(error?.localizedDescription ?? "Unknown")")
             }
             
         default:
@@ -100,7 +101,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         do {
             let (_, _) = try await URLSession.shared.data(for: req)
         } catch {
-            print(error)
+            Logger().error("\(error)")
         }
     }
 }

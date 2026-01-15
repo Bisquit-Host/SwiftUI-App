@@ -18,7 +18,7 @@ final class ContactManager {
             try store.execute(saveRequest)
             Logger().info("Contact saved")
         } catch let error {
-            print("Failed to save the contact:", error)
+            Logger().error("Failed to save the contact: \(error)")
         }
     }
 }

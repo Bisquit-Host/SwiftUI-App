@@ -1,4 +1,5 @@
 import Foundation
+import os
 #if canImport(MetricKit)
 import MetricKit
 #endif
@@ -11,7 +12,7 @@ final class MetricKitManager: NSObject, MXMetricManagerSubscriber {
         super.init()
         MXMetricManager.shared.add(self)
         
-        print("MetricKit manager initialized")
+        Logger().info("MetricKit manager initialized")
     }
     
     deinit {
@@ -23,7 +24,7 @@ final class MetricKitManager: NSObject, MXMetricManagerSubscriber {
     nonisolated func didReceive(_ payloads: [MXMetricPayload]) {
         guard shouldSaveMetrics else {
             payloads.forEach {
-                print("Received metrics:", $0)
+                Logger().info("Received metrics: \($0)")
             }
             
             return
@@ -67,7 +68,7 @@ final class MetricKitManager: NSObject, MXMetricManagerSubscriber {
     nonisolated func didReceive(_ diagnosticPayloads: [MXDiagnosticPayload]) {
         guard shouldSaveMetrics else {
             diagnosticPayloads.forEach {
-                print("Received diagnostics:", $0)
+                Logger().info("Received diagnostics: \($0)")
             }
             
             return
@@ -112,11 +113,11 @@ final class MetricKitManager: NSObject, MXMetricManagerSubscriber {
             
             if FileManager.default.fileExists(atPath: fileURL.path) {
                 try FileManager.default.removeItem(at: fileURL)
-                print("️ Deleted existing file:", fileName)
+                Logger().info("️ Deleted existing file: \(fileName)")
             }
             
             try content.write(to: fileURL, atomically: true, encoding: .utf8)
-            print("✅ Metrics file saved at:", fileURL.path)
+            Logger().info("✅ Metrics file saved at: \(fileURL.path)")
         } catch {
             Logger().error("❌ Error writing metrics file: \(error)")
         }

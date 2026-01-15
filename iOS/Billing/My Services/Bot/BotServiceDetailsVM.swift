@@ -43,7 +43,7 @@ final class BotServiceDetailsVM {
             SystemAlert.error("Bot detail decode error: \(error)")
             
             if let raw = String(data: data, encoding: .utf8) {
-                print("Bot raw detail:", raw)
+                Logger().info("Bot raw detail: \(raw)")
             }
         }
     }

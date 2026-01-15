@@ -120,10 +120,10 @@ struct BisquitHost: App {
     
     private func authenticateGameCenter(_ error: Error?) {
         guard error == nil else {
-            print(error?.localizedDescription ?? "Game Center authentication failed")
+            Logger().error("\(error?.localizedDescription ?? "Game Center authentication failed")")
             return
         }
         
-        print("Game Center authenticated")
+        Logger().info("Game Center authenticated")
     }
 }

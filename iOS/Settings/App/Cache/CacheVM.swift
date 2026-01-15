@@ -1,5 +1,6 @@
 import ScrechKit
 import Kingfisher
+import os
 
 @Observable
 final class CacheVM {
@@ -39,8 +40,7 @@ final class CacheVM {
                     self.cacheSize = formattedSize
                     
                 case .failure(let error):
-                    print(error)
-                    
+                    Logger().error("\(error)")
                     self.cacheSize = "Empty"
                 }
             }

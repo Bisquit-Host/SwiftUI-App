@@ -25,8 +25,7 @@ final class AccountVM {
             twoFaEnabled = true
             
         } catch {
-            SystemAlert.error(error)
-            print("2FA details error:", error)
+            SystemAlert.error("2FA details fetch failed", subtitle: error.localizedDescription)
         }
     }
     
@@ -41,21 +40,18 @@ final class AccountVM {
             
             await twoFaDetails()
         } catch {
-            print("Error enabling 2FA")
-            SystemAlert.error(error)
+            SystemAlert.error("Error enabling 2FA", subtitle: error.localizedDescription)
         }
     }
     
     func disable2Fa(_ password: String, onSuccess: @escaping () -> ()) async {
         do {
             try await twoFaDisableAPI(password)
-            
             onSuccess()
             
             await twoFaDetails()
         } catch {
-            print("Error disabling 2FA")
-            SystemAlert.error(error)
+            SystemAlert.error("Error disabling 2FA", subtitle: error.localizedDescription)
         }
     }
 }

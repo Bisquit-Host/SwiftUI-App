@@ -119,7 +119,7 @@ final class FileTabVM: ObservableObject {
         }
         
         guard var components = URLComponents(string: urlString) else {
-            print("Invalid upload URL:", urlString)
+            Logger().info("Invalid upload URL: \(urlString)")
             
             withAnimation {
                 isUploading = false
@@ -134,7 +134,7 @@ final class FileTabVM: ObservableObject {
         components.queryItems = queryItems
         
         guard let uploadURL = components.url else {
-            print("Failed to build upload URL with directory:", root)
+            Logger().error("Failed to build upload URL with directory: \(root)")
             
             withAnimation {
                 isUploading = false
@@ -167,7 +167,7 @@ final class FileTabVM: ObservableObject {
             let fileName = fileURL.lastPathComponent
             
             guard let mimeType = getMimeType(fileURL) else {
-                print("Unable to determine MIME type for file:", fileName)
+                Logger().error("Unable to determine MIME type for file: \(fileName)")
                 continue
             }
             
@@ -177,7 +177,7 @@ final class FileTabVM: ObservableObject {
                 await self.uploadFile(url, name: fileName, at: root, mimeType: mimeType, fileURL: fileURL)
                 onSuccess()
             } catch {
-                print("Error in file API:", error)
+                Logger().error("Error in file API: \(error)")
             }
         }
         
@@ -188,7 +188,7 @@ final class FileTabVM: ObservableObject {
         uploadingCount = 1
         
         guard let imageData = image.heicData() else {
-            print("Unable to convert image to data")
+            Logger().error("Unable to convert image to data")
             return
         }
         
@@ -199,7 +199,7 @@ final class FileTabVM: ObservableObject {
         do {
             try imageData.write(to: fileURL, options: .completeFileProtection)
         } catch {
-            print("Could not write image data to temporary file:", error)
+            Logger().error("Could not write image data to temporary file: \(error)")
             return
         }
         

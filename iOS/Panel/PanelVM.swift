@@ -80,7 +80,7 @@ final class PanelVM {
             let message = try BigAssDecoder.decode(WebsocketMessage.self, from: jsonData)
             
             if let status = message.serverStatus {
-                print("Server status:", status)
+                Logger().info("Server status: \(status)")
                 
                 var state: ServerState
                 
@@ -109,7 +109,7 @@ final class PanelVM {
                 serverState = state
                 
             } else if let consoleOutput = message.consoleOutput {
-                print("Console output:", consoleOutput)
+                Logger().info("Console output: \(consoleOutput)")
                 //#if DEBUG
                 //                rawMessages.append(consoleOutput)
                 //#endif
@@ -136,17 +136,17 @@ final class PanelVM {
 #endif
                     }
                 } catch {
-                    print("Error converting dictionary to JSON Data or decoding JSON:", error)
+                    Logger().info("Error converting dictionary to JSON Data or decoding JSON: \(error)")
                 }
                 
             } else if message.backupCompleted {
                 await updateBackups?()
                 
             } else if message.authSuccess {
-                print("WebSocket authentication successful")
+                Logger().info("WebSocket authentication successful")
                 
             } else if message.tokenExpiring {
-                print("WebSocket token expiring soon")
+                Logger().info("WebSocket token expiring soon")
                 
                 if let data = await consoleDetails() {
                     connectWebSocket(data)

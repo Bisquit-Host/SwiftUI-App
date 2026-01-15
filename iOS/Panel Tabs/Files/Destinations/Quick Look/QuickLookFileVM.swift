@@ -50,7 +50,7 @@ final class QuickLookFileVM {
                     self.fileURL = destinationURL
                 }
             } catch {
-                print("Error during file copy:", error)
+                Logger().error("Error during file copy: \(error)")
             }
         }
         .resume()
@@ -114,7 +114,7 @@ final class QuickLookFileVM {
             
             metadata = allTags
         } catch {
-            print("Failed to fetch resource values:", error)
+            Logger().error("Failed to fetch resource values: \(error)")
         }
     }
 }

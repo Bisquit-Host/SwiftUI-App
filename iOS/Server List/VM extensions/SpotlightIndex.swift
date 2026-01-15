@@ -23,13 +23,13 @@ extension ServerListVM {
         
         CSSearchableIndex.default().deleteSearchableItems(withIdentifiers: identifiers) { error in
             guard error == nil else {
-                print("Error removing items from Spotlight:", error!.localizedDescription)
+                Logger().error("Error removing items from Spotlight: \(error?.localizedDescription ?? "Unknown")")
                 return
             }
             
             CSSearchableIndex.default().indexSearchableItems(searchableItems) { error in
                 guard error == nil else {
-                    print("Spotlight indexing error:", error!.localizedDescription)
+                    Logger().error("Spotlight indexing error: \(error?.localizedDescription ?? "Unknown")")
                     return
                 }
             }

@@ -34,7 +34,7 @@ final class VideoFileVM {
         
         URLSession.shared.downloadTask(with: url) { location, _, error in
             guard let location, error == nil else {
-                print("Download error:", error?.localizedDescription ?? "Unknown error")
+                Logger().info("Download error: \(error?.localizedDescription ?? "Unknown error")")
                 return
             }
             

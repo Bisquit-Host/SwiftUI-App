@@ -1,4 +1,5 @@
 import SwiftUI
+import os
 
 struct DebugSettings: View {
     @EnvironmentObject private var store: ValueStore
@@ -30,7 +31,7 @@ struct DebugSettings: View {
         do {
             try task.run()
         } catch {
-            print("Error restarting app:", error)
+            Logger().error("Error restarting app: \(error)")
         }
         
         exit(0)

@@ -40,7 +40,7 @@ final class GameServiceDetailsVM {
             SystemAlert.error("Game detail decode error: \(error)")
             
             if let raw = String(data: data, encoding: .utf8) {
-                print("Game raw detail:", raw)
+                Logger().info("Game raw detail: \(raw)")
             }
         }
     }

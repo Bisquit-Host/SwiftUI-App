@@ -56,7 +56,7 @@ struct MapSectionPing: View {
     
     private func checkPing() async {
         guard let address else {
-            print("Ping error: Invalid Address")
+            Logger().error("Ping error: Invalid Address")
             return
         }
         

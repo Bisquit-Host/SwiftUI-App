@@ -78,7 +78,7 @@ final class PasskeyListVM {
             await fetchPasskeys()
         } catch {
             SystemAlert.error(error)
-            print("Passkey registration failed:", error)
+            Logger().error("Passkey registration failed: \(error)")
         }
     }
     

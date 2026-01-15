@@ -57,7 +57,7 @@ final class SecurityTasks {
                 return date < after2Months
             }
             
-            print(alertUnusedAPIKeys ? "🛡️ Found unused API keys" : "🛡️ No unused API keys found")
+            Logger().info("\(self.alertUnusedAPIKeys ? "🛡️ Found unused API keys" : "🛡️ No unused API keys found")")
         } catch {
             Logger().error("Error fetching API keys: \(error)")
             alertUnusedAPIKeys = false
@@ -84,7 +84,7 @@ final class SecurityTasks {
         }
         
         if currentVersion.compare(appStoreVersion, options: .numeric) == .orderedAscending {
-            print("🛡️ Update available:", currentVersion, "->", appStoreVersion)
+            Logger().info("🛡️ Update available: \(currentVersion) -> \(appStoreVersion)")
             alertUpdate = true
         } else {
             Logger().info("🛡️ The app is up to date")

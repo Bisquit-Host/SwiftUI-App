@@ -35,7 +35,7 @@ final class QuickLookViewVM {
             try FileManager.default.copyItem(at: location, to: destinationURL)
             fileURL = destinationURL
         } catch {
-            print("Error during file copy:", error)
+            Logger().error("Error during file copy: \(error)")
         }
     }
 }

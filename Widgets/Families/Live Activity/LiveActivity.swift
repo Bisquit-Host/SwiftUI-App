@@ -93,7 +93,7 @@ final class LiveActivity {
                 let pushTokenString = pushToken.hexadecimalString
                 self.LAToken = pushTokenString
                 
-                print("New push token:", pushTokenString)
+                Logger().info("New push token: \(pushTokenString)")
             }
         }
     }
@@ -143,7 +143,7 @@ final class LiveActivity {
     //
     //                        self.LAToken = pushTokenString
     //
-    //                        print("New push token:", pushTokenString)
+    //                        Logger().info("New push token:", pushTokenString)
     //
     //                        //                        do {
     //                        //                            let frequentUpdateEnabled = ActivityAuthorizationInfo().frequentPushesEnabled
@@ -185,14 +185,14 @@ final class LiveActivity {
                 await self.consoleDetails(server.id)
             }
         } catch {
-            print("Error starting live activity:", error)
+            Logger().error("Error starting live activity: \(error)")
         }
     }
     
     //    func updateLiveActivity() {
     //        Task {
     //            guard let activity = Activity<WidgetsAttributes>.activities.first(where: { $0.id == liveActivityId }) else {
-    //                print("Activity not found")
+    //                Logger().error("Activity not found")
     //                return
     //            }
     //

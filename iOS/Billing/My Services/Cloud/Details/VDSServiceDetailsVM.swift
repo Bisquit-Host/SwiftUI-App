@@ -48,7 +48,7 @@ final class VDSServiceDetailsVM {
             SystemAlert.error("Cloud detail decode error: \(error)")
             
             if let raw = String(data: data, encoding: .utf8) {
-                print("Raw detail:", raw)
+                Logger().info("Raw detail: \(raw)")
             }
         }
     }
@@ -88,7 +88,7 @@ final class VDSServiceDetailsVM {
             SystemAlert.error("Cloud history decode error: \(error)")
             
             if let raw = String(data: data, encoding: .utf8) {
-                print("Raw history:", raw)
+                Logger().info("Raw history: \(raw)")
             }
         }
     }
@@ -108,7 +108,7 @@ final class VDSServiceDetailsVM {
             SystemAlert.error("Cloud charts decode error: \(error)")
             
             if let raw = String(data: data, encoding: .utf8) {
-                print("Raw charts:", raw)
+                Logger().info("Raw charts: \(raw)")
             }
         }
     }

@@ -72,7 +72,7 @@ struct DebugSettings: View {
             do {
                 try await ContactProviderManager().enable()
             } catch {
-                print(error)
+                Logger().error("\(error)")
             }
         }
     }

@@ -113,7 +113,7 @@ final class LoginVM {
             let (data, res) = try await URLSession.shared.data(for: request)
             
             if let http = res as? HTTPURLResponse {
-                print(http.statusCode, "Sign up")
+                Logger().info("\(http.statusCode) • Sign up")
             }
             
             return try BigAssDecoder.decode(BillingLoginResponse.self, from: data)

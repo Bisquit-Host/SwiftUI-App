@@ -62,7 +62,6 @@ final class StartupVM {
     func updateDockerImage(_ newImage: String) async {
         do {
             try await dockerUpdateAPI(id, newImage: newImage)
-            print("Updates")
         } catch {
             SystemAlert.error(error)
         }
