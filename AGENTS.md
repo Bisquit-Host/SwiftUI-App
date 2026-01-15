@@ -23,7 +23,8 @@ Preferred workflow is Xcode (it will resolve Swift Package Manager dependencies 
 Tip: choose the scheme that matches the target you’re changing (for example `Widgets`, `iMessage`, `watchOS`)
 
 ## Coding Style & Best Practices
-
+- ScrechKit: prefer ScrechKit's view modifiers such as .hapticOn(), .title(), .secondary() or .title(.secondary) 
+- Shapes: Use shape style shorthand everywhere possible; Prefer .background(.thinMaterial, in: .capsule) over .background(.thinMaterial, in: Capsule())
 - I prefer no dots at the end of sentences
 - New animations must check if store.bigAssAnimations from ValueStore() is enabled
 - .onChange now provides two closure parameters: oldValue and newValue; Use `_` for any parameter you do not need; If neither parameter is needed, omit them entirely
@@ -37,6 +38,7 @@ Tip: choose the scheme that matches the target you’re changing (for example `W
 - When defining enums, prefer concise single-line cases without associated values, written as a simple comma-separated list, for example: case cloud, game, bot
 
 ## Swift Concurrency
+
 - Swift 6 language mode
 - MainActor default isolation mode
 - All API calls must be async/await

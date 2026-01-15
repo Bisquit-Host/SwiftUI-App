@@ -7,12 +7,18 @@ import AuthenticationServices
 @Observable
 final class OAuthVM: NSObject {
     private let basePath = "https://test-api.bisquit.host"
+    private static let lastOAuthProviderKey = "last_oauth_provider"
     
     private var session: ASWebAuthenticationSession?
     private var pendingProvider: BillingAuthProvider?
     private var onLinked: (() -> Void)?
     private var pendingTwoFAToken: String?
     private var onAuthComplete: (() -> Void)?
+    private var lastOAuthProviderRaw = UserDefaults.standard.string(forKey: OAuthVM.lastOAuthProviderKey) ?? "" {
+        didSet {
+            UserDefaults.standard.set(lastOAuthProviderRaw, forKey: OAuthVM.lastOAuthProviderKey)
+        }
+    }
     
     var isLinkingGitHub = false
     var isLinkingGoogle = false
@@ -20,6 +26,20 @@ final class OAuthVM: NSObject {
     var showTwoFASheet = false
     var twoFACode = ""
     var isVerifyingTwoFA = false
+    
+    var lastUsedProviderName: String? {
+        guard let provider = BillingAuthProvider(rawValue: lastOAuthProviderRaw) else { return nil }
+        
+        switch provider {
+        case .github: return "GitHub"
+        case .google: return "Google"
+        case .yandex: return "Yandex"
+        }
+    }
+    
+    var lastUsedProvider: BillingAuthProvider? {
+        BillingAuthProvider(rawValue: lastOAuthProviderRaw)
+    }
     
     func disconnectAuthService(_ authService: String, onSuccess: () async -> Void) async {
         guard let accessToken = accessToken() else { return }
@@ -163,6 +183,10 @@ final class OAuthVM: NSObject {
     }
     
     private func finish(success: Bool, message: String?) {
+        if success, let pendingProvider {
+            lastOAuthProviderRaw = pendingProvider.rawValue
+        }
+        
         switch pendingProvider {
         case .github: isLinkingGitHub = false
         case .google: isLinkingGoogle = false
