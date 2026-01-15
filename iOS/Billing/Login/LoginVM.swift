@@ -7,7 +7,6 @@ import AuthenticationServices
 final class LoginVM {
     var isPasskeyLoading = false
     var isVerifying2FA = false
-    var isSubmitting = false
     var isAttesting = false
     var attestationResult: AttestationResult?
     var selectedCurrency: BillingCurrency = .RUB
@@ -34,9 +33,6 @@ final class LoginVM {
     }
     
     func login(_ login: String, _ password: String, captchaToken: String? = nil, attestResponse: AttestationResult? = nil) async -> BillingLoginResponse? {
-        isSubmitting = true
-        defer { isSubmitting = false }
-        
         let attestationPayload = attestResponse.map {
             [
                 "challenge": $0.challenge,
@@ -57,9 +53,6 @@ final class LoginVM {
     }
     
     func signup(name: String, email: String, password: String, captchaToken: String? = nil, attestResponse: AttestationResult? = nil) async -> BillingLoginResponse? {
-        isSubmitting = true
-        defer { isSubmitting = false }
-        
         let attestationPayload = attestResponse.map {
             [
                 "challenge": $0.challenge,

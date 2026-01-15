@@ -14,11 +14,6 @@ struct BillingLoginContinueButton: View {
                     ProgressView()
                     Text("Verifying...")
                 }
-            } else if vm.isSubmitting {
-                HStack {
-                    ProgressView()
-                    Text("Please wait...")
-                }
             } else {
                 Text(isSignUp ? "Create account" : "Continue")
             }

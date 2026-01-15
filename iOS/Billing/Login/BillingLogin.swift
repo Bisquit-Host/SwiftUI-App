@@ -38,7 +38,7 @@ struct BillingLogin: View {
         let documentsNotAccepted = isSignUp && !hasAcceptedDocuments
         let invalidEmail = isSignUp && !isValidEmail(trimmedLogin)
         
-        return loginEmpty || passwordEmpty || (isSignUp && nameEmpty) || documentsNotAccepted || invalidEmail || vm.isSubmitting || vm.isAttesting
+        return loginEmpty || passwordEmpty || (isSignUp && nameEmpty) || documentsNotAccepted || invalidEmail || vm.isAttesting
     }
     
     var body: some View {
