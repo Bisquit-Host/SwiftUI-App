@@ -29,7 +29,7 @@ struct BisquitHost: App {
         
         GKLocalPlayer.local.authenticateHandler = { _, error in
             guard error == nil else {
-                Logger().error("\(error?.localizedDescription ?? "❌ Game Center auth failed")")
+                Logger().error("\(error?.localizedDescription ?? "Game Center auth failed")")
                 return
             }
             

@@ -40,7 +40,7 @@ class PanelSectionVM {
     
     func save() {
         guard let data = try? JSONEncoder().encode(sections) else {
-            Logger().error("❌ Save error")
+            Logger().error("Save error")
             return
         }
         

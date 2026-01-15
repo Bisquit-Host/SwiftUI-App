@@ -156,7 +156,7 @@ final class TicketDetailsVM {
             Logger().info("🔌 SSE closed for ticket \(self.ticket.id)")
         } catch {
             errorMessage = error.localizedDescription
-            Logger().error("❌ SSE error: \(error)")
+            Logger().error("SSE error: \(error)")
         }
         
         isStreaming = false
