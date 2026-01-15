@@ -22,6 +22,9 @@ Preferred workflow is Xcode (it will resolve Swift Package Manager dependencies 
 Tip: choose the scheme that matches the target you’re changing (for example `Widgets`, `iMessage`, `watchOS`)
 
 ## Coding Style & Best Practices
+
+- .onChange now provides two closure parameters: oldValue and newValue; Use `_` for any parameter you do not need; If neither parameter is needed, omit them entirely
+- Bindings: do not use Bindings with a getter & setter for readability 
 - Logger: Prefer OSLog's Logger() instead of prints
 - Split subviews in long views into separate views in separate files
 - Language: Swift & SwiftUI; follow Swift API Design Guidelines
