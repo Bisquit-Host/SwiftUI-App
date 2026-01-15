@@ -104,7 +104,7 @@ final class PasskeyListVM {
         return try BigAssDecoder.decode(PasskeyOptionsResponse<PasskeyRegistrationOptions>.self, from: data)
     }
     
-    private func verifyRegistration(sessionId: String, credential: [String: Any]) async throws {
+    private func verifyRegistration(sessionId: String, credential: PasskeyAttestationPayload) async throws {
         guard let accessToken = accessToken() else { throw PasskeyError.invalidCredential }
         
         let url = baseURL.appendingPathComponent("\(passkeysPath)/register/verify")
@@ -114,12 +114,12 @@ final class PasskeyListVM {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         
-        let body: [String: Any] = [
-            "sessionId": sessionId,
-            "credential": credential
-        ]
+        struct Body: Encodable {
+            let sessionId: String
+            let credential: PasskeyAttestationPayload
+        }
         
-        request.httpBody = try JSONSerialization.data(withJSONObject: body)
+        request.httpBody = try JSONEncoder().encode(Body(sessionId: sessionId, credential: credential))
         
         let (data, res) = try await URLSession.shared.data(for: request)
         try validateResponse(res, data: data)

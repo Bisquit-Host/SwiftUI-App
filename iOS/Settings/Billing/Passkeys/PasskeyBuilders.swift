@@ -50,51 +50,33 @@ struct PasskeyRequestFactory {
 }
 
 struct PasskeyCredentialFormatter {
-    static func assertionPayload(_ credential: ASAuthorizationPlatformPublicKeyCredentialAssertion) throws -> [String: Any] {
+    static func assertionPayload(_ credential: ASAuthorizationPlatformPublicKeyCredentialAssertion) throws -> PasskeyAssertionPayload {
         let credentialId = credential.credentialID.base64URLEncodedString()
         
-        var response: [String: Any] = [
-            "clientDataJSON":    credential.rawClientDataJSON.base64URLEncodedString(),
-            "authenticatorData": credential.rawAuthenticatorData.base64URLEncodedString(),
-            "signature":         credential.signature.base64URLEncodedString()
-        ]
+        let response = PasskeyAssertionResponsePayload(
+            clientDataJSON: credential.rawClientDataJSON.base64URLEncodedString(),
+            authenticatorData: credential.rawAuthenticatorData.base64URLEncodedString(),
+            signature: credential.signature.base64URLEncodedString(),
+            userHandle: credential.userID?.base64URLEncodedString()
+        )
         
-        if let userHandle = credential.userID?.base64URLEncodedString() {
-            response["userHandle"] = userHandle
-        }
-        
-        return [
-            "id":       credentialId,
-            "rawId":    credentialId,
-            "type":     "public-key",
-            "response": response,
-            // Server expects clientExtensionResults to always be present, even when empty
-            "clientExtensionResults": [:]
-        ]
+        return PasskeyAssertionPayload(id: credentialId, rawId: credentialId, response: response)
     }
     
-    static func attestationPayload(_ credential: ASAuthorizationPlatformPublicKeyCredentialRegistration) throws -> [String: Any] {
+    static func attestationPayload(_ credential: ASAuthorizationPlatformPublicKeyCredentialRegistration) throws -> PasskeyAttestationPayload {
         let credentialId = credential.credentialID.base64URLEncodedString()
         
         guard let attestationObject = credential.rawAttestationObject?.base64URLEncodedString() else {
-            return [:]
+            throw PasskeyError.invalidCredential
         }
         
-        var response: [String: Any] = [
-            "clientDataJSON": credential.rawClientDataJSON.base64URLEncodedString(),
-            "attestationObject": attestationObject
-        ]
+        let response = PasskeyAttestationResponsePayload(
+            clientDataJSON: credential.rawClientDataJSON.base64URLEncodedString(),
+            attestationObject: attestationObject,
+            transports: ["internal"]
+        )
         
-        response["transports"] = ["internal"]
-        
-        return [
-            "id": credentialId,
-            "rawId": credentialId,
-            "type": "public-key",
-            "response": response,
-            // Server expects clientExtensionResults to always be present, even when empty
-            "clientExtensionResults": [:]
-        ]
+        return PasskeyAttestationPayload(id: credentialId, rawId: credentialId, response: response)
     }
 }
 
