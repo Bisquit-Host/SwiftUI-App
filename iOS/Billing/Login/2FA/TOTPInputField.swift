@@ -10,6 +10,7 @@ struct TOTPInputField: View {
     var loginAttempts = 0
     
     @FocusState private var isCodeFocused: Bool
+    @EnvironmentObject private var store: ValueStore
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     
     var body: some View {
@@ -59,7 +60,7 @@ struct TOTPInputField: View {
         }
         .frame(height: inputHeight)
         
-        if reduceMotion {
+        if reduceMotion || !store.bigAssAnimations {
             base
         } else {
             base.changeEffect(.shake(rate: .fast), value: loginAttempts)

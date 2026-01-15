@@ -51,5 +51,6 @@ struct TwoFASheetView: View {
     
     Login2FASheetParent(`2FACode`: `$2FACode`, pending2FAToken: $pending2FAToken) { _ in }
         .environment(LoginVM())
+        .environmentObject(ValueStore())
         .darkSchemePreferred()
 }

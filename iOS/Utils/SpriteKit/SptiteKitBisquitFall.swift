@@ -38,7 +38,7 @@ struct BisquitFall: View {
     }
     
     var body: some View {
-        if store.enableBisquitFall, !System.lowPowerMode {
+        if store.enableBisquitFall, !System.lowPowerMode, store.bigAssAnimations {
             SpriteView(scene: scene)
                 .ignoresSafeArea()
                 .background(appearance == .light ? .white : .black)

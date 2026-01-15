@@ -23,7 +23,7 @@ struct ServerList: View {
         .serverListSearch($vm.searchField, isActive: vm.showSearch)
         .safariCover($vm.showBilling, url: "https://my.bisquit.host")
         .overlay {
-            if isBoundaryDay && !reduceMotion {
+            if isBoundaryDay && !reduceMotion && store.bigAssAnimations {
                 VortexView(.slowSnow.makeUniqueCopy()) {
                     Circle()
                         .fill(.white.opacity(0.8))

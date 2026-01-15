@@ -30,8 +30,15 @@ struct DebugSettings: View {
                 Button("Clear all cookies", action: clearAllCookies)
             }
             
-            Section("Effects") {
+            Section {
                 Button("Spawn confetti", action: confetti.launchConfetti)
+                    .disabled(!store.bigAssAnimations)
+            } header: {
+                Text("Effects")
+            } footer: {
+                if !store.bigAssAnimations {
+                    Text("Animations are disabled")
+                }
             }
             
             Section {

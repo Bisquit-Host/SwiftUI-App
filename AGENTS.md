@@ -24,6 +24,7 @@ Tip: choose the scheme that matches the target you’re changing (for example `W
 
 ## Coding Style & Best Practices
 
+- New animations must check if store.bigAssAnimations from ValueStore() is enabled
 - .onChange now provides two closure parameters: oldValue and newValue; Use `_` for any parameter you do not need; If neither parameter is needed, omit them entirely
 - Bindings: do not use Bindings with a getter & setter for readability 
 - Logger: Prefer OSLog's Logger() instead of prints
