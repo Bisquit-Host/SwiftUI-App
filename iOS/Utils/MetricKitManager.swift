@@ -1,5 +1,5 @@
 import Foundation
-import os
+import OSLog
 #if canImport(MetricKit)
 import MetricKit
 #endif

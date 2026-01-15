@@ -1,5 +1,5 @@
 import SwiftUI
-import os
+import OSLog
 
 struct HCaptchaSheet: View {
     @State private var vm = HCaptchaVM()

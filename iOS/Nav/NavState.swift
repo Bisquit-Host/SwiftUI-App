@@ -1,5 +1,5 @@
 import SwiftUI
-import os
+import OSLog
 
 @Observable
 final class NavState {

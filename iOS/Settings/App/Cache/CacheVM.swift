@@ -1,6 +1,6 @@
 import ScrechKit
 import Kingfisher
-import os
+import OSLog
 
 @Observable
 final class CacheVM {

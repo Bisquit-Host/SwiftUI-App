@@ -1,7 +1,7 @@
 import Foundation
 import BisquitoNet
 import PteroNet
-import os
+import OSLog
 
 @Observable
 final class BillingSettingsVM {

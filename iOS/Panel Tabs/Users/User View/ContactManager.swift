@@ -1,5 +1,5 @@
 import Contacts
-import os
+import OSLog
 
 @Observable
 final class ContactManager {

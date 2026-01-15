@@ -1,6 +1,6 @@
 import ScrechKit
 import ContactsUI
-import os
+import OSLog
 
 struct ContactsListView: View {
     @Environment(\.dismiss) private var dismiss

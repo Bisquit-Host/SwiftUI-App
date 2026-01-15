@@ -1,5 +1,5 @@
 import GameKit
-import os
+import OSLog
 
 extension ServerListVM {
     func submitScore() async {

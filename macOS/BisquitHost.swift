@@ -6,7 +6,7 @@ import Algorithms
 import CoreSpotlight
 import Pow
 import GaypadKit
-import os
+import OSLog
 
 @main
 struct BisquitHost: App {

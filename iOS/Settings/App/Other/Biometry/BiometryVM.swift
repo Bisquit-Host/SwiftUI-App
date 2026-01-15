@@ -1,6 +1,6 @@
 import SwiftUI
 import LocalAuthentication
-import os
+import OSLog
 
 @Observable
 final class BiometryVM {

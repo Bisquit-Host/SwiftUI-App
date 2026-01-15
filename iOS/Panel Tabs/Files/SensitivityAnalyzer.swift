@@ -1,5 +1,5 @@
 import SensitiveContentAnalysis
-import os
+import OSLog
 
 final class SensitivityAnalyzer {
     private let analyzer = SCSensitivityAnalyzer()

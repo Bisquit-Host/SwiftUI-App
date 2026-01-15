@@ -1,6 +1,6 @@
 import SwiftUI
 import AVKit
-import os
+import OSLog
 
 struct VideoPlayerView: View {
     private var videoPlayerVM: VideoPlayerVM

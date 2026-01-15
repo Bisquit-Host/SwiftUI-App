@@ -1,6 +1,6 @@
 import SwiftUI
 import PhotosUI
-import os
+import OSLog
 
 struct UploadMenu: View {
     @EnvironmentObject private var vm: FileTabVM

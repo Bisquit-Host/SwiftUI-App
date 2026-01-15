@@ -1,6 +1,6 @@
 import SwiftUI
 import HCaptcha
-import os
+import OSLog
 
 @Observable
 final class HCaptchaVM {

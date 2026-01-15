@@ -1,5 +1,5 @@
 import SwiftUI
-import os
+import OSLog
 
 final class BackgroundImageHelper {
     static func getDocumentsDir() -> URL {

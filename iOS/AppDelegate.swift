@@ -1,6 +1,6 @@
 import SwiftUI
 import PteroNet
-import os
+import OSLog
 @preconcurrency import CryptoKit
 
 #if canImport(Contacts)

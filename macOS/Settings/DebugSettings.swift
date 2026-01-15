@@ -1,5 +1,5 @@
 import SwiftUI
-import os
+import OSLog
 
 struct DebugSettings: View {
     @EnvironmentObject private var store: ValueStore

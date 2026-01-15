@@ -1,7 +1,7 @@
 import SwiftUI
 import MapKit
 import Kingfisher
-import os
+import OSLog
 
 @Observable
 final class MapViewVM {

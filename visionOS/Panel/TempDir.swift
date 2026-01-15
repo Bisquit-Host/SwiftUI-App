@@ -1,5 +1,5 @@
 import SwiftUI
-import os
+import OSLog
 
 struct TempDir: View {
     @State private var fileNames: [String] = []
