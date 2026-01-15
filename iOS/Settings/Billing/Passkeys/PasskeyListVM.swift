@@ -10,58 +10,38 @@ final class PasskeyListVM {
     var isRegistering = false
     var label = ""
     
-    private let baseURL = URL(string: "https://test-api.bisquit.host")!
     private let authController = PasskeyAuthorizationController()
-    private let passkeysPath = "user/settings/passkeys"
     
     func fetchPasskeys() async {
         guard let accessToken = accessToken() else { return }
         
         isLoading = true
         defer { isLoading = false }
-        
-        let url = baseURL.appendingPathComponent(passkeysPath)
-        
-        var request = URLRequest(url: url)
-        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        
-        do {
-            let (data, res) = try await URLSession.shared.data(for: request)
-            try validateResponse(res, data: data)
-            
-            passkeys = try BigAssDecoder.decode([PasskeyListItem].self, from: data)
-        } catch {
-            SystemAlert.error(error)
-        }
+        passkeys = await fetchPasskeysAPI(
+            accessToken: accessToken,
+            onBillingError: SystemAlert.error
+        ) ?? []
     }
     
     func deletePasskey(_ passkey: PasskeyListItem) async {
         guard let accessToken = accessToken() else { return }
+        guard await deletePasskeyAPI(
+            passkeyId: passkey.id,
+            accessToken: accessToken,
+            onBillingError: SystemAlert.error
+        ) else { return }
         
-        let url = baseURL.appendingPathComponent("\(passkeysPath)/\(passkey.id)")
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "DELETE"
-        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        
-        do {
-            let (data, res) = try await URLSession.shared.data(for: request)
-            try validateResponse(res, data: data)
-            
-            passkeys.removeAll {
-                $0.id == passkey.id
-            }
-        } catch {
-            SystemAlert.error(error)
+        passkeys.removeAll {
+            $0.id == passkey.id
         }
     }
     
     func registerPasskey() async {
         isRegistering = true
         defer { isRegistering = false }
+        guard let session = await startRegistration() else { return }
         
         do {
-            let session = try await startRegistration()
             let request = try PasskeyRequestFactory.registrationRequest(from: session.options)
             let credential = try await authController.perform(request)
             
@@ -71,7 +51,9 @@ final class PasskeyListVM {
             
             let payload = try PasskeyCredentialFormatter.attestationPayload(registration)
             
-            try await verifyRegistration(sessionId: session.sessionId, credential: payload)
+            guard await verifyRegistration(sessionId: session.sessionId, credential: payload) else {
+                return
+            }
             
             label = ""
             
@@ -82,70 +64,24 @@ final class PasskeyListVM {
         }
     }
     
-    private func startRegistration() async throws -> PasskeyOptionsResponse<PasskeyRegistrationOptions> {
-        guard let accessToken = accessToken() else { throw PasskeyError.invalidCredential }
+    private func startRegistration() async -> PasskeyOptionsResponse<PasskeyRegistrationOptions>? {
+        guard let accessToken = accessToken() else { return nil }
         
-        let url = baseURL.appendingPathComponent("\(passkeysPath)/register/options")
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        
-        if let label = label.trimmingCharacters(in: .whitespacesAndNewlines).nonEmpty {
-            request.httpBody = try JSONSerialization.data(withJSONObject: ["label": label])
-        } else {
-            request.httpBody = "{}".data(using: .utf8)
-        }
-        
-        let (data, res) = try await URLSession.shared.data(for: request)
-        try validateResponse(res, data: data)
-        
-        return try BigAssDecoder.decode(PasskeyOptionsResponse<PasskeyRegistrationOptions>.self, from: data)
+        return await startPasskeyRegistrationAPI(
+            label: label,
+            accessToken: accessToken,
+            onBillingError: SystemAlert.error
+        )
     }
     
-    private func verifyRegistration(sessionId: String, credential: PasskeyAttestationPayload) async throws {
-        guard let accessToken = accessToken() else { throw PasskeyError.invalidCredential }
+    private func verifyRegistration(sessionId: String, credential: PasskeyAttestationPayload) async -> Bool {
+        guard let accessToken = accessToken() else { return false }
         
-        let url = baseURL.appendingPathComponent("\(passkeysPath)/register/verify")
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        
-        struct Body: Encodable {
-            let sessionId: String
-            let credential: PasskeyAttestationPayload
-        }
-        
-        request.httpBody = try JSONEncoder().encode(Body(sessionId: sessionId, credential: credential))
-        
-        let (data, res) = try await URLSession.shared.data(for: request)
-        try validateResponse(res, data: data)
-    }
-}
-
-private func validateResponse(_ response: URLResponse?, data: Data, allowedStatusCodes: Range<Int> = 200..<300) throws {
-    guard let http = response as? HTTPURLResponse else {
-        throw URLError(.badServerResponse)
-    }
-    
-    guard allowedStatusCodes.contains(http.statusCode) else {
-        let body = String(data: data, encoding: .utf8).flatMap {
-            $0.isEmpty ? nil : $0
-        }
-        
-        let message = body.map {
-            "Unexpected status code \(http.statusCode): \($0)"
-        }
-        
-        ?? "Unexpected status code \(http.statusCode)"
-        
-        throw NSError(
-            domain: NSURLErrorDomain,
-            code: URLError.badServerResponse.rawValue,
-            userInfo: [NSLocalizedDescriptionKey: message]
+        return await verifyPasskeyRegistrationAPI(
+            sessionId: sessionId,
+            credential: credential,
+            accessToken: accessToken,
+            onBillingError: SystemAlert.error
         )
     }
 }
