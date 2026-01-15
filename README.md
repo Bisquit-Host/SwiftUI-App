@@ -8,6 +8,7 @@
 - visionOS 26+
 
 ### Features
+- Passkeys
 - Interactive widgets & Shortcuts with dynamic configuration
-- Live Activity
 - App Clip & iMessage extension
+- Live Activity
