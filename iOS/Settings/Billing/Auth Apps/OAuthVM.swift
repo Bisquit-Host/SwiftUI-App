@@ -101,7 +101,31 @@ final class OAuthVM: NSObject {
             return
         }
         
-        let items = components.queryItems ?? []
+        let items = (components.queryItems ?? []) + fragmentItems(from: components.fragment)
+        
+        if let code = queryValue(in: items, names: ["code"]), !code.isEmpty {
+            guard let provider = providerFromPath(components.path) else {
+                finish(success: false, message: "Missing OAuth provider")
+                return
+            }
+            
+            Task {
+                await exchangeOAuthCode(code, provider: provider, onComplete: onComplete)
+            }
+            return
+        }
+        
+        if let accessToken = queryValue(in: items, names: ["access_token"]), !accessToken.isEmpty {
+            guard providerFromPath(components.path) == .yandex else {
+                finish(success: false, message: "Unsupported OAuth provider")
+                return
+            }
+            
+            Task {
+                await exchangeYandexAccessToken(accessToken, onComplete: onComplete)
+            }
+            return
+        }
         let isLinking = (queryValue(in: items, names: ["isLinking", "is_linking"]) ?? "").asBool
         let twoFaRequired = (queryValue(in: items, names: ["twoFa", "two_fa"]) ?? "").asBool
         
@@ -143,7 +167,7 @@ final class OAuthVM: NSObject {
     private func fetchAuthURL(for provider: BillingAuthProvider) async {
         let accessToken = Keychain.load(key: "access_token")
         
-        guard let url = URL(string: "\(basePath)/auth/providers/\(provider.rawValue)?mobile=true") else {
+        guard let url = URL(string: "\(basePath)/auth/providers/\(provider.rawValue)") else {
             finish(success: false, message: "Invalid backend URL")
             return
         }
@@ -237,6 +261,109 @@ final class OAuthVM: NSObject {
         ValueStore().accessTokenExpiresIn = expiresIn
     }
     
+    private func providerFromPath(_ path: String) -> BillingAuthProvider? {
+        guard let lastComponent = path.split(separator: "/").last else { return nil }
+        return BillingAuthProvider(rawValue: String(lastComponent))
+    }
+    
+    private func exchangeOAuthCode(
+        _ code: String,
+        provider: BillingAuthProvider,
+        onComplete: @escaping () -> Void
+    ) async {
+        guard let url = URL(string: "\(basePath)/auth/providers/\(provider.rawValue)") else {
+            finish(success: false, message: "Invalid backend URL")
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        if let accessToken = Keychain.load(key: "access_token") {
+            request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        }
+        
+        do {
+            request.httpBody = try JSONEncoder().encode(OAuthCodeRequest(code: code))
+        } catch {
+            finish(success: false, message: "Failed to encode OAuth request")
+            return
+        }
+        
+        await handleOAuthExchange(request: request, onComplete: onComplete)
+    }
+    
+    private func exchangeYandexAccessToken(_ accessToken: String, onComplete: @escaping () -> Void) async {
+        guard let url = URL(string: "\(basePath)/auth/providers/yandex") else {
+            finish(success: false, message: "Invalid backend URL")
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        if let storedToken = Keychain.load(key: "access_token") {
+            request.setValue("Bearer \(storedToken)", forHTTPHeaderField: "Authorization")
+        }
+        
+        do {
+            request.httpBody = try JSONEncoder().encode(YandexAccessTokenRequest(accessToken: accessToken))
+        } catch {
+            finish(success: false, message: "Failed to encode OAuth request")
+            return
+        }
+        
+        await handleOAuthExchange(request: request, onComplete: onComplete)
+    }
+    
+    private func handleOAuthExchange(request: URLRequest, onComplete: @escaping () -> Void) async {
+        do {
+            let (data, res) = try await URLSession.shared.data(for: request)
+            let status = (res as? HTTPURLResponse)?.statusCode ?? 0
+            
+            if status == 204 {
+                onComplete()
+                finish(success: true, message: nil)
+                return
+            }
+            
+            guard status == 200 else {
+                finish(success: false, message: "Unexpected status: \(status)")
+                return
+            }
+            
+            let response = try BigAssDecoder.decode(BillingLoginResponse.self, from: data)
+            
+            if response.twoFa == true {
+                guard let token = response.token?.nonEmpty else {
+                    finish(success: false, message: "Missing 2FA token")
+                    return
+                }
+                
+                pendingTwoFAToken = token
+                twoFACode = ""
+                onAuthComplete = onComplete
+                showTwoFASheet = true
+                finish(success: true, message: nil)
+                return
+            }
+            
+            storeTokens(
+                accessToken: response.accessToken,
+                refreshToken: response.refreshToken,
+                expiresIn: response.expiresIn
+            )
+            
+            onComplete()
+            finish(success: true, message: nil)
+        } catch {
+            finish(success: false, message: error.localizedDescription)
+        }
+    }
+    
+    
     private func queryValue(in items: [URLQueryItem], names: [String]) -> String? {
         for name in names {
             if let value = items.first(where: { $0.name == name })?.value {
@@ -246,6 +373,30 @@ final class OAuthVM: NSObject {
         
         return nil
     }
+    
+    private func fragmentItems(from fragment: String?) -> [URLQueryItem] {
+        guard let fragment, !fragment.isEmpty else { return [] }
+        
+        return fragment
+            .split(separator: "&")
+            .compactMap { pair in
+                let parts = pair.split(separator: "=", maxSplits: 1)
+                guard let name = parts.first else { return nil }
+                let value = parts.count > 1 ? String(parts[1]) : ""
+                return URLQueryItem(
+                    name: String(name).removingPercentEncoding ?? String(name),
+                    value: value.removingPercentEncoding ?? value
+                )
+            }
+    }
+}
+
+private struct OAuthCodeRequest: Encodable {
+    let code: String
+}
+
+private struct YandexAccessTokenRequest: Encodable {
+    let accessToken: String
 }
 
 private extension String {

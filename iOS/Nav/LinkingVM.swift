@@ -30,4 +30,19 @@ final class DeepLinkVM {
         self.apiKey = session
         alertAuth = true
     }
+
+    func handleUniversalLink(_ url: URL) {
+        guard let components = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
+            Logger().error("🔗 Invalid universal link URL")
+            return
+        }
+        
+        if let session = components.queryItems?.first(where: { $0.name == "session" || $0.name == "apikey" })?.value {
+            self.apiKey = session
+            alertAuth = true
+            return
+        }
+        
+        Logger().error("🔗 Unknown universal link URL")
+    }
 }

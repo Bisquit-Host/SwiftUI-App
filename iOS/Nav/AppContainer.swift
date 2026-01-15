@@ -62,7 +62,9 @@ struct AppContainer: View {
 #endif
             .onOpenURL {
                 Logger().info("🔗 Deeplink: \($0)")
-                linking.handleDeepLink($0)
+                if $0.scheme == "bisq" {
+                    linking.handleDeepLink($0)
+                }
                 
 #if os(iOS) || os(visionOS)
                 billingOAuth.handleCallback($0) {
@@ -70,6 +72,9 @@ struct AppContainer: View {
                 }
 #endif
             }
+#if os(iOS)
+            .onContinueUserActivity(NSUserActivityTypeBrowsingWeb, perform: handleUniversalLinkActivity)
+#endif
             .alert("Authentication with session", isPresented: $linking.alertAuth) {
                 Button("Confirm", role: .confirm, action: auth)
                 Button("Cancel", role: .cancel) {}
@@ -89,4 +94,16 @@ struct AppContainer: View {
         
         store.authSucced()
     }
+
+#if os(iOS)
+    private func handleUniversalLinkActivity(_ activity: NSUserActivity) {
+        guard let url = activity.webpageURL else {
+            Logger().error("🔗 Universal link missing URL")
+            return
+        }
+        
+        Logger().info("🔗 Universal link: \(url)")
+        linking.handleUniversalLink(url)
+    }
+#endif
 }
