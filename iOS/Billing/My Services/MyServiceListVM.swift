@@ -48,26 +48,18 @@ final class MyServiceListVM {
         self[keyPath: isLoadingKeyPath] = true
         defer { self[keyPath: isLoadingKeyPath] = false }
         
-        guard let url = URL(string: "\(Endpoint.basePath)\(endpointPath)") else {
-            SystemAlert.error("Invalid URL")
-            return
-        }
-        
         guard let accessToken = accessToken() else { return }
         
-        var request = URLRequest(url: url)
-        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        guard let data = await fetchMyServicesAPI(
+            endpointPath: endpointPath,
+            accessToken: accessToken,
+            onBillingError: SystemAlert.error
+        ) else { return }
         
         do {
-            let (data, res) = try await URLSession.shared.data(for: request)
-            
-            if decodeBillingError(data, with: res, onDecode: SystemAlert.error) {
-                return
-            }
-            
             try assign(data)
         } catch {
-            SystemAlert.error("Error loading \(endpointPath) services", subtitle: error.localizedDescription)
+            SystemAlert.error("Error loading services", subtitle: error.localizedDescription)
         }
     }
 }

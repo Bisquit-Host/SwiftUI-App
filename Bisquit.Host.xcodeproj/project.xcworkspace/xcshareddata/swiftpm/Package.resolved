@@ -34,7 +34,7 @@
       "location" : "https://github.com/Bisquit-Host/BisquitoNet",
       "state" : {
         "branch" : "main",
-        "revision" : "46839c37a4b83d0226641697c9920889b5dde775"
+        "revision" : "c96bc29c0c131e53d9851e9910149c7ea8b86a48"
       }
     },
     {
@@ -142,7 +142,7 @@
       "location" : "https://github.com/TopScrech/ScrechKit",
       "state" : {
         "branch" : "main",
-        "revision" : "257427e6612bfb87a74a58b541b759796d9723e7"
+        "revision" : "9f75c2ff29e84720218686750e5b33d0d7208223"
       }
     },
     {
