@@ -129,7 +129,7 @@ struct BillingLogin: View {
         Task {
             let userID = trimmedLogin.isEmpty ? nil : trimmedLogin
             
-            if vm.isAppAttestSupported, let _ = await vm.performAppAttest(userID: userID) {
+            if vm.isAppAttestSupported, await vm.performAppAttest(userID: userID) {
                 auth()
             } else {
                 sheetHcaptcha = true

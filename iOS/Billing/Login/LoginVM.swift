@@ -17,7 +17,7 @@ final class LoginVM {
         DCAppAttestService.shared.isSupported
     }
     
-    func performAppAttest(userID: String? = nil) async -> AttestationResult? {
+    func performAppAttest(userID: String? = nil) async -> Bool {
         isAttesting = true
         
         defer {
@@ -31,10 +31,10 @@ final class LoginVM {
             let result = try await AppAttestService.shared.attestDevice(userID: userID)
             attestationResult = result
             
-            return result
+            return true
         } catch {
             SystemAlert.error(error)
-            return nil
+            return false
         }
     }
     

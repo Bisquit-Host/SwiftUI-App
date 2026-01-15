@@ -37,7 +37,7 @@ struct VerificationSheet: View {
     }
     
     private func performAppAttest() async {
-        if vm.isAppAttestSupported, let _ = await vm.performAppAttest(userID: userID) {
+        if vm.isAppAttestSupported, await vm.performAppAttest(userID: userID) {
             dismiss()
             onAppAttestSuccess()
         } else {
