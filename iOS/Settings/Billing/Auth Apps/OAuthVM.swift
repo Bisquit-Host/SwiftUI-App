@@ -112,6 +112,7 @@ final class OAuthVM: NSObject {
             Task {
                 await exchangeOAuthCode(code, provider: provider, onComplete: onComplete)
             }
+            
             return
         }
         
@@ -122,10 +123,12 @@ final class OAuthVM: NSObject {
             }
             
             Task {
-                await exchangeYandexAccessToken(accessToken, onComplete: onComplete)
+                await exchangeOAuthCode(accessToken, provider: .yandex, onComplete: onComplete)
             }
+            
             return
         }
+        
         let isLinking = (queryValue(in: items, names: ["isLinking", "is_linking"]) ?? "").asBool
         let twoFaRequired = (queryValue(in: items, names: ["twoFa", "two_fa"]) ?? "").asBool
         
@@ -286,30 +289,6 @@ final class OAuthVM: NSObject {
         
         do {
             request.httpBody = try JSONEncoder().encode(OAuthCodeRequest(code: code))
-        } catch {
-            finish(success: false, message: "Failed to encode OAuth request")
-            return
-        }
-        
-        await handleOAuthExchange(request: request, onComplete: onComplete)
-    }
-    
-    private func exchangeYandexAccessToken(_ accessToken: String, onComplete: @escaping () -> Void) async {
-        guard let url = URL(string: "\(basePath)/auth/providers/yandex") else {
-            finish(success: false, message: "Invalid backend URL")
-            return
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        if let storedToken = Keychain.load(key: "access_token") {
-            request.setValue("Bearer \(storedToken)", forHTTPHeaderField: "Authorization")
-        }
-        
-        do {
-            request.httpBody = try JSONEncoder().encode(YandexAccessTokenRequest(accessToken: accessToken))
         } catch {
             finish(success: false, message: "Failed to encode OAuth request")
             return
