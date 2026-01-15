@@ -6,6 +6,10 @@ final class SecurityTasks {
     var alertUpdate = false
     var alertUnusedAPIKeys = false
     var alertTwoFA = false
+
+    static func isUpdateAvailable(currentVersion: String, appStoreVersion: String) -> Bool {
+        currentVersion.compare(appStoreVersion, options: .numeric) == .orderedAscending
+    }
     
     func startCheck() async {
         Task {
@@ -83,7 +87,7 @@ final class SecurityTasks {
             return
         }
         
-        if currentVersion.compare(appStoreVersion, options: .numeric) == .orderedAscending {
+        if Self.isUpdateAvailable(currentVersion: currentVersion, appStoreVersion: appStoreVersion) {
             Logger().info("🛡️ Update available: \(currentVersion) -> \(appStoreVersion)")
             alertUpdate = true
         } else {
