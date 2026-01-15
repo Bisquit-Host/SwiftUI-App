@@ -7,6 +7,8 @@
 - Extensions & supporting targets: `Widgets/`, `Intent/`, `Intent Handler/`, `Contact Provider Extension/`, `QuickLook Extension/`
 - Tests: `Unit Tests/` (unit/perf), `UI Tests/` (UI automation)
 - Assets & localization are typically platform-scoped (for example `iOS/Assets.xcassets/`, `iOS/Localizable.xcstrings`)
+- BisquitoNet library is located in '/Users/topscrech/Library/Mobile Documents/com~apple~CloudDocs/Projects/Packages/BisquitoNet' 
+- PteroNet library is located in '/Users/topscrech/Library/Mobile Documents/com~apple~CloudDocs/Projects/Packages/PteroNet' 
 
 ## Build, Test, and Development Commands
 
