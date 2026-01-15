@@ -9,13 +9,15 @@ struct VDSSSHTab: View {
     @Binding private var username: String
     @Binding private var password: String
     @Binding private var logs: [String]
+    @Binding private var sshStatus: String
     
-    init(host: Binding<String>, port: Binding<String>, username: Binding<String>, password: Binding<String>, logs: Binding<[String]>) {
+    init(host: Binding<String>, port: Binding<String>, username: Binding<String>, password: Binding<String>, logs: Binding<[String]>, sshStatus: Binding<String>) {
         _host = host
         _port = port
         _username = username
         _password = password
         _logs = logs
+        _sshStatus = sshStatus
         
         let logWriter = Self.makeLogWriter(logs: logs)
         _viewModel = StateObject(wrappedValue: SSHTerminalVM(appendLog: logWriter))
@@ -24,24 +26,17 @@ struct VDSSSHTab: View {
     var body: some View {
         VStack(spacing: 0) {
             VStack(alignment: .leading, spacing: 10) {
-                HStack(spacing: 12) {
-                    if viewModel.isConnected {
-                        Button("Disconnect", action: viewModel.disconnectTapped)
-                    } else {
-                        Button("Connect") {
-                            viewModel.connectTapped(host: host, port: port, username: username, password: password)
-                        }
-                        .buttonStyle(.borderedProminent)
+                if viewModel.isConnected {
+                    Button("Disconnect", action: viewModel.disconnectTapped)
+                } else {
+                    Button("Connect") {
+                        viewModel.connectTapped(host: host, port: port, username: username, password: password)
                     }
-                    
-                    Spacer()
-                    
-                    Text(viewModel.status)
-                        .callout()
-                        .secondary()
+                    .buttonStyle(.borderedProminent)
                 }
             }
             .padding()
+            .frame(maxWidth: .infinity)
             .background(.ultraThinMaterial)
             
             SSHTerminalView(viewModel: viewModel)
@@ -52,6 +47,9 @@ struct VDSSSHTab: View {
         }
         .onChange(of: vm.service?.ip) {
             hydrateFromServiceIfNeeded()
+        }
+        .onChange(of: viewModel.status) { _, newStatus in
+            sshStatus = newStatus
         }
         .onChange(of: vm.service?.password) {
             hydrateFromServiceIfNeeded()

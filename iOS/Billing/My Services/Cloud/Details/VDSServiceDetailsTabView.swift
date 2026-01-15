@@ -23,6 +23,7 @@ struct VDSServiceDetailsTabView: View {
     @State private var port = "22"
     @State private var username = "root"
     @State private var password = ""
+    @State private var sshStatus = ""
     @State private var logs: [String] = []
     
     private var title: LocalizedStringKey? {
@@ -35,15 +36,23 @@ struct VDSServiceDetailsTabView: View {
     }
     
     private var subtitle: String {
-        guard
-            selectedTab == 0,
-            let name = vm.service?.packageInfo.name,
-            let location = vm.service?.location.name
-        else {
+        switch selectedTab {
+        case 0:
+            guard
+                let name = vm.service?.packageInfo.name,
+                let location = vm.service?.location.name
+            else {
+                return ""
+            }
+            
+            return "\(name) • \(location)"
+            
+        case 3:
+            return sshStatus
+            
+        default:
             return ""
         }
-        
-        return "\(name) • \(location)"
     }
     
     var body: some View {
@@ -61,7 +70,7 @@ struct VDSServiceDetailsTabView: View {
             }
 #if canImport(SwiftTerm) && canImport(NIOSSH)
             Tab("SSH", systemImage: "terminal", value: 3) {
-                VDSSSHTab(host: $host, port: $port, username: $username, password: $password, logs: $logs)
+                VDSSSHTab(host: $host, port: $port, username: $username, password: $password, logs: $logs, sshStatus: $sshStatus)
             }
 #endif
         }
