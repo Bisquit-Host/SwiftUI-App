@@ -19,7 +19,13 @@ final class LoginVM {
     
     func performAppAttest(userID: String? = nil) async -> AttestationResult? {
         isAttesting = true
-        defer { isAttesting = false }
+        
+        defer {
+            Task {
+                try await Task.sleep(for: .seconds(0.5))
+                isAttesting = false
+            }
+        }
         
         do {
             let result = try await AppAttestService.shared.attestDevice(userID: userID)

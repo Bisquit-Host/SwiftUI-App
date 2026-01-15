@@ -11,11 +11,13 @@ struct BillingLogin: View {
     @State private var login = ""
     @State private var password = ""
     @State private var hasAcceptedDocuments = false
-    @State private var sheetDocuments = false
-    @State private var sheetHcaptcha = false
     @State private var captchaToken = ""
     @State private var pending2FAToken: String?
     @State private var `2FACode` = ""
+    
+    // Sheets
+    @State private var sheetDocuments = false
+    @State private var sheetHcaptcha = false
     @State private var sheet2FA = false
     
     private let emailRegex = try! NSRegularExpression(pattern: #"^[A-Z0-9a-z._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$"#)
