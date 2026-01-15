@@ -73,6 +73,27 @@ final class PanelVM {
         }
     }
     
+    func consoleDetails() async -> ConsoleDetails? {
+        do {
+            return try await consoleDetailsAPI(id)
+        } catch {
+            SystemAlert.error(error)
+            return nil
+        }
+    }
+    
+    func connectWebSocket(_ data: ConsoleDetails) {
+        websocket.connect(to: data.socket, token: data.token) {
+            await self.appendMessage($0)
+        } onError: {
+            SystemAlert.error($0)
+        }
+    }
+    
+    func disconnectWebSocket() {
+        websocket.disconnect()
+    }
+    
     func appendMessage(_ message: String) async {
         guard let jsonData = message.data(using: .utf8) else { return }
         
@@ -160,26 +181,5 @@ final class PanelVM {
         } catch {
             networkCallError(#function, error)
         }
-    }
-    
-    func consoleDetails() async -> ConsoleDetails? {
-        do {
-            return try await consoleDetailsAPI(id)
-        } catch {
-            SystemAlert.error(error)
-            return nil
-        }
-    }
-    
-    func connectWebSocket(_ data: ConsoleDetails) {
-        websocket.connect(to: data.socket, token: data.token) {
-            await self.appendMessage($0)
-        } onError: {
-            SystemAlert.error($0)
-        }
-    }
-    
-    func disconnectWebSocket() {
-        websocket.disconnect()
     }
 }
