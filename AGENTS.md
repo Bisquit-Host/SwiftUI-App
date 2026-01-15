@@ -23,7 +23,7 @@ Preferred workflow is Xcode (it will resolve Swift Package Manager dependencies 
 Tip: choose the scheme that matches the target you’re changing (for example `Widgets`, `iMessage`, `watchOS`)
 
 ## Coding Style & Best Practices
-- I use Swift 6 mode & MainActor default isolation
+- Prefer OSLog's Logger() instead of prints
 - Split subviews in long views into separate views in separate files
 - Write code with re-indents, so empty lines should have the right amount of tabs
 - Language: Swift (mostly SwiftUI); follow Swift API Design Guidelines
@@ -31,6 +31,11 @@ Tip: choose the scheme that matches the target you’re changing (for example `W
 - Naming: `UpperCamelCase` for types, `lowerCamelCase` for values/functions; SwiftUI views typically end in `View` (for example `DashboardView.swift`)
 - Keep platform-specific code inside its platform folder; avoid cross-target imports unless shared intentionally
 - When defining enums, prefer concise single-line cases without associated values, written as a simple comma-separated list, for example: case cloud, game, bot
+
+## Swift Concurrency
+- Swift 6 language mode
+- MainActor default isolation
+- All API calls must be async/await 
 
 ## Testing Guidelines
 
