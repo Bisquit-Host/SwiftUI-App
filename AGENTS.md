@@ -6,7 +6,6 @@
 - Platform targets: `iOS/`, `macOS/`, `watchOS/`, `tvOS/`, `visionOS/`
 - Extensions & supporting targets: `Widgets/`, `Intent/`, `Intent Handler/`, `Contact Provider Extension/`, `QuickLook Extension/`
 - Tests: `Unit Tests/` (unit/perf), `UI Tests/` (UI automation)
-- Assets & localization are typically platform-scoped (for example `iOS/Assets.xcassets/`, `iOS/Localizable.xcstrings`)
 - BisquitoNet library is located in '/Users/topscrech/Library/Mobile Documents/com~apple~CloudDocs/Projects/Packages/BisquitoNet' 
 - PteroNet library is located in '/Users/topscrech/Library/Mobile Documents/com~apple~CloudDocs/Projects/Packages/PteroNet' 
 
@@ -23,27 +22,27 @@ Preferred workflow is Xcode (it will resolve Swift Package Manager dependencies 
 Tip: choose the scheme that matches the target you’re changing (for example `Widgets`, `iMessage`, `watchOS`)
 
 ## Coding Style & Best Practices
-- Prefer OSLog's Logger() instead of prints
+- Logger: Prefer OSLog's Logger() instead of prints
 - Split subviews in long views into separate views in separate files
-- Write code with re-indents, so empty lines should have the right amount of tabs
-- Language: Swift (mostly SwiftUI); follow Swift API Design Guidelines
-- Indentation: 4 spaces; keep braces on the same line; prefer early `guard` returns
+- Language: Swift & SwiftUI; follow Swift API Design Guidelines
+- Indentation: Write code with re-indents; 4 spaces; keep braces on the same line; prefer early `guard` returns
 - Naming: `UpperCamelCase` for types, `lowerCamelCase` for values/functions; SwiftUI views typically end in `View` (for example `DashboardView.swift`)
 - Keep platform-specific code inside its platform folder; avoid cross-target imports unless shared intentionally
 - When defining enums, prefer concise single-line cases without associated values, written as a simple comma-separated list, for example: case cloud, game, bot
 
 ## Swift Concurrency
 - Swift 6 language mode
-- MainActor default isolation
-- All API calls must be async/await 
+- MainActor default isolation mode
+- All API calls must be async/await
+- Avoid Grand Central Dispatch (GCD) APIs 
 
-## Testing Guidelines
+## Testing
 
 - Do not create tests unless I ask to do so
 - Unit tests use `XCTest` and Swift’s `Testing` (`@Test`); add new unit tests under `Unit Tests/` (for example `FeatureTests.swift`)
 - UI tests live under `UI Tests/` and use `XCUIApplication`; keep tests deterministic and avoid relying on network state
 
-## Commit & Pull Request Guidelines
+## Commit & Pull Request
 
 - Commits in this repo are short and action-oriented (for example `improved …`, `fixed …`, `removed …`). Use a concise subject; add a scope when helpful (for example `macOS: fix settings crash`)
 - PRs should describe the user-visible impact, list affected platforms/schemes
