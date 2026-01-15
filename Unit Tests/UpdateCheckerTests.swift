@@ -12,11 +12,14 @@ struct UpdateCheckerTests {
         ]
         
         for testCase in cases {
+            let result = SecurityTasks.isUpdateAvailable(
+                currentVersion: testCase.current,
+                appStoreVersion: testCase.appStore
+            )
+
             #expect(
-                SecurityTasks.isUpdateAvailable(
-                    currentVersion: testCase.current,
-                    appStoreVersion: testCase.appStore
-                ) == testCase.expectsUpdate
+                result == testCase.expectsUpdate,
+                "current=\(testCase.current) appStore=\(testCase.appStore) expected=\(testCase.expectsUpdate) got=\(result)"
             )
         }
     }
