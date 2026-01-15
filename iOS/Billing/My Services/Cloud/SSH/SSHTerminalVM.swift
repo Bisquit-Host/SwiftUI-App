@@ -46,13 +46,14 @@ final class SSHTerminalVM: ObservableObject {
         terminalView.terminalDelegate = self
     }
     
-    func connectTapped(host: String, port: String, username: String, password: String) {
-        guard let portValue = Int(port), portValue > 0 else {
+    func connectTapped(credentials: SSHCredentialsState) {
+        let trimmedHost = credentials.host.trimmingCharacters(in: .whitespacesAndNewlines)
+        let username = credentials.username
+        
+        guard let portValue = Int(credentials.port), portValue > 0 else {
             SystemAlert.error("Invalid port")
             return
         }
-        
-        let trimmedHost = host.trimmingCharacters(in: .whitespacesAndNewlines)
         
         guard !trimmedHost.isEmpty else {
             SystemAlert.error("Host is required")
@@ -65,7 +66,10 @@ final class SSHTerminalVM: ObservableObject {
         }
         
         let (cols, rows) = self.currentTerminalSizeFallback()
-        let info = SSHConnectionInfo(host: trimmedHost, port: portValue, username: username, password: password)
+        var sanitizedCredentials = credentials
+        sanitizedCredentials.host = trimmedHost
+        sanitizedCredentials.port = String(portValue)
+        let info = SSHConnectionInfo(credentials: sanitizedCredentials)
         
         Task {
             do {

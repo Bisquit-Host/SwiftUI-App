@@ -1,37 +1,31 @@
 import SwiftUI
 
 struct VDSSheetSSHCredentials: View {
-    @Binding private var host: String
-    @Binding private var port: String
-    @Binding private var username: String
-    @Binding private var password: String
+    @Binding private var credentials: SSHCredentialsState
     
-    init(host: Binding<String>, port: Binding<String>, username: Binding<String>, password: Binding<String>) {
-        _host = host
-        _port = port
-        _username = username
-        _password = password
+    init(credentials: Binding<SSHCredentialsState>) {
+        _credentials = credentials
     }
     
     var body: some View {
         List {
             Section("Host") {
-                TextField("Host", text: $host)
+                TextField("Host", text: $credentials.host)
                     .sshTextFielgStyle()
             }
             
             Section("Port") {
-                TextField("Port", text: $port)
+                TextField("Port", text: $credentials.port)
                     .sshTextFielgStyle()
             }
             
             Section("Username"){
-                TextField("Username", text: $username)
+                TextField("Username", text: $credentials.username)
                     .sshTextFielgStyle()
             }
             
             Section("Password") {
-                SecureField("Password", text: $password)
+                SecureField("Password", text: $credentials.password)
                     .sshTextFielgStyle()
             }
         }

@@ -19,10 +19,7 @@ struct VDSServiceDetailsTabView: View {
     // SSH
     @State private var sheetSSHCredentials = false
     @State private var sheetSSHLogs = false
-    @State private var host = ""
-    @State private var port = "22"
-    @State private var username = "root"
-    @State private var password = ""
+    @State private var sshCredentials = SSHCredentialsState()
     @State private var sshStatus = ""
     @State private var logs: [String] = []
     
@@ -70,7 +67,7 @@ struct VDSServiceDetailsTabView: View {
             }
 #if canImport(SwiftTerm) && canImport(NIOSSH)
             Tab("SSH", systemImage: "terminal", value: 3) {
-                VDSSSHTab(host: $host, port: $port, username: $username, password: $password, logs: $logs, sshStatus: $sshStatus)
+                VDSSSHTab(credentials: $sshCredentials, logs: $logs, sshStatus: $sshStatus)
             }
 #endif
         }
@@ -93,7 +90,7 @@ struct VDSServiceDetailsTabView: View {
 #if !os(visionOS)
         .sheet($sheetSSHCredentials) {
             NavigationStack {
-                VDSSheetSSHCredentials(host: $host, port: $port, username: $username, password: $password)
+                VDSSheetSSHCredentials(credentials: $sshCredentials)
             }
         }
         .sheet($sheetSSHLogs) {

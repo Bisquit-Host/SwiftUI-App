@@ -4,18 +4,14 @@ struct VDSSSHTab: View {
     @Environment(VDSServiceDetailsVM.self) private var vm
     @StateObject private var viewModel: SSHTerminalVM
     
-    @Binding private var host: String
-    @Binding private var port: String
-    @Binding private var username: String
-    @Binding private var password: String
+    @Binding private var credentials: SSHCredentialsState
     @Binding private var logs: [String]
     @Binding private var sshStatus: String
     
-    init(host: Binding<String>, port: Binding<String>, username: Binding<String>, password: Binding<String>, logs: Binding<[String]>, sshStatus: Binding<String>) {
-        _host = host
-        _port = port
-        _username = username
-        _password = password
+    @State private var hasAutoConnected = false
+    
+    init(credentials: Binding<SSHCredentialsState>, logs: Binding<[String]>, sshStatus: Binding<String>) {
+        _credentials = credentials
         _logs = logs
         _sshStatus = sshStatus
         
@@ -25,39 +21,37 @@ struct VDSSSHTab: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            VStack(alignment: .leading, spacing: 10) {
-                if viewModel.isConnected {
-                    Button("Disconnect", action: viewModel.disconnectTapped)
-                } else {
-                    Button("Connect") {
-                        viewModel.connectTapped(host: host, port: port, username: username, password: password)
-                    }
-                    .buttonStyle(.borderedProminent)
-                }
-            }
-            .padding()
-            .frame(maxWidth: .infinity)
-            .background(.ultraThinMaterial)
-            
             SSHTerminalView(viewModel: viewModel)
                 .ignoresSafeArea(.keyboard)
         }
         .task {
             hydrateFromServiceIfNeeded()
+            attemptAutoConnectIfPossible()
         }
         .onChange(of: vm.service?.ip) {
             hydrateFromServiceIfNeeded()
+            attemptAutoConnectIfPossible()
         }
         .onChange(of: viewModel.status) { _, newStatus in
             sshStatus = newStatus
         }
         .onChange(of: vm.service?.password) {
             hydrateFromServiceIfNeeded()
+            attemptAutoConnectIfPossible()
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                if viewModel.isConnected {
+                    Button("Disconnect", action: viewModel.disconnectTapped)
+                }
+            }
         }
         .onDisappear {
             if viewModel.isConnected {
                 viewModel.disconnectTapped()
             }
+            
+            hasAutoConnected = false
         }
     }
     
@@ -68,8 +62,7 @@ struct VDSSSHTab: View {
         return formatter
     }()
     
-    private static func makeLogWriter(logs: Binding<[String]>) -> (String) -> Void {
-        { message in
+    private static func makeLogWriter(logs: Binding<[String]>) -> (String) -> Void { { message in
             let timestamp = logFormatter.string(from: Date())
             
             let line = "[\(timestamp)] \(message)"
@@ -78,12 +71,32 @@ struct VDSSSHTab: View {
     }
     
     private func hydrateFromServiceIfNeeded() {
-        if host.isEmpty, let ip = vm.service?.ip, !ip.isEmpty {
-            host = ip
+        if credentials.host.isEmpty, let ip = vm.service?.ip, !ip.isEmpty {
+            credentials.host = ip
         }
         
-        if password.isEmpty, let servicePassword = vm.service?.password, !servicePassword.isEmpty {
-            password = servicePassword
+        if credentials.password.isEmpty, let servicePassword = vm.service?.password, !servicePassword.isEmpty {
+            credentials.password = servicePassword
         }
+    }
+    
+    private func attemptAutoConnectIfPossible() {
+        guard !hasAutoConnected else { return }
+        
+        guard !viewModel.isConnected else {
+            hasAutoConnected = true
+            return
+        }
+        
+        let trimmedHost = credentials.host.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmedHost.isEmpty else { return }
+        guard !credentials.username.isEmpty else { return }
+        guard let portValue = Int(credentials.port), portValue > 0 else { return }
+        
+        hasAutoConnected = true
+        var sanitizedCredentials = credentials
+        sanitizedCredentials.host = trimmedHost
+        sanitizedCredentials.port = String(portValue)
+        viewModel.connectTapped(credentials: sanitizedCredentials)
     }
 }

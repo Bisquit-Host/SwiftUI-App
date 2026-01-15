@@ -6,7 +6,7 @@ struct UpgradeEmptyStateView: View {
     var body: some View {
         HStack(spacing: 10) {
             Image(systemName: "arrow.up.right.circle")
-                .foregroundStyle(.secondary)
+                .secondary()
             
             Text(message)
                 .footnote()
