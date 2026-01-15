@@ -44,6 +44,7 @@ Tip: choose the scheme that matches the target you’re changing (for example `W
 
 ## Commit, Push & Pull Request
 
+- When asked to checkout, do that in the main project without creating copies of it
 - When asked to push, commit all existing changes first
 - Commits in this repo are short and action-oriented (for example `improved …`, `fixed …`, `removed …`). Use a concise subject; add a scope when helpful (for example `macOS: fix settings crash`)
 - PRs should describe the user-visible impact, list affected platforms/schemes
