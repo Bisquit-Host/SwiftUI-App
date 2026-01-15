@@ -2,6 +2,7 @@ import SwiftUI
 
 struct HostingPlanList: View {
     @State private var vm = HostingPlanListVM()
+    @Environment(BillingDashboardVM.self) private var dashboardVM
     
     @State private var category: BillingHostingCategory
     
@@ -13,13 +14,15 @@ struct HostingPlanList: View {
     @State private var orderContext: BillingPlanOrderContext?
     
     var body: some View {
+        let currencyCode = dashboardVM.user?.currency.rawValue
+        
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 HostingPlanListServicePicker($category)
                 
                 let locations = vm.locations(for: category)
                 let selectedLocationId = selectedLocationId(for: category, available: locations)
-                let plans = vm.plans(for: category, currency: nil, locationId: selectedLocationId)
+                let plans = vm.plans(for: category, currency: currencyCode, locationId: selectedLocationId)
                 
                 if !locations.isEmpty {
                     LocationSelector(locations, selectedLocationId: selectedLocationId) {
@@ -56,10 +59,17 @@ struct HostingPlanList: View {
         .scrollIndicators(.never)
         .background(.background.opacity(0.9))
         .refreshableTask {
-            await vm.loadAll()
+            await vm.loadAll(currency: dashboardVM.user?.currency)
+        }
+        .onChange(of: dashboardVM.user?.currency) { _, newValue in
+            guard let newValue else { return }
+            
+            Task {
+                await vm.loadAll(currency: newValue)
+            }
         }
         .sheet(item: $orderContext) { context in
-            HostingOrderSheet(context: context, priceText: vm.formattedPrice(for: context.plan, currency: nil))
+            HostingOrderSheet(context: context, priceText: vm.formattedPrice(for: context.plan, currency: currencyCode))
         }
         .environment(vm)
         .toolbar {

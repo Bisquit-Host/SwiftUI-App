@@ -15,16 +15,17 @@ final class HostingPlanListVM {
     var isLoading = false
     var isOrdering = false
     
-    private let baseURL = "\(Endpoint.basePath)public-api"
-    private let authedBase = URL(string: "https://test-api.bisquit.host")!
+    private let authedBase = URL(string: Endpoint.basePath)!
     
-    func loadAll() async {
+    func loadAll(currency: BillingCurrency? = nil) async {
         isLoading = true
         defer { isLoading = false }
         
-        async let bot: () = fetch(.bot)
-        async let game: () = fetch(.game)
-        async let cloud: () = fetch(.cloud)
+        let effectiveCurrency = currency ?? .RUB
+        
+        async let bot: () = fetch(.bot, currency: effectiveCurrency)
+        async let game: () = fetch(.game, currency: effectiveCurrency)
+        async let cloud: () = fetch(.cloud, currency: effectiveCurrency)
         
         _ = await (bot, game, cloud)
     }
@@ -87,37 +88,58 @@ final class HostingPlanListVM {
         return "\(entry.currency.symbol)\(formatted)"
     }
     
-    private func fetch(_ category: BillingHostingCategory) async {
-        guard let url = URL(string: "\(baseURL)/\(category.path)") else {
-            SystemAlert.error("Invalid URL")
-            return
+    private func fetch(_ category: BillingHostingCategory, currency: BillingCurrency) async {
+        async let plans = fetchPackages(for: category, currency: currency)
+        async let locations = fetchLocations(for: category)
+        
+        let (plansResult, locationsResult) = await (plans, locations)
+        
+        switch category {
+        case .bot:
+            if let plansResult { botPlans = plansResult }
+            if let locationsResult { botLocations = locationsResult }
+            
+        case .game:
+            if let plansResult { gamePlans = plansResult }
+            if let locationsResult { gameLocations = locationsResult }
+            
+        case .cloud:
+            if let plansResult { cloudPlans = plansResult }
+            if let locationsResult { cloudLocations = locationsResult }
         }
+    }
+
+    private func fetchPackages(for category: BillingHostingCategory, currency: BillingCurrency) async -> [BillingHostingPlan]? {
+        guard let data = await request(path: "/\(category.path)/packages") else { return nil }
         
         do {
-            let (data, res) = try await URLSession.shared.data(from: url)
-            
-            if let http = res as? HTTPURLResponse, http.statusCode >= 400 {
-                SystemAlert.error("Hosting plans request failed", subtitle: "\(http.statusCode) • \(category.rawValue)")
-                return
-            }
-            
-            let decoded = try BigAssDecoder.decode(BillingHostingPlansResponse.self, from: data)
-            
             switch category {
             case .bot:
-                botPlans = decoded.packages
-                botLocations = decoded.locations ?? []
+                let packages = try BigAssDecoder.decode([PrivateBotPackage].self, from: data)
+                return packages.map { $0.toBillingPlan(currency: currency) }
                 
             case .game:
-                gamePlans = decoded.packages
-                gameLocations = decoded.locations ?? []
+                let packages = try BigAssDecoder.decode([PrivateGamePackage].self, from: data)
+                return packages.map { $0.toBillingPlan(currency: currency) }
                 
             case .cloud:
-                cloudPlans = decoded.packages
-                cloudLocations = decoded.locations ?? []
+                let packages = try BigAssDecoder.decode([PrivateCloudPackage].self, from: data)
+                return packages.map { $0.toBillingPlan(currency: currency) }
             }
         } catch {
-            SystemAlert.error("Hosting plans request failed", subtitle: "\(category.rawValue) • \(error)")
+            SystemAlert.error("Hosting plans request failed", subtitle: "\(category.rawValue) • \(error.localizedDescription)")
+            return nil
+        }
+    }
+    
+    private func fetchLocations(for category: BillingHostingCategory) async -> [HostingLocation]? {
+        guard let data = await request(path: "/\(category.path)/locations") else { return nil }
+        
+        do {
+            return try BigAssDecoder.decode([HostingLocation].self, from: data)
+        } catch {
+            SystemAlert.error("Hosting locations request failed", subtitle: "\(category.rawValue) • \(error.localizedDescription)")
+            return nil
         }
     }
     
@@ -267,5 +289,148 @@ final class HostingPlanListVM {
             SystemAlert.error("Order request failed", subtitle: error.localizedDescription)
             return nil
         }
+    }
+}
+
+private struct PrivateBotPackage: Decodable {
+    let id: Int
+    let name: String
+    let locationId: Int
+    let price: Double
+    let cpu: Double
+    let cpuName: String?
+    let memory: Double
+    let memoryType: String
+    let disk: Double
+    let diskType: String?
+    let nests: [Int]
+    let allocations: Int
+    let databases: Int
+    let backups: Int
+    let bonusBalanceAllowed: Bool
+    let whmcsLink: String?
+}
+
+private struct PrivateGamePackage: Decodable {
+    let id: Int
+    let name: String
+    let locationId: Int
+    let price: Double
+    let cpu: Double
+    let cpuName: String?
+    let memory: Double
+    let memoryType: String
+    let disk: Double
+    let diskType: String?
+    let network: Double
+    let networkType: String?
+    let nests: [Int]
+    let allocations: Int
+    let databases: Int
+    let backups: Int
+    let bonusBalanceAllowed: Bool
+    let whmcsLink: String?
+}
+
+private struct PrivateCloudPackage: Decodable {
+    let id: Int
+    let name: String
+    let locationId: Int
+    let price: Double
+    let cpu: Double
+    let cpuName: String?
+    let memory: Double
+    let disk: Double
+    let diskType: String?
+    let network: Double
+    let networkType: String?
+    let bonusBalanceAllowed: Bool
+    let windowsAllowed: Bool
+    let antiSpoofing: Bool
+    let whmcsLink: String?
+}
+
+private func billingPriceList(_ price: Double, currency: BillingCurrency) -> [BillingHostingPlanPrice] {
+    [BillingHostingPlanPrice(price: price, currency: currency)]
+}
+
+private extension PrivateBotPackage {
+    func toBillingPlan(currency: BillingCurrency) -> BillingHostingPlan {
+        BillingHostingPlan(
+            id: id,
+            name: name,
+            locationId: locationId,
+            price: billingPriceList(price, currency: currency),
+            cpu: cpu,
+            cpuName: cpuName,
+            memory: memory,
+            memoryType: memoryType,
+            disk: disk,
+            diskType: diskType,
+            network: nil,
+            networkType: nil,
+            nests: nests,
+            allocations: allocations,
+            databases: databases,
+            backups: backups,
+            bonusBalanceAllowed: bonusBalanceAllowed,
+            windowsAllowed: nil,
+            antiSpoofing: nil,
+            whmcsLink: whmcsLink
+        )
+    }
+}
+
+private extension PrivateGamePackage {
+    func toBillingPlan(currency: BillingCurrency) -> BillingHostingPlan {
+        BillingHostingPlan(
+            id: id,
+            name: name,
+            locationId: locationId,
+            price: billingPriceList(price, currency: currency),
+            cpu: cpu,
+            cpuName: cpuName,
+            memory: memory,
+            memoryType: memoryType,
+            disk: disk,
+            diskType: diskType,
+            network: network,
+            networkType: networkType,
+            nests: nests,
+            allocations: allocations,
+            databases: databases,
+            backups: backups,
+            bonusBalanceAllowed: bonusBalanceAllowed,
+            windowsAllowed: nil,
+            antiSpoofing: nil,
+            whmcsLink: whmcsLink
+        )
+    }
+}
+
+private extension PrivateCloudPackage {
+    func toBillingPlan(currency: BillingCurrency) -> BillingHostingPlan {
+        BillingHostingPlan(
+            id: id,
+            name: name,
+            locationId: locationId,
+            price: billingPriceList(price, currency: currency),
+            cpu: cpu,
+            cpuName: cpuName,
+            memory: memory,
+            memoryType: nil,
+            disk: disk,
+            diskType: diskType,
+            network: network,
+            networkType: networkType,
+            nests: nil,
+            allocations: nil,
+            databases: nil,
+            backups: nil,
+            bonusBalanceAllowed: bonusBalanceAllowed,
+            windowsAllowed: windowsAllowed,
+            antiSpoofing: antiSpoofing,
+            whmcsLink: whmcsLink
+        )
     }
 }
