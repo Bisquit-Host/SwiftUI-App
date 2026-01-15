@@ -28,7 +28,7 @@ struct BillingLoginSocialButtons: View {
                         .padding(.horizontal, 10)
                         .padding(.vertical, 4)
                         .glassEffect()
-                        .offset(y: 12)
+                        .offset(y: 14)
                 }
             }
     }
