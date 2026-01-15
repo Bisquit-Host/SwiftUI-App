@@ -15,6 +15,7 @@ struct VDSUpgradeSection: View {
     
     @State private var alertUpgrade = false
     @State private var selectedUpgradeId: Int?
+    @State private var sheetTopup = false
     
     private var selectedUpgradePackage: ChangeablePackage? {
         vm.changeablePackages.first {
@@ -23,6 +24,8 @@ struct VDSUpgradeSection: View {
     }
     
     var body: some View {
+        @Bindable var vm = vm
+        
         UpgradeFullScreenView(
             packages: vm.changeablePackages,
             selectedUpgradeId: $selectedUpgradeId,
@@ -59,6 +62,28 @@ struct VDSUpgradeSection: View {
                 Text("Upgrade to \(pkg.name) and pay \(priceNow) now?")
             } else {
                 Text("Upgrade service?")
+            }
+        }
+        .alert("Insufficient funds", isPresented: Binding(
+            get: { vm.topupAlertContext == .upgrade },
+            set: { if !$0 { vm.topupAlertContext = nil } }
+        )) {
+            Button("Dismiss", role: .cancel) {}
+            Button("Top up") {
+                vm.topupAlertContext = nil
+                sheetTopup = true
+            }
+        } message: {
+            Text("Add funds to continue")
+        }
+        .sheet($sheetTopup) {
+            NavigationStack {
+                if let user = dashboardVM.user {
+                    SheetTopup(user)
+                } else {
+                    ProgressView()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                }
             }
         }
     }

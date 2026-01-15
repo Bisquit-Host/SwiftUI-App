@@ -13,6 +13,7 @@ final class VDSServiceDetailsVM {
     
     var isLoading = false
     var isPerformingAction = false
+    var topupAlertContext: TopupAlertContext?
     
     func load(_ serviceId: Int) async {
         guard !isLoading else { return }
@@ -223,7 +224,9 @@ final class VDSServiceDetailsVM {
                         months: months,
                         serviceId: serviceId,
                         accessToken: accessToken,
-                        onBillingError: SystemAlert.error
+                        onBillingError: { @MainActor title, subtitle in
+                            self.handleBillingError(title, subtitle: subtitle ?? "", context: .serviceBilling)
+                        }
                     ) else {
                         continuation.resume(returning: nil)
                         return
@@ -252,7 +255,9 @@ final class VDSServiceDetailsVM {
                 packageId: packageId,
                 serviceId: serviceId,
                 accessToken: accessToken,
-                onBillingError: SystemAlert.error
+                onBillingError: { @MainActor title, subtitle in
+                    self.handleBillingError(title, subtitle: subtitle ?? "", context: .upgrade)
+                }
             ) else { return }
             
             onSuccess()
@@ -293,5 +298,15 @@ final class VDSServiceDetailsVM {
         defer { isPerformingAction = false }
         
         await work()
+    }
+    
+    @MainActor
+    private func handleBillingError(_ title: String, subtitle: String, context: TopupAlertContext) {
+        if isInsufficientFundsError(title, subtitle: subtitle) {
+            topupAlertContext = context
+            return
+        }
+        
+        SystemAlert.error(title, subtitle: subtitle)
     }
 }

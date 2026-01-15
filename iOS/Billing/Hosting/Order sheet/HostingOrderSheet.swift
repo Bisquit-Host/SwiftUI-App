@@ -4,11 +4,13 @@ struct HostingOrderSheet: View {
     @State private var confetti = ConfettiVM()
     @State private var orderVM = NewOrderVM()
     @Environment(HostingPlanListVM.self) private var vm
+    @Environment(BillingDashboardVM.self) private var dashboardVM
     
     private let context: BillingPlanOrderContext
     private let priceText: String
     private let currencyCode: String?
     @State private var name: String
+    @State private var sheetTopup = false
     
     init(context: BillingPlanOrderContext, priceText: String) {
         self.context = context
@@ -82,6 +84,28 @@ struct HostingOrderSheet: View {
                     orderVM.selectedEggId = firstEgg.id
                 } else {
                     orderVM.selectedEggId = 0
+                }
+            }
+        }
+        .alert("Insufficient funds", isPresented: Binding(
+            get: { vm.topupAlertContext == .purchase },
+            set: { if !$0 { vm.topupAlertContext = nil } }
+        )) {
+            Button("Dismiss", role: .cancel) {}
+            Button("Top up") {
+                vm.topupAlertContext = nil
+                sheetTopup = true
+            }
+        } message: {
+            Text("Add funds to continue")
+        }
+        .sheet($sheetTopup) {
+            NavigationStack {
+                if let user = dashboardVM.user {
+                    SheetTopup(user)
+                } else {
+                    ProgressView()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
             }
         }

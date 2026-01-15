@@ -14,6 +14,7 @@ final class HostingPlanListVM {
     
     var isLoading = false
     var isOrdering = false
+    var topupAlertContext: TopupAlertContext?
     
     private let authedBase = URL(string: Endpoint.basePath)!
     
@@ -280,7 +281,9 @@ final class HostingPlanListVM {
         do {
             let (data, res) = try await URLSession.shared.data(for: request)
             
-            if decodeBillingError(data, with: res, onDecode: SystemAlert.error) {
+            if decodeBillingError(data, with: res, onDecode: { @MainActor title, subtitle in
+                self.handleBillingError(title, subtitle: subtitle ?? "")
+            }) {
                 return nil
             }
             
@@ -289,6 +292,16 @@ final class HostingPlanListVM {
             SystemAlert.error("Order request failed", subtitle: error.localizedDescription)
             return nil
         }
+    }
+    
+    @MainActor
+    private func handleBillingError(_ title: String, subtitle: String) {
+        if isInsufficientFundsError(title, subtitle: subtitle) {
+            topupAlertContext = .purchase
+            return
+        }
+        
+        SystemAlert.error(title, subtitle: subtitle)
     }
 }
 
