@@ -1,4 +1,5 @@
 import ScrechKit
+import BisquitoNet
 
 struct VDSServiceDetailsTabView: View {
     @State private var vm = VDSServiceDetailsVM()

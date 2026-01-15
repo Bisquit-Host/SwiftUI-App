@@ -1,4 +1,5 @@
 import SwiftUI
+import BisquitoNet
 
 struct VDSProtectionIPSection: View {
     @Environment(VDSProtectionVM.self) private var vm

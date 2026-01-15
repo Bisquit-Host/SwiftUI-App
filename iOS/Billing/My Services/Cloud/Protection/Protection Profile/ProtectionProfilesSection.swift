@@ -1,4 +1,5 @@
 import ScrechKit
+import BisquitoNet
 
 struct ProtectionProfilesSection: View {
     @Environment(VDSProtectionVM.self) private var vm

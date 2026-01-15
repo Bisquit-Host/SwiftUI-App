@@ -1,4 +1,5 @@
 import SwiftUI
+import BisquitoNet
 
 struct VDSProtectionAttackCard: View {
     private let attack: VDSProtectionAttack
@@ -49,18 +50,18 @@ struct VDSProtectionAttackCard: View {
     }
 }
 
-#Preview {
-    VDSProtectionAttackCard(
-        .init(
-            id: "abc-123-def",
-            createdAt: .now,
-            startedAt: .now,
-            endedAt: nil,
-            dstAddress: "203.0.113.10",
-            sampleRate: 1000
-        )
-    )
-    .padding()
-    .darkSchemePreferred()
-}
-
+//#Preview {
+//    VDSProtectionAttackCard(
+//        .init(
+//            id: "abc-123-def",
+//            createdAt: .now,
+//            startedAt: .now,
+//            endedAt: nil,
+//            dstAddress: "203.0.113.10",
+//            sampleRate: 1000
+//        )
+//    )
+//    .padding()
+//    .darkSchemePreferred()
+//}
+//

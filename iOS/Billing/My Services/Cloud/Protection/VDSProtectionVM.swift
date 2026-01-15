@@ -16,7 +16,6 @@ final class VDSProtectionVM {
     
     private var serviceId: Int?
     private var attacksPage = 1
-    private let base = URL(string: "https://test-api.bisquit.host")!
     
     func load(_ serviceId: Int) async {
         guard !isLoading else { return }
@@ -43,77 +42,93 @@ final class VDSProtectionVM {
     }
     
     func fetchIP(_ serviceId: Int) async {
-        guard let data = await request(path: "/cloud/\(serviceId)/protection/ip") else { return }
+        guard let accessToken = accessToken() else { return }
         
-        do {
-            ipInfo = try BigAssDecoder.decode(VDSProtectionIPInfo.self, from: data)
-        } catch {
-            SystemAlert.error("Protection IP decode error: \(error)")
-        }
+        guard let ipInfo = await vdsProtectionIPAPI(
+            serviceId: serviceId,
+            accessToken: accessToken,
+            onBillingError: SystemAlert.error
+        ) else { return }
+        
+        self.ipInfo = ipInfo
     }
     
     func fetchPresets(_ serviceId: Int) async {
-        guard let data = await request(path: "/cloud/\(serviceId)/protection/presets") else { return }
+        guard let accessToken = accessToken() else { return }
         
-        do {
-            presets = try BigAssDecoder.decode([VDSProtectionPreset].self, from: data)
-        } catch {
-            SystemAlert.error("Protection presets decode error: \(error)")
-        }
+        guard let presets = await vdsProtectionPresetsAPI(
+            serviceId: serviceId,
+            accessToken: accessToken,
+            onBillingError: SystemAlert.error
+        ) else { return }
+        
+        self.presets = presets
     }
     
     func fetchProfiles(_ serviceId: Int) async {
-        guard let data = await request(path: "/cloud/\(serviceId)/protection/profiles") else { return }
+        guard let accessToken = accessToken() else { return }
         
-        do {
-            profiles = try BigAssDecoder.decode([VDSProtectionProfile].self, from: data)
-        } catch {
-            SystemAlert.error("Protection profiles decode error: \(error)")
-        }
+        guard let profiles = await vdsProtectionProfilesAPI(
+            serviceId: serviceId,
+            accessToken: accessToken,
+            onBillingError: SystemAlert.error
+        ) else { return }
+        
+        self.profiles = profiles
     }
     
     func fetchAttacks(_ serviceId: Int, page: Int, reset: Bool) async {
         guard !isLoadingAttacks else { return }
+        guard let accessToken = accessToken() else { return }
         
         isLoadingAttacks = true
         defer { isLoadingAttacks = false }
         
-        guard let data = await request(path: "/cloud/\(serviceId)/protection/attacks?page=\(page)") else { return }
+        guard let decoded = await vdsProtectionAttacksAPI(
+            serviceId: serviceId,
+            page: page,
+            accessToken: accessToken,
+            onBillingError: SystemAlert.error
+        ) else { return }
         
-        do {
-            let decoded = try BigAssDecoder.decode([VDSProtectionAttack].self, from: data)
-            
-            if reset {
-                attacks = decoded
-                attacksPage = 1
-            } else {
-                attacks.append(contentsOf: decoded)
-                attacksPage = page
-            }
-            
-            if decoded.isEmpty {
-                canLoadMoreAttacks = false
-            }
-        } catch {
-            SystemAlert.error("Protection attacks decode error: \(error)")
+        if reset {
+            attacks = decoded
+            attacksPage = 1
+        } else {
+            attacks.append(contentsOf: decoded)
+            attacksPage = page
+        }
+        
+        if decoded.isEmpty {
+            canLoadMoreAttacks = false
         }
     }
     
     func loadMoreAttacks() async {
         guard let serviceId, canLoadMoreAttacks else { return }
+        
         let next = attacksPage + 1
         await fetchAttacks(serviceId, page: next, reset: false)
     }
     
     func updateDefaultAction(_ action: VDSProtectionDefaultAction) async {
         guard action.isUpdatable, let serviceId else { return }
+        guard let accessToken = accessToken() else { return }
+        
         let body = ["defaultAction": action.rawValue]
         guard let payload = try? JSONSerialization.data(withJSONObject: body) else { return }
         
         await performAction {
-            guard let data = await self.request(path: "/cloud/\(serviceId)/protection/ip", method: "PATCH", body: payload) else { return }
+            let result = await vdsProtectionUpdateDefaultActionAPI(
+                serviceId: serviceId,
+                payload: payload,
+                accessToken: accessToken,
+                onBillingError: SystemAlert.error
+            )
             
-            if let updated = try? BigAssDecoder.decode(VDSProtectionIPInfo.self, from: data) {
+            guard result.didSucceed else { return }
+            
+            if let updated = result.value {
                 self.ipInfo = updated
             } else {
                 self.ipInfo?.defaultAction = action
@@ -123,6 +138,7 @@ final class VDSProtectionVM {
     
     func createProfile(_ input: VDSProtectionProfileInput) async {
         guard let serviceId else { return }
+        guard let accessToken = accessToken() else { return }
         
         var body: [String: Any] = [
             "presetId": input.presetId,
@@ -139,9 +155,16 @@ final class VDSProtectionVM {
         guard let payload = try? JSONSerialization.data(withJSONObject: body) else { return }
         
         await performAction {
-            guard let data = await self.request(path: "/cloud/\(serviceId)/protection/profiles", method: "POST", body: payload) else { return }
+            let result = await vdsProtectionCreateProfileAPI(
+                serviceId: serviceId,
+                payload: payload,
+                accessToken: accessToken,
+                onBillingError: SystemAlert.error
+            )
             
-            if let created = try? BigAssDecoder.decode(VDSProtectionProfile.self, from: data) {
+            guard result.didSucceed else { return }
+            
+            if let created = result.value {
                 self.profiles.insert(created, at: 0)
             } else {
                 await self.fetchProfiles(serviceId)
@@ -151,6 +174,7 @@ final class VDSProtectionVM {
     
     func updateProfile(_ profileId: Int, input: VDSProtectionProfileInput) async {
         guard let serviceId else { return }
+        guard let accessToken = accessToken() else { return }
         
         var body: [String: Any] = [
             "presetId": input.presetId,
@@ -167,9 +191,17 @@ final class VDSProtectionVM {
         guard let payload = try? JSONSerialization.data(withJSONObject: body) else { return }
         
         await performAction {
-            guard let data = await self.request(path: "/cloud/\(serviceId)/protection/profiles/\(profileId)", method: "PUT", body: payload) else { return }
+            let result = await vdsProtectionUpdateProfileAPI(
+                serviceId: serviceId,
+                profileId: profileId,
+                payload: payload,
+                accessToken: accessToken,
+                onBillingError: SystemAlert.error
+            )
             
-            if let updated = try? BigAssDecoder.decode(VDSProtectionProfile.self, from: data) {
+            guard result.didSucceed else { return }
+            
+            if let updated = result.value {
                 if let index = self.profiles.firstIndex(where: { $0.id == profileId }) {
                     self.profiles[index] = updated
                 } else {
@@ -183,9 +215,15 @@ final class VDSProtectionVM {
     
     func deleteProfile(_ profileId: Int) async {
         guard let serviceId else { return }
+        guard let accessToken = accessToken() else { return }
         
         await performAction {
-            guard await self.request(path: "/cloud/\(serviceId)/protection/profiles/\(profileId)", method: "DELETE") != nil else { return }
+            guard await vdsProtectionDeleteProfileAPI(
+                serviceId: serviceId,
+                profileId: profileId,
+                accessToken: accessToken,
+                onBillingError: SystemAlert.error
+            ) else { return }
             
             self.profiles.removeAll { $0.id == profileId }
         }
@@ -199,45 +237,5 @@ final class VDSProtectionVM {
         defer { isPerformingAction = false }
         
         await work()
-    }
-    
-    private func request(path: String, method: String = "GET", body: Data? = nil) async -> Data? {
-        guard let accessToken = accessToken() else { return nil }
-        
-        guard let url = URL(string: path, relativeTo: base) else {
-            SystemAlert.error("Protection request failed", subtitle: "Invalid URL")
-            return nil
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = method
-        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        
-        if let body {
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.httpBody = body
-        }
-        
-        do {
-            let (data, res) = try await URLSession.shared.data(for: request)
-            
-            guard let http = res as? HTTPURLResponse else {
-                SystemAlert.error("No response")
-                return nil
-            }
-            
-            if http.statusCode == 204 {
-                return Data()
-            }
-            
-            if decodeBillingError(data, with: res, onDecode: SystemAlert.error) {
-                return nil
-            }
-            
-            return data
-        } catch {
-            SystemAlert.error("Protection request failed", subtitle: error.localizedDescription)
-            return nil
-        }
     }
 }

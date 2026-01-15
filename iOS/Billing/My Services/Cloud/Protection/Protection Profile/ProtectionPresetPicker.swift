@@ -1,4 +1,5 @@
 import SwiftUI
+import BisquitoNet
 
 struct ProtectionPresetPicker: View {
     @Environment(VDSProtectionVM.self) private var vm

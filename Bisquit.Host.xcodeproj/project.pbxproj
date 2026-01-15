@@ -777,8 +777,6 @@
 				"Billing Models/Service/BillingCloudModels.swift",
 				"Billing Models/Service/BillingGameServiceSummary.swift",
 				"Billing Models/Support/SupportTicket.swift",
-				"Billing Models/VDS Protection/CloudProtectionModels.swift",
-				"Billing Models/VDS Protection/CloudProtectionProfileEditorMode.swift",
 				Billing/Balance/BillingBalanceCard.swift,
 				Billing/Balance/BillingDashboardBalance.swift,
 				Billing/Balance/Operations/BillingOperationCard.swift,
