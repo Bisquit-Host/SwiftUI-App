@@ -42,8 +42,9 @@ Tip: choose the scheme that matches the target you’re changing (for example `W
 - Unit tests use `XCTest` and Swift’s `Testing` (`@Test`); add new unit tests under `Unit Tests/` (for example `FeatureTests.swift`)
 - UI tests live under `UI Tests/` and use `XCUIApplication`; keep tests deterministic and avoid relying on network state
 
-## Commit & Pull Request
+## Commit, Push & Pull Request
 
+- When asked to push, commit all existing changes first
 - Commits in this repo are short and action-oriented (for example `improved …`, `fixed …`, `removed …`). Use a concise subject; add a scope when helpful (for example `macOS: fix settings crash`)
 - PRs should describe the user-visible impact, list affected platforms/schemes
 
