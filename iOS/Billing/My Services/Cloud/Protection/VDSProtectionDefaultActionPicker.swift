@@ -18,7 +18,7 @@ struct VDSProtectionDefaultActionPicker: View {
             Spacer()
             
             Menu {
-                ForEach(VDSProtectionDefaultAction.menuCases) { action in
+                ForEach(VDSProtectionDefaultAction.allCases) { action in
                     Button {
                         selectedAction = action
                     } label: {
