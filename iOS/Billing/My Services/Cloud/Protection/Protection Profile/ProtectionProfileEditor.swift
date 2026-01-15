@@ -88,23 +88,15 @@ struct ProtectionProfileEditor: View {
             if vm.presets.contains(where: { $0.id == presetId }) {
                 return
             }
-            
-            if let first = vm.presets.first {
-                presetId = first.id
-                protocolSelection = first.`protocol`
-                applyDefaultPortsIfNeeded(for: first.`protocol`)
-            }
+
+            selectInitialPreset(from: vm.presets)
         }
         .onChange(of: vm.presets) { _, newPresets in
             if newPresets.contains(where: { $0.id == presetId }) {
                 return
             }
-            
-            if let first = newPresets.first {
-                presetId = first.id
-                protocolSelection = first.`protocol`
-                applyDefaultPortsIfNeeded(for: first.`protocol`)
-            }
+
+            selectInitialPreset(from: newPresets)
         }
         .onChange(of: presetId) { _, newValue in
             if let preset = vm.presets.first(where: { $0.id == newValue }) {
@@ -197,6 +189,21 @@ struct ProtectionProfileEditor: View {
         
         if maxPortText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             maxPortText = "65535"
+        }
+    }
+
+    private func selectInitialPreset(from presets: [VDSProtectionPreset]) {
+        if let tcpPreset = presets.first(where: { $0.`protocol` == .tcp }) {
+            presetId = tcpPreset.id
+            protocolSelection = .tcp
+            applyDefaultPortsIfNeeded(for: .tcp)
+            return
+        }
+
+        if let first = presets.first {
+            presetId = first.id
+            protocolSelection = first.`protocol`
+            applyDefaultPortsIfNeeded(for: first.`protocol`)
         }
     }
 }
