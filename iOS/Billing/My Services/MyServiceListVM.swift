@@ -21,70 +21,34 @@ final class MyServiceListVM {
     }
     
     func fetchMyCloudServices() async {
-        guard !isCloudLoading else { return }
-        
-        isCloudLoading = true
-        defer { isCloudLoading = false }
-        
-        guard let url = URL(string: "\(Endpoint.basePath)cloud") else {
-            Logger().error("Invalid URL")
-            return
-        }
-        
-        guard let accessToken = accessToken() else { return }
-        
-        var request = URLRequest(url: url)
-        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        
-        do {
-            let (data, res) = try await URLSession.shared.data(for: request)
-            
-            if decodeBillingError(data, with: res, onDecode: SystemAlert.error) {
-                return
-            }
-            
-            cloudServices = try BigAssDecoder.decode([CloudServiceSummary].self, from: data)
-        } catch {
-            SystemAlert.error("Error loading cloud services", subtitle: error.localizedDescription)
+        await fetchServices(endpointPath: "cloud", isLoadingKeyPath: \.isCloudLoading) { data in
+            self.cloudServices = try BigAssDecoder.decode([CloudServiceSummary].self, from: data)
         }
     }
     
     func fetchMyGameServices() async {
-        guard !isGameLoading else { return }
-        
-        isGameLoading = true
-        defer { isGameLoading = false }
-        
-        guard let url = URL(string: "\(Endpoint.basePath)game") else {
-            SystemAlert.error("Invalid URL")
-            return
-        }
-        
-        guard let accessToken = accessToken() else { return }
-        
-        var request = URLRequest(url: url)
-        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        
-        do {
-            let (data, res) = try await URLSession.shared.data(for: request)
-            
-            if decodeBillingError(data, with: res, onDecode: SystemAlert.error) {
-                return
-            }
-            
-            gameServices = try BigAssDecoder.decode([BillingGameServiceSummary].self, from: data)
-        } catch {
-            SystemAlert.error("Error loading game services", subtitle: error.localizedDescription)
+        await fetchServices(endpointPath: "game", isLoadingKeyPath: \.isGameLoading) { data in
+            self.gameServices = try BigAssDecoder.decode([BillingGameServiceSummary].self, from: data)
         }
     }
     
     func fetchMyBotServices() async {
-        guard !isBotLoading else { return }
+        await fetchServices(endpointPath: "bot", isLoadingKeyPath: \.isBotLoading) { data in
+            self.botServices = try BigAssDecoder.decode([BillingBotServiceSummary].self, from: data)
+        }
+    }
+    
+    private func fetchServices(
+        endpointPath: String,
+        isLoadingKeyPath: ReferenceWritableKeyPath<MyServiceListVM, Bool>,
+        assign: @escaping (Data) throws -> Void
+    ) async {
+        guard !self[keyPath: isLoadingKeyPath] else { return }
         
-        isBotLoading = true
-        defer { isBotLoading = false }
+        self[keyPath: isLoadingKeyPath] = true
+        defer { self[keyPath: isLoadingKeyPath] = false }
         
-        guard let url = URL(string: "\(Endpoint.basePath)bot") else {
+        guard let url = URL(string: "\(Endpoint.basePath)\(endpointPath)") else {
             SystemAlert.error("Invalid URL")
             return
         }
@@ -101,9 +65,9 @@ final class MyServiceListVM {
                 return
             }
             
-            botServices = try BigAssDecoder.decode([BillingBotServiceSummary].self, from: data)
+            try assign(data)
         } catch {
-            SystemAlert.error("Error loading bot services", subtitle: error.localizedDescription)
+            SystemAlert.error("Error loading \(endpointPath) services", subtitle: error.localizedDescription)
         }
     }
 }
