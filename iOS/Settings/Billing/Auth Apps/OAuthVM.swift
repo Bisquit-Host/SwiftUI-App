@@ -11,7 +11,7 @@ final class OAuthVM: NSObject {
     
     private var session: ASWebAuthenticationSession?
     private var pendingProvider: BillingAuthProvider?
-    private var onLinked: (() -> Void)?
+    private var onLinked: (() async -> Void)?
     private var pendingTwoFAToken: String?
     private var onAuthComplete: (() -> Void)?
     private var lastOAuthProviderRaw = UserDefaults.standard.string(forKey: OAuthVM.lastOAuthProviderKey) ?? "" {
@@ -49,25 +49,25 @@ final class OAuthVM: NSObject {
         }
     }
     
-    func startGitHubLinking(onLinked: (() -> Void)? = nil) {
+    func startGitHubLinking(onLinked: (() async -> Void)? = nil) {
         guard !isLinkingGitHub else { return }
         
         startLinking(provider: .github, onLinked: onLinked)
     }
     
-    func startGoogleLinking(onLinked: (() -> Void)? = nil) {
+    func startGoogleLinking(onLinked: (() async -> Void)? = nil) {
         guard !isLinkingGoogle else { return }
         
         startLinking(provider: .google, onLinked: onLinked)
     }
     
-    func startYandexLinking(onLinked: (() -> Void)? = nil) {
+    func startYandexLinking(onLinked: (() async -> Void)? = nil) {
         guard !isLinkingYandex else { return }
         
         startLinking(provider: .yandex, onLinked: onLinked)
     }
     
-    private func startLinking(provider: BillingAuthProvider, onLinked: (() -> Void)?) {
+    private func startLinking(provider: BillingAuthProvider, onLinked: (() async -> Void)?) {
         pendingProvider = provider
         self.onLinked = onLinked
         
@@ -228,8 +228,10 @@ final class OAuthVM: NSObject {
             Logger().critical("\(message)")
         }
         
-        onLinked?()
-        onLinked = nil
+        Task {
+            await onLinked?()
+            onLinked = nil
+        }
     }
     
     func verify2FA() async {
