@@ -13,7 +13,7 @@ struct DashboardView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
                     DashboardViewHostingLinks()
-                    BillingDashboardNavLinks()
+                    DashboardViewNavLinks()
                 }
                 .padding()
             }

@@ -1,7 +1,7 @@
 import SwiftUI
 import ScrechKit
 
-struct BillingDashboardNavLink<Destination: View>: View {
+struct DashboardViewNavLink<Destination: View>: View {
     private let title: LocalizedStringKey
     private let subtitle: LocalizedStringKey
     private let systemImage: String
@@ -20,7 +20,7 @@ struct BillingDashboardNavLink<Destination: View>: View {
         NavigationLink {
             destination()
         } label: {
-            BillingDashboardNavLinkLabel(title, subtitle: subtitle, systemImage: systemImage, tint: tint)
+            DashboardViewNavLinkLabel(title, subtitle: subtitle, systemImage: systemImage, tint: tint)
         }
     }
 }
