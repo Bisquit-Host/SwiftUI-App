@@ -58,5 +58,5 @@ struct AccountSettingsSection: View {
     AccountSettingsSection(.preview)
         .darkSchemePreferred()
         .environment(BillingSettingsVM())
-        .environment(BillingDashboardVM())
+        .environment(DashboardViewVM())
 }

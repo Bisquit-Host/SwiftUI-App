@@ -3,7 +3,7 @@ import SwiftUI
 struct MyServicesList: View {
     @State private var servicesVM = MyServiceListVM()
     
-    @Environment(BillingDashboardVM.self) private var vm
+    @Environment(DashboardViewVM.self) private var vm
     
     var body: some View {
         List {
@@ -43,7 +43,7 @@ struct MyServicesList: View {
 #Preview {
     NavigationStack {
         MyServicesList()
-            .environment(BillingDashboardVM())
+            .environment(DashboardViewVM())
     }
     .environmentObject(ValueStore())
     .darkSchemePreferred()

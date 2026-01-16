@@ -12,7 +12,7 @@ extension View {
                 PterodactylSettings()
                 
             case .toBillingDashboard:
-                BillingDashboard()
+                DashboardView()
 #endif
                 
 #if !os(macOS)

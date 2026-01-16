@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct BillingHostingNavRow: View {
-    @Environment(BillingDashboardVM.self) private var vm
+    @Environment(DashboardViewVM.self) private var vm
     
     private let category: BillingHostingCategory
     private let tint: Color

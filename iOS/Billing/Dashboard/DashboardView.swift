@@ -1,8 +1,8 @@
 import ScrechKit
 import PteroNet
 
-struct BillingDashboard: View {
-    @State private var vm = BillingDashboardVM()
+struct DashboardView: View {
+    @State private var vm = DashboardViewVM()
     @Environment(\.scenePhase) private var scenePhase
     
     @State private var sheetSettings = false
@@ -12,7 +12,7 @@ struct BillingDashboard: View {
         VStack(alignment: .leading) {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
-                    BillingDashboardHostingLinks()
+                    DashboardViewHostingLinks()
                     BillingDashboardNavLinks()
                 }
                 .padding()
@@ -112,7 +112,7 @@ struct BillingDashboard: View {
 
 #Preview {
     NavigationStack {
-        BillingDashboard()
+        DashboardView()
     }
     .environmentObject(ValueStore())
     .darkSchemePreferred()

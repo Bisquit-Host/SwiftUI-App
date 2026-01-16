@@ -2,7 +2,7 @@ import SwiftUI
 
 struct HostingPlanList: View {
     @State private var vm = HostingPlanListVM()
-    @Environment(BillingDashboardVM.self) private var dashboardVM
+    @Environment(DashboardViewVM.self) private var dashboardVM
     
     @State private var category: BillingHostingCategory
     
@@ -100,7 +100,7 @@ struct HostingPlanList: View {
     NavigationStack {
         HostingPlanList()
     }
-    .environment(BillingDashboardVM())
+    .environment(DashboardViewVM())
     .environmentObject(ValueStore())
     .darkSchemePreferred()
 }

@@ -132,7 +132,7 @@ struct VDSServiceDetailsTabView: View {
 #Preview {
     NavigationStack {
         VDSServiceDetailsTabView(1)
-            .environment(BillingDashboardVM())
+            .environment(DashboardViewVM())
     }
     .environmentObject(ValueStore())
     .darkSchemePreferred()

@@ -2,7 +2,7 @@ import SwiftUI
 
 struct VDSUpgradeSection: View {
     @Environment(VDSServiceDetailsVM.self) private var vm
-    @Environment(BillingDashboardVM.self) private var dashboardVM
+    @Environment(DashboardViewVM.self) private var dashboardVM
     @Environment(ConfettiVM.self) private var confetti
     @Environment(BiometryVM.self) private var biometry
     @EnvironmentObject private var store: ValueStore

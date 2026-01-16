@@ -4,7 +4,7 @@ struct HostingOrderSheet: View {
     @State private var confetti = ConfettiVM()
     @State private var orderVM = NewOrderVM()
     @Environment(HostingPlanListVM.self) private var vm
-    @Environment(BillingDashboardVM.self) private var dashboardVM
+    @Environment(DashboardViewVM.self) private var dashboardVM
     
     private let context: BillingPlanOrderContext
     private let priceText: String

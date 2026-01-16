@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct BillingDashboardHostingLinks: View {
+struct DashboardViewHostingLinks: View {
     var body: some View {
         BillingSectionCard("Hosting") {
             VStack(spacing: 12) {

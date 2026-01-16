@@ -3,7 +3,7 @@ import BisquitoNet
 import PteroNet
 
 @Observable
-final class BillingDashboardVM {
+final class DashboardViewVM {
     var user: BillingUser? = nil
     
     func refreshAuthToken(onSuccess: @escaping () async -> Void = {}) async {

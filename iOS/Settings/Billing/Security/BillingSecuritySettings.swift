@@ -19,5 +19,5 @@ struct BillingSecuritySettings: View {
 #Preview {
     BillingSecuritySettings(.preview)
         .darkSchemePreferred()
-        .environment(BillingDashboardVM())
+        .environment(DashboardViewVM())
 }

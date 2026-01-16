@@ -2,7 +2,7 @@ import SwiftUI
 
 struct BillingPasswordSheet: View {
     @Environment(BillingSettingsVM.self) private var vm
-    @Environment(BillingDashboardVM.self) private var dashboardVM
+    @Environment(DashboardViewVM.self) private var dashboardVM
     @Environment(\.dismiss) private var dismiss
     
     private let hasPassword: Bool

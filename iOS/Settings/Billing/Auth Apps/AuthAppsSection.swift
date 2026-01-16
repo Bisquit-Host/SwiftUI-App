@@ -2,7 +2,7 @@ import SwiftUI
 
 struct AuthAppsSection: View {
     @Environment(OAuthVM.self) private var vm
-    @Environment(BillingDashboardVM.self) private var dashboardVM
+    @Environment(DashboardViewVM.self) private var dashboardVM
     
     @Binding private var user: BillingUser?
     
@@ -62,6 +62,6 @@ struct AuthAppsSection: View {
     
     AuthAppsSection($user)
         .darkSchemePreferred()
-        .environment(BillingDashboardVM())
+        .environment(DashboardViewVM())
         .environment(OAuthVM())
 }

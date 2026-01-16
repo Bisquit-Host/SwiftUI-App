@@ -14,7 +14,7 @@ struct HomeTabView: View {
                 BillingLogin()
                     .withNavDestinations()
             } else {
-                BillingDashboard()
+                DashboardView()
                     .withNavDestinations()
             }
         }

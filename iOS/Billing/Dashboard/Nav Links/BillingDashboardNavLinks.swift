@@ -2,7 +2,7 @@ import SwiftUI
 import ScrechKit
 
 struct BillingDashboardNavLinks: View {
-    @Environment(BillingDashboardVM.self) private var vm
+    @Environment(DashboardViewVM.self) private var vm
     @Environment(NavState.self) private var nav
     @EnvironmentObject private var store: ValueStore
     

@@ -3,7 +3,7 @@ import PhotosUI
 
 struct AccountSettingsAvatarPicker: View {
     @Environment(BillingSettingsVM.self) private var vm
-    @Environment(BillingDashboardVM.self) private var dashboardVM
+    @Environment(DashboardViewVM.self) private var dashboardVM
     
     @Binding private var avatarPreview: UIImage?
     
