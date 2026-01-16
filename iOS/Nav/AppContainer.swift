@@ -14,16 +14,11 @@ struct AppContainer: View {
     @EnvironmentObject private var store: ValueStore
     @Environment(\.modelContext) private var modelContext
     @Query(animation: .default) private var keys: [APIKey]
-#if os(iOS) || os(visionOS)
-    private var showOAuth2FASheet: Binding<Bool> {
-        Binding(
-            get: { billingOAuth.showTwoFASheet },
-            set: { billingOAuth.showTwoFASheet = $0 }
-        )
-    }
-#endif
     
     var body: some View {
+#if os(iOS) || os(visionOS)
+        @Bindable var billingOAuth = billingOAuth
+#endif
         HomeTabView()
             .animation(.default, value: store.isApiKeyValid)
             .environment(vm)
@@ -32,7 +27,7 @@ struct AppContainer: View {
             .environment(biometry)
             .confettiOverlay()
             .environment(confetti)
-            .sheet(showOAuth2FASheet) {
+            .sheet(isPresented: $billingOAuth.showTwoFASheet) {
                 NavigationStack {
                     TwoFASheetView(
                         code: $billingOAuth.twoFACode,

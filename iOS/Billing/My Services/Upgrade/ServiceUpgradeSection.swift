@@ -10,6 +10,7 @@ struct ServiceUpgradeSection<VM: ServiceDetailsVMProtocol>: View {
     @State private var selectedUpgradeId: Int?
     @State private var alertUpgrade = false
     @State private var sheetTopup = false
+    @State private var showTopupAlert = false
     
     var body: some View {
         @Bindable var vm = vm
@@ -33,10 +34,19 @@ struct ServiceUpgradeSection<VM: ServiceDetailsVMProtocol>: View {
             if selectedUpgradePackage == nil {
                 selectedUpgradeId = vm.changeablePackages.first?.id
             }
+            showTopupAlert = vm.topupAlertContext == .upgrade
         }
         .onChange(of: vm.changeablePackages.count) {
             if selectedUpgradePackage == nil {
                 selectedUpgradeId = vm.changeablePackages.first?.id
+            }
+        }
+        .onChange(of: vm.topupAlertContext) { _, newValue in
+            showTopupAlert = newValue == .upgrade
+        }
+        .onChange(of: showTopupAlert) { _, newValue in
+            if !newValue, vm.topupAlertContext == .upgrade {
+                vm.topupAlertContext = nil
             }
         }
         .alert("Confirm upgrade", isPresented: $alertUpgrade) {
@@ -51,10 +61,7 @@ struct ServiceUpgradeSection<VM: ServiceDetailsVMProtocol>: View {
                 Text("Upgrade service?")
             }
         }
-        .alert("Insufficient funds", isPresented: Binding(
-            get: { vm.topupAlertContext == .upgrade },
-            set: { if !$0 { vm.topupAlertContext = nil } }
-        )) {
+        .alert("Insufficient funds", isPresented: $showTopupAlert) {
             Button("Dismiss", role: .cancel) {}
             Button("Top up") {
                 vm.topupAlertContext = nil

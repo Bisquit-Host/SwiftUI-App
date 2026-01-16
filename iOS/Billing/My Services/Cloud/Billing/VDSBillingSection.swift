@@ -19,6 +19,7 @@ struct VDSBillingSection: View {
     @State private var syncedAutorenew = false
     @State private var renewMonths = 1
     @State private var sheetTopup = false
+    @State private var showTopupAlert = false
     
     var body: some View {
         @Bindable var vm = vm
@@ -34,10 +35,18 @@ struct VDSBillingSection: View {
             
             VDSBillingSectionUpgradeButton(service.id)
         }
-        .alert("Insufficient funds", isPresented: Binding(
-            get: { vm.topupAlertContext == .serviceBilling },
-            set: { if !$0 { vm.topupAlertContext = nil } }
-        )) {
+        .onAppear {
+            showTopupAlert = vm.topupAlertContext == .serviceBilling
+        }
+        .onChange(of: vm.topupAlertContext) { _, newValue in
+            showTopupAlert = newValue == .serviceBilling
+        }
+        .onChange(of: showTopupAlert) { _, newValue in
+            if !newValue, vm.topupAlertContext == .serviceBilling {
+                vm.topupAlertContext = nil
+            }
+        }
+        .alert("Insufficient funds", isPresented: $showTopupAlert) {
             Button("Dismiss", role: .cancel) {}
             Button("Top up") {
                 vm.topupAlertContext = nil
