@@ -9,9 +9,8 @@ struct OtherAppSettings: View {
             
             GlassyToggle(
                 "Big ass animations",
-                subtitle: "Pow + Vortex effects",
                 icon: "sparkles",
-                tint: .orange,
+                tint: .purple,
                 isOn: $store.bigAssAnimations
             )
 #if canImport(Appearance)

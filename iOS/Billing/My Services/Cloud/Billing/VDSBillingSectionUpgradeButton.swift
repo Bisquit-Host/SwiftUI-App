@@ -12,6 +12,8 @@ struct VDSBillingSectionUpgradeButton: View {
     @State private var sheetUpgrade = false
     
     var body: some View {
+        let showNoUpgrades = vm.service != nil && vm.changeablePackages.isEmpty
+        
         Button {
             sheetUpgrade = true
         } label: {
@@ -19,15 +21,25 @@ struct VDSBillingSectionUpgradeButton: View {
                 ProgressView()
                     .frame(maxWidth: .infinity)
             } else {
-                Text("Upgrade")
-                    .semibold()
-                    .frame(maxWidth: .infinity)
+                VStack(spacing: 2) {
+                    Text("Upgrade")
+                        .semibold()
+                    
+                    if showNoUpgrades {
+                        Text("No higher packages available right now")
+                            .footnote()
+                            .secondary()
+                            .multilineTextAlignment(.center)
+                    }
+                }
+                .frame(maxWidth: .infinity)
             }
         }
 #if !os(visionOS)
         .buttonStyle(.glassProminent)
 #endif
-        .disabled(vm.isPerformingAction)
+        .tint(showNoUpgrades ? .gray : .accentColor)
+        .disabled(vm.isPerformingAction || showNoUpgrades)
         .padding(.horizontal, 8)
         .sheet($sheetUpgrade) {
             NavigationStack {
