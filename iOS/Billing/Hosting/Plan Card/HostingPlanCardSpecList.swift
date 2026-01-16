@@ -18,8 +18,8 @@ struct HostingPlanCardSpecList: View {
     }
     
     private var specs: [(icon: String, text: String)] {
-        let ram = formatMegaBytes(plan.memory)
-        let disk = formatMegaBytes(plan.disk)
+        let ram = formatMegaBytes(plan.memory, countStyle: .binary)
+        let disk = formatMegaBytes(plan.disk, countStyle: .binary)
         
         var items: [(String, String)] = [
             ("cpu", "\(plan.cpu.clean) vCPU"),

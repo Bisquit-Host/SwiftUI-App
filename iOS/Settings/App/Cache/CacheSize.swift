@@ -14,16 +14,8 @@ struct CacheSize: View {
             Spacer()
             
             Menu {
-#if DEBUG
-                NavigationLink("View cache") {
-                    CacheList()
-                }
-#endif
-                Divider()
-                
                 Button("Clear entire cache", role: .destructive, action: cache.clearAll)
             } label: {
-                
                 Text(cache.cacheSize)
                     .secondary()
                 

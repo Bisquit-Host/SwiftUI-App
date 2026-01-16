@@ -26,6 +26,14 @@ struct DebugSettings: View {
             DebugSettingsSystemAlerts()
             DebugSettingsTips()
             
+            Section("Cache") {
+                NavigationLink {
+                    CacheList()
+                } label: {
+                    Label("View cache", systemImage: "internaldrive")
+                }
+            }
+            
             Section {
                 Button("Clear all cookies", action: clearAllCookies)
             }
