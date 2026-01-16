@@ -282,7 +282,7 @@ final class HostingPlanListVM {
             let (data, res) = try await URLSession.shared.data(for: request)
             
             if decodeBillingError(data, with: res, onDecode: { @MainActor title, subtitle in
-                self.handleBillingError(title, subtitle: subtitle ?? "")
+                self.handleBillingError(title, subtitle: subtitle)
             }) {
                 return nil
             }
