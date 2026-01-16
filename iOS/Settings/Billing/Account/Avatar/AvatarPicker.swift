@@ -15,6 +15,8 @@ struct AvatarPicker: View {
     @State private var showAvatarPicker = false
     @State private var isUploadingAvatar = false
     
+    private let offset = 10.0
+    
     var body: some View {
         Button {
             showAvatarPicker = true
@@ -24,9 +26,10 @@ struct AvatarPicker: View {
                     ProgressView()
                 } else {
                     Image(systemName: "photo.on.rectangle.angled")
+                        .fontSize(14)
                 }
             }
-            .frame(40)
+            .frame(32)
 #if !os(visionOS)
             .glassEffect(in: .circle)
 #endif
@@ -35,7 +38,7 @@ struct AvatarPicker: View {
         .animation(.default, value: isUploadingAvatar)
         .disabled(isUploadingAvatar)
         .foregroundStyle(.foreground)
-        .offset(x: 12, y: -12)
+        .offset(x: offset, y: -offset)
         .onChange(of: avatarPickerItem) { _, newValue in
             if let newValue {
                 handleAvatarChange(newValue)
