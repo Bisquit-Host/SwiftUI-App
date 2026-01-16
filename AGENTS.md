@@ -23,7 +23,8 @@ Preferred workflow is Xcode (it will resolve Swift Package Manager dependencies 
 Tip: choose the scheme that matches the target you’re changing (for example `Widgets`, `iMessage`, `watchOS`)
 
 ## Coding Style & Best Practices
-- ScrechKit: prefer ScrechKit's view modifiers such as .hapticOn(), .title(), .secondary() or .title(.secondary) 
+
+- ScrechKit: prefer ScrechKit's view modifiers such as .hapticOn(), .title(), .secondary() or .title(.secondary); ScrechKit import SwiftUI as well, which has all Foundation code as well
 - Shapes: Use shape style shorthand everywhere possible; Prefer .background(.thinMaterial, in: .capsule) over .background(.thinMaterial, in: Capsule())
 - I prefer no dots at the end of sentences
 - New animations must check if store.bigAssAnimations from ValueStore() is enabled

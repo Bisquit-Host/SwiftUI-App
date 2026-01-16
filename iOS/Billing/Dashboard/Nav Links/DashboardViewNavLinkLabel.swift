@@ -5,15 +5,19 @@ struct DashboardViewNavLinkLabel: View {
     private let subtitle: LocalizedStringKey
     private let systemImage: String
     private let tint: Color
+    private let showsBackground: Bool
     
-    init(_ title: LocalizedStringKey, subtitle: LocalizedStringKey, systemImage: String, tint: Color) {
+    init(_ title: LocalizedStringKey, subtitle: LocalizedStringKey, systemImage: String, tint: Color, showsBackground: Bool = true) {
         self.title = title
         self.subtitle = subtitle
         self.systemImage = systemImage
         self.tint = tint
+        self.showsBackground = showsBackground
     }
     
     var body: some View {
+        let backgroundStyle = showsBackground ? AnyShapeStyle(.ultraThinMaterial) : AnyShapeStyle(.clear)
+        
         HStack(spacing: 12) {
             Image(systemName: systemImage)
                 .largeTitle()
@@ -30,7 +34,7 @@ struct DashboardViewNavLinkLabel: View {
         }
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(.ultraThinMaterial, in: .rect(cornerRadius: 12))
+        .background(backgroundStyle, in: .rect(cornerRadius: 12))
         .foregroundStyle(.foreground)
     }
 }

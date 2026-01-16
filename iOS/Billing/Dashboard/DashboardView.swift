@@ -9,14 +9,12 @@ struct DashboardView: View {
     @State private var refreshTimerTask: Task<Void, Never>?
     
     var body: some View {
-        VStack(alignment: .leading) {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 16) {
-                    DashboardViewHostingLinks()
-                    DashboardViewNavLinks()
-                }
-                .padding()
+        ScrollView {
+            VStack(alignment: .leading, spacing: 20) {
+                DashboardViewHostingLinks()
+                DashboardViewNavLinks()
             }
+            .padding()
         }
         .navigationBarBackButtonHidden()
         .refreshableTask {
