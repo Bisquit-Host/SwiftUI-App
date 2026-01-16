@@ -1,7 +1,7 @@
 import SwiftUI
 import PhotosUI
 
-struct AccountSettingsAvatarPicker: View {
+struct AvatarPicker: View {
     @Environment(BillingSettingsVM.self) private var vm
     @Environment(DashboardViewVM.self) private var dashboardVM
     

@@ -11,7 +11,7 @@ struct AccountSettingsHeader: View {
     
     var body: some View {
         HStack(spacing: 20) {
-            AccountSettingsAvatarImage($avatarPreview, for: user)
+            AvatarImage($avatarPreview, for: user)
             
             VStack(alignment: .leading, spacing: 6) {
                 Text(user.name)

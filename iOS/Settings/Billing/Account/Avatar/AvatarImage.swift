@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct AccountSettingsAvatarImage: View {
+struct AvatarImage: View {
     @Binding private var avatarPreview: UIImage?
     private let user: BillingUser
     
@@ -28,14 +28,14 @@ struct AccountSettingsAvatarImage: View {
                             .scaledToFill()
                         
                     case .failure:
-                        AccountSettingsAvatarPlaceholderInitial(user)
+                        AvatarInitialPlaceholder(user)
                         
                     @unknown default:
-                        AccountSettingsAvatarPlaceholderInitial(user)
+                        AvatarInitialPlaceholder(user)
                     }
                 }
             } else {
-                AccountSettingsAvatarPlaceholderInitial(user)
+                AvatarInitialPlaceholder(user)
             }
         }
         .animation(.default, value: avatarPreview)
@@ -46,7 +46,7 @@ struct AccountSettingsAvatarImage: View {
                 .stroke(.primary.opacity(0.08), lineWidth: 1)
         }
         .overlay(alignment: .topTrailing) {
-            AccountSettingsAvatarPicker($avatarPreview)
+            AvatarPicker($avatarPreview)
         }
     }
 }
