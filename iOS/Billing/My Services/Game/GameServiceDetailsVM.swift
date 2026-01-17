@@ -29,41 +29,22 @@ final class GameServiceDetailsVM {
     func fetchDetails(_ serviceId: Int) async {
         guard let accessToken = accessToken() else { return }
         
-        guard let data = await gameServiceDetailsAPI(
+        service = await gameServiceDetailsAPI(
             serviceId: serviceId,
             accessToken: accessToken,
             onBillingError: SystemAlert.error
-        ) else { return }
-        
-        do {
-            service = try BigAssDecoder.decode(BillingServiceDetails.self, from: data)
-        } catch {
-            SystemAlert.error("Game detail decode error: \(error)")
-            
-            if let raw = String(data: data, encoding: .utf8) {
-                Logger().info("Game raw detail: \(raw)")
-            }
-        }
+        )
     }
     
     func fetchChangeablePackages(_ serviceId: Int) async {
         guard let accessToken = accessToken() else { return }
         
-        guard let data = await gameServiceChangeablePackagesAPI(
+        changeablePackages = await gameServiceChangeablePackagesAPI(
             serviceId: serviceId,
             accessToken: accessToken,
+            emptyResponse: [],
             onBillingError: SystemAlert.error
-        ) else { return }
-        
-        do {
-            changeablePackages = try BigAssDecoder.decode([ChangeablePackage].self, from: data)
-        } catch {
-            SystemAlert.error("Game changeable packages decode error: \(error)")
-            
-            if let raw = String(data: data, encoding: .utf8) {
-                Logger().info("Game raw packages: \(raw)")
-            }
-        }
+        ) ?? []
     }
     
     func rename(_ newName: String, serviceId: Int) async {
@@ -82,7 +63,7 @@ final class GameServiceDetailsVM {
                 serviceId: serviceId,
                 accessToken: accessToken,
                 onBillingError: SystemAlert.error
-            ) else { return }
+            ) != nil else { return }
             
             self.service?.name = trimmed
         }
@@ -97,7 +78,7 @@ final class GameServiceDetailsVM {
                 serviceId: serviceId,
                 accessToken: accessToken,
                 onBillingError: SystemAlert.error
-            ) else { return }
+            ) != nil else { return }
             
             self.service?.autorenew = enabled
             SystemAlert.done(enabled ? "Auto-renew enabled" : "Auto-renew disabled")
@@ -115,7 +96,7 @@ final class GameServiceDetailsVM {
         return await withCheckedContinuation { continuation in
             Task {
                 await self.performAction {
-                    guard let data = await gameServiceRenewAPI(
+                    guard let response: ServiceRenewalResponse = await gameServiceRenewAPI(
                         months: months,
                         serviceId: serviceId,
                         accessToken: accessToken,
@@ -127,17 +108,10 @@ final class GameServiceDetailsVM {
                         return
                     }
                     
-                    do {
-                        let response = try BigAssDecoder.decode(ServiceRenewalResponse.self, from: data)
-                        
-                        self.service?.expiresAt = response.newExpiresAt
-                        
-                        SystemAlert.done("Renewed for \(months) mo")
-                        continuation.resume(returning: response)
-                    } catch {
-                        SystemAlert.error("Game renewal failed", subtitle: error.localizedDescription)
-                        continuation.resume(returning: nil)
-                    }
+                    self.service?.expiresAt = response.newExpiresAt
+                    
+                    SystemAlert.done("Renewed for \(months) mo")
+                    continuation.resume(returning: response)
                 }
             }
         }
@@ -154,7 +128,7 @@ final class GameServiceDetailsVM {
                 onBillingError: { @MainActor title, subtitle in
                     self.handleBillingError(title, subtitle: subtitle ?? "", context: .upgrade)
                 }
-            ) else { return }
+            ) != nil else { return }
             
             onSuccess()
             

@@ -37,101 +37,55 @@ final class VDSServiceDetailsVM {
     
     func fetchDetails(_ serviceId: Int) async {
         guard let accessToken = accessToken() else { return }
-        guard let data = await cloudServiceDetailsAPI(
+        
+        service = await cloudServiceDetailsAPI(
             serviceId: serviceId,
             accessToken: accessToken,
             onBillingError: SystemAlert.error
-        ) else { return }
-        
-        do {
-            service = try BigAssDecoder.decode(CloudServiceDetails.self, from: data)
-        } catch {
-            SystemAlert.error("Cloud detail decode error: \(error)")
-            
-            if let raw = String(data: data, encoding: .utf8) {
-                Logger().info("Raw detail: \(raw)")
-            }
-        }
+        )
     }
     
     func fetchChangeablePackages(_ serviceId: Int) async {
         guard let accessToken = accessToken() else { return }
         
-        guard let data = await cloudServiceChangeablePackagesAPI(
+        changeablePackages = await cloudServiceChangeablePackagesAPI(
             serviceId: serviceId,
             accessToken: accessToken,
+            emptyResponse: [],
             onBillingError: SystemAlert.error
-        ) else { return }
-        
-        do {
-            changeablePackages = try BigAssDecoder.decode([ChangeablePackage].self, from: data)
-        } catch {
-            SystemAlert.error("Cloud changeable packages decode error: \(error)")
-            
-            if let raw = String(data: data, encoding: .utf8) {
-                Logger().info("Raw packages: \(raw)")
-            }
-        }
+        ) ?? []
     }
     
     func fetchHistory(_ serviceId: Int) async {
         guard let accessToken = accessToken() else { return }
         
-        guard let data = await cloudServiceHistoryAPI(
+        history = await cloudServiceHistoryAPI(
             serviceId: serviceId,
             accessToken: accessToken,
+            emptyResponse: [],
             onBillingError: SystemAlert.error
-        ) else { return }
-        
-        do {
-            history = try BigAssDecoder.decode([CloudServiceHistoryItem].self, from: data)
-        } catch {
-            SystemAlert.error("Cloud history decode error: \(error)")
-            
-            if let raw = String(data: data, encoding: .utf8) {
-                Logger().info("Raw history: \(raw)")
-            }
-        }
+        ) ?? []
     }
     
     func fetchCharts(_ serviceId: Int) async {
         guard let accessToken = accessToken() else { return }
         
-        guard let data = await cloudServiceChartsAPI(
+        charts = await cloudServiceChartsAPI(
             serviceId: serviceId,
             accessToken: accessToken,
             onBillingError: SystemAlert.error
-        ) else { return }
-        
-        do {
-            charts = try BigAssDecoder.decode(CloudServiceCharts.self, from: data)
-        } catch {
-            SystemAlert.error("Cloud charts decode error: \(error)")
-            
-            if let raw = String(data: data, encoding: .utf8) {
-                Logger().info("Raw charts: \(raw)")
-            }
-        }
+        )
     }
     
     func fetchOSOptions(_ serviceId: Int) async {
         guard let accessToken = accessToken() else { return }
         
-        guard let data = await cloudServiceOSOptionsAPI(
+        osOptions = await cloudServiceOSOptionsAPI(
             serviceId: serviceId,
             accessToken: accessToken,
+            emptyResponse: [],
             onBillingError: SystemAlert.error
-        ) else { return }
-        
-        do {
-            osOptions = try BigAssDecoder.decode([CloudServiceOSCategory].self, from: data)
-        } catch {
-            SystemAlert.error("Cloud OS list decode error: \(error)")
-            
-            if let raw = String(data: data, encoding: .utf8) {
-                Logger().info("Raw OS list: \(raw)")
-            }
-        }
+        ) ?? []
     }
     
     func rename(_ newName: String, serviceId: Int) async {
@@ -150,7 +104,7 @@ final class VDSServiceDetailsVM {
                 serviceId: serviceId,
                 accessToken: accessToken,
                 onBillingError: SystemAlert.error
-            ) else { return }
+            ) != nil else { return }
             
             self.service?.name = trimmed
             SystemAlert.done("Name updated")
@@ -173,7 +127,7 @@ final class VDSServiceDetailsVM {
                 serviceId: serviceId,
                 accessToken: accessToken,
                 onBillingError: SystemAlert.error
-            ) else { return }
+            ) != nil else { return }
             
             SystemAlert.done("Root password updated")
         }
@@ -188,7 +142,7 @@ final class VDSServiceDetailsVM {
                 serviceId: serviceId,
                 accessToken: accessToken,
                 onBillingError: SystemAlert.error
-            ) else { return }
+            ) != nil else { return }
             
             Logger().info("Reinstall started")
         }
@@ -203,7 +157,7 @@ final class VDSServiceDetailsVM {
                 serviceId: serviceId,
                 accessToken: accessToken,
                 onBillingError: SystemAlert.error
-            ) else { return }
+            ) != nil else { return }
             
             self.service?.autorenew = enabled
             SystemAlert.done(enabled ? "Auto-renew enabled" : "Auto-renew disabled")
@@ -220,7 +174,7 @@ final class VDSServiceDetailsVM {
         return await withCheckedContinuation { continuation in
             Task {
                 await self.performAction {
-                    guard let data = await cloudServiceRenewAPI(
+                    guard let response: ServiceRenewalResponse = await cloudServiceRenewAPI(
                         months: months,
                         serviceId: serviceId,
                         accessToken: accessToken,
@@ -232,16 +186,10 @@ final class VDSServiceDetailsVM {
                         return
                     }
                     
-                    do {
-                        let response = try BigAssDecoder.decode(ServiceRenewalResponse.self, from: data)
-                        self.service?.expiresAt = response.newExpiresAt
-                        
-                        SystemAlert.done("Renewed for \(months) mo")
-                        continuation.resume(returning: response)
-                    } catch {
-                        SystemAlert.error("Cloud renewal failed", subtitle: error.localizedDescription)
-                        continuation.resume(returning: nil)
-                    }
+                    self.service?.expiresAt = response.newExpiresAt
+                    
+                    SystemAlert.done("Renewed for \(months) mo")
+                    continuation.resume(returning: response)
                 }
             }
         }
@@ -258,7 +206,7 @@ final class VDSServiceDetailsVM {
                 onBillingError: { @MainActor title, subtitle in
                     self.handleBillingError(title, subtitle: subtitle ?? "", context: .upgrade)
                 }
-            ) else { return }
+            ) != nil else { return }
             
             onSuccess()
             
@@ -272,18 +220,14 @@ final class VDSServiceDetailsVM {
         guard let accessToken = accessToken() else { return }
         
         await performAction {
-            guard let data = await cloudServicePowerAPI(
+            guard await cloudServicePowerAPI(
                 action: action,
                 serviceId: serviceId,
                 accessToken: accessToken,
                 onBillingError: SystemAlert.error
-            ) else {
+            ) != nil else {
                 Logger().error("Power action \(action) failed")
                 return
-            }
-            
-            if let raw = String(data: data, encoding: .utf8), !raw.isEmpty {
-                Logger().info("Power action response: \(raw)")
             }
             
             Logger().info("Action sent: \(action.capitalized)")

@@ -21,27 +21,28 @@ final class MyServiceListVM {
     }
     
     func fetchMyCloudServices() async {
-        await fetchMyServices(endpointPath: "cloud", isLoadingKeyPath: \.isCloudLoading) { data in
-            self.cloudServices = try BigAssDecoder.decode([CloudServiceSummary].self, from: data)
+        await fetchMyServices(endpointPath: "cloud", isLoadingKeyPath: \.isCloudLoading, emptyResponse: []) {
+            self.cloudServices = $0
         }
     }
     
     func fetchMyGameServices() async {
-        await fetchMyServices(endpointPath: "game", isLoadingKeyPath: \.isGameLoading) { data in
-            self.gameServices = try BigAssDecoder.decode([BillingGameServiceSummary].self, from: data)
+        await fetchMyServices(endpointPath: "game", isLoadingKeyPath: \.isGameLoading, emptyResponse: []) {
+            self.gameServices = $0
         }
     }
     
     func fetchMyBotServices() async {
-        await fetchMyServices(endpointPath: "bot", isLoadingKeyPath: \.isBotLoading) { data in
-            self.botServices = try BigAssDecoder.decode([BillingBotServiceSummary].self, from: data)
+        await fetchMyServices(endpointPath: "bot", isLoadingKeyPath: \.isBotLoading, emptyResponse: []) {
+            self.botServices = $0
         }
     }
     
-    private func fetchMyServices(
+    private func fetchMyServices<T: Decodable & Sendable>(
         endpointPath: String,
         isLoadingKeyPath: ReferenceWritableKeyPath<MyServiceListVM, Bool>,
-        assign: @escaping (Data) throws -> Void
+        emptyResponse: T,
+        assign: @escaping (T) -> Void
     ) async {
         guard !self[keyPath: isLoadingKeyPath] else { return }
         
@@ -50,16 +51,13 @@ final class MyServiceListVM {
         
         guard let accessToken = accessToken() else { return }
         
-        guard let data = await fetchMyServicesAPI(
+        guard let result = await fetchMyServicesAPI(
             endpointPath: endpointPath,
             accessToken: accessToken,
+            emptyResponse: emptyResponse,
             onBillingError: SystemAlert.error
         ) else { return }
         
-        do {
-            try assign(data)
-        } catch {
-            SystemAlert.error("Error loading services", subtitle: error.localizedDescription)
-        }
+        assign(result)
     }
 }

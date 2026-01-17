@@ -28,35 +28,12 @@ final class TicketListVM {
         isLoading = true
         defer { isLoading = false }
         
-        let result = await fetchTicketsAPI(showClosed: showClosed, accessToken: accessToken)
-        
-        if result.statusCode == 401 {
-            SystemAlert.error("Unauthorized", subtitle: "401")
-            return
-        }
-        
-        if result.statusCode == 204 {
-            tickets = []
-            return
-        }
-        
-        guard let data = result.data else {
-            return
-        }
-        
-        let trimmedString = String(data: data, encoding: .utf8)?
-            .trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-        
-        if data.isEmpty || trimmedString.isEmpty {
-            tickets = []
-            return
-        }
-        
-        do {
-            tickets = try BigAssDecoder.decode([SupportTicketWithLastMessageDTO].self, from: data)
-        } catch {
-            SystemAlert.error("Error", subtitle: error.localizedDescription)
-        }
+        tickets = await fetchTicketsAPI(
+            showClosed: showClosed,
+            accessToken: accessToken,
+            emptyResponse: [],
+            onBillingError: SystemAlert.error
+        ) ?? []
     }
     
     func createTicket(_ title: String, message: String, attachments: [PendingAttachment]) async -> Int? {
@@ -87,12 +64,14 @@ final class TicketListVM {
             TicketMediaUpload(filename: $0.filename, contentType: $0.contentType, data: $0.data)
         }
         
-        return await createTicketAPI(
+        let response: CreateSupportTicketResponse? = await createTicketAPI(
             title: trimmedTitle,
             message: trimmedMessage,
             attachments: mediaAttachments,
             accessToken: accessToken,
             onBillingError: SystemAlert.error
         )
+        
+        return response?.id
     }
 }

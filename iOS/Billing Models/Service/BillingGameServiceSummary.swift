@@ -1,6 +1,6 @@
 import Foundation
 
-struct BillingGameServiceSummary: Decodable, Identifiable, Equatable {
+nonisolated struct BillingGameServiceSummary: Decodable, Identifiable, Equatable, Sendable {
     let id: Int
     let name: String
     let price: Double

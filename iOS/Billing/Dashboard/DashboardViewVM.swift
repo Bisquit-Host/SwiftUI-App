@@ -28,18 +28,13 @@ final class DashboardViewVM {
     
     func fetchUserInfo() async {
         guard let accessToken = accessToken() else { return }
-        let result = await fetchUserInfoAPI(accessToken: accessToken)
         
-        if result.statusCode == 401 {
-            let _ = await refreshAuthToken()
-        }
-        
-        guard let data = result.data else { return }
-        
-        do {
-            user = try BigAssDecoder.decode(BillingUser.self, from: data)
-        } catch {
-            Logger().error("Error fetching user data: \(error)")
-        }
+        user = await fetchUserInfoAPI(
+            accessToken: accessToken,
+            onUnauthorized: { [weak self] in
+                let _ = await self?.refreshAuthToken()
+            },
+            onBillingError: SystemAlert.error
+        )
     }
 }

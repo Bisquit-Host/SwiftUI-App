@@ -29,7 +29,7 @@ final class PasskeyListVM {
             passkeyId: passkey.id,
             accessToken: accessToken,
             onBillingError: SystemAlert.error
-        ) else { return }
+        ) != nil else { return }
         
         passkeys.removeAll {
             $0.id == passkey.id
@@ -82,6 +82,6 @@ final class PasskeyListVM {
             credential: credential,
             accessToken: accessToken,
             onBillingError: SystemAlert.error
-        )
+        ) != nil
     }
 }

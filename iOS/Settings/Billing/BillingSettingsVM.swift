@@ -16,7 +16,11 @@ final class BillingSettingsVM {
     func changeName(onSuccess: @escaping () async -> Void) async {
         guard let accessToken = accessToken() else { return }
         
-        if await changeNameAPI(newName: newName, accessToken: accessToken) {
+        if await changeNameAPI(
+            newName: newName,
+            accessToken: accessToken,
+            onBillingError: SystemAlert.error
+        ) != nil {
             newName = ""
             await onSuccess()
         }
@@ -25,7 +29,11 @@ final class BillingSettingsVM {
     func changeEmail() async {
         guard let accessToken = accessToken() else { return }
         
-        if await changeNameAPI(newName: newName, accessToken: accessToken) {
+        if await changeEmailAPI(
+            newEmail: newEmail,
+            accessToken: accessToken,
+            onBillingError: SystemAlert.error
+        ) != nil {
             newEmail = ""
             SystemAlert.copied("Check your inbox")
         }
@@ -34,7 +42,11 @@ final class BillingSettingsVM {
     func changeLogin(onSuccess: @escaping () async -> Void) async {
         guard let accessToken = accessToken() else { return }
         
-        if await changeLoginAPI(newLogin: newLogin, accessToken: accessToken) {
+        if await changeLoginAPI(
+            newLogin: newLogin,
+            accessToken: accessToken,
+            onBillingError: SystemAlert.error
+        ) != nil {
             newLogin = ""
             await onSuccess()
         }
@@ -83,7 +95,7 @@ final class BillingSettingsVM {
             newPassword: trimmedNewPassword,
             accessToken: accessToken,
             onBillingError: SystemAlert.error
-        ) {
+        ) != nil {
             resetPasswordFields()
             await onSuccess()
             SystemAlert.copied("Password updated")
@@ -104,12 +116,14 @@ final class BillingSettingsVM {
         
         guard let accessToken = accessToken() else { return nil }
         
-        return await updateAvatarAPI(
+        let response = await updateAvatarAPI(
             data: data,
             filename: filename,
             mimeType: mimeType,
             accessToken: accessToken,
             onBillingError: SystemAlert.error
         )
+        
+        return response?.avatar
     }
 }

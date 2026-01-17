@@ -32,41 +32,22 @@ final class BotServiceDetailsVM {
     func fetchDetails(_ serviceId: Int) async {
         guard let accessToken = accessToken() else { return }
         
-        guard let data = await botServiceDetailsAPI(
+        service = await botServiceDetailsAPI(
             serviceId: serviceId,
             accessToken: accessToken,
             onBillingError: SystemAlert.error
-        ) else { return }
-        
-        do {
-            service = try BigAssDecoder.decode(BillingServiceDetails.self, from: data)
-        } catch {
-            SystemAlert.error("Bot detail decode error: \(error)")
-            
-            if let raw = String(data: data, encoding: .utf8) {
-                Logger().info("Bot raw detail: \(raw)")
-            }
-        }
+        )
     }
     
     func fetchChangeablePackages(_ serviceId: Int) async {
         guard let accessToken = accessToken() else { return }
         
-        guard let data = await botServiceChangeablePackagesAPI(
+        changeablePackages = await botServiceChangeablePackagesAPI(
             serviceId: serviceId,
             accessToken: accessToken,
+            emptyResponse: [],
             onBillingError: SystemAlert.error
-        ) else { return }
-        
-        do {
-            changeablePackages = try BigAssDecoder.decode([ChangeablePackage].self, from: data)
-        } catch {
-            SystemAlert.error("Bot changeable packages decode error: \(error)")
-            
-            if let raw = String(data: data, encoding: .utf8) {
-                Logger().info("Bot raw packages: \(raw)")
-            }
-        }
+        ) ?? []
     }
     
     func rename(_ newName: String, serviceId: Int) async {
@@ -85,7 +66,7 @@ final class BotServiceDetailsVM {
                 serviceId: serviceId,
                 accessToken: accessToken,
                 onBillingError: SystemAlert.error
-            ) else { return }
+            ) != nil else { return }
             
             self.service?.name = trimmed
         }
@@ -100,7 +81,7 @@ final class BotServiceDetailsVM {
                 serviceId: serviceId,
                 accessToken: accessToken,
                 onBillingError: SystemAlert.error
-            ) else { return }
+            ) != nil else { return }
             
             self.service?.autorenew = enabled
             SystemAlert.done(enabled ? "Auto-renew enabled" : "Auto-renew disabled")
@@ -118,7 +99,7 @@ final class BotServiceDetailsVM {
         return await withCheckedContinuation { continuation in
             Task {
                 await self.performAction {
-                    guard let data = await botServiceRenewAPI(
+                    guard let response: ServiceRenewalResponse = await botServiceRenewAPI(
                         months: months,
                         serviceId: serviceId,
                         accessToken: accessToken,
@@ -130,16 +111,10 @@ final class BotServiceDetailsVM {
                         return
                     }
                     
-                    do {
-                        let response = try BigAssDecoder.decode(ServiceRenewalResponse.self, from: data)
-                        self.service?.expiresAt = response.newExpiresAt
-                        
-                        SystemAlert.done("Renewed for \(months) mo")
-                        continuation.resume(returning: response)
-                    } catch {
-                        SystemAlert.error("Bot renewal failed", subtitle: error.localizedDescription)
-                        continuation.resume(returning: nil)
-                    }
+                    self.service?.expiresAt = response.newExpiresAt
+                    
+                    SystemAlert.done("Renewed for \(months) mo")
+                    continuation.resume(returning: response)
                 }
             }
         }
@@ -156,7 +131,7 @@ final class BotServiceDetailsVM {
                 onBillingError: { @MainActor title, subtitle in
                     self.handleBillingError(title, subtitle: subtitle ?? "", context: .upgrade)
                 }
-            ) else { return }
+            ) != nil else { return }
             
             onSuccess()
             

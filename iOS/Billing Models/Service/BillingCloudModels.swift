@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-enum BillingServiceState: String, Decodable {
+nonisolated enum BillingServiceState: String, Decodable, Sendable {
     case installing = "INSTALLING",
          active = "ACTIVE",
          suspended = "SUSPENDED",
@@ -23,18 +23,18 @@ enum BillingServiceState: String, Decodable {
     }
 }
 
-struct ServiceLocationSummary: Decodable, Equatable {
+nonisolated struct ServiceLocationSummary: Decodable, Equatable, Sendable {
     let name: String
     let flagUrl: String?
 }
 
-struct ServiceSummaryPackage: Decodable, Equatable {
+nonisolated struct ServiceSummaryPackage: Decodable, Equatable, Sendable {
     let name: String
     let bonusBalanceAllowed: Bool?
     let windowsAllowed: Bool?
 }
 
-struct CloudServiceSummary: Decodable, Identifiable, Equatable {
+nonisolated struct CloudServiceSummary: Decodable, Identifiable, Equatable, Sendable {
     let id: Int
     let name: String
     let price: Double

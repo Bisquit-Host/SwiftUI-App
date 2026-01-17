@@ -29,7 +29,7 @@ final class Billing2FAVM {
             code: code,
             accessToken: accessToken,
             onBillingError: SystemAlert.error
-        )
+        ) != nil
     }
     
     func disable() async -> Bool {
@@ -40,7 +40,7 @@ final class Billing2FAVM {
         return await disableBilling2FAAPI(
             accessToken: accessToken,
             onBillingError: SystemAlert.error
-        )
+        ) != nil
     }
 }
 

@@ -44,7 +44,11 @@ final class OAuthVM: NSObject {
     func disconnectAuthService(_ authService: String, onSuccess: () async -> Void) async {
         guard let accessToken = accessToken() else { return }
         
-        if await disconnectOAuthAppAPI(authService: authService, accessToken: accessToken) {
+        if await disconnectOAuthAppAPI(
+            authService: authService,
+            accessToken: accessToken,
+            onBillingError: SystemAlert.error
+        ) != nil {
             await onSuccess()
         }
     }
