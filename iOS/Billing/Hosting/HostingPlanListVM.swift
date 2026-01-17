@@ -1,6 +1,5 @@
 import Foundation
 import BisquitoNet
-import PteroNet
 
 @Observable
 final class HostingPlanListVM {
@@ -15,8 +14,6 @@ final class HostingPlanListVM {
     var isLoading = false
     var isOrdering = false
     var topupAlertContext: TopupAlertContext?
-    
-    private let authedBase = URL(string: Endpoint.basePath)!
     
     func loadAll(currency: BillingCurrency? = nil) async {
         isLoading = true
@@ -111,69 +108,92 @@ final class HostingPlanListVM {
     }
 
     private func fetchPackages(for category: BillingHostingCategory, currency: BillingCurrency) async -> [BillingHostingPlan]? {
-        guard let data = await request(path: "/\(category.path)/packages") else { return nil }
+        guard let accessToken = accessToken() else { return nil }
         
-        do {
-            switch category {
-            case .bot:
-                let packages = try BigAssDecoder.decode([PrivateBotPackage].self, from: data)
-                return packages.map { $0.toBillingPlan(currency: currency) }
-                
-            case .game:
-                let packages = try BigAssDecoder.decode([PrivateGamePackage].self, from: data)
-                return packages.map { $0.toBillingPlan(currency: currency) }
-                
-            case .cloud:
-                let packages = try BigAssDecoder.decode([PrivateCloudPackage].self, from: data)
-                return packages.map { $0.toBillingPlan(currency: currency) }
-            }
-        } catch {
-            SystemAlert.error("Hosting plans request failed", subtitle: "\(category.rawValue) • \(error.localizedDescription)")
-            return nil
+        let onBillingError: @MainActor (String, String) -> Void = { title, subtitle in
+            self.handleBillingError(title, subtitle: subtitle)
+        }
+        
+        switch category {
+        case .bot:
+            let packages: [PrivateBotPackage]? = await fetchHostingPackagesAPI(
+                categoryPath: category.path,
+                accessToken: accessToken,
+                onBillingError: onBillingError
+            )
+            
+            return packages?.map { $0.toBillingPlan(currency: currency) }
+            
+        case .game:
+            let packages: [PrivateGamePackage]? = await fetchHostingPackagesAPI(
+                categoryPath: category.path,
+                accessToken: accessToken,
+                onBillingError: onBillingError
+            )
+            
+            return packages?.map { $0.toBillingPlan(currency: currency) }
+            
+        case .cloud:
+            let packages: [PrivateCloudPackage]? = await fetchHostingPackagesAPI(
+                categoryPath: category.path,
+                accessToken: accessToken,
+                onBillingError: onBillingError
+            )
+            
+            return packages?.map { $0.toBillingPlan(currency: currency) }
         }
     }
     
     private func fetchLocations(for category: BillingHostingCategory) async -> [HostingLocation]? {
-        guard let data = await request(path: "/\(category.path)/locations") else { return nil }
+        guard let accessToken = accessToken() else { return nil }
         
-        do {
-            return try BigAssDecoder.decode([HostingLocation].self, from: data)
-        } catch {
-            SystemAlert.error("Hosting locations request failed", subtitle: "\(category.rawValue) • \(error.localizedDescription)")
-            return nil
+        let onBillingError: @MainActor (String, String) -> Void = { title, subtitle in
+            self.handleBillingError(title, subtitle: subtitle)
         }
+        
+        let locations: [HostingLocation]? = await fetchHostingLocationsAPI(
+            categoryPath: category.path,
+            accessToken: accessToken,
+            onBillingError: onBillingError
+        )
+        
+        return locations
     }
     
     func loadOrderOptions(for category: BillingHostingCategory, planId: Int) async -> BillingHostingOrderOptions {
         var result = BillingHostingOrderOptions()
         
+        guard let accessToken = accessToken() else { return result }
+        
+        let onBillingError: @MainActor (String, String) -> Void = { title, subtitle in
+            self.handleBillingError(title, subtitle: subtitle)
+        }
+        
         switch category {
         case .cloud:
-            guard let data = await request(path: "/cloud/os") else { break }
-            
-            do {
-                result.osCategories = try BigAssDecoder.decode([CloudServiceOSCategory].self, from: data)
-            } catch {
-                SystemAlert.error("Error decoding order OS", subtitle: error.localizedDescription)
-            }
+            let categories: [CloudServiceOSCategory]? = await fetchHostingOSCategoriesAPI(
+                accessToken: accessToken,
+                onBillingError: onBillingError
+            )
+            result.osCategories = categories ?? []
             
         case .game:
-            guard let data = await request(path: "/game/packages/\(planId)/nests") else { break }
-            
-            do {
-                result.nests = try BigAssDecoder.decode([BillingHostingNest].self, from: data)
-            } catch {
-                SystemAlert.error("Error decoding game nests", subtitle: error.localizedDescription)
-            }
+            let nests: [BillingHostingNest]? = await fetchHostingNestsAPI(
+                categoryPath: category.path,
+                packageId: planId,
+                accessToken: accessToken,
+                onBillingError: onBillingError
+            )
+            result.nests = nests ?? []
             
         case .bot:
-            guard let data = await request(path: "/bot/packages/\(planId)/nests") else { break }
-            
-            do {
-                result.nests = try BigAssDecoder.decode([BillingHostingNest].self, from: data)
-            } catch {
-                SystemAlert.error("Error decoding order nests (bot)", subtitle: error.localizedDescription)
-            }
+            let nests: [BillingHostingNest]? = await fetchHostingNestsAPI(
+                categoryPath: category.path,
+                packageId: planId,
+                accessToken: accessToken,
+                onBillingError: onBillingError
+            )
+            result.nests = nests ?? []
         }
         
         return result
@@ -197,14 +217,10 @@ final class HostingPlanListVM {
             return nil
         }
         
-        let path: String
-        
-        var body: [String: Any] = [
-            "name": trimmed,
-            "package": context.plan.id,
-            "months": months
-        ]
-        
+        let orderOSId: Int?
+        let orderNestId: Int?
+        let orderEggId: Int?
+
         switch context.category {
         case .cloud:
             guard let osId else {
@@ -212,8 +228,9 @@ final class HostingPlanListVM {
                 return nil
             }
             
-            path = "/cloud/order"
-            body["os"] = osId
+            orderOSId = osId
+            orderNestId = nil
+            orderEggId = nil
             
         case .game:
             guard let nestId, let eggId else {
@@ -221,9 +238,9 @@ final class HostingPlanListVM {
                 return nil
             }
             
-            path = "/game/order"
-            body["nest"] = nestId
-            body["egg"] = eggId
+            orderOSId = nil
+            orderNestId = nestId
+            orderEggId = eggId
             
         case .bot:
             guard let nestId, let eggId else {
@@ -231,67 +248,33 @@ final class HostingPlanListVM {
                 return nil
             }
             
-            path = "/bot/order"
-            body["nest"] = nestId
-            body["egg"] = eggId
+            orderOSId = nil
+            orderNestId = nestId
+            orderEggId = eggId
         }
         
-        guard let payload = try? JSONSerialization.data(withJSONObject: body) else {
-            SystemAlert.error("Failed to encode order")
-            return nil
+        guard let accessToken = accessToken() else { return nil }
+        
+        let onBillingError: @MainActor (String, String) -> Void = { title, subtitle in
+            self.handleBillingError(title, subtitle: subtitle)
         }
         
-        guard let data = await request(path: path, method: "POST", body: payload) else { return nil }
-        
-        do {
-            return try BigAssDecoder.decode(BillingHostingOrderResponse.self, from: data)
-        } catch {
-            SystemAlert.error("Order error", subtitle: error.localizedDescription)
-            
-            if let raw = String(data: data, encoding: .utf8) {
-                Logger().info("Order raw: \(raw)")
-            }
-            
-            return nil
-        }
+        return await createHostingOrderAPI(
+            categoryPath: context.category.path,
+            name: trimmed,
+            packageId: context.plan.id,
+            months: months,
+            osId: orderOSId,
+            nestId: orderNestId,
+            eggId: orderEggId,
+            accessToken: accessToken,
+            onBillingError: onBillingError
+        )
     }
     
     private func priceValue(for plan: BillingHostingPlan, currency: String?) -> Double {
         let code = currency?.uppercased()
         return plan.price.first { $0.currency.rawValue == code }?.price ?? plan.price.first?.price ?? 0
-    }
-    
-    private func request(path: String, method: String = "GET", body: Data? = nil) async -> Data? {
-        guard let accessToken = accessToken() else { return nil }
-        
-        guard let url = URL(string: path, relativeTo: authedBase) else {
-            SystemAlert.error("Order failed", subtitle: "Invalid URL: \(path)")
-            return nil
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = method
-        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        
-        if let body {
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.httpBody = body
-        }
-        
-        do {
-            let (data, res) = try await URLSession.shared.data(for: request)
-            
-            if decodeBillingError(data, with: res, onDecode: { @MainActor title, subtitle in
-                self.handleBillingError(title, subtitle: subtitle)
-            }) {
-                return nil
-            }
-            
-            return data
-        } catch {
-            SystemAlert.error("Order request failed", subtitle: error.localizedDescription)
-            return nil
-        }
     }
     
     @MainActor
