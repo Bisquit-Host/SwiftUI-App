@@ -6,7 +6,7 @@ import PteroNet
 final class DashboardViewVM {
     var user: BillingUser? = nil
     
-    func refreshAuthToken(onSuccess: @escaping () async -> Void = {}) async {
+    func refreshAuthToken() async {
         guard let refreshToken = Keychain.load(key: "refresh_token"), !refreshToken.isEmpty else {
             SystemAlert.error("Refresh token not found", subtitle: #function)
             return
@@ -23,7 +23,7 @@ final class DashboardViewVM {
         ValueStore().lastBillingTokenRefresh = Date()
         ValueStore().accessTokenExpiresIn = credentials.expiresIn
         
-        await onSuccess()
+        Logger().info("Refreshed auth token")
     }
     
     func fetchUserInfo() async {

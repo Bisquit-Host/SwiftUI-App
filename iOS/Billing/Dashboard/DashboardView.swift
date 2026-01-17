@@ -80,20 +80,14 @@ struct DashboardView: View {
     
     private func refresh() {
         Task {
-            await vm.refreshAuthToken {
-                Logger().info("Refreshed auth token")
-            }
-            
+            await vm.refreshAuthToken()
             await vm.fetchUserInfo()
         }
     }
     
     private func refreshAuthTokenIfNeeded() async {
         guard let lastRefresh = ValueStore().lastBillingTokenRefresh else {
-            await vm.refreshAuthToken {
-                Logger().info("Refreshed auth token")
-            }
-            
+            await vm.refreshAuthToken()
             return
         }
         
@@ -101,10 +95,7 @@ struct DashboardView: View {
         let expiryDate = lastRefresh.addingTimeInterval(expiresInSeconds)
         
         guard Date() >= expiryDate else { return }
-        
-        await vm.refreshAuthToken {
-            Logger().info("Refreshed auth token")
-        }
+        await vm.refreshAuthToken()
     }
 }
 
