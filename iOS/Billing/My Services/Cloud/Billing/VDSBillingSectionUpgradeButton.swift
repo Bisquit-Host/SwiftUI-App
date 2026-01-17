@@ -27,7 +27,7 @@ struct VDSBillingSectionUpgradeButton: View {
                     
                     if showNoUpgrades {
                         Text("No higher packages available right now")
-                            .footnote()
+                            .caption2()
                             .secondary()
                             .multilineTextAlignment(.center)
                     }
