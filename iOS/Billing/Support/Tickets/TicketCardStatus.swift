@@ -1,19 +1,19 @@
 import SwiftUI
 
 struct TicketCardStatus: View {
-    private let ticket: SupportTicketWithLastMessageDTO
+    private let status: SupportTicketStatus
     
-    init(_ ticket: SupportTicketWithLastMessageDTO) {
-        self.ticket = ticket
+    init(_ status: SupportTicketStatus) {
+        self.status = status
     }
     
     var body: some View {
-        Text(ticket.ticket.status.rawValue.capitalized)
+        Text(status.rawValue.capitalized)
             .caption(.semibold)
             .padding(.horizontal, 10)
             .padding(.vertical, 4)
-            .background(ticket.ticket.status.color.opacity(0.12), in: Capsule())
-            .foregroundStyle(ticket.ticket.status.color)
+            .background(status.color.opacity(0.12), in: Capsule())
+            .foregroundStyle(status.color)
     }
 }
 

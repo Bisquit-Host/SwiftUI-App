@@ -17,12 +17,12 @@ struct TicketCard: View {
                         .headline()
                         .lineLimit(2)
                     
-                    TicketCardLastMessage(ticket)
+                    TicketCardLastMessage(ticket.lastMessage)
                 }
                 
                 Spacer()
                 
-                TicketCardStatus(ticket)
+                TicketCardStatus(ticket.ticket.status)
             }
             .padding(.vertical, 4)
         }

@@ -21,9 +21,7 @@ struct SupportView: View {
         .toolbar {
             if selectedTab == 0 {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("New", systemImage: "plus") {
-                        vm.createNewTicket()
-                    }
+                    Button("New", systemImage: "plus", action: vm.createNewTicket)
                 }
             }
         }

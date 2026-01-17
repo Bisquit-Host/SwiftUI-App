@@ -1,8 +1,7 @@
 import Foundation
 
 enum TopupAlertContext {
-    case serviceBilling, upgrade
-    case purchase
+    case serviceBilling, upgrade, purchase
 }
 
 func isInsufficientFundsError(_ title: String, subtitle: String) -> Bool {

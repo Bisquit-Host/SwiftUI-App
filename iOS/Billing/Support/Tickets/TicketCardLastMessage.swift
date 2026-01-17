@@ -1,14 +1,14 @@
 import SwiftUI
 
 struct TicketCardLastMessage: View {
-    private let ticket: SupportTicketWithLastMessageDTO
+    private let lastMessage: SupportMessageDTO?
     
-    init(_ ticket: SupportTicketWithLastMessageDTO) {
-        self.ticket = ticket
+    init(_ lastMessage: SupportMessageDTO?) {
+        self.lastMessage = lastMessage
     }
     
     var body: some View {
-        if let last = ticket.lastMessage {
+        if let last = lastMessage {
             HStack(alignment: .firstTextBaseline, spacing: 8) {
                 Text(last.user.isSupport ? "Support" : last.user.name)
                     .caption(.semibold)
