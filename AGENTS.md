@@ -8,7 +8,7 @@
 - Tests: `Unit Tests/` (unit/perf), `UI Tests/` (UI automation)
 - BisquitoNet library is located in `/Users/topscrech/Library/Mobile Documents/com~apple~CloudDocs/Projects/Packages/BisquitoNet` 
 - PteroNet library is located in `/Users/topscrech/Library/Mobile Documents/com~apple~CloudDocs/Projects/Packages/PteroNet` 
-- The backend project is located in `/Users/topscrech/IdeaProjects/billing-backend-ktor`
+- The backend project is located in `/Users/topscrech/IdeaProjects/billing-backend-ktor`; do not edit, if there's an issue -> just tell me 
 
 ## Build, Test, and Development Commands
 
