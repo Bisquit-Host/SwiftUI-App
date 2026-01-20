@@ -82,12 +82,12 @@ struct ContactsListView: View {
         DispatchQueue.global(qos: .userInitiated).async {
             let store = CNContactStore()
             let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactEmailAddressesKey] as [CNKeyDescriptor]
-            let request = CNContactFetchRequest(keysToFetch: keys)
+            let req = CNContactFetchRequest(keysToFetch: keys)
             
             do {
                 var contactsWithEmail = [CNContact]()
                 
-                try store.enumerateContacts(with: request) { contact, _ in
+                try store.enumerateContacts(with: req) { contact, _ in
                     if !contact.emailAddresses.isEmpty {
                         contactsWithEmail.append(contact)
                     }

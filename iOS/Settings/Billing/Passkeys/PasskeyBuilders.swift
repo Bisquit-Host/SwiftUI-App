@@ -13,20 +13,20 @@ struct PasskeyRequestFactory {
         }
         
         let provider = ASAuthorizationPlatformPublicKeyCredentialProvider(relyingPartyIdentifier: rpId)
-        let request = provider.createCredentialAssertionRequest(challenge: challenge)
+        let req = provider.createCredentialAssertionRequest(challenge: challenge)
         
         if let allowCredentials = options.allowCredentials {
-            request.allowedCredentials = allowCredentials.compactMap { descriptor in
+            req.allowedCredentials = allowCredentials.compactMap { descriptor in
                 guard let id = descriptor.id.dataFromBase64URL() else { return nil }
                 return ASAuthorizationPlatformPublicKeyCredentialDescriptor(credentialID: id)
             }
         }
         
         if let userVerification = options.userVerification?.userVerificationPreference {
-            request.userVerificationPreference = userVerification
+            req.userVerificationPreference = userVerification
         }
         
-        return request
+        return req
     }
     
     static func registrationRequest(from options: PasskeyRegistrationOptions) throws -> ASAuthorizationPlatformPublicKeyCredentialRegistrationRequest {

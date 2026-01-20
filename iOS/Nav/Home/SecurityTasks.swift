@@ -99,11 +99,11 @@ final class SecurityTasks {
             return
         }
         
-        let request = URLRequest(url: url)
+        let req = URLRequest(url: url)
         var appStoreVersion = "0"
         
         do {
-            let (data, _) = try await URLSession.shared.data(for: request)
+            let (data, _) = try await URLSession.shared.data(for: req)
             let decoded = try BigAssDecoder.decode(ItunesAppInfo.self, from: data)
             
             appStoreVersion = decoded.results.first?.version ?? "0"

@@ -95,8 +95,8 @@ final class LoginVM {
         
         do {
             let session = try await startPasskeyLoginAPI(login: login)
-            let request = try PasskeyRequestFactory.assertionRequest(from: session.options)
-            let credential = try await passkeyAuth.perform(request)
+            let req = try PasskeyRequestFactory.assertionRequest(from: session.options)
+            let credential = try await passkeyAuth.perform(req)
             
             guard let assertion = credential as? ASAuthorizationPlatformPublicKeyCredentialAssertion else {
                 throw PasskeyError.invalidCredential

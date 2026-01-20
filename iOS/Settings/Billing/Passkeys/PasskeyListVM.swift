@@ -42,8 +42,8 @@ final class PasskeyListVM {
         guard let session = await startRegistration() else { return }
         
         do {
-            let request = try PasskeyRequestFactory.registrationRequest(from: session.options)
-            let credential = try await authController.perform(request)
+            let req = try PasskeyRequestFactory.registrationRequest(from: session.options)
+            let credential = try await authController.perform(req)
             
             guard let registration = credential as? ASAuthorizationPlatformPublicKeyCredentialRegistration else {
                 throw PasskeyError.invalidCredential
