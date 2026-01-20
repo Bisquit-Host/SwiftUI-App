@@ -10,5 +10,4 @@
 ### Features
 - Passkeys
 - Interactive widgets & Shortcuts with dynamic configuration
-- App Clip & iMessage extension
 - Live Activity
